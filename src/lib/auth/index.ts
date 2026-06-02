@@ -2,20 +2,23 @@
  * Auth facade. Screens import `useAuth` / `AuthProvider` from here and never
  * care whether the underlying implementation is Clerk or the local mock.
  *
- * The binding is chosen once at module load (AUTH_MODE never changes at runtime)
- * so the rules of hooks hold. In Clerk mode the provider lives in the real
- * provider stack (`backend/realProviders.tsx`), so AuthProvider is a passthrough.
+ * The Clerk adapter is lazy-`require`d only in clerk mode, so `@clerk/clerk-expo`
+ * (which carries native deps) never even executes in mock mode — keeping the
+ * default offline boot robust on every platform. The binding is chosen once at
+ * module load (AUTH_MODE never changes at runtime) so the rules of hooks hold.
  */
 
 import type { ReactNode } from 'react';
 
 import { AUTH_MODE } from '@/lib/config';
-import { useClerkAuth } from './clerkAuth';
 import { MockAuthProvider, useMockAuth } from './mockAuth';
 
 export type { AuthValue } from './mockAuth';
 
-export const useAuth = AUTH_MODE === 'clerk' ? useClerkAuth : useMockAuth;
+export const useAuth =
+  AUTH_MODE === 'clerk'
+    ? (require('./clerkAuth') as typeof import('./clerkAuth')).useClerkAuth
+    : useMockAuth;
 
 const Passthrough = ({ children }: { children: ReactNode }) => children;
 

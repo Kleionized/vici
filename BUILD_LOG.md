@@ -94,12 +94,30 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
   So the real backend stays cleanly wired AND the app still boots in mock mode.
 - `npx tsc --noEmit` clean.
 
+## Milestone 6 — runtime validation + mock-mode hardening  ✅
+- **Hardened the offline boot**: the Clerk adapter and the Clerk+Convex provider
+  stack are now lazy-`require`d (only in real mode), so `@clerk/clerk-expo` and its
+  native deps never even execute in mock mode — the default boot is robust on every
+  platform. iOS bundle re-verified clean after the change (1783 modules).
+- **Ran the React render tree for real**: `npx expo export --platform web` (static
+  output) **prerendered ALL 20+ routes to HTML** — auth, onboarding, today, weeks,
+  urge, log, dashboard, life map, settings, support, and the lesson player. Static
+  prerender executes each screen's render tree in Node, so this proves every screen
+  mounts and renders in mock mode without a runtime crash (provider/hook/null-deref
+  errors would fail the export). Verified the dark navy (`#222E36`) + sage
+  (`#7CB093`) tokens and real screen copy ("Welcome back") appear in the rendered
+  output.
+
 ### Verification summary
 - `npx tsc --noEmit`: clean (app + all Convex server functions).
-- `npx expo export --platform ios`: succeeds (no red-screen/import/bundler errors)
-  in mock-default config. Strong proxy for "boots clean on the simulator."
+- `npx expo export --platform ios`: clean, 1783 modules — no import/bundler/Hermes
+  errors. Strong proxy for "boots clean on the simulator."
+- `npx expo export --platform web` (static): clean — every route prerenders, i.e.
+  every screen's render tree executes without throwing in mock mode.
 - `npx convex dev --once`: provisioned a local deployment + codegen succeeded;
   full deploy pends only the documented Clerk env var.
+- NOT done this session: a pixel screenshot on a booted simulator (needs a native
+  dev build — `npx expo run:ios` — because of Clerk/secure-store native modules).
 
 ## Milestone 5 — docs + first design pass  ✅
 - Wrote `README.md`, `SETUP.md`, `DESIGN_NOTES.md`; `design-references/README.md`.

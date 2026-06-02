@@ -68,14 +68,19 @@ surface-aware `AppText`) is a clean future step.
 
 ## Self-comparison (build spec §6.3)
 
-Honest status: the design pass was validated by **`npx tsc --noEmit` (clean)** and
-**`npx expo export --platform ios` (clean, 1783 modules)** — i.e. it compiles and
-bundles. It was **not** visually diffed against the references in a running simulator
-this session, because the app's native modules (Clerk, secure-store) require a dev
-build (`npx expo run:ios`) rather than Expo Go. The palette/typography choices are
-reasoned from the references and the contrast is light-on-dark throughout (no
-low-contrast traps), but a side-by-side visual pass on device is the recommended
-next step. Everything visual lives in `src/lib/theme.ts`, so tuning is one file.
+Honest status: the design pass was validated by **`npx tsc --noEmit` (clean)**, the
+**iOS bundle (clean, 1783 modules)**, and a **static web export that prerendered all
+20+ routes** — confirming every screen actually *renders* (not just compiles). The
+dark navy (`#222E36`) and sage (`#7CB093`) tokens were verified present in the
+prerendered CSS, so the theme genuinely flows through to rendered styles.
+
+What was **not** done this session: a pixel-level screenshot diff against the
+reference images on a booted simulator (needs a native dev build — `npx expo
+run:ios` — because of Clerk/secure-store native modules; the sandbox here also
+blocked a static file server for a browser screenshot). The palette/typography are
+reasoned from the references and contrast is light-on-dark throughout (no
+low-contrast traps), but an on-device side-by-side is the recommended next step.
+Everything visual lives in `src/lib/theme.ts`, so tuning is one file.
 
 ## Still TODO (visual)
 - Load the exact reference serif (looks Tiempos/Lora-ish) via `expo-font`.
