@@ -101,6 +101,16 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
 - `npx convex dev --once`: provisioned a local deployment + codegen succeeded;
   full deploy pends only the documented Clerk env var.
 
+## Milestone 5 — docs + first design pass  ✅
+- Wrote `README.md`, `SETUP.md`, `DESIGN_NOTES.md`; `design-references/README.md`.
+- **First design pass** from the references (DESIGN_NOTES.md): adopted the
+  Imprint-style direction — dark slate-navy field, serif display headlines,
+  sage-green accent, generous rounded cards with a soft lift. Driven entirely
+  through `src/lib/theme.ts` (+ light status bar, dark splash, Card shadow). Lapse
+  tint is soft lavender, never red (invariant #2). tsc + iOS export still clean
+  (1783 modules). Validated by compile/bundle, not yet by on-device visual diff
+  (needs a dev build — Clerk/secure-store).
+
 ### Stubbed / deferred (handoff)
 - Live end-to-end against Convex needs the Clerk env on the deployment (SETUP.md).
   Default run mode is the fully-working mock.

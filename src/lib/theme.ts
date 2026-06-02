@@ -1,18 +1,18 @@
 /**
  * Tideline design tokens — THE single source of truth for all visual styling.
  *
- * ============================================================================
- *  TODO(jerry): replace every value below with tokens sampled from the
- *  reference screenshots in /design-references/. See DESIGN_NOTES.md for the
- *  token inventory extracted from the references the human provided.
+ * Derived from the reference screenshots the human provided (see DESIGN_NOTES.md).
+ * Primary direction = the "Imprint"-style onboarding reference: a calm, premium,
+ * DARK slate-navy field, serif display headlines, and a sage-green accent. The
+ * reference's white note-cards are adapted to dark elevated surfaces here so the
+ * whole UI shares one light-on-dark text colour (documented in DESIGN_NOTES.md).
  *
- *  Until that pass happens this file is deliberately NEUTRAL and UNSTYLED:
- *  system font, near-black on white, hairline borders, no brand colour. That
- *  makes it visually obvious what has not been designed yet (per build spec
- *  §0.4). Every screen/primitive reads from here, so restyling is one file.
- * ============================================================================
+ * Every screen/primitive reads from this file, so the look is tuned here, in one
+ * place. Hex values are sampled-by-eye from the references and marked approximate;
+ * TODO(jerry): refine against the actual image files + load the exact serif face.
  */
 
+import { Platform } from 'react-native';
 import type { TextStyle } from 'react-native';
 
 type FontWeight = TextStyle['fontWeight'];
@@ -21,44 +21,43 @@ type FontWeight = TextStyle['fontWeight'];
  * Colour palette. NOTE: a few semantic colours carry product invariants:
  *  - `event.lapse` MUST NOT be red / alarming (invariant #2 — a lapse is data,
  *    not failure). It is treated with the same calm tone as any other event.
- *  - status colours are intentionally desaturated greys in placeholder mode.
  */
 export const colors = {
-  // Surfaces
-  bg: '#FFFFFF',
-  surface: '#FFFFFF',
-  surfaceAlt: '#F6F6F4',
-  overlay: 'rgba(0,0,0,0.35)',
+  // Surfaces — dark slate navy field with subtly elevated cards.
+  bg: '#222E36',
+  surface: '#2B3942',
+  surfaceAlt: '#31404A',
+  overlay: 'rgba(0,0,0,0.5)',
 
-  // Text
-  text: '#141414',
-  textMuted: '#555555',
-  textSoft: '#8A8A8A',
-  textSofter: '#B5B5B5',
-  textInverse: '#FFFFFF',
+  // Text — warm off-white on dark.
+  text: '#F2F0EA',
+  textMuted: '#C3CBCF',
+  textSoft: '#939DA3',
+  textSofter: '#6E787E',
+  textInverse: '#1B2228',
 
-  // Lines
-  border: '#E4E4E1',
-  borderStrong: '#CFCFCB',
+  // Lines — faint light hairlines on dark.
+  border: 'rgba(255,255,255,0.10)',
+  borderStrong: 'rgba(255,255,255,0.22)',
 
-  // Accent — neutral near-black placeholder (NO brand colour yet).
-  accent: '#141414',
-  accentText: '#FFFFFF',
-  accentSoft: '#EFEFED',
+  // Accent — sage green from the reference's emphasis type.
+  accent: '#7CB093',
+  accentText: '#15201A',
+  accentSoft: 'rgba(124,176,147,0.16)',
 
-  // Status (neutral/desaturated until design pass; never use red for lapse)
-  positive: '#4A5D4E',
-  caution: '#6B5D3E',
-  info: '#3E4F6B',
-  neutral: '#6E6E6A',
+  // Status (calm, desaturated; never red for a lapse)
+  positive: '#7CB093',
+  caution: '#D9B36A',
+  info: '#7FA8C9',
+  neutral: '#9AA4AA',
 
   // Per-event-type tints used by the Log (all calm, none alarming)
   event: {
-    urge_rode_out: '#3E4F6B',
-    urge_acted_on: '#6E6E6A',
-    lapse: '#5A5560', // calm slate — deliberately NOT red (invariant #2)
-    win: '#4A5D4E',
-    check_in: '#6E6E6A',
+    urge_rode_out: '#7FA8C9', // calm blue
+    urge_acted_on: '#9AA4AA', // neutral slate
+    lapse: '#A99BC0', // soft lavender — deliberately NOT red (invariant #2)
+    win: '#7CB093', // sage
+    check_in: '#9AA4AA',
   },
 } as const;
 
@@ -74,22 +73,21 @@ export const spacing = {
 
 export const radius = {
   sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 22,
+  md: 14,
+  lg: 18,
+  xl: 24,
   pill: 999,
 } as const;
 
 /**
- * Font families. Placeholder = platform system fonts. The references suggest a
- * serif display + sans body pairing (see DESIGN_NOTES.md) — wire real fonts via
- * expo-font in the design pass and only change these four values.
+ * Font families. Display = a serif (matching the reference's serif headlines),
+ * body = the platform sans. TODO(jerry): load the exact reference serif (looks
+ * like a Tiempos/Lora-style face) via expo-font and only change `display`.
  */
 export const fonts = {
-  // TODO(jerry): load the display serif from the references via expo-font.
-  display: undefined as string | undefined, // undefined => RN default system font
-  body: undefined as string | undefined,
-  mono: undefined as string | undefined,
+  display: Platform.select({ ios: 'Georgia', android: 'serif', default: 'serif' }),
+  body: undefined as string | undefined, // platform system sans
+  mono: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
 } as const;
 
 export const fontSize = {
@@ -115,7 +113,7 @@ export const lineHeight = {
   relaxed: 1.6,
 } as const;
 
-/** Hairline card styling reused across primitives. */
+/** Card styling reused across primitives. */
 export const card = {
   backgroundColor: colors.surface,
   borderColor: colors.border,
@@ -124,13 +122,13 @@ export const card = {
 } as const;
 
 export const shadow = {
-  // Deliberately flat in placeholder mode. TODO(jerry): elevation per references.
+  // Soft lift; barely visible on dark but helps on lighter surfaces.
   card: {
     shadowColor: '#000',
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 3,
   },
 } as const;
 

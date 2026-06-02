@@ -1,56 +1,84 @@
-# Welcome to your Expo app 👋
+# Tideline
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile app that helps people change a compulsive relationship with pornography by
+**building a life worth living — not by counting a streak.** Grounded in Acceptance
+and Commitment Therapy (ACT) and behaviour-change science.
 
-## Get started
+This repo is the **engine and walking skeleton**: the content system, navigation,
+data layer, and core interactive tools, wired to a real backend, with placeholder
+content and intentionally neutral visuals. Real lesson content and the real visual
+design are loaded later.
 
-1. Install dependencies
+> Built overnight from a detailed spec. See **BUILD_LOG.md** for what was done,
+> **DECISIONS.md** for the choices made (and the product invariants), **SETUP.md**
+> to go live, and **DESIGN_NOTES.md** for the visual story.
 
-   ```bash
-   npm install
-   ```
+## What makes it different (hard invariants)
 
-2. Start the app
+1. **No zero-reset streak as the hero metric** — progress is lessons + leading
+   indicators + values alignment. A "days since" number is optional and off by
+   default.
+2. **A lapse is data, not failure** — logged as a neutral event with the same calm
+   UI as a win. No shame language, no red X, no broken-streak animation.
+3. **Lead with values** — the user's "why" and Life Map are first-class and resurfaced.
+4. **Different methods fit different people** — lessons carry `approachTags`; users
+   rate how well each one fits them.
+5. **Not medical advice** — a persistent route to crisis/professional help; sensitive
+   lessons show a gentle support footer.
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run it
 
 ```bash
-npm run reset-project
+npm install
+npx expo start      # press `i` for the iOS simulator
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+With no env keys, it runs **fully offline** in mock mode (local auth + local data) —
+sign up, onboard, take a lesson, ride out an urge, log an event, see the dashboard.
+To switch to the real Convex + Clerk backend, see **SETUP.md**.
 
-### Other setup steps
+```bash
+npx tsc --noEmit    # typecheck (run before committing .ts/.tsx)
+npx convex dev      # real backend, in a second terminal (see SETUP.md)
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Stack
 
-## Learn more
+| Layer | Tech |
+|---|---|
+| App | Expo SDK 56 (React Native 0.85, React 19), TypeScript, Expo Router |
+| Backend | Convex (`convex/`) — queries/mutations/actions, authenticated per call |
+| Auth | Clerk (`@clerk/clerk-expo`) + Clerk↔Convex integration |
+| Local | AsyncStorage + expo-secure-store (mock layer, ephemeral state) |
 
-To learn more about developing your project with Expo, look at the following resources:
+The app talks only to a **backend facade** (`src/lib/backend`, `src/lib/auth`) that
+swaps between the local mock and real Convex+Clerk based on env keys — so the UI is
+identical in both modes, and demonstrable with zero credentials.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project structure
 
-## Join the community
+```
+src/
+  app/                  # Expo Router routes
+    (auth)/             # sign-in, sign-up
+    (onboarding)/       # welcome → why → values → done
+    (app)/              # tabs: today, weeks, urge, log, dashboard
+                        #  + hidden routes: lifemap, settings, support
+    lesson/[slug].tsx   # immersive lesson player (over the tabs)
+  components/ui/         # neutral, themeable primitives
+  content/seedLessons.ts# the 3 placeholder lessons
+  lib/
+    theme.ts            # ★ single source of truth for all visual tokens
+    types.ts            # domain types (mirror the Convex schema)
+    backend/            # mock + convex hooks behind one contract
+    auth/               # mock + clerk auth behind one contract
+    dashboard.ts        # leading-indicator aggregation
+convex/                 # schema + authenticated functions + seed + import
+```
 
-Join our community of developers creating universal apps.
+## Status
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Core loop works end-to-end on the mock backend (verified: `tsc` clean, iOS bundle
+exports clean). Real Convex+Clerk is fully wired and bundles; going live needs the
+documented env setup. Visuals are intentionally neutral placeholders pending the
+design pass.

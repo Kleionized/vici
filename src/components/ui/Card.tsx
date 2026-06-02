@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 
-import { card, colors, spacing } from '@/lib/theme';
+import { card, colors, shadow, spacing } from '@/lib/theme';
 
 export interface CardProps {
   children: ReactNode;
@@ -16,6 +16,7 @@ export function Card({ children, style, accent, padded = true }: CardProps) {
     <View
       style={[
         card,
+        shadow.card,
         { backgroundColor: colors.surface },
         padded && { padding: spacing.lg },
         accent ? { borderLeftWidth: 3, borderLeftColor: accent } : null,
