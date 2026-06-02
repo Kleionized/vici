@@ -80,10 +80,31 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
   and a Clerk key (Convex auth depends on Clerk), so partial config can never
   produce a broken convex-backend + mock-auth mix — it cleanly stays mock.
 
-### Stubbed / deferred so far
-- Clerk auth wiring + convex provider stack (next milestone).
-- Live end-to-end against Convex (needs Clerk env on the deployment — documented
-  in SETUP.md). Default run mode remains the fully-working mock.
+## Milestone 4 — Clerk auth + real provider stack wired  ✅
+- Installed `@clerk/clerk-expo` 2.19. Wrote `src/lib/auth/clerkAuth.tsx` (a Clerk
+  adapter satisfying the same `AuthValue` contract the screens already use) and
+  `src/lib/backend/realProviders.tsx` (ClerkProvider → ConvexProviderWithClerk,
+  Convex client built lazily so mock mode never constructs it, + a Bootstrap that
+  mirrors the Clerk user into Convex via `ensureUser`).
+- Rewired the three facades (`auth/index.ts`, `backend/index.ts`, `providers.tsx`)
+  to select mock vs real once at module load from the coupled mode flags.
+- **Bundle verified BOTH ways via `npx expo export --platform ios`:**
+  - mock-default bundle: 1570 modules, exit 0.
+  - with Clerk + Convex statically imported: 1783 modules, exit 0.
+  So the real backend stays cleanly wired AND the app still boots in mock mode.
+- `npx tsc --noEmit` clean.
+
+### Verification summary
+- `npx tsc --noEmit`: clean (app + all Convex server functions).
+- `npx expo export --platform ios`: succeeds (no red-screen/import/bundler errors)
+  in mock-default config. Strong proxy for "boots clean on the simulator."
+- `npx convex dev --once`: provisioned a local deployment + codegen succeeded;
+  full deploy pends only the documented Clerk env var.
+
+### Stubbed / deferred (handoff)
+- Live end-to-end against Convex needs the Clerk env on the deployment (SETUP.md).
+  Default run mode is the fully-working mock.
 - Real notification scheduling for the reminder time (value is stored only).
-- Visual design pass (neutral placeholder in place; references pending, see
-  DESIGN_NOTES.md).
+- A Clerk email-verification-code screen if email verification stays enabled.
+- Visual design pass (neutral placeholder in place; see DESIGN_NOTES.md).
+- Real crisis resources + real lesson curriculum (human-loaded).
