@@ -1,7 +1,7 @@
-import { View } from 'react-native';
+import { View, type ColorValue } from 'react-native';
 
 /** Neutral placeholder tab glyph. TODO(jerry): swap for real icons in the design pass. */
-export function TabIcon({ color, focused }: { color: string; focused: boolean }) {
+export function TabIcon({ color, focused }: { color: ColorValue; focused: boolean }) {
   return (
     <View
       style={{

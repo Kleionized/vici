@@ -29,7 +29,36 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
 - **Auth screens**: `(auth)/sign-in`, `(auth)/sign-up`.
 - `npx tsc --noEmit` clean.
 
+## Milestone 2 — onboarding + full walking skeleton  ✅
+- **Auth gate** complete: `(auth)`, `(onboarding)`, `(app)` groups each guard on
+  auth + onboarding state; root `index.tsx` routes between them.
+- **Onboarding** (§5): welcome → why → values → done, writing the Life Map as it
+  goes (`whyStatement`, `values`).
+- **Lesson player** [CORE] (`src/app/lesson/[slug].tsx`): markdown body, dynamic
+  reflection form (shortText/longText/scale/choice), `fitsMe` rating (invariant
+  #4), sensitive-lesson support footer (invariant #5), urge-tool CTA. Saves a
+  reflection + marks progress complete.
+- **Today** [CORE]: leads with the user's "why" (invariant #3), surfaces the
+  current lesson, calm quick-actions (urge / log / check-in / support).
+- **Weeks**: lessons grouped by week with per-lesson status.
+- **Ride It Out** urge tool [CORE]: rate → timed wait (1/3/5 min, configurable)
+  with box-breathing prompt → neutral outcome logging (rode out / acted on) with
+  HALT + trigger + what-helped + what-it-taught. In-progress session persisted to
+  AsyncStorage so backgrounding doesn't lose it. No shame language on any path.
+- **Log** [CORE]: lapse-as-data composer (win/lapse/urge events share identical
+  calm UI — invariant #2), daily check-in (leading indicators), chronological
+  history.
+- **Dashboard**: leading-indicator hero (sleep/mood 7-day bars, moved/connected/
+  structure counts, lessons, reflections). Optional "days since" stat ONLY when
+  the user opts in via Settings (invariant #1), framed neutrally.
+- **Life Map**: edit why + one-year answer + values.
+- **Settings**: streak opt-in toggle, reminder time (stored; real scheduling
+  deferred), Life Map / Support links, account + run-mode, sign out.
+- **Support**: crisis/professional-help placeholder route (invariant #5).
+- `npx tsc --noEmit` clean across all 22 source files + 17 routes.
+
 ### Stubbed / deferred so far
 - Real Convex backend + Clerk auth (code paths reserved; activated by env keys).
+- Real notification scheduling for the reminder time (value is stored only).
 - Visual design pass (neutral placeholder in place; references pending, see
   DESIGN_NOTES.md).

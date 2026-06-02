@@ -5,6 +5,7 @@ export { ChoiceInput } from './ChoiceInput';
 export { Divider } from './Divider';
 export { EmptyState, LoadingView } from './Feedback';
 export { Field } from './Field';
+export { Header } from './Header';
 export { MarkdownView } from './MarkdownView';
 export { MiniBars } from './MiniBars';
 export { Pill } from './Pill';
