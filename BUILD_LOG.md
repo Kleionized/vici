@@ -57,8 +57,33 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
 - **Support**: crisis/professional-help placeholder route (invariant #5).
 - `npx tsc --noEmit` clean across all 22 source files + 17 routes.
 
+## Milestone 3 — real Convex backend (server code + app hooks)  ✅
+- **Schema** (`convex/schema.ts`): all 7 tables from §4, exact field names,
+  indexes as specified. No `streak`/`daysClean` field anywhere (invariant #1).
+- **Functions**: `users` (getCurrentUser/ensureUser/completeOnboarding/
+  updateSettings), `lessons` (list/progress/getDetail/current/start/complete),
+  `reflections.save`, `lifemap` (get/update), `events` (list/create), `checkins`
+  (list/getForDate/upsert), `dashboard.get` (server-side leading-indicator
+  aggregation mirroring `src/lib/dashboard.ts`). Every function authenticates via
+  `ctx.auth.getUserIdentity()`; reads soft-fail to null, mutations throw.
+- **Seeding**: `seed.seedLessons` (the 3 placeholder lessons) + `importLessons`
+  (generic bulk-upsert seam for the human's real ~94-lesson curriculum).
+- **App-side hooks** (`src/lib/backend/convex.ts`): full contract twin of the mock
+  hooks, using `makeFunctionReference` so the app bundle never depends on
+  `convex/_generated` — it builds + runs in mock mode with zero Convex setup.
+- **Validated for real**: ran `npx convex dev --once`, which provisioned a LOCAL
+  anonymous deployment (`127.0.0.1:3210` — no cloud account touched), generated
+  `convex/_generated`, and parsed/codegen'd every function. Deploy stopped only at
+  the *documented* `CLERK_JWT_ISSUER_DOMAIN` requirement (expected setup step).
+  `npx tsc --noEmit` clean across all server functions + app hooks.
+- **Config coupling** (`src/lib/config.ts`): real mode requires BOTH a Convex URL
+  and a Clerk key (Convex auth depends on Clerk), so partial config can never
+  produce a broken convex-backend + mock-auth mix — it cleanly stays mock.
+
 ### Stubbed / deferred so far
-- Real Convex backend + Clerk auth (code paths reserved; activated by env keys).
+- Clerk auth wiring + convex provider stack (next milestone).
+- Live end-to-end against Convex (needs Clerk env on the deployment — documented
+  in SETUP.md). Default run mode remains the fully-working mock.
 - Real notification scheduling for the reminder time (value is stored only).
 - Visual design pass (neutral placeholder in place; references pending, see
   DESIGN_NOTES.md).

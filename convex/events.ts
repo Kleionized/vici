@@ -1,0 +1,43 @@
+import { v } from 'convex/values';
+
+import { mutation, query } from './_generated/server';
+import { eventType, precedingState } from './schema';
+import { getUserIdOrNull, requireUserId } from './utils';
+
+export const list = query({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getUserIdOrNull(ctx);
+    if (!userId) return [];
+    return await ctx.db
+      .query('events')
+      .withIndex('by_user_createdAt', (q) => q.eq('userId', userId))
+      .order('desc')
+      .collect();
+  },
+});
+
+export const create = mutation({
+  args: {
+    type: eventType,
+    trigger: v.optional(v.string()),
+    precedingState: v.optional(precedingState),
+    whatHelped: v.optional(v.string()),
+    lesson: v.optional(v.string()),
+    note: v.optional(v.string()),
+    createdAt: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const userId = await requireUserId(ctx);
+    await ctx.db.insert('events', {
+      userId,
+      type: args.type,
+      createdAt: args.createdAt ?? Date.now(),
+      trigger: args.trigger,
+      precedingState: args.precedingState,
+      whatHelped: args.whatHelped,
+      lesson: args.lesson,
+      note: args.note,
+    });
+  },
+});
