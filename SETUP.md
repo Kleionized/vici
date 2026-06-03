@@ -61,10 +61,11 @@ npx convex dev        # first run provisions a deployment and writes
    ```
 
    (Until this is set, `npx convex dev` will refuse to deploy — that's expected.)
-5. Enable an email + **password** sign-in strategy in Clerk. If you keep email-code
-   verification on, note the sign-up flow needs a verification-code step that the
-   current `src/lib/auth/clerkAuth.tsx` adapter does not yet render — either disable
-   email verification for password sign-ups, or add that screen (TODO in the file).
+5. Enable an email + **password** sign-in strategy in Clerk. Email-code
+   verification is fully supported — `(auth)/sign-up.tsx` renders the code step and
+   `src/lib/auth/clerkAuth.tsx` completes it (`prepare`/`attempt` + `setActive`).
+6. **Enable the Native API** for the instance (Clerk dashboard → Native
+   Applications). Required for the native (`@clerk/clerk-expo`) integration.
 
 ### 2c. Seed lessons
 

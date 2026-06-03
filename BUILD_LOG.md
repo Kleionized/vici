@@ -108,6 +108,27 @@ Convex URL / Clerk key configured — see SETUP.md to go live).
   (`#7CB093`) tokens and real screen copy ("Welcome back") appear in the rendered
   output.
 
+## Milestone 7 — real Clerk + Convex go-live  ✅
+Done interactively with the user's keys (cloud Convex dev `scrupulous-setter-911`
++ Clerk dev instance `immense-earwig-93`):
+- Created the **`convex` JWT template** in Clerk (`aud: convex`) via the Backend API.
+- Set **`CLERK_JWT_ISSUER_DOMAIN`** (`https://immense-earwig-93.clerk.accounts.dev`,
+  derived from the publishable key) on the Convex deployment.
+- **Deployed** all functions to cloud dev and **seeded** the 3 lessons (`upserted: 3`,
+  confirmed via `lessons:list`).
+- Fixed the Convex typecheck: added `@types/node` + `"types": ["node"]` to
+  `convex/tsconfig.json` (Convex's deploy tsc needs `process` for `auth.config.ts`).
+- Implemented Clerk **email-code verification**: extended the `AuthValue` contract
+  (`verifyEmailCode` / `resendEmailCode`), wrote the real flow in `clerkAuth.tsx`
+  (`create` → `prepareEmailAddressVerification` → `attemptEmailAddressVerification`
+  → `setActive`), and added the code-entry step + CAPTCHA mount to `sign-up.tsx`.
+- Added the publishable key to `.env.local` → app now runs in **real mode**.
+- iOS bundle re-verified clean in real mode (1783 modules); `tsc` clean.
+
+**Still manual (Clerk dashboard):** enable the **Native API** (Native Applications
+page). **Security:** the user's Clerk *secret* key was shared in chat and used only
+transiently for the JWT-template call — recommend rolling it.
+
 ### Verification summary
 - `npx tsc --noEmit`: clean (app + all Convex server functions).
 - `npx expo export --platform ios`: clean, 1783 modules — no import/bundler/Hermes

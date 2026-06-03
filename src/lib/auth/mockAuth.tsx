@@ -34,7 +34,11 @@ export interface AuthValue {
     email: string,
     password: string,
     displayName?: string,
-  ): Promise<{ ok: boolean; error?: string }>;
+  ): Promise<{ ok: boolean; error?: string; needsVerification?: boolean }>;
+  /** Complete a sign-up that required email-code verification (Clerk). No-op for mock. */
+  verifyEmailCode(code: string): Promise<{ ok: boolean; error?: string }>;
+  /** Re-send the email verification code (Clerk). No-op for mock. */
+  resendEmailCode(): Promise<{ ok: boolean; error?: string }>;
   signOut(): Promise<void>;
 }
 
@@ -119,6 +123,9 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       mode: 'mock',
       signInWithPassword,
       signUpWithPassword,
+      // Mock sign-up never needs verification, so these are no-ops.
+      verifyEmailCode: async () => ({ ok: true }),
+      resendEmailCode: async () => ({ ok: true }),
       signOut,
     }),
     [isLoaded, userId, displayName, email, signInWithPassword, signUpWithPassword, signOut],

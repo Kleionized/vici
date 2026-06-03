@@ -3,10 +3,9 @@
  * the sign-in / sign-up screens work unchanged. Active only when a Clerk
  * publishable key is configured (see `./index.ts`).
  *
- * Password sign-in/up is implemented against Clerk's Expo hooks. NOTE: if the
- * Clerk instance requires email-code verification on sign-up, that adds a step
- * this adapter does not yet render — TODO(jerry): add a verification-code screen,
- * or disable email verification in the Clerk dashboard for password-only flows.
+ * Sign-up uses Clerk's email-code verification: `signUpWithPassword` creates the
+ * account and sends a code (returning `needsVerification`), then
+ * `verifyEmailCode` completes it. Sign-in is plain password.
  */
 
 import { useSignIn, useSignUp, useUser, useAuth as useClerkSDKAuth } from '@clerk/clerk-expo';
@@ -53,10 +52,33 @@ export function useClerkAuth(): AuthValue {
           await setActiveSignUp({ session: res.createdSessionId });
           return { ok: true };
         }
-        return {
-          ok: false,
-          error: 'Email verification is required — add a verification step or disable it in Clerk.',
-        };
+        // Default Clerk flow: send an email code, then verifyEmailCode() completes it.
+        await res.prepareEmailAddressVerification({ strategy: 'email_code' });
+        return { ok: false, needsVerification: true };
+      } catch (err) {
+        return { ok: false, error: clerkErrorMessage(err) };
+      }
+    },
+
+    async verifyEmailCode(code) {
+      if (!signUp) return { ok: false, error: 'No sign-up in progress.' };
+      try {
+        const res = await signUp.attemptEmailAddressVerification({ code: code.trim() });
+        if (res.status === 'complete') {
+          await setActiveSignUp({ session: res.createdSessionId });
+          return { ok: true };
+        }
+        return { ok: false, error: 'That code didn’t complete sign-up. Try again.' };
+      } catch (err) {
+        return { ok: false, error: clerkErrorMessage(err) };
+      }
+    },
+
+    async resendEmailCode() {
+      if (!signUp) return { ok: false, error: 'No sign-up in progress.' };
+      try {
+        await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+        return { ok: true };
       } catch (err) {
         return { ok: false, error: clerkErrorMessage(err) };
       }
