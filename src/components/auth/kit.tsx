@@ -13,7 +13,7 @@ import Svg, { Defs, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText } from '@/components/ui';
 import { Aura, FadeRise, TideScene, tint } from '@/components/onboarding/art';
-import { colors } from '@/lib/theme';
+import { colors, fonts, sans } from '@/lib/theme';
 
 export const AUTH_HUE = 208;
 
@@ -30,7 +30,7 @@ export function AuthStage({ children }: { children: ReactNode }) {
 }
 
 export const Wordmark = () => (
-  <AppText weightOverride="700" color={colors.text} style={{ fontSize: 19, letterSpacing: -0.76 }}>
+  <AppText color={colors.text} style={{ fontFamily: fonts.serif, fontSize: 21, letterSpacing: 4.7 }}>
     tideline
   </AppText>
 );
@@ -54,10 +54,10 @@ export function AuthHero({ title, lead }: { title: string; lead: string }) {
         </View>
         <TideScene hue={AUTH_HUE} w={234} h={150} />
       </FadeRise>
-      <AppText center weightOverride="700" color={colors.text} style={{ fontSize: 38, lineHeight: 40, letterSpacing: -1.06 }}>
+      <AppText center color={colors.text} style={{ fontFamily: fonts.serif, fontSize: 38, lineHeight: 41, letterSpacing: 0.3 }}>
         {title}
       </AppText>
-      <AppText center weightOverride="500" color={colors.textMuted} style={{ fontSize: 17, lineHeight: 25, marginTop: 13, maxWidth: 290 }}>
+      <AppText center style={[sans('400'), { fontSize: 17, lineHeight: 25, marginTop: 13, maxWidth: 290, color: colors.textMuted }]}>
         {lead}
       </AppText>
     </View>
@@ -104,13 +104,9 @@ export function AuthBtn({ mark, label, variant = 'neutral', onPress, loading }: 
         borderRadius: 9999,
         paddingVertical: 18,
         opacity: loading ? 0.6 : 1,
-        shadowColor: dark ? '#000' : 'transparent',
-        shadowOpacity: dark ? 0.18 : 0,
-        shadowRadius: 11,
-        shadowOffset: { width: 0, height: 8 },
       }}>
       <View style={{ position: 'absolute', left: 26 }}>{mark}</View>
-      <AppText weightOverride="700" color={dark ? colors.accentText : colors.text} style={{ fontSize: 17, letterSpacing: -0.2 }}>
+      <AppText style={[sans('500'), { fontSize: 15.5, letterSpacing: -0.19, color: dark ? colors.accentText : colors.text }]}>
         {label}
       </AppText>
     </Pressable>

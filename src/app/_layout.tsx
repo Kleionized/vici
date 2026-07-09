@@ -68,8 +68,10 @@ export default function RootLayout() {
             screenOptions={{
               headerShown: false,
               contentStyle: { backgroundColor: colors.bg },
-            }}
-          />
+            }}>
+            {/* the day-3 letter is delivered over Today — fade it in like an overlay */}
+            <Stack.Screen name="letter" options={{ animation: 'fade', gestureEnabled: false }} />
+          </Stack>
         </AppProviders>
       </SafeAreaProvider>
     </GestureHandlerRootView>

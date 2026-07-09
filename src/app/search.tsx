@@ -90,7 +90,7 @@ export default function Search() {
                   <SectionLabel size={10.5} style={{ marginBottom: 3 }}>
                     {CATEGORY_LABEL[l.category]}
                   </SectionLabel>
-                  <AppText weightOverride="700" style={{ fontSize: 16, letterSpacing: -0.2, lineHeight: 18 }}>
+                  <AppText weightOverride="500" style={{ fontSize: 14.5, lineHeight: 18 }}>
                     {l.title}
                   </AppText>
                   <AppText variant="muted" weightOverride="500" style={{ fontSize: 13, marginTop: 2 }}>

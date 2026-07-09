@@ -1,10 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Animated, type LayoutChangeEvent, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
+import Svg, { Circle, ClipPath, Defs, G, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText, Card, Glyph, type GlyphName, SectionLabel } from '@/components/ui';
 import { useTodayCheckin, useUpsertCheckin } from '@/lib/backend';
@@ -44,42 +44,114 @@ const REASONS: [string, GlyphName][] = [
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const moodIndex = (t: number) => Math.round(t * (MOODS.length - 1));
 
-// mood-mapped tone: cool blue (low) → warm coral (radiant). RN-safe rgba.
-function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-  h /= 360;
-  const a = s * Math.min(l, 1 - l);
-  const f = (n: number) => {
-    const k = (n + h * 12) % 12;
-    return Math.round(255 * (l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))));
-  };
-  return [f(0), f(8), f(4)];
+// ── colour helpers — RN-SVG can't do color-mix(), so blend hex → rgb ─────────
+const MTONE = colors.moodTones;
+function hexToRgb(h: string): [number, number, number] {
+  const n = parseInt(h.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
-function moodTone(t: number, vivid: boolean) {
-  const [r, g, b] = hslToRgb(lerp(248, 24, t), vivid ? 0.62 : 0.46, 0.64);
-  return (al = 1) => `rgba(${r}, ${g}, ${b}, ${al})`;
+function mix(a: string, b: string, t: number): string {
+  const A = hexToRgb(a);
+  const B = hexToRgb(b);
+  return `rgb(${Math.round(A[0] + (B[0] - A[0]) * t)}, ${Math.round(A[1] + (B[1] - A[1]) * t)}, ${Math.round(A[2] + (B[2] - A[2]) * t)})`;
 }
+const smooth = (t: number, a: number, b: number) => {
+  const x = Math.max(0, Math.min(1, (t - a) / (b - a)));
+  return x * x * (3 - 2 * x);
+};
 
-// ── central visual: a soft layered bloom that morphs by mood ─────────────────
-function MoodBloom({ t, vivid, size = 200 }: { t: number; vivid: boolean; size?: number }) {
-  const tone = moodTone(t, vivid);
-  const offset = lerp(9, 24, t);
-  const ry = lerp(34, 48, t);
-  const rx = lerp(23, 27, t);
-  const op = lerp(0.34, 0.46, t);
-  const core = lerp(9, 15, t);
+// wavy sea band (filled to the bottom) + its crest line, in the disc's 200×200 space
+function mBand(y: number, a: number, segs = 3): string {
+  const seg = 200 / segs;
+  let d = `M-2 ${y}`;
+  for (let i = 0; i < segs; i++) {
+    const x0 = -2 + i * seg;
+    const dir = i % 2 === 0 ? -1 : 1;
+    d += ` C ${x0 + seg * 0.33} ${y + dir * a}, ${x0 + seg * 0.66} ${y + dir * a}, ${x0 + seg} ${y}`;
+  }
+  return `${d} L202 202 L-2 202 Z`;
+}
+function mLine(y: number, a: number, segs = 3): string {
+  const seg = 204 / segs;
+  let d = `M-2 ${y}`;
+  for (let i = 0; i < segs; i++) {
+    const sx = -2 + i * seg;
+    const dir = i % 2 === 0 ? -1 : 1;
+    d += ` C ${sx + seg * 0.33} ${y + dir * a}, ${sx + seg * 0.66} ${y + dir * a}, ${sx + seg} ${y}`;
+  }
+  return d;
+}
+const gullPath = (x: number, y: number, s: number) =>
+  `M${x - 6 * s} ${y} Q ${x - 3 * s} ${y - 4 * s} ${x} ${y - 0.6 * s} Q ${x + 3 * s} ${y - 4 * s} ${x + 6 * s} ${y}`;
+
+// ── central visual: the WEATHER medallion (canvas: MoodSceneWeatherToned) —
+// the day over the bay, morphing along the mood ramp: storm & rain at Low,
+// the cloud thinning, the sun rising out of the sea for Good / Radiant. Ground
+// deepens along MOOD_TONES; content flips dark→paper as the disc darkens. ──
+function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
+  const uid = useId().replace(/:/g, '');
+  const seg = Math.min(3.999, Math.max(0, t * 4));
+  const si = Math.floor(seg);
+  const bg = mix(MTONE[si], MTONE[Math.min(4, si + 1)], seg - si);
+  const flip = smooth(t, 0.5, 0.72);
+  const fg = mix('#3B3A33', '#F7F6F1', flip);
+  const into = (o: number) => mix(bg, fg, o);
+
+  const sunOn = smooth(t, 0.55, 0.8);
+  const rain = 1 - smooth(t, 0.1, 0.42);
+  const bolt = 1 - smooth(t, 0.04, 0.16);
+  const cloudOp = 1 - smooth(t, 0.55, 0.78);
+  const amp = lerp(6.5, 2.2, t);
+  const sunX = lerp(124, 60, t);
+  const sunY = lerp(122, 52, t);
+
   return (
     <Svg width={size} height={size} viewBox="0 0 200 200">
       <Defs>
-        <RadialGradient id="ci-glow" cx="50%" cy="50%" r="50%">
-          <Stop offset="0%" stopColor={tone(0.22)} />
-          <Stop offset="100%" stopColor={tone(0)} />
+        <ClipPath id={`clip-${uid}`}>
+          <Circle cx={100} cy={100} r={96} />
+        </ClipPath>
+        <RadialGradient id={`glow-${uid}`} cx="50%" cy="50%" r="50%">
+          <Stop offset="0%" stopColor={fg} stopOpacity={0.8} />
+          <Stop offset="60%" stopColor={fg} stopOpacity={0.28} />
+          <Stop offset="100%" stopColor={fg} stopOpacity={0} />
         </RadialGradient>
       </Defs>
-      <Circle cx={100} cy={100} r={96} fill="url(#ci-glow)" />
-      {Array.from({ length: 8 }).map((_, i) => (
-        <Ellipse key={i} cx={100} cy={100 - offset} rx={rx} ry={ry} fill={tone(op)} transform={`rotate(${i * 45}, 100, 100)`} />
-      ))}
-      <Circle cx={100} cy={100} r={core} fill={tone(0.62)} />
+      <G clipPath={`url(#clip-${uid})`}>
+        <Rect width={200} height={200} fill={bg} />
+        {/* the sun climbing out of the sea as the day clears */}
+        <Circle cx={sunX} cy={sunY} r={lerp(26, 44, t)} fill={`url(#glow-${uid})`} opacity={sunOn * 0.55} />
+        <Circle cx={sunX} cy={sunY} r={lerp(11, 17, t)} fill={fg} opacity={sunOn} />
+        {/* far headland across the bay */}
+        <Path d="M18 128 L52 112 L90 128 Z" fill={into(0.42)} />
+        <Path d="M52 112 L90 128 L72 128 Z" fill={into(0.58)} />
+        {/* THE cloud — thins as the mood lifts, gone by Good; rain + bolt at the low end */}
+        <G opacity={cloudOp}>
+          <Path d="M86 80 A 12.5 12.5 0 0 1 90.5 57 A 15.5 15.5 0 0 1 118 46 A 14 14 0 0 1 144 50.5 A 12 12 0 0 1 163.5 62 A 10.5 10.5 0 0 1 165 80 Z" fill={into(0.88)} />
+          <Path d="M90 80 L162 80 C 160 84.5 154 87 146 87 L105 87 C 97 87 92 84.5 90 80 Z" fill={into(0.68)} />
+          <G stroke={into(0.7)} strokeWidth={2.1} strokeLinecap="round" opacity={rain}>
+            <Path d="M100 94 l-4 13 M120 96 l-4 13 M140 94 l-4 13 M110 110 l-3.4 11 M130 112 l-3.4 11 M150 108 l-3.4 11" />
+          </G>
+          <Path d="M126 86 L118 104 L125 104 L116 122 L132 102 L124 102 L132 86 Z" fill={fg} opacity={bolt} />
+        </G>
+        {/* the sea — three banded planes, choppy → glassy */}
+        <Path d={mBand(132, amp)} fill={into(0.16)} />
+        <Path d={mLine(132, amp)} stroke={into(0.6)} strokeWidth={2} strokeLinecap="round" fill="none" opacity={0.8} />
+        <G opacity={smooth(t, 0.62, 0.85) * 0.85}>
+          <Path d="M53 138 h14 M56 146 h10 M54 154 h8" stroke={fg} strokeWidth={2.6} strokeLinecap="round" />
+        </G>
+        <Path d={mBand(154, amp * 0.85)} fill={into(0.26)} />
+        <Path d={mLine(154, amp * 0.85)} stroke={into(0.6)} strokeWidth={1.8} strokeLinecap="round" fill="none" opacity={0.65} />
+        <Circle cx={54} cy={149} r={1.8} fill={into(0.7)} opacity={rain * 0.9} />
+        <Circle cx={74} cy={152} r={1.3} fill={into(0.7)} opacity={rain * 0.7} />
+        <Circle cx={142} cy={150} r={1.6} fill={into(0.7)} opacity={rain * 0.8} />
+        <Path d={mBand(176, amp * 0.7)} fill={into(0.36)} />
+        <Path d={mLine(176, amp * 0.7)} stroke={into(0.6)} strokeWidth={1.6} strokeLinecap="round" fill="none" opacity={0.55} />
+        {/* gulls return with the light */}
+        <Path d={gullPath(58, 96, 0.9)} stroke={fg} strokeWidth={1.7} strokeLinecap="round" fill="none" opacity={smooth(t, 0.55, 0.8) * 0.8} />
+        <Path d={gullPath(78, 86, 0.7)} stroke={fg} strokeWidth={1.3} strokeLinecap="round" fill="none" opacity={smooth(t, 0.64, 0.88) * 0.6} />
+      </G>
+      <Circle cx={100} cy={100} r={95.2} fill="none" stroke="rgba(0,0,0,0.07)" strokeWidth={1.6} />
     </Svg>
   );
 }
@@ -101,7 +173,7 @@ function Breathe({ children }: { children: React.ReactNode }) {
 }
 
 // ── draggable mood slider with a cool→warm track ────────────────────────────
-function MoodSlider({ value, onChange, vivid }: { value: number; onChange: (t: number) => void; vivid: boolean }) {
+function MoodSlider({ value, onChange }: { value: number; onChange: (t: number) => void }) {
   const width = useRef(0);
   const idx = moodIndex(value);
   const onLayout = (e: LayoutChangeEvent) => (width.current = e.nativeEvent.layout.width);
@@ -119,7 +191,7 @@ function MoodSlider({ value, onChange, vivid }: { value: number; onChange: (t: n
         onResponderMove={(e) => handle(e.nativeEvent.locationX)}
         style={{ height: 44, justifyContent: 'center' }}>
         <LinearGradient
-          colors={[moodTone(0, vivid)(0.9), moodTone(0.5, vivid)(0.9), moodTone(1, vivid)(0.9)]}
+          colors={[MTONE[0], MTONE[2], MTONE[4]]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={{ position: 'absolute', left: 0, right: 0, height: 6, borderRadius: 9999 }}
@@ -256,7 +328,6 @@ export default function CheckIn() {
   const router = useRouter();
   const today = useTodayCheckin();
   const upsert = useUpsertCheckin();
-  const vivid = false;
 
   const [step, setStep] = useState(0);
   const [value, setValue] = useState(0.5);
@@ -295,7 +366,7 @@ export default function CheckIn() {
             <CheckTop step={0} onBack={close} />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 6 }}>
               <Breathe>
-                <MoodBloom t={value} vivid={vivid} />
+                <MoodWeather t={value} />
               </Breathe>
               <AppText variant="hero" style={{ fontSize: 42, marginTop: 18 }}>
                 {mood.label}
@@ -305,7 +376,7 @@ export default function CheckIn() {
               </AppText>
             </View>
             <View style={{ paddingBottom: 8 }}>
-              <MoodSlider value={value} onChange={setValue} vivid={vivid} />
+              <MoodSlider value={value} onChange={setValue} />
             </View>
             <View style={{ paddingTop: 26, paddingBottom: spacing.sm }}>
               <ContinueBtn onPress={() => setStep(1)} />
@@ -371,7 +442,7 @@ export default function CheckIn() {
             <CheckTop step={2} onBack={close} />
             <ScrollView style={{ flex: 1 }} contentContainerStyle={{ alignItems: 'center', paddingTop: spacing.sm }} showsVerticalScrollIndicator={false}>
               <Breathe>
-                <MoodBloom t={value} vivid={vivid} size={150} />
+                <MoodWeather t={value} size={150} />
               </Breathe>
               <SectionLabel style={{ marginTop: 8 }}>Checked in</SectionLabel>
               <AppText variant="hero" center style={{ fontSize: 40, marginTop: 10 }}>

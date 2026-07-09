@@ -6,7 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 import { AppText, Button, Field } from '@/components/ui';
 import { AppleMark, AuthBtn, AuthHero, AuthStage, GoogleMark, LegalLine, MailMark, Wordmark } from '@/components/auth/kit';
 import { useAuth } from '@/lib/auth';
-import { colors, spacing } from '@/lib/theme';
+import { colors, fonts, spacing } from '@/lib/theme';
 
 type Mode = 'providers' | 'email' | 'verify';
 
@@ -76,7 +76,7 @@ export default function SignUp() {
         <BackRow onPress={() => setMode('email')} />
         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: spacing.lg }} keyboardShouldPersistTaps="handled">
           <View style={{ gap: spacing.sm }}>
-            <AppText weightOverride="700" color={colors.text} style={{ fontSize: 30, letterSpacing: -0.84 }}>
+            <AppText color={colors.text} style={{ fontFamily: fonts.serif, fontSize: 30, letterSpacing: 0.24 }}>
               Check your email
             </AppText>
             <AppText variant="muted" weightOverride="500" style={{ fontSize: 16, lineHeight: 23 }}>
@@ -116,7 +116,7 @@ export default function SignUp() {
         <BackRow onPress={() => setMode('providers')} />
         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: spacing.lg }} keyboardShouldPersistTaps="handled">
           <View style={{ gap: spacing.sm }}>
-            <AppText weightOverride="700" color={colors.text} style={{ fontSize: 30, letterSpacing: -0.84 }}>
+            <AppText color={colors.text} style={{ fontFamily: fonts.serif, fontSize: 30, letterSpacing: 0.24 }}>
               Start where you are
             </AppText>
             <AppText variant="muted" weightOverride="500" style={{ fontSize: 16, lineHeight: 23 }}>

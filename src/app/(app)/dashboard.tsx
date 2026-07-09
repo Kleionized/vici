@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
-import { View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import { Pressable, View } from 'react-native';
+import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { AppText, LoadingView, Screen, ScreenHeader } from '@/components/ui';
 import { SBoat, SC, SGull, SMoonF, SSun, scSmoothPath } from '@/components/scene/SceneKit';
@@ -88,6 +88,37 @@ export default function Dashboard() {
           title="Your patterns"
           trailing={<AppText style={[sans('500'), { fontSize: 14, color: colors.textSoft }]}>30 days</AppText>}
         />
+      </View>
+
+      {/* your mail — weekly reports + letters */}
+      <View style={{ paddingHorizontal: spacing.xl, marginTop: spacing.xs, marginBottom: spacing.lg }}>
+        <Pressable
+          onPress={() => router.push('/mail')}
+          accessibilityRole="button"
+          style={({ pressed }) => ({
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 14,
+            backgroundColor: colors.surface,
+            borderRadius: 16,
+            paddingVertical: 14,
+            paddingHorizontal: 16,
+            transform: [{ scale: pressed ? 0.99 : 1 }],
+          })}>
+          <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
+            <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
+              <Rect x={3} y={5} width={18} height={14} rx={2.4} stroke={colors.text} strokeWidth={1.8} />
+              <Path d="M4.5 7.5l7.5 5.5 7.5-5.5" stroke={colors.text} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+          </View>
+          <View style={{ flex: 1 }}>
+            <AppText style={[sans('600'), { fontSize: 15.5, color: colors.text }]}>Your mail</AppText>
+            <AppText style={[sans('400'), { fontSize: 13, color: colors.textMuted, marginTop: 1 }]}>Weekly reports & letters</AppText>
+          </View>
+          <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
+            <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+          </Svg>
+        </Pressable>
       </View>
 
       {/* the tide of you — full-bleed */}
@@ -209,10 +240,10 @@ function TideChart({ data }: { data: number[] }) {
       {/* the sea — three banded layers of the mood curve */}
       <Path d={area} fill={SC.waterHi} />
       <Path d={curve} stroke={SC.foam} strokeWidth={2.4} strokeLinecap="round" />
-      <Path d={area} fill={SC.water} translateY={20} />
-      <Path d={curve} stroke={SC.foam} strokeWidth={1.8} strokeLinecap="round" opacity={0.75} translateY={20} />
-      <Path d={area} fill={SC.waterLo} translateY={42} />
-      <Path d={curve} stroke={SC.foam} strokeWidth={1.6} strokeLinecap="round" opacity={0.5} translateY={42} />
+      <Path d={area} fill={SC.water} transform="translate(0 20)" />
+      <Path d={curve} stroke={SC.foam} strokeWidth={1.8} strokeLinecap="round" opacity={0.75} transform="translate(0 20)" />
+      <Path d={area} fill={SC.waterLo} transform="translate(0 42)" />
+      <Path d={curve} stroke={SC.foam} strokeWidth={1.6} strokeLinecap="round" opacity={0.5} transform="translate(0 42)" />
       {/* one reading per day riding the waterline */}
       {pts.map(([x, y], i) => (
         <Circle

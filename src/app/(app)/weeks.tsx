@@ -89,7 +89,7 @@ export default function Weeks() {
             marginBottom: 12,
             transform: [{ scale: pressed ? 0.985 : 1 }],
           })}>
-          <View style={{ width: 56, height: 44, borderRadius: 12, overflow: 'hidden', backgroundColor: colors.ink }}>
+          <View style={{ width: 56, height: 44, borderRadius: 12, overflow: 'hidden', backgroundColor: colors.bgDeep }}>
             <WorldArt scene={w.key} hue={w.hue} w={56} h={44} />
           </View>
           <View style={{ flex: 1 }}>
@@ -134,8 +134,11 @@ function GroundCard({ world, onPress }: { world: World; onPress: () => void }) {
         transform: [{ scale: pressed ? 0.985 : 1 }],
       })}>
       {/* the landscape — full-bleed, ghosted when locked */}
-      <View style={{ height: 128, backgroundColor: colors.ink, opacity: locked ? 0.38 : 1 }}>
-        <WorldArt scene={world.key} hue={world.hue} w={402} h={128} />
+      <View style={{ height: 150, overflow: 'hidden', backgroundColor: '#EFECE1', opacity: locked ? 0.5 : 1 }}>
+        {/* full scene, shifted up so the horizon/water band frames the card */}
+        <View style={{ position: 'absolute', left: 0, right: 0, top: -46, aspectRatio: 402 / 300 }}>
+          <WorldArt scene={world.key} fit="xMidYMid meet" />
+        </View>
         {done ? (
           <View
             style={{

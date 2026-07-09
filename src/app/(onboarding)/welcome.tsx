@@ -111,8 +111,11 @@ export default function Onboarding() {
         return <O3Name value={String(a.name || '')} onSet={(v) => set('name', v)} next={next} />;
       case 'question': {
         const [key, q] = O3_QUESTIONS[step.qi];
+        // key per question so each remounts — otherwise the shared O3Question
+        // instance keeps its local `picked` state and the next single-select
+        // can't be chosen or advanced (the "stuck on gender" bug).
         return (
-          <O3Question title={q.title} options={q.options} multi={q.multi} value={a[key]} onSet={(v) => set(key, v)} next={next} reflect={q.reflect} note={q.note} ctaLabel={q.ctaLabel} skip={q.skip} />
+          <O3Question key={key} title={q.title} options={q.options} multi={q.multi} value={a[key]} onSet={(v) => set(key, v)} next={next} reflect={q.reflect} note={q.note} ctaLabel={q.ctaLabel} skip={q.skip} />
         );
       }
       case 'streaks':
@@ -147,8 +150,9 @@ export default function Onboarding() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, a, i]);
 
-  // the wave owns the entire frame (its own shell + full-screen surf)
+  // the wave and the reading-pause own the entire frame (their own background)
   if (step.kind === 'wave') return <O3Wave next={next} />;
+  if (step.kind === 'pause') return <O3ReadingPause answers={a} next={next} />;
 
   return (
     <O3Shell progress={(i + 1) / STEPS.length} onBack={i > 0 ? back : null} bar={!NOBAR.has(step.id)} lit={lit}>

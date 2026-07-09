@@ -12,6 +12,12 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
+import { Platform } from 'react-native';
+
+// expo-secure-store has no web implementation, so on web the secure* helpers
+// would silently no-op and the session would be lost on every reload. Fall
+// back to AsyncStorage (localStorage-backed) on web to keep it usable.
+const WEB = Platform.OS === 'web';
 
 export async function getJSON<T>(key: string): Promise<T | null> {
   try {
@@ -40,7 +46,7 @@ export async function removeKey(key: string): Promise<void> {
 
 export async function secureGet(key: string): Promise<string | null> {
   try {
-    return await SecureStore.getItemAsync(key);
+    return WEB ? await AsyncStorage.getItem(key) : await SecureStore.getItemAsync(key);
   } catch {
     return null;
   }
@@ -48,7 +54,8 @@ export async function secureGet(key: string): Promise<string | null> {
 
 export async function secureSet(key: string, value: string): Promise<void> {
   try {
-    await SecureStore.setItemAsync(key, value);
+    if (WEB) await AsyncStorage.setItem(key, value);
+    else await SecureStore.setItemAsync(key, value);
   } catch {
     // ignore
   }
@@ -56,7 +63,8 @@ export async function secureSet(key: string, value: string): Promise<void> {
 
 export async function secureDelete(key: string): Promise<void> {
   try {
-    await SecureStore.deleteItemAsync(key);
+    if (WEB) await AsyncStorage.removeItem(key);
+    else await SecureStore.deleteItemAsync(key);
   } catch {
     // ignore
   }

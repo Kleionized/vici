@@ -4,10 +4,12 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Card, Glyph, Illo, LoadingView, SectionLabel } from '@/components/ui';
+import { AppText, Card, Glyph, LoadingView, SectionLabel } from '@/components/ui';
+import { WorldArt } from '@/components/journey/WorldArt';
 import { CATEGORY_LABEL } from '@/lib/labels';
 import { useCurrentLesson, useLessonProgressMap, useLessons } from '@/lib/backend';
 import { colors, spacing } from '@/lib/theme';
+import { WORLDS } from '@/lib/worlds';
 
 export default function WeekRoadmap() {
   const router = useRouter();
@@ -27,6 +29,7 @@ export default function WeekRoadmap() {
   }
 
   const weekNum = week ? Number(week) : (current?.lesson.week ?? 1);
+  const worldKey = WORLDS.find((w) => w.n === weekNum)?.key ?? 'shore';
   const weekLessons = lessons.filter((l) => l.week === weekNum).sort((a, b) => a.orderIndex - b.orderIndex);
   const done = weekLessons.filter((l) => progress[l.slug]?.status === 'completed').length;
   const theme = weekLessons[0] ? CATEGORY_LABEL[weekLessons[0].category].toLowerCase() : `week ${weekNum}`;
@@ -37,7 +40,12 @@ export default function WeekRoadmap() {
       <StatusBar style="dark" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
-          {Illo.crest(colors.text, { w: 402, h: 150, light: colors.bg })}
+          {/* the world's own landscape as the hub header */}
+          <View style={{ height: 150, overflow: 'hidden', backgroundColor: '#EFECE1' }}>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: -46, aspectRatio: 402 / 300 }}>
+              <WorldArt scene={worldKey} fit="xMidYMid meet" />
+            </View>
+          </View>
           <SafeAreaView edges={['top']} style={{ position: 'absolute', top: 0, left: 22 }}>
             <Pressable onPress={back} hitSlop={10} accessibilityLabel="Close" style={{ paddingTop: spacing.sm }}>
               <Svg width={20} height={20} viewBox="0 0 20 20">

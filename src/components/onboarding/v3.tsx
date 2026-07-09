@@ -244,7 +244,6 @@ export function O3Question({
   multi = false,
   onSet,
   next,
-  reflect,
   note,
   ctaLabel,
   skip,
@@ -262,7 +261,6 @@ export function O3Question({
   skip?: boolean;
 }) {
   const [picked, setPicked] = useState<string | null>(null);
-  const [showR, setShowR] = useState(false);
 
   const pick = (label: string) => {
     if (multi) {
@@ -273,17 +271,10 @@ export function O3Question({
     if (picked) return;
     onSet(label);
     setPicked(label);
-    const r = reflect ? reflect(label) : null;
-    if (r) {
-      setTimeout(() => setShowR(true), 260);
-      setTimeout(next, 2050);
-    } else {
-      setTimeout(next, 560);
-    }
+    setTimeout(next, 500);
   };
 
   const count = multi ? ((value as string[]) || []).length : 0;
-  const rLine = multi ? (count > 0 && reflect ? reflect(value as string[]) : null) : showR && reflect ? reflect(picked as string) : null;
 
   return (
     <>
@@ -301,9 +292,8 @@ export function O3Question({
           />
         ))}
       </ScrollView>
-      <View style={{ paddingTop: 14, minHeight: multi ? 0 : 86, justifyContent: 'flex-end' }}>
-        {rLine ? <O3Reflect style={{ marginBottom: multi ? 18 : 6 }}>{rLine}</O3Reflect> : null}
-        {note && !rLine ? <O3Note style={{ marginBottom: multi ? 13 : 6 }}>{note}</O3Note> : null}
+      <View style={{ paddingTop: 14, minHeight: multi ? 0 : 44, justifyContent: 'flex-end' }}>
+        {note ? <O3Note style={{ marginBottom: multi ? 13 : 6 }}>{note}</O3Note> : null}
         {multi ? <O3CTA label={ctaLabel || 'Continue'} enabled={count > 0} onClick={next} /> : null}
         {skip && !picked ? <O3CTA ghost label="Skip" onClick={next} /> : null}
       </View>
@@ -389,16 +379,6 @@ const ARRIVAL: [string, string][] = [
   ["I'm ready to be done with it", 'resolved'],
   ["I'm not sure it's a problem yet", 'curious'],
 ];
-const ARRIVAL_REFLECT: Record<string, string> = {
-  relapsed: 'Then you came at the hardest hour. That counts for something.',
-  cycling: 'Wanting it badly was never the missing piece. A method is.',
-  resolved: 'Good. Resolve cools — we will set it in ink before it does.',
-  curious: 'A fair question. The next few minutes answer it plainly.',
-};
-function register(arr: string[]): string {
-  for (const r of ['relapsed', 'cycling', 'resolved', 'curious']) if (arr.includes(r)) return r;
-  return 'resolved';
-}
 export function O3Door({ value, onSet, next }: { value: string[]; onSet: (v: string[]) => void; next: () => void }) {
   const sel = value || [];
   const toggle = (k: string) => onSet(sel.includes(k) ? sel.filter((x) => x !== k) : [...sel, k]);
@@ -413,7 +393,6 @@ export function O3Door({ value, onSet, next }: { value: string[]; onSet: (v: str
         ))}
       </View>
       <View style={{ paddingTop: 14 }}>
-        {sel.length ? <O3Reflect style={{ marginBottom: 18 }}>{ARRIVAL_REFLECT[register(sel)]}</O3Reflect> : null}
         <O3CTA label="Continue" enabled={sel.length > 0} onClick={next} />
       </View>
     </>
@@ -503,33 +482,81 @@ export function O3Streaks({ next }: { next: () => void }) {
   );
 }
 
-// ── the reading pause ────────────────────────────────────────────────
+// ── the reading pause — a long, slow "calculating" reveal: the funnel's
+// night ground gathers light and breaks to paper exactly as the reading
+// is ready (full-screen; owns its own background, like the wave). ──────
 export function O3ReadingPause({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
   const t = (answers.triggers as string[]) || [];
   const l1 = t.length ? `${t.slice(0, 2).map((x) => x.toLowerCase()).join(', ')} — mostly.` : 'The pattern, plainly.';
   const durMap: Record<string, string> = { 'Under a year': 'Under a year', 'A few years': 'A few years', 'Most of a decade': 'Most of a decade', 'Most of my life': 'Most of a life' };
   const attMap: Record<string, string> = { "I've lost count": 'more attempts than you counted', 'Several times': 'several attempts', 'Once or twice': 'two attempts', 'Never, seriously': 'a first attempt' };
   const l2 = `${durMap[answers.duration as string] || 'Years'}. And ${attMap[answers.attempts as string] || 'past attempts'}.`;
+
+  const p = useRef(new Animated.Value(0)).current;
   useEffect(() => {
-    const id = setTimeout(next, 3000);
+    Animated.timing(p, { toValue: 1, duration: 6600, easing: Easing.inOut(Easing.quad), useNativeDriver: false }).start();
+    const id = setTimeout(next, 7400);
     return () => clearTimeout(id);
-  }, [next]);
+  }, [next, p]);
+
+  // night → warm dusk → paper, gathered gradually then resolving at the end
+  const bg = p.interpolate({
+    inputRange: [0, 0.35, 0.65, 0.85, 1],
+    outputRange: [NIGHT.bg, '#141310', '#3C382E', '#8C887B', PAPER.bg],
+  });
+  const glowOp = p.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 0.35, 0.7, 0] });
+  const titleLightOp = p.interpolate({ inputRange: [0, 0.6, 0.82], outputRange: [1, 1, 0] });
+  const titleDarkOp = p.interpolate({ inputRange: [0.62, 0.92], outputRange: [0, 1] });
+  const waveOp = p.interpolate({ inputRange: [0, 0.5, 0.68], outputRange: [0.7, 0.7, 0] });
+  const lineOp = (a: number) => p.interpolate({ inputRange: [a, a + 0.12, 0.5, 0.64], outputRange: [0, 1, 1, 0] });
+  const lineY = (a: number) => p.interpolate({ inputRange: [a, a + 0.12], outputRange: [8, 0], extrapolate: 'clamp' });
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 40 }}>
-      <Svg width={52} height={26} viewBox="0 0 52 26" fill="none" style={{ marginBottom: 26, opacity: 0.75 }}>
-        <Path d="M3 17 C 10 7 17 7 26 13 S 43 20 49 10" stroke={tone.ink} strokeWidth={2} strokeLinecap="round" />
-      </Svg>
-      <O3H size={24}>Reading your answers…</O3H>
-      <View style={{ marginTop: 24, gap: 10 }}>
-        <Rise delay={0.7}>
-          <AppText style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: tone.ink2 }}>{l1}</AppText>
-        </Rise>
-        <Rise delay={1.6}>
-          <AppText style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: tone.ink2 }}>{l2}</AppText>
-        </Rise>
+    <Animated.View style={{ flex: 1, backgroundColor: bg }}>
+      {/* the light gathering low */}
+      <Animated.View pointerEvents="none" style={{ position: 'absolute', left: -60, right: -60, bottom: -80, height: 360, opacity: glowOp }}>
+        <Svg width="100%" height="100%">
+          <Defs>
+            <RadialGradient id="pauseGlow" cx="50%" cy="100%" rx="72%" ry="72%">
+              <Stop offset="0%" stopColor="#E8DCC2" stopOpacity={0.95} />
+              <Stop offset="100%" stopColor="#E8DCC2" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Rect width="100%" height="100%" fill="url(#pauseGlow)" />
+        </Svg>
+      </Animated.View>
+
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 26, paddingBottom: 40 }}>
+        <Animated.View style={{ marginBottom: 26, opacity: waveOp }}>
+          <Svg width={52} height={26} viewBox="0 0 52 26" fill="none">
+            <Path d="M3 17 C 10 7 17 7 26 13 S 43 20 49 10" stroke="#9C9C92" strokeWidth={2} strokeLinecap="round" />
+          </Svg>
+        </Animated.View>
+
+        {/* the title crossfades from light-on-night to ink-on-paper */}
+        <View style={{ height: 30, justifyContent: 'center' }}>
+          <Animated.Text
+            style={{ position: 'absolute', alignSelf: 'center', width: 300, textAlign: 'center', fontFamily: fonts.serif, fontSize: 24, color: NIGHT.ink, opacity: titleLightOp }}>
+            Reading your answers…
+          </Animated.Text>
+          <Animated.Text
+            style={{ position: 'absolute', alignSelf: 'center', width: 300, textAlign: 'center', fontFamily: fonts.serif, fontSize: 24, color: PAPER.ink, opacity: titleDarkOp }}>
+            Reading your answers…
+          </Animated.Text>
+        </View>
+
+        <View style={{ marginTop: 24, gap: 10, alignItems: 'center' }}>
+          <Animated.Text
+            style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.1), transform: [{ translateY: lineY(0.1) }] }}>
+            {l1}
+          </Animated.Text>
+          <Animated.Text
+            style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.26), transform: [{ translateY: lineY(0.26) }] }}>
+            {l2}
+          </Animated.Text>
+        </View>
       </View>
-    </View>
+    </Animated.View>
   );
 }
 
