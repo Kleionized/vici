@@ -16,6 +16,8 @@ import type {
   DailyCheckin,
   DailyCheckinInput,
   DashboardData,
+  JournalEntry,
+  JournalEntryInput,
   Lesson,
   LessonProgress,
   LifeMap,
@@ -34,6 +36,12 @@ const R = {
   ensureUser: mref('users:ensureUser'),
   completeOnboarding: mref('users:completeOnboarding'),
   updateSettings: mref('users:updateSettings'),
+  updateProfile: mref('users:updateProfile'),
+
+  journalList: qref<JournalEntry[]>('journal:list'),
+  journalCreate: mref<JournalEntry>('journal:create'),
+  journalUpdate: mref('journal:update'),
+  journalRemove: mref('journal:remove'),
 
   lessonsList: qref<Lesson[]>('lessons:list'),
   lessonsProgress: qref<LessonProgress[]>('lessons:progress'),
@@ -103,7 +111,31 @@ export function useDashboard(): DashboardData | undefined {
   return orUndef(useQuery(R.dashboardGet, {}));
 }
 
+export function useJournalEntries(): JournalEntry[] | undefined {
+  return useQuery(R.journalList, {});
+}
+
 // ---------- mutations ----------
+
+export function useUpdateProfile() {
+  const fn = useMutation(R.updateProfile);
+  return (displayName: string) => fn({ displayName });
+}
+
+export function useCreateJournalEntry() {
+  const fn = useMutation(R.journalCreate);
+  return (input: JournalEntryInput) => fn({ ...input }) as Promise<JournalEntry>;
+}
+
+export function useUpdateJournalEntry() {
+  const fn = useMutation(R.journalUpdate);
+  return (id: string, input: JournalEntryInput) => fn({ id, ...input });
+}
+
+export function useDeleteJournalEntry() {
+  const fn = useMutation(R.journalRemove);
+  return (id: string) => fn({ id });
+}
 
 /** Called by the Convex bootstrap to mirror the Clerk user into Convex. */
 export function useEnsureUser() {

@@ -2,6 +2,7 @@ import { ActivityIndicator, Pressable, View, type StyleProp, type ViewStyle } fr
 
 import { colors, radius, spacing, weight } from '@/lib/theme';
 import { AppText } from './AppText';
+import { useOnInk } from './surface';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 
@@ -24,12 +25,25 @@ export function Button({
   fullWidth = true,
   style,
 }: ButtonProps) {
-  const isPrimary = variant === 'primary';
-  const isSecondary = variant === 'secondary';
+  const onInk = useOnInk();
   const inactive = disabled || loading;
 
-  const bg = isPrimary ? colors.accent : 'transparent';
-  const labelColor = isPrimary ? colors.accentText : colors.text;
+  // Resolve background / border / label colour for the (variant × surface) pair.
+  // On ink, the primary action inverts to a light pill with dark text — the
+  // Stoic "white pill on black" treatment.
+  let bg: string = 'transparent';
+  let labelColor: string = onInk ? colors.inkText : colors.text;
+  let borderColor: string = 'transparent';
+  let borderWidth = 0;
+
+  if (variant === 'primary') {
+    bg = onInk ? colors.inkText : colors.accent;
+    labelColor = onInk ? colors.ink : colors.accentText;
+  } else if (variant === 'secondary') {
+    borderWidth = 1;
+    borderColor = onInk ? colors.inkBorder : colors.borderStrong;
+    labelColor = onInk ? colors.inkText : colors.text;
+  }
 
   return (
     <Pressable
@@ -39,15 +53,15 @@ export function Button({
       onPress={onPress}
       style={({ pressed }) => [
         {
-          paddingVertical: spacing.md + 2,
+          paddingVertical: spacing.lg,
           paddingHorizontal: spacing.xl,
           borderRadius: radius.pill,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: bg,
-          borderWidth: isSecondary ? 1 : 0,
-          borderColor: colors.borderStrong,
-          opacity: inactive ? 0.45 : pressed ? 0.85 : 1,
+          borderWidth,
+          borderColor,
+          opacity: inactive ? 0.4 : pressed ? 0.85 : 1,
         },
         fullWidth ? { alignSelf: 'stretch' } : { alignSelf: 'flex-start' },
         style,
@@ -56,7 +70,8 @@ export function Button({
         <ActivityIndicator color={labelColor} />
       ) : (
         <View>
-          <AppText color={labelColor} weightOverride={weight.semibold}>
+          {/* iOS-spec primary action: 17pt semibold with tight optical tracking. */}
+          <AppText color={labelColor} weightOverride={weight.semibold} style={{ fontSize: 17, letterSpacing: -0.24 }}>
             {label}
           </AppText>
         </View>

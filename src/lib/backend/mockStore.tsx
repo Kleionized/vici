@@ -25,6 +25,8 @@ import {
   type AppUser,
   type DailyCheckin,
   type DailyCheckinInput,
+  type JournalEntry,
+  type JournalEntryInput,
   type Lesson,
   type LessonProgress,
   type LifeMap,
@@ -41,6 +43,7 @@ export interface UserData {
   lifeMap: LifeMap;
   events: TidelineEvent[];
   checkins: Record<string, DailyCheckin>;
+  journalEntries: JournalEntry[];
 }
 
 interface MockStoreValue {
@@ -49,12 +52,16 @@ interface MockStoreValue {
   data: UserData | null;
   completeOnboarding(): Promise<void>;
   updateSettings(partial: Partial<UserSettings>): Promise<void>;
+  updateProfile(displayName: string): Promise<void>;
   startLesson(slug: string): Promise<void>;
   completeLesson(slug: string, fitsMeRating?: number): Promise<void>;
   saveReflection(slug: string, answers: Record<string, string | number>): Promise<void>;
   updateLifeMap(partial: Partial<Omit<LifeMap, 'userId' | 'updatedAt'>>): Promise<void>;
   createEvent(input: TidelineEventInput): Promise<void>;
   upsertCheckin(input: DailyCheckinInput): Promise<void>;
+  createJournalEntry(input: JournalEntryInput): Promise<JournalEntry>;
+  updateJournalEntry(id: string, input: JournalEntryInput): Promise<void>;
+  deleteJournalEntry(id: string): Promise<void>;
 }
 
 const MockStoreContext = createContext<MockStoreValue | null>(null);
@@ -76,7 +83,13 @@ function freshUserData(userId: string, displayName: string | null): UserData {
     lifeMap: { userId, values: [], updatedAt: now },
     events: [],
     checkins: {},
+    journalEntries: [],
   };
+}
+
+/** Backfill fields added after a user's data was first persisted. */
+function normalize(data: UserData): UserData {
+  return { ...data, journalEntries: data.journalEntries ?? [] };
 }
 
 export function MockStoreProvider({ children }: { children: ReactNode }) {
@@ -98,7 +111,7 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
       }
       setHydrated(false);
       const existing = await getJSON<UserData>(dataKey(userId));
-      const next = existing ?? freshUserData(userId, displayName);
+      const next = existing ? normalize(existing) : freshUserData(userId, displayName);
       if (cancelled) return;
       dataRef.current = next;
       setData(next);
@@ -204,6 +217,8 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
         whatHelped: input.whatHelped,
         lesson: input.lesson,
         note: input.note,
+        severity: input.severity,
+        reopens: input.reopens,
       };
       await apply({ ...cur, events: [...cur.events, event] });
     },
@@ -222,6 +237,8 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
         date,
         sleepHours: input.sleepHours,
         mood: input.mood,
+        emotions: input.emotions,
+        reasons: input.reasons,
         movedBody: input.movedBody,
         socialContact: input.socialContact,
         structureFollowed: input.structureFollowed,
@@ -232,18 +249,69 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     [apply],
   );
 
+  const updateProfile = useCallback(
+    async (displayName: string) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      await apply({ ...cur, user: { ...cur.user, displayName: displayName.trim() || undefined } });
+    },
+    [apply],
+  );
+
+  const createJournalEntry = useCallback(
+    async (input: JournalEntryInput) => {
+      const cur = dataRef.current;
+      const now = Date.now();
+      const entry: JournalEntry = {
+        _id: genId('jrn'),
+        userId: cur?.user.clerkUserId ?? '',
+        createdAt: now,
+        updatedAt: now,
+        tag: input.tag,
+        title: input.title,
+        body: input.body,
+      };
+      if (cur) await apply({ ...cur, journalEntries: [entry, ...cur.journalEntries] });
+      return entry;
+    },
+    [apply],
+  );
+
+  const updateJournalEntry = useCallback(
+    async (id: string, input: JournalEntryInput) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      const journalEntries = cur.journalEntries.map((e) => (e._id === id ? { ...e, ...input, updatedAt: Date.now() } : e));
+      await apply({ ...cur, journalEntries });
+    },
+    [apply],
+  );
+
+  const deleteJournalEntry = useCallback(
+    async (id: string) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      await apply({ ...cur, journalEntries: cur.journalEntries.filter((e) => e._id !== id) });
+    },
+    [apply],
+  );
+
   const value: MockStoreValue = {
     hydrated,
     lessons: SEED_LESSONS,
     data,
     completeOnboarding,
     updateSettings,
+    updateProfile,
     startLesson,
     completeLesson,
     saveReflection,
     updateLifeMap,
     createEvent,
     upsertCheckin,
+    createJournalEntry,
+    updateJournalEntry,
+    deleteJournalEntry,
   };
 
   return <MockStoreContext.Provider value={value}>{children}</MockStoreContext.Provider>;

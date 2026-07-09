@@ -24,8 +24,13 @@ export const useEvents = impl.useEvents;
 export const useCheckins = impl.useCheckins;
 export const useTodayCheckin = impl.useTodayCheckin;
 export const useDashboard = impl.useDashboard;
+export const useJournalEntries = impl.useJournalEntries;
 
 export const useCompleteOnboarding = impl.useCompleteOnboarding;
+export const useUpdateProfile = impl.useUpdateProfile;
+export const useCreateJournalEntry = impl.useCreateJournalEntry;
+export const useUpdateJournalEntry = impl.useUpdateJournalEntry;
+export const useDeleteJournalEntry = impl.useDeleteJournalEntry;
 export const useUpdateSettings = impl.useUpdateSettings;
 export const useStartLesson = impl.useStartLesson;
 export const useCompleteLesson = impl.useCompleteLesson;

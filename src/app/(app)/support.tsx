@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Linking, Pressable, View } from 'react-native';
 
-import { AppText, Button, Card, Screen } from '@/components/ui';
+import { AppText, Button, Card, Header, Screen } from '@/components/ui';
 import { colors, spacing } from '@/lib/theme';
 
 /**
@@ -28,14 +28,11 @@ export default function Support() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.lg }}>
-      <View style={{ gap: spacing.sm }}>
-        <AppText variant="label">Support</AppText>
-        <AppText variant="display">You&apos;re not alone in this.</AppText>
-        <AppText variant="muted">
-          Tideline is a self-help tool, not medical advice or a crisis service. If you&apos;re in danger or
-          thinking about harming yourself, please reach out to a real person now.
-        </AppText>
-      </View>
+      <Header
+        eyebrow="Support"
+        title="You're not alone in this."
+        subtitle="Tideline is a self-help tool, not medical advice or a crisis service. If you're in danger or thinking about harming yourself, please reach out to a real person now."
+      />
 
       {PLACEHOLDER_RESOURCES.map((r) => (
         <Card key={r.name} style={{ backgroundColor: colors.surfaceAlt }}>

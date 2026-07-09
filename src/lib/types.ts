@@ -134,6 +134,10 @@ export interface TidelineEvent {
   /** "what this taught me" — primarily for lapse events. */
   lesson?: string;
   note?: string;
+  /** Peak urge severity (1–10) for urge events. */
+  severity?: number;
+  /** How many times the app was reopened during the same urge (severe flow). */
+  reopens?: number;
 }
 
 export type TidelineEventInput = Omit<TidelineEvent, '_id' | 'userId' | 'createdAt'> & {
@@ -146,7 +150,10 @@ export interface DailyCheckin {
   userId: string;
   date: string; // YYYY-MM-DD
   sleepHours?: number;
-  mood?: number; // 1–5
+  mood?: number; // 1–5 (pleasantness)
+  /** Apple-style mood logging: the feeling words + what's driving them. */
+  emotions?: string[];
+  reasons?: string[];
   movedBody?: boolean;
   socialContact?: boolean;
   structureFollowed?: boolean;
@@ -155,11 +162,37 @@ export interface DailyCheckin {
 
 export type DailyCheckinInput = Omit<DailyCheckin, '_id' | 'userId'>;
 
+/** A free-form journal entry. Matches the `journalEntries` table. */
+export interface JournalEntry {
+  _id: string;
+  userId: string;
+  createdAt: number;
+  updatedAt: number;
+  /** Reflection | Urge | Lesson — a light category, not the structured Log. */
+  tag: string;
+  title: string;
+  body: string;
+}
+
+export type JournalEntryInput = { tag: string; title: string; body: string };
+
 export interface UserSettings {
   /** Off by default — a streak is opt-in and secondary, never the hero (invariant #1). */
   showStreak: boolean;
   reminderTime?: string;
   theme?: string;
+  /** Premium entitlement (RevenueCat later; a local flag for now). */
+  premium?: boolean;
+  // Notification preferences (reminders screen)
+  morningCheckin?: boolean;
+  riskTimeSupport?: boolean;
+  eveningWindDown?: boolean;
+  weeklyReflection?: boolean;
+  // App-lock & privacy preferences
+  appLockFaceId?: boolean;
+  appLockOnLeave?: boolean;
+  hideSensitivePreviews?: boolean;
+  pauseAnalytics?: boolean;
 }
 
 /** Matches the `users` table. */

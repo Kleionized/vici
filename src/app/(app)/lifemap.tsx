@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
 
-import { AppText, Button, Field, LoadingView, Screen, SectionLabel } from '@/components/ui';
+import { AppText, Button, Field, Header, LoadingView, Screen, SectionLabel } from '@/components/ui';
 import { useLifeMap, useUpdateLifeMap } from '@/lib/backend';
 import { colors, radius, spacing, weight } from '@/lib/theme';
 
@@ -73,13 +73,12 @@ export default function LifeMapScreen() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.xl }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <AppText variant="display">Life Map</AppText>
-        <Pressable onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))} hitSlop={8}>
-          <AppText variant="soft">Done</AppText>
-        </Pressable>
-      </View>
-      <AppText variant="muted">Your anchor. The app brings this back to you when it helps.</AppText>
+      <Header
+        title="Life Map"
+        subtitle="Your anchor. The app brings this back to you when it helps."
+        actionLabel="Done"
+        onAction={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
+      />
 
       <Field label="Why you're here" value={why} onChangeText={setWhy} placeholder="In your own words…" multiline />
       <Field
@@ -103,7 +102,7 @@ export default function LifeMapScreen() {
                   paddingHorizontal: spacing.lg,
                   paddingVertical: spacing.sm + 2,
                   borderRadius: radius.pill,
-                  backgroundColor: on ? colors.accent : colors.surfaceAlt,
+                  backgroundColor: on ? colors.accent : colors.surface,
                   borderWidth: 1,
                   borderColor: on ? colors.accent : colors.border,
                 }}>

@@ -1,39 +1,52 @@
-import { Redirect, Tabs } from 'expo-router';
-import type { ColorValue } from 'react-native';
+import { Redirect, Tabs, useRouter } from 'expo-router';
+import { useEffect, useRef } from 'react';
 
-import { TabIcon } from '@/components/TabIcon';
+import { StoicTabBar } from '@/components/StoicTabBar';
 import { useAuth } from '@/lib/auth';
 import { useCurrentUser } from '@/lib/backend';
-import { colors } from '@/lib/theme';
+import { getJSON, setJSON } from '@/lib/storage';
+import { loadUrgeSession } from '@/lib/urgeSession';
+
+const CHECKIN_PROMPT_KEY = 'tideline.checkinPromptAt';
+const HOUR = 60 * 60 * 1000;
 
 export default function AppLayout() {
   const { isLoaded, isSignedIn } = useAuth();
   const user = useCurrentUser();
+  const router = useRouter();
+  const prompted = useRef(false);
+
+  // On launch — and then at most once per hour — surface the mood check-in.
+  useEffect(() => {
+    if (prompted.current || !user?.onboardingComplete) return;
+    prompted.current = true;
+    (async () => {
+      // Mid-urge reopens go back to the urge flow, never the mood prompt.
+      if (await loadUrgeSession()) return;
+      const last = await getJSON<number>(CHECKIN_PROMPT_KEY);
+      if (!last || Date.now() - last > HOUR) {
+        await setJSON(CHECKIN_PROMPT_KEY, Date.now());
+        router.push('/checkin');
+      }
+    })();
+  }, [user?.onboardingComplete, router]);
 
   if (isLoaded && !isSignedIn) return <Redirect href="/" />;
   if (user && !user.onboardingComplete) return <Redirect href="/(onboarding)/welcome" />;
 
-  const tabBarIcon = ({ color, focused }: { color: ColorValue; focused: boolean }) => (
-    <TabIcon color={color} focused={focused} />
-  );
-
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.text,
-        tabBarInactiveTintColor: colors.textSofter,
-        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-      }}>
-      <Tabs.Screen name="today" options={{ title: 'Today', tabBarIcon }} />
-      <Tabs.Screen name="weeks" options={{ title: 'Weeks', tabBarIcon }} />
-      <Tabs.Screen name="urge" options={{ title: 'Urge', tabBarIcon }} />
-      <Tabs.Screen name="log" options={{ title: 'Log', tabBarIcon }} />
-      <Tabs.Screen name="dashboard" options={{ title: 'You', tabBarIcon }} />
-      {/* Reachable via navigation but hidden from the tab bar. */}
+    <Tabs screenOptions={{ headerShown: false }} tabBar={() => <StoicTabBar />}>
+      <Tabs.Screen name="today" />
+      <Tabs.Screen name="weeks" />
+      <Tabs.Screen name="log" />
+      <Tabs.Screen name="dashboard" />
+      {/* Reachable via navigation but not shown in the tab bar. */}
       <Tabs.Screen name="lifemap" options={{ href: null }} />
       <Tabs.Screen name="settings" options={{ href: null }} />
       <Tabs.Screen name="support" options={{ href: null }} />
+      <Tabs.Screen name="locked" options={{ href: null }} />
+      <Tabs.Screen name="journal" options={{ href: null }} />
+      <Tabs.Screen name="milestones" options={{ href: null }} />
     </Tabs>
   );
 }

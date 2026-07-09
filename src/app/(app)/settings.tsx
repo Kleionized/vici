@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
-import { AppText, Button, Card, Divider, Field, LoadingView, Screen, SectionLabel, ToggleRow } from '@/components/ui';
+import { AppText, Button, Card, Divider, Field, Header, LoadingView, Screen, SectionLabel, ToggleRow } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { BACKEND_MODE, useCurrentUser, useUpdateSettings } from '@/lib/backend';
 import { spacing } from '@/lib/theme';
@@ -30,12 +30,11 @@ export default function Settings() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.xl }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <AppText variant="display">Settings</AppText>
-        <Pressable onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))} hitSlop={8}>
-          <AppText variant="soft">Done</AppText>
-        </Pressable>
-      </View>
+      <Header
+        title="Settings"
+        actionLabel="Done"
+        onAction={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
+      />
 
       <View style={{ gap: spacing.sm }}>
         <SectionLabel>Progress</SectionLabel>
@@ -71,6 +70,32 @@ export default function Settings() {
             setReminderSaved(true);
           }}
         />
+      </View>
+
+      <View style={{ gap: spacing.sm }}>
+        <SectionLabel>Quick access</SectionLabel>
+        <Button label="Open urge surf with a Back Tap" variant="secondary" onPress={() => router.push('/backtap')} />
+      </View>
+
+      <View style={{ gap: spacing.sm }}>
+        <SectionLabel>Membership</SectionLabel>
+        <Button label="Go premium" variant="secondary" onPress={() => router.push('/paywall')} />
+        <Button label="Manage subscription" variant="secondary" onPress={() => router.push('/subscription')} />
+      </View>
+
+      <View style={{ gap: spacing.sm }}>
+        <SectionLabel>Account &amp; privacy</SectionLabel>
+        <Button label="Edit profile" variant="secondary" onPress={() => router.push('/profile')} />
+        <Button label="Notifications &amp; reminders" variant="secondary" onPress={() => router.push('/reminders')} />
+        <Button label="App lock · Face ID" variant="secondary" onPress={() => router.push('/applock')} />
+        <Button label="Data &amp; privacy" variant="secondary" onPress={() => router.push('/privacy')} />
+      </View>
+
+      <View style={{ gap: spacing.sm }}>
+        <SectionLabel>Explore</SectionLabel>
+        <Button label="Journal" variant="secondary" onPress={() => router.push('/journal')} />
+        <Button label="Milestones" variant="secondary" onPress={() => router.push('/milestones')} />
+        <Button label="Search the library" variant="secondary" onPress={() => router.push('/search')} />
       </View>
 
       <View style={{ gap: spacing.sm }}>

@@ -22,6 +22,8 @@ interface MockUserRecord {
   displayName?: string;
 }
 
+export type SSOStrategy = 'oauth_apple' | 'oauth_google';
+
 export interface AuthValue {
   isLoaded: boolean;
   isSignedIn: boolean;
@@ -29,7 +31,18 @@ export interface AuthValue {
   displayName: string | null;
   email: string | null;
   mode: 'mock' | 'clerk';
-  signInWithPassword(email: string, password: string): Promise<{ ok: boolean; error?: string }>;
+  /**
+   * Password sign-in. `needsVerification` means the password was accepted but
+   * the instance requires an emailed code to finish (Clerk MFA / device
+   * verification) — complete it with `verifySignInCode`.
+   */
+  signInWithPassword(email: string, password: string): Promise<{ ok: boolean; error?: string; needsVerification?: boolean }>;
+  /** Complete a sign-in that required an email code (Clerk). No-op for mock. */
+  verifySignInCode(code: string): Promise<{ ok: boolean; error?: string }>;
+  /** Re-send the sign-in email code (Clerk). No-op for mock. */
+  resendSignInCode(): Promise<{ ok: boolean; error?: string }>;
+  /** Apple / Google single sign-on (Clerk `useSSO`). Unavailable offline. */
+  signInWithSSO(strategy: SSOStrategy): Promise<{ ok: boolean; error?: string }>;
   signUpWithPassword(
     email: string,
     password: string,
@@ -123,7 +136,10 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       mode: 'mock',
       signInWithPassword,
       signUpWithPassword,
-      // Mock sign-up never needs verification, so these are no-ops.
+      // Mock auth never needs verification and has no SSO, so these are no-ops.
+      verifySignInCode: async () => ({ ok: true }),
+      resendSignInCode: async () => ({ ok: true }),
+      signInWithSSO: async () => ({ ok: false, error: 'Apple & Google sign-in need the online build — use email for now.' }),
       verifyEmailCode: async () => ({ ok: true }),
       resendEmailCode: async () => ({ ok: true }),
       signOut,

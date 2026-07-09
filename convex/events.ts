@@ -25,6 +25,8 @@ export const create = mutation({
     whatHelped: v.optional(v.string()),
     lesson: v.optional(v.string()),
     note: v.optional(v.string()),
+    severity: v.optional(v.number()),
+    reopens: v.optional(v.number()),
     createdAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
@@ -38,6 +40,8 @@ export const create = mutation({
       whatHelped: args.whatHelped,
       lesson: args.lesson,
       note: args.note,
+      severity: args.severity,
+      reopens: args.reopens,
     });
   },
 });

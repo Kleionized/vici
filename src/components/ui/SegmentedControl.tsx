@@ -19,7 +19,9 @@ export function SegmentedControl<T extends string>({ options, value, onChange }:
     <View
       style={{
         flexDirection: 'row',
-        backgroundColor: colors.surfaceAlt,
+        backgroundColor: colors.surface,
+        borderWidth: 1,
+        borderColor: colors.border,
         borderRadius: radius.pill,
         padding: 4,
         gap: 4,
@@ -37,9 +39,9 @@ export function SegmentedControl<T extends string>({ options, value, onChange }:
               alignItems: 'center',
               paddingVertical: spacing.sm,
               borderRadius: radius.pill,
-              backgroundColor: selected ? colors.surface : 'transparent',
+              backgroundColor: selected ? colors.surfaceAlt : 'transparent',
               borderWidth: selected ? 1 : 0,
-              borderColor: colors.border,
+              borderColor: colors.borderStrong,
             }}>
             <AppText
               variant="soft"

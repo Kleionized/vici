@@ -15,6 +15,8 @@ import type {
   DailyCheckin,
   DailyCheckinInput,
   DashboardData,
+  JournalEntry,
+  JournalEntryInput,
   Lesson,
   LessonProgress,
   LifeMap,
@@ -117,10 +119,36 @@ export function useDashboard(): DashboardData | undefined {
   });
 }
 
+export function useJournalEntries(): JournalEntry[] | undefined {
+  const { hydrated, data } = useMockStore();
+  if (!hydrated) return undefined;
+  return [...(data?.journalEntries ?? [])].sort((a, b) => b.createdAt - a.createdAt);
+}
+
 // ---------- mutations ----------
 
 export function useCompleteOnboarding() {
   return useMockStore().completeOnboarding;
+}
+
+export function useUpdateProfile() {
+  const { updateProfile } = useMockStore();
+  return (displayName: string) => updateProfile(displayName);
+}
+
+export function useCreateJournalEntry() {
+  const { createJournalEntry } = useMockStore();
+  return (input: JournalEntryInput) => createJournalEntry(input);
+}
+
+export function useUpdateJournalEntry() {
+  const { updateJournalEntry } = useMockStore();
+  return (id: string, input: JournalEntryInput) => updateJournalEntry(id, input);
+}
+
+export function useDeleteJournalEntry() {
+  const { deleteJournalEntry } = useMockStore();
+  return (id: string) => deleteJournalEntry(id);
 }
 
 export function useUpdateSettings() {

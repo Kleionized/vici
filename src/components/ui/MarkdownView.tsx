@@ -1,7 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 import { Text, View } from 'react-native';
 
-import { colors, spacing } from '@/lib/theme';
+import { fonts, spacing } from '@/lib/theme';
 import { AppText } from './AppText';
 
 /**
@@ -9,15 +9,18 @@ import { AppText } from './AppText';
  * `#`/`##`/`###` headings, `-`/`*` bullets, `1.` ordered items, blank-line
  * paragraphs, and inline `**bold**` / `*italic*`. Kept in-house rather than
  * pulling a markdown library that may not yet support RN 0.85 / React 19.
+ *
+ * `parseMarkdown` and `renderInline` are exported so the lesson story player can
+ * reuse the same parsing to break a lesson into picture-book pages.
  */
 
-type Block =
+export type MdBlock =
   | { kind: 'h1' | 'h2' | 'h3' | 'p'; text: string }
   | { kind: 'ul' | 'ol'; items: string[] };
 
-function parse(md: string): Block[] {
+export function parseMarkdown(md: string): MdBlock[] {
   const lines = md.replace(/\r\n/g, '\n').split('\n');
-  const blocks: Block[] = [];
+  const blocks: MdBlock[] = [];
   let paragraph: string[] = [];
   let list: { kind: 'ul' | 'ol'; items: string[] } | null = null;
 
@@ -74,7 +77,7 @@ function parse(md: string): Block[] {
   return blocks;
 }
 
-function renderInline(text: string): ReactNode[] {
+export function renderInline(text: string): ReactNode[] {
   const out: ReactNode[] = [];
   const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
   let lastIndex = 0;
@@ -85,7 +88,7 @@ function renderInline(text: string): ReactNode[] {
     const token = match[0];
     if (token.startsWith('**')) {
       out.push(
-        <Text key={key++} style={{ fontWeight: '700' }}>
+        <Text key={key++} style={{ fontFamily: 'System', fontWeight: '700' }}>
           {token.slice(2, -2)}
         </Text>,
       );
@@ -103,11 +106,11 @@ function renderInline(text: string): ReactNode[] {
 }
 
 export function MarkdownView({ content }: { content: string }) {
-  const blocks = parse(content);
+  const blocks = parseMarkdown(content);
   return (
     <View style={{ gap: spacing.md }}>
       {blocks.map((block, i) => {
-        if (block.kind === 'ul' || block.kind === 'ol') {
+        if (!('text' in block)) {
           return (
             <View key={i} style={{ gap: spacing.xs }}>
               {block.items.map((item, j) => (
@@ -123,36 +126,33 @@ export function MarkdownView({ content }: { content: string }) {
             </View>
           );
         }
-        // block is now a text block (h1/h2/h3/p)
+        const content = renderInline(block.text);
         if (block.kind === 'h1') {
           return (
             <AppText key={i} variant="title" style={{ marginTop: i === 0 ? 0 : spacing.sm }}>
-              {renderInline(block.text)}
+              {content}
             </AppText>
           );
         }
         if (block.kind === 'h2') {
           return (
             <AppText key={i} variant="subtitle" style={{ marginTop: spacing.sm }}>
-              {renderInline(block.text)}
+              {content}
             </AppText>
           );
         }
         if (block.kind === 'h3') {
           return (
             <AppText key={i} variant="body" weightOverride="700" style={{ marginTop: spacing.xs }}>
-              {renderInline(block.text)}
+              {content}
             </AppText>
           );
         }
-        if (block.kind === 'p') {
-          return (
-            <AppText key={i} variant="muted">
-              {renderInline(block.text)}
-            </AppText>
-          );
-        }
-        return null;
+        return (
+          <AppText key={i} variant="muted">
+            {content}
+          </AppText>
+        );
       })}
     </View>
   );

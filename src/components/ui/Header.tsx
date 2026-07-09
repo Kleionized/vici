@@ -6,21 +6,30 @@ import { AppText } from './AppText';
 
 export interface HeaderProps {
   title: string;
+  /** Small uppercase label above the title. */
+  eyebrow?: string;
   subtitle?: string;
   /** Optional right-aligned action (rendered as tappable text). */
   actionLabel?: string;
   onAction?: () => void;
+  /** Optional custom right-aligned element (overrides actionLabel). */
+  right?: ReactNode;
 }
 
-export function Header({ title, subtitle, actionLabel, onAction }: HeaderProps) {
+export function Header({ title, eyebrow, subtitle, actionLabel, onAction, right }: HeaderProps) {
   return (
-    <View style={{ gap: spacing.xs, marginBottom: spacing.lg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md }}>
-        <AppText variant="display" style={{ flexShrink: 1 }}>
-          {title}
-        </AppText>
-        {actionLabel ? (
-          <Pressable onPress={onAction} hitSlop={8}>
+    <View style={{ gap: spacing.sm, marginBottom: spacing.lg }}>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: spacing.md }}>
+        <View style={{ gap: spacing.xs, flexShrink: 1 }}>
+          {eyebrow ? <AppText variant="label">{eyebrow}</AppText> : null}
+          <AppText variant="display" style={{ flexShrink: 1 }}>
+            {title}
+          </AppText>
+        </View>
+        {right ? (
+          <View style={{ paddingTop: spacing.xs }}>{right}</View>
+        ) : actionLabel ? (
+          <Pressable onPress={onAction} hitSlop={8} style={{ paddingTop: spacing.xs }}>
             <AppText variant="soft">{actionLabel}</AppText>
           </Pressable>
         ) : null}

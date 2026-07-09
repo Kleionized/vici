@@ -82,6 +82,15 @@ export default defineSchema({
       showStreak: v.boolean(),
       reminderTime: v.optional(v.string()),
       theme: v.optional(v.string()),
+      premium: v.optional(v.boolean()),
+      morningCheckin: v.optional(v.boolean()),
+      riskTimeSupport: v.optional(v.boolean()),
+      eveningWindDown: v.optional(v.boolean()),
+      weeklyReflection: v.optional(v.boolean()),
+      appLockFaceId: v.optional(v.boolean()),
+      appLockOnLeave: v.optional(v.boolean()),
+      hideSensitivePreviews: v.optional(v.boolean()),
+      pauseAnalytics: v.optional(v.boolean()),
     }),
   }).index('by_clerkUserId', ['clerkUserId']),
 
@@ -124,6 +133,10 @@ export default defineSchema({
     whatHelped: v.optional(v.string()),
     lesson: v.optional(v.string()),
     note: v.optional(v.string()),
+    /** Peak urge severity (1–10) for urge events. */
+    severity: v.optional(v.number()),
+    /** App reopens during the same urge (severe flow's close-your-phone loop). */
+    reopens: v.optional(v.number()),
   })
     .index('by_user', ['userId'])
     .index('by_user_createdAt', ['userId', 'createdAt']),
@@ -133,6 +146,8 @@ export default defineSchema({
     date: v.string(),
     sleepHours: v.optional(v.number()),
     mood: v.optional(v.number()),
+    emotions: v.optional(v.array(v.string())),
+    reasons: v.optional(v.array(v.string())),
     movedBody: v.optional(v.boolean()),
     socialContact: v.optional(v.boolean()),
     structureFollowed: v.optional(v.boolean()),
@@ -140,4 +155,15 @@ export default defineSchema({
   })
     .index('by_user', ['userId'])
     .index('by_user_date', ['userId', 'date']),
+
+  journalEntries: defineTable({
+    userId: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+    tag: v.string(),
+    title: v.string(),
+    body: v.string(),
+  })
+    .index('by_user', ['userId'])
+    .index('by_user_createdAt', ['userId', 'createdAt']),
 });

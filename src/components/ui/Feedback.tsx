@@ -2,6 +2,7 @@ import { ActivityIndicator, View } from 'react-native';
 
 import { colors, spacing } from '@/lib/theme';
 import { AppText } from './AppText';
+import { Illustration } from './Illustration';
 
 export function LoadingView({ label }: { label?: string }) {
   return (
@@ -15,6 +16,9 @@ export function LoadingView({ label }: { label?: string }) {
 export function EmptyState({ title, body }: { title: string; body?: string }) {
   return (
     <View style={{ alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xxl }}>
+      <View style={{ marginBottom: spacing.sm }}>
+        <Illustration name="tide" width={150} color={colors.textSofter} accent={colors.borderStrong} />
+      </View>
       <AppText variant="subtitle" center>
         {title}
       </AppText>

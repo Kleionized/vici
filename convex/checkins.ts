@@ -33,6 +33,8 @@ export const upsert = mutation({
     date: v.string(),
     sleepHours: v.optional(v.number()),
     mood: v.optional(v.number()),
+    emotions: v.optional(v.array(v.string())),
+    reasons: v.optional(v.array(v.string())),
     movedBody: v.optional(v.boolean()),
     socialContact: v.optional(v.boolean()),
     structureFollowed: v.optional(v.boolean()),
@@ -47,6 +49,8 @@ export const upsert = mutation({
     const fields = {
       sleepHours: args.sleepHours,
       mood: args.mood,
+      emotions: args.emotions,
+      reasons: args.reasons,
       movedBody: args.movedBody,
       socialContact: args.socialContact,
       structureFollowed: args.structureFollowed,
