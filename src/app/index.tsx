@@ -17,7 +17,7 @@ export default function Index() {
   const user = useCurrentUser();
 
   if (!isLoaded) return <Splash />;
-  if (!isSignedIn) return <Redirect href="/(auth)/sign-in" />;
+  if (!isSignedIn) return <Redirect href="/(auth)/splash" />;
   if (user === undefined) return <Splash />; // user data still hydrating
   if (!user?.onboardingComplete) return <Redirect href="/(onboarding)/welcome" />;
   return <Redirect href="/(app)/today" />;

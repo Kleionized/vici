@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 
-import { AppText, LoadingView, Screen } from '@/components/ui';
+import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useTodayCheckin } from '@/lib/backend';
 import { toDateKey } from '@/lib/date';
 import { colors, fonts, sans, spacing } from '@/lib/theme';
@@ -35,8 +35,10 @@ function roman(n: number): string {
   return out;
 }
 
-// One Stoic quote per day, picked by date. Epictetus voice — short, factual.
+// One Stoic line per day up top; a second, attributed Epictetus quote closes
+// the page (the design's footer: laurel divider · quote · EPICTETUS).
 const MAXIMS = [
+  'Every urge passes. Outlast it, and the day is yours.',
   'No man is free who is not master of himself.',
   'First say to yourself what you would be; then do what you have to do.',
   'It is not things that disturb us, but our judgements about them.',
@@ -64,7 +66,12 @@ export default function Today() {
 
   // Day number = days into the campaign (since the account began), 1-based.
   const dayNumber = user?.createdAt ? Math.max(1, Math.floor((Date.now() - user.createdAt) / 86400000) + 1) : 1;
-  const maxim = MAXIMS[dayNumber % MAXIMS.length];
+  const maximIdx = dayNumber % MAXIMS.length;
+  const maxim = MAXIMS[maximIdx];
+  // footer: an attributed Epictetus line (never index 0, never today's maxim)
+  let footerIdx = 1 + ((dayNumber + 3) % (MAXIMS.length - 1));
+  if (footerIdx === maximIdx) footerIdx = 1 + (footerIdx % (MAXIMS.length - 1));
+  const footerQuote = MAXIMS[footerIdx];
 
   // Sun–Sat week around today, with each day's logged mood (1–5 → tone index).
   const sunday = new Date();
@@ -128,24 +135,36 @@ export default function Today() {
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 7,
+            gap: 8,
             backgroundColor: CARD,
             borderRadius: 9999,
             paddingVertical: 7,
-            paddingLeft: 10,
-            paddingRight: 13,
+            paddingLeft: 9,
+            paddingRight: 14,
           }}>
+          {/* ring + tone disc — the week strip's today grammar, in miniature */}
           <View
             style={{
-              width: 15,
-              height: 15,
+              width: 19,
+              height: 19,
               borderRadius: 9999,
-              backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
-              borderWidth: todayCheckin?.mood != null ? 0 : 1.4,
-              borderColor: RING,
-              borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
-            }}
-          />
+              borderWidth: 1.5,
+              borderColor: colors.text,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <View
+              style={{
+                width: 11.5,
+                height: 11.5,
+                borderRadius: 9999,
+                backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
+                borderWidth: todayCheckin?.mood != null ? 0 : 1.2,
+                borderColor: RING,
+                borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
+              }}
+            />
+          </View>
           <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>
             {todayCheckin?.mood != null ? MOOD_WORDS[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'Log mood'}
           </AppText>
@@ -179,9 +198,11 @@ export default function Today() {
         </Pressable>
       </View>
 
-      {/* the laurel — the brand mark, set over the day's Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 34, marginBottom: 18 }}>
-        <Laurel width={96} height={54} />
+      {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
+      <View style={{ alignItems: 'center', marginTop: 34, height: 32 }}>
+        <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
+          {'“'}
+        </AppText>
       </View>
       <AppText
         center
@@ -366,7 +387,7 @@ export default function Today() {
         </View>
       </View>
 
-      {/* footer — wave divider + maxim over the valley river */}
+      {/* footer — laurel divider · Epictetus · the valley river */}
       <View style={{ marginTop: 44, position: 'relative' }}>
         <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
         <View
@@ -383,11 +404,27 @@ export default function Today() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Svg width={16} height={8} viewBox="0 0 16 8" fill="none">
-            <Path d="M1 5.5C3 1.5 5 1.5 8 4s5 2.5 7-1.5" stroke={colors.textMuted} strokeWidth={1.6} strokeLinecap="round" />
-          </Svg>
+          <Laurel size={21} color={colors.textMuted} muted />
         </View>
       </View>
+      <AppText
+        center
+        style={{
+          fontFamily: fonts.serifSharp,
+          fontSize: 19,
+          lineHeight: 27,
+          color: colors.text,
+          maxWidth: 250,
+          alignSelf: 'center',
+          marginTop: 38,
+        }}>
+        {footerQuote}
+      </AppText>
+      <AppText
+        center
+        style={[sans('600'), { fontSize: 11, letterSpacing: 2.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 14 }]}>
+        Epictetus
+      </AppText>
       <View style={{ marginTop: 30, marginHorizontal: -spacing.xl, height: 260 }}>
         <Image
           source={require('../../../assets/images/valley-river.webp')}
@@ -406,34 +443,6 @@ export default function Today() {
         />
       </View>
     </Screen>
-  );
-}
-
-// ── the laurel wreath — two engraved branches, single ink weight ──────
-function Laurel({ width = 96, height = 54 }: { width?: number; height?: number }) {
-  const leaf = (x: number, y: number, a: number, s = 1) => (
-    <Path
-      key={`${x}-${y}-${a}`}
-      d={`M0 0 C ${3.2 * s} ${-4.4 * s} ${3.2 * s} ${-9.4 * s} 0 ${-13 * s} C ${-3.2 * s} ${-9.4 * s} ${-3.2 * s} ${-4.4 * s} 0 0 Z`}
-      fill={colors.text}
-      transform={`translate(${x} ${y}) rotate(${a})`}
-    />
-  );
-  const branch = (mirror: boolean) => (
-    <G transform={mirror ? 'translate(96 0) scale(-1 1)' : undefined}>
-      <Path d="M46 50 C 32 46 20 36 16 20" fill="none" stroke={colors.text} strokeWidth={1.5} strokeLinecap="round" />
-      {leaf(40, 49, 118, 0.92)}
-      {leaf(31, 44.5, 132, 0.98)}
-      {leaf(24, 38, 148, 1)}
-      {leaf(19, 30, 163, 0.98)}
-      {leaf(16.4, 21, 178, 0.9)}
-    </G>
-  );
-  return (
-    <Svg width={width} height={height} viewBox="0 0 96 54" fill="none">
-      {branch(false)}
-      {branch(true)}
-    </Svg>
   );
 }
 

@@ -79,7 +79,7 @@ export default function UrgeLog() {
 
       {step === 0 ? (
         <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading sub="How strong was the urge?">Rate it</Heading>
+          <Heading>How strong was the urge?</Heading>
           <ScrollView style={{ flex: 1, marginTop: 26 }} showsVerticalScrollIndicator={false}>
             <IntensityBands value={intensity} onSelect={setIntensity} />
           </ScrollView>

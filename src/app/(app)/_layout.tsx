@@ -68,6 +68,7 @@ export default function AppLayout() {
       <Tabs.Screen name="locked" options={{ href: null }} />
       <Tabs.Screen name="journal" options={{ href: null }} />
       <Tabs.Screen name="milestones" options={{ href: null }} />
+      <Tabs.Screen name="rough-days" options={{ href: null }} />
     </Tabs>
   );
 }

@@ -12,6 +12,7 @@ export { Illustration, type IllustrationName } from './Illustration';
 export { IntensityBands, INTENSITY_BANDS, bandToSeverity, severityToBand } from './IntensityBands';
 export { IntensitySlider } from './IntensitySlider';
 export { Avatar, Glyph, type GlyphName, IconChip, Illo, PlanCard, SettingsGroup, SettingsRow, Toggle } from './kit';
+export { Laurel } from './Laurel';
 export { LineChart } from './LineChart';
 export { EmptyState, LoadingView } from './Feedback';
 export { Field } from './Field';

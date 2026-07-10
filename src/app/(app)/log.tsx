@@ -118,6 +118,25 @@ export default function Log() {
         ))}
       </View>
 
+      {/* rough days — the in-the-moment book, one tap from the door */}
+      <Pressable
+        onPress={() => router.push('/(app)/rough-days')}
+        hitSlop={6}
+        style={({ pressed }) => ({
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 8,
+          paddingVertical: 13,
+          borderRadius: 9999,
+          borderWidth: 1.4,
+          borderColor: colors.borderStrong,
+          opacity: pressed ? 0.7 : 1,
+        })}>
+        <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Rough day?</AppText>
+        <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted }]}>Open the book of protocols ›</AppText>
+      </Pressable>
+
       <Pressable onPress={() => setMode('history')} hitSlop={8} style={{ paddingVertical: 18, paddingBottom: 12 }}>
         <AppText center style={[sans('400'), { fontSize: 12.5, lineHeight: 19, color: colors.textSoft }]}>
           Everything lands in your log — plain, dated, never graded. <AppText style={[sans('600'), { fontSize: 12.5, color: colors.textMuted }]}>History ›</AppText>

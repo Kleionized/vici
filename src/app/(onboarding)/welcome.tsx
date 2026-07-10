@@ -5,21 +5,19 @@ import {
   buildWeekXiiLetter,
   O3DayOne,
   O3Door,
-  O3Hope,
+  O3Cost,
   O3Letter,
-  O3MapReveal,
   O3Name,
   O3Notify,
-  O3PlanBuild,
   O3Pledge,
   O3Privacy,
   O3_QUESTIONS,
   O3Question,
   O3Reading,
   O3ReadingPause,
+  O3Rewire,
   O3Save,
   O3Shell,
-  O3Stakes,
   O3Streaks,
   O3Threshold,
   O3Wave,
@@ -47,10 +45,8 @@ type Step =
         | 'streaks'
         | 'pause'
         | 'reading'
-        | 'plan'
-        | 'stakes'
-        | 'hope'
-        | 'map'
+        | 'cost'
+        | 'rewire'
         | 'wave'
         | 'pledge'
         | 'letter'
@@ -70,10 +66,8 @@ const STEPS: Step[] = [
   { id: 'streaks', kind: 'streaks' },
   { id: 'pause', kind: 'pause' },
   { id: 'reading', kind: 'reading' },
-  { id: 'plan', kind: 'plan' },
-  { id: 'stakes', kind: 'stakes' },
-  { id: 'hope', kind: 'hope' },
-  { id: 'map', kind: 'map' },
+  { id: 'cost', kind: 'cost' },
+  { id: 'rewire', kind: 'rewire' },
   { id: 'wave', kind: 'wave' },
   { id: 'pledge', kind: 'pledge' },
   { id: 'letter', kind: 'letter' },
@@ -153,14 +147,10 @@ export default function Onboarding() {
         return <O3ReadingPause answers={a} next={next} />;
       case 'reading':
         return <O3Reading answers={a} next={next} />;
-      case 'plan':
-        return <O3PlanBuild next={next} />;
-      case 'stakes':
-        return <O3Stakes answers={a} next={next} />;
-      case 'hope':
-        return <O3Hope next={next} />;
-      case 'map':
-        return <O3MapReveal next={next} />;
+      case 'cost':
+        return <O3Cost answers={a} next={next} />;
+      case 'rewire':
+        return <O3Rewire answers={a} next={next} />;
       case 'pledge':
         return <O3Pledge name={String(a.name || '')} next={next} />;
       case 'letter':
@@ -190,7 +180,7 @@ export default function Onboarding() {
   // the wave, the reading-pause, and the paywall own the entire frame
   if (step.kind === 'wave') return <O3Wave next={next} />;
   if (step.kind === 'pause') return <O3ReadingPause answers={a} next={next} />;
-  if (step.kind === 'paywall') return <PaywallFlow prize={(a.prize as string[]) || []} onDone={() => void finish()} />;
+  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || '').trim() || undefined} triggers={(a.triggers as string[]) || []} onDone={() => void finish()} />;
 
   return (
     <O3Shell progress={(i + 1) / STEPS.length} onBack={i > 0 ? back : null} bar={!NOBAR.has(step.id)} lit={lit}>

@@ -1,600 +1,373 @@
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useRef, useState } from 'react';
-import { AppState, type LayoutChangeEvent, Pressable, ScrollView, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-import { AppText, bandToSeverity, IntensityBands, severityToBand } from '@/components/ui';
-import {
-  BrightButton,
-  CLAY,
-  FadeIn,
-  HUE,
-  INK_DARK,
-  JourneyPage,
-  NightIllustration,
-  NightSky,
-  SAGE,
-  SEA,
-  Stars,
-  TopChrome,
-  UrgeWave,
-  WAVE_ART,
-} from '@/components/urge';
+import { AppText } from '@/components/ui';
+import { UrgeWave } from '@/components/urge';
+import { Scene, UrgeVignette } from '@/components/scene/SceneKit';
 import { useCreateEvent } from '@/lib/backend';
-import { colors, fonts } from '@/lib/theme';
-import {
-  clearUrgeSession,
-  loadUrgeSession,
-  newUrgeSession,
-  saveUrgeSession,
-  SEVERE_THRESHOLD,
-  SUBSIDING_THRESHOLD,
-  type UrgeSession,
-} from '@/lib/urgeSession';
-
-const TEXT = colors.text;
-const SUB = colors.textMuted;
-const CHIP_BG = colors.surface;
-const CHIP_LINE = 'transparent';
-
-// ── severity model ───────────────────────────────────────────────────────────
-const SEV_WORDS: [number, string, string][] = [
-  // [min severity, word, line]
-  [1, 'A flicker', 'There — but quiet.'],
-  [3, 'Pulling', 'You can feel the tug.'],
-  [5, 'Strong', 'It has your attention.'],
-  [7, 'Very strong', 'Hard to think past it.'],
-  [9, 'Overwhelming', 'It feels like a command.'],
-];
-const sevWord = (s: number) => SEV_WORDS.reduce((acc, w) => (s >= w[0] ? w : acc), SEV_WORDS[0]);
-const sevTint = (s: number) => (s >= SEVERE_THRESHOLD ? CLAY : s >= SUBSIDING_THRESHOLD ? SEA : SAGE);
-
-// ── minor-path content: trigger → tailored fixes ─────────────────────────────
-const TRIGGERS = ['Late at night', 'Stress or anxiety', 'Boredom', 'Feeling low', 'Loneliness', 'Endless scrolling', 'Tired & depleted', 'After a win'];
-
-const FIXES: Record<string, { line: string; steps: string[] }> = {
-  'Late at night': { line: 'Late-night urges feed on a day that hasn’t ended.', steps: ['Lights down, screen out of reach', 'Brush your teeth — close the day', 'Get into bed properly'] },
-  'Stress or anxiety': { line: 'The urge is offering relief. Take the relief without it.', steps: ['Three slow breaths, longer out than in', 'Write the worry down for tomorrow', 'Drop your shoulders, unclench your jaw'] },
-  Boredom: { line: 'Boredom wants stimulation — any kind will do.', steps: ['Pick one tiny task and start it', 'Step outside for two minutes of air', 'Put one song on and move'] },
-  'Feeling low': { line: 'Be gentle — the urge is trying to medicate a feeling.', steps: ['Name the feeling out loud', 'A warm shower or a warm drink', 'Text someone who gets it'] },
-  Loneliness: { line: 'The urge is a stand-in for contact. Get the real thing.', steps: ['Message a real person, right now', 'Go where people are — a shop, a café', 'Send a voice note instead of a text'] },
-  'Endless scrolling': { line: 'The feed primed this. Break the chain at the screen.', steps: ['Close the feed — all the way', 'Phone on a shelf in another room', 'Do the next small physical thing'] },
-  'Tired & depleted': { line: 'Depleted is when it strikes hardest. Refuel instead.', steps: ['A full glass of water', 'A 20-minute timer rest, eyes closed', 'Calling the day early is a win'] },
-  'After a win': { line: 'A win deserves a better reward than this.', steps: ['Say the win out loud', 'Tell someone about it', 'Take it for a walk'] },
-};
-
-const HELPED = ['Breathing', 'Left the room', 'Went outside', 'Phone away', 'Talked to someone', 'It just passed'];
-
-type Step = 'rate' | 'why' | 'fix' | 'surf' | 'remove' | 'breathe' | 'closephone' | 'away' | 'rerate' | 'stillstrong' | 'outcome' | 'done';
+import { clearUrgeSession, newUrgeSession, saveUrgeSession } from '@/lib/urgeSession';
+import { colors, fonts, sans } from '@/lib/theme';
 
 /**
- * The urge flow, branched by severity:
- *  - rate it first (slider);
- *  - minor → what's behind it → tailored fixes → optional breathing;
- *  - severe → get out of the room → three slow breaths → put the phone down →
- *    re-rate on every reopen (counted) until it subsides;
- *  - only once it's subsiding: what happened → one event per urge, with peak
- *    severity + reopen count. Reopening within ~20 min resumes the same urge.
+ * Urge surfing (canvas: screens-urge) — two fast asks (where · how strong),
+ * then a path tailored by strength:
+ *   a flicker          → wave · pass · name · surf     (no need to flee)
+ *   pulling hard       → wave · pass · move · name · surf
+ *   about to give in   → move · surf                   (fastest way out)
+ * The wave pages and the finish are full-bleed night imagery.
  */
-export default function Urge() {
-  const router = useRouter();
-  const createEvent = useCreateEvent();
 
-  const [step, setStep] = useState<Step | null>(null); // null until the session loads
-  const [session, setSession] = useState<UrgeSession | null>(null);
-  const [resumed, setResumed] = useState(false);
-  const [trigger, setTrigger] = useState<string | null>(null);
-  const [helped, setHelped] = useState<string[]>([]);
-  const saved = useRef(false);
+// ── the two asks' content ────────────────────────────────────────────
+const PLACES: [string, string][] = [
+  ['bed', 'In bed'],
+  ['couch', 'On the couch'],
+  ['bathroom', 'In the bathroom'],
+  ['desk', 'At my desk'],
+  ['outside', 'Outside'],
+  ['elsewhere', 'Somewhere else'],
+];
 
-  const stepRef = useRef<Step | null>(null);
-  stepRef.current = step;
-  const sessionRef = useRef<UrgeSession | null>(null);
-  sessionRef.current = session;
+const PLACE_MOVE: Record<string, { headline: string; sub: string; cta: string }> = {
+  bed: { headline: 'Get out of bed', sub: 'Feet on the floor, lights on. The urge lives in the warm dark — stand up and walk to another room.', cta: "I'm up" },
+  couch: { headline: 'Stand up off the couch', sub: 'Put the phone on the far side of the room and walk to the kitchen. Change what your hands are holding.', cta: "I'm up" },
+  bathroom: { headline: 'Step out of the bathroom', sub: 'Cold water on your face, door open, out. Don’t linger where it’s easiest to hide.', cta: "I've stepped out" },
+  desk: { headline: 'Push back from the desk', sub: 'Close the tabs, stand, and walk to a window. The work will keep for five minutes — the scene won’t.', cta: "I've moved" },
+  outside: { headline: 'Keep moving', sub: 'Pick a point ahead and walk to it. New street, new input — don’t stop where the pull started.', cta: "I'm moving" },
+  elsewhere: { headline: 'Change the room you’re in', sub: 'Any room will do. The urge is attached to the scene — break the scene.', cta: "I've moved" },
+};
 
-  // Resume the same urge if we're inside the 20-minute window; else start fresh.
-  useEffect(() => {
-    (async () => {
-      const existing = await loadUrgeSession();
-      if (existing) {
-        const s: UrgeSession = { ...existing, reopens: existing.phase === 'away' ? existing.reopens + 1 : existing.reopens, phase: 'active' };
-        setSession(s);
-        setTrigger(s.trigger ?? null);
-        setResumed(true);
-        await saveUrgeSession(s);
-        setStep('rerate');
-      } else {
-        setStep('rate');
-      }
-    })();
-  }, []);
+const STRENGTHS: [string, string, number][] = [
+  ['A flicker', 'Noticeable, but quiet', 0.3],
+  ['Pulling hard', 'It has my full attention', 0.62],
+  ['About to give in', 'I need the fastest way out', 0.95],
+];
+const STRENGTH_SEVERITY = [3, 6, 10];
 
-  // Coming back to the foreground while "away" = a reopen during the same urge.
-  useEffect(() => {
-    const sub = AppState.addEventListener('change', async (state) => {
-      if (state !== 'active') return;
-      const s = sessionRef.current;
-      if (!s || stepRef.current !== 'away') return;
-      const next: UrgeSession = { ...s, reopens: s.reopens + 1, phase: 'active' };
-      setSession(next);
-      await saveUrgeSession(next);
-      setResumed(true);
-      setStep('rerate');
-    });
-    return () => sub.remove();
-  }, []);
-
-  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
-
-  async function update(partial: Partial<UrgeSession>) {
-    const s = sessionRef.current;
-    if (!s) return;
-    const next = { ...s, ...partial };
-    setSession(next);
-    await saveUrgeSession(next);
+// ── place glyphs (design: PlaceGlyph) ────────────────────────────────
+function PlaceIcon({ k, c }: { k: string; c: string }) {
+  const common = { stroke: c, strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, fill: 'none' as const };
+  switch (k) {
+    case 'bed':
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Path d="M3 18v-8.5M3 13h18v5" {...common} />
+          <Path d="M3 13V7.5h7c2.5 0 4 1.4 4 3.5v2" {...common} />
+          <Circle cx={6.8} cy={10.2} r={1.3} stroke={c} strokeWidth={1.8} fill="none" />
+        </Svg>
+      );
+    case 'bathroom':
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Path d="M7 20c-1.8-1.2-3-3.2-3-5.5h16c0 2.3-1.2 4.3-3 5.5M6 20l-.8 1.6M18 20l.8 1.6" {...common} />
+          <Path d="M6 14.5V6a2.2 2.2 0 014.4 0" {...common} />
+          <Path d="M13 7.5l1-1.4M15.6 9l1.4-1M14 11h1.8" {...common} />
+        </Svg>
+      );
+    case 'desk':
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Path d="M4 5.8 h16 v8.4 a1.6 1.6 0 0 1 -1.6 1.6 h-12.8 a1.6 1.6 0 0 1 -1.6 -1.6 Z" {...common} />
+          <Path d="M9.5 19h5M12 15.8v3.2" {...common} />
+        </Svg>
+      );
+    case 'couch':
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Path d="M5 11V8.5A2.5 2.5 0 017.5 6h9A2.5 2.5 0 0119 8.5V11" {...common} />
+          <Path d="M3.5 13.5a2 2 0 012-2c1.1 0 2 .9 2 2V14h9v-.5a2 2 0 114 0V17a1.5 1.5 0 01-1.5 1.5h-14A1.5 1.5 0 013.5 17z" {...common} />
+          <Path d="M5.5 18.5V20M18.5 18.5V20" {...common} />
+        </Svg>
+      );
+    case 'outside':
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Circle cx={17.5} cy={6.5} r={2.5} stroke={c} strokeWidth={1.8} fill="none" />
+          <Path d="M9 8.5L4.5 21M9 8.5c2.4 0 4.2 1.2 5.2 3.4M9 8.5C7 8.5 5.4 9.6 4.5 11.4" {...common} />
+          <Path d="M12 21c.4-3.2 1.6-5.8 3.6-7.8M19.5 21H3" {...common} />
+        </Svg>
+      );
+    default:
+      return (
+        <Svg width={24} height={24} viewBox="0 0 24 24">
+          <Path d="M12 21s-6.5-5.4-6.5-10.2A6.3 6.3 0 0112 4.5a6.3 6.3 0 016.5 6.3C18.5 15.6 12 21 12 21z" {...common} />
+          <Circle cx={12} cy={10.8} r={2.2} stroke={c} strokeWidth={1.8} fill="none" />
+        </Svg>
+      );
   }
+}
 
-  async function startWithSeverity(sev: number) {
-    const s = newUrgeSession(sev);
-    setSession(s);
-    await saveUrgeSession(s);
-    setStep(sev >= SEVERE_THRESHOLD ? 'remove' : 'why');
-  }
-
-  async function reRated(sev: number) {
-    const s = sessionRef.current;
-    if (!s) return;
-    await update({ severity: sev, peakSeverity: Math.max(s.peakSeverity, sev) });
-    setStep(sev < SUBSIDING_THRESHOLD ? 'outcome' : 'stillstrong');
-  }
-
-  async function goAway() {
-    await update({ phase: 'away' });
-    setStep('away');
-  }
-
-  async function resolve(type: 'urge_rode_out' | 'urge_acted_on') {
-    const s = sessionRef.current;
-    if (!saved.current) {
-      saved.current = true;
-      await createEvent({
-        type,
-        severity: s?.peakSeverity,
-        reopens: s?.reopens,
-        trigger: trigger ?? undefined,
-        whatHelped: helped.length ? helped.join(', ') : undefined,
-      }).catch(() => {});
-      await clearUrgeSession();
-    }
-    if (type === 'urge_acted_on') {
-      router.replace('/relapse');
-      return;
-    }
-    setStep('done');
-  }
-
-  if (!step) return <View style={{ flex: 1, backgroundColor: INK_DARK }} />;
-
+// ── the strength mark: ring + growing ink disc ───────────────────────
+function StrengthMark({ t, c }: { t: number; c: string }) {
   return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <StatusBar style="dark" />
+    <Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
+      <Circle cx={13} cy={13} r={11} stroke={c} strokeWidth={1.5} opacity={0.5} />
+      <Circle cx={13} cy={13} r={3.2 + t * 7.3} fill={c} />
+    </Svg>
+  );
+}
 
-      {step === 'rate' ? (
-        <RateScreen
-          headline={'How strong is\nthe urge?'}
-          initial={5}
-          onBack={close}
-          backKind="close"
-          cta="Continue"
-          onNext={startWithSeverity}
-          footer={
-            <Pressable onPress={() => router.replace('/relapse')} hitSlop={8} style={{ paddingVertical: 4 }}>
-              <AppText center weightOverride="600" style={{ fontSize: 14.5, color: colors.textSoft }}>
-                I already slipped — start the reset
-              </AppText>
-            </Pressable>
-          }
-        />
-      ) : null}
-
-      {step === 'why' ? (
-        <ChipScreen
-          hue={HUE.sea}
-          tintFn={SEA}
-          onBack={() => setStep('rate')}
-          headline="What's behind it right now?"
-          sub="Name the trigger — it loosens its grip."
-          options={TRIGGERS}
-          selected={trigger ? [trigger] : []}
-          onPick={async (t) => {
-            setTrigger(t);
-            await update({ trigger: t });
-            setStep('fix');
-          }}
-        />
-      ) : null}
-
-      {step === 'fix' && trigger ? (
-        <FixScreen
-          trigger={trigger}
-          onBack={() => setStep('why')}
-          onBreathe={() => setStep('surf')}
-          onSteady={() => setStep('outcome')}
-        />
-      ) : null}
-
-      {step === 'surf' ? <SurfScreen seconds={180} doneLabel="It passed — I'm through it" onBack={() => setStep('fix')} onDone={() => setStep('outcome')} /> : null}
-
-      {step === 'remove' ? (
-        <JourneyPage
-          tint={CLAY}
-          hue={HUE.clay}
-          back="back"
-          onBack={() => setStep('rate')}
-          label="Right now"
-          headline="Get out of this room"
-          sub="Stand up and move — outside if it's safe. The scene stays behind; you don't."
-          art={WAVE_ART}
-          onNext={() => setStep('breathe')}
-          nextLabel="I've moved"
-        />
-      ) : null}
-
-      {step === 'breathe' ? <SurfScreen seconds={60} heading="Three slow breaths" doneLabel="I'm steadier" onBack={() => setStep('remove')} onDone={() => setStep('closephone')} /> : null}
-
-      {step === 'closephone' ? (
-        <JourneyPage
-          tint={SEA}
-          hue={HUE.sea}
-          back="back"
-          onBack={() => setStep('breathe')}
-          label="The hard part"
-          headline="Now put the phone down"
-          sub="Screen off, phone away. Stay out there and let the wave break — we'll check in when you're back."
-          art={WAVE_ART}
-          onNext={goAway}
-          nextLabel="I'm putting it down"
-        />
-      ) : null}
-
-      {step === 'away' ? (
-        <AwayScreen
-          onBack={async () => {
-            const s = sessionRef.current;
-            if (s) {
-              const next: UrgeSession = { ...s, reopens: s.reopens + 1, phase: 'active' };
-              setSession(next);
-              await saveUrgeSession(next);
-            }
-            setResumed(true);
-            setStep('rerate');
-          }}
-        />
-      ) : null}
-
-      {step === 'rerate' ? (
-        <RateScreen
-          headline={resumed ? 'Welcome back.\nHow is it now?' : 'How is it now?'}
-          sub={session && session.reopens > 0 ? `Still the same wave — check-in ${session.reopens + 1}.` : undefined}
-          initial={session?.severity ?? 5}
-          onBack={close}
-          backKind="close"
-          cta="This is where it is"
-          onNext={reRated}
-        />
-      ) : null}
-
-      {step === 'stillstrong' ? (
-        <JourneyPage
-          tint={CLAY}
-          hue={HUE.clay}
-          back="close"
-          onBack={close}
-          label="That's okay"
-          headline="Still loud"
-          sub="Waves take their time. Stay out of the room, breathe — it cannot hold this pitch."
-          art={WAVE_ART}
-          onNext={() => setStep('breathe')}
-          nextLabel="Breathe with me"
-          footer={
-            <Pressable onPress={goAway} hitSlop={8} style={{ paddingVertical: 4 }}>
-              <AppText center weightOverride="600" style={{ fontSize: 14.5, color: colors.textSoft }}>
-                Phone down — I'll ride it out there
-              </AppText>
-            </Pressable>
-          }
-        />
-      ) : null}
-
-      {step === 'outcome' ? (
-        <OutcomeScreen
-          trigger={trigger}
-          setTrigger={(t) => {
-            setTrigger(t);
-            void update({ trigger: t });
-          }}
-          helped={helped}
-          toggleHelped={(h) => setHelped((prev) => (prev.includes(h) ? prev.filter((x) => x !== h) : [...prev, h]))}
-          onRodeOut={() => resolve('urge_rode_out')}
-          onActedOn={() => resolve('urge_acted_on')}
-        />
-      ) : null}
-
-      {step === 'done' ? (
-        <DoneScreen
-          reopens={session?.reopens ?? 0}
-          onClose={() => {
-            void clearUrgeSession();
-            close();
-          }}
-        />
-      ) : null}
+// ── top bar: back · segmented progress · close ───────────────────────
+function TopBar({ total, index, onBack, onClose, light = false }: { total: number; index: number; onBack: () => void; onClose: () => void; light?: boolean }) {
+  const c = light ? '#F5F4F1' : colors.text;
+  const on = light ? '#F5F4F1' : colors.ink;
+  const off = light ? 'rgba(245,244,241,0.3)' : colors.borderStrong;
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 29, paddingTop: 8 }}>
+      <Pressable onPress={onBack} hitSlop={10} accessibilityLabel="Back" style={{ padding: 4, marginLeft: -4 }}>
+        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+          <Path d="M15 5l-7 7 7 7" stroke={c} strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+      </Pressable>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', gap: 6, paddingHorizontal: 6 }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <View key={i} style={{ flex: 1, maxWidth: 36, height: 4, borderRadius: 9999, backgroundColor: i <= index ? on : off }} />
+        ))}
+      </View>
+      <Pressable onPress={onClose} hitSlop={10} accessibilityLabel="Close" style={{ padding: 4, marginRight: -4 }}>
+        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+          <Path d="M6 6l12 12M18 6L6 18" stroke={c} strokeWidth={2.1} strokeLinecap="round" />
+        </Svg>
+      </Pressable>
     </View>
   );
 }
 
-function RateScreen({
-  headline,
-  sub,
-  initial,
-  cta,
-  backKind,
-  onBack,
-  onNext,
-  footer,
-}: {
-  headline: string;
-  sub?: string;
-  initial?: number;
-  cta: string;
-  backKind: 'close' | 'back';
-  onBack: () => void;
-  onNext: (sev: number) => void;
-  footer?: React.ReactNode;
-}) {
-  // the shared band-list grammar — identical to the urge log's intensity step
-  const [band, setBand] = useState<number | null>(initial != null ? severityToBand(initial) : null);
-  return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.sea} />
-      <Stars />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <TopChrome back={backKind} onBack={onBack} />
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 26, flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3 }}>
-            {headline}
-          </AppText>
-          {sub ? (
-            <AppText center weightOverride="500" style={{ fontSize: 15, lineHeight: 21, color: SUB, marginTop: 8 }}>
-              {sub}
-            </AppText>
-          ) : null}
-          <View style={{ marginTop: 30 }}>
-            <IntensityBands value={band} onSelect={setBand} />
-          </View>
-        </ScrollView>
-        <View style={{ paddingHorizontal: 26, paddingBottom: 18 }}>
-          <View style={{ opacity: band == null ? 0.35 : 1 }}>
-            <BrightButton label={cta} onPress={() => (band != null ? onNext(bandToSeverity(band)) : undefined)} />
-          </View>
-          {footer ? <View style={{ marginTop: 14, alignItems: 'center' }}>{footer}</View> : null}
-        </View>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-// ── chips on the night sky (triggers / what helped) ──────────────────────────
-function NightChip({ label, on, tintFn, onPress }: { label: string; on: boolean; tintFn: (a?: number) => string; onPress: () => void }) {
+function PillButton({ label, onPress, enabled = true, light = false }: { label: string; onPress: () => void; enabled?: boolean; light?: boolean }) {
   return (
     <Pressable
-      onPress={onPress}
-      style={{
-        paddingHorizontal: 17,
-        paddingVertical: 12,
+      onPress={enabled ? onPress : undefined}
+      accessibilityRole="button"
+      style={({ pressed }) => ({
+        width: '100%',
+        backgroundColor: light ? '#FBFAF9' : colors.ink,
         borderRadius: 9999,
-        backgroundColor: on ? colors.ink : CHIP_BG,
-        borderWidth: 1.5,
-        borderColor: on ? colors.ink : CHIP_LINE,
-      }}>
-      <AppText weightOverride={on ? '700' : '600'} color={on ? colors.inkText : colors.text} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
-        {label}
-      </AppText>
+        paddingVertical: 16,
+        alignItems: 'center',
+        opacity: enabled ? 1 : 0.34,
+        transform: [{ scale: pressed ? 0.98 : 1 }],
+      })}>
+      <AppText style={[sans('600'), { fontSize: 15.5, letterSpacing: 0.16, color: light ? '#131313' : colors.inkText }]}>{label}</AppText>
     </Pressable>
   );
 }
 
-function ChipScreen({
-  hue,
-  tintFn,
-  onBack,
+// ── the full-bleed dark image page (design: JourneyPage fullMode) ─────
+function DarkImagePage({
+  total,
+  index,
+  img,
+  label,
   headline,
   sub,
-  options,
-  selected,
-  onPick,
+  cta,
+  onBack,
+  onClose,
+  onNext,
 }: {
-  hue: number;
-  tintFn: (a?: number) => string;
-  onBack: () => void;
+  total: number;
+  index: number;
+  img: number;
+  label?: string;
   headline: string;
   sub?: string;
-  options: string[];
-  selected: string[];
-  onPick: (v: string) => void;
+  cta: string;
+  onBack: () => void;
+  onClose: () => void;
+  onNext: () => void;
 }) {
   return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={hue} />
-      <Stars />
+    <View style={{ flex: 1, backgroundColor: '#0B0B0C' }}>
+      <Image source={img} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      <LinearGradient
+        colors={['rgba(7,8,10,0.55)', 'rgba(7,8,10,0.1)', 'rgba(7,8,10,0.14)', 'rgba(7,8,10,0.7)']}
+        locations={[0, 0.3, 0.56, 1]}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <TopChrome back="back" onBack={onBack} />
-        <View style={{ flex: 1, paddingHorizontal: 30, justifyContent: 'center' }}>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 29, lineHeight: 33, letterSpacing: 0.29 }}>
+        <TopBar total={total} index={index} onBack={onBack} onClose={onClose} light />
+        <View style={{ flex: 1 }} />
+        <View style={{ paddingHorizontal: 29, alignItems: 'center' }}>
+          {label ? (
+            <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: 'rgba(245,244,241,0.55)', marginBottom: 12 }]}>
+              {label}
+            </AppText>
+          ) : null}
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3, color: '#F5F4F1' }}>
             {headline}
           </AppText>
           {sub ? (
-            <AppText center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 22, color: SUB, marginTop: 12 }}>
+            <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: 'rgba(245,244,241,0.75)', marginTop: 14 }]}>
               {sub}
             </AppText>
           ) : null}
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11, justifyContent: 'center', marginTop: 34 }}>
-            {options.map((t) => (
-              <NightChip key={t} label={t} on={selected.includes(t)} tintFn={tintFn} onPress={() => onPick(t)} />
-            ))}
-          </View>
+        </View>
+        <View style={{ flex: 1.15 }} />
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12 }}>
+          <PillButton label={cta} onPress={onNext} light />
         </View>
       </SafeAreaView>
     </View>
   );
 }
 
-// ── minor path: tailored fixes ───────────────────────────────────────────────
-function FixScreen({ trigger, onBack, onBreathe, onSteady }: { trigger: string; onBack: () => void; onBreathe: () => void; onSteady: () => void }) {
-  const fix = FIXES[trigger] ?? FIXES.Boredom;
-  return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.sage} />
-      <Stars />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <TopChrome back="back" onBack={onBack} />
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 30 }} showsVerticalScrollIndicator={false}>
-          <AppText center weightOverride="700" color={SAGE(0.98)} style={{ fontSize: 12.5, letterSpacing: 2.4, textTransform: 'uppercase' }}>
-            {trigger}
-          </AppText>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 29, lineHeight: 33, letterSpacing: 0.29, marginTop: 14 }}>
-            Try this instead
-          </AppText>
-          <AppText center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 22, color: SUB, marginTop: 12 }}>
-            {fix.line}
-          </AppText>
-          <View style={{ gap: 11, marginTop: 28 }}>
-            {fix.steps.map((s, i) => (
-              <FadeIn key={s} style={{}}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 13, backgroundColor: CHIP_BG, borderWidth: 1, borderColor: CHIP_LINE, borderRadius: 17, paddingVertical: 15, paddingHorizontal: 16 }}>
-                  <View style={{ width: 28, height: 28, borderRadius: 9999, backgroundColor: SAGE(0.2), alignItems: 'center', justifyContent: 'center' }}>
-                    <AppText weightOverride="700" color={SAGE(1)} style={{ fontSize: 13 }}>
-                      {i + 1}
-                    </AppText>
-                  </View>
-                  <AppText weightOverride="600" color={TEXT} style={{ flex: 1, fontSize: 15.5, lineHeight: 21, letterSpacing: -0.15 }}>
-                    {s}
-                  </AppText>
-                </View>
-              </FadeIn>
-            ))}
-          </View>
-        </ScrollView>
-        <View style={{ paddingHorizontal: 30, paddingBottom: 18 }}>
-          <BrightButton label="Breathe with me" onPress={onBreathe} />
-          <Pressable onPress={onSteady} hitSlop={8} style={{ paddingVertical: 4, marginTop: 14 }}>
-            <AppText center weightOverride="600" style={{ fontSize: 14.5, color: colors.textSoft }}>
-              I'm steady — wrap up
-            </AppText>
-          </Pressable>
-        </View>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-// ── away: the phone is meant to be down ──────────────────────────────────────
-function AwayScreen({ onBack }: { onBack: () => void }) {
-  return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.peri} />
-      <Stars />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 36 }}>
-          <AppText center weightOverride="700" style={{ fontSize: 12.5, letterSpacing: 2.4, textTransform: 'uppercase', color: colors.textSoft }}>
-            Phone down
-          </AppText>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 29, lineHeight: 33, letterSpacing: 0.29, marginTop: 14 }}>
-            We'll be here when the wave breaks.
-          </AppText>
-          <AppText center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 23, color: SUB, marginTop: 14 }}>
-            Stay out of the room. Breathe slow. Come back when it loosens.
-          </AppText>
-        </View>
-        <View style={{ paddingHorizontal: 30, paddingBottom: 26, alignItems: 'center' }}>
-          <Pressable onPress={onBack} hitSlop={10} style={{ paddingVertical: 10, paddingHorizontal: 18 }}>
-            <AppText center weightOverride="600" style={{ fontSize: 15, color: colors.textMuted }}>
-              I'm back — check in
-            </AppText>
-          </Pressable>
-        </View>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-// ── outcome: only once it's subsiding ────────────────────────────────────────
-function OutcomeScreen({
-  trigger,
-  setTrigger,
-  helped,
-  toggleHelped,
-  onRodeOut,
-  onActedOn,
+// ── the paper page with a scene vignette (remove / name) ─────────────
+function VignettePage({
+  total,
+  index,
+  stage,
+  label,
+  headline,
+  sub,
+  cta,
+  onBack,
+  onClose,
+  onNext,
 }: {
-  trigger: string | null;
-  setTrigger: (t: string) => void;
-  helped: string[];
-  toggleHelped: (h: string) => void;
-  onRodeOut: () => void;
-  onActedOn: () => void;
+  total: number;
+  index: number;
+  stage: 'remove' | 'name';
+  label: string;
+  headline: string;
+  sub: string;
+  cta: string;
+  onBack: () => void;
+  onClose: () => void;
+  onNext: () => void;
 }) {
   return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.sea} />
-      <Stars />
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 30, paddingVertical: 12 }} showsVerticalScrollIndicator={false}>
-          <AppText center weightOverride="700" color={SEA(0.98)} style={{ fontSize: 12.5, letterSpacing: 2.4, textTransform: 'uppercase' }}>
-            The wave is breaking
+        <TopBar total={total} index={index} onBack={onBack} onClose={onClose} />
+        <View style={{ flex: 1 }} />
+        <View style={{ alignItems: 'center', paddingHorizontal: 18 }}>
+          <Scene width={320} height={180} viewBox="0 0 320 180">
+            <UrgeVignette stage={stage} />
+          </Scene>
+        </View>
+        <View style={{ paddingHorizontal: 29, paddingTop: 32, alignItems: 'center' }}>
+          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft, marginBottom: 12 }]}>
+            {label}
           </AppText>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 29, lineHeight: 33, letterSpacing: 0.29, marginTop: 14 }}>
-            What happened?
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3, color: colors.text }}>
+            {headline}
           </AppText>
-          <AppText center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 22, color: SUB, marginTop: 10 }}>
-            Just data — not a verdict.
+          <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: colors.textMuted, marginTop: 14 }]}>
+            {sub}
           </AppText>
-
-          <AppText weightOverride="600" style={{ fontSize: 12, letterSpacing: 1.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 28, marginBottom: 11 }}>
-            What was behind it
-          </AppText>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9 }}>
-            {TRIGGERS.map((t) => (
-              <NightChip key={t} label={t} on={trigger === t} tintFn={SEA} onPress={() => setTrigger(t)} />
-            ))}
-          </View>
-
-          <AppText weightOverride="600" style={{ fontSize: 12, letterSpacing: 1.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 24, marginBottom: 11 }}>
-            What helped
-          </AppText>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9 }}>
-            {HELPED.map((h) => (
-              <NightChip key={h} label={h} on={helped.includes(h)} tintFn={SAGE} onPress={() => toggleHelped(h)} />
-            ))}
-          </View>
-        </ScrollView>
-        <View style={{ paddingHorizontal: 30, paddingBottom: 18 }}>
-          <BrightButton label="I rode it out" onPress={onRodeOut} />
-          <Pressable onPress={onActedOn} hitSlop={8} style={{ paddingVertical: 4, marginTop: 14 }}>
-            <AppText center weightOverride="600" style={{ fontSize: 14.5, color: colors.textSoft }}>
-              I acted on it
-            </AppText>
-          </Pressable>
+        </View>
+        <View style={{ flex: 1.15 }} />
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12 }}>
+          <PillButton label={cta} onPress={onNext} />
         </View>
       </SafeAreaView>
     </View>
   );
 }
 
-// ── the breathing wave you ride (timed; used for the 3-breath settle too) ────
+// ── ask 1 · where are you? ───────────────────────────────────────────
+function AskWhere({ total, index, value, onPick, onBack, onClose, onNext }: { total: number; index: number; value: string | null; onPick: (k: string) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+        <TopBar total={total} index={index} onBack={onBack} onClose={onClose} />
+        <View style={{ paddingHorizontal: 29, paddingTop: 26 }}>
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 28, lineHeight: 32, letterSpacing: 0.28, color: colors.text }}>
+            Where are you right now?
+          </AppText>
+        </View>
+        <ScrollView style={{ flex: 1, marginTop: 26 }} contentContainerStyle={{ paddingHorizontal: 29 }} showsVerticalScrollIndicator={false}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+            {PLACES.map(([k, label]) => {
+              const on = value === k;
+              return (
+                <Pressable
+                  key={k}
+                  onPress={() => onPick(k)}
+                  style={{
+                    width: '47.8%',
+                    alignItems: 'center',
+                    gap: 10,
+                    backgroundColor: colors.surface,
+                    borderRadius: 18,
+                    paddingTop: 18,
+                    paddingBottom: 15,
+                    paddingHorizontal: 8,
+                    borderWidth: 1.8,
+                    borderColor: on ? colors.ink : 'transparent',
+                  }}>
+                  <View style={{ width: 46, height: 46, borderRadius: 9999, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? colors.ink : colors.accentSoft }}>
+                    <PlaceIcon k={k} c={on ? colors.inkText : colors.text} />
+                  </View>
+                  <AppText style={[sans(on ? '600' : '500'), { fontSize: 13.5, color: colors.text }]}>{label}</AppText>
+                </Pressable>
+              );
+            })}
+          </View>
+        </ScrollView>
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12, paddingTop: 20 }}>
+          <PillButton label="Continue" enabled={!!value} onPress={onNext} />
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+// ── ask 2 · how strong is it? ────────────────────────────────────────
+function AskStrength({ total, index, value, onPick, onBack, onClose, onNext }: { total: number; index: number; value: number | null; onPick: (i: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+        <TopBar total={total} index={index} onBack={onBack} onClose={onClose} />
+        <View style={{ paddingHorizontal: 29, paddingTop: 26 }}>
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 28, lineHeight: 32, letterSpacing: 0.28, color: colors.text }}>
+            How strong is the urge?
+          </AppText>
+        </View>
+        <View style={{ flex: 1, paddingHorizontal: 29, paddingTop: 24, gap: 10 }}>
+          {STRENGTHS.map(([label, note, t], i) => {
+            const on = value === i;
+            return (
+              <Pressable
+                key={label}
+                onPress={() => onPick(i)}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 14,
+                  backgroundColor: colors.surface,
+                  borderRadius: 18,
+                  paddingVertical: 15,
+                  paddingHorizontal: 16,
+                  borderWidth: 1.8,
+                  borderColor: on ? colors.ink : 'transparent',
+                }}>
+                <View style={{ width: 46, height: 46, borderRadius: 9999, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? colors.ink : colors.accentSoft }}>
+                  <StrengthMark t={t} c={on ? colors.inkText : colors.text} />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <AppText style={[sans(on ? '600' : '500'), { fontSize: 15, color: colors.text }]}>{label}</AppText>
+                  <AppText style={[sans('400'), { fontSize: 13, color: colors.textMuted, marginTop: 2 }]}>{note}</AppText>
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12, paddingTop: 20 }}>
+          <PillButton label={value === 2 ? 'Get me out of it' : 'Continue'} enabled={value != null} onPress={onNext} />
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+// ── the surf: dark water, phases, timer ──────────────────────────────
+const SURF_SECONDS = 180;
 const PHASES = [
   { at: 0.0, name: 'Notice it', tip: 'The urge is here. Don’t push it away.' },
   { at: 0.22, name: 'It’s rising', tip: 'Let it build. You are not the wave.' },
@@ -603,26 +376,26 @@ const PHASES = [
   { at: 0.86, name: 'Calm returns', tip: 'You rode it out. Notice the quiet.' },
 ];
 
-function SurfScreen({ seconds, heading, doneLabel, onBack, onDone }: { seconds: number; heading?: string; doneLabel: string; onBack: () => void; onDone: () => void }) {
+function SurfScreen({ onBack, onDone }: { onBack: () => void; onDone: () => void }) {
   const [progress, setProgress] = useState(0);
-  const [remaining, setRemaining] = useState(seconds);
+  const [remaining, setRemaining] = useState(SURF_SECONDS);
   const progressRef = useRef(0);
   const raf = useRef(0);
-  const start = useRef<number | null>(null);
 
   useEffect(() => {
     let mounted = true;
     let lastUi = 0;
-    const loop = (now: number) => {
+    const start = Date.now();
+    const loop = () => {
       if (!mounted) return;
-      if (start.current == null) start.current = now;
-      const elapsed = (now - start.current) / 1000;
-      const p = Math.min(1, elapsed / seconds);
+      const elapsed = (Date.now() - start) / 1000;
+      const p = Math.min(1, elapsed / SURF_SECONDS);
       progressRef.current = p;
+      const now = Date.now();
       if (now - lastUi > 110) {
         lastUi = now;
         setProgress(p);
-        setRemaining(Math.max(0, Math.ceil(seconds - elapsed)));
+        setRemaining(Math.max(0, Math.ceil(SURF_SECONDS - elapsed)));
       }
       if (p < 1) raf.current = requestAnimationFrame(loop);
     };
@@ -631,98 +404,167 @@ function SurfScreen({ seconds, heading, doneLabel, onBack, onDone }: { seconds: 
       mounted = false;
       cancelAnimationFrame(raf.current);
     };
-  }, [seconds]);
+  }, []);
 
   const cur = PHASES.reduce((acc, ph) => (progress >= ph.at ? ph : acc), PHASES[0]);
   const mm = String(Math.floor(remaining / 60));
   const ss = String(remaining % 60).padStart(2, '0');
 
   return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.sea} />
-      <Stars />
-      <UrgeWave progressRef={progressRef} />
+    <View style={{ flex: 1, backgroundColor: '#131313', overflow: 'hidden' }}>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <UrgeWave progressRef={progressRef} />
+      </View>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <TopChrome
-          back="back"
-          onBack={onBack}
-          trailing={
-            <AppText weightOverride="700" style={{ fontSize: 17, letterSpacing: 0.3, color: colors.textMuted, fontVariant: ['tabular-nums'] }}>
-              {mm}:{ss}
-            </AppText>
-          }
-        />
-        <View style={{ marginTop: 36, paddingHorizontal: 36, alignItems: 'center' }}>
-          <AppText center weightOverride="700" color={SEA(0.98)} style={{ fontSize: 12.5, letterSpacing: 2.4, textTransform: 'uppercase' }}>
-            {heading ?? cur.name}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 29, paddingTop: 8 }}>
+          <Pressable onPress={onBack} hitSlop={10} accessibilityLabel="Back" style={{ padding: 4, marginLeft: -4 }}>
+            <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+              <Path d="M15 5l-7 7 7 7" stroke="#F5F4F1" strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+          </Pressable>
+          <AppText style={[sans('500'), { fontSize: 15.5, letterSpacing: 0.31, color: 'rgba(245,244,241,0.65)', fontVariant: ['tabular-nums'] }]}>
+            {mm}:{ss}
           </AppText>
-          <FadeIn key={cur.name} style={{ marginTop: 14 }}>
-            <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 25, lineHeight: 31, letterSpacing: 0.25 }}>
-              {cur.tip}
-            </AppText>
-          </FadeIn>
         </View>
-
+        <View style={{ marginTop: 46, alignItems: 'center', paddingHorizontal: 36 }}>
+          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: 'rgba(245,244,241,0.5)' }]}>
+            {cur.name}
+          </AppText>
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 25, lineHeight: 31, letterSpacing: 0.25, color: '#F5F4F1', marginTop: 14 }}>
+            {cur.tip}
+          </AppText>
+        </View>
         <View style={{ flex: 1 }} />
-
-        <View style={{ paddingHorizontal: 26, paddingBottom: 18 }}>
-          <BrightButton label={doneLabel} onPress={onDone} />
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12 }}>
+          <PillButton label="It passed — I'm through it" onPress={onDone} light />
         </View>
       </SafeAreaView>
     </View>
   );
 }
 
-// you rode it out — night-sky landing
-// ── the finish: a full-screen night sea. Dark, immersive, factual. ────
-function NightSea() {
-  const band = (y: number, a: number, fill: string) =>
-    `M-4 ${y} C 60 ${y - a} 130 ${y + a} 201 ${y} C 272 ${y - a} 340 ${y + a} 406 ${y} L406 260 L-4 260 Z`;
+// ── you rode it out — the calm sea, full screen ──────────────────────
+function DoneScreen({ onClose }: { onClose: () => void }) {
   return (
-    <Svg width="100%" height={260} viewBox="0 0 402 260" preserveAspectRatio="xMidYMax slice">
-      <Circle cx={300} cy={40} r={26} fill="#EDEDE8" opacity={0.12} />
-      <Circle cx={300} cy={40} r={13} fill="#EDEDE8" opacity={0.5} />
-      <Path d={band(96, 9, '#15161A')} fill="#15161A" />
-      <Path d="M-4 96 C 60 87 130 105 201 96 C 272 87 340 105 406 96" stroke="rgba(237,237,232,0.3)" strokeWidth={1.8} strokeLinecap="round" fill="none" />
-      <Path d={band(150, 7, '#101114')} fill="#101114" />
-      <Path d="M-4 150 C 60 143 130 157 201 150 C 272 143 340 157 406 150" stroke="rgba(237,237,232,0.18)" strokeWidth={1.6} strokeLinecap="round" fill="none" />
-      <Path d={band(204, 5, '#0C0D10')} fill="#0C0D10" />
-    </Svg>
+    <View style={{ flex: 1, backgroundColor: '#0B0B0C' }}>
+      <Image source={require('../../assets/images/urge-calm.webp')} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      <LinearGradient
+        colors={['rgba(7,8,10,0.45)', 'rgba(7,8,10,0.05)', 'rgba(7,8,10,0.14)', 'rgba(7,8,10,0.78)']}
+        locations={[0, 0.28, 0.55, 1]}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      />
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+        <View style={{ flex: 1.35 }} />
+        <View style={{ paddingHorizontal: 34, alignItems: 'center' }}>
+          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: 'rgba(245,244,241,0.6)' }]}>
+            The wave broke
+          </AppText>
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 34, lineHeight: 37, letterSpacing: 0.17, color: '#F5F4F1', marginTop: 14 }}>
+            You rode it out.
+          </AppText>
+          <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: 'rgba(245,244,241,0.72)', marginTop: 14 }]}>
+            It rose, crested, and passed — and you were still here.
+          </AppText>
+        </View>
+        <View style={{ flex: 1 }} />
+        <View style={{ paddingHorizontal: 29, paddingBottom: 12 }}>
+          <PillButton label="Done" onPress={onClose} light />
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }
 
-function DoneScreen({ reopens, onClose }: { reopens: number; onClose: () => void }) {
+// ── the flow ─────────────────────────────────────────────────────────
+export default function Urge() {
+  const router = useRouter();
+  const createEvent = useCreateEvent();
+  const [i, setI] = useState(0);
+  const [place, setPlace] = useState<string | null>(null);
+  const [strength, setStrength] = useState<number | null>(null);
+  const logged = useRef(false);
+
+  // keep a light session so a mid-urge reopen returns here
+  useEffect(() => {
+    void saveUrgeSession(newUrgeSession(5));
+    return () => {
+      void clearUrgeSession();
+    };
+  }, []);
+
+  const path = strength === 2 ? ['move', 'surf'] : strength === 0 ? ['wave', 'pass', 'name', 'surf'] : ['wave', 'pass', 'move', 'name', 'surf'];
+  const steps = ['where', 'strength', ...path, 'done'];
+  const total = steps.length - 1; // 'done' isn't on the bar
+  const urgent = strength === 2;
+
+  const close = () => {
+    void clearUrgeSession();
+    if (router.canGoBack()) router.back();
+    else router.replace('/(app)/today');
+  };
+  const next = () => setI((v) => Math.min(steps.length - 1, v + 1));
+  const back = () => setI((v) => Math.max(0, v - 1));
+
+  async function finish() {
+    if (!logged.current) {
+      logged.current = true;
+      await createEvent({
+        type: 'urge_rode_out',
+        severity: strength != null ? STRENGTH_SEVERITY[strength] : undefined,
+        trigger: place ? PLACES.find(([k]) => k === place)?.[1] : undefined,
+      }).catch(() => {});
+    }
+    next();
+  }
+
+  const step = steps[i];
+  const common = { total, index: i, onBack: i === 0 ? close : back, onClose: close, onNext: next };
+
   return (
-    <View style={{ flex: 1, backgroundColor: '#08080A' }}>
-      <StatusBar style="light" />
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
-        <NightSea />
-      </View>
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
-          <AppText center color="#EDEDE8" style={{ fontFamily: fonts.serif, fontSize: 38, lineHeight: 42, letterSpacing: 0.38 }}>
-            You rode it out.
-          </AppText>
-          <AppText center weightOverride="500" style={{ fontSize: 16.5, lineHeight: 24, color: 'rgba(237,237,232,0.6)', marginTop: 14, paddingHorizontal: 6 }}>
-            {reopens > 0 ? `Waited; it passed. ${reopens + 1} check-ins.` : 'Waited; it passed.'}
-          </AppText>
-        </View>
-        <View style={{ paddingHorizontal: 26, paddingBottom: 18 }}>
-          <Pressable
-            onPress={onClose}
-            style={({ pressed }) => ({
-              backgroundColor: '#EDEDE8',
-              borderRadius: 9999,
-              paddingVertical: 16,
-              alignItems: 'center',
-              transform: [{ scale: pressed ? 0.98 : 1 }],
-            })}>
-            <AppText weightOverride="600" style={{ fontSize: 15.5, color: '#131313' }}>
-              Done
-            </AppText>
-          </Pressable>
-        </View>
-      </SafeAreaView>
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <StatusBar style={step === 'wave' || step === 'pass' || step === 'surf' || step === 'done' ? 'light' : 'dark'} />
+      {step === 'where' ? <AskWhere {...common} value={place} onPick={setPlace} /> : null}
+      {step === 'strength' ? <AskStrength {...common} value={strength} onPick={setStrength} /> : null}
+      {step === 'wave' ? (
+        <DarkImagePage
+          {...common}
+          img={require('../../assets/images/urge-wave.webp')}
+          headline="The urge is a wave"
+          sub={"It rises, peaks, and passes.\nYou don't have to obey it.\nStay with it for a moment."}
+          cta="I'm ready"
+        />
+      ) : null}
+      {step === 'pass' ? (
+        <DarkImagePage
+          {...common}
+          img={require('../../assets/images/urge-waves.webp')}
+          headline="It always passes"
+          sub={"Usually within minutes — often less.\nYou don't have to fight it."}
+          cta="Continue"
+        />
+      ) : null}
+      {step === 'move' ? (
+        <VignettePage
+          {...common}
+          stage="remove"
+          label={urgent ? 'Right now · step one' : 'Step one'}
+          headline={(PLACE_MOVE[place || 'elsewhere'] || PLACE_MOVE.elsewhere).headline}
+          sub={(PLACE_MOVE[place || 'elsewhere'] || PLACE_MOVE.elsewhere).sub}
+          cta={(PLACE_MOVE[place || 'elsewhere'] || PLACE_MOVE.elsewhere).cta}
+        />
+      ) : null}
+      {step === 'name' ? (
+        <VignettePage
+          {...common}
+          stage="name"
+          label="Step two"
+          headline="Name the urge out loud"
+          sub={'Say it plainly: “I’m having the urge to ___.” Named, it shrinks.'}
+          cta="I named it"
+        />
+      ) : null}
+      {step === 'surf' ? <SurfScreen onBack={back} onDone={finish} /> : null}
+      {step === 'done' ? <DoneScreen onClose={close} /> : null}
     </View>
   );
 }

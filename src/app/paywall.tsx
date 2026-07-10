@@ -2,16 +2,16 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
-import { useLifeMap } from '@/lib/backend';
+import { useCurrentUser } from '@/lib/backend';
 
 export default function Paywall() {
   const router = useRouter();
-  const lifeMap = useLifeMap();
+  const user = useCurrentUser();
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   return (
     <>
       <StatusBar style="dark" />
-      <PaywallFlow prize={(lifeMap?.values ?? []).map((v) => v.label)} confirmLabel="Continue" onDone={close} />
+      <PaywallFlow name={user?.displayName?.trim().split(/\s+/)[0]} confirmLabel="Continue" onDone={close} />
     </>
   );
 }

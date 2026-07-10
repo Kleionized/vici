@@ -4,7 +4,7 @@ import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
+import { AppText, Laurel } from '@/components/ui';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -27,7 +27,12 @@ export function StoicTabBar() {
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
 
-  const active = (route: string) => pathname.startsWith('/' + route.split('/').pop());
+  const active = (route: string) => {
+    const tail = '/' + route.split('/').pop();
+    // Rough Days hangs off the Log tab
+    if (tail === '/log' && pathname.startsWith('/rough-days')) return true;
+    return pathname.startsWith(tail);
+  };
 
   const tab = (item: Item) => {
     const on = active(item.route);
@@ -74,15 +79,7 @@ export function StoicTabBar() {
             justifyContent: 'center',
             transform: [{ scale: pressed ? 0.965 : 1 }],
           })}>
-          <Svg width={25} height={17} viewBox="0 0 34 20" fill="none">
-            <Path
-              d="M2 11h6l2.6-8 4.4 16 2.6-8h3l1.6-3 1.6 3H32"
-              stroke={colors.inkText}
-              strokeWidth={2.5}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </Svg>
+          <Laurel size={27} color={colors.inkText} />
         </Pressable>
       </View>
       {tab(ITEMS[2])}

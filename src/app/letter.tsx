@@ -79,7 +79,7 @@ export default function LetterScreen() {
       await setJSON(LETTER_KEY, { kept: true, at: Date.now() });
       await setJSON(PENDING_KEY, null);
       if (prev?.kept) return;
-      const body = `Dear ${name},\n\nIt happened. Nothing since day zero is erased.\n\nOne slip is data. Two begins a pattern. The next choice is the only one that counts: don’t fail twice.\n\nI can still feel how much you meant it: ${why}.\n\n— you, on day zero`;
+      const body = `Dear ${name},\n\nIf you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that matters this morning.\n\nOne slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: ${why}. All still yours.\n\nThe only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.\n\nI'll see you tonight, steadier.\n\n— the you who makes it out`;
       await createJournalEntry({ tag: 'Letter', title: 'Don’t fail twice', body }).catch(() => {});
     })();
     setTimeout(() => {
@@ -123,8 +123,8 @@ export default function LetterScreen() {
             borderRadius: 24,
             overflow: 'hidden',
           }}>
-          {/* envelope — full-bleed dark section, like Today's Next-lesson card */}
-          <View style={{ height: 212, backgroundColor: colors.ink, overflow: 'hidden' }}>
+          {/* envelope — the supplied wax-seal artwork on a dark ground */}
+          <View style={{ height: 212, backgroundColor: '#131313', overflow: 'hidden' }}>
             <Animated.View
               style={{
                 position: 'absolute',
@@ -134,14 +134,11 @@ export default function LetterScreen() {
                 transform: [{ scale: breathe.interpolate({ inputRange: [0, 1], outputRange: [1, 1.035] }) }],
               }}>
               <Image
-                source={require('../../assets/images/letter-envelope.webp')}
+                source={require('../../assets/images/envelope-seal.png')}
                 contentFit="contain"
-                style={{ width: '76%', height: '84%' }}
+                style={{ width: '74%', height: '84%' }}
               />
             </Animated.View>
-            <View style={{ position: 'absolute', left: 13, top: 13, transform: [{ rotate: '-9deg' }], opacity: 0.9 }}>
-              <Postmark size={72} day="0" ink="rgba(245,244,241,0.78)" />
-            </View>
             <Pressable
               onPress={later}
               hitSlop={8}
@@ -164,13 +161,8 @@ export default function LetterScreen() {
           </View>
 
           <View style={{ paddingHorizontal: 28, paddingTop: 26, paddingBottom: 28, alignItems: 'center' }}>
-            <AppText style={{ fontFamily: fonts.serif, fontSize: 27, lineHeight: 30, letterSpacing: 0.27, color: colors.text }}>
-              A letter for you.
-            </AppText>
-            <AppText
-              center
-              style={[sans('400'), { fontSize: 13, lineHeight: 21, color: colors.textMuted, marginTop: 14, maxWidth: 248 }]}>
-              Sealed on day zero. It waits in your Log.
+            <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 27, lineHeight: 30, letterSpacing: 0.27, color: colors.text }}>
+              A letter for the slip.
             </AppText>
             <Pressable
               onPress={breakSeal}
@@ -222,9 +214,7 @@ export default function LetterScreen() {
               paddingHorizontal: 22,
               paddingTop: 20,
             }}>
-            <View style={{ transform: [{ rotate: '-6deg' }], marginLeft: -6 }}>
-              <Postmark size={72} day="0" />
-            </View>
+            <View style={{ width: 34 }} />
             <Pressable
               onPress={() => setPhase('arrive')}
               hitSlop={8}
@@ -248,31 +238,36 @@ export default function LetterScreen() {
             <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 29, lineHeight: 34, color: LT_INK_STRONG, marginBottom: 18 }}>
               Dear {name},
             </AppText>
-            <LetterP>It happened. Nothing since day zero is erased.</LetterP>
             <LetterP>
-              One slip is data. Two begins a pattern. The next choice is the only one that counts:{' '}
+              If you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that
+              matters this morning.
+            </LetterP>
+            <LetterP>
+              One slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you
+              started:{' '}
               <AppText
                 style={{
                   fontFamily: fonts.serifSharpItalic,
                   color: LT_INK_STRONG,
                   textDecorationLine: 'underline',
                 }}>
-                don’t fail twice
+                {why}
               </AppText>
-              .
+              . All still yours.
             </LetterP>
-            <LetterP>I can still feel how much you meant it: {why}.</LetterP>
+            <LetterP>The only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.</LetterP>
+            <LetterP>I'll see you tonight, steadier.</LetterP>
 
             <View style={{ marginTop: 26, gap: 3 }}>
               <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 21, color: LT_INK_STRONG }}>
-                — you, on day zero
+                — the you who makes it out
               </AppText>
               <Svg width={150} height={12} viewBox="0 0 150 12" fill="none">
                 <Path d="M2 8 C 34 2, 58 10, 86 6 S 132 4, 148 7" stroke="rgba(38,38,31,0.5)" strokeWidth={1.6} strokeLinecap="round" />
               </Svg>
             </View>
             <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 14.5, lineHeight: 22, color: 'rgba(59,59,51,0.62)', marginTop: 24 }}>
-              The urge tool is one tap away.
+              P.S. — the urge to spiral is also a wave. It passes too.
             </AppText>
           </ScrollView>
 
@@ -303,9 +298,6 @@ export default function LetterScreen() {
                 Tuck it into your Log
               </AppText>
             </Pressable>
-            <AppText center style={[sans('400'), { fontSize: 12, color: 'rgba(59,59,51,0.55)', marginTop: 10 }]}>
-              It will wait there, sealed, until it’s needed.
-            </AppText>
           </View>
 
           {/* KEPT stamp */}
@@ -324,7 +316,7 @@ export default function LetterScreen() {
                 backgroundColor: '#F9F7F3',
               }}>
               <AppText style={[sans('500'), { fontSize: 13, letterSpacing: 2.08, color: 'rgba(59,59,51,0.82)' }]}>
-                RESEALED
+                KEPT
               </AppText>
             </View>
           )}
@@ -369,7 +361,7 @@ export default function LetterScreen() {
                 </Svg>
               </View>
               <AppText style={[sans('500'), { fontSize: 14, color: colors.text }]}>
-                {phase === 'later' ? 'It’ll wait in your Log' : 'Resealed into your Log'}
+                {phase === 'later' ? "It'll be there if you need it" : 'Tucked into your Log'}
               </AppText>
             </View>
           </Animated.View>

@@ -2,29 +2,15 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Pressable, ScrollView, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import {
-  AppText,
-  Button,
-  CategoryBadge,
-  ChoiceInput,
-  EmptyState,
-  Field,
-  Icon,
-  Illustration,
-  type IllustrationName,
-  LESSON_VISUAL,
-  LoadingView,
-  ScaleInput,
-  Screen,
-  SectionLabel,
-} from '@/components/ui';
+import { AppText, Button, CategoryBadge, ChoiceInput, EmptyState, Field, Icon, Illustration, LESSON_VISUAL, Laurel, LoadingView, ScaleInput, Screen, SectionLabel, type IllustrationName } from '@/components/ui';
 import { type MdBlock, parseMarkdown, renderInline } from '@/components/ui/MarkdownView';
 import { URGE_TOOL_LESSON_SLUGS } from '@/content/seedLessons';
 import { useCompleteLesson, useLessonDetail, useSaveReflection, useStartLesson } from '@/lib/backend';
 import { CATEGORY_LABEL } from '@/lib/labels';
-import { colors, radius, spacing } from '@/lib/theme';
+import { colors, fonts, radius, sans, spacing } from '@/lib/theme';
 import type { Lesson, ReflectionField } from '@/lib/types';
 
 type Answers = Record<string, string | number>;
@@ -173,79 +159,59 @@ export default function LessonPlayer() {
   return <LessonReader pages={pages} lesson={lesson} tint={tint} onClose={goBack} onBegin={() => setPhase('task')} />;
 }
 
-// ── Lesson reader (cover with a line-by-line reveal, then a scrollable body) ──
+// ── Lesson reader (canvas: screens-lesson-flow) — paged, not scrolled:
+// one idea per page in the urge-flow grammar: segmented progress, back, ✕,
+// a title page, one section per page, then the laurel done page. ──
 
-/** Fades its children in once, on mount. */
-function FadeIn({ children, duration = 480 }: { children: React.ReactNode; duration?: number }) {
-  const [o] = useState(() => new Animated.Value(0));
-  useEffect(() => {
-    Animated.timing(o, { toValue: 1, duration, useNativeDriver: true }).start();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return <Animated.View style={{ opacity: o }}>{children}</Animated.View>;
+function romanNum(n: number): string {
+  const table: [number, string][] = [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+  let out = '';
+  let x = Math.max(1, Math.round(n));
+  for (const [v, r] of table) while (x >= v) { out += r; x -= v; }
+  return out;
+}
+const MIN_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
+function LFTopBar({ total, index, onBack, onClose }: { total: number; index: number; onBack: () => void; onClose: () => void }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 29, paddingTop: 8 }}>
+      <Pressable onPress={onBack} hitSlop={10} accessibilityLabel="Back" style={{ padding: 4, marginLeft: -4 }}>
+        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+          <Path d="M15 5l-7 7 7 7" stroke={colors.text} strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+      </Pressable>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', gap: 6, paddingHorizontal: 4 }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <View key={i} style={{ flex: 1, maxWidth: 26, height: 4, borderRadius: 9999, backgroundColor: i <= index ? colors.ink : colors.borderStrong }} />
+        ))}
+      </View>
+      <Pressable onPress={onClose} hitSlop={10} accessibilityLabel="Close" style={{ padding: 4, marginRight: -4 }}>
+        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+          <Path d="M6 6l12 12M18 6L6 18" stroke={colors.text} strokeWidth={2.1} strokeLinecap="round" />
+        </Svg>
+      </Pressable>
+    </View>
+  );
 }
 
-function splitSentences(text: string): string[] {
-  const parts = text.match(/[^.!?]+[.!?]+(?:["'’”)\]]+)?\s*|[^.!?]+$/g);
-  return (parts ?? [text]).map((s) => s.trim()).filter(Boolean);
-}
-
-/** The text "lines" of a page, in the order they should fade in. */
-function pageBeats(page: StoryPage, lesson: Lesson, tint: string): React.ReactNode[] {
-  if (page.kind === 'cover') {
-    return [
-      <AppText key="cat" variant="label" color={tint}>
-        {CATEGORY_LABEL[lesson.category]} · Week {lesson.week}
-      </AppText>,
-      <AppText key="title" variant="hero">
-        {lesson.title}
-      </AppText>,
-      lesson.estimatedMinutes ? (
-        <AppText key="min" variant="soft">
-          {lesson.estimatedMinutes} min
-        </AppText>
-      ) : null,
-    ].filter(Boolean) as React.ReactNode[];
-  }
-
-  const beats: React.ReactNode[] = [];
-  if (page.heading) {
-    beats.push(
-      <AppText key="eyebrow" variant="label" color={tint}>
-        {page.heading}
-      </AppText>,
-    );
-  }
-  if (page.lead) {
-    beats.push(
-      <AppText key="lead" variant="title">
-        {renderInline(page.lead)}
-      </AppText>,
-    );
-  }
-  page.rest.forEach((b, bi) => {
-    if (!('text' in b)) {
-      b.items.forEach((item, j) =>
-        beats.push(
-          <View key={`l${bi}-${j}`} style={{ flexDirection: 'row', gap: spacing.sm }}>
-            <AppText variant="muted">{b.kind === 'ol' ? `${j + 1}.` : '•'}</AppText>
-            <AppText variant="muted" style={{ flex: 1 }}>
-              {renderInline(item)}
-            </AppText>
-          </View>,
-        ),
-      );
-    } else {
-      splitSentences(b.text).forEach((s, si) =>
-        beats.push(
-          <AppText key={`p${bi}-${si}`} variant="muted">
-            {renderInline(s)}
-          </AppText>,
-        ),
-      );
-    }
-  });
-  return beats;
+function LFCTA({ label = 'Continue', onPress }: { label?: string; onPress: () => void }) {
+  return (
+    <View style={{ paddingHorizontal: 29, paddingBottom: 14 }}>
+      <Pressable
+        onPress={onPress}
+        accessibilityRole="button"
+        style={({ pressed }) => ({
+          width: '100%',
+          backgroundColor: colors.ink,
+          borderRadius: 9999,
+          paddingVertical: 16,
+          alignItems: 'center',
+          transform: [{ scale: pressed ? 0.98 : 1 }],
+        })}>
+        <AppText style={[sans('600'), { fontSize: 15.5, letterSpacing: 0.16, color: colors.inkText }]}>{label}</AppText>
+      </Pressable>
+    </View>
+  );
 }
 
 function LessonReader({
@@ -261,167 +227,82 @@ function LessonReader({
   onClose: () => void;
   onBegin: () => void;
 }) {
-  // Two screens only: an animated cover, then the whole lesson on one
-  // scrollable page. The reader never advances on its own — you tap through.
-  const [view, setView] = useState<'cover' | 'body'>('cover');
-  const cover = pages[0];
-  const sections = pages.slice(1);
-  const hasBody = sections.length > 0;
-
-  if (view === 'cover') {
-    return <LessonCover cover={cover} lesson={lesson} tint={tint} nextIsBegin={!hasBody} onClose={onClose} onNext={() => (hasBody ? setView('body') : onBegin())} />;
-  }
-  return <LessonBody sections={sections} lesson={lesson} tint={tint} onClose={onClose} onBack={() => setView('cover')} onBegin={onBegin} />;
-}
-
-/** The cover: a title card whose lines fade in one at a time. Tap to continue —
- * no auto-advance. This is the only place the line-by-line reveal plays. */
-function LessonCover({
-  cover,
-  lesson,
-  tint,
-  nextIsBegin,
-  onClose,
-  onNext,
-}: {
-  cover: StoryPage;
-  lesson: Lesson;
-  tint: string;
-  nextIsBegin: boolean;
-  onClose: () => void;
-  onNext: () => void;
-}) {
   const insets = useSafeAreaInsets();
-  const beats = pageBeats(cover, lesson, tint);
-  const total = beats.length;
-  const [revealed, setRevealed] = useState(0);
-  const [opacity] = useState(() => new Animated.Value(0));
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const done = revealed >= total;
+  const [i, setI] = useState(0);
+  const sections = pages.filter((p): p is Extract<StoryPage, { kind: 'story' }> => p.kind === 'story');
+  const total = sections.length + 2; // title · sections · done
+  const back = () => (i === 0 ? onClose() : setI(i - 1));
+  const next = () => setI((v) => Math.min(total - 1, v + 1));
+  const eyebrow = `Ground ${romanNum(lesson.week)} · Lesson ${romanNum(lesson.dayInWeek)}`;
+  const mins = lesson.estimatedMinutes ?? 3;
+  const minLabel = mins <= 10 ? `${MIN_WORDS[mins]} minutes` : `${mins} minutes`;
 
-  useEffect(() => {
-    Animated.timing(opacity, { toValue: 1, duration: 460, useNativeDriver: true }).start();
-    let i = 0;
-    const step = () => {
-      i += 1;
-      setRevealed(i);
-      if (i < total) timers.current.push(setTimeout(step, 900));
-    };
-    timers.current.push(setTimeout(step, 480));
-    return () => timers.current.forEach(clearTimeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onTap = () => {
-    if (!done) {
-      timers.current.forEach(clearTimeout);
-      setRevealed(total);
-    } else {
-      onNext();
-    }
-  };
-
-  return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <Pressable style={{ flex: 1 }} onPress={onTap} accessibilityRole="button" accessibilityLabel="Continue">
-        <Animated.View
-          style={{
-            flex: 1,
-            opacity,
-            paddingHorizontal: spacing.xl,
-            paddingTop: insets.top + 64,
-            paddingBottom: insets.bottom + 96,
-            justifyContent: 'center',
-            gap: spacing.xxl,
-          }}>
-          <View style={{ alignItems: 'center', gap: spacing.lg }}>
-            <CategoryBadge category={lesson.category} size={52} />
-            <Illustration name={cover.art} width={226} color={colors.text} accent={tint} />
-          </View>
-          <View style={{ gap: spacing.md }}>
-            {beats.slice(0, revealed).map((b, idx) => (
-              <FadeIn key={idx}>{b}</FadeIn>
-            ))}
-          </View>
-        </Animated.View>
-      </Pressable>
-
-      <View pointerEvents="box-none" style={{ position: 'absolute', top: insets.top + 10, left: spacing.xl, right: spacing.xl }}>
-        <Pressable onPress={onClose} hitSlop={10} style={{ alignSelf: 'flex-end' }}>
-          <AppText style={{ color: colors.textMuted, fontSize: 20 }}>✕</AppText>
-        </Pressable>
-      </View>
-
-      <View pointerEvents="none" style={{ position: 'absolute', left: spacing.xl, right: spacing.xl, bottom: insets.bottom + spacing.lg, alignItems: 'center' }}>
-        <AppText variant="soft">{done ? (nextIsBegin ? 'Tap to begin' : 'Tap to read') : 'Tap to continue'}</AppText>
-      </View>
-    </View>
-  );
-}
-
-/** The body: the whole lesson on one calm, scrollable page — every section's
- * text shown at once (no per-line reveal, no auto-advance), then the practice. */
-function LessonBody({
-  sections,
-  lesson,
-  tint,
-  onClose,
-  onBack,
-  onBegin,
-}: {
-  sections: StoryPage[];
-  lesson: Lesson;
-  tint: string;
-  onClose: () => void;
-  onBack: () => void;
-  onBegin: () => void;
-}) {
-  const insets = useSafeAreaInsets();
-  const [opacity] = useState(() => new Animated.Value(0));
-  useEffect(() => {
-    Animated.timing(opacity, { toValue: 1, duration: 420, useNativeDriver: true }).start();
-  }, [opacity]);
-
-  return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingTop: insets.top + 10, paddingHorizontal: spacing.xl, paddingBottom: spacing.sm }}>
-        <Pressable onPress={onBack} hitSlop={10}>
-          <View style={{ transform: [{ rotate: '180deg' }] }}>
-            <Icon name="arrow" size={18} color={colors.textMuted} />
-          </View>
-        </Pressable>
-        <AppText weightOverride="700" numberOfLines={1} style={{ flex: 1, fontSize: 16 }}>
+  let body: React.ReactNode;
+  if (i === 0) {
+    // title page
+    body = (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 34 }}>
+        <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 2.64, textTransform: 'uppercase', color: colors.textSoft }]}>
+          {eyebrow}
+        </AppText>
+        <View style={{ width: 40, height: 1.5, backgroundColor: colors.text, marginTop: 18, marginBottom: 22 }} />
+        <AppText center style={{ fontFamily: fonts.serifSharp, fontSize: 36, lineHeight: 41, color: colors.text }}>
           {lesson.title}
         </AppText>
-        <Pressable onPress={onClose} hitSlop={10}>
-          <AppText style={{ color: colors.textMuted, fontSize: 20 }}>✕</AppText>
-        </Pressable>
+        <AppText style={[sans('500'), { fontSize: 13.5, color: colors.textSoft, marginTop: 18 }]}>{minLabel}</AppText>
       </View>
-
-      <Animated.View style={{ flex: 1, opacity }}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingTop: spacing.md, paddingBottom: insets.bottom + 108, gap: spacing.xl }}>
-          {sections.map((sec, si) => (
-            <View key={si} style={{ gap: spacing.md }}>
-              {pageBeats(sec, lesson, tint).map((b, bi) => (
-                <View key={bi}>{b}</View>
-              ))}
-            </View>
-          ))}
-        </ScrollView>
-      </Animated.View>
-
-      <View style={{ position: 'absolute', left: spacing.xl, right: spacing.xl, bottom: insets.bottom + spacing.lg }}>
-        <Button label="Begin the practice" onPress={onBegin} />
+    );
+  } else if (i <= sections.length) {
+    // one idea per page
+    const sec = sections[i - 1];
+    const rest = sec.rest.filter((b) => b.kind === 'p' || b.kind === 'ul' || b.kind === 'ol');
+    body = (
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 34, paddingVertical: 20 }} showsVerticalScrollIndicator={false}>
+        {sec.heading ? (
+          <AppText center style={{ fontFamily: fonts.serifSharp, fontSize: 31, lineHeight: 36, color: colors.text, maxWidth: 300, alignSelf: 'center' }}>
+            {sec.heading}
+          </AppText>
+        ) : null}
+        {sec.lead ? (
+          <AppText center style={[sans('400'), { fontSize: 14, lineHeight: 21.7, color: colors.textMuted, marginTop: 14, maxWidth: 290, alignSelf: 'center' }]}>
+            {sec.lead}
+          </AppText>
+        ) : null}
+        {rest.map((b, bi) => (
+          <AppText
+            key={bi}
+            center
+            style={[sans('400'), { fontSize: 14, lineHeight: 21.7, color: colors.textMuted, marginTop: 14, maxWidth: 290, alignSelf: 'center' }]}>
+            {'text' in b ? b.text : b.items.map((it) => `· ${it}`).join('\n')}
+          </AppText>
+        ))}
+      </ScrollView>
+    );
+  } else {
+    // done page — the laurel stamps in
+    body = (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 34 }}>
+        <Laurel size={46} color={colors.text} />
+        <AppText center style={{ fontFamily: fonts.serifSharp, fontSize: 33, lineHeight: 38, color: colors.text, marginTop: 24 }}>
+          Lesson {romanNum(lesson.dayInWeek)}, ridden.
+        </AppText>
+        <AppText style={[sans('500'), { fontSize: 13, color: colors.textSoft, marginTop: 16 }]}>
+          Ground {romanNum(lesson.week)} · {lesson.title}
+        </AppText>
       </View>
+    );
+  }
+
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.bg, paddingTop: insets.top, paddingBottom: Math.max(insets.bottom, 14) }}>
+      <StatusBar style="dark" />
+      <LFTopBar total={total} index={i} onBack={back} onClose={onClose} />
+      {body}
+      <LFCTA label={i === 0 ? 'Begin' : i === total - 1 ? 'On to the practice' : 'Continue'} onPress={i === total - 1 ? onBegin : next} />
     </View>
   );
 }
 
-// ── Task (light "your practice" page) ───────────────────────────────────────
 
 function TaskView({
   lesson,

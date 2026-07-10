@@ -5,17 +5,17 @@ import { AppText } from '@/components/ui/AppText';
 import { colors, sans } from '@/lib/theme';
 
 /**
- * The canonical urge-intensity input: a vertical list of five bands, each row
- * an ink ring that fills with the level plus a short factual descriptor. Used
- * identically by the Urge tab and the urge log — never a slider, never a
- * morphing scene. `dark` renders the same rows on a near-black ground.
+ * The canonical urge-intensity input (canvas: UrgeLogIntensity / the urge-surf
+ * strength ask): a vertical list of five bands, each led by a 46px circular
+ * chip holding the strength mark — a quiet ring with an ink disc that grows
+ * with the band. Selected rows take the inset ink border; the chip floods ink.
  */
 
 export const INTENSITY_BANDS: { label: string; note: string }[] = [
   { label: 'Faint', note: 'Barely noticeable' },
-  { label: 'Mild', note: 'There, but manageable' },
+  { label: 'Mild', note: 'Easy to set aside' },
   { label: 'Strong', note: 'Hard to ignore' },
-  { label: 'Intense', note: 'Pulling hard' },
+  { label: 'Intense', note: 'Hard to resist' },
   { label: 'Overwhelming', note: 'Almost gave in' },
 ];
 
@@ -24,26 +24,12 @@ export const bandToSeverity = (i: number) => i * 2 + 2; // 2 · 4 · 6 · 8 · 1
 /** Stored severity (1–10) → band index (0–4). */
 export const severityToBand = (s: number) => Math.min(4, Math.max(0, Math.ceil(s / 2) - 1));
 
-function FillRing({ fraction, on, dark }: { fraction: number; on: boolean; dark: boolean }) {
-  const R = 10.5;
-  const C = 2 * Math.PI * R;
-  const ink = dark ? '#EDEDE8' : colors.text;
-  const faint = dark ? 'rgba(237,237,232,0.22)' : 'rgba(0,0,0,0.14)';
+/** The strength mark — ring + a disc that grows with the pull. */
+function StrengthMark({ t, c }: { t: number; c: string }) {
   return (
-    <Svg width={30} height={30} viewBox="0 0 30 30">
-      <Circle cx={15} cy={15} r={R} stroke={on ? ink : faint} strokeWidth={2} fill="none" opacity={on ? 0.35 : 1} />
-      <Circle
-        cx={15}
-        cy={15}
-        r={R}
-        stroke={ink}
-        strokeWidth={2.6}
-        fill="none"
-        strokeLinecap="round"
-        strokeDasharray={`${C * fraction} ${C}`}
-        transform="rotate(-90 15 15)"
-        opacity={on ? 1 : 0.55}
-      />
+    <Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
+      <Circle cx={13} cy={13} r={11} stroke={c} strokeWidth={1.5} opacity={0.5} />
+      <Circle cx={13} cy={13} r={3.2 + t * 7.3} fill={c} />
     </Svg>
   );
 }
@@ -58,7 +44,10 @@ export function IntensityBands({
   dark?: boolean;
 }) {
   const cardBg = dark ? 'rgba(255,255,255,0.06)' : colors.surface;
+  const chipBg = dark ? 'rgba(255,255,255,0.08)' : colors.accentSoft;
   const ink = dark ? '#EDEDE8' : colors.text;
+  const fill = dark ? '#EDEDE8' : colors.ink;
+  const onFill = dark ? '#131313' : colors.inkText;
   const mut = dark ? 'rgba(237,237,232,0.55)' : colors.textMuted;
   return (
     <View style={{ gap: 10 }}>
@@ -76,16 +65,26 @@ export function IntensityBands({
               gap: 14,
               backgroundColor: cardBg,
               borderRadius: 18,
-              paddingVertical: 14,
+              paddingVertical: 15,
               paddingHorizontal: 16,
               borderWidth: 1.8,
               borderColor: on ? ink : 'transparent',
               transform: [{ scale: pressed ? 0.99 : 1 }],
             })}>
-            <FillRing fraction={(i + 1) / 5} on={on} dark={dark} />
+            <View
+              style={{
+                width: 46,
+                height: 46,
+                borderRadius: 9999,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: on ? fill : chipBg,
+              }}>
+              <StrengthMark t={i / (INTENSITY_BANDS.length - 1)} c={on ? onFill : ink} />
+            </View>
             <View style={{ flex: 1 }}>
-              <AppText style={[sans(on ? '600' : '500'), { fontSize: 15.5, color: ink }]}>{b.label}</AppText>
-              <AppText style={[sans('400'), { fontSize: 12.5, color: mut, marginTop: 1 }]}>{b.note}</AppText>
+              <AppText style={[sans(on ? '600' : '500'), { fontSize: 15, color: ink }]}>{b.label}</AppText>
+              <AppText style={[sans('400'), { fontSize: 13, color: mut, marginTop: 2 }]}>{b.note}</AppText>
             </View>
           </Pressable>
         );

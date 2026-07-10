@@ -209,6 +209,129 @@ export function SeaStack({
   );
 }
 
+// wandering footprints — the path, in miniature
+export function SPrints({ pts, o = 0.55, tilt = -18 }: { pts: [number, number][]; o?: number; tilt?: number }) {
+  return (
+    <G>
+      {pts.map(([x, y], i) => (
+        <Ellipse key={i} cx={x} cy={y} rx={2.8} ry={1.6} fill={SC.fgDeep} opacity={Math.max(0.12, o - i * 0.055)} transform={`rotate(${tilt + i * 3} ${x} ${y})`} />
+      ))}
+    </G>
+  );
+}
+
+// five-armed starfish
+export function SStar5({ x, y, s = 1, c = SC.fgDeep, rot = -14 }: { x: number; y: number; s?: number; c?: string; rot?: number }) {
+  return (
+    <Path
+      d="M0 -7 l2.1 4.3 4.8 .6 -3.5 3.3 .9 4.7 -4.3-2.3 -4.3 2.3 .9-4.7 -3.5-3.3 4.8-.6 Z"
+      fill={c}
+      transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}
+    />
+  );
+}
+
+// ── THE WAVE — the breaking crest (canvas: WaveCrest). Base y=0 at the
+// waterline, peak ~−88, spans x −118..+84 around 0. ──
+export function WaveCrest({ x = 0, y = 0, s = 1, deep = true }: { x?: number; y?: number; s?: number; deep?: boolean }) {
+  return (
+    <G transform={`translate(${x} ${y}) scale(${s})`}>
+      <Path d="M-118 0 C -90 -5 -62 -14 -42 -28 C -26 -41 -14 -58 -5 -71 C 3 -82 14 -88 26 -88 C 44 -88 57 -79 61 -65 C 64 -52 59 -39 47 -31 C 42 -27 36 -25 31 -26 C 40 -35 44 -46 41 -56 C 38 -68 28 -75 16 -74 C 7 -73 0 -66 -5 -56 C -13 -40 -26 -22 -44 -11 C -66 -2 -92 1 -118 0 Z" fill={SC.water} />
+      <Path d="M-5 -71 C 3 -82 14 -88 26 -88 C 44 -88 57 -79 61 -65 C 64 -52 59 -39 47 -31 C 42 -27 36 -25 31 -26 C 40 -35 44 -46 41 -56 C 38 -68 28 -75 16 -74 C 7 -73 0 -66 -5 -56 L-5 -71 Z" fill={SC.waterLo} opacity={0.9} />
+      {deep ? <Path d="M31 -26 C 40 -35 44 -46 41 -56 C 38 -68 28 -75 16 -74 C 22 -72 28 -68 31 -61 C 35 -52 34 -38 27 -28 C 28 -27 30 -26 31 -26 Z" fill={SC.waterDeep} opacity={0.55} /> : null}
+      <Path d="M-104 -3 C -78 -8 -54 -18 -37 -32 C -24 -43 -13 -58 -5 -70 C -12 -52 -22 -34 -36 -20 C -54 -6 -80 -1 -104 -3 Z" fill={SC.waterHi} opacity={0.85} />
+      <G stroke={SC.foam} strokeLinecap="round" fill="none">
+        <Path d="M-84 -6 C -60 -12 -40 -23 -26 -38 C -17 -48 -9 -60 -3 -69" strokeWidth={1.1} opacity={0.5} />
+        <Path d="M-64 -6 C -46 -13 -31 -26 -20 -41 C -14 -49 -8 -57 -2 -63" strokeWidth={0.9} opacity={0.36} />
+        <Path d="M-44 -5 C -30 -12 -19 -23 -10 -37 C -6 -43 -1 -49 4 -54" strokeWidth={0.85} opacity={0.26} />
+      </G>
+      <Path d="M-100 -4 C -76 -10 -52 -19 -38 -31 C -25 -42 -14 -58 -5 -71 C 3 -82 14 -88 26 -88 C 44 -88 57 -79 61 -65 C 64 -52 59 -39 47 -31" stroke={SC.foam} strokeWidth={2.4} strokeLinecap="round" fill="none" />
+      <G stroke={SC.foam} strokeLinecap="round" fill="none">
+        <Path d="M27 -30 C 34 -39 37 -49 35 -58" strokeWidth={1} opacity={0.5} />
+        <Path d="M22 -33 C 28 -41 30 -50 29 -58" strokeWidth={0.8} opacity={0.32} />
+      </G>
+      <Circle cx={31} cy={-26} r={4} fill={SC.foam} />
+      <Circle cx={24} cy={-22} r={2.8} fill={SC.foam} opacity={0.9} />
+      <Circle cx={38} cy={-27} r={2.6} fill={SC.foam} opacity={0.85} />
+      <Circle cx={52} cy={-20} r={2.2} fill={SC.foam} />
+      <Circle cx={62} cy={-28} r={1.6} fill={SC.foam} opacity={0.85} />
+      <Circle cx={58} cy={-10} r={1.4} fill={SC.foam} opacity={0.8} />
+      <Circle cx={70} cy={-18} r={1.1} fill={SC.foam} opacity={0.65} />
+      <Circle cx={66} cy={-36} r={0.9} fill={SC.foam} opacity={0.55} />
+      <G stroke={SC.foam} strokeLinecap="round" fill="none" opacity={0.6}>
+        <Path d="M54 -34 l4 -3" strokeWidth={1} />
+        <Path d="M64 -44 l3 -3" strokeWidth={0.9} />
+        <Path d="M72 -28 l3.4 -1.8" strokeWidth={0.9} />
+      </G>
+      <Path d="M20 -2 C 32 -9 50 -11 64 -8 C 74 -6 80 -3 78 0 C 60 4 36 4 20 -2 Z" fill={SC.foam} opacity={0.92} />
+    </G>
+  );
+}
+
+// ── urge vignettes (canvas: UrgeVignette) — the stages the flow uses ──
+export function UrgeVignette({ stage }: { stage: 'remove' | 'name' }) {
+  if (stage === 'remove') {
+    return (
+      <G>
+        <SSun cx={64} cy={40} r={15} glow={2.6} />
+        <SGull x={150} y={40} s={0.85} o={0.6} />
+        <SeaStack
+          cx={92}
+          cy={96}
+          rx={90}
+          ry={22}
+          bands={[
+            { top: seaTop(0, 190, 82, 3.5), fill: SC.water, foam: true, foamW: 2, extra: <Path d="M40 86 C 60 82 84 81 102 84 C 82 87 58 88 40 86 Z" fill={SC.waterHi} opacity={0.8} /> },
+            { top: seaTop(0, 190, 102, 3), fill: SC.waterLo, foam: true, foamW: 1.8, foamO: 0.6 },
+          ]}
+        />
+        <Path d="M0 132 C 60 120 130 116 196 120 C 250 123 292 130 320 138 L320 180 L0 180 Z" fill={SC.fgLit} />
+        <Path d="M0 156 C 80 148 170 152 250 148 C 278 146 302 150 320 148 L320 180 L0 180 Z" fill={SC.fgShade} opacity={0.55} />
+        <Path d="M196 132 L258 96 L320 122 L320 148 C 280 142 236 138 196 138 Z" fill={SC.nearLit} />
+        <Path d="M258 96 L320 122 L292 122 Z" fill={SC.nearShade} />
+        <G transform="translate(258 96)">
+          <Path d="M-20 26 L0 -6 L20 26 Z" fill={SC.snow} />
+          <Path d="M0 -6 L20 26 L9 26 Z" fill={SC.midShade} />
+          <Path d="M-5 26 L0 12 L5 26 Z" fill={SC.fgDeep} />
+        </G>
+        <SPine x={300} y={120} s={1} />
+        <SPine x={286} y={126} s={0.72} />
+        <Path d="M56 180 C 88 164 124 152 162 144 C 196 137 224 128 242 116 L256 120 C 240 134 210 144 176 152 C 136 161 98 170 74 180 Z" fill={SC.path} />
+        <SPrints pts={[[104, 166], [122, 160], [142, 155], [162, 150], [182, 145]]} />
+        <SGrass x={40} y={150} s={1.1} />
+        <SGrass x={228} y={158} s={0.9} />
+        <SCairn x={70} y={140} s={0.7} />
+      </G>
+    );
+  }
+  // 'name' — a pennant planted on the beach; the wave, named, smaller
+  return (
+    <G>
+      <SGull x={262} y={44} s={0.9} o={0.65} />
+      <Path d={lens(112, 92, 100, 6)} fill={SC.waterHi} />
+      <Path d="M28 90 C 56 85 88 84 116 86 C 144 88 172 92 194 95" stroke={SC.foam} strokeWidth={1.6} strokeLinecap="round" opacity={0.55} fill="none" />
+      <WaveCrest x={92} y={128} s={0.62} />
+      <Path d={lens(110, 138, 104, 7)} fill={SC.waterLo} />
+      <Path d="M22 135 C 56 129 96 127 128 129 C 158 131 186 136 202 139" stroke={SC.foam} strokeWidth={2.2} strokeLinecap="round" fill="none" opacity={0.85} />
+      <Path d="M0 148 C 70 138 150 136 224 140 C 262 142 294 147 320 152 L320 180 L0 180 Z" fill={SC.fgLit} />
+      <Path d="M0 166 C 90 158 190 160 274 156 C 292 155 308 157 320 156 L320 180 L0 180 Z" fill={SC.fgShade} opacity={0.5} />
+      <Path d="M26 150 C 70 142 122 140 168 143 C 128 148 76 150 26 150 Z" fill={SC.foam} opacity={0.85} />
+      <G transform="translate(234 150)">
+        <Path d="M0 8 L4 -66" stroke={SC.fgDeep} strokeWidth={4} strokeLinecap="round" />
+        <Path d="M4 -66 L4 -58" stroke={SC.foam} strokeWidth={1.6} strokeLinecap="round" />
+        <Path d="M5 -64 L46 -55 L5 -43 Z" fill={SC.ink} />
+        <Path d="M1 -20 L-26 6" stroke={SC.fgDeep} strokeWidth={1.8} strokeLinecap="round" strokeDasharray="1 5" />
+        <Ellipse cx={0} cy={9} rx={10} ry={3.4} fill={SC.fgShade} />
+        <Circle cx={-8} cy={6} r={2.6} fill={SC.fgDeep} />
+        <Circle cx={9} cy={7} r={2} fill={SC.fgDeep} />
+      </G>
+      <SGrass x={288} y={166} s={1} />
+      <SStar5 x={126} y={162} s={0.9} />
+      <SPrints pts={[[52, 170], [72, 166], [94, 162], [116, 160]]} tilt={-8} />
+    </G>
+  );
+}
+
 // smooth Catmull-Rom-ish curve through points (for the mood tide chart)
 export function scSmoothPath(pts: [number, number][], k = 0.18) {
   let d = `M${pts[0][0]} ${pts[0][1]}`;

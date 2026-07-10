@@ -625,12 +625,28 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
   const attMap: Record<string, string> = { "I've lost count": 'more attempts than you counted', 'Several times': 'several attempts', 'Once or twice': 'two attempts', 'Never, seriously': 'a first attempt' };
   const l2 = `${durMap[answers.duration as string] || 'Years'}. And ${attMap[answers.attempts as string] || 'past attempts'}.`;
 
+  // the plan chips the engine "pins" while it builds (from their answers)
+  const chips: string[] = [];
+  chips.push('Full-stop track');
+  const t0 = ((answers.triggers as string[]) || [])[0];
+  chips.push(t0 ? `${t0} — window guarded` : 'Check-in windows set');
+  const prize0 = ((answers.prize as string[]) || [])[0];
+  if (prize0) chips.push(`${prize0} — the prize, pinned`);
+  chips.push('One small lesson a day');
+
+  const [phase, setPhase] = useState(0);
   const p = useRef(new Animated.Value(0)).current;
+  const spin = useRef(new Animated.Value(0)).current;
   useEffect(() => {
-    Animated.timing(p, { toValue: 1, duration: 6600, easing: Easing.inOut(Easing.quad), useNativeDriver: false }).start();
-    const id = setTimeout(next, 7400);
-    return () => clearTimeout(id);
-  }, [next, p]);
+    Animated.timing(p, { toValue: 1, duration: 8600, easing: Easing.inOut(Easing.quad), useNativeDriver: false }).start();
+    Animated.loop(Animated.timing(spin, { toValue: 1, duration: 4000, easing: Easing.linear, useNativeDriver: true })).start();
+    const t1 = setTimeout(() => setPhase(1), 4200);
+    const id = setTimeout(next, 9400);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(id);
+    };
+  }, [next, p, spin]);
 
   // night → warm dusk → paper, gathered gradually then resolving at the end
   const bg = p.interpolate({
@@ -640,9 +656,12 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
   const glowOp = p.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 0.35, 0.7, 0] });
   const titleLightOp = p.interpolate({ inputRange: [0, 0.6, 0.82], outputRange: [1, 1, 0] });
   const titleDarkOp = p.interpolate({ inputRange: [0.62, 0.92], outputRange: [0, 1] });
-  const waveOp = p.interpolate({ inputRange: [0, 0.5, 0.68], outputRange: [0.7, 0.7, 0] });
-  const lineOp = (a: number) => p.interpolate({ inputRange: [a, a + 0.12, 0.5, 0.64], outputRange: [0, 1, 1, 0] });
-  const lineY = (a: number) => p.interpolate({ inputRange: [a, a + 0.12], outputRange: [8, 0], extrapolate: 'clamp' });
+  const waveOp = p.interpolate({ inputRange: [0, 0.36, 0.46], outputRange: [0.7, 0.7, 0] });
+  const lineOp = (a: number) => p.interpolate({ inputRange: [a, a + 0.1, 0.36, 0.46], outputRange: [0, 1, 1, 0] });
+  const lineY = (a: number) => p.interpolate({ inputRange: [a, a + 0.1], outputRange: [8, 0], extrapolate: 'clamp' });
+  const chipOp = (i: number) => p.interpolate({ inputRange: [0.52 + i * 0.055, 0.6 + i * 0.055], outputRange: [0, 1], extrapolate: 'clamp' });
+  const rotate = spin.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
+  const name = String(answers.name || '').trim();
 
   return (
     <Animated.View style={{ flex: 1, backgroundColor: bg }}>
@@ -660,34 +679,59 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
       </Animated.View>
 
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 26, paddingBottom: 40 }}>
-        <Animated.View style={{ marginBottom: 26, opacity: waveOp }}>
-          <Svg width={52} height={26} viewBox="0 0 52 26" fill="none">
-            <Path d="M3 17 C 10 7 17 7 26 13 S 43 20 49 10" stroke="#9C9C92" strokeWidth={2} strokeLinecap="round" />
-          </Svg>
-        </Animated.View>
+        {phase === 0 ? (
+          <Animated.View style={{ marginBottom: 26, opacity: waveOp }}>
+            <Svg width={52} height={26} viewBox="0 0 52 26" fill="none">
+              <Path d="M3 17 C 10 7 17 7 26 13 S 43 20 49 10" stroke="#9C9C92" strokeWidth={2} strokeLinecap="round" />
+            </Svg>
+          </Animated.View>
+        ) : (
+          <Animated.View
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 9999,
+              borderWidth: 2,
+              borderStyle: 'dashed',
+              borderColor: 'rgba(140,136,123,0.8)',
+              marginBottom: 24,
+              transform: [{ rotate }],
+            }}
+          />
+        )}
 
         {/* the title crossfades from light-on-night to ink-on-paper */}
         <View style={{ height: 30, justifyContent: 'center' }}>
           <Animated.Text
             style={{ position: 'absolute', alignSelf: 'center', width: 300, textAlign: 'center', fontFamily: fonts.serif, fontSize: 24, color: NIGHT.ink, opacity: titleLightOp }}>
-            Reading your answers…
+            {phase === 0 ? 'Reading your answers…' : `Creating ${name ? name + '’s' : 'your'} plan…`}
           </Animated.Text>
           <Animated.Text
             style={{ position: 'absolute', alignSelf: 'center', width: 300, textAlign: 'center', fontFamily: fonts.serif, fontSize: 24, color: PAPER.ink, opacity: titleDarkOp }}>
-            Reading your answers…
+            {phase === 0 ? 'Reading your answers…' : `Creating ${name ? name + '’s' : 'your'} plan…`}
           </Animated.Text>
         </View>
 
-        <View style={{ marginTop: 24, gap: 10, alignItems: 'center' }}>
-          <Animated.Text
-            style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.1), transform: [{ translateY: lineY(0.1) }] }}>
-            {l1}
-          </Animated.Text>
-          <Animated.Text
-            style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.26), transform: [{ translateY: lineY(0.26) }] }}>
-            {l2}
-          </Animated.Text>
-        </View>
+        {phase === 0 ? (
+          <View style={{ marginTop: 24, gap: 10, alignItems: 'center' }}>
+            <Animated.Text
+              style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.1), transform: [{ translateY: lineY(0.1) }] }}>
+              {l1}
+            </Animated.Text>
+            <Animated.Text
+              style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, color: NIGHT.ink2, opacity: lineOp(0.26), transform: [{ translateY: lineY(0.26) }] }}>
+              {l2}
+            </Animated.Text>
+          </View>
+        ) : (
+          <View style={{ marginTop: 24, flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center', maxWidth: 300 }}>
+            {chips.map((g, i) => (
+              <Animated.View key={g} style={{ opacity: chipOp(i), backgroundColor: 'rgba(255,255,255,0.92)', borderRadius: 9999, paddingHorizontal: 14, paddingVertical: 8 }}>
+                <AppText style={[sans('500'), { fontSize: 13, color: '#1D1C1A' }]}>{g}</AppText>
+              </Animated.View>
+            ))}
+          </View>
+        )}
       </View>
     </Animated.View>
   );
@@ -740,113 +784,10 @@ export function O3Reading({ answers, next }: { answers: Record<string, string | 
   const tone = useTone();
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
-        <AppText center style={{ fontFamily: fonts.serif, fontSize: 25, lineHeight: 33, letterSpacing: 0.2, color: tone.ink, maxWidth: 320, alignSelf: 'center' }}>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, lineHeight: 29, letterSpacing: 0.2, color: tone.ink, marginTop: 14, maxWidth: 316, alignSelf: 'center' }}>
           {pattern(answers)}
         </AppText>
-      </View>
-      <O3CTA label="Continue" onClick={next} />
-    </>
-  );
-}
-
-// ── creating your plan — a short constructed beat ────────────────────
-const PLAN_LINES = ['Reading your pattern', 'Placing the grounds', 'Setting the pace'];
-export function O3PlanBuild({ next }: { next: () => void }) {
-  const tone = useTone();
-  const [done, setDone] = useState(0);
-  useEffect(() => {
-    const ids = PLAN_LINES.map((_, i) => setTimeout(() => setDone(i + 1), 900 * (i + 1)));
-    const end = setTimeout(next, 900 * PLAN_LINES.length + 1100);
-    return () => {
-      ids.forEach(clearTimeout);
-      clearTimeout(end);
-    };
-  }, [next]);
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 40 }}>
-      <O3H size={24}>Creating your plan</O3H>
-      <View style={{ marginTop: 28, gap: 14, alignSelf: 'stretch', paddingHorizontal: 20 }}>
-        {PLAN_LINES.map((l, i) => (
-          <View key={l} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, opacity: done > i ? 1 : 0.35 }}>
-            <View style={{ width: 20, height: 20, borderRadius: 9999, borderWidth: 1.6, borderColor: tone.ink, alignItems: 'center', justifyContent: 'center', backgroundColor: done > i ? tone.ink : 'transparent' }}>
-              {done > i ? (
-                <Svg width={11} height={11} viewBox="0 0 24 24" fill="none">
-                  <Path d="M5 12.5l4.5 4.5L19 7.5" stroke={tone.bg} strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
-              ) : null}
-            </View>
-            <AppText style={[sans('500'), { fontSize: 15, color: tone.ink }]}>{l}</AppText>
-          </View>
-        ))}
-      </View>
-    </View>
-  );
-}
-
-// ── the stakes — a projection from their own frequency answer ────────
-const FREQ_PER_YEAR: Record<string, number> = {
-  'A few times a month': 36,
-  Weekly: 52,
-  'Several times a week': 160,
-  Daily: 365,
-  'More than daily': 550,
-};
-export function O3Stakes({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
-  const n = FREQ_PER_YEAR[answers.freq as string] ?? 160;
-  return (
-    <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
-        <O3H size={23}>If nothing changes</O3H>
-        <AppText style={{ fontFamily: fonts.serif, fontSize: 56, lineHeight: 60, color: tone.ink, marginTop: 26 }}>≈ {n}</AppText>
-        <AppText style={[sans('400'), { fontSize: 15, lineHeight: 22, color: tone.ink2, marginTop: 8, maxWidth: 300 }]}>
-          more times in the next year, at your current rate.
-        </AppText>
-        <O3Note style={{ marginTop: 22 }}>A projection from your answers, not a verdict.</O3Note>
-      </View>
-      <O3CTA label="Continue" onClick={next} />
-    </>
-  );
-}
-
-// ── the hope — the plan's projected shape ────────────────────────────
-export function O3Hope({ next }: { next: () => void }) {
-  const tone = useTone();
-  // a declining 12-week curve: urge frequency falls as the rewiring holds
-  const pts: [number, number][] = Array.from({ length: 13 }, (_, i) => {
-    const t = i / 12;
-    return [24 + (316 * i) / 12, 142 - 108 * Math.exp(-2.2 * t)] as [number, number];
-  });
-  const d = pts.map(([x, y], i) => (i === 0 ? `M${x} ${y}` : `L${x} ${y}`)).join(' ');
-  return (
-    <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
-        <O3H size={23}>Your brain can rewire.</O3H>
-        <O3Sub style={{ marginTop: 10 }}>Urges lose force as the loop goes unfed. Most feel the drop inside twelve weeks.</O3Sub>
-        <View style={{ marginTop: 26 }}>
-          <Svg width="100%" height={160} viewBox="0 0 344 160">
-            <Line x1={24} y1={142} x2={340} y2={142} stroke={tone.line} strokeWidth={1} />
-            <Path d={d} stroke={tone.ink} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <Circle cx={pts[12][0]} cy={pts[12][1]} r={4} fill={tone.ink} />
-            <SvgText x={24} y={156} fill={tone.ink3} fontSize={10} fontFamily={fonts.sans}>wk I</SvgText>
-            <SvgText x={318} y={156} fill={tone.ink3} fontSize={10} fontFamily={fonts.sans}>XII</SvgText>
-          </Svg>
-        </View>
-        <O3Note style={{ marginTop: 14 }}>A projection of the plan’s shape, not a promise.</O3Note>
-      </View>
-      <O3CTA label="Show me the plan" onClick={next} />
-    </>
-  );
-}
-
-// ── the campaign map reveal ──────────────────────────────────────────
-export function O3MapReveal({ next }: { next: () => void }) {
-  const tone = useTone();
-  return (
-    <>
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <O3H size={23} style={{ marginTop: 4 }}>Your campaign.</O3H>
         <View style={{ marginTop: 18 }}>
           <RouteMap />
         </View>
@@ -856,9 +797,94 @@ export function O3MapReveal({ next }: { next: () => void }) {
         </View>
       </ScrollView>
       <View style={{ paddingTop: 14 }}>
-        <O3Note style={{ marginBottom: 13 }}>No scores. No comparisons.</O3Note>
-        <O3CTA label="Learn the first move" onClick={next} />
+        <O3Note style={{ marginBottom: 13 }}>No scores. No comparisons. Just the ground, and a way across it.</O3Note>
+        <O3CTA label="Continue" onClick={next} />
       </View>
+    </>
+  );
+}
+
+// ═════ 1 · THE ARITHMETIC — the cost of unchanged, no shame ══════════
+const OR_FREQ_YEAR: Record<string, string> = {
+  'A few times a month': '~36',
+  Weekly: '~52',
+  'Several times a week': '~180',
+  Daily: '~365',
+  'More than daily': '900+',
+};
+const OR_DUR: Record<string, string> = {
+  'Under a year': 'under a year',
+  'A few years': 'a few years',
+  'Most of a decade': 'most of a decade',
+  'Most of my life': 'most of a life',
+};
+
+export function O3Cost({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
+  const tone = useTone();
+  const n = OR_FREQ_YEAR[answers.freq as string] || '~365';
+  const dur = OR_DUR[answers.duration as string] || 'years';
+  return (
+    <>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 30 }}>
+        <O3H size={26}>Unchanged, this happens about {n} more times by next July.</O3H>
+        <O3Sub style={{ marginTop: 16 }}>That’s just your own answer, multiplied by a year. It’s had {dur} — it isn’t planning to stop on its own.</O3Sub>
+        {/* the drift — a quiet line that only rises */}
+        <View style={{ marginTop: 30, backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 18, paddingTop: 18, paddingBottom: 12 }}>
+          <Svg width="100%" height={120} viewBox="0 0 300 120" fill="none">
+            <Path d="M14 96 h272" stroke={tone.soft2} strokeWidth={1.5} strokeLinecap="round" />
+            <Path d="M14 78 C 80 74, 150 66, 210 52 C 240 45, 268 36, 286 26" stroke={tone.ink} strokeWidth={2.4} strokeLinecap="round" fill="none" />
+            <Circle cx={286} cy={26} r={3.4} fill={tone.ink} />
+            <SvgText x={14} y={112} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.8}>NOW</SvgText>
+            <SvgText x={286} y={112} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.8} textAnchor="end">A YEAR ON</SvgText>
+            <SvgText x={282} y={18} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2} textAnchor="end">the pull, unattended</SvgText>
+          </Svg>
+        </View>
+        <O3Note style={{ marginTop: 16 }}>No shame in the number. It’s only the direction that matters.</O3Note>
+      </View>
+      <O3CTA label="Show me the other path" onClick={next} />
+    </>
+  );
+}
+
+// ═════ 2 · THE REWIRE — projected timeline, weeks I–XII ══════════════
+export function O3Rewire({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
+  const tone = useTone();
+  const dur = OR_DUR[answers.duration as string] || 'years';
+  const trig = (((answers.triggers as string[]) || [])[0] || 'late night').toLowerCase();
+  const name = String(answers.name || '').trim();
+  return (
+    <>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 30 }}>
+        <O3H size={26}>{name ? `${name} — your` : 'Your'} brain can rewire. Here’s the projected shape.</O3H>
+        <O3Sub style={{ marginTop: 14 }}>After {dur}, the pathway runs deep — and it is still plastic. Twelve weeks of small, kept days bend it back.</O3Sub>
+        <View style={{ marginTop: 28, backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 18, paddingTop: 18, paddingBottom: 10 }}>
+          <Svg width="100%" height={150} viewBox="0 0 300 150" fill="none">
+            <Path d="M14 58 C 90 54, 190 46, 286 34" stroke={tone.ink4} strokeWidth={1.8} strokeDasharray="2 6" strokeLinecap="round" fill="none" />
+            <SvgText x={284} y={26} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} textAnchor="end">left alone</SvgText>
+            <Path d="M14 62 C 46 66, 66 78, 92 88 C 140 106, 196 116, 244 121 C 260 122.5, 274 123, 286 123.5" stroke={tone.ink} strokeWidth={2.6} strokeLinecap="round" fill="none" />
+            <Circle cx={14} cy={62} r={3.4} fill={tone.ink} />
+            <Circle cx={92} cy={88} r={3} fill={tone.ink} />
+            <Circle cx={244} cy={121} r={3} fill={tone.ink} />
+            <SvgText x={20} y={44} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2}>{trig} window guarded</SvgText>
+            <SvgText x={98} y={80} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2}>urges shorten</SvgText>
+            <SvgText x={282} y={112} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2} textAnchor="end">just Tuesday</SvgText>
+            <Path d="M14 132 h272" stroke={tone.soft2} strokeWidth={1.5} strokeLinecap="round" />
+            <SvgText x={14} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>WK I</SvgText>
+            <SvgText x={105} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>III</SvgText>
+            <SvgText x={200} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>VIII</SvgText>
+            <SvgText x={286} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6} textAnchor="end">XII</SvgText>
+          </Svg>
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 14, marginTop: 14 }}>
+          {([['Stabilise', 'I–II'], ['Rewire', 'III–VIII'], ['Steady', 'IX–XII']] as [string, string][]).map(([t, wk]) => (
+            <View key={t} style={{ flexDirection: 'row', gap: 4, backgroundColor: 'rgba(0,0,0,0.045)', borderRadius: 9999, paddingHorizontal: 12, paddingVertical: 6 }}>
+              <AppText style={[sans('500'), { fontSize: 11.5, color: tone.ink2 }]}>{t}</AppText>
+              <AppText style={[sans('500'), { fontSize: 11.5, color: tone.ink3 }]}>{wk}</AppText>
+            </View>
+          ))}
+        </View>
+      </View>
+      <O3CTA label="Continue" onClick={next} />
     </>
   );
 }
