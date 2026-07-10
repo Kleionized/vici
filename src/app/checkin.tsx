@@ -47,6 +47,11 @@ const moodIndex = (t: number) => Math.round(t * (MOODS.length - 1));
 // ── colour helpers — RN-SVG can't do color-mix(), so blend hex → rgb ─────────
 const MTONE = colors.moodTones;
 function hexToRgb(h: string): [number, number, number] {
+  // accepts '#RRGGBB' or an 'rgb(r, g, b)' string (mix() output feeds back in)
+  if (h.startsWith('rgb')) {
+    const m = h.match(/(\d+)[^\d]+(\d+)[^\d]+(\d+)/);
+    if (m) return [Number(m[1]), Number(m[2]), Number(m[3])];
+  }
   const n = parseInt(h.slice(1), 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
