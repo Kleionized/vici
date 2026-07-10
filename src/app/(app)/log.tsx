@@ -19,6 +19,7 @@ import { moodLabel } from '@/components/MoodLogger';
 import { useCheckins, useCreateEvent, useEvents } from '@/lib/backend';
 import { RelapseScreen } from '@/components/RelapseScreen';
 import { relapseSequence } from '@/content/relapseLines';
+import { setJSON } from '@/lib/storage';
 import { formatTimestamp } from '@/lib/date';
 import { EVENT_HINT, EVENT_LABEL } from '@/lib/labels';
 import { colors, fonts, radius, sans, spacing } from '@/lib/theme';
@@ -221,6 +222,7 @@ function MomentComposer({ onExit, onDone }: { onExit: () => void; onDone: () => 
     setWhatHelped('');
     setLearned('');
     if (type === 'lapse') {
+      await setJSON('tideline.letter.pending', Date.now());
       setRelapse(relapseSequence());
       return;
     }

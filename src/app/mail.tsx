@@ -11,7 +11,6 @@ import { getJSON } from '@/lib/storage';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
 import { colors, fonts, sans, spacing } from '@/lib/theme';
 
-const DAY = 86_400_000;
 const LETTER_KEY = 'tideline.letter.day3';
 
 type Item =
@@ -32,7 +31,6 @@ export default function Mail() {
   const items = useMemo<Item[]>(() => {
     if (!user || !checkins || !events) return [];
     const out: Item[] = [];
-    const dayNumber = Math.floor((Date.now() - user.createdAt) / DAY) + 1;
 
     // weekly reports — newest first
     for (const weekStart of completedWeekStarts(user.createdAt)) {
@@ -55,16 +53,14 @@ export default function Mail() {
       });
     }
 
-    // the day-3 letter — arrives once you're three days in
-    if (dayNumber >= 3) {
-      out.push({
-        kind: 'letter',
-        title: 'A letter from day zero',
-        sub: letter?.kept ? 'Kept · Day III' : 'Sealed · from the day you began',
-        kept: !!letter?.kept,
-        go: () => router.push('/letter'),
-      });
-    }
+    // the sealed letter — written on day zero, resealed after each reading
+    out.push({
+      kind: 'letter',
+      title: 'A letter from day zero',
+      sub: letter?.kept ? 'Resealed · don’t fail twice' : 'Sealed · waits until it’s needed',
+      kept: !!letter?.kept,
+      go: () => router.push('/letter'),
+    });
     return out;
   }, [user, checkins, events, letter, router]);
 

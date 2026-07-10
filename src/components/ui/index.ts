@@ -9,6 +9,7 @@ export { Divider } from './Divider';
 export { Heatmap } from './Heatmap';
 export { Icon, type IconName } from './Icon';
 export { Illustration, type IllustrationName } from './Illustration';
+export { IntensityBands, INTENSITY_BANDS, bandToSeverity, severityToBand } from './IntensityBands';
 export { IntensitySlider } from './IntensitySlider';
 export { Avatar, Glyph, type GlyphName, IconChip, Illo, PlanCard, SettingsGroup, SettingsRow, Toggle } from './kit';
 export { LineChart } from './LineChart';

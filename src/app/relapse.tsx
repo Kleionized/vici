@@ -5,6 +5,7 @@ import { View } from 'react-native';
 
 import { CLAY, HUE, INK_DARK, JourneyPage, RelapseLineArt } from '@/components/urge';
 import { useCreateEvent } from '@/lib/backend';
+import { setJSON } from '@/lib/storage';
 
 /**
  * The relapse series on the night sky — you slipped → don't fail twice →
@@ -25,6 +26,8 @@ export default function Relapse() {
     if (!logged.current) {
       logged.current = true;
       await createEvent({ type: 'lapse' }).catch(() => {});
+      // the sealed letter arrives over Today on the next launch
+      await setJSON('tideline.letter.pending', Date.now());
     }
     router.replace('/(app)/today');
   }

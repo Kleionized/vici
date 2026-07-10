@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import Svg, { Circle, G, Path } from 'react-native-svg';
 
 import { AppText, LoadingView, Screen } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useTodayCheckin } from '@/lib/backend';
@@ -14,6 +14,7 @@ import { colors, fonts, sans, spacing } from '@/lib/theme';
 // the week-moods strip; wave-divider footer over the valley river. ──
 
 const MOOD_TONES = colors.moodTones;
+const MOOD_WORDS = ['Low', 'Down', 'Fine', 'Good', 'Radiant'];
 const CARD = colors.surface;
 const RING = colors.ring;
 
@@ -34,18 +35,16 @@ function roman(n: number): string {
   return out;
 }
 
-// A small pool of calm maxims — one per day, picked by date.
+// One Stoic quote per day, picked by date. Epictetus voice — short, factual.
 const MAXIMS = [
-  'A craving is a tide — it rises, peaks, and always recedes.',
-  'You are not fighting the wave. You are learning to ride it.',
-  'A streak resets. A campaign doesn’t.',
-  'The urge is loud because it is losing.',
-  'Don’t fail twice. That is the whole method.',
-  'What you water grows. Water the life you want.',
-  'Steady is not slow. Steady is how it changes.',
+  'No man is free who is not master of himself.',
+  'First say to yourself what you would be; then do what you have to do.',
+  'It is not things that disturb us, but our judgements about them.',
+  'Circumstances do not make the man. They reveal him to himself.',
+  'No great thing is created suddenly.',
+  'He who is not satisfied with a little is satisfied with nothing.',
+  'Practice yourself, for heaven’s sake, in little things.',
 ];
-
-const FOOTER_MAXIM = 'Small steps. Steady days.\nThat’s how it changes.';
 
 export default function Today() {
   const router = useRouter();
@@ -121,29 +120,36 @@ export default function Today() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.sm, paddingBottom: 0 }}>
-      {/* header: streak pill · DAY N · avatar */}
+      {/* header: mood chip · DAY N · avatar */}
       <View style={{ position: 'relative', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View
+        <Pressable
+          onPress={() => router.push('/checkin')}
+          accessibilityLabel="Today's mood"
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 6,
+            gap: 7,
             backgroundColor: CARD,
             borderRadius: 9999,
             paddingVertical: 7,
-            paddingLeft: 11,
+            paddingLeft: 10,
             paddingRight: 13,
           }}>
-          <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
-            <Path
-              d="M12 3.2c.4 2.6-.9 4.1-2.3 5.6C8.2 10.4 7 12 7 14.4A5.4 5.4 0 0 0 12.4 19.8 5.6 5.6 0 0 0 18 14.2c0-2.1-1-3.6-2.1-4.9-.3 1-.9 1.9-1.9 2.4.3-2.7-.6-6.3-2-8.5z"
-              fill={colors.text}
-            />
-          </Svg>
-          <AppText style={[sans('600'), { fontSize: 14.5, color: colors.text, fontVariant: ['tabular-nums'] }]}>
-            {dayNumber}
+          <View
+            style={{
+              width: 15,
+              height: 15,
+              borderRadius: 9999,
+              backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
+              borderWidth: todayCheckin?.mood != null ? 0 : 1.4,
+              borderColor: RING,
+              borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
+            }}
+          />
+          <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>
+            {todayCheckin?.mood != null ? MOOD_WORDS[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'Log mood'}
           </AppText>
-        </View>
+        </Pressable>
 
         <View
           pointerEvents="none"
@@ -173,11 +179,9 @@ export default function Today() {
         </Pressable>
       </View>
 
-      {/* the day's maxim — big Newsreader quote */}
-      <View style={{ alignItems: 'center', marginTop: 34, height: 32 }}>
-        <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
-          {'“'}
-        </AppText>
+      {/* the laurel — the brand mark, set over the day's Stoic line */}
+      <View style={{ alignItems: 'center', marginTop: 34, marginBottom: 18 }}>
+        <Laurel width={96} height={54} />
       </View>
       <AppText
         center
@@ -384,20 +388,6 @@ export default function Today() {
           </Svg>
         </View>
       </View>
-      <AppText
-        center
-        style={{
-          fontFamily: fonts.serifSharp,
-          fontSize: 19,
-          lineHeight: 27,
-          color: colors.text,
-          maxWidth: 250,
-          alignSelf: 'center',
-          marginTop: 38,
-        }}>
-        {FOOTER_MAXIM}
-      </AppText>
-
       <View style={{ marginTop: 30, marginHorizontal: -spacing.xl, height: 260 }}>
         <Image
           source={require('../../../assets/images/valley-river.webp')}
@@ -416,6 +406,34 @@ export default function Today() {
         />
       </View>
     </Screen>
+  );
+}
+
+// ── the laurel wreath — two engraved branches, single ink weight ──────
+function Laurel({ width = 96, height = 54 }: { width?: number; height?: number }) {
+  const leaf = (x: number, y: number, a: number, s = 1) => (
+    <Path
+      key={`${x}-${y}-${a}`}
+      d={`M0 0 C ${3.2 * s} ${-4.4 * s} ${3.2 * s} ${-9.4 * s} 0 ${-13 * s} C ${-3.2 * s} ${-9.4 * s} ${-3.2 * s} ${-4.4 * s} 0 0 Z`}
+      fill={colors.text}
+      transform={`translate(${x} ${y}) rotate(${a})`}
+    />
+  );
+  const branch = (mirror: boolean) => (
+    <G transform={mirror ? 'translate(96 0) scale(-1 1)' : undefined}>
+      <Path d="M46 50 C 32 46 20 36 16 20" fill="none" stroke={colors.text} strokeWidth={1.5} strokeLinecap="round" />
+      {leaf(40, 49, 118, 0.92)}
+      {leaf(31, 44.5, 132, 0.98)}
+      {leaf(24, 38, 148, 1)}
+      {leaf(19, 30, 163, 0.98)}
+      {leaf(16.4, 21, 178, 0.9)}
+    </G>
+  );
+  return (
+    <Svg width={width} height={height} viewBox="0 0 96 54" fill="none">
+      {branch(false)}
+      {branch(true)}
+    </Svg>
   );
 }
 

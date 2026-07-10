@@ -11,9 +11,10 @@ import { getJSON, setJSON } from '@/lib/storage';
 import { colors, fonts, sans } from '@/lib/theme';
 
 /**
- * The day-3 letter (canvas: screens-letter). A sealed envelope from day-zero
- * you, delivered over Today ~72h in: break the wax, the note rises and unfolds
- * into a serif letter, then tucks itself into your Log.
+ * The letter (canvas: screens-letter). A sealed envelope from day-zero you
+ * waits in the Log; the morning after a slip it arrives over Today. Breaking
+ * the wax unfolds one message — don't fail twice — then it reseals itself
+ * back into the Log.
  *
  * The design's literal CSS 3D flap can't be reproduced in RN, so the motion is
  * a tasteful approximation — the arrival card lifts away and the reading sheet
@@ -21,6 +22,7 @@ import { colors, fonts, sans } from '@/lib/theme';
  */
 
 const LETTER_KEY = 'tideline.letter.day3';
+const PENDING_KEY = 'tideline.letter.pending';
 const LT_INK = '#3B3B33';
 const LT_INK_STRONG = '#26261F';
 
@@ -75,9 +77,10 @@ export default function LetterScreen() {
     void (async () => {
       const prev = await getJSON<{ kept?: boolean }>(LETTER_KEY);
       await setJSON(LETTER_KEY, { kept: true, at: Date.now() });
+      await setJSON(PENDING_KEY, null);
       if (prev?.kept) return;
-      const body = `Dear ${name},\n\nIt's day three. By now the first rush has worn off — which is exactly when I asked for this to reach you.\n\nI'm writing from the day you decided. I can still feel how much you meant it: ${why}. Don't let that shrink into just words.\n\nYou don't have to be perfect this week. You only have to stay in the water. Urges have already risen and passed while you watched — that's the whole skill, and you have it.\n\nKeep going. I'm proof you know how to start.\n\n— you, on day zero`;
-      await createJournalEntry({ tag: 'Letter', title: 'A letter from day zero', body }).catch(() => {});
+      const body = `Dear ${name},\n\nIt happened. Nothing since day zero is erased.\n\nOne slip is data. Two begins a pattern. The next choice is the only one that counts: don’t fail twice.\n\nI can still feel how much you meant it: ${why}.\n\n— you, on day zero`;
+      await createJournalEntry({ tag: 'Letter', title: 'Don’t fail twice', body }).catch(() => {});
     })();
     setTimeout(() => {
       setPhase('after');
@@ -89,6 +92,7 @@ export default function LetterScreen() {
   const later = useCallback(() => {
     setPhase('later');
     void setJSON(LETTER_KEY, { kept: false, deferred: true, at: Date.now() });
+    void setJSON(PENDING_KEY, null);
     Animated.timing(toast, { toValue: 1, duration: 420, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
     setTimeout(dismiss, 1600);
   }, [dismiss, toast]);
@@ -136,7 +140,7 @@ export default function LetterScreen() {
               />
             </Animated.View>
             <View style={{ position: 'absolute', left: 13, top: 13, transform: [{ rotate: '-9deg' }], opacity: 0.9 }}>
-              <Postmark size={72} day="III" ink="rgba(245,244,241,0.78)" />
+              <Postmark size={72} day="0" ink="rgba(245,244,241,0.78)" />
             </View>
             <Pressable
               onPress={later}
@@ -166,7 +170,7 @@ export default function LetterScreen() {
             <AppText
               center
               style={[sans('400'), { fontSize: 13, lineHeight: 21, color: colors.textMuted, marginTop: 14, maxWidth: 248 }]}>
-              Sealed by the person who decided to begin. It’s been waiting three days for you.
+              Sealed on day zero. It waits in your Log.
             </AppText>
             <Pressable
               onPress={breakSeal}
@@ -219,7 +223,7 @@ export default function LetterScreen() {
               paddingTop: 20,
             }}>
             <View style={{ transform: [{ rotate: '-6deg' }], marginLeft: -6 }}>
-              <Postmark size={72} day="III" />
+              <Postmark size={72} day="0" />
             </View>
             <Pressable
               onPress={() => setPhase('arrive')}
@@ -244,24 +248,20 @@ export default function LetterScreen() {
             <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 29, lineHeight: 34, color: LT_INK_STRONG, marginBottom: 18 }}>
               Dear {name},
             </AppText>
-            <LetterP>It’s day three. By now the first rush has worn off — which is exactly when I asked for this to reach you.</LetterP>
+            <LetterP>It happened. Nothing since day zero is erased.</LetterP>
             <LetterP>
-              I’m writing from the day you decided. I can still feel how much you meant it:{' '}
+              One slip is data. Two begins a pattern. The next choice is the only one that counts:{' '}
               <AppText
                 style={{
                   fontFamily: fonts.serifSharpItalic,
                   color: LT_INK_STRONG,
                   textDecorationLine: 'underline',
                 }}>
-                {why}
+                don’t fail twice
               </AppText>
-              . Don’t let that shrink into just words.
+              .
             </LetterP>
-            <LetterP>
-              You don’t have to be perfect this week. You only have to stay in the water. Urges have already risen and passed
-              while you watched — that’s the whole skill, and you have it.
-            </LetterP>
-            <LetterP>Keep going. I’m proof you know how to start.</LetterP>
+            <LetterP>I can still feel how much you meant it: {why}.</LetterP>
 
             <View style={{ marginTop: 26, gap: 3 }}>
               <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 21, color: LT_INK_STRONG }}>
@@ -272,7 +272,7 @@ export default function LetterScreen() {
               </Svg>
             </View>
             <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 14.5, lineHeight: 22, color: 'rgba(59,59,51,0.62)', marginTop: 24 }}>
-              P.S. — the wave tool is one tap away. It always passes.
+              The urge tool is one tap away.
             </AppText>
           </ScrollView>
 
@@ -304,7 +304,7 @@ export default function LetterScreen() {
               </AppText>
             </Pressable>
             <AppText center style={[sans('400'), { fontSize: 12, color: 'rgba(59,59,51,0.55)', marginTop: 10 }]}>
-              The next one finds you at day VII.
+              It will wait there, sealed, until it’s needed.
             </AppText>
           </View>
 
@@ -324,7 +324,7 @@ export default function LetterScreen() {
                 backgroundColor: '#F9F7F3',
               }}>
               <AppText style={[sans('500'), { fontSize: 13, letterSpacing: 2.08, color: 'rgba(59,59,51,0.82)' }]}>
-                KEPT · DAY III
+                RESEALED
               </AppText>
             </View>
           )}
@@ -369,7 +369,7 @@ export default function LetterScreen() {
                 </Svg>
               </View>
               <AppText style={[sans('500'), { fontSize: 14, color: colors.text }]}>
-                {phase === 'later' ? 'It’ll wait for tonight' : 'Tucked into your Log'}
+                {phase === 'later' ? 'It’ll wait in your Log' : 'Resealed into your Log'}
               </AppText>
             </View>
           </Animated.View>

@@ -4,8 +4,9 @@ import { type LayoutChangeEvent, Pressable, ScrollView, View } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-import { AppText, Button, Icon, type IconName } from '@/components/ui';
+import { AppText, bandToSeverity, Button, Icon, type IconName, IntensityBands, INTENSITY_BANDS } from '@/components/ui';
 import { useCreateEvent } from '@/lib/backend';
+import { setJSON } from '@/lib/storage';
 import { colors, fonts, sans, spacing } from '@/lib/theme';
 import type { EventType } from '@/lib/types';
 
@@ -31,11 +32,11 @@ const TRIGGERS: { label: string; icon: IconName }[] = [
 ];
 
 const OUTCOMES: { label: string; note: string; icon: IconName; slip?: boolean; type: EventType }[] = [
-  { label: 'Rode it out', note: 'It rose, crested, and passed', icon: 'wave', type: 'urge_rode_out' },
-  { label: 'Surfed with the timer', note: 'Used the breathing exercise', icon: 'anchor', type: 'urge_rode_out' },
-  { label: 'Distracted myself', note: 'Changed the scene, moved on', icon: 'compass', type: 'urge_rode_out' },
-  { label: 'Reached out', note: 'Told someone, broke the spell', icon: 'heart', type: 'urge_rode_out' },
-  { label: 'I slipped', note: 'That’s okay — begin again', icon: 'moon', slip: true, type: 'urge_acted_on' },
+  { label: 'Rode it out', note: 'Waited; it passed', icon: 'wave', type: 'urge_rode_out' },
+  { label: 'Used the timer', note: 'The breathing exercise', icon: 'anchor', type: 'urge_rode_out' },
+  { label: 'Did something else', note: 'Changed the scene', icon: 'compass', type: 'urge_rode_out' },
+  { label: 'Told someone', note: 'Reached out', icon: 'heart', type: 'urge_rode_out' },
+  { label: 'I slipped', note: 'It happened', icon: 'moon', slip: true, type: 'urge_acted_on' },
 ];
 
 const WHEN_CHIPS = [
@@ -48,7 +49,7 @@ export default function UrgeLog() {
   const router = useRouter();
   const createEvent = useCreateEvent();
   const [step, setStep] = useState(0);
-  const [intensity, setIntensity] = useState(0.5);
+  const [intensity, setIntensity] = useState<number | null>(null);
   const [triggers, setTriggers] = useState<string[]>([]);
   const [outcome, setOutcome] = useState(0);
   const [when, setWhen] = useState(0);
@@ -62,11 +63,12 @@ export default function UrgeLog() {
     const out = OUTCOMES[outcome];
     await createEvent({
       type: out.type,
-      severity: Math.round(intensity * 9) + 1,
+      severity: bandToSeverity(intensity ?? 2),
       trigger: triggers.length ? triggers.join(' · ') : undefined,
       whatHelped: out.slip ? undefined : out.label,
       createdAt: Date.now() - WHEN_CHIPS[when].offsetMs,
     });
+    if (out.slip) await setJSON('tideline.letter.pending', Date.now());
     setSaving(false);
     setStep(4);
   }
@@ -77,18 +79,12 @@ export default function UrgeLog() {
 
       {step === 0 ? (
         <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <IntensityScene t={intensity} />
-            <AppText style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 36, letterSpacing: 0.33, color: colors.text, marginTop: 22 }}>
-              {BANDS[bandIndex(intensity)]}
-            </AppText>
-            <AppText variant="muted" style={{ fontSize: 13.5, marginTop: 10 }}>
-              How strong was the urge?
-            </AppText>
-          </View>
-          <IntensitySlider value={intensity} onChange={setIntensity} />
-          <View style={{ paddingVertical: 24 }}>
-            <Button label="Continue" onPress={() => setStep(1)} />
+          <Heading sub="How strong was the urge?">Rate it</Heading>
+          <ScrollView style={{ flex: 1, marginTop: 26 }} showsVerticalScrollIndicator={false}>
+            <IntensityBands value={intensity} onSelect={setIntensity} />
+          </ScrollView>
+          <View style={{ paddingVertical: 24, opacity: intensity == null ? 0.35 : 1 }}>
+            <Button label="Continue" onPress={() => (intensity != null ? setStep(1) : undefined)} />
           </View>
         </View>
       ) : null}
@@ -234,7 +230,7 @@ export default function UrgeLog() {
         </View>
       ) : null}
 
-      {step === 4 ? <Done intensity={intensity} triggers={triggers} outcome={outcome} onClose={close} /> : null}
+      {step === 4 ? <Done intensity={intensity ?? 2} triggers={triggers} outcome={outcome} onClose={close} /> : null}
     </SafeAreaView>
   );
 }
@@ -368,20 +364,15 @@ function Done({ intensity, triggers, outcome, onClose }: { intensity: number; tr
           <Path d="M18 78 C 45 70 72 70 100 78 C 128 86 155 86 182 78" stroke={colors.textMuted} strokeWidth={2.6} strokeLinecap="round" />
           <Path d="M34 94 C 57 88 79 88 100 94 C 121 100 143 100 166 94" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" opacity={0.45} />
         </Svg>
-        <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft, marginTop: 22 }]}>
-          {slip ? 'Logged · begin again' : 'Logged'}
-        </AppText>
-        <AppText center style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 36, letterSpacing: 0.33, color: colors.text, marginTop: 10 }}>
-          {slip ? 'Noted, gently.' : 'It passed.'}
+        <AppText center style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 36, letterSpacing: 0.33, color: colors.text, marginTop: 22 }}>
+          Urge logged.
         </AppText>
         <AppText center variant="muted" style={{ fontSize: 13.5, lineHeight: 19.5, marginTop: 14, marginHorizontal: 10 }}>
-          {slip
-            ? 'One moment, now behind you. The next choice is the one that counts.'
-            : 'Every urge you log is a pattern you can see — and a pull that lost its grip.'}
+          {slip ? 'It happened. The next choice is the one that counts.' : 'Each one adds to your pattern data.'}
         </AppText>
 
         <View style={{ width: '100%', marginTop: 28, backgroundColor: colors.surface, borderRadius: 18, paddingVertical: 4, paddingHorizontal: 20 }}>
-          <SummaryRow label="Intensity" value={BANDS[bandIndex(intensity)]} />
+          <SummaryRow label="Intensity" value={INTENSITY_BANDS[intensity].label} />
           <SummaryRow label="Set off by" value={triggers.length ? triggers.join(' · ') : '—'} />
           <SummaryRow label="What I did" value={out.label} last />
         </View>

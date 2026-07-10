@@ -235,13 +235,40 @@ export function O3Chip({ label, on, picked = false, onClick }: { label: string; 
   );
 }
 
-// ── a generic question screen ────────────────────────────────────────
+// ── small line icons for grid options ────────────────────────────────
+function QIcon({ label, c }: { label: string; c: string }) {
+  const p = (d: string, extra?: string) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path d={d} stroke={c} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
+      {extra ? <Path d={extra} stroke={c} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" /> : null}
+    </Svg>
+  );
+  switch (label) {
+    case 'Late at night':
+      return p('M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z');
+    case 'Alone':
+      return p('M12 11a3.4 3.4 0 1 0 0-6.8A3.4 3.4 0 0 0 12 11z', 'M5.5 20a6.5 6.5 0 0 1 13 0');
+    case 'Under stress':
+      return p('M3 12h4l2.5-6 4 12 2.5-6H21');
+    case 'Bored':
+      return p('M7 3.5h10M7 20.5h10', 'M8 3.5c0 4 8 5.5 8 8.5s-8 4.5-8 8.5M16 3.5c0 4-8 5.5-8 8.5s8 4.5 8 8.5');
+    case 'After drinking':
+      return p('M7 3.5h10l-1.4 13a2 2 0 0 1-2 1.8h-3.2a2 2 0 0 1-2-1.8z', 'M9.5 20.5h5M7.6 9h8.8');
+    case 'While scrolling':
+      return p('M8 2.5h8a1.6 1.6 0 0 1 1.6 1.6v15.8A1.6 1.6 0 0 1 16 21.5H8a1.6 1.6 0 0 1-1.6-1.6V4.1A1.6 1.6 0 0 1 8 2.5z', 'M10.5 18.4h3');
+    default:
+      return p('M12 3.2c.5 5.6 3 8 8.8 8.8-5.8.8-8.3 3.2-8.8 8.8-.5-5.6-3-8-8.8-8.8 5.8-.8 8.3-3.2 8.8-8.8z');
+  }
+}
+
+// ── a generic question screen — grammar varies by kind ───────────────
 export function O3Question({
   title,
   sub,
   options,
   value,
   multi = false,
+  kind,
   onSet,
   next,
   note,
@@ -253,6 +280,7 @@ export function O3Question({
   options: string[];
   value: string | string[] | undefined;
   multi?: boolean;
+  kind?: 'grid' | 'meter' | 'chips';
   onSet: (v: string | string[]) => void;
   next: () => void;
   reflect?: (v: string | string[]) => string | null;
@@ -260,6 +288,7 @@ export function O3Question({
   ctaLabel?: string;
   skip?: boolean;
 }) {
+  const tone = useTone();
   const [picked, setPicked] = useState<string | null>(null);
 
   const pick = (label: string) => {
@@ -274,23 +303,129 @@ export function O3Question({
     setTimeout(next, 500);
   };
 
+  const isOn = (label: string) => (multi ? ((value as string[]) || []).includes(label) : value === label);
   const count = multi ? ((value as string[]) || []).length : 0;
+
+  let body: ReactNode;
+  if (kind === 'grid') {
+    // icon grid — boxes with a monochrome line icon + label
+    body = (
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+        {options.map((label) => {
+          const on = isOn(label);
+          return (
+            <Pressable
+              key={label}
+              onPress={() => pick(label)}
+              style={{
+                width: '47.5%',
+                flexGrow: 1,
+                alignItems: 'center',
+                gap: 10,
+                paddingVertical: 20,
+                paddingHorizontal: 10,
+                borderRadius: 18,
+                backgroundColor: tone.card,
+                borderWidth: 1.8,
+                borderColor: on ? tone.ink : 'transparent',
+              }}>
+              <View
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 9999,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: on ? tone.fill : 'transparent',
+                }}>
+                <QIcon label={label} c={on ? tone.onFill : tone.ink} />
+              </View>
+              <AppText style={[sans('500'), { fontSize: 13.5, color: tone.ink, textAlign: 'center' }]}>{label}</AppText>
+            </Pressable>
+          );
+        })}
+      </View>
+    );
+  } else if (kind === 'meter') {
+    // segment meter — each row a level, segments fill with it
+    body = (
+      <View style={{ gap: 10 }}>
+        {options.map((label, i) => {
+          const on = isOn(label) || picked === label;
+          return (
+            <Pressable
+              key={label}
+              onPress={() => pick(label)}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 14,
+                paddingVertical: 15,
+                paddingHorizontal: 16,
+                borderRadius: 18,
+                backgroundColor: tone.card,
+                borderWidth: 1.8,
+                borderColor: on ? tone.ink : 'transparent',
+              }}>
+              <View style={{ flexDirection: 'row', gap: 3 }}>
+                {options.map((_, j) => (
+                  <View
+                    key={j}
+                    style={{
+                      width: 7,
+                      height: 16,
+                      borderRadius: 2.5,
+                      backgroundColor: j <= i ? tone.ink : tone.soft2,
+                      opacity: j <= i ? (on ? 1 : 0.75) : 1,
+                    }}
+                  />
+                ))}
+              </View>
+              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 15, color: tone.ink }]}>{label}</AppText>
+            </Pressable>
+          );
+        })}
+      </View>
+    );
+  } else if (kind === 'chips') {
+    // chip wrap — compact multi-select tags
+    body = (
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+        {options.map((label) => {
+          const on = isOn(label);
+          return (
+            <Pressable
+              key={label}
+              onPress={() => pick(label)}
+              style={{
+                paddingHorizontal: 17,
+                paddingVertical: 12,
+                borderRadius: 9999,
+                backgroundColor: on ? tone.fill : tone.card,
+              }}>
+              <AppText style={[sans(on ? '600' : '500'), { fontSize: 14.5, color: on ? tone.onFill : tone.ink }]}>{label}</AppText>
+            </Pressable>
+          );
+        })}
+      </View>
+    );
+  } else {
+    body = (
+      <View style={{ gap: 12 }}>
+        {options.map((label) => (
+          <O3Chip key={label} label={label} on={isOn(label)} picked={!multi && picked === label} onClick={() => pick(label)} />
+        ))}
+      </View>
+    );
+  }
 
   return (
     <>
       <View style={{ height: 26 }} />
       <O3H>{title}</O3H>
       {sub ? <O3Sub>{sub}</O3Sub> : null}
-      <ScrollView style={{ flex: 1, marginTop: 30 }} contentContainerStyle={{ gap: 12, flexGrow: 1, justifyContent: options.length <= 5 ? 'center' : 'flex-start' }} showsVerticalScrollIndicator={false}>
-        {options.map((label) => (
-          <O3Chip
-            key={label}
-            label={label}
-            on={multi ? ((value as string[]) || []).includes(label) : value === label}
-            picked={!multi && picked === label}
-            onClick={() => pick(label)}
-          />
-        ))}
+      <ScrollView style={{ flex: 1, marginTop: 30 }} contentContainerStyle={{ flexGrow: 1, justifyContent: options.length <= 5 && kind !== 'grid' ? 'center' : 'flex-start' }} showsVerticalScrollIndicator={false}>
+        {body}
       </ScrollView>
       <View style={{ paddingTop: 14, minHeight: multi ? 0 : 44, justifyContent: 'flex-end' }}>
         {note ? <O3Note style={{ marginBottom: multi ? 13 : 6 }}>{note}</O3Note> : null}
@@ -316,7 +451,7 @@ export function O3Threshold({ next }: { next: () => void }) {
             <AppText style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic' }}>vici.</AppText>
           </AppText>
         </Rise>
-        <O3Sub style={{ marginTop: 22 }}>“I conquered.” A campaign of twelve weeks — won once, not defended forever.</O3Sub>
+        <O3Sub style={{ marginTop: 22 }}>A twelve-week campaign, won once.</O3Sub>
       </View>
       <O3CTA label="Begin" onClick={next} />
       <O3CTA ghost label="I already have a campaign" onClick={next} style={{ fontSize: 12.5, color: tone.ink3 }} />
@@ -334,8 +469,7 @@ export function O3Privacy({ next }: { next: () => void }) {
   return (
     <>
       <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 60 }}>
-        <O3Eyebrow>Before anything is asked</O3Eyebrow>
-        <O3H style={{ marginTop: 12 }}>What happens here stays in your hands.</O3H>
+        <O3H>What happens here stays in your hands.</O3H>
         <View style={{ marginTop: 30, backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 20 }}>
           {OATH.map(([t, s], i) => (
             <View key={t} style={{ flexDirection: 'row', gap: 15, alignItems: 'flex-start', paddingVertical: 17, borderBottomWidth: i < OATH.length - 1 ? 1 : 0, borderBottomColor: tone.line }}>
@@ -366,7 +500,7 @@ export function O3Privacy({ next }: { next: () => void }) {
             </View>
           ))}
         </View>
-        <O3Note style={{ marginTop: 18 }}>The one tool you’ll use mid-crisis is free, forever, and never behind a lock.</O3Note>
+        <O3Note style={{ marginTop: 18 }}>The urge tool is free forever.</O3Note>
       </View>
       <O3CTA label="Understood" onClick={next} />
     </>
@@ -386,7 +520,6 @@ export function O3Door({ value, onSet, next }: { value: string[]; onSet: (v: str
     <>
       <View style={{ height: 26 }} />
       <O3H>What brings you to the door?</O3H>
-      <O3Sub>Everything true tonight. No one reads this but you.</O3Sub>
       <View style={{ flex: 1, justifyContent: 'center', gap: 12, marginTop: 30 }}>
         {ARRIVAL.map(([label, k]) => (
           <O3Chip key={k} label={label} on={sel.includes(k)} onClick={() => toggle(k)} />
@@ -429,17 +562,17 @@ export function O3Name({ value, onSet, next }: { value: string; onSet: (v: strin
 }
 
 // the assessment table
-export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: boolean; note?: string; skip?: boolean; ctaLabel?: string; reflect?: (v: string | string[]) => string | null }][] = [
+export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: boolean; kind?: 'grid' | 'meter' | 'chips'; note?: string; skip?: boolean; ctaLabel?: string; reflect?: (v: string | string[]) => string | null }][] = [
   ['age', { title: 'How old are you?', options: ['Under 18', '18–24', '25–34', '35–44', '45+'], note: 'It sets the pace. Nothing else.', skip: true }],
   ['gender', { title: 'How do you identify?', options: ['Male', 'Female', 'Non-binary', 'Prefer not to say'], note: 'The campaign reads the same either way — the examples don’t.', skip: true }],
-  ['duration', { title: 'How long has this been part of your life?', options: ['Under a year', 'A few years', 'Most of a decade', 'Most of my life'], reflect: (v) => (v === 'Most of my life' ? 'Long habits feel like character. They are not.' : v === 'Most of a decade' ? 'A decade is a long siege. It still lifts.' : null) }],
-  ['freq', { title: 'How often, lately?', options: ['A few times a month', 'Weekly', 'Several times a week', 'Daily', 'More than daily'], note: 'The honest answer is the useful one.' }],
-  ['triggers', { title: 'When does the pull run strongest?', multi: true, options: ['Late at night', 'Alone', 'Under stress', 'Bored', 'After drinking', 'While scrolling'], reflect: (v) => ((v as string[]).includes('Late at night') ? 'Late nights. The most common ground there is.' : (v as string[]).includes('Under stress') ? 'Stress. The oldest recruiter the habit has.' : 'Noted. The campaign starts on this ground.') }],
-  ['costs', { title: 'What has it cost you?', multi: true, ctaLabel: 'Name it', options: ['Focus', 'Relationships', 'Self-respect', 'Time', 'Sleep', 'Desire for real intimacy'], reflect: (v) => ((v as string[]).length >= 3 ? 'That list is the case. You just made it yourself.' : null), note: 'Stays on this device.' }],
-  ['attempts', { title: 'Have you tried to stop before?', options: ['Never, seriously', 'Once or twice', 'Several times', "I've lost count"], reflect: (v) => (v === "I've lost count" ? 'Attempts are not failures. They are reconnaissance.' : v === 'Several times' ? 'Several attempts means several maps of the ground.' : null) }],
+  ['duration', { title: 'How long has this been part of your life?', options: ['Under a year', 'A few years', 'Most of a decade', 'Most of my life'] }],
+  ['freq', { title: 'How often, lately?', kind: 'meter', options: ['A few times a month', 'Weekly', 'Several times a week', 'Daily', 'More than daily'], note: 'The honest answer is the useful one.' }],
+  ['triggers', { title: 'When does the pull run strongest?', multi: true, kind: 'grid', options: ['Late at night', 'Alone', 'Under stress', 'Bored', 'After drinking', 'While scrolling'] }],
+  ['costs', { title: 'What has it cost you?', multi: true, kind: 'chips', ctaLabel: 'Name it', options: ['Focus', 'Relationships', 'Self-respect', 'Time', 'Sleep', 'Desire for real intimacy'], note: 'Stays on this device.' }],
+  ['attempts', { title: 'Have you tried to stop before?', options: ['Never, seriously', 'Once or twice', 'Several times', "I've lost count"] }],
   ['breaks', { title: 'What usually breaks an attempt?', options: ['A bad night, alone', 'The counter hitting zero', 'Boredom creeping back', 'Stress piling up', 'I never had a method'] }],
-  ['knows', { title: 'Who knows about this?', options: ['No one', 'One person', 'A few people'], reflect: (v) => (v === 'No one' ? 'Most begin at no one. A campaign needs no audience.' : 'Someone in your corner is worth a legion.') }],
-  ['prize', { title: 'And when it is won — what returns?', multi: true, ctaLabel: 'Claim these', options: ['Focus', 'Self-respect', 'Real intimacy', 'My evenings', 'A quiet mind'], reflect: () => 'Kept. The whole campaign points at these.' }],
+  ['knows', { title: 'Who knows about this?', options: ['No one', 'One person', 'A few people'] }],
+  ['prize', { title: 'And when it is won — what returns?', multi: true, kind: 'chips', ctaLabel: 'Claim these', options: ['Focus', 'Self-respect', 'Real intimacy', 'My evenings', 'A quiet mind'] }],
 ];
 
 // ── the streak interstitial ──────────────────────────────────────────
@@ -607,11 +740,113 @@ export function O3Reading({ answers, next }: { answers: Record<string, string | 
   const tone = useTone();
   return (
     <>
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <O3Eyebrow style={{ marginTop: 4 }}>The reading</O3Eyebrow>
-        <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, lineHeight: 29, letterSpacing: 0.2, color: tone.ink, marginTop: 14, maxWidth: 316, alignSelf: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
+        <AppText center style={{ fontFamily: fonts.serif, fontSize: 25, lineHeight: 33, letterSpacing: 0.2, color: tone.ink, maxWidth: 320, alignSelf: 'center' }}>
           {pattern(answers)}
         </AppText>
+      </View>
+      <O3CTA label="Continue" onClick={next} />
+    </>
+  );
+}
+
+// ── creating your plan — a short constructed beat ────────────────────
+const PLAN_LINES = ['Reading your pattern', 'Placing the grounds', 'Setting the pace'];
+export function O3PlanBuild({ next }: { next: () => void }) {
+  const tone = useTone();
+  const [done, setDone] = useState(0);
+  useEffect(() => {
+    const ids = PLAN_LINES.map((_, i) => setTimeout(() => setDone(i + 1), 900 * (i + 1)));
+    const end = setTimeout(next, 900 * PLAN_LINES.length + 1100);
+    return () => {
+      ids.forEach(clearTimeout);
+      clearTimeout(end);
+    };
+  }, [next]);
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 40 }}>
+      <O3H size={24}>Creating your plan</O3H>
+      <View style={{ marginTop: 28, gap: 14, alignSelf: 'stretch', paddingHorizontal: 20 }}>
+        {PLAN_LINES.map((l, i) => (
+          <View key={l} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, opacity: done > i ? 1 : 0.35 }}>
+            <View style={{ width: 20, height: 20, borderRadius: 9999, borderWidth: 1.6, borderColor: tone.ink, alignItems: 'center', justifyContent: 'center', backgroundColor: done > i ? tone.ink : 'transparent' }}>
+              {done > i ? (
+                <Svg width={11} height={11} viewBox="0 0 24 24" fill="none">
+                  <Path d="M5 12.5l4.5 4.5L19 7.5" stroke={tone.bg} strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round" />
+                </Svg>
+              ) : null}
+            </View>
+            <AppText style={[sans('500'), { fontSize: 15, color: tone.ink }]}>{l}</AppText>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+// ── the stakes — a projection from their own frequency answer ────────
+const FREQ_PER_YEAR: Record<string, number> = {
+  'A few times a month': 36,
+  Weekly: 52,
+  'Several times a week': 160,
+  Daily: 365,
+  'More than daily': 550,
+};
+export function O3Stakes({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
+  const tone = useTone();
+  const n = FREQ_PER_YEAR[answers.freq as string] ?? 160;
+  return (
+    <>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
+        <O3H size={23}>If nothing changes</O3H>
+        <AppText style={{ fontFamily: fonts.serif, fontSize: 56, lineHeight: 60, color: tone.ink, marginTop: 26 }}>≈ {n}</AppText>
+        <AppText style={[sans('400'), { fontSize: 15, lineHeight: 22, color: tone.ink2, marginTop: 8, maxWidth: 300 }]}>
+          more times in the next year, at your current rate.
+        </AppText>
+        <O3Note style={{ marginTop: 22 }}>A projection from your answers, not a verdict.</O3Note>
+      </View>
+      <O3CTA label="Continue" onClick={next} />
+    </>
+  );
+}
+
+// ── the hope — the plan's projected shape ────────────────────────────
+export function O3Hope({ next }: { next: () => void }) {
+  const tone = useTone();
+  // a declining 12-week curve: urge frequency falls as the rewiring holds
+  const pts: [number, number][] = Array.from({ length: 13 }, (_, i) => {
+    const t = i / 12;
+    return [24 + (316 * i) / 12, 142 - 108 * Math.exp(-2.2 * t)] as [number, number];
+  });
+  const d = pts.map(([x, y], i) => (i === 0 ? `M${x} ${y}` : `L${x} ${y}`)).join(' ');
+  return (
+    <>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
+        <O3H size={23}>Your brain can rewire.</O3H>
+        <O3Sub style={{ marginTop: 10 }}>Urges lose force as the loop goes unfed. Most feel the drop inside twelve weeks.</O3Sub>
+        <View style={{ marginTop: 26 }}>
+          <Svg width="100%" height={160} viewBox="0 0 344 160">
+            <Line x1={24} y1={142} x2={340} y2={142} stroke={tone.line} strokeWidth={1} />
+            <Path d={d} stroke={tone.ink} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <Circle cx={pts[12][0]} cy={pts[12][1]} r={4} fill={tone.ink} />
+            <SvgText x={24} y={156} fill={tone.ink3} fontSize={10} fontFamily={fonts.sans}>wk I</SvgText>
+            <SvgText x={318} y={156} fill={tone.ink3} fontSize={10} fontFamily={fonts.sans}>XII</SvgText>
+          </Svg>
+        </View>
+        <O3Note style={{ marginTop: 14 }}>A projection of the plan’s shape, not a promise.</O3Note>
+      </View>
+      <O3CTA label="Show me the plan" onClick={next} />
+    </>
+  );
+}
+
+// ── the campaign map reveal ──────────────────────────────────────────
+export function O3MapReveal({ next }: { next: () => void }) {
+  const tone = useTone();
+  return (
+    <>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <O3H size={23} style={{ marginTop: 4 }}>Your campaign.</O3H>
         <View style={{ marginTop: 18 }}>
           <RouteMap />
         </View>
@@ -621,7 +856,7 @@ export function O3Reading({ answers, next }: { answers: Record<string, string | 
         </View>
       </ScrollView>
       <View style={{ paddingTop: 14 }}>
-        <O3Note style={{ marginBottom: 13 }}>No scores. No comparisons. Just the ground, and a way across it.</O3Note>
+        <O3Note style={{ marginBottom: 13 }}>No scores. No comparisons.</O3Note>
         <O3CTA label="Learn the first move" onClick={next} />
       </View>
     </>
@@ -671,8 +906,7 @@ export function O3Wave({ next }: { next: () => void }) {
     return (
       <O3Shell bar={false} lit>
         <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
-          <O3Eyebrow>The first tool</O3Eyebrow>
-          <O3H style={{ marginTop: 12 }}>Before anything else, learn the one move you’ll use most.</O3H>
+          <O3H>Before anything else, learn the one move you’ll use most.</O3H>
           <O3Sub>A craving is a wave. It crests, and it breaks — usually inside fifteen minutes. Ride a little water now, and you will know the move for life.</O3Sub>
           <View style={{ marginTop: 30, alignItems: 'center' }}>
             <Svg width={200} height={64} viewBox="0 0 200 64" fill="none">
@@ -695,7 +929,6 @@ export function O3Wave({ next }: { next: () => void }) {
         </View>
         {!after ? (
           <View style={{ position: 'absolute', top: 84, left: 0, right: 0, paddingHorizontal: 30, alignItems: 'center' }}>
-            <AppText style={[sans('600'), { fontSize: 10, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(245,244,241,0.5)' }]}>The first wave</AppText>
             <AppText style={{ fontFamily: fonts.serif, fontSize: 30, letterSpacing: 0.24, color: '#F5F4F1', marginTop: 16 }}>{WAVE_PHASES[pi].name}</AppText>
             <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: 'rgba(245,244,241,0.62)', marginTop: 10, paddingHorizontal: 20 }]}>{WAVE_PHASES[pi].tip}</AppText>
           </View>
@@ -739,7 +972,7 @@ export function O3Wave({ next }: { next: () => void }) {
           </AppText>
         </View>
       </View>
-      <O3Note style={{ marginBottom: 13 }}>Keepsakes are earned by doing. This one is already yours.</O3Note>
+      <O3Note style={{ marginBottom: 13 }}>Medallions are earned by doing. This one is already yours.</O3Note>
       <O3CTA label="Carry it in" onClick={next} />
     </O3Shell>
   );
@@ -766,7 +999,6 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
   return (
     <>
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <O3Eyebrow>The pledge</O3Eyebrow>
         <O3H size={24} style={{ marginTop: 10 }}>Set your mark.</O3H>
         <View style={{ marginTop: 20, borderRadius: 20, backgroundColor: '#F6F3EB', padding: 22 }}>
           <AppText style={{ fontFamily: fonts.serif, fontSize: 17.5, lineHeight: 28, color: '#22221C' }}>
@@ -799,25 +1031,42 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
 }
 
 // ── letter ───────────────────────────────────────────────────────────
-export function O3Letter({ value, onSet, next }: { value: string; onSet: (v: string) => void; next: () => void }) {
+/** The week-XII letter, assembled from the user's own intake answers. */
+export function buildWeekXiiLetter(a: Record<string, string | string[]>): string {
+  const name = String(a.name || '').trim();
+  const costs = (a.costs as string[]) || [];
+  const triggers = (a.triggers as string[]) || [];
+  const prize = (a.prize as string[]) || [];
+  const costLine = costs.length ? costs.slice(0, 3).map((c) => c.toLowerCase()).join(', ') : 'what it was taking';
+  const trigLine = triggers.length ? triggers[0].toLowerCase() : 'the usual hour';
+  const prizeLine = prize.length ? prize.slice(0, 2).map((p) => p.toLowerCase()).join(' and ') : 'a quiet mind';
+  return [
+    `${name ? name + ' —' : '—'}`,
+    '',
+    `It is week XII here. I am writing from the other side of the plan you are looking at.`,
+    `I remember what it was costing: ${costLine}. I remember ${trigLine} being the hardest ground.`,
+    `The urges did not vanish. They got smaller, and I got better at letting them pass.`,
+    `What came back first was ${prizeLine}.`,
+    `You do not have to be perfect to get here. When you slip, don't fail twice.`,
+    '',
+    '— you, at week XII',
+  ].join('\n');
+}
+
+export function O3Letter({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
+  const tone = useTone();
+  const body = buildWeekXiiLetter(answers);
   return (
     <>
-      <O3Eyebrow>The letter</O3Eyebrow>
-      <O3H size={23} style={{ marginTop: 10 }}>Three lines to the man at week XII.</O3H>
-      <O3Sub style={{ marginTop: 10 }}>We deliver this on day III — the morning it starts to feel ordinary.</O3Sub>
-      <View style={{ flex: 1, marginTop: 18 }}>
-        <TextInput
-          value={value}
-          onChangeText={onSet}
-          placeholder={'Remember tonight. Remember why.\nDon’t fail twice.'}
-          placeholderTextColor="rgba(34,34,28,0.4)"
-          multiline
-          style={{ flex: 1, minHeight: 150, backgroundColor: '#F6F3EB', borderRadius: 18, padding: 20, fontFamily: fonts.serifSharp, fontSize: 16, lineHeight: 26, color: '#22221C', textAlignVertical: 'top' }}
-        />
-      </View>
+      <O3H size={23} style={{ marginTop: 10 }}>From the man at week XII.</O3H>
+      <ScrollView style={{ flex: 1, marginTop: 18 }} showsVerticalScrollIndicator={false}>
+        <View style={{ backgroundColor: '#F6F3EB', borderRadius: 18, padding: 22 }}>
+          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 16, lineHeight: 26, color: '#22221C' }}>{body}</AppText>
+        </View>
+        <O3Note style={{ marginTop: 14, color: tone.ink3 }}>Kept in your Log.</O3Note>
+      </ScrollView>
       <View style={{ paddingTop: 14 }}>
-        <O3CTA label="Seal it for day III" enabled={!!(value || '').trim()} onClick={next} />
-        <O3CTA ghost label="The page will wait" onClick={next} />
+        <O3CTA label="Keep it" onClick={next} />
       </View>
     </>
   );
@@ -911,7 +1160,7 @@ const HOLDINGS: [string, string][] = [
   ['Your map', 'ten grounds, routed'],
   ['Your mark', 'the pledge, signed'],
   ['Your letter', 'sealed for day III'],
-  ['The First Wave', 'a keepsake, earned'],
+  ['The First Wave', 'a medallion, earned'],
   ['Day I', 'already lit'],
 ];
 export function O3Save({ next }: { next: () => void }) {
@@ -979,7 +1228,7 @@ export function O3Paywall({ answers, next, onFree }: { answers: Record<string, s
           {[
             ['All ten grounds', 'the campaign past the Landing'],
             ['Insights', prize.length ? `read off your logs — ${prize.join(', ')}` : 'read off your own logs'],
-            ['Keepsakes & letters', 'earned, kept, delivered'],
+            ['Medallions & letters', 'earned, kept, delivered'],
           ].map(([t, s], i, arr) => (
             <View key={t} style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10, paddingVertical: 11.5, borderBottomWidth: i < arr.length - 1 ? 1 : 0, borderBottomColor: tone.line }}>
               <View style={{ width: 5, height: 5, borderRadius: 9999, backgroundColor: tone.ink }} />

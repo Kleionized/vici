@@ -14,8 +14,12 @@
 export const CONVEX_URL = process.env.EXPO_PUBLIC_CONVEX_URL ?? '';
 export const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
 
+/** Dev affordance: force the offline mock layer even when keys are configured
+ * (set EXPO_PUBLIC_FORCE_MOCK=1 in a local run config; never in production). */
+const FORCE_MOCK = process.env.EXPO_PUBLIC_FORCE_MOCK === '1';
+
 /** True only when both a Convex URL and a Clerk key are configured. */
-export const REAL_BACKEND = Boolean(CONVEX_URL && CLERK_PUBLISHABLE_KEY);
+export const REAL_BACKEND = !FORCE_MOCK && Boolean(CONVEX_URL && CLERK_PUBLISHABLE_KEY);
 
 export const BACKEND_MODE: 'convex' | 'mock' = REAL_BACKEND ? 'convex' : 'mock';
 export const AUTH_MODE: 'clerk' | 'mock' = REAL_BACKEND ? 'clerk' : 'mock';

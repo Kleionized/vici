@@ -91,7 +91,7 @@ export default function Milestones() {
         <View style={{ marginBottom: 14 }}>
           <BackChevron onPress={() => {}} />
         </View>
-        <AppText style={{ fontFamily: fonts.serif, fontSize: 34, letterSpacing: 0.34, color: colors.text }}>Keepsakes</AppText>
+        <AppText style={{ fontFamily: fonts.serif, fontSize: 34, letterSpacing: 0.34, color: colors.text }}>Medallions</AppText>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 12, marginBottom: 28 }}>
           <View style={{ flex: 1, height: 4.5, borderRadius: 9999, backgroundColor: colors.borderStrong, overflow: 'hidden' }}>
             <View style={{ width: `${(nEarned / K.length) * 100}%`, height: '100%', borderRadius: 9999, backgroundColor: colors.ink }} />

@@ -2,12 +2,15 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 
 import {
+  buildWeekXiiLetter,
   O3DayOne,
   O3Door,
+  O3Hope,
   O3Letter,
+  O3MapReveal,
   O3Name,
   O3Notify,
-  O3Paywall,
+  O3PlanBuild,
   O3Pledge,
   O3Privacy,
   O3_QUESTIONS,
@@ -16,10 +19,12 @@ import {
   O3ReadingPause,
   O3Save,
   O3Shell,
+  O3Stakes,
   O3Streaks,
   O3Threshold,
   O3Wave,
 } from '@/components/onboarding/v3';
+import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
 
 // ── Onboarding v3 · "the campaign" funnel (canvas screens-onb3*). Opens on
@@ -32,7 +37,28 @@ import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpda
 type Answers = Record<string, string | string[]>;
 
 type Step =
-  | { id: string; kind: 'threshold' | 'privacy' | 'door' | 'name' | 'streaks' | 'pause' | 'reading' | 'wave' | 'pledge' | 'letter' | 'dayone' | 'notify' | 'save' | 'paywall' }
+  | {
+      id: string;
+      kind:
+        | 'threshold'
+        | 'privacy'
+        | 'door'
+        | 'name'
+        | 'streaks'
+        | 'pause'
+        | 'reading'
+        | 'plan'
+        | 'stakes'
+        | 'hope'
+        | 'map'
+        | 'wave'
+        | 'pledge'
+        | 'letter'
+        | 'dayone'
+        | 'notify'
+        | 'save'
+        | 'paywall';
+    }
   | { id: string; kind: 'question'; qi: number };
 
 const STEPS: Step[] = [
@@ -44,6 +70,10 @@ const STEPS: Step[] = [
   { id: 'streaks', kind: 'streaks' },
   { id: 'pause', kind: 'pause' },
   { id: 'reading', kind: 'reading' },
+  { id: 'plan', kind: 'plan' },
+  { id: 'stakes', kind: 'stakes' },
+  { id: 'hope', kind: 'hope' },
+  { id: 'map', kind: 'map' },
   { id: 'wave', kind: 'wave' },
   { id: 'pledge', kind: 'pledge' },
   { id: 'letter', kind: 'letter' },
@@ -71,7 +101,6 @@ export default function Onboarding() {
     const s = STEPS[idx];
     if (!s) return false;
     if (s.id === 'streaks') return a.breaks !== 'The counter hitting zero';
-    if (s.id === 'notify') return a.reminder !== 'yes';
     return false;
   };
   const move = (from: number, dir: number) => {
@@ -84,13 +113,13 @@ export default function Onboarding() {
 
   async function finish() {
     const name = String(a.name || '').trim();
-    const letter = String(a.letter || '').trim();
+    const letter = buildWeekXiiLetter(a);
     const prize = (a.prize as string[]) || [];
+    const costs = (a.costs as string[]) || [];
     if (name) await updateProfile(name).catch(() => {});
-    if (letter) {
-      await updateLifeMap({ whyStatement: letter }).catch(() => {});
-      await createJournalEntry({ tag: 'Reflection', title: 'A letter to week XII', body: letter }).catch(() => {});
-    }
+    // the week-XII letter is kept in the Log; the named costs anchor the why
+    await createJournalEntry({ tag: 'Letter', title: 'From the man at week XII', body: letter }).catch(() => {});
+    if (costs.length) await updateLifeMap({ whyStatement: `Taking back ${costs.slice(0, 3).map((c) => c.toLowerCase()).join(', ')}.` }).catch(() => {});
     if (prize.length) await updateLifeMap({ values: prize.map((label) => ({ label, importance: 3 })) }).catch(() => {});
     await completeOnboarding().catch(() => {});
     router.replace('/(app)/today');
@@ -115,7 +144,7 @@ export default function Onboarding() {
         // instance keeps its local `picked` state and the next single-select
         // can't be chosen or advanced (the "stuck on gender" bug).
         return (
-          <O3Question key={key} title={q.title} options={q.options} multi={q.multi} value={a[key]} onSet={(v) => set(key, v)} next={next} reflect={q.reflect} note={q.note} ctaLabel={q.ctaLabel} skip={q.skip} />
+          <O3Question key={key} title={q.title} options={q.options} multi={q.multi} kind={q.kind} value={a[key]} onSet={(v) => set(key, v)} next={next} note={q.note} ctaLabel={q.ctaLabel} skip={q.skip} />
         );
       }
       case 'streaks':
@@ -124,10 +153,18 @@ export default function Onboarding() {
         return <O3ReadingPause answers={a} next={next} />;
       case 'reading':
         return <O3Reading answers={a} next={next} />;
+      case 'plan':
+        return <O3PlanBuild next={next} />;
+      case 'stakes':
+        return <O3Stakes answers={a} next={next} />;
+      case 'hope':
+        return <O3Hope next={next} />;
+      case 'map':
+        return <O3MapReveal next={next} />;
       case 'pledge':
         return <O3Pledge name={String(a.name || '')} next={next} />;
       case 'letter':
-        return <O3Letter value={String(a.letter || '')} onSet={(v) => set('letter', v)} next={next} />;
+        return <O3Letter answers={a} next={next} />;
       case 'dayone':
         return (
           <O3DayOne
@@ -143,16 +180,17 @@ export default function Onboarding() {
       case 'save':
         return <O3Save next={next} />;
       case 'paywall':
-        return <O3Paywall answers={a} next={finish} onFree={finish} />;
+        return null; // rendered full-frame below, like the wave
       default:
         return null;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, a, i]);
 
-  // the wave and the reading-pause own the entire frame (their own background)
+  // the wave, the reading-pause, and the paywall own the entire frame
   if (step.kind === 'wave') return <O3Wave next={next} />;
   if (step.kind === 'pause') return <O3ReadingPause answers={a} next={next} />;
+  if (step.kind === 'paywall') return <PaywallFlow prize={(a.prize as string[]) || []} onDone={() => void finish()} />;
 
   return (
     <O3Shell progress={(i + 1) / STEPS.length} onBack={i > 0 ? back : null} bar={!NOBAR.has(step.id)} lit={lit}>

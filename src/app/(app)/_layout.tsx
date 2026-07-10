@@ -9,7 +9,7 @@ import { loadUrgeSession } from '@/lib/urgeSession';
 import { latestCompletedWeek } from '@/lib/weeklyReport';
 
 const CHECKIN_PROMPT_KEY = 'tideline.checkinPromptAt';
-const LETTER_KEY = 'tideline.letter.day3';
+const LETTER_PENDING_KEY = 'tideline.letter.pending';
 const REPORT_SEEN_KEY = 'tideline.weeklyReport.seenWeek';
 const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
@@ -27,11 +27,10 @@ export default function AppLayout() {
     (async () => {
       // Mid-urge reopens go back to the urge flow, never the mood prompt.
       if (await loadUrgeSession()) return;
-      // Day-3 letter — a sealed note from day-zero you, delivered over Today
-      // ~72h in. Keeps arriving each launch until it's opened & kept.
-      const dayNumber = user?.createdAt ? Math.floor((Date.now() - user.createdAt) / DAY) + 1 : 1;
-      const letter = await getJSON<{ kept?: boolean }>(LETTER_KEY);
-      if (dayNumber >= 3 && !letter?.kept) {
+      // The letter — sealed on day zero, it arrives over Today the launch
+      // after a slip was logged, then reseals itself into the Log.
+      const letterPending = await getJSON<number>(LETTER_PENDING_KEY);
+      if (letterPending) {
         router.push('/letter');
         return;
       }

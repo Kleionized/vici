@@ -4,8 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useRef, useState } from 'react';
 import { AppState, type LayoutChangeEvent, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Svg, { Circle, Path } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
+import { AppText, bandToSeverity, IntensityBands, severityToBand } from '@/components/ui';
 import {
   BrightButton,
   CLAY,
@@ -335,59 +336,6 @@ export default function Urge() {
   );
 }
 
-// ── the severity slider on the night sky ─────────────────────────────────────
-function SeveritySlider({ value, onChange }: { value: number; onChange: (v: number) => void }) {
-  const width = useRef(0);
-  const onLayout = (e: LayoutChangeEvent) => (width.current = e.nativeEvent.layout.width);
-  const handle = (x: number) => {
-    if (!width.current) return;
-    const t = Math.max(0, Math.min(1, x / width.current));
-    onChange(Math.max(1, Math.min(10, Math.round(1 + t * 9))));
-  };
-  const pct = (value - 1) / 9;
-  return (
-    <View>
-      <View
-        onLayout={onLayout}
-        onStartShouldSetResponder={() => true}
-        onMoveShouldSetResponder={() => true}
-        onResponderGrant={(e) => handle(e.nativeEvent.locationX)}
-        onResponderMove={(e) => handle(e.nativeEvent.locationX)}
-        style={{ height: 44, justifyContent: 'center' }}>
-        <LinearGradient
-          colors={[SAGE(0.85), SEA(0.85), CLAY(0.9)]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={{ position: 'absolute', left: 0, right: 0, height: 6, borderRadius: 9999 }}
-        />
-        <View
-          pointerEvents="none"
-          style={{
-            position: 'absolute',
-            left: `${pct * 100}%`,
-            marginLeft: -13,
-            width: 26,
-            height: 26,
-            borderRadius: 9999,
-            backgroundColor: '#fff',
-            shadowColor: '#000',
-            shadowOpacity: 0.3,
-            shadowRadius: 6,
-            shadowOffset: { width: 0, height: 2 },
-          }}
-        />
-      </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 }}>
-        {['Passing', 'Strong', 'Overwhelming'].map((l, i) => (
-          <AppText key={l} weightOverride="600" style={{ fontSize: 13, color: i === 1 ? colors.textMuted : colors.textSoft }}>
-            {l}
-          </AppText>
-        ))}
-      </View>
-    </View>
-  );
-}
-
 function RateScreen({
   headline,
   sub,
@@ -400,49 +348,39 @@ function RateScreen({
 }: {
   headline: string;
   sub?: string;
-  initial: number;
+  initial?: number;
   cta: string;
   backKind: 'close' | 'back';
   onBack: () => void;
   onNext: (sev: number) => void;
   footer?: React.ReactNode;
 }) {
-  const [sev, setSev] = useState(initial);
-  const tint = sevTint(sev);
-  const word = sevWord(sev);
+  // the shared band-list grammar — identical to the urge log's intensity step
+  const [band, setBand] = useState<number | null>(initial != null ? severityToBand(initial) : null);
   return (
     <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={sev >= SEVERE_THRESHOLD ? HUE.clay : HUE.sea} />
+      <NightSky hue={HUE.sea} />
       <Stars />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <TopChrome back={backKind} onBack={onBack} />
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 30 }}>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 32, lineHeight: 36, letterSpacing: 0.32 }}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 26, flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
+          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3 }}>
             {headline}
           </AppText>
           {sub ? (
-            <AppText center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 22, color: SUB, marginTop: 10 }}>
+            <AppText center weightOverride="500" style={{ fontSize: 15, lineHeight: 21, color: SUB, marginTop: 8 }}>
               {sub}
             </AppText>
           ) : null}
-          <View style={{ alignItems: 'center', marginTop: 44 }}>
-            <AppText weightOverride="700" color={tint(1)} style={{ fontSize: 72, lineHeight: 76, letterSpacing: -2 }}>
-              {sev}
-            </AppText>
-            <AppText weightOverride="600" color={TEXT} style={{ fontSize: 19, letterSpacing: -0.2, marginTop: 6 }}>
-              {word[1]}
-            </AppText>
-            <AppText weightOverride="500" style={{ fontSize: 14.5, color: SUB, marginTop: 4 }}>
-              {word[2]}
-            </AppText>
+          <View style={{ marginTop: 30 }}>
+            <IntensityBands value={band} onSelect={setBand} />
           </View>
-        </View>
-        <View style={{ paddingHorizontal: 30, paddingBottom: 18, gap: 26 }}>
-          <SeveritySlider value={sev} onChange={setSev} />
-          <View>
-            <BrightButton label={cta} onPress={() => onNext(sev)} />
-            {footer ? <View style={{ marginTop: 14, alignItems: 'center' }}>{footer}</View> : null}
+        </ScrollView>
+        <View style={{ paddingHorizontal: 26, paddingBottom: 18 }}>
+          <View style={{ opacity: band == null ? 0.35 : 1 }}>
+            <BrightButton label={cta} onPress={() => (band != null ? onNext(bandToSeverity(band)) : undefined)} />
           </View>
+          {footer ? <View style={{ marginTop: 14, alignItems: 'center' }}>{footer}</View> : null}
         </View>
       </SafeAreaView>
     </View>
@@ -736,28 +674,53 @@ function SurfScreen({ seconds, heading, doneLabel, onBack, onDone }: { seconds: 
 }
 
 // you rode it out — night-sky landing
+// ── the finish: a full-screen night sea. Dark, immersive, factual. ────
+function NightSea() {
+  const band = (y: number, a: number, fill: string) =>
+    `M-4 ${y} C 60 ${y - a} 130 ${y + a} 201 ${y} C 272 ${y - a} 340 ${y + a} 406 ${y} L406 260 L-4 260 Z`;
+  return (
+    <Svg width="100%" height={260} viewBox="0 0 402 260" preserveAspectRatio="xMidYMax slice">
+      <Circle cx={300} cy={40} r={26} fill="#EDEDE8" opacity={0.12} />
+      <Circle cx={300} cy={40} r={13} fill="#EDEDE8" opacity={0.5} />
+      <Path d={band(96, 9, '#15161A')} fill="#15161A" />
+      <Path d="M-4 96 C 60 87 130 105 201 96 C 272 87 340 105 406 96" stroke="rgba(237,237,232,0.3)" strokeWidth={1.8} strokeLinecap="round" fill="none" />
+      <Path d={band(150, 7, '#101114')} fill="#101114" />
+      <Path d="M-4 150 C 60 143 130 157 201 150 C 272 143 340 157 406 150" stroke="rgba(237,237,232,0.18)" strokeWidth={1.6} strokeLinecap="round" fill="none" />
+      <Path d={band(204, 5, '#0C0D10')} fill="#0C0D10" />
+    </Svg>
+  );
+}
+
 function DoneScreen({ reopens, onClose }: { reopens: number; onClose: () => void }) {
   return (
-    <View style={{ flex: 1, backgroundColor: INK_DARK }}>
-      <NightSky hue={HUE.sea} />
-      <Stars />
+    <View style={{ flex: 1, backgroundColor: '#08080A' }}>
+      <StatusBar style="light" />
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
+        <NightSea />
+      </View>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32 }}>
-          <NightIllustration tint={SEA} art={WAVE_ART} />
-          <AppText center weightOverride="700" color={SEA(0.98)} style={{ fontSize: 12.5, letterSpacing: 2.4, textTransform: 'uppercase', marginTop: 8 }}>
-            The wave broke
-          </AppText>
-          <AppText center color={TEXT} style={{ fontFamily: fonts.serif, fontSize: 38, lineHeight: 42, letterSpacing: 0.38, marginTop: 14 }}>
+          <AppText center color="#EDEDE8" style={{ fontFamily: fonts.serif, fontSize: 38, lineHeight: 42, letterSpacing: 0.38 }}>
             You rode it out.
           </AppText>
-          <AppText center weightOverride="500" style={{ fontSize: 18, lineHeight: 27, color: SUB, marginTop: 16, paddingHorizontal: 6 }}>
-            {reopens > 0
-              ? `It rose, crested, and passed — and you held the line through ${reopens + 1} check-in${reopens ? 's' : ''}.`
-              : 'It rose, crested, and passed — and you were still here.'}
+          <AppText center weightOverride="500" style={{ fontSize: 16.5, lineHeight: 24, color: 'rgba(237,237,232,0.6)', marginTop: 14, paddingHorizontal: 6 }}>
+            {reopens > 0 ? `Waited; it passed. ${reopens + 1} check-ins.` : 'Waited; it passed.'}
           </AppText>
         </View>
         <View style={{ paddingHorizontal: 26, paddingBottom: 18 }}>
-          <BrightButton label="Done" onPress={onClose} />
+          <Pressable
+            onPress={onClose}
+            style={({ pressed }) => ({
+              backgroundColor: '#EDEDE8',
+              borderRadius: 9999,
+              paddingVertical: 16,
+              alignItems: 'center',
+              transform: [{ scale: pressed ? 0.98 : 1 }],
+            })}>
+            <AppText weightOverride="600" style={{ fontSize: 15.5, color: '#131313' }}>
+              Done
+            </AppText>
+          </Pressable>
         </View>
       </SafeAreaView>
     </View>
