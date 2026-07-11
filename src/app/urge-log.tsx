@@ -55,7 +55,7 @@ export default function UrgeLog() {
   const [when, setWhen] = useState(0);
   const [saving, setSaving] = useState(false);
 
-  const close = () => router.back();
+  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
   const back = () => (step === 0 ? close() : setStep(step - 1));
 
   async function save() {

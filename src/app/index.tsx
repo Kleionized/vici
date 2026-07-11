@@ -26,7 +26,7 @@ export default function Index() {
 function Splash() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center', gap: spacing.lg }}>
-      <AppText variant="display">Tideline</AppText>
+      <AppText variant="display">VICI</AppText>
       <LoadingView />
     </View>
   );

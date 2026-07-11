@@ -1,80 +1,89 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 
-import { AppText, Illo, ScreenHeader, SettingsGroup, SettingsRow } from '@/components/ui';
-import { colors, fonts, radius, sans, spacing } from '@/lib/theme';
+import { WorldArt } from '@/components/journey/WorldArt';
+import { AppText, Screen, ScreenHeader, SettingsGroup, SettingsRow } from '@/components/ui';
+import { useCurrentUser } from '@/lib/backend';
+import { colors, fonts, sans } from '@/lib/theme';
 
-/** Manage subscription — reachable from Settings. */
+/**
+ * Manage subscription (canvas: money · ManageSubScreen) — the unboxed
+ * membership monument up top (plan · price · renewal · ACTIVE), then
+ * Plan and Billing groups, the quiet cancel, and the shore seeing you
+ * out: "the long road, together."
+ */
 export default function Subscription() {
   const router = useRouter();
+  const user = useCurrentUser();
+  const premium = !!user?.settings.premium;
+  const renews = (() => {
+    const d = new Date();
+    d.setFullYear(d.getFullYear() + 1);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  })();
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+    <Screen contentStyle={{ paddingTop: 8, flexGrow: 1 }}>
       <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ paddingTop: spacing.sm }}>
-          <ScreenHeader hue={230} eyebrow="Account" title="Subscription" onBack={back} />
-        </View>
+      <ScreenHeader eyebrow="Account" title="Subscription" pad={0} onBack={back} />
 
-        <ScrollView contentContainerStyle={{ paddingBottom: spacing.xl }} showsVerticalScrollIndicator={false}>
-          {/* membership — unboxed monument */}
-          <View style={{ paddingHorizontal: spacing.xl, marginBottom: 30 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-              <View style={{ flex: 1 }}>
-                <AppText style={{ fontFamily: fonts.serif, fontSize: 25, letterSpacing: 0.25, color: colors.text }}>
-                  Yearly + Coach
-                </AppText>
-                <AppText variant="muted" style={{ marginTop: 5, fontSize: 14 }}>
-                  $99.99 / year · renews 14 Mar 2027
-                </AppText>
-              </View>
-              <View style={{ backgroundColor: colors.ink, borderRadius: radius.pill, paddingHorizontal: 12, paddingVertical: 6, marginTop: 3 }}>
-                <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 0.8, textTransform: 'uppercase', color: colors.inkText }]}>
-                  Active
-                </AppText>
-              </View>
-            </View>
-            <View style={{ height: 1, backgroundColor: colors.border, marginTop: 18, marginBottom: 14 }} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <AppText variant="muted" style={{ fontSize: 14 }}>
-                Next charge
-              </AppText>
-              <AppText style={[sans('500'), { fontSize: 14, color: colors.text }]}>
-                $99.99 on 14 Mar 2027
-              </AppText>
-            </View>
-          </View>
-
-          <SettingsGroup header="Plan">
-            <SettingsRow glyph="compass" title="Change plan" detail="Yearly · $39.99" />
-            <SettingsRow glyph="gift" title="Redeem a code" />
-            <SettingsRow glyph="restore" title="Restore purchases" last />
-          </SettingsGroup>
-
-          <SettingsGroup header="Billing">
-            <SettingsRow glyph="card" title="Payment method" detail="Apple ID" />
-            <SettingsRow glyph="doc" title="Receipts & invoices" last />
-          </SettingsGroup>
-
-          <View style={{ alignItems: 'center', paddingVertical: spacing.sm }}>
-            <Pressable hitSlop={8} style={{ paddingVertical: 14 }}>
-              <AppText weightOverride="600" style={{ color: colors.textSoft, fontSize: 15 }}>
-                Cancel subscription
-              </AppText>
-            </Pressable>
-          </View>
-
-          <View style={{ alignItems: 'center', paddingTop: spacing.xl, opacity: 0.5 }}>
-            {Illo.tide(colors.text, { w: 150, h: 88 })}
-            <AppText weightOverride="700" style={{ color: colors.textMuted, marginTop: 6, fontSize: 13 }}>
-              the long road, together.
+      {/* membership — unboxed monument */}
+      <View style={{ paddingTop: 4, marginBottom: 30 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+          <View>
+            <AppText style={{ fontFamily: fonts.serif, fontSize: 25, letterSpacing: 0.25, color: colors.text }}>
+              {premium ? 'Yearly' : 'Free tools'}
+            </AppText>
+            <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted, marginTop: 5 }]}>
+              {premium ? `$39.99 / year · renews ${renews}` : 'The urge tool, free forever'}
             </AppText>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+          <View style={{ backgroundColor: colors.ink, borderRadius: 9999, paddingHorizontal: 12, paddingVertical: 6, marginTop: 3 }}>
+            <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 0.88, textTransform: 'uppercase', color: colors.inkText }]}>
+              {premium ? 'Active' : 'Free'}
+            </AppText>
+          </View>
+        </View>
+        {premium ? (
+          <>
+            <View style={{ height: 1, backgroundColor: colors.border, marginTop: 18, marginBottom: 14 }} />
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted }]}>Next charge</AppText>
+              <AppText style={[sans('500'), { fontSize: 14, color: colors.text, fontVariant: ['tabular-nums'] }]}>$39.99 on {renews}</AppText>
+            </View>
+          </>
+        ) : null}
+      </View>
+
+      <SettingsGroup header="Plan">
+        <SettingsRow glyph="compass" title="Change plan" detail={premium ? 'Yearly · $39.99' : 'Free'} onPress={() => router.push('/paywall')} />
+        <SettingsRow glyph="gift" title="Redeem a code" />
+        <SettingsRow glyph="restore" title="Restore purchases" last />
+      </SettingsGroup>
+
+      <SettingsGroup header="Billing">
+        <SettingsRow glyph="card" title="Payment method" detail="Apple ID" />
+        <SettingsRow glyph="doc" title="Receipts & invoices" last />
+      </SettingsGroup>
+
+      {premium ? (
+        <AppText center style={[sans('500'), { fontSize: 15, color: colors.textSoft, paddingVertical: 12 }]}>
+          Cancel subscription
+        </AppText>
+      ) : null}
+
+      {/* the shore, seeing you out */}
+      <View style={{ flex: 1 }} />
+      <View style={{ alignItems: 'center', paddingBottom: 24, opacity: 0.8 }}>
+        <View style={{ width: 176, height: 111, overflow: 'hidden', borderRadius: 12 }}>
+          <View style={{ position: 'absolute', left: 0, right: 0, top: -10, aspectRatio: 402 / 300 }}>
+            <WorldArt scene="shore" fit="xMidYMid meet" />
+          </View>
+        </View>
+        <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textSoft, marginTop: 2 }]}>the long road, together.</AppText>
+      </View>
+    </Screen>
   );
 }

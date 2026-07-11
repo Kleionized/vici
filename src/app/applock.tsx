@@ -36,7 +36,7 @@ export default function AppLock() {
             </View>
           </View>
           <AppText variant="muted" center weightOverride="500" style={{ fontSize: 15.5, lineHeight: 22, marginHorizontal: spacing.xxl, marginBottom: spacing.xl }}>
-            Recovery is personal. Keep tideline behind Face ID so it opens only for you.
+            Recovery is personal. Keep VICI behind Face ID so it opens only for you.
           </AppText>
 
           <SettingsGroup header="Lock">

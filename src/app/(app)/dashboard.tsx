@@ -119,6 +119,38 @@ export default function Dashboard() {
             <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
           </Svg>
         </Pressable>
+
+        {/* medallions — the campaign album */}
+        <Pressable
+          onPress={() => router.push('/milestones')}
+          accessibilityRole="button"
+          style={({ pressed }) => ({
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 14,
+            backgroundColor: colors.surface,
+            borderRadius: 16,
+            paddingVertical: 14,
+            paddingHorizontal: 16,
+            marginTop: 10,
+            transform: [{ scale: pressed ? 0.99 : 1 }],
+          })}>
+          <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
+            {/* a small phalera — ring + laurel dot */}
+            <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
+              <Path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z" stroke={colors.text} strokeWidth={1.6} strokeDasharray="1.8 3.4" />
+              <Path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6z" stroke={colors.text} strokeWidth={1.6} />
+              <Path d="M12 10v4M10 12h4" stroke={colors.text} strokeWidth={1.6} strokeLinecap="round" />
+            </Svg>
+          </View>
+          <View style={{ flex: 1 }}>
+            <AppText style={[sans('600'), { fontSize: 15.5, color: colors.text }]}>Medallions</AppText>
+            <AppText style={[sans('400'), { fontSize: 13, color: colors.textMuted, marginTop: 1 }]}>The campaign album</AppText>
+          </View>
+          <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
+            <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+          </Svg>
+        </Pressable>
       </View>
 
       {/* the tide of you — full-bleed */}

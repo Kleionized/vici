@@ -5,10 +5,11 @@ import { Pressable, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Avatar, SettingsGroup, SettingsRow } from '@/components/ui';
+import { AppText, Avatar, SectionLabel, SettingsGroup, SettingsRow } from '@/components/ui';
+import { type KeepsakeSceneKey, KKMedallion } from '@/components/keepsakes/Medallion';
 import { useAuth } from '@/lib/auth';
-import { useCurrentUser, useLifeMap, useUpdateProfile } from '@/lib/backend';
-import { colors, fonts, radius, spacing } from '@/lib/theme';
+import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLifeMap, useUpdateProfile } from '@/lib/backend';
+import { colors, fonts, radius, sans, spacing } from '@/lib/theme';
 
 export default function Profile() {
   const router = useRouter();
@@ -16,6 +17,9 @@ export default function Profile() {
   const user = useCurrentUser();
   const lifeMap = useLifeMap();
   const updateProfile = useUpdateProfile();
+  const events = useEvents();
+  const checkins = useCheckins();
+  const journal = useJournalEntries();
 
   const [name, setName] = useState('');
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +46,28 @@ export default function Profile() {
   const username = (email ? email.split('@')[0] : (name || 'you').toLowerCase().replace(/\s+/g, '')) || 'you';
   const sober = user ? new Date(user.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
   const valuesCount = lifeMap?.values.length ?? 0;
+
+  // ── the medallions shelf — the album, condensed (canvas: EditProfile) ──
+  const days = user ? Math.max(1, Math.floor((Date.now() - user.createdAt) / 86400000) + 1) : 1;
+  const rode = (events ?? []).filter((e) => e.type === 'urge_rode_out').length;
+  const letters = (journal ?? []).filter((j) => j.tag === 'Letter').length;
+  const recovered = (events ?? []).some((e) => e.type === 'lapse');
+  const entries = (journal ?? []).length;
+  const checkinDays = (checkins ?? []).length;
+  const shelfTier = (count: number, steps: number[]) => steps.filter((st) => count >= st).length;
+  const album: { key: KeepsakeSceneKey; name: string; earned: boolean; tier: number | null; tierMax: number }[] = [
+    { key: 'lettersent', name: 'Letter sent', earned: letters >= 1, tier: shelfTier(letters, [1, 4, 12, 24, 52]), tierMax: 5 },
+    { key: 'veni', name: 'Veni', earned: true, tier: null, tierMax: 0 },
+    { key: 'vidi', name: 'Vidi', earned: days >= 3, tier: shelfTier(days, [3, 7, 30, 90, 180, 365]), tierMax: 6 },
+    { key: 'vici', name: 'Vici', earned: rode >= 1, tier: shelfTier(rode, [1, 5, 25, 100, 250, 500, 1000]), tierMax: 7 },
+    { key: 'bounce', name: 'Never failed twice', earned: recovered, tier: shelfTier(recovered ? 1 : 0, [1, 10, 25, 50, 100]), tierMax: 5 },
+    { key: 'firstlight', name: 'First light', earned: checkinDays >= 1, tier: null, tierMax: 0 },
+    { key: 'honest', name: 'Honest ink', earned: entries >= 10, tier: shelfTier(entries, [10, 50, 100, 200, 365]), tierMax: 5 },
+  ];
+  const earnedShelf = album.filter((k) => k.earned);
+  const shelfShown = earnedShelf.slice(0, 4);
+  const shelfMore = earnedShelf.length - shelfShown.length;
+  const newestShelf = recovered ? 'Never failed twice' : letters >= 1 ? 'Letter sent' : rode >= 1 ? 'Vici' : checkinDays >= 1 ? 'First light' : 'Veni';
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
@@ -100,9 +126,58 @@ export default function Profile() {
             <ReadRow label="Email" value={email ?? 'Offline account'} last />
           </View>
 
+          {/* medallions — the shelf, straight from the album */}
+          <View style={{ marginHorizontal: 16, marginBottom: 22 }}>
+            <View style={{ paddingBottom: 12 }}>
+              <SectionLabel>Medallions</SectionLabel>
+            </View>
+            <Pressable
+              onPress={() => router.push('/milestones')}
+              accessibilityRole="button"
+              style={({ pressed }) => ({
+                backgroundColor: colors.surface,
+                borderRadius: radius.lg,
+                paddingVertical: 16,
+                paddingHorizontal: 18,
+                transform: [{ scale: pressed ? 0.99 : 1 }],
+              })}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                {shelfShown.map((k) => (
+                  <KKMedallion key={k.key} scene={k.key} size={50} earned tier={k.tier} tierMax={k.tierMax} />
+                ))}
+                {shelfMore > 0 ? (
+                  <View
+                    style={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: 9999,
+                      backgroundColor: colors.accentSoft,
+                      borderWidth: 1.4,
+                      borderColor: 'rgba(74,74,66,0.16)',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textMuted, fontVariant: ['tabular-nums'] }]}>+{shelfMore}</AppText>
+                  </View>
+                ) : null}
+                <View style={{ flex: 1 }} />
+                <Svg width={8} height={14} viewBox="0 0 8 14" fill="none">
+                  <Path d="m1.5 1.5 5 5.5-5 5.5" stroke={colors.textSoft} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                </Svg>
+              </View>
+              <AppText style={[sans('400'), { fontSize: 12.5, color: colors.textSoft, marginTop: 13, fontVariant: ['tabular-nums'] }]}>
+                {earnedShelf.length} earned · {newestShelf} is newest
+              </AppText>
+            </Pressable>
+          </View>
+
           <SettingsGroup header="Recovery">
-            <SettingsRow glyph="calendar" title="Sober since" detail={sober} />
+            <SettingsRow glyph="calendar" title="Campaign began" detail={sober} />
             <SettingsRow glyph="heart" title="My values" detail={`${valuesCount} chosen`} last onPress={() => router.push('/lifemap')} />
+          </SettingsGroup>
+
+          <SettingsGroup header="App">
+            <SettingsRow glyph="bell" title="Settings" detail="Reminders · lock · billing" last onPress={() => router.push('/(app)/settings')} />
           </SettingsGroup>
         </ScrollView>
       </SafeAreaView>

@@ -46,7 +46,7 @@ export default function BackTap() {
           <View style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
             <IconChip name="wave" size={46} radius={14} tone="ink" />
             <AppText variant="muted" weightOverride="500" style={{ flex: 1, fontSize: 15, lineHeight: 21 }}>
-              Open urge support in one move — double-tap the back of your iPhone, from anywhere. iOS runs a Shortcut that opens tideline straight to the urge tool.
+              Open urge support in one move — double-tap the back of your iPhone, from anywhere. iOS runs a Shortcut that opens VICI straight to the urge tool.
             </AppText>
           </View>
 
@@ -91,7 +91,7 @@ export default function BackTap() {
           <View style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start', backgroundColor: colors.surface, borderRadius: radius.lg, padding: spacing.lg }}>
             <View style={{ marginTop: 1 }}>{Glyph.shield(colors.textMuted)}</View>
             <AppText variant="soft" weightOverride="500" style={{ flex: 1, fontSize: 13.5, lineHeight: 19 }}>
-              Back Tap is an iOS accessibility setting, so it’s set up once on your phone — tideline only provides the link it opens.
+              Back Tap is an iOS accessibility setting, so it’s set up once on your phone — VICI only provides the link it opens.
             </AppText>
           </View>
         </ScrollView>
