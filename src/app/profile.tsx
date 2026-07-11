@@ -75,15 +75,15 @@ export default function Profile() {
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.xl, paddingTop: spacing.sm, paddingBottom: spacing.sm }}>
           <Pressable onPress={close} hitSlop={8}>
-            <AppText weightOverride="600" style={{ fontSize: 16.5, color: colors.textMuted }}>
+            <AppText weightOverride="500" style={{ fontSize: 16, color: colors.textMuted }}>
               Cancel
             </AppText>
           </Pressable>
-          <AppText weightOverride="700" style={{ fontSize: 17 }}>
+          <AppText weightOverride="500" style={{ fontSize: 15.5 }}>
             Edit profile
           </AppText>
           <Pressable onPress={save} hitSlop={8}>
-            <AppText weightOverride="700" style={{ fontSize: 16.5 }}>
+            <AppText weightOverride="500" style={{ fontSize: 15 }}>
               Save
             </AppText>
           </Pressable>
@@ -100,7 +100,7 @@ export default function Profile() {
               </View>
             </View>
             <Pressable hitSlop={8} style={{ marginTop: 12 }}>
-              <AppText weightOverride="700" style={{ fontSize: 14.5 }}>
+              <AppText weightOverride="500" style={{ fontSize: 14.5 }}>
                 Change photo
               </AppText>
             </Pressable>
@@ -109,7 +109,7 @@ export default function Profile() {
           <View style={{ marginHorizontal: 16, marginBottom: spacing.xl, backgroundColor: colors.surface, borderRadius: radius.lg, overflow: 'hidden' }}>
             {/* editable name */}
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 14, gap: 12 }}>
-              <AppText weightOverride="600" style={{ width: 86, fontSize: 15.5, color: colors.textMuted }}>
+              <AppText weightOverride="400" style={{ width: 86, fontSize: 13.5, color: colors.textMuted }}>
                 Name
               </AppText>
               <TextInput
@@ -117,7 +117,7 @@ export default function Profile() {
                 onChangeText={setName}
                 placeholder="Your name"
                 placeholderTextColor={colors.textSoft}
-                style={{ flex: 1, fontFamily: fonts.body, fontSize: 16, color: colors.text, padding: 0 }}
+                style={{ flex: 1, fontFamily: fonts.body, fontSize: 14.5, color: colors.text, padding: 0 }}
               />
             </View>
             <View style={{ height: 1, backgroundColor: colors.border, marginLeft: 18 }} />
@@ -189,10 +189,10 @@ function ReadRow({ label, value, last }: { label: string; value: string; last?: 
   return (
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 14, gap: 12 }}>
-        <AppText weightOverride="600" style={{ width: 86, fontSize: 15.5, color: colors.textMuted }}>
+        <AppText weightOverride="400" style={{ width: 86, fontSize: 13.5, color: colors.textMuted }}>
           {label}
         </AppText>
-        <AppText weightOverride="600" style={{ flex: 1, fontSize: 16.5, letterSpacing: -0.2 }}>
+        <AppText weightOverride="500" style={{ flex: 1, fontSize: 14.5, letterSpacing: 0.1 }}>
           {value}
         </AppText>
       </View>

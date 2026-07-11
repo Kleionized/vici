@@ -38,13 +38,13 @@ export const Glyph: Record<string, GlyphFn> = {
     </Svg>
   ),
   lock: (c, fill) => (
-    <Svg width={34} height={34} viewBox="0 0 24 24" fill="none">
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
       <Rect x={4} y={10} width={16} height={11} rx={2.5} fill={fill ? c : 'none'} stroke={c} strokeWidth={1.8} />
       <Path d="M8 10V7a4 4 0 018 0v3" stroke={c} strokeWidth={1.8} />
     </Svg>
   ),
   bell: (c) => (
-    <Svg width={40} height={40} viewBox="0 0 24 24" fill="none">
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
       <Path d="M6 16V11a6 6 0 0112 0v5l2 2H4l2-2z" stroke={c} strokeWidth={1.7} strokeLinejoin="round" />
       <Path d="M10 20a2 2 0 004 0" stroke={c} strokeWidth={1.7} strokeLinecap="round" />
     </Svg>
@@ -289,7 +289,7 @@ export function SettingsRow({
         accessibilityRole="button"
         style={{ flexDirection: 'row', alignItems: 'center', gap: 13, paddingVertical: 15, paddingHorizontal: 18, minHeight: 54 }}>
         {glyph ? <IconChip name={glyph} /> : null}
-        <AppText weightOverride="600" color={ink} style={{ flex: 1, fontSize: 16.5, letterSpacing: -0.2 }}>
+        <AppText weightOverride="500" color={ink} style={{ flex: 1, fontSize: 15.5, letterSpacing: 0.1 }}>
           {title}
         </AppText>
         {detail ? (
