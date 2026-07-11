@@ -138,7 +138,7 @@ export function AuthSurface({
       {dawn ? (
         <>
           <Image
-            source={require('../../../assets/images/auth-dawn.png')}
+            source={require('../../../assets/images/auth-dawn.webp')}
             contentFit="cover"
             style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
           />

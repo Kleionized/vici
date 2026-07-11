@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
-import { AK, AppleMark, AuthBtn, AuthField, AuthGhostLink, AuthLegal, AuthNote, AuthSurface, GoogleMark, NightTide } from '@/components/auth/kit';
+import { AK, AppleMark, AuthBtn, AuthField, AuthGhostLink, AuthLegal, AuthNote, AuthSurface, GoogleMark } from '@/components/auth/kit';
 import { AppText } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { fonts, sans } from '@/lib/theme';
@@ -96,16 +96,11 @@ export default function SignUp() {
   return (
     <>
       <StatusBar style="light" />
-      <AuthSurface onClose={back}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
-          <View style={{ paddingTop: 18, marginBottom: 22 }}>
-            <View style={{ alignItems: 'center', marginBottom: 20 }}>
-              <NightTide w={168} h={128} />
-            </View>
-            <AppText center style={{ fontFamily: fonts.serif, fontSize: 35, lineHeight: 40, color: AK.ink }}>
-              Create your account.
-            </AppText>
-          </View>
+      <AuthSurface onClose={back} dawn>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: 28 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+          <AppText center style={{ fontFamily: fonts.serif, fontSize: 35, lineHeight: 40, color: AK.ink }}>
+            Create your account.
+          </AppText>
 
           <View style={{ gap: 10 }}>
             <AuthField label="Name" value={name} onChangeText={setName} placeholder="A first name, or an alias" autoCapitalize="words" />
@@ -115,7 +110,7 @@ export default function SignUp() {
             {notice ? <AuthNote>{notice}</AuthNote> : null}
           </View>
 
-          <View style={{ gap: 12, marginTop: 18 }}>
+          <View style={{ gap: 12 }}>
             <AuthBtn variant="light" label="Create account" onPress={submit} loading={loading} />
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginVertical: 2 }}>
               <View style={{ flex: 1, height: 1, backgroundColor: AK.hair }} />

@@ -1,27 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 
-import {
-  buildWeekXiiLetter,
-  O3DayOne,
-  O3Door,
-  O3Cost,
-  O3Letter,
-  O3Name,
-  O3Notify,
-  O3Pledge,
-  O3Privacy,
-  O3_QUESTIONS,
-  O3Question,
-  O3Reading,
-  O3ReadingPause,
-  O3Rewire,
-  O3Save,
-  O3Shell,
-  O3Streaks,
-  O3Threshold,
-  O3Wave,
-} from '@/components/onboarding/v3';
+import { O3CostPage, O3DayOne, O3Door, O3Letter, O3Name, O3Notify, O3Pledge, O3Privacy, O3Question, O3Reading, O3ReadingPause, O3Rewire, O3Root, O3Save, O3Shell, O3Streaks, O3Threshold, O3Wave, O3_QUESTIONS, buildWeekXiiLetter } from '@/components/onboarding/v3';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
 
@@ -44,8 +24,12 @@ type Step =
         | 'name'
         | 'streaks'
         | 'pause'
+        | 'root'
+        | 'costweek'
+        | 'costmonth'
+        | 'costyear'
+        | 'costdecade'
         | 'reading'
-        | 'cost'
         | 'rewire'
         | 'wave'
         | 'pledge'
@@ -63,11 +47,15 @@ const STEPS: Step[] = [
   { id: 'door', kind: 'door' },
   { id: 'name', kind: 'name' },
   ...O3_QUESTIONS.map((q, i) => ({ id: q[0], kind: 'question' as const, qi: i })),
-  { id: 'streaks', kind: 'streaks' },
   { id: 'pause', kind: 'pause' },
-  { id: 'reading', kind: 'reading' },
-  { id: 'cost', kind: 'cost' },
+  { id: 'root', kind: 'root' },
+  { id: 'costweek', kind: 'costweek' },
+  { id: 'costmonth', kind: 'costmonth' },
+  { id: 'costyear', kind: 'costyear' },
+  { id: 'costdecade', kind: 'costdecade' },
+  { id: 'streaks', kind: 'streaks' },
   { id: 'rewire', kind: 'rewire' },
+  { id: 'reading', kind: 'reading' },
   { id: 'wave', kind: 'wave' },
   { id: 'pledge', kind: 'pledge' },
   { id: 'letter', kind: 'letter' },
@@ -77,7 +65,7 @@ const STEPS: Step[] = [
   { id: 'paywall', kind: 'paywall' },
 ];
 
-const READING_IDX = STEPS.findIndex((s) => s.id === 'reading');
+const ROOT_IDX = STEPS.findIndex((s) => s.id === 'root');
 const NOBAR = new Set(['pause']);
 
 export default function Onboarding() {
@@ -120,7 +108,7 @@ export default function Onboarding() {
   }
 
   const step = STEPS[i];
-  const lit = i >= READING_IDX;
+  const lit = i >= ROOT_IDX;
 
   const body = useMemo(() => {
     switch (step.kind) {
@@ -142,15 +130,23 @@ export default function Onboarding() {
         );
       }
       case 'streaks':
-        return <O3Streaks next={next} />;
+        return <O3Streaks answers={a} next={next} />;
       case 'pause':
         return <O3ReadingPause answers={a} next={next} />;
-      case 'reading':
-        return <O3Reading answers={a} next={next} />;
-      case 'cost':
-        return <O3Cost answers={a} next={next} />;
+      case 'root':
+        return <O3Root answers={a} next={next} />;
+      case 'costweek':
+        return <O3CostPage answers={a} next={next} h={0} />;
+      case 'costmonth':
+        return <O3CostPage answers={a} next={next} h={1} />;
+      case 'costyear':
+        return <O3CostPage answers={a} next={next} h={2} />;
+      case 'costdecade':
+        return <O3CostPage answers={a} next={next} h={3} />;
       case 'rewire':
         return <O3Rewire answers={a} next={next} />;
+      case 'reading':
+        return <O3Reading answers={a} next={next} />;
       case 'pledge':
         return <O3Pledge name={String(a.name || '')} next={next} />;
       case 'letter':

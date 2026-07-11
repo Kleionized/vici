@@ -48,6 +48,25 @@ const MAXIMS = [
   'Practice yourself, for heaven’s sake, in little things.',
 ];
 
+// ── the header weather glyph — Material Symbols partly_cloudy_day, FILL=1,
+// tinted with today's mood tone (quiet grey until a mood is logged) ──
+function WeatherMark({ tone }: { tone: string }) {
+  return (
+    <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
+      {/* the sun, top-left, with its rays */}
+      <Circle cx={9.4} cy={9.8} r={3.5} fill={tone} />
+      <G stroke={tone} strokeWidth={1.9} strokeLinecap="round">
+        <Path d="M9.4 4.1V1.9M3.7 9.8H1.5M5.35 5.75 3.8 4.2M5.35 13.85 3.8 15.4M13.45 5.75 15 4.2" />
+      </G>
+      {/* the cloud, filled, riding the lower right */}
+      <Path
+        d="M12.6 21.2a4.7 4.7 0 0 1-.53-9.37 6 6 0 0 1 11.6 1.62 4.1 4.1 0 0 1-1.17 7.75z"
+        fill={tone}
+      />
+    </Svg>
+  );
+}
+
 export default function Today() {
   const router = useRouter();
   const user = useCurrentUser();
@@ -143,24 +162,16 @@ export default function Today() {
           onPress={() => router.push('/checkin')}
           accessibilityLabel="Today's mood"
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 8,
-            backgroundColor: CARD,
+            width: 34,
+            height: 34,
             borderRadius: 9999,
-            padding: 7,
+            backgroundColor: '#FFFFFF',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
-          {/* the day's tone, whole — dashed and empty until it's logged */}
-          <View
-            style={{
-              width: 20,
-              height: 20,
-              borderRadius: 9999,
-              backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
-              borderWidth: todayCheckin?.mood != null ? 0 : 1.5,
-              borderColor: colors.text,
-              borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
-            }}
+          {/* the day's weather — partly_cloudy_day, filled with today's tone */}
+          <WeatherMark
+            tone={todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : colors.textSoft}
           />
         </Pressable>
 

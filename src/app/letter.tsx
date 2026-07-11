@@ -134,7 +134,7 @@ export default function LetterScreen() {
                 transform: [{ scale: breathe.interpolate({ inputRange: [0, 1], outputRange: [1, 1.035] }) }],
               }}>
               <Image
-                source={require('../../assets/images/envelope-seal.png')}
+                source={require('../../assets/images/envelope-seal.webp')}
                 contentFit="contain"
                 style={{ width: '74%', height: '84%' }}
               />

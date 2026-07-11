@@ -36,7 +36,7 @@ const TEXT = colors.text;
 const SUB = colors.textMuted;
 const TAU = Math.PI * 2;
 
-export const WAVE_ART = require('../../../assets/images/wave-illustration.png');
+export const WAVE_ART = require('../../../assets/images/urge-wave.webp');
 
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 const smoothstep = (x: number) => x * x * (3 - 2 * x);

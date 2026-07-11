@@ -3,7 +3,7 @@ import { Image, View } from 'react-native';
 import { colors } from '@/lib/theme';
 
 /**
- * Laurel — the wreath brand mark, from the supplied artwork (assets/laurel.png,
+ * Laurel — the wreath brand mark, from the supplied artwork (assets/laurel.webp,
  * dark-on-transparent). Tinted per surface: ink on paper, paper on ink; muted
  * callers pass a softer color + the design's 0.68 opacity via `muted`.
  * The art sits small in its frame, so it scales up 1.32× like the canvas.
@@ -12,7 +12,7 @@ export function Laurel({ size = 20, color = colors.text, muted = false }: { size
   return (
     <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
       <Image
-        source={require('../../../assets/images/laurel.png')}
+        source={require('../../../assets/images/laurel.webp')}
         style={{
           width: size,
           height: size,
