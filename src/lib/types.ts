@@ -183,6 +183,8 @@ export interface UserSettings {
   theme?: string;
   /** Premium entitlement (RevenueCat later; a local flag for now). */
   premium?: boolean;
+  /** The yearly-drop enclosure was claimed — $26.99/yr. */
+  yearlyDrop?: boolean;
   // Notification preferences (reminders screen)
   morningCheckin?: boolean;
   riskTimeSupport?: boolean;

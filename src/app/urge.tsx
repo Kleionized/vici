@@ -12,6 +12,7 @@ import { UrgeWave } from '@/components/urge';
 import { Scene, UrgeVignette } from '@/components/scene/SceneKit';
 import { useCreateEvent } from '@/lib/backend';
 import { clearUrgeSession, newUrgeSession, saveUrgeSession } from '@/lib/urgeSession';
+import { setJSON } from '@/lib/storage';
 import { colors, fonts, sans } from '@/lib/theme';
 
 /**
@@ -513,6 +514,7 @@ export default function Urge() {
         severity: strength != null ? STRENGTH_SEVERITY[strength] : undefined,
         trigger: place ? PLACES.find(([k]) => k === place)?.[1] : undefined,
       }).catch(() => {});
+    await setJSON('tideline.post.backondeck.pending', Date.now());
     }
     next();
   }

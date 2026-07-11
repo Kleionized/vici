@@ -17,6 +17,8 @@ export default function Subscription() {
   const router = useRouter();
   const user = useCurrentUser();
   const premium = !!user?.settings.premium;
+  const drop = !!user?.settings.yearlyDrop;
+  const price = drop ? '$26.99' : '$39.99';
   const renews = (() => {
     const d = new Date();
     d.setFullYear(d.getFullYear() + 1);
@@ -37,7 +39,7 @@ export default function Subscription() {
               {premium ? 'Yearly' : 'Free tools'}
             </AppText>
             <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted, marginTop: 5 }]}>
-              {premium ? `$39.99 / year · renews ${renews}` : 'The urge tool, free forever'}
+              {premium ? `${price} / year · renews ${renews}` : 'The urge tool, free forever'}
             </AppText>
           </View>
           <View style={{ backgroundColor: colors.ink, borderRadius: 9999, paddingHorizontal: 12, paddingVertical: 6, marginTop: 3 }}>
@@ -51,14 +53,14 @@ export default function Subscription() {
             <View style={{ height: 1, backgroundColor: colors.border, marginTop: 18, marginBottom: 14 }} />
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted }]}>Next charge</AppText>
-              <AppText style={[sans('500'), { fontSize: 14, color: colors.text, fontVariant: ['tabular-nums'] }]}>$39.99 on {renews}</AppText>
+              <AppText style={[sans('500'), { fontSize: 14, color: colors.text, fontVariant: ['tabular-nums'] }]}>{price} on {renews}</AppText>
             </View>
           </>
         ) : null}
       </View>
 
       <SettingsGroup header="Plan">
-        <SettingsRow glyph="compass" title="Change plan" detail={premium ? 'Yearly · $39.99' : 'Free'} onPress={() => router.push('/paywall')} />
+        <SettingsRow glyph="compass" title="Change plan" detail={premium ? `Yearly · ${price}` : 'Free'} onPress={() => router.push('/paywall')} />
         <SettingsRow glyph="gift" title="Redeem a code" />
         <SettingsRow glyph="restore" title="Restore purchases" last />
       </SettingsGroup>

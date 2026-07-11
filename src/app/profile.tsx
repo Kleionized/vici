@@ -55,7 +55,9 @@ export default function Profile() {
   const entries = (journal ?? []).length;
   const checkinDays = (checkins ?? []).length;
   const shelfTier = (count: number, steps: number[]) => steps.filter((st) => count >= st).length;
+  const returns = (events ?? []).filter((e) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on').length;
   const album: { key: KeepsakeSceneKey; name: string; earned: boolean; tier: number | null; tierMax: number }[] = [
+    { key: 'backondeck', name: 'Back on deck', earned: returns >= 1, tier: shelfTier(returns, [1, 5, 25, 100]), tierMax: 4 },
     { key: 'lettersent', name: 'Letter sent', earned: letters >= 1, tier: shelfTier(letters, [1, 4, 12, 24, 52]), tierMax: 5 },
     { key: 'veni', name: 'Veni', earned: true, tier: null, tierMax: 0 },
     { key: 'vidi', name: 'Vidi', earned: days >= 3, tier: shelfTier(days, [3, 7, 30, 90, 180, 365]), tierMax: 6 },
@@ -67,7 +69,7 @@ export default function Profile() {
   const earnedShelf = album.filter((k) => k.earned);
   const shelfShown = earnedShelf.slice(0, 4);
   const shelfMore = earnedShelf.length - shelfShown.length;
-  const newestShelf = recovered ? 'Never failed twice' : letters >= 1 ? 'Letter sent' : rode >= 1 ? 'Vici' : checkinDays >= 1 ? 'First light' : 'Veni';
+  const newestShelf = returns >= 1 ? 'Back on deck' : recovered ? 'Never failed twice' : letters >= 1 ? 'Letter sent' : rode >= 1 ? 'Vici' : checkinDays >= 1 ? 'First light' : 'Veni';
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>

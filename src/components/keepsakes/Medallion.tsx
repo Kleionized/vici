@@ -26,6 +26,7 @@ const KP = {
 
 export type KeepsakeSceneKey =
   | 'veni'
+  | 'backondeck'
   | 'vidi'
   | 'vici'
   | 'firstlight'
@@ -57,6 +58,26 @@ export const KK_SCENES: Record<KeepsakeSceneKey, React.ReactNode> = {
         <Path d="M-2 -9 C -9 -3 -11 6 -11 13 L-2 13 Z" fill={KP.mid} />
         <Path d="M-14 16 C -8 20.5 10 20.5 17 16 L15 19.5 C 6 23 -7 23 -12 19.5 Z" fill={KP.ink} opacity={0.85} />
       </G>
+    </G>
+  ),
+  // the boat, home again — an urge passed and he came back to the post
+  backondeck: (
+    <G>
+      <Rect x={0} y={0} width={100} height={100} fill={KP.paper} />
+      <Circle cx={25} cy={25} r={8.5} fill={KP.sun} stroke={KP.sunEdge} strokeWidth={1.4} />
+      <Rect x={0} y={60} width={100} height={40} fill={KP.lit} />
+      <Path d="M6 60 h88" stroke={KP.foam} strokeWidth={2} strokeLinecap="round" opacity={0.9} />
+      <Path d="M14 78 q 11 -3 22 0 t 22 0 t 22 0" stroke={KP.shade} strokeWidth={1.6} strokeLinecap="round" fill="none" opacity={0.5} />
+      <Path d="M94 56 C 82 58, 72 60.5, 62 61.5" stroke={KP.foam} strokeWidth={1.8} strokeLinecap="round" strokeDasharray="1 6" fill="none" />
+      <Path d="M28 62 L28 44" stroke={KP.ink} strokeWidth={3} strokeLinecap="round" />
+      <Circle cx={28} cy={41} r={2.6} fill={KP.ink} />
+      <G transform="translate(53 42)">
+        <Path d="M0 16 L0 -13" stroke={KP.ink} strokeWidth={1.7} strokeLinecap="round" />
+        <Path d="M-2 -11 C -11 -5 -14 4 -14 13 L-2 13 Z" fill={KP.foam} stroke={KP.shade} strokeWidth={1} />
+        <Path d="M2 -8 C 9 -3 11 6 11 13 L2 13 Z" fill={KP.mid} />
+        <Path d="M-17 16 C -10 20.5 9 20.5 15 16 L13 19.5 C 5 23 -8 23 -13 19.5 Z" fill={KP.ink} opacity={0.85} />
+      </G>
+      <Path d="M29 47 C 34 53, 39 56, 44 57" stroke={KP.ink} strokeWidth={1.6} strokeLinecap="round" fill="none" opacity={0.7} />
     </G>
   ),
   // dawn: half sun on the horizon, rays, banded sea

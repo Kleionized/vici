@@ -69,6 +69,7 @@ export default function Milestones() {
   const checkinDays = checkins.length;
   const days = user ? Math.max(1, Math.floor((Date.now() - user.createdAt) / 86400000) + 1) : 1;
   const rode = events.filter((e) => e.type === 'urge_rode_out').length;
+  const returns = events.filter((e) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on').length;
   const entries = journal.length;
   const letters = journal.filter((j) => j.tag === 'Letter').length;
   const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
@@ -86,6 +87,16 @@ export default function Milestones() {
         'A dozen letters out. You’re writing to someone you trust more than you did.',
         'Two dozen, sealed and sent. Writing to him is as old a habit as some of the ones it replaced.',
         'Fifty-two letters. A year of checking in with someone who kept believing you, on schedule, before you did.',
+      ] },
+    },
+    {
+      key: 'backondeck', name: 'Back on deck', how: 'An urge passed — and you came back to the app the same day, instead of vanishing',
+      earned: returns >= 1, date: `Day ${romanN(days)}`,
+      tiers: { count: returns, steps: [1, 5, 25, 100], stories: [
+        'It left, and you could have too — a week of radio silence. Instead you opened the app the same day and logged it.',
+        'Five returns. An urge used to end the conversation; now it doesn’t even end the evening.',
+        'Twenty-five times back on deck. Returning stopped being a decision — it’s just what you do.',
+        'A hundred returns. There is no version of an urge that ends with you gone.',
       ] },
     },
     {
@@ -180,7 +191,7 @@ export default function Milestones() {
   ];
 
   // the newest medallion — the most recently earnable, hero'd on the dark card
-  const newestKey: KeepsakeSceneKey = recovered ? 'bounce' : letters >= 1 ? 'lettersent' : rode >= 1 ? 'vici' : checkinDays >= 1 ? 'firstlight' : 'veni';
+  const newestKey: KeepsakeSceneKey = returns >= 1 ? 'backondeck' : recovered ? 'bounce' : letters >= 1 ? 'lettersent' : rode >= 1 ? 'vici' : checkinDays >= 1 ? 'firstlight' : 'veni';
   const list = K.map((k) => ({ ...k, newest: k.key === newestKey && k.earned }));
   const newest = list.find((k) => k.newest);
   const earnedList = list.filter((k) => k.earned && !k.newest);

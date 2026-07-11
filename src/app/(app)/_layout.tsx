@@ -10,6 +10,8 @@ import { latestCompletedWeek } from '@/lib/weeklyReport';
 
 const CHECKIN_PROMPT_KEY = 'tideline.checkinPromptAt';
 const LETTER_PENDING_KEY = 'tideline.letter.pending';
+const POST_PENDING_KEY = 'tideline.post.backondeck.pending';
+const POST_DONE_KEY = 'tideline.post.backondeck.delivered';
 const REPORT_SEEN_KEY = 'tideline.weeklyReport.seenWeek';
 const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
@@ -32,6 +34,14 @@ export default function AppLayout() {
       const letterPending = await getJSON<number>(LETTER_PENDING_KEY);
       if (letterPending) {
         router.push('/letter');
+        return;
+      }
+      // Medallion post — Back on deck arrives the launch after an urge was
+      // ridden and logged (returning instead of vanishing), once.
+      const postPending = await getJSON<number>(POST_PENDING_KEY);
+      const postDone = await getJSON<number>(POST_DONE_KEY);
+      if (postPending && !postDone) {
+        router.push('/medallion-post');
         return;
       }
       // End-of-week report — delivered once when a new week has closed.

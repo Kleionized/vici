@@ -23,9 +23,11 @@ export default function Mail() {
   const checkins = useCheckins();
   const events = useEvents();
   const [letter, setLetter] = useState<{ kept?: boolean } | null>(null);
+  const [postDelivered, setPostDelivered] = useState(false);
 
   useEffect(() => {
     void getJSON<{ kept?: boolean }>(LETTER_KEY).then(setLetter);
+    void getJSON<number>('tideline.post.backondeck.delivered').then((v) => setPostDelivered(!!v));
   }, []);
 
   const items = useMemo<Item[]>(() => {
@@ -53,6 +55,17 @@ export default function Mail() {
       });
     }
 
+    // post from VICI — the medallion letter (and its enclosure), re-readable
+    if (postDelivered) {
+      out.push({
+        kind: 'letter',
+        title: 'VICI Post · Back on deck',
+        sub: 'A medallion, presented · enclosure inside',
+        kept: true,
+        go: () => router.push('/medallion-post'),
+      });
+    }
+
     // the sealed letter — written on day zero, resealed after each reading
     out.push({
       kind: 'letter',
@@ -62,7 +75,7 @@ export default function Mail() {
       go: () => router.push('/letter'),
     });
     return out;
-  }, [user, checkins, events, letter, router]);
+  }, [user, checkins, events, letter, postDelivered, router]);
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/dashboard'));
 

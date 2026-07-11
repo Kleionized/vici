@@ -162,7 +162,7 @@ export default function LetterScreen() {
 
           <View style={{ paddingHorizontal: 28, paddingTop: 26, paddingBottom: 28, alignItems: 'center' }}>
             <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 27, lineHeight: 30, letterSpacing: 0.27, color: colors.text }}>
-              A letter for the slip.
+              You received a letter.
             </AppText>
             <Pressable
               onPress={breakSeal}

@@ -69,6 +69,7 @@ export default function UrgeLog() {
       createdAt: Date.now() - WHEN_CHIPS[when].offsetMs,
     });
     if (out.slip) await setJSON('tideline.letter.pending', Date.now());
+    else await setJSON('tideline.post.backondeck.pending', Date.now());
     setSaving(false);
     setStep(4);
   }
