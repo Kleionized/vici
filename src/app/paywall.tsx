@@ -11,7 +11,7 @@ export default function Paywall() {
   return (
     <>
       <StatusBar style="dark" />
-      <PaywallFlow name={user?.displayName?.trim().split(/\s+/)[0]} confirmLabel="Continue" onDone={close} />
+      <PaywallFlow name={user?.displayName?.trim().split(/\s+/)[0]} onDone={close} />
     </>
   );
 }

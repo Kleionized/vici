@@ -1,11 +1,11 @@
-import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
+import { Image } from 'expo-image';
 import { useState } from 'react';
 import { Platform, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { AppText } from '@/components/ui';
-import { WorldArt } from '@/components/journey/WorldArt';
 import { useUpdateSettings } from '@/lib/backend';
 import { colors, fonts, sans } from '@/lib/theme';
 
@@ -42,7 +42,7 @@ function PwDots({ i }: { i: number }) {
   return (
     <View style={{ flexDirection: 'row', gap: 6, justifyContent: 'center' }}>
       {[0, 1].map((k) => (
-        <View key={k} style={{ width: k === i ? 18 : 6, height: 6, borderRadius: 9999, backgroundColor: k === i ? colors.ink : colors.borderStrong }} />
+        <View key={k} style={{ width: k === i ? 18 : 6, height: 6, borderRadius: 9999, backgroundColor: k === i ? colors.ink : 'rgba(31,30,28,0.22)' }} />
       ))}
     </View>
   );
@@ -54,41 +54,11 @@ function PwX({ onPress }: { onPress: () => void }) {
       onPress={onPress}
       hitSlop={8}
       accessibilityLabel="Close"
-      style={{ width: 34, height: 34, borderRadius: 9999, backgroundColor: 'rgba(255,255,255,0.65)', alignItems: 'center', justifyContent: 'center' }}>
+      style={{ width: 34, height: 34, borderRadius: 9999, backgroundColor: 'rgba(249,247,243,0.72)', alignItems: 'center', justifyContent: 'center' }}>
       <Svg width={15} height={15} viewBox="0 0 20 20">
         <Path d="M3 3l14 14M17 3L3 17" stroke={colors.text} strokeWidth={2.4} strokeLinecap="round" />
       </Svg>
     </Pressable>
-  );
-}
-
-function BackChevron({ onPress }: { onPress: () => void }) {
-  return (
-    <Pressable onPress={onPress} hitSlop={8} accessibilityLabel="Back" style={{ padding: 4, marginLeft: -4 }}>
-      <Svg width={12} height={20} viewBox="0 0 13 22">
-        <Path d="M11 2L2 11l9 9" stroke={colors.text} strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      </Svg>
-    </Pressable>
-  );
-}
-
-function PwHeader({ i, onBack, onClose, embedded }: { i: number; onBack: (() => void) | null; onClose?: () => void; embedded?: boolean }) {
-  return (
-    <View style={{ position: 'relative', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 34 }}>
-      <View style={{ width: 70, alignItems: 'flex-start' }}>
-        {onBack ? <BackChevron onPress={onBack} /> : !embedded && onClose ? <PwX onPress={onClose} /> : null}
-      </View>
-      <View style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
-        <PwDots i={i} />
-      </View>
-      <View style={{ width: 70, alignItems: 'flex-end' }}>
-        {onBack && !embedded && onClose ? (
-          <PwX onPress={onClose} />
-        ) : (
-          <AppText style={[sans('500'), { fontSize: 13.5, color: colors.textMuted }]}>Restore</AppText>
-        )}
-      </View>
-    </View>
   );
 }
 
@@ -110,141 +80,184 @@ function PwCTA({ label, onPress }: { label: string; onPress: () => void }) {
   );
 }
 
-// ── the long plan row — the chosen plan floods dark ──────────────────
-function PlanRow({ active, onPress, tag, name, price, per, sub }: { active: boolean; onPress: () => void; tag?: string; name: string; price: string; per: string; sub: string }) {
-  const paper = '#F5F4F1';
+// ── the four feature tiles' engraved marks (Material line equivalents) ─
+function TileIcon({ k, c }: { k: string; c: string }) {
+  if (k === 'peaks')
+    return (
+      <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+        <Path d="M2.5 18.5 8 9l3.4 5.6L14 11l7.5 7.5z" stroke={c} strokeWidth={1.8} strokeLinejoin="round" />
+        <Path d="M14 6.5l1 -2 1 2z" stroke={c} strokeWidth={1.6} strokeLinejoin="round" />
+      </Svg>
+    );
+  if (k === 'waves')
+    return (
+      <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+        <Path d="M3 8.5c2-2.2 4-2.2 6 0s4 2.2 6 0 4-2.2 6 0M3 13.5c2-2.2 4-2.2 6 0s4 2.2 6 0 4-2.2 6 0M3 18.5c2-2.2 4-2.2 6 0s4 2.2 6 0 4-2.2 6 0" stroke={c} strokeWidth={1.7} strokeLinecap="round" />
+      </Svg>
+    );
+  if (k === 'twilight')
+    return (
+      <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+        <Path d="M7.5 16a4.5 4.5 0 0 1 9 0" stroke={c} strokeWidth={1.8} />
+        <Path d="M12 7.6V5.2M5.2 10.4 3.6 8.8M18.8 10.4l1.6-1.6M3 19.5h18" stroke={c} strokeWidth={1.8} strokeLinecap="round" />
+      </Svg>
+    );
+  return (
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+      <Rect x={5} y={10.5} width={14} height={9.5} rx={2.4} stroke={c} strokeWidth={1.8} />
+      <Path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7" stroke={c} strokeWidth={1.8} />
+    </Svg>
+  );
+}
+
+const PW_TILES: [string, string, string][] = [
+  ['peaks', 'Daily lessons', '+ conquest'],
+  ['waves', 'Urge surfing', 'support'],
+  ['twilight', 'Insights +', 'custom advice'],
+  ['lock', 'Private', 'journal'],
+];
+
+// ── the plan row — near-opaque white; selection is the inset ink ring ─
+function PwPlanRow({ active, onPress, tag, name, per, price, cycle }: { active: boolean; onPress: () => void; tag?: string; name: string; per: string; price: string; cycle: string }) {
   return (
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
       accessibilityState={{ selected: active }}
-      style={({ pressed }) => ({
+      style={{
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 14,
-        backgroundColor: active ? '#131313' : colors.surface,
-        borderRadius: 18,
-        padding: 18,
-        transform: [{ scale: pressed ? 0.99 : 1 }],
-      })}>
-      <View
-        style={{
-          width: 23,
-          height: 23,
-          borderRadius: 9999,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: active ? paper : 'transparent',
-          borderWidth: active ? 0 : 2,
-          borderColor: colors.borderStrong,
-        }}>
-        {active ? (
-          <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
-            <Path d="M4 12l5 5L20 6" stroke="#131313" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
-          </Svg>
-        ) : null}
-      </View>
-      <View style={{ flex: 1 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <AppText style={[sans('500'), { fontSize: 15, color: active ? paper : colors.text }]}>{name}</AppText>
-          {tag ? (
-            <View style={{ borderWidth: 1, borderColor: active ? 'rgba(245,244,241,0.4)' : colors.borderStrong, borderRadius: 9999, paddingHorizontal: 8, paddingVertical: 3 }}>
-              <AppText style={[sans('500'), { fontSize: 9.5, letterSpacing: 0.76, textTransform: 'uppercase', color: active ? paper : colors.textMuted }]}>{tag}</AppText>
-            </View>
-          ) : null}
+        gap: 12,
+        backgroundColor: 'rgba(253,252,250,0.9)',
+        borderRadius: 16,
+        paddingVertical: 12,
+        paddingLeft: 15,
+        paddingRight: 13,
+        borderWidth: active ? 1.8 : 1,
+        borderColor: active ? colors.ink : 'rgba(31,30,28,0.08)',
+      }}>
+      {tag ? (
+        <View style={{ backgroundColor: colors.ink, borderRadius: 8, paddingHorizontal: 8, paddingVertical: 5 }}>
+          <AppText style={[sans('600'), { fontSize: 9.5, letterSpacing: 0.86, textTransform: 'uppercase', color: colors.inkText }]}>{tag}</AppText>
         </View>
-        <AppText style={[sans('400'), { fontSize: 13, color: active ? 'rgba(245,244,241,0.62)' : colors.textMuted, marginTop: 3 }]}>{sub}</AppText>
+      ) : null}
+      <View style={{ flex: 1 }}>
+        <AppText style={[sans('600'), { fontSize: 15, color: colors.text }]}>{name}</AppText>
+        <AppText style={[sans('400'), { fontSize: 12, color: colors.textSoft, marginTop: 2 }]}>{per}</AppText>
       </View>
       <View style={{ alignItems: 'flex-end' }}>
-        <AppText style={[sans('500'), { fontSize: 16, letterSpacing: -0.16, color: active ? paper : colors.text, fontVariant: ['tabular-nums'] }]}>{price}</AppText>
-        <AppText style={[sans('400'), { fontSize: 12, color: active ? 'rgba(245,244,241,0.45)' : colors.textSoft }]}>{per}</AppText>
+        <AppText style={[sans('600'), { fontSize: 15, color: colors.text, fontVariant: ['tabular-nums'] }]}>{price}</AppText>
+        <AppText style={[sans('400'), { fontSize: 12, color: colors.textSoft, marginTop: 2 }]}>{cycle}</AppText>
       </View>
+      {active ? (
+        <View style={{ width: 26, height: 26, borderRadius: 9999, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
+          <Svg width={13} height={13} viewBox="0 0 24 24" fill="none">
+            <Path d="M4.5 12.5l4.8 4.8L19.5 6.8" stroke={colors.inkText} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+          </Svg>
+        </View>
+      ) : (
+        <View style={{ width: 26, height: 26, borderRadius: 9999, borderWidth: 1.6, borderColor: 'rgba(31,30,28,0.25)' }} />
+      )}
     </Pressable>
   );
 }
 
-// ═════ PAGE 1 · THE PITCH ════════════════════════════════════════════
-function PwPitch({ name, trig, emo, load, onNext }: { name?: string; trig: string; emo: string; load?: string; onNext: () => void }) {
+// ═════ THE PAGE — full-bleed summit; the text lives in glass ═════════
+function PwMain({
+  plan,
+  setPlan,
+  onPay,
+  onDecline,
+  onClose,
+  embedded,
+  name,
+}: {
+  plan: PlanKey;
+  setPlan: (p: PlanKey) => void;
+  onPay: () => void;
+  onDecline: () => void;
+  onClose: () => void;
+  embedded?: boolean;
+  name?: string;
+}) {
   return (
-    <>
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        {/* the summit — where the road leads */}
-        <View style={{ position: 'relative', height: 240, borderRadius: 20, overflow: 'hidden', marginTop: 14 }}>
-          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-            <WorldArt scene="summit" fit="xMidYMid slice" />
-          </View>
-          <LinearGradient
-            colors={['rgba(247,245,240,0.12)', 'rgba(247,245,240,0.04)', 'rgba(247,245,240,0.9)']}
-            locations={[0, 0.4, 0.96]}
-            style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-          />
-          <View style={{ position: 'absolute', left: 20, right: 20, bottom: 14 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginBottom: 9 }}>
-              <AppText style={{ fontFamily: fonts.serif, fontSize: 14, letterSpacing: 3.4, color: colors.text }}>VICI</AppText>
-              <View style={{ backgroundColor: colors.ink, borderRadius: 7, paddingHorizontal: 8, paddingVertical: 3 }}>
-                <AppText style={[sans('500'), { fontSize: 10, letterSpacing: 1, textTransform: 'uppercase', color: colors.inkText }]}>Plus</AppText>
-              </View>
-            </View>
-            <AppText style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 35, letterSpacing: 0.33, color: colors.text }}>
-              {name ? `${name} — let’s\nfinish this.` : 'Let’s finish\nthis, together.'}
-            </AppText>
-          </View>
+    <View style={{ flex: 1 }}>
+      {/* chrome: ✕ · dots · restore */}
+      <View style={{ position: 'relative', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 34 }}>
+        <View style={{ width: 70 }}>{!embedded ? <PwX onPress={onClose} /> : null}</View>
+        <View style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
+          <PwDots i={0} />
         </View>
+        <View style={{ width: 70, alignItems: 'flex-end' }}>
+          <AppText style={[sans('500'), { fontSize: 13.5, color: colors.textMuted }]}>Restore</AppText>
+        </View>
+      </View>
 
-        {/* everything, unlocked — the unboxed checklist */}
-        <View style={{ paddingTop: 26, paddingHorizontal: 2, paddingBottom: 8 }}>
-          <AppText style={[sans('400'), { fontSize: 13.5, lineHeight: 21, color: colors.textMuted, marginBottom: 20 }]}>
-            Built from your answers tonight — the {trig} window guarded first, the {emo} protocol pinned,{' '}
-            {load === 'Just the bad-day tools for now' ? 'tools before the course' : 'one small lesson a day'}.
+      {/* let the summit breathe */}
+      <View style={{ flex: 1, minHeight: 36 }} />
+
+      {/* the glass sheet — everything written sits in here */}
+      <BlurView intensity={40} tint="light" style={{ borderRadius: 26, overflow: 'hidden' }}>
+        <View style={{ backgroundColor: 'rgba(249,247,243,0.55)', paddingTop: 18, paddingHorizontal: 14, paddingBottom: 14 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <AppText style={{ fontFamily: fonts.serif, fontSize: 14, letterSpacing: 3.36, color: colors.text }}>VICI</AppText>
+            <View style={{ backgroundColor: colors.ink, borderRadius: 7, paddingHorizontal: 8, paddingVertical: 3 }}>
+              <AppText style={[sans('500'), { fontSize: 10, letterSpacing: 1, textTransform: 'uppercase', color: colors.inkText }]}>Plus</AppText>
+            </View>
+          </View>
+          <AppText style={{ fontFamily: fonts.serif, fontSize: 31, lineHeight: 33.5, letterSpacing: 0.31, color: colors.text, marginTop: 10 }}>
+            {name ? `${name} — let’s\nfinish this.` : 'Let’s finish\nthis, together.'}
           </AppText>
-          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft }]}>
-            Everything, unlocked
-          </AppText>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 18 }}>
-            {PW_INCL.map((f) => (
-              <View key={f} style={{ width: '50%', flexDirection: 'row', gap: 9, alignItems: 'flex-start', marginBottom: 15, paddingRight: 12 }}>
-                <Svg width={13} height={13} viewBox="0 0 24 24" fill="none" style={{ marginTop: 2.5 }}>
-                  <Path d="M4 12.5l4.8 4.8L20 6.5" stroke={colors.text} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
-                <AppText style={[sans('400'), { flex: 1, fontSize: 13.5, lineHeight: 18, color: colors.textMuted }]}>{f}</AppText>
+
+          {/* four tiles — they ARE the pitch; no paragraph needed */}
+          <View style={{ flexDirection: 'row', gap: 8, marginTop: 15 }}>
+            {PW_TILES.map(([icon, l1, l2]) => (
+              <View
+                key={icon}
+                style={{
+                  flex: 1,
+                  backgroundColor: 'rgba(253,252,250,0.62)',
+                  borderRadius: 15,
+                  paddingTop: 11,
+                  paddingBottom: 10,
+                  paddingHorizontal: 4,
+                  alignItems: 'center',
+                  gap: 6,
+                  borderWidth: 1,
+                  borderColor: 'rgba(31,30,28,0.05)',
+                }}>
+                <TileIcon k={icon} c={colors.text} />
+                <AppText center style={[sans('500'), { fontSize: 10.5, lineHeight: 13.7, color: colors.textMuted }]}>
+                  {l1}
+                  {'\n'}
+                  {l2}
+                </AppText>
               </View>
             ))}
           </View>
-        </View>
-      </ScrollView>
-      <View style={{ paddingTop: 12 }}>
-        <PwCTA label="Continue" onPress={onNext} />
-      </View>
-    </>
-  );
-}
 
-// ═════ PAGE 2 · THE PLANS ════════════════════════════════════════════
-function PwPlans({ name, plan, setPlan, onDone, onFree }: { name?: string; plan: PlanKey; setPlan: (p: PlanKey) => void; onDone: () => void; onFree: () => void }) {
-  return (
-    <>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 22 }} showsVerticalScrollIndicator={false}>
-        <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 30, lineHeight: 34, color: colors.text, marginTop: 4 }}>Choose your plan.</AppText>
-        <AppText style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: colors.textMuted, marginTop: 10 }]}>
-          You did the work tonight{name ? `, ${name}` : ''}. Let’s keep it.
-        </AppText>
-        <View style={{ gap: 13, marginTop: 24 }}>
-          <PlanRow active={plan === 'year'} onPress={() => setPlan('year')} tag="Best value" name="Yearly" price="$39.99" per="/year" sub="$3.33 a month" />
-          <PlanRow active={plan === 'month'} onPress={() => setPlan('month')} name="Monthly" price="$12.99" per="/month" sub="Cancel anytime" />
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 12 }}>
+            <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
+              <Path d="M12 2.8 5 5.4v5c0 5 3.1 8.1 7 9.8 3.9-1.7 7-4.8 7-9.8v-5z" stroke={colors.textMuted} strokeWidth={1.9} strokeLinejoin="round" />
+              <Path d="m9 11.6 2.2 2.2L15.4 9.5" stroke={colors.textMuted} strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+            <AppText style={[sans('500'), { fontSize: 12, color: colors.textMuted }]}>Secure payment · Cancel anytime</AppText>
+          </View>
+
+          <View style={{ gap: 9, marginTop: 10 }}>
+            <PwPlanRow active={plan === 'year'} onPress={() => setPlan('year')} tag="Best value" name="12 Months" per="$3.33 / month" price="$39.99" cycle="billed yearly" />
+            <PwPlanRow active={plan === 'month'} onPress={() => setPlan('month')} name="1 Month" per="$12.99 / month" price="$12.99" cycle="billed monthly" />
+          </View>
         </View>
-        <AppText center style={[sans('400'), { fontSize: 12.5, color: colors.textSoft, marginTop: 18 }]}>The urge tool is free forever.</AppText>
-      </ScrollView>
-      <View style={{ paddingTop: 12 }}>
-        <PwCTA label={plan === 'month' ? 'Continue — $12.99/month' : 'Continue — $39.99/year'} onPress={onDone} />
-        <View style={{ alignItems: 'center', marginTop: 12 }}>
-          <Pressable
-            onPress={onFree}
-            style={{ borderWidth: 1.4, borderColor: colors.borderStrong, borderRadius: 9999, paddingHorizontal: 24, paddingVertical: 11 }}>
-            <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Continue with the free tools</AppText>
-          </Pressable>
-        </View>
+      </BlurView>
+
+      <View style={{ paddingTop: 11 }}>
+        <PwCTA label="Start Vici Plus" onPress={onPay} />
+        <Pressable onPress={onDecline} style={{ alignItems: 'center', marginTop: 9, paddingVertical: 4, paddingHorizontal: 10 }}>
+          <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textMuted }]}>Continue with the free tools</AppText>
+        </Pressable>
       </View>
-    </>
+    </View>
   );
 }
 
@@ -430,17 +443,14 @@ export function PaywallFlow({
   onDone: (purchased: boolean) => void;
 }) {
   const updateSettings = useUpdateSettings();
-  const [i, setI] = useState(0);
   const [plan, setPlan] = useState<PlanKey>('year');
   const [checkout, setCheckout] = useState<PlanKey | null>(null);
   const [offer, setOffer] = useState(false);
   const [sheet, setSheet] = useState(false);
   const [done, setDone] = useState(false);
   const [offered, setOffered] = useState(false);
-  const trig = (triggers[0] || 'late night').toLowerCase();
-  const emo = (emotions[0] || 'loneliness').split(' or ')[0].toLowerCase();
 
-  // walking away from the plans page gets one rescue: 3 days free
+  // walking away gets one rescue: 3 days free
   const decline = () => {
     if (!offered) {
       setOffered(true);
@@ -460,34 +470,40 @@ export function PaywallFlow({
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <SafeAreaView style={{ flex: 1, paddingHorizontal: 29, paddingBottom: 10 }} edges={['top', 'bottom']}>
+      {/* the summit — painted on the wrapper itself so nothing insets it */}
+      {!offer ? (
+        <Image
+          source={require('../../../assets/images/paywall-summit-full.webp')}
+          contentFit="cover"
+          contentPosition={{ left: '62%', top: 0 }}
+          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+        />
+      ) : null}
+      <SafeAreaView style={{ flex: 1, paddingHorizontal: 18, paddingBottom: 14 }} edges={['top', 'bottom']}>
         {offer ? (
-          <PwTrialOffer
+          <View style={{ flex: 1, paddingHorizontal: 11 }}>
+            <PwTrialOffer
+              embedded={embedded}
+              onStart={() => {
+                setCheckout('trial');
+                setSheet(true);
+              }}
+              onNo={() => onDone(false)}
+            />
+          </View>
+        ) : (
+          <PwMain
+            plan={plan}
+            setPlan={setPlan}
             embedded={embedded}
-            onStart={() => {
-              setCheckout('trial');
+            name={name}
+            onPay={() => {
+              setCheckout(plan);
               setSheet(true);
             }}
-            onNo={() => onDone(false)}
+            onDecline={decline}
+            onClose={decline}
           />
-        ) : (
-          <>
-            <PwHeader i={i} embedded={embedded} onClose={i === 1 ? decline : () => onDone(false)} onBack={i > 0 ? () => setI(i - 1) : null} />
-            {i === 0 ? (
-              <PwPitch name={name} trig={trig} emo={emo} load={load} onNext={() => setI(1)} />
-            ) : (
-              <PwPlans
-                name={name}
-                plan={plan}
-                setPlan={setPlan}
-                onDone={() => {
-                  setCheckout(plan);
-                  setSheet(true);
-                }}
-                onFree={decline}
-              />
-            )}
-          </>
         )}
       </SafeAreaView>
       {sheet ? <PwPaySheet plan={checkout || plan} onCancel={() => setSheet(false)} onPay={pay} /> : null}
