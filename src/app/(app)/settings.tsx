@@ -91,9 +91,6 @@ export default function Settings() {
         />
       </SettingsGroup>
 
-      <AppText center style={[sans('400'), { fontSize: 12, color: colors.textSofter, marginTop: 18, marginBottom: 8 }]}>
-        VICI · the campaign, kept on this device
-      </AppText>
     </Screen>
   );
 }

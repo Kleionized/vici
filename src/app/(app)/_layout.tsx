@@ -62,13 +62,13 @@ export default function AppLayout() {
       <Tabs.Screen name="log" />
       <Tabs.Screen name="dashboard" />
       {/* Reachable via navigation but not shown in the tab bar. */}
-      <Tabs.Screen name="lifemap" options={{ href: null }} />
-      <Tabs.Screen name="settings" options={{ href: null }} />
-      <Tabs.Screen name="support" options={{ href: null }} />
-      <Tabs.Screen name="locked" options={{ href: null }} />
-      <Tabs.Screen name="journal" options={{ href: null }} />
-      <Tabs.Screen name="milestones" options={{ href: null }} />
-      <Tabs.Screen name="rough-days" options={{ href: null }} />
+      <Tabs.Screen name="lifemap" />
+      <Tabs.Screen name="settings" />
+      <Tabs.Screen name="support" />
+      <Tabs.Screen name="locked" />
+      <Tabs.Screen name="journal" />
+      <Tabs.Screen name="milestones" />
+      <Tabs.Screen name="rough-days" />
     </Tabs>
   );
 }

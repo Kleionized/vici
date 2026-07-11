@@ -90,9 +90,6 @@ export default function Mail() {
             </AppText>
           </View>
           <AppText style={{ fontFamily: fonts.serif, fontSize: 28, color: colors.text, marginTop: 14 }}>Mail</AppText>
-          <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, marginTop: 10, lineHeight: 20 }]}>
-            Your weekly reports and letters, kept in one place.
-          </AppText>
         </View>
 
         {items.length === 0 ? (

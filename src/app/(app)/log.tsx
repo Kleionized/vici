@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import Svg, { G, Circle, Path } from 'react-native-svg';
 
 import {
   AppText,
@@ -54,18 +54,18 @@ export default function Log() {
       go: () => router.push('/urge-log'),
     },
     {
-      key: 'moment',
+      key: 'history',
       mark: <MarkMoment />,
-      title: 'A moment',
-      note: 'A warning sign worth remembering',
-      go: () => setMode('moment'),
+      title: 'History',
+      note: 'Everything logged, plain and dated',
+      go: () => setMode('history'),
     },
     {
-      key: 'journal',
-      mark: <MarkJournal />,
-      title: 'Journal entry',
-      note: 'Free words, at your own pace',
-      go: () => router.push('/journal-new'),
+      key: 'rough',
+      mark: <MarkRough />,
+      title: 'Rough day',
+      note: 'The protocol book, one move at a time',
+      go: () => router.navigate('/(app)/rough-days'),
     },
   ];
 
@@ -81,9 +81,6 @@ export default function Log() {
       <View style={{ alignItems: 'center', marginTop: 28 }}>
         <AppText center style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3, color: colors.text }}>
           What are you logging?
-        </AppText>
-        <AppText center variant="muted" style={{ fontSize: 13.5, lineHeight: 19, marginTop: 12, marginHorizontal: 20 }}>
-          One quiet capture — pick the shape that fits.
         </AppText>
       </View>
 
@@ -118,30 +115,6 @@ export default function Log() {
         ))}
       </View>
 
-      {/* rough days — the in-the-moment book, one tap from the door */}
-      <Pressable
-        onPress={() => router.push('/(app)/rough-days')}
-        hitSlop={6}
-        style={({ pressed }) => ({
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 8,
-          paddingVertical: 13,
-          borderRadius: 9999,
-          borderWidth: 1.4,
-          borderColor: colors.borderStrong,
-          opacity: pressed ? 0.7 : 1,
-        })}>
-        <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Rough day?</AppText>
-        <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted }]}>Open the book of protocols ›</AppText>
-      </Pressable>
-
-      <Pressable onPress={() => setMode('history')} hitSlop={8} style={{ paddingVertical: 18, paddingBottom: 12 }}>
-        <AppText center style={[sans('400'), { fontSize: 12.5, lineHeight: 19, color: colors.textSoft }]}>
-          Everything lands in your log — plain, dated, never graded. <AppText style={[sans('600'), { fontSize: 12.5, color: colors.textMuted }]}>History ›</AppText>
-        </AppText>
-      </Pressable>
     </Screen>
   );
 }
@@ -178,6 +151,18 @@ function MarkMoment() {
       <Path d="M20.5 36 a 7.5 4.6 0 0 1 15 0 Z" fill={colors.textMuted} />
       <Path d="M6 36 h44" stroke={colors.textMuted} strokeWidth={2.2} strokeLinecap="round" opacity={0.8} />
       <Path d="M14 42.5 q 7 -2.4 14 0 t 14 0" stroke={colors.textMuted} strokeWidth={1.8} strokeLinecap="round" fill="none" opacity={0.45} />
+    </Svg>
+  );
+}
+function MarkRough() {
+  return (
+    <Svg width={56} height={48} viewBox="0 0 56 48" fill="none">
+      {/* the squall — cloud, rain, the line holding */}
+      <Path d="M16 16 A 7 7 0 0 1 27 10 A 8 8 0 0 1 41 14 A 5.5 5.5 0 0 1 40 24 L 18 24 A 5.5 5.5 0 0 1 16 16 Z" stroke={colors.text} strokeWidth={2.2} strokeLinejoin="round" />
+      <G stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round">
+        <Path d="M22 30l-2.5 7M30 30l-2.5 7M38 30l-2.5 7" />
+      </G>
+      <Path d="M6 42 h44" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" opacity={0.55} />
     </Svg>
   );
 }
@@ -256,9 +241,6 @@ function MomentComposer({ onExit, onDone }: { onExit: () => void; onDone: () => 
       <FlowTop eyebrow="A moment" onBack={onExit} />
       <AppText style={{ fontFamily: fonts.serif, fontSize: 28, lineHeight: 32, letterSpacing: 0.22, color: colors.text }}>
         Worth remembering.
-      </AppText>
-      <AppText variant="muted" style={{ fontSize: 13.5, lineHeight: 20, marginTop: -6 }}>
-        Data to learn from — never a scorecard.
       </AppText>
 
       <View style={{ gap: spacing.sm }}>

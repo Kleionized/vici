@@ -138,9 +138,7 @@ export default function Today() {
             gap: 8,
             backgroundColor: CARD,
             borderRadius: 9999,
-            paddingVertical: 7,
-            paddingLeft: 9,
-            paddingRight: 14,
+            padding: 7,
           }}>
           {/* ring + tone disc — the week strip's today grammar, in miniature */}
           <View
@@ -165,9 +163,6 @@ export default function Today() {
               }}
             />
           </View>
-          <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>
-            {todayCheckin?.mood != null ? MOOD_WORDS[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'Log mood'}
-          </AppText>
         </Pressable>
 
         <View

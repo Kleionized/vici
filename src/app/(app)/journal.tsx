@@ -58,9 +58,6 @@ export default function Journal() {
           <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, lineHeight: 29, color: colors.text, maxWidth: 240, marginTop: 10 }}>
             Nothing logged yet. The page is patient.
           </AppText>
-          <AppText center variant="muted" style={{ fontSize: 13, lineHeight: 20, maxWidth: 230, marginTop: 12 }}>
-            Three honest words count as an entry.
-          </AppText>
           <Pressable
             onPress={() => router.push('/journal-new')}
             style={{ marginTop: 22, borderWidth: 1.4, borderColor: colors.borderStrong, borderRadius: 9999, paddingVertical: 11, paddingHorizontal: 22 }}>
