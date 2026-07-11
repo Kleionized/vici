@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { Pressable, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 
 import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
@@ -126,9 +126,19 @@ export default function Today() {
   const doneCount = steps.filter((s) => s.done).length;
 
   return (
-    <Screen contentStyle={{ paddingTop: spacing.sm, paddingBottom: 0 }}>
-      {/* header: mood chip · DAY N · avatar */}
-      <View style={{ position: 'relative', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+    <Screen scroll={false} bleed contentStyle={{ paddingTop: spacing.sm }}>
+      {/* header: mood chip · DAY N · avatar — pinned above the scroll */}
+      <View
+        style={{
+          position: 'relative',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingHorizontal: spacing.xl,
+          paddingBottom: 12,
+          backgroundColor: colors.bg,
+          zIndex: 2,
+        }}>
         <Pressable
           onPress={() => router.push('/checkin')}
           accessibilityLabel="Today's mood"
@@ -140,29 +150,18 @@ export default function Today() {
             borderRadius: 9999,
             padding: 7,
           }}>
-          {/* ring + tone disc — the week strip's today grammar, in miniature */}
+          {/* the day's tone, whole — dashed and empty until it's logged */}
           <View
             style={{
-              width: 19,
-              height: 19,
+              width: 20,
+              height: 20,
               borderRadius: 9999,
-              borderWidth: 1.5,
+              backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
+              borderWidth: todayCheckin?.mood != null ? 0 : 1.5,
               borderColor: colors.text,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View
-              style={{
-                width: 11.5,
-                height: 11.5,
-                borderRadius: 9999,
-                backgroundColor: todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : 'transparent',
-                borderWidth: todayCheckin?.mood != null ? 0 : 1.2,
-                borderColor: RING,
-                borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
-              }}
-            />
-          </View>
+              borderStyle: todayCheckin?.mood != null ? 'solid' : 'dashed',
+            }}
+          />
         </Pressable>
 
         <View
@@ -193,8 +192,12 @@ export default function Today() {
         </Pressable>
       </View>
 
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxxl }}
+        showsVerticalScrollIndicator={false}>
       {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 34, height: 32 }}>
+      <View style={{ alignItems: 'center', marginTop: 48, height: 32 }}>
         <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
           {'“'}
         </AppText>
@@ -218,7 +221,7 @@ export default function Today() {
           onPress={() => router.push(`/lesson/${current.lesson.slug}`)}
           accessibilityRole="button"
           style={({ pressed }) => ({
-            marginTop: 48,
+            marginTop: 56,
             height: 214,
             borderRadius: 20,
             overflow: 'hidden',
@@ -268,7 +271,7 @@ export default function Today() {
       ) : null}
 
       {/* today's steps */}
-      <View style={{ marginTop: 46 }}>
+      <View style={{ marginTop: 60 }}>
         <SectionHead title="Today's steps" meta={`${doneCount} of ${steps.length}`} />
         <View style={{ backgroundColor: CARD, borderRadius: 18, paddingVertical: 4, paddingHorizontal: 20 }}>
           {steps.map((s, i) => (
@@ -324,7 +327,7 @@ export default function Today() {
       </View>
 
       {/* your week moods */}
-      <View style={{ marginTop: 40 }}>
+      <View style={{ marginTop: 56 }}>
         <SectionHead title="Your week moods" meta={moodWord} />
         <View style={{ backgroundColor: CARD, borderRadius: 20, paddingTop: 18, paddingBottom: 19, paddingHorizontal: 20 }}>
           <View style={{ flexDirection: 'row' }}>
@@ -383,7 +386,7 @@ export default function Today() {
       </View>
 
       {/* footer — laurel divider · Epictetus · the valley river */}
-      <View style={{ marginTop: 44, position: 'relative' }}>
+      <View style={{ marginTop: 60, position: 'relative' }}>
         <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
         <View
           style={{
@@ -411,7 +414,7 @@ export default function Today() {
           color: colors.text,
           maxWidth: 250,
           alignSelf: 'center',
-          marginTop: 38,
+          marginTop: 52,
         }}>
         {footerQuote}
       </AppText>
@@ -420,7 +423,7 @@ export default function Today() {
         style={[sans('600'), { fontSize: 11, letterSpacing: 2.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 14 }]}>
         Epictetus
       </AppText>
-      <View style={{ marginTop: 30, marginHorizontal: -spacing.xl, height: 260 }}>
+      <View style={{ marginTop: 40, marginHorizontal: -spacing.xl, height: 260 }}>
         <Image
           source={require('../../../assets/images/valley-river.webp')}
           contentFit="cover"
@@ -437,6 +440,7 @@ export default function Today() {
           style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
         />
       </View>
+      </ScrollView>
     </Screen>
   );
 }
