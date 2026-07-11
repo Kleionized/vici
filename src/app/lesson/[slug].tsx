@@ -6,6 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AppText, Button, CategoryBadge, ChoiceInput, EmptyState, Field, Icon, Illustration, LESSON_VISUAL, Laurel, LoadingView, ScaleInput, Screen, SectionLabel, type IllustrationName } from '@/components/ui';
+import { INTERACTIVE_LESSONS, type InteractivePage, LpgCheck, LpgCollect, LpgGrid, LpgPick, LpgTeach } from '@/components/lesson/interactive';
 import { type MdBlock, parseMarkdown, renderInline } from '@/components/ui/MarkdownView';
 import { URGE_TOOL_LESSON_SLUGS } from '@/content/seedLessons';
 import { useCompleteLesson, useLessonDetail, useSaveReflection, useStartLesson } from '@/lib/backend';
@@ -229,8 +230,10 @@ function LessonReader({
 }) {
   const insets = useSafeAreaInsets();
   const [i, setI] = useState(0);
+  const interactive = INTERACTIVE_LESSONS[lesson.slug]?.pages ?? null;
   const sections = pages.filter((p): p is Extract<StoryPage, { kind: 'story' }> => p.kind === 'story');
-  const total = sections.length + 2; // title · sections · done
+  const midCount = interactive ? interactive.length : sections.length;
+  const total = midCount + 2; // title · pages · done
   const back = () => (i === 0 ? onClose() : setI(i - 1));
   const next = () => setI((v) => Math.min(total - 1, v + 1));
   const eyebrow = `Ground ${romanNum(lesson.week)} · Lesson ${romanNum(lesson.dayInWeek)}`;
@@ -252,7 +255,15 @@ function LessonReader({
         <AppText style={[sans('500'), { fontSize: 13.5, color: colors.textSoft, marginTop: 18 }]}>{minLabel}</AppText>
       </View>
     );
-  } else if (i <= sections.length) {
+  } else if (interactive && i <= interactive.length) {
+    // an interactive page — the takeaway line is the button
+    const pg: InteractivePage = interactive[i - 1];
+    if (pg.kind === 'teach') body = <LpgTeach page={pg} next={next} />;
+    else if (pg.kind === 'pick') body = <LpgPick page={pg} next={next} />;
+    else if (pg.kind === 'check') body = <LpgCheck key={`c${pg.qIndex}`} page={pg} next={next} />;
+    else if (pg.kind === 'grid') body = <LpgGrid page={pg} next={next} />;
+    else body = <LpgCollect page={pg} next={next} />;
+  } else if (!interactive && i <= sections.length) {
     // one idea per page
     const sec = sections[i - 1];
     const rest = sec.rest.filter((b) => b.kind === 'p' || b.kind === 'ul' || b.kind === 'ol');
@@ -298,7 +309,9 @@ function LessonReader({
       <StatusBar style="dark" />
       <LFTopBar total={total} index={i} onBack={back} onClose={onClose} />
       {body}
-      <LFCTA label={i === 0 ? 'Begin' : i === total - 1 ? 'On to the practice' : 'Continue'} onPress={i === total - 1 ? onBegin : next} />
+      {interactive && i > 0 && i < total - 1 ? null : (
+        <LFCTA label={i === 0 ? 'Begin' : i === total - 1 ? 'On to the practice' : 'Continue'} onPress={i === total - 1 ? onBegin : next} />
+      )}
     </View>
   );
 }
