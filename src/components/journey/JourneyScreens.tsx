@@ -159,14 +159,14 @@ function MapNode({ world, cx, cy, side, onOpen }: { world: World; cx: number; cy
                 )}
               </Svg>
             ) : (
-              <AppText weightOverride="700" color={TEXT} style={{ fontSize: 18 }}>
+              <AppText weightOverride="500" color={TEXT} style={{ fontSize: 16.5 }}>
                 {world.n}
               </AppText>
             )}
           </View>
         </View>
         <AppText
-          weightOverride="700"
+          weightOverride="600"
           style={{ fontSize: 11.5, letterSpacing: 0.1, color: st === 'locked' ? 'rgba(242,242,238,0.5)' : TEXT, textAlign: 'center', maxWidth: 116, textShadowColor: 'rgba(0,0,0,0.6)', textShadowRadius: 6, textShadowOffset: { width: 0, height: 1 } }}>
           {side ? world.name.split(' & ')[0].replace('Get ', '') : SHORT[world.key]}
         </AppText>
@@ -221,17 +221,17 @@ function WorldMapScreen({ worlds, side, onOpen }: { worlds: World[]; side: World
 
           {/* header */}
           <View style={{ position: 'absolute', top: insets.top + 16, left: 0, right: 0, paddingHorizontal: 24, alignItems: 'center' }}>
-            <AppText weightOverride="700" style={{ fontSize: 12, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(242,242,238,0.6)' }}>
+            <AppText weightOverride="600" style={{ fontSize: 12, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(242,242,238,0.6)' }}>
               Your journey
             </AppText>
-            <AppText weightOverride="700" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, marginTop: 6, textShadowColor: 'rgba(0,0,0,0.5)', textShadowRadius: 12 }}>
+            <AppText weightOverride="600" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, marginTop: 6, textShadowColor: 'rgba(0,0,0,0.5)', textShadowRadius: 12 }}>
               Sea to summit
             </AppText>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 10 }}>
               <View style={{ width: 150, height: 5, borderRadius: 9999, backgroundColor: 'rgba(255,255,255,0.16)', overflow: 'hidden' }}>
                 <View style={{ width: `${(doneCount / WORLDS.length) * 100 + 4}%`, height: '100%', backgroundColor: wa(cur ? cur.hue : 224, 0.85, 0.11), borderRadius: 9999 }} />
               </View>
-              <AppText weightOverride="700" style={{ fontSize: 12.5, color: 'rgba(242,242,238,0.75)' }}>
+              <AppText weightOverride="600" style={{ fontSize: 12.5, color: 'rgba(242,242,238,0.75)' }}>
                 {doneCount}/{WORLDS.length} worlds
               </AppText>
             </View>
@@ -294,10 +294,10 @@ function LessonRow({ title, mins, state, hue, i }: { title: string; mins: number
         opacity: locked ? 0.55 : 1,
       }}>
       <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? accent : 'rgba(255,255,255,0.07)', borderWidth: cur ? 1.5 : 0, borderColor: accent }}>
-        {done ? <CheckIcon c="#06080B" size={15} /> : locked ? <LockIcon c="rgba(255,255,255,0.5)" /> : <AppText weightOverride="700" color={accent} style={{ fontSize: 13 }}>{i}</AppText>}
+        {done ? <CheckIcon c="#06080B" size={15} /> : locked ? <LockIcon c="rgba(255,255,255,0.5)" /> : <AppText weightOverride="600" color={accent} style={{ fontSize: 13 }}>{i}</AppText>}
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <AppText weightOverride="700" color={TEXT} numberOfLines={1} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
+        <AppText weightOverride="600" color={TEXT} numberOfLines={1} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
           {title}
         </AppText>
         <AppText weightOverride="500" style={{ fontSize: 12.5, color: 'rgba(242,242,238,0.5)', marginTop: 1 }}>
@@ -306,7 +306,7 @@ function LessonRow({ title, mins, state, hue, i }: { title: string; mins: number
       </View>
       {cur ? (
         <View style={{ backgroundColor: accent, borderRadius: 9999, paddingHorizontal: 13, paddingVertical: 6 }}>
-          <AppText weightOverride="700" color="#06080B" style={{ fontSize: 12 }}>
+          <AppText weightOverride="600" color="#06080B" style={{ fontSize: 12 }}>
             Resume
           </AppText>
         </View>
@@ -345,10 +345,10 @@ function WorldHubScreen({ world, onBack, onAction }: { world: World; onBack: () 
 
       {/* body */}
       <View style={{ flex: 1, marginTop: -42, paddingHorizontal: 24, paddingBottom: 18 }}>
-        <AppText weightOverride="700" color={accent} style={{ fontSize: 12, letterSpacing: 2.4, textTransform: 'uppercase' }}>
+        <AppText weightOverride="600" color={accent} style={{ fontSize: 12, letterSpacing: 2.4, textTransform: 'uppercase' }}>
           {w.side ? 'Side quest' : `World ${w.n} of 10`}
         </AppText>
-        <AppText weightOverride="700" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, lineHeight: 33, marginTop: 8 }}>
+        <AppText weightOverride="600" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, lineHeight: 33, marginTop: 8 }}>
           {w.name}
         </AppText>
         <AppText weightOverride="500" style={{ fontSize: 16, color: 'rgba(242,242,238,0.6)', marginTop: 6 }}>
@@ -361,7 +361,7 @@ function WorldHubScreen({ world, onBack, onAction }: { world: World; onBack: () 
             <LessonRow key={i} title={t} mins={w.mins || 3} state={w.crisis ? (i === 0 ? 'current' : 'avail') : stateFor(i)} hue={w.hue} i={i + 1} />
           ))}
           {more > 0 ? (
-            <AppText weightOverride="700" style={{ textAlign: 'center', fontSize: 13, color: 'rgba(242,242,238,0.5)', paddingTop: 6 }}>
+            <AppText weightOverride="600" style={{ textAlign: 'center', fontSize: 13, color: 'rgba(242,242,238,0.5)', paddingTop: 6 }}>
               + {more} more {w.crisis ? 'resource' : 'lesson'}
               {more > 1 ? 's' : ''}
             </AppText>
@@ -382,7 +382,7 @@ function WorldHubScreen({ world, onBack, onAction }: { world: World; onBack: () 
             gap: 8,
           }}>
           {locked ? <LockIcon c="rgba(242,242,238,0.55)" /> : null}
-          <AppText weightOverride="700" color={locked ? 'rgba(242,242,238,0.55)' : '#06080B'} style={{ fontSize: 18, letterSpacing: -0.2 }}>
+          <AppText weightOverride="500" color={locked ? 'rgba(242,242,238,0.55)' : '#06080B'} style={{ fontSize: 16.5, letterSpacing: -0.1 }}>
             {ctaLabel}
           </AppText>
         </Pressable>

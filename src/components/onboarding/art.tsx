@@ -404,7 +404,7 @@ export function NextPill({ label = 'Continue', enabled = true, arrow = true, dar
         gap: 10,
         opacity: enabled ? 1 : 0.32,
       }}>
-      <AppText weightOverride="700" color={dark ? ON_FILL : INK} style={{ fontSize: 18, letterSpacing: -0.2 }}>
+      <AppText weightOverride="500" color={dark ? ON_FILL : INK} style={{ fontSize: 16.5, letterSpacing: -0.1 }}>
         {label}
       </AppText>
       {arrow ? (
@@ -433,14 +433,14 @@ export function OnbCard({ children, pad = 18, style }: { children: ReactNode; pa
 // ── "as featured in" credibility row ─────────────────────────────────────────
 export function PressRow({ label = 'As featured in' }: { label?: string }) {
   const names: [string, object][] = [
-    ['Forbes', { fontFamily: 'Georgia', fontWeight: '700', fontSize: 19 }],
+    ['Forbes', { fontFamily: 'Georgia', fontWeight: '600', fontSize: 19 }],
     ['WIRED', { fontWeight: '900', fontSize: 16, letterSpacing: 1 }],
     ['The Atlantic', { fontFamily: 'Georgia', fontWeight: '600', fontSize: 16, fontStyle: 'italic' }],
-    ['TechTimes', { fontWeight: '700', fontSize: 15.5 }],
+    ['TechTimes', { fontWeight: '600', fontSize: 15.5 }],
   ];
   return (
     <View style={{ alignItems: 'center' }}>
-      <AppText weightOverride="700" style={{ fontSize: 11.5, letterSpacing: 1.8, textTransform: 'uppercase', color: INK3, marginBottom: 14 }}>
+      <AppText weightOverride="600" style={{ fontSize: 11.5, letterSpacing: 1.8, textTransform: 'uppercase', color: INK3, marginBottom: 14 }}>
         {label}
       </AppText>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 22, rowGap: 12, opacity: 0.6 }}>
@@ -729,7 +729,7 @@ export function StatRow({ icon, label, value }: { icon: ReactNode; label: string
       <AppText weightOverride="500" color={INK2} style={{ flex: 1, fontSize: 15 }}>
         {label}
       </AppText>
-      <AppText weightOverride="700" color={INK} style={{ fontSize: 15, letterSpacing: -0.15, textAlign: 'right', maxWidth: 160 }}>
+      <AppText weightOverride="600" color={INK} style={{ fontSize: 15, letterSpacing: -0.15, textAlign: 'right', maxWidth: 160 }}>
         {value}
       </AppText>
     </View>
@@ -809,7 +809,7 @@ export function AvatarStack({ items = ['J', 'M', 'A', 'K'], size = 34 }: { items
             justifyContent: 'center',
             zIndex: items.length - k,
           }}>
-          <AppText weightOverride="700" color={INK} style={{ fontSize: size * 0.38 }}>
+          <AppText weightOverride="600" color={INK} style={{ fontSize: size * 0.38 }}>
             {it}
           </AppText>
         </View>
@@ -823,12 +823,12 @@ export function Testimonial({ initials, name, handle, quote, hue = 208 }: { init
     <OnbCard pad={18}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 }}>
         <View style={{ width: 42, height: 42, borderRadius: 9999, backgroundColor: tint(hue, 0.7, 0.08, 0.5), alignItems: 'center', justifyContent: 'center' }}>
-          <AppText weightOverride="700" color={INK} style={{ fontSize: 16 }}>
+          <AppText weightOverride="600" color={INK} style={{ fontSize: 16 }}>
             {initials}
           </AppText>
         </View>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <AppText weightOverride="700" color={INK} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
+          <AppText weightOverride="600" color={INK} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
             {name}
           </AppText>
           <AppText weightOverride="500" color={INK3} style={{ fontSize: 13 }}>
@@ -847,7 +847,7 @@ export function Testimonial({ initials, name, handle, quote, hue = 208 }: { init
 export function BigStat({ value, label }: { value: string; label: string }) {
   return (
     <View style={{ alignItems: 'center' }}>
-      <AppText weightOverride="700" color={INK} style={{ fontSize: 30, letterSpacing: -0.9, lineHeight: 32 }}>
+      <AppText weightOverride="600" color={INK} style={{ fontSize: 30, letterSpacing: -0.9, lineHeight: 32 }}>
         {value}
       </AppText>
       <AppText weightOverride="600" color={INK2} style={{ fontSize: 12.5, marginTop: 6 }}>

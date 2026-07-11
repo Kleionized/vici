@@ -71,7 +71,7 @@ export function Button({
       ) : (
         <View>
           {/* iOS-spec primary action: 17pt semibold with tight optical tracking. */}
-          <AppText color={labelColor} weightOverride={weight.semibold} style={{ fontSize: 17, letterSpacing: -0.24 }}>
+          <AppText color={labelColor} weightOverride={weight.medium} style={{ fontSize: 17, letterSpacing: -0.24 }}>
             {label}
           </AppText>
         </View>

@@ -333,7 +333,7 @@ export default function Today() {
           <View style={{ flexDirection: 'row' }}>
             {week.map((w, i) => (
               <View key={i} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
-                <AppText style={[sans(w.today ? '700' : '500'), { fontSize: 11, letterSpacing: 0.66, color: w.today ? colors.text : colors.textSoft }]}>
+                <AppText style={[sans(w.today ? '600' : '500'), { fontSize: 11, letterSpacing: 0.66, color: w.today ? colors.text : colors.textSoft }]}>
                   {w.letter}
                 </AppText>
                 {w.today ? (

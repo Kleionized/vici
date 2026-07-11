@@ -12,7 +12,7 @@ export interface AppTextProps extends TextProps {
   weightOverride?: TextStyle['fontWeight'];
 }
 
-const WEIGHT_ALIAS: Record<string, TextStyle['fontWeight']> = { normal: '400', bold: '700' };
+const WEIGHT_ALIAS: Record<string, TextStyle['fontWeight']> = { normal: '400', bold: '600' };
 
 // The VICI voice: display sizes (hero/display/title/subtitle) speak in the
 // EB Garamond serif at weight 500 — never bold; the serif's own colour does

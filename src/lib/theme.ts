@@ -198,7 +198,9 @@ export const sansFamily: Record<string, string> = Platform.select({
 const SANS_USES_REAL_WEIGHT = Platform.OS === 'ios' || Platform.OS === 'web';
 
 export function sans(w: FontWeight = '400'): TextStyle {
-  const key = String(w === 'normal' ? '400' : w === 'bold' ? '700' : w);
+  let key = String(w === 'normal' ? '400' : w === 'bold' ? '600' : w);
+  // Hard ceiling: nothing in this app renders heavier than semibold.
+  if (Number(key) > 600) key = '600';
   return SANS_USES_REAL_WEIGHT
     ? { fontFamily: sansFamily[key] ?? sansFamily['400'], fontWeight: key as FontWeight }
     : { fontFamily: sansFamily[key] ?? sansFamily['400'] };
@@ -246,7 +248,7 @@ export const weight: Record<'regular' | 'medium' | 'semibold' | 'bold', FontWeig
   regular: '400',
   medium: '500',
   semibold: '600',
-  bold: '700',
+  bold: '600', // capped — nothing renders heavier than semibold
 };
 
 export const lineHeight = {

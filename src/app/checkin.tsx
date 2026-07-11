@@ -276,7 +276,7 @@ function MoodSlider({ value, onChange }: { value: number; onChange: (t: number) 
         {MOODS.map((m, i) => (
           <AppText
             key={m.key}
-            weightOverride={i === idx ? '700' : '600'}
+            weightOverride={i === idx ? '600' : '500'}
             style={{ fontSize: 13.5, letterSpacing: -0.1, color: i === idx ? colors.text : colors.textSoft }}>
             {m.label}
           </AppText>
@@ -321,7 +321,7 @@ function ContinueBtn({ label = 'Continue', enabled = true, onPress }: { label?: 
         gap: 10,
         opacity: enabled ? 1 : 0.32,
       }}>
-      <AppText weightOverride="700" color={colors.accentText} style={{ fontSize: 18, letterSpacing: -0.2 }}>
+      <AppText weightOverride="500" color={colors.accentText} style={{ fontSize: 16, letterSpacing: 0.16 }}>
         {label}
       </AppText>
       <Arrow color={colors.accentText} />
@@ -374,7 +374,7 @@ function ReasonCell({ label, glyph, on, onPress }: { label: string; glyph: Glyph
       <View style={{ width: 46, height: 46, borderRadius: 9999, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? colors.accent : colors.accentSoft }}>
         <View style={{ width: 24, height: 24, alignItems: 'center', justifyContent: 'center' }}>{FIcon[glyph](on ? colors.accentText : colors.text)}</View>
       </View>
-      <AppText weightOverride={on ? '700' : '600'} style={{ fontSize: 14.5, letterSpacing: -0.1 }}>
+      <AppText weightOverride={on ? '600' : '500'} style={{ fontSize: 14.5, letterSpacing: -0.1 }}>
         {label}
       </AppText>
     </Pressable>

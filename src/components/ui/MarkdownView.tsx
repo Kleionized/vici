@@ -88,7 +88,7 @@ export function renderInline(text: string): ReactNode[] {
     const token = match[0];
     if (token.startsWith('**')) {
       out.push(
-        <Text key={key++} style={{ fontFamily: 'System', fontWeight: '700' }}>
+        <Text key={key++} style={{ fontFamily: 'System', fontWeight: '600' }}>
           {token.slice(2, -2)}
         </Text>,
       );
@@ -143,7 +143,7 @@ export function MarkdownView({ content }: { content: string }) {
         }
         if (block.kind === 'h3') {
           return (
-            <AppText key={i} variant="body" weightOverride="700" style={{ marginTop: spacing.xs }}>
+            <AppText key={i} variant="body" weightOverride="600" style={{ marginTop: spacing.xs }}>
               {content}
             </AppText>
           );

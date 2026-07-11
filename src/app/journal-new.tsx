@@ -67,11 +67,11 @@ export default function JournalNew() {
                 Cancel
               </AppText>
             </Pressable>
-            <AppText weightOverride="700" style={{ fontSize: 14, color: colors.textSoft }}>
+            <AppText weightOverride="600" style={{ fontSize: 14, color: colors.textSoft }}>
               {headerTime}
             </AppText>
             <Pressable onPress={save} style={{ backgroundColor: colors.accent, borderRadius: 9999, paddingHorizontal: 18, paddingVertical: 8 }}>
-              <AppText weightOverride="700" color={colors.accentText} style={{ fontSize: 15 }}>
+              <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 15 }}>
                 Save
               </AppText>
             </Pressable>
@@ -86,7 +86,7 @@ export default function JournalNew() {
                   key={t}
                   onPress={() => setTag(t)}
                   style={{ paddingHorizontal: 13, paddingVertical: 7, borderRadius: 9999, backgroundColor: on ? colors.accent : 'transparent', borderWidth: on ? 0 : 1.5, borderColor: colors.border }}>
-                  <AppText weightOverride="700" color={on ? colors.accentText : colors.textMuted} style={{ fontSize: 12.5, letterSpacing: 0.4 }}>
+                  <AppText weightOverride="600" color={on ? colors.accentText : colors.textMuted} style={{ fontSize: 12.5, letterSpacing: 0.4 }}>
                     {t}
                   </AppText>
                 </Pressable>

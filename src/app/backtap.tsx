@@ -60,7 +60,7 @@ export default function BackTap() {
                 {DEEP_LINK}
               </AppText>
               <Pressable onPress={copy} hitSlop={8} style={{ backgroundColor: colors.accent, borderRadius: radius.pill, paddingHorizontal: 16, paddingVertical: 9 }}>
-                <AppText weightOverride="700" color={colors.accentText} style={{ fontSize: 14 }}>
+                <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 14 }}>
                   {copied ? 'Copied' : 'Copy'}
                 </AppText>
               </Pressable>
@@ -72,7 +72,7 @@ export default function BackTap() {
             {STEPS.map((s, i) => (
               <View key={i} style={{ flexDirection: 'row', gap: spacing.md, alignItems: 'flex-start' }}>
                 <View style={{ width: 28, height: 28, borderRadius: radius.pill, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}>
-                  <AppText weightOverride="700" style={{ fontSize: 13 }}>
+                  <AppText weightOverride="600" style={{ fontSize: 13 }}>
                     {i + 1}
                   </AppText>
                 </View>

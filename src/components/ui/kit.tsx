@@ -207,7 +207,7 @@ export function Toggle({ on = false }: { on?: boolean }) {
 export function Avatar({ initials = 'JR', size = 64 }: { initials?: string; size?: number }) {
   return (
     <View style={{ width: size, height: size, borderRadius: 9999, backgroundColor: colors.accent, alignItems: 'center', justifyContent: 'center' }}>
-      <AppText weightOverride="700" color={colors.accentText} style={{ fontSize: size * 0.4, letterSpacing: -0.4 }}>
+      <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: size * 0.4, letterSpacing: -0.4 }}>
         {initials}
       </AppText>
     </View>
@@ -388,16 +388,16 @@ export function PlanCard({
       ]}>
       <View style={{ height: 16, marginBottom: 6 }}>
         {tag ? (
-          <AppText weightOverride="700" color={active ? 'rgba(22,24,28,0.6)' : colors.textSoft} style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase' }}>
+          <AppText weightOverride="600" color={active ? 'rgba(22,24,28,0.6)' : colors.textSoft} style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase' }}>
             {tag}
           </AppText>
         ) : null}
       </View>
-      <AppText weightOverride="700" color={onFill} style={{ fontSize: 17, letterSpacing: -0.3, marginBottom: 8 }}>
+      <AppText weightOverride="500" color={onFill} style={{ fontSize: 16.5, letterSpacing: -0.2, marginBottom: 8 }}>
         {name}
       </AppText>
       <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 2 }}>
-        <AppText weightOverride="700" color={onFill} style={{ fontSize: 20, letterSpacing: -0.4 }}>
+        <AppText weightOverride="600" color={onFill} style={{ fontSize: 20, letterSpacing: -0.4 }}>
           {price}
         </AppText>
         <AppText weightOverride="600" color={sub2} style={{ fontSize: 12 }}>
