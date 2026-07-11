@@ -94,7 +94,6 @@ export default function Onboarding() {
   const skip = (idx: number): boolean => {
     const s = STEPS[idx];
     if (!s) return false;
-    if (s.id === 'streaks') return a.breaks !== 'The counter hitting zero';
     return false;
   };
   const move = (from: number, dir: number) => {
@@ -108,13 +107,14 @@ export default function Onboarding() {
   async function finish() {
     const name = String(a.name || '').trim();
     const letter = buildWeekXiiLetter(a);
-    const prize = (a.prize as string[]) || [];
-    const costs = (a.costs as string[]) || [];
+    const emotions = (a.emotions as string[]) || [];
     if (name) await updateProfile(name).catch(() => {});
-    // the week-XII letter is kept in the Log; the named costs anchor the why
-    await createJournalEntry({ tag: 'Letter', title: 'From the man at week XII', body: letter }).catch(() => {});
-    if (costs.length) await updateLifeMap({ whyStatement: `Taking back ${costs.slice(0, 3).map((c) => c.toLowerCase()).join(', ')}.` }).catch(() => {});
-    if (prize.length) await updateLifeMap({ values: prize.map((label) => ({ label, importance: 3 })) }).catch(() => {});
+    // the week-XII letter rides with him — kept in the Log; the emotions
+    // he named anchor the life map's why
+    const body = `${letter.name ? letter.name + ' —' : 'Friend —'}\n\n${letter.paragraphs.join('\n\n')}\n\n— you, at week XII`;
+    await createJournalEntry({ tag: 'Letter', title: 'A letter from the man at week XII', body }).catch(() => {});
+    if (a.goalPorn) await updateLifeMap({ whyStatement: `${a.goalPorn}. The ${(((a.triggers as string[]) || [])[0] || 'late night').toLowerCase()} window, guarded first.` }).catch(() => {});
+    if (emotions.length) await updateLifeMap({ values: emotions.slice(0, 3).map((label) => ({ label, importance: 3 })) }).catch(() => {});
     await completeOnboarding().catch(() => {});
     router.replace('/(app)/today');
   }
@@ -180,7 +180,7 @@ export default function Onboarding() {
   // the wave, the reading-pause, and the paywall own the entire frame
   if (step.kind === 'wave') return <O3Wave next={next} />;
   if (step.kind === 'pause') return <O3ReadingPause answers={a} next={next} />;
-  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || '').trim() || undefined} triggers={(a.triggers as string[]) || []} onDone={() => void finish()} />;
+  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || '').trim() || undefined} triggers={(a.triggers as string[]) || []} emotions={(a.emotions as string[]) || []} load={a.load as string} onDone={() => void finish()} />;
 
   return (
     <O3Shell progress={(i + 1) / STEPS.length} onBack={i > 0 ? back : null} bar={!NOBAR.has(step.id)} lit={lit}>

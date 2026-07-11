@@ -161,20 +161,23 @@ function MarkCheckin({ dark = false }: { dark?: boolean }) {
 function MarkUrge() {
   return (
     <Svg width={56} height={48} viewBox="0 0 56 48" fill="none">
-      <Path d="M10 40 C 17 12 28 12 34 27 C 37 34.5 43 38 49 39" stroke={colors.text} strokeWidth={2.8} strokeLinecap="round" fill="none" />
-      <Circle cx={21.5} cy={14.5} r={2} fill={colors.surface} stroke={colors.textMuted} strokeWidth={0.8} />
-      <Path d="M6 44 h44" stroke={colors.textMuted} strokeWidth={1.8} strokeLinecap="round" opacity={0.55} />
+      {/* one crest, curling and meeting the water it came from */}
+      <Path d="M8 40 C 14 16, 30 10, 38 18 C 44 24, 41 32, 34 30.5 C 29 29.5, 29 23.5, 33 22.5" stroke={colors.text} strokeWidth={2.6} strokeLinecap="round" fill="none" />
+      <Circle cx={42} cy={12} r={1.8} fill={colors.textMuted} opacity={0.8} />
+      <Circle cx={47} cy={18} r={1.3} fill={colors.textMuted} opacity={0.55} />
+      <Path d="M6 40 h44" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" opacity={0.55} />
     </Svg>
   );
 }
 function MarkMoment() {
   return (
     <Svg width={56} height={48} viewBox="0 0 56 48" fill="none">
-      {/* a buoy riding the swell */}
-      <Path d="M27 14 v10" stroke={colors.text} strokeWidth={2.2} strokeLinecap="round" />
-      <Circle cx={27} cy={12} r={3.2} fill={colors.text} />
-      <Path d="M21 31 a6 6 0 0 1 12 0z" fill={colors.textMuted} />
-      <Path d="M6 41 q 10.5 -3 21 0 t 21 0" stroke={colors.textMuted} strokeWidth={2.2} strokeLinecap="round" fill="none" />
+      {/* a marker buoy, floating ON the waterline */}
+      <Path d="M28 34 V 12" stroke={colors.text} strokeWidth={2.4} strokeLinecap="round" />
+      <Path d="M28 12 L 41 16.5 L 28 21 Z" fill={colors.text} />
+      <Path d="M20.5 36 a 7.5 4.6 0 0 1 15 0 Z" fill={colors.textMuted} />
+      <Path d="M6 36 h44" stroke={colors.textMuted} strokeWidth={2.2} strokeLinecap="round" opacity={0.8} />
+      <Path d="M14 42.5 q 7 -2.4 14 0 t 14 0" stroke={colors.textMuted} strokeWidth={1.8} strokeLinecap="round" fill="none" opacity={0.45} />
     </Svg>
   );
 }

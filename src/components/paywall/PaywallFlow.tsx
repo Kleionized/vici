@@ -164,7 +164,7 @@ function PlanRow({ active, onPress, tag, name, price, per, sub }: { active: bool
 }
 
 // ═════ PAGE 1 · THE PITCH ════════════════════════════════════════════
-function PwPitch({ name, trig, onNext }: { name?: string; trig: string; onNext: () => void }) {
+function PwPitch({ name, trig, emo, load, onNext }: { name?: string; trig: string; emo: string; load?: string; onNext: () => void }) {
   return (
     <>
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
@@ -194,7 +194,8 @@ function PwPitch({ name, trig, onNext }: { name?: string; trig: string; onNext: 
         {/* everything, unlocked — the unboxed checklist */}
         <View style={{ paddingTop: 26, paddingHorizontal: 2, paddingBottom: 8 }}>
           <AppText style={[sans('400'), { fontSize: 13.5, lineHeight: 21, color: colors.textMuted, marginBottom: 20 }]}>
-            Built from your answers tonight — the {trig} window guarded first, one small lesson a day.
+            Built from your answers tonight — the {trig} window guarded first, the {emo} protocol pinned,{' '}
+            {load === 'Just the bad-day tools for now' ? 'tools before the course' : 'one small lesson a day'}.
           </AppText>
           <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft }]}>
             Everything, unlocked
@@ -408,6 +409,8 @@ function PwConfirmed({ plan, name, confirmLabel, onDone }: { plan: PlanKey; name
 export function PaywallFlow({
   name,
   triggers = [],
+  emotions = [],
+  load,
   confirmLabel = 'Begin Day I',
   embedded = false,
   onDone,
@@ -416,6 +419,10 @@ export function PaywallFlow({
   name?: string;
   /** Their triggers — the pitch cites the first one. */
   triggers?: string[];
+  /** The feeling underneath — the pitch pins its protocol. */
+  emotions?: string[];
+  /** Their chosen daily load. */
+  load?: string;
   confirmLabel?: string;
   /** Embedded in the onboarding shell: no standalone ✕ on the pitch. */
   embedded?: boolean;
@@ -431,6 +438,7 @@ export function PaywallFlow({
   const [done, setDone] = useState(false);
   const [offered, setOffered] = useState(false);
   const trig = (triggers[0] || 'late night').toLowerCase();
+  const emo = (emotions[0] || 'loneliness').split(' or ')[0].toLowerCase();
 
   // walking away from the plans page gets one rescue: 3 days free
   const decline = () => {
@@ -466,7 +474,7 @@ export function PaywallFlow({
           <>
             <PwHeader i={i} embedded={embedded} onClose={i === 1 ? decline : () => onDone(false)} onBack={i > 0 ? () => setI(i - 1) : null} />
             {i === 0 ? (
-              <PwPitch name={name} trig={trig} onNext={() => setI(1)} />
+              <PwPitch name={name} trig={trig} emo={emo} load={load} onNext={() => setI(1)} />
             ) : (
               <PwPlans
                 name={name}

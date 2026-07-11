@@ -235,29 +235,84 @@ export function O3Chip({ label, on, picked = false, onClick }: { label: string; 
   );
 }
 
-// ── small line icons for grid options ────────────────────────────────
-function QIcon({ label, c }: { label: string; c: string }) {
-  const p = (d: string, extra?: string) => (
-    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-      <Path d={d} stroke={c} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
-      {extra ? <Path d={extra} stroke={c} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" /> : null}
+// ── option glyphs (canvas: O3_ICON) — small monotone strokes for the
+// icon-grid questions; unknown labels fall back to a quiet dot ──
+function O3Icon({ label, c }: { label: string; c: string }) {
+  const P = ({ d, w = 1.8 }: { d: string; w?: number }) => (
+    <Path d={d} stroke={c} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  );
+  const wrap = (kids: React.ReactNode) => (
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+      {kids}
     </Svg>
   );
   switch (label) {
+    // when it happens
     case 'Late at night':
-      return p('M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z');
-    case 'Alone':
-      return p('M12 11a3.4 3.4 0 1 0 0-6.8A3.4 3.4 0 0 0 12 11z', 'M5.5 20a6.5 6.5 0 0 1 13 0');
-    case 'Under stress':
-      return p('M3 12h4l2.5-6 4 12 2.5-6H21');
-    case 'Bored':
-      return p('M7 3.5h10M7 20.5h10', 'M8 3.5c0 4 8 5.5 8 8.5s-8 4.5-8 8.5M16 3.5c0 4-8 5.5-8 8.5s8 4.5 8 8.5');
-    case 'After drinking':
-      return p('M7 3.5h10l-1.4 13a2 2 0 0 1-2 1.8h-3.2a2 2 0 0 1-2-1.8z', 'M9.5 20.5h5M7.6 9h8.8');
-    case 'While scrolling':
-      return p('M8 2.5h8a1.6 1.6 0 0 1 1.6 1.6v15.8A1.6 1.6 0 0 1 16 21.5H8a1.6 1.6 0 0 1-1.6-1.6V4.1A1.6 1.6 0 0 1 8 2.5z', 'M10.5 18.4h3');
+      return wrap(<P d="M19.5 14.5A8.3 8.3 0 0 1 9.6 4.3a8.3 8.3 0 1 0 9.9 10.2z" />);
+    case 'First thing in the morning':
+      return wrap(<><P d="M6.5 15.5a5.5 5.5 0 0 1 11 0" /><P d="M12 6.2V3.8M5.4 9.1 3.7 7.4M18.6 9.1l1.7-1.7M3 15.5h18" /></>);
+    case 'Bored during the day':
+      return wrap(<><Circle cx={12} cy={12} r={8.4} stroke={c} strokeWidth={1.8} /><P d="M12 7.4V12l3.2 3.2" /></>);
+    case 'After stress or a hard day':
+      return wrap(<P d="M13.5 3.5 6 13h5l-1.5 7.5L17 11h-5z" />);
+    case 'When I can’t sleep':
+      return wrap(<><P d="M3.5 12c2.2-3.4 5.2-5.1 8.5-5.1s6.3 1.7 8.5 5.1c-2.2 3.4-5.2 5.1-8.5 5.1S5.7 15.4 3.5 12z" /><Circle cx={12} cy={12} r={2.4} stroke={c} strokeWidth={1.8} /></>);
+    case 'Weekends or days off':
+      return wrap(<><Rect x={4} y={5.5} width={16} height={15} rx={2.4} stroke={c} strokeWidth={1.8} /><P d="M8 3.5v3.4M16 3.5v3.4M4 10h16" /><Circle cx={15.4} cy={15} r={1.4} stroke={c} strokeWidth={1.8} /></>);
+    case 'When I’ve been drinking':
+      return wrap(<><P d="M7 3.8h10l-1.3 9.2a3.7 3.7 0 0 1-7.4 0z" /><P d="M12 13.5v6.7M8.8 20.2h6.4M7.6 7.6h8.8" /></>);
+    case 'Home alone for long stretches':
+      return wrap(<><P d="M4.5 11 12 4.5 19.5 11" /><P d="M6.3 9.6V19a1 1 0 0 0 1 1h9.4a1 1 0 0 0 1-1V9.6" /></>);
+    case 'On my phone in bed':
+      return wrap(<><Rect x={8} y={3.5} width={8} height={14} rx={2} stroke={c} strokeWidth={1.8} /><P d="M11 15.2h2M4 20.5h16" /></>);
+    // the feeling underneath
+    case 'Loneliness':
+      return wrap(<><Circle cx={12} cy={8.6} r={3.6} stroke={c} strokeWidth={1.8} /><P d="M5.5 20a6.5 6.5 0 0 1 13 0" /></>);
+    case 'Anxiety or stress':
+      return wrap(<P d="M3.5 12h3l2-5 3 10 2.5-7.5 1.5 2.5h5" />);
+    case 'Boredom':
+      return wrap(<><Circle cx={12} cy={12} r={8.4} stroke={c} strokeWidth={1.8} /><P d="M8.5 15h7M9 9.6h.01M15 9.6h.01" /></>);
+    case 'Sadness or low mood':
+      return wrap(<P d="M12 3.8c3.4 4.2 5.6 7.2 5.6 10a5.6 5.6 0 1 1-11.2 0c0-2.8 2.2-5.8 5.6-10z" />);
+    case 'Anger or frustration':
+      return wrap(<P d="M6 6l12 12M18 6 6 18" />);
+    case 'Numbness — feeling nothing':
+      return wrap(<Circle cx={12} cy={12} r={8} stroke={c} strokeWidth={1.8} strokeDasharray="3.4 4.4" />);
+    case 'Mostly automatic, just habit':
+      return wrap(<><P d="M17.5 8.5A6.5 6.5 0 1 0 18.5 12" /><P d="M18.8 4.6v4h-4" /></>);
+    case 'Genuine desire or arousal':
+      return wrap(<P d="M12 4c1 3-1.8 4.6-1.8 7a4.4 4.4 0 0 0 3 4.2c-.3-1.6.4-2.6 1.4-3.4.5 1.7 2.4 2.6 2.4 5A5.2 5.2 0 0 1 6.6 17c0-4.6 4.6-6.4 5.4-13z" />);
+    // where it happens
+    case 'Bedroom':
+      return wrap(<><P d="M3.5 18.5v-8M3.5 14h17v4.5" /><P d="M3.5 14V8.5h6.5c2.4 0 3.8 1.3 3.8 3.3V14" /><Circle cx={7} cy={11} r={1.2} stroke={c} strokeWidth={1.8} /></>);
+    case 'Bathroom':
+      return wrap(<><P d="M5.5 12.5h13a6.5 4.8 0 0 1-13 0z" /><P d="M6.5 12.5V6a2.1 2.1 0 0 1 4.2 0M8 19.5l-.8 1.4M16 19.5l.8 1.4" /></>);
+    case 'Home office or desk':
+      return wrap(<><Rect x={4} y={5} width={16} height={10.5} rx={1.8} stroke={c} strokeWidth={1.8} /><P d="M9.5 19.5h5M12 15.5v4" /></>);
+    case 'Living room':
+      return wrap(<><P d="M5 11V9a2.4 2.4 0 0 1 2.4-2.4h9.2A2.4 2.4 0 0 1 19 9v2" /><P d="M3.8 13.4a1.9 1.9 0 0 1 3.8 0v.7h8.8v-.7a1.9 1.9 0 1 1 3.8 0v3.2a1.5 1.5 0 0 1-1.5 1.5H5.3a1.5 1.5 0 0 1-1.5-1.5z" /></>);
+    case 'On my phone, anywhere':
+      return wrap(<><Rect x={7.5} y={3.5} width={9} height={17} rx={2.2} stroke={c} strokeWidth={1.8} /><P d="M11 17.6h2" /></>);
+    case 'Away from home':
+      return wrap(<><P d="M12 21s-6.4-5.3-6.4-10a6.4 6.4 0 1 1 12.8 0c0 4.7-6.4 10-6.4 10z" /><Circle cx={12} cy={10.8} r={2.3} stroke={c} strokeWidth={1.8} /></>);
+    // what you've tried
+    case 'Blockers or filters':
+      return wrap(<P d="M11.4 3.3 5.2 5.8a1.4 1.4 0 0 0-.9 1.3v4.1c0 5 3.2 8.5 7.7 10.4 4.5-1.9 7.7-5.4 7.7-10.4V7.1a1.4 1.4 0 0 0-.9-1.3l-6.2-2.5a1.6 1.6 0 0 0-1.2 0z" />);
+    case 'Going cold turkey':
+      return wrap(<P w={1.5} d="M12 3.5v17M12 3.5 9.4 6.1M12 3.5l2.6 2.6M12 20.5l-2.6-2.6M12 20.5l2.6-2.6M4.6 7.75l14.8 8.5M4.6 7.75 8.1 8.7M4.6 7.75l.95-3.5M19.4 16.25l-3.5-.95M19.4 16.25l-.95 3.5M19.4 7.75 4.6 16.25M19.4 7.75 15.9 8.7M19.4 7.75l-.95-3.5M4.6 16.25l3.5-.95M4.6 16.25l.95 3.5" />);
+    case 'An accountability partner':
+      return wrap(<><Circle cx={8.6} cy={9} r={3} stroke={c} strokeWidth={1.8} /><P d="M3.4 19.5a5.2 5.2 0 0 1 10.4 0" /><P d="M15.5 6.6a3 3 0 0 1 0 4.9M17.3 19.5a5.2 5.2 0 0 0-3-4.7" /></>);
+    case 'Deleting accounts or apps':
+      return wrap(<><P d="M9.5 3.8h5a.9.9 0 0 1 .9.9V6h3.8v1.9H4.8V6h3.8V4.7a.9.9 0 0 1 .9-.9z" /><P d="M6.2 7.9l.9 11.3a1.4 1.4 0 0 0 1.4 1.3h7a1.4 1.4 0 0 0 1.4-1.3l.9-11.3" /></>);
+    case 'Therapy or counselling':
+      return wrap(<P d="M12 4c4.8 0 8.5 3 8.5 7s-3.7 7-8.5 7c-.8 0-1.6-.1-2.3-.3L5 20l1.3-3.6C4.6 15.1 3.5 13.2 3.5 11c0-4 3.7-7 8.5-7z" />);
+    case 'Replacing it with other habits':
+      return wrap(<><P d="M4 8.5h13M13.5 4.5l4 4-4 4" /><P d="M20 15.5H7M10.5 19.5l-4-4 4-4" /></>);
+    case 'Nothing structured yet':
+      return wrap(<Rect x={4.5} y={4.5} width={15} height={15} rx={3} stroke={c} strokeWidth={1.8} strokeDasharray="3.4 4" />);
     default:
-      return p('M12 3.2c.5 5.6 3 8 8.8 8.8-5.8.8-8.3 3.2-8.8 8.8-.5-5.6-3-8-8.8-8.8 5.8-.8 8.3-3.2 8.8-8.8z');
+      return wrap(<Circle cx={12} cy={12} r={3.2} fill={c} />);
   }
 }
 
@@ -280,7 +335,7 @@ export function O3Question({
   options: string[];
   value: string | string[] | undefined;
   multi?: boolean;
-  kind?: 'grid' | 'meter' | 'chips';
+  kind?: 'grid' | 'scale' | 'wrap';
   onSet: (v: string | string[]) => void;
   next: () => void;
   reflect?: (v: string | string[]) => string | null;
@@ -308,46 +363,49 @@ export function O3Question({
 
   let body: ReactNode;
   if (kind === 'grid') {
-    // icon grid — boxes with a monochrome line icon + label
+    // icon grid — 2-col cells: a 42px glyph chip that floods ink on select
     body = (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11 }}>
         {options.map((label) => {
-          const on = isOn(label);
+          const on = isOn(label) || picked === label;
           return (
             <Pressable
               key={label}
               onPress={() => pick(label)}
               style={{
-                width: '47.5%',
+                width: '48%',
                 flexGrow: 1,
                 alignItems: 'center',
-                gap: 10,
-                paddingVertical: 20,
+                gap: 9,
+                paddingTop: 15,
+                paddingBottom: 12,
                 paddingHorizontal: 10,
                 borderRadius: 18,
                 backgroundColor: tone.card,
-                borderWidth: 1.8,
+                borderWidth: 1.6,
                 borderColor: on ? tone.ink : 'transparent',
               }}>
               <View
                 style={{
-                  width: 44,
-                  height: 44,
+                  width: 42,
+                  height: 42,
                   borderRadius: 9999,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: on ? tone.fill : 'transparent',
+                  backgroundColor: on ? tone.fill : tone.soft2,
                 }}>
-                <QIcon label={label} c={on ? tone.onFill : tone.ink} />
+                <O3Icon label={label} c={on ? tone.onFill : tone.ink} />
               </View>
-              <AppText style={[sans('500'), { fontSize: 13.5, color: tone.ink, textAlign: 'center' }]}>{label}</AppText>
+              <View style={{ minHeight: 30, justifyContent: 'center' }}>
+                <AppText center style={[sans(on ? '600' : '500'), { fontSize: 12.5, lineHeight: 15.6, color: tone.ink }]}>{label}</AppText>
+              </View>
             </Pressable>
           );
         })}
       </View>
     );
-  } else if (kind === 'meter') {
-    // segment meter — each row a level, segments fill with it
+  } else if (kind === 'scale') {
+    // scale — each row a level, segment marks fill with it
     body = (
       <View style={{ gap: 10 }}>
         {options.map((label, i) => {
@@ -360,50 +418,47 @@ export function O3Question({
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 14,
+                minHeight: 54,
                 paddingVertical: 15,
-                paddingHorizontal: 16,
-                borderRadius: 18,
+                paddingHorizontal: 18,
+                borderRadius: 16,
                 backgroundColor: tone.card,
-                borderWidth: 1.8,
+                borderWidth: 1.6,
                 borderColor: on ? tone.ink : 'transparent',
               }}>
               <View style={{ flexDirection: 'row', gap: 3 }}>
                 {options.map((_, j) => (
-                  <View
-                    key={j}
-                    style={{
-                      width: 7,
-                      height: 16,
-                      borderRadius: 2.5,
-                      backgroundColor: j <= i ? tone.ink : tone.soft2,
-                      opacity: j <= i ? (on ? 1 : 0.75) : 1,
-                    }}
-                  />
+                  <View key={j} style={{ width: 4.5, height: 15, borderRadius: 2.5, backgroundColor: j <= i ? tone.ink : tone.soft2 }} />
                 ))}
               </View>
-              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 15, color: tone.ink }]}>{label}</AppText>
+              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 14.5, lineHeight: 19, color: tone.ink }]}>{label}</AppText>
             </Pressable>
           );
         })}
       </View>
     );
-  } else if (kind === 'chips') {
-    // chip wrap — compact multi-select tags
+  } else if (kind === 'wrap') {
+    // wrap — centered pills, a hairline ink ring when chosen
     body = (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
         {options.map((label) => {
-          const on = isOn(label);
+          const on = isOn(label) || picked === label;
           return (
             <Pressable
               key={label}
               onPress={() => pick(label)}
               style={{
-                paddingHorizontal: 17,
-                paddingVertical: 12,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+                paddingHorizontal: 21,
+                paddingVertical: 14,
                 borderRadius: 9999,
-                backgroundColor: on ? tone.fill : tone.card,
+                backgroundColor: picked === label ? tone.fill : tone.card,
+                borderWidth: 1.6,
+                borderColor: on && picked !== label ? tone.ink : 'transparent',
               }}>
-              <AppText style={[sans(on ? '600' : '500'), { fontSize: 14.5, color: on ? tone.onFill : tone.ink }]}>{label}</AppText>
+              <AppText style={[sans(on ? '600' : '500'), { fontSize: 14.5, color: picked === label ? tone.onFill : tone.ink }]}>{label}</AppText>
             </Pressable>
           );
         })}
@@ -424,7 +479,7 @@ export function O3Question({
       <View style={{ height: 26 }} />
       <O3H>{title}</O3H>
       {sub ? <O3Sub>{sub}</O3Sub> : null}
-      <ScrollView style={{ flex: 1, marginTop: 30 }} contentContainerStyle={{ flexGrow: 1, justifyContent: options.length <= 5 && kind !== 'grid' ? 'center' : 'flex-start' }} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1, marginTop: 30 }} contentContainerStyle={{ flexGrow: 1, justifyContent: options.length <= 5 && kind !== 'grid' ? 'center' : 'flex-start', paddingBottom: 4 }} showsVerticalScrollIndicator={false}>
         {body}
       </ScrollView>
       <View style={{ paddingTop: 14, minHeight: multi ? 0 : 44, justifyContent: 'flex-end' }}>
@@ -562,17 +617,37 @@ export function O3Name({ value, onSet, next }: { value: string; onSet: (v: strin
 }
 
 // the assessment table
-export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: boolean; kind?: 'grid' | 'meter' | 'chips'; note?: string; skip?: boolean; ctaLabel?: string; reflect?: (v: string | string[]) => string | null }][] = [
-  ['age', { title: 'How old are you?', options: ['Under 18', '18–24', '25–34', '35–44', '45+'], note: 'It sets the pace. Nothing else.', skip: true }],
-  ['gender', { title: 'How do you identify?', options: ['Male', 'Female', 'Non-binary', 'Prefer not to say'], note: 'The campaign reads the same either way — the examples don’t.', skip: true }],
-  ['duration', { title: 'How long has this been part of your life?', options: ['Under a year', 'A few years', 'Most of a decade', 'Most of my life'] }],
-  ['freq', { title: 'How often, lately?', kind: 'meter', options: ['A few times a month', 'Weekly', 'Several times a week', 'Daily', 'More than daily'], note: 'The honest answer is the useful one.' }],
-  ['triggers', { title: 'When does the pull run strongest?', multi: true, kind: 'grid', options: ['Late at night', 'Alone', 'Under stress', 'Bored', 'After drinking', 'While scrolling'] }],
-  ['costs', { title: 'What has it cost you?', multi: true, kind: 'chips', ctaLabel: 'Name it', options: ['Focus', 'Relationships', 'Self-respect', 'Time', 'Sleep', 'Desire for real intimacy'], note: 'Stays on this device.' }],
-  ['attempts', { title: 'Have you tried to stop before?', options: ['Never, seriously', 'Once or twice', 'Several times', "I've lost count"] }],
-  ['breaks', { title: 'What usually breaks an attempt?', options: ['A bad night, alone', 'The counter hitting zero', 'Boredom creeping back', 'Stress piling up', 'I never had a method'] }],
-  ['knows', { title: 'Who knows about this?', options: ['No one', 'One person', 'A few people'] }],
-  ['prize', { title: 'And when it is won — what returns?', multi: true, kind: 'chips', ctaLabel: 'Claim these', options: ['Focus', 'Self-respect', 'Real intimacy', 'My evenings', 'A quiet mind'] }],
+export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: boolean; kind?: 'grid' | 'scale' | 'wrap'; note?: string; skip?: boolean; ctaLabel?: string }][] = [
+  // Section 1 · Where you're starting
+  ['freq', { kind: 'scale', title: 'How often are you using porn right now?', options: ['Several times a day', 'About once a day', 'A few times a week', 'About once a week', 'A few times a month', 'Less than once a month'] }],
+  ['duration', { kind: 'scale', title: 'How long have you wanted to change this?', options: ['Less than a year', '1–3 years', '4–10 years', 'More than 10 years', 'I can’t remember a time without it'] }],
+  ['control', { title: 'How much control do you feel over it right now?', options: ['I feel powerless over it', 'I resist, but usually give in', 'I win about half the time', 'Mostly in control — but I want to be free of it'] }],
+  ['pattern', { title: 'Which of these sounds most like your pattern?', options: ['A quick habit I barely think about', 'A way I unwind, numb out, or escape', 'Something I binge on for hours', 'Escalating — I look for more, or more extreme', 'It comes in waves — intense, then quiet'] }],
+  // Section 2 · When & why it happens
+  ['triggers', { kind: 'grid', title: 'When are you most likely to slip?', multi: true, options: ['Late at night', 'First thing in the morning', 'Bored during the day', 'After stress or a hard day', 'When I can’t sleep', 'Weekends or days off', 'When I’ve been drinking', 'Home alone for long stretches', 'On my phone in bed'] }],
+  ['emotions', { kind: 'grid', title: 'What feeling is most often underneath it?', multi: true, options: ['Loneliness', 'Anxiety or stress', 'Boredom', 'Sadness or low mood', 'Anger or frustration', 'Numbness — feeling nothing', 'Mostly automatic, just habit', 'Genuine desire or arousal'] }],
+  ['places', { kind: 'grid', title: 'Where does it usually happen?', multi: true, options: ['Bedroom', 'Bathroom', 'Home office or desk', 'Living room', 'On my phone, anywhere', 'Away from home'] }],
+  // Section 3 · How you've been feeling lately
+  ['energy', { kind: 'scale', title: 'How are your energy and drive most days?', options: ['Running on empty most of the time', 'Low more often than not', 'Up and down', 'Generally good'] }],
+  ['meaning', { title: 'How much sense of purpose do you feel right now?', options: ['I feel pretty lost', 'Some, but it feels thin', 'It comes and goes', 'I’m clear on what matters to me'] }],
+  ['connection', { kind: 'scale', title: 'How connected do you feel to the people around you?', options: ['Pretty isolated', 'A few people, but distant', 'Reasonably connected', 'Strongly connected'] }],
+  // Section 4 · A little about your life
+  ['age', { kind: 'wrap', title: 'Your age range.', options: ['Under 18', '18–24', '25–34', '35–44', '45 or older'] }],
+  ['relationship', { title: 'Relationship status.', options: ['Single', 'Dating or in a relationship', 'Married or living together', 'It’s complicated'] }],
+  ['alone', { title: 'Do you have a lot of unstructured time alone?', options: ['Yes, most days', 'Sometimes', 'Rarely'] }],
+  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: ['Yes — it’s central for me', 'Somewhat', 'No — my reasons are practical', 'Prefer not to say'] }],
+  // Section 5 · What you want
+  ['goalPorn', { title: 'What’s your goal with porn?', options: ['Quit it completely', 'Cut it down a lot', 'Keep it to a level I set', 'Not sure yet — exploring'], note: 'Porn and masturbation are two separate choices.' }],
+  ['goalMast', { title: 'And masturbation?', options: ['Stop too — a full reset', 'Keep it, just without porn', 'Cut it down', 'Not trying to change that'] }],
+  ['tried', { kind: 'grid', title: 'What have you already tried?', multi: true, options: ['Blockers or filters', 'Going cold turkey', 'An accountability partner', 'Deleting accounts or apps', 'Therapy or counselling', 'Replacing it with other habits', 'Nothing structured yet'] }],
+  ['readiness', { kind: 'scale', title: 'How ready do you feel to change right now?', options: ['Just exploring', 'Thinking about it', 'Ready to start', 'Already started — I want structure'] }],
+  // Section 6 · How the plan runs
+  ['load', { title: 'How much do you want to do each day?', options: ['One small lesson', 'A lesson plus a task', 'As much as I can', 'Just the bad-day tools for now'] }],
+  ['checkins', { kind: 'wrap', title: 'When should we check in with you?', multi: true, ctaLabel: 'Set reminders', options: ['Morning', 'Midday', 'Evening', 'Late night — my danger zone', 'No reminders'] }],
+  // A quick wellbeing check
+  ['impact', { kind: 'scale', title: 'Is this affecting your sleep, work, relationships, or money?', options: ['Not really', 'A little', 'Quite a bit', 'A lot'], note: 'Not a test, not a diagnosis. Nobody sees this but you.' }],
+  ['coping', { title: 'Are you mainly using porn to cope with something heavy right now?', options: ['No', 'Maybe', 'Yes'] }],
+  ['mood', { kind: 'scale', title: 'In the last two weeks, how often have you felt down or hopeless?', options: ['Not at all', 'Some days', 'Most days', 'Nearly every day'] }],
 ];
 
 // ── the streak interstitial ──────────────────────────────────────────
@@ -621,18 +696,19 @@ export function O3Streaks({ next }: { next: () => void }) {
 export function O3ReadingPause({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
   const t = (answers.triggers as string[]) || [];
   const l1 = t.length ? `${t.slice(0, 2).map((x) => x.toLowerCase()).join(', ')} — mostly.` : 'The pattern, plainly.';
-  const durMap: Record<string, string> = { 'Under a year': 'Under a year', 'A few years': 'A few years', 'Most of a decade': 'Most of a decade', 'Most of my life': 'Most of a life' };
-  const attMap: Record<string, string> = { "I've lost count": 'more attempts than you counted', 'Several times': 'several attempts', 'Once or twice': 'two attempts', 'Never, seriously': 'a first attempt' };
-  const l2 = `${durMap[answers.duration as string] || 'Years'}. And ${attMap[answers.attempts as string] || 'past attempts'}.`;
+  const durMap: Record<string, string> = { 'Less than a year': 'Under a year', '1–3 years': 'A few years', '4–10 years': 'Most of a decade', 'More than 10 years': 'Over a decade', 'I can’t remember a time without it': 'Most of a life' };
+  const tried = ((answers.tried as string[]) || []).filter((x) => x !== 'Nothing structured yet').length;
+  const att = tried >= 3 ? 'three ways already tried' : tried > 0 ? 'real attempts behind you' : 'a first structured attempt';
+  const l2 = `${durMap[answers.duration as string] || 'Years'}. And ${att}.`;
 
-  // the plan chips the engine "pins" while it builds (from their answers)
+  // what the engine pinned — the plan chips that tick in while it builds
   const chips: string[] = [];
-  chips.push('Full-stop track');
+  chips.push(({ 'Quit it completely': 'Full-stop track', 'Cut it down a lot': 'Reduction track', 'Keep it to a level I set': 'Reduction track', 'Not sure yet — exploring': 'Exploration track' } as Record<string, string>)[answers.goalPorn as string] || 'Full-stop track');
   const t0 = ((answers.triggers as string[]) || [])[0];
   chips.push(t0 ? `${t0} — window guarded` : 'Check-in windows set');
-  const prize0 = ((answers.prize as string[]) || [])[0];
-  if (prize0) chips.push(`${prize0} — the prize, pinned`);
-  chips.push('One small lesson a day');
+  const e0 = ((answers.emotions as string[]) || [])[0];
+  if (e0) chips.push(`${e0} protocol, pinned`);
+  chips.push(({ 'One small lesson': 'One small lesson a day', 'A lesson plus a task': 'A lesson + a task, daily', 'As much as I can': 'Full pace', 'Just the bad-day tools for now': 'Tools first, course later' } as Record<string, string>)[answers.load as string] || 'One small lesson a day');
 
   const [phase, setPhase] = useState(0);
   const p = useRef(new Animated.Value(0)).current;
@@ -740,8 +816,15 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
 // ── the reading — the route map ──────────────────────────────────────
 function pattern(a: Record<string, string | string[]>) {
   const t = ((a.triggers as string[]) || []).map((x) => x.toLowerCase());
-  const when = t.includes('late at night') ? 'late at night' : t[0] || 'in the quiet hours';
-  const drive = t.includes('under stress') ? 'on stress' : t.includes('alone') ? 'when you are alone' : t.includes('bored') ? 'on boredom' : 'on habit';
+  const when = t.includes('late at night') ? 'late at night' : t.includes('on my phone in bed') ? 'on your phone in bed' : t[0] || 'in the quiet hours';
+  const e = ((a.emotions as string[]) || []).map((x) => x.toLowerCase());
+  const drive = e.includes('anxiety or stress')
+    ? 'on stress'
+    : e.includes('loneliness')
+      ? 'on loneliness'
+      : e.includes('boredom')
+        ? 'on boredom'
+        : 'on habit';
   const who = (a.name as string || '').trim();
   return `${who ? who + ' — your' : 'Your'} pull runs strongest ${when}, ${drive}. That is where the campaign begins.`;
 }
@@ -806,17 +889,19 @@ export function O3Reading({ answers, next }: { answers: Record<string, string | 
 
 // ═════ 1 · THE ARITHMETIC — the cost of unchanged, no shame ══════════
 const OR_FREQ_YEAR: Record<string, string> = {
+  'Several times a day': '900+',
+  'About once a day': '~365',
+  'A few times a week': '~180',
+  'About once a week': '~52',
   'A few times a month': '~36',
-  Weekly: '~52',
-  'Several times a week': '~180',
-  Daily: '~365',
-  'More than daily': '900+',
+  'Less than once a month': '~12',
 };
 const OR_DUR: Record<string, string> = {
-  'Under a year': 'under a year',
-  'A few years': 'a few years',
-  'Most of a decade': 'most of a decade',
-  'Most of my life': 'most of a life',
+  'Less than a year': 'under a year',
+  '1–3 years': 'a few years',
+  '4–10 years': 'most of a decade',
+  'More than 10 years': 'over a decade',
+  'I can’t remember a time without it': 'most of a life',
 };
 
 export function O3Cost({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
@@ -1057,42 +1142,62 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
 }
 
 // ── letter ───────────────────────────────────────────────────────────
-/** The week-XII letter, assembled from the user's own intake answers. */
-export function buildWeekXiiLetter(a: Record<string, string | string[]>): string {
+/** The week-XII letter, assembled from the user's own intake answers
+ * (canvas: O3_Letter) — the fork where he and the other ending part ways. */
+export function buildWeekXiiLetter(a: Record<string, string | string[]>): { name: string; paragraphs: string[] } {
   const name = String(a.name || '').trim();
-  const costs = (a.costs as string[]) || [];
-  const triggers = (a.triggers as string[]) || [];
-  const prize = (a.prize as string[]) || [];
-  const costLine = costs.length ? costs.slice(0, 3).map((c) => c.toLowerCase()).join(', ') : 'what it was taking';
-  const trigLine = triggers.length ? triggers[0].toLowerCase() : 'the usual hour';
-  const prizeLine = prize.length ? prize.slice(0, 2).map((p) => p.toLowerCase()).join(' and ') : 'a quiet mind';
-  return [
-    `${name ? name + ' —' : '—'}`,
-    '',
-    `It is week XII here. I am writing from the other side of the plan you are looking at.`,
-    `I remember what it was costing: ${costLine}. I remember ${trigLine} being the hardest ground.`,
-    `The urges did not vanish. They got smaller, and I got better at letting them pass.`,
-    `What came back first was ${prizeLine}.`,
-    `You do not have to be perfect to get here. When you slip, don't fail twice.`,
-    '',
-    '— you, at week XII',
-  ].join('\n');
+  const t = (a.triggers as string[]) || [];
+  const trigLine = t.includes('Late at night')
+    ? 'The late nights'
+    : t.includes('Home alone for long stretches')
+      ? 'The long stretches alone'
+      : t.includes('After stress or a hard day')
+        ? 'The hard-day evenings'
+        : t.includes('Bored during the day')
+          ? 'The slack afternoons'
+          : 'The old window';
+  const emos = ((a.emotions as string[]) || []).slice(0, 2).map((x) => x.split(' or ')[0].toLowerCase());
+  const emoLine = emos.length >= 2 ? `the ${emos[0]} and the ${emos[1]}` : emos.length ? `the ${emos[0]}` : 'the restlessness';
+  const costs = a.impact === 'Not really' ? 'the hours, the energy, the quiet' : 'the sleep, the work, the relationships, the money';
+  const prize = ['the focus', 'the evenings'];
+  return {
+    name,
+    paragraphs: [
+      "It's week XII where I'm writing from, and the first thing to say is: we made it out.",
+      `${trigLine} stopped being dangerous around week IV. The urges still came — they just got shorter, then quieter, then rare.`,
+      `There was another ending — the one where it kept feeding on ${costs}, and ${emoLine} stayed in charge. I never met that man. Tonight is the fork where he and I part ways.`,
+      `Everything you circled tonight — ${prize.join(', ')} — it all came back. It's here, waiting.`,
+    ],
+  };
 }
 
 export function O3Letter({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
-  const body = buildWeekXiiLetter(answers);
+  const { name, paragraphs } = buildWeekXiiLetter(answers);
   return (
     <>
-      <O3H size={23} style={{ marginTop: 10 }}>From the man at week XII.</O3H>
-      <ScrollView style={{ flex: 1, marginTop: 18 }} showsVerticalScrollIndicator={false}>
-        <View style={{ backgroundColor: '#F6F3EB', borderRadius: 18, padding: 22 }}>
-          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 16, lineHeight: 26, color: '#22221C' }}>{body}</AppText>
-        </View>
-        <O3Note style={{ marginTop: 14, color: tone.ink3 }}>Kept in your Log.</O3Note>
-      </ScrollView>
+      <O3H size={23} style={{ marginTop: 10 }}>A letter from the man at week XII.</O3H>
+      <View style={{ flex: 1, marginTop: 18, backgroundColor: '#F8F6EF', borderRadius: 18, overflow: 'hidden' }}>
+        {/* fold crease */}
+        <View style={{ position: 'absolute', left: 0, right: 0, top: '34%', height: 1.5, backgroundColor: 'rgba(0,0,0,0.05)' }} />
+        <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 22, paddingBottom: 18 }} showsVerticalScrollIndicator={false}>
+          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 22, lineHeight: 26, color: '#26261F', marginBottom: 14 }}>
+            {name ? `${name} —` : 'Friend —'}
+          </AppText>
+          {paragraphs.map((para, i) => (
+            <AppText key={i} style={{ fontFamily: fonts.serifSharp, fontSize: 15.5, lineHeight: 25, color: '#3B3B33', marginBottom: 14 }}>
+              {para}
+            </AppText>
+          ))}
+          <View style={{ marginTop: 4, gap: 3 }}>
+            <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 17.5, color: '#26261F' }}>— you, at week XII</AppText>
+            <Svg width={130} height={11} viewBox="0 0 130 11" fill="none">
+              <Path d="M2 7 C 30 2, 50 9, 74 5.5 S 116 4, 128 6.5" stroke="rgba(38,38,31,0.5)" strokeWidth={1.5} strokeLinecap="round" />
+            </Svg>
+          </View>
+        </ScrollView>
+      </View>
       <View style={{ paddingTop: 14 }}>
-        <O3CTA label="Keep it" onClick={next} />
+        <O3CTA label="Take his letter with you" onClick={next} />
       </View>
     </>
   );
@@ -1101,9 +1206,9 @@ export function O3Letter({ answers, next }: { answers: Record<string, string | s
 // ── Day I ────────────────────────────────────────────────────────────
 function windowFor(a: Record<string, string | string[]>): [string, string] {
   const t = (a.triggers as string[]) || [];
-  if (t.includes('Late at night')) return ['11:00 pm', 'before the tide rises'];
-  if (t.includes('Under stress')) return ['6:00 pm', 'as the day lets go'];
-  if (t.includes('Bored')) return ['9:00 pm', 'when the evening goes slack'];
+  if (t.includes('Late at night') || t.includes('On my phone in bed') || t.includes('When I can’t sleep')) return ['11:00 pm', 'before the tide rises'];
+  if (t.includes('After stress or a hard day')) return ['6:00 pm', 'as the day lets go'];
+  if (t.includes('Bored during the day')) return ['9:00 pm', 'when the evening goes slack'];
   return ['9:30 pm', 'before the quiet hours'];
 }
 export function O3DayOne({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {

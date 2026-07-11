@@ -29,16 +29,69 @@ const FEELINGS: Record<MoodKey, string[]> = {
   radiant: ['Energised', 'Joyful', 'Grateful', 'Proud', 'Inspired', 'Confident', 'Playful', 'Alive', 'Free'],
 };
 
-const REASONS: [string, GlyphName][] = [
-  ['Work', 'doc'],
-  ['Sleep', 'moon'],
-  ['Health', 'heart'],
-  ['People', 'user'],
-  ['Money', 'card'],
-  ['Weather', 'sun'],
-  ['Rest', 'leaf'],
-  ['Focus', 'compass'],
-  ['Time', 'clock'],
+// the reasons icon set (canvas: FIcon) — solid engraved marks, one per reason
+const FIcon: Record<string, (c: string) => React.ReactNode> = {
+  work: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path fillRule="evenodd" d="M7.5 2.5h6.1L18 6.9V20a1.6 1.6 0 01-1.6 1.6H7.6A1.6 1.6 0 016 20V4.1A1.6 1.6 0 017.6 2.5zM8.5 9.2h7v1.7h-7zM8.5 12.7h7v1.7h-7zM8.5 16.2h4.6v1.7H8.5z" fill={c} />
+    </Svg>
+  ),
+  sleep: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path fillRule="evenodd" d="M20.1 15.1A8.7 8.7 0 1 1 8.9 3.9 8.7 8.7 0 0 0 20.1 15.1ZM9.4 11.3a1.4 1.4 0 1 0 .001 0ZM12.8 16.1a1 1 0 1 0 .001 0Z" fill={c} />
+    </Svg>
+  ),
+  health: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path d="M12 21S3.4 14.4 3.4 8.7A4.5 4.5 0 0112 6a4.5 4.5 0 018.6 2.7C20.6 14.4 12 21 12 21z" fill={c} />
+    </Svg>
+  ),
+  people: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Circle cx={12} cy={7.7} r={4.1} fill={c} />
+      <Path d="M3.6 20.4c0-4.2 3.8-6.6 8.4-6.6s8.4 2.4 8.4 6.6z" fill={c} />
+    </Svg>
+  ),
+  money: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path fillRule="evenodd" d="M4 5.5h16a2 2 0 012 2V16.5a2 2 0 01-2 2H4a2 2 0 01-2-2V7.5a2 2 0 012-2zM2 9.3h20v2.1H2zM5.5 14.4h4v1.7h-4z" fill={c} />
+    </Svg>
+  ),
+  weather: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={4.7} fill={c} />
+      <G stroke={c} strokeWidth={2.1} strokeLinecap="round">
+        <Path d="M12 2.4v2.6M12 19v2.6M2.4 12H5M19 12h2.6M5.1 5.1l1.8 1.8M17.1 17.1l1.8 1.8M18.9 5.1l-1.8 1.8M6.9 17.1l-1.8 1.8" />
+      </G>
+    </Svg>
+  ),
+  rest: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path d="M20.5 3.5C12 3 5 7 4.4 14.2c-.3 3.6 1.7 5.4 1.7 5.4S7 14 11 11c0 0-3.4 3.4-4.4 8.8 0 0 9.8 1.6 13-7.2 1.2-3.3 1.4-6.6.9-9.1z" fill={c} />
+    </Svg>
+  ),
+  focus: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path fillRule="evenodd" d="M12 4.5C5.5 4.5 2 12 2 12s3.5 7.5 10 7.5S22 12 22 12 18.5 4.5 12 4.5zM12 8.6a3.4 3.4 0 100 6.8 3.4 3.4 0 000-6.8z" fill={c} />
+    </Svg>
+  ),
+  time: (c) => (
+    <Svg width={24} height={24} viewBox="0 0 24 24">
+      <Path fillRule="evenodd" d="M12 2.7a9.3 9.3 0 100 18.6 9.3 9.3 0 000-18.6zM11.1 6.6h1.8v6.1l4.2 2.4-.9 1.6-5.1-3z" fill={c} />
+    </Svg>
+  ),
+};
+
+const REASONS: [string, string][] = [
+  ['Work', 'work'],
+  ['Sleep', 'sleep'],
+  ['Health', 'health'],
+  ['People', 'people'],
+  ['Money', 'money'],
+  ['Weather', 'weather'],
+  ['Rest', 'rest'],
+  ['Focus', 'focus'],
+  ['Time', 'time'],
 ];
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -319,7 +372,7 @@ function ReasonCell({ label, glyph, on, onPress }: { label: string; glyph: Glyph
         borderColor: on ? colors.text : colors.border,
       }}>
       <View style={{ width: 46, height: 46, borderRadius: 9999, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? colors.accent : colors.accentSoft }}>
-        <View style={{ width: 24, height: 24, alignItems: 'center', justifyContent: 'center' }}>{Glyph[glyph](on ? colors.accentText : colors.text)}</View>
+        <View style={{ width: 24, height: 24, alignItems: 'center', justifyContent: 'center' }}>{FIcon[glyph](on ? colors.accentText : colors.text)}</View>
       </View>
       <AppText weightOverride={on ? '700' : '600'} style={{ fontSize: 14.5, letterSpacing: -0.1 }}>
         {label}
