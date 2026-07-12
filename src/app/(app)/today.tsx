@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, View } from 'react-native';
-import Svg, { Circle, G, Path } from 'react-native-svg';
+import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
 
 import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useTodayCheckin } from '@/lib/backend';
@@ -37,15 +37,16 @@ function roman(n: number): string {
 
 // One Stoic line per day up top; a second, attributed Epictetus quote closes
 // the page (the design's footer: laurel divider · quote · EPICTETUS).
+// recovery maxims — one per day, rotating with the campaign day
 const MAXIMS = [
-  'Every urge passes. Outlast it, and the day is yours.',
+  'This too shall pass.',
+  'Habit is overcome by habit.',
+  'Perhaps one day it will be pleasing to remember even this.',
+  'Fall seven times, stand up eight.',
   'No man is free who is not master of himself.',
-  'First say to yourself what you would be; then do what you have to do.',
-  'It is not things that disturb us, but our judgements about them.',
-  'Circumstances do not make the man. They reveal him to himself.',
-  'No great thing is created suddenly.',
-  'He who is not satisfied with a little is satisfied with nothing.',
-  'Practice yourself, for heaven’s sake, in little things.',
+  'The chains of habit are too light to be felt until they are too heavy to be broken.',
+  'You cannot conquer what you keep feeding.',
+  'One day, taken whole, is enough.',
 ];
 
 // ── the header weather glyph — Material Symbols partly_cloudy_day, FILL=1,
@@ -54,15 +55,14 @@ function WeatherMark({ tone }: { tone: string }) {
   return (
     <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
       {/* the sun peeking top-left, with its rays */}
-      <Circle cx={8.6} cy={9} r={3.3} fill={tone} />
+      <Circle cx={8.4} cy={8.8} r={3.2} fill={tone} />
       <G stroke={tone} strokeWidth={1.8} strokeLinecap="round">
-        <Path d="M8.6 3.6V1.8M3.2 9H1.4M4.8 5.2 3.5 3.9M4.8 12.8 3.5 14.1M12.4 5.2l1.3-1.3" />
+        <Path d="M8.4 3.5V1.7M3.1 8.8H1.3M4.7 5.1 3.4 3.8M4.7 12.5 3.4 13.8M12.1 5.1l1.3-1.3" />
       </G>
-      {/* the cloud — two lobes on a flat base, riding the lower right */}
-      <Path
-        d="M9.9 20.5a3.5 3.5 0 0 1-.4-6.97 4.6 4.6 0 0 1 8.5-1.5 3.9 3.9 0 0 1 4.4 3.87 3.6 3.6 0 0 1-3.6 3.6z"
-        fill={tone}
-      />
+      {/* the cloud — level lobes on a flat base (built from primitives) */}
+      <Circle cx={12.2} cy={16.2} r={3.6} fill={tone} />
+      <Circle cx={17.4} cy={15.2} r={4.6} fill={tone} />
+      <Rect x={8.6} y={16.2} width={13.4} height={4.4} rx={2.2} fill={tone} />
     </Svg>
   );
 }
@@ -208,7 +208,7 @@ export default function Today() {
         contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxxl }}
         showsVerticalScrollIndicator={false}>
       {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 48, height: 32 }}>
+      <View style={{ alignItems: 'center', marginTop: 48, height: 32, marginBottom: 16 }}>
         <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
           {'“'}
         </AppText>
