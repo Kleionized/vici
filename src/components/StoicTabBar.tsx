@@ -58,9 +58,9 @@ export function StoicTabBar() {
         flexDirection: 'row',
         alignItems: 'flex-end',
         backgroundColor: colors.bg,
-        paddingTop: 6,
+        paddingTop: 12,
         paddingHorizontal: 18,
-        paddingBottom: Math.max(insets.bottom, 14),
+        paddingBottom: Math.max(insets.bottom + 6, 22),
       }}>
       {tab(ITEMS[0])}
       {tab(ITEMS[1])}

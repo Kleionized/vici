@@ -53,14 +53,14 @@ const MAXIMS = [
 function WeatherMark({ tone }: { tone: string }) {
   return (
     <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
-      {/* the sun, top-left, with its rays */}
-      <Circle cx={9.4} cy={9.8} r={3.5} fill={tone} />
-      <G stroke={tone} strokeWidth={1.9} strokeLinecap="round">
-        <Path d="M9.4 4.1V1.9M3.7 9.8H1.5M5.35 5.75 3.8 4.2M5.35 13.85 3.8 15.4M13.45 5.75 15 4.2" />
+      {/* the sun peeking top-left, with its rays */}
+      <Circle cx={8.6} cy={9} r={3.3} fill={tone} />
+      <G stroke={tone} strokeWidth={1.8} strokeLinecap="round">
+        <Path d="M8.6 3.6V1.8M3.2 9H1.4M4.8 5.2 3.5 3.9M4.8 12.8 3.5 14.1M12.4 5.2l1.3-1.3" />
       </G>
-      {/* the cloud, filled, riding the lower right */}
+      {/* the cloud — two lobes on a flat base, riding the lower right */}
       <Path
-        d="M12.6 21.2a4.7 4.7 0 0 1-.53-9.37 6 6 0 0 1 11.6 1.62 4.1 4.1 0 0 1-1.17 7.75z"
+        d="M9.9 20.5a3.5 3.5 0 0 1-.4-6.97 4.6 4.6 0 0 1 8.5-1.5 3.9 3.9 0 0 1 4.4 3.87 3.6 3.6 0 0 1-3.6 3.6z"
         fill={tone}
       />
     </Svg>

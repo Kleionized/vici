@@ -180,9 +180,10 @@ function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
         {/* the sun climbing out of the sea as the day clears */}
         <Circle cx={sunX} cy={sunY} r={lerp(26, 44, t)} fill={`url(#glow-${uid})`} opacity={sunOn * 0.55} />
         <Circle cx={sunX} cy={sunY} r={lerp(11, 17, t)} fill={fg} opacity={sunOn} />
-        {/* far headland across the bay */}
-        <Path d="M18 128 L52 112 L90 128 Z" fill={into(0.42)} />
-        <Path d="M52 112 L90 128 L72 128 Z" fill={into(0.58)} />
+        {/* far headland across the bay — its base runs under the waterline
+            so the sea bands (drawn after) meet it with no gap */}
+        <Path d="M14 142 L52 112 L94 142 Z" fill={into(0.42)} />
+        <Path d="M52 112 L94 142 L70 142 Z" fill={into(0.58)} />
         {/* THE cloud — thins as the mood lifts, gone by Good; rain + bolt at the low end */}
         <G opacity={cloudOp}>
           <Path d="M86 80 A 12.5 12.5 0 0 1 90.5 57 A 15.5 15.5 0 0 1 118 46 A 14 14 0 0 1 144 50.5 A 12 12 0 0 1 163.5 62 A 10.5 10.5 0 0 1 165 80 Z" fill={into(0.88)} />
