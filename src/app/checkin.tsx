@@ -152,7 +152,7 @@ function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
   const si = Math.floor(seg);
   const bg = mix(MTONE[si], MTONE[Math.min(4, si + 1)], seg - si);
   const flip = smooth(t, 0.5, 0.72);
-  const fg = mix('#3B3A33', '#F7F6F1', flip);
+  const fg = mix('#2E2E2E', '#F6F6F5', flip);
   const into = (o: number) => mix(bg, fg, o);
 
   const sunOn = smooth(t, 0.55, 0.8);
@@ -174,16 +174,26 @@ function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
           <Stop offset="60%" stopColor={fg} stopOpacity={0.28} />
           <Stop offset="100%" stopColor={fg} stopOpacity={0} />
         </RadialGradient>
+        <RadialGradient id={`vig-${uid}`} cx="50%" cy="50%" r="50%">
+          <Stop offset="0%" stopColor="#000000" stopOpacity={0} />
+          <Stop offset="72%" stopColor="#000000" stopOpacity={0} />
+          <Stop offset="100%" stopColor="#000000" stopOpacity={0.22} />
+        </RadialGradient>
       </Defs>
       <G clipPath={`url(#clip-${uid})`}>
         <Rect width={200} height={200} fill={bg} />
         {/* the sun climbing out of the sea as the day clears */}
         <Circle cx={sunX} cy={sunY} r={lerp(26, 44, t)} fill={`url(#glow-${uid})`} opacity={sunOn * 0.55} />
         <Circle cx={sunX} cy={sunY} r={lerp(11, 17, t)} fill={fg} opacity={sunOn} />
-        {/* far headland across the bay — its base runs under the waterline
-            so the sea bands (drawn after) meet it with no gap */}
-        <Path d="M14 142 L52 112 L94 142 Z" fill={into(0.42)} />
-        <Path d="M52 112 L94 142 L70 142 Z" fill={into(0.58)} />
+        {/* the faceted peak across the bay — low-poly planes fanning from the
+            summit, base under the waterline so the sea bands meet it clean */}
+        <Path d="M2 142 L56 82 L36 142 Z" fill={into(0.3)} />
+        <Path d="M36 142 L56 82 L82 142 Z" fill={into(0.42)} />
+        <Path d="M56 82 L118 142 L82 142 Z" fill={into(0.56)} />
+        <Path d="M56 82 L62 96 L50 99 Z" fill={into(0.72)} />
+        {/* the low ridge on the far right */}
+        <Path d="M100 142 L154 116 L198 142 Z" fill={into(0.3)} />
+        <Path d="M154 116 L198 142 L166 142 Z" fill={into(0.44)} />
         {/* THE cloud — thins as the mood lifts, gone by Good; rain + bolt at the low end */}
         <G opacity={cloudOp}>
           <Path d="M86 80 A 12.5 12.5 0 0 1 90.5 57 A 15.5 15.5 0 0 1 118 46 A 14 14 0 0 1 144 50.5 A 12 12 0 0 1 163.5 62 A 10.5 10.5 0 0 1 165 80 Z" fill={into(0.88)} />
@@ -194,21 +204,28 @@ function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
           <Path d="M126 86 L118 104 L125 104 L116 122 L132 102 L124 102 L132 86 Z" fill={fg} opacity={bolt} />
         </G>
         {/* the sea — three banded planes, choppy → glassy */}
-        <Path d={mBand(132, amp)} fill={into(0.16)} />
-        <Path d={mLine(132, amp)} stroke={into(0.6)} strokeWidth={2} strokeLinecap="round" fill="none" opacity={0.8} />
-        <G opacity={smooth(t, 0.62, 0.85) * 0.85}>
-          <Path d="M53 138 h14 M56 146 h10 M54 154 h8" stroke={fg} strokeWidth={2.6} strokeLinecap="round" />
+        <Path d={mBand(132, amp)} fill={into(0.16 * (1 - 0.58 * sunOn))} />
+        <Path d={mLine(132, amp)} stroke={into(0.6)} strokeWidth={2} strokeLinecap="round" fill="none" opacity={0.8 - 0.5 * sunOn} />
+        {/* the light path — sharp facet diamonds stepping down the water */}
+        <G opacity={smooth(t, 0.55, 0.82) * 0.92}>
+          <Path d="M47 137 L60 134.2 L73 137 L60 139.8 Z" fill={fg} />
+          <Path d="M46 146 L55 143.8 L64 146 L55 148.2 Z" fill={fg} opacity={0.85} />
+          <Path d="M54 155 L65 152.8 L76 155 L65 157.2 Z" fill={fg} opacity={0.7} />
+          <Path d="M50 166 L58 164.2 L66 166 L58 167.8 Z" fill={fg} opacity={0.55} />
+          <Path d="M56 177 L65 175.4 L74 177 L65 178.6 Z" fill={fg} opacity={0.4} />
         </G>
-        <Path d={mBand(154, amp * 0.85)} fill={into(0.26)} />
-        <Path d={mLine(154, amp * 0.85)} stroke={into(0.6)} strokeWidth={1.8} strokeLinecap="round" fill="none" opacity={0.65} />
+        <Path d={mBand(154, amp * 0.85)} fill={into(0.26 * (1 - 0.58 * sunOn))} />
+        <Path d={mLine(154, amp * 0.85)} stroke={into(0.6)} strokeWidth={1.8} strokeLinecap="round" fill="none" opacity={0.65 - 0.42 * sunOn} />
         <Circle cx={54} cy={149} r={1.8} fill={into(0.7)} opacity={rain * 0.9} />
         <Circle cx={74} cy={152} r={1.3} fill={into(0.7)} opacity={rain * 0.7} />
         <Circle cx={142} cy={150} r={1.6} fill={into(0.7)} opacity={rain * 0.8} />
-        <Path d={mBand(176, amp * 0.7)} fill={into(0.36)} />
-        <Path d={mLine(176, amp * 0.7)} stroke={into(0.6)} strokeWidth={1.6} strokeLinecap="round" fill="none" opacity={0.55} />
+        <Path d={mBand(176, amp * 0.7)} fill={into(0.36 * (1 - 0.58 * sunOn))} />
+        <Path d={mLine(176, amp * 0.7)} stroke={into(0.6)} strokeWidth={1.6} strokeLinecap="round" fill="none" opacity={0.55 - 0.36 * sunOn} />
         {/* gulls return with the light */}
         <Path d={gullPath(58, 96, 0.9)} stroke={fg} strokeWidth={1.7} strokeLinecap="round" fill="none" opacity={smooth(t, 0.55, 0.8) * 0.8} />
         <Path d={gullPath(78, 86, 0.7)} stroke={fg} strokeWidth={1.3} strokeLinecap="round" fill="none" opacity={smooth(t, 0.64, 0.88) * 0.6} />
+        {/* soft edge vignette — the disc breathes darker at its rim */}
+        <Circle cx={100} cy={100} r={96} fill={`url(#vig-${uid})`} opacity={0.35 + 0.55 * t} />
       </G>
       <Circle cx={100} cy={100} r={95.2} fill="none" stroke="rgba(0,0,0,0.07)" strokeWidth={1.6} />
     </Svg>

@@ -33,13 +33,13 @@ export type Tone = {
 const NIGHT: Tone = {
   bg: '#09090A',
   card: '#151516',
-  ink: '#EDEDE8',
-  ink2: '#A6A7A0',
-  ink3: '#6C6D66',
-  ink4: '#43443F',
+  ink: '#EDEDEC',
+  ink2: '#A6A6A5',
+  ink3: '#6B6B6A',
+  ink4: '#424241',
   line: 'rgba(255,255,255,0.1)',
   soft2: 'rgba(255,255,255,0.14)',
-  fill: '#EDEDE8',
+  fill: '#EDEDEC',
   onFill: '#131313',
 };
 const PAPER: Tone = {
@@ -127,12 +127,12 @@ function Ambient({ t, lit }: { t: number; lit: boolean }) {
       <Svg width="100%" height="100%">
         <Defs>
           <RadialGradient id="o3glow1" cx="50%" cy="100%" rx="70%" ry="60%">
-            <Stop offset="0%" stopColor="#E4D8C2" stopOpacity={(0.06 + e * 0.5).toFixed(3)} />
-            <Stop offset="70%" stopColor="#E4D8C2" stopOpacity={0} />
+            <Stop offset="0%" stopColor="#E2E2E1" stopOpacity={(0.06 + e * 0.5).toFixed(3)} />
+            <Stop offset="70%" stopColor="#E2E2E1" stopOpacity={0} />
           </RadialGradient>
           <RadialGradient id="o3glow2" cx="50%" cy="106%" rx="46%" ry="46%">
-            <Stop offset="0%" stopColor="#E0AA6A" stopOpacity={(Math.pow(e, 1.6) * 0.42).toFixed(3)} />
-            <Stop offset="64%" stopColor="#E0AA6A" stopOpacity={0} />
+            <Stop offset="0%" stopColor="#EAEAE9" stopOpacity={(Math.pow(e, 1.6) * 0.42).toFixed(3)} />
+            <Stop offset="64%" stopColor="#EAEAE9" stopOpacity={0} />
           </RadialGradient>
         </Defs>
         <Rect x="0" y="0" width="100%" height="100%" fill="url(#o3glow1)" />
@@ -740,7 +740,7 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
 
   const bg = p.interpolate({
     inputRange: [0, 0.35, 0.62, 0.85, 1],
-    outputRange: [NIGHT.bg, '#141310', '#3C382E', '#8C887B', PAPER.bg],
+    outputRange: [NIGHT.bg, '#131313', '#3A3A3A', '#8A8A8A', PAPER.bg],
   });
   const glowOp = p.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 0.35, 0.7, 0] });
   const inkCol = p.interpolate({ inputRange: [0.3, 0.8], outputRange: [NIGHT.ink, PAPER.ink] });
@@ -760,8 +760,8 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
         <Svg width="100%" height="100%">
           <Defs>
             <RadialGradient id="pauseGlow" cx="50%" cy="100%" rx="72%" ry="72%">
-              <Stop offset="0%" stopColor="#E8DCC2" stopOpacity={0.95} />
-              <Stop offset="100%" stopColor="#E8DCC2" stopOpacity={0} />
+              <Stop offset="0%" stopColor="#EFEFEE" stopOpacity={0.95} />
+              <Stop offset="100%" stopColor="#EFEFEE" stopOpacity={0} />
             </RadialGradient>
           </Defs>
           <Rect width="100%" height="100%" fill="url(#pauseGlow)" />
@@ -993,8 +993,8 @@ function OrDecade({ rate }: { rate: number }) {
     const ch = (sh: number) => Math.round(((pa >> sh) & 255) + (((pb >> sh) & 255) - ((pa >> sh) & 255)) * t);
     return `rgb(${ch(16)}, ${ch(8)}, ${ch(0)})`;
   };
-  const soft = tone.soft2.startsWith('#') ? tone.soft2 : '#DDD9CE';
-  const dot = mixHex(soft, '#1D1C1A', 0.25 + 0.75 * rate);
+  const soft = tone.soft2.startsWith('#') ? tone.soft2 : '#D9D9D8';
+  const dot = mixHex(soft, '#1C1C1C', 0.25 + 0.75 * rate);
   return (
     <OrWipe vertical duration={1200}>
       <View style={{ gap: 6, width: '100%' }}>
@@ -1332,8 +1332,8 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
     <>
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         <O3H size={24} style={{ marginTop: 10 }}>Set your mark.</O3H>
-        <View style={{ marginTop: 20, borderRadius: 20, backgroundColor: '#F6F3EB', padding: 22 }}>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 17.5, lineHeight: 28, color: '#22221C' }}>
+        <View style={{ marginTop: 20, borderRadius: 20, backgroundColor: '#F2F2F1', padding: 22 }}>
+          <AppText style={{ fontFamily: fonts.serif, fontSize: 17.5, lineHeight: 28, color: '#212121' }}>
             I, {name || '————'}, am beginning a campaign of twelve weeks. A slip is a data point. I do not fail twice.
           </AppText>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: 16, marginBottom: 14 }}>
@@ -1346,7 +1346,7 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
             style={{ height: 96, borderRadius: 14, borderWidth: 1.5, borderColor: 'rgba(34,34,28,0.18)', borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
             {inked ? (
               <Svg width={160} height={54} viewBox="0 0 160 54" fill="none">
-                <Path d="M8 34 C 26 10 36 44 52 30 C 64 20 70 40 84 28 C 96 18 104 40 120 26 C 132 16 144 30 152 22" stroke="#22221C" strokeWidth={2.4} strokeLinecap="round" fill="none" />
+                <Path d="M8 34 C 26 10 36 44 52 30 C 64 20 70 40 84 28 C 96 18 104 40 120 26 C 132 16 144 30 152 22" stroke="#212121" strokeWidth={2.4} strokeLinecap="round" fill="none" />
               </Svg>
             ) : (
               <AppText style={[sans('500'), { fontSize: 13, color: 'rgba(34,34,28,0.4)' }]}>Sign here</AppText>
@@ -1397,20 +1397,20 @@ export function O3Letter({ answers, next }: { answers: Record<string, string | s
   return (
     <>
       <O3H size={23} style={{ marginTop: 10 }}>A letter from the man at week XII.</O3H>
-      <View style={{ flex: 1, marginTop: 18, backgroundColor: '#F8F6EF', borderRadius: 18, overflow: 'hidden' }}>
+      <View style={{ flex: 1, marginTop: 18, backgroundColor: '#F7F7F6', borderRadius: 18, overflow: 'hidden' }}>
         {/* fold crease */}
         <View style={{ position: 'absolute', left: 0, right: 0, top: '34%', height: 1.5, backgroundColor: 'rgba(0,0,0,0.05)' }} />
         <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 22, paddingBottom: 18 }} showsVerticalScrollIndicator={false}>
-          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 22, lineHeight: 26, color: '#26261F', marginBottom: 14 }}>
+          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 22, lineHeight: 26, color: '#242424', marginBottom: 14 }}>
             {name ? `${name} —` : 'Friend —'}
           </AppText>
           {paragraphs.map((para, i) => (
-            <AppText key={i} style={{ fontFamily: fonts.serifSharp, fontSize: 15.5, lineHeight: 25, color: '#3B3B33', marginBottom: 14 }}>
+            <AppText key={i} style={{ fontFamily: fonts.serifSharp, fontSize: 15.5, lineHeight: 25, color: '#3A3A3A', marginBottom: 14 }}>
               {para}
             </AppText>
           ))}
           <View style={{ marginTop: 4, gap: 3 }}>
-            <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 17.5, color: '#26261F' }}>— you, at week XII</AppText>
+            <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 17.5, color: '#242424' }}>— you, at week XII</AppText>
             <Svg width={130} height={11} viewBox="0 0 130 11" fill="none">
               <Path d="M2 7 C 30 2, 50 9, 74 5.5 S 116 4, 128 6.5" stroke="rgba(38,38,31,0.5)" strokeWidth={1.5} strokeLinecap="round" />
             </Svg>

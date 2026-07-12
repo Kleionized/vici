@@ -11,32 +11,32 @@
 import { type ReactNode, useId } from 'react';
 import Svg, { Circle, Defs, Ellipse, G, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-// ── palette — lifted from the canvas (warm paper scale, no hue) ──────
+// ── palette — pure neutral greyscale, white → black (no warm cast) ──────
 export const SC = {
-  skyTop: '#F8F6EF',
-  skyLo: '#EFECE1',
-  storm: '#DAD5C2',
-  far: '#E9E6D9',
-  farShade: '#E1DECF',
-  midLit: '#E1DDCD',
-  midShade: '#D2CDBA',
-  nearLit: '#D8D3C0',
-  nearShade: '#C5C0AA',
-  fgLit: '#C9C4AE',
-  fgShade: '#B4AF98',
-  fgDeep: '#A8A38C',
-  path: '#F7F5ED',
-  snow: '#F4F2E9',
-  waterHi: '#E7E4D5',
-  water: '#D9D5C2',
-  waterLo: '#C8C3AD',
-  waterDeep: '#B3AE97',
-  waterDark: '#A29D85',
-  foam: '#F5F3EA',
-  ink: '#4A4A42',
-  sun: '#F1EDDA',
-  sunEdge: '#E3DEC6',
-  lamp: '#F2DCA4',
+  skyTop: '#F7F7F6',
+  skyLo: '#ECECEB',
+  storm: '#D3D3D2',
+  far: '#E5E5E4',
+  farShade: '#DDDDDC',
+  midLit: '#DADAD9',
+  midShade: '#CBCBCA',
+  nearLit: '#D0D0CF',
+  nearShade: '#BCBCBB',
+  fgLit: '#C1C1C0',
+  fgShade: '#ABABAA',
+  fgDeep: '#9F9F9E',
+  path: '#F5F5F4',
+  snow: '#F2F2F1',
+  waterHi: '#E2E2E1',
+  water: '#D2D2D1',
+  waterLo: '#BFBFBE',
+  waterDeep: '#AAAAA9',
+  waterDark: '#999998',
+  foam: '#F3F3F2',
+  ink: '#474746',
+  sun: '#F3F3F2',
+  sunEdge: '#DADAD9',
+  lamp: '#E9E9E8',
 } as const;
 
 export const scLerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -62,9 +62,9 @@ export function SSun({ cx, cy, r, glow = 2.6, op = 1 }: { cx: number; cy: number
     <G opacity={op}>
       <Defs>
         <RadialGradient id={u} cx="50%" cy="50%" r="50%">
-          <Stop offset="0%" stopColor="#EDE7D2" stopOpacity={0.9} />
-          <Stop offset="55%" stopColor="#EDE7D2" stopOpacity={0.38} />
-          <Stop offset="100%" stopColor="#EDE7D2" stopOpacity={0} />
+          <Stop offset="0%" stopColor="#F0F0EF" stopOpacity={0.9} />
+          <Stop offset="55%" stopColor="#F0F0EF" stopOpacity={0.38} />
+          <Stop offset="100%" stopColor="#F0F0EF" stopOpacity={0} />
         </RadialGradient>
       </Defs>
       <Circle cx={cx} cy={cy} r={r * glow} fill={`url(#${u})`} />
@@ -81,9 +81,9 @@ export function SMoonF({ cx, cy, r, phase = 0.4 }: { cx: number; cy: number; r: 
   return (
     <G>
       <Circle cx={cx} cy={cy} r={r} fill={SC.snow} stroke={SC.farShade} strokeWidth={1.6} />
-      <Circle cx={cx - r * 0.34} cy={cy - r * 0.14} r={r * 0.15} fill="#E7E4D7" />
-      <Circle cx={cx - r * 0.06} cy={cy + r * 0.32} r={r * 0.1} fill="#E7E4D7" />
-      <Circle cx={cx + r * 0.3} cy={cy + r * 0.06} r={r * 0.08} fill="#E7E4D7" />
+      <Circle cx={cx - r * 0.34} cy={cy - r * 0.14} r={r * 0.15} fill="#E4E4E3" />
+      <Circle cx={cx - r * 0.06} cy={cy + r * 0.32} r={r * 0.1} fill="#E4E4E3" />
+      <Circle cx={cx + r * 0.3} cy={cy + r * 0.06} r={r * 0.08} fill="#E4E4E3" />
       <Path
         d={`M${cx} ${cy - r} A${r} ${r} 0 0 1 ${cx} ${cy + r} A${rx} ${r} 0 0 ${sweep} ${cx} ${cy - r} Z`}
         fill={SC.midLit}

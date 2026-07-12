@@ -62,7 +62,7 @@ export const colors = {
   border: 'rgba(0,0,0,0.09)',
   borderStrong: 'rgba(0,0,0,0.14)',
   hairline: 'rgba(0,0,0,0.06)',
-  ring: '#B9B6AF',
+  ring: '#B8B8B7',
 
   // Accent — the ink fill. Primary actions are dark pills with paper text.
   accent: '#131313',
@@ -79,8 +79,8 @@ export const colors = {
   neutral: '#8B8882',
 
   // The mood ramp — single source of truth for any mood-mapped tone
-  // (week rings, check-in, analytics). Light → deep ink, no hue.
-  moodTones: ['#C9C6BE', '#AFACA3', '#918E85', '#6B6960', '#33312D'] as const,
+  // (week rings, check-in, analytics). Pure neutral greys, white → black.
+  moodTones: ['#DCDCDC', '#B4B4B4', '#8A8A8A', '#575757', '#1B1B1B'] as const,
 
   // Per-lesson-category identity — neutralised to the ink scale (the canvas
   // removed hue identities app-wide; identity now comes from the glyph).
