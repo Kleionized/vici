@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useRef } from 'react';
 import { Animated, Pressable, ScrollView, View } from 'react-native';
-import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Path } from 'react-native-svg';
 
 import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useTodayCheckin } from '@/lib/backend';
@@ -50,20 +50,15 @@ const MAXIMS = [
   'One day, taken whole, is enough.',
 ];
 
-// ── the header weather glyph — Material Symbols partly_cloudy_day, FILL=1,
-// tinted with today's mood tone (quiet grey until a mood is logged) ──
+// ── the header weather glyph — Material Symbols partly_cloudy_day, FILL=1
+// (the exact Google path data), tinted with today's mood tone ──
 function WeatherMark({ tone }: { tone: string }) {
   return (
-    <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
-      {/* the sun peeking top-left, with its rays */}
-      <Circle cx={8.4} cy={8.8} r={3.2} fill={tone} />
-      <G stroke={tone} strokeWidth={1.8} strokeLinecap="round">
-        <Path d="M8.4 3.5V1.7M3.1 8.8H1.3M4.7 5.1 3.4 3.8M4.7 12.5 3.4 13.8M12.1 5.1l1.3-1.3" />
-      </G>
-      {/* the cloud — level lobes on a flat base (built from primitives) */}
-      <Circle cx={12.2} cy={16.2} r={3.6} fill={tone} />
-      <Circle cx={17.4} cy={15.2} r={4.6} fill={tone} />
-      <Rect x={8.6} y={16.2} width={13.4} height={4.4} rx={2.2} fill={tone} />
+    <Svg width={21} height={21} viewBox="0 -960 960 960">
+      <Path
+        fill={tone}
+        d="M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z"
+      />
     </Svg>
   );
 }
@@ -217,7 +212,7 @@ export default function Today() {
 
       <Animated.ScrollView
         style={{ flex: 1 }}
-        contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxxl }}
+        contentContainerStyle={{ paddingHorizontal: spacing.xl }}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
@@ -246,7 +241,7 @@ export default function Today() {
           onPress={() => router.push(`/lesson/${current.lesson.slug}`)}
           accessibilityRole="button"
           style={({ pressed }) => ({
-            marginTop: 64,
+            marginTop: 78,
             height: 214,
             borderRadius: 20,
             overflow: 'hidden',
