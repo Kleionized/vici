@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { Pressable, ScrollView, View } from 'react-native';
+import { useRef } from 'react';
+import { Animated, Pressable, ScrollView, View } from 'react-native';
 import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
 
 import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
@@ -69,6 +70,8 @@ function WeatherMark({ tone }: { tone: string }) {
 
 export default function Today() {
   const router = useRouter();
+  // the header rule retreats to its middle as the page scrolls
+  const scrollY = useRef(new Animated.Value(0)).current;
   const user = useCurrentUser();
   const current = useCurrentLesson();
   const todayCheckin = useTodayCheckin();
@@ -181,7 +184,16 @@ export default function Today() {
           <AppText style={[sans('600'), { fontSize: 13.5, letterSpacing: 3.2, textTransform: 'uppercase', color: colors.text }]}>
             {'Day ' + roman(dayNumber)}
           </AppText>
-          <View style={{ width: 40, height: 1.5, backgroundColor: colors.text }} />
+          <Animated.View
+            style={{
+              width: 40,
+              height: 1.5,
+              backgroundColor: colors.text,
+              transform: [
+                { scaleX: scrollY.interpolate({ inputRange: [0, 90], outputRange: [1, 0], extrapolate: 'clamp' }) },
+              ],
+            }}
+          />
         </View>
 
         <Pressable
@@ -203,12 +215,14 @@ export default function Today() {
         </Pressable>
       </View>
 
-      <ScrollView
+      <Animated.ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxxl }}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
+        scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
       {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 48, height: 32, marginBottom: 16 }}>
+      <View style={{ alignItems: 'center', marginTop: 56, height: 32, marginBottom: 18 }}>
         <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
           {'“'}
         </AppText>
@@ -232,7 +246,7 @@ export default function Today() {
           onPress={() => router.push(`/lesson/${current.lesson.slug}`)}
           accessibilityRole="button"
           style={({ pressed }) => ({
-            marginTop: 56,
+            marginTop: 64,
             height: 214,
             borderRadius: 20,
             overflow: 'hidden',
@@ -282,7 +296,7 @@ export default function Today() {
       ) : null}
 
       {/* today's steps */}
-      <View style={{ marginTop: 60 }}>
+      <View style={{ marginTop: 68 }}>
         <SectionHead title="Today's steps" meta={`${doneCount} of ${steps.length}`} />
         <View style={{ backgroundColor: CARD, borderRadius: 18, paddingVertical: 4, paddingHorizontal: 20 }}>
           {steps.map((s, i) => (
@@ -338,7 +352,7 @@ export default function Today() {
       </View>
 
       {/* your week moods */}
-      <View style={{ marginTop: 56 }}>
+      <View style={{ marginTop: 64 }}>
         <SectionHead title="Your week moods" meta={moodWord} />
         <View style={{ backgroundColor: CARD, borderRadius: 20, paddingTop: 18, paddingBottom: 19, paddingHorizontal: 20 }}>
           <View style={{ flexDirection: 'row' }}>
@@ -397,7 +411,7 @@ export default function Today() {
       </View>
 
       {/* footer — laurel divider · Epictetus · the valley river */}
-      <View style={{ marginTop: 60, position: 'relative' }}>
+      <View style={{ marginTop: 68, position: 'relative' }}>
         <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
         <View
           style={{
@@ -425,7 +439,7 @@ export default function Today() {
           color: colors.text,
           maxWidth: 250,
           alignSelf: 'center',
-          marginTop: 52,
+          marginTop: 58,
         }}>
         {footerQuote}
       </AppText>
@@ -434,7 +448,7 @@ export default function Today() {
         style={[sans('600'), { fontSize: 11, letterSpacing: 2.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 14 }]}>
         Epictetus
       </AppText>
-      <View style={{ marginTop: 40, marginHorizontal: -spacing.xl, height: 260 }}>
+      <View style={{ marginTop: 48, marginHorizontal: -spacing.xl, height: 260 }}>
         <Image
           source={require('../../../assets/images/valley-river.webp')}
           contentFit="cover"
@@ -451,7 +465,7 @@ export default function Today() {
           style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
         />
       </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </Screen>
   );
 }
