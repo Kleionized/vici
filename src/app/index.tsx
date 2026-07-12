@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Animated, View } from 'react-native';
 
 import { AK } from '@/components/auth/kit';
-import { AppText } from '@/components/ui';
+import { AppText, Laurel } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { useCurrentUser } from '@/lib/backend';
 import { fonts, sans } from '@/lib/theme';
@@ -62,6 +62,9 @@ function Boot({ day }: { day: number | null }) {
       <StatusBar style="light" />
       <LinearGradient colors={[AK.bg2, AK.bg1, AK.bg0]} locations={[0, 0.42, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ marginBottom: 18 }}>
+          <Laurel size={44} color="#F5F4F1" />
+        </View>
         <AppText style={{ fontFamily: fonts.serif, fontSize: 23, letterSpacing: 8.28, color: AK.ink, marginLeft: 8.28 }}>VICI</AppText>
         {/* the growing ink rule — the app-wide progress motif, as loader */}
         <View style={{ width: 46, height: 1.5, backgroundColor: AK.hair, marginTop: 20 }}>

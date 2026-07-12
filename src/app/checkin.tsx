@@ -215,20 +215,9 @@ function MoodWeather({ t, size = 200 }: { t: number; size?: number }) {
   );
 }
 
-/** Gentle 6s breathing pulse around the visual. */
+/** The medallion sits still — no pulsation. */
 function Breathe({ children }: { children: React.ReactNode }) {
-  const [scale] = useState(() => new Animated.Value(1));
-  useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(scale, { toValue: 1.035, duration: 3000, useNativeDriver: true }),
-        Animated.timing(scale, { toValue: 1, duration: 3000, useNativeDriver: true }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [scale]);
-  return <Animated.View style={{ transform: [{ scale }] }}>{children}</Animated.View>;
+  return <>{children}</>;
 }
 
 // ── draggable mood slider with a cool→warm track ────────────────────────────

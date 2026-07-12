@@ -4,8 +4,8 @@ import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-import { AppText, Laurel } from '@/components/ui';
-import { colors, sans } from '@/lib/theme';
+import { Laurel } from '@/components/ui';
+import { colors } from '@/lib/theme';
 
 /**
  * The canvas bottom nav, exactly: a flat parchment bar (no border, no blur),
@@ -44,14 +44,8 @@ export function StoicTabBar() {
         onPress={() => router.navigate(item.route as never)}
         accessibilityRole="button"
         accessibilityLabel={item.label}
-        style={{ flex: 1, alignItems: 'center', gap: 3 }}>
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         {item.icon(tint, on)}
-        {/* icons-only at rest — the label appears under the active tab */}
-        <View style={{ height: 15, justifyContent: 'center' }}>
-          {on ? (
-            <AppText style={[sans('600'), { fontSize: 12, letterSpacing: 0.24, color: tint }]}>{item.label}</AppText>
-          ) : null}
-        </View>
       </Pressable>
     );
   };
@@ -60,11 +54,11 @@ export function StoicTabBar() {
     <View
       style={{
         flexDirection: 'row',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         backgroundColor: colors.bg,
-        paddingTop: 8,
+        paddingTop: 16,
         paddingHorizontal: 18,
-        paddingBottom: Math.max(insets.bottom - 4, 12),
+        paddingBottom: Math.max(insets.bottom + 2, 20),
       }}>
       {tab(ITEMS[0])}
       {tab(ITEMS[1])}
