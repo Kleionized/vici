@@ -1,4 +1,4 @@
-import { Text, type TextProps, type TextStyle } from 'react-native';
+import { StyleSheet, Text, type TextProps, type TextStyle } from 'react-native';
 
 import { colors, fonts, fontSize, sans } from '@/lib/theme';
 import { useOnInk } from './surface';
@@ -134,17 +134,20 @@ export function AppText({ variant = 'body', color, center, weightOverride, style
     fontStyle = sans(w ?? SANS_WEIGHT[variant]);
   }
 
-  return (
-    <Text
-      style={[
-        VARIANTS[variant],
-        fontStyle,
-        onInk ? { color: INK_COLOR[variant] } : null,
-        center && { textAlign: 'center' },
-        color ? { color } : null,
-        style,
-      ]}
-      {...rest}
-    />
-  );
+  // Callers often override fontSize without overriding the variant's
+  // lineHeight — the inherited small line box clips ascenders on iOS.
+  // Flatten and repair: a line box always fits its own glyphs.
+  const merged = StyleSheet.flatten([
+    VARIANTS[variant],
+    fontStyle,
+    onInk ? { color: INK_COLOR[variant] } : null,
+    center && { textAlign: 'center' },
+    color ? { color } : null,
+    style,
+  ]) as TextStyle;
+  if (merged.fontSize && merged.lineHeight && merged.lineHeight < merged.fontSize * 1.18) {
+    merged.lineHeight = Math.round(merged.fontSize * 1.22);
+  }
+
+  return <Text style={merged} {...rest} />;
 }

@@ -29,8 +29,9 @@ export function StoicTabBar() {
 
   const active = (route: string) => {
     const tail = '/' + route.split('/').pop();
-    // Rough Days hangs off the Log tab
+    // Rough Days hangs off the Log tab; the album and mail hang off You
     if (tail === '/log' && pathname.startsWith('/rough-days')) return true;
+    if (tail === '/dashboard' && (pathname.startsWith('/milestones') || pathname.startsWith('/mail'))) return true;
     return pathname.startsWith(tail);
   };
 
@@ -45,9 +46,12 @@ export function StoicTabBar() {
         accessibilityLabel={item.label}
         style={{ flex: 1, alignItems: 'center', gap: 3 }}>
         {item.icon(tint, on)}
-        <AppText style={[sans(on ? '600' : '400'), { fontSize: 12, letterSpacing: 0.24, color: tint }]}>
-          {item.label}
-        </AppText>
+        {/* icons-only at rest — the label appears under the active tab */}
+        <View style={{ height: 15, justifyContent: 'center' }}>
+          {on ? (
+            <AppText style={[sans('600'), { fontSize: 12, letterSpacing: 0.24, color: tint }]}>{item.label}</AppText>
+          ) : null}
+        </View>
       </Pressable>
     );
   };
@@ -58,9 +62,9 @@ export function StoicTabBar() {
         flexDirection: 'row',
         alignItems: 'flex-end',
         backgroundColor: colors.bg,
-        paddingTop: 12,
+        paddingTop: 8,
         paddingHorizontal: 18,
-        paddingBottom: Math.max(insets.bottom + 6, 22),
+        paddingBottom: Math.max(insets.bottom - 4, 12),
       }}>
       {tab(ITEMS[0])}
       {tab(ITEMS[1])}
