@@ -1,12 +1,13 @@
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Animated, Pressable, ScrollView, View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 
+import { type Challenge, ChallengeSheet } from '@/components/ChallengeSheet';
 import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
-import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useTodayCheckin } from '@/lib/backend';
+import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useLessonProgressMap, useTodayCheckin } from '@/lib/backend';
 import { toDateKey } from '@/lib/date';
 import { colors, fonts, sans, spacing } from '@/lib/theme';
 
@@ -75,15 +76,46 @@ function WeatherMark({ mood }: { mood: number | null }) {
   );
 }
 
+// ── the challenge-hero glyphs — white marks on the ink panel ──
+function StepGlyph({ kind }: { kind: 'lesson' | 'mood' | 'log' }) {
+  const c = colors.inkText;
+  if (kind === 'lesson') {
+    return (
+      <Svg width={56} height={56} viewBox="0 0 24 24" fill="none">
+        <Path d="M12 6.5C10.6 5 8.6 4.2 6.2 4.2c-1 0-1.9.14-2.7.4V18c.8-.26 1.7-.4 2.7-.4 2.4 0 4.4.8 5.8 2.3 1.4-1.5 3.4-2.3 5.8-2.3 1 0 1.9.14 2.7.4V4.6c-.8-.26-1.7-.4-2.7-.4-2.4 0-4.4.8-5.8 2.3Z" stroke={c} strokeWidth={1.6} strokeLinejoin="round" />
+        <Path d="M12 6.5V19.9" stroke={c} strokeWidth={1.6} />
+      </Svg>
+    );
+  }
+  if (kind === 'mood') {
+    return (
+      <Svg width={56} height={56} viewBox="0 -960 960 960">
+        <Path
+          fill={c}
+          d="M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z"
+        />
+      </Svg>
+    );
+  }
+  return (
+    <Svg width={56} height={56} viewBox="0 0 24 24" fill="none">
+      <Path d="m5 19 .9-3.6L16.6 4.7a1.7 1.7 0 0 1 2.4 0l.3.3a1.7 1.7 0 0 1 0 2.4L8.6 18.1 5 19Z" stroke={c} strokeWidth={1.6} strokeLinejoin="round" />
+      <Path d="M14.8 6.5l2.7 2.7" stroke={c} strokeWidth={1.6} />
+    </Svg>
+  );
+}
+
 export default function Today() {
   const router = useRouter();
   // the header rule retreats to its middle as the page scrolls
   const scrollY = useRef(new Animated.Value(0)).current;
+  const [challenge, setChallenge] = useState<(Challenge & { go: () => void }) | null>(null);
   const user = useCurrentUser();
   const current = useCurrentLesson();
   const todayCheckin = useTodayCheckin();
   const checkins = useCheckins();
   const events = useEvents();
+  const progressMap = useLessonProgressMap();
 
   if (user === undefined || current === undefined) {
     return (
@@ -132,24 +164,51 @@ export default function Today() {
 
   // Today's steps — real, data-backed, each row navigates to its flow.
   const loggedToday = (events ?? []).some((e) => toDateKey(new Date(e.createdAt)) === todayKey);
+  // Sun–Sat "did it that day" for each step, feeding the challenge sheets
+  const weekKeys = week.map((w) => w.key);
+  const todayIdx = new Date().getDay();
+  const dayHas = (pred: (key: string) => boolean) => weekKeys.map(pred);
+  const eventDays = new Set((events ?? []).map((e) => toDateKey(new Date(e.createdAt))));
+  const lessonDays = new Set(
+    Object.values(progressMap ?? {})
+      .filter((pr) => pr.status === 'completed' && pr.completedAt)
+      .map((pr) => toDateKey(new Date(pr.completedAt as number))),
+  );
   const steps = [
     {
       id: 'lesson',
       label: current ? 'Read today’s lesson' : 'Browse the journey',
       done: current?.progress?.status === 'completed',
       go: () => (current ? router.push(`/lesson/${current.lesson.slug}`) : router.navigate('/(app)/weeks')),
+      sub: current
+        ? `Today's is “${current.lesson.title}”, about ${current.lesson.estimatedMinutes ?? 3} minutes. One a day keeps the campaign moving.`
+        : 'Pick the next ground and its first lesson.',
+      why: 'Each lesson names one mechanism of the habit and one move against it. Read daily: a short lesson every day rewires more than a binge of ten.',
+      cta: current ? 'Open the lesson' : 'Open the journey',
+      weekDone: dayHas((k) => lessonDays.has(k)),
+      glyph: <StepGlyph kind="lesson" />,
     },
     {
       id: 'mood',
       label: 'Log how you’re feeling',
       done: todayCheckin?.mood != null,
       go: () => router.push('/checkin'),
+      sub: 'Twenty seconds. Name the day\u2019s weather before it steers you.',
+      why: 'Logged moods build your heatmap. After a few weeks the record shows what feeds the urges, and when, better than memory ever will.',
+      cta: 'Log the mood',
+      weekDone: week.map((w) => w.tone != null),
+      glyph: <StepGlyph kind="mood" />,
     },
     {
       id: 'log',
       label: 'Capture today in your log',
       done: loggedToday,
       go: () => router.navigate('/(app)/log'),
+      sub: 'One line a day: an urge ridden, a moment kept, a rough day named.',
+      why: 'The log is evidence. On a hard day you will argue with your own memory about how far you have come, and the record wins that argument.',
+      cta: 'Open the log',
+      weekDone: dayHas((k) => eventDays.has(k)),
+      glyph: <StepGlyph kind="log" />,
     },
   ];
   const doneCount = steps.filter((s) => s.done).length;
@@ -309,7 +368,7 @@ export default function Today() {
           {steps.map((s, i) => (
             <Pressable
               key={s.id}
-              onPress={s.go}
+              onPress={() => setChallenge({ ...s, title: s.label, todayIdx })}
               accessibilityRole="button"
               style={{
                 flexDirection: 'row',
@@ -473,6 +532,16 @@ export default function Today() {
         />
       </View>
       </Animated.ScrollView>
+
+      <ChallengeSheet
+        challenge={challenge}
+        onGo={() => {
+          const go = challenge?.go;
+          setChallenge(null);
+          go?.();
+        }}
+        onClose={() => setChallenge(null)}
+      />
     </Screen>
   );
 }

@@ -5,11 +5,13 @@ import { Animated, Pressable, ScrollView, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { type Challenge, ChallengeSheet } from '@/components/ChallengeSheet';
 import { AppText, Button, CategoryBadge, ChoiceInput, EmptyState, Field, Icon, Illustration, LESSON_VISUAL, Laurel, LoadingView, ScaleInput, Screen, SectionLabel, type IllustrationName } from '@/components/ui';
 import { INTERACTIVE_LESSONS, type InteractivePage, LpgCheck, LpgCollect, LpgGrid, LpgPick, LpgTeach } from '@/components/lesson/interactive';
 import { type MdBlock, parseMarkdown, renderInline } from '@/components/ui/MarkdownView';
 import { URGE_TOOL_LESSON_SLUGS } from '@/content/seedLessons';
-import { useCompleteLesson, useLessonDetail, useSaveReflection, useStartLesson } from '@/lib/backend';
+import { useCompleteLesson, useLessonDetail, useLessonProgressMap, useSaveReflection, useStartLesson } from '@/lib/backend';
+import { toDateKey } from '@/lib/date';
 import { CATEGORY_LABEL } from '@/lib/labels';
 import { colors, fonts, radius, sans, spacing } from '@/lib/theme';
 import type { Lesson, ReflectionField } from '@/lib/types';
@@ -344,6 +346,35 @@ function TaskView({
   onOpenUrge: () => void;
   onSupport: () => void;
 }) {
+  // the practice challenge (pattern: home's step sheets) — dots are this
+  // week's lesson-practice days, drawn from lesson completions
+  const [challengeOpen, setChallengeOpen] = useState(false);
+  const progressMap = useLessonProgressMap();
+  const sunday = new Date();
+  sunday.setDate(sunday.getDate() - sunday.getDay());
+  const lessonDays = new Set(
+    Object.values(progressMap ?? {})
+      .filter((pr) => pr.status === 'completed' && pr.completedAt)
+      .map((pr) => toDateKey(new Date(pr.completedAt as number))),
+  );
+  const weekDone = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(sunday);
+    d.setDate(sunday.getDate() + i);
+    return lessonDays.has(toDateKey(d));
+  });
+  const challenge: Challenge = {
+    glyph: (
+      <View style={{ width: 84, height: 84, borderRadius: 24, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center' }}>
+        <CategoryBadge category={lesson.category} size={56} />
+      </View>
+    ),
+    title: lesson.title,
+    sub: lesson.reflectionPrompt,
+    why: 'Reading names the move; practicing makes it yours. One deliberate try today beats agreeing with the idea and moving on.',
+    cta: isUrge ? 'Practice it now' : 'I\u2019ll practice it today',
+    weekDone,
+    todayIdx: new Date().getDay(),
+  };
   return (
     <Screen edges={['top', 'bottom']} contentStyle={{ gap: spacing.lg, paddingTop: spacing.sm }}>
       <StatusBar style="dark" />
@@ -354,15 +385,18 @@ function TaskView({
         <AppText variant="soft">Back to story</AppText>
       </Pressable>
 
-      <View
-        style={{
+      <Pressable
+        onPress={() => setChallengeOpen(true)}
+        accessibilityRole="button"
+        style={({ pressed }) => ({
           flexDirection: 'row',
           alignItems: 'center',
           gap: spacing.md,
           backgroundColor: tint + '14',
           borderRadius: radius.lg,
           padding: spacing.lg,
-        }}>
+          transform: [{ scale: pressed ? 0.99 : 1 }],
+        })}>
         <CategoryBadge category={lesson.category} size={48} />
         <View style={{ flex: 1, gap: 2 }}>
           <AppText variant="label" color={tint}>
@@ -370,7 +404,8 @@ function TaskView({
           </AppText>
           <AppText weightOverride="600">{lesson.title}</AppText>
         </View>
-      </View>
+        <Icon name="arrow" size={18} color={colors.textSofter} />
+      </Pressable>
 
       <View style={{ gap: spacing.xs }}>
         <AppText variant="title">{lesson.reflectionPrompt}</AppText>
@@ -427,6 +462,15 @@ function TaskView({
       ) : null}
 
       <Button label="Complete lesson" onPress={onComplete} loading={saving} />
+
+      <ChallengeSheet
+        challenge={challengeOpen ? challenge : null}
+        onGo={() => {
+          setChallengeOpen(false);
+          if (isUrge) onOpenUrge();
+        }}
+        onClose={() => setChallengeOpen(false)}
+      />
     </Screen>
   );
 }
