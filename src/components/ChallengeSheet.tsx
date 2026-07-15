@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
 import { Modal, Pressable, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
@@ -8,8 +8,7 @@ import { colors, fonts, sans, spacing } from '@/lib/theme';
 /**
  * ChallengeSheet — the step-commitment sheet (pattern: Fabulous's challenge
  * card, translated to ink and paper). A dark hero with the step's glyph, the
- * serif ask, the week's seven day-dots, an expandable "why", and one pill
- * CTA over a quiet decline.
+ * serif ask, the week's seven day-dots, and one pill CTA over a quiet decline.
  */
 
 export interface Challenge {
@@ -17,7 +16,6 @@ export interface Challenge {
   glyph: ReactNode;
   title: string;
   sub: string;
-  why: string;
   cta: string;
   /** Sun–Sat, true where the step was done that day */
   weekDone: boolean[];
@@ -36,7 +34,6 @@ export function ChallengeSheet({
   onGo: () => void;
   onClose: () => void;
 }) {
-  const [whyOpen, setWhyOpen] = useState(false);
   const c = challenge;
   return (
     <Modal visible={c != null} transparent animationType="slide" onRequestClose={onClose}>
@@ -91,20 +88,6 @@ export function ChallengeSheet({
                   </View>
                 ))}
               </View>
-
-              {/* why am I doing this? */}
-              <Pressable onPress={() => setWhyOpen((v) => !v)} hitSlop={8} style={{ marginTop: 24, alignItems: 'center' }}>
-                <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text, textDecorationLine: 'underline' }]}>
-                  Why am I doing this?
-                </AppText>
-              </Pressable>
-              {whyOpen ? (
-                <AppText
-                  center
-                  style={{ fontFamily: fonts.serifSharpItalic, fontSize: 15.5, lineHeight: 23, color: colors.textMuted, marginTop: 12, alignSelf: 'center', maxWidth: 300 }}>
-                  {c.why}
-                </AppText>
-              ) : null}
 
               {/* commit / decline */}
               <Pressable

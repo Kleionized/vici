@@ -370,7 +370,6 @@ function TaskView({
     ),
     title: lesson.title,
     sub: lesson.reflectionPrompt,
-    why: 'Reading names the move; practicing makes it yours. One deliberate try today beats agreeing with the idea and moving on.',
     cta: isUrge ? 'Practice it now' : 'I\u2019ll practice it today',
     weekDone,
     todayIdx: new Date().getDay(),

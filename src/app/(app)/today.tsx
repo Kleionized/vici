@@ -183,7 +183,6 @@ export default function Today() {
       sub: current
         ? `Today's is “${current.lesson.title}”, about ${current.lesson.estimatedMinutes ?? 3} minutes. One a day keeps the campaign moving.`
         : 'Pick the next ground and its first lesson.',
-      why: 'Each lesson names one mechanism of the habit and one move against it. Read daily: a short lesson every day rewires more than a binge of ten.',
       cta: current ? 'Open the lesson' : 'Open the journey',
       weekDone: dayHas((k) => lessonDays.has(k)),
       glyph: <StepGlyph kind="lesson" />,
@@ -194,7 +193,6 @@ export default function Today() {
       done: todayCheckin?.mood != null,
       go: () => router.push('/checkin'),
       sub: 'Twenty seconds. Name the day\u2019s weather before it steers you.',
-      why: 'Logged moods build your heatmap. After a few weeks the record shows what feeds the urges, and when, better than memory ever will.',
       cta: 'Log the mood',
       weekDone: week.map((w) => w.tone != null),
       glyph: <StepGlyph kind="mood" />,
@@ -205,7 +203,6 @@ export default function Today() {
       done: loggedToday,
       go: () => router.navigate('/(app)/log'),
       sub: 'One line a day: an urge ridden, a moment kept, a rough day named.',
-      why: 'The log is evidence. On a hard day you will argue with your own memory about how far you have come, and the record wins that argument.',
       cta: 'Open the log',
       weekDone: dayHas((k) => eventDays.has(k)),
       glyph: <StepGlyph kind="log" />,
