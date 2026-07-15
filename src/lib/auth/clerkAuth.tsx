@@ -72,7 +72,7 @@ export function useClerkAuth(): AuthValue {
             pendingStage.current = 'second';
             return { ok: false, needsVerification: true };
           }
-          return { ok: false, error: 'This account has two-factor auth (authenticator app) enabled — sign in on the web to manage it.' };
+          return { ok: false, error: 'This account has two-factor auth (authenticator app) enabled. Sign in on the web to manage it.' };
         }
         return { ok: false, error: `Sign-in needs another step (${res.status ?? 'unknown'}). Check your Clerk configuration.` };
       } catch (err) {

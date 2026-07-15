@@ -42,13 +42,13 @@ export default function WeeklyReport() {
     return (
       <Screen contentStyle={{ paddingTop: spacing.md }}>
         <StatusBar style="dark" />
-        <ScreenHeader eyebrow="Weekly report" title="This week" pad={0} onBack={back} />
+        <ScreenHeader title="This week" pad={0} onBack={back} />
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 120 }}>
           <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, lineHeight: 29, color: colors.text, maxWidth: 250 }}>
             Your first week is still being written.
           </AppText>
           <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: colors.textMuted, marginTop: 12, maxWidth: 260 }]}>
-            Keep checking in — once a full week closes, its report lands here.
+            Keep checking in. Once a full week closes, its report lands here.
           </AppText>
         </View>
       </Screen>
@@ -74,13 +74,13 @@ export default function WeeklyReport() {
     report.lateNightUrges > 0
       ? {
           title: 'Protect your wind-down.',
-          body: `${report.lateNightUrges} of this week’s urges came after 10pm — the late window is where the week leans.`,
+          body: `${report.lateNightUrges} of this week’s urges came after 10pm. The late window is where the week leans.`,
         }
       : report.relapses > 0
-        ? { title: 'Never fail twice.', body: 'One slip this week. The next choice is the one that counts — water, daylight, one lesson.' }
+        ? { title: 'Never fail twice.', body: 'One slip this week. The next choice is the one that counts: water, daylight, one lesson.' }
         : report.checkins < 5
-          ? { title: 'Keep the check-ins daily.', body: 'The heatmap only reads as well as it’s fed — twenty seconds a day is enough.' }
-          : { title: 'Hold the line.', body: 'The week held. Same anchors next week — nothing new to add.' };
+          ? { title: 'Keep the check-ins daily.', body: 'The heatmap only reads as well as it’s fed. Twenty seconds a day is enough.' }
+          : { title: 'Hold the line.', body: 'The week held. Same anchors next week, nothing new to add.' };
 
   const dUrges = report.urges - report.urgesLast;
   const dRelapses = report.relapses - report.relapsesLast;
@@ -89,7 +89,6 @@ export default function WeeklyReport() {
     <Screen contentStyle={{ paddingTop: spacing.md }}>
       <StatusBar style="dark" />
       <ScreenHeader
-        eyebrow="Weekly report"
         title="This week"
         pad={0}
         onBack={back}

@@ -27,7 +27,6 @@ export default function Journal() {
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.md }}>
       <ScreenHeader
         hue={150}
-        eyebrow="Your practice"
         title="Journal"
         pad={0}
         trailing={

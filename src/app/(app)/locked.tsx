@@ -46,7 +46,7 @@ export default function Locked() {
   const router = useRouter();
   return (
     <Screen contentStyle={{ paddingTop: 8, flexGrow: 1 }}>
-      <ScreenHeader eyebrow="Curriculum" title="Weeks" pad={0} onBack={() => (router.canGoBack() ? router.back() : router.replace('/(app)/weeks'))} />
+      <ScreenHeader title="Weeks" pad={0} onBack={() => (router.canGoBack() ? router.back() : router.replace('/(app)/weeks'))} />
 
       {/* week 1 — walked */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingTop: 18, paddingBottom: 18 }}>

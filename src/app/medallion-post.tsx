@@ -58,7 +58,7 @@ export default function MedallionPost() {
     await createJournalEntry({
       tag: 'Letter',
       title: 'VICI Post · Back on deck',
-      body: `Dear ${name || 'friend'},\n\nLast night an urge rose, crested, and left without you. And this morning you opened the app anyway — logged it, stayed. Most men vanish for a week after a night like that. You came back.\n\nBack on deck — earned.\n\nThe return is the strongest predictor there is — stronger than any count. So this one isn't for resisting. It's for coming back.\n\n— VICI Post`,
+      body: `Dear ${name || 'friend'},\n\nLast night an urge rose, crested, and left without you. This morning you opened the app anyway, logged it, stayed. Most men vanish for a week after a night like that. You came back.\n\nBack on deck. Earned.\n\nThe return predicts more than any count. So this one isn't for resisting. It's for coming back.\n\n— VICI Post`,
     }).catch(() => {});
     setPhase('kept');
   }
@@ -167,7 +167,7 @@ export default function MedallionPost() {
               Dear {name || 'friend'},
             </AppText>
             <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 18, lineHeight: 30, color: LT_INK, marginBottom: 18 }}>
-              Last night an urge rose, crested, and left without you. And this morning you opened the app anyway — logged it, stayed. Most men
+              Last night an urge rose, crested, and left without you. This morning you opened the app anyway, logged it, stayed. Most men
               vanish for a week after a night like that. You came back.
             </AppText>
             {/* the medallion, presented */}
@@ -179,7 +179,7 @@ export default function MedallionPost() {
               </View>
             </View>
             <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 18, lineHeight: 30, color: LT_INK, marginBottom: 18 }}>
-              The return is the strongest predictor there is — stronger than any count. So this one isn’t for resisting. It’s for coming back.
+              The return predicts more than any count. So this one isn’t for resisting. It’s for coming back.
             </AppText>
             <View style={{ marginTop: 2, gap: 3 }}>
               <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 21, color: LT_DARK }}>— VICI Post</AppText>
@@ -188,7 +188,7 @@ export default function MedallionPost() {
               </Svg>
             </View>
             <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 14.5, lineHeight: 22, color: 'rgba(59,59,51,0.62)', marginTop: 22 }}>
-              P.S. — something is enclosed with this one. It keeps for seven days.
+              P.S. Something is enclosed with this one. It keeps for seven days.
             </AppText>
           </ScrollView>
           <View style={{ paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 }}>
@@ -229,7 +229,7 @@ export default function MedallionPost() {
             <AppText style={[sans('400'), { fontSize: 12.5, color: 'rgba(245,244,241,0.62)', marginTop: 8 }]}>$2.25 a month · billed once</AppText>
             <View style={{ alignSelf: 'stretch', height: 1, backgroundColor: 'rgba(245,244,241,0.14)', marginVertical: 20 }} />
             <AppText center style={[sans('400'), { fontSize: 13, lineHeight: 20, color: 'rgba(245,244,241,0.62)', marginHorizontal: 8 }]}>
-              A quiet thank-you for coming back. Good for VII days, then it expires on its own — no timer chasing you.
+              A quiet thank-you for coming back. Good for VII days, then it expires on its own. No timer chasing you.
             </AppText>
             <Pressable
               onPress={() => void claim()}
@@ -243,10 +243,10 @@ export default function MedallionPost() {
                 marginTop: 20,
                 transform: [{ scale: pressed ? 0.97 : 1 }],
               })}>
-              <AppText style={[sans('600'), { fontSize: 15.5, letterSpacing: 0.31, color: '#131313' }]}>Claim the year — $26.99</AppText>
+              <AppText style={[sans('600'), { fontSize: 15.5, letterSpacing: 0.31, color: '#131313' }]}>Claim the year · $26.99</AppText>
             </Pressable>
             <Pressable onPress={() => void keep()} style={{ paddingTop: 14, paddingHorizontal: 6 }}>
-              <AppText style={[sans('500'), { fontSize: 13.5, color: 'rgba(245,244,241,0.62)' }]}>Maybe later — it keeps</AppText>
+              <AppText style={[sans('500'), { fontSize: 13.5, color: 'rgba(245,244,241,0.62)' }]}>Maybe later</AppText>
             </Pressable>
           </View>
         </View>
@@ -263,7 +263,7 @@ export default function MedallionPost() {
                 </Svg>
               </View>
               <AppText style={[sans('500'), { fontSize: 14, color: colors.text }]}>
-                {phase === 'claimed' ? 'The year is yours — Plus unlocked' : phase === 'kept' ? 'Tucked into your Log' : "It'll be there if you need it"}
+                {phase === 'claimed' ? 'The year is yours. Plus unlocked' : phase === 'kept' ? 'Tucked into your Log' : "It'll be there if you need it"}
               </AppText>
             </View>
           </View>

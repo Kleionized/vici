@@ -61,7 +61,7 @@ export function RDPage({
   headline,
   sub,
   small,
-  cta = 'Done — next',
+  cta = 'Done · next',
   onNext,
   ghost,
   hSize = 30,

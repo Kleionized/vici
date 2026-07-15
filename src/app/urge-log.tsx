@@ -142,7 +142,7 @@ export default function UrgeLog() {
 
       {step === 2 ? (
         <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading sub="No wrong answer — just the truth.">What did you do?</Heading>
+          <Heading sub="Just the truth.">What did you do?</Heading>
           <View style={{ flex: 1, justifyContent: 'center', gap: 10, marginTop: 12 }}>
             {OUTCOMES.map((o, i) => {
               const on = outcome === i;

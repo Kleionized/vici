@@ -120,7 +120,7 @@ export function MoodLogger({ visible, initialMood, initialEmotions, initialReaso
 
               {step === 1 ? (
                 <View style={{ gap: spacing.lg }}>
-                  <AppText variant="muted">Pick any that fit — there’s no wrong answer.</AppText>
+                  <AppText variant="muted">Pick any that fit.</AppText>
                   <Chips options={EMOTIONS[valence]} selected={emotions} onToggle={(v) => toggle(emotions, setEmotions, v)} />
                 </View>
               ) : null}

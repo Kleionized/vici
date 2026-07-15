@@ -25,7 +25,7 @@ export default function Reminders() {
       <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ paddingTop: spacing.sm }}>
-          <ScreenHeader hue={285} eyebrow="Settings" title="Reminders" onBack={back} />
+          <ScreenHeader hue={285} title="Reminders" onBack={back} />
         </View>
 
         <ScrollView contentContainerStyle={{ paddingBottom: spacing.xl }} showsVerticalScrollIndicator={false}>
@@ -34,7 +34,7 @@ export default function Reminders() {
             <SettingsRow glyph="clock" title="Time" detail={s?.reminderTime || '8:00 AM'} last />
           </SettingsGroup>
 
-          <SettingsGroup header="Smart nudges" footer="VICI learns when your urges tend to spike and sends quiet support a little before — never more than twice a day.">
+          <SettingsGroup header="Smart nudges" footer="VICI learns when your urges tend to spike and sends quiet support a little before. Never more than twice a day.">
             <SettingsRow glyph="wave" title="Risk-time support" toggle={toggle('riskTimeSupport', true)} />
             <SettingsRow glyph="moon" title="Evening wind-down" toggle={toggle('eveningWindDown', true)} />
             <SettingsRow glyph="spark" title="Weekly reflection" toggle={toggle('weeklyReflection', false)} last />

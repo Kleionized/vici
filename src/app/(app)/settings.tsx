@@ -29,7 +29,6 @@ export default function Settings() {
   return (
     <Screen contentStyle={{ paddingTop: spacing.sm }}>
       <ScreenHeader
-        eyebrow="You"
         title="Settings"
         pad={0}
         onBack={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
@@ -74,7 +73,7 @@ export default function Settings() {
         <SettingsRow glyph="heart" title="Your Life Map" last onPress={() => router.push('/lifemap')} />
       </SettingsGroup>
 
-      <SettingsGroup header="Support" footer="A days number is optional and secondary — a lapse never resets it as a failure.">
+      <SettingsGroup header="Support" footer="A days number is optional and secondary. A lapse never resets it as a failure.">
         <SettingsRow glyph="compass" title="Find support" last onPress={() => router.push('/(app)/support')} />
       </SettingsGroup>
 

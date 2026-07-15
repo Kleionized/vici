@@ -32,9 +32,9 @@ function checkoutFor(plan: PlanKey) {
   in1y.setFullYear(in1y.getFullYear() + 1);
   const in1m = new Date(now);
   in1m.setMonth(in1m.getMonth() + 1);
-  if (plan === 'trial') return { app: 'VICI Plus — Yearly', trial: `3 days free, then $39.99/year`, due: '$0.00', note: `$39.99 on ${fmtDate(in3)} · cancel anytime` };
-  if (plan === 'month') return { app: 'VICI Plus — Monthly', trial: null, due: '$12.99', note: `Renews ${fmtDate(in1m)} · cancel anytime` };
-  return { app: 'VICI Plus — Yearly', trial: null, due: '$39.99', note: `Renews ${fmtDate(in1y)} · cancel anytime` };
+  if (plan === 'trial') return { app: 'VICI Plus · Yearly', trial: `3 days free, then $39.99/year`, due: '$0.00', note: `$39.99 on ${fmtDate(in3)} · cancel anytime` };
+  if (plan === 'month') return { app: 'VICI Plus · Monthly', trial: null, due: '$12.99', note: `Renews ${fmtDate(in1m)} · cancel anytime` };
+  return { app: 'VICI Plus · Yearly', trial: null, due: '$39.99', note: `Renews ${fmtDate(in1y)} · cancel anytime` };
 }
 
 // ── small shared pieces ──────────────────────────────────────────────
@@ -287,9 +287,9 @@ function OfferIcon({ k, c }: { k: string; c: string }) {
   );
 }
 const PW_OFFER: [string, string][] = [
-  ['today', 'Today — everything unlocks'],
-  ['day2', 'Day 2 — a reminder, before any charge'],
-  ['day3', 'Day 3 — $39.99/year begins, unless you cancel'],
+  ['today', 'Today · everything unlocks'],
+  ['day2', 'Day 2 · a reminder before any charge'],
+  ['day3', 'Day 3 · $39.99/year begins unless you cancel'],
 ];
 
 function PwTrialOffer({ onStart, onNo, embedded }: { onStart: () => void; onNo: () => void; embedded?: boolean }) {

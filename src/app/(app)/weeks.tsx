@@ -64,14 +64,11 @@ export default function Weeks() {
   return (
     <Screen contentStyle={{ paddingTop: spacing.md }}>
       {/* header */}
-      <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft, marginTop: 8 }]}>
-        Your journey
-      </AppText>
       <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 34, letterSpacing: 0.34, color: colors.text, marginTop: 8 }}>
         The campaign
       </AppText>
       <AppText style={[sans('400'), { fontSize: 14.5, lineHeight: 22, color: colors.textMuted, marginTop: 10, maxWidth: 300 }]}>
-        Ten grounds between the landing and the triumph. Taken at your pace — and kept.
+        Ten grounds between the landing and the triumph, taken at your pace.
       </AppText>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 16, marginBottom: 26 }}>
         <View style={{ flex: 1, height: 4.5, borderRadius: 9999, backgroundColor: colors.borderStrong, overflow: 'hidden' }}>

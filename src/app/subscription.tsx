@@ -29,7 +29,7 @@ export default function Subscription() {
   return (
     <Screen contentStyle={{ paddingTop: 8, flexGrow: 1 }}>
       <StatusBar style="dark" />
-      <ScreenHeader eyebrow="Account" title="Subscription" pad={0} onBack={back} />
+      <ScreenHeader title="Subscription" pad={0} onBack={back} />
 
       {/* membership — unboxed monument */}
       <View style={{ paddingTop: 4, marginBottom: 30 }}>

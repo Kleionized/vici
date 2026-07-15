@@ -35,12 +35,12 @@ const PLACES: [string, string][] = [
 ];
 
 const PLACE_MOVE: Record<string, { headline: string; sub: string; cta: string }> = {
-  bed: { headline: 'Get out of bed', sub: 'Feet on the floor, lights on. The urge lives in the warm dark — stand up and walk to another room.', cta: "I'm up" },
+  bed: { headline: 'Get out of bed', sub: 'Feet on the floor, lights on. The urge lives in the warm dark. Stand up and walk to another room.', cta: "I'm up" },
   couch: { headline: 'Stand up off the couch', sub: 'Put the phone on the far side of the room and walk to the kitchen. Change what your hands are holding.', cta: "I'm up" },
   bathroom: { headline: 'Step out of the bathroom', sub: 'Cold water on your face, door open, out. Don’t linger where it’s easiest to hide.', cta: "I've stepped out" },
-  desk: { headline: 'Push back from the desk', sub: 'Close the tabs, stand, and walk to a window. The work will keep for five minutes — the scene won’t.', cta: "I've moved" },
-  outside: { headline: 'Keep moving', sub: 'Pick a point ahead and walk to it. New street, new input — don’t stop where the pull started.', cta: "I'm moving" },
-  elsewhere: { headline: 'Change the room you’re in', sub: 'Any room will do. The urge is attached to the scene — break the scene.', cta: "I've moved" },
+  desk: { headline: 'Push back from the desk', sub: 'Close the tabs, stand, and walk to a window. The work will keep for five minutes. The scene won’t.', cta: "I've moved" },
+  outside: { headline: 'Keep moving', sub: 'Pick a point ahead and walk to it. New street, new input. Don’t stop where the pull started.', cta: "I'm moving" },
+  elsewhere: { headline: 'Change the room you’re in', sub: 'Any room will do. The urge is attached to the scene, so break the scene.', cta: "I've moved" },
 };
 
 const STRENGTHS: [string, string, number][] = [
@@ -437,7 +437,7 @@ function SurfScreen({ onBack, onDone }: { onBack: () => void; onDone: () => void
         </View>
         <View style={{ flex: 1 }} />
         <View style={{ paddingHorizontal: 29, paddingBottom: 12 }}>
-          <PillButton label="It passed — I'm through it" onPress={onDone} light />
+          <PillButton label="It passed" onPress={onDone} light />
         </View>
       </SafeAreaView>
     </View>
@@ -464,7 +464,7 @@ function DoneScreen({ onClose }: { onClose: () => void }) {
             You rode it out.
           </AppText>
           <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: 'rgba(245,244,241,0.72)', marginTop: 14 }]}>
-            It rose, crested, and passed — and you were still here.
+            It rose, crested, and passed. You were still here.
           </AppText>
         </View>
         <View style={{ flex: 1 }} />
@@ -541,7 +541,7 @@ export default function Urge() {
           {...common}
           img={require('../../assets/images/urge-waves.webp')}
           headline="It always passes"
-          sub={"Usually within minutes — often less.\nYou don't have to fight it."}
+          sub={"Usually within minutes, often less.\nYou don't have to fight it."}
           cta="Continue"
         />
       ) : null}

@@ -22,7 +22,6 @@ export function BackChevron({ onPress, color = colors.text }: { onPress: () => v
 }
 
 export function ScreenHeader({
-  eyebrow,
   title,
   sub,
   hue: _hue,
@@ -30,7 +29,6 @@ export function ScreenHeader({
   trailing,
   pad = spacing.xl,
 }: {
-  eyebrow?: string;
   title: string;
   sub?: string;
   hue?: number;
@@ -43,13 +41,6 @@ export function ScreenHeader({
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 30, marginBottom: 14 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexShrink: 1 }}>
           {onBack ? <BackChevron onPress={onBack} /> : null}
-          {eyebrow ? (
-            <AppText
-              color={colors.textSoft}
-              style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase' }]}>
-              {eyebrow}
-            </AppText>
-          ) : null}
         </View>
         {trailing ?? null}
       </View>

@@ -41,7 +41,7 @@ export default function RoughDays() {
             Rough days
           </AppText>
           <AppText style={[sans('400'), { fontSize: 14.5, lineHeight: 22, color: colors.textMuted, marginTop: 10 }]}>
-            Open the page that matches your moment. One move at a time — no reading ahead.
+            Open the page that matches your moment. One move at a time, no reading ahead.
           </AppText>
 
           {/* the universal interrupt — always first, always one tap away */}

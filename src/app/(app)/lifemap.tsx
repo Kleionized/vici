@@ -121,7 +121,7 @@ export default function LifeMapScreen() {
         </View>
       </View>
 
-      <Button label={saved ? 'Saved — update' : 'Save Life Map'} onPress={save} loading={saving} />
+      <Button label={saved ? 'Saved · update' : 'Save Life Map'} onPress={save} loading={saving} />
     </Screen>
   );
 }

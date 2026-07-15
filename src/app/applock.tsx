@@ -24,7 +24,7 @@ export default function AppLock() {
       <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ paddingTop: spacing.sm }}>
-          <ScreenHeader hue={200} eyebrow="Security" title="App lock" onBack={back} />
+          <ScreenHeader hue={200} title="App lock" onBack={back} />
         </View>
 
         <ScrollView contentContainerStyle={{ paddingBottom: spacing.xl }} showsVerticalScrollIndicator={false}>

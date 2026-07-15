@@ -139,7 +139,7 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       // Mock auth never needs verification and has no SSO, so these are no-ops.
       verifySignInCode: async () => ({ ok: true }),
       resendSignInCode: async () => ({ ok: true }),
-      signInWithSSO: async () => ({ ok: false, error: 'Apple & Google sign-in need the online build — use email for now.' }),
+      signInWithSSO: async () => ({ ok: false, error: 'Apple & Google sign-in need the online build. Use email for now.' }),
       verifyEmailCode: async () => ({ ok: true }),
       resendEmailCode: async () => ({ ok: true }),
       signOut,

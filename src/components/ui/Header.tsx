@@ -6,8 +6,6 @@ import { AppText } from './AppText';
 
 export interface HeaderProps {
   title: string;
-  /** Small uppercase label above the title. */
-  eyebrow?: string;
   subtitle?: string;
   /** Optional right-aligned action (rendered as tappable text). */
   actionLabel?: string;
@@ -16,12 +14,11 @@ export interface HeaderProps {
   right?: ReactNode;
 }
 
-export function Header({ title, eyebrow, subtitle, actionLabel, onAction, right }: HeaderProps) {
+export function Header({ title, subtitle, actionLabel, onAction, right }: HeaderProps) {
   return (
     <View style={{ gap: spacing.sm, marginBottom: spacing.lg }}>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: spacing.md }}>
         <View style={{ gap: spacing.xs, flexShrink: 1 }}>
-          {eyebrow ? <AppText variant="label">{eyebrow}</AppText> : null}
           <AppText variant="display" style={{ flexShrink: 1 }}>
             {title}
           </AppText>

@@ -71,13 +71,6 @@ export default function Log() {
 
   return (
     <Screen scroll={false} contentStyle={{ paddingTop: spacing.md }}>
-      {/* top: centred eyebrow */}
-      <View style={{ alignItems: 'center' }}>
-        <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft }]}>
-          Your log
-        </AppText>
-      </View>
-
       <View style={{ alignItems: 'center', marginTop: 28 }}>
         <AppText center style={{ fontFamily: fonts.serif, fontSize: 30, lineHeight: 34, letterSpacing: 0.3, color: colors.text }}>
           What are you logging?
@@ -238,9 +231,9 @@ function MomentComposer({ onExit, onDone }: { onExit: () => void; onDone: () => 
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.md, gap: spacing.lg }}>
-      <FlowTop eyebrow="A moment" onBack={onExit} />
+      <FlowTop onBack={onExit} />
       <AppText style={{ fontFamily: fonts.serif, fontSize: 28, lineHeight: 32, letterSpacing: 0.22, color: colors.text }}>
-        Worth remembering.
+        Note the moment.
       </AppText>
 
       <View style={{ gap: spacing.sm }}>
@@ -284,19 +277,15 @@ function MomentComposer({ onExit, onDone }: { onExit: () => void; onDone: () => 
   );
 }
 
-// ── flow header: back chevron + centred eyebrow ──────────────────────
-function FlowTop({ eyebrow, onBack }: { eyebrow: string; onBack: () => void }) {
+// ── flow header: just the back chevron ───────────────────────────────
+function FlowTop({ onBack }: { onBack: () => void }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 30 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', minHeight: 30 }}>
       <Pressable onPress={onBack} hitSlop={10} accessibilityLabel="Back" style={{ width: 30 }}>
         <Svg width={12} height={20} viewBox="0 0 13 22">
           <Path d="M11 2L2 11l9 9" stroke={colors.text} strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </Svg>
       </Pressable>
-      <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft }]}>
-        {eyebrow}
-      </AppText>
-      <View style={{ width: 30 }} />
     </View>
   );
 }
@@ -332,7 +321,7 @@ function History({ onBack }: { onBack: () => void }) {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.md, gap: spacing.md }}>
-      <FlowTop eyebrow="History" onBack={onBack} />
+      <FlowTop onBack={onBack} />
       <AppText style={{ fontFamily: fonts.serif, fontSize: 28, lineHeight: 32, letterSpacing: 0.22, color: colors.text, marginBottom: spacing.sm }}>
         Your log, kept.
       </AppText>

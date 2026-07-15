@@ -24,7 +24,7 @@ export default function RoughFirst90() {
   const back = i > 0 ? () => setI(i - 1) : null;
 
   const stepPage = (s: { h: string; s: string }, n: number) => (
-    <RDPage label={`Move ${n} of 6`} headline={s.h} sub={s.s} cta={n === 6 ? 'Done' : 'Done — next'} onNext={next} />
+    <RDPage label={`Move ${n} of 6`} headline={s.h} sub={s.s} cta={n === 6 ? 'Done' : 'Done · next'} onNext={next} />
   );
 
   return (

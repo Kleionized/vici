@@ -29,7 +29,6 @@ export default function Support() {
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.lg }}>
       <Header
-        eyebrow="Support"
         title="You're not alone in this."
         subtitle="VICI is a self-help tool, not medical advice or a crisis service. If you're in danger or thinking about harming yourself, please reach out to a real person now."
       />

@@ -266,7 +266,7 @@ function O3Icon({ label, c }: { label: string; c: string }) {
       return wrap(<P d="M12 3.8c3.4 4.2 5.6 7.2 5.6 10a5.6 5.6 0 1 1-11.2 0c0-2.8 2.2-5.8 5.6-10z" />);
     case 'Anger or frustration':
       return wrap(<P d="M6 6l12 12M18 6 6 18" />);
-    case 'Numbness — feeling nothing':
+    case 'Numbness, feeling nothing':
       return wrap(<Circle cx={12} cy={12} r={8} stroke={c} strokeWidth={1.8} strokeDasharray="3.4 4.4" />);
     case 'Mostly automatic, just habit':
       return wrap(<><P d="M17.5 8.5A6.5 6.5 0 1 0 18.5 12" /><P d="M18.8 4.6v4h-4" /></>);
@@ -609,11 +609,11 @@ export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: 
   // Section 1 · Where you're starting
   ['freq', { kind: 'scale', title: 'How often are you using porn right now?', options: ['Several times a day', 'About once a day', 'A few times a week', 'About once a week', 'A few times a month', 'Less than once a month'] }],
   ['duration', { kind: 'scale', title: 'How long have you wanted to change this?', options: ['Less than a year', '1–3 years', '4–10 years', 'More than 10 years', 'I can’t remember a time without it'] }],
-  ['control', { title: 'How much control do you feel over it right now?', options: ['I feel powerless over it', 'I resist, but usually give in', 'I win about half the time', 'Mostly in control — but I want to be free of it'] }],
-  ['pattern', { title: 'Which of these sounds most like your pattern?', options: ['A quick habit I barely think about', 'A way I unwind, numb out, or escape', 'Something I binge on for hours', 'Escalating — I look for more, or more extreme', 'It comes in waves — intense, then quiet'] }],
+  ['control', { title: 'How much control do you feel over it right now?', options: ['I feel powerless over it', 'I resist, but usually give in', 'I win about half the time', 'Mostly in control, but I want to be free of it'] }],
+  ['pattern', { title: 'Which of these sounds most like your pattern?', options: ['A quick habit I barely think about', 'A way I unwind, numb out, or escape', 'Something I binge on for hours', 'Escalating: I look for more, or more extreme', 'It comes in waves: intense, then quiet'] }],
   // Section 2 · When & why it happens
   ['triggers', { kind: 'grid', title: 'When are you most likely to slip?', multi: true, options: ['Late at night', 'First thing in the morning', 'Bored during the day', 'After stress or a hard day', 'When I can’t sleep', 'Weekends or days off', 'When I’ve been drinking', 'Home alone for long stretches', 'On my phone in bed'] }],
-  ['emotions', { kind: 'grid', title: 'What feeling is most often underneath it?', multi: true, options: ['Loneliness', 'Anxiety or stress', 'Boredom', 'Sadness or low mood', 'Anger or frustration', 'Numbness — feeling nothing', 'Mostly automatic, just habit', 'Genuine desire or arousal'] }],
+  ['emotions', { kind: 'grid', title: 'What feeling is most often underneath it?', multi: true, options: ['Loneliness', 'Anxiety or stress', 'Boredom', 'Sadness or low mood', 'Anger or frustration', 'Numbness, feeling nothing', 'Mostly automatic, just habit', 'Genuine desire or arousal'] }],
   ['places', { kind: 'grid', title: 'Where does it usually happen?', multi: true, options: ['Bedroom', 'Bathroom', 'Home office or desk', 'Living room', 'On my phone, anywhere', 'Away from home'] }],
   // Section 3 · How you've been feeling lately
   ['energy', { kind: 'scale', title: 'How are your energy and drive most days?', options: ['Running on empty most of the time', 'Low more often than not', 'Up and down', 'Generally good'] }],
@@ -623,15 +623,15 @@ export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: 
   ['age', { kind: 'wrap', title: 'Your age range.', options: ['Under 18', '18–24', '25–34', '35–44', '45 or older'] }],
   ['relationship', { title: 'Relationship status.', options: ['Single', 'Dating or in a relationship', 'Married or living together', 'It’s complicated'] }],
   ['alone', { title: 'Do you have a lot of unstructured time alone?', options: ['Yes, most days', 'Sometimes', 'Rarely'] }],
-  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: ['Yes — it’s central for me', 'Somewhat', 'No — my reasons are practical', 'Prefer not to say'] }],
+  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: ['Yes, it’s central for me', 'Somewhat', 'No, my reasons are practical', 'Prefer not to say'] }],
   // Section 5 · What you want
-  ['goalPorn', { title: 'What’s your goal with porn?', options: ['Quit it completely', 'Cut it down a lot', 'Keep it to a level I set', 'Not sure yet — exploring'], note: 'Porn and masturbation are two separate choices.' }],
-  ['goalMast', { title: 'And masturbation?', options: ['Stop too — a full reset', 'Keep it, just without porn', 'Cut it down', 'Not trying to change that'] }],
+  ['goalPorn', { title: 'What’s your goal with porn?', options: ['Quit it completely', 'Cut it down a lot', 'Keep it to a level I set', 'Not sure yet, exploring'], note: 'Porn and masturbation are two separate choices.' }],
+  ['goalMast', { title: 'And masturbation?', options: ['Stop too, a full reset', 'Keep it, just without porn', 'Cut it down', 'Not trying to change that'] }],
   ['tried', { kind: 'grid', title: 'What have you already tried?', multi: true, options: ['Blockers or filters', 'Going cold turkey', 'An accountability partner', 'Deleting accounts or apps', 'Therapy or counselling', 'Replacing it with other habits', 'Nothing structured yet'] }],
-  ['readiness', { kind: 'scale', title: 'How ready do you feel to change right now?', options: ['Just exploring', 'Thinking about it', 'Ready to start', 'Already started — I want structure'] }],
+  ['readiness', { kind: 'scale', title: 'How ready do you feel to change right now?', options: ['Just exploring', 'Thinking about it', 'Ready to start', 'Already started, I want structure'] }],
   // Section 6 · How the plan runs
   ['load', { title: 'How much do you want to do each day?', options: ['One small lesson', 'A lesson plus a task', 'As much as I can', 'Just the bad-day tools for now'] }],
-  ['checkins', { kind: 'wrap', title: 'When should we check in with you?', multi: true, ctaLabel: 'Set reminders', options: ['Morning', 'Midday', 'Evening', 'Late night — my danger zone', 'No reminders'] }],
+  ['checkins', { kind: 'wrap', title: 'When should we check in with you?', multi: true, ctaLabel: 'Set reminders', options: ['Morning', 'Midday', 'Evening', 'Late night, my danger zone', 'No reminders'] }],
   // A quick wellbeing check
   ['impact', { kind: 'scale', title: 'Is this affecting your sleep, work, relationships, or money?', options: ['Not really', 'A little', 'Quite a bit', 'A lot'], note: 'Not a test, not a diagnosis. Nobody sees this but you.' }],
   ['coping', { title: 'Are you mainly using porn to cope with something heavy right now?', options: ['No', 'Maybe', 'Yes'] }],
@@ -683,7 +683,7 @@ export function O3Streaks({ answers, next }: { answers: Record<string, string | 
   const fences = tried.slice(0, 2).map((t) => t.toLowerCase()).join(' and ');
   const caption = fences
     ? `You’ve run this with ${fences} — each climb comes back shorter, and the zero erases all of it.`
-    : 'Each climb starts strong and ends at zero — and every climb comes back shorter.';
+    : 'Each climb starts strong and ends at zero, and every climb comes back shorter.';
   return (
     <>
       <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
@@ -704,7 +704,7 @@ export function O3Streaks({ answers, next }: { answers: Record<string, string | 
 // is ready (full-screen; owns its own background, like the wave). ──────
 export function O3ReadingPause({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
   const t = (answers.triggers as string[]) || [];
-  const l1 = t.length ? `${t.slice(0, 2).map((x) => x.toLowerCase()).join(', ')} — mostly.` : 'The pattern, plainly.';
+  const l1 = t.length ? `${t.slice(0, 2).map((x) => x.toLowerCase()).join(', ')}, mostly.` : 'The pattern, plainly.';
   const durMap: Record<string, string> = { 'Less than a year': 'Under a year', '1–3 years': 'A few years', '4–10 years': 'Most of a decade', 'More than 10 years': 'Over a decade', 'I can’t remember a time without it': 'Most of a life' };
   const tried = ((answers.tried as string[]) || []).filter((x) => x !== 'Nothing structured yet').length;
   const att = tried >= 3 ? 'three ways already tried' : tried > 0 ? 'real attempts behind you' : 'a first structured attempt';
@@ -712,7 +712,7 @@ export function O3ReadingPause({ answers, next }: { answers: Record<string, stri
 
   // what the engine pinned — the plan chips that tick in while it builds
   const chips: string[] = [];
-  chips.push(({ 'Quit it completely': 'Full-stop track', 'Cut it down a lot': 'Reduction track', 'Keep it to a level I set': 'Reduction track', 'Not sure yet — exploring': 'Exploration track' } as Record<string, string>)[answers.goalPorn as string] || 'Full-stop track');
+  chips.push(({ 'Quit it completely': 'Full-stop track', 'Cut it down a lot': 'Reduction track', 'Keep it to a level I set': 'Reduction track', 'Not sure yet, exploring': 'Exploration track' } as Record<string, string>)[answers.goalPorn as string] || 'Full-stop track');
   const t0 = ((answers.triggers as string[]) || [])[0];
   chips.push(t0 ? `${t0} — window guarded` : 'Check-in windows set');
   const e0 = ((answers.emotions as string[]) || [])[0];
@@ -817,7 +817,7 @@ const O3_ISSUE: Record<string, { kind: 'feel' | 'auto'; word: string }> = {
   'Boredom': { kind: 'feel', word: 'boredom' },
   'Sadness or low mood': { kind: 'feel', word: 'low mood' },
   'Anger or frustration': { kind: 'feel', word: 'frustration' },
-  'Numbness — feeling nothing': { kind: 'feel', word: 'numbness' },
+  'Numbness, feeling nothing': { kind: 'feel', word: 'numbness' },
   'Mostly automatic, just habit': { kind: 'auto', word: 'autopilot' },
   'Genuine desire or arousal': { kind: 'auto', word: 'wiring' },
 };
@@ -842,7 +842,7 @@ export function O3Root({ answers, next }: { answers: Record<string, string | str
     ? `Porn isn’t the problem${name ? `, ${name}` : ''}. It’s your anesthetic for ${issue.word}.`
     : `Porn isn’t a decision${name ? `, ${name}` : ''}. It’s a loop on autopilot.`;
   const stations = feel
-    ? [`the ${issue.word} rises`, 'the escape', 'minutes of relief', 'back — deeper']
+    ? [`the ${issue.word} rises`, 'the escape', 'minutes of relief', 'back, deeper']
     : ['the cue', 'autopilot', 'the release', 'the groove deepens'];
   const caption = feel
     ? `${orCap(when)} — the ${issue.word} rises, relief lasts minutes, and the loop turns again.`
@@ -1029,12 +1029,12 @@ export function O3CostPage({ answers, next, h }: { answers: Record<string, strin
   const caption = [
     m === 7
       ? times > 7
-        ? 'Every one of the next seven days goes dark — some more than once.'
+        ? 'Every one of the next seven days goes dark, some more than once.'
         : 'Every one of the next seven days goes dark.'
       : m === 0
-        ? 'A quiet week is likely — the month tells more.'
+        ? 'A quiet week is likely. The month tells more.'
         : `${m} of the next seven days go dark.`,
-    `${m === 30 ? 'All thirty' : m} of the next thirty days — the pace doesn’t pause on its own.`,
+    `${m === 30 ? 'All thirty' : m} of the next thirty days. The pace doesn’t pause on its own.`,
     `Fifty-two weeks side by side — ${fmtN} more times before this date next year.`,
     `Each band is a year. ${fmtN} more times in the next ten — unless the wiring changes.`,
   ][h];
@@ -1092,7 +1092,7 @@ function pattern(a: Record<string, string | string[]>) {
         ? 'on boredom'
         : 'on habit';
   const who = (a.name as string || '').trim();
-  return `${who ? who + ' — your' : 'Your'} pull runs strongest ${when}, ${drive}. That is where the campaign begins.`;
+  return `${who ? who + ', your' : 'Your'} pull runs strongest ${when}, ${drive}. That is where the campaign begins.`;
 }
 
 
@@ -1144,7 +1144,7 @@ export function O3Reading({ answers, next }: { answers: Record<string, string | 
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginTop: 14, paddingHorizontal: 4 }}>
           <AppText style={[sans('600'), { fontSize: 9.5, letterSpacing: 2, textTransform: 'uppercase', color: tone.ink3 }]}>Ten grounds · twelve weeks</AppText>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 12.5, color: tone.ink2 }}>wk I — XII</AppText>
+          <AppText style={{ fontFamily: fonts.serif, fontSize: 12.5, color: tone.ink2 }}>wk I–XII</AppText>
         </View>
       </ScrollView>
       <View style={{ paddingTop: 14 }}>
@@ -1239,7 +1239,7 @@ export function O3Wave({ next }: { next: () => void }) {
       <O3Shell bar={false} lit>
         <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
           <O3H>Before anything else, learn the one move you’ll use most.</O3H>
-          <O3Sub>A craving is a wave. It crests, and it breaks — usually inside fifteen minutes. Ride a little water now, and you will know the move for life.</O3Sub>
+          <O3Sub>A craving is a wave. It crests and it breaks, usually inside fifteen minutes. Ride a little water now, and you will know the move for life.</O3Sub>
           <View style={{ marginTop: 30, alignItems: 'center' }}>
             <Svg width={200} height={64} viewBox="0 0 200 64" fill="none">
               <Path d="M8 44 C 40 20 62 20 92 34 S 152 56 192 26" stroke={colors.text} strokeWidth={2.4} strokeLinecap="round" />
@@ -1355,7 +1355,7 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
         </View>
       </ScrollView>
       <View style={{ paddingTop: 14 }}>
-        <O3Note style={{ marginBottom: 12 }}>The get-back-up clause is part of the vow — a slip never voids it.</O3Note>
+        <O3Note style={{ marginBottom: 12 }}>The get-back-up clause is part of the vow. A slip never voids it.</O3Note>
         <O3CTA label="I set my mark" enabled={inked} onClick={next} />
       </View>
     </>
@@ -1387,7 +1387,7 @@ export function buildWeekXiiLetter(a: Record<string, string | string[]>): { name
       "It's week XII where I'm writing from, and the first thing to say is: we made it out.",
       `${trigLine} stopped being dangerous around week IV. The urges still came — they just got shorter, then quieter, then rare.`,
       `There was another ending — the one where it kept feeding on ${costs}, and ${emoLine} stayed in charge. I never met that man. Tonight is the fork where he and I part ways.`,
-      `Everything you circled tonight — ${prize.join(', ')} — it all came back. It's here, waiting.`,
+      `Everything you circled tonight (${prize.join(', ')}) came back. It's here, waiting.`,
     ],
   };
 }
@@ -1440,7 +1440,7 @@ export function O3DayOne({ answers, next }: { answers: Record<string, string | s
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 20 }}>
         <AppText style={[sans('600'), { fontSize: 15, letterSpacing: 4, textTransform: 'uppercase', color: tone.ink }]}>Day I</AppText>
         <View style={{ width: 40, height: 1.5, backgroundColor: tone.ink, marginTop: 12 }} />
-        <O3Sub style={{ marginTop: 26, fontSize: 15, color: tone.ink }}>Already lit — the wave you rode counts.</O3Sub>
+        <O3Sub style={{ marginTop: 26, fontSize: 15, color: tone.ink }}>Already lit. The wave you rode counts.</O3Sub>
         <O3Sub style={{ marginTop: 8 }}>Days are counted, never owed. A slip does not send you to zero.</O3Sub>
         <View style={{ marginTop: 34, backgroundColor: tone.card, borderRadius: 20, padding: 20, flexDirection: 'row', gap: 15, alignItems: 'flex-start' }}>
           <Svg width={21} height={21} viewBox="0 0 24 24" fill="none" style={{ marginTop: 2 }}>
@@ -1468,7 +1468,7 @@ export function O3Notify({ answers, next }: { answers: Record<string, string | s
     <>
       <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 40 }}>
         <O3H size={24}>Your phone will ask its own question now.</O3H>
-        <O3Sub>Allowing it turns on exactly one thing — the {time} word you just asked for. Nothing else, ever.</O3Sub>
+        <O3Sub>Allowing it turns on one thing: the {time} word you just asked for. Nothing else, ever.</O3Sub>
         <View style={{ marginTop: 28, backgroundColor: tone.card, borderRadius: 18, padding: 14, flexDirection: 'row', gap: 12, alignItems: 'flex-start', transform: [{ rotate: '-1.5deg' }] }}>
           <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: tone.fill, alignItems: 'center', justifyContent: 'center' }}>
             <Svg width={18} height={12} viewBox="0 0 34 20" fill="none">
@@ -1521,7 +1521,7 @@ export function O3Save({ next }: { next: () => void }) {
     <>
       <O3Eyebrow>Deferred, on purpose</O3Eyebrow>
       <O3H size={24} style={{ marginTop: 10 }}>Keep your campaign safe.</O3H>
-      <O3Sub style={{ marginTop: 10 }}>You now hold five things worth not losing.</O3Sub>
+      <O3Sub style={{ marginTop: 10 }}>You now hold five things to keep.</O3Sub>
       <View style={{ flex: 1, marginTop: 20 }}>
         <View style={{ backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 20 }}>
           {HOLDINGS.map(([t, s], i) => (
@@ -1579,7 +1579,7 @@ export function O3Paywall({ answers, next, onFree }: { answers: Record<string, s
         <View style={{ marginTop: 14, paddingHorizontal: 18, backgroundColor: tone.card, borderRadius: 18 }}>
           {[
             ['All ten grounds', 'the campaign past the Landing'],
-            ['Insights', prize.length ? `read off your logs — ${prize.join(', ')}` : 'read off your own logs'],
+            ['Insights', prize.length ? `read off your logs: ${prize.join(', ')}` : 'read off your own logs'],
             ['Medallions & letters', 'earned, kept, delivered'],
           ].map(([t, s], i, arr) => (
             <View key={t} style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10, paddingVertical: 11.5, borderBottomWidth: i < arr.length - 1 ? 1 : 0, borderBottomColor: tone.line }}>
@@ -1595,13 +1595,13 @@ export function O3Paywall({ answers, next, onFree }: { answers: Record<string, s
         </View>
       </ScrollView>
       <View style={{ paddingTop: 14 }}>
-        <O3CTA label={plan === 'coach' ? 'Continue — $99.99 a year' : 'Continue — $39.99 a year'} onClick={next} />
+        <O3CTA label={plan === 'coach' ? 'Continue · $99.99 a year' : 'Continue · $39.99 a year'} onClick={next} />
         <View style={{ alignItems: 'center', marginTop: 10 }}>
           <Pressable onPress={onFree} style={{ borderWidth: 1.4, borderColor: tone.soft2, borderRadius: 9999, paddingVertical: 11, paddingHorizontal: 24 }}>
             <AppText style={[sans('600'), { fontSize: 13.5, color: tone.ink }]}>Continue with the free tools</AppText>
           </Pressable>
         </View>
-        <O3Note style={{ marginTop: 11 }}>The urge tool is free forever. Price is the price — no timers, no “deals.”</O3Note>
+        <O3Note style={{ marginTop: 11 }}>The urge tool is free forever. Price is the price: no timers, no “deals.”</O3Note>
       </View>
     </>
   );

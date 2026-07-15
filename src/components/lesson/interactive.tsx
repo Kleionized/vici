@@ -41,7 +41,7 @@ export const INTERACTIVE_LESSONS: Record<string, InteractiveLessonConfig> = {
         kind: 'teach',
         headline: 'The wave never ambushes.',
         bodyLead: 'It sends scouts first',
-        body: ' — restlessness, a reach for the phone, a door quietly closed. Learn your scouts, and the wave loses its surprise.',
+        body: ': restlessness, a reach for the phone, a door quietly closed. Learn your scouts, and the wave loses its surprise.',
         cta: 'Scouts before waves',
       },
       { kind: 'pick', headline: 'Chain the day’s lesson to something you already do.' },
@@ -342,7 +342,7 @@ export function LpgCollect({ page, next }: { page: Extract<InteractivePage, { ki
           {page.headline}
         </AppText>
         <AppText center style={{ fontFamily: fonts.serifSharpItalic, fontSize: 17, lineHeight: 25.5, color: colors.textMuted, marginTop: 16, maxWidth: 290 }}>
-          “If I notice I’m ______, the wave is coming — and I go to the tools first.”
+          “If I notice I’m ______, the wave is coming, and I go to the tools first.”
         </AppText>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, justifyContent: 'center', marginTop: 26 }}>
           {page.signs.map((s) => (
@@ -353,7 +353,7 @@ export function LpgCollect({ page, next }: { page: Extract<InteractivePage, { ki
           ))}
         </View>
       </View>
-      <Cta label="Memorized — I’ll know them" onPress={next} />
+      <Cta label="Memorized" onPress={next} />
     </>
   );
 }

@@ -98,9 +98,6 @@ export default function Mail() {
                 <Path d="M11 2L2 11l9 9" stroke={colors.text} strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
               </Svg>
             </Pressable>
-            <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft }]}>
-              Your mail
-            </AppText>
           </View>
           <AppText style={{ fontFamily: fonts.serif, fontSize: 28, color: colors.text, marginTop: 14 }}>Mail</AppText>
         </View>
@@ -112,7 +109,7 @@ export default function Mail() {
               Nothing’s arrived yet.
             </AppText>
             <AppText center style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, maxWidth: 280, lineHeight: 20 }]}>
-              At the end of each week, a report lands here — and letters find you along the way.
+              A report lands here at the end of each week, and letters arrive along the way.
             </AppText>
           </View>
         ) : (

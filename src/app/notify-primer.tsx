@@ -12,9 +12,9 @@ import { colors, fonts, sans, spacing } from '@/lib/theme';
 // Discretion is the promise, so it's stated. ──
 
 const EXAMPLES: [string, string, string][] = [
-  ['Morning check-in', '8:00 AM', 'Twenty seconds — how did you sleep, and where’s your head today?'],
+  ['Morning check-in', '8:00 AM', 'Twenty seconds. How did you sleep, and where’s your head today?'],
   ['A quiet word', '10:52 PM', 'This hour is usually your hardest. One breath before the scroll.'],
-  ['Worth noticing', '6:15 PM', 'Day XXIV — you’ve ridden every wave this week.'],
+  ['A good week', '6:15 PM', 'Day XXIV. You’ve ridden every wave this week.'],
 ];
 
 export default function NotifPrimer() {
@@ -38,14 +38,11 @@ export default function NotifPrimer() {
         </View>
 
         <ScrollView contentContainerStyle={{ paddingHorizontal: spacing.xl }} showsVerticalScrollIndicator={false}>
-          <AppText center style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.textSoft, marginTop: 6, marginBottom: 12 }]}>
-            Notifications
-          </AppText>
           <AppText center style={{ fontFamily: fonts.serif, fontSize: 36, letterSpacing: 0.36, color: colors.text, marginBottom: 12 }}>
             Stay close
           </AppText>
           <AppText center variant="muted" style={{ fontSize: 14, lineHeight: 21, marginBottom: 26 }}>
-            The hardest moments rarely happen inside the app. These are the only kinds of notes we’d send — exactly as they’d arrive.
+            The hardest moments rarely happen inside the app. These are the only notes we’d send, shown exactly as they’d arrive.
           </AppText>
 
           <View style={{ gap: 10 }}>
@@ -69,7 +66,7 @@ export default function NotifPrimer() {
 
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, marginTop: 20 }}>
             <View style={{ width: 14, height: 14 }}>{Glyph.lock(colors.textSoft)}</View>
-            <AppText style={[sans('400'), { fontSize: 12.5, color: colors.textSoft }]}>Discreet by default — nothing names the habit.</AppText>
+            <AppText style={[sans('400'), { fontSize: 12.5, color: colors.textSoft }]}>Discreet by default. Nothing names the habit.</AppText>
           </View>
         </ScrollView>
 

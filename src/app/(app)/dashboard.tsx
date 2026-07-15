@@ -70,7 +70,7 @@ export default function Dashboard() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.md }}>
-      <ScreenHeader eyebrow="Insights" title="Your patterns" pad={0} trailing={<AnRangeFilter value={range} onChange={setRange} />} />
+      <ScreenHeader title="Your patterns" pad={0} trailing={<AnRangeFilter value={range} onChange={setRange} />} />
 
       {/* mood, one cell per day */}
       <View style={{ paddingTop: 4 }}>
@@ -115,7 +115,7 @@ export default function Dashboard() {
           </View>
         ) : (
           <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, marginTop: 20 }]}>
-            Log an urge and its trigger — the bars build from there.
+            Log an urge and its trigger. The bars build from there.
           </AppText>
         )}
         <AppText style={[sans('400'), { fontSize: 11.5, color: colors.textSofter, marginTop: 18 }]}>

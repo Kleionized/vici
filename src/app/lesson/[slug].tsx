@@ -374,7 +374,7 @@ function TaskView({
 
       <View style={{ gap: spacing.xs }}>
         <AppText variant="title">{lesson.reflectionPrompt}</AppText>
-        <AppText variant="muted">A small thing to carry out of this lesson — in your own words, no wrong answers.</AppText>
+        <AppText variant="muted">A small thing to carry out of this lesson, in your own words.</AppText>
       </View>
 
       {isUrge ? (
@@ -416,7 +416,7 @@ function TaskView({
 
       <View style={{ gap: spacing.sm }}>
         <SectionLabel>Did this approach fit you?</SectionLabel>
-        <AppText variant="muted">Different methods fit different people. This is just for you — it shapes what we surface next.</AppText>
+        <AppText variant="muted">Different methods fit different people. This shapes what we surface next.</AppText>
         <ScaleInput min={1} max={5} value={fitsMe} onChange={setFitsMe} leftLabel="Not for me" rightLabel="Fits well" />
       </View>
 

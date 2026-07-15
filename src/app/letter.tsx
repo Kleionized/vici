@@ -79,7 +79,7 @@ export default function LetterScreen() {
       await setJSON(LETTER_KEY, { kept: true, at: Date.now() });
       await setJSON(PENDING_KEY, null);
       if (prev?.kept) return;
-      const body = `Dear ${name},\n\nIf you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that matters this morning.\n\nOne slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: ${why}. All still yours.\n\nThe only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.\n\nI'll see you tonight, steadier.\n\n— the you who makes it out`;
+      const body = `Dear ${name},\n\nIf you're reading this, it happened. Good. You opened the letter instead of disappearing, and that's the only door that matters this morning.\n\nOne slip is a wave, not the sea. Nothing since day zero is erased. The days you stood, the urges you outlasted, the reason you started: ${why}. All still yours.\n\nThe only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.\n\nI'll see you tonight, steadier.\n\n— the you who makes it out`;
       await createJournalEntry({ tag: 'Letter', title: 'Don’t fail twice', body }).catch(() => {});
     })();
     setTimeout(() => {
@@ -239,11 +239,11 @@ export default function LetterScreen() {
               Dear {name},
             </AppText>
             <LetterP>
-              If you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that
+              If you're reading this, it happened. Good. You opened the letter instead of disappearing, and that's the only door that
               matters this morning.
             </LetterP>
             <LetterP>
-              One slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you
+              One slip is a wave, not the sea. Nothing since day zero is erased. The days you stood, the urges you outlasted, the reason you
               started:{' '}
               <AppText
                 style={{
@@ -267,7 +267,7 @@ export default function LetterScreen() {
               </Svg>
             </View>
             <AppText style={{ fontFamily: fonts.serifSharpItalic, fontSize: 14.5, lineHeight: 22, color: 'rgba(59,59,51,0.62)', marginTop: 24 }}>
-              P.S. — the urge to spiral is also a wave. It passes too.
+              P.S. The urge to spiral is also a wave. It passes too.
             </AppText>
           </ScrollView>
 

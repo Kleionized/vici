@@ -458,7 +458,7 @@ export default function CheckIn() {
                 What best describes it?
               </AppText>
               <AppText weightOverride="500" color={colors.textMuted} style={{ fontSize: 16, lineHeight: 22, marginTop: 12 }}>
-                You&apos;re feeling {mood.label.toLowerCase()}. Pick the words that fit — as many as you like.
+                You&apos;re feeling {mood.label.toLowerCase()}. Pick the words that fit, as many as you like.
               </AppText>
             </View>
             <ScrollView style={{ flex: 1, marginTop: 26 }} showsVerticalScrollIndicator={false}>

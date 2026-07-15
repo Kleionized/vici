@@ -18,7 +18,7 @@ export default function Privacy() {
       <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ paddingTop: spacing.sm }}>
-          <ScreenHeader hue={250} eyebrow="Privacy" title="Data & privacy" onBack={back} />
+          <ScreenHeader hue={250} title="Data & privacy" onBack={back} />
         </View>
 
         <ScrollView contentContainerStyle={{ paddingBottom: spacing.xl }} showsVerticalScrollIndicator={false}>

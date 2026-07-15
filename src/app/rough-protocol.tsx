@@ -109,7 +109,7 @@ export default function RoughProtocol() {
         sub={sub}
         small={small}
         hSize={28}
-        cta={pg.i + 1 === nSteps && !p.still ? 'Done' : 'Done — next'}
+        cta={pg.i + 1 === nSteps && !p.still ? 'Done' : 'Done · next'}
         onNext={next}
       />
     );

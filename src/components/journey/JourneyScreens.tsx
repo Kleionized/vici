@@ -221,9 +221,6 @@ function WorldMapScreen({ worlds, side, onOpen }: { worlds: World[]; side: World
 
           {/* header */}
           <View style={{ position: 'absolute', top: insets.top + 16, left: 0, right: 0, paddingHorizontal: 24, alignItems: 'center' }}>
-            <AppText weightOverride="600" style={{ fontSize: 12, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(242,242,238,0.6)' }}>
-              Your journey
-            </AppText>
             <AppText weightOverride="600" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, marginTop: 6, textShadowColor: 'rgba(0,0,0,0.5)', textShadowRadius: 12 }}>
               Sea to summit
             </AppText>
