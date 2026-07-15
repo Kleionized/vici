@@ -288,7 +288,7 @@ export default function Today() {
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
       {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 56, height: 32, marginBottom: 18 }}>
+      <View style={{ alignItems: 'center', marginTop: 44, height: 32, marginBottom: 18 }}>
         <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
           {'“'}
         </AppText>
@@ -312,7 +312,7 @@ export default function Today() {
           onPress={() => router.push(`/lesson/${current.lesson.slug}`)}
           accessibilityRole="button"
           style={({ pressed }) => ({
-            marginTop: 78,
+            marginTop: 64,
             height: 214,
             borderRadius: 20,
             overflow: 'hidden',
