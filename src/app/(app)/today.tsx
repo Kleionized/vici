@@ -50,15 +50,27 @@ const MAXIMS = [
   'One day, taken whole, is enough.',
 ];
 
-// ── the header weather glyph — Material Symbols partly_cloudy_day, FILL=1
-// (the exact Google path data), tinted with today's mood tone ──
-function WeatherMark({ tone }: { tone: string }) {
+// ── the header weather glyph — Material Symbols FILL=1 (exact Google path
+// data), one icon per mood: storm, rain, cloud, sun-behind-cloud, full sun.
+// No mood logged yet → partly_cloudy_day in quiet grey. ──
+const WEATHER_PATHS = [
+  // Low — thunderstorm
+  'm462 0 94-107-80-40 116-133h106l-94 107 80 40L568 0H462ZM222 0l94-107-80-40 116-133h106l-94 107 80 40L328 0H222Zm78-320q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Z',
+  // Down — rainy
+  'M558-84q-15 8-30.5 2.5T504-102l-60-120q-8-15-2.5-30.5T462-276q15-8 30.5-2.5T516-258l60 120q8 15 2.5 30.5T558-84Zm240 0q-15 8-30.5 2.5T744-102l-60-120q-8-15-2.5-30.5T702-276q15-8 30.5-2.5T756-258l60 120q8 15 2.5 30.5T798-84Zm-480 0q-15 8-30.5 2.5T264-102l-60-120q-8-15-2.5-30.5T222-276q15-8 30.5-2.5T276-258l60 120q8 15 2.5 30.5T318-84Zm-18-236q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Z',
+  // Fine — cloud
+  'M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H260Z',
+  // Good — partly_cloudy_day
+  'M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z',
+  // Radiant — sunny
+  'M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Z',
+];
+function WeatherMark({ mood }: { mood: number | null }) {
+  const tone = mood != null ? MOOD_TONES[mood] : colors.textSoft;
+  const d = WEATHER_PATHS[mood ?? 3];
   return (
     <Svg width={21} height={21} viewBox="0 -960 960 960">
-      <Path
-        fill={tone}
-        d="M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z"
-      />
+      <Path fill={tone} d={d} />
     </Svg>
   );
 }
@@ -167,9 +179,9 @@ export default function Today() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {/* the day's weather — partly_cloudy_day, filled with today's tone */}
+          {/* the day's weather, one glyph per mood, filled with today's tone */}
           <WeatherMark
-            tone={todayCheckin?.mood != null ? MOOD_TONES[Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1))] : colors.textSoft}
+            mood={todayCheckin?.mood != null ? Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1)) : null}
           />
         </Pressable>
 
