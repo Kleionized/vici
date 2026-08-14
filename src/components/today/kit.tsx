@@ -149,8 +149,8 @@ function Crescent({ size, color }: { size: number; color: string }) {
  */
 function TaskNight({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 96, overflow: 'hidden' }}>
-      <Svg width="100%" height={96} style={{ position: 'absolute', left: 0, top: 0 }}>
+    <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 124, overflow: 'hidden' }}>
+      <Svg width="100%" height={124} style={{ position: 'absolute', left: 0, top: 0 }}>
         <Defs>
           <SvgLinearGradient id={`tsky${id}`} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor="#0B0C0F" />
@@ -158,7 +158,7 @@ function TaskNight({ id, children }: { id: string; children: React.ReactNode }) 
             <Stop offset="1" stopColor="#1A2027" />
           </SvgLinearGradient>
         </Defs>
-        <Rect x={0} y={0} width="100%" height={96} fill={`url(#tsky${id})`} />
+        <Rect x={0} y={0} width="100%" height={124} fill={`url(#tsky${id})`} />
       </Svg>
       <View style={{ position: 'absolute', left: 58, top: 18, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.45)' }} />
       <View style={{ position: 'absolute', left: 112, top: 40, width: 1.5, height: 1.5, borderRadius: 0.75, backgroundColor: 'rgba(244,243,240,0.3)' }} />
@@ -167,7 +167,7 @@ function TaskNight({ id, children }: { id: string; children: React.ReactNode }) 
       <View style={{ position: 'absolute', left: 38, top: 22 }}>
         <Crescent size={20} color="#E8E6DC" />
       </View>
-      <Svg width="100%" height={96} viewBox="0 0 361 96" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
+      <Svg width="100%" height={124} viewBox="0 0 361 96" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
         <Path d="M-4,96 L-4,72 Q80,58 170,68 Q260,80 365,66 L365,96 Z" fill="#171B22" />
       </Svg>
       <Glow id={`twarm${id}`} size={70} color="#E2BA78" opacity={0.2} stop={0.74} style={{ position: 'absolute', right: 40, top: 20 }} />
@@ -190,7 +190,7 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
       accessibilityLabel={`${step.when}. ${step.caption}`}
       style={{
         marginHorizontal: 12,
-        height: 246,
+        height: 274,
         borderRadius: 20,
         borderCurve: 'continuous',
         overflow: 'hidden',
@@ -199,11 +199,13 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
       }}>
       <TaskNight id={id}>{step.art({ id })}</TaskNight>
 
-      <View style={{ position: 'absolute', left: 20, top: 114, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <View style={{ position: 'absolute', left: 20, top: 142, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
           <Crescent size={15} color="#F4F3F0" />
         </View>
-        <AppText style={[sans('600'), { fontSize: 13, color: colors.text }]}>{step.when}</AppText>
+        {/* `Today Home II` labels the card with the constant, not the time of
+            day the step carries — `when` survives for the reading-out only. */}
+        <AppText style={[sans('600'), { fontSize: 13, color: colors.text }]}>Today&rsquo;s task</AppText>
       </View>
 
       {/* the check affordance — an empty ring until the step is behind you */}
@@ -211,7 +213,7 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         style={{
           position: 'absolute',
           right: 20,
-          top: 118,
+          top: 146,
           width: 26,
           height: 26,
           borderRadius: 13,
@@ -227,7 +229,7 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         ) : null}
       </View>
 
-      <AppText style={[sans('600'), { position: 'absolute', left: 20, right: 24, top: 166, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
+      <AppText style={[sans('600'), { position: 'absolute', left: 20, right: 24, top: 194, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
         {step.caption}
       </AppText>
     </PressScale>

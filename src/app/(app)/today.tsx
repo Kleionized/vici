@@ -13,14 +13,18 @@ import { buildScore } from '@/lib/score';
 import { colors, fonts, sans } from '@/lib/theme';
 
 /**
- * 21 · Today — two pages, scrolled down.
+ * 21 · Today — three pages, scrolled down.
  *
  * Page one answers "where am I": the day count, the score drawn as the night
- * you are climbing out of, and the lesson in front of you. Page two is the
- * day's own record — this morning's readings, the one step still in front of
- * you, and the pledge you signed. The mark, the profile door and the urge bar
- * hold across both, because those are the three things that must stay reachable
- * without reading anything.
+ * you are climbing out of, this morning's two readings, and the last thirty
+ * days as thirty marks. Page two is the work in front of you — the lesson and
+ * the day's one step. Page three is the line you signed. The mark, the profile
+ * door and the urge bar hold across all three, because those are the three
+ * things that must stay reachable without reading anything.
+ *
+ * `UI Final` re-dealt these blocks: the readings moved up to page one, the
+ * lesson card moved down to page two beside the task, the pledge took a page of
+ * its own, the pager dots were deleted, and the thirty-day strip is new.
  *
  * Laid out from the canvas's 393 × 852 frame: the status bar ends at 54, the
  * urge bar starts at 705 and the tab bar at 769.
@@ -53,7 +57,6 @@ export default function Today() {
   const checkins = useCheckins();
   const events = useEvents();
   const journal = useJournalEntries();
-  const [page, setPage] = useState(0);
   const upsertCheckin = useUpsertCheckin();
   const pager = useRef<ScrollView>(null);
   // Both pages are exactly one viewport tall, so the scroll snaps between them.
@@ -79,6 +82,25 @@ export default function Today() {
   const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
   const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : moodIdx;
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+
+  // The last thirty days, oldest first. A day is held unless a lapse landed on
+  // it; the canvas draws thirty slots and exactly two marks, so a day before the
+  // account existed takes the ring rather than a third tone it has no support
+  // for. The counter is derived, never stated.
+  const lapsedDays = new Set(
+    (events ?? [])
+      .filter((event) => event.type === 'lapse')
+      .map((event) => {
+        const at = new Date(event.createdAt);
+        return `${at.getFullYear()}-${String(at.getMonth() + 1).padStart(2, '0')}-${String(at.getDate()).padStart(2, '0')}`;
+      }),
+  );
+  const held = Array.from({ length: 30 }, (_, index) => {
+    const at = new Date(now - (29 - index) * 86_400_000);
+    const key = `${at.getFullYear()}-${String(at.getMonth() + 1).padStart(2, '0')}-${String(at.getDate()).padStart(2, '0')}`;
+    if (user?.createdAt && at.getTime() < user.createdAt) return false;
+    return !lapsedDays.has(key);
+  });
 
   // The day's one action. The night check-in names it and files it under the
   // day it is *for*, so by the time it reaches this card it is simply today's.
@@ -112,31 +134,31 @@ export default function Today() {
             decelerationRate="fast"
             showsVerticalScrollIndicator={false}
             scrollEventThrottle={16}
-            onMomentumScrollEnd={(e) => setPage(Math.round(e.nativeEvent.contentOffset.y / Math.max(1, pageH)))}
             style={{ flex: 1 }}>
             <View style={{ height: pageH }}>
               <PageOne
                 day={day}
                 score={score}
-                page={page}
-                lesson={current}
-                done={lessonsDone % 6}
+                mood={moodIdx}
+                energy={energyIdx}
+                held={held}
                 onScore={() => router.push('/score')}
-                onLesson={() => (current ? router.push(`/lesson-overview/${current.lesson.slug}`) : router.push('/lessons-browser'))}
+                onMorning={() => router.push('/day/morning')}
               />
             </View>
             <View style={{ height: pageH }}>
               <PageTwo
-                mood={moodIdx}
-                energy={energyIdx}
+                lesson={current}
+                done={lessonsDone % 6}
                 step={step}
                 stepDone={stepDone}
                 onStep={() => void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone })}
-                pledge={pledge}
-                name={user?.displayName}
-                onMorning={() => router.push('/day/morning')}
-                onPledges={() => router.push('/(app)/journal')}
+                onLesson={() => (current ? router.push(`/lesson-overview/${current.lesson.slug}`) : router.push('/lessons-browser'))}
+                onLibrary={() => router.push('/(app)/library')}
               />
+            </View>
+            <View style={{ height: pageH }}>
+              <PageThree pledge={pledge} name={user?.displayName} onPledges={() => router.push('/(app)/journal')} />
             </View>
           </ScrollView>
         </View>
@@ -179,19 +201,19 @@ export default function Today() {
 function PageOne({
   day,
   score,
-  page,
-  lesson,
-  done,
+  mood,
+  energy,
+  held,
   onScore,
-  onLesson,
+  onMorning,
 }: {
   day: number;
   score: ReturnType<typeof buildScore>;
-  page: number;
-  lesson: { lesson: { title: string; orderIndex: number; week: number } } | null | undefined;
-  done: number;
+  mood: number | null;
+  energy: number | null;
+  held: boolean[];
   onScore: () => void;
-  onLesson: () => void;
+  onMorning: () => void;
 }) {
   return (
     <View style={{ flex: 1 }}>
@@ -204,20 +226,21 @@ function PageOne({
         <ScoreCard score={score} onPress={onScore} />
       </View>
 
-      <View style={{ marginTop: 50 }}>
-        <LessonCard
-          title={lesson?.lesson.title ?? 'Start the first lesson'}
-          meta={lesson ? `Lesson ${lesson.lesson.orderIndex + 1} · Week ${lesson.lesson.week}` : 'Week I'}
-          done={done}
-          onPress={onLesson}
+      {/* design 402 — 16 under the score card */}
+      <SectionRow label="This morning" onPress={onMorning} marginTop={16} />
+
+      <View style={{ marginTop: 11.5 }}>
+        <ReadingsStrip
+          mood={mood}
+          energy={energy}
+          moodWord={mood != null ? MOOD_WORD[mood] : '—'}
+          energyWord={energy != null ? ENERGY_WORD[energy] : '—'}
         />
       </View>
 
-      {/* design 648 — 34 under the lesson card */}
-      <View style={{ marginTop: 34, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
-        {[0, 1, 2].map((i) => (
-          <View key={i} style={{ width: 6.5, height: 6.5, borderRadius: 3.25, backgroundColor: i === page ? colors.ink : 'rgba(19,19,19,0.16)' }} />
-        ))}
+      {/* design 492 — 16 under the readings */}
+      <View style={{ marginTop: 16 }}>
+        <HeldStrip held={held} />
       </View>
     </View>
   );
@@ -431,49 +454,94 @@ function LessonCard({ title, meta, done, onPress }: { title: string; meta: strin
 /* ------------------------------------------------------------------- page two */
 
 function PageTwo({
-  mood,
-  energy,
+  lesson,
+  done,
   step,
   stepDone,
   onStep,
-  pledge,
-  name,
-  onMorning,
-  onPledges,
+  onLesson,
+  onLibrary,
 }: {
-  mood: number | null;
-  energy: number | null;
+  lesson: { lesson: { title: string; orderIndex: number; week: number } } | null | undefined;
+  done: number;
   step: DayStep;
   stepDone: boolean;
   onStep: () => void;
-  pledge?: { body: string; createdAt: number };
-  name?: string;
-  onMorning: () => void;
-  onPledges: () => void;
+  onLesson: () => void;
+  onLibrary: () => void;
 }) {
   return (
     <View style={{ flex: 1 }}>
       {/* design 138 — 47 below the mark row */}
-      <SectionRow label="This morning" onPress={onMorning} marginTop={47} />
+      <SectionRow label="This week" action="Library" actionOffset={-2} onPress={onLibrary} marginTop={47} />
 
       <View style={{ marginTop: 11.5 }}>
-        <ReadingsStrip
-          mood={mood}
-          energy={energy}
-          moodWord={mood != null ? MOOD_WORD[mood] : '—'}
-          energyWord={energy != null ? ENERGY_WORD[energy] : '—'}
+        <LessonCard
+          title={lesson?.lesson.title ?? 'Start the first lesson'}
+          meta={lesson ? `Lesson ${lesson.lesson.orderIndex + 1} · Week ${lesson.lesson.week}` : 'Week I'}
+          done={done}
+          onPress={onLesson}
         />
       </View>
 
-      {/* design 256 — 44 under the readings */}
-      <View style={{ marginTop: 44 }}>
+      {/* design 340 — 24 under the lesson card */}
+      <View style={{ marginTop: 24 }}>
         <TaskCard step={step} done={stepDone} onPress={onStep} />
       </View>
+    </View>
+  );
+}
 
-      <SectionRow label="Goal & pledge" action="Past pledges" actionOffset={-2} onPress={onPledges} marginTop={24} />
+function PageThree({ pledge, name, onPledges }: { pledge?: { body: string; createdAt: number }; name?: string; onPledges: () => void }) {
+  return (
+    <View style={{ flex: 1 }}>
+      <SectionRow label="Goal & pledge" action="Past pledges" actionOffset={-2} onPress={onPledges} marginTop={47} />
 
       <View style={{ marginTop: 11.5 }}>
         <PledgeCard pledge={pledge} name={name} onPress={onPledges} />
+      </View>
+    </View>
+  );
+}
+
+/**
+ * The last thirty days as thirty marks. Ten to a row on a 31pt pitch, which is
+ * exact at the canvas's 393 — `10 × 20 + 9 × 11 = 299` with no slack — so the
+ * columns are pinned and the gap is derived rather than left to a wrapping flex
+ * row, which would silently drop to nine columns on a 375pt phone and push the
+ * block past the card's content line.
+ */
+function HeldStrip({ held }: { held: boolean[] }) {
+  const width = useWindowDimensions().width;
+  // The canvas's grid runs left 35 to 334 inside a 369-wide card: 35 either side.
+  const inner = width - 24 - 35 * 2;
+  const gap = Math.max(0, (inner - 10 * 20) / 9);
+  const count = held.filter(Boolean).length;
+  return (
+    <View
+      style={{
+        marginHorizontal: 12,
+        height: 184,
+        borderRadius: 20,
+        borderCurve: 'continuous',
+        backgroundColor: colors.surface,
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
+      }}>
+      <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 20, fontSize: 13, color: colors.text }]}>Last 30 days</AppText>
+      <AppText style={[sans('500'), { position: 'absolute', right: 20, top: 20, fontSize: 12.5, color: colors.textSoft }]}>{count} held</AppText>
+      <View style={{ position: 'absolute', left: 35, top: 58, right: 35, flexDirection: 'row', flexWrap: 'wrap', gap }}>
+        {held.map((on, index) => (
+          <View
+            key={index}
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 10,
+              backgroundColor: on ? colors.ink : undefined,
+              boxShadow: on ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.18)',
+            }}
+          />
+        ))}
       </View>
     </View>
   );

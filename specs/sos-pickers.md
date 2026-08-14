@@ -10,7 +10,7 @@ Target app files:
 
 - `/Users/admin/Documents/tideline/src/components/urge/index.tsx` — `WherePage()` (line 975), `PlaceCard()` (line 933), `PLACES` (line 540), `PLACE_ART` / `PLACE_TOP` (lines 922–923), `PhoneCardArt()` / `LaptopCardArt()` / `BedCardArt()` (lines 836–920), `CARD_GRADIENT_START` / `CARD_GRADIENT_END` (lines 930–931), `UrgeFlow()` + `FLOW` (lines 2000–2126)
 - `/Users/admin/Documents/tideline/src/app/urge.tsx` — 11-line route wrapper, renders `<UrgeFlow />`; **no change needed unless the flow gains route-level steps**
-- Read-only reference for the row recipe already in the codebase: `/Users/admin/Documents/tideline/src/components/MoodLogger.tsx` — `ReasonRow()` (line 489), `ReasonIcon()` (line 407), `BoardTitle()` (line 529), `BoardSub()` (line 537)
+- Read-only reference for the row recipe already in the codebase: `/Users/admin/Documents/tideline/src/components/MoodLogger.tsx` — `ReasonRow()` (line 489), `ReasonIcon()` (line 407), `REASONS` (line 67), `BoardTitle()` (line 532), `BoardSub()` (line 541)
 
 Sticky numbers were recovered from `/Users/admin/Documents/tideline/UI Final/project/Email Login.dc.html` by taking the Marker-Felt note that immediately precedes each `data-screen-label` in document order.
 
@@ -120,6 +120,8 @@ M9.5 1.5L2 9.5l7.5 8
 | max-lines / truncation | none | none | none |
 
 The **only** typographic difference between the old frame and the two new ones is the sub-line inset (40 vs 36) and `text-wrap:pretty`. Everything else in the header block matches character for character.
+
+Do **not** reuse `MoodLogger.BoardTitle` / `BoardSub` for these headers: they encode the check-in boards' numbers, which differ — `top: 64` vs 62, `top: 104` vs 106, `fontSize: 15` with no `lineHeight` vs `15.5 / 23`, and `left: 0, right: 0` vs `left/right: 36|40`.
 
 ### 2.5 Continue pill (identical in all three)
 

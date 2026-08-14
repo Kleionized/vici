@@ -6,14 +6,14 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 660 · IMPLEMENTED: 117
+**777 rows.** NOT_STARTED: 573 · SPEC_EXTRACTED: 84 · IMPLEMENTED: 120
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
 | Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95 · Rough — Loneliness (I) |
 | Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95B · Rough — Loneliness (II) |
 | Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95C · Rough — Loneliness (III) |
-| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96 · Rough — Anxiety (I) |
+| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 96 · Rough — Anxiety (I) |
 | Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96B · Rough — Anxiety (II) |
 | Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96C · Rough — Anxiety (III) |
 | Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97 · Rough — Stress (I) |
@@ -21,7 +21,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97C · Rough — Stress (III) |
 | Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98 · Rough — Boredom (I) |
 | Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98B · Rough — Boredom (II) |
-| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98C · Rough — Boredom (III) |
+| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 98C · Rough — Boredom (III) |
 | Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99 · Rough — Late night (I) |
 | Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99B · Rough — Late night (II) |
 | Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99C · Rough — Late night (III) |
@@ -29,10 +29,10 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100B · Rough — Home alone (II) |
 | Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100C · Rough — Home alone (III) |
 | Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101 · Rough — An argument (I) |
-| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101B · Rough — An argument (II) |
-| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101C · Rough — An argument (III) |
-| Email Login | Medallions | src/app/(app)/milestones.tsx | NOT_STARTED | — | 88 · Medallions |
-| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | NOT_STARTED | — | 88B · Medallions — Still to earn |
+| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101B · Rough — An argument (II) |
+| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101C · Rough — An argument (III) |
+| Email Login | Medallions | src/app/(app)/milestones.tsx | SPEC_EXTRACTED | 2026-08-15 | 88 · Medallions |
+| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | SPEC_EXTRACTED | 2026-08-15 | 88B · Medallions — Still to earn |
 | Email Login | Detail Paper | src/app/medallions/[key].tsx | NOT_STARTED | — | 89A · Vici Detail — Paper |
 | Email Login | Detail Bronze | src/app/medallions/[key].tsx | NOT_STARTED | — | 89C · Vici Detail — Bronze |
 | Email Login | Detail Silver | src/app/medallions/[key].tsx | NOT_STARTED | — | 89D · Vici Detail — Silver |
@@ -58,14 +58,14 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Urge Log Outcome | src/app/urge-log.tsx | NOT_STARTED | — | 91F · Urge Log — Outcome |
 | Email Login | Urge Log When | src/app/urge-log.tsx | NOT_STARTED | — | 91G · Urge Log — When |
 | Email Login | Urge Log Done | src/app/urge-log.tsx | NOT_STARTED | — | 91H · Urge Log — Logged |
-| Email Login | Settings | src/app/(app)/settings.tsx | NOT_STARTED | — | 92 · Settings |
-| Email Login | Edit Profile | src/app/profile.tsx | NOT_STARTED | — | 93 · Edit Profile |
-| Email Login | Sheet Profile Photo | src/app/profile.tsx | NOT_STARTED | — | 93B &middot; Profile photo sheet |
-| Email Login | Sheet Edit Name | src/app/profile.tsx | NOT_STARTED | — | 93C &middot; Edit name sheet |
-| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | NOT_STARTED | — | 93D &middot; Weekly report |
-| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | NOT_STARTED | — | 92B &middot; Night check-in time |
-| Email Login | Your Vow Page | src/app/vow.tsx | NOT_STARTED | — | 92C &middot; Your vow |
-| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | NOT_STARTED | — | 92D &middot; Sign out sheet |
+| Email Login | Settings | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 92 · Settings |
+| Email Login | Edit Profile | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93 · Edit Profile |
+| Email Login | Sheet Profile Photo | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93B &middot; Profile photo sheet |
+| Email Login | Sheet Edit Name | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93C &middot; Edit name sheet |
+| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 93D &middot; Weekly report |
+| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 92B &middot; Night check-in time |
+| Email Login | Your Vow Page | src/app/vow.tsx | SPEC_EXTRACTED | 2026-08-15 | 92C &middot; Your vow |
+| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 92D &middot; Sign out sheet |
 | Email Login | Data Privacy | src/app/privacy.tsx | NOT_STARTED | — | 94 · Data &amp; Privacy |
 | Email Login | App Lock | src/app/applock.tsx | NOT_STARTED | — | 95 · App Lock |
 | Email Login | Splash | src/app/index.tsx | NOT_STARTED | — | 01 · Splash |
@@ -123,29 +123,29 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rewire Curve | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87H · The Rewire Curve |
 | Email Login | Results Pattern | src/components/onboarding/v3.tsx | NOT_STARTED | — | 88 · Results — Pattern |
 | Email Login | The Vow | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90 · The Vow — Signature |
-| Email Login | Campaign Map | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
-| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
-| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
+| Email Login | Campaign Map | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
+| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
+| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
 | Email Login | Letter Received | src/app/letter.tsx | NOT_STARTED | — | 90E &middot; A letter arrived |
-| Email Login | Letter Week XII | src/app/letter.tsx | NOT_STARTED | — | 90B · A Letter From Week XII |
-| Email Login | Medallion Received | src/app/medallion-post.tsx | NOT_STARTED | — | 90F &middot; Medallion earned &mdash; detail popup |
+| Email Login | Letter Week XII | src/app/letter.tsx | SPEC_EXTRACTED | 2026-08-15 | 90B · A Letter From Week XII |
+| Email Login | Medallion Received | src/app/medallion-post.tsx | SPEC_EXTRACTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
 | Email Login | Reminders Setup | src/app/reminders.tsx | NOT_STARTED | — | 91 · Reminders |
 | Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | NOT_STARTED | — | 92 · Save Progress |
 | Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11 · Free Trial Paywall |
 | Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11B · Paywall — Three Days Free |
 | Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11C · Paywall — Confirmed |
-| Email Login | Manage Subscription | src/app/subscription.tsx | NOT_STARTED | — | 15 · Manage Subscription |
-| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | NOT_STARTED | — | 19B · Morning check-in time |
-| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | NOT_STARTED | — | 19C · Nightly check-in time |
-| Email Login | Today Home | src/app/(app)/today.tsx | NOT_STARTED | — | 21 · Today |
+| Email Login | Manage Subscription | src/app/subscription.tsx | SPEC_EXTRACTED | 2026-08-15 | 15 · Manage Subscription |
+| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 19B · Morning check-in time |
+| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 19C · Nightly check-in time |
+| Email Login | Today Home | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today |
 | Email Login | Score Detail | src/app/score.tsx | NOT_STARTED | — | 21B &middot; Score Detail |
 | Email Login | Score Detail Moves | src/app/score.tsx | NOT_STARTED | — | 20B · Score Detail — What Moved It |
 | Email Login | Score Detail Ranks | src/app/score.tsx | NOT_STARTED | — | 20C · Score Detail — Ranks |
-| Email Login | Today Home II | src/app/(app)/today.tsx | NOT_STARTED | — | 21 · Today &mdash; p2 |
-| Email Login | Today Home Task | src/app/(app)/today.tsx | NOT_STARTED | — | 21p2B · Today — Task summary |
-| Email Login | Today Home III | src/app/(app)/today.tsx | NOT_STARTED | — | 21 &middot; Today &mdash; p3 |
-| Email Login | Sentence Journal | src/app/affirmation.tsx | NOT_STARTED | — | 21C &middot; Affirmation &mdash; Sentence Journal |
-| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | NOT_STARTED | — | 21C2 &middot; Affirmation &mdash; Custom prompt |
+| Email Login | Today Home II | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today &mdash; p2 |
+| Email Login | Today Home Task | src/app/(app)/today.tsx | SPEC_EXTRACTED | 2026-08-15 | 21p2B · Today — Task summary |
+| Email Login | Today Home III | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 &middot; Today &mdash; p3 |
+| Email Login | Sentence Journal | src/app/affirmation.tsx | SPEC_EXTRACTED | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
+| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | SPEC_EXTRACTED | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
 | Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D1 · Morning — Yesterday |
 | Email Login | Morning Task Check | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
 | Email Login | Morning 5 Done | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D7 · Morning — Done |
@@ -156,37 +156,37 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Night 3 Reflection | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5 · Night — Reflection |
 | Email Login | Night Action Reminder | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5B · Night — Tonight’s action |
 | Email Login | Night 4 Closed | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E6 · Night — Closed |
-| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | NOT_STARTED | — | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Cue Intro Modal | src/app/urge.tsx | NOT_STARTED | — | 28 · SOS — First 90 Seconds |
 | Email Login | SOS Strength | src/app/urge.tsx | NOT_STARTED | — | 28B · SOS — How Strong |
-| Email Login | Cue Hue Picker | src/app/urge.tsx | NOT_STARTED | — | 29 · SOS — Where Are You |
-| Email Login | SOS Feeling Picker | src/app/urge.tsx | NOT_STARTED | — | 29A &middot; SOS &mdash; Name the Feeling |
-| Email Login | SOS Reason Picker | src/app/urge.tsx | NOT_STARTED | — | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
+| Email Login | Cue Hue Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29 · SOS — Where Are You |
+| Email Login | SOS Feeling Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
+| Email Login | SOS Reason Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
 | Email Login | Cue Set Confirmation | src/app/urge.tsx | NOT_STARTED | — | 29B · SOS — Step I · Phone Down |
 | Email Login | Surf Step 1 | src/app/urge.tsx | NOT_STARTED | — | 30 · SOS — Step II · Out of Bed |
 | Email Login | Surf Step 3 | src/app/urge.tsx | NOT_STARTED | — | 31 · SOS — Step III · Cold Water |
@@ -584,32 +584,32 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 1 of 3 |
 | Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D84 Card | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 3 of 3 |
-| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | NOT_STARTED | — | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
 | VICI (previous) | Splash | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Standing Guard | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Login Empty | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -620,7 +620,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Campaign Map | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -680,7 +680,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Cue Hue Picker | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -707,7 +707,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Campaign Map | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -767,7 +767,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Cue Hue Picker | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
