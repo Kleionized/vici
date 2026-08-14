@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 767 · IMPLEMENTED: 10
+**777 rows.** NOT_STARTED: 660 · IMPLEMENTED: 117
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -194,30 +194,30 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Relapse Log | src/app/relapse.tsx | NOT_STARTED | — | 34 · SOS — Slipped |
 | Email Login | Relapse Twice | src/app/relapse.tsx | NOT_STARTED | — | 36 · Relapse — Don't Fail Twice |
 | Email Login | Relapse Begin | src/app/relapse.tsx | NOT_STARTED | — | 37 · Relapse — Begin Again |
-| Email Login | Week I Reset | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week I Reset P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week III In the Moment | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VI Discipline | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week IX Connection | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week X Yourself | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | NOT_STARTED | — | week overview, two pages per week |
+| Email Login | Week I Reset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week I Reset P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
 | Email Login | Letter Arrival | src/app/mail.tsx | NOT_STARTED | — | 90B · VICI Post — Arrival |
 | Email Login | Letter Read | src/app/letter.tsx | NOT_STARTED | — | 39 · The Letter — Read |
 | Email Login | Medallion Letter | src/app/mail.tsx | NOT_STARTED | — | 39B · Post — Medallion Letter |
@@ -252,89 +252,89 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | L01 Reader 23 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
 | Lessons and Tasks | L01 Reader 24 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
 | Lessons and Tasks | L01 Reader 25 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | NOT_STARTED | — | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
 | Lessons and Tasks | Task D01 Intro | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 1 of 3 |
 | Lessons and Tasks | Task D01 Options | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D01 Card | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 3 of 3 |
