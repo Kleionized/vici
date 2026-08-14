@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 573 · SPEC_EXTRACTED: 84 · IMPLEMENTED: 120
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 80 · IMPLEMENTED: 120
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -620,7 +620,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Campaign Map | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -680,7 +680,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Hue Picker | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -707,7 +707,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Campaign Map | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -767,7 +767,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Hue Picker | — | SPEC_EXTRACTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
