@@ -1,9 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
 import { colors, radius, shadow, spacing } from '@/lib/theme';
 import { AppText } from './AppText';
 import { Icon, type IconName } from './Icon';
+import { PressScale } from './press-scale';
 
 /** A small tappable tile — icon in a tinted disc over a label, on a gradient card. */
 export function ActionTile({
@@ -19,9 +20,8 @@ export function ActionTile({
 }) {
   const t = tint ?? colors.text;
   return (
-    <Pressable onPress={onPress} style={{ flex: 1 }} accessibilityRole="button" accessibilityLabel={label}>
-      {({ pressed }) => (
-        <View style={[shadow.card, { borderRadius: radius.lg, borderWidth: 1, borderColor: colors.border, overflow: 'hidden', opacity: pressed ? 0.85 : 1 }]}>
+    <PressScale onPress={onPress} style={{ flex: 1 }} accessibilityRole="button" accessibilityLabel={label}>
+        <View style={[shadow.card, { borderRadius: radius.lg, borderCurve: 'continuous', overflow: 'hidden' }]}>
           <LinearGradient
             colors={colors.gradient.surface}
             start={{ x: 0, y: 0 }}
@@ -43,7 +43,6 @@ export function ActionTile({
             </AppText>
           </LinearGradient>
         </View>
-      )}
-    </Pressable>
+    </PressScale>
   );
 }

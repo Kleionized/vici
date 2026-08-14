@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
-import { spacing } from '@/lib/theme';
+import { colors, spacing } from '@/lib/theme';
 import { AppText } from './AppText';
+import { PressScale } from './press-scale';
 
 export interface HeaderProps {
   title: string;
+  eyebrow?: string;
   subtitle?: string;
   /** Optional right-aligned action (rendered as tappable text). */
   actionLabel?: string;
@@ -14,11 +16,12 @@ export interface HeaderProps {
   right?: ReactNode;
 }
 
-export function Header({ title, subtitle, actionLabel, onAction, right }: HeaderProps) {
+export function Header({ title, eyebrow, subtitle, actionLabel, onAction, right }: HeaderProps) {
   return (
     <View style={{ gap: spacing.sm, marginBottom: spacing.lg }}>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: spacing.md }}>
         <View style={{ gap: spacing.xs, flexShrink: 1 }}>
+          {eyebrow ? <AppText variant="label">{eyebrow}</AppText> : null}
           <AppText variant="display" style={{ flexShrink: 1 }}>
             {title}
           </AppText>
@@ -26,9 +29,9 @@ export function Header({ title, subtitle, actionLabel, onAction, right }: Header
         {right ? (
           <View style={{ paddingTop: spacing.xs }}>{right}</View>
         ) : actionLabel ? (
-          <Pressable onPress={onAction} hitSlop={8} style={{ paddingTop: spacing.xs }}>
-            <AppText variant="soft">{actionLabel}</AppText>
-          </Pressable>
+          <PressScale onPress={onAction} accessibilityRole="button" style={{ minWidth: 44, alignItems: 'flex-end', justifyContent: 'center' }}>
+            <AppText variant="soft" color={colors.textMuted}>{actionLabel}</AppText>
+          </PressScale>
         ) : null}
       </View>
       {subtitle ? <AppText variant="muted">{subtitle}</AppText> : null}

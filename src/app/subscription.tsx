@@ -1,18 +1,113 @@
+import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import type { ReactNode } from 'react';
+import { ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { WorldArt } from '@/components/journey/WorldArt';
-import { AppText, Screen, ScreenHeader, SettingsGroup, SettingsRow } from '@/components/ui';
+import { AppText, PressScale } from '@/components/ui';
 import { useCurrentUser } from '@/lib/backend';
-import { colors, fonts, sans } from '@/lib/theme';
+import { sans } from '@/lib/theme';
 
 /**
- * Manage subscription (canvas: money · ManageSubScreen) — the unboxed
- * membership monument up top (plan · price · renewal · ACTIVE), then
- * Plan and Billing groups, the quiet cancel, and the shore seeing you
- * out: "the long road, together."
+ * Manage subscription (canvas 107) — the membership stated plainly up top
+ * (plan · price · renewal · Active), then the Plan and Billing cards, the
+ * quiet cancel, and the shore seeing you out: "the long road, together."
+ *
+ * Laid out from the canvas's 393 × 852 frame; the status bar ends at 54, so
+ * every canvas `top` is written here as `top − 54` under the safe area.
  */
+
+const noiseDark = require('../../assets/images/noise-dark.png');
+
+const CHEVRON = 'M1.5 1.5 6 7l-4.5 5.5';
+
+function RowChevron() {
+  return (
+    <Svg width={7} height={12} viewBox="0 0 8 14">
+      <Path d={CHEVRON} stroke="rgba(0,0,0,0.28)" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
+/** A row inside one of the two cards: 32pt inset chip, label, optional value. */
+function Row({ icon, title, detail, last, onPress }: { icon: ReactNode; title: string; detail?: string; last?: boolean; onPress?: () => void }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      disabled={!onPress}
+      accessibilityRole="button"
+      style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 13, borderBottomWidth: last ? 0 : 1, borderBottomColor: 'rgba(0,0,0,0.06)' }}>
+      <View style={{ width: 32, height: 32, borderRadius: 9, backgroundColor: '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
+      <AppText style={[sans('500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{title}</AppText>
+      {detail ? <AppText style={[sans('400'), { fontSize: 13.5, color: '#8B8882' }]}>{detail}</AppText> : null}
+      <RowChevron />
+    </PressScale>
+  );
+}
+
+function GroupLabel({ text, top }: { text: string; top: number }) {
+  return <AppText style={[sans('600'), { position: 'absolute', left: 28, top, fontSize: 12.5, color: '#8B8882' }]}>{text}</AppText>;
+}
+
+function Card({ top, children }: { top: number; children: ReactNode }) {
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
+        borderRadius: 18,
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+        paddingVertical: 4,
+        paddingHorizontal: 20,
+      }}>
+      {children}
+    </View>
+  );
+}
+
+const ICON = {
+  plan: (
+    <Svg width={19} height={19} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={9} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
+      <Path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#1D1C1A" />
+    </Svg>
+  ),
+  code: (
+    <Svg width={19} height={19} viewBox="0 0 24 24">
+      <Rect x={3.5} y={8} width={17} height={4} rx={1} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
+      <Path
+        d="M5 12v7.5h14V12M12 8v11.5M12 8c-4 0-5.5-1.6-5.5-3a2 2 0 0 1 3.6-1.2C11.2 5 12 8 12 8zm0 0c4 0 5.5-1.6 5.5-3a2 2 0 0 0-3.6-1.2C12.8 5 12 8 12 8z"
+        stroke="#1D1C1A"
+        strokeWidth={1.9}
+        fill="none"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  ),
+  restore: (
+    <Svg width={19} height={19} viewBox="0 0 24 24">
+      <Path d="M4.5 12a7.5 7.5 0 1 1 2.2 5.3M4.5 12V7.5M4.5 12H9" stroke="#1D1C1A" strokeWidth={1.9} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  ),
+  card: (
+    <Svg width={19} height={19} viewBox="0 0 24 24">
+      <Rect x={3} y={5.5} width={18} height={13} rx={2.4} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
+      <Path d="M3 9.5h18" stroke="#1D1C1A" strokeWidth={1.9} />
+    </Svg>
+  ),
+  receipts: (
+    <Svg width={19} height={19} viewBox="0 0 24 24">
+      <Path d="M6 3.5h8l4 4v13H6z" stroke="#1D1C1A" strokeWidth={1.9} fill="none" strokeLinejoin="round" />
+      <Path d="M9 12h6M9 15.5h6" stroke="#1D1C1A" strokeWidth={1.7} strokeLinecap="round" />
+    </Svg>
+  ),
+};
+
 export default function Subscription() {
   const router = useRouter();
   const user = useCurrentUser();
@@ -27,65 +122,82 @@ export default function Subscription() {
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
   return (
-    <Screen contentStyle={{ paddingTop: 8, flexGrow: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <StatusBar style="dark" />
-      <ScreenHeader title="Subscription" pad={0} onBack={back} />
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ height: 780 }} showsVerticalScrollIndicator={false}>
+          <PressScale
+            onPress={back}
+            accessibilityRole="button"
+            accessibilityLabel="Back"
+            hitSlop={{ top: 14, bottom: 14, left: 16, right: 16 }}
+            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Svg width={11} height={19} viewBox="0 0 11 19">
+              <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+          </PressScale>
 
-      {/* membership — unboxed monument */}
-      <View style={{ paddingTop: 4, marginBottom: 30 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-          <View>
-            <AppText style={{ fontFamily: fonts.serif, fontSize: 25, letterSpacing: 0.25, color: colors.text }}>
-              {premium ? 'Yearly' : 'Free tools'}
-            </AppText>
-            <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted, marginTop: 5 }]}>
-              {premium ? `${price} / year · renews ${renews}` : 'The urge tool, free forever'}
-            </AppText>
-          </View>
-          <View style={{ backgroundColor: colors.ink, borderRadius: 9999, paddingHorizontal: 12, paddingVertical: 6, marginTop: 3 }}>
-            <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 0.88, textTransform: 'uppercase', color: colors.inkText }]}>
-              {premium ? 'Active' : 'Free'}
-            </AppText>
-          </View>
-        </View>
-        {premium ? (
-          <>
-            <View style={{ height: 1, backgroundColor: colors.border, marginTop: 18, marginBottom: 14 }} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <AppText style={[sans('400'), { fontSize: 14, color: colors.textMuted }]}>Next charge</AppText>
-              <AppText style={[sans('500'), { fontSize: 14, color: colors.text, fontVariant: ['tabular-nums'] }]}>{price} on {renews}</AppText>
+          <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 68, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Subscription</AppText>
+
+          {/* the membership, stated rather than boxed */}
+          <View style={{ position: 'absolute', left: 24, right: 24, top: 150 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+              <View>
+                <AppText style={[sans('600'), { fontSize: 24, letterSpacing: -0.2, color: '#1D1C1A' }]}>{premium ? 'Yearly' : 'Free tools'}</AppText>
+                <AppText style={[sans('400'), { marginTop: 5, fontSize: 14, color: '#55534E' }]}>
+                  {premium ? `${price} / year · renews ${renews}` : 'Core tools included'}
+                </AppText>
+              </View>
+              <View style={{ backgroundColor: '#131313', borderRadius: 14, paddingHorizontal: 12, paddingVertical: 7, marginTop: 3 }}>
+                <AppText style={[sans('600'), { fontSize: 12.5, color: '#F4F3F0' }]}>{premium ? 'Active' : 'Free'}</AppText>
+              </View>
             </View>
-          </>
-        ) : null}
-      </View>
-
-      <SettingsGroup header="Plan">
-        <SettingsRow glyph="compass" title="Change plan" detail={premium ? `Yearly · ${price}` : 'Free'} onPress={() => router.push('/paywall')} />
-        <SettingsRow glyph="gift" title="Redeem a code" />
-        <SettingsRow glyph="restore" title="Restore purchases" last />
-      </SettingsGroup>
-
-      <SettingsGroup header="Billing">
-        <SettingsRow glyph="card" title="Payment method" detail="Apple ID" />
-        <SettingsRow glyph="doc" title="Receipts & invoices" last />
-      </SettingsGroup>
-
-      {premium ? (
-        <AppText center style={[sans('500'), { fontSize: 15, color: colors.textSoft, paddingVertical: 12 }]}>
-          Cancel subscription
-        </AppText>
-      ) : null}
-
-      {/* the shore, seeing you out */}
-      <View style={{ flex: 1 }} />
-      <View style={{ alignItems: 'center', paddingBottom: 24, opacity: 0.8 }}>
-        <View style={{ width: 176, height: 111, overflow: 'hidden', borderRadius: 12 }}>
-          <View style={{ position: 'absolute', left: 0, right: 0, top: -10, aspectRatio: 402 / 300 }}>
-            <WorldArt scene="shore" fit="xMidYMid meet" />
+            {premium ? (
+              <>
+                <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.09)', marginTop: 18, marginBottom: 14 }} />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <AppText style={[sans('400'), { fontSize: 14, color: '#55534E' }]}>Next charge</AppText>
+                  <AppText style={[sans('500'), { fontSize: 14, color: '#1D1C1A' }]}>
+                    {price} on {renews}
+                  </AppText>
+                </View>
+              </>
+            ) : null}
           </View>
-        </View>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textSoft, marginTop: 2 }]}>the long road, together.</AppText>
-      </View>
-    </Screen>
+
+          <GroupLabel text="Plan" top={276} />
+          <Card top={298}>
+            <Row icon={ICON.plan} title="Change plan" detail={premium ? `Yearly · ${price}` : 'Free'} onPress={() => router.push('/paywall')} />
+            <Row icon={ICON.code} title="Redeem a code" />
+            <Row icon={ICON.restore} title="Restore purchases" last />
+          </Card>
+
+          <GroupLabel text="Billing" top={490} />
+          <Card top={512}>
+            <Row icon={ICON.card} title="Payment method" detail="Apple ID" />
+            <Row icon={ICON.receipts} title="Receipts & invoices" last />
+          </Card>
+
+          {premium ? (
+            <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 658, fontSize: 15, color: '#8B8882' }]}>
+              Cancel subscription
+            </AppText>
+          ) : null}
+
+          {/* the shore, seeing you out */}
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 714, alignItems: 'center' }}>
+            <Svg width={90} height={30} viewBox="0 0 90 30">
+              <Path d="M6 20c8-11 16-11 24 0s16 11 24 0 14-9 30-4" stroke="rgba(0,0,0,0.25)" strokeWidth={2.2} fill="none" strokeLinecap="round" />
+            </Svg>
+            {/* the canvas's swell is an inline <svg> on a text baseline, so its
+                line box carries the 16px strut's ~3.7pt descent under the 30pt
+                art before the caption's own 2pt margin */}
+            <AppText style={[sans('500'), { marginTop: 5.7, fontSize: 12.5, color: '#8B8882' }]}>the long road, together.</AppText>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }

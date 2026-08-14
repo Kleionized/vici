@@ -33,8 +33,11 @@ export const upsert = mutation({
     date: v.string(),
     sleepHours: v.optional(v.number()),
     mood: v.optional(v.number()),
+    energy: v.optional(v.number()),
     emotions: v.optional(v.array(v.string())),
     reasons: v.optional(v.array(v.string())),
+    dailyAction: v.optional(v.string()),
+    dailyActionDone: v.optional(v.boolean()),
     movedBody: v.optional(v.boolean()),
     socialContact: v.optional(v.boolean()),
     structureFollowed: v.optional(v.boolean()),
@@ -46,17 +49,13 @@ export const upsert = mutation({
       .query('dailyCheckins')
       .withIndex('by_user_date', (q) => q.eq('userId', userId).eq('date', args.date))
       .unique();
-    const fields = {
-      sleepHours: args.sleepHours,
-      mood: args.mood,
-      emotions: args.emotions,
-      reasons: args.reasons,
-      movedBody: args.movedBody,
-      socialContact: args.socialContact,
-      structureFollowed: args.structureFollowed,
-      note: args.note,
-    };
+    // A day is written by several hands — the morning check-in, the night one,
+    // and Today ticking off the day's action. `patch` clears any key set to
+    // undefined, so an upsert that named every field would have the last writer
+    // erase everything it happened not to carry. Only send what was passed.
+    const { date, ...rest } = args;
+    const fields = Object.fromEntries(Object.entries(rest).filter(([, v]) => v !== undefined));
     if (existing) await ctx.db.patch(existing._id, fields);
-    else await ctx.db.insert('dailyCheckins', { userId, date: args.date, ...fields });
+    else await ctx.db.insert('dailyCheckins', { userId, date, ...fields });
   },
 });

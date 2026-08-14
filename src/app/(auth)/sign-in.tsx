@@ -1,36 +1,58 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Platform, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Svg, { Path } from 'react-native-svg';
 
-import { AK, AppleMark, AuthBtn, AuthField, AuthGhostLink, AuthNote, AuthSurface, GoogleMark, MailMark } from '@/components/auth/kit';
-import { AppText } from '@/components/ui';
+import { AppleMark, EnvelopeMark, GoogleMark, PaperAuthButton, PaperAuthField, PaperAuthGlow, PaperAuthSurface } from '@/components/auth/kit';
+import { AppText, PressScale } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
-import { fonts } from '@/lib/theme';
+import { colors, sans } from '@/lib/theme';
 
-type Mode = 'providers' | 'email' | 'verify';
+/**
+ * 045 · Login — Empty and 046 · Login — Typing.
+ *
+ * One screen with two faces. At rest it introduces itself: the letter mark,
+ * a welcome, and the two one-tap ways in, with the email field kept below an
+ * "or". The moment the field is live the pitch gets out of the way — the mark
+ * slides up, the pitch collapses to a single line, and the pill becomes
+ * "Let's Go", because the keyboard is about to take half the screen.
+ *
+ * Both faces are fixed compositions, so they are laid out at the canvas's own
+ * offsets: the 393 × 852 frame's status bar ends at 54, and every `top` below
+ * is that design y minus 54, measured from the safe area.
+ */
 
-// ── Sign in (canvas: auth-signin) — the ink surface: "Welcome back."
-// centered on the dawn, providers at the foot. Email opens the dark,
-// letterpressed field form. ──
+type Mode = 'email' | 'password' | 'verify';
+
 export default function SignIn() {
   const router = useRouter();
   const { signInWithPassword, signInWithSSO, verifySignInCode, resendSignInCode } = useAuth();
-
-  const [mode, setMode] = useState<Mode>('providers');
+  const [mode, setMode] = useState<Mode>('email');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
+  const [focused, setFocused] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [ssoLoading, setSsoLoading] = useState(false);
 
   const reset = () => {
     setError(null);
     setNotice(null);
   };
-  const back = () => (router.canGoBack() ? router.back() : router.replace('/(auth)/splash'));
+  const back = () => {
+    reset();
+    if (mode === 'verify') return setMode('password');
+    setMode('email');
+  };
+
+  const continueWithEmail = () => {
+    if (!email.trim()) return setError('Enter your email address to carry on.');
+    reset();
+    setMode('password');
+  };
 
   async function submitPassword() {
     setLoading(true);
@@ -52,91 +74,250 @@ export default function SignIn() {
   }
 
   async function sso(strategy: 'oauth_apple' | 'oauth_google') {
-    setSsoLoading(true);
+    setLoading(true);
     reset();
     const res = await signInWithSSO(strategy);
-    setSsoLoading(false);
+    setLoading(false);
     if (res.ok) return router.replace('/');
-    if (res.error) setNotice(res.error);
+    setError(res.error ?? 'Could not complete sign in.');
   }
 
-  // ── verify: the emailed sign-in code ────────────────────────────────
-  if (mode === 'verify') {
-    return (
-      <>
-        <StatusBar style="light" />
-        <AuthSurface onClose={() => setMode('email')} brand={false}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: 14 }} keyboardShouldPersistTaps="handled">
-            <AppText center style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 38, color: AK.ink }}>
-              Check your email.
-            </AppText>
-            <AppText center style={{ fontFamily: fonts.sans, fontSize: 14, lineHeight: 21, color: AK.ink2, marginBottom: 8 }}>
-              A code is on its way to {email.trim() || 'your email'}.
-            </AppText>
-            <AuthField label="Verification code" value={code} onChangeText={setCode} placeholder="123456" keyboardType="number-pad" autoCapitalize="none" />
-            {error ? <AuthNote danger>{error}</AuthNote> : null}
-            {notice ? <AuthNote>{notice}</AuthNote> : null}
-            <AuthBtn variant="light" label="Verify & continue" onPress={submitCode} loading={loading} />
-            <AuthGhostLink
-              pre="Didn’t get it?"
-              strong="Resend code"
-              onPress={async () => {
-                reset();
-                const r = await resendSignInCode();
-                if (!r.ok) setError(r.error ?? 'Could not resend code.');
-                else setNotice('Code re-sent.');
-              }}
-            />
-          </ScrollView>
-        </AuthSurface>
-      </>
-    );
-  }
+  // The board switches the moment the field is in play.
+  const typing = focused || email.length > 0;
 
-  // ── email + password ────────────────────────────────────────────────
   if (mode === 'email') {
     return (
-      <>
-        <StatusBar style="light" />
-        <AuthSurface onClose={() => setMode('providers')} brand={false}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: 10 }} keyboardShouldPersistTaps="handled">
-            <AppText center style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 38, color: AK.ink, marginBottom: 14 }}>
-              Welcome back.
-            </AppText>
-            <AuthField label="Email" value={email} onChangeText={setEmail} placeholder="you@email.com" keyboardType="email-address" autoCapitalize="none" />
-            <AuthField label="Password" value={password} onChangeText={setPassword} placeholder="••••••••" secureTextEntry autoCapitalize="none" />
-            {error ? <AuthNote danger>{error}</AuthNote> : null}
-            {notice ? <AuthNote>{notice}</AuthNote> : null}
-            <View style={{ marginTop: 6, gap: 12 }}>
-              <AuthBtn variant="light" label="Sign in" onPress={submitPassword} loading={loading} />
-              <AuthGhostLink pre="New here?" strong="Create an account" onPress={() => router.push('/(auth)/sign-up')} />
+      <View style={{ flex: 1, backgroundColor: colors.bg }}>
+        <StatusBar style="dark" />
+        <PaperAuthGlow />
+        <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+          <View style={{ flex: 1 }}>
+            {/* the mark rides up 10 when the keyboard is coming — design y 150 → 140 */}
+            <View style={{ position: 'absolute', left: 0, right: 0, top: typing ? 86 : 96, alignItems: 'center' }}>
+              <EnvelopeMark />
             </View>
-          </ScrollView>
-        </AuthSurface>
-      </>
+
+            {typing ? (
+              <>
+                <AppText style={[sans('400'), { position: 'absolute', left: 24, top: 316, fontSize: 15, color: colors.textTitle }]}>
+                  Sign in to keep building toward the life you want
+                </AppText>
+
+                <View
+                  style={{
+                    position: 'absolute',
+                    left: 24,
+                    right: 24,
+                    top: 347,
+                    height: 58,
+                    borderRadius: 16,
+                    backgroundColor: colors.surface,
+                    borderWidth: 2,
+                    borderColor: 'rgba(0,0,0,0.24)',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingLeft: 20,
+                    paddingRight: 18,
+                  }}>
+                  <EmailInput value={email} onChangeText={setEmail} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onSubmit={continueWithEmail} autoFocus />
+                  {email.length ? (
+                    <PressScale
+                      onPress={() => {
+                        setEmail('');
+                        reset();
+                      }}
+                      accessibilityRole="button"
+                      accessibilityLabel="Clear email"
+                      hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+                      style={{ width: 24, height: 24, minHeight: 0 }}>
+                      <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+                        <Path d="M5 5l14 14M19 5L5 19" stroke="#8B8882" strokeWidth={2.2} strokeLinecap="round" />
+                      </Svg>
+                    </PressScale>
+                  ) : null}
+                </View>
+
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 409 }}>
+                  <Message error={error} notice={notice} />
+                </View>
+
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 429 }}>
+                  <PaperAuthButton label="Let's Go" onPress={continueWithEmail} />
+                </View>
+              </>
+            ) : (
+              <>
+                <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 326, fontSize: 27, letterSpacing: -0.2, color: colors.text }]}>Welcome back.</AppText>
+                <AppText style={[sans('400'), { position: 'absolute', left: 24, top: 366, fontSize: 14.5, color: colors.textSoft }]}>Sign in to keep the run going.</AppText>
+
+                <PressScale
+                  onPress={() => void sso('oauth_apple')}
+                  disabled={loading}
+                  accessibilityRole="button"
+                  style={{ position: 'absolute', left: 24, right: 24, top: 418, height: 54, borderRadius: 27, backgroundColor: colors.ink, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9 }}>
+                  <AppleMark color="#FFFFFF" />
+                  <AppText style={[sans('600'), { fontSize: 16, color: '#FFFFFF' }]}>Continue with Apple</AppText>
+                </PressScale>
+
+                <PressScale
+                  onPress={() => void sso('oauth_google')}
+                  disabled={loading}
+                  accessibilityRole="button"
+                  style={{ position: 'absolute', left: 24, right: 24, top: 484, height: 54, borderRadius: 27, backgroundColor: colors.surface, boxShadow: '0 0 0 1px rgba(0,0,0,0.12)', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+                  <GoogleMark />
+                  <AppText style={[sans('600'), { fontSize: 16, color: colors.text }]}>Continue with Google</AppText>
+                </PressScale>
+
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 560, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                  <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
+                  <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textSoft }]}>or</AppText>
+                  <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
+                </View>
+
+                <View
+                  style={{
+                    position: 'absolute',
+                    left: 24,
+                    right: 24,
+                    top: 588,
+                    height: 56,
+                    borderRadius: 16,
+                    backgroundColor: colors.surface,
+                    boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: 12,
+                    paddingLeft: 20,
+                    paddingRight: 8,
+                  }}>
+                  <EmailInput value={email} onChangeText={setEmail} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onSubmit={continueWithEmail} size={16.5} />
+                  <PressScale
+                    onPress={continueWithEmail}
+                    accessibilityRole="button"
+                    accessibilityLabel="Continue with email"
+                    style={{ width: 40, height: 40, minHeight: 0, borderRadius: 20, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
+                    <Svg width={15} height={13} viewBox="0 0 16 14" fill="none">
+                      <Path d="M1.5 7h12M9 2.5L13.5 7 9 11.5" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                    </Svg>
+                  </PressScale>
+                </View>
+
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 650 }}>
+                  <Message error={error} notice={notice} />
+                </View>
+
+                <PressScale
+                  onPress={() => router.push('/(auth)/sign-up')}
+                  accessibilityRole="button"
+                  hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
+                  style={{ position: 'absolute', left: 0, right: 0, top: 686, minHeight: 0, alignItems: 'center' }}>
+                  <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textSoft }]}>
+                    New here? <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Create an account</AppText>
+                  </AppText>
+                </PressScale>
+              </>
+            )}
+          </View>
+        </SafeAreaView>
+      </View>
     );
   }
 
-  // ── providers — the design's sign-in board ──────────────────────────
   return (
     <>
-      <StatusBar style="light" />
-      <AuthSurface onClose={back} dawn>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <AppText center style={{ fontFamily: fonts.serif, fontSize: 37, lineHeight: 43, color: AK.ink }}>
-            Welcome back.
-          </AppText>
-        </View>
-        <View style={{ gap: 12 }}>
-          {notice ? <AuthNote>{notice}</AuthNote> : null}
-          <AuthBtn variant="light" mark={<AppleMark color={AK.bg0} />} label="Continue with Apple" loading={ssoLoading} onPress={() => sso('oauth_apple')} />
-          <AuthBtn mark={<GoogleMark />} label="Continue with Google" loading={ssoLoading} onPress={() => sso('oauth_google')} />
-          <AuthBtn mark={<MailMark color={AK.ink} />} label="Continue with email" onPress={() => setMode('email')} />
-          <View style={{ marginTop: 8 }}>
-            <AuthGhostLink pre="New here?" strong="Create an account" onPress={() => router.push('/(auth)/sign-up')} />
+      <StatusBar style="dark" />
+      <PaperAuthSurface onBack={back} glow>
+        {mode === 'password' ? (
+          <View style={{ flex: 1, justifyContent: 'center', gap: 14 }}>
+            <AppText center style={[sans('500'), { fontSize: 22, letterSpacing: 0.1, color: colors.text, marginBottom: 18 }]}>Welcome back.</AppText>
+            <PaperAuthField label="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoComplete="email" />
+            <PaperAuthField
+              label="Password"
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Your password"
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="current-password"
+              returnKeyType="go"
+              onSubmitEditing={() => password && void submitPassword()}
+            />
+            <Message error={error} notice={notice} />
+            <View style={{ marginTop: 10 }}>
+              <PaperAuthButton label={loading ? 'Signing in…' : 'Sign in'} disabled={loading} onPress={() => (password ? void submitPassword() : setError('Enter your password.'))} />
+            </View>
           </View>
-        </View>
-      </AuthSurface>
+        ) : (
+          <View style={{ flex: 1, justifyContent: 'center', gap: 14 }}>
+            <AppText center style={[sans('500'), { fontSize: 22, letterSpacing: 0.1, color: colors.text }]}>Check your email.</AppText>
+            <AppText center style={[sans('400'), { fontSize: 14.5, lineHeight: 21, color: colors.textMuted, marginBottom: 12 }]}>A code is on its way to {email.trim()}.</AppText>
+            <PaperAuthField label="Verification code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
+            <Message error={error} notice={notice} />
+            <PaperAuthButton label={loading ? 'Checking…' : 'Verify & continue'} disabled={loading} onPress={() => (code.trim() ? void submitCode() : setError('Enter the code we sent.'))} />
+            <PressScale
+              onPress={async () => {
+                reset();
+                const result = await resendSignInCode();
+                if (!result.ok) setError(result.error ?? 'Could not resend code.');
+                else setNotice('Code re-sent.');
+              }}
+              style={{ minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
+              <AppText style={[sans('500'), { fontSize: 14.5, color: colors.textMuted }]}>Resend code</AppText>
+            </PressScale>
+          </View>
+        )}
+      </PaperAuthSurface>
     </>
   );
+}
+
+/** The bare email input the two login states share. */
+function EmailInput({
+  value,
+  onChangeText,
+  onFocus,
+  onBlur,
+  onSubmit,
+  size = 19,
+  autoFocus,
+}: {
+  value: string;
+  onChangeText: (v: string) => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  onSubmit: () => void;
+  size?: number;
+  autoFocus?: boolean;
+}) {
+  return (
+    <TextInput
+      value={value}
+      onChangeText={onChangeText}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onSubmitEditing={onSubmit}
+      autoFocus={autoFocus}
+      placeholder="yourname@email.com"
+      placeholderTextColor="rgba(90,88,82,0.5)"
+      // the canvas draws a 2.5pt ink caret beside the address; the system one
+      // is the only caret we get, so it is tinted to match
+      selectionColor={colors.ink}
+      keyboardType="email-address"
+      autoCapitalize="none"
+      autoComplete="email"
+      textContentType="emailAddress"
+      returnKeyType="next"
+      style={[
+        sans('400'),
+        { flex: 1, fontSize: size, color: colors.text, paddingVertical: 0 },
+        Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
+      ]}
+    />
+  );
+}
+
+function Message({ error, notice }: { error: string | null; notice: string | null }) {
+  const message = error || notice;
+  if (!message) return null;
+  return <AppText center selectable style={[sans('500'), { fontSize: 13, lineHeight: 19, color: error ? colors.danger : colors.textMuted }]}>{message}</AppText>;
 }

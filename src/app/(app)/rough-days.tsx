@@ -1,121 +1,93 @@
+import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { Pressable, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView, View } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Glyph } from '@/components/ui';
-import { RD_PROTOCOLS, RD_SECTIONS } from '@/content/roughDays';
-import { colors, fonts, sans, spacing } from '@/lib/theme';
+import { AppText, PressScale } from '@/components/ui';
+import { RD_KEYS, RD_PROTOCOLS } from '@/content/roughDays';
+import { sans } from '@/lib/theme';
 
-// ── Rough days · the library (canvas: rd-library) — the whole book,
-// grouped: the universal First-90-Seconds interrupt up top (always one
-// tap away), then 29 protocols in three sections. ──
+const noiseDark = require('../../../assets/images/noise-dark.png');
 
-function RDGlyphIcon({ name, color, size = 19 }: { name: string; color: string; size?: number }) {
-  const g = (Glyph as Record<string, (c: string) => React.ReactNode>)[name] || (Glyph as Record<string, (c: string) => React.ReactNode>).compass;
+/**
+ * Rough days — the way in. The v3 canvas dropped its own library page and now
+ * draws only the seven protocols themselves (frames 001–021), each opening on
+ * its own "walk through it" page. This is the shelf those seven sit on: the
+ * universal interrupt on top, then the seven, in canvas order.
+ *
+ * Laid out from the 393 × 852 frame: the status bar ends at 54, so every
+ * canvas top below is quoted with 54 already taken off it.
+ */
+
+function Row({ title, last, onPress }: { title: string; last: boolean; onPress: () => void }) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      {g(color)}
-    </Svg>
+    <PressScale
+      onPress={onPress}
+      // canvas: 12.5px of padding above and below a 15px line, hairline under
+      style={{ height: last ? 43 : 44, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 12, borderBottomWidth: last ? 0 : 1, borderBottomColor: 'rgba(0,0,0,0.06)' }}>
+      <AppText style={[sans('500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{title}</AppText>
+      <Svg width={7} height={12} viewBox="0 0 8 14">
+        <Path d="M1.5 1.5 6 7l-4.5 5.5" stroke="rgba(0,0,0,0.28)" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </Svg>
+    </PressScale>
   );
 }
 
 export default function RoughDays() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 26, paddingBottom: 120 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
-            <Pressable
-              onPress={() => (router.canGoBack() ? router.back() : router.navigate('/(app)/log'))}
-              hitSlop={8}
-              accessibilityLabel="Back"
-              style={{ padding: 4, marginLeft: -4 }}>
-              <Svg width={12} height={20} viewBox="0 0 13 22">
-                <Path d="M11 2L2 11l9 9" stroke={colors.text} strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </Pressable>
-          </View>
-          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 34, letterSpacing: 0.34, color: colors.text, marginTop: 12 }}>
-            Rough days
-          </AppText>
-          <AppText style={[sans('400'), { fontSize: 14.5, lineHeight: 22, color: colors.textMuted, marginTop: 10 }]}>
-            Open the page that matches your moment. One move at a time, no reading ahead.
-          </AppText>
-
-          {/* the universal interrupt — always first, always one tap away */}
-          <Pressable
-            onPress={() => router.push('/rough-first90')}
-            style={({ pressed }) => ({
-              marginTop: 22,
-              backgroundColor: '#141414',
-              borderRadius: 20,
-              padding: 20,
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 16,
-              transform: [{ scale: pressed ? 0.99 : 1 }],
-            })}>
-            <View style={{ width: 46, height: 46, borderRadius: 9999, backgroundColor: 'rgba(245,244,241,0.1)', alignItems: 'center', justifyContent: 'center' }}>
-              <RDGlyphIcon name="spark" color="#F5F4F1" size={24} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 1.9, textTransform: 'uppercase', color: 'rgba(245,244,241,0.55)' }]}>
-                An urge, right now?
-              </AppText>
-              <AppText style={{ fontFamily: fonts.serif, fontSize: 20, color: '#F5F4F1', marginTop: 4 }}>The First 90 Seconds</AppText>
-            </View>
-            <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
-              <Path d="M1.5 1l6 7-6 7" stroke="rgba(245,244,241,0.5)" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: insets.bottom + 44 }}>
+          {/* design y 64 */}
+          <PressScale
+            onPress={() => (router.canGoBack() ? router.back() : router.navigate('/(app)/library'))}
+            accessibilityLabel="Back"
+            hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+            style={{ marginTop: 10, marginLeft: 16, height: 20, minHeight: 0, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Svg width={11} height={19} viewBox="0 0 11 19">
+              <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
             </Svg>
-          </Pressable>
+            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+          </PressScale>
 
-          {/* the sections */}
-          {RD_SECTIONS.map((sec) => (
-            <View key={sec.label} style={{ marginTop: 32 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', paddingHorizontal: 4 }}>
-                <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 1.8, textTransform: 'uppercase', color: colors.textSoft }]}>
-                  {sec.label}
-                </AppText>
-                <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textSoft }]}>{sec.keys.length}</AppText>
-              </View>
-              <View style={{ backgroundColor: colors.surface, borderRadius: 20, marginTop: 10, overflow: 'hidden' }}>
-                {sec.keys.map((key, i) => {
-                  const p = RD_PROTOCOLS[key];
-                  return (
-                    <Pressable
-                      key={key}
-                      onPress={() => router.push({ pathname: '/rough-protocol', params: { key } })}
-                      style={({ pressed }) => ({
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 14,
-                        paddingVertical: 14,
-                        paddingHorizontal: 18,
-                        borderBottomWidth: i < sec.keys.length - 1 ? 1 : 0,
-                        borderBottomColor: colors.border,
-                        backgroundColor: pressed ? colors.accentSoft : 'transparent',
-                      })}>
-                      <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
-                        <RDGlyphIcon name={p.icon} color={colors.text} />
-                      </View>
-                      <AppText style={[sans('500'), { flex: 1, fontSize: 15.5, color: colors.text }]}>{p.title}</AppText>
-                      <Svg width={8} height={14} viewBox="0 0 8 14" fill="none">
-                        <Path d="m1.5 1.5 5 5.5-5 5.5" stroke={colors.textSoft} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
-                      </Svg>
-                    </Pressable>
-                  );
-                })}
-              </View>
+          {/* design y 122 */}
+          <AppText style={[sans('600'), { marginTop: 38, marginLeft: 24, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Rough days</AppText>
+
+          {/* design y 196 — the universal interrupt */}
+          <PressScale
+            onPress={() => router.push('/rough-first90')}
+            style={{ marginTop: 41.6, marginHorizontal: 24, borderRadius: 18, backgroundColor: '#131313', paddingHorizontal: 20, paddingVertical: 18, flexDirection: 'row', alignItems: 'center', gap: 14, overflow: 'hidden' }}>
+            <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} pointerEvents="none" />
+            <View style={{ flex: 1 }}>
+              <AppText style={[sans('600'), { fontSize: 12.5, color: 'rgba(245,244,241,0.62)' }]}>The universal interrupt</AppText>
+              <AppText style={[sans('600'), { marginTop: 6, fontSize: 17, color: '#F5F4F1' }]}>The First 90 Seconds</AppText>
+              <AppText style={[sans('400'), { marginTop: 3, fontSize: 13, color: 'rgba(245,244,241,0.62)' }]}>Two quick asks, six tailored moves.</AppText>
             </View>
-          ))}
+            <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(245,244,241,0.14)', alignItems: 'center', justifyContent: 'center' }}>
+              <Svg width={14} height={12} viewBox="0 0 16 14">
+                <Path d="M8 1.5L14.5 7 8 12.5M14 7H1.5" stroke="#F5F4F1" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </Svg>
+            </View>
+          </PressScale>
 
-          <AppText
-            center
-            style={{ fontFamily: fonts.serif, fontSize: 16, lineHeight: 23, color: colors.textSoft, maxWidth: 260, alignSelf: 'center', marginTop: 34 }}>
-            Nothing here resets your progress. A hard day is weather, not a verdict.
-          </AppText>
+          {/* design y 318 for the label, 340 for the card */}
+          <AppText style={[sans('600'), { marginTop: 26, marginLeft: 28, fontSize: 12.5, color: '#8B8882' }]}>What today feels like</AppText>
+          <View style={{ marginTop: 7, marginHorizontal: 24, borderRadius: 18, backgroundColor: '#FFFFFF', paddingHorizontal: 20, paddingVertical: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.09)' }}>
+            {RD_KEYS.map((key, i) => (
+              <Row
+                key={key}
+                title={RD_PROTOCOLS[key].title}
+                last={i === RD_KEYS.length - 1}
+                onPress={() => router.push({ pathname: '/rough-protocol', params: { key } })}
+              />
+            ))}
+          </View>
         </ScrollView>
       </SafeAreaView>
     </View>

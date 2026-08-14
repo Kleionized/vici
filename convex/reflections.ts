@@ -1,7 +1,24 @@
 import { v } from 'convex/values';
 
-import { mutation } from './_generated/server';
-import { requireUserId } from './utils';
+import { mutation, query } from './_generated/server';
+import { getUserIdOrNull, requireUserId } from './utils';
+
+/**
+ * One lesson's reflection. Lesson *content* ships in the app bundle, so the
+ * reader must be able to fetch what it wrote about a lesson without the
+ * `lessons` table knowing that lesson exists.
+ */
+export const getForLesson = query({
+  args: { slug: v.string() },
+  handler: async (ctx, { slug }) => {
+    const userId = await getUserIdOrNull(ctx);
+    if (!userId) return null;
+    return await ctx.db
+      .query('reflections')
+      .withIndex('by_user_lesson', (q) => q.eq('userId', userId).eq('lessonSlug', slug))
+      .unique();
+  },
+});
 
 export const save = mutation({
   args: {

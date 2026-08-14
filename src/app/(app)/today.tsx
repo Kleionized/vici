@@ -1,565 +1,568 @@
 import { Image } from 'expo-image';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
-import { Animated, Pressable, ScrollView, View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
+import { useId, useRef, useState } from 'react';
+import { ScrollView, View, useWindowDimensions } from 'react-native';
+import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { type Challenge, ChallengeSheet } from '@/components/ChallengeSheet';
-import { AppText, Laurel, LoadingView, Screen } from '@/components/ui';
-import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useLessonProgressMap, useTodayCheckin } from '@/lib/backend';
-import { toDateKey } from '@/lib/date';
-import { colors, fonts, sans, spacing } from '@/lib/theme';
+import { useTabBarHeight } from '@/components/StoicTabBar';
+import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { BedArt, type DayStep, DoorwayArt, LessonDome, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
+import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
+import { buildScore } from '@/lib/score';
+import { colors, fonts, sans } from '@/lib/theme';
 
-// ── the canvas "Today" board: streak pill · DAY <roman> · avatar, the big
-// Newsreader maxim, one dark NEXT LESSON card, a hairline checklist, and
-// the week-moods strip; wave-divider footer over the valley river. ──
+/**
+ * 21 · Today — two pages, scrolled down.
+ *
+ * Page one answers "where am I": the day count, the score drawn as the night
+ * you are climbing out of, and the lesson in front of you. Page two is the
+ * day's own record — this morning's readings, the one step still in front of
+ * you, and the pledge you signed. The mark, the profile door and the urge bar
+ * hold across both, because those are the three things that must stay reachable
+ * without reading anything.
+ *
+ * Laid out from the canvas's 393 × 852 frame: the status bar ends at 54, the
+ * urge bar starts at 705 and the tab bar at 769.
+ */
 
-const MOOD_TONES = colors.moodTones;
-const MOOD_WORDS = ['Low', 'Down', 'Fine', 'Good', 'Radiant'];
-const CARD = colors.surface;
-const RING = colors.ring;
+const laurelMark = require('../../../assets/images/laurel-mark.webp');
+const noiseDark = require('../../../assets/images/noise-dark.png');
 
-/** 1 → I, 24 → XXIV … the campaign speaks in Roman numerals. */
-function roman(n: number): string {
-  const table: [number, string][] = [
-    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'],
-    [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
-  ];
-  let out = '';
-  let x = Math.max(1, Math.round(n));
-  for (const [v, s] of table) {
-    while (x >= v) {
-      out += s;
-      x -= v;
-    }
-  }
-  return out;
-}
+const MOOD_WORD = ['Heavy', 'Low', 'Fine', 'Good', 'Clear'];
+const ENERGY_WORD = ['Empty', 'Low', 'Steady', 'Good', 'Full'];
 
-// One Stoic line per day up top; a second, attributed Epictetus quote closes
-// the page (the design's footer: laurel divider · quote · EPICTETUS).
-// recovery maxims — one per day, rotating with the campaign day
-const MAXIMS = [
-  'This too shall pass.',
-  'Habit is overcome by habit.',
-  'Perhaps one day it will be pleasing to remember even this.',
-  'Fall seven times, stand up eight.',
-  'No man is free who is not master of himself.',
-  'The chains of habit are too light to be felt until they are too heavy to be broken.',
-  'You cannot conquer what you keep feeding.',
-  'One day, taken whole, is enough.',
+/**
+ * The steps the card falls back on when nobody has named the day's action yet.
+ * The first is the one the canvas draws; the rest follow its shape — when it
+ * belongs, one plain sentence, and the thing itself drawn into the card's night.
+ */
+const DAY_STEPS: DayStep[] = [
+  { when: 'Tonight', caption: 'Put your phone somewhere difficult to access before you sleep.', art: PhoneDownArt },
+  { when: 'Today', caption: 'Drink a full glass of water before anything else.', art: WaterArt },
+  { when: 'Today', caption: 'Get outside for ten minutes, even if it is only around the block.', art: DoorwayArt },
+  { when: 'Today', caption: 'Write down what set it off, in the words you would say out loud.', art: NoteArt },
+  { when: 'Before bed', caption: 'Make the bed now, so tonight you walk into a room that is ready.', art: BedArt },
 ];
-
-// ── the header weather glyph — Material Symbols FILL=1 (exact Google path
-// data), one icon per mood: storm, rain, cloud, sun-behind-cloud, full sun.
-// No mood logged yet → partly_cloudy_day in quiet grey. ──
-const WEATHER_PATHS = [
-  // Low — thunderstorm
-  'm462 0 94-107-80-40 116-133h106l-94 107 80 40L568 0H462ZM222 0l94-107-80-40 116-133h106l-94 107 80 40L328 0H222Zm78-320q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Z',
-  // Down — rainy
-  'M558-84q-15 8-30.5 2.5T504-102l-60-120q-8-15-2.5-30.5T462-276q15-8 30.5-2.5T516-258l60 120q8 15 2.5 30.5T558-84Zm240 0q-15 8-30.5 2.5T744-102l-60-120q-8-15-2.5-30.5T702-276q15-8 30.5-2.5T756-258l60 120q8 15 2.5 30.5T798-84Zm-480 0q-15 8-30.5 2.5T264-102l-60-120q-8-15-2.5-30.5T222-276q15-8 30.5-2.5T276-258l60 120q8 15 2.5 30.5T318-84Zm-18-236q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Z',
-  // Fine — cloud
-  'M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H260Z',
-  // Good — partly_cloudy_day
-  'M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z',
-  // Radiant — sunny
-  'M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Z',
-];
-function WeatherMark({ mood }: { mood: number | null }) {
-  const tone = mood != null ? MOOD_TONES[mood] : colors.textSoft;
-  const d = WEATHER_PATHS[mood ?? 3];
-  return (
-    <Svg width={21} height={21} viewBox="0 -960 960 960">
-      <Path fill={tone} d={d} />
-    </Svg>
-  );
-}
-
-// ── the challenge-hero glyphs — white marks on the ink panel ──
-function StepGlyph({ kind }: { kind: 'lesson' | 'mood' | 'log' }) {
-  const c = colors.inkText;
-  if (kind === 'lesson') {
-    return (
-      <Svg width={56} height={56} viewBox="0 0 24 24" fill="none">
-        <Path d="M12 6.5C10.6 5 8.6 4.2 6.2 4.2c-1 0-1.9.14-2.7.4V18c.8-.26 1.7-.4 2.7-.4 2.4 0 4.4.8 5.8 2.3 1.4-1.5 3.4-2.3 5.8-2.3 1 0 1.9.14 2.7.4V4.6c-.8-.26-1.7-.4-2.7-.4-2.4 0-4.4.8-5.8 2.3Z" stroke={c} strokeWidth={1.6} strokeLinejoin="round" />
-        <Path d="M12 6.5V19.9" stroke={c} strokeWidth={1.6} />
-      </Svg>
-    );
-  }
-  if (kind === 'mood') {
-    return (
-      <Svg width={56} height={56} viewBox="0 -960 960 960">
-        <Path
-          fill={c}
-          d="M240-160q-66 0-113-47T80-320q0-66 47-113t113-47q48 0 88.5 26t58.5 71l10 23h24q42 0 70.5 29t28.5 71q0 42-29 71t-71 29H240Zm359-112q-4-63-45.5-109T449-438q-31-54-83.5-85.5T250-560q26-73 89-116.5T480-720q100 0 170 70t70 170q0 65-32 120.5T599-272ZM440-760v-160h80v160h-80Zm266 110-56-56 112-114 57 57-113 113Zm54 210v-80h160v80H760Zm2 300L650-254l56-56 114 112-58 58ZM254-650 141-763l57-57 112 114-56 56Z"
-        />
-      </Svg>
-    );
-  }
-  return (
-    <Svg width={56} height={56} viewBox="0 0 24 24" fill="none">
-      <Path d="m5 19 .9-3.6L16.6 4.7a1.7 1.7 0 0 1 2.4 0l.3.3a1.7 1.7 0 0 1 0 2.4L8.6 18.1 5 19Z" stroke={c} strokeWidth={1.6} strokeLinejoin="round" />
-      <Path d="M14.8 6.5l2.7 2.7" stroke={c} strokeWidth={1.6} />
-    </Svg>
-  );
-}
 
 export default function Today() {
   const router = useRouter();
-  // the header rule retreats to its middle as the page scrolls
-  const scrollY = useRef(new Animated.Value(0)).current;
-  const [challenge, setChallenge] = useState<(Challenge & { go: () => void }) | null>(null);
   const user = useCurrentUser();
   const current = useCurrentLesson();
-  const todayCheckin = useTodayCheckin();
+  const progress = useLessonProgressMap();
   const checkins = useCheckins();
   const events = useEvents();
-  const progressMap = useLessonProgressMap();
+  const journal = useJournalEntries();
+  const [page, setPage] = useState(0);
+  const upsertCheckin = useUpsertCheckin();
+  const pager = useRef<ScrollView>(null);
+  // Both pages are exactly one viewport tall, so the scroll snaps between them.
+  // Computed rather than measured: onLayout on web settles a frame late and the
+  // first page would render at its natural height.
+  const insets = useSafeAreaInsets();
+  const pageH = useWindowDimensions().height - insets.top - 37 - 64 - useTabBarHeight();
+  // Read once on mount: the day count and today's key must not shift under a
+  // re-render while the screen is open.
+  const [now] = useState(() => Date.now());
 
-  if (user === undefined || current === undefined) {
-    return (
-      <Screen>
-        <LoadingView />
-      </Screen>
-    );
+  if (current === undefined || progress === undefined || checkins === undefined || events === undefined) {
+    return <LoadingView />;
   }
 
-  // Day number = days into the campaign (since the account began), 1-based.
-  const dayNumber = user?.createdAt ? Math.max(1, Math.floor((Date.now() - user.createdAt) / 86400000) + 1) : 1;
-  const maximIdx = dayNumber % MAXIMS.length;
-  const maxim = MAXIMS[maximIdx];
-  // footer: an attributed Epictetus line (never index 0, never today's maxim)
-  let footerIdx = 1 + ((dayNumber + 3) % (MAXIMS.length - 1));
-  if (footerIdx === maximIdx) footerIdx = 1 + (footerIdx % (MAXIMS.length - 1));
-  const footerQuote = MAXIMS[footerIdx];
+  const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
+  const score = buildScore(checkins, events, lessonsDone, user?.createdAt);
 
-  // Sun–Sat week around today, with each day's logged mood (1–5 → tone index).
-  const sunday = new Date();
-  sunday.setDate(sunday.getDate() - sunday.getDay());
-  const todayKey = toDateKey(new Date());
-  const moodByDate = new Map((checkins ?? []).filter((c) => c.mood != null).map((c) => [c.date, c.mood as number]));
-  const week = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(sunday);
-    d.setDate(sunday.getDate() + i);
-    const key = toDateKey(d);
-    const mood = moodByDate.get(key);
-    return {
-      letter: 'SMTWTFS'[i],
-      key,
-      today: key === todayKey,
-      future: d.getTime() > Date.now() && key !== todayKey,
-      tone: mood != null ? Math.min(4, Math.max(0, Math.round(mood) - 1)) : null,
-    };
-  });
-  const loggedTones = week.filter((w) => w.tone != null).map((w) => w.tone as number);
-  const moodWord =
-    loggedTones.length === 0
-      ? 'this week'
-      : loggedTones.reduce((a, b) => a + b, 0) / loggedTones.length < 1.4
-        ? 'heavy'
-        : loggedTones.reduce((a, b) => a + b, 0) / loggedTones.length < 2.8
-          ? 'steady'
-          : 'lifting';
+  const n = new Date(now);
+  const todayKeyLocal = `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`;
+  const todayCheckin = checkins.find((c) => c.date === todayKeyLocal);
+  const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
+  const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : moodIdx;
+  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
 
-  // Today's steps — real, data-backed, each row navigates to its flow.
-  const loggedToday = (events ?? []).some((e) => toDateKey(new Date(e.createdAt)) === todayKey);
-  // Sun–Sat "did it that day" for each step, feeding the challenge sheets
-  const weekKeys = week.map((w) => w.key);
-  const todayIdx = new Date().getDay();
-  const dayHas = (pred: (key: string) => boolean) => weekKeys.map(pred);
-  const eventDays = new Set((events ?? []).map((e) => toDateKey(new Date(e.createdAt))));
-  const lessonDays = new Set(
-    Object.values(progressMap ?? {})
-      .filter((pr) => pr.status === 'completed' && pr.completedAt)
-      .map((pr) => toDateKey(new Date(pr.completedAt as number))),
-  );
-  const steps = [
-    {
-      id: 'lesson',
-      label: current ? 'Read today’s lesson' : 'Browse the journey',
-      done: current?.progress?.status === 'completed',
-      go: () => (current ? router.push(`/lesson/${current.lesson.slug}`) : router.navigate('/(app)/weeks')),
-      sub: current
-        ? `Today's is “${current.lesson.title}”, about ${current.lesson.estimatedMinutes ?? 3} minutes. One a day keeps the campaign moving.`
-        : 'Pick the next ground and its first lesson.',
-      cta: current ? 'Open the lesson' : 'Open the journey',
-      weekDone: dayHas((k) => lessonDays.has(k)),
-      glyph: <StepGlyph kind="lesson" />,
-    },
-    {
-      id: 'mood',
-      label: 'Log how you’re feeling',
-      done: todayCheckin?.mood != null,
-      go: () => router.push('/checkin'),
-      sub: 'Twenty seconds. Name the day\u2019s weather before it steers you.',
-      cta: 'Log the mood',
-      weekDone: week.map((w) => w.tone != null),
-      glyph: <StepGlyph kind="mood" />,
-    },
-    {
-      id: 'log',
-      label: 'Capture today in your log',
-      done: loggedToday,
-      go: () => router.navigate('/(app)/log'),
-      sub: 'One line a day: an urge ridden, a moment kept, a rough day named.',
-      cta: 'Open the log',
-      weekDone: dayHas((k) => eventDays.has(k)),
-      glyph: <StepGlyph kind="log" />,
-    },
-  ];
-  const doneCount = steps.filter((s) => s.done).length;
+  // The day's one action. The night check-in names it and files it under the
+  // day it is *for*, so by the time it reaches this card it is simply today's.
+  // Until someone names one, the card carries the day's own step instead.
+  const step: DayStep = todayCheckin?.dailyAction
+    ? { when: 'Today', caption: todayCheckin.dailyAction, art: NoteArt }
+    : DAY_STEPS[(day - 1) % DAY_STEPS.length];
+  const stepDone = todayCheckin?.dailyActionDone ?? false;
 
   return (
-    <Screen scroll={false} bleed contentStyle={{ paddingTop: spacing.sm }}>
-      {/* header: mood chip · DAY N · avatar — pinned above the scroll */}
-      <View
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        {/* the mark and the profile door — design y 64, 27 tall */}
+        <View style={{ height: 37, paddingTop: 10, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+          <Image source={laurelMark} contentFit="contain" style={{ width: 27, height: 27 }} />
+          <PressScale onPress={() => router.push('/profile')} accessibilityLabel="Open profile" hitSlop={16}>
+            <Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
+              <Circle cx={13} cy={9.5} r={4} stroke={colors.textMuted} strokeWidth={2} />
+              <Path d="M4.5 22.5c1-4.5 4.2-6.8 8.5-6.8s7.5 2.3 8.5 6.8" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" />
+            </Svg>
+          </PressScale>
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <ScrollView
+            ref={pager}
+            pagingEnabled
+            snapToInterval={pageH}
+            decelerationRate="fast"
+            showsVerticalScrollIndicator={false}
+            scrollEventThrottle={16}
+            onMomentumScrollEnd={(e) => setPage(Math.round(e.nativeEvent.contentOffset.y / Math.max(1, pageH)))}
+            style={{ flex: 1 }}>
+            <View style={{ height: pageH }}>
+              <PageOne
+                day={day}
+                score={score}
+                page={page}
+                lesson={current}
+                done={lessonsDone % 6}
+                onScore={() => router.push('/score')}
+                onLesson={() => (current ? router.push(`/lesson-overview/${current.lesson.slug}`) : router.push('/lessons-browser'))}
+              />
+            </View>
+            <View style={{ height: pageH }}>
+              <PageTwo
+                mood={moodIdx}
+                energy={energyIdx}
+                step={step}
+                stepDone={stepDone}
+                onStep={() => void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone })}
+                pledge={pledge}
+                name={user?.displayName}
+                onMorning={() => router.push('/day/morning')}
+                onPledges={() => router.push('/(app)/journal')}
+              />
+            </View>
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+
+      {/* the one door that stays open on every page */}
+      <PressScale
+        onPress={() => router.push('/urge')}
+        accessibilityRole="button"
+        accessibilityLabel="Urge surfing and SOS"
         style={{
-          position: 'relative',
+          height: 64,
+          borderTopLeftRadius: 18,
+          borderTopRightRadius: 18,
+          backgroundColor: colors.ink,
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingHorizontal: spacing.xl,
-          paddingBottom: 12,
-          backgroundColor: colors.bg,
-          zIndex: 2,
+          gap: 13,
+          paddingHorizontal: 16,
         }}>
-        <Pressable
-          onPress={() => router.push('/checkin')}
-          accessibilityLabel="Today's mood"
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 9999,
-            backgroundColor: '#FFFFFF',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {/* the day's weather, one glyph per mood, filled with today's tone */}
-          <WeatherMark
-            mood={todayCheckin?.mood != null ? Math.min(4, Math.max(0, Math.round(todayCheckin.mood) - 1)) : null}
-          />
-        </Pressable>
-
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', left: 0, right: 0, top: 7, alignItems: 'center', gap: 8 }}>
-          <AppText style={[sans('600'), { fontSize: 13.5, letterSpacing: 3.2, textTransform: 'uppercase', color: colors.text }]}>
-            {'Day ' + roman(dayNumber)}
-          </AppText>
-          <Animated.View
-            style={{
-              width: 40,
-              height: 1.5,
-              backgroundColor: colors.text,
-              transform: [
-                { scaleX: scrollY.interpolate({ inputRange: [0, 90], outputRange: [1, 0], extrapolate: 'clamp' }) },
-              ],
-            }}
-          />
-        </View>
-
-        <Pressable
-          onPress={() => router.push('/profile')}
-          hitSlop={8}
-          accessibilityLabel="Profile"
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 9999,
-            backgroundColor: colors.ink,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
-            <Circle cx={12} cy={9.2} r={3.1} stroke={colors.inkText} strokeWidth={1.6} />
-            <Path d="M5.9 18.4c1-2.7 3.4-4.2 6.1-4.2s5.1 1.5 6.1 4.2" stroke={colors.inkText} strokeWidth={1.6} strokeLinecap="round" />
+        <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(244,243,240,0.12)', alignItems: 'center', justifyContent: 'center' }}>
+          <Svg width={20} height={13} viewBox="0 0 26 16" fill="none">
+            <Path d="M2 12c4-7 8 3 12-3s8 2 10-2" stroke="#F4F3F0" strokeWidth={2.4} strokeLinecap="round" />
           </Svg>
-        </Pressable>
-      </View>
-
-      <Animated.ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingHorizontal: spacing.xl }}
-        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
-        scrollEventThrottle={16}
-        showsVerticalScrollIndicator={false}>
-      {/* the day's maxim — big Newsreader quote mark over the Stoic line */}
-      <View style={{ alignItems: 'center', marginTop: 44, height: 32, marginBottom: 18 }}>
-        <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 60, lineHeight: 60, color: 'rgba(29,28,26,0.2)' }}>
-          {'“'}
-        </AppText>
-      </View>
-      <AppText
-        center
-        style={{
-          fontFamily: fonts.serifSharp,
-          fontSize: 24,
-          lineHeight: 29,
-          color: colors.text,
-          maxWidth: 280,
-          alignSelf: 'center',
-        }}>
-        {maxim}
-      </AppText>
-
-      {/* NEXT LESSON — the one dark card */}
-      {current ? (
-        <Pressable
-          onPress={() => router.push(`/lesson/${current.lesson.slug}`)}
-          accessibilityRole="button"
-          style={({ pressed }) => ({
-            marginTop: 64,
-            height: 214,
-            borderRadius: 20,
-            overflow: 'hidden',
-            backgroundColor: colors.ink,
-            transform: [{ scale: pressed ? 0.985 : 1 }],
-          })}>
-          <Image
-            source={require('../../../assets/images/next-lesson-dark.webp')}
-            contentFit="cover"
-            contentPosition={{ top: '32%', left: '50%' }}
-            style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-          />
-          <View style={{ flex: 1, padding: 22, paddingBottom: 20 }}>
-            <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 2.1, textTransform: 'uppercase', color: colors.inkTextMuted }]}>
-              Next lesson
-            </AppText>
-            <AppText
-              numberOfLines={1}
-              style={{ fontFamily: fonts.serif, fontSize: 24, lineHeight: 28, letterSpacing: 0.12, color: colors.inkText, marginTop: 8 }}>
-              {current.lesson.title}
-            </AppText>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 10 }}>
-              <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
-                <Circle cx={12} cy={12} r={8.5} stroke="rgba(245,244,241,0.65)" strokeWidth={1.8} />
-                <Path d="M12 7.5V12l3 2" stroke="rgba(245,244,241,0.65)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-              <AppText style={[sans('500'), { fontSize: 13.5, letterSpacing: 0.27, color: 'rgba(245,244,241,0.65)' }]}>
-                {(current.lesson.estimatedMinutes ?? 3) + ' min read'}
-              </AppText>
-            </View>
-            <View
-              style={{
-                marginTop: 'auto',
-                width: 42,
-                height: 42,
-                borderRadius: 9999,
-                backgroundColor: colors.inkText,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Svg width={17} height={17} viewBox="0 0 24 24" fill="none">
-                <Path d="M4.5 12h14M12.5 5.5 19 12l-6.5 6.5" stroke={colors.text} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </View>
-          </View>
-        </Pressable>
-      ) : null}
-
-      {/* today's steps */}
-      <View style={{ marginTop: 68 }}>
-        <SectionHead title="Today's steps" meta={`${doneCount} of ${steps.length}`} />
-        <View style={{ backgroundColor: CARD, borderRadius: 18, paddingVertical: 4, paddingHorizontal: 20 }}>
-          {steps.map((s, i) => (
-            <Pressable
-              key={s.id}
-              onPress={() => setChallenge({ ...s, title: s.label, todayIdx })}
-              accessibilityRole="button"
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 18,
-                paddingVertical: 14,
-                borderBottomWidth: i < steps.length - 1 ? 1 : 0,
-                borderBottomColor: 'rgba(0,0,0,0.06)',
-              }}>
-              <View
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 9999,
-                  backgroundColor: s.done ? colors.ink : 'transparent',
-                  borderWidth: s.done ? 0 : 1.5,
-                  borderColor: RING,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                {s.done ? (
-                  <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
-                    <Path d="m5 12.5 4.5 4.5L19 7.5" stroke={colors.inkText} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                  </Svg>
-                ) : null}
-              </View>
-              <AppText
-                style={[
-                  sans('400'),
-                  {
-                    flex: 1,
-                    fontSize: 17,
-                    lineHeight: 26,
-                    letterSpacing: 0.17,
-                    color: s.done ? colors.textSoft : colors.text,
-                    textDecorationLine: s.done ? 'line-through' : 'none',
-                  },
-                ]}>
-                {s.label}
-              </AppText>
-              <Svg width={8} height={14} viewBox="0 0 8 14" fill="none">
-                <Path d="m1.5 1.5 5 5.5-5 5.5" stroke={colors.textSoft} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </Pressable>
-          ))}
         </View>
-      </View>
-
-      {/* your week moods */}
-      <View style={{ marginTop: 64 }}>
-        <SectionHead title="Your week moods" meta={moodWord} />
-        <View style={{ backgroundColor: CARD, borderRadius: 20, paddingTop: 18, paddingBottom: 19, paddingHorizontal: 20 }}>
-          <View style={{ flexDirection: 'row' }}>
-            {week.map((w, i) => (
-              <View key={i} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
-                <AppText style={[sans(w.today ? '600' : '500'), { fontSize: 11, letterSpacing: 0.66, color: w.today ? colors.text : colors.textSoft }]}>
-                  {w.letter}
-                </AppText>
-                {w.today ? (
-                  <Pressable
-                    onPress={() => router.push('/checkin')}
-                    accessibilityLabel="Log today's mood"
-                    style={{
-                      width: 34,
-                      height: 34,
-                      borderRadius: 9999,
-                      borderWidth: 1.5,
-                      borderColor: colors.text,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <View
-                      style={{
-                        width: 25,
-                        height: 25,
-                        borderRadius: 9999,
-                        backgroundColor: w.tone != null ? MOOD_TONES[w.tone] : 'transparent',
-                        borderWidth: w.tone != null ? 0 : 1.5,
-                        borderColor: RING,
-                        borderStyle: w.tone != null ? 'solid' : 'dashed',
-                      }}
-                    />
-                  </Pressable>
-                ) : w.tone != null ? (
-                  <View style={{ width: 30, height: 30, borderRadius: 9999, backgroundColor: MOOD_TONES[w.tone] }} />
-                ) : (
-                  <View
-                    style={{
-                      width: 30,
-                      height: 30,
-                      borderRadius: 9999,
-                      borderWidth: 1,
-                      borderColor: RING,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Svg width={11} height={11} viewBox="0 0 24 24" fill="none">
-                      <Path d="M12 5v14M5 12h14" stroke={colors.textSoft} strokeWidth={2} strokeLinecap="round" />
-                    </Svg>
-                  </View>
-                )}
-              </View>
-            ))}
-          </View>
+        <View style={{ flex: 1 }}>
+          <AppText style={[sans('600'), { fontSize: 14.5, color: '#F7F6F2' }]}>Stay present. Surf the wave.</AppText>
+          <AppText style={[sans('400'), { marginTop: 2, fontSize: 12.5, color: 'rgba(244,243,240,0.55)' }]}>Urge surfing · SOS</AppText>
         </View>
-      </View>
-
-      {/* footer — laurel divider · Epictetus · the valley river */}
-      <View style={{ marginTop: 68, position: 'relative' }}>
-        <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
-        <View
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: 0,
-            marginLeft: -19,
-            marginTop: -19,
-            width: 38,
-            height: 38,
-            borderRadius: 9999,
-            backgroundColor: '#FDFDFC',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Laurel size={21} color={colors.textMuted} muted />
-        </View>
-      </View>
-      <AppText
-        center
-        style={{
-          fontFamily: fonts.serifSharp,
-          fontSize: 19,
-          lineHeight: 27,
-          color: colors.text,
-          maxWidth: 250,
-          alignSelf: 'center',
-          marginTop: 58,
-        }}>
-        {footerQuote}
-      </AppText>
-      <AppText
-        center
-        style={[sans('600'), { fontSize: 11, letterSpacing: 2.2, textTransform: 'uppercase', color: colors.textSoft, marginTop: 14 }]}>
-        Epictetus
-      </AppText>
-      <View style={{ marginTop: 48, marginHorizontal: -spacing.xl, height: 260 }}>
-        <Image
-          source={require('../../../assets/images/valley-river.webp')}
-          contentFit="cover"
-          contentPosition={{ top: '42%', left: '50%' }}
-          style={{ width: '100%', height: '100%' }}
-        />
-        {/* melt the photo's top edge into the paper + a dim wash so it doesn't glare */}
-        <LinearGradient
-          colors={[colors.bg, 'rgba(244,243,240,0)']}
-          style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 96 }}
-        />
-        <LinearGradient
-          colors={['rgba(244,243,240,0)', 'rgba(58,56,52,0.14)', 'rgba(43,41,38,0.3)']}
-          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-        />
-      </View>
-      </Animated.ScrollView>
-
-      <ChallengeSheet
-        challenge={challenge}
-        onGo={() => {
-          const go = challenge?.go;
-          setChallenge(null);
-          go?.();
-        }}
-        onClose={() => setChallenge(null)}
-      />
-    </Screen>
+        <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
+          <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="rgba(244,243,240,0.5)" strokeWidth={2} strokeLinecap="round" />
+        </Svg>
+      </PressScale>
+    </View>
   );
 }
 
-// ── section header — caps outside the card, muted meta on the right ──
-function SectionHead({ title, meta }: { title: string; meta?: string }) {
+/* ------------------------------------------------------------------- page one */
+
+function PageOne({
+  day,
+  score,
+  page,
+  lesson,
+  done,
+  onScore,
+  onLesson,
+}: {
+  day: number;
+  score: ReturnType<typeof buildScore>;
+  page: number;
+  lesson: { lesson: { title: string; orderIndex: number; week: number } } | null | undefined;
+  done: number;
+  onScore: () => void;
+  onLesson: () => void;
+}) {
   return (
-    <View
+    <View style={{ flex: 1 }}>
+      {/* design 114, i.e. 23 below the mark row */}
+      <AppText style={[sans('600'), { marginLeft: 16, marginTop: 23, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: colors.text }]}>
+        Day {day}
+      </AppText>
+
+      <View style={{ marginTop: 23 }}>
+        <ScoreCard score={score} onPress={onScore} />
+      </View>
+
+      <View style={{ marginTop: 50 }}>
+        <LessonCard
+          title={lesson?.lesson.title ?? 'Start the first lesson'}
+          meta={lesson ? `Lesson ${lesson.lesson.orderIndex + 1} · Week ${lesson.lesson.week}` : 'Week I'}
+          done={done}
+          onPress={onLesson}
+        />
+      </View>
+
+      {/* design 648 — 34 under the lesson card */}
+      <View style={{ marginTop: 34, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
+        {[0, 1, 2].map((i) => (
+          <View key={i} style={{ width: 6.5, height: 6.5, borderRadius: 3.25, backgroundColor: i === page ? colors.ink : 'rgba(19,19,19,0.16)' }} />
+        ))}
+      </View>
+    </View>
+  );
+}
+
+/**
+ * The score, drawn as the thing it measures: a night sky with a low moon and a
+ * ridge you are climbing. The number sits on the dark because that is where the
+ * work happens.
+ */
+function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; onPress: () => void }) {
+  const id = useId().replace(/:/g, '');
+  // The card runs full width inside a 12pt gutter; the sky art is positioned
+  // from its right edge, as the canvas does.
+  const W = useWindowDimensions().width - 24;
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`Recovery score ${score.total}`}
       style={{
-        paddingHorizontal: 4,
-        marginBottom: 12,
-        flexDirection: 'row',
-        alignItems: 'baseline',
-        justifyContent: 'space-between',
+        marginHorizontal: 12,
+        height: 222,
+        borderRadius: 22,
+        borderCurve: 'continuous',
+        overflow: 'hidden',
+        backgroundColor: '#0C0D10',
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.25), 0 14px 30px rgba(30,28,24,0.28)',
       }}>
-      <AppText style={[sans('600'), { fontSize: 13, letterSpacing: 2.3, textTransform: 'uppercase', color: colors.text }]}>
+      {/* sky */}
+      <Svg width="100%" height={222} style={{ position: 'absolute' }}>
+        <Defs>
+          <SvgLinearGradient id={`sky${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#08090B" />
+            <Stop offset="0.55" stopColor="#0E1014" />
+            <Stop offset="1" stopColor="#151920" />
+          </SvgLinearGradient>
+          {/* `radial-gradient(circle at 36% 30%, …)` names no size, so CSS uses
+              farthest-corner: from (36%, 30%) of a 30px box the far corner is
+              √((0.64·30)² + (0.70·30)²) = 28.45px, which is 94.8% of the box. */}
+          <RadialGradient id={`moon${id}`} cx="36%" cy="30%" rx="94.8%" ry="94.8%">
+            <Stop offset="0" stopColor="#F5F3EC" />
+            <Stop offset="0.46" stopColor="#D9D6CD" />
+            <Stop offset="1" stopColor="#A5A197" />
+          </RadialGradient>
+          {/* The moon div's own `box-shadow: 0 0 26px rgba(223,220,211,0.26)`.
+              A shadow blur is a Gaussian of σ = blur/2, not a linear ramp: the
+              stated alpha is reached deep inside the shape, is already halved at
+              its edge, and is all but gone by one blur radius out. So on a 41pt
+              gradient (15 disc + 26 blur) the stops track erf, which is why they
+              fall away so much faster than the distance suggests. */}
+          <RadialGradient id={`moonGlow${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0.366" stopColor="#DFDCD3" stopOpacity={0.13} />
+            <Stop offset="0.512" stopColor="#DFDCD3" stopOpacity={0.085} />
+            <Stop offset="0.683" stopColor="#DFDCD3" stopOpacity={0.042} />
+            <Stop offset="0.829" stopColor="#DFDCD3" stopOpacity={0.015} />
+            <Stop offset="1" stopColor="#DFDCD3" stopOpacity={0} />
+          </RadialGradient>
+          <RadialGradient id={`halo${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#DFDCD3" stopOpacity={0.15} />
+            <Stop offset="0.4" stopColor="#DFDCD3" stopOpacity={0.07} />
+            <Stop offset="0.72" stopColor="#DFDCD3" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Rect x={0} y={0} width="100%" height={222} fill={`url(#sky${id})`} />
+        {/* the canvas's `left`/`top` place a star box's corner, not its centre,
+            so each centre is the stated offset plus half the box */}
+        <Circle cx={117} cy={35} r={1} fill="#F4F3F0" fillOpacity={0.45} />
+        <Circle cx={W - 151.25} cy={57.25} r={1.25} fill="#F4F3F0" fillOpacity={0.35} />
+        <Circle cx={53} cy={97} r={1} fill="#F4F3F0" fillOpacity={0.3} />
+        <Circle cx={W - 66} cy={76} r={42} fill={`url(#halo${id})`} />
+        <Circle cx={W - 63} cy={71} r={41} fill={`url(#moonGlow${id})`} />
+        <Circle cx={W - 63} cy={71} r={15} fill={`url(#moon${id})`} />
+      </Svg>
+
+      {/* the two ridges, drawn in the canvas's own 369 × 76 frame */}
+      <Svg width="100%" height={64} viewBox="0 0 369 76" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, right: 0, top: 102 }}>
+        <Defs>
+          <SvgLinearGradient id={`h1${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#232830" />
+            <Stop offset="1" stopColor="#0A0B0D" />
+          </SvgLinearGradient>
+          <SvgLinearGradient id={`h2${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#2A303B" />
+            <Stop offset="1" stopColor="#0C0D10" />
+          </SvgLinearGradient>
+        </Defs>
+        <Path d="M-4,76 L-4,50 Q56,22 124,48 Q160,61 188,68 L188,76 Z" fill={`url(#h1${id})`} />
+        <Path d="M168,76 L168,66 Q226,57 270,36 Q316,17 373,25 L373,76 Z" fill={`url(#h2${id})`} />
+      </Svg>
+
+      {/* the waterline glow, then the flat dark below it */}
+      <Svg width="100%" height={68} style={{ position: 'absolute', left: 0, right: 0, top: 154 }}>
+        <Defs>
+          <SvgLinearGradient id={`glow${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#E9C78A" stopOpacity={0} />
+            <Stop offset="1" stopColor="#E9C78A" stopOpacity={0.12} />
+          </SvgLinearGradient>
+          <SvgLinearGradient id={`sea${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#131720" />
+            <Stop offset="1" stopColor="#0B0C0F" />
+          </SvgLinearGradient>
+          {/* The canvas blurs this shaft by 5px; RN SVG has no blur filter, so
+              it is drawn as a soft radial instead of a hard-edged bar. */}
+          <RadialGradient id={`shaft${id}`} cx="50%" cy="0%" rx="50%" ry="100%">
+            <Stop offset="0" stopColor="#DFDCD3" stopOpacity={0.13} />
+            <Stop offset="1" stopColor="#DFDCD3" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Rect x={0} y={0} width="100%" height={12} fill={`url(#glow${id})`} />
+        <Rect x={0} y={12} width="100%" height={56} fill={`url(#sea${id})`} />
+        {/* the moon's reflection on the water — the canvas's 38 × 44 shaft at
+            top 168, grown by the 5px blur it is drawn with */}
+        <Ellipse cx={W - 69} cy={36} rx={22} ry={26} fill={`url(#shaft${id})`} />
+      </Svg>
+
+      <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 22, fontSize: 13, color: '#F7F6F2' }]}>Recovery score</AppText>
+
+      <View
+        style={{
+          position: 'absolute',
+          right: 16,
+          top: 16,
+          height: 30,
+          borderRadius: 15,
+          borderWidth: 1,
+          borderColor: 'rgba(244,243,240,0.28)',
+          backgroundColor: 'rgba(20,19,16,0.25)',
+          paddingHorizontal: 12,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 6,
+        }}>
+        <Svg width={14} height={10} viewBox="0 0 14 10" fill="none">
+          <Path d="M1 8.5L5 4.5l2.5 2L12.5 1.5" stroke="#F4F3F0" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+          <Path d="M9.2 1.5h3.3V4.8" stroke="#F4F3F0" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+        <AppText style={[sans('600'), { fontSize: 12, color: '#F4F3F0' }]}>Trend</AppText>
+      </View>
+
+      <View style={{ position: 'absolute', left: 20, top: 48, flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+        <AppText style={[sans('500'), { fontSize: 43, letterSpacing: 1.5, color: '#F7F6F2', fontVariant: ['tabular-nums'] }]}>
+          {score.total.toLocaleString()}
+        </AppText>
+        {score.delta !== 0 ? (
+          <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 3 }}>
+            <Svg width={9} height={8} viewBox="0 0 10 9">
+              <Path d={score.delta > 0 ? 'M5 0.5L9.5 8.5H0.5z' : 'M5 8.5L0.5 0.5h9z'} fill="rgba(244,243,240,0.8)" />
+            </Svg>
+            <AppText style={[sans('500'), { fontSize: 13, color: 'rgba(244,243,240,0.8)' }]}>{Math.abs(score.delta)}</AppText>
+          </View>
+        ) : null}
+      </View>
+
+      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 50, height: 6, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.14)', overflow: 'hidden' }}>
+        <View style={{ width: `${score.progress * 100}%`, height: 6, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.92)' }} />
+      </View>
+      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 22, flexDirection: 'row', justifyContent: 'space-between' }}>
+        <AppText style={[sans('500'), { fontSize: 11, color: 'rgba(244,243,240,0.55)' }]}>
+          {score.rank.name} · {score.rank.at.toLocaleString()}
+        </AppText>
+        {score.next ? (
+          <AppText style={[sans('500'), { fontSize: 11, color: 'rgba(244,243,240,0.55)' }]}>
+            {score.next.name} · {score.next.at.toLocaleString()}
+          </AppText>
+        ) : null}
+      </View>
+
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.06 }} pointerEvents="none" />
+    </PressScale>
+  );
+}
+
+/** The lesson in front of you, with a dome of first light and a six-step rule. */
+function LessonCard({ title, meta, done, onPress }: { title: string; meta: string; done: number; onPress: () => void }) {
+  const id = useId().replace(/:/g, '');
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`${title}. ${meta}`}
+      style={{
+        marginHorizontal: 12,
+        height: 152,
+        borderRadius: 20,
+        borderCurve: 'continuous',
+        overflow: 'hidden',
+        backgroundColor: colors.surface,
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
+      }}>
+      <AppText numberOfLines={1} style={[sans('600'), { position: 'absolute', left: 20, top: 26, right: 168, fontSize: 19, letterSpacing: -0.2, color: colors.text }]}>
         {title}
       </AppText>
-      {meta ? (
-        <AppText style={[sans('500'), { fontSize: 13.5, color: colors.textSoft, fontVariant: ['tabular-nums'] }]}>{meta}</AppText>
-      ) : null}
+      <AppText style={[sans('400'), { position: 'absolute', left: 20, top: 56, fontSize: 12.5, color: colors.textSoft }]}>{meta}</AppText>
+
+      <LessonDome id={id} />
+
+      <Svg width={8} height={14} viewBox="0 0 8 14" fill="none" style={{ position: 'absolute', right: 16, top: 22 }}>
+        <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke={colors.textSoft} strokeWidth={2} strokeLinecap="round" />
+      </Svg>
+
+      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 20, flexDirection: 'row', gap: 7 }}>
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <View key={i} style={{ flex: 1, height: 4.5, borderRadius: 2.5, backgroundColor: i < done ? colors.ink : 'rgba(19,19,19,0.15)' }} />
+        ))}
+      </View>
+    </PressScale>
+  );
+}
+
+/* ------------------------------------------------------------------- page two */
+
+function PageTwo({
+  mood,
+  energy,
+  step,
+  stepDone,
+  onStep,
+  pledge,
+  name,
+  onMorning,
+  onPledges,
+}: {
+  mood: number | null;
+  energy: number | null;
+  step: DayStep;
+  stepDone: boolean;
+  onStep: () => void;
+  pledge?: { body: string; createdAt: number };
+  name?: string;
+  onMorning: () => void;
+  onPledges: () => void;
+}) {
+  return (
+    <View style={{ flex: 1 }}>
+      {/* design 138 — 47 below the mark row */}
+      <SectionRow label="This morning" onPress={onMorning} marginTop={47} />
+
+      <View style={{ marginTop: 11.5 }}>
+        <ReadingsStrip
+          mood={mood}
+          energy={energy}
+          moodWord={mood != null ? MOOD_WORD[mood] : '—'}
+          energyWord={energy != null ? ENERGY_WORD[energy] : '—'}
+        />
+      </View>
+
+      {/* design 256 — 44 under the readings */}
+      <View style={{ marginTop: 44 }}>
+        <TaskCard step={step} done={stepDone} onPress={onStep} />
+      </View>
+
+      <SectionRow label="Goal & pledge" action="Past pledges" actionOffset={-2} onPress={onPledges} marginTop={24} />
+
+      <View style={{ marginTop: 11.5 }}>
+        <PledgeCard pledge={pledge} name={name} onPress={onPledges} />
+      </View>
     </View>
+  );
+}
+
+/**
+ * A quiet section label with its way through on the right. The row is only as
+ * tall as its label — the canvas measures from the label's own box — so the
+ * touch target comes from hitSlop rather than from padding it out.
+ */
+function SectionRow({
+  label,
+  action,
+  actionOffset = 0,
+  onPress,
+  marginTop,
+}: {
+  label: string;
+  action?: string;
+  actionOffset?: number;
+  onPress: () => void;
+  marginTop: number;
+}) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={action ?? label}
+      hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
+      style={{ minHeight: 0, marginTop, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+      <AppText style={[sans('600'), { fontSize: 12.5, color: colors.textSoft }]}>{label}</AppText>
+      <View style={{ marginTop: actionOffset, flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+        {action ? <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 0.5, color: colors.textSoft }]}>{action}</AppText> : null}
+        <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
+          <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="#B0AEA8" strokeWidth={2} strokeLinecap="round" />
+        </Svg>
+      </View>
+    </PressScale>
+  );
+}
+
+/** The line you signed this morning, on the paper you signed it on. */
+function PledgeCard({ pledge, name, onPress }: { pledge?: { body: string; createdAt: number }; name?: string; onPress: () => void }) {
+  const body = pledge?.body ?? 'I am abstaining today because…';
+  const cut = body.indexOf('because ');
+  const stem = cut === -1 ? body : body.slice(0, cut + 8);
+  const reason = cut === -1 ? '' : body.slice(cut + 8).replace(/\.$/, '');
+  const signed = pledge
+    ? `Signed ${new Date(pledge.createdAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`
+    : 'Not signed yet today';
+
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={body}
+      style={{
+        marginHorizontal: 12,
+        height: 140,
+        borderRadius: 14,
+        borderCurve: 'continuous',
+        overflow: 'hidden',
+        backgroundColor: colors.surface,
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.06)',
+      }}>
+      <AppText style={{ position: 'absolute', left: 16, top: 26, fontFamily: fonts.quote, fontSize: 32, lineHeight: 20, color: '#C9C0AC' }}>&ldquo;</AppText>
+      <AppText style={{ position: 'absolute', left: 38, right: 38, top: 32, fontFamily: fonts.quote, fontSize: 17.5, lineHeight: 27, color: '#3A3934' }}>
+        {stem}
+        {reason ? (
+          <AppText style={{ fontFamily: fonts.quote, fontSize: 17.5, lineHeight: 27, color: '#3A3934', textDecorationLine: 'underline', textDecorationColor: 'rgba(0,0,0,0.22)' }}>
+            {reason}
+          </AppText>
+        ) : null}
+        {reason ? '.' : ''}
+      </AppText>
+
+      <View style={{ position: 'absolute', left: 16, right: 16, bottom: 11, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+        <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 0.3, color: '#A5A29B' }]}>{signed}</AppText>
+        {pledge ? (
+          <View style={{ alignItems: 'flex-end' }}>
+            <AppText style={{ fontFamily: fonts.script, fontSize: 24, lineHeight: 24, color: colors.text, transform: [{ rotate: '-3.5deg' }] }}>
+              {name?.split(' ')[0] ?? 'You'}
+            </AppText>
+            <View style={{ marginTop: 4, width: 92, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
+          </View>
+        ) : (
+          <View style={{ width: 92, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
+        )}
+      </View>
+    </PressScale>
   );
 }

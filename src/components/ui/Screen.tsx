@@ -14,11 +14,12 @@ export interface ScreenProps {
 }
 
 export function Screen({ children, scroll = true, contentStyle, edges = ['top'], bleed = false }: ScreenProps) {
-  const padding = bleed ? undefined : { paddingHorizontal: spacing.xl };
+  const padding = bleed ? undefined : { paddingHorizontal: spacing.lg };
   const body = scroll ? (
     <ScrollView
       style={{ flex: 1 }}
       contentContainerStyle={[{ paddingBottom: spacing.xxxl }, padding, contentStyle]}
+      contentInsetAdjustmentBehavior="automatic"
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}>
       {children}

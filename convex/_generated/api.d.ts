@@ -12,6 +12,7 @@ import type * as checkins from "../checkins.js";
 import type * as dashboard from "../dashboard.js";
 import type * as events from "../events.js";
 import type * as importLessons from "../importLessons.js";
+import type * as journal from "../journal.js";
 import type * as lessonUpsert from "../lessonUpsert.js";
 import type * as lessons from "../lessons.js";
 import type * as lifemap from "../lifemap.js";
@@ -31,6 +32,7 @@ declare const fullApi: ApiFromModules<{
   dashboard: typeof dashboard;
   events: typeof events;
   importLessons: typeof importLessons;
+  journal: typeof journal;
   lessonUpsert: typeof lessonUpsert;
   lessons: typeof lessons;
   lifemap: typeof lifemap;

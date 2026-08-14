@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stoic — App Screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  :root{
+    --font: 'Figtree', system-ui, sans-serif;
+  }
+  html,body{ height:100%; }
+  body{
+    font-family: var(--font);
+    background: #d9dade;
+    background-image: radial-gradient(circle at 50% 0%, #e7e8ec, #d2d3d8);
+    min-height: 100vh;
+    padding: 56px 0 72px;
+  }
+  .stage{
+    display:flex;
+    gap: 56px;
+    align-items:flex-start;
+    padding: 0 64px;
+    width: max-content;
+    margin: 0 auto;
+  }
+  .frame-wrap{ display:flex; flex-direction:column; align-items:center; gap:18px; }
+  .caption{ font-size:14px; font-weight:600; color:#6c6e78; letter-spacing:.02em; }
+
+  /* ===== iPhone frame ===== */
+  .phone{
+    width: 390px; height: 844px;
+    border-radius: 54px;
+    background:#000;
+    padding: 5px;
+    box-shadow: 0 30px 70px -20px rgba(20,20,40,.45), 0 8px 20px rgba(0,0,0,.18);
+    position:relative;
+  }
+  .screen{
+    width:100%; height:100%;
+    border-radius: 49px;
+    overflow:hidden;
+    position:relative;
+    background:#fff;
+  }
+  /* dynamic island */
+  .island{
+    position:absolute; top:11px; left:50%; transform:translateX(-50%);
+    width:120px; height:34px; background:#000; border-radius:20px; z-index:60;
+  }
+
+  /* ===== status bar ===== */
+  .statusbar{
+    position:absolute; top:0; left:0; right:0; height:54px; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 32px 0;
+    font-weight:700; font-size:17px;
+  }
+  .sb-left{ display:flex; align-items:center; gap:7px; letter-spacing:.01em; }
+  .sb-right{ display:flex; align-items:center; gap:7px; }
+  .sb-left svg, .sb-right svg{ display:block; }
+  .dark .statusbar{ color:#fff; }
+  .light .statusbar{ color:#000; }
+
+  /* battery */
+  .bat{ display:flex; align-items:center; gap:3px; }
+  .bat-body{ position:relative; width:25px; height:13px; border-radius:4px; border:1.5px solid currentColor; opacity:1; display:flex; align-items:center; }
+  .bat-body::after{ content:''; position:absolute; right:-3.5px; top:50%; transform:translateY(-50%); width:2px; height:5px; background:currentColor; border-radius:0 1px 1px 0; opacity:.5; }
+  .bat-fill{ position:absolute; left:1.5px; top:1.5px; bottom:1.5px; width:62%; border-radius:2px; background:currentColor; }
+  .bat-num{ font-size:14px; font-weight:600; }
+
+  /* ===================== SCREEN 1 — GIFT ===================== */
+  .s-gift{ background:#000; color:#fff; display:flex; flex-direction:column; align-items:center; padding:54px 0 44px; }
+  .s-gift .illu{ margin-top:34px; width:286px; height:286px; flex:none; }
+  .s-gift h1{
+    margin-top: 14px;
+    width: 320px; text-align:center;
+    font-size:37px; line-height:1.12; font-weight:500;
+    color:#e6e6e8; letter-spacing:-.015em;
+  }
+  .s-gift h1 b{ font-weight:800; color:#eaeaec; }
+  .s-gift p{
+    margin-top:22px; width:300px; text-align:center;
+    font-size:18px; line-height:1.5; font-weight:500; color:#9a9aa0;
+  }
+  .s-gift .btn{
+    margin-top:auto; width:306px;
+    height:62px; border-radius:34px; background:#d6d6d8;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:700; color:#111; flex:none;
+  }
+  .s-gift .later{
+    margin-top:26px; text-align:center; white-space:nowrap;
+    font-size:19px; font-weight:600; color:#7f7f86; flex:none;
+  }
+
+  /* ===================== SCREEN 2 — JOURNEY ===================== */
+  .s-journey{ background:#fff; color:#1f2430; }
+  .s-journey .top{ position:absolute; top:62px; left:0; right:0; padding:0 22px; display:flex; align-items:center; justify-content:space-between; z-index:20; }
+  .seg{ background:#efeff2; border-radius:24px; padding:5px; display:flex; gap:2px; }
+  .seg .opt{ padding:9px 18px; border-radius:20px; font-size:18px; font-weight:700; color:#9a9ca4; white-space:nowrap; }
+  .seg .opt.active{ background:#fff; color:#1f2430; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+  .person{ position:relative; width:40px; height:40px; }
+  .person .badge{ position:absolute; top:-4px; right:-6px; min-width:20px; height:20px; padding:0 5px; background:#ff3b5c; color:#fff; border-radius:11px; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+
+  .pondcard{ position:absolute; top:128px; left:22px; right:22px; height:142px; border-radius:22px; overflow:hidden; }
+  .pondcard .stat{ position:absolute; top:50%; transform:translateY(-50%); text-align:center; color:#fff; text-shadow:0 1px 6px rgba(0,40,90,.35); }
+  .pondcard .stat .big{ font-size:42px; font-weight:800; line-height:1; }
+  .pondcard .stat .lbl{ font-size:19px; font-weight:600; margin-top:4px; }
+
+  .path{ position:absolute; top:300px; left:0; right:0; bottom:92px; overflow:hidden; }
+  .node{ display:flex; flex-direction:column; align-items:center; }
+  .node .circle{ width:128px; height:128px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .node .circle.locked{ background:#eeeef1; }
+  .node .title{ margin-top:18px; font-size:23px; font-weight:800; letter-spacing:-.02em; text-align:center; }
+  .node .sub{ margin-top:4px; font-size:18px; font-weight:600; }
+  .node.locked .title{ color:#b7bac2; }
+  .node.locked .sub{ color:#c2c5cc; }
+  .node .sub.muted{ color:#9a9ca4; }
+  .dots{ height:46px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; }
+  .dots i{ width:6px; height:6px; border-radius:50%; background:#cfd1d8; display:block; }
+  .chev{ position:absolute; right:18px; top:96px; color:#c7cad1; }
+  .vscroll{ position:absolute; right:6px; top:130px; width:3px; height:120px; background:#c9ccd3; border-radius:3px; }
+
+  .tabbar{ position:absolute; bottom:0; left:0; right:0; height:92px; background:rgba(255,255,255,.96); border-top:1px solid #ededf0; display:flex; padding:10px 8px 0; }
+  .tab{ flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; color:#b9bcc4; }
+  .tab span{ font-size:13px; font-weight:600; }
+  .tab.active{ color:#1f6bd6; }
+
+  /* ===================== MODAL SHEET (screens 3-5) ===================== */
+  .behind{ position:absolute; inset:0; background:#4a4a4f; }
+  .behind::before{ content:''; position:absolute; inset:0; background:rgba(0,0,0,.34); }
+  .sheet{ position:absolute; left:0; right:0; bottom:0; top:56px; background:#fff; border-radius:22px 22px 0 0; overflow:hidden; }
+  .grabber{ position:absolute; top:9px; left:50%; transform:translateX(-50%); width:42px; height:5px; border-radius:3px; background:#d7d8dc; z-index:30; }
+  .sheet-head{ position:absolute; top:0; left:0; right:0; height:84px; display:flex; align-items:center; justify-content:center; z-index:20; }
+  .sheet-head h2{ font-size:24px; font-weight:800; color:#16181d; }
+  .sheet-head .x{ position:absolute; right:20px; top:34px; width:36px; height:36px; border-radius:50%; background:#9aa0a8; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .sheet-head::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:#ececed; }
+  .sheet-body{ position:absolute; top:85px; left:0; right:0; bottom:0; overflow:hidden; padding:0 26px; }
+
+  .modal-h1{ font-size:48px; font-weight:800; color:#2c303a; letter-spacing:-.025em; line-height:1.02; }
+  .modal-p{ margin-top:16px; font-size:20px; line-height:1.36; font-weight:500; color:#565b66; }
+
+  .chap-h{ margin-top:10px; display:flex; align-items:center; gap:10px; font-size:22px; font-weight:800; color:#2c303a; letter-spacing:-.02em; }
+  .chap-p{ margin-top:12px; font-size:20px; line-height:1.4; font-weight:500; color:#4a4f5a; }
+
+  /* journey banner cards inside sheets */
+  .jcard{ position:relative; border-radius:18px; overflow:hidden; padding:15px 18px; display:flex; align-items:center; justify-content:space-between; color:#fff; }
+  .jcard .jtitle{ font-size:17px; font-weight:800; line-height:1.14; letter-spacing:-.025em; white-space:nowrap; }
+  .jcard .jsub{ font-size:14.5px; font-weight:600; opacity:.92; margin-top:3px; white-space:nowrap; }
+  .jcard .pct{ font-size:23px; font-weight:800; }
+  .jcard .info{ position:absolute; right:18px; top:16px; width:30px; height:30px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; color:#7a3d86; font-weight:800; font-style:italic; font-size:18px; }
+
+  .illu-full{ display:block; width:100%; }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <!-- ============ SCREEN 1 : GIFT ============ -->
+    <div class="frame-wrap">
+      <div class="phone">
+        <div class="screen dark s-gift" data-screen-label="Gift Premium">
+          <div class="island"></div>
+          <div class="statusbar">
+            <div class="sb-left">18:56</div>
+            <div class="sb-right">
+              <svg width="20" height="14" viewBox="0 0 20 14"><g fill="currentColor"><rect x="0" y="9" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="8" rx="1"/><rect x="10" y="3" width="3" height="11" rx="1"/><rect x="15" y="0" width="3" height="14" rx="1"/></g></svg>
+              <svg width="18" height="14" viewBox="0 0 18 14"><path fill="currentColor" d="M9 2.3c2.6 0 5 1 6.8 2.6l1.6-1.7C15.2 1.1 12.2 0 9 0 5.8 0 2.8 1.1.6 3.2l1.6 1.7C4 3.3 6.4 2.3 9 2.3Zm0 4.1c1.5 0 2.9.6 3.9 1.5l1.6-1.6C13.1 4.9 11.1 4 9 4S4.9 4.9 3.5 6.3l1.6 1.6C6.1 7 7.5 6.4 9 6.4Zm0 4 2.2-2.2c-.6-.6-1.4-.9-2.2-.9s-1.6.3-2.2.9L9 10.4Z"/></svg>
+              <div class="bat"><span class="bat-num">62</span><div class="bat-body"><div class="bat-fill"></div></div></div>
+            </div>
+          </div>
+
+          <svg class="illu" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- scattered purple confetti shapes -->
+            <!-- bowtie top-left -->
+            <path d="M78 96c-9-13-22-22-28-18-7 5-3 20 5 33-12 0-25 6-25 14 0 9 14 13 27 11-7 13-9 28-1 32 7 4 18-6 26-19 8 14 19 24 27 20 7-4 5-19-2-32 13 2 27-2 27-11 0-8-13-14-25-14 8-13 12-28 5-33-7-4-20 6-29 19l-1-2Z" fill="#9a6fd6" transform="translate(-12 24) rotate(-18 78 96) scale(.62)"/>
+            <!-- small triangle flag -->
+            <path d="M120 108l30-8-6 30-24-22Z" fill="#a87ce0"/>
+            <!-- flask / bottle -->
+            <path d="M150 70h26l-2 28 22 46c5 11-3 22-15 22h-36c-12 0-20-11-15-22l22-46-2-28Z" fill="#a479dd" transform="translate(8 0)"/>
+            <rect x="156" y="60" width="26" height="14" rx="4" fill="#a479dd"/>
+            <!-- teardrop -->
+            <path d="M232 96c0 18-12 30-26 30s-26-12-26-30c0-16 18-36 26-44 8 8 26 28 26 44Z" fill="#b189e8" transform="translate(8 4) scale(.78) translate(40 18)"/>
+            <!-- flower -->
+            <g transform="translate(150 150)" fill="#9a6fd6">
+              <circle cx="0" cy="-26" r="17"/><circle cx="25" cy="-8" r="17"/><circle cx="15" cy="22" r="17"/><circle cx="-15" cy="22" r="17"/><circle cx="-25" cy="-8" r="17"/><circle cx="0" cy="0" r="14" fill="#7e57c4"/>
+            </g>
+            <!-- cloud puff blob inside-ish -->
+            <g transform="translate(196 176)" fill="#8a5fc8">
+              <circle cx="0" cy="0" r="22"/><circle cx="26" cy="-6" r="20"/><circle cx="46" cy="6" r="18"/><circle cx="20" cy="18" r="20"/>
+            </g>
+            <!-- rolled paper / pencils -->
+            <g transform="rotate(-26 84 196)">
+              <rect x="48" y="120" width="58" height="150" rx="14" fill="#fff"/>
+              <rect x="61" y="126" width="4" height="138" rx="2" fill="#000" opacity=".82"/>
+              <rect x="74" y="126" width="4" height="138" rx="2" fill="#000" opacity=".82"/>
+              <rect x="87" y="126" width="4" height="138" rx="2" fill="#000" opacity=".82"/>
+              <ellipse cx="77" cy="270" rx="29" ry="13" fill="#e9e9ec"/>
+            </g>
+            <!-- box LID (tilted, dark underside) -->
+            <g transform="translate(0 0)">
+              <path d="M196 110l108-26 24 70-108 30-24-74Z" fill="#fff"/>
+              <path d="M220 184l108-30-6 30-108 30 6-30Z" fill="#1c1c1f"/>
+              <path d="M196 110l24 74-6 30-26-78 8-26Z" fill="#dededf"/>
+            </g>
+            <!-- box BASE (open) -->
+            <g>
+              <path d="M150 196l92-26 96 38-92 28-96-40Z" fill="#fff"/>
+              <path d="M150 196l96 40v96l-96-44v-92Z" fill="#fff"/>
+              <path d="M338 208l-92 28v96l92-40v-84Z" fill="#ececed"/>
+              <path d="M150 196l96 40v96l-96-44v-92Z" fill="#f6f6f7"/>
+              <!-- ribbon bow line art on front -->
+              <g transform="translate(196 268)" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0 0c-16-22-30-16-30-4 0 10 16 12 30 4Z"/>
+                <path d="M0 0c16-20 30-13 30-1 0 10-16 11-30 1Z"/>
+                <path d="M-2-2c-3-3-6-2-6 2 0 4 6 5 8 2"/>
+                <path d="M0 4c-6 18-12 34-14 44M2 4c4 16 8 30 8 42"/>
+              </g>
+            </g>
+            <!-- a couple purple bits spilling at front -->
+            <path d="M150 196c-10 8-22 8-30 2 8 16 22 22 34 18l-4-20Z" fill="#9a6fd6"/>
+            <path d="M236 196c14-4 22 2 26 12-12 6-24 4-30-4l4-8Z" fill="#b189e8"/>
+          </svg>
+
+          <h1>You can now <b>gift stoic. premium!</b></h1>
+          <p>There's no better gift than showing someone you care about their mental well-being. Stoic offers space to slow down, reflect, and feel supported — all wrapped up in a thoughtful gift.</p>
+          <div class="btn">Send a Gift</div>
+          <div class="later">Maybe Later</div>
+        </div>
+      </div>
+      <div class="caption">Gift Premium</div>
+    </div>
+
+    <!-- ============ SCREEN 2 : JOURNEY ============ -->
+    <div class="frame-wrap">
+      <div class="phone">
+        <div class="screen light s-journey" data-screen-label="Journey">
+          <div class="island"></div>
+          <div class="statusbar">
+            <div class="sb-left">21:03
+              <svg width="22" height="16" viewBox="0 0 22 16" style="margin-left:2px"><path fill="currentColor" d="M2 9V5a2 2 0 0 1 2-2h6a3 3 0 0 1 3 3v3h5a2 2 0 0 1 2 2v3h-2v-2H4v2H2V9Zm2-1h7V6a1 1 0 0 0-1-1H4v3Z"/></svg>
+            </div>
+            <div class="sb-right">
+              <svg width="20" height="14" viewBox="0 0 20 14"><g fill="currentColor"><rect x="0" y="9" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="8" rx="1"/><rect x="10" y="3" width="3" height="11" rx="1"/><rect x="15" y="0" width="3" height="14" rx="1"/></g></svg>
+              <svg width="18" height="14" viewBox="0 0 18 14"><path fill="currentColor" d="M9 2.3c2.6 0 5 1 6.8 2.6l1.6-1.7C15.2 1.1 12.2 0 9 0 5.8 0 2.8 1.1.6 3.2l1.6 1.7C4 3.3 6.4 2.3 9 2.3Zm0 4.1c1.5 0 2.9.6 3.9 1.5l1.6-1.6C13.1 4.9 11.1 4 9 4S4.9 4.9 3.5 6.3l1.6 1.6C6.1 7 7.5 6.4 9 6.4Zm0 4 2.2-2.2c-.6-.6-1.4-.9-2.2-.9s-1.6.3-2.2.9L9 10.4Z"/></svg>
+              <div class="bat"><span class="bat-num">62</span><div class="bat-body"><div class="bat-fill"></div></div></div>
+            </div>
+          </div>
+
+          <div class="top">
+            <div class="seg">
+              <div class="opt active">Current</div>
+              <div class="opt">All Journeys</div>
+            </div>
+            <div class="person">
+              <svg width="40" height="40" viewBox="0 0 40 40"><g fill="#e03050"><circle cx="20" cy="13" r="8"/><path d="M6 38c0-8 6.3-13 14-13s14 5 14 13H6Z"/></g></svg>
+              <div class="badge">1</div>
+            </div>
+          </div>
+
+          <!-- pond banner -->
+          <div class="pondcard">
+            <svg width="100%" height="100%" viewBox="0 0 346 142" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1f78cf"/><stop offset=".5" stop-color="#1f6dcb"/><stop offset="1" stop-color="#1a57b8"/>
+                </linearGradient>
+                <radialGradient id="ray" cx="50%" cy="20%" r="70%"><stop offset="0" stop-color="#5bb6f2" stop-opacity=".55"/><stop offset="1" stop-color="#1f6dcb" stop-opacity="0"/></radialGradient>
+              </defs>
+              <rect width="346" height="142" fill="url(#water)"/>
+              <rect width="346" height="142" fill="url(#ray)"/>
+              <!-- light streaks -->
+              <path d="M120 40 L260 96" stroke="#7cc4f5" stroke-width="3" opacity=".4"/>
+              <path d="M150 30 L300 70" stroke="#7cc4f5" stroke-width="2" opacity=".3"/>
+              <!-- lily pads -->
+              <ellipse cx="70" cy="22" rx="56" ry="22" fill="#3a8f4a"/>
+              <ellipse cx="60" cy="20" rx="40" ry="15" fill="#46a657"/>
+              <path d="M50 12 l-10 14" stroke="#1f6dcb" stroke-width="3"/>
+              <ellipse cx="270" cy="20" rx="48" ry="18" fill="#caa860"/>
+              <ellipse cx="335" cy="40" rx="40" ry="18" fill="#bfa05c"/>
+              <ellipse cx="300" cy="6" rx="30" ry="12" fill="#3a8f4a" opacity=".85"/>
+              <!-- lotus flower -->
+              <g transform="translate(56 16)" fill="#e84d8f"><path d="M0-14 4 0-4 0Z"/><path d="M-12-6 0 0-8 8Z"/><path d="M12-6 0 0 8 8Z"/><circle cx="0" cy="0" r="4" fill="#f7d24a"/></g>
+            </svg>
+            <div class="stat" style="left:0; width:50%"><div class="big">4%</div><div class="lbl">completion</div></div>
+            <div class="stat" style="right:0; width:50%"><div class="big">1/25</div><div class="lbl">events achieved</div></div>
+          </div>
+
+          <!-- journey path -->
+          <div class="path">
+            <div class="chev">
+              <svg width="22" height="40" viewBox="0 0 22 40"><path d="M4 4l14 16-14 16" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="node" style="margin-top:6px">
+              <div class="circle">
+                <svg width="128" height="128" viewBox="0 0 128 128"><defs><linearGradient id="dropg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#62a3f4"/><stop offset="1" stop-color="#3f7fe6"/></linearGradient></defs><circle cx="64" cy="64" r="64" fill="url(#dropg)"/><path d="M64 36c10 16 18 24 18 36a18 18 0 0 1-36 0c0-12 8-20 18-36Z" fill="#fff"/></svg>
+              </div>
+              <div class="title">Small Change, Big Impact</div>
+              <div class="sub muted">1/5 achieved</div>
+            </div>
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div class="node locked">
+              <div class="circle locked">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#b7bac2" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30h26v16a8 8 0 0 1-8 8H22a8 8 0 0 1-8-8V30Z" fill="#cfd2d8" stroke="none"/><path d="M40 34h6a6 6 0 0 1 0 12h-6" /><path d="M22 22c0-3 2-4 2-7M30 22c0-3 2-4 2-7" stroke="#b7bac2"/></svg>
+              </div>
+              <div class="title">Meet Your Future Self</div>
+              <div class="sub">Not yet unlocked</div>
+            </div>
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div class="node locked">
+              <div class="circle locked">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="#b7bac2"><circle cx="34" cy="9" r="6"/><path d="M30 20c4-2 9 0 11 4l5 8-6 3-4-6-3 12 8 9 5 12-7 2-5-12-9-8 4-18c.3-2 .6-4 6-6Z"/><path d="M50 30a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" opacity=".5"/></svg>
+              </div>
+              <div class="title">The Secrets of Self-Compassion</div>
+              <div class="sub">Not yet unlocked</div>
+            </div>
+          </div>
+          <div class="vscroll"></div>
+
+          <!-- tab bar -->
+          <div class="tabbar">
+            <div class="tab">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 13 14 4l10 9"/><path d="M6 12v11h16V12"/></svg>
+              <span>Home</span>
+            </div>
+            <div class="tab active">
+              <svg width="28" height="28" viewBox="0 0 28 28"><path d="M3 7l7-3 8 3 7-3v18l-7 3-8-3-7 3V7Z" fill="#1f6bd6"/><path d="M9 11l5 5M14 11l-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="9" r="1.4" fill="#fff"/><circle cx="20" cy="13" r="1.2" fill="#fff"/></svg>
+              <span>Journey</span>
+            </div>
+            <div class="tab">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3l2.6 2.1 3.3-.4 1.2 3.1 3 1.4-.8 3.2 2 2.6-2 2.6.8 3.2-3 1.4-1.2 3.1-3.3-.4L14 25l-2.6-2.1-3.3.4-1.2-3.1-3-1.4.8-3.2-2-2.6 2-2.6-.8-3.2 3-1.4 1.2-3.1 3.3.4L14 3Z"/><path d="M9.5 14l3 3 6-6"/></svg>
+              <span>Routines</span>
+            </div>
+            <div class="tab">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="8" y="3" width="12" height="22" rx="3"/><path d="M12 7h4"/></svg>
+              <span>Discover</span>
+            </div>
+            <div class="tab">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="8" y="3" width="12" height="22" rx="3"/><path d="M12 7h4"/></svg>
+              <span>Apps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">Journey</div>
+    </div>
+
+    <!-- ============ SCREEN 3 : THE MOUNTAINS ============ -->
+    <div class="frame-wrap">
+      <div class="phone">
+        <div class="screen light" data-screen-label="The Mountains">
+          <div class="behind"></div>
+          <div class="sheet">
+            <div class="grabber"></div>
+            <div class="sheet-head">
+              <h2>Journeys</h2>
+              <div class="x"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 3l10 10M13 3 3 13"/></svg></div>
+            </div>
+            <div class="sheet-body">
+              <div class="modal-h1" style="margin-top:24px">The Mountains</div>
+              <div class="modal-p">This is the roadmap for your personalised journey. For the next 15 days, you will climb and conquer the First Mountain.</div>
+
+              <!-- mountain illustration -->
+              <svg class="illu-full" style="margin-top:22px" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sun3" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#fdeef4"/><stop offset=".65" stop-color="#fbe2ed"/><stop offset="1" stop-color="#f8d9e7"/></radialGradient>
+                  <linearGradient id="mt3a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2c6da"/><stop offset="1" stop-color="#ecb6cf"/></linearGradient>
+                  <linearGradient id="mt3b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7dbe8"/><stop offset="1" stop-color="#f3d0e0"/></linearGradient>
+                  <linearGradient id="snow3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fbeef4"/></linearGradient>
+                  <radialGradient id="glow3" cx="50%" cy="60%" r="60%"><stop offset="0" stop-color="#fbe08f"/><stop offset="1" stop-color="#f0a93f"/></radialGradient>
+                </defs>
+                <circle cx="214" cy="120" r="88" fill="url(#sun3)"/>
+                <!-- back right mountain -->
+                <path d="M196 256 L292 100 L360 256 Z" fill="url(#mt3b)"/>
+                <path d="M292 100 L262 150 L286 162 L300 132 Z" fill="#fdf0f6"/>
+                <path d="M292 100 L312 150 L300 168 Z" fill="#eecbdd" opacity=".6"/>
+                <!-- main left mountain -->
+                <path d="M-30 256 L116 64 L246 256 Z" fill="url(#mt3a)"/>
+                <path d="M116 64 L84 122 L108 134 L124 106 L142 138 Z" fill="#fdf0f6"/>
+                <path d="M116 64 L150 122 L142 138 L124 106 Z" fill="#e3a7c4" opacity=".45"/>
+                <path d="M70 150 L96 138 L116 168 L88 178 Z" fill="#fdf0f6" opacity=".75"/>
+                <!-- smooth snow foreground -->
+                <path d="M-30 262 C70 224 150 230 214 248 C268 262 320 252 360 244 L360 300 L-30 300 Z" fill="url(#snow3)"/>
+                <path d="M-30 262 C70 224 150 230 214 248 C268 262 320 252 360 244" fill="none" stroke="#f4d4e1" stroke-width="2"/>
+                <ellipse cx="120" cy="276" rx="120" ry="14" fill="#f7e2eb" opacity=".6"/>
+                <!-- tent -->
+                <g transform="translate(150 188)">
+                  <path d="M0 -4 C18 -8 40 12 46 44 L-40 44 C-34 12 -16 -1 0 -4 Z" fill="#c8508a"/>
+                  <path d="M0 -4 C-8 6 -10 26 -8 44 L8 44 C10 28 8 8 0 -4 Z" fill="url(#glow3)"/>
+                  <path d="M0 -4 C-5 4 -6 18 -5 30 C-2 24 1 14 0 -4 Z" fill="#fcdf8e" opacity=".9"/>
+                  <path d="M0 -8 L4 -26 L7 -25 L4 -8 Z" fill="#a23a72"/>
+                  <path d="M4 -26 L16 -22 L4 -18 Z" fill="#c8508a"/>
+                </g>
+                <!-- snowman -->
+                <g transform="translate(108 176)">
+                  <circle cx="0" cy="8" r="15" fill="#fff"/><circle cx="0" cy="8" r="15" fill="none" stroke="#f0d2e0" stroke-width="1.4"/>
+                  <circle cx="0" cy="-13" r="10" fill="#fff"/><circle cx="0" cy="-13" r="10" fill="none" stroke="#f0d2e0" stroke-width="1.4"/>
+                  <path d="M5 -18 L6 -34 L9 -33 L8 -16 Z" fill="#a23a72"/>
+                  <path d="M6 -34 L18 -30 L6 -26 Z" fill="#c8508a"/>
+                </g>
+                <!-- figure (white cloak) -->
+                <g transform="translate(52 184)">
+                  <ellipse cx="0" cy="62" rx="16" ry="4" fill="#eccbdb" opacity=".7"/>
+                  <circle cx="0" cy="0" r="10" fill="#fff"/><circle cx="0" cy="0" r="10" fill="none" stroke="#f0d2e0" stroke-width="1.3"/>
+                  <path d="M-13 7 C-9 -1 9 -1 13 7 L9 56 C9 60 -9 60 -9 56 Z" fill="#fff"/>
+                  <path d="M-13 7 C-9 -1 9 -1 13 7 L9 56 C9 60 -9 60 -9 56 Z" fill="none" stroke="#f0d2e0" stroke-width="1.3"/>
+                  <path d="M3 8 C6 22 6 40 4 56 L9 56 C9 40 8 20 3 8 Z" fill="#f6dde8" opacity=".8"/>
+                </g>
+              </svg>
+
+              <div class="chap-h"><span>⛰️</span> First Mountain - The Foundation</div>
+              <div class="chap-p">Based on your answers, this is where you'll build up the basics. Exercise, meditation, productivity, and healthy eating are the foundation beneath everything else.</div>
+
+              <!-- partial bottom card -->
+              <div class="jcard" style="margin-top:26px; height:120px; align-items:flex-start; background:linear-gradient(120deg,#16324a,#1d5061)">
+                <svg style="position:absolute; inset:0; width:100%; height:100%" viewBox="0 0 340 120" preserveAspectRatio="xMidYMid slice"><rect width="340" height="120" fill="#15405a"/><ellipse cx="60" cy="30" rx="60" ry="24" fill="#2e7d4f" opacity=".8"/><ellipse cx="280" cy="40" rx="60" ry="22" fill="#b89a52" opacity=".7"/><g transform="translate(50 28)" fill="#e84d8f"><path d="M0-10 3 0-3 0Z"/><path d="M-9-4 0 0-6 6Z"/><path d="M9-4 0 0 6 6Z"/></g></svg>
+                <div style="position:relative; z-index:2"><div class="jtitle">Your current journey</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">The Mountains</div>
+    </div>
+
+    <!-- ============ SCREEN 4 : THE RETURN ============ -->
+    <div class="frame-wrap">
+      <div class="phone">
+        <div class="screen light" data-screen-label="The Return">
+          <div class="behind"></div>
+          <div class="sheet">
+            <div class="grabber"></div>
+            <div class="sheet-head">
+              <h2>Journeys</h2>
+              <div class="x"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 3l10 10M13 3 3 13"/></svg></div>
+            </div>
+            <div class="sheet-body">
+              <!-- top partial dark card -->
+              <div class="jcard" style="margin-top:4px; height:96px; align-items:flex-start; background:#231245">
+                <svg style="position:absolute; inset:0; width:100%; height:100%" viewBox="0 0 340 96" preserveAspectRatio="none"><rect width="340" height="96" fill="#241346"/><g fill="none" stroke="#7d2f86" stroke-width="1.5" opacity=".55"><rect x="120" y="-30" width="160" height="160" rx="8"/><rect x="150" y="-15" width="120" height="130" rx="8"/><rect x="178" y="0" width="84" height="100" rx="8"/><rect x="206" y="14" width="48" height="72" rx="8"/></g></svg>
+                <div style="position:relative; z-index:2"><div class="jtitle">How to Live Without Regrets</div><div class="jsub">Create your most fulfilling life</div></div>
+                <div class="pct" style="position:relative; z-index:2">0%</div>
+              </div>
+
+              <div class="modal-h1" style="margin-top:30px">The Return</div>
+              <div class="modal-p">Once you've worked on yourself, the next step is to open yourself up to community.</div>
+
+              <!-- return illustration: figure on peak + city -->
+              <svg class="illu-full" style="margin-top:20px" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sun4" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#fdeef4"/><stop offset=".65" stop-color="#fbe2ed"/><stop offset="1" stop-color="#f8d9e7"/></radialGradient>
+                  <linearGradient id="peak4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0bfd5"/><stop offset="1" stop-color="#e8accb"/></linearGradient>
+                  <linearGradient id="snow4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fbeef4"/></linearGradient>
+                  <linearGradient id="fig4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecb1ce"/><stop offset="1" stop-color="#e29ec1"/></linearGradient>
+                </defs>
+                <circle cx="196" cy="126" r="90" fill="url(#sun4)"/>
+                <!-- distant pink mountains -->
+                <path d="M120 256 L208 116 L300 256 Z" fill="#f8e0ec"/>
+                <path d="M240 256 L318 150 L360 256 Z" fill="#fbe7f0"/>
+                <!-- far skyline (palest) -->
+                <g fill="#f3d9e6">
+                  <rect x="134" y="196" width="58" height="60"/><rect x="206" y="204" width="40" height="52"/>
+                </g>
+                <!-- mid skyline buildings -->
+                <g fill="#ecccdc">
+                  <!-- temple 1 (center) -->
+                  <rect x="150" y="200" width="56" height="56"/>
+                  <path d="M146 200 L178 184 L210 200 Z" fill="#e6c1d4"/>
+                  <!-- domed building (right) -->
+                  <rect x="262" y="206" width="50" height="50"/>
+                  <path d="M262 206 a25 22 0 0 1 50 0 Z" fill="#e6c1d4"/>
+                  <!-- block between -->
+                  <rect x="216" y="214" width="40" height="42"/>
+                  <rect x="212" y="208" width="48" height="7"/>
+                </g>
+                <!-- columns -->
+                <g fill="#e2bcd2">
+                  <rect x="155" y="210" width="5" height="46"/><rect x="165" y="210" width="5" height="46"/><rect x="175" y="210" width="5" height="46"/><rect x="185" y="210" width="5" height="46"/><rect x="195" y="210" width="5" height="46"/>
+                  <rect x="268" y="218" width="5" height="38"/><rect x="278" y="218" width="5" height="38"/><rect x="288" y="218" width="5" height="38"/><rect x="298" y="218" width="5" height="38"/>
+                  <rect x="221" y="220" width="4" height="36"/><rect x="229" y="220" width="4" height="36"/><rect x="237" y="220" width="4" height="36"/><rect x="245" y="220" width="4" height="36"/>
+                </g>
+                <!-- radio tower far right -->
+                <g fill="#e3bdd3">
+                  <path d="M316 256 L322 168 L328 256 Z"/>
+                  <rect x="319" y="158" width="6" height="12"/><circle cx="322" cy="156" r="6"/>
+                  <rect x="314" y="196" width="16" height="4"/>
+                </g>
+                <!-- big foreground peak (left) -->
+                <path d="M-40 280 L66 102 L156 280 Z" fill="url(#peak4)"/>
+                <path d="M66 102 L38 162 L64 174 L80 142 Z" fill="#fdf0f6"/>
+                <path d="M66 102 L96 162 L80 142 Z" fill="#dca0c2" opacity=".5"/>
+                <!-- white snow slope -->
+                <path d="M-40 280 C60 232 150 240 220 252 C290 264 330 256 360 250 L360 300 L-40 300 Z" fill="url(#snow4)"/>
+                <path d="M-40 280 C60 232 150 240 220 252 C290 264 330 256 360 250" fill="none" stroke="#f3d3e0" stroke-width="2"/>
+                <!-- small arched igloo -->
+                <path d="M70 258 a31 31 0 0 1 62 0 Z" fill="#fff"/>
+                <path d="M70 258 a31 31 0 0 1 62 0" fill="none" stroke="#f0cede" stroke-width="2"/>
+                <circle cx="86" cy="251" r="9" fill="#fff"/><circle cx="86" cy="251" r="9" fill="none" stroke="#e9bfd2" stroke-width="2.4"/>
+                <!-- figure on peak -->
+                <g transform="translate(62 90)">
+                  <circle cx="0" cy="-1" r="10" fill="url(#fig4)"/>
+                  <path d="M-13 6 C-9 -2 9 -2 13 6 L8 50 C8 54 -8 54 -8 50 Z" fill="url(#fig4)"/>
+                  <path d="M2 7 C5 20 5 38 3 50 L8 50 C8 36 7 18 2 7 Z" fill="#d98bb3" opacity=".55"/>
+                </g>
+              </svg>
+
+              <!-- bottom colorful circles card -->
+              <div class="jcard" style="margin-top:24px; height:128px; align-items:flex-end; background:#3a1640">
+                <svg style="position:absolute; inset:0; width:100%; height:100%" viewBox="0 0 340 128" preserveAspectRatio="xMidYMid slice"><rect width="340" height="128" fill="#3a1640"/><circle cx="120" cy="50" r="70" fill="#c07a1e" opacity=".95"/><circle cx="60" cy="40" r="46" fill="#7b2d86"/><circle cx="230" cy="30" r="60" fill="#b8861f" opacity=".9"/><circle cx="300" cy="60" r="58" fill="#9c1f4e" opacity=".9"/><circle cx="180" cy="110" r="48" fill="#1f8a86" opacity=".85"/><circle cx="120" cy="118" r="40" fill="#d2901f" opacity=".8"/><circle cx="320" cy="20" r="30" fill="#c63a8e" opacity=".85"/></svg>
+                <div class="info">i</div>
+                <div style="position:relative; z-index:2"><div class="jtitle">How to Create a Fabulous Circle</div><div class="jsub">Maintain a Circle of support</div></div>
+                <div class="pct" style="position:relative; z-index:2">0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">The Return</div>
+    </div>
+
+    <!-- ============ SCREEN 5 : THE PASSAGES ============ -->
+    <div class="frame-wrap">
+      <div class="phone">
+        <div class="screen light" data-screen-label="The Passages">
+          <div class="behind"></div>
+          <div class="sheet">
+            <div class="grabber"></div>
+            <div class="sheet-head">
+              <h2>Journeys</h2>
+              <div class="x"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 3l10 10M13 3 3 13"/></svg></div>
+            </div>
+            <div class="sheet-body">
+              <!-- top partial dark card cut off -->
+              <div class="jcard" style="margin-top:-18px; height:96px; align-items:flex-end; background:#2b2630">
+                <svg style="position:absolute; inset:0; width:100%; height:100%" viewBox="0 0 340 96" preserveAspectRatio="xMidYMid slice"><rect width="340" height="96" fill="#2b2630"/><ellipse cx="80" cy="30" rx="70" ry="30" fill="#4a4550"/><ellipse cx="240" cy="20" rx="80" ry="34" fill="#3d3942"/><ellipse cx="300" cy="70" rx="70" ry="30" fill="#44404a"/></svg>
+                <div style="position:relative; z-index:2"><div class="jtitle">Change the World for the Better</div><div class="jsub">Small actions make a big impact</div></div>
+                <div class="pct" style="position:relative; z-index:2">0%</div>
+              </div>
+
+              <div class="modal-h1" style="margin-top:30px">The Passages</div>
+              <div class="modal-p">You can break away from your journey through The Mountains or The Return at any point to challenge yourself with one of our handcrafted journeys.</div>
+
+              <!-- passages illustration: city skyline + winding path + figure -->
+              <svg class="illu-full" style="margin-top:18px" viewBox="0 0 340 360" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sun5" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#fdeef4"/><stop offset=".7" stop-color="#fbe2ed"/><stop offset="1" stop-color="#f5d7e4"/></radialGradient>
+                  <linearGradient id="ground5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d4e0"/><stop offset="1" stop-color="#eec6d6"/></linearGradient>
+                  <linearGradient id="fig5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dd8eb1"/><stop offset="1" stop-color="#d07ba2"/></linearGradient>
+                </defs>
+                <circle cx="200" cy="74" r="76" fill="url(#sun5)"/>
+                <!-- distant skyline (palest) -->
+                <g fill="#f4dbe6">
+                  <rect x="-4" y="84" width="66" height="50"/><rect x="150" y="88" width="48" height="46"/><rect x="276" y="84" width="68" height="50"/>
+                </g>
+                <!-- mid buildings -->
+                <g fill="#ecccdc">
+                  <!-- left temple -->
+                  <rect x="4" y="96" width="56" height="38"/><path d="M0 96 L32 80 L64 96 Z" fill="#e6c1d4"/>
+                  <!-- center temple -->
+                  <rect x="120" y="100" width="46" height="34"/><path d="M116 100 L143 86 L170 100 Z" fill="#e6c1d4"/>
+                  <!-- right domed -->
+                  <rect x="282" y="98" width="52" height="36"/><path d="M282 98 a26 20 0 0 1 52 0 Z" fill="#e6c1d4"/>
+                </g>
+                <!-- columns -->
+                <g fill="#e3bdd3">
+                  <rect x="8" y="104" width="5" height="30"/><rect x="18" y="104" width="5" height="30"/><rect x="28" y="104" width="5" height="30"/><rect x="38" y="104" width="5" height="30"/><rect x="48" y="104" width="5" height="30"/>
+                  <rect x="124" y="108" width="4" height="26"/><rect x="132" y="108" width="4" height="26"/><rect x="140" y="108" width="4" height="26"/><rect x="148" y="108" width="4" height="26"/><rect x="156" y="108" width="4" height="26"/>
+                  <rect x="288" y="110" width="5" height="24"/><rect x="298" y="110" width="5" height="24"/><rect x="308" y="110" width="5" height="24"/><rect x="318" y="110" width="5" height="24"/>
+                </g>
+                <!-- radio tower -->
+                <g fill="#e3bdd3"><path d="M204 134 L210 50 L216 134 Z"/><rect x="207" y="42" width="6" height="10"/><circle cx="210" cy="40" r="6"/><rect x="201" y="86" width="18" height="4"/></g>
+                <!-- pink ground -->
+                <rect x="0" y="130" width="340" height="230" fill="url(#ground5)"/>
+                <ellipse cx="170" cy="150" rx="200" ry="26" fill="#f7e1ea" opacity=".5"/>
+                <!-- winding white path (smooth serpentine) -->
+                <path d="M150 364 C150 322 56 304 56 262 C56 222 286 230 286 188 C286 150 70 160 70 122 C70 100 140 100 196 110"
+                      fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round"/>
+                <path d="M150 364 C150 322 56 304 56 262 C56 222 286 230 286 188 C286 150 70 160 70 122 C70 100 140 100 196 110"
+                      fill="none" stroke="#f6dde9" stroke-width="38" stroke-linecap="round" opacity=".35" transform="translate(0 4)"/>
+                <path d="M150 364 C150 322 56 304 56 262 C56 222 286 230 286 188 C286 150 70 160 70 122 C70 100 140 100 196 110"
+                      fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round"/>
+                <!-- figure on path -->
+                <g transform="translate(150 282)">
+                  <ellipse cx="0" cy="62" rx="15" ry="4" fill="#cf7ba0" opacity=".4"/>
+                  <circle cx="0" cy="-1" r="11" fill="url(#fig5)"/>
+                  <path d="M-15 7 C-10 -1 10 -1 15 7 L10 56 C10 60 -10 60 -10 56 Z" fill="url(#fig5)"/>
+                  <path d="M3 8 C6 22 6 40 4 56 L10 56 C10 38 9 20 3 8 Z" fill="#c06a92" opacity=".5"/>
+                </g>
+              </svg>
+
+              <!-- bottom purple card -->
+              <div class="jcard" style="margin-top:18px; height:120px; align-items:flex-end; background:#5b1fb0">
+                <svg style="position:absolute; inset:0; width:100%; height:100%" viewBox="0 0 340 120" preserveAspectRatio="xMidYMid slice"><rect width="340" height="120" fill="#5b1fb0"/><circle cx="70" cy="40" r="70" fill="#6f2bc6" opacity=".7"/><circle cx="260" cy="70" r="80" fill="#4a1796" opacity=".6"/><circle cx="180" cy="20" r="50" fill="#7a39d6" opacity=".5"/></svg>
+                <div class="info">i</div>
+                <div style="position:relative; z-index:2"><div class="jtitle">Intermittent Fasting for Beginners</div><div class="jsub">Reboot your body for better health</div></div>
+                <div class="pct" style="position:relative; z-index:2">0%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">The Passages</div>
+    </div>
+
+  </div>
+</body>
+</html>

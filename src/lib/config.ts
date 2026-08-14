@@ -16,7 +16,7 @@ export const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_K
 
 /** Dev affordance: force the offline mock layer even when keys are configured
  * (set EXPO_PUBLIC_FORCE_MOCK=1 in a local run config; never in production). */
-const FORCE_MOCK = process.env.EXPO_PUBLIC_FORCE_MOCK === '1';
+export const FORCE_MOCK = process.env.EXPO_PUBLIC_FORCE_MOCK === '1';
 
 /** True only when both a Convex URL and a Clerk key are configured. */
 export const REAL_BACKEND = !FORCE_MOCK && Boolean(CONVEX_URL && CLERK_PUBLISHABLE_KEY);

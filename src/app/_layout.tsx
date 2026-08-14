@@ -1,78 +1,66 @@
-import {
-  EBGaramond_400Regular,
-  EBGaramond_400Regular_Italic,
-  EBGaramond_500Medium,
-  EBGaramond_600SemiBold,
-} from '@expo-google-fonts/eb-garamond';
-import {
-  HankenGrotesk_300Light,
-  HankenGrotesk_400Regular,
-  HankenGrotesk_500Medium,
-  HankenGrotesk_600SemiBold,
-  HankenGrotesk_700Bold,
-  HankenGrotesk_800ExtraBold,
-} from '@expo-google-fonts/hanken-grotesk';
-import { Newsreader_400Regular_Italic, Newsreader_500Medium } from '@expo-google-fonts/newsreader';
-import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { Platform } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaInsetsContext, SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { FORCE_MOCK } from '@/lib/config';
 import { AppProviders } from '@/lib/providers';
 import { colors } from '@/lib/theme';
 
-// Hold the native splash until the serif identity fonts are ready. On web the
-// static export prerenders in Node — gating there would produce blank pages —
-// so web renders immediately and lets @font-face swap the serifs in.
-if (Platform.OS !== 'web') {
-  SplashScreen.preventAutoHideAsync().catch(() => {});
+/**
+ * The design canvas is a 393 × 852 iPhone frame whose top 54 is the status bar
+ * and whose bottom 34 is the home indicator. A browser has neither, so
+ * `useSafeAreaInsets` reports zeros and every screen's content rides 54 higher
+ * than the canvas while its full-bleed art — which is measured from the frame's
+ * own top edge — stays put. The two coordinate systems then disagree by exactly
+ * the status bar, which reads as a screen whose spacing is subtly wrong
+ * everywhere rather than as a missing status bar.
+ *
+ * So the preview build states the status bar outright. This is the mock build
+ * only: on a device the real insets are reported and this never runs, and the
+ * production web build is left alone.
+ *
+ * The bottom stays 0 on purpose. The canvas's home-indicator zone is *inside*
+ * its 852, and a real 852pt screen includes it too, so a canvas `bottom: 44` is
+ * 44 off the screen's own edge on both. Simulating a 34pt bottom inset would
+ * lift every bottom-anchored element 34 above where the canvas draws it — and
+ * would grow the tab bar past the 83 the canvas gives it.
+ */
+const CANVAS_INSETS = { top: 54, bottom: 0, left: 0, right: 0 };
+
+function CanvasInsets({ children }: { children: ReactNode }) {
+  if (Platform.OS !== 'web' || !FORCE_MOCK) return <>{children}</>;
+  return <SafeAreaInsetsContext.Provider value={CANVAS_INSETS}>{children}</SafeAreaInsetsContext.Provider>;
 }
 
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({
-    EBGaramond_400Regular,
-    EBGaramond_400Regular_Italic,
-    EBGaramond_500Medium,
-    EBGaramond_600SemiBold,
-    Newsreader_500Medium,
-    Newsreader_400Regular_Italic,
-    HankenGrotesk_300Light,
-    HankenGrotesk_400Regular,
-    HankenGrotesk_500Medium,
-    HankenGrotesk_600SemiBold,
-    HankenGrotesk_700Bold,
-    HankenGrotesk_800ExtraBold,
-  });
-
-  useEffect(() => {
-    if (Platform.OS !== 'web' && (fontsLoaded || fontError)) {
-      SplashScreen.hideAsync().catch(() => {});
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (Platform.OS !== 'web' && !fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView
+      style={[
+        { flex: 1 },
+        Platform.OS === 'web' ? ({ WebkitFontSmoothing: 'antialiased' } as never) : null,
+      ]}>
       <SafeAreaProvider>
-        <AppProviders>
-          {/* Dark ink glyphs on the paper field. */}
-          <StatusBar style="dark" />
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              contentStyle: { backgroundColor: colors.bg },
-            }}>
-            {/* the day-3 letter is delivered over Today — fade it in like an overlay */}
-            <Stack.Screen name="letter" options={{ animation: 'fade', gestureEnabled: false }} />
-          </Stack>
-        </AppProviders>
+        <CanvasInsets>
+          <AppProviders>
+            {/* Dark ink glyphs on the paper field. */}
+            <StatusBar style="dark" />
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: colors.bg },
+              }}>
+              {/* the day-3 letter is delivered over Today — fade it in like an overlay */}
+              <Stack.Screen name="letter" options={{ animation: 'fade', gestureEnabled: false }} />
+              {/* the first-steps checklist is a look, not a destination */}
+              <Stack.Screen name="first-steps" options={{ presentation: 'modal' }} />
+              {/* the lessons browser is somewhere you look a lesson up, then leave */}
+              <Stack.Screen name="lessons-browser" options={{ presentation: 'modal' }} />
+            </Stack>
+          </AppProviders>
+        </CanvasInsets>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react';
-import { Pressable, View, type StyleProp, type ViewStyle } from 'react-native';
+import { View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { colors, radius, spacing } from '@/lib/theme';
+import { colors, radius, sans } from '@/lib/theme';
 import { AppText } from './AppText';
+import { BackGlyph, ChevronGlyph } from './marks';
+import { PressScale } from './press-scale';
 
 /**
  * Ported design-kit primitives from the Claude Design handoff (`stoic-kit.jsx`):
@@ -204,10 +206,12 @@ export function Toggle({ on = false }: { on?: boolean }) {
 }
 
 // ── round avatar with initials (white fill, dark glyph) ─────────────────────
+/** The profile monogram — inset paper with muted ink, as the reference draws
+ * it. It is a placeholder for a photo, not a filled badge. */
 export function Avatar({ initials = 'JR', size = 64 }: { initials?: string; size?: number }) {
   return (
-    <View style={{ width: size, height: size, borderRadius: 9999, backgroundColor: colors.accent, alignItems: 'center', justifyContent: 'center' }}>
-      <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: size * 0.4, letterSpacing: -0.4 }}>
+    <View style={{ width: size, height: size, borderRadius: 9999, backgroundColor: '#EDECE7', alignItems: 'center', justifyContent: 'center' }}>
+      <AppText weightOverride="600" color={colors.textMuted} style={{ fontSize: size * 0.32, letterSpacing: -0.4 }}>
         {initials}
       </AppText>
     </View>
@@ -221,14 +225,17 @@ export function IconChip({
   radius: rad = 12,
   tone = 'soft',
   color,
+  chipColor,
 }: {
   name: GlyphName;
   size?: number;
   radius?: number;
   tone?: 'soft' | 'ink' | 'plain';
   color?: string;
+  /** Override the soft chip fill (the settings rows use the warmer #F1EFE9). */
+  chipColor?: string;
 }) {
-  const bg = tone === 'ink' ? colors.accent : tone === 'plain' ? 'transparent' : colors.accentSoft;
+  const bg = tone === 'ink' ? colors.accent : tone === 'plain' ? 'transparent' : (chipColor ?? colors.accentSoft);
   const glyphColor = color ?? (tone === 'ink' ? colors.accentText : colors.text);
   return (
     <View style={{ width: size, height: size, borderRadius: rad, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
@@ -238,22 +245,63 @@ export function IconChip({
 }
 
 // ── grouped settings list (rounded card, hairline-divided rows) ─────────────
+/**
+ * The chrome every settings sub-page wears (canvas: App Lock · Data Privacy):
+ * a labelled back affordance naming where you came from, then the page title
+ * set large on the left.
+ */
+export function SettingsTopBar({ title, back = 'Settings', onBack }: { title: string; back?: string; onBack: () => void }) {
+  return (
+    <View style={{ paddingHorizontal: 16 }}>
+      <PressScale
+        onPress={onBack}
+        accessibilityRole="button"
+        accessibilityLabel={`Back to ${back}`}
+        style={{ minHeight: 40, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+        <BackGlyph />
+        <AppText style={[sans('400'), { fontSize: 17, color: colors.textMuted }]}>{back}</AppText>
+      </PressScale>
+      <AppText style={[sans('600'), { marginTop: 4, fontSize: 27, letterSpacing: -0.4, color: colors.inkAlt }]}>{title}</AppText>
+    </View>
+  );
+}
+
+/**
+ * A settings section: an uppercase caption at the screen gutter, then one
+ * flat paper card at the wider 12px card gutter (canvas: Settings).
+ */
 export function SettingsGroup({ header, footer, children }: { header?: string; footer?: string; children: ReactNode }) {
   return (
-    <View style={{ marginBottom: spacing.xl }}>
+    <View style={{ marginBottom: 26 }}>
       {header ? (
-        <AppText variant="label" style={{ paddingHorizontal: spacing.lg + 12, paddingBottom: spacing.sm }}>
+        <AppText style={[sans('600'), { paddingHorizontal: 16, paddingBottom: 10, fontSize: 13, letterSpacing: 2, textTransform: 'uppercase', color: colors.textMuted }]}>
           {header}
         </AppText>
       ) : null}
-      <View style={{ marginHorizontal: spacing.lg, backgroundColor: colors.surface, borderRadius: radius.lg, overflow: 'hidden' }}>
+      <View style={{ marginHorizontal: 12, backgroundColor: colors.surface, borderRadius: radius.lg, borderCurve: 'continuous', overflow: 'hidden' }}>
         {children}
       </View>
       {footer ? (
-        <AppText variant="soft" style={{ paddingHorizontal: spacing.lg + 12, paddingTop: spacing.sm }}>
+        <AppText style={[sans('400'), { paddingHorizontal: 18, paddingTop: 10, fontSize: 13, lineHeight: 18, color: colors.textSoft }]}>
           {footer}
         </AppText>
       ) : null}
+    </View>
+  );
+}
+
+/**
+ * The description-plus-control card — a single setting that needs a sentence
+ * of explanation next to its switch.
+ */
+export function SettingsNote({ title, body, control }: { title: string; body: string; control?: ReactNode }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 14, paddingVertical: 16, paddingHorizontal: 18 }}>
+      <View style={{ flex: 1 }}>
+        <AppText style={[sans('600'), { fontSize: 16, color: colors.text }]}>{title}</AppText>
+        <AppText style={[sans('400'), { marginTop: 6, fontSize: 13.5, lineHeight: 19, color: colors.textSoft }]}>{body}</AppText>
+      </View>
+      {control ? <View style={{ marginTop: 4 }}>{control}</View> : null}
     </View>
   );
 }
@@ -280,16 +328,17 @@ export function SettingsRow({
 }) {
   const ink = danger ? colors.danger : colors.text;
   const press = toggle ? () => toggle.onChange(!toggle.value) : onPress;
-  const right = toggle ? <Toggle on={toggle.value} /> : control !== undefined ? control : !danger ? Glyph.chevR(colors.textSoft) : null;
+  const right = toggle ? <Toggle on={toggle.value} /> : control !== undefined ? control : !danger ? <ChevronGlyph color="#B0AEA8" /> : null;
   return (
     <View>
-      <Pressable
+      <PressScale
         onPress={press}
         disabled={!press}
         accessibilityRole="button"
-        style={{ flexDirection: 'row', alignItems: 'center', gap: 13, paddingVertical: 15, paddingHorizontal: 18, minHeight: 54 }}>
-        {glyph ? <IconChip name={glyph} /> : null}
-        <AppText weightOverride="500" color={ink} style={{ flex: 1, fontSize: 15.5, letterSpacing: 0.1 }}>
+        style={{ flexDirection: 'row', alignItems: 'center', gap: 13, paddingVertical: 14, paddingHorizontal: 18, minHeight: 52 }}>
+        {/* The reference only chips the billing rows, at 32/9 on inset paper. */}
+        {glyph ? <IconChip name={glyph} size={32} radius={9} chipColor="#F1EFE9" /> : null}
+        <AppText weightOverride="500" color={ink} style={{ flex: 1, fontSize: 16, letterSpacing: 0.1 }}>
           {title}
         </AppText>
         {detail ? (
@@ -298,8 +347,9 @@ export function SettingsRow({
           </AppText>
         ) : null}
         {right}
-      </Pressable>
-      {!last ? <View style={{ position: 'absolute', left: glyph ? 51 : 18, right: 0, bottom: 0, height: 1, backgroundColor: colors.border }} /> : null}
+      </PressScale>
+      {/* The divider stops short of both edges, as the reference draws it. */}
+      {!last ? <View style={{ position: 'absolute', left: glyph ? 51 : 18, right: 18, bottom: 0, height: 1, backgroundColor: colors.hairline }} /> : null}
     </View>
   );
 }
@@ -368,7 +418,7 @@ export function PlanCard({
   style?: StyleProp<ViewStyle>;
 }) {
   const onFill = active ? colors.accentText : colors.text;
-  const sub2 = active ? 'rgba(22,24,28,0.6)' : colors.textSoft;
+  const sub2 = active ? colors.inkTextMuted : colors.textSoft;
   return (
     <View
       accessibilityRole="button"
@@ -388,7 +438,7 @@ export function PlanCard({
       ]}>
       <View style={{ height: 16, marginBottom: 6 }}>
         {tag ? (
-          <AppText weightOverride="600" color={active ? 'rgba(22,24,28,0.6)' : colors.textSoft} style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase' }}>
+          <AppText weightOverride="600" color={active ? colors.inkTextMuted : colors.textSoft} style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase' }}>
             {tag}
           </AppText>
         ) : null}
@@ -404,7 +454,7 @@ export function PlanCard({
           {per}
         </AppText>
       </View>
-      <AppText weightOverride="600" color={active ? 'rgba(22,24,28,0.6)' : colors.textMuted} style={{ fontSize: 13, marginTop: 6 }}>
+      <AppText weightOverride="600" color={active ? colors.inkTextMuted : colors.textMuted} style={{ fontSize: 13, marginTop: 6 }}>
         {sub}
       </AppText>
       {active ? <View style={{ position: 'absolute', top: 14, right: 14 }}>{Glyph.check(colors.accentText)}</View> : null}

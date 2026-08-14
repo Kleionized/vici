@@ -10,14 +10,36 @@
  * scale — reward and severity are never a hue.
  */
 
+import { Image } from 'expo-image';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { type MutableRefObject, type ReactNode, useEffect, useId, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, LinearGradient as SvgGrad, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { StyleSheet, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
+import Reanimated, {
+  Easing,
+  Extrapolation,
+  FadeIn as ReanimatedFadeIn,
+  FadeInUp as ReanimatedFadeInUp,
+  FadeOut as ReanimatedFadeOut,
+  cancelAnimation,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Svg, { Circle, Defs, Ellipse, G, Image as SvgImage, LinearGradient as SvgGrad, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
+import { AppText, INTENSITY_BANDS, PressScale, bandToSeverity } from '@/components/ui';
+import { useCreateEvent, useEvents } from '@/lib/backend';
+import { roman } from '@/lib/lessonArt';
 import type { Tint } from '@/lib/oklch';
-import { colors, fonts } from '@/lib/theme';
+import { getJSON, setJSON } from '@/lib/storage';
+import { colors, fonts, sans } from '@/lib/theme';
+import { clearUrgeSession, newUrgeSession, saveUrgeSession } from '@/lib/urgeSession';
 
 // ── per-step tints — all neutral ink now (severity = darker, never redder).
 const inkTint =
@@ -54,30 +76,28 @@ export function urgeWave(baseY: number, amp: number, phase: number, w = 402, ste
 
 // ── ci-breathe: gentle 6s scale 1 ↔ 1.035 ────────────────────────────────────
 export function Breathe({ children, amount = 1.035 }: { children: ReactNode; amount?: number }) {
-  const scale = useRef(new Animated.Value(1)).current;
+  const scale = useSharedValue(1);
   useEffect(() => {
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(scale, { toValue: amount, duration: 3000, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-        Animated.timing(scale, { toValue: 1, duration: 3000, easing: Easing.inOut(Easing.ease), useNativeDriver: true }),
-      ]),
+    scale.value = withRepeat(
+      withSequence(
+        withTiming(amount, { duration: 3000, easing: Easing.inOut(Easing.ease) }),
+        withTiming(1, { duration: 3000, easing: Easing.inOut(Easing.ease) }),
+      ),
+      -1,
+      false,
     );
-    loop.start();
-    return () => loop.stop();
+    return () => cancelAnimation(scale);
   }, [scale, amount]);
-  return <Animated.View style={{ transform: [{ scale }] }}>{children}</Animated.View>;
+  const animatedStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+  return <Reanimated.View style={animatedStyle}>{children}</Reanimated.View>;
 }
 
 // ── urge-fade: 0.6s opacity + slide-up, runs on mount (key it to re-run) ─────
 export function FadeIn({ children, style }: { children: ReactNode; style?: object }) {
-  const t = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(t, { toValue: 1, duration: 600, easing: Easing.out(Easing.ease), useNativeDriver: true }).start();
-  }, [t]);
   return (
-    <Animated.View style={[{ opacity: t, transform: [{ translateY: t.interpolate({ inputRange: [0, 1], outputRange: [8, 0] }) }] }, style]}>
+    <Reanimated.View entering={ReanimatedFadeInUp.duration(600).easing(Easing.out(Easing.ease))} style={style}>
       {children}
-    </Animated.View>
+    </Reanimated.View>
   );
 }
 
@@ -173,8 +193,8 @@ export function TopChrome({
   dotTint?: Tint;
 }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 26, paddingTop: 8, zIndex: 3 }}>
-      <Pressable onPress={onBack} hitSlop={10} accessibilityLabel={back === 'close' ? 'Close' : 'Back'} style={{ padding: 4, marginLeft: -4 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingTop: 8, zIndex: 3 }}>
+      <PressScale onPress={onBack} hitSlop={10} accessibilityLabel={back === 'close' ? 'Close' : 'Back'} style={{ width: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
         <Svg width={26} height={26} viewBox="0 0 24 24" fill="none">
           {back === 'close' ? (
             <Path d="M6 6l12 12M18 6L6 18" stroke={TEXT} strokeWidth={2.2} strokeLinecap="round" />
@@ -182,7 +202,7 @@ export function TopChrome({
             <Path d="M15 5l-7 7 7 7" stroke={TEXT} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
           )}
         </Svg>
-      </Pressable>
+      </PressScale>
       {total ? (
         <View style={{ flexDirection: 'row', gap: 7 }}>
           {Array.from({ length: total }).map((_, i) => (
@@ -208,23 +228,23 @@ export function TopChrome({
 // ── the one action — a solid-ink pill (name kept for call-sites) ─────────────
 export function BrightButton({ label, onPress, style }: { label: string; onPress: () => void; style?: object }) {
   return (
-    <Pressable
+    <PressScale
       onPress={onPress}
-      style={({ pressed }) => [
+      style={[
         {
           width: '100%',
           backgroundColor: colors.ink,
           borderRadius: 9999,
-          paddingVertical: 19,
+          minHeight: 58,
           alignItems: 'center',
-          transform: [{ scale: pressed ? 0.975 : 1 }],
+          justifyContent: 'center',
         },
         style as object,
       ]}>
       <AppText weightOverride="600" color={colors.inkText} style={{ fontSize: 16.5, letterSpacing: 0.17 }}>
         {label}
       </AppText>
-    </Pressable>
+    </PressScale>
   );
 }
 
@@ -274,7 +294,7 @@ export function JourneyPage({
           </NightIllustration>
         </View>
         {/* one headline, one short line, one action */}
-        <View style={{ paddingHorizontal: 30, paddingBottom: 18 }}>
+        <View style={{ paddingHorizontal: 24, paddingBottom: 18 }}>
           {label ? (
             <AppText center weightOverride="600" color={colors.textSoft} style={{ fontSize: 11, letterSpacing: 2.2, textTransform: 'uppercase', marginBottom: 14 }}>
               {label}
@@ -315,11 +335,37 @@ export function RelapseLineArt({ tint, mode }: { tint: Tint; mode: 'down' | 'tro
 // ════════ THE BREATHING WAVE (ported from the canvas) ════════════════════════
 // A calm sea drawn in ink washes on the paper: parallax wave layers built from
 // stacked sinusoids that drift sideways, a crisp near-black crest line, and a
-// breathing paper-white dot riding the wave's edge at centre. Reads session
-// progress from a ref so swell = sin(progress·π): rises to a peak, recedes.
+// breathing paper-white dot riding the wave's edge at centre. Session progress
+// raises then settles the waterline while a separate envelope steadily softens
+// both the wave amplitude and its breathing travel.
 const STEPS = 42;
 const BREATH_SECONDS = 10;
 const INHALE = 0.4;
+
+export type BreathPhase = 'inhale' | 'exhale';
+
+function breathStateAt(t: number): { amount: number; phase: BreathPhase } {
+  const cycleProgress = (t % BREATH_SECONDS) / BREATH_SECONDS;
+  return cycleProgress < INHALE
+    ? { amount: smoothstep(cycleProgress / INHALE), phase: 'inhale' }
+    : { amount: 1 - smoothstep((cycleProgress - INHALE) / (1 - INHALE)), phase: 'exhale' };
+}
+
+export function BreathCue({ phase, color = 'rgba(245,244,241,0.72)', style }: { phase: BreathPhase; color?: string; style?: StyleProp<ViewStyle> }) {
+  const label = phase === 'inhale' ? 'Breathe in' : 'Breathe out';
+  return (
+    <View accessibilityRole="text" accessibilityLabel={label} style={[{ height: 22, alignItems: 'center', justifyContent: 'center' }, style]}>
+      <Reanimated.View
+        key={phase}
+        entering={ReanimatedFadeIn.duration(180)}
+        exiting={ReanimatedFadeOut.duration(140)}
+        pointerEvents="none"
+        style={{ position: 'absolute' }}>
+        <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 1.8, textTransform: 'uppercase', color }]}>{label}</AppText>
+      </Reanimated.View>
+    </View>
+  );
+}
 
 function buildSurface(yBase: number, amp: number, freq: number, speed: number, ph: number, t: number, CW: number) {
   const pts: [number, number][] = [];
@@ -340,95 +386,121 @@ const pointsToStroke = (pts: [number, number][], dy = 0) =>
   `M${pts[0][0].toFixed(1)} ${(pts[0][1] + dy).toFixed(1)}` +
   pts.slice(1).map(([x, y]) => ` L${x.toFixed(1)} ${(y + dy).toFixed(1)}`).join('');
 
-export function UrgeWave({ progressRef }: { progressRef: MutableRefObject<number> }) {
+export function UrgeWave({
+  progressRef,
+  onBreathPhaseChange,
+}: {
+  progressRef: MutableRefObject<number>;
+  onBreathPhaseChange?: (phase: BreathPhase) => void;
+}) {
   const [size, setSize] = useState({ w: 0, h: 0 });
-  const [, setFrame] = useState(0);
-  const tRef = useRef(0);
-  const startRef = useRef<number | null>(null);
-  const rafRef = useRef(0);
-  const lastRef = useRef(0);
+  const breathPhaseRef = useRef<BreathPhase>('inhale');
+  const onBreathPhaseChangeRef = useRef(onBreathPhaseChange);
+  const breath = useSharedValue(0);
+  const drift = useSharedValue(0);
+  const sessionProgress = useSharedValue(0);
   const uid = useId().replace(/:/g, '');
 
   useEffect(() => {
-    let mounted = true;
-    const loop = (now: number) => {
-      if (!mounted) return;
-      if (startRef.current == null) startRef.current = now;
-      tRef.current = (now - startRef.current) / 1000;
-      if (now - lastRef.current > 33) {
-        lastRef.current = now;
-        setFrame((f) => (f + 1) % 1000000);
+    onBreathPhaseChangeRef.current = onBreathPhaseChange;
+  }, [onBreathPhaseChange]);
+
+  useEffect(() => {
+    const startedAt = Date.now();
+    onBreathPhaseChangeRef.current?.('inhale');
+
+    // Keep the water and breath motion on the UI thread. The lightweight JS
+    // interval only mirrors session progress and changes the accessible cue.
+    breath.value = withRepeat(
+      withSequence(
+        withTiming(1, { duration: BREATH_SECONDS * INHALE * 1000, easing: Easing.inOut(Easing.quad) }),
+        withTiming(0, { duration: BREATH_SECONDS * (1 - INHALE) * 1000, easing: Easing.inOut(Easing.quad) }),
+      ),
+      -1,
+      false,
+    );
+    drift.value = withRepeat(withTiming(1, { duration: 18000, easing: Easing.linear }), -1, false);
+
+    const sync = () => {
+      const elapsed = (Date.now() - startedAt) / 1000;
+      const nextBreathPhase = breathStateAt(elapsed).phase;
+      if (nextBreathPhase !== breathPhaseRef.current) {
+        breathPhaseRef.current = nextBreathPhase;
+        onBreathPhaseChangeRef.current?.(nextBreathPhase);
       }
-      rafRef.current = requestAnimationFrame(loop);
+      sessionProgress.value = withTiming(clamp01(progressRef.current), { duration: 180, easing: Easing.out(Easing.quad) });
     };
-    rafRef.current = requestAnimationFrame(loop);
+
+    sync();
+    const syncTimer = setInterval(sync, 200);
     return () => {
-      mounted = false;
-      cancelAnimationFrame(rafRef.current);
+      clearInterval(syncTimer);
+      cancelAnimation(breath);
+      cancelAnimation(drift);
+      cancelAnimation(sessionProgress);
     };
-  }, []);
+  }, [breath, drift, progressRef, sessionProgress]);
+
+  const oceanStyle = useAnimatedStyle(() => {
+    const amplitude = interpolate(sessionProgress.value, [0, 1], [1.42, 0.68], Extrapolation.CLAMP);
+    const breathLift = interpolate(breath.value, [0, 1], [10, -17], Extrapolation.CLAMP);
+    const driftX = interpolate(drift.value, [0, 0.5, 1], [-7, 7, -7], Extrapolation.CLAMP);
+    return {
+      transform: [{ translateX: driftX }, { translateY: breathLift }, { scaleX: 1.06 }, { scaleY: amplitude }],
+    };
+  });
 
   const { w: CW, h: CH } = size;
-  const t = tRef.current;
 
   let content: ReactNode = null;
   if (CW > 0 && CH > 0) {
-    const p = clamp01(progressRef.current);
-    const lift = smoothstep(Math.sin(p * Math.PI));
-    const bp = (t % BREATH_SECONDS) / BREATH_SECONDS;
-    const breath = bp < INHALE ? smoothstep(bp / INHALE) : 1 - smoothstep((bp - INHALE) / (1 - INHALE));
+    const frontY = CH * 0.5;
+    const baseAmp = 14;
 
-    const lvl = 0.5 - lift * 0.07;
-    const baseAmp = 13 + lift * 5;
-    const frontY = CH * lvl - breath * 11;
-
-    const back = buildSurface(frontY + CH * 0.045, baseAmp * 0.6, 0.9, 0.085, 0.6, t, CW);
-    const mid = buildSurface(frontY + CH * 0.02, baseAmp * 0.8, 1.2, 0.13, 2.4, t, CW);
+    const back = buildSurface(frontY + CH * 0.045, baseAmp * 0.6, 0.9, 0.085, 0.6, 0, CW);
+    const mid = buildSurface(frontY + CH * 0.02, baseAmp * 0.8, 1.2, 0.13, 2.4, 0, CW);
     const FF = 1.0,
-      FS = 0.18,
       FP = 4.2;
-    const front = buildSurface(frontY, baseAmp, FF, FS, FP, t, CW);
+    const front = buildSurface(frontY, baseAmp, FF, 0.18, FP, 0, CW);
 
     const dotX = CW / 2;
-    const dotY = frontY + Math.sin(0.5 * TAU * FF - t * FS + FP) * baseAmp + Math.sin(0.5 * TAU * FF * 0.5 - t * FS * 0.6 + FP * 1.3) * baseAmp * 0.3;
-    const dotR = 5.5 + breath * 3;
-    const glowR = 15 + breath * 16;
+    const dotY = frontY + Math.sin(0.5 * TAU * FF + FP) * baseAmp + Math.sin(0.5 * TAU * FF * 0.5 + FP * 1.3) * baseAmp * 0.3;
+    const dotR = 7;
+    const glowR = 25;
 
     content = (
-      <Svg width={CW} height={CH}>
-        <Defs>
-          <SvgGrad id={`back-${uid}`} x1="0" y1={frontY + CH * 0.045 - 30} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
-            <Stop offset="0%" stopColor="rgba(29,28,26,0.14)" />
-            <Stop offset="100%" stopColor="rgba(29,28,26,0.3)" />
-          </SvgGrad>
-          <SvgGrad id={`mid-${uid}`} x1="0" y1={frontY + CH * 0.02 - 30} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
-            <Stop offset="0%" stopColor="rgba(29,28,26,0.24)" />
-            <Stop offset="100%" stopColor="rgba(29,28,26,0.44)" />
-          </SvgGrad>
-          <SvgGrad id={`front-${uid}`} x1="0" y1={frontY - 20} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
-            <Stop offset="0%" stopColor="rgba(58,56,52,0.9)" />
-            <Stop offset="40%" stopColor="rgba(34,33,30,0.94)" />
-            <Stop offset="100%" stopColor="rgba(19,19,19,0.97)" />
-          </SvgGrad>
-          <RadialGradient id={`dot-${uid}`} cx={dotX} cy={dotY} r={glowR} gradientUnits="userSpaceOnUse">
-            <Stop offset="0%" stopColor="rgb(245,244,241)" stopOpacity={0.3 + breath * 0.3} />
-            <Stop offset="100%" stopColor="rgb(245,244,241)" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
+      <Reanimated.View pointerEvents="none" style={[StyleSheet.absoluteFill, oceanStyle]}>
+        <Svg width={CW} height={CH}>
+          <Defs>
+            <SvgGrad id={`back-${uid}`} x1="0" y1={frontY + CH * 0.045 - 30} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
+              <Stop offset="0%" stopColor="rgba(29,28,26,0.14)" />
+              <Stop offset="100%" stopColor="rgba(29,28,26,0.3)" />
+            </SvgGrad>
+            <SvgGrad id={`mid-${uid}`} x1="0" y1={frontY + CH * 0.02 - 30} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
+              <Stop offset="0%" stopColor="rgba(29,28,26,0.24)" />
+              <Stop offset="100%" stopColor="rgba(29,28,26,0.44)" />
+            </SvgGrad>
+            <SvgGrad id={`front-${uid}`} x1="0" y1={frontY - 20} x2="0" y2={CH} gradientUnits="userSpaceOnUse">
+              <Stop offset="0%" stopColor="rgba(58,56,52,0.9)" />
+              <Stop offset="40%" stopColor="rgba(34,33,30,0.94)" />
+              <Stop offset="100%" stopColor="rgba(19,19,19,0.97)" />
+            </SvgGrad>
+            <RadialGradient id={`dot-${uid}`} cx={dotX} cy={dotY} r={glowR} gradientUnits="userSpaceOnUse">
+              <Stop offset="0%" stopColor="rgb(245,244,241)" stopOpacity={0.58} />
+              <Stop offset="100%" stopColor="rgb(245,244,241)" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
 
-        <Path d={pointsToFill(back, CW, CH)} fill={`url(#back-${uid})`} />
-        <Path d={pointsToFill(mid, CW, CH)} fill={`url(#mid-${uid})`} />
-        <Path d={pointsToFill(front, CW, CH)} fill={`url(#front-${uid})`} />
-
-        {/* crisp crest line + a fine highlight just above it */}
-        <Path d={pointsToStroke(front)} fill="none" stroke="rgba(245,244,241,0.9)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
-        <Path d={pointsToStroke(front, -1.4)} fill="none" stroke="rgba(245,244,241,0.3)" strokeWidth={1} strokeLinejoin="round" strokeLinecap="round" />
-
-        {/* breathing guide dot riding the edge */}
-        <Circle cx={dotX} cy={dotY} r={glowR} fill={`url(#dot-${uid})`} />
-        <Circle cx={dotX} cy={dotY} r={dotR} fill="rgba(255,255,255,0.98)" />
-        <Circle cx={dotX} cy={dotY} r={dotR} fill="none" stroke="rgba(19,19,19,0.55)" strokeWidth={1.4} />
-      </Svg>
+          <Path d={pointsToFill(back, CW, CH)} fill={`url(#back-${uid})`} />
+          <Path d={pointsToFill(mid, CW, CH)} fill={`url(#mid-${uid})`} />
+          <Path d={pointsToFill(front, CW, CH)} fill={`url(#front-${uid})`} />
+          <Path d={pointsToStroke(front)} fill="none" stroke="rgba(245,244,241,0.9)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+          <Path d={pointsToStroke(front, -1.4)} fill="none" stroke="rgba(245,244,241,0.3)" strokeWidth={1} strokeLinejoin="round" strokeLinecap="round" />
+          <Circle cx={dotX} cy={dotY} r={glowR} fill={`url(#dot-${uid})`} />
+          <Circle cx={dotX} cy={dotY} r={dotR} fill="rgba(255,255,255,0.98)" />
+          <Circle cx={dotX} cy={dotY} r={dotR} fill="none" stroke="rgba(19,19,19,0.55)" strokeWidth={1.4} />
+        </Svg>
+      </Reanimated.View>
     );
   }
 
@@ -440,6 +512,1615 @@ export function UrgeWave({ progressRef }: { progressRef: MutableRefObject<number
         if (width !== size.w || height !== size.h) setSize({ w: width, h: height });
       }}>
       {content}
+    </View>
+  );
+}
+
+// ════════ THE FIRST 90 SECONDS ══════════════════════════════════════════════
+// Canvas 145 · 146 · 147 · 148 · 149 · 150 · 151 (the paper interrupt) and
+// 138 · 139 · 140 · 141 (the dark SOS it hands off to). One flow behind two
+// routes — `/urge` and `/rough-first90` — because the canvas draws one.
+//
+// Every offset below is the 393 × 852 canvas's. Paper pages measure inside the
+// sheet, whose own frame top is 52; dark pages measure from the safe-area top,
+// i.e. the frame's y less the 54pt status bar.
+
+const NOISE_DARK = require('../../../assets/images/noise-dark.png');
+
+const SHEET_EDGE = '#EDECE7';
+const SHEET_PAPER = '#F4F3F0';
+const SHEET_INK = '#131313';
+const SHEET_TEXT = '#1D1C1A';
+const SHEET_MUTED = '#55534E';
+const SHEET_SOFT = '#8B8882';
+const SOS_PAPER = '#F4F3F0';
+
+export type UrgePlace = 'phone' | 'laptop' | 'bed';
+
+const PLACES: { key: UrgePlace; label: string; stops: readonly [string, string, string]; dark: boolean }[] = [
+  { key: 'phone', label: 'Phone in hand', stops: ['#ECECE8', '#D6D5D0', '#B4B1AB'], dark: false },
+  { key: 'laptop', label: 'At a laptop', stops: ['#E4E4E0', '#C6C5C0', '#A8A5A0'], dark: false },
+  { key: 'bed', label: 'In bed', stops: ['#8B8882', '#131313', '#131313'], dark: true },
+];
+
+const SCREEN_STEP: Record<UrgePlace, { title: string; body: string }> = {
+  phone: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
+  laptop: { title: 'Close the screen, now.', body: 'Shut the laptop. Move it out of reach and let the room go quiet for a minute.' },
+  bed: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not under the covers.' },
+};
+
+const MOVE_STEP: Record<UrgePlace, { title: string; body: string }> = {
+  phone: { title: 'Change the room.', body: 'Stand up and move somewhere with light. A new scene gives the wave less to hold onto.' },
+  laptop: { title: 'Step away from the desk.', body: 'Stand up and move somewhere with light. The work can wait for ninety seconds.' },
+  bed: { title: 'Get out of bed.', body: 'Change the room and the wave loses its grip. Stand up, move somewhere with light.' },
+};
+
+// ── paper chrome ────────────────────────────────────────────────────────────
+
+/** The modal sheet every interrupt page sits on. Its rounded top starts two
+ * points above where the status bar ends, which is the canvas's frame y 52. */
+function PaperSheet({ children }: { children: ReactNode }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View style={{ flex: 1, backgroundColor: SHEET_EDGE }}>
+      <StatusBar style="dark" />
+      <View
+        style={{
+          flex: 1,
+          marginTop: Math.max(0, insets.top - 2),
+          backgroundColor: SHEET_PAPER,
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          overflow: 'hidden',
+        }}>
+        {children}
+      </View>
+    </View>
+  );
+}
+
+function SheetClose({ onPress }: { onPress: () => void }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel="Close"
+      hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
+      style={{ position: 'absolute', right: 22, top: 24, minHeight: 0, zIndex: 6 }}>
+      <Svg width={20} height={20} viewBox="0 0 20 20">
+        <Path d="M3 3l14 14M17 3L3 17" stroke="#55534E" strokeWidth={2} strokeLinecap="round" />
+      </Svg>
+    </PressScale>
+  );
+}
+
+/** Three moves, three pills — the current one stretches to 18. */
+function StepPager({ index }: { index: number }) {
+  return (
+    <View style={{ position: 'absolute', left: 0, right: 0, top: 28, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 7 }}>
+      {[0, 1, 2].map((i) => (
+        <View key={i} style={{ width: i === index ? 18 : 6, height: 6, borderRadius: 3, backgroundColor: i === index ? SHEET_INK : 'rgba(19,19,19,0.18)' }} />
+      ))}
+    </View>
+  );
+}
+
+function SheetPrimary({ label, onPress, bottom = 88 }: { label: string; onPress: () => void; bottom?: number }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        bottom,
+        height: 54,
+        borderRadius: 27,
+        backgroundColor: SHEET_INK,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.2, color: '#FFFFFF' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+function SheetSkip({ onPress }: { onPress: () => void }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      hitSlop={{ top: 14, bottom: 14, left: 60, right: 60 }}
+      style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
+      <AppText style={[sans('500'), { fontSize: 15, color: SHEET_SOFT }]}>Skip this step</AppText>
+    </PressScale>
+  );
+}
+
+/** A CSS-blurred wash redrawn as a radial gradient — RN SVG has no blur
+ * filter, so the softness has to live in the falloff. */
+function SoftBlob({
+  id,
+  left,
+  top,
+  width,
+  height,
+  color,
+  alpha,
+  stop = 0.74,
+}: {
+  id: string;
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  color: string;
+  alpha: number;
+  stop?: number;
+}) {
+  return (
+    <Svg width={width} height={height} pointerEvents="none" style={{ position: 'absolute', left, top }}>
+      <Defs>
+        <RadialGradient id={id} cx="50%" cy="50%" rx="50%" ry="50%">
+          <Stop offset={0} stopColor={color} stopOpacity={alpha} />
+          <Stop offset={stop} stopColor={color} stopOpacity={0} />
+        </RadialGradient>
+      </Defs>
+      <Ellipse cx={width / 2} cy={height / 2} rx={width / 2} ry={height / 2} fill={`url(#${id})`} />
+    </Svg>
+  );
+}
+
+/** A `border-radius: 50% … / N% …` cap: the top edge is one elliptical arc
+ * rising `ry` above the corners, which SVG can draw and RN's radii cannot. */
+function Hill({ left, top, width, height, ry, fill }: { left: number; top: number; width: number; height: number; ry: number; fill: string }) {
+  const w = Math.round(width);
+  const h = Math.round(height);
+  const r = Math.round(ry);
+  return (
+    <Svg width={w} height={h} pointerEvents="none" style={{ position: 'absolute', left, top }}>
+      <Path d={`M0 ${r} A ${w / 2} ${r} 0 0 1 ${w} ${r} L ${w} ${h} L 0 ${h} Z`} fill={fill} />
+    </Svg>
+  );
+}
+
+// ── 145 · Cue Intro Modal ───────────────────────────────────────────────────
+
+/** The scene: a bench under a low moon with a paused disc beside it. */
+function IntroArt() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 76, top: 170 }}>
+      <View style={{ width: 240, height: 250 }}>
+        <SoftBlob id="u90-intro-warm" left={58} top={64} width={124} height={124} color="rgb(226,186,120)" alpha={0.45} />
+        <View style={{ position: 'absolute', left: 152, top: 22, width: 42, height: 42, borderRadius: 21, backgroundColor: '#DCDED8' }} />
+        <View style={{ position: 'absolute', left: 142, top: 14, width: 42, height: 42, borderRadius: 21, backgroundColor: '#F4F3F0' }} />
+        <View
+          style={{
+            position: 'absolute',
+            left: 70,
+            top: 152,
+            width: 100,
+            height: 32,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            borderBottomLeftRadius: 4,
+            borderBottomRightRadius: 4,
+            backgroundColor: '#E0DFDA',
+          }}
+        />
+        <View style={{ position: 'absolute', left: 76, top: 144, width: 50, height: 16, borderRadius: 8, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 64, top: 152, width: 6, height: 54, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+        <View style={{ position: 'absolute', left: 170, top: 152, width: 6, height: 54, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+        <SoftBlob id="u90-intro-shadow" left={58} top={202} width={130} height={14} color="rgb(0,0,0)" alpha={0.09} stop={1} />
+        <View style={{ position: 'absolute', left: 78, top: 160, width: 84, height: 8, borderRadius: 4, backgroundColor: '#D6D5D0' }} />
+        <View
+          style={{
+            position: 'absolute',
+            left: 186,
+            top: 120,
+            width: 38,
+            height: 38,
+            borderRadius: 19,
+            backgroundColor: '#F7F6F2',
+            boxShadow: '0 0 0 1px rgba(0,0,0,0.08), 0 6px 14px rgba(40,38,32,0.14)',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+            <Circle cx={12} cy={12} r={9} stroke="#3A3934" strokeWidth={1.8} />
+            <Path d="M12 12V6.5A5.5 5.5 0 0 1 17.5 12z" fill="#3A3934" />
+          </Svg>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+function SkyDot({ left, top, alpha }: { left: number; top: number; alpha: number }) {
+  return <View pointerEvents="none" style={{ position: 'absolute', left, top, width: 2, height: 2, borderRadius: 1, backgroundColor: `rgba(200,225,235,${alpha})` }} />;
+}
+
+function IntroPage({ onClose, onNext }: { onClose: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      <SoftBlob id="u90-intro-halo" left={96} top={150} width={200} height={280} color="rgb(220,222,216)" alpha={0.28} stop={0.75} />
+      <IntroArt />
+      <SkyDot left={88} top={112} alpha={0.4} />
+      <SkyDot left={296} top={88} alpha={0.3} />
+      <SkyDot left={250} top={180} alpha={0.25} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 500, fontSize: 22, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        The First 90 Seconds
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 30, right: 30, top: 552, fontSize: 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
+        A universal interrupt for the moment the wave hits. Six small moves — decide nothing until it passes.
+      </AppText>
+      {/* canvas top 692 in an 800pt sheet — anchored from the bottom so a
+          shorter phone loses air above the pill, not the pill */}
+      <PressScale
+        onPress={onNext}
+        accessibilityRole="button"
+        style={{
+          position: 'absolute',
+          left: 24,
+          right: 24,
+          bottom: 56,
+          height: 52,
+          borderRadius: 26,
+          backgroundColor: SHEET_INK,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.3, color: '#FFFFFF' }]}>Start the interrupt</AppText>
+      </PressScale>
+    </PaperSheet>
+  );
+}
+
+// ── 146 · SOS Strength ──────────────────────────────────────────────────────
+
+function StrengthPage({ band, onBand, onClose, onNext }: { band: number; onBand: (index: number) => void; onClose: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 150, fontSize: 23, lineHeight: 31, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        How strong is it right now?
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 210, fontSize: 15, lineHeight: 22, color: SHEET_MUTED }]}>
+        Just a read, not a test — it helps you watch it pass.
+      </AppText>
+      <View style={{ position: 'absolute', left: 36, right: 36, top: 330, flexDirection: 'row', justifyContent: 'space-between' }}>
+        {INTENSITY_BANDS.map((item, index) => {
+          const on = band === index;
+          return (
+            <PressScale
+              key={item.label}
+              onPress={() => onBand(index)}
+              accessibilityRole="radio"
+              accessibilityLabel={item.label}
+              accessibilityState={{ checked: on }}
+              hitSlop={{ top: 16, bottom: 16, left: 8, right: 8 }}
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 24,
+                backgroundColor: on ? SHEET_INK : '#FFFFFF',
+                boxShadow: on ? '0 0 0 2px #F4F3F0, 0 0 0 4px #131313' : 'inset 0 0 0 1.5px rgba(0,0,0,0.12)',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              {on ? <View style={{ width: 11, height: 11, borderRadius: 5.5, backgroundColor: SHEET_PAPER }} /> : null}
+            </PressScale>
+          );
+        })}
+      </View>
+      <View style={{ position: 'absolute', left: 36, right: 36, top: 394, flexDirection: 'row', justifyContent: 'space-between' }}>
+        <AppText style={[sans('500'), { fontSize: 12.5, color: SHEET_SOFT }]}>Faint</AppText>
+        <AppText style={[sans('500'), { fontSize: 12.5, color: SHEET_SOFT }]}>Overwhelming</AppText>
+      </View>
+      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 452, fontSize: 19, color: SHEET_TEXT }]}>
+        {INTENSITY_BANDS[band].label}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 482, fontSize: 13.5, color: SHEET_SOFT }]}>
+        {INTENSITY_BANDS[band].note}
+      </AppText>
+      <SheetPrimary label="Continue" onPress={onNext} />
+      <SheetSkip onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
+// ── 147 · Cue Hue Picker — where are you right now ──────────────────────────
+
+function PhoneCardArt() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', right: 20, top: 14, width: 80, height: 68 }}>
+      <SoftBlob id="u90-card-phone" left={18} top={8} width={52} height={52} color="rgb(226,186,120)" alpha={0.45} />
+      <View style={{ position: 'absolute', left: 34, top: 8, width: 28, height: 50, borderRadius: 7, backgroundColor: '#3A3934', transform: [{ rotate: '6deg' }] }} />
+      <View style={{ position: 'absolute', left: 39, top: 14, width: 18, height: 38, borderRadius: 4, overflow: 'hidden', transform: [{ rotate: '6deg' }] }}>
+        <LinearGradient colors={['#F7F6F2', '#D9D7D0']} style={{ flex: 1 }} />
+      </View>
+    </View>
+  );
+}
+
+function LaptopCardArt() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', right: 18, top: 16, width: 86, height: 64 }}>
+      <SoftBlob id="u90-card-laptop" left={16} top={2} width={54} height={50} color="rgb(226,186,120)" alpha={0.35} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 18,
+          top: 6,
+          width: 52,
+          height: 34,
+          borderTopLeftRadius: 4,
+          borderTopRightRadius: 4,
+          borderBottomLeftRadius: 2,
+          borderBottomRightRadius: 2,
+          backgroundColor: '#3A3934',
+        }}
+      />
+      <View style={{ position: 'absolute', left: 22, top: 10, width: 44, height: 26, borderRadius: 2, overflow: 'hidden' }}>
+        <LinearGradient colors={['#F0EFEA', '#CFCDC6']} style={{ flex: 1 }} />
+      </View>
+      <View
+        style={{
+          position: 'absolute',
+          left: 10,
+          top: 40,
+          width: 68,
+          height: 7,
+          borderTopLeftRadius: 3.5,
+          borderTopRightRadius: 3.5,
+          borderBottomLeftRadius: 5,
+          borderBottomRightRadius: 5,
+          backgroundColor: '#55534E',
+        }}
+      />
+    </View>
+  );
+}
+
+function BedCardArt() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', right: 18, top: 14, width: 88, height: 66 }}>
+      <SoftBlob id="u90-card-bed" left={30} top={14} width={44} height={32} color="rgb(226,186,120)" alpha={0.5} />
+      <View style={{ position: 'absolute', left: 8, top: 34, width: 26, height: 14, borderRadius: 6, backgroundColor: '#55534E' }} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 14,
+          top: 40,
+          width: 74,
+          height: 24,
+          borderTopLeftRadius: 13,
+          borderTopRightRadius: 13,
+          borderBottomLeftRadius: 4,
+          borderBottomRightRadius: 4,
+          backgroundColor: '#3A3934',
+        }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          left: 44,
+          top: 36,
+          width: 14,
+          height: 9,
+          borderRadius: 3,
+          backgroundColor: 'rgba(240,225,190,0.9)',
+          boxShadow: '0 0 12px 4px rgba(226,186,120,0.4)',
+        }}
+      />
+    </View>
+  );
+}
+
+const PLACE_ART: Record<UrgePlace, () => ReactNode> = { phone: PhoneCardArt, laptop: LaptopCardArt, bed: BedCardArt };
+const PLACE_TOP: Record<UrgePlace, number> = { phone: 188, laptop: 340, bed: 492 };
+
+// `linear-gradient(150deg, …)` in a 248×136 box: the axis runs through the card
+// centre along (sin150, −cos150) = (0.5, 0.866) and its 0%/100% sit where the
+// corners project onto it, a line 248·0.5 + 136·0.866 = 241.8 long. Half of that
+// off centre is (60.4, 104.7)pt, i.e. ±0.244 of the width and ±0.770 of the
+// height — the ends fall outside the box, which is exactly what CSS draws.
+const CARD_GRADIENT_START = { x: 0.256, y: -0.27 };
+const CARD_GRADIENT_END = { x: 0.744, y: 1.27 };
+
+function PlaceCard({ place, selected, onPress }: { place: (typeof PLACES)[number]; selected: boolean; onPress: () => void }) {
+  const Art = PLACE_ART[place.key];
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="radio"
+      accessibilityLabel={place.label}
+      accessibilityState={{ checked: selected }}
+      style={{ position: 'absolute', left: 72, top: PLACE_TOP[place.key], width: 248, height: 136, borderRadius: 14, overflow: 'hidden' }}>
+      <LinearGradient
+        colors={[place.stops[0], place.stops[1], place.stops[2]]}
+        locations={[0, 0.6, 1]}
+        start={CARD_GRADIENT_START}
+        end={CARD_GRADIENT_END}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      />
+      <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.2 }} pointerEvents="none" />
+      <Art />
+      <AppText style={[sans('500'), { position: 'absolute', left: 14, bottom: 14, fontSize: 19, color: place.dark ? '#FFFFFF' : SHEET_TEXT }]}>{place.label}</AppText>
+      <View
+        style={{
+          position: 'absolute',
+          right: 16,
+          bottom: 16,
+          width: 24,
+          height: 24,
+          borderRadius: 12,
+          backgroundColor: selected ? SHEET_INK : 'transparent',
+          boxShadow: selected ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.25)',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        {selected ? (
+          <Svg width={12} height={12} viewBox="0 0 14 14" fill="none">
+            <Path d="M2.5 7.5l3 3 6-7" stroke={SHEET_PAPER} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+          </Svg>
+        ) : null}
+      </View>
+    </PressScale>
+  );
+}
+
+function WherePage({ place, onPlace, onBack, onNext }: { place: UrgePlace; onPlace: (next: UrgePlace) => void; onBack: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <PressScale
+        onPress={onBack}
+        accessibilityRole="button"
+        accessibilityLabel="Back"
+        hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
+        style={{ position: 'absolute', left: 16, top: 14, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9, zIndex: 6 }}>
+        <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
+          <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+        <AppText style={[sans('400'), { fontSize: 17, color: SHEET_MUTED }]}>Back</AppText>
+      </PressScale>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 62, fontSize: 22, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        Where are you right now?
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 40, right: 40, top: 106, fontSize: 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
+        The first move depends on it. Be honest — nobody&apos;s watching.
+      </AppText>
+      {PLACES.map((item) => (
+        <PlaceCard key={item.key} place={item} selected={place === item.key} onPress={() => onPlace(item.key)} />
+      ))}
+      {/* canvas top 688 in an 800pt sheet */}
+      <PressScale
+        onPress={onNext}
+        accessibilityRole="button"
+        style={{
+          position: 'absolute',
+          left: 24,
+          right: 24,
+          bottom: 60,
+          height: 52,
+          borderRadius: 26,
+          backgroundColor: SHEET_INK,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.3, color: '#FFFFFF' }]}>Continue</AppText>
+      </PressScale>
+    </PaperSheet>
+  );
+}
+
+// ── 148 · 149 · 150 · the three moves ───────────────────────────────────────
+
+/** Move I — the phone set down and the room left alone. */
+function ScreenStepArt() {
+  return (
+    <>
+      <SoftBlob id="u90-step1-warm" left={112} top={56} width={130} height={130} color="rgb(226,186,120)" alpha={0.4} />
+      <View style={{ position: 'absolute', left: 20, top: 14, width: 34, height: 34, borderRadius: 17, backgroundColor: '#DCDED8' }} />
+      <View style={{ position: 'absolute', left: 12, top: 8, width: 34, height: 34, borderRadius: 17, backgroundColor: '#F4F3F0' }} />
+      <View style={{ position: 'absolute', left: 30, top: 62, width: 34, height: 22, borderRadius: 8, backgroundColor: '#C6C5C0' }} />
+      <View style={{ position: 'absolute', left: 44, top: 84, width: 6, height: 88, borderRadius: 3, backgroundColor: '#B4B1AB' }} />
+      <SoftBlob id="u90-step1-pool" left={24} top={150} width={70} height={24} color="rgb(226,186,120)" alpha={0.22} stop={1} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 128,
+          top: 124,
+          width: 92,
+          height: 32,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          borderBottomLeftRadius: 4,
+          borderBottomRightRadius: 4,
+          backgroundColor: '#E0DFDA',
+        }}
+      />
+      <View style={{ position: 'absolute', left: 166, top: 136, width: 16, height: 5, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
+      <View style={{ position: 'absolute', left: 134, top: 156, width: 6, height: 22, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 208, top: 156, width: 6, height: 22, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 146, top: 110, width: 54, height: 12, borderRadius: 6, backgroundColor: '#3A3934' }} />
+      <View style={{ position: 'absolute', left: 188, top: 113, width: 4, height: 4, borderRadius: 2, backgroundColor: '#8B8882' }} />
+    </>
+  );
+}
+
+/** Move II — out of the bed, into a lit doorway. */
+function MoveStepArt() {
+  return (
+    <>
+      <SoftBlob id="u90-step2-warm" left={50} top={44} width={120} height={120} color="rgb(226,186,120)" alpha={0.4} />
+      <View style={{ position: 'absolute', left: 20, top: 14, width: 34, height: 34, borderRadius: 17, backgroundColor: '#DCDED8' }} />
+      <View style={{ position: 'absolute', left: 12, top: 8, width: 34, height: 34, borderRadius: 17, backgroundColor: '#F4F3F0' }} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 24,
+          top: 120,
+          width: 96,
+          height: 30,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          borderBottomLeftRadius: 4,
+          borderBottomRightRadius: 4,
+          backgroundColor: '#E0DFDA',
+        }}
+      />
+      <View style={{ position: 'absolute', left: 30, top: 112, width: 44, height: 15, borderRadius: 8, backgroundColor: '#C6C5C0' }} />
+      <View style={{ position: 'absolute', left: 18, top: 120, width: 6, height: 52, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 118, top: 120, width: 6, height: 52, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 168, top: 40, width: 52, height: 138, borderRadius: 8, backgroundColor: '#E4E3DE' }} />
+      <View style={{ position: 'absolute', left: 174, top: 46, width: 34, height: 126, borderRadius: 5, overflow: 'hidden' }}>
+        <LinearGradient colors={['#F7F6F2', '#EDECE7']} style={{ flex: 1 }} />
+      </View>
+      <SoftBlob id="u90-step2-pool" left={150} top={150} width={70} height={26} color="rgb(226,186,120)" alpha={0.22} stop={1} />
+      <View style={{ position: 'absolute', left: 136, top: 96, width: 10, height: 22, borderRadius: 5, backgroundColor: '#B4B1AB' }} />
+      <SoftBlob id="u90-step2-shadowA" left={12} top={174} width={116} height={14} color="rgb(0,0,0)" alpha={0.1} stop={1} />
+      <SoftBlob id="u90-step2-shadowB" left={160} top={180} width={66} height={12} color="rgb(0,0,0)" alpha={0.08} stop={1} />
+      <View style={{ position: 'absolute', left: 28, top: 128, width: 88, height: 8, borderRadius: 4, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 96, top: 186, width: 56, height: 9, borderRadius: 5, backgroundColor: '#E4E3DE' }} />
+      <SkyDot left={216} top={20} alpha={0.4} />
+      <SkyDot left={6} top={52} alpha={0.3} />
+    </>
+  );
+}
+
+/** Move III — the tap running cold over a basin. */
+function ColdStepArt() {
+  return (
+    <>
+      <SoftBlob id="u90-step3-cool" left={56} top={30} width={130} height={130} color="rgb(150,190,210)" alpha={0.3} />
+      <View style={{ position: 'absolute', left: 96, top: 34, width: 56, height: 14, borderRadius: 7, backgroundColor: '#C6C5C0' }} />
+      <View style={{ position: 'absolute', left: 140, top: 44, width: 12, height: 26, borderRadius: 4, backgroundColor: '#B4B1AB' }} />
+      <View style={{ position: 'absolute', left: 142, top: 70, width: 8, height: 64, borderRadius: 4, backgroundColor: '#E4E9F1' }} />
+      <View style={{ position: 'absolute', left: 139, top: 130, width: 14, height: 14, borderRadius: 7, backgroundColor: '#E4E9F1' }} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 70,
+          top: 142,
+          width: 120,
+          height: 34,
+          borderTopLeftRadius: 14,
+          borderTopRightRadius: 14,
+          borderBottomLeftRadius: 18,
+          borderBottomRightRadius: 18,
+          backgroundColor: '#E0DFDA',
+        }}
+      />
+      <View style={{ position: 'absolute', left: 82, top: 148, width: 96, height: 14, borderRadius: 8, backgroundColor: '#EDF1F4' }} />
+      <View style={{ position: 'absolute', left: 118, top: 96, width: 5, height: 5, borderRadius: 2.5, backgroundColor: '#E4E9F1' }} />
+      <View style={{ position: 'absolute', left: 166, top: 104, width: 4, height: 4, borderRadius: 2, backgroundColor: '#E4E9F1' }} />
+      <SoftBlob id="u90-step3-shadow" left={64} top={182} width={130} height={14} color="rgb(0,0,0)" alpha={0.1} stop={1} />
+      <View style={{ position: 'absolute', left: 100, top: 152, width: 60, height: 3, borderRadius: 2, backgroundColor: '#C9D6E4' }} />
+      <View style={{ position: 'absolute', left: 112, top: 158, width: 36, height: 3, borderRadius: 2, backgroundColor: '#D8E2EC' }} />
+      <View style={{ position: 'absolute', left: 128, top: 138, width: 8, height: 8, borderRadius: 4, backgroundColor: '#E4E9F1', opacity: 0.8 }} />
+      <View style={{ position: 'absolute', left: 158, top: 128, width: 12, height: 4, borderRadius: 2, backgroundColor: '#D8E2EC', transform: [{ rotate: '24deg' }] }} />
+      <View style={{ position: 'absolute', left: 120, top: 126, width: 12, height: 4, borderRadius: 2, backgroundColor: '#D8E2EC', transform: [{ rotate: '-24deg' }] }} />
+      <SkyDot left={88} top={40} alpha={0.5} />
+      <SoftBlob id="u90-step3-drop" left={44} top={96} width={14} height={14} color="rgb(150,190,210)" alpha={0.5} />
+    </>
+  );
+}
+
+function MovePage({ index, title, body, art, onClose, onNext }: { index: number; title: string; body: string; art: ReactNode; onClose: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      <StepPager index={index} />
+      <View pointerEvents="none" style={{ position: 'absolute', left: 76, top: 180, width: 240, height: 200 }}>
+        {art}
+      </View>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 398, fontSize: 23, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        {title}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 444, fontSize: 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
+        {body}
+      </AppText>
+      <SheetPrimary label="Done — next" onPress={onNext} />
+      <SheetSkip onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
+// ── 138 · 139 · 140 · 141 — the dark SOS ────────────────────────────────────
+
+export type SosSound = 'ocean' | 'rain' | 'silent';
+export type SosLight = 'blue' | 'violet' | 'gold' | 'silver';
+export type SosBackground = 'night' | 'starfield' | 'dawn';
+
+export interface SosSettings {
+  sound: SosSound;
+  /** Null until a light is picked — the orb ships paper-white, as canvas 138 draws it. */
+  light: SosLight | null;
+  background: SosBackground;
+}
+
+const SOS_SETTINGS_KEY = 'tideline.sos.settings';
+const DEFAULT_SOS_SETTINGS: SosSettings = { sound: 'ocean', light: null, background: 'night' };
+
+const SOS_LIGHTS: { key: SosLight; stops: readonly [string, string, string] }[] = [
+  { key: 'blue', stops: ['#A9BFF0', '#6D87CE', '#3A4E8C'] },
+  { key: 'violet', stops: ['#B7A6E3', '#8B7CC9', '#54488C'] },
+  { key: 'gold', stops: ['#EED9AE', '#D9B98A', '#A8823F'] },
+  { key: 'silver', stops: ['#DDE4EC', '#9FB0C2', '#6B6963'] },
+];
+
+/** `radial-gradient(circle at 36% 30%, …)` — farthest-corner, so ~95% of the box. */
+function LightOrb({ id, size, stops, mid = 48 }: { id: string; size: number; stops: readonly [string, string, string]; mid?: number }) {
+  return (
+    <Svg width={size} height={size} pointerEvents="none">
+      <Defs>
+        <RadialGradient id={id} cx="36%" cy="30%" rx="95%" ry="95%">
+          <Stop offset={0} stopColor={stops[0]} />
+          <Stop offset={mid / 100} stopColor={stops[1]} />
+          <Stop offset={1} stopColor={stops[2]} />
+        </RadialGradient>
+      </Defs>
+      <Circle cx={size / 2} cy={size / 2} r={size / 2} fill={`url(#${id})`} />
+    </Svg>
+  );
+}
+
+/**
+ * The orb before any light is picked — canvas 152's paper-white ball.
+ * `circle at 50% 42%` takes CSS's default farthest-corner extent: in a square box
+ * the far corner sits 76.6% of the side away from (50%, 42%), not 50%.
+ */
+function PaperOrb({ id, size }: { id: string; size: number }) {
+  return (
+    <Svg width={size} height={size} pointerEvents="none">
+      <Defs>
+        <RadialGradient id={id} cx="50%" cy="42%" rx="76.6%" ry="76.6%">
+          <Stop offset={0} stopColor="rgb(247,246,242)" stopOpacity={0.95} />
+          <Stop offset={0.65} stopColor="rgb(220,219,214)" stopOpacity={0.85} />
+          <Stop offset={1} stopColor="rgb(198,197,192)" stopOpacity={0.6} />
+        </RadialGradient>
+      </Defs>
+      <Circle cx={size / 2} cy={size / 2} r={size / 2} fill={`url(#${id})`} />
+    </Svg>
+  );
+}
+
+const STARFIELD = [
+  { x: 0.11, y: 0.14 },
+  { x: 0.32, y: 0.09 },
+  { x: 0.58, y: 0.2 },
+  { x: 0.79, y: 0.12 },
+  { x: 0.22, y: 0.31 },
+  { x: 0.68, y: 0.35 },
+  { x: 0.88, y: 0.27 },
+  { x: 0.42, y: 0.42 },
+  { x: 0.14, y: 0.48 },
+  { x: 0.75, y: 0.52 },
+  { x: 0.5, y: 0.58 },
+  { x: 0.3, y: 0.64 },
+];
+
+/** The three grounds the settings sheet offers, drawn full-bleed from the same
+ * recipes their 84pt thumbnails use. */
+function SosBackdrop({ background, hills }: { background: SosBackground; hills: boolean }) {
+  const { width, height } = useWindowDimensions();
+
+  if (background === 'starfield') {
+    return (
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+        <LinearGradient colors={['#0E1116', '#1A2130']} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+        {STARFIELD.map((star, index) => (
+          <View
+            key={index}
+            style={{
+              position: 'absolute',
+              left: star.x * width,
+              top: star.y * height,
+              width: index % 3 === 0 ? 2.5 : 2,
+              height: index % 3 === 0 ? 2.5 : 2,
+              borderRadius: 1.5,
+              backgroundColor: `rgba(244,243,240,${0.4 + (index % 4) * 0.1})`,
+            }}
+          />
+        ))}
+      </View>
+    );
+  }
+
+  if (background === 'dawn') {
+    return (
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+        <LinearGradient colors={['#2A2E3C', '#6B5D6E', '#C89A7A']} locations={[0, 0.6, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+        <SoftBlob id="u90-dawn-sun" left={width / 2 - 110} top={height * 0.72} width={220} height={220} color="rgb(243,227,196)" alpha={0.9} stop={0.8} />
+      </View>
+    );
+  }
+
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+      <LinearGradient colors={['#14171B', '#191E25', '#202730']} locations={[0, 0.55, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      {hills ? (
+        <>
+          <Hill left={-0.2 * width} width={1.4 * width} top={0.62 * height} height={0.7 * height} ry={0.2 * 0.7 * height} fill="#1D242C" />
+          <Hill left={-0.4 * width} width={1.5 * width} top={0.76 * height} height={0.7 * height} ry={0.16 * 0.7 * height} fill="#242C36" />
+          <View style={{ position: 'absolute', left: 0.24 * width, top: 0.69 * height, width: 0.08 * width, height: 3, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.10)' }} />
+        </>
+      ) : null}
+    </View>
+  );
+}
+
+function GearGlyph() {
+  return (
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+      <Path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z" fill="none" stroke="rgba(244,243,240,0.85)" strokeWidth={1.8} />
+      <Path
+        d="M19.2 12c0-.5-.05-.95-.14-1.4l2.1-1.6-2-3.4-2.45 1a7.2 7.2 0 0 0-2.4-1.4L13.9 2.6h-3.8l-.4 2.6a7.2 7.2 0 0 0-2.4 1.4l-2.46-1-2 3.4 2.1 1.6c-.08.45-.13.9-.13 1.4s.05.95.14 1.4l-2.1 1.6 2 3.4 2.45-1c.72.6 1.53 1.08 2.4 1.4l.4 2.6h3.8l.4-2.6a7.2 7.2 0 0 0 2.4-1.4l2.45 1 2-3.4-2.1-1.6c.1-.45.14-.9.14-1.4z"
+        fill="none"
+        stroke="rgba(244,243,240,0.85)"
+        strokeWidth={1.8}
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+/** The shell all four SOS stages share: ground, moon wash, the sentence pair
+ * under the art, the stage dots, and the one quiet way out. */
+function SosStage({
+  settings,
+  moon,
+  hills = false,
+  title,
+  caption,
+  hint,
+  stage,
+  onSettings,
+  onEnd,
+  children,
+}: {
+  settings: SosSettings;
+  moon: { top: number; size: number; alpha: number };
+  hills?: boolean;
+  title: string;
+  caption: string;
+  hint: string;
+  stage: number;
+  onSettings?: () => void;
+  onEnd: () => void;
+  children?: ReactNode;
+}) {
+  const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+  return (
+    <View style={{ flex: 1, backgroundColor: '#0F0F0E', overflow: 'hidden' }}>
+      <StatusBar style="light" />
+      <SosBackdrop background={settings.background} hills={hills} />
+      {/* the canvas keeps the moon wash inside the ground div, so the bottom scrim lies over it */}
+      <SoftBlob
+        id="u90-sos-moon"
+        left={width / 2 - moon.size / 2}
+        top={insets.top + moon.top}
+        width={moon.size}
+        height={moon.size}
+        color="rgb(216,225,235)"
+        alpha={moon.alpha}
+        stop={0.8}
+      />
+      <LinearGradient
+        colors={['rgba(15,15,14,0)', 'rgba(15,15,14,0.55)', 'rgba(15,15,14,0.82)']}
+        locations={[0, 0.55, 1]}
+        pointerEvents="none"
+        style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 230 }}
+      />
+      <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}>
+        {onSettings ? (
+          <PressScale
+            onPress={onSettings}
+            accessibilityRole="button"
+            accessibilityLabel="SOS settings"
+            hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+            style={{ position: 'absolute', left: 20, top: 10, minHeight: 0 }}>
+            <GearGlyph />
+          </PressScale>
+        ) : null}
+        <AppText center style={[sans('500'), { position: 'absolute', left: 40, right: 40, top: 74, fontSize: 22, lineHeight: 32, color: SOS_PAPER }]}>
+          {title}
+        </AppText>
+        {children}
+        <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 508, fontSize: 17, color: SOS_PAPER }]}>
+          {caption}
+        </AppText>
+        <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 538, fontSize: 14, color: 'rgba(255,255,255,0.55)' }]}>
+          {hint}
+        </AppText>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 590, flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
+          {[0, 1, 2, 3].map((i) => (
+            <View key={i} style={{ width: 7, height: 7, borderRadius: 3.5, backgroundColor: i === stage ? SOS_PAPER : 'rgba(255,255,255,0.28)' }} />
+          ))}
+        </View>
+        <PressScale
+          onPress={onEnd}
+          accessibilityRole="button"
+          style={{
+            position: 'absolute',
+            left: 16,
+            right: 16,
+            bottom: 48,
+            height: 48,
+            borderRadius: 25,
+            backgroundColor: 'rgba(255,255,255,0.08)',
+            boxShadow: '0 0 0 1.5px rgba(255,255,255,0.35)',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.3, color: 'rgba(244,243,240,0.75)' }]}>End early</AppText>
+        </PressScale>
+      </View>
+    </View>
+  );
+}
+
+// ── 138 · box breathing, 4 · 4 · 4 · 4 ──────────────────────────────────────
+
+const BOX_STEPS = [
+  { seconds: 4, caption: 'Breathe in through the nose' },
+  { seconds: 4, caption: 'Hold it' },
+  { seconds: 4, caption: 'Breathe out slowly' },
+  { seconds: 4, caption: 'Hold, empty' },
+] as const;
+
+function BreathOrb({ step, count, light }: { step: number; count: number; light: SosLight | null }) {
+  // Inhale swells the orb over its four seconds, exhale settles it; the two
+  // holds keep whatever the previous phase left.
+  const scale = useSharedValue(0.88);
+  useEffect(() => {
+    if (step === 0) scale.value = withTiming(1.06, { duration: 4000, easing: Easing.inOut(Easing.ease) });
+    else if (step === 2) scale.value = withTiming(0.88, { duration: 4000, easing: Easing.inOut(Easing.ease) });
+  }, [step, scale]);
+  const orbStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+  const stops = SOS_LIGHTS.find((item) => item.key === light)?.stops;
+
+  return (
+    <View style={{ position: 'absolute', left: 96, top: 236 }}>
+      <View style={{ width: 200, height: 200, alignItems: 'center', justifyContent: 'center' }}>
+        <Reanimated.View style={[{ position: 'absolute', width: 190, height: 190, borderRadius: 95, boxShadow: '0 0 60px rgba(244,243,240,0.35)' }, orbStyle]}>
+          {stops ? <LightOrb id="u90-breath-light" size={190} stops={stops} mid={46} /> : <PaperOrb id="u90-breath-orb" size={190} />}
+        </Reanimated.View>
+        <AppText style={[sans('600'), { fontSize: 44, color: SHEET_INK }]}>{count}</AppText>
+      </View>
+    </View>
+  );
+}
+
+/** Three full boxes is the round, and the SOS moves on by itself after it. */
+const BOX_ROUND_SECONDS = BOX_STEPS.length * BOX_STEPS[0].seconds * 3;
+
+function BreatheStage({ settings, onSettings, onEnd, onDone }: { settings: SosSettings; onSettings: () => void; onEnd: () => void; onDone: () => void }) {
+  // One counter drives both the phase and the countdown, so the two can never
+  // drift apart and nothing has to be mutated from inside a state updater.
+  const [elapsed, setElapsed] = useState(0);
+  const step = Math.floor(elapsed / BOX_STEPS[0].seconds) % BOX_STEPS.length;
+  const count = BOX_STEPS[0].seconds - (elapsed % BOX_STEPS[0].seconds);
+  const doneRef = useRef(onDone);
+
+  useEffect(() => {
+    doneRef.current = onDone;
+  }, [onDone]);
+
+  useEffect(() => {
+    const tick = setInterval(() => setElapsed((value) => value + 1), 1000);
+    return () => clearInterval(tick);
+  }, []);
+
+  useEffect(() => {
+    if (elapsed >= BOX_ROUND_SECONDS) doneRef.current();
+  }, [elapsed]);
+
+  return (
+    <SosStage
+      settings={settings}
+      moon={{ top: 66, size: 260, alpha: 0.12 }}
+      hills
+      title="Breathe with me."
+      caption={BOX_STEPS[step].caption}
+      hint="4 in · 4 hold · 4 out · 4 hold"
+      stage={0}
+      onSettings={onSettings}
+      onEnd={onEnd}>
+      <BreathOrb step={step} count={count} light={settings.light} />
+    </SosStage>
+  );
+}
+
+// ── 139 · number tap ────────────────────────────────────────────────────────
+
+/** Five landing spots, as the centres of the canvas's discs — x straight from
+ * the frame, y less the 54pt status bar. The disc grows to 68 while it is live
+ * (canvas left 154 / top 338), so the box is derived from the centre, not the
+ * other way round. */
+const TAP_SLOTS = [
+  { cx: 102, cy: 200 },
+  { cx: 286, cy: 236 },
+  { cx: 188, cy: 318 },
+  { cx: 94, cy: 408 },
+  { cx: 290, cy: 426 },
+];
+
+const COUNT_WORD = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'];
+
+function TapStage({ settings, onEnd, onDone }: { settings: SosSettings; onEnd: () => void; onDone: () => void }) {
+  const [next, setNext] = useState(0);
+
+  function tap(index: number) {
+    if (index !== next) return;
+    if (index === TAP_SLOTS.length - 1) onDone();
+    else setNext(index + 1);
+  }
+
+  return (
+    <SosStage
+      settings={settings}
+      moon={{ top: 86, size: 280, alpha: 0.1 }}
+      title="Tap the numbers as they land."
+      caption={`${COUNT_WORD[next + 1]} down, ${COUNT_WORD[TAP_SLOTS.length - next - 1].toLowerCase()} to go`}
+      hint="Eyes on the count, not the wave"
+      stage={1}
+      onEnd={onEnd}>
+      {TAP_SLOTS.map((slot, index) => {
+        const done = index < next;
+        const live = index === next;
+        const size = live ? 68 : 56;
+        return (
+          <View key={index} style={{ position: 'absolute', left: slot.cx - size / 2, top: slot.cy - size / 2 }}>
+            {/* canvas glow: a 72pt closest-side wash at left 146 / top 330, i.e. 6pt up-left of
+                the disc centre, then `transform: scale(1.9)` — so it paints 136.8 across */}
+            {live ? <SoftBlob id="u90-tap-glow" left={-40.4} top={-40.4} width={136.8} height={136.8} color="rgb(233,210,164)" alpha={0.45} stop={0.8} /> : null}
+            <PressScale
+              onPress={() => tap(index)}
+              accessibilityRole="button"
+              accessibilityLabel={`Number ${index + 1}`}
+              style={{
+                width: size,
+                height: size,
+                borderRadius: size / 2,
+                minHeight: 0,
+                backgroundColor: live ? '#E9D2A4' : done ? 'rgba(255,255,255,0.10)' : 'transparent',
+                boxShadow: live ? undefined : done ? 'inset 0 0 0 1.5px rgba(255,255,255,0.14)' : 'inset 0 0 0 1.5px rgba(255,255,255,0.30)',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              {done ? (
+                <Svg width={16} height={13} viewBox="0 0 16 13" fill="none">
+                  <Path d="M1.5 7l4.4 4.5L14.5 1.5" stroke="rgba(244,243,240,0.55)" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
+                </Svg>
+              ) : (
+                <AppText style={[sans('600'), { fontSize: live ? 28 : 22, color: live ? SHEET_INK : 'rgba(244,243,240,0.6)' }]}>{index + 1}</AppText>
+              )}
+            </PressScale>
+          </View>
+        );
+      })}
+    </SosStage>
+  );
+}
+
+// ── 140 · odd one out ───────────────────────────────────────────────────────
+
+const ODD_ROUNDS = 6;
+
+function OddStage({ settings, onEnd, onDone }: { settings: SosSettings; onEnd: () => void; onDone: () => void }) {
+  const [round, setRound] = useState(1);
+  const [odd, setOdd] = useState(() => Math.floor(Math.random() * 9));
+
+  function pick(index: number) {
+    if (index !== odd) return;
+    if (round >= ODD_ROUNDS) {
+      onDone();
+      return;
+    }
+    setRound(round + 1);
+    setOdd((current) => (current + 1 + Math.floor(Math.random() * 8)) % 9);
+  }
+
+  return (
+    <SosStage
+      settings={settings}
+      moon={{ top: 86, size: 280, alpha: 0.1 }}
+      title="Find the one that's different."
+      caption={`Round ${roman(round)} of ${roman(ODD_ROUNDS)}`}
+      hint="Each round gets a little harder"
+      stage={2}
+      onEnd={onEnd}>
+      <View style={{ position: 'absolute', left: 76, top: 184 }}>
+        <View style={{ width: 240, height: 240, flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+          {Array.from({ length: 9 }).map((_, index) => {
+            const on = index === odd;
+            return (
+              <PressScale
+                key={index}
+                onPress={() => pick(index)}
+                accessibilityRole="button"
+                accessibilityLabel={`Tile ${index + 1}`}
+                style={{
+                  width: 72,
+                  height: 72,
+                  minHeight: 0,
+                  borderRadius: 16,
+                  backgroundColor: on ? '#E9D2A4' : 'rgba(255,255,255,0.08)',
+                  boxShadow: on ? undefined : 'inset 0 0 0 1.5px rgba(255,255,255,0.14)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: on ? SHEET_INK : 'rgba(244,243,240,0.35)' }} />
+              </PressScale>
+            );
+          })}
+        </View>
+      </View>
+    </SosStage>
+  );
+}
+
+// ── the fourth stage — the 90-second clock and the arc it rides ─────────────
+
+const SURF_SECONDS = 90;
+const SURF_PHASES = [
+  { at: 0, name: 'RISING' },
+  { at: 0.28, name: 'CRESTING' },
+  { at: 0.62, name: 'PASSING' },
+  { at: 0.86, name: 'SETTLING' },
+];
+
+/** The four quadratic segments below are the drawn path's `Q`/`T` runs with the
+ * smooth-curve reflections resolved, so the marker rides the line itself. */
+const ARC_SEGMENTS: [[number, number], [number, number], [number, number]][] = [
+  [
+    [0, 45],
+    [32, 10],
+    [65, 38],
+  ],
+  [
+    [65, 38],
+    [98, 66],
+    [130, 30],
+  ],
+  [
+    [130, 30],
+    [162, -6],
+    [195, 22],
+  ],
+  [
+    [195, 22],
+    [228, 50],
+    [260, 12],
+  ],
+];
+
+function arcPoint(progress: number): { x: number; y: number } {
+  const scaled = Math.min(0.9999, Math.max(0, progress)) * ARC_SEGMENTS.length;
+  const [start, control, end] = ARC_SEGMENTS[Math.floor(scaled)];
+  const t = scaled - Math.floor(scaled);
+  const inv = 1 - t;
+  return {
+    x: inv * inv * start[0] + 2 * inv * t * control[0] + t * t * end[0],
+    y: inv * inv * start[1] + 2 * inv * t * control[1] + t * t * end[1],
+  };
+}
+
+function WaveStage({
+  settings,
+  progress,
+  remaining,
+  progressRef,
+  onEnd,
+  onSlip,
+}: {
+  settings: SosSettings;
+  progress: number;
+  remaining: number;
+  progressRef: MutableRefObject<number>;
+  onEnd: () => void;
+  onSlip: () => void;
+}) {
+  const phase = SURF_PHASES.reduce((current, candidate) => (progress >= candidate.at ? candidate : current), SURF_PHASES[0]);
+  const seconds = String(remaining % 60).padStart(2, '0');
+  const marker = arcPoint(progress);
+
+  return (
+    <SosStage
+      settings={settings}
+      moon={{ top: 86, size: 280, alpha: 0.1 }}
+      title="Ride it out."
+      caption={remaining >= 60 ? `1:${seconds}` : `0:${seconds}`}
+      hint={phase.name}
+      stage={3}
+      onEnd={onEnd}>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 200, height: 260, opacity: 0.55 }}>
+        <UrgeWave progressRef={progressRef} />
+      </View>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 420, alignItems: 'center' }}>
+        <Svg width={260} height={60} viewBox="0 0 260 60" fill="none">
+          <Path d="M0 45 Q 32 10 65 38 T 130 30 T 195 22 T 260 12" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth={3} strokeLinecap="round" />
+          <Circle cx={marker.x} cy={marker.y} r={6} fill="#FFFFFF" />
+        </Svg>
+      </View>
+      {/* the one honest exit, in the band the canvas leaves empty above the pill */}
+      <PressScale
+        onPress={onSlip}
+        accessibilityRole="button"
+        hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
+        style={{ position: 'absolute', left: 0, right: 0, top: 636, minHeight: 0, alignItems: 'center' }}>
+        <AppText style={[sans('500'), { fontSize: 15, color: 'rgba(244,243,240,0.55)' }]}>I slipped — log it</AppText>
+      </PressScale>
+    </SosStage>
+  );
+}
+
+// ── 141 · SOS settings ──────────────────────────────────────────────────────
+
+function SheetLabel({ text, top }: { text: string; top: number }) {
+  return <AppText style={[sans('600'), { position: 'absolute', left: 24, top, fontSize: 12.5, color: 'rgba(244,243,240,0.45)' }]}>{text}</AppText>;
+}
+
+function SoundChip({ label, selected, onPress, icon }: { label: string; selected: boolean; onPress: () => void; icon?: ReactNode }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      style={{
+        flex: 1,
+        height: 40,
+        minHeight: 0,
+        borderRadius: 20,
+        backgroundColor: selected ? 'rgba(244,243,240,0.92)' : 'rgba(244,243,240,0.08)',
+        boxShadow: selected ? undefined : 'inset 0 0 0 1px rgba(244,243,240,0.14)',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 7,
+      }}>
+      {icon}
+      <AppText style={[sans('600'), { fontSize: 13, color: selected ? SHEET_INK : 'rgba(244,243,240,0.6)' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+function BackgroundThumb({ kind, selected, onPress, width }: { kind: SosBackground; selected: boolean; onPress: () => void; width: number }) {
+  const label = kind === 'night' ? 'Night sea' : kind === 'starfield' ? 'Starfield' : 'Dawn';
+  return (
+    // the `0 0 0 2px #F4F3F0` selection ring sits outside the box, so it has to live on a
+    // node that does not clip; only the inner scene carries `overflow: hidden`.
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      accessibilityLabel={label}
+      style={{
+        flex: 1,
+        height: 84,
+        minHeight: 0,
+        borderRadius: 12,
+        opacity: selected ? 1 : 0.7,
+        boxShadow: selected ? '0 0 0 2px #F4F3F0' : undefined,
+      }}>
+      <View style={{ flex: 1, borderRadius: 12, overflow: 'hidden' }}>
+        {kind === 'night' ? (
+          <>
+            <LinearGradient colors={['#14171B', '#232B34']} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+            <Hill left={-0.2 * width} width={1.4 * width} top={50.4} height={67.2} ry={26.9} fill="#1C232B" />
+            <View
+              style={{ position: 'absolute', right: 12, top: 10, width: 14, height: 14, borderRadius: 7, backgroundColor: '#DDE4EC', boxShadow: '0 0 8px rgba(221,228,236,0.5)' }}
+            />
+          </>
+        ) : null}
+        {kind === 'starfield' ? (
+          <>
+            <LinearGradient colors={['#0E1116', '#1A2130']} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+            <View style={{ position: 'absolute', left: 14, top: 14, width: 2.5, height: 2.5, borderRadius: 1.5, backgroundColor: 'rgba(244,243,240,0.7)' }} />
+            <View style={{ position: 'absolute', left: 44, top: 30, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.5)' }} />
+            <View style={{ position: 'absolute', right: 20, top: 18, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.6)' }} />
+            <View style={{ position: 'absolute', right: 36, top: 44, width: 2.5, height: 2.5, borderRadius: 1.5, backgroundColor: 'rgba(244,243,240,0.4)' }} />
+          </>
+        ) : null}
+        {kind === 'dawn' ? (
+          <>
+            <LinearGradient colors={['#2A2E3C', '#6B5D6E', '#C89A7A']} locations={[0, 0.6, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+            <SoftBlob id="u90-thumb-dawn" left={width / 2 - 11} top={44} width={22} height={22} color="rgb(243,227,196)" alpha={0.9} stop={0.8} />
+          </>
+        ) : null}
+        <AppText style={[sans('600'), { position: 'absolute', left: 8, bottom: 6, fontSize: 10, color: kind === 'starfield' ? 'rgba(244,243,240,0.7)' : 'rgba(244,243,240,0.85)' }]}>
+          {label}
+        </AppText>
+        {/* the unselected hairline is an inset ring, which has to paint over the scene */}
+        {selected ? null : (
+          <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 12, boxShadow: 'inset 0 0 0 1px rgba(244,243,240,0.14)' }} />
+        )}
+      </View>
+    </PressScale>
+  );
+}
+
+function SosSettingsSheet({ settings, onChange, onDone }: { settings: SosSettings; onChange: (next: SosSettings) => void; onDone: () => void }) {
+  const { width } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  const thumbWidth = (width - 48 - 20) / 3;
+  const lit = SOS_LIGHTS.find((item) => item.key === settings.light);
+
+  return (
+    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      <StatusBar style="light" />
+      <LinearGradient colors={['#14171B', '#191E25', '#202730']} locations={[0, 0.55, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}>
+        <SoftBlob id="u90-set-wash" left={width / 2 - 100} top={76} width={200} height={200} color="rgb(216,225,235)" alpha={0.14} stop={0.8} />
+        {/* the canvas always shows the orb above the sheet — before a light is picked it is
+            the same paper-white ball the breathing stage draws, not an empty sky */}
+        <View style={{ position: 'absolute', left: width / 2 - 60, top: 116, opacity: 0.5 }}>
+          {lit ? <LightOrb id="u90-set-orb" size={120} stops={lit.stops} mid={46} /> : <PaperOrb id="u90-set-orb-paper" size={120} />}
+        </View>
+      </View>
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(10,12,15,0.45)' }} />
+
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: insets.top + 264,
+          bottom: 0,
+          borderTopLeftRadius: 22,
+          borderTopRightRadius: 22,
+          backgroundColor: '#1A1F26',
+          boxShadow: '0 -12px 36px rgba(0,0,0,0.4)',
+        }}>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 10, alignItems: 'center' }}>
+          <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.2)' }} />
+        </View>
+
+        <SheetLabel text="Sound" top={38} />
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 62, flexDirection: 'row', gap: 8 }}>
+          <SoundChip
+            label="Ocean"
+            selected={settings.sound === 'ocean'}
+            onPress={() => onChange({ ...settings, sound: 'ocean' })}
+            icon={
+              <Svg width={14} height={12} viewBox="0 0 16 14" fill="none">
+                <Path d="M1.5 5v4h3l4 3.5v-11L4.5 5z" fill={settings.sound === 'ocean' ? SHEET_INK : 'rgba(244,243,240,0.6)'} />
+                <Path d="M11.5 4.5c1.4 1.6 1.4 3.4 0 5" fill="none" stroke={settings.sound === 'ocean' ? SHEET_INK : 'rgba(244,243,240,0.6)'} strokeWidth={1.6} strokeLinecap="round" />
+              </Svg>
+            }
+          />
+          <SoundChip
+            label="Rain"
+            selected={settings.sound === 'rain'}
+            onPress={() => onChange({ ...settings, sound: 'rain' })}
+            icon={
+              <Svg width={11} height={13} viewBox="0 0 20 22" fill="none">
+                <Path
+                  d="M10 2.5C10 2.5 4.5 9.5 4.5 13.5a5.5 5.5 0 0 0 11 0C15.5 9.5 10 2.5 10 2.5z"
+                  fill="none"
+                  stroke={settings.sound === 'rain' ? SHEET_INK : 'rgba(244,243,240,0.6)'}
+                  strokeWidth={1.9}
+                  strokeLinejoin="round"
+                />
+              </Svg>
+            }
+          />
+          <SoundChip label="Silent" selected={settings.sound === 'silent'} onPress={() => onChange({ ...settings, sound: 'silent' })} />
+        </View>
+
+        <SheetLabel text="Orb light" top={130} />
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 156, flexDirection: 'row', gap: 16 }}>
+          {SOS_LIGHTS.map((item) => {
+            const on = settings.light === item.key;
+            return (
+              // the two selection rings sit outside the swatch, so they cannot share a node
+              // with the clip; and the canvas's inset shading falls on the gradient, which is
+              // an <Svg> child here rather than a background — so it has to be painted after it
+              <PressScale
+                key={item.key}
+                onPress={() => onChange({ ...settings, light: item.key })}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: on }}
+                accessibilityLabel={`${item.key} light`}
+                style={{
+                  width: 44,
+                  height: 44,
+                  minHeight: 0,
+                  borderRadius: 22,
+                  opacity: on ? 1 : 0.6,
+                  boxShadow: on ? '0 0 0 2px #1A1F26, 0 0 0 4px #F4F3F0' : undefined,
+                }}>
+                <View style={{ width: 44, height: 44, borderRadius: 22, overflow: 'hidden' }}>
+                  <LightOrb id={`u90-swatch-${item.key}`} size={44} stops={item.stops} />
+                  <View
+                    pointerEvents="none"
+                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 22, boxShadow: 'inset 0 -8px 14px rgba(0,0,0,0.2)' }}
+                  />
+                </View>
+              </PressScale>
+            );
+          })}
+        </View>
+
+        <SheetLabel text="Background" top={238} />
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 264, flexDirection: 'row', gap: 10 }}>
+          {(['night', 'starfield', 'dawn'] as SosBackground[]).map((kind) => (
+            <BackgroundThumb key={kind} kind={kind} selected={settings.background === kind} onPress={() => onChange({ ...settings, background: kind })} width={thumbWidth} />
+          ))}
+        </View>
+
+        {/* canvas top 392 in a 534pt sheet */}
+        <PressScale
+          onPress={onDone}
+          accessibilityRole="button"
+          style={{
+            position: 'absolute',
+            left: 16,
+            right: 16,
+            bottom: 90,
+            height: 52,
+            borderRadius: 26,
+            backgroundColor: SOS_PAPER,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <AppText style={[sans('600'), { fontSize: 17, color: SHEET_INK }]}>Done</AppText>
+        </PressScale>
+      </View>
+    </View>
+  );
+}
+
+// ── 151 · Surf Complete ─────────────────────────────────────────────────────
+
+/**
+ * One shaft of grain hung from the top of the frame — the same three the slip's
+ * `Begin again` field carries, at the same sizes and opacities. The canvas fades
+ * each with `mask-image:linear-gradient(180deg,#000 30%,transparent)`; RN has no
+ * CSS mask, so the falloff is an SVG luminance mask over the noise tile.
+ */
+function DawnShaft({ id, left, top, width, height, rotate, opacity }: { id: string; left: number; top: number; width: number; height: number; rotate: string; opacity: number }) {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left, top, width, height, transform: [{ rotate }], transformOrigin: 'top center' }}>
+      <Svg width={width} height={height}>
+        <Defs>
+          <SvgGrad id={`${id}-fade`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset={0.3} stopColor="#FFFFFF" />
+            <Stop offset={1} stopColor="#000000" />
+          </SvgGrad>
+          <Mask id={`${id}-mask`} maskUnits="userSpaceOnUse" x={0} y={0} width={width} height={height}>
+            <Rect x={0} y={0} width={width} height={height} fill={`url(#${id}-fade)`} />
+          </Mask>
+        </Defs>
+        <G mask={`url(#${id}-mask)`}>
+          <SvgImage x={0} y={0} width={width} height={height} href={NOISE_DARK} preserveAspectRatio="xMidYMid slice" opacity={opacity} />
+        </G>
+      </Svg>
+    </View>
+  );
+}
+
+function DonePage({ count, onClose }: { count: number; onClose: () => void }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View style={{ flex: 1, backgroundColor: '#F0EFEB' }}>
+      <StatusBar style="dark" />
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+        <LinearGradient colors={['#F2E7D6', '#E6CFAC', '#FBFAF7', '#F0EFEB']} locations={[0, 0.39, 0.65, 0.82]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+        <DawnShaft id="u90-doneA" left={-30} top={-40} width={150} height={420} rotate="24deg" opacity={0.2} />
+        <DawnShaft id="u90-doneB" left={130} top={-60} width={140} height={430} rotate="6deg" opacity={0.24} />
+        <DawnShaft id="u90-doneC" left={290} top={-40} width={150} height={420} rotate="-14deg" opacity={0.2} />
+        {/* Canvas clips this band at frame y 558; the sun is painted first and
+            the halo over it. Every offset in this layer is frame-absolute, with
+            no status-bar deduction: the layer's own origin is the frame's, which
+            is why the shafts above carry their raw −40/−60/−40. Anchoring the
+            sun to the inset instead put two coordinate systems in one layer and
+            only agreed with the canvas when the inset was exactly 54, which no
+            iPhone reports — the 393×852 device this frame models says 59. */}
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 558, overflow: 'hidden' }}>
+          <View style={{ position: 'absolute', left: 96, top: 425, width: 200, height: 200, borderRadius: 100, overflow: 'hidden' }}>
+            <Svg width={200} height={200}>
+              <Defs>
+                {/* farthest-corner again: from (100,60) the far corner is 172.05 away = 86% of 200 */}
+                <RadialGradient id="u90-done-sun" cx="50%" cy="30%" rx="86%" ry="86%">
+                  <Stop offset={0} stopColor="#FBF3E4" />
+                  <Stop offset={0.65} stopColor="#F0DDBC" />
+                  <Stop offset={1} stopColor="#DFC79E" />
+                </RadialGradient>
+              </Defs>
+              <Circle cx={100} cy={100} r={100} fill="url(#u90-done-sun)" />
+            </Svg>
+            <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.5 }} />
+          </View>
+          <SoftBlob id="u90-done-halo" left={56} top={385} width={280} height={280} color="rgb(250,238,214)" alpha={0.4} stop={0.72} />
+        </View>
+        <LinearGradient
+          colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.55)', 'rgba(255,255,255,0)']}
+          locations={[0, 0.5, 1]}
+          style={{ position: 'absolute', left: 0, right: 0, top: 542, height: 32 }}
+        />
+        <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.1 }} />
+      </View>
+
+      <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}>
+        <AppText center style={[sans('500'), { position: 'absolute', left: 40, right: 40, top: 74, fontSize: 22, lineHeight: 32, color: SHEET_TEXT }]}>
+          The wave passed.{'\n'}You outlasted it.
+        </AppText>
+        <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 146, fontSize: 14, color: SHEET_MUTED }]}>
+          Logged — rode it out · ×{count}
+        </AppText>
+        <PressScale
+          onPress={onClose}
+          accessibilityRole="button"
+          style={{
+            position: 'absolute',
+            left: 16,
+            right: 16,
+            bottom: 48,
+            height: 48,
+            borderRadius: 25,
+            backgroundColor: SHEET_INK,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>Back to Today</AppText>
+        </PressScale>
+      </View>
+    </View>
+  );
+}
+
+// ── the flow ────────────────────────────────────────────────────────────────
+
+type FlowStep = 'intro' | 'strength' | 'where' | 'screen' | 'move' | 'cold' | 'sos' | 'done';
+const FLOW: FlowStep[] = ['intro', 'strength', 'where', 'screen', 'move', 'cold', 'sos', 'done'];
+type SosStageName = 'breathe' | 'tap' | 'odd' | 'wave';
+const SOS_ORDER: SosStageName[] = ['breathe', 'tap', 'odd', 'wave'];
+
+/**
+ * The First 90 Seconds, end to end. Behind `/urge` and `/rough-first90` both,
+ * because the canvas draws one interrupt and the two doors lead to it.
+ */
+export function UrgeFlow() {
+  const router = useRouter();
+  const createEvent = useCreateEvent();
+  const events = useEvents();
+  const [index, setIndex] = useState(0);
+  const [band, setBand] = useState(3);
+  const [place, setPlace] = useState<UrgePlace>('phone');
+  const [sosStage, setSosStage] = useState(0);
+  const [settings, setSettings] = useState<SosSettings>(DEFAULT_SOS_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const logged = useRef(false);
+  const step = FLOW[index];
+
+  // One clock for the whole SOS: every stage runs under it and it finishes the
+  // session on its own at zero, whichever stage is on screen.
+  const [surfProgress, setSurfProgress] = useState(0);
+  const [surfRemaining, setSurfRemaining] = useState(SURF_SECONDS);
+  const surfProgressRef = useRef(0);
+  const inSos = step === 'sos';
+
+  useEffect(() => {
+    void saveUrgeSession(newUrgeSession(bandToSeverity(band)));
+    void getJSON<SosSettings>(SOS_SETTINGS_KEY).then((stored) => {
+      if (stored) setSettings({ ...DEFAULT_SOS_SETTINGS, ...stored });
+    });
+    return () => {
+      void clearUrgeSession();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!inSos) return;
+    const startedAt = Date.now() - surfProgressRef.current * SURF_SECONDS * 1000;
+    const tick = () => {
+      const elapsed = (Date.now() - startedAt) / 1000;
+      const next = Math.min(1, elapsed / SURF_SECONDS);
+      surfProgressRef.current = next;
+      setSurfProgress(next);
+      setSurfRemaining(Math.max(0, Math.ceil(SURF_SECONDS - elapsed)));
+    };
+    tick();
+    const clock = setInterval(tick, 250);
+    return () => clearInterval(clock);
+  }, [inSos]);
+
+  const close = () => {
+    void clearUrgeSession();
+    if (router.canGoBack()) router.back();
+    else router.replace('/(app)/today');
+  };
+  const next = () => setIndex((current) => Math.min(FLOW.length - 1, current + 1));
+  const back = () => setIndex((current) => Math.max(0, current - 1));
+
+  function finish() {
+    if (logged.current) return;
+    logged.current = true;
+
+    // Completion is a local interaction. Never make the relief screen wait for
+    // a network mutation; the event can safely settle in the background.
+    setIndex(FLOW.indexOf('done'));
+    void createEvent({ type: 'urge_rode_out', severity: bandToSeverity(band), trigger: PLACES.find((item) => item.key === place)?.label }).catch(() => {});
+    void setJSON('tideline.post.backondeck.pending', Date.now());
+  }
+
+  function logSlip() {
+    void clearUrgeSession();
+    // Replace instead of push so the surf clock and the ocean are unmounted
+    // rather than left running beneath the slip flow.
+    router.replace('/relapse');
+  }
+
+  function saveSettings(nextSettings: SosSettings) {
+    setSettings(nextSettings);
+    void setJSON(SOS_SETTINGS_KEY, nextSettings);
+  }
+
+  const advance = () => setSosStage((current) => Math.min(SOS_ORDER.length - 1, current + 1));
+
+  // The wave outlasts itself: at zero the session closes on the relief screen.
+  useEffect(() => {
+    if (inSos && surfRemaining === 0) finish();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inSos, surfRemaining]);
+
+  const rodeOut = (events ?? []).filter((event) => event.type === 'urge_rode_out').length;
+  const stage = SOS_ORDER[sosStage];
+
+  return (
+    <View style={{ flex: 1, backgroundColor: inSos ? '#0F0F0E' : SHEET_PAPER }}>
+      {step === 'intro' ? <IntroPage onClose={close} onNext={next} /> : null}
+      {step === 'strength' ? <StrengthPage band={band} onBand={setBand} onClose={close} onNext={next} /> : null}
+      {step === 'where' ? <WherePage place={place} onPlace={setPlace} onBack={back} onNext={next} /> : null}
+      {step === 'screen' ? (
+        <MovePage index={0} title={SCREEN_STEP[place].title} body={SCREEN_STEP[place].body} art={<ScreenStepArt />} onClose={close} onNext={next} />
+      ) : null}
+      {step === 'move' ? <MovePage index={1} title={MOVE_STEP[place].title} body={MOVE_STEP[place].body} art={<MoveStepArt />} onClose={close} onNext={next} /> : null}
+      {step === 'cold' ? (
+        <MovePage
+          index={2}
+          title="Cold water on your wrists."
+          body="Thirty seconds. The body resets faster than the mind can argue."
+          art={<ColdStepArt />}
+          onClose={close}
+          onNext={next}
+        />
+      ) : null}
+      {inSos && stage === 'breathe' ? <BreatheStage settings={settings} onSettings={() => setSettingsOpen(true)} onEnd={finish} onDone={advance} /> : null}
+      {inSos && stage === 'tap' ? <TapStage settings={settings} onEnd={finish} onDone={advance} /> : null}
+      {inSos && stage === 'odd' ? <OddStage settings={settings} onEnd={finish} onDone={advance} /> : null}
+      {inSos && stage === 'wave' ? (
+        <WaveStage settings={settings} progress={surfProgress} remaining={surfRemaining} progressRef={surfProgressRef} onEnd={finish} onSlip={logSlip} />
+      ) : null}
+      {inSos && settingsOpen ? <SosSettingsSheet settings={settings} onChange={saveSettings} onDone={() => setSettingsOpen(false)} /> : null}
+      {step === 'done' ? <DonePage count={Math.max(1, rodeOut)} onClose={close} /> : null}
     </View>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Pressable, TextInput, View, type KeyboardTypeOptions, type TextStyle } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 
-import { colors, fonts, fontSize, radius, spacing, weight } from '@/lib/theme';
+import { colors, fonts, fontSize, radius, shadow, spacing, weight } from '@/lib/theme';
 import { AppText } from './AppText';
 
 export interface FieldProps {
@@ -49,11 +49,13 @@ export function Field({
     borderWidth: 1,
     borderColor: focused ? colors.text : colors.border,
     borderRadius: radius.md,
+    borderCurve: 'continuous',
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md + 2,
     paddingRight: secureTextEntry ? 48 : spacing.lg,
     minHeight: multiline ? 110 : undefined,
     textAlignVertical: multiline ? 'top' : 'center',
+    ...(focused ? { boxShadow: '0 0 0 2px rgba(19,19,19,0.12)' } : shadow.control),
   };
 
   return (

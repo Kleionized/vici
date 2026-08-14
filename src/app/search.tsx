@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, TextInput, View } from 'react-native';
+import { ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AppText, Glyph, type GlyphName, SectionLabel } from '@/components/ui';
+import { AppText, Glyph, type GlyphName, PressScale, SectionLabel } from '@/components/ui';
 import { CATEGORY_LABEL } from '@/lib/labels';
 import { useLessons } from '@/lib/backend';
 import type { LessonCategory } from '@/lib/types';
@@ -26,7 +26,7 @@ export default function Search() {
   const router = useRouter();
   const lessons = useLessons();
   const [q, setQ] = useState('');
-  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/weeks'));
+  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/library'));
 
   const results = useMemo(() => {
     const all = lessons ?? [];
@@ -57,21 +57,21 @@ export default function Search() {
               style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, color: colors.text, padding: 0 }}
             />
           </View>
-          <Pressable onPress={back} hitSlop={8}>
+          <PressScale onPress={back} hitSlop={8} style={{ minWidth: 60, minHeight: 44, alignItems: 'flex-end', justifyContent: 'center' }}>
             <AppText weightOverride="600" style={{ fontSize: 16 }}>
               Cancel
             </AppText>
-          </Pressable>
+          </PressScale>
         </View>
 
         {/* recent chips */}
         <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap', paddingHorizontal: spacing.xl, paddingBottom: spacing.md }}>
           {RECENT.map((r) => (
-            <Pressable key={r} onPress={() => setQ(r)} style={{ backgroundColor: colors.surface, borderRadius: 9999, paddingHorizontal: 14, paddingVertical: 8 }}>
+            <PressScale key={r} onPress={() => setQ(r)} style={{ minHeight: 44, backgroundColor: colors.surface, borderRadius: 9999, paddingHorizontal: 14, alignItems: 'center', justifyContent: 'center' }}>
               <AppText weightOverride="600" style={{ fontSize: 13.5, color: colors.textMuted }}>
                 {r}
               </AppText>
-            </Pressable>
+            </PressScale>
           ))}
         </View>
 
@@ -79,9 +79,9 @@ export default function Search() {
           {`${results.length} result${results.length === 1 ? '' : 's'}`}
         </SectionLabel>
 
-        <ScrollView contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xl, gap: 11 }} keyboardShouldPersistTaps="handled">
+        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xl, gap: 11 }} keyboardShouldPersistTaps="handled">
           {results.map((l) => (
-            <Pressable key={l.slug} onPress={() => router.push(`/lesson/${l.slug}`)}>
+            <PressScale key={l.slug} onPress={() => router.push(`/lesson-overview/${l.slug}`)}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.surface, borderRadius: 18, padding: 14 }}>
                 <View style={{ width: 46, height: 46, borderRadius: 13, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
                   {Glyph[CAT_GLYPH[l.category]](colors.text)}
@@ -100,7 +100,7 @@ export default function Search() {
                 </View>
                 {Glyph.chevR(colors.textSoft)}
               </View>
-            </Pressable>
+            </PressScale>
           ))}
         </ScrollView>
       </SafeAreaView>

@@ -16,7 +16,7 @@ import {
 } from 'react';
 
 import { useAuth } from '@/lib/auth';
-import { SEED_LESSONS } from '@/content/seedLessons';
+import { CURRICULUM_LESSONS } from '@/lib/curriculum';
 import { todayKey } from '@/lib/date';
 import { genId } from '@/lib/id';
 import { getJSON, setJSON } from '@/lib/storage';
@@ -231,18 +231,17 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
       if (!cur) return;
       const date = input.date || todayKey();
       const prev = cur.checkins[date];
+      // A day is written by several hands — the morning check-in, the night
+      // one, and Today ticking off the day's action — so an upsert has to
+      // merge. Writing the whole record would have the last writer erase every
+      // field it happened not to carry.
+      const patch = Object.fromEntries(Object.entries(input).filter(([, v]) => v !== undefined));
       const checkin: DailyCheckin = {
+        ...prev,
         _id: prev?._id ?? genId('chk'),
         userId: cur.user.clerkUserId,
+        ...patch,
         date,
-        sleepHours: input.sleepHours,
-        mood: input.mood,
-        emotions: input.emotions,
-        reasons: input.reasons,
-        movedBody: input.movedBody,
-        socialContact: input.socialContact,
-        structureFollowed: input.structureFollowed,
-        note: input.note,
       };
       await apply({ ...cur, checkins: { ...cur.checkins, [date]: checkin } });
     },
@@ -298,7 +297,7 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
 
   const value: MockStoreValue = {
     hydrated,
-    lessons: SEED_LESSONS,
+    lessons: CURRICULUM_LESSONS,
     data,
     completeOnboarding,
     updateSettings,

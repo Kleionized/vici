@@ -106,6 +106,19 @@ export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[]
   };
 }
 
+/**
+ * Whether a closed week actually has anything to report. The whole screen is
+ * built on the mood rows, so a week with no mood logged in it has nothing to
+ * show. Both the screen's empty state and the launch-time gate that decides
+ * whether to open the report at all read this, so the two cannot drift apart:
+ * the app must never deliver a report that then says it isn't written yet.
+ */
+export type PopulatedWeeklyReport = WeeklyReport & { thisAvg: number };
+
+export function hasReportContent(report: WeeklyReport | null): report is PopulatedWeeklyReport {
+  return report != null && report.thisAvg != null;
+}
+
 /** Severity 1–10 → the urge-log intensity word. */
 export function severityWord(s: number | null): string | null {
   if (s == null) return null;

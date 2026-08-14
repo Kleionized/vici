@@ -1,11 +1,11 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { AppText, LoadingView } from '@/components/ui';
+import { AppText, BackChevron, LoadingView, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { getJSON } from '@/lib/storage';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
@@ -59,8 +59,8 @@ export default function Mail() {
     if (postDelivered) {
       out.push({
         kind: 'letter',
-        title: 'VICI Post · Back on deck',
-        sub: 'A medallion, presented · enclosure inside',
+        title: 'VICI Post · A medallion',
+        sub: 'Vici, tier II · enclosure inside',
         kept: true,
         go: () => router.push('/medallion-post'),
       });
@@ -91,21 +91,15 @@ export default function Mail() {
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ paddingHorizontal: 29, paddingTop: spacing.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 30 }}>
-            <Pressable onPress={back} hitSlop={8} accessibilityLabel="Back" style={{ padding: 4, marginLeft: -8 }}>
-              <Svg width={12} height={20} viewBox="0 0 13 22">
-                <Path d="M11 2L2 11l9 9" stroke={colors.text} strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </Pressable>
-          </View>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 28, color: colors.text, marginTop: 14 }}>Mail</AppText>
+        <View style={{ paddingHorizontal: 16, paddingTop: spacing.sm }}>
+          <BackChevron onPress={back} />
+          <AppText style={[sans('600'), { fontSize: 27, letterSpacing: -0.4, color: colors.inkAlt, marginTop: 8 }]}>Mail</AppText>
         </View>
 
         {items.length === 0 ? (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 40, gap: 8 }}>
             <QuoteMark />
-            <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, color: colors.text, maxWidth: 260, lineHeight: 28 }}>
+            <AppText center style={[sans('500'), { fontSize: 22, color: colors.text, maxWidth: 260, lineHeight: 28 }]}>
               Nothing’s arrived yet.
             </AppText>
             <AppText center style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, maxWidth: 280, lineHeight: 20 }]}>
@@ -113,21 +107,20 @@ export default function Mail() {
             </AppText>
           </View>
         ) : (
-          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 24, paddingTop: 24, gap: 11 }}>
+          <ScrollView contentInsetAdjustmentBehavior="automatic" showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 16, paddingTop: 24, gap: 11 }}>
             {items.map((it, i) => (
-              <Pressable
+              <PressScale
                 key={i}
                 onPress={it.go}
                 accessibilityRole="button"
-                style={({ pressed }) => ({
+                style={{
                   flexDirection: 'row',
                   alignItems: 'center',
                   gap: 14,
                   backgroundColor: colors.surface,
                   borderRadius: 18,
                   padding: 16,
-                  transform: [{ scale: pressed ? 0.99 : 1 }],
-                })}>
+                }}>
                 <View style={{ width: 46, height: 46, borderRadius: 12, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
                   {it.kind === 'letter' ? <LetterMark /> : <ReportMark />}
                 </View>
@@ -138,7 +131,7 @@ export default function Mail() {
                 <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
                   <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
                 </Svg>
-              </Pressable>
+              </PressScale>
             ))}
           </ScrollView>
         )}

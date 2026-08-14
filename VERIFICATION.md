@@ -220,3 +220,85 @@ One row per board id / state / branch (§4). Status: PENDING → PASS/FAIL.
 - [x] `flow-slip-letter-morning-reseal` — PASS · prior pass + arrival copy
 - [x] `flow-medallion-earn-letter-mail-album` — PASS · rode-out queues post → letter → mail row → album 7/12 — walked
 - [x] `flow-yearly-drop-claim-managesub` — PASS · claim → toast → managesub $26.99 — walked
+
+---
+
+# 2026-08-06 · design re-sync (canvas v3, 180 screens)
+
+The user replaced the design bundle (`latest UI/project/Email Login.dc.html`). Ledger of
+that pass. Method: split the file on `data-screen-label`, normalise out the trailing
+sticky-note fragments, diff frame-by-frame against the previous split, then rebuild only
+what moved and re-derive every frame's numbers against the built JSX.
+
+## The delta
+
+- 180 screens (was 187). **26 new**, **33 removed**, **59 genuinely changed** — the other
+  ~120 "differences" were split artefacts, not design changes.
+- New: the three-step Lapse flow, seven `Rough … I` openers, Medallions "Still to earn",
+  Urge Overview "Summary", three lesson pull-quote pages, Morning Task Check, Morning and
+  Night Action Reminders, Campaign Line, Drop Received.
+- Removed: all fifteen Album pages, Locked Weeks, Rough Days Library + Protocol,
+  Training Drills Browser, Tier Ladder Options.
+- Two screens exist only in the bundle's `exports/` folder and not in the main file:
+  **Story Detail** (the lesson cover) and a five-ground **Campaign** map. Both built.
+
+## App-level changes the canvas does not draw
+
+- A **fourth tab, "All"** — a hub listing every screen, including the ones that normally
+  arrive on their own (weekly report, letters, medallion post, the yearly drop). Four tabs
+  will not fit the canvas's hand-set centres (70/196/318), so the row is on even quarters;
+  glyph size, the 14 above, the 5 below and the 13pt label are unchanged.
+- **Library now opens the Journey**, not the lesson shelves. The campaign is the tab (it
+  scrolls, so it can take a bar under it); each chapter is pushed at `/journey/[chapter]`
+  outside the tab group, because the chapter frames run to y 852 and a bar would sit on the
+  closing land band.
+- `dailyAction` / `dailyActionDone` on `DailyCheckin`, so the night check-in can name the
+  next day's action, Today can carry it, and the next morning can ask after it.
+
+## Bugs found that were not design drift
+
+- **`upsertCheckin` destroyed data.** It wrote every field by name, so of the three screens
+  that write a day, whichever wrote last erased the others. Both the mock store and the
+  Convex mutation now merge only defined keys.
+- **A static `<Svg>` paints under its absolutely-positioned siblings on web** — see the
+  trap list in the session's `MAP-V3.md`. Cost several screens their entire artwork while
+  every element still measured correctly. Instances fixed in the campaign cards, the
+  chapter footer, the feeling wheel, and hardened across the funnel charts and auth art.
+- **`<Svg rotation/originX/originY>` leaks a raw `transform-origin` DOM attribute** and
+  rotates about (0,0) on web. The `transform="rotate(a cx cy)"` string is correct on both.
+- **Two `<button>`-inside-`<button>`** cases (the pledge pad, the Vow) — invalid HTML, and
+  the pad only took a mark in the gaps between its own text.
+- **`onboarding/art.tsx` was a complete port of frames 095–108 that nothing imported.**
+  The funnel's back half had never matched any canvas. Wired up and rebuilt.
+- **The three lesson quotes would have been wiped by `scripts/build-interactive.mjs`**,
+  which generates `interactiveLessons.ts`. Added a `@@QUOTE` directive and moved them into
+  the authored markdown.
+- **Medallions dropped `backondeck`** because the canvas enumerates eleven faces, but the
+  app awards a twelfth and its detail route hit a "not found" state. Restored — 7 of 12.
+
+## Verification
+
+- Route smoke sweep: **48 routes, all render.** Live DOM audit (static SVG with a positioned
+  sibling / zero-size SVG / nested button / leaked transform-origin) clean on every one.
+- Adversarial parity pass over all 180 frames, 13 verifiers plus a refuter per claim:
+  **15 claimed, 11 confirmed, all minor.** Nine of the eighteen agents found nothing.
+  All eleven fixed:
+  medallion odd-row width; the auth washes on 057/113; the Aegis disc's status-bar offset;
+  the Today moon's gradient radius, its missing box-shadow and its three star centres;
+  the Story Detail far sail's colour; the Craving heart's five control points; the Score
+  header's reflection ellipse (centre/radius written as top/height); and Surf Complete's
+  sun assembly, which was inset-anchored inside a frame-absolute layer.
+- `npx tsc --noEmit` clean. Lint 24 errors, all pre-existing (22 are the React Compiler on
+  `useRef(new Animated.Value(0)).current`, down from 48 before this pass).
+
+## Known divergences, deliberate
+
+- **Story Tracks part rows** wrap to two lines. The canvas's 44-tall rows at a 62 pitch
+  assume its mock's short phrases; the real part names are sentences, and holding the pitch
+  would mean truncating them.
+- **Bottom-anchored offsets read ~88pt low on web** (zero insets) and land correctly on
+  device. Where it was load-bearing — the check-in CTA, the day flows — the pill is now
+  top-pinned with a clamp that degrades to the old behaviour on a real 852pt device.
+- **Canvas defects reproduced literally rather than "improved":** the routine day chips are
+  drawn `#131313` on `#1D1C1A` labels; frame 119 pins the selected meridiem below its own
+  selection band; frame 121 draws four page dots for a three-page sheet.

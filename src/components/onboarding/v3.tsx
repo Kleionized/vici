@@ -10,12 +10,48 @@
  */
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Animated, Easing, Pressable, ScrollView, TextInput, View } from 'react-native';
-import Svg, { Circle, Defs, Ellipse, G, Line, Path, Pattern, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image } from 'expo-image';
+import { LinearGradient } from 'expo-linear-gradient';
+import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
-import { UrgeWave } from '@/components/urge';
+import { AppText, Laurel } from '@/components/ui';
+import { PressScale } from '@/components/ui/press-scale';
+import { BreathCue, UrgeWave, type BreathPhase } from '@/components/urge';
 import { SC } from '@/components/scene/SceneKit';
 import { colors, fonts, sans } from '@/lib/theme';
+import {
+  AegisCheck,
+  AegisField,
+  AegisSpinner,
+  ByAge80Card,
+  CAMPAIGN_WEEKS,
+  CampaignLineCard,
+  ONB_LESSONS,
+  OnbLessonArt,
+  OnbPagerDots,
+  type OnbLessonKind,
+  CampaignMapField,
+  CampaignWeekRow,
+  LAST_30,
+  MonthGrid,
+  MostActiveTriggerCard,
+  NEXT_30,
+  NEXT_365,
+  OnbPaperField,
+  PlanReadyArt,
+  PlanReadyField,
+  REVERSAL_CAPTION_DELAY_MS,
+  RewireCurveCard,
+  RootLoopCard,
+  StreakSawtoothCard,
+  UrgesByNightCard,
+  VowSignaturePanel,
+  VowSunArt,
+  YearGrid,
+} from './art';
+
+const noiseDark = require('../../../assets/images/noise-dark.png');
 
 // ── the two registers ────────────────────────────────────────────────
 export type Tone = {
@@ -27,23 +63,28 @@ export type Tone = {
   ink4: string;
   line: string;
   soft2: string;
+  /** The unfilled half of the rule at the top of every funnel screen. */
+  track: string;
   fill: string;
   onFill: string;
 };
 const NIGHT: Tone = {
-  bg: '#09090A',
-  card: '#151516',
-  ink: '#EDEDEC',
-  ink2: '#A6A6A5',
-  ink3: '#6B6B6A',
-  ink4: '#424241',
+  bg: '#0F0F0D',
+  card: 'rgba(255,255,255,0.07)',
+  ink: '#F4F3F0',
+  ink2: 'rgba(244,243,240,0.7)',
+  ink3: 'rgba(244,243,240,0.55)',
+  ink4: 'rgba(244,243,240,0.3)',
   line: 'rgba(255,255,255,0.1)',
-  soft2: 'rgba(255,255,255,0.14)',
-  fill: '#EDEDEC',
+  soft2: 'rgba(255,255,255,0.22)',
+  track: 'rgba(255,255,255,0.2)',
+  fill: '#F4F3F0',
   onFill: '#131313',
 };
 const PAPER: Tone = {
-  bg: colors.bg,
+  // Daylight paper is a shade brighter than the app's field — the reading is
+  // meant to feel like the sun finally came up on it.
+  bg: '#FAF9F8',
   card: colors.surface,
   ink: colors.text,
   ink2: colors.textMuted,
@@ -51,11 +92,93 @@ const PAPER: Tone = {
   ink4: colors.textSofter,
   line: colors.border,
   soft2: colors.borderStrong,
+  track: 'rgba(0,0,0,0.12)',
   fill: colors.ink,
   onFill: colors.inkText,
 };
 const O3Tone = createContext<Tone>(NIGHT);
 const useTone = () => useContext(O3Tone);
+
+// ── the 048–084 run, frame by frame ──────────────────────────────────
+/**
+ * Thirty-seven canvas frames in funnel order. The night field, the low sun and
+ * the bottom glow are authored per frame, not by a formula: a section intro
+ * repeats the field of the question it opens, the four lesson interstitials
+ * jump ahead of the questions on either side of them, the glow alternates warm
+ * and cool with no pattern, and 072 breaks the −0.55·w offset its neighbours
+ * all follow. Nothing here can be recovered from a progress fraction, so every
+ * number below is the frame's own.
+ *
+ * `rule` is the ink rule's stated width percent; `top`/`bot` the 180° field;
+ * `sun`/`off` the low sun's box and how far it hangs below the frame;
+ * `glow`/`a0`/`a45` its colour and the two stated stops (the third is always
+ * transparent at 72%).
+ */
+type O3Field = { rule: number; top: string; bot: string; sun: number; off: number; glow: string; a0: number; a45: number };
+const O3_WARM = '#FFECC4'; // rgba(255,236,196,·)
+const O3_COOL = '#FFFFFF'; // rgba(255,255,255,·)
+const fld = (rule: number, top: string, bot: string, sun: number, off: number, glow: string, a0: number, a45: number): O3Field =>
+  ({ rule, top, bot, sun, off, glow, a0, a45 });
+const O3_FIELD: O3Field[] = [
+  fld(4, 'rgb(15,15,13)', 'rgb(26,25,23)', 420, -231, O3_WARM, 0.1, 0.05), //   048 · section 1
+  fld(4, 'rgb(15,15,13)', 'rgb(26,25,23)', 420, -231, O3_WARM, 0.1, 0.05), //   049 · Q1
+  fld(9, 'rgb(16,16,14)', 'rgb(27,26,24)', 429, -236, O3_COOL, 0.12, 0.05), //  050 · Q2
+  fld(13, 'rgb(17,17,15)', 'rgb(29,28,26)', 438, -241, O3_WARM, 0.14, 0.06), // 051 · Q3
+  fld(15, 'rgb(21,21,19)', 'rgb(35,34,32)', 484, -266, O3_WARM, 0.28, 0.12), // 052 · lesson, willpower
+  fld(17, 'rgb(17,17,15)', 'rgb(30,29,27)', 448, -246, O3_WARM, 0.15, 0.07), // 053 · Q4
+  fld(22, 'rgb(18,18,16)', 'rgb(31,30,28)', 457, -251, O3_COOL, 0.17, 0.08), // 054 · section 2
+  fld(22, 'rgb(18,18,16)', 'rgb(31,30,28)', 457, -251, O3_COOL, 0.17, 0.08), // 055 · Q5
+  fld(26, 'rgb(19,19,17)', 'rgb(32,31,29)', 466, -256, O3_WARM, 0.19, 0.09), // 056 · Q6
+  fld(30, 'rgb(20,20,18)', 'rgb(34,33,31)', 475, -261, O3_COOL, 0.21, 0.09), // 057 · Q7
+  fld(32, 'rgb(27,27,25)', 'rgb(45,44,42)', 558, -307, O3_WARM, 0.38, 0.17), // 058 · lesson, rewire
+  fld(35, 'rgb(21,21,19)', 'rgb(36,35,33)', 493, -271, O3_COOL, 0.25, 0.11), // 059 · section 3
+  fld(35, 'rgb(21,21,19)', 'rgb(36,35,33)', 493, -271, O3_COOL, 0.25, 0.11), // 060 · Q8
+  fld(39, 'rgb(22,22,20)', 'rgb(37,36,34)', 503, -277, O3_COOL, 0.27, 0.12), // 061 · Q9
+  fld(43, 'rgb(23,23,21)', 'rgb(39,38,36)', 512, -282, O3_WARM, 0.28, 0.13), // 062 · Q10
+  fld(48, 'rgb(24,24,22)', 'rgb(40,39,37)', 521, -287, O3_COOL, 0.3, 0.14), //  063 · section 4
+  fld(48, 'rgb(24,24,22)', 'rgb(40,39,37)', 521, -287, O3_COOL, 0.3, 0.14), //  064 · Q11
+  fld(52, 'rgb(25,25,23)', 'rgb(41,40,38)', 530, -292, O3_WARM, 0.32, 0.14), // 065 · Q12
+  fld(57, 'rgb(25,25,23)', 'rgb(42,41,39)', 539, -296, O3_COOL, 0.34, 0.15), // 066 · Q13
+  fld(61, 'rgb(26,26,24)', 'rgb(44,43,41)', 548, -301, O3_WARM, 0.36, 0.16), // 067 · Q14
+  fld(65, 'rgb(28,28,26)', 'rgb(46,45,43)', 567, -312, O3_COOL, 0.39, 0.18), // 068 · section 5
+  fld(65, 'rgb(28,28,26)', 'rgb(46,45,43)', 567, -312, O3_COOL, 0.39, 0.18), // 069 · Q15
+  fld(70, 'rgb(28,28,26)', 'rgb(47,46,44)', 576, -317, O3_WARM, 0.41, 0.18), // 070 · Q16
+  fld(74, 'rgb(29,29,27)', 'rgb(49,48,46)', 585, -322, O3_COOL, 0.43, 0.19), // 071 · Q17
+  fld(76, 'rgb(30,30,28)', 'rgb(50,49,47)', 590, -320, O3_WARM, 0.44, 0.2), //  072 · lesson, anchor
+  fld(78, 'rgb(30,30,28)', 'rgb(50,49,47)', 594, -327, O3_WARM, 0.45, 0.2), //  073 · Q18
+  fld(83, 'rgb(31,31,29)', 'rgb(51,50,48)', 603, -332, O3_COOL, 0.47, 0.21), // 074 · section 6
+  fld(83, 'rgb(31,31,29)', 'rgb(51,50,48)', 603, -332, O3_COOL, 0.47, 0.21), // 075 · Q19
+  fld(85, 'rgb(32,32,30)', 'rgb(52,51,49)', 613, -337, O3_COOL, 0.48, 0.22), // 076 · lesson, small steps
+  fld(87, 'rgb(32,32,30)', 'rgb(54,53,51)', 622, -342, O3_WARM, 0.5, 0.23), //  077 · Q20
+  fld(91, 'rgb(33,33,31)', 'rgb(55,54,52)', 631, -347, O3_COOL, 0.52, 0.23), // 078 · section 7
+  fld(91, 'rgb(33,33,31)', 'rgb(55,54,52)', 631, -347, O3_COOL, 0.52, 0.23), // 079 · Q21
+  fld(96, 'rgb(34,34,32)', 'rgb(56,55,53)', 640, -352, O3_WARM, 0.54, 0.24), // 080 · Q22
+  fld(100, 'rgb(35,35,33)', 'rgb(58,57,55)', 640, -352, O3_WARM, 0.56, 0.25), // 081 · Q23
+  fld(100, 'rgb(36,36,34)', 'rgb(59,58,56)', 640, -352, O3_WARM, 0.56, 0.25), // 082 · Q24 name
+  fld(100, 'rgb(37,37,35)', 'rgb(60,59,57)', 640, -352, O3_WARM, 0.56, 0.25), // 083 · Q25 age
+  fld(100, 'rgb(38,38,36)', 'rgb(61,60,58)', 640, -352, O3_WARM, 0.56, 0.25), // 084 · Q26 gender
+];
+
+/** Which row of the table each kind of screen sits on. */
+const O3_Q_FIELD = [1, 2, 3, 5, 7, 8, 9, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 27, 29, 31, 32, 33, 34, 35, 36];
+const O3_SECTION_FIELD = [0, 6, 11, 15, 20, 26, 30];
+const O3_LESSON_FIELD: Record<string, number> = { willpower: 4, rewire: 10, anchor: 24, steps: 28 };
+
+/**
+ * Only the screen on the frame knows which frame it is — the funnel's step
+ * index counts the push primer, the reading pause and the whole paper tail as
+ * well. A screen that knows its place publishes it here and the shell reads
+ * its field, its low sun and its rule width straight off the table.
+ */
+const O3FieldCtx = createContext<((v: number | null) => void) | null>(null);
+function useO3Field(v: number | null) {
+  const publish = useContext(O3FieldCtx);
+  useEffect(() => {
+    if (v == null) return;
+    publish?.(v);
+    return () => publish?.(null);
+  }, [publish, v]);
+}
 
 // ── roman numerals ───────────────────────────────────────────────────
 export function o3Roman(n: number): string {
@@ -75,78 +198,140 @@ function Rise({ children, delay = 0, style }: { children: ReactNode; delay?: num
   return <Animated.View style={[{ opacity: t, transform: [{ translateY: t.interpolate({ inputRange: [0, 1], outputRange: [9, 0] }) }] }, style]}>{children}</Animated.View>;
 }
 
+/** Which paper field a lit frame states — 096 and 107 each carry their own. */
+export type O3Paper = 'default' | 'plan' | 'map' | 'plain';
+
 // ── the shell: night ground, gathering light, a growing ink rule ─────
 export function O3Shell({
   progress = 0,
   onBack,
   bar = true,
   lit = false,
+  paper = 'default',
+  segments,
+  backTop,
   children,
 }: {
   progress?: number;
   onBack?: (() => void) | null;
   bar?: boolean;
   lit?: boolean;
+  paper?: O3Paper;
+  /** The eight-segment rule the paper tail draws, and how many are inked. */
+  segments?: number;
+  /** Back sits at y 94 on the night frames, 96 on the paper ones, 64 on the map. */
+  backTop?: number;
   children: ReactNode;
 }) {
   const tone = lit ? PAPER : NIGHT;
+  const [frame, setFrame] = useState<number | null>(null);
+  // Screens outside the 058–094 run publish no frame: the push primer stands
+  // before it and holds the opening field, the paper tail stands after it and
+  // holds the closing one.
+  const field = O3_FIELD[frame ?? (progress < 0.5 ? 0 : O3_FIELD.length - 1)];
+  const pct = frame == null ? Math.round(Math.max(0.04, Math.min(1, progress)) * 100) : field.rule;
+  // The chrome is drawn off the canvas frame: rule at y 66, Back at y 94, both
+  // measured below the 54pt status bar the safe-area inset stands in for.
+  const backInk = lit ? tone.ink2 : 'rgba(244,243,240,0.75)';
   return (
-    <O3Tone.Provider value={tone}>
-      <View style={{ flex: 1, backgroundColor: tone.bg }}>
-        {/* the ambient light gathering low, or daylight on paper */}
-        <Ambient t={progress} lit={lit} />
-        <View style={{ flex: 1, paddingTop: 64, paddingHorizontal: 26 }}>
-          {bar ? (
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, minHeight: 24 }}>
-              <Pressable onPress={onBack ?? undefined} disabled={!onBack} style={{ padding: 4, opacity: onBack ? 0.75 : 0.16 }}>
-                <Svg width={11} height={18} viewBox="0 0 13 22">
-                  <Path d="M11 2L2 11l9 9" stroke={tone.ink} strokeWidth={2.2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
-              </Pressable>
-              <View style={{ flex: 1, height: 14, justifyContent: 'center' }}>
-                <View style={{ position: 'absolute', left: 0, right: 0, height: 1, backgroundColor: tone.line }} />
-                <View style={{ position: 'absolute', left: 0, height: 2, width: `${Math.max(3, progress * 100)}%`, backgroundColor: tone.ink }} />
-              </View>
+    <O3FieldCtx.Provider value={setFrame}>
+      <O3Tone.Provider value={tone}>
+        <View style={{ flex: 1, backgroundColor: tone.bg }}>
+          {/* the ambient light gathering low, or daylight on paper */}
+          <Ambient field={field} lit={lit} paper={paper} />
+          <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+            {/* Yoga positions an absolutely-placed child from its parent's
+                BORDER box and never consults padding, and SafeAreaView spends
+                the inset as padding — so the rule and the Back row have to sit
+                inside a plain view that already starts at the inset, or they
+                draw across the status bar on device. */}
+            <View style={{ flex: 1 }}>
+              {bar && segments != null ? (
+                /* the paper tail counts in eight ticks rather than one rule */
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 12, flexDirection: 'row', gap: 8 }}>
+                  {Array.from({ length: 8 }, (_, k) => (
+                    <View key={k} style={{ flex: 1, height: 4, borderRadius: 2, backgroundColor: k < segments ? '#131313' : 'rgba(0,0,0,0.14)' }} />
+                  ))}
+                </View>
+              ) : bar ? (
+                <View style={{ position: 'absolute', left: 24, right: 24, top: 12, height: 4, borderRadius: 2, backgroundColor: tone.track }}>
+                  <View style={{ height: 4, width: `${pct}%`, borderRadius: 2, backgroundColor: tone.ink }} />
+                </View>
+              ) : null}
+              {onBack ? (
+                <PressScale
+                  onPress={onBack}
+                  accessibilityRole="button"
+                  accessibilityLabel="Back"
+                  hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
+                  style={{ position: 'absolute', left: 16, top: backTop ?? 40, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                  <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
+                    <Path d="M9.5 1.5L2 9.5l7.5 8" stroke={backInk} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+                  </Svg>
+                  <AppText style={[sans('400'), { fontSize: 17, color: backInk }]}>Back</AppText>
+                </PressScale>
+              ) : null}
+              {/* Padding for the flowed screens; the canvas-placed ones position
+                  absolutely, which Yoga measures from this box's edge, not its
+                  content — so their lefts and tops are the frame's own numbers. */}
+              <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 76, paddingBottom: 32 }}>{children}</View>
             </View>
-          ) : (
-            <View style={{ height: 24 }} />
-          )}
-          <View style={{ flex: 1, paddingTop: 18, paddingBottom: 44 }}>{children}</View>
+          </SafeAreaView>
         </View>
-      </View>
-    </O3Tone.Provider>
+      </O3Tone.Provider>
+    </O3FieldCtx.Provider>
   );
 }
 
 // gathering light: a wide pale bloom low, a warmer core arriving later
-function Ambient({ t, lit }: { t: number; lit: boolean }) {
-  const e = 1 - (1 - t) * (1 - t);
-  if (lit) return null;
+function Ambient({ field, lit, paper = 'default' }: { field: O3Field; lit: boolean; paper?: O3Paper }) {
+  // Daylight. Three of the paper frames state their own field, so each is drawn
+  // from its own numbers rather than tinted off a shared one; 108 states none
+  // at all and stands on flat white.
+  if (lit) {
+    if (paper === 'plain') return <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#FFFFFF' }} />;
+    if (paper === 'plan') return <PlanReadyField />;
+    if (paper === 'map') return <CampaignMapField />;
+    return <OnbPaperField />;
+  }
+  // Night: every value is the frame's own, off O3_FIELD — the field ends, the
+  // sun's box and hang, and the glow's colour and two stops.
+  const { sun, off, glow, a0, a45 } = field;
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-      <Svg width="100%" height="100%">
+    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+      <LinearGradient colors={[field.top, field.bot]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      {/* the bloom off the top-left corner — the canvas blurs it 6px, and with
+          no blur filter in RN SVG the gradient's own falloff carries it. Every
+          frame in the run states the same box and stops. */}
+      <Svg width={540} height={270} style={{ position: 'absolute', left: -40, top: -140 }}>
         <Defs>
-          <RadialGradient id="o3glow1" cx="50%" cy="100%" rx="70%" ry="60%">
-            <Stop offset="0%" stopColor="#E2E2E1" stopOpacity={(0.06 + e * 0.5).toFixed(3)} />
-            <Stop offset="70%" stopColor="#E2E2E1" stopOpacity={0} />
-          </RadialGradient>
-          <RadialGradient id="o3glow2" cx="50%" cy="106%" rx="46%" ry="46%">
-            <Stop offset="0%" stopColor="#EAEAE9" stopOpacity={(Math.pow(e, 1.6) * 0.42).toFixed(3)} />
-            <Stop offset="64%" stopColor="#EAEAE9" stopOpacity={0} />
+          <RadialGradient id="o3bloom" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#B4AA96" stopOpacity={0.14} />
+            <Stop offset="0.72" stopColor="#131313" stopOpacity={0} />
           </RadialGradient>
         </Defs>
-        <Rect x="0" y="0" width="100%" height="100%" fill="url(#o3glow1)" />
-        <Rect x="0" y="0" width="100%" height="100%" fill="url(#o3glow2)" />
+        <Ellipse cx={270} cy={135} rx={270} ry={135} fill="url(#o3bloom)" />
       </Svg>
+      <Svg width={sun} height={sun} style={{ position: 'absolute', left: '50%', marginLeft: -sun / 2, bottom: off }}>
+        <Defs>
+          <RadialGradient id="o3sun" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor={glow} stopOpacity={a0} />
+            <Stop offset="0.45" stopColor={glow} stopOpacity={a45} />
+            <Stop offset="0.72" stopColor={glow} stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={sun / 2} cy={sun / 2} rx={sun / 2} ry={sun / 2} fill="url(#o3sun)" />
+      </Svg>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} />
     </View>
   );
 }
 
 // ── voice primitives ─────────────────────────────────────────────────
-export function O3H({ children, size = 29, style }: { children: ReactNode; size?: number; style?: object }) {
+export function O3H({ children, size = 22, style }: { children: ReactNode; size?: number; style?: object }) {
   const tone = useTone();
   return (
-    <AppText center style={[{ fontFamily: fonts.serif, fontSize: size, lineHeight: size * 1.18, letterSpacing: 0.24, color: tone.ink, maxWidth: 330, alignSelf: 'center' }, style]}>
+    <AppText center style={[sans('500'), { fontSize: size, lineHeight: size * 1.32, letterSpacing: 0.1, color: tone.ink, maxWidth: 305, alignSelf: 'center' }, style]}>
       {children}
     </AppText>
   );
@@ -154,7 +339,7 @@ export function O3H({ children, size = 29, style }: { children: ReactNode; size?
 export function O3Sub({ children, style }: { children: ReactNode; style?: object }) {
   const tone = useTone();
   return (
-    <AppText center style={[sans('400'), { fontSize: 14, lineHeight: 22, color: tone.ink2, maxWidth: 306, alignSelf: 'center', marginTop: 14 }, style]}>
+    <AppText center style={[sans('400'), { fontSize: 15, lineHeight: 23, color: tone.ink2, maxWidth: 315, alignSelf: 'center', marginTop: 12 }, style]}>
       {children}
     </AppText>
   );
@@ -175,144 +360,356 @@ export function O3Note({ children, style }: { children: ReactNode; style?: objec
     </AppText>
   );
 }
-export function O3CTA({ label, onClick, enabled = true, ghost = false, style }: { label: string; onClick?: () => void; enabled?: boolean; ghost?: boolean; style?: object }) {
+export function O3CTA({
+  label,
+  onClick,
+  enabled = true,
+  ghost = false,
+  size = 'lg',
+  style,
+}: {
+  label: string;
+  onClick?: () => void;
+  enabled?: boolean;
+  ghost?: boolean;
+  /** `md` is the questionnaire's 56pt pill, `lg` the 58pt one the last cards use. */
+  size?: 'md' | 'lg';
+  style?: object;
+}) {
   const tone = useTone();
   if (ghost) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Pressable onPress={onClick} style={{ paddingHorizontal: 20, paddingVertical: 14 }}>
+        <PressScale onPress={onClick} style={{ paddingHorizontal: 20, paddingVertical: 14 }}>
           <AppText style={[sans('500'), { fontSize: 14, color: tone.ink2 }, style as object]}>{label}</AppText>
-        </Pressable>
+        </PressScale>
       </View>
     );
   }
+  const md = size === 'md';
   return (
-    <View style={{ alignItems: 'center' }}>
-      <Pressable
-        onPress={enabled ? onClick : undefined}
-        disabled={!enabled}
-        style={{ backgroundColor: tone.fill, borderRadius: 9999, paddingVertical: 16, paddingHorizontal: 34, minWidth: 232, alignItems: 'center', opacity: enabled ? 1 : 0.26, ...(style as object) }}>
-        <AppText style={[sans('600'), { fontSize: 15, letterSpacing: 0.3, color: tone.onFill }]}>{label}</AppText>
-      </Pressable>
+    <PressScale
+      onPress={enabled ? onClick : undefined}
+      disabled={!enabled}
+      accessibilityRole="button"
+      style={{
+        height: md ? 56 : 58,
+        backgroundColor: tone.fill,
+        borderRadius: md ? 28 : 29,
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: enabled ? 1 : 0.26,
+        ...(style as object),
+      }}>
+      <AppText style={[sans('600'), { fontSize: md ? 16.5 : 17, letterSpacing: md ? 0 : 0.2, color: tone.onFill }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+/**
+ * The 56pt pale pill — the section intros and every multi-select — sits at
+ * y 744 on the 852 frame, so 52 up from the bottom. (The 58pt one the typed
+ * and single-answer frames use sits at the same 744 and lands on 50.)
+ */
+export const O3_MD_CTA_BOTTOM = 852 - 744 - 56;
+
+/**
+ * The dark pill the paper tail ends on. Height, radius and tracking are the
+ * frame's own — 097–105 draw 58/29, 096 draws 56/28, 108 draws 54/27, and
+ * 106 · 107 widen the tracking to 0.3.
+ */
+function O3PaperCTA({ label, onPress, y, h = 58, ls = 0.2, enabled = true }: { label: string; onPress: () => void; /** The pill's canvas top. */ y: number; h?: 54 | 56 | 58; ls?: number; enabled?: boolean }) {
+  return (
+    <PressScale
+      onPress={enabled ? onPress : undefined}
+      disabled={!enabled}
+      accessibilityRole="button"
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        bottom: 852 - y - h,
+        height: h,
+        minHeight: 0,
+        borderRadius: h / 2,
+        backgroundColor: '#131313',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: enabled ? 1 : 0.26,
+      }}>
+      <AppText style={[sans('600'), { fontSize: 17, letterSpacing: ls, color: '#FFFFFF' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+/**
+ * The quiet way out under that pill — one grey line, centred on the frame.
+ * Anchored from the bottom like the pill above it, so the gap between the two
+ * holds on a taller screen; 18 is the natural line box of a 15pt system line,
+ * which is the height the canvas measures for its div.
+ */
+function O3PaperLink({ label, onPress, y }: { label: string; onPress: () => void; /** The line's canvas top. */ y: number }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      hitSlop={{ top: 14, bottom: 14, left: 24, right: 24 }}
+      style={{ position: 'absolute', left: 0, right: 0, bottom: 852 - y - 18, minHeight: 0, alignItems: 'center' }}>
+      <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+/** The 24pt balanced headline 097 · 103 · 104 · 105 share, at its own inset. */
+function O3PaperH({ children, top, inset }: { children: ReactNode; top: number; inset: number }) {
+  return (
+    <AppText center style={[sans('500'), { position: 'absolute', left: inset, right: inset, top, fontSize: 24, lineHeight: 32, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+      {children}
+    </AppText>
+  );
+}
+
+/** The grey line under every projection card: 14/21 at the frame's own inset. */
+function O3PaperCaption({ children, top, inset = 44, style }: { children: ReactNode; top: number; inset?: number; style?: object }) {
+  return (
+    <AppText center style={[sans('400'), { position: 'absolute', left: inset, right: inset, top, fontSize: 14, lineHeight: 21, color: '#55534E' }, style]}>
+      {children}
+    </AppText>
+  );
+}
+
+/** 098–101 all open the same way: an eyebrow, a big numeral, and its unit. */
+function O3PaperTally({ eyebrow, value, unit }: { eyebrow: string; value: number; unit: string }) {
+  const shown = useCountUp(value);
+  return (
+    <>
+      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 98, fontSize: 12.5, color: '#8B8882' }]}>{eyebrow}</AppText>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 136, alignItems: 'center' }}>
+        <AppText style={[sans('600'), { fontSize: 56, lineHeight: 56, letterSpacing: -1.5, color: '#1D1C1A', fontVariant: ['tabular-nums'] }]}>
+          {shown.toLocaleString('en-US')}
+        </AppText>
+        <AppText style={[sans('600'), { marginTop: 10, fontSize: 12.5, color: '#8B8882' }]}>{unit}</AppText>
+      </View>
+    </>
+  );
+}
+
+/** The white projection card, at the frame's stated top and height. */
+function O3PaperCard({ top, height, gap, children }: { top: number; height: number; gap?: number; children: ReactNode }) {
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
+        height,
+        borderRadius: 20,
+        borderCurve: 'continuous',
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+        paddingHorizontal: 18,
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap,
+      }}>
+      {children}
     </View>
   );
 }
 
-// ── the chip — multi-select ring+dot, single-select ink bleed ────────
-export function O3Chip({ label, on, picked = false, onClick }: { label: string; on: boolean; picked?: boolean; onClick: () => void }) {
-  const tone = useTone();
+/** The 11.5pt note some of those cards close with. */
+function O3CardNote({ children }: { children: ReactNode }) {
+  return <AppText style={[sans('500'), { fontSize: 11.5, color: '#B0AEA8' }]}>{children}</AppText>;
+}
+
+/** The 16×12 tick the answer rows flood with. */
+function O3Tick({ c }: { c: string }) {
   return (
-    <Pressable
-      onPress={onClick}
-      style={{
-        overflow: 'hidden',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 9,
-        paddingVertical: 17,
-        paddingHorizontal: 26,
-        borderRadius: 9999,
-        minHeight: 55,
-        backgroundColor: picked ? tone.fill : tone.card,
-        borderWidth: on && !picked ? 1.6 : 0,
-        borderColor: tone.ink,
-      }}>
-      {on && !picked ? <View style={{ width: 7, height: 7, borderRadius: 9999, backgroundColor: tone.ink }} /> : null}
-      <AppText style={[sans('500'), { fontSize: 15, lineHeight: 19, color: picked ? tone.onFill : tone.ink, textAlign: 'center' }]}>{label}</AppText>
-    </Pressable>
+    <Svg width={16} height={12} viewBox="0 0 16 12" fill="none">
+      <Path d="M1.5 6l4.4 4.5L14.5 1.5" stroke={c} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
   );
 }
 
-// ── option glyphs (canvas: O3_ICON) — small monotone strokes for the
-// icon-grid questions; unknown labels fall back to a quiet dot ──
-function O3Icon({ label, c }: { label: string; c: string }) {
-  const P = ({ d, w = 1.8 }: { d: string; w?: number }) => (
-    <Path d={d} stroke={c} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+// ── the chip — one answer row, 60 tall, flooding ink when chosen ─────
+export function O3Chip({ label, on, picked = false, onClick }: { label: string; on: boolean; picked?: boolean; onClick: () => void }) {
+  const tone = useTone();
+  const chosen = on || picked;
+  return (
+    <PressScale
+      onPress={onClick}
+      accessibilityRole="button"
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+        paddingHorizontal: 22,
+        borderRadius: 16,
+        height: 60,
+        backgroundColor: chosen ? tone.fill : tone.card,
+        boxShadow: chosen ? undefined : `0 0 0 1px ${tone.soft2}`,
+      }}>
+      <AppText style={[sans('500'), { flex: 1, fontSize: 17, lineHeight: 20, color: chosen ? tone.onFill : tone.ink }]}>{label}</AppText>
+      {chosen ? <O3Tick c={tone.onFill} /> : null}
+    </PressScale>
   );
-  const wrap = (kids: React.ReactNode) => (
-    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
+}
+
+// ── option glyphs — the tile strokes from the canvas, path for path.
+// Several tiles reuse one glyph across questions (the bed is both "Can’t
+// sleep" and "Bedroom"), which is why the cases fall through ──
+function O3Icon({ label, c }: { label: string; c: string }) {
+  const box = (kids: ReactNode, vb = '0 0 24 24') => (
+    <Svg width={22} height={22} viewBox={vb} fill="none">
       {kids}
     </Svg>
   );
   switch (label) {
-    // when it happens
-    case 'Late at night':
-      return wrap(<P d="M19.5 14.5A8.3 8.3 0 0 1 9.6 4.3a8.3 8.3 0 1 0 9.9 10.2z" />);
-    case 'First thing in the morning':
-      return wrap(<><P d="M6.5 15.5a5.5 5.5 0 0 1 11 0" /><P d="M12 6.2V3.8M5.4 9.1 3.7 7.4M18.6 9.1l1.7-1.7M3 15.5h18" /></>);
-    case 'Bored during the day':
-      return wrap(<><Circle cx={12} cy={12} r={8.4} stroke={c} strokeWidth={1.8} /><P d="M12 7.4V12l3.2 3.2" /></>);
-    case 'After stress or a hard day':
-      return wrap(<P d="M13.5 3.5 6 13h5l-1.5 7.5L17 11h-5z" />);
-    case 'When I can’t sleep':
-      return wrap(<><P d="M3.5 12c2.2-3.4 5.2-5.1 8.5-5.1s6.3 1.7 8.5 5.1c-2.2 3.4-5.2 5.1-8.5 5.1S5.7 15.4 3.5 12z" /><Circle cx={12} cy={12} r={2.4} stroke={c} strokeWidth={1.8} /></>);
-    case 'Weekends or days off':
-      return wrap(<><Rect x={4} y={5.5} width={16} height={15} rx={2.4} stroke={c} strokeWidth={1.8} /><P d="M8 3.5v3.4M16 3.5v3.4M4 10h16" /><Circle cx={15.4} cy={15} r={1.4} stroke={c} strokeWidth={1.8} /></>);
-    case 'When I’ve been drinking':
-      return wrap(<><P d="M7 3.8h10l-1.3 9.2a3.7 3.7 0 0 1-7.4 0z" /><P d="M12 13.5v6.7M8.8 20.2h6.4M7.6 7.6h8.8" /></>);
-    case 'Home alone for long stretches':
-      return wrap(<><P d="M4.5 11 12 4.5 19.5 11" /><P d="M6.3 9.6V19a1 1 0 0 0 1 1h9.4a1 1 0 0 0 1-1V9.6" /></>);
-    case 'On my phone in bed':
-      return wrap(<><Rect x={8} y={3.5} width={8} height={14} rx={2} stroke={c} strokeWidth={1.8} /><P d="M11 15.2h2M4 20.5h16" /></>);
-    // the feeling underneath
-    case 'Loneliness':
-      return wrap(<><Circle cx={12} cy={8.6} r={3.6} stroke={c} strokeWidth={1.8} /><P d="M5.5 20a6.5 6.5 0 0 1 13 0" /></>);
-    case 'Anxiety or stress':
-      return wrap(<P d="M3.5 12h3l2-5 3 10 2.5-7.5 1.5 2.5h5" />);
+    case 'Late night':
+      return box(<Path d="M17 4 A10.5 10.5 0 1 0 25 20 A8.2 8.2 0 1 1 17 4 Z" fill={c} />, '0 0 30 30');
+    case 'Early morning':
+      return box(
+        <>
+          <Path d="M7 15a5 5 0 0 1 10 0" fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M3 18h18M12 4v3M5 7l2 2M19 7l-2 2" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Bored daytime':
     case 'Boredom':
-      return wrap(<><Circle cx={12} cy={12} r={8.4} stroke={c} strokeWidth={1.8} /><P d="M8.5 15h7M9 9.6h.01M15 9.6h.01" /></>);
-    case 'Sadness or low mood':
-      return wrap(<P d="M12 3.8c3.4 4.2 5.6 7.2 5.6 10a5.6 5.6 0 1 1-11.2 0c0-2.8 2.2-5.8 5.6-10z" />);
-    case 'Anger or frustration':
-      return wrap(<P d="M6 6l12 12M18 6 6 18" />);
-    case 'Numbness, feeling nothing':
-      return wrap(<Circle cx={12} cy={12} r={8} stroke={c} strokeWidth={1.8} strokeDasharray="3.4 4.4" />);
-    case 'Mostly automatic, just habit':
-      return wrap(<><P d="M17.5 8.5A6.5 6.5 0 1 0 18.5 12" /><P d="M18.8 4.6v4h-4" /></>);
-    case 'Genuine desire or arousal':
-      return wrap(<P d="M12 4c1 3-1.8 4.6-1.8 7a4.4 4.4 0 0 0 3 4.2c-.3-1.6.4-2.6 1.4-3.4.5 1.7 2.4 2.6 2.4 5A5.2 5.2 0 0 1 6.6 17c0-4.6 4.6-6.4 5.4-13z" />);
-    // where it happens
+      return box(
+        <>
+          <Circle cx={12} cy={12} r={8.5} fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M12 7.5V12l3 2" stroke={c} strokeWidth={2.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </>,
+      );
+    case 'After stress':
+    case 'Anxiety':
+      return box(<Path d="M3 16l5-6 4 4 6-8" fill="none" stroke={c} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />);
+    case 'Can’t sleep':
     case 'Bedroom':
-      return wrap(<><P d="M3.5 18.5v-8M3.5 14h17v4.5" /><P d="M3.5 14V8.5h6.5c2.4 0 3.8 1.3 3.8 3.3V14" /><Circle cx={7} cy={11} r={1.2} stroke={c} strokeWidth={1.8} /></>);
+      return box(
+        <>
+          <Path d="M3 7v10M3 14h18v3M3 11h18v3" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+          <Rect x={5} y={8.5} width={6} height={3} rx={1.5} fill={c} />
+        </>,
+      );
+    case 'Weekends':
+      return box(
+        <>
+          <Rect x={3.5} y={5} width={17} height={15} rx={3} fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M8 3v4M16 3v4M3.5 10h17" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Drinking':
+      return box(
+        <>
+          <Path d="M7 3h10l-1.2 13a3.8 3.8 0 0 1-7.6 0Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
+          <Path d="M9 21h6M12 17v4" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Home alone':
+      return box(
+        <>
+          <Path d="M4 11l8-7 8 7" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+          <Path d="M6 10v10h12V10" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
+        </>,
+      );
+    case 'Phone in bed':
+    case 'My phone':
+      return box(
+        <>
+          <Rect x={7} y={3} width={10} height={18} rx={2.5} fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M10.5 18h3" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Loneliness':
+      return box(
+        <>
+          <Circle cx={12} cy={8} r={3.6} fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M5 20a7 7 0 0 1 14 0" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Low mood':
     case 'Bathroom':
-      return wrap(<><P d="M5.5 12.5h13a6.5 4.8 0 0 1-13 0z" /><P d="M6.5 12.5V6a2.1 2.1 0 0 1 4.2 0M8 19.5l-.8 1.4M16 19.5l.8 1.4" /></>);
-    case 'Home office or desk':
-      return wrap(<><Rect x={4} y={5} width={16} height={10.5} rx={1.8} stroke={c} strokeWidth={1.8} /><P d="M9.5 19.5h5M12 15.5v4" /></>);
+      return box(<Path d="M12 3.5c3.5 4.2 6 7.2 6 10.2a6 6 0 1 1-12 0c0-3 2.5-6 6-10.2Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />);
+    case 'Anger':
+      return box(
+        <Path
+          d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"
+          stroke={c}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+        />,
+      );
+    case 'Numbness':
+      return box(<Circle cx={12} cy={12} r={7.5} fill="none" stroke={c} strokeWidth={2.5} strokeDasharray="3.5 4" />);
+    case 'Habit':
+      return box(
+        <>
+          <Path d="M18.5 12a6.5 6.5 0 1 1-2-4.7" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+          <Path d="M16 3.5l1 3.5-3.5 1" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+        </>,
+      );
+    case 'Desire':
+      return box(
+        <Path
+          d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.6 2.2-5.2.6 1 1.4 1.7 2.3 2C11 7.5 11.4 5 12 3Z"
+          fill="none"
+          stroke={c}
+          strokeWidth={2.5}
+          strokeLinejoin="round"
+        />,
+      );
+    case 'Desk':
+      return box(
+        <>
+          <Rect x={3.5} y={4.5} width={17} height={11.5} rx={2} fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M9 20h6M12 16.5V20" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
     case 'Living room':
-      return wrap(<><P d="M5 11V9a2.4 2.4 0 0 1 2.4-2.4h9.2A2.4 2.4 0 0 1 19 9v2" /><P d="M3.8 13.4a1.9 1.9 0 0 1 3.8 0v.7h8.8v-.7a1.9 1.9 0 1 1 3.8 0v3.2a1.5 1.5 0 0 1-1.5 1.5H5.3a1.5 1.5 0 0 1-1.5-1.5z" /></>);
-    case 'On my phone, anywhere':
-      return wrap(<><Rect x={7.5} y={3.5} width={9} height={17} rx={2.2} stroke={c} strokeWidth={1.8} /><P d="M11 17.6h2" /></>);
-    case 'Away from home':
-      return wrap(<><P d="M12 21s-6.4-5.3-6.4-10a6.4 6.4 0 1 1 12.8 0c0 4.7-6.4 10-6.4 10z" /><Circle cx={12} cy={10.8} r={2.3} stroke={c} strokeWidth={1.8} /></>);
-    // what you've tried
-    case 'Blockers or filters':
-      return wrap(<P d="M11.4 3.3 5.2 5.8a1.4 1.4 0 0 0-.9 1.3v4.1c0 5 3.2 8.5 7.7 10.4 4.5-1.9 7.7-5.4 7.7-10.4V7.1a1.4 1.4 0 0 0-.9-1.3l-6.2-2.5a1.6 1.6 0 0 0-1.2 0z" />);
-    case 'Going cold turkey':
-      return wrap(<P w={1.5} d="M12 3.5v17M12 3.5 9.4 6.1M12 3.5l2.6 2.6M12 20.5l-2.6-2.6M12 20.5l2.6-2.6M4.6 7.75l14.8 8.5M4.6 7.75 8.1 8.7M4.6 7.75l.95-3.5M19.4 16.25l-3.5-.95M19.4 16.25l-.95 3.5M19.4 7.75 4.6 16.25M19.4 7.75 15.9 8.7M19.4 7.75l-.95-3.5M4.6 16.25l3.5-.95M4.6 16.25l.95 3.5" />);
-    case 'An accountability partner':
-      return wrap(<><Circle cx={8.6} cy={9} r={3} stroke={c} strokeWidth={1.8} /><P d="M3.4 19.5a5.2 5.2 0 0 1 10.4 0" /><P d="M15.5 6.6a3 3 0 0 1 0 4.9M17.3 19.5a5.2 5.2 0 0 0-3-4.7" /></>);
-    case 'Deleting accounts or apps':
-      return wrap(<><P d="M9.5 3.8h5a.9.9 0 0 1 .9.9V6h3.8v1.9H4.8V6h3.8V4.7a.9.9 0 0 1 .9-.9z" /><P d="M6.2 7.9l.9 11.3a1.4 1.4 0 0 0 1.4 1.3h7a1.4 1.4 0 0 0 1.4-1.3l.9-11.3" /></>);
-    case 'Therapy or counselling':
-      return wrap(<P d="M12 4c4.8 0 8.5 3 8.5 7s-3.7 7-8.5 7c-.8 0-1.6-.1-2.3-.3L5 20l1.3-3.6C4.6 15.1 3.5 13.2 3.5 11c0-4 3.7-7 8.5-7z" />);
-    case 'Replacing it with other habits':
-      return wrap(<><P d="M4 8.5h13M13.5 4.5l4 4-4 4" /><P d="M20 15.5H7M10.5 19.5l-4-4 4-4" /></>);
-    case 'Nothing structured yet':
-      return wrap(<Rect x={4.5} y={4.5} width={15} height={15} rx={3} stroke={c} strokeWidth={1.8} strokeDasharray="3.4 4" />);
+      return box(
+        <>
+          <Path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3" fill="none" stroke={c} strokeWidth={2.5} />
+          <Path d="M3.5 13a2 2 0 0 1 4 0v1h9v-1a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
+          <Path d="M6 18v2M18 18v2" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
+        </>,
+      );
+    case 'Away':
+      return box(
+        <>
+          <Path d="M12 21s-6.5-5.3-6.5-10a6.5 6.5 0 0 1 13 0c0 4.7-6.5 10-6.5 10Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
+          <Circle cx={12} cy={10.6} r={2.2} fill={c} />
+        </>,
+      );
     default:
-      return wrap(<Circle cx={12} cy={12} r={3.2} fill={c} />);
+      return box(<Circle cx={12} cy={12} r={3.2} fill={c} />);
   }
 }
 
-// ── a generic question screen — grammar varies by kind ───────────────
+/** One answer row. `fs` carries the canvas's own drop to 15.5 on the long ones. */
+export type O3Opt = { label: string; fs?: number };
+export type O3Kind = 'list' | 'grid' | 'check' | 'text' | 'number';
+
+const INK = '#F4F3F0';
+const ON_INK = '#131313';
+
+/**
+ * The question engine — one shell across thirty-three frames.
+ *
+ * Everything is placed off the 393 × 852 canvas frame: title at y 158, the
+ * "select all" line at 226, answer rows from 310 in 74pt steps, the pill at
+ * 764. Absolute, because the frame holds the rows at a fixed y whether the
+ * question wraps to one line or three.
+ */
 export function O3Question({
   title,
-  sub,
   options,
   value,
   multi = false,
-  kind,
+  kind = 'list',
   onSet,
   next,
   note,
@@ -320,167 +717,278 @@ export function O3Question({
   skip,
 }: {
   title: string;
-  sub?: string;
-  options: string[];
+  options: O3Opt[];
   value: string | string[] | undefined;
   multi?: boolean;
-  kind?: 'grid' | 'scale' | 'wrap';
+  kind?: O3Kind;
   onSet: (v: string | string[]) => void;
   next: () => void;
-  reflect?: (v: string | string[]) => string | null;
   note?: string;
   ctaLabel?: string;
   skip?: boolean;
 }) {
-  const tone = useTone();
   const [picked, setPicked] = useState<string | null>(null);
+  const qi = O3_QUESTIONS.findIndex(([, q]) => q.title === title);
+  useO3Field(qi >= 0 ? O3_Q_FIELD[qi] : null);
 
+  const typed = kind === 'text' || kind === 'number';
+  // The canvas draws a button only where a tap cannot settle the answer by
+  // itself: the multi-selects, the two typed fields, and the optional last one.
+  const hasCta = multi || typed || !!skip;
+  const chosen = multi ? (value as string[]) || [] : [];
+
+  // A buttonless frame turns itself over — one beat, so the ink flood reads
+  // as the answer before the next question arrives.
+  useEffect(() => {
+    if (!picked || hasCta) return;
+    const id = setTimeout(next, 260);
+    return () => clearTimeout(id);
+  }, [picked, hasCta, next]);
+
+  const isOn = (label: string) => (multi ? chosen.includes(label) : value === label || picked === label);
   const pick = (label: string) => {
     if (multi) {
-      const cur = (value as string[]) || [];
-      onSet(cur.includes(label) ? cur.filter((x) => x !== label) : [...cur, label]);
+      onSet(chosen.includes(label) ? chosen.filter((x) => x !== label) : [...chosen, label]);
       return;
     }
-    if (picked) return;
     onSet(label);
     setPicked(label);
-    setTimeout(next, 500);
   };
 
-  const isOn = (label: string) => (multi ? ((value as string[]) || []).includes(label) : value === label);
-  const count = multi ? ((value as string[]) || []).length : 0;
-
-  let body: ReactNode;
+  let body: ReactNode = null;
   if (kind === 'grid') {
-    // icon grid — 2-col cells: a 42px glyph chip that floods ink on select
-    body = (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11 }}>
-        {options.map((label) => {
-          const on = isOn(label) || picked === label;
+    const rows: O3Opt[][] = [];
+    for (let i = 0; i < options.length; i += 3) rows.push(options.slice(i, i + 3));
+    // three rows of tiles start at y 278, two rows at 298
+    const top = (rows.length >= 3 ? 278 : 298) - 54;
+    body = rows.map((row, r) => (
+      <View key={r} style={{ position: 'absolute', left: 24, right: 24, top: top + 102 * r, flexDirection: 'row', gap: 10 }}>
+        {row.map((opt) => {
+          const on = isOn(opt.label);
           return (
-            <Pressable
-              key={label}
-              onPress={() => pick(label)}
+            <PressScale
+              key={opt.label}
+              onPress={() => pick(opt.label)}
+              accessibilityRole="button"
               style={{
-                width: '48%',
-                flexGrow: 1,
-                alignItems: 'center',
-                gap: 9,
-                paddingTop: 15,
-                paddingBottom: 12,
-                paddingHorizontal: 10,
-                borderRadius: 18,
-                backgroundColor: tone.card,
-                borderWidth: 1.6,
-                borderColor: on ? tone.ink : 'transparent',
-              }}>
-              <View
-                style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: 9999,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: on ? tone.fill : tone.soft2,
-                }}>
-                <O3Icon label={label} c={on ? tone.onFill : tone.ink} />
-              </View>
-              <View style={{ minHeight: 30, justifyContent: 'center' }}>
-                <AppText center style={[sans(on ? '600' : '500'), { fontSize: 12.5, lineHeight: 15.6, color: tone.ink }]}>{label}</AppText>
-              </View>
-            </Pressable>
-          );
-        })}
-      </View>
-    );
-  } else if (kind === 'scale') {
-    // scale — each row a level, segment marks fill with it
-    body = (
-      <View style={{ gap: 10 }}>
-        {options.map((label, i) => {
-          const on = isOn(label) || picked === label;
-          return (
-            <Pressable
-              key={label}
-              onPress={() => pick(label)}
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 14,
-                minHeight: 54,
-                paddingVertical: 15,
-                paddingHorizontal: 18,
+                flex: 1,
+                height: 94,
                 borderRadius: 16,
-                backgroundColor: tone.card,
-                borderWidth: 1.6,
-                borderColor: on ? tone.ink : 'transparent',
-              }}>
-              <View style={{ flexDirection: 'row', gap: 3 }}>
-                {options.map((_, j) => (
-                  <View key={j} style={{ width: 4.5, height: 15, borderRadius: 2.5, backgroundColor: j <= i ? tone.ink : tone.soft2 }} />
-                ))}
-              </View>
-              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 14.5, lineHeight: 19, color: tone.ink }]}>{label}</AppText>
-            </Pressable>
-          );
-        })}
-      </View>
-    );
-  } else if (kind === 'wrap') {
-    // wrap — centered pills, a hairline ink ring when chosen
-    body = (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
-        {options.map((label) => {
-          const on = isOn(label) || picked === label;
-          return (
-            <Pressable
-              key={label}
-              onPress={() => pick(label)}
-              style={{
-                flexDirection: 'row',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: 8,
-                paddingHorizontal: 21,
-                paddingVertical: 14,
-                borderRadius: 9999,
-                backgroundColor: picked === label ? tone.fill : tone.card,
-                borderWidth: 1.6,
-                borderColor: on && picked !== label ? tone.ink : 'transparent',
+                paddingHorizontal: 4,
+                backgroundColor: on ? INK : 'rgba(255,255,255,0.07)',
+                boxShadow: on ? undefined : '0 0 0 1px rgba(255,255,255,0.2)',
               }}>
-              <AppText style={[sans(on ? '600' : '500'), { fontSize: 14.5, color: picked === label ? tone.onFill : tone.ink }]}>{label}</AppText>
-            </Pressable>
+              {on ? (
+                <View style={{ position: 'absolute', right: 8, top: 8, width: 15, height: 15, borderRadius: 7.5, backgroundColor: ON_INK, alignItems: 'center', justifyContent: 'center' }}>
+                  <Svg width={8} height={6} viewBox="0 0 16 12" fill="none">
+                    <Path d="M1.5 6l4.4 4.5L14.5 1.5" stroke={INK} strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" />
+                  </Svg>
+                </View>
+              ) : null}
+              <O3Icon label={opt.label} c={on ? ON_INK : INK} />
+              <AppText center style={[sans('500'), { fontSize: 12, lineHeight: 15, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
+            </PressScale>
           );
         })}
+        {row.length < 3 ? Array.from({ length: 3 - row.length }, (_, k) => <View key={`gap${k}`} style={{ flex: 1 }} />) : null}
+      </View>
+    ));
+  } else if (kind === 'check') {
+    // the seven-row list pulls in to 52pt rows on a 62 pitch; the five-row one
+    // stays at 56 on a 70 pitch
+    const tight = options.length > 5;
+    const top = (tight ? 288 : 306) - 54;
+    body = options.map((opt, i) => {
+      const on = isOn(opt.label);
+      return (
+        <PressScale
+          key={opt.label}
+          onPress={() => pick(opt.label)}
+          accessibilityRole="checkbox"
+          accessibilityState={{ checked: on }}
+          style={{
+            position: 'absolute',
+            left: 24,
+            right: 24,
+            top: top + (tight ? 62 : 70) * i,
+            height: tight ? 52 : 56,
+            borderRadius: 15,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 14,
+            paddingHorizontal: 18,
+            backgroundColor: on ? 'rgba(255,255,255,0.13)' : 'rgba(255,255,255,0.06)',
+            boxShadow: on ? '0 0 0 1px rgba(255,255,255,0.45)' : '0 0 0 1px rgba(255,255,255,0.18)',
+          }}>
+          <View
+            style={{
+              width: 22,
+              height: 22,
+              borderRadius: 7,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: on ? INK : undefined,
+              boxShadow: on ? undefined : 'inset 0 0 0 1.5px rgba(244,243,240,0.4)',
+            }}>
+            {on ? (
+              <Svg width={12} height={9} viewBox="0 0 16 12" fill="none">
+                <Path d="M1.5 6l4.4 4.5L14.5 1.5" stroke={ON_INK} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
+              </Svg>
+            ) : null}
+          </View>
+          <AppText style={[sans('500'), { flex: 1, fontSize: 15.5, lineHeight: 19, color: INK }]}>{opt.label}</AppText>
+        </PressScale>
+      );
+    });
+  } else if (typed) {
+    const num = kind === 'number';
+    const text = String(value || '');
+    body = (
+      <View
+        style={{
+          position: 'absolute',
+          left: 24,
+          right: 24,
+          top: 256,
+          height: 60,
+          borderRadius: 16,
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 22,
+          backgroundColor: 'rgba(255,255,255,0.07)',
+          boxShadow: '0 0 0 1px rgba(255,255,255,0.22)',
+        }}>
+        {/* 082 draws the caret as a 2×22 bar ahead of the placeholder — the
+            frame's stand-in for the real one, which HTML cannot show in a div.
+            Keep it (and hide the system caret behind it) while the field is
+            empty, so "Your name" starts at the canvas's x 51 rather than 46;
+            once there is a value the native caret takes over and follows the
+            text, which is what 083 draws. 083 puts its bar after the value, so
+            the number field needs neither the bar nor the lead. */}
+        {!num ? (
+          <View style={{ position: 'absolute', left: 22, top: 19, width: 2, height: 22, borderRadius: 1, backgroundColor: INK, opacity: text ? 0 : 1 }} />
+        ) : null}
+        <TextInput
+          value={text}
+          onChangeText={onSet}
+          placeholder={num ? '' : 'Your name'}
+          placeholderTextColor="rgba(244,243,240,0.45)"
+          keyboardType={num ? 'number-pad' : 'default'}
+          autoCapitalize={num ? 'none' : 'words'}
+          maxLength={num ? 3 : 40}
+          selectionColor={INK}
+          caretHidden={!num && !text}
+          // the canvas's 2pt bar plus its 3pt gap, so the text sits at x 51
+          style={[
+            sans(num ? '500' : '400'),
+            { flex: 1, height: 60, fontSize: 17, color: INK, marginLeft: num ? 0 : 5 },
+            num ? { fontVariant: ['tabular-nums'] as const } : null,
+          ]}
+        />
       </View>
     );
   } else {
-    body = (
-      <View style={{ gap: 12 }}>
-        {options.map((label) => (
-          <O3Chip key={label} label={label} on={isOn(label)} picked={!multi && picked === label} onClick={() => pick(label)} />
-        ))}
-      </View>
-    );
+    body = options.map((opt, i) => {
+      const on = isOn(opt.label);
+      return (
+        <PressScale
+          key={opt.label}
+          onPress={() => pick(opt.label)}
+          accessibilityRole="button"
+          accessibilityState={{ selected: on }}
+          style={{
+            position: 'absolute',
+            left: 24,
+            right: 24,
+            top: 256 + 74 * i,
+            height: 60,
+            borderRadius: 16,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 12,
+            paddingHorizontal: 22,
+            backgroundColor: on ? INK : 'rgba(255,255,255,0.07)',
+            boxShadow: on ? undefined : '0 0 0 1px rgba(255,255,255,0.22)',
+          }}>
+          <AppText style={[sans('500'), { flex: 1, fontSize: opt.fs ?? 17, lineHeight: 20, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
+          {on ? <O3Tick c={ON_INK} /> : null}
+        </PressScale>
+      );
+    });
   }
 
   return (
     <>
-      <View style={{ height: 26 }} />
-      <O3H>{title}</O3H>
-      {sub ? <O3Sub>{sub}</O3Sub> : null}
-      <ScrollView style={{ flex: 1, marginTop: 30 }} contentContainerStyle={{ flexGrow: 1, justifyContent: options.length <= 5 && kind !== 'grid' ? 'center' : 'flex-start', paddingBottom: 4 }} showsVerticalScrollIndicator={false}>
-        {body}
-      </ScrollView>
-      <View style={{ paddingTop: 14, minHeight: multi ? 0 : 44, justifyContent: 'flex-end' }}>
-        {note ? <O3Note style={{ marginBottom: multi ? 13 : 6 }}>{note}</O3Note> : null}
-        {multi ? <O3CTA label={ctaLabel || 'Continue'} enabled={count > 0} onClick={next} /> : null}
-        {skip && !picked ? <O3CTA ghost label="Skip" onClick={next} /> : null}
-      </View>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 104, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: INK }]}>
+        {title}
+      </AppText>
+      {multi ? (
+        <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 172, fontSize: 13, color: 'rgba(244,243,240,0.55)' }]}>
+          Select all that apply
+        </AppText>
+      ) : null}
+      {body}
+      {note ? (
+        <AppText
+          center
+          style={[
+            sans('400'),
+            { position: 'absolute', left: 44, right: 44 },
+            kind === 'number'
+              ? { top: 340, fontSize: 13.5, lineHeight: 20, color: 'rgba(244,243,240,0.6)' }
+              : { top: 634, fontSize: 12.5, color: 'rgba(244,243,240,0.55)' },
+          ]}>
+          {note}
+        </AppText>
+      ) : null}
+      {hasCta ? (
+        <O3CTA
+          size={multi ? 'md' : 'lg'}
+          label={ctaLabel ?? (multi ? `Continue · ${chosen.length}` : 'Continue')}
+          enabled={multi ? chosen.length > 0 : true}
+          onClick={next}
+          style={{ position: 'absolute', left: 24, right: 24, bottom: multi ? O3_MD_CTA_BOTTOM : 50 }}
+        />
+      ) : null}
     </>
   );
 }
 
 // ════════ steps ══════════════════════════════════════════════════════
+export function O3PushIntro({ next }: { next: () => void }) {
+  const tone = useTone();
+  return (
+    <>
+      <View style={{ flex: 1, alignItems: 'center' }}>
+        <O3H style={{ marginTop: 24 }}>Push Notifications</O3H>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ width: 84, height: 168, borderRadius: 14, backgroundColor: tone.card, boxShadow: `0 0 0 1px ${tone.line}, 0 8px 22px rgba(40,38,32,0.12)` }}>
+            <View style={{ position: 'absolute', left: 6, right: 6, top: 15, height: 128, borderRadius: 4, backgroundColor: tone.soft2, alignItems: 'center', justifyContent: 'center' }}>
+              <Svg width={32} height={32} viewBox="0 0 24 24" fill="none">
+                <Path d="M12 3.5a5.8 5.8 0 0 1 5.8 5.8v3.5l1.7 2.5a1 1 0 0 1-.8 1.6H5.3a1 1 0 0 1-.8-1.6l1.7-2.5V9.3A5.8 5.8 0 0 1 12 3.5z" stroke={tone.ink} strokeWidth={1.7} strokeLinejoin="round" />
+                <Path d="M9.8 19a2.2 2.2 0 0 0 4.4 0" stroke={tone.ink} strokeWidth={1.7} />
+              </Svg>
+            </View>
+            <View style={{ position: 'absolute', left: 34, bottom: 5, width: 16, height: 16, borderRadius: 8, borderWidth: 1.5, borderColor: tone.ink3 }} />
+          </View>
+          <View style={{ position: 'absolute', left: 34, bottom: 122, width: 62, height: 54, borderRadius: 10, backgroundColor: tone.soft2, alignItems: 'center', justifyContent: 'center' }}>
+            <AppText style={{ fontSize: 24 }}>♡</AppText>
+          </View>
+          <View style={{ position: 'absolute', right: 24, top: 120, width: 64, height: 56, borderRadius: 10, backgroundColor: tone.soft2, alignItems: 'center', justifyContent: 'center' }}>
+            <AppText style={[sans('600'), { fontSize: 18, color: tone.ink }]}>z z</AppText>
+          </View>
+        </View>
+        <O3Sub style={{ marginBottom: 28 }}>No need to do this alone. A gentle nudge helps you check in and learn each day — nothing noisy, nothing shaming.</O3Sub>
+      </View>
+      <O3CTA label="Next" onClick={next} />
+    </>
+  );
+}
+
 export function O3Threshold({ next }: { next: () => void }) {
   const tone = useTone();
   return (
@@ -543,7 +1051,6 @@ export function O3Privacy({ next }: { next: () => void }) {
             </View>
           ))}
         </View>
-        <O3Note style={{ marginTop: 18 }}>The urge tool is free forever.</O3Note>
       </View>
       <O3CTA label="Understood" onClick={next} />
     </>
@@ -575,251 +1082,329 @@ export function O3Door({ value, onSet, next }: { value: string[]; onSet: (v: str
   );
 }
 
-export function O3Name({ value, onSet, next }: { value: string; onSet: (v: string) => void; next: () => void }) {
-  const tone = useTone();
+/**
+ * 062 · 068 · 082 · 086 — the four teaching interstitials.
+ *
+ * Each is one drawn idea on a 310pt stage, a line, a paragraph, and the pager
+ * that says how many are left. The drawings, the fields and the copy all live
+ * in `./art` where they are copied off the frame; this places them.
+ */
+export function O3Interlude({ kind, next }: { kind: OnbLessonKind; next: () => void }) {
+  const l = ONB_LESSONS[kind];
+  // the four lessons jump ahead of the questions on either side of them, so
+  // they carry their own row of the table rather than a neighbour's
+  useO3Field(O3_LESSON_FIELD[kind] ?? null);
   return (
     <>
-      <View style={{ height: 26 }} />
-      <O3H>What should we call you?</O3H>
-      <O3Sub>A first name, or an alias. Whatever feels safe.</O3Sub>
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <TextInput
-          value={value}
-          onChangeText={onSet}
-          placeholder="Your name"
-          placeholderTextColor={tone.ink3}
-          style={{ backgroundColor: tone.card, borderRadius: 9999, paddingVertical: 18, paddingHorizontal: 24, fontFamily: fonts.body, fontSize: 18, color: tone.ink, textAlign: 'center' }}
-        />
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, marginTop: 14 }}>
-          <Svg width={11} height={11} viewBox="0 0 24 24" fill="none">
-            <Rect x={5} y={10.5} width={14} height={9.5} rx={2.5} stroke={tone.ink3} strokeWidth={2} />
-            <Path d="M8.2 10.5V7.8a3.8 3.8 0 017.6 0v2.7" stroke={tone.ink3} strokeWidth={2} />
-          </Svg>
-          <AppText style={[sans('500'), { fontSize: 12, color: tone.ink3 }]}>Stays on this device.</AppText>
-        </View>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 152 }}>
+        <OnbLessonArt kind={kind} />
       </View>
-      <O3CTA label="Continue" enabled={!!(value || '').trim()} onClick={next} />
-      <O3CTA ghost label="Stay unnamed" onClick={next} style={{ fontSize: 13, color: tone.ink3 }} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 476, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: INK }]}>
+        {l.title}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: l.bodyInset, right: l.bodyInset, top: l.bodyTop - 54, fontSize: 15.5, lineHeight: 23, color: 'rgba(244,243,240,0.75)' }]}>
+        {l.body}
+      </AppText>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 658 }}>
+        <OnbPagerDots i={l.step} />
+      </View>
+      <O3CTA label={l.cta} onClick={next} style={{ position: 'absolute', left: 24, right: 24, bottom: 50 }} />
     </>
   );
 }
 
-// the assessment table
-export const O3_QUESTIONS: [string, { title: string; options: string[]; multi?: boolean; kind?: 'grid' | 'scale' | 'wrap'; note?: string; skip?: boolean; ctaLabel?: string }][] = [
+/** Sugar so the table below reads as the canvas rows do. */
+const o = (label: string, fs?: number): O3Opt => (fs ? { label, fs } : { label });
+
+// the assessment table — Q1..Q26, copy and per-row type sizes off the frames
+export const O3_QUESTIONS: [string, { title: string; options: O3Opt[]; multi?: boolean; kind?: O3Kind; note?: string; skip?: boolean; ctaLabel?: string }][] = [
   // Section 1 · Where you're starting
-  ['freq', { kind: 'scale', title: 'How often are you using porn right now?', options: ['Several times a day', 'About once a day', 'A few times a week', 'About once a week', 'A few times a month', 'Less than once a month'] }],
-  ['duration', { kind: 'scale', title: 'How long have you wanted to change this?', options: ['Less than a year', '1–3 years', '4–10 years', 'More than 10 years', 'I can’t remember a time without it'] }],
-  ['control', { title: 'How much control do you feel over it right now?', options: ['I feel powerless over it', 'I resist, but usually give in', 'I win about half the time', 'Mostly in control, but I want to be free of it'] }],
-  ['pattern', { title: 'Which of these sounds most like your pattern?', options: ['A quick habit I barely think about', 'A way I unwind, numb out, or escape', 'Something I binge on for hours', 'Escalating: I look for more, or more extreme', 'It comes in waves: intense, then quiet'] }],
-  // Section 2 · When & why it happens
-  ['triggers', { kind: 'grid', title: 'When are you most likely to slip?', multi: true, options: ['Late at night', 'First thing in the morning', 'Bored during the day', 'After stress or a hard day', 'When I can’t sleep', 'Weekends or days off', 'When I’ve been drinking', 'Home alone for long stretches', 'On my phone in bed'] }],
-  ['emotions', { kind: 'grid', title: 'What feeling is most often underneath it?', multi: true, options: ['Loneliness', 'Anxiety or stress', 'Boredom', 'Sadness or low mood', 'Anger or frustration', 'Numbness, feeling nothing', 'Mostly automatic, just habit', 'Genuine desire or arousal'] }],
-  ['places', { kind: 'grid', title: 'Where does it usually happen?', multi: true, options: ['Bedroom', 'Bathroom', 'Home office or desk', 'Living room', 'On my phone, anywhere', 'Away from home'] }],
+  ['freq', { title: 'How often are you using porn right now?', options: [o('Several times a day'), o('About once a day'), o('A few times a week'), o('About once a week'), o('A few times a month'), o('Less than once a month')] }],
+  ['duration', { title: 'How long has this been something you’ve wanted to change?', options: [o('Less than a year'), o('1 to 3 years'), o('4 to 10 years'), o('More than 10 years'), o('I can’t remember a time without it', 15.5)] }],
+  ['control', { title: 'How much control do you feel over it right now?', options: [o('I feel powerless over it'), o('I resist sometimes, but usually give in', 15.5), o('I win about half the time'), o('I mostly stay in control, but I want to be free of it', 15.5)] }],
+  ['pattern', { title: 'Which of these sounds most like your pattern?', options: [o('A quick habit I barely think about'), o('A way I unwind, numb out, or escape'), o('Something I binge on for hours at a time', 15.5), o('An escalating thing — more, or more extreme', 15.5), o('It comes in waves — intense, then quiet', 15.5)] }],
+  // Section 2 · When and why it happens
+  ['triggers', { kind: 'grid', multi: true, title: 'When are you most likely to slip?', options: [o('Late night'), o('Early morning'), o('Bored daytime'), o('After stress'), o('Can’t sleep'), o('Weekends'), o('Drinking'), o('Home alone'), o('Phone in bed')] }],
+  ['emotions', { kind: 'grid', multi: true, title: 'What feeling is most often underneath it?', options: [o('Loneliness'), o('Anxiety'), o('Boredom'), o('Low mood'), o('Anger'), o('Numbness'), o('Habit'), o('Desire')] }],
+  ['places', { kind: 'grid', multi: true, title: 'Where does it usually happen?', options: [o('Bedroom'), o('Bathroom'), o('Desk'), o('Living room'), o('My phone'), o('Away')] }],
   // Section 3 · How you've been feeling lately
-  ['energy', { kind: 'scale', title: 'How are your energy and drive most days?', options: ['Running on empty most of the time', 'Low more often than not', 'Up and down', 'Generally good'] }],
-  ['meaning', { title: 'How much sense of purpose do you feel right now?', options: ['I feel pretty lost', 'Some, but it feels thin', 'It comes and goes', 'I’m clear on what matters to me'] }],
-  ['connection', { kind: 'scale', title: 'How connected do you feel to the people around you?', options: ['Pretty isolated', 'A few people, but distant', 'Reasonably connected', 'Strongly connected'] }],
+  ['energy', { title: 'How are your energy and drive most days?', options: [o('Running on empty most of the time'), o('Low more often than not'), o('Up and down'), o('Generally good')] }],
+  ['meaning', { title: 'How much sense of purpose do you feel right now?', options: [o('I feel pretty lost'), o('Some, but it feels thin'), o('It comes and goes'), o('I’m clear on what matters to me', 15.5)] }],
+  ['connection', { title: 'How connected do you feel to the people around you?', options: [o('Pretty isolated'), o('A few people, but I feel distant'), o('Reasonably connected'), o('Strongly connected')] }],
   // Section 4 · A little about your life
-  ['age', { kind: 'wrap', title: 'Your age range.', options: ['Under 18', '18–24', '25–34', '35–44', '45 or older'] }],
-  ['relationship', { title: 'Relationship status.', options: ['Single', 'Dating or in a relationship', 'Married or living together', 'It’s complicated'] }],
-  ['alone', { title: 'Do you have a lot of unstructured time alone?', options: ['Yes, most days', 'Sometimes', 'Rarely'] }],
-  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: ['Yes, it’s central for me', 'Somewhat', 'No, my reasons are practical', 'Prefer not to say'] }],
+  ['age', { title: 'Your age range.', options: [o('Under 18'), o('18 to 24'), o('25 to 34'), o('35 to 44'), o('45 or older')] }],
+  ['relationship', { title: 'Relationship status.', options: [o('Single'), o('Dating or in a relationship'), o('Married or living with a partner'), o('It’s complicated')] }],
+  ['alone', { title: 'Do you have a lot of unstructured time alone?', options: [o('Yes, most days'), o('Sometimes'), o('Rarely')] }],
+  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: [o('Yes, it’s central for me'), o('Somewhat'), o('No — my reasons are practical'), o('Prefer not to say')] }],
   // Section 5 · What you want
-  ['goalPorn', { title: 'What’s your goal with porn?', options: ['Quit it completely', 'Cut it down a lot', 'Keep it to a level I set', 'Not sure yet, exploring'], note: 'Porn and masturbation are two separate choices.' }],
-  ['goalMast', { title: 'And masturbation?', options: ['Stop too, a full reset', 'Keep it, just without porn', 'Cut it down', 'Not trying to change that'] }],
-  ['tried', { kind: 'grid', title: 'What have you already tried?', multi: true, options: ['Blockers or filters', 'Going cold turkey', 'An accountability partner', 'Deleting accounts or apps', 'Therapy or counselling', 'Replacing it with other habits', 'Nothing structured yet'] }],
-  ['readiness', { kind: 'scale', title: 'How ready do you feel to change right now?', options: ['Just exploring', 'Thinking about it', 'Ready to start', 'Already started, I want structure'] }],
-  // Section 6 · How the plan runs
-  ['load', { title: 'How much do you want to do each day?', options: ['One small lesson', 'A lesson plus a task', 'As much as I can', 'Just the bad-day tools for now'] }],
-  ['checkins', { kind: 'wrap', title: 'When should we check in with you?', multi: true, ctaLabel: 'Set reminders', options: ['Morning', 'Midday', 'Evening', 'Late night, my danger zone', 'No reminders'] }],
+  ['goalPorn', { title: 'What is your goal with porn?', options: [o('Quit it completely'), o('Cut it down a lot'), o('Keep it to a level I set myself'), o('Not sure yet — I want to explore', 15.5)] }],
+  ['goalMast', { title: 'And masturbation?', options: [o('Stop that too — a full reset'), o('Keep it, just without porn'), o('Cut it down'), o('I’m not trying to change that')] }],
+  ['tried', { kind: 'check', multi: true, title: 'What have you already tried?', options: [o('Blockers or filters'), o('Going cold turkey'), o('An accountability partner'), o('Deleting accounts or apps'), o('Therapy or counselling'), o('Replacing it with other habits'), o('Nothing structured yet')] }],
+  ['readiness', { title: 'How ready do you feel to change right now?', options: [o('Just exploring'), o('Thinking about it'), o('Ready to start'), o('Already started — I want structure', 15.5)] }],
+  // Section 6 · How you want the plan to run
+  ['load', { title: 'How much do you want to do each day?', options: [o('One small lesson'), o('A lesson plus a task'), o('As much as I can'), o('Just the bad-day tools for now')] }],
+  ['checkins', { kind: 'check', multi: true, title: 'When should we check in with you?', options: [o('Morning'), o('Midday'), o('Evening'), o('Late night — my danger zone'), o('No reminders')] }],
   // A quick wellbeing check
-  ['impact', { kind: 'scale', title: 'Is this affecting your sleep, work, relationships, or money?', options: ['Not really', 'A little', 'Quite a bit', 'A lot'], note: 'Not a test, not a diagnosis. Nobody sees this but you.' }],
-  ['coping', { title: 'Are you mainly using porn to cope with something heavy right now?', options: ['No', 'Maybe', 'Yes'] }],
-  ['mood', { kind: 'scale', title: 'In the last two weeks, how often have you felt down or hopeless?', options: ['Not at all', 'Some days', 'Most days', 'Nearly every day'] }],
+  ['impact', { title: 'Is this affecting your sleep, work, relationships, or money?', options: [o('Not really'), o('A little'), o('Quite a bit'), o('A lot')] }],
+  ['coping', { title: 'Are you using porn mainly to cope with something heavy right now?', options: [o('No'), o('Maybe'), o('Yes')] }],
+  ['mood', { title: 'In the last two weeks, how often have you felt down or hopeless?', options: [o('Not at all'), o('Some days'), o('Most days'), o('Nearly every day')] }],
+  // The three that name him
+  ['name', { kind: 'text', title: 'What should we call you?', options: [] }],
+  ['ageYears', { kind: 'number', title: 'How old are you?', note: 'This helps us show how the pattern could develop over time.', options: [] }],
+  ['gender', { skip: true, title: 'How do you describe your gender?', note: 'Optional — it never changes your projection.', options: [o('Male'), o('Female'), o('Non-binary'), o('Another identity'), o('Prefer not to say')] }],
 ];
 
-// ── the streak interstitial ──────────────────────────────────────────
-// ── the streak sawtooth — every climb shorter, every reset to zero ────
-function StreakChart() {
-  const tone = useTone();
-  const yB = 146;
-  const pxd = 8.6;
-  const pxv = 7;
-  const runs = [14, 9, 5, 2];
-  let x = 12;
-  const segs: [number, number, number][] = [];
-  for (const d of runs) {
-    const x2 = x + d * pxd;
-    segs.push([x, x2, yB - d * pxv]);
-    x = x2;
-  }
-  const dPath = `M12 ${yB} ` + segs.map(([, x2, y]) => `L${x2} ${y} L${x2} ${yB}`).join(' ') + ` L${x + 22} ${yB}`;
-  const lbl = ['14 days', '9', '5', '2'];
-  return (
-    <Svg width="100%" height={176} viewBox="0 0 320 176" fill="none">
-      <Line x1={10} y1={yB} x2={310} y2={yB} stroke={tone.line} strokeWidth={1.2} />
-      <Path d={dPath} stroke={tone.ink} strokeWidth={2.4} strokeLinejoin="round" strokeLinecap="round" fill="none" />
-      {segs.map(([, x2, y], i) => (
-        <G key={i}>
-          <Circle cx={x2} cy={y} r={3.2} fill={tone.ink} />
-          <SvgText x={x2 - 5} y={y - 9} textAnchor="end" fill={tone.ink} fontSize={11} fontFamily={fonts.body} fontWeight="600">
-            {lbl[i]}
-          </SvgText>
-          <Path d={`M${x2 - 3.2} ${yB + 9} l6.4 6.4 M${x2 + 3.2} ${yB + 9} l-6.4 6.4`} stroke={tone.ink3} strokeWidth={1.6} strokeLinecap="round" />
-        </G>
-      ))}
-      <SvgText x={segs[0][1] + 9} y={yB + 19} fill={tone.ink3} fontSize={8.5} fontFamily={fonts.body} fontWeight="600" letterSpacing={1}>
-        RESET
-      </SvgText>
-    </Svg>
-  );
-}
-// Follows the day-grids: the obvious answer — count days — shown failing.
-export function O3Streaks({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
-  const tried = ((answers.tried as string[]) || []).filter((x) => x !== 'Nothing structured yet');
-  const cyc = ((answers.arrival as string[]) || []).includes('cycling');
-  const hasTried = tried.length > 0 || cyc;
-  const fences = tried.slice(0, 2).map((t) => t.toLowerCase()).join(' and ');
-  const caption = fences
-    ? `You’ve run this with ${fences} — each climb comes back shorter, and the zero erases all of it.`
-    : 'Each climb starts strong and ends at zero, and every climb comes back shorter.';
+/**
+ * The seven section intros (V3 — Section 1..7).
+ *
+ * Twenty-three questions in a row reads as an interrogation. These break it
+ * into six named stretches plus a gentler wellbeing coda, and each one says
+ * what the next few questions are for — the difference between being processed
+ * and being asked.
+ */
+export const O3_SECTIONS: { at: number; eyebrow: string; title: string; body: string }[] = [
+  { at: 0, eyebrow: 'Section 1 of 6', title: 'Where you\u2019re starting', body: 'The honest baseline. None of this is graded.' },
+  { at: 4, eyebrow: 'Section 2 of 6', title: 'When and why it happens', body: 'This is where the plan gets specific to you. Pick everything that fits.' },
+  { at: 7, eyebrow: 'Section 3 of 6', title: 'How you\u2019ve been feeling lately', body: 'A bigger picture than the habit alone. It often points at what\u2019s really driving things.' },
+  { at: 10, eyebrow: 'Section 4 of 6', title: 'A little about your life', body: 'So the plan fits your actual days, not a generic user.' },
+  { at: 14, eyebrow: 'Section 5 of 6', title: 'What you want', body: 'Your goal, in your words. Porn and masturbation are two separate choices \u2014 you set each.' },
+  { at: 18, eyebrow: 'Section 6 of 6', title: 'How you want the plan to run', body: 'The settings. Easy to change any time.' },
+  { at: 20, eyebrow: 'Almost done', title: 'A quick wellbeing check', body: 'A few gentle questions. Not a test, not a diagnosis \u2014 your answers stay private.' },
+];
+
+export function O3SectionIntro({ section, next }: { section: (typeof O3_SECTIONS)[number]; next: () => void }) {
+  // the intro repeats the field and rule of the question it opens
+  useO3Field(O3_SECTION_FIELD[O3_SECTIONS.findIndex((s) => s.at === section.at)] ?? null);
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
-        <O3Eyebrow style={{ marginBottom: 12 }}>The obvious tool</O3Eyebrow>
-        <O3H size={26}>A streak resets. A campaign doesn’t.</O3H>
-        <View style={{ marginTop: 26, backgroundColor: tone.card, borderRadius: 20, paddingTop: 20, paddingBottom: 4, paddingHorizontal: 12 }}>
-          <StreakChart />
-        </View>
-        <O3Note style={{ marginTop: 16, minHeight: 36 }}>{caption}</O3Note>
-      </View>
-      <O3CTA label={hasTried ? 'That is what happened to me' : 'So what works?'} onClick={next} />
+      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 254, fontSize: 13, letterSpacing: 0.3, color: 'rgba(244,243,240,0.55)' }]}>
+        {section.eyebrow}
+      </AppText>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 284, fontSize: 26, lineHeight: 33.8, letterSpacing: -0.2, color: INK }]}>
+        {section.title}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 366, fontSize: 15.5, lineHeight: 24, color: 'rgba(244,243,240,0.7)' }]}>
+        {section.body}
+      </AppText>
+      <O3CTA size="md" label="Continue" onClick={next} style={{ position: 'absolute', left: 24, right: 24, bottom: O3_MD_CTA_BOTTOM }} />
     </>
   );
 }
 
-// ── the reading pause — a long, slow "calculating" reveal: the funnel's
-// night ground gathers light and breaks to paper exactly as the reading
-// is ready (full-screen; owns its own background, like the wave). ──────
-export function O3ReadingPause({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const t = (answers.triggers as string[]) || [];
-  const l1 = t.length ? `${t.slice(0, 2).map((x) => x.toLowerCase()).join(', ')}, mostly.` : 'The pattern, plainly.';
-  const durMap: Record<string, string> = { 'Less than a year': 'Under a year', '1–3 years': 'A few years', '4–10 years': 'Most of a decade', 'More than 10 years': 'Over a decade', 'I can’t remember a time without it': 'Most of a life' };
-  const tried = ((answers.tried as string[]) || []).filter((x) => x !== 'Nothing structured yet').length;
-  const att = tried >= 3 ? 'three ways already tried' : tried > 0 ? 'real attempts behind you' : 'a first structured attempt';
-  const l2 = `${durMap[answers.duration as string] || 'Years'}. And ${att}.`;
+/** How many of the thirty cells the projection's arithmetic starts from. */
+const marks = (days: string) => days.split('').filter((c) => c === '1').length;
 
-  // what the engine pinned — the plan chips that tick in while it builds
-  const chips: string[] = [];
-  chips.push(({ 'Quit it completely': 'Full-stop track', 'Cut it down a lot': 'Reduction track', 'Keep it to a level I set': 'Reduction track', 'Not sure yet, exploring': 'Exploration track' } as Record<string, string>)[answers.goalPorn as string] || 'Full-stop track');
-  const t0 = ((answers.triggers as string[]) || [])[0];
-  chips.push(t0 ? `${t0} — window guarded` : 'Check-in windows set');
-  const e0 = ((answers.emotions as string[]) || [])[0];
-  chips.push(e0 ? `${e0} protocol, pinned` : 'The bad-day book, pinned');
-  chips.push(({ 'One small lesson': 'One small lesson a day', 'A lesson plus a task': 'A lesson + a task, daily', 'As much as I can': 'Full pace', 'Just the bad-day tools for now': 'Tools first, course later' } as Record<string, string>)[answers.load as string] || 'One small lesson a day');
+/** 098 — how many times, in the last thirty days. Where the projection starts. */
+export function O3CurrentPattern({ next }: { answers?: Record<string, string | string[]>; next: () => void }) {
+  return (
+    <>
+      <O3PaperTally eyebrow="Your current pattern" value={marks(LAST_30)} unit="times in the last 30 days" />
+      <O3PaperCard top={246} height={232}>
+        <MonthGrid days={LAST_30} />
+      </O3PaperCard>
+      <O3PaperCaption top={498}>This is where the projection begins.</O3PaperCaption>
+      <O3PaperCTA label="Next" onPress={next} y={744} />
+    </>
+  );
+}
 
-  const [phase, setPhase] = useState(0);
-  const p = useRef(new Animated.Value(0)).current;
+/**
+ * 102 — the turn. Three screens of arithmetic have just been run at someone;
+ * this is the one that says the arithmetic is a projection and not a sentence,
+ * and it says it by clearing the year grid a cell at a time.
+ */
+export function O3Reversal({ next, back }: { next: () => void; back: () => void }) {
+  // the caption waits out the clearing and then arrives, on the frame's own 5s
+  const fade = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(fade, { toValue: 1, duration: 900, delay: REVERSAL_CAPTION_DELAY_MS, easing: Easing.out(Easing.ease), useNativeDriver: true }).start();
+  }, [fade]);
+  return (
+    <>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 94, fontSize: 26, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+        But this can change.
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 140, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
+        This is a projection of your current pattern. It is not your future.
+      </AppText>
+      <O3PaperCard top={212} height={240}>
+        <YearGrid days={NEXT_365} clearing />
+      </O3PaperCard>
+      <Animated.View style={{ position: 'absolute', left: 44, right: 44, top: 480, opacity: fade }}>
+        <AppText center style={[sans('400'), { fontSize: 14, lineHeight: 21, color: '#55534E' }]}>
+          Every time you interrupt the pattern, you change the shape of the year.
+        </AppText>
+      </Animated.View>
+      <O3PaperCTA label="Change the pattern" onPress={next} y={744} />
+      <O3PaperLink label="Review my projection" onPress={back} y={812} />
+    </>
+  );
+}
+
+/** 096 — the handover: the questionnaire is done and the plan exists. */
+export function O3PlanReady({ next, back }: { next: () => void; back: () => void }) {
+  return (
+    <>
+      <View style={{ position: 'absolute', left: '50%', marginLeft: -130, top: 96 }}>
+        <PlanReadyArt />
+      </View>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 418, fontSize: 24, lineHeight: 32, letterSpacing: -0.1, color: '#1D1C1A' }]}>
+        Your plan is ready.
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 468, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
+        Built from your answers — it re-tunes as you log.
+      </AppText>
+      <O3PaperCTA label="See my plan" onPress={next} y={688} h={56} />
+      <O3PaperLink label="Change an answer" onPress={back} y={764} />
+    </>
+  );
+}
+
+/**
+ * 90A / 90B · The two things handed over at the end of the vow: the letter
+ * sealed on day zero, and the first medallion. Both offer a way to decline
+ * gracefully — a keepsake pressed on someone is not a keepsake.
+ */
+export function O3Handover({
+  kind,
+  next,
+  name,
+}: {
+  kind: 'letter' | 'medallion';
+  next: () => void;
+  name?: string;
+}) {
+  const tone = useTone();
+  const letter = kind === 'letter';
+  return (
+    <>
+      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 30 }}>
+        <View style={{ alignItems: 'center' }}>
+          {letter ? (
+            <Svg width={72} height={54} viewBox="0 0 72 54" fill="none">
+              <Rect x={1.5} y={1.5} width={69} height={51} rx={6} stroke={tone.ink2} strokeWidth={2} />
+              <Path d="M4 6l32 24L68 6" stroke={tone.ink2} strokeWidth={2} strokeLinejoin="round" />
+            </Svg>
+          ) : (
+            <Laurel size={60} color={tone.ink} muted />
+          )}
+        </View>
+        <O3H size={28} style={{ marginTop: 30 }}>{letter ? 'A letter arrived.' : 'You earned a medallion.'}</O3H>
+        <AppText center style={[sans('400'), { marginTop: 20, paddingHorizontal: 18, fontSize: 15.5, lineHeight: 24, color: tone.ink2 }]}>
+          {letter
+            ? 'From the man at week XII — sealed the night you started.'
+            : `Vici, tier I${name ? '' : ''} — the first one ridden. Each one shortens the next.`}
+        </AppText>
+      </View>
+      <O3CTA label={letter ? 'Open it' : 'Take it'} onClick={next} />
+      <PressScale onPress={next} accessibilityRole="button" style={{ minHeight: 44, alignItems: 'center', justifyContent: 'center', marginTop: 6 }}>
+        <AppText style={[sans('500'), { fontSize: 14.5, color: tone.ink3 }]}>
+          {letter ? 'Save it for tonight' : 'Put it on the shelf'}
+        </AppText>
+      </PressScale>
+    </>
+  );
+}
+
+/**
+ * 103 — "Streaks reset." Three climbs, each shorter than the last, each ending
+ * on a cross at zero. The frame that used to carry both halves of the argument
+ * now carries only this one; 104 answers it.
+ */
+export function O3Streaks({ next }: { answers?: Record<string, string | string[]>; next: () => void }) {
+  return (
+    <>
+      <O3PaperH top={116} inset={40}>Streaks reset.</O3PaperH>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 210 }}>
+        <StreakSawtoothCard />
+      </View>
+      <O3PaperCaption top={456} inset={52}>Fourteen days, then nine, then five — every reset lands on zero.</O3PaperCaption>
+      <O3PaperCTA label="Next" onPress={next} y={744} />
+    </>
+  );
+}
+
+/** 104 — "Campaigns don’t." The same six weeks as one line that never resets. */
+export function O3CampaignLine({ next }: { next: () => void }) {
+  return (
+    <>
+      <O3PaperH top={116} inset={40}>Campaigns don’t.</O3PaperH>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 210 }}>
+        <CampaignLineCard />
+      </View>
+      <O3PaperCaption top={456} inset={52}>A slip costs a day, not the campaign — it never returns to zero.</O3PaperCaption>
+      <O3PaperCTA label="Next" onPress={next} y={744} />
+    </>
+  );
+}
+
+/**
+ * 095 · Enlisting the Aegis — the charting pause. The frame is one long wash
+ * from #131313 at the crown to white at the foot, with the sunrise disc rising
+ * through the bottom edge: the night the questions were asked in becoming the
+ * daylight the reading is handed over in. Full-screen; owns its background.
+ *
+ * The canvas draws the mid-state — two steps ticked, the third still turning,
+ * the bar 186 of its 311 across. Here the three steps tick in turn and the bar
+ * runs the whole way, ending exactly where the frame's own numbers put it.
+ */
+const AEGIS_STEPS = ['Reading your answers', 'Mapping your risky window', 'Choosing your first week'] as const;
+const AEGIS_MS = 6800;
+
+export function O3ReadingPause({ next }: { answers?: Record<string, string | string[]>; next: () => void }) {
+  const [done, setDone] = useState(0);
   const bar = useRef(new Animated.Value(0.04)).current;
   useEffect(() => {
-    // daylight arrives DURING the pause — night gathers to paper
-    Animated.timing(p, { toValue: 1, duration: 6400, easing: Easing.inOut(Easing.quad), useNativeDriver: false }).start();
-    // the real loading bar: 4% → 52% while reading, → 100% while creating
-    Animated.timing(bar, { toValue: 0.52, duration: 2800, easing: Easing.bezier(0.25, 0.6, 0.3, 1), useNativeDriver: false }).start();
-    const t1 = setTimeout(() => {
-      setPhase(1);
-      Animated.timing(bar, { toValue: 1, duration: 3500, easing: Easing.bezier(0.25, 0.6, 0.3, 1), useNativeDriver: false }).start();
-    }, 2900);
-    const id = setTimeout(next, 6800);
+    Animated.timing(bar, { toValue: 1, duration: AEGIS_MS - 400, easing: Easing.bezier(0.25, 0.6, 0.3, 1), useNativeDriver: false }).start();
+    const ticks = [1, 2, 3].map((k) => setTimeout(() => setDone(k), (AEGIS_MS / 3.4) * k));
+    const id = setTimeout(next, AEGIS_MS);
     return () => {
-      clearTimeout(t1);
+      ticks.forEach(clearTimeout);
       clearTimeout(id);
     };
-  }, [next, p, bar]);
-
-  const bg = p.interpolate({
-    inputRange: [0, 0.35, 0.62, 0.85, 1],
-    outputRange: [NIGHT.bg, '#131313', '#3A3A3A', '#8A8A8A', PAPER.bg],
-  });
-  const glowOp = p.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 0.35, 0.7, 0] });
-  const inkCol = p.interpolate({ inputRange: [0.3, 0.8], outputRange: [NIGHT.ink, PAPER.ink] });
-  const ink2Col = p.interpolate({ inputRange: [0.3, 0.8], outputRange: [NIGHT.ink2, PAPER.ink2] });
-  const trackCol = p.interpolate({ inputRange: [0.3, 0.8], outputRange: ['rgba(255,255,255,0.14)', 'rgba(0,0,0,0.1)'] });
-  const chipBg = p.interpolate({ inputRange: [0.3, 0.8], outputRange: ['rgba(255,255,255,0.07)', PAPER.card] });
-  const name = String(answers.name || '').trim();
-
-  // one geometry for both phases — a bar, one title line, then exactly
-  // four fixed-height line slots. Nothing moves; only the words change.
-  const slotFade = (i: number) =>
-    p.interpolate({ inputRange: [0.06 + i * 0.06, 0.14 + i * 0.06], outputRange: [0, 1], extrapolate: 'clamp' });
+  }, [next, bar]);
 
   return (
-    <Animated.View style={{ flex: 1, backgroundColor: bg }}>
-      <Animated.View pointerEvents="none" style={{ position: 'absolute', left: -60, right: -60, bottom: -80, height: 360, opacity: glowOp }}>
-        <Svg width="100%" height="100%">
-          <Defs>
-            <RadialGradient id="pauseGlow" cx="50%" cy="100%" rx="72%" ry="72%">
-              <Stop offset="0%" stopColor="#EFEFEE" stopOpacity={0.95} />
-              <Stop offset="100%" stopColor="#EFEFEE" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Rect width="100%" height="100%" fill="url(#pauseGlow)" />
-        </Svg>
-      </Animated.View>
-
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 26, paddingBottom: 40 }}>
-        {/* the loading bar — fills across both phases from the same spot */}
-        <Animated.View style={{ width: 212, height: 3, borderRadius: 9999, backgroundColor: trackCol, overflow: 'hidden' }}>
-          <Animated.View
-            style={{
-              height: '100%',
-              borderRadius: 9999,
-              backgroundColor: inkCol,
-              width: bar.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }),
-            }}
-          />
-        </Animated.View>
-
-        <View style={{ minHeight: 36, justifyContent: 'center', marginTop: 26 }}>
-          <Animated.Text style={{ fontFamily: fonts.serif, fontSize: 24, textAlign: 'center', color: inkCol as unknown as string }}>
-            {phase === 0 ? 'Reading your answers…' : `Creating ${name ? name + '’s' : 'your'} plan…`}
-          </Animated.Text>
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+      <AegisField />
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 96, fontSize: 15, color: 'rgba(244,243,240,0.8)' }]}>
+            Charting your plan. One moment.
+          </AppText>
+          <View style={{ position: 'absolute', left: 41, top: 123, width: 311, height: 3, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.25)', overflow: 'hidden' }}>
+            <Animated.View style={{ height: 3, borderRadius: 2, backgroundColor: '#F4F3F0', width: bar.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }) }} />
+          </View>
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 208, alignItems: 'center', gap: 16 }}>
+            {AEGIS_STEPS.map((label, i) => {
+              const ticked = i < done;
+              return (
+                <View key={label} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  {ticked ? <AegisCheck /> : <AegisSpinner />}
+                  <AppText style={[sans('500'), { fontSize: 15.5, color: ticked ? '#F4F3F0' : 'rgba(244,243,240,0.75)' }]}>{label}</AppText>
+                </View>
+              );
+            })}
+          </View>
+          <AppText center style={[sans('500'), { position: 'absolute', left: 20, right: 20, top: 380, fontSize: 20, lineHeight: 31, letterSpacing: 0.1, color: '#2A2924' }]}>
+            From the dark hours to first light — your plan guards the risky window first.
+          </AppText>
         </View>
-
-        <View style={{ marginTop: 18, alignSelf: 'stretch' }}>
-          {[0, 1, 2, 3].map((k) => (
-            <View key={k} style={{ height: 40, alignItems: 'center', justifyContent: 'center' }}>
-              {phase === 0 ? (
-                k < 2 ? (
-                  <Animated.Text
-                    style={{ fontFamily: fonts.serifSharpItalic, fontStyle: 'italic', fontSize: 16, textAlign: 'center', color: ink2Col as unknown as string, opacity: slotFade(k) }}>
-                    {k === 0 ? l1 : l2}
-                  </Animated.Text>
-                ) : null
-              ) : (
-                <Animated.View style={{ backgroundColor: chipBg, paddingHorizontal: 14, paddingVertical: 8, borderRadius: 9999 }}>
-                  <Animated.Text style={[sans('500'), { fontSize: 13, color: inkCol as unknown as string }]}>{chips[k]}</Animated.Text>
-                </Animated.View>
-              )}
-            </View>
-          ))}
-        </View>
-      </View>
-    </Animated.View>
+      </SafeAreaView>
+    </View>
   );
 }
 
 // ═════ THE ROOT — the loop, drawn from their answers ═════════════════
 const O3_ISSUE: Record<string, { kind: 'feel' | 'auto'; word: string }> = {
   'Loneliness': { kind: 'feel', word: 'loneliness' },
-  'Anxiety or stress': { kind: 'feel', word: 'stress' },
+  'Anxiety': { kind: 'feel', word: 'anxiety' },
   'Boredom': { kind: 'feel', word: 'boredom' },
-  'Sadness or low mood': { kind: 'feel', word: 'low mood' },
-  'Anger or frustration': { kind: 'feel', word: 'frustration' },
-  'Numbness, feeling nothing': { kind: 'feel', word: 'numbness' },
-  'Mostly automatic, just habit': { kind: 'auto', word: 'autopilot' },
-  'Genuine desire or arousal': { kind: 'auto', word: 'wiring' },
+  'Low mood': { kind: 'feel', word: 'low mood' },
+  'Anger': { kind: 'feel', word: 'anger' },
+  'Numbness': { kind: 'feel', word: 'numbness' },
+  'Habit': { kind: 'auto', word: 'autopilot' },
+  'Desire': { kind: 'auto', word: 'wiring' },
 };
 function o3Issue(a: Record<string, string | string[]>): { kind: 'feel' | 'auto'; word: string } {
   const list = (a.emotions as string[]) || [];
@@ -831,66 +1416,37 @@ function o3Issue(a: Record<string, string | string[]>): { kind: 'feel' | 'auto';
 }
 const orCap = (x: string) => x.charAt(0).toUpperCase() + x.slice(1);
 
+/** 097 — the loop the answers describe, named station by station. */
 export function O3Root({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
+  const name = String(answers.name || '').trim();
   const issue = o3Issue(answers);
   const t = ((answers.triggers as string[]) || []).slice(0, 2).map((x) => x.toLowerCase());
   const when = t.length ? t.join(', ') : 'the same hours each time';
   const feel = issue.kind === 'feel';
-  const name = String(answers.name || '').trim();
   const head = feel
     ? `Porn isn’t the problem${name ? `, ${name}` : ''}. It’s your anesthetic for ${issue.word}.`
     : `Porn isn’t a decision${name ? `, ${name}` : ''}. It’s a loop on autopilot.`;
-  const stations = feel
-    ? [`the ${issue.word} rises`, 'the escape', 'minutes of relief', 'back, deeper']
+  const stations: [string, string, string, string] = feel
+    ? [`the ${issue.word} rises`, 'the escape', 'minutes of relief', 'back — deeper']
     : ['the cue', 'autopilot', 'the release', 'the groove deepens'];
   const caption = feel
     ? `${orCap(when)} — the ${issue.word} rises, relief lasts minutes, and the loop turns again.`
     : `The cue arrives — ${when} — and the hands run the loop without you.`;
-  const label = (i: number) => (
-    <View style={{ backgroundColor: tone.card, paddingHorizontal: 4, borderRadius: 4 }}>
-      <AppText style={[sans(i === 0 ? '600' : '400'), { fontSize: i === 0 ? 11.5 : 11, color: i === 0 ? tone.ink : tone.ink2 }]}>{stations[i]}</AppText>
-    </View>
-  );
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
-        <O3Eyebrow style={{ marginBottom: 12 }}>What your answers show</O3Eyebrow>
-        <O3H size={25}>{head}</O3H>
-        <View style={{ marginTop: 26, backgroundColor: tone.card, borderRadius: 20, paddingTop: 18, paddingHorizontal: 12, paddingBottom: 12 }}>
-          {/* the loop — an ellipse with 4 stations, clockwise */}
-          <View style={{ width: '100%', aspectRatio: 300 / 172 }}>
-            <Svg width="100%" height="100%" viewBox="0 0 300 172" fill="none" style={{ position: 'absolute' }}>
-              <Ellipse cx={150} cy={86} rx={104} ry={55} stroke={tone.ink3} strokeWidth={1.7} strokeLinecap="round" />
-              <Path d="M249 80 h11 l-5.5 10 z" fill={tone.ink3} />
-              <Path d="M40 92 h11 l-5.5 -10 z" fill={tone.ink3} />
-            </Svg>
-            <View style={{ position: 'absolute', top: '13%', left: 0, right: 0, alignItems: 'center' }}>{label(0)}</View>
-            <View style={{ position: 'absolute', top: '46%', right: '0%', maxWidth: '34%', alignItems: 'flex-end' }}>{label(1)}</View>
-            <View style={{ position: 'absolute', top: '76%', left: 0, right: 0, alignItems: 'center' }}>{label(2)}</View>
-            <View style={{ position: 'absolute', top: '46%', left: '0%', maxWidth: '34%', alignItems: 'flex-start' }}>{label(3)}</View>
-          </View>
-        </View>
-        <O3Note style={{ marginTop: 16, minHeight: 36 }}>{caption}</O3Note>
+      <O3PaperH top={112} inset={36}>{head}</O3PaperH>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 262 }}>
+        <RootLoopCard stations={stations} />
       </View>
-      <O3CTA label="Follow it forward" onClick={next} />
+      <O3PaperCaption top={512}>{caption}</O3PaperCaption>
+      <O3PaperCTA label="Follow it forward" onPress={next} y={744} />
     </>
   );
 }
 
-// ═════ IF NOTHING CHANGES — four day-grid pages ═══════════════════════
-// week · month · year · decade. Same geometry on every page: a counting
-// numeral, the grid filling in, one caption line. Each dark cell = a day.
-const O3_NUMS: Record<string, [number, number, number, number]> = {
-  'Several times a day': [18, 75, 900, 9000],
-  'About once a day': [7, 30, 365, 3650],
-  'A few times a week': [4, 15, 180, 1800],
-  'About once a week': [1, 4, 52, 520],
-  'A few times a month': [1, 3, 36, 360],
-  'Less than once a month': [0, 1, 12, 120],
-};
-const orFrac = (x: number) => x - Math.floor(x);
-const orMark = (i: number, rate: number) => orFrac(i * 0.6180339887 + 0.37) < rate + 1e-9;
+// ═════ IF NOTHING CHANGES — three projection pages ═══════════════════
+// the next month · the next year · the rest of a life. Same geometry on
+// every page: a counting numeral, a grid of day-cells, one caption line.
 
 /** Eased numeral count-up (cubic out, 1.5s). */
 function useCountUp(n: number) {
@@ -909,190 +1465,92 @@ function useCountUp(n: number) {
   return v;
 }
 
-/** A wipe that uncovers its content left→right (or top→bottom). */
-function OrWipe({ children, vertical = false, duration = 1400 }: { children: ReactNode; vertical?: boolean; duration?: number }) {
-  const tone = useTone();
-  const t = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(t, { toValue: 1, duration, delay: 250, easing: Easing.out(Easing.quad), useNativeDriver: false }).start();
-  }, [t, duration]);
-  const size = t.interpolate({ inputRange: [0, 1], outputRange: ['100%', '0%'] });
-  return (
-    <View style={{ width: '100%' }}>
-      {children}
-      <Animated.View
-        pointerEvents="none"
-        style={
-          vertical
-            ? { position: 'absolute', left: 0, right: 0, bottom: 0, height: size, backgroundColor: tone.card }
-            : { position: 'absolute', top: 0, bottom: 0, right: 0, width: size, backgroundColor: tone.card }
-        }
-      />
-    </View>
-  );
-}
+/**
+ * 099 · 100 · 101 — the projection, one horizon per page.
+ *
+ * The frames are the argument, so the grids are read off them rather than
+ * generated: nine of the next thirty days, a hundred and ten of the next three
+ * hundred and sixty-five, and the years from now to eighty as one stack of
+ * hairlines. The numerals follow the grids — nine, a hundred and ten, and
+ * 365 × 9/30 a year for the years that are left — so a page can never say one
+ * thing and draw another.
+ */
+const AGE_END = 80;
+const AGE_DEFAULT = 24;
 
-/** Row-flow cell grid (week + month) — cells flood in one by one. */
-function OrCellRow({ n, rate, cols, cellH, r, gap, delayEach }: { n: number; rate: number; cols: number; cellH: number; r: number; gap: number; delayEach: number }) {
-  const tone = useTone();
-  const anims = useRef(Array.from({ length: n }, () => new Animated.Value(0))).current;
-  useEffect(() => {
-    Animated.stagger(
-      delayEach * 1000,
-      anims.map((a) => Animated.timing(a, { toValue: 1, duration: 260, useNativeDriver: true })),
-    ).start();
-  }, [anims, delayEach]);
-  const rows: number[][] = [];
-  for (let i = 0; i < n; i += cols) rows.push(Array.from({ length: Math.min(cols, n - i) }, (_, k) => i + k));
-  return (
-    <View style={{ width: '100%', gap }}>
-      {rows.map((row, ri) => (
-        <View key={ri} style={{ flexDirection: 'row', gap }}>
-          {row.map((i) => (
-            <Animated.View
-              key={i}
-              style={{ flex: 1, height: cellH, borderRadius: r, backgroundColor: orMark(i, rate) ? tone.ink : tone.soft2, opacity: anims[i] }}
-            />
-          ))}
-          {row.length < cols
-            ? Array.from({ length: cols - row.length }, (_, k) => <View key={`f${k}`} style={{ flex: 1, height: cellH }} />)
-            : null}
+export function O3CostPage({ answers, next, h }: { answers: Record<string, string | string[]>; next: () => void; h: 1 | 2 | 3 }) {
+  const typed = parseInt(String(answers.ageYears || ''), 10);
+  const age = Number.isFinite(typed) && typed > 0 && typed < AGE_END ? typed : AGE_DEFAULT;
+  const years = AGE_END - age;
+  const perYear = 365 * (marks(LAST_30) / 30);
+
+  if (h === 3) {
+    return (
+      <>
+        <O3PaperTally eyebrow="If nothing changes" value={Math.round(perYear * years)} unit={`more times by age ${AGE_END}`} />
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 246 }}>
+          <ByAge80Card from={age} />
         </View>
-      ))}
-    </View>
-  );
-}
-
-/** The year — 365 day-cells column-flowing 7 rows, revealed by a wipe. */
-function OrYear({ rate }: { rate: number }) {
-  const tone = useTone();
-  const colsN = Math.ceil(365 / 7);
-  return (
-    <OrWipe duration={1400}>
-      <View style={{ flexDirection: 'row', gap: 1.6, width: '100%' }}>
-        {Array.from({ length: colsN }, (_, c) => (
-          <View key={c} style={{ flex: 1, gap: 1.6 }}>
-            {Array.from({ length: 7 }, (_, rI) => {
-              const i = c * 7 + rI;
-              if (i >= 365) return <View key={rI} style={{ height: 4.4 }} />;
-              return <View key={rI} style={{ height: 4.4, borderRadius: 1.6, backgroundColor: orMark(i, rate) ? tone.ink : tone.soft2 }} />;
-            })}
-          </View>
-        ))}
-      </View>
-    </OrWipe>
-  );
-}
-
-/** The decade — ten bands of day-dots, revealed top to bottom. */
-function OrDecade({ rate }: { rate: number }) {
-  const tone = useTone();
-  const mixHex = (a: string, b: string, t: number) => {
-    const pa = parseInt(a.slice(1), 16);
-    const pb = parseInt(b.slice(1), 16);
-    const ch = (sh: number) => Math.round(((pa >> sh) & 255) + (((pb >> sh) & 255) - ((pa >> sh) & 255)) * t);
-    return `rgb(${ch(16)}, ${ch(8)}, ${ch(0)})`;
-  };
-  const soft = tone.soft2.startsWith('#') ? tone.soft2 : '#D9D9D8';
-  const dot = mixHex(soft, '#1C1C1C', 0.25 + 0.75 * rate);
-  return (
-    <OrWipe vertical duration={1200}>
-      <View style={{ gap: 6, width: '100%' }}>
-        {Array.from({ length: 10 }, (_, y) => (
-          <View key={y} style={{ height: 17, borderRadius: 5, overflow: 'hidden' }}>
-            <Svg width="100%" height={17}>
-              <Defs>
-                <Pattern id={`orb-${y}`} width={4.6} height={4.6} patternUnits="userSpaceOnUse">
-                  <Circle cx={2.3} cy={2.3} r={1.25} fill={dot} />
-                </Pattern>
-              </Defs>
-              <Rect width="100%" height={17} fill={`url(#orb-${y})`} />
-            </Svg>
-          </View>
-        ))}
-      </View>
-    </OrWipe>
-  );
-}
-
-const OR_DOW = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-export function O3CostPage({ answers, next, h }: { answers: Record<string, string | string[]>; next: () => void; h: 0 | 1 | 2 | 3 }) {
-  const tone = useTone();
-  const nums = O3_NUMS[answers.freq as string] || O3_NUMS['About once a day'];
-  const times = nums[h];
-  const days = [7, 30, 365, 3650][h];
-  const rate = Math.min(1, times / days);
-  const shown = useCountUp(times);
-  const m = h <= 1 ? Array.from({ length: days }, (_, i) => orMark(i, rate)).filter(Boolean).length : 0;
-  const unit = ['times · the next week', 'times · the next month', 'times · the next year', 'times · the next ten years'][h];
-  const fmtN = times.toLocaleString('en-US');
-  const caption = [
-    m === 7
-      ? times > 7
-        ? 'Every one of the next seven days goes dark, some more than once.'
-        : 'Every one of the next seven days goes dark.'
-      : m === 0
-        ? 'A quiet week is likely. The month tells more.'
-        : `${m} of the next seven days go dark.`,
-    `${m === 30 ? 'All thirty' : m} of the next thirty days. The pace doesn’t pause on its own.`,
-    `Fifty-two weeks side by side — ${fmtN} more times before this date next year.`,
-    `Each band is a year. ${fmtN} more times in the next ten — unless the wiring changes.`,
-  ][h];
-  const cta = ['The next month', 'The next year', 'The next ten years', 'I want the other ending'][h];
-
-  let grid: ReactNode;
-  if (h === 0)
-    grid = (
-      <View style={{ width: '100%' }}>
-        <View style={{ flexDirection: 'row', gap: 7, marginBottom: 9 }}>
-          {OR_DOW.map((d, i) => (
-            <AppText key={i} center style={[sans('500'), { flex: 1, fontSize: 10, letterSpacing: 1, color: tone.ink4 }]}>
-              {d}
-            </AppText>
-          ))}
-        </View>
-        <OrCellRow n={7} rate={rate} cols={7} cellH={38} r={10} gap={7} delayEach={0.12} />
-      </View>
+        <O3PaperCaption top={526}>Small patterns repeated over decades become part of a life.</O3PaperCaption>
+        <O3PaperCTA label="Next" onPress={next} y={744} />
+      </>
     );
-  else if (h === 1) grid = <OrCellRow n={30} rate={rate} cols={7} cellH={27} r={7} gap={6} delayEach={0.045} />;
-  else if (h === 2) grid = <OrYear rate={rate} />;
-  else grid = <OrDecade rate={rate} />;
-
+  }
+  if (h === 2) {
+    return (
+      <>
+        <O3PaperTally eyebrow="If nothing changes" value={marks(NEXT_365)} unit="times in the next 365 days" />
+        <O3PaperCard top={246} height={242} gap={12}>
+          <YearGrid days={NEXT_365} />
+          <O3CardNote>Projection based on your current pace</O3CardNote>
+        </O3PaperCard>
+        <O3PaperCaption top={498}>A repeated night slowly becomes a year-long pattern.</O3PaperCaption>
+        <O3PaperCTA label="Next" onPress={next} y={744} />
+      </>
+    );
+  }
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
-        <O3Eyebrow>If nothing changes</O3Eyebrow>
-        <View style={{ alignItems: 'center', marginTop: 18 }}>
-          <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 56, lineHeight: 56, color: tone.ink, fontVariant: ['tabular-nums'] }}>
-            {shown.toLocaleString('en-US')}
-          </AppText>
-          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 1.89, textTransform: 'uppercase', color: tone.ink3, marginTop: 9 }]}>
-            {unit}
-          </AppText>
-        </View>
-        <View style={{ marginTop: 22, backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 18, height: 258, justifyContent: 'center' }}>
-          {grid}
-        </View>
-        <O3Note style={{ marginTop: 16, minHeight: 36 }}>{caption}</O3Note>
-      </View>
-      <O3CTA label={cta} onClick={next} />
+      <O3PaperTally eyebrow="If nothing changes" value={marks(NEXT_30)} unit="times in the next 30 days" />
+      <O3PaperCard top={246} height={248} gap={14}>
+        <MonthGrid days={NEXT_30} />
+        <O3CardNote>Based on your last 30 days</O3CardNote>
+      </O3PaperCard>
+      <O3PaperCaption top={498}>At your current pace, the next month may look much like the last.</O3PaperCaption>
+      <O3PaperCTA label="Next" onPress={next} y={744} />
     </>
   );
 }
 
-function pattern(a: Record<string, string | string[]>) {
-  const t = ((a.triggers as string[]) || []).map((x) => x.toLowerCase());
-  const when = t.includes('late at night') ? 'late at night' : t.includes('on my phone in bed') ? 'on your phone in bed' : t[0] || 'in the quiet hours';
-  const e = ((a.emotions as string[]) || []).map((x) => x.toLowerCase());
-  const drive = e.includes('anxiety or stress')
-    ? 'on stress'
-    : e.includes('loneliness')
-      ? 'on loneliness'
-      : e.includes('boredom')
-        ? 'on boredom'
-        : 'on habit';
-  const who = (a.name as string || '').trim();
-  return `${who ? who + ', your' : 'Your'} pull runs strongest ${when}, ${drive}. That is where the campaign begins.`;
+/** The trigger line the summary card leads with, in his own words where given. */
+function busiestTrigger(a: Record<string, string | string[]>): string {
+  const picked = ((a.triggers as string[]) || []).slice(0, 2);
+  if (!picked.length) return 'Late nights, weekends';
+  return picked.join(', ').replace(/^./, (c) => c.toUpperCase());
+}
+
+/** 106 — the week, drawn: which two nights the plan watches first. */
+const PEAK_NIGHTS = [4, 5];
+const PEAK_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+export function O3Pattern({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
+  return (
+    <>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 104, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: '#1D1C1A' }]}>
+        Your pattern, mapped.
+      </AppText>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 214 }}>
+        <UrgesByNightCard peaks={PEAK_NIGHTS} />
+      </View>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 486 }}>
+        <MostActiveTriggerCard trigger={busiestTrigger(answers)} />
+      </View>
+      <AppText style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 594, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
+        Your risky window is {PEAK_NAMES[PEAK_NIGHTS[0]]} and {PEAK_NAMES[PEAK_NIGHTS[1]]} night. We&apos;ll pay gentle attention there first.
+      </AppText>
+      <O3PaperCTA label="See what's ahead" onPress={next} y={764} ls={0.3} />
+    </>
+  );
 }
 
 
@@ -1131,66 +1589,45 @@ function RouteMap() {
     </Svg>
   );
 }
-export function O3Reading({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
+/**
+ * 107 · the campaign map.
+ *
+ * The first four weeks stacked with week I at the bottom, so the eye starts
+ * where he is standing and climbs. Each row is a tile with its own small
+ * drawing and its own halo, the light burning a little brighter every week up
+ * the stack. That is the whole argument for staying, made without a sentence.
+ */
+export function O3Reading({ next }: { answers?: Record<string, string | string[]>; next: () => void }) {
   return (
     <>
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <AppText center style={{ fontFamily: fonts.serif, fontSize: 22, lineHeight: 29, letterSpacing: 0.2, color: tone.ink, marginTop: 14, maxWidth: 316, alignSelf: 'center' }}>
-          {pattern(answers)}
-        </AppText>
-        <View style={{ marginTop: 18 }}>
-          <RouteMap />
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginTop: 14, paddingHorizontal: 4 }}>
-          <AppText style={[sans('600'), { fontSize: 9.5, letterSpacing: 2, textTransform: 'uppercase', color: tone.ink3 }]}>Ten grounds · twelve weeks</AppText>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 12.5, color: tone.ink2 }}>wk I–XII</AppText>
-        </View>
-      </ScrollView>
-      <View style={{ paddingTop: 14 }}>
-        <O3Note style={{ marginBottom: 13 }}>No scores. No comparisons. Just the ground, and a way across it.</O3Note>
-        <O3CTA label="Continue" onClick={next} />
-      </View>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 72, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: '#1D1C1A' }]}>
+        Your first four weeks.
+      </AppText>
+      {CAMPAIGN_WEEKS.map((_, i) => (
+        <CampaignWeekRow key={i} i={i} />
+      ))}
+      <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 642, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
+        Four weeks, one path. Move at your own pace — there&apos;s no clock.
+      </AppText>
+      <O3PaperCTA label="Show me my path" onPress={next} y={764} ls={0.3} />
     </>
   );
 }
 
-// ═════ THE REWIRE — projected curve, weeks I–XII ═════════════════════
+// ═════ 105 · THE REWIRE — how hard urges pull, weeks I–XII ═══════════
 export function O3Rewire({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
-  const tone = useTone();
-  const trig = (((answers.triggers as string[]) || [])[0] || 'late night').toLowerCase().replace(/^after /, '');
   const name = String(answers.name || '').trim();
+  const trig = (((answers.triggers as string[]) || [])[0] || 'late night').toLowerCase().replace(/^after /, '');
   return (
     <>
-      <View style={{ flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
-        <O3Eyebrow style={{ marginBottom: 12 }}>The other ending</O3Eyebrow>
-        <O3H size={26}>{name ? `${name}, your` : 'Your'} brain can rewire.</O3H>
-        <View style={{ marginTop: 26, backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 16, paddingTop: 20, paddingBottom: 10 }}>
-          <Svg width="100%" height={150} viewBox="0 0 300 150" fill="none">
-            {/* left alone — the grey drift up */}
-            <Path d="M14 58 C 90 54, 190 46, 286 34" stroke={tone.ink4} strokeWidth={1.8} strokeDasharray="2 6" strokeLinecap="round" fill="none" />
-            <SvgText x={284} y={26} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} textAnchor="end">left alone</SvgText>
-            {/* the plan — urge grip falling in three phases */}
-            <Path d="M14 62 C 46 66, 66 78, 92 88 C 140 106, 196 116, 244 121 C 260 122.5, 274 123, 286 123.5" stroke={tone.ink} strokeWidth={2.6} strokeLinecap="round" fill="none" />
-            <Circle cx={14} cy={62} r={3.4} fill={tone.ink} />
-            <Circle cx={92} cy={88} r={3} fill={tone.ink} />
-            <Circle cx={244} cy={121} r={3} fill={tone.ink} />
-            <SvgText x={20} y={44} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2}>{trig} window guarded</SvgText>
-            <SvgText x={98} y={80} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2}>urges shorten</SvgText>
-            <SvgText x={282} y={112} fontFamily={fonts.sans} fontSize={10.5} fill={tone.ink2} textAnchor="end">just Tuesday</SvgText>
-            {/* week axis */}
-            <Path d="M14 132 h272" stroke={tone.soft2} strokeWidth={1.5} strokeLinecap="round" />
-            <SvgText x={14} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>WK I</SvgText>
-            <SvgText x={105} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>III</SvgText>
-            <SvgText x={200} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6}>VIII</SvgText>
-            <SvgText x={286} y={147} fontFamily={fonts.sans} fontSize={10} fill={tone.ink3} letterSpacing={0.6} textAnchor="end">XII</SvgText>
-          </Svg>
-        </View>
-        <O3Note style={{ marginTop: 16, minHeight: 36 }}>
-          Twelve weeks of kept days — the {trig} window guarded, urges shorter each week, until an evening is just an evening.
-        </O3Note>
+      <O3PaperH top={116} inset={40}>{name ? `${name}, your brain can rewire.` : 'Your brain can rewire.'}</O3PaperH>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 196 }}>
+        <RewireCurveCard />
       </View>
-      <O3CTA label="Show me my campaign" onClick={next} />
+      <O3PaperCaption top={440}>
+        Twelve weeks of kept days — the {trig} window guarded, urges shorter each week, until an evening is just an evening.
+      </O3PaperCaption>
+      <O3PaperCTA label="Next" onPress={next} y={744} />
     </>
   );
 }
@@ -1198,7 +1635,7 @@ export function O3Rewire({ answers, next }: { answers: Record<string, string | s
 // ── the wave, ridden ─────────────────────────────────────────────────
 const WAVE_SECONDS = 20;
 const WAVE_PHASES = [
-  { at: 0.0, name: 'Notice it', tip: 'Breathe with the water. Nothing to fight.' },
+  { at: 0.0, name: 'Notice it', tip: 'Follow the water. Nothing to fight.' },
   { at: 0.24, name: 'It rises', tip: 'Let it build. You are not the wave.' },
   { at: 0.48, name: 'The crest', tip: 'This is as strong as it gets.' },
   { at: 0.68, name: 'It breaks', tip: 'Feel it recede. It always does.' },
@@ -1207,6 +1644,7 @@ const WAVE_PHASES = [
 export function O3Wave({ next }: { next: () => void }) {
   const [stage, setStage] = useState<'intro' | 'surf' | 'after' | 'medal'>('intro');
   const [pi, setPi] = useState(0);
+  const [breathPhase, setBreathPhase] = useState<BreathPhase>('inhale');
   const progressRef = useRef(0);
   const raf = useRef(0);
 
@@ -1257,15 +1695,15 @@ export function O3Wave({ next }: { next: () => void }) {
     return (
       <View style={{ flex: 1, backgroundColor: '#131313', overflow: 'hidden' }}>
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: after ? 0.2 : 1 }}>
-          <UrgeWave progressRef={progressRef} />
+          <UrgeWave progressRef={progressRef} onBreathPhaseChange={setBreathPhase} />
         </View>
         {!after ? (
-          <View style={{ position: 'absolute', top: 84, left: 0, right: 0, paddingHorizontal: 30, alignItems: 'center' }}>
+          <View style={{ position: 'absolute', top: 84, left: 0, right: 0, paddingHorizontal: 24, alignItems: 'center' }}>
             <AppText style={{ fontFamily: fonts.serif, fontSize: 30, letterSpacing: 0.24, color: '#F5F4F1', marginTop: 16 }}>{WAVE_PHASES[pi].name}</AppText>
             <AppText center style={[sans('400'), { fontSize: 13.5, lineHeight: 20, color: 'rgba(245,244,241,0.62)', marginTop: 10, paddingHorizontal: 20 }]}>{WAVE_PHASES[pi].tip}</AppText>
           </View>
         ) : (
-          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 34 }}>
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
             <Rise delay={0.6}>
               <AppText center style={{ fontFamily: fonts.serif, fontSize: 25, lineHeight: 33, color: '#F5F4F1' }}>
                 That is how a craving passes.{'\n'}It crests, and it breaks.{'\n'}You just rode one out.
@@ -1282,7 +1720,7 @@ export function O3Wave({ next }: { next: () => void }) {
         )}
         {!after ? (
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 44, alignItems: 'center' }}>
-            <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 1.6, textTransform: 'uppercase', color: 'rgba(245,244,241,0.4)' }]}>Breathe with the water</AppText>
+            <BreathCue phase={breathPhase} color="rgba(245,244,241,0.64)" />
           </View>
         ) : null}
       </View>
@@ -1293,7 +1731,6 @@ export function O3Wave({ next }: { next: () => void }) {
   return (
     <O3Shell bar={false} lit>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 30 }}>
-        <O3Eyebrow>Earned, not given</O3Eyebrow>
         <View style={{ marginTop: 34 }}>
           <Medallion size={196} />
         </View>
@@ -1325,39 +1762,32 @@ function Medallion({ size = 190 }: { size?: number }) {
   );
 }
 
-// ── pledge ───────────────────────────────────────────────────────────
+// ── 108 · the vow ────────────────────────────────────────────────────
+/** "Jun 9 · Day 0" — the stamp printed under the signature rule. */
+function vowStamp(): string {
+  const now = new Date();
+  return `${now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · Day 0`;
+}
+
 export function O3Pledge({ name, next }: { name: string; next: () => void }) {
   const [inked, setInked] = useState(false);
   return (
     <>
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
-        <O3H size={24} style={{ marginTop: 10 }}>Set your mark.</O3H>
-        <View style={{ marginTop: 20, borderRadius: 20, backgroundColor: '#F2F2F1', padding: 22 }}>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 17.5, lineHeight: 28, color: '#212121' }}>
-            I, {name || '————'}, am beginning a campaign of twelve weeks. A slip is a data point. I do not fail twice.
-          </AppText>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: 16, marginBottom: 14 }}>
-            <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(34,34,28,0.14)' }} />
-            <AppText style={[sans('600'), { fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(34,34,28,0.45)' }]}>Week I of XII</AppText>
-            <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(34,34,28,0.14)' }} />
-          </View>
-          <Pressable
-            onPress={() => setInked(true)}
-            style={{ height: 96, borderRadius: 14, borderWidth: 1.5, borderColor: 'rgba(34,34,28,0.18)', borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-            {inked ? (
-              <Svg width={160} height={54} viewBox="0 0 160 54" fill="none">
-                <Path d="M8 34 C 26 10 36 44 52 30 C 64 20 70 40 84 28 C 96 18 104 40 120 26 C 132 16 144 30 152 22" stroke="#212121" strokeWidth={2.4} strokeLinecap="round" fill="none" />
-              </Svg>
-            ) : (
-              <AppText style={[sans('500'), { fontSize: 13, color: 'rgba(34,34,28,0.4)' }]}>Sign here</AppText>
-            )}
-          </Pressable>
-        </View>
-      </ScrollView>
-      <View style={{ paddingTop: 14 }}>
-        <O3Note style={{ marginBottom: 12 }}>The get-back-up clause is part of the vow. A slip never voids it.</O3Note>
-        <O3CTA label="I set my mark" enabled={inked} onClick={next} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 76, fontSize: 22, letterSpacing: 0.1, color: '#1D1C1A' }]}>
+        The vow.
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 120, fontSize: 15.5, lineHeight: 24, color: '#55534E' }]}>
+        I&apos;m done letting the wave decide. One evening at a time, I take the watch back.
+      </AppText>
+      <View style={{ position: 'absolute', left: '50%', marginLeft: -100, top: 198 }}>
+        <VowSunArt />
       </View>
+      <View style={{ position: 'absolute', left: 36, right: 36, top: 374 }}>
+        <VowSignaturePanel name={name} date={vowStamp()} signed={inked} onSign={() => setInked(true)} onClear={() => setInked(false)} />
+      </View>
+      <O3PaperCTA label="I sign it" onPress={next} y={688} h={54} enabled={inked} />
+      {/* reading it again means signing it again — the link lifts the ink */}
+      <O3PaperLink label="Read it once more" onPress={() => setInked(false)} y={760} />
     </>
   );
 }
@@ -1368,16 +1798,16 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
 export function buildWeekXiiLetter(a: Record<string, string | string[]>): { name: string; paragraphs: string[] } {
   const name = String(a.name || '').trim();
   const t = (a.triggers as string[]) || [];
-  const trigLine = t.includes('Late at night')
+  const trigLine = t.includes('Late night')
     ? 'The late nights'
-    : t.includes('Home alone for long stretches')
+    : t.includes('Home alone')
       ? 'The long stretches alone'
-      : t.includes('After stress or a hard day')
+      : t.includes('After stress')
         ? 'The hard-day evenings'
-        : t.includes('Bored during the day')
+        : t.includes('Bored daytime')
           ? 'The slack afternoons'
           : 'The old window';
-  const emos = ((a.emotions as string[]) || []).slice(0, 2).map((x) => x.split(' or ')[0].toLowerCase());
+  const emos = ((a.emotions as string[]) || []).slice(0, 2).map((x) => x.toLowerCase());
   const emoLine = emos.length >= 2 ? `the ${emos[0]} and the ${emos[1]}` : emos.length ? `the ${emos[0]}` : 'the restlessness';
   const costs = a.impact === 'Not really' ? 'the hours, the energy, the quiet' : 'the sleep, the work, the relationships, the money';
   const prize = ['the focus', 'the evenings'];
@@ -1427,9 +1857,9 @@ export function O3Letter({ answers, next }: { answers: Record<string, string | s
 // ── Day I ────────────────────────────────────────────────────────────
 function windowFor(a: Record<string, string | string[]>): [string, string] {
   const t = (a.triggers as string[]) || [];
-  if (t.includes('Late at night') || t.includes('On my phone in bed') || t.includes('When I can’t sleep')) return ['11:00 pm', 'before the tide rises'];
-  if (t.includes('After stress or a hard day')) return ['6:00 pm', 'as the day lets go'];
-  if (t.includes('Bored during the day')) return ['9:00 pm', 'when the evening goes slack'];
+  if (t.includes('Late night') || t.includes('Phone in bed') || t.includes('Can’t sleep')) return ['11:00 pm', 'before the tide rises'];
+  if (t.includes('After stress')) return ['6:00 pm', 'as the day lets go'];
+  if (t.includes('Bored daytime')) return ['9:00 pm', 'when the evening goes slack'];
   return ['9:30 pm', 'before the quiet hours'];
 }
 export function O3DayOne({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
@@ -1508,34 +1938,25 @@ export function O3Notify({ answers, next }: { answers: Record<string, string | s
 }
 
 // ── save ─────────────────────────────────────────────────────────────
-const HOLDINGS: [string, string][] = [
-  ['Your map', 'ten grounds, routed'],
-  ['Your mark', 'the pledge, signed'],
-  ['Your letter', 'sealed for day III'],
-  ['The First Wave', 'a medallion, earned'],
-  ['Day I', 'already lit'],
-];
 export function O3Save({ next }: { next: () => void }) {
   const tone = useTone();
   return (
     <>
-      <O3Eyebrow>Deferred, on purpose</O3Eyebrow>
-      <O3H size={24} style={{ marginTop: 10 }}>Keep your campaign safe.</O3H>
-      <O3Sub style={{ marginTop: 10 }}>You now hold five things to keep.</O3Sub>
-      <View style={{ flex: 1, marginTop: 20 }}>
-        <View style={{ backgroundColor: tone.card, borderRadius: 20, paddingHorizontal: 20 }}>
-          {HOLDINGS.map(([t, s], i) => (
-            <View key={t} style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 13.5, borderBottomWidth: i < HOLDINGS.length - 1 ? 1 : 0, borderBottomColor: tone.line }}>
-              <View style={{ width: 6, height: 6, borderRadius: 9999, backgroundColor: tone.ink }} />
-              <AppText style={[sans('500'), { flex: 1, fontSize: 14, color: tone.ink }]}>{t}</AppText>
-              <AppText style={[sans('400'), { fontSize: 12, color: tone.ink3 }]}>{s}</AppText>
-            </View>
-          ))}
+      <O3H style={{ marginTop: 24 }}>Save your progress.</O3H>
+      <O3Sub>Your reflections, your log, your path — kept safe across devices.</O3Sub>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ width: 126, height: 126, borderRadius: 63, backgroundColor: tone.card, alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 1px ${tone.line}` }}>
+          <Laurel size={88} color={tone.ink} />
         </View>
       </View>
-      <View style={{ paddingTop: 16 }}>
-        <O3CTA label="Save with a passkey" onClick={next} />
-        <O3CTA ghost label="Later" onClick={next} style={{ fontSize: 12.5, color: tone.ink3 }} />
+      <View style={{ gap: 12 }}>
+        <O3CTA label="Continue with Apple" onClick={next} />
+        {['Continue with Google', 'Continue with email'].map((label) => (
+          <PressScale key={label} onPress={next} style={{ minHeight: 56, borderRadius: 28, backgroundColor: tone.card, alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 1px ${tone.soft2}` }}>
+            <AppText style={[sans('600'), { fontSize: 16.5, color: tone.ink }]}>{label}</AppText>
+          </PressScale>
+        ))}
+        <O3Note>By continuing, you agree to our terms of service and privacy policy.</O3Note>
       </View>
     </>
   );
@@ -1601,7 +2022,7 @@ export function O3Paywall({ answers, next, onFree }: { answers: Record<string, s
             <AppText style={[sans('600'), { fontSize: 13.5, color: tone.ink }]}>Continue with the free tools</AppText>
           </Pressable>
         </View>
-        <O3Note style={{ marginTop: 11 }}>The urge tool is free forever. Price is the price: no timers, no “deals.”</O3Note>
+        <O3Note style={{ marginTop: 11 }}>Price is the price: no timers, no “deals.”</O3Note>
       </View>
     </>
   );

@@ -1,406 +1,596 @@
+import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
-import { type LayoutChangeEvent, Pressable, ScrollView, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
+import { View, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Path } from 'react-native-svg';
+import Svg, { Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { AppText, bandToSeverity, Button, Icon, type IconName, IntensityBands, INTENSITY_BANDS } from '@/components/ui';
+import {
+  AppText,
+  BackGlyph,
+  bandToSeverity,
+  CheckGlyph,
+  CloseGlyph,
+  INTENSITY_BANDS,
+  OutcomeDistracted,
+  OutcomeReachedOut,
+  OutcomeRodeOut,
+  OutcomeSlipped,
+  OutcomeTimer,
+  PressScale,
+  TriggerMark,
+  type TriggerMarkName,
+} from '@/components/ui';
 import { useCreateEvent } from '@/lib/backend';
 import { setJSON } from '@/lib/storage';
-import { colors, fonts, sans, spacing } from '@/lib/theme';
+import { colors, sans } from '@/lib/theme';
 import type { EventType } from '@/lib/types';
 
-// ── "Log an urge" (canvas: screens-urge-log) — the record-keeping
-// companion to urge surfing: how strong, what set it off, what you did,
-// when — landing on a quiet confirmation. Neutral ink scale throughout.
+/**
+ * 044–048 · Urge log — strength, trigger, outcome, when, logged.
+ *
+ * Laid out in the canvas's 393 × 852 frame. The status bar ends at 54, so every
+ * canvas `top` below is written as `top − 54` and measured from the top of the
+ * safe area; the primary pill sits at canvas 744, which is 16pt of breathing
+ * room under a 58pt button above the home indicator.
+ *
+ * The lapse flow (030–032) is the same sheet with one bar fewer, so the chrome,
+ * the trigger grid, the time wheel and the logged card are exported from here
+ * rather than drawn twice — see `src/app/lapse.tsx`.
+ */
 
-const BANDS = ['Faint', 'Mild', 'Strong', 'Intense', 'Overwhelming'];
-const bandIndex = (t: number) => Math.min(BANDS.length - 1, Math.round(t * (BANDS.length - 1)));
-// pale → richest ink as the pull grows (no hue swing)
-const TONES = ['#C9C6BE', '#A9A69D', '#8B8882', '#5E5B55', '#33312D'];
+const noiseDark = require('../../assets/images/noise-dark.png');
 
-const TRIGGERS: { label: string; icon: IconName }[] = [
-  { label: 'Stress', icon: 'pulse' },
-  { label: 'Boredom', icon: 'mood' },
-  { label: 'Lonely', icon: 'people' },
-  { label: 'Tired', icon: 'moon' },
-  { label: 'Social', icon: 'people' },
-  { label: 'Phone', icon: 'book' },
-  { label: 'Late night', icon: 'moon' },
-  { label: 'Argument', icon: 'heart' },
-  { label: 'Craving', icon: 'sparkle' },
+export const TRIGGERS: { label: string; mark: TriggerMarkName }[] = [
+  { label: 'Stress', mark: 'stress' },
+  { label: 'Boredom', mark: 'boredom' },
+  { label: 'Lonely', mark: 'lonely' },
+  { label: 'Tired', mark: 'tired' },
+  { label: 'Social', mark: 'social' },
+  { label: 'Phone', mark: 'phone' },
+  { label: 'Late night', mark: 'lateNight' },
+  { label: 'Argument', mark: 'argument' },
+  { label: 'Craving', mark: 'craving' },
 ];
 
-const OUTCOMES: { label: string; note: string; icon: IconName; slip?: boolean; type: EventType }[] = [
-  { label: 'Rode it out', note: 'Waited; it passed', icon: 'wave', type: 'urge_rode_out' },
-  { label: 'Used the timer', note: 'The breathing exercise', icon: 'anchor', type: 'urge_rode_out' },
-  { label: 'Did something else', note: 'Changed the scene', icon: 'compass', type: 'urge_rode_out' },
-  { label: 'Told someone', note: 'Reached out', icon: 'heart', type: 'urge_rode_out' },
-  { label: 'I slipped', note: 'It happened', icon: 'moon', slip: true, type: 'urge_acted_on' },
+type OutcomeMark = (props: { color: string }) => React.ReactElement;
+
+const OUTCOMES: { label: string; mark: OutcomeMark; slip?: boolean; type: EventType }[] = [
+  { label: 'Rode it out', mark: OutcomeRodeOut, type: 'urge_rode_out' },
+  { label: 'Surfed with the timer', mark: OutcomeTimer, type: 'urge_rode_out' },
+  { label: 'Distracted myself', mark: OutcomeDistracted, type: 'urge_rode_out' },
+  { label: 'Reached out', mark: OutcomeReachedOut, type: 'urge_rode_out' },
+  { label: 'I slipped', mark: OutcomeSlipped, slip: true, type: 'urge_acted_on' },
 ];
 
-const WHEN_CHIPS = [
+export const WHEN_CHIPS = [
   { label: 'Just now', offsetMs: 0 },
   { label: 'Earlier today', offsetMs: 4 * 3600_000 },
   { label: 'Yesterday', offsetMs: 24 * 3600_000 },
-];
+] as const;
 
-export default function UrgeLog() {
-  const router = useRouter();
-  const createEvent = useCreateEvent();
-  const [step, setStep] = useState(0);
-  const [intensity, setIntensity] = useState<number | null>(null);
-  const [triggers, setTriggers] = useState<string[]>([]);
-  const [outcome, setOutcome] = useState(0);
-  const [when, setWhen] = useState(0);
-  const [saving, setSaving] = useState(false);
+const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
-  const back = () => (step === 0 ? close() : setStep(step - 1));
-
-  async function save() {
-    setSaving(true);
-    const out = OUTCOMES[outcome];
-    await createEvent({
-      type: out.type,
-      severity: bandToSeverity(intensity ?? 2),
-      trigger: triggers.length ? triggers.join(' · ') : undefined,
-      whatHelped: out.slip ? undefined : out.label,
-      createdAt: Date.now() - WHEN_CHIPS[when].offsetMs,
-    });
-    if (out.slip) await setJSON('tideline.letter.pending', Date.now());
-    else await setJSON('tideline.post.backondeck.pending', Date.now());
-    setSaving(false);
-    setStep(4);
-  }
-
+/** Back · the step bars · close. Absolute so each lands on its canvas y. */
+export function FlowTop({ index, steps, onBack, onClose }: { index: number; steps: number; onBack: () => void; onClose: () => void }) {
   return (
-    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1, backgroundColor: colors.bg }}>
-      {step < 4 ? <Top index={step} onBack={back} onClose={close} /> : null}
-
-      {step === 0 ? (
-        <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading>How strong was the urge?</Heading>
-          <ScrollView style={{ flex: 1, marginTop: 26 }} showsVerticalScrollIndicator={false}>
-            <IntensityBands value={intensity} onSelect={setIntensity} />
-          </ScrollView>
-          <View style={{ paddingVertical: 24, opacity: intensity == null ? 0.35 : 1 }}>
-            <Button label="Continue" onPress={() => (intensity != null ? setStep(1) : undefined)} />
-          </View>
-        </View>
-      ) : null}
-
-      {step === 1 ? (
-        <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading sub="Tap anything that fed the wave.">What set it off?</Heading>
-          <ScrollView style={{ flex: 1, marginTop: 26 }} showsVerticalScrollIndicator={false}>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-              {TRIGGERS.map((t) => {
-                const on = triggers.includes(t.label);
-                return (
-                  <Pressable
-                    key={t.label}
-                    onPress={() => setTriggers(on ? triggers.filter((x) => x !== t.label) : [...triggers, t.label])}
-                    style={{
-                      width: '31%',
-                      flexGrow: 1,
-                      alignItems: 'center',
-                      gap: 10,
-                      paddingVertical: 18,
-                      paddingHorizontal: 8,
-                      borderRadius: 18,
-                      backgroundColor: colors.surface,
-                      borderWidth: 1.8,
-                      borderColor: on ? colors.ink : 'transparent',
-                    }}>
-                    <View
-                      style={{
-                        width: 46,
-                        height: 46,
-                        borderRadius: 9999,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: on ? colors.ink : colors.accentSoft,
-                      }}>
-                      <Icon name={t.icon} size={24} color={on ? colors.inkText : colors.text} strokeWidth={1.8} />
-                    </View>
-                    <AppText style={[sans('500'), { fontSize: 14, color: colors.text }]}>{t.label}</AppText>
-                  </Pressable>
-                );
-              })}
-            </View>
-          </ScrollView>
-          <View style={{ paddingVertical: 20 }}>
-            <Button
-              label={triggers.length ? `Continue · ${triggers.length}` : 'Continue'}
-              onPress={() => setStep(2)}
-              disabled={triggers.length === 0}
-            />
-          </View>
-        </View>
-      ) : null}
-
-      {step === 2 ? (
-        <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading sub="Just the truth.">What did you do?</Heading>
-          <View style={{ flex: 1, justifyContent: 'center', gap: 10, marginTop: 12 }}>
-            {OUTCOMES.map((o, i) => {
-              const on = outcome === i;
-              const ring = on ? (o.slip ? colors.danger : colors.ink) : colors.border;
-              return (
-                <Pressable
-                  key={o.label}
-                  onPress={() => setOutcome(i)}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 14,
-                    paddingVertical: 16,
-                    paddingHorizontal: 18,
-                    borderRadius: 18,
-                    backgroundColor: colors.surface,
-                    borderWidth: on ? 1.8 : 1.5,
-                    borderColor: ring,
-                  }}>
-                  <View
-                    style={{
-                      width: 42,
-                      height: 42,
-                      borderRadius: 12,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: on ? (o.slip ? 'rgba(181,98,79,0.18)' : colors.ink) : colors.accentSoft,
-                    }}>
-                    <Icon name={o.icon} size={22} color={on ? (o.slip ? colors.danger : colors.inkText) : colors.textMuted} strokeWidth={1.8} />
-                  </View>
-                  <View style={{ flex: 1 }}>
-                    <AppText style={[sans('500'), { fontSize: 15, color: colors.text }]}>{o.label}</AppText>
-                    <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, marginTop: 1 }]}>{o.note}</AppText>
-                  </View>
-                  <View
-                    style={{
-                      width: 22,
-                      height: 22,
-                      borderRadius: 9999,
-                      borderWidth: on ? 0 : 2,
-                      borderColor: colors.borderStrong,
-                      backgroundColor: on ? (o.slip ? colors.danger : colors.ink) : 'transparent',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    {on ? (
-                      <Svg width={13} height={13} viewBox="0 0 24 24" fill="none">
-                        <Path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                      </Svg>
-                    ) : null}
-                  </View>
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={{ paddingVertical: 20 }}>
-            <Button label="Continue" onPress={() => setStep(3)} />
-          </View>
-        </View>
-      ) : null}
-
-      {step === 3 ? (
-        <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-          <Heading>When was it?</Heading>
-          <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center', marginTop: 24, flexWrap: 'wrap' }}>
-            {WHEN_CHIPS.map((c, i) => (
-              <Pressable
-                key={c.label}
-                onPress={() => setWhen(i)}
-                style={{
-                  paddingVertical: 13,
-                  paddingHorizontal: 20,
-                  borderRadius: 9999,
-                  backgroundColor: when === i ? colors.ink : colors.surface,
-                }}>
-                <AppText style={[sans('500'), { fontSize: 14 }]} color={when === i ? colors.inkText : colors.text}>
-                  {c.label}
-                </AppText>
-              </Pressable>
-            ))}
-          </View>
-          <View style={{ flex: 1 }} />
-          <View style={{ paddingVertical: 20 }}>
-            <Button label="Log the urge" onPress={save} loading={saving} />
-          </View>
-        </View>
-      ) : null}
-
-      {step === 4 ? <Done intensity={intensity ?? 2} triggers={triggers} outcome={outcome} onClose={close} /> : null}
-    </SafeAreaView>
-  );
-}
-
-// ── top bar: back · segmented progress · close ───────────────────────
-function Top({ index, onBack, onClose }: { index: number; onBack: () => void; onClose: () => void }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: spacing.xl + 5, paddingTop: 8 }}>
-      <Pressable onPress={onBack} hitSlop={10} accessibilityLabel="Back">
-        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
-          <Path d="M15 5l-7 7 7 7" stroke={colors.text} strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
-      </Pressable>
-      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
-        {Array.from({ length: 4 }).map((_, i) => (
-          <View key={i} style={{ width: 36, height: 4, borderRadius: 9999, backgroundColor: i <= index ? colors.ink : 'rgba(0,0,0,0.1)' }} />
+    <>
+      <PressScale
+        onPress={onBack}
+        accessibilityRole="button"
+        accessibilityLabel="Back"
+        hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
+        style={{ position: 'absolute', left: 16, top: 12, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+        <BackGlyph color="#55534E" />
+        <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+      </PressScale>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 20, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
+        {Array.from({ length: steps }, (_, bar) => (
+          <View key={bar} style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: bar <= index ? '#131313' : 'rgba(0,0,0,0.14)' }} />
         ))}
       </View>
-      <Pressable onPress={onClose} hitSlop={10} accessibilityLabel="Close">
-        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
-          <Path d="M6 6l12 12M18 6L6 18" stroke={colors.text} strokeWidth={2.1} strokeLinecap="round" />
-        </Svg>
-      </Pressable>
-    </View>
+      <PressScale
+        onPress={onClose}
+        accessibilityRole="button"
+        accessibilityLabel="Close"
+        hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+        style={{ position: 'absolute', right: 22, top: 16, minHeight: 0 }}>
+        <CloseGlyph color="#55534E" size={20} />
+      </PressScale>
+    </>
   );
 }
 
-function Heading({ children, sub }: { children: string; sub?: string }) {
+/** The one question each step asks, on its own balanced two-line box. */
+export function Heading({ children }: { children: string }) {
   return (
-    <View style={{ alignItems: 'center', marginTop: 26 }}>
-      <AppText center style={{ fontFamily: fonts.serif, fontSize: 26, lineHeight: 30, letterSpacing: 0.26, color: colors.text }}>
-        {children}
+    <AppText
+      center
+      style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 84, fontSize: 22, lineHeight: 30, letterSpacing: 0.1, color: '#1D1C1A' }]}>
+      {children}
+    </AppText>
+  );
+}
+
+export function PrimaryButton({ label, onPress, enabled = true }: { label: string; onPress: () => void; enabled?: boolean }) {
+  return (
+    <PressScale
+      onPress={enabled ? onPress : undefined}
+      disabled={!enabled}
+      accessibilityRole="button"
+      style={{ height: 58, borderRadius: 29, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center', opacity: enabled ? 1 : 0.34 }}>
+      <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.2, color: '#FFFFFF' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+// ── 034 · how strong ─────────────────────────────────────────────────
+
+/** Five 48px discs; the chosen one floods ink and wears a paper-gapped ring. */
+function IntensityScale({ value, onSelect }: { value: number; onSelect: (index: number) => void }) {
+  return (
+    <>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 276, flexDirection: 'row', justifyContent: 'space-between' }}>
+        {INTENSITY_BANDS.map((band, index) => {
+          const on = value === index;
+          return (
+            <PressScale
+              key={band.label}
+              onPress={() => onSelect(index)}
+              accessibilityRole="radio"
+              accessibilityLabel={band.label}
+              accessibilityState={{ checked: on }}
+              hitSlop={{ top: 16, bottom: 16, left: 8, right: 8 }}
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 24,
+                backgroundColor: on ? '#131313' : '#FFFFFF',
+                boxShadow: on ? '0 0 0 2px #F4F3F0, 0 0 0 4px #131313' : 'inset 0 0 0 1.5px rgba(0,0,0,0.12)',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              {on ? <View style={{ width: 11, height: 11, borderRadius: 5.5, backgroundColor: '#F4F3F0' }} /> : null}
+            </PressScale>
+          );
+        })}
+      </View>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
+        <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>Faint</AppText>
+        <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>Overwhelming</AppText>
+      </View>
+      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 406, fontSize: 19, color: '#1D1C1A' }]}>
+        {INTENSITY_BANDS[value].label}
       </AppText>
-      {sub ? (
-        <AppText center variant="muted" style={{ fontSize: 13.5, lineHeight: 19.5, marginTop: 10, marginHorizontal: 14 }}>
-          {sub}
-        </AppText>
-      ) : null}
-    </View>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 436, fontSize: 13.5, color: '#8B8882' }]}>
+        {INTENSITY_BANDS[value].note}
+      </AppText>
+    </>
   );
 }
 
-// ── the intensity sea — calm bands that curl into a dark crest ───────
-function IntensityScene({ t }: { t: number }) {
-  const tone = TONES[bandIndex(t)];
-  // the crest rises with the pull: amplitude 6 → 44
-  const amp = 6 + t * 38;
-  const y = 96;
-  const d = `M10 ${y} C 60 ${y - amp * 1.9} 105 ${y - amp * 1.6} 140 ${y - amp * 0.4} C 170 ${y + amp * 0.35} 205 ${y + 4} 230 ${y + 2}`;
+// ── 035 · what set it off ────────────────────────────────────────────
+
+export const GRID_GUTTER = 24;
+export const GRID_GAP = 12;
+
+/** Three trigger tiles a row on any width — the canvas grid is `1fr 1fr 1fr`. */
+export function triggerTileWidth(screenWidth: number): number {
+  return Math.floor((screenWidth - GRID_GUTTER * 2 - GRID_GAP * 2) / 3);
+}
+
+export function TriggerCard({ label, mark, selected, onPress, width }: { label: string; mark: TriggerMarkName; selected: boolean; onPress: () => void; width: number }) {
   return (
-    <Svg width={240} height={132} viewBox="0 0 240 132" fill="none">
-      {/* horizon */}
-      <Path d={`M6 ${y + 22} h228`} stroke={colors.textSofter} strokeWidth={1.8} strokeLinecap="round" opacity={0.55} />
-      {/* the swell */}
-      <Path d={d} stroke={tone} strokeWidth={3.4} strokeLinecap="round" fill="none" />
-      {/* under-swell echo */}
-      <Path d={`M24 ${y + 12} C 70 ${y + 12 - amp * 0.7} 120 ${y + 12 - amp * 0.4} 216 ${y + 10}`} stroke={tone} strokeWidth={2.2} strokeLinecap="round" opacity={0.35} fill="none" />
-      {/* buoy: upright when calm, spray dot when heavy */}
-      <Circle cx={62} cy={y - amp * 1.32} r={3.4} fill={colors.surface} stroke={tone} strokeWidth={1.4} />
-    </Svg>
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked: selected }}
+      style={{
+        width,
+        height: 112,
+        borderRadius: 18,
+        backgroundColor: '#FFFFFF',
+        boxShadow: selected ? '0 0 0 1.8px #131313' : '0 0 0 1px rgba(0,0,0,0.10)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 10,
+      }}>
+      <View style={{ width: 46, height: 46, borderRadius: 23, backgroundColor: selected ? '#131313' : '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
+        <TriggerMark name={mark} color={selected ? '#F4F3F0' : '#1D1C1A'} />
+      </View>
+      <AppText style={[sans(selected ? '600' : '500'), { fontSize: 14, color: '#1D1C1A' }]}>{label}</AppText>
+    </PressScale>
   );
 }
 
-// ── draggable band slider — grayscale ramp track, pill thumb ─────────
-function IntensitySlider({ value, onChange }: { value: number; onChange: (v: number) => void }) {
-  const width = useRef(0);
-  const handle = (x: number) => {
-    if (width.current > 0) onChange(clamp(x / width.current));
-  };
+// ── 036 · what did you do ────────────────────────────────────────────
 
-  const idx = bandIndex(value);
+function OutcomeRow({ item, selected, top, onPress }: { item: (typeof OUTCOMES)[number]; selected: boolean; top: number; onPress: () => void }) {
   return (
-    <View>
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
+        height: 64,
+        borderRadius: 18,
+        backgroundColor: '#FFFFFF',
+        boxShadow: selected ? '0 0 0 1.8px #131313' : '0 0 0 1px rgba(0,0,0,0.10)',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 14,
+        paddingHorizontal: 18,
+      }}>
       <View
-        onLayout={(e: LayoutChangeEvent) => (width.current = e.nativeEvent.layout.width)}
-        onStartShouldSetResponder={() => true}
-        onMoveShouldSetResponder={() => true}
-        onResponderGrant={(e) => handle(e.nativeEvent.locationX)}
-        onResponderMove={(e) => handle(e.nativeEvent.locationX)}
-        style={{ height: 44, justifyContent: 'center' }}>
-        {/* grayscale ramp track (segments approximate the gradient) */}
-        <View style={{ flexDirection: 'row', height: 6, borderRadius: 9999, overflow: 'hidden' }}>
-          {TONES.map((c, i) => (
-            <View key={i} style={{ flex: 1, backgroundColor: c, opacity: 0.9 }} />
-          ))}
-        </View>
-        <View
-          pointerEvents="none"
-          style={{
-            position: 'absolute',
-            left: `${value * 100}%`,
-            marginLeft: -13,
-            width: 26,
-            height: 32,
-            borderRadius: 11,
-            backgroundColor: '#FFFFFF',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 2.5,
-          }}>
-          <View style={{ width: 1.5, height: 10, borderRadius: 1, backgroundColor: 'rgba(0,0,0,0.13)' }} />
-          <View style={{ width: 1.5, height: 10, borderRadius: 1, backgroundColor: 'rgba(0,0,0,0.13)' }} />
-        </View>
+        style={{
+          width: 42,
+          height: 42,
+          borderRadius: 12,
+          backgroundColor: selected ? '#131313' : '#F1EFE9',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <item.mark color={selected ? '#F4F3F0' : '#55534E'} />
       </View>
-      <View style={{ flexDirection: 'row', marginTop: 14 }}>
-        {BANDS.map((b, i) => (
-          <AppText key={b} center style={[sans('500'), { flex: 1, fontSize: 11.5, color: i === idx ? colors.text : colors.textSoft }]}>
-            {b}
-          </AppText>
-        ))}
+      <AppText style={[sans(selected ? '600' : '500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{item.label}</AppText>
+      <View
+        style={{
+          width: 22,
+          height: 22,
+          borderRadius: 11,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: selected ? '#131313' : 'transparent',
+          boxShadow: selected ? undefined : 'inset 0 0 0 2px rgba(0,0,0,0.18)',
+        }}>
+        {selected ? <CheckGlyph color="#FFFFFF" size={13} /> : null}
       </View>
-    </View>
+    </PressScale>
   );
 }
 
-function clamp(x: number) {
-  return Math.max(0, Math.min(1, x));
-}
+// ── 037 · when was it ────────────────────────────────────────────────
 
-// ── done — quiet confirmation + summary card ─────────────────────────
-function Done({ intensity, triggers, outcome, onClose }: { intensity: number; triggers: string[]; outcome: number; onClose: () => void }) {
-  const out = OUTCOMES[outcome];
-  const slip = !!out.slip;
+/** Rows fade by how far they sit from the picked one: 1 · 0.42 · 0.16 and out. */
+const WHEEL_FADE = [1, 0.42, 0.16];
+
+function WheelColumn({ width, values, pick = 2, onStep }: { width: number; values: string[]; pick?: number; onStep: (delta: number) => void }) {
   return (
-    <View style={{ flex: 1, paddingHorizontal: spacing.xl + 5 }}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {/* settled water under a small moon */}
-        <Svg width={200} height={110} viewBox="0 0 200 110" fill="none">
-          <Circle cx={100} cy={34} r={20} fill={slip ? colors.textSofter : colors.text} opacity={slip ? 0.6 : 0.85} />
-          <Path d="M18 78 C 45 70 72 70 100 78 C 128 86 155 86 182 78" stroke={colors.textMuted} strokeWidth={2.6} strokeLinecap="round" />
-          <Path d="M34 94 C 57 88 79 88 100 94 C 121 100 143 100 166 94" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" opacity={0.45} />
-        </Svg>
-        <AppText center style={{ fontFamily: fonts.serif, fontSize: 33, lineHeight: 36, letterSpacing: 0.33, color: colors.text, marginTop: 22 }}>
-          Urge logged.
-        </AppText>
-        <AppText center variant="muted" style={{ fontSize: 13.5, lineHeight: 19.5, marginTop: 14, marginHorizontal: 10 }}>
-          {slip ? 'It happened. The next choice is the one that counts.' : 'Each one adds to your pattern data.'}
-        </AppText>
+    <View style={{ width }}>
+      {values.map((value, row) => (
+        <PressScale
+          key={row}
+          onPress={() => onStep(row - pick)}
+          disabled={value === '' || row === pick}
+          accessibilityRole="button"
+          accessibilityLabel={value}
+          style={{ height: 34, minHeight: 0, alignItems: 'center', justifyContent: 'center' }}>
+          <AppText
+            style={[
+              sans(row === pick ? '500' : '400'),
+              { fontSize: row === pick ? 21 : 18, color: '#1D1C1A', opacity: WHEEL_FADE[Math.min(Math.abs(row - pick), 2)] },
+            ]}>
+            {value}
+          </AppText>
+        </PressScale>
+      ))}
+    </View>
+  );
+}
 
-        <View style={{ width: '100%', marginTop: 28, backgroundColor: colors.surface, borderRadius: 18, paddingVertical: 4, paddingHorizontal: 20 }}>
-          <SummaryRow label="Intensity" value={INTENSITY_BANDS[intensity].label} />
-          <SummaryRow label="Set off by" value={triggers.length ? triggers.join(' · ') : '—'} />
-          <SummaryRow label="What I did" value={out.label} last />
-        </View>
+export function TimeWheel({ at, today, onShift, onCancel, onSave }: { at: number; today: number; onShift: (ms: number) => void; onCancel: () => void; onSave: () => void }) {
+  const picked = new Date(at);
+  const hour12 = picked.getHours() % 12 || 12;
+  const pm = picked.getHours() >= 12;
+  const nowDay = new Date(today);
+  const dates = [-2, -1, 0, 1, 2].map((step) => {
+    const day = new Date(at);
+    day.setDate(day.getDate() + step);
+    const isToday = day.getFullYear() === nowDay.getFullYear() && day.getMonth() === nowDay.getMonth() && day.getDate() === nowDay.getDate();
+    return isToday ? 'Today' : `${WEEKDAY[day.getDay()]} ${MONTH[day.getMonth()]} ${day.getDate()}`;
+  });
+  const hours = [-2, -1, 0, 1, 2].map((step) => String(((hour12 - 1 + step + 12) % 12) + 1));
+  const minutes = [-2, -1, 0, 1, 2].map((step) => String((picked.getMinutes() + step + 60) % 60).padStart(2, '0'));
+  // 037 fills the meridiem column from the top — AM in row 0, PM in row 1, the
+  // rest blank — so the pair sits one row above the highlight band, not on it.
+  const meridiem = ['AM', 'PM', '', '', ''];
+
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top: 276,
+        borderRadius: 20,
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.10)',
+        overflow: 'hidden',
+      }}>
+      <View style={{ paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', justifyContent: 'center' }}>
+        {/* five 34pt rows inside 8pt padding is a 186pt box, so the canvas's
+            centred 36pt band lands at 93 − 18 */}
+        <View style={{ position: 'absolute', left: 12, right: 12, top: 75, height: 36, borderRadius: 10, backgroundColor: 'rgba(0,0,0,0.045)' }} />
+        <WheelColumn width={132} values={dates} onStep={(delta) => onShift(delta * 86_400_000)} />
+        <WheelColumn width={42} values={hours} onStep={(delta) => onShift(delta * 3_600_000)} />
+        <WheelColumn width={48} values={minutes} onStep={(delta) => onShift(delta * 60_000)} />
+        <WheelColumn width={42} values={meridiem} pick={pm ? 1 : 0} onStep={(delta) => onShift(delta * 12 * 3_600_000)} />
       </View>
-      <View style={{ paddingBottom: 8, paddingTop: 16 }}>
-        <Button label="Done" onPress={onClose} />
+      <View style={{ flexDirection: 'row', borderTopWidth: 1, borderTopColor: 'rgba(0,0,0,0.09)' }}>
+        <PressScale onPress={onCancel} accessibilityRole="button" style={{ flex: 1, minHeight: 0, paddingVertical: 15, alignItems: 'center' }}>
+          <AppText style={[sans('400'), { fontSize: 16, color: '#55534E' }]}>Cancel</AppText>
+        </PressScale>
+        <View style={{ width: 1, backgroundColor: 'rgba(0,0,0,0.09)' }} />
+        <PressScale onPress={onSave} accessibilityRole="button" style={{ flex: 1, minHeight: 0, paddingVertical: 15, alignItems: 'center' }}>
+          <AppText style={[sans('600'), { fontSize: 15.5, color: '#131313' }]}>Save</AppText>
+        </PressScale>
       </View>
     </View>
   );
 }
 
-function SummaryRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
+// ── 038 · logged ─────────────────────────────────────────────────────
+
+/** The logged mark: a leaf of a notebook, a pen laid across it, a check badge. */
+export function LoggedNote() {
+  return (
+    <View style={{ position: 'absolute', left: 86, top: 76, width: 220, height: 160 }}>
+      {/* the canvas's warm glow is already a two-stop closest-side ramp, so it
+          transfers literally; its 4px blur only rounds the kink at 74% by ~2px */}
+      <Svg width={130} height={130} style={{ position: 'absolute', left: 44, top: 6 }}>
+        <Defs>
+          <RadialGradient id="urgelog-glow" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.36} />
+            <Stop offset="0.74" stopColor="#E2BA78" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={65} cy={65} rx={65} ry={65} fill="url(#urgelog-glow)" />
+      </Svg>
+      {/* the ground shadow is a flat rgba(0,0,0,0.10) ellipse the canvas blurs by
+          4px — RN SVG has no blur filter, so it is redrawn as a radial falloff */}
+      <Svg width={120} height={12} style={{ position: 'absolute', left: 50, top: 134 }}>
+        <Defs>
+          <RadialGradient id="urgelog-ground" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#000000" stopOpacity={0.1} />
+            <Stop offset="0.6" stopColor="#000000" stopOpacity={0.055} />
+            <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={60} cy={6} rx={60} ry={6} fill="url(#urgelog-ground)" />
+      </Svg>
+      <View style={{ position: 'absolute', left: 48, top: 38, width: 126, height: 94, borderRadius: 10, backgroundColor: '#E0DFDA', transform: [{ rotate: '-2deg' }] }} />
+      <View
+        style={{
+          position: 'absolute',
+          left: 54,
+          top: 32,
+          width: 114,
+          height: 94,
+          borderRadius: 8,
+          backgroundColor: '#F7F6F2',
+          boxShadow: '0 0 0 1px rgba(0,0,0,0.05)',
+          transform: [{ rotate: '-2deg' }],
+        }}
+      />
+      <View style={{ position: 'absolute', left: 110, top: 34, width: 2, height: 88, backgroundColor: '#E0DFDA', transform: [{ rotate: '-2deg' }] }} />
+      <View style={{ position: 'absolute', left: 66, top: 54, width: 34, height: 4, borderRadius: 2, backgroundColor: '#E0DFDA' }} />
+      <View style={{ position: 'absolute', left: 66, top: 68, width: 34, height: 4, borderRadius: 2, backgroundColor: '#E0DFDA' }} />
+      <View style={{ position: 'absolute', left: 122, top: 52, width: 34, height: 4, borderRadius: 2, backgroundColor: '#E0DFDA' }} />
+      {/* the pen pivots on its left end, which RN has no origin token for — the
+          rotation is bracketed by ±half-width translates instead */}
+      <View
+        style={{
+          position: 'absolute',
+          left: 140,
+          top: 84,
+          width: 64,
+          height: 8,
+          borderRadius: 4,
+          backgroundColor: '#55534E',
+          transform: [{ translateX: -32 }, { rotate: '-28deg' }, { translateX: 32 }],
+        }}
+      />
+      <View style={{ position: 'absolute', left: 170, top: 26, width: 30, height: 30, borderRadius: 15, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
+        <Svg width={13} height={13} viewBox="0 0 14 14" fill="none">
+          <Path d="M2.5 7.5l3 3 6-7" stroke="#F4F3F0" strokeWidth={2.2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+      </View>
+    </View>
+  );
+}
+
+export function SummaryRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
   return (
     <View
       style={{
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: 14,
-        paddingVertical: 14,
+        paddingVertical: 15,
         borderBottomWidth: last ? 0 : 1,
         borderBottomColor: 'rgba(0,0,0,0.06)',
       }}>
-      <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 1.54, textTransform: 'uppercase', color: colors.textSoft }]}>
-        {label}
+      <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>{label}</AppText>
+      {/* the canvas value box hugs its text against the right padding edge, so
+          it only shrinks — it never claims the row's spare width */}
+      <AppText numberOfLines={2} style={[sans('500'), { flexShrink: 1, fontSize: 14.5, color: '#1D1C1A', textAlign: 'right' }]}>
+        {value}
       </AppText>
-      <AppText style={[sans('500'), { fontSize: 14.5, color: colors.text, textAlign: 'right', flexShrink: 1 }]}>{value}</AppText>
+    </View>
+  );
+}
+
+export default function UrgeLog() {
+  const router = useRouter();
+  const createEvent = useCreateEvent();
+  const [step, setStep] = useState(0);
+  // The scale has no empty state on the canvas; 034 inks the 4th disc, Intense.
+  const [intensity, setIntensity] = useState(3);
+  const [triggers, setTriggers] = useState<string[]>([]);
+  const [outcome, setOutcome] = useState(0);
+  const [when, setWhen] = useState(0);
+  const [showWheel, setShowWheel] = useState(false);
+  // A time nudged on the wheel outranks the chips until Cancel puts it back.
+  const [customAt, setCustomAt] = useState<number | null>(null);
+  const [saving, setSaving] = useState(false);
+  // Read once: the wheel must not slide under a re-render while it is open.
+  const [now] = useState(() => Date.now());
+  const { width: screenWidth } = useWindowDimensions();
+  const triggerTile = triggerTileWidth(screenWidth);
+  const at = customAt ?? now - WHEN_CHIPS[when].offsetMs;
+
+  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
+  const back = () => (step === 0 ? close() : setStep((current) => current - 1));
+  const toggleTrigger = (label: string) => setTriggers((current) => (current.includes(label) ? current.filter((item) => item !== label) : [...current, label]));
+
+  async function save() {
+    setSaving(true);
+    const item = OUTCOMES[outcome];
+    await createEvent({
+      type: item.type,
+      severity: bandToSeverity(intensity),
+      trigger: triggers.length ? triggers.join(' · ') : undefined,
+      whatHelped: item.slip ? undefined : item.label,
+      createdAt: at,
+    });
+    if (item.slip) await setJSON('tideline.letter.pending', Date.now());
+    else await setJSON('tideline.post.backondeck.pending', Date.now());
+    setSaving(false);
+    setStep(4);
+  }
+
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <StatusBar style="dark" />
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+
+      <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          {step < 4 ? <FlowTop index={step} steps={4} onBack={back} onClose={close} /> : null}
+
+          {step === 0 ? (
+            <>
+              <Heading>How strong was the urge?</Heading>
+              <IntensityScale value={intensity} onSelect={setIntensity} />
+            </>
+          ) : null}
+
+          {step === 1 ? (
+            <>
+              <Heading>What set it off?</Heading>
+              <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 132, fontSize: 14.5, color: '#55534E' }]}>
+                Tap all that apply.
+              </AppText>
+              <View style={{ position: 'absolute', left: GRID_GUTTER, right: GRID_GUTTER, top: 180, flexDirection: 'row', flexWrap: 'wrap', gap: GRID_GAP }}>
+                {TRIGGERS.map((item) => (
+                  <TriggerCard key={item.label} {...item} width={triggerTile} selected={triggers.includes(item.label)} onPress={() => toggleTrigger(item.label)} />
+                ))}
+              </View>
+            </>
+          ) : null}
+
+          {step === 2 ? (
+            <>
+              <Heading>What did you do?</Heading>
+              {OUTCOMES.map((item, index) => (
+                <OutcomeRow key={item.label} item={item} selected={outcome === index} top={156 + index * 76} onPress={() => setOutcome(index)} />
+              ))}
+            </>
+          ) : null}
+
+          {step === 3 ? (
+            <>
+              <Heading>When was it?</Heading>
+              <View style={{ position: 'absolute', left: 0, right: 0, top: 152, flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
+                {WHEN_CHIPS.map((chip, index) => {
+                  const on = customAt == null && when === index;
+                  return (
+                    <PressScale
+                      key={chip.label}
+                      onPress={() => {
+                        setWhen(index);
+                        setCustomAt(null);
+                      }}
+                      accessibilityRole="radio"
+                      accessibilityState={{ checked: on }}
+                      hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+                      style={{
+                        minHeight: 0,
+                        paddingVertical: 13,
+                        paddingHorizontal: 20,
+                        borderRadius: 24,
+                        backgroundColor: on ? '#131313' : '#FFFFFF',
+                        boxShadow: on ? undefined : '0 0 0 1px rgba(0,0,0,0.10)',
+                      }}>
+                      <AppText style={[sans('500'), { fontSize: 14, color: on ? '#FFFFFF' : '#1D1C1A' }]}>{chip.label}</AppText>
+                    </PressScale>
+                  );
+                })}
+              </View>
+              <PressScale
+                onPress={() => setShowWheel((open) => !open)}
+                accessibilityRole="button"
+                hitSlop={{ top: 16, bottom: 16, left: 40, right: 40 }}
+                style={{ position: 'absolute', left: 0, right: 0, top: 222, minHeight: 0, alignItems: 'center' }}>
+                <AppText style={[sans('500'), { fontSize: 14, color: '#55534E' }]}>Specify time</AppText>
+              </PressScale>
+              {showWheel ? (
+                <TimeWheel
+                  at={at}
+                  today={now}
+                  onShift={(ms) => setCustomAt((current) => (current ?? at) + ms)}
+                  onCancel={() => {
+                    setCustomAt(null);
+                    setShowWheel(false);
+                  }}
+                  onSave={() => setShowWheel(false)}
+                />
+              ) : null}
+            </>
+          ) : null}
+
+          {step === 4 ? (
+            <>
+              <LoggedNote />
+              <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 262, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+                Urge logged.
+              </AppText>
+              <View
+                style={{
+                  position: 'absolute',
+                  left: 24,
+                  right: 24,
+                  top: 322,
+                  borderRadius: 18,
+                  backgroundColor: '#FFFFFF',
+                  boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+                  paddingVertical: 4,
+                  paddingHorizontal: 20,
+                }}>
+                <SummaryRow label="Intensity" value={INTENSITY_BANDS[intensity].label} />
+                <SummaryRow label="Set off by" value={triggers.length ? triggers.join(' · ') : '—'} />
+                <SummaryRow label="What I did" value={OUTCOMES[outcome].label} last />
+              </View>
+            </>
+          ) : null}
+        </View>
+
+        <View style={{ paddingHorizontal: 24, paddingBottom: 16 }}>
+          {step === 0 ? <PrimaryButton label="Continue" onPress={() => setStep(1)} /> : null}
+          {step === 1 ? (
+            <PrimaryButton label={triggers.length ? `Continue · ${triggers.length}` : 'Continue'} enabled={triggers.length > 0} onPress={() => setStep(2)} />
+          ) : null}
+          {step === 2 ? <PrimaryButton label="Continue" onPress={() => setStep(3)} /> : null}
+          {step === 3 ? <PrimaryButton label={saving ? 'Logging…' : 'Log the urge'} enabled={!saving} onPress={() => void save()} /> : null}
+          {step === 4 ? <PrimaryButton label="Done" onPress={close} /> : null}
+        </View>
+      </SafeAreaView>
     </View>
   );
 }

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VICI — Part 2 screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,400;6..72,0,500;6..72,0,600;6..72,1,400;6..72,1,500&family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+<style>
+  /* ── Saans — drop licensed .woff2 files into assets/fonts/ and these light up;
+     until then the stack falls back to Hanken Grotesk (closest loaded voice) ── */
+  @font-face { font-family: 'Saans'; src: url('assets/fonts/Saans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('assets/fonts/Saans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('assets/fonts/Saans-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('assets/fonts/Saans-Bold.woff2') format('woff2'); font-weight: 700 800; font-display: swap; }
+  /* ── onboarding v2 · night tide theme — scoped variable override ── */
+  .o2-night {
+    --bg: #0A0E14; --bg2: #0D1219; --bg-deep: #080B10;
+    --card: #161D26; --card-2: #1E2630; --card-solid: #121922;
+    --ink: #EAF2F1; --ink2: #9FB0B3; --ink3: #64757B; --ink4: #414F55;
+    --line: rgba(255,255,255,0.09); --hair: rgba(255,255,255,0.08);
+    --soft: rgba(255,255,255,0.055); --soft2: rgba(255,255,255,0.13);
+    --fill: #159E92; --on-fill: #F0FCFA; --on-fill-2: rgba(240,252,250,0.7);
+    --accent: #2BD4C0; --accent-2: #6FE8D8; --warm: #159E92; --warm2: #2BD4C0;
+    --danger: #D97862; --elev: #10161E;
+    --glass: #0C1118; --glass-edge: transparent;
+    --shadow-card: 0 0 rgba(0,0,0,0);
+    --shadow-pop: 0 0 rgba(0,0,0,0);
+    --shadow-fill: 0 0 rgba(0,0,0,0);
+    color-scheme: dark;
+  }
+  .o2-night .tl-grain { opacity: calc(var(--grain) * 0.35); }
+  /* ── onboarding v3 · night register — monochrome dark (no hue accents):
+     the funnel opens on night water and daylight arrives at the reading ── */
+  .o3-night {
+    --bg: #09090A; --bg2: #0B0B0C; --bg-deep: #070708;
+    --card: #151516; --card-2: #1A1A1C; --card-solid: #111112;
+    --ink: #EDEDE8; --ink2: #A6A7A0; --ink3: #6C6D66; --ink4: #43443F;
+    --line: rgba(255,255,255,0.1); --hair: rgba(255,255,255,0.08);
+    --soft: rgba(255,255,255,0.055); --soft2: rgba(255,255,255,0.14);
+    --fill: #EDEDE8; --on-fill: #131313; --on-fill-2: rgba(19,19,19,0.62);
+    --accent: #EDEDE8; --accent-2: #FFFFFF;
+    --glass: #101216; --glass-edge: transparent;
+    color-scheme: dark;
+  }
+  @keyframes o2-swell { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+  @keyframes o2-tick { 0% { opacity: 0; transform: translateY(7px) scale(.9); } 100% { opacity: 1; transform: none; } }
+  @keyframes o2-gauge { from { stroke-dashoffset: var(--o2-gfrom, 260); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .o2-swell { animation: o2-swell 12s ease-in-out infinite; transform-origin: center bottom; }
+    .o2-tick { animation: o2-tick .5s cubic-bezier(.2,.9,.3,1) both; }
+    .o2-gauge { animation: o2-gauge 1.2s cubic-bezier(.3,.8,.2,1) both; }
+  }
+  :root {
+    /* paper canvas — VICI's monochrome serif system, unified with the Today home screen */
+    --bg: #F4F3F0;
+    --bg2: #F0EFEB;
+    --bg-deep: #EBE9E5;
+    --card: #FFFFFF;
+    --card-2: #FFFFFF;
+    --card-solid: #FFFFFF;
+    --ink: #1D1C1A;
+    --ink2: #55534E;
+    --ink3: #8B8882;
+    --ink4: #B4B1AB;
+    --line: rgba(0,0,0,0.09);
+    --hair: rgba(0,0,0,0.08);
+    --soft: rgba(0,0,0,0.045);
+    --soft2: rgba(0,0,0,0.1);
+
+    /* neutral ink fill — matches the home screen's #131313 dark exactly */
+    --warm: #131313;
+    --warm2: #0D0D0D;
+    --fill: #131313;
+    --on-fill: #F5F4F1;
+    --on-fill-2: rgba(245,244,241,0.7);
+
+    /* kept as a single muted neutral — no hue accents app-wide */
+    --accent: #131313;
+    --accent-2: #0D0D0D;
+
+    --halo: 1;            /* ambient-motion intensity multiplier */
+    --elev: #EFEEEA;
+    --danger: #B5624F;
+    --kbd-bg: #E8E7E3;
+    --kbd-key: #FFFFFF;
+    --kbd-ink: #1D1C1A;
+    --radius: 18px;
+
+    /* ── elevation — removed: fully flat, solid cards ── */
+    --shadow-card: 0 0 rgba(0,0,0,0);
+    --shadow-pop: 0 0 rgba(0,0,0,0);
+    --shadow-fill: 0 0 rgba(0,0,0,0);
+    --shadow-knob: 0 0 rgba(0,0,0,0);
+    /* flat ink fill — both endpoints resolve to the solid fill */
+    --fill-hi: var(--fill);
+    --fill-lo: var(--fill);
+    /* solid paper for floating chrome (was frosted glass) */
+    --glass: #F8F7F4;
+    --glass-edge: transparent;
+    --grain: 1;
+    --font: 'Gill Sans', 'Gill Sans MT', 'Gill Sans Nova', 'Trebuchet MS', Calibri, sans-serif;
+    --font-display: 'EB Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    /* headline identity font — EB Garamond, matching the home screen's "Day XXIV" */
+    --serif: 'EB Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    --serif-tint: #55534E;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #F4F3F0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+  body { font-optical-sizing: auto; }
+  button { font-family: inherit; -webkit-font-smoothing: antialiased; }
+  /* raw <b>/<strong> render at 700 by default — keep emphasis a step quieter */
+  b, strong { font-weight: 600; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  /* ── micro-interactions: springy press on tappables ── */
+  .tl-press { transition: transform .16s cubic-bezier(.34,1.45,.6,1), box-shadow .22s ease, background .2s ease, opacity .2s ease, border-color .2s ease; }
+  .tl-press:active { transform: scale(0.965); }
+  .tl-press-soft { transition: transform .18s cubic-bezier(.34,1.45,.6,1), box-shadow .22s ease, background .2s ease, opacity .2s ease, border-color .2s ease; }
+  .tl-press-soft:active { transform: scale(0.985); }
+  /* stats & counters read best with lining tabular figures */
+  .tnum { font-variant-numeric: lining-nums tabular-nums; }
+  /* blinking text caret for live-keyboard mockups */
+  @keyframes tl-caret { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .tl-caret { animation: tl-caret 1.15s steps(1) infinite; }
+  }
+  /* solid paper chrome — the floating-bar material (blur removed) */
+  .tl-glass { background: var(--glass); }
+  /* faint paper grain laid over each screen — physicality at 3% */
+  .tl-grain { position: absolute; inset: 0; z-index: 80; pointer-events: none; opacity: calc(var(--grain) * 0.6);
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.32 0 0 0 0 0.31 0 0 0 0 0.26 0 0 0 0.055 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .gicofit svg { width: 100% !important; height: 100% !important; }
+  /* world-list card art: fluid width, cropped by the card */
+  .wla svg { width: 100%; height: auto; display: block; }
+  @keyframes ci-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .ci-breathe { animation: ci-breathe 6s ease-in-out infinite; transform-origin: center; }
+  }
+  @keyframes onb-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes onb-draw { to { stroke-dashoffset: 0; } }
+  @keyframes onb-drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(6%, 4%) scale(1.08); } }
+  @keyframes onb-drift2 { 0%,100% { transform: translate(0,0) scale(1.05); } 50% { transform: translate(-5%, -3%) scale(1); } }
+  @keyframes onb-twinkle { 0%,100% { opacity: .18; } 50% { opacity: .55; } }
+  @keyframes onb-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+  @keyframes onb-bob2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+  @keyframes onb-sun { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.05); opacity: 1; } }
+  @keyframes onb-pulse { 0% { transform: scale(.6); opacity: .5; } 70%,100% { transform: scale(2.4); opacity: 0; } }
+  @keyframes onb-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .onb-rise { animation: onb-rise .6s ease both; }
+    .onb-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: onb-draw 1.3s .2s ease forwards; }
+    .onb-drift { animation: onb-drift 22s ease-in-out infinite; }
+    .onb-drift2 { animation: onb-drift2 26s ease-in-out infinite; }
+    .onb-twinkle { animation: onb-twinkle 4s ease-in-out infinite; }
+    .onb-bob { animation: onb-bob 6s ease-in-out infinite; transform-origin: center; }
+    .onb-bob2 { animation: onb-bob2 7.5s ease-in-out infinite; transform-origin: center; }
+    .onb-sun { animation: onb-sun 7s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+    .onb-pulse { animation: onb-pulse 3s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+    .onb-spin { animation: onb-spin 14s linear infinite; transform-origin: center; transform-box: fill-box; }
+  }
+  @keyframes onb-pop { 0% { transform: scale(1); } 38% { transform: scale(1.035); } 100% { transform: scale(1); } }
+  @keyframes onb-float { 0% { transform: translateY(26px) scale(.7); opacity: 0; } 16% { opacity: .55; } 82% { opacity: .4; } 100% { transform: translateY(-138px) scale(1); opacity: 0; } }
+  @keyframes onb-confetti { 0% { transform: translateY(-30px) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(580px) rotate(620deg); opacity: 0; } }
+  @keyframes onb-stamp { 0% { transform: scale(1.7); opacity: 0; } 58% { transform: scale(.93); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes onb-bloom { 0% { transform: scale(.35); opacity: .55; } 100% { transform: scale(2.7); opacity: 0; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .onb-pop { animation: onb-pop .32s ease; }
+    .onb-float { animation-name: onb-float; animation-timing-function: linear; animation-iteration-count: infinite; }
+    .onb-confetti { animation-name: onb-confetti; animation-timing-function: linear; animation-iteration-count: infinite; }
+    .onb-stamp { animation: onb-stamp .5s cubic-bezier(.2,1.3,.4,1) both; }
+    .onb-bloom { animation: onb-bloom 1.5s ease-out forwards; transform-origin: center; transform-box: fill-box; }
+  }
+  /* image-slot placeholders, themed for the paper canvas */
+  image-slot { --slot-bg: rgba(0,0,0,0.035); --slot-fg: #9C9C92; --slot-border: rgba(0,0,0,0.12); border-radius: 22px; }
+  @keyframes cc-twinkle { 0%,100% { opacity: .25; } 50% { opacity: .9; } }
+  @keyframes cc-orbit { to { transform: rotate(360deg); } }
+  @keyframes cc-glow { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.04); } }
+  @keyframes cc-pulse { 0% { transform: scale(0.92); opacity: 0; } 28% { opacity: 0.16; } 100% { transform: scale(1.5); opacity: 0; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .cc-twinkle { animation: cc-twinkle 4.5s ease-in-out infinite; }
+    .cc-orbit { animation: cc-orbit 42s linear infinite; transform-origin: center; transform-box: fill-box; }
+    .cc-glow { animation: cc-glow 7s ease-in-out infinite; transform-origin: center; }
+    .cc-pulse { animation: cc-pulse 3.6s ease-out infinite; transform-origin: center; }
+  }
+  @keyframes urge-breath { 0%, 100% { transform: translateX(-50%) scale(0.82); opacity: 0.7; } 50% { transform: translateX(-50%) scale(1.12); opacity: 1; } }
+  @keyframes urge-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes urge-leave { 0% { transform: translateX(0); opacity: 0; } 12% { opacity: 1; } 70% { opacity: 1; } 100% { transform: translateX(152px); opacity: 0; } }
+  @keyframes urge-ring { 0% { transform: scale(0.32); opacity: 0; } 16% { opacity: 0.55; } 100% { transform: scale(1.95); opacity: 0; } }
+  @keyframes urge-bob { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .urge-breath { animation: urge-breath 5.5s ease-in-out infinite; }
+    .urge-fade { animation: urge-fade .6s ease both; }
+    .urge-leave { animation: urge-leave 3.6s ease-in-out infinite; }
+    .urge-ring { animation: urge-ring 3s ease-out infinite; }
+    .urge-bob { animation: urge-bob 1.1s ease-in-out infinite; transform-origin: center bottom; }
+  }
+  /* ── the day-3 letter: delivery, seal, flap, unfold ── */
+  @keyframes ltr-dim { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ltr-drop { 0% { opacity: 0; transform: translateY(-46px) rotate(-4deg) scale(.93); } 62% { opacity: 1; } 100% { opacity: 1; transform: translateY(-54%) rotate(0deg) scale(1); } }
+  @keyframes ltr-hover { 0%, 100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(-1.1deg) translateY(-5px); } }
+  @keyframes ltr-seal-crack { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 42% { transform: scale(1.18) rotate(-9deg); opacity: 1; } 100% { transform: scale(1.5) rotate(-19deg); opacity: 0; } }
+  @keyframes ltr-flap { to { transform: rotateX(-178deg); } }
+  @keyframes ltr-out { to { transform: translateY(-108px); } }
+  @keyframes ltr-away { 0% { opacity: 1; transform: translateY(-54%) scale(1); } 100% { opacity: 0; transform: translateY(calc(-54% + 74px)) scale(.93); } }
+  @keyframes ltr-sheet { 0% { opacity: 0; transform: translateY(30px) scale(.952); } 100% { opacity: 1; transform: none; } }
+  @keyframes ltr-sheen { 0% { transform: translateX(-130%) rotate(9deg); opacity: 0; } 18% { opacity: .55; } 100% { transform: translateX(250%) rotate(9deg); opacity: 0; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .ltr-dim { animation: ltr-dim .55s ease both; }
+    .ltr-drop { animation: ltr-drop .8s cubic-bezier(.24,1.24,.42,1) both; }
+    .ltr-drop-slow { animation: onb-rise .8s ease .35s both; }
+    .ltr-hover { animation: ltr-hover 5.5s ease-in-out infinite; }
+    .ltr-seal-crack { animation: ltr-seal-crack .55s ease-in both; }
+    .ltr-flap { animation: ltr-flap .62s cubic-bezier(.4,0,.2,1) .3s both; }
+    .ltr-out { animation: ltr-out .72s cubic-bezier(.3,.7,.2,1) .64s both; }
+    .ltr-away { animation: ltr-away .48s ease-in 1.02s both; }
+    .ltr-sheet { animation: ltr-sheet .75s cubic-bezier(.22,1.12,.36,1) both; }
+    .ltr-line { animation: onb-rise .75s ease both; }
+    .ltr-sheen { animation: ltr-sheen 2.3s ease .5s both; }
+  }
+  /* ── onboarding v3 + motion vocabulary — the monochrome reward axis ──
+     ink bleed · letterpress stamp · engraving etch · deepening · held beat */
+  @keyframes o3-bleed { 0% { clip-path: circle(0% at 50% 50%); } 72% { clip-path: circle(52% at 50% 50%); } 100% { clip-path: circle(102% at 50% 50%); } }
+  @keyframes o3-drawpath { to { stroke-dashoffset: 0; } }
+  @keyframes o3-strike { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes o3-stampk { 0% { opacity: 0; transform: scale(1.14); filter: blur(1.5px); } 55% { opacity: 1; transform: scale(0.985); filter: blur(0); } 100% { opacity: 1; transform: scale(1); filter: blur(0); } }
+  @keyframes o3-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+  @keyframes o3-rulegrowk { from { width: 0; } to { width: 40px; } }
+  @keyframes o3-dimk { to { opacity: 0.2; } }
+  @keyframes o3-pulsek { 0% { opacity: 0.55; transform: scale(1); } 100% { opacity: 0; transform: scale(1.22); } }
+  @keyframes o3-sealk { 0% { opacity: 0; transform: scale(1.5); } 55% { opacity: 1; transform: scale(0.94); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes mv-ping { 0% { opacity: 0.7; transform: scale(1); } 100% { opacity: 0; transform: scale(2.1); } }
+  @keyframes mv-travel { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+  .o3-rulegrow { width: 40px; }
+  .o3-pulse-once, .mv-ping, .mv-travel { opacity: 0; }
+  .o3-strike { transform-origin: left center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .o3-bleed { animation: o3-bleed .3s cubic-bezier(.3,.7,.3,1) both; }
+    .o3-check { stroke-dasharray: 1; stroke-dashoffset: 1; animation: o3-drawpath .24s ease-out .16s forwards; }
+    .o3-etch { stroke-dasharray: 1; stroke-dashoffset: 1; animation: o3-drawpath .8s cubic-bezier(.4,0,.3,1) both; }
+    .o3-strike { animation: o3-strike .3s ease-out .18s both; }
+    .o3-stamp { animation: o3-stampk .5s cubic-bezier(.2,.9,.3,1) both; }
+    .o3-riseline { animation: o3-rise .55s ease both; }
+    .o3-reflect { animation: o3-rise .7s ease both; }
+    .o3-rulegrow { animation: o3-rulegrowk .5s ease-out both; }
+    .o3-dim { animation: o3-dimk .9s ease forwards; }
+    .o3-pulse-once { animation: o3-pulsek .5s ease-out both; transform-origin: center; transform-box: fill-box; }
+    .o3-seal { animation: o3-sealk .5s cubic-bezier(.2,1.1,.3,1) both; }
+    .mv-ping { animation: mv-ping .9s ease-out both; }
+    .mv-travel { animation: mv-travel 2.2s ease-in-out both; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#F3F2ED"/>
+    <text x="51.5" y="56" font-family="Georgia, serif" font-size="15" font-weight="500" fill="#22221C" text-anchor="middle" letter-spacing="3">VICI</text>
+  </svg>
+</template>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="image-slot.js"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="stoic-kit.jsx"></script>
+<script type="text/babel" src="scenes-core.jsx"></script>
+<script type="text/babel" src="scenes-mood.jsx"></script>
+<script type="text/babel" src="screens-home.jsx"></script>
+<script type="text/babel" src="screens-home-v2.jsx"></script>
+<script type="text/babel" src="screens-home-stoic.jsx"></script>
+<script type="text/babel" src="screens-letter.jsx"></script>
+<script type="text/babel" src="screens-checkin.jsx"></script>
+<script type="text/babel" src="screens-urge.jsx"></script>
+<script type="text/babel" src="screens-urge-log.jsx"></script>
+<script type="text/babel" src="screens-auth.jsx"></script>
+<script type="text/babel" src="screens-money.jsx"></script>
+<script type="text/babel" src="screens-journal.jsx"></script>
+<script type="text/babel" src="screens-notify.jsx"></script>
+<script type="text/babel" src="screens-account.jsx"></script>
+<script type="text/babel" src="screens-analytics.jsx"></script>
+<script type="text/babel" src="screens-depth.jsx"></script>
+<script type="text/babel" src="screens-keepsakes.jsx"></script>
+<script type="text/babel" src="screens-curriculum.jsx"></script>
+<script type="text/babel" src="screens-lesson.jsx"></script>
+<script type="text/babel" src="screens-log-hub.jsx"></script>
+<script type="text/babel" src="screens-worlds-art.jsx"></script>
+<script type="text/babel" src="screens-worlds.jsx"></script>
+<script type="text/babel" src="screens-onb-art.jsx"></script>
+<script type="text/babel" src="screens-onb-extra.jsx"></script>
+<script type="text/babel" src="screens-onb.jsx"></script>
+<script type="text/babel" src="screens-onb2.jsx"></script>
+<script type="text/babel" src="screens-onb2b.jsx"></script>
+<script type="text/babel" src="screens-onb3.jsx"></script>
+<script type="text/babel" src="screens-onb3-map.jsx"></script>
+<script type="text/babel" src="screens-onb3-tool.jsx"></script>
+<script type="text/babel" src="motion-vocab.jsx"></script>
+<script type="text/babel" src="reward-loop.jsx"></script>
+
+<script type="text/babel">
+const { useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "font": "Garamond",
+  "accent": "#131313",
+  "glow": 1,
+  "grain": true,
+  "motif": "moon",
+  "checkinVisual": "weather",
+  "moodColor": "vivid",
+  "onbOpening": "tide",
+  "onbCelebrate": "medium",
+  "onbTheme": "paper",
+  "onb3Map": "route",
+  "onb3Sky": true
+}/*EDITMODE-END*/;
+
+const W = 402, H = 874;
+
+// each screen wrapped in the device bezel, sized to the artboard
+// light state for the device chrome; App refreshes this each render
+let CURRENT_DARK = false;
+
+function Frame({ Screen, dark }) {
+  return (
+    <IOSDevice width={W} height={H} dark={dark === undefined ? CURRENT_DARK : dark}>
+      <div style={{ position: 'absolute', inset: 0 }}>
+        <Screen />
+        <div className="tl-grain"></div>
+      </div>
+    </IOSDevice>
+  );
+}
+// NOTE: boards that used to force dark=true (urge surfing, relapse) now
+// render light by default too — the whole app lives in one paper system.
+// Pass dark explicitly only for a screen that's intentionally still dark.
+
+// plain factory — returns a DCArtboard ELEMENT so DCSection recognises it by type
+function board(id, label, Screen, dark) {
+  return (
+    <DCArtboard id={id} label={label} width={W} height={H}>
+      <Frame Screen={Screen} dark={dark} />
+    </DCArtboard>
+  );
+}
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  CURRENT_DARK = false;
+  window.CURRENT_GLOW = t.glow;
+  window.CURRENT_MOTIF = t.motif;
+  window.CURRENT_CHECKIN = { kind: t.checkinVisual, vivid: t.moodColor === 'vivid' };
+  window.CURRENT_ONB = { opening: t.onbOpening, celebrate: t.onbCelebrate };
+  window.CURRENT_ONB2 = { theme: t.onbTheme || 'paper' };
+  window.CURRENT_ONB3 = { map: t.onb3Map || 'route', sky: t.onb3Sky !== false };
+
+  useEffect(() => {
+    const r = document.documentElement.style;
+    document.documentElement.dataset.theme = 'light';
+    document.body.style.background = '#F4F3F0';
+    const GILL = "'Gill Sans', 'Gill Sans MT', 'Gill Sans Nova', 'Trebuchet MS', Calibri, sans-serif";
+    const GARAMOND = "'EB Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif";
+    const NEWSREADER = "'Newsreader', 'Iowan Old Style', Georgia, serif";
+    const SPECTRAL = "'Spectral', Georgia, serif";
+    // display serif × Gill Sans body — the home screen's pairing
+    const PAIRS = {
+      'Garamond': [GARAMOND, GILL],
+      'Newsreader': [NEWSREADER, GILL],
+      'Spectral': [SPECTRAL, GILL],
+    };
+    const [disp, body] = PAIRS[t.font] || PAIRS['Garamond'];
+    r.setProperty('--font-display', disp);
+    r.setProperty('--font', body);
+    r.setProperty('--serif', disp);
+    r.setProperty('--accent', t.accent);
+    r.setProperty('--accent-2', t.accent);
+    r.setProperty('--fill', t.accent);
+    r.setProperty('--warm', t.accent);
+    r.setProperty('--halo', `${t.glow}`);
+    r.setProperty('--grain', t.grain ? '1' : '0');
+  }, [t.font, t.accent, t.glow, t.grain]);
+
+  return (
+    <React.Fragment>
+      <DesignCanvas>
+        <DCSection id="home" title="Today · home" subtitle="The daily home: parchment ground, EB Garamond serif voice, Gill Sans caps, engraved b&w line icons, and a flat edge-to-edge nav. This is the system now applied across the whole app.">
+          {board("today-home", "Today · the home screen", TodayScreen)}
+          {board("today-home-moods", "Today · scrolled — your week moods", TodayScreenMoods)}
+          {board("today-home-v2", "Today · whisker-style redesign", TodayScreenV2)}
+          {board("today-home-stoic", "Today · serif study (b&w, VICI content)", HomeStoicScreen)}
+          {board("today-home-stoic-bottom", "Today · week + nav detail", HomeStoicBottomScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>The home screen the rest of the app now matches — warm paper ground, thin-line nav, neutral ink accents throughout.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="letter" title="The letter · day three" subtitle="A sealed letter from day-zero you, delivered over the home screen 72 hours in. Break the wax — the flap lifts, the note rises out and unfolds into a serif letter, then tucks itself into your Log.">
+          {board("letter-live", "Live · delivery → break the seal → read → keep", LetterFlow)}
+          {board("letter-arrival", "Delivery · sealed over Today", LetterArrivalScreen)}
+          {board("letter-read", "Reading · the unfolded letter", LetterReadScreen)}
+          <DCPostIt top={-8} left={-150} rotate={2}>The letter is written by the user — their onboarding “why” becomes the underlined line. Wax seal cracks, the flap swings back in 3D, and the note slides out before the sheet unfolds. Next deliveries: day 7, day 30.</DCPostIt>
+        </DCSection>
+        <DCSection id="onboarding-v3" title="Onboarding v3 · the campaign funnel" subtitle="The overhaul-spec build, merged with v2's best: Threshold → Privacy oath → about-you (name · age · identity) → the assessment with steady reflections → The reading (pattern + campaign map, ×3 treatments) → the wave, ridden → pledge → letter → Day I → pre-screened notifications → deferred save → Plus with a visible free path → a Today that's already his. The canvas opens on solid black; light gathers in slow gradients — no sun, no scene — and breaks to paper exactly at the reading. Cut per the spec: the dependency score, comparison stats, the OTO countdown, fake discounts. Progress is one growing ink rule; days and weeks in Roman numerals.">
+          {board("onb3-live", "Live flow · threshold → Day I (branching)", Onboarding3Flow)}
+          {board("onb3-threshold", "1 · Threshold — the promise, one line", O3Board_Threshold)}
+          {board("onb3-privacy", "2 · Privacy oath — early on purpose", O3Board_Privacy)}
+          {board("onb3-door", "3 · The door (kept from v2)", O3Board_Door)}
+          {board("onb3-name", "3b · About you — name, alias ok", O3Board_Name)}
+          {board("onb3-triggers", "Q · Triggers + steady reflection", O3Board_Triggers)}
+          {board("onb3-costs", "Q · The cost, named", O3Board_Costs)}
+          {board("onb3-streaks", "Interstitial · a streak resets, a campaign doesn't", O3Board_Streaks)}
+          {board("onb3-pause", "4 · The reading — constructed pause", O3Board_Pause)}
+          {board("onb3-reading-route", "4a · The reading — THE ROUTE (profile)", O3Board_ReadingRoute)}
+          {board("onb3-reading-chart", "4b · The reading — THE CHART (plotted)", O3Board_ReadingChart)}
+          {board("onb3-reading-contents", "4c · The reading — THE CONTENTS (bookplate)", O3Board_ReadingContents)}
+          {board("onb3-wave-intro", "5 · First tool — the one move", O3Board_WaveIntro)}
+          {board("onb3-wave-surf", "5a · The wave, ridden (live water)", O3Board_WaveSurf)}
+          {board("onb3-wave-after", "5b · Deepening — the truth stamps in", O3Board_WaveAfter)}
+          {board("onb3-wave-medal", "5c · The First Wave — medallion etches", O3Board_WaveMedal)}
+          {board("onb3-pledge", "6 · The pledge — set your mark", O3Board_Pledge)}
+          {board("onb3-letter", "7 · The letter — three lines to week XII", O3Board_Letter)}
+          {board("onb3-dayone", "8 · Day I begins + the quiet word", O3Board_DayOne)}
+          {board("onb3-notify", "9 · Notifications, pre-screened", O3Board_Notify)}
+          {board("onb3-save", "10 · Save your campaign (deferred)", O3Board_Save)}
+          {board("onb3-paywall", "11 · Plus — visible free path", O3Board_Paywall)}
+          {board("onb3-landing", "Landing · Today, already his — Day I", O3Board_Landing)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>The merge: v2's door, reflections, streak chart and signature survive; the score gauge, “higher than 68%”, the 5-minute countdown and the 80%-off badge are gone — the reading converts on recognition, not diagnosis. Cold open → wave complete runs under 4 minutes (the wave is compressed to 33s in this prototype; ships at 75s).</DCPostIt>
+          <DCPostIt top={-8} left={-150} rotate={2}>Reward axis is never color: the pick floods ink, the reading draws itself, the wave completion recedes to 20% while one line stamps at full ink, the medallion etches in over ~1.2s with a double-pulse seal. Flip the map treatment in Tweaks → Campaign map.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="motion-vocab" title="Motion & reward vocabulary · Phase 3" subtitle="The app is black and white, so reward feedback comes from four channels instead of hue: darkness (contrast), craft (drawn detail), touch (haptics), time (pace). Five live specimens — this is the entire vocabulary, reused verbatim across the app. Nothing shakes, bounces, bursts, or changes color.">
+          {board("mv-inkbleed", "I · Ink bleed — the everyday reward", MVInkBleedScreen)}
+          {board("mv-letterpress", "II · Letterpress stamp + wax seal", MVLetterpressScreen)}
+          {board("mv-etch", "III · Engraving draw-in — milestones", MVEtchScreen)}
+          {board("mv-deepening", "IV · Deepening + the held beat", MVDeepeningScreen)}
+          {board("mv-haptics", "V · Haptic choreography — the palette", MVHapticsScreen)}
+          <DCPostIt top={-8} left={-150} rotate={2}>Every specimen is tappable — the ink bleed toggles, the stamp and etch replay, the deepening runs its full recede → hold → rule → recover cycle. Timing/easing/haptic notes ride the foot of each board, ready to lift into DESIGN_NOTES.md.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="reward-loop" title="The daily loop · earned quiet · Phase 5" subtitle="Trigger → action → reward → investment, with the reward register held to earned quiet: the ink fill, the week strip darkening, the numeral climbing. A slip logs in the same calm grammar as a win; keepsakes are for real actions only.">
+          {board("rl-daily", "The day is kept — live loop reward", RLDailyLoopScreen)}
+          {board("rl-slip", "A slip, logged — same calm UI", RLSlipScreen)}
+          {board("rl-keepsake", "A keepsake, earned — ×10 tier pip", RLKeepsakeScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-2}>Tap the last step on the live board: ink bleed → the week strip's Friday floods → the rest recedes while “The day is kept.” holds its beat → tomorrow's numeral is promised, not fireworks. The slip screen holds the line — no red, no reset, “Don't fail twice.”</DCPostIt>
+        </DCSection>
+
+        <DCSection id="onboarding" title="Onboarding · the funnel v2" subtitle="The 38-screen spec build: Hook → Quiz → Mirror → Reframe → Plan → Vow → Investment → Day Zero. VICI's paper system with the faceted scene illustrations (flip to the night-tide theme in Tweaks); one question per screen, single-selects auto-advance, every answer echoed back later by name. Live flow first — it branches on the S1 arrival chips (relapsed / cycling / resolved / curious) and skips or fires screens accordingly.">
+          {board("onb2-live", "Live flow · all 38 screens, branching", Onboarding2Flow, true)}
+          {board("onb2-door", "S1 · The door — what brought you here tonight?", O2Board_Door, true)}
+          {board("onb2-promise", "S2 · The promise (register-matched opener)", O2Board_Promise, true)}
+          {board("onb2-vault", "S3b · The vault — privacy promise", O2Board_Vault, true)}
+          {board("onb2-escalation", "S9 · Escalation (the signature question)", O2Board_Escalation, true)}
+          {board("onb2-valid", "S10 · Validation interstitial", O2Board_Valid1, true)}
+          {board("onb2-methods", "S11b · Method history", O2Board_Methods, true)}
+          {board("onb2-streaks", "S11c · Why streaks fail (brand-defining)", O2Board_Streaks, true)}
+          {board("onb2-reframe", "S13 · The relapse reframe", O2Board_Reframe, true)}
+          {board("onb2-costs", "S15 · What it's been costing you", O2Board_Costs, true)}
+          {board("onb2-analysis", "S18 · Analysis ritual", O2Board_Analysis, true)}
+          {board("onb2-score", "S19 · Dependency score reveal", O2Board_Score)}
+          {board("onb2-mirror", "S20 · Symptom mirror — his own words", O2Board_Mirror)}
+          {board("onb2-proof", "S21 · Men like him (matched proof)", O2Board_Proof)}
+          {board("onb2-prognosis", "S22 · Prognosis — the recovery curve", O2Board_Prognosis)}
+          {board("onb2-tide", "S25 · The tide (brand-defining)", O2Board_Tide)}
+          {board("onb2-method", "S26 · What actually works", O2Board_Method)}
+          {board("onb2-plan", "S28 · Plan reveal — 90-Day Rewire", O2Board_Plan)}
+          {board("onb2-quitdate", "S29 · Quit date — today is Day 1", O2Board_QuitDate)}
+          {board("onb2-vow", "S30 · Signature commitment", O2Board_Vow)}
+          {board("onb2-oto", "S33 · One-time offer", O2Board_OTO)}
+          {board("onb2-paywall", "S34 · Main paywall — buy back", O2Board_Paywall)}
+          {board("onb2-trial", "S35 · Trial fallback", O2Board_Trial)}
+          {board("onb2-letter", "S36 · Letter to your future self", O2Board_Letter)}
+          {board("onb2-fromfuture", "S36b · A letter FROM Day-90 you", O2Board_FromFuture)}
+          {board("onb2-panic", "S37 · Arm the panic button", O2Board_Panic)}
+          {board("onb2-dayzero", "S38 · First recovery points", O2Board_DayZero)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>Emotional arc per the spec: Seen → Understood → Diagnosed → Hopeful → Committed → Invested. S1 is a multi-select mirror (relapsed+resolved is the money segment); S12 is skipped when he already said it at the door; S13 fires only on a recent relapse; the paywall lands at peak hope.</DCPostIt>
+          <DCPostIt top={-8} left={-150} rotate={2}>Score is a real rubric over frequency × escalation × attempts × costs × duration; the countdown is honest (“shows once”); the vow contains the get-back-up clause so day-9 never becomes a shame bomb. Paper theme by default — the night-tide variant survives as a scoped override in Tweaks.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="log-hub" title="Log · one door in" subtitle="The Log tab's new front door: a chooser asks what you're capturing — a daily check-in, an urge, a moment, or a journal entry — then hands off to the matching flow. Closing or finishing any flow lands back here.">
+          {board("log-chooser-live", "Live · choose → log → back", LogHubFlow)}
+          {board("log-chooser", "The chooser · what are you logging?", LogChooserScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>One entry point instead of four scattered ones. Each option routes to a flow that already exists — check-in, urge log, moment, journal — so nothing is duplicated. Try the live board: every X and every Done returns to the chooser.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="checkin" title="Daily check-in" subtitle="Mood slider → the words for it → what's behind it. The central visual morphs by mood.">
+          {board("checkin-live", "Live flow · slide → words → reasons", CheckInScreen)}
+          {board("mood-low", "Mood · Low", MoodLowScreen)}
+          {board("mood-down", "Mood · Down", MoodDownScreen)}
+          {board("mood-fine", "Mood · Okay", MoodFineScreen)}
+          {board("mood-good", "Mood · Good", MoodGoodScreen)}
+          {board("mood-radiant", "Mood · Radiant", MoodRadiantScreen)}
+          {board("checkin-feelings", "What best describes it", FeelingsScreen)}
+          {board("checkin-reasons", "What's behind it", ReasonsScreen)}
+          {board("moment-live", "Live · log a moment (name → when → patterns)", MomentLogFlow)}
+          {board("moment-name", "Component · name the moment (keyboard)", MomentNameScreen)}
+          {board("moment-when", "Component · when did it happen (date)", MomentWhenScreen)}
+          {board("patterns-board", "Component · patterns board (tabs + masonry)", PatternsBoardScreen)}
+          {board("patterns-emotions", "Component · trigger emotions grid", PatternsEmotionsScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>Drag the slider on the live flow — the visual + word morph in real time. Feeling words adapt to the mood band you land on.</DCPostIt>
+          <DCPostIt top={-8} left={-150} rotate={2}>A richer moment-logging flow: name what happened on a live keyboard, place it in time with day chips + an iOS wheel, then sort it on a tabbed patterns board (masonry usuals · dashed emotions grid). The live flow chains all three.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="urge" title="Urge surfing" subtitle="Two fast asks — where are you, how strong — then a tailored path: a flicker skips the escape step, “about to give in” goes straight to action. The wave stays the through-line.">
+          {board("urge-live", "Live flow · asks → tailored steps → surf", UrgeScreen)}
+          {board("urge-ask-where", "1 · Where are you right now?", UrgeAskWhere)}
+          {board("urge-ask-strength", "2 · How strong is the urge?", UrgeAskStrength)}
+          {board("urge-1-wave", "3 · The urge is a wave", UrgePageWave)}
+          {board("urge-3-remove", "4 · Escape, tailored (in bed shown)", () => <UrgeStepRemove place="bed" />)}
+          {board("urge-4-name", "5 · Name it", UrgeStepName)}
+          {board("urge-5-surf", "6 · Breathe — ride the wave", UrgeSurfScreen)}
+          {board("urge-done", "You rode it out", UrgeDoneScreen)}
+          <DCPostIt top={-8} left={-150} rotate={2}>The two asks front-load context: place picks the escape advice (get out of bed · step out of the bathroom · push back from the desk…), strength picks the pace — the strongest urge cuts every lesson and goes move → breathe.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="urge-log" title="Log an urge" subtitle="The record-keeping companion to urge surfing — a fast, calm capture: how strong it was, what set it off, what you did, and when. Lands on a quiet confirmation that turns each urge into a visible pattern.">
+          {board("urge-log-live", "Live flow · intensity → triggers → outcome → when → done", UrgeLogScreen)}
+          {board("urge-log-intensity", "1 · Intensity (wave grows with the pull)", UrgeLogIntensity)}
+          {board("urge-log-trigger", "2 · What set it off (multi-select)", UrgeLogTrigger)}
+          {board("urge-log-outcome", "3 · What you did (single-select)", UrgeLogOutcome)}
+          {board("urge-log-when", "4 · When was it (chips + wheel)", UrgeLogWhen)}
+          {board("urge-log-done", "Logged · summary", UrgeLogDone)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>Surfing is the in-the-moment exercise; this is the journal of it. Drag the intensity slider — the crest rises and the tone warms with the pull. The honest “I slipped” outcome routes the confirmation to a gentle “begin again”, tying back into the relapse series.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="relapse" title="Relapse — begin again" subtitle="One slip, broken into a gentle 3-step comeback.">
+          {board("relapse-live", "Live flow · slip → don't fail twice → begin", UrgeRelapseScreen)}
+          {board("relapse-1", "1 · You slipped", UrgeRelapseSlip)}
+          {board("relapse-2", "2 · Don't fail twice", UrgeRelapseTwice)}
+          {board("relapse-3", "3 · Begin again", UrgeRelapseBegin)}
+        </DCSection>
+
+        <DCSection id="money" title="Monetisation" subtitle="Launch blocker — paywall, locked states, billing">
+          {board("paywall", "Paywall · after “Plan”", PaywallScreen)}
+          {board("locked", "Locked features", LockedScreen)}
+          {board("managesub", "Manage subscription", ManageSubScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>Sits mid-onboarding, right after the Plan step. RevenueCat entitlement gates the curriculum past week 1.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="journal" title="Journaling" subtitle="Free-form, dated & searchable — distinct from the structured Log">
+          {board("journal-list", "Journal · list + search", JournalListScreen)}
+          {board("journal-empty", "Journal · empty — the page is patient", JournalEmptyScreen)}
+          {board("journal-editor", "Entry editor", JournalEditorScreen)}
+          <DCPostIt top={-8} left={-150} rotate={2}>New journalEntries table. Natural home for lesson reflections and urge “what I learned” notes.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="notify" title="Notifications" subtitle="Permission primer + smart, shame-free reminder settings">
+          {board("notif-primer", "Permission primer · onboarding", NotifPrimerScreen)}
+          {board("reminders", "Reminder settings", ReminderSettingsScreen)}
+        </DCSection>
+
+        <DCSection id="account" title="Account & trust" subtitle="Store-required for this category">
+          {board("profile", "Edit profile", EditProfileScreen)}
+          {board("privacy", "Data & privacy", DataPrivacyScreen)}
+          {board("applock", "App lock · Face ID", AppLockScreen)}
+        </DCSection>
+
+        <DCSection id="insights" title="You · insights" subtitle="The analytics layer of the You tab, read off your logs: a standing patterns dashboard (mood trend, top triggers / reasons / feelings, mood↔struggle correlations) and a weekly report comparing this week to last — mood movement, urge &amp; relapse frequency, and the struggle most tied to your low-mood days.">
+          {board("analytics", "Insights · your patterns (dashboard)", AnalyticsScreen)}
+          {board("weekly-report", "Weekly report · this week vs last", WeeklyReportScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-3}>Built on the same data the check-in and urge-log flows write: mood bands in the neutral ink scale, trigger counts, reasons, and outcomes. The weekly report turns it into a verdict — “steadier than last week” — with the correlation that matters most surfaced as next week's focus.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="journey" title="The journey · the campaign" subtitle="One campaign, landing to triumph, laid out as an itinerary: a scrolling list of grounds, each led by its full landscape — tap a ground to open its parts & lessons → a lesson opens the reader. The whole curriculum lives here.">
+          {board("worlds-map-live", "Live · list → tap a ground → hub", WorldsJourney)}
+          {board("worlds-map", "Overview · landing to triumph", WorldMapScreen)}
+          {board("world-1-shore", "I · The Landing", Hub_shore)}
+          {board("world-2-sailing", "II · The Crossing", Hub_sailing)}
+          {board("world-3-deep", "III · Deep Waters", Hub_deep)}
+          {board("world-4-island", "IV · Held Ground", Hub_island)}
+          {board("world-5-base", "V · First Camp", Hub_base)}
+          {board("world-6-climb", "VI · The Long March", Hub_climb)}
+          {board("world-7-cave", "VII · The Watchfire", Hub_cave)}
+          {board("world-8-higher", "VIII · High Ground", Hub_higher)}
+          {board("world-9-clouds", "IX · The Gates", Hub_clouds)}
+          {board("world-10-summit", "X · The Triumph", Hub_summit)}
+          {board("world-side-curio", "Side · Curiosities & Experiments", Hub_curio)}
+          {board("world-side-help", "Side · Get Help Now", Hub_help)}
+          {board("lesson", "Lesson reader · one lesson (the leaf)", LessonReaderScreen)}
+          {board("lesson-interactive", "Live · interactive lesson (tip → collect → quiz → pick)", InteractiveLessonFlow)}
+          {board("lesson-tip", "Component · tip to remember", LessonTipScreen)}
+          {board("lesson-collect", "Component · collect signs (chips)", LessonCollectScreen)}
+          {board("lesson-quiz", "Component · yes/no quiz", LessonQuizScreen)}
+          {board("lesson-pick", "Component · single-select routine", LessonPickScreen)}
+          <DCPostIt top={-8} left={-150} rotate={2}>The interactive lesson layer — guided patterns recast in VICI's celestial system: a habit-pairing tip, a tappable sign collector, a yes/no self-quiz, and a routine picker. Open the live flow to walk all four.</DCPostIt>
+          <DCPostIt top={-8} left={-150} rotate={-2}>One journey, not two. The itinerary list is the single overview — every world leads with its landscape, state lives in the ink (progress bar, CROSSED stamps, ghosted art + lock), and the dotted legs keep the path feeling without the game map.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="keepsakes" title="Keepsakes · achievements" subtitle="The milestone album (Milestones now lives here too): every keepsake is a faceted-paper medallion in a postmark ring. Earned ones carry a letterpress date; repeatable ones level up — tier pips fill along the ring at ×10, ×25, ×50… — and in-progress ones wear a progress arc and bar. Tap any medallion for its story and tier ladder.">
+          {board("keepsakes-live", "Live · album → tap a medallion → story", KeepsakesFlow)}
+          {board("keepsakes", "The album · earned / within reach / ahead", KeepsakesScreen)}
+          {board("keepsake-detail", "Detail · tier ladder (never failed twice)", KeepsakeDetailScreen)}
+          {board("keepsake-progress", "Detail · within reach (the long road)", KeepsakeProgressScreen)}
+          {board("keepsake-ahead", "Detail · not earned yet (let someone in)", KeepsakeAheadScreen)}
+          <DCPostIt top={-8} left={-150} rotate={-2}>Every keepsake is earned by doing — sending a letter to your future self, riding urges, honest entries — never by just receiving. Repeatable ones level: pips fill along the medallion's ring, the inner ring doubles past tier I, and the detail card shows the whole ladder (×1 → ×10 → ×25 → ×50 → ×100). Milestones' “long road” and social milestones folded in; the album also surfaces on the profile page.</DCPostIt>
+        </DCSection>
+
+        <DCSection id="depth" title="Depth" subtitle="Library search">
+          {board("search", "Library search", LibrarySearchScreen)}
+          {board("search-empty", "Search · no results (designed)", SearchEmptyScreen)}
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel>
+        <TweakSection label="Atmosphere" />
+        <TweakColor label="Ink tone" value={t.accent}
+          options={["#131313", "#3E3226", "#33363A", "#2B2F28"]}
+          onChange={(v) => setTweak('accent', v)} />
+        <TweakSlider label="Ambient motion" value={t.glow} min={0.4} max={1.6} step={0.1}
+          onChange={(v) => setTweak('glow', v)} />
+        <TweakToggle label="Paper grain" value={t.grain}
+          onChange={(v) => setTweak('grain', v)} />
+        <TweakSection label="Type" />
+        <TweakSelect label="Typeface" value={t.font}
+          options={["Garamond", "Newsreader", "Spectral"]}
+          onChange={(v) => setTweak('font', v)} />
+        <TweakSection label="Motif" />
+        <TweakRadio label="Signature" value={t.motif}
+          options={["moon", "tide"]}
+          onChange={(v) => setTweak('motif', v)} />
+        <TweakSection label="Check-in" />
+        <TweakSelect label="Central visual" value={t.checkinVisual}
+          options={["weather", "tone", "weather-paper", "orb", "moon", "bloom", "rings", "aurora", "tide"]}
+          onChange={(v) => setTweak('checkinVisual', v)} />
+        <TweakRadio label="Mood colour" value={t.moodColor}
+          options={["calm", "vivid"]}
+          onChange={(v) => setTweak('moodColor', v)} />
+        <TweakSection label="Onboarding" />
+        <TweakRadio label="Theme" value={t.onbTheme || 'night'}
+          options={["night", "paper"]}
+          onChange={(v) => setTweak('onbTheme', v)} />
+        <TweakSection label="Onboarding v3" />
+        <TweakRadio label="Campaign map" value={t.onb3Map || 'route'}
+          options={["route", "chart", "contents"]}
+          onChange={(v) => setTweak('onb3Map', v)} />
+        <TweakToggle label="Night → dawn sky" value={t.onb3Sky !== false}
+          onChange={(v) => setTweak('onb3Sky', v)} />
+      </TweaksPanel>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

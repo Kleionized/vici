@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>integration check</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F7F5F0; --bg2: #F2F0EA; --bg-deep: #EDEBE4; --card: #FCFBF8; --card-2: #FFFFFF; --card-solid: #FCFBF8;
+    --ink: #22221C; --ink2: #6A6A62; --ink3: #9C9C92; --ink4: #B6B6AC;
+    --line: rgba(0,0,0,0.09); --hair: rgba(0,0,0,0.08); --soft: rgba(0,0,0,0.045); --soft2: rgba(0,0,0,0.1);
+    --warm: #3B3C33; --warm2: #22221C; --fill: #33342B; --on-fill: #F4F3EF; --on-fill-2: rgba(244,243,239,0.7);
+    --accent: #33342B; --accent-2: #22221C; --halo: 1; --elev: #EFEEE8; --danger: #B5624F;
+    --kbd-bg: #E9E7E0; --kbd-key: #FFFFFF; --kbd-ink: #22221C; --radius: 20px;
+    --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif; --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+    --serif: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif; --serif-tint: #6A6A62;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #E8E5DE; font-family: system-ui; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; padding: 16px; }
+  .ph { position: relative; width: 402px; height: 874px; background: var(--bg); border-radius: 20px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); flex: 0 0 auto; }
+  .ph::after { content: attr(data-name); position: absolute; top: 4px; left: 8px; font-size: 10px; font-weight: 700; color: #999; z-index: 99; }
+  @keyframes ci-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+  @keyframes onb-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes onb-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+  @keyframes onb-bob2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+  @keyframes onb-sun { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.05); opacity: 1; } }
+  @keyframes onb-twinkle { 0%,100% { opacity: .18; } 50% { opacity: .55; } }
+  @keyframes cc-twinkle { 0%,100% { opacity: .25; } 50% { opacity: .9; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="image-slot.js"></script>
+<script type="text/babel" src="stoic-kit.jsx"></script>
+<script type="text/babel" src="scenes-core.jsx"></script>
+<script type="text/babel" src="scenes-mood.jsx"></script>
+<script type="text/babel" src="screens-home.jsx"></script>
+<script type="text/babel" src="screens-checkin.jsx"></script>
+<script type="text/babel" src="screens-urge.jsx"></script>
+<script type="text/babel" src="screens-urge-log.jsx"></script>
+<script type="text/babel" src="screens-onb-art.jsx"></script>
+<script type="text/babel" src="screens-onb-extra.jsx"></script>
+<script type="text/babel" src="screens-onb.jsx"></script>
+<script type="text/babel" src="screens-onb2.jsx"></script>
+<script type="text/babel" src="screens-onb2b.jsx"></script>
+<script type="text/babel" src="screens-lesson.jsx"></script>
+<script type="text/babel" src="screens-analytics.jsx"></script>
+<script type="text/babel" src="screens-worlds-art.jsx"></script>
+<script type="text/babel" src="screens-money.jsx"></script>
+<script type="text/babel" src="screens-keepsakes.jsx"></script>
+<script type="text/babel" src="screens-journal.jsx"></script>
+<script type="text/babel" src="screens-account.jsx"></script>
+<script type="text/babel" src="screens-letter.jsx"></script>
+<script type="text/babel">
+window.CURRENT_GLOW = 1;
+window.CURRENT_MOTIF = 'moon';
+window.CURRENT_CHECKIN = { kind: (new URLSearchParams(location.search).get('kind')) || 'weather', vivid: true };
+window.CURRENT_ONB = { opening: 'tide', celebrate: 'medium' };
+window.CURRENT_ONB2 = { theme: (new URLSearchParams(location.search).get('theme')) || 'paper' };
+
+function Ph({ name, S }) {
+  return <div className="ph" data-name={name}><S /></div>;
+}
+function App() {
+  const which = new URLSearchParams(location.search).get('set') || 'a';
+  if (which === 'm') return (
+    <div className="row">
+      <Ph name="letter arrival" S={LetterArrivalScreen} />
+      <Ph name="letter read" S={LetterReadScreen} />
+      <Ph name="check-in live" S={CheckInScreen} />
+    </div>
+  );
+  if (which === 'n') return (
+    <div className="row">
+      <Ph name="journal list" S={JournalListScreen} />
+      <Ph name="edit profile" S={EditProfileScreen} />
+      <Ph name="data privacy" S={DataPrivacyScreen} />
+    </div>
+  );
+  if (which === 'a') return (
+    <div className="row">
+      <Ph name="mood-low" S={MoodLowScreen} />
+      <Ph name="mood-fine" S={MoodFineScreen} />
+      <Ph name="mood-radiant" S={MoodRadiantScreen} />
+    </div>
+  );
+  if (which === 'b') return (
+    <div className="row">
+      <Ph name="urge-1 rising" S={UrgePageWave} />
+      <Ph name="urge-3 remove" S={UrgeStepRemove} />
+      <Ph name="urge-done calm" S={UrgeDoneScreen} />
+    </div>
+  );
+  if (which === 'c') return (
+    <div className="row">
+      <Ph name="urge-log intensity" S={UrgeLogIntensity} />
+      <Ph name="urge-log done" S={UrgeLogDone} />
+      <Ph name="onb welcome (shore)" S={OnbWelcomeAScreen} />
+    </div>
+  );
+  if (which === 'e') return (
+    <div className="row">
+      <Ph name="insights dashboard" S={AnalyticsScreen} />
+      <Ph name="weekly report" S={WeeklyReportScreen} />
+    </div>
+  );
+  if (which === 'f') return (
+    <div className="row">
+      <Ph name="onb pattern" S={OnbPatternScreen} />
+      <Ph name="onb projection" S={OnbProjectionScreen} />
+      <Ph name="onb streak insight" S={OnbStreakInsightScreen} />
+    </div>
+  );
+  if (which === 'g') return (
+    <div className="row">
+      <Ph name="onb social" S={OnbSocialScreen} />
+      <Ph name="onb rating" S={OnbRatingScreen} />
+      <Ph name="onb symptoms" S={OnbSymptomsScreen} />
+    </div>
+  );
+  if (which === 'l') return (
+    <div className="row">
+      <Ph name="onb2 S25 tide" S={O2Board_Tide} />
+    </div>
+  );
+  if (which === 'k') return (
+    <div className="row">
+      <Ph name="urge surf (breathe)" S={UrgeSurfScreen} />
+      <Ph name="urge-log intensity" S={UrgeLogIntensity} />
+      <Ph name="urge-1 rising" S={UrgePageWave} />
+    </div>
+  );
+  if (which === 'i') return (
+    <div className="row">
+      <Ph name="paywall" S={PaywallScreen} />
+      <Ph name="one-time offer" S={OnbOneTimeOfferScreen} />
+    </div>
+  );
+  if (which === 'j') return (
+    <div className="row">
+      <Ph name="locked" S={LockedScreen} />
+      <Ph name="manage sub" S={ManageSubScreen} />
+    </div>
+  );
+  if (which === 'h') return (
+    <div className="row">
+      <Ph name="onb notify" S={OnbNotifyScreen} />
+      <Ph name="onb done" S={OnbDoneScreen} />
+    </div>
+  );
+  return (
+    <div className="row">
+      <Ph name="onb lesson (wave)" S={OnbLessonScreen} />
+      <Ph name="lesson tip (reference)" S={LessonTipScreen} />
+      <Ph name="relapse begin" S={UrgeRelapseBegin} />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

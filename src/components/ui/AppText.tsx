@@ -1,4 +1,4 @@
-import { StyleSheet, Text, type TextProps, type TextStyle } from 'react-native';
+import { Platform, StyleSheet, Text, type TextProps, type TextStyle } from 'react-native';
 
 import { colors, fonts, fontSize, sans } from '@/lib/theme';
 import { useOnInk } from './surface';
@@ -14,16 +14,10 @@ export interface AppTextProps extends TextProps {
 
 const WEIGHT_ALIAS: Record<string, TextStyle['fontWeight']> = { normal: '400', bold: '600' };
 
-// The VICI voice: display sizes (hero/display/title/subtitle) speak in the
-// EB Garamond serif at weight 500 — never bold; the serif's own colour does
-// the work. Body/labels speak in the sans (Gill Sans / Hanken Grotesk).
-// Serif variants are static font files, so they must NOT set fontWeight.
-const SERIF_VARIANTS: ReadonlySet<Variant> = new Set(['hero', 'display', 'title', 'subtitle'] as Variant[]);
-
 const SANS_WEIGHT: Record<Variant, TextStyle['fontWeight']> = {
-  hero: '500',
-  display: '500',
-  title: '500',
+  hero: '600',
+  display: '600',
+  title: '600',
   subtitle: '500',
   body: '400',
   muted: '400',
@@ -32,56 +26,51 @@ const SANS_WEIGHT: Record<Variant, TextStyle['fontWeight']> = {
   mono: '400',
 };
 
-// Per-variant metrics. Serif display runs larger and looser than the old sans
-// scale — EB Garamond needs the positive letterspacing (canvas: 0.008em).
+// Per-variant metrics from the latest native-system UI.
 const VARIANTS: Record<Variant, TextStyle> = {
   hero: {
-    fontFamily: fonts.serif,
     fontSize: fontSize.hero,
-    lineHeight: Math.round(fontSize.hero * 1.08),
-    letterSpacing: 0.3,
+    lineHeight: 40,
+    letterSpacing: -0.65,
     color: colors.text,
   },
   display: {
-    fontFamily: fonts.serif,
     fontSize: fontSize.display,
-    lineHeight: Math.round(fontSize.display * 1.12),
-    letterSpacing: 0.22,
+    lineHeight: 33,
+    letterSpacing: -0.4,
     color: colors.text,
   },
   title: {
-    fontFamily: fonts.serif,
     fontSize: fontSize.xxl,
-    lineHeight: Math.round(fontSize.xxl * 1.14),
-    letterSpacing: 0.12,
+    lineHeight: 28,
+    letterSpacing: -0.2,
     color: colors.text,
   },
   subtitle: {
-    fontFamily: fonts.serif,
     fontSize: fontSize.xl,
-    lineHeight: Math.round(fontSize.xl * 1.3),
-    letterSpacing: 0.1,
+    lineHeight: 25,
+    letterSpacing: -0.1,
     color: colors.text,
   },
   body: {
     fontSize: fontSize.md,
     lineHeight: Math.round(fontSize.md * 1.5),
-    letterSpacing: 0.16,
+    letterSpacing: -0.1,
     color: colors.text,
   },
   muted: {
     fontSize: fontSize.md,
     lineHeight: Math.round(fontSize.md * 1.5),
-    letterSpacing: 0.16,
+    letterSpacing: -0.05,
     color: colors.textMuted,
   },
   soft: {
     fontSize: fontSize.sm,
     lineHeight: Math.round(fontSize.sm * 1.48),
-    letterSpacing: 0.14,
+    letterSpacing: 0,
     color: colors.textSoft,
   },
-  // The canvas caps pattern: semibold, wide tracking, uppercase, ink.
+  // The canvas caps pattern: semibold, wide tracking, uppercase, muted ink.
   label: {
     fontSize: fontSize.xs,
     letterSpacing: 1.6,
@@ -109,14 +98,6 @@ const INK_COLOR: Record<Variant, string> = {
   mono: colors.inkTextMuted,
 };
 
-// Map a requested weight onto the serif's loaded faces (400/500/600 only).
-function serifFamily(w: TextStyle['fontWeight'] | undefined): string {
-  const n = Number(w ?? '500');
-  if (n >= 600) return fonts.serifSemibold;
-  if (n >= 500) return fonts.serifMedium;
-  return fonts.serifRegular;
-}
-
 export function AppText({ variant = 'body', color, center, weightOverride, style, ...rest }: AppTextProps) {
   const onInk = useOnInk();
   const w: TextStyle['fontWeight'] | undefined =
@@ -124,28 +105,41 @@ export function AppText({ variant = 'body', color, center, weightOverride, style
       ? (WEIGHT_ALIAS[String(weightOverride)] ?? (String(weightOverride) as TextStyle['fontWeight']))
       : undefined;
 
-  let fontStyle: TextStyle;
-  if (variant === 'mono') {
-    fontStyle = w ? { fontWeight: w } : {};
-  } else if (SERIF_VARIANTS.has(variant)) {
-    // Static serif files — pick the face, never set fontWeight.
-    fontStyle = { fontFamily: serifFamily(w) };
-  } else {
-    fontStyle = sans(w ?? SANS_WEIGHT[variant]);
-  }
+  const fontStyle: TextStyle = variant === 'mono' ? (w ? { fontWeight: w } : {}) : sans(w ?? SANS_WEIGHT[variant]);
 
-  // Callers often override fontSize without overriding the variant's
-  // lineHeight — the inherited small line box clips ascenders on iOS.
-  // Flatten and repair: a line box always fits its own glyphs.
+  // A variant's leading and tracking are tuned to the variant's own fontSize.
+  // The moment a caller names a different size, both inherited metrics belong
+  // to a size that is no longer on screen: the line box shifts the glyphs
+  // inside it, and the optical tracking silently narrows every run. The canvas
+  // states leading and tracking only where it wants them, so a caller that
+  // names its own size and stays silent about the rest gets the platform's
+  // natural line box and no tracking — which is what the canvas measures.
+  const own = StyleSheet.flatten(style) as TextStyle | undefined;
+  const ownSize = own?.fontSize != null;
+  const dropLeading = ownSize && own?.lineHeight == null;
+  const dropTracking = ownSize && own?.letterSpacing == null;
+
   const merged = StyleSheet.flatten([
     VARIANTS[variant],
     fontStyle,
+    Platform.OS === 'web'
+      ? ({
+          WebkitFontSmoothing: 'antialiased',
+          textWrap: variant === 'hero' || variant === 'display' || variant === 'title' ? 'balance' : 'pretty',
+        } as unknown as TextStyle)
+      : null,
     onInk ? { color: INK_COLOR[variant] } : null,
     center && { textAlign: 'center' },
     color ? { color } : null,
     style,
   ]) as TextStyle;
-  if (merged.fontSize && merged.lineHeight && merged.lineHeight < merged.fontSize * 1.18) {
+  // The caps `label` treatment is an identity, not an optical correction, so
+  // its wide tracking survives a size override.
+  if (dropTracking && variant !== 'label') delete merged.letterSpacing;
+  if (dropLeading) delete merged.lineHeight;
+  // A caller that names its own leading means it — only repair the inherited
+  // variant metric, never an explicit one.
+  else if (own?.lineHeight == null && merged.fontSize && merged.lineHeight && merged.lineHeight < merged.fontSize * 1.18) {
     merged.lineHeight = Math.round(merged.fontSize * 1.22);
   }
 

@@ -1,7 +1,8 @@
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
-import { colors, radius, spacing, weight } from '@/lib/theme';
+import { colors, radius, shadow, spacing, weight } from '@/lib/theme';
 import { AppText } from './AppText';
+import { PressScale } from './press-scale';
 
 export interface ChoiceInputProps {
   options: string[];
@@ -15,7 +16,7 @@ export function ChoiceInput({ options, value, onChange }: ChoiceInputProps) {
       {options.map((opt) => {
         const selected = value === opt;
         return (
-          <Pressable
+          <PressScale
             key={opt}
             accessibilityRole="button"
             accessibilityState={{ selected }}
@@ -27,22 +28,22 @@ export function ChoiceInput({ options, value, onChange }: ChoiceInputProps) {
               paddingHorizontal: spacing.lg,
               paddingVertical: spacing.md,
               borderRadius: radius.md,
-              backgroundColor: selected ? colors.accentSoft : colors.surfaceAlt,
-              borderWidth: 1,
-              borderColor: selected ? colors.borderStrong : colors.border,
+              borderCurve: 'continuous',
+              backgroundColor: selected ? colors.surface : colors.surfaceAlt,
+              ...(selected ? { boxShadow: '0 0 0 2px #131313, 0 5px 14px rgba(34,30,24,0.07)' } : shadow.control),
             }}>
             <View
               style={{
                 width: 18,
                 height: 18,
                 borderRadius: radius.pill,
-                borderWidth: 2,
-                borderColor: selected ? colors.accent : colors.borderStrong,
+                borderWidth: selected ? 0 : 2,
+                borderColor: colors.borderStrong,
                 backgroundColor: selected ? colors.accent : 'transparent',
               }}
             />
             <AppText weightOverride={selected ? weight.semibold : weight.regular}>{opt}</AppText>
-          </Pressable>
+          </PressScale>
         );
       })}
     </View>

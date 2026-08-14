@@ -1,11 +1,11 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, ScrollView, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
+import { AppText, PressScale } from '@/components/ui';
 import { useCreateJournalEntry, useJournalEntries, useUpdateJournalEntry } from '@/lib/backend';
 import { colors, fonts, spacing } from '@/lib/theme';
 
@@ -29,6 +29,7 @@ export default function JournalNew() {
   // Prefill once when editing an existing entry.
   useEffect(() => {
     if (id && existing && !loaded) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate the editor once when its entry arrives.
       setTag(existing.tag);
       setTitle(existing.title);
       setBody(existing.body);
@@ -62,19 +63,19 @@ export default function JournalNew() {
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           {/* top bar */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.xl, paddingTop: spacing.sm, paddingBottom: 14 }}>
-            <Pressable onPress={close} hitSlop={8}>
+            <PressScale onPress={close} hitSlop={8} style={{ minWidth: 60, minHeight: 44, justifyContent: 'center' }}>
               <AppText weightOverride="600" style={{ fontSize: 16.5, color: colors.textMuted }}>
                 Cancel
               </AppText>
-            </Pressable>
+            </PressScale>
             <AppText weightOverride="600" style={{ fontSize: 14, color: colors.textSoft }}>
               {headerTime}
             </AppText>
-            <Pressable onPress={save} style={{ backgroundColor: colors.accent, borderRadius: 9999, paddingHorizontal: 18, paddingVertical: 8 }}>
+            <PressScale onPress={save} style={{ minHeight: 44, backgroundColor: colors.accent, borderRadius: 9999, paddingHorizontal: 18, alignItems: 'center', justifyContent: 'center' }}>
               <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 15 }}>
                 Save
               </AppText>
-            </Pressable>
+            </PressScale>
           </View>
 
           {/* tag chips */}
@@ -82,20 +83,20 @@ export default function JournalNew() {
             {TAGS.map((t) => {
               const on = t === tag;
               return (
-                <Pressable
+                <PressScale
                   key={t}
                   onPress={() => setTag(t)}
-                  style={{ paddingHorizontal: 13, paddingVertical: 7, borderRadius: 9999, backgroundColor: on ? colors.accent : 'transparent', borderWidth: on ? 0 : 1.5, borderColor: colors.border }}>
+                  style={{ minHeight: 44, paddingHorizontal: 13, borderRadius: 9999, backgroundColor: on ? colors.accent : 'transparent', borderWidth: on ? 0 : 1.5, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' }}>
                   <AppText weightOverride="600" color={on ? colors.accentText : colors.textMuted} style={{ fontSize: 12.5, letterSpacing: 0.4 }}>
                     {t}
                   </AppText>
-                </Pressable>
+                </PressScale>
               );
             })}
           </View>
 
           {/* body */}
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingTop: 6 }} keyboardShouldPersistTaps="handled">
+          <ScrollView contentInsetAdjustmentBehavior="automatic" style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingTop: 6 }} keyboardShouldPersistTaps="handled">
             <TextInput
               value={title}
               onChangeText={setTitle}

@@ -44,3 +44,7 @@ example
 /ios
 /android
 .claude/
+.gstack/
+
+# UI Final run artifacts (generated split frames)
+.uifinal/

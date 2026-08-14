@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>audit harness</title>
+<style>
+/* Material Symbols — inlined @font-face (gstatic binaries) to avoid the hanging googleapis CSS fetch */
+@font-face { font-family: 'Material Symbols Outlined'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v332/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOem.ttf) format('truetype'); }
+@font-face { font-family: 'Material Symbols Outlined'; font-style: normal; font-weight: 500; font-display: swap; src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v332/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCdHOem.ttf) format('truetype'); }
+.material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+</style>
+<style id="shared-vars"></style>
+<style>
+  body { margin: 0; background: #3A3A36; }
+  #stage { display: flex; gap: 18px; align-items: flex-start; justify-content: center; padding: 10px; }
+  .slot { display: flex; flex-direction: column; gap: 4px; }
+  .slot .cap { color: #ddd; font: 600 12px monospace; }
+  .holder { transform-origin: top left; }
+  .scr { position: relative; width: 402px; height: 874px; overflow: hidden; background: #F7F5F0; border-radius: 14px; outline: 1px solid #666; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="image-slot.js"></script>
+<script>
+  // pull the :root vars + keyframes from index.html so screens render identically
+  fetch('index.html').then(r => r.text()).then(t => {
+    const styles = [...t.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m => m[1]).join('\n');
+    document.getElementById('shared-vars').textContent = styles;
+    window.__stylesReady = true;
+  });
+  // defer all babel component scripts until after load so the capture bridge attaches fast
+  const JSX_FILES = ['ios-frame.jsx','stoic-kit.jsx','scenes-core.jsx','scenes-mood.jsx','screens-home.jsx','screens-home-v2.jsx','screens-letter.jsx','screens-checkin.jsx','screens-urge.jsx','screens-urge-log.jsx','screens-auth.jsx','screens-money.jsx','screens-journal.jsx','screens-notify.jsx','screens-account.jsx','screens-analytics.jsx','screens-depth.jsx','screens-keepsakes.jsx','screens-curriculum.jsx','screens-lesson.jsx','screens-log-hub.jsx','screens-worlds-art.jsx','screens-worlds.jsx','screens-onb-art.jsx','screens-onb-extra.jsx','screens-onb.jsx','screens-onb2.jsx','screens-onb2b.jsx','audit-app.jsx'];
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      JSX_FILES.forEach((f) => {
+        const s = document.createElement('script');
+        s.type = 'text/babel';
+        s.src = f;
+        s.async = false;
+        document.body.appendChild(s);
+      });
+      Babel.transformScriptTags();
+    }, 300);
+  });
+  window.CURRENT_DARK = false;
+  window.CURRENT_GLOW = 1;
+  window.CURRENT_MOTIF = 'moon';
+  window.CURRENT_CHECKIN = { kind: 'weather', vivid: true };
+  window.CURRENT_ONB = { opening: 'tide', celebrate: 'medium' };
+  window.CURRENT_ONB2 = { theme: 'paper' };
+</script>
+
+</body>
+</html>

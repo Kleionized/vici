@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { AN_RANGES, AnCaps, AnDowHeader, AnLabel, AnLegend, AnRangeFilter, AnStats, AnWeekRow } from '@/components/insights/heat';
-import { AppText, LoadingView, Screen, ScreenHeader } from '@/components/ui';
+import { AppText, LoadingView, PressScale, Screen, ScreenHeader } from '@/components/ui';
 import { useCheckins, useEvents } from '@/lib/backend';
 import { lastNDateKeys } from '@/lib/date';
 import { colors, sans, spacing } from '@/lib/theme';
@@ -26,6 +26,7 @@ export default function Dashboard() {
   const checkins = useCheckins();
   const events = useEvents();
   const [range, setRange] = useState(14);
+  const [openedAt] = useState(() => Date.now());
 
   const data = useMemo(() => {
     if (!checkins || !events) return null;
@@ -36,7 +37,7 @@ export default function Dashboard() {
     const weeks: (number | null)[][] = [];
     for (let i = 0; i < moods.length; i += 7) weeks.push(moods.slice(i, i + 7));
 
-    const cutoff = Date.now() - range * 86400000;
+    const cutoff = openedAt - range * 86400000;
     const inRange = events.filter((e) => e.createdAt >= cutoff);
     const isUrge = (t: string) => t === 'urge_rode_out' || t === 'urge_acted_on';
     const urges = inRange.filter((e) => isUrge(e.type)).length;
@@ -55,7 +56,7 @@ export default function Dashboard() {
     const tMax = Math.max(...triggers.map(([, n]) => n), 1);
 
     return { cfg, keys, weeks, urges, kept, nCheckins, triggers, tMax };
-  }, [checkins, events, range]);
+  }, [checkins, events, openedAt, range]);
 
   if (!data) {
     return (
@@ -70,7 +71,7 @@ export default function Dashboard() {
 
   return (
     <Screen contentStyle={{ paddingTop: spacing.md }}>
-      <ScreenHeader title="Your patterns" pad={0} trailing={<AnRangeFilter value={range} onChange={setRange} />} />
+      <ScreenHeader title="Insights" pad={0} onBack={() => (router.canGoBack() ? router.back() : router.navigate('/(app)/library'))} trailing={<AnRangeFilter value={range} onChange={setRange} />} />
 
       {/* mood, one cell per day */}
       <View style={{ paddingTop: 4 }}>
@@ -131,11 +132,11 @@ export default function Dashboard() {
             ['Medallions', 'The campaign album', () => router.push('/milestones')],
           ] as [string, string, () => void][]
         ).map(([title, sub, go]) => (
-          <Pressable
+          <PressScale
             key={title}
             onPress={go}
             accessibilityRole="button"
-            style={({ pressed }) => ({
+            style={{
               flexDirection: 'row',
               alignItems: 'center',
               gap: 14,
@@ -143,8 +144,7 @@ export default function Dashboard() {
               borderRadius: 16,
               paddingVertical: 14,
               paddingHorizontal: 16,
-              transform: [{ scale: pressed ? 0.99 : 1 }],
-            })}>
+            }}>
             <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
               {title === 'Your mail' ? (
                 <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
@@ -165,7 +165,7 @@ export default function Dashboard() {
             <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
               <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
             </Svg>
-          </Pressable>
+          </PressScale>
         ))}
       </View>
     </Screen>

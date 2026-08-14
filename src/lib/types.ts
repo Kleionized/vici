@@ -151,9 +151,18 @@ export interface DailyCheckin {
   date: string; // YYYY-MM-DD
   sleepHours?: number;
   mood?: number; // 1–5 (pleasantness)
+  /** 1–5, as the morning check-in logs it. */
+  energy?: number;
   /** Apple-style mood logging: the feeling words + what's driving them. */
   emotions?: string[];
   reasons?: string[];
+  /**
+   * The one thing set for the day — the night check-in names it, Today carries
+   * it on the task card, and the next morning's check-in asks whether it
+   * happened. Stored on the day it is *for*, not the day it was named.
+   */
+  dailyAction?: string;
+  dailyActionDone?: boolean;
   movedBody?: boolean;
   socialContact?: boolean;
   structureFollowed?: boolean;
@@ -234,3 +243,132 @@ export interface DashboardData {
 export const DEFAULT_SETTINGS: UserSettings = {
   showStreak: false,
 };
+
+// ── the interactive curriculum (generated from src/content/interactive) ──
+// Every lesson runs the same shape: teach pages, a multi-select "ask", a
+// multi-select grid, a branch page whose copy answers what was picked, a
+// single-select, and a collect page that writes the takeaway in your words.
+
+/**
+ * A pull-quote, shown on a page of its own straight after the teach page that
+ * carries it (canvas: Lesson Quote Lao Tzu · Seneca · Marcus).
+ */
+export interface ILessonQuote {
+  text: string;
+  /** Who said it — set in caps between two short rules. */
+  who: string;
+}
+
+export interface ITeachPage {
+  kind: 'teach';
+  headline: string;
+  body: string;
+  /**
+   * Set only where the copy is a genuine enumeration. Most teach pages are
+   * prose and must stay prose — bullets imposed on an argument break it into
+   * fragments that read as unrelated.
+   */
+  list?: { ordered: boolean; items: string[]; note?: string };
+  /**
+   * A quote page follows this one where one is authored. It hangs off the teach
+   * page rather than being an eighth `IPage` kind so that adding one cannot
+   * break any `page.kind` switch already written against the union.
+   */
+  quote?: ILessonQuote;
+  cta: string;
+}
+
+export interface ICheckOption {
+  key: string;
+  label: string;
+  /** The "as in…" line under the label. */
+  asIn: string;
+  /** The short name this option goes by in the collected summary. */
+  short: string;
+}
+
+export interface IAskPage {
+  kind: 'ask';
+  headline: string;
+  /** The line that takes the pressure off — "No wrong answer." */
+  helper?: string;
+  checks: ICheckOption[];
+}
+
+export interface IGridPage {
+  kind: 'grid';
+  key: string;
+  headline: string;
+  helper: string;
+  options: string[];
+  cta: string;
+}
+
+/** Copy chosen by what the reader selected on the ask and grid pages. */
+export interface IBranchPage {
+  kind: 'branch';
+  title: string;
+  fromChecks: { key: string; headline: string; body: string }[];
+  fromGrid: { options: string[]; body: string }[];
+}
+
+export interface IPickPage {
+  kind: 'pick';
+  key: string;
+  headline: string;
+  helper: string;
+  options: string[];
+  /** Template for the chosen answer, e.g. "Starting on: {pick}". */
+  result: string;
+}
+
+export interface ICollectPage {
+  kind: 'collect';
+  title: string;
+  /** Template using {pick}, {checks} and {grid}. */
+  template: string;
+  /** Used when nothing was selected. */
+  fallback: string;
+  source: 'checks' | 'grid';
+  label: string;
+  cta: string;
+}
+
+export type IPage = ITeachPage | IAskPage | IGridPage | IBranchPage | IPickPage | ICollectPage;
+
+export interface InteractiveLesson {
+  slug: string;
+  /** Lesson number across the whole curriculum (1–110). */
+  number: number;
+  heading: string;
+  /** The short title shown on cards and the cover. */
+  title: string;
+  tag: string;
+  tagColor: string;
+  /** The subsection code this lesson sits under, e.g. "I.C". */
+  sub: string;
+  week: number;
+  day: number;
+  order: number;
+  pages: IPage[];
+  sources: string;
+  action: string;
+  reflection: string;
+}
+
+export interface InteractiveSub {
+  code: string;
+  title: string;
+  description: string;
+  lessons: InteractiveLesson[];
+}
+
+export interface InteractiveWeek {
+  n: number;
+  /** e.g. "Part II · Fewer moments of choice". */
+  title: string;
+  /** e.g. "Ground III · Deep Waters". */
+  ground: string;
+  description: string;
+  subs: InteractiveSub[];
+}

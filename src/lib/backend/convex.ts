@@ -21,12 +21,17 @@ import type {
   Lesson,
   LessonProgress,
   LifeMap,
+  Reflection,
   TidelineEvent,
   TidelineEventInput,
   UserSettings,
 } from '@/lib/types';
+import { CURRICULUM_LESSONS } from '@/lib/curriculum';
 import { todayKey } from '@/lib/date';
 import type { CurrentLesson, LessonDetail } from './mock';
+
+/** The curriculum, in the order it is walked. Sorted once at module load. */
+const SORTED_LESSONS: Lesson[] = [...CURRICULUM_LESSONS].sort((a, b) => a.orderIndex - b.orderIndex);
 
 const qref = <T,>(name: string) => makeFunctionReference<'query', Record<string, unknown>, T>(name);
 const mref = <T = unknown,>(name: string) => makeFunctionReference<'mutation', Record<string, unknown>, T>(name);
@@ -43,13 +48,11 @@ const R = {
   journalUpdate: mref('journal:update'),
   journalRemove: mref('journal:remove'),
 
-  lessonsList: qref<Lesson[]>('lessons:list'),
   lessonsProgress: qref<LessonProgress[]>('lessons:progress'),
-  lessonDetail: qref<LessonDetail | null>('lessons:getDetail'),
-  lessonCurrent: qref<CurrentLesson | null>('lessons:current'),
   startLesson: mref('lessons:startLesson'),
   completeLesson: mref('lessons:completeLesson'),
 
+  reflectionForLesson: qref<Reflection | null>('reflections:getForLesson'),
   saveReflection: mref('reflections:save'),
 
   lifeMapGet: qref<LifeMap | null>('lifemap:get'),
@@ -73,8 +76,15 @@ export function useCurrentUser(): AppUser | undefined {
   return orUndef(useQuery(R.getCurrentUser, {}));
 }
 
+/**
+ * Lesson *content* is compiled into the app (`src/content/interactiveLessons.ts`)
+ * and is the same for everyone, so it is read from the bundle rather than the
+ * database — which otherwise has to hold a second copy of it, and answers
+ * "lesson not found" for every slug it has not been seeded with. Convex owns
+ * what is actually per-user: progress and reflections.
+ */
 export function useLessons(): Lesson[] | undefined {
-  return useQuery(R.lessonsList, {});
+  return SORTED_LESSONS;
 }
 
 export function useLessonProgressMap(): Record<string, LessonProgress> | undefined {
@@ -84,11 +94,27 @@ export function useLessonProgressMap(): Record<string, LessonProgress> | undefin
 }
 
 export function useLessonDetail(slug: string): LessonDetail | undefined | null {
-  return useQuery(R.lessonDetail, { slug });
+  const progress = useLessonProgressMap();
+  const reflection = useQuery(R.reflectionForLesson, { slug });
+  const lesson = SORTED_LESSONS.find((l) => l.slug === slug);
+  if (!lesson) return null;
+  if (progress === undefined || reflection === undefined) return undefined;
+  return { lesson, progress: progress[slug] ?? null, reflection: reflection ?? null };
 }
 
 export function useCurrentLesson(): CurrentLesson | null | undefined {
-  return useQuery(R.lessonCurrent, {});
+  const progress = useLessonProgressMap();
+  if (progress === undefined) return undefined;
+  const index = Math.max(
+    0,
+    (() => {
+      const first = SORTED_LESSONS.findIndex((l) => progress[l.slug]?.status !== 'completed');
+      return first === -1 ? SORTED_LESSONS.length - 1 : first;
+    })(),
+  );
+  const lesson = SORTED_LESSONS[index];
+  if (!lesson) return null;
+  return { lesson, progress: progress[lesson.slug] ?? null, index, total: SORTED_LESSONS.length };
 }
 
 export function useLifeMap(): LifeMap | undefined {

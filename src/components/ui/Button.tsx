@@ -1,7 +1,8 @@
-import { ActivityIndicator, Pressable, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ActivityIndicator, View, type StyleProp, type ViewStyle } from 'react-native';
 
-import { colors, radius, spacing, weight } from '@/lib/theme';
+import { colors, radius, shadow, weight } from '@/lib/theme';
 import { AppText } from './AppText';
+import { PressScale } from './press-scale';
 import { useOnInk } from './surface';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
@@ -14,6 +15,8 @@ export interface ButtonProps {
   loading?: boolean;
   fullWidth?: boolean;
   style?: StyleProp<ViewStyle>;
+  /** Disable tactile scaling for controls where motion would distract. */
+  static?: boolean;
 }
 
 export function Button({
@@ -24,6 +27,7 @@ export function Button({
   loading = false,
   fullWidth = true,
   style,
+  static: isStatic = false,
 }: ButtonProps) {
   const onInk = useOnInk();
   const inactive = disabled || loading;
@@ -33,35 +37,35 @@ export function Button({
   // Stoic "white pill on black" treatment.
   let bg: string = 'transparent';
   let labelColor: string = onInk ? colors.inkText : colors.text;
-  let borderColor: string = 'transparent';
-  let borderWidth = 0;
+  let depth: ViewStyle = {};
 
   if (variant === 'primary') {
     bg = onInk ? colors.inkText : colors.accent;
     labelColor = onInk ? colors.ink : colors.accentText;
+    depth = onInk ? shadow.control : shadow.ink;
   } else if (variant === 'secondary') {
-    borderWidth = 1;
-    borderColor = onInk ? colors.inkBorder : colors.borderStrong;
     labelColor = onInk ? colors.inkText : colors.text;
+    depth = onInk ? { boxShadow: '0 0 0 1px rgba(255,255,255,0.13)' } : shadow.control;
   }
 
   return (
-    <Pressable
+    <PressScale
       accessibilityRole="button"
       accessibilityState={{ disabled: inactive }}
       disabled={inactive}
       onPress={onPress}
-      style={({ pressed }) => [
+      static={isStatic}
+      style={[
         {
-          paddingVertical: spacing.lg,
-          paddingHorizontal: spacing.xl,
+          minHeight: 52,
+          paddingVertical: 14,
+          paddingHorizontal: 20,
           borderRadius: radius.pill,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: bg,
-          borderWidth,
-          borderColor,
-          opacity: inactive ? 0.4 : pressed ? 0.85 : 1,
+          opacity: inactive ? 0.4 : 1,
+          ...depth,
         },
         fullWidth ? { alignSelf: 'stretch' } : { alignSelf: 'flex-start' },
         style,
@@ -76,6 +80,6 @@ export function Button({
           </AppText>
         </View>
       )}
-    </Pressable>
+    </PressScale>
   );
 }

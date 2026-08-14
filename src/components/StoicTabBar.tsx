@@ -1,131 +1,157 @@
 import { usePathname, useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Path } from 'react-native-svg';
+import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { Laurel } from '@/components/ui';
-import { colors } from '@/lib/theme';
+import { AppText, PressScale } from '@/components/ui';
+import { colors, sans } from '@/lib/theme';
 
 /**
- * The canvas bottom nav, exactly: a flat parchment bar (no border, no blur),
- * thin stroke-line icons with Gill Sans labels, and a raised solid-ink 52px
- * circle holding the wave glyph — the always-there "feeling an urge?" door.
- * Five slots: Today · Journey · ◉wave · Log · You.
+ * The tab bar, as the canvas draws it: a white shelf carrying tabs and nothing
+ * else. Ride It Out used to live up here as a dark card; it is a row on Today
+ * now, which is where the canvas puts it — the bar is for going places, not for
+ * doing things.
+ *
+ * The glyphs are different objects rather than one unified silhouette: a door
+ * standing open, a stack of entries, books on a shelf, and a drawer of panes.
+ *
+ * The canvas draws three tabs at hand-set centres 70 / 196 / 318. `All` is a
+ * fourth the canvas does not draw — a way into everything the app can show that
+ * nothing else routes to. Four tabs will not fit the canvas's rhythm, so the row
+ * is spread on even quarters instead; the glyph size, the 14 above it, the 5
+ * under it and the 13pt label are all still the canvas's.
  */
-type Item = { key: string; label: string; route: string; icon: (c: string, on: boolean) => ReactNode };
 
+type Item = {
+  key: string;
+  label: string;
+  route: string;
+  icon: (active: boolean) => ReactNode;
+  /** Centre of the tab, as a fraction of the bar's width. */
+  at: `${number}%`;
+  /** Label box width from the canvas. */
+  w: number;
+};
+
+/** Even quarters — see the note above on why the canvas's own centres are not used. */
 const ITEMS: Item[] = [
-  { key: 'today', label: 'Today', route: '/(app)/today', icon: home },
-  { key: 'journey', label: 'Journey', route: '/(app)/weeks', icon: journey },
-  { key: 'log', label: 'Log', route: '/(app)/log', icon: pen },
-  { key: 'you', label: 'You', route: '/(app)/dashboard', icon: you },
+  { key: 'home', label: 'Home', route: '/(app)/today', icon: home, at: '12.5%', w: 60 },
+  { key: 'log', label: 'Log', route: '/(app)/log', icon: log, at: '37.5%', w: 60 },
+  { key: 'library', label: 'Library', route: '/(app)/library', icon: library, at: '62.5%', w: 66 },
+  { key: 'all', label: 'All', route: '/(app)/all', icon: all, at: '87.5%', w: 60 },
 ];
+
+/** Resting and selected ink for the glyphs. */
+const OFF = colors.track;
+const ON = colors.textTitle;
+
+/**
+ * Canvas height of the bar above the home indicator: 14 to the glyph, 29 of
+ * glyph, 5, then the 15pt label. Screens that pin something directly above the
+ * bar need this number, so it lives here rather than being guessed twice.
+ */
+export const TAB_BAR_CONTENT = 63;
+
+export function useTabBarHeight() {
+  return TAB_BAR_CONTENT + Math.max(useSafeAreaInsets().bottom, 20);
+}
+
+/**
+ * Screens that live inside the tab group for routing reasons but whose canvas
+ * frame runs the full 852 with no bar drawn — Locked Weeks puts its CTA at 744,
+ * which the bar would sit on top of. Returning null here gives the navigator a
+ * zero-height bar, so the screen gets the whole viewport.
+ */
+const NO_BAR = ['/locked', '/settings', '/rough-days', '/dashboard', '/lifemap', '/journal', '/support'];
 
 export function StoicTabBar() {
   const router = useRouter();
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
 
-  const active = (route: string) => {
-    const tail = '/' + route.split('/').pop();
-    // Rough Days hangs off the Log tab; the album and mail hang off You
-    if (tail === '/log' && pathname.startsWith('/rough-days')) return true;
-    if (tail === '/dashboard' && (pathname.startsWith('/milestones') || pathname.startsWith('/mail'))) return true;
-    return pathname.startsWith(tail);
-  };
+  if (NO_BAR.some((route) => pathname.startsWith(route))) return null;
 
-  const tab = (item: Item) => {
-    const on = active(item.route);
-    const tint = on ? colors.text : colors.textSoft;
-    return (
-      <Pressable
-        key={item.key}
-        onPress={() => router.navigate(item.route as never)}
-        accessibilityRole="button"
-        accessibilityLabel={item.label}
-        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {item.icon(tint, on)}
-      </Pressable>
-    );
+  const isActive = (item: Item) => {
+    if (item.key === 'home') return pathname === '/today' || pathname.startsWith('/profile') || pathname.startsWith('/milestones');
+    if (item.key === 'log') return pathname === '/log';
+    if (item.key === 'all') return pathname === '/all';
+    return pathname === '/library' || pathname.startsWith('/rough-days') || pathname.startsWith('/dashboard') || pathname.startsWith('/lesson');
   };
 
   return (
     <View
       style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: colors.bg,
-        paddingTop: 16,
-        paddingHorizontal: 18,
-        paddingBottom: Math.max(insets.bottom + 2, 20),
+        height: TAB_BAR_CONTENT + Math.max(insets.bottom, 20),
+        paddingTop: 14,
+        backgroundColor: 'rgba(255,255,255,0.95)',
       }}>
-      {tab(ITEMS[0])}
-      {tab(ITEMS[1])}
-      {/* the raised dark urge circle */}
-      <View style={{ flex: 1.1, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
-        <Pressable
-          onPress={() => router.push('/urge' as never)}
-          accessibilityRole="button"
-          accessibilityLabel="Feeling an urge?"
-          style={({ pressed }) => ({
-            width: 52,
-            height: 52,
-            borderRadius: 9999,
-            backgroundColor: colors.ink,
-            alignItems: 'center',
-            justifyContent: 'center',
-            transform: [{ scale: pressed ? 0.965 : 1 }],
-          })}>
-          <Laurel size={27} color={colors.inkText} />
-        </Pressable>
-      </View>
-      {tab(ITEMS[2])}
-      {tab(ITEMS[3])}
+      {ITEMS.map((item) => {
+        const active = isActive(item);
+        return (
+          <PressScale
+            key={item.key}
+            onPress={() => router.navigate(item.route as never)}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: active }}
+            accessibilityLabel={item.label}
+            hitSlop={{ top: 14, bottom: 20, left: 22, right: 22 }}
+            style={{ position: 'absolute', top: 14, left: item.at, marginLeft: -item.w / 2, width: item.w, alignItems: 'center' }}>
+            <View style={{ height: 29 }}>{item.icon(active)}</View>
+            <AppText style={[sans('500'), { marginTop: 5, fontSize: 13, color: active ? colors.textTitle : colors.textSoft }]}>
+              {item.label}
+            </AppText>
+          </PressScale>
+        );
+      })}
     </View>
   );
 }
 
-// ── the canvas NAV_ICON set, verbatim ────────────────────────────────
-function home(c: string, on: boolean) {
+/** A door standing open — the way back in. */
+function home(active: boolean) {
   return (
-    <Svg width={30} height={30} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M4 10.5 12 4l8 6.5V20a.8.8 0 0 1-.8.8h-4.4V15h-5.6v5.8H4.8A.8.8 0 0 1 4 20z"
-        fill={on ? c : 'none'}
-        stroke={c}
-        strokeWidth={1.8}
-        strokeLinejoin="round"
-      />
+    <Svg width={30} height={29} viewBox="0 0 24 26">
+      <Path d="M4.5 24 L4.5 10 Q4.5 2 12 2 Q19.5 2 19.5 10 L19.5 24 Z" fill={active ? ON : OFF} />
+      <Circle cx={15.2} cy={14} r={1.7} fill="#FFFFFF" fillOpacity={0.92} />
     </Svg>
   );
 }
-function journey(c: string) {
+
+/** Entries stacked on a card. */
+function log(active: boolean) {
   return (
-    <Svg width={30} height={30} viewBox="0 0 24 24" fill="none">
-      <Circle cx={12} cy={12} r={8.5} stroke={c} strokeWidth={1.8} />
-      <Path d="M15.5 8.5 10.5 10.5 8.5 15.5 13.5 13.5z" fill="none" stroke={c} strokeWidth={1.8} strokeLinejoin="round" />
+    <Svg width={30} height={29} viewBox="0 0 24 26">
+      <Rect x={4.5} y={2} width={15} height={22} rx={3} fill={active ? ON : OFF} />
+      <Path d="M8.5 8.5h7M8.5 13h7M8.5 17.5h4.5" stroke="#FFFFFF" strokeWidth={2.2} strokeLinecap="round" strokeOpacity={0.95} />
     </Svg>
   );
 }
-function pen(c: string) {
+
+/** Three books on a shelf, seen end-on. */
+function library(active: boolean) {
+  const fill = active ? ON : OFF;
   return (
-    <Svg width={30} height={30} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M16.5 4.5a1.6 1.6 0 0 1 2.3 0l.7.7a1.6 1.6 0 0 1 0 2.3L8.4 18.6l-3.6 1 1-3.6L16.5 4.5z"
-        fill="none"
-        stroke={c}
-        strokeWidth={1.8}
-        strokeLinejoin="round"
-      />
+    <Svg width={30} height={29} viewBox="0 0 24 26">
+      <Rect x={5} y={2.5} width={4.4} height={21} rx={1.8} fill={fill} />
+      <Rect x={10.9} y={2.5} width={4.4} height={21} rx={1.8} fill={fill} />
+      <Rect x={16.8} y={2.5} width={4.4} height={21} rx={1.8} fill={fill} />
     </Svg>
   );
 }
-function you(c: string) {
+
+/**
+ * A drawer of panes — four of the same shape, which is what the hub is: every
+ * screen in the app laid out flat, none of them favoured.
+ */
+function all(active: boolean) {
+  const fill = active ? ON : OFF;
   return (
-    <Svg width={30} height={30} viewBox="0 0 24 24" fill="none">
-      <Circle cx={12} cy={8.5} r={3.6} fill="none" stroke={c} strokeWidth={1.8} />
-      <Path d="M5.5 20a6.5 6.5 0 0 1 13 0z" fill="none" stroke={c} strokeWidth={1.8} strokeLinejoin="round" />
+    <Svg width={30} height={29} viewBox="0 0 24 26">
+      <Rect x={3.6} y={4.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
+      <Rect x={12.6} y={4.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
+      <Rect x={3.6} y={13.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
+      <Rect x={12.6} y={13.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
     </Svg>
   );
 }

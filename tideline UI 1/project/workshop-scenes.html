@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>scene workshop</title>
+<style>
+  body { margin: 0; background: #F7F5F0; font-family: system-ui, sans-serif; }
+  .grid { display: flex; flex-wrap: wrap; gap: 18px; padding: 20px; }
+  .cell { background: #FCFBF8; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .cell span { font-size: 11px; font-weight: 600; color: #6A6A62; }
+  h2 { font-size: 13px; margin: 18px 20px 0; color: #22221C; }
+  .box { display: flex; justify-content: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="scenes-core.jsx"></script>
+<script type="text/babel" src="scenes-mood.jsx"></script>
+<script type="text/babel">
+function Cell({ label, children }) {
+  return <div className="cell"><div className="box">{children}</div><span>{label}</span></div>;
+}
+function App() {
+  const stages = ['rising', 'passing', 'remove', 'name', 'calm', 'slip', 'twice', 'begin'];
+  const kinds = ['weather', 'tide', 'moon', 'bloom', 'rings', 'aurora', 'orb'];
+  return (
+    <div>
+      <h2 id="s-static">STATIC — shore / wave / rewire / steps / anchor</h2>
+      <div className="grid" id="g-moonphase">
+        {[0.12, 0.3, 0.5, 0.7, 0.88].map((p) => (
+          <Cell key={p} label={`moon phase ${p}`}>
+            <svg width="90" height="70" viewBox="0 0 90 70">{window.SceneKit.SMoonF({ cx: 45, cy: 35, r: 26, phase: p })}</svg>
+          </Cell>
+        ))}
+      </div>
+      <div className="grid" id="g-static">
+        <Cell label="SceneShore"><SceneShore /></Cell>
+        <Cell label="SceneWave"><SceneWave /></Cell>
+        <Cell label="SceneRewire"><SceneRewire /></Cell>
+        <Cell label="SceneSteps"><SceneSteps /></Cell>
+        <Cell label="SceneAnchor"><SceneAnchor /></Cell>
+      </div>
+      <h2 id="s-urge">URGE STAGES</h2>
+      <div className="grid" id="g-urge">
+        {stages.map((s) => (
+          <Cell key={s} label={s}>
+            <svg width="320" height="180" viewBox="0 0 320 180" fill="none"><UrgeVignette stage={s} /></svg>
+          </Cell>
+        ))}
+      </div>
+      <h2 id="s-int">INTENSITY t = 0 / .5 / 1 · LOGGED</h2>
+      <div className="grid" id="g-int">
+        <Cell label="t=0"><SceneIntensity t={0} /></Cell>
+        <Cell label="t=0.5"><SceneIntensity t={0.5} /></Cell>
+        <Cell label="t=1"><SceneIntensity t={1} /></Cell>
+        <Cell label="logged"><SceneLoggedMini /></Cell>
+        <Cell label="logged slip"><SceneLoggedMini slip /></Cell>
+      </div>
+      {kinds.map((k) => {
+        const V = window.MoodScenes[k];
+        return (
+          <React.Fragment key={k}>
+            <h2 id={`s-${k}`}>MOOD · {k}</h2>
+            <div className="grid" id={`g-${k}`}>
+              {[0, 0.25, 0.5, 0.75, 1].map((t) => (
+                <Cell key={t} label={`t=${t}`}><V t={t} /></Cell>
+              ))}
+            </div>
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+// scroll to the hash section once React has painted (retry while loading)
+const goHash = () => {
+  const h = location.hash && location.hash.slice(1);
+  const el = h && document.getElementById(h);
+  if (el) window.scrollTo(0, el.offsetTop - 6);
+};
+setTimeout(goHash, 600); setTimeout(goHash, 1400); setTimeout(goHash, 2600);
+</script>
+</body>
+</html>

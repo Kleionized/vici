@@ -1,33 +1,32 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { useEffect, useState } from 'react';
 
-import { AK, AuthBtn, AuthGhostLink, AuthSurface } from '@/components/auth/kit';
-import { AppText, Laurel } from '@/components/ui';
-import { fonts } from '@/lib/theme';
+import { SplashScene, WaterlineScene } from '@/components/ui';
 
-// ── Splash — the route-decider (canvas: auth-splash). The app opens on
-// ink: the dawn artwork, the laurel, VICI, and the promise. ──
+/**
+ * 01 · Splash → 02 · Finding the Waterline.
+ *
+ * The mark holds for a beat, then the field keeps going while the ring looks
+ * for the waterline. Two frames, one continuous background.
+ */
 export default function Splash() {
   const router = useRouter();
+  const [looking, setLooking] = useState(false);
+
+  useEffect(() => {
+    const toWaterline = setTimeout(() => setLooking(true), 900);
+    const onward = setTimeout(() => router.replace('/(auth)/sign-in'), 1900);
+    return () => {
+      clearTimeout(toWaterline);
+      clearTimeout(onward);
+    };
+  }, [router]);
+
   return (
     <>
       <StatusBar style="light" />
-      <AuthSurface brand={false} dawn>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ marginBottom: 24 }}>
-            <Laurel size={46} color="#F5F4F1" />
-          </View>
-          <AppText style={{ fontFamily: fonts.serif, fontSize: 21, letterSpacing: 7.1, color: AK.ink, marginBottom: 22 }}>VICI</AppText>
-          <AppText center style={{ fontFamily: fonts.serif, fontSize: 38, lineHeight: 44, letterSpacing: -0.38, color: AK.ink }}>
-            You came.{'\n'}You saw.{'\n'}Now conquer it.
-          </AppText>
-        </View>
-        <View style={{ gap: 12 }}>
-          <AuthBtn variant="light" label="Get started" onPress={() => router.push('/(auth)/sign-up')} />
-          <AuthGhostLink pre="" strong="I already have an account" onPress={() => router.push('/(auth)/sign-in')} />
-        </View>
-      </AuthSurface>
+      {looking ? <WaterlineScene /> : <SplashScene />}
     </>
   );
 }

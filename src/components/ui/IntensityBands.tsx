@@ -69,7 +69,7 @@ export function IntensityBands({
               paddingHorizontal: 16,
               borderWidth: 1.8,
               borderColor: on ? ink : 'transparent',
-              transform: [{ scale: pressed ? 0.99 : 1 }],
+              transform: [{ scale: pressed ? 0.96 : 1 }],
             })}>
             <View
               style={{

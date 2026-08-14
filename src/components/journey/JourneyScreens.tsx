@@ -1,397 +1,774 @@
 /**
- * The journey overview MAP + immersive per-world HUB — a 1:1 port of the design
- * bundle's `screens-worlds.jsx`. A single sea-to-summit vista with a winding
- * dotted path; ten worlds sit on it, two side-worlds branch off. Tap a node to
- * open its hub. The 402×874 design canvas is scaled to the device width.
+ * The journey, as the canvas draws it: one campaign map and four chapters.
+ *
+ * `CampaignMap` (107) is the promise made before the vow — the first four weeks
+ * as four lit cards, newest week at the top, with the week you stand on marked.
+ * `JourneyChapter` (176–179) is a single stretch of the ninety days: its name,
+ * one line about the weather there, the picture of it, and the three marks that
+ * close it. The canvas labels 177 "Journey Campaign", but it draws The Crossing
+ * — chapter II — so all four chapters are on the canvas, none extrapolated.
+ *
+ * Laid out from the canvas's 393 × 852 frame — the status bar ends at 54, so
+ * every `top` below is the canvas value less 54. The closing land band and the
+ * campaign's button are anchored from the bottom instead, so a shorter phone
+ * loses picture rather than the way forward.
  */
 
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, ScrollView, useWindowDimensions, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, LinearGradient as SvgGradient, Path, Stop } from 'react-native-svg';
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import { ScrollView, View, useWindowDimensions } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Svg, { Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText } from '@/components/ui';
-import { wa } from '@/lib/oklch';
-import { NODES, PATH_ORDER, SHORT, SIDE, SIDE_NODES, seaFill, seaPath, type World, WORLDS } from '@/lib/worlds';
-import { WorldArt } from './WorldArt';
+import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
+import { sans } from '@/lib/theme';
+import { type ChapterKey, ChapterFooter, ChapterScene, FOOTER_H, SCENE_H } from './WorldArt';
+import { GROUND_CARD_H, GROUND_INTERLUDE_H, type GroundKey, GroundCardArt, GroundInterludeArt, WeekCardArt } from './WorldCardArt';
 
-const MAP_W = 402;
-const MAP_H = 874;
-const INK = '#06080B';
-const TEXT = '#F2F2EE';
+const noiseDark = require('../../../assets/images/noise-dark.png');
+const laurelMark = require('../../../assets/images/laurel-mark.webp');
 
-// ── full sea-to-summit backdrop ──────────────────────────────────────────────
-function JourneyBackdrop({ w, h }: { w: number; h: number }) {
+export type { ChapterKey, GroundKey };
+
+// ── where the ninety days are cut ────────────────────────────────────────────
+
+/** The journey in order — the list `library.tsx` walks. */
+export const CHAPTER_ORDER: ChapterKey[] = ['landing', 'crossing', 'highlands', 'watch'];
+
+/**
+ * The last day of each chapter, read straight off the day ranges the canvas
+ * prints in its own rows: 1–7 The Landing, 8–30 The Crossing, 31–60 The
+ * Highlands, 61–90 The Watch.
+ */
+export const CHAPTER_LAST_DAY: Record<ChapterKey, number> = { landing: 7, crossing: 30, highlands: 60, watch: 90 };
+
+/** Which chapter a given day of the ninety falls in. Past day 90 you keep the watch. */
+export function chapterForDay(day: number): ChapterKey {
+  if (day <= CHAPTER_LAST_DAY.landing) return 'landing';
+  if (day <= CHAPTER_LAST_DAY.crossing) return 'crossing';
+  if (day <= CHAPTER_LAST_DAY.highlands) return 'highlands';
+  return 'watch';
+}
+
+/** Day 1 is the day you signed up, not the day after it. */
+export function useJourneyDay(): number {
+  const user = useCurrentUser();
+  // Read once: the count must not shift under a re-render while a screen is open.
+  const [now] = useState(() => Date.now());
+  return user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+}
+
+/** The chapter the user stands on. Falls back to the first one until the record loads. */
+export function useCurrentChapter(): ChapterKey {
+  return chapterForDay(useJourneyDay());
+}
+
+// ── what the screens read off the record ─────────────────────────────────────
+
+interface Ctx {
+  /** 1 on the first day. */
+  day: number;
+  /** Waves ridden out — the canvas's "×1". */
+  waves: number;
+  /** Mornings answered. */
+  mornings: number;
+  /** The vow is signed. */
+  vowed: boolean;
+}
+
+type RowState = 'done' | 'current' | 'locked';
+
+interface ChapterRow {
+  label: string;
+  meta: (c: Ctx) => string;
+  state: (c: Ctx) => RowState;
+}
+
+/** A row covering a stretch of the ninety days you have already put behind you. */
+const past = (to: number) => (c: Ctx): RowState => (c.day > to ? 'done' : 'locked');
+
+/**
+ * The Crossing is the one frame whose rows are chapters rather than marks, and
+ * the one place the canvas draws "here" — the boat disc, the 60pt row and the
+ * ink ring appear on no other frame. So a chapter row is current when you stand
+ * in it, done once you are past it, shut until you reach it.
+ */
+const standingIn = (key: ChapterKey) => (c: Ctx): RowState => {
+  const here = chapterForDay(c.day);
+  if (key === here) return 'current';
+  return CHAPTER_ORDER.indexOf(key) < CHAPTER_ORDER.indexOf(here) ? 'done' : 'locked';
+};
+
+export interface Chapter {
+  key: ChapterKey;
+  title: string;
+  line: string;
+  rows: [ChapterRow, ChapterRow, ChapterRow];
+}
+
+export const CHAPTERS: Record<ChapterKey, Chapter> = {
+  landing: {
+    key: 'landing',
+    title: 'The Landing',
+    line: 'Getting ashore — the vow, the first check-ins, the first wave faced.',
+    rows: [
+      { label: 'The vow', meta: () => 'Day 0', state: (c) => (c.vowed ? 'done' : 'locked') },
+      // the canvas prints one string here, held or not — the glyph carries the truth
+      { label: 'Seven mornings', meta: () => 'Days 1–7 · held', state: (c) => (c.mornings >= 7 ? 'done' : 'locked') },
+      { label: 'First wave outlasted', meta: (c) => `×${c.waves}`, state: (c) => (c.waves > 0 ? 'done' : 'locked') },
+    ],
+  },
+  // The Crossing looks outward rather than inward: standing mid-water, what you
+  // want is the shore behind you, the count you are on, and the ground ahead.
+  crossing: {
+    key: 'crossing',
+    title: 'The Crossing',
+    line: 'Open water — the first honest weeks. Hold the pledge, ride the waves, learn your triggers.',
+    rows: [
+      { label: 'The Landing', meta: () => 'Days 1–7 · held', state: standingIn('landing') },
+      // the canvas prints "Day 13 of 30"; past day 30 the count sits on its ceiling
+      { label: 'The Crossing', meta: (c) => `Day ${Math.min(30, c.day)} of 30`, state: standingIn('crossing') },
+      { label: 'The Highlands', meta: () => 'Days 31–60', state: standingIn('highlands') },
+    ],
+  },
+  highlands: {
+    key: 'highlands',
+    title: 'The Highlands',
+    line: 'Thinner air, longer views — the habits hold under real stress.',
+    rows: [
+      { label: 'The Long Climb', meta: () => 'Days 31–45', state: past(45) },
+      { label: 'The Pass', meta: () => 'Days 46–53', state: past(53) },
+      { label: 'The Ridge', meta: () => 'Days 54–60', state: past(60) },
+    ],
+  },
+  watch: {
+    key: 'watch',
+    title: 'The Watch',
+    line: 'The habit is yours — now you keep the light on for the long run.',
+    rows: [
+      { label: 'Home waters', meta: () => 'Days 61–75', state: past(75) },
+      { label: 'Keeping the watch', meta: () => 'Days 76–90', state: past(90) },
+      { label: 'The vow, renewed', meta: () => 'Day 90', state: past(90) },
+    ],
+  },
+};
+
+// ── shared chrome ────────────────────────────────────────────────────────────
+
+/** The canvas's quiet Back row: chevron and word, canvas top 64. */
+function BackRow({ onPress }: { onPress: () => void }) {
   return (
-    <Svg width={w} height={h} viewBox="0 0 402 874" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', top: 0, left: 0 }}>
-      <Defs>
-        <SvgGradient id="jmap" x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0%" stopColor={wa(300, 0.4, 0.1)} />
-          <Stop offset="16%" stopColor={wa(286, 0.32, 0.09)} />
-          <Stop offset="36%" stopColor={wa(150, 0.24, 0.075)} />
-          <Stop offset="58%" stopColor={wa(186, 0.22, 0.075)} />
-          <Stop offset="80%" stopColor={wa(214, 0.28, 0.085)} />
-          <Stop offset="100%" stopColor={wa(224, 0.4, 0.1)} />
-        </SvgGradient>
-      </Defs>
-      <Path d={`M0 0H402V874H0Z`} fill="url(#jmap)" />
-      {/* summit + high peaks */}
-      <Circle cx={204} cy={150} r={46} fill={wa(300, 0.82, 0.08, 0.25)} />
-      <Path d="M120 250L204 120 300 250Z" fill={wa(296, 0.2, 0.05)} />
-      <Path d="M204 120L186 158C196 148 214 148 224 158Z" fill={wa(300, 0.85, 0.05, 0.7)} />
-      <Path d="M0 250L70 175 150 250Z" fill={wa(288, 0.17, 0.05)} />
-      <Path d="M250 270L330 185 402 270Z" fill={wa(286, 0.16, 0.05)} />
-      {/* cloud sea around the upper mountain */}
-      <Path d="M0 296C70 282 130 290 200 286 280 282 340 292 402 284V330H0Z" fill={wa(286, 0.62, 0.05, 0.16)} />
-      {/* mid mountains / base */}
-      <Path d="M0 470L96 360 196 470Z" fill={wa(150, 0.2, 0.06)} />
-      <Path d="M180 480L300 350 402 480Z" fill={wa(150, 0.17, 0.055)} />
-      <Path d="M0 478C80 452 140 466 210 462 290 458 350 470 402 460V520H0Z" fill={wa(150, 0.24, 0.07)} />
-      {/* island */}
-      <Path d="M96 600C120 560 156 540 198 540 240 540 280 562 306 600Z" fill={wa(176, 0.22, 0.06)} />
-      <Path d="M198 556L198 530" stroke={wa(176, 0.8, 0.07, 0.7)} strokeWidth={2} strokeLinecap="round" />
-      <Circle cx={198} cy={524} r={10} fill={wa(176, 0.75, 0.08, 0.8)} />
-      {/* sea bands to the shore */}
-      {[636, 672, 710, 748, 788, 826].map((y, i) => (
-        <Path key={i} d={seaPath(y, 5 + i * 0.4)} fill="none" stroke={wa(220 - i * 2, 0.7, 0.07, 0.22 - i * 0.015)} strokeWidth={1.8} />
-      ))}
-      <Path d={seaFill(800, 6, 874)} fill={wa(224, 0.18, 0.06, 0.7)} />
-    </Svg>
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel="Back"
+      hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
+      style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+      <Svg width={11} height={19} viewBox="0 0 11 19">
+        <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+      </Svg>
+      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+    </PressScale>
   );
 }
 
-// connector path string through the main nodes
-function connectorD() {
-  const pts = PATH_ORDER.map((k) => NODES[k]);
-  let d = `M ${pts[0][0]} ${pts[0][1]}`;
-  for (let i = 1; i < pts.length; i++) {
-    const [x0, y0] = pts[i - 1];
-    const [x1, y1] = pts[i];
-    const my = (y0 + y1) / 2;
-    d += ` C ${x0} ${my}, ${x1} ${my}, ${x1} ${y1}`;
-  }
-  return d;
-}
-
-// pulsing ring for the current node (urge-ring keyframe)
-function PulseRing({ size, color }: { size: number; color: string }) {
-  const t = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const loop = Animated.loop(Animated.timing(t, { toValue: 1, duration: 3000, easing: Easing.out(Easing.ease), useNativeDriver: true }));
-    loop.start();
-    return () => loop.stop();
-  }, [t]);
-  return (
-    <Animated.View
-      pointerEvents="none"
-      style={{
-        position: 'absolute',
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-        borderWidth: 1.5,
-        borderColor: color,
-        opacity: t.interpolate({ inputRange: [0, 0.16, 1], outputRange: [0, 0.55, 0] }),
-        transform: [{ scale: t.interpolate({ inputRange: [0, 1], outputRange: [0.32, 1.95] }) }],
-      }}
-    />
-  );
-}
-
-// node icons
-const LockIcon = ({ c }: { c: string }) => (
-  <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
-    <Path d="M6 11h12v9H6z" stroke={c} strokeWidth={2} strokeLinejoin="round" />
-    <Path d="M8 11V8a4 4 0 018 0v3" stroke={c} strokeWidth={2} />
-  </Svg>
-);
-const CheckIcon = ({ c, size = 20 }: { c: string; size?: number }) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <Path d="M5 12.5l4.5 4.5L19 7" stroke={c} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-  </Svg>
-);
-
-function MapNode({ world, cx, cy, side, onOpen }: { world: World; cx: number; cy: number; side?: boolean; onOpen: (k: string) => void }) {
-  const st = world.state;
-  const r = side ? 25 : 28;
-  const accent = wa(world.hue, 0.82, 0.12);
-  const isDone = st === 'done',
-    isCur = st === 'current',
-    isOpen = st === 'open';
-  const bg = isDone ? accent : isCur ? wa(world.hue, 0.3, 0.09, 0.95) : isOpen ? wa(world.hue, 0.26, 0.08, 0.9) : 'rgba(255,255,255,0.06)';
-  const borderColor = isCur || isOpen ? accent : isDone ? 'transparent' : 'rgba(255,255,255,0.22)';
-  const borderWidth = isCur || isOpen ? 2 : isDone ? 0 : 2;
-
-  return (
-    <View style={{ position: 'absolute', left: cx - 60, top: cy - r, width: 120, alignItems: 'center' }}>
-      <Pressable onPress={() => onOpen(world.key)} accessibilityRole="button" accessibilityLabel={world.name} style={{ alignItems: 'center', gap: 6 }}>
-        <View style={{ width: r * 2, height: r * 2, alignItems: 'center', justifyContent: 'center' }}>
-          {isCur ? <PulseRing size={r * 2 + 14} color={accent} /> : null}
-          <View
-            style={{
-              width: r * 2,
-              height: r * 2,
-              borderRadius: r,
-              backgroundColor: bg,
-              borderWidth,
-              borderColor,
-              alignItems: 'center',
-              justifyContent: 'center',
-              shadowColor: isCur ? wa(world.hue, 0.7, 0.12) : isDone ? wa(world.hue, 0.5, 0.1) : '#000',
-              shadowOpacity: isCur ? 0.5 : isDone ? 0.4 : 0,
-              shadowRadius: isCur ? 13 : 8,
-              shadowOffset: { width: 0, height: isDone ? 6 : 0 },
-            }}>
-            {st === 'locked' ? (
-              <LockIcon c="rgba(255,255,255,0.5)" />
-            ) : isDone ? (
-              <CheckIcon c="#06080B" />
-            ) : side ? (
-              <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
-                {world.crisis ? (
-                  <Path d="M12 3l9 16H3L12 3z M12 10v4 M12 17v.5" stroke={accent} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                ) : (
-                  <>
-                    <Circle cx={12} cy={12} r={8} stroke={accent} strokeWidth={2} />
-                    <Path d="M12 8v8M8 12h8" stroke={accent} strokeWidth={2} strokeLinecap="round" />
-                  </>
-                )}
-              </Svg>
-            ) : (
-              <AppText weightOverride="500" color={TEXT} style={{ fontSize: 16.5 }}>
-                {world.n}
-              </AppText>
-            )}
-          </View>
-        </View>
-        <AppText
-          weightOverride="600"
-          style={{ fontSize: 11.5, letterSpacing: 0.1, color: st === 'locked' ? 'rgba(242,242,238,0.5)' : TEXT, textAlign: 'center', maxWidth: 116, textShadowColor: 'rgba(0,0,0,0.6)', textShadowRadius: 6, textShadowOffset: { width: 0, height: 1 } }}>
-          {side ? world.name.split(' & ')[0].replace('Get ', '') : SHORT[world.key]}
-        </AppText>
-      </Pressable>
-    </View>
-  );
-}
-
-// ── 1 · the overview MAP ─────────────────────────────────────────────────────
-function WorldMapScreen({ worlds, side, onOpen }: { worlds: World[]; side: World[]; onOpen: (k: string) => void }) {
-  const { width } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-  const scale = width / MAP_W;
-  const mapH = MAP_H * scale;
-  const doneCount = worlds.filter((w) => w.state === 'done').length;
-  const cur = worlds.find((w) => w.state === 'current');
-  const sx = (x: number) => x * scale;
-
-  return (
-    <View style={{ flex: 1, backgroundColor: INK }}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 24 }}>
-        <View style={{ width, height: mapH }}>
-          <JourneyBackdrop w={width} h={mapH} />
-          {/* top/bottom darkening */}
-          <LinearGradient
-            colors={['rgba(6,8,11,0.35)', 'rgba(6,8,11,0)', 'rgba(6,8,11,0)', 'rgba(6,8,11,0.5)']}
-            locations={[0, 0.16, 0.78, 1]}
-            style={{ position: 'absolute', top: 0, left: 0, right: 0, height: mapH }}
-            pointerEvents="none"
-          />
-
-          {/* connectors + branch lines */}
-          <Svg width={width} height={mapH} viewBox="0 0 402 874" style={{ position: 'absolute', top: 0, left: 0 }} pointerEvents="none">
-            <Path d={connectorD()} fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth={2.5} strokeLinecap="round" strokeDasharray="1 11" />
-            <Path
-              d={`M ${NODES.base[0]} ${NODES.base[1]} Q ${SIDE_NODES.curio[0]} ${(NODES.base[1] + SIDE_NODES.curio[1]) / 2}, ${SIDE_NODES.curio[0]} ${SIDE_NODES.curio[1]}`}
-              fill="none"
-              stroke={wa(332, 0.7, 0.08, 0.4)}
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeDasharray="1 10"
-            />
-            <Path
-              d={`M ${NODES.sailing[0]} ${NODES.sailing[1]} Q ${SIDE_NODES.help[0]} ${(NODES.sailing[1] + SIDE_NODES.help[1]) / 2}, ${SIDE_NODES.help[0]} ${SIDE_NODES.help[1]}`}
-              fill="none"
-              stroke={wa(26, 0.7, 0.09, 0.4)}
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeDasharray="1 10"
-            />
-          </Svg>
-
-          {/* header */}
-          <View style={{ position: 'absolute', top: insets.top + 16, left: 0, right: 0, paddingHorizontal: 24, alignItems: 'center' }}>
-            <AppText weightOverride="600" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, marginTop: 6, textShadowColor: 'rgba(0,0,0,0.5)', textShadowRadius: 12 }}>
-              Sea to summit
-            </AppText>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 10 }}>
-              <View style={{ width: 150, height: 5, borderRadius: 9999, backgroundColor: 'rgba(255,255,255,0.16)', overflow: 'hidden' }}>
-                <View style={{ width: `${(doneCount / WORLDS.length) * 100 + 4}%`, height: '100%', backgroundColor: wa(cur ? cur.hue : 224, 0.85, 0.11), borderRadius: 9999 }} />
-              </View>
-              <AppText weightOverride="600" style={{ fontSize: 12.5, color: 'rgba(242,242,238,0.75)' }}>
-                {doneCount}/{WORLDS.length} worlds
-              </AppText>
-            </View>
-          </View>
-
-          {/* nodes */}
-          {worlds.map((w) => (
-            <MapNode key={w.key} world={w} cx={sx(NODES[w.key][0])} cy={sx(NODES[w.key][1])} onOpen={onOpen} />
-          ))}
-          {side.map((w) => (
-            <MapNode key={w.key} world={w} cx={sx(SIDE_NODES[w.key][0])} cy={sx(SIDE_NODES[w.key][1])} side onOpen={onOpen} />
-          ))}
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
-
-// ── back chrome shared by hubs ───────────────────────────────────────────────
-function HubChrome({ onBack, index, total, hue, top }: { onBack: () => void; index: number | null; total: number; hue: number; top: number }) {
-  return (
-    <View style={{ position: 'absolute', top, left: 0, right: 0, zIndex: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 22 }}>
-      <Pressable onPress={onBack} accessibilityLabel="Back" hitSlop={8} style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: 'rgba(0,0,0,0.28)', alignItems: 'center', justifyContent: 'center' }}>
-        <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
-          <Path d="M15 5l-7 7 7 7" stroke={TEXT} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+/** Done, here, or not yet — the three glyphs the chapter rows carry. */
+function RowGlyph({ state }: { state: RowState }) {
+  if (state === 'locked') {
+    return (
+      <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: '#EDECE7', alignItems: 'center', justifyContent: 'center' }}>
+        <Svg width={11} height={13} viewBox="0 0 14 16">
+          <Rect x={1.5} y={7} width={11} height={8} rx={2} fill="#8B8882" />
+          <Path d="M4 7V5a3 3 0 016 0v2" fill="none" stroke="#8B8882" strokeWidth={2} />
         </Svg>
-      </Pressable>
-      {total ? (
-        <View style={{ flexDirection: 'row', gap: 5 }}>
-          {Array.from({ length: total }).map((_, i) => (
-            <View key={i} style={{ width: i === index ? 20 : 6, height: 6, borderRadius: 9999, backgroundColor: i <= (index ?? -1) ? wa(hue, 0.85, 0.1) : 'rgba(255,255,255,0.22)' }} />
-          ))}
-        </View>
-      ) : (
-        <View />
-      )}
-      <View style={{ width: 38 }} />
+      </View>
+    );
+  }
+  if (state === 'current') {
+    return (
+      <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
+        <Svg width={18} height={11.7} viewBox="0 0 40 26">
+          <Path d="M21 3 L21 16 L12 16 Z" fill="#F4F3F0" />
+          <Path d="M7 18 L33 18 Q30 24 20 24 Q10 24 7 18 Z" fill="#F4F3F0" />
+        </Svg>
+      </View>
+    );
+  }
+  return (
+    <View style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
+      <Svg width={12} height={10} viewBox="0 0 16 13">
+        <Path d="M1.5 7l4.4 4.5L14.5 1.5" fill="none" stroke="#F4F3F0" strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" />
+      </Svg>
     </View>
   );
 }
 
-function LessonRow({ title, mins, state, hue, i }: { title: string; mins: number; state: string; hue: number; i: number }) {
-  const accent = wa(hue, 0.82, 0.12);
-  const done = state === 'done',
-    cur = state === 'current',
-    locked = state === 'locked';
-  const meta = done ? 'Done' : cur ? 'In progress' : locked ? 'Locked' : 'Tap to start';
+function ChapterRowCard({ label, meta, state }: { label: string; meta: string; state: RowState }) {
+  const here = state === 'current';
   return (
     <View
       style={{
+        height: here ? 60 : 56,
+        borderRadius: 14,
+        backgroundColor: '#FFFFFF',
+        boxShadow: here ? '0 0 0 2px #131313, 0 10px 22px rgba(40,38,32,0.12)' : '0 0 0 1px rgba(0,0,0,0.06)',
         flexDirection: 'row',
         alignItems: 'center',
         gap: 13,
-        paddingVertical: 11,
-        paddingHorizontal: 14,
-        borderRadius: 16,
-        backgroundColor: cur ? wa(hue, 0.4, 0.09, 0.16) : 'rgba(255,255,255,0.045)',
-        borderWidth: cur ? 1.5 : 1,
-        borderColor: cur ? wa(hue, 0.6, 0.1, 0.5) : 'rgba(255,255,255,0.06)',
-        opacity: locked ? 0.55 : 1,
+        paddingHorizontal: 16,
+        opacity: state === 'locked' ? 0.6 : 1,
       }}>
-      <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? accent : 'rgba(255,255,255,0.07)', borderWidth: cur ? 1.5 : 0, borderColor: accent }}>
-        {done ? <CheckIcon c="#06080B" size={15} /> : locked ? <LockIcon c="rgba(255,255,255,0.5)" /> : <AppText weightOverride="600" color={accent} style={{ fontSize: 13 }}>{i}</AppText>}
-      </View>
-      <View style={{ flex: 1, minWidth: 0 }}>
-        <AppText weightOverride="600" color={TEXT} numberOfLines={1} style={{ fontSize: 15.5, letterSpacing: -0.15 }}>
-          {title}
-        </AppText>
-        <AppText weightOverride="500" style={{ fontSize: 12.5, color: 'rgba(242,242,238,0.5)', marginTop: 1 }}>
-          {mins} min · {meta}
-        </AppText>
-      </View>
-      {cur ? (
-        <View style={{ backgroundColor: accent, borderRadius: 9999, paddingHorizontal: 13, paddingVertical: 6 }}>
-          <AppText weightOverride="600" color="#06080B" style={{ fontSize: 12 }}>
-            Resume
-          </AppText>
-        </View>
-      ) : null}
+      <RowGlyph state={state} />
+      <AppText numberOfLines={1} style={[sans(here ? '700' : '500'), { flex: 1, fontSize: 15.5, color: '#1D1C1A' }]}>
+        {label}
+      </AppText>
+      <AppText style={[sans(here ? '600' : '500'), { fontSize: 12.5, color: here ? '#1D1C1A' : '#8B8882' }]}>{meta}</AppText>
     </View>
   );
 }
 
-// ── 2 · the immersive per-world HUB ──────────────────────────────────────────
-function WorldHubScreen({ world, onBack, onAction }: { world: World; onBack: () => void; onAction: (w: World) => void }) {
-  const { width } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-  const w = world;
-  const accent = wa(w.hue, 0.82, 0.12);
-  const idx = w.side ? null : (w.n ?? 1) - 1;
-  const shown = w.lessons.slice(0, 4);
-  const more = w.count - shown.length;
-  const stateFor = (i: number) => {
-    if (w.state === 'current') return i < (w.done || 0) ? 'done' : i === (w.done || 0) ? 'current' : 'locked';
-    if (w.state === 'open') return i === 0 ? 'current' : 'locked';
-    if (w.state === 'done') return 'done';
-    return 'locked';
+/** The 24pt of air between two rows, with the canvas's two grey pips in it. */
+function RowGap() {
+  return (
+    <View style={{ height: 24 }}>
+      <View style={{ position: 'absolute', left: 28, top: 5, width: 3.5, height: 3.5, borderRadius: 1.75, backgroundColor: 'rgba(40,38,32,0.2)' }} />
+      <View style={{ position: 'absolute', left: 28, top: 13, width: 3.5, height: 3.5, borderRadius: 1.75, backgroundColor: 'rgba(40,38,32,0.2)' }} />
+    </View>
+  );
+}
+
+// ── 176–179 · one chapter ────────────────────────────────────────────────────
+
+/**
+ * Everything the canvas draws below a chapter's Back row, laid out from that
+ * row's own origin: the title at 60, the line at 108, the scene at 160, the
+ * three rows at 512, and the land the chapter closes on.
+ *
+ * Written as a fixed-height block rather than a `flex: 1` screen so it can be
+ * either one page (`JourneyChapter`) or one section of a longer scroll
+ * (`JourneyScroll`) without the two drifting apart.
+ */
+export const CHAPTER_BODY_H = 852 - 54;
+
+function ChapterBody({ chapter, ctx, width, height }: { chapter: ChapterKey; ctx: Ctx; width: number; height: number }) {
+  const c = CHAPTERS[chapter];
+  return (
+    <View style={{ height, overflow: 'hidden' }}>
+      <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>{c.title}</AppText>
+      <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 108, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>{c.line}</AppText>
+
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 160, height: SCENE_H, overflow: 'hidden' }} pointerEvents="none">
+        <ChapterScene scene={chapter} width={width} />
+      </View>
+
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 512 }}>
+        {c.rows.map((row, i) => (
+          <View key={row.label}>
+            {i ? <RowGap /> : null}
+            <ChapterRowCard label={row.label} meta={row.meta(ctx)} state={row.state(ctx)} />
+          </View>
+        ))}
+      </View>
+
+      {/* the land the chapter closes on: canvas top 798 of 852, so a flat 54 off
+          the block's bottom — the home-indicator zone is inside the band, not
+          added to it */}
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: FOOTER_H }} pointerEvents="none">
+        <ChapterFooter scene={chapter} width={width} height={FOOTER_H} />
+        {chapter === 'watch' ? (
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9 }}>
+            <Image source={laurelMark} contentFit="contain" style={{ width: 20, height: 20, opacity: 0.8 }} />
+            <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>Day 90 · the vow, renewed</AppText>
+          </View>
+        ) : null}
+      </View>
+    </View>
+  );
+}
+
+/** What every chapter reads off the record — gathered once, shared by all four. */
+function useChapterCtx(): Ctx | undefined {
+  const day = useJourneyDay();
+  const events = useEvents();
+  const checkins = useCheckins();
+  const journal = useJournalEntries();
+  if (events === undefined || checkins === undefined || journal === undefined) return undefined;
+  return {
+    day,
+    waves: events.filter((e) => e.type === 'urge_rode_out').length,
+    mornings: checkins.length,
+    vowed: journal.some((entry) => entry.tag === 'Pledge'),
   };
-  const ctaLabel = w.crisis ? 'Get help now' : w.state === 'locked' ? 'Locked' : w.state === 'current' ? 'Continue world' : w.state === 'open' ? 'Explore' : w.state === 'done' ? 'Review world' : 'Start world';
-  const locked = w.state === 'locked';
+}
+
+export function JourneyChapter({ chapter, onBack }: { chapter: ChapterKey; onBack?: () => void }) {
+  const router = useRouter();
+  const { width, height } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  const ctx = useChapterCtx();
+
+  if (!ctx) return <LoadingView />;
+  const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/(app)/today')));
 
   return (
-    <View style={{ flex: 1, backgroundColor: INK }}>
-      <HubChrome onBack={onBack} index={idx} total={w.side ? 0 : 10} hue={w.hue} top={insets.top + 8} />
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
 
-      {/* scene banner */}
-      <View style={{ height: 312 }}>
-        <WorldArt scene={w.key} hue={w.hue} w={width} h={312} />
-        <LinearGradient colors={['rgba(6,8,11,0)', INK]} locations={[0.56, 1]} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} pointerEvents="none" />
+      {/* the plain View is load-bearing: safe-area-context expresses its inset as
+          Yoga padding, and Yoga lays an absolute child out from the parent's
+          border box, so absolute children of the SafeAreaView itself would sit
+          under the status bar */}
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <BackRow onPress={back} />
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}>
+            <ChapterBody chapter={chapter} ctx={ctx} width={width} height={Math.max(CHAPTER_BODY_H, height - insets.top)} />
+          </View>
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+/**
+ * The journey as one page: the four chapters, drawn exactly as they are drawn
+ * on their own, run end to end down a single scroll.
+ *
+ * Each is its own full-height block, so the land band that closes one chapter
+ * becomes the horizon the next one opens above — which is what the canvas's
+ * four frames do when you flick between them, and why they are stacked at their
+ * own height rather than collapsed to their content.
+ */
+export function JourneyScroll({ bottomInset = 0 }: { bottomInset?: number }) {
+  const { width } = useWindowDimensions();
+  const ctx = useChapterCtx();
+  if (!ctx) return <LoadingView />;
+
+  return (
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <ScrollView showsVerticalScrollIndicator={false} contentInsetAdjustmentBehavior="never" contentContainerStyle={{ paddingBottom: bottomInset }}>
+            {CHAPTER_ORDER.map((chapter) => (
+              <ChapterBody key={chapter} chapter={chapter} ctx={ctx} width={width} height={CHAPTER_BODY_H} />
+            ))}
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+// ── 107 · the campaign map ───────────────────────────────────────────────────
+
+/** The four weeks, newest first — the order the canvas stacks them in. */
+const WEEKS: { n: number; roman: string; title: string; size: number }[] = [
+  { n: 4, roman: 'Week IV', title: 'Building the life', size: 16 },
+  { n: 3, roman: 'Week III', title: 'Setbacks & self-compassion', size: 15.5 },
+  { n: 2, roman: 'Week II', title: 'Understanding urges', size: 16 },
+  { n: 1, roman: 'Week I', title: 'Foundations', size: 16 },
+];
+
+function WeekCard({ week, top, here }: { week: (typeof WEEKS)[number]; top: number; here: boolean }) {
+  return (
+    <View style={{ position: 'absolute', left: 24, right: 24, top, height: 96 }}>
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          overflow: 'hidden',
+          borderRadius: 14,
+          backgroundColor: '#F0EFE9',
+          boxShadow: '0 0 0 1px rgba(0,0,0,0.05)',
+        }}>
+        <WeekCardArt week={week.n} />
       </View>
 
-      {/* body */}
-      <View style={{ flex: 1, marginTop: -42, paddingHorizontal: 24, paddingBottom: 18 }}>
-        <AppText weightOverride="600" color={accent} style={{ fontSize: 12, letterSpacing: 2.4, textTransform: 'uppercase' }}>
-          {w.side ? 'Side quest' : `World ${w.n} of 10`}
-        </AppText>
-        <AppText weightOverride="600" color={TEXT} style={{ fontSize: 30, letterSpacing: -0.75, lineHeight: 33, marginTop: 8 }}>
-          {w.name}
-        </AppText>
-        <AppText weightOverride="500" style={{ fontSize: 16, color: 'rgba(242,242,238,0.6)', marginTop: 6 }}>
-          {w.sub}
-          {w.crisis ? '' : ` · ${w.count} lesson${w.count > 1 ? 's' : ''}${w.mins ? ` · ~${w.mins} min each` : ''}`}
-        </AppText>
-
-        <ScrollView style={{ flex: 1, marginTop: 18 }} contentContainerStyle={{ gap: 8 }} showsVerticalScrollIndicator={false}>
-          {shown.map((t, i) => (
-            <LessonRow key={i} title={t} mins={w.mins || 3} state={w.crisis ? (i === 0 ? 'current' : 'avail') : stateFor(i)} hue={w.hue} i={i + 1} />
-          ))}
-          {more > 0 ? (
-            <AppText weightOverride="600" style={{ textAlign: 'center', fontSize: 13, color: 'rgba(242,242,238,0.5)', paddingTop: 6 }}>
-              + {more} more {w.crisis ? 'resource' : 'lesson'}
-              {more > 1 ? 's' : ''}
-            </AppText>
+      <View style={{ position: 'absolute', left: 126, right: 14, top: 0, bottom: 0, justifyContent: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>{week.roman}</AppText>
+          {here ? (
+            <View style={{ backgroundColor: '#131313', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3 }}>
+              <AppText style={[sans('600'), { fontSize: 12.5, color: '#FFFFFF' }]}>You are here</AppText>
+            </View>
           ) : null}
-        </ScrollView>
-
-        <Pressable
-          onPress={() => onAction(w)}
-          style={{
-            marginTop: 10,
-            width: '100%',
-            backgroundColor: locked ? 'rgba(255,255,255,0.08)' : accent,
-            borderRadius: 9999,
-            paddingVertical: 17,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 8,
-          }}>
-          {locked ? <LockIcon c="rgba(242,242,238,0.55)" /> : null}
-          <AppText weightOverride="500" color={locked ? 'rgba(242,242,238,0.55)' : '#06080B'} style={{ fontSize: 16.5, letterSpacing: -0.1 }}>
-            {ctaLabel}
-          </AppText>
-        </Pressable>
+        </View>
+        <AppText numberOfLines={1} style={[sans('600'), { marginTop: 4, fontSize: week.size, color: '#1D1C1A' }]}>
+          {week.title}
+        </AppText>
       </View>
     </View>
   );
 }
 
-// ── live flow: map ⇄ hub ─────────────────────────────────────────────────────
-export function WorldsJourney({ worlds, side, onAction }: { worlds: World[]; side: World[]; onAction: (w: World) => void }) {
-  const [openKey, setOpen] = useState<string | null>(null);
-  const open = openKey ? [...worlds, ...side].find((w) => w.key === openKey) : null;
-  if (open) return <WorldHubScreen world={open} onBack={() => setOpen(null)} onAction={onAction} />;
-  return <WorldMapScreen worlds={worlds} side={side} onOpen={(k) => setOpen(k)} />;
+export function CampaignMap({ onBack, onContinue }: { onBack?: () => void; onContinue?: () => void }) {
+  const router = useRouter();
+  const day = useJourneyDay();
+  const current = useCurrentLesson();
+
+  if (current === undefined) return <LoadingView />;
+
+  // The week you stand on: the curriculum's if it has an opinion, otherwise the
+  // one the calendar puts you in. Only the first four are drawn here.
+  const here = Math.min(4, Math.max(1, current?.lesson.week ?? Math.ceil(day / 7)));
+  const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/(app)/today')));
+  const go = onContinue ?? (() => router.push('/(app)/library'));
+
+  return (
+    <View style={{ flex: 1, backgroundColor: '#F6F4F0' }}>
+      <LinearGradient colors={['#F6F4F0', '#FCFBF9']} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+
+      {/* the two washes are frame-anchored, so they sit outside the safe area;
+          the canvas blurs the upper one 6px and RN SVG has no filter, so the
+          falloff carries it */}
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+        <Svg width={540} height={270} style={{ position: 'absolute', left: -40, top: -140 }}>
+          <Defs>
+            <RadialGradient id="map-top" cx="50%" cy="50%" r="50%">
+              <Stop offset="0" stopColor="#B4AA96" stopOpacity={0.14} />
+              <Stop offset="0.42" stopColor="#B4AA96" stopOpacity={0.08} />
+              <Stop offset="0.72" stopColor="#B4AA96" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Ellipse cx={270} cy={135} rx={270} ry={135} fill="url(#map-top)" />
+        </Svg>
+        <Svg width={560} height={560} style={{ position: 'absolute', left: '50%', marginLeft: -280, bottom: -300 }}>
+          <Defs>
+            <RadialGradient id="map-bottom" cx="50%" cy="50%" r="50%">
+              <Stop offset="0" stopColor="#FFECC4" stopOpacity={0.52} />
+              <Stop offset="0.45" stopColor="#FFECC4" stopOpacity={0.23} />
+              <Stop offset="0.72" stopColor="#FFECC4" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Ellipse cx={280} cy={280} rx={280} ry={280} fill="url(#map-bottom)" />
+        </Svg>
+      </View>
+
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} pointerEvents="none" />
+
+      {/* same reason as the chapter screen: Yoga ignores the SafeAreaView's inset
+          padding when it positions an absolute child, so everything absolute
+          lives one plain View deeper */}
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <BackRow onPress={back} />
+
+          <AppText
+            center
+            style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 72, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: '#1D1C1A' }]}>
+            Your first four weeks.
+          </AppText>
+
+          {WEEKS.map((week, i) => (
+            <WeekCard key={week.n} week={week} top={138 + i * 118} here={week.n === here} />
+          ))}
+
+          <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 642, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
+            {"Four weeks, one path. Move at your own pace — there's no clock."}
+          </AppText>
+
+          <PressScale
+            onPress={go}
+            accessibilityRole="button"
+            style={{
+              position: 'absolute',
+              left: 24,
+              right: 24,
+              bottom: 30,
+              height: 58,
+              borderRadius: 29,
+              backgroundColor: '#131313',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.3, color: '#FFFFFF' }]}>Show me my path</AppText>
+          </PressScale>
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+// ── 183 · the five grounds ───────────────────────────────────────────────────
+
+/**
+ * The campaign as the export-only frame draws it: five grounds in a column you
+ * scroll, joined by drifts of pebbles, with one full-bleed long view set into
+ * the middle of the run.
+ *
+ * This is a second, richer telling of the same journey and a different cut of
+ * it — five grounds against the four chapters of 176–179. The main design file
+ * stays the source of truth for the Library tab; this screen is the extra one.
+ */
+interface Ground {
+  key: GroundKey;
+  numeral: string;
+  name: string;
+  line: string;
+  /** The card's own field, top to bottom. */
+  field: readonly [string, string];
+  state: 'taken' | 'here' | 'ahead';
+}
+
+const GROUNDS: Ground[] = [
+  {
+    key: 'landing',
+    numeral: 'GROUND I',
+    name: 'The Landing',
+    line: 'Where it began — day one, ashore.',
+    field: ['#E9EFF4', '#F0EDE5'],
+    state: 'taken',
+  },
+  {
+    key: 'crossing',
+    numeral: 'GROUND II',
+    name: 'The Crossing',
+    line: 'Open water — steady strokes, no heroics.',
+    field: ['#E3ECF3', '#EDEAE2'],
+    state: 'here',
+  },
+  {
+    key: 'deep',
+    numeral: 'GROUND III',
+    name: 'Deep Waters',
+    line: 'The current pulls hardest here.',
+    field: ['#E4E9EE', '#EBE9E3'],
+    state: 'ahead',
+  },
+  {
+    key: 'held',
+    numeral: 'GROUND IV',
+    name: 'Held Ground',
+    line: 'You stop losing what you gained.',
+    field: ['#E9EFF4', '#F0EDE5'],
+    state: 'ahead',
+  },
+  {
+    key: 'camp',
+    numeral: 'GROUND V',
+    name: 'First Camp',
+    line: 'Rest earned — the first real footing.',
+    field: ['#E9EFF4', '#F0EDE5'],
+    state: 'ahead',
+  },
+];
+
+/**
+ * Which chapter a ground opens.
+ *
+ * The five grounds are not the four chapters recut — the chapter frames carry
+ * day ranges and the ground cards carry none, and the two sets share only their
+ * first two names outright. So past The Crossing this is a reading rather than a
+ * measurement, and the frames' own lines are the only evidence there is: Deep
+ * Waters is "the current pulls hardest here", which is The Highlands' stretch
+ * under real stress; Held Ground "you stop losing what you gained" and First
+ * Camp "rest earned" are both the long hold The Watch keeps.
+ */
+export const GROUND_TO_CHAPTER: Record<GroundKey, ChapterKey> = {
+  landing: 'landing',
+  crossing: 'crossing',
+  deep: 'highlands',
+  held: 'watch',
+  camp: 'watch',
+};
+
+/** The four pebbles that drift between one ground and the next. */
+function GroundLink() {
+  const pebble = (top: number, size: number, dx: number, fill: string) => ({
+    position: 'absolute' as const,
+    left: '50%' as const,
+    marginLeft: dx,
+    top,
+    width: size,
+    height: size,
+    borderRadius: size / 2,
+    backgroundColor: fill,
+  });
+  return (
+    <View style={{ height: 64 }} pointerEvents="none">
+      <View style={pebble(9, 7, -9, '#C3CEDA')} />
+      <View style={pebble(23, 8, 2, '#B2C1D0')} />
+      <View style={pebble(38, 8, -10, '#B2C1D0')} />
+      <View style={pebble(52, 7, 1, '#C3CEDA')} />
+    </View>
+  );
+}
+
+/** Taken, standing here, or still shut — the three marks a ground card carries. */
+function GroundBadge({ state }: { state: Ground['state'] }) {
+  if (state === 'taken') {
+    return (
+      <View
+        style={{
+          position: 'absolute',
+          right: 14,
+          top: 14,
+          height: 24,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 5,
+          paddingLeft: 8,
+          paddingRight: 11,
+          borderRadius: 12,
+          backgroundColor: 'rgba(19,19,19,0.08)',
+        }}>
+        <Svg width={11} height={9} viewBox="0 0 16 13">
+          <Path d="M1.5 7l4.4 4.5L14.5 1.5" fill="none" stroke="#131313" strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+        <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 0.3, color: '#131313' }]}>Taken</AppText>
+      </View>
+    );
+  }
+  if (state === 'here') {
+    return (
+      <View
+        style={{
+          position: 'absolute',
+          right: 14,
+          top: 14,
+          height: 24,
+          justifyContent: 'center',
+          paddingHorizontal: 10,
+          borderRadius: 12,
+          backgroundColor: '#131313',
+        }}>
+        <AppText style={[sans('600'), { fontSize: 9, letterSpacing: 1.3, color: '#FFFFFF' }]}>YOU ARE HERE</AppText>
+      </View>
+    );
+  }
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        right: 14,
+        top: 14,
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        backgroundColor: 'rgba(19,19,19,0.07)',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <Svg width={11} height={13} viewBox="0 0 17 19">
+        <Rect x={1.5} y={8} width={14} height={9.5} rx={2.4} stroke="#8B8882" strokeWidth={1.9} fill="none" />
+        <Path d="M4.8 8V5.6a3.7 3.7 0 0 1 7.4 0V8" stroke="#8B8882" strokeWidth={1.9} fill="none" />
+      </Svg>
+    </View>
+  );
+}
+
+/** What a ground reads as to a screen reader — the chip is the only sighted cue. */
+const GROUND_STATE_LABEL: Record<Ground['state'], string> = { taken: 'taken', here: 'you are here', ahead: 'not yet reached' };
+
+function GroundCard({ ground, width, onPress }: { ground: Ground; width: number; onPress?: () => void }) {
+  const here = ground.state === 'here';
+  const ahead = ground.state === 'ahead';
+  // The card is its own pressable rather than sitting inside one. PressScale
+  // adds no padding of its own and its minHeight of 44 is well under the
+  // canvas's 116, so the card cannot be stretched and the 118pt pitch below it
+  // cannot move — which a wrapper around the card would risk.
+  const style = {
+    height: GROUND_CARD_H,
+    borderRadius: 16,
+    boxShadow: here ? '0 0 0 2px #131313, 0 10px 22px rgba(40,38,32,0.18)' : `0 0 0 1px rgba(0,0,0,${ground.state === 'taken' ? 0.07 : 0.06})`,
+  };
+  const face = (
+    <>
+      {/* the art is clipped by its own View so the ring above stays outside it */}
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 16, overflow: 'hidden' }}>
+        <LinearGradient colors={ground.field} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+        <GroundCardArt ground={ground.key} width={width} />
+        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.06 }} pointerEvents="none" />
+      </View>
+
+      <AppText style={[sans('600'), { position: 'absolute', left: 18, top: 16, fontSize: 11, letterSpacing: 2.2, color: here ? '#6E6C66' : ahead ? '#A5A29B' : '#8B8882' }]}>
+        {ground.numeral}
+      </AppText>
+      <AppText
+        numberOfLines={1}
+        style={[
+          sans(here ? '700' : '600'),
+          { position: 'absolute', left: 18, right: 18, bottom: 32, fontSize: here ? 21 : 20, color: here ? '#131313' : ahead ? '#6E6C66' : '#1D1C1A' },
+        ]}>
+        {ground.name}
+      </AppText>
+      <AppText numberOfLines={1} style={[sans('400'), { position: 'absolute', left: 18, right: 18, bottom: 13, fontSize: 12.5, color: ahead ? '#98958E' : '#55534E' }]}>
+        {ground.line}
+      </AppText>
+
+      <GroundBadge state={ground.state} />
+    </>
+  );
+
+  // A ground that has not been reached still opens: the lock chip is a mark of
+  // where you stand, not a door held shut.
+  if (!onPress) return <View style={style}>{face}</View>;
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`${ground.name}, ${GROUND_STATE_LABEL[ground.state]}`}
+      accessibilityHint={ground.line}
+      style={style}>
+      {face}
+    </PressScale>
+  );
+}
+
+export function CampaignGrounds({ onBack, onOpen }: { onBack?: () => void; onOpen?: (ground: GroundKey) => void }) {
+  const router = useRouter();
+  const { width } = useWindowDimensions();
+  const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/(app)/today')));
+  // the column is inset 24 a side; the long view breaks back out to the frame
+  const cardWidth = width - 48;
+
+  return (
+    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <BackRow onPress={back} />
+
+          <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 31, letterSpacing: -0.4, color: '#2A2924' }]}>The campaign</AppText>
+          <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 80, top: 106, fontSize: 15, lineHeight: 23, color: '#55534E' }]}>
+            Five grounds, from landing to triumph.
+          </AppText>
+
+          <ScrollView
+            style={{ position: 'absolute', left: 0, right: 0, top: 156, bottom: 0 }}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 64 }}>
+            {GROUNDS.map((ground, i) => (
+              <View key={ground.key}>
+                {i > 0 && GROUNDS[i - 1].key !== 'deep' ? <GroundLink /> : null}
+                <GroundCard ground={ground} width={cardWidth} onPress={onOpen ? () => onOpen(ground.key) : undefined} />
+                {/* the canvas swaps the pebbles for the long view after Deep Waters */}
+                {ground.key === 'deep' ? (
+                  <View style={{ height: GROUND_INTERLUDE_H, marginHorizontal: -24, overflow: 'hidden' }} pointerEvents="none">
+                    <GroundInterludeArt width={width} />
+                  </View>
+                ) : null}
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+
+      {/* the canvas's scroll-edge fade, drawn over everything */}
+      <LinearGradient
+        colors={['rgba(244,243,240,0)', '#F4F3F0']}
+        locations={[0, 0.82]}
+        pointerEvents="none"
+        style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 64 }}
+      />
+    </View>
+  );
 }

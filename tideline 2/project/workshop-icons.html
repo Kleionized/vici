@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>icon audit</title>
+<style>
+  body { margin: 0; background: #F7F5F0; font-family: system-ui; padding: 18px; }
+  h2 { font-size: 12px; color: #6A6A62; margin: 18px 0 10px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 14px; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 64px; }
+  .cell span { font-size: 9.5px; color: #9C9C92; font-weight: 600; }
+  .ink, .soft { width: 46px; height: 46px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .ink { background: #33342B; }
+  .soft { background: rgba(0,0,0,0.06); }
+  /* crosshair guides to judge centering */
+  .ink::before, .soft::before { content: ''; position: absolute; left: 50%; top: 4px; bottom: 4px; width: 1px; background: rgba(255,0,0,0.25); }
+  .ink::after, .soft::after { content: ''; position: absolute; top: 50%; left: 4px; right: 4px; height: 1px; background: rgba(255,0,0,0.25); }
+  .gicofit svg { width: 100% !important; height: 100% !important; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="stoic-kit.jsx"></script>
+<script type="text/babel">
+// inline copies of the per-screen icons under audit (walk / sleep / night)
+const Extra = {
+  walk: (c) => (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <circle cx="14" cy="4.9" r="2.05" fill={c} />
+      <path d="M13.5 8.2 12.3 13.4M12.3 13.4 15.1 16 16.3 21.1M12.3 13.4 9.7 16.6 7.1 20.2M13.3 9.4 16.9 11.9M13.3 9.4 9.9 11.6" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  crescent: (c) => (
+    <svg width="24" height="24" viewBox="0 0 24 24"><path fillRule="evenodd" d="M20.1 15.1A8.7 8.7 0 1 1 8.9 3.9 8.7 8.7 0 0 0 20.1 15.1ZM9.4 11.3a1.4 1.4 0 1 0 .001 0ZM12.8 16.1a1 1 0 1 0 .001 0Z" fill={c} /></svg>
+  ),
+};
+function App() {
+  const names = Object.keys(Glyph);
+  return (
+    <div>
+      <h2>GLYPH SET — ink chips (icon 24 via GIcon)</h2>
+      <div className="grid">
+        {names.map((n) => (
+          <div className="cell" key={n}>
+            <div className="ink"><GIcon el={Glyph[n]('#F4F3EF')} size={24} /></div>
+            <span>{n}</span>
+          </div>
+        ))}
+      </div>
+      <h2>GLYPH SET — soft chips (ink colour)</h2>
+      <div className="grid">
+        {names.map((n) => (
+          <div className="cell" key={n}>
+            <div className="soft"><GIcon el={Glyph[n]('#33342B')} size={24} /></div>
+            <span>{n}</span>
+          </div>
+        ))}
+      </div>
+      <h2>SCREEN-LOCAL — walk · crescent (sleep/night)</h2>
+      <div className="grid">
+        <div className="cell"><div className="soft"><GIcon el={Extra.walk('#33342B')} size={26} /></div><span>walk</span></div>
+        <div className="cell"><div className="ink"><GIcon el={Extra.walk('#F4F3EF')} size={26} /></div><span>walk ink</span></div>
+        <div className="cell"><div className="soft"><GIcon el={Extra.crescent('#33342B')} size={24} /></div><span>crescent</span></div>
+        <div className="cell"><div className="ink"><GIcon el={Extra.crescent('#F4F3EF')} size={24} /></div><span>crescent ink</span></div>
+        <div className="cell"><div className="ink" style={{ width: 76, height: 76, borderRadius: 22 }}><GIcon el={Glyph.spark('#F4F3EF')} size={36} /></div><span>spark 76</span></div>
+        <div className="cell"><div className="ink" style={{ width: 42, height: 42, borderRadius: 12 }}><GIcon el={Glyph.anchor('#F4F3EF')} size={22} /></div><span>anchor 42</span></div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

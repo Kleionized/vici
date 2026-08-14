@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 
-import { colors, radius, spacing } from '@/lib/theme';
+import { colors, radius, shadow, spacing } from '@/lib/theme';
 import { InkSurface } from './surface';
 
 export interface CardProps {
@@ -11,8 +11,8 @@ export interface CardProps {
   accent?: string;
   padded?: boolean;
   /**
-   * Surface tone. `'paper'` (default) is a flat solid-white card — no border,
-   * no shadow; `'ink'` is THE dark surface (solid #131313, radius 20) used for
+   * Surface tone. `'paper'` (default) is a softly lifted solid-white card;
+   * `'ink'` is THE dark surface (solid #131313) used for
    * hero/feature cards. Text inside ink flips light automatically.
    */
   tone?: 'paper' | 'ink';
@@ -30,10 +30,12 @@ export function Card({ children, style, accent, padded = true, tone = 'paper', a
       style={[
         {
           borderRadius: radiusV,
+          borderCurve: 'continuous',
           overflow: 'hidden',
           backgroundColor: ink ? colors.ink : colors.surface,
+          ...(ink ? shadow.ink : shadow.card),
         },
-        padded ? { padding: ink ? spacing.xl - 2 : spacing.lg + 4 } : null,
+        padded ? { padding: ink ? 18 : spacing.lg } : null,
         accent ? { borderLeftWidth: 3, borderLeftColor: accent } : null,
         style,
       ]}>

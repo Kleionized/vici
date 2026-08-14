@@ -2,10 +2,10 @@ import * as Clipboard from 'expo-clipboard';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Linking, Pressable, ScrollView, View } from 'react-native';
+import { Linking, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AppText, Button, Card, Glyph, IconChip } from '@/components/ui';
+import { AppText, Button, Card, Glyph, IconChip, PressScale, SettingsTopBar } from '@/components/ui';
 import { colors, radius, spacing } from '@/lib/theme';
 
 const DEEP_LINK = 'tideline://urge';
@@ -33,16 +33,11 @@ export default function BackTap() {
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: spacing.xl, paddingTop: spacing.sm, paddingBottom: spacing.lg }}>
-          <Pressable onPress={back} hitSlop={10} accessibilityLabel="Back">
-            <AppText style={{ fontSize: 24, color: colors.text }}>‹</AppText>
-          </Pressable>
-          <AppText variant="display" style={{ fontSize: 30 }}>
-            back tap.
-          </AppText>
+        <View style={{ paddingBottom: spacing.lg }}>
+          <SettingsTopBar title="Back Tap" onBack={back} />
         </View>
 
-        <ScrollView contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxl, gap: spacing.lg }} showsVerticalScrollIndicator={false}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxl, gap: spacing.lg }} showsVerticalScrollIndicator={false}>
           <View style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
             <IconChip name="wave" size={46} radius={14} tone="ink" />
             <AppText variant="muted" weightOverride="500" style={{ flex: 1, fontSize: 15, lineHeight: 21 }}>
@@ -59,11 +54,11 @@ export default function BackTap() {
               <AppText selectable weightOverride="600" style={{ flex: 1, fontSize: 16, letterSpacing: 0.2 }}>
                 {DEEP_LINK}
               </AppText>
-              <Pressable onPress={copy} hitSlop={8} style={{ backgroundColor: colors.accent, borderRadius: radius.pill, paddingHorizontal: 16, paddingVertical: 9 }}>
+              <PressScale onPress={copy} hitSlop={8} style={{ minHeight: 44, backgroundColor: colors.accent, borderRadius: radius.pill, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center' }}>
                 <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 14 }}>
                   {copied ? 'Copied' : 'Copy'}
                 </AppText>
-              </Pressable>
+              </PressScale>
             </View>
           </Card>
 

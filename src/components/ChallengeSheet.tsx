@@ -99,7 +99,7 @@ export function ChallengeSheet({
                   borderRadius: 9999,
                   paddingVertical: 16,
                   alignItems: 'center',
-                  transform: [{ scale: pressed ? 0.985 : 1 }],
+                  transform: [{ scale: pressed ? 0.96 : 1 }],
                 })}>
                 <AppText style={[sans('600'), { fontSize: 16, letterSpacing: 0.32, color: colors.inkText }]}>{c.cta}</AppText>
               </Pressable>

@@ -1,13 +1,10 @@
 /**
  * Tideline design tokens — THE single source of truth for all visual styling.
  *
- * Direction: the **VICI paper system** (from the claude.ai/design canvas) — a warm
- * parchment field (#F4F3F0), flat solid-white cards (no borders, no shadows, no
- * gradients), an EB Garamond display-serif voice with Newsreader for editorial
- * quotes, Gill Sans caps/labels for the sans voice (Hanken Grotesk on Android),
- * and ONE dark surface: solid #131313 ("the ink fill") used for hero cards, the
- * urge button, and primary pills. Strictly monochrome — reward and state are
- * expressed in the neutral ink scale, never in hue.
+ * Direction: the **latest UI paper system** — a warm field (#F4F3F0), flat
+ * white cards, compact continuous corners, and the native system typeface at
+ * every level. A single solid #131313 surface anchors hero cards, urge actions,
+ * and primary pills. The reference canvas is 393 × 852 with 16px screen gutters.
  *
  * The surface context (`components/ui/surface.tsx`) is retained — `Card
  * tone="ink"` is the solid #131313 dark card and flips text light automatically.
@@ -17,7 +14,7 @@
  */
 
 import { Platform } from 'react-native';
-import type { TextStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 type FontWeight = TextStyle['fontWeight'];
 
@@ -28,7 +25,7 @@ type FontWeight = TextStyle['fontWeight'];
  *  - No hue accents anywhere: the "accent" IS the ink fill (#131313).
  */
 export const colors = {
-  // Surfaces — warm paper field with flat, solid white cards.
+  // Surfaces — warm paper field with clean paper cards and a quiet inset tone.
   bg: '#F4F3F0',
   bgDeep: '#EBE9E5',
   surface: '#FFFFFF',
@@ -53,6 +50,8 @@ export const colors = {
 
   // Text — near-black ink on paper, with calibrated warm-gray tiers.
   text: '#1D1C1A',
+  /** Screen titles and inline actions — a touch warmer than body ink. */
+  textTitle: '#2A2924',
   textMuted: '#55534E',
   textSoft: '#8B8882',
   textSofter: '#B4B1AB',
@@ -63,6 +62,8 @@ export const colors = {
   borderStrong: 'rgba(0,0,0,0.14)',
   hairline: 'rgba(0,0,0,0.06)',
   ring: '#B8B8B7',
+  /** Unfilled progress: step bars, meters, inactive tab glyphs. */
+  track: '#C6C5C0',
 
   // Accent — the ink fill. Primary actions are dark pills with paper text.
   accent: '#131313',
@@ -141,38 +142,31 @@ export const spacing = {
   xxxl: 48,
 } as const;
 
-// The canvas card recipe: radius 18 for list/plain cards, 20 for feature/dark.
+// Compact radii from the 393px reference canvas.
 export const radius = {
   sm: 10,
   md: 14,
-  lg: 18,
+  lg: 16,
   xl: 20,
   pill: 999,
 } as const;
 
 /**
- * Fonts — three voices:
- *  - **serif** (display identity): EB Garamond — "Day XXIV", screen titles, dark
- *    card headlines. Static weights loaded via @expo-google-fonts/eb-garamond.
- *  - **serifSharp** (editorial quotes/maxims): Newsreader — the home quote.
- *  - **sans** (body/caps/labels): Gill Sans on iOS (a real family, so
- *    `fontWeight` works), Hanken Grotesk static weights on Android (closest
- *    loaded voice), a CSS stack on web.
- *
- * Use `sans(weight)` to get a correct {fontFamily, fontWeight} pair per
- * platform; the `fonts.*` aliases remain for existing call-sites.
+ * The latest UI uses SF/system type throughout. The legacy serif aliases stay
+ * mapped to the same native face so older screens inherit the overhaul without
+ * loading or waiting for bundled display fonts.
  */
-const SANS_WEB_STACK = "'Gill Sans', 'Gill Sans MT', 'Gill Sans Nova', 'Trebuchet MS', Calibri, sans-serif";
+const SANS_WEB_STACK = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
 
 export const sansFamily: Record<string, string> = Platform.select({
   ios: {
-    '300': 'Gill Sans',
-    '400': 'Gill Sans',
-    '500': 'Gill Sans',
-    '600': 'Gill Sans',
-    '700': 'Gill Sans',
-    '800': 'Gill Sans',
-    '900': 'Gill Sans',
+    '300': 'System',
+    '400': 'System',
+    '500': 'System',
+    '600': 'System',
+    '700': 'System',
+    '800': 'System',
+    '900': 'System',
   },
   web: {
     '300': SANS_WEB_STACK,
@@ -184,26 +178,22 @@ export const sansFamily: Record<string, string> = Platform.select({
     '900': SANS_WEB_STACK,
   },
   default: {
-    '300': 'HankenGrotesk_300Light',
-    '400': 'HankenGrotesk_400Regular',
-    '500': 'HankenGrotesk_500Medium',
-    '600': 'HankenGrotesk_600SemiBold',
-    '700': 'HankenGrotesk_700Bold',
-    '800': 'HankenGrotesk_800ExtraBold',
-    '900': 'HankenGrotesk_800ExtraBold',
+    '300': 'sans-serif',
+    '400': 'sans-serif',
+    '500': 'sans-serif-medium',
+    '600': 'sans-serif-medium',
+    '700': 'sans-serif',
+    '800': 'sans-serif',
+    '900': 'sans-serif',
   },
 })!;
 
-/** Android static fonts must NOT also set fontWeight (fake-bolding). */
-const SANS_USES_REAL_WEIGHT = Platform.OS === 'ios' || Platform.OS === 'web';
-
 export function sans(w: FontWeight = '400'): TextStyle {
-  let key = String(w === 'normal' ? '400' : w === 'bold' ? '600' : w);
-  // Hard ceiling: nothing in this app renders heavier than semibold.
-  if (Number(key) > 600) key = '600';
-  return SANS_USES_REAL_WEIGHT
-    ? { fontFamily: sansFamily[key] ?? sansFamily['400'], fontWeight: key as FontWeight }
-    : { fontFamily: sansFamily[key] ?? sansFamily['400'] };
+  const key = String(w === 'normal' ? '400' : w === 'bold' ? '700' : w);
+  // The canvas reaches 700 in exactly six places (the current row on the
+  // journey map, and the campaign headings); everything else stops at 600.
+  // There is no ceiling here, or those six silently render semibold.
+  return { fontFamily: sansFamily[key] ?? sansFamily['400'], fontWeight: key as FontWeight };
 }
 
 export const fonts = {
@@ -213,35 +203,44 @@ export const fonts = {
   sansBold: sansFamily['700'],
   sansExtrabold: sansFamily['800'],
 
-  // EB Garamond — the display identity serif.
-  serif: 'EBGaramond_500Medium',
-  serifRegular: 'EBGaramond_400Regular',
-  serifMedium: 'EBGaramond_500Medium',
-  serifSemibold: 'EBGaramond_600SemiBold',
-  serifBold: 'EBGaramond_600SemiBold',
-  serifItalic: 'EBGaramond_400Regular_Italic',
+  serif: sansFamily['500'],
+  serifRegular: sansFamily['400'],
+  serifMedium: sansFamily['500'],
+  serifSemibold: sansFamily['600'],
+  serifBold: sansFamily['600'],
+  serifItalic: sansFamily['400'],
+  serifSharp: sansFamily['500'],
+  serifSharpItalic: sansFamily['400'],
 
-  // Newsreader — the sharper editorial serif for quotes/maxims.
-  serifSharp: 'Newsreader_500Medium',
-  serifSharpItalic: 'Newsreader_400Regular_Italic',
+  /**
+   * The two faces the canvas names literally rather than inheriting: Georgia
+   * for a written line (the pledge, the vow), and a signing hand for the name
+   * under it. Everything else stays on the system sans.
+   */
+  quote: Platform.select({ ios: 'Georgia', android: 'serif', default: "Georgia, 'Times New Roman', serif" }) as string,
+  script: Platform.select({
+    ios: 'Snell Roundhand',
+    android: 'casual',
+    default: "'Snell Roundhand', 'Savoye LET', 'Segoe Script', cursive",
+  }) as string,
 
   // Semantic aliases used by primitives.
-  display: 'EBGaramond_500Medium',
-  heading: 'EBGaramond_500Medium',
+  display: sansFamily['600'],
+  heading: sansFamily['600'],
   body: sansFamily['400'],
   mono: Platform.select({ ios: 'Menlo', android: 'monospace', default: 'monospace' }),
 } as const;
 
-// The canvas type scale — serif display sizes run larger than the old sans scale.
+// Native type scale used by the 393px boards.
 export const fontSize = {
-  xs: 12,
+  xs: 11,
   sm: 13.5,
   md: 16,
-  lg: 18,
-  xl: 21,
-  xxl: 24,
-  display: 28,
-  hero: 37,
+  lg: 17,
+  xl: 19,
+  xxl: 22,
+  display: 27,
+  hero: 34,
 } as const;
 
 export const weight: Record<'regular' | 'medium' | 'semibold' | 'bold', FontWeight> = {
@@ -258,30 +257,28 @@ export const lineHeight = {
   relaxed: 1.6,
 } as const;
 
-/** Card styling reused across primitives (paper tone) — flat, borderless. */
+/** Card styling reused across primitives (paper tone). */
 export const card = {
   backgroundColor: colors.surface,
   borderColor: 'transparent',
   borderWidth: 0,
   borderRadius: radius.lg,
+  borderCurve: 'continuous',
 } as const;
 
-export const shadow = {
-  // Fully flat — the canvas removed all elevation. Kept as no-op tokens so
-  // call-sites don't break; separation comes from solid surface tones.
+/** Mostly-flat depth: hairline definition first, lift only for overlays. */
+export const shadow: Record<'card' | 'cardRaised' | 'ink' | 'control', ViewStyle> = {
   card: {
-    shadowColor: '#000000',
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+  },
+  cardRaised: {
+    boxShadow: '0 0 0 1px rgba(0,0,0,0.10), 0 12px 30px rgba(40,38,32,0.13)',
   },
   ink: {
-    shadowColor: '#000000',
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    boxShadow: '0 0 0 1px rgba(255,255,255,0.06)',
+  },
+  control: {
+    boxShadow: '0 0 0 1px rgba(0,0,0,0.10)',
   },
 } as const;
 

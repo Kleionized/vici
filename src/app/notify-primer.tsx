@@ -1,20 +1,18 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Glyph } from '@/components/ui';
-import { colors, fonts, sans, spacing } from '@/lib/theme';
+import { AppText, Glyph, Laurel, PressScale } from '@/components/ui';
+import { colors, sans, spacing } from '@/lib/theme';
 
 // ── Notification primer (canvas: screens-notify) — shows the notes
 // themselves as iOS lock-screen banners, exactly as they'd arrive.
 // Discretion is the promise, so it's stated. ──
 
 const EXAMPLES: [string, string, string][] = [
-  ['Morning check-in', '8:00 AM', 'Twenty seconds. How did you sleep, and where’s your head today?'],
-  ['A quiet word', '10:52 PM', 'This hour is usually your hardest. One breath before the scroll.'],
-  ['A good week', '6:15 PM', 'Day XXIV. You’ve ridden every wave this week.'],
+  ['Morning check-in', 'now', 'Twenty seconds — where’s your head at today?'],
+  ['Late night ahead', '10:41 PM', 'Your risky window. The wave tool is one tap away.'],
 ];
 
 export default function NotifPrimer() {
@@ -32,34 +30,39 @@ export default function NotifPrimer() {
               <View key={i} style={{ flex: 1, height: 3, borderRadius: 2, backgroundColor: i < 8 ? colors.ink : colors.borderStrong }} />
             ))}
           </View>
-          <Pressable onPress={close} hitSlop={10} accessibilityLabel="Close">
+          <PressScale onPress={close} hitSlop={10} accessibilityLabel="Close" style={{ width: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
             <AppText style={{ fontSize: 20, color: colors.text }}>✕</AppText>
-          </Pressable>
+          </PressScale>
         </View>
 
-        <ScrollView contentContainerStyle={{ paddingHorizontal: spacing.xl }} showsVerticalScrollIndicator={false}>
-          <AppText center style={{ fontFamily: fonts.serif, fontSize: 36, letterSpacing: 0.36, color: colors.text, marginBottom: 12 }}>
-            Stay close
+        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl }} showsVerticalScrollIndicator={false}>
+          <AppText center style={[sans('500'), { fontSize: 22, lineHeight: 29, letterSpacing: 0.1, color: colors.text, marginTop: 34, marginBottom: 18 }]}>
+            A gentle nudge.
           </AppText>
-          <AppText center variant="muted" style={{ fontSize: 14, lineHeight: 21, marginBottom: 26 }}>
-            The hardest moments rarely happen inside the app. These are the only notes we’d send, shown exactly as they’d arrive.
+          <AppText center style={[sans('400'), { fontSize: 15.5, lineHeight: 23, color: colors.textMuted, marginBottom: 34, paddingHorizontal: 6 }]}>
+            Two nudges a day, timed to your risky window. Nothing noisy, nothing shaming.
           </AppText>
 
-          <View style={{ gap: 10 }}>
-            {EXAMPLES.map(([t, time, m]) => (
-              <View key={t} style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start', backgroundColor: colors.surface, borderRadius: 20, padding: 15, paddingVertical: 13 }}>
-                <View style={{ width: 38, height: 38, borderRadius: 9.5, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
-                  <Svg width={20} height={13} viewBox="0 0 34 20" fill="none">
-                    <Path d="M2 11h6l2.6-8 4.4 16 2.6-8h3l1.6-3 1.6 3H32" stroke={colors.inkText} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-                  </Svg>
+          {/* the notes themselves — the second sits back, as it hasn't landed yet */}
+          <View style={{ gap: 16 }}>
+            {EXAMPLES.map(([t, time, m], index) => (
+              <View
+                key={t}
+                style={{
+                  backgroundColor: colors.surface,
+                  borderRadius: 16,
+                  borderCurve: 'continuous',
+                  paddingHorizontal: 18,
+                  paddingVertical: 16,
+                  boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+                  opacity: index === 0 ? 1 : 0.55,
+                }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                  <Laurel size={24} color={colors.textMuted} muted />
+                  <AppText style={[sans('600'), { flex: 1, fontSize: 15.5, color: colors.text }]}>{t}</AppText>
+                  <AppText style={[sans('500'), { fontSize: 12.5, color: colors.textSoft }]}>{time}</AppText>
                 </View>
-                <View style={{ flex: 1 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
-                    <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>{t}</AppText>
-                    <AppText style={[sans('500'), { fontSize: 11.5, color: colors.textSoft }]}>{time}</AppText>
-                  </View>
-                  <AppText style={[sans('400'), { fontSize: 13, lineHeight: 18, color: colors.textMuted, marginTop: 3 }]}>{m}</AppText>
-                </View>
+                <AppText style={[sans('400'), { marginTop: 8, fontSize: 14.5, lineHeight: 21, color: colors.textMuted }]}>{m}</AppText>
               </View>
             ))}
           </View>
@@ -71,12 +74,12 @@ export default function NotifPrimer() {
         </ScrollView>
 
         <View style={{ paddingHorizontal: spacing.xl, paddingTop: spacing.md }}>
-          <Pressable onPress={close} style={{ backgroundColor: colors.ink, borderRadius: 9999, paddingVertical: 17, alignItems: 'center' }}>
-            <AppText style={[sans('600'), { fontSize: 15.5, color: colors.inkText }]}>Turn on reminders</AppText>
-          </Pressable>
-          <Pressable onPress={close} hitSlop={8} style={{ alignItems: 'center', paddingVertical: spacing.md }}>
+          <PressScale onPress={close} style={{ minHeight: 58, backgroundColor: colors.ink, borderRadius: 9999, alignItems: 'center', justifyContent: 'center' }}>
+            <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.3, color: '#FFFFFF' }]}>Turn on reminders</AppText>
+          </PressScale>
+          <PressScale onPress={close} hitSlop={8} style={{ minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
             <AppText style={[sans('500'), { fontSize: 15, color: colors.textMuted }]}>Not now</AppText>
-          </Pressable>
+          </PressScale>
         </View>
       </SafeAreaView>
     </View>

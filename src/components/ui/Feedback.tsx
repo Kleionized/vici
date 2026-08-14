@@ -3,7 +3,12 @@ import { ActivityIndicator, View } from 'react-native';
 import { colors, spacing } from '@/lib/theme';
 import { AppText } from './AppText';
 import { Illustration } from './Illustration';
-
+/**
+ * The wait, inside the app. The canvas gives the dark "Finding the waterline"
+ * field to the cold open only — see `WaterlineScene` and `app/index.tsx` — so
+ * navigating between two paper screens gets this quiet spinner instead of a
+ * full-bleed night flash.
+ */
 export function LoadingView({ label }: { label?: string }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.md, padding: spacing.xl }}>

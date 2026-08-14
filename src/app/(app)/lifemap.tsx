@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
-import { AppText, Button, Field, Header, LoadingView, Screen, SectionLabel } from '@/components/ui';
+import { AppText, Button, Field, Header, LoadingView, PressScale, Screen, SectionLabel } from '@/components/ui';
 import { useLifeMap, useUpdateLifeMap } from '@/lib/backend';
 import { colors, radius, spacing, weight } from '@/lib/theme';
 
@@ -36,6 +36,7 @@ export default function LifeMapScreen() {
 
   useEffect(() => {
     if (!lifeMap) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate local editable drafts when backend data arrives.
     setWhy(lifeMap.whyStatement ?? '');
     setOneYear(lifeMap.oneYearAnswer ?? '');
     const labels = lifeMap.values.map((v) => v.label);
@@ -95,7 +96,7 @@ export default function LifeMapScreen() {
           {available.map((label) => {
             const on = selected.includes(label);
             return (
-              <Pressable
+              <PressScale
                 key={label}
                 onPress={() => toggle(label)}
                 style={{
@@ -109,7 +110,7 @@ export default function LifeMapScreen() {
                 <AppText color={on ? colors.accentText : colors.text} weightOverride={on ? weight.semibold : weight.regular}>
                   {label}
                 </AppText>
-              </Pressable>
+              </PressScale>
             );
           })}
         </View>
