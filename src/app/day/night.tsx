@@ -23,6 +23,7 @@ import {
   ScaleReading,
   nightAction,
 } from '@/components/day/kit';
+import { EmotionsBoard, PrimaryButton, ReasonsBoard, checkinCtaTop, wheelFor } from '@/components/MoodLogger';
 import { AppText, PressScale } from '@/components/ui';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
 import { toDateKey, todayKey } from '@/lib/date';
@@ -30,16 +31,24 @@ import { roman } from '@/lib/lessonArt';
 import { fonts, sans } from '@/lib/theme';
 
 /**
- * Frames 131–135 · the nightly check-in.
+ * 21E1–21E6 · the nightly check-in.
  *
- * Five steps: how it landed, what the day actually contained, anything worth
- * keeping, the one thing to do before sleep, and the close. The record is read
- * back rather than asked for — the day is already written by the time you get
- * here. The action step carries no rail, which is how the canvas draws it: it
- * is an aside between closing the day and being told the day is closed.
+ * Six steps on the rail: how it landed, what it felt like, what the day
+ * actually contained, what fed it, anything worth keeping, and the close. The
+ * record is read back rather than asked for — the day is already written by the
+ * time you get here. The action step carries no rail, which is how the canvas
+ * draws it: it is an aside between closing the day and being told it is closed.
+ *
+ * `UI Final` moved the feeling wheel and the reason list in from the standalone
+ * check-in — both frames now carry this flow's rail rather than their own — so
+ * steps 2 and 4 are the boards `components/MoodLogger` draws, on this flow's
+ * chrome and with the wider pill those two boards use.
  */
 
-const RAIL = 4;
+const RAIL = 6;
+
+/** The rail index each screen shows, or `null` for the railless aside. */
+const RAIL_AT = [0, 1, 2, 3, 4, null, 5] as const;
 
 /** What the dial reads back. The canvas draws the middle rung. */
 const MOOD_READ: [string, string][] = [
@@ -71,8 +80,11 @@ export default function Night() {
 
   const [step, setStep] = useState(0);
   const [mood, setMood] = useState(2);
+  const [emotions, setEmotions] = useState<string[]>([]);
+  const [reasons, setReasons] = useState<string[]>([]);
   const [reflection, setReflection] = useState('');
   const [action, setAction] = useState(true);
+  const [height, setHeight] = useState(0);
 
   const day = dayNumber(user?.createdAt);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
@@ -88,10 +100,18 @@ export default function Night() {
   });
 
   const task = nightAction(day);
+  // The action card is marked with the lesson the action comes from — `Night
+  // Action Reminder` labels it "Surviving the night", which is lesson one.
+  const lessonTitle = (lessons ?? [])[Math.max(0, day - 1) % Math.max(1, (lessons ?? []).length)]?.title ?? 'Tonight';
 
   async function finish() {
     // The upsert merges now, so only what this flow asked for is written.
-    await upsert({ date: todayKey(), mood: mood + 1 }).catch(() => {});
+    await upsert({
+      date: todayKey(),
+      mood: mood + 1,
+      emotions: emotions.length ? emotions : undefined,
+      reasons: reasons.length ? reasons : undefined,
+    }).catch(() => {});
     if (reflection.trim()) {
       await createJournalEntry({ tag: 'Reflection', title: `Day ${day}`, body: reflection.trim() }).catch(() => {});
     }
@@ -103,11 +123,14 @@ export default function Night() {
     close();
   }
 
-  const label = ['Continue', 'Continue', 'Close the day', '', 'Goodnight'][step];
-  const dark = step === 0 || step === 4;
+  const label = ['Continue', 'Continue', 'Continue', 'Continue', 'Close the day', '', 'Goodnight'][step];
+  const dark = step === 0 || step === 6;
+  // Steps 2 and 4 are the check-in's own boards, which draw the wider pill.
+  const wide = step === 1 || step === 3;
+  const ctaTop = checkinCtaTop(height);
   const take = (keep: boolean) => {
     setAction(keep);
-    setStep(4);
+    setStep(6);
   };
 
   return (
@@ -115,12 +138,21 @@ export default function Night() {
       <StatusBar style={dark ? 'light' : 'dark'} />
       <DayShell
         // the canvas gives the action step no rail at all
-        rail={step === 3 ? undefined : <DayDots step={step === 4 ? 3 : step} count={RAIL} light={dark} />}
+        rail={RAIL_AT[step] == null ? undefined : <DayDots step={RAIL_AT[step]!} count={RAIL} light={dark} />}
         onBack={step === 0 ? close : () => setStep((s) => s - 1)}
-        cta={step === 3 ? undefined : () => (step === 4 ? void finish() : setStep((s) => s + 1))}
+        ctaWide={wide}
+        cta={step === 5 || wide ? undefined : () => (step === 6 ? void finish() : setStep((s) => s + 1))}
         ctaLabel={label}
+        onMeasure={setHeight}
         footer={
-          step === 3 ? (
+          wide ? (
+            <PrimaryButton
+              label="Continue"
+              top={ctaTop}
+              enabled={step === 1 ? emotions.length > 0 : reasons.length > 0}
+              onPress={() => setStep((s) => s + 1)}
+            />
+          ) : step === 5 ? (
             <>
               <ActionButton label="Done" onPress={() => take(true)} />
               <PressScale
@@ -133,7 +165,7 @@ export default function Night() {
             </>
           ) : undefined
         }
-        backdrop={step === 0 ? <NightSky height={212} hillTop={142} /> : step === 4 ? <NightSky height={360} hillTop={290} /> : undefined}>
+        backdrop={step === 0 ? <NightSky height={212} hillTop={142} /> : step === 6 ? <NightSky height={360} hillTop={290} /> : undefined}>
         {step === 0 ? (
           <>
             <DayTitle top={216}>How was today?</DayTitle>
@@ -143,7 +175,9 @@ export default function Night() {
           </>
         ) : null}
 
-        {step === 1 ? (
+        {step === 1 ? <EmotionsBoard feel="What did today feel like?" wheel={wheelFor(mood + 1)} emotions={emotions} onChange={setEmotions} ctaTop={ctaTop} /> : null}
+
+        {step === 2 ? (
           <>
             <DayTitle top={116}>The record.</DayTitle>
             <View style={{ position: 'absolute', left: 12, right: 12, top: 186, height: 230, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
@@ -186,7 +220,9 @@ export default function Night() {
           </>
         ) : null}
 
-        {step === 2 ? (
+        {step === 3 ? <ReasonsBoard reasons={reasons} onChange={setReasons} ctaTop={ctaTop} /> : null}
+
+        {step === 4 ? (
           <>
             <DayTitle top={176}>Anything worth keeping?</DayTitle>
             <View style={{ position: 'absolute', left: 12, right: 12, top: 256, height: 150, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.07)' }}>
@@ -206,14 +242,14 @@ export default function Night() {
           </>
         ) : null}
 
-        {step === 3 ? (
+        {step === 5 ? (
           <>
             <ActionTitle>Tonight’s action</ActionTitle>
-            <ActionCard top={182} art={<NightActionArt frame="night" />} mark="moon" label="Tonight" line={task} />
+            <ActionCard top={182} art={<NightActionArt />} mark="bed" label={lessonTitle} line={task} />
           </>
         ) : null}
 
-        {step === 4 ? (
+        {step === 6 ? (
           <>
             <DayBadge top={366} mark="check" />
             <DayClosing top={458} headline={`Day ${day}, closed.`} note="See you in the morning." />

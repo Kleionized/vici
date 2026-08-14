@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useId, useState, type ReactNode } from 'react';
 import { View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Ellipse, G, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText, BackGlyph, PressScale } from '@/components/ui';
 import { fonts, sans } from '@/lib/theme';
@@ -113,6 +113,11 @@ const CTA_TOP = 702;
 const CTA_HEIGHT = 52;
 const CTA_FLOOR = 10;
 
+/** `Checkin Emotions` / `Checkin Reasons`: canvas 744, 58 tall, 24 gutters. */
+const WIDE_CTA_TOP = 690;
+const WIDE_CTA_HEIGHT = 58;
+const WIDE_CTA_FLOOR = 16;
+
 /**
  * The way back out, which the canvas now draws on every step of both flows —
  * chevron plus the word, in the same warm grey whatever it sits on.
@@ -136,6 +141,14 @@ export function DayShell({
   onBack,
   cta,
   ctaLabel,
+  /**
+   * The two boards `UI Final` moved in from the standalone check-in draw a
+   * wider, taller pill than the rest of the flow: 24 either side at canvas 744,
+   * 58 tall on a 29 radius, against the flow's 16 / 756 / 52 / 26.
+   */
+  ctaWide = false,
+  /** The flow's usable height, for callers that place their own pill. */
+  onMeasure,
   children,
   /** Art that bleeds to the top edge, drawn under the status bar. */
   backdrop,
@@ -148,17 +161,27 @@ export function DayShell({
   ctaLabel?: string;
   children: ReactNode;
   backdrop?: ReactNode;
+  ctaWide?: boolean;
+  onMeasure?: (height: number) => void;
   /** Drawn instead of the ink pill on the steps the canvas gives their own controls. */
   footer?: ReactNode;
 }) {
   const [height, setHeight] = useState(0);
-  const ctaTop = height ? Math.min(CTA_TOP, height - CTA_HEIGHT - CTA_FLOOR) : CTA_TOP;
+  const top = ctaWide ? WIDE_CTA_TOP : CTA_TOP;
+  const pill = ctaWide ? WIDE_CTA_HEIGHT : CTA_HEIGHT;
+  const floor = ctaWide ? WIDE_CTA_FLOOR : CTA_FLOOR;
+  const ctaTop = height ? Math.min(top, height - pill - floor) : top;
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
       {backdrop}
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ flex: 1 }} onLayout={(e) => setHeight(e.nativeEvent.layout.height)}>
+        <View
+          style={{ flex: 1 }}
+          onLayout={(e) => {
+            setHeight(e.nativeEvent.layout.height);
+            onMeasure?.(e.nativeEvent.layout.height);
+          }}>
           {rail}
           {onBack ? <DayBack onPress={onBack} /> : null}
 
@@ -171,17 +194,17 @@ export function DayShell({
                 accessibilityRole="button"
                 style={{
                   position: 'absolute',
-                  left: 16,
-                  right: 16,
+                  left: ctaWide ? 24 : 16,
+                  right: ctaWide ? 24 : 16,
                   top: ctaTop,
-                  height: 52,
-                  minHeight: 52,
-                  borderRadius: 26,
+                  height: pill,
+                  minHeight: pill,
+                  borderRadius: pill / 2,
                   backgroundColor: '#131313',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>{ctaLabel}</AppText>
+                <AppText style={[sans('600'), { fontSize: 17, letterSpacing: ctaWide ? 0.2 : 0, color: '#FFFFFF' }]}>{ctaLabel}</AppText>
               </PressScale>
             ) : null)}
         </View>
@@ -524,6 +547,55 @@ const STARS: [number, number, number, number][] = [
 ];
 
 /**
+ * The crescent. `Night 1 Mood` now cuts it out of the 34pt disc with
+ *
+ *   mask-image: radial-gradient(circle 15px at 67% 30%, transparent 0 13.5px, #000 14.5px)
+ *
+ * rather than covering it with a second, 0.55-opacity disc. 67% and 30% of the
+ * 34 box put the hole's centre at (22.78, 10.2); the cut is clean to 13.5 and
+ * feathers over the last pixel, so the mask is a hard-stopped radial.
+ *
+ * The disc's own `box-shadow: 0 0 18px rgba(221,228,236,0.5)` cannot ride on a
+ * masked shape, so it is redrawn as the falloff it actually is: a blur is a
+ * Gaussian of σ = blur/2, which reaches half the stated alpha at the shape's
+ * edge and is gone by 2σ past it. On a 17 + 18 = 35 radius that puts the edge
+ * at 0.486 and the stops on erfc.
+ */
+function NightMoon() {
+  const id = useId().replace(/:/g, '');
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', right: 104, top: 60, width: 34, height: 34 }}>
+      <Svg width={70} height={70} style={{ position: 'absolute', left: -18, top: -18 }}>
+        <Defs>
+          <RadialGradient id={`ms${id}`} cx="35" cy="35" rx="35" ry="35" gradientUnits="userSpaceOnUse">
+            <Stop offset="0.486" stopColor="#DDE4EC" stopOpacity={0.25} />
+            <Stop offset="0.614" stopColor="#DDE4EC" stopOpacity={0.154} />
+            <Stop offset="0.743" stopColor="#DDE4EC" stopOpacity={0.079} />
+            <Stop offset="0.871" stopColor="#DDE4EC" stopOpacity={0.034} />
+            <Stop offset="1" stopColor="#DDE4EC" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Circle cx={35} cy={35} r={35} fill={`url(#ms${id})`} />
+      </Svg>
+      <Svg width={34} height={34} style={{ position: 'absolute', left: 0, top: 0 }}>
+        <Defs>
+          <RadialGradient id={`mc${id}`} cx="22.78" cy="10.2" rx="14.5" ry="14.5" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#000000" />
+            <Stop offset="0.931" stopColor="#000000" />
+            <Stop offset="1" stopColor="#FFFFFF" />
+          </RadialGradient>
+          <Mask id={`mm${id}`}>
+            <Rect x={0} y={0} width={34} height={34} fill="#FFFFFF" />
+            <Circle cx={22.78} cy={10.2} r={14.5} fill={`url(#mc${id})`} />
+          </Mask>
+        </Defs>
+        <Circle cx={17} cy={17} r={17} fill="#DDE4EC" mask={`url(#mm${id})`} />
+      </Svg>
+    </View>
+  );
+}
+
+/**
  * Frames 121 / 124: the night band the evening check-in opens under — a cold
  * gradient, a gibbous moon, a few stars and two hills closing the horizon.
  */
@@ -532,8 +604,7 @@ export function NightSky({ height, hillTop }: { height: number; hillTop: number 
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, height, overflow: 'hidden' }}>
       <LinearGradient colors={['#14171B', '#1A2027', '#232B34']} locations={[0, 0.55, 1]} style={{ position: 'absolute', left: 0, right: 0, top: 0, height }} />
       <Glow size={110} color="#E2E8F0" opacity={0.22} stop={0.78} style={{ position: 'absolute', right: 74, top: 30 }} />
-      <View style={{ position: 'absolute', right: 104, top: 60, width: 34, height: 34, borderRadius: 17, backgroundColor: '#DDE4EC', boxShadow: '0 0 18px rgba(221,228,236,0.5)' }} />
-      <View style={{ position: 'absolute', right: 112, top: 64, width: 22, height: 22, borderRadius: 11, backgroundColor: '#1A2027', opacity: 0.55 }} />
+      <NightMoon />
       {STARS.map(([left, starTop, size, opacity]) => (
         <View
           key={`${left}-${starTop}`}
@@ -722,6 +793,20 @@ export function MoonGlyph({ size, color }: { size: number; color: string }) {
   );
 }
 
+/**
+ * The bed the night's action is marked with — `Night Action Reminder` draws it
+ * at 16 in a 20-unit box, so the strokes are heavier per unit than the sun's.
+ */
+export function BedGlyph({ size, color }: { size: number; color: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
+      <Path d="M3 15.5V6" stroke={color} strokeWidth={1.7} strokeLinecap="round" />
+      <Path d="M3 12.5h14M17 15.5v-5a2 2 0 0 0-2-2H8v4.5" stroke={color} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
+      <Circle cx={5.6} cy={8.9} r={1.5} fill={color} />
+    </Svg>
+  );
+}
+
 /** The sun the day's own action is marked with. */
 export function SunGlyph({ size, color }: { size: number; color: string }) {
   return (
@@ -738,96 +823,53 @@ export function SunGlyph({ size, color }: { size: number; color: string }) {
 }
 
 /**
- * Frames 158 / 134 draw the same scene — the phone face-down on a night stand,
- * out of arm's reach — at very slightly different weights. The handful of
- * numbers that move between the two live here rather than being guessed at.
+ * The bed the action card is laid on: the room you walk into, with the phone
+ * already shelved across it and the seal on tonight's promise.
+ *
+ * `Morning Task Check` and `Night Action Reminder` draw this scene identically
+ * in `UI Final` — every number below is common to both frames — so the two-way
+ * variant the old desk scene needed is gone.
  */
-const NIGHT_ART = {
-  morning: { moon: 24, shelf: 15, shelfTop: 27, barLeft: 15, barWidth: 11, phoneLeft: 8, phoneWidth: 10, phoneHeight: 19 },
-  night: { moon: 30, shelf: 16, shelfTop: 28, barLeft: 16, barWidth: 12, phoneLeft: 9, phoneWidth: 11, phoneHeight: 20 },
-} as const;
-
-/** The three specks of sky, two anchored left and the last anchored right. */
 const NIGHT_SPECKS: (ViewStyle & { key: string })[] = [
-  { key: 'a', left: 84, top: 48, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.45)' },
-  { key: 'b', left: 118, top: 84, width: 1.5, height: 1.5, borderRadius: 0.75, backgroundColor: 'rgba(244,243,240,0.3)' },
-  { key: 'c', right: 116, top: 76, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.35)' },
+  { key: 'a', left: 64, top: 40, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.45)' },
+  { key: 'b', left: 104, top: 72, width: 1.5, height: 1.5, borderRadius: 0.75, backgroundColor: 'rgba(244,243,240,0.3)' },
+  { key: 'c', right: 40, top: 34, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(244,243,240,0.35)' },
+  { key: 'd', right: 96, top: 58, width: 1.5, height: 1.5, borderRadius: 0.75, backgroundColor: 'rgba(244,243,240,0.3)' },
 ];
 
-export function NightActionArt({ frame }: { frame: keyof typeof NIGHT_ART }) {
+export function NightActionArt() {
   const w = useArtWidth();
-  const a = NIGHT_ART[frame];
   return (
     <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 248, overflow: 'hidden' }}>
       <LinearGradient colors={['#0B0C0F', '#12151B', '#1A2027']} locations={[0, 0.6, 1]} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 248 }} />
       {NIGHT_SPECKS.map(({ key, ...speck }) => (
         <View key={key} style={[{ position: 'absolute' }, speck]} />
       ))}
-      <Glow size={58} color="#DFDCD3" opacity={0.16} stop={0.72} style={{ position: 'absolute', left: 26, top: 38 }} />
-      {/* the canvas hangs a 30px moon out of a 24px box on one of the two
-          frames, so the box takes its size from the glyph rather than clipping it */}
-      <View style={{ position: 'absolute', left: 42, top: 54 }}>
-        <MoonGlyph size={a.moon} color="#E8E6DC" />
+      <Glow size={56} color="#DFDCD3" opacity={0.16} stop={0.72} style={{ position: 'absolute', left: 22, top: 26 }} />
+      <View style={{ position: 'absolute', left: 37, top: 41 }}>
+        <MoonGlyph size={26} color="#E8E6DC" />
       </View>
 
-      <Svg width={w} height={248} viewBox="0 0 361 150" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, top: 0 }}>
-        <Path d="M-4,150 L-4,116 Q80,96 170,112 Q260,128 365,110 L365,150 Z" fill="#171B22" />
+      {/* the ridge is drawn in the card's own 281 × 248 box and stretched, so a
+          wider phone widens the hills rather than cropping them */}
+      <Svg width={w} height={248} viewBox="0 0 281 248" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, top: 0 }}>
+        <Path d="M-4,248 L-4,196 Q60,178 140,190 Q210,200 285,186 L285,248 Z" fill="#171B22" />
       </Svg>
 
-      <Glow size={94} color="#E2BA78" opacity={0.2} stop={0.74} style={{ position: 'absolute', right: 26, top: 104 }} />
-      <View style={{ position: 'absolute', right: 46, top: 132, width: 42, height: 58, borderRadius: 6, overflow: 'hidden' }}>
-        <LinearGradient colors={['#343A44', '#262B33']} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
-        <View style={{ position: 'absolute', left: 5, right: 5, top: 8, height: a.shelf, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.10)' }} />
-        <View style={{ position: 'absolute', left: 5, right: 5, top: a.shelfTop, height: a.shelf, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.06)' }} />
-        <View style={{ position: 'absolute', left: a.barLeft, top: 14, width: a.barWidth, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(244,243,240,0.35)' }} />
-        <View
-          style={{
-            position: 'absolute',
-            left: a.phoneLeft,
-            top: 6,
-            width: a.phoneWidth,
-            height: a.phoneHeight,
-            borderRadius: 2.5,
-            backgroundColor: '#0E1116',
-            boxShadow: 'inset 0 0 0 1px rgba(244,243,240,0.22)',
-            transform: [{ rotate: '-14deg' }],
-          }}
-        />
-      </View>
-    </View>
-  );
-}
+      {/* the bed: headboard, mattress, pillow, and the foot showing past it */}
+      <View style={{ position: 'absolute', left: 38, top: 152, width: 8, height: 58, borderRadius: 3, backgroundColor: '#2C3844' }} />
+      <View style={{ position: 'absolute', left: 44, top: 178, width: 82, height: 21, borderRadius: 6, backgroundColor: '#394656' }} />
+      <View style={{ position: 'absolute', left: 50, top: 169, width: 28, height: 11, borderRadius: 5, backgroundColor: '#55677C' }} />
+      <View style={{ position: 'absolute', left: 118, top: 199, width: 6, height: 12, borderRadius: 2, backgroundColor: '#26303C' }} />
 
-/** Frame 159: first light over the same two hills, the notebook waiting. */
-export function DayActionArt() {
-  const w = useArtWidth();
-  return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 248, overflow: 'hidden' }}>
-      <LinearGradient colors={['#F1F0EB', '#ECEAE3']} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 248 }} />
-      <Glow size={180} color="#E2BA78" opacity={0.5} stop={0.75} style={{ position: 'absolute', left: '50%', marginLeft: -90, top: 8 }} />
-
-      <Svg width={w} height={248} viewBox="0 0 361 150" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, top: 0 }}>
-        <Path d="M-4,150 L-4,104 Q70,84 150,100 Q240,118 365,96 L365,150 Z" fill="#DEDDD6" />
-        <Path d="M-4,150 L-4,128 Q120,112 230,126 Q300,134 365,126 L365,150 Z" fill="#CFCEC7" />
-      </Svg>
-
-      <Svg width={52} height={30} viewBox="0 0 52 30" fill="none" style={{ position: 'absolute', left: 64, top: 140 }}>
-        <Path d="M2 28 L50 28" stroke="#B5B2A9" strokeWidth={2.5} strokeLinecap="round" />
-        <Path d="M13 28 a13 13 0 0 1 26 0 Z" fill="#E2BA78" />
-        <Path d="M26 6 v-5 M10 12 l-3.5 -3.5 M42 12 l3.5 -3.5" stroke="#C99F5F" strokeWidth={2.5} strokeLinecap="round" />
-      </Svg>
-
-      <View style={{ position: 'absolute', right: 40, top: 100 }}>
-        <Svg width={74} height={62} viewBox="0 0 74 62" fill="none">
-          <Ellipse cx={37} cy={54} rx={20} ry={3.5} fill="rgba(40,38,32,0.10)" />
-          {/* the SVG transform string, not rotation/originX — the web build
-              passes those through as a raw `transform-origin` DOM attribute */}
-          <G transform="rotate(-14 37 32)">
-            <Rect x={19} y={21} width={36} height={23} rx={5} fill="#1D1C19" />
-            <Circle cx={26.5} cy={32.5} r={3} fill="#F1F0EA" />
-            <Path d="M34 28.5 L48 28.5 M34 36 L43 36" stroke="rgba(255,255,255,0.28)" strokeWidth={2.2} strokeLinecap="round" />
-          </G>
-          <Path d="M24 29 C 16 21, 14 11, 15 2" stroke="#C4C3BC" strokeWidth={1.8} fill="none" strokeLinecap="round" />
+      {/* the shelf across the room, the phone face-up on it, and the seal */}
+      <Glow size={92} color="#E2BA78" opacity={0.2} stop={0.74} style={{ position: 'absolute', right: 24, top: 118 }} />
+      <View style={{ position: 'absolute', right: 56, top: 168, width: 52, height: 9, borderRadius: 3, backgroundColor: '#2C3844' }} />
+      <View style={{ position: 'absolute', right: 76, top: 177, width: 8, height: 34, borderRadius: 2, backgroundColor: '#26303C' }} />
+      <View style={{ position: 'absolute', right: 70, top: 140, width: 15, height: 26, borderRadius: 3, backgroundColor: '#DCE3EA' }} />
+      <View style={{ position: 'absolute', right: 48, top: 128, width: 19, height: 19, borderRadius: 9.5, backgroundColor: '#E9D2A4', alignItems: 'center', justifyContent: 'center' }}>
+        <Svg width={10} height={9} viewBox="0 0 9 8" fill="none">
+          <Path d="M1.5 4l2 2 4-4.5" stroke="#131313" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
         </Svg>
       </View>
     </View>
@@ -839,7 +881,7 @@ export function DayActionArt() {
  * sentence is the whole of it — a picture of the moment, who it belongs to, and
  * one line you could do without thinking about it twice.
  */
-export function ActionCard({ top, art, mark, label, line }: { top: number; art: ReactNode; mark: 'moon' | 'sun'; label: string; line: string }) {
+export function ActionCard({ top, art, mark, label, line }: { top: number; art: ReactNode; mark: 'moon' | 'sun' | 'bed'; label: string; line: string }) {
   return (
     <View
       style={{
@@ -856,13 +898,12 @@ export function ActionCard({ top, art, mark, label, line }: { top: number; art: 
       <View style={{ paddingTop: 16, paddingHorizontal: 18, paddingBottom: 18, gap: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
-            {mark === 'moon' ? <MoonGlyph size={15} color="#F4F3F0" /> : <SunGlyph size={16} color="#F4F3F0" />}
+            {mark === 'moon' ? <MoonGlyph size={15} color="#F4F3F0" /> : mark === 'bed' ? <BedGlyph size={16} color="#F4F3F0" /> : <SunGlyph size={16} color="#F4F3F0" />}
           </View>
           <AppText style={[sans('600'), { fontSize: 13, color: '#1D1C1A' }]}>{label}</AppText>
         </View>
-        <AppText center style={[sans('500'), { fontSize: 15, lineHeight: 22, color: '#1D1C1A' }]}>
-          {line}
-        </AppText>
+        {/* the canvas sets this line `text-align:left` now, not centred */}
+        <AppText style={[sans('500'), { fontSize: 15, lineHeight: 22, color: '#1D1C1A' }]}>{line}</AppText>
       </View>
     </View>
   );

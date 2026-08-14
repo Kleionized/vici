@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Platform, TextInput, View } from 'react-native';
 
 import {
+  ActionButton,
+  ActionCard,
   CupMark,
   DawnBand,
   DayBadge,
@@ -11,36 +13,43 @@ import {
   DayDots,
   DayShell,
   DayTitle,
+  DidYouRow,
   EnergyBars,
   LedgerMark,
   LedgerRow,
   LedgerRule,
   MoodDial,
+  NightActionArt,
   RerollGlyph,
   ScaleEnds,
   ScaleReading,
   SignaturePad,
   SunMark,
+  dayAction,
 } from '@/components/day/kit';
+import { BoardTitle } from '@/components/MoodLogger';
 import { AppText, PressScale } from '@/components/ui';
 import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
 import { toDateKey, todayKey } from '@/lib/date';
 import { roman } from '@/lib/lessonArt';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
-import { fonts } from '@/lib/theme';
+import { fonts, sans } from '@/lib/theme';
 
 /**
- * Frames 126–130 · the morning check-in.
+ * 21D1–21D7 · the morning check-in.
  *
- * Five steps: what yesterday came to, how the day feels, what is in the tank,
- * the pledge, and the ground it puts you on. The recap is deliberately first —
- * the day opens on evidence that the last one held, not on a question.
+ * Seven steps: what yesterday came to, whether yesterday's task happened, how
+ * the day feels, what is in the tank, the pledge, the day's one action, and the
+ * ground it all puts you on. The recap is deliberately first — the day opens on
+ * evidence that the last one held, not on a question.
  *
- * The day's one action is not asked for here: it belongs to the morning variant
- * of the daily check-in (frames 158–159, `components/MoodLogger`).
+ * `UI Final` draws steps 1, 2 and 7 and states a seven-dot rail on each; the
+ * middle four are the boards the previous canvas drew and this screen already
+ * built. The two action boards were the flow's railless asides before and are
+ * numbered steps now (DECISIONS D-007).
  */
 
-const STEPS = 5;
+const STEPS = 7;
 
 /** The openers the reroll cycles; the first is the one the canvas draws. */
 const OPENERS = ['I am abstaining today because…', 'What I am protecting today is…', 'Today stays clean because…'];
@@ -85,6 +94,7 @@ export default function Morning() {
   const createJournalEntry = useCreateJournalEntry();
 
   const [step, setStep] = useState(0);
+  const [yesterdayDone, setYesterdayDone] = useState<boolean | undefined>(undefined);
   const [mood, setMood] = useState(3);
   const [energy, setEnergy] = useState(1);
   const [opener, setOpener] = useState(0);
@@ -94,10 +104,18 @@ export default function Morning() {
   const day = dayNumber(user?.createdAt);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
+  // The two actions the flow asks after: the one last night set for today, and
+  // the one the day before set for yesterday. Both are read off the check-in
+  // rows so the flow never invents an action the user was not actually given.
   // Yesterday's ledger, read out of the log rather than from a placeholder.
   const midnight = new Date().setHours(0, 0, 0, 0);
   const dawn = midnight - 86_400_000;
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
+
+  // The two actions the flow asks after, read off the check-in rows so it never
+  // invents an action the user was never actually given.
+  const yesterdayTask = (checkins ?? []).find((c) => c.date === toDateKey(new Date(dawn)))?.dailyAction ?? dayAction(Math.max(1, day - 1));
+  const todayTask = (checkins ?? []).find((c) => c.date === todayKey())?.dailyAction ?? dayAction(day);
 
   const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && yesterday(e.createdAt));
   const lapses = (events ?? []).filter((e) => e.type === 'lapse' && yesterday(e.createdAt)).length;
@@ -120,24 +138,50 @@ export default function Morning() {
 
   async function finish() {
     // The upsert merges now, so only what this flow asked for is written.
-    await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1 }).catch(() => {});
+    await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1, dailyAction: todayTask }).catch(() => {});
+    // The answer about yesterday's action belongs to yesterday's row.
+    if (yesterdayDone !== undefined) {
+      await upsert({ date: toDateKey(new Date(dawn)), dailyActionDone: yesterdayDone }).catch(() => {});
+    }
     if (pledge.trim()) {
       await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: `${OPENERS[opener].replace('…', '')} ${pledge.trim()}` }).catch(() => {});
     }
     close();
   }
 
-  const label = [`Begin day ${day}`, 'Continue', 'Continue', 'Sign the pledge', 'Done'][step];
+  const label = [`Begin day ${day}`, '', 'Continue', 'Continue', 'Sign the pledge', '', 'Done'][step];
+  // Steps 2 and 6 carry their own controls, as the canvas draws them.
+  const own = step === 1 || step === 5;
   const onCta = () => {
-    if (step === 3 && !signed) return setSigned(true);
+    if (step === 4 && !signed) return setSigned(true);
     if (step === STEPS - 1) return void finish();
     setStep((s) => s + 1);
+  };
+  const answer = (done: boolean) => {
+    setYesterdayDone(done);
+    setStep(2);
   };
 
   return (
     <>
       <StatusBar style="dark" />
-      <DayShell rail={<DayDots step={step} count={STEPS} />} onBack={step === 0 ? close : () => setStep((s) => s - 1)} cta={onCta} ctaLabel={label}>
+      <DayShell
+        rail={<DayDots step={step} count={STEPS} />}
+        onBack={step === 0 ? close : () => setStep((s) => s - 1)}
+        cta={own ? undefined : onCta}
+        ctaLabel={label}
+        footer={
+          step === 1 ? (
+            <>
+              <DidYouRow onNo={() => answer(false)} onYes={() => answer(true)} />
+              <AppText center style={[sans('400'), { position: 'absolute', left: 36, right: 36, bottom: 14, fontSize: 13, lineHeight: 19, color: '#8B8882' }]}>
+                Honesty counts more than the streak.
+              </AppText>
+            </>
+          ) : step === 5 ? (
+            <ActionButton label="Got it" onPress={() => setStep(6)} />
+          ) : undefined
+        }>
         {step === 0 ? (
           <>
             <LedgerMark top={96} />
@@ -174,6 +218,20 @@ export default function Morning() {
 
         {step === 1 ? (
           <>
+            <BoardTitle>Did you complete this task?</BoardTitle>
+            <ActionCard top={132} art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayTask} />
+          </>
+        ) : null}
+
+        {step === 5 ? (
+          <>
+            <BoardTitle>One action for today</BoardTitle>
+            <ActionCard top={194} art={<NightActionArt />} mark="sun" label="Today" line={todayTask} />
+          </>
+        ) : null}
+
+        {step === 2 ? (
+          <>
             <SunMark top={64} />
             <DayTitle top={236}>How are you feeling?</DayTitle>
             <MoodDial value={mood} onChange={setMood} top={346} />
@@ -182,7 +240,7 @@ export default function Morning() {
           </>
         ) : null}
 
-        {step === 2 ? (
+        {step === 3 ? (
           <>
             <CupMark top={64} />
             <DayTitle top={226}>How much is in the tank?</DayTitle>
@@ -192,7 +250,7 @@ export default function Morning() {
           </>
         ) : null}
 
-        {step === 3 ? (
+        {step === 4 ? (
           <>
             <View style={{ position: 'absolute', left: 12, right: 12, top: 162, height: 210, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.07)' }}>
               <PressScale
@@ -231,7 +289,7 @@ export default function Morning() {
           </>
         ) : null}
 
-        {step === 4 ? (
+        {step === 6 ? (
           <>
             <DawnBand top={96} />
             <DayBadge top={438} mark="laurel" />
