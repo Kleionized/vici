@@ -277,3 +277,10 @@ names the ambiguity, the reading chosen, and why.
   the week's seven lessons — four on the first frame, three on the second. They
   are the same scrollable board at two scroll positions. The ledger keeps both
   rows because the ledger records frames; the implementation is twelve screens.
+
+- **D-020 · A selected day chip's letter was invisible.**
+  `src/components/routines/kit.tsx` inked the day letter `#1D1C1A` in both
+  states, so once a chip filled with `#131313` the letter disappeared into it.
+  `Nightly Check-in Time` draws every selected chip `color:#F4F3F0` on
+  `#131313`, so the design states the fix. The unselected state is not drawn on
+  that frame, so it keeps the app's `#1D1C1A` on `#EFEEEA`.

@@ -152,7 +152,10 @@ export function CheckinPicker({
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <AppText style={[sans('600'), { fontSize: 14, color: '#1D1C1A' }]}>{label}</AppText>
+              {/* `Nightly Check-in Time` draws every selected chip
+                  `color:#F4F3F0` on `#131313`; the app inked both states the
+                  same, so a selected day's letter was invisible. */}
+              <AppText style={[sans('600'), { fontSize: 14, color: on ? '#F4F3F0' : '#1D1C1A' }]}>{label}</AppText>
             </PressScale>
           );
         })}
