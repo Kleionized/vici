@@ -209,3 +209,71 @@ names the ambiguity, the reading chosen, and why.
   on a 35pt radius. **Platform gap:** the shadow is an erfc approximation rather
   than a true Gaussian; the peak alpha is exact and the profile is within ~0.01
   alpha across the ramp.
+
+## The curriculum
+
+- **D-014 · `UI Final` carries a different curriculum from the one the app ships.**
+  `Lessons and Tasks.dc.html` describes **84 lessons across twelve weeks** —
+  `LESSON 01 · WEEK I` … `LESSON 84 · WEEK XII`, one card each, plus a
+  three-page daily task per day, and `task-src.json` in the bundle carries all
+  84 tasks as structured data. `Email Login.dc.html` agrees: twelve week
+  overview screens (`Week I Reset` … `Week XII Leave It Behind`), a
+  `Campaign Map` in three parts covering twelve weeks, and a `Letter Week XII`.
+  The app ships **110 lessons across ten parts**, generated from
+  `src/content/interactive/*.md` into `src/content/interactiveLessons.ts`.
+
+  Resolution: the design wins on everything visible, so the run builds the
+  screens the design draws (the lesson card, the three task boards, the twelve
+  week overviews, the new 26-frame reader) and adds the design's own data —
+  `task-src.json` and the 84 card rows — as new content under `src/content/`.
+  The existing interactive lessons stay in place and stay reachable, because
+  progress, reflections and the backend are all keyed on their slugs and
+  rewriting that wiring is explicitly out of scope ("keep the wiring").
+
+- **D-015 · The design authors exactly one lesson body.**
+  `Lesson Scroll 1…26` is the full body of lesson 01, *Surviving the Night* —
+  the bundle even ships it a second time as its own file,
+  `Lesson 1 Surviving the Night.dc.html`. For lessons 02–84 the design gives the
+  card (number, week, title, one-line summary, artwork) and the task, and no
+  body. Rule 7 forbids inventing copy, so the reader's new page grammar is built
+  from the 26 frames and lesson 01 is authored against it; the other 83 keep the
+  bodies the app already has. This is recorded in `REPORT.md` as a coverage gap
+  in the *design*, not in the implementation.
+
+- **D-016 · Lesson 32 does not exist in the bundle.**
+  `Lessons and Tasks.dc.html` runs `Lesson 01…31` then `Lesson 33…84`, and the
+  task frames skip `Task D32` the same way — 83 lesson cards and 83 × 3 = 249
+  task frames, not 84 and 252. `task-src.json` does contain a day 32
+  (*The Short-Term Cost*), so the frame is missing from the canvas rather than
+  from the curriculum. The JSON is the authority for the content; the ledger
+  keeps 83 card rows because the ledger records frames, not days.
+
+- **D-017 · The canvas, not `task-src.json`, is the authority for task copy.**
+  The bundle ships two intermediates the task frames were generated from —
+  `task-src.json` and `taskgen-meta.js` — and the frames take the two headings
+  and the "done" line from the meta file while taking the intro and the option
+  bodies from the JSON. Reading the rendered frames sidesteps having to know
+  which, and matches the rule that the design is the source of truth.
+  `scripts/uifinal/gen-curriculum.mjs` does that, and `src/content/curriculum84.ts`
+  is generated, never hand-edited.
+
+- **D-018 · Three defects in the `Lessons and Tasks` canvas, recorded not fixed.**
+  1. `Task D74 Intro` and `Task D76 Intro` carry a stray fragment of a style
+     attribute as raw text (`ion:absolute; left:26px; top:419px; …`) — a botched
+     string replacement. The extractor drops it and logs it.
+  2. `Task D74 Options` and `Task D76 Options` draw a heading and a "Mark as
+     done" pill and **no option rows**; `task-src.json` agrees that those two
+     days have none. So those two tasks are two-board flows with an empty
+     options list, and that is implemented as the board's empty state rather
+     than as an invented row.
+  3. `Task D01` was applied to the canvas by an earlier script than the other
+     82 and carries the older type metrics — 26 / 21 / 15 / 16 where every other
+     day carries 27 / 14.5 / 13.5 / 15.5. The 82 are the design; day 1's frame
+     is stale. The extractor reads by position rather than by size so the copy
+     survives either way, and the type spec follows the 82.
+
+- **D-019 · "Week N" and "Week N P2" are one screen, not two.**
+  Each pair carries the same title, the same week line and a continuous list of
+  the week's seven lessons — four on the first frame, three on the second. They
+  are the same scrollable board at two scroll positions. The ledger keeps both
+  rows because the ledger records frames; the implementation is twelve screens.
