@@ -760,3 +760,10 @@ names the ambiguity, the reading chosen, and why.
   Root cause, stated plainly: these were written from the artwork spec's summary
   table rather than from the frames the spec was summarising. The lesson is the
   one the brief already gives — read the design file, not a description of it.
+
+- **D-067 · The vow's signature is drawn, not set.** Pass 3's type sweep found
+  `fontSize: 34` used in `vow.tsx` and nowhere in the canvas. The frame draws
+  the signature as a **216 × 64 SVG stroke** — one cubic path in `#26261F` at
+  stroke-width 2.2 with round caps, and a 2.6 dot where the pen comes to rest —
+  not as a name in a script face. Replaced with the path. It now reads the same
+  whatever the user is called, which is what the canvas intends.
