@@ -257,3 +257,33 @@ colour, so a line crossing its top edge reads exactly as it does above it — an
 at the canvas's own width the line never reaches the band, so nothing there
 changes at all. Verified at both widths: 2 lines ending at 150 on 393, 3 lines
 fully legible on 375.
+
+## The clipping probe — the general form of finding 6
+
+Finding 6 was invisible to every numeric check: each value on the screen matched
+the canvas, and the text was still cut through the glyphs. So the check was
+generalised. `scripts/uifinal/clip-probe.js` walks the running app's tree and
+reports a run of text that is either
+
+1. covered by an opaque box painted after it, or
+2. spilled out of an ancestor that clips and does not scroll.
+
+Run against **60+ routes** at 375 × 812, signed in with a seeded mock record so
+the `(app)` group renders rather than redirecting:
+
+    today · log · library · all · milestones · settings · score · lifemap ·
+    journal · dashboard · support · vow · affirmation · letter · lapse · urge ·
+    urge-log · urge-overview · weekly-report · report-ready · relapse ·
+    rough-days · rough-first90 · profile · privacy · subscription · paywall ·
+    reminders · applock · first-steps · drop · mail · medallion-post · search ·
+    journal-new · checkin · lessons-browser · notify-primer · day/morning ·
+    day/night · week/1 · week/7 · week/12 · task/1 · task/44 ·
+    journey/{landing,crossing,highlands,watch} · lesson-card/1 · lesson/day/1 ·
+    medallions/{veni,vici} · routines/{morning,night}-time
+
+**No findings** once finding 6 was fixed.
+
+One route reported no text at all — `/rough-protocol`, which reads a `key`
+param and returns `null` without one. Reached as the app reaches it,
+`/rough-protocol?key=loneliness`, it draws "Lonely tonight." and its three
+pages. Correct, not a defect.
