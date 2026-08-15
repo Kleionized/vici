@@ -6,156 +6,156 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**874 rows.** PASS_1: 129 · IMPLEMENTED: 449 · DONE: 296
+**874 rows.** IMPLEMENTED: 531 · PASS_1: 47 · DONE: 296
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
-| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95 · Rough — Loneliness (I) |
-| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95B · Rough — Loneliness (II) |
-| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95C · Rough — Loneliness (III) |
+| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 95 · Rough — Loneliness (I) |
+| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 95B · Rough — Loneliness (II) |
+| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 95C · Rough — Loneliness (III) |
 | Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 96 · Rough — Anxiety (I) |
-| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96B · Rough — Anxiety (II) |
-| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96C · Rough — Anxiety (III) |
-| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97 · Rough — Stress (I) |
-| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97B · Rough — Stress (II) |
-| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97C · Rough — Stress (III) |
-| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98 · Rough — Boredom (I) |
-| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98B · Rough — Boredom (II) |
+| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 96B · Rough — Anxiety (II) |
+| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 96C · Rough — Anxiety (III) |
+| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 97 · Rough — Stress (I) |
+| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 97B · Rough — Stress (II) |
+| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 97C · Rough — Stress (III) |
+| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 98 · Rough — Boredom (I) |
+| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 98B · Rough — Boredom (II) |
 | Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 98C · Rough — Boredom (III) |
-| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99 · Rough — Late night (I) |
-| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99B · Rough — Late night (II) |
-| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99C · Rough — Late night (III) |
-| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100 · Rough — Home alone (I) |
-| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100B · Rough — Home alone (II) |
-| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100C · Rough — Home alone (III) |
-| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 101 · Rough — An argument (I) |
+| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 99 · Rough — Late night (I) |
+| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 99B · Rough — Late night (II) |
+| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 99C · Rough — Late night (III) |
+| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 100 · Rough — Home alone (I) |
+| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 100B · Rough — Home alone (II) |
+| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 100C · Rough — Home alone (III) |
+| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101 · Rough — An argument (I) |
 | Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101B · Rough — An argument (II) |
 | Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101C · Rough — An argument (III) |
 | Email Login | Medallions | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88 · Medallions |
 | Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88B · Medallions — Still to earn |
-| Email Login | Detail Paper | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89A · Vici Detail — Paper |
-| Email Login | Detail Bronze | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89C · Vici Detail — Bronze |
-| Email Login | Detail Silver | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89D · Vici Detail — Silver |
-| Email Login | Detail Gold | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89E · Vici Detail — Gold |
-| Email Login | Detail Platinum | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89F · Vici Detail — Platinum |
-| Email Login | Log Chooser | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 90 · Log — Chooser |
-| Email Login | Lapse When | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90B · Lapse — When |
-| Email Login | Lapse Trigger | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90C · Lapse — What fed it |
-| Email Login | Lapse Done | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90D · Lapse — Logged |
-| Email Login | Log Urges | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91 · Log — Urges |
-| Email Login | Log Check-ins | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-2 · Log — Check-ins |
-| Email Login | Log Reports | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-3 · Log — Reports |
-| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91A · Urge Overview — Summary |
-| Email Login | Urge Overview | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91B · Urge Overview — Strength |
-| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91C · Urge Overview — Mood |
-| Email Login | Urge Overview When | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91D · Urge Overview — When & Where |
-| Email Login | Report Ready | src/app/report-ready.tsx | PASS_1 | 2026-08-15 | 91C0 · Report Ready |
-| Email Login | Weekly Report | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C · Weekly Report — Score |
-| Email Login | Weekly Report Days | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C2 · Weekly Report — Days |
-| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C3 · Weekly Report — Urges |
-| Email Login | Urge Log Intensity | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91D · Urge Log — Intensity |
-| Email Login | Urge Log Trigger | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91E · Urge Log — Triggers |
-| Email Login | Urge Log Outcome | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91F · Urge Log — Outcome |
-| Email Login | Urge Log When | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91G · Urge Log — When |
-| Email Login | Urge Log Done | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91H · Urge Log — Logged |
-| Email Login | Settings | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92 · Settings |
-| Email Login | Edit Profile | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93 · Edit Profile |
-| Email Login | Sheet Profile Photo | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93B &middot; Profile photo sheet |
-| Email Login | Sheet Edit Name | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93C &middot; Edit name sheet |
+| Email Login | Detail Paper | src/app/medallions/[key].tsx | IMPLEMENTED | 2026-08-15 | 89A · Vici Detail — Paper |
+| Email Login | Detail Bronze | src/app/medallions/[key].tsx | IMPLEMENTED | 2026-08-15 | 89C · Vici Detail — Bronze |
+| Email Login | Detail Silver | src/app/medallions/[key].tsx | IMPLEMENTED | 2026-08-15 | 89D · Vici Detail — Silver |
+| Email Login | Detail Gold | src/app/medallions/[key].tsx | IMPLEMENTED | 2026-08-15 | 89E · Vici Detail — Gold |
+| Email Login | Detail Platinum | src/app/medallions/[key].tsx | IMPLEMENTED | 2026-08-15 | 89F · Vici Detail — Platinum |
+| Email Login | Log Chooser | src/app/(app)/log.tsx | IMPLEMENTED | 2026-08-15 | 90 · Log — Chooser |
+| Email Login | Lapse When | src/app/lapse.tsx | IMPLEMENTED | 2026-08-15 | 90B · Lapse — When |
+| Email Login | Lapse Trigger | src/app/lapse.tsx | IMPLEMENTED | 2026-08-15 | 90C · Lapse — What fed it |
+| Email Login | Lapse Done | src/app/lapse.tsx | IMPLEMENTED | 2026-08-15 | 90D · Lapse — Logged |
+| Email Login | Log Urges | src/app/(app)/log.tsx | IMPLEMENTED | 2026-08-15 | 91 · Log — Urges |
+| Email Login | Log Check-ins | src/app/(app)/log.tsx | IMPLEMENTED | 2026-08-15 | 91-2 · Log — Check-ins |
+| Email Login | Log Reports | src/app/(app)/log.tsx | IMPLEMENTED | 2026-08-15 | 91-3 · Log — Reports |
+| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | IMPLEMENTED | 2026-08-15 | 91A · Urge Overview — Summary |
+| Email Login | Urge Overview | src/app/urge-overview.tsx | IMPLEMENTED | 2026-08-15 | 91B · Urge Overview — Strength |
+| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | IMPLEMENTED | 2026-08-15 | 91C · Urge Overview — Mood |
+| Email Login | Urge Overview When | src/app/urge-overview.tsx | IMPLEMENTED | 2026-08-15 | 91D · Urge Overview — When & Where |
+| Email Login | Report Ready | src/app/report-ready.tsx | IMPLEMENTED | 2026-08-15 | 91C0 · Report Ready |
+| Email Login | Weekly Report | src/app/weekly-report.tsx | IMPLEMENTED | 2026-08-15 | 91C · Weekly Report — Score |
+| Email Login | Weekly Report Days | src/app/weekly-report.tsx | IMPLEMENTED | 2026-08-15 | 91C2 · Weekly Report — Days |
+| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | IMPLEMENTED | 2026-08-15 | 91C3 · Weekly Report — Urges |
+| Email Login | Urge Log Intensity | src/app/urge-log.tsx | IMPLEMENTED | 2026-08-15 | 91D · Urge Log — Intensity |
+| Email Login | Urge Log Trigger | src/app/urge-log.tsx | IMPLEMENTED | 2026-08-15 | 91E · Urge Log — Triggers |
+| Email Login | Urge Log Outcome | src/app/urge-log.tsx | IMPLEMENTED | 2026-08-15 | 91F · Urge Log — Outcome |
+| Email Login | Urge Log When | src/app/urge-log.tsx | IMPLEMENTED | 2026-08-15 | 91G · Urge Log — When |
+| Email Login | Urge Log Done | src/app/urge-log.tsx | IMPLEMENTED | 2026-08-15 | 91H · Urge Log — Logged |
+| Email Login | Settings | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 92 · Settings |
+| Email Login | Edit Profile | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93 · Edit Profile |
+| Email Login | Sheet Profile Photo | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93B &middot; Profile photo sheet |
+| Email Login | Sheet Edit Name | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93C &middot; Edit name sheet |
 | Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 93D &middot; Weekly report |
 | Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 92B &middot; Night check-in time |
-| Email Login | Your Vow Page | src/app/vow.tsx | IMPLEMENTED | 2026-08-15 | 92C &middot; Your vow |
-| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92D &middot; Sign out sheet |
-| Email Login | Data Privacy | src/app/privacy.tsx | PASS_1 | 2026-08-15 | 94 · Data &amp; Privacy |
-| Email Login | App Lock | src/app/applock.tsx | PASS_1 | 2026-08-15 | 95 · App Lock |
-| Email Login | Splash | src/app/index.tsx | PASS_1 | 2026-08-15 | 01 · Splash |
-| Email Login | Standing Guard | src/app/index.tsx | PASS_1 | 2026-08-15 | 02 · Finding the Waterline |
-| Email Login | Login Empty | src/app/(auth)/sign-in.tsx | PASS_1 | 2026-08-15 | 03 · Login — Empty |
-| Email Login | Login Typing | src/app/(auth)/sign-in.tsx | PASS_1 | 2026-08-15 | 04 · Login — Typing |
-| Email Login | Create Account | src/app/(auth)/sign-up.tsx | PASS_1 | 2026-08-15 | 07 · Create Account |
-| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 1 intro |
-| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 63 · Lesson — Willpower |
-| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 2 intro |
-| Email Login | V3 Q5 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q6 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q7 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 68 · Lesson — Rewire |
-| Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 3 intro |
-| Email Login | V3 Q8 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q9 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 4 intro |
-| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 5 intro |
-| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 79 · Lesson — Anchor |
-| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 6 intro |
-| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 82 · Lesson — Small Steps |
-| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 7 intro |
-| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87 · Charting Your Plan |
-| Email Login | Plan Ready | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87I · Plan Ready |
-| Email Login | Root Loop | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87B · The Root — The Loop |
-| Email Login | Current Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87C · Your Current Pattern |
-| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87D · If Nothing Changes — Next 30 Days |
-| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87E · If Nothing Changes — Next 365 Days |
-| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F · If Nothing Changes — By Age 80 |
-| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F2 · But This Can Change |
-| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G · Why Streaks Fail |
-| Email Login | Campaign Line | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G2 · Why Campaigns Hold |
-| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87H · The Rewire Curve |
-| Email Login | Results Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 88 · Results — Pattern |
-| Email Login | The Vow | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90 · The Vow — Signature |
+| Email Login | Your Vow Page | src/app/vow.tsx | PASS_1 | 2026-08-15 | 92C &middot; Your vow |
+| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 92D &middot; Sign out sheet |
+| Email Login | Data Privacy | src/app/privacy.tsx | IMPLEMENTED | 2026-08-15 | 94 · Data &amp; Privacy |
+| Email Login | App Lock | src/app/applock.tsx | IMPLEMENTED | 2026-08-15 | 95 · App Lock |
+| Email Login | Splash | src/app/index.tsx | IMPLEMENTED | 2026-08-15 | 01 · Splash |
+| Email Login | Standing Guard | src/app/index.tsx | IMPLEMENTED | 2026-08-15 | 02 · Finding the Waterline |
+| Email Login | Login Empty | src/app/(auth)/sign-in.tsx | IMPLEMENTED | 2026-08-15 | 03 · Login — Empty |
+| Email Login | Login Typing | src/app/(auth)/sign-in.tsx | IMPLEMENTED | 2026-08-15 | 04 · Login — Typing |
+| Email Login | Create Account | src/app/(auth)/sign-up.tsx | IMPLEMENTED | 2026-08-15 | 07 · Create Account |
+| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 1 intro |
+| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 63 · Lesson — Willpower |
+| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 2 intro |
+| Email Login | V3 Q5 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q6 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q7 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 68 · Lesson — Rewire |
+| Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 3 intro |
+| Email Login | V3 Q8 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q9 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 4 intro |
+| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 5 intro |
+| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 79 · Lesson — Anchor |
+| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 6 intro |
+| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 82 · Lesson — Small Steps |
+| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | V3 — Section 7 intro |
+| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | onboarding question board |
+| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87 · Charting Your Plan |
+| Email Login | Plan Ready | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87I · Plan Ready |
+| Email Login | Root Loop | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87B · The Root — The Loop |
+| Email Login | Current Pattern | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87C · Your Current Pattern |
+| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87D · If Nothing Changes — Next 30 Days |
+| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87E · If Nothing Changes — Next 365 Days |
+| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87F · If Nothing Changes — By Age 80 |
+| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87F2 · But This Can Change |
+| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87G · Why Streaks Fail |
+| Email Login | Campaign Line | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87G2 · Why Campaigns Hold |
+| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 87H · The Rewire Curve |
+| Email Login | Results Pattern | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 88 · Results — Pattern |
+| Email Login | The Vow | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90 · The Vow — Signature |
 | Email Login | Campaign Map | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
 | Email Login | Campaign Map II | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
 | Email Login | Campaign Map III | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
-| Email Login | Letter Received | src/app/letter.tsx | PASS_1 | 2026-08-15 | 90E &middot; A letter arrived |
+| Email Login | Letter Received | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 90E &middot; A letter arrived |
 | Email Login | Letter Week XII | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 90B · A Letter From Week XII |
 | Email Login | Medallion Received | src/app/medallion-post.tsx | IMPLEMENTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
-| Email Login | Reminders Setup | src/app/reminders.tsx | PASS_1 | 2026-08-15 | 91 · Reminders |
-| Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | PASS_1 | 2026-08-15 | 92 · Save Progress |
-| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11 · Free Trial Paywall |
-| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11B · Paywall — Three Days Free |
-| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11C · Paywall — Confirmed |
+| Email Login | Reminders Setup | src/app/reminders.tsx | IMPLEMENTED | 2026-08-15 | 91 · Reminders |
+| Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | IMPLEMENTED | 2026-08-15 | 92 · Save Progress |
+| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | IMPLEMENTED | 2026-08-15 | 11 · Free Trial Paywall |
+| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | IMPLEMENTED | 2026-08-15 | 11B · Paywall — Three Days Free |
+| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | IMPLEMENTED | 2026-08-15 | 11C · Paywall — Confirmed |
 | Email Login | Manage Subscription | src/app/subscription.tsx | IMPLEMENTED | 2026-08-15 | 15 · Manage Subscription |
 | Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | IMPLEMENTED | 2026-08-15 | 19B · Morning check-in time |
 | Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 19C · Nightly check-in time |
-| Email Login | Today Home | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today |
-| Email Login | Score Detail | src/app/score.tsx | PASS_1 | 2026-08-15 | 21B &middot; Score Detail |
-| Email Login | Score Detail Moves | src/app/score.tsx | PASS_1 | 2026-08-15 | 20B · Score Detail — What Moved It |
-| Email Login | Score Detail Ranks | src/app/score.tsx | PASS_1 | 2026-08-15 | 20C · Score Detail — Ranks |
-| Email Login | Today Home II | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today &mdash; p2 |
-| Email Login | Today Home Task | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21p2B · Today — Task summary |
-| Email Login | Today Home III | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 &middot; Today &mdash; p3 |
+| Email Login | Today Home | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 · Today |
+| Email Login | Score Detail | src/app/score.tsx | IMPLEMENTED | 2026-08-15 | 21B &middot; Score Detail |
+| Email Login | Score Detail Moves | src/app/score.tsx | IMPLEMENTED | 2026-08-15 | 20B · Score Detail — What Moved It |
+| Email Login | Score Detail Ranks | src/app/score.tsx | IMPLEMENTED | 2026-08-15 | 20C · Score Detail — Ranks |
+| Email Login | Today Home II | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 · Today &mdash; p2 |
+| Email Login | Today Home Task | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21p2B · Today — Task summary |
+| Email Login | Today Home III | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 &middot; Today &mdash; p3 |
 | Email Login | Sentence Journal | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
 | Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
-| Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D1 · Morning — Yesterday |
-| Email Login | Morning Task Check | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
-| Email Login | Morning 5 Done | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D7 · Morning — Done |
-| Email Login | Night 1 Mood | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E1 · Night — How was today |
-| Email Login | Checkin Emotions | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E2 · Night — Emotions |
-| Email Login | Night 2 Record | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E3 · Night — Record |
-| Email Login | Checkin Reasons | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E4 · Night — What fed it |
-| Email Login | Night 3 Reflection | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5 · Night — Reflection |
-| Email Login | Night Action Reminder | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5B · Night — Tonight’s action |
-| Email Login | Night 4 Closed | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E6 · Night — Closed |
+| Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D1 · Morning — Yesterday |
+| Email Login | Morning Task Check | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
+| Email Login | Morning 5 Done | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D7 · Morning — Done |
+| Email Login | Night 1 Mood | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E1 · Night — How was today |
+| Email Login | Checkin Emotions | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E2 · Night — Emotions |
+| Email Login | Night 2 Record | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E3 · Night — Record |
+| Email Login | Checkin Reasons | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E4 · Night — What fed it |
+| Email Login | Night 3 Reflection | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E5 · Night — Reflection |
+| Email Login | Night Action Reminder | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E5B · Night — Tonight’s action |
+| Email Login | Night 4 Closed | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E6 · Night — Closed |
 | Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
@@ -182,51 +182,51 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Cue Intro Modal | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28 · SOS — First 90 Seconds |
-| Email Login | SOS Strength | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28B · SOS — How Strong |
-| Email Login | Cue Hue Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29 · SOS — Where Are You |
-| Email Login | SOS Feeling Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
-| Email Login | SOS Reason Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
-| Email Login | Cue Set Confirmation | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29B · SOS — Step I · Phone Down |
-| Email Login | Surf Step 1 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 30 · SOS — Step II · Out of Bed |
-| Email Login | Surf Step 3 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 31 · SOS — Step III · Cold Water |
-| Email Login | Surf Complete | src/app/urge.tsx | PASS_1 | 2026-08-15 | 33 · SOS — The Wave Passed |
-| Email Login | Relapse Log | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 34 · SOS — Slipped |
-| Email Login | Relapse Twice | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 36 · Relapse — Don't Fail Twice |
-| Email Login | Relapse Begin | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 37 · Relapse — Begin Again |
-| Email Login | Week I Reset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week I Reset P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week III In the Moment | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VI Discipline | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IX Connection | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week X Yourself | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Letter Arrival | src/app/mail.tsx | PASS_1 | 2026-08-15 | 90B · VICI Post — Arrival |
-| Email Login | Letter Read | src/app/letter.tsx | PASS_1 | 2026-08-15 | 39 · The Letter — Read |
-| Email Login | Medallion Letter | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39B · Post — Medallion Letter |
-| Email Login | Yearly Drop | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39C · Post — The Yearly Drop |
-| Email Login | Drop Received | src/app/drop.tsx | PASS_1 | 2026-08-15 | 39D · You Received a Drop |
-| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32A · Journey — Ch I The Landing |
-| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32 · Journey — The Campaign |
-| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32B · Journey — Ch III The Highlands |
-| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32C · Journey — Ch IV The Watch |
+| Email Login | Cue Intro Modal | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 28 · SOS — First 90 Seconds |
+| Email Login | SOS Strength | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 28B · SOS — How Strong |
+| Email Login | Cue Hue Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29 · SOS — Where Are You |
+| Email Login | SOS Feeling Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
+| Email Login | SOS Reason Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
+| Email Login | Cue Set Confirmation | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29B · SOS — Step I · Phone Down |
+| Email Login | Surf Step 1 | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 30 · SOS — Step II · Out of Bed |
+| Email Login | Surf Step 3 | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 31 · SOS — Step III · Cold Water |
+| Email Login | Surf Complete | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 33 · SOS — The Wave Passed |
+| Email Login | Relapse Log | src/app/relapse.tsx | IMPLEMENTED | 2026-08-15 | 34 · SOS — Slipped |
+| Email Login | Relapse Twice | src/app/relapse.tsx | IMPLEMENTED | 2026-08-15 | 36 · Relapse — Don't Fail Twice |
+| Email Login | Relapse Begin | src/app/relapse.tsx | IMPLEMENTED | 2026-08-15 | 37 · Relapse — Begin Again |
+| Email Login | Week I Reset | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week I Reset P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Letter Arrival | src/app/mail.tsx | IMPLEMENTED | 2026-08-15 | 90B · VICI Post — Arrival |
+| Email Login | Letter Read | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 39 · The Letter — Read |
+| Email Login | Medallion Letter | src/app/mail.tsx | IMPLEMENTED | 2026-08-15 | 39B · Post — Medallion Letter |
+| Email Login | Yearly Drop | src/app/mail.tsx | IMPLEMENTED | 2026-08-15 | 39C · Post — The Yearly Drop |
+| Email Login | Drop Received | src/app/drop.tsx | IMPLEMENTED | 2026-08-15 | 39D · You Received a Drop |
+| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | IMPLEMENTED | 2026-08-15 | 32A · Journey — Ch I The Landing |
+| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | IMPLEMENTED | 2026-08-15 | 32 · Journey — The Campaign |
+| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | IMPLEMENTED | 2026-08-15 | 32B · Journey — Ch III The Highlands |
+| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | IMPLEMENTED | 2026-08-15 | 32C · Journey — Ch IV The Watch |
 | Lessons and Tasks | L01 Reader 1 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 2 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 3 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
@@ -784,9 +784,9 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
-| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_1 | 2026-08-15 | export of the campaign map |
-| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson cover/detail |
-| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson parts list |
+| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | IMPLEMENTED | 2026-08-15 | export of the campaign map |
+| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | IMPLEMENTED | 2026-08-15 | export — lesson cover/detail |
+| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | IMPLEMENTED | 2026-08-15 | export — lesson parts list |
 | screenshots/bold-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
 | screenshots/bold-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
 | screenshots/bold-check | Task D71 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
