@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ReactNode, useCallback, useState } from 'react';
-import { ScrollView, View, useWindowDimensions, type TextStyle } from 'react-native';
+import { ScrollView, View, useWindowDimensions, type TextStyle, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -113,10 +113,22 @@ export default function LetterScreen() {
         />
       ) : (
         <MailSheet onClose={later}>
-          <LetterBody>
-            {variant === 'week12' ? <Week12Letter name={name} /> : <PostLetter name={name} why={why} />}
+          {/* Letter Week XII drops its floor to 80 and scrolls the pill with
+              the words; the other two keep it pinned over a 160 floor. */}
+          <LetterBody bottom={variant === 'week12' ? 80 : 160} showsIndicator={variant === 'week12'}>
+            {variant === 'week12' ? <Week12Letter name={name} onKeep={keep} /> : <PostLetter name={name} why={why} />}
           </LetterBody>
-          <LetterFooter primary="Tuck it into your Log" secondary={variant === 'week12' ? 'Continue' : 'Close'} onPrimary={keep} onSecondary={later} />
+          {variant === 'week12' ? (
+            <PressScale
+              onPress={later}
+              accessibilityRole="button"
+              hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
+              style={{ position: 'absolute', left: 0, right: 0, bottom: 36, minHeight: 0, alignItems: 'center' }}>
+              <AppText style={[sans('500'), { fontSize: 14.5, color: '#8B8882' }]}>Continue</AppText>
+            </PressScale>
+          ) : (
+            <LetterFooter primary="Tuck it into your Log" secondary="Close" onPrimary={keep} onSecondary={later} />
+          )}
         </MailSheet>
       )}
     </View>
@@ -436,12 +448,16 @@ export function MailSheet({ onClose, children }: { onClose: () => void; children
   );
 }
 
-/** The written half of a letter: canvas left 34 / right 34, top 84, bottom 160. */
-export function LetterBody({ children }: { children: ReactNode }) {
+/**
+ * The written half of a letter: canvas left 34 / right 34, top 84. The floor is
+ * 160 on the two letters whose pill is pinned over it, and 80 on the week-XII
+ * letter, whose pill scrolls with the words instead.
+ */
+export function LetterBody({ bottom = 160, showsIndicator = false, children }: { bottom?: number; showsIndicator?: boolean; children: ReactNode }) {
   return (
     <ScrollView
-      style={{ position: 'absolute', left: 34, right: 34, top: 84, bottom: 160 }}
-      showsVerticalScrollIndicator={false}
+      style={{ position: 'absolute', left: 34, right: 34, top: 84, bottom }}
+      showsVerticalScrollIndicator={showsIndicator}
       contentInsetAdjustmentBehavior="never">
       {children}
     </ScrollView>
@@ -449,50 +465,63 @@ export function LetterBody({ children }: { children: ReactNode }) {
 }
 
 /** Keep it, or leave it — the pair every letter closes on. */
-export function LetterFooter({
-  primary,
-  secondary,
-  onPrimary,
-  onSecondary,
-}: {
-  primary: string;
-  secondary: string;
-  onPrimary: () => void;
-  onSecondary: () => void;
-}) {
+/**
+ * The pill both footers are made of. `Letter Week XII` scrolls it with the
+ * words rather than pinning it, so it has to be renderable on its own.
+ */
+export function KeepPill({ label, onPress, style }: { label: string; onPress: () => void; style?: ViewStyle }) {
   return (
-    <>
-      <PressScale
-        onPress={onPrimary}
-        accessibilityRole="button"
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          bottom: 88,
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      style={[
+        {
           height: 54,
+          minHeight: 54,
           borderRadius: 27,
           backgroundColor: '#131313',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
           gap: 9,
-        }}>
-        <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
-          <Path
-            d="M6 4.4h12a1 1 0 0 1 1 1v14.3a.8.8 0 0 1-1.27.65L12 16.7l-5.73 3.65A.8.8 0 0 1 5 19.7V5.4a1 1 0 0 1 1-1z"
-            stroke="#FFFFFF"
-            strokeWidth={2}
-            strokeLinejoin="round"
-          />
-        </Svg>
-        <AppText style={[sans('600'), { fontSize: 16.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>{primary}</AppText>
-      </PressScale>
+        },
+        style,
+      ]}>
+      <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
+        <Path
+          d="M6 4.4h12a1 1 0 0 1 1 1v14.3a.8.8 0 0 1-1.27.65L12 16.7l-5.73 3.65A.8.8 0 0 1 5 19.7V5.4a1 1 0 0 1 1-1z"
+          stroke="#FFFFFF"
+          strokeWidth={2}
+          strokeLinejoin="round"
+        />
+      </Svg>
+      <AppText style={[sans('600'), { fontSize: 16.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>{label}</AppText>
+    </PressScale>
+  );
+}
+
+export function LetterFooter({
+  primary,
+  secondary,
+  onPrimary,
+  onSecondary,
+  secondaryBottom = 44,
+}: {
+  primary: string;
+  secondary: string;
+  onPrimary: () => void;
+  onSecondary: () => void;
+  /** 44 on the two pinned letters; 36 where the pill has left the floor. */
+  secondaryBottom?: number;
+}) {
+  return (
+    <>
+      <KeepPill label={primary} onPress={onPrimary} style={{ position: 'absolute', left: 24, right: 24, bottom: 88 }} />
       <PressScale
         onPress={onSecondary}
         accessibilityRole="button"
         hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
-        style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
+        style={{ position: 'absolute', left: 0, right: 0, bottom: secondaryBottom, minHeight: 0, alignItems: 'center' }}>
         <AppText style={[sans('500'), { fontSize: 14.5, color: '#8B8882' }]}>{secondary}</AppText>
       </PressScale>
     </>
@@ -562,14 +591,16 @@ function PostLetter({ name, why }: { name: string; why: string }) {
 }
 
 /** 111 · the letter he sealed on night zero, read back from week XII. */
-function Week12Letter({ name }: { name: string }) {
+function Week12Letter({ name, onKeep }: { name: string; onKeep: () => void }) {
   return (
     <>
       <Salutation fontSize={18} letterSpacing={-0.1} gap={22}>
         {name} —
       </Salutation>
       <LetterP gap={20}>It&rsquo;s week XII where I&rsquo;m writing from, and the first thing to say is: we made it out.</LetterP>
-      <LetterP gap={16}>
+      {/* the canvas pairs 16 below this paragraph with 36 above the scene; CSS
+          collapses them to 36 and Yoga would add them to 52, so 36 is the gap */}
+      <LetterP gap={36}>
         The first three weekends were the worst of it, so I&rsquo;ll say it plainly: nothing you feel this month lasts longer than a night. You wait one
         out, and the next one comes back smaller.
       </LetterP>
@@ -580,6 +611,9 @@ function Week12Letter({ name }: { name: string }) {
       </LetterP>
       <LetterP gap={0}>Everything you circled tonight — it&rsquo;s here, waiting.</LetterP>
       <Signoff gap={26}>— {name}, at week XII</Signoff>
+      {/* this letter scrolls its pill with the words rather than pinning it, so
+          it is the body's last child and takes the body's own 325 width */}
+      <KeepPill label="Tuck it into your Log" onPress={onKeep} style={{ marginTop: 56, marginBottom: 6 }} />
     </>
   );
 }
@@ -597,9 +631,8 @@ function Week12Scene() {
     `M${x} ${y + ry} A${w / 2} ${ry} 0 0 1 ${x + w} ${y + ry} L${x + w} ${y + 100} L${x} ${y + 100} Z`;
 
   return (
-    // `margin:2px auto 18px` on the canvas — the 2 collapses into the paragraph's
-    // 16 above it and opens no space of its own, so only the 18 below survives.
-    <Svg width={240} height={186} viewBox="0 0 240 186" style={{ alignSelf: 'center', marginBottom: 18 }}>
+    // 40 below the scene on the canvas; the 36 above it is the paragraph's gap
+    <Svg width={240} height={186} viewBox="0 0 240 186" style={{ alignSelf: 'center', marginBottom: 40 }}>
       <Defs>
         <RadialGradient id="w12-sun" cx="50%" cy="50%" rx="50%" ry="50%">
           <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.38} />

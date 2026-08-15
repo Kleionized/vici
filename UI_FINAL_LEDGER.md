@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 61 · IMPLEMENTED: 139
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 60 · IMPLEMENTED: 140
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -127,7 +127,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Campaign Map II | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
 | Email Login | Campaign Map III | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
 | Email Login | Letter Received | src/app/letter.tsx | NOT_STARTED | — | 90E &middot; A letter arrived |
-| Email Login | Letter Week XII | src/app/letter.tsx | SPEC_EXTRACTED | 2026-08-15 | 90B · A Letter From Week XII |
+| Email Login | Letter Week XII | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 90B · A Letter From Week XII |
 | Email Login | Medallion Received | src/app/medallion-post.tsx | IMPLEMENTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
 | Email Login | Reminders Setup | src/app/reminders.tsx | NOT_STARTED | — | 91 · Reminders |
 | Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | NOT_STARTED | — | 92 · Save Progress |

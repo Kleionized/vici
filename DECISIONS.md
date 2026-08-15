@@ -399,3 +399,16 @@ names the ambiguity, the reading chosen, and why.
   height was sized for them (780) and comes down to 700 — content ends at app
   top 676 plus a 24 tail — so the board does not invent a scroll on a short
   phone.
+
+- **D-034 · `Letter Week XII` scrolls its pill; the other two letters do not.**
+  The frame drops the body's floor from 160 to 80, puts the keep pill in the
+  scroll flow as the body's last child at the body's own 325 width, and moves
+  the secondary link from bottom 44 to 36. `Letter Read` and `Medallion Letter`
+  are unchanged in the bundle and still want the pinned pill, so the pill was
+  extracted as `KeepPill` — the same icon path, the same 16.5/600/0.2 label, the
+  same 54/27 box, character for character — and `LetterFooter` keeps rendering
+  it absolutely for those two.
+  The scene's spacing follows the file's own rule about margin collapse: the
+  canvas pairs 16 below the paragraph with 36 above the scene, CSS collapses
+  that to 36 and Yoga would add it to 52, so the paragraph's gap becomes 36 and
+  the scene keeps no top margin. Its bottom margin goes 18 → 40.
