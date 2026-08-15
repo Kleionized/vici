@@ -412,3 +412,26 @@ names the ambiguity, the reading chosen, and why.
   canvas pairs 16 below the paragraph with 36 above the scene, CSS collapses
   that to 36 and Yoga would add it to 52, so the paragraph's gap becomes 36 and
   the scene keeps no top margin. Its bottom margin goes 18 → 40.
+
+## Rough days
+
+- **D-035 · Three of the four rough-day artworks are total redraws; the chrome
+  is untouched.** Every string in `src/content/roughDays.ts` and every value of
+  the page chrome — sheet, grabber, cross, dots, headline 26/33 at −0.2, sub
+  14.5/21, art slot, CTA, ghost — already matched character for character, so
+  all 36 mismatches were inside `RDArtwork`:
+  - `tangle` (Anxiety I): the scribbled knot becomes three r19 rings on a
+    200 × 80 box plus a tail; the glow shrinks 116 → 72 and moves to (44, 60);
+    the amber dot moves to (206, 94) and gains a 32pt glow painted *over* it.
+  - `toppled` (Argument II): six bare squares become a clipped 136 × 44 board of
+    twelve 22.67 × 22 tiles, with a four-box standing figure in `#6B6862` and a
+    four-box piece rotated 84° at 0.85 opacity.
+  - `writeit` (Argument III): the pen becomes barrel + nib + grip on a shared
+    −24°, and the two crumples gain a `#EBEAE4` fill they did not have.
+  - `threethings` (Boredom III): two elements withdrawn, nothing else moved.
+
+- **D-036 · The 84° rotation is transcribed, not "corrected".**
+  `toppled`'s fallen piece reads as six degrees off upright rather than lying
+  flat. The CSS is unambiguous (`rotate(84deg)` about a 52 × 30 box's centre)
+  and the frame is internally consistent, so it is built as drawn. The name
+  `toppled` is the app's, not the canvas's.

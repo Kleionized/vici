@@ -83,12 +83,26 @@ function VGrad({ id, l, t, w, h, r, from, to }: { id: string; l: number; t: numb
   );
 }
 
-/** The two faint sparks the canvas sets behind every one of these drawings. */
-function Specks() {
+/**
+ * The twelve tiles of the argument board, board-local. The x values are the
+ * canvas's own — six columns of 22.67 across a 136 box, so the last overhangs
+ * by 0.02 and is clipped — and the two rows alternate their pair.
+ */
+const TOPPLED_TILES: readonly (readonly [number, number, string])[] = [0, 22.67, 45.34, 68.01, 90.68, 113.35000000000001].flatMap((x, col) => [
+  [x, 0, col % 2 ? '#D9D8D2' : '#EBEAE4'] as const,
+  [x, 22, col % 2 ? '#EBEAE4' : '#D9D8D2'] as const,
+]);
+
+/**
+ * The two faint sparks the canvas sets behind every one of these drawings. Two
+ * of the twenty move them a few points, so the positions are overridable and
+ * the defaults are what the other eighteen draw.
+ */
+function Specks({ a = [216, 20], b = [8, 48] }: { a?: readonly [number, number]; b?: readonly [number, number] }) {
   return (
     <>
-      <View style={abs(216, 20, 2, 2, { borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.4)' })} />
-      <View style={abs(8, 48, 2, 2, { borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.3)' })} />
+      <View style={abs(a[0], a[1], 2, 2, { borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.4)' })} />
+      <View style={abs(b[0], b[1], 2, 2, { borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.3)' })} />
     </>
   );
 }
@@ -173,20 +187,19 @@ export function RDArtwork({ name }: { name: RDArt }) {
 
       {name === 'tangle' ? (
         <>
-          <Glow id="rd-tangle-glow" l={66} t={50} size={116} alpha={0.32} />
-          <Specks />
-          <Svg width={200} height={120} viewBox="0 0 200 120" style={{ position: 'absolute', left: 20, top: 60 }}>
-            <Path
-              d="M60 62 C40 42 28 66 46 76 C20 78 26 102 48 96 C34 112 58 122 66 106 C70 122 92 116 88 100 C104 110 114 92 98 84 C116 84 114 60 96 62 C104 46 84 38 76 52 C72 38 54 42 60 62 Z"
-              fill="none"
-              stroke="#B4B1AB"
-              strokeWidth={2.6}
-              strokeLinejoin="round"
-            />
-            <Path d="M96 84 C130 84 150 76 196 70" stroke="#B4B1AB" strokeWidth={2.6} fill="none" strokeLinecap="round" />
+          <Glow id="rd-tangle-glow" l={44} t={60} size={72} alpha={0.32} />
+          <Specks a={[216, 22]} b={[10, 50]} />
+          {/* the scribbled knot became three linked rings and a tail */}
+          <Svg width={200} height={80} viewBox="0 0 200 80" style={{ position: 'absolute', left: 20, top: 58 }}>
+            <Circle cx={42} cy={42} r={19} fill="none" stroke="#B4B1AB" strokeWidth={2.6} />
+            <Circle cx={60} cy={42} r={19} fill="none" stroke="#B4B1AB" strokeWidth={2.6} />
+            <Circle cx={78} cy={42} r={19} fill="none" stroke="#B4B1AB" strokeWidth={2.6} />
+            <Path d="M95 50 C124 58 156 52 186 42" fill="none" stroke="#B4B1AB" strokeWidth={2.6} strokeLinecap="round" />
           </Svg>
-          <View style={abs(212, 124, 9, 9, { borderRadius: 4.5, backgroundColor: '#E2BA78' })} />
-          <Shade id="rd-tangle-shade" l={52} t={166} w={110} h={13} />
+          <View style={abs(206, 94, 9, 9, { borderRadius: 4.5, backgroundColor: '#E2BA78' })} />
+          {/* after the dot, so it paints over it */}
+          <Glow id="rd-tangle-dotglow" l={194} t={82} size={32} alpha={0.4} />
+          <Shade id="rd-tangle-shade" l={42} t={166} w={110} h={13} />
         </>
       ) : null}
 
@@ -346,12 +359,6 @@ export function RDArtwork({ name }: { name: RDArt }) {
           <View style={abs(112, 40, 100, 96, { borderRadius: 7, backgroundColor: '#E4E3DE' })} />
           <VGrad id="rd-threethings-pane" l={120} t={48} w={84} h={38} r={3} from="#F7F6F2" to="#EDECE7" />
           <View style={abs(120, 92, 84, 36, { borderRadius: 3, backgroundColor: '#F7F6F2' })} />
-          <Svg width={34} height={60} viewBox="0 0 34 60" style={{ position: 'absolute', left: 196, top: 54 }}>
-            <Path d="M4 0 C20 10 20 50 4 58" stroke="#D6D5D0" strokeWidth={3} fill="none" strokeLinecap="round" />
-          </Svg>
-          <Svg width={44} height={26} viewBox="0 0 44 26" style={{ position: 'absolute', left: 58, top: 64 }}>
-            <Path d="M2 20 C12 20 14 8 26 8 M12 24 C22 24 24 14 40 14" stroke="#D6D5D0" strokeWidth={2.4} fill="none" strokeLinecap="round" />
-          </Svg>
           <View style={abs(40, 124, 24, 40, { borderTopLeftRadius: 3, borderTopRightRadius: 3, borderBottomRightRadius: 5, borderBottomLeftRadius: 5, backgroundColor: '#F7F6F2', borderWidth: 1.5, borderColor: 'rgba(0,0,0,0.08)' })} />
           <View style={abs(43, 140, 18, 21, { borderBottomRightRadius: 4, borderBottomLeftRadius: 4, backgroundColor: '#D9E2E8' })} />
           <View style={abs(84, 152, 40, 6, { borderRadius: 3, backgroundColor: '#B4B1AB' })} />
@@ -524,25 +531,63 @@ export function RDArtwork({ name }: { name: RDArt }) {
 
       {name === 'toppled' ? (
         <>
-          <Glow id="rd-toppled-glow" l={78} t={44} size={112} alpha={0.32} />
-          <Specks />
-          <View style={abs(50, 156, 24, 24, { backgroundColor: '#E4E3DE' })} />
-          <View style={abs(74, 156, 24, 24, { backgroundColor: '#C6C5C0' })} />
-          <View style={abs(98, 156, 24, 24, { backgroundColor: '#E4E3DE' })} />
-          <View style={abs(122, 156, 24, 24, { backgroundColor: '#C6C5C0' })} />
-          <View style={abs(146, 156, 24, 24, { backgroundColor: '#E4E3DE' })} />
-          <View style={abs(170, 156, 24, 24, { backgroundColor: '#C6C5C0' })} />
-          <Svg width={84} height={56} viewBox="0 0 84 56" style={{ position: 'absolute', left: 64, top: 96 }}>
-            <G transform="rotate(74 42 28)">
-              <Path d="M34 6 L50 6 L54 20 L46 26 L52 50 L32 50 L38 26 L30 20 Z" fill="#B4B1AB" />
-              <Path d="M42 0 L42 10 M37 5 L47 5" stroke="#B4B1AB" strokeWidth={3} strokeLinecap="round" />
-            </G>
-          </Svg>
-          <Svg width={36} height={64} viewBox="0 0 36 64" style={{ position: 'absolute', left: 150, top: 92 }}>
-            <Circle cx={18} cy={12} r={9} fill="#D6D5D0" />
-            <Path d="M10 24 L26 24 L30 58 L6 58 Z" fill="#D6D5D0" />
-          </Svg>
-          <Shade id="rd-toppled-shade" l={56} t={182} w={120} h={13} />
+          <Specks a={[214, 26]} b={[16, 44]} />
+          <Shade id="rd-toppled-shade" l={45} t={180} w={150} h={11} />
+          {/* the board, clipped: the last column overhangs it by 0.02 */}
+          <View style={abs(52, 134, 136, 44, { borderRadius: 6, overflow: 'hidden', boxShadow: '0 3px 8px rgba(40,38,32,0.1)' })}>
+            {TOPPLED_TILES.map(([x, y, fill]) => (
+              <View key={`${x}-${y}`} style={abs(x, y, 22.67, 22, { backgroundColor: fill })} />
+            ))}
+          </View>
+          <Glow id="rd-toppled-glow" l={62} t={48} size={52} alpha={0.45} />
+          <Shade id="rd-toppled-piece" l={71} t={130} w={34} h={11} alpha={0.08} />
+          {/* the one still standing */}
+          <View style={abs(79, 69, 18, 18, { borderRadius: 9, backgroundColor: '#6B6862' })} />
+          <View style={abs(76, 89, 24, 5, { borderRadius: 2.5, backgroundColor: '#6B6862' })} />
+          <View
+            style={abs(81, 94, 14, 26, {
+              borderTopLeftRadius: 7,
+              borderTopRightRadius: 7,
+              borderBottomRightRadius: 3,
+              borderBottomLeftRadius: 3,
+              backgroundColor: '#6B6862',
+            })}
+          />
+          <View
+            style={abs(74, 120, 28, 8, {
+              borderTopLeftRadius: 4,
+              borderTopRightRadius: 4,
+              borderBottomRightRadius: 2,
+              borderBottomLeftRadius: 2,
+              backgroundColor: '#6B6862',
+            })}
+          />
+          {/* the one that went over — 84° about the group's own centre, which
+              reads as six degrees off upright rather than flat. The canvas is
+              unambiguous and internally consistent, so it is transcribed. */}
+          <View style={abs(132, 96, 52, 30, { transform: [{ rotate: '84deg' }], transformOrigin: 'center', opacity: 0.85 })}>
+            <View style={abs(0, 11, 15, 15, { borderRadius: 7.5, backgroundColor: '#B4B1AB' })} />
+            <View style={abs(14, 13, 5, 11, { borderRadius: 2, backgroundColor: '#B4B1AB' })} />
+            <View
+              style={abs(18, 11, 22, 14, {
+                borderTopLeftRadius: 3,
+                borderTopRightRadius: 7,
+                borderBottomRightRadius: 7,
+                borderBottomLeftRadius: 3,
+                backgroundColor: '#B4B1AB',
+              })}
+            />
+            <View
+              style={abs(39, 8, 8, 21, {
+                borderTopLeftRadius: 2,
+                borderTopRightRadius: 4,
+                borderBottomRightRadius: 4,
+                borderBottomLeftRadius: 2,
+                backgroundColor: '#B4B1AB',
+              })}
+            />
+          </View>
+          <View style={abs(88, 60, 5, 5, { borderRadius: 2.5, backgroundColor: 'rgba(226,186,120,0.9)' })} />
         </>
       ) : null}
 
@@ -555,12 +600,25 @@ export function RDArtwork({ name }: { name: RDArt }) {
           <View style={abs(64, 88, 32, 4, { borderRadius: 2, backgroundColor: '#E0DFDA' })} />
           <View style={abs(64, 100, 32, 4, { borderRadius: 2, backgroundColor: '#E0DFDA' })} />
           <View style={abs(118, 86, 32, 4, { borderRadius: 2, backgroundColor: '#E0DFDA' })} />
-          <View style={abs(140, 118, 58, 7, { borderRadius: 4, backgroundColor: '#55534E', transform: [{ rotate: '-26deg' }], transformOrigin: 'left center' })} />
+          {/* the pen: barrel, nib and grip, all on the same -24° */}
+          <View
+            style={abs(142, 120, 44, 6, {
+              borderRadius: 3,
+              backgroundColor: '#E9D2A4',
+              boxShadow: 'inset 0 -1.5px 0 rgba(0,0,0,0.08)',
+              transform: [{ rotate: '-24deg' }],
+              transformOrigin: 'left center',
+            })}
+          />
+          <Svg width={8} height={6} viewBox="0 0 8 6" style={{ position: 'absolute', left: 181, top: 101.5, transform: [{ rotate: '-24deg' }] }}>
+            <Path d="M0 0 L8 3 L0 6 Z" fill="#55534E" />
+          </Svg>
+          <View style={abs(139, 119, 7, 6.5, { borderRadius: 3, backgroundColor: '#C6C5C0', transform: [{ rotate: '-24deg' }] })} />
           <Svg width={30} height={28} viewBox="0 0 30 28" style={{ position: 'absolute', left: 34, top: 150 }}>
-            <Path d="M15 2 C22 2 28 8 26 15 C29 20 24 26 18 25 C12 28 5 25 5 19 C1 15 4 8 9 7 C10 3 12 2 15 2 Z" fill="none" stroke="#C6C5C0" strokeWidth={2.4} />
+            <Path d="M15 2 C22 2 28 8 26 15 C29 20 24 26 18 25 C12 28 5 25 5 19 C1 15 4 8 9 7 C10 3 12 2 15 2 Z" fill="#EBEAE4" stroke="#D6D5D0" strokeWidth={1.8} />
           </Svg>
           <Svg width={26} height={24} viewBox="0 0 26 24" style={{ position: 'absolute', left: 66, top: 160 }}>
-            <Path d="M13 2 C19 2 24 7 22 13 C25 17 20 22 15 21 C10 24 4 21 4 16 C1 12 4 7 8 6 Z" fill="none" stroke="#C6C5C0" strokeWidth={2.2} />
+            <Path d="M13 2 C19 2 24 7 22 13 C25 17 20 22 15 21 C10 24 4 21 4 16 C1 12 4 7 8 6 Z" fill="#EBEAE4" stroke="#D6D5D0" strokeWidth={1.6} />
           </Svg>
           <Svg width={40} height={60} viewBox="0 0 40 60" style={{ position: 'absolute', left: 178, top: 120 }}>
             <Path d="M6 8 L34 8 L30 56 L10 56 Z" fill="#D6D5D0" />

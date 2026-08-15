@@ -6,14 +6,14 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 60 · IMPLEMENTED: 140
+**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 144 · SPEC_EXTRACTED: 56
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
 | Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95 · Rough — Loneliness (I) |
 | Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95B · Rough — Loneliness (II) |
 | Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95C · Rough — Loneliness (III) |
-| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 96 · Rough — Anxiety (I) |
+| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 96 · Rough — Anxiety (I) |
 | Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96B · Rough — Anxiety (II) |
 | Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96C · Rough — Anxiety (III) |
 | Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97 · Rough — Stress (I) |
@@ -21,7 +21,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97C · Rough — Stress (III) |
 | Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98 · Rough — Boredom (I) |
 | Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98B · Rough — Boredom (II) |
-| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 98C · Rough — Boredom (III) |
+| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 98C · Rough — Boredom (III) |
 | Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99 · Rough — Late night (I) |
 | Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99B · Rough — Late night (II) |
 | Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99C · Rough — Late night (III) |
@@ -29,8 +29,8 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100B · Rough — Home alone (II) |
 | Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100C · Rough — Home alone (III) |
 | Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101 · Rough — An argument (I) |
-| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101B · Rough — An argument (II) |
-| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101C · Rough — An argument (III) |
+| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101B · Rough — An argument (II) |
+| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101C · Rough — An argument (III) |
 | Email Login | Medallions | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88 · Medallions |
 | Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88B · Medallions — Still to earn |
 | Email Login | Detail Paper | src/app/medallions/[key].tsx | NOT_STARTED | — | 89A · Vici Detail — Paper |
