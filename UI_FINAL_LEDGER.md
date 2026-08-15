@@ -6,227 +6,227 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**874 rows.** PASS_1: 469 · DONE: 405
+**874 rows.** PASS_2: 469 · DONE: 405
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
-| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95 · Rough — Loneliness (I) |
-| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95B · Rough — Loneliness (II) |
-| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95C · Rough — Loneliness (III) |
-| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96 · Rough — Anxiety (I) |
-| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96B · Rough — Anxiety (II) |
-| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96C · Rough — Anxiety (III) |
-| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97 · Rough — Stress (I) |
-| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97B · Rough — Stress (II) |
-| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97C · Rough — Stress (III) |
-| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98 · Rough — Boredom (I) |
-| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98B · Rough — Boredom (II) |
-| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98C · Rough — Boredom (III) |
-| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99 · Rough — Late night (I) |
-| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99B · Rough — Late night (II) |
-| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99C · Rough — Late night (III) |
-| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100 · Rough — Home alone (I) |
-| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100B · Rough — Home alone (II) |
-| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100C · Rough — Home alone (III) |
-| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 101 · Rough — An argument (I) |
-| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 101B · Rough — An argument (II) |
-| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 101C · Rough — An argument (III) |
-| Email Login | Medallions | src/app/(app)/milestones.tsx | PASS_1 | 2026-08-15 | 88 · Medallions |
-| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | PASS_1 | 2026-08-15 | 88B · Medallions — Still to earn |
-| Email Login | Detail Paper | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89A · Vici Detail — Paper |
-| Email Login | Detail Bronze | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89C · Vici Detail — Bronze |
-| Email Login | Detail Silver | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89D · Vici Detail — Silver |
-| Email Login | Detail Gold | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89E · Vici Detail — Gold |
-| Email Login | Detail Platinum | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89F · Vici Detail — Platinum |
-| Email Login | Log Chooser | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 90 · Log — Chooser |
-| Email Login | Lapse When | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90B · Lapse — When |
-| Email Login | Lapse Trigger | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90C · Lapse — What fed it |
-| Email Login | Lapse Done | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90D · Lapse — Logged |
-| Email Login | Log Urges | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91 · Log — Urges |
-| Email Login | Log Check-ins | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-2 · Log — Check-ins |
-| Email Login | Log Reports | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-3 · Log — Reports |
-| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91A · Urge Overview — Summary |
-| Email Login | Urge Overview | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91B · Urge Overview — Strength |
-| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91C · Urge Overview — Mood |
-| Email Login | Urge Overview When | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91D · Urge Overview — When & Where |
-| Email Login | Report Ready | src/app/report-ready.tsx | PASS_1 | 2026-08-15 | 91C0 · Report Ready |
-| Email Login | Weekly Report | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C · Weekly Report — Score |
-| Email Login | Weekly Report Days | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C2 · Weekly Report — Days |
-| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C3 · Weekly Report — Urges |
-| Email Login | Urge Log Intensity | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91D · Urge Log — Intensity |
-| Email Login | Urge Log Trigger | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91E · Urge Log — Triggers |
-| Email Login | Urge Log Outcome | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91F · Urge Log — Outcome |
-| Email Login | Urge Log When | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91G · Urge Log — When |
-| Email Login | Urge Log Done | src/app/urge-log.tsx | PASS_1 | 2026-08-15 | 91H · Urge Log — Logged |
-| Email Login | Settings | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 92 · Settings |
-| Email Login | Edit Profile | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93 · Edit Profile |
-| Email Login | Sheet Profile Photo | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93B &middot; Profile photo sheet |
-| Email Login | Sheet Edit Name | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93C &middot; Edit name sheet |
-| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 93D &middot; Weekly report |
-| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | PASS_1 | 2026-08-15 | 92B &middot; Night check-in time |
-| Email Login | Your Vow Page | src/app/vow.tsx | PASS_1 | 2026-08-15 | 92C &middot; Your vow |
-| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 92D &middot; Sign out sheet |
-| Email Login | Data Privacy | src/app/privacy.tsx | PASS_1 | 2026-08-15 | 94 · Data &amp; Privacy |
-| Email Login | App Lock | src/app/applock.tsx | PASS_1 | 2026-08-15 | 95 · App Lock |
-| Email Login | Splash | src/app/index.tsx | PASS_1 | 2026-08-15 | 01 · Splash |
-| Email Login | Standing Guard | src/app/index.tsx | PASS_1 | 2026-08-15 | 02 · Finding the Waterline |
-| Email Login | Login Empty | src/app/(auth)/sign-in.tsx | PASS_1 | 2026-08-15 | 03 · Login — Empty |
-| Email Login | Login Typing | src/app/(auth)/sign-in.tsx | PASS_1 | 2026-08-15 | 04 · Login — Typing |
-| Email Login | Create Account | src/app/(auth)/sign-up.tsx | PASS_1 | 2026-08-15 | 07 · Create Account |
-| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 1 intro |
-| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 63 · Lesson — Willpower |
-| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 2 intro |
-| Email Login | V3 Q5 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q6 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q7 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 68 · Lesson — Rewire |
-| Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 3 intro |
-| Email Login | V3 Q8 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q9 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 4 intro |
-| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 5 intro |
-| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 79 · Lesson — Anchor |
-| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 6 intro |
-| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 82 · Lesson — Small Steps |
-| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 7 intro |
-| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
-| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87 · Charting Your Plan |
-| Email Login | Plan Ready | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87I · Plan Ready |
-| Email Login | Root Loop | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87B · The Root — The Loop |
-| Email Login | Current Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87C · Your Current Pattern |
-| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87D · If Nothing Changes — Next 30 Days |
-| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87E · If Nothing Changes — Next 365 Days |
-| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F · If Nothing Changes — By Age 80 |
-| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F2 · But This Can Change |
-| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G · Why Streaks Fail |
-| Email Login | Campaign Line | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G2 · Why Campaigns Hold |
-| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87H · The Rewire Curve |
-| Email Login | Results Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 88 · Results — Pattern |
-| Email Login | The Vow | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90 · The Vow — Signature |
-| Email Login | Campaign Map | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
-| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
-| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
-| Email Login | Letter Received | src/app/letter.tsx | PASS_1 | 2026-08-15 | 90E &middot; A letter arrived |
-| Email Login | Letter Week XII | src/app/letter.tsx | PASS_1 | 2026-08-15 | 90B · A Letter From Week XII |
-| Email Login | Medallion Received | src/app/medallion-post.tsx | PASS_1 | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
-| Email Login | Reminders Setup | src/app/reminders.tsx | PASS_1 | 2026-08-15 | 91 · Reminders |
-| Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | PASS_1 | 2026-08-15 | 92 · Save Progress |
-| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11 · Free Trial Paywall |
-| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11B · Paywall — Three Days Free |
-| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11C · Paywall — Confirmed |
-| Email Login | Manage Subscription | src/app/subscription.tsx | PASS_1 | 2026-08-15 | 15 · Manage Subscription |
-| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | PASS_1 | 2026-08-15 | 19B · Morning check-in time |
-| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | PASS_1 | 2026-08-15 | 19C · Nightly check-in time |
-| Email Login | Today Home | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 · Today |
-| Email Login | Score Detail | src/app/score.tsx | PASS_1 | 2026-08-15 | 21B &middot; Score Detail |
-| Email Login | Score Detail Moves | src/app/score.tsx | PASS_1 | 2026-08-15 | 20B · Score Detail — What Moved It |
-| Email Login | Score Detail Ranks | src/app/score.tsx | PASS_1 | 2026-08-15 | 20C · Score Detail — Ranks |
-| Email Login | Today Home II | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 · Today &mdash; p2 |
-| Email Login | Today Home Task | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21p2B · Today — Task summary |
-| Email Login | Today Home III | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 &middot; Today &mdash; p3 |
-| Email Login | Sentence Journal | src/app/affirmation.tsx | PASS_1 | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
-| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | PASS_1 | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
-| Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D1 · Morning — Yesterday |
-| Email Login | Morning Task Check | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
-| Email Login | Morning 5 Done | src/app/day/morning.tsx | PASS_1 | 2026-08-15 | 21D7 · Morning — Done |
-| Email Login | Night 1 Mood | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E1 · Night — How was today |
-| Email Login | Checkin Emotions | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E2 · Night — Emotions |
-| Email Login | Night 2 Record | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E3 · Night — Record |
-| Email Login | Checkin Reasons | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E4 · Night — What fed it |
-| Email Login | Night 3 Reflection | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E5 · Night — Reflection |
-| Email Login | Night Action Reminder | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E5B · Night — Tonight’s action |
-| Email Login | Night 4 Closed | src/app/day/night.tsx | PASS_1 | 2026-08-15 | 21E6 · Night — Closed |
-| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | PASS_1 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Cue Intro Modal | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28 · SOS — First 90 Seconds |
-| Email Login | SOS Strength | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28B · SOS — How Strong |
-| Email Login | Cue Hue Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29 · SOS — Where Are You |
-| Email Login | SOS Feeling Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
-| Email Login | SOS Reason Picker | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
-| Email Login | Cue Set Confirmation | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29B · SOS — Step I · Phone Down |
-| Email Login | Surf Step 1 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 30 · SOS — Step II · Out of Bed |
-| Email Login | Surf Step 3 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 31 · SOS — Step III · Cold Water |
-| Email Login | Surf Complete | src/app/urge.tsx | PASS_1 | 2026-08-15 | 33 · SOS — The Wave Passed |
-| Email Login | Relapse Log | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 34 · SOS — Slipped |
-| Email Login | Relapse Twice | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 36 · Relapse — Don't Fail Twice |
-| Email Login | Relapse Begin | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 37 · Relapse — Begin Again |
-| Email Login | Week I Reset | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week I Reset P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week III In the Moment | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VI Discipline | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IX Connection | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week X Yourself | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | PASS_1 | 2026-08-15 | week overview, two pages per week |
-| Email Login | Letter Arrival | src/app/mail.tsx | PASS_1 | 2026-08-15 | 90B · VICI Post — Arrival |
-| Email Login | Letter Read | src/app/letter.tsx | PASS_1 | 2026-08-15 | 39 · The Letter — Read |
-| Email Login | Medallion Letter | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39B · Post — Medallion Letter |
-| Email Login | Yearly Drop | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39C · Post — The Yearly Drop |
-| Email Login | Drop Received | src/app/drop.tsx | PASS_1 | 2026-08-15 | 39D · You Received a Drop |
-| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32A · Journey — Ch I The Landing |
-| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32 · Journey — The Campaign |
-| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32B · Journey — Ch III The Highlands |
-| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32C · Journey — Ch IV The Watch |
+| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 95 · Rough — Loneliness (I) |
+| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 95B · Rough — Loneliness (II) |
+| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 95C · Rough — Loneliness (III) |
+| Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 96 · Rough — Anxiety (I) |
+| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 96B · Rough — Anxiety (II) |
+| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 96C · Rough — Anxiety (III) |
+| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 97 · Rough — Stress (I) |
+| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 97B · Rough — Stress (II) |
+| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 97C · Rough — Stress (III) |
+| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 98 · Rough — Boredom (I) |
+| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 98B · Rough — Boredom (II) |
+| Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 98C · Rough — Boredom (III) |
+| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 99 · Rough — Late night (I) |
+| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 99B · Rough — Late night (II) |
+| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 99C · Rough — Late night (III) |
+| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 100 · Rough — Home alone (I) |
+| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 100B · Rough — Home alone (II) |
+| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 100C · Rough — Home alone (III) |
+| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 101 · Rough — An argument (I) |
+| Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 101B · Rough — An argument (II) |
+| Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | PASS_2 | 2026-08-15 | 101C · Rough — An argument (III) |
+| Email Login | Medallions | src/app/(app)/milestones.tsx | PASS_2 | 2026-08-15 | 88 · Medallions |
+| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | PASS_2 | 2026-08-15 | 88B · Medallions — Still to earn |
+| Email Login | Detail Paper | src/app/medallions/[key].tsx | PASS_2 | 2026-08-15 | 89A · Vici Detail — Paper |
+| Email Login | Detail Bronze | src/app/medallions/[key].tsx | PASS_2 | 2026-08-15 | 89C · Vici Detail — Bronze |
+| Email Login | Detail Silver | src/app/medallions/[key].tsx | PASS_2 | 2026-08-15 | 89D · Vici Detail — Silver |
+| Email Login | Detail Gold | src/app/medallions/[key].tsx | PASS_2 | 2026-08-15 | 89E · Vici Detail — Gold |
+| Email Login | Detail Platinum | src/app/medallions/[key].tsx | PASS_2 | 2026-08-15 | 89F · Vici Detail — Platinum |
+| Email Login | Log Chooser | src/app/(app)/log.tsx | PASS_2 | 2026-08-15 | 90 · Log — Chooser |
+| Email Login | Lapse When | src/app/lapse.tsx | PASS_2 | 2026-08-15 | 90B · Lapse — When |
+| Email Login | Lapse Trigger | src/app/lapse.tsx | PASS_2 | 2026-08-15 | 90C · Lapse — What fed it |
+| Email Login | Lapse Done | src/app/lapse.tsx | PASS_2 | 2026-08-15 | 90D · Lapse — Logged |
+| Email Login | Log Urges | src/app/(app)/log.tsx | PASS_2 | 2026-08-15 | 91 · Log — Urges |
+| Email Login | Log Check-ins | src/app/(app)/log.tsx | PASS_2 | 2026-08-15 | 91-2 · Log — Check-ins |
+| Email Login | Log Reports | src/app/(app)/log.tsx | PASS_2 | 2026-08-15 | 91-3 · Log — Reports |
+| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | PASS_2 | 2026-08-15 | 91A · Urge Overview — Summary |
+| Email Login | Urge Overview | src/app/urge-overview.tsx | PASS_2 | 2026-08-15 | 91B · Urge Overview — Strength |
+| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | PASS_2 | 2026-08-15 | 91C · Urge Overview — Mood |
+| Email Login | Urge Overview When | src/app/urge-overview.tsx | PASS_2 | 2026-08-15 | 91D · Urge Overview — When & Where |
+| Email Login | Report Ready | src/app/report-ready.tsx | PASS_2 | 2026-08-15 | 91C0 · Report Ready |
+| Email Login | Weekly Report | src/app/weekly-report.tsx | PASS_2 | 2026-08-15 | 91C · Weekly Report — Score |
+| Email Login | Weekly Report Days | src/app/weekly-report.tsx | PASS_2 | 2026-08-15 | 91C2 · Weekly Report — Days |
+| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | PASS_2 | 2026-08-15 | 91C3 · Weekly Report — Urges |
+| Email Login | Urge Log Intensity | src/app/urge-log.tsx | PASS_2 | 2026-08-15 | 91D · Urge Log — Intensity |
+| Email Login | Urge Log Trigger | src/app/urge-log.tsx | PASS_2 | 2026-08-15 | 91E · Urge Log — Triggers |
+| Email Login | Urge Log Outcome | src/app/urge-log.tsx | PASS_2 | 2026-08-15 | 91F · Urge Log — Outcome |
+| Email Login | Urge Log When | src/app/urge-log.tsx | PASS_2 | 2026-08-15 | 91G · Urge Log — When |
+| Email Login | Urge Log Done | src/app/urge-log.tsx | PASS_2 | 2026-08-15 | 91H · Urge Log — Logged |
+| Email Login | Settings | src/app/(app)/settings.tsx | PASS_2 | 2026-08-15 | 92 · Settings |
+| Email Login | Edit Profile | src/app/profile.tsx | PASS_2 | 2026-08-15 | 93 · Edit Profile |
+| Email Login | Sheet Profile Photo | src/app/profile.tsx | PASS_2 | 2026-08-15 | 93B &middot; Profile photo sheet |
+| Email Login | Sheet Edit Name | src/app/profile.tsx | PASS_2 | 2026-08-15 | 93C &middot; Edit name sheet |
+| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | PASS_2 | 2026-08-15 | 93D &middot; Weekly report |
+| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | PASS_2 | 2026-08-15 | 92B &middot; Night check-in time |
+| Email Login | Your Vow Page | src/app/vow.tsx | PASS_2 | 2026-08-15 | 92C &middot; Your vow |
+| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | PASS_2 | 2026-08-15 | 92D &middot; Sign out sheet |
+| Email Login | Data Privacy | src/app/privacy.tsx | PASS_2 | 2026-08-15 | 94 · Data &amp; Privacy |
+| Email Login | App Lock | src/app/applock.tsx | PASS_2 | 2026-08-15 | 95 · App Lock |
+| Email Login | Splash | src/app/index.tsx | PASS_2 | 2026-08-15 | 01 · Splash |
+| Email Login | Standing Guard | src/app/index.tsx | PASS_2 | 2026-08-15 | 02 · Finding the Waterline |
+| Email Login | Login Empty | src/app/(auth)/sign-in.tsx | PASS_2 | 2026-08-15 | 03 · Login — Empty |
+| Email Login | Login Typing | src/app/(auth)/sign-in.tsx | PASS_2 | 2026-08-15 | 04 · Login — Typing |
+| Email Login | Create Account | src/app/(auth)/sign-up.tsx | PASS_2 | 2026-08-15 | 07 · Create Account |
+| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 1 intro |
+| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 63 · Lesson — Willpower |
+| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 2 intro |
+| Email Login | V3 Q5 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q6 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q7 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 68 · Lesson — Rewire |
+| Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 3 intro |
+| Email Login | V3 Q8 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q9 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 4 intro |
+| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 5 intro |
+| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 79 · Lesson — Anchor |
+| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 6 intro |
+| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 82 · Lesson — Small Steps |
+| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | V3 — Section 7 intro |
+| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | onboarding question board |
+| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87 · Charting Your Plan |
+| Email Login | Plan Ready | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87I · Plan Ready |
+| Email Login | Root Loop | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87B · The Root — The Loop |
+| Email Login | Current Pattern | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87C · Your Current Pattern |
+| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87D · If Nothing Changes — Next 30 Days |
+| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87E · If Nothing Changes — Next 365 Days |
+| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87F · If Nothing Changes — By Age 80 |
+| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87F2 · But This Can Change |
+| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87G · Why Streaks Fail |
+| Email Login | Campaign Line | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87G2 · Why Campaigns Hold |
+| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 87H · The Rewire Curve |
+| Email Login | Results Pattern | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 88 · Results — Pattern |
+| Email Login | The Vow | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 90 · The Vow — Signature |
+| Email Login | Campaign Map | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
+| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
+| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | PASS_2 | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
+| Email Login | Letter Received | src/app/letter.tsx | PASS_2 | 2026-08-15 | 90E &middot; A letter arrived |
+| Email Login | Letter Week XII | src/app/letter.tsx | PASS_2 | 2026-08-15 | 90B · A Letter From Week XII |
+| Email Login | Medallion Received | src/app/medallion-post.tsx | PASS_2 | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
+| Email Login | Reminders Setup | src/app/reminders.tsx | PASS_2 | 2026-08-15 | 91 · Reminders |
+| Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | PASS_2 | 2026-08-15 | 92 · Save Progress |
+| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | PASS_2 | 2026-08-15 | 11 · Free Trial Paywall |
+| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | PASS_2 | 2026-08-15 | 11B · Paywall — Three Days Free |
+| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | PASS_2 | 2026-08-15 | 11C · Paywall — Confirmed |
+| Email Login | Manage Subscription | src/app/subscription.tsx | PASS_2 | 2026-08-15 | 15 · Manage Subscription |
+| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | PASS_2 | 2026-08-15 | 19B · Morning check-in time |
+| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | PASS_2 | 2026-08-15 | 19C · Nightly check-in time |
+| Email Login | Today Home | src/app/(app)/today.tsx | PASS_2 | 2026-08-15 | 21 · Today |
+| Email Login | Score Detail | src/app/score.tsx | PASS_2 | 2026-08-15 | 21B &middot; Score Detail |
+| Email Login | Score Detail Moves | src/app/score.tsx | PASS_2 | 2026-08-15 | 20B · Score Detail — What Moved It |
+| Email Login | Score Detail Ranks | src/app/score.tsx | PASS_2 | 2026-08-15 | 20C · Score Detail — Ranks |
+| Email Login | Today Home II | src/app/(app)/today.tsx | PASS_2 | 2026-08-15 | 21 · Today &mdash; p2 |
+| Email Login | Today Home Task | src/app/(app)/today.tsx | PASS_2 | 2026-08-15 | 21p2B · Today — Task summary |
+| Email Login | Today Home III | src/app/(app)/today.tsx | PASS_2 | 2026-08-15 | 21 &middot; Today &mdash; p3 |
+| Email Login | Sentence Journal | src/app/affirmation.tsx | PASS_2 | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
+| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | PASS_2 | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
+| Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | PASS_2 | 2026-08-15 | 21D1 · Morning — Yesterday |
+| Email Login | Morning Task Check | src/app/day/morning.tsx | PASS_2 | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
+| Email Login | Morning 5 Done | src/app/day/morning.tsx | PASS_2 | 2026-08-15 | 21D7 · Morning — Done |
+| Email Login | Night 1 Mood | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E1 · Night — How was today |
+| Email Login | Checkin Emotions | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E2 · Night — Emotions |
+| Email Login | Night 2 Record | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E3 · Night — Record |
+| Email Login | Checkin Reasons | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E4 · Night — What fed it |
+| Email Login | Night 3 Reflection | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E5 · Night — Reflection |
+| Email Login | Night Action Reminder | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E5B · Night — Tonight’s action |
+| Email Login | Night 4 Closed | src/app/day/night.tsx | PASS_2 | 2026-08-15 | 21E6 · Night — Closed |
+| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | PASS_2 | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Cue Intro Modal | src/app/urge.tsx | PASS_2 | 2026-08-15 | 28 · SOS — First 90 Seconds |
+| Email Login | SOS Strength | src/app/urge.tsx | PASS_2 | 2026-08-15 | 28B · SOS — How Strong |
+| Email Login | Cue Hue Picker | src/app/urge.tsx | PASS_2 | 2026-08-15 | 29 · SOS — Where Are You |
+| Email Login | SOS Feeling Picker | src/app/urge.tsx | PASS_2 | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
+| Email Login | SOS Reason Picker | src/app/urge.tsx | PASS_2 | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
+| Email Login | Cue Set Confirmation | src/app/urge.tsx | PASS_2 | 2026-08-15 | 29B · SOS — Step I · Phone Down |
+| Email Login | Surf Step 1 | src/app/urge.tsx | PASS_2 | 2026-08-15 | 30 · SOS — Step II · Out of Bed |
+| Email Login | Surf Step 3 | src/app/urge.tsx | PASS_2 | 2026-08-15 | 31 · SOS — Step III · Cold Water |
+| Email Login | Surf Complete | src/app/urge.tsx | PASS_2 | 2026-08-15 | 33 · SOS — The Wave Passed |
+| Email Login | Relapse Log | src/app/relapse.tsx | PASS_2 | 2026-08-15 | 34 · SOS — Slipped |
+| Email Login | Relapse Twice | src/app/relapse.tsx | PASS_2 | 2026-08-15 | 36 · Relapse — Don't Fail Twice |
+| Email Login | Relapse Begin | src/app/relapse.tsx | PASS_2 | 2026-08-15 | 37 · Relapse — Begin Again |
+| Email Login | Week I Reset | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week I Reset P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week II Changing Your Mindset P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week III In the Moment P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IV Know Your Brain P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week V Why It Feels Worth It P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VI Discipline P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VII Relapse and Adversity P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week VIII Boredom and Meaning P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week IX Connection P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week X Yourself P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | PASS_2 | 2026-08-15 | week overview, two pages per week |
+| Email Login | Letter Arrival | src/app/mail.tsx | PASS_2 | 2026-08-15 | 90B · VICI Post — Arrival |
+| Email Login | Letter Read | src/app/letter.tsx | PASS_2 | 2026-08-15 | 39 · The Letter — Read |
+| Email Login | Medallion Letter | src/app/mail.tsx | PASS_2 | 2026-08-15 | 39B · Post — Medallion Letter |
+| Email Login | Yearly Drop | src/app/mail.tsx | PASS_2 | 2026-08-15 | 39C · Post — The Yearly Drop |
+| Email Login | Drop Received | src/app/drop.tsx | PASS_2 | 2026-08-15 | 39D · You Received a Drop |
+| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | PASS_2 | 2026-08-15 | 32A · Journey — Ch I The Landing |
+| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | PASS_2 | 2026-08-15 | 32 · Journey — The Campaign |
+| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | PASS_2 | 2026-08-15 | 32B · Journey — Ch III The Highlands |
+| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | PASS_2 | 2026-08-15 | 32C · Journey — Ch IV The Watch |
 | Lessons and Tasks | L01 Reader 1 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 2 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 3 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
@@ -252,337 +252,337 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | L01 Reader 23 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 24 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 25 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
-| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | PASS_1 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Task D01 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D01 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Task D01 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D01 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D01 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D02 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D02 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D02 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D02 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D02 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D03 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D03 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D03 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D03 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D03 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D04 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D04 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D04 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D04 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D04 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D05 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D05 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D05 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D05 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D05 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D06 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D06 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D06 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D06 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D06 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D07 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D07 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D07 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D07 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D07 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D08 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D08 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D08 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D08 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D08 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D09 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D09 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D09 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D09 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D09 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D10 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D10 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D10 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D10 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D10 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D11 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D11 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D11 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D11 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D11 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D12 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D12 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D12 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D12 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D12 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D13 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D13 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D13 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D13 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D13 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D14 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D14 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D14 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D14 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D14 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D15 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D15 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D15 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D15 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D15 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D16 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D16 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D16 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D16 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D16 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D17 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D17 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D17 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D17 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D17 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D18 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D18 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D18 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D18 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D18 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D19 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D19 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D19 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D19 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D19 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D20 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D20 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D20 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D20 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D20 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D21 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D21 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D21 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D21 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D21 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D22 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D22 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D22 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D22 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D22 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D23 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D23 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D23 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D23 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D23 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D24 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D24 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D24 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D24 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D24 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D25 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D25 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D25 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D25 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D25 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D26 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D26 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D26 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D26 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D26 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D27 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D27 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D27 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D27 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D27 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D28 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D28 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D28 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D28 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D28 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D29 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D29 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D29 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D29 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D29 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D30 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D30 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D30 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D30 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D30 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D31 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D31 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D31 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D31 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D31 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D33 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D33 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D33 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D33 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D33 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D34 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D34 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D34 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D34 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D34 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D35 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D35 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D35 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D35 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D35 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D36 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D36 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D36 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D36 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D36 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D37 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D37 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D37 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D37 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D37 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D38 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D38 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D38 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D38 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D38 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D39 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D39 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D39 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D39 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D39 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D40 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D40 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D40 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D40 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D40 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D41 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D41 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D41 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D41 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D41 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D42 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D42 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D42 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D42 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D42 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D43 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D43 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D43 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D43 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D43 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D44 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D44 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D44 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D44 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D44 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D45 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D45 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D45 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D45 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D45 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D46 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D46 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D46 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D46 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D46 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D47 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D47 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D47 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D47 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D47 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D48 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D48 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D48 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D48 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D48 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D49 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D49 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D49 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D49 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D49 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D50 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D50 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D50 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D50 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D50 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D51 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D51 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D51 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D51 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D51 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D52 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D52 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D52 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D52 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D52 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D53 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D53 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D53 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D53 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D53 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D54 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D54 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D54 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D54 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D54 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D55 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D55 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D55 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D55 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D55 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D56 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D56 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D56 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D56 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D56 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D57 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D57 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D57 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D57 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D57 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D58 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D58 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D58 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D58 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D58 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D59 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D59 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D59 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D59 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D59 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D60 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D60 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D60 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D60 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D60 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D61 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D61 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D61 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D61 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D61 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D62 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D62 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D62 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D62 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D62 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D63 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D63 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D63 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D63 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D63 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D64 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D64 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D64 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D64 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D64 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D65 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D65 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D65 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D65 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D65 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D66 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D66 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D66 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D66 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D66 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D67 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D67 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D67 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D67 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D67 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D68 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D68 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D68 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D68 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D68 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D69 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D69 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D69 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D69 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D69 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D70 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D70 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D70 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D70 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D70 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D71 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D71 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D71 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D71 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D71 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D72 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D72 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D72 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D72 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D72 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D73 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D73 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D73 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D73 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D73 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D74 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D74 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D74 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D74 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D74 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D75 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D75 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D75 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D75 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D75 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D76 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D76 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D76 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D76 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D76 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D77 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D77 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D77 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D77 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D77 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D78 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D78 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D78 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D78 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D78 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D79 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D79 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D79 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D79 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D79 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D80 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D80 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D80 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D80 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D80 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D81 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D81 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D81 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D81 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D81 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D82 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D82 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D82 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D82 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D82 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D83 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D83 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D83 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D83 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D83 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | PASS_1 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D84 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
 | Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | DONE | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
 | Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | DONE | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
@@ -784,9 +784,9 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
-| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_1 | 2026-08-15 | export of the campaign map |
-| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson cover/detail |
-| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson parts list |
+| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_2 | 2026-08-15 | export of the campaign map |
+| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_2 | 2026-08-15 | export — lesson cover/detail |
+| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_2 | 2026-08-15 | export — lesson parts list |
 | screenshots/bold-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
 | screenshots/bold-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
 | screenshots/bold-check | Task D71 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |

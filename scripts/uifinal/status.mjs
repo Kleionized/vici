@@ -4,8 +4,13 @@
  *
  * Usage: node scripts/uifinal/status.mjs <STATUS> <YYYY-MM-DD> "<label>" ["<label>" …]
  *        node scripts/uifinal/status.mjs <STATUS> <YYYY-MM-DD> --match "<regex>"
+ *        node scripts/uifinal/status.mjs <STATUS> <YYYY-MM-DD> --from <STATUS>
  *
  * Matches on the Screen column of `UI_FINAL_LEDGER.md`. Prints what it changed.
+ *
+ * `--from` promotes every row currently at one status, which is what finishing
+ * a pass actually means — and unlike a label list it cannot quietly skip a row
+ * or reach a dispositioned one.
  */
 import fs from 'node:fs';
 
@@ -23,8 +28,14 @@ const SUPERSEDED = new Set(['VICI (previous)', 'vici-prev']);
 /** Harness rows carry canonical labels but are dispositioned in their own right. */
 const isHarness = (bundle) => bundle.startsWith('screenshots/');
 const useRegex = rest[0] === '--match';
+const useFrom = rest[0] === '--from';
 const re = useRegex ? new RegExp(rest[1]) : null;
-const labels = useRegex ? null : new Set(rest);
+const from = useFrom ? rest[1] : null;
+const labels = useRegex || useFrom ? null : new Set(rest);
+if (useFrom && !VALID.includes(from)) {
+  console.error(`--from must be one of ${VALID.join(', ')}`);
+  process.exit(1);
+}
 
 let n = 0;
 const out = lines.map((line) => {
@@ -32,7 +43,7 @@ const out = lines.map((line) => {
   const cells = line.split('|');
   if (SUPERSEDED.has(cells[1].trim()) || isHarness(cells[1].trim())) return line;
   const label = cells[2].trim();
-  const hit = useRegex ? re.test(label) : labels.has(label);
+  const hit = useFrom ? cells[4].trim() === from : useRegex ? re.test(label) : labels.has(label);
   if (!hit) return line;
   n++;
   cells[4] = ` ${status} `;

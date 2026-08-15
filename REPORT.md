@@ -4,7 +4,7 @@
 **Bundle:** `UI Final/` (Claude Design handoff, 288 files).
 **Ledger:** `UI_FINAL_LEDGER.md` — **874 rows**, one per `data-screen-label` frame
 (777 at first count; Pass 2 found 97 more — §10).
-**Decisions:** `DECISIONS.md`, entries D-001 … D-096.
+**Decisions:** `DECISIONS.md`, entries D-001 … D-100.
 **Specs:** `specs/` — 35 files: 19 pixel specs and 16 audits, together carrying
 roughly 12,000 transcribed property rows.
 
@@ -19,46 +19,50 @@ roughly 12,000 transcribed property rows.
 
 | State | Rows | What it means |
 | --- | --- | --- |
-| `PASS_1` | 469 | Built, then audited property by property, and every finding the app could close was closed |
+| `PASS_2` | 469 | Built, audited property by property, then swept mechanically for copy, entities, apostrophes and positions |
 | `DONE` | 405 | Not screens. Dispositioned **on evidence** and closed |
 
-**Pass 1 is complete across all 874 rows. Nothing is `NOT_STARTED` and nothing
-is left at `IMPLEMENTED`.**
+**Nothing is `NOT_STARTED` and nothing is left at `IMPLEMENTED`. All 874 rows
+have been through Pass 1 and Pass 2.**
 
 ### What the three passes did
 
-- **Pass 1 — complete.** 31 audits in all: 16 over the 129 frames the design
-  left unchanged, 14 over the screens this run built by hand, and one done by
-  hashing for the four clone frames. Roughly 9,000 comparison rows. The audits
-  are in `specs/audit-*.md` and `specs/pass1-*.md`; every finding and its
-  resolution is in `DECISIONS.md` (D-068 … D-096).
-- **Pass 2 — complete.** The coverage audit re-walked the bundle as if for the
-  first time and found **97 frames Phase 1 had never opened** — dispositioned by
-  filename, which the brief forbids. That is why the ledger is 874 rows and not
-  777 (§10).
-- **Pass 3 — the cross-screen sweep is complete.** Every colour and font-size
-  literal in the app was checked against every literal in the canvas, and it
-  found the worst transcription errors in the run (§11). The per-screen
-  fresh-eyes re-verification has **not** run.
+- **Pass 1 — complete.** 31 audits: 16 over the 129 frames the design left
+  unchanged, 14 over the screens this run built by hand, and one by hashing for
+  the four clone frames. Roughly 9,000 comparison rows, in `specs/audit-*.md`
+  and `specs/pass1-*.md`. Findings and resolutions: `DECISIONS.md` D-068 … D-096.
+- **Pass 2 — complete, in two parts.**
+  - *Coverage.* Re-walked the bundle as if for the first time and found **97
+    frames Phase 1 had never opened**, dispositioned by filename, which the
+    brief forbids. That is why the ledger is 874 rows and not 777 (§10).
+  - *Mechanical sweeps.* Four new sweeps over all 575 frames that have an app
+    target, asking what re-reading cannot: does every word the canvas draws
+    exist in the app (3,873 text runs), does every stated position, does any
+    HTML entity survive into a place where it renders literally, and does any
+    string differ only by its apostrophe. **Five findings**, the largest being
+    that `Task DNN Options` is drawn two ways and the app built one — which had
+    also scrambled the option copy on nine days. `specs/pass2-copy-sweep.md`,
+    `DECISIONS.md` D-097 … D-100.
+- **Pass 3 — the cross-screen literal sweep is complete.** Every colour and
+  font-size literal in the app checked against every literal in the canvas; it
+  found the run's worst transcription errors (§11). The per-screen fresh-eyes
+  re-verification has **not** run.
 
 **The brief's bar has not been met.** It asks for three consecutive passes that
-find nothing. Pass 3 changed several screens and the late Pass 1 batches changed
-more, so by the brief's own rule those restart at Pass 1 — which is why no row
-is marked `DONE` on implementation.
+find nothing. Pass 2 changed several screens, so by the brief's own rule those
+restart — which is why no row is marked `DONE` on implementation.
 
 ### The 405 `DONE` rows, and why each is closed
 
 - **174** — `VICI (previous).dc.html` and `vici-prev.dc.html`, the
-  previous-generation canvas. `cmp` proves the two files byte-identical, and the
+  previous-generation canvas. `cmp` proves the two byte-identical, and the
   language they draw (sound library, wake alarms, device pairing) is not the
   product's any more (D-002).
 - **97** — the harness frames Pass 2 found. 55 are byte-copies of a canonical
   frame; the other 42 are the author's discarded variants, and five `*-apply.js`
-  scripts in the same folder prove the canvas is the applied result and the
-  checks are its input (D-061).
+  scripts in the same folder prove the canvas is the applied result (D-061).
 - **83** — `Task DNN Card`. Specimens, not screens: each shows the day's task as
-  the Today card and again as the night reminder, both of which are themselves
-  `PASS_1` (D-045).
+  the Today card and again as the night reminder, both themselves audited (D-045).
 - **26** — `L1 Frame 01…26`, hash-identical to `Lesson Scroll 1…26` once the
   label is normalised away (D-003).
 - **25** — `L01 Reader 1…25`, the superseded reader draft: 3 frames match
