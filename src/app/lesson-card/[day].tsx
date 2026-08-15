@@ -99,7 +99,7 @@ export default function LessonCard() {
         </AppText>
 
         <PressScale
-          onPress={() => router.push(`/lesson/day-${lesson.day}`)}
+          onPress={() => router.push(`/lesson/day/${lesson.day}`)}
           accessibilityRole="button"
           style={{
             position: 'absolute',

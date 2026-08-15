@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 148 · SPEC_EXTRACTED: 52
+**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 200
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -156,32 +156,32 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Night 3 Reflection | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5 · Night — Reflection |
 | Email Login | Night Action Reminder | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E5B · Night — Tonight’s action |
 | Email Login | Night 4 Closed | src/app/day/night.tsx | IMPLEMENTED | 2026-08-15 | 21E6 · Night — Closed |
-| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 1 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 2 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 3 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 4 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 5 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 6 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 7 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 8 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 9 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 10 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 11 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 12 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 13 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 14 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 15 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 16 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 17 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 18 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 19 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 20 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 21 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 22 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 23 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
+| Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Cue Intro Modal | src/app/urge.tsx | NOT_STARTED | — | 28 · SOS — First 90 Seconds |
 | Email Login | SOS Strength | src/app/urge.tsx | NOT_STARTED | — | 28B · SOS — How Strong |
 | Email Login | Cue Hue Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29 · SOS — Where Are You |
@@ -584,32 +584,32 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 1 of 3 |
 | Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D84 Card | src/app/task/[day].tsx | NOT_STARTED | — | daily task, page 3 of 3 |
-| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
+| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
 | VICI (previous) | Splash | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Standing Guard | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Login Empty | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |

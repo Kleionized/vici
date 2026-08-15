@@ -468,3 +468,37 @@ names the ambiguity, the reading chosen, and why.
   `clip-path` polygons or elliptical corner radii that RN styling cannot say.
   `haloTop` was 7/8/8/8 in the app and is 7 on all twelve rows in the canvas, so
   the field is gone and 7 is written once.
+
+## The lesson reader
+
+- **D-040 · The reader has no CTA on 24 of its 26 frames, so the board is the
+  control.** Only `Lesson Scroll 16` (the pick-one) and `Lesson Scroll 26` (the
+  completion) draw a pill. The set is named "Lesson **Scroll**" and the cover
+  carries a downward chevron at bottom 42 and nothing else. The app pinned a
+  52pt ink pill on every step. Resolution: the whole board advances the page,
+  the chevron on the cover says so, and the two frames that draw a pill get one.
+
+- **D-041 · Progress is a 2pt hairline at `round((n + 1) / 26 × 100)%`.**
+  Every frame states its own percentage and all 26 agree with that formula to
+  the point — 4, 8, 12, 15, 19, 23, 27, 31, 35, 38, 42, 46, 50, 54, 58, 62, 65,
+  69, 73, 77, 81, 85, 88, 92, 96, 100. The app drew a dot rail in `#131313`; the
+  canvas draws `#B4B1AB` on `rgba(0,0,0,0.05)`, 361 wide at app top 54.
+
+- **D-042 · The body is centred in the whole 852, not laid out from a top.**
+  Every frame's stack is `position:absolute; inset:0` with
+  `justify-content:center`, so no body element on any of the 26 frames has an
+  absolute top — the vertical position is a function of the stack's own height.
+  The app top-anchored every page with a hard-coded `paddingTop`. The new shell
+  reproduces the centring by extending the stack 54 above the safe area, since
+  the canvas's centre line includes the status bar the app never builds.
+
+- **D-043 · `Lesson Scroll 3` is the outlier on statement width.**
+  It declares `max-width:280` where the other six statements declare `300`.
+  Six against one, and frame 3's own copy breaks to two lines at either width,
+  so the slot is 300 and nothing visible changes on frame 3.
+
+- **D-044 · The new reader lives beside the old one, at `/lesson/day/[day]`.**
+  `UI Final` authors a body for lesson 01 only (D-015). The 110-lesson
+  interactive reader at `/lesson/[slug]` still serves every other lesson and is
+  still keyed on by progress, reflections and the backend, so it stays. A day
+  with no authored pages returns to its card rather than showing an empty board.
