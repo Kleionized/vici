@@ -66,12 +66,12 @@ export default function MedallionPost() {
           // of the letter's two washes, an eyebrow, the medallion's own name at
           // 27/600, and a tier chip between the name and the story.
           field={['#F6EEDD', '#F0E1C2']}
-          halo={[340, 16, '#E2BA78', 0.38, 0.74]}
+          halo={[340, 70, '#E2BA78', 0.38, 0.74]}
           eyebrow="MEDALLION EARNED"
           artTop={86}
           title="Back on Deck"
           titleTop={378}
-          titleStyle={{ fontSize: 27, letterSpacing: -0.2 }}
+          titleStyle={{ fontSize: 27, fontWeight: '600', letterSpacing: -0.2 }}
           chip="Tier II · The Return"
           sub="Vici, tier II — five ridden. Each one shortens the next."
           subTop={476}

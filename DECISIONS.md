@@ -879,3 +879,39 @@ Six second-reader audits ran over the screens this run built by hand
   extractor confirmed rather than assumed. The completion board's sun is a 36pt
   disc under a 115pt halo — `SunDot` hard-coded a halo for sizes 12 and 14 only
   and would have drawn 45 at size 36, so the halo is a prop now.
+
+- **D-084 · Four cover-scene gradients were declared in a different `<Svg>` root
+  from the node that used them, so on native they resolved to nothing.**
+  `url(#id)` does not cross an `<Svg>` boundary in `react-native-svg`. The
+  window's glass, the lamp's glow and both cast shadows would have drawn as
+  untinted or not at all on device while looking correct on web — the same class
+  of web-only-correctness this project has been caught by before. Each `<Defs>`
+  now sits in the root that consumes it.
+
+- **D-085 · The reader's stack was centred on the safe box, not the screen.**
+  The canvas centres it on the whole 852 — status bar and home indicator
+  included — so pinning the box to a literal 54 is only right when the top inset
+  is 54 and the bottom is 0. On a real 393 × 852 device that put the centre at
+  411.5 instead of 426. It now pins to the measured insets.
+
+- **D-086 · Three bugs in the scene renderer, each affecting all 166 scenes and
+  plates.** The canvas sets `transform-origin: bottom center` on its rotated
+  layers, so day 2's clock hand pivoted at its own middle and landed 8.5 × 16.7
+  off a 52pt dial. A conic stop states its extent in degrees, and the parser
+  only stripped a trailing per cent — so `#E9D2A4 0deg 126deg` went through as
+  the stop's *colour*. And `layer.shadow` was captured by the extractor and never
+  drawn: day 2 alone lost a clock bezel and two book-sheet rings. All three
+  closed; a zero-blur inset shadow is now a stroke half its width inside the
+  edge, and blurred ones stay a named gap.
+
+- **D-087 · Two z-orders inverted in the campaign map.** Weeks VI and IX draw
+  the pole *before* the flag, so the flag paints over it; the app drew the flags
+  first, letting each pole cover half a point of its own flag. Both now sit in
+  one `<Svg>` in the canvas's order.
+
+- **D-088 · `Medallion Received`'s halo was a whole inset too high** — it was
+  positioned from the screen top with the canvas's post-status-bar number, so it
+  measured 129pt to the art frame where the canvas measures 70. And its 27px
+  title kept the base weight 500 where the frame says 600; the override now
+  names the weight, leaving `Letter Arrival` and `Drop Received` on 500, which
+  is what they draw.

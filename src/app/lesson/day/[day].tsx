@@ -295,9 +295,9 @@ function CoverScene() {
     <View style={{ width: 270, height: 224 }}>
       <View style={{ position: 'absolute', left: 15, top: 0, width: 240, height: 200, transform: [{ scale: 1.12 }], transformOrigin: 'top center' }}>
         <View style={{ position: 'absolute', left: 0, top: 0, width: 240, height: 200, overflow: 'hidden' }}>
-          {/* the floor */}
+          {/* One root for every gradient and every node that uses one: a def
+              declared in a different `<Svg>` resolves to nothing on native. */}
           <SceneSvg>
-            <Path d="M-28 192 A148 26 0 0 1 268 192 L268 230 L-28 230 Z" fill="#EAE9E3" />
             <Defs>
               <RadialGradient id="cs-win" cx="66" cy="158" rx="40" ry="40" gradientUnits="userSpaceOnUse">
                 <Stop offset="0" stopColor="#CBDAE8" stopOpacity={0.24} />
@@ -324,14 +324,21 @@ function CoverScene() {
                 <Stop offset="1" stopColor="#000000" stopOpacity={0} />
               </RadialGradient>
             </Defs>
+            <Path d="M-28 192 A148 26 0 0 1 268 192 L268 230 L-28 230 Z" fill="#EAE9E3" />
             <Circle cx={66} cy={158} r={40} fill="url(#cs-win)" />
           </SceneSvg>
 
           {/* the window, its mullion and its sill */}
           <View style={{ position: 'absolute', left: 44, top: 16, width: 58, height: 72, borderRadius: 6, overflow: 'hidden', boxShadow: '0 0 0 6px #E4E3DE, 0 5px 12px rgba(40,38,32,0.14)' }}>
-            <SceneSvg width={58} height={72}>
-              <Rect x={0} y={0} width={58} height={72} fill="url(#cs-glass)" />
-            </SceneSvg>
+            <Svg width={58} height={72} style={{ position: 'absolute', left: 0, top: 0 }} pointerEvents="none">
+              <Defs>
+                <SvgLinearGradient id="cs-glass2" x1="0" y1="0" x2="0" y2="72" gradientUnits="userSpaceOnUse">
+                  <Stop offset="0" stopColor="#12151B" />
+                  <Stop offset="1" stopColor="#1A2027" />
+                </SvgLinearGradient>
+              </Defs>
+              <Rect x={0} y={0} width={58} height={72} fill="url(#cs-glass2)" />
+            </Svg>
           </View>
           <View style={{ position: 'absolute', left: 71, top: 16, width: 4, height: 72, backgroundColor: '#E4E3DE' }} />
           <View style={{ position: 'absolute', left: 37, top: 88, width: 72, height: 7, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
@@ -341,14 +348,28 @@ function CoverScene() {
 
           {/* the side table, the lamp on it, and what each casts */}
           <SceneSvg>
-            <Ellipse cx={78} cy={172.5} rx={25} ry={5.5} fill="url(#cs-sh1)" />
+            <Defs>
+              <RadialGradient id="cs-sh1b" cx="78" cy="172.5" rx="25" ry="5.5" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#000000" stopOpacity={0.08} />
+                <Stop offset="0.5" stopColor="#000000" stopOpacity={0.058} />
+                <Stop offset="0.78" stopColor="#000000" stopOpacity={0.024} />
+                <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Ellipse cx={78} cy={172.5} rx={25} ry={5.5} fill="url(#cs-sh1b)" />
           </SceneSvg>
           <View style={{ position: 'absolute', left: 56, top: 136, width: 44, height: 28, borderRadius: 5, backgroundColor: '#E4E3DE' }} />
           <View style={{ position: 'absolute', left: 65, top: 145, width: 26, height: 4, borderRadius: 2, backgroundColor: '#B4B1AB' }} />
           <View style={{ position: 'absolute', left: 60, top: 164, width: 5, height: 6, backgroundColor: '#C6C5C0' }} />
           <View style={{ position: 'absolute', left: 91, top: 164, width: 5, height: 6, backgroundColor: '#C6C5C0' }} />
           <SceneSvg>
-            <Circle cx={78} cy={114} r={16} fill="url(#cs-lamp)" />
+            <Defs>
+              <RadialGradient id="cs-lampb" cx="78" cy="114" rx="16" ry="16" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.45} />
+                <Stop offset="0.74" stopColor="#E2BA78" stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Circle cx={78} cy={114} r={16} fill="url(#cs-lampb)" />
           </SceneSvg>
           <View style={{ position: 'absolute', left: 67, top: 100, width: 22, height: 15, borderTopLeftRadius: 8, borderTopRightRadius: 8, borderBottomRightRadius: 3, borderBottomLeftRadius: 3, backgroundColor: '#E9D2A4' }} />
           <View style={{ position: 'absolute', left: 76.5, top: 115, width: 3, height: 16, backgroundColor: '#C6C5C0' }} />
@@ -356,7 +377,15 @@ function CoverScene() {
 
           {/* the bed */}
           <SceneSvg>
-            <Ellipse cx={174} cy={172.5} rx={59} ry={5.5} fill="url(#cs-sh2)" />
+            <Defs>
+              <RadialGradient id="cs-sh2b" cx="174" cy="172.5" rx="59" ry="5.5" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#000000" stopOpacity={0.09} />
+                <Stop offset="0.5" stopColor="#000000" stopOpacity={0.065} />
+                <Stop offset="0.78" stopColor="#000000" stopOpacity={0.027} />
+                <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Ellipse cx={174} cy={172.5} rx={59} ry={5.5} fill="url(#cs-sh2b)" />
           </SceneSvg>
           <View style={{ position: 'absolute', left: 114, top: 108, width: 10, height: 62, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomRightRadius: 3, borderBottomLeftRadius: 3, backgroundColor: '#D6D5D0' }} />
           <View style={{ position: 'absolute', left: 122, top: 138, width: 104, height: 24, borderTopLeftRadius: 6, borderTopRightRadius: 10, borderBottomRightRadius: 5, borderBottomLeftRadius: 5, backgroundColor: '#E0DFDA' }} />

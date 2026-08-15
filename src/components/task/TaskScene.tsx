@@ -72,9 +72,15 @@ function gradientStops(background: string): Stops | null {
   for (const chunk of chunks) {
     const text = chunk.trim();
     if (/^(closest-side|farthest-side|closest-corner|farthest-corner|circle|ellipse|from|at |to |[0-9.]+deg)/.test(text)) continue;
-    const at = text.match(/\s([0-9.]+)%$/);
-    const { color, opacity } = splitColor(at ? text.slice(0, at.index).trim() : text);
-    stops.push({ offset: at ? Number(at[1]) / 100 : stops.length === 0 ? 0 : 1, color, opacity });
+    // A conic stop states its extent in degrees (`#E9D2A4 0deg 126deg`) and a
+    // linear/radial one in per cent. Strip either before reading the colour, or
+    // the whole chunk goes through as the stop's `stopColor`.
+    const pct = text.match(/\s([0-9.]+)%$/);
+    const deg = text.match(/^(.*?)((?:\s+-?[0-9.]+deg)+)$/);
+    const colorText = pct ? text.slice(0, pct.index).trim() : deg ? deg[1].trim() : text;
+    const { color, opacity } = splitColor(colorText);
+    const degStop = deg ? Number(deg[2].trim().split(/\s+/).pop()!.replace('deg', '')) / 360 : null;
+    stops.push({ offset: pct ? Number(pct[1]) / 100 : (degStop ?? (stops.length === 0 ? 0 : 1)), color, opacity });
   }
   return stops.length ? stops : null;
 }
@@ -171,6 +177,11 @@ function Layer({ layer, index, id, box }: { layer: TaskSceneLayer; index: number
   const soft = solid && layer.blur ? softStops(solid.color, solid.opacity) : null;
   const gid = `tl${id}${index}`;
   const isRadial = Boolean(layer.background && /radial|conic/.test(layer.background));
+  // A zero-blur inset shadow is a ring drawn wholly inside the edge, so its
+  // stroke centreline sits half a width in. Blurred ones stay a named gap.
+  const inset = layer.shadow?.match(/inset 0 0 0 ([0-9.]+)px (rgba?\([^)]+\)|#[0-9A-Fa-f]{3,8})/);
+  const insetInk = inset ? splitColor(inset[2]) : null;
+  const insetW = inset ? Number(inset[1]) : 0;
 
   return (
     <Svg width={box.w} height={box.h} style={{ position: 'absolute', left: 0, top: 0 }} opacity={layer.opacity}>
@@ -195,8 +206,20 @@ function Layer({ layer, index, id, box }: { layer: TaskSceneLayer; index: number
         d={boxPath(x, y, w, h, r)}
         fill={stops || soft ? `url(#${gid})` : solid?.color}
         fillOpacity={stops || soft ? 1 : solid?.opacity}
-        transform={layer.rotate ? `rotate(${layer.rotate} ${x + w / 2} ${y + h / 2})` : undefined}
+        // the canvas sets `transform-origin: bottom center` on these, so a
+        // clock hand pivots at the dial, not at its own middle
+        transform={layer.rotate ? `rotate(${layer.rotate} ${x + w / 2} ${y + h})` : undefined}
       />
+      {inset ? (
+        <Path
+          d={boxPath(x + insetW / 2, y + insetW / 2, Math.max(0, w - insetW), Math.max(0, h - insetW), radii(layer.radius, Math.max(0, w - insetW), Math.max(0, h - insetW)))}
+          fill="none"
+          stroke={insetInk!.color}
+          strokeOpacity={insetInk!.opacity}
+          strokeWidth={insetW}
+          transform={layer.rotate ? `rotate(${layer.rotate} ${x + w / 2} ${y + h})` : undefined}
+        />
+      ) : null}
     </Svg>
   );
 }

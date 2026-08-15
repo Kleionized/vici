@@ -1127,13 +1127,14 @@ function CampaignWeekArt({ week }: { week: number }) {
   if (week === 6) {
     return (
       <>
+        {/* the canvas draws the pole first, so the flag paints over its left edge */}
         <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
           <Polygon points="51,42 68,68 34,68" fill="#E0DFDA" />
           <Polygon points="73,26 94,68 52,68" fill="#D6D5D0" />
           <Polygon points="73,26 80,37 76.08,33.7 73,36.45 69.92,33.7 66,37" fill="#F9F8F4" />
+          <Rect x={72} y={12} width={2.5} height={15} rx={1} fill="#8A857C" />
           <Polygon points="74,12 84,15.5 74,19" fill="#E9D2A4" />
         </Svg>
-        <View style={{ position: 'absolute', left: 72, top: 12, width: 2.5, height: 15, borderRadius: 1, backgroundColor: '#8A857C' }} />
       </>
     );
   }
@@ -1167,14 +1168,15 @@ function CampaignWeekArt({ week }: { week: number }) {
   if (week === 9) {
     return (
       <>
+        {/* DOM order is pole L, flag L, pole R, flag R — flags on top */}
         <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
           <Path d="M28 70 L28 68 A 20 24 0 0 1 68 68 L68 70 Z" fill="#E0DFDA" />
           <Path d="M58 70 L58 66 A 22 28 0 0 1 102 66 L102 70 Z" fill="#D6D5D0" />
+          <Rect x={46} y={32} width={2.5} height={13} rx={1} fill="#8A857C" />
           <Polygon points="48,32 57,35 48,38" fill="#E9D2A4" />
+          <Rect x={78} y={26} width={2.5} height={13} rx={1} fill="#8A857C" />
           <Polygon points="80,26 89,29 80,32" fill="#E9D2A4" />
         </Svg>
-        <View style={{ position: 'absolute', left: 46, top: 32, width: 2.5, height: 13, borderRadius: 1, backgroundColor: '#8A857C' }} />
-        <View style={{ position: 'absolute', left: 78, top: 26, width: 2.5, height: 13, borderRadius: 1, backgroundColor: '#8A857C' }} />
       </>
     );
   }
@@ -1237,7 +1239,7 @@ export function CampaignWeekRow({ i }: { i: number }) {
   const w = CAMPAIGN_WEEKS[i];
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top: w.top, height: 96 }}>
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', borderRadius: 14, borderCurve: 'continuous', backgroundColor: '#F0EFE9', boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }}>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', borderRadius: 14, backgroundColor: '#F0EFE9', boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }}>
         {/* rgba(0,0,0,0.08) blurred 3px in the canvas */}
         <Wash stops={[['0%', 'rgb(0,0,0)', 0.08], ['100%', 'rgb(0,0,0)', 0]]} style={{ left: 38, top: 74, width: 52, height: 9 }} />
         <Wash

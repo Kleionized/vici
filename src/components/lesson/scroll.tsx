@@ -1,6 +1,6 @@
 import { useId, useState, type ReactNode } from 'react';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, ClipPath, Defs, Ellipse, LinearGradient as SvgLinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText, Grain, PressScale } from '@/components/ui';
@@ -334,6 +334,7 @@ export function LessonScroll({
   children: ReactNode;
 }) {
   const [height, setHeight] = useState(0);
+  const insets = useSafeAreaInsets();
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <Grain source={noiseDark} opacity={0.07} />
@@ -362,11 +363,24 @@ export function LessonScroll({
             <View style={{ width: `${Math.round(((index + 1) / count) * 100)}%`, height: 2, borderRadius: 1, backgroundColor: '#B4B1AB' }} />
           </View>
 
-          {/* the stack is centred in the canvas's whole 852, status bar and all,
-              so in app space it is centred on 372 rather than on the flow */}
+          {/* The stack is `inset:0` on the canvas's whole 852 — status bar and
+              home indicator included — so its centre is the screen's centre, not
+              the safe box's. Pinning it to the real insets keeps that true on
+              every device; pinning it to the literal 54 is only right when the
+              top inset is 54 and the bottom is 0. */}
           <View
             pointerEvents="box-none"
-            style={{ position: 'absolute', left: 0, right: 0, top: -54, height: height + 54, alignItems: 'center', justifyContent: 'center', gap, paddingHorizontal: 38 }}>
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: -insets.top,
+              height: height + insets.top + insets.bottom,
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap,
+              paddingHorizontal: 38,
+            }}>
             {children}
           </View>
 
