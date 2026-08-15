@@ -7,8 +7,9 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
 import { AppText, LoadingView, PressScale } from '@/components/ui';
-import { BedArt, type DayStep, DoorwayArt, LessonDome, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
+import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
+import { lessonForDay } from '@/content/curriculum84';
 import { buildScore } from '@/lib/score';
 import { colors, fonts, sans } from '@/lib/theme';
 
@@ -105,9 +106,15 @@ export default function Today() {
   // The day's one action. The night check-in names it and files it under the
   // day it is *for*, so by the time it reaches this card it is simply today's.
   // Until someone names one, the card carries the day's own step instead.
+  // A task the curriculum set for the day is the card's lesson-sourced state:
+  // it takes the lesson's own name and glyph and is set a step smaller. One
+  // named by hand in the night check-in stays the generic state.
+  const dayLesson = lessonForDay(day);
   const step: DayStep = todayCheckin?.dailyAction
     ? { when: 'Today', caption: todayCheckin.dailyAction, art: NoteArt }
-    : DAY_STEPS[(day - 1) % DAY_STEPS.length];
+    : dayLesson
+      ? { when: 'Today', caption: dayLesson.task.cardSummary, art: LessonNightArt, lesson: dayLesson.task.cardTitle }
+      : DAY_STEPS[(day - 1) % DAY_STEPS.length];
   const stepDone = todayCheckin?.dailyActionDone ?? false;
 
   return (

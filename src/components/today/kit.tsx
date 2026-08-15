@@ -91,12 +91,20 @@ export function ReadingsStrip({ mood, energy, moodWord, energyWord }: { mood: nu
 /* --------------------------------------------------------------- the task card */
 
 export type DayStep = {
-  /** When in the day it belongs — the card's small label. */
+  /** When in the day it belongs. Read out, not drawn — the card's label is
+   *  the constant `Today's task` unless the step came from a lesson. */
   when: string;
   /** The ask, as one plain sentence. */
   caption: string;
   /** The thing itself, drawn into the card's night. */
   art: (props: { id: string }) => React.ReactElement;
+  /**
+   * When the task came from a lesson, its title. `Today Home Task` labels the
+   * card with it, marks it with a bed rather than a crescent, and sets the
+   * sentence one step smaller — the whole card is a second state, not a
+   * different string in the same one.
+   */
+  lesson?: string;
 };
 
 /**
@@ -170,7 +178,6 @@ function TaskNight({ id, children }: { id: string; children: React.ReactNode }) 
       <Svg width="100%" height={124} viewBox="0 0 361 96" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
         <Path d="M-4,96 L-4,72 Q80,58 170,68 Q260,80 365,66 L365,96 Z" fill="#171B22" />
       </Svg>
-      <Glow id={`twarm${id}`} size={70} color="#E2BA78" opacity={0.2} stop={0.74} style={{ position: 'absolute', right: 40, top: 20 }} />
       {children}
     </View>
   );
@@ -201,11 +208,20 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
 
       <View style={{ position: 'absolute', left: 20, top: 142, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
-          <Crescent size={15} color="#F4F3F0" />
+          {step.lesson ? (
+            <Svg width={16} height={16} viewBox="0 0 20 20" fill="none">
+              <Path d="M3 15.5V6" stroke="#F4F3F0" strokeWidth={1.7} />
+              <Path d="M3 12.5h14M17 15.5v-5a2 2 0 0 0-2-2H8v4.5" stroke="#F4F3F0" strokeWidth={1.7} strokeLinejoin="round" />
+              <Circle cx={5.6} cy={8.9} r={1.5} fill="#F4F3F0" />
+            </Svg>
+          ) : (
+            <Crescent size={15} color="#F4F3F0" />
+          )}
         </View>
         {/* `Today Home II` labels the card with the constant, not the time of
-            day the step carries — `when` survives for the reading-out only. */}
-        <AppText style={[sans('600'), { fontSize: 13, color: colors.text }]}>Today&rsquo;s task</AppText>
+            day the step carries; `Today Home Task` labels it with the lesson
+            the task came from. `when` survives for the reading-out only. */}
+        <AppText style={[sans('600'), { fontSize: 13, color: colors.text }]}>{step.lesson ?? 'Today’s task'}</AppText>
       </View>
 
       {/* the check affordance — an empty ring until the step is behind you */}
@@ -229,9 +245,17 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         ) : null}
       </View>
 
-      <AppText style={[sans('600'), { position: 'absolute', left: 20, right: 24, top: 194, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
-        {step.caption}
-      </AppText>
+      {/* a lesson's sentence is longer, so the canvas sets it one step down and
+          drops the tracking with it */}
+      {step.lesson ? (
+        <AppText style={[sans('500'), { position: 'absolute', left: 20, right: 24, top: 190, fontSize: 15, lineHeight: 22, color: colors.text }]}>
+          {step.caption}
+        </AppText>
+      ) : (
+        <AppText style={[sans('600'), { position: 'absolute', left: 20, right: 24, top: 194, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
+          {step.caption}
+        </AppText>
+      )}
     </PressScale>
   );
 }
@@ -270,28 +294,61 @@ export function DoorwayArt({ id }: { id: string }) {
   );
 }
 
-/** Step: the phone, shut in the drawer. The one the canvas draws. */
+/**
+ * Step: the phone, shut in the drawer. The one the canvas draws.
+ *
+ * The warm glow belongs to this scene, not to the shared night — `Today Home
+ * Task` draws the same band with no glow at all.
+ */
 export function PhoneDownArt({ id }: { id: string }) {
   return (
-    <View style={{ position: 'absolute', right: 60, top: 26, width: 38, height: 52, borderRadius: 5, overflow: 'hidden' }}>
-      <Face id={id} width={38} height={52} />
-      <View style={{ position: 'absolute', left: 4, right: 4, top: 7, height: 14, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.10)' }} />
-      <View style={{ position: 'absolute', left: 4, right: 4, top: 24, height: 14, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.06)' }} />
-      <View style={{ position: 'absolute', left: 14, top: 12, width: 10, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(244,243,240,0.35)' }} />
+    <>
+      <Glow id={`twarm${id}`} size={70} color="#E2BA78" opacity={0.2} stop={0.74} style={{ position: 'absolute', right: 40, top: 20 }} />
+      <View style={{ position: 'absolute', right: 60, top: 26, width: 38, height: 52, borderRadius: 5, overflow: 'hidden' }}>
+        <Face id={id} width={38} height={52} />
+        <View style={{ position: 'absolute', left: 4, right: 4, top: 7, height: 14, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.10)' }} />
+        <View style={{ position: 'absolute', left: 4, right: 4, top: 24, height: 14, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.06)' }} />
+        <View style={{ position: 'absolute', left: 14, top: 12, width: 10, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(244,243,240,0.35)' }} />
+        <View
+          style={{
+            position: 'absolute',
+            left: 8,
+            top: 5,
+            width: 9,
+            height: 17,
+            borderRadius: 2,
+            backgroundColor: '#0E1116',
+            boxShadow: 'inset 0 0 0 1px rgba(244,243,240,0.22)',
+            transform: [{ rotate: '-14deg' }],
+          }}
+        />
+      </View>
+    </>
+  );
+}
+
+/**
+ * `Today Home Task` · the room a lesson's task is set in — the bed, the shelf
+ * across from it, the phone standing on the shelf, and the seal on the promise.
+ * No warm glow: this band goes straight from the ridge to the scene.
+ */
+export function LessonNightArt() {
+  return (
+    <>
+      <View style={{ position: 'absolute', left: 96, top: 62, width: 7, height: 38, borderRadius: 2.5, backgroundColor: '#2C3844' }} />
+      <View style={{ position: 'absolute', left: 101, top: 80, width: 64, height: 17, borderRadius: 5, backgroundColor: '#394656' }} />
+      <View style={{ position: 'absolute', left: 106, top: 73, width: 22, height: 9, borderRadius: 4, backgroundColor: '#55677C' }} />
+      <View style={{ position: 'absolute', left: 158, top: 90, width: 5, height: 10, borderRadius: 2, backgroundColor: '#26303C' }} />
+      <View style={{ position: 'absolute', right: 64, top: 66, width: 42, height: 8, borderRadius: 3, backgroundColor: '#2C3844' }} />
+      <View style={{ position: 'absolute', right: 81, top: 74, width: 7, height: 28, borderRadius: 2, backgroundColor: '#26303C' }} />
+      <View style={{ position: 'absolute', right: 76, top: 42, width: 13, height: 22, borderRadius: 3, backgroundColor: '#DCE3EA' }} />
       <View
-        style={{
-          position: 'absolute',
-          left: 8,
-          top: 5,
-          width: 9,
-          height: 17,
-          borderRadius: 2,
-          backgroundColor: '#0E1116',
-          boxShadow: 'inset 0 0 0 1px rgba(244,243,240,0.22)',
-          transform: [{ rotate: '-14deg' }],
-        }}
-      />
-    </View>
+        style={{ position: 'absolute', right: 60, top: 34, width: 17, height: 17, borderRadius: 8.5, backgroundColor: '#E9D2A4', alignItems: 'center', justifyContent: 'center' }}>
+        <Svg width={9} height={8} viewBox="0 0 9 8" fill="none">
+          <Path d="M1.5 4l2 2 4-4.5" stroke="#131313" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
+        </Svg>
+      </View>
+    </>
   );
 }
 

@@ -435,3 +435,14 @@ names the ambiguity, the reading chosen, and why.
   flat. The CSS is unambiguous (`rotate(84deg)` about a 52 × 30 box's centre)
   and the frame is internally consistent, so it is built as drawn. The name
   `toppled` is the app's, not the canvas's.
+
+- **D-037 · The task card has two genuine states, and the warm glow belongs to
+  one of them.** `Today Home II` and `Today Home Task` differ in the label text,
+  the well glyph, the caption's size, weight, leading and top, *and* the whole
+  night scene — all together, which is what makes them two states rather than
+  one card with a different string. State B is a task that came from a lesson:
+  it takes the lesson's title and a bed glyph, and its sentence is set 15/500/22
+  with no tracking because it is longer.
+  `Today Home Task` also draws **no** warm glow, which proves the
+  `right:40 top:20` `#E2BA78` disc belongs to the phone art rather than to the
+  shared `TaskNight` band. It moved.

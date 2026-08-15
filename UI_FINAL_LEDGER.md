@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 144 · SPEC_EXTRACTED: 56
+**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 145 · SPEC_EXTRACTED: 55
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -142,7 +142,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Score Detail Moves | src/app/score.tsx | NOT_STARTED | — | 20B · Score Detail — What Moved It |
 | Email Login | Score Detail Ranks | src/app/score.tsx | NOT_STARTED | — | 20C · Score Detail — Ranks |
 | Email Login | Today Home II | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today &mdash; p2 |
-| Email Login | Today Home Task | src/app/(app)/today.tsx | SPEC_EXTRACTED | 2026-08-15 | 21p2B · Today — Task summary |
+| Email Login | Today Home Task | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21p2B · Today — Task summary |
 | Email Login | Today Home III | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 &middot; Today &mdash; p3 |
 | Email Login | Sentence Journal | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
 | Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
