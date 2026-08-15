@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 575 · SPEC_EXTRACTED: 77 · IMPLEMENTED: 125
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 74 · IMPLEMENTED: 126
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -58,14 +58,14 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Urge Log Outcome | src/app/urge-log.tsx | NOT_STARTED | — | 91F · Urge Log — Outcome |
 | Email Login | Urge Log When | src/app/urge-log.tsx | NOT_STARTED | — | 91G · Urge Log — When |
 | Email Login | Urge Log Done | src/app/urge-log.tsx | NOT_STARTED | — | 91H · Urge Log — Logged |
-| Email Login | Settings | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 92 · Settings |
+| Email Login | Settings | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92 · Settings |
 | Email Login | Edit Profile | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93 · Edit Profile |
 | Email Login | Sheet Profile Photo | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93B &middot; Profile photo sheet |
 | Email Login | Sheet Edit Name | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93C &middot; Edit name sheet |
 | Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 93D &middot; Weekly report |
 | Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 92B &middot; Night check-in time |
-| Email Login | Your Vow Page | src/app/vow.tsx | SPEC_EXTRACTED | 2026-08-15 | 92C &middot; Your vow |
-| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 92D &middot; Sign out sheet |
+| Email Login | Your Vow Page | src/app/vow.tsx | IMPLEMENTED | 2026-08-15 | 92C &middot; Your vow |
+| Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92D &middot; Sign out sheet |
 | Email Login | Data Privacy | src/app/privacy.tsx | NOT_STARTED | — | 94 · Data &amp; Privacy |
 | Email Login | App Lock | src/app/applock.tsx | NOT_STARTED | — | 95 · App Lock |
 | Email Login | Splash | src/app/index.tsx | NOT_STARTED | — | 01 · Splash |
@@ -680,7 +680,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Hue Picker | — | IMPLEMENTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -767,7 +767,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Hue Picker | — | IMPLEMENTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |

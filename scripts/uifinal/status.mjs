@@ -17,6 +17,9 @@ if (!VALID.includes(status)) {
 }
 
 const lines = fs.readFileSync('UI_FINAL_LEDGER.md', 'utf8').split('\n');
+// The superseded VICI bundles repeat many labels ("Settings", "Campaign Map",
+// "Cue Hue Picker"…), so a bare label match would mark them too.
+const SUPERSEDED = new Set(['VICI (previous)', 'vici-prev']);
 const useRegex = rest[0] === '--match';
 const re = useRegex ? new RegExp(rest[1]) : null;
 const labels = useRegex ? null : new Set(rest);
@@ -25,6 +28,7 @@ let n = 0;
 const out = lines.map((line) => {
   if (!line.startsWith('| ') || line.startsWith('| Bundle') || line.startsWith('| ---')) return line;
   const cells = line.split('|');
+  if (SUPERSEDED.has(cells[1].trim())) return line;
   const label = cells[2].trim();
   const hit = useRegex ? re.test(label) : labels.has(label);
   if (!hit) return line;

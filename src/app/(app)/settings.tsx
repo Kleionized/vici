@@ -1,28 +1,29 @@
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import type { ReactNode } from 'react';
-import { ScrollView, View, type ViewStyle } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, ChevronGlyph, LoadingView, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, ChevronGlyph, LoadingView, PressScale } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
-import { useCurrentUser, useUpdateSettings } from '@/lib/backend';
+import { useCurrentUser } from '@/lib/backend';
 import { formatTime, useRoutines } from '@/lib/routines';
 import { colors, sans } from '@/lib/theme';
 
 /**
- * 039 · Settings — a left-set title with a plain "Done", then captioned groups
- * of flat paper cards. No icon chips: the canvas list is a sentence and a
- * chevron, nothing more.
+ * 92 · Settings — a back row, a left-set title, then four captioned groups of
+ * flat paper cards. No icon chips: the canvas list is a sentence and a chevron,
+ * nothing more.
  *
  * Geometry is the canvas's 393 × 852 frame with the 54px status bar taken off:
- * the title sits at y 16, the first caption at 80, every caption stands exactly
- * 26 above its card, and the cards run 12 in from both edges.
+ * back at 10, title at 60, the first caption at 104, every caption exactly 26
+ * above its card, and the cards 12 in from both edges. Row height is per group,
+ * not global — 52 / 48 / 50 / 46 — and the gap between groups is 21, except the
+ * 20 the canvas leaves between Anchors and Privacy.
  *
- * The canvas draws four groups; the app has more places to go than the frame
- * shows, so Check-ins, Security and Plan follow the Anchors card in the same
- * idiom — dropping them would strand /applock, /privacy and /subscription.
+ * `UI Final` cut the seven groups the previous canvas drew down to four. See
+ * DECISIONS D-024 for what that strands and what was kept anyway.
  */
 
 const noiseDark = require('../../../assets/images/noise-dark.png');
@@ -31,13 +32,13 @@ const HAIRLINE = 'rgba(0,0,0,0.06)';
 
 export default function Settings() {
   const router = useRouter();
-  const { email, displayName, signOut } = useAuth();
+  const { email, signOut } = useAuth();
   const user = useCurrentUser();
-  const updateSettings = useUpdateSettings();
   const routines = useRoutines();
   // Settings is a Tabs.Screen, so the bar floats over it: the scroll has to be
   // able to clear the last card of it rather than ending underneath.
   const tabBar = useTabBarHeight();
+  const [signOutOpen, setSignOutOpen] = useState(false);
 
   const done = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
@@ -49,108 +50,114 @@ export default function Settings() {
     );
   }
 
-  const name = displayName || user?.displayName || 'You';
-  const premium = !!user?.settings.premium;
-  const showStreak = !!user?.settings.showStreak;
-
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        {/* the title box is 80 tall so the first caption opens the scroll at y 80 */}
-        <View style={{ height: 80 }}>
-          <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 16, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Settings</AppText>
+        {/* canvas 64 and 114 — the header block runs to the first caption at 104 */}
+        <View style={{ height: 104 }}>
           <PressScale
             onPress={done}
             accessibilityRole="button"
-            accessibilityLabel="Done"
-            hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-            style={{ position: 'absolute', right: 16, top: 24, minHeight: 0 }}>
-            <AppText style={[sans('400'), { fontSize: 17, color: '#3A3934' }]}>Done</AppText>
+            accessibilityLabel="Back"
+            hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
+            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <BackGlyph color="#55534E" />
+            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
           </PressScale>
+          <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Settings</AppText>
         </View>
 
         <ScrollView contentInsetAdjustmentBehavior="never" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: tabBar }}>
-          <Section header="Progress">
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 16, paddingHorizontal: 18 }}>
-              <AppText style={[sans('500'), { flex: 1, fontSize: 16, color: '#1D1C1A' }]}>{'Show a "days since" number'}</AppText>
-              <PressScale
-                onPress={() => void updateSettings({ showStreak: !showStreak })}
-                accessibilityRole="switch"
-                accessibilityLabel="Show a days since number"
-                accessibilityState={{ checked: showStreak }}
-                hitSlop={{ top: 14, bottom: 14, left: 14, right: 14 }}
-                style={{ minHeight: 0 }}>
-                <Toggle on={showStreak} />
-              </PressScale>
-            </View>
+          <Section header="Reminders">
+            <Row height={52} title="Morning check-in" pill={formatTime(routines.morning)} onPress={() => router.push('/routines/morning-time')} />
+            <Divider />
+            <Row height={52} title="Night check-in" pill={formatTime(routines.night)} onPress={() => router.push('/routines/night-time')} />
           </Section>
 
-          <Section header="Daily reminder">
+          <Section header="Anchors">
+            <Row height={48} title="Your vow" onPress={() => router.push('/vow')} />
+            <Divider />
+            <Row height={48} title="Your letter" detail="Opens Week XII" onPress={() => router.push('/letter?variant=week12')} />
+            <Divider />
+            <Row height={48} title="Weekly reports" detail="Every Sunday" onPress={() => router.push('/weekly-report')} />
+          </Section>
+
+          {/* the canvas leaves 20 here, not the 21 it leaves elsewhere */}
+          <Section header="Privacy" gap={20}>
+            <Row height={50} title="App lock" detail="Face ID" onPress={() => router.push('/applock')} />
+            <Divider />
+            <Row height={50} title="Data & privacy" onPress={() => router.push('/privacy')} />
+            <Divider />
+            {/* Not on the canvas. Hard product invariant #5 requires a standing
+                route to crisis help and UI Final draws none anywhere, so the
+                row stays rather than stranding /support (DECISIONS D-024). */}
+            <Row height={50} title="Find support" onPress={() => router.push('/(app)/support')} />
+          </Section>
+
+          <Section header="Account" gap={0}>
+            <Row height={46} title="Edit profile" onPress={() => router.push('/profile')} />
+            <Divider />
+            <Row height={46} title="Manage subscription" onPress={() => router.push('/subscription')} />
+            <Divider />
+            {/* 44 tall, no background and no ring — a text link, not a pill */}
             <PressScale
-              onPress={() => router.push('/reminders')}
+              onPress={() => setSignOutOpen(true)}
               accessibilityRole="button"
-              style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 16, paddingHorizontal: 18 }}>
-              <AppText style={[sans('500'), { flex: 1, fontSize: 16, color: '#1D1C1A' }]}>Reminder time</AppText>
-              <View style={{ height: 32, borderRadius: 16, backgroundColor: '#EDECE7', paddingHorizontal: 14, justifyContent: 'center' }}>
-                <AppText style={[sans('600'), { fontSize: 15, color: '#1D1C1A' }]}>{user?.settings.reminderTime || 'Off'}</AppText>
-              </View>
-            </PressScale>
-          </Section>
-
-          <Section header="Anchors" card={{ paddingVertical: 4 }}>
-            <Row title="Edit your Life Map" onPress={() => router.push('/lifemap')} />
-            <Divider />
-            <Row title="Find support" onPress={() => router.push('/(app)/support')} />
-            <Divider />
-            <Row title="Medallions" onPress={() => router.push('/milestones')} />
-            <Divider />
-            <Row title="Open urge surf with a Back Tap" onPress={() => router.push('/backtap')} />
-          </Section>
-
-          <Section header="Check-ins" card={{ paddingVertical: 4 }}>
-            <Row title="Morning check-in" detail={formatTime(routines.morning)} onPress={() => router.push('/routines/morning-time')} />
-            <Divider />
-            <Row title="Nightly check-in" detail={formatTime(routines.night)} onPress={() => router.push('/routines/night-time')} />
-          </Section>
-
-          <Section header="Security & privacy" card={{ paddingVertical: 4 }}>
-            <Row title="App lock · Face ID" onPress={() => router.push('/applock')} />
-            <Divider />
-            <Row title="Data & privacy" onPress={() => router.push('/privacy')} />
-          </Section>
-
-          {/* the canvas measures 28 between the last card and the Account caption */}
-          <Section header="Plan" gap={28} card={{ paddingVertical: 4 }}>
-            {premium ? (
-              <Row title="Manage subscription" detail="VICI Plus" onPress={() => router.push('/subscription')} />
-            ) : (
-              <>
-                <Row title="Go premium" detail="VICI Plus" onPress={() => router.push('/paywall')} />
-                <Divider />
-                <Row title="Manage subscription" onPress={() => router.push('/subscription')} />
-              </>
-            )}
-          </Section>
-
-          <Section header="Account" gap={0} card={{ paddingTop: 6, paddingBottom: 14, paddingHorizontal: 18 }}>
-            <AccountLine label="Name" value={name} onPress={() => router.push('/profile')} />
-            {/* the record's hairline runs the padded width, not the card's */}
-            <View style={{ height: 1, backgroundColor: HAIRLINE }} />
-            <AccountLine label="Email" value={email ?? 'On this device'} />
-            <PressScale
-              onPress={async () => {
-                await signOut();
-                router.replace('/');
-              }}
-              accessibilityRole="button"
-              hitSlop={{ top: 8, bottom: 8, left: 0, right: 0 }}
-              style={{ minHeight: 0, marginTop: 8, height: 42, borderRadius: 21, backgroundColor: '#F4F3F0', boxShadow: '0 0 0 1.5px rgba(0,0,0,0.2)', alignItems: 'center', justifyContent: 'center' }}>
-              <AppText style={[sans('600'), { fontSize: 15, color: '#55534E' }]}>Sign out</AppText>
+              style={{ height: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
+              <AppText style={[sans('600'), { fontSize: 15.5, color: '#8B8882' }]}>Sign out</AppText>
             </PressScale>
           </Section>
         </ScrollView>
+      </SafeAreaView>
+
+      <SignOutSheet
+        open={signOutOpen}
+        email={email ?? 'this device'}
+        onCancel={() => setSignOutOpen(false)}
+        onSignOut={async () => {
+          setSignOutOpen(false);
+          await signOut();
+          router.replace('/');
+        }}
+      />
+    </View>
+  );
+}
+
+/**
+ * 92D · the sign-out sheet. Only the ink pill signs out; the grey line under it
+ * and the scrim both just close.
+ */
+function SignOutSheet({ open, email, onCancel, onSignOut }: { open: boolean; email: string; onCancel: () => void; onSignOut: () => void }) {
+  if (!open) return null;
+  return (
+    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'flex-end' }}>
+      <PressScale
+        onPress={onCancel}
+        accessibilityRole="button"
+        accessibilityLabel="Dismiss"
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, minHeight: 0, backgroundColor: 'rgba(19,19,19,0.45)' }}>
+        <View />
+      </PressScale>
+      <SafeAreaView edges={['bottom']} style={{ backgroundColor: '#F4F3F0', borderTopLeftRadius: 24, borderTopRightRadius: 24, boxShadow: '0 -12px 40px rgba(19,19,19,0.3)' }}>
+        <View style={{ paddingTop: 10, paddingHorizontal: 20, paddingBottom: 30 }}>
+          <View style={{ alignSelf: 'center', width: 36, height: 5, borderRadius: 3, backgroundColor: 'rgba(19,19,19,0.15)' }} />
+          <AppText center style={[sans('600'), { marginTop: 18, fontSize: 17, color: '#1D1C1A' }]}>Sign out?</AppText>
+          <AppText center style={[sans('400'), { marginTop: 8, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
+            {`You are signed in as ${email}. Your progress stays on the account — signing back in brings it all back.`}
+          </AppText>
+          <PressScale
+            onPress={onSignOut}
+            accessibilityRole="button"
+            style={{ marginTop: 20, height: 54, minHeight: 54, borderRadius: 27, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
+            <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>Sign out</AppText>
+          </PressScale>
+          <PressScale onPress={onCancel} accessibilityRole="button" style={{ marginTop: 14, minHeight: 0, alignItems: 'center' }}>
+            <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Stay signed in</AppText>
+          </PressScale>
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -160,24 +167,38 @@ export default function Settings() {
  * A captioned group. The caption box is exactly 26 tall, which is the canvas's
  * caption-top to card-top distance, so the card needs no margin of its own.
  */
-function Section({ header, gap = 36, card, children }: { header: string; gap?: number; card?: ViewStyle; children: ReactNode }) {
+function Section({ header, gap = 21, children }: { header: string; gap?: number; children: ReactNode }) {
   return (
     <View style={{ marginBottom: gap }}>
       <View style={{ height: 26, paddingHorizontal: 16 }}>
         <AppText style={[sans('600'), { fontSize: 13, color: '#55534E' }]}>{header}</AppText>
       </View>
-      <View style={[{ marginHorizontal: 12, borderRadius: 16, backgroundColor: '#FFFFFF' }, card]}>{children}</View>
+      <View style={{ marginHorizontal: 12, borderRadius: 16, borderCurve: 'continuous', backgroundColor: '#FFFFFF', paddingVertical: 4 }}>{children}</View>
     </View>
   );
 }
 
-/** A list row — 52 tall on this screen, with the value set small and soft. */
-function Row({ title, detail, onPress }: { title: string; detail?: string; onPress?: () => void }) {
+/**
+ * A list row. The canvas gives each group its own height — 52 for the check-in
+ * rows, 48 for the anchors, 50 for privacy, 46 for the account — so it is a
+ * prop rather than a constant. `pill` is the inset time chip the two check-in
+ * rows carry; `detail` is the plain grey line the others use.
+ */
+function Row({ height, title, detail, pill, onPress }: { height: number; title: string; detail?: string; pill?: string; onPress?: () => void }) {
   return (
-    <PressScale onPress={onPress} disabled={!onPress} accessibilityRole={onPress ? 'button' : undefined} style={{ height: 52, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18 }}>
+    <PressScale
+      onPress={onPress}
+      disabled={!onPress}
+      accessibilityRole={onPress ? 'button' : undefined}
+      style={{ height, minHeight: height, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18 }}>
       <AppText style={[sans('500'), { flex: 1, fontSize: 16, color: '#1D1C1A' }]}>{title}</AppText>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        {detail ? <AppText style={[sans('400'), { fontSize: 14, color: '#8B8882' }]}>{detail}</AppText> : null}
+        {pill ? (
+          <View style={{ height: 32, borderRadius: 16, backgroundColor: '#EDECE7', paddingHorizontal: 14, justifyContent: 'center' }}>
+            <AppText style={[sans('600'), { fontSize: 15, color: '#1D1C1A' }]}>{pill}</AppText>
+          </View>
+        ) : null}
+        {detail ? <AppText style={[sans('400'), { fontSize: 13, color: '#8B8882' }]}>{detail}</AppText> : null}
         <ChevronGlyph color="#B0AEA8" />
       </View>
     </PressScale>
@@ -189,26 +210,3 @@ function Divider() {
   return <View style={{ height: 1, marginHorizontal: 18, backgroundColor: HAIRLINE }} />;
 }
 
-/** The pill switch: 44 × 26 with a 20px knob inset 3 (canvas). */
-function Toggle({ on }: { on: boolean }) {
-  return (
-    <View style={{ width: 44, height: 26, borderRadius: 13, backgroundColor: on ? '#131313' : colors.borderStrong }}>
-      {/* the canvas never draws the off state — it borrows the app's resting track */}
-      <View style={{ position: 'absolute', top: 3, left: on ? undefined : 3, right: on ? 3 : undefined, width: 20, height: 20, borderRadius: 10, backgroundColor: on ? '#ffffff' : '#F2F2EE' }} />
-    </View>
-  );
-}
-
-/** Account reads as a record rather than a list: a label, its value, no chevron. */
-function AccountLine({ label, value, onPress }: { label: string; value: string; onPress?: () => void }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      disabled={!onPress}
-      accessibilityRole={onPress ? 'button' : undefined}
-      style={{ height: 40, minHeight: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-      <AppText style={[sans('400'), { fontSize: 15, color: '#55534E' }]}>{label}</AppText>
-      <AppText style={[sans('600'), { flexShrink: 1, fontSize: 15, color: '#1D1C1A' }]}>{value}</AppText>
-    </PressScale>
-  );
-}

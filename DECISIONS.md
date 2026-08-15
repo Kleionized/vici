@@ -313,3 +313,31 @@ names the ambiguity, the reading chosen, and why.
   (`BreatheStage`, `TapStage`, `OddStage`, `WaveStage`, `SosSettingsSheet`), and
   a design that stops drawing a screen is not the same as a decision to delete
   it. Flagged in `REPORT.md` for a human call rather than removed unattended.
+
+## Settings
+
+- **D-024 · `UI Final` cuts Settings from seven groups to four, and that strands
+  four destinations.** The frame draws Reminders / Anchors / Privacy / Account
+  and nothing else. Gone from the screen: the `Show a "days since" number`
+  toggle, `Edit your Life Map`, `Find support`, `Medallions`, `Open urge surf
+  with a Back Tap`, and `Go premium`.
+  - `Medallions` and the life map are reachable from `Edit profile`, whose own
+    frame (93) draws a Medallions card and a Journey card.
+  - `Go premium` is reachable from the paywall flow.
+  - **`Find support` was kept anyway**, as a third row in Privacy. This project
+    declares a hard product invariant — "a persistent route to crisis/professional
+    help exists" (`DECISIONS.md`, invariant #5) — and `UI Final` draws no route
+    to `/support` on any of its 777 frames. A design that stops drawing a link
+    is not a decision to break a declared invariant, and the brief makes the app
+    the authority on behaviour. Marked in the source as the one deliberate
+    addition to this screen.
+  - `/backtap` and the streak toggle are now **unlinked**. Both routes still
+    exist and still work; nothing in the bundle points at them. Flagged in
+    `REPORT.md` for a human call rather than deleted.
+
+- **D-025 · `Your vow` gets a route.** `Settings`'s Anchors card points at a vow
+  page and `Your Vow Page` (92C) draws it, so `src/app/vow.tsx` is new. It reads
+  a journal entry tagged `Vow`, falling back to the most recent `Pledge`, and
+  falls back again to the canvas's own line when neither exists — the canvas
+  draws a signed state and states no empty one, so its line is the placeholder
+  rather than invented copy.
