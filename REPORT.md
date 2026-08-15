@@ -19,10 +19,17 @@
 | --- | --- | --- |
 | `IMPLEMENTED` | 449 | Built against the canvas, typechecked, linted, bundled, committed |
 | `DONE` | 199 | Verified superseded or duplicate **on evidence**, not on disposition |
-| `NOT_STARTED` | 129 | The frames the design did not change; audit in progress |
+| `PASS_1` | 129 | Audited against the app property by property; findings applied |
 
-**Every screen the design draws has been built.** What remains is verification,
-not implementation.
+**Every frame in the bundle has been either built or audited.** Nothing is
+`NOT_STARTED`.
+
+What has *not* happened: passes 2 and 3. `PASS_1` is the property audit, and it
+ran on the 129 frames the design left unchanged — the set that most needed it,
+because nobody had re-checked them against the app. The 449 `IMPLEMENTED` rows
+were each built with the design file and the app file open together, but they
+have not had a separate second-reader audit, and the coverage and fresh-eyes
+sweeps have not run. No row is therefore marked `DONE` on implementation.
 
 The 199 `DONE` rows are the frames that are not screens, and each was proved
 rather than assumed:
@@ -253,62 +260,82 @@ Full text in `DECISIONS.md`. Summary:
 
 ---
 
-## 6. What was not implemented, and why
+## 6. The unchanged-frame audit
 
-Stated plainly, in descending order of importance.
+The 129 frames the design did not touch were the run's biggest risk: unchanged
+in the *design* says nothing about the *app*, and nobody had re-checked them.
+Sixteen audits ran over them, one per screen family, each reading every frame in
+full and every target file in full, and writing a row per (element, property).
 
-0. **One known stub, named:** the profile photo sheet's three actions
-   (`Take photo`, `Choose from library`, `Remove photo`) are drawn to the frame
-   and each dismisses the sheet, but none picks an image. That needs a
-   camera/library permission flow and an upload path, neither of which exists in
-   the app or is drawn in the bundle (D-028).
-1. **The 126 unchanged `Email Login` frames were not re-verified against the app.**
-   They are byte-identical to the bundle the app was last built against, which
-   makes it *likely* they still match — but the brief is explicit that likely is
-   not a finding, and no comparison table was written for them. This is the
-   single largest gap in the run.
-2. **The new lesson reader (26 frames) is specced but not built.** Three spec
-   files cover it in full, including a 902-line artwork spec measured in headless
-   Chrome. The work is a wholesale replacement of the reader's page grammar — the
-   design deletes the CTA pill from 24 of 26 frames, changes progress from a dot
-   rail to a 2px hairline, moves every page from top-anchored to flex-centred,
-   and raises the whole type ramp. Five drawings have no app equivalent.
-3. **The 249 task frames (`Task DNN Intro/Options/Card`) are not built.** The
-   copy is extracted and generated into `src/content/curriculum84.ts`, and
-   `scripts/uifinal/gen-task-scenes.mjs` extracts all 83 scenes (1,571 layers) to
-   `.uifinal/extract/task-scenes.json`, but the scenes contain nested `<svg>`
-   subtrees, `conic-gradient` and CSS `mask` constructs that the week-scene
-   renderer does not yet handle, and the three boards were not written.
-4. **The dark SOS block is orphaned but was left in place.** `Urge SOS Breathe`,
-   `SOS Number Tap`, `SOS Odd One Out` and `SOS Settings` are all in the removed
-   list and the canvas now runs Step III straight into "The Wave Passed". That
-   is ~750 lines of working behaviour, and a design that stops drawing a screen
-   is not a decision to delete it (D-023) — a human call.
-   Two routes are likewise now unlinked by the Settings recut: `/backtap` and
-   the `Show a "days since"` toggle (D-024).
-5. **The three verification passes did not run.** No row reached `PASS_1`, and
-   therefore none reached `DONE`. The 120 `IMPLEMENTED` rows were each built with
-   the design file and the app file open together and verified by typecheck, lint
-   and a web bundle, but they have not had the separate property audit, coverage
-   audit and fresh-eyes audit the brief specifies.
-6. **The final straggler scan did not run.** One orphan was found and removed in
-   passing (`DayActionArt`); no systematic sweep for dead style objects, orphaned
-   components or unused assets was done. `src/components/ChallengeSheet.tsx` was
-   reported by a spec agent as orphaned in HEAD and matching no frame in the
-   bundle — worth checking first in any follow-up.
+**~6,000 comparison rows.** Findings that were real — not a CSS feature RN
+cannot express — and what happened to each:
 
-**Verification method used, and its limit.** Every commit was gated on
-`tsc --noEmit` (clean throughout), `expo lint` (held at the 24-error pre-existing
-baseline, never above it) and `expo export --platform web` (successful). No
-screenshot comparison was run: the project's own history records that a static
-`<Svg>` paints *under* its absolutely-positioned siblings on web while being
-correct on device, so a web screenshot is not evidence about the device, and a
-rect-based layout check cannot see art that has gone missing. Device screenshots
-were not available in this run.
+| # | Finding | Status |
+| --- | --- | --- |
+| 1 | **The paper grain was stretched, not tiled.** The canvas repeats a 96 × 96 tile; the app blew one tile up to fill the box with `contentFit="cover"` — ~9× on a full screen. Found on 14 frames before it turned out to be the same call in **48 places**. | **Fixed** — a shared `Grain` using RN's own `resizeMode="repeat"`, which `expo-image` has no equivalent for |
+| 2 | **`Urge Overview Mood` never rendered.** It counted four booleans nothing in the app ever wrote. | **Fixed** — it reads the feeling `SOS Feeling Picker` now records |
+| 3 | **"Where they showed up" never rendered.** It read `precedingState.location` and `note`, neither ever written, while the place sat in `trigger`. | **Fixed** — the place goes to `precedingState.location` |
+| 4 | **`Common triggers` was being polluted** with place, feeling and reason labels, truncated in an 88px column. Caused by this run's own D-022. | **Fixed** — D-022 corrected; see §4 |
+| 5 | The trigger chip read `Tired`; canvas 037 reads `Tiredness`. | **Fixed** |
+| 6 | `Detail Silver`'s glow was `#969DA6`; the canvas says `rgba(150,160,172,0.30)` = `#96A0AC`. | **Fixed** |
+| 7 | The phone trigger glyph hardcoded its screen to `#F1EFE9`, so a selected tile showed a cream screen on ink. | **Fixed** — the cut-out takes the disc's colour |
+| 8 | `reminders.tsx` curled an apostrophe the frame writes straight. | **Fixed** |
+| 9 | `sign-in.tsx` set `returnKeyType="next"`; `Login Typing` draws `done`. | **Fixed** |
+| 10 | The late-night crescent was missing `fill-rule="evenodd"`. | **Fixed** |
+| 11 | `Urge Log Done`'s value carried a right alignment and a 2-line clamp the canvas does not declare. | **Fixed** |
+| 12 | `Story Tracks` title tracked `-0.1`; the canvas says `-0.3`. | **Fixed** |
+| 13 | `Story Detail`'s cover art was pinned to `width / 2 - 120` = 76.5; the canvas says a literal 76. | **Fixed** |
+| 14 | **`log.tsx` may pad its scroll by the tab bar's height twice** — 97pt of dead scroll on five screens, if the bar is a sibling rather than an overlay. | **Left open** — cannot verify without a device, and being wrong hides the last row *behind* the bar |
+| 15 | `Log Check-ins` rows draw `Today · 8:44 am`; the app draws `Today`. | **Left open** — needs a `loggedAt` field the design does not otherwise ask for |
+| 16 | `Urge Log When` draws its time wheel at rest; the app opens it on a tap. | **Left open** — the step's behaviour is the app's (rule 5) |
+| 17 | Four lapse-flow strings in the canvas are urge-flow carry-overs (`Log the urge` on a lapse screen, `Rode it out` under `Lapse logged.`). | **Not adopted** — each contradicts its own frame; the audit recommends fixing the canvas |
+| 18 | `CampaignGrounds` draws correctly and is reachable from nowhere. | **Left open** — a wiring gap, not a drawing one |
+| 19 | The tab bar has four tabs where the canvas draws three, on even quarters rather than 70 / 196 / 318. | **Left as-is** — a deliberate divergence already documented in the file's own header; `All` is the only door to several screens |
+
+Nine of the nineteen findings sat in screens nobody would have thought to look
+at, which is the argument for the audit having run at all.
 
 ---
 
-## 7. Tooling left behind
+## 7. What the run did not do
+
+1. **Passes 2 and 3 did not run.** No row is marked `DONE` on implementation.
+   The 449 built rows were each transcribed with the design file and the app
+   file open together and gated on typecheck, lint and a web bundle, but they
+   have not had a second reader's property audit, a coverage re-walk, or the
+   fresh-eyes sweep.
+2. **One stub, named:** the profile photo sheet's three actions are drawn to the
+   frame and each dismisses the sheet; none picks an image. That needs a
+   camera/library permission flow and an upload path, neither of which exists in
+   the app or is drawn in the bundle (D-028).
+3. **Three audit findings left open**, each with its reason: §6 rows 14–16.
+4. **The dark SOS block is orphaned but was left in place.** `Urge SOS Breathe`,
+   `SOS Number Tap`, `SOS Odd One Out` and `SOS Settings` are all in the removed
+   list and the canvas now runs Step III straight into "The Wave Passed" — but
+   that is ~750 lines of working behaviour, and a design that stops drawing a
+   screen is not a decision to delete it (D-023).
+5. **Two routes are unlinked by the Settings recut:** `/backtap` and the
+   `Show a "days since"` toggle (D-024). Both still work; nothing points at them.
+6. **`ChallengeSheet.tsx` is orphaned** — nothing imports it and no frame draws
+   it, but the commit immediately before this run was still editing it, so it is
+   recent work rather than dead code (D-048).
+7. **Eighteen image assets are unreferenced and none was deleted** (D-049).
+   Most went unreferenced because their art was redrawn as SVG, and the bundle's
+   own `uploads/` still ships several of them.
+
+**Verification method, and its limit.** Every commit was gated on
+`tsc --noEmit` (clean throughout), `expo lint` (held at the pre-existing
+24-error baseline, never above it) and `expo export --platform web`
+(successful). **No screenshot comparison was run.** This project's own history
+records that a static `<Svg>` paints *under* its absolutely-positioned siblings
+on web while being correct on device, so a web screenshot is not evidence about
+the device, and a rect-based layout check cannot see art that has gone missing.
+Device screenshots were not available in this run. Finding 14 in §6 is the one
+place where that limit changed a decision.
+
+---
+
+## 8. Tooling left behind
 
 Reusable, and the reason each exists:
 
@@ -328,7 +355,7 @@ Reusable, and the reason each exists:
 
 ---
 
-## 8. The full `UI Final` file list
+## 9. The full `UI Final` file list
 
 288 files, and the arithmetic closes: **20 opened (✓) + 268 inventoried by path
 (○) = 288**. ✓ = opened and read during this run. ○ = inventoried by path and
@@ -376,18 +403,19 @@ its own status; §1 is the count.
 
 ---
 
-## 9. If this run is picked up again
+## 10. If this run is picked up again
 
 In this order:
 
-1. Run the property audit over the 126 unchanged frames — that is the known gap,
-   and `diff.mjs` already proves the *design* did not move, so the work is
-   entirely design-vs-app.
-2. Build the twelve specced-but-unbuilt families. The specs carry the numbers;
-   no further analysis is needed.
-3. Build the lesson reader from `specs/lesson-reader-*.md`. Read the artwork
-   spec's §2 first — it documents three bugs in the app's existing blur
-   substitute (`SignWash`) that every new drawing would otherwise inherit.
-4. Extend `WeekScene`'s renderer to nested `<svg>`, `conic-gradient` and CSS
-   masks, then drive the 83 task scenes off `.uifinal/extract/task-scenes.json`.
-5. Then the three passes, and only then `DONE`.
+1. **Run it on a device and look at it.** That is the one thing this run could
+   not do, and it is what §6 finding 14 is waiting on. The audits are numeric;
+   the remaining risk is the kind only a screenshot catches — art painted under
+   a sibling, a zero-size `<Svg>`, a mask that silently did nothing.
+2. **Passes 2 and 3** over the 449 built rows: the coverage re-walk (`ledger.mjs`
+   regenerates from the split index, so it will surface anything missed) and the
+   fresh-eyes audit, starting with the screens this run concluded were fine.
+3. **The three open findings** in §6, rows 14–16, and the product calls in §7
+   rows 4–7.
+4. **The remaining platform gaps** in §5, if any of them matter enough: the
+   `conic-gradient` and `mask` layers in the task scenes are the two places
+   where the drawing is visibly not what the canvas draws.
