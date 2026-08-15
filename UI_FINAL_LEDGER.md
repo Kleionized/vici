@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 129 · IMPLEMENTED: 449 · DONE: 199
+**777 rows.** NOT_STARTED: 71 · IMPLEMENTED: 449 · PASS_1: 58 · DONE: 199
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -33,11 +33,11 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101C · Rough — An argument (III) |
 | Email Login | Medallions | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88 · Medallions |
 | Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88B · Medallions — Still to earn |
-| Email Login | Detail Paper | src/app/medallions/[key].tsx | NOT_STARTED | — | 89A · Vici Detail — Paper |
-| Email Login | Detail Bronze | src/app/medallions/[key].tsx | NOT_STARTED | — | 89C · Vici Detail — Bronze |
-| Email Login | Detail Silver | src/app/medallions/[key].tsx | NOT_STARTED | — | 89D · Vici Detail — Silver |
-| Email Login | Detail Gold | src/app/medallions/[key].tsx | NOT_STARTED | — | 89E · Vici Detail — Gold |
-| Email Login | Detail Platinum | src/app/medallions/[key].tsx | NOT_STARTED | — | 89F · Vici Detail — Platinum |
+| Email Login | Detail Paper | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89A · Vici Detail — Paper |
+| Email Login | Detail Bronze | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89C · Vici Detail — Bronze |
+| Email Login | Detail Silver | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89D · Vici Detail — Silver |
+| Email Login | Detail Gold | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89E · Vici Detail — Gold |
+| Email Login | Detail Platinum | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89F · Vici Detail — Platinum |
 | Email Login | Log Chooser | src/app/(app)/log.tsx | NOT_STARTED | — | 90 · Log — Chooser |
 | Email Login | Lapse When | src/app/lapse.tsx | NOT_STARTED | — | 90B · Lapse — When |
 | Email Login | Lapse Trigger | src/app/lapse.tsx | NOT_STARTED | — | 90C · Lapse — What fed it |
@@ -77,13 +77,13 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | V3 Q1 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q2 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q3 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | NOT_STARTED | — | 63 · Lesson — Willpower |
+| Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 63 · Lesson — Willpower |
 | Email Login | V3 Q4 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 2 intro |
 | Email Login | V3 Q5 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q6 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q7 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | NOT_STARTED | — | 68 · Lesson — Rewire |
+| Email Login | Lesson Rewire | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 68 · Lesson — Rewire |
 | Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 3 intro |
 | Email Login | V3 Q8 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q9 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
@@ -93,54 +93,54 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | V3 Q12 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q13 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q14 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 5 intro |
-| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | NOT_STARTED | — | 79 · Lesson — Anchor |
-| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 6 intro |
-| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | NOT_STARTED | — | 82 · Lesson — Small Steps |
-| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 7 intro |
-| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87 · Charting Your Plan |
-| Email Login | Plan Ready | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87I · Plan Ready |
-| Email Login | Root Loop | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87B · The Root — The Loop |
-| Email Login | Current Pattern | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87C · Your Current Pattern |
-| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87D · If Nothing Changes — Next 30 Days |
-| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87E · If Nothing Changes — Next 365 Days |
-| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87F · If Nothing Changes — By Age 80 |
-| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87F2 · But This Can Change |
-| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87G · Why Streaks Fail |
-| Email Login | Campaign Line | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87G2 · Why Campaigns Hold |
-| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87H · The Rewire Curve |
-| Email Login | Results Pattern | src/components/onboarding/v3.tsx | NOT_STARTED | — | 88 · Results — Pattern |
-| Email Login | The Vow | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90 · The Vow — Signature |
+| Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 5 intro |
+| Email Login | V3 Q15 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q16 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q17 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Anchor | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 79 · Lesson — Anchor |
+| Email Login | V3 Q18 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 6 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 6 intro |
+| Email Login | V3 Q19 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | Lesson Small Steps | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 82 · Lesson — Small Steps |
+| Email Login | V3 Q20 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 7 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 7 intro |
+| Email Login | V3 Q21 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q22 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q23 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q24 Name | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q25 Age | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q26 Gender | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | Enlisting Aegis | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87 · Charting Your Plan |
+| Email Login | Plan Ready | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87I · Plan Ready |
+| Email Login | Root Loop | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87B · The Root — The Loop |
+| Email Login | Current Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87C · Your Current Pattern |
+| Email Login | Cost Next 30 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87D · If Nothing Changes — Next 30 Days |
+| Email Login | Cost Next 365 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87E · If Nothing Changes — Next 365 Days |
+| Email Login | Cost By Age 80 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F · If Nothing Changes — By Age 80 |
+| Email Login | Hopeful Reversal | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87F2 · But This Can Change |
+| Email Login | Streak Sawtooth | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G · Why Streaks Fail |
+| Email Login | Campaign Line | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87G2 · Why Campaigns Hold |
+| Email Login | Rewire Curve | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 87H · The Rewire Curve |
+| Email Login | Results Pattern | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 88 · Results — Pattern |
+| Email Login | The Vow | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 90 · The Vow — Signature |
 | Email Login | Campaign Map | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
 | Email Login | Campaign Map II | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
 | Email Login | Campaign Map III | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
-| Email Login | Letter Received | src/app/letter.tsx | NOT_STARTED | — | 90E &middot; A letter arrived |
+| Email Login | Letter Received | src/app/letter.tsx | PASS_1 | 2026-08-15 | 90E &middot; A letter arrived |
 | Email Login | Letter Week XII | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 90B · A Letter From Week XII |
 | Email Login | Medallion Received | src/app/medallion-post.tsx | IMPLEMENTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
 | Email Login | Reminders Setup | src/app/reminders.tsx | NOT_STARTED | — | 91 · Reminders |
 | Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | NOT_STARTED | — | 92 · Save Progress |
-| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11 · Free Trial Paywall |
-| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11B · Paywall — Three Days Free |
-| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11C · Paywall — Confirmed |
+| Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11 · Free Trial Paywall |
+| Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11B · Paywall — Three Days Free |
+| Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11C · Paywall — Confirmed |
 | Email Login | Manage Subscription | src/app/subscription.tsx | IMPLEMENTED | 2026-08-15 | 15 · Manage Subscription |
 | Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | IMPLEMENTED | 2026-08-15 | 19B · Morning check-in time |
 | Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 19C · Nightly check-in time |
 | Email Login | Today Home | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today |
-| Email Login | Score Detail | src/app/score.tsx | NOT_STARTED | — | 21B &middot; Score Detail |
-| Email Login | Score Detail Moves | src/app/score.tsx | NOT_STARTED | — | 20B · Score Detail — What Moved It |
-| Email Login | Score Detail Ranks | src/app/score.tsx | NOT_STARTED | — | 20C · Score Detail — Ranks |
+| Email Login | Score Detail | src/app/score.tsx | PASS_1 | 2026-08-15 | 21B &middot; Score Detail |
+| Email Login | Score Detail Moves | src/app/score.tsx | PASS_1 | 2026-08-15 | 20B · Score Detail — What Moved It |
+| Email Login | Score Detail Ranks | src/app/score.tsx | PASS_1 | 2026-08-15 | 20C · Score Detail — Ranks |
 | Email Login | Today Home II | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today &mdash; p2 |
 | Email Login | Today Home Task | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21p2B · Today — Task summary |
 | Email Login | Today Home III | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 &middot; Today &mdash; p3 |
@@ -182,18 +182,18 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Lesson Scroll 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
-| Email Login | Cue Intro Modal | src/app/urge.tsx | NOT_STARTED | — | 28 · SOS — First 90 Seconds |
-| Email Login | SOS Strength | src/app/urge.tsx | NOT_STARTED | — | 28B · SOS — How Strong |
+| Email Login | Cue Intro Modal | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28 · SOS — First 90 Seconds |
+| Email Login | SOS Strength | src/app/urge.tsx | PASS_1 | 2026-08-15 | 28B · SOS — How Strong |
 | Email Login | Cue Hue Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29 · SOS — Where Are You |
 | Email Login | SOS Feeling Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
 | Email Login | SOS Reason Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
-| Email Login | Cue Set Confirmation | src/app/urge.tsx | NOT_STARTED | — | 29B · SOS — Step I · Phone Down |
-| Email Login | Surf Step 1 | src/app/urge.tsx | NOT_STARTED | — | 30 · SOS — Step II · Out of Bed |
-| Email Login | Surf Step 3 | src/app/urge.tsx | NOT_STARTED | — | 31 · SOS — Step III · Cold Water |
-| Email Login | Surf Complete | src/app/urge.tsx | NOT_STARTED | — | 33 · SOS — The Wave Passed |
-| Email Login | Relapse Log | src/app/relapse.tsx | NOT_STARTED | — | 34 · SOS — Slipped |
-| Email Login | Relapse Twice | src/app/relapse.tsx | NOT_STARTED | — | 36 · Relapse — Don't Fail Twice |
-| Email Login | Relapse Begin | src/app/relapse.tsx | NOT_STARTED | — | 37 · Relapse — Begin Again |
+| Email Login | Cue Set Confirmation | src/app/urge.tsx | PASS_1 | 2026-08-15 | 29B · SOS — Step I · Phone Down |
+| Email Login | Surf Step 1 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 30 · SOS — Step II · Out of Bed |
+| Email Login | Surf Step 3 | src/app/urge.tsx | PASS_1 | 2026-08-15 | 31 · SOS — Step III · Cold Water |
+| Email Login | Surf Complete | src/app/urge.tsx | PASS_1 | 2026-08-15 | 33 · SOS — The Wave Passed |
+| Email Login | Relapse Log | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 34 · SOS — Slipped |
+| Email Login | Relapse Twice | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 36 · Relapse — Don't Fail Twice |
+| Email Login | Relapse Begin | src/app/relapse.tsx | PASS_1 | 2026-08-15 | 37 · Relapse — Begin Again |
 | Email Login | Week I Reset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
 | Email Login | Week I Reset P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
 | Email Login | Week II Changing Your Mindset | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
@@ -218,11 +218,11 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Week XI Build a Life You Want P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
 | Email Login | Week XII Leave It Behind | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
 | Email Login | Week XII Leave It Behind P2 | src/app/week/[week].tsx | IMPLEMENTED | 2026-08-15 | week overview, two pages per week |
-| Email Login | Letter Arrival | src/app/mail.tsx | NOT_STARTED | — | 90B · VICI Post — Arrival |
-| Email Login | Letter Read | src/app/letter.tsx | NOT_STARTED | — | 39 · The Letter — Read |
-| Email Login | Medallion Letter | src/app/mail.tsx | NOT_STARTED | — | 39B · Post — Medallion Letter |
-| Email Login | Yearly Drop | src/app/mail.tsx | NOT_STARTED | — | 39C · Post — The Yearly Drop |
-| Email Login | Drop Received | src/app/drop.tsx | NOT_STARTED | — | 39D · You Received a Drop |
+| Email Login | Letter Arrival | src/app/mail.tsx | PASS_1 | 2026-08-15 | 90B · VICI Post — Arrival |
+| Email Login | Letter Read | src/app/letter.tsx | PASS_1 | 2026-08-15 | 39 · The Letter — Read |
+| Email Login | Medallion Letter | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39B · Post — Medallion Letter |
+| Email Login | Yearly Drop | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39C · Post — The Yearly Drop |
+| Email Login | Drop Received | src/app/drop.tsx | PASS_1 | 2026-08-15 | 39D · You Received a Drop |
 | Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32A · Journey — Ch I The Landing |
 | Email Login | Journey Campaign | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32 · Journey — The Campaign |
 | Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32B · Journey — Ch III The Highlands |
