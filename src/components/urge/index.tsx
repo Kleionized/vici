@@ -2265,11 +2265,19 @@ export function UrgeFlow() {
     // Completion is a local interaction. Never make the relief screen wait for
     // a network mutation; the event can safely settle in the background.
     setIndex(FLOW.indexOf('done'));
-    // The two new boards' answers have no column of their own on `events`, so
-    // rather than drop them they ride the existing `trigger` line, which is
-    // already free text (DECISIONS D-022).
-    const answered = [PLACES.find((item) => item.key === place)?.label, feeling, ...reasons].filter(Boolean);
-    void createEvent({ type: 'urge_rode_out', severity: bandToSeverity(band), trigger: answered.join(' · ') || undefined }).catch(() => {});
+    // The place, the feeling and the reasons go to `precedingState`, which the
+    // schema already carries and nothing was writing — not to `trigger`, which
+    // is the trigger chart's own vocabulary and must not be diluted with them
+    // (DECISIONS D-022, corrected).
+    void createEvent({
+      type: 'urge_rode_out',
+      severity: bandToSeverity(band),
+      precedingState: {
+        location: PLACES.find((item) => item.key === place)?.label,
+        feeling,
+        reasons: reasons.length ? reasons : undefined,
+      },
+    }).catch(() => {});
     void setJSON('tideline.post.backondeck.pending', Date.now());
   }
 

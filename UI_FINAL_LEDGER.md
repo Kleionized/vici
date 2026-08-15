@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** PASS_1: 75 · IMPLEMENTED: 449 · NOT_STARTED: 54 · DONE: 199
+**777 rows.** PASS_1: 102 · IMPLEMENTED: 449 · NOT_STARTED: 27 · DONE: 199
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -38,21 +38,21 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Detail Silver | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89D · Vici Detail — Silver |
 | Email Login | Detail Gold | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89E · Vici Detail — Gold |
 | Email Login | Detail Platinum | src/app/medallions/[key].tsx | PASS_1 | 2026-08-15 | 89F · Vici Detail — Platinum |
-| Email Login | Log Chooser | src/app/(app)/log.tsx | NOT_STARTED | — | 90 · Log — Chooser |
-| Email Login | Lapse When | src/app/lapse.tsx | NOT_STARTED | — | 90B · Lapse — When |
-| Email Login | Lapse Trigger | src/app/lapse.tsx | NOT_STARTED | — | 90C · Lapse — What fed it |
-| Email Login | Lapse Done | src/app/lapse.tsx | NOT_STARTED | — | 90D · Lapse — Logged |
-| Email Login | Log Urges | src/app/(app)/log.tsx | NOT_STARTED | — | 91 · Log — Urges |
-| Email Login | Log Check-ins | src/app/(app)/log.tsx | NOT_STARTED | — | 91-2 · Log — Check-ins |
-| Email Login | Log Reports | src/app/(app)/log.tsx | NOT_STARTED | — | 91-3 · Log — Reports |
-| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | NOT_STARTED | — | 91A · Urge Overview — Summary |
-| Email Login | Urge Overview | src/app/urge-overview.tsx | NOT_STARTED | — | 91B · Urge Overview — Strength |
-| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | NOT_STARTED | — | 91C · Urge Overview — Mood |
-| Email Login | Urge Overview When | src/app/urge-overview.tsx | NOT_STARTED | — | 91D · Urge Overview — When & Where |
-| Email Login | Report Ready | src/app/report-ready.tsx | NOT_STARTED | — | 91C0 · Report Ready |
-| Email Login | Weekly Report | src/app/weekly-report.tsx | NOT_STARTED | — | 91C · Weekly Report — Score |
-| Email Login | Weekly Report Days | src/app/weekly-report.tsx | NOT_STARTED | — | 91C2 · Weekly Report — Days |
-| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | NOT_STARTED | — | 91C3 · Weekly Report — Urges |
+| Email Login | Log Chooser | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 90 · Log — Chooser |
+| Email Login | Lapse When | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90B · Lapse — When |
+| Email Login | Lapse Trigger | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90C · Lapse — What fed it |
+| Email Login | Lapse Done | src/app/lapse.tsx | PASS_1 | 2026-08-15 | 90D · Lapse — Logged |
+| Email Login | Log Urges | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91 · Log — Urges |
+| Email Login | Log Check-ins | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-2 · Log — Check-ins |
+| Email Login | Log Reports | src/app/(app)/log.tsx | PASS_1 | 2026-08-15 | 91-3 · Log — Reports |
+| Email Login | Urge Overview Summary | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91A · Urge Overview — Summary |
+| Email Login | Urge Overview | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91B · Urge Overview — Strength |
+| Email Login | Urge Overview Mood | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91C · Urge Overview — Mood |
+| Email Login | Urge Overview When | src/app/urge-overview.tsx | PASS_1 | 2026-08-15 | 91D · Urge Overview — When & Where |
+| Email Login | Report Ready | src/app/report-ready.tsx | PASS_1 | 2026-08-15 | 91C0 · Report Ready |
+| Email Login | Weekly Report | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C · Weekly Report — Score |
+| Email Login | Weekly Report Days | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C2 · Weekly Report — Days |
+| Email Login | Weekly Report Urges | src/app/weekly-report.tsx | PASS_1 | 2026-08-15 | 91C3 · Weekly Report — Urges |
 | Email Login | Urge Log Intensity | src/app/urge-log.tsx | NOT_STARTED | — | 91D · Urge Log — Intensity |
 | Email Login | Urge Log Trigger | src/app/urge-log.tsx | NOT_STARTED | — | 91E · Urge Log — Triggers |
 | Email Login | Urge Log Outcome | src/app/urge-log.tsx | NOT_STARTED | — | 91F · Urge Log — Outcome |
@@ -73,13 +73,13 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Login Empty | src/app/(auth)/sign-in.tsx | NOT_STARTED | — | 03 · Login — Empty |
 | Email Login | Login Typing | src/app/(auth)/sign-in.tsx | NOT_STARTED | — | 04 · Login — Typing |
 | Email Login | Create Account | src/app/(auth)/sign-up.tsx | NOT_STARTED | — | 07 · Create Account |
-| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 1 intro |
-| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
+| Email Login | V3 Section 1 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 1 intro |
+| Email Login | V3 Q1 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q2 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q3 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
 | Email Login | Lesson Willpower | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | 63 · Lesson — Willpower |
-| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 2 intro |
+| Email Login | V3 Q4 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 2 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 2 intro |
 | Email Login | V3 Q5 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q6 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q7 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
@@ -87,12 +87,12 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | V3 Section 3 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 3 intro |
 | Email Login | V3 Q8 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
 | Email Login | V3 Q9 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | NOT_STARTED | — | V3 — Section 4 intro |
-| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
-| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | NOT_STARTED | — | onboarding question board |
+| Email Login | V3 Q10 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Section 4 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 4 intro |
+| Email Login | V3 Q11 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q12 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q13 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
+| Email Login | V3 Q14 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
 | Email Login | V3 Section 5 Intro | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | V3 — Section 5 intro |
 | Email Login | V3 Q15 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |
 | Email Login | V3 Q16 | src/components/onboarding/v3.tsx | PASS_1 | 2026-08-15 | onboarding question board |

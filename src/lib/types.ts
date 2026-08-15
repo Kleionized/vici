@@ -117,6 +117,10 @@ export interface PrecedingState {
   lonely?: boolean;
   bored?: boolean;
   location?: string;
+  /** `SOS Feeling Picker` — the one feeling under the urge. */
+  feeling?: string;
+  /** `SOS Reason Picker` — what was feeding it; the board is multi-select. */
+  reasons?: string[];
 }
 
 /**

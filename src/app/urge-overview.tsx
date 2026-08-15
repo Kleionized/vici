@@ -334,15 +334,23 @@ function Triggers({ urges }: { urges: TidelineEvent[] }) {
 
 /* ------------------------------------------------------------------- 038 mood */
 
+/**
+ * The four HALT booleans the schema carries, said in the canvas's own words —
+ * 038 labels its bars `Tense` / `Flat` / `Restless` / `Low`, and `SOS Feeling
+ * Picker` is where a feeling is actually named now, so the feeling it records
+ * is counted first and the booleans only fill in behind it.
+ */
 const STATE_WORD: Record<string, string> = { hungry: 'Hungry', tired: 'Tired', lonely: 'Lonely', bored: 'Bored' };
 
 /** The state that arrived first. */
 function MoodBefore({ urges }: { urges: TidelineEvent[] }) {
-  const states = urges.flatMap((e) =>
-    Object.entries(e.precedingState ?? {})
+  const states = urges.flatMap((e) => {
+    const named = e.precedingState?.feeling;
+    if (named) return [named];
+    return Object.entries(e.precedingState ?? {})
       .filter(([key, on]) => on === true && key in STATE_WORD)
-      .map(([key]) => STATE_WORD[key]),
-  );
+      .map(([key]) => STATE_WORD[key]);
+  });
   const counts = tally(states);
   const share = (count: number) => Math.round((count / Math.max(1, urges.length)) * 100);
 
@@ -383,9 +391,12 @@ function WhenWhere({ urges }: { urges: TidelineEvent[] }) {
   const bands = [...seen, ...BAND_ORDER.filter((b) => !seen.some(([label]) => label === b)).map((b): [string, number] => [b, 0])].slice(0, 3);
   const hours = tally(urges.map((e) => String(new Date(e.createdAt).getHours())));
   const peak = hours.length ? Number(hours[0][0]) : null;
-  // The log has no place field of its own yet — a location noted during the
-  // urge, else whatever note was left on it.
-  const places = tally(urges.map((e) => e.precedingState?.location ?? e.note).filter((p): p is string => !!p));
+  // `SOS — Where Are You` records the place on `precedingState.location`; a
+  // note left on the urge stands in where one was never picked. The canvas
+  // always draws three rows, so the list is padded and the empty ones take the
+  // soft ink the frame gives its zero-count row.
+  const found = tally(urges.map((e) => e.precedingState?.location ?? e.note).filter((p): p is string => !!p));
+  const places: [string, number][] = found.slice(0, 3);
 
   return (
     <View style={{ flex: 1 }}>

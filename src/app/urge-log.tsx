@@ -30,7 +30,7 @@ export const TRIGGERS: { label: string; mark: TriggerMarkName }[] = [
   { label: 'Stress', mark: 'stress' },
   { label: 'Boredom', mark: 'boredom' },
   { label: 'Lonely', mark: 'lonely' },
-  { label: 'Tired', mark: 'tired' },
+  { label: 'Tiredness', mark: 'tired' },
   { label: 'Social', mark: 'social' },
   { label: 'Phone', mark: 'phone' },
   { label: 'Late night', mark: 'lateNight' },

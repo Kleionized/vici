@@ -70,6 +70,10 @@ export const precedingState = v.object({
   lonely: v.optional(v.boolean()),
   bored: v.optional(v.boolean()),
   location: v.optional(v.string()),
+  /** `SOS Feeling Picker` — the one feeling under the urge. */
+  feeling: v.optional(v.string()),
+  /** `SOS Reason Picker` — what was feeding it; the board is multi-select. */
+  reasons: v.optional(v.array(v.string())),
 });
 
 export default defineSchema({

@@ -716,7 +716,7 @@ Counted mechanically from the tables above (every 6-column data row, header and 
 | **§5 `Urge-Overview-When` subtotal** | **106** |
 | **Total** | **453** |
 
-Chart-geometry sections (§3.1, §4.1, §5.1) carry a further 66 term rows that are not counted above.
+Chart-geometry sections carry a further 60 term rows not counted above (§3.1 = 18, §4.1 = 19, §5.1 = 23).
 
 ---
 
@@ -782,4 +782,4 @@ Chart-geometry sections (§3.1, §4.1, §5.1) carry a further 66 term rows that 
 
 ### Verified clean
 
-Every offset on all four frames satisfies `app top = canvas top − 54` exactly: back 64→10, date 68→14, title 114→60, segment track 168→114, summary card 230→176, summary footnote 446→392, headings 244→190 and 414→360, trigger rows 306/364/422→252/310/368, mood rows 306/360/414/468→252/306/360/414, band strip 294→240, place rows 454/492/530→400/438/476, insight cards 566→512 and 606→552. All 14 SVG glyphs match verbatim — every `viewBox`, every path `d`, every stroke width, cap, join, and fill. All 27 colour literals match including alpha. Both multi-shadow strings match character for character. The two bar ramps and the dot on/off pair match. 347 of 358 rows are clean.
+Every offset on all four frames satisfies `app top = canvas top − 54` exactly: back 64→10, date 68→14, title 114→60, segment track 168→114, summary card 230→176, summary footnote 446→392, headings 244→190 and 414→360, trigger rows 306/364/422→252/310/368, mood rows 306/360/414/468→252/306/360/414, band strip 294→240, place rows 454/492/530→400/438/476, insight cards 566→512 and 606→552. All 10 app-built SVG glyphs match verbatim (back chevron; summary wave, intensity arc pair, check; three insight glyphs; three band glyphs) — every `viewBox`, every path `d`, every stroke width, cap, join, and fill. Every colour literal matches including alpha. Both multi-shadow strings match character for character. The two bar ramps and the dot on/off pair match. All three chart geometries (§3.1, §4.1, §5.1) reproduce term for term, including the derived 241.000px trigger track, the 181.000px mood track, and the 122.333px band cell. **434 of 453 rows are clean.**

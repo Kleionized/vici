@@ -582,3 +582,23 @@ names the ambiguity, the reading chosen, and why.
   The canvas says `rgba(150,160,172,0.30)` = `#96A0AC`; the app had `#969DA6`
   = (150,157,166). Three points of green and six of blue. Corrected to the
   canvas value.
+
+- **D-022 corrected · the SOS answers go to `precedingState`, not to `trigger`.**
+  The `Urge Overview` audit found what that shortcut cost: `Common triggers`
+  splits `trigger` on `' · '`, so packing the place, the feeling and the reasons
+  into it put `Somewhere private`, `Relationship` and `Angry` into a chart whose
+  vocabulary is `Stress` / `Boredom` / `Tiredness`, and the 88px label column
+  with `numberOfLines={1}` then truncated them.
+  `precedingState` was already in the schema (`convex/schema.ts`) and in
+  `convex/events.ts`, and **nothing in the app was writing it** — which is also
+  why `Urge Overview Mood` and "Where they showed up" never rendered at all.
+  So the field gains `feeling` and `reasons`, the SOS flow writes all three
+  there, and three defects close at once. The original D-022 reasoning — that a
+  schema change was out of scope — was wrong: the field already existed.
+
+- **D-054 · Three more findings from the same audit, fixed.**
+  - `Urge Overview Mood` counted four booleans nothing ever set. It now counts
+    the feeling `SOS Feeling Picker` records, falling back to the booleans.
+  - "Where they showed up" read `precedingState.location` and `note`, neither of
+    which was written. It now reads the place `SOS — Where Are You` records.
+  - The trigger chip read `Tired` where canvas 037 reads `Tiredness`.
