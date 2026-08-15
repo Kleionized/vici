@@ -198,8 +198,8 @@ export function mapFor(bundle, label) {
   if (bundle === 'Lessons and Tasks') {
     if (/^L01 Reader \d+$/.test(label)) {
       return {
-        target: 'src/components/lesson/pages.tsx',
-        note: 'SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final',
+        target: '—',
+        note: 'SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten',
       };
     }
     if (/^Lesson \d+$/.test(label)) {
@@ -214,14 +214,14 @@ export function mapFor(bundle, label) {
   if (bundle === 'Lesson 1 Surviving the Night') {
     return {
       target: 'src/components/lesson/pages.tsx',
-      note: 'DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside)',
+      note: 'DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away',
     };
   }
 
   if (bundle === 'VICI (previous)' || bundle === 'vici-prev') {
     return {
       target: '—',
-      note: 'SUPERSEDED — previous-generation canvas, kept in the bundle for reference only',
+      note: 'SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp',
     };
   }
 

@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 328 · IMPLEMENTED: 449
+**777 rows.** NOT_STARTED: 129 · IMPLEMENTED: 449 · DONE: 199
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -227,31 +227,31 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Journey Campaign | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32 · Journey — The Campaign |
 | Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32B · Journey — Ch III The Highlands |
 | Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32C · Journey — Ch IV The Watch |
-| Lessons and Tasks | L01 Reader 1 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 2 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 3 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 4 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 5 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 6 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 7 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 8 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 9 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 10 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 11 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 12 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 13 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 14 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 15 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 16 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 17 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 18 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 19 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 20 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 21 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 22 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 23 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 24 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
-| Lessons and Tasks | L01 Reader 25 | src/components/lesson/pages.tsx | NOT_STARTED | — | SUPERSEDED draft of the reader — "Lesson Scroll 1-26" in Email Login is the final |
+| Lessons and Tasks | L01 Reader 1 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 2 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 3 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 4 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 5 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 6 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 7 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 8 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 9 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 10 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 11 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 12 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 13 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 14 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 15 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 16 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 17 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 18 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 19 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 20 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 21 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 22 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 23 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 24 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
+| Lessons and Tasks | L01 Reader 25 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
 | Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
 | Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | IMPLEMENTED | 2026-08-15 | lesson cover card — content row + shared card template |
@@ -584,206 +584,206 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | IMPLEMENTED | 2026-08-15 | daily task, page 1 of 3 |
 | Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | IMPLEMENTED | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D84 Card | src/app/task/[day].tsx | IMPLEMENTED | 2026-08-15 | daily task, page 3 of 3 |
-| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — byte-identical to "Lesson Scroll N" in Email Login (label aside) |
-| VICI (previous) | Splash | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Standing Guard | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Login Empty | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Login Typing | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Create Account | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Push Notifications | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Quiz Frequency | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Lesson Anchor | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Reminders Setup | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Auth Save Progress | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q1 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q2 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q3 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q4 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q5 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q6 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q7 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q8 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q9 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q10 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q11 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q12 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q13 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q14 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q15 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q16 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q17 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q18 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q19 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q20 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q21 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q22 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | V3 Q23 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Device Not Found | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Waking Up Device | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Select Device | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Enlisting Aegis | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Name Your Aegis | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Ready Make It Mine | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Master the Urge | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Membership Compare | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Free Trial Paywall | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Help With First | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Choose Evening Drill | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Choose Morning Muster | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Wake Time Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Rise and Shine | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Tooltip | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Decluttered | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen One Card | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Reminder | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Cue Banner | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen 6 Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Upsell | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Morning Moment | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Cue Home | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | My Regimen Alarm Editor | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Lesson Reader | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Urge SOS Wave | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Library Cue | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Library Train Featured | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Library Train Meditations | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Library Wake | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Library Search | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Story Detail | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Story Tracks | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Immersive Light Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Wake Sound Detail | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Now Playing | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Add Guard Sheet | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Add Morning Muster Sheet | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Six Steps Checklist | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Splash | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Standing Guard | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Login Empty | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Login Typing | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Create Account | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Push Notifications | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Quiz Frequency | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Quiz Triggers | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Lesson Willpower | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Results Pattern | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Campaign Map | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Quiz Duration | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Lesson Rewire | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Lesson Small Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Lesson Anchor | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Reminders Setup | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Auth Save Progress | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q1 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q2 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q3 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q4 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q5 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q6 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q7 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q8 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q9 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q10 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q11 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q12 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q13 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q14 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q15 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q16 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q17 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q18 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q19 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q20 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q21 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q22 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | V3 Q23 | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Device Not Found | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Waking Up Device | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Select Device | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Enlisting Aegis | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Name Your Aegis | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Ready Make It Mine | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Master the Urge | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Membership Compare | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Free Trial Paywall | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Help With First | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Choose Evening Drill | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Choose Morning Muster | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Wake Time Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Rise and Shine | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Tooltip | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Decluttered | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen One Card | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Reminder | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Cue Banner | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen 6 Steps | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Upsell | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Morning Moment | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Cue Home | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | My Regimen Alarm Editor | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Lesson Reader | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Urge SOS Wave | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Library Cue | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Library Train Featured | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Library Train Meditations | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Library Wake | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Library Search | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Story Detail | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Story Tracks | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Immersive Light Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Wake Sound Detail | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Now Playing | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Add Guard Sheet | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Add Morning Muster Sheet | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Six Steps Checklist | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 03 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 04 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 05 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 06 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 07 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 08 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 09 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 10 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 11 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 12 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 13 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 14 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 15 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 16 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 17 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 18 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 19 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 20 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 21 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 22 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 23 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 24 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 25 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| Lesson 1 Surviving the Night | L1 Frame 26 | src/components/lesson/pages.tsx | IMPLEMENTED | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
+| VICI (previous) | Splash | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Standing Guard | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Login Empty | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Login Typing | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Create Account | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Push Notifications | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Quiz Frequency | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Quiz Triggers | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Lesson Willpower | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Results Pattern | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Campaign Map | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Quiz Duration | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Lesson Rewire | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Lesson Small Steps | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Lesson Anchor | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Reminders Setup | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Auth Save Progress | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q1 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q2 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q3 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q4 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q5 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q6 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q7 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q8 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q9 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q10 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q11 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q12 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q13 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q14 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q15 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q16 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q17 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q18 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q19 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q20 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q21 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q22 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | V3 Q23 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Device Not Found | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Waking Up Device | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Select Device | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Enlisting Aegis | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Name Your Aegis | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Ready Make It Mine | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Master the Urge | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Membership Compare | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Free Trial Paywall | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Help With First | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Choose Evening Drill | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Choose Morning Muster | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Wake Time Picker | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Rise and Shine | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Tooltip | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Decluttered | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen One Card | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Reminder | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Cue Banner | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen 6 Steps | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Upsell | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Morning Moment | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Cue Home | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | My Regimen Alarm Editor | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Lesson Reader | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Urge SOS Wave | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Urge SOS Breathe | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Daily Check-in | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Cue Intro Modal | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Cue Hue Picker | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Cue Set Confirmation | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Training Drills Browser | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Sound Library | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Library Cue | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Library Train Featured | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Library Train Meditations | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Library Wake | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Library Search | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Story Detail | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Story Tracks | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Immersive Light Modal | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Wake Sound Detail | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Now Playing | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| VICI (previous) | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Splash | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Standing Guard | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Login Empty | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Login Typing | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Create Account | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Push Notifications | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Quiz Frequency | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Quiz Triggers | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Lesson Willpower | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Results Pattern | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Campaign Map | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Quiz Duration | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Lesson Rewire | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Lesson Small Steps | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Lesson Anchor | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Reminders Setup | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Auth Save Progress | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q1 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q2 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q3 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q4 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q5 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q6 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q7 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q8 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q9 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q10 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q11 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q12 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q13 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q14 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q15 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q16 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q17 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q18 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q19 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q20 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q21 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q22 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | V3 Q23 | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Device Not Found | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Waking Up Device | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Select Device | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Enlisting Aegis | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Name Your Aegis | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Ready Make It Mine | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Master the Urge | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Membership Compare | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Free Trial Paywall | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Help With First | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Choose Evening Drill | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Choose Morning Muster | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Wake Time Picker | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Rise and Shine | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Tooltip | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Decluttered | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen One Card | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Reminder | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Cue Banner | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen 6 Steps | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Upsell | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Morning Moment | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Cue Home | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | My Regimen Alarm Editor | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Lesson Reader | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Urge SOS Wave | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Urge SOS Breathe | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Daily Check-in | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Cue Intro Modal | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Cue Hue Picker | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Cue Set Confirmation | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Training Drills Browser | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Sound Library | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Library Cue | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Library Train Featured | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Library Train Meditations | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Library Wake | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Library Search | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Story Detail | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Story Tracks | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Immersive Light Modal | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Wake Sound Detail | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Now Playing | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
+| vici-prev | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | NOT_STARTED | — | export of the campaign map |
 | exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | NOT_STARTED | — | export — lesson cover/detail |
 | exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | NOT_STARTED | — | export — lesson parts list |
