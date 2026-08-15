@@ -379,3 +379,23 @@ names the ambiguity, the reading chosen, and why.
   chip is built to the frame's geometry and typography, with the rung name taken
   from the app's own album so it can never disagree with the medallion drawn
   above it.
+
+- **D-031 · The keyboard-lift floor is per-board, not a constant.**
+  `PILL_BOTTOM = 358` was the primary pill's bottom edge, and it was the
+  bottom-most control until `Sentence Journal` gained the secondary pill at 422.
+  The custom-prompt board's bottom-most control is its back link at ~362, so the
+  floor became `{ journal: 422, custom: 362 }`. Left as one constant, the new
+  pill would sit under the keyboard.
+
+- **D-032 · A written prompt is stored, because the board says it will be.**
+  `Sentence Journal Custom prompt` promises "It'll be waiting for you each
+  morning", so `Use this prompt` writes to storage and the journal board prefers
+  the stored prompt over the rotation. `Different prompt` clears it and returns
+  to the rotation — the canvas draws both controls and states no precedence, and
+  a stored prompt that the reroll could not escape would be a trap.
+
+- **D-033 · `Manage Subscription` ends on the cancel line.**
+  The swell and "the long road, together." are gone from the frame. The scroll
+  height was sized for them (780) and comes down to 700 — content ends at app
+  top 676 plus a 24 tail — so the board does not invent a scroll on a short
+  phone.

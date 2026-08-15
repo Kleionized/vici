@@ -6,15 +6,19 @@ import { Keyboard, Platform, Pressable, TextInput, View, useWindowDimensions } f
 import { RerollGlyph } from '@/components/day/kit';
 import { AppText, PressScale } from '@/components/ui';
 import { useCreateJournalEntry } from '@/lib/backend';
+import { getJSON, setJSON } from '@/lib/storage';
 import { fonts, sans } from '@/lib/theme';
 
 /**
- * Frame 115 · Affirmation — the sentence journal.
+ * 21C · 21C2 — the sentence journal, and the board where you write the prompt.
  *
  * One line a day, against a prompt you can swap if the one offered does not
  * fit. Deliberately a single sentence: a blank page asks for an essay and gets
  * nothing, where a single line gets written. It arrives as a sheet over the
  * page you were on, so the dim and the skeleton behind it are drawn here.
+ *
+ * The two frames share their shell, scrim, sheet and grabber byte for byte —
+ * only the sheet's body swaps — so both are this one screen in two modes.
  */
 
 const PROMPTS = [
@@ -25,14 +29,24 @@ const PROMPTS = [
   'What did the last good evening have in it?',
 ];
 
-/** Where the sheet's top edge sits, and where the pill's bottom edge lands in it. */
+/**
+ * Where the sheet's top edge sits, and where the bottom-most control's bottom
+ * edge lands in it. The journal board's is the secondary pill at 422; the
+ * custom board's is the back link at ~362 — so it is per-mode, not a constant.
+ */
 const SHEET_TOP = 320;
-const PILL_BOTTOM = 358;
+const FLOOR = { journal: 422, custom: 362 } as const;
+
+/** Where a written-in prompt is kept so it comes back each morning. */
+const CUSTOM_PROMPT_KEY = 'tideline.affirmation.prompt';
 
 export default function Affirmation() {
   const router = useRouter();
   const createJournalEntry = useCreateJournalEntry();
   const [promptIndex, setPromptIndex] = useState(0);
+  const [mode, setMode] = useState<'journal' | 'custom'>('journal');
+  const [custom, setCustom] = useState<string | null>(null);
+  const [draft, setDraft] = useState('');
   const [line, setLine] = useState('');
   const [saving, setSaving] = useState(false);
   const [keyboard, setKeyboard] = useState(0);
@@ -49,13 +63,21 @@ export default function Affirmation() {
     };
   }, []);
 
-  const lift = Math.max(0, keyboard - Math.max(0, screenH - SHEET_TOP - PILL_BOTTOM));
+  // A prompt written once comes back — the board promises it will.
+  useEffect(() => {
+    void getJSON<string>(CUSTOM_PROMPT_KEY).then((stored) => {
+      if (stored) setCustom(stored);
+    });
+  }, []);
+
+  const prompt = custom ?? PROMPTS[promptIndex];
+  const lift = Math.max(0, keyboard - Math.max(0, screenH - SHEET_TOP - FLOOR[mode]));
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   async function save() {
     if (!line.trim()) return close();
     setSaving(true);
-    await createJournalEntry({ tag: 'Affirmation', title: PROMPTS[promptIndex], body: line.trim() }).catch(() => {});
+    await createJournalEntry({ tag: 'Affirmation', title: prompt, body: line.trim() }).catch(() => {});
     setSaving(false);
     close();
   }
@@ -92,12 +114,31 @@ export default function Affirmation() {
         }}>
         <View style={{ position: 'absolute', left: '50%', marginLeft: -18, top: 10, width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(0,0,0,0.15)' }} />
 
+        {mode === 'custom' ? (
+          <CustomPrompt
+            draft={draft}
+            onDraft={setDraft}
+            onUse={() => {
+              const next = draft.trim();
+              setCustom(next || null);
+              void (next ? setJSON(CUSTOM_PROMPT_KEY, next) : Promise.resolve());
+              setMode('journal');
+            }}
+            onBack={() => setMode('journal')}
+          />
+        ) : null}
+
+        {mode === 'journal' ? (
+          <>
         <AppText style={[sans('500'), { position: 'absolute', left: 24, right: 40, top: 44, fontSize: 22, lineHeight: 29, letterSpacing: -0.2, color: '#1D1C1A' }]}>
-          {PROMPTS[promptIndex]}
+          {prompt}
         </AppText>
 
         <PressScale
-          onPress={() => setPromptIndex((i) => (i + 1) % PROMPTS.length)}
+          onPress={() => {
+            setCustom(null);
+            setPromptIndex((i) => (i + 1) % PROMPTS.length);
+          }}
           accessibilityRole="button"
           hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
           style={{ position: 'absolute', left: 24, top: 112, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 7 }}>
@@ -116,6 +157,8 @@ export default function Affirmation() {
               { position: 'absolute', left: 18, right: 18, top: 16, height: 94, fontFamily: fonts.quote, fontSize: 17, lineHeight: 26, color: '#1D1C1A', padding: 0 },
               Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
             ]}
+            selectionColor="#131313"
+            cursorColor="#131313"
           />
         </View>
 
@@ -138,7 +181,89 @@ export default function Affirmation() {
           }}>
           <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>Save today’s line</AppText>
         </PressScale>
+
+        {/* canvas 370 — a paper pill, ringed at 0.08 rather than the card's 0.06 */}
+        <PressScale
+          onPress={() => {
+            setDraft(custom ?? '');
+            setMode('custom');
+          }}
+          accessibilityRole="button"
+          style={{
+            position: 'absolute',
+            left: 16,
+            right: 16,
+            top: 370,
+            height: 52,
+            minHeight: 52,
+            borderRadius: 26,
+            backgroundColor: '#FFFFFF',
+            boxShadow: '0 0 0 1px rgba(0,0,0,0.08)',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <AppText style={[sans('600'), { fontSize: 15.5, color: '#1D1C1A' }]}>Write my own prompt</AppText>
+        </PressScale>
+          </>
+        ) : null}
       </View>
     </View>
+  );
+}
+
+/** 21C2 · the board where the prompt itself is written. */
+function CustomPrompt({ draft, onDraft, onUse, onBack }: { draft: string; onDraft: (next: string) => void; onUse: () => void; onBack: () => void }) {
+  return (
+    <>
+      <AppText style={[sans('500'), { position: 'absolute', left: 24, right: 40, top: 44, fontSize: 22, lineHeight: 29, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+        Write your own prompt
+      </AppText>
+      <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 24, top: 80, fontSize: 13, color: '#8B8882' }]}>
+        It’ll be waiting for you each morning.
+      </AppText>
+
+      <View style={{ position: 'absolute', left: 16, right: 16, top: 116, height: 126, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
+        <TextInput
+          value={draft}
+          onChangeText={onDraft}
+          multiline
+          placeholder="What am I protecting today?"
+          placeholderTextColor="rgba(139,136,130,0.7)"
+          selectionColor="#131313"
+          cursorColor="#131313"
+          style={[
+            // italic on this board only — the journal's own card is upright
+            { position: 'absolute', left: 18, right: 18, top: 16, height: 94, fontFamily: fonts.quote, fontStyle: 'italic', fontSize: 17, lineHeight: 26, color: '#1D1C1A', padding: 0 },
+            Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
+          ]}
+        />
+      </View>
+
+      <PressScale
+        onPress={onUse}
+        accessibilityRole="button"
+        style={{
+          position: 'absolute',
+          left: 16,
+          right: 16,
+          top: 274,
+          height: 52,
+          minHeight: 52,
+          borderRadius: 26,
+          backgroundColor: '#131313',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>Use this prompt</AppText>
+      </PressScale>
+
+      <PressScale
+        onPress={onBack}
+        accessibilityRole="button"
+        hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
+        style={{ position: 'absolute', left: 0, right: 0, top: 346, minHeight: 0, alignItems: 'center' }}>
+        <AppText style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>Back to today’s prompt</AppText>
+      </PressScale>
+    </>
   );
 }

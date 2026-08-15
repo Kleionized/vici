@@ -11,9 +11,10 @@ import { useCurrentUser } from '@/lib/backend';
 import { sans } from '@/lib/theme';
 
 /**
- * Manage subscription (canvas 107) — the membership stated plainly up top
- * (plan · price · renewal · Active), then the Plan and Billing cards, the
- * quiet cancel, and the shore seeing you out: "the long road, together."
+ * 15 · Manage subscription — the membership stated plainly up top
+ * (plan · price · renewal · Active), then the Plan and Billing cards, and the
+ * quiet cancel the board now ends on. `UI Final` withdrew the swell and the
+ * line under it; nothing renders below the cancel any more.
  *
  * Laid out from the canvas's 393 × 852 frame; the status bar ends at 54, so
  * every canvas `top` is written here as `top − 54` under the safe area.
@@ -126,7 +127,7 @@ export default function Subscription() {
       <StatusBar style="dark" />
       <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ height: 780 }} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ height: 700 }} showsVerticalScrollIndicator={false}>
           <PressScale
             onPress={back}
             accessibilityRole="button"
@@ -186,16 +187,6 @@ export default function Subscription() {
             </AppText>
           ) : null}
 
-          {/* the shore, seeing you out */}
-          <View style={{ position: 'absolute', left: 0, right: 0, top: 714, alignItems: 'center' }}>
-            <Svg width={90} height={30} viewBox="0 0 90 30">
-              <Path d="M6 20c8-11 16-11 24 0s16 11 24 0 14-9 30-4" stroke="rgba(0,0,0,0.25)" strokeWidth={2.2} fill="none" strokeLinecap="round" />
-            </Svg>
-            {/* the canvas's swell is an inline <svg> on a text baseline, so its
-                line box carries the 16px strut's ~3.7pt descent under the 30pt
-                art before the caption's own 2pt margin */}
-            <AppText style={[sans('500'), { marginTop: 5.7, fontSize: 12.5, color: '#8B8882' }]}>the long road, together.</AppText>
-          </View>
         </ScrollView>
       </SafeAreaView>
     </View>

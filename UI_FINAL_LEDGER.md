@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 66 · IMPLEMENTED: 134
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 61 · IMPLEMENTED: 139
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -134,9 +134,9 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11 · Free Trial Paywall |
 | Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11B · Paywall — Three Days Free |
 | Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11C · Paywall — Confirmed |
-| Email Login | Manage Subscription | src/app/subscription.tsx | SPEC_EXTRACTED | 2026-08-15 | 15 · Manage Subscription |
-| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 19B · Morning check-in time |
-| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 19C · Nightly check-in time |
+| Email Login | Manage Subscription | src/app/subscription.tsx | IMPLEMENTED | 2026-08-15 | 15 · Manage Subscription |
+| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | IMPLEMENTED | 2026-08-15 | 19B · Morning check-in time |
+| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 19C · Nightly check-in time |
 | Email Login | Today Home | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today |
 | Email Login | Score Detail | src/app/score.tsx | NOT_STARTED | — | 21B &middot; Score Detail |
 | Email Login | Score Detail Moves | src/app/score.tsx | NOT_STARTED | — | 20B · Score Detail — What Moved It |
@@ -144,8 +144,8 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Today Home II | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 · Today &mdash; p2 |
 | Email Login | Today Home Task | src/app/(app)/today.tsx | SPEC_EXTRACTED | 2026-08-15 | 21p2B · Today — Task summary |
 | Email Login | Today Home III | src/app/(app)/today.tsx | IMPLEMENTED | 2026-08-15 | 21 &middot; Today &mdash; p3 |
-| Email Login | Sentence Journal | src/app/affirmation.tsx | SPEC_EXTRACTED | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
-| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | SPEC_EXTRACTED | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
+| Email Login | Sentence Journal | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C &middot; Affirmation &mdash; Sentence Journal |
+| Email Login | Sentence Journal Custom prompt | src/app/affirmation.tsx | IMPLEMENTED | 2026-08-15 | 21C2 &middot; Affirmation &mdash; Custom prompt |
 | Email Login | Morning 1 Yesterday | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D1 · Morning — Yesterday |
 | Email Login | Morning Task Check | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D2 · Morning — Yesterday’s task |
 | Email Login | Morning 5 Done | src/app/day/morning.tsx | IMPLEMENTED | 2026-08-15 | 21D7 · Morning — Done |
