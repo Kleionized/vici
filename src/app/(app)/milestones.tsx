@@ -213,9 +213,9 @@ export default function Milestones() {
           </View>
 
           {/* canvas y 290 / 262 — rows of two, on a 168 stride */}
-          <ScrollView ref={grid} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: tabBar + 24, gap: 26 }}>
+          <ScrollView ref={grid} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: tabBar + 24, gap: 17 }}>
             {rows.map((row, i) => (
-              <View key={i} style={{ flexDirection: 'row', gap: 10 }}>
+              <View key={i} style={{ flexDirection: 'row', gap: 17 }}>
                 {row.map((s) => (
                   // A row that ends on one face is held to half the width, which
                   // the canvas states as `flex: 0 0 calc(50% - 5px)`. It cannot
@@ -265,12 +265,12 @@ const TITLE_CASE: Record<KKMetal, string> = { paper: 'Paper', bronze: 'Bronze', 
 /** One face in the grid: the coin in its triple rim, its name, and where it stands. */
 function FaceCard({ struck, half, onPress }: { struck: Struck; half?: boolean; onPress: () => void }) {
   const line = stateLine(struck);
-  // the canvas's `flex: 0 0 calc(50% - 5px)` — half the 369pt row less half the
-  // 10pt gap. Stated as a width because neither flex basis nor a percentage can
-  // subtract the gap, and `flex: 1` against an empty spacer cannot produce it:
-  // a flex item's base size is floored at its own padding, so the card's 24 of
-  // horizontal padding would make it grow 12 wider than the box beside it.
-  const halfW = (useWindowDimensions().width - 24 - 10) / 2;
+  // the canvas's `flex: 0 0 calc(50% - 8.5px)` — half the 353pt row less half
+  // the 17pt gap. Stated as a width because neither flex basis nor a percentage
+  // can subtract the gap, and `flex: 1` against an empty spacer cannot produce
+  // it: a flex item's base size is floored at its own padding, so the card's 24
+  // of horizontal padding would make it grow 12 wider than the box beside it.
+  const halfW = (useWindowDimensions().width - 40 - 17) / 2;
   return (
     <PressScale
       onPress={onPress}
@@ -278,13 +278,16 @@ function FaceCard({ struck, half, onPress }: { struck: Struck; half?: boolean; o
       accessibilityLabel={`${struck.face.name}. ${line}`}
       style={{
         ...(half ? { width: halfW } : { flex: 1 }),
-        minHeight: 142,
+        // `UI Final` pinned the height and centred the contents in one edit;
+        // either without the other reopens the ~26pt gap the diff closed.
+        height: 168,
+        minHeight: 168,
         borderRadius: 16,
+        borderCurve: 'continuous',
         backgroundColor: '#FFFFFF',
-        paddingTop: 14,
-        paddingHorizontal: 12,
-        paddingBottom: 12,
+        padding: 12,
         alignItems: 'center',
+        justifyContent: 'center',
         gap: 10,
       }}>
       {/* the triple rim the canvas mounts every face in */}

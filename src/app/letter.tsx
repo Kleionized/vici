@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ReactNode, useCallback, useState } from 'react';
-import { ScrollView, View, useWindowDimensions } from 'react-native';
+import { ScrollView, View, useWindowDimensions, type TextStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -142,6 +142,19 @@ export function MailArrival({
   onPrimary,
   onSecondary,
   onClose,
+  /**
+   * `Medallion Received` (90F) re-cut this arrival without changing the letter's
+   * or the drop's, so the pieces it moves are optional overrides and every
+   * default below is still the value `Letter Arrival` and `Drop Received` draw.
+   */
+  field,
+  halo,
+  eyebrow,
+  chip,
+  artTop = 106,
+  titleTop = 418,
+  titleStyle,
+  subTop = 468,
 }: {
   art: ReactNode;
   title: string;
@@ -152,15 +165,39 @@ export function MailArrival({
   onSecondary: () => void;
   /** The corner X, when leaving is not the same thing as deferring. */
   onClose?: () => void;
+  /** A gradient field in place of the letter's two washes. */
+  field?: readonly [string, string];
+  /** One centred disc of light, given as [size, top, colour, alpha, stop]. */
+  halo?: readonly [number, number, string, number, number];
+  eyebrow?: string;
+  chip?: string;
+  artTop?: number;
+  titleTop?: number;
+  titleStyle?: TextStyle;
+  subTop?: number;
 }) {
   const { width } = useWindowDimensions();
 
   return (
     <>
+      {field ? <LinearGradient colors={[field[0], field[1]]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} /> : null}
+      {halo ? (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: halo[1], alignItems: 'center' }}>
+          <Svg width={halo[0]} height={halo[0]}>
+            <Defs>
+              <RadialGradient id="ma-halo" cx="50%" cy="50%" rx="50%" ry="50%">
+                <Stop offset="0" stopColor={halo[2]} stopOpacity={halo[3]} />
+                <Stop offset={halo[4]} stopColor={halo[2]} stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Ellipse cx={halo[0] / 2} cy={halo[0] / 2} rx={halo[0] / 2} ry={halo[0] / 2} fill="url(#ma-halo)" />
+          </Svg>
+        </View>
+      ) : null}
       {/* the canvas paints the grain first and lays the two washes over it, not under */}
       <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
 
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', opacity: field ? 0 : 1 }}>
         {/* canvas blurs this by 5px; RN SVG has no blur filter, so the falloff is the gradient's */}
         <Svg width={width * 1.3} height={300} style={{ position: 'absolute', left: -width * 0.15, top: -190 }}>
           <Defs>
@@ -201,16 +238,33 @@ export function MailArrival({
             </Svg>
           </PressScale>
 
-          <View pointerEvents="none" style={{ position: 'absolute', left: '50%', top: 106, width: 260, height: 260, marginLeft: -130 }}>
+          {eyebrow ? (
+            <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 46, fontSize: 11, letterSpacing: 1.6, color: 'rgba(91,74,40,0.55)' }]}>
+              {eyebrow}
+            </AppText>
+          ) : null}
+
+          <View pointerEvents="none" style={{ position: 'absolute', left: '50%', top: artTop, width: 260, height: 260, marginLeft: -130 }}>
             {art}
           </View>
 
           <AppText
             center
-            style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 418, fontSize: 24, lineHeight: 32, letterSpacing: -0.1, color: '#1D1C1A' }]}>
+            style={[
+              sans('500'),
+              { position: 'absolute', left: 36, right: 36, top: titleTop, fontSize: 24, lineHeight: 32, letterSpacing: -0.1, color: '#1D1C1A' },
+              titleStyle,
+            ]}>
             {title}
           </AppText>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 468, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
+          {chip ? (
+            <View style={{ position: 'absolute', left: 0, right: 0, top: 422, alignItems: 'center' }}>
+              <View style={{ height: 30, borderRadius: 15, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.1)', paddingHorizontal: 14, justifyContent: 'center' }}>
+                <AppText style={[sans('600'), { fontSize: 12.5, color: '#55534E' }]}>{chip}</AppText>
+              </View>
+            </View>
+          ) : null}
+          <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: subTop, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
             {sub}
           </AppText>
 

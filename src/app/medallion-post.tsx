@@ -56,14 +56,25 @@ export default function MedallionPost() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: phase === 'arrive' ? '#F4F3F0' : '#EDECE7' }}>
+    <View style={{ flex: 1, backgroundColor: phase === 'arrive' ? '#F6EEDD' : '#EDECE7' }}>
       <StatusBar style="dark" />
 
       {phase === 'arrive' ? (
         <MailArrival
           art={<MedallionArt />}
-          title="You earned a medallion."
+          // 90F re-cut the arrival: a warm gradient field with one halo instead
+          // of the letter's two washes, an eyebrow, the medallion's own name at
+          // 27/600, and a tier chip between the name and the story.
+          field={['#F6EEDD', '#F0E1C2']}
+          halo={[340, 16, '#E2BA78', 0.38, 0.74]}
+          eyebrow="MEDALLION EARNED"
+          artTop={86}
+          title="Back on Deck"
+          titleTop={378}
+          titleStyle={{ fontSize: 27, letterSpacing: -0.2 }}
+          chip="Tier II · The Return"
           sub="Vici, tier II — five ridden. Each one shortens the next."
+          subTop={476}
           primary="Take it"
           secondary="Put it on the shelf"
           onPrimary={() => setPhase('read')}

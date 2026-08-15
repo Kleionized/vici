@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 69 · IMPLEMENTED: 131
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 66 · IMPLEMENTED: 134
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -31,8 +31,8 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101 · Rough — An argument (I) |
 | Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101B · Rough — An argument (II) |
 | Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | SPEC_EXTRACTED | 2026-08-15 | 101C · Rough — An argument (III) |
-| Email Login | Medallions | src/app/(app)/milestones.tsx | SPEC_EXTRACTED | 2026-08-15 | 88 · Medallions |
-| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | SPEC_EXTRACTED | 2026-08-15 | 88B · Medallions — Still to earn |
+| Email Login | Medallions | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88 · Medallions |
+| Email Login | Medallions Still To Earn | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88B · Medallions — Still to earn |
 | Email Login | Detail Paper | src/app/medallions/[key].tsx | NOT_STARTED | — | 89A · Vici Detail — Paper |
 | Email Login | Detail Bronze | src/app/medallions/[key].tsx | NOT_STARTED | — | 89C · Vici Detail — Bronze |
 | Email Login | Detail Silver | src/app/medallions/[key].tsx | NOT_STARTED | — | 89D · Vici Detail — Silver |
@@ -128,7 +128,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Campaign Map III | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
 | Email Login | Letter Received | src/app/letter.tsx | NOT_STARTED | — | 90E &middot; A letter arrived |
 | Email Login | Letter Week XII | src/app/letter.tsx | SPEC_EXTRACTED | 2026-08-15 | 90B · A Letter From Week XII |
-| Email Login | Medallion Received | src/app/medallion-post.tsx | SPEC_EXTRACTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
+| Email Login | Medallion Received | src/app/medallion-post.tsx | IMPLEMENTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |
 | Email Login | Reminders Setup | src/app/reminders.tsx | NOT_STARTED | — | 91 · Reminders |
 | Email Login | Auth Save Progress | src/app/(auth)/sign-up.tsx | NOT_STARTED | — | 92 · Save Progress |
 | Email Login | Free Trial Paywall | src/components/paywall/PaywallFlow.tsx | NOT_STARTED | — | 11 · Free Trial Paywall |

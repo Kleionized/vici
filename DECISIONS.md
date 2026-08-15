@@ -362,3 +362,20 @@ names the ambiguity, the reading chosen, and why.
   permission flow and an upload path, neither of which exists in the app or is
   drawn in the bundle; inventing one would be new behaviour, not a port.
   Recorded in `REPORT.md` as a known stub — the only one in this run.
+
+- **D-029 · `Medallion Received` stopped sharing the letter's arrival, so
+  `MailArrival` took overrides rather than a rewrite.** 90F re-cut this one
+  arrival — a `#F6EEDD → #F0E1C2` field with a single 340pt halo instead of the
+  letter's two washes, a `MEDALLION EARNED` eyebrow, art up at 86, the
+  medallion's own name at 27/600 rather than "You earned a medallion." at
+  24/500, a tier chip, and the story down at 476. `Letter Arrival` and
+  `Drop Received` are unchanged and still correct, so every one of those became
+  an optional prop whose default is the value those two frames draw. The
+  component's defaults were not touched.
+
+- **D-030 · The tier chip's rung name is the album's, not the canvas's.**
+  The frame reads `Tier I · The Vow`, which contradicts the disc numeral `V`
+  beside it, and `The Vow` is not a rung the album carries for this face. The
+  chip is built to the frame's geometry and typography, with the rung name taken
+  from the app's own album so it can never disagree with the medallion drawn
+  above it.
