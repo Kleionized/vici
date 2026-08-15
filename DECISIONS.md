@@ -502,3 +502,30 @@ names the ambiguity, the reading chosen, and why.
   interactive reader at `/lesson/[slug]` still serves every other lesson and is
   still keyed on by progress, reflections and the backend, so it stays. A day
   with no authored pages returns to its card rather than showing an empty board.
+
+## The daily tasks
+
+- **D-045 · `Task DNN Card` is a specimen, not a screen.** The third frame of
+  each day shows the same task twice — once under `HOME · TODAY'S TASK` as the
+  card the Today home draws, once under `NIGHT · REMINDER` as the card the night
+  check-in draws — both of which this app already builds. It gets 83 ledger rows
+  because the ledger records frames, and no route, because it documents two
+  placements rather than a third board.
+
+- **D-046 · The 83 task scenes are transcribed, not retyped.**
+  1,571 layers across the 83 days, including 106 nested `<svg>` subtrees, lifted
+  whole by `scripts/uifinal/gen-task-art.mjs` into `src/content/taskScenes.ts`
+  and rendered by one component that maps each CSS construct onto its
+  `react-native-svg` equivalent — the elliptical `border-radius` forms, the
+  gradients with their stops, the rotations, and the blurs. The 223 option
+  glyphs come out of the same pass.
+  **Platform gaps, recorded:** `conic-gradient` appears on 8 layers and has no
+  RN SVG equivalent, so those draw as the radial their first stop pair
+  describes; a CSS `mask` appears on 8 layers and is not applied — both are
+  crescent cut-outs, which read as full discs instead.
+
+- **D-047 · Marking a task done writes the day's action.**
+  The second board's pill is the canvas's `Mark as done`. It upserts the day's
+  check-in with the task as `dailyAction` and `dailyActionDone: true`, which is
+  the field the Today card and tomorrow's morning check-in already read. No new
+  storage.

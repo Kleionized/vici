@@ -159,7 +159,7 @@ export default function Today() {
                 done={lessonsDone % 6}
                 step={step}
                 stepDone={stepDone}
-                onStep={() => void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone })}
+                onStep={() => (dayLesson ? router.push(`/task/${dayLesson.day}`) : void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone }))}
                 onLesson={() => (current ? router.push(`/lesson-overview/${current.lesson.slug}`) : router.push('/lessons-browser'))}
                 onLibrary={() => router.push('/(app)/library')}
               />
