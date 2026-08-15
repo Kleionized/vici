@@ -736,3 +736,27 @@ names the ambiguity, the reading chosen, and why.
   the bundle **withdrew** (`MoodLogger`'s five mood tones came from the deleted
   `Daily Check-in`), so there is no current frame to check them against; they
   are unverifiable rather than wrong, and are left as they were.
+
+- **D-066 · All five of the reader's other marks were wrong the same way, and
+  are now transcribed.** Having found the cover scene built from a summary
+  (D-064), Pass 3's instruction to discard assumptions said to check the rest.
+  Every one was wrong:
+  - **Sun dot** (frames 2, 5): drawn as a flat `#E9D2A4` disc. The canvas draws
+    a `radial-gradient(circle at 34% 30%, #F3E3C4, #E2BA78 58%, #C49856)` disc
+    with `box-shadow: 0 2px 6px rgba(160,120,50,0.3)` **and a halo three times
+    its size** hanging off every edge, which was missing entirely.
+  - **Crescent** (3): drawn as one `#C6C3BC` path. The canvas draws a 28pt
+    `#C5C4BD` disc with an r11 circle *masked out* of it, plus a 3pt `#C6C5C0`
+    speck at the box's corner.
+  - **Sunrise** (9): drawn as a whole 48pt flat disc, a 2pt rule and two dashes.
+    The canvas draws a **half** sun — a 48pt gradient disc clipped to its top 24
+    — a 100pt halo, a 1.5pt rule and two dashes of different lengths.
+  - **Clock** (13): drawn as an inset ring with two bars. The canvas draws four
+    tick marks, an hour hand rotated −52° **about its own foot**, and a hub.
+  - **Bed + phone** (14): five boxes and no phone glow. The canvas draws eleven
+    layers including the cast shadow, the pillow's inset highlight, a 44pt
+    `#CBDAE8` glow and the phone itself gradiented and rotated 8°.
+
+  Root cause, stated plainly: these were written from the artwork spec's summary
+  table rather than from the frames the spec was summarising. The lesson is the
+  one the brief already gives — read the design file, not a description of it.

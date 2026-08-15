@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from 'react';
+import { useId, useState, type ReactNode } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Circle, ClipPath, Defs, Ellipse, LinearGradient as SvgLinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText, Grain, PressScale } from '@/components/ui';
 import { sans } from '@/lib/theme';
@@ -123,52 +123,181 @@ export function Cascade({ lines, ramp = 'fading' }: { lines: readonly string[]; 
 
 /* ------------------------------------------------------------------- marks */
 
-/** Frames 2 and 5 — a plain warm dot, 12 or 14 across. */
-export function SunDot({ size }: { size: number }) {
-  return <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: '#E9D2A4' }} />;
-}
+/**
+ * Every mark below is transcribed from its own frame. `filter: blur(Npx)` has
+ * no RN equivalent: on the gradient discs it is absorbed into their falloff,
+ * and on a solid it is redrawn as the ramp the blur actually makes.
+ */
 
-/** Frame 3 — the crescent, cut out of a 34 × 30 box. */
-export function CrescentMark() {
+/** A full-bleed SVG over a mark's own box. */
+function MarkSvg({ w, h, children }: { w: number; h: number; children: ReactNode }) {
   return (
-    <Svg width={34} height={30} viewBox="0 0 34 30">
-      <Path d="M23 2 A14 14 0 1 0 30 15 A11.2 11.2 0 0 1 23 2Z" fill="#C6C3BC" />
+    <Svg width={w} height={h} style={{ position: 'absolute', left: 0, top: 0 }} pointerEvents="none">
+      {children}
     </Svg>
   );
 }
 
-/** Frame 9 — first light over the horizon. */
-export function SunriseMark() {
+/**
+ * Frames 2 and 5 — a warm dot with a halo four times its size hanging off every
+ * edge. `radial-gradient(circle at 34% 30%, …)` names no size, so CSS resolves
+ * farthest-corner: on a 12 box from (4.08, 3.6) that is √(7.92² + 8.4²) = 11.55.
+ */
+export function SunDot({ size }: { size: number }) {
+  const id = useId().replace(/:/g, '');
+  const halo = size === 12 ? 38 : 45;
+  const off = size === 12 ? 13 : 15.5;
+  const r = Math.hypot(size * 0.66, size * 0.7);
   return (
-    <View style={{ width: 240, height: 96, overflow: 'hidden' }}>
-      <View style={{ position: 'absolute', left: 96, top: 24, width: 48, height: 48, borderRadius: 24, backgroundColor: '#E9D2A4' }} />
-      <View style={{ position: 'absolute', left: 0, top: 68, width: 240, height: 2, borderRadius: 1, backgroundColor: '#D6D5D0' }} />
-      <View style={{ position: 'absolute', left: 40, top: 80, width: 44, height: 2, borderRadius: 1, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: 156, top: 80, width: 44, height: 2, borderRadius: 1, backgroundColor: '#E0DFDA' }} />
+    <View style={{ width: size, height: size }}>
+      <Svg width={halo} height={halo} style={{ position: 'absolute', left: -off, top: -off }} pointerEvents="none">
+        <Defs>
+          <RadialGradient id={`sdh${id}`} cx={halo / 2} cy={halo / 2} rx={halo / 2} ry={halo / 2} gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.4} />
+            <Stop offset="0.76" stopColor="#E2BA78" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Circle cx={halo / 2} cy={halo / 2} r={halo / 2} fill={`url(#sdh${id})`} />
+      </Svg>
+      <View style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', boxShadow: '0 2px 6px rgba(160,120,50,0.3)' }}>
+        <MarkSvg w={size} h={size}>
+          <Defs>
+            <RadialGradient id={`sd${id}`} cx={size * 0.34} cy={size * 0.3} rx={r} ry={r} gradientUnits="userSpaceOnUse">
+              <Stop offset="0" stopColor="#F3E3C4" />
+              <Stop offset="0.58" stopColor="#E2BA78" />
+              <Stop offset="1" stopColor="#C49856" />
+            </RadialGradient>
+          </Defs>
+          <Circle cx={size / 2} cy={size / 2} r={size / 2} fill={`url(#sd${id})`} />
+        </MarkSvg>
+      </View>
     </View>
   );
 }
 
-/** Frame 13 — the clock, hands at the hour the night turns. */
+/**
+ * Frame 3 — a 28pt `#C5C4BD` disc at (0, 2) with a circle of r 11 cut out of it
+ * at (23, 9), plus a 3pt speck at the box's top right.
+ */
+export function CrescentMark() {
+  const id = useId().replace(/:/g, '');
+  return (
+    <View style={{ width: 34, height: 30 }}>
+      <MarkSvg w={34} h={30}>
+        <Defs>
+          <RadialGradient id={`cmc${id}`} cx="23" cy="11" rx="11.5" ry="11.5" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#000000" />
+            <Stop offset="0.9565" stopColor="#000000" />
+            <Stop offset="1" stopColor="#FFFFFF" />
+          </RadialGradient>
+          <Mask id={`cmm${id}`}>
+            <Rect x={0} y={2} width={28} height={28} fill="#FFFFFF" />
+            <Circle cx={23} cy={11} r={11.5} fill={`url(#cmc${id})`} />
+          </Mask>
+        </Defs>
+        <Circle cx={14} cy={16} r={14} fill="#C5C4BD" mask={`url(#cmm${id})`} />
+        <Circle cx={32.5} cy={1.5} r={1.5} fill="#C6C5C0" />
+      </MarkSvg>
+    </View>
+  );
+}
+
+/**
+ * Frame 9 — the sun half-risen: a 48pt disc clipped to its top 24, on a horizon
+ * rule with a dash either side.
+ */
+export function SunriseMark() {
+  const id = useId().replace(/:/g, '');
+  return (
+    <View style={{ width: 240, height: 96 }}>
+      <MarkSvg w={240} h={96}>
+        <Defs>
+          <RadialGradient id={`srh${id}`} cx="120" cy="58" rx="50" ry="50" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.42} />
+            <Stop offset="0.76" stopColor="#E2BA78" stopOpacity={0} />
+          </RadialGradient>
+          {/* `circle at 40% 30%` on a 48 box → farthest-corner √(28.8² + 33.6²) */}
+          <RadialGradient id={`srs${id}`} cx="115.2" cy="70.4" rx="44.25" ry="44.25" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#F3E3C4" />
+            <Stop offset="0.58" stopColor="#E2BA78" />
+            <Stop offset="1" stopColor="#C49856" />
+          </RadialGradient>
+          <ClipPath id={`src${id}`}>
+            <Rect x={96} y={56} width={48} height={24} />
+          </ClipPath>
+        </Defs>
+        <Circle cx={120} cy={58} r={50} fill={`url(#srh${id})`} />
+        <Circle cx={120} cy={80} r={24} fill={`url(#srs${id})`} clipPath={`url(#src${id})`} />
+        <Rect x={0} y={79} width={240} height={1.5} rx={0.75} fill="#D6D5D0" />
+        <Rect x={24} y={78} width={26} height={3.5} rx={1.75} fill="#E4E3DE" />
+        <Rect x={192} y={78} width={20} height={3.5} rx={1.75} fill="#E4E3DE" />
+      </MarkSvg>
+    </View>
+  );
+}
+
+/** Frame 13 — the clock: four ticks, two hands and a hub, on a ringed face. */
 export function ClockMark() {
   return (
     <View style={{ width: 96, height: 96 }}>
-      <View style={{ position: 'absolute', left: 0, top: 0, width: 96, height: 96, borderRadius: 48, boxShadow: 'inset 0 0 0 2.5px #D6D5D0' }} />
-      <View style={{ position: 'absolute', left: 46, top: 26, width: 3, height: 24, borderRadius: 1.5, backgroundColor: '#8A857C' }} />
-      <View style={{ position: 'absolute', left: 46, top: 46, width: 20, height: 3, borderRadius: 1.5, backgroundColor: '#8A857C' }} />
+      <View style={{ position: 'absolute', left: 0, top: 0, width: 96, height: 96, borderRadius: 48, backgroundColor: '#FFFFFF', boxShadow: 'inset 0 0 0 2.5px #E4E2DB, 0 8px 20px rgba(40,38,32,0.1)' }} />
+      <View style={{ position: 'absolute', left: 46.75, top: 8, width: 2.5, height: 7, borderRadius: 1, backgroundColor: '#C9C7C0' }} />
+      <View style={{ position: 'absolute', left: 46.75, top: 81, width: 2.5, height: 7, borderRadius: 1, backgroundColor: '#C9C7C0' }} />
+      <View style={{ position: 'absolute', left: 8, top: 46.75, width: 7, height: 2.5, borderRadius: 1, backgroundColor: '#C9C7C0' }} />
+      <View style={{ position: 'absolute', left: 81, top: 46.75, width: 7, height: 2.5, borderRadius: 1, backgroundColor: '#C9C7C0' }} />
+      <View style={{ position: 'absolute', left: 46.5, top: 20, width: 3, height: 28, borderRadius: 1.5, backgroundColor: '#1D1C1A' }} />
+      {/* the hour hand turns about its own foot, not its centre */}
+      <View
+        style={{ position: 'absolute', left: 46.5, top: 28, width: 3, height: 20, borderRadius: 1.5, backgroundColor: '#1D1C1A', transform: [{ rotate: '-52deg' }], transformOrigin: '50% 100%' }}
+      />
+      <View style={{ position: 'absolute', left: 44, top: 44, width: 8, height: 8, borderRadius: 4, backgroundColor: '#1D1C1A' }} />
     </View>
   );
 }
 
-/** Frame 14 — the bed, with the phone still in it. */
+/** Frame 14 — the bed with the phone still lit in it. */
 export function BedPhoneMark() {
+  const id = useId().replace(/:/g, '');
   return (
-    <View style={{ width: 240, height: 100, overflow: 'hidden' }}>
-      <View style={{ position: 'absolute', left: 40, top: 20, width: 10, height: 62, borderRadius: 4, backgroundColor: '#D6D5D0' }} />
-      <View style={{ position: 'absolute', left: 48, top: 52, width: 120, height: 26, borderRadius: 7, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: 58, top: 42, width: 40, height: 14, borderRadius: 6, backgroundColor: '#C9C8C1' }} />
-      <View style={{ position: 'absolute', left: 160, top: 76, width: 8, height: 12, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
-      <View style={{ position: 'absolute', left: 108, top: 44, width: 18, height: 30, borderRadius: 4, backgroundColor: '#F9F8F4', boxShadow: '0 0 0 1.5px #D6D5D0' }} />
+    <View style={{ width: 240, height: 100 }}>
+      <MarkSvg w={240} h={100}>
+        <Defs>
+          <RadialGradient id={`bps${id}`} cx="121" cy="86.5" rx="65" ry="5.5" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#000000" stopOpacity={0.08} />
+            <Stop offset="0.5" stopColor="#000000" stopOpacity={0.058} />
+            <Stop offset="0.78" stopColor="#000000" stopOpacity={0.024} />
+            <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+          </RadialGradient>
+          <RadialGradient id={`bpg${id}`} cx="140" cy="36" rx="22" ry="22" gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor="#CBDAE8" stopOpacity={0.5} />
+            <Stop offset="0.74" stopColor="#CBDAE8" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={121} cy={86.5} rx={65} ry={5.5} fill={`url(#bps${id})`} />
+      </MarkSvg>
+      <View style={{ position: 'absolute', left: 52, top: 20, width: 10, height: 64, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomRightRadius: 3, borderBottomLeftRadius: 3, backgroundColor: '#D6D5D0' }} />
+      <View style={{ position: 'absolute', left: 60, top: 52, width: 110, height: 24, borderTopLeftRadius: 6, borderTopRightRadius: 10, borderBottomRightRadius: 5, borderBottomLeftRadius: 5, backgroundColor: '#E0DFDA' }} />
+      <View style={{ position: 'absolute', left: 96, top: 50, width: 74, height: 26, borderTopLeftRadius: 12, borderTopRightRadius: 12, borderBottomRightRadius: 5, borderBottomLeftRadius: 4, backgroundColor: '#C9C8C1' }} />
+      <View style={{ position: 'absolute', left: 102, top: 56, width: 58, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.55)' }} />
+      <View
+        style={{ position: 'absolute', left: 64, top: 43, width: 28, height: 14, borderTopLeftRadius: 7, borderTopRightRadius: 7, borderBottomRightRadius: 5, borderBottomLeftRadius: 5, backgroundColor: '#FFFFFF', boxShadow: 'inset 0 -2.5px 0 #D6D5D0, 0 1.5px 3px rgba(40,38,32,0.14)' }}
+      />
+      <View style={{ position: 'absolute', left: 62, top: 76, width: 6, height: 8, borderBottomRightRadius: 2, borderBottomLeftRadius: 2, backgroundColor: '#C6C5C0' }} />
+      <View style={{ position: 'absolute', left: 162, top: 76, width: 6, height: 8, borderBottomRightRadius: 2, borderBottomLeftRadius: 2, backgroundColor: '#C6C5C0' }} />
+      <MarkSvg w={240} h={100}>
+        <Circle cx={140} cy={36} r={22} fill={`url(#bpg${id})`} />
+      </MarkSvg>
+      <View style={{ position: 'absolute', left: 132, top: 26, width: 14, height: 22, borderRadius: 3, overflow: 'hidden', boxShadow: '0 0 8px rgba(190,210,230,0.35)', transform: [{ rotate: '8deg' }] }}>
+        <MarkSvg w={14} h={22}>
+          <Defs>
+            <SvgLinearGradient id={`bpp${id}`} x1="0" y1="0" x2="0" y2="22" gradientUnits="userSpaceOnUse">
+              <Stop offset="0" stopColor="#12151B" />
+              <Stop offset="1" stopColor="#1A2027" />
+            </SvgLinearGradient>
+          </Defs>
+          <Rect x={0} y={0} width={14} height={22} fill={`url(#bpp${id})`} />
+        </MarkSvg>
+      </View>
     </View>
   );
 }
