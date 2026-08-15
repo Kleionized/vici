@@ -182,7 +182,7 @@ export function TriggerCard({ label, mark, selected, onPress, width }: { label: 
         gap: 10,
       }}>
       <View style={{ width: 46, height: 46, borderRadius: 23, backgroundColor: selected ? '#131313' : '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
-        <TriggerMark name={mark} color={selected ? '#F4F3F0' : '#1D1C1A'} />
+        <TriggerMark name={mark} color={selected ? '#F4F3F0' : '#1D1C1A'} cut={selected ? '#131313' : '#F1EFE9'} />
       </View>
       <AppText style={[sans(selected ? '600' : '500'), { fontSize: 14, color: '#1D1C1A' }]}>{label}</AppText>
     </PressScale>
@@ -403,7 +403,10 @@ export function SummaryRow({ label, value, last = false }: { label: string; valu
       <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>{label}</AppText>
       {/* the canvas value box hugs its text against the right padding edge, so
           it only shrinks — it never claims the row's spare width */}
-      <AppText numberOfLines={2} style={[sans('500'), { flexShrink: 1, fontSize: 14.5, color: '#1D1C1A', textAlign: 'right' }]}>
+      {/* the canvas's value span sets size, weight and colour and nothing else:
+          no alignment, no clamp, so a long trigger join wraps rather than
+          truncating */}
+      <AppText style={[sans('500'), { flexShrink: 1, fontSize: 14.5, color: '#1D1C1A' }]}>
         {value}
       </AppText>
     </View>

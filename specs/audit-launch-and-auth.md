@@ -584,49 +584,47 @@ Login-Typing 46, Create-Account 75, Auth-Save-Progress 42, Reminders-Setup 54.
 
 ### MISMATCH\* (RN cannot express the CSS; substitution named)
 
-All of these are `filter: blur(…)`, which react-native-svg and RN views have no equivalent for.
-Where a wash is involved the app substitutes a `closest-side` radial that already dies at its own
-edge, plus one extra interpolation stop that softens the ramp — so the falloff curve differs from
-the design's literal two-stop linear ramp even though the endpoints match.
+Twenty of these are `filter: blur(...)` and its knock-on, which react-native-svg and RN views
+have no equivalent for; the remaining three are caret geometry iOS owns. Where a wash is involved
+the app substitutes a `closest-side` radial that already dies at its own edge, **plus** one extra
+interpolation stop (`Waterline.tsx:51`, alpha `peak x 0.42` at half the fade radius) standing in
+for the blur -- so the falloff curve deviates from the design's literal two-stop linear ramp even
+though both endpoints match. Each wash therefore books two rows: the lost `filter`, and the
+inserted stop.
 
-3. `src/components/ui/Waterline.tsx:84` — Splash wash A: design `filter: blur(7px)`; app none.
-   Substitution also inserts a stop at 36% with alpha `0.084` where the design's linear ramp reads
-   `0.100` (`Waterline.tsx:51`, `opacity * 0.42`).
-4. `src/components/ui/Waterline.tsx:85` — Splash wash B: design `blur(6px)`; app none. Mid-stop
-   `0.042` vs design `0.050` at 35%.
-5. `src/components/ui/Waterline.tsx:86` — Splash wash C: design `blur(5px)`; app none. Mid-stop
-   `0.0672` vs `0.080` at 36%.
-6. `src/components/ui/Waterline.tsx:87` — Splash wash D: design `blur(8px)`; app none. Mid-stop
-   `0.0588` vs `0.070` at 36%.
-7. `src/components/ui/Waterline.tsx:134` — Standing-Guard wash A: design `blur(6px)`; app none.
-   Mid-stop `0.1428` vs `0.170` at 36%.
-8. `src/components/ui/Waterline.tsx:135` — Standing-Guard wash B: design `blur(8px)`; app none.
-   Mid-stop `0.1092` vs `0.130` at 35%.
-9. `src/components/ui/Waterline.tsx:136` — Standing-Guard wash C: design `blur(6px)`; app none.
-   Mid-stop `0.126` vs `0.150` at 36%.
-10. `src/components/ui/Waterline.tsx:137` — Standing-Guard wash D: design `blur(8px)`; app none.
-    Mid-stop `0.0924` vs `0.110` at 35%.
-11. `src/components/auth/kit.tsx:129` — Login top glow: design `blur(5px)`; app none. (All three
-    stops — 0.4 / 0.12 @ 55% / 0 @ 75% — are reproduced literally, so only the blur is lost.)
-12. `src/components/auth/kit.tsx:130` — Login bottom glow: design `blur(8px)`; app none. (Stops
-    0.22 / 0 @ 72% reproduced literally.)
-13. `src/components/auth/kit.tsx:63` — envelope bloom: design `blur(4px)`; app none. (Stops
-    0.4 / 0 @ 74% reproduced literally.)
-14. `src/components/auth/kit.tsx:72-76` — envelope ground shadow: design is a flat
-    `rgba(0,0,0,0.10)` ellipse with `blur(4px)`; app substitutes a radial `#000 0.14 → #000 0`
-    across the same 120 × 12 ellipse — the centre alpha is raised from **0.10 to 0.14** to pay for
+3. `src/components/ui/Waterline.tsx:84` -- Splash wash A `filter`: design `blur(7px)`; app none.
+4. `src/components/ui/Waterline.tsx:84` -- Splash wash A stop list: design ramps 0.20 -> 0 linearly
+   (0.100 at 36%); app inserts a stop at 36% with alpha `0.084`.
+5. `src/components/ui/Waterline.tsx:85` -- Splash wash B `filter`: design `blur(6px)`; app none.
+6. `src/components/ui/Waterline.tsx:85` -- Splash wash B stop list: design 0.050 at 35%; app `0.042`.
+7. `src/components/ui/Waterline.tsx:86` -- Splash wash C `filter`: design `blur(5px)`; app none.
+8. `src/components/ui/Waterline.tsx:86` -- Splash wash C stop list: design 0.080 at 36%; app `0.0672`.
+9. `src/components/ui/Waterline.tsx:87` -- Splash wash D `filter`: design `blur(8px)`; app none.
+10. `src/components/ui/Waterline.tsx:87` -- Splash wash D stop list: design 0.070 at 36%; app `0.0588`.
+11. `src/components/ui/Waterline.tsx:134` -- Standing-Guard wash A `filter`: design `blur(6px)`; app none.
+12. `src/components/ui/Waterline.tsx:134` -- Standing-Guard wash A stop list: design 0.170 at 36%; app `0.1428`.
+13. `src/components/ui/Waterline.tsx:135` -- Standing-Guard wash B `filter`: design `blur(8px)`; app none.
+14. `src/components/ui/Waterline.tsx:135` -- Standing-Guard wash B stop list: design 0.130 at 35%; app `0.1092`.
+15. `src/components/ui/Waterline.tsx:136` -- Standing-Guard wash C `filter`: design `blur(6px)`; app none.
+16. `src/components/ui/Waterline.tsx:136` -- Standing-Guard wash C stop list: design 0.150 at 36%; app `0.126`.
+17. `src/components/ui/Waterline.tsx:137` -- Standing-Guard wash D `filter`: design `blur(8px)`; app none.
+18. `src/components/ui/Waterline.tsx:137` -- Standing-Guard wash D stop list: design 0.110 at 35%; app `0.0924`.
+19. `src/components/auth/kit.tsx:129` -- Login top glow `filter`: design `blur(5px)`; app none. All
+    three stops (0.4 / 0.12 @ 55% / 0 @ 75%) are reproduced literally, so only the blur is lost.
+20. `src/components/auth/kit.tsx:130` -- Login bottom glow `filter`: design `blur(8px)`; app none.
+    Stops 0.22 / 0 @ 72% reproduced literally.
+21. `src/components/auth/kit.tsx:63` -- envelope bloom `filter`: design `blur(4px)`; app none. Stops
+    0.4 / 0 @ 74% reproduced literally.
+22. `src/components/auth/kit.tsx:72-76` -- envelope ground shadow fill: design is a flat
+    `rgba(0,0,0,0.10)` ellipse under `blur(4px)`; the app substitutes a radial `#000 0.14 -> #000 0`
+    across the same 120 x 12 ellipse -- the centre alpha is raised from **0.10 to 0.14** to pay for
     the missing blur.
-15. `src/app/(auth)/sign-in.tsx:304` — Login-Typing caret width: design draws a 2.5px bar; the app
-    can only tint the system caret (`selectionColor={colors.ink}`), whose width iOS owns.
-16. `src/app/(auth)/sign-in.tsx:304` — caret height: design 30px; system caret height is derived
-    from the font.
-17. `src/app/(auth)/sign-in.tsx:304` — caret border-radius: design `1px`; not settable.
-18. `src/app/(auth)/sign-in.tsx:304` — caret `margin-left: 2`: design insets the caret 2px from the
-    last glyph; not settable.
-19–22. The four Splash washes' inserted mid-stops and the four Standing-Guard ones are counted
-    inside rows 3–10 above; the remaining four MISMATCH\* rows in the tables are the per-wash
-    "intermediate stops" entries for Splash A–D, which are the same substitution recorded against
-    the stop list rather than the filter. No separate app change is available for them.
+23. `src/app/(auth)/sign-in.tsx:304` -- Login-Typing caret size: design draws a 2.5 x 30 bar; the app
+    can only tint the system caret (`selectionColor={colors.ink}` = `#131313`), whose width and
+    height iOS owns.
+24. `src/app/(auth)/sign-in.tsx:304` -- caret `border-radius: 1px`: not settable.
+25. `src/app/(auth)/sign-in.tsx:304` -- caret `margin-left: 2`: the design insets the caret 2px from
+    the last glyph; not settable.
 
 ### Non-mismatch observations worth recording
 
@@ -655,3 +653,17 @@ the design's literal two-stop linear ramp even though the endpoints match.
   (`0 0 0 2px rgba(0,0,0,0.24)`), the optional password field, the placeholder tone on
   Create-Account's two filled fields, the `Message` error/notice slots (four of them), and the
   loading pill labels. None of them render anything in the state the frames draw.
+
+### Post-audit note (state of the working tree)
+
+Both files named under "MISMATCH (app can close these)" were read for this audit at their
+pre-edit state (`returnKeyType="next"`, `where’s` with U+2019). While the audit was being
+written, an external process modified both — this audit did not edit any app source. As of the
+last check:
+
+- `src/app/(auth)/sign-in.tsx:309` now reads `returnKeyType="done"` — finding 2 closed correctly.
+- `src/app/reminders.tsx:25` now reads
+  `body: 'Twenty seconds — where's your head at today?'` — the apostrophe was swapped to U+0027
+  **inside a single-quoted string literal without escaping it**, which is a TypeScript syntax
+  error (unterminated string). The literal must be escaped (`where\'s`) or the string re-quoted
+  with double quotes before this file will compile.

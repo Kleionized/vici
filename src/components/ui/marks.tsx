@@ -144,7 +144,13 @@ export type TriggerMarkName =
   | 'argument'
   | 'craving';
 
-export function TriggerMark({ name, color }: { name: TriggerMarkName; color: string }) {
+/**
+ * `cut` is the disc the glyph sits on. The phone is the one mark drawn as a
+ * cut-out rather than a stroke, so its screen and its home dot have to take the
+ * disc's own colour — `#F1EFE9` at rest, `#131313` once the tile is selected —
+ * and hardcoding either leaves a cream screen sitting on ink.
+ */
+export function TriggerMark({ name, color, cut = '#F1EFE9' }: { name: TriggerMarkName; color: string; cut?: string }) {
   return (
     <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
       {name === 'stress' && <Path d="M13 2L4 13h6l-1 9 9-12h-6z" fill={color} />}
@@ -179,11 +185,14 @@ export function TriggerMark({ name, color }: { name: TriggerMarkName; color: str
       {name === 'phone' && (
         <>
           <Rect x={6} y={2.5} width={12} height={19} rx={3} fill={color} />
-          <Rect x={8} y={5} width={8} height={11} rx={1} fill="#F1EFE9" />
-          <Circle cx={12} cy={18.6} r={1} fill="#F1EFE9" />
+          <Rect x={8} y={5} width={8} height={11} rx={1} fill={cut} />
+          <Circle cx={12} cy={18.6} r={1} fill={cut} />
         </>
       )}
-      {name === 'lateNight' && <Path d="M20.1 15.1A8.7 8.7 0 1 1 8.9 3.9 8.7 8.7 0 0 0 20.1 15.1Z" fill={color} />}
+      {/* the canvas states `fill-rule="evenodd"` here; the crescent is a simple
+          closed curve so both rules paint the same pixels, but the literal is
+          the literal */}
+      {name === 'lateNight' && <Path d="M20.1 15.1A8.7 8.7 0 1 1 8.9 3.9 8.7 8.7 0 0 0 20.1 15.1Z" fill={color} fillRule="evenodd" />}
       {name === 'argument' && (
         <>
           <Path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h9A1.5 1.5 0 0 1 15 5.5v5A1.5 1.5 0 0 1 13.5 12H8l-3.4 3v-3H4.5A1.5 1.5 0 0 1 3 10.5z" fill={color} />

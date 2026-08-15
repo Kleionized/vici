@@ -306,7 +306,7 @@ function EmailInput({
       autoCapitalize="none"
       autoComplete="email"
       textContentType="emailAddress"
-      returnKeyType="next"
+      returnKeyType="done"
       style={[
         sans('400'),
         { flex: 1, fontSize: size, color: colors.text, paddingVertical: 0 },

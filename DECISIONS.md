@@ -602,3 +602,29 @@ names the ambiguity, the reading chosen, and why.
   - "Where they showed up" read `precedingState.location` and `note`, neither of
     which was written. It now reads the place `SOS — Where Are You` records.
   - The trigger chip read `Tired` where canvas 037 reads `Tiredness`.
+
+- **D-055 · Five more closeable findings from the launch, urge-log and
+  onboarding audits.**
+  - `reminders.tsx` wrote `where’s` (U+2019) where `Reminders Setup` writes
+    `where's` (U+0027). Unlike the `Root Loop` case (D-050), every other
+    apostrophe in this family is straight in both the frames and the app, so
+    here the frame is consistent and the app was the outlier.
+  - `sign-in.tsx` set `returnKeyType="next"` where `Login Typing` draws a
+    prominent return key labelled `done`.
+  - The phone trigger glyph is the one mark drawn as a cut-out, so its screen
+    and home dot must take the **disc's** colour rather than a hardcoded
+    `#F1EFE9` — a selected tile was showing a cream screen on ink.
+  - The late-night crescent was missing the canvas's `fill-rule="evenodd"`.
+    Both rules paint the same pixels on a simple closed curve; the literal is
+    still the literal.
+  - `Urge Log Done`'s summary value carried a right alignment and a two-line
+    clamp the canvas does not declare, so a long trigger join truncated where
+    the design wraps.
+
+- **D-056 · `Urge Log When` draws the time wheel at rest.** The audit reads the
+  frame as the step's resting state — "Just now" is still the selected chip and
+  "Specify time" carries no active treatment, yet the wheel card is drawn at
+  canvas 330. The app hides it behind a tap. **Not changed in this run**: the
+  step's behaviour is the app's (rule 5), the wheel is reachable, and opening it
+  by default is a product call about how much the step asks for up front.
+  Recorded in `REPORT.md` as the one open finding this run leaves behind.

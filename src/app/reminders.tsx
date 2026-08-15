@@ -22,7 +22,7 @@ const laurelMark = require('../../assets/images/laurel-mark.webp');
 // The banners as the canvas words them — "now" is the note that just landed,
 // not a stored preference, so neither time is read from settings.
 const NOTES: { top: number; title: string; when: string; body: string; opacity: number }[] = [
-  { top: 226, title: 'Morning check-in', when: 'now', body: 'Twenty seconds — where’s your head at today?', opacity: 1 },
+  { top: 226, title: 'Morning check-in', when: 'now', body: "Twenty seconds — where's your head at today?", opacity: 1 },
   { top: 338, title: 'Late night ahead', when: '10:41 PM', body: 'Your risky window. The wave tool is one tap away.', opacity: 0.55 },
 ];
 
