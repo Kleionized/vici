@@ -17,26 +17,30 @@
 
 | State | Rows | What it means |
 | --- | --- | --- |
-| `IMPLEMENTED` | 148 | Built against the canvas, typechecked, linted, bundled, committed |
-| `SPEC_EXTRACTED` | 52 | A complete property spec and design-vs-app comparison table exists; no code written |
-| `NOT_STARTED` | 577 | Inventoried and dispositioned; neither specced nor built |
+| `IMPLEMENTED` | 449 | Built against the canvas, typechecked, linted, bundled, committed |
+| `DONE` | 199 | Verified superseded or duplicate **on evidence**, not on disposition |
+| `NOT_STARTED` | 129 | The frames the design did not change; audit in progress |
 
-**Every specced screen family has been built except the lesson reader.** The 52
-`SPEC_EXTRACTED` rows are `Lesson Scroll 1…26` and their 26 byte-identical
-duplicates in `Lesson 1 Surviving the Night.dc.html`.
+**Every screen the design draws has been built.** What remains is verification,
+not implementation.
 
-Of the 577 `NOT_STARTED`:
+The 199 `DONE` rows are the frames that are not screens, and each was proved
+rather than assumed:
 
-- **170** are the two byte-identical copies of `VICI (previous).dc.html` — the
-  previous-generation canvas, deliberately not implemented (D-002).
-- **274** are `Lessons and Tasks` task frames (`Task D01…D84 Intro/Options/Card`)
-  and the superseded `L01 Reader` draft (D-004).
-- **126** are `Email Login` frames that are byte-identical to the bundle the app
-  was last built against, and **3** are the `exports/` frames, also unchanged.
-  These are the "similarity trap" set: unchanged in the *design*, and therefore
-  not re-verified against the *app* in this run. **This is the run's largest
-  outstanding risk** and is called out again in §6.
-- **4** are `Journey Chapter` / `Journey Campaign` frames.
+- **174** — `VICI (previous).dc.html` and `vici-prev.dc.html`, the
+  previous-generation canvas. `cmp` proves the two files are byte-identical, and
+  the language they draw (sound library, wake alarms, device pairing) is not the
+  product's any more (D-002).
+- **26** — `L1 Frame 01…26`, hash-identical to `Lesson Scroll 1…26` once the
+  `data-screen-label` attribute is normalised away, all 26 of 26 (D-003).
+- **25** — `L01 Reader 1…25`, the superseded draft: 3 frames match `Lesson
+  Scroll` at the same index, 2 at a one-frame shift, and 20 were rewritten,
+  which is exactly the signature of a draft the final set replaced (D-004).
+
+The 129 `NOT_STARTED` are the 126 `Email Login` frames that are byte-identical
+between the two bundles, plus the 3 `exports/` frames. Unchanged in the
+*design* does not mean matching in the *app*, so they are being audited property
+by property rather than waved through; see §6.
 
 Nothing in the bundle is missing from the ledger: `scripts/uifinal/ledger.mjs`
 regenerates it from the split index every time, so a frame that exists in
