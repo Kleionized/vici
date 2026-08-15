@@ -1,5 +1,5 @@
 import { useId, useState, type ReactNode } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, ClipPath, Defs, Ellipse, LinearGradient as SvgLinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -7,132 +7,38 @@ import { AppText, Grain, PressScale } from '@/components/ui';
 import { sans } from '@/lib/theme';
 
 /**
- * `Lesson Scroll 1…26` — the reader `UI Final` replaced the old page kinds with.
+ * The reader's shell and its marks.
  *
  * Every frame is the same recipe: a `Close`, a 2pt progress hairline, and a
- * column centred in the **whole** 852 with `gap:48` and `padding:0 38px`. There
- * is no absolute top for any body content anywhere in the set — vertical
- * position is a function of how tall the stack is — and there is no CTA pill on
- * 24 of the 26 frames. The set is named "Scroll" and the cover's chevron says
- * why: the page advances by tapping through, not by a pinned button.
+ * column centred in the **whole** 852 — status bar and home indicator included
+ * — so the stack's centre is the screen's centre. Body content has no absolute
+ * top anywhere in the 1,398 frames; vertical position is a function of how tall
+ * the stack is. Most pages carry no pill at all: the set is named "Scroll" and
+ * the cover's chevron says why, the page advances by tapping through.
  *
- * The eight slots below are the whole vocabulary. Nothing in frames 1–26 uses a
- * text style that is not one of them.
+ * The type itself is no longer a fixed set of slots here. The bundle draws 84
+ * lessons in ten ramps, so a run of copy carries the ramp its own frame states
+ * and `components/lesson/reader.tsx` draws it — see `content/lessonReader.ts`.
+ * What stays here is the shell and the marks, which are shared by every lesson.
  */
 
 const noiseDark = require('../../../assets/images/noise-dark.png');
 
-/**
- * The gap between every child of the stack. It is per board, not one value:
- * the cover uses 36, the pick-one board 40, the task board 30 and the
- * completion board 44; everything else 48.
- */
+/** The gap a page uses when it states none: the reading pages' own value. */
 const STACK_GAP = 48;
-const COVER_GAP = 36;
 
 /* ------------------------------------------------------------------- slots */
 
-/** Cover only — authored in caps; the canvas sets no `text-transform`. */
-export function Eyebrow({ children }: { children: string }) {
-  return <AppText center style={[sans('600'), { fontSize: 12, letterSpacing: 1.8, color: '#B0AEA8' }]}>{children}</AppText>;
-}
 
-/** Cover only. */
-export function Title({ children }: { children: string }) {
-  return <AppText center style={[sans('500'), { maxWidth: 280, fontSize: 28, lineHeight: 40, color: '#1D1C1A' }]}>{children}</AppText>;
-}
 
-/** Cover only — the reading time. */
-export function Meta({ children }: { children: string }) {
-  return <AppText center style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>{children}</AppText>;
-}
 
-/**
- * The canvas gets three different gaps out of one `gap` value by dropping
- * zero-width spacers into the column, so a 14 spacer means 36 + 14 + 36 = 86 of
- * separation. Kept as spacers rather than margins so the arithmetic stays the
- * canvas's own.
- */
-export function Spacer({ height }: { height: number }) {
-  return <View style={{ height }} />;
-}
 
-/**
- * The canvas names `'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif`.
- * RN takes a single family, so this is that list resolved per platform.
- */
-const EPIGRAPH_FAMILY = Platform.select({ ios: 'Iowan Old Style', android: 'serif', default: "Iowan Old Style, Palatino, Georgia, serif" }) as string;
 
-/** Frame 2 and 25 — the epigraph, set in the serif the canvas names. */
-export function Epigraph({ children }: { children: string }) {
-  return (
-    <AppText
-      center
-      style={{
-        maxWidth: 300,
-        // RN resolves one family name, not a CSS stack. `Iowan Old Style` ships
-        // with iOS under exactly that name; elsewhere the canvas's own next
-        // choice that the platform has is Georgia.
-        fontFamily: EPIGRAPH_FAMILY,
-        fontWeight: '500',
-        fontSize: 28,
-        lineHeight: 44,
-        color: '#1D1C1A',
-      }}>
-      {children}
-    </AppText>
-  );
-}
 
-/** A 22 × 1.5 rule either side of a caps name. */
-export function Attribution({ children }: { children: string }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
-      <View style={{ width: 22, height: 1.5, backgroundColor: '#C9C7C0' }} />
-      <AppText style={[sans('600'), { fontSize: 12, letterSpacing: 1.8, color: '#B0AEA8' }]}>{children}</AppText>
-      <View style={{ width: 22, height: 1.5, backgroundColor: '#C9C7C0' }} />
-    </View>
-  );
-}
 
-/**
- * The line the page exists to land. Frame 3 declares `max-width:280` where the
- * other six declare 300; six against one, and frame 3's own copy breaks to two
- * lines at either width, so 300 is the slot's value.
- */
-export function Statement({ maxWidth, children }: { maxWidth?: number; children: string }) {
-  return <AppText center style={[sans('500'), { maxWidth: maxWidth ?? 300, fontSize: 26, lineHeight: 38, color: '#1D1C1A' }]}>{children}</AppText>;
-}
 
-/**
- * The paragraph. The two colours are a rhetorical pair rather than a theme
- * switch: soft sets the situation, ink is the sentence the page is for.
- */
-export function Prose({ tone = 'soft', children }: { tone?: 'soft' | 'ink'; children: string }) {
-  return (
-    <AppText center style={[sans('400'), { maxWidth: 310, fontSize: 21, lineHeight: 36, color: tone === 'ink' ? '#1D1C1A' : '#55534E' }]}>
-      {children}
-    </AppText>
-  );
-}
 
-/** Three graded lines: fading for what the lesson dismisses, solid for what it keeps. */
-const CASCADE_FADE = ['#8B8882', '#A5A29B', '#BBB8B1'];
 
-export function Cascade({ lines, ramp = 'fading' }: { lines: readonly string[]; ramp?: 'fading' | 'solid' }) {
-  return (
-    <View style={{ alignItems: 'center', gap: 26 }}>
-      {lines.map((line, index) => (
-        <AppText
-          key={line}
-          center
-          style={[sans('500'), { maxWidth: 300, fontSize: 22, lineHeight: 32, color: ramp === 'solid' ? '#1D1C1A' : CASCADE_FADE[index] ?? CASCADE_FADE[2] }]}>
-          {line}
-        </AppText>
-      ))}
-    </View>
-  );
-}
 
 /* ------------------------------------------------------------------- marks */
 
@@ -329,6 +235,7 @@ export function LessonScroll({
   onClose,
   onNext,
   footer,
+  interactive = false,
   children,
 }: {
   index: number;
@@ -336,6 +243,13 @@ export function LessonScroll({
   gap?: number;
   /** The cover alone carries the scroll chevron. */
   chevron?: boolean;
+  /**
+   * Whether anything in the stack takes a touch. On the canvas the whole board
+   * is the control, and on a reading page nothing else is — so the stack stays
+   * transparent and a tap anywhere turns the page, including a tap that lands
+   * on a paragraph. Only the boards that ask a question opt in.
+   */
+  interactive?: boolean;
   onClose: () => void;
   onNext: () => void;
   /** The two frames that do carry a pill draw it here. */
@@ -378,7 +292,7 @@ export function LessonScroll({
               every device; pinning it to the literal 54 is only right when the
               top inset is 54 and the bottom is 0. */}
           <View
-            pointerEvents="box-none"
+            pointerEvents={interactive ? 'box-none' : 'none'}
             style={{
               position: 'absolute',
               left: 0,
@@ -408,5 +322,3 @@ export function LessonScroll({
     </View>
   );
 }
-
-export { COVER_GAP };

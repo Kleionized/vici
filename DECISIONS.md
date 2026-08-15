@@ -1035,3 +1035,64 @@ Six second-reader audits ran over the screens this run built by hand
   line crossing it is indistinguishable, and at 393 the line never reaches the
   band so nothing changes there. Found by rendering the frame beside the app —
   every number on the screen already matched. `specs/pass2-copy-sweep.md`.
+
+---
+
+# The `lesson UI` bundle — the reader for all 84 lessons
+
+- **D-102 · The reader is transcribed as parts, not classified into page kinds.**
+  The bundle authors 1,398 reader pages in **34 distinct type signatures**.
+  Committing to a fixed union of kinds would mean deciding in advance what the
+  design is allowed to do, and a variant used on one lesson out of eighty-four
+  would arrive as a missing case rather than as data. So a page is transcribed
+  as its column's gap and its children in order, each child carrying the metrics
+  its own frame states, and the renderer walks them.
+  `scripts/uifinal/gen-lesson-scrolls.mjs` → `src/content/lessonReader.ts`.
+
+- **D-103 · Ten type ramps carry the whole reader.** The 2,239 runs of copy use
+  only eleven distinct ramps between them, so the ramps are named once and each
+  run carries an index. Nothing is lost: a ramp is the complete set of metrics
+  its frames state, `text-wrap` included.
+
+- **D-104 · There is exactly one piece of cover art for lessons 2–84.** All 168
+  of the 270 × 190 scenes — one on each lesson's cover and again on its task
+  page — are **byte-identical** in the canvas, so the scene is transcribed once
+  (`src/content/coverScene.ts`, 7 layers). Lesson 1 keeps the bespoke 270 × 224
+  night room it already had; its frame is unchanged between bundles.
+
+- **D-105 · The task eyebrow is gone.** The new bundle deletes
+  `DAY N · TODAY'S TASK` from all 166 `Task DNN` frames and from the reader's
+  own task page; the only change to those frames is that deletion, verified by
+  diffing them. The title keeps its own absolute top, so nothing below moves.
+
+- **D-106 · A reading page takes no touch.** On the canvas the whole board is
+  the control. Text and filled plates capture touches by default, so a tap on a
+  paragraph did not turn the page; the stack is now transparent to touch and
+  only the boards that ask a question opt in.
+
+- **D-107 · `radial-gradient(circle at X% Y%)` is honoured.** 191 transcribed
+  layers say `closest-side` and are centred, which is what the renderer always
+  drew. Two say `circle at 34% 30%` — the sun on every lesson's cover and task
+  page — which puts the highlight off-centre so the disc reads as a lit sphere.
+  Ignoring it drew both flat. `src/components/task/TaskScene.tsx`.
+
+## What the spec workflow found, and what survived it
+
+Nine agents specced one page kind each off the frames and compared it to the
+app; every claimed discrepancy was then handed to a separate agent told to
+refute it. **34 claims, 18 confirmed, 16 refuted.** The confirmed ones are fixed:
+
+| Fix | Scope |
+| --- | --- |
+| `text-wrap: balance` on every heading run — the app gave all body text `pretty` | 802 statement runs, plus every cover, epigraph, task, options and done title |
+| the rule card's tick is a **ringed** check (`circle r7.5` + `M5.8 9l2.3 2.3 4.1-4.6`, 20 × 20 in an 18-unit box), not a bare tick | all 86 task pages |
+| an option body's `margin-top: 4px` is stated on head-less rows too | 44 head-less bodies across 26 frames |
+| the completion pill sits 30 off the **852** board's foot, so it overlaps the home-indicator strip — the clamp to 0 was wrong | all 84 done pages |
+| the epigraph's serif stack is `'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif` | 172 occurrences |
+| the cascade's fading ramp has a **fourth** step, `#CDCBC4` | the 6 four-line cascades |
+
+**One "confirmed" finding was itself wrong and was refused:** an agent claimed
+the task-options board should sit at `top: 126`. 126 is the canvas value and the
+canvas's top 54px is the status bar the app never builds, so the app owes 72 —
+which is what the pick board's measured 64 (from a stated 118) independently
+confirms. The verifier had been told to check exactly this and missed it.

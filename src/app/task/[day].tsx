@@ -70,10 +70,10 @@ export default function TaskBoards() {
           <AppText style={[sans('400'), { fontSize: 17, color: '#3A3934' }]}>Close</AppText>
         </PressScale>
 
-        {/* canvas 116 */}
-        <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 62, fontSize: 12, letterSpacing: 1.6, color: '#8B8882' }]}>
-          {`DAY ${n} · ${task.label}`}
-        </AppText>
+        {/* The `DAY N · TODAY'S TASK` eyebrow the previous bundle drew at canvas
+            116 is gone: the new bundle deletes it from all 166 task frames, and
+            from the reader's task page too. The title keeps its own absolute
+            top, so nothing below it moves. */}
         {/* canvas 144 */}
         <AppText
           center

@@ -97,6 +97,27 @@ const softStops = (color: string, opacity: number): Stops => [
   { offset: 1, color, opacity: 0 },
 ];
 
+/**
+ * Where a radial gradient is centred and how far it reaches.
+ *
+ * 191 of the transcribed layers say `closest-side` and are centred, which is
+ * the box's own middle and half its size — the value this always used. Two say
+ * `circle at 34% 30%`, putting the highlight off-centre so the disc reads as a
+ * lit sphere rather than a flat ring, and with no size keyword CSS resolves
+ * that to `farthest-corner`. Ignoring the offset drew both suns flat.
+ */
+function radialGeometry(background: string, x: number, y: number, w: number, h: number) {
+  const at = background.match(/\bat\s+([\d.]+)%\s+([\d.]+)%/);
+  if (!at) return { cx: x + w / 2, cy: y + h / 2, rx: w / 2, ry: h / 2 };
+  const cx = x + (Number(at[1]) / 100) * w;
+  const cy = y + (Number(at[2]) / 100) * h;
+  // No size keyword means farthest-corner; `circle` makes the two radii equal.
+  const dx = Math.max(cx - x, x + w - cx);
+  const dy = Math.max(cy - y, y + h - cy);
+  const r = Math.hypot(dx, dy);
+  return /\bcircle\b/.test(background) ? { cx, cy, rx: r, ry: r } : { cx, cy, rx: dx, ry: dy };
+}
+
 /** A rounded rect with four independently-cut corners, optionally elliptical. */
 function boxPath(x: number, y: number, w: number, h: number, r: ReturnType<typeof radii>): string {
   const ry = r.ry || 0;
@@ -188,7 +209,7 @@ function Layer({ layer, index, id, box }: { layer: TaskSceneLayer; index: number
       {stops || soft ? (
         <Defs>
           {isRadial || soft ? (
-            <RadialGradient id={gid} cx={x + w / 2} cy={y + h / 2} rx={w / 2} ry={h / 2} gradientUnits="userSpaceOnUse">
+            <RadialGradient id={gid} {...radialGeometry(layer.background ?? '', x, y, w, h)} gradientUnits="userSpaceOnUse">
               {(soft ?? stops ?? []).map((s, i) => (
                 <Stop key={i} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />
               ))}
