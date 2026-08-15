@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 80 · IMPLEMENTED: 120
+**777 rows.** NOT_STARTED: 575 · SPEC_EXTRACTED: 77 · IMPLEMENTED: 125
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -184,9 +184,9 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Lesson Scroll 26 | src/components/lesson/pages.tsx | SPEC_EXTRACTED | 2026-08-15 | lesson reader frame — 26-frame paged scroll |
 | Email Login | Cue Intro Modal | src/app/urge.tsx | NOT_STARTED | — | 28 · SOS — First 90 Seconds |
 | Email Login | SOS Strength | src/app/urge.tsx | NOT_STARTED | — | 28B · SOS — How Strong |
-| Email Login | Cue Hue Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29 · SOS — Where Are You |
-| Email Login | SOS Feeling Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
-| Email Login | SOS Reason Picker | src/app/urge.tsx | SPEC_EXTRACTED | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
+| Email Login | Cue Hue Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29 · SOS — Where Are You |
+| Email Login | SOS Feeling Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A &middot; SOS &mdash; Name the Feeling |
+| Email Login | SOS Reason Picker | src/app/urge.tsx | IMPLEMENTED | 2026-08-15 | 29A2 &middot; SOS &mdash; What&rsquo;s Feeding It |
 | Email Login | Cue Set Confirmation | src/app/urge.tsx | NOT_STARTED | — | 29B · SOS — Step I · Phone Down |
 | Email Login | Surf Step 1 | src/app/urge.tsx | NOT_STARTED | — | 30 · SOS — Step II · Out of Bed |
 | Email Login | Surf Step 3 | src/app/urge.tsx | NOT_STARTED | — | 31 · SOS — Step III · Cold Water |
@@ -680,7 +680,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | VICI (previous) | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| VICI (previous) | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| VICI (previous) | Cue Hue Picker | — | IMPLEMENTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | VICI (previous) | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
@@ -767,7 +767,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Urge SOS Breathe | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Daily Check-in | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Intro Modal | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
-| vici-prev | Cue Hue Picker | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
+| vici-prev | Cue Hue Picker | — | IMPLEMENTED | 2026-08-15 | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Cue Set Confirmation | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Training Drills Browser | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |
 | vici-prev | Sound Library | — | NOT_STARTED | — | SUPERSEDED — previous-generation canvas, kept in the bundle for reference only |

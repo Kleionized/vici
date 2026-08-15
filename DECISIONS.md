@@ -284,3 +284,32 @@ names the ambiguity, the reading chosen, and why.
   `Nightly Check-in Time` draws every selected chip `color:#F4F3F0` on
   `#131313`, so the design states the fix. The unselected state is not drawn on
   that frame, so it keeps the app's `#1D1C1A` on `#EFEEEA`.
+
+## The urge hub
+
+- **D-021 · The five places inherit the phone's step copy, except the bed.**
+  `Cue Hue Picker` replaced three illustrated cards (`Phone in hand`,
+  `At a laptop`, `In bed`) with five flat rows (`Somewhere private`, `In bed`,
+  `A public space`, `At work or school`, `Out and about`). The three step boards
+  downstream still draw the phone and bed copy verbatim, and the canvas does not
+  say which of the five new places gets which. `In bed` keeps its own copy; the
+  laptop lines are dropped because no option names a laptop any more; the other
+  four take the phone's, except `At work or school`, which keeps the laptop
+  board's "Step away from the desk" because that is the one line that still
+  describes the place it is now attached to.
+
+- **D-022 · The two new SOS answers ride the event's `trigger` line.**
+  `SOS Feeling Picker` and `SOS Reason Picker` are new boards and the `events`
+  table has no `feeling` or `reasons` column. Adding columns is a schema change
+  the brief puts out of scope ("keep the wiring"), and dropping the answers
+  silently is worse than either, so the place, the feeling and the reasons are
+  joined onto `trigger`, which is already free text. If the answers are wanted
+  as structured data, that is a schema task, not a UI one.
+
+- **D-023 · The dark SOS block has no frame in `UI Final` and was left alone.**
+  `Urge SOS Breathe`, `SOS Number Tap`, `SOS Odd One Out` and `SOS Settings` are
+  all in the removed list, and the canvas now runs Step III straight into
+  "The Wave Passed". That is ~750 lines of working behaviour
+  (`BreatheStage`, `TapStage`, `OddStage`, `WaveStage`, `SosSettingsSheet`), and
+  a design that stops drawing a screen is not the same as a decision to delete
+  it. Flagged in `REPORT.md` for a human call rather than removed unattended.

@@ -535,24 +535,41 @@ const SHEET_MUTED = '#55534E';
 const SHEET_SOFT = '#8B8882';
 const SOS_PAPER = '#F4F3F0';
 
-export type UrgePlace = 'phone' | 'laptop' | 'bed';
+export type UrgePlace = 'private' | 'bed' | 'public' | 'work' | 'out';
 
-const PLACES: { key: UrgePlace; label: string; stops: readonly [string, string, string]; dark: boolean }[] = [
-  { key: 'phone', label: 'Phone in hand', stops: ['#ECECE8', '#D6D5D0', '#B4B1AB'], dark: false },
-  { key: 'laptop', label: 'At a laptop', stops: ['#E4E4E0', '#C6C5C0', '#A8A5A0'], dark: false },
-  { key: 'bed', label: 'In bed', stops: ['#8B8882', '#131313', '#131313'], dark: true },
+/**
+ * `Cue Hue Picker` · the five places, in the canvas's own order. The frame
+ * replaced three illustrated gradient cards with five flat rows, so the art,
+ * the gradients and the noise tile that went with them are gone.
+ */
+const PLACES: { key: UrgePlace; label: string }[] = [
+  { key: 'private', label: 'Somewhere private' },
+  { key: 'bed', label: 'In bed' },
+  { key: 'public', label: 'A public space' },
+  { key: 'work', label: 'At work or school' },
+  { key: 'out', label: 'Out and about' },
 ];
 
+/**
+ * The two step boards downstream still draw the phone and bed copy verbatim,
+ * and the canvas does not say which of the five new places gets which. The
+ * laptop lines are dropped because no option names a laptop any more; `In bed`
+ * keeps its own copy and the other four take the phone's (DECISIONS D-021).
+ */
 const SCREEN_STEP: Record<UrgePlace, { title: string; body: string }> = {
-  phone: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
-  laptop: { title: 'Close the screen, now.', body: 'Shut the laptop. Move it out of reach and let the room go quiet for a minute.' },
+  private: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
   bed: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not under the covers.' },
+  public: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
+  work: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
+  out: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
 };
 
 const MOVE_STEP: Record<UrgePlace, { title: string; body: string }> = {
-  phone: { title: 'Change the room.', body: 'Stand up and move somewhere with light. A new scene gives the wave less to hold onto.' },
-  laptop: { title: 'Step away from the desk.', body: 'Stand up and move somewhere with light. The work can wait for ninety seconds.' },
+  private: { title: 'Change the room.', body: 'Stand up and move somewhere with light. A new scene gives the wave less to hold onto.' },
   bed: { title: 'Get out of bed.', body: 'Change the room and the wave loses its grip. Stand up, move somewhere with light.' },
+  public: { title: 'Change the room.', body: 'Stand up and move somewhere with light. A new scene gives the wave less to hold onto.' },
+  work: { title: 'Step away from the desk.', body: 'Stand up and move somewhere with light. The work can wait for ninety seconds.' },
+  out: { title: 'Change the room.', body: 'Stand up and move somewhere with light. A new scene gives the wave less to hold onto.' },
 };
 
 // ── paper chrome ────────────────────────────────────────────────────────────
@@ -833,185 +850,364 @@ function StrengthPage({ band, onBand, onClose, onNext }: { band: number; onBand:
 
 // ── 147 · Cue Hue Picker — where are you right now ──────────────────────────
 
-function PhoneCardArt() {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', right: 20, top: 14, width: 80, height: 68 }}>
-      <SoftBlob id="u90-card-phone" left={18} top={8} width={52} height={52} color="rgb(226,186,120)" alpha={0.45} />
-      <View style={{ position: 'absolute', left: 34, top: 8, width: 28, height: 50, borderRadius: 7, backgroundColor: '#3A3934', transform: [{ rotate: '6deg' }] }} />
-      <View style={{ position: 'absolute', left: 39, top: 14, width: 18, height: 38, borderRadius: 4, overflow: 'hidden', transform: [{ rotate: '6deg' }] }}>
-        <LinearGradient colors={['#F7F6F2', '#D9D7D0']} style={{ flex: 1 }} />
-      </View>
-    </View>
-  );
-}
-
-function LaptopCardArt() {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', right: 18, top: 16, width: 86, height: 64 }}>
-      <SoftBlob id="u90-card-laptop" left={16} top={2} width={54} height={50} color="rgb(226,186,120)" alpha={0.35} />
-      <View
-        style={{
-          position: 'absolute',
-          left: 18,
-          top: 6,
-          width: 52,
-          height: 34,
-          borderTopLeftRadius: 4,
-          borderTopRightRadius: 4,
-          borderBottomLeftRadius: 2,
-          borderBottomRightRadius: 2,
-          backgroundColor: '#3A3934',
-        }}
-      />
-      <View style={{ position: 'absolute', left: 22, top: 10, width: 44, height: 26, borderRadius: 2, overflow: 'hidden' }}>
-        <LinearGradient colors={['#F0EFEA', '#CFCDC6']} style={{ flex: 1 }} />
-      </View>
-      <View
-        style={{
-          position: 'absolute',
-          left: 10,
-          top: 40,
-          width: 68,
-          height: 7,
-          borderTopLeftRadius: 3.5,
-          borderTopRightRadius: 3.5,
-          borderBottomLeftRadius: 5,
-          borderBottomRightRadius: 5,
-          backgroundColor: '#55534E',
-        }}
-      />
-    </View>
-  );
-}
-
-function BedCardArt() {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', right: 18, top: 14, width: 88, height: 66 }}>
-      <SoftBlob id="u90-card-bed" left={30} top={14} width={44} height={32} color="rgb(226,186,120)" alpha={0.5} />
-      <View style={{ position: 'absolute', left: 8, top: 34, width: 26, height: 14, borderRadius: 6, backgroundColor: '#55534E' }} />
-      <View
-        style={{
-          position: 'absolute',
-          left: 14,
-          top: 40,
-          width: 74,
-          height: 24,
-          borderTopLeftRadius: 13,
-          borderTopRightRadius: 13,
-          borderBottomLeftRadius: 4,
-          borderBottomRightRadius: 4,
-          backgroundColor: '#3A3934',
-        }}
-      />
-      <View
-        style={{
-          position: 'absolute',
-          left: 44,
-          top: 36,
-          width: 14,
-          height: 9,
-          borderRadius: 3,
-          backgroundColor: 'rgba(240,225,190,0.9)',
-          boxShadow: '0 0 12px 4px rgba(226,186,120,0.4)',
-        }}
-      />
-    </View>
-  );
-}
-
-const PLACE_ART: Record<UrgePlace, () => ReactNode> = { phone: PhoneCardArt, laptop: LaptopCardArt, bed: BedCardArt };
-const PLACE_TOP: Record<UrgePlace, number> = { phone: 188, laptop: 340, bed: 492 };
-
-// `linear-gradient(150deg, …)` in a 248×136 box: the axis runs through the card
-// centre along (sin150, −cos150) = (0.5, 0.866) and its 0%/100% sit where the
-// corners project onto it, a line 248·0.5 + 136·0.866 = 241.8 long. Half of that
-// off centre is (60.4, 104.7)pt, i.e. ±0.244 of the width and ±0.770 of the
-// height — the ends fall outside the box, which is exactly what CSS draws.
-const CARD_GRADIENT_START = { x: 0.256, y: -0.27 };
-const CARD_GRADIENT_END = { x: 0.744, y: 1.27 };
-
-function PlaceCard({ place, selected, onPress }: { place: (typeof PLACES)[number]; selected: boolean; onPress: () => void }) {
-  const Art = PLACE_ART[place.key];
+/**
+ * The picker row the three SOS boards are built from. They differ in only two
+ * ways — height (60 or 66) and the trailing control — so this is one component
+ * rather than three near-copies.
+ *
+ * `MoodLogger.ReasonRow` is the same recipe and carries the same ring, disc,
+ * gap, padding and radius, but it hard-codes the checkbox trailing and the
+ * checkbox role, so it is mirrored here rather than imported.
+ */
+function PickerRow({
+  top,
+  height,
+  label,
+  note,
+  glyph,
+  selected,
+  trailing,
+  role,
+  onPress,
+}: {
+  top: number;
+  height: number;
+  label: string;
+  note?: string;
+  glyph: ReactNode;
+  selected: boolean;
+  trailing: 'none' | 'dot' | 'check';
+  role: 'radio' | 'checkbox';
+  onPress: () => void;
+}) {
   return (
     <PressScale
       onPress={onPress}
-      accessibilityRole="radio"
-      accessibilityLabel={place.label}
-      accessibilityState={{ checked: selected }}
-      style={{ position: 'absolute', left: 72, top: PLACE_TOP[place.key], width: 248, height: 136, borderRadius: 14, overflow: 'hidden' }}>
-      <LinearGradient
-        colors={[place.stops[0], place.stops[1], place.stops[2]]}
-        locations={[0, 0.6, 1]}
-        start={CARD_GRADIENT_START}
-        end={CARD_GRADIENT_END}
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-      />
-      <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.2 }} pointerEvents="none" />
-      <Art />
-      <AppText style={[sans('500'), { position: 'absolute', left: 14, bottom: 14, fontSize: 19, color: place.dark ? '#FFFFFF' : SHEET_TEXT }]}>{place.label}</AppText>
-      <View
-        style={{
-          position: 'absolute',
-          right: 16,
-          bottom: 16,
-          width: 24,
-          height: 24,
-          borderRadius: 12,
-          backgroundColor: selected ? SHEET_INK : 'transparent',
-          boxShadow: selected ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.25)',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        {selected ? (
-          <Svg width={12} height={12} viewBox="0 0 14 14" fill="none">
-            <Path d="M2.5 7.5l3 3 6-7" stroke={SHEET_PAPER} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
-          </Svg>
+      accessibilityRole={role}
+      accessibilityState={role === 'radio' ? { selected } : { checked: selected }}
+      accessibilityLabel={note ? `${label}. ${note}` : label}
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
+        height,
+        minHeight: height,
+        borderRadius: 18,
+        borderCurve: 'continuous',
+        backgroundColor: '#FFFFFF',
+        boxShadow: selected ? '0 0 0 1.6px #131313' : '0 0 0 1px rgba(0,0,0,0.10)',
+        paddingHorizontal: 18,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 14,
+      }}>
+      <View style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: selected ? '#131313' : '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
+        {glyph}
+      </View>
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <AppText numberOfLines={1} style={[sans(selected ? '600' : '500'), { fontSize: 15, color: SHEET_TEXT }]}>
+          {label}
+        </AppText>
+        {note ? (
+          <AppText numberOfLines={1} style={[sans('400'), { marginTop: 1, fontSize: 12.5, color: SHEET_SOFT }]}>
+            {note}
+          </AppText>
         ) : null}
       </View>
+      {trailing === 'dot' && selected ? <View style={{ width: 7, height: 7, borderRadius: 3.5, backgroundColor: '#131313' }} /> : null}
+      {trailing === 'check' ? (
+        <View
+          style={{
+            width: 24,
+            height: 24,
+            borderRadius: 12,
+            backgroundColor: selected ? '#131313' : undefined,
+            boxShadow: selected ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.22)',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          {selected ? (
+            <Svg width={12} height={12} viewBox="0 0 14 14" fill="none">
+              <Path d="M2.5 7.5l3 3 6-7" stroke="#F4F3F0" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+          ) : null}
+        </View>
+      ) : null}
     </PressScale>
   );
 }
 
+/** Every picker glyph: 21 in a 24-unit box, stroke 2, round caps and joins. */
+function PickerGlyph({ on, children }: { on: boolean; children: (stroke: string) => ReactNode }) {
+  const stroke = on ? '#F4F3F0' : '#1D1C1A';
+  return (
+    <Svg width={21} height={21} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      {children(stroke)}
+    </Svg>
+  );
+}
+
+/** The board's own footnote, under the list. */
+function PickerNote({ children }: { children: string }) {
+  return (
+    <AppText center style={[sans('500'), { position: 'absolute', left: 24, right: 24, top: 660, fontSize: 12, color: '#A8A5A0' }]}>
+      {children}
+    </AppText>
+  );
+}
+
+/** The pill all three boards close on — canvas top 688 in an 800pt sheet. */
+function PickerContinue({ onPress }: { onPress: () => void }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        bottom: 60,
+        height: 52,
+        minHeight: 52,
+        borderRadius: 26,
+        backgroundColor: SHEET_INK,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.3, color: '#FFFFFF' }]}>Continue</AppText>
+    </PressScale>
+  );
+}
+
+/** The back chevron and word all three boards open with. */
+function PickerBack({ onPress }: { onPress: () => void }) {
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel="Back"
+      hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
+      style={{ position: 'absolute', left: 16, top: 14, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9, zIndex: 6 }}>
+      <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
+        <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+      </Svg>
+      <AppText style={[sans('400'), { fontSize: 17, color: SHEET_MUTED }]}>Back</AppText>
+    </PressScale>
+  );
+}
+
+/** Headline at 62 and the line under it at 106 — the three boards' header. */
+function PickerHead({ title, sub, inset }: { title: string; sub: string; inset: number }) {
+  return (
+    <>
+      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 62, fontSize: 22, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        {title}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: inset, right: inset, top: 106, fontSize: 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
+        {sub}
+      </AppText>
+    </>
+  );
+}
+
+/* ── 29 · 29A · 29A2 — the three pickers ──────────────────────────────────── */
+
+/** The five places, in the canvas's order. Rows pitch 72 from sheet 170. */
+const PLACE_GLYPH: Record<UrgePlace, (stroke: string) => ReactNode> = {
+  private: () => (
+    <>
+      <Rect x={6} y={3.5} width={12} height={17} rx={1.6} />
+      <Circle cx={14.6} cy={12.5} r={1.1} />
+    </>
+  ),
+  bed: () => (
+    <>
+      <Path d="M3.5 18.5v-8M3.5 14.5h17v4M3.5 14.5V9h6.6c2.4 0 3.7 1.3 3.7 3.3v2.2" />
+      <Circle cx={7.1} cy={11.4} r={1.2} />
+    </>
+  ),
+  public: () => (
+    <>
+      <Circle cx={8.5} cy={9} r={3.2} />
+      <Circle cx={16.5} cy={9} r={3.2} />
+      <Path d="M2.5 20c.8-3.4 3.2-5 6-5 1.4 0 2.7.4 3.5 1.2.8-.8 2.1-1.2 3.5-1.2 2.8 0 5.2 1.6 6 5" />
+    </>
+  ),
+  work: () => (
+    <>
+      <Rect x={3} y={8} width={18} height={12} rx={2.5} />
+      <Path d="M9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18" />
+    </>
+  ),
+  out: () => (
+    <>
+      <Path d="M12 21s7-5.4 7-11a7 7 0 0 0-14 0c0 5.6 7 11 7 11z" />
+      <Circle cx={12} cy={10} r={2.6} />
+    </>
+  ),
+};
+
 function WherePage({ place, onPlace, onBack, onNext }: { place: UrgePlace; onPlace: (next: UrgePlace) => void; onBack: () => void; onNext: () => void }) {
   return (
     <PaperSheet>
-      <PressScale
-        onPress={onBack}
-        accessibilityRole="button"
-        accessibilityLabel="Back"
-        hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
-        style={{ position: 'absolute', left: 16, top: 14, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9, zIndex: 6 }}>
-        <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
-          <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
-        <AppText style={[sans('400'), { fontSize: 17, color: SHEET_MUTED }]}>Back</AppText>
-      </PressScale>
-      <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 62, fontSize: 22, letterSpacing: 0.1, color: SHEET_TEXT }]}>
-        Where are you right now?
-      </AppText>
-      <AppText center style={[sans('400'), { position: 'absolute', left: 40, right: 40, top: 106, fontSize: 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
-        The first move depends on it. Be honest — nobody&apos;s watching.
-      </AppText>
-      {PLACES.map((item) => (
-        <PlaceCard key={item.key} place={item} selected={place === item.key} onPress={() => onPlace(item.key)} />
+      <PickerBack onPress={onBack} />
+      <PickerHead title="Where are you right now?" sub="The first move depends on it. Be honest — nobody's watching." inset={40} />
+      {PLACES.map((item, index) => (
+        <PickerRow
+          key={item.key}
+          top={170 + index * 72}
+          height={60}
+          label={item.label}
+          glyph={<PickerGlyph on={place === item.key}>{PLACE_GLYPH[item.key]}</PickerGlyph>}
+          selected={place === item.key}
+          trailing="dot"
+          role="radio"
+          onPress={() => onPlace(item.key)}
+        />
       ))}
-      {/* canvas top 688 in an 800pt sheet */}
-      <PressScale
-        onPress={onNext}
-        accessibilityRole="button"
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          bottom: 60,
-          height: 52,
-          borderRadius: 26,
-          backgroundColor: SHEET_INK,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.3, color: '#FFFFFF' }]}>Continue</AppText>
-      </PressScale>
+      <PickerContinue onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
+/**
+ * 29A · what is underneath the urge. Rows 1–4 are exactly H·A·L·T in that
+ * order, which is what makes the footnote true; `Bored` and `Stressed` are
+ * additions past the mnemonic, so the order is load-bearing.
+ */
+const FEELINGS: { key: string; note: string; glyph: () => ReactNode }[] = [
+  {
+    key: 'Hungry',
+    note: 'Low fuel reads as craving. Eat first.',
+    glyph: () => (
+      <>
+        <Path d="M4.5 10.5h15a7.5 6.5 0 0 1-15 0z" />
+        <Path d="M9.5 7c0-1 .7-1.3.7-2.3M13.8 7c0-1 .7-1.3.7-2.3" />
+      </>
+    ),
+  },
+  { key: 'Angry', note: 'Heat looking for the nearest exit.', glyph: () => <Path d="M13 2L5 13.5h5.5L10 22l8-11.5h-5.5z" /> },
+  {
+    key: 'Lonely',
+    note: 'Reaching for any kind of contact.',
+    glyph: () => (
+      <>
+        <Circle cx={12} cy={8} r={3.6} />
+        <Path d="M4.5 20.5c1-4 4-6 7.5-6s6.5 2 7.5 6" />
+      </>
+    ),
+  },
+  { key: 'Tired', note: 'Defenses are thinnest when drained.', glyph: () => <Path d="M14.5 3.5a8.5 8.5 0 1 0 6 12.5 8 8 0 0 1-6-12.5z" /> },
+  {
+    key: 'Bored',
+    note: 'An empty minute asking to be filled.',
+    glyph: () => (
+      <>
+        <Path d="M3.5 13c2.4-3.4 4.6-3.4 7 0s4.6 3.4 7 0" />
+        <Path d="M6.5 7h.01M14.5 7h.01" />
+      </>
+    ),
+  },
+  { key: 'Stressed', note: 'Pressure hunting a release valve.', glyph: () => <Path d="M3 13.5h3.5L9 8l3 9 2.5-6.5 1.5 3H21" /> },
+];
+
+function FeelingPage({ feeling, onFeeling, onBack, onNext }: { feeling?: string; onFeeling: (next: string) => void; onBack: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <PickerBack onPress={onBack} />
+      <PickerHead
+        title="What’s underneath it?"
+        sub="The urge is rarely the whole story. Name the feeling under it and it loses most of its grip."
+        inset={36}
+      />
+      {FEELINGS.map((item, index) => (
+        <PickerRow
+          key={item.key}
+          top={170 + index * 76}
+          height={66}
+          label={item.key}
+          note={item.note}
+          glyph={<PickerGlyph on={feeling === item.key}>{item.glyph}</PickerGlyph>}
+          selected={feeling === item.key}
+          trailing="dot"
+          role="radio"
+          onPress={() => onFeeling(item.key)}
+        />
+      ))}
+      <PickerNote>H·A·L·T — the four states that fake an urge best.</PickerNote>
+      <PickerContinue onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
+/** 29A2 · what is feeding it. Two rows are drawn on at once — multi-select. */
+const URGE_REASONS: { key: string; glyph: () => ReactNode }[] = [
+  { key: 'Relationship', glyph: () => <Path d="M12 20.5s-7.6-4.7-9.3-9.1A5.2 5.2 0 0 1 12 6.4a5.2 5.2 0 0 1 9.3 5c-1.7 4.4-9.3 9.1-9.3 9.1z" /> },
+  {
+    key: 'Work or school',
+    glyph: () => (
+      <>
+        <Rect x={3} y={8} width={18} height={12} rx={2.5} />
+        <Path d="M9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18" />
+      </>
+    ),
+  },
+  {
+    key: 'Family',
+    glyph: () => (
+      <>
+        <Path d="M4 11.5 12 4l8 7.5" />
+        <Path d="M6.5 10v10h11V10" />
+      </>
+    ),
+  },
+  {
+    key: 'Money',
+    glyph: () => (
+      <>
+        <Rect x={3} y={7} width={18} height={10.5} rx={2.2} />
+        <Circle cx={12} cy={12.2} r={2.5} />
+        <Path d="M6.2 10h.01M17.8 14.5h.01" />
+      </>
+    ),
+  },
+  { key: 'Health', glyph: () => <Path d="M3 12.5h4l2.5-6 3 11 2.5-6.5H21" /> },
+  {
+    key: 'No clear reason',
+    glyph: () => (
+      <>
+        <Circle cx={12} cy={12} r={8.5} />
+        <Path d="M9.8 9.7a2.3 2.3 0 0 1 4.4.5c0 1.5-2.2 1.7-2.2 3.2M12 16.6h.01" />
+      </>
+    ),
+  },
+];
+
+function ReasonPage({ reasons, onToggle, onBack, onNext }: { reasons: string[]; onToggle: (key: string) => void; onBack: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <PickerBack onPress={onBack} />
+      <PickerHead
+        title="What’s feeding it?"
+        sub="Urges borrow fuel from somewhere. Point at the source — picking it is half the defusing."
+        inset={36}
+      />
+      {URGE_REASONS.map((item, index) => (
+        <PickerRow
+          key={item.key}
+          top={170 + index * 72}
+          height={60}
+          label={item.key}
+          glyph={<PickerGlyph on={reasons.includes(item.key)}>{item.glyph}</PickerGlyph>}
+          selected={reasons.includes(item.key)}
+          trailing="check"
+          role="checkbox"
+          onPress={() => onToggle(item.key)}
+        />
+      ))}
+      <PickerNote>Nothing here is an excuse — it’s a map.</PickerNote>
+      <PickerContinue onPress={onNext} />
     </PaperSheet>
   );
 }
@@ -1997,8 +2193,9 @@ function DonePage({ count, onClose }: { count: number; onClose: () => void }) {
 
 // ── the flow ────────────────────────────────────────────────────────────────
 
-type FlowStep = 'intro' | 'strength' | 'where' | 'screen' | 'move' | 'cold' | 'sos' | 'done';
-const FLOW: FlowStep[] = ['intro', 'strength', 'where', 'screen', 'move', 'cold', 'sos', 'done'];
+type FlowStep = 'intro' | 'strength' | 'where' | 'feeling' | 'reason' | 'screen' | 'move' | 'cold' | 'sos' | 'done';
+// 28 → 28B → 29 → 29A → 29A2 → 29B → 30 → 31 → 33, in the canvas's own order.
+const FLOW: FlowStep[] = ['intro', 'strength', 'where', 'feeling', 'reason', 'screen', 'move', 'cold', 'sos', 'done'];
 type SosStageName = 'breathe' | 'tap' | 'odd' | 'wave';
 const SOS_ORDER: SosStageName[] = ['breathe', 'tap', 'odd', 'wave'];
 
@@ -2012,7 +2209,9 @@ export function UrgeFlow() {
   const events = useEvents();
   const [index, setIndex] = useState(0);
   const [band, setBand] = useState(3);
-  const [place, setPlace] = useState<UrgePlace>('phone');
+  const [place, setPlace] = useState<UrgePlace>('private');
+  const [feeling, setFeeling] = useState<string | undefined>(undefined);
+  const [reasons, setReasons] = useState<string[]>([]);
   const [sosStage, setSosStage] = useState(0);
   const [settings, setSettings] = useState<SosSettings>(DEFAULT_SOS_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -2067,7 +2266,11 @@ export function UrgeFlow() {
     // Completion is a local interaction. Never make the relief screen wait for
     // a network mutation; the event can safely settle in the background.
     setIndex(FLOW.indexOf('done'));
-    void createEvent({ type: 'urge_rode_out', severity: bandToSeverity(band), trigger: PLACES.find((item) => item.key === place)?.label }).catch(() => {});
+    // The two new boards' answers have no column of their own on `events`, so
+    // rather than drop them they ride the existing `trigger` line, which is
+    // already free text (DECISIONS D-022).
+    const answered = [PLACES.find((item) => item.key === place)?.label, feeling, ...reasons].filter(Boolean);
+    void createEvent({ type: 'urge_rode_out', severity: bandToSeverity(band), trigger: answered.join(' · ') || undefined }).catch(() => {});
     void setJSON('tideline.post.backondeck.pending', Date.now());
   }
 
@@ -2099,6 +2302,15 @@ export function UrgeFlow() {
       {step === 'intro' ? <IntroPage onClose={close} onNext={next} /> : null}
       {step === 'strength' ? <StrengthPage band={band} onBand={setBand} onClose={close} onNext={next} /> : null}
       {step === 'where' ? <WherePage place={place} onPlace={setPlace} onBack={back} onNext={next} /> : null}
+      {step === 'feeling' ? <FeelingPage feeling={feeling} onFeeling={setFeeling} onBack={back} onNext={next} /> : null}
+      {step === 'reason' ? (
+        <ReasonPage
+          reasons={reasons}
+          onToggle={(key) => setReasons((current) => (current.includes(key) ? current.filter((item) => item !== key) : [...current, key]))}
+          onBack={back}
+          onNext={next}
+        />
+      ) : null}
       {step === 'screen' ? (
         <MovePage index={0} title={SCREEN_STEP[place].title} body={SCREEN_STEP[place].body} art={<ScreenStepArt />} onClose={close} onNext={next} />
       ) : null}
