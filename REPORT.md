@@ -4,7 +4,7 @@
 **Bundle:** `UI Final/` (Claude Design handoff, 288 files).
 **Ledger:** `UI_FINAL_LEDGER.md` — 777 rows, one per `data-screen-label` frame.
 **Decisions:** `DECISIONS.md`, entries D-001 … D-060.
-**Specs:** `specs/` — 33 files: 17 pixel specs and 16 audits, together carrying
+**Specs:** `specs/` — 35 files: 19 pixel specs and 16 audits, together carrying
 roughly 12,000 transcribed property rows.
 
 > **Read this first.** The run did not reach `DONE` on every row, and the ledger
