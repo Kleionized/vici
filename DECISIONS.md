@@ -987,3 +987,42 @@ Six second-reader audits ran over the screens this run built by hand
   late Pass 1 batches both changed screens, those screens restart at Pass 1.
   **No row is marked `DONE` on implementation, and the brief's bar — three
   consecutive passes finding nothing — has not been met.**
+
+---
+
+# Pass 2 — the copy sweep
+
+- **D-097 · The options board has a second layout, and the option copy was
+  scrambled on nine days.** `Task DNN Options` is drawn two ways: a 40pt icon
+  plate (74 days) and a 24pt numbered step disc (days 10, 12, 21, 44, 48, 60,
+  62, 64, 79). The app built only the first. Worse, the step number is a text
+  node, and the extractor paired the board's text nodes two at a time, so on
+  those days the number became a heading and every pair after it shifted — 25
+  rows had a bare number as their heading, 19 as their body. Rows with a heading
+  and no body, and the closing note, broke the same pairing on other days. Fixed
+  by reading the board structurally. `specs/pass2-copy-sweep.md`.
+
+- **D-098 · `Medallion Received` (90F) delivers a different medallion than the
+  app, and it stays that way.** The frame draws *Veni · Tier I · The Vow* with
+  "You signed your name to twelve weeks. The campaign begins tonight.";
+  `src/app/medallion-post.tsx` is hardcoded to *Back on Deck · Tier II · The
+  Return*. The geometry matches (title canvas 432 → 378, sub 530 → 476). What
+  differs is which medallion the post delivers — wired through a storage key, a
+  letter body and a journal entry, all behaviour the existing app owns, and the
+  canvas draws no letter for Veni. Changing the three arrival strings alone
+  would leave the screen contradicting its own letter, so this is recorded, not
+  changed.
+
+- **D-099 · The apostrophe is resolved per string, because the canvas is not
+  consistent with itself.** 385 of its text runs use a curly apostrophe and 85 a
+  straight one, with no rule to derive which. The design is the source of truth
+  for anything visual and a quote mark is visual, so each string follows its own
+  frame. Three app strings disagreed with theirs and were corrected.
+
+- **D-100 · JSX string attributes do decode HTML entities.** An earlier belief
+  in this run was that they did not; running the real transform shows
+  `<Foo title="I&apos;m" />` decodes and only a JS string or an expression
+  attribute (`title={'I&apos;m'}`) does not. The fix applied under the wrong
+  belief was harmless. `scripts/uifinal/entity-sweep.mjs` now proves mechanically
+  that no entity survives into a position where it would render literally: 0 of
+  165 files.

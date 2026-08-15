@@ -70,6 +70,143 @@ function textNodes(html) {
   return out;
 }
 
+/* --------------------------------------------------------- the option rows */
+
+/**
+ * The options board, read as rows rather than as a flat list of text.
+ *
+ * Pairing consecutive text nodes two at a time — which is what this did — is
+ * only correct when every row is exactly a heading and a body. Three things
+ * break that, and each one shifts every row after it:
+ *
+ *  - nine days draw a numbered step badge, whose `<span>1</span>` is a text
+ *    node sitting between the rows;
+ *  - some rows are a heading with no body at all;
+ *  - most boards close with a note under the last row, which pairs with
+ *    whatever precedes it.
+ *
+ * So walk the column's children instead. A row is the flex container; its
+ * heading and body are the children of the row's text cell, in that order.
+ */
+function optionRows(html) {
+  // The column is usually the absolutely-positioned box the rows live in.
+  // `Task D01` predates the batch that applied the others and lays its board
+  // out in flow instead, so fall back to the whole frame — the rows themselves
+  // are built the same way in both, which is what this reads.
+  const at = html.search(/<div style="position:absolute; left:24px; right:24px; top:\d+px; bottom:\d+px;/);
+  const column = at >= 0;
+
+  // Walk with a depth counter so rows are found at the right level and their
+  // own inner divs are not mistaken for rows.
+  const parts = html.slice(column ? at : 0).split(/(<[^>]*>)/g).filter(Boolean);
+  const options = [];
+  const close = [];
+  let depth = 0;
+  let row = null; // { depth, cell: number|null, texts: [] }
+  let note = null; // depth of the current closing paragraph's own div
+  let afterRows = null; // depth of the column, once its rows are behind us
+  let gap = 0;
+  for (const part of parts) {
+    if (part.startsWith('<!')) continue;
+    if (part.startsWith('</')) {
+      depth--;
+      if (row && depth <= row.depth) {
+        if (row.texts.length) options.push({ head: row.texts[0], body: row.texts[1] ?? '' });
+        row = null;
+      }
+      if (note != null && depth <= note) note = null;
+      if (afterRows != null && depth < afterRows) afterRows = null;
+      if (column && depth < 0) break; // left the column
+      continue;
+    }
+    if (part.startsWith('<')) {
+      const name = (part.match(/^<\s*([A-Za-z0-9-]+)/) || [])[1]?.toLowerCase();
+      const style = (part.match(/\sstyle="([^"]*)"/) || [])[1] ?? '';
+      const selfClosing = part.endsWith('/>') || ['img', 'br', 'hr', 'input', 'meta', 'link', 'source'].includes(name);
+      // A row: the flex container that holds a badge and a text cell.
+      if (!row && /display:flex; align-items:flex-start; gap:/.test(style)) row = { depth, texts: [], cell: null };
+      // The text cell inside it — everything in the badge is art or a step
+      // number, and neither is copy.
+      if (row && /flex:1; min-width:0/.test(style)) row.cell = depth;
+      // The closing note is the column's own trailing child: it carries a type
+      // ramp and is set off from the last row by a margin far larger than the
+      // 3-4pt that separates an option body from its heading.
+      // Day 43 closes with two paragraphs, the second only 10pt under the
+      // first, so "set off by a big margin" identifies where the closing note
+      // *starts* — after that, every sibling text div belongs to it.
+      if (!row && note == null && /font-size:/.test(style)) {
+        const mt = Number((style.match(/margin-top:([\d.]+)px/) || [])[1] ?? 0);
+        if (mt >= 20 || (afterRows != null && depth === afterRows)) {
+          note = depth;
+          afterRows = depth;
+          gap = mt;
+        }
+      }
+      if (!selfClosing) depth++;
+      continue;
+    }
+    const text = decode(part).replace(/\s+/g, ' ').trim();
+    if (!text) continue;
+    if (/^[a-z-]*:[^ ]*;.*px;/.test(text)) continue; // the canvas's stray style fragments
+    if (row && row.cell != null && depth > row.cell) row.texts.push(text);
+    else if (note != null && depth > note) close.push({ text, marginTop: gap });
+  }
+  if (row?.texts.length) options.push({ head: row.texts[0], body: row.texts[1] ?? '' });
+  return { options, close };
+}
+
+/**
+ * How the options board is laid out on a given day.
+ *
+ * The app built one board and used it for all 84, but the canvas draws two and
+ * varies the metrics of both:
+ *
+ *  - `icon` — a 40pt rounded-square plate holding a drawn glyph. 74 days.
+ *  - `step` — a 24pt white disc holding the step's number. 9 days, and the one
+ *    the flat text pairing scrambled, because the number is a text node.
+ *
+ * Column top is 209, 225 or 260 on the canvas; row gap runs 10 · 13 · 16 · 18 ·
+ * 22; the heading ramp has five variants. None of that is derivable, so it is
+ * read per day and travels with the task.
+ */
+/** The board 74 of the 83 framed days draw, verbatim off those frames. */
+const CANONICAL_BOARD = {
+  kind: 'icon',
+  top: 171,
+  bottom: 54,
+  rowGap: 22,
+  cellGap: 14,
+  badge: { size: 40, radius: 12 },
+  head: { size: 15.5, lineHeight: 21 },
+  body: { marginTop: 3, size: 13, lineHeight: 19 },
+};
+
+function boardGeometry(html) {
+  const decl = (style, prop) => (style.match(new RegExp(`(?:^|;)\\s*${prop}\\s*:\\s*([^;]+)`)) || [])[1]?.trim();
+  const px = (v) => (v == null ? undefined : Number(String(v).replace('px', '')));
+
+  const col = html.match(/<div style="position:absolute; left:24px; right:24px; top:(\d+)px; bottom:(\d+)px;[^"]*">\s*<div style="([^"]*)"/);
+  const stepBadge = /border-radius:50%;[^"]*"><span style="font-size:12px; font-weight:600; color:#55534E;">\d+<\/span>/.test(html);
+
+  // The first row, whose declarations stand for the board's.
+  const rowGapAll = [...html.matchAll(/display:flex; align-items:flex-start; gap:([\d.]+)px;/g)];
+  const head = html.match(/font-size:([\d.]+)px; font-weight:600; line-height:([\d.]+)px; color:#1D1C1A;/);
+  const body = html.match(/margin-top:([\d.]+)px; font-size:([\d.]+)px; font-weight:400; line-height:([\d.]+)px; color:#767370;/);
+  const badge = html.match(/width:(\d+)px; height:\1px; border-radius:(50%|\d+px);/);
+
+  return {
+    kind: stepBadge ? 'step' : 'icon',
+    // The canvas's 54pt status bar is not built, so the app's top is 54 less.
+    top: col ? px(col[1]) - 54 : null,
+    bottom: col ? px(col[2]) - 54 : null,
+    rowGap: px(decl(col?.[3] ?? '', 'gap')),
+    cellGap: rowGapAll.length ? Number(rowGapAll[0][1]) : undefined,
+    badge: badge ? { size: Number(badge[1]), radius: badge[2] === '50%' ? 'round' : Number(badge[2].replace('px', '')) } : undefined,
+    head: head ? { size: Number(head[1]), lineHeight: Number(head[2]) } : undefined,
+    body: body ? { marginTop: Number(body[1]), size: Number(body[2]), lineHeight: Number(body[3]) } : undefined,
+  };
+}
+
 /* ------------------------------------------------------------------- weeks */
 
 const EL = '.uifinal/final/Email Login';
@@ -141,6 +278,10 @@ function taskFromFrames(day) {
       intro: j.intro.join(' '),
       done: j.done,
       options: j.bullets.map((b) => ({ head: b.head, body: b.body })),
+      // Day 32 has no frames at all — no card, no intro, no options board — so
+      // there is no geometry to read. It takes the board 74 of the other 83
+      // days draw, which is the closest thing the canvas states to a default.
+      board: CANONICAL_BOARD,
       cardTitle: j.title,
       cardSummary: j.summary,
       fromCanvas: false,
@@ -153,10 +294,8 @@ function taskFromFrames(day) {
   const i = textNodes(fs.readFileSync(intro, 'utf8'));
   const o = textNodes(fs.readFileSync(`${LT}/Task-D${nn}-Options.html`, 'utf8'));
   const c = textNodes(fs.readFileSync(`${LT}/Task-D${nn}-Card.html`, 'utf8'));
-  // 9:41, Close, eyebrow, then the board's own children.
+  const { options, close } = optionRows(fs.readFileSync(`${LT}/Task-D${nn}-Options.html`, 'utf8'));
   const body = o.slice(4, -1);
-  const options = [];
-  for (let k = 0; k + 1 < body.length; k += 2) options.push({ head: body[k].text, body: body[k + 1].text });
   return {
     day,
     title: i[3]?.text,
@@ -166,6 +305,8 @@ function taskFromFrames(day) {
     intro: i[4]?.text,
     done: i[5]?.text,
     options,
+    close,
+    board: boardGeometry(fs.readFileSync(`${LT}/Task-D${nn}-Options.html`, 'utf8')),
     cardTitle: c[2]?.text,
     cardSummary: c[3]?.text,
     metrics: { title: size(i[3]), intro: size(i[4]), done: size(i[5]), optionHead: size(body[0]), optionBody: size(body[1]) },
@@ -233,6 +374,22 @@ out.push(` *`);
 out.push(` * Rebuild: node scripts/uifinal/gen-curriculum.mjs`);
 out.push(` */`);
 out.push('');
+out.push(`/** How a day's options board is laid out. The canvas draws two, and varies both. */`);
+out.push(`export interface TaskBoard {`);
+out.push(`  /** \`icon\` is a 40pt glyph plate; \`step\` is a 24pt numbered disc. */`);
+out.push(`  kind: 'icon' | 'step';`);
+out.push(`  /** Column top and bottom, already less the canvas's 54pt status bar. */`);
+out.push(`  top: number | null;`);
+out.push(`  bottom: number | null;`);
+out.push(`  /** Gap between option rows. */`);
+out.push(`  rowGap?: number;`);
+out.push(`  /** Gap between a row's badge and its text. */`);
+out.push(`  cellGap?: number;`);
+out.push(`  badge?: { size: number; radius: number | 'round' };`);
+out.push(`  head?: { size: number; lineHeight: number };`);
+out.push(`  body?: { marginTop: number; size: number; lineHeight: number };`);
+out.push(`}`);
+out.push('');
 out.push(`export interface TaskOption {`);
 out.push(`  /** The heading on the option row. */`);
 out.push(`  head: string;`);
@@ -251,6 +408,13 @@ out.push(`  intro: string;`);
 out.push(`  options: TaskOption[];`);
 out.push(`  /** What finishing it means, said plainly. */`);
 out.push(`  done: string;`);
+out.push(`  /**`);
+out.push(`   * The note under the last option row. Most days repeat the intro's rule`);
+out.push(`   * here; 23 say something else, so it cannot be derived from \`done\`.`);
+out.push(`   */`);
+out.push(`  close?: { text: string; marginTop: number }[];`);
+out.push(`  /** How the options board is laid out — the canvas varies it by day. */`);
+out.push(`  board: TaskBoard;`);
 out.push(`  /** How the task reads on the Today home and in the night reminder. */`);
 out.push(`  cardTitle: string;`);
 out.push(`  cardSummary: string;`);
@@ -301,6 +465,8 @@ for (const n of [...weeks.keys()].sort((a, b) => a - b)) {
     for (const b of t.options) out.push(`            { head: ${q(b.head)}, body: ${q(b.body)} },`);
     out.push(`          ],`);
     out.push(`          done: ${q(t.done)},`);
+    if (t.close?.length) out.push(`          close: ${JSON.stringify(t.close)},`);
+    out.push(`          board: ${JSON.stringify(t.board)},`);
     out.push(`          cardTitle: ${q(t.cardTitle)},`);
     out.push(`          cardSummary: ${q(t.cardSummary)},`);
     out.push(`        },`);

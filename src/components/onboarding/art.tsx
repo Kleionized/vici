@@ -100,7 +100,7 @@ export const ONB_LESSONS: Record<
   willpower: {
     step: 0,
     progress: 0.15,
-    title: 'It’s not a willpower problem.',
+    title: "It's not a willpower problem.",
     body: 'Urges follow a wave — they rise, crest, and pass. VICI teaches you to ride them out instead of fighting them head-on.',
     bodyTop: 614,
     bodyInset: 26,
@@ -122,7 +122,7 @@ export const ONB_LESSONS: Record<
   anchor: {
     step: 2,
     progress: 0.76,
-    title: 'You won’t do it on willpower alone.',
+    title: "You won't do it on willpower alone.",
     body: 'Structure beats resolve. Your cues, lessons, and check-ins carry you when motivation dips.',
     bodyTop: 586,
     bodyInset: 30,
@@ -133,7 +133,7 @@ export const ONB_LESSONS: Record<
   steps: {
     step: 3,
     progress: 0.85,
-    title: 'Progress isn’t a straight line.',
+    title: "Progress isn't a straight line.",
     body: 'Real change moves like a tide — in, out, in again. The waterline shifts over weeks, not hours.',
     bodyTop: 586,
     bodyInset: 30,

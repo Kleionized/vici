@@ -40,6 +40,12 @@ export default function TaskBoards() {
   if (!lesson) return null;
   const task = lesson.task;
   const options = task.options;
+  // How this day's options board is drawn. `Task D01` lays its board out in
+  // flow rather than in an absolute column, so it states no top — the shared
+  // canvas 225 stands in, which is where every other icon board sits.
+  const board1 = task.board;
+  const step = board1.kind === 'step';
+  const badge = board1.badge?.size ?? (step ? 24 : 40);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   const done = () => {
@@ -112,35 +118,92 @@ export default function TaskBoards() {
             </View>
           </>
         ) : (
-          // canvas 225 → 108 from the foot
+          // The board's own geometry, per day. The canvas puts this column at
+          // canvas 209, 225 or 260 and varies every metric inside it, so none
+          // of it is hardcoded here — `board` carries what the frame states.
           <ScrollView
             showsVerticalScrollIndicator={false}
-            style={{ position: 'absolute', left: 24, right: 24, top: 171, bottom: 108 }}
-            contentContainerStyle={{ gap: 22 }}>
+            style={{ position: 'absolute', left: 24, right: 24, top: board1.top ?? 171, bottom: board1.bottom ?? 54 }}
+            contentContainerStyle={{ gap: board1.rowGap ?? 22 }}>
             {options.length === 0 ? (
               // days 74 and 76 draw this board with no rows in either source
               <AppText style={[sans('400'), { fontSize: 14.5, lineHeight: 21, color: '#8B8882' }]}>{task.done}</AppText>
             ) : null}
             {options.map((option, index) => (
-              <View key={option.head} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 14 }}>
-                <View
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 12,
-                    borderCurve: 'continuous',
-                    backgroundColor: '#FFFFFF',
-                    boxShadow: '0 0 0 1px rgba(0,0,0,0.08), 0 3px 8px rgba(40,38,32,0.06)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <OptionGlyph day={n} index={index} />
-                </View>
+              <View key={`${index}-${option.head}`} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: board1.cellGap ?? 14 }}>
+                {step ? (
+                  // The numbered variant: a 24pt disc carrying the step's own
+                  // number, hairline-ringed and nudged 1pt down off the heading.
+                  <View
+                    style={{
+                      width: badge,
+                      height: badge,
+                      borderRadius: badge / 2,
+                      marginTop: 1,
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <AppText style={[sans('600'), { fontSize: 12, color: '#55534E' }]}>{index + 1}</AppText>
+                  </View>
+                ) : (
+                  <View
+                    style={{
+                      width: badge,
+                      height: badge,
+                      borderRadius: typeof board1.badge?.radius === 'number' ? board1.badge.radius : 12,
+                      borderCurve: 'continuous',
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 0 1px rgba(0,0,0,0.08), 0 3px 8px rgba(40,38,32,0.06)',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <OptionGlyph day={n} index={index} />
+                  </View>
+                )}
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <AppText style={[sans('600'), { fontSize: 15.5, lineHeight: 21, color: '#1D1C1A' }]}>{option.head}</AppText>
-                  <AppText style={[sans('400'), { marginTop: 3, fontSize: 13, lineHeight: 19, color: '#767370' }]}>{option.body}</AppText>
+                  <AppText style={[sans('600'), { fontSize: board1.head?.size ?? 15.5, lineHeight: board1.head?.lineHeight ?? 21, color: '#1D1C1A' }]}>
+                    {option.head}
+                  </AppText>
+                  {/* Some rows are a heading alone — drawing an empty line would
+                      still cost its line-height and push everything below it. */}
+                  {option.body ? (
+                    <AppText
+                      style={[
+                        sans('400'),
+                        {
+                          marginTop: board1.body?.marginTop ?? 3,
+                          fontSize: board1.body?.size ?? 13,
+                          lineHeight: board1.body?.lineHeight ?? 19,
+                          color: '#767370',
+                        },
+                      ]}>
+                      {option.body}
+                    </AppText>
+                  ) : null}
                 </View>
               </View>
+            ))}
+            {/* The note under the last row. On most days it repeats the intro
+                board's rule; on 23 it says something else, so it is its own
+                field rather than a second render of `task.done`. Day 43 writes
+                two paragraphs, each with its own gap above it — and the column
+                already contributes `rowGap`, so that much is taken back out. */}
+            {(task.close ?? []).map((para, i) => (
+              <AppText
+                key={i}
+                style={[
+                  sans('400'),
+                  {
+                    marginTop: para.marginTop - (board1.rowGap ?? 22),
+                    fontSize: board1.body?.size ?? 13,
+                    lineHeight: board1.body?.lineHeight ?? 19,
+                    color: '#767370',
+                  },
+                ]}>
+                {para.text}
+              </AppText>
             ))}
           </ScrollView>
         )}
