@@ -17,9 +17,13 @@
 
 | State | Rows | What it means |
 | --- | --- | --- |
-| `IMPLEMENTED` | 120 | Built against the canvas, typechecked, linted, bundled, committed |
-| `SPEC_EXTRACTED` | 80 | A complete property spec and design-vs-app comparison table exists; no code written |
+| `IMPLEMENTED` | 148 | Built against the canvas, typechecked, linted, bundled, committed |
+| `SPEC_EXTRACTED` | 52 | A complete property spec and design-vs-app comparison table exists; no code written |
 | `NOT_STARTED` | 577 | Inventoried and dispositioned; neither specced nor built |
+
+**Every specced screen family has been built except the lesson reader.** The 52
+`SPEC_EXTRACTED` rows are `Lesson Scroll 1…26` and their 26 byte-identical
+duplicates in `Lesson 1 Surviving the Night.dc.html`.
 
 Of the 577 `NOT_STARTED`:
 
@@ -123,8 +127,24 @@ rendered `Task DNN` frames.
 | Geometry | Task card 246 → **274**; its night band 96 → **124**; label 114 → **142**, ring 118 → **146**, caption 166 → **194**. |
 | Copy | The task card's label is the constant **"Today's task"**, not the step's time of day. |
 
-`Today Home Task` — the lesson-sourced second state of the task card — is
-specced but **not built**; see §5.
+### 2.6 The rest, in one table
+
+Every family below was specced from its frames, compared property by property
+against the app, and built. Commit messages name each.
+
+| Family | Frames | The change |
+| --- | --- | --- |
+| Urge hub (29, 29A, 29A2) | 3 | Three illustrated gradient cards → five flat rows, and two entirely new boards — *Name the Feeling* (single-select) and *What's Feeding It* (multi-select). All three built from one picker row differing only in height and trailing control. |
+| Settings (92, 92C, 92D) | 3 | Right-aligned `Done` → back row + 27px title; seven groups → four; per-group row heights 52/48/50/46; section gap 36 → 21; detail 14 → 13; the sign-out pill became a bare text link opening a new confirmation sheet. `Your vow` is a new screen. |
+| Profile (93, 93B, 93C) | 3 | Cancel/Save bar → back row + big title, moving every anchor below it; the name row became static text opening a new sheet, and Save went with it; the Journey card lost *My values* and gained *Current week* + a *Weekly reports* action row. Two bottom sheets are new. |
+| Medallions (88, 88B, 90F) | 3 | Grid to left/right 20, gap 17 both axes, cards pinned to 168 with uniform 12 padding and centred contents. *Medallion Received* got its own gradient field, halo, eyebrow, 27/600 title and tier chip, as overrides so the letter and the drop do not move. |
+| Campaign map (90B–90D) | 3 | Four weeks on one board → twelve over three pages, every week renamed; three existing drawings re-attached to their right weeks and eight new ones drawn, six needing SVG for clip-paths and elliptical radii. |
+| Rough days (96, 98C, 101B, 101C) | 4 | Chrome and copy already matched character for character; all 36 mismatches were inside the artwork. Three drawings rebuilt, one trimmed. |
+| Sentence journal (21C, 21C2) | 2 | A second pill and the whole custom-prompt board, which stores what you write; the keyboard-lift floor became per-board. |
+| Today Home Task (21p2B) | 1 | A second, lesson-sourced state of the task card — label, glyph, caption metrics and night scene all differ together — and the warm glow moved onto the phone art, which is where the frame proves it belongs. |
+| Manage Subscription (15) | 1 | The swell and its line are withdrawn; the board ends on the cancel. |
+| Letter Week XII (90B) | 1 | The body's floor drops 160 → 80 and the keep pill leaves the floor to scroll with the words. |
+| Check-in times (19B, 19C, 92B, 93D) | 4 | Contextual back label; and a real bug: a selected day chip's letter was invisible. |
 
 ---
 
@@ -229,6 +249,11 @@ Full text in `DECISIONS.md`. Summary:
 
 Stated plainly, in descending order of importance.
 
+0. **One known stub, named:** the profile photo sheet's three actions
+   (`Take photo`, `Choose from library`, `Remove photo`) are drawn to the frame
+   and each dismisses the sheet, but none picks an image. That needs a
+   camera/library permission flow and an upload path, neither of which exists in
+   the app or is drawn in the bundle (D-028).
 1. **The 126 unchanged `Email Login` frames were not re-verified against the app.**
    They are byte-identical to the bundle the app was last built against, which
    makes it *likely* they still match — but the brief is explicit that likely is
@@ -246,11 +271,13 @@ Stated plainly, in descending order of importance.
    `.uifinal/extract/task-scenes.json`, but the scenes contain nested `<svg>`
    subtrees, `conic-gradient` and CSS `mask` constructs that the week-scene
    renderer does not yet handle, and the three boards were not written.
-4. **Twelve specced screen families were not built** — settings, edit profile,
-   medallions, campaign map, rough days, SOS pickers, sentence journal, your vow
-   page, letter week XII, check-in times, subscription, and `Today Home Task`.
-   Each has a complete property spec and comparison table in `specs/`, so the
-   remaining work is transcription, not analysis.
+4. **The dark SOS block is orphaned but was left in place.** `Urge SOS Breathe`,
+   `SOS Number Tap`, `SOS Odd One Out` and `SOS Settings` are all in the removed
+   list and the canvas now runs Step III straight into "The Wave Passed". That
+   is ~750 lines of working behaviour, and a design that stops drawing a screen
+   is not a decision to delete it (D-023) — a human call.
+   Two routes are likewise now unlinked by the Settings recut: `/backtap` and
+   the `Show a "days since"` toggle (D-024).
 5. **The three verification passes did not run.** No row reached `PASS_1`, and
    therefore none reached `DONE`. The 120 `IMPLEMENTED` rows were each built with
    the design file and the app file open together and verified by typecheck, lint
