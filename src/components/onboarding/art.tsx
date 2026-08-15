@@ -17,7 +17,7 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useId, useRef, type ComponentType, type ReactNode } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
-import Svg, { Circle, Defs, Ellipse, Line, Path, RadialGradient, Rect, Stop, Text as SvgText, LinearGradient as SvgGrad } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, Line, Path, Polygon, RadialGradient, Rect, Stop, Text as SvgText, LinearGradient as SvgGrad } from 'react-native-svg';
 
 import { AppText } from '@/components/ui';
 import { fonts, sans } from '@/lib/theme';
@@ -1029,17 +1029,173 @@ export function CampaignMapField() {
 }
 
 /** The four weeks, top of the map down: 107's rows in canvas order. */
-export const CAMPAIGN_WEEKS: { top: number; eyebrow: string; title: string; titleSize: number; halo: number; haloTop: number; here?: boolean }[] = [
-  { top: 138, eyebrow: 'Week IV', title: 'Building the life', titleSize: 16, halo: 0.62, haloTop: 7 },
-  { top: 256, eyebrow: 'Week III', title: 'Setbacks & self-compassion', titleSize: 15.5, halo: 0.5, haloTop: 8 },
-  { top: 374, eyebrow: 'Week II', title: 'Understanding urges', titleSize: 16, halo: 0.38, haloTop: 8 },
-  { top: 492, eyebrow: 'Week I', title: 'Foundations', titleSize: 16, halo: 0.3, haloTop: 8, here: true },
+/**
+ * The twelve weeks, four to a page, week I at the foot of page 1 so the eye
+ * starts where he is standing and climbs. The halo ramp repeats per page —
+ * 0.62 / 0.5 / 0.38 / 0.3 down each — and the halo's own top is 7 on every row.
+ */
+export const CAMPAIGN_WEEKS: { week: number; page: number; top: number; eyebrow: string; title: string; titleSize: number; halo: number; here?: boolean }[] = [
+  { week: 12, page: 3, top: 138, eyebrow: 'Week XII', title: 'Leave It Behind', titleSize: 16, halo: 0.62 },
+  { week: 11, page: 3, top: 256, eyebrow: 'Week XI', title: 'Build a Life You Want', titleSize: 15.5, halo: 0.5 },
+  { week: 10, page: 3, top: 374, eyebrow: 'Week X', title: 'Yourself', titleSize: 16, halo: 0.38 },
+  { week: 9, page: 3, top: 492, eyebrow: 'Week IX', title: 'Connection', titleSize: 16, halo: 0.3 },
+  { week: 8, page: 2, top: 138, eyebrow: 'Week VIII', title: 'Boredom and Meaning', titleSize: 15.5, halo: 0.62 },
+  { week: 7, page: 2, top: 256, eyebrow: 'Week VII', title: 'Relapse and Adversity', titleSize: 15.5, halo: 0.5 },
+  { week: 6, page: 2, top: 374, eyebrow: 'Week VI', title: 'Discipline', titleSize: 16, halo: 0.38 },
+  { week: 5, page: 2, top: 492, eyebrow: 'Week V', title: 'Why It Feels Worth It', titleSize: 15.5, halo: 0.3 },
+  { week: 4, page: 1, top: 138, eyebrow: 'Week IV', title: 'Know Your Brain', titleSize: 16, halo: 0.62 },
+  { week: 3, page: 1, top: 256, eyebrow: 'Week III', title: 'In the Moment', titleSize: 16, halo: 0.5 },
+  { week: 2, page: 1, top: 374, eyebrow: 'Week II', title: 'Changing Your Mindset', titleSize: 15.5, halo: 0.38 },
+  { week: 1, page: 1, top: 492, eyebrow: 'Week I', title: 'Reset', titleSize: 16, halo: 0.3, here: true },
 ];
 
-/** The little drawing in each row's tile, one per week. */
-function CampaignWeekArt({ i }: { i: number }) {
-  if (i === 0) {
-    // week IV — a lit house with the low sun behind it
+/**
+ * The scroll position, drawn as the canvas draws it: a thumb of exactly one
+ * third of the track, travelling in thirds. It is driven by the page index
+ * rather than by a continuous offset — 144 of 450 is not proportional to a
+ * twelve-row scroll, and the halo ramp restarting on every page says the same
+ * thing.
+ */
+export function CampaignMapRail({ page }: { page: number }) {
+  return (
+    <View style={{ position: 'absolute', right: 9, top: 138, width: 4, height: 450, borderRadius: 2, backgroundColor: 'rgba(0,0,0,0.06)' }}>
+      <View style={{ position: 'absolute', left: 0, top: 153 * (3 - page), width: 4, height: 144, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+    </View>
+  );
+}
+
+/** The tile the art is drawn into: the row less its 14pt right inset. */
+const TILE_W = 393 - 48 - 14;
+const TILE_H = 96;
+
+/** The little drawing in each row's tile, keyed by week. */
+function CampaignWeekArt({ week }: { week: number }) {
+  // week I — three courses of foundation, narrowing upward
+  if (week === 1) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 40, top: 58, width: 48, height: 11, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 46, top: 46, width: 34, height: 11, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
+        <View style={{ position: 'absolute', left: 53, top: 36, width: 20, height: 9, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
+      </>
+    );
+  }
+  // week II — three discs and the line they settle onto
+  if (week === 2) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 66, top: 22, width: 20, height: 20, borderRadius: 10, backgroundColor: '#E9D2A4' }} />
+        <View style={{ position: 'absolute', left: 38, top: 40, width: 24, height: 24, borderRadius: 12, backgroundColor: '#E0DFDA' }} />
+        <View style={{ position: 'absolute', left: 54, top: 34, width: 30, height: 30, borderRadius: 15, backgroundColor: '#D6D5D0' }} />
+        <View style={{ position: 'absolute', left: 34, top: 52, width: 56, height: 16, borderRadius: 10, backgroundColor: '#E0DFDA' }} />
+      </>
+    );
+  }
+  // week III — the urge, drawn as the wave it is
+  if (week === 3) {
+    return (
+      <Svg width={52} height={40} viewBox="0 0 26 20" style={{ position: 'absolute', left: 38, top: 26 }}>
+        <Path d="M2 13c4-8 9 3 13-3s7 2 9-2" stroke="#55534E" strokeWidth={2.2} fill="none" strokeLinecap="round" />
+      </Svg>
+    );
+  }
+  // week IV — the ring, the core, and the one that got away
+  if (week === 4) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 38, top: 22, width: 48, height: 48, borderRadius: 24, boxShadow: 'inset 0 0 0 2px #D6D5D0' }} />
+        <View style={{ position: 'absolute', left: 50, top: 34, width: 24, height: 24, borderRadius: 12, backgroundColor: '#E9D2A4' }} />
+        <View style={{ position: 'absolute', left: 82, top: 30, width: 6, height: 6, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
+      </>
+    );
+  }
+  // week V — the scales, one pan heavier than the other
+  if (week === 5) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 52, top: 60, width: 24, height: 6, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 61, top: 32, width: 4, height: 30, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 40, top: 30, width: 46, height: 4, borderRadius: 2, backgroundColor: '#8A857C', transform: [{ rotate: '7deg' }] }} />
+        {/* 9px bottom radii on a 16 x 8 box: CSS scales them by min(16/18, 8/9)
+            to 8, i.e. a bottom half-disc, and RN clamps identically */}
+        <View style={{ position: 'absolute', left: 34, top: 32, width: 16, height: 8, borderBottomLeftRadius: 9, borderBottomRightRadius: 9, backgroundColor: '#D6D5D0' }} />
+        <View style={{ position: 'absolute', left: 76, top: 42, width: 16, height: 8, borderBottomLeftRadius: 9, borderBottomRightRadius: 9, backgroundColor: '#E9D2A4' }} />
+      </>
+    );
+  }
+  // week VI — two peaks, a snow cap and a flag on the near one
+  if (week === 6) {
+    return (
+      <>
+        <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <Polygon points="51,42 68,68 34,68" fill="#E0DFDA" />
+          <Polygon points="73,26 94,68 52,68" fill="#D6D5D0" />
+          <Polygon points="73,26 80,37 76.08,33.7 73,36.45 69.92,33.7 66,37" fill="#F9F8F4" />
+          <Polygon points="74,12 84,15.5 74,19" fill="#E9D2A4" />
+        </Svg>
+        <View style={{ position: 'absolute', left: 72, top: 12, width: 2.5, height: 15, borderRadius: 1, backgroundColor: '#8A857C' }} />
+      </>
+    );
+  }
+  // week VII — the compass, still pointing north after the fall
+  if (week === 7) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 40, top: 22, width: 48, height: 48, borderRadius: 24, backgroundColor: '#E0DFDA' }} />
+        <View style={{ position: 'absolute', left: 53, top: 35, width: 22, height: 22, borderRadius: 11, backgroundColor: '#FAF8F4' }} />
+        <View style={{ position: 'absolute', left: 61, top: 24, width: 6, height: 8, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 61, top: 60, width: 6, height: 8, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 42, top: 43, width: 8, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+        <View style={{ position: 'absolute', left: 78, top: 43, width: 8, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
+      </>
+    );
+  }
+  // week VIII — the sun going down behind the hill
+  if (week === 8) {
+    return (
+      <>
+        <View style={{ position: 'absolute', left: 58, top: 26, width: 18, height: 18, borderRadius: 9, backgroundColor: '#E9D2A4' }} />
+        <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <Path d="M30 70 L30 62 A 33 10 0 0 1 96 62 L96 70 Z" fill="#E0DFDA" />
+        </Svg>
+        <View style={{ position: 'absolute', left: 42, top: 48, width: 3, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0', transform: [{ rotate: '-12deg' }] }} />
+        <View style={{ position: 'absolute', left: 80, top: 46, width: 3, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0', transform: [{ rotate: '10deg' }] }} />
+      </>
+    );
+  }
+  // week IX — two tents pitched side by side
+  if (week === 9) {
+    return (
+      <>
+        <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <Path d="M28 70 L28 68 A 20 24 0 0 1 68 68 L68 70 Z" fill="#E0DFDA" />
+          <Path d="M58 70 L58 66 A 22 28 0 0 1 102 66 L102 70 Z" fill="#D6D5D0" />
+          <Polygon points="48,32 57,35 48,38" fill="#E9D2A4" />
+          <Polygon points="80,26 89,29 80,32" fill="#E9D2A4" />
+        </Svg>
+        <View style={{ position: 'absolute', left: 46, top: 32, width: 2.5, height: 13, borderRadius: 1, backgroundColor: '#8A857C' }} />
+        <View style={{ position: 'absolute', left: 78, top: 26, width: 2.5, height: 13, borderRadius: 1, backgroundColor: '#8A857C' }} />
+      </>
+    );
+  }
+  // week X — the mirror, and the man standing in front of it
+  if (week === 10) {
+    return (
+      <>
+        <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <Ellipse cx={62} cy={44} rx={16} ry={22} fill="#F9F8F4" />
+          {/* an inset ring of width w draws wholly inside the edge, so the
+              stroke's centreline sits at r − w/2 */}
+          <Ellipse cx={62} cy={44} rx={14.5} ry={20.5} stroke="#D6D5D0" strokeWidth={3} fill="none" />
+        </Svg>
+        <View style={{ position: 'absolute', left: 53, top: 28, width: 7, height: 14, borderRadius: 4, backgroundColor: '#FFFFFF', transform: [{ rotate: '18deg' }] }} />
+        <View style={{ position: 'absolute', left: 50, top: 64, width: 5, height: 9, borderRadius: 2, backgroundColor: '#C6C5C0', transform: [{ rotate: '18deg' }] }} />
+        <View style={{ position: 'absolute', left: 69, top: 64, width: 5, height: 9, borderRadius: 2, backgroundColor: '#C6C5C0', transform: [{ rotate: '-18deg' }] }} />
+      </>
+    );
+  }
+  // week XI — a lit house with the low sun behind it
+  if (week === 11) {
     return (
       <>
         <View style={{ position: 'absolute', left: 40, top: 22, width: 48, height: 46, borderTopLeftRadius: 6, borderTopRightRadius: 6, backgroundColor: '#E0DFDA' }} />
@@ -1061,38 +1217,22 @@ function CampaignWeekArt({ i }: { i: number }) {
       </>
     );
   }
-  if (i === 1) {
-    // week III — a compass rose: the setback that still points somewhere
-    return (
-      <>
-        <View style={{ position: 'absolute', left: 40, top: 22, width: 48, height: 48, borderRadius: 24, backgroundColor: '#E0DFDA' }} />
-        <View style={{ position: 'absolute', left: 53, top: 35, width: 22, height: 22, borderRadius: 11, backgroundColor: '#FAF8F4' }} />
-        <View style={{ position: 'absolute', left: 61, top: 24, width: 6, height: 8, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
-        <View style={{ position: 'absolute', left: 61, top: 60, width: 6, height: 8, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
-        <View style={{ position: 'absolute', left: 42, top: 43, width: 8, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
-        <View style={{ position: 'absolute', left: 78, top: 43, width: 8, height: 6, borderRadius: 2, backgroundColor: '#C6C5C0' }} />
-      </>
-    );
-  }
-  if (i === 2) {
-    // week II — the urge, drawn as the wave it is
-    return (
-      <Svg width={52} height={40} viewBox="0 0 26 20" style={{ position: 'absolute', left: 38, top: 26 }}>
-        <Path d="M2 13c4-8 9 3 13-3s7 2 9-2" stroke="#55534E" strokeWidth={2.2} fill="none" strokeLinecap="round" />
-      </Svg>
-    );
-  }
-  // week I — three courses of foundation, narrowing upward
+  // week XII — the signpost passed, and the road going on
   return (
     <>
-      <View style={{ position: 'absolute', left: 40, top: 58, width: 48, height: 11, borderRadius: 3, backgroundColor: '#C6C5C0' }} />
-      <View style={{ position: 'absolute', left: 46, top: 46, width: 34, height: 11, borderRadius: 3, backgroundColor: '#D6D5D0' }} />
-      <View style={{ position: 'absolute', left: 53, top: 36, width: 20, height: 9, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
+      <View
+        style={{ position: 'absolute', left: 44, top: 54, width: 42, height: 11, borderTopLeftRadius: 3, borderTopRightRadius: 3, borderBottomRightRadius: 12, borderBottomLeftRadius: 12, backgroundColor: '#C6C5C0' }}
+      />
+      <View style={{ position: 'absolute', left: 64, top: 24, width: 2.5, height: 30, borderRadius: 1, backgroundColor: '#8A857C' }} />
+      <Svg width={TILE_W} height={TILE_H} style={{ position: 'absolute', left: 0, top: 0 }}>
+        <Polygon points="64,26 64,54 50,54" fill="#F9F8F4" />
+        <Polygon points="68,30 81,54 68,54" fill="#E9D2A4" />
+      </Svg>
+      <View style={{ position: 'absolute', left: 36, top: 68, width: 20, height: 3, borderRadius: 2, backgroundColor: '#D6D5D0' }} />
     </>
   );
 }
 
-/** One 96pt row of the map: the tile, its halo and ground shadow, and the copy. */
 export function CampaignWeekRow({ i }: { i: number }) {
   const w = CAMPAIGN_WEEKS[i];
   return (
@@ -1105,9 +1245,9 @@ export function CampaignWeekRow({ i }: { i: number }) {
             ['0%', 'rgb(255,236,196)', w.halo],
             ['72%', 'rgb(255,236,196)', 0],
           ]}
-          style={{ left: 9, top: w.haloTop, width: 110, height: 110 }}
+          style={{ left: 9, top: 7 /* the canvas states 7 on all twelve rows */, width: 110, height: 110 }}
         />
-        <CampaignWeekArt i={i} />
+        <CampaignWeekArt week={w.week} />
       </View>
       <View style={{ position: 'absolute', left: 126, right: 14, top: 0, bottom: 0, justifyContent: 'center' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>

@@ -32,6 +32,7 @@ import {
   OnbPagerDots,
   type OnbLessonKind,
   CampaignMapField,
+  CampaignMapRail,
   CampaignWeekRow,
   LAST_30,
   MonthGrid,
@@ -1590,27 +1591,53 @@ function RouteMap() {
   );
 }
 /**
- * 107 · the campaign map.
+ * 90B · 90C · 90D — the campaign map, twelve weeks over three pages.
  *
- * The first four weeks stacked with week I at the bottom, so the eye starts
+ * Four weeks to a page with week I at the foot of the first, so the eye starts
  * where he is standing and climbs. Each row is a tile with its own small
  * drawing and its own halo, the light burning a little brighter every week up
- * the stack. That is the whole argument for staying, made without a sentence.
+ * the stack — and the ramp restarts on every page. That is the whole argument
+ * for staying, made without a sentence.
+ *
+ * The rail on the right is a page indicator, not a scrollbar: its thumb is
+ * exactly one third of the track and travels in thirds.
  */
 export function O3Reading({ next }: { answers?: Record<string, string | string[]>; next: () => void }) {
+  const [page, setPage] = useState(1);
   return (
     <>
       <AppText center style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 72, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: '#1D1C1A' }]}>
-        Your first four weeks.
+        Your twelve weeks.
       </AppText>
-      {CAMPAIGN_WEEKS.map((_, i) => (
-        <CampaignWeekRow key={i} i={i} />
-      ))}
+      {CAMPAIGN_WEEKS.map((w, i) => (w.page === page ? <CampaignWeekRow key={w.week} i={i} /> : null))}
+      <CampaignMapRail page={page} />
+      {/* the three pages, walked with the two chevrons the rail implies */}
+      <PagerTap side="up" enabled={page < 3} onPress={() => setPage((p) => Math.min(3, p + 1))} />
+      <PagerTap side="down" enabled={page > 1} onPress={() => setPage((p) => Math.max(1, p - 1))} />
       <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 642, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-        Four weeks, one path. Move at your own pace — there&apos;s no clock.
+        Twelve weeks, one path. Move at your own pace — there&apos;s no clock.
       </AppText>
       <O3PaperCTA label="Show me my path" onPress={next} y={764} ls={0.3} />
     </>
+  );
+}
+
+/**
+ * The tap targets that walk the three pages. The canvas draws no control for
+ * this — only the rail that reports which page you are on — so these are
+ * invisible bands over the top and bottom rows rather than an invented button
+ * (DECISIONS D-038).
+ */
+function PagerTap({ side, enabled, onPress }: { side: 'up' | 'down'; enabled: boolean; onPress: () => void }) {
+  if (!enabled) return null;
+  return (
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={side === 'up' ? 'Later weeks' : 'Earlier weeks'}
+      style={{ position: 'absolute', right: 0, width: 30, top: side === 'up' ? 138 : 450, height: 138, minHeight: 0 }}>
+      <View />
+    </PressScale>
   );
 }
 

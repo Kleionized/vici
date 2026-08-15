@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 145 · SPEC_EXTRACTED: 55
+**777 rows.** NOT_STARTED: 577 · IMPLEMENTED: 148 · SPEC_EXTRACTED: 52
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -123,9 +123,9 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Rewire Curve | src/components/onboarding/v3.tsx | NOT_STARTED | — | 87H · The Rewire Curve |
 | Email Login | Results Pattern | src/components/onboarding/v3.tsx | NOT_STARTED | — | 88 · Results — Pattern |
 | Email Login | The Vow | src/components/onboarding/v3.tsx | NOT_STARTED | — | 90 · The Vow — Signature |
-| Email Login | Campaign Map | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
-| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
-| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | SPEC_EXTRACTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
+| Email Login | Campaign Map | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90B &middot; Your twelve weeks &mdash; I&ndash;IV (1/3) |
+| Email Login | Campaign Map II | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90C &middot; Your twelve weeks &mdash; V&ndash;VIII |
+| Email Login | Campaign Map III | src/components/onboarding/v3.tsx | IMPLEMENTED | 2026-08-15 | 90D &middot; Your twelve weeks &mdash; IX&ndash;XII |
 | Email Login | Letter Received | src/app/letter.tsx | NOT_STARTED | — | 90E &middot; A letter arrived |
 | Email Login | Letter Week XII | src/app/letter.tsx | IMPLEMENTED | 2026-08-15 | 90B · A Letter From Week XII |
 | Email Login | Medallion Received | src/app/medallion-post.tsx | IMPLEMENTED | 2026-08-15 | 90F &middot; Medallion earned &mdash; detail popup |

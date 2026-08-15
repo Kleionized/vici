@@ -446,3 +446,25 @@ names the ambiguity, the reading chosen, and why.
   `Today Home Task` also draws **no** warm glow, which proves the
   `right:40 top:20` `#E2BA78` disc belongs to the phone art rather than to the
   shared `TaskNight` band. It moved.
+
+## The campaign map
+
+- **D-038 · The rail is a page indicator, not a scrollbar, and the paging
+  control is invented as little as possible.** `Campaign Map` I/II/III draw a
+  144pt thumb on a 450pt track at exactly three offsets (306 / 153 / 0), which
+  is one third of the track travelling in thirds — not proportional to a
+  twelve-row scroll. The halo ramp restarting per page (0.62 / 0.5 / 0.38 / 0.3
+  on each) says the same thing, and the sticky note on the first frame reads
+  "(1/3)". So it is a three-page pager driven by page index.
+  The canvas draws no control for turning the page. Rather than invent a button
+  or a chevron it does not draw, the pager is two invisible 30pt tap bands over
+  the rail's own column — the only affordance the frame gives any hint of.
+
+- **D-039 · Every week was renamed and renumbered, and the three existing
+  drawings were right but attached to the wrong weeks.** The house moves from
+  week IV to **XI**, the compass from III to **VII**, and the wave from II to
+  **III**; the bars stay on week I. Eight drawings are new — II, IV, V, VI,
+  VIII, IX, X, XII — six of which need `react-native-svg` because they use
+  `clip-path` polygons or elliptical corner radii that RN styling cannot say.
+  `haloTop` was 7/8/8/8 in the app and is 7 on all twelve rows in the canvas, so
+  the field is gone and 7 is written once.
