@@ -140,3 +140,63 @@ screen delivers — wired through a storage key, a letter body and a journal
 entry, all of which are behaviour the existing app owns, and the canvas draws no
 letter for Veni. Changing the three arrival strings alone would leave the screen
 contradicting its own letter. Logged as **D-098**, not changed.
+
+---
+
+# Pass 2 — the position sweep
+
+The literal sweep in Pass 3 compared colours and font sizes. It never compared
+**positions**, which is most of what these frames state: every absolutely-
+positioned box carries a `top`, and the app owes `top − 54` for the status bar
+it does not build. `scripts/uifinal/position-sweep.mjs` collects them per frame
+and asks whether the app carries each one.
+
+    frames with stated positions: 575
+    fully accounted for:          247
+
+It is a pointer, not a verdict — it cannot see a value the app computes — so
+every hit was resolved by reading or by measuring the running app.
+
+## Finding 5 — the intro board's geometry is per-day, and was hardcoded
+
+The app fixed the task scene at `(26, 218)`, 340 × 200, with the rule card under
+it at 438. The canvas states **eight** different layouts:
+
+| scene top (app) | scene height | rule top (app) | days |
+| --- | --- | --- | --- |
+| 218 | 200 | 438 | 37 |
+| 197 | 200 | 417 | 28 |
+| 239 | 200 | 459 | 9 |
+| 260 | 200 | 480 | 4 |
+| 253 | 200 | 473 | 1 |
+| 281 | 200 | 501 | 1 |
+| 365 | **186** | 571 | 1 (day 74) |
+| 386 | **164** | 570 | 1 (day 76) |
+
+So the app drew 45 of the 82 framed days in the wrong place — **day 74's scene
+was 147pt high of where its frame puts it**, and its rule card 133pt.
+
+The rule card is always `sceneTop + sceneHeight + 20`, and that holds across all
+eight variants, so it now follows the scene rather than being read separately.
+One day also moves the intro paragraph, from 139 to 174.
+
+**Verified numerically:** all 83 intro boards re-read off their frames and
+compared to the emitted data — scene box, rule card, intro paragraph. **0
+mismatches.** Day 74 measured in the browser at scene 365 / rule 571, which is
+what its frame draws.
+
+## Resolved as correct — the sweep pointing at computed values
+
+- **The 12 week overviews and the Journey chapters.** Every frame reported the
+  same set of unmatched tops (547, 555, 566, 627, 635, 646, 707, 715, 726).
+  These are the lesson rows and their connector pips, which the app computes
+  from `432 + i × 80` with pips at `+5`/`+13`, so no literal exists to match.
+  Measured in the running app: cards render at **432, 512, 592, 672, 752, 832,
+  912** and pips at **493, 501, 573, 581, 653, 661, …** — exactly the canvas's
+  486, 566, 646, 726 and 547, 555, 627, 635, 707, 715 less 54. Correct.
+- **`Splash` and `Standing Guard`.** Reported at 2/9 and 4/10 because the map
+  points at `src/app/index.tsx`, which is eight lines of routing; the scenes are
+  in `src/components/ui/Waterline.tsx`. All 16 stated positions are present
+  there. The sweep now falls back to the whole of `src/` before counting a miss.
+- **`Login Typing` top 561** — a `#D6D5D0` block from 561 to the foot at
+  `z-index:10`. That is the canvas drawing a keyboard; the app gets the real one.

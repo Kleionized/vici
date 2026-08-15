@@ -169,6 +169,38 @@ function optionRows(html) {
  * 22; the heading ramp has five variants. None of that is derivable, so it is
  * read per day and travels with the task.
  */
+/**
+ * How the intro board is laid out on a given day.
+ *
+ * The app fixed the scene at (26, 218) at 340 × 200 and the rule card under it
+ * at 438, which is right for 37 of the 82 framed days and wrong for the other
+ * 45 — day 74's scene starts 147pt lower than the app draws it.
+ *
+ * The scene box is marked in the canvas with a `<!--TVIZ NN-->` comment, and the
+ * rule card is always `sceneTop + sceneHeight + 20`, which holds across all
+ * eight variants — so the card follows from the scene rather than being a
+ * second independent reading.
+ */
+function introGeometry(html) {
+  const scene = html.match(/<!--TVIZ \d+--><div style="position:absolute; left:(\d+)px; top:(\d+)px; width:(\d+)px; height:(\d+)px;"/);
+  const intro = html.match(/<!--TDESC \d+--><div style="position:absolute; left:38px; right:38px; top:(\d+)px/);
+  const rule = html.match(/position:absolute; left:24px; right:24px; top:(\d+)px; height:(\d+)px; border-radius:16px; background:#FFFFFF/);
+  if (!scene) return null;
+  return {
+    // less the canvas's 54pt status bar, as everywhere else
+    introTop: intro ? Number(intro[1]) - 54 : 139,
+    sceneLeft: Number(scene[1]),
+    sceneTop: Number(scene[2]) - 54,
+    sceneWidth: Number(scene[3]),
+    sceneHeight: Number(scene[4]),
+    ruleTop: rule ? Number(rule[1]) - 54 : Number(scene[2]) + Number(scene[4]) + 20 - 54,
+    ruleHeight: rule ? Number(rule[2]) : 68,
+  };
+}
+
+/** The intro board 37 of the 82 framed days draw, verbatim off those frames. */
+const CANONICAL_INTRO = { introTop: 139, sceneLeft: 26, sceneTop: 218, sceneWidth: 340, sceneHeight: 200, ruleTop: 438, ruleHeight: 68 };
+
 /** The board 74 of the 83 framed days draw, verbatim off those frames. */
 const CANONICAL_BOARD = {
   kind: 'icon',
@@ -282,6 +314,7 @@ function taskFromFrames(day) {
       // there is no geometry to read. It takes the board 74 of the other 83
       // days draw, which is the closest thing the canvas states to a default.
       board: CANONICAL_BOARD,
+      intro2: CANONICAL_INTRO,
       cardTitle: j.title,
       cardSummary: j.summary,
       fromCanvas: false,
@@ -307,6 +340,7 @@ function taskFromFrames(day) {
     options,
     close,
     board: boardGeometry(fs.readFileSync(`${LT}/Task-D${nn}-Options.html`, 'utf8')),
+    intro2: introGeometry(fs.readFileSync(intro, 'utf8')) ?? CANONICAL_INTRO,
     cardTitle: c[2]?.text,
     cardSummary: c[3]?.text,
     metrics: { title: size(i[3]), intro: size(i[4]), done: size(i[5]), optionHead: size(body[0]), optionBody: size(body[1]) },
@@ -390,6 +424,21 @@ out.push(`  head?: { size: number; lineHeight: number };`);
 out.push(`  body?: { marginTop: number; size: number; lineHeight: number };`);
 out.push(`}`);
 out.push('');
+out.push(`/**`);
+out.push(` * How a day's intro board is laid out. The scene box moves between 197 and`);
+out.push(` * 386, and two days draw it shorter than 200, so the rule card under it moves`);
+out.push(` * with it — it always sits 20pt below the scene's foot.`);
+out.push(` */`);
+out.push(`export interface TaskIntro {`);
+out.push(`  introTop: number;`);
+out.push(`  sceneLeft: number;`);
+out.push(`  sceneTop: number;`);
+out.push(`  sceneWidth: number;`);
+out.push(`  sceneHeight: number;`);
+out.push(`  ruleTop: number;`);
+out.push(`  ruleHeight: number;`);
+out.push(`}`);
+out.push('');
 out.push(`export interface TaskOption {`);
 out.push(`  /** The heading on the option row. */`);
 out.push(`  head: string;`);
@@ -415,6 +464,8 @@ out.push(`   */`);
 out.push(`  close?: { text: string; marginTop: number }[];`);
 out.push(`  /** How the options board is laid out — the canvas varies it by day. */`);
 out.push(`  board: TaskBoard;`);
+out.push(`  /** How the intro board is laid out — the canvas varies this by day too. */`);
+out.push(`  intro2: TaskIntro;`);
 out.push(`  /** How the task reads on the Today home and in the night reminder. */`);
 out.push(`  cardTitle: string;`);
 out.push(`  cardSummary: string;`);
@@ -467,6 +518,7 @@ for (const n of [...weeks.keys()].sort((a, b) => a - b)) {
     out.push(`          done: ${q(t.done)},`);
     if (t.close?.length) out.push(`          close: ${JSON.stringify(t.close)},`);
     out.push(`          board: ${JSON.stringify(t.board)},`);
+    out.push(`          intro2: ${JSON.stringify(t.intro2)},`);
     out.push(`          cardTitle: ${q(t.cardTitle)},`);
     out.push(`          cardSummary: ${q(t.cardSummary)},`);
     out.push(`        },`);

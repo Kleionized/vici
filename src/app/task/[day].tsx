@@ -44,6 +44,7 @@ export default function TaskBoards() {
   // flow rather than in an absolute column, so it states no top — the shared
   // canvas 225 stands in, which is where every other icon board sits.
   const board1 = task.board;
+  const intro = task.intro2;
   const step = board1.kind === 'step';
   const badge = board1.badge?.size ?? (step ? 24 : 40);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
@@ -82,26 +83,29 @@ export default function TaskBoards() {
 
         {board === 0 ? (
           <>
-            {/* canvas 193 */}
             <AppText
               center
-              style={[sans('400'), { position: 'absolute', left: 38, right: 38, top: 139, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
+              style={[sans('400'), { position: 'absolute', left: 38, right: 38, top: intro.introTop, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
               {task.intro}
             </AppText>
 
-            {/* canvas 272 — the 340 x 200 scene, at its own scale */}
-            <View style={{ position: 'absolute', left: 26, top: 218 }}>
-              <TaskScene day={n} width={Math.min(340, width - 52)} />
+            {/* The scene box, at the top and size this day's frame states: it
+                sits anywhere from 197 to 386, and two days draw it shorter
+                than 200. */}
+            <View style={{ position: 'absolute', left: intro.sceneLeft, top: intro.sceneTop }}>
+              <TaskScene day={n} width={Math.min(intro.sceneWidth, width - intro.sceneLeft * 2)} />
             </View>
 
-            {/* canvas 492 — what finishing it means */}
+            {/* What finishing it means — always 20pt below the scene's foot,
+                which is why it moves with the scene rather than sitting at a
+                top of its own. */}
             <View
               style={{
                 position: 'absolute',
                 left: 24,
                 right: 24,
-                top: 438,
-                minHeight: 68,
+                top: intro.ruleTop,
+                minHeight: intro.ruleHeight,
                 borderRadius: 16,
                 borderCurve: 'continuous',
                 backgroundColor: '#FFFFFF',
