@@ -549,3 +549,20 @@ names the ambiguity, the reading chosen, and why.
   *design* still uses them even where the app no longer does. Deleting them is
   irreversible and gains nothing this run needs; they are listed here and in
   `REPORT.md` instead.
+
+## The unchanged-frame audit
+
+- **D-050 · The canvas is inconsistent about apostrophes; the app's curly ones
+  stand.** The audit of `Root Loop` found the app writing `isn’t` (U+2019) where
+  the frame writes `isn't` (U+0027). Surveying the whole canvas: 45 text runs
+  use `&rsquo;` and 23 use a raw ASCII apostrophe, across 18 frames — so this is
+  authoring drift in the bundle, not a typographic choice. The majority reading
+  is the curly apostrophe, which is what the app already uses everywhere.
+  Recorded rather than "fixed" in either direction.
+
+- **D-051 · Blur and mask substitutions are counted as mismatches, and named as
+  such.** The audits mark them `MISMATCH*` — the design uses a CSS feature RN
+  cannot express (`filter: blur()`, `mask-image`, gradient extent keywords) and
+  the app substitutes a falloff. They are listed in `REPORT.md` §5 as platform
+  gaps rather than silently called matches, because the numbers really do
+  differ even though the intent is carried.
