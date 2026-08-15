@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import type { ReactNode } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Linking, Platform, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
@@ -113,6 +113,12 @@ export default function Subscription() {
   const user = useCurrentUser();
   const premium = !!user?.settings.premium;
   const drop = !!user?.settings.yearlyDrop;
+  // The canvas draws all five of these as pressable. Redeeming, restoring,
+  // billing and cancelling all live in the store's own sheet, not in the app —
+  // so each opens the platform's subscription settings rather than a screen we
+  // would have to invent (DECISIONS D-092).
+  const manage = () => void Linking.openURL(Platform.OS === 'ios' ? 'https://apps.apple.com/account/subscriptions' : 'https://play.google.com/store/account/subscriptions');
+
   const price = drop ? '$26.99' : '$39.99';
   const renews = (() => {
     const d = new Date();
@@ -170,20 +176,24 @@ export default function Subscription() {
           <GroupLabel text="Plan" top={276} />
           <Card top={298}>
             <Row icon={ICON.plan} title="Change plan" detail={premium ? `Yearly · ${price}` : 'Free'} onPress={() => router.push('/paywall')} />
-            <Row icon={ICON.code} title="Redeem a code" />
-            <Row icon={ICON.restore} title="Restore purchases" last />
+            <Row icon={ICON.code} title="Redeem a code" onPress={manage} />
+            <Row icon={ICON.restore} title="Restore purchases" last onPress={manage} />
           </Card>
 
           <GroupLabel text="Billing" top={490} />
           <Card top={512}>
-            <Row icon={ICON.card} title="Payment method" detail="Apple ID" />
-            <Row icon={ICON.receipts} title="Receipts & invoices" last />
+            <Row icon={ICON.card} title="Payment method" detail="Apple ID" onPress={manage} />
+            <Row icon={ICON.receipts} title="Receipts & invoices" last onPress={manage} />
           </Card>
 
           {premium ? (
-            <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 658, fontSize: 15, color: '#8B8882' }]}>
-              Cancel subscription
-            </AppText>
+            <PressScale
+              onPress={manage}
+              accessibilityRole="button"
+              hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
+              style={{ position: 'absolute', left: 0, right: 0, top: 658, minHeight: 0, alignItems: 'center' }}>
+              <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Cancel subscription</AppText>
+            </PressScale>
           ) : null}
 
         </ScrollView>

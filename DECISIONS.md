@@ -915,3 +915,48 @@ Six second-reader audits ran over the screens this run built by hand
   title kept the base weight 500 where the frame says 600; the override now
   names the weight, leaving `Letter Arrival` and `Drop Received` on 500, which
   is what they draw.
+
+- **D-089 · The sentence journal's sheet did not convert its canvas y.**
+  `SHEET_TOP = 320` was the raw canvas number. The house conversion everywhere
+  else in this app is `canvas − 54 + insets.top` (`score.tsx`,
+  `roughDays/kit.tsx`, `relapse.tsx`), which equals 320 only where the inset is
+  exactly 54 — on a 59pt device the whole sheet and its three skeleton blocks
+  sat 5pt high. All four now convert.
+
+- **D-090 · Two invented strings in the journal, replaced with the canvas's.**
+  The custom-prompt field's placeholder read `What am I protecting today?`,
+  which appears in no frame in the bundle; the canvas draws
+  `What does tomorrow-me get if I hold the line?`. The back link read
+  `Back to today's prompt`; the canvas says `Back to prompts`.
+
+- **D-091 · The journal card's sentence stays a placeholder.**
+  `Sentence Journal` draws its line as *entered* text in `#1D1C1A` with a caret
+  after it. That is the frame showing a filled specimen, not a state the app is
+  missing — the app renders exactly that once the user types. Pre-filling it
+  would be putting words in the user's mouth, which is the inverse of the rule
+  against inventing copy.
+
+- **D-092 · Five controls the canvas marks pressable were inert.**
+  `Manage Subscription` puts `cursor:pointer` on `Redeem a code`, `Restore
+  purchases`, `Payment method`, `Receipts & invoices` and the `Cancel
+  subscription` line; the app rendered the four rows `disabled` (so no press
+  state either) and the cancel line as bare text with no hit target. All five
+  now open the platform's own subscription settings — redeeming, restoring,
+  billing and cancelling all live in the store's sheet, and inventing an
+  in-app screen for them would be new behaviour rather than a port.
+
+- **D-093 · The reader's serif never resolved.** `fontFamily` was set to the
+  canvas's whole CSS stack as one string. RN resolves a single family name, so
+  the epigraph — the reader's only serif slot, on frames 2 and 25 — fell back to
+  the system sans. `Iowan Old Style` ships with iOS under exactly that name, so
+  it is selected per platform now.
+
+- **D-094 · The statement slot has four authored widths, not one.**
+  A census of all 26 frames: `max-width` is 300 on eleven, **280** on frame 3,
+  **310** on 16 and **320** on 24. D-043 read the 6-vs-1 count as one outlier
+  and standardised on 300; the full census says the width is authored per board,
+  so it travels with the page.
+
+- **D-095 · The cover chevron sat inside the home indicator.** Its `bottom: 42`
+  is measured from the 852 board's own foot, which draws no indicator, so on
+  device it was 42 + the bottom inset off the screen edge.

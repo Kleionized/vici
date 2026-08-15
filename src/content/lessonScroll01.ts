@@ -12,8 +12,12 @@ export type ScrollPage =
   | { kind: 'cover'; eyebrow: string; title: string; meta: string }
   /** Frames 2 and 25 — an epigraph and who said it. */
   | { kind: 'epigraph'; quote: string; who: string; mark?: 'sun12' }
-  /** A mark over a statement, or a statement on its own. */
-  | { kind: 'statement'; mark?: 'crescent' | 'sunrise' | 'sun14'; before?: string; text: string }
+  /**
+   * A mark over a statement, or a statement on its own. The canvas authors four
+   * different `max-width`s for this slot across the 26 frames — 300 on eleven,
+   * 280 on frame 3, 310 on 16 and 320 on 24 — so it travels with the page.
+   */
+  | { kind: 'statement'; mark?: 'crescent' | 'sunrise' | 'sun14'; before?: string; text: string; width?: number }
   /** One or two paragraphs, the second in ink when the page has a landing. */
   | { kind: 'prose'; mark?: 'clock' | 'bedphone' | 'room'; title?: string; soft: string; ink?: string }
   /** Three graded lines. */
@@ -22,14 +26,14 @@ export type ScrollPage =
   | { kind: 'pick'; title: string; helper: string; options: readonly string[] }
   /** Frames 23 and 24 — the day's task, in two boards. */
   | { kind: 'task'; eyebrow: string; title: string; body: string; rule: string; room?: boolean }
-  | { kind: 'taskOptions'; eyebrow: string; title: string; options: readonly { head: string; note: string }[] }
+  | { kind: 'taskOptions'; eyebrow: string; title: string; width?: number; options: readonly { head: string; note: string }[] }
   /** Frame 26. */
   | { kind: 'done'; title: string; body: string; cta: string };
 
 export const LESSON_SCROLL_01: readonly ScrollPage[] = [
   { kind: 'cover', eyebrow: 'WEEK I · RESET', title: 'Surviving the Night', meta: '6 min' },
   { kind: 'epigraph', mark: 'sun12', quote: 'A journey of a thousand miles begins with a single step.', who: 'LAO TZU' },
-  { kind: 'statement', mark: 'crescent', text: 'You do not need to fix your life tonight.' },
+  { kind: 'statement', mark: 'crescent', width: 280, text: 'You do not need to fix your life tonight.' },
   {
     kind: 'prose',
     soft: 'Maybe you opened this after a relapse. Maybe the last few days have been bad. Maybe nothing dramatic happened at all.',
@@ -110,6 +114,7 @@ export const LESSON_SCROLL_01: readonly ScrollPage[] = [
     kind: 'taskOptions',
     eyebrow: 'DAY 1 · TONIGHT’S TASK',
     title: 'Match where you sleep',
+    width: 320,
     options: [
       { head: 'Own bedroom', note: 'Set the alarm now. Charge the phone outside the room. Put a laptop or tablet in a closed bag, drawer, or cupboard away from the bed.' },
       { head: 'Shared room', note: 'Put the device in a bag, locker, desk drawer, or fixed charging spot that you cannot reach while lying down.' },

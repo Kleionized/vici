@@ -116,7 +116,7 @@ function PageBody({ page, lessonTitle }: { page: ScrollPage; lessonTitle: string
         <>
           {page.before ? <Prose>{page.before}</Prose> : null}
           {page.mark ? <Mark name={page.mark} /> : null}
-          <Statement>{page.text}</Statement>
+          <Statement maxWidth={page.width}>{page.text}</Statement>
         </>
       );
     case 'prose':
@@ -153,7 +153,7 @@ function PageBody({ page, lessonTitle }: { page: ScrollPage; lessonTitle: string
       return (
         <>
           <Eyebrow>{page.eyebrow}</Eyebrow>
-          <Statement>{page.title}</Statement>
+          <Statement maxWidth={page.width}>{page.title}</Statement>
           <View style={{ alignSelf: 'stretch', gap: 12 }}>
             {page.options.map((option) => (
               <View key={option.head} style={{ borderRadius: 16, borderCurve: 'continuous', backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)', padding: 16 }}>

@@ -1,5 +1,5 @@
 import { useId, useState, type ReactNode } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, ClipPath, Defs, Ellipse, LinearGradient as SvgLinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -57,6 +57,12 @@ export function Spacer({ height }: { height: number }) {
   return <View style={{ height }} />;
 }
 
+/**
+ * The canvas names `'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif`.
+ * RN takes a single family, so this is that list resolved per platform.
+ */
+const EPIGRAPH_FAMILY = Platform.select({ ios: 'Iowan Old Style', android: 'serif', default: "Iowan Old Style, Palatino, Georgia, serif" }) as string;
+
 /** Frame 2 and 25 — the epigraph, set in the serif the canvas names. */
 export function Epigraph({ children }: { children: string }) {
   return (
@@ -64,7 +70,10 @@ export function Epigraph({ children }: { children: string }) {
       center
       style={{
         maxWidth: 300,
-        fontFamily: "Iowan Old Style, Palatino, Georgia, serif",
+        // RN resolves one family name, not a CSS stack. `Iowan Old Style` ships
+        // with iOS under exactly that name; elsewhere the canvas's own next
+        // choice that the platform has is Georgia.
+        fontFamily: EPIGRAPH_FAMILY,
         fontWeight: '500',
         fontSize: 28,
         lineHeight: 44,
@@ -91,8 +100,8 @@ export function Attribution({ children }: { children: string }) {
  * other six declare 300; six against one, and frame 3's own copy breaks to two
  * lines at either width, so 300 is the slot's value.
  */
-export function Statement({ maxWidth = 300, children }: { maxWidth?: number; children: string }) {
-  return <AppText center style={[sans('500'), { maxWidth, fontSize: 26, lineHeight: 38, color: '#1D1C1A' }]}>{children}</AppText>;
+export function Statement({ maxWidth, children }: { maxWidth?: number; children: string }) {
+  return <AppText center style={[sans('500'), { maxWidth: maxWidth ?? 300, fontSize: 26, lineHeight: 38, color: '#1D1C1A' }]}>{children}</AppText>;
 }
 
 /**
@@ -384,8 +393,9 @@ export function LessonScroll({
             {children}
           </View>
 
+          {/* 42 from the 852 board's own foot, which draws no home indicator */}
           {chevron ? (
-            <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 42, alignItems: 'center', zIndex: 5 }}>
+            <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 42 - insets.bottom, alignItems: 'center', zIndex: 5 }}>
               <Svg width={22} height={12} viewBox="0 0 22 12" fill="none">
                 <Path d="M2 2l9 8 9-8" stroke="#B0AEA8" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
               </Svg>

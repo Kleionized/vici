@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Keyboard, Platform, Pressable, TextInput, View, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RerollGlyph } from '@/components/day/kit';
 import { AppText, PressScale } from '@/components/ui';
@@ -33,8 +34,12 @@ const PROMPTS = [
  * Where the sheet's top edge sits, and where the bottom-most control's bottom
  * edge lands in it. The journal board's is the secondary pill at 422; the
  * custom board's is the back link at ~362 — so it is per-mode, not a constant.
+ *
+ * The canvas's 320 includes its 54pt status bar; the house conversion is
+ * `canvas − 54 + insets.top`, which is only 320 on a device whose inset is
+ * exactly 54.
  */
-const SHEET_TOP = 320;
+const SHEET_TOP = 266;
 const FLOOR = { journal: 422, custom: 362 } as const;
 
 /** Where a written-in prompt is kept so it comes back each morning. */
@@ -51,6 +56,7 @@ export default function Affirmation() {
   const [saving, setSaving] = useState(false);
   const [keyboard, setKeyboard] = useState(0);
   const screenH = useWindowDimensions().height;
+  const insets = useSafeAreaInsets();
 
   // The sheet only rides up once the keyboard eats into the room under the
   // pill, so with the keyboard down it sits exactly where the canvas puts it.
@@ -71,7 +77,8 @@ export default function Affirmation() {
   }, []);
 
   const prompt = custom ?? PROMPTS[promptIndex];
-  const lift = Math.max(0, keyboard - Math.max(0, screenH - SHEET_TOP - FLOOR[mode]));
+  const sheetTop = SHEET_TOP + insets.top;
+  const lift = Math.max(0, keyboard - Math.max(0, screenH - sheetTop - FLOOR[mode]));
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   async function save() {
@@ -88,9 +95,9 @@ export default function Affirmation() {
 
       {/* the page underneath, reduced to its blocks — the sheet is what you read */}
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.45 }}>
-        <View style={{ position: 'absolute', left: 12, right: 12, top: 164, height: 48, borderRadius: 12, backgroundColor: '#E8E7E1' }} />
-        <View style={{ position: 'absolute', left: 36, right: 36, top: 228, height: 236, borderRadius: 16, backgroundColor: '#E8E7E1' }} />
-        <View style={{ position: 'absolute', left: 12, right: 12, top: 544, height: 152, borderRadius: 14, backgroundColor: '#E8E7E1' }} />
+        <View style={{ position: 'absolute', left: 12, right: 12, top: 110 + insets.top, height: 48, borderRadius: 12, backgroundColor: '#E8E7E1' }} />
+        <View style={{ position: 'absolute', left: 36, right: 36, top: 174 + insets.top, height: 236, borderRadius: 16, backgroundColor: '#E8E7E1' }} />
+        <View style={{ position: 'absolute', left: 12, right: 12, top: 490 + insets.top, height: 152, borderRadius: 14, backgroundColor: '#E8E7E1' }} />
       </View>
 
       <Pressable
@@ -105,7 +112,7 @@ export default function Affirmation() {
           position: 'absolute',
           left: 0,
           right: 0,
-          top: SHEET_TOP - lift,
+          top: sheetTop - lift,
           bottom: 0,
           borderTopLeftRadius: 22,
           borderTopRightRadius: 22,
@@ -227,7 +234,7 @@ function CustomPrompt({ draft, onDraft, onUse, onBack }: { draft: string; onDraf
           value={draft}
           onChangeText={onDraft}
           multiline
-          placeholder="What am I protecting today?"
+          placeholder="What does tomorrow-me get if I hold the line?"
           placeholderTextColor="rgba(139,136,130,0.7)"
           selectionColor="#131313"
           cursorColor="#131313"
@@ -262,7 +269,7 @@ function CustomPrompt({ draft, onDraft, onUse, onBack }: { draft: string; onDraf
         accessibilityRole="button"
         hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
         style={{ position: 'absolute', left: 0, right: 0, top: 346, minHeight: 0, alignItems: 'center' }}>
-        <AppText style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>Back to today’s prompt</AppText>
+        <AppText style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>Back to prompts</AppText>
       </PressScale>
     </>
   );
