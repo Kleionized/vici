@@ -100,6 +100,7 @@ function layers(band) {
           transform: g('transform'),
           clipPath: g('clip-path'),
           opacity: num(g('opacity')),
+          shadow: g('box-shadow'),
           raw: part.length > 400 ? part.slice(0, 400) + '…' : part,
         });
       }
@@ -171,6 +172,8 @@ lines.push("  /** Degrees, about the box's own centre. */");
 lines.push('  rotate?: number;');
 lines.push("  /** A `polygon(…)` clip, as its raw percentage/px point list. */");
 lines.push('  clip?: string;');
+lines.push("  /** The raw CSS `box-shadow`, where a layer carries one. */");
+lines.push('  shadow?: string;');
 lines.push('  opacity?: number;');
 lines.push('}');
 lines.push('');
@@ -201,6 +204,7 @@ for (const n of Object.keys(scenes).map(Number).sort((a, b) => a - b)) {
     const rot = l.transform && l.transform.match(/rotate\((-?[0-9.]+)deg\)/);
     if (rot) fields.push(`rotate: ${Number(rot[1])}`);
     if (l.clipPath) fields.push(`clip: ${q(l.clipPath)}`);
+    if (l.shadow) fields.push(`shadow: ${q(l.shadow)}`);
     if (l.opacity != null) fields.push(`opacity: ${l.opacity}`);
     lines.push(`    { ${fields.join(', ')} },`);
   }

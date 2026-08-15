@@ -225,13 +225,19 @@ function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: numb
     clipPath: layer.clip ? `url(#${cid})` : undefined,
   };
 
+  // A zero-blur, zero-spread ring is directly expressible as a stroke; the one
+  // layer that carries a blurred shadow keeps it as a documented gap.
+  const ring = layer.shadow?.match(/^0 0 0 ([0-9.]+)px (rgba?\([^)]+\)|#[0-9A-Fa-f]{3,8})$/);
+  const ringStroke = ring ? splitColor(ring[2]) : null;
+  const strokeProps = ring ? { stroke: ringStroke!.color, strokeOpacity: ringStroke!.opacity, strokeWidth: Number(ring[1]) } : {};
+
   let shape = null;
   if (layer.radius.kind === 'ellipse') {
-    shape = <Ellipse cx={x + w / 2} cy={y + h / 2} rx={w / 2} ry={h / 2} {...common} />;
+    shape = <Ellipse cx={x + w / 2} cy={y + h / 2} rx={w / 2} ry={h / 2} {...common} {...strokeProps} />;
   } else if (layer.radius.kind === 'dome') {
-    shape = <Path d={domePath(x, y, w, h, layer.radius.ry)} {...common} />;
+    shape = <Path d={domePath(x, y, w, h, layer.radius.ry)} {...common} {...strokeProps} />;
   } else if (layer.radius.kind === 'corners') {
-    shape = <Path d={cornersPath(x, y, w, h, layer.radius.corners)} {...common} />;
+    shape = <Path d={cornersPath(x, y, w, h, layer.radius.corners)} {...common} {...strokeProps} />;
   } else {
     // CSS scales every radius by `min(1, side / Σ radii)` and then clamps each
     // to half the side; SVG clamps each axis independently, so a pill whose
@@ -239,7 +245,7 @@ function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: numb
     // draws a circular one. Clamp before handing it over.
     const raw = layer.radius.kind === 'round' ? layer.radius.r : 0;
     const r = Math.min(raw, w / 2, h / 2);
-    shape = <Rect x={x} y={y} width={w} height={h} rx={r} ry={r} {...common} />;
+    shape = <Rect x={x} y={y} width={w} height={h} rx={r} ry={r} {...common} {...strokeProps} />;
   }
 
   return (

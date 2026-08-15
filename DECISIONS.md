@@ -836,3 +836,10 @@ Six second-reader audits ran over the screens this run built by hand
   (`convex/schema.ts`) has no duration field, so the app draws `rode it out` /
   `logged` instead. Adding the column is backend work the brief puts out of
   scope; recorded in `REPORT.md`.
+
+- **D-078 · The week extractor dropped `box-shadow` too.** Same root cause as
+  D-073: `gen-week-scenes.mjs` read a fixed list of declarations and
+  `box-shadow` was not on it, so weeks VII and XII lost the `0 0 0 1px
+  rgba(0,0,0,0.05)` ring on the boat hull and the `0 1px 2px rgba(0,0,0,0.06)`
+  under the sail. The ring is a zero-blur zero-spread shadow and goes through as
+  an SVG stroke exactly; the sail's has a 2px blur and stays a documented gap.

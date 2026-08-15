@@ -27,6 +27,8 @@ export interface WeekSceneLayer {
   rotate?: number;
   /** A `polygon(…)` clip, as its raw percentage/px point list. */
   clip?: string;
+  /** The raw CSS `box-shadow`, where a layer carries one. */
+  shadow?: string;
   opacity?: number;
 }
 
@@ -136,9 +138,9 @@ export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {
     { left: -60, top: 172, width: 473, height: 84, radius: {"kind":"dome","ry":22}, background: "#D5E1EA" },
     { left: 215.72, top: 144.04, width: 39.68, height: 6.2, radius: {"kind":"ellipse"}, background: "rgba(0,0,0,0.06)", blur: 3 },
     { left: 230.6, top: 118, width: 3, height: 27.28, radius: {"kind":"none"}, background: "#C6C5C0" },
-    { left: 216.96, top: 121.72, width: 13.64, height: 22.32, radius: {"kind":"none"}, background: "#F7F6F2", clip: "polygon(100% 0, 100% 100%, 0 100%)" },
+    { left: 216.96, top: 121.72, width: 13.64, height: 22.32, radius: {"kind":"none"}, background: "#F7F6F2", clip: "polygon(100% 0, 100% 100%, 0 100%)", shadow: "0 1px 2px rgba(0,0,0,0.06)" },
     { left: 234.32, top: 126.68, width: 9.92, height: 17.36, radius: {"kind":"none"}, background: "#EDECE7", clip: "polygon(0 0, 100% 100%, 0 100%)" },
-    { left: 212, top: 144.04, width: 39.68, height: 9.3, radius: {"kind":"corners","corners":[5,5,16,16]}, background: "#E4E3DE" },
+    { left: 212, top: 144.04, width: 39.68, height: 9.3, radius: {"kind":"corners","corners":[5,5,16,16]}, background: "#E4E3DE", shadow: "0 0 0 1px rgba(0,0,0,0.05)" },
     { left: 66, top: 214, width: 22, height: 4, radius: {"kind":"round","r":2}, background: "rgba(255,255,255,0.5)" },
     { left: 0, right: 0, bottom: 0, height: 44, radius: {"kind":"none"}, background: "linear-gradient(180deg, rgba(244,243,240,0) 0%, #F4F3F0 100%)" },
   ],
@@ -220,9 +222,9 @@ export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {
     { left: -60, top: 168, width: 473, height: 84, radius: {"kind":"dome","ry":22}, background: "#D5E1EA" },
     { left: 153.7, top: 135.9, width: 60.8, height: 9.5, radius: {"kind":"ellipse"}, background: "rgba(0,0,0,0.06)", blur: 3 },
     { left: 176.5, top: 96, width: 3, height: 41.8, radius: {"kind":"none"}, background: "#C6C5C0" },
-    { left: 155.6, top: 101.7, width: 20.9, height: 34.199999999999996, radius: {"kind":"none"}, background: "#F7F6F2", clip: "polygon(100% 0, 100% 100%, 0 100%)" },
+    { left: 155.6, top: 101.7, width: 20.9, height: 34.199999999999996, radius: {"kind":"none"}, background: "#F7F6F2", clip: "polygon(100% 0, 100% 100%, 0 100%)", shadow: "0 1px 2px rgba(0,0,0,0.06)" },
     { left: 182.2, top: 109.3, width: 15.2, height: 26.599999999999998, radius: {"kind":"none"}, background: "#EDECE7", clip: "polygon(0 0, 100% 100%, 0 100%)" },
-    { left: 148, top: 135.9, width: 60.8, height: 14.25, radius: {"kind":"corners","corners":[5,5,16,16]}, background: "#E4E3DE" },
+    { left: 148, top: 135.9, width: 60.8, height: 14.25, radius: {"kind":"corners","corners":[5,5,16,16]}, background: "#E4E3DE", shadow: "0 0 0 1px rgba(0,0,0,0.05)" },
     { left: 120, top: 212, width: 26, height: 4, radius: {"kind":"round","r":2}, background: "rgba(255,255,255,0.6)" },
     { left: 96, top: 224, width: 20, height: 4, radius: {"kind":"round","r":2}, background: "rgba(255,255,255,0.45)" },
     { left: 0, right: 0, bottom: 0, height: 44, radius: {"kind":"none"}, background: "linear-gradient(180deg, rgba(244,243,240,0) 0%, #F4F3F0 100%)" },
