@@ -244,7 +244,11 @@ Full text in `DECISIONS.md`. Summary:
 | `Night 1 Mood` moon glow | `box-shadow: 0 0 18px rgba(221,228,236,0.5)` on a masked shape | A radial with stops at 0.486/0.614/0.743/0.871/1.0 and alphas 0.25/0.154/0.079/0.034/0 | A masked shape cannot carry a box-shadow in RN. The peak alpha is exact; the profile is an erfc fit within ~0.01 alpha across the ramp. |
 | Week scenes, `filter: blur(Npx)` on a gradient | 3–6px Gaussian | Absorbed into the gradient's own falloff | The gradient is already a soft ramp; the blur widens it by a few px at most. |
 | Week scenes, `filter: blur(Npx)` on a **solid** (the cast-shadow ellipses) | Solid fill + blur | A radial at `1.0 / 0.72 / 0.30 / 0` across the box | RN SVG has no blur filter. This is a fitted falloff, not the true Gaussian. |
-| `text-wrap: balance` / `pretty` | CSS line-breaking hints | Not expressible in RN; text wraps greedily | Line-break positions can differ on a two- or three-line title. |
+| `text-wrap: balance` / `pretty` | CSS line-breaking hints | Not expressible in RN native; `AppText` sets `textWrap: 'pretty'` on web only | Line-break positions can differ on any title long enough to wrap. The audits found this on every rough-day sub-line. |
+| `filter: blur(Npx)` on a **solid** shape | A Gaussian of σ = blur/2 | A radial falloff fitted to it (`1.0 / 0.72 / 0.30 / 0` across the box) | The commonest gap in the run — every cast shadow and light pool in the artwork. The peak alpha is exact; the profile is a fit. |
+| `mask-image` | A CSS mask | An SVG luminance mask where the shape allows; otherwise not applied | Applied on `Night 1 Mood` and `Surf Complete`; **not** applied on 8 task-scene layers, which draw as full discs rather than crescents. |
+| `conic-gradient` | An angular sweep | The radial its first stop pair describes | 8 task-scene layers. |
+| `text-decoration` thickness / offset | `1.5px` / `4px` | RN gives the line, not its metrics | `Letter Read`'s emphasised run. |
 | `borderCurve: 'continuous'` | iOS squircle | Applied where the app already uses it | Android and web fall back to a circular radius. |
 
 ---

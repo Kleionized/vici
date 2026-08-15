@@ -6,29 +6,29 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 71 · IMPLEMENTED: 449 · PASS_1: 58 · DONE: 199
+**777 rows.** PASS_1: 75 · IMPLEMENTED: 449 · NOT_STARTED: 54 · DONE: 199
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
-| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95 · Rough — Loneliness (I) |
-| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95B · Rough — Loneliness (II) |
-| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 95C · Rough — Loneliness (III) |
+| Email Login | Rough Loneliness I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95 · Rough — Loneliness (I) |
+| Email Login | Rough Loneliness II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95B · Rough — Loneliness (II) |
+| Email Login | Rough Loneliness III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 95C · Rough — Loneliness (III) |
 | Email Login | Rough Anxiety I | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 96 · Rough — Anxiety (I) |
-| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96B · Rough — Anxiety (II) |
-| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 96C · Rough — Anxiety (III) |
-| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97 · Rough — Stress (I) |
-| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97B · Rough — Stress (II) |
-| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 97C · Rough — Stress (III) |
-| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98 · Rough — Boredom (I) |
-| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 98B · Rough — Boredom (II) |
+| Email Login | Rough Anxiety II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96B · Rough — Anxiety (II) |
+| Email Login | Rough Anxiety III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 96C · Rough — Anxiety (III) |
+| Email Login | Rough Stress I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97 · Rough — Stress (I) |
+| Email Login | Rough Stress II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97B · Rough — Stress (II) |
+| Email Login | Rough Stress III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 97C · Rough — Stress (III) |
+| Email Login | Rough Boredom I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98 · Rough — Boredom (I) |
+| Email Login | Rough Boredom II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 98B · Rough — Boredom (II) |
 | Email Login | Rough Boredom III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 98C · Rough — Boredom (III) |
-| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99 · Rough — Late night (I) |
-| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99B · Rough — Late night (II) |
-| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 99C · Rough — Late night (III) |
-| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100 · Rough — Home alone (I) |
-| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100B · Rough — Home alone (II) |
-| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 100C · Rough — Home alone (III) |
-| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | NOT_STARTED | — | 101 · Rough — An argument (I) |
+| Email Login | Rough Late night I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99 · Rough — Late night (I) |
+| Email Login | Rough Late night II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99B · Rough — Late night (II) |
+| Email Login | Rough Late night III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 99C · Rough — Late night (III) |
+| Email Login | Rough Home alone I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100 · Rough — Home alone (I) |
+| Email Login | Rough Home alone II | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100B · Rough — Home alone (II) |
+| Email Login | Rough Home alone III | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 100C · Rough — Home alone (III) |
+| Email Login | Rough An argument I | src/app/(app)/rough-days.tsx | PASS_1 | 2026-08-15 | 101 · Rough — An argument (I) |
 | Email Login | Rough An argument II | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101B · Rough — An argument (II) |
 | Email Login | Rough An argument III | src/app/(app)/rough-days.tsx | IMPLEMENTED | 2026-08-15 | 101C · Rough — An argument (III) |
 | Email Login | Medallions | src/app/(app)/milestones.tsx | IMPLEMENTED | 2026-08-15 | 88 · Medallions |
