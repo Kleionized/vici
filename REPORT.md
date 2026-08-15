@@ -3,8 +3,9 @@
 **Run:** 15 August 2026, unattended.
 **Bundle:** `UI Final/` (Claude Design handoff, 288 files).
 **Ledger:** `UI_FINAL_LEDGER.md` — 777 rows, one per `data-screen-label` frame.
-**Decisions:** `DECISIONS.md`, entries D-001 … D-019.
-**Specs:** `specs/` — 17 files, 573 KB of transcribed property tables.
+**Decisions:** `DECISIONS.md`, entries D-001 … D-060.
+**Specs:** `specs/` — 33 files: 17 pixel specs and 16 audits, together carrying
+roughly 12,000 transcribed property rows.
 
 > **Read this first.** The run did not reach `DONE` on every row, and the ledger
 > says so rather than implying otherwise. What follows separates, without
@@ -241,6 +242,47 @@ Full text in `DECISIONS.md`. Summary:
 | D-017 | The rendered canvas — not `task-src.json`, not `taskgen-meta.js` — is the authority for task copy. |
 | D-018 | Three defects in the `Lessons and Tasks` canvas, recorded not fixed: stray style fragments as raw text on two intro frames, two option boards with no rows, and `Task D01` carrying older type metrics than the other 82. |
 | D-019 | `Week N` and `Week N P2` are one screen at two scroll positions. |
+| D-020 | A selected day chip's letter was invisible — `#1D1C1A` on `#131313`. The canvas states the fix. |
+| D-021 | The five SOS places inherit the phone's step copy; `In bed` keeps its own and `At work or school` keeps the laptop board's line, which is the one that still describes where it is. |
+| D-022 | **Corrected mid-run.** The SOS answers first went onto the event's free-text `trigger`, which polluted the trigger chart. `precedingState` was already in the schema and unwritten, so they go there. |
+| D-023 | The dark SOS block has no frame in `UI Final` and was left in place. |
+| D-024 | Settings cut from seven groups to four; `Find support` kept anyway, because this project declares a hard invariant that a route to crisis help always exists and the bundle draws none. |
+| D-025 | `Your vow` gets a route; its empty state is the canvas's own line, not invented copy. |
+| D-026 | `My values` left the Journey card; the door was kept on the same screen. |
+| D-027 | Save moved from the profile header into the name sheet, as the frames draw it. |
+| D-028 | The photo sheet's three actions are drawn but not wired — the one stub. |
+| D-029 | `Medallion Received` stopped sharing the letter's arrival, so `MailArrival` took overrides rather than a rewrite. |
+| D-030 | The tier chip's rung name comes from the app's album, because the frame's own `Tier I · The Vow` contradicts the numeral beside it. |
+| D-031 | The keyboard-lift floor is per-board, not a constant. |
+| D-032 | A written prompt is stored, because the board promises it comes back. |
+| D-033 | `Manage Subscription` ends on the cancel line. |
+| D-034 | `Letter Week XII` scrolls its pill; the other two letters keep theirs pinned. |
+| D-035 | Three of four rough-day artworks are total redraws; the chrome and copy already matched. |
+| D-036 | The 84° rotation is transcribed, not "corrected". |
+| D-037 | The task card has two genuine states, and the warm glow belongs to the phone art. |
+| D-038 | The campaign rail is a page indicator, not a scrollbar; the pager is two invisible tap bands rather than an invented control. |
+| D-039 | Every campaign week was renamed and renumbered; three drawings moved and eight are new. |
+| D-040 | The reader has no CTA on 24 of 26 frames, so the board is the control. |
+| D-041 | Reader progress is a 2pt hairline at `round((n+1)/26 × 100)%`. |
+| D-042 | The reader's body is centred in the whole 852, not laid out from a top. |
+| D-043 | `Lesson Scroll 3` is the outlier on statement width; six against one. |
+| D-044 | The new reader lives beside the old one; only lesson 01 has an authored body. |
+| D-045 | `Task DNN Card` is a specimen, not a screen. |
+| D-046 | The 83 task scenes are transcribed, not retyped — 1,571 layers, 223 glyphs. |
+| D-047 | Marking a task done writes the day's action; no new storage. |
+| D-048 | `ChallengeSheet.tsx` is orphaned and was left in place. |
+| D-049 | Eighteen unreferenced assets, none deleted. |
+| D-050 | The canvas is inconsistent about apostrophes; the majority reading (curly) stands. |
+| D-051 | Blur and mask substitutions are counted as mismatches and named as such. |
+| D-052 | The paper grain was being stretched, not tiled — fixed in all 48 places. |
+| D-053 | `Detail Silver`'s glow was one colour off. |
+| D-054 | Three more urge-overview defects, fixed. |
+| D-055 | Five closeable findings from the launch, urge-log and onboarding audits. |
+| D-056 | `Urge Log When` draws its wheel at rest; left as the app has it, and named. |
+| D-057 | Three findings left open, each for a stated reason. |
+| D-058 | Four lapse-flow canvas strings are urge-flow carry-overs and were not adopted. |
+| D-059 | The exports draw an older tab bar than the primary canvas; the primary wins. |
+| D-060 | `CampaignGrounds` draws correctly and is reachable from nowhere. |
 
 ---
 
