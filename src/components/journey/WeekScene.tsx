@@ -28,9 +28,24 @@ function domePath(x: number, y: number, w: number, h: number, ry: number): strin
   return `M${x} ${y + ry}A${w / 2} ${ry} 0 0 1 ${x + w} ${y + ry}L${x + w} ${y + h}L${x} ${y + h}Z`;
 }
 
-/** A rounded rect with four independently-cut corners. */
+/**
+ * A rounded rect with four independently-cut corners.
+ *
+ * CSS scales all four by `f = min(1, side ÷ Σ radii)` on each edge before
+ * drawing, so `5px 5px 16px 16px` on a 14.25-tall box is really
+ * 3.39 / 3.39 / 10.86 / 10.86. Passing the declared values straight through
+ * makes the path self-intersect.
+ */
 function cornersPath(x: number, y: number, w: number, h: number, c: number[]): string {
-  const [tl, tr, br, bl] = c.length === 4 ? c : [c[0], c[1] ?? c[0], c[2] ?? c[0], c[3] ?? c[1] ?? c[0]];
+  const raw = c.length === 4 ? c : [c[0], c[1] ?? c[0], c[2] ?? c[0], c[3] ?? c[1] ?? c[0]];
+  const f = Math.min(
+    1,
+    w / Math.max(1e-6, raw[0] + raw[1]),
+    w / Math.max(1e-6, raw[3] + raw[2]),
+    h / Math.max(1e-6, raw[0] + raw[3]),
+    h / Math.max(1e-6, raw[1] + raw[2]),
+  );
+  const [tl, tr, br, bl] = raw.map((v) => v * f);
   return [
     `M${x + tl} ${y}`,
     `H${x + w - tr}`,
@@ -126,7 +141,31 @@ function blurredSolidStops(color: string, opacity: number) {
   ];
 }
 
+/** The canvas draws its birds as inline `<svg>`; those layers carry a tree. */
+function SvgLayer({ layer }: { layer: WeekSceneLayer }) {
+  const s = layer.svg;
+  if (!s) return null;
+  return (
+    <Svg width={s.width} height={s.height} viewBox={s.viewBox} x={s.left} y={s.top}>
+      {s.children.map((child, i) =>
+        child.tag === 'path' ? (
+          <Path
+            key={i}
+            d={child.attrs.d}
+            fill={child.attrs.fill ?? 'none'}
+            stroke={child.attrs.stroke}
+            strokeWidth={Number(child.attrs['stroke-width']) || undefined}
+            strokeLinecap={child.attrs['stroke-linecap'] as 'round' | undefined}
+            strokeLinejoin={child.attrs['stroke-linejoin'] as 'round' | undefined}
+          />
+        ) : null,
+      )}
+    </Svg>
+  );
+}
+
 function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: number; id: string; width: number }) {
+  if (layer.svg) return <SvgLayer layer={layer} />;
   // Layers composed against the canvas's own 393 keep their absolute lefts; the
   // ones that overhang are re-measured so they still run past both edges.
   const overhang = (layer.width ?? 0) > CANVAS_W;
@@ -194,7 +233,12 @@ function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: numb
   } else if (layer.radius.kind === 'corners') {
     shape = <Path d={cornersPath(x, y, w, h, layer.radius.corners)} {...common} />;
   } else {
-    const r = layer.radius.kind === 'round' ? layer.radius.r : 0;
+    // CSS scales every radius by `min(1, side / Σ radii)` and then clamps each
+    // to half the side; SVG clamps each axis independently, so a pill whose
+    // 2r exceeds its height would draw an elliptical corner where the canvas
+    // draws a circular one. Clamp before handing it over.
+    const raw = layer.radius.kind === 'round' ? layer.radius.r : 0;
+    const r = Math.min(raw, w / 2, h / 2);
     shape = <Rect x={x} y={y} width={w} height={h} rx={r} ry={r} {...common} />;
   }
 

@@ -62,6 +62,30 @@ function layers(band) {
       const style = (part.match(/\sstyle="([^"]*)"/) || [])[1] ?? '';
       if (depth === 0) {
         const g = (prop) => (style.match(new RegExp(`(?:^|;)\\s*${prop}\\s*:\\s*([^;]+)`)) || [])[1]?.trim();
+        // An <svg> layer carries its size on attributes and its geometry as
+        // inner markup, so reading only `style` left three birds as empty stubs.
+        if (name === 'svg') {
+          const rest = inner.slice(inner.indexOf(part));
+          const end = rest.indexOf('</svg>');
+          const kids = [];
+          for (const k of rest.slice(0, end).matchAll(/<(path|circle|rect|ellipse|line|polygon|polyline)\b([^>]*)>/gi)) {
+            const a = {};
+            for (const at of k[2].matchAll(/([a-zA-Z-]+)="([^"]*)"/g)) a[at[1]] = at[2];
+            kids.push({ tag: k[1].toLowerCase(), attrs: a });
+          }
+          const attr = (n2) => (part.match(new RegExp(`\\s${n2}="([^"]*)"`)) || [])[1];
+          out.push({
+            svgLayer: true,
+            left: num(g('left')?.replace('px', '')),
+            top: num(g('top')?.replace('px', '')),
+            svgWidth: num(attr('width')),
+            svgHeight: num(attr('height')),
+            viewBox: attr('viewBox'),
+            children: kids,
+          });
+          depth++;
+          continue;
+        }
         out.push({
           tag: name,
           left: num(g('left')?.replace('px', '')),
@@ -138,6 +162,8 @@ lines.push('  width?: number;');
 lines.push('  height?: number;');
 lines.push("  /** How the box's corners are cut. */");
 lines.push("  radius: { kind: 'none' } | { kind: 'ellipse' } | { kind: 'round'; r: number } | { kind: 'dome'; ry: number } | { kind: 'corners'; corners: number[] };");
+lines.push("  /** An inline `<svg>` layer: the canvas draws a few birds this way. */");
+lines.push('  svg?: { left: number; top: number; width: number; height: number; viewBox: string; children: { tag: string; attrs: Record<string, string> }[] };');
 lines.push('  background?: string;');
 lines.push("  /** CSS blur radius, in px — folded into a gradient falloff when drawn. */");
 lines.push('  blur?: number;');
@@ -152,6 +178,13 @@ lines.push('export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {');
 for (const n of Object.keys(scenes).map(Number).sort((a, b) => a - b)) {
   lines.push(`  ${n}: [`);
   for (const l of scenes[n]) {
+    if (l.svgLayer) {
+      const kids = l.children.map((k) => `{ tag: ${q(k.tag)}, attrs: ${JSON.stringify(k.attrs)} }`).join(', ');
+      lines.push(
+        `    { svg: { left: ${l.left ?? 0}, top: ${l.top ?? 0}, width: ${l.svgWidth}, height: ${l.svgHeight}, viewBox: ${q(l.viewBox)}, children: [${kids}] }, radius: { kind: 'none' } },`,
+      );
+      continue;
+    }
     const fields = [];
     if (l.left != null) fields.push(`left: ${l.left}`);
     if (l.right != null) fields.push(`right: ${l.right}`);

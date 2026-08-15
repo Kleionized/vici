@@ -210,8 +210,8 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
           {step.lesson ? (
             <Svg width={16} height={16} viewBox="0 0 20 20" fill="none">
-              <Path d="M3 15.5V6" stroke="#F4F3F0" strokeWidth={1.7} />
-              <Path d="M3 12.5h14M17 15.5v-5a2 2 0 0 0-2-2H8v4.5" stroke="#F4F3F0" strokeWidth={1.7} strokeLinejoin="round" />
+              <Path d="M3 15.5V6" stroke="#F4F3F0" strokeWidth={1.7} strokeLinecap="round" />
+              <Path d="M3 12.5h14M17 15.5v-5a2 2 0 0 0-2-2H8v4.5" stroke="#F4F3F0" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
               <Circle cx={5.6} cy={8.9} r={1.5} fill="#F4F3F0" />
             </Svg>
           ) : (

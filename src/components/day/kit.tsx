@@ -529,8 +529,10 @@ export function DawnBand({ top }: { top: number }) {
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, height: 300, overflow: 'hidden' }}>
       <LinearGradient colors={['#EFEEE8', '#F3EEE1']} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 300 }} />
-      <Glow size={140} color="#E2BA78" opacity={0.4} stop={0.74} style={{ position: 'absolute', left: '50%', marginLeft: -70, top: 20 }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -19, top: 71, width: 38, height: 38, borderRadius: 19, backgroundColor: '#E9D2A4' }} />
+      {/* canvas `left:126px` and `left:177px` — stated, not centred; both
+          agree on a 196 centre line, so the half-point is the canvas's own */}
+      <Glow size={140} color="#E2BA78" opacity={0.4} stop={0.74} style={{ position: 'absolute', left: 126, top: 20 }} />
+      <View style={{ position: 'absolute', left: 177, top: 71, width: 38, height: 38, borderRadius: 19, backgroundColor: '#E9D2A4' }} />
       <Hill left={-70} right={-70} top={192} height={150} ry={68} color="#DEDDD6" />
       <Hill left={-130} right={-40} top={218} height={150} ry={58} color="#CFCEC7" />
       <Hill left={-40} right={-140} top={244} height={150} ry={50} color="#C5C4BD" />

@@ -24,6 +24,7 @@ import {
   nightAction,
 } from '@/components/day/kit';
 import { EmotionsBoard, PrimaryButton, ReasonsBoard, checkinCtaTop, wheelFor } from '@/components/MoodLogger';
+import { lessonForDay } from '@/content/curriculum84';
 import { AppText, PressScale } from '@/components/ui';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
 import { toDateKey, todayKey } from '@/lib/date';
@@ -99,10 +100,12 @@ export default function Night() {
     return at != null && at >= midnight;
   });
 
-  const task = nightAction(day);
+  const task = lessonForDay(day)?.task.cardSummary ?? nightAction(day);
   // The action card is marked with the lesson the action comes from — `Night
-  // Action Reminder` labels it "Surviving the night", which is lesson one.
-  const lessonTitle = (lessons ?? [])[Math.max(0, day - 1) % Math.max(1, (lessons ?? []).length)]?.title ?? 'Tonight';
+  // Action Reminder` labels it "Surviving the night", which is day one of the
+  // twelve-week curriculum, not of the interactive set.
+  const dayLesson = lessonForDay(day);
+  const lessonTitle = dayLesson?.task.cardTitle ?? 'Tonight';
 
   async function finish() {
     // The upsert merges now, so only what this flow asked for is written.
@@ -175,7 +178,11 @@ export default function Night() {
           </>
         ) : null}
 
-        {step === 1 ? <EmotionsBoard feel="What did today feel like?" wheel={wheelFor(mood + 1)} emotions={emotions} onChange={setEmotions} ctaTop={ctaTop} /> : null}
+        {/* `Night 1 Mood` selects the middle dial circle and `Checkin Emotions`
+            draws Calm/Tense/Tired/Hopeful/Flat/Proud/Lonely/Restless beside it,
+            which the app files one rung higher — so the wheel reads from the
+            rung above the dial's own index. */}
+        {step === 1 ? <EmotionsBoard feel="What did today feel like?" wheel={wheelFor(mood + 2)} emotions={emotions} onChange={setEmotions} ctaTop={ctaTop} /> : null}
 
         {step === 2 ? (
           <>

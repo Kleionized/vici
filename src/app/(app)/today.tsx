@@ -10,6 +10,7 @@ import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
 import { lessonForDay } from '@/content/curriculum84';
+import { roman } from '@/lib/lessonArt';
 import { buildScore } from '@/lib/score';
 import { colors, fonts, sans } from '@/lib/theme';
 
@@ -308,7 +309,8 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
           </RadialGradient>
           <RadialGradient id={`halo${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
             <Stop offset="0" stopColor="#DFDCD3" stopOpacity={0.15} />
-            <Stop offset="0.4" stopColor="#DFDCD3" stopOpacity={0.07} />
+            {/* the CSS ramp is 0.15 @ 0% → 0 @ 72%, so 40% is exactly 0.0666667 */}
+            <Stop offset="0.4" stopColor="#DFDCD3" stopOpacity={0.0666667} />
             <Stop offset="0.72" stopColor="#DFDCD3" stopOpacity={0} />
           </RadialGradient>
         </Defs>
@@ -371,8 +373,10 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
           position: 'absolute',
           right: 16,
           top: 16,
-          height: 30,
-          borderRadius: 15,
+          // the canvas states no box-sizing and carries no reset, so its 30 is
+          // content: 30 + two 1px borders = 32 outer
+          height: 32,
+          borderRadius: 16,
           borderWidth: 1,
           borderColor: 'rgba(244,243,240,0.28)',
           backgroundColor: 'rgba(20,19,16,0.25)',
@@ -389,7 +393,7 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
       </View>
 
       <View style={{ position: 'absolute', left: 20, top: 48, flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
-        <AppText style={[sans('500'), { fontSize: 43, letterSpacing: 1.5, color: '#F7F6F2', fontVariant: ['tabular-nums'] }]}>
+        <AppText style={[sans('500'), { fontSize: 43, letterSpacing: 1.5, color: '#F7F6F2' }]}>
           {score.total.toLocaleString()}
         </AppText>
         {score.delta !== 0 ? (
@@ -438,7 +442,9 @@ function LessonCard({ title, meta, done, onPress }: { title: string; meta: strin
         backgroundColor: colors.surface,
         boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
       }}>
-      <AppText numberOfLines={1} style={[sans('600'), { position: 'absolute', left: 20, top: 26, right: 168, fontSize: 19, letterSpacing: -0.2, color: colors.text }]}>
+      {/* the canvas gives the title no right bound and no clamp — it may run
+          under the dome, which does not start until x 217 */}
+      <AppText style={[sans('600'), { position: 'absolute', left: 20, top: 26, fontSize: 19, letterSpacing: -0.2, color: colors.text }]}>
         {title}
       </AppText>
       <AppText style={[sans('400'), { position: 'absolute', left: 20, top: 56, fontSize: 12.5, color: colors.textSoft }]}>{meta}</AppText>
@@ -469,7 +475,7 @@ function PageTwo({
   onLesson,
   onLibrary,
 }: {
-  lesson: { lesson: { title: string; orderIndex: number; week: number } } | null | undefined;
+  lesson: { lesson: { title: string; orderIndex: number; week: number; dayInWeek: number } } | null | undefined;
   done: number;
   step: DayStep;
   stepDone: boolean;
@@ -485,7 +491,9 @@ function PageTwo({
       <View style={{ marginTop: 11.5 }}>
         <LessonCard
           title={lesson?.lesson.title ?? 'Start the first lesson'}
-          meta={lesson ? `Lesson ${lesson.lesson.orderIndex + 1} · Week ${lesson.lesson.week}` : 'Week I'}
+          // the canvas prints a roman week and a within-week lesson index — a
+          // global index can never pair "Lesson 5" with "Week II"
+          meta={lesson ? `Lesson ${lesson.lesson.dayInWeek} · Week ${roman(lesson.lesson.week)}` : 'Week I'}
           done={done}
           onPress={onLesson}
         />
@@ -531,6 +539,7 @@ function HeldStrip({ held }: { held: boolean[] }) {
         height: 184,
         borderRadius: 20,
         borderCurve: 'continuous',
+        overflow: 'hidden',
         backgroundColor: colors.surface,
         boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
       }}>

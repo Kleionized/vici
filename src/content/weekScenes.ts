@@ -18,6 +18,8 @@ export interface WeekSceneLayer {
   height?: number;
   /** How the box's corners are cut. */
   radius: { kind: 'none' } | { kind: 'ellipse' } | { kind: 'round'; r: number } | { kind: 'dome'; ry: number } | { kind: 'corners'; corners: number[] };
+  /** An inline `<svg>` layer: the canvas draws a few birds this way. */
+  svg?: { left: number; top: number; width: number; height: number; viewBox: string; children: { tag: string; attrs: Record<string, string> }[] };
   background?: string;
   /** CSS blur radius, in px — folded into a gradient falloff when drawn. */
   blur?: number;
@@ -147,7 +149,7 @@ export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {
     { left: 211.3, top: 31.35, width: 24.7, height: 9.5, radius: {"kind":"round","r":7}, background: "rgba(255,255,255,0.75)" },
     { left: 288, top: 58, width: 30.799999999999997, height: 7.699999999999999, radius: {"kind":"round","r":8}, background: "rgba(255,255,255,0.85)" },
     { left: 297.8, top: 53.1, width: 18.2, height: 7, radius: {"kind":"round","r":7}, background: "rgba(255,255,255,0.75)" },
-    { left: 258, top: 92, radius: {"kind":"none"} },
+    { svg: { left: 258, top: 92, width: 16, height: 8, viewBox: "0 0 16 8", children: [{ tag: "path", attrs: {"d":"M1 6 Q4.5 1.5 8 5 Q11.5 1.5 15 6","fill":"none","stroke":"#8A857C","stroke-width":"1.6","stroke-linecap":"round"} }] }, radius: { kind: 'none' } },
     { left: -40, top: 168, width: 473, height: 56, radius: {"kind":"dome","ry":12}, background: "#E8E4D6" },
     { left: -40, top: 198, width: 473, height: 80, radius: {"kind":"none"}, background: "#F0EBDD" },
     { left: 96, top: 176, width: 58, height: 4, radius: {"kind":"round","r":2}, background: "rgba(255,255,255,0.6)" },
@@ -164,8 +166,8 @@ export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {
     { left: 56, top: 38, width: 32, height: 32, radius: {"kind":"ellipse"}, background: "#E9D2A4" },
     { left: 262, top: 40, width: 37.4, height: 9.35, radius: {"kind":"round","r":8}, background: "rgba(255,255,255,0.85)" },
     { left: 273.9, top: 34.05, width: 22.099999999999998, height: 8.5, radius: {"kind":"round","r":7}, background: "rgba(255,255,255,0.75)" },
-    { left: 154, top: 58, radius: {"kind":"none"} },
-    { left: 174, top: 50, radius: {"kind":"none"} },
+    { svg: { left: 154, top: 58, width: 16, height: 8, viewBox: "0 0 16 8", children: [{ tag: "path", attrs: {"d":"M1 6 Q4.5 1.5 8 5 Q11.5 1.5 15 6","fill":"none","stroke":"#8A857C","stroke-width":"1.6","stroke-linecap":"round"} }] }, radius: { kind: 'none' } },
+    { svg: { left: 174, top: 50, width: 13.6, height: 6.8, viewBox: "0 0 16 8", children: [{ tag: "path", attrs: {"d":"M1 6 Q4.5 1.5 8 5 Q11.5 1.5 15 6","fill":"none","stroke":"#8A857C","stroke-width":"1.6","stroke-linecap":"round"} }] }, radius: { kind: 'none' } },
     { left: -70, top: 148, width: 270, height: 140, radius: {"kind":"dome","ry":92}, background: "#DEDDD6" },
     { left: 186, top: 140, width: 290, height: 150, radius: {"kind":"dome","ry":98}, background: "#D8D7D0" },
     { left: 62, top: 148, width: 56, height: 10, radius: {"kind":"ellipse"}, background: "rgba(0,0,0,0.08)", blur: 4 },
@@ -212,8 +214,8 @@ export const WEEK_SCENES: Record<number, WeekSceneLayer[]> = {
     { left: 78, top: 96, width: 36, height: 36, radius: {"kind":"ellipse"}, background: "#E9D2A4" },
     { left: 220, top: 42, width: 39.6, height: 9.9, radius: {"kind":"round","r":8}, background: "rgba(255,255,255,0.85)" },
     { left: 232.6, top: 35.7, width: 23.400000000000002, height: 9, radius: {"kind":"round","r":7}, background: "rgba(255,255,255,0.75)" },
-    { left: 132, top: 60, radius: {"kind":"none"} },
-    { left: 160, top: 48, radius: {"kind":"none"} },
+    { svg: { left: 132, top: 60, width: 16, height: 8, viewBox: "0 0 16 8", children: [{ tag: "path", attrs: {"d":"M1 6 Q4.5 1.5 8 5 Q11.5 1.5 15 6","fill":"none","stroke":"#8A857C","stroke-width":"1.6","stroke-linecap":"round"} }] }, radius: { kind: 'none' } },
+    { svg: { left: 160, top: 48, width: 13, height: 7, viewBox: "0 0 16 8", children: [{ tag: "path", attrs: {"d":"M1 6 Q4.5 1.5 8 5 Q11.5 1.5 15 6","fill":"none","stroke":"#8A857C","stroke-width":"1.6","stroke-linecap":"round"} }] }, radius: { kind: 'none' } },
     { left: -40, top: 148, width: 473, height: 90, radius: {"kind":"dome","ry":26}, background: "#C8D7E5" },
     { left: -60, top: 168, width: 473, height: 84, radius: {"kind":"dome","ry":22}, background: "#D5E1EA" },
     { left: 153.7, top: 135.9, width: 60.8, height: 9.5, radius: {"kind":"ellipse"}, background: "rgba(0,0,0,0.06)", blur: 3 },

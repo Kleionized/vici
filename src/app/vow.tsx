@@ -57,7 +57,7 @@ export default function Vow() {
         </PressScale>
 
         {/* canvas 114 */}
-        <AppText style={[sans('600'), { position: 'absolute', left: 16, right: 16, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+        <AppText numberOfLines={1} style={[sans('600'), { position: 'absolute', left: 16, right: 16, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
           Your vow
         </AppText>
 
@@ -81,6 +81,12 @@ export default function Vow() {
             <Circle cx={85} cy={85} r={85} fill={`url(#halo${id})`} />
             <Circle cx={85} cy={51} r={23} fill={`url(#sun${id})`} />
           </Svg>
+          {/* the disc's own `box-shadow: 0 6px 18px rgba(226,186,120,0.45)`,
+              which cannot ride on a circle inside the Svg */}
+          <View
+            pointerEvents="none"
+            style={{ position: 'absolute', left: 62, top: 28, width: 46, height: 46, borderRadius: 23, boxShadow: '0 6px 18px rgba(226,186,120,0.45)' }}
+          />
         </View>
 
         {/* canvas 296 — the vow itself, set in the serif the pledge uses */}

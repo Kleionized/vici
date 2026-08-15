@@ -767,3 +767,72 @@ names the ambiguity, the reading chosen, and why.
   stroke-width 2.2 with round caps, and a 2.6 dot where the pen comes to rest —
   not as a name in a script face. Replaced with the path. It now reads the same
   whatever the user is called, which is what the canvas intends.
+
+# Pass 1 — the property audit
+
+Six second-reader audits ran over the screens this run built by hand
+(`specs/pass1-*.md`, 1,933 comparison rows). What they found and what was done:
+
+- **D-068 · The pressed state is 0.99, not 0.96.** `UI Final` declares
+  `transform:scale(0.99)` on all 62 pressed states it draws, and never any other
+  value; `PressScale` animated to 0.96. Changed in the primitive, so every
+  screen closes at once.
+
+- **D-069 · The night flow read the wheel one rung low.** `Night 1 Mood` selects
+  the middle dial circle and `Checkin Emotions` draws
+  Calm/Tense/Tired/Hopeful/Flat/Proud/Lonely/Restless beside it — the set the app
+  files one rung higher. `wheelFor(mood + 1)` → `wheelFor(mood + 2)`.
+
+- **D-070 · The night action card was labelled from the wrong curriculum.**
+  `lessons[0].title` resolves to `The slip equation` (the interactive set);
+  `Night Action Reminder` draws `Surviving the night`, which is day one of the
+  twelve-week curriculum. Both the label and the action line now read from
+  `lessonForDay(day)`, so the card names the task it is actually showing.
+
+- **D-071 · `Morning Task Check` deletes the honesty line.** The previous canvas
+  drew `Honesty counts more than the streak.` under the two discs; `UI Final`
+  does not. D-008 covers boards the bundle *withdrew*, not boards it *redrew* —
+  this one was redrawn, so the line goes.
+
+- **D-072 · Four transcription slips, closed.** The Trend pill is content-box on
+  the canvas, so its 30 is 32 outer. The score halo's mid stop is exactly
+  0.0666667 on the CSS ramp, not 0.07. The lesson title carries neither a right
+  bound nor a line clamp. The score number declares no `font-variant`, so the
+  forced tabular figures went. Plus: the held card's `overflow: hidden`, the
+  emotion wheel's stated `left:38`, `DawnBand`'s stated `left:126`/`left:177`,
+  round caps on the bed glyph and on `MoodLogger`'s `work`, `people` and `sleep`
+  glyphs, and the lesson meta printing `Week II` rather than `Week 2` with a
+  within-week index (a global index can never pair "Lesson 5" with "Week II").
+
+- **D-073 · The week extractor never read `<svg>` layers, losing five birds.**
+  `gen-week-scenes.mjs` read only the `style` attribute, so an inline `<svg>`
+  became an empty stub and rendered as a zero-height rect. The audit found three;
+  the fixed extractor found **five** — weeks VIII, IX (×2) and XII (×2).
+
+- **D-074 · Two radius bugs in the week renderer.** CSS scales all four corner
+  radii by `min(1, side ÷ Σ radii)` and clamps each to half its side; SVG clamps
+  per axis. Every cloud pill in weeks I, IV, VIII and XII has `2r > h`, so the
+  app drew an elliptical corner where the canvas draws a circular one; and week
+  XII's boat hull (`5px 5px 16px 16px` on a 14.25-tall box) produced a
+  self-intersecting path. Both closed in `WeekScene`.
+
+- **D-075 · Settings' two group gaps were transposed**, pushing the whole Privacy
+  group 1pt low; the sheet's own metrics (16/10/18 and a 12pt inset) were off by
+  2 either way; its copy was invented where the canvas states
+  `Your log, letters and medallions stay saved to sam@example.com.`; and the
+  scroll padded 97pt for a tab bar that `StoicTabBar` does not render on this
+  route. All closed. The vow's title is `nowrap` and its sun carries
+  `box-shadow: 0 6px 18px rgba(226,186,120,0.45)`; both added.
+
+- **D-076 · `borderCurve: 'continuous'` is kept, and named.** Three audits
+  flagged it against the canvas's plain `border-radius`. CSS cannot express a
+  continuous corner at all, so the canvas's value is not evidence against one —
+  and it is this app's established system (`theme.ts`, 35 call sites). Kept as a
+  platform-level reading rather than churned, and recorded here so it is a
+  decision rather than an oversight.
+
+- **D-077 · Two findings need a schema change and are left open.** Both check-in
+  ledgers draw the urge row as `passed in 4 min` — a duration. `events`
+  (`convex/schema.ts`) has no duration field, so the app draws `rode it out` /
+  `logged` instead. Adding the column is backend work the brief puts out of
+  scope; recorded in `REPORT.md`.

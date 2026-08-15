@@ -330,8 +330,9 @@ function HubScene() {
 }
 
 function EmotionWheel({ emotions, selected, onToggle }: { emotions: readonly string[]; selected: string[]; onToggle: (emotion: string) => void }) {
+  // canvas `left:38px`, not a centring — on 393 the two differ by 0.5
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: 190, alignItems: 'center' }}>
+    <View style={{ position: 'absolute', left: 38, top: 190 }}>
       <View style={{ width: 316, height: 316 }}>
         {/* The lift belongs to the disc, not its bounding box — the canvas
             drop-shadows the svg itself, so a square shadow behind a circle
@@ -411,8 +412,8 @@ function ReasonIcon({ name, size = 21, color = '#1D1C1A' }: { name: ReasonIconNa
       {name === 'sleep' ? <Path d="M14.5 3.5a8.5 8.5 0 1 0 6 12.5 8 8 0 0 1-6-12.5z" {...line} strokeLinejoin="round" /> : null}
       {name === 'work' ? (
         <>
-          <Rect x={3} y={8} width={18} height={12} rx={2.5} {...line} />
-          <Path d="M9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18" {...line} />
+          <Rect x={3} y={8} width={18} height={12} rx={2.5} {...round} />
+          <Path d="M9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18" {...round} />
         </>
       ) : null}
       {name === 'phone' ? (
@@ -430,9 +431,9 @@ function ReasonIcon({ name, size = 21, color = '#1D1C1A' }: { name: ReasonIconNa
       {name === 'bolt' ? <Path d="M13 2L5 13.5h5.5L10 22l8-11.5h-5.5z" {...line} strokeLinejoin="round" /> : null}
       {name === 'people' ? (
         <>
-          <Circle cx={8.5} cy={9} r={3.2} {...line} />
-          <Circle cx={16.5} cy={9} r={3.2} {...line} />
-          <Path d="M2.5 20c.8-3.4 3.2-5 6-5 1.4 0 2.7.4 3.5 1.2.8-.8 2.1-1.2 3.5-1.2 2.8 0 5.2 1.6 6 5" {...line} strokeLinecap="round" />
+          <Circle cx={8.5} cy={9} r={3.2} {...round} />
+          <Circle cx={16.5} cy={9} r={3.2} {...round} />
+          <Path d="M2.5 20c.8-3.4 3.2-5 6-5 1.4 0 2.7.4 3.5 1.2.8-.8 2.1-1.2 3.5-1.2 2.8 0 5.2 1.6 6 5" {...round} />
         </>
       ) : null}
       {name === 'coin' ? (

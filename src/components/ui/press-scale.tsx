@@ -21,8 +21,10 @@ export function PressScale({ children, disabled, static: isStatic = false, onPre
       {...rest}
       disabled={disabled}
       onPressIn={(event) => {
+        // `UI Final` declares `transform:scale(0.99)` on every pressed state it
+        // draws — 62 of them, and never any other value.
         // eslint-disable-next-line react-hooks/immutability -- Reanimated shared values are intentionally mutable.
-        if (!isStatic && !disabled) scale.value = withTiming(0.96, { duration: 110 });
+        if (!isStatic && !disabled) scale.value = withTiming(0.99, { duration: 110 });
         onPressIn?.(event);
       }}
       onPressOut={(event) => {

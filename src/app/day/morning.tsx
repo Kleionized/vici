@@ -33,7 +33,7 @@ import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJourn
 import { toDateKey, todayKey } from '@/lib/date';
 import { roman } from '@/lib/lessonArt';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
-import { fonts, sans } from '@/lib/theme';
+import { fonts } from '@/lib/theme';
 
 /**
  * 21D1–21D7 · the morning check-in.
@@ -173,10 +173,9 @@ export default function Morning() {
         footer={
           step === 1 ? (
             <>
+              {/* `UI Final` redraws this board without the honesty line the
+                  previous canvas carried under the discs */}
               <DidYouRow onNo={() => answer(false)} onYes={() => answer(true)} />
-              <AppText center style={[sans('400'), { position: 'absolute', left: 36, right: 36, bottom: 14, fontSize: 13, lineHeight: 19, color: '#8B8882' }]}>
-                Honesty counts more than the streak.
-              </AppText>
             </>
           ) : step === 5 ? (
             <ActionButton label="Got it" onPress={() => setStep(6)} />
