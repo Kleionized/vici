@@ -15,13 +15,13 @@ export type ScrollPage =
   /** A mark over a statement, or a statement on its own. */
   | { kind: 'statement'; mark?: 'crescent' | 'sunrise' | 'sun14'; before?: string; text: string }
   /** One or two paragraphs, the second in ink when the page has a landing. */
-  | { kind: 'prose'; mark?: 'clock' | 'bedphone'; title?: string; soft: string; ink?: string }
+  | { kind: 'prose'; mark?: 'clock' | 'bedphone' | 'room'; title?: string; soft: string; ink?: string }
   /** Three graded lines. */
   | { kind: 'cascade'; ramp: 'fading' | 'solid'; before?: string; lines: readonly string[]; after?: string }
   /** Frame 16 — pick where it begins. */
   | { kind: 'pick'; title: string; helper: string; options: readonly string[] }
   /** Frames 23 and 24 — the day's task, in two boards. */
-  | { kind: 'task'; eyebrow: string; title: string; body: string; rule: string }
+  | { kind: 'task'; eyebrow: string; title: string; body: string; rule: string; room?: boolean }
   | { kind: 'taskOptions'; eyebrow: string; title: string; options: readonly { head: string; note: string }[] }
   /** Frame 26. */
   | { kind: 'done'; title: string; body: string; cta: string };
@@ -85,7 +85,7 @@ export const LESSON_SCROLL_01: readonly ScrollPage[] = [
     soft: 'An urge at midnight is much more convincing when the whole habit sits one thumb-movement away.',
     ink: 'Change that.',
   },
-  { kind: 'prose', mark: 'bedphone', soft: 'If the phone is across the room, you have to stand up. If it is downstairs, you have to leave the bed.' },
+  { kind: 'prose', mark: 'room', soft: 'If the phone is across the room, you have to stand up. If it is downstairs, you have to leave the bed.' },
   {
     kind: 'prose',
     soft: 'If the laptop is closed and put away, you have to make another decision before anything happens.',
@@ -100,6 +100,7 @@ export const LESSON_SCROLL_01: readonly ScrollPage[] = [
   { kind: 'prose', title: 'Get through tonight.', soft: 'Tomorrow can have tomorrow.' },
   {
     kind: 'task',
+    room: true,
     eyebrow: 'DAY 1 · TONIGHT’S TASK',
     title: 'Surviving the night',
     body: 'Set up tonight before you get tired. Use the option that matches where you sleep.',

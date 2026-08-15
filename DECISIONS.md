@@ -860,3 +860,22 @@ Six second-reader audits ran over the screens this run built by hand
   extractor was pointed at the smaller box (`gen-lesson-art.mjs`) and the task
   renderer generalised to take its box as a prop, so the plates cost one
   extraction rather than 83 transcriptions.
+
+- **D-081 · The reader's boards each declare their own stack gap.** 48 is the
+  default, but the cover uses 36, the pick-one board 40, the task board 30 and
+  the completion board 44 — and two of them put a zero-width spacer inside the
+  stack on top of that (18 between the pick title and its helper, 16 after the
+  task eyebrow). Built as data rather than one constant.
+
+- **D-082 · The pick-one radio was inverted.** The app filled the 22pt disc with
+  ink and put a light dot inside it. The canvas draws a 2pt `#1D1C1A` ring over a
+  transparent body with a 10pt dark dot inside and a clear annulus between the
+  two. The row's rings were also wrong in both states — `2px #1D1C1A` plus a
+  drop shadow when on, `inset 1.5px #E4E2DB` when off.
+
+- **D-083 · The reader's two remaining drawings were missing, and are
+  transcribed.** `Lesson Scroll 23`'s night room is 27 layers in a 340 × 200 box
+  drawn at 0.85; `Lesson Scroll 18` draws the identical subtree, which the
+  extractor confirmed rather than assumed. The completion board's sun is a 36pt
+  disc under a 115pt halo — `SunDot` hard-coded a halo for sizes 12 and 14 only
+  and would have drawn 45 at size 36, so the halo is a prop now.

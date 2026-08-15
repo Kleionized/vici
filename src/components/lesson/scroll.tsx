@@ -22,7 +22,11 @@ import { sans } from '@/lib/theme';
 
 const noiseDark = require('../../../assets/images/noise-dark.png');
 
-/** The gap between every child of the stack. The cover alone uses 36. */
+/**
+ * The gap between every child of the stack. It is per board, not one value:
+ * the cover uses 36, the pick-one board 40, the task board 30 and the
+ * completion board 44; everything else 48.
+ */
 const STACK_GAP = 48;
 const COVER_GAP = 36;
 
@@ -87,8 +91,8 @@ export function Attribution({ children }: { children: string }) {
  * other six declare 300; six against one, and frame 3's own copy breaks to two
  * lines at either width, so 300 is the slot's value.
  */
-export function Statement({ children }: { children: string }) {
-  return <AppText center style={[sans('500'), { maxWidth: 300, fontSize: 26, lineHeight: 38, color: '#1D1C1A' }]}>{children}</AppText>;
+export function Statement({ maxWidth = 300, children }: { maxWidth?: number; children: string }) {
+  return <AppText center style={[sans('500'), { maxWidth, fontSize: 26, lineHeight: 38, color: '#1D1C1A' }]}>{children}</AppText>;
 }
 
 /**
@@ -143,10 +147,10 @@ function MarkSvg({ w, h, children }: { w: number; h: number; children: ReactNode
  * edge. `radial-gradient(circle at 34% 30%, …)` names no size, so CSS resolves
  * farthest-corner: on a 12 box from (4.08, 3.6) that is √(7.92² + 8.4²) = 11.55.
  */
-export function SunDot({ size }: { size: number }) {
+export function SunDot({ size, halo: haloSize }: { size: number; halo?: number }) {
   const id = useId().replace(/:/g, '');
-  const halo = size === 12 ? 38 : 45;
-  const off = size === 12 ? 13 : 15.5;
+  const halo = haloSize ?? (size === 12 ? 38 : 45);
+  const off = (halo - size) / 2;
   const r = Math.hypot(size * 0.66, size * 0.7);
   return (
     <View style={{ width: size, height: size }}>

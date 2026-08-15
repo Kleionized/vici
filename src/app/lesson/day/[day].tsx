@@ -23,7 +23,9 @@ import {
   Title,
 } from '@/components/lesson/scroll';
 import { AppText, PressScale } from '@/components/ui';
+import { Scene } from '@/components/task/TaskScene';
 import { LESSON_SCROLL_01, type ScrollPage } from '@/content/lessonScroll01';
+import { READER_ROOM, READER_ROOM_H, READER_ROOM_W } from '@/content/readerRoom';
 import { lessonForDay } from '@/content/curriculum84';
 import { sans } from '@/lib/theme';
 
@@ -60,7 +62,7 @@ export default function LessonScrollReader() {
       <LessonScroll
         index={index}
         count={pages.length}
-        gap={page.kind === 'cover' ? COVER_GAP : undefined}
+        gap={GAP[page.kind]}
         chevron={page.kind === 'cover'}
         onClose={close}
         onNext={next}
@@ -71,6 +73,9 @@ export default function LessonScrollReader() {
   );
 }
 
+/** The stack gap each board declares. Everything not named here uses 48. */
+const GAP: Partial<Record<ScrollPage['kind'], number>> = { cover: COVER_GAP, pick: 40, task: 30, done: 44 };
+
 /** The mark a page opens with, if it has one. */
 function Mark({ name }: { name: string }) {
   if (name === 'sun12') return <SunDot size={12} />;
@@ -79,6 +84,8 @@ function Mark({ name }: { name: string }) {
   if (name === 'sunrise') return <SunriseMark />;
   if (name === 'clock') return <ClockMark />;
   if (name === 'bedphone') return <BedPhoneMark />;
+  // the 340 x 200 night room, which frames 18 and 23 draw identically at 0.85
+  if (name === 'room') return <Scene layers={READER_ROOM} boxW={READER_ROOM_W} boxH={READER_ROOM_H} width={READER_ROOM_W * 0.85} />;
   return null;
 }
 
@@ -135,7 +142,9 @@ function PageBody({ page, lessonTitle }: { page: ScrollPage; lessonTitle: string
       return (
         <>
           <Eyebrow>{page.eyebrow}</Eyebrow>
+          <Spacer height={16} />
           <Statement>{page.title}</Statement>
+          {page.room ? <Mark name="room" /> : null}
           <Prose>{page.body}</Prose>
           <RuleCard>{page.rule}</RuleCard>
         </>
@@ -158,6 +167,7 @@ function PageBody({ page, lessonTitle }: { page: ScrollPage; lessonTitle: string
     case 'done':
       return (
         <>
+          <SunDot size={36} halo={115} />
           <Statement>{page.title}</Statement>
           <Prose>{page.body}</Prose>
         </>
@@ -178,14 +188,14 @@ function PageFooter({ page, onNext }: { page: ScrollPage; onNext: () => void }) 
         left: 16,
         right: 16,
         bottom: 30,
-        height: 54,
-        minHeight: 54,
-        borderRadius: 27,
+        height: 52,
+        minHeight: 52,
+        borderRadius: 26,
         backgroundColor: '#131313',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>{label}</AppText>
+      <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.2, color: '#FFFFFF' }]}>{label}</AppText>
     </PressScale>
   );
 }
@@ -195,8 +205,9 @@ function PickBoard({ page }: { page: Extract<ScrollPage, { kind: 'pick' }> }) {
   const [chosen, setChosen] = useState(page.options[0]);
   return (
     <>
-      <Statement>{page.title}</Statement>
-      <Prose>{page.helper}</Prose>
+      <Statement maxWidth={310}>{page.title}</Statement>
+      <Spacer height={18} />
+      <Meta>{page.helper}</Meta>
       <View style={{ alignSelf: 'stretch', gap: 12 }}>
         {page.options.map((option) => {
           const on = option === chosen;
@@ -212,25 +223,28 @@ function PickBoard({ page }: { page: Extract<ScrollPage, { kind: 'pick' }> }) {
                 borderRadius: 16,
                 borderCurve: 'continuous',
                 backgroundColor: '#FFFFFF',
-                boxShadow: on ? '0 0 0 1.6px #131313' : '0 0 0 1px rgba(0,0,0,0.10)',
+                boxShadow: on ? '0 0 0 2px #1D1C1A, 0 4px 10px rgba(40,38,32,0.08)' : 'inset 0 0 0 1.5px #E4E2DB',
                 paddingHorizontal: 18,
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 14,
               }}>
+              {/* the selected radio is a 2pt ring with a 10pt dot inside it and
+                  a clear annulus between — not a filled disc */}
               <View
                 style={{
                   width: 22,
                   height: 22,
                   borderRadius: 11,
-                  backgroundColor: on ? '#131313' : undefined,
-                  boxShadow: on ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.22)',
+                  borderWidth: on ? 2 : 0,
+                  borderColor: '#1D1C1A',
+                  boxShadow: on ? undefined : 'inset 0 0 0 1.6px #C9C7C0',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                {on ? <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: '#F4F3F0' }} /> : null}
+                {on ? <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: '#1D1C1A' }} /> : null}
               </View>
-              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{option}</AppText>
+              <AppText style={[sans(on ? '600' : '500'), { flex: 1, fontSize: 16, color: '#1D1C1A' }]}>{option}</AppText>
             </PressScale>
           );
         })}
@@ -242,11 +256,24 @@ function PickBoard({ page }: { page: Extract<ScrollPage, { kind: 'pick' }> }) {
 /** Frame 23's rule card — what finishing the task actually means. */
 function RuleCard({ children }: { children: string }) {
   return (
-    <View style={{ alignSelf: 'stretch', borderRadius: 16, borderCurve: 'continuous', backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)', padding: 16, flexDirection: 'row', gap: 10 }}>
-      <Svg width={16} height={16} viewBox="0 0 16 13" fill="none" style={{ marginTop: 3 }}>
-        <Path d="M1.5 7l4.4 4.5L14.5 1.5" stroke="#131313" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+    <View
+      style={{
+        alignSelf: 'stretch',
+        borderRadius: 16,
+        borderCurve: 'continuous',
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 0 0 1px rgba(0,0,0,0.07), 0 6px 16px rgba(40,38,32,0.05)',
+        paddingVertical: 17,
+        paddingHorizontal: 18,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 14,
+      }}>
+      <Svg width={20} height={20} viewBox="0 0 18 18" fill="none">
+        <Circle cx={9} cy={9} r={7.5} fill="none" stroke="#1D1C1A" strokeWidth={1.6} />
+        <Path d="M5.8 9l2.3 2.3 4.1-4.6" stroke="#1D1C1A" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" />
       </Svg>
-      <AppText style={[sans('500'), { flex: 1, fontSize: 14, lineHeight: 20, color: '#1D1C1A' }]}>{children}</AppText>
+      <AppText style={[sans('500'), { flex: 1, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>{children}</AppText>
     </View>
   );
 }
