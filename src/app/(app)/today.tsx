@@ -6,7 +6,7 @@ import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, 
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
 import { lessonForDay } from '@/content/curriculum84';
@@ -119,7 +119,7 @@ export default function Today() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         {/* the mark and the profile door — design y 64, 27 tall */}
@@ -416,7 +416,7 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
         ) : null}
       </View>
 
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.06 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.06} />
     </PressScale>
   );
 }

@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -7,7 +6,7 @@ import { ScrollView, View, useWindowDimensions, type TextStyle, type ViewStyle }
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { useCreateJournalEntry, useCurrentUser, useLifeMap } from '@/lib/backend';
 import { getJSON, setJSON } from '@/lib/storage';
 import { sans } from '@/lib/theme';
@@ -207,7 +206,7 @@ export function MailArrival({
         </View>
       ) : null}
       {/* the canvas paints the grain first and lays the two washes over it, not under */}
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', opacity: field ? 0 : 1 }}>
         {/* canvas blurs this by 5px; RN SVG has no blur filter, so the falloff is the gradient's */}
@@ -347,7 +346,7 @@ export function EnvelopeArt() {
           overflow: 'hidden',
         }}>
         <LinearGradient colors={['#FCFAF4', '#F1EEE4']} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} />
+        <Grain source={noiseDark} opacity={0.07} />
         <Svg width={168} height={118} viewBox="0 0 168 118" style={{ position: 'absolute', top: 0, left: 0 }}>
           <Path d="M2 4 L84 66 L166 4" fill="none" stroke="rgba(0,0,0,0.12)" strokeWidth={1.6} />
         </Svg>
@@ -424,7 +423,7 @@ export function MailSheet({ onClose, children }: { onClose: () => void; children
             backgroundColor: '#F4F3F0',
             overflow: 'hidden',
           }}>
-          <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+          <Grain source={noiseDark} opacity={0.07} />
 
           <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 12, alignItems: 'center' }}>
             <View style={{ width: 38, height: 5, borderRadius: 3, backgroundColor: 'rgba(19,19,19,0.16)' }} />

@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useRef, useState } from 'react';
@@ -8,7 +7,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
 import { KKMedallion, KK_ALBUM, kkMetal, kkRoman, kkRung, type KKFace, type KKMetal, type KeepsakeSceneKey } from '@/components/keepsakes/Medallion';
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap } from '@/lib/backend';
 import { sans } from '@/lib/theme';
 
@@ -132,7 +131,7 @@ export default function Milestones() {
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         {/* Yoga measures an absolute child's inset from the parent's border box

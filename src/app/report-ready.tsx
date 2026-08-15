@@ -1,11 +1,10 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -35,7 +34,7 @@ export default function ReportReady() {
       <StatusBar style="dark" />
 
       {/* the canvas lays the noise down first and floats both washes over it */}
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       {/* the two washes are frame-anchored, so they sit outside the safe area */}
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
@@ -161,7 +160,7 @@ function ReportArt() {
           transform: [{ rotate: '2.5deg' }],
           overflow: 'hidden',
         }}>
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05 }} />
+        <Grain source={noiseDark} opacity={0.05} />
 
         <View style={{ position: 'absolute', left: 14, top: 14, width: 44, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
         <View style={{ position: 'absolute', left: 14, top: 26, width: 28, height: 5, borderRadius: 3, backgroundColor: '#EAE8E1' }} />

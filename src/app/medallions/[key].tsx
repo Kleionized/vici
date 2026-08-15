@@ -74,7 +74,7 @@ const SKIN: Record<KKMetal, Skin> = {
     ...LIGHT,
     page: ['#F4F5F6', '#EBEDF0'],
     mount: '#F1F2F4',
-    glows: [{ w: 340, h: 340, top: 6, rgb: '#969DA6', a: 0.3, stop: 0.74 }],
+    glows: [{ w: 340, h: 340, top: 6, rgb: '#96A0AC', a: 0.3, stop: 0.74 }],
   },
   gold: {
     ...LIGHT,

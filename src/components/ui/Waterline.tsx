@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { Grain } from '@/components/ui';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
@@ -98,7 +99,7 @@ export function SplashScene() {
         style={{ position: 'absolute', left: '40.7%', top: '46.9%', width: 72, height: 72, opacity: 0.9 }}
       />
 
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.1 }} />
+      <Grain source={noiseDark} opacity={0.1} />
     </View>
   );
 }

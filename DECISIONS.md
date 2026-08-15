@@ -566,3 +566,19 @@ names the ambiguity, the reading chosen, and why.
   the app substitutes a falloff. They are listed in `REPORT.md` §5 as platform
   gaps rather than silently called matches, because the numbers really do
   differ even though the intent is carried.
+
+- **D-052 · The paper grain was being stretched, not tiled — fixed everywhere.**
+  The canvas sets the grain as a `background-image` with no `background-size`,
+  so it **repeats at the file's own 96 × 96**. The app used
+  `expo-image` with `contentFit="cover"`, which blows a single tile up to fill
+  the box — roughly 9× on a full screen, which turns grain into a smear. The
+  audits caught it on 14 frames across three families before it was clear the
+  same call appeared 48 times.
+  `expo-image` has no repeat mode; React Native's own `Image` has
+  `resizeMode="repeat"`, so `components/ui/Grain.tsx` is the one place in the
+  app that reaches for it, and all 48 call sites now go through it.
+
+- **D-053 · `Detail Silver`'s glow was one colour off.**
+  The canvas says `rgba(150,160,172,0.30)` = `#96A0AC`; the app had `#969DA6`
+  = (150,157,166). Three points of green and six of blue. Corrected to the
+  canvas value.

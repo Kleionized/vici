@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import type { ReactNode } from 'react';
@@ -9,7 +8,7 @@ import Svg, { Circle, Path } from 'react-native-svg';
 
 import { moodLabel } from '@/components/MoodLogger';
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, EmptyState, PressScale } from '@/components/ui';
+import { AppText, EmptyState, Grain, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { SCORE_BASE, SCORE_WEIGHTS } from '@/lib/score';
 import { colors, sans } from '@/lib/theme';
@@ -26,14 +25,6 @@ type Mode = 'chooser' | 'history';
 
 /** The one ink the marks are drawn in, straight off the canvas. */
 const INK = '#131313';
-
-/**
- * The canvas grain, at the frame's own 7%. It is painted outside the safe area
- * so it reaches the status bar the way `inset:0` does on the canvas.
- */
-function Grain() {
-  return <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />;
-}
 
 /** Sunrise — the daily check-in. 26 on the chooser card, 16 in a log row. */
 function SunriseMark({ size }: { size: number }) {
@@ -181,7 +172,7 @@ export default function Log() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Grain />
+      <Grain source={noiseDark} opacity={0.07} />
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <PressScale
@@ -378,7 +369,7 @@ function History({ onBack }: { onBack: () => void }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Grain />
+      <Grain source={noiseDark} opacity={0.07} />
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <ScrollView
           contentInsetAdjustmentBehavior="never"

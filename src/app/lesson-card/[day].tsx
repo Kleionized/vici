@@ -1,11 +1,10 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { lessonForDay, weekFor } from '@/content/curriculum84';
 import { sans } from '@/lib/theme';
 
@@ -37,7 +36,7 @@ export default function LessonCard() {
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         {/* canvas right 22, top 24 — a close cross, not a chevron */}

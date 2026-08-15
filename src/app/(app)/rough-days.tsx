@@ -1,10 +1,9 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { RD_KEYS, RD_PROTOCOLS } from '@/content/roughDays';
 import { sans } from '@/lib/theme';
 
@@ -40,7 +39,7 @@ export default function RoughDays() {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: insets.bottom + 44 }}>
@@ -63,7 +62,7 @@ export default function RoughDays() {
           <PressScale
             onPress={() => router.push('/rough-first90')}
             style={{ marginTop: 41.6, marginHorizontal: 24, borderRadius: 18, backgroundColor: '#131313', paddingHorizontal: 20, paddingVertical: 18, flexDirection: 'row', alignItems: 'center', gap: 14, overflow: 'hidden' }}>
-            <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} pointerEvents="none" />
+            <Grain source={noiseDark} opacity={0.12} />
             <View style={{ flex: 1 }}>
               <AppText style={[sans('600'), { fontSize: 12.5, color: 'rgba(245,244,241,0.62)' }]}>The universal interrupt</AppText>
               <AppText style={[sans('600'), { marginTop: 6, fontSize: 17, color: '#F5F4F1' }]}>The First 90 Seconds</AppText>

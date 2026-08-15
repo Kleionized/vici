@@ -11,11 +11,10 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Animated, Easing, Pressable, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 
-import { AppText, Laurel } from '@/components/ui';
+import { AppText, Grain, Laurel } from '@/components/ui';
 import { PressScale } from '@/components/ui/press-scale';
 import { BreathCue, UrgeWave, type BreathPhase } from '@/components/urge';
 import { SC } from '@/components/scene/SceneKit';
@@ -323,7 +322,7 @@ function Ambient({ field, lit, paper = 'default' }: { field: O3Field; lit: boole
         </Defs>
         <Ellipse cx={sun / 2} cy={sun / 2} rx={sun / 2} ry={sun / 2} fill="url(#o3sun)" />
       </Svg>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} />
+      <Grain source={noiseDark} opacity={0.12} />
     </View>
   );
 }

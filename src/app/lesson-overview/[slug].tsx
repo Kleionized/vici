@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
@@ -7,7 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { StoicTabBar } from '@/components/StoicTabBar';
 import { LessonCoverScene, LessonHorizon, LessonScene, LessonTrail, type LessonTint, tintForLesson, tintTones } from '@/components/lesson/scenes';
-import { AppText, EmptyState, LoadingView, PressScale } from '@/components/ui';
+import { AppText, EmptyState, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useLessonDetail } from '@/lib/backend';
 import { interactiveLesson } from '@/lib/curriculum';
 import { colors, sans } from '@/lib/theme';
@@ -143,7 +142,7 @@ function DetailBody({
     <>
       {/* the grain goes down on the sky and under the art, as the canvas has it */}
       <LessonCoverScene width={width} height={330} tint={tint}>
-        <Grain />
+        <Grain source={noiseDark} opacity={0.05} />
       </LessonCoverScene>
 
       {/* the canvas sets this `white-space: nowrap` with no right bound, so it
@@ -202,7 +201,7 @@ function TracksBody({
   return (
     <>
       <LessonScene width={width} height={232} tint={tint}>
-        <Grain />
+        <Grain source={noiseDark} opacity={0.05} />
       </LessonScene>
 
       <AppText
@@ -232,16 +231,6 @@ function TracksBody({
 }
 
 /** The 0.05 grain both header scenes lay down before their art. */
-function Grain() {
-  return (
-    <Image
-      source={noiseDark}
-      contentFit="cover"
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05 }}
-      pointerEvents="none"
-    />
-  );
-}
 
 function BackRow({ onPress }: { onPress: () => void }) {
   return (

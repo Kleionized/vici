@@ -1,10 +1,9 @@
 import { useRouter } from 'expo-router';
-import { Image } from 'expo-image';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, ChevronGlyph, PressScale } from '@/components/ui';
+import { AppText, ChevronGlyph, Grain, PressScale } from '@/components/ui';
 import { toDateKey } from '@/lib/date';
 import { latestCompletedWeek, mondayOf } from '@/lib/weeklyReport';
 import { useCurrentUser, useLessons } from '@/lib/backend';
@@ -140,7 +139,7 @@ export default function All() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>

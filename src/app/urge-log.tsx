@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
@@ -6,22 +5,7 @@ import { View, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import {
-  AppText,
-  BackGlyph,
-  bandToSeverity,
-  CheckGlyph,
-  CloseGlyph,
-  INTENSITY_BANDS,
-  OutcomeDistracted,
-  OutcomeReachedOut,
-  OutcomeRodeOut,
-  OutcomeSlipped,
-  OutcomeTimer,
-  PressScale,
-  TriggerMark,
-  type TriggerMarkName,
-} from '@/components/ui';
+import { AppText, BackGlyph, bandToSeverity, CheckGlyph, CloseGlyph, Grain, INTENSITY_BANDS, OutcomeDistracted, OutcomeReachedOut, OutcomeRodeOut, OutcomeSlipped, OutcomeTimer, PressScale, TriggerMark, type TriggerMarkName } from '@/components/ui';
 import { useCreateEvent } from '@/lib/backend';
 import { setJSON } from '@/lib/storage';
 import { colors, sans } from '@/lib/theme';
@@ -468,7 +452,7 @@ export default function UrgeLog() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>

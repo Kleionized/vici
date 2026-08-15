@@ -1,11 +1,10 @@
-import { Image } from 'expo-image';
 import { useId, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Modal, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
-import { AppText, BackGlyph, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -246,7 +245,7 @@ function MoodOrb({ value }: { value: number }) {
               </Defs>
               <Circle cx={75} cy={75} r={75} fill={`url(#orb-${id})`} />
             </Svg>
-            <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.28 }} />
+            <Grain source={noiseDark} opacity={0.28} />
           </View>
         </View>
       </View>
@@ -812,7 +811,7 @@ export function CheckinFlow({
       {/* Frames 157 and 160 lay the grain over the whole field; 156 has no such
           layer, and the orb's own glow is what that step is lit by. */}
       {step === 0 ? null : (
-        <Image source={noiseDark} contentFit="cover" pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} />
+        <Grain source={noiseDark} opacity={0.07} />
       )}
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>

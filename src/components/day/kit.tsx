@@ -5,7 +5,7 @@ import { View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, BackGlyph, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
 import { fonts, sans } from '@/lib/theme';
 
 /**
@@ -173,7 +173,7 @@ export function DayShell({
   const ctaTop = height ? Math.min(top, height - pill - floor) : top;
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
       {backdrop}
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View

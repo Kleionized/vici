@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
@@ -7,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Ellipse, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
 
 import { TaskScene } from '@/components/task/TaskScene';
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { lessonForDay } from '@/content/curriculum84';
 import { TASK_OPTION_ICONS, type TaskSvgChild } from '@/content/taskScenes';
 import { useCheckins, useUpsertCheckin } from '@/lib/backend';
@@ -52,7 +51,7 @@ export default function TaskBoards() {
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <PressScale

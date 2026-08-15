@@ -1,10 +1,9 @@
-import { Image } from 'expo-image';
 import { useState, type ReactNode } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { sans } from '@/lib/theme';
 
 /**
@@ -204,7 +203,7 @@ export function LessonScroll({
   const [height, setHeight] = useState(0);
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       {/* the whole board advances the page — there is no button to press */}
       <PressScale

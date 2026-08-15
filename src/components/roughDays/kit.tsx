@@ -1,9 +1,8 @@
-import { Image } from 'expo-image';
 import { View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, G, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import type { RDArt } from '@/content/roughDays';
 import { sans } from '@/lib/theme';
 
@@ -713,7 +712,7 @@ export function RDMovePage({
           backgroundColor: '#F4F3F0',
           overflow: 'hidden',
         }}>
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+        <Grain source={noiseDark} opacity={0.07} />
         <RDGrabber />
         <RDClose onPress={onClose} />
         <RDDots total={total} index={index} />

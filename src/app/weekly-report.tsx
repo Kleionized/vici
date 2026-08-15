@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ReactNode, useId, useMemo, useState } from 'react';
@@ -6,7 +5,7 @@ import { ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, Line, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { SCORE_BASE, SCORE_WEIGHTS } from '@/lib/score';
 import { colors, sans } from '@/lib/theme';
@@ -80,7 +79,7 @@ export default function WeeklyReport() {
     return (
       <View style={{ flex: 1, backgroundColor: colors.bg }}>
         <StatusBar style="dark" />
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+        <Grain source={noiseDark} opacity={0.07} />
         <SafeAreaView edges={['top']} style={{ flex: 1 }}>
           {/* Yoga lays an absolute child out from the SafeAreaView's border box, so the inset — expressed as padding — is ignored. This plain flow child carries it. */}
           <View style={{ flex: 1 }}>
@@ -121,7 +120,7 @@ export default function WeeklyReport() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>

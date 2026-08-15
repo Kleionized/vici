@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Fragment, useRef, useState } from 'react';
@@ -6,7 +5,7 @@ import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useEvents } from '@/lib/backend';
 import { colors, sans } from '@/lib/theme';
 import type { TidelineEvent } from '@/lib/types';
@@ -75,7 +74,7 @@ export default function UrgeOverview() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <View style={{ flex: 1 }}>

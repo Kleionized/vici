@@ -10,7 +10,6 @@
  * scale — reward and severity are never a hue.
  */
 
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -33,7 +32,7 @@ import Reanimated, {
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, G, Image as SvgImage, LinearGradient as SvgGrad, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, INTENSITY_BANDS, PressScale, bandToSeverity } from '@/components/ui';
+import { AppText, bandToSeverity, Grain, INTENSITY_BANDS, PressScale } from '@/components/ui';
 import { useCreateEvent, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/lessonArt';
 import type { Tint } from '@/lib/oklch';
@@ -2151,7 +2150,7 @@ function DonePage({ count, onClose }: { count: number; onClose: () => void }) {
               </Defs>
               <Circle cx={100} cy={100} r={100} fill="url(#u90-done-sun)" />
             </Svg>
-            <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.5 }} />
+            <Grain source={NOISE_DARK} opacity={0.5} />
           </View>
           <SoftBlob id="u90-done-halo" left={56} top={385} width={280} height={280} color="rgb(250,238,214)" alpha={0.4} stop={0.72} />
         </View>
@@ -2160,7 +2159,7 @@ function DonePage({ count, onClose }: { count: number; onClose: () => void }) {
           locations={[0, 0.5, 1]}
           style={{ position: 'absolute', left: 0, right: 0, top: 542, height: 32 }}
         />
-        <Image source={NOISE_DARK} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.1 }} />
+        <Grain source={NOISE_DARK} opacity={0.1} />
       </View>
 
       <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}>

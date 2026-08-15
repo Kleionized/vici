@@ -22,7 +22,7 @@ import { ScrollView, View, useWindowDimensions } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
 import { sans } from '@/lib/theme';
 import { type ChapterKey, ChapterFooter, ChapterScene, FOOTER_H, SCENE_H } from './WorldArt';
@@ -315,7 +315,7 @@ export function JourneyChapter({ chapter, onBack }: { chapter: ChapterKey; onBac
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       {/* the plain View is load-bearing: safe-area-context expresses its inset as
           Yoga padding, and Yoga lays an absolute child out from the parent's
@@ -349,7 +349,7 @@ export function JourneyScroll({ bottomInset = 0 }: { bottomInset?: number }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <ScrollView showsVerticalScrollIndicator={false} contentInsetAdjustmentBehavior="never" contentContainerStyle={{ paddingBottom: bottomInset }}>
@@ -451,7 +451,7 @@ export function CampaignMap({ onBack, onContinue }: { onBack?: () => void; onCon
         </Svg>
       </View>
 
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.12 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.12} />
 
       {/* same reason as the chapter screen: Yoga ignores the SafeAreaView's inset
           padding when it positions an absolute child, so everything absolute
@@ -685,7 +685,7 @@ function GroundCard({ ground, width, onPress }: { ground: Ground; width: number;
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 16, overflow: 'hidden' }}>
         <LinearGradient colors={ground.field} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
         <GroundCardArt ground={ground.key} width={width} />
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.06 }} pointerEvents="none" />
+        <Grain source={noiseDark} opacity={0.06} />
       </View>
 
       <AppText style={[sans('600'), { position: 'absolute', left: 18, top: 16, fontSize: 11, letterSpacing: 2.2, color: here ? '#6E6C66' : ahead ? '#A5A29B' : '#8B8882' }]}>
@@ -731,7 +731,7 @@ export function CampaignGrounds({ onBack, onOpen }: { onBack?: () => void; onOpe
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>

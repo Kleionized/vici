@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useState } from 'react';
@@ -22,7 +21,7 @@ import {
   PageQuote,
   PageTeach,
 } from '@/components/lesson/pages';
-import { AppText, EmptyState, LoadingView, PressScale, Screen } from '@/components/ui';
+import { AppText, EmptyState, Grain, LoadingView, PressScale, Screen } from '@/components/ui';
 import { useCompleteLesson, useLessonDetail, useLessons, useSaveReflection, useStartLesson } from '@/lib/backend';
 import { interactiveLesson } from '@/lib/curriculum';
 import { weekHeading } from '@/lib/lessonArt';
@@ -167,12 +166,7 @@ function FlowCta({
 /** The grain the canvas lays over the whole frame at 0.07. */
 function PaperGrain() {
   return (
-    <Image
-      source={noiseDark}
-      contentFit="cover"
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }}
-      pointerEvents="none"
-    />
+    <Grain source={noiseDark} opacity={0.07} />
   );
 }
 

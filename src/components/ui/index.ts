@@ -1,4 +1,5 @@
 export { ActionTile } from './ActionTile';
+export { Grain } from './Grain';
 export { AppText } from './AppText';
 export { BarChart } from './BarChart';
 export { Button } from './Button';

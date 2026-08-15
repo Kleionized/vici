@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ReactNode, useId, useState } from 'react';
@@ -6,7 +5,7 @@ import { ScrollView, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Line, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { RANKS, SCORE_BASE, SCORE_WEIGHTS, buildScore } from '@/lib/score';
 import { sans } from '@/lib/theme';
@@ -197,7 +196,7 @@ function NightHeader({ score, insetTop, onBack }: { score: ReturnType<typeof bui
           <Rect x={W - 88} y={22} width={26} height={1.5} rx={0.75} fill="rgba(244,243,240,0.2)" />
         </Svg>
 
-        <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.06 }} pointerEvents="none" />
+        <Grain source={noiseDark} opacity={0.06} />
       </View>
 
       <PressScale

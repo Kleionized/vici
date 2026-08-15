@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ReactNode, useId } from 'react';
@@ -6,7 +5,7 @@ import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useCurrentLesson, useLessonProgressMap } from '@/lib/backend';
 import { INTERACTIVE_WEEKS } from '@/lib/curriculum';
 import { weekHeading } from '@/lib/lessonArt';
@@ -153,7 +152,7 @@ function LessonTile({ lesson, locked, onPress }: { lesson: InteractiveLesson; lo
       <View style={{ position: 'absolute', inset: 0, backgroundColor: '#F0EFE9' }} />
       <TileLight id={id} night={art.night} />
       {art.draw()}
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.05 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.05} />
 
       {locked ? (
         <View style={{ position: 'absolute', right: 8, top: 8, width: 24, height: 24, borderRadius: 12, backgroundColor: 'rgba(19,19,19,0.45)', alignItems: 'center', justifyContent: 'center' }}>

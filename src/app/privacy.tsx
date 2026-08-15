@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import type { ReactNode } from 'react';
@@ -6,7 +5,7 @@ import { ScrollView, View, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, BackGlyph, ChevronGlyph, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, ChevronGlyph, Grain, PressScale } from '@/components/ui';
 import { useCurrentUser, useUpdateSettings } from '@/lib/backend';
 import { colors, sans } from '@/lib/theme';
 
@@ -33,7 +32,7 @@ export default function Privacy() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ height: 60 }}>

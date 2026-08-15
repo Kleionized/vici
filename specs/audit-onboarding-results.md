@@ -279,6 +279,7 @@ App: `v3.tsx:1421–1446` + `art.tsx:579–621` (`RootLoopCard`, `LoopLabel`, `S
 | Root-Loop | card | overflow | `hidden` | `overflow:'hidden'` | match |
 | Root-Loop | card noise | opacity | `0.05` | `<Noise opacity={0.05} radius={20} />` — `art.tsx:582` | match |
 | Root-Loop | card noise | pointer-events | `none` | `pointerEvents="none"` — `art.tsx:59` | match |
+| Root-Loop | card noise | z-order vs the chart | the `<svg>` carries `position:relative`, so it paints **above** the absolute noise | chart wrapper declared last → paints above the noise — `art.tsx:582–601` | match |
 | Root-Loop | centre halo | left / top | `50% / 50%` | `left:'50%', top:'50%'` — `art.tsx:589` | match |
 | Root-Loop | centre halo | width / height | `64px / 64px` | `64 / 64` | match |
 | Root-Loop | centre halo | margin | `-32px 0 0 -32px` | `marginLeft:-32, marginTop:-32` | match |
@@ -587,6 +588,7 @@ App: `v3.tsx:1315–1326` + `art.tsx:748–787` (`SAWTOOTH`, `StreakSawtoothCard
 | Streak-Sawtooth | card | padding top / x / bottom | `20px / 16px / 16px` | `paddingTop:20, paddingHorizontal:16, paddingBottom:16` — `art.tsx:761` | match |
 | Streak-Sawtooth | card | overflow | `hidden` | `overflow:'hidden'` | match |
 | Streak-Sawtooth | card noise | opacity / pointer-events | `0.05 / none` | `<Noise opacity={0.05} radius={20} />` — `art.tsx:762` | match |
+| Streak-Sawtooth | card noise | z-order vs the chart | noise is `position:absolute`, the `<svg>` is `display:block` (non-positioned) → CSS paints the noise **above** the chart | `<Noise/>` declared first, chart wrapper second → Yoga paints the chart **above** the noise — `art.tsx:762–763` | **MISMATCH** |
 | Streak-Sawtooth | caption | absolute top | `510px` | `top: 456` (510 − 54) — `v3.tsx:1322` | match |
 | Streak-Sawtooth | caption | left / right | `52px / 52px` | `inset={52}` | match |
 | Streak-Sawtooth | caption | size / weight / lh / colour / align | `14px / 400 / 21px / #55534E / center` | identical | match |
@@ -641,6 +643,7 @@ App: `v3.tsx:1329–1340` + `art.tsx:793–820` (`CampaignLineCard`). Chrome: `{
 | Campaign-Line | card | radius / background / shadow | `20px / #FFFFFF / 0 0 0 1px rgba(0,0,0,0.09)` | `CARD` | match |
 | Campaign-Line | card | padding top / x / bottom | `20px / 16px / 16px` | identical — `art.tsx:795` | match |
 | Campaign-Line | card | overflow / noise | `hidden` / `0.05` | identical — `art.tsx:795–796` | match |
+| Campaign-Line | card noise | z-order vs the chart | absolute noise above a non-positioned `<svg>` | chart painted above the noise — `art.tsx:796–797` | **MISMATCH** |
 | Campaign-Line | caption | top / insets | `510px / 52px` | `top: 456`, `inset={52}` — `v3.tsx:1336` | match |
 | Campaign-Line | caption | size / weight / lh / colour | `14px / 400 / 21px / #55534E` | identical | match |
 | Campaign-Line | caption | copy | `A slip costs a day, not the campaign — it never returns to zero.` | identical, em dash | match |
@@ -672,3 +675,272 @@ App: `v3.tsx:1329–1340` + `art.tsx:793–820` (`CampaignLineCard`). Chrome: `{
 | Campaign-Line | chart | tick positions / format | two text anchors only (`day 0`, `today · day 41`); no tick marks | identical | match |
 | Campaign-Line | chart | gridlines | none beyond the baseline | none | match |
 | Campaign-Line | chart | fill gradients / clips / masks | none | none | match |
+
+## Frame 11 — Rewire-Curve (105) · `O3Rewire`
+
+App: `v3.tsx:1645–1660` + `art.tsx:825–858` (`REWIRE_BARS`, `RewireCurveCard`). Chrome: `{ seg: 6, backTop: 42 }`.
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Rewire-Curve | progress rule | segments inked | 6 of 8 | `seg: 6` — `welcome.tsx:137` | match |
+| Rewire-Curve | headline | top / insets | `170px / 40px` | `top: 116`, `inset={40}` — `v3.tsx:1650` | match |
+| Rewire-Curve | headline | size / weight / lh / tracking / colour / align | `24px / 500 / 32px / -0.2px / #1D1C1A / center` | identical (`O3PaperH`) | match |
+| Rewire-Curve | headline | copy | `Sam, your brain can rewire.` | `` `${name}, your brain can rewire.` `` (falls back to `Your brain can rewire.`) — `v3.tsx:1650` | match |
+| Rewire-Curve | card | absolute top | `250px` | `top: 196` (250 − 54) — `v3.tsx:1651` | match |
+| Rewire-Curve | card | left / right | `24px / 24px` | `24 / 24` | match |
+| Rewire-Curve | card | height | content-driven (20 + 177.37 + 10 = 207.37) | content-driven, `aspectRatio: 300/170` — `art.tsx:839` | match |
+| Rewire-Curve | card | radius / background / shadow | `20px / #FFFFFF / 0 0 0 1px rgba(0,0,0,0.09)` | `CARD` | match |
+| Rewire-Curve | card | padding top / x / bottom | `20px / 16px / 10px` | `paddingTop:20, paddingHorizontal:16, paddingBottom:10` — `art.tsx:837` | match |
+| Rewire-Curve | card | overflow / noise | `hidden` / `0.05` | identical — `art.tsx:837–838` | match |
+| Rewire-Curve | card noise | z-order vs the chart | absolute noise above a non-positioned `<svg>` | chart painted above the noise — `art.tsx:838–839` | **MISMATCH** |
+| Rewire-Curve | caption | absolute top | `494px` | `top: 440` (494 − 54) — `v3.tsx:1654` | match |
+| Rewire-Curve | caption | left / right | `44px / 44px` | `inset` default `44` | match |
+| Rewire-Curve | caption | size / weight / lh / colour / align | `14px / 400 / 21px / #55534E / center` | identical | match |
+| Rewire-Curve | caption | copy | `Twelve weeks of kept days — the late-night window guarded, urges shorter each week, until an evening is just an evening.` | `Twelve weeks of kept days — the {trig} window guarded, …` where `trig = 'Late night'.toLowerCase() = 'late night'` — `v3.tsx:1647, 1655` | **MISMATCH** |
+| Rewire-Curve | CTA pill | top / height / radius / label / tracking | `744px / 58px / 29px / Next / 0.2px` | `bottom: 50 / 58 / 29 / Next / 0.2` | match |
+
+### Rewire-Curve — visualization geometry
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Rewire-Curve | chart svg | viewBox | `0 0 300 170` | identical — `art.tsx:840` | match |
+| Rewire-Curve | chart svg | width / aspect | `100%` / 300:170 | `aspectRatio: 300/170` — `art.tsx:839` | match |
+| Rewire-Curve | chart svg | user→px scale | 313/300 = 1.043333 → drawn height 177.37 | identical | match |
+| Rewire-Curve | chart title | x / y / size / weight / fill | `18 / 18 / 11 / 500 / #B0AEA8` | identical — `art.tsx:841` | match |
+| Rewire-Curve | chart title | copy | `how hard urges pull` | identical | match |
+| Rewire-Curve | bar 1 | x / y / w / h / rx / fill-opacity | `18.0 / 38 / 14 / 100 / 4 / 1.00` | `[18.0, 38, 100, 1.0]` — `art.tsx:826` | match |
+| Rewire-Curve | bar 2 | x / y / h / fill-opacity | `40.4 / 48 / 90 / 0.94` | `[40.4, 48, 90, 0.94]` | match |
+| Rewire-Curve | bar 3 | x / y / h / fill-opacity | `62.8 / 58 / 80 / 0.88` | `[62.8, 58, 80, 0.88]` | match |
+| Rewire-Curve | bar 4 | x / y / h / fill-opacity | `85.2 / 67 / 71 / 0.81` | `[85.2, 67, 71, 0.81]` | match |
+| Rewire-Curve | bar 5 | x / y / h / fill-opacity | `107.6 / 76 / 62 / 0.75` | `[107.6, 76, 62, 0.75]` — `art.tsx:827` | match |
+| Rewire-Curve | bar 6 | x / y / h / fill-opacity | `130.0 / 84 / 54 / 0.69` | `[130.0, 84, 54, 0.69]` | match |
+| Rewire-Curve | bar 7 | x / y / h / fill-opacity | `152.4 / 92 / 46 / 0.63` | `[152.4, 92, 46, 0.63]` | match |
+| Rewire-Curve | bar 8 | x / y / h / fill-opacity | `174.8 / 99 / 39 / 0.57` | `[174.8, 99, 39, 0.57]` | match |
+| Rewire-Curve | bar 9 | x / y / h / fill-opacity | `197.2 / 106 / 32 / 0.50` | `[197.2, 106, 32, 0.5]` — `art.tsx:828` | match |
+| Rewire-Curve | bar 10 | x / y / h / fill-opacity | `219.6 / 112 / 26 / 0.44` | `[219.6, 112, 26, 0.44]` | match |
+| Rewire-Curve | bar 11 | x / y / h / fill-opacity | `242.0 / 117 / 21 / 0.38` | `[242.0, 117, 21, 0.38]` | match |
+| Rewire-Curve | bar 12 | x / y / h / fill-opacity | `264.4 / 122 / 16 / 0.32` | `[264.4, 122, 16, 0.32]` | match |
+| Rewire-Curve | bars | width / rx / fill | `14` / `4` / `#131313` | `width={14} rx={4} fill="#131313"` — `art.tsx:845` | match |
+| Rewire-Curve | bars | x pitch | 22.4 user units | 22.4 (from the table) | match |
+| Rewire-Curve | bars | domain→pixel mapping | week I..XII → x 18 + 22.4·k; "pull" 100..16 px tall, all bottoms at y 138 | identical (values stated, not derived) | match |
+| Rewire-Curve | baseline | x1,y1 → x2,y2 | `14,138 → 286,138` | identical — `art.tsx:847` | match |
+| Rewire-Curve | baseline | stroke / width / dash | `rgba(19,19,19,0.16)` / `1.5` / solid | identical | match |
+| Rewire-Curve | axis label left | x / y / size / weight / fill / copy | `18 / 158 / 10.5 / 500 / #8B8882 / week I` | identical — `art.tsx:848` | match |
+| Rewire-Curve | axis label right | x / y / size / weight / fill / anchor / copy | `282 / 158 / 10.5 / 500 / #8B8882 / end / week XII` | identical — `art.tsx:851` | match |
+| Rewire-Curve | chart | y-axis / ticks / gridlines | none | none | match |
+| Rewire-Curve | chart | fill gradients / clips / masks | none | none | match |
+| Rewire-Curve | chart | paint order | title, 12 bars, baseline, two axis labels | identical | match |
+
+## Frame 12 — Results-Pattern (106) · `O3Pattern`
+
+App: `v3.tsx:1537–1555` + `art.tsx:862–922` (`UrgesByNightCard`, `MoonGlyph`, `MostActiveTriggerCard`). Chrome: `{ seg: 8, backTop: 42 }`.
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Results-Pattern | progress rule | segments inked | 8 of 8 | `seg: 8` — `welcome.tsx:138` | match |
+| Results-Pattern | headline | absolute top | `158px` | `top: 104` (158 − 54) — `v3.tsx:1540` | match |
+| Results-Pattern | headline | left / right | `26px / 26px` | `left: 26, right: 26` | match |
+| Results-Pattern | headline | text-align | `center` | `center` prop | match |
+| Results-Pattern | headline | font-size | `22px` | `fontSize: 22` | match |
+| Results-Pattern | headline | numeric weight | `500` | `sans('500')` | match |
+| Results-Pattern | headline | line-height | `1.32` (= 29.04px) | `lineHeight: 29.04` | match |
+| Results-Pattern | headline | letter-spacing | `0.1px` | `letterSpacing: 0.1` | match |
+| Results-Pattern | headline | colour | `#1D1C1A` | `'#1D1C1A'` | match |
+| Results-Pattern | headline | copy | `Your pattern, mapped.` | identical | match |
+| Results-Pattern | chart card | absolute top | `268px` | `top: 214` (268 − 54) — `v3.tsx:1543` | match |
+| Results-Pattern | chart card | left / right | `24px / 24px` | `24 / 24` | match |
+| Results-Pattern | chart card | height | `250px` | `height: 250` — `art.tsx:869` | match |
+| Results-Pattern | chart card | border-radius | `16px` | `borderRadius: 16` (overrides `CARD`'s 20) | match |
+| Results-Pattern | chart card | background / shadow | `#FFFFFF` / `0 0 0 1px rgba(0,0,0,0.09)` | `CARD` | match |
+| Results-Pattern | chart title | left / top | `20px / 18px` | `left: 20, top: 18` — `art.tsx:870` | match |
+| Results-Pattern | chart title | size / weight / colour | `12.5px / 600 / #8B8882` | identical | match |
+| Results-Pattern | chart title | copy | `Urges by night` | identical | match |
+| Results-Pattern | trigger card | absolute top | `540px` | `top: 486` (540 − 54) — `v3.tsx:1546` | match |
+| Results-Pattern | trigger card | left / right | `24px / 24px` | `24 / 24` | match |
+| Results-Pattern | trigger card | height / radius | `76px / 16px` | `height: 76, borderRadius: 16` — `art.tsx:910` | match |
+| Results-Pattern | trigger card | background / shadow | `#FFFFFF` / `0 0 0 1px rgba(0,0,0,0.09)` | `CARD` | match |
+| Results-Pattern | trigger card | flex-direction / align | `row / center` | `flexDirection:'row', alignItems:'center'` | match |
+| Results-Pattern | trigger card | padding | `0 20px` | `paddingHorizontal: 20` | match |
+| Results-Pattern | trigger card | gap | `16px` | `gap: 16` | match |
+| Results-Pattern | trigger avatar | width / height | `44px / 44px` | `44 / 44` — `art.tsx:911` | match |
+| Results-Pattern | trigger avatar | border-radius | `50%` | `borderRadius: 22` | match |
+| Results-Pattern | trigger avatar | background | `#F1EFE9` | `'#F1EFE9'` | match |
+| Results-Pattern | trigger avatar | align / justify / flex-shrink | `center / center / 0` | identical | match |
+| Results-Pattern | moon glyph | icon size / viewBox | `20 × 20` / `0 0 24 24` | `size = 20`, `viewBox="0 0 24 24"` — `art.tsx:901` | match |
+| Results-Pattern | moon glyph | path `d` | `M14.5 2.5a9.5 9.5 0 1 0 7 14 9 9 0 0 1-7-14z` | identical — `art.tsx:902` | match |
+| Results-Pattern | moon glyph | fill / stroke | `#131313` / none | `fill="#131313"`, no stroke | match |
+| Results-Pattern | trigger label | size / weight / colour | `12.5px / 600 / #8B8882` | identical — `art.tsx:915` | match |
+| Results-Pattern | trigger label | copy | `Most active trigger` | identical | match |
+| Results-Pattern | trigger value | margin-top | `4px` | `marginTop: 4` — `art.tsx:916` | match |
+| Results-Pattern | trigger value | size / weight / colour | `17.5px / 600 / #1D1C1A` | identical | match |
+| Results-Pattern | trigger value | copy | `Late nights, weekends` | `busiestTrigger()` default `'Late nights, weekends'` — `v3.tsx:1529` | match |
+| Results-Pattern | trigger value | max lines | not stated (unbounded) | `numberOfLines={1}` — `art.tsx:916` | **MISMATCH** |
+| Results-Pattern | window line | absolute top | `648px` | `top: 594` (648 − 54) — `v3.tsx:1549` | match |
+| Results-Pattern | window line | left / right | `26px / 26px` | `left: 26, right: 26` | match |
+| Results-Pattern | window line | text-align | not stated → `left` | no `center` prop → left | match |
+| Results-Pattern | window line | size / weight / lh / colour | `15px / 400 / 22px / #55534E` | `15 / sans('400') / 22 / '#55534E'` | match |
+| Results-Pattern | window line | copy | `Your risky window is Friday and Saturday night. We'll pay gentle attention there first.` | `Your risky window is {PEAK_NAMES[4]} and {PEAK_NAMES[5]} night. We'll pay gentle attention there first.` → `Friday` / `Saturday`, `&apos;` = U+0027 — `v3.tsx:1534–1535, 1550` | match |
+| Results-Pattern | CTA pill | absolute top | `764px` | `bottom: 852 − 764 − 58 = 30` — `v3.tsx:1552` | match |
+| Results-Pattern | CTA pill | left / right / height / radius / background | `24 / 24 / 58px / 29px / #131313` | identical | match |
+| Results-Pattern | CTA label | size / weight / colour | `17px / 600 / #FFFFFF` | identical | match |
+| Results-Pattern | CTA label | letter-spacing | `0.3px` | `ls={0.3}` | match |
+| Results-Pattern | CTA label | copy | `See what's ahead` | `See what's ahead` (U+0027) | match |
+
+### Results-Pattern — visualization geometry (urges by night)
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Results-Pattern | bar plot | left / right | `20px / 20px` | `left: 20, right: 20` — `art.tsx:871` | match |
+| Results-Pattern | bar plot | bottom | `44px` | `bottom: 44` | match |
+| Results-Pattern | bar plot | height (plot band) | `130px` | `height: 130` | match |
+| Results-Pattern | bar plot | flex-direction / align-items | `row` / `flex-end` | `flexDirection:'row', alignItems:'flex-end'` | match |
+| Results-Pattern | bar plot | gap | `14px` | `gap: 14` | match |
+| Results-Pattern | bar plot | domain→pixel mapping | value = px height directly, baseline at the band foot; 7 equal `flex:1` columns across 345 − 40 = 305 − 6·14 = 221 → 31.57 wide | identical | match |
+| Results-Pattern | bar Mo | height / fill | `42px / #DCDBD6` | `NIGHT_BARS[0] = 42`, non-peak `#DCDBD6` — `art.tsx:864, 882` | match |
+| Results-Pattern | bar Tu | height / fill | `58px / #DCDBD6` | `58` / `#DCDBD6` | match |
+| Results-Pattern | bar We | height / fill | `50px / #DCDBD6` | `50` / `#DCDBD6` | match |
+| Results-Pattern | bar Th | height / fill | `72px / #DCDBD6` | `72` / `#DCDBD6` | match |
+| Results-Pattern | bar Fr | height / fill | `96px / #131313` | `96` / peak (`peaks=[4,5]`) `#131313` — `v3.tsx:1534` | match |
+| Results-Pattern | bar Sa | height / fill | `120px / #131313` | `120` / `#131313` | match |
+| Results-Pattern | bar Su | height / fill | `84px / #DCDBD6` | `84` / `#DCDBD6` | match |
+| Results-Pattern | bars | border-radius per corner | `6px 6px 2px 2px` | `borderTopLeftRadius:6, borderTopRightRadius:6, borderBottomLeftRadius:2, borderBottomRightRadius:2` — `art.tsx:878–881` | match |
+| Results-Pattern | bars | stroke / gradient | none | none | match |
+| Results-Pattern | axis row | left / right / bottom | `20px / 20px / 16px` | `left:20, right:20, bottom:16` — `art.tsx:887` | match |
+| Results-Pattern | axis row | flex-direction / gap | `row` (flex) / `14px` | `flexDirection:'row', gap: 14` | match |
+| Results-Pattern | axis tick labels | text / order | `Mo Tu We Th Fr Sa Su` | `NIGHT_DAYS` — `art.tsx:862` | match |
+| Results-Pattern | axis tick labels | flex / align / size / weight / colour | `1 / center / 11.5px / 500 / #8B8882` | identical — `art.tsx:889` | match |
+| Results-Pattern | chart | gridlines / y-axis / baseline rule | none drawn | none | match |
+| Results-Pattern | chart | clip paths / masks | none | none | match |
+
+## Frame 13 — The-Vow (108) · `O3Pledge`
+
+App: `v3.tsx:1799–1820` + `art.tsx:927–998` (`VowSunArt`, `VowSignaturePanel`, `SUN_97`). Chrome: `{ paper: 'plain', back: false }`, `pledge` in `NOBAR`.
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| The-Vow | frame root | background | `#FFFFFF` (flat, no field, no noise) | `paper === 'plain'` → full-bleed `backgroundColor:'#FFFFFF'` — `v3.tsx:293` | match |
+| The-Vow | progress rule | presence | not drawn | `NOBAR.has('pledge')` → `bar={false}` — `welcome.tsx:142, 275` | match |
+| The-Vow | Back control | presence | not drawn | `back: false` — `welcome.tsx:140` | match |
+| The-Vow | title | absolute top | `130px` | `top: 76` (130 − 54) — `v3.tsx:1803` | match |
+| The-Vow | title | left / right / align | `0 / 0 / center` | `left:0, right:0`, `center` prop | match |
+| The-Vow | title | font-size | `22px` | `fontSize: 22` | match |
+| The-Vow | title | numeric weight | `500` | `sans('500')` | match |
+| The-Vow | title | letter-spacing | `0.1px` | `letterSpacing: 0.1` | match |
+| The-Vow | title | line-height | not stated (normal) | not set → dropped by `AppText` | match |
+| The-Vow | title | colour | `#1D1C1A` | `'#1D1C1A'` | match |
+| The-Vow | title | copy | `The vow.` | identical | match |
+| The-Vow | vow line | absolute top | `174px` | `top: 120` (174 − 54) — `v3.tsx:1806` | match |
+| The-Vow | vow line | left / right | `44px / 44px` | `left: 44, right: 44` | match |
+| The-Vow | vow line | size / weight | `15.5px / 400` | `15.5` / `sans('400')` | match |
+| The-Vow | vow line | line-height | `24px` | `lineHeight: 24` | match |
+| The-Vow | vow line | colour | `#55534E` | `'#55534E'` | match |
+| The-Vow | vow line | copy | `I'm done letting the wave decide. One evening at a time, I take the watch back.` (U+0027) | `I&apos;m done letting the wave decide. One evening at a time, I take the watch back.` (U+0027) | match |
+| The-Vow | sun halo | absolute left / top | `50% / 252px` | stage at `left:'50%', top: 198` (252 − 54); halo at `left:0, top:0` inside it — `v3.tsx:1809`, `art.tsx:936` | match |
+| The-Vow | sun halo | width / height | `200px / 200px` | `200 / 200` | match |
+| The-Vow | sun halo | margin-left | `-100px` | `marginLeft: -100` | match |
+| The-Vow | sun halo | border-radius | `50%` | inscribed ellipse (`Wash`) | match |
+| The-Vow | sun halo | stop 1 | `rgba(226,186,120,0.38)` @ 0% | `rgb(226,186,120)` @ `0%`, `0.38` — `art.tsx:932` | match |
+| The-Vow | sun halo | stop 2 | `rgba(226,186,120,0)` @ 72% | `0` @ `72%` | match |
+| The-Vow | sun halo | filter | `blur(3px)` | radial falloff | deviation (N-3) |
+| The-Vow | sun disc | absolute left / top | `50% − 28 / 278px` | `left: 72, top: 26` inside the 200-wide stage at `left:'50%', marginLeft:-100, top:198` → 50% − 28 / 278 — `art.tsx:944` | match |
+| The-Vow | sun disc | width / height | `56px / 56px` | `size={56}` | match |
+| The-Vow | sun disc | border-radius | `50%` | `borderRadius: 28` + inscribed `Circle` | match |
+| The-Vow | sun disc | gradient centre | `circle at 50% 38%` | `cx="50%" cy="38%"` — `art.tsx:941–942` | match |
+| The-Vow | sun disc | gradient radius | CSS `farthest-corner` | `r="79.6%"` (√(0.5²+0.62²)) — `art.tsx:488` | match |
+| The-Vow | sun disc | stop 1 | `#F8E9CB` @ 0% | `SUN_97[0]` — `art.tsx:479` | match |
+| The-Vow | sun disc | stop 2 | `#EFD3A2` @ 70% | `['70%','#EFD3A2']` | match |
+| The-Vow | sun disc | stop 3 | `#E3BE85` @ 100% | `['100%','#E3BE85']` | match |
+| The-Vow | sun disc | shadow x/y/blur/colour | `0 / 6px / 18px / rgba(226,186,120,0.45)` | `boxShadow:'0 6px 18px rgba(226,186,120,0.45)'` — `art.tsx:944` | match |
+| The-Vow | signature panel | absolute top | `428px` | `top: 374` (428 − 54) — `v3.tsx:1812` | match |
+| The-Vow | signature panel | left / right | `36px / 36px` | `left: 36, right: 36` | match |
+| The-Vow | signature panel | height | `170px` | `height: 170` — `art.tsx:958` | match |
+| The-Vow | signature panel | border-radius | `18px` | `borderRadius: 18` | match |
+| The-Vow | signature panel | corner style | circular | `borderCurve:'continuous'` | deviation (N-4) |
+| The-Vow | signature panel | background | `#FAF9F6` | `'#FAF9F6'` | match |
+| The-Vow | signature panel | inset ring | `inset 0 0 0 1.5px rgba(0,0,0,0.10)` | `boxShadow:'inset 0 0 0 1.5px rgba(0,0,0,0.10)'` | match |
+| The-Vow | SIGNATURE caption | left / top | `16px / 13px` | `left: 16, top: 13` — `art.tsx:959` | match |
+| The-Vow | SIGNATURE caption | size / weight | `10.5px / 600` | `10.5` / `sans('600')` | match |
+| The-Vow | SIGNATURE caption | letter-spacing | `1.6px` | `letterSpacing: 1.6` | match |
+| The-Vow | SIGNATURE caption | colour | `#C6C3BC` | `'#C6C3BC'` | match |
+| The-Vow | SIGNATURE caption | text-transform | none (literal caps in the copy) | literal caps `'SIGNATURE'` | match |
+| The-Vow | Clear affordance | right / top | `16px / 11px` | `right: 16, top: 11` — `art.tsx:966` | match |
+| The-Vow | Clear affordance | size / weight / colour | `12.5px / 500 / #B0AEA8` | identical — `art.tsx:967` | match |
+| The-Vow | Clear affordance | copy | `Clear` | `Clear` | match |
+| The-Vow | ink stroke svg | width / height | `216 / 64` | `width={216} height={64}` — `art.tsx:970` | match |
+| The-Vow | ink stroke svg | viewBox | `0 0 216 64` | `viewBox="0 0 216 64"` | match |
+| The-Vow | ink stroke svg | left / bottom | `44px / 36px` | `left: 44, bottom: 36` | match |
+| The-Vow | ink stroke | path `d` | `M6 46 C 20 8, 44 6, 40 30 C 36 52, 12 56, 34 44 C 58 30, 78 22, 96 36 C 108 46, 122 30, 138 34` | identical — `art.tsx:972` | match |
+| The-Vow | ink stroke | fill / stroke / width | `none` / `#26261F` / `2.2` | identical | match |
+| The-Vow | ink stroke | cap / join | `round` / `round` | identical | match |
+| The-Vow | ink stroke | terminal dot cx/cy/r/fill | `138 / 34 / 2.6 / #26261F` | identical — `art.tsx:979` | match |
+| The-Vow | ink stroke | state drawn | present (signed) | rendered only when `signed`; `onSign` sets it — `art.tsx:969, 989–995` | match (frame draws the signed state) |
+| The-Vow | rule cross `×` | left / bottom | `24px / 38px` | `left: 24, bottom: 38` — `art.tsx:982` | match |
+| The-Vow | rule cross `×` | font-size / colour | `14px / #B0AEA8` | `fontSize: 14`, `'#B0AEA8'` | match |
+| The-Vow | signature rule | left / right / bottom | `22px / 22px / 34px` | `left: 22, right: 22, bottom: 34` — `art.tsx:983` | match |
+| The-Vow | signature rule | height / colour | `1.5px / rgba(0,0,0,0.26)` | `height: 1.5`, `'rgba(0,0,0,0.26)'` | match |
+| The-Vow | printed name | left / bottom | `24px / 13px` | `left: 24, bottom: 13` — `art.tsx:984` | match |
+| The-Vow | printed name | size / weight / colour | `11.5px / 500 / #B0AEA8` | identical | match |
+| The-Vow | printed name | copy | `Sam` | `{name || 'You'}` | match |
+| The-Vow | printed date | right / bottom | `22px / 13px` | `right: 22, bottom: 13` — `art.tsx:985` | match |
+| The-Vow | printed date | size / weight / colour | `11.5px / 500 / #B0AEA8` | identical | match |
+| The-Vow | printed date | format | `Jun 9 · Day 0` | `` `${toLocaleDateString('en-US',{month:'short',day:'numeric'})} · Day 0` `` — `v3.tsx:1794–1797` | match |
+| The-Vow | CTA pill | absolute top | `688px` | `bottom: 852 − 688 − 54 = 110` — `v3.tsx:1815` | match |
+| The-Vow | CTA pill | left / right | `24px / 24px` | `24 / 24` | match |
+| The-Vow | CTA pill | height | `54px` | `h={54}` | match |
+| The-Vow | CTA pill | border-radius | `27px` | `borderRadius: h/2 = 27` | match |
+| The-Vow | CTA pill | background | `#131313` | `'#131313'` | match |
+| The-Vow | CTA pill | disabled state | not drawn (frame shows it live) | `opacity: 0.26` until `inked` — `v3.tsx:439, 1815` | match (frame draws the signed/enabled state) |
+| The-Vow | CTA label | size / weight / tracking / colour | `17px / 600 / 0.2px / #FFFFFF` | identical | match |
+| The-Vow | CTA label | copy | `I sign it` | identical | match |
+| The-Vow | ghost link | absolute top | `760px` | `bottom: 852 − 760 − 18 = 74` — `v3.tsx:1817` | match |
+| The-Vow | ghost link | left / right / align | `0 / 0 / center` | `0 / 0`, centered | match |
+| The-Vow | ghost link | size / weight / colour | `15px / 500 / #8B8882` | identical | match |
+| The-Vow | ghost link | copy | `Read it once more` | identical | match |
+
+## Notes — stated deviations (not counted as mismatches)
+
+These are places where the app deliberately departs from the frame, each already carrying a comment in the source. They are recorded so they are never mistaken for drift, and so the next reader can re-decide them.
+
+* **N-1 · Enlisting-Aegis is a still of a running process.** The canvas can only draw one moment: bar at 186 of 311 (59.807%), steps 1–2 ticked, step 3 turning. The app runs the whole sequence — bar `0.04 → 1` over 6400 ms on `Easing.bezier(0.25,0.6,0.3,1)`, ticks at 2000/4000/6000 ms, screen advances at 6800 ms (`v3.tsx:1353–1366`). The frame's state is one instant inside that timeline.
+* **N-2 · Aegis spinner turns.** The frame draws a static three-quarter ring; `AegisSpinner` rotates it 0→360° every 1100 ms, linear (`art.tsx:356–376`).
+* **N-3 · `filter: blur(n)` has no RN SVG equivalent.** Every blurred CSS wash is redrawn as a `closest-side` radial with the frame's own stops (`art.tsx:11–13, 36–52`). Stop offsets and alphas are byte-identical; only the extra Gaussian softening is absent.
+* **N-4 · `borderCurve: 'continuous'`.** The frames state plain circular `border-radius`; the app adds iOS continuous (squircle) corners on `CARD`, `O3PaperCard`, the plan card and the vow panel. Radius values are identical; the corner curve is not.
+* **N-5 · Plan-Ready flag SVG viewBox.** The frame's `viewBox="0 0 120 100"` clips the top 2 user-units of the flagpole (`y = -2`). The app uses `viewBox="0 -4 120 104"` with `top` pulled back 4, which maps every user-space `y` to the same on-screen pixel (`30 + y`) but leaves the pole unclipped (`art.tsx:445–448`).
+* **N-6 · Tally numerals count up.** The frames print the final number; `useCountUp` eases 0 → n over 1500 ms, cubic-out (`v3.tsx:1453–1467`). The resting value is the frame's.
+* **N-7 · Reversal clearing easing.** The frame's keyframe uses CSS `ease` per cell; the app drives one linear master timeline and interpolates each cell's colour linearly across its own 900 ms window (`art.tsx:686–708`). Indices, delays, duration, span and target colour are all exact; only the per-cell easing curve differs.
+* **N-8 · The 54pt status-bar assumption.** Every "canvas top − 54" placement is exact only where the device's top safe-area inset is 54pt. On an inset of 59 (iPhone 14/15 Pro) or 50 (13 mini) every in-safe-area element shifts by the difference. This is systemic to the port, not specific to these frames.
+* **N-9 · `text-wrap: balance` / `pretty`.** Stated on most headlines and captions; React Native has no equivalent (`AppText` applies it on web only, `AppText.tsx:126`). No numeric value drifts, but long wrapped lines will break differently from the frame.
+* **N-10 · Canvas gallery chrome.** Each frame div carries `box-shadow: 0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(40,38,32,0.16)` and `flex-shrink: 0`. That is the gallery's card treatment, not screen content, and is correctly absent from the app.
+* **N-11 · Canvas self-contradiction on apostrophes.** `Root-Loop` and `The-Vow` and `Results-Pattern` use U+0027 (`'`) in body copy; `Campaign-Line` uses `&rsquo;` (U+2019). The frames disagree with each other. The evidence supports treating U+2019 as the intended typography (it is the only *deliberate* entity in the set — a straight quote is what a plain text editor produces by default, an `&rsquo;` is not), which makes Finding 1 a candidate for fixing the *frame* rather than the app. It is reported as a mismatch because the audit's rule is character-for-character.
+
+## Findings
+
+Six rows failed. Ordered most-substantive first.
+
+1. **`src/components/onboarding/art.tsx:762–763` — Streak-Sawtooth card noise paints under the chart, not over it.**
+   Current app value: `<Noise opacity={0.05} radius={20} />` is declared *before* the chart wrapper, and React Native paints children in declaration order, so the chart sits on top of the noise.
+   Design value: the frame's noise div is `position:absolute; inset:0` while the `<svg>` is `display:block` (non-positioned), so CSS paints the noise **above** the chart.
+   Visual delta is a 5%-alpha texture over vs under the ink — small, but it is a z-order inversion, and it is the property the frame states.
+
+2. **`src/components/onboarding/art.tsx:796–797` — Campaign-Line card noise paints under the chart.** Same inversion as Finding 1, same cause, same frame construction (`padding:20px 16px 16px`, absolute noise, static `<svg viewBox="0 0 320 190">`).
+
+3. **`src/components/onboarding/art.tsx:838–839` — Rewire-Curve card noise paints under the chart.** Same inversion as Finding 1, on the `viewBox="0 0 300 170"` bar chart.
+
+4. **`src/components/onboarding/art.tsx:916` — `MostActiveTriggerCard` clamps the trigger value to one line.**
+   Current app value: `numberOfLines={1}`.
+   Design value: the frame's value div (`Results-Pattern`, `top:540px` card) states no clamp — `font-size:17.5px; font-weight:600; color:#1D1C1A; margin-top:4px` and nothing else, so it wraps.
+   Invisible on the frame's own string (`Late nights, weekends` fits), but a two-trigger answer such as `Bored daytime, Phone in bed` will truncate in the app where the frame would wrap.
+
+5. **`src/components/onboarding/v3.tsx:1655` — Rewire-Curve caption drops the hyphen in "late-night".**
+   Current app value: `` `…the ${trig} window guarded…` `` with `trig` from `v3.tsx:1647` = `'Late night'.toLowerCase()` → renders **`the late night window guarded`**.
+   Design value: **`the late-night window guarded`** (hyphenated compound modifier).
+   The app builds the phrase from the raw option label, so no substitution path can produce the frame's hyphen.
+
+6. **`src/components/onboarding/v3.tsx:1428` — Root-Loop headline uses curly apostrophes where the frame uses straight ones.**
+   Current app value: `Porn isn’t the problem, {name}. It’s your anesthetic for {word}.` (U+2019 ×2).
+   Design value: `Porn isn't the problem, Sam. It's your anesthetic for loneliness.` (U+0027 ×2).
+   Same applies to the `auto` variant at `v3.tsx:1429`. See **N-11**: the canvas contradicts itself across frames on this character, and the evidence favours the app's U+2019 as the intended glyph — the fix most likely belongs in the frame.
+
+### Row count supporting the result
+
+**743 comparison rows** across **13 frames** (plus one shared-chrome table covering the ten identical paper frames' field, rule and Back row). 6 rows are MISMATCH, 19 rows are stated deviations (N-1 … N-11), the remaining 718 match.

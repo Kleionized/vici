@@ -42,9 +42,9 @@ Rows are `(element, property)`. Where the design declares nothing for a property
 | all 9 | Frame root | box-shadow | `0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(40,38,32,0.16)` | n/a — canvas device-frame chrome, not an app surface | n/a |
 | all 9 | Status bar row | height / padding / z-index | `54px` / `6px 32px 0 46px` / `20` | not built — OS status bar | match (by design) |
 | all 9 | Status bar · clock | text / size / weight / letter-spacing / colour | `9:41` / `17px` / `600` / `-0.2px` / `#1D1C1A` | OS-drawn; app sets `StatusBar style="dark"` (`urge:583`, `urge:2128`, `rel:92`, `rel:169`) | match (by design) |
-| all 9 | Status bar · signal svg | 4 rects, `19×12` viewBox `0 0 19 12`, rx `0.7`, fill `#1D1C1A` | OS-drawn | match (by design) |
-| all 9 | Status bar · wifi svg | 2 paths + circle, `17×12` viewBox `0 0 17 12`, fill `#1D1C1A` | OS-drawn | match (by design) |
-| all 9 | Status bar · battery svg | `27×13`, stroke `#1D1C1A` @ `0.35`, fill `#1D1C1A`, cap `#1D1C1A` @ `0.4` | OS-drawn | match (by design) |
+| all 9 | Status bar · signal svg | size / viewBox / rx / fill | `19×12` / `0 0 19 12` / `0.7` / `#1D1C1A`, 4 rects | OS-drawn | match (by design) |
+| all 9 | Status bar · wifi svg | size / viewBox / fill | `17×12` / `0 0 17 12` / `#1D1C1A`, 2 paths + circle | OS-drawn | match (by design) |
+| all 9 | Status bar · battery svg | size / stroke / fill / cap | `27×13` / `#1D1C1A` @ `0.35` / `#1D1C1A` / `#1D1C1A` @ `0.4` | OS-drawn | match (by design) |
 
 ### Shared sheet + shared controls (used by Cue-Intro-Modal, SOS-Strength, Cue-Set-Confirmation, Surf-Step-1, Surf-Step-3, Relapse-Log, Relapse-Twice)
 
@@ -58,23 +58,23 @@ Rows are `(element, property)`. Where the design declares nothing for a property
 | 7 sheet frames | Paper sheet | border-radius | `24px 24px 0 0` | `borderTopLeftRadius 24`, `borderTopRightRadius 24`, bottom corners unset (`urge:589-590`, `rel:101-102`) | match |
 | 7 sheet frames | Paper sheet | background | `#F4F3F0` | `SHEET_PAPER = '#F4F3F0'` (`urge:531`, `urge:588`); `PAPER = '#F4F3F0'` (`rel:41`, `rel:103`) | match |
 | 7 sheet frames | Paper sheet | overflow | `hidden` | `'hidden'` (`urge:591`, `rel:104`) | match |
-| 6 frames w/ close | Close X | position / right / top | `absolute` / `22` / `24` | `absolute` / `22` / `24` (`urge:606`, `rel:111`) | match |
-| 6 frames w/ close | Close X | svg width / height / viewBox | `20` / `20` / `0 0 20 20` | `20` / `20` / `0 0 20 20` (`urge:607`, `rel:112`) | match |
-| 6 frames w/ close | Close X | path `d` | `M3 3l14 14M17 3L3 17` | `M3 3l14 14M17 3L3 17` (`urge:608`, `rel:113`) | match |
-| 6 frames w/ close | Close X | stroke | `#55534E` | `#55534E` (`urge:608`) / `MUTED = '#55534E'` (`rel:43`, `rel:113`) | match |
-| 6 frames w/ close | Close X | stroke-width | `2` | `2` (`urge:608`, `rel:113`) | match |
-| 6 frames w/ close | Close X | stroke-linecap | `round` | `round` (`urge:608`, `rel:113`) | match |
-| 6 frames w/ close | Close X | z-order | DOM-first inside the sheet (paints under later siblings) | `zIndex: 6` in urge (`urge:606`), none in relapse | match (inert — nothing overlaps at 22/24) |
-| 5 frames w/ pill | Primary pill | position / left / right | `absolute` / `24` / `24` | `absolute` / `24` / `24` (`urge:632-634`, `rel:138-139`) | match |
-| 5 frames w/ pill | Primary pill | bottom | `88` | `88` (`urge:625` default, `rel:140`) | match |
-| 5 frames w/ pill | Primary pill | height | `54` | `54` (`urge:635`, `rel:141`) | match |
-| 5 frames w/ pill | Primary pill | border-radius | `27` (all 4 corners) | `27` (`urge:636`, `rel:143`) | match |
-| 5 frames w/ pill | Primary pill | background | `#131313` | `SHEET_INK = '#131313'` (`urge:532`, `urge:637`); `'#131313'` (`rel:144`) | match |
-| 5 frames w/ pill | Primary pill | display / align-items / justify-content | `flex` / `center` / `center` | flex default / `center` / `center` (`urge:638-639`, `rel:145-146`) | match |
-| 5 frames w/ pill | Primary pill label | font-size | `17px` | `17` (`urge:641`, `rel:148`) | match |
-| 5 frames w/ pill | Primary pill label | font-weight | `600` | `sans('600')` (`urge:641`, `rel:148`) | match |
-| 5 frames w/ pill | Primary pill label | letter-spacing | `0.2px` | `0.2` (`urge:641`, `rel:148`) | match |
-| 5 frames w/ pill | Primary pill label | colour | `#FFFFFF` | `'#FFFFFF'` (`urge:641`, `rel:148`) | match |
+| 7 frames w/ close | Close X | position / right / top | `absolute` / `22` / `24` | `absolute` / `22` / `24` (`urge:606`, `rel:111`) | match |
+| 7 frames w/ close | Close X | svg width / height / viewBox | `20` / `20` / `0 0 20 20` | `20` / `20` / `0 0 20 20` (`urge:607`, `rel:112`) | match |
+| 7 frames w/ close | Close X | path `d` | `M3 3l14 14M17 3L3 17` | `M3 3l14 14M17 3L3 17` (`urge:608`, `rel:113`) | match |
+| 7 frames w/ close | Close X | stroke | `#55534E` | `#55534E` (`urge:608`) / `MUTED = '#55534E'` (`rel:43`, `rel:113`) | match |
+| 7 frames w/ close | Close X | stroke-width | `2` | `2` (`urge:608`, `rel:113`) | match |
+| 7 frames w/ close | Close X | stroke-linecap | `round` | `round` (`urge:608`, `rel:113`) | match |
+| 7 frames w/ close | Close X | z-order | DOM-first inside the sheet (paints under later siblings) | `zIndex: 6` in urge (`urge:606`), none in relapse | match (inert — nothing overlaps at 22/24) |
+| 6 frames w/ pill | Primary pill | position / left / right | `absolute` / `24` / `24` | `absolute` / `24` / `24` (`urge:632-634`, `rel:138-139`) | match |
+| 6 frames w/ pill | Primary pill | bottom | `88` | `88` (`urge:625` default, `rel:140`) | match |
+| 6 frames w/ pill | Primary pill | height | `54` | `54` (`urge:635`, `rel:141`) | match |
+| 6 frames w/ pill | Primary pill | border-radius | `27` (all 4 corners) | `27` (`urge:636`, `rel:143`) | match |
+| 6 frames w/ pill | Primary pill | background | `#131313` | `SHEET_INK = '#131313'` (`urge:532`, `urge:637`); `'#131313'` (`rel:144`) | match |
+| 6 frames w/ pill | Primary pill | display / align-items / justify-content | `flex` / `center` / `center` | flex default / `center` / `center` (`urge:638-639`, `rel:145-146`) | match |
+| 6 frames w/ pill | Primary pill label | font-size | `17px` | `17` (`urge:641`, `rel:148`) | match |
+| 6 frames w/ pill | Primary pill label | font-weight | `600` | `sans('600')` (`urge:641`, `rel:148`) | match |
+| 6 frames w/ pill | Primary pill label | letter-spacing | `0.2px` | `0.2` (`urge:641`, `rel:148`) | match |
+| 6 frames w/ pill | Primary pill label | colour | `#FFFFFF` | `'#FFFFFF'` (`urge:641`, `rel:148`) | match |
 | 4 frames w/ skip | Skip link | position / left / right / bottom | `absolute` / `0` / `0` / `44` | `absolute` / `0` / `0` / `44` (`urge:652`) | match |
 | 4 frames w/ skip | Skip link | text-align | `center` | `alignItems: 'center'` (`urge:652`) | match |
 | 4 frames w/ skip | Skip link | font-size / weight / colour | `15px` / `500` / `#8B8882` | `15` / `sans('500')` / `SHEET_SOFT = '#8B8882'` (`urge:535`, `urge:653`) | match |
@@ -437,3 +437,237 @@ Frame-absolute tops. Background layer takes them raw; the text layer sits under 
 | Surf-Complete | Pill label | text | `Back to Today` | `Back to Today` (`urge:2187`) | match |
 | Surf-Complete | — | close / back control | none drawn | none rendered (`urge:2166-2189`) | match |
 | Surf-Complete | — | paper sheet | none (frame breaks the sheet) | none — `DonePage` is full-bleed (`urge:2127`) | match |
+
+---
+
+## 7 · Relapse-Log → `Relapse` index 0 + `SlipArt` (`rel:63-163`, `rel:338-410`)
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Relapse-Log | Art box | position | `absolute` | `absolute` (`rel:118`) | match |
+| Relapse-Log | Art box | left | `76` | `'50%'` + `marginLeft: -120` = `76.5` at 393pt width (`rel:118`) | **MISMATCH** (+0.5pt; width-dependent — 95 at 430pt) |
+| Relapse-Log | Art box | top | `180` | `180` (`rel:118`) | match |
+| Relapse-Log | Art box | width / height | `240` / `200` | `240` / `200` (`rel:340`) | match |
+| Relapse-Log | Art inner | overflow | `hidden` | `overflow: 'hidden'` (`rel:340`) | match |
+| Relapse-Log | Art · cool glow | left / top / width / height | `56` / `44` / `136` / `136` | `56` / `44` / `136` / `136` (`rel:342`) | match |
+| Relapse-Log | Art · cool glow | border-radius | `50%` | `Ellipse rx/ry 68` (`rel:350`) | match |
+| Relapse-Log | Art · cool glow | gradient type | `radial-gradient(closest-side, …)` | `cx/cy 50%`, `rx/ry 50%` (`rel:344`) | match |
+| Relapse-Log | Art · cool glow | stop 1 | `rgba(142,153,168,0.32)` @ `0` | `#8E99A8` @ `0.32`, offset `0` (`rel:345`) | match |
+| Relapse-Log | Art · cool glow | stop 2 | `rgba(142,153,168,0)` @ `74%` | `#8E99A8` @ `0`, offset `0.74` (`rel:347`) | match |
+| Relapse-Log | Art · cool glow | extra stops | none (2-stop ramp) | added mid stop `0.14` @ `0.37` (`rel:346`); linear interpolation of the design's ramp gives `0.16` there | MISMATCH* |
+| Relapse-Log | Art · cool glow | filter | `blur(4px)` | none — mid stop stands in (`rel:341`) | MISMATCH* |
+| Relapse-Log | Art · sheet back | left / top / width / height | `56` / `72` / `126` / `94` | `56` / `72` / `126` / `94` (`rel:354`) | match |
+| Relapse-Log | Art · sheet back | border-radius / background | `10` / `#E0DFDA` | `10` / `'#E0DFDA'` (`rel:354`) | match |
+| Relapse-Log | Art · sheet back | transform | `rotate(-2deg)` | `rotate: '-2deg'` (`rel:354`) | match |
+| Relapse-Log | Art · sheet front | left / top / width / height | `62` / `66` / `114` / `94` | `62` / `66` / `114` / `94` (`rel:359-362`) | match |
+| Relapse-Log | Art · sheet front | border-radius / background | `8` / `#F7F6F2` | `8` / `'#F7F6F2'` (`rel:363-364`) | match |
+| Relapse-Log | Art · sheet front | box-shadow | `0 0 0 1px rgba(0,0,0,0.05)` | `'0 0 0 1px rgba(0,0,0,0.05)'` (`rel:365`) | match |
+| Relapse-Log | Art · sheet front | transform | `rotate(-2deg)` | `rotate: '-2deg'` (`rel:366`) | match |
+| Relapse-Log | Art · spine | left / top / width / height | `118` / `68` / `2` / `88` | `118` / `68` / `2` / `88` (`rel:369`) | match |
+| Relapse-Log | Art · spine | background / border-radius / transform | `#E0DFDA` / none / `rotate(-2deg)` | `'#E0DFDA'` / none / `'-2deg'` (`rel:369`) | match |
+| Relapse-Log | Art · rule L1 | left / top / w / h / radius / background | `74` / `88` / `34` / `4` / `2` / `#E0DFDA` | identical (`rel:371`) | match |
+| Relapse-Log | Art · rule L2 | left / top / w / h / radius / background | `74` / `102` / `34` / `4` / `2` / `#E0DFDA` | identical (`rel:372`) | match |
+| Relapse-Log | Art · rule L3 | left / top / w / h / radius / background | `74` / `116` / `24` / `4` / `2` / `#E0DFDA` | identical (`rel:373`) | match |
+| Relapse-Log | Art · rule R1 | left / top / w / h / radius / background | `130` / `86` / `34` / `4` / `2` / `#E0DFDA` | identical (`rel:374`) | match |
+| Relapse-Log | Art · rule R2 | left / top / w / h / radius / background | `130` / `100` / `26` / `4` / `2` / `#E0DFDA` | identical (`rel:375`) | match |
+| Relapse-Log | Art · pen | left / top / width / height | `148` / `118` / `64` / `8` | `148` / `118` / `64` / `8` (`rel:380-383`) | match |
+| Relapse-Log | Art · pen | border-radius / background | `4` / `#55534E` | `4` / `'#55534E'` (`rel:384-385`) | match |
+| Relapse-Log | Art · pen | transform / transform-origin | `rotate(-28deg)` / `left center` | `'-28deg'` / `'left center'` (`rel:386-387`) | match |
+| Relapse-Log | Art · nib | left / top / w / h / radius / background | `204` / `86` / `8` / `8` / `2` / `#B4B1AB` | identical (`rel:390`) | match |
+| Relapse-Log | Art · nib | transform | `rotate(17deg)` | `'17deg'` (`rel:390`) | match |
+| Relapse-Log | Art · tick disc | left / top / width / height | `174` / `48` / `30` / `30` | `174` / `48` / `30` / `30` (`rel:395-398`) | match |
+| Relapse-Log | Art · tick disc | border-radius / background | `50%` / `#131313` | `15` / `'#131313'` (`rel:399-400`) | match |
+| Relapse-Log | Art · tick disc | align-items / justify-content | `center` / `center` | `center` / `center` (`rel:401-402`) | match |
+| Relapse-Log | Art · tick glyph | svg width / height / viewBox | `13` / `13` / `0 0 14 14` | `13` / `13` / `0 0 14 14` (`rel:404`) | match |
+| Relapse-Log | Art · tick glyph | path `d` | `M2.5 7.5l3 3 6-7` | `M2.5 7.5l3 3 6-7` (`rel:405`) | match |
+| Relapse-Log | Art · tick glyph | stroke / stroke-width / fill | `#F4F3F0` / `2.2` / `none` | `PAPER = '#F4F3F0'` / `2.2` / `none` (`rel:41`, `rel:405`) | match |
+| Relapse-Log | Art · tick glyph | stroke-linecap / linejoin | `round` / `round` | `round` / `round` (`rel:405`) | match |
+| Relapse-Log | Art | paint order | glow, sheet-back, sheet-front, spine, L1, L2, L3, R1, R2, pen, nib, tick (12) | identical 12 in the same order (`rel:342-407`) | match |
+| Relapse-Log | Headline | left / right / top / align | `0` / `0` / `398` / `center` | `0` / `0` / `398` / `center` (`rel:124`) | match |
+| Relapse-Log | Headline | font-size / weight / letter-spacing | `23px` / `500` / `0.1px` | `23` / `sans('500')` / `0.1` (`rel:124`) | match |
+| Relapse-Log | Headline | colour | `#1D1C1A` | `INK = '#1D1C1A'` (`rel:42`, `rel:124`) | match |
+| Relapse-Log | Headline | line-height | not declared | none — dropped (`AppText.tsx:139`) | match |
+| Relapse-Log | Headline | text | `It happened. That's data.` (ASCII `'`) | `It happened. That's data.` — ASCII apostrophe verified (`rel:47`) | match |
+| Relapse-Log | Body | left / right / top / align | `44` / `44` / `444` / `center` | `44` / `44` / `444` / `center` (`rel:129`) | match |
+| Relapse-Log | Body | font-size / weight / line-height / colour | `15.5px` / `400` / `23px` / `#55534E` | `15.5` / `sans('400')` / `23` / `MUTED` (`rel:129`) | match |
+| Relapse-Log | Body | text-wrap | `pretty` | web only | match (native n/a) |
+| Relapse-Log | Body | text | `Same calm screen as a win. Note what set it off while it's fresh — the pattern is the prize, not the streak.` | identical; U+2014 and ASCII `'` verified (`rel:48`) | match |
+| Relapse-Log | Pill | left / right / bottom / height / radius / background | `24` / `24` / `88` / `54` / `27` / `#131313` | identical (`rel:138-144`) | match |
+| Relapse-Log | Pill label | font-size / weight / letter-spacing / colour | `17px` / `600` / `0.2px` / `#FFFFFF` | identical (`rel:148`) | match |
+| Relapse-Log | Pill label | text | `Log the slip` | `Log the slip` (`rel:49`) | match |
+| Relapse-Log | Footer link | left / right / bottom / align | `0` / `0` / `44` / `center` | `0` / `0` / `44` / `alignItems center` (`rel:156`) | match |
+| Relapse-Log | Footer link | font-size / weight / colour | `15px` / `500` / `#8B8882` | `15` / `sans('500')` / `'#8B8882'` (`rel:157`) | match |
+| Relapse-Log | Footer link | text | `Back to the wave tool` | `Back to the wave tool` (`rel:157`) | match |
+| Relapse-Log | Close X | present / right / top / path / stroke / width / cap | yes / `22` / `24` / `M3 3l14 14M17 3L3 17` / `#55534E` / `2` / `round` | identical (`rel:111-113`) | match |
+| Relapse-Log | — | progress pager | not drawn | not rendered (`rel:90-160`) | match |
+
+---
+
+## 8 · Relapse-Twice → `Relapse` index 1 + `TwiceArt` (`rel:413-473`)
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Relapse-Twice | Art box | left | `76` | `'50%'` + `marginLeft: -120` = `76.5` at 393pt (`rel:118`) | **MISMATCH** (+0.5pt; width-dependent) |
+| Relapse-Twice | Art box | top / width / height | `180` / `240` / `200` | `180` / `240` / `200` (`rel:118`, `rel:415`) | match |
+| Relapse-Twice | Art inner | overflow | `hidden` | `overflow: 'hidden'` (`rel:415`) | match |
+| Relapse-Twice | Art · warm glow | left / top / width / height | `70` / `52` / `130` / `130` | `70` / `52` / `130` / `130` (`rel:417`) | match |
+| Relapse-Twice | Art · warm glow | border-radius | `50%` | `Ellipse rx/ry 65` (`rel:425`) | match |
+| Relapse-Twice | Art · warm glow | stop 1 | `rgba(226,186,120,0.38)` @ `0` | `#E2BA78` @ `0.38`, offset `0` (`rel:420`) | match |
+| Relapse-Twice | Art · warm glow | stop 2 | `rgba(226,186,120,0)` @ `74%` | `#E2BA78` @ `0`, offset `0.74` (`rel:422`) | match |
+| Relapse-Twice | Art · warm glow | extra stops | none (2-stop ramp) | added mid stop `0.17` @ `0.37` (`rel:421`); the design's ramp interpolates to `0.19` there | MISMATCH* |
+| Relapse-Twice | Art · warm glow | filter | `blur(4px)` | none (`rel:416`) | MISMATCH* |
+| Relapse-Twice | Art · moon shadow | left / top / w / h / radius / background | `20` / `14` / `34` / `34` / `50%` / `#DCDED8` | `20` / `14` / `34` / `34` / `17` / `'#DCDED8'` (`rel:428`) | match |
+| Relapse-Twice | Art · moon | left / top / w / h / radius / background | `12` / `8` / `34` / `34` / `50%` / `#F4F3F0` | `12` / `8` / `34` / `34` / `17` / `PAPER` (`rel:429`) | match |
+| Relapse-Twice | Art · fallen shadow | left / top / width / height | `34` / `158` / `78` / `16` | `34` / `158` / `78` / `16` (`rel:432`) | match |
+| Relapse-Twice | Art · fallen shadow | border-radius | `50%` | `Ellipse rx 39 ry 8` (`rel:440`) | match |
+| Relapse-Twice | Art · fallen shadow | background | solid `rgba(0,0,0,0.10)` | radial ramp `#000` `0.1` @ `0` → `0.05` @ `0.6` → `0` @ `1` (`rel:435-437`) | MISMATCH* |
+| Relapse-Twice | Art · fallen shadow | filter | `blur(5px)` | none (`rel:431`) | MISMATCH* |
+| Relapse-Twice | Art · fallen domino | left / top / width / height | `42` / `118` / `18` / `66` | `42` / `118` / `18` / `66` (`rel:446-449`) | match |
+| Relapse-Twice | Art · fallen domino | border-radius / background | `6` / `#C6C5C0` | `6` / `'#C6C5C0'` (`rel:450-451`) | match |
+| Relapse-Twice | Art · fallen domino | transform / transform-origin | `rotate(76deg)` / `bottom right` | `'76deg'` / `'bottom right'` (`rel:452-453`) | match |
+| Relapse-Twice | Art · mid domino | left / top / w / h / radius / background | `112` / `144` / `14` / `28` / `4` / `#B4B1AB` | identical (`rel:456`) | match |
+| Relapse-Twice | Art · standing shadow | left / top / width / height | `150` / `162` / `44` / `12` | `150` / `162` / `44` / `12` (`rel:458`) | match |
+| Relapse-Twice | Art · standing shadow | border-radius | `50%` | `Ellipse rx 22 ry 6` (`rel:466`) | match |
+| Relapse-Twice | Art · standing shadow | background | solid `rgba(0,0,0,0.14)` | radial ramp `0.14` @ `0` → `0.07` @ `0.6` → `0` @ `1` (`rel:461-463`) | MISMATCH* |
+| Relapse-Twice | Art · standing shadow | filter | `blur(4px)` | none (`rel:431`) | MISMATCH* |
+| Relapse-Twice | Art · standing domino | left / top / w / h / radius / background | `152` / `100` / `20` / `68` / `6` / `#3A3934` | identical (`rel:469`) | match |
+| Relapse-Twice | Art · highlight | left / top / w / h / radius / background | `157` / `110` / `10` / `3` / `2` / `rgba(244,243,240,0.35)` | identical (`rel:470`) | match |
+| Relapse-Twice | Art | paint order | glow, moon-shadow, moon, fallen shadow, fallen domino, mid domino, standing shadow, standing domino, highlight (9) | identical 9 in the same order (`rel:417-470`) | match |
+| Relapse-Twice | Headline | left / right / top / align | `0` / `0` / `398` / `center` | identical (`rel:124`) | match |
+| Relapse-Twice | Headline | font-size / weight / letter-spacing / colour | `23px` / `500` / `0.1px` / `#1D1C1A` | identical (`rel:124`) | match |
+| Relapse-Twice | Headline | text | `Don't fail twice.` (ASCII `'`) | `Don't fail twice.` — ASCII apostrophe verified (`rel:52`) | match |
+| Relapse-Twice | Body | left / right / top / align | `44` / `44` / `444` / `center` | identical (`rel:129`) | match |
+| Relapse-Twice | Body | font-size / weight / line-height / colour | `15.5px` / `400` / `23px` / `#55534E` | identical (`rel:129`) | match |
+| Relapse-Twice | Body | text | `One slip is a data point · two in a row is a pattern` (`&middot;` = U+00B7) | identical, U+00B7 verified (`rel:53`) | match |
+| Relapse-Twice | Pill | left / right / bottom / height / radius / background | `24` / `24` / `88` / `54` / `27` / `#131313` | identical (`rel:138-144`) | match |
+| Relapse-Twice | Pill label | font-size / weight / letter-spacing / colour / text | `17px` / `600` / `0.2px` / `#FFFFFF` / `Continue` | identical (`rel:54`, `rel:148`) | match |
+| Relapse-Twice | Close X | present / right / top | yes / `22` / `24` | rendered for index 0 and 1 (`rel:106-115`) | match |
+| Relapse-Twice | — | footer link | not drawn | gated to `index === 0` (`rel:151`) | match |
+| Relapse-Twice | — | progress pager | not drawn | not rendered | match |
+
+---
+
+## 9 · Relapse-Begin → `BeginAgain` + `BeginSky` (`rel:166-293`)
+
+Background layer is frame-absolute; the text layer sits under the safe-area top, so its tops are canvas − 54.
+
+| Frame | Element | Property | Design value | Current app value | match / MISMATCH |
+|---|---|---|---|---|---|
+| Relapse-Begin | Root | background | `#F0EFEB` | `'#F0EFEB'` (`rel:168`) | match |
+| Relapse-Begin | Field layer | inset / overflow | `left 0 top 0 right 0 bottom 0` / `hidden` | identical / `'hidden'` (`rel:234`) | match |
+| Relapse-Begin | Field layer | gradient angle | `180deg` | vertical default (`rel:235-239`) | match |
+| Relapse-Begin | Field layer | stop 1 | `#F2E3D8` @ `0%` | `'#F2E3D8'` @ `0` (`rel:236-237`) | match |
+| Relapse-Begin | Field layer | stop 2 | `#E4C6A8` @ `39%` | `'#E4C6A8'` @ `0.39` (`rel:236-237`) | match |
+| Relapse-Begin | Field layer | stop 3 | `#FBFAF7` @ `65%` | `'#FBFAF7'` @ `0.65` (`rel:236-237`) | match |
+| Relapse-Begin | Field layer | stop 4 | `#F0EFEB` @ `82%` | `'#F0EFEB'` @ `0.82` (`rel:236-237`) | match |
+| Relapse-Begin | Shaft A | left / top / width / height / opacity / rotate | `-30` / `-40` / `150` / `420` / `0.2` / `24deg` | identical (`rel:241`) | match |
+| Relapse-Begin | Shaft A | transform-origin | `top center` | `'top center'` (`rel:318`) | match |
+| Relapse-Begin | Shaft A | background-image | `url('noise-dark.png')` | `assets/images/noise-dark.png` (`rel:39`, `rel:330`) | match |
+| Relapse-Begin | Shaft A | mask-image | `linear-gradient(180deg, #000 30%, transparent)` | SVG luminance mask, white @ `0.3` → black @ `1` (`rel:321-327`) | MISMATCH* |
+| Relapse-Begin | Shaft B | left / top / width / height / opacity / rotate | `130` / `-60` / `140` / `430` / `0.24` / `6deg` | identical (`rel:242`) | match |
+| Relapse-Begin | Shaft C | left / top / width / height / opacity / rotate | `290` / `-40` / `150` / `420` / `0.2` / `-14deg` | identical (`rel:243`) | match |
+| Relapse-Begin | Horizon clip | left / right / top / height / overflow | `0` / `0` / `0` / `558` / `hidden` | identical (`rel:246`) | match |
+| Relapse-Begin | Sun | left | `96` | `'50%'` + `marginLeft: -100` = `96.5` at 393pt (`rel:250-254`) | **MISMATCH** (+0.5pt; width-dependent) |
+| Relapse-Begin | Sun | top / width / height | `368` / `200` / `200` | `368` / `200` / `200` (`rel:250-253`) | match |
+| Relapse-Begin | Sun | border-radius / overflow | `50%` / `hidden` | `100` / `'hidden'` (`rel:255-256`) | match |
+| Relapse-Begin | Sun | gradient centre | `circle at 50% 30%` | `cx 100 cy 60` userSpaceOnUse in a 200 box (`rel:261`) | match |
+| Relapse-Begin | Sun | gradient extent | farthest-corner = `172.05` | `r = 172.05` (`rel:261`) | match |
+| Relapse-Begin | Sun | stop 1 / 2 / 3 | `#FBF2E2` @ `0` / `#F0DBB4` @ `65%` / `#DFC08B` @ `100%` | `#FBF2E2` @ `0` / `#F0DBB4` @ `0.65` / `#DFC08B` @ `1` (`rel:262-264`) | match |
+| Relapse-Begin | Sun · grain | inset / image / opacity | `0` / `noise-dark.png` / `0.5` | full-bleed / `noiseDark` / `0.5` (`rel:269`) | match |
+| Relapse-Begin | Halo | left | `56` | `'50%'` + `marginLeft: -140` = `56.5` at 393pt (`rel:273`) | **MISMATCH** (+0.5pt; width-dependent) |
+| Relapse-Begin | Halo | top / width / height | `328` / `280` / `280` | `328` / `280` / `280` (`rel:273`) | match |
+| Relapse-Begin | Halo | border-radius | `50%` | `Ellipse rx/ry 140` (`rel:280`) | match |
+| Relapse-Begin | Halo | gradient type | `radial-gradient(closest-side, …)` | `cx/cy 50%`, `rx/ry 50%` (`rel:275`) | match |
+| Relapse-Begin | Halo | stop 1 | `rgba(250,236,210,0.5)` @ `0` | `#FAECD2` @ `0.5`, offset `0` (`rel:276`) | match |
+| Relapse-Begin | Halo | stop 2 | `rgba(250,236,210,0)` @ `72%` | `#FAECD2` @ `0`, offset `0.72` (`rel:277`) | match |
+| Relapse-Begin | Halo | extra stops | none (2-stop ramp) | none — 2 stops (`rel:272` documents why) | match |
+| Relapse-Begin | Halo | filter | none declared | none | match |
+| Relapse-Begin | Sun / halo | paint order | sun first, halo over it | sun `rel:247`, halo `rel:273` | match |
+| Relapse-Begin | Horizon scrim | left / right / top / height | `0` / `0` / `542` / `32` | `0` / `0` / `542` / `32` (`rel:287`) | match |
+| Relapse-Begin | Horizon scrim | stops | `rgba(255,255,255,0)` @ `0%`, `rgba(255,255,255,0.55)` @ `50%`, `rgba(255,255,255,0)` @ `100%` | same three, `locations [0, 0.5, 1]` (`rel:285-286`) | match |
+| Relapse-Begin | Page grain | inset / image / opacity | `0` / `noise-dark.png` / `0.10` | full-bleed / `noiseDark` / `0.1` (`rel:290`) | match |
+| Relapse-Begin | Back control | position / left | `absolute` / `16` | `absolute` / `16` (`rel:186`) | match |
+| Relapse-Begin | Back control | top | `64` (frame) → app-equivalent `10` | `10` under the safe-area top (`rel:186`) | match |
+| Relapse-Begin | Back control | display / align-items / gap | `flex` / `center` / `9` | `row` / `center` / `9` (`rel:186`) | match |
+| Relapse-Begin | Back control | z-index | `5` | later sibling than `BeginSky` (`rel:170`, `rel:181`) | match |
+| Relapse-Begin | Back chevron | svg width / height / viewBox | `11` / `19` / `0 0 11 19` | `11` / `19` / `0 0 11 19` (`rel:187`) | match |
+| Relapse-Begin | Back chevron | path `d` | `M9.5 1.5L2 9.5l7.5 8` | `M9.5 1.5L2 9.5l7.5 8` (`rel:188`) | match |
+| Relapse-Begin | Back chevron | fill / stroke / stroke-width | `none` / `#2A2924` / `2.4` | `none` / `'#2A2924'` / `2.4` (`rel:188`) | match |
+| Relapse-Begin | Back chevron | stroke-linecap / linejoin | `round` / `round` | `round` / `round` (`rel:188`) | match |
+| Relapse-Begin | Back label | font-size / weight / colour | `17px` / `400` / `#2A2924` | `17` / `sans('400')` / `'#2A2924'` (`rel:190`) | match |
+| Relapse-Begin | Back label | text | `Back` | `Back` (`rel:190`) | match |
+| Relapse-Begin | Headline | left / right | `40` / `40` | `40` / `40` (`rel:195`) | match |
+| Relapse-Begin | Headline | top | `128` (frame) → app-equivalent `74` | `74` (`rel:195`) | match |
+| Relapse-Begin | Headline | text-align / font-size / weight | `center` / `22px` / `500` | `center` / `22` / `sans('500')` (`rel:194-195`) | match |
+| Relapse-Begin | Headline | line-height | `32px` | `32` (`rel:195`) | match |
+| Relapse-Begin | Headline | colour | `#1D1C1A` | `INK` (`rel:195`) | match |
+| Relapse-Begin | Headline | z-index | `5` | later sibling (`rel:181`) | match |
+| Relapse-Begin | Headline | text | `Begin again.` | `Begin again.` (`rel:57`) | match |
+| Relapse-Begin | Sub | left / right | `30` / `30` | `30` / `30` (`rel:200`) | match |
+| Relapse-Begin | Sub | top | `204` (frame) → app-equivalent `150` | `150` (`rel:200`) | match |
+| Relapse-Begin | Sub | text-align / font-size / weight / colour | `center` / `14px` / `400` / `#55534E` | `center` / `14` / `sans('400')` / `MUTED` (`rel:199-200`) | match |
+| Relapse-Begin | Sub | z-index | `5` | later sibling (`rel:181`) | match |
+| Relapse-Begin | Sub | text | `Logged — slip · the campaign didn't reset` (U+2014, U+00B7, ASCII `'`) | identical — all three code points verified (`rel:58`) | match |
+| Relapse-Begin | Pill | left | `16` | `16` (`rel:212`) | match |
+| Relapse-Begin | Pill | width | `361` (→ right inset 16) | `right: 16` (`rel:213`) | match |
+| Relapse-Begin | Pill | top | `756` (+48 = 804 of 852) → `bottom 48` | `bottom: 48` (`rel:214`) | match |
+| Relapse-Begin | Pill | height / border-radius / background | `48` / `25` / `#131313` | `48` / `25` / `'#131313'` (`rel:215-218`) | match |
+| Relapse-Begin | Pill | align-items / justify-content | `center` / `center` | `center` / `center` (`rel:219-220`) | match |
+| Relapse-Begin | Pill | z-index | `5` | last sibling of the root (`rel:207`) | match |
+| Relapse-Begin | Pill label | font-size / weight / letter-spacing / colour | `17.5px` / `600` / `0.2px` / `#FFFFFF` | `17.5` / `sans('600')` / `0.2` / `'#FFFFFF'` (`rel:222`) | match |
+| Relapse-Begin | Pill label | text | `Start again` | `Start again` (`rel:59`) | match |
+| Relapse-Begin | — | close X | not drawn | not rendered (`BeginAgain` has no close) | match |
+| Relapse-Begin | — | paper sheet | none (frame breaks the sheet) | none — full-bleed (`rel:168`) | match |
+
+---
+
+# Findings
+
+**516 rows across 9 frames** — 479 `match`, 10 `MISMATCH` (actionable, 5 distinct defects), 25 `MISMATCH*` (RN cannot express the CSS), 2 `n/a` (canvas device chrome).
+
+## A · Actionable mismatches (5 defects, 10 rows)
+
+1. **Pressed-state scale is 0.96, the canvas draws 0.99.**
+   `src/components/ui/press-scale.tsx:25` — `withTiming(0.96, …)`.
+   Design: `Cue-Intro-Modal.html:290` `style-active="transform:scale(0.99);"` on the `Start the interrupt` pill (the only active state any of the nine frames draws).
+   The 0.96 is applied by `PressScale` to every control on all nine frames, so the whole set presses 3× deeper than the canvas.
+
+2. **`Relapse-Log` / `Relapse-Twice` art box is centred instead of pinned to the canvas's left.**
+   `src/app/relapse.tsx:118` — `left: '50%', top: 180, marginLeft: -120` → `76.5` on a 393pt screen.
+   Design: `Relapse-Log.html:86` / `Relapse-Twice.html:86` — `left:76px`.
+   The design box is deliberately 0.5pt left of centre (76 left / 77 right). The urge kit keeps the literal (`urge:1333` `left: 76`), so the two files disagree; on a 430pt device the relapse art moves to 95 while the urge art stays at 76.
+
+3. **`Relapse-Begin` sun is centred instead of pinned.**
+   `src/app/relapse.tsx:250-254` — `left: '50%', marginLeft: -100` → `96.5` on a 393pt screen.
+   Design: `Relapse-Begin.html:73` — `left:96px`. `DonePage` keeps the literal (`urge:2142` `left: 96`).
+
+4. **`Relapse-Begin` halo is centred instead of pinned.**
+   `src/app/relapse.tsx:273` — `left: '50%', marginLeft: -140` → `56.5` on a 393pt screen.
+   Design: `Relapse-Begin.html:91` — `left:56px`. `DonePage` keeps the literal (`urge:2156` `left: 56`).
+
+5. **`overflow: hidden` missing on the urge art wrappers.**
+   `src/components/urge/index.tsx:711` (IntroArt 240×250) and `src/components/urge/index.tsx:1333` (MovePage 240×200) render with the default `visible`.
+   Design: every art box carries an `inset:0; overflow:hidden` inner div (`Cue-Intro-Modal.html:105`, `Cue-Set-Confirmation.html:126`, `Surf-Step-1.html:126`, `Surf-Step-3.html:126`).
+   Inert today — I checked every child of all four boxes and none exceeds its frame — but `relapse.tsx:340` / `:415` do set it, so the clip contract is inconsistent between the two files.
+
+## B · Port limitations (25 rows marked `MISMATCH*`) — no code change recommended
+
+React Native has no `filter: blur()` and no CSS `mask-image`; the app substitutes gradient falloff and SVG luminance masks. Recorded so the divergence is on the record, not because the port is wrong.
+
+6. `blur(8px)` dropped — Cue-Intro halo (`urge:765`).
+7. `blur(4px)` dropped — warm/cool washes on Cue-Intro (`urge:712`), Cue-Set (`urge:1221`), Surf-Step-1 (`urge:1254`), Surf-Step-3 (`urge:1294`), Relapse-Log (`rel:342`), Relapse-Twice (`rel:417`).
+8. `blur(1px)` dropped on the Surf-Step-3 droplet (`urge:1298`) — the design's only 1px blur; the app draws a hard-edged 14pt circle. The most visible of the blur drops because the shape is small and solid.
+9. Solid blurred ellipses redrawn as radial ramps — Cue-Intro ground shadow `rgba(0,0,0,0.09)` (`urge:732`), Cue-Set light pool `rgba(226,186,120,0.22)` (`urge:1226`), Surf-Step-1 pool + 2 shadows (`urge:1278`, `urge:1280`, `urge:1281`), Surf-Step-3 shadow (`urge:1316`), Relapse-Twice 2 shadows (`rel:432`, `rel:458`).
+10. `mask-image: linear-gradient(180deg,#000 30%,transparent)` on all six dawn shafts replaced by an SVG luminance mask (`urge:2109-2114`, `rel:321-327`). Stops are transcribed identically (`0.3` white → `1` black).
+11. **Inconsistent blur approximation between the two files.** `SoftBlob` (`urge:660-690`) uses the design's own 2 stops; `relapse.tsx` adds a third mid stop — `0.14 @ 0.37` on the slip glow (`rel:346`, design's ramp interpolates to `0.16`) and `0.17 @ 0.37` on the twice glow (`rel:421`, design interpolates to `0.19`). Sub-2% alpha divergence, but it is a different recipe for the same CSS.
+
+## C · Canvas facts recorded, not counted as mismatches
+
+12. The canvas's 54pt status bar vs a real 393×852 device's 59pt top inset puts every in-sheet element 5pt lower on device than on canvas. Both `PaperSheet` (`urge:587`) and `relapse.tsx:99` anchor to `insets.top − 2`, which is the correct reading of the design's `top:52`. Bottom-anchored elements (`bottom:88`, `bottom:44`, `bottom:48`, the `bottom:56` intro pill) land pixel-identically.
+13. `Surf-Complete` sun gradient extent is `86%` (`urge:2146`) where the exact farthest-corner value is `86.02%` — 0.05pt short of the design's derived radius. `relapse.tsx:261` uses the exact `172.05`. Sub-pixel; noted only because the two files derive the same value differently.
+14. Two frames draw a state the app picks dynamically: `Surf-Step-1` draws the `place = 'bed'` branch of `MOVE_STEP` (`urge:569`) and `Surf-Complete` draws `×3` of `×{count}` (`urge:2171`). Both strings are character-identical to the frames; the app's other four `MOVE_STEP` branches and the `bed` variant of `SCREEN_STEP` (`urge:561`) are copy the frames do not draw.
+
+## D · No mismatch found
+
+Every other row above is a `match`, including: all 9 sheets and grounds, all 8 close/back controls (7 close X, 1 back chevron), all 3 pagers, both dawn fields and both suns/halos/scrims/grain layers, the 5-dot strength scale with its selected-state double ring, all 77 decorative art shapes across the six illustrated frames (paint order verified element-for-element on every one: 10 / 12 / 17 / 17 / 12 / 9), every headline, body, pill and skip link with its size, weight, leading, tracking and colour, and every copy string down to the code point (U+2014 em dash, U+00B7 middot, U+00D7 times, ASCII apostrophes — verified by byte inspection of both the frames and the source).
+

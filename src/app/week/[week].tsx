@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useId, useState } from 'react';
@@ -7,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient as SvgLinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
 import { WeekScene, WEEK_SCENE_HEIGHT } from '@/components/journey/WeekScene';
-import { AppText, PressScale } from '@/components/ui';
+import { AppText, Grain, PressScale } from '@/components/ui';
 import { weekFor, type Curriculum84Lesson } from '@/content/curriculum84';
 import { useCurrentUser, useLessonProgressMap } from '@/lib/backend';
 import { sans } from '@/lib/theme';
@@ -61,7 +60,7 @@ export default function WeekOverview() {
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         {/* canvas 64 — a chevron and nothing else; these frames carry no word */}

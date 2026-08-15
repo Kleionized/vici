@@ -1,10 +1,9 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, BackGlyph, LoadingView, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, Grain, LoadingView, PressScale } from '@/components/ui';
 import { useJournalEntries } from '@/lib/backend';
 import { colors, fonts, sans } from '@/lib/theme';
 
@@ -41,7 +40,7 @@ export default function Journal() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>

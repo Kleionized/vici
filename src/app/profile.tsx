@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import type { ReactNode } from 'react';
@@ -7,7 +6,7 @@ import { Modal, ScrollView, TextInput, View, type ViewStyle } from 'react-native
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, BackGlyph, ChevronGlyph, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, ChevronGlyph, Grain, PressScale } from '@/components/ui';
 import { type KeepsakeSceneKey, KKMedallion } from '@/components/keepsakes/Medallion';
 import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLifeMap, useUpdateProfile } from '@/lib/backend';
@@ -89,7 +88,7 @@ export default function Profile() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Image source={noiseDark} contentFit="cover" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.07 }} pointerEvents="none" />
+      <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         {/* canvas 64 and 114 — the block runs to the monogram at 112. Save is
