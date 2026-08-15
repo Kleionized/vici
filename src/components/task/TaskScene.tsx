@@ -145,13 +145,13 @@ function SvgChild({ child, index }: { child: TaskSvgChild; index: number }) {
   }
 }
 
-function Layer({ layer, index, id }: { layer: TaskSceneLayer; index: number; id: string }) {
+function Layer({ layer, index, id, box }: { layer: TaskSceneLayer; index: number; id: string; box: { w: number; h: number } }) {
   if (layer.kind === 'svg') {
     const { attrs, children } = layer.svg;
     return (
       <Svg
-        width={layer.width ?? TASK_SCENE_W}
-        height={layer.height ?? TASK_SCENE_H}
+        width={layer.width ?? box.w}
+        height={layer.height ?? box.h}
         viewBox={layer.viewBox ?? attrs.viewBox}
         style={{ position: 'absolute', left: layer.left ?? 0, top: layer.top ?? 0 }}>
         {children.map((child, i) => (
@@ -163,7 +163,7 @@ function Layer({ layer, index, id }: { layer: TaskSceneLayer; index: number; id:
 
   const w = layer.width ?? 0;
   const h = layer.height ?? 0;
-  const x = layer.left ?? (layer.right != null ? TASK_SCENE_W - layer.right - w : 0);
+  const x = layer.left ?? (layer.right != null ? box.w - layer.right - w : 0);
   const y = layer.top ?? 0;
   const r = radii(layer.radius, w, h);
   const stops = layer.background ? gradientStops(layer.background) : null;
@@ -173,7 +173,7 @@ function Layer({ layer, index, id }: { layer: TaskSceneLayer; index: number; id:
   const isRadial = Boolean(layer.background && /radial|conic/.test(layer.background));
 
   return (
-    <Svg width={TASK_SCENE_W} height={TASK_SCENE_H} style={{ position: 'absolute', left: 0, top: 0 }} opacity={layer.opacity}>
+    <Svg width={box.w} height={box.h} style={{ position: 'absolute', left: 0, top: 0 }} opacity={layer.opacity}>
       {stops || soft ? (
         <Defs>
           {isRadial || soft ? (
@@ -201,18 +201,26 @@ function Layer({ layer, index, id }: { layer: TaskSceneLayer; index: number; id:
   );
 }
 
-export function TaskScene({ day, width }: { day: number; width: number }) {
+/**
+ * Any transcribed scene, drawn into the box the canvas composed it against and
+ * scaled to whatever width it is given. The lesson-card plates are the same
+ * construction in a 240 × 200 box, so they share this renderer.
+ */
+export function Scene({ layers, boxW, boxH, width }: { layers: TaskSceneLayer[] | undefined; boxW: number; boxH: number; width: number }) {
   const id = useId().replace(/:/g, '');
-  const layers = TASK_SCENES[day];
   if (!layers) return null;
-  const scale = width / TASK_SCENE_W;
+  const scale = width / boxW;
   return (
-    <View style={{ width, height: TASK_SCENE_H * scale, overflow: 'hidden' }} pointerEvents="none">
-      <View style={{ width: TASK_SCENE_W, height: TASK_SCENE_H, transform: [{ scale }], transformOrigin: 'top left' }}>
+    <View style={{ width, height: boxH * scale, overflow: 'hidden' }} pointerEvents="none">
+      <View style={{ width: boxW, height: boxH, transform: [{ scale }], transformOrigin: 'top left' }}>
         {layers.map((layer, index) => (
-          <Layer key={index} layer={layer} index={index} id={id} />
+          <Layer key={index} layer={layer} index={index} id={id} box={{ w: boxW, h: boxH }} />
         ))}
       </View>
     </View>
   );
+}
+
+export function TaskScene({ day, width }: { day: number; width: number }) {
+  return <Scene layers={TASK_SCENES[day]} boxW={TASK_SCENE_W} boxH={TASK_SCENE_H} width={width} />;
 }

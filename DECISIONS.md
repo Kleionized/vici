@@ -843,3 +843,20 @@ Six second-reader audits ran over the screens this run built by hand
   rgba(0,0,0,0.05)` ring on the boat hull and the `0 1px 2px rgba(0,0,0,0.06)`
   under the sail. The ring is a zero-blur zero-spread shadow and goes through as
   an SVG stroke exactly; the sail's has a 2px blur and stays a documented gap.
+
+- **D-079 · The lesson card is a sheet, and two of its tops were 54pt out.**
+  `Lesson NN` draws `#EDECE7` behind a board that starts at canvas 52 with a
+  24pt top radius, so its `top` values are already sheet-relative and owe the
+  status bar nothing. The build subtracted 54 from the title and the summary
+  while using the raw value for the eyebrow and the rail — inconsistent, and
+  wrong on all 84 cards. Both are now the frame's own 392/396 and 448, the
+  sheet chrome is drawn, `edges` drops to `['top']` so the device inset stops
+  lifting the two bottom-anchored controls, and the grain goes: these frames
+  contain no noise layer at all, unlike the task frames beside them.
+
+- **D-080 · The 83 lesson-card plates were missing entirely, and are
+  transcribed.** Each card draws a 240 × 200 illustration at sheet (76, 150) —
+  1,302 layers across the 83 — built exactly as the task scenes are. The task
+  extractor was pointed at the smaller box (`gen-lesson-art.mjs`) and the task
+  renderer generalised to take its box as a prop, so the plates cost one
+  extraction rather than 83 transcriptions.

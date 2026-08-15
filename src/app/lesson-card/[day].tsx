@@ -4,23 +4,24 @@ import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Grain, PressScale } from '@/components/ui';
+import { AppText, PressScale } from '@/components/ui';
+import { Scene } from '@/components/task/TaskScene';
 import { lessonForDay, weekFor } from '@/content/curriculum84';
+import { LESSON_PLATES, LESSON_PLATE_H, LESSON_PLATE_W } from '@/content/lessonPlates';
 import { sans } from '@/lib/theme';
 
 /**
  * `Lesson 01` … `Lesson 84` · the lesson's own card.
  *
- * The board a week row opens: which lesson this is, its title, the one line
- * that says what it is for, and the way in. The seven-dot rail counts the
- * lesson's place inside its week, not the whole course.
+ * The board a week row opens: which lesson this is, its picture, its title, the
+ * one line that says what it is for, and the way in. The seven-dot rail counts
+ * the lesson's place inside its week, not the whole course.
  *
- * Canvas tops include the 54pt status bar the app never builds, so every number
- * below is the canvas value less 54; the ones anchored to `bottom` are the
- * canvas's own.
+ * This frame is a **sheet**: `#EDECE7` behind, the board itself starting at
+ * canvas 52 with a 24pt top radius. Every `top` below is therefore already
+ * sheet-relative and owes the status bar nothing — the 54 the rest of the
+ * bundle subtracts has been paid by the sheet's own offset.
  */
-
-const noiseDark = require('../../../assets/images/noise-dark.png');
 
 export default function LessonCard() {
   const router = useRouter();
@@ -34,11 +35,11 @@ export default function LessonCard() {
   const indexInWeek = week.lessons.findIndex((l) => l.day === lesson.day);
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
+    // the sheet's ground shows only in the status bar; the frame draws no grain
+    <View style={{ flex: 1, backgroundColor: '#EDECE7' }}>
       <StatusBar style="dark" />
-      <Grain source={noiseDark} opacity={0.07} />
-
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+        <View style={{ flex: 1, backgroundColor: '#F4F3F0', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden' }}>
         {/* canvas right 22, top 24 — a close cross, not a chevron */}
         <PressScale
           onPress={() => (router.canGoBack() ? router.back() : router.replace(`/week/${lesson.week}`))}
@@ -73,7 +74,12 @@ export default function LessonCard() {
           {`LESSON ${String(lesson.day).padStart(2, '0')} · WEEK ${week.roman}`}
         </AppText>
 
-        {/* canvas 392 for a 23/30 title, 396 for the 20/27 one long titles take */}
+        {/* sheet 150 — the 240 x 200 plate, transcribed off the frame */}
+        <View style={{ position: 'absolute', left: 76, top: 150, width: 240, height: 200, overflow: 'hidden' }}>
+          <Scene layers={LESSON_PLATES[lesson.day]} boxW={LESSON_PLATE_W} boxH={LESSON_PLATE_H} width={240} />
+        </View>
+
+        {/* sheet 392 for a 23/30 title, 396 for the 20/27 one long titles take */}
         <AppText
           center
           style={[
@@ -82,7 +88,7 @@ export default function LessonCard() {
               position: 'absolute',
               left: 36,
               right: 36,
-              top: (lesson.titleSize === 20 ? 396 : 392) - 54,
+              top: lesson.titleSize === 20 ? 396 : 392,
               fontSize: lesson.titleSize,
               lineHeight: lesson.titleSize === 20 ? 27 : 30,
               letterSpacing: 0.1,
@@ -92,8 +98,8 @@ export default function LessonCard() {
           {lesson.title}
         </AppText>
 
-        {/* canvas 448 */}
-        <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 394, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
+        {/* sheet 448 */}
+        <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 448, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
           {lesson.summary}
         </AppText>
 
@@ -122,6 +128,7 @@ export default function LessonCard() {
           style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
           <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>{`Back to Week ${week.roman}`}</AppText>
         </PressScale>
+        </View>
       </SafeAreaView>
     </View>
   );
