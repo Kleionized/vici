@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 74 · IMPLEMENTED: 126
+**777 rows.** NOT_STARTED: 577 · SPEC_EXTRACTED: 69 · IMPLEMENTED: 131
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -59,11 +59,11 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Urge Log When | src/app/urge-log.tsx | NOT_STARTED | — | 91G · Urge Log — When |
 | Email Login | Urge Log Done | src/app/urge-log.tsx | NOT_STARTED | — | 91H · Urge Log — Logged |
 | Email Login | Settings | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92 · Settings |
-| Email Login | Edit Profile | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93 · Edit Profile |
-| Email Login | Sheet Profile Photo | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93B &middot; Profile photo sheet |
-| Email Login | Sheet Edit Name | src/app/profile.tsx | SPEC_EXTRACTED | 2026-08-15 | 93C &middot; Edit name sheet |
-| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | SPEC_EXTRACTED | 2026-08-15 | 93D &middot; Weekly report |
-| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | SPEC_EXTRACTED | 2026-08-15 | 92B &middot; Night check-in time |
+| Email Login | Edit Profile | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93 · Edit Profile |
+| Email Login | Sheet Profile Photo | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93B &middot; Profile photo sheet |
+| Email Login | Sheet Edit Name | src/app/profile.tsx | IMPLEMENTED | 2026-08-15 | 93C &middot; Edit name sheet |
+| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 93D &middot; Weekly report |
+| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 92B &middot; Night check-in time |
 | Email Login | Your Vow Page | src/app/vow.tsx | IMPLEMENTED | 2026-08-15 | 92C &middot; Your vow |
 | Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 92D &middot; Sign out sheet |
 | Email Login | Data Privacy | src/app/privacy.tsx | NOT_STARTED | — | 94 · Data &amp; Privacy |

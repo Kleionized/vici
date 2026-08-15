@@ -341,3 +341,24 @@ names the ambiguity, the reading chosen, and why.
   falls back again to the canvas's own line when neither exists — the canvas
   draws a signed state and states no empty one, so its line is the placeholder
   rather than invented copy.
+
+- **D-026 · `My values` left the Journey card; the door was kept.**
+  `Edit Profile` (93) replaces `My values` with `Current week → VI · Discipline`
+  and a `Weekly reports` action row. `/lifemap` then has no link anywhere in the
+  bundle, so it moves into the App card on the same screen alongside Settings —
+  the one card on profile the canvas does not draw, and which already existed
+  for exactly this reason. Same rule as D-024: a design that stops drawing a
+  link is not a decision to make a screen unreachable.
+
+- **D-027 · Save moved from the header into the name sheet.**
+  93 has no Cancel/Save bar — it has a back row and a big title — and 93C draws
+  a `Save` pill inside the sheet. So `save()` now writes the name and dismisses
+  the sheet rather than the screen, and the name row on the card is read-only
+  text that opens 93C.
+
+- **D-028 · The photo sheet's three actions are drawn but not wired.**
+  `Take photo`, `Choose from library` and `Remove photo` are built to the frame
+  and each dismisses the sheet. Actually picking an image needs a camera/library
+  permission flow and an upload path, neither of which exists in the app or is
+  drawn in the bundle; inventing one would be new behaviour, not a port.
+  Recorded in `REPORT.md` as a known stub — the only one in this run.

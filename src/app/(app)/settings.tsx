@@ -73,7 +73,7 @@ export default function Settings() {
           <Section header="Reminders">
             <Row height={52} title="Morning check-in" pill={formatTime(routines.morning)} onPress={() => router.push('/routines/morning-time')} />
             <Divider />
-            <Row height={52} title="Night check-in" pill={formatTime(routines.night)} onPress={() => router.push('/routines/night-time')} />
+            <Row height={52} title="Night check-in" pill={formatTime(routines.night)} onPress={() => router.push('/routines/night-time?from=settings')} />
           </Section>
 
           <Section header="Anchors">
@@ -81,7 +81,7 @@ export default function Settings() {
             <Divider />
             <Row height={48} title="Your letter" detail="Opens Week XII" onPress={() => router.push('/letter?variant=week12')} />
             <Divider />
-            <Row height={48} title="Weekly reports" detail="Every Sunday" onPress={() => router.push('/weekly-report')} />
+            <Row height={48} title="Weekly reports" detail="Every Sunday" onPress={() => router.push('/weekly-report?from=settings')} />
           </Section>
 
           {/* the canvas leaves 20 here, not the 21 it leaves elsewhere */}

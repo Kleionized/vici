@@ -20,18 +20,18 @@ import { sans } from '@/lib/theme';
  * to the 764pt a 393 × 852 phone leaves between the two insets.
  */
 
-export function RoutineBack({ onPress }: { onPress: () => void }) {
+export function RoutineBack({ label = 'Back', onPress }: { label?: string; onPress: () => void }) {
   return (
     <PressScale
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel="Back"
+      accessibilityLabel={label}
       hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
       style={{ flexDirection: 'row', alignItems: 'center', gap: 9, alignSelf: 'flex-start', minHeight: 0, paddingLeft: 16 }}>
       <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
         <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
       </Svg>
-      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>{label}</AppText>
     </PressScale>
   );
 }
@@ -58,12 +58,15 @@ export function RoutineCTA({ label, onPress, enabled = true }: { label: string; 
 }
 
 export function RoutineShell({
+  backLabel,
   onBack,
   title,
   note,
   cta,
   children,
 }: {
+  /** `Settings Check-in Time` (92B) draws "Settings" here instead of "Back". */
+  backLabel?: string;
   onBack: () => void;
   title: string;
   note: string;
@@ -75,7 +78,7 @@ export function RoutineShell({
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         {/* canvas 64 */}
         <View style={{ marginTop: 10, height: 20, justifyContent: 'center' }}>
-          <RoutineBack onPress={onBack} />
+          <RoutineBack label={backLabel} onPress={onBack} />
         </View>
 
         {/* canvas 132. The block is held at the full 76 to 'Select time' so a two-line question never shifts the wheel. */}

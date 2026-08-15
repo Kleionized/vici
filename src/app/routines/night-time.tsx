@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ export default function NightTime() {
   const time = draftTime ?? routines.night;
   const days = draftDays ?? stored;
 
+  const { from } = useLocalSearchParams<{ from?: string }>();
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   const toggle = (day: number) => setDraftDays(days.includes(day) ? days.filter((d) => d !== day) : [...days, day].sort((a, b) => a - b));
@@ -32,6 +33,7 @@ export default function NightTime() {
     <>
       <StatusBar style="dark" />
       <RoutineShell
+        backLabel={from === 'settings' ? 'Settings' : 'Back'}
         onBack={back}
         title="When should the nightly check-in come?"
         note="Set it for the start of your riskiest hours — you can change this any time."

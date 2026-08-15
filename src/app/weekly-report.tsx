@@ -45,7 +45,10 @@ const NICE_STEPS = [10, 20, 25, 50, 100, 200, 250, 500, 1000];
 
 export default function WeeklyReport() {
   const router = useRouter();
-  const { week } = useLocalSearchParams<{ week?: string }>();
+  // `Settings Weekly Report` (93D) is this same board reached from Settings —
+  // the only difference the canvas draws is that the back row reads "Settings".
+  const { week, from } = useLocalSearchParams<{ week?: string; from?: string }>();
+  const backLabel = from === 'settings' ? 'Settings' : 'Back';
   const user = useCurrentUser();
   const checkins = useCheckins();
   const events = useEvents();
@@ -81,7 +84,7 @@ export default function WeeklyReport() {
         <SafeAreaView edges={['top']} style={{ flex: 1 }}>
           {/* Yoga lays an absolute child out from the SafeAreaView's border box, so the inset — expressed as padding — is ignored. This plain flow child carries it. */}
           <View style={{ flex: 1 }}>
-            <BackRow onPress={back} />
+            <BackRow label={backLabel} onPress={back} />
             <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
               Weekly report
             </AppText>
@@ -140,7 +143,7 @@ export default function WeeklyReport() {
           </ScrollView>
 
           {/* the standing header — identical on all three pages */}
-          <BackRow onPress={back} />
+          <BackRow label={backLabel} onPress={back} />
           <AppText style={[sans('500'), { position: 'absolute', right: 20, top: 14, fontSize: 14, color: '#8B8882' }]}>{report.label}</AppText>
           <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
             Weekly report
@@ -167,18 +170,18 @@ export default function WeeklyReport() {
 /* ------------------------------------------------------------------- chrome */
 
 /** Canvas y 64 — the row is only as tall as its chevron, so the target is hitSlop. */
-function BackRow({ onPress }: { onPress: () => void }) {
+function BackRow({ label = 'Back', onPress }: { label?: string; onPress: () => void }) {
   return (
     <PressScale
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel="Back"
+      accessibilityLabel={label}
       hitSlop={{ top: 16, bottom: 16, left: 20, right: 24 }}
       style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
       <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
         <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
       </Svg>
-      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
+      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>{label}</AppText>
     </PressScale>
   );
 }
