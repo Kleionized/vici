@@ -257,12 +257,19 @@ function ChapterBody({ chapter, ctx, width, height }: { chapter: ChapterKey; ctx
   const c = CHAPTERS[chapter];
   return (
     <View style={{ height, overflow: 'hidden' }}>
-      <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>{c.title}</AppText>
-      <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 108, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>{c.line}</AppText>
-
+      {/* The scene band is painted first so the line above it can run over its
+          top edge. The canvas composes at 393, where the line takes two rows of
+          21 and stops 10pt clear of the band at 214; at 375 it needs a third,
+          and painting the band last cut that row through the middle of the
+          glyphs. The band opens on #F4F3F0 — the page's own colour — so a line
+          crossing it reads exactly as it does above it, and at the canvas's own
+          width nothing about this changes. */}
       <View style={{ position: 'absolute', left: 0, right: 0, top: 160, height: SCENE_H, overflow: 'hidden' }} pointerEvents="none">
         <ChapterScene scene={chapter} width={width} />
       </View>
+
+      <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>{c.title}</AppText>
+      <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 108, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>{c.line}</AppText>
 
       <View style={{ position: 'absolute', left: 24, right: 24, top: 512 }}>
         {c.rows.map((row, i) => (

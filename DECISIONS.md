@@ -1026,3 +1026,12 @@ Six second-reader audits ran over the screens this run built by hand
   belief was harmless. `scripts/uifinal/entity-sweep.mjs` now proves mechanically
   that no entity survives into a position where it would render literally: 0 of
   165 files.
+
+- **D-101 · The journey chapter paints its scene band before its heading.** The
+  canvas composes at 393, where the chapter's line takes two rows and stops 10pt
+  clear of the band at 214. At 375 it needs a third row, and with the band
+  painted last that row was cut through the middle of the glyphs. Painting the
+  band first fixes it; the band opens on `#F4F3F0`, the page's own colour, so a
+  line crossing it is indistinguishable, and at 393 the line never reaches the
+  band so nothing changes there. Found by rendering the frame beside the app —
+  every number on the screen already matched. `specs/pass2-copy-sweep.md`.

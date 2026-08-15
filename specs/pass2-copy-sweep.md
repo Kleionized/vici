@@ -200,3 +200,60 @@ what its frame draws.
   there. The sweep now falls back to the whole of `src/` before counting a miss.
 - **`Login Typing` top 561** — a `#D6D5D0` block from 561 to the foot at
   `z-index:10`. That is the canvas drawing a keyboard; the app gets the real one.
+
+---
+
+# Pass 3 — the declaration sweep
+
+The first Pass 3 sweep compared colours and font sizes; the position sweep added
+`top`. `scripts/uifinal/decl-sweep.mjs` closes the rest of the gap by comparing
+twelve properties across all 575 targeted frames.
+
+| property | distinct values stated | absent from `src/` |
+| --- | ---: | ---: |
+| left | 7,905 | 46 |
+| top | 9,662 | 114 |
+| width | 5,060 | **0** |
+| height | 7,327 | **0** |
+| border-radius | 2,624 | **0** |
+| letter-spacing | 1,461 | **0** |
+| line-height | 1,058 | **0** |
+| gap | 1,582 | **0** |
+| opacity | 552 | **0** |
+| font-weight | 1,618 | **0** |
+| stroke-width | 1,073 | **0** |
+| font-size | 1,782 | **0** |
+
+**41,704 stated values. 160 absences, every one resolved as a value the app
+computes rather than states:**
+
+- the 114 `top`s are the Week and Journey lesson rows, computed from
+  `432 + i × 80` with pips at `+5`/`+13`, and measured in the running app at
+  exactly canvas − 54;
+- 42 of the `left`s are the reader's mark glows, where the app computes
+  `off = (halo − size) / 2` — 15.5 for a 14pt mark in a 45pt halo, 39.5 for a
+  36pt mark in a 115pt halo, both of which the canvas states literally;
+- the remaining 4 are a 17pt sun centred in its 44pt glow on the task card
+  specimen: `26 + (44 − 17) / 2 = 39.5`.
+
+**No defect.** This is the first sweep in the run to find nothing.
+
+# Pass 3 — rendering the frame beside the app
+
+The sweeps compare numbers. To check what they cannot, the canvas frame itself
+was served and rendered at its own 393 × 852 next to the running app.
+
+## Finding 6 — the journey chapter's line was cut through the glyphs
+
+`Journey Campaign` composes its line at 393 wide: two rows of 21 starting at
+108, stopping 10pt clear of the scene band at 160. At **375** — every iPhone
+narrower than a Pro Max — the same line needs a third row, and because the band
+was painted *after* the text, it cut that row through the middle of the letters.
+The screen read as broken, and no numeric sweep could see it: every value
+involved matches the canvas exactly.
+
+Fixed by painting the band first. The band opens on `#F4F3F0`, the page's own
+colour, so a line crossing its top edge reads exactly as it does above it — and
+at the canvas's own width the line never reaches the band, so nothing there
+changes at all. Verified at both widths: 2 lines ending at 150 on 393, 3 lines
+fully legible on 375.
