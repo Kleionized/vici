@@ -29,6 +29,17 @@ const BUNDLES = [
   { key: 'exports/Lesson Parts', design: 'UI Final/project/exports/Lesson Parts.html', split: '.uifinal/final/exports-Lesson Parts' },
 ];
 
+/**
+ * Pass 2 found 97 further `data-screen-label` frames inside the 18
+ * `screenshots/*-check.html` harnesses, which Phase 1 had dispositioned by
+ * filename without opening. They are ledgered here so the count is honest.
+ */
+for (const dir of fs.existsSync('.uifinal/pass2') ? fs.readdirSync('.uifinal/pass2') : []) {
+  const split = path.join('.uifinal/pass2', dir);
+  if (!fs.statSync(split).isDirectory()) continue;
+  BUNDLES.push({ key: `screenshots/${dir}`, design: `UI Final/project/screenshots/${dir}.html`, split });
+}
+
 // Preserve status/date/note from the current ledger, keyed by "bundle::label".
 const existing = new Map();
 if (fs.existsSync(LEDGER)) {

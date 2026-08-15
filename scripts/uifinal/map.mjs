@@ -225,6 +225,17 @@ export function mapFor(bundle, label) {
     };
   }
 
+  if (bundle.startsWith('screenshots/')) {
+    // Pass 2: the author's own check renders. Five `*-apply.js` scripts in the
+    // same folder read and write `Lessons and Tasks.dc.html`, so the canvas is
+    // the applied result and these are its input — 55 of the 97 are byte-copies
+    // of a canonical frame, and the other 42 are the discarded variants.
+    return {
+      target: '—',
+      note: 'HARNESS — the author\'s own check render; the main canvas is the applied result (DECISIONS D-061)',
+    };
+  }
+
   if (bundle === 'exports/Journey Campaign') return { target: 'src/components/journey/JourneyScreens.tsx', note: 'export of the campaign map' };
   if (bundle === 'exports/Lesson Detail') return { target: 'src/app/lesson-overview/[slug].tsx', note: 'export — lesson cover/detail' };
   if (bundle === 'exports/Lesson Parts') return { target: 'src/app/lesson-overview/[slug].tsx', note: 'export — lesson parts list' };

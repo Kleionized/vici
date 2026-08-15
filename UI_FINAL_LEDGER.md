@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** PASS_1: 129 · IMPLEMENTED: 449 · DONE: 199
+**874 rows.** PASS_1: 129 · IMPLEMENTED: 449 · DONE: 296
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -787,3 +787,100 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_1 | 2026-08-15 | export of the campaign map |
 | exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson cover/detail |
 | exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson parts list |
+| screenshots/bold-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/bold-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/bold-check | Task D71 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/card-check | Task D13 Card | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/card-check | Task D34 Card | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/closer-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/closer-check | Task D68 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/closer-check | Task D69 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/feeling-check | SOS Feeling Picker | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/font-check | Task D21 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/font-check | Task D62 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/font-check | Task D64 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/font-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/gap-check | Task D02 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/gap-check | Task D08 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/gap-check | Task D08 Card | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/gap-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/icon-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/icon-check | Task D43 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/icon-check | Task D54 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/icon-check | Task D72 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/icon-check | Task D75 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 1 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 2 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 3 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 4 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 5 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 6 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 7 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 8 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 9 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 10 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 11 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 12 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 13 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 14 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 15 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 16 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 17 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 18 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 19 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 20 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 21 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 22 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 23 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 24 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/l1-check | 25 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/list-check | Cue Hue Picker | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/list-check | SOS Feeling Picker | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/list-check | SOS Reason Picker | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/list-check | Checkin Reasons | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/list-check | Lesson Feelings Grid | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D26 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D01 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D01 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D64 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D64 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D82 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D82 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D62 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D44 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D60 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/options-check | Task D19 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/orb-check | SOS Breathe | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/orb-check | SOS Settings | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 1 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 2 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 3 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 4 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 5 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 6 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/reader-check | L01 Reader 7 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 1 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 2 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 3 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 4 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 5 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 6 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/scroll-check | Lesson Scroll 7 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/settings-check | Settings | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/settings-check | Your Vow Page | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/settings-check | Settings Weekly Report | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/sos-check | SOS Settings | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/spacing-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/spacing-check | Task D62 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/spacing-check | Task D01 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/task-check | Lesson Scroll 23 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/task-check | Lesson Scroll 24 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/task-check | Lesson Scroll 25 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/task-check | Lesson Scroll 26 | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D26 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D26 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D64 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D64 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D82 Intro | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
+| screenshots/v2-check | Task D82 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |

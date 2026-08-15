@@ -664,3 +664,50 @@ names the ambiguity, the reading chosen, and why.
   The `exports/Journey Campaign` frame audits clean property for property, but
   `grep -rn CampaignGrounds src/` finds only its definition. A wiring gap, not a
   drawing one; recorded for a product call.
+
+# Pass 2 — the coverage audit
+
+- **D-061 · Phase 1 under-inventoried the bundle by 97 frames.**
+  The 29 `project/screenshots/*.html` files were dispositioned as "the author's
+  own measurement harnesses" **by filename, without being opened** — which the
+  brief explicitly forbids ("a file you did not open does not count as
+  inventoried"). Opening all 29 found `data-screen-label` frames in 18 of them:
+  **97 frames**, of which 3 labels (`SOS Breathe`, `SOS Settings`,
+  `Lesson Feelings Grid`) had never appeared in the ledger at all.
+  The ledger is now 874 rows, not 777.
+
+  What they are, established rather than assumed:
+  - Normalising the label and the harness's `../noise-dark.png` asset path,
+    **55 of the 97 are byte-copies of a canonical frame** — `l1-check.html`
+    alone holds all 25 of `Lesson Scroll 1…25` verbatim.
+  - The other **42 are variants that exist nowhere else**. `Task D26 Options`
+    appears at five different sizes across five harnesses (5485 / 6413 / 6615
+    ×3) against the canvas's 6086 — a visible sequence of iterations on one
+    board.
+  - **The canvas is the applied result, not the input.** Five scripts in the
+    same folder — `apply-tasks.js`, `intro-apply.js`, `light-banners.js`,
+    `options-apply.js`, `reminder-apply.js` — all open with
+    `readFile('Lessons and Tasks.dc.html')` and write back to it. The check
+    files are what gets previewed; the canvas is what gets written.
+  - The variants each break the recipe the canvas holds consistently across all
+    249 task frames — `closer-check` numbers the options and tightens the gap to
+    12, `options-check` drops a type style, `spacing-check` shifts a tile by 24
+    bytes. A canvas where 249 frames agree beats harnesses that disagree one at
+    a time.
+
+  So all 97 are dispositioned `DONE` as harness renders, and **no implementation
+  changed**. The finding is the inventory, not the pixels.
+
+- **D-062 · `scroll-check` and `reader-check` hold an abandoned draft of lesson 1.**
+  Their "page 6" reads `TONIGHT'S SETUP / Make the bedroom boring / Phone
+  charging outside the door before you're tired.` The canvas's page 6 reads
+  `Make the problem smaller / The mind likes to turn quitting into an enormous
+  promise.` The pages do not correspond at all — it is a different sequence, not
+  a different revision of the same one. `l1-check` holds the canvas's own set.
+
+- **D-063 · The four `.docx` files are not design sources, confirmed by opening
+  them.** Two are the 84 daily tasks in prose (the writing the canvas's task
+  copy was set from — the canvas stays authoritative per D-017); one is the
+  onboarding intake brief; two are the medallion catalogue, which describes
+  itself in its own second line as "working reference, not shipped copy".
+  `.thumbnail` is a WebP of the canvas board.
