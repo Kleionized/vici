@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**874 rows.** PASS_1: 465 · IMPLEMENTED: 4 · DONE: 405
+**874 rows.** PASS_1: 469 · DONE: 405
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -62,8 +62,8 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Edit Profile | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93 · Edit Profile |
 | Email Login | Sheet Profile Photo | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93B &middot; Profile photo sheet |
 | Email Login | Sheet Edit Name | src/app/profile.tsx | PASS_1 | 2026-08-15 | 93C &middot; Edit name sheet |
-| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | IMPLEMENTED | 2026-08-15 | 93D &middot; Weekly report |
-| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 92B &middot; Night check-in time |
+| Email Login | Settings Weekly Report | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 93D &middot; Weekly report |
+| Email Login | Settings Check-in Time | src/app/routines/night-time.tsx | PASS_1 | 2026-08-15 | 92B &middot; Night check-in time |
 | Email Login | Your Vow Page | src/app/vow.tsx | PASS_1 | 2026-08-15 | 92C &middot; Your vow |
 | Email Login | Sheet Sign Out | src/app/(app)/settings.tsx | PASS_1 | 2026-08-15 | 92D &middot; Sign out sheet |
 | Email Login | Data Privacy | src/app/privacy.tsx | PASS_1 | 2026-08-15 | 94 · Data &amp; Privacy |
@@ -135,8 +135,8 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Paywall Rescue | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11B · Paywall — Three Days Free |
 | Email Login | Paywall Confirmed | src/components/paywall/PaywallFlow.tsx | PASS_1 | 2026-08-15 | 11C · Paywall — Confirmed |
 | Email Login | Manage Subscription | src/app/subscription.tsx | PASS_1 | 2026-08-15 | 15 · Manage Subscription |
-| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | IMPLEMENTED | 2026-08-15 | 19B · Morning check-in time |
-| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | IMPLEMENTED | 2026-08-15 | 19C · Nightly check-in time |
+| Email Login | Morning Check-in Time | src/app/routines/morning-time.tsx | PASS_1 | 2026-08-15 | 19B · Morning check-in time |
+| Email Login | Nightly Check-in Time | src/app/routines/night-time.tsx | PASS_1 | 2026-08-15 | 19C · Nightly check-in time |
 | Email Login | Today Home | src/app/(app)/today.tsx | PASS_1 | 2026-08-15 | 21 · Today |
 | Email Login | Score Detail | src/app/score.tsx | PASS_1 | 2026-08-15 | 21B &middot; Score Detail |
 | Email Login | Score Detail Moves | src/app/score.tsx | PASS_1 | 2026-08-15 | 20B · Score Detail — What Moved It |

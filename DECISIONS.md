@@ -960,3 +960,30 @@ Six second-reader audits ran over the screens this run built by hand
 - **D-095 · The cover chevron sat inside the home indicator.** Its `bottom: 42`
   is measured from the 852 board's own foot, which draws no indicator, so on
   device it was 42 + the bottom inset off the screen edge.
+
+- **D-096 · The four clone frames were audited by hashing, not by eye.**
+  `Settings Weekly Report`, `Settings Check-in Time`, `Morning Check-in Time`
+  and `Nightly Check-in Time` are each near-identical to a frame already through
+  Pass 1. Hashing each against its base and diffing every text run proves the
+  *set* of differences is complete — one word on two of them, a title, a wheel
+  rest position and a footnote on the third — so nothing is left unchecked by
+  not re-reading two near-identical boards. All four match. `specs/pass1-clone-frames.md`.
+
+---
+
+# Where the three passes finished
+
+- **Pass 1 — complete.** All 874 rows: 469 audited property by property (16
+  audits over the 129 unchanged frames, 14 over the screens this run built, and
+  one by hashing for the four clones), 405 dispositioned on evidence as not
+  screens. Every finding that the app could close was closed.
+- **Pass 2 — complete.** The coverage audit re-walked the bundle from scratch
+  and found 97 frames Phase 1 had never opened, which is why the ledger is 874
+  rows and not 777.
+- **Pass 3 — the cross-screen sweep is complete**, and it found the worst errors
+  in the run: a scene built from a summary instead of the frame, five marks the
+  same, and a signature set in a font where the canvas draws a stroke. The
+  per-screen fresh-eyes re-verification has not run, and because Pass 3 and the
+  late Pass 1 batches both changed screens, those screens restart at Pass 1.
+  **No row is marked `DONE` on implementation, and the brief's bar — three
+  consecutive passes finding nothing — has not been met.**

@@ -4,7 +4,7 @@
 **Bundle:** `UI Final/` (Claude Design handoff, 288 files).
 **Ledger:** `UI_FINAL_LEDGER.md` — **874 rows**, one per `data-screen-label` frame
 (777 at first count; Pass 2 found 97 more — §10).
-**Decisions:** `DECISIONS.md`, entries D-001 … D-078.
+**Decisions:** `DECISIONS.md`, entries D-001 … D-096.
 **Specs:** `specs/` — 35 files: 19 pixel specs and 16 audits, together carrying
 roughly 12,000 transcribed property rows.
 
@@ -19,38 +19,34 @@ roughly 12,000 transcribed property rows.
 
 | State | Rows | What it means |
 | --- | --- | --- |
-| `PASS_1` | 176 | Built, then audited property by property by a second reader, and every finding fixed |
-| `IMPLEMENTED` | 402 | Built against the canvas, typechecked, linted, bundled, committed — no second-reader audit yet |
-| `DONE` | 296 | Not screens. Dispositioned **on evidence** and closed |
+| `PASS_1` | 469 | Built, then audited property by property, and every finding the app could close was closed |
+| `DONE` | 405 | Not screens. Dispositioned **on evidence** and closed |
 
-**Every frame in the bundle is either built or dispositioned. No row is
-`NOT_STARTED`.**
+**Pass 1 is complete across all 874 rows. Nothing is `NOT_STARTED` and nothing
+is left at `IMPLEMENTED`.**
 
-### What the three passes have and have not done
+### What the three passes did
 
-- **Pass 1 — property audit. Complete for 176 frames**, in two halves:
-  - the **129** the design left unchanged — the set that most needed it, because
-    unchanged in the design says nothing about the app and nobody had ever
-    re-checked them. Sixteen audits, ~6,000 rows, 19 real findings (§6).
-  - the **47** this run built by hand — the two check-in flows, Today, the twelve
-    week overviews, Settings and the profile family, the three SOS pickers. Six
-    audits, 1,933 rows, and every finding fixed (D-068 … D-078).
-  **Still outstanding:** the lesson reader, the lesson card and task boards,
-  medallions, the campaign map, rough days, the journal and the letter — 402
-  rows, most of them the 332 template-driven lesson-card and task frames whose
-  *content* was verified mechanically instead (§7).
-- **Pass 2 — coverage audit. Complete**, and it found the run's biggest
-  inventory error: 97 frames Phase 1 never opened (§10).
-- **Pass 3 — fresh-eyes audit. The cross-screen sweep is complete** — every
-  colour and font-size literal in the app checked against every literal in the
-  canvas — and it found the run's worst transcription errors (§11). The
-  per-screen fresh-eyes re-verification has not run.
+- **Pass 1 — complete.** 31 audits in all: 16 over the 129 frames the design
+  left unchanged, 14 over the screens this run built by hand, and one done by
+  hashing for the four clone frames. Roughly 9,000 comparison rows. The audits
+  are in `specs/audit-*.md` and `specs/pass1-*.md`; every finding and its
+  resolution is in `DECISIONS.md` (D-068 … D-096).
+- **Pass 2 — complete.** The coverage audit re-walked the bundle as if for the
+  first time and found **97 frames Phase 1 had never opened** — dispositioned by
+  filename, which the brief forbids. That is why the ledger is 874 rows and not
+  777 (§10).
+- **Pass 3 — the cross-screen sweep is complete.** Every colour and font-size
+  literal in the app was checked against every literal in the canvas, and it
+  found the worst transcription errors in the run (§11). The per-screen
+  fresh-eyes re-verification has **not** run.
 
-Because a pass that changes a screen restarts it, and Pass 3 changed several,
-**no row is marked `DONE` on implementation**. The brief's bar — three
-consecutive passes finding nothing — has not been met.
+**The brief's bar has not been met.** It asks for three consecutive passes that
+find nothing. Pass 3 changed several screens and the late Pass 1 batches changed
+more, so by the brief's own rule those restart at Pass 1 — which is why no row
+is marked `DONE` on implementation.
 
-### The 296 `DONE` rows, and why each is closed
+### The 405 `DONE` rows, and why each is closed
 
 - **174** — `VICI (previous).dc.html` and `vici-prev.dc.html`, the
   previous-generation canvas. `cmp` proves the two files byte-identical, and the
@@ -60,6 +56,11 @@ consecutive passes finding nothing — has not been met.
   frame; the other 42 are the author's discarded variants, and five `*-apply.js`
   scripts in the same folder prove the canvas is the applied result and the
   checks are its input (D-061).
+- **83** — `Task DNN Card`. Specimens, not screens: each shows the day's task as
+  the Today card and again as the night reminder, both of which are themselves
+  `PASS_1` (D-045).
+- **26** — `L1 Frame 01…26`, hash-identical to `Lesson Scroll 1…26` once the
+  label is normalised away (D-003).
 - **25** — `L01 Reader 1…25`, the superseded reader draft: 3 frames match
   `Lesson Scroll` at the same index, 2 at a one-frame shift, 20 rewritten (D-004).
 
