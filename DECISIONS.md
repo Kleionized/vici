@@ -711,3 +711,28 @@ names the ambiguity, the reading chosen, and why.
   onboarding intake brief; two are the medallion catalogue, which describes
   itself in its own second line as "working reference, not shipped copy".
   `.thumbnail` is a WebP of the canvas board.
+
+# Pass 3 — the fresh-eyes audit
+
+- **D-064 · The cover scene was written from a spec summary, not transcribed.**
+  Pass 3's colour sweep — every literal in the app against every literal in the
+  canvas — found `#CBDAE8` used once, in `lesson/day/[day].tsx`, and nowhere in
+  the bundle. Reading `Lesson Scroll 1`'s scene block properly showed the whole
+  drawing was wrong: **21 layers in the frame against 9 in the app**. The
+  window was a flat fill where the canvas gradients `#12151B → #1A2027`; the
+  mullion, the sill, both cast shadows, the window halo, the lamp glow, the
+  lamp itself, the two star specks, the pillow, the bolster and the two bed feet
+  were all missing; and the 13pt `#DCDED8` moon was drawn 26pt in an invented
+  colour at the wrong position.
+  Rewritten layer by layer from the frame. **This is the run's most serious
+  transcription error, and it was found by the sweep rather than by rereading**
+  — which is the argument for the sweep.
+
+- **D-065 · The colour sweep's other 135 hits are not findings.**
+  Checked rather than assumed: most are the app writing `rgb(…)` with a separate
+  `opacity` where the canvas writes `rgba(…)` (react-native-svg wants them
+  apart), or a hex the app derives from an `rgba()` the canvas states — e.g.
+  `#96A0AC` is `rgba(150,160,172,0.30)`. The rest belong to screens whose frames
+  the bundle **withdrew** (`MoodLogger`'s five mood tones came from the deleted
+  `Daily Check-in`), so there is no current frame to check them against; they
+  are unverifiable rather than wrong, and are left as they were.
