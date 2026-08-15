@@ -368,7 +368,9 @@ export function LessonCoverScene({
 }) {
   const T = TINTS[tint];
   /** left edge of the canvas's 240 × 170 drawing */
-  const g = width / 2 - 120;
+  // the canvas pins the 240 x 170 drawing at a literal left:76, not at the
+  // centre — `width / 2 - 120` lands on 76.5 at 393 and drags every child with it
+  const g = 76;
   return (
     <View style={{ width, height, overflow: 'hidden' }}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} 330`} style={{ position: 'absolute', left: 0, top: 0 }}>

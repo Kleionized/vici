@@ -206,7 +206,7 @@ function TracksBody({
 
       <AppText
         numberOfLines={1}
-        style={[sans('500'), { marginTop: 24, marginLeft: 16, fontSize: 26, letterSpacing: -0.1, color: '#1D1C1A' }]}>
+        style={[sans('500'), { marginTop: 24, marginLeft: 16, fontSize: 26, letterSpacing: -0.3, color: '#1D1C1A' }]}>
         {title}
       </AppText>
       <View style={{ marginTop: 15 }}>{meta}</View>

@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**777 rows.** PASS_1: 122 · IMPLEMENTED: 449 · NOT_STARTED: 7 · DONE: 199
+**777 rows.** PASS_1: 129 · IMPLEMENTED: 449 · DONE: 199
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -223,10 +223,10 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Email Login | Medallion Letter | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39B · Post — Medallion Letter |
 | Email Login | Yearly Drop | src/app/mail.tsx | PASS_1 | 2026-08-15 | 39C · Post — The Yearly Drop |
 | Email Login | Drop Received | src/app/drop.tsx | PASS_1 | 2026-08-15 | 39D · You Received a Drop |
-| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32A · Journey — Ch I The Landing |
-| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32 · Journey — The Campaign |
-| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32B · Journey — Ch III The Highlands |
-| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | NOT_STARTED | — | 32C · Journey — Ch IV The Watch |
+| Email Login | Journey Chapter I | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32A · Journey — Ch I The Landing |
+| Email Login | Journey Campaign | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32 · Journey — The Campaign |
+| Email Login | Journey Chapter III | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32B · Journey — Ch III The Highlands |
+| Email Login | Journey Chapter IV | src/app/journey/[chapter].tsx | PASS_1 | 2026-08-15 | 32C · Journey — Ch IV The Watch |
 | Lessons and Tasks | L01 Reader 1 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 2 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 3 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
@@ -784,6 +784,6 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
-| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | NOT_STARTED | — | export of the campaign map |
-| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | NOT_STARTED | — | export — lesson cover/detail |
-| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | NOT_STARTED | — | export — lesson parts list |
+| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_1 | 2026-08-15 | export of the campaign map |
+| exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson cover/detail |
+| exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_1 | 2026-08-15 | export — lesson parts list |

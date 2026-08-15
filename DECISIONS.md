@@ -628,3 +628,39 @@ names the ambiguity, the reading chosen, and why.
   step's behaviour is the app's (rule 5), the wheel is reachable, and opening it
   by default is a product call about how much the step asks for up front.
   Recorded in `REPORT.md` as the one open finding this run leaves behind.
+
+- **D-057 · Three findings left open, each for a stated reason.**
+  1. **`log.tsx` pads the scroll by the tab bar's height a second time.** The
+     audit reads `(app)/_layout.tsx`'s plain `tabBar={…}` as a sibling laid out
+     below the screen, which would make `paddingBottom: tabBar` a double inset —
+     97pt of dead scroll under the last row, on five screens. It is not changed
+     here because I cannot verify it on a device this run, and being wrong hides
+     the last row **behind** the bar, which is worse than extra scroll.
+  2. **`Log Check-ins` rows draw `Today · 8:44 am`; the app draws `Today`.**
+     `DailyCheckin` carries only a `YYYY-MM-DD` date, so closing this needs
+     `_creationTime` surfaced or a `loggedAt` field — a schema change, and one
+     the design does not otherwise ask for.
+  3. **`Urge Log When` draws its time wheel at rest** where the app opens it on
+     a tap (D-056).
+
+- **D-058 · Four canvas strings in the lapse flow are urge-flow carry-overs and
+  were not adopted.** `Lapse When`'s pill reads `Log the urge` on a lapse
+  screen; `Lapse Trigger`'s reads `Continue · 2` where the flow commits;
+  `Lapse Done`'s "What I did" value reads `Rode it out` under the title
+  `Lapse logged.` Each contradicts its own frame, and the audit that found them
+  recommends fixing the canvas rather than the app. The app's wording stands.
+
+- **D-059 · The exports draw an older tab bar than the primary canvas.**
+  `Story Detail` and `Story Tracks` draw three tabs on `#FFFFFF` with different
+  glyphs; `Today Home`, in the primary canvas and changed in this bundle, draws
+  the app's own glyphs on `rgba(255,255,255,0.95)` at the same 48 / 170 / 288
+  positions. The exports are byte-identical to the previous bundle, so they are
+  the older drawing and the primary canvas wins.
+  The four-vs-three tab count and the even-quarter centres remain a deliberate,
+  already-documented divergence in `StoicTabBar.tsx`'s own header — `All` is a
+  fourth tab the canvas does not draw and nothing else routes to.
+
+- **D-060 · `CampaignGrounds` is drawn correctly and reachable from nowhere.**
+  The `exports/Journey Campaign` frame audits clean property for property, but
+  `grep -rn CampaignGrounds src/` finds only its definition. A wiring gap, not a
+  drawing one; recorded for a product call.
