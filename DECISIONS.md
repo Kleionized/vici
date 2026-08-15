@@ -529,3 +529,23 @@ names the ambiguity, the reading chosen, and why.
   check-in with the task as `dailyAction` and `dailyActionDone: true`, which is
   the field the Today card and tomorrow's morning check-in already read. No new
   storage.
+
+## The straggler scan
+
+- **D-048 · `ChallengeSheet.tsx` is orphaned and was left in place.**
+  Nothing imports it, and no frame in the bundle draws it — the last commit
+  before this run ("challenge sheets: drop the why-am-I-doing-this row") was
+  still editing it, so it is recent work rather than old dead code. Deleting it
+  is a product call, not a port call. Recorded, not removed.
+
+- **D-049 · Eighteen image assets are unreferenced; none was deleted.**
+  `auth-dawn`, `envelope-seal`, `home-bg`, `journey-bg`, `laurel`, `laurel2`,
+  `laurel3`, `letter-envelope`, `next-lesson-bg`, `noise.png`,
+  `paywall-summit`, `paywall-summit-full`, `relapse-begin`, `relapse-slip`,
+  `relapse-twice`, `statue-maxim`, `valley-river`, `wave-v3`. Most became
+  unreferenced because the art they carried was redrawn as SVG, but the design
+  bundle's own `uploads/` still ships several of them (`tl-relapse-begin.webp`,
+  `tl-statue-maxim.webp`, `tl-valley-river.webp`, `tl-wave-v3.webp`), so the
+  *design* still uses them even where the app no longer does. Deleting them is
+  irreversible and gains nothing this run needs; they are listed here and in
+  `REPORT.md` instead.
