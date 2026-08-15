@@ -4,7 +4,7 @@
 **Bundle:** `UI Final/` (Claude Design handoff, 288 files).
 **Ledger:** `UI_FINAL_LEDGER.md` — **874 rows**, one per `data-screen-label` frame
 (777 at first count; Pass 2 found 97 more — §10).
-**Decisions:** `DECISIONS.md`, entries D-001 … D-100.
+**Decisions:** `DECISIONS.md`, entries D-001 … D-101.
 **Specs:** `specs/` — 35 files: 19 pixel specs and 16 audits, together carrying
 roughly 12,000 transcribed property rows.
 
@@ -19,38 +19,54 @@ roughly 12,000 transcribed property rows.
 
 | State | Rows | What it means |
 | --- | --- | --- |
-| `PASS_2` | 469 | Built, audited property by property, then swept mechanically for copy, entities, apostrophes and positions |
+| `PASS_3` | 469 | Built, audited property by property, then swept mechanically three times over |
 | `DONE` | 405 | Not screens. Dispositioned **on evidence** and closed |
 
 **Nothing is `NOT_STARTED` and nothing is left at `IMPLEMENTED`. All 874 rows
-have been through Pass 1 and Pass 2.**
+have been through Pass 1, Pass 2 and Pass 3.**
 
 ### What the three passes did
 
-- **Pass 1 — complete.** 31 audits: 16 over the 129 frames the design left
-  unchanged, 14 over the screens this run built by hand, and one by hashing for
+- **Pass 1 — property audits.** 31 of them: 16 over the 129 frames the design
+  left unchanged, 14 over the screens this run built by hand, one by hashing for
   the four clone frames. Roughly 9,000 comparison rows, in `specs/audit-*.md`
-  and `specs/pass1-*.md`. Findings and resolutions: `DECISIONS.md` D-068 … D-096.
-- **Pass 2 — complete, in two parts.**
-  - *Coverage.* Re-walked the bundle as if for the first time and found **97
-    frames Phase 1 had never opened**, dispositioned by filename, which the
-    brief forbids. That is why the ledger is 874 rows and not 777 (§10).
-  - *Mechanical sweeps.* Four new sweeps over all 575 frames that have an app
-    target, asking what re-reading cannot: does every word the canvas draws
-    exist in the app (3,873 text runs), does every stated position, does any
-    HTML entity survive into a place where it renders literally, and does any
-    string differ only by its apostrophe. **Five findings**, the largest being
-    that `Task DNN Options` is drawn two ways and the app built one — which had
-    also scrambled the option copy on nine days. `specs/pass2-copy-sweep.md`,
-    `DECISIONS.md` D-097 … D-100.
-- **Pass 3 — the cross-screen literal sweep is complete.** Every colour and
-  font-size literal in the app checked against every literal in the canvas; it
-  found the run's worst transcription errors (§11). The per-screen fresh-eyes
-  re-verification has **not** run.
+  and `specs/pass1-*.md`. Findings: `DECISIONS.md` D-068 … D-096.
+- **Pass 2 — coverage, then the mechanical sweeps.** The coverage audit
+  re-walked the bundle as if for the first time and found **97 frames Phase 1
+  had never opened**, dispositioned by filename, which the brief forbids — the
+  reason the ledger is 874 rows and not 777 (§10). Then four sweeps asked what
+  re-reading cannot: does every word the canvas draws exist in the app (3,873
+  text runs over 575 frames), does every stated position, does any HTML entity
+  survive into a place where it renders literally, does any string differ only
+  by its apostrophe.
+- **Pass 3 — the rest of the declarations, then the frame itself.** A sweep over
+  twelve properties (**41,704 stated values**) found no defect. So the canvas
+  frame was served and rendered at its own 393 × 852 beside the running app,
+  which found one — and that finding was then generalised into a clipping probe
+  run over 60+ routes.
 
-**The brief's bar has not been met.** It asks for three consecutive passes that
-find nothing. Pass 2 changed several screens, so by the brief's own rule those
-restart — which is why no row is marked `DONE` on implementation.
+### What the passes found
+
+| Pass | Finding |
+| --- | --- |
+| 2 | `Task DNN Options` is drawn **two ways** and the app built one — and the numbered variant's step numbers had scrambled the option copy on 9 days |
+| 2 | the closing note under the last option row was never a field; on 23 days it says something the intro board does not |
+| 2 | the options board's column top, row gap and type ramp are stated **per day**; the app hardcoded one of each |
+| 2 | three strings drew a curly apostrophe where their frame draws a straight one |
+| 2 | the intro board's scene box and rule card move per day across **eight** layouts — day 74's scene was 147pt high of its frame |
+| 3 | the journey chapter's line is two rows at 393 and three at 375, and the scene band was painted over that third row, cutting it through the glyphs |
+
+Full write-ups: `specs/pass2-copy-sweep.md`. Decisions: D-097 … D-101.
+
+**Every sweep was re-run at HEAD and is clean**: 0 surviving entities, 0
+apostrophe divergences, 0 absent values in ten of twelve properties, and no
+clipping on any route. The 160 absences in `left` and `top` are all values the
+app computes rather than states, each resolved by reading or by measuring the
+running app.
+
+**The brief's bar has still not been met.** It asks for three consecutive passes
+that find nothing. Pass 2 and Pass 3 each found real defects, so the run ends
+one clean pass short — which is why no row is marked `DONE` on implementation.
 
 ### The 405 `DONE` rows, and why each is closed
 

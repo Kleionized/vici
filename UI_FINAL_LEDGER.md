@@ -6,7 +6,7 @@ statuses and notes are read back out of this file and re-applied.
 
 Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → `PASS_2` → `PASS_3` → `DONE`.
 
-**874 rows.** PASS_3: 219 · DONE: 405 · PASS_2: 250
+**874 rows.** PASS_3: 469 · DONE: 405
 
 | Bundle | Screen | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
@@ -252,337 +252,337 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | Lessons and Tasks | L01 Reader 23 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 24 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
 | Lessons and Tasks | L01 Reader 25 | — | DONE | 2026-08-15 | SUPERSEDED draft — verified: 3 frames match Lesson Scroll at the same index, 2 at a one-frame shift, 20 rewritten |
-| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | PASS_2 | 2026-08-15 | lesson cover card — content row + shared card template |
-| Lessons and Tasks | Task D01 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D01 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Lesson 01 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 02 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 03 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 04 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 05 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 06 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 07 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 08 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 09 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 10 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 11 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 12 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 13 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 14 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 15 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 16 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 17 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 18 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 19 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 20 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 21 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 22 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 23 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 24 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 25 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 26 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 27 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 28 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 29 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 30 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 31 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 33 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 34 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 35 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 36 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 37 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 38 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 39 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 40 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 41 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 42 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 43 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 44 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 45 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 46 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 47 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 48 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 49 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 50 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 51 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 52 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 53 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 54 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 55 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 56 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 57 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 58 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 59 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 60 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 61 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 62 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 63 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 64 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 65 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 66 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 67 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 68 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 69 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 70 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 71 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 72 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 73 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 74 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 75 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 76 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 77 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 78 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 79 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 80 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 81 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 82 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 83 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Lesson 84 | src/content/curriculum84.ts | PASS_3 | 2026-08-15 | lesson cover card — content row + shared card template |
+| Lessons and Tasks | Task D01 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D01 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D01 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D02 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D02 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D02 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D02 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D02 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D03 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D03 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D03 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D03 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D03 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D04 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D04 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D04 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D04 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D04 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D05 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D05 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D05 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D05 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D05 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D06 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D06 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D06 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D06 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D06 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D07 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D07 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D07 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D07 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D07 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D08 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D08 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D08 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D08 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D08 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D09 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D09 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D09 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D09 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D09 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D10 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D10 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D10 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D10 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D10 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D11 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D11 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D11 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D11 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D11 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D12 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D12 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D12 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D12 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D12 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D13 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D13 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D13 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D13 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D13 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D14 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D14 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D14 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D14 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D14 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D15 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D15 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D15 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D15 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D15 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D16 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D16 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D16 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D16 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D16 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D17 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D17 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D17 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D17 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D17 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D18 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D18 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D18 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D18 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D18 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D19 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D19 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D19 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D19 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D19 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D20 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D20 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D20 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D20 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D20 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D21 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D21 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D21 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D21 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D21 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D22 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D22 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D22 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D22 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D22 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D23 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D23 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D23 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D23 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D23 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D24 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D24 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D24 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D24 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D24 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D25 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D25 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D25 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D25 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D25 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D26 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D26 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D26 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D26 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D26 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D27 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D27 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D27 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D27 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D27 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D28 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D28 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D28 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D28 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D28 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D29 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D29 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D29 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D29 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D29 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D30 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D30 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D30 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D30 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D30 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D31 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D31 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D31 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D31 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D31 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D33 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D33 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D33 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D33 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D33 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D34 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D34 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D34 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D34 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D34 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D35 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D35 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D35 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D35 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D35 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D36 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D36 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D36 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D36 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D36 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D37 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D37 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D37 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D37 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D37 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D38 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D38 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D38 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D38 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D38 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D39 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D39 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D39 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D39 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D39 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D40 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D40 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D40 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D40 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D40 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D41 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D41 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D41 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D41 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D41 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D42 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D42 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D42 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D42 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D42 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D43 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D43 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D43 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D43 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D43 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D44 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D44 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D44 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D44 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D44 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D45 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D45 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D45 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D45 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D45 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D46 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D46 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D46 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D46 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D46 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D47 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D47 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D47 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D47 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D47 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D48 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D48 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D48 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D48 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D48 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D49 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D49 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D49 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D49 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D49 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D50 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D50 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D50 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D50 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D50 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D51 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D51 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D51 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D51 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D51 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D52 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D52 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D52 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D52 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D52 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D53 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D53 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D53 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D53 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D53 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D54 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D54 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D54 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D54 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D54 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D55 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D55 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D55 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D55 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D55 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D56 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D56 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D56 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D56 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D56 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D57 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D57 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D57 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D57 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D57 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D58 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D58 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D58 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D58 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D58 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D59 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D59 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D59 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D59 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D59 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D60 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D60 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D60 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D60 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D60 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D61 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D61 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D61 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D61 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D61 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D62 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D62 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D62 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D62 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D62 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D63 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D63 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D63 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D63 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D63 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D64 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D64 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D64 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D64 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D64 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D65 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D65 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D65 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D65 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D65 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D66 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D66 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D66 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D66 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D66 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D67 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D67 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D67 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D67 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D67 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D68 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D68 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D68 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D68 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D68 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D69 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D69 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D69 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D69 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D69 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D70 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D70 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D70 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D70 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D70 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D71 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D71 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D71 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D71 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D71 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D72 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D72 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D72 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D72 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D72 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D73 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D73 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D73 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D73 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D73 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D74 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D74 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D74 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D74 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D74 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D75 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D75 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D75 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D75 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D75 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D76 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D76 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D76 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D76 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D76 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D77 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D77 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D77 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D77 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D77 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D78 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D78 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D78 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D78 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D78 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D79 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D79 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D79 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D79 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D79 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D80 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D80 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D80 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D80 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D80 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D81 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D81 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D81 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D81 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D81 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D82 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D82 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D82 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D82 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D82 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D83 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D83 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D83 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D83 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D83 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
-| Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 1 of 3 |
-| Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | PASS_2 | 2026-08-15 | daily task, page 2 of 3 |
+| Lessons and Tasks | Task D84 Intro | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 1 of 3 |
+| Lessons and Tasks | Task D84 Options | src/app/task/[day].tsx | PASS_3 | 2026-08-15 | daily task, page 2 of 3 |
 | Lessons and Tasks | Task D84 Card | src/app/task/[day].tsx | DONE | 2026-08-15 | daily task, page 3 of 3 |
 | Lesson 1 Surviving the Night | L1 Frame 01 | src/components/lesson/pages.tsx | DONE | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
 | Lesson 1 Surviving the Night | L1 Frame 02 | src/components/lesson/pages.tsx | DONE | 2026-08-15 | DUPLICATE — verified: all 26 hash-identical to Lesson Scroll N with the label normalised away |
@@ -784,7 +784,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 | vici-prev | Add Guard Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Add Morning Muster Sheet | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
 | vici-prev | Six Steps Checklist | — | DONE | 2026-08-15 | SUPERSEDED — previous-generation canvas; the two copies verified byte-identical with cmp |
-| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_2 | 2026-08-15 | export of the campaign map |
+| exports/Journey Campaign | Journey Campaign | src/components/journey/JourneyScreens.tsx | PASS_3 | 2026-08-15 | export of the campaign map |
 | exports/Lesson Detail | Story Detail | src/app/lesson-overview/[slug].tsx | PASS_3 | 2026-08-15 | export — lesson cover/detail |
 | exports/Lesson Parts | Story Tracks | src/app/lesson-overview/[slug].tsx | PASS_3 | 2026-08-15 | export — lesson parts list |
 | screenshots/bold-check | Task D10 Options | — | DONE | 2026-08-15 | HARNESS — the author's own check render; the main canvas is the applied result (DECISIONS D-061) |
