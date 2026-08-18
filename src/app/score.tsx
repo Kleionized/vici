@@ -252,6 +252,9 @@ function NightHeader({ score, insetTop, onBack }: { score: ReturnType<typeof bui
 
 // The plot's own frame inside the 393 × 236 chart box, read off the canvas: the
 // line runs 56 → 352, and 1,400 sits at y 1 with 800 at y 190.
+/** The two windows the range control offers, in days. */
+const SHORT_SPAN = 90;
+const LONG_SPAN = 365;
 const PLOT_L = 56;
 const PLOT_R = 352;
 const PLOT_TOP = 1;
@@ -275,7 +278,7 @@ function OverTime({
   onRange: (r: '3M' | '1Y') => void;
 }) {
   const id = useId().replace(/:/g, '');
-  const span = range === '3M' ? 90 : 365;
+  const span = range === '3M' ? SHORT_SPAN : LONG_SPAN;
   const from = Math.max(0, history.values.length - span);
   const values = sample(history.values.slice(from), 48);
   const scale = niceScale(values, threshold);
@@ -305,8 +308,14 @@ function OverTime({
     <>
       <AppText style={[sans('600'), { position: 'absolute', left: 20, top: 26, fontSize: 18, letterSpacing: -0.2, color: '#1D1C1A' }]}>Score over time</AppText>
 
+      {/* The two ranges can only differ once the record is longer than the
+          shorter of them: below 90 days both windows cover everything there is,
+          so the pills swapped their highlight and the line never moved. The
+          canvas draws them because it composes a filled-in account. Offering a
+          choice that cannot change the answer is worse than not offering it,
+          so they appear when there is something to choose between. */}
       <View style={{ position: 'absolute', right: 16, top: 22, flexDirection: 'row', gap: 6 }}>
-        {(['3M', '1Y'] as const).map((r) => (
+        {(history.values.length > SHORT_SPAN ? (['3M', '1Y'] as const) : []).map((r) => (
           <PressScale
             key={r}
             onPress={() => onRange(r)}
