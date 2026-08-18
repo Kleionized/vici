@@ -57,21 +57,22 @@ export default function LessonReader() {
         interactive={page.k === 'pick' || (page.k === 'column' && page.parts.some((p) => p.t === 'picklist'))}
         onClose={close}
         onNext={next}
-        footer={cta ? <Cta cta={cta} onPress={next} bottomInset={insets.bottom} /> : null}>
-        {page.k === 'column' ? (
-          page.parts.map((part, i) => <Part key={i} part={part} />)
-        ) : (
-          // The board pages are not centred on the screen — they state their own
-          // top and foot — so they opt out of the stack rather than sit in it.
-          //
-          // The pick board owns its taps: its rows are the answer and its pill
-          // is the way on. The options board draws no pill, so it stays
-          // transparent to touch and the page advances by tapping it, like the
-          // 1,241 pages that are just reading.
-          <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} pointerEvents={page.k === 'pick' ? 'box-none' : 'none'}>
-            <Board page={page} />
-          </View>
-        )}
+        footer={cta ? <Cta cta={cta} onPress={next} bottomInset={insets.bottom} /> : null}
+        overlay={
+          page.k === 'column' ? null : (
+            // The board pages state their own top and foot, so they sit over
+            // the scroller rather than in it.
+            //
+            // The pick board owns its taps: its rows are the answer and its
+            // pill is the way on. The options board draws no pill, so it stays
+            // transparent to touch and the page advances by tapping it, like
+            // the 1,241 pages that are just reading.
+            <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} pointerEvents={page.k === 'pick' ? 'box-none' : 'none'}>
+              <Board page={page} />
+            </View>
+          )
+        }>
+        {page.k === 'column' ? page.parts.map((part, i) => <Part key={i} part={part} />) : null}
       </LessonScroll>
     </>
   );

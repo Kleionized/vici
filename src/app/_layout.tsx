@@ -51,6 +51,13 @@ export default function RootLayout() {
               screenOptions={{
                 headerShown: false,
                 contentStyle: { backgroundColor: colors.bg },
+                // One push everywhere: the new screen comes in from the right
+                // and the gesture takes it back. The default varies by platform
+                // and by presentation, which made the app feel assembled rather
+                // than designed.
+                animation: 'slide_from_right',
+                animationDuration: 260,
+                gestureEnabled: true,
               }}>
               {/* the day-3 letter is delivered over Today — fade it in like an overlay */}
               <Stack.Screen name="letter" options={{ animation: 'fade', gestureEnabled: false }} />

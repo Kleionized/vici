@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, ScrollView, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
 
 import {
@@ -325,7 +325,13 @@ export function Board({ page }: { page: Extract<ReaderPage, { k: 'pick' | 'board
           <PickRows options={page.options} gap={page.rowGap ?? 12} multi={page.multi} />
         </>
       ) : (
-        <>
+        // Five option rows and a closing note is taller than the band the frame
+        // gives them on a short screen, so the list scrolls inside its own box
+        // rather than running out of it. A board that fits does not move.
+        <ScrollView
+          style={{ alignSelf: 'stretch' }}
+          contentContainerStyle={{ flexGrow: 1, gap: page.gap }}
+          showsVerticalScrollIndicator={false}>
           {page.title ? <Run r={page.title.r} s={page.title.s} /> : null}
           <View style={{ alignSelf: 'stretch', gap: page.rowGap ?? 18 }}>
             {page.options.map((o, i) => (
@@ -337,7 +343,7 @@ export function Board({ page }: { page: Extract<ReaderPage, { k: 'pick' | 'board
               {c.text}
             </AppText>
           ))}
-        </>
+        </ScrollView>
       )}
     </View>
   );

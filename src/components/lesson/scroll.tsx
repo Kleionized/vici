@@ -1,5 +1,6 @@
-import { useId, useState, type ReactNode } from 'react';
-import { View } from 'react-native';
+import { useId, type ReactNode } from 'react';
+import { ScrollView, View } from 'react-native';
+import Animated, { Easing, FadeIn, LinearTransition, useReducedMotion } from 'react-native-reanimated';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, ClipPath, Defs, Ellipse, LinearGradient as SvgLinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -26,6 +27,14 @@ const noiseDark = require('../../../assets/images/noise-dark.png');
 
 /** The gap a page uses when it states none: the reading pages' own value. */
 const STACK_GAP = 48;
+
+/**
+ * What a page keeps clear of the chrome, top and bottom. The Close row and the
+ * rail occupy the first ~56, the chevron the last ~54; 72 clears both, and
+ * using one value for both ends leaves the page centred where the frame
+ * centres it.
+ */
+const PAGE_INSET = 72;
 
 /* ------------------------------------------------------------------- slots */
 
@@ -235,6 +244,7 @@ export function LessonScroll({
   onClose,
   onNext,
   footer,
+  overlay,
   interactive = false,
   children,
 }: {
@@ -254,25 +264,23 @@ export function LessonScroll({
   onNext: () => void;
   /** The two frames that do carry a pill draw it here. */
   footer?: ReactNode;
+  /**
+   * The pick and task-options boards, which state their own top and foot rather
+   * than being centred. They sit over the scroller, not inside it, or their
+   * absolute tops would resolve against the scrolling content instead of the
+   * screen.
+   */
+  overlay?: ReactNode;
   children: ReactNode;
 }) {
-  const [height, setHeight] = useState(0);
   const insets = useSafeAreaInsets();
+  const reduced = useReducedMotion();
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <Grain source={noiseDark} opacity={0.07} />
 
-      {/* the whole board advances the page — there is no button to press */}
-      <PressScale
-        onPress={onNext}
-        accessibilityRole="button"
-        accessibilityLabel="Next"
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, minHeight: 0 }}>
-        <View />
-      </PressScale>
-
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']} pointerEvents="box-none">
-        <View style={{ flex: 1 }} onLayout={(e) => setHeight(e.nativeEvent.layout.height)} pointerEvents="box-none">
+        <View style={{ flex: 1 }} pointerEvents="box-none">
           <PressScale
             onPress={onClose}
             accessibilityRole="button"
@@ -281,31 +289,68 @@ export function LessonScroll({
             <AppText style={[sans('400'), { fontSize: 17, color: '#3A3934' }]}>Close</AppText>
           </PressScale>
 
-          {/* canvas 108 — a 2pt hairline, never a dot row */}
+          {/* canvas 108 — a 2pt hairline, never a dot row. The fill grows into
+              its new width rather than jumping: it is the one part of the
+              reader that shows progress, and a step it animates through reads
+              as progress where a jump reads as a redraw. */}
           <View style={{ position: 'absolute', left: 16, right: 16, top: 54, height: 2, borderRadius: 1, backgroundColor: 'rgba(0,0,0,0.05)', zIndex: 5 }}>
-            <View style={{ width: `${Math.round(((index + 1) / count) * 100)}%`, height: 2, borderRadius: 1, backgroundColor: '#B4B1AB' }} />
+            <Animated.View
+              layout={reduced ? undefined : LinearTransition.duration(320).easing(Easing.bezier(0.2, 0, 0, 1))}
+              style={{ width: `${Math.round(((index + 1) / count) * 100)}%`, height: 2, borderRadius: 1, backgroundColor: '#B4B1AB' }}
+            />
           </View>
 
           {/* The stack is `inset:0` on the canvas's whole 852 — status bar and
               home indicator included — so its centre is the screen's centre, not
               the safe box's. Pinning it to the real insets keeps that true on
               every device; pinning it to the literal 54 is only right when the
-              top inset is 54 and the bottom is 0. */}
-          <View
-            pointerEvents={interactive ? 'box-none' : 'none'}
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              top: -insets.top,
-              height: height + insets.top + insets.bottom,
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap,
-              paddingHorizontal: 38,
-            }}>
-            {children}
-          </View>
+              top inset is 54 and the bottom is 0.
+
+              It scrolls. The canvas draws every page at 852 and centres it, but
+              a task page with a 190pt scene and a rule card under it is taller
+              than that on a small phone, and a centred box with no scroll just
+              puts the ends off-screen. `flexGrow` with a centred main axis
+              keeps a page that fits exactly where the frame centres it, and
+              lets a taller one move.
+
+              The padding is symmetric on purpose: the chrome above (the Close
+              row and the rail) and below (the chevron) each need about 72, and
+              matching them keeps the midpoint the frame's own. */}
+          <ScrollView
+            // Pinned to all four edges rather than given a measured height:
+            // the height came from an `onLayout` that is 0 on the first paint,
+            // so the scroller opened one status bar tall and the page was
+            // already scrolled out of it. Insets are negative here because this
+            // sits inside the safe box and the frame centres on the whole 852.
+            style={{ position: 'absolute', left: 0, right: 0, top: -insets.top, bottom: -insets.bottom }}
+            contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 38, paddingVertical: PAGE_INSET }}
+            showsVerticalScrollIndicator={false}
+            // A tap anywhere still turns the page; a drag scrolls it instead.
+            // A pressable inside a scroller already tells the two apart.
+            keyboardShouldPersistTaps="handled">
+            {/* The press target grows to fill whatever the scroller gives it,
+                so a tap on the empty half of a short page turns it too. `static`
+                because scaling a whole page of type on touch reads as a glitch,
+                not as feedback. */}
+            <PressScale
+              onPress={onNext}
+              accessibilityRole="button"
+              accessibilityLabel="Next"
+              static
+              style={{ flexGrow: 1, alignSelf: 'stretch', minHeight: 0, alignItems: 'center', justifyContent: 'center' }}>
+              <Animated.View
+                // Keyed on the page, so each arrives rather than the words
+                // swapping under the reader mid-sentence.
+                key={index}
+                entering={reduced ? undefined : FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))}
+                pointerEvents={interactive ? 'box-none' : 'none'}
+                style={{ alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', gap }}>
+                {children}
+              </Animated.View>
+            </PressScale>
+          </ScrollView>
+
+          {overlay}
 
           {/* 42 from the 852 board's own foot, which draws no home indicator */}
           {chevron ? (
