@@ -1251,3 +1251,39 @@ confirms. The verifier had been told to check exactly this and missed it.
   `content/interactiveLessons.ts` and `content/interactive/` are now referenced
   by nothing. Left in place: that is authored writing, not dead UI, and deleting
   it is the author's call.
+
+- **D-117 · The action card is centred, not pinned.** Every board that stands a
+  card between a title and a control drew it at a `top` copied off a frame:
+  132 and 194 on the morning flow, 182 on the night one, 132 and 194 again on
+  the check-in sheet. Measured in the running app at 852, the step the user
+  pointed at came out **42 above the card and 176 below** — and the gap widens
+  on a taller phone, because the title is pinned to the head and the control to
+  the foot while nothing holds the middle.
+
+  Those tops are not wrong so much as stale. `Morning Task Check` in the
+  previous bundle put the card at canvas 186 (app 132) **with an honesty line
+  under the discs**; `UI Final` deleted that line and redrew the frame with the
+  card at canvas 236 (app 182). The app kept the old number on the step that
+  gained no new frame.
+
+  So the card now sits in an `ActionBand`: an absolute box from the title's foot
+  (90) to the top of whatever control the step draws — the discs clear 140
+  (66 off the foot, 74 tall), the pill clears 104 (50 and 54) — with the card
+  centred in it. `ActionCard` lays out in flow when it is given no `top`, and
+  keeps its canvas gutters either way.
+
+  Measured after, on an 852 board:
+
+  | board | before | after |
+  | --- | --- | --- |
+  | morning · did you complete this task | 42 / 176 | **109 / 109** |
+  | morning · one action for today | 74 / 158 | **116 / 116** |
+  | night · tonight's action | 92 / 170 | **105 / 105** |
+  | check-in sheet · did you complete this task | 42 / 176 | **98 / 98** |
+
+  On a 932-tall board the first reads 149 / 149, which is the point: the numbers
+  follow the screen instead of the frame.
+
+  The check-in sheet also still carried "Honesty counts more than the streak."
+  under its discs — the line `UI Final` deleted from the day flow, on a board
+  the two surfaces are meant to draw identically. Gone.

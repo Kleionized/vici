@@ -3,7 +3,7 @@ import { type LayoutChangeEvent, Modal, ScrollView, TextInput, View } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
+import { ActionBand, ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
 import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
 import { checkinPartNow } from '@/lib/routines';
 import { colors, sans } from '@/lib/theme';
@@ -843,14 +843,18 @@ export function CheckinFlow({
           {morning && step === 2 ? (
             <>
               <BoardTitle>Did you complete this task?</BoardTitle>
-              <ActionCard top={132} art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayAction} />
+              <ActionBand bottom={66 + 74}>
+                <ActionCard art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayAction} />
+              </ActionBand>
             </>
           ) : null}
 
           {morning && step === 3 ? (
             <>
               <BoardTitle>One action for today</BoardTitle>
-              <ActionCard top={194} art={<NightActionArt />} mark="sun" label="Today" line={todayAction} />
+              <ActionBand bottom={50 + 54}>
+                <ActionCard art={<NightActionArt />} mark="sun" label="Today" line={todayAction} />
+              </ActionBand>
             </>
           ) : null}
 
@@ -876,9 +880,6 @@ export function CheckinFlow({
                   setStep(3);
                 }}
               />
-              <AppText center style={[sans('400'), { position: 'absolute', left: 36, right: 36, bottom: 14, fontSize: 13, lineHeight: 19, color: '#8B8882' }]}>
-                Honesty counts more than the streak.
-              </AppText>
             </>
           ) : null}
           {morning && step === 3 ? <ActionButton label="Got it" onPress={() => done()} /> : null}

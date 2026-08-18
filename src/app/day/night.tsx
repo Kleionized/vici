@@ -6,6 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import {
   ActionButton,
+  ActionBand,
   ActionCard,
   ActionTitle,
   DayBadge,
@@ -250,7 +251,10 @@ export default function Night() {
         {step === 5 ? (
           <>
             <ActionTitle>Tonight’s action</ActionTitle>
-            <ActionCard top={182} art={<NightActionArt />} mark="bed" label={lessonTitle} line={task} />
+            {/* the pill sits 50 off the foot and stands 54, with Skip under it */}
+            <ActionBand bottom={50 + 54}>
+              <ActionCard art={<NightActionArt />} mark="bed" label={lessonTitle} line={task} />
+            </ActionBand>
           </>
         ) : null}
 

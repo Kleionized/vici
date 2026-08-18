@@ -5,6 +5,7 @@ import { Platform, TextInput, View } from 'react-native';
 
 import {
   ActionButton,
+  ActionBand,
   ActionCard,
   CupMark,
   DawnBand,
@@ -217,14 +218,20 @@ export default function Morning() {
         {step === 1 ? (
           <>
             <BoardTitle>Did you complete this task?</BoardTitle>
-            <ActionCard top={132} art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayTask} />
+            {/* the discs sit 66 off the foot and stand 74, so the band clears 140 */}
+            <ActionBand bottom={66 + 74}>
+              <ActionCard art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayTask} />
+            </ActionBand>
           </>
         ) : null}
 
         {step === 5 ? (
           <>
             <BoardTitle>One action for today</BoardTitle>
-            <ActionCard top={194} art={<NightActionArt />} mark="sun" label="Today" line={todayTask} />
+            {/* the pill sits 50 off the foot and stands 54 */}
+            <ActionBand bottom={50 + 54}>
+              <ActionCard art={<NightActionArt />} mark="sun" label="Today" line={todayTask} />
+            </ActionBand>
           </>
         ) : null}
 
