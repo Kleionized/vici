@@ -8,9 +8,8 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useTabBarHeight } from '@/components/StoicTabBar';
 import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
 import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
-import { useCheckins, useCurrentLesson, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
-import { lessonForDay } from '@/content/curriculum84';
-import { roman } from '@/lib/lessonArt';
+import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
+import { lessonForDay, weekFor, type Curriculum84Lesson, type Curriculum84Week } from '@/content/curriculum84';
 import { buildScore } from '@/lib/score';
 import { colors, fonts, sans } from '@/lib/theme';
 
@@ -54,7 +53,6 @@ const DAY_STEPS: DayStep[] = [
 export default function Today() {
   const router = useRouter();
   const user = useCurrentUser();
-  const current = useCurrentLesson();
   const progress = useLessonProgressMap();
   const checkins = useCheckins();
   const events = useEvents();
@@ -70,7 +68,7 @@ export default function Today() {
   // re-render while the screen is open.
   const [now] = useState(() => Date.now());
 
-  if (current === undefined || progress === undefined || checkins === undefined || events === undefined) {
+  if (progress === undefined || checkins === undefined || events === undefined) {
     return <LoadingView />;
   }
 
@@ -111,6 +109,7 @@ export default function Today() {
   // it takes the lesson's own name and glyph and is set a step smaller. One
   // named by hand in the night check-in stays the generic state.
   const dayLesson = lessonForDay(day);
+  const dayWeek = dayLesson ? weekFor(dayLesson.week) : undefined;
   const step: DayStep = todayCheckin?.dailyAction
     ? { when: 'Today', caption: todayCheckin.dailyAction, art: NoteArt }
     : dayLesson
@@ -156,12 +155,12 @@ export default function Today() {
             </View>
             <View style={{ height: pageH }}>
               <PageTwo
-                lesson={current}
-                done={lessonsDone % 6}
+                lesson={dayLesson}
+                week={dayWeek}
                 step={step}
                 stepDone={stepDone}
                 onStep={() => (dayLesson ? router.push(`/task/${dayLesson.day}`) : void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone }))}
-                onLesson={() => (current ? router.push(`/lesson-overview/${current.lesson.slug}`) : router.push('/lessons-browser'))}
+                onLesson={() => (dayLesson ? router.push(`/lesson-card/${dayLesson.day}`) : router.push('/lessons-browser'))}
                 onLibrary={() => router.push('/(app)/library')}
               />
             </View>
@@ -425,8 +424,14 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
   );
 }
 
-/** The lesson in front of you, with a dome of first light and a six-step rule. */
-function LessonCard({ title, meta, done, onPress }: { title: string; meta: string; done: number; onPress: () => void }) {
+/**
+ * The lesson in front of you, under a dome carrying its own plate.
+ *
+ * The canvas draws the rail as six segments; a week is seven lessons, so a
+ * six-slot rail can never fill. It is one per lesson in the week instead, which
+ * is what the lesson card's own dot rail already does (DECISIONS D-112).
+ */
+function LessonCard({ title, meta, day, done, count, onPress }: { title: string; meta: string; day?: number; done: number; count: number; onPress: () => void }) {
   const id = useId().replace(/:/g, '');
   return (
     <PressScale
@@ -449,14 +454,14 @@ function LessonCard({ title, meta, done, onPress }: { title: string; meta: strin
       </AppText>
       <AppText style={[sans('400'), { position: 'absolute', left: 20, top: 56, fontSize: 12.5, color: colors.textSoft }]}>{meta}</AppText>
 
-      <LessonDome id={id} />
+      <LessonDome id={id} day={day} />
 
       <Svg width={8} height={14} viewBox="0 0 8 14" fill="none" style={{ position: 'absolute', right: 16, top: 22 }}>
         <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke={colors.textSoft} strokeWidth={2} strokeLinecap="round" />
       </Svg>
 
       <View style={{ position: 'absolute', left: 20, right: 20, bottom: 20, flexDirection: 'row', gap: 7 }}>
-        {[0, 1, 2, 3, 4, 5].map((i) => (
+        {Array.from({ length: count }, (_, i) => (
           <View key={i} style={{ flex: 1, height: 4.5, borderRadius: 2.5, backgroundColor: i < done ? colors.ink : 'rgba(19,19,19,0.15)' }} />
         ))}
       </View>
@@ -468,21 +473,25 @@ function LessonCard({ title, meta, done, onPress }: { title: string; meta: strin
 
 function PageTwo({
   lesson,
-  done,
+  week,
   step,
   stepDone,
   onStep,
   onLesson,
   onLibrary,
 }: {
-  lesson: { lesson: { title: string; orderIndex: number; week: number; dayInWeek: number } } | null | undefined;
-  done: number;
+  lesson: Curriculum84Lesson | undefined;
+  week: Curriculum84Week | undefined;
   step: DayStep;
   stepDone: boolean;
   onStep: () => void;
   onLesson: () => void;
   onLibrary: () => void;
 }) {
+  // Where this lesson sits in its own week, and how much of the week is behind
+  // it. The canvas prints "Lesson 5 · Week II" — a within-week index and a
+  // roman week, which a global lesson number can never produce.
+  const indexInWeek = week && lesson ? week.lessons.findIndex((l) => l.day === lesson.day) : -1;
   return (
     <View style={{ flex: 1 }}>
       {/* design 138 — 47 below the mark row */}
@@ -490,11 +499,11 @@ function PageTwo({
 
       <View style={{ marginTop: 11.5 }}>
         <LessonCard
-          title={lesson?.lesson.title ?? 'Start the first lesson'}
-          // the canvas prints a roman week and a within-week lesson index — a
-          // global index can never pair "Lesson 5" with "Week II"
-          meta={lesson ? `Lesson ${lesson.lesson.dayInWeek} · Week ${roman(lesson.lesson.week)}` : 'Week I'}
-          done={done}
+          title={lesson?.title ?? 'Start the first lesson'}
+          meta={lesson && week ? `Lesson ${indexInWeek + 1} · Week ${week.roman}` : 'Week I'}
+          day={lesson?.day}
+          done={indexInWeek < 0 ? 0 : indexInWeek}
+          count={week?.lessons.length ?? 7}
           onPress={onLesson}
         />
       </View>

@@ -82,7 +82,8 @@ export default function All() {
     [
       'The long game',
       [
-        { title: 'The campaign', detail: 'Five grounds', to: '/(app)/library' },
+        { title: 'The library', detail: 'Twelve weeks', to: '/(app)/library' },
+        { title: 'The campaign', detail: 'Five grounds', to: '/journey/landing' },
         { title: 'Chapter I · The Landing', to: '/journey/landing' },
         { title: 'Chapter II · The Crossing', to: '/journey/crossing' },
         { title: 'Chapter III · The Highlands', to: '/journey/highlands' },

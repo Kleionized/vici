@@ -1159,3 +1159,55 @@ confirms. The verifier had been told to check exactly this and missed it.
   is now titled as one. And `Days are counted, never owed.` was followed by
   `A slip does not send you to zero.`, which is the same sentence in plain
   English — the gloss stays and the epigram goes.
+
+- **D-112 · The home page reads the curriculum the bundle actually ships.**
+  `Today`'s lesson card was driven by `useCurrentLesson()`, which reads the
+  legacy 110-lesson interactive set in `content/interactiveLessons.ts` — hence
+  "The slip equation", a lesson that is in no week of the twelve. It now reads
+  `lessonForDay(day)` out of `content/curriculum84.ts`, the 84 lessons
+  transcribed off the `Lesson NN` frames, and opens `/lesson-card/[day]` rather
+  than the old `/lesson-overview/[slug]`.
+
+  Two things follow from the real data. The meta line prints the within-week
+  index and the roman week the canvas states ("Lesson 7 · Week II"), which it
+  can now do honestly because a lesson knows its week. And the rail: the canvas
+  draws **six** segments, but a week is seven lessons, so a six-slot rail can
+  never fill. It is one segment per lesson in the week — the same count the
+  lesson card's own dot rail draws from the same array. Deliberate deviation.
+
+- **D-113 · The dome carries the day's own plate.** The `Today Home II` frame
+  draws one object under the card's 108 × 80 dome, a luggage tag, because a
+  frame can only draw one lesson. The 83 plates are already transcribed at
+  240 × 200 for the lesson cards, so the dome draws the day's own. Fitted to the
+  dome's width (0.45, which makes it 90 against the dome's 80) and hung from its
+  foot: the ten points come off the **top**, because a plate is a ground band
+  with an object standing on it under a sky, 71 of the 83 draw nothing above
+  y 30, and every one would lose the object's footing if the ten came off the
+  bottom. Day 32 has no frame in the bundle and no plate; it and any day past
+  the curriculum fall back to the canvas's own tag, which is still drawn in full.
+
+  The lessons browser had the same problem in a worse form — twelve invented
+  objects cycled by lesson number, so lesson 13 and lesson 25 shared a face. It
+  shelves `CURRICULUM_84` now and each tile stands its own plate on the tile's
+  foot. 250 lines of stand-in drawings went with it.
+
+- **D-114 · The Library tab is the twelve weeks.** It rendered `JourneyScroll`,
+  the four campaign chapters. It is Reset through Leave It Behind now — every
+  week board end to end, each with its name, its line, its scene and all seven
+  of its lessons.
+
+  A week board is the canvas's `Week N …` frame. The bundle draws each week
+  twice, `Week I Reset` and `Week I Reset P2`, and the diff between the pair is
+  the row column alone — the header and the scene do not move — so the pushed
+  `/week/[week]` route pins the scene and scrolls only the rows (D-019). In the
+  Library that inner scroller is exactly what must not exist, so a board renders
+  at its **natural height** with all seven rows standing and the page scrolls.
+  Same pixels either way, which is why the board's pieces now live in
+  `components/library/WeekBoard` and both surfaces draw them.
+
+  Measured in the running app against the frame: the week name at (24, 114), its
+  line at (24, 158), the first row at 486 on an 80 pitch — the canvas's own
+  numbers, once the 54pt status bar is added back.
+
+  The campaign has not gone anywhere: it is still `/journey/[chapter]`, and
+  `All` lists it under its own name alongside the library.

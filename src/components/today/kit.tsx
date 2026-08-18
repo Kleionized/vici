@@ -2,6 +2,8 @@ import { useId } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
+import { Scene } from '@/components/task/TaskScene';
+import { LESSON_PLATES, LESSON_PLATE_H, LESSON_PLATE_W } from '@/content/lessonPlates';
 import { AppText, PressScale } from '@/components/ui';
 import { colors, sans } from '@/lib/theme';
 
@@ -460,16 +462,55 @@ export function NoteArt({ id }: { id: string }) {
 
 /* ------------------------------------------------------------- lesson card art */
 
-/** The dome of first light on the lesson card, with the day's mark inside it. */
-export function LessonDome({ id }: { id: string }) {
+/**
+ * The dome on the lesson card — canvas right 44, top 16, 108 × 80, the top
+ * corners fully rounded.
+ *
+ * The frame draws one object under it, a luggage tag, because a frame can only
+ * draw one lesson. The 83 lesson plates are transcribed off the `Lesson NN`
+ * cards at 240 × 200, so the dome carries **the day's own plate** instead,
+ * fitted to its 80 height (96 wide, centred in the 108) and standing on the
+ * same paper the frame draws. Day 32 has no card frame in the bundle and no
+ * plate, so it — and a day past the curriculum — falls back to the tag the
+ * canvas itself draws, which is why that drawing is still here in full.
+ */
+export function LessonDome({ id, day }: { id: string; day?: number }) {
+  const plate = day != null ? LESSON_PLATES[day] : undefined;
   return (
     <View style={{ position: 'absolute', right: 44, top: 16, width: 108, height: 80, borderTopLeftRadius: 999, borderTopRightRadius: 999, overflow: 'hidden' }}>
-      <Svg width={108} height={80} viewBox="0 0 108 80">
+      {/* the dome's own paper, under whatever stands on it */}
+      <Svg width={108} height={80} viewBox="0 0 108 80" style={{ position: 'absolute', left: 0, top: 0 }}>
         <Defs>
           <SvgLinearGradient id={`dome${id}`} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor="#F1F0EA" />
             <Stop offset="1" stopColor="#E8E6DF" />
           </SvgLinearGradient>
+        </Defs>
+        <Rect x={0} y={0} width={108} height={80} fill={`url(#dome${id})`} />
+      </Svg>
+      {plate ? (
+        // Fitted to the dome's width, and hung from its foot: 108 ÷ 240 is 0.45,
+        // which makes the plate 90 tall against the dome's 80, so ten points go.
+        // They go off the top, because a plate is a ground band with an object
+        // standing on it under a sky — 71 of the 83 draw nothing at all above
+        // y 30, and every one of them would lose the object's own footing if the
+        // ten came off the bottom instead.
+        <View style={{ position: 'absolute', left: 0, bottom: 0 }}>
+          <Scene layers={plate} boxW={LESSON_PLATE_W} boxH={LESSON_PLATE_H} width={108} />
+        </View>
+      ) : (
+        <DomeTag id={id} />
+      )}
+    </View>
+  );
+}
+
+/** The frame's own object: a warm wash, a tag on its string, the shadow it casts. */
+function DomeTag({ id }: { id: string }) {
+  return (
+    <View style={{ position: 'absolute', left: 0, top: 0 }}>
+      <Svg width={108} height={80} viewBox="0 0 108 80">
+        <Defs>
           <RadialGradient id={`domeGlow${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
             <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.5} />
             <Stop offset="0.42" stopColor="#E2BA78" stopOpacity={0.22} />
@@ -480,7 +521,6 @@ export function LessonDome({ id }: { id: string }) {
             <Stop offset="1" stopColor="#1D1C19" />
           </SvgLinearGradient>
         </Defs>
-        <Rect x={0} y={0} width={108} height={80} fill={`url(#dome${id})`} />
         <Ellipse cx={54} cy={39} rx={35} ry={29} fill={`url(#domeGlow${id})`} />
         <Ellipse cx={55} cy={66} rx={21} ry={3.5} fill="rgba(40,38,32,0.12)" />
         <Rect x={37} y={30} width={36} height={23} rx={5} fill={`url(#tag${id})`} transform="rotate(-16 54 42)" />
