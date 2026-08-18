@@ -219,7 +219,13 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
       accessibilityLabel={`${step.when}. ${step.caption}`}
       style={{
         marginHorizontal: 12,
-        height: 274,
+        // The canvas composes this card at 274 with a two-line caption, which
+        // leaves 28 under it. Real captions run to three and four lines, and a
+        // fixed height meant the third line sat flush on the edge and the
+        // fourth was cut off by `overflow: hidden`. A minimum keeps the
+        // canvas's card exactly where it composed it and lets a longer
+        // sentence push the foot down instead of running out of the bottom.
+        minHeight: 274,
         borderRadius: 20,
         borderCurve: 'continuous',
         overflow: 'hidden',
@@ -269,14 +275,20 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         ) : null}
       </View>
 
-      {/* a lesson's sentence is longer, so the canvas sets it one step down and
-          drops the tracking with it */}
+      {/* A lesson's sentence is longer, so the canvas sets it one step down and
+          drops the tracking with it.
+
+          This is the card's only child in flow — the night, the label and the
+          check are all absolute — so its own height is what gives the card
+          one. `marginTop` puts it at the top the frame states and the
+          `paddingBottom` below is the gap the frame leaves under a two-line
+          sentence, which is now kept at any length. */}
       {step.lesson ? (
-        <AppText style={[sans('500'), { position: 'absolute', left: 20, right: 24, top: 190, fontSize: 15, lineHeight: 22, color: colors.text }]}>
+        <AppText style={[sans('500'), { marginTop: 190, marginLeft: 20, marginRight: 24, paddingBottom: 40, fontSize: 15, lineHeight: 22, color: colors.text }]}>
           {step.caption}
         </AppText>
       ) : (
-        <AppText style={[sans('600'), { position: 'absolute', left: 20, right: 24, top: 194, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
+        <AppText style={[sans('600'), { marginTop: 194, marginLeft: 20, marginRight: 24, paddingBottom: 28, fontSize: 18, lineHeight: 26, letterSpacing: -0.1, color: colors.text }]}>
           {step.caption}
         </AppText>
       )}
