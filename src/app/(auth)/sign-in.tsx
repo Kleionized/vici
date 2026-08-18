@@ -38,9 +38,6 @@ export default function SignIn() {
   const [notice, setNotice] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // The board switches the moment the field is in play.
-  const typing = focused || email.length > 0;
-
   const reset = () => {
     setError(null);
     setNotice(null);
@@ -60,7 +57,6 @@ export default function SignIn() {
    * board's own starting point, which is the same thing `back` already does
    * between the password and code steps.
    */
-  const canLeave = router.canGoBack() || typing;
   const leave = () => {
     reset();
     if (router.canGoBack()) return router.back();
@@ -103,6 +99,9 @@ export default function SignIn() {
   }
 
 
+  // The board switches the moment the field is in play.
+  const typing = focused || email.length > 0;
+
   if (mode === 'email') {
     return (
       <View style={{ flex: 1, backgroundColor: colors.bg }}>
@@ -121,7 +120,7 @@ export default function SignIn() {
                 The row itself is the one the board's own password and code
                 steps already use, so the affordance does not change shape
                 partway through the flow. */}
-            {canLeave ? (
+            {router.canGoBack() || typing ? (
               <View style={{ position: 'absolute', left: 0, top: 10, zIndex: 5 }}>
                 <PaperAuthBack onPress={leave} />
               </View>

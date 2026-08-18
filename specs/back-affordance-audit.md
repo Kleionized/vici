@@ -62,3 +62,65 @@ So the row appears when it has somewhere to go:
 
 Verified in the app: absent on the cold landing, present once you type, and it
 returns you to the SSO choice.
+
+---
+
+# Two defects found while verifying this
+
+## The `useMemoCache` crash on Today
+
+    Expected a constant size argument for each invocation of useMemoCache.
+    The previous cache was allocated with size 10 but size 9 was requested.
+      NoteArt (src/components/today/kit.tsx:397)
+      TaskCard (src/components/today/kit.tsx:207)
+
+`TaskCard` drew the step's art by **calling** it:
+
+```jsx
+<TaskNight id={id}>{step.art({ id })}</TaskNight>
+```
+
+Calling a component instead of rendering it runs its body — hooks included —
+inside the *caller's* hook scope. Six components can fill that slot
+(`PhoneDownArt`, `WaterArt`, `DoorwayArt`, `NoteArt`, `BedArt`,
+`LessonNightArt`), and the React Compiler gives each its own memo-cache size.
+So `TaskCard`'s cache size changed with the step, and React refused to shrink a
+cache it had already allocated.
+
+Fixed by rendering it, which gives each art component its own scope:
+
+```jsx
+function StepArt({ step, id }: { step: DayStep; id: string }) {
+  const Art = step.art;
+  return <Art id={id} />;
+}
+```
+
+`DayStep.art` is now typed `React.ComponentType<{ id: string }>` rather than a
+function returning an element, so the call site cannot regress.
+
+Swept for the same shape elsewhere: the only other match is `StoicTabBar`'s
+`item.icon(active)`, whose four factories are lowercase and hook-free — the
+compiler does not treat them as components, and calling them is safe.
+
+## The screens sitting too high
+
+`SafeAreaView` spends the inset as **padding**, and Yoga positions an absolutely
+positioned child against its parent's *border* box — so an absolute child of a
+SafeAreaView ignores the inset and sits at the very top of the screen. The
+codebase already knew this (`JourneyScreens.tsx:463` documents it and works
+around it); three screens did not.
+
+| Screen | control | was | now |
+| --- | --- | --- | --- |
+| `task/[day]` | Close | 12 | 66 |
+| `week/[week]` | Back | 10 | 64 |
+| `vow` | Settings | 10 | 64 |
+
+(Measured on web, where the mock forces `CANVAS_INSETS.top = 54`; a correctly
+inset control lands at 54 + its own top.) Each now wraps its children in one
+plain `View`, which is the fix already used on the journey screens.
+
+`lesson-card/[day]` was flagged by the same audit and turned out to be a false
+positive — it already had a plain `View` between the SafeAreaView and its
+absolute children, and measured 78 both before and after. Reverted.

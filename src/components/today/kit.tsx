@@ -96,8 +96,15 @@ export type DayStep = {
   when: string;
   /** The ask, as one plain sentence. */
   caption: string;
-  /** The thing itself, drawn into the card's night. */
-  art: (props: { id: string }) => React.ReactElement;
+  /**
+   * The thing itself, drawn into the card's night.
+   *
+   * A component, and it has to be *rendered* rather than called: each of the
+   * six is compiled with its own memo cache, so calling one inline would put
+   * that cache in the caller's hook scope and changing step would change the
+   * caller's cache size mid-life.
+   */
+  art: React.ComponentType<{ id: string }>;
   /**
    * When the task came from a lesson, its title. `Today Home Task` labels the
    * card with it, marks it with a bed rather than a crescent, and sets the
@@ -184,6 +191,21 @@ function TaskNight({ id, children }: { id: string; children: React.ReactNode }) 
 }
 
 /**
+ * The step's own art, as an element.
+ *
+ * `step.art` used to be invoked — `{step.art({ id })}` — which runs the art
+ * component's body inside `TaskCard`, hooks and all. The six art components are
+ * compiled with different memo-cache sizes, so moving from a step whose art
+ * needs ten slots to one that needs nine asked React to shrink a cache it had
+ * already allocated: "Expected a constant size argument for each invocation of
+ * useMemoCache." Rendering it gives each one its own scope.
+ */
+function StepArt({ step, id }: { step: DayStep; id: string }) {
+  const Art = step.art;
+  return <Art id={id} />;
+}
+
+/**
  * The day's one step: the night it belongs to, the hour it belongs to, the ask
  * in a sentence, and a ring you close by pressing the card.
  */
@@ -204,7 +226,9 @@ export function TaskCard({ step, done, onPress }: { step: DayStep; done: boolean
         backgroundColor: colors.surface,
         boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
       }}>
-      <TaskNight id={id}>{step.art({ id })}</TaskNight>
+      <TaskNight id={id}>
+        <StepArt step={step} id={id} />
+      </TaskNight>
 
       <View style={{ position: 'absolute', left: 20, top: 142, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>

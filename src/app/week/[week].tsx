@@ -63,52 +63,58 @@ export default function WeekOverview() {
       <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        {/* canvas 64 — a chevron and nothing else; these frames carry no word */}
-        <PressScale
-          onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
-          accessibilityRole="button"
-          accessibilityLabel="Back"
-          hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
-          style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, zIndex: 5 }}>
-          <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
-            <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-          </Svg>
-        </PressScale>
+        {/* Yoga positions an absolute child against its parent's border box and
+          ignores the padding SafeAreaView spends the inset with, so absolute
+          children of the SafeAreaView itself sit at the top of the screen
+          rather than below the notch. One plain View deeper restores it. */}
+        <View style={{ flex: 1 }}>
+          {/* canvas 64 — a chevron and nothing else; these frames carry no word */}
+          <PressScale
+            onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
+            accessibilityRole="button"
+            accessibilityLabel="Back"
+            hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, zIndex: 5 }}>
+            <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
+              <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+          </PressScale>
 
-        {/* canvas 114 */}
-        <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
-          {data.name}
-        </AppText>
-        {/* canvas 158 */}
-        <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 104, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
-          Week {data.roman} · {data.blurb}
-        </AppText>
+          {/* canvas 114 */}
+          <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+            {data.name}
+          </AppText>
+          {/* canvas 158 */}
+          <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 104, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
+            Week {data.roman} · {data.blurb}
+          </AppText>
 
-        {/* canvas 214, 258 tall, with its own fade to the field at the foot */}
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 160, height: WEEK_SCENE_HEIGHT, overflow: 'hidden' }}>
-          <WeekScene week={n} width={width} />
+          {/* canvas 214, 258 tall, with its own fade to the field at the foot */}
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 160, height: WEEK_SCENE_HEIGHT, overflow: 'hidden' }}>
+            <WeekScene week={n} width={width} />
+          </View>
+
+          {/* canvas 486 — the row column, scrolling under the closing band */}
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={{ position: 'absolute', left: 0, right: 0, top: 432, bottom: 0 }}
+            contentContainerStyle={{ paddingBottom: 108 }}>
+            {data.lessons.map((lesson, index) => (
+              <View key={lesson.day}>
+                <LessonRow
+                  title={lesson.title}
+                  number={String(lesson.day).padStart(2, '0')}
+                  state={progress ? stateFor(lesson) : 'locked'}
+                  onPress={() => router.push(`/lesson-card/${lesson.day}`)}
+                />
+                {index < data.lessons.length - 1 ? <Pips /> : null}
+              </View>
+            ))}
+          </ScrollView>
+
+          {/* canvas 798 — the land the board closes on */}
+          <ClosingLand width={width} />
         </View>
-
-        {/* canvas 486 — the row column, scrolling under the closing band */}
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={{ position: 'absolute', left: 0, right: 0, top: 432, bottom: 0 }}
-          contentContainerStyle={{ paddingBottom: 108 }}>
-          {data.lessons.map((lesson, index) => (
-            <View key={lesson.day}>
-              <LessonRow
-                title={lesson.title}
-                number={String(lesson.day).padStart(2, '0')}
-                state={progress ? stateFor(lesson) : 'locked'}
-                onPress={() => router.push(`/lesson-card/${lesson.day}`)}
-              />
-              {index < data.lessons.length - 1 ? <Pips /> : null}
-            </View>
-          ))}
-        </ScrollView>
-
-        {/* canvas 798 — the land the board closes on */}
-        <ClosingLand width={width} />
       </SafeAreaView>
     </View>
   );
