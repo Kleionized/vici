@@ -19,7 +19,6 @@ import {
   MoodDial,
   NightActionArt,
   NightSky,
-  ScaleEnds,
   ScaleReading,
   nightAction,
 } from '@/components/day/kit';
@@ -173,7 +172,6 @@ export default function Night() {
           <>
             <DayTitle top={216}>How was today?</DayTitle>
             <MoodDial value={mood} onChange={setMood} top={326} />
-            <ScaleEnds top={390} low="Heavy" high="Bright" />
             <ScaleReading top={448} label={MOOD_READ[mood][0]} note={MOOD_READ[mood][1]} />
           </>
         ) : null}

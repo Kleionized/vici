@@ -294,10 +294,6 @@ function MoodSlider({ value, onChange }: { value: number; onChange: (value: numb
           }}
         />
       </View>
-      <View style={{ position: 'absolute', left: 32, right: 32, top: 508, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <AppText style={[sans('400'), { fontSize: 13, color: '#8B8882' }]}>Heavy</AppText>
-        <AppText style={[sans('400'), { fontSize: 13, color: '#8B8882' }]}>Clear</AppText>
-      </View>
     </>
   );
 }

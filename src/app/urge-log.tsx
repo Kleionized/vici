@@ -141,10 +141,6 @@ function IntensityScale({ value, onSelect }: { value: number; onSelect: (index: 
           );
         })}
       </View>
-      <View style={{ position: 'absolute', left: 24, right: 24, top: 340, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>Faint</AppText>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>Overwhelming</AppText>
-      </View>
       <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 406, fontSize: 19, color: '#1D1C1A' }]}>
         {INTENSITY_BANDS[value].label}
       </AppText>

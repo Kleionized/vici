@@ -831,10 +831,6 @@ function StrengthPage({ band, onBand, onClose, onNext }: { band: number; onBand:
           );
         })}
       </View>
-      <View style={{ position: 'absolute', left: 36, right: 36, top: 394, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: SHEET_SOFT }]}>Faint</AppText>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: SHEET_SOFT }]}>Overwhelming</AppText>
-      </View>
       <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 452, fontSize: 19, color: SHEET_TEXT }]}>
         {INTENSITY_BANDS[band].label}
       </AppText>

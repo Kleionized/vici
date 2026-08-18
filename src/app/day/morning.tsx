@@ -21,7 +21,6 @@ import {
   MoodDial,
   NightActionArt,
   RerollGlyph,
-  ScaleEnds,
   ScaleReading,
   SignaturePad,
   SunMark,
@@ -234,7 +233,6 @@ export default function Morning() {
             <SunMark top={64} />
             <DayTitle top={236}>How are you feeling?</DayTitle>
             <MoodDial value={mood} onChange={setMood} top={346} />
-            <ScaleEnds top={410} low="Rough" high="Great" />
             <ScaleReading top={468} label={MOOD_READ[mood][0]} note={MOOD_READ[mood][1]} />
           </>
         ) : null}
@@ -244,7 +242,6 @@ export default function Morning() {
             <CupMark top={64} />
             <DayTitle top={226}>How much is in the tank?</DayTitle>
             <EnergyBars value={energy} onChange={setEnergy} top={354} />
-            <ScaleEnds top={442} low="Empty" high="Full" />
             <ScaleReading top={500} label={ENERGY_READ[energy][0]} note={ENERGY_READ[energy][1]} />
           </>
         ) : null}

@@ -1096,3 +1096,16 @@ the task-options board should sit at `top: 126`. 126 is the canvas value and the
 canvas's top 54px is the status bar the app never builds, so the app owes 72 —
 which is what the pick board's measured 64 (from a stated 118) independently
 confirms. The verifier had been told to check exactly this and missed it.
+
+- **D-108 · The scales lost their end labels, against the canvas.** Every scale
+  in the app drew a word at each end — Heavy/Bright, Rough/Great, Empty/Full,
+  Faint/Overwhelming, Heavy/Clear — above a centred readout that already says
+  the same thing in bold. Picking the left dot reads "Heavy · A hard one" in the
+  middle of the board; the word "Heavy" under the leftmost dot adds nothing to
+  it. Six of them, removed. The canvas draws them (`Night 1 Mood` and
+  `Urge Log Intensity` both state two), so this is a deliberate deviation at the
+  user's direction, not a transcription error.
+
+  The centred readout's second line — "Some of both" under "Mixed" — is
+  redundant in the same way but much weaker, and stays: it is the only thing
+  giving the board any texture once the ends are gone.

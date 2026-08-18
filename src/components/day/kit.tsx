@@ -290,15 +290,6 @@ export function MoodDial({ value, onChange, top }: { value: number; onChange: (v
   );
 }
 
-/** The two words that bound a scale, sat under its ends. */
-export function ScaleEnds({ top, low, high }: { top: number; low: string; high: string }) {
-  return (
-    <View style={{ position: 'absolute', left: 24, right: 24, top, flexDirection: 'row', justifyContent: 'space-between' }}>
-      <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>{low}</AppText>
-      <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>{high}</AppText>
-    </View>
-  );
-}
 
 /** What the scale currently reads, said back in words rather than a number. */
 export function ScaleReading({ top, label, note }: { top: number; label: string; note: string }) {
