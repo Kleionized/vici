@@ -44,6 +44,7 @@ export { MiniBars } from './MiniBars';
 export { Pill } from './Pill';
 export { ProgressDots } from './ProgressDots';
 export { PressScale } from './press-scale';
+export { SignatureMark, SignaturePad, SIGNATURE_H, SIGNATURE_W } from './Signature';
 export { Ring } from './Ring';
 export { ScaleInput } from './ScaleInput';
 export { Screen } from './Screen';

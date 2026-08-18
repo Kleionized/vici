@@ -3,10 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import { useId, useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Path, RadialGradient, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, RadialGradient, Stop } from 'react-native-svg';
 
-import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
-import { useCurrentUser, useJournalEntries } from '@/lib/backend';
+import { AppText, BackGlyph, Grain, PressScale, SignatureMark, SignaturePad } from '@/components/ui';
+import { useCurrentUser, useJournalEntries, useUpdateSettings } from '@/lib/backend';
 import { fonts, sans } from '@/lib/theme';
 
 /**
@@ -27,6 +27,7 @@ export default function Vow() {
   const router = useRouter();
   const user = useCurrentUser();
   const journal = useJournalEntries();
+  const updateSettings = useUpdateSettings();
   const id = useId().replace(/:/g, '');
   // Read once on mount so the day count cannot move while the page is open.
   const [now] = useState(() => Date.now());
@@ -38,6 +39,8 @@ export default function Vow() {
   const stamp = signedAt
     ? `${new Date(signedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} · Day 0`
     : 'Not signed yet';
+  /** The strokes the person drew, or nothing yet — the card shows one or the other. */
+  const signature = user?.settings?.signature ?? '';
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
@@ -117,18 +120,24 @@ export default function Vow() {
             <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 13, fontSize: 10.5, letterSpacing: 1.6, color: '#C6C3BC' }]}>
               SIGNATURE
             </AppText>
-            {/* the signature is drawn, not set: a 216 x 64 stroke with a dot at
-                the pen's rest, so it reads the same whatever the name is */}
-            <Svg width={216} height={64} viewBox="0 0 216 64" style={{ position: 'absolute', left: 50, bottom: 40 }} fill="none">
-              <Path
-                d="M6 46 C 20 8, 44 6, 40 30 C 36 52, 12 56, 34 44 C 58 30, 78 22, 96 36 C 108 46, 122 30, 138 34"
-                stroke="#26261F"
-                strokeWidth={2.2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <Circle cx={138} cy={34} r={2.6} fill="#26261F" />
-            </Svg>
+            {/* The signature is the person's own. The canvas draws one fixed
+                stroke here because a mock has nobody to sign it; a vow signed
+                with someone else's hand is the one thing on this screen that
+                should not be decoration. Signed once, it is drawn back; unsigned,
+                the card is the pad. */}
+            {signature ? (
+              <SignatureMark value={signature} width={216} height={70} style={{ position: 'absolute', left: 44, bottom: 38 }} />
+            ) : (
+              <View style={{ position: 'absolute', left: 44, bottom: 38 }}>
+                <SignaturePad
+                  value={signature}
+                  onChange={(next) => void updateSettings({ signature: next }).catch(() => {})}
+                  width={216}
+                  height={70}
+                  hint="Sign your name"
+                />
+              </View>
+            )}
             <AppText style={{ position: 'absolute', left: 24, bottom: 42, fontSize: 14, color: '#B0AEA8' }}>×</AppText>
             <View style={{ position: 'absolute', left: 22, right: 22, bottom: 38, height: 1.5, backgroundColor: 'rgba(0,0,0,0.26)' }} />
             <AppText style={[sans('500'), { position: 'absolute', left: 24, bottom: 15, fontSize: 11.5, color: '#B0AEA8' }]}>{name}</AppText>

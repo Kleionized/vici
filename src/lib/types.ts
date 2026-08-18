@@ -208,6 +208,11 @@ export interface UserSettings {
   appLockOnLeave?: boolean;
   hideSensitivePreviews?: boolean;
   pauseAnalytics?: boolean;
+  /**
+   * The vow's signature, as the SVG path the person drew: one `M…` subpath per
+   * stroke, against the 260 x 84 box `components/ui/Signature` records in.
+   */
+  signature?: string;
 }
 
 /** Matches the `users` table. */

@@ -59,6 +59,7 @@ export const updateSettings = mutation({
     appLockOnLeave: v.optional(v.boolean()),
     hideSensitivePreviews: v.optional(v.boolean()),
     pauseAnalytics: v.optional(v.boolean()),
+    signature: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const userId = await requireUserId(ctx);

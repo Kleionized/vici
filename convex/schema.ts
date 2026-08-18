@@ -95,6 +95,10 @@ export default defineSchema({
       appLockOnLeave: v.optional(v.boolean()),
       hideSensitivePreviews: v.optional(v.boolean()),
       pauseAnalytics: v.optional(v.boolean()),
+      // The vow's signature, as the SVG path the person drew — one `M…`
+      // subpath per stroke, recorded against a 260 x 84 box so it reads the
+      // same wherever it is drawn again.
+      signature: v.optional(v.string()),
     }),
   }).index('by_clerkUserId', ['clerkUserId']),
 
