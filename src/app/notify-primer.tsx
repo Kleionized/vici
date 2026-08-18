@@ -37,10 +37,10 @@ export default function NotifPrimer() {
 
         <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl }} showsVerticalScrollIndicator={false}>
           <AppText center style={[sans('500'), { fontSize: 22, lineHeight: 29, letterSpacing: 0.1, color: colors.text, marginTop: 34, marginBottom: 18 }]}>
-            A gentle nudge.
+            Two reminders a day.
           </AppText>
           <AppText center style={[sans('400'), { fontSize: 15.5, lineHeight: 23, color: colors.textMuted, marginBottom: 34, paddingHorizontal: 6 }]}>
-            Two nudges a day, timed to your risky window. Nothing noisy, nothing shaming.
+            Timed to your risky window. Nothing noisy, nothing shaming.
           </AppText>
 
           {/* the notes themselves — the second sits back, as it hasn't landed yet */}

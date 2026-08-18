@@ -59,12 +59,12 @@ export default function Reminders() {
           <AppText
             center
             style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 86, fontSize: 22, lineHeight: 22 * 1.32, letterSpacing: 0.1, color: '#1D1C1A' }]}>
-            A gentle nudge.
+            Two reminders a day.
           </AppText>
           <AppText
             center
             style={[sans('400'), { position: 'absolute', left: 30, right: 30, top: 142, fontSize: 15.5, lineHeight: 23, color: '#55534E' }]}>
-            Two nudges a day, timed to your risky window. Nothing noisy, nothing shaming.
+            Timed to your risky window. Nothing noisy, nothing shaming.
           </AppText>
 
           {NOTES.map((n) => (

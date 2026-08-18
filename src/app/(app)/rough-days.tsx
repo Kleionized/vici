@@ -66,7 +66,7 @@ export default function RoughDays() {
             <View style={{ flex: 1 }}>
               <AppText style={[sans('600'), { fontSize: 12.5, color: 'rgba(245,244,241,0.62)' }]}>The universal interrupt</AppText>
               <AppText style={[sans('600'), { marginTop: 6, fontSize: 17, color: '#F5F4F1' }]}>The First 90 Seconds</AppText>
-              <AppText style={[sans('400'), { marginTop: 3, fontSize: 13, color: 'rgba(245,244,241,0.62)' }]}>Two quick asks, six tailored moves.</AppText>
+              <AppText style={[sans('400'), { marginTop: 3, fontSize: 13, color: 'rgba(245,244,241,0.62)' }]}>Two quick questions, six moves that fit the answer.</AppText>
             </View>
             <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: 'rgba(245,244,241,0.14)', alignItems: 'center', justifyContent: 'center' }}>
               <Svg width={14} height={12} viewBox="0 0 16 14">

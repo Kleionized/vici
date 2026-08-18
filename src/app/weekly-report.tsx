@@ -90,7 +90,7 @@ export default function WeeklyReport() {
             <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 24, top: 130, fontSize: 20, lineHeight: 28, color: colors.textMuted }]}>
               {closed
                 ? 'Nothing was logged that week, so the report has nothing to draw on.'
-                : 'Your first week is still being written. Keep checking in — once a full week closes, its report lands here.'}
+                : 'Your first week is still being written. Keep checking in; the report appears once a full week closes.'}
             </AppText>
           </View>
         </SafeAreaView>

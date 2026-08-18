@@ -183,7 +183,7 @@ export default function Morning() {
         {step === 0 ? (
           <>
             <LedgerMark top={96} />
-            <DayTitle top={324}>Yesterday held.</DayTitle>
+            <DayTitle top={324}>Yesterday’s ledger.</DayTitle>
             <View style={{ position: 'absolute', left: 12, right: 12, top: 384, height: 242, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
               <LedgerRow top={14} mark="gauge" glyph={[18, 11]} title="Recovery score" detail={`+${gained} → ${score.total.toLocaleString()}`} strong />
               <LedgerRule top={62} />

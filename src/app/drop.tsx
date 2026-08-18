@@ -59,7 +59,7 @@ export default function Drop() {
         <MailArrival
           art={<YearTile />}
           title="You received a drop."
-          sub="One drop covers the year — twelve months of VICI, billed once."
+          sub="One drop covers the year. Twelve months of VICI, billed once."
           primary="Begin the year"
           secondary="See the receipt"
           onPrimary={close}

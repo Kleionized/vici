@@ -505,9 +505,9 @@ export const KK_ALBUM: KKFace[] = [
     stories: [
       'The first fog lifts right about here, on schedule.',
       'Seven check-ins, two waves ridden, zero perfect days required.',
-      'This is where “trying something” quietly becomes “how you live.”',
+      'Around here, “trying something” turns into “how you live.”',
       'The long walk. By now the view is just… Tuesday.',
-      'Six months witnessed, one day at a time. Nobody walks it in a straight line. Vidi only asks that you stayed on it.',
+      'Six months witnessed, one day at a time. Vidi only asks that you stayed on it.',
       'A full year, witnessed. The campaign outlived the season it started in.',
     ],
   },
@@ -521,7 +521,7 @@ export const KK_ALBUM: KKFace[] = [
     stories: [
       'Nine minutes, start to finish. You watched it rise, crest, and leave without you.',
       'Five ridden. Each one shortens the next.',
-      'Twenty-five behind you now — the pattern is unmistakable.',
+      'Twenty-five behind you now. Enough of them to read as a habit.',
       'A hundred waves met and outlasted. This stopped being a fight you were unsure of a while ago.',
       'Two hundred and fifty. Vici isn’t a moment anymore. It’s just what you do.',
       'Five hundred. Most of them don’t even register as events now. This one still gets a mark.',
@@ -535,7 +535,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [1, 4, 12, 24, 52],
     unit: 'count',
     stories: [
-      'Three honest paragraphs, sealed for the man ahead of you.',
+      'Three paragraphs, sealed for the man ahead of you.',
       'It rides ahead of you now, and it knows when to arrive.',
       'A dozen letters out. You’re writing to someone you trust more than you did.',
       'Two dozen, sealed and sent. Writing to him is as old a habit as some of the ones it replaced.',
@@ -550,8 +550,8 @@ export const KK_ALBUM: KKFace[] = [
     unit: 'count',
     stories: [
       'You slipped. The next morning you were back before breakfast. No spiral, no vanishing week.',
-      'Ten bounces now. That’s not luck holding, that’s practice.',
-      'Twenty-five times down, twenty-five mornings back. The pattern is the point, not the count.',
+      'Ten bounces now. Ten is past the point where luck explains it.',
+      'Twenty-five times down, twenty-five mornings back. The second number is the one that keeps up.',
       'Fifty. Falling has stopped meaning anything except that you get up.',
       'A hundred mornings after. The bounce is the strongest predictor there is, and you’re the proof of it.',
     ],
@@ -562,7 +562,7 @@ export const KK_ALBUM: KKFace[] = [
     blurb: 'Your first morning check-in.',
     steps: [],
     unit: null,
-    stories: ['Twenty seconds of honesty on an ordinary morning. Everything since has stacked on this.'],
+    stories: ['Twenty seconds on an ordinary morning. Everything since has stacked on this.'],
   },
   {
     // The canvas album is eleven faces and draws none for this one, but the app
@@ -583,12 +583,12 @@ export const KK_ALBUM: KKFace[] = [
   {
     key: 'honest',
     name: 'Honest ink',
-    blurb: 'Journal entries, written honestly, not for show.',
+    blurb: 'Journal entries, written for yourself.',
     steps: [10, 50, 100, 200, 365],
     unit: 'count',
     stories: [
-      'Ten entries in. Twelve honest paragraphs beat a hundred vague ones.',
-      'Fifty pages of real accounting. The patterns page runs on this ink.',
+      'Ten entries in. A dozen specific paragraphs beat a hundred vague ones.',
+      'Fifty pages of accounting. The patterns page runs on this ink.',
       'A hundred entries. You know your own weather better than most people know their week.',
       'Two hundred. The record’s long enough now to argue with your own memory, and win.',
       'A year of entries, one for almost every day. This is a diary of a life, not a habit tracker.',
@@ -629,7 +629,7 @@ export const KK_ALBUM: KKFace[] = [
     blurb: 'Told one person about the work.',
     steps: [],
     unit: null,
-    stories: ['The habit lives in the dark. One honest conversation takes half its weight away.'],
+    stories: ['The habit lives in the dark. One conversation takes half its weight away.'],
   },
   {
     key: 'storm',

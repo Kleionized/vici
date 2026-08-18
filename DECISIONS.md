@@ -1109,3 +1109,53 @@ confirms. The verifier had been told to check exactly this and missed it.
   The centred readout's second line — "Some of both" under "Mixed" — is
   redundant in the same way but much weaker, and stays: it is the only thing
   giving the board any texture once the ends are gone.
+
+- **D-109 · The clock that picks a check-in moved off noon.** A cold launch has
+  nothing to tell it which check-in is meant, so it asks the clock. The test was
+  `getHours() < 12`, which put the nightly check-in in front of someone at half
+  past twelve and the morning one in front of someone at four in the morning.
+  It is now two edges instead, in `lib/routines.ts`: the morning check-in from
+  **04:30**, the nightly one from **18:30**, and the small hours belong to the
+  night that has not been closed rather than to a morning nobody is awake for.
+  `(app)/_layout` and `MoodLogger.isMorningCheckin` both read the one function,
+  so a check-in reached from the tab bar and one reached from a card agree.
+  The two *scheduled* times (7:00 AM, 10:00 PM) are a separate preference and
+  are unchanged.
+
+- **D-110 · The emotions board says the rule once.** The canvas draws two
+  instructions on `Checkin Emotions`: "Pick any that ring true." over the wheel
+  and "Pick as many as fit." under it. They say the same thing, and the first is
+  also a stock phrase. The second survives, in the sub's slot; the floating line
+  at 528 is gone. Same deviation-at-the-user's-direction as D-108.
+
+- **D-111 · A prose pass over every line the app says in its own voice.** The
+  `de-ai-prose` skill's six scans, run over 958 distinct strings extracted from
+  `src/app`, `src/components` and `src/lib` (the lessons are authored content and
+  were left alone). What changed, by family:
+
+  | family | before | after |
+  | --- | --- | --- |
+  | sincerity markers (`honest`, `honestly`, `real` as an intensifier) | 8 | 1 |
+  | "not X, it's Y" — three of them the same sentence about patterns | 13 | 1 |
+  | dying metaphors (`heavy lifting`, `hold the line`) | 2 | 0 |
+  | stock phrases (`ring true`, `a gentle nudge`, `on your side`, `is all it takes`, `tailored`, `nobody walks it in a straight line`) | 7 | 0 |
+  | possessive triads (`your reflections, your log, your path`) | 1 | 0 |
+  | em dashes interrupting a finished sentence | 12 | 0 |
+
+  The four flags that survive are deliberate: `Honest ink` is a keepsake's own
+  name, `Unlock VICI Plus` is the literal action on a paywall, and the two
+  remaining negations are onboarding answers written in the user's voice.
+
+  **What was left alone, and why.** The other 32 em dashes separate a label from
+  its gloss — "Open water — steady strokes, no heroics", "Day 2 — a reminder" —
+  which is this design's caption idiom and reads the way its `·` does; it is used
+  consistently rather than as a pause for effect. The app's own metaphor system
+  (the wave, the watch, the campaign, the grounds) is the product's voice, not a
+  tell, and stays.
+
+  Two of the rewrites fixed a claim rather than a phrase. `Yesterday held.` led
+  the morning board unconditionally, so the app asserted a clean day whether or
+  not one had happened; the board is a ledger of what the day actually held, and
+  is now titled as one. And `Days are counted, never owed.` was followed by
+  `A slip does not send you to zero.`, which is the same sentence in plain
+  English — the gloss stays and the epigram goes.

@@ -982,7 +982,7 @@ export function O3PushIntro({ next }: { next: () => void }) {
             <AppText style={[sans('600'), { fontSize: 18, color: tone.ink }]}>z z</AppText>
           </View>
         </View>
-        <O3Sub style={{ marginBottom: 28 }}>No need to do this alone. A gentle nudge helps you check in and learn each day — nothing noisy, nothing shaming.</O3Sub>
+        <O3Sub style={{ marginBottom: 28 }}>No need to do this alone. One reminder to check in and one to learn, at hours you pick.</O3Sub>
       </View>
       <O3CTA label="Next" onClick={next} />
     </>
@@ -1013,7 +1013,7 @@ export function O3Threshold({ next }: { next: () => void }) {
 const OATH: [string, string][] = [
   ['Everything stays on this device.', 'Your answers are stored here, not on a server. We could not read them if we wanted to.'],
   ['Face ID locks the door.', 'Nothing on your screen says what this app is for unless you open it.'],
-  ['No feed. No followers.', 'Recovery here is not performed for anyone. There is no audience to disappoint.'],
+  ['No feed. No followers.', 'There is no audience here to perform for.'],
 ];
 export function O3Privacy({ next }: { next: () => void }) {
   const tone = useTone();
@@ -1163,10 +1163,10 @@ export const O3_QUESTIONS: [string, { title: string; options: O3Opt[]; multi?: b
  * and being asked.
  */
 export const O3_SECTIONS: { at: number; eyebrow: string; title: string; body: string }[] = [
-  { at: 0, eyebrow: 'Section 1 of 6', title: 'Where you\u2019re starting', body: 'The honest baseline. None of this is graded.' },
+  { at: 0, eyebrow: 'Section 1 of 6', title: 'Where you\u2019re starting', body: 'The baseline. None of this is graded.' },
   { at: 4, eyebrow: 'Section 2 of 6', title: 'When and why it happens', body: 'This is where the plan gets specific to you. Pick everything that fits.' },
   { at: 7, eyebrow: 'Section 3 of 6', title: 'How you\u2019ve been feeling lately', body: 'A bigger picture than the habit alone. It often points at what\u2019s really driving things.' },
-  { at: 10, eyebrow: 'Section 4 of 6', title: 'A little about your life', body: 'So the plan fits your actual days, not a generic user.' },
+  { at: 10, eyebrow: 'Section 4 of 6', title: 'A little about your life', body: 'So the plan fits your days, not a generic user’s.' },
   { at: 14, eyebrow: 'Section 5 of 6', title: 'What you want', body: 'Your goal, in your words. Porn and masturbation are two separate choices \u2014 you set each.' },
   { at: 18, eyebrow: 'Section 6 of 6', title: 'How you want the plan to run', body: 'The settings. Easy to change any time.' },
   { at: 20, eyebrow: 'Almost done', title: 'A quick wellbeing check', body: 'A few gentle questions. Not a test, not a diagnosis \u2014 your answers stay private.' },
@@ -1318,7 +1318,7 @@ export function O3Streaks({ next }: { answers?: Record<string, string | string[]
       <View style={{ position: 'absolute', left: 24, right: 24, top: 210 }}>
         <StreakSawtoothCard />
       </View>
-      <O3PaperCaption top={456} inset={52}>Fourteen days, then nine, then five — every reset lands on zero.</O3PaperCaption>
+      <O3PaperCaption top={456} inset={52}>Fourteen days, then nine, then five. Every reset lands on zero.</O3PaperCaption>
       <O3PaperCTA label="Next" onPress={next} y={744} />
     </>
   );
@@ -1897,7 +1897,7 @@ export function O3DayOne({ answers, next }: { answers: Record<string, string | s
         <AppText style={[sans('600'), { fontSize: 15, letterSpacing: 4, textTransform: 'uppercase', color: tone.ink }]}>Day I</AppText>
         <View style={{ width: 40, height: 1.5, backgroundColor: tone.ink, marginTop: 12 }} />
         <O3Sub style={{ marginTop: 26, fontSize: 15, color: tone.ink }}>Already lit. The wave you rode counts.</O3Sub>
-        <O3Sub style={{ marginTop: 8 }}>Days are counted, never owed. A slip does not send you to zero.</O3Sub>
+        <O3Sub style={{ marginTop: 8 }}>A slip does not send you to zero.</O3Sub>
         <View style={{ marginTop: 34, backgroundColor: tone.card, borderRadius: 20, padding: 20, flexDirection: 'row', gap: 15, alignItems: 'flex-start' }}>
           <Svg width={21} height={21} viewBox="0 0 24 24" fill="none" style={{ marginTop: 2 }}>
             <Path d="M12 3.4a5.8 5.8 0 0 1 5.8 5.8v3.6l1.7 2.4a1 1 0 0 1-.8 1.6H5.3a1 1 0 0 1-.8-1.6l1.7-2.4V9.2A5.8 5.8 0 0 1 12 3.4z" stroke={tone.ink} strokeWidth={1.7} strokeLinejoin="round" />
@@ -1969,7 +1969,7 @@ export function O3Save({ next }: { next: () => void }) {
   return (
     <>
       <O3H style={{ marginTop: 24 }}>Save your progress.</O3H>
-      <O3Sub>Your reflections, your log, your path — kept safe across devices.</O3Sub>
+      <O3Sub>Your reflections and your log, kept across devices.</O3Sub>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <View style={{ width: 126, height: 126, borderRadius: 63, backgroundColor: tone.card, alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 1px ${tone.line}` }}>
           <Laurel size={88} color={tone.ink} />

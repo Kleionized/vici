@@ -556,11 +556,11 @@ const PLACES: { key: UrgePlace; label: string }[] = [
  * keeps its own copy and the other four take the phone's (DECISIONS D-021).
  */
 const SCREEN_STEP: Record<UrgePlace, { title: string; body: string }> = {
-  private: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
-  bed: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not under the covers.' },
-  public: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
-  work: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
-  out: { title: 'Phone down, now.', body: 'Lock the screen. Face down, across the room — out of reach, not in your pocket.' },
+  private: { title: 'Phone down, now.', body: 'Lock the screen. Face down and across the room, not in your pocket.' },
+  bed: { title: 'Phone down, now.', body: 'Lock the screen. Face down and across the room, not under the covers.' },
+  public: { title: 'Phone down, now.', body: 'Lock the screen. Face down and across the room, not in your pocket.' },
+  work: { title: 'Phone down, now.', body: 'Lock the screen. Face down and across the room, not in your pocket.' },
+  out: { title: 'Phone down, now.', body: 'Lock the screen. Face down and across the room, not in your pocket.' },
 };
 
 const MOVE_STEP: Record<UrgePlace, { title: string; body: string }> = {
@@ -1047,7 +1047,7 @@ function WherePage({ place, onPlace, onBack, onNext }: { place: UrgePlace; onPla
   return (
     <PaperSheet>
       <PickerBack onPress={onBack} />
-      <PickerHead title="Where are you right now?" sub="The first move depends on it. Be honest — nobody's watching." inset={40} />
+      <PickerHead title="Where are you right now?" sub="The first move depends on the answer." inset={40} />
       {PLACES.map((item, index) => (
         <PickerRow
           key={item.key}
@@ -1185,7 +1185,7 @@ function ReasonPage({ reasons, onToggle, onBack, onNext }: { reasons: string[]; 
       <PickerBack onPress={onBack} />
       <PickerHead
         title="What’s feeding it?"
-        sub="Urges borrow fuel from somewhere. Point at the source — picking it is half the defusing."
+        sub="Urges borrow fuel from somewhere. Point at the source; picking it is half the defusing."
         inset={36}
       />
       {URGE_REASONS.map((item, index) => (
@@ -1201,7 +1201,7 @@ function ReasonPage({ reasons, onToggle, onBack, onNext }: { reasons: string[]; 
           onPress={() => onToggle(item.key)}
         />
       ))}
-      <PickerNote>Nothing here is an excuse — it’s a map.</PickerNote>
+      <PickerNote>Naming what feeds it is not excusing it.</PickerNote>
       <PickerContinue onPress={onNext} />
     </PaperSheet>
   );

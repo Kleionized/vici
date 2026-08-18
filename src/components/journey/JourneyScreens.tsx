@@ -126,7 +126,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
   crossing: {
     key: 'crossing',
     title: 'The Crossing',
-    line: 'Open water — the first honest weeks. Hold the pledge, ride the waves, learn your triggers.',
+    line: 'Open water — the first hard weeks. Hold the pledge, ride the waves, learn your triggers.',
     rows: [
       { label: 'The Landing', meta: () => 'Days 1–7 · held', state: standingIn('landing') },
       // the canvas prints "Day 13 of 30"; past day 30 the count sits on its ceiling
@@ -147,7 +147,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
   watch: {
     key: 'watch',
     title: 'The Watch',
-    line: 'The habit is yours — now you keep the light on for the long run.',
+    line: 'The habit is yours. Now you keep the light on for the long run.',
     rows: [
       { label: 'Home waters', meta: () => 'Days 61–75', state: past(75) },
       { label: 'Keeping the watch', meta: () => 'Days 76–90', state: past(90) },
@@ -478,7 +478,7 @@ export function CampaignMap({ onBack, onContinue }: { onBack?: () => void; onCon
           ))}
 
           <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 642, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-            {"Four weeks, one path. Move at your own pace — there's no clock."}
+            {"Four weeks, one path. There is no clock on it."}
           </AppText>
 
           <PressScale
@@ -561,7 +561,7 @@ const GROUNDS: Ground[] = [
     key: 'camp',
     numeral: 'GROUND V',
     name: 'First Camp',
-    line: 'Rest earned — the first real footing.',
+    line: 'Rest earned — the first firm footing.',
     field: ['#E9EFF4', '#F0EDE5'],
     state: 'ahead',
   },

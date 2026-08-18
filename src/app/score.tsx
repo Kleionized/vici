@@ -390,7 +390,7 @@ function OverTime({
         glyph={<TrendGlyph />}
         title={`${gain < 0 ? '−' : '+'}${Math.abs(gain)} points`}
         sub={`vs ${monthDay(firstDay)} – ${monthDay(lastDay)}`}
-        body={'Keep going. You’re building real momentum.'}
+        body={'Keep going. Every clean day adds to this.'}
       />
     </>
   );
@@ -443,7 +443,7 @@ function WhatMoved({ lines, net }: { lines: { label: string; points: number }[];
         glyph={<TrendGlyph />}
         title={`${net < 0 ? '−' : '+'}${Math.abs(net)} net`}
         sub="this month"
-        body="Clean days do the heavy lifting. Keep the evenings boring."
+        body="Clean days move it most. Keep the evenings boring."
       />
     </>
   );

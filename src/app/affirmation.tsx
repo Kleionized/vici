@@ -234,7 +234,7 @@ function CustomPrompt({ draft, onDraft, onUse, onBack }: { draft: string; onDraf
           value={draft}
           onChangeText={onDraft}
           multiline
-          placeholder="What does tomorrow-me get if I hold the line?"
+          placeholder="What does tomorrow-me get if today stays clean?"
           placeholderTextColor="rgba(139,136,130,0.7)"
           selectionColor="#131313"
           cursorColor="#131313"

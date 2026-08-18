@@ -83,7 +83,7 @@ export default function LetterScreen() {
       await setJSON(LETTER_KEY, { kept: true, at: Date.now() });
       await setJSON(PENDING_KEY, null);
       if (prev?.kept) return;
-      const body = `Dear ${name},\n\nIf you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that matters this morning.\n\nOne slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: ${why}. All still yours.\n\nThe only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.\n\nI'll see you tonight, steadier.\n\n— the you who makes it out`;
+      const body = `Dear ${name},\n\nIf you're reading this, it happened. Good. You opened the letter instead of disappearing. That's the only door that matters this morning.\n\nOne slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: ${why}. All still yours.\n\nThe only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don't fail twice.\n\nI'll see you tonight, steadier.\n\n— the you who makes it out`;
       await createJournalEntry({ tag: 'Letter', title: 'Don’t fail twice', body }).catch(() => {});
     })();
     dismiss();
@@ -564,7 +564,7 @@ function PostLetter({ name, why }: { name: string; why: string }) {
     <>
       <Salutation>Dear {name},</Salutation>
       <LetterP>
-        If you&rsquo;re reading this, it happened. Good — you opened the letter instead of disappearing. That&rsquo;s the only door that matters this
+        If you&rsquo;re reading this, it happened. Good. You opened the letter instead of disappearing. That&rsquo;s the only door that matters this
         morning.
       </LetterP>
       <LetterP>

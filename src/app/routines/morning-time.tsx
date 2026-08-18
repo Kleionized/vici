@@ -35,7 +35,7 @@ export default function MorningTime() {
       <RoutineShell
         onBack={back}
         title="When should the morning check-in come?"
-        note="Twenty seconds, first thing — you can change this any time."
+        note="Twenty seconds, first thing. You can change this any time."
         cta={<RoutineCTA label="Save time" onPress={() => void next()} />}>
         <CheckinPicker time={time} onTime={setDraftTime} days={days} onToggleDay={toggle} />
       </RoutineShell>

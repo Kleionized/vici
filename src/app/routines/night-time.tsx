@@ -36,7 +36,7 @@ export default function NightTime() {
         backLabel={from === 'settings' ? 'Settings' : 'Back'}
         onBack={back}
         title="When should the nightly check-in come?"
-        note="Set it for the start of your riskiest hours — you can change this any time."
+        note="Set it for the start of your riskiest hours. You can change this any time."
         cta={<RoutineCTA label="Save time" onPress={() => void done()} />}>
         <CheckinPicker time={time} onTime={setDraftTime} days={days} onToggleDay={toggle} />
       </RoutineShell>

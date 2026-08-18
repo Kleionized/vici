@@ -409,7 +409,7 @@ function History({ onBack }: { onBack: () => void }) {
             reads.length ? (
               <Grouped items={reads} now={now} at={(c) => dateKeyToMs(c.date)} row={readRow} />
             ) : (
-              <LogEmpty title="No check-ins yet" body="Twenty seconds a day is all it takes." />
+              <LogEmpty title="No check-ins yet" body="Twenty seconds in the morning starts one." />
             )
           ) : null}
 

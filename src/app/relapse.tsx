@@ -45,7 +45,7 @@ const MUTED = '#55534E';
 const PAGES = [
   {
     headline: "It happened. That's data.",
-    body: "Same calm screen as a win. Note what set it off while it's fresh — the pattern is the prize, not the streak.",
+    body: "Same calm screen as a win. Note what set it off while it's fresh; the pattern is what the log is for.",
     cta: 'Log the slip',
   },
   {

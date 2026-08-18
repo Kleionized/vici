@@ -5,6 +5,7 @@ import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, 
 
 import { ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
 import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
+import { checkinPartNow } from '@/lib/routines';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -98,12 +99,13 @@ const PART_COPY = {
 } as const;
 
 /**
- * Before noon the prompt opens in the morning register unless told otherwise —
- * the same clock test `(app)/_layout` uses to choose morning over night.
+ * The prompt opens in the morning register unless told otherwise — the same
+ * clock test `(app)/_layout` uses to choose morning over night, so a check-in
+ * reached from the tab bar and one reached from a card agree.
  */
 export function isMorningCheckin(part?: string) {
   if (part === 'morning' || part === 'evening') return part === 'morning';
-  return new Date().getHours() < 12;
+  return checkinPartNow() === 'morning';
 }
 
 export function checkinCopy(part?: string) {
@@ -575,11 +577,11 @@ export function EmotionsBoard({
   return (
     <>
       <BoardTitle>{feel}</BoardTitle>
-      <BoardSub>Pick any that ring true.</BoardSub>
+      {/* The canvas says the same thing twice: a sub over the wheel and a
+          second line under it. One of them is the rule, so the rule stays and
+          the other goes. */}
+      <BoardSub>Pick as many as fit.</BoardSub>
       <EmotionWheel emotions={wheel} selected={emotions} onToggle={toggle} />
-      <AppText style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 528, textAlign: 'center', fontSize: 13.5, color: '#8B8882' }]}>
-        Pick as many as fit.
-      </AppText>
       <ScrollView
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
@@ -671,7 +673,7 @@ export function ReasonsBoard({ reasons, onChange, ctaTop }: { reasons: string[];
   return (
     <>
       <BoardTitle>What fed it?</BoardTitle>
-      <BoardSub>A reason list, not a courtroom.</BoardSub>
+      <BoardSub>Nothing here counts against you.</BoardSub>
       <ScrollView
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
