@@ -30,6 +30,26 @@ export const DEFAULT_ROUTINES: Routines = {
   night: { hour: 10, minute: 0, period: 'PM' },
 };
 
+/**
+ * When each check-in becomes the one the app offers.
+ *
+ * Nothing tells a cold launch which check-in is meant, so the clock decides.
+ * The old test was noon, which put the nightly check-in in front of someone at
+ * half past twelve. These are the two edges instead: the morning one from 4:30,
+ * the nightly one from 18:30, and the small hours belong to the night that has
+ * not been closed yet rather than to a morning nobody is awake for.
+ *
+ * Minutes past local midnight, so a 4:30 boundary is expressible.
+ */
+export const MORNING_OPENS_AT = 4 * 60 + 30;
+export const NIGHT_OPENS_AT = 18 * 60 + 30;
+
+/** Which check-in the clock says it is. */
+export function checkinPartNow(now: Date = new Date()): 'morning' | 'night' {
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  return minutes >= MORNING_OPENS_AT && minutes < NIGHT_OPENS_AT ? 'morning' : 'night';
+}
+
 const KEY = 'tideline.routines.v2';
 
 let cache: Routines = DEFAULT_ROUTINES;

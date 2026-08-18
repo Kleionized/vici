@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { StoicTabBar } from '@/components/StoicTabBar';
 import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
+import { checkinPartNow } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
 import { loadUrgeSession } from '@/lib/urgeSession';
 import { buildWeeklyReport, hasReportContent, latestCompletedWeek } from '@/lib/weeklyReport';
@@ -66,7 +67,7 @@ export default function AppLayout() {
       const last = await getJSON<number>(CHECKIN_PROMPT_KEY);
       if (!last || Date.now() - last > HOUR) {
         await setJSON(CHECKIN_PROMPT_KEY, Date.now());
-        router.push(new Date().getHours() < 12 ? '/day/morning' : '/day/night');
+        router.push(checkinPartNow() === 'morning' ? '/day/morning' : '/day/night');
       }
     })();
   }, [user?.onboardingComplete, user?.createdAt, checkins, events, router]);
