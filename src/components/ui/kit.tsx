@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import { View, type StyleProp, type ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { colors, radius, sans } from '@/lib/theme';
+import { colors, sans } from '@/lib/theme';
 import { AppText } from './AppText';
-import { BackGlyph, ChevronGlyph } from './marks';
+import { BackGlyph } from './marks';
 import { PressScale } from './press-scale';
 
 /**
@@ -206,17 +206,6 @@ export function Toggle({ on = false }: { on?: boolean }) {
 }
 
 // ── round avatar with initials (white fill, dark glyph) ─────────────────────
-/** The profile monogram — inset paper with muted ink, as the reference draws
- * it. It is a placeholder for a photo, not a filled badge. */
-export function Avatar({ initials = 'JR', size = 64 }: { initials?: string; size?: number }) {
-  return (
-    <View style={{ width: size, height: size, borderRadius: 9999, backgroundColor: '#EDECE7', alignItems: 'center', justifyContent: 'center' }}>
-      <AppText weightOverride="600" color={colors.textMuted} style={{ fontSize: size * 0.32, letterSpacing: -0.4 }}>
-        {initials}
-      </AppText>
-    </View>
-  );
-}
 
 // ── round/soft-square chip holding a monotone glyph ─────────────────────────
 export function IconChip({
@@ -266,198 +255,6 @@ export function SettingsTopBar({ title, back = 'Settings', onBack }: { title: st
   );
 }
 
-/**
- * A settings section: an uppercase caption at the screen gutter, then one
- * flat paper card at the wider 12px card gutter (canvas: Settings).
- */
-export function SettingsGroup({ header, footer, children }: { header?: string; footer?: string; children: ReactNode }) {
-  return (
-    <View style={{ marginBottom: 26 }}>
-      {header ? (
-        <AppText style={[sans('600'), { paddingHorizontal: 16, paddingBottom: 10, fontSize: 13, letterSpacing: 2, textTransform: 'uppercase', color: colors.textMuted }]}>
-          {header}
-        </AppText>
-      ) : null}
-      <View style={{ marginHorizontal: 12, backgroundColor: colors.surface, borderRadius: radius.lg, borderCurve: 'continuous', overflow: 'hidden' }}>
-        {children}
-      </View>
-      {footer ? (
-        <AppText style={[sans('400'), { paddingHorizontal: 18, paddingTop: 10, fontSize: 13, lineHeight: 18, color: colors.textSoft }]}>
-          {footer}
-        </AppText>
-      ) : null}
-    </View>
-  );
-}
-
-/**
- * The description-plus-control card — a single setting that needs a sentence
- * of explanation next to its switch.
- */
-export function SettingsNote({ title, body, control }: { title: string; body: string; control?: ReactNode }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 14, paddingVertical: 16, paddingHorizontal: 18 }}>
-      <View style={{ flex: 1 }}>
-        <AppText style={[sans('600'), { fontSize: 16, color: colors.text }]}>{title}</AppText>
-        <AppText style={[sans('400'), { marginTop: 6, fontSize: 13.5, lineHeight: 19, color: colors.textSoft }]}>{body}</AppText>
-      </View>
-      {control ? <View style={{ marginTop: 4 }}>{control}</View> : null}
-    </View>
-  );
-}
-
-export function SettingsRow({
-  title,
-  detail,
-  glyph,
-  control,
-  danger,
-  last,
-  onPress,
-  toggle,
-}: {
-  title: string;
-  detail?: string;
-  glyph?: GlyphName;
-  control?: ReactNode;
-  danger?: boolean;
-  last?: boolean;
-  onPress?: () => void;
-  /** When set, the row shows a Toggle and tapping anywhere flips it. */
-  toggle?: { value: boolean; onChange: (v: boolean) => void };
-}) {
-  const ink = danger ? colors.danger : colors.text;
-  const press = toggle ? () => toggle.onChange(!toggle.value) : onPress;
-  const right = toggle ? <Toggle on={toggle.value} /> : control !== undefined ? control : !danger ? <ChevronGlyph color="#B0AEA8" /> : null;
-  return (
-    <View>
-      <PressScale
-        onPress={press}
-        disabled={!press}
-        accessibilityRole="button"
-        style={{ flexDirection: 'row', alignItems: 'center', gap: 13, paddingVertical: 14, paddingHorizontal: 18, minHeight: 52 }}>
-        {/* The reference only chips the billing rows, at 32/9 on inset paper. */}
-        {glyph ? <IconChip name={glyph} size={32} radius={9} chipColor="#F1EFE9" /> : null}
-        <AppText weightOverride="500" color={ink} style={{ flex: 1, fontSize: 16, letterSpacing: 0.1 }}>
-          {title}
-        </AppText>
-        {detail ? (
-          <AppText variant="soft" color={colors.textSoft} style={{ marginRight: 2 }}>
-            {detail}
-          </AppText>
-        ) : null}
-        {right}
-      </PressScale>
-      {/* The divider stops short of both edges, as the reference draws it. */}
-      {!last ? <View style={{ position: 'absolute', left: glyph ? 51 : 18, right: 18, bottom: 0, height: 1, backgroundColor: colors.hairline }} /> : null}
-    </View>
-  );
-}
-
 // ── original tideline illustrations: tide / journey / crest ─────────────────
-export const Illo = {
-  tide: (c: string = colors.text, { w = 220, h = 132 }: { w?: number; h?: number } = {}) => (
-    <Svg width={w} height={h} viewBox="0 0 220 132" fill="none">
-      <Circle cx={110} cy={50} r={24} fill={c} />
-      <Path d="M2 86c20-13 38-13 54 0s38 13 54 0 38-13 54 0 38 13 54 0" stroke={c} strokeWidth={3.2} strokeLinecap="round" />
-      <Path d="M2 104c20-12 38-12 54 0s38 12 54 0 38-12 54 0 38 12 54 0" stroke={c} strokeWidth={3} strokeLinecap="round" opacity={0.45} />
-      <Path d="M2 121c20-11 38-11 54 0s38 11 54 0 38-11 54 0 38 11 54 0" stroke={c} strokeWidth={2.6} strokeLinecap="round" opacity={0.2} />
-    </Svg>
-  ),
-  waveline: (c: string = colors.text, { w = 320, h = 26, opacity = 1 }: { w?: number; h?: number; opacity?: number } = {}) => (
-    <Svg width={w} height={h} viewBox="0 0 320 26" fill="none" preserveAspectRatio="none">
-      <Path d="M0 13c26-11 53-11 80 0s53 11 80 0 53-11 80 0 53 11 80 0" stroke={c} strokeWidth={2.4} strokeLinecap="round" opacity={opacity} />
-    </Svg>
-  ),
-  journey: (c: string = colors.text, { w = 402, h = 250, light = colors.bg }: { w?: number; h?: number; light?: string } = {}) => (
-    <Svg width={w} height={h} viewBox="0 0 402 250" fill="none" preserveAspectRatio="xMidYMax meet">
-      <Circle cx={298} cy={72} r={50} fill={c} opacity={0.07} />
-      <Circle cx={298} cy={72} r={50} stroke={c} strokeOpacity={0.16} strokeWidth={1.5} />
-      <Path d="M0 150C60 122 108 134 150 150 200 170 244 122 300 134 340 142 382 152 402 146V250H0Z" fill={c} opacity={0.1} />
-      <Path d="M0 188C52 152 92 170 138 152L186 108 236 160C284 142 336 170 402 150V250H0Z" fill={c} opacity={0.19} />
-      <Path d="M186 108L170 136C178 130 194 130 202 136Z" fill={light} opacity={0.92} />
-      <Path d="M0 250V200C72 172 124 204 204 200 284 196 336 218 402 202V250Z" fill={light} />
-      <Path d="M0 200C72 172 124 204 204 200 284 196 336 218 402 202" stroke={c} strokeOpacity={0.07} strokeWidth={1.5} />
-      <Path d="M186 108V86" stroke={c} strokeWidth={2.4} strokeLinecap="round" />
-      <Path d="M186 87L205 93 186 99Z" fill={c} />
-      {[[58, 240], [86, 232], [114, 224], [142, 216], [168, 208]].map(([x, y], i) => (
-        <Circle key={i} cx={x} cy={y} r={3.4} fill={c} opacity={0.32} />
-      ))}
-      <Circle cx={190} cy={201} r={6} fill={light} stroke={c} strokeWidth={2.4} />
-    </Svg>
-  ),
-  crest: (c: string = colors.text, { w = 402, h = 140, light = colors.bg }: { w?: number; h?: number; light?: string } = {}) => (
-    <Svg width={w} height={h} viewBox="0 0 402 140" fill="none" preserveAspectRatio="xMidYMax slice">
-      <Circle cx={312} cy={44} r={40} fill={c} opacity={0.08} />
-      <Circle cx={312} cy={44} r={40} stroke={c} strokeOpacity={0.16} strokeWidth={1.4} />
-      <Path d="M0 92C52 64 96 78 150 70L196 36 244 84C296 66 348 92 402 74V140H0Z" fill={c} opacity={0.14} />
-      <Path d="M196 36L181 62C189 56 205 56 213 62Z" fill={light} opacity={0.9} />
-      <Path d="M0 140V104C70 82 128 108 206 104 284 100 340 120 402 106V140Z" fill={c} opacity={0.3} />
-    </Svg>
-  ),
-};
 
 // ── a plan card (paywall) ───────────────────────────────────────────────────
-export function PlanCard({
-  active,
-  tag,
-  name,
-  price,
-  per,
-  sub,
-  onPress,
-  style,
-}: {
-  active: boolean;
-  tag?: string;
-  name: string;
-  price: string;
-  per: string;
-  sub: string;
-  onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
-}) {
-  const onFill = active ? colors.accentText : colors.text;
-  const sub2 = active ? colors.inkTextMuted : colors.textSoft;
-  return (
-    <View
-      accessibilityRole="button"
-      onTouchEnd={onPress}
-      style={[
-        {
-          flex: 1,
-          backgroundColor: active ? colors.accent : colors.surface,
-          borderRadius: 20,
-          paddingHorizontal: 16,
-          paddingTop: 16,
-          paddingBottom: 18,
-          borderWidth: active ? 0 : 1.5,
-          borderColor: colors.border,
-        },
-        style,
-      ]}>
-      <View style={{ height: 16, marginBottom: 6 }}>
-        {tag ? (
-          <AppText weightOverride="600" color={active ? colors.inkTextMuted : colors.textSoft} style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase' }}>
-            {tag}
-          </AppText>
-        ) : null}
-      </View>
-      <AppText weightOverride="500" color={onFill} style={{ fontSize: 16.5, letterSpacing: -0.2, marginBottom: 8 }}>
-        {name}
-      </AppText>
-      <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 2 }}>
-        <AppText weightOverride="600" color={onFill} style={{ fontSize: 20, letterSpacing: -0.4 }}>
-          {price}
-        </AppText>
-        <AppText weightOverride="600" color={sub2} style={{ fontSize: 12 }}>
-          {per}
-        </AppText>
-      </View>
-      <AppText weightOverride="600" color={active ? colors.inkTextMuted : colors.textMuted} style={{ fontSize: 13, marginTop: 6 }}>
-        {sub}
-      </AppText>
-      {active ? <View style={{ position: 'absolute', top: 14, right: 14 }}>{Glyph.check(colors.accentText)}</View> : null}
-    </View>
-  );
-}

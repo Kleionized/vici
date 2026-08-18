@@ -16,15 +16,6 @@ export function InkSurface({ children }: { children: ReactNode }) {
   return <SurfaceContext.Provider value="ink">{children}</SurfaceContext.Provider>;
 }
 
-export function PaperSurface({ children }: { children: ReactNode }) {
-  return <SurfaceContext.Provider value="paper">{children}</SurfaceContext.Provider>;
-}
-
-/** Current surface ('paper' | 'ink'). */
-export function useSurface(): Surface {
-  return useContext(SurfaceContext);
-}
-
 /** Convenience: true when the current surface is the ink hero surface. */
 export function useOnInk(): boolean {
   return useContext(SurfaceContext) === 'ink';

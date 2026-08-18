@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { colors } from '@/lib/theme';
@@ -13,64 +12,6 @@ import { colors } from '@/lib/theme';
  */
 
 // ── log chooser: one mark per log kind (56px disc, 26/24px glyph) ─────
-
-/** Sunrise — daily check-in. */
-export function MarkCheckin({ color = colors.ink }: { color?: string }) {
-  return (
-    <Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
-      <Path d="M13 4.5V2M6.2 7.6L4.4 5.8M19.8 7.6l1.8-1.8" stroke={color} strokeWidth={2} strokeLinecap="round" />
-      <Path d="M7.5 15a5.5 5.5 0 0 1 11 0" fill="none" stroke={color} strokeWidth={2} />
-      <Path d="M3 15h20M8 19.5h10" stroke={color} strokeWidth={2} strokeLinecap="round" />
-    </Svg>
-  );
-}
-
-/** Cresting line over a waterline — an urge. */
-export function MarkUrge({ color = colors.ink }: { color?: string }) {
-  return (
-    <Svg width={26} height={20} viewBox="0 0 26 20" fill="none">
-      <Path d="M2 13c4-8 9 3 13-3s7 2 9-2" stroke={color} strokeWidth={2.2} fill="none" strokeLinecap="round" />
-      <Path d="M4 17.5h18" stroke={color} strokeWidth={2} strokeLinecap="round" opacity={0.45} />
-    </Svg>
-  );
-}
-
-/** Pennant on a staff — a win. */
-export function MarkWin({ color = colors.ink }: { color?: string }) {
-  return (
-    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-      <Path d="M6 22V3" stroke={color} strokeWidth={2.2} strokeLinecap="round" />
-      <Path d="M6.5 4h11l-3 4 3 4h-11" fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" />
-    </Svg>
-  );
-}
-
-/** Crescent — a lapse. */
-export function MarkLapse({ color = colors.ink }: { color?: string }) {
-  return (
-    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-      <Path d="M14.5 3.5a8.5 8.5 0 1 0 6 12.5 8 8 0 0 1-6-12.5z" fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" />
-    </Svg>
-  );
-}
-
-/** The 56px paper disc the log-chooser marks sit in, with its inset hairline. */
-export function MarkDisc({ children, tone = 'paper' }: { children: React.ReactNode; tone?: 'paper' | 'ink' }) {
-  return (
-    <View
-      style={{
-        width: 56,
-        height: 56,
-        borderRadius: 28,
-        backgroundColor: tone === 'ink' ? colors.ink : '#EFEDE6',
-        boxShadow: 'inset 0 0 0 1.5px rgba(0,0,0,0.1)',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      {children}
-    </View>
-  );
-}
 
 // ── urge log: outcome marks (42px tile, 22px glyph on a 24 viewBox) ───
 
