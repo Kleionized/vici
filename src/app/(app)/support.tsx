@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Linking, Pressable, View } from 'react-native';
 
-import { AppText, Button, Card, Header, Screen } from '@/components/ui';
+import { AppText, BackChevron, Button, Card, Header, Screen } from '@/components/ui';
 import { colors, spacing } from '@/lib/theme';
 
 /**
@@ -26,8 +26,18 @@ const PLACEHOLDER_RESOURCES = [
 export default function Support() {
   const router = useRouter();
 
+  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
+
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.lg }}>
+      {/* The only way back used to be a button under the resource list, which
+          on a screen someone opens in a bad moment means scrolling past every
+          card to leave. The labelled chevron is where it is on every other
+          pushed screen. */}
+      <View style={{ marginBottom: spacing.xs }}>
+        <BackChevron onPress={back} />
+      </View>
+
       <Header
         title="You're not alone in this."
         subtitle="VICI is a self-help tool, not medical advice or a crisis service. If you're in danger or thinking about harming yourself, please reach out to a real person now."
@@ -54,7 +64,7 @@ export default function Support() {
         added before this ships to anyone.
       </AppText>
 
-      <Button label="Back" variant="secondary" onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))} />
+      <Button label="Back" variant="secondary" onPress={back} />
     </Screen>
   );
 }

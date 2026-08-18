@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
-import { AppText, Button, Field, Header, LoadingView, PressScale, Screen, SectionLabel } from '@/components/ui';
+import { AppText, BackChevron, Button, Field, Header, LoadingView, PressScale, Screen, SectionLabel } from '@/components/ui';
 import { useLifeMap, useUpdateLifeMap } from '@/lib/backend';
 import { colors, radius, spacing, weight } from '@/lib/theme';
 
@@ -72,13 +72,21 @@ export default function LifeMapScreen() {
     setSaved(true);
   }
 
+  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
+
   return (
     <Screen contentStyle={{ paddingTop: spacing.xl, gap: spacing.xl }}>
+      {/* "Done" saves and leaves; this is the way back out without committing
+          an edit. Every other pushed screen opens with the same row. */}
+      <View style={{ marginBottom: spacing.xs }}>
+        <BackChevron onPress={back} />
+      </View>
+
       <Header
         title="Life Map"
         subtitle="Your anchor. The app brings this back to you when it helps."
         actionLabel="Done"
-        onAction={() => (router.canGoBack() ? router.back() : router.replace('/(app)/today'))}
+        onAction={back}
       />
 
       <Field label="Why you're here" value={why} onChangeText={setWhy} placeholder="In your own words…" multiline />

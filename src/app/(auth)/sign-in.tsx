@@ -5,7 +5,7 @@ import { Platform, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
-import { AppleMark, EnvelopeMark, GoogleMark, PaperAuthButton, PaperAuthField, PaperAuthGlow, PaperAuthSurface } from '@/components/auth/kit';
+import { AppleMark, EnvelopeMark, GoogleMark, PaperAuthBack, PaperAuthButton, PaperAuthField, PaperAuthGlow, PaperAuthSurface } from '@/components/auth/kit';
 import { AppText, PressScale } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { colors, sans } from '@/lib/theme';
@@ -38,6 +38,9 @@ export default function SignIn() {
   const [notice, setNotice] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // The board switches the moment the field is in play.
+  const typing = focused || email.length > 0;
+
   const reset = () => {
     setError(null);
     setNotice(null);
@@ -46,6 +49,23 @@ export default function SignIn() {
     reset();
     if (mode === 'verify') return setMode('password');
     setMode('email');
+  };
+  /**
+   * Leaving the landing board, as opposed to stepping back within the flow.
+   *
+   * Where sign-in was pushed — from All, say — this is the previous screen.
+   * On a cold start there is no previous screen: the splash `replace`s into
+   * here, so sign-in is the root of the auth stack. Rather than show a control
+   * that does nothing, the row then steps back out of the typing state to the
+   * board's own starting point, which is the same thing `back` already does
+   * between the password and code steps.
+   */
+  const canLeave = router.canGoBack() || typing;
+  const leave = () => {
+    reset();
+    if (router.canGoBack()) return router.back();
+    setEmail('');
+    setFocused(false);
   };
 
   const continueWithEmail = () => {
@@ -82,8 +102,6 @@ export default function SignIn() {
     setError(res.error ?? 'Could not complete sign in.');
   }
 
-  // The board switches the moment the field is in play.
-  const typing = focused || email.length > 0;
 
   if (mode === 'email') {
     return (
@@ -92,6 +110,23 @@ export default function SignIn() {
         <PaperAuthGlow />
         <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
           <View style={{ flex: 1 }}>
+            {/* The way back out of the landing board. The canvas draws no Back
+                here — it composes this frame as the app's first screen — but
+                sign-in is also pushed from All, and a pushed screen with no
+                back row strands you. Shown only when there is somewhere to
+                return to: arriving from the splash is a `replace`, so on the
+                cold-start path there is nothing behind this and a back row
+                would be a dead control.
+
+                The row itself is the one the board's own password and code
+                steps already use, so the affordance does not change shape
+                partway through the flow. */}
+            {canLeave ? (
+              <View style={{ position: 'absolute', left: 0, top: 10, zIndex: 5 }}>
+                <PaperAuthBack onPress={leave} />
+              </View>
+            ) : null}
+
             {/* the mark rides up 10 when the keyboard is coming — design y 150 → 140 */}
             <View style={{ position: 'absolute', left: 0, right: 0, top: typing ? 86 : 96, alignItems: 'center' }}>
               <EnvelopeMark />
