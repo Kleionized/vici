@@ -1,12 +1,14 @@
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
 import { AppText, CloseGlyph, LoadingView, LockGlyph, PressScale } from '@/components/ui';
-import { useCurrentLesson, useLessonProgressMap, useLessons } from '@/lib/backend';
-import { interactiveLesson } from '@/lib/curriculum';
+import { useCurrentUser, useLessonProgressMap } from '@/lib/backend';
+import { CURRICULUM_84_DAYS } from '@/content/curriculum84';
+import { lessonSlug } from '@/lib/curriculum';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -17,16 +19,19 @@ import { colors, sans } from '@/lib/theme';
  */
 export default function FirstSteps() {
   const router = useRouter();
-  const lessons = useLessons();
+  const user = useCurrentUser();
   const progress = useLessonProgressMap();
-  const current = useCurrentLesson();
+  // Read once on mount, so a re-render cannot move the lock line under a finger.
+  const [now] = useState(() => Date.now());
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  if (!lessons || progress === undefined || current === undefined) return <LoadingView />;
+  if (progress === undefined) return <LoadingView />;
 
-  const steps = lessons.slice(0, 6);
-  const done = steps.filter((lesson) => progress[lesson.slug]?.status === 'completed').length;
-  const currentOrder = current?.lesson.orderIndex ?? Infinity;
+  // The first six days of week one, and the day the reader is on — the same
+  // reckoning the week board and the lessons browser use.
+  const steps = CURRICULUM_84_DAYS.slice(0, 6);
+  const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  const done = steps.filter((lesson) => progress[lessonSlug(lesson.day)]?.status === 'completed').length;
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bg }}>
@@ -62,7 +67,7 @@ export default function FirstSteps() {
           <View style={{ marginTop: 22, flexDirection: 'row', gap: 8 }}>
             {steps.map((lesson, index) => (
               <View
-                key={lesson.slug}
+                key={lesson.day}
                 style={{ flex: 1, height: 5, borderRadius: 3, backgroundColor: index < done ? colors.ink : '#CFDCE8' }}
               />
             ))}
@@ -73,21 +78,19 @@ export default function FirstSteps() {
 
           <View style={{ marginTop: 22, borderRadius: 16, borderCurve: 'continuous', backgroundColor: colors.surface, overflow: 'hidden' }}>
             {steps.map((lesson, index) => {
-              const complete = progress[lesson.slug]?.status === 'completed';
-              const locked = lesson.orderIndex > currentOrder && !complete;
-              const content = interactiveLesson(lesson.slug);
+              const complete = progress[lessonSlug(lesson.day)]?.status === 'completed';
               return (
                 <StepRow
-                  key={lesson.slug}
+                  key={lesson.day}
                   n={index + 1}
                   title={lesson.title}
-                  meta={content ? `${lesson.estimatedMinutes ?? 4} min · ${content.pages.length} pages` : `${lesson.estimatedMinutes ?? 4} min`}
+                  meta={lesson.summary}
                   complete={complete}
-                  locked={locked}
+                  locked={lesson.day > day && !complete}
                   last={index === steps.length - 1}
                   onPress={() => {
                     close();
-                    router.push(`/lesson-overview/${lesson.slug}`);
+                    router.push(`/lesson-card/${lesson.day}`);
                   }}
                 />
               );

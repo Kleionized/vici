@@ -89,7 +89,8 @@ export default function Milestones() {
   const lapses = events.filter((e) => e.type === 'lapse');
   const letters = journal.filter((j) => j.tag === 'Letter').length;
   const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
-  const worldsDone = Math.max(0, (current?.lesson.week ?? 1) - 1);
+  // Ten grounds against twelve weeks, so the last two weeks add no ground.
+  const worldsDone = Math.min(10, Math.max(0, (current?.lesson.week ?? 1) - 1));
   const firstCheckin = checkins.length ? Math.min(...checkins.map((c) => dayStart(c.date))) : null;
 
   // What each face counts, and — for the four that mint once — whether it has.

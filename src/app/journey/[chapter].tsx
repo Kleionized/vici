@@ -20,7 +20,7 @@ export default function ChapterRoute() {
   return (
     <>
       <StatusBar style="dark" />
-      <JourneyChapter chapter={key} onBack={() => (router.canGoBack() ? router.back() : router.replace('/(app)/library'))} />
+      <JourneyChapter chapter={key} onBack={() => (router.canGoBack() ? router.back() : router.replace('/journey'))} />
     </>
   );
 }

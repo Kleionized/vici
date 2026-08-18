@@ -1211,3 +1211,43 @@ confirms. The verifier had been told to check exactly this and missed it.
 
   The campaign has not gone anywhere: it is still `/journey/[chapter]`, and
   `All` lists it under its own name alongside the library.
+
+- **D-115 · No land band between weeks in the Library.** The pushed week board
+  closes on the canvas's two headlands at 798 because that is the floor of a
+  screen. Stacked twelve deep it is a seam repeated eleven times, so the Library
+  drops it and separates the weeks with paper: **160pt**, which with the next
+  week's own 60 above its name is 220 of nothing. `/week/[week]` still draws it.
+
+- **D-116 · One curriculum, everywhere.** `lib/curriculum.ts` adapted the legacy
+  110-lesson interactive set into the `Lesson` shape the backend speaks. It
+  adapts `CURRICULUM_84` now, slugged `day-01` … `day-84`, so every consumer of
+  `useLessons` / `useCurrentLesson` / `useLessonProgressMap` reads the twelve
+  weeks without knowing anything changed:
+
+  | surface | before | after |
+  | --- | --- | --- |
+  | `search` | category glyph, minutes, `/lesson-overview/[slug]` | the lesson's own plate, its week, its summary line, `/lesson-card/[day]` |
+  | `first-steps` | six interactive lessons, page counts | the first six days, their summaries, `/lesson-card/[day]` |
+  | `(app)/locked` | three hardcoded week names | weeks II–IV read off the curriculum, at the canvas's own tops |
+  | `day/morning`, `day/night` | "Part III finished · 7 min" | the duration is gone; the curriculum states none |
+  | `(app)/milestones` | `week − 1` grounds | clamped to ten, which is how many grounds there are |
+  | `(app)/all` | a lesson by slug | the card and the reader, by day |
+
+  Three fields of `Lesson` are now empty rather than invented: the twelve weeks
+  state no reflection prompt, no approach tags and no duration, and a made-up
+  "7 min" on every row is worse than no row. `category` became optional in both
+  the type and the Convex validator — search was its only reader and no longer
+  groups by it. The seeded rows still carry one.
+
+  **Deleted:** `/lesson/[slug]` and `/lesson-overview/[slug]`. They rendered
+  interactive pages by slug, and there are no interactive pages for the eighty-
+  four — the card at `/lesson-card/[day]` and the 1,398-page reader at
+  `/lesson/day/[day]` are what a lesson opens into now.
+
+  **The campaign moved rather than went.** It was the Library tab; it is
+  `/journey` — the same four chapters, the same scroll, a pushed route with a
+  Back row. `All` lists it, and the four chapters still open individually.
+
+  `content/interactiveLessons.ts` and `content/interactive/` are now referenced
+  by nothing. Left in place: that is authored writing, not dead UI, and deleting
+  it is the author's call.

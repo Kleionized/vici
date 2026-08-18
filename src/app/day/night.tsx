@@ -207,7 +207,7 @@ export default function Night() {
                 mark="play"
                 glyph={[11, 14]}
                 title={finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson today'}
-                detail={finished ? `${finished.estimatedMinutes ?? 7} min` : undefined}
+                detail={undefined}
               />
               <PressScale
                 onPress={() => router.push('/urge-log')}

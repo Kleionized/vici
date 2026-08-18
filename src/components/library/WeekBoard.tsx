@@ -33,9 +33,18 @@ export const ROW_PITCH = 80;
 export const HEADER_H = 160;
 /** Canvas 472 → 486: the air between the scene's foot and the first row. */
 export const ROWS_TOP_GAP = 14;
-/** Canvas 782 → 798: the air between the last row and the land. */
-export const LAND_GAP = 16;
 export const LAND_H = 54;
+
+/**
+ * The air between one week and the next in the Library.
+ *
+ * The pushed board closes on a land band at canvas 798 because it is the floor
+ * of a screen. Stacked twelve deep that band becomes a seam repeated eleven
+ * times, so the Library drops it and separates the weeks with paper instead.
+ * With the next week's own 60 above its name that is 220pt of nothing, which is
+ * what tells you a week ended rather than a rule drawn across the page.
+ */
+export const WEEK_GAP = 160;
 
 export type RowState = 'done' | 'current' | 'locked';
 
@@ -46,9 +55,9 @@ export function rowStateFor(lesson: Curriculum84Lesson, day: number): RowState {
   return 'locked';
 }
 
-/** How tall one board stands when nothing inside it scrolls. */
+/** How tall one Library board stands, its trailing gap included. */
 export function weekBoardHeight(lessonCount: number): number {
-  return HEADER_H + WEEK_SCENE_HEIGHT + ROWS_TOP_GAP + lessonCount * ROW_PITCH - (ROW_PITCH - ROW_H) + LAND_GAP + LAND_H;
+  return HEADER_H + WEEK_SCENE_HEIGHT + ROWS_TOP_GAP + lessonCount * ROW_PITCH - (ROW_PITCH - ROW_H) + WEEK_GAP;
 }
 
 /** The name and the line under it — canvas 114 and 158. */
@@ -153,8 +162,14 @@ export function LessonRows({ week, day, onLesson }: { week: Curriculum84Week; da
   );
 }
 
-/** Two headlands closing the board, drawn as the elliptical domes they are. */
-export function ClosingLand({ width, absolute = true }: { width: number; absolute?: boolean }) {
+/**
+ * Two headlands closing the board, drawn as the elliptical domes they are.
+ *
+ * Canvas 798, pinned to the foot of the pushed screen. The Library does not
+ * draw it: stacked twelve deep it reads as a seam between weeks rather than a
+ * floor under one.
+ */
+export function ClosingLand({ width }: { width: number }) {
   const id = useId().replace(/:/g, '');
   const dome = (x: number, w: number, y: number, h: number, ry: number) =>
     `M${x} ${y + ry}A${w / 2} ${ry} 0 0 1 ${x + w} ${y + ry}L${x + w} ${y + h}L${x} ${y + h}Z`;
@@ -164,9 +179,7 @@ export function ClosingLand({ width, absolute = true }: { width: number; absolut
   const bX = width * 0.35;
   const bW = width * 0.65 + 40;
   return (
-    <View
-      pointerEvents="none"
-      style={absolute ? { position: 'absolute', left: 0, right: 0, bottom: 0, height: LAND_H, overflow: 'hidden' } : { height: LAND_H, overflow: 'hidden' }}>
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: LAND_H, overflow: 'hidden' }}>
       <Svg width={width} height={LAND_H} style={{ position: 'absolute', left: 0, top: 0 }}>
         <Defs>
           <SvgLinearGradient id={`land${id}`} x1="0" y1="0" x2="0" y2={LAND_H} gradientUnits="userSpaceOnUse">
@@ -185,7 +198,8 @@ export function ClosingLand({ width, absolute = true }: { width: number; absolut
 /**
  * One whole week at its natural height — what the Library stacks twelve of.
  *
- * Nothing here scrolls: the page it sits in does.
+ * Nothing here scrolls: the page it sits in does. And nothing closes it but
+ * air — see `WEEK_GAP`.
  */
 export function WeekBoard({ week, day }: { week: Curriculum84Week; day: number }) {
   const router = useRouter();
@@ -198,8 +212,7 @@ export function WeekBoard({ week, day }: { week: Curriculum84Week; day: number }
       </View>
       <View style={{ height: ROWS_TOP_GAP }} />
       <LessonRows week={week} day={day} onLesson={(lessonDay) => router.push(`/lesson-card/${lessonDay}`)} />
-      <View style={{ height: LAND_GAP }} />
-      <ClosingLand width={width} absolute={false} />
+      <View style={{ height: WEEK_GAP }} />
     </View>
   );
 }

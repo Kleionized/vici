@@ -6,7 +6,7 @@ import { useTabBarHeight } from '@/components/StoicTabBar';
 import { AppText, ChevronGlyph, Grain, PressScale } from '@/components/ui';
 import { toDateKey } from '@/lib/date';
 import { latestCompletedWeek, mondayOf } from '@/lib/weeklyReport';
-import { useCurrentUser, useLessons } from '@/lib/backend';
+import { useCurrentUser } from '@/lib/backend';
 import { colors, sans } from '@/lib/theme';
 
 /**
@@ -32,17 +32,15 @@ type Row = { title: string; detail?: string; to: string };
 export default function All() {
   const router = useRouter();
   const user = useCurrentUser();
-  const lessons = useLessons();
   const tabBar = useTabBarHeight();
 
-  // The report and the lesson reader both need something real to open onto; a
-  // hub that pushes a route with no params lands on an empty screen and reads
-  // as a bug rather than as a screen you have not earned yet. An account under a
-  // week old has no completed week, so fall back to last Monday — the report
-  // will be thin, but it is a real week rather than a missing param.
+  // The report needs something real to open onto; a hub that pushes a route
+  // with no params lands on an empty screen and reads as a bug rather than as a
+  // screen you have not earned yet. An account under a week old has no completed
+  // week, so fall back to last Monday — the report will be thin, but it is a
+  // real week rather than a missing param.
   const lastMonday = toDateKey(new Date(mondayOf(new Date()).getTime() - 7 * 86_400_000));
   const week = (user?.createdAt ? latestCompletedWeek(user.createdAt) : null) ?? lastMonday;
-  const slug = lessons?.[0]?.slug;
 
   const groups: [string, Row[]][] = [
     [
@@ -83,14 +81,15 @@ export default function All() {
       'The long game',
       [
         { title: 'The library', detail: 'Twelve weeks', to: '/(app)/library' },
-        { title: 'The campaign', detail: 'Five grounds', to: '/journey/landing' },
+        { title: 'The campaign', detail: 'Four chapters', to: '/journey' },
         { title: 'Chapter I · The Landing', to: '/journey/landing' },
         { title: 'Chapter II · The Crossing', to: '/journey/crossing' },
         { title: 'Chapter III · The Highlands', to: '/journey/highlands' },
         { title: 'Chapter IV · The Watch', to: '/journey/watch' },
         { title: 'Medallions', to: '/(app)/milestones' },
         { title: 'Lessons browser', to: '/lessons-browser' },
-        ...(slug ? [{ title: 'A lesson', detail: 'Reader', to: `/lesson/${slug}` }, { title: 'A lesson · parts', to: `/lesson-overview/${slug}` }] : []),
+        { title: 'A lesson · card', to: '/lesson-card/1' },
+        { title: 'A lesson · reader', to: '/lesson/day/1' },
         { title: 'Life map', to: '/(app)/lifemap' },
         { title: 'Locked weeks', to: '/(app)/locked' },
       ],

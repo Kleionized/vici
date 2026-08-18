@@ -208,7 +208,7 @@ export default function Morning() {
                 mark="play"
                 glyph={[11, 14]}
                 title={finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday'}
-                detail={finished ? `${finished.estimatedMinutes ?? 7} min` : undefined}
+                detail={undefined}
               />
             </View>
           </>

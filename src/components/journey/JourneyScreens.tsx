@@ -35,7 +35,7 @@ export type { ChapterKey, GroundKey };
 
 // ── where the ninety days are cut ────────────────────────────────────────────
 
-/** The journey in order — the list `library.tsx` walks. */
+/** The journey in order — the list `app/journey/index.tsx` walks. */
 export const CHAPTER_ORDER: ChapterKey[] = ['landing', 'crossing', 'highlands', 'watch'];
 
 /**
@@ -426,7 +426,7 @@ export function CampaignMap({ onBack, onContinue }: { onBack?: () => void; onCon
   // one the calendar puts you in. Only the first four are drawn here.
   const here = Math.min(4, Math.max(1, current?.lesson.week ?? Math.ceil(day / 7)));
   const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/(app)/today')));
-  const go = onContinue ?? (() => router.push('/(app)/library'));
+  const go = onContinue ?? (() => router.push('/journey'));
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F6F4F0' }}>

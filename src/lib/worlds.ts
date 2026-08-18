@@ -6,7 +6,7 @@
  *
  * `state` / `done` here are the design defaults; a screen that shows a world
  * overlays real lesson progress on top. Only `WORLDS` is read now — by
- * `lib/lessonArt.ts` and `app/lesson-overview/[slug].tsx`; the map-node tables
+ * `lib/lessonArt.ts`; the map-node tables
  * below outlived the world-map screens they were laid out for.
  */
 

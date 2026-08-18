@@ -45,7 +45,8 @@ export interface Lesson {
   week: number;
   dayInWeek: number;
   orderIndex: number;
-  category: LessonCategory;
+  /** The seeded rows carry one; the twelve-week curriculum states none. */
+  category?: LessonCategory;
   bodyMarkdown: string;
   reflectionPrompt: string;
   reflectionFields: ReflectionField[];

@@ -77,7 +77,7 @@ export function useCurrentUser(): AppUser | undefined {
 }
 
 /**
- * Lesson *content* is compiled into the app (`src/content/interactiveLessons.ts`)
+ * Lesson *content* is compiled into the app (`src/content/curriculum84.ts`)
  * and is the same for everyone, so it is read from the bundle rather than the
  * database — which otherwise has to hold a second copy of it, and answers
  * "lesson not found" for every slug it has not been seeded with. Convex owns

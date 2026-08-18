@@ -54,7 +54,7 @@ export const lessonFields = {
   week: v.number(),
   dayInWeek: v.number(),
   orderIndex: v.number(),
-  category,
+  category: v.optional(category),
   bodyMarkdown: v.string(),
   reflectionPrompt: v.string(),
   reflectionFields: v.array(reflectionField),

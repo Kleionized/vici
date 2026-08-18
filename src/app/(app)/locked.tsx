@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 import { AppText, Grain, PressScale } from '@/components/ui';
-import { useLessons } from '@/lib/backend';
+import { CURRICULUM_84 } from '@/content/curriculum84';
 import { sans } from '@/lib/theme';
 
 /**
@@ -20,11 +20,8 @@ import { sans } from '@/lib/theme';
 const noiseDark = require('../../../assets/images/noise-dark.png');
 
 /** The three ghosted rows, at canvas y 268 / 346 / 424 — week I sits above them. */
-const WEEKS: [string, string, number][] = [
-  ['Week II · Riding the wave', 'Urge surfing & the 20-minute rule', 214],
-  ['Week III · Your triggers, mapped', 'Spot the leading indicators early', 292],
-  ['Week IV · Never fail twice', 'A plan for the moment after a lapse', 370],
-];
+/** The canvas pins the three ghosted rows at these tops; the weeks are the real ones. */
+const WEEK_TOPS = [214, 292, 370];
 
 function LockGlyph() {
   return (
@@ -94,14 +91,14 @@ function MistRoadArt() {
 
 export default function Locked() {
   const router = useRouter();
-  const lessons = useLessons() ?? [];
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/library'));
 
-  // the curriculum's own shape: how many weeks exist, and how big week one is
-  const weekNumbers = [...new Set(lessons.map((l) => l.week))].sort((a, b) => a - b);
-  const firstWeek = weekNumbers[0];
-  const firstCount = lessons.filter((l) => l.week === firstWeek).length;
-  const ahead = Math.max(0, weekNumbers.length - 1);
+  // The curriculum's own shape: week one, the three the canvas ghosts under it,
+  // and how many are left after that.
+  const first = CURRICULUM_84[0];
+  const firstCount = first?.lessons.length ?? 0;
+  const ahead = Math.max(0, CURRICULUM_84.length - 1);
+  const ghosted = CURRICULUM_84.slice(1, 1 + WEEK_TOPS.length);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
@@ -130,20 +127,20 @@ export default function Locked() {
               </Svg>
             </View>
             <View style={{ flex: 1 }}>
-              <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>Week I · The first calm</AppText>
+              <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>{first ? `Week ${first.roman} · ${first.name}` : 'Week I'}</AppText>
               <AppText style={[sans('400'), { marginTop: 2, fontSize: 13, color: '#55534E' }]}>Completed · {firstCount} lessons</AppText>
             </View>
           </View>
 
           {/* the weeks beyond — ghosted, each under its own hairline */}
-          {WEEKS.map(([title, sub, top]) => (
+          {ghosted.map((week, index) => (
             <View
-              key={title}
+              key={week.n}
               style={{
                 position: 'absolute',
                 left: 24,
                 right: 24,
-                top,
+                top: WEEK_TOPS[index],
                 flexDirection: 'row',
                 alignItems: 'center',
                 gap: 14,
@@ -156,8 +153,8 @@ export default function Locked() {
                 <LockGlyph />
               </View>
               <View style={{ flex: 1 }}>
-                <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>{title}</AppText>
-                <AppText style={[sans('400'), { marginTop: 2, fontSize: 13, color: '#55534E' }]}>{sub}</AppText>
+                <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>{`Week ${week.roman} · ${week.name}`}</AppText>
+                <AppText numberOfLines={1} style={[sans('400'), { marginTop: 2, fontSize: 13, color: '#55534E' }]}>{week.blurb}</AppText>
               </View>
             </View>
           ))}
