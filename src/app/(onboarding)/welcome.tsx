@@ -2,140 +2,95 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 
 import {
-  O3CampaignLine,
   O3CostPage,
-  O3CurrentPattern,
   O3DayOne,
+  O3FunnelStep,
   O3Handover,
-  O3Interlude,
   O3Letter,
   O3Pattern,
-  O3PlanReady,
   O3Pledge,
-  O3PushIntro,
-  O3Question,
   O3Reading,
   O3ReadingPause,
-  O3Reversal,
-  O3Rewire,
   O3Root,
-  O3Save,
-  O3SectionIntro,
   O3Shell,
-  O3Streaks,
-  O3_QUESTIONS,
-  O3_SECTIONS,
   buildWeekXiiLetter,
   type O3Paper,
 } from '@/components/onboarding/v3';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
+import { FUNNEL_STEPS } from '@/content/onboardingFunnel';
 import { useAuth } from '@/lib/auth';
 import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
 
-// ── Latest onboarding: notification primer, all 23 assessment states, four
-// short teaching interludes, personalised cost/pattern results, campaign map,
-// vow, week-XII letter, reminders, account save, and membership choice. ──
+/**
+ * The onboarding funnel, in the order `UI Final 1` numbers it.
+ *
+ * The account is made first now (`02 · Login`), so the questionnaire opens on
+ * the three that name him — `03 · Name`, `04 · Age`, `05 · Gender` — then runs
+ * `06 · Start` through `22 · What You Have Tried`, and hands over to the
+ * reading. The seven section intros, three of the four lesson interstitials,
+ * eleven questions and the save-your-progress gate are all withdrawn from this
+ * bundle; six screens are new.
+ *
+ * The twenty questionnaire screens are data: `src/content/onboardingFunnel.ts`
+ * is generated from the frames themselves, and `O3FunnelStep` draws whichever
+ * shape a step declares.
+ */
 
 type Answers = Record<string, string | string[]>;
 
 type Step =
+  | { id: string; kind: 'funnel'; fi: number }
   | {
       id: string;
       kind:
-        | 'push'
-        | 'willpower'
-        | 'rewireLesson'
-        | 'anchor'
-        | 'smallSteps'
-        | 'streaks'
         | 'pause'
         | 'root'
-        | 'planReady'
-        | 'currentPattern'
+        | 'pattern'
         | 'cost30'
         | 'cost365'
         | 'costAge80'
-        | 'reversal'
-        | 'campaignLine'
         | 'reading'
-        | 'pattern'
-        | 'rewire'
-        | 'pledge'
         | 'letterReceived'
-        | 'medallionReceived'
         | 'letter'
+        | 'pledge'
+        | 'medallionReceived'
         | 'dayone'
-        | 'save'
         | 'paywall';
-    }
-  | { id: string; kind: 'question'; qi: number }
-  | { id: string; kind: 'sectionIntro'; si: number };
+    };
 
 const STEPS: Step[] = [
-  { id: 'push', kind: 'push' },
-  ...O3_QUESTIONS.flatMap((q, i): Step[] => {
-    const before: Step[] = [];
-    // Each named stretch of the questionnaire opens on a card saying what the
-    // next few questions are for.
-    const si = O3_SECTIONS.findIndex((sec) => sec.at === i);
-    if (si >= 0) before.push({ id: `section-${si}`, kind: 'sectionIntro', si });
-    const question: Step = { id: q[0], kind: 'question', qi: i };
-    if (i === 2) return [...before, question, { id: 'willpower', kind: 'willpower' }];
-    if (i === 6) return [...before, question, { id: 'rewire-lesson', kind: 'rewireLesson' }];
-    if (i === 16) return [...before, question, { id: 'anchor', kind: 'anchor' }];
-    if (i === 18) return [...before, question, { id: 'small-steps', kind: 'smallSteps' }];
-    return [...before, question];
-  }),
-  { id: 'pause', kind: 'pause' },
-  { id: 'plan-ready', kind: 'planReady' },
-  { id: 'root', kind: 'root' },
-  { id: 'current-pattern', kind: 'currentPattern' },
-  { id: 'cost30', kind: 'cost30' },
-  { id: 'cost365', kind: 'cost365' },
-  { id: 'cost-age80', kind: 'costAge80' },
-  { id: 'reversal', kind: 'reversal' },
-  { id: 'streaks', kind: 'streaks' },
-  { id: 'campaign-line', kind: 'campaignLine' },
-  { id: 'rewire', kind: 'rewire' },
-  { id: 'pattern', kind: 'pattern' },
-  { id: 'reading', kind: 'reading' },
-  { id: 'pledge', kind: 'pledge' },
-  { id: 'letter-received', kind: 'letterReceived' },
-  { id: 'medallion-received', kind: 'medallionReceived' },
-  { id: 'letter', kind: 'letter' },
-  { id: 'dayone', kind: 'dayone' },
-  { id: 'save', kind: 'save' },
-  { id: 'paywall', kind: 'paywall' },
+  // 03 · Name … 22 · What You Have Tried
+  ...FUNNEL_STEPS.map((s, fi): Step => ({ id: s.id, kind: 'funnel', fi })),
+  { id: 'pause', kind: 'pause' }, //                23 · Putting Your Plan Together
+  { id: 'root', kind: 'root' }, //                  24 · Where You Get Caught
+  { id: 'pattern', kind: 'pattern' }, //            26 · The Window to Protect
+  { id: 'cost30', kind: 'cost30' }, //              28 · The Next 30 Days
+  { id: 'cost365', kind: 'cost365' }, //            29 · One Year From Now
+  { id: 'cost-age80', kind: 'costAge80' }, //       30 · If Nothing Changes
+  { id: 'reading', kind: 'reading' }, //            34–36 · Twelve Weeks
+  { id: 'letter-received', kind: 'letterReceived' }, // 37 · A Letter Arrived
+  { id: 'letter', kind: 'letter' }, //              38 · A Letter From Week XII
+  { id: 'pledge', kind: 'pledge' }, //              39 · The Vow
+  { id: 'medallion-received', kind: 'medallionReceived' }, // 40 · Medallion Earned
+  { id: 'dayone', kind: 'dayone' }, //              41 · Reminders
+  { id: 'paywall', kind: 'paywall' }, //            42 · Paywall
 ];
 
-/** Daylight arrives on the plan card — 096 is the first paper frame. */
-const PLAN_IDX = STEPS.findIndex((s) => s.id === 'plan-ready');
+/** Daylight arrives on the reading — the funnel itself is all night register. */
+const PLAN_IDX = STEPS.findIndex((s) => s.id === 'pause');
 
 /**
- * The paper tail's chrome, frame by frame. 096–106 count in eight ticks rather
- * than the night funnel's one growing rule, each states how many are inked, and
- * three of them carry their own field: 096 the plan's warm paper, 107 the map's,
- * 108 none at all. Back sits at y 96 on the paper frames and 64 on the map;
- * 096 and 108 do not draw one.
+ * The paper tail's chrome. The tail counts in eight ticks rather than the
+ * funnel's one growing rule, each frame states how many are inked, and two of
+ * them carry their own field: the reading the map's, the vow none at all.
  */
 const PAPER_BACK = 96 - 54;
 const CHROME: Record<string, { seg?: number; paper?: O3Paper; back?: false; backTop?: number }> = {
-  // the four lesson frames drop Back the same 2pt the paper ones do
-  willpower: { backTop: PAPER_BACK },
-  'rewire-lesson': { backTop: PAPER_BACK },
-  anchor: { backTop: PAPER_BACK },
-  'small-steps': { backTop: PAPER_BACK },
-  'plan-ready': { seg: 8, paper: 'plan', back: false },
   root: { seg: 2, backTop: PAPER_BACK },
-  'current-pattern': { seg: 3, backTop: PAPER_BACK },
+  pattern: { seg: 8, backTop: PAPER_BACK },
   cost30: { seg: 3, backTop: PAPER_BACK },
   cost365: { seg: 4, backTop: PAPER_BACK },
   'cost-age80': { seg: 4, backTop: PAPER_BACK },
-  reversal: { seg: 4, backTop: PAPER_BACK },
-  streaks: { seg: 5, backTop: PAPER_BACK },
-  'campaign-line': { seg: 5, backTop: PAPER_BACK },
-  rewire: { seg: 6, backTop: PAPER_BACK },
-  pattern: { seg: 8, backTop: PAPER_BACK },
   reading: { paper: 'map', backTop: 64 - 54 },
   pledge: { paper: 'plain', back: false },
 };
@@ -185,53 +140,37 @@ export default function Onboarding() {
 
   const step = STEPS[i];
   const lit = i >= PLAN_IDX;
-  const chrome = CHROME[step.id] ?? {};
+  // The funnel frames each state their own Back top — 94 on every question,
+  // 96 on `10 · First Principle`.
+  const chrome = step.kind === 'funnel' ? { backTop: FUNNEL_STEPS[step.fi].backTop - 54 } : (CHROME[step.id] ?? {});
 
   const body = useMemo(() => {
     switch (step.kind) {
-      case 'push':
-        return <O3PushIntro next={next} />;
-      case 'willpower':
-        return <O3Interlude kind="willpower" next={next} />;
-      case 'rewireLesson':
-        return <O3Interlude kind="rewire" next={next} />;
-      case 'anchor':
-        return <O3Interlude kind="anchor" next={next} />;
-      case 'smallSteps':
-        return <O3Interlude kind="steps" next={next} />;
-      case 'sectionIntro':
-        return <O3SectionIntro section={O3_SECTIONS[step.si]} next={next} />;
-      case 'question': {
-        const [key, q] = O3_QUESTIONS[step.qi];
-        // key per question so each remounts — otherwise the shared O3Question
-        // instance keeps its local `picked` state and the next single-select
-        // can't be chosen or advanced (the "stuck on gender" bug).
+      case 'funnel': {
+        const f = FUNNEL_STEPS[step.fi];
+        // Keyed per step so each remounts — a shared instance would carry its
+        // local `picked` into the next single-select and strand it.
         return (
-          <O3Question key={key} title={q.title} options={q.options} multi={q.multi} kind={q.kind} value={a[key]} onSet={(v) => set(key, v)} next={next} note={q.note} ctaLabel={q.ctaLabel} skip={q.skip} />
+          <O3FunnelStep
+            key={f.id}
+            step={f}
+            value={a[f.id]}
+            onSet={(v) => set(f.id, v)}
+            next={next}
+            name={String(a.name || displayName || '')}
+          />
         );
       }
-      case 'streaks':
-        return <O3Streaks answers={a} next={next} />;
       case 'pause':
         return <O3ReadingPause answers={a} next={next} />;
       case 'root':
         return <O3Root answers={a} next={next} />;
-      case 'planReady':
-        return <O3PlanReady next={next} back={back} />;
-      case 'currentPattern':
-        return <O3CurrentPattern answers={a} next={next} />;
       case 'cost30':
         return <O3CostPage answers={a} next={next} h={1} />;
       case 'cost365':
         return <O3CostPage answers={a} next={next} h={2} />;
       case 'costAge80':
         return <O3CostPage answers={a} next={next} h={3} />;
-      case 'reversal':
-        return <O3Reversal next={next} back={back} />;
-      case 'campaignLine':
-        return <O3CampaignLine next={next} />;
-      case 'rewire':
-        return <O3Rewire answers={a} next={next} />;
       case 'reading':
         return <O3Reading answers={a} next={next} />;
       case 'pattern':
@@ -254,10 +193,8 @@ export default function Onboarding() {
             }}
           />
         );
-      case 'save':
-        return <O3Save next={next} />;
       case 'paywall':
-        return null; // rendered full-frame below, like the wave
+        return null; // rendered full-frame below
       default:
         return null;
     }

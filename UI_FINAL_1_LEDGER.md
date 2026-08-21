@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 2033 · IMPLEMENTED: 2 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 2013 · IMPLEMENTED: 22 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -18,26 +18,26 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | --- | --- | --- | --- | --- | --- |
 | `Email-Login/Splash` | .uifinal1/final/Email-Login/Splash.html | src/components/ui/Waterline.tsx (SplashScene) | IMPLEMENTED | 2026-08-21 | spec specs/01-splash.md — full property table, every row match; no code change required |
 | `Email-Login/Login` | .uifinal1/final/Email-Login/Login.html | src/app/(auth)/sign-in.tsx + src/components/auth/kit.tsx | IMPLEMENTED | 2026-08-21 | spec specs/02-login.md — mark redrawn 240x190, copy, email row now a control, Terms/Privacy added; every box numerically identical |
-| `Email-Login/V3 Q24 Name` | .uifinal1/final/Email-Login/V3-Q24-Name.html |  | NOT_STARTED |  | canvas note: 03 · Name |
-| `Email-Login/V3 Q25 Age` | .uifinal1/final/Email-Login/V3-Q25-Age.html |  | NOT_STARTED |  | canvas note: 04 · Age |
-| `Email-Login/V3 Q26 Gender` | .uifinal1/final/Email-Login/V3-Q26-Gender.html |  | NOT_STARTED |  | canvas note: 05 · Gender |
-| `Email-Login/Onboarding Start` | .uifinal1/final/Email-Login/Onboarding-Start.html |  | NOT_STARTED |  | canvas note: 06 · Start |
-| `Email-Login/V3 Q1` | .uifinal1/final/Email-Login/V3-Q1.html |  | NOT_STARTED |  | canvas note: 07 · Frequency |
-| `Email-Login/V3 Q2` | .uifinal1/final/Email-Login/V3-Q2.html |  | NOT_STARTED |  | canvas note: 08 · Duration |
-| `Email-Login/V3 Q3` | .uifinal1/final/Email-Login/V3-Q3.html |  | NOT_STARTED |  | canvas note: 09 · Control |
-| `Email-Login/First Principle` | .uifinal1/final/Email-Login/First-Principle.html |  | NOT_STARTED |  | canvas note: 10 · First Principle |
-| `Email-Login/V3 Q5` | .uifinal1/final/Email-Login/V3-Q5.html |  | NOT_STARTED |  | canvas note: 11 · Risky Times |
-| `Email-Login/V3 Q6` | .uifinal1/final/Email-Login/V3-Q6.html |  | NOT_STARTED |  | canvas note: 12 · Before the Urge |
-| `Email-Login/V3 Q7` | .uifinal1/final/Email-Login/V3-Q7.html |  | NOT_STARTED |  | canvas note: 13 · Place |
-| `Email-Login/What Happens First` | .uifinal1/final/Email-Login/What-Happens-First.html |  | NOT_STARTED |  | canvas note: 14 · What Happens First |
-| `Email-Login/We Have Enough` | .uifinal1/final/Email-Login/We-Have-Enough.html |  | NOT_STARTED |  | canvas note: 15 · We Have Enough |
-| `Email-Login/V3 Q21` | .uifinal1/final/Email-Login/V3-Q21.html |  | NOT_STARTED |  | canvas note: 16 · Impact |
-| `Email-Login/What It Affects` | .uifinal1/final/Email-Login/What-It-Affects.html |  | NOT_STARTED |  | canvas note: 17 · What It Affects |
-| `Email-Login/V3 Q10` | .uifinal1/final/Email-Login/V3-Q10.html |  | NOT_STARTED |  | canvas note: 18 · Loneliness |
-| `Email-Login/V3 Q13` | .uifinal1/final/Email-Login/V3-Q13.html |  | NOT_STARTED |  | canvas note: 19 · Time Alone |
-| `Email-Login/V3 Q15` | .uifinal1/final/Email-Login/V3-Q15.html |  | NOT_STARTED |  | canvas note: 20 · Porn Goal |
-| `Email-Login/V3 Q16` | .uifinal1/final/Email-Login/V3-Q16.html |  | NOT_STARTED |  | canvas note: 21 · Masturbation |
-| `Email-Login/V3 Q17` | .uifinal1/final/Email-Login/V3-Q17.html |  | NOT_STARTED |  | canvas note: 22 · What You Have Tried |
+| `Email-Login/V3 Q24 Name` | .uifinal1/final/Email-Login/V3-Q24-Name.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 03 · Name — spec specs/03-name.md; Back row not drawn (D016) |
+| `Email-Login/V3 Q25 Age` | .uifinal1/final/Email-Login/V3-Q25-Age.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 04 · Age — spec specs/04-age.md; value + caret bar rebuilt, exact match |
+| `Email-Login/V3 Q26 Gender` | .uifinal1/final/Email-Login/V3-Q26-Gender.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 05 · Gender — spec specs/05-gender.md; exact match |
+| `Email-Login/Onboarding Start` | .uifinal1/final/Email-Login/Onboarding-Start.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 06 · Start — NEW screen; spec specs/06-onboarding-start.md |
+| `Email-Login/V3 Q1` | .uifinal1/final/Email-Login/V3-Q1.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 07 · Frequency — spec specs/07-frequency.md; title copy changed |
+| `Email-Login/V3 Q2` | .uifinal1/final/Email-Login/V3-Q2.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 08 · Duration — spec specs/08-duration.md; title + last option copy, rows moved 310 -> 339 |
+| `Email-Login/V3 Q3` | .uifinal1/final/Email-Login/V3-Q3.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 09 · Control — spec specs/09-control.md; question and all four options rewritten |
+| `Email-Login/First Principle` | .uifinal1/final/Email-Login/First-Principle.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 10 · First Principle — NEW; spec specs/10-first-principle.md; Back at 96 not 94 |
+| `Email-Login/V3 Q5` | .uifinal1/final/Email-Login/V3-Q5.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 11 · Risky Times — spec specs/11-risky-times.md; 9 glyphs transcribed |
+| `Email-Login/V3 Q6` | .uifinal1/final/Email-Login/V3-Q6.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 12 · Before the Urge — spec specs/12-before-the-urge.md |
+| `Email-Login/V3 Q7` | .uifinal1/final/Email-Login/V3-Q7.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 13 · Place — spec specs/13-place.md; 2 rows at 269/371 |
+| `Email-Login/What Happens First` | .uifinal1/final/Email-Login/What-Happens-First.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 14 · What Happens First — NEW; spec specs/14-what-happens-first.md |
+| `Email-Login/We Have Enough` | .uifinal1/final/Email-Login/We-Have-Enough.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 15 · We Have Enough — NEW; spec specs/15-we-have-enough.md |
+| `Email-Login/V3 Q21` | .uifinal1/final/Email-Login/V3-Q21.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 16 · Impact — spec specs/16-impact.md |
+| `Email-Login/What It Affects` | .uifinal1/final/Email-Login/What-It-Affects.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 17 · What It Affects — NEW; spec specs/17-what-it-affects.md; carries Q5 glyphs |
+| `Email-Login/V3 Q10` | .uifinal1/final/Email-Login/V3-Q10.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 18 · Loneliness — spec specs/18-loneliness.md |
+| `Email-Login/V3 Q13` | .uifinal1/final/Email-Login/V3-Q13.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 19 · Time Alone — spec specs/19-time-alone.md |
+| `Email-Login/V3 Q15` | .uifinal1/final/Email-Login/V3-Q15.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 20 · Porn Goal — spec specs/20-porn-goal.md; rows at 281 |
+| `Email-Login/V3 Q16` | .uifinal1/final/Email-Login/V3-Q16.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 21 · Masturbation — spec specs/21-masturbation.md; rows at 281 |
+| `Email-Login/V3 Q17` | .uifinal1/final/Email-Login/V3-Q17.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 22 · What You Have Tried — spec specs/22-what-you-have-tried.md; hint at 197 |
 | `Email-Login/Enlisting Aegis` | .uifinal1/final/Email-Login/Enlisting-Aegis.html |  | NOT_STARTED |  | canvas note: 23 · Putting Your Plan Together |
 | `Email-Login/Root Loop` | .uifinal1/final/Email-Login/Root-Loop.html |  | NOT_STARTED |  | canvas note: 24 · Where You Get Caught |
 | `Email-Login/What Comes Before It` | .uifinal1/final/Email-Login/What-Comes-Before-It.html |  | NOT_STARTED |  | canvas note: 25 · What Comes Before It |

@@ -12,12 +12,13 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { Animated, Easing, Pressable, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, LinearGradient as LinearGradientSvg, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 
 import { AppText, Grain, Laurel } from '@/components/ui';
 import { PressScale } from '@/components/ui/press-scale';
 import { BreathCue, UrgeWave, type BreathPhase } from '@/components/urge';
 import { SC } from '@/components/scene/SceneKit';
+import { FUNNEL_GLYPHS, FUNNEL_STEPS, type FunnelField, type FunnelStep } from '@/content/onboardingFunnel';
 import { colors, fonts, sans } from '@/lib/theme';
 import {
   AegisCheck,
@@ -26,10 +27,6 @@ import {
   ByAge80Card,
   CAMPAIGN_WEEKS,
   CampaignLineCard,
-  ONB_LESSONS,
-  OnbLessonArt,
-  OnbPagerDots,
-  type OnbLessonKind,
   CampaignMapField,
   CampaignMapRail,
   CampaignWeekRow,
@@ -99,85 +96,56 @@ const PAPER: Tone = {
 const O3Tone = createContext<Tone>(NIGHT);
 const useTone = () => useContext(O3Tone);
 
-// ── the 048–084 run, frame by frame ──────────────────────────────────
+// ── the funnel's night field ─────────────────────────────────────────
 /**
- * Thirty-seven canvas frames in funnel order. The night field, the low sun and
- * the bottom glow are authored per frame, not by a formula: a section intro
- * repeats the field of the question it opens, the four lesson interstitials
- * jump ahead of the questions on either side of them, the glow alternates warm
- * and cool with no pattern, and 072 breaks the −0.55·w offset its neighbours
- * all follow. Nothing here can be recovered from a progress fraction, so every
- * number below is the frame's own.
+ * Every funnel frame authors its own field: the 180° ground, the low sun's box
+ * and hang, and the two stated stops of its glow. The values live in
+ * `src/content/onboardingFunnel.ts`, read off the canvas by
+ * `scripts/uifinal1/gen-funnel.mjs`, so nothing here is inferred from a
+ * progress fraction.
  *
- * `rule` is the ink rule's stated width percent; `top`/`bot` the 180° field;
- * `sun`/`off` the low sun's box and how far it hangs below the frame;
- * `glow`/`a0`/`a45` its colour and the two stated stops (the third is always
- * transparent at 72%).
+ * They do not ramp in this bundle's flow order, and the progress rule is not
+ * monotonic: the reshuffle left each frame with the values it had in its old
+ * position. DECISIONS.md D014 has the evidence and the reason it is built as
+ * drawn rather than recomputed.
  */
-type O3Field = { rule: number; top: string; bot: string; sun: number; off: number; glow: string; a0: number; a45: number };
-const O3_WARM = '#FFECC4'; // rgba(255,236,196,·)
-const O3_COOL = '#FFFFFF'; // rgba(255,255,255,·)
-const fld = (rule: number, top: string, bot: string, sun: number, off: number, glow: string, a0: number, a45: number): O3Field =>
-  ({ rule, top, bot, sun, off, glow, a0, a45 });
-const O3_FIELD: O3Field[] = [
-  fld(4, 'rgb(15,15,13)', 'rgb(26,25,23)', 420, -231, O3_WARM, 0.1, 0.05), //   048 · section 1
-  fld(4, 'rgb(15,15,13)', 'rgb(26,25,23)', 420, -231, O3_WARM, 0.1, 0.05), //   049 · Q1
-  fld(9, 'rgb(16,16,14)', 'rgb(27,26,24)', 429, -236, O3_COOL, 0.12, 0.05), //  050 · Q2
-  fld(13, 'rgb(17,17,15)', 'rgb(29,28,26)', 438, -241, O3_WARM, 0.14, 0.06), // 051 · Q3
-  fld(15, 'rgb(21,21,19)', 'rgb(35,34,32)', 484, -266, O3_WARM, 0.28, 0.12), // 052 · lesson, willpower
-  fld(17, 'rgb(17,17,15)', 'rgb(30,29,27)', 448, -246, O3_WARM, 0.15, 0.07), // 053 · Q4
-  fld(22, 'rgb(18,18,16)', 'rgb(31,30,28)', 457, -251, O3_COOL, 0.17, 0.08), // 054 · section 2
-  fld(22, 'rgb(18,18,16)', 'rgb(31,30,28)', 457, -251, O3_COOL, 0.17, 0.08), // 055 · Q5
-  fld(26, 'rgb(19,19,17)', 'rgb(32,31,29)', 466, -256, O3_WARM, 0.19, 0.09), // 056 · Q6
-  fld(30, 'rgb(20,20,18)', 'rgb(34,33,31)', 475, -261, O3_COOL, 0.21, 0.09), // 057 · Q7
-  fld(32, 'rgb(27,27,25)', 'rgb(45,44,42)', 558, -307, O3_WARM, 0.38, 0.17), // 058 · lesson, rewire
-  fld(35, 'rgb(21,21,19)', 'rgb(36,35,33)', 493, -271, O3_COOL, 0.25, 0.11), // 059 · section 3
-  fld(35, 'rgb(21,21,19)', 'rgb(36,35,33)', 493, -271, O3_COOL, 0.25, 0.11), // 060 · Q8
-  fld(39, 'rgb(22,22,20)', 'rgb(37,36,34)', 503, -277, O3_COOL, 0.27, 0.12), // 061 · Q9
-  fld(43, 'rgb(23,23,21)', 'rgb(39,38,36)', 512, -282, O3_WARM, 0.28, 0.13), // 062 · Q10
-  fld(48, 'rgb(24,24,22)', 'rgb(40,39,37)', 521, -287, O3_COOL, 0.3, 0.14), //  063 · section 4
-  fld(48, 'rgb(24,24,22)', 'rgb(40,39,37)', 521, -287, O3_COOL, 0.3, 0.14), //  064 · Q11
-  fld(52, 'rgb(25,25,23)', 'rgb(41,40,38)', 530, -292, O3_WARM, 0.32, 0.14), // 065 · Q12
-  fld(57, 'rgb(25,25,23)', 'rgb(42,41,39)', 539, -296, O3_COOL, 0.34, 0.15), // 066 · Q13
-  fld(61, 'rgb(26,26,24)', 'rgb(44,43,41)', 548, -301, O3_WARM, 0.36, 0.16), // 067 · Q14
-  fld(65, 'rgb(28,28,26)', 'rgb(46,45,43)', 567, -312, O3_COOL, 0.39, 0.18), // 068 · section 5
-  fld(65, 'rgb(28,28,26)', 'rgb(46,45,43)', 567, -312, O3_COOL, 0.39, 0.18), // 069 · Q15
-  fld(70, 'rgb(28,28,26)', 'rgb(47,46,44)', 576, -317, O3_WARM, 0.41, 0.18), // 070 · Q16
-  fld(74, 'rgb(29,29,27)', 'rgb(49,48,46)', 585, -322, O3_COOL, 0.43, 0.19), // 071 · Q17
-  fld(76, 'rgb(30,30,28)', 'rgb(50,49,47)', 590, -320, O3_WARM, 0.44, 0.2), //  072 · lesson, anchor
-  fld(78, 'rgb(30,30,28)', 'rgb(50,49,47)', 594, -327, O3_WARM, 0.45, 0.2), //  073 · Q18
-  fld(83, 'rgb(31,31,29)', 'rgb(51,50,48)', 603, -332, O3_COOL, 0.47, 0.21), // 074 · section 6
-  fld(83, 'rgb(31,31,29)', 'rgb(51,50,48)', 603, -332, O3_COOL, 0.47, 0.21), // 075 · Q19
-  fld(85, 'rgb(32,32,30)', 'rgb(52,51,49)', 613, -337, O3_COOL, 0.48, 0.22), // 076 · lesson, small steps
-  fld(87, 'rgb(32,32,30)', 'rgb(54,53,51)', 622, -342, O3_WARM, 0.5, 0.23), //  077 · Q20
-  fld(91, 'rgb(33,33,31)', 'rgb(55,54,52)', 631, -347, O3_COOL, 0.52, 0.23), // 078 · section 7
-  fld(91, 'rgb(33,33,31)', 'rgb(55,54,52)', 631, -347, O3_COOL, 0.52, 0.23), // 079 · Q21
-  fld(96, 'rgb(34,34,32)', 'rgb(56,55,53)', 640, -352, O3_WARM, 0.54, 0.24), // 080 · Q22
-  fld(100, 'rgb(35,35,33)', 'rgb(58,57,55)', 640, -352, O3_WARM, 0.56, 0.25), // 081 · Q23
-  fld(100, 'rgb(36,36,34)', 'rgb(59,58,56)', 640, -352, O3_WARM, 0.56, 0.25), // 082 · Q24 name
-  fld(100, 'rgb(37,37,35)', 'rgb(60,59,57)', 640, -352, O3_WARM, 0.56, 0.25), // 083 · Q25 age
-  fld(100, 'rgb(38,38,36)', 'rgb(61,60,58)', 640, -352, O3_WARM, 0.56, 0.25), // 084 · Q26 gender
-];
+export type O3Field = { rule: number; top: string; bot: string; sun: number; off: number; glow: string; a0: number; a45: number };
 
-/** Which row of the table each kind of screen sits on. */
-const O3_Q_FIELD = [1, 2, 3, 5, 7, 8, 9, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 27, 29, 31, 32, 33, 34, 35, 36];
-const O3_SECTION_FIELD = [0, 6, 11, 15, 20, 26, 30];
-const O3_LESSON_FIELD: Record<string, number> = { willpower: 4, rewire: 10, anchor: 24, steps: 28 };
+export function o3Field(f: FunnelField): O3Field {
+  return {
+    rule: f.rule,
+    top: f.top,
+    bot: f.bottom,
+    sun: f.sun?.size ?? 420,
+    // the canvas hangs the sun off the bottom edge with a negative `bottom`
+    off: f.sun?.bottom ?? -231,
+    glow: f.sun?.color ?? '#FFECC4',
+    a0: f.sun?.a0 ?? 0.1,
+    a45: f.sun?.a45 ?? 0.05,
+  };
+}
+
+/** `06 · Start` — the field the funnel opens on, and the shell's fallback. */
+const O3_OPENING_FIELD = o3Field(FUNNEL_STEPS[3].field);
+/** `22 · What You Have Tried` — the last night frame, held by the paper tail. */
+const O3_CLOSING_FIELD = o3Field(FUNNEL_STEPS[FUNNEL_STEPS.length - 1].field);
 
 /**
  * Only the screen on the frame knows which frame it is — the funnel's step
- * index counts the push primer, the reading pause and the whole paper tail as
- * well. A screen that knows its place publishes it here and the shell reads
- * its field, its low sun and its rule width straight off the table.
+ * index counts the reading pause and the whole paper tail as well. A screen
+ * that knows its field publishes it here and the shell draws it.
  */
-const O3FieldCtx = createContext<((v: number | null) => void) | null>(null);
-function useO3Field(v: number | null) {
+const O3FieldCtx = createContext<((v: O3Field | null) => void) | null>(null);
+export function useO3Field(v: O3Field | null) {
   const publish = useContext(O3FieldCtx);
+  // A field object rebuilt every render would republish on every render; the
+  // funnel's fields are constants, so compare on their values.
+  const key = v ? JSON.stringify(v) : null;
   useEffect(() => {
-    if (v == null) return;
-    publish?.(v);
+    if (!key) return;
+    publish?.(JSON.parse(key) as O3Field);
     return () => publish?.(null);
-  }, [publish, v]);
+  }, [publish, key]);
 }
 
 // ── roman numerals ───────────────────────────────────────────────────
@@ -224,11 +192,12 @@ export function O3Shell({
   children: ReactNode;
 }) {
   const tone = lit ? PAPER : NIGHT;
-  const [frame, setFrame] = useState<number | null>(null);
-  // Screens outside the 058–094 run publish no frame: the push primer stands
-  // before it and holds the opening field, the paper tail stands after it and
-  // holds the closing one.
-  const field = O3_FIELD[frame ?? (progress < 0.5 ? 0 : O3_FIELD.length - 1)];
+  const [frame, setFrame] = useState<O3Field | null>(null);
+  // Screens outside the questionnaire publish no field: the paper tail stands
+  // after it and holds the closing one, anything before it the opening one.
+  const field = frame ?? (progress < 0.5 ? O3_OPENING_FIELD : O3_CLOSING_FIELD);
+  // The canvas states the rule's width on the frame. Screens that state none
+  // fall back to their position in the run.
   const pct = frame == null ? Math.round(Math.max(0.04, Math.min(1, progress)) * 100) : field.rule;
   // The chrome is drawn off the canvas frame: rule at y 66, Back at y 94, both
   // measured below the 54pt status bar the safe-area inset stands in for.
@@ -523,7 +492,6 @@ function O3CardNote({ children }: { children: ReactNode }) {
   return <AppText style={[sans('500'), { fontSize: 11.5, color: '#B0AEA8' }]}>{children}</AppText>;
 }
 
-/** The 16×12 tick the answer rows flood with. */
 function O3Tick({ c }: { c: string }) {
   return (
     <Svg width={16} height={12} viewBox="0 0 16 12" fill="none">
@@ -560,136 +528,7 @@ export function O3Chip({ label, on, picked = false, onClick }: { label: string; 
 // ── option glyphs — the tile strokes from the canvas, path for path.
 // Several tiles reuse one glyph across questions (the bed is both "Can’t
 // sleep" and "Bedroom"), which is why the cases fall through ──
-function O3Icon({ label, c }: { label: string; c: string }) {
-  const box = (kids: ReactNode, vb = '0 0 24 24') => (
-    <Svg width={22} height={22} viewBox={vb} fill="none">
-      {kids}
-    </Svg>
-  );
-  switch (label) {
-    case 'Late night':
-      return box(<Path d="M17 4 A10.5 10.5 0 1 0 25 20 A8.2 8.2 0 1 1 17 4 Z" fill={c} />, '0 0 30 30');
-    case 'Early morning':
-      return box(
-        <>
-          <Path d="M7 15a5 5 0 0 1 10 0" fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M3 18h18M12 4v3M5 7l2 2M19 7l-2 2" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Bored daytime':
-    case 'Boredom':
-      return box(
-        <>
-          <Circle cx={12} cy={12} r={8.5} fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M12 7.5V12l3 2" stroke={c} strokeWidth={2.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </>,
-      );
-    case 'After stress':
-    case 'Anxiety':
-      return box(<Path d="M3 16l5-6 4 4 6-8" fill="none" stroke={c} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />);
-    case 'Can’t sleep':
-    case 'Bedroom':
-      return box(
-        <>
-          <Path d="M3 7v10M3 14h18v3M3 11h18v3" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-          <Rect x={5} y={8.5} width={6} height={3} rx={1.5} fill={c} />
-        </>,
-      );
-    case 'Weekends':
-      return box(
-        <>
-          <Rect x={3.5} y={5} width={17} height={15} rx={3} fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M8 3v4M16 3v4M3.5 10h17" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Drinking':
-      return box(
-        <>
-          <Path d="M7 3h10l-1.2 13a3.8 3.8 0 0 1-7.6 0Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
-          <Path d="M9 21h6M12 17v4" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Home alone':
-      return box(
-        <>
-          <Path d="M4 11l8-7 8 7" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-          <Path d="M6 10v10h12V10" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
-        </>,
-      );
-    case 'Phone in bed':
-    case 'My phone':
-      return box(
-        <>
-          <Rect x={7} y={3} width={10} height={18} rx={2.5} fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M10.5 18h3" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Loneliness':
-      return box(
-        <>
-          <Circle cx={12} cy={8} r={3.6} fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M5 20a7 7 0 0 1 14 0" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Low mood':
-    case 'Bathroom':
-      return box(<Path d="M12 3.5c3.5 4.2 6 7.2 6 10.2a6 6 0 1 1-12 0c0-3 2.5-6 6-10.2Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />);
-    case 'Anger':
-      return box(
-        <Path
-          d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"
-          stroke={c}
-          strokeWidth={2.5}
-          strokeLinecap="round"
-        />,
-      );
-    case 'Numbness':
-      return box(<Circle cx={12} cy={12} r={7.5} fill="none" stroke={c} strokeWidth={2.5} strokeDasharray="3.5 4" />);
-    case 'Habit':
-      return box(
-        <>
-          <Path d="M18.5 12a6.5 6.5 0 1 1-2-4.7" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-          <Path d="M16 3.5l1 3.5-3.5 1" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
-        </>,
-      );
-    case 'Desire':
-      return box(
-        <Path
-          d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.6 2.2-5.2.6 1 1.4 1.7 2.3 2C11 7.5 11.4 5 12 3Z"
-          fill="none"
-          stroke={c}
-          strokeWidth={2.5}
-          strokeLinejoin="round"
-        />,
-      );
-    case 'Desk':
-      return box(
-        <>
-          <Rect x={3.5} y={4.5} width={17} height={11.5} rx={2} fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M9 20h6M12 16.5V20" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Living room':
-      return box(
-        <>
-          <Path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3" fill="none" stroke={c} strokeWidth={2.5} />
-          <Path d="M3.5 13a2 2 0 0 1 4 0v1h9v-1a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
-          <Path d="M6 18v2M18 18v2" stroke={c} strokeWidth={2.5} strokeLinecap="round" />
-        </>,
-      );
-    case 'Away':
-      return box(
-        <>
-          <Path d="M12 21s-6.5-5.3-6.5-10a6.5 6.5 0 0 1 13 0c0 4.7-6.5 10-6.5 10Z" fill="none" stroke={c} strokeWidth={2.5} strokeLinejoin="round" />
-          <Circle cx={12} cy={10.6} r={2.2} fill={c} />
-        </>,
-      );
-    default:
-      return box(<Circle cx={12} cy={12} r={3.2} fill={c} />);
-  }
-}
 
-/** One answer row. `fs` carries the canvas's own drop to 15.5 on the long ones. */
 export type O3Opt = { label: string; fs?: number };
 export type O3Kind = 'list' | 'grid' | 'check' | 'text' | 'number';
 
@@ -704,41 +543,42 @@ const ON_INK = '#131313';
  * 764. Absolute, because the frame holds the rows at a fixed y whether the
  * question wraps to one line or three.
  */
-export function O3Question({
-  title,
-  options,
+/**
+ * One funnel step, drawn from its own frame's numbers.
+ *
+ * `FUNNEL_STEPS` carries every screen's copy, option list, per-option font
+ * size, row tops and CTA straight off the canvas, so this renders a step
+ * rather than a question shape: a typed field, a list, a 3-up glyph grid, a
+ * checkbox list, a statement, or the one teaching card.
+ *
+ * Design y minus 54 throughout — the canvas frame's status bar is the safe-area
+ * inset here (DECISIONS.md D009).
+ */
+const Y = (top: number) => top - 54;
+
+export function O3FunnelStep({
+  step,
   value,
-  multi = false,
-  kind = 'list',
   onSet,
   next,
-  note,
-  ctaLabel,
-  skip,
+  name,
 }: {
-  title: string;
-  options: O3Opt[];
+  step: FunnelStep;
   value: string | string[] | undefined;
-  multi?: boolean;
-  kind?: O3Kind;
   onSet: (v: string | string[]) => void;
   next: () => void;
-  note?: string;
-  ctaLabel?: string;
-  skip?: boolean;
+  /** The canvas writes the sample name "Sam" into two screens' copy. */
+  name?: string;
 }) {
   const [picked, setPicked] = useState<string | null>(null);
-  const qi = O3_QUESTIONS.findIndex(([, q]) => q.title === title);
-  useO3Field(qi >= 0 ? O3_Q_FIELD[qi] : null);
+  useO3Field(o3Field(step.field));
 
-  const typed = kind === 'text' || kind === 'number';
-  // The canvas draws a button only where a tap cannot settle the answer by
-  // itself: the multi-selects, the two typed fields, and the optional last one.
-  const hasCta = multi || typed || !!skip;
-  const chosen = multi ? (value as string[]) || [] : [];
+  const multi = step.multi;
+  const chosen = multi ? ((value as string[]) || []) : [];
+  const hasCta = step.cta != null;
 
-  // A buttonless frame turns itself over — one beat, so the ink flood reads
-  // as the answer before the next question arrives.
+  // A frame the canvas gives no button turns itself over — one beat, so the
+  // ink flood reads as the answer before the next question arrives.
   useEffect(() => {
     if (!picked || hasCta) return;
     const id = setTimeout(next, 260);
@@ -756,13 +596,67 @@ export function O3Question({
   };
 
   let body: ReactNode = null;
-  if (kind === 'grid') {
-    const rows: O3Opt[][] = [];
-    for (let i = 0; i < options.length; i += 3) rows.push(options.slice(i, i + 3));
-    // three rows of tiles start at y 278, two rows at 298
-    const top = (rows.length >= 3 ? 278 : 298) - 54;
+
+  if (step.kind === 'text' || step.kind === 'number') {
+    const isNum = step.kind === 'number';
+    const text = String(value || '');
+    body = (
+      <View
+        style={{
+          position: 'absolute',
+          left: 24,
+          right: 24,
+          top: Y(step.fieldTop ?? 281),
+          height: 60,
+          borderRadius: 16,
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingHorizontal: 22,
+          gap: 3,
+          backgroundColor: 'rgba(255,255,255,0.07)',
+          boxShadow: '0 0 0 1px rgba(255,255,255,0.22)',
+        }}>
+        {isNum ? (
+          <>
+            {/* `04 · Age` draws the value and then a 2 x 22 caret bar 3pt after
+                it. A stretched field would push the bar to the row's edge, so
+                the value is a text run and the field is a transparent layer
+                over the whole row that takes the typing. */}
+            <AppText style={[sans('500'), { fontSize: 17, color: INK, fontVariant: ['tabular-nums'] as const }]}>{text}</AppText>
+            <View style={{ width: 2, height: 22, borderRadius: 1, backgroundColor: INK }} />
+          </>
+        ) : (
+          /* `03 · Name` puts the bar *before* the placeholder, in flow, with
+             the row's 3pt gap after it — the frame's stand-in for a caret,
+             which a static div cannot show. It keeps its space once there is a
+             value so nothing shifts, and hands the blinking over to the native
+             caret. */
+          <View style={{ width: 2, height: 22, borderRadius: 1, backgroundColor: INK, opacity: text ? 0 : 1 }} />
+        )}
+        <TextInput
+          value={text}
+          onChangeText={onSet}
+          placeholder={isNum ? '' : step.placeholder}
+          placeholderTextColor="rgba(244,243,240,0.45)"
+          keyboardType={isNum ? 'number-pad' : 'default'}
+          autoCapitalize={isNum ? 'none' : 'words'}
+          maxLength={isNum ? 3 : 40}
+          selectionColor={INK}
+          caretHidden={isNum || !text}
+          style={[
+            sans(isNum ? '500' : '400'),
+            isNum
+              ? { position: 'absolute', left: 0, right: 0, top: 0, height: 60, opacity: 0, fontSize: 17, paddingHorizontal: 22 }
+              : { flex: 1, height: 60, fontSize: 17, color: INK },
+          ]}
+        />
+      </View>
+    );
+  } else if (step.kind === 'grid') {
+    const rows: typeof step.options[] = [];
+    for (let i = 0; i < step.options.length; i += 3) rows.push(step.options.slice(i, i + 3));
     body = rows.map((row, r) => (
-      <View key={r} style={{ position: 'absolute', left: 24, right: 24, top: top + 102 * r, flexDirection: 'row', gap: 10 }}>
+      <View key={r} style={{ position: 'absolute', left: 24, right: 24, top: Y(step.rowTops?.[r] ?? 278 + 102 * r), flexDirection: 'row', gap: 10 }}>
         {row.map((opt) => {
           const on = isOn(opt.label);
           return (
@@ -770,6 +664,7 @@ export function O3Question({
               key={opt.label}
               onPress={() => pick(opt.label)}
               accessibilityRole="button"
+              accessibilityState={{ selected: on }}
               style={{
                 flex: 1,
                 height: 94,
@@ -779,7 +674,7 @@ export function O3Question({
                 gap: 8,
                 paddingHorizontal: 4,
                 backgroundColor: on ? INK : 'rgba(255,255,255,0.07)',
-                boxShadow: on ? undefined : '0 0 0 1px rgba(255,255,255,0.2)',
+                boxShadow: on ? '0 0 0 1px rgba(0,0,0,0)' : '0 0 0 1px rgba(255,255,255,0.2)',
               }}>
               {on ? (
                 <View style={{ position: 'absolute', right: 8, top: 8, width: 15, height: 15, borderRadius: 7.5, backgroundColor: ON_INK, alignItems: 'center', justifyContent: 'center' }}>
@@ -788,20 +683,16 @@ export function O3Question({
                   </Svg>
                 </View>
               ) : null}
-              <O3Icon label={opt.label} c={on ? ON_INK : INK} />
-              <AppText center style={[sans('500'), { fontSize: 12, lineHeight: 15, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
+              <FunnelGlyphMark label={opt.label} color={on ? ON_INK : INK} />
+              <AppText center style={[sans('500'), { fontSize: opt.size, lineHeight: 15, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
             </PressScale>
           );
         })}
         {row.length < 3 ? Array.from({ length: 3 - row.length }, (_, k) => <View key={`gap${k}`} style={{ flex: 1 }} />) : null}
       </View>
     ));
-  } else if (kind === 'check') {
-    // the seven-row list pulls in to 52pt rows on a 62 pitch; the five-row one
-    // stays at 56 on a 70 pitch
-    const tight = options.length > 5;
-    const top = (tight ? 288 : 306) - 54;
-    body = options.map((opt, i) => {
+  } else if (step.kind === 'check') {
+    body = step.options.map((opt) => {
       const on = isOn(opt.label);
       return (
         <PressScale
@@ -813,8 +704,8 @@ export function O3Question({
             position: 'absolute',
             left: 24,
             right: 24,
-            top: top + (tight ? 62 : 70) * i,
-            height: tight ? 52 : 56,
+            top: Y(opt.top ?? 276),
+            height: 52,
             borderRadius: 15,
             flexDirection: 'row',
             alignItems: 'center',
@@ -839,59 +730,12 @@ export function O3Question({
               </Svg>
             ) : null}
           </View>
-          <AppText style={[sans('500'), { flex: 1, fontSize: 15.5, lineHeight: 19, color: INK }]}>{opt.label}</AppText>
+          <AppText style={[sans('500'), { flexShrink: 1, fontSize: opt.size, lineHeight: 19, color: INK }]}>{opt.label}</AppText>
         </PressScale>
       );
     });
-  } else if (typed) {
-    const num = kind === 'number';
-    const text = String(value || '');
-    body = (
-      <View
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          top: 256,
-          height: 60,
-          borderRadius: 16,
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingHorizontal: 22,
-          backgroundColor: 'rgba(255,255,255,0.07)',
-          boxShadow: '0 0 0 1px rgba(255,255,255,0.22)',
-        }}>
-        {/* 082 draws the caret as a 2×22 bar ahead of the placeholder — the
-            frame's stand-in for the real one, which HTML cannot show in a div.
-            Keep it (and hide the system caret behind it) while the field is
-            empty, so "Your name" starts at the canvas's x 51 rather than 46;
-            once there is a value the native caret takes over and follows the
-            text, which is what 083 draws. 083 puts its bar after the value, so
-            the number field needs neither the bar nor the lead. */}
-        {!num ? (
-          <View style={{ position: 'absolute', left: 22, top: 19, width: 2, height: 22, borderRadius: 1, backgroundColor: INK, opacity: text ? 0 : 1 }} />
-        ) : null}
-        <TextInput
-          value={text}
-          onChangeText={onSet}
-          placeholder={num ? '' : 'Your name'}
-          placeholderTextColor="rgba(244,243,240,0.45)"
-          keyboardType={num ? 'number-pad' : 'default'}
-          autoCapitalize={num ? 'none' : 'words'}
-          maxLength={num ? 3 : 40}
-          selectionColor={INK}
-          caretHidden={!num && !text}
-          // the canvas's 2pt bar plus its 3pt gap, so the text sits at x 51
-          style={[
-            sans(num ? '500' : '400'),
-            { flex: 1, height: 60, fontSize: 17, color: INK, marginLeft: num ? 0 : 5 },
-            num ? { fontVariant: ['tabular-nums'] as const } : null,
-          ]}
-        />
-      </View>
-    );
-  } else {
-    body = options.map((opt, i) => {
+  } else if (step.kind === 'list') {
+    body = step.options.map((opt) => {
       const on = isOn(opt.label);
       return (
         <PressScale
@@ -903,7 +747,7 @@ export function O3Question({
             position: 'absolute',
             left: 24,
             right: 24,
-            top: 256 + 74 * i,
+            top: Y(opt.top ?? 310),
             height: 60,
             borderRadius: 16,
             flexDirection: 'row',
@@ -912,51 +756,180 @@ export function O3Question({
             gap: 12,
             paddingHorizontal: 22,
             backgroundColor: on ? INK : 'rgba(255,255,255,0.07)',
-            boxShadow: on ? undefined : '0 0 0 1px rgba(255,255,255,0.22)',
+            // the canvas keeps a 1px ring on the selected pill too, at zero alpha
+            boxShadow: on ? '0 0 0 1px rgba(0,0,0,0)' : '0 0 0 1px rgba(255,255,255,0.22)',
           }}>
-          <AppText style={[sans('500'), { flex: 1, fontSize: opt.fs ?? 17, lineHeight: 20, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
+          {/* `flexShrink` rather than `flex: 1`: the canvas's label is a span
+              that takes its content's width and wraps only when the row runs
+              out, and a stretched box would measure differently */}
+          <AppText style={[sans('500'), { flexShrink: 1, fontSize: opt.size, lineHeight: 20, color: on ? ON_INK : INK }]}>{opt.label}</AppText>
           {on ? <O3Tick c={ON_INK} /> : null}
         </PressScale>
       );
     });
+  } else if (step.kind === 'card') {
+    body = <FirstPrincipleArt />;
   }
+
+  const title = step.title ? withName(step.title.text, name) : null;
 
   return (
     <>
-      <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 104, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: INK }]}>
-        {title}
-      </AppText>
-      {multi ? (
-        <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 172, fontSize: 13, color: 'rgba(244,243,240,0.55)' }]}>
-          Select all that apply
+      {step.title ? (
+        <AppText
+          center
+          style={[
+            sans('500'),
+            {
+              position: 'absolute',
+              left: step.title.inset ?? 44,
+              right: step.title.inset ?? 44,
+              top: Y(step.title.top),
+              fontSize: step.title.size,
+              lineHeight: (step.title.size ?? 22) * (step.title.lineHeight ?? 1.32),
+              letterSpacing: step.title.tracking,
+              color: INK,
+            },
+          ]}>
+          {title}
+        </AppText>
+      ) : null}
+      {step.hint ? (
+        <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: Y(step.hint.top), fontSize: 13, color: 'rgba(244,243,240,0.55)' }]}>
+          {step.hint.text}
         </AppText>
       ) : null}
       {body}
-      {note ? (
+      {step.note2 ? (
         <AppText
           center
           style={[
             sans('400'),
-            { position: 'absolute', left: 44, right: 44 },
-            kind === 'number'
-              ? { top: 340, fontSize: 13.5, lineHeight: 20, color: 'rgba(244,243,240,0.6)' }
-              : { top: 634, fontSize: 12.5, color: 'rgba(244,243,240,0.55)' },
+            {
+              position: 'absolute',
+              left: step.note2.inset ?? 44,
+              right: step.note2.inset ?? 44,
+              top: Y(step.note2.top),
+              fontSize: step.note2.size,
+              lineHeight: step.note2.lineHeight,
+              color: step.note2.size === 13.5 ? 'rgba(244,243,240,0.6)' : step.kind === 'card' ? 'rgba(244,243,240,0.75)' : 'rgba(244,243,240,0.7)',
+            },
           ]}>
-          {note}
+          {withName(step.note2.text, name)}
         </AppText>
       ) : null}
-      {hasCta ? (
+      {step.kind === 'card' ? <O3PagerDots count={4} index={0} top={Y(712)} /> : null}
+      {step.cta ? (
         <O3CTA
-          size={multi ? 'md' : 'lg'}
-          label={ctaLabel ?? (multi ? `Continue · ${chosen.length}` : 'Continue')}
+          size={step.cta.height === 56 ? 'md' : 'lg'}
+          label={step.cta.label}
           enabled={multi ? chosen.length > 0 : true}
           onClick={next}
-          style={{ position: 'absolute', left: 24, right: 24, bottom: multi ? O3_MD_CTA_BOTTOM : 50 }}
+          style={{ position: 'absolute', left: 24, right: 24, top: Y(step.cta.top) }}
         />
       ) : null}
     </>
   );
 }
+
+/**
+ * The canvas writes the sample name "Sam" into two screens' copy. The app knows
+ * the real one, and the man told it to us three screens earlier.
+ */
+function withName(text: string, name?: string): string {
+  const given = (name ?? '').trim();
+  if (!given) return text;
+  return text.replace(/^Sam\b/, given);
+}
+
+/** The four dots under the one teaching card the bundle still draws. */
+function O3PagerDots({ count, index, top }: { count: number; index: number; top: number }) {
+  return (
+    <View style={{ position: 'absolute', left: 0, right: 0, top, flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
+      {Array.from({ length: count }, (_, i) => (
+        <View key={i} style={{ width: 7, height: 7, borderRadius: 3.5, backgroundColor: i === index ? '#F4F3F0' : 'rgba(255,255,255,0.25)' }} />
+      ))}
+    </View>
+  );
+}
+
+/**
+ * `10 · First Principle` — the wave that breaks, with the gap where the urge
+ * passes and three thin arcs running through it.
+ *
+ * The block is `left:0 right:0 top:206` and 310 tall; everything below is the
+ * canvas's own offset inside it.
+ */
+function FirstPrincipleArt() {
+  return (
+    <View style={{ position: 'absolute', left: 0, right: 0, top: Y(206), height: 310 }}>
+      {/* the warm bloom — blurred 7px on the canvas, and a closest-side radial
+          already dies at its own edge, so the gradient carries it */}
+      <Svg width={220} height={200} style={{ position: 'absolute', left: '50%', marginLeft: -110, top: 60 }}>
+        <Defs>
+          <RadialGradient id="fpGlow" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#FFECC4" stopOpacity={0.3} />
+            <Stop offset="0.37" stopColor="#FFECC4" stopOpacity={0.126} />
+            <Stop offset="0.74" stopColor="#FFECC4" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={110} cy={100} rx={110} ry={100} fill="url(#fpGlow)" />
+      </Svg>
+      {/* the ground shadow — a flat rgba(0,0,0,0.4) ellipse blurred 10px, which
+          RN SVG cannot do, redrawn as the same ellipse falling to nothing */}
+      <Svg width={180} height={18} style={{ position: 'absolute', left: '50%', marginLeft: -90, top: 158 }}>
+        <Defs>
+          <RadialGradient id="fpShadow" cx="50%" cy="50%" rx="50%" ry="50%">
+            <Stop offset="0" stopColor="#000000" stopOpacity={0.4} />
+            <Stop offset="1" stopColor="#000000" stopOpacity={0} />
+          </RadialGradient>
+        </Defs>
+        <Ellipse cx={90} cy={9} rx={90} ry={9} fill="url(#fpShadow)" />
+      </Svg>
+      <Svg width={230} height={180} viewBox="0 0 230 180" style={{ position: 'absolute', left: '50%', marginLeft: -115, top: 36 }}>
+        <Defs>
+          <LinearGradientSvg id="obW" x1="0" y1="0" x2="1" y2="0">
+            <Stop offset="0" stopColor="#F7F6F2" />
+            <Stop offset="1" stopColor="#C9C6BD" />
+          </LinearGradientSvg>
+        </Defs>
+        <Path d="M14 96 C40 88 62 86 92 90" stroke="url(#obW)" strokeWidth={15} fill="none" strokeLinecap="round" />
+        <Path d="M138 92 C168 96 194 104 216 114" stroke="url(#obW)" strokeWidth={15} fill="none" strokeLinecap="round" />
+        <Path d="M92 88 C104 84 112 86 120 90" stroke="rgba(244,243,240,0.55)" strokeWidth={3.5} fill="none" strokeLinecap="round" />
+        <Path d="M94 94 C106 94 116 92 134 92" stroke="rgba(244,243,240,0.4)" strokeWidth={3.5} fill="none" strokeLinecap="round" />
+        <Path d="M96 100 C106 104 118 100 136 97" stroke="rgba(244,243,240,0.28)" strokeWidth={3.5} fill="none" strokeLinecap="round" />
+        <Circle cx={115} cy={76} r={4} fill="#E9D2A4" />
+      </Svg>
+    </View>
+  );
+}
+
+/** A grid tile's 22 x 22 glyph, transcribed from the canvas child by child. */
+function FunnelGlyphMark({ label, color }: { label: string; color: string }) {
+  const g = FUNNEL_GLYPHS[label];
+  if (!g) return null;
+  return (
+    <Svg width={22} height={22} viewBox={g.viewBox} fill="none">
+      {g.kids.map((k, i) => {
+        const a = k.attrs;
+        const common = {
+          stroke: a.stroke === 'none' ? undefined : color,
+          strokeWidth: a['stroke-width'] ? Number(a['stroke-width']) : undefined,
+          strokeLinecap: a['stroke-linecap'] as 'round' | undefined,
+          strokeLinejoin: a['stroke-linejoin'] as 'round' | undefined,
+          strokeDasharray: a['stroke-dasharray'],
+        };
+        // The canvas fills a shape or strokes it, never both: a child with no
+        // stated stroke is a filled one and takes the tile's ink as its fill.
+        const filled = a.fill !== 'none' && !a['stroke-width'];
+        if (k.tag === 'circle') return <Circle key={i} cx={Number(a.cx)} cy={Number(a.cy)} r={Number(a.r)} fill={filled ? color : 'none'} {...common} />;
+        if (k.tag === 'rect') return <Rect key={i} x={Number(a.x)} y={Number(a.y)} width={Number(a.width)} height={Number(a.height)} rx={a.rx ? Number(a.rx) : undefined} fill={filled ? color : 'none'} {...common} />;
+        return <Path key={i} d={a.d} fill={filled ? color : 'none'} {...common} />;
+      })}
+    </Svg>
+  );
+}
+
 
 // ════════ steps ══════════════════════════════════════════════════════
 export function O3PushIntro({ next }: { next: () => void }) {
@@ -1078,115 +1051,6 @@ export function O3Door({ value, onSet, next }: { value: string[]; onSet: (v: str
       <View style={{ paddingTop: 14 }}>
         <O3CTA label="Continue" enabled={sel.length > 0} onClick={next} />
       </View>
-    </>
-  );
-}
-
-/**
- * 062 · 068 · 082 · 086 — the four teaching interstitials.
- *
- * Each is one drawn idea on a 310pt stage, a line, a paragraph, and the pager
- * that says how many are left. The drawings, the fields and the copy all live
- * in `./art` where they are copied off the frame; this places them.
- */
-export function O3Interlude({ kind, next }: { kind: OnbLessonKind; next: () => void }) {
-  const l = ONB_LESSONS[kind];
-  // the four lessons jump ahead of the questions on either side of them, so
-  // they carry their own row of the table rather than a neighbour's
-  useO3Field(O3_LESSON_FIELD[kind] ?? null);
-  return (
-    <>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 152 }}>
-        <OnbLessonArt kind={kind} />
-      </View>
-      <AppText center style={[sans('500'), { position: 'absolute', left: 26, right: 26, top: 476, fontSize: 22, lineHeight: 29.04, letterSpacing: 0.1, color: INK }]}>
-        {l.title}
-      </AppText>
-      <AppText center style={[sans('400'), { position: 'absolute', left: l.bodyInset, right: l.bodyInset, top: l.bodyTop - 54, fontSize: 15.5, lineHeight: 23, color: 'rgba(244,243,240,0.75)' }]}>
-        {l.body}
-      </AppText>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 658 }}>
-        <OnbPagerDots i={l.step} />
-      </View>
-      <O3CTA label={l.cta} onClick={next} style={{ position: 'absolute', left: 24, right: 24, bottom: 50 }} />
-    </>
-  );
-}
-
-/** Sugar so the table below reads as the canvas rows do. */
-const o = (label: string, fs?: number): O3Opt => (fs ? { label, fs } : { label });
-
-// the assessment table — Q1..Q26, copy and per-row type sizes off the frames
-export const O3_QUESTIONS: [string, { title: string; options: O3Opt[]; multi?: boolean; kind?: O3Kind; note?: string; skip?: boolean; ctaLabel?: string }][] = [
-  // Section 1 · Where you're starting
-  ['freq', { title: 'How often are you using porn right now?', options: [o('Several times a day'), o('About once a day'), o('A few times a week'), o('About once a week'), o('A few times a month'), o('Less than once a month')] }],
-  ['duration', { title: 'How long has this been something you’ve wanted to change?', options: [o('Less than a year'), o('1 to 3 years'), o('4 to 10 years'), o('More than 10 years'), o('I can’t remember a time without it', 15.5)] }],
-  ['control', { title: 'How much control do you feel over it right now?', options: [o('I feel powerless over it'), o('I resist sometimes, but usually give in', 15.5), o('I win about half the time'), o('I mostly stay in control, but I want to be free of it', 15.5)] }],
-  ['pattern', { title: 'Which of these sounds most like your pattern?', options: [o('A quick habit I barely think about'), o('A way I unwind, numb out, or escape'), o('Something I binge on for hours at a time', 15.5), o('An escalating thing — more, or more extreme', 15.5), o('It comes in waves — intense, then quiet', 15.5)] }],
-  // Section 2 · When and why it happens
-  ['triggers', { kind: 'grid', multi: true, title: 'When are you most likely to slip?', options: [o('Late night'), o('Early morning'), o('Bored daytime'), o('After stress'), o('Can’t sleep'), o('Weekends'), o('Drinking'), o('Home alone'), o('Phone in bed')] }],
-  ['emotions', { kind: 'grid', multi: true, title: 'What feeling is most often underneath it?', options: [o('Loneliness'), o('Anxiety'), o('Boredom'), o('Low mood'), o('Anger'), o('Numbness'), o('Habit'), o('Desire')] }],
-  ['places', { kind: 'grid', multi: true, title: 'Where does it usually happen?', options: [o('Bedroom'), o('Bathroom'), o('Desk'), o('Living room'), o('My phone'), o('Away')] }],
-  // Section 3 · How you've been feeling lately
-  ['energy', { title: 'How are your energy and drive most days?', options: [o('Running on empty most of the time'), o('Low more often than not'), o('Up and down'), o('Generally good')] }],
-  ['meaning', { title: 'How much sense of purpose do you feel right now?', options: [o('I feel pretty lost'), o('Some, but it feels thin'), o('It comes and goes'), o('I’m clear on what matters to me', 15.5)] }],
-  ['connection', { title: 'How connected do you feel to the people around you?', options: [o('Pretty isolated'), o('A few people, but I feel distant'), o('Reasonably connected'), o('Strongly connected')] }],
-  // Section 4 · A little about your life
-  ['age', { title: 'Your age range.', options: [o('Under 18'), o('18 to 24'), o('25 to 34'), o('35 to 44'), o('45 or older')] }],
-  ['relationship', { title: 'Relationship status.', options: [o('Single'), o('Dating or in a relationship'), o('Married or living with a partner'), o('It’s complicated')] }],
-  ['alone', { title: 'Do you have a lot of unstructured time alone?', options: [o('Yes, most days'), o('Sometimes'), o('Rarely')] }],
-  ['framing', { title: 'Does faith or a moral code play a part in why you want to stop?', options: [o('Yes, it’s central for me'), o('Somewhat'), o('No — my reasons are practical'), o('Prefer not to say')] }],
-  // Section 5 · What you want
-  ['goalPorn', { title: 'What is your goal with porn?', options: [o('Quit it completely'), o('Cut it down a lot'), o('Keep it to a level I set myself'), o('Not sure yet — I want to explore', 15.5)] }],
-  ['goalMast', { title: 'And masturbation?', options: [o('Stop that too — a full reset'), o('Keep it, just without porn'), o('Cut it down'), o('I’m not trying to change that')] }],
-  ['tried', { kind: 'check', multi: true, title: 'What have you already tried?', options: [o('Blockers or filters'), o('Going cold turkey'), o('An accountability partner'), o('Deleting accounts or apps'), o('Therapy or counselling'), o('Replacing it with other habits'), o('Nothing structured yet')] }],
-  ['readiness', { title: 'How ready do you feel to change right now?', options: [o('Just exploring'), o('Thinking about it'), o('Ready to start'), o('Already started — I want structure', 15.5)] }],
-  // Section 6 · How you want the plan to run
-  ['load', { title: 'How much do you want to do each day?', options: [o('One small lesson'), o('A lesson plus a task'), o('As much as I can'), o('Just the bad-day tools for now')] }],
-  ['checkins', { kind: 'check', multi: true, title: 'When should we check in with you?', options: [o('Morning'), o('Midday'), o('Evening'), o('Late night — my danger zone'), o('No reminders')] }],
-  // A quick wellbeing check
-  ['impact', { title: 'Is this affecting your sleep, work, relationships, or money?', options: [o('Not really'), o('A little'), o('Quite a bit'), o('A lot')] }],
-  ['coping', { title: 'Are you using porn mainly to cope with something heavy right now?', options: [o('No'), o('Maybe'), o('Yes')] }],
-  ['mood', { title: 'In the last two weeks, how often have you felt down or hopeless?', options: [o('Not at all'), o('Some days'), o('Most days'), o('Nearly every day')] }],
-  // The three that name him
-  ['name', { kind: 'text', title: 'What should we call you?', options: [] }],
-  ['ageYears', { kind: 'number', title: 'How old are you?', note: 'This helps us show how the pattern could develop over time.', options: [] }],
-  ['gender', { skip: true, title: 'How do you describe your gender?', note: 'Optional — it never changes your projection.', options: [o('Male'), o('Female'), o('Non-binary'), o('Another identity'), o('Prefer not to say')] }],
-];
-
-/**
- * The seven section intros (V3 — Section 1..7).
- *
- * Twenty-three questions in a row reads as an interrogation. These break it
- * into six named stretches plus a gentler wellbeing coda, and each one says
- * what the next few questions are for — the difference between being processed
- * and being asked.
- */
-export const O3_SECTIONS: { at: number; eyebrow: string; title: string; body: string }[] = [
-  { at: 0, eyebrow: 'Section 1 of 6', title: 'Where you\u2019re starting', body: 'The baseline. None of this is graded.' },
-  { at: 4, eyebrow: 'Section 2 of 6', title: 'When and why it happens', body: 'This is where the plan gets specific to you. Pick everything that fits.' },
-  { at: 7, eyebrow: 'Section 3 of 6', title: 'How you\u2019ve been feeling lately', body: 'A bigger picture than the habit alone. It often points at what\u2019s really driving things.' },
-  { at: 10, eyebrow: 'Section 4 of 6', title: 'A little about your life', body: 'So the plan fits your days, not a generic user’s.' },
-  { at: 14, eyebrow: 'Section 5 of 6', title: 'What you want', body: 'Your goal, in your words. Porn and masturbation are two separate choices \u2014 you set each.' },
-  { at: 18, eyebrow: 'Section 6 of 6', title: 'How you want the plan to run', body: 'The settings. Easy to change any time.' },
-  { at: 20, eyebrow: 'Almost done', title: 'A quick wellbeing check', body: 'A few gentle questions. Not a test, not a diagnosis \u2014 your answers stay private.' },
-];
-
-export function O3SectionIntro({ section, next }: { section: (typeof O3_SECTIONS)[number]; next: () => void }) {
-  // the intro repeats the field and rule of the question it opens
-  useO3Field(O3_SECTION_FIELD[O3_SECTIONS.findIndex((s) => s.at === section.at)] ?? null);
-  return (
-    <>
-      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 254, fontSize: 13, letterSpacing: 0.3, color: 'rgba(244,243,240,0.55)' }]}>
-        {section.eyebrow}
-      </AppText>
-      <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 284, fontSize: 26, lineHeight: 33.8, letterSpacing: -0.2, color: INK }]}>
-        {section.title}
-      </AppText>
-      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 366, fontSize: 15.5, lineHeight: 24, color: 'rgba(244,243,240,0.7)' }]}>
-        {section.body}
-      </AppText>
-      <O3CTA size="md" label="Continue" onClick={next} style={{ position: 'absolute', left: 24, right: 24, bottom: O3_MD_CTA_BOTTOM }} />
     </>
   );
 }

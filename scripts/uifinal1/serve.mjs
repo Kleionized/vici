@@ -48,6 +48,35 @@ http
         res.end(fs.readFileSync(p));
         return;
       }
+      if (url === '/mock-selection.json') {
+        res.writeHead(200, { 'content-type': 'application/json', 'access-control-allow-origin': '*' });
+        res.end(fs.readFileSync('.uifinal1/mock-selection.json'));
+        return;
+      }
+      if (url === '/probe.js') {
+        res.writeHead(200, { 'content-type': 'text/javascript', 'access-control-allow-origin': '*' });
+        res.end(fs.readFileSync('.uifinal1/probe.js'));
+        return;
+      }
+      if (req.method === 'POST' && url === '/sig') {
+        // A page POSTs its layout signature here and it lands on disk, so a
+        // design frame and the app can be diffed in node instead of by eye.
+        let body = '';
+        req.on('data', (c) => (body += c));
+        req.on('end', () => {
+          const { name, rows } = JSON.parse(body);
+          fs.mkdirSync('.uifinal1/sig', { recursive: true });
+          fs.writeFileSync(path.join('.uifinal1', 'sig', name.replace(/[^A-Za-z0-9._-]/g, '_') + '.txt'), rows);
+          res.writeHead(200, { 'access-control-allow-origin': '*' });
+          res.end('ok');
+        });
+        return;
+      }
+      if (req.method === 'OPTIONS') {
+        res.writeHead(204, { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': 'POST,GET,OPTIONS' });
+        res.end();
+        return;
+      }
       if (url.startsWith('/i/')) {
         const bundle = url.slice(3);
         res.writeHead(200, { 'content-type': 'application/json' });

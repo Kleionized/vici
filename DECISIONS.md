@@ -159,3 +159,79 @@ arrow button, and the "Sign in" span. The `Terms &nbsp;·&nbsp; Privacy` line at
 carries no `cursor:pointer`, no underline, no colour change, and no separate spans: it is one
 `#8B8882` run at 12px. It is rendered as static text. The app has a Data & Privacy screen, but
 it lives behind auth and the canvas does not point at it from here.
+
+## D014 — The onboarding funnel's progress rule and night field are implemented exactly as drawn, and the canvas is inconsistent about them
+
+The funnel was reordered and cut in this drop: the account now comes first (`02 · Login`), the
+name/age/gender questions move to the front, seven section intros, three of the four lesson
+interstitials and eleven questions are withdrawn, and eight new screens are added. **Each frame
+kept the progress-rule width and night-field colours it had in its old position.**
+
+Read in the new flow order, the rule reads:
+
+| # | Frame | rule | field top → bottom |
+| --- | --- | --- | --- |
+| 03 | V3 Q24 Name | 100% | rgb(36,36,34) → rgb(59,58,56) |
+| 04 | V3 Q25 Age | 100% | rgb(37,37,35) → rgb(60,59,57) |
+| 05 | V3 Q26 Gender | 100% | rgb(38,38,36) → rgb(61,60,58) |
+| 06 | Onboarding Start | 4% | rgb(15,15,13) → rgb(26,25,23) |
+| 07 | V3 Q1 | 4% | rgb(15,15,13) → rgb(26,25,23) |
+| 08 | V3 Q2 | 9% | rgb(16,16,14) → rgb(27,26,24) |
+| 09 | V3 Q3 | 13% | rgb(17,17,15) → rgb(29,28,26) |
+| 10 | First Principle | 15% | rgb(21,21,19) → rgb(35,34,32) |
+| 11 | V3 Q5 | 22% | rgb(18,18,16) → rgb(31,30,28) |
+| 12 | V3 Q6 | 26% | rgb(19,19,17) → rgb(32,31,29) |
+| 13 | V3 Q7 | 30% | rgb(20,20,18) → rgb(34,33,31) |
+| 14 | What Happens First | 74% | rgb(29,29,27) → rgb(49,48,46) |
+| 15 | We Have Enough | 22% | rgb(18,18,16) → rgb(31,30,28) |
+| 16 | V3 Q21 | 91% | rgb(33,33,31) → rgb(55,54,52) |
+| 17 | What It Affects | 22% | rgb(18,18,16) → rgb(31,30,28) |
+| 18 | V3 Q10 | 43% | rgb(23,23,21) → rgb(39,38,36) |
+| 19 | V3 Q13 | 57% | rgb(25,25,23) → rgb(42,41,39) |
+| 20 | V3 Q15 | 65% | rgb(28,28,26) → rgb(46,45,43) |
+| 21 | V3 Q16 | 70% | rgb(28,28,26) → rgb(47,46,44) |
+| 22 | V3 Q17 | 74% | rgb(29,29,27) → rgb(49,48,46) |
+
+The provenance is not in doubt. Every value is the value that frame carried in the previous
+bundle, where the order made the sequence monotonic; the three frames that read 22% are `V3 Q5`
+and the two new screens cloned from it; `What Happens First` reads 74% because it was cloned
+from `V3 Q17`; and the three 100% frames were the *last* three questions before the reshuffle.
+
+**Implemented exactly as drawn.** The brief's rule 3 is explicit — do not improve the designs,
+and if a design looks wrong, implement it as drawn — so the rule fills to the percentage the
+frame states and every field is the frame's own gradient, bloom and low sun. The alternative,
+recomputing the fill from the step's position in the new order, would have been a redesign of a
+value the canvas states literally on every frame.
+
+This is flagged at the top of `REPORT.md` as the one place where following the design produces a
+visibly odd result: a progress rule that reads 100% on the first three screens, drops to 4%, and
+is not monotonic thereafter. One line changes it if that was not intended.
+
+## D015 — Two differences the numeric comparison reports on nearly every screen, and why they are equivalences
+
+The probe measures the design frame and the app with the same code, so two structural facts about
+the port show up as rows in almost every comparison table. Both are recorded once here rather than
+explained twenty times.
+
+**`border-radius: 50%` → a number.** The canvas rounds a circle with `border-radius: 50%`. React
+Native has no percentage radius, so a 7px dot carries `borderRadius: 3.5` and a 15px tick badge
+`7.5`. Same circle; the computed value is stated differently.
+
+**A wash's `border-radius: 50%` → `-`.** Every soft background wash on the canvas is a `<div>` with
+a radial-gradient background and a 50% radius. React Native has no radial-gradient background, so
+each is drawn as an SVG `<Ellipse>` with the same bounding box and the same stops (D010). The box
+matches to the pixel; the radius reads as absent because an ellipse has no CSS radius.
+
+Neither is a tolerance or a rounding. Where the numbers themselves differ — an offset, a size, a
+colour, a font metric — the table says **mismatch** and it gets fixed.
+
+## D016 — The Back row on `03 · Name` is not drawn, because the app has nowhere to send it
+
+Every funnel frame draws a Back row at `left:16, top:94` (`10 · First Principle` at 96). On
+`03 · Name` the app draws none: the account has just been made, the previous entry in the history
+is the auth board, and the auth stack redirects a signed-in user straight back out again — so the
+control would be a loop, not a way back. Every other funnel frame draws it exactly as the canvas
+does, and the app's own step-back works from `04 · Age` onward.
+
+This is the app winning on what a control *does*, which the brief puts above the design; it is
+recorded here and in `specs/03-name.md` rather than left silent.
