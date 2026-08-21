@@ -1,0 +1,2215 @@
+[
+ {
+  "label": "Splash",
+  "sticker": "01 · Splash",
+  "items": []
+ },
+ {
+  "label": "Standing Guard",
+  "sticker": "02 · Finding the Waterline",
+  "items": [
+   {
+    "text": "Finding the waterline...",
+    "size": 17.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Login Empty",
+  "sticker": "03 · Login — Empty",
+  "items": [
+   {
+    "text": "Welcome back.",
+    "size": 27,
+    "pointer": false
+   },
+   {
+    "text": "Sign in to keep the run going.",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue with Apple",
+    "size": 16,
+    "pointer": true
+   },
+   {
+    "text": "Continue with Google",
+    "size": 16,
+    "pointer": true
+   },
+   {
+    "text": "or",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "yourname@email.com",
+    "size": 16.5,
+    "pointer": false
+   },
+   {
+    "text": "New here?",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Create an account",
+    "size": 13.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Login Typing",
+  "sticker": "04 · Login — Typing",
+  "items": [
+   {
+    "text": "Sign in to keep building toward the life you want",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "samlee.mobbin@gmail.com",
+    "size": 19,
+    "pointer": false
+   },
+   {
+    "text": "Let's Go",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "done",
+    "size": 16,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Create Account",
+  "sticker": "07 · Create Account",
+  "items": [
+   {
+    "text": "Start where you are.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Your first name",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Sam",
+    "size": 19,
+    "pointer": false
+   },
+   {
+    "text": "Your email",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "samlee.mobbin@gmail.com",
+    "size": 19,
+    "pointer": false
+   },
+   {
+    "text": "I'd like VICI updates via email.",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "No password needed to create an account! To log in next time, we'll send you an email with a magic link.",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Use password instead",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Create Account",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "By continuing, you agree to our and .",
+    "size": 11,
+    "pointer": false
+   },
+   {
+    "text": "terms of service",
+    "size": 11,
+    "pointer": false
+   },
+   {
+    "text": "privacy policy",
+    "size": 11,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 1 Intro",
+  "sticker": "V3 — Section 1 intro",
+  "items": [
+   {
+    "text": "Section 1 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Where you’re starting",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "The honest baseline. None of this is graded.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q1",
+  "sticker": "60 · V3 — Q1 · feeds frequency_tier",
+  "items": [
+   {
+    "text": "How often are you using porn right now?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Several times a day",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "About once a day",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A few times a week",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "About once a week",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A few times a month",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Less than once a month",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q2",
+  "sticker": "61 · V3 — Q2 · feeds duration",
+  "items": [
+   {
+    "text": "How long has this been something you’ve wanted to change?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Less than a year",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "1 to 3 years",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "4 to 10 years",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "More than 10 years",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "I can’t remember a time without it",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q3",
+  "sticker": "62 · V3 — Q3 · feeds control_level",
+  "items": [
+   {
+    "text": "How much control do you feel over it right now?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "I feel powerless over it",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "I resist sometimes, but usually give in",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "I win about half the time",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "I mostly stay in control, but I want to be free of it",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Lesson Willpower",
+  "sticker": "63 · Lesson — Willpower",
+  "items": [
+   {
+    "text": "It's not a willpower problem.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Urges follow a wave — they rise, crest, and pass. VICI teaches you to ride them out instead of fighting them head-on.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q4",
+  "sticker": "64 · V3 — Q4 · feeds pattern_type",
+  "items": [
+   {
+    "text": "Which of these sounds most like your pattern?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "A quick habit I barely think about",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A way I unwind, numb out, or escape",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Something I binge on for hours at a time",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "An escalating thing — more, or more extreme",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "It comes in waves — intense, then quiet",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 2 Intro",
+  "sticker": "V3 — Section 2 intro",
+  "items": [
+   {
+    "text": "Section 2 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "When and why it happens",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "This is where the plan gets specific to you. Pick everything that fits.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q5",
+  "sticker": "65 · V3 — Q5 · feeds trigger_times",
+  "items": [
+   {
+    "text": "When are you most likely to slip?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Select all that apply",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Late night",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Early morning",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Bored daytime",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "After stress",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Can’t sleep",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Weekends",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Drinking",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Home alone",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Phone in bed",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Continue · 3",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q6",
+  "sticker": "66 · V3 — Q6 · feeds trigger_emotions",
+  "items": [
+   {
+    "text": "What feeling is most often underneath it?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Select all that apply",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Loneliness",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Anxiety",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Boredom",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Low mood",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Anger",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Numbness",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Habit",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Desire",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Continue · 2",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q7",
+  "sticker": "67 · V3 — Q7 · feeds trigger_places",
+  "items": [
+   {
+    "text": "Where does it usually happen?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Select all that apply",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Bedroom",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Bathroom",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Desk",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Living room",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "My phone",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Away",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Continue · 2",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Lesson Rewire",
+  "sticker": "68 · Lesson — Rewire",
+  "items": [
+   {
+    "text": "Your brain can change.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Every urge you outlast weakens the old loop and strengthens the new one. Neuroplasticity is on your side.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 3 Intro",
+  "sticker": "V3 — Section 3 intro",
+  "items": [
+   {
+    "text": "Section 3 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "How you’ve been feeling lately",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "A bigger picture than the habit alone. It often points at what’s really driving things.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q8",
+  "sticker": "69 · V3 — Q8 · feeds energy_level",
+  "items": [
+   {
+    "text": "How are your energy and drive most days?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Running on empty most of the time",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Low more often than not",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Up and down",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Generally good",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q9",
+  "sticker": "70 · V3 — Q9 · feeds meaning_level",
+  "items": [
+   {
+    "text": "How much sense of purpose do you feel right now?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "I feel pretty lost",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Some, but it feels thin",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "It comes and goes",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "I’m clear on what matters to me",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q10",
+  "sticker": "71 · V3 — Q10 · feeds connection_level",
+  "items": [
+   {
+    "text": "How connected do you feel to the people around you?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Pretty isolated",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A few people, but I feel distant",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Reasonably connected",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Strongly connected",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 4 Intro",
+  "sticker": "V3 — Section 4 intro",
+  "items": [
+   {
+    "text": "Section 4 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "A little about your life",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q11",
+  "sticker": "72 · V3 — Q11 · feeds age_band",
+  "items": [
+   {
+    "text": "Your age range.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Under 18",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "18 to 24",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "25 to 34",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "35 to 44",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "45 or older",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q12",
+  "sticker": "73 · V3 — Q12 · feeds relationship",
+  "items": [
+   {
+    "text": "Relationship status.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Single",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Dating or in a relationship",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Married or living with a partner",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "It’s complicated",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q13",
+  "sticker": "74 · V3 — Q13 · feeds unstructured_time",
+  "items": [
+   {
+    "text": "Do you have a lot of unstructured time alone?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Yes, most days",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Sometimes",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Rarely",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q14",
+  "sticker": "75 · V3 — Q14 · feeds framing_pref",
+  "items": [
+   {
+    "text": "Does faith or a moral code play a part in why you want to stop?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Yes, it’s central for me",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Somewhat",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "No — my reasons are practical",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Prefer not to say",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 5 Intro",
+  "sticker": "V3 — Section 5 intro",
+  "items": [
+   {
+    "text": "Section 5 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "What you want",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "Your goal, in your words. Porn and masturbation are two separate choices — you set each.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q15",
+  "sticker": "76 · V3 — Q15 · feeds goal_porn",
+  "items": [
+   {
+    "text": "What is your goal with porn?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Quit it completely",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Cut it down a lot",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Keep it to a level I set myself",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Not sure yet — I want to explore",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q16",
+  "sticker": "77 · V3 — Q16 · feeds goal_masturbation",
+  "items": [
+   {
+    "text": "And masturbation?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Stop that too — a full reset",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Keep it, just without porn",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Cut it down",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "I’m not trying to change that",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q17",
+  "sticker": "78 · V3 — Q17 · feeds tried",
+  "items": [
+   {
+    "text": "What have you already tried?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Select all that apply",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Blockers or filters",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Going cold turkey",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "An accountability partner",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Deleting accounts or apps",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Therapy or counselling",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Replacing it with other habits",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Nothing structured yet",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue · 3",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Lesson Anchor",
+  "sticker": "79 · Lesson — Anchor",
+  "items": [
+   {
+    "text": "You won't do it on willpower alone.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Structure beats resolve. Your cues, lessons, and check-ins carry you when motivation dips.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q18",
+  "sticker": "80 · V3 — Q18 · feeds readiness_stage",
+  "items": [
+   {
+    "text": "How ready do you feel to change right now?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Just exploring",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Thinking about it",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Ready to start",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Already started — I want structure",
+    "size": 15.5,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 6 Intro",
+  "sticker": "V3 — Section 6 intro",
+  "items": [
+   {
+    "text": "Section 6 of 6",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "How you want the plan to run",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "The settings. Easy to change any time.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q19",
+  "sticker": "81 · V3 — Q19 · feeds daily_load_pref",
+  "items": [
+   {
+    "text": "How much do you want to do each day?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "One small lesson",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A lesson plus a task",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "As much as I can",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Just the bad-day tools for now",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Lesson Small Steps",
+  "sticker": "82 · Lesson — Small Steps",
+  "items": [
+   {
+    "text": "Progress isn't a straight line.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Real change moves like a tide — in, out, in again. The waterline shifts over weeks, not hours.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q20",
+  "sticker": "83 · V3 — Q20 · feeds checkin_times",
+  "items": [
+   {
+    "text": "When should we check in with you?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Select all that apply",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "Morning",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Midday",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Evening",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Late night — my danger zone",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "No reminders",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue · 3",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Section 7 Intro",
+  "sticker": "V3 — Section 7 intro",
+  "items": [
+   {
+    "text": "Almost done",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "A quick wellbeing check",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "Your answers stay private.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 16.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q21",
+  "sticker": "84 · V3 — Q21 · feeds life_impact",
+  "items": [
+   {
+    "text": "Is this affecting your sleep, work, relationships, or money?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Not really",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A little",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Quite a bit",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "A lot",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q22",
+  "sticker": "85 · V3 — Q22 · feeds coping_load",
+  "items": [
+   {
+    "text": "Are you using porn mainly to cope with something heavy right now?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "No",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Maybe",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Yes",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q23",
+  "sticker": "86 · V3 — Q23 · feeds mood_flag",
+  "items": [
+   {
+    "text": "In the last two weeks, how often have you felt down or hopeless?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Not at all",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Some days",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Most days",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Nearly every day",
+    "size": 17,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "V3 Q24 Name",
+  "sticker": "86B · V3 — Q24 · name",
+  "items": [
+   {
+    "text": "What should we call you?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Your name",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q25 Age",
+  "sticker": "86C · V3 — Q25 · age · feeds projection",
+  "items": [
+   {
+    "text": "How old are you?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "This helps us show how the pattern could develop over time.",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "V3 Q26 Gender",
+  "sticker": "86D · V3 — Q26 · gender · optional",
+  "items": [
+   {
+    "text": "How do you describe your gender?",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Male",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Female",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Non-binary",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Another identity",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Prefer not to say",
+    "size": 17,
+    "pointer": false
+   },
+   {
+    "text": "Optional — it never changes your projection.",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Enlisting Aegis",
+  "sticker": "87 · Charting Your Plan",
+  "items": [
+   {
+    "text": "Charting your plan. One moment.",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Reading your answers",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Mapping your risky window",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Choosing your first week",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "From the dark hours to first light — your plan guards the risky window first.",
+    "size": 20,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Plan Ready",
+  "sticker": "87I · Plan Ready",
+  "items": [
+   {
+    "text": "Your plan is ready.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "Built from your answers — it re-tunes as you log.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "See my plan",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "Change an answer",
+    "size": 15,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Root Loop",
+  "sticker": "87B · The Root — The Loop",
+  "items": [
+   {
+    "text": "Porn isn't the problem, Sam. It's your anesthetic for loneliness.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "Late at night, home alone — the loneliness rises, relief lasts minutes, and the loop turns again.",
+    "size": 14,
+    "pointer": false
+   },
+   {
+    "text": "Follow it forward",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Starting Score",
+  "sticker": "87C · Starting Score",
+  "items": [
+   {
+    "text": "YOUR RECOVERY SCORE",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "412",
+    "size": 60,
+    "pointer": false
+   },
+   {
+    "text": "of 3,000",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Better than 23% of users starting today",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Cost Next 30",
+  "sticker": "87D · If Nothing Changes — Next 30 Days",
+  "items": [
+   {
+    "text": "If nothing changes.",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "This is your next 30 days",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "Each black square indicates a relapse — 9 more nights.",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Cost Next 365",
+  "sticker": "87E · If Nothing Changes — Next 365 Days",
+  "items": [
+   {
+    "text": "The next 365 days — 110 relapses",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Cost By Age 80",
+  "sticker": "87F · If Nothing Changes — By Age 80",
+  "items": [
+   {
+    "text": "By age 80 — 6,132 relapses",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Hopeful Reversal",
+  "sticker": "87F2 · But This Can Change",
+  "items": [
+   {
+    "text": "But this can change.",
+    "size": 26,
+    "pointer": false
+   },
+   {
+    "text": "That was your pattern, played forward. It is not your future. Every day you keep your pledge, you take one of those days back.",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Change the pattern",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Streak Sawtooth",
+  "sticker": "87G · Why Streaks Fail",
+  "items": [
+   {
+    "text": "Streaks reset.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "You’ve hit fourteen days before. One slip, and the counter forgot all of it.",
+    "size": 14,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Campaign Line",
+  "sticker": "87G2 · Why Campaigns Hold",
+  "items": [
+   {
+    "text": "Campaigns don’t.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "Here a slip costs you one day. Everything you’ve built stays yours.",
+    "size": 14,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Rewire Curve",
+  "sticker": "87H · The Rewire Curve",
+  "items": [
+   {
+    "text": "Sam, your brain can rewire.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "Twelve weeks of kept days — your late-night window guarded, your urges shorter each week, until an evening is just an evening.",
+    "size": 14,
+    "pointer": false
+   },
+   {
+    "text": "Next",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Results Pattern",
+  "sticker": "88 · Results — Pattern",
+  "items": [
+   {
+    "text": "Your pattern, mapped.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Urges by night",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Mo",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Tu",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "We",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Th",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Fr",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Sa",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Su",
+    "size": 11.5,
+    "pointer": false
+   },
+   {
+    "text": "Most active trigger",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Late nights, weekends",
+    "size": 17.5,
+    "pointer": false
+   },
+   {
+    "text": "Your risky window is Friday and Saturday night. We'll pay gentle attention there first.",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "See what's ahead",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "The Vow",
+  "sticker": "90 · The Vow — Signature",
+  "items": [
+   {
+    "text": "The vow.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "I'm done letting the wave decide. One evening at a time, I take the watch back.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Sam",
+    "size": 44,
+    "pointer": false
+   },
+   {
+    "text": "Jun 9 · Day 0",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "I sign it",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "Read it once more",
+    "size": 15,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Campaign Map",
+  "sticker": "90B · Your twelve weeks — I–IV (1/3)",
+  "items": [
+   {
+    "text": "Your twelve weeks.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Week IV",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Know Your Brain",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Week III",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "In the Moment",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Week II",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Changing Your Mindset",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Week I",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "You are here",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Reset",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Show me my path",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Campaign Map II",
+  "sticker": "90C · Your twelve weeks — V–VIII",
+  "items": [
+   {
+    "text": "Your twelve weeks.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Week VIII",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Boredom and Meaning",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Week VII",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Relapse and Adversity",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Week VI",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Discipline",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Week V",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Why It Feels Worth It",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Twelve weeks, one path. Move at your own pace — there's no clock.",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Show me my path",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Campaign Map III",
+  "sticker": "90D · Your twelve weeks — IX–XII",
+  "items": [
+   {
+    "text": "Your twelve weeks.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Week XII",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Leave It Behind",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Week XI",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Build a Life You Want",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Week X",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Yourself",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Week IX",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Connection",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Twelve weeks, one path. Move at your own pace — there's no clock.",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Show me my path",
+    "size": 17,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Letter Received",
+  "sticker": "90E · A letter arrived",
+  "items": [
+   {
+    "text": "A letter arrived.",
+    "size": 24,
+    "pointer": false
+   },
+   {
+    "text": "From the man at week XII — sealed the night you started.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Open it",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "Save it for tonight",
+    "size": 15,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Letter Week XII",
+  "sticker": "90B · A Letter From Week XII",
+  "items": [
+   {
+    "text": "Sam —",
+    "size": 18,
+    "pointer": false
+   },
+   {
+    "text": "It’s week XII where I’m writing from, and the first thing to say is: we made it out.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "The first three weekends were the worst of it, so I’ll say it plainly: nothing you feel this month lasts longer than a night. You wait one out, and the next one comes back smaller.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "The late nights stopped being dangerous around week IV. The urges got shorter, then quieter, then rare — somewhere in week IX I stopped bracing for them.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Everything you circled tonight — it’s here, waiting.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "— Sam, at week XII",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "Tuck it into your Log",
+    "size": 16.5,
+    "pointer": true
+   },
+   {
+    "text": "Continue",
+    "size": 14.5,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Medallion Received",
+  "sticker": "90F · Medallion earned — detail popup",
+  "items": [
+   {
+    "text": "MEDALLION EARNED",
+    "size": 11,
+    "pointer": false
+   },
+   {
+    "text": "Veni",
+    "size": 27,
+    "pointer": false
+   },
+   {
+    "text": "Tier I · The Vow",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "You signed your name to twelve weeks. The campaign begins tonight.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Take it",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "Put it on the shelf",
+    "size": 15,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Reminders Setup",
+  "sticker": "91 · Reminders",
+  "items": [
+   {
+    "text": "A gentle nudge.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Two nudges a day, timed to your risky window. Nothing noisy, nothing shaming.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Morning check-in",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "now",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Twenty seconds — where's your head at today?",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Late night ahead",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "10:41 PM",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Your risky window. The wave tool is one tap away.",
+    "size": 14.5,
+    "pointer": false
+   },
+   {
+    "text": "Turn on reminders",
+    "size": 17,
+    "pointer": true
+   },
+   {
+    "text": "No thanks",
+    "size": 15,
+    "pointer": true
+   }
+  ]
+ },
+ {
+  "label": "Auth Save Progress",
+  "sticker": "92 · Save Progress",
+  "items": [
+   {
+    "text": "Save your progress.",
+    "size": 22,
+    "pointer": false
+   },
+   {
+    "text": "Your reflections, your log, your path — kept safe across devices.",
+    "size": 15.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue with Apple",
+    "size": 16.5,
+    "pointer": true
+   },
+   {
+    "text": "Continue with Google",
+    "size": 16.5,
+    "pointer": true
+   },
+   {
+    "text": "Continue with email",
+    "size": 16.5,
+    "pointer": true
+   },
+   {
+    "text": "By continuing, you agree to our and .",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "terms of service",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "privacy policy",
+    "size": 12,
+    "pointer": false
+   }
+  ]
+ },
+ {
+  "label": "Free Trial Paywall",
+  "sticker": "11 · Free Trial Paywall",
+  "items": [
+   {
+    "text": "Restore",
+    "size": 14,
+    "pointer": false
+   },
+   {
+    "text": "VICI",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "PLUS",
+    "size": 10.5,
+    "pointer": false
+   },
+   {
+    "text": "The long road, together",
+    "size": 28,
+    "pointer": false
+   },
+   {
+    "text": "Yearly",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Best value",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "$3.33 a month",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "$39.99",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "/year",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Monthly",
+    "size": 15,
+    "pointer": false
+   },
+   {
+    "text": "Cancel anytime",
+    "size": 13,
+    "pointer": false
+   },
+   {
+    "text": "$12.99",
+    "size": 16,
+    "pointer": false
+   },
+   {
+    "text": "/month",
+    "size": 12,
+    "pointer": false
+   },
+   {
+    "text": "Everything, unlocked",
+    "size": 12.5,
+    "pointer": false
+   },
+   {
+    "text": "Progress that never resets",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Full curriculum, every week",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Unlimited urge support",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Insights & weekly reports",
+    "size": 13.5,
+    "pointer": false
+   },
+   {
+    "text": "Continue — $39.99/year",
+    "size": 16.5,
+    "pointer": true
+   },
+   {
+    "text": "Terms · Restore",
+    "size": 13,
+    "pointer": false
+   }
+  ]
+ }
+]
