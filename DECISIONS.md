@@ -100,3 +100,20 @@ The existing `CANVAS_INSETS` shim in `src/app/_layout.tsx` already maps the canv
 the safe-area top inset for the web preview, so a canvas `top: N` is an app `top: N − 54` measured
 from the safe area. That convention is kept — it is correct and every screen in the app already
 speaks it.
+
+## D010 — `filter: blur()` on a radial wash has no platform equivalent, and does not need one
+
+The canvas softens most of its background washes with `filter: blur(4–8px)`. Neither
+`react-native-svg` nor React Native's view system implements CSS filters on iOS or Android.
+Every blurred wash in the bundle is a `radial-gradient(closest-side, …)`, which already reaches
+zero alpha at its own edge, so the blur is softening a shape that has no hard edge to soften.
+
+The app's `Wash` helper reproduces the gradient's *curve* rather than its endpoints: it inserts a
+midpoint stop at `fade / 2` with `opacity × 0.42`, because a two-stop SVG radial ramps linearly
+while a CSS `closest-side` radial does not. The residual gap is a few pixels of extra feathering
+on an already-feathered edge. Size of the gap: under one alpha step at the wash's own boundary.
+
+Where a blurred element is *not* soft-edged — the `rgba(0,0,0,0.10)` ground shadow under the login
+envelope, say — the app substitutes a radial with the same bounding box falling to zero at its
+edge, which is what the blur produces there. Both substitutions are marked in the component that
+makes them.

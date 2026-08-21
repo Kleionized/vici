@@ -1,13 +1,16 @@
 /**
- * Auth kit — the paper pieces the three auth boards share.
+ * Auth kit — the paper pieces the auth boards share.
  *
- * Every board (03 Login, 04 Login typing, 05 Create account, 102 Save your
- * progress) is the same warm field with two soft washes bled off the edges, a
- * quiet Back row, and flat white controls. The canvas frame is 393 × 852 and
- * its status bar ends at 54, so every design y quoted below is already the
- * offset under the safe area.
+ * `UI Final 1` draws one board here, `02 · Login`: a warm field with two soft
+ * washes bled off the edges, the envelope mark, two provider pills, and a row
+ * that opens the email path. The boards behind it — the address step, the
+ * password step, create-account — are withdrawn from this bundle and keep the
+ * presentation they already had. The canvas frame is 393 × 852 and its status
+ * bar ends at 54, so every design y quoted below is already the offset under
+ * the safe area.
  */
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useState, type ReactNode } from 'react';
 import { Platform, ScrollView, TextInput, View, type TextInputProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -40,60 +43,81 @@ export const GoogleMark = () => (
 );
 
 /**
- * 03/04 · the login mark: a letter half out of its envelope, lit from behind.
+ * 02 · the login mark: a letter half out of its envelope, under a paper moon.
  *
- * Drawn rather than shipped as an asset because the canvas draws it — a
- * rotated tile behind the page, the page itself with three ruled lines and a
- * signature squiggle, then the envelope front with its two folds and a wax
- * seal. The whole thing sits on a 200 × 170 block.
+ * Drawn rather than shipped as an asset because the canvas draws it, on a
+ * 240 × 190 block with `overflow: hidden`. Fifteen parts in the canvas's own
+ * paint order: the warm bloom, two overlapping discs for the moon, two 2px
+ * stars, the page and its three rules, the envelope body, its gradient face,
+ * the stroked flap, the seal and its ring, and the ground shadow last.
+ *
+ * See `specs/02-login.md` for the transcription this is built from. The block
+ * grew from the 200 × 170 the previous bundle used, and every part inside it
+ * moved, so nothing here is a nudge of the old mark.
  */
+export const ENVELOPE_MARK_W = 240;
+export const ENVELOPE_MARK_H = 190;
+
 export function EnvelopeMark() {
   return (
-    <View style={{ width: 200, height: 170 }}>
+    <View style={{ width: ENVELOPE_MARK_W, height: ENVELOPE_MARK_H, overflow: 'hidden' }}>
       {/* the warm bloom behind it — the canvas blurs a closest-side radial by
           4px, and a closest-side radial already dies at its own edge, so the
           ellipse alone stands in for the filter */}
-      <Svg width={140} height={140} style={{ position: 'absolute', left: 30, top: 0 }}>
+      <Svg width={130} height={130} style={{ position: 'absolute', left: 70, top: 20 }}>
         <Defs>
           <RadialGradient id="env-glow" cx="50%" cy="50%" rx="50%" ry="50%">
             <Stop offset="0%" stopColor="#E2BA78" stopOpacity={0.4} />
+            <Stop offset="37%" stopColor="#E2BA78" stopOpacity={0.168} />
             <Stop offset="74%" stopColor="#E2BA78" stopOpacity={0} />
           </RadialGradient>
         </Defs>
-        <Circle cx={70} cy={70} r={70} fill="url(#env-glow)" />
+        <Circle cx={65} cy={65} r={65} fill="url(#env-glow)" />
       </Svg>
 
+      {/* the moon: a shaded disc with a paper one riding 8 up and left of it */}
+      <View style={{ position: 'absolute', left: 34, top: 10, width: 30, height: 30, borderRadius: 15, backgroundColor: '#DCDED8' }} />
+      <View style={{ position: 'absolute', left: 26, top: 4, width: 30, height: 30, borderRadius: 15, backgroundColor: '#F4F3F0' }} />
+
+      {/* two cold stars */}
+      <View style={{ position: 'absolute', left: 216, top: 26, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.4)' }} />
+      <View style={{ position: 'absolute', left: 14, top: 64, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.3)' }} />
+
+      {/* the page and its three rules */}
+      <View style={{ position: 'absolute', left: 76, top: 34, width: 104, height: 80, borderRadius: 5, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }} />
+      <View style={{ position: 'absolute', left: 90, top: 50, width: 50, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
+      <View style={{ position: 'absolute', left: 90, top: 63, width: 66, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
+      <View style={{ position: 'absolute', left: 90, top: 76, width: 42, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
+
+      {/* the envelope: a flat body, a gradient face inset 6 into it, and the
+          flap stroked as one chevron rather than drawn as two folds */}
+      <View style={{ position: 'absolute', left: 52, top: 92, width: 152, height: 76, borderRadius: 8, backgroundColor: '#E4E3DE' }} />
+      <LinearGradient
+        colors={['#F0EFEA', '#E9E7E0']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ position: 'absolute', left: 58, top: 98, width: 140, height: 64, borderRadius: 5 }}
+      />
+      <Svg width={140} height={42} viewBox="0 0 140 42" style={{ position: 'absolute', left: 58, top: 98 }}>
+        <Path d="M2 2 L70 40 L138 2" fill="none" stroke="#D6D5D0" strokeWidth={2} strokeLinejoin="round" />
+      </Svg>
+
+      {/* the wax seal */}
+      <View style={{ position: 'absolute', left: 119, top: 128, width: 18, height: 18, borderRadius: 9, backgroundColor: '#E9D2A4' }} />
+      <View style={{ position: 'absolute', left: 124, top: 133, width: 8, height: 8, borderRadius: 4, boxShadow: 'inset 0 0 0 1.5px rgba(122,103,67,0.45)' }} />
+
       {/* the ground shadow — the canvas blurs a flat rgba(0,0,0,0.10) ellipse
-          by 4px, which RN SVG cannot do, so it is redrawn as the same ellipse
+          by 5px, which RN SVG cannot do, so it is redrawn as the same ellipse
           with a radial falloff to nothing at its edge */}
-      <Svg width={120} height={12} style={{ position: 'absolute', left: 40, top: 152 }}>
+      <Svg width={168} height={13} style={{ position: 'absolute', left: 44, top: 172 }}>
         <Defs>
           <RadialGradient id="env-shadow" cx="50%" cy="50%" rx="50%" ry="50%">
             <Stop offset="0%" stopColor="#000000" stopOpacity={0.14} />
             <Stop offset="100%" stopColor="#000000" stopOpacity={0} />
           </RadialGradient>
         </Defs>
-        <Ellipse cx={60} cy={6} rx={60} ry={6} fill="url(#env-shadow)" />
+        <Ellipse cx={84} cy={6.5} rx={84} ry={6.5} fill="url(#env-shadow)" />
       </Svg>
-
-      {/* a tile turned on its corner, just to break the silhouette */}
-      <View style={{ position: 'absolute', left: 64, top: 40, width: 72, height: 72, borderRadius: 10, backgroundColor: '#E3E1DA', transform: [{ rotate: '45deg' }] }} />
-
-      {/* the letter */}
-      <View style={{ position: 'absolute', left: 44, top: 22, width: 112, height: 84, borderRadius: 6, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }} />
-      <View style={{ position: 'absolute', left: 58, top: 38, width: 52, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: 58, top: 51, width: 70, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: 58, top: 64, width: 44, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
-      <Svg width={40} height={10} viewBox="0 0 40 10" style={{ position: 'absolute', left: 102, top: 76 }}>
-        <Path d="M2 6 C 10 2, 18 8, 26 5 S 36 4, 38 6" stroke="rgba(38,38,31,0.4)" strokeWidth={1.5} fill="none" strokeLinecap="round" />
-      </Svg>
-
-      {/* the envelope front, its folds, and the seal */}
-      <View style={{ position: 'absolute', left: 25, top: 76, width: 150, height: 78, borderRadius: 8, backgroundColor: '#E9E7E0', boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }} />
-      <View style={{ position: 'absolute', left: 28, top: 78, width: 80, height: 4, borderRadius: 2, backgroundColor: '#DBD9D2', transform: [{ rotate: '26deg' }], transformOrigin: 'left center' }} />
-      <View style={{ position: 'absolute', left: 92, top: 114, width: 80, height: 4, borderRadius: 2, backgroundColor: '#DBD9D2', transform: [{ rotate: '-26deg' }], transformOrigin: 'left center' }} />
-      <View style={{ position: 'absolute', left: 89, top: 106, width: 22, height: 22, borderRadius: 11, backgroundColor: '#E9D2A4' }} />
-      <View style={{ position: 'absolute', left: 95, top: 112, width: 10, height: 10, borderRadius: 5, boxShadow: 'inset 0 0 0 1.5px rgba(122,103,67,0.45)' }} />
     </View>
   );
 }

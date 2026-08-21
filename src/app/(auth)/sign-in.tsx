@@ -11,17 +11,17 @@ import { useAuth } from '@/lib/auth';
 import { colors, sans } from '@/lib/theme';
 
 /**
- * 045 · Login — Empty and 046 · Login — Typing.
+ * 02 · Login — the app's front door.
  *
- * One screen with two faces. At rest it introduces itself: the letter mark,
- * a welcome, and the two one-tap ways in, with the email field kept below an
- * "or". The moment the field is live the pitch gets out of the way — the mark
- * slides up, the pitch collapses to a single line, and the pill becomes
- * "Let's Go", because the keyboard is about to take half the screen.
+ * `UI Final 1` draws one board here: the letter mark, "Welcome to VICI.", the
+ * two one-tap ways in, and — under an "or" — a row that opens the email path.
+ * The bundle withdrew the separate `Login Typing` and `Create Account` frames,
+ * so the address step below keeps the presentation it already had.
  *
- * Both faces are fixed compositions, so they are laid out at the canvas's own
+ * The landing board is a fixed composition laid out at the canvas's own
  * offsets: the 393 × 852 frame's status bar ends at 54, and every `top` below
- * is that design y minus 54, measured from the safe area.
+ * is that design y minus 54, measured from the safe area. See
+ * `specs/02-login.md` for the transcription and the comparison table.
  */
 
 type Mode = 'email' | 'password' | 'verify';
@@ -34,6 +34,14 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
   const [focused, setFocused] = useState(false);
+  /**
+   * The address step, opened from the landing board's "Sign in" link.
+   *
+   * It cannot ride on `focused` alone: blurring an empty field would drop the
+   * board back to the landing mid-flow, which is not what the control did when
+   * the landing carried the field itself.
+   */
+  const [emailStep, setEmailStep] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -62,6 +70,7 @@ export default function SignIn() {
     if (router.canGoBack()) return router.back();
     setEmail('');
     setFocused(false);
+    setEmailStep(false);
   };
 
   const continueWithEmail = () => {
@@ -100,7 +109,7 @@ export default function SignIn() {
 
 
   // The board switches the moment the field is in play.
-  const typing = focused || email.length > 0;
+  const typing = emailStep || focused || email.length > 0;
 
   if (mode === 'email') {
     return (
@@ -181,8 +190,10 @@ export default function SignIn() {
               </>
             ) : (
               <>
-                <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 326, fontSize: 27, letterSpacing: -0.2, color: colors.text }]}>Welcome back.</AppText>
-                <AppText style={[sans('400'), { position: 'absolute', left: 24, top: 366, fontSize: 14.5, color: colors.textSoft }]}>Sign in to keep the run going.</AppText>
+                <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 326, fontSize: 27, letterSpacing: -0.2, color: colors.text }]}>Welcome to VICI.</AppText>
+                <AppText style={[sans('400'), { position: 'absolute', left: 24, top: 366, fontSize: 14.5, color: colors.textSoft }]}>
+                  Sign in or create an account to keep your plan and progress.
+                </AppText>
 
                 <PressScale
                   onPress={() => void sso('oauth_apple')}
@@ -208,13 +219,22 @@ export default function SignIn() {
                   <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(0,0,0,0.1)' }} />
                 </View>
 
-                <View
+                {/* The canvas draws this row with a static grey label and no
+                    caret — the board where an address is actually typed was
+                    withdrawn from this bundle. So the row is a control that
+                    opens the create-account form, and the returning-user path
+                    is the "Sign in" link under it. See DECISIONS.md D011. */}
+                <PressScale
+                  onPress={() => router.push('/(auth)/sign-up?step=form')}
+                  accessibilityRole="button"
+                  accessibilityLabel="Continue with email"
                   style={{
                     position: 'absolute',
                     left: 24,
                     right: 24,
                     top: 588,
                     height: 56,
+                    minHeight: 0,
                     borderRadius: 16,
                     backgroundColor: colors.surface,
                     boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
@@ -224,31 +244,37 @@ export default function SignIn() {
                     paddingLeft: 20,
                     paddingRight: 8,
                   }}>
-                  <EmailInput value={email} onChangeText={setEmail} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onSubmit={continueWithEmail} size={16.5} />
-                  <PressScale
-                    onPress={continueWithEmail}
-                    accessibilityRole="button"
-                    accessibilityLabel="Continue with email"
-                    style={{ width: 40, height: 40, minHeight: 0, borderRadius: 20, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
+                  <AppText style={[sans('400'), { flex: 1, fontSize: 16.5, color: 'rgba(90,88,82,0.5)' }]}>Continue with email</AppText>
+                  <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' }}>
                     <Svg width={15} height={13} viewBox="0 0 16 14" fill="none">
                       <Path d="M1.5 7h12M9 2.5L13.5 7 9 11.5" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                     </Svg>
-                  </PressScale>
-                </View>
+                  </View>
+                </PressScale>
 
                 <View style={{ position: 'absolute', left: 24, right: 24, top: 650 }}>
                   <Message error={error} notice={notice} />
                 </View>
 
                 <PressScale
-                  onPress={() => router.push('/(auth)/sign-up')}
+                  onPress={() => {
+                    reset();
+                    setEmailStep(true);
+                  }}
                   accessibilityRole="button"
                   hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
                   style={{ position: 'absolute', left: 0, right: 0, top: 686, minHeight: 0, alignItems: 'center' }}>
                   <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textSoft }]}>
-                    New here? <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Create an account</AppText>
+                    Already have an account? <AppText style={[sans('600'), { fontSize: 13.5, color: colors.text }]}>Sign in</AppText>
                   </AppText>
                 </PressScale>
+
+                {/* design y 818. The canvas gives this line no `cursor:pointer`
+                    where it gives one to all four controls above it, so it is
+                    drawn as a caption, not a pair of links. */}
+                <AppText style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 764, textAlign: 'center', fontSize: 12, color: colors.textSoft }]}>
+                  Terms &nbsp;·&nbsp; Privacy
+                </AppText>
               </>
             )}
           </View>

@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 2035 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 2033 · IMPLEMENTED: 2 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -16,8 +16,8 @@ Source: `UI Final 1/project/Email Login.dc.html`
 
 | Key | Frame file | Target app file | Status | Verified | Note |
 | --- | --- | --- | --- | --- | --- |
-| `Email-Login/Splash` | .uifinal1/final/Email-Login/Splash.html |  | NOT_STARTED |  |  |
-| `Email-Login/Login` | .uifinal1/final/Email-Login/Login.html |  | NOT_STARTED |  | canvas note: 02 · Login |
+| `Email-Login/Splash` | .uifinal1/final/Email-Login/Splash.html | src/components/ui/Waterline.tsx (SplashScene) | IMPLEMENTED | 2026-08-21 | spec specs/01-splash.md — full property table, every row match; no code change required |
+| `Email-Login/Login` | .uifinal1/final/Email-Login/Login.html | src/app/(auth)/sign-in.tsx + src/components/auth/kit.tsx | IMPLEMENTED | 2026-08-21 | spec specs/02-login.md — mark redrawn 240x190, copy, email row now a control, Terms/Privacy added; every box numerically identical |
 | `Email-Login/V3 Q24 Name` | .uifinal1/final/Email-Login/V3-Q24-Name.html |  | NOT_STARTED |  | canvas note: 03 · Name |
 | `Email-Login/V3 Q25 Age` | .uifinal1/final/Email-Login/V3-Q25-Age.html |  | NOT_STARTED |  | canvas note: 04 · Age |
 | `Email-Login/V3 Q26 Gender` | .uifinal1/final/Email-Login/V3-Q26-Gender.html |  | NOT_STARTED |  | canvas note: 05 · Gender |

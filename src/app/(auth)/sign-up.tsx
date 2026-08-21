@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -28,7 +28,11 @@ type Mode = 'gate' | 'form' | 'verify';
 export default function SignUp() {
   const router = useRouter();
   const { signUpWithPassword, signInWithSSO, verifyEmailCode, resendEmailCode } = useAuth();
-  const [mode, setMode] = useState<Mode>('gate');
+  // `02 · Login` sends "Continue with email" straight to the form — the board
+  // it comes from already offered Apple and Google, so the gate would be the
+  // same three choices a second time.
+  const { step } = useLocalSearchParams<{ step?: string }>();
+  const [mode, setMode] = useState<Mode>(step === 'form' ? 'form' : 'gate');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,7 +50,9 @@ export default function SignUp() {
   const back = () => {
     reset();
     if (mode === 'verify') return setMode('form');
-    if (mode === 'form') return setMode('gate');
+    // Arriving on the form directly means the gate was never on screen, so
+    // stepping back to it would show a board this route never passed through.
+    if (mode === 'form' && step !== 'form') return setMode('gate');
     if (router.canGoBack()) router.back();
     else router.replace('/(auth)/sign-in');
   };
