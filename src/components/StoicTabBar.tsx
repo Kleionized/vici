@@ -16,11 +16,15 @@ import { colors, sans } from '@/lib/theme';
  * The glyphs are different objects rather than one unified silhouette: a door
  * standing open, a stack of entries, books on a shelf, and a drawer of panes.
  *
- * The canvas draws three tabs at hand-set centres 70 / 196 / 318. `All` is a
- * fourth the canvas does not draw — a way into everything the app can show that
- * nothing else routes to. Four tabs will not fit the canvas's rhythm, so the row
- * is spread on even quarters instead; the glyph size, the 14 above it, the 5
- * under it and the 13pt label are all still the canvas's.
+ * `UI Final 1` draws three tabs, at hand-set boxes rather than an even rhythm:
+ * `left:48 width:44`, `left:170 width:52`, `left:288 width:60` of 393 — centres
+ * at 70 / 196 / 318. Those are the centres used here, as fractions of the bar's
+ * width so the row keeps its proportions on another screen, with each label box
+ * kept at the canvas's own width.
+ *
+ * A fourth tab, `All`, stood here in the previous bundle's port. The canvas has
+ * never drawn it: it is a drawer built so every screen in the app could be
+ * reached for review. It comes out of the bar; `/(app)/all` stays a route.
  */
 
 type Item = {
@@ -34,12 +38,11 @@ type Item = {
   w: number;
 };
 
-/** Even quarters — see the note above on why the canvas's own centres are not used. */
+/** The canvas's own three, at its own centres and label-box widths. */
 const ITEMS: Item[] = [
-  { key: 'home', label: 'Home', route: '/(app)/today', icon: home, at: '12.5%', w: 60 },
-  { key: 'log', label: 'Log', route: '/(app)/log', icon: log, at: '37.5%', w: 60 },
-  { key: 'library', label: 'Library', route: '/(app)/library', icon: library, at: '62.5%', w: 66 },
-  { key: 'all', label: 'All', route: '/(app)/all', icon: all, at: '87.5%', w: 60 },
+  { key: 'home', label: 'Home', route: '/(app)/today', icon: home, at: '17.812%', w: 44 },
+  { key: 'log', label: 'Log', route: '/(app)/log', icon: log, at: '49.873%', w: 52 },
+  { key: 'library', label: 'Library', route: '/(app)/library', icon: library, at: '80.916%', w: 60 },
 ];
 
 /** Resting and selected ink for the glyphs. */
@@ -75,7 +78,6 @@ export function StoicTabBar() {
   const isActive = (item: Item) => {
     if (item.key === 'home') return pathname === '/today' || pathname.startsWith('/profile') || pathname.startsWith('/milestones');
     if (item.key === 'log') return pathname === '/log';
-    if (item.key === 'all') return pathname === '/all';
     return pathname === '/library' || pathname.startsWith('/rough-days') || pathname.startsWith('/dashboard') || pathname.startsWith('/lesson');
   };
 
@@ -140,18 +142,4 @@ function library(active: boolean) {
   );
 }
 
-/**
- * A drawer of panes — four of the same shape, which is what the hub is: every
- * screen in the app laid out flat, none of them favoured.
- */
-function all(active: boolean) {
-  const fill = active ? ON : OFF;
-  return (
-    <Svg width={30} height={29} viewBox="0 0 24 26">
-      <Rect x={3.6} y={4.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
-      <Rect x={12.6} y={4.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
-      <Rect x={3.6} y={13.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
-      <Rect x={12.6} y={13.6} width={7.8} height={7.8} rx={2.4} fill={fill} />
-    </Svg>
-  );
-}
+

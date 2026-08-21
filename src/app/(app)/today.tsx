@@ -6,7 +6,7 @@ import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, 
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, Grain, LoadingView, PressScale } from '@/components/ui';
+import { AppText, Grain, Hill, LoadingView, PressScale } from '@/components/ui';
 import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
 import { lessonForDay, weekFor, type Curriculum84Lesson, type Curriculum84Week } from '@/content/curriculum84';
@@ -191,10 +191,8 @@ export default function Today() {
             <Path d="M2 12c4-7 8 3 12-3s8 2 10-2" stroke="#F4F3F0" strokeWidth={2.4} strokeLinecap="round" />
           </Svg>
         </View>
-        <View style={{ flex: 1 }}>
-          <AppText style={[sans('600'), { fontSize: 14.5, color: '#F7F6F2' }]}>Stay present. Surf the wave.</AppText>
-          <AppText style={[sans('400'), { marginTop: 2, fontSize: 12.5, color: 'rgba(244,243,240,0.55)' }]}>Urge surfing · SOS</AppText>
-        </View>
+        {/* the bar carried two lines in the previous bundle; this one names it once */}
+        <AppText style={[sans('600'), { flex: 1, fontSize: 15, color: '#F7F6F2' }]}>Urge surfing</AppText>
         <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
           <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="rgba(244,243,240,0.5)" strokeWidth={2} strokeLinecap="round" />
         </Svg>
@@ -225,7 +223,8 @@ function PageOne({
   return (
     <View style={{ flex: 1 }}>
       {/* design 114, i.e. 23 below the mark row */}
-      <AppText style={[sans('600'), { marginLeft: 16, marginTop: 23, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: colors.text }]}>
+      {/* the canvas's box is as wide as the words, not as wide as the row */}
+      <AppText style={[sans('600'), { alignSelf: 'flex-start', marginLeft: 16, marginTop: 23, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: colors.text }]}>
         Day {day}
       </AppText>
 
@@ -360,9 +359,10 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
         </Defs>
         <Rect x={0} y={0} width="100%" height={12} fill={`url(#glow${id})`} />
         <Rect x={0} y={12} width="100%" height={56} fill={`url(#sea${id})`} />
-        {/* the moon's reflection on the water — the canvas's 38 × 44 shaft at
-            top 168, grown by the 5px blur it is drawn with */}
-        <Ellipse cx={W - 69} cy={36} rx={22} ry={26} fill={`url(#shaft${id})`} />
+        {/* the moon's reflection on the water — the canvas's own 38 × 44 shaft
+            at right 50, top 168, with the gradient's falloff standing in for
+            the 5px blur rather than a larger box (DECISIONS.md D010) */}
+        <Ellipse cx={W - 69} cy={36} rx={19} ry={22} fill={`url(#shaft${id})`} />
       </Svg>
 
       <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 22, fontSize: 13, color: '#F7F6F2' }]}>Recovery score</AppText>
@@ -375,7 +375,8 @@ function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; o
           // the canvas states no box-sizing and carries no reset, so its 30 is
           // content: 30 + two 1px borders = 32 outer
           height: 32,
-          borderRadius: 16,
+          // the canvas states 15 on a pill its own borders make 32 tall
+          borderRadius: 15,
           borderWidth: 1,
           borderColor: 'rgba(244,243,240,0.28)',
           backgroundColor: 'rgba(20,19,16,0.25)',
@@ -519,7 +520,9 @@ function PageTwo({
 function PageThree({ pledge, name, onPledges }: { pledge?: { body: string; createdAt: number }; name?: string; onPledges: () => void }) {
   return (
     <View style={{ flex: 1 }}>
-      <SectionRow label="Goal & pledge" action="Past pledges" actionOffset={-2} onPress={onPledges} marginTop={47} />
+      {/* the canvas leaves nothing on the right of this row now — no label and
+          no chevron — so the row is a label with a hit target behind it */}
+      <SectionRow label="Your pledge" chevron={false} onPress={onPledges} marginTop={47} />
 
       <View style={{ marginTop: 11.5 }}>
         <PledgeCard pledge={pledge} name={name} onPress={onPledges} />
@@ -529,18 +532,22 @@ function PageThree({ pledge, name, onPledges }: { pledge?: { body: string; creat
 }
 
 /**
- * The last thirty days as thirty marks. Ten to a row on a 31pt pitch, which is
- * exact at the canvas's 393 — `10 × 20 + 9 × 11 = 299` with no slack — so the
- * columns are pinned and the gap is derived rather than left to a wrapping flex
- * row, which would silently drop to nine columns on a 375pt phone and push the
- * block past the card's content line.
+ * The last thirty days as thirty marks. Ten to a row, and the columns are pinned
+ * with a derived gap rather than left to a wrapping flex row, which would
+ * silently drop to nine columns on a 375pt phone and push the block past the
+ * card's content line.
+ *
+ * `UI Final 1` re-cuts the grid: the marks grow 20 → 24, the inset comes in
+ * 35 → 20, and the gap falls to 9.88 — `10 × 24 + 9 × 9.88 = 329`, exact at the
+ * canvas's 393. An unheld day is now a white disc with a 1pt ring rather than
+ * an empty one with a 1.5pt ring, and today carries a 2pt gold one.
  */
+const HELD_DOT = 24;
+const HELD_INSET = 20;
 function HeldStrip({ held }: { held: boolean[] }) {
   const width = useWindowDimensions().width;
-  // The canvas's grid runs left 35 to 334 inside a 369-wide card: 35 either side.
-  const inner = width - 24 - 35 * 2;
-  const gap = Math.max(0, (inner - 10 * 20) / 9);
-  const count = held.filter(Boolean).length;
+  const inner = width - 24 - HELD_INSET * 2;
+  const gap = Math.max(0, (inner - 10 * HELD_DOT) / 9);
   return (
     <View
       style={{
@@ -553,20 +560,22 @@ function HeldStrip({ held }: { held: boolean[] }) {
         boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
       }}>
       <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 20, fontSize: 13, color: colors.text }]}>Last 30 days</AppText>
-      <AppText style={[sans('500'), { position: 'absolute', right: 20, top: 20, fontSize: 12.5, color: colors.textSoft }]}>{count} held</AppText>
-      <View style={{ position: 'absolute', left: 35, top: 58, right: 35, flexDirection: 'row', flexWrap: 'wrap', gap }}>
-        {held.map((on, index) => (
-          <View
-            key={index}
-            style={{
-              width: 20,
-              height: 20,
-              borderRadius: 10,
-              backgroundColor: on ? colors.ink : undefined,
-              boxShadow: on ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.18)',
-            }}
-          />
-        ))}
+      <View style={{ position: 'absolute', left: HELD_INSET, top: 58, right: HELD_INSET, flexDirection: 'row', flexWrap: 'wrap', gap }}>
+        {held.map((on, index) => {
+          const today = index === held.length - 1;
+          return (
+            <View
+              key={index}
+              style={{
+                width: HELD_DOT,
+                height: HELD_DOT,
+                borderRadius: HELD_DOT / 2,
+                backgroundColor: on ? colors.ink : '#FFFFFF',
+                boxShadow: today ? 'inset 0 0 0 2px #D9A441' : on ? undefined : 'inset 0 0 0 1px rgba(0,0,0,0.14)',
+              }}
+            />
+          );
+        })}
       </View>
     </View>
   );
@@ -581,12 +590,19 @@ function SectionRow({
   label,
   action,
   actionOffset = 0,
+  chevron = true,
   onPress,
   marginTop,
 }: {
   label: string;
   action?: string;
   actionOffset?: number;
+  /**
+   * `21 · Today` draws a bare chevron on "This morning", a label *and* a
+   * chevron on "This week", and nothing at all on "Your pledge" — so the
+   * right-hand side is stated per row rather than implied by the label.
+   */
+  chevron?: boolean;
   onPress: () => void;
   marginTop: number;
 }) {
@@ -598,31 +614,37 @@ function SectionRow({
       hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
       style={{ minHeight: 0, marginTop, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
       <AppText style={[sans('600'), { fontSize: 12.5, color: colors.textSoft }]}>{label}</AppText>
-      <View style={{ marginTop: actionOffset, flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-        {action ? <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 0.5, color: colors.textSoft }]}>{action}</AppText> : null}
-        <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
-          <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="#B0AEA8" strokeWidth={2} strokeLinecap="round" />
-        </Svg>
-      </View>
+      {action || chevron ? (
+        <View style={{ marginTop: actionOffset, flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+          {action ? <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 0.5, color: colors.textSoft }]}>{action}</AppText> : null}
+          {chevron ? (
+            <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
+              <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="#B0AEA8" strokeWidth={2} strokeLinecap="round" />
+            </Svg>
+          ) : null}
+        </View>
+      ) : null}
     </PressScale>
   );
 }
 
-/** The line you signed this morning, on the paper you signed it on. */
+/**
+ * The line you signed this morning, on the paper you signed it on.
+ *
+ * `UI Final 1` rebuilds this card: the pledge is one plain sentence — the
+ * "I am abstaining today because" stem and the underline under the reason are
+ * both gone — the serif is dropped for the frame's own sans, the timestamp is
+ * deleted, and a warm scene comes in behind the words: a glow off the top-right
+ * corner with a sun disc in it, and two hills breaking the bottom edge.
+ */
 function PledgeCard({ pledge, name, onPress }: { pledge?: { body: string; createdAt: number }; name?: string; onPress: () => void }) {
-  const body = pledge?.body ?? 'I am abstaining today because…';
-  const cut = body.indexOf('because ');
-  const stem = cut === -1 ? body : body.slice(0, cut + 8);
-  const reason = cut === -1 ? '' : body.slice(cut + 8).replace(/\.$/, '');
-  const signed = pledge
-    ? `Signed ${new Date(pledge.createdAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`
-    : 'Not signed yet today';
+  const body = pledge?.body ?? '';
 
   return (
     <PressScale
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel={body}
+      accessibilityLabel={body || 'Your pledge'}
       style={{
         marginHorizontal: 12,
         height: 140,
@@ -632,19 +654,32 @@ function PledgeCard({ pledge, name, onPress }: { pledge?: { body: string; create
         backgroundColor: colors.surface,
         boxShadow: '0 0 0 1px rgba(0,0,0,0.06)',
       }}>
-      <AppText style={{ position: 'absolute', left: 16, top: 26, fontFamily: fonts.quote, fontSize: 32, lineHeight: 20, color: '#C9C0AC' }}>&ldquo;</AppText>
-      <AppText style={{ position: 'absolute', left: 38, right: 38, top: 32, fontFamily: fonts.quote, fontSize: 17.5, lineHeight: 27, color: '#3A3934' }}>
-        {stem}
-        {reason ? (
-          <AppText style={{ fontFamily: fonts.quote, fontSize: 17.5, lineHeight: 27, color: '#3A3934', textDecorationLine: 'underline', textDecorationColor: 'rgba(0,0,0,0.22)' }}>
-            {reason}
-          </AppText>
-        ) : null}
-        {reason ? '.' : ''}
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <Svg width={150} height={150} style={{ position: 'absolute', right: -34, top: -44 }}>
+          <Defs>
+            <RadialGradient id="pledgeSun" cx="50%" cy="50%" rx="50%" ry="50%">
+              <Stop offset="0" stopColor="#E9D2A4" stopOpacity={0.34} />
+              <Stop offset="0.74" stopColor="#E9D2A4" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Circle cx={75} cy={75} r={75} fill="url(#pledgeSun)" />
+        </Svg>
+        <View style={{ position: 'absolute', right: 24, top: 22, width: 26, height: 26, borderRadius: 13, backgroundColor: '#F0DDB4' }} />
+        {/* two hills, each a box whose top edge is an elliptical arc: the
+            canvas gives them a 50% horizontal radius and a 46 / 40pt vertical
+            one, which no single `borderRadius` can express */}
+        <Hill height={100} rise={46} color="#EFEEE9" style={{ position: 'absolute', left: -30, right: -30, bottom: -58 }} />
+        <Hill height={100} rise={40} color="#E9E8E2" style={{ position: 'absolute', left: -60, right: -10, bottom: -70 }} />
+      </View>
+
+      <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 30, fontSize: 30, lineHeight: 20, color: '#C9C0AC' }]}>&ldquo;</AppText>
+      <AppText style={[sans('500'), { position: 'absolute', left: 38, right: 38, top: 36, fontSize: 17.5, lineHeight: 27, letterSpacing: -0.2, color: '#3A3934' }]}>
+        {body}
       </AppText>
 
-      <View style={{ position: 'absolute', left: 16, right: 16, bottom: 11, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-        <AppText style={[sans('500'), { fontSize: 11, letterSpacing: 0.3, color: '#A5A29B' }]}>{signed}</AppText>
+      {/* the canvas leaves an empty span where the timestamp was, purely as the
+          flex spacer that keeps the signature on the right */}
+      <View style={{ position: 'absolute', left: 16, right: 16, bottom: 11, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
         {pledge ? (
           <View style={{ alignItems: 'flex-end' }}>
             <AppText style={{ fontFamily: fonts.script, fontSize: 24, lineHeight: 24, color: colors.text, transform: [{ rotate: '-3.5deg' }] }}>

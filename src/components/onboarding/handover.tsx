@@ -16,7 +16,7 @@ import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { AppText, Grain } from '@/components/ui';
+import { AppText, Grain, Hill } from '@/components/ui';
 import { PressScale } from '@/components/ui/press-scale';
 import { fonts, sans } from '@/lib/theme';
 
@@ -284,10 +284,11 @@ function LetterMark() {
       <View style={{ position: 'absolute', left: 162, top: 32, width: 34, height: 34, borderRadius: 17, backgroundColor: '#E9D2A4' }} />
       <View style={{ position: 'absolute', left: 14, top: 24, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.4)' }} />
       <View style={{ position: 'absolute', left: 44, top: 52, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(200,225,235,0.3)' }} />
-      {/* three swells, each a wide ellipse cropped at its own waterline */}
-      <View style={{ position: 'absolute', left: -40, right: -40, top: 100, height: 100, borderTopLeftRadius: 160, borderTopRightRadius: 160, backgroundColor: '#DEDDD6' }} />
-      <View style={{ position: 'absolute', left: -90, right: -30, top: 126, height: 100, borderTopLeftRadius: 180, borderTopRightRadius: 180, backgroundColor: '#CFCEC7' }} />
-      <View style={{ position: 'absolute', left: -30, right: -100, top: 148, height: 100, borderTopLeftRadius: 200, borderTopRightRadius: 200, backgroundColor: '#C5C4BD' }} />
+      {/* three swells, each a box whose top edge is an elliptical arc — the
+          canvas states 48 / 42 / 36pt of rise on a 50% horizontal radius */}
+      <Hill height={100} rise={48} color="#DEDDD6" style={{ position: 'absolute', left: -40, right: -40, top: 100 }} />
+      <Hill height={100} rise={42} color="#CFCEC7" style={{ position: 'absolute', left: -90, right: -30, top: 126 }} />
+      <Hill height={100} rise={36} color="#C5C4BD" style={{ position: 'absolute', left: -30, right: -100, top: 148 }} />
       <View style={{ position: 'absolute', left: 34, top: 150, width: 13, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.55)', transform: [{ rotate: '14deg' }] }} />
       <View style={{ position: 'absolute', left: 58, top: 136, width: 13, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.55)', transform: [{ rotate: '10deg' }] }} />
       <View style={{ position: 'absolute', left: 84, top: 124, width: 13, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.55)', transform: [{ rotate: '6deg' }] }} />

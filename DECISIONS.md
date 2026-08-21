@@ -338,3 +338,20 @@ draws above the picture is **36**. Yoga does not collapse margins: written liter
 Wherever the canvas relies on collapsing, the app states the collapsed result. Found here; watched
 for on every stacked-margin block from now on, because it is invisible until the numbers are
 compared — the picture still looked right, and only the paragraphs after it had moved.
+
+## D024 — The tab bar carries the canvas's three tabs, and `All` leaves it
+
+Every frame in `UI Final 1` that draws a tab bar draws three: `Home` at
+`left:48 width:44`, `Log` at `left:170 width:52`, `Library` at `left:288 width:60` — hand-set
+boxes with centres at 70 / 196 / 318 of 393, not an even rhythm. Ten frames were checked and all
+ten agree, including the active/resting treatment (`#2A2924` glyph and label when selected,
+`#C6C5C0` glyph with an `#8B8882` label when not).
+
+The app carried a fourth, `All`, and spread the row on even quarters to fit it. `All` is not a
+product screen: `src/app/(app)/all.tsx` says so in its own first line ("Not a canvas frame"), and
+it exists so that screens the app only ever pushes on its own terms — the weekly report, the
+letter, the yearly drop — can be reached for review.
+
+The bar is now the canvas's three at the canvas's own centres and label widths. `/(app)/all` stays
+a route and is still reachable by URL; nothing else links to it. That is recorded in `REPORT.md`
+so the drawer is not lost by accident.

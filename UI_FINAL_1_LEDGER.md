@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 2002 · IMPLEMENTED: 33 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 1989 · IMPLEMENTED: 46 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -49,21 +49,21 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | `Email-Login/Change the Line` | .uifinal1/final/Email-Login/Change-the-Line.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 31 · Change the Line — NEW; spec specs/31-change-the-line.md |
 | `Email-Login/One Bad Day` | .uifinal1/final/Email-Login/One-Bad-Day.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 32 · One Bad Day — NEW; spec specs/32-one-bad-day.md |
 | `Email-Login/What You Want Back` | .uifinal1/final/Email-Login/What-You-Want-Back.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 33 · What You Want Back — NEW; spec specs/33-what-you-want-back.md |
-| `Email-Login/Campaign Map` | .uifinal1/final/Email-Login/Campaign-Map.html |  | NOT_STARTED |  | canvas note: 34 · Twelve Weeks — I–IV |
-| `Email-Login/Campaign Map II` | .uifinal1/final/Email-Login/Campaign-Map-II.html |  | NOT_STARTED |  | canvas note: 35 · Twelve Weeks — V–VIII |
-| `Email-Login/Campaign Map III` | .uifinal1/final/Email-Login/Campaign-Map-III.html |  | NOT_STARTED |  | canvas note: 36 · Twelve Weeks — IX–XII |
-| `Email-Login/Letter Received` | .uifinal1/final/Email-Login/Letter-Received.html |  | NOT_STARTED |  | canvas note: 37 · A Letter Arrived |
-| `Email-Login/Letter Week XII` | .uifinal1/final/Email-Login/Letter-Week-XII.html |  | NOT_STARTED |  | canvas note: 38 · A Letter From Week XII |
-| `Email-Login/The Vow` | .uifinal1/final/Email-Login/The-Vow.html |  | NOT_STARTED |  | canvas note: 39 · The Vow |
-| `Email-Login/Medallion Received` | .uifinal1/final/Email-Login/Medallion-Received.html |  | NOT_STARTED |  | canvas note: 40 · Medallion Earned |
-| `Email-Login/Reminders Setup` | .uifinal1/final/Email-Login/Reminders-Setup.html |  | NOT_STARTED |  | canvas note: 41 · Reminders |
-| `Email-Login/Free Trial Paywall` | .uifinal1/final/Email-Login/Free-Trial-Paywall.html |  | NOT_STARTED |  | canvas note: 42 · Paywall |
-| `Email-Login/Day Zero` | .uifinal1/final/Email-Login/Day-Zero.html |  | NOT_STARTED |  | canvas note: 43 · Day 0 |
+| `Email-Login/Campaign Map` | .uifinal1/final/Email-Login/Campaign-Map.html | src/components/onboarding/v3.tsx (O3Reading) + art.tsx | IMPLEMENTED | 2026-08-21 | 34 · Twelve Weeks I–IV — spec specs/34-twelve-weeks-i.md; Back + caption withdrawn, CTA now Next |
+| `Email-Login/Campaign Map II` | .uifinal1/final/Email-Login/Campaign-Map-II.html | src/components/onboarding/v3.tsx (O3Reading) + art.tsx | IMPLEMENTED | 2026-08-21 | 35 · Twelve Weeks V–VIII — spec specs/35-twelve-weeks-ii.md |
+| `Email-Login/Campaign Map III` | .uifinal1/final/Email-Login/Campaign-Map-III.html | src/components/onboarding/v3.tsx (O3Reading) + art.tsx | IMPLEMENTED | 2026-08-21 | 36 · Twelve Weeks IX–XII — spec specs/36-twelve-weeks-iii.md; gains a closing line at 692 |
+| `Email-Login/Letter Received` | .uifinal1/final/Email-Login/Letter-Received.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 37 · A Letter Arrived — spec specs/37-a-letter-arrived.md; envelope art rebuilt |
+| `Email-Login/Letter Week XII` | .uifinal1/final/Email-Login/Letter-Week-XII.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 38 · A Letter From Week XII — spec specs/38-a-letter-from-week-xii.md; letter rewritten, 12 paragraphs + inline shore |
+| `Email-Login/The Vow` | .uifinal1/final/Email-Login/The-Vow.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 39 · The Vow — spec specs/39-the-vow.md; signature pad replaced by a script hand |
+| `Email-Login/Medallion Received` | .uifinal1/final/Email-Login/Medallion-Received.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 40 · Medallion Earned — spec specs/40-medallion-earned.md; medallion struck in gold |
+| `Email-Login/Reminders Setup` | .uifinal1/final/Email-Login/Reminders-Setup.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 41 · Reminders — spec specs/41-reminders.md; two notification cards, zero differences |
+| `Email-Login/Free Trial Paywall` | .uifinal1/final/Email-Login/Free-Trial-Paywall.html | src/components/paywall/PaywallFlow.tsx | IMPLEMENTED | 2026-08-21 | 42 · Paywall — spec specs/42-paywall.md; title, four promises and CTA copy |
+| `Email-Login/Day Zero` | .uifinal1/final/Email-Login/Day-Zero.html | src/components/onboarding/handover.tsx | IMPLEMENTED | 2026-08-21 | 43 · Day 0 — NEW; spec specs/43-day-0.md; night-bench card |
 | `Email-Login/Paywall Rescue` | .uifinal1/final/Email-Login/Paywall-Rescue.html |  | NOT_STARTED |  | canvas note: 11B · Paywall — Three Days Free |
-| `Email-Login/Paywall Confirmed` | .uifinal1/final/Email-Login/Paywall-Confirmed.html |  | NOT_STARTED |  | canvas note: 11C · Paywall — Confirmed |
+| `Email-Login/Paywall Confirmed` | .uifinal1/final/Email-Login/Paywall-Confirmed.html | src/components/paywall/PaywallFlow.tsx | IMPLEMENTED | 2026-08-21 | 11C · Paywall Confirmed — spec specs/45-paywall-confirmed.md; entity change only |
 | `Email-Login/Manage Subscription` | .uifinal1/final/Email-Login/Manage-Subscription.html |  | NOT_STARTED |  | canvas note: 15 · Manage Subscription |
-| `Email-Login/Morning Check-in Time` | .uifinal1/final/Email-Login/Morning-Check-in-Time.html |  | NOT_STARTED |  | canvas note: PERSONALIZATION 19B · Morning check-in time |
-| `Email-Login/Nightly Check-in Time` | .uifinal1/final/Email-Login/Nightly-Check-in-Time.html |  | NOT_STARTED |  | canvas note: 19C · Nightly check-in time |
+| `Email-Login/Morning Check-in Time` | .uifinal1/final/Email-Login/Morning-Check-in-Time.html | src/app/routines/morning-time.tsx + components/routines/kit.tsx | IMPLEMENTED | 2026-08-21 | 19B · Morning check-in time — spec specs/47-morning-check-in-time.md; caption at 676 withdrawn |
+| `Email-Login/Nightly Check-in Time` | .uifinal1/final/Email-Login/Nightly-Check-in-Time.html | src/app/routines/night-time.tsx + components/routines/kit.tsx | IMPLEMENTED | 2026-08-21 | 19C · Nightly check-in time — spec specs/48-nightly-check-in-time.md; caption withdrawn, wheel opens 10:30 PM |
 | `Email-Login/Today Home` | .uifinal1/final/Email-Login/Today-Home.html |  | NOT_STARTED |  | canvas note: 21 · Today |
 | `Email-Login/Score Detail` | .uifinal1/final/Email-Login/Score-Detail.html |  | NOT_STARTED |  | canvas note: 21B · Score Detail |
 | `Email-Login/Score Detail Moves` | .uifinal1/final/Email-Login/Score-Detail-Moves.html |  | NOT_STARTED |  | canvas note: 20B · Score Detail — What Moved It |

@@ -185,14 +185,15 @@ function NightHeader({ score, insetTop, onBack }: { score: ReturnType<typeof bui
           </Defs>
           <Rect x={0} y={0} width={W} height={16} fill={`url(#sdGlow${id})`} />
           <Rect x={0} y={12} width={W} height={92} fill={`url(#sdSea${id})`} />
-          {/* the moon's reflection: canvas `top:240 height:58` in a layer whose
-              origin is canvas 226, so the box is local 14→72 and the ellipse is
-              centred on 43 with a 29 radius — grown a little for the 5px blur.
-              `cy` is the centre and `ry` the half-height; using the box's top
-              and its full height put the shaft's focal 58 too high, which both
-              halved its alpha over the box and cut a hard edge across the
-              waterline glow above it. */}
-          <Ellipse cx={W - 75} cy={43} rx={19} ry={31} fill={`url(#sdShaft${id})`} />
+          {/* The moon's reflection: canvas `right:56 top:240 38 × 58` in a
+              layer whose origin is canvas 226, so the box is local 14 → 72 and
+              the ellipse is centred on 43 with a 29 radius. `cy` is the centre
+              and `ry` the half-height — passing the box's top and its full
+              height puts the focal 58 too high, which halves the alpha over the
+              box and cuts a hard edge across the waterline glow above it. The
+              canvas blurs the shaft 5px; the gradient's falloff carries that
+              rather than a bigger box (DECISIONS.md D010). */}
+          <Ellipse cx={W - 75} cy={43} rx={19} ry={29} fill={`url(#sdShaft${id})`} />
           <Rect x={W - 88} y={22} width={26} height={1.5} rx={0.75} fill="rgba(244,243,240,0.2)" />
         </Svg>
 
@@ -390,7 +391,7 @@ function OverTime({
         glyph={<TrendGlyph />}
         title={`${gain < 0 ? '−' : '+'}${Math.abs(gain)} points`}
         sub={`vs ${monthDay(firstDay)} – ${monthDay(lastDay)}`}
-        body={'Keep going. Every clean day adds to this.'}
+        body={'Keep going. You’re building real momentum.'}
       />
     </>
   );
@@ -443,7 +444,7 @@ function WhatMoved({ lines, net }: { lines: { label: string; points: number }[];
         glyph={<TrendGlyph />}
         title={`${net < 0 ? '−' : '+'}${Math.abs(net)} net`}
         sub="this month"
-        body="Clean days move it most. Keep the evenings boring."
+        body='Clean days do the heavy lifting. Keep the evenings boring.'
       />
     </>
   );

@@ -53,6 +53,16 @@ http
         res.end(fs.readFileSync('.uifinal1/mock-selection.json'));
         return;
       }
+      if (url === '/reseed.js') {
+        res.writeHead(200, { 'content-type': 'text/javascript', 'access-control-allow-origin': '*' });
+        res.end(fs.readFileSync('.uifinal1/reseed.js'));
+        return;
+      }
+      if (url === '/seed.json') {
+        res.writeHead(200, { 'content-type': 'application/json', 'access-control-allow-origin': '*' });
+        res.end(fs.readFileSync('.uifinal1/seed.json'));
+        return;
+      }
       if (url === '/walk.js') {
         res.writeHead(200, { 'content-type': 'text/javascript', 'access-control-allow-origin': '*' });
         res.end(fs.readFileSync('.uifinal1/walk.js'));
