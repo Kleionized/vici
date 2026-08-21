@@ -48,3 +48,6 @@ example
 
 # UI Final run artifacts (generated split frames)
 .uifinal/
+
+# UI Final 1 run artifacts (generated split frames)
+.uifinal1/
