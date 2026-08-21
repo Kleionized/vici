@@ -18,7 +18,8 @@ const read = (n) => fs.readFileSync(`.uifinal1/sig/${n.replace(/[^A-Za-z0-9._-]/
 const wrapper = (r) => r[1] === '0' && r[2] === '0' && r[3] === '393' && r[4] === '852' && r[10] === '-';
 const A = read(a).filter((r) => !wrapper(r));
 const B = read(b).filter((r) => !wrapper(r));
-const key = (r) => (r[10] !== '-' ? 'T:' + r[10] : 'P:' + r[1] + ',' + r[2] + ',' + r[3] + ',' + r[4]);
+const rnd = (v) => Math.round(Number(v));
+const key = (r) => (r[10] !== '-' ? 'T:' + r[10] : 'P:' + [rnd(r[1]), rnd(r[2]), rnd(r[3]), rnd(r[4])].join(','));
 const idx = (rows) => { const m = new Map(); for (const r of rows) { const k = key(r); if (!m.has(k)) m.set(k, []); m.get(k).push(r); } return m; };
 const MA = idx(A), MB = idx(B);
 const esc = (s) => String(s).replace(/\|/g, '\\|');
@@ -39,8 +40,25 @@ out.push('| Element | Property | Design | App | Result |');
 out.push('| --- | --- | --- | --- | --- |');
 const F = { 1: 'x', 2: 'y', 3: 'width', 4: 'height', 5: 'background', 6: 'radius', 7: 'opacity', 8: 'shadow', 9: 'type' };
 let rows = 0, bad = 0;
+const usedB = new Set();
+for (const rows of MB.values()) for (const r of rows) usedB.add(r);
+/** Pair a design box with an app box within a point — two engines rounding. */
+const near = (ra) => {
+  let best = null, bestD = Infinity;
+  for (const r of usedB) {
+    if (r[10] !== '-' || ra[10] !== '-') continue;
+    const d = Math.max(...[1, 2, 3, 4].map((f) => Math.abs(Number(ra[f]) - Number(r[f]))));
+    if (d < bestD) { bestD = d; best = r; }
+  }
+  return bestD <= 1 ? best : null;
+};
+
 for (const [k, rowsA] of MA) {
-  const rowsB = MB.get(k);
+  let rowsB = MB.get(k);
+  if (!rowsB) {
+    const hit = near(rowsA[0]);
+    if (hit) { rowsB = [hit]; usedB.delete(hit); }
+  }
   const name = rowsA[0][10] === '-' ? `${rowsA[0][0]} at ${rowsA[0][1]}, ${rowsA[0][2]}` : `“${rowsA[0][10].slice(0, 48)}”`;
   if (!rowsB) {
     out.push(`| ${esc(name)} | box · paint | ${esc(box(rowsA[0]))} · ${esc(paint(rowsA[0]))} | *absent* | **mismatch** |`);
@@ -50,7 +68,12 @@ for (const [k, rowsA] of MA) {
   for (let i = 0; i < Math.min(rowsA.length, rowsB.length); i++) {
     const ra = rowsA[i], rb = rowsB[i];
     const diff = [];
-    for (const f of [1, 2, 3, 4, 5, 6, 7, 8, 9]) if (ra[f] !== rb[f]) diff.push(f);
+    for (const f of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+      if (ra[f] === rb[f]) continue;
+      // sub-quarter-point differences are where two layout engines round
+      if (f <= 4 && Math.abs(Number(ra[f]) - Number(rb[f])) < 0.25) continue;
+      diff.push(f);
+    }
     rows++;
     if (!diff.length) {
       out.push(`| ${esc(name)} | box · paint · type | ${esc(box(ra))} · ${esc(paint(ra))} · ${esc(type(ra))} | identical | match |`);

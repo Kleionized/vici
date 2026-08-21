@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 2013 · IMPLEMENTED: 22 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 2002 · IMPLEMENTED: 33 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -38,17 +38,17 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | `Email-Login/V3 Q15` | .uifinal1/final/Email-Login/V3-Q15.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 20 · Porn Goal — spec specs/20-porn-goal.md; rows at 281 |
 | `Email-Login/V3 Q16` | .uifinal1/final/Email-Login/V3-Q16.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 21 · Masturbation — spec specs/21-masturbation.md; rows at 281 |
 | `Email-Login/V3 Q17` | .uifinal1/final/Email-Login/V3-Q17.html | src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts | IMPLEMENTED | 2026-08-21 | 22 · What You Have Tried — spec specs/22-what-you-have-tried.md; hint at 197 |
-| `Email-Login/Enlisting Aegis` | .uifinal1/final/Email-Login/Enlisting-Aegis.html |  | NOT_STARTED |  | canvas note: 23 · Putting Your Plan Together |
-| `Email-Login/Root Loop` | .uifinal1/final/Email-Login/Root-Loop.html |  | NOT_STARTED |  | canvas note: 24 · Where You Get Caught |
-| `Email-Login/What Comes Before It` | .uifinal1/final/Email-Login/What-Comes-Before-It.html |  | NOT_STARTED |  | canvas note: 25 · What Comes Before It |
-| `Email-Login/Results Pattern` | .uifinal1/final/Email-Login/Results-Pattern.html |  | NOT_STARTED |  | canvas note: 26 · The Window to Protect |
-| `Email-Login/Starting Score` | .uifinal1/final/Email-Login/Starting-Score.html |  | NOT_STARTED |  | canvas note: 27 · Your Starting Point |
-| `Email-Login/Cost Next 30` | .uifinal1/final/Email-Login/Cost-Next-30.html |  | NOT_STARTED |  | canvas note: 28 · The Next 30 Days |
-| `Email-Login/Cost Next 365` | .uifinal1/final/Email-Login/Cost-Next-365.html |  | NOT_STARTED |  | canvas note: 29 · One Year From Now |
-| `Email-Login/Cost By Age 80` | .uifinal1/final/Email-Login/Cost-By-Age-80.html |  | NOT_STARTED |  | canvas note: 30 · If Nothing Changes |
-| `Email-Login/Change the Line` | .uifinal1/final/Email-Login/Change-the-Line.html |  | NOT_STARTED |  | canvas note: 31 · Change the Line |
-| `Email-Login/One Bad Day` | .uifinal1/final/Email-Login/One-Bad-Day.html |  | NOT_STARTED |  | canvas note: 32 · One Bad Day |
-| `Email-Login/What You Want Back` | .uifinal1/final/Email-Login/What-You-Want-Back.html |  | NOT_STARTED |  | canvas note: 33 · What You Want Back |
+| `Email-Login/Enlisting Aegis` | .uifinal1/final/Email-Login/Enlisting-Aegis.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 23 · Putting Your Plan Together — spec specs/23-putting-your-plan-together.md; rule+Back withdrawn, copy rewritten |
+| `Email-Login/Root Loop` | .uifinal1/final/Email-Login/Root-Loop.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 24 · Where You Get Caught — spec specs/24-where-you-get-caught.md; rule+Back withdrawn, all copy rewritten |
+| `Email-Login/What Comes Before It` | .uifinal1/final/Email-Login/What-Comes-Before-It.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 25 · What Comes Before It — NEW; spec specs/25-what-comes-before-it.md |
+| `Email-Login/Results Pattern` | .uifinal1/final/Email-Login/Results-Pattern.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 26 · The Window to Protect — spec specs/26-the-window-to-protect.md; rule+Back withdrawn, copy rewritten |
+| `Email-Login/Starting Score` | .uifinal1/final/Email-Login/Starting-Score.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 27 · Your Starting Point — NEW ring gauge + ELO curve; spec specs/27-your-starting-point.md |
+| `Email-Login/Cost Next 30` | .uifinal1/final/Email-Login/Cost-Next-30.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 28 · The Next 30 Days — spec specs/28-the-next-30-days.md; redrawn as a 6-across grid |
+| `Email-Login/Cost Next 365` | .uifinal1/final/Email-Login/Cost-Next-365.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 29 · One Year From Now — spec specs/29-one-year-from-now.md; 365-cell grid + floating pill |
+| `Email-Login/Cost By Age 80` | .uifinal1/final/Email-Login/Cost-By-Age-80.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 30 · If Nothing Changes — spec specs/30-if-nothing-changes.md; now a night sky and one pill |
+| `Email-Login/Change the Line` | .uifinal1/final/Email-Login/Change-the-Line.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 31 · Change the Line — NEW; spec specs/31-change-the-line.md |
+| `Email-Login/One Bad Day` | .uifinal1/final/Email-Login/One-Bad-Day.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 32 · One Bad Day — NEW; spec specs/32-one-bad-day.md |
+| `Email-Login/What You Want Back` | .uifinal1/final/Email-Login/What-You-Want-Back.html | src/components/onboarding/tail.tsx + src/content/onboardingTail.ts | IMPLEMENTED | 2026-08-21 | 33 · What You Want Back — NEW; spec specs/33-what-you-want-back.md |
 | `Email-Login/Campaign Map` | .uifinal1/final/Email-Login/Campaign-Map.html |  | NOT_STARTED |  | canvas note: 34 · Twelve Weeks — I–IV |
 | `Email-Login/Campaign Map II` | .uifinal1/final/Email-Login/Campaign-Map-II.html |  | NOT_STARTED |  | canvas note: 35 · Twelve Weeks — V–VIII |
 | `Email-Login/Campaign Map III` | .uifinal1/final/Email-Login/Campaign-Map-III.html |  | NOT_STARTED |  | canvas note: 36 · Twelve Weeks — IX–XII |

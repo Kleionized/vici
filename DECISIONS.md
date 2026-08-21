@@ -235,3 +235,61 @@ does, and the app's own step-back works from `04 · Age` onward.
 
 This is the app winning on what a control *does*, which the brief puts above the design; it is
 recorded here and in `specs/03-name.md` rather than left silent.
+
+## D017 — `27 · Your Starting Point`: the ring's arithmetic, and the frame's own marker disagreeing with its own number
+
+The ring is unambiguous. `stroke-dasharray: 89.7 653.5` on a 104pt circle is 13.73% of the
+circumference, the readout says `412` of `3,000`, and 412 / 3,000 = 13.73%. So the arc is
+`score / 3000`, and that is what the app draws.
+
+The ELO curve under it is the same axis: 61 samples of a bell peaking at x 172.5 of 345, which is
+1,500 of 3,000. But the frame puts the curve's marker at **x 79.4**, which on that axis is 690 —
+not the 412 the same frame prints in the middle of the ring. One of the two was authored before
+the other changed.
+
+The app places the curve's marker by the same fraction as the ring, so the two halves of the
+screen cannot say different things. The frame's own value is kept in `SCORE_SAMPLE` so the spec can
+quote it.
+
+**The score the app shows** is `SCORE_BASE` — 1,000 — because that is what the app's own scoring
+gives a man with no history yet (`src/lib/score.ts`), and the brief puts the app in charge of what
+a number means. The canvas's 412 is below the app's floor and matches none of its ranks
+(Deckhand 1,000 · Navigator 1,150 · Helmsman 1,300 · Captain 1,500), which `21B · Score Detail`
+draws literally. Where the two screens of the same bundle disagree, the one that agrees with the
+app's own model wins.
+
+## D018 — `backdrop-filter: blur(12px)` on the two floating pills
+
+`29 · One Year From Now` and `30 · If Nothing Changes` each hang a pill 120 off the bottom edge
+with `backdrop-filter: blur(12px)` under a 94%- and 82%-opaque fill. React Native has no backdrop
+filter on any platform. Each pill is built as an `expo-blur` `BlurView` inside the pill's rounded
+clip with the stated fill painted over it, which is the same composite: blurred backdrop, then the
+colour.
+
+`BlurView`'s `intensity` is a 0–100 scale rather than a radius, and Expo does not publish the
+mapping to points. 24 is used. The visible gap is bounded by how much backdrop shows through at
+all: 6% on the white pill and 18% on the dark one, the latter over a flat `#060606` field where a
+blur of any radius changes nothing.
+
+## D019 — The canvas's card grain reports differently, and it is the same grain
+
+Every paper card lays `noise-dark.png` over itself in a `<div>` with `opacity: 0.05`. The app's
+`Grain` puts the opacity on the image inside its wrapper, so the probe reads the wrapper as having
+no opacity and the image as having 0.05. Same pixels, one level down. Listed with D015's
+equivalences.
+
+## D020 — CSS's strut, and where the app has to state a line box the canvas only implies
+
+A canvas frame sets `font-family` and nothing else on its root, so every block inherits a 16px
+font size. An inline run inside a block sits on a line box at least as tall as that block's own
+strut: at 16px in the frame's face, `line-height: normal` is 19. So a pill whose padding is
+`13px 24px 14px` around a **15px** run measures 46 tall, not 44.5 — the 15px run is 17.5 tall and
+the line box that holds it is 19.
+
+Yoga has no strut: a `<Text>`'s box is its own line height and nothing forces it taller. Wherever
+the canvas relies on the strut, the app states the line box explicitly — the run keeps its own
+17.5 and sits centred in a 19 box, which is exactly what the browser draws.
+
+Found on the two floating pills of `29 · One Year From Now` and `30 · If Nothing Changes`, where
+it was a 1.5pt difference in the pill's height and a 0.5pt shift in its top, because the pill is
+positioned from the bottom edge.

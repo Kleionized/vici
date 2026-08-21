@@ -2,22 +2,23 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 
 import {
-  O3CostPage,
-  O3DayOne,
-  O3FunnelStep,
-  O3Handover,
-  O3Letter,
-  O3Pattern,
-  O3Pledge,
-  O3Reading,
-  O3ReadingPause,
-  O3Root,
-  O3Shell,
-  buildWeekXiiLetter,
-  type O3Paper,
-} from '@/components/onboarding/v3';
+  O3ChangeTheLine,
+  O3IfNothingChanges,
+  O3Next30,
+  O3OneBadDay,
+  O3OneYear,
+  O3PuttingTogether,
+  O3StartingPoint,
+  O3WhatComesBeforeIt,
+  O3WhatYouWantBack,
+  O3WhereYouGetCaught,
+  O3WindowToProtect,
+} from '@/components/onboarding/tail';
+import { O3DayOne, O3FunnelStep, O3Handover, O3Letter, O3Pledge, O3Reading, O3Shell, buildWeekXiiLetter, o3Issue, type O3Paper } from '@/components/onboarding/v3';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { FUNNEL_STEPS } from '@/content/onboardingFunnel';
+import { COST_30, COST_365 } from '@/content/onboardingTail';
+import { SCORE_BASE } from '@/lib/score';
 import { useAuth } from '@/lib/auth';
 import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
 
@@ -43,12 +44,17 @@ type Step =
   | {
       id: string;
       kind:
-        | 'pause'
-        | 'root'
-        | 'pattern'
-        | 'cost30'
-        | 'cost365'
-        | 'costAge80'
+        | 'planTogether'
+        | 'caught'
+        | 'beforeIt'
+        | 'window'
+        | 'startingPoint'
+        | 'next30'
+        | 'oneYear'
+        | 'age80'
+        | 'changeLine'
+        | 'oneBadDay'
+        | 'wantBack'
         | 'reading'
         | 'letterReceived'
         | 'letter'
@@ -61,40 +67,50 @@ type Step =
 const STEPS: Step[] = [
   // 03 · Name … 22 · What You Have Tried
   ...FUNNEL_STEPS.map((s, fi): Step => ({ id: s.id, kind: 'funnel', fi })),
-  { id: 'pause', kind: 'pause' }, //                23 · Putting Your Plan Together
-  { id: 'root', kind: 'root' }, //                  24 · Where You Get Caught
-  { id: 'pattern', kind: 'pattern' }, //            26 · The Window to Protect
-  { id: 'cost30', kind: 'cost30' }, //              28 · The Next 30 Days
-  { id: 'cost365', kind: 'cost365' }, //            29 · One Year From Now
-  { id: 'cost-age80', kind: 'costAge80' }, //       30 · If Nothing Changes
-  { id: 'reading', kind: 'reading' }, //            34–36 · Twelve Weeks
+  { id: 'plan-together', kind: 'planTogether' }, //  23 · Putting Your Plan Together
+  { id: 'caught', kind: 'caught' }, //               24 · Where You Get Caught
+  { id: 'before-it', kind: 'beforeIt' }, //          25 · What Comes Before It
+  { id: 'window', kind: 'window' }, //               26 · The Window to Protect
+  { id: 'starting-point', kind: 'startingPoint' }, // 27 · Your Starting Point
+  { id: 'next30', kind: 'next30' }, //               28 · The Next 30 Days
+  { id: 'one-year', kind: 'oneYear' }, //            29 · One Year From Now
+  { id: 'age80', kind: 'age80' }, //                 30 · If Nothing Changes
+  { id: 'change-line', kind: 'changeLine' }, //      31 · Change the Line
+  { id: 'one-bad-day', kind: 'oneBadDay' }, //       32 · One Bad Day
+  { id: 'want-back', kind: 'wantBack' }, //          33 · What You Want Back
+  { id: 'reading', kind: 'reading' }, //             34–36 · Twelve Weeks
   { id: 'letter-received', kind: 'letterReceived' }, // 37 · A Letter Arrived
-  { id: 'letter', kind: 'letter' }, //              38 · A Letter From Week XII
-  { id: 'pledge', kind: 'pledge' }, //              39 · The Vow
+  { id: 'letter', kind: 'letter' }, //               38 · A Letter From Week XII
+  { id: 'pledge', kind: 'pledge' }, //               39 · The Vow
   { id: 'medallion-received', kind: 'medallionReceived' }, // 40 · Medallion Earned
-  { id: 'dayone', kind: 'dayone' }, //              41 · Reminders
-  { id: 'paywall', kind: 'paywall' }, //            42 · Paywall
+  { id: 'dayone', kind: 'dayone' }, //               41 · Reminders
+  { id: 'paywall', kind: 'paywall' }, //             42 · Paywall
 ];
 
-/** Daylight arrives on the reading — the funnel itself is all night register. */
-const PLAN_IDX = STEPS.findIndex((s) => s.id === 'pause');
+/** Daylight arrives on the plan board — the funnel itself is all night. */
+const PLAN_IDX = STEPS.findIndex((s) => s.id === 'plan-together');
 
 /**
- * The paper tail's chrome. The tail counts in eight ticks rather than the
- * funnel's one growing rule, each frame states how many are inked, and two of
- * them carry their own field: the reading the map's, the vow none at all.
+ * The eleven tail frames draw neither the rule nor the Back row, and each owns
+ * its whole frame, so they are rendered outside the shell entirely. What is
+ * left here is the chrome the last handful still state.
  */
-const PAPER_BACK = 96 - 54;
 const CHROME: Record<string, { seg?: number; paper?: O3Paper; back?: false; backTop?: number }> = {
-  root: { seg: 2, backTop: PAPER_BACK },
-  pattern: { seg: 8, backTop: PAPER_BACK },
-  cost30: { seg: 3, backTop: PAPER_BACK },
-  cost365: { seg: 4, backTop: PAPER_BACK },
-  'cost-age80': { seg: 4, backTop: PAPER_BACK },
   reading: { paper: 'map', backTop: 64 - 54 },
   pledge: { paper: 'plain', back: false },
 };
-const NOBAR = new Set(['pause', 'reading', 'pledge']);
+const NOBAR = new Set(['reading', 'pledge']);
+/** The eleven screens that draw their own frame, chrome and all. */
+const WHOLE_FRAME = new Set([
+  'plan-together', 'caught', 'before-it', 'window', 'starting-point',
+  'next30', 'one-year', 'age80', 'change-line', 'one-bad-day', 'want-back',
+]);
+const AGE_END = 80;
+const AGE_DEFAULT = 24;
+/** `28 · The Next 30 Days` draws nine dark cells and says "about 9". */
+const NEXT_30_TIMES = COST_30.filter(Boolean).length;
+/** `29 · One Year From Now` draws 110 and says "about 110 days". */
+const YEAR_DAYS = COST_365.filter(Boolean).length;
 
 export default function Onboarding() {
   const router = useRouter();
@@ -140,6 +156,13 @@ export default function Onboarding() {
 
   const step = STEPS[i];
   const lit = i >= PLAN_IDX;
+  const triggers = (a.triggers as string[]) || [];
+  const affects = (a.affects as string[]) || [];
+  // `30 · If Nothing Changes` states "about 6,100 days" for a 24-year-old at
+  // nine times a month — 365 x 9/30 x (80 − 24), rounded to the nearest hundred.
+  const typedAge = parseInt(String(a.ageYears || ''), 10);
+  const age = Number.isFinite(typedAge) && typedAge > 0 && typedAge < AGE_END ? typedAge : AGE_DEFAULT;
+  const byAge80 = Math.round(((365 * NEXT_30_TIMES) / 30) * (AGE_END - age) / 100) * 100;
   // The funnel frames each state their own Back top — 94 on every question,
   // 96 on `10 · First Principle`.
   const chrome = step.kind === 'funnel' ? { backTop: FUNNEL_STEPS[step.fi].backTop - 54 } : (CHROME[step.id] ?? {});
@@ -161,20 +184,30 @@ export default function Onboarding() {
           />
         );
       }
-      case 'pause':
-        return <O3ReadingPause answers={a} next={next} />;
-      case 'root':
-        return <O3Root answers={a} next={next} />;
-      case 'cost30':
-        return <O3CostPage answers={a} next={next} h={1} />;
-      case 'cost365':
-        return <O3CostPage answers={a} next={next} h={2} />;
-      case 'costAge80':
-        return <O3CostPage answers={a} next={next} h={3} />;
+      case 'planTogether':
+        return <O3PuttingTogether next={next} />;
+      case 'caught':
+        return <O3WhereYouGetCaught name={String(a.name || displayName || '')} triggers={triggers} issue={o3Issue(a).word} next={next} />;
+      case 'beforeIt':
+        return <O3WhatComesBeforeIt trigger={o3Issue(a).word} next={next} />;
+      case 'window':
+        return <O3WindowToProtect triggers={triggers} next={next} />;
+      case 'startingPoint':
+        return <O3StartingPoint score={SCORE_BASE} next={next} />;
+      case 'next30':
+        return <O3Next30 times={NEXT_30_TIMES} next={next} />;
+      case 'oneYear':
+        return <O3OneYear days={YEAR_DAYS} next={next} />;
+      case 'age80':
+        return <O3IfNothingChanges days={byAge80} next={next} />;
+      case 'changeLine':
+        return <O3ChangeTheLine next={next} />;
+      case 'oneBadDay':
+        return <O3OneBadDay day={41} next={next} />;
+      case 'wantBack':
+        return <O3WhatYouWantBack affects={affects} next={next} />;
       case 'reading':
         return <O3Reading answers={a} next={next} />;
-      case 'pattern':
-        return <O3Pattern answers={a} next={next} />;
       case 'pledge':
         return <O3Pledge name={String(a.name || displayName || '')} next={next} />;
       case 'letterReceived':
@@ -201,8 +234,8 @@ export default function Onboarding() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, a, i]);
 
-  // the reading-pause and paywall own the entire frame
-  if (step.kind === 'pause') return <O3ReadingPause answers={a} next={next} />;
+  // the eleven tail frames and the paywall own the entire frame
+  if (WHOLE_FRAME.has(step.id)) return <>{body}</>;
   if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || displayName || '').trim() || undefined} triggers={(a.triggers as string[]) || []} emotions={(a.emotions as string[]) || []} load={a.load as string} onDone={() => void finish()} />;
 
   return (

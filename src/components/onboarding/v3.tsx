@@ -1260,17 +1260,36 @@ export function O3ReadingPause({ next }: { answers?: Record<string, string | str
 }
 
 // ═════ THE ROOT — the loop, drawn from their answers ═════════════════
-const O3_ISSUE: Record<string, { kind: 'feel' | 'auto'; word: string }> = {
-  'Loneliness': { kind: 'feel', word: 'loneliness' },
-  'Anxiety': { kind: 'feel', word: 'anxiety' },
-  'Boredom': { kind: 'feel', word: 'boredom' },
+/**
+ * The noun each feeling gets when a sentence needs it.
+ *
+ * The left column is `12 · Before the Urge`'s own option list; the right is a
+ * word that already exists — `loneliness`, `boredom`, `stress` and `tiredness`
+ * are the bundle's own (`Root Loop`, `Week VIII`, `What Comes Before It`,
+ * `Urge Overview`), and the rest are the app's. Nothing here is invented.
+ */
+export const O3_ISSUE: Record<string, { kind: 'feel' | 'auto'; word: string }> = {
+  // `UI Final 1`'s labels
+  Lonely: { kind: 'feel', word: 'loneliness' },
+  Bored: { kind: 'feel', word: 'boredom' },
+  Stressed: { kind: 'feel', word: 'stress' },
+  'Low or sad': { kind: 'feel', word: 'low mood' },
+  Angry: { kind: 'feel', word: 'anger' },
+  Numb: { kind: 'feel', word: 'numbness' },
+  Tired: { kind: 'feel', word: 'tiredness' },
+  Horny: { kind: 'auto', word: 'wiring' },
+  'Nothing much': { kind: 'auto', word: 'autopilot' },
+  // the labels the previous bundle used, kept for answers already on file
+  Loneliness: { kind: 'feel', word: 'loneliness' },
+  Anxiety: { kind: 'feel', word: 'anxiety' },
+  Boredom: { kind: 'feel', word: 'boredom' },
   'Low mood': { kind: 'feel', word: 'low mood' },
-  'Anger': { kind: 'feel', word: 'anger' },
-  'Numbness': { kind: 'feel', word: 'numbness' },
-  'Habit': { kind: 'auto', word: 'autopilot' },
-  'Desire': { kind: 'auto', word: 'wiring' },
+  Anger: { kind: 'feel', word: 'anger' },
+  Numbness: { kind: 'feel', word: 'numbness' },
+  Habit: { kind: 'auto', word: 'autopilot' },
+  Desire: { kind: 'auto', word: 'wiring' },
 };
-function o3Issue(a: Record<string, string | string[]>): { kind: 'feel' | 'auto'; word: string } {
+export function o3Issue(a: Record<string, string | string[]>): { kind: 'feel' | 'auto'; word: string } {
   const list = (a.emotions as string[]) || [];
   for (const e of list) {
     const hit = O3_ISSUE[e];

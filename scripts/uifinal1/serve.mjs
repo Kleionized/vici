@@ -53,6 +53,11 @@ http
         res.end(fs.readFileSync('.uifinal1/mock-selection.json'));
         return;
       }
+      if (url === '/walk.js') {
+        res.writeHead(200, { 'content-type': 'text/javascript', 'access-control-allow-origin': '*' });
+        res.end(fs.readFileSync('.uifinal1/walk.js'));
+        return;
+      }
       if (url === '/probe.js') {
         res.writeHead(200, { 'content-type': 'text/javascript', 'access-control-allow-origin': '*' });
         res.end(fs.readFileSync('.uifinal1/probe.js'));

@@ -28,7 +28,7 @@ for (const r of rows) {
   if (r.tag === 'div' && r.decls.width === '139px' && r.decls.height === '5px') { skipDepth = r.depth; continue; }
   out.push(r);
 }
-const SVG_ATTRS = ['viewBox', 'width', 'height', 'x', 'y', 'cx', 'cy', 'r', 'rx', 'ry', 'x1', 'y1', 'x2', 'y2', 'points', 'd', 'fill', 'fill-opacity', 'stroke', 'stroke-width', 'stroke-opacity', 'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'stroke-dashoffset', 'offset', 'stop-color', 'stop-opacity', 'gradientUnits', 'gradientTransform', 'transform', 'clip-path', 'mask', 'src', 'alt', 'id'];
+const SVG_ATTRS = ['viewBox', 'width', 'height', 'x', 'y', 'cx', 'cy', 'r', 'rx', 'ry', 'x1', 'y1', 'x2', 'y2', 'points', 'd', 'fill', 'fill-opacity', 'stroke', 'stroke-width', 'stroke-opacity', 'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'stroke-dashoffset', 'offset', 'stop-color', 'stop-opacity', 'gradientUnits', 'gradientTransform', 'transform', 'clip-path', 'mask', 'src', 'alt', 'id', 'text-anchor', 'font-size', 'font-weight', 'letter-spacing', 'dominant-baseline', 'fill-rule', 'preserveAspectRatio'];
 for (const r of out) {
   const pad = '  '.repeat(r.depth);
   if (r.tag === '#text') { console.log(pad + '· ' + r.text); continue; }
