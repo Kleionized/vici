@@ -14,7 +14,15 @@ import {
   O3WhereYouGetCaught,
   O3WindowToProtect,
 } from '@/components/onboarding/tail';
-import { O3DayOne, O3FunnelStep, O3Handover, O3Letter, O3Pledge, O3Reading, O3Shell, buildWeekXiiLetter, o3Issue, type O3Paper } from '@/components/onboarding/v3';
+import {
+  O3DayZero,
+  O3LetterArrived,
+  O3LetterRead,
+  O3MedallionEarned,
+  O3Reminders,
+  O3TheVow,
+} from '@/components/onboarding/handover';
+import { O3FunnelStep, O3Reading, O3Shell, buildWeekXiiLetter, o3Issue, windowFor, type O3Paper } from '@/components/onboarding/v3';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { FUNNEL_STEPS } from '@/content/onboardingFunnel';
 import { COST_30, COST_365 } from '@/content/onboardingTail';
@@ -56,12 +64,13 @@ type Step =
         | 'oneBadDay'
         | 'wantBack'
         | 'reading'
-        | 'letterReceived'
-        | 'letter'
-        | 'pledge'
-        | 'medallionReceived'
-        | 'dayone'
-        | 'paywall';
+        | 'letterArrived'
+        | 'letterRead'
+        | 'vow'
+        | 'medallion'
+        | 'reminders'
+        | 'paywall'
+        | 'dayZero';
     };
 
 const STEPS: Step[] = [
@@ -79,12 +88,13 @@ const STEPS: Step[] = [
   { id: 'one-bad-day', kind: 'oneBadDay' }, //       32 · One Bad Day
   { id: 'want-back', kind: 'wantBack' }, //          33 · What You Want Back
   { id: 'reading', kind: 'reading' }, //             34–36 · Twelve Weeks
-  { id: 'letter-received', kind: 'letterReceived' }, // 37 · A Letter Arrived
-  { id: 'letter', kind: 'letter' }, //               38 · A Letter From Week XII
-  { id: 'pledge', kind: 'pledge' }, //               39 · The Vow
-  { id: 'medallion-received', kind: 'medallionReceived' }, // 40 · Medallion Earned
-  { id: 'dayone', kind: 'dayone' }, //               41 · Reminders
+  { id: 'letter-arrived', kind: 'letterArrived' }, // 37 · A Letter Arrived
+  { id: 'letter-read', kind: 'letterRead' }, //      38 · A Letter From Week XII
+  { id: 'vow', kind: 'vow' }, //                     39 · The Vow
+  { id: 'medallion', kind: 'medallion' }, //         40 · Medallion Earned
+  { id: 'reminders', kind: 'reminders' }, //         41 · Reminders
   { id: 'paywall', kind: 'paywall' }, //             42 · Paywall
+  { id: 'day-zero', kind: 'dayZero' }, //            43 · Day 0
 ];
 
 /** Daylight arrives on the plan board — the funnel itself is all night. */
@@ -96,14 +106,15 @@ const PLAN_IDX = STEPS.findIndex((s) => s.id === 'plan-together');
  * left here is the chrome the last handful still state.
  */
 const CHROME: Record<string, { seg?: number; paper?: O3Paper; back?: false; backTop?: number }> = {
-  reading: { paper: 'map', backTop: 64 - 54 },
-  pledge: { paper: 'plain', back: false },
+  // `34–36 · Twelve Weeks` withdrew its Back row along with the rest of the tail
+  reading: { paper: 'map', back: false },
 };
-const NOBAR = new Set(['reading', 'pledge']);
+const NOBAR = new Set(['reading']);
 /** The eleven screens that draw their own frame, chrome and all. */
 const WHOLE_FRAME = new Set([
   'plan-together', 'caught', 'before-it', 'window', 'starting-point',
   'next30', 'one-year', 'age80', 'change-line', 'one-bad-day', 'want-back',
+  'letter-arrived', 'letter-read', 'vow', 'medallion', 'reminders', 'day-zero',
 ]);
 const AGE_END = 80;
 const AGE_DEFAULT = 24;
@@ -160,6 +171,12 @@ export default function Onboarding() {
   const affects = (a.affects as string[]) || [];
   // `30 · If Nothing Changes` states "about 6,100 days" for a 24-year-old at
   // nine times a month — 365 x 9/30 x (80 − 24), rounded to the nearest hundred.
+  const who = String(a.name || displayName || '').trim();
+  // `39 · The Vow` dates the signature line the day it is signed.
+  const vowDate = `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · Day 0`;
+  const riskWindow = windowFor(a)[2];
+  /** `37 · A Letter Arrived` — "Save it for later" skips past the reading of it. */
+  const skipLetter = () => setI((v) => Math.min(STEPS.length - 1, v + 2));
   const typedAge = parseInt(String(a.ageYears || ''), 10);
   const age = Number.isFinite(typedAge) && typedAge > 0 && typedAge < AGE_END ? typedAge : AGE_DEFAULT;
   const byAge80 = Math.round(((365 * NEXT_30_TIMES) / 30) * (AGE_END - age) / 100) * 100;
@@ -208,24 +225,28 @@ export default function Onboarding() {
         return <O3WhatYouWantBack affects={affects} next={next} />;
       case 'reading':
         return <O3Reading answers={a} next={next} />;
-      case 'pledge':
-        return <O3Pledge name={String(a.name || displayName || '')} next={next} />;
-      case 'letterReceived':
-        return <O3Handover kind="letter" next={next} />;
-      case 'medallionReceived':
-        return <O3Handover kind="medallion" next={next} />;
-      case 'letter':
-        return <O3Letter answers={a} next={next} />;
-      case 'dayone':
+      case 'letterArrived':
+        return <O3LetterArrived next={next} skip={skipLetter} />;
+      case 'letterRead':
+        return <O3LetterRead name={who} paragraphs={buildWeekXiiLetter({ ...a, name: who }).paragraphs} onKeep={next} next={next} />;
+      case 'vow':
+        return <O3TheVow name={who} date={vowDate} onSign={next} skip={next} />;
+      case 'medallion':
+        return <O3MedallionEarned title="Veni" tier="Tier I" body="You started." next={next} skip={next} />;
+      case 'reminders':
         return (
-          <O3DayOne
-            answers={a}
-            next={() => {
+          <O3Reminders
+            window={riskWindow}
+            nightTime="10:41 PM"
+            onAllow={() => {
               set('reminder', 'yes');
               next();
             }}
+            skip={next}
           />
         );
+      case 'dayZero':
+        return <O3DayZero lesson="Lesson I · Surviving the Night — seven minutes." next={() => void finish()} />;
       case 'paywall':
         return null; // rendered full-frame below
       default:
@@ -236,7 +257,7 @@ export default function Onboarding() {
 
   // the eleven tail frames and the paywall own the entire frame
   if (WHOLE_FRAME.has(step.id)) return <>{body}</>;
-  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || displayName || '').trim() || undefined} triggers={(a.triggers as string[]) || []} emotions={(a.emotions as string[]) || []} load={a.load as string} onDone={() => void finish()} />;
+  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || displayName || '').trim() || undefined} triggers={(a.triggers as string[]) || []} emotions={(a.emotions as string[]) || []} load={a.load as string} onDone={next} />;
 
   return (
     <O3Shell

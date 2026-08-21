@@ -293,3 +293,48 @@ the canvas relies on the strut, the app states the line box explicitly — the r
 Found on the two floating pills of `29 · One Year From Now` and `30 · If Nothing Changes`, where
 it was a 1.5pt difference in the pill's height and a 0.5pt shift in its top, because the pill is
 positioned from the bottom edge.
+
+## D021 — `cursor: pointer` marks the controls on `02 · Login`, and stops being reliable in the handover
+
+D013 read the login board's `cursor: pointer` as the canvas's own statement of what is tappable:
+four controls carried it and the "Terms · Privacy" line did not, and that line is plainly a
+caption. That reading holds on that frame.
+
+It does not generalise. In the handover, `41 · Reminders` gives "Not now" a `cursor: pointer` and
+`39 · The Vow` gives its own "Not now" none; `37 · A Letter Arrived` gives "Save it for later"
+none. Those three lines are the same control in the same position doing the same job, and on the
+vow it is the only way past a screen that otherwise cannot be left without signing.
+
+So: `cursor: pointer` is treated as evidence, not as the rule. Where a line's words are an
+instruction and the screen has no other way forward, it is a control. Where a line names two legal
+documents in the same weight and colour as the caption above it, it is a caption. Both readings are
+recorded on the screen's own spec.
+
+## D022 — A third reporting equivalence: the canvas's `<span>` is the app's View plus Text
+
+The canvas paints a pill by giving a `<span>` a background, a radius, padding and its words all at
+once. React Native cannot put padding and a background on a text run, so every pill in the app is a
+`View` with the paint and a `Text` inside it. The probe keys rows on their words, so it pairs the
+canvas's painted span with the app's bare text and reports the background, the radius and the
+padded box as differences.
+
+They are the same pill. Verified element by element each time it appears — `PLUS` and `Best value`
+on `42 · Paywall`, `You are here` on `34 · Twelve Weeks`, the tier pill on `40 · Medallion Earned`
+— by reading the app's own painted View out of the same capture and checking its box against the
+canvas's span. Listed with D015 and D019.
+
+The same thing happens the other way round on a right-aligned column: the canvas's block is as wide
+as its widest line (`$39.99`, 53.7) with `/year` right-aligned inside it; the app's `Text` is as
+wide as `/year` (28). Both right edges land on 359.
+
+## D023 — CSS collapses adjacent vertical margins; Yoga adds them
+
+The letter on `38 · A Letter From Week XII` sets `margin: 0 0 20px` on each paragraph and
+`margin: 36px auto 40px` on the picture between paragraphs three and four. In CSS the paragraph's
+bottom margin and the picture's top margin collapse to the larger of the two, so the gap the frame
+draws above the picture is **36**. Yoga does not collapse margins: written literally, the app put
+56 there and every paragraph below the picture sat 20 low.
+
+Wherever the canvas relies on collapsing, the app states the collapsed result. Found here; watched
+for on every stacked-margin block from now on, because it is invisible until the numbers are
+compared — the picture still looked right, and only the paragraphs after it had moved.

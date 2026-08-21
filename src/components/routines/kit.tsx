@@ -27,7 +27,9 @@ export function RoutineBack({ label = 'Back', onPress }: { label?: string; onPre
       accessibilityRole="button"
       accessibilityLabel={label}
       hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-      style={{ flexDirection: 'row', alignItems: 'center', gap: 9, alignSelf: 'flex-start', minHeight: 0, paddingLeft: 16 }}>
+      // the canvas's row starts at x 16 rather than being inset from x 0 —
+      // the reach lost on the left comes back as hit slop
+      style={{ flexDirection: 'row', alignItems: 'center', gap: 9, alignSelf: 'flex-start', minHeight: 0, marginLeft: 16 }}>
       <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
         <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
       </Svg>
@@ -69,7 +71,11 @@ export function RoutineShell({
   backLabel?: string;
   onBack: () => void;
   title: string;
-  note: string;
+  /**
+   * `92B · Night check-in time` still carries a line of reassurance at y 676;
+   * the two onboarding boards, `19B` and `19C`, withdrew theirs in this bundle.
+   */
+  note?: string;
   cta: ReactNode;
   children: ReactNode;
 }) {
@@ -92,10 +98,18 @@ export function RoutineShell({
 
         {/* canvas leaves 90 here; on a taller phone the slack belongs between the chips and the reassurance */}
         <View style={{ flex: 1, minHeight: 90 }} />
-        <AppText center style={[sans('400'), { paddingHorizontal: 36, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-          {note}
-        </AppText>
-        <View style={{ height: 24 }} />
+        {note ? (
+          <>
+            <AppText center style={[sans('400'), { paddingHorizontal: 36, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
+              {note}
+            </AppText>
+            <View style={{ height: 24 }} />
+          </>
+        ) : (
+          /* the boards that dropped the line keep the space it stood in, so the
+             pill still lands on the canvas's y 744 */
+          <View style={{ height: 46 }} />
+        )}
         {cta}
         <View style={{ height: 26 }} />
       </SafeAreaView>

@@ -27,7 +27,8 @@ export type Routines = {
 
 export const DEFAULT_ROUTINES: Routines = {
   morning: { hour: 7, minute: 0, period: 'AM' },
-  night: { hour: 10, minute: 0, period: 'PM' },
+  // `19C · Nightly check-in time` draws the wheel at 10:30 PM before it is touched
+  night: { hour: 10, minute: 30, period: 'PM' },
 };
 
 /**

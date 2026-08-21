@@ -191,7 +191,11 @@ function PwPlanRow({
         <View style={{ width: 23, height: 23, borderRadius: 11.5, borderWidth: 2, borderColor: 'rgba(0,0,0,0.18)' }} />
       )}
       <View style={{ flex: 1 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+        {/* `minHeight: 19` is the block's own strut — a bare 15px run sits on a
+            19pt line box in the frame, which Yoga has no equivalent for
+            (DECISIONS.md D020). The badge is taller, so it only shows on the
+            monthly row. */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 19 }}>
           <AppText style={[sans('500'), { fontSize: 15, color: active ? '#F5F4F1' : '#1D1C1A' }]}>{name}</AppText>
           {/* the canvas only ever draws this badge on the ink row; off ink it
               borrows the unselected radio's hairline so it stays legible */}
@@ -214,10 +218,10 @@ function PwPlanRow({
 /** The four promises, two to a row: 165 wide boxes at canvas y 560 and 610,
  * pinned to the canvas's own columns at x 18 and x 208. */
 const PW_BENEFITS = [
-  'Progress that never resets',
-  'Full curriculum, every week',
-  'Unlimited urge support',
-  'Insights & weekly reports',
+  'The full twelve-week programme',
+  'SOS whenever an urge hits',
+  'Weekly reports from what you log',
+  'Progress and medallions in one place',
 ];
 
 function PwBenefit({ text, top, left }: { text: string; top: number; left: number }) {
@@ -250,7 +254,7 @@ function PwMain({ plan, setPlan, onPay, onClose, closeLabel }: { plan: PlanKey; 
         </View>
       </View>
       <AppText style={[sans('500'), { position: 'absolute', left: 20, right: 80, top: 206, fontSize: 28, letterSpacing: -0.2, lineHeight: 36, color: '#1D1C1A' }]}>
-        The long road, together
+        Give it twelve weeks
       </AppText>
 
       <PwPlanRow active={plan === 'year'} onPress={() => setPlan('year')} name="Yearly" badge="Best value" sub="$3.33 a month" price="$39.99" cycle="/year" top={276} />
@@ -263,7 +267,8 @@ function PwMain({ plan, setPlan, onPay, onClose, closeLabel }: { plan: PlanKey; 
       <PwBenefit text={PW_BENEFITS[3]} top={556} left={208} />
 
       <View style={{ position: 'absolute', left: 16, right: 16, top: 630 }}>
-        <PwCTA label={plan === 'month' ? 'Continue — $12.99/month' : 'Continue — $39.99/year'} onPress={onPay} height={52} radius={26} size={16.5} />
+        {/* the canvas labels this pill the same whichever plan is on */}
+        <PwCTA label="Start my free trial" onPress={onPay} height={52} radius={26} size={16.5} />
       </View>
       <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 702, fontSize: 13, color: '#8B8882' }]}>
         {'Terms  ·  Restore'}

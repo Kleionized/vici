@@ -19,6 +19,7 @@ import { PressScale } from '@/components/ui/press-scale';
 import { BreathCue, UrgeWave, type BreathPhase } from '@/components/urge';
 import { SC } from '@/components/scene/SceneKit';
 import { FUNNEL_GLYPHS, FUNNEL_STEPS, type FunnelField, type FunnelStep } from '@/content/onboardingFunnel';
+import { WEEK_XII_LETTER } from '@/content/weekXiiLetter';
 import { colors, fonts, sans } from '@/lib/theme';
 import {
   AegisCheck,
@@ -1493,35 +1494,26 @@ export function O3Reading({ next }: { answers?: Record<string, string | string[]
       </AppText>
       {CAMPAIGN_WEEKS.map((w, i) => (w.page === page ? <CampaignWeekRow key={w.week} i={i} /> : null))}
       <CampaignMapRail page={page} />
-      {/* the three pages, walked with the two chevrons the rail implies */}
-      <PagerTap side="up" enabled={page < 3} onPress={() => setPage((p) => Math.min(3, p + 1))} />
-      <PagerTap side="down" enabled={page > 1} onPress={() => setPage((p) => Math.max(1, p - 1))} />
-      <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 642, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-        Twelve weeks, one path. Move at your own pace — there&apos;s no clock.
-      </AppText>
-      <O3PaperCTA label="Show me my path" onPress={next} y={764} ls={0.3} />
+      {/* The bundle draws exactly one control on these three frames and it is
+          the pill: "Next" on the first two pages, "Continue" on the third. The
+          rail at the right edge is a position indicator, not a control, so the
+          invisible tap zones the previous bundle implied are gone. */}
+      {/* only the third page carries a closing line */}
+      {page === 3 ? (
+        <AppText center style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: 638, fontSize: 14, lineHeight: 21, color: '#55534E' }]}>
+          By week XII, the aim is simple: porn takes up less of your time, attention, and headspace.
+        </AppText>
+      ) : null}
+      <O3PaperCTA
+        label={page === 3 ? 'Continue' : 'Next'}
+        onPress={page === 3 ? next : () => setPage((p) => Math.min(3, p + 1))}
+        y={764}
+        ls={0.3}
+      />
     </>
   );
 }
 
-/**
- * The tap targets that walk the three pages. The canvas draws no control for
- * this — only the rail that reports which page you are on — so these are
- * invisible bands over the top and bottom rows rather than an invented button
- * (DECISIONS D-038).
- */
-function PagerTap({ side, enabled, onPress }: { side: 'up' | 'down'; enabled: boolean; onPress: () => void }) {
-  if (!enabled) return null;
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={side === 'up' ? 'Later weeks' : 'Earlier weeks'}
-      style={{ position: 'absolute', right: 0, width: 30, top: side === 'up' ? 138 : 450, height: 138, minHeight: 0 }}>
-      <View />
-    </PressScale>
-  );
-}
 
 // ═════ 105 · THE REWIRE — how hard urges pull, weeks I–XII ═══════════
 export function O3Rewire({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
@@ -1704,32 +1696,17 @@ export function O3Pledge({ name, next }: { name: string; next: () => void }) {
 // ── letter ───────────────────────────────────────────────────────────
 /** The week-XII letter, assembled from the user's own intake answers
  * (canvas: O3_Letter) — the fork where he and the other ending part ways. */
+/**
+ * `38 · A Letter From Week XII`.
+ *
+ * The previous bundle assembled this letter out of the answers; `UI Final 1`
+ * writes it in full, so the prose is the design's and only the name is his.
+ * The shape of the return is unchanged, because the Log keeps a copy.
+ */
 export function buildWeekXiiLetter(a: Record<string, string | string[]>): { name: string; paragraphs: string[] } {
-  const name = String(a.name || '').trim();
-  const t = (a.triggers as string[]) || [];
-  const trigLine = t.includes('Late night')
-    ? 'The late nights'
-    : t.includes('Home alone')
-      ? 'The long stretches alone'
-      : t.includes('After stress')
-        ? 'The hard-day evenings'
-        : t.includes('Bored daytime')
-          ? 'The slack afternoons'
-          : 'The old window';
-  const emos = ((a.emotions as string[]) || []).slice(0, 2).map((x) => x.toLowerCase());
-  const emoLine = emos.length >= 2 ? `the ${emos[0]} and the ${emos[1]}` : emos.length ? `the ${emos[0]}` : 'the restlessness';
-  const costs = a.impact === 'Not really' ? 'the hours, the energy, the quiet' : 'the sleep, the work, the relationships, the money';
-  const prize = ['the focus', 'the evenings'];
-  return {
-    name,
-    paragraphs: [
-      "It's week XII where I'm writing from, and the first thing to say is: we made it out.",
-      `${trigLine} stopped being dangerous around week IV. The urges still came — they just got shorter, then quieter, then rare.`,
-      `There was another ending — the one where it kept feeding on ${costs}, and ${emoLine} stayed in charge. I never met that man. Tonight is the fork where he and I part ways.`,
-      `Everything you circled tonight (${prize.join(', ')}) came back. It's here, waiting.`,
-    ],
-  };
+  return { name: String(a.name || '').trim(), paragraphs: WEEK_XII_LETTER };
 }
+
 
 export function O3Letter({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
   const { name, paragraphs } = buildWeekXiiLetter(answers);
@@ -1764,12 +1741,24 @@ export function O3Letter({ answers, next }: { answers: Record<string, string | s
 }
 
 // ── Day I ────────────────────────────────────────────────────────────
-function windowFor(a: Record<string, string | string[]>): [string, string] {
+/**
+ * The window the reminders guard, in `11 · Risky Times`'s own labels.
+ *
+ * Returns the hour, the phrase the old primer used for it, and the name
+ * `41 · Reminders` puts in its headline ("Late night is when you're most likely
+ * to watch.").
+ */
+export function windowFor(a: Record<string, string | string[]>): [string, string, string] {
   const t = (a.triggers as string[]) || [];
-  if (t.includes('Late night') || t.includes('Phone in bed') || t.includes('Can’t sleep')) return ['11:00 pm', 'before the tide rises'];
-  if (t.includes('After stress')) return ['6:00 pm', 'as the day lets go'];
-  if (t.includes('Bored daytime')) return ['9:00 pm', 'when the evening goes slack'];
-  return ['9:30 pm', 'before the quiet hours'];
+  const has = (...names: string[]) => names.some((n) => t.includes(n));
+  if (has('Late at night', 'Phone in bed', 'Can’t sleep', 'Late night')) return ['11:00 pm', 'before the tide rises', 'Late night'];
+  if (has('After stress')) return ['6:00 pm', 'as the day lets go', 'After stress'];
+  if (has('Bored in the day', 'Bored daytime')) return ['9:00 pm', 'when the evening goes slack', 'Boredom in the day'];
+  if (has('After drinking')) return ['10:00 pm', 'before the evening turns', 'After drinking'];
+  if (has('Home alone')) return ['8:00 pm', 'while the house is empty', 'Being home alone'];
+  if (has('Weekends')) return ['9:30 pm', 'before the quiet hours', 'The weekend'];
+  if (has('Early morning')) return ['6:30 am', 'before the day starts', 'Early morning'];
+  return ['9:30 pm', 'before the quiet hours', 'Late night'];
 }
 export function O3DayOne({ answers, next }: { answers: Record<string, string | string[]>; next: () => void }) {
   const tone = useTone();
