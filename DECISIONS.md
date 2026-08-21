@@ -117,3 +117,45 @@ Where a blurred element is *not* soft-edged — the `rgba(0,0,0,0.10)` ground sh
 envelope, say — the app substitutes a radial with the same bounding box falling to zero at its
 edge, which is what the blur produces there. Both substitutions are marked in the component that
 makes them.
+
+## D011 — What the two email controls on `02 · Login` do
+
+The board draws a row labelled "Continue with email" with an arrow button, and under it
+"Already have an account? **Sign in**". Neither has a destination on the canvas, and the two
+boards that used to sit behind them — `Login Typing` and `Create Account` — were both withdrawn
+from this bundle, so the flow chain gives no answer either.
+
+Resolved by what the two labels say and by keeping every existing app board reachable:
+
+* **Continue with email** → `/(auth)/sign-up?step=form`. The subtitle frames the board as
+  "Sign in **or create an account**", and the footer sends people who already have one somewhere
+  else, so this control is the create path. It opens the sign-up *form* rather than sign-up's
+  gate, because the gate is the same Apple / Google / email choice the user has just made.
+* **Already have an account? Sign in** → the app's existing address step on this same board,
+  which leads to the password and verification steps. That board's own copy is "Sign in to keep
+  building toward the life you want", so it is the returning-user path in the app already.
+
+Both destinations existed before this run and neither changed. The one code change behind them:
+the address step now opens from an explicit `emailStep` flag rather than from the field's focus,
+because with the field gone from the landing board, blurring an empty field would otherwise
+throw the user back to the landing mid-flow.
+
+## D012 — The lint baseline is 22 errors, all pre-existing, all in files this run has not touched
+
+`npx eslint src/` reports 26 problems (22 errors, 4 warnings) at commit `9b9e883`, before any
+work in this run: `Cannot access refs during render` in `src/components/onboarding/art.tsx` and
+`src/components/onboarding/v3.tsx`, plus a `require()` warning in `src/lib/providers.tsx`. They
+are React Compiler diagnostics about existing animation wiring, not about presentation.
+
+"Never break the build" is therefore measured against that baseline, recorded in
+`.uifinal1/lint-baseline.txt`. This run adds no new diagnostic. Fixing the existing ones would
+mean rewriting animation logic the brief explicitly says not to touch, so they stay — but any
+screen work inside those two files is done without adding to the count.
+
+## D013 — "Terms · Privacy" on the login board is a caption, not two links
+
+The canvas marks every control on `02 · Login` with `cursor:pointer` — both provider pills, the
+arrow button, and the "Sign in" span. The `Terms &nbsp;·&nbsp; Privacy` line at design y 818
+carries no `cursor:pointer`, no underline, no colour change, and no separate spans: it is one
+`#8B8882` run at 12px. It is rendered as static text. The app has a Data & Privacy screen, but
+it lives behind auth and the canvas does not point at it from here.
