@@ -53,6 +53,7 @@ export function Run({ r, s }: { r: number; s: string }) {
         {
           fontSize: ramp.size,
           ...(ramp.lineHeight ? { lineHeight: ramp.lineHeight } : {}),
+          ...(ramp.letterSpacing ? { letterSpacing: ramp.letterSpacing } : {}),
           color: ramp.color,
           ...(ramp.maxWidth ? { maxWidth: ramp.maxWidth } : {}),
           // The canvas balances every heading run and only prevents orphans in
@@ -165,7 +166,11 @@ export function Part({ part }: { part: ReaderPart }) {
 function PickRows({ options, gap, multi }: { options: PickOption[]; gap: number; multi: boolean }) {
   const [chosen, setChosen] = useState<number[]>([]);
   const toggle = (i: number) => setChosen((c) => (multi ? (c.includes(i) ? c.filter((x) => x !== i) : [...c, i]) : c.includes(i) ? [] : [i]));
-  const spec = options.find((o) => o.selected) ?? options[0];
+  // The frame draws one row already chosen, so its weight is the *chosen*
+  // weight and every other row's is the resting one. The app starts with none
+  // chosen, so a row takes the resting weight until it is.
+  const chosenWeight = String(options.find((o) => o.selected)?.weight ?? 600) as '600';
+  const restWeight = String(options.find((o) => !o.selected)?.weight ?? 500) as '500';
   return (
     <View style={{ alignSelf: 'stretch', gap }}>
       {options.map((o, i) => {
@@ -201,7 +206,9 @@ function PickRows({ options, gap, multi }: { options: PickOption[]; gap: number;
               }}>
               {on ? <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: '#1D1C1A' }} /> : null}
             </View>
-            <AppText style={[sans(on ? '600' : (String(spec.weight) as '500')), { flex: 1, fontSize: o.size ?? 16, lineHeight: o.lineHeight ?? 21, color: '#1D1C1A' }]}>
+            {/* the canvas's label is a `<span>`: it takes the width of its own
+                words and wraps only when they do not fit */}
+            <AppText style={[sans(on ? chosenWeight : restWeight), { flexShrink: 1, fontSize: o.size ?? 16, lineHeight: o.lineHeight ?? 21, color: '#1D1C1A' }]}>
               {o.text}
             </AppText>
           </PressScale>
@@ -330,7 +337,9 @@ export function Board({ page }: { page: Extract<ReaderPage, { k: 'pick' | 'board
         // rather than running out of it. A board that fits does not move.
         <ScrollView
           style={{ alignSelf: 'stretch' }}
-          contentContainerStyle={{ flexGrow: 1, gap: page.gap }}
+          // centred, because the frame's own column is `align-items: center`
+          // and the title takes the width of its words inside its 320 max
+          contentContainerStyle={{ flexGrow: 1, gap: page.gap, alignItems: 'center' }}
           showsVerticalScrollIndicator={false}>
           {page.title ? <Run r={page.title.r} s={page.title.s} /> : null}
           <View style={{ alignSelf: 'stretch', gap: page.rowGap ?? 18 }}>

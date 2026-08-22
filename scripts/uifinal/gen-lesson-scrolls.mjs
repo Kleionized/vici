@@ -56,6 +56,10 @@ function textPart(sub) {
     size: px(decl(st, 'font-size')),
     weight: Number(decl(st, 'font-weight') ?? 400),
     lineHeight: px(decl(st, 'line-height')),
+    // The 83 cover eyebrows are the only runs that state one — 1.8px on a
+    // 12/600 line — and it is the difference between WEEK I · RESET reading as
+    // a label and reading as a word.
+    letterSpacing: px(decl(st, 'letter-spacing')),
     color: decl(st, 'color'),
     maxWidth: px(decl(st, 'max-width')),
     // `balance` on every 26/28px heading run, `pretty` on the paragraphs. The
@@ -407,14 +411,14 @@ console.log(`\nwrote .uifinal/extract/lesson-scrolls.json`);
  * named once and each run carries an index. Nothing is lost — a ramp is the
  * full set of metrics its frames state — and the emitted file stays readable.
  */
-const rampKey = (p) => JSON.stringify([p.size, p.weight, p.lineHeight ?? null, p.color, p.maxWidth ?? null, p.serif ?? false, p.wrap ?? null]);
+const rampKey = (p) => JSON.stringify([p.size, p.weight, p.lineHeight ?? null, p.letterSpacing ?? null, p.color, p.maxWidth ?? null, p.serif ?? false, p.wrap ?? null]);
 const ramps = [];
 const rampIndex = new Map();
 const rampOf = (p) => {
   const k = rampKey(p);
   if (!rampIndex.has(k)) {
     rampIndex.set(k, ramps.length);
-    ramps.push({ size: p.size, weight: String(p.weight), lineHeight: p.lineHeight, color: p.color, maxWidth: p.maxWidth, serif: p.serif, wrap: p.wrap });
+    ramps.push({ size: p.size, weight: String(p.weight), lineHeight: p.lineHeight, letterSpacing: p.letterSpacing, color: p.color, maxWidth: p.maxWidth, serif: p.serif, wrap: p.wrap });
   }
   return rampIndex.get(k);
 };
@@ -449,6 +453,8 @@ out.push('export interface Ramp {');
 out.push('  size: number;');
 out.push("  weight: string;");
 out.push('  lineHeight?: number;');
+out.push("  /** The 83 cover eyebrows are the only runs that state one. */");
+out.push('  letterSpacing?: number;');
 out.push('  color: string;');
 out.push('  maxWidth?: number;');
 out.push('  /** The epigraph is the only run set in a serif. */');

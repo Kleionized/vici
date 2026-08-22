@@ -699,3 +699,80 @@ the one thing a drawn control must not do.
 
 `106 · One more thing.` writes its line to the event's existing `note`, which is
 the field the schema already carries for a sentence about an urge.
+
+## D042 — the twelve week canvases are `lesson UI` re-shipped, and the group was already built
+
+`UI Final 1` ships twelve per-week canvases holding 1,372 frames — the readers
+for lessons 2 to 84. They are not new work. Every one of the 1,372 frame files
+is **byte-identical** to the same file in the earlier `lesson UI` split, checked
+with `cmp` over all of them: 1,372 identical, 0 differing. The previous *main*
+bundle never carried them; this is the first main bundle that does.
+
+Verified two ways, independently of the gap report that first claimed it:
+
+1. `cmp` over every frame in `.uifinal1/final/Week-*` against
+   `.uifinal/lessons/Week *` — 1,384 files compared (1,372 frames plus twelve
+   helmets), none differing.
+2. `scripts/uifinal/gen-lesson-scrolls.mjs`, pointed at a symlink tree of
+   `.uifinal1/final/Week-*` with its outputs redirected out of the repo,
+   reproduces `src/content/lessonReader.ts` and `src/content/coverScene.ts`
+   **byte for byte**. 1,398 pages, 11 ramps, 7 cover layers.
+
+**Decision:** all 1,372 rows are `IMPLEMENTED`, against
+`src/app/lesson/day/[day].tsx`, `src/components/lesson/reader.tsx`,
+`src/components/lesson/scroll.tsx` and `src/content/lessonReader.ts`, with
+`specs/113-lesson-readers.md` as the family spec. Two real gaps were found by
+measuring the render rather than the content — D043 and D044.
+
+## D043 — the cover eyebrow's 1.8px tracking was being dropped
+
+`WEEK I · RESET` is set `12px/600` with `letter-spacing: 1.8px` on all 83 covers,
+and `gen-lesson-scrolls.mjs` did not read `letter-spacing` for a `text` run, so
+the ramp carried none and every cover drew the eyebrow 25pt narrower than the
+frame (`116` against `90.8`).
+
+**Decision:** `letterSpacing` is read into the run, into the ramp key and into
+the emitted `Ramp`, and `Run` applies it. `lessonReader.ts` is regenerated —
+never hand-edited — and still reproduces byte for byte from this bundle. It is
+the only run in the whole reader that states a tracking; the epigraph's
+attribution and the two pill labels already carried theirs by other routes.
+
+## D044 — a pick row's weight follows the app's own selection, not the frame's
+
+The frames draw one pick row already chosen so the chosen state is visible, and
+`lessonReader.ts` records that row's `selected: true`. `PickRows` was reading
+that row's weight and applying it to **every** unselected row, so all six rows
+drew at 600 where the frame draws one at 600 and five at 500. The label also
+carried `flex: 1`, stretching it to the row's full width where the canvas's
+`<span>` takes the width of its own words.
+
+**Decision:** a row takes the chosen weight when the reader has chosen it and
+the resting weight otherwise, both read from the frame's own options; the label
+is `flexShrink: 1`, which is a span. With the frame's own row chosen in the app,
+the board then matches the frame exactly.
+
+## D045 — the same daily task is authored twice in the bundle, and the two differ
+
+`UI Final 1` states every day's task in two places: the reader's task page and
+options board (the twelve week canvases → `lessonReader.ts`), and
+`Lessons and Tasks`' `Task DNN` frames (→ `curriculum84.ts`, which the Today
+card, the night reminder and the lesson card draw). Measured day by day:
+
+| field | identical | punctuation only | different words |
+|---|---|---|---|
+| the "Done when…" rule | 6 | 0 | **78** |
+| the options board title | 1 | 0 | **81** |
+| board option count | 66 | 0 | 16 |
+| board rows | 49 | 5 | 28 |
+| closing note | 57 | 0 | 25 — and no reader board draws one at all |
+
+**Decision:** both are implemented as drawn. Each screen reproduces the canvas
+that draws it, which is what ground rule 3 requires and what D008 already rules
+for content. Nothing is reconciled, nothing is "improved", and neither
+generator is pointed at the other's frames. Flagged for REPORT.md as the largest
+content contradiction in the bundle — two screens in the same product saying
+different things about the same task.
+
+`page.close` is `[]` on all 82 reader boards, so the branch that renders it is
+never taken. It is kept: the generator reads the field out of the frames, and
+removing the renderer would mean a board that ever draws one loses it silently.

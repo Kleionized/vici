@@ -1337,7 +1337,7 @@ function SosSceneLayer({ layer, id }: { layer: SosLayer; id: string }) {
 
   // An elliptical top — `50% 50% 0 0 / Npx Npx 0 0` — is the `Hill` arc.
   if (layer.radius?.kind === 'elliptic') {
-    const rise = Number(String(layer.radius.v[0]).replace('px', ''));
+    const rise = parseFloat(String(layer.radius.v[0]));
     const pct = String(layer.radius.v[0]).endsWith('%');
     return (
       <Hill

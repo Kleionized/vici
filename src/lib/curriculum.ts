@@ -37,8 +37,13 @@ export function dayForSlug(slug: string): number | null {
  *
  * `bodyMarkdown` is the one-line summary the lesson card carries, because that
  * is the only prose the index holds and it is what a search should match on.
- * The curriculum states no reflection prompt and no duration, so those are left
- * empty rather than filled with a number nobody measured.
+ * The curriculum states no reflection prompt, so that is left empty rather than
+ * filled with a prompt nobody wrote.
+ *
+ * It does state a duration — every one of the 83 reader covers draws one, "3
+ * min" to "7 min", and `LESSON_READER[day][0]` carries it — but nothing reads
+ * `estimatedMinutes`, and the cover draws its own. Left unset rather than
+ * duplicated into a field no screen consults.
  */
 export const CURRICULUM_LESSONS: Lesson[] = CURRICULUM_84.flatMap((week) =>
   week.lessons.map((lesson, index) => ({

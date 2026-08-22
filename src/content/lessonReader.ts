@@ -20,6 +20,8 @@ export interface Ramp {
   size: number;
   weight: string;
   lineHeight?: number;
+  /** The 83 cover eyebrows are the only runs that state one. */
+  letterSpacing?: number;
   color: string;
   maxWidth?: number;
   /** The epigraph is the only run set in a serif. */
@@ -29,7 +31,7 @@ export interface Ramp {
 }
 
 export const READER_RAMPS: Ramp[] = [
-  {"size":12,"weight":"600","color":"#B0AEA8"},
+  {"size":12,"weight":"600","letterSpacing":1.8,"color":"#B0AEA8"},
   {"size":28,"weight":"500","lineHeight":40,"color":"#1D1C1A","maxWidth":280,"wrap":"balance"},
   {"size":15,"weight":"500","color":"#8B8882"},
   {"size":28,"weight":"500","lineHeight":44,"color":"#1D1C1A","maxWidth":300,"serif":true,"wrap":"balance"},
