@@ -66,6 +66,7 @@ element on the frame is here, in paint order, indented by depth.
         · Library
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -94,7 +95,8 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 28, 264 | box · paint · type | 28, 264 · 337 × 29 · — · — | identical | match |
 | span at 28, 293 | box · paint | 28, 293 · 0 × 0 · — | *absent* | **mismatch** |
 | div at 273, 264 | box · paint · type | 273, 264 · 92 × 29 · — · — | identical | match |
-| “Jerry” | box · paint | 272.4, 261.2 · 93.3 × 29.6 · — | *absent* | **mismatch** |
+| “Jerry” | x | 272.4 | 295 | **mismatch** |
+| “Jerry” | y | 261.2 | 261.9 | **mismatch** |
 | div at 273, 292 | box · paint · type | 273, 292 · 92 × 1 · rgba(0, 0, 0, 0.2) · — | identical | match |
 | div at 0, 705 | box · paint · type | 0, 705 · 393 × 64 · rgb(19, 19, 19) · r 18px 18px 0px 0px · — | identical | match |
 | div at 16, 717 | radius | 50% | 20px | **mismatch** |

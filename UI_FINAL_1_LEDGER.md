@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 1989 · IMPLEMENTED: 46 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 1981 · IMPLEMENTED: 54 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -79,14 +79,14 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | `Email-Login/Morning Resign Pledge` | .uifinal1/final/Email-Login/Morning-Resign-Pledge.html |  | NOT_STARTED |  | canvas note: 21D5 · Morning — Re-sign your pledge |
 | `Email-Login/Change Pledge Sheet` | .uifinal1/final/Email-Login/Change-Pledge-Sheet.html |  | NOT_STARTED |  | canvas note: 21D6 · Morning — Change the pledge |
 | `Email-Login/Morning 5 Done` | .uifinal1/final/Email-Login/Morning-5-Done.html |  | NOT_STARTED |  | canvas note: 21D7 · Morning — Done |
-| `Email-Login/Night Check-in Cover` | .uifinal1/final/Email-Login/Night-Check-in-Cover.html |  | NOT_STARTED |  | canvas note: 21E0 · Night — Check-in |
-| `Email-Login/Night 1 Mood` | .uifinal1/final/Email-Login/Night-1-Mood.html |  | NOT_STARTED |  | canvas note: 21E1 · Night — How was today |
-| `Email-Login/Checkin Emotions` | .uifinal1/final/Email-Login/Checkin-Emotions.html |  | NOT_STARTED |  | canvas note: 21E2 · Night — Emotions |
-| `Email-Login/Checkin Reasons` | .uifinal1/final/Email-Login/Checkin-Reasons.html |  | NOT_STARTED |  | canvas note: 21E3 · Night — What caused it |
-| `Email-Login/Night 3 Reflection` | .uifinal1/final/Email-Login/Night-3-Reflection.html |  | NOT_STARTED |  | canvas note: 21E4 · Night — Reflection |
-| `Email-Login/Night 2 Record` | .uifinal1/final/Email-Login/Night-2-Record.html |  | NOT_STARTED |  | canvas note: 21E5 · Night — Record |
-| `Email-Login/Night Action Reminder` | .uifinal1/final/Email-Login/Night-Action-Reminder.html |  | NOT_STARTED |  | canvas note: 21E5B · Night — Tonight’s action |
-| `Email-Login/Night 4 Closed` | .uifinal1/final/Email-Login/Night-4-Closed.html |  | NOT_STARTED |  | canvas note: 21E6 · Night — Closed |
+| `Email-Login/Night Check-in Cover` | .uifinal1/final/Email-Login/Night-Check-in-Cover.html | src/components/day/kit.tsx → CheckinCover; src/app/day/night.tsx step COVER | IMPLEMENTED | 2026-08-22 | specs/64-night-check-in-cover.md · 11 rows compared, 0 geometric mismatches |
+| `Email-Login/Night 1 Mood` | .uifinal1/final/Email-Login/Night-1-Mood.html | src/app/day/night.tsx step MOOD; src/components/day/kit.tsx → WarmNightSky | IMPLEMENTED | 2026-08-22 | specs/65-night-mood.md · 32 rows compared, 0 geometric mismatches |
+| `Email-Login/Checkin Emotions` | .uifinal1/final/Email-Login/Checkin-Emotions.html | src/components/MoodLogger.tsx → EmotionsBoard | IMPLEMENTED | 2026-08-22 | specs/66-checkin-emotions.md · 43 rows compared, 0 geometric mismatches |
+| `Email-Login/Checkin Reasons` | .uifinal1/final/Email-Login/Checkin-Reasons.html | src/components/MoodLogger.tsx → ReasonsBoard | IMPLEMENTED | 2026-08-22 | specs/67-checkin-reasons.md · 80 rows compared, 0 geometric mismatches |
+| `Email-Login/Night 3 Reflection` | .uifinal1/final/Email-Login/Night-3-Reflection.html | src/app/day/night.tsx step REFLECTION | IMPLEMENTED | 2026-08-22 | specs/68-night-reflection.md · 14 rows compared; placeholder + mock caret only (D025) |
+| `Email-Login/Night 2 Record` | .uifinal1/final/Email-Login/Night-2-Record.html | src/app/day/night.tsx step RECORD | IMPLEMENTED | 2026-08-22 | specs/69-night-record.md · 51 rows compared, 0 geometric mismatches |
+| `Email-Login/Night Action Reminder` | .uifinal1/final/Email-Login/Night-Action-Reminder.html | src/app/day/night.tsx step ACTION | IMPLEMENTED | 2026-08-22 | specs/70-night-action.md · 40 rows compared; card height follows the day’s own copy |
+| `Email-Login/Night 4 Closed` | .uifinal1/final/Email-Login/Night-4-Closed.html | src/app/day/night.tsx step CLOSED | IMPLEMENTED | 2026-08-22 | specs/71-night-closed.md · 30 rows compared, 0 geometric mismatches |
 | `Email-Login/Week I Reset` | .uifinal1/final/Email-Login/Week-I-Reset.html |  | NOT_STARTED |  | canvas note: LIBRARY — THE 12-WEEK COURSE 92A · Week I — Reset · i |
 | `Email-Login/Week I Reset P2` | .uifinal1/final/Email-Login/Week-I-Reset-P2.html |  | NOT_STARTED |  | canvas note: 92A2 · Week I — Reset · ii |
 | `Email-Login/Week II Changing Your Mindset` | .uifinal1/final/Email-Login/Week-II-Changing-Your-Mindset.html |  | NOT_STARTED |  | canvas note: 92B · Week II — Changing Your Mindset · i |

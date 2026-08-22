@@ -43,6 +43,22 @@ let rows = 0, bad = 0;
 const usedB = new Set();
 for (const rows of MB.values()) for (const r of rows) usedB.add(r);
 /** Pair a design box with an app box within a point — two engines rounding. */
+/**
+ * A screen whose words are the user's own draws different digits in the app
+ * than the canvas's sample does. Pair those by their type metrics and their
+ * line, so everything except the value is still compared.
+ */
+const nearText = (ra) => {
+  let best = null, bestD = Infinity;
+  for (const r of usedB) {
+    if (r[10] === '-' || ra[10] === '-') continue;
+    if (r[9] !== ra[9]) continue;
+    if (Math.abs(Number(ra[2]) - Number(r[2])) > 1) continue;
+    const d = Math.abs(Number(ra[1]) - Number(r[1]));
+    if (d < bestD) { bestD = d; best = r; }
+  }
+  return bestD <= 24 ? best : null;
+};
 const near = (ra) => {
   let best = null, bestD = Infinity;
   for (const r of usedB) {
@@ -55,9 +71,14 @@ const near = (ra) => {
 
 for (const [k, rowsA] of MA) {
   let rowsB = MB.get(k);
+  let asData = false;
   if (!rowsB) {
     const hit = near(rowsA[0]);
     if (hit) { rowsB = [hit]; usedB.delete(hit); }
+  }
+  if (!rowsB) {
+    const hit = nearText(rowsA[0]);
+    if (hit) { rowsB = [hit]; usedB.delete(hit); asData = true; }
   }
   const name = rowsA[0][10] === '-' ? `${rowsA[0][0]} at ${rowsA[0][1]}, ${rowsA[0][2]}` : `“${rowsA[0][10].slice(0, 48)}”`;
   if (!rowsB) {
@@ -72,11 +93,17 @@ for (const [k, rowsA] of MA) {
       if (ra[f] === rb[f]) continue;
       // sub-quarter-point differences are where two layout engines round
       if (f <= 4 && Math.abs(Number(ra[f]) - Number(rb[f])) < 0.25) continue;
+      // a value the user owns renders at its own width
+      if (asData && (f === 3 || f === 4)) continue;
       diff.push(f);
     }
     rows++;
     if (!diff.length) {
-      out.push(`| ${esc(name)} | box · paint · type | ${esc(box(ra))} · ${esc(paint(ra))} · ${esc(type(ra))} | identical | match |`);
+      out.push(
+        asData
+          ? `| ${esc(name)} | box · paint · type | ${esc(box(ra))} · ${esc(paint(ra))} · ${esc(type(ra))} | same box and metrics, value ${esc(JSON.stringify(rb[10]))} | match (value) |`
+          : `| ${esc(name)} | box · paint · type | ${esc(box(ra))} · ${esc(paint(ra))} · ${esc(type(ra))} | identical | match |`,
+      );
     } else {
       bad++;
       for (const f of diff) out.push(`| ${esc(name)} | ${F[f]} | ${esc(ra[f])} | ${esc(rb[f])} | **mismatch** |`);

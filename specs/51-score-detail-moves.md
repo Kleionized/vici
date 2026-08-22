@@ -113,6 +113,7 @@ element on the frame is here, in paint order, indented by depth.
       <div> width:6px  height:6px  background:rgba(19,19,19,0.16)  border-radius:50%
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -165,34 +166,34 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | “Clean days” | box · paint · type | 20, 402 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 405 | box · paint · type | 140, 405 · 183 × 10 · — · — | identical | match |
 | div at 140, 405 | box · paint · type | 140, 405 · 150 × 10 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| “+64” | box · paint | 335, 402 · 38 × 16 · — | *absent* | **mismatch** |
+| “+64” | box · paint · type | 335, 402 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+108" | match (value) |
 | div at 20, 454 | box · paint · type | 20, 454 · 353 × 16 · — · — | identical | match |
 | “Check-ins” | box · paint · type | 20, 454 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 457 | box · paint · type | 140, 457 · 183 × 10 · — · — | identical | match |
 | div at 140, 457 | box · paint | 140, 457 · 58 × 10 · rgba(19, 19, 19, 0.55) · r 5px | *absent* | **mismatch** |
-| “+18” | box · paint | 335, 454 · 38 × 16 · — | *absent* | **mismatch** |
+| “+18” | box · paint · type | 335, 454 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+60" | match (value) |
 | div at 20, 506 | box · paint · type | 20, 506 · 353 × 16 · — · — | identical | match |
 | “Lessons” | box · paint · type | 20, 506 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 509 | box · paint · type | 140, 509 · 183 × 10 · — · — | identical | match |
 | div at 140, 509 | box · paint | 140, 509 · 44 × 10 · rgba(19, 19, 19, 0.38) · r 5px | *absent* | **mismatch** |
-| “+12” | box · paint | 335, 506 · 38 × 16 · — | *absent* | **mismatch** |
+| “+12” | box · paint · type | 335, 506 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+0" | match (value) |
 | div at 20, 558 | box · paint · type | 20, 558 · 353 × 16 · — · — | identical | match |
 | “Urges ridden” | box · paint · type | 20, 558 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 561 | box · paint · type | 140, 561 · 183 × 10 · — · — | identical | match |
 | div at 140, 561 | box · paint | 140, 561 · 34 × 10 · rgba(19, 19, 19, 0.25) · r 5px | *absent* | **mismatch** |
-| “+8” | box · paint | 335, 558 · 38 × 16 · — | *absent* | **mismatch** |
+| “+8” | box · paint · type | 335, 558 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+36" | match (value) |
 | div at 20, 610 | box · paint · type | 20, 610 · 353 × 16 · — · — | identical | match |
-| “Slip · Jul 8” | box · paint | 20, 610 · 108 × 16 · — | *absent* | **mismatch** |
+| “Slip · Jul 8” | box · paint · type | 20, 610 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | same box and metrics, value "3 slips" | match (value) |
 | div at 140, 613 | box · paint · type | 140, 613 · 183 × 10 · — · — | identical | match |
 | div at 140, 613 | box · paint | 140, 613 · 52 × 10 · r 5px · rgb(19, 19, 19) 0px 0px 0px 1.5px inset | *absent* | **mismatch** |
-| “−16” | box · paint | 335, 610 · 38 × 16 · — | *absent* | **mismatch** |
+| “−16” | box · paint · type | 335, 610 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "−48" | match (value) |
 | div at 16, 698 | box · paint · type | 16, 698 · 361 × 64 · rgb(236, 235, 228) · r 18px · — | identical | match |
 | div at 30, 711 | radius | 50% | 19px | **mismatch** |
 | svg at 41, 724.5 | box · paint · type | 41, 724.5 · 16 × 11 · — · — | identical | match |
 | path at 42.5, 726 | box · paint · type | 42.5, 726 · 13 × 8 · — · — | identical | match |
 | path at 51.8, 726 | box · paint · type | 51.8, 726 · 3.7 × 3.7 · — · — | identical | match |
 | div at 80, 714.3 | box · paint · type | 80, 714.3 · 57.8 × 31.5 · — · — | identical | match |
-| “+86 net” | box · paint | 80, 714.3 · 57.8 × 16 · — | *absent* | **mismatch** |
+| “+86 net” | box · paint · type | 80, 714.3 · 57.8 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+156 net" | match (value) |
 | div at 149.8, 730 | box · paint · type | 149.8, 730 · 49.2 × 0 · — · — | identical | match |
 | “Clean days do the heavy lifting. Keep the evenin” | box · paint · type | 211, 704.5 · 152 × 51 · — · 12px/400/normal/17px/rgb(85, 83, 78) | identical | match |
 | div at 0, 806 | box · paint · type | 0, 806 · 393 × 6 · — · — | identical | match |
@@ -202,4 +203,4 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 193.5, 806 | radius | 50% | 3px | **mismatch** |
 | div at 207.5, 806 | radius | 50% | 3px | **mismatch** |
 
-**72 elements compared; 47 match, 25 differ.**
+**72 elements compared; 54 match, 18 differ.**

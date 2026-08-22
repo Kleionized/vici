@@ -151,6 +151,7 @@ element on the frame is here, in paint order, indented by depth.
       <path> d="M1.5 1.5L6.5 7l-5 5.5"  fill="none"  stroke="rgba(244,243,240,0.5)"  stroke-width="2"  stroke-linecap="round"
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -218,7 +219,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | span at 156, 241 | box · paint | 156, 241 · 26.6 × 15 · — | *absent* | **mismatch** |
 | svg at 156, 245.5 | box · paint · type | 156, 245.5 · 9 × 8 · — · — | identical | match |
 | path at 156.5, 245.9 | box · paint · type | 156.5, 245.9 · 8 × 7.1 · — · — | identical | match |
-| “18” | box · paint | 168, 241 · 14.6 × 15 · — | *absent* | **mismatch** |
+| “18” | box · paint · type | 168, 241 · 14.6 × 15 · — · 13px/500/normal/normal/rgba(244, 243, 240, 0.8) | same box and metrics, value "8" | match (value) |
 | div at 32, 330 | box · paint · type | 32, 330 · 329 × 6 · rgba(244, 243, 240, 0.14) · r 3px · — | identical | match |
 | div at 32, 330 | box · paint · type | 32, 330 · 197.4 × 6 · rgba(244, 243, 240, 0.92) · r 3px · — | identical | match |
 | div at 32, 351 | box · paint · type | 32, 351 · 329 × 13 · — · — | identical | match |
@@ -287,4 +288,4 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 370, 731 | box · paint · type | 370, 731 · 7 × 12 · — · — | identical | match |
 | path at 371.4, 732.3 | box · paint · type | 371.4, 732.3 · 4.3 × 9.4 · — · — | identical | match |
 
-**114 elements compared; 64 match, 50 differ.**
+**114 elements compared; 65 match, 49 differ.**

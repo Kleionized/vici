@@ -115,6 +115,7 @@ element on the frame is here, in paint order, indented by depth.
       <div> width:6px  height:6px  background:rgba(19,19,19,0.16)  border-radius:50%
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -181,9 +182,9 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | “1,400” | y | 416 | 480 | **mismatch** |
 | “1,200” | y | 480 | 546 | **mismatch** |
 | “1,000” | y | 546 | 605 | **mismatch** |
-| “800” | box · paint | 16, 605 · 22.5 × 13.5 · — | *absent* | **mismatch** |
-| “May” | box · paint | 40, 632 · 23.9 × 14 · — | *absent* | **mismatch** |
-| “Jun” | box · paint | 178, 632 · 21.1 × 14 · — | *absent* | **mismatch** |
+| “800” | box · paint · type | 16, 605 · 22.5 × 13.5 · — · 11.5px/500/normal/normal/rgb(176, 174, 168) | same box and metrics, value "1,000" | match (value) |
+| “May” | box · paint · type | 40, 632 · 23.9 × 14 · — · 12px/500/normal/normal/rgb(139, 136, 130) | same box and metrics, value "Jul" | match (value) |
+| “Jun” | box · paint · type | 178, 632 · 21.1 × 14 · — · 12px/500/normal/normal/rgb(139, 136, 130) | same box and metrics, value "Aug" | match (value) |
 | “Jul” | x | 314 | 40 | **mismatch** |
 | div at 16, 698 | box · paint · type | 16, 698 · 361 × 64 · rgb(236, 235, 228) · r 18px · — | identical | match |
 | div at 30, 711 | radius | 50% | 19px | **mismatch** |
@@ -191,8 +192,8 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 42.5, 726 | box · paint · type | 42.5, 726 · 13 × 8 · — · — | identical | match |
 | path at 51.8, 726 | box · paint · type | 51.8, 726 · 3.7 × 3.7 · — · — | identical | match |
 | div at 80, 714.3 | box · paint | 80, 714.3 · 91.5 × 31.5 · — | *absent* | **mismatch** |
-| “+90 points” | box · paint | 80, 714.3 · 91.5 × 16 · — | *absent* | **mismatch** |
-| “vs Apr 3 – May 3” | box · paint | 80, 732.3 · 91.5 × 13.5 · — | *absent* | **mismatch** |
+| “+90 points” | box · paint · type | 80, 714.3 · 91.5 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+234 points" | match (value) |
+| “vs Apr 3 – May 3” | box · paint · type | 80, 732.3 · 91.5 × 13.5 · — · 11.5px/400/normal/normal/rgb(139, 136, 130) | same box and metrics, value "vs 13 Jul – 22 Aug" | match (value) |
 | div at 183.5, 730 | box · paint | 183.5, 730 · 15.5 × 0 · — | *absent* | **mismatch** |
 | “Keep going. You’re building real momentum.” | box · paint · type | 211, 713 · 152 × 34 · — · 12px/400/normal/17px/rgb(85, 83, 78) | identical | match |
 | div at 0, 806 | box · paint · type | 0, 806 · 393 × 6 · — · — | identical | match |
@@ -201,4 +202,4 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 200.5, 806 | box · paint | 200.5, 806 · 6 × 6 · rgba(19, 19, 19, 0.16) · r 50% | *absent* | **mismatch** |
 | div at 214.5, 806 | box · paint | 214.5, 806 · 6 × 6 · rgba(19, 19, 19, 0.16) · r 50% | *absent* | **mismatch** |
 
-**71 elements compared; 33 match, 38 differ.**
+**71 elements compared; 38 match, 33 differ.**

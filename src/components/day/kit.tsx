@@ -5,7 +5,7 @@ import { View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
+import { AppText, BackGlyph, Grain, Hill, PressScale } from '@/components/ui';
 import { fonts, sans } from '@/lib/theme';
 
 /**
@@ -72,14 +72,6 @@ function SoftShadow({ width, height, opacity, color, style }: { width: number; h
  * which RN's single-value radii cannot express, so the dome is an SVG arc.
  * `left`/`right` are the canvas insets, so both are negative when it overhangs.
  */
-function Hill({ left, right, top, height, ry, color }: { left: number; right: number; top: number; height: number; ry: number; color: string }) {
-  const w = useWindowDimensions().width - left - right;
-  return (
-    <Svg width={w} height={height} style={{ position: 'absolute', left, top }} pointerEvents="none">
-      <Path d={`M0 ${ry} A ${w / 2} ${ry} 0 0 1 ${w} ${ry} L ${w} ${height} L 0 ${height} Z`} fill={color} />
-    </Svg>
-  );
-}
 
 /* ------------------------------------------------------------------- the shell */
 
@@ -195,7 +187,12 @@ export function DayShell({
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
       <Grain source={noiseDark} opacity={0.07} />
       {backdrop}
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+      {/* Only the top inset is spent. The canvas's 852 already contains the
+          home-indicator zone, so a canvas `bottom: 84` is 84 off the screen's
+          own edge — taking the bottom inset here would lift every
+          bottom-anchored element another 34 above where the frame draws it, and
+          would move with the device rather than with the design. */}
+      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <View
           style={{ flex: 1 }}
           onLayout={(e) => {
@@ -243,7 +240,8 @@ export function ActionButton({ label, onPress }: { label: string; onPress: () =>
         position: 'absolute',
         left: 16,
         right: 16,
-        bottom: 50,
+        // the canvas's own offset off the frame's bottom edge
+        bottom: 84,
         height: 54,
         minHeight: 54,
         borderRadius: 27,
@@ -544,9 +542,9 @@ export function DawnBand({ top }: { top: number }) {
           agree on a 196 centre line, so the half-point is the canvas's own */}
       <Glow size={140} color="#E2BA78" opacity={0.4} stop={0.74} style={{ position: 'absolute', left: 126, top: 20 }} />
       <View style={{ position: 'absolute', left: 177, top: 71, width: 38, height: 38, borderRadius: 19, backgroundColor: '#E9D2A4' }} />
-      <Hill left={-70} right={-70} top={192} height={150} ry={68} color="#DEDDD6" />
-      <Hill left={-130} right={-40} top={218} height={150} ry={58} color="#CFCEC7" />
-      <Hill left={-40} right={-140} top={244} height={150} ry={50} color="#C5C4BD" />
+      <Hill height={150} rise={68} color="#DEDDD6" style={{ position: 'absolute', left: -70, right: -70, top: 192 }} />
+      <Hill height={150} rise={58} color="#CFCEC7" style={{ position: 'absolute', left: -130, right: -40, top: 218 }} />
+      <Hill height={150} rise={50} color="#C5C4BD" style={{ position: 'absolute', left: -40, right: -140, top: 244 }} />
     </View>
   );
 }
@@ -609,6 +607,130 @@ function NightMoon() {
 }
 
 /**
+ * `21D0 · Morning — Check-in` and `21E0 · Night — Check-in`.
+ *
+ * New in `UI Final 1`: a cover the check-in opens on. One drawing in two
+ * registers — the morning is paper under a rising sun, the night the same
+ * composition after dark with three stars in it — so both are built here and
+ * differ only in the numbers the frames state.
+ *
+ * The hills fade out rather than fill flat, which is why `Hill` takes a `fade`.
+ */
+export function CheckinCover({
+  part,
+  day,
+  onBegin,
+}: {
+  part: 'morning' | 'night';
+  day: number;
+  onBegin: () => void;
+}) {
+  const night = part === 'night';
+  return (
+    <View style={{ flex: 1, backgroundColor: night ? '#21262F' : '#F4F3F0' }}>
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+        {night ? <LinearGradient colors={['#21262F', '#2B2E36', '#47403A']} locations={[0, 0.55, 1]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} /> : null}
+        <Grain source={noiseDark} opacity={0.07} />
+        {night ? (
+          <>
+            <View style={{ position: 'absolute', left: 118, top: 148, width: 2.5, height: 2.5, borderRadius: 1.25, backgroundColor: 'rgba(226,232,240,0.7)' }} />
+            <View style={{ position: 'absolute', left: 284, top: 172, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(226,232,240,0.5)' }} />
+            <View style={{ position: 'absolute', left: 206, top: 120, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(226,232,240,0.45)' }} />
+          </>
+        ) : null}
+        <Glow
+          size={night ? 300 : 320}
+          color={night ? '#D68C64' : '#E2BA78'}
+          opacity={night ? 0.5 : 0.3}
+          stop={0.72}
+          style={{ position: 'absolute', left: '50%', marginLeft: night ? -150 : -160, top: night ? 76 : 120 }}
+        />
+        <View
+          style={{
+            position: 'absolute',
+            left: '50%',
+            marginLeft: night ? -26 : -27,
+            top: night ? 200 : 242,
+            width: night ? 52 : 54,
+            height: night ? 52 : 54,
+            borderRadius: night ? 26 : 27,
+            backgroundColor: night ? '#E4B48E' : '#E9D2A4',
+          }}
+        />
+        {night ? null : (
+          <>
+            <View style={{ position: 'absolute', left: 84, top: 176, width: 54, height: 9, borderRadius: 5, backgroundColor: 'rgba(255,255,255,0.7)' }} />
+            <View style={{ position: 'absolute', left: 252, top: 200, width: 40, height: 8, borderRadius: 5, backgroundColor: 'rgba(255,255,255,0.55)' }} />
+          </>
+        )}
+        {night ? (
+          <>
+            <Hill height={150} rise={88} color="#272D37" fade={[0.3, 0.9]} style={{ position: 'absolute', left: -80, right: -80, top: 280 }} />
+            <Hill height={150} rise={70} color="#20252E" fade={[0.3, 0.9]} style={{ position: 'absolute', left: -150, right: -50, top: 312 }} />
+          </>
+        ) : (
+          <>
+            <Hill height={200} rise={88} color="#E7E5DB" fade={[0.3, 0.9]} style={{ position: 'absolute', left: -80, right: -80, top: 268 }} />
+            <Hill height={190} rise={70} color="#DFDDD2" fade={[0, 0.78]} style={{ position: 'absolute', left: -150, right: -50, top: 306 }} />
+          </>
+        )}
+      </View>
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 508 - 54, fontSize: 27, letterSpacing: -0.1, color: night ? '#F4F3F0' : '#1D1C1A' }]}>
+            {night ? 'Night check-in.' : 'Morning check-in.'}
+          </AppText>
+          <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 550 - 54, fontSize: 14.5, color: night ? 'rgba(244,243,240,0.55)' : '#8B8882' }]}>
+            {`Day ${day} · two minutes`}
+          </AppText>
+          <PressScale
+            onPress={onBegin}
+            accessibilityRole="button"
+            style={{
+              position: 'absolute',
+              left: 16,
+              right: 16,
+              top: 756 - 54,
+              height: 52,
+              minHeight: 0,
+              borderRadius: 26,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: night ? '#F4F3F0' : '#131313',
+            }}>
+            <AppText style={[sans('600'), { fontSize: 17, color: night ? '#131313' : '#FFFFFF' }]}>{night ? 'Close the day' : `Begin day ${day}`}</AppText>
+          </PressScale>
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
+/**
+ * `21E1 · Night — How was today` opens on a warm sky rather than the cold one
+ * the closing frame keeps: the horizon browns off, the moon is a plain disc
+ * rather than a crescent, there are three stars instead of five, and both hills
+ * fade out instead of filling flat.
+ */
+export function WarmNightSky() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 212, overflow: 'hidden' }}>
+      <LinearGradient colors={['#171A20', '#202129', '#33302B']} locations={[0, 0.55, 1]} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 212 }} />
+      {/* the canvas inverts the old sky's paint order: stars first, then the
+          warm glow over them, then the disc — so the glow tints the stars */}
+      <View style={{ position: 'absolute', left: 96, top: 44, width: 2.5, height: 2.5, borderRadius: 1.25, backgroundColor: 'rgba(226,232,240,0.6)' }} />
+      <View style={{ position: 'absolute', left: 238, top: 30, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(226,232,240,0.45)' }} />
+      <View style={{ position: 'absolute', left: 300, top: 70, width: 2, height: 2, borderRadius: 1, backgroundColor: 'rgba(226,232,240,0.35)' }} />
+      <Glow size={200} color="#D68C64" opacity={0.42} stop={0.72} style={{ position: 'absolute', left: '50%', marginLeft: -100, top: 24 }} />
+      <View style={{ position: 'absolute', left: '50%', marginLeft: -22, top: 118, width: 44, height: 44, borderRadius: 22, backgroundColor: '#E8B488' }} />
+      <Hill height={110} rise={46} color="#232830" fade={[0.45, 1]} style={{ position: 'absolute', left: -60, right: -60, top: 138 }} />
+      <Hill height={110} rise={44} color="#1C2129" fade={[0.5, 1]} style={{ position: 'absolute', left: -120, right: -30, top: 158 }} />
+      <View style={{ position: 'absolute', left: 70, top: 180, width: 18, height: 2.5, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.12)' }} />
+    </View>
+  );
+}
+
+/**
  * Frames 121 / 124: the night band the evening check-in opens under — a cold
  * gradient, a gibbous moon, a few stars and two hills closing the horizon.
  */
@@ -624,8 +746,8 @@ export function NightSky({ height, hillTop }: { height: number; hillTop: number 
           style={{ position: 'absolute', left, top: starTop, width: size, height: size, borderRadius: size / 2, backgroundColor: `rgba(244,243,240,${opacity})` }}
         />
       ))}
-      <Hill left={-60} right={-60} top={hillTop} height={110} ry={50} color="#1C232B" />
-      <Hill left={-120} right={-30} top={hillTop + 20} height={110} ry={44} color="#242C36" />
+      <Hill height={110} rise={50} color="#1C232B" style={{ position: 'absolute', left: -60, right: -60, top: hillTop }} />
+      <Hill height={110} rise={44} color="#242C36" style={{ position: 'absolute', left: -120, right: -30, top: hillTop + 20 }} />
       <View style={{ position: 'absolute', left: 70, top: hillTop + 30, width: 18, height: 2.5, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.14)' }} />
     </View>
   );
@@ -633,8 +755,10 @@ export function NightSky({ height, hillTop }: { height: number; hillTop: number 
 
 /** Frame 122: the day's notebook, open, pen across the gutter. */
 export function JournalMark({ top }: { top: number }) {
+  // the canvas states `left: 86px`, not a centring — on a 393 frame a centred
+  // 220 box would land on 86.5
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: '50%', marginLeft: -110, top, width: 220, height: 160 }}>
+    <View pointerEvents="none" style={{ position: 'absolute', left: 86, top, width: 220, height: 160 }}>
       <Glow size={130} color="#8E99A8" opacity={0.28} stop={0.74} style={{ position: 'absolute', left: 44, top: 6 }} />
       <SoftShadow width={120} height={12} opacity={0.1} color="#000000" style={{ position: 'absolute', left: 50, top: 134 }} />
       <View style={{ position: 'absolute', left: 48, top: 38, width: 126, height: 94, borderRadius: 10, backgroundColor: '#E0DFDA', transform: [{ rotate: '-2deg' }] }} />
@@ -703,7 +827,7 @@ export function RerollGlyph({ size }: { size: number }) {
   );
 }
 
-export type DayMark = 'gauge' | 'wave' | 'check' | 'play';
+export type DayMark = 'gauge' | 'wave' | 'check' | 'play' | 'cross';
 
 /**
  * The four glyphs the record uses. The canvas sizes them per row without
@@ -732,6 +856,14 @@ export function DayGlyph({ mark, w, h }: { mark: DayMark; w: number; h: number }
       </Svg>
     );
   }
+  if (mark === 'cross') {
+    // `21E5 · Night — Record`'s relapse row: an amber saltire on a sand plate
+    return (
+      <Svg width={w} height={h} viewBox="0 0 17 17" fill="none">
+        <Path d="M4.5 4.5L12.5 12.5M12.5 4.5L4.5 12.5" stroke="#A87B24" strokeWidth={2.2} strokeLinecap="round" />
+      </Svg>
+    );
+  }
   return (
     <Svg width={w} height={h} viewBox="0 0 18 22" style={{ marginLeft: 2 }}>
       <Path d="M3 2v18L16.5 11z" fill="#131313" />
@@ -743,10 +875,10 @@ export function DayGlyph({ mark, w, h }: { mark: DayMark; w: number; h: number }
  * Frame 116: one line of yesterday's ledger — a glyph chip, what happened, and
  * the number beside it. Rows are placed by the caller at the canvas's own tops.
  */
-export function LedgerRow({ top, mark, glyph, title, detail, strong = false }: { top: number; mark: DayMark; glyph: [number, number]; title: string; detail?: string; strong?: boolean }) {
+export function LedgerRow({ top, mark, glyph, title, detail, plate = '#F1EFE9', strong = false }: { top: number; mark: DayMark; glyph: [number, number]; title: string; detail?: string; plate?: string; strong?: boolean }) {
   return (
     <View style={{ position: 'absolute', left: 16, right: 16, top, height: 48, flexDirection: 'row', alignItems: 'center', gap: 13 }}>
-      <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: plate, alignItems: 'center', justifyContent: 'center' }}>
         <DayGlyph mark={mark} w={glyph[0]} h={glyph[1]} />
       </View>
       <AppText style={[sans('500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{title}</AppText>

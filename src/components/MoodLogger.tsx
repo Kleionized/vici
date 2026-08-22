@@ -1,7 +1,7 @@
 import { useId, useRef, useState } from 'react';
-import { type LayoutChangeEvent, Modal, ScrollView, TextInput, View } from 'react-native';
+import { type LayoutChangeEvent, Modal, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
 import { ActionBand, ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
 import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
@@ -36,48 +36,27 @@ const MOODS = [
 ] as const;
 
 /**
- * The feeling vocabulary, grouped by the weather it usually belongs to. The
- * wheel shows eight at a time, chosen to match the mood just logged — asking a
- * man who has rated the day Heavy whether he feels Proud is a question he has
- * to translate before he can answer. Every word stays reachable through
- * "Something else", because moods are mixed and the wheel is only a shortcut.
+ * `21E2 · Night — Emotions` draws eight words on eight rows, and the same eight
+ * whatever the dial said. The previous bundle turned a wheel whose vocabulary
+ * changed with the mood; this one is a fixed list.
  */
-const FEELINGS: readonly (readonly string[])[] = [
-  ['Hopeless', 'Ashamed', 'Exhausted', 'Anxious', 'Lonely', 'Numb', 'Angry', 'Overwhelmed', 'Empty', 'Afraid', 'Defeated'],
-  ['Low', 'Worried', 'Tired', 'Irritable', 'Guilty', 'Restless', 'Flat', 'Discouraged', 'Sad', 'Tense', 'Bored'],
-  ['Uneasy', 'Distracted', 'Impatient', 'Unsettled', 'Wired', 'Indifferent', 'Quiet', 'Fine'],
-  ['Calm', 'Steady', 'Hopeful', 'Focused', 'Content', 'Rested', 'Relieved', 'Settled', 'Proud'],
-  ['Clear', 'Proud', 'Energised', 'Grateful', 'Confident', 'Connected', 'Light', 'Motivated'],
-];
+const EMOTION_ROWS = ['Calm', 'Tense', 'Tired', 'Hopeful', 'Flat', 'Proud', 'Lonely', 'Restless'] as const;
 
-/** Eight per mood — the wheel has eight sectors, so these are exact. */
-const WHEELS: readonly (readonly string[])[] = [
-  ['Hopeless', 'Ashamed', 'Exhausted', 'Anxious', 'Lonely', 'Numb', 'Angry', 'Overwhelmed'],
-  ['Low', 'Worried', 'Tired', 'Irritable', 'Lonely', 'Guilty', 'Restless', 'Flat'],
-  ['Flat', 'Restless', 'Tired', 'Uneasy', 'Distracted', 'Calm', 'Impatient', 'Hopeful'],
-  // the canvas's own eight, in its own order — this is the default rung
-  ['Calm', 'Tense', 'Tired', 'Hopeful', 'Flat', 'Proud', 'Lonely', 'Restless'],
-  ['Clear', 'Proud', 'Energised', 'Grateful', 'Confident', 'Connected', 'Focused', 'Light'],
-];
-
-/** Every word, in band order, deduplicated — the "Something else" list. */
-const ALL_FEELINGS: string[] = [...new Set(FEELINGS.flat())];
-
-/** The canvas's six read first; the rest of the vocabulary follows underneath. */
+/**
+ * `21E3 · Night — What caused it` draws eight reasons, in this order, and no
+ * others. The previous bundle's list — poor sleep, work stress, scrolling late,
+ * conflict, real connection — is withdrawn; only loneliness survives it, with a
+ * new glyph.
+ */
 const REASONS = [
-  ['Poor sleep', 'sleep'],
-  ['Work stress', 'work'],
-  ['Scrolling late', 'phone'],
-  ['Loneliness', 'person'],
-  ['Conflict', 'bolt'],
-  ['Real connection', 'people'],
-  ['Money', 'coin'],
-  ['Health', 'pulse'],
-  ['Family', 'home'],
-  ['Trained or moved', 'run'],
-  ['Drink', 'glass'],
-  ['Nothing on', 'clock'],
-  ['Something went well', 'star'],
+  ['Relationship', 'relationship'],
+  ['Family', 'family'],
+  ['School / work', 'school'],
+  ['Money', 'money'],
+  ['Self-image', 'selfImage'],
+  ['Loneliness', 'lonely'],
+  ['Health / wellbeing', 'health'],
+  ['None / unknown', 'unknown'],
 ] as const;
 
 type ReasonIconName = (typeof REASONS)[number][1] | 'other';
@@ -118,30 +97,6 @@ const moodRung = (n: number) => Math.max(0, Math.min(MOODS.length - 1, n - 1));
 
 export const moodLabel = (n: number | null | undefined) => (n ? MOODS[moodRung(n)].label : null);
 export const moodTint = (n: number | null | undefined) => (n ? colors.moodTones[moodRung(n)] : colors.textSofter);
-
-// ── the eight sectors, copied from the canvas: 45° each, r 148 about (196, 402) ──
-const WHEEL_SECTORS = [
-  'M196 402 L196.0 254.0 A148 148 0 0 1 300.7 297.3 Z',
-  'M196 402 L300.7 297.3 A148 148 0 0 1 344.0 402.0 Z',
-  'M196 402 L344.0 402.0 A148 148 0 0 1 300.7 506.7 Z',
-  'M196 402 L300.7 506.7 A148 148 0 0 1 196.0 550.0 Z',
-  'M196 402 L196.0 550.0 A148 148 0 0 1 91.3 506.7 Z',
-  'M196 402 L91.3 506.7 A148 148 0 0 1 48.0 402.0 Z',
-  'M196 402 L48.0 402.0 A148 148 0 0 1 91.3 297.3 Z',
-  'M196 402 L91.3 297.3 A148 148 0 0 1 196.0 254.0 Z',
-] as const;
-
-/** Each word's 88-wide box, the canvas's frame coords less the disc's (38, 244). */
-const WHEEL_LABELS = [
-  { left: 152, top: 58 },
-  { left: 205, top: 111 },
-  { left: 205, top: 187 },
-  { left: 152, top: 240 },
-  { left: 76, top: 240 },
-  { left: 23, top: 187 },
-  { left: 23, top: 111 },
-  { left: 76, top: 58 },
-] as const;
 
 function StepDots({ step, count, dim }: { step: number; count: number; dim: string }) {
   return (
@@ -301,171 +256,66 @@ function MoodSlider({ value, onChange }: { value: number; onChange: (value: numb
 }
 
 /**
- * The hub's weather scene. The canvas stacks four CSS boxes; the numbers below
- * are those percentages resolved against the 64px circle, so the two hills are
- * the same half-ellipses their border-radii described.
- */
-function HubScene() {
-  const id = useId().replace(/:/g, '');
-  return (
-    <Svg width={64} height={64} viewBox="0 0 64 64">
-      <Defs>
-        <SvgLinearGradient id={`sky-${id}`} x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse">
-          <Stop offset="0" stopColor="#EFEEE8" />
-          <Stop offset="1" stopColor="#EFEDE6" />
-        </SvgLinearGradient>
-        <RadialGradient id={`sun-${id}`} cx="33.92" cy="30.08" rx="21.12" ry="21.12" gradientUnits="userSpaceOnUse">
-          <Stop offset="0" stopColor="#F3E3C4" stopOpacity={0.9} />
-          <Stop offset="0.78" stopColor="#F3E3C4" stopOpacity={0} />
-        </RadialGradient>
-      </Defs>
-      <Rect x={0} y={0} width={64} height={64} fill={`url(#sky-${id})`} />
-      <Ellipse cx={33.92} cy={30.08} rx={21.12} ry={21.12} fill={`url(#sun-${id})`} />
-      <Path d="M-16 93.44 L-16 63.744 A48 21.504 0 0 1 80 63.744 L80 93.44 Z" fill="#DEDDD6" />
-      <Path d="M-25.6 103.68 L-25.6 70.912 A51.2 18.432 0 0 1 76.8 70.912 L76.8 103.68 Z" fill="#CFCEC7" />
-    </Svg>
-  );
-}
-
-function EmotionWheel({ emotions, selected, onToggle }: { emotions: readonly string[]; selected: string[]; onToggle: (emotion: string) => void }) {
-  // canvas `left:38px`, not a centring — on 393 the two differ by 0.5
-  return (
-    <View style={{ position: 'absolute', left: 38, top: 190 }}>
-      <View style={{ width: 316, height: 316 }}>
-        {/* The lift belongs to the disc, not its bounding box — the canvas
-            drop-shadows the svg itself, so a square shadow behind a circle
-            reads as a stray white card. */}
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', left: 10, top: 10, width: 296, height: 296, borderRadius: 148, boxShadow: '0 14px 28px rgba(40,38,32,0.18)' }}
-        />
-        {/* Positioned, not because it moves — it already fills this box at 0,0 —
-            but because react-native-svg lays an <Svg> out static on web, and CSS
-            paints every positioned sibling above every static one whatever the
-            document order. Left static, the disc goes under its own shadow. */}
-        <Svg width={316} height={316} viewBox="38 244 316 316" pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0 }}>
-          {WHEEL_SECTORS.map((d, index) => {
-            const on = selected.includes(emotions[index]);
-            return <Path key={d} d={d} fill={on ? '#131313' : index % 2 ? '#F7F6F3' : '#FFFFFF'} stroke="rgba(0,0,0,0.14)" strokeWidth={1.2} />;
-          })}
-          <Circle cx={196} cy={402} r={44} fill="#F4F3F0" stroke="rgba(0,0,0,0.14)" strokeWidth={1.2} />
-        </Svg>
-        {emotions.map((emotion, index) => {
-          const on = selected.includes(emotion);
-          return (
-            <PressScale
-              key={emotion}
-              static
-              onPress={() => onToggle(emotion)}
-              accessibilityRole="checkbox"
-              accessibilityState={{ checked: on }}
-              hitSlop={{ top: 16, bottom: 16, left: 6, right: 6 }}
-              style={{ position: 'absolute', left: WHEEL_LABELS[index].left, top: WHEEL_LABELS[index].top, width: 88, minHeight: 0 }}>
-              <AppText center style={[sans(on ? '600' : '500'), { fontSize: 13, color: on ? '#FFFFFF' : '#2A2924' }]}>
-                {emotion}
-              </AppText>
-            </PressScale>
-          );
-        })}
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', left: 126, top: 126, width: 64, height: 64, borderRadius: 32, overflow: 'hidden', boxShadow: '0 0 0 1.5px rgba(0,0,0,0.18)' }}>
-          <HubScene />
-        </View>
-      </View>
-    </View>
-  );
-}
-
-/** A feeling that has no sector — off-wheel picks and the wider vocabulary. */
-function FeelingChip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="checkbox"
-      accessibilityState={{ checked: on }}
-      style={{
-        minHeight: 36,
-        paddingHorizontal: 14,
-        justifyContent: 'center',
-        borderRadius: 18,
-        backgroundColor: on ? '#131313' : '#FFFFFF',
-        boxShadow: on ? undefined : '0 0 0 1px rgba(0,0,0,0.10)',
-      }}>
-      <AppText style={[sans(on ? '600' : '500'), { fontSize: 14, color: on ? '#FFFFFF' : '#1D1C1A' }]}>{label}</AppText>
-    </PressScale>
-  );
-}
-
-/**
- * The reason glyphs. `Checkin Reasons` draws them at 21 in a 24 box on a 38pt
- * disc, `stroke-width:2` with round caps and joins throughout, inking to
- * `#1D1C1A` off the disc's `#F1EFE9` and to `#F4F3F0` once the disc is ink.
+ * The eight glyphs `21E3 · Night — What caused it` draws, transcribed path by
+ * path. All eight are `viewBox="0 0 24 24"` at 21 × 21 with `stroke-width: 2`,
+ * round caps and joins, no fill — except the question mark's dot, which the
+ * canvas fills.
  */
 function ReasonIcon({ name, size = 21, color = '#1D1C1A' }: { name: ReasonIconName; size?: number; color?: string }) {
-  const line = { stroke: color, strokeWidth: 2, fill: 'none' as const };
-  const round = { ...line, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  const line = { stroke: color, strokeWidth: 2, fill: 'none' as const, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      {name === 'sleep' ? <Path d="M14.5 3.5a8.5 8.5 0 1 0 6 12.5 8 8 0 0 1-6-12.5z" {...line} strokeLinejoin="round" /> : null}
-      {name === 'work' ? (
+      {name === 'relationship' ? (
         <>
-          <Rect x={3} y={8} width={18} height={12} rx={2.5} {...round} />
-          <Path d="M9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18" {...round} />
+          <Path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" {...line} />
+          <Path d="M15.5 11.5a2.5 2.5 0 1 0-1.8-4.3" {...line} />
+          <Path d="M3.5 19c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5" {...line} />
+          <Path d="M15.8 15c1.9.4 3.3 1.6 3.7 3.6" {...line} />
         </>
       ) : null}
-      {name === 'phone' ? (
+      {name === 'family' ? (
         <>
-          <Rect x={7} y={2.5} width={10} height={19} rx={2.5} {...line} />
-          <Path d="M10.5 18.5h3" {...line} strokeLinecap="round" />
+          <Path d="M9 10a2.8 2.8 0 1 0 0-5.6A2.8 2.8 0 0 0 9 10Z" {...line} />
+          <Path d="M16.5 12.2a2.2 2.2 0 1 0 0-4.4" {...line} />
+          <Path d="M3.5 19c.5-3 2.6-4.6 5.5-4.6 2 0 3.6.7 4.6 2" {...line} />
+          <Path d="M14.2 19c.3-1.8 1.4-2.9 3-2.9 1.5 0 2.6 1 3 2.9" {...line} />
         </>
       ) : null}
-      {name === 'person' ? (
+      {name === 'school' ? (
         <>
-          <Circle cx={12} cy={8} r={3.6} {...line} />
-          <Path d="M4.5 20.5c1-4 4-6 7.5-6s6.5 2 7.5 6" {...line} strokeLinecap="round" />
+          <Path d="M4.5 9.5h15v9h-15Z" {...line} />
+          <Path d="M9.5 9.5V8a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 14.5 8v1.5" {...line} />
+          <Path d="M4.5 13h15" {...line} />
         </>
       ) : null}
-      {name === 'bolt' ? <Path d="M13 2L5 13.5h5.5L10 22l8-11.5h-5.5z" {...line} strokeLinejoin="round" /> : null}
-      {name === 'people' ? (
+      {name === 'money' ? (
         <>
-          <Circle cx={8.5} cy={9} r={3.2} {...round} />
-          <Circle cx={16.5} cy={9} r={3.2} {...round} />
-          <Path d="M2.5 20c.8-3.4 3.2-5 6-5 1.4 0 2.7.4 3.5 1.2.8-.8 2.1-1.2 3.5-1.2 2.8 0 5.2 1.6 6 5" {...round} />
+          <Path d="M12 19.5a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z" {...line} />
+          <Path d="M14.4 9.8c-.4-.8-1.3-1.3-2.4-1.3-1.5 0-2.6.8-2.6 1.9s1 1.5 2.6 1.8c1.6.3 2.6.8 2.6 1.9s-1.2 1.9-2.6 1.9c-1.2 0-2.1-.5-2.5-1.3" {...line} />
+          <Path d="M12 7v10" {...line} />
         </>
       ) : null}
-      {name === 'coin' ? (
+      {name === 'selfImage' ? (
         <>
-          <Circle cx={12} cy={12} r={8.5} {...round} />
-          <Path d="M12 7.5v9M14.5 9.8a2.6 2.6 0 0 0-2.5-1.3c-1.5 0-2.5.8-2.5 2s1 1.8 2.5 2 2.5.7 2.5 2-1 2-2.5 2a2.6 2.6 0 0 1-2.5-1.3" {...round} />
+          <Path d="M5.5 4.5h13v15h-13Z" {...line} />
+          <Path d="M12 11.2a2.3 2.3 0 1 0 0-4.6 2.3 2.3 0 0 0 0 4.6Z" {...line} />
+          <Path d="M8.5 17c.5-1.8 1.8-2.7 3.5-2.7s3 .9 3.5 2.7" {...line} />
         </>
       ) : null}
-      {name === 'pulse' ? <Path d="M2.5 12.5h4l2-5 3.5 10 2.5-6 1.5 3h5.5" {...round} /> : null}
-      {name === 'home' ? (
+      {name === 'lonely' ? (
         <>
-          <Path d="M3.5 10.5 12 3.5l8.5 7" {...round} />
-          <Path d="M5.5 9.8V20.5h13V9.8" {...round} />
+          <Path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" {...line} />
+          <Path d="M5.5 19c.7-3.4 3.2-5 6.5-5s5.8 1.6 6.5 5" {...line} />
         </>
       ) : null}
-      {name === 'run' ? (
+      {name === 'health' ? <Path d="M12 19.5s-7-4.4-7-9.7a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6c0 5.3-7 9.7-7 9.7Z" {...line} /> : null}
+      {name === 'unknown' ? (
         <>
-          <Circle cx={14.5} cy={4.8} r={2.2} {...round} />
-          <Path d="M6 21l3.5-5 3-2.5-1.5-4.5L8 11l-2.5 1M11 9l4 2 1.5 4M15 15l3 1" {...round} />
+          <Path d="M9.3 9a2.7 2.7 0 1 1 3.7 2.5c-.9.35-1.5 1-1.5 2v.3" {...line} />
+          {/* the canvas fills this dot rather than stroking it */}
+          <Circle cx={11.7} cy={17.2} r={1.3} fill={color} />
         </>
       ) : null}
-      {name === 'glass' ? (
-        <>
-          <Path d="M6.5 3.5h11l-1.5 7a4 4 0 0 1-8 0z" {...round} />
-          <Path d="M12 14.5v6M8.5 20.5h7" {...round} />
-        </>
-      ) : null}
-      {name === 'clock' ? (
-        <>
-          <Circle cx={12} cy={12} r={8.5} {...round} />
-          <Path d="M12 7v5.3l3.3 2" {...round} />
-        </>
-      ) : null}
-      {name === 'star' ? <Path d="M12 3.2l2.6 5.6 6 .8-4.4 4.2 1.1 6.1L12 17l-5.3 2.9 1.1-6.1L3.4 9.6l6-.8z" {...round} /> : null}
       {name === 'other' ? (
         <>
           <Circle cx={6} cy={12} r={1.4} fill={color} />
@@ -480,19 +330,23 @@ function ReasonIcon({ name, size = 21, color = '#1D1C1A' }: { name: ReasonIconNa
 /**
  * One reason. `UI Final` rebuilt the row: 60 tall on an 18 radius, the glyph
  * lifted onto its own 38pt disc, the label down to 15 and stepping to 600 once
- * the row is on, and the selected ring drawn at 1.6 rather than 2. Rows pitch
- * 72 apart (206 → 278 → 350 …), so the 12 gap the list is laid out with is what
- * 60 + 12 comes to.
+ * the row is on, and the selected ring drawn at 1.6 rather than 2. `UI Final 1`
+ * tightens the pitch from 72 to 66 — a 6 gap on a 60 row — and places the rows
+ * at the canvas's own tops rather than flowing them.
  */
-function ReasonRow({ label, icon, selected, onPress }: { label: string; icon: ReasonIconName; selected: boolean; onPress: () => void }) {
+function ReasonRow({ label, icon, top, selected, onPress }: { label: string; icon: ReasonIconName; top: number; selected: boolean; onPress: () => void }) {
   return (
     <PressScale
       onPress={onPress}
       accessibilityRole="checkbox"
       accessibilityState={{ checked: selected }}
       style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
         height: 60,
-        minHeight: 60,
+        minHeight: 0,
         borderRadius: 18,
         borderCurve: 'continuous',
         backgroundColor: '#FFFFFF',
@@ -516,13 +370,18 @@ function ReasonRow({ label, icon, selected, onPress }: { label: string; icon: Re
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        {selected ? (
-          <Svg width={12} height={12} viewBox="0 0 14 14">
-            <Path d="M2.5 7.5l3 3 6-7" stroke="#F4F3F0" strokeWidth={2.2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          </Svg>
-        ) : null}
+        {selected ? <BoardTick /> : null}
       </View>
     </PressScale>
+  );
+}
+
+/** The tick inside a selected row's disc — 12 x 10 in a 12 x 10 box. */
+function BoardTick() {
+  return (
+    <Svg width={12} height={10} viewBox="0 0 12 10" fill="none">
+      <Path d="M1.5 5L4.5 8L10.5 1.5" stroke="#FFFFFF" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
   );
 }
 
@@ -541,207 +400,96 @@ export function BoardSub({ children }: { children: string }) {
 }
 
 /**
- * `Checkin Emotions` — the feeling wheel, with the wider vocabulary opening
- * into the band the canvas leaves empty under it.
+ * `21E2 · Night — Emotions`.
  *
- * Exported whole because `UI Final` moved this board out of the standalone
- * check-in and into the night flow as its second step, and both draw the same
- * pixels.
+ * The eight-sector wheel is withdrawn in `UI Final 1` and the board is eight
+ * pill rows instead — a fixed vocabulary, not one that turns with the dial, and
+ * no chip grid or composer under it: the rows run 218 → 720 and the pill is at
+ * 744, so there is no band left to open one into.
+ *
+ * Exported whole because the bundle draws this board both as the night flow's
+ * second step and as the standalone check-in's.
  */
 export function EmotionsBoard({
   feel,
-  wheel,
   emotions,
   onChange,
-  ctaTop,
 }: {
   feel: string;
-  wheel: readonly string[];
   emotions: string[];
   onChange: (next: string[]) => void;
-  ctaTop: number;
 }) {
-  const [moreFeelings, setMoreFeelings] = useState(false);
-  const [ownFeeling, setOwnFeeling] = useState('');
   const toggle = (word: string) => onChange(emotions.includes(word) ? emotions.filter((item) => item !== word) : [...emotions, word]);
-  // Words picked before the mood was changed, or added by hand, stay picked —
-  // they just no longer have a sector, so they get their own row.
-  const offWheel = emotions.filter((word) => !wheel.includes(word));
-  const rest = ALL_FEELINGS.filter((word) => !wheel.includes(word));
-  const addOwn = () => {
-    const word = ownFeeling.trim();
-    if (word && !emotions.some((v) => v.toLowerCase() === word.toLowerCase())) onChange([...emotions, word]);
-    setOwnFeeling('');
-  };
-
   return (
     <>
       <BoardTitle>{feel}</BoardTitle>
-      {/* The canvas says the same thing twice: a sub over the wheel and a
-          second line under it. One of them is the rule, so the rule stays and
-          the other goes. */}
-      <BoardSub>Pick as many as fit.</BoardSub>
-      <EmotionWheel emotions={wheel} selected={emotions} onToggle={toggle} />
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        style={{ position: 'absolute', left: 0, right: 0, top: 552, height: Math.max(0, ctaTop - 552) }}
-        contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 12 }}>
-        {offWheel.length ? (
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 12 }}>
-            {offWheel.map((word) => (
-              <FeelingChip key={word} label={word} on onPress={() => toggle(word)} />
-            ))}
-          </View>
-        ) : null}
-
-        <PressScale
-          onPress={() => setMoreFeelings((open) => !open)}
-          accessibilityRole="button"
-          accessibilityState={{ expanded: moreFeelings }}
-          style={{ minHeight: 40, alignItems: 'center', justifyContent: 'center' }}>
-          <AppText style={[sans('500'), { fontSize: 14.5, color: '#55534E' }]}>{moreFeelings ? 'Fewer words' : 'Something else…'}</AppText>
-        </PressScale>
-
-        {moreFeelings ? (
-          <>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
-              {rest.map((word) => (
-                <FeelingChip key={word} label={word} on={emotions.includes(word)} onPress={() => toggle(word)} />
-              ))}
-            </View>
-            <View
-              style={{
-                marginTop: 14,
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 8,
-                backgroundColor: '#FFFFFF',
-                borderRadius: 22,
-                paddingLeft: 16,
-                paddingRight: 6,
-                minHeight: 44,
-                boxShadow: '0 0 0 1px rgba(0,0,0,0.10)',
-              }}>
-              <TextInput
-                value={ownFeeling}
-                onChangeText={setOwnFeeling}
-                placeholder="In your own word"
-                placeholderTextColor={colors.textSofter}
-                returnKeyType="done"
-                onSubmitEditing={addOwn}
-                style={[sans('400'), { flex: 1, paddingVertical: 10, fontSize: 15.5, color: '#1D1C1A' }]}
-              />
-              <PressScale
-                onPress={addOwn}
-                disabled={!ownFeeling.trim()}
-                accessibilityRole="button"
-                accessibilityLabel="Add this word"
-                style={{
-                  height: 32,
-                  minHeight: 0,
-                  paddingHorizontal: 14,
-                  borderRadius: 16,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#131313',
-                  opacity: ownFeeling.trim() ? 1 : 0.3,
-                }}>
-                <AppText style={[sans('600'), { fontSize: 13.5, color: '#FFFFFF' }]}>Add</AppText>
-              </PressScale>
-            </View>
-          </>
-        ) : null}
-      </ScrollView>
+      <BoardSub>Pick any that ring true.</BoardSub>
+      {EMOTION_ROWS.map((word, i) => (
+        <EmotionRow key={word} label={word} top={218 - 54 + i * 64} selected={emotions.includes(word)} onPress={() => toggle(word)} />
+      ))}
     </>
   );
 }
 
 /**
- * `Checkin Reasons` — what fed it. Rows start at canvas 206 (152 here) and
- * pitch 72, which is the 60 row plus the 12 the list is gapped with.
+ * One feeling. 54 tall on a 16 radius, no glyph plate — the row carries the
+ * word and the disc and nothing else.
  */
-export function ReasonsBoard({ reasons, onChange, ctaTop }: { reasons: string[]; onChange: (next: string[]) => void; ctaTop: number }) {
-  const [otherReason, setOtherReason] = useState('');
-  const toggle = (label: string) => onChange(reasons.includes(label) ? reasons.filter((item) => item !== label) : [...reasons, label]);
-  const addOwn = () => {
-    const word = otherReason.trim();
-    if (word && !reasons.some((v) => v.toLowerCase() === word.toLowerCase())) onChange([...reasons, word]);
-    setOtherReason('');
-  };
-
+function EmotionRow({ label, top, selected, onPress }: { label: string; top: number; selected: boolean; onPress: () => void }) {
   return (
-    <>
-      <BoardTitle>What fed it?</BoardTitle>
-      <BoardSub>Nothing here counts against you.</BoardSub>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        style={{ position: 'absolute', left: 0, right: 0, top: 152, height: Math.max(0, ctaTop - 152) }}
-        contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 22, gap: 12 }}>
-        {REASONS.map(([label, icon]) => (
-          <ReasonRow key={label} label={label} icon={icon} selected={reasons.includes(label)} onPress={() => toggle(label)} />
-        ))}
-
-        {/* Anything already typed in shows as its own row, so it can be taken
-            off again the same way the listed ones can. */}
-        {reasons
-          .filter((reason) => !REASONS.some(([label]) => label === reason))
-          .map((reason) => (
-            <ReasonRow key={reason} label={reason} icon="other" selected onPress={() => toggle(reason)} />
-          ))}
-
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 14,
-            backgroundColor: '#FFFFFF',
-            borderRadius: 18,
-            borderCurve: 'continuous',
-            paddingLeft: 18,
-            paddingRight: 6,
-            minHeight: 60,
-            boxShadow: '0 0 0 1px rgba(0,0,0,0.10)',
-          }}>
-          <View style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
-            <ReasonIcon name="other" />
-          </View>
-          <TextInput
-            value={otherReason}
-            onChangeText={setOtherReason}
-            placeholder="Something else"
-            placeholderTextColor={colors.textSofter}
-            returnKeyType="done"
-            onSubmitEditing={addOwn}
-            style={[sans('500'), { flex: 1, paddingVertical: 12, fontSize: 15, color: '#1D1C1A' }]}
-          />
-          <PressScale
-            onPress={addOwn}
-            disabled={!otherReason.trim()}
-            accessibilityRole="button"
-            accessibilityLabel="Add this reason"
-            style={{
-              height: 34,
-              minHeight: 0,
-              paddingHorizontal: 14,
-              borderRadius: 17,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#131313',
-              opacity: otherReason.trim() ? 1 : 0.3,
-            }}>
-            <AppText style={[sans('600'), { fontSize: 13.5, color: '#FFFFFF' }]}>Add</AppText>
-          </PressScale>
-        </View>
-      </ScrollView>
-    </>
+    <PressScale
+      onPress={onPress}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked: selected }}
+      style={{
+        position: 'absolute',
+        left: 24,
+        right: 24,
+        top,
+        height: 54,
+        minHeight: 0,
+        borderRadius: 16,
+        borderCurve: 'continuous',
+        backgroundColor: '#FFFFFF',
+        boxShadow: selected ? '0 0 0 1.6px #131313' : '0 0 0 1px rgba(0,0,0,0.10)',
+        paddingHorizontal: 18,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 14,
+      }}>
+      <AppText style={[sans(selected ? '600' : '500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{label}</AppText>
+      <View
+        style={{
+          width: 24,
+          height: 24,
+          borderRadius: 12,
+          backgroundColor: selected ? '#131313' : 'transparent',
+          boxShadow: selected ? undefined : 'inset 0 0 0 1.5px rgba(0,0,0,0.22)',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        {selected ? <BoardTick /> : null}
+      </View>
+    </PressScale>
   );
 }
 
-/** The eight words the wheel offers for a given mood rung. */
-export function wheelFor(mood: number) {
-  return WHEELS[moodRung(mood)];
+/**
+ * `21E3 · Night — What caused it`.
+ *
+ * Eight rows, no sub-title, and no "something else" composer: the rows run
+ * 188 → 710 on a 66 pitch and the pill is at 744, which leaves no band for one.
+ */
+export function ReasonsBoard({ reasons, onChange }: { reasons: string[]; onChange: (next: string[]) => void }) {
+  const toggle = (label: string) => onChange(reasons.includes(label) ? reasons.filter((item) => item !== label) : [...reasons, label]);
+  return (
+    <>
+      <BoardTitle>What caused the feeling?</BoardTitle>
+      {REASONS.map(([label, icon], i) => (
+        <ReasonRow key={label} label={label} icon={icon} top={188 - 54 + i * 66} selected={reasons.includes(label)} onPress={() => toggle(label)} />
+      ))}
+    </>
+  );
 }
 
 /** What the flow comes back with. The last two are the morning variant's. */
@@ -803,7 +551,6 @@ export function CheckinFlow({
     onDone({ mood: moodIndex(mood) + 1, emotions, reasons, yesterdayDone, action: morning ? todayAction : undefined, ...over });
 
   const goBack = () => (step === 0 ? onExit() : setStep((current) => current - 1));
-  const wheel = WHEELS[moodIndex(mood)];
 
   return (
     <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
@@ -838,7 +585,7 @@ export function CheckinFlow({
             </>
           ) : null}
 
-          {step === 1 ? <EmotionsBoard feel={feel} wheel={wheel} emotions={emotions} onChange={setEmotions} ctaTop={ctaTop} /> : null}
+          {step === 1 ? <EmotionsBoard feel={feel} emotions={emotions} onChange={setEmotions} /> : null}
 
           {morning && step === 2 ? (
             <>
@@ -858,7 +605,7 @@ export function CheckinFlow({
             </>
           ) : null}
 
-          {!morning && step === 2 ? <ReasonsBoard reasons={reasons} onChange={setReasons} ctaTop={ctaTop} /> : null}
+          {!morning && step === 2 ? <ReasonsBoard reasons={reasons} onChange={setReasons} /> : null}
 
           {step === 0 ? <PrimaryButton label="Continue" top={ctaTop} onPress={() => setStep(1)} /> : null}
           {step === 1 ? <PrimaryButton label="Continue" top={ctaTop} enabled={emotions.length > 0} onPress={() => setStep(2)} /> : null}

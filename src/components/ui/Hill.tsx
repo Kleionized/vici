@@ -1,5 +1,6 @@
+import { useId } from 'react';
 import { View, type ViewStyle } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
 
 /**
  * The canvas's hill: a box whose top edge is an elliptical arc.
@@ -23,18 +24,40 @@ export function Hill({
   /** The vertical radius the canvas states, in points. */
   rise,
   color,
+  /**
+   * Where the canvas fades the hill out instead of filling it flat:
+   * `linear-gradient(180deg, C 0%, C 45%, transparent 100%)` is
+   * `fade={[0.45, 1]}`.
+   */
+  fade,
   style,
 }: {
   height: number;
   rise: number;
   color: string;
+  fade?: [number, number];
   style?: ViewStyle;
 }) {
+  const id = useId().replace(/:/g, '');
   const ry = (rise / height) * 100;
+  const d = `M0,${ry} A50,${ry} 0 0 1 100,${ry} L100,100 L0,100 Z`;
   return (
     <View pointerEvents="none" style={[{ height, overflow: 'hidden' }, style]}>
-      <Svg width="100%" height="100%" viewBox={`0 0 100 100`} preserveAspectRatio="none">
-        <Path d={`M0,${ry} A50,${ry} 0 0 1 100,${ry} L100,100 L0,100 Z`} fill={color} />
+      <Svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {fade ? (
+          <>
+            <Defs>
+              <LinearGradient id={`hill${id}`} x1="0" y1="0" x2="0" y2="1">
+                <Stop offset="0" stopColor={color} stopOpacity={1} />
+                <Stop offset={fade[0]} stopColor={color} stopOpacity={1} />
+                <Stop offset={fade[1]} stopColor={color} stopOpacity={0} />
+              </LinearGradient>
+            </Defs>
+            <Path d={d} fill={`url(#hill${id})`} />
+          </>
+        ) : (
+          <Path d={d} fill={color} />
+        )}
       </Svg>
     </View>
   );

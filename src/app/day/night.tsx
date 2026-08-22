@@ -6,9 +6,9 @@ import Svg, { Path } from 'react-native-svg';
 
 import {
   ActionButton,
-  ActionBand,
   ActionCard,
   ActionTitle,
+  CheckinCover,
   DayBadge,
   DayClosing,
   DayDots,
@@ -21,9 +21,10 @@ import {
   NightActionArt,
   NightSky,
   ScaleReading,
+  WarmNightSky,
   nightAction,
 } from '@/components/day/kit';
-import { EmotionsBoard, PrimaryButton, ReasonsBoard, checkinCtaTop, wheelFor } from '@/components/MoodLogger';
+import { EmotionsBoard, PrimaryButton, ReasonsBoard, checkinCtaTop } from '@/components/MoodLogger';
 import { lessonForDay } from '@/content/curriculum84';
 import { AppText, PressScale } from '@/components/ui';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
@@ -48,8 +49,31 @@ import { fonts, sans } from '@/lib/theme';
 
 const RAIL = 6;
 
-/** The rail index each screen shows, or `null` for the railless aside. */
-const RAIL_AT = [0, 1, 2, 3, 4, null, 5] as const;
+/**
+ * The steps, in the order `UI Final 1` numbers them: a cover, then the six the
+ * rail counts, with the action aside between the last of them and the close.
+ *
+ * The bundle swapped Record with Reasons and Reflection — the record is read
+ * back *after* the day has been named, not before — and put a cover in front of
+ * the whole thing.
+ */
+const COVER = 0;
+const MOOD = 1;
+const EMOTIONS = 2;
+const REASONS = 3;
+const REFLECTION = 4;
+const RECORD = 5;
+const ACTION = 6;
+const CLOSED = 7;
+
+/** The rail index each screen shows, or `null` where the frame draws none. */
+const RAIL_AT = [null, 0, 1, 2, 3, 4, null, 5] as const;
+
+/**
+ * `21E4 · Reflection` and `21E5 · Record` draw no Back row; every other frame
+ * in the flow does.
+ */
+const NO_BACK = new Set<number>([COVER, REFLECTION, RECORD]);
 
 /** What the dial reads back. The canvas draws the middle rung. */
 const MOOD_READ: [string, string][] = [
@@ -63,10 +87,6 @@ const MOOD_READ: [string, string][] = [
 function dayNumber(createdAt?: number): number {
   if (!createdAt) return 1;
   return Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1);
-}
-
-function clockTime(ms: number): string {
-  return new Date(ms).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
 }
 
 export default function Night() {
@@ -92,8 +112,7 @@ export default function Night() {
 
   const midnight = new Date().setHours(0, 0, 0, 0);
   const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && e.createdAt >= midnight);
-  const lastUrge = urges[urges.length - 1];
-  const rodeOut = urges.filter((e) => e.type === 'urge_rode_out').length;
+  const lapses = (events ?? []).filter((e) => e.type === 'lapse' && e.createdAt >= midnight).length;
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight);
   const finished = (lessons ?? []).find((lesson) => {
     const at = progress?.[lesson.slug]?.completedAt;
@@ -126,15 +145,28 @@ export default function Night() {
     close();
   }
 
-  const label = ['Continue', 'Continue', 'Continue', 'Continue', 'Close the day', '', 'Goodnight'][step];
-  const dark = step === 0 || step === 6;
-  // Steps 2 and 4 are the check-in's own boards, which draw the wider pill.
-  const wide = step === 1 || step === 3;
+  // `21E4 · Reflection`'s pill says "Close the day" even though two steps
+  // follow it. That is what the frame draws.
+  const label = ['', 'Continue', 'Continue', 'Continue', 'Close the day', 'Continue', '', 'Goodnight'][step];
+  const dark = step === MOOD || step === CLOSED;
+  // The two boards the check-in brings in draw the wider pill.
+  const wide = step === EMOTIONS || step === REASONS;
   const ctaTop = checkinCtaTop(height);
   const take = (keep: boolean) => {
     setAction(keep);
-    setStep(6);
+    setStep(CLOSED);
   };
+
+  // The cover is a whole frame — no rail, no Back, no shell pill — so it is
+  // returned rather than drawn inside `DayShell`.
+  if (step === COVER) {
+    return (
+      <>
+        <StatusBar style="light" />
+        <CheckinCover part="night" day={day} onBegin={() => setStep(MOOD)} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -142,9 +174,9 @@ export default function Night() {
       <DayShell
         // the canvas gives the action step no rail at all
         rail={RAIL_AT[step] == null ? undefined : <DayDots step={RAIL_AT[step]!} count={RAIL} light={dark} />}
-        onBack={step === 0 ? close : () => setStep((s) => s - 1)}
+        onBack={NO_BACK.has(step) ? undefined : step === MOOD ? () => setStep(COVER) : () => setStep((s) => s - 1)}
         ctaWide={wide}
-        cta={step === 5 || wide ? undefined : () => (step === 6 ? void finish() : setStep((s) => s + 1))}
+        cta={step === ACTION || wide ? undefined : () => (step === CLOSED ? void finish() : setStep((s) => s + 1))}
         ctaLabel={label}
         onMeasure={setHeight}
         footer={
@@ -152,24 +184,26 @@ export default function Night() {
             <PrimaryButton
               label="Continue"
               top={ctaTop}
-              enabled={step === 1 ? emotions.length > 0 : reasons.length > 0}
+              enabled={step === EMOTIONS ? emotions.length > 0 : reasons.length > 0}
               onPress={() => setStep((s) => s + 1)}
             />
-          ) : step === 5 ? (
+          ) : step === ACTION ? (
             <>
               <ActionButton label="Done" onPress={() => take(true)} />
               <PressScale
                 onPress={() => take(false)}
                 accessibilityRole="button"
                 hitSlop={{ top: 12, bottom: 12, left: 24, right: 24 }}
-                style={{ position: 'absolute', left: 0, right: 0, bottom: 10, minHeight: 0, alignItems: 'center' }}>
-                <AppText style={[sans('500'), { fontSize: 14.5, color: '#8B8882' }]}>Skip tonight</AppText>
+                style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0 }}>
+                {/* the canvas centres the words inside a full-width box rather
+                    than shrinking the box to the words */}
+                <AppText center style={[sans('500'), { fontSize: 14.5, color: '#8B8882' }]}>Skip tonight</AppText>
               </PressScale>
             </>
           ) : undefined
         }
-        backdrop={step === 0 ? <NightSky height={212} hillTop={142} /> : step === 6 ? <NightSky height={360} hillTop={290} /> : undefined}>
-        {step === 0 ? (
+        backdrop={step === MOOD ? <WarmNightSky /> : step === CLOSED ? <NightSky height={360} hillTop={290} /> : undefined}>
+        {step === MOOD ? (
           <>
             <DayTitle top={216}>How was today?</DayTitle>
             <MoodDial value={mood} onChange={setMood} top={326} />
@@ -177,39 +211,33 @@ export default function Night() {
           </>
         ) : null}
 
-        {/* `Night 1 Mood` selects the middle dial circle and `Checkin Emotions`
-            draws Calm/Tense/Tired/Hopeful/Flat/Proud/Lonely/Restless beside it,
-            which the app files one rung higher — so the wheel reads from the
-            rung above the dial's own index. */}
-        {step === 1 ? <EmotionsBoard feel="What did today feel like?" wheel={wheelFor(mood + 2)} emotions={emotions} onChange={setEmotions} ctaTop={ctaTop} /> : null}
+        {/* `UI Final 1` withdraws the mood-keyed wheel: `Checkin Emotions`
+            draws one fixed set of eight — Calm/Tense/Tired/Hopeful/Flat/Proud/
+            Lonely/Restless — whatever the dial said. */}
+        {step === EMOTIONS ? <EmotionsBoard feel="What did today feel like?" emotions={emotions} onChange={setEmotions} /> : null}
 
-        {step === 2 ? (
+        {step === RECORD ? (
           <>
             <DayTitle top={116}>The record.</DayTitle>
-            <View style={{ position: 'absolute', left: 12, right: 12, top: 186, height: 230, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
-              <LedgerRow
-                top={14}
-                mark="check"
-                glyph={[13, 11]}
-                title={pledge ? 'Pledge kept' : 'No pledge signed today'}
-                detail={pledge ? `signed ${clockTime(pledge.createdAt)}` : undefined}
-              />
-              <LedgerRule top={63} />
+            {/* the card grew a fourth row in `UI Final 1` — the relapse count —
+                and dropped every trailing detail string, so each row is now the
+                plate, the glyph and one sentence */}
+            <View style={{ position: 'absolute', left: 12, right: 12, top: 186, height: 284, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
+              <LedgerRow top={14} mark="check" glyph={[13, 11]} title={pledge ? 'Pledge kept' : 'No pledge signed today'} />
+              <LedgerRule top={62} />
+              {/* the canvas draws "One urge surfed" — a count and the verb, no
+                  timestamp; the plural it never shows follows the same shape */}
               <LedgerRow
                 top={70}
                 mark="wave"
                 glyph={[17, 12]}
-                title={lastUrge ? `${urges.length === 1 ? 'One urge' : `${urges.length} urges`} · ${clockTime(lastUrge.createdAt)}` : 'No urges today'}
-                detail={lastUrge ? (rodeOut === urges.length ? 'rode it out' : 'logged') : undefined}
+                title={urges.length === 0 ? 'No urges today' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`}
               />
-              <LedgerRule top={119} />
-              <LedgerRow
-                top={126}
-                mark="play"
-                glyph={[11, 14]}
-                title={finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson today'}
-                detail={undefined}
-              />
+              <LedgerRule top={118} />
+              {/* the ledger's only warm plate */}
+              <LedgerRow top={126} mark="cross" glyph={[16, 16]} plate="#F3E2C0" title={lapses === 1 ? '1 relapse' : `${lapses} relapses`} />
+              <LedgerRule top={174} />
+              <LedgerRow top={182} mark="play" glyph={[11, 14]} title={finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson today'} />
               <PressScale
                 onPress={() => router.push('/urge-log')}
                 accessibilityRole="button"
@@ -222,13 +250,13 @@ export default function Night() {
                 <AppText style={[sans('600'), { fontSize: 13.5, color: '#55534E' }]}>Add to the record</AppText>
               </PressScale>
             </View>
-            <JournalMark top={446} />
+            <JournalMark top={502} />
           </>
         ) : null}
 
-        {step === 3 ? <ReasonsBoard reasons={reasons} onChange={setReasons} ctaTop={ctaTop} /> : null}
+        {step === REASONS ? <ReasonsBoard reasons={reasons} onChange={setReasons} /> : null}
 
-        {step === 4 ? (
+        {step === REFLECTION ? (
           <>
             <DayTitle top={176}>Anything worth keeping?</DayTitle>
             <View style={{ position: 'absolute', left: 12, right: 12, top: 256, height: 150, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.07)' }}>
@@ -248,17 +276,16 @@ export default function Night() {
           </>
         ) : null}
 
-        {step === 5 ? (
+        {step === ACTION ? (
           <>
             <ActionTitle>Tonight’s action</ActionTitle>
-            {/* the pill sits 50 off the foot and stands 54, with Skip under it */}
-            <ActionBand bottom={50 + 54}>
-              <ActionCard art={<NightActionArt />} mark="bed" label={lessonTitle} line={task} />
-            </ActionBand>
+            {/* the canvas pins the card at `top: 236` rather than centring it in
+                the band between the title and the pill */}
+            <ActionCard top={182} art={<NightActionArt />} mark="bed" label={lessonTitle} line={task} />
           </>
         ) : null}
 
-        {step === 6 ? (
+        {step === CLOSED ? (
           <>
             <DayBadge top={366} mark="check" />
             <DayClosing top={458} headline={`Day ${day}, closed.`} note="See you in the morning." />

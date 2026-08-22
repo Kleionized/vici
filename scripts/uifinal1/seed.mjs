@@ -105,12 +105,19 @@ for (let i = 0; i < 24; i++) {
   });
 }
 
-/** `21 · Today — p2` sits on lesson 5 of week II, so four are behind it. */
+/**
+ * `21 · Today — p2` sits on lesson 5 of week II, so four are behind it: week
+ * II's first four, which `lessonSlug()` names `day-08` … `day-11`.
+ *
+ * `21E5 · Night — Record` reads "Part IV finished", so the fourth of them — the
+ * one whose `dayInWeek` is 4 — has to be finished *today*, not on some earlier
+ * day. They are listed newest first and stepped back two days apiece.
+ */
 const progress = {};
-const LESSON_SLUGS = ['w01-l01', 'w01-l02', 'w01-l03', 'w01-l04'];
+const LESSON_SLUGS = ['day-11', 'day-10', 'day-09', 'day-08'];
 LESSON_SLUGS.forEach((slug, i) => {
-  progress[slug] = { userId: 'SEED', lessonSlug: slug, status: 'completed', completedAt: at(DAYS_IN - 2 - i * 2, 8, 0), fitsMeRating: 4 };
-  ev('win', at(DAYS_IN - 2 - i * 2, 8, 1), { note: 'Lesson finished.' });
+  progress[slug] = { userId: 'SEED', lessonSlug: slug, status: 'completed', completedAt: at(i * 2, 8, 0), fitsMeRating: 4 };
+  ev('win', at(i * 2, 8, 1), { note: 'Lesson finished.' });
 });
 
 const data = {

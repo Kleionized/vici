@@ -108,6 +108,7 @@ element on the frame is here, in paint order, indented by depth.
       <path> d="M1.5 1.5L6.5 7l-5 5.5"  fill="none"  stroke="rgba(244,243,240,0.5)"  stroke-width="2"  stroke-linecap="round"
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -173,14 +174,14 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 43.4, 493.2 | box · paint · type | 43.4, 493.2 · 11.2 × 11.3 · — · — | identical | match |
 | “Today’s task” | box · paint · type | 76, 491.5 · 79 × 15 · — · 13px/600/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 335, 486 | radius | 50% | 13px | **mismatch** |
-| “Put your phone somewhere difficult to access bef” | box · paint | 32, 534 · 325 × 52 · — | *absent* | **mismatch** |
+| “Put your phone somewhere difficult to access bef” | box · paint · type | 32, 534 · 325 × 52 · — · 18px/600/-0.1px/26px/rgb(29, 28, 26) | same box and metrics, value "Phone out of the bedroom" | match (value) |
 | “This week” | box · paint · type | 20, 138 · 61.3 × 14.5 · — · 12.5px/600/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 318.6, 136 | box · paint · type | 318.6, 136 · 54.4 × 13 · — · — | identical | match |
 | svg at 366, 136.5 | box · paint · type | 366, 136.5 · 7 × 12 · — · — | identical | match |
 | path at 367.4, 137.8 | box · paint · type | 367.4, 137.8 · 4.3 × 9.4 · — · — | identical | match |
 | div at 12, 164 | box · paint · type | 12, 164 · 369 × 152 · rgb(255, 255, 255) · r 20px · rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(40, 38, 32, 0.07) 0px 10px 24px 0px · — | identical | match |
-| “Naming your triggers” | box · paint | 32, 190 · 182.7 × 22.5 · — | *absent* | **mismatch** |
-| “Lesson 5 · Week II” | box · paint | 32, 220 · 105.7 × 14.5 · — | *absent* | **mismatch** |
+| “Naming your triggers” | box · paint · type | 32, 190 · 182.7 × 22.5 · — · 19px/600/-0.2px/normal/rgb(29, 28, 26) | same box and metrics, value "Choose Your Action" | match (value) |
+| “Lesson 5 · Week II” | box · paint · type | 32, 220 · 105.7 × 14.5 · — · 12.5px/400/normal/normal/rgb(139, 136, 130) | same box and metrics, value "Lesson 6 · Week VI" | match (value) |
 | div at 229, 180 | box · paint · type | 229, 180 · 108 × 80 · r 999px 999px 0px 0px · — | identical | match |
 | div at 229, 180 | box · paint · type | 229, 180 · 108 × 80 · — · — | identical | match |
 | div at 248, 190 | box · paint | 248, 190 · 70 × 58 · r 50% | *absent* | **mismatch** |
@@ -206,4 +207,4 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 370, 731 | box · paint · type | 370, 731 · 7 × 12 · — · — | identical | match |
 | path at 371.4, 732.3 | box · paint · type | 371.4, 732.3 · 4.3 × 9.4 · — · — | identical | match |
 
-**78 elements compared; 46 match, 32 differ.**
+**78 elements compared; 49 match, 29 differ.**

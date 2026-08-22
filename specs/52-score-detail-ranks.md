@@ -107,6 +107,7 @@ element on the frame is here, in paint order, indented by depth.
       <div> width:6px  height:6px  background:#131313  border-radius:50%
 ```
 
+
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -189,7 +190,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 80, 714.3 | box · paint · type | 80, 714.3 · 57.4 × 31.5 · — · — | identical | match |
 | “60 to go” | box · paint · type | 80, 714.3 · 57.4 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 149.4, 730 | box · paint · type | 149.4, 730 · 49.6 × 0 · — · — | identical | match |
-| “About a week at this pace. Steady beats fast.” | box · paint | 211, 713 · 152 × 34 · — | *absent* | **mismatch** |
+| “About a week at this pace. Steady beats fast.” | box · paint · type | 211, 713 · 152 × 34 · — · 12px/400/normal/17px/rgb(85, 83, 78) | same box and metrics, value "About 2 weeks at this pace. Steady beats fast." | match (value) |
 | div at 0, 806 | box · paint · type | 0, 806 · 393 × 6 · — · — | identical | match |
 | div at 179.5, 806 | background | rgba(19, 19, 19, 0.16) | rgb(19, 19, 19) | **mismatch** |
 | div at 179.5, 806 | radius | 50% | 3px | **mismatch** |
@@ -197,4 +198,4 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 207.5, 806 | background | rgb(19, 19, 19) | rgba(19, 19, 19, 0.16) | **mismatch** |
 | div at 207.5, 806 | radius | 50% | 3px | **mismatch** |
 
-**68 elements compared; 48 match, 20 differ.**
+**68 elements compared; 49 match, 19 differ.**

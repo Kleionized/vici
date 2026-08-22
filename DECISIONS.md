@@ -355,3 +355,66 @@ letter, the yearly drop — can be reached for review.
 The bar is now the canvas's three at the canvas's own centres and label widths. `/(app)/all` stays
 a route and is still reachable by URL; nothing else links to it. That is recorded in `REPORT.md`
 so the drawer is not lost by accident.
+
+## D025 — the reflection card's caret is the platform's, not a drawing
+
+`21E4 · Night — Reflection` draws a `<span display:inline-block width:2px
+height:18px background:#131313 vertical-align:-3px margin-left:3px>` immediately
+after the placeholder run. That is the frame's stand-in for a text cursor: the
+canvas is a static picture and has no editable field, so it paints the caret the
+way it paints the status-bar clock.
+
+`src/app/day/night.tsx`'s reflection step is a real `TextInput`, and iOS, Android
+and the web all draw their own caret in it — blinking, and only while focused.
+Painting the canvas's bar as well would show two carets while typing and a fake
+one while not.
+
+**Decision:** the caret is chrome in the same class as the status bar and the
+home indicator (D009) — the platform owns it, and it is not drawn. Everything
+else in the block is implemented literally: the placeholder run sits at the
+canvas's `left:20 right:20 top:22` inside the card, in Georgia italic at
+17/27 in `#8B8882`.
+
+Consequence for verification: the layout probe reads text out of DOM text nodes,
+and a placeholder is an attribute, so `dsg-68-night-reflection`'s placeholder row
+and caret row both read as MISSING in the app capture. The field's own box is
+captured at the same origin (`32 | 332`), which is the part a diff can check.
+
+## D026 — bottom-anchored offsets are measured off the frame edge, not the inset
+
+`src/app/_layout.tsx` shims the web preview's safe area to `{ top: 54, bottom: 0 }`
+because the canvas's 852 already contains the home-indicator zone: a canvas
+`bottom: 84` is 84 off the screen's own edge, on the canvas and on a real 852pt
+screen alike.
+
+`DayShell` (kit.tsx) contradicted that. It spent both insets — `edges={['top',
+'bottom']}` — so `ActionButton`'s `bottom: 50` and the night flow's `Skip
+tonight` at `bottom: 10` resolved to 50 and 10 off the edge under the shim, and
+to 84 and 44 only on a device that happens to report a 34pt bottom inset. The
+measured capture of `21E5B · Night — Tonight's action` put the Done pill 34
+below the frame's own 714.
+
+**Decision:** `DayShell` spends the top inset only, and every bottom-anchored
+child states the canvas's own number — `ActionButton` `bottom: 84`, Skip
+`bottom: 44`. The result is identical on the web preview and on any device, and
+it is the number the frame draws rather than one that moves with the hardware.
+
+`MoodLogger`'s `CheckinFlow` still takes both edges; it owns the morning frames,
+which are not yet implemented, and it is corrected when that group is built.
+
+## D027 — the seed's lesson slugs
+
+`scripts/uifinal1/seed.mjs` marked four lessons complete under the slugs
+`w01-l01` … `w01-l04`. The app names lessons `day-01` … `day-84`
+(`lessonSlug()`, `src/lib/curriculum.ts:23`), so none of the four matched a real
+lesson: the progress map was four orphan keys, and every screen that reads a
+finished lesson rendered its empty state.
+
+`21 · Today — p2` sits on lesson 5 of week II, and week II is days 8–14, so the
+four behind it are `day-08` … `day-11`. `21E5 · Night — Record` reads
+**"Part IV finished"**, which is `roman(dayInWeek)` of a lesson finished *today*,
+so `day-11` — week II's fourth — carries today's `completedAt` and the other
+three step back two days apiece.
+
+The lesson count is unchanged at four, so the score the frames print (1,240)
+is unchanged.
