@@ -88,9 +88,11 @@ export default function Relapse() {
 
   const page = PAGES[index];
   return (
-    <View style={{ flex: 1, backgroundColor: '#EDECE7' }}>
+    <View style={{ flex: 1, backgroundColor: PAPER }}>
       <StatusBar style="dark" />
-      {/* canvas top:52 against a 54pt bar — the sheet crests 2pt above the status bar's baseline */}
+      {/* canvas top:52 against a 54pt bar — the sheet crests 2pt above the
+          status bar's baseline. `UI Final 1` squared its top and flattened the
+          frame's ground to the sheet's own paper. */}
       <View
         style={{
           position: 'absolute',
@@ -98,8 +100,6 @@ export default function Relapse() {
           right: 0,
           top: insets.top - 2,
           bottom: 0,
-          borderTopLeftRadius: 24,
-          borderTopRightRadius: 24,
           backgroundColor: PAPER,
           overflow: 'hidden',
         }}>
@@ -108,7 +108,7 @@ export default function Relapse() {
           accessibilityRole="button"
           accessibilityLabel="Close"
           hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
-          style={{ position: 'absolute', right: 22, top: 24, minHeight: 0 }}>
+          style={{ position: 'absolute', right: 22, top: 18, minHeight: 0 }}>
           <Svg width={20} height={20} viewBox="0 0 20 20">
             <Path d="M3 3l14 14M17 3L3 17" stroke={MUTED} strokeWidth={2} strokeLinecap="round" />
           </Svg>
