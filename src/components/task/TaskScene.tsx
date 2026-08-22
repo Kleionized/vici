@@ -13,9 +13,11 @@ import Svg, {
   RadialGradient,
   Rect,
   Stop,
+  Text as SvgText,
 } from 'react-native-svg';
 
 import { TASK_SCENE_H, TASK_SCENE_W, TASK_SCENES, type TaskSceneLayer, type TaskSvgChild } from '@/content/taskScenes';
+import { fonts } from '@/lib/theme';
 
 /**
  * A day's task illustration, drawn from the layer list transcribed off the
@@ -240,6 +242,22 @@ function Layer({ layer, index, id, box }: { layer: TaskSceneLayer; index: number
           strokeWidth={insetW}
           transform={layer.rotate ? `rotate(${layer.rotate} ${x + w / 2} ${y + h})` : undefined}
         />
+      ) : null}
+      {/* One layer in the whole corpus holds a run of type: the gold `?` on
+          `Lesson 21`'s plate, centred in its own card. RN SVG inherits no font
+          family, so the face is stated. */}
+      {layer.text ? (
+        <SvgText
+          x={x + w / 2}
+          y={y + h / 2}
+          fill={layer.text.color}
+          fontSize={layer.text.size}
+          fontWeight={layer.text.weight}
+          fontFamily={fonts.sans}
+          textAnchor="middle"
+          alignmentBaseline="central">
+          {layer.text.s}
+        </SvgText>
       ) : null}
     </Svg>
   );

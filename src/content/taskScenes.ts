@@ -42,6 +42,12 @@ export interface TaskSceneBox {
   shadow?: string;
   mask?: string;
   children?: TaskSceneLayer[];
+  /**
+   * A run of type inside the box. Exactly one layer in the whole art corpus
+   * carries one — the gold `?` on `Lesson 21`'s plate — and without it the
+   * app paints an empty card where the canvas paints a glyph.
+   */
+  text?: { s: string; size: number; weight: string; color: string };
 }
 
 export type TaskSceneLayer = TaskSceneBox | TaskSceneSvg;

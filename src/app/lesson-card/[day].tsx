@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 
 import { AppText, PressScale } from '@/components/ui';
@@ -25,6 +25,7 @@ import { sans } from '@/lib/theme';
 
 export default function LessonCard() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { day } = useLocalSearchParams<{ day?: string }>();
   const n = Number(day) || 1;
   const lesson = lessonForDay(n);
@@ -38,8 +39,9 @@ export default function LessonCard() {
     // the sheet's ground shows only in the status bar; the frame draws no grain
     <View style={{ flex: 1, backgroundColor: '#EDECE7' }}>
       <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        <View style={{ flex: 1, backgroundColor: '#F4F3F0', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden' }}>
+      {/* canvas top:52 against a 54pt bar — the sheet crests 2pt above the
+          status bar's baseline, the same as every other sheet in the app */}
+      <View style={{ flex: 1, marginTop: Math.max(0, insets.top - 2), backgroundColor: '#F4F3F0', borderTopLeftRadius: 24, borderTopRightRadius: 24, overflow: 'hidden' }}>
         {/* canvas right 22, top 24 — a close cross, not a chevron */}
         <PressScale
           onPress={() => (router.canGoBack() ? router.back() : router.replace(`/week/${lesson.week}`))}
@@ -125,11 +127,11 @@ export default function LessonCard() {
           onPress={() => router.replace(`/week/${lesson.week}`)}
           accessibilityRole="button"
           hitSlop={{ top: 12, bottom: 12, left: 24, right: 24 }}
-          style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
-          <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>{`Back to Week ${week.roman}`}</AppText>
+          style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0 }}>
+          {/* the canvas centres the words in a full-width box, not the box in the sheet */}
+          <AppText center style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>{`Back to Week ${week.roman}`}</AppText>
         </PressScale>
-        </View>
-      </SafeAreaView>
+      </View>
     </View>
   );
 }

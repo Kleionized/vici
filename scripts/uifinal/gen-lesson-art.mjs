@@ -73,6 +73,14 @@ function layers(box) {
       i = inner.indexOf('>', next) + 1;
       continue;
     }
+    // `Lesson 23`, `Lesson 70` and `Lesson 74` each carry a stray `</svg>` that
+    // closes nothing. A browser ignores it; this loop used to stop dead on it
+    // and drop every layer after it — eight layers on day 23, four on day 70,
+    // six on day 74. Step over an unmatched closing tag and keep reading.
+    if (inner.startsWith('</', next)) {
+      i = inner.indexOf('>', next) + 1;
+      continue;
+    }
     const tag = (inner.slice(next).match(/^<\s*([A-Za-z0-9-]+)/) || [])[1]?.toLowerCase();
     if (!tag) break;
     const whole = subtree(inner, next, tag);
@@ -106,6 +114,18 @@ function layers(box) {
         mask: decl(style, 'mask') ?? decl(style, '-webkit-mask'),
         // nested children of a plain box, one level deep
         children: (whole.match(/<div/g) || []).length > 1 ? layers(whole) : undefined,
+        // and the one box in the corpus that holds a run of type
+        text: (() => {
+          const body = whole.slice(whole.indexOf('>') + 1, whole.lastIndexOf('</'));
+          const run = body.trim();
+          if (!run || run.includes('<')) return undefined;
+          return {
+            s: run,
+            size: px(decl(style, 'font-size')),
+            weight: decl(style, 'font-weight') ?? '400',
+            color: decl(style, 'color'),
+          };
+        })(),
       });
     }
     i = next + whole.length;

@@ -3686,7 +3686,13 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 36,
       "radius": "14px",
       "background": "#FBFAF7",
-      "shadow": "0 0 0 1px rgba(0,0,0,0.06), 0 5px 12px rgba(40,38,32,0.12)"
+      "shadow": "0 0 0 1px rgba(0,0,0,0.06), 0 5px 12px rgba(40,38,32,0.12)",
+      "text": {
+        "s": "?",
+        "size": 17,
+        "weight": "600",
+        "color": "#E2BA78"
+      }
     },
     {
       "kind": "box",
@@ -3889,6 +3895,78 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
           }
         ]
       }
+    },
+    {
+      "kind": "box",
+      "left": 118,
+      "top": 72,
+      "width": 34,
+      "height": 8,
+      "radius": "4px",
+      "background": "#E9D2A4"
+    },
+    {
+      "kind": "box",
+      "left": 118,
+      "top": 86,
+      "width": 52,
+      "height": 5,
+      "radius": "2.5px",
+      "background": "#D6D5D0"
+    },
+    {
+      "kind": "box",
+      "left": 118,
+      "top": 96,
+      "width": 44,
+      "height": 5,
+      "radius": "2.5px",
+      "background": "#D6D5D0"
+    },
+    {
+      "kind": "box",
+      "left": 66,
+      "top": 122,
+      "width": 104,
+      "height": 5,
+      "radius": "2.5px",
+      "background": "#E4E3DE"
+    },
+    {
+      "kind": "box",
+      "left": 66,
+      "top": 122,
+      "width": 64,
+      "height": 5,
+      "radius": "2.5px",
+      "background": "#E2BA78"
+    },
+    {
+      "kind": "box",
+      "left": 66,
+      "top": 133,
+      "width": 36,
+      "height": 4,
+      "radius": "2px",
+      "background": "#C6C5C0"
+    },
+    {
+      "kind": "box",
+      "left": 200,
+      "top": 50,
+      "width": 2,
+      "height": 2,
+      "radius": "50%",
+      "background": "rgba(200,225,235,0.4)"
+    },
+    {
+      "kind": "box",
+      "left": 38,
+      "top": 120,
+      "width": 2,
+      "height": 2,
+      "radius": "50%",
+      "background": "rgba(200,225,235,0.3)"
     }
   ],
   "24": [
@@ -11550,6 +11628,42 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
           }
         ]
       }
+    },
+    {
+      "kind": "box",
+      "left": 100,
+      "top": 68,
+      "width": 28,
+      "height": 3,
+      "radius": "1.5px",
+      "background": "#C6C5C0"
+    },
+    {
+      "kind": "box",
+      "left": 100,
+      "top": 92,
+      "width": 24,
+      "height": 3,
+      "radius": "1.5px",
+      "background": "#C6C5C0"
+    },
+    {
+      "kind": "box",
+      "left": 100,
+      "top": 116,
+      "width": 26,
+      "height": 3,
+      "radius": "1.5px",
+      "background": "#C6C5C0"
+    },
+    {
+      "kind": "box",
+      "left": 48,
+      "top": 56,
+      "width": 2,
+      "height": 2,
+      "radius": "50%",
+      "background": "rgba(200,225,235,0.35)"
     }
   ],
   "71": [
@@ -12148,6 +12262,100 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
           }
         ]
       }
+    },
+    {
+      "kind": "box",
+      "left": 104,
+      "top": 106,
+      "width": 14,
+      "height": 5,
+      "radius": "2.5px",
+      "background": "#E2BA78"
+    },
+    {
+      "kind": "svg",
+      "left": 136,
+      "top": 102,
+      "width": 16,
+      "height": 14,
+      "viewBox": "0 0 16 14",
+      "svg": {
+        "attrs": {
+          "width": "16",
+          "height": "14",
+          "viewBox": "0 0 16 14",
+          "style": "position:absolute; left:136px; top:102px;"
+        },
+        "children": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M2 12 Q6 2 14 4",
+              "stroke": "#6B6862",
+              "stroke-width": "2.8",
+              "fill": "none",
+              "stroke-linecap": "round"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "box",
+      "left": 44,
+      "top": 136,
+      "width": 14,
+      "height": 4,
+      "radius": "2px",
+      "background": "#C6C5C0",
+      "opacity": 0.8
+    },
+    {
+      "kind": "box",
+      "left": 32,
+      "top": 146,
+      "width": 11,
+      "height": 4,
+      "radius": "2px",
+      "background": "#C6C5C0",
+      "opacity": 0.6
+    },
+    {
+      "kind": "svg",
+      "left": 56,
+      "top": 52,
+      "width": 14.4,
+      "height": 7.2,
+      "viewBox": "0 0 14.4 7.2",
+      "svg": {
+        "attrs": {
+          "width": "14.4",
+          "height": "7.2",
+          "viewBox": "0 0 14.4 7.2",
+          "style": "position:absolute; left:56px; top:52px;"
+        },
+        "children": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M1 5.4 Q4.05 1.35 7.2 4.5 Q10.35 1.35 13.5 5.4",
+              "fill": "none",
+              "stroke": "#8A857C",
+              "stroke-width": "1.6",
+              "stroke-linecap": "round"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "box",
+      "left": 190,
+      "top": 168,
+      "width": 12,
+      "height": 3.5,
+      "radius": "2px",
+      "background": "rgba(255,255,255,0.55)"
     }
   ],
   "75": [
