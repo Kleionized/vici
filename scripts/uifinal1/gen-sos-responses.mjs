@@ -32,16 +32,20 @@ const num = (v) => (v == null ? undefined : Number(String(v).replace('px', '')))
  * which React Native cannot express at all and which is drawn as an SVG arc
  * (`DECISIONS.md` D015).
  */
-function radius(v) {
+function radius(v, w, h) {
   if (!v) return undefined;
   if (v === '50%') return { kind: 'pill' };
   if (v.includes('/')) {
-    const [h, vv] = v.split('/').map((x) => x.trim().split(/\s+/));
-    return { kind: 'elliptic', h, v: vv };
+    const [hh, vv] = v.split('/').map((x) => x.trim().split(/\s+/));
+    return { kind: 'elliptic', h: hh, v: vv };
   }
+  // A percentage corner resolves against the box's own side; a few layers mix
+  // percentages and points in one declaration.
+  const side = Math.min(w ?? 0, h ?? 0);
+  const one = (x) => (String(x).endsWith('%') ? (parseFloat(x) / 100) * side : num(x) || 0);
   const parts = v.split(/\s+/);
-  if (parts.length === 1) return { kind: 'all', r: num(parts[0]) };
-  return { kind: 'corners', corners: parts.map((x) => num(x) || 0) };
+  if (parts.length === 1) return { kind: 'all', r: one(parts[0]) };
+  return { kind: 'corners', corners: parts.map(one) };
 }
 
 /** `background` in the three shapes these frames use. */
@@ -96,13 +100,29 @@ function board(file) {
     }
     const l = {};
     for (const k of ['left', 'top', 'right', 'bottom', 'width', 'height']) if (css[k] != null) l[k] = num(css[k]);
+    // A CSS border triangle: a zero-size box whose visible borders make an
+    // arrowhead. React Native has no equivalent, so it is emitted as a
+    // direction, a size and a colour and drawn as an SVG polygon.
+    const bl = css['border-left'];
+    const br = css['border-right'];
+    const bt = css['border-top'];
+    if (css.width === '0' && css.height === '0' && (bl || br)) {
+      const side = (bl && !bl.includes('transparent') ? bl : br) ?? '';
+      const half = num(bt?.split(' ')[0]) ?? 0;
+      l.tri = { dir: bl && !bl.includes('transparent') ? 'right' : 'left', w: num(side.split(' ')[0]) ?? 0, h: half * 2, color: side.split(' ').pop() };
+      layers.push(l);
+      continue;
+    }
     const bg = background(css.background);
     if (bg) l.bg = bg;
-    const r = radius(css['border-radius']);
+    const r = radius(css['border-radius'], l.width, l.height);
     if (r) l.radius = r;
     if (css.filter) l.blur = Number(css.filter.match(/blur\(([0-9.]+)px\)/)?.[1] ?? 0);
     if (css['box-shadow']) l.shadow = css['box-shadow'];
     if (css.transform) l.transform = css.transform;
+    // CSS rotates about the box's centre unless told otherwise; a few layers
+    // pin the origin to an edge, and the difference is visible.
+    if (css['transform-origin']) l.origin = css['transform-origin'];
     layers.push(l);
   }
   // the strings, in the frame's own order: title, body, [challenge eyebrow,
@@ -166,6 +186,10 @@ export interface SosLayer {
   blur?: number;
   shadow?: string;
   transform?: string;
+  /** \`transform-origin\`, where the canvas moves it off the centre. */
+  origin?: string;
+  /** A CSS border triangle, drawn as an SVG polygon. */
+  tri?: { dir: 'left' | 'right'; w: number; h: number; color: string };
   /** An inline \`<svg>\` layer and its paths. */
   svg?: { viewBox: string; width: number; height: number; left?: number; top?: number };
   parts?: { d?: string; fill?: string; stroke?: string; strokeWidth?: string; strokeLinecap?: string; strokeLinejoin?: string }[];

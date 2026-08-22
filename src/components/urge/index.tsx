@@ -656,8 +656,9 @@ function SheetSkip({ onPress }: { onPress: () => void }) {
       onPress={onPress}
       accessibilityRole="button"
       hitSlop={{ top: 14, bottom: 14, left: 60, right: 60 }}
-      style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
-      <AppText style={[sans('500'), { fontSize: 15, color: SHEET_SOFT }]}>Skip this step</AppText>
+      style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0 }}>
+      {/* the canvas centres the words in a full-width box, not the box in the row */}
+      <AppText center style={[sans('500'), { fontSize: 15, color: SHEET_SOFT }]}>Skip this step</AppText>
     </PressScale>
   );
 }
@@ -1300,6 +1301,17 @@ function SosSceneLayer({ layer, id }: { layer: SosLayer; id: string }) {
   const w = layer.width ?? 0;
   const h = layer.height ?? 0;
 
+  // The canvas builds four arrowheads out of borders on a zero-size box, which
+  // React Native cannot do at all — they are polygons here.
+  if (layer.tri) {
+    const { dir, w: tw, h: th, color } = layer.tri;
+    return (
+      <Svg width={tw} height={th} pointerEvents="none" style={{ position: 'absolute', left: layer.left, top: layer.top }}>
+        <Path d={dir === 'right' ? `M0 0L${tw} ${th / 2}L0 ${th}Z` : `M${tw} 0L0 ${th / 2}L${tw} ${th}Z`} fill={color} />
+      </Svg>
+    );
+  }
+
   // A radial wash, blurred or not, is a `SoftBlob` either way.
   if (layer.bg?.kind === 'radial') {
     return <SoftBlob id={id} left={layer.left ?? 0} top={layer.top ?? 0} width={w} height={h} color={layer.bg.from ?? '#000000'} alpha={1} stop={layer.bg.stop ?? 1} />;
@@ -1340,9 +1352,21 @@ function SosSceneLayer({ layer, id }: { layer: SosLayer; id: string }) {
   }
 
   if (layer.bg?.kind === 'linear') {
-    return <LinearGradient colors={(layer.bg.stops ?? ['#FFFFFF', '#FFFFFF']) as [string, string]} style={[box, radius]} />;
+    const spin = layer.transform?.match(/rotate\((-?[0-9.]+)deg\)/);
+    return <LinearGradient colors={(layer.bg.stops ?? ['#FFFFFF', '#FFFFFF']) as [string, string]} style={[box, radius, spin ? { transform: [{ rotate: `${spin[1]}deg` }], transformOrigin: layer.origin ?? 'center' } : null]} />;
   }
-  return <View style={[box, radius, layer.bg?.kind === 'solid' ? { backgroundColor: layer.bg.color } : null, layer.shadow ? { boxShadow: layer.shadow } : null]} />;
+  const rotate = layer.transform?.match(/rotate\((-?[0-9.]+)deg\)/);
+  return (
+    <View
+      style={[
+        box,
+        radius,
+        layer.bg?.kind === 'solid' ? { backgroundColor: layer.bg.color } : null,
+        layer.shadow ? { boxShadow: layer.shadow } : null,
+        rotate ? { transform: [{ rotate: `${rotate[1]}deg` }], transformOrigin: layer.origin ?? 'center' } : null,
+      ]}
+    />
+  );
 }
 
 /**

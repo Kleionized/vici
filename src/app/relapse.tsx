@@ -138,8 +138,9 @@ export default function Relapse() {
           </Svg>
         </PressScale>
 
-        {/* canvas left:76 for a 240-wide box on a 393 frame — centred, so it stays centred */}
-        <View pointerEvents="none" style={{ position: 'absolute', left: '50%', top: 180, marginLeft: -120 }}>
+        {/* the canvas states `left: 76`, not a centring — on a 393 frame a
+            centred 240 box would land on 76.5 */}
+        <View pointerEvents="none" style={{ position: 'absolute', left: 76, top: 180, width: 240 }}>
           {index === 0 ? <SlipArt /> : <TwiceArt />}
         </View>
 
@@ -177,8 +178,8 @@ export default function Relapse() {
             onPress={() => router.replace('/urge')}
             accessibilityRole="button"
             hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-            style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0, alignItems: 'center' }}>
-            <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Back to the wave tool</AppText>
+            style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0 }}>
+            <AppText center style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Back to the wave tool</AppText>
           </PressScale>
         ) : null}
       </View>
@@ -255,8 +256,11 @@ function ResignPledge({
             <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 86, fontSize: 22, letterSpacing: -0.2, lineHeight: 32, color: '#3A3934' }]}>
               {pledge ?? 'The mornings are mine again.'}
             </AppText>
+            {/* the canvas puts an empty `<span>` opposite this to push it right,
+                which is a flex spacer; the row states `flex-end` instead. The
+                name sits in a 104-wide right-aligned box — the rule's width. */}
             <View style={{ position: 'absolute', left: 16, right: 20, bottom: 16, alignItems: 'flex-end' }}>
-              <AppText style={{ fontFamily: fonts.script, fontSize: 26, lineHeight: 26, color: INK, transform: [{ rotate: '-3.5deg' }] }}>
+              <AppText style={{ width: 104, textAlign: 'right', fontFamily: fonts.script, fontSize: 26, lineHeight: 26, color: INK, transform: [{ rotate: '-3.5deg' }] }}>
                 {name?.split(' ')[0] ?? 'You'}
               </AppText>
               <View style={{ marginTop: 5, width: 104, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
