@@ -3,7 +3,6 @@ import { type LayoutChangeEvent, Modal, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
 
-import { ActionBand, ActionButton, ActionCard, DidYouRow, NightActionArt } from '@/components/day/kit';
 import { AppText, BackGlyph, Grain, PressScale } from '@/components/ui';
 import { checkinPartNow } from '@/lib/routines';
 import { colors, sans } from '@/lib/theme';
@@ -497,10 +496,6 @@ export interface CheckinResult {
   mood: number;
   emotions: string[];
   reasons: string[];
-  /** Whether yesterday's action happened — undefined if it was never asked. */
-  yesterdayDone?: boolean;
-  /** The one action the day is being set on. */
-  action?: string;
 }
 
 export interface CheckinFlowProps {
@@ -508,19 +503,9 @@ export interface CheckinFlowProps {
   head: string;
   /** Step two's question — same word, different tense, morning vs evening. */
   feel: string;
-  /**
-   * The morning variant (frames 158–159): after the feeling wheel it asks
-   * whether yesterday's action happened and names today's, rather than asking
-   * what fed the mood. Four dots on the rail instead of three.
-   */
-  morning?: boolean;
   initialMood?: number | null;
   initialEmotions?: string[];
   initialReasons?: string[];
-  /** Yesterday's action, as it was set — the morning variant asks after it. */
-  yesterdayAction?: string;
-  /** Today's, either already named last night or freshly picked. */
-  todayAction?: string;
   onDone: (result: CheckinResult) => void;
   onExit: () => void;
 }
@@ -528,12 +513,9 @@ export interface CheckinFlowProps {
 export function CheckinFlow({
   head,
   feel,
-  morning = false,
   initialMood,
   initialEmotions,
   initialReasons,
-  yesterdayAction = '',
-  todayAction = '',
   onDone,
   onExit,
 }: CheckinFlowProps) {
@@ -542,13 +524,12 @@ export function CheckinFlow({
   const [mood, setMood] = useState(initialMood != null ? moodRung(initialMood) / (MOODS.length - 1) : 0.64);
   const [emotions, setEmotions] = useState<string[]>(initialEmotions ?? []);
   const [reasons, setReasons] = useState<string[]>(initialReasons ?? []);
-  const [yesterdayDone, setYesterdayDone] = useState<boolean | undefined>(undefined);
   const [height, setHeight] = useState(0);
 
-  const steps = morning ? 4 : 3;
+  const steps = 3;
   const ctaTop = height ? Math.min(CTA_TOP, height - CTA_HEIGHT - CTA_FLOOR) : CTA_TOP;
   const done = (over?: Partial<CheckinResult>) =>
-    onDone({ mood: moodIndex(mood) + 1, emotions, reasons, yesterdayDone, action: morning ? todayAction : undefined, ...over });
+    onDone({ mood: moodIndex(mood) + 1, emotions, reasons, ...over });
 
   const goBack = () => (step === 0 ? onExit() : setStep((current) => current - 1));
 
@@ -572,7 +553,7 @@ export function CheckinFlow({
             <BackGlyph color="#55534E" />
             <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
           </PressScale>
-          <StepDots step={step} count={steps} dim={morning ? 'rgba(19,19,19,0.18)' : 'rgba(0,0,0,0.18)'} />
+          <StepDots step={step} count={steps} dim="rgba(0,0,0,0.18)" />
 
           {step === 0 ? (
             <>
@@ -587,49 +568,12 @@ export function CheckinFlow({
 
           {step === 1 ? <EmotionsBoard feel={feel} emotions={emotions} onChange={setEmotions} /> : null}
 
-          {morning && step === 2 ? (
-            <>
-              <BoardTitle>Did you complete this task?</BoardTitle>
-              <ActionBand bottom={66 + 74}>
-                <ActionCard art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayAction} />
-              </ActionBand>
-            </>
-          ) : null}
-
-          {morning && step === 3 ? (
-            <>
-              <BoardTitle>One action for today</BoardTitle>
-              <ActionBand bottom={50 + 54}>
-                <ActionCard art={<NightActionArt />} mark="sun" label="Today" line={todayAction} />
-              </ActionBand>
-            </>
-          ) : null}
-
-          {!morning && step === 2 ? <ReasonsBoard reasons={reasons} onChange={setReasons} /> : null}
+          {step === 2 ? <ReasonsBoard reasons={reasons} onChange={setReasons} /> : null}
 
           {step === 0 ? <PrimaryButton label="Continue" top={ctaTop} onPress={() => setStep(1)} /> : null}
           {step === 1 ? <PrimaryButton label="Continue" top={ctaTop} enabled={emotions.length > 0} onPress={() => setStep(2)} /> : null}
-          {!morning && step === 2 ? (
-            <PrimaryButton label="Log it" top={ctaTop} enabled={reasons.length > 0} onPress={() => done()} />
-          ) : null}
+          {step === 2 ? <PrimaryButton label="Log it" top={ctaTop} enabled={reasons.length > 0} onPress={() => done()} /> : null}
 
-          {/* The action pair keep their own controls: two discs on 158, and a
-              taller pill lifted off the foot on 159. */}
-          {morning && step === 2 ? (
-            <>
-              <DidYouRow
-                onNo={() => {
-                  setYesterdayDone(false);
-                  setStep(3);
-                }}
-                onYes={() => {
-                  setYesterdayDone(true);
-                  setStep(3);
-                }}
-              />
-            </>
-          ) : null}
-          {morning && step === 3 ? <ActionButton label="Got it" onPress={() => done()} /> : null}
         </View>
       </SafeAreaView>
     </View>

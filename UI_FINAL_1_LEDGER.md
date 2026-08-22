@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 1980 · IMPLEMENTED: 55 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 1972 · IMPLEMENTED: 63 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -71,14 +71,14 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | `Email-Login/Today Home II` | .uifinal1/final/Email-Login/Today-Home-II.html |  | NOT_STARTED |  | canvas note: 21 · Today — p2 |
 | `Email-Login/Today Home Task` | .uifinal1/final/Email-Login/Today-Home-Task.html | src/app/(app)/today.tsx → PageTwo; src/components/today/kit.tsx → TaskCard | IMPLEMENTED | 2026-08-22 | specs/54-today-home-task.md · 83 rows compared; residuals are the account's own copy |
 | `Email-Login/Today Home III` | .uifinal1/final/Email-Login/Today-Home-III.html |  | NOT_STARTED |  | canvas note: 21 · Today — p3 |
-| `Email-Login/Morning Check-in Cover` | .uifinal1/final/Email-Login/Morning-Check-in-Cover.html |  | NOT_STARTED |  | canvas note: 21D0 · Morning — Check-in |
-| `Email-Login/Morning Task Check` | .uifinal1/final/Email-Login/Morning-Task-Check.html |  | NOT_STARTED |  | canvas note: 21D1 · Morning — Yesterday’s task |
-| `Email-Login/Morning 1 Yesterday` | .uifinal1/final/Email-Login/Morning-1-Yesterday.html |  | NOT_STARTED |  | canvas note: 21D2 · Morning — Yesterday |
-| `Email-Login/Morning Feeling` | .uifinal1/final/Email-Login/Morning-Feeling.html |  | NOT_STARTED |  | canvas note: 21D3 · Morning — Feeling |
-| `Email-Login/Morning Energy` | .uifinal1/final/Email-Login/Morning-Energy.html |  | NOT_STARTED |  | canvas note: 21D4 · Morning — Energy |
-| `Email-Login/Morning Resign Pledge` | .uifinal1/final/Email-Login/Morning-Resign-Pledge.html |  | NOT_STARTED |  | canvas note: 21D5 · Morning — Re-sign your pledge |
-| `Email-Login/Change Pledge Sheet` | .uifinal1/final/Email-Login/Change-Pledge-Sheet.html |  | NOT_STARTED |  | canvas note: 21D6 · Morning — Change the pledge |
-| `Email-Login/Morning 5 Done` | .uifinal1/final/Email-Login/Morning-5-Done.html |  | NOT_STARTED |  | canvas note: 21D7 · Morning — Done |
+| `Email-Login/Morning Check-in Cover` | .uifinal1/final/Email-Login/Morning-Check-in-Cover.html | src/components/day/kit.tsx → CheckinCover; src/app/day/morning.tsx step COVER | IMPLEMENTED | 2026-08-22 | specs/56-morning-check-in-cover.md · 10 rows compared, 0 geometric mismatches |
+| `Email-Login/Morning Task Check` | .uifinal1/final/Email-Login/Morning-Task-Check.html | src/app/day/morning.tsx step TASK | IMPLEMENTED | 2026-08-22 | specs/57-morning-task-check.md · 50 rows compared; the sun/Today divergence is D030 |
+| `Email-Login/Morning 1 Yesterday` | .uifinal1/final/Email-Login/Morning-1-Yesterday.html | src/app/day/morning.tsx step LEDGER | IMPLEMENTED | 2026-08-22 | specs/58-morning-yesterday.md · 60 rows compared, 0 geometric mismatches |
+| `Email-Login/Morning Feeling` | .uifinal1/final/Email-Login/Morning-Feeling.html | src/app/day/morning.tsx step FEELING | IMPLEMENTED | 2026-08-22 | specs/59-morning-feeling.md · 29 rows compared, 0 geometric mismatches |
+| `Email-Login/Morning Energy` | .uifinal1/final/Email-Login/Morning-Energy.html | src/app/day/morning.tsx step ENERGY | IMPLEMENTED | 2026-08-22 | specs/60-morning-energy.md · 29 rows compared, 0 geometric mismatches |
+| `Email-Login/Morning Resign Pledge` | .uifinal1/final/Email-Login/Morning-Resign-Pledge.html | src/app/day/morning.tsx step PLEDGE | IMPLEMENTED | 2026-08-22 | specs/61-morning-resign-pledge.md · 23 rows compared; the inked signature colour is D031 |
+| `Email-Login/Change Pledge Sheet` | .uifinal1/final/Email-Login/Change-Pledge-Sheet.html | src/components/day/kit.tsx → ChangePledgeSheet | IMPLEMENTED | 2026-08-22 | specs/62-change-pledge-sheet.md · 13 rows compared; the three grey blocks are the frame’s stand-in for the screen behind |
+| `Email-Login/Morning 5 Done` | .uifinal1/final/Email-Login/Morning-5-Done.html | src/app/day/morning.tsx step DONE | IMPLEMENTED | 2026-08-22 | specs/63-morning-done.md · 24 rows compared, 0 geometric mismatches |
 | `Email-Login/Night Check-in Cover` | .uifinal1/final/Email-Login/Night-Check-in-Cover.html | src/components/day/kit.tsx → CheckinCover; src/app/day/night.tsx step COVER | IMPLEMENTED | 2026-08-22 | specs/64-night-check-in-cover.md · 11 rows compared, 0 geometric mismatches |
 | `Email-Login/Night 1 Mood` | .uifinal1/final/Email-Login/Night-1-Mood.html | src/app/day/night.tsx step MOOD; src/components/day/kit.tsx → WarmNightSky | IMPLEMENTED | 2026-08-22 | specs/65-night-mood.md · 32 rows compared, 0 geometric mismatches |
 | `Email-Login/Checkin Emotions` | .uifinal1/final/Email-Login/Checkin-Emotions.html | src/components/MoodLogger.tsx → EmotionsBoard | IMPLEMENTED | 2026-08-22 | specs/66-checkin-emotions.md · 43 rows compared, 0 geometric mismatches |

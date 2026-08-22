@@ -463,3 +463,88 @@ either.
 **Decision:** both pills render unconditionally, at the canvas's numbers. The
 range still does exactly what it did; on a young account both windows show the
 whole record, which is the truth about that account rather than a fault.
+
+## D030 — `21D1 · Did you complete this task?` keeps asking about yesterday
+
+The frame's title is **"Did you complete this task?"** — a question that can only
+be about a task already set. The card under it is marked with the **sun**,
+labelled **"Today"**, and carries `DAY_ACTIONS[0]`. The previous bundle drew it
+the same way, so this is not a change; it is a contradiction the bundle has been
+carrying.
+
+It matters more in this bundle than in the last one, because `UI Final 1`
+withdraws the separate "One action for today" board (there is no frame for it and
+the six-dot rail has no slot for it), which makes this card simultaneously the
+only place today's action is shown and the screen that asks whether yesterday's
+happened.
+
+**Decision:** the app keeps `mark="moon" label="Last night" line={yesterdayTask}`.
+Everything else on the frame is implemented exactly as drawn — the card's own
+`left: 56 right: 56 top: 236`, its 248-tall night, its foot, the title, the rail
+and the two answer pills. What the screen *does* — ask about yesterday and write
+the answer to yesterday's row — is the app's, and the canvas's sun / "Today" /
+`DAY_ACTIONS[0]` would make the question unanswerable. Flagged for REPORT.md.
+
+Numerically this leaves exactly three rows differing on `dsg-57` vs `app-57`: the
+sun glyph's circle and path, and the two strings.
+
+## D031 — the re-sign page's ghost signature, and what inks it
+
+`21D5 · Morning — Re-sign your pledge` draws the signature in `#C9C6BE` — the
+same pale grey as its decorative quote mark — over a full-ink `#131313` rule,
+under a pill that says **"Sign for today"**. `Your-Vow-Page.html` in the same
+bundle draws a *signed* signature at `#1D1C1A` over an `rgba(0,0,0,0.24)` rule.
+
+Read together, this frame is the **pre-signature** state: a ghost of the mark,
+waiting.
+
+**Decision:** the signature is `#C9C6BE` until signed and `#1D1C1A` after — the
+inked colour taken from `Your-Vow-Page`, not invented. The app's existing
+two-press gate on this step is kept: the first press inks the name, the second
+advances. That preserves the screen's behaviour, and it is the only reading under
+which the ghost the canvas draws is ever replaced by anything.
+
+## D032 — what "Sign the new pledge" does
+
+`21D5B · Change the pledge` offers **"Sign the new pledge"** and, under it,
+**"Keep current pledge"**. Nothing on either frame says whether the first one
+completes the morning step or returns to the page behind it.
+
+**Decision:** both return to the re-sign page. "Sign the new pledge" writes the
+new words into the page and leaves it **unsigned**; "Keep current pledge" leaves
+the words alone. The page's own pill is what signs for today, and its dismissal
+being phrased as "Keep current pledge" — a choice *about the words*, not about
+the day — is what settles it. Flagged for REPORT.md.
+
+The sheet's own shell is built fresh rather than reused: `ProfileSheet` and
+`SignOutSheet` draw `rgba(19,19,19,0.45)` / radius 24 / a 36×5 grabber /
+`0 -12px 40px rgba(19,19,19,0.3)` on `#FFFFFF`, and this frame draws
+`rgba(38,37,30,0.42)` / radius 22 / a 36×4 grabber /
+`0 -12px 36px rgba(20,19,16,0.22)` on `#F4F3F0`. No other frame in the bundle
+uses that scrim colour.
+
+The three flat `#E8E7E1` blocks the frame paints at 45% behind the scrim are a
+stand-in for the screen underneath — none of the three matches anything the
+re-sign page draws — so the live page is rendered behind the scrim instead.
+
+## D033 — `/checkin?part=morning` hands over to `/day/morning`
+
+`src/app/checkin.tsx` mounted `CheckinFlow` with `morning={true}` before noon,
+which drew a four-step morning of its own: a mood orb and slider, the emotions
+board, "Did you complete this task?" answered by two 74pt discs, and "One action
+for today" closed by a "Got it" pill.
+
+`UI Final 1` draws none of that in a morning register. Its morning is eight
+frames — a cover, the task check, the ledger, a feeling dial, an energy dial, the
+re-sign page, its sheet and the close — and not one of them is an orb, an
+emotions board or an action card.
+
+**Decision:** `?part=morning` redirects to `/day/morning`, the flow the bundle
+actually draws. `CheckinFlow`'s morning branch, its `morning` / `yesterdayAction`
+/ `todayAction` props, `CheckinResult`'s `yesterdayDone` and `action` fields, and
+`DidYouRow` are all deleted rather than left unreachable. The any-time register —
+the three boards `21E1`–`21E3` draw — is untouched.
+
+Also withdrawn with the morning rewrite, each with no consumer left:
+`SunMark`, `CupMark`, `DawnBand`, `EnergyBars`, `TANK`, `SignaturePad` and
+`OPENERS`.

@@ -47,7 +47,7 @@ export default function All() {
       'Daily',
       [
         { title: 'Today', to: '/(app)/today' },
-        { title: 'Morning check-in', detail: '5 steps', to: '/day/morning' },
+        { title: 'Morning check-in', detail: '6 steps', to: '/day/morning' },
         { title: 'Nightly check-in', detail: '4 steps', to: '/day/night' },
         { title: 'Quick mood check-in', to: '/checkin' },
         { title: 'Sentence journal', to: '/affirmation' },

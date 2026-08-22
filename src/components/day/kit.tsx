@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useId, useState, type ReactNode } from 'react';
-import { View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, TextInput, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -278,7 +278,7 @@ export function DayTitle({ top, children }: { top: number; children: ReactNode }
 /* ------------------------------------------------------------------- the scales */
 
 /** Five circles: how the day feels. */
-export function MoodDial({ value, onChange, top }: { value: number; onChange: (v: number) => void; top: number }) {
+export function MoodDial({ value, onChange, top, label = 'Level' }: { value: number; onChange: (v: number) => void; top: number; label?: string }) {
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top, flexDirection: 'row', justifyContent: 'space-between' }}>
       {[0, 1, 2, 3, 4].map((i) => {
@@ -289,7 +289,7 @@ export function MoodDial({ value, onChange, top }: { value: number; onChange: (v
             onPress={() => onChange(i)}
             accessibilityRole="radio"
             accessibilityState={{ selected: on }}
-            accessibilityLabel={`Level ${i + 1} of 5`}
+            accessibilityLabel={`${label} ${i + 1} of 5`}
             style={{
               width: 48,
               height: 48,
@@ -323,92 +323,164 @@ export function ScaleReading({ top, label, note }: { top: number; label: string;
   );
 }
 
-const TANK = [20, 31, 42, 53, 64];
-
-/** Five rising bars: how much is left in the tank. */
-export function EnergyBars({ value, onChange, top }: { value: number; onChange: (v: number) => void; top: number }) {
-  return (
-    <View style={{ position: 'absolute', left: 24, right: 24, top, height: 72, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-      {TANK.map((height, i) => {
-        const on = i === value;
-        return (
-          <PressScale
-            key={height}
-            onPress={() => onChange(i)}
-            accessibilityRole="radio"
-            accessibilityState={{ selected: on }}
-            accessibilityLabel={`Level ${i + 1} of 5`}
-            style={{ width: 48, height: 72, minHeight: 72, alignItems: 'center', justifyContent: 'flex-end' }}>
-            <View
-              style={{
-                width: 30,
-                height,
-                borderRadius: 8,
-                backgroundColor: on ? '#131313' : '#FFFFFF',
-                boxShadow: on ? '0 0 0 2px #F4F3F0, 0 0 0 4px #131313' : 'inset 0 0 0 1.5px rgba(0,0,0,0.12)',
-              }}
-            />
-          </PressScale>
-        );
-      })}
-    </View>
-  );
-}
-
 /**
- * Frame 129 · the signature pad. It is a pad, not a field: the whole surface
- * takes the mark, the rule and the cross tell you where, and the footer names
- * who signed and on which day — the two things a signature is evidence of.
+ * `21D5B · Change the pledge` — the sheet behind the re-sign page's link.
+ *
+ * Its shell is not the app's existing sheet shell: the scrim, the radius, the
+ * grabber, the shadow and the ground all differ from `ProfileSheet` and
+ * `SignOutSheet`, and no other frame in the bundle shares these values, so this
+ * is a second sheet rather than a new caller of the first.
+ *
+ * The sheet is 532 tall off the screen's own bottom edge (canvas `top: 320` in
+ * an 852 frame), and every number inside it is sheet-relative — the −54 rule
+ * does not apply below its own top (`DECISIONS.md` D009). The empty band under
+ * the last link is the keyboard's; the frame is drawn keyboard-down.
+ *
+ * The canvas paints the screen underneath as three flat grey blocks at 45%.
+ * They match nothing the re-sign page actually draws, so they are the frame's
+ * stand-in for a screenshot and are not built — the live screen is behind the
+ * scrim instead.
  */
-export function SignaturePad({ top, name, stamp, signed, onSign, onClear }: { top: number; name: string; stamp: string; signed: boolean; onSign: () => void; onClear: () => void }) {
+export function ChangePledgeSheet({
+  pledge,
+  onKeep,
+  onSign,
+}: {
+  /** The standing pledge, which the field opens on. */
+  pledge: string;
+  onKeep: () => void;
+  onSign: (next: string) => void;
+}) {
+  const [text, setText] = useState(pledge);
   return (
-    <View style={{ position: 'absolute', left: 12, right: 12, top, height: 200, borderRadius: 14, backgroundColor: '#FAF9F6', boxShadow: 'inset 0 0 0 1.5px rgba(0,0,0,0.08)' }}>
-      {/* The ruling is inert and lifted out of the pressables: the whole pad
-          takes the mark, and a button inside a button is invalid on the web. */}
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}>
-        <AppText style={[sans('600'), { position: 'absolute', left: 18, top: 14, fontSize: 10.5, letterSpacing: 1.6, color: '#C6C3BC' }]}>SIGNATURE</AppText>
-
-        {signed ? (
-          <AppText center style={{ position: 'absolute', left: 0, right: 0, top: 64, fontFamily: fonts.script, fontSize: 34, color: '#1D1C1A' }}>
-            {name}
-          </AppText>
-        ) : (
-          <View style={{ position: 'absolute', left: 0, right: 0, top: 64, alignItems: 'center', gap: 8 }}>
-            <Svg width={19} height={19} viewBox="0 0 20 20" fill="none">
-              <Path d="M3.5 16.5l2-6.2L13.8 2 18 6.2 9.7 14.5l-6.2 2z" fill="none" stroke="#B0AEA8" strokeWidth={1.7} strokeLinejoin="round" />
-              <Path d="M12 3.8l4.2 4.2" stroke="#B0AEA8" strokeWidth={1.7} />
-            </Svg>
-            <AppText style={{ fontFamily: fonts.quote, fontStyle: 'italic', fontSize: 15, color: '#B0AEA8' }}>Sign with your finger</AppText>
-          </View>
-        )}
-
-        <AppText style={[sans('400'), { position: 'absolute', left: 30, bottom: 40, fontSize: 14, color: '#B0AEA8' }]}>×</AppText>
-        <View style={{ position: 'absolute', left: 28, right: 28, bottom: 36, height: 1.5, backgroundColor: 'rgba(0,0,0,0.22)' }} />
-        <AppText style={[sans('500'), { position: 'absolute', left: 30, bottom: 14, fontSize: 11.5, color: '#B0AEA8' }]}>{name}</AppText>
-        <AppText style={[sans('500'), { position: 'absolute', right: 28, bottom: 14, fontSize: 11.5, color: '#B0AEA8' }]}>{stamp}</AppText>
-      </View>
-
+    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
       <PressScale
-        onPress={signed ? undefined : onSign}
+        onPress={onKeep}
         accessibilityRole="button"
-        accessibilityLabel={signed ? 'Signed' : 'Sign here'}
-        style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, minHeight: 0 }}>
+        accessibilityLabel="Dismiss"
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, minHeight: 0, backgroundColor: 'rgba(38,37,30,0.42)' }}>
         {null}
       </PressScale>
-      {/* last, so it takes its own corner of the pad back off the sign surface */}
-      <PressScale
-        onPress={onClear}
-        accessibilityRole="button"
-        accessibilityLabel="Clear the signature"
-        hitSlop={{ top: 14, bottom: 14, left: 14, right: 14 }}
-        style={{ position: 'absolute', right: 18, top: 12, minHeight: 0 }}>
-        <AppText style={[sans('500'), { fontSize: 12.5, color: '#B0AEA8' }]}>Clear</AppText>
-      </PressScale>
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: 532,
+          borderTopLeftRadius: 22,
+          borderTopRightRadius: 22,
+          backgroundColor: '#F4F3F0',
+          boxShadow: '0 -12px 36px rgba(20,19,16,0.22)',
+        }}>
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -18, top: 10, width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(0,0,0,0.15)' }} />
+        {/* the canvas's gutters here are asymmetric — 24 left, 40 right */}
+        <AppText style={[sans('500'), { position: 'absolute', left: 24, right: 40, top: 44, fontSize: 22, lineHeight: 29, letterSpacing: -0.2, color: '#1D1C1A' }]}>
+          Change the pledge
+        </AppText>
+        <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 24, top: 80, fontSize: 13, color: '#8B8882' }]}>
+          One promise you can keep every day.
+        </AppText>
+        <View style={{ position: 'absolute', left: 16, right: 16, top: 116, height: 126, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
+          {/* the canvas's 2 × 19 bar after the words is its stand-in for a text
+              cursor; the platform draws its own (`DECISIONS.md` D025) */}
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            multiline
+            style={[
+              { position: 'absolute', left: 18, right: 18, top: 16, height: 94, fontFamily: fonts.sans, fontWeight: '500', fontSize: 17, lineHeight: 26, color: '#1D1C1A', padding: 0 },
+              Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
+            ]}
+          />
+        </View>
+        <PressScale
+          onPress={() => onSign(text)}
+          accessibilityRole="button"
+          style={{ position: 'absolute', left: 16, right: 16, top: 274, height: 52, minHeight: 0, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: '#131313' }}>
+          <AppText style={[sans('600'), { fontSize: 17, color: '#FFFFFF' }]}>Sign the new pledge</AppText>
+        </PressScale>
+        <PressScale
+          onPress={onKeep}
+          accessibilityRole="button"
+          hitSlop={{ top: 14, bottom: 14, left: 24, right: 24 }}
+          style={{ position: 'absolute', left: 0, right: 0, top: 346, minHeight: 0 }}>
+          <AppText center style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>Keep current pledge</AppText>
+        </PressScale>
+      </View>
     </View>
   );
 }
 
 /* ---------------------------------------------------------------- the drawings */
+
+/**
+ * The morning sky the five new morning frames open on.
+ *
+ * `21D0 · Cover`, `21D3 · Feeling`, `21D4 · Energy`, `21D5 · Re-sign` and
+ * `21D6 · Done` all draw one composition — a blurred warm radial, a flat
+ * `#E9D2A4` disc, nought or two white cloud bars, and two hills fading into the
+ * paper — and no two of them draw it at the same numbers. Every value that
+ * varies is a prop, and none of them is normalised: the four glows are three
+ * different warms (`rgba(226,186,120,·)`, `rgba(226,162,90,·)`,
+ * `rgba(226,176,104,·)`) and Energy's hills are warmer than the rest.
+ *
+ * This is passed as `DayShell`'s `backdrop`, never as a child: Energy's glow
+ * starts at canvas `top: -8` and Re-sign's at `-13`, so both have to bleed under
+ * the status bar. A backdrop is rendered outside the safe-area inset, so the
+ * tops below are the canvas's own, unadjusted (`DECISIONS.md` D009).
+ *
+ * The canvas blurs every glow 4px. `Glow` has no blur term and does not need one
+ * — a closest-side radial already dies at its own edge (D010).
+ */
+export function MorningSky({
+  glow,
+  disc,
+  clouds = [],
+  hills,
+}: {
+  glow: { top: number; size: number; color: string; opacity: number };
+  disc: { top: number; size: number };
+  /** `[left, top, width, height, alpha]`, in the canvas's own order. */
+  clouds?: [number, number, number, number, number][];
+  hills: [
+    { top: number; height: number; rise: number; color: string; fade: [number, number] },
+    { top: number; height: number; rise: number; color: string; fade: [number, number] },
+  ];
+}) {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+      <Glow
+        size={glow.size}
+        color={glow.color}
+        opacity={glow.opacity}
+        stop={0.72}
+        style={{ position: 'absolute', left: '50%', marginLeft: -glow.size / 2, top: glow.top }}
+      />
+      <View
+        style={{
+          position: 'absolute',
+          left: '50%',
+          marginLeft: -disc.size / 2,
+          top: disc.top,
+          width: disc.size,
+          height: disc.size,
+          borderRadius: disc.size / 2,
+          backgroundColor: '#E9D2A4',
+        }}
+      />
+      {clouds.map(([left, top, width, height, alpha]) => (
+        <View
+          key={`${left}-${top}`}
+          style={{ position: 'absolute', left, top, width, height, borderRadius: 5, backgroundColor: `rgba(255,255,255,${alpha})` }}
+        />
+      ))}
+      {/* hill A is inset −80 either side, hill B −150 / −50, on every frame */}
+      <Hill height={hills[0].height} rise={hills[0].rise} color={hills[0].color} fade={hills[0].fade} style={{ position: 'absolute', left: -80, right: -80, top: hills[0].top }} />
+      <Hill height={hills[1].height} rise={hills[1].rise} color={hills[1].color} fade={hills[1].fade} style={{ position: 'absolute', left: -150, right: -50, top: hills[1].top }} />
+    </View>
+  );
+}
 
 /** Frame 116: yesterday's two pages, the pen laid across them, and the mark. */
 export function LedgerMark({ top }: { top: number }) {
@@ -465,86 +537,6 @@ export function LedgerMark({ top }: { top: number }) {
           <Path d="M1.5 7l4.4 4.5L14.5 1.5" stroke="#F4F3F0" strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round" />
         </Svg>
       </View>
-    </View>
-  );
-}
-
-/** Frames 117 / 120: first light over a low bank of cloud. */
-export function SunMark({ top }: { top: number }) {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, height: 150 }}>
-      <Glow size={140} color="#E2BA78" opacity={0.4} stop={0.74} style={{ position: 'absolute', left: '50%', marginLeft: -70, top: 0 }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -19, top: 46, width: 38, height: 38, borderRadius: 19, backgroundColor: '#E9D2A4' }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -94, top: 32, width: 44, height: 12, borderRadius: 7, backgroundColor: '#FFFFFF' }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -60, top: 100, width: 120, height: 4, borderRadius: 2, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: 14, top: 110, width: 56, height: 4, borderRadius: 2, backgroundColor: '#E8E7E1' }} />
-    </View>
-  );
-}
-
-/** Frame 118: the cup, steaming — what is left in the tank. */
-export function CupMark({ top }: { top: number }) {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, height: 150 }}>
-      <Glow size={130} color="#E2BA78" opacity={0.35} stop={0.74} style={{ position: 'absolute', left: '50%', marginLeft: -65, top: 0 }} />
-      <SoftShadow width={88} height={11} opacity={0.1} color="#000000" style={{ position: 'absolute', left: '50%', marginLeft: -44, top: 122 }} />
-
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -14, top: 28 }}>
-        <Svg width={30} height={29} viewBox="0 0 24 26" fill="none">
-          <Path d="M6 2c-3 4 3 6 0 10M17 2c-3 4 3 6 0 10" stroke="#ACABA4" strokeWidth={1.8} strokeLinecap="round" />
-        </Svg>
-      </View>
-
-      <View
-        style={{
-          position: 'absolute',
-          left: '50%',
-          marginLeft: 22,
-          top: 66,
-          width: 18,
-          height: 22,
-          borderTopWidth: 5,
-          borderRightWidth: 5,
-          borderBottomWidth: 5,
-          borderColor: '#E0DFDA',
-          borderTopRightRadius: 10,
-          borderBottomRightRadius: 10,
-        }}
-      />
-      <View
-        style={{
-          position: 'absolute',
-          left: '50%',
-          marginLeft: -28,
-          top: 60,
-          width: 52,
-          height: 46,
-          borderTopLeftRadius: 5,
-          borderTopRightRadius: 5,
-          borderBottomLeftRadius: 12,
-          borderBottomRightRadius: 12,
-          backgroundColor: '#F7F6F2',
-          boxShadow: '0 0 0 1px rgba(0,0,0,0.05)',
-        }}
-      />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -28, top: 60, width: 52, height: 7, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomLeftRadius: 2, borderBottomRightRadius: 2, backgroundColor: '#E0DFDA' }} />
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -34, top: 112, width: 68, height: 8, borderRadius: 5, backgroundColor: '#E4E3DE' }} />
-    </View>
-  );
-}
-
-/** Frame 120: the daylight band the finished morning lands on. */
-export function DawnBand({ top }: { top: number }) {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, height: 300, overflow: 'hidden' }}>
-      <LinearGradient colors={['#EFEEE8', '#F3EEE1']} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 300 }} />
-      {/* canvas `left:126px` and `left:177px` — stated, not centred; both
-          agree on a 196 centre line, so the half-point is the canvas's own */}
-      <Glow size={140} color="#E2BA78" opacity={0.4} stop={0.74} style={{ position: 'absolute', left: 126, top: 20 }} />
-      <View style={{ position: 'absolute', left: 177, top: 71, width: 38, height: 38, borderRadius: 19, backgroundColor: '#E9D2A4' }} />
-      <Hill height={150} rise={68} color="#DEDDD6" style={{ position: 'absolute', left: -70, right: -70, top: 192 }} />
-      <Hill height={150} rise={58} color="#CFCEC7" style={{ position: 'absolute', left: -130, right: -40, top: 218 }} />
-      <Hill height={150} rise={50} color="#C5C4BD" style={{ position: 'absolute', left: -40, right: -140, top: 244 }} />
     </View>
   );
 }
@@ -1049,35 +1041,6 @@ export function ActionCard({ top, art, mark, label, line }: { top?: number; art:
         {/* the canvas sets this line `text-align:left` now, not centred */}
         <AppText style={[sans('500'), { fontSize: 15, lineHeight: 22, color: '#1D1C1A' }]}>{line}</AppText>
       </View>
-    </View>
-  );
-}
-
-/**
- * Frame 158's answer: two discs, no and yes, because the honest answer has to
- * be as easy to give as the flattering one.
- */
-export function DidYouRow({ onNo, onYes }: { onNo: () => void; onYes: () => void }) {
-  return (
-    <View style={{ position: 'absolute', left: 0, right: 0, bottom: 66, flexDirection: 'row', justifyContent: 'center', gap: 20 }}>
-      <PressScale
-        onPress={onNo}
-        accessibilityRole="button"
-        accessibilityLabel="No"
-        style={{ width: 74, height: 74, minHeight: 74, borderRadius: 37, backgroundColor: '#FFFFFF', boxShadow: 'inset 0 0 0 1.5px rgba(0,0,0,0.14)', alignItems: 'center', justifyContent: 'center' }}>
-        <Svg width={22} height={22} viewBox="0 0 18 18" fill="none">
-          <Path d="M3 3 L15 15 M15 3 L3 15" stroke="#55534E" strokeWidth={2.2} strokeLinecap="round" />
-        </Svg>
-      </PressScale>
-      <PressScale
-        onPress={onYes}
-        accessibilityRole="button"
-        accessibilityLabel="Yes"
-        style={{ width: 74, height: 74, minHeight: 74, borderRadius: 37, backgroundColor: '#131313', boxShadow: '0 8px 20px rgba(19,19,19,0.24)', alignItems: 'center', justifyContent: 'center' }}>
-        <Svg width={26} height={21} viewBox="0 0 20 16" fill="none">
-          <Path d="M2 8.5 L7.5 14 L18 2.5" fill="none" stroke="#F4F3F0" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
-      </PressScale>
     </View>
   );
 }
