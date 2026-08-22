@@ -141,6 +141,11 @@ export interface TidelineEvent {
   note?: string;
   /** Peak urge severity (1–10) for urge events. */
   severity?: number;
+  /**
+   * The second reading, taken after the interrupt — `105 · Where is the urge
+   * now?` asks for it, and the pair is what makes an urge's arc legible.
+   */
+  severityAfter?: number;
   /** How many times the app was reopened during the same urge (severe flow). */
   reopens?: number;
 }

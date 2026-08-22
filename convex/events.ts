@@ -26,6 +26,7 @@ export const create = mutation({
     lesson: v.optional(v.string()),
     note: v.optional(v.string()),
     severity: v.optional(v.number()),
+    severityAfter: v.optional(v.number()),
     reopens: v.optional(v.number()),
     createdAt: v.optional(v.number()),
   },
@@ -41,6 +42,7 @@ export const create = mutation({
       lesson: args.lesson,
       note: args.note,
       severity: args.severity,
+      severityAfter: args.severityAfter,
       reopens: args.reopens,
     });
   },

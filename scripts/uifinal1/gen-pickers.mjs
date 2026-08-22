@@ -14,6 +14,14 @@ import fs from 'node:fs';
 
 const DIR = '.uifinal1/final/Email-Login';
 
+/** The canvas writes its punctuation as entities; the app renders characters. */
+const ENTITIES = {
+  '&rsquo;': '\u2019', '&lsquo;': '\u2018', '&rdquo;': '\u201d', '&ldquo;': '\u201c',
+  '&mdash;': '\u2014', '&ndash;': '\u2013', '&hellip;': '\u2026', '&middot;': '\u00b7',
+  '&times;': '\u00d7', '&amp;': '&', '&nbsp;': '\u00a0', '&quot;': '"', '&#39;': "'",
+};
+const decode = (v) => (v == null ? v : v.replace(/&[a-z#0-9]+;/gi, (e) => ENTITIES[e] ?? e));
+
 function cards(file) {
   const nodes = parse(fs.readFileSync(`${DIR}/${file}`, 'utf8'));
   const out = [];
@@ -26,7 +34,7 @@ function cards(file) {
       glyph.parts.push(p);
       continue;
     }
-    if (glyph && n.tag === '#text') { out.push({ label: n.text, glyph }); glyph = null; }
+    if (glyph && n.tag === '#text') { out.push({ label: decode(n.text), glyph }); glyph = null; }
   }
   return out;
 }

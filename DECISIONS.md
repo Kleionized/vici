@@ -593,3 +593,109 @@ drifting the composition left — but the canvas states a `left` for each, the
 bundle offers no second width to infer an anchoring rule from, and re-anchoring
 them to the nearer edge is a design judgement the frames do not support. Recorded
 so the question is not re-opened by accident.
+
+## D036 — the two grid pickers wear the glyphs of the lists they replaced
+
+`102 · SOS Reason Picker` and `103 · SOS Feeling Picker` each replaced a
+six-row list with a nine-card grid, and each card kept the glyph that sat in
+that position in the old list. So the trigger grid draws a **heart** on
+"Something online" (the old `Relationship`), a **briefcase** on "A stuck
+fantasy" (the old `Work or school`), a **house** on "Pure habit" (the old
+`Family`), a **banknote** on "Can't sleep" (the old `Money`) and a **pulse
+line** on "An argument" (the old `Health`); the feeling grid does the same with
+the H·A·L·T set — a **bowl** on "Turned on" and again on "Tired", a **bolt** on
+"Bored" and again on "Restless", a **moon** on "Stressed or anxious", a **smile**
+on "Angry".
+
+**Decision:** implemented as drawn. Ground rule 3 is explicit — "if a design
+looks wrong to you, implement it as drawn" — and the same call was made for the
+funnel's stale progress rule (D014). Every glyph is read out of the frame by
+`scripts/uifinal1/gen-pickers.mjs` into `src/content/sosPickers.ts`, so if the
+bundle re-pairs them the app follows in one command. Flagged for REPORT.md as
+the largest single thing in the bundle that reads as an oversight rather than a
+choice.
+
+## D037 — each picker is followed by the board the bundle draws for its answer
+
+The bundle draws three pickers (98 location, 102 trigger, 103 feeling) and, at
+canvas indices 117–146, **thirty boards** — one per answer, seven / ten /
+thirteen. Nothing in either set says where the thirty sit in the flow.
+
+**Decision:** each picker hands straight to the board for the answer it
+returned. The three moves (99, 100, 101) keep the place the canvas indexes them,
+between the location's board and the trigger picker. The flow is therefore
+
+```
+intro → strength → where → the place's board → stand → leave → phone
+      → trigger → the trigger's board → feeling → the feeling's board
+      → reassess → afterward → the dark SOS → complete
+```
+
+which uses every frame in the group exactly once, in the canvas's own index
+order. The alternative — thirty boards drawn and never shown — is not one.
+
+## D038 — the pickers were not extended when the response branch was
+
+Each picker offers fewer options than its branch has boards:
+
+| branch | picker options | boards drawn | unreachable |
+|---|---|---|---|
+| location | 5 | 7 | `SOS-Loc-Bathroom`, `SOS-Loc-Home-Alone` |
+| trigger | 9 | 10 | `SOS-Trig-Rejection` |
+| feeling | 9 | 13 | `SOS-Feel-Anxious`, `-Numb`, `-Ashamed`, `-Rejected` |
+
+The location picker was *edited* in this drop — its sub-line deleted, its rows
+lifted 8pt — without gaining options, so the five are current, not stale.
+
+**Decision:** the pickers are built with exactly the options they draw, and all
+thirty boards are built. The seven with no card are reachable on the feeling
+branch through "Give me another" (below) and, on the other two branches, are
+drawn but unreached. Nothing is invented to reach them, and no picker gains an
+option the canvas does not draw. Flagged for REPORT.md.
+
+**"Give me another"** — drawn on all thirteen feeling boards and on
+`SOS-Challenge`, and on nothing else — rotates through the fourteen boards of
+that branch in the bundle's own order. Its only possible meaning is "show me a
+different suggestion", and that is the set of suggestions the bundle drew; it is
+also what makes `SOS-Challenge` reachable, whose copy answers an answer neither
+picker offers.
+
+## D039 — `108 · Relapse Log` draws two body paragraphs, overlapping
+
+The frame carries both
+
+* `top: 444` — "Same calm screen as a win. Note what set it off while it's fresh
+  — the pattern is the prize, not the streak." (the previous bundle's), and
+* `top: 450` — "The day isn't over. Log what happened, then stop it here."
+
+at the same `left: 44 right: 44`, the same 15.5/400 on a 23 line, in the same
+colour. They overlap by 23 of their 23-point lines. The new sentence was added
+without the old one being removed.
+
+**Decision:** the one at 450 is built and the one at 444 is not. The headline
+changed in the same hunk — "It happened. That's data." → "It happened." — and
+the new paragraph is the one that follows from it.
+
+## D040 — the dark SOS survives
+
+`UI Final 1` draws no breathe, tap, odd-one-out or wave stage. Neither did the
+previous bundle: the only drawings of them anywhere are
+`VICI-previous/Urge-SOS-Breathe.html` and `Urge-SOS-Wave.html`, on a board D003
+already marks REFERENCE.
+
+**Decision:** the four stages stay. The bundle not redrawing a screen is not the
+bundle deleting it, the flow's own `sos` step is what the interrupt hands off
+to, and `112–116 · Urge Hub` draws a "Breathe" pill whose only destination is
+`BreatheStage`. Flagged for REPORT.md as the largest piece of the app with no
+frame in this bundle.
+
+## D041 — the second intensity reading gets a field
+
+`105 · Where is the urge now?` asks for a second 1–5 reading and the schema
+carried one `severity`. `events` and `TidelineEvent` gain
+`severityAfter?: number` — optional, so every existing row stays valid — and the
+interrupt writes both. Without it the board's answer would go nowhere, which is
+the one thing a drawn control must not do.
+
+`106 · One more thing.` writes its line to the event's existing `note`, which is
+the field the schema already carries for a sentence about an urge.

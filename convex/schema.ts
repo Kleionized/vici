@@ -143,6 +143,8 @@ export default defineSchema({
     note: v.optional(v.string()),
     /** Peak urge severity (1–10) for urge events. */
     severity: v.optional(v.number()),
+    /** The second reading, taken after the interrupt (`105 · Reassess`). */
+    severityAfter: v.optional(v.number()),
     /** App reopens during the same urge (severe flow's close-your-phone loop). */
     reopens: v.optional(v.number()),
   })

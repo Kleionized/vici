@@ -18,10 +18,10 @@ import Svg, {
   Stop,
 } from 'react-native-svg';
 
-import { AppText, PressScale } from '@/components/ui';
-import { useCreateEvent } from '@/lib/backend';
+import { AppText, Hill, PressScale } from '@/components/ui';
+import { useCreateEvent, useCurrentUser, useJournalEntries } from '@/lib/backend';
 import { setJSON } from '@/lib/storage';
-import { sans } from '@/lib/theme';
+import { fonts, sans } from '@/lib/theme';
 
 /**
  * The slip, in three frames — canvases 152, 153, 154.
@@ -42,20 +42,39 @@ const PAPER = '#F4F3F0';
 const INK = '#1D1C1A';
 const MUTED = '#55534E';
 
+/**
+ * `108 · Relapse Log`, `109 · Relapse Twice`, `111 · Relapse Begin`.
+ *
+ * `Relapse-Log` draws **two** body paragraphs, one at `top: 444` and one at
+ * `top: 450`, overlapping — the new sentence was added without the old one
+ * being taken out. The one at 450 is this bundle's; the one at 444 is the
+ * previous bundle's, still in the file. Only the new one is built
+ * (`DECISIONS.md` D039).
+ */
 const PAGES = [
   {
-    headline: "It happened. That's data.",
-    body: "Same calm screen as a win. Note what set it off while it's fresh; the pattern is what the log is for.",
+    headline: 'It happened.',
+    body: 'The day isn’t over. Log what happened, then stop it here.',
+    /** the new paragraph sits 6 lower than the one it replaces */
+    bodyTop: 450,
     cta: 'Log the slip',
   },
   {
-    headline: "Don't fail twice.",
-    body: 'One slip is a data point · two in a row is a pattern',
+    headline: 'Don’t let it become two.',
+    body: 'One slip happened. You can still turn the rest of today around.',
+    bodyTop: 444,
     cta: 'Continue',
   },
   {
-    headline: 'Begin again.',
-    body: "Logged — slip · the campaign didn't reset",
+    headline: 'The pledge still stands.',
+    body: 'A slip doesn’t erase what you decided. Sign it again and keep going.',
+    bodyTop: 196,
+    cta: 'Sign it again',
+  },
+  {
+    headline: 'The day is still yours.',
+    body: 'One part of it went wrong. Nothing else has to.',
+    bodyTop: 444,
     cta: 'Start again',
   },
 ] as const;
@@ -65,6 +84,10 @@ export default function Relapse() {
   const insets = useSafeAreaInsets();
   const { logged: alreadyLogged } = useLocalSearchParams<{ logged?: string }>();
   const createEvent = useCreateEvent();
+  const user = useCurrentUser();
+  const journal = useJournalEntries();
+  // The standing pledge, read the way `21 · Today — p3` reads it.
+  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
   const [index, setIndex] = useState(0);
   const logged = useRef(alreadyLogged === '1');
 
@@ -84,7 +107,8 @@ export default function Relapse() {
     router.replace('/(app)/today');
   }
 
-  if (index === 2) return <BeginAgain page={PAGES[2]} onBack={back} onDone={advance} />;
+  if (index === 2) return <ResignPledge page={PAGES[2]} name={user?.displayName} pledge={pledge?.body} onDone={advance} onChange={() => router.push('/day/morning')} />;
+  if (index === 3) return <BeginAgain page={PAGES[3]} onBack={back} onDone={advance} />;
 
   const page = PAGES[index];
   return (
@@ -126,7 +150,7 @@ export default function Relapse() {
         </AppText>
         <AppText
           center
-          style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 444, fontSize: 15.5, lineHeight: 23, color: MUTED }]}>
+          style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: page.bodyTop, fontSize: 15.5, lineHeight: 23, color: MUTED }]}>
           {page.body}
         </AppText>
 
@@ -162,8 +186,104 @@ export default function Relapse() {
   );
 }
 
+/**
+ * `110 · Relapse Resign` — the pledge, set in type, waiting to be signed again.
+ *
+ * A bare frame: no sheet, no close cross, no back chevron. The card is the same
+ * one `21 · Today — p3` draws, at its own size — the sun wash, the disc and the
+ * two hills, the quote mark, the words centred rather than left-aligned, and
+ * the signature bottom-right over its rule.
+ *
+ * The canvas puts an empty `<span>` opposite the signature to push it right;
+ * that is a flex spacer, so the row states `justifyContent: 'flex-end'` instead.
+ */
+function ResignPledge({
+  page,
+  name,
+  pledge,
+  onDone,
+  onChange,
+}: {
+  page: (typeof PAGES)[2];
+  name?: string;
+  pledge?: string;
+  onDone: () => void;
+  onChange: () => void;
+}) {
+  return (
+    <View style={{ flex: 1, backgroundColor: PAPER }}>
+      <StatusBar style="dark" />
+      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+        <View style={{ flex: 1 }}>
+          <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 96, fontSize: 26, letterSpacing: -0.2, lineHeight: 33, color: INK }]}>
+            {page.headline}
+          </AppText>
+          <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 142, fontSize: 15, lineHeight: 22, color: MUTED }]}>
+            {page.body}
+          </AppText>
+
+          <View
+            style={{
+              position: 'absolute',
+              left: 36,
+              right: 36,
+              top: 240,
+              height: 236,
+              overflow: 'hidden',
+              borderRadius: 18,
+              borderCurve: 'continuous',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 0 0 1px rgba(0,0,0,0.08), 0 10px 26px rgba(40,38,32,0.08)',
+            }}>
+            <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+              <Svg width={180} height={180} style={{ position: 'absolute', right: -40, top: -52 }}>
+                <Defs>
+                  <RadialGradient id="rsWash" cx="50%" cy="50%" rx="50%" ry="50%">
+                    <Stop offset="0" stopColor="#E9D2A4" stopOpacity={0.34} />
+                    <Stop offset="0.74" stopColor="#E9D2A4" stopOpacity={0} />
+                  </RadialGradient>
+                </Defs>
+                <Ellipse cx={90} cy={90} rx={90} ry={90} fill="url(#rsWash)" />
+              </Svg>
+              <View style={{ position: 'absolute', right: 28, top: 26, width: 30, height: 30, borderRadius: 15, backgroundColor: '#F0DDB4' }} />
+              <Hill height={110} rise={50} color="#EFEEE9" style={{ position: 'absolute', left: -30, right: -30, bottom: -64 }} />
+              <Hill height={110} rise={44} color="#E9E8E2" style={{ position: 'absolute', left: -60, right: -10, bottom: -78 }} />
+            </View>
+            <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 42, fontSize: 40, lineHeight: 26, color: '#C9C0AC' }]}>
+              “
+            </AppText>
+            <AppText center style={[sans('500'), { position: 'absolute', left: 36, right: 36, top: 86, fontSize: 22, letterSpacing: -0.2, lineHeight: 32, color: '#3A3934' }]}>
+              {pledge ?? 'The mornings are mine again.'}
+            </AppText>
+            <View style={{ position: 'absolute', left: 16, right: 20, bottom: 16, alignItems: 'flex-end' }}>
+              <AppText style={{ fontFamily: fonts.script, fontSize: 26, lineHeight: 26, color: INK, transform: [{ rotate: '-3.5deg' }] }}>
+                {name?.split(' ')[0] ?? 'You'}
+              </AppText>
+              <View style={{ marginTop: 5, width: 104, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
+            </View>
+          </View>
+
+          <PressScale
+            onPress={onDone}
+            accessibilityRole="button"
+            style={{ position: 'absolute', left: 24, right: 24, top: 634, height: 54, minHeight: 0, borderRadius: 27, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
+            <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.2, color: '#FFFFFF' }]}>{page.cta}</AppText>
+          </PressScale>
+          <PressScale
+            onPress={onChange}
+            accessibilityRole="button"
+            hitSlop={{ top: 14, bottom: 14, left: 24, right: 24 }}
+            style={{ position: 'absolute', left: 0, right: 0, top: 706, minHeight: 0 }}>
+            <AppText center style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Change the pledge</AppText>
+          </PressScale>
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+}
+
 /** 154 · the sun clearing the waterline, with the campaign still standing behind it. */
-function BeginAgain({ page, onBack, onDone }: { page: (typeof PAGES)[2]; onBack: () => void; onDone: () => void }) {
+function BeginAgain({ page, onBack, onDone }: { page: (typeof PAGES)[3]; onBack: () => void; onDone: () => void }) {
   return (
     <View style={{ flex: 1, backgroundColor: '#F0EFEB' }}>
       <StatusBar style="dark" />

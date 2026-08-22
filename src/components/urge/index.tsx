@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type MutableRefObject, type ReactNode, useEffect, useId, useRef, useState } from 'react';
-import { StyleSheet, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, TextInput, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import Reanimated, {
   Easing,
   Extrapolation,
@@ -34,6 +34,7 @@ import Svg, { Circle, Defs, Ellipse, G, Image as SvgImage, LinearGradient as Svg
 
 import { AppText, bandToSeverity, Grain, INTENSITY_BANDS, PressScale } from '@/components/ui';
 import { URGE_FEELINGS, URGE_TRIGGERS, type PickerCard } from '@/content/sosPickers';
+import { SOS_RESPONSES, type SosLayer } from '@/content/sosResponses';
 import { useCreateEvent, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/lessonArt';
 import type { Tint } from '@/lib/oklch';
@@ -1270,6 +1271,243 @@ function MovePage({ index, art, onClose, onNext }: { index: number; art: ReactNo
   );
 }
 
+// ── 104 · 117–146 · the response boards ─────────────────────────────────────
+
+/**
+ * One layer of a response board's scene.
+ *
+ * The canvas draws these as absolutely-positioned `<div>`s inside a
+ * `240 × 220` box with an `inset: 0; overflow: hidden` clip child. Three of the
+ * things they use have no React Native equivalent and are redrawn rather than
+ * approximated (`DECISIONS.md` D010, D015):
+ *
+ * * `filter: blur(Npx)` on a solid or a radial — the blur *is* the shape on
+ *   these layers, so it becomes a radial falloff.
+ * * `border-radius: 50%` — a number, not a percentage, so it is half the box.
+ * * `border-radius: a b c d / e f g h` — an elliptical corner, which React
+ *   Native cannot express at all, so the layer is drawn as an SVG arc.
+ */
+function SosSceneLayer({ layer, id }: { layer: SosLayer; id: string }) {
+  const box = {
+    position: 'absolute' as const,
+    left: layer.left,
+    top: layer.top,
+    right: layer.right,
+    bottom: layer.bottom,
+    width: layer.width,
+    height: layer.height,
+  };
+  const w = layer.width ?? 0;
+  const h = layer.height ?? 0;
+
+  // A radial wash, blurred or not, is a `SoftBlob` either way.
+  if (layer.bg?.kind === 'radial') {
+    return <SoftBlob id={id} left={layer.left ?? 0} top={layer.top ?? 0} width={w} height={h} color={layer.bg.from ?? '#000000'} alpha={1} stop={layer.bg.stop ?? 1} />;
+  }
+  // A blurred solid is the same falloff in the layer's own colour.
+  if (layer.blur && layer.bg?.kind === 'solid') {
+    return <SoftBlob id={id} left={layer.left ?? 0} top={layer.top ?? 0} width={w} height={h} color={layer.bg.color ?? '#000000'} alpha={1} stop={1} />;
+  }
+
+  const radius =
+    layer.radius?.kind === 'pill'
+      ? { borderRadius: Math.min(w, h) / 2 }
+      : layer.radius?.kind === 'all'
+        ? { borderRadius: layer.radius.r }
+        : layer.radius?.kind === 'corners'
+          ? {
+              borderTopLeftRadius: layer.radius.corners[0],
+              borderTopRightRadius: layer.radius.corners[1],
+              borderBottomRightRadius: layer.radius.corners[2],
+              borderBottomLeftRadius: layer.radius.corners[3],
+            }
+          : null;
+
+  // An elliptical top — `50% 50% 0 0 / Npx Npx 0 0` — is the `Hill` arc.
+  if (layer.radius?.kind === 'elliptic') {
+    const rise = Number(String(layer.radius.v[0]).replace('px', ''));
+    const pct = String(layer.radius.v[0]).endsWith('%');
+    return (
+      <Hill
+        left={layer.left ?? 0}
+        top={layer.top ?? 0}
+        width={w}
+        height={h}
+        ry={pct ? (rise / 100) * h : rise}
+        fill={layer.bg?.kind === 'solid' ? (layer.bg.color ?? '#000000') : '#000000'}
+      />
+    );
+  }
+
+  if (layer.bg?.kind === 'linear') {
+    return <LinearGradient colors={(layer.bg.stops ?? ['#FFFFFF', '#FFFFFF']) as [string, string]} style={[box, radius]} />;
+  }
+  return <View style={[box, radius, layer.bg?.kind === 'solid' ? { backgroundColor: layer.bg.color } : null, layer.shadow ? { boxShadow: layer.shadow } : null]} />;
+}
+
+/**
+ * `104` and `117–146` — the board the flow shows once it knows the answer.
+ *
+ * Thirty-one of them, one per answer, all the same shape: a clipped `240 × 220`
+ * scene at `top: 180`, a headline at 434, a sentence at 480, and a pill whose
+ * words are the answer's own. Thirteen of them — the feeling branch, and the
+ * challenge board — add a "Give me another" link; one adds a challenge card.
+ *
+ * Every value comes from `src/content/sosResponses.ts`, generated from the
+ * frames.
+ */
+function ResponsePage({ answer, onClose, onNext, onAnother }: { answer: string; onClose: () => void; onNext: () => void; onAnother?: () => void }) {
+  const id = useId().replace(/:/g, '');
+  const board = SOS_RESPONSES[answer];
+  if (!board) return null;
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      {board.layers.length ? (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 76, top: 180, width: 240, height: 220, overflow: 'hidden' }}>
+          {board.layers.map((layer, i) => (
+            <SosSceneLayer key={i} layer={layer} id={`sos${id}${i}`} />
+          ))}
+        </View>
+      ) : null}
+      {/* the challenge board draws its copy 284 higher, where the scene is not */}
+      <AppText
+        center
+        style={[sans('500'), { position: 'absolute', left: board.challenge ? 44 : 36, right: board.challenge ? 44 : 36, top: board.challenge ? 150 : 434, fontSize: 23, lineHeight: board.challenge ? 31 : 30, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        {board.title}
+      </AppText>
+      <AppText
+        center
+        style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: board.challenge ? 214 : 480, fontSize: board.challenge ? 15 : 15.5, lineHeight: 23, color: SHEET_MUTED }]}>
+        {board.body}
+      </AppText>
+      {board.challenge ? (
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 330, borderRadius: 18, borderCurve: 'continuous', backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)', paddingTop: 22, paddingHorizontal: 22, paddingBottom: 24 }}>
+          <AppText style={[sans('600'), { fontSize: 12, letterSpacing: 1.2, color: '#A5A29B' }]}>THE CHALLENGE</AppText>
+          <AppText style={[sans('500'), { marginTop: 12, fontSize: 17, lineHeight: 26, color: SHEET_TEXT }]}>{board.challenge}</AppText>
+        </View>
+      ) : null}
+      {/* the response boards' pill is half a point smaller than the flow's */}
+      <PressScale
+        onPress={onNext}
+        accessibilityRole="button"
+        style={{ position: 'absolute', left: 24, right: 24, bottom: 88, height: 54, minHeight: 54, borderRadius: 27, backgroundColor: SHEET_INK, alignItems: 'center', justifyContent: 'center' }}>
+        <AppText style={[sans('600'), { fontSize: board.challenge ? 17 : 16.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>{board.cta}</AppText>
+      </PressScale>
+      {board.another && onAnother ? (
+        <PressScale
+          onPress={onAnother}
+          accessibilityRole="button"
+          hitSlop={{ top: 14, bottom: 14, left: 60, right: 60 }}
+          style={{ position: 'absolute', left: 0, right: 0, bottom: 44, minHeight: 0 }}>
+          <AppText center style={[sans('500'), { fontSize: 15, color: SHEET_SOFT }]}>Give me another</AppText>
+        </PressScale>
+      ) : null}
+    </PaperSheet>
+  );
+}
+
+/**
+ * `105 · Where is the urge now?` — the second intensity read.
+ *
+ * The same five discs the first read draws, at the same `left: 36 right: 36
+ * top: 330`, under a headline at 150 and a line at 200 that the first read no
+ * longer has. It closes on "Continue" and offers no skip.
+ *
+ * Its own five words: `INTENSITY_BANDS` reads the *first* question ("How strong
+ * is it?"), and this one asks where the urge has got to, so index 1 is
+ * "Noticeable · Coming down" where the first read says "Mild · Easy to set
+ * aside". Only index 1 is drawn; the other four are the app's, written to the
+ * same register.
+ */
+const REASSESS_BANDS: { label: string; note: string }[] = [
+  { label: 'Gone', note: 'It passed' },
+  { label: 'Noticeable', note: 'Coming down' },
+  { label: 'Still there', note: 'Holding steady' },
+  { label: 'Strong', note: 'Not done yet' },
+  { label: 'Peaking', note: 'Stay with it' },
+];
+
+function ReassessPage({ band, onBand, onClose, onNext }: { band: number; onBand: (index: number) => void; onClose: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 150, fontSize: 23, lineHeight: 31, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        Where is the urge now?
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 200, fontSize: 14.5, color: SHEET_SOFT }]}>
+        Rate it again from 1–5.
+      </AppText>
+      <View style={{ position: 'absolute', left: 36, right: 36, top: 330, flexDirection: 'row', justifyContent: 'space-between' }}>
+        {REASSESS_BANDS.map((item, i) => {
+          const on = band === i;
+          return (
+            <PressScale
+              key={item.label}
+              onPress={() => onBand(i)}
+              accessibilityRole="radio"
+              accessibilityLabel={item.label}
+              accessibilityState={{ checked: on }}
+              style={{
+                width: 48,
+                height: 48,
+                minHeight: 48,
+                borderRadius: 24,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: on ? SHEET_INK : '#FFFFFF',
+                boxShadow: on ? '0 0 0 2px #F4F3F0, 0 0 0 4px #131313' : 'inset 0 0 0 1.5px rgba(0,0,0,0.12)',
+              }}>
+              {on ? <View style={{ width: 11, height: 11, borderRadius: 5.5, backgroundColor: SHEET_PAPER }} /> : null}
+            </PressScale>
+          );
+        })}
+      </View>
+      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: 452, fontSize: 19, color: SHEET_TEXT }]}>
+        {REASSESS_BANDS[band].label}
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 482, fontSize: 13.5, color: SHEET_SOFT }]}>
+        {REASSESS_BANDS[band].note}
+      </AppText>
+      <SheetPrimary label="Continue" onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
+/**
+ * `106 · One more thing.` — one line, on a rule, before the flow closes.
+ *
+ * The canvas draws a left-aligned placeholder at `left: 36 top: 326` over a
+ * 1.5pt rule at 356, and nothing else: no filled state, no counter, no second
+ * line. The words are filed on the event as its note, which is the one field
+ * the schema already carries for a sentence the user writes about an urge.
+ */
+function AfterwardPage({ note, onNote, onClose, onNext }: { note: string; onNote: (next: string) => void; onClose: () => void; onNext: () => void }) {
+  return (
+    <PaperSheet>
+      <SheetClose onPress={onClose} />
+      <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 150, fontSize: 23, lineHeight: 31, letterSpacing: 0.1, color: SHEET_TEXT }]}>
+        One more thing.
+      </AppText>
+      <AppText center style={[sans('400'), { position: 'absolute', left: 44, right: 44, top: 214, fontSize: 15, lineHeight: 23, color: SHEET_MUTED }]}>
+        The relationship doesn’t need solving tonight. Write the one thing you need to say tomorrow.
+      </AppText>
+      <TextInput
+        value={note}
+        onChangeText={onNote}
+        placeholder="I need to say…"
+        placeholderTextColor="#B0AEA8"
+        style={[
+          { position: 'absolute', left: 36, right: 36, top: 326, fontFamily: fonts.sans, fontSize: 16, color: SHEET_TEXT, padding: 0 },
+          Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
+        ]}
+      />
+      <View style={{ position: 'absolute', left: 36, right: 36, top: 356, height: 1.5, backgroundColor: 'rgba(0,0,0,0.22)' }} />
+      <SheetPrimary label="Done" onPress={onNext} />
+    </PaperSheet>
+  );
+}
+
 // ── 138 · 139 · 140 · 141 — the dark SOS ────────────────────────────────────
 
 export type SosSound = 'ocean' | 'rain' | 'silent';
@@ -2118,11 +2356,114 @@ function DonePage({ count, onClose }: { count: number; onClose: () => void }) {
 
 // ── the flow ────────────────────────────────────────────────────────────────
 
-type FlowStep = 'intro' | 'strength' | 'where' | 'feeling' | 'reason' | 'stand' | 'leave' | 'phone' | 'sos' | 'done';
-// 96 → 97 → 98 → 103 → 102 → 99 → 100 → 101 → 107, in the canvas's own order.
-// The three moves were `screen | move | cold` before `UI Final 1` resequenced
-// them; those names described the old order and `cold` named a deleted board.
-const FLOW: FlowStep[] = ['intro', 'strength', 'where', 'feeling', 'reason', 'stand', 'leave', 'phone', 'sos', 'done'];
+type FlowStep =
+  | 'intro'
+  | 'strength'
+  | 'where'
+  | 'place-said'
+  | 'stand'
+  | 'leave'
+  | 'phone'
+  | 'reason'
+  | 'trigger-said'
+  | 'feeling'
+  | 'feeling-said'
+  | 'reassess'
+  | 'afterward'
+  | 'sos'
+  | 'done';
+
+/**
+ * The interrupt, in the canvas's own index order: 96 → 97 → 98 → [117–123] →
+ * 99 → 100 → 101 → 102 → [155–164] → 103 → [142–154, 104] → 105 → 106 → 107.
+ *
+ * Each picker is followed by the board the bundle draws for the answer it
+ * returned — `DECISIONS.md` D037 — and the three moves keep the place the
+ * canvas indexes them, between the location's answer and the trigger picker.
+ * The moves were `screen | move | cold` before `UI Final 1` resequenced them;
+ * those names described the old order and `cold` named a deleted board.
+ */
+const FLOW: FlowStep[] = [
+  'intro',
+  'strength',
+  'where',
+  'place-said',
+  'stand',
+  'leave',
+  'phone',
+  'reason',
+  'trigger-said',
+  'feeling',
+  'feeling-said',
+  'reassess',
+  'afterward',
+  'sos',
+  'done',
+];
+
+/**
+ * Which board answers which option, by the key the frames are named with.
+ *
+ * The pickers were not extended when the response branch was: the location
+ * picker offers five options against seven boards, and each of the other two
+ * offers nine against thirteen and ten. `SOS-Loc-Bathroom`, `SOS-Loc-Home-Alone`,
+ * `SOS-Feel-Anxious`, `SOS-Feel-Numb`, `SOS-Feel-Ashamed`, `SOS-Feel-Rejected`
+ * and `SOS-Trig-Rejection` have no card to reach them (`DECISIONS.md` D038).
+ */
+const PLACE_BOARD: Record<UrgePlace, string> = {
+  private: 'SOS-Loc-Private-Room',
+  bed: 'SOS-Loc-Bed',
+  public: 'SOS-Loc-Public',
+  work: 'SOS-Loc-Work',
+  out: 'SOS-Loc-Elsewhere',
+};
+
+const TRIGGER_BOARD: Record<string, string> = {
+  'Something online': 'SOS-Trig-Content',
+  Doomscrolling: 'SOS-Trig-Doomscroll',
+  'A stuck fantasy': 'SOS-Trig-Fantasy',
+  'Phone in bed': 'SOS-Trig-Late-Phone',
+  'Pure habit': 'SOS-Trig-Habit',
+  'Can’t sleep': 'SOS-Trig-Cant-Sleep',
+  'An argument': 'SOS-Trig-Argument',
+  'Being alone': 'SOS-Trig-Alone',
+  'I don’t know': 'SOS-Trig-Unknown',
+};
+
+const FEELING_BOARD: Record<string, string> = {
+  'Turned on': 'SOS-Feel-Turned-On',
+  Bored: 'SOS-Feel-Bored',
+  Lonely: 'SOS-Feel-Lonely',
+  'Stressed or anxious': 'SOS-Feel-Stressed',
+  Angry: 'SOS-Feel-Angry',
+  Low: 'SOS-Feel-Low',
+  Tired: 'SOS-Feel-Tired',
+  Restless: 'SOS-Feel-Restless',
+  'I don’t know': 'SOS-Feel-Unknown',
+};
+
+/**
+ * What "Give me another" rotates through: every board the feeling branch draws,
+ * in the bundle's own order, including the four with no picker card and the
+ * challenge board. The link's only possible meaning is "show me a different
+ * suggestion", and this is the set of suggestions the bundle drew.
+ */
+const FEELING_ROTATION = [
+  'SOS-Feel-Turned-On',
+  'SOS-Feel-Bored',
+  'SOS-Feel-Lonely',
+  'SOS-Feel-Stressed',
+  'SOS-Feel-Anxious',
+  'SOS-Feel-Angry',
+  'SOS-Feel-Low',
+  'SOS-Feel-Rejected',
+  'SOS-Feel-Tired',
+  'SOS-Feel-Restless',
+  'SOS-Feel-Numb',
+  'SOS-Feel-Ashamed',
+  'SOS-Feel-Unknown',
+  'SOS-Challenge',
+];
 type SosStageName = 'breathe' | 'tap' | 'odd' | 'wave';
 const SOS_ORDER: SosStageName[] = ['breathe', 'tap', 'odd', 'wave'];
 
@@ -2139,11 +2480,20 @@ export function UrgeFlow() {
   const [place, setPlace] = useState<UrgePlace>('private');
   const [feeling, setFeeling] = useState<string | undefined>(undefined);
   const [trigger, setTrigger] = useState<string | undefined>(undefined);
+  const [after, setAfter] = useState(1);
+  const [note, setNote] = useState('');
+  /** How many times "Give me another" has been pressed on the feeling board. */
+  const [roll, setRoll] = useState(0);
   const [sosStage, setSosStage] = useState(0);
   const [settings, setSettings] = useState<SosSettings>(DEFAULT_SOS_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const logged = useRef(false);
   const step = FLOW[index];
+
+  // The feeling branch's suggestion: the board for the answer, and then the
+  // next one along each time "Give me another" is pressed.
+  const feelingBoard = FEELING_BOARD[feeling ?? ''] ?? 'SOS-Feel-Unknown';
+  const suggestion = FEELING_ROTATION[(FEELING_ROTATION.indexOf(feelingBoard) + roll) % FEELING_ROTATION.length];
 
   // One clock for the whole SOS: every stage runs under it and it finishes the
   // session on its own at zero, whichever stage is on screen.
@@ -2203,6 +2553,9 @@ export function UrgeFlow() {
     void createEvent({
       type: 'urge_rode_out',
       severity: bandToSeverity(band),
+      // `105` asks a second time, once the interrupt is behind you.
+      severityAfter: bandToSeverity(after),
+      note: note.trim() || undefined,
       precedingState: {
         location: PLACES.find((item) => item.key === place)?.label,
         feeling,
@@ -2249,6 +2602,18 @@ export function UrgeFlow() {
       {step === 'stand' ? <MovePage index={0} art={<MoveStepArt />} onClose={close} onNext={next} /> : null}
       {step === 'leave' ? <MovePage index={1} art={<LeaveStepArt />} onClose={close} onNext={next} /> : null}
       {step === 'phone' ? <MovePage index={2} art={<ScreenStepArt />} onClose={close} onNext={next} /> : null}
+      {step === 'place-said' ? <ResponsePage answer={PLACE_BOARD[place]} onClose={close} onNext={next} /> : null}
+      {step === 'trigger-said' ? <ResponsePage answer={TRIGGER_BOARD[trigger ?? ''] ?? 'SOS-Trig-Unknown'} onClose={close} onNext={next} /> : null}
+      {step === 'feeling-said' ? (
+        <ResponsePage
+          answer={suggestion}
+          onClose={close}
+          onNext={next}
+          onAnother={() => setRoll((current) => current + 1)}
+        />
+      ) : null}
+      {step === 'reassess' ? <ReassessPage band={after} onBand={setAfter} onClose={close} onNext={next} /> : null}
+      {step === 'afterward' ? <AfterwardPage note={note} onNote={setNote} onClose={close} onNext={next} /> : null}
       {inSos && stage === 'breathe' ? <BreatheStage settings={settings} onSettings={() => setSettingsOpen(true)} onEnd={finish} onDone={advance} /> : null}
       {inSos && stage === 'tap' ? <TapStage settings={settings} onEnd={finish} onDone={advance} /> : null}
       {inSos && stage === 'odd' ? <OddStage settings={settings} onEnd={finish} onDone={advance} /> : null}
