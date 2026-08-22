@@ -65,7 +65,10 @@ export function WeekHeading({ week }: { week: Curriculum84Week }) {
   return (
     <View style={{ height: HEADER_H }}>
       <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>{week.name}</AppText>
-      <AppText style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 104, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
+      {/* `HEADER_H` is a fixed 160 and the Library's `getItemLayout` trusts it,
+          so the blurb is held to the two lines every current one sets: a third
+          would run into the scene band and the board below would not move. */}
+      <AppText numberOfLines={2} style={[sans('400'), { position: 'absolute', left: 24, right: 60, top: 104, fontSize: 14.5, lineHeight: 21, color: '#55534E' }]}>
         Week {week.roman} · {week.blurb}
       </AppText>
     </View>
@@ -80,7 +83,7 @@ export function LessonRow({ title, number, state, onPress }: { title: string; nu
     <PressScale
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityLabel={`${title}, lesson ${number}`}
+      accessibilityLabel={`${title}, lesson ${number}, ${done ? 'completed' : current ? 'today' : 'locked'}`}
       style={{
         marginHorizontal: 24,
         height: ROW_H,

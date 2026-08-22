@@ -552,3 +552,44 @@ the three boards `21E1`–`21E3` draw — is untouched.
 Also withdrawn with the morning rewrite, each with no consumer left:
 `SunMark`, `CupMark`, `DawnBand`, `EnergyBars`, `TANK`, `SignaturePad` and
 `OPENERS`.
+
+## D034 — a locked lesson row stays tappable
+
+Every one of the twenty-four week reader frames draws a padlock on every lesson
+the account has not reached: a `30 × 30` `rgba(19,19,19,0.05)` disc with an
+`inset 0 0 0 1.5px rgba(0,0,0,0.08)` ring, holding a `#A5A29B` shackle and body,
+under a `#8B8882` title and a `#B0AEA8` number. Seventy-two of the eighty-four
+rows are drawn that way.
+
+The padlock is the row's **state**, which is visual and is implemented exactly.
+Whether the row *opens* is behaviour, and the app already answers it: the row
+pushes `/lesson-card/{day}` whatever its state, and the lesson card is readable
+ahead of time. The bundle contains no frame for a blocked tap — no toast, no
+locked lesson card, nothing — so there is no drawn evidence for the other
+reading.
+
+**Decision:** the row keeps its padlock and keeps opening. The state is now also
+in the row's accessibility label ("…, locked"), which is what a screen reader
+needs and what the padlock does for everyone else.
+
+## D035 — sky objects keep the canvas's own `left`; hills grow with the screen
+
+`src/components/journey/WeekScene.tsx` already draws a distinction the canvas
+cannot state, because the canvas is only ever 393 wide: a **hill** that runs past
+an edge is re-measured so it still runs past it on any width ("a narrower phone
+shows less of the same hill, not a smaller one"), while a **sky object** — a
+cloud, a bird, a sun — keeps its declared `left`.
+
+This pass fixed the hill half of that rule: the test fired on `width > 393`
+alone, and week IX's two hills are 270 and 290 wide while each ends 83pt past one
+edge, so neither grew and the valley between them opened up on any wider screen.
+The test is on the layer's edges now. Verified: on a 393 board all 172 layers
+across the twelve weeks resolve to exactly the same boxes as before; exactly two
+change on anything wider.
+
+**Decision on the other half:** sky objects are left alone. Six of them sit
+60–100pt from the canvas's right edge and will sit further from a wider screen's,
+drifting the composition left — but the canvas states a `left` for each, the
+bundle offers no second width to infer an anchoring rule from, and re-anchoring
+them to the nearer edge is a design judgement the frames do not support. Recorded
+so the question is not re-opened by accident.

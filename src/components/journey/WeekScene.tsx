@@ -167,9 +167,17 @@ function SvgLayer({ layer }: { layer: WeekSceneLayer }) {
 function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: number; id: string; width: number }) {
   if (layer.svg) return <SvgLayer layer={layer} />;
   // Layers composed against the canvas's own 393 keep their absolute lefts; the
-  // ones that overhang are re-measured so they still run past both edges.
-  const overhang = (layer.width ?? 0) > CANVAS_W;
-  const w = overhang ? width + ((layer.width as number) - CANVAS_W) : (layer.width ?? width);
+  // ones that run past an edge are re-measured so they still run past it.
+  //
+  // The test is on the layer's *edges*, not on its width alone: week IX's two
+  // hills are 270 and 290 wide and each ends 83pt beyond one edge of the 393
+  // board, so a width-only test left both of them stopping short on any wider
+  // screen and opened a valley between them that the canvas does not draw.
+  const dw = layer.width ?? 0;
+  const dl = layer.left ?? 0;
+  const past = Math.max(0, -dl) + Math.max(0, dl + dw - CANVAS_W);
+  const overhang = layer.width != null && past > 0;
+  const w = overhang ? width - CANVAS_W + dw : (layer.width ?? width);
   const x = layer.left ?? (layer.right != null ? width - layer.right - w : 0);
   const h = layer.height ?? 0;
   const y = layer.top ?? (layer.bottom != null ? WEEK_SCENE_HEIGHT - layer.bottom - h : 0);
@@ -225,11 +233,22 @@ function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: numb
     clipPath: layer.clip ? `url(#${cid})` : undefined,
   };
 
-  // A zero-blur, zero-spread ring is directly expressible as a stroke; the one
-  // layer that carries a blurred shadow keeps it as a documented gap.
+  // A zero-blur, zero-spread ring is directly expressible as a stroke.
   const ring = layer.shadow?.match(/^0 0 0 ([0-9.]+)px (rgba?\([^)]+\)|#[0-9A-Fa-f]{3,8})$/);
   const ringStroke = ring ? splitColor(ring[2]) : null;
   const strokeProps = ring ? { stroke: ringStroke!.color, strokeOpacity: ringStroke!.opacity, strokeWidth: Number(ring[1]) } : {};
+
+  // An offset, blurred, zero-spread shadow is a soft shape under the layer.
+  // Two layers carry one — the left page of week VII's and week XII's open book,
+  // both `0 1px 2px rgba(0,0,0,0.06)` — and it is what lifts the page off the
+  // base it sits on. Drawn with the same σ = blur/2 falloff a blurred solid gets.
+  const drop = layer.shadow?.match(/^(-?[0-9.]+)px? (-?[0-9.]+)px (-?[0-9.]+)px (rgba?\([^)]+\)|#[0-9A-Fa-f]{3,8})$/);
+  const dropColor = drop ? splitColor(drop[4]) : null;
+  const dropStops = dropColor ? blurredSolidStops(dropColor.color, dropColor.opacity) : null;
+  const did = `wd${id}${index}`;
+  const dx = drop ? Number(drop[1]) : 0;
+  const dy = drop ? Number(drop[2]) : 0;
+  const dblur = drop ? Number(drop[3]) : 0;
 
   let shape = null;
   if (layer.radius.kind === 'ellipse') {
@@ -251,6 +270,24 @@ function Layer({ layer, index, id, width }: { layer: WeekSceneLayer; index: numb
   return (
     <>
       {defs}
+      {dropStops ? (
+        <>
+          <Defs>
+            <RadialGradient
+              id={did}
+              cx={x + dx + w / 2}
+              cy={y + dy + h / 2}
+              rx={w / 2 + dblur}
+              ry={h / 2 + dblur}
+              gradientUnits="userSpaceOnUse">
+              {dropStops.map((st, i) => (
+                <Stop key={i} offset={st.offset} stopColor={st.color} stopOpacity={st.opacity} />
+              ))}
+            </RadialGradient>
+          </Defs>
+          <Ellipse cx={x + dx + w / 2} cy={y + dy + h / 2} rx={w / 2 + dblur} ry={h / 2 + dblur} fill={`url(#${did})`} />
+        </>
+      ) : null}
       {shape}
     </>
   );

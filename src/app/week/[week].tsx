@@ -82,7 +82,10 @@ export default function WeekOverview() {
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{ position: 'absolute', left: 0, right: 0, top: 432, bottom: 0 }}
-            contentContainerStyle={{ paddingBottom: 108 }}>
+            // 54 of closing land plus the 96 of paper `…-P2` leaves above it —
+            // which makes the fully scrolled screen the P2 frame exactly, where
+            // 108 stopped 42 short of it
+            contentContainerStyle={{ paddingBottom: 150 }}>
             <LessonRows week={data} day={day} onLesson={(lessonDay) => router.push(`/lesson-card/${lessonDay}`)} />
           </ScrollView>
 
