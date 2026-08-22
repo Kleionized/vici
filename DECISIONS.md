@@ -492,14 +492,18 @@ sun glyph's circle and path, and the two strings.
 
 `21D5 · Morning — Re-sign your pledge` draws the signature in `#C9C6BE` — the
 same pale grey as its decorative quote mark — over a full-ink `#131313` rule,
-under a pill that says **"Sign for today"**. `Your-Vow-Page.html` in the same
-bundle draws a *signed* signature at `#1D1C1A` over an `rgba(0,0,0,0.24)` rule.
+under a pill that says **"Sign for today"**. `Relapse-Resign.html` — the one other frame in
+the bundle that draws this same act, on the same pledge sentence, under a pill
+reading "Sign it again" — draws its signature in full ink, `#1D1C1A`, over an
+`rgba(0,0,0,0.2)` rule. `Your-Vow-Page.html` agrees: `#1D1C1A` over
+`rgba(0,0,0,0.24)`.
 
 Read together, this frame is the **pre-signature** state: a ghost of the mark,
 waiting.
 
 **Decision:** the signature is `#C9C6BE` until signed and `#1D1C1A` after — the
-inked colour taken from `Your-Vow-Page`, not invented. The app's existing
+inked colour taken from `Relapse-Resign`, which draws the signed state of this
+very act, not invented. The app's existing
 two-press gate on this step is kept: the first press inks the name, the second
 advances. That preserves the screen's behaviour, and it is the only reading under
 which the ghost the canvas draws is ever replaced by anything.

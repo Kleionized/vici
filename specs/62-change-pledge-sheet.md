@@ -106,3 +106,18 @@ bedroom"** appears on no other frame in the bundle — so the app opens the fiel
 on the standing pledge instead, which is the only thing it can truthfully carry.
 
 What the two buttons do is `DECISIONS.md` D032.
+
+Two further notes from the audit of `.uifinal1/gaps/morning.md`:
+
+* **This is the only frame of the eight with no grain layer at all** — the other
+  seven carry `inset:0 noise-dark.png opacity:0.07` and this one carries none.
+  The app's sheet ground is an opaque `#F4F3F0` View drawn over everything, so
+  no grain reaches it either.
+* **The sheet's ground is the frame's ground.** Both are `#F4F3F0`: the sheet
+  separates from what is behind it by its 22pt corners and its
+  `0 -12px 36px rgba(20,19,16,0.22)` shadow alone, with no tonal step.
+* Of the three grey stand-in blocks, the middle one — `36, 228 · 321 × 236` at
+  radius 16 — has the same gutters and the same height as `Relapse-Resign`'s
+  pledge card, and the other two sit in the bundle's common 12/12 card slots
+  (`top: 164` is the Today-Home card, `top: 544` the Settings privacy group).
+  The layer is a generic under-screen schematic, not a picture of this screen.

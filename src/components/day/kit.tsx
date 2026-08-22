@@ -111,26 +111,6 @@ const WIDE_CTA_HEIGHT = 58;
 const WIDE_CTA_FLOOR = 16;
 
 /**
- * The band an action card is centred in: from just under the board's title down
- * to just above whatever control the step puts at its foot.
- *
- * The card used to be pinned by a `top` copied straight off a frame. Those tops
- * were drawn when an honesty line still sat under the discs; with the line gone
- * the card stands high and leaves a void beneath it — 42 above and 176 below on
- * an 852 board — and the void grows on a taller phone, because the title is
- * pinned to the top and the control to the foot while nothing holds the middle.
- * Centring the card in what is left holds at any height (DECISIONS D-117).
- *
- * `bottom` is the control's own clearance off the foot — the band runs to the
- * top of it exactly, so the air above the card and the air below it are equal.
- */
-export const BAND_TOP = 90;
-
-export function ActionBand({ top = BAND_TOP, bottom, children }: { top?: number; bottom: number; children: ReactNode }) {
-  return <View style={{ position: 'absolute', left: 0, right: 0, top, bottom, justifyContent: 'center' }}>{children}</View>;
-}
-
-/**
  * The way back out, which the canvas now draws on every step of both flows —
  * chevron plus the word, in the same warm grey whatever it sits on.
  */
@@ -1022,8 +1002,9 @@ export function ActionCard({ top, art, mark, label, line }: { top?: number; art:
   return (
     <View
       style={{
-        // Pinned when a frame states a top; otherwise laid out in flow, so an
-        // `ActionBand` can centre it. Either way the canvas's 56 gutters hold.
+        // Every frame that draws this card states its own top, and all three
+        // are pinned to it. The in-flow branch is what a caller that wants to
+        // centre it in a band would take; the canvas asks for neither.
         ...(top == null ? { marginHorizontal: 56 } : ({ position: 'absolute', left: 56, right: 56, top } as const)),
         borderRadius: 18,
         overflow: 'hidden',

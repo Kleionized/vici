@@ -125,3 +125,9 @@ rather than transcribed — see `DECISIONS.md` D031. The canvas draws only the
 ghost.
 
 This frame's sky carries no clouds, which no other sky in the group omits.
+
+One more thing the audit of `.uifinal1/gaps/morning.md` turned up and this spec
+records: `Relapse-Resign.html` draws the **same pledge sentence** with the
+signature in full `#1D1C1A` under a pill that says "Sign it again". That is the
+signed state of this act, in this bundle, and it is what D031 takes the inked
+colour from.
