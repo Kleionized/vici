@@ -8,7 +8,7 @@ Statuses: `NOT_STARTED` → `SPEC_EXTRACTED` → `IMPLEMENTED` → `PASS_1` → 
 `REFERENCE` marks a frame that is documentation of a superseded design rather than a build target
 (the reason is always given in the note and in `DECISIONS.md`).
 
-**Totals —** 2209 frames. NOT_STARTED: 1981 · IMPLEMENTED: 54 · REFERENCE: 174
+**Totals —** 2209 frames. NOT_STARTED: 1980 · IMPLEMENTED: 55 · REFERENCE: 174
 
 ## Email-Login  (260 frames)
 
@@ -69,7 +69,7 @@ Source: `UI Final 1/project/Email Login.dc.html`
 | `Email-Login/Score Detail Moves` | .uifinal1/final/Email-Login/Score-Detail-Moves.html |  | NOT_STARTED |  | canvas note: 20B · Score Detail — What Moved It |
 | `Email-Login/Score Detail Ranks` | .uifinal1/final/Email-Login/Score-Detail-Ranks.html |  | NOT_STARTED |  | canvas note: 20C · Score Detail — Ranks |
 | `Email-Login/Today Home II` | .uifinal1/final/Email-Login/Today-Home-II.html |  | NOT_STARTED |  | canvas note: 21 · Today — p2 |
-| `Email-Login/Today Home Task` | .uifinal1/final/Email-Login/Today-Home-Task.html |  | NOT_STARTED |  | canvas note: 21p2B · Today — Task summary |
+| `Email-Login/Today Home Task` | .uifinal1/final/Email-Login/Today-Home-Task.html | src/app/(app)/today.tsx → PageTwo; src/components/today/kit.tsx → TaskCard | IMPLEMENTED | 2026-08-22 | specs/54-today-home-task.md · 83 rows compared; residuals are the account's own copy |
 | `Email-Login/Today Home III` | .uifinal1/final/Email-Login/Today-Home-III.html |  | NOT_STARTED |  | canvas note: 21 · Today — p3 |
 | `Email-Login/Morning Check-in Cover` | .uifinal1/final/Email-Login/Morning-Check-in-Cover.html |  | NOT_STARTED |  | canvas note: 21D0 · Morning — Check-in |
 | `Email-Login/Morning Task Check` | .uifinal1/final/Email-Login/Morning-Task-Check.html |  | NOT_STARTED |  | canvas note: 21D1 · Morning — Yesterday’s task |

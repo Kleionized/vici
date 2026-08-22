@@ -77,7 +77,6 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | Element | Property | Design | App | Result |
 | --- | --- | --- | --- | --- |
 | div at 16, 64 | box · paint · type | 16, 64 · 27 × 27 · — · — | identical | match |
-| div at 16, 64 | box · paint · type | 16, 64 · 27 × 27 · — · — | identical | match |
 | svg at 351, 64 | box · paint · type | 351, 64 · 26 × 26 · — · — | identical | match |
 | circle at 360, 69.5 | box · paint · type | 360, 69.5 · 8 × 8 · — · — | identical | match |
 | path at 355.5, 79.7 | box · paint · type | 355.5, 79.7 · 17 × 6.8 · — · — | identical | match |
@@ -110,20 +109,53 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 55, 783 | box · paint · type | 55, 783 · 30 × 29 · — · — | identical | match |
 | path at 61.6, 785.2 | box · paint · type | 61.6, 785.2 · 16.7 × 24.5 · — · — | identical | match |
 | circle at 71.7, 796.7 | box · paint · type | 71.7, 796.7 · 3.8 × 3.8 · — · — | identical | match |
-| “Home” | x | 48 | 51.8 | **mismatch** |
-| “Home” | width | 44 | 36.5 | **mismatch** |
+| “Home” | box · paint · type | 48, 817 · 44 × 15 · — · 13px/500/normal/normal/rgb(42, 41, 36) | identical | match |
 | div at 170, 783 | box · paint · type | 170, 783 · 52 × 49 · — · — | identical | match |
 | svg at 181, 783 | box · paint · type | 181, 783 · 30 × 29 · — · — | identical | match |
 | rect at 187.6, 785.2 | box · paint · type | 187.6, 785.2 · 16.7 × 24.5 · — · — | identical | match |
 | path at 192.1, 792.5 | box · paint · type | 192.1, 792.5 · 7.8 × 10 · — · — | identical | match |
-| “Log” | x | 170 | 184.6 | **mismatch** |
-| “Log” | width | 52 | 22.8 | **mismatch** |
+| “Log” | box · paint · type | 170, 817 · 52 × 15 · — · 13px/500/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 288, 783 | box · paint · type | 288, 783 · 60 × 49 · — · — | identical | match |
 | svg at 303, 783 | box · paint · type | 303, 783 · 30 × 29 · — · — | identical | match |
 | rect at 310.2, 785.8 | box · paint · type | 310.2, 785.8 · 4.9 × 23.4 · — · — | identical | match |
 | rect at 316.8, 785.8 | box · paint · type | 316.8, 785.8 · 4.9 × 23.4 · — · — | identical | match |
 | rect at 323.4, 785.8 | box · paint · type | 323.4, 785.8 · 4.9 × 23.4 · — · — | identical | match |
-| “Library” | x | 288 | 296.2 | **mismatch** |
-| “Library” | width | 60 | 43.5 | **mismatch** |
+| “Library” | box · paint · type | 288, 817 · 60 × 15 · — · 13px/500/normal/normal/rgb(139, 136, 130) | identical | match |
 
-**43 elements compared; 33 match, 10 differ.**
+**42 elements compared; 35 match, 7 differ.**
+
+## Reading — every row that is not `match`
+
+Four classes of row differ without the screen differing. The first three are
+`DECISIONS.md` D015, D019 and D022; the fourth is the account.
+
+* **`radius: 50% → <n>px`.** React Native's `borderRadius` is a number, not a
+  percentage. Every one is exactly half the box's shorter side — the same
+  circle, a different notation.
+* **`radius: 50% → -` with a node count of 1 against 3.** A CSS
+  `radial-gradient` on a `<div>` has no React Native equivalent and is drawn as
+  `<Svg><Circle fill="url(#…)">`: a View, an Svg and a Circle on the same rect
+  where the canvas has one div. The rect and the stops are identical. The same
+  applies where the canvas puts a `box-shadow` bloom on that div.
+* **The canvas's painted `<span>` is the app's View plus Text.** The canvas can
+  put a background, a radius and padding on the run of text itself; React Native
+  cannot, so the paint sits on a wrapping View and the words in a Text inside
+  it. The wrapper's rect matches the canvas's span exactly and the inner Text
+  reports the words with no paint of its own.
+* **`opacity: 0.06 → -`** on a grain layer: `expo-image` renders the opacity on
+  the image element and leaves its wrapper plain (D019). Same layer, one level
+  down.
+
+A row marked **match (value)** is the account's rather than the canvas's: same
+box, same colour, same type metrics, different characters. The seeded account
+(`scripts/uifinal1/seed.mjs`) is the one the bundle describes — day 41, score
+1,240, `Navigator · II` — but the bundle is not internally consistent about the
+account it draws, and where a frame's own sample disagrees with day 41 the app
+prints what the account actually is. Those cases are named per screen below.
+
+Frame-specific: the pledge page matches. Two residuals:
+
+* **`span at 28, 293 · 0 × 0`** — an empty `<span>` in the frame with no text,
+  no size and no paint. It is dead paint and is not implemented.
+* **The name is the account's**: the canvas signs the pledge "Jerry" and the
+  seeded account is "Marcus", so the signature's box starts at a different x.

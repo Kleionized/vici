@@ -81,8 +81,21 @@ for (const [k, rowsA] of MA) {
     }
   }
   if (!rowsB) { missing++; console.log('MISSING in app:  ' + rowsA[0].join(' | ')); continue; }
+  // A word can appear twice on one screen — "Library" is a section action and a
+  // tab label — and the two sides need not list them in the same order. Pair
+  // each design row with the nearest app row of that key rather than by index,
+  // or a screen where both are correct reports both as wrong.
+  const pool = rowsB.slice();
+  const paired = rowsA.map((ra) => {
+    let bi = 0, bd = Infinity;
+    for (let j = 0; j < pool.length; j++) {
+      const d = Math.hypot(Number(ra[1]) - Number(pool[j][1]), Number(ra[2]) - Number(pool[j][2]));
+      if (d < bd) { bd = d; bi = j; }
+    }
+    return pool.length ? pool.splice(bi, 1)[0] : null;
+  });
   for (let i = 0; i < Math.min(rowsA.length, rowsB.length); i++) {
-    const ra = rowsA[i], rb = rowsB[i];
+    const ra = rowsA[i], rb = paired[i];
     const bad = [];
     let rounding = 0;
     for (let f = 1; f < 10; f++) {

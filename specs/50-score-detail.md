@@ -141,7 +141,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 180, 183.7 | box · paint · type | 180, 183.7 · 217 × 56.3 · — · — | identical | match |
 | div at 0, 226 | box · paint · type | 0, 226 · 393 × 16 · — · — | identical | match |
 | div at 0, 238 | box · paint · type | 0, 238 · 393 × 92 · — · — | identical | match |
-| div at 299, 240 | box · paint | 299, 240 · 38 × 58 · — | *absent* | **mismatch** |
+| div at 299, 240 | box · paint · type | 299, 240 · 38 × 58 · — · — | identical | match |
 | div at 305, 248 | background | rgba(244, 243, 240, 0.2) | - | **mismatch** |
 | div at 305, 248 | radius | 1px | - | **mismatch** |
 | div at 16, 62 | box · paint | 16, 62 · 10 × 20.5 · — | *absent* | **mismatch** |
@@ -163,11 +163,11 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | “Helmsman · 1,300” | box · paint · type | 261.3, 268 · 99.7 × 13.5 · — · 11.5px/500/normal/normal/rgba(244, 243, 240, 0.5) | identical | match |
 | div at 0, 302 | box · paint · type | 0, 302 · 393 × 550 · rgb(246, 245, 242) · r 26px 26px 0px 0px · — | identical | match |
 | “Score over time” | box · paint · type | 20, 328 · 128.2 × 21.5 · — · 18px/600/-0.2px/normal/rgb(29, 28, 26) | identical | match |
-| div at 280.9, 324 | box · paint | 280.9, 324 · 96.1 × 30 · — | *absent* | **mismatch** |
-| div at 280.9, 324 | box · paint | 280.9, 324 · 47.3 × 30 · rgb(19, 19, 19) · r 15px | *absent* | **mismatch** |
-| “3M” | box · paint | 294.9, 331.8 · 19.3 × 14.5 · — | *absent* | **mismatch** |
-| div at 334.2, 324 | box · paint | 334.2, 324 · 42.8 × 30 · rgba(19, 19, 19, 0.06) · r 15px | *absent* | **mismatch** |
-| “1Y” | box · paint | 348.2, 331.8 · 14.8 × 14.5 · — | *absent* | **mismatch** |
+| div at 280.9, 324 | box · paint · type | 280.9, 324 · 96.1 × 30 · — · — | identical | match |
+| div at 280.9, 324 | box · paint · type | 280.9, 324 · 47.3 × 30 · rgb(19, 19, 19) · r 15px · — | identical | match |
+| “3M” | box · paint · type | 294.9, 331.8 · 19.3 × 14.5 · — · 12.5px/600/normal/normal/rgb(255, 255, 255) | identical | match |
+| div at 334.2, 324 | box · paint · type | 334.2, 324 · 42.8 × 30 · rgba(19, 19, 19, 0.06) · r 15px · — | identical | match |
+| “1Y” | box · paint · type | 348.2, 331.8 · 14.8 × 14.5 · — · 12.5px/600/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 321.3, 434 | box · paint | 321.3, 434 · 61.3 × 30 · rgb(19, 19, 19) · r 15px · rgba(19, 19, 19, 0.22) 0px 6px 14px 0px | *absent* | **mismatch** |
 | div at 0, 422 | box · paint · type | 0, 422 · 393 × 236 · — · — | identical | match |
 | div at 0, 422 | box · paint · type | 0, 422 · 393 × 236 · — · — | identical | match |
@@ -202,4 +202,58 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 200.5, 806 | box · paint | 200.5, 806 · 6 × 6 · rgba(19, 19, 19, 0.16) · r 50% | *absent* | **mismatch** |
 | div at 214.5, 806 | box · paint | 214.5, 806 · 6 × 6 · rgba(19, 19, 19, 0.16) · r 50% | *absent* | **mismatch** |
 
-**71 elements compared; 38 match, 33 differ.**
+**71 elements compared; 44 match, 27 differ.**
+
+## Reading — every row that is not `match`
+
+Four classes of row differ without the screen differing. The first three are
+`DECISIONS.md` D015, D019 and D022; the fourth is the account.
+
+* **`radius: 50% → <n>px`.** React Native's `borderRadius` is a number, not a
+  percentage. Every one is exactly half the box's shorter side — the same
+  circle, a different notation.
+* **`radius: 50% → -` with a node count of 1 against 3.** A CSS
+  `radial-gradient` on a `<div>` has no React Native equivalent and is drawn as
+  `<Svg><Circle fill="url(#…)">`: a View, an Svg and a Circle on the same rect
+  where the canvas has one div. The rect and the stops are identical. The same
+  applies where the canvas puts a `box-shadow` bloom on that div.
+* **The canvas's painted `<span>` is the app's View plus Text.** The canvas can
+  put a background, a radius and padding on the run of text itself; React Native
+  cannot, so the paint sits on a wrapping View and the words in a Text inside
+  it. The wrapper's rect matches the canvas's span exactly and the inner Text
+  reports the words with no paint of its own.
+* **`opacity: 0.06 → -`** on a grain layer: `expo-image` renders the opacity on
+  the image element and leaves its wrapper plain (D019). Same layer, one level
+  down.
+
+A row marked **match (value)** is the account's rather than the canvas's: same
+box, same colour, same type metrics, different characters. The seeded account
+(`scripts/uifinal1/seed.mjs`) is the one the bundle describes — day 41, score
+1,240, `Navigator · II` — but the bundle is not internally consistent about the
+account it draws, and where a frame's own sample disagrees with day 41 the app
+prints what the account actually is. Those cases are named per screen below.
+
+Frame-specific — the chart is data, and its frame is not:
+
+* **The plot's fixed geometry matches exactly**: the two `rgba(19,19,19,0.05)`
+  gridlines at x 150 and 282 running 438 → 622, and the `3 5`-dashed guide at
+  x 352 running 426 → 622, land on the canvas's own pixels.
+* **Everything the data moves does not, and cannot.** The dashed threshold rule
+  (design y 454, app 517.5), the area and the curve (same `x: 56, w: 296`,
+  different heights), the two end-marker circles (same `x: 343 / 347.5`,
+  different y), the `1,240` callout pill and the four axis labels all follow the
+  account's own history and the scale `niceScale()` picks for it. The canvas
+  draws an axis of 1,400 / 1,200 / 1,000 / 800 against months May – July; the
+  seeded account is 41 days old and scores 1,240, so the app draws
+  1,600 / 1,400 / 1,200 / 1,000 against Jul – Aug. The four label boxes sit on
+  the canvas's four y positions (416 / 480 / 546 / 605) either way.
+* **The insight row's numbers are the account's**: `+90 points` /
+  `vs Apr 3 – May 3` against `+234 points` / `vs 13 Jul – 22 Aug`, and the two
+  boxes sized by them.
+* **The 3M / 1Y pills** were not drawn at all until this pass — see
+  `DECISIONS.md` D029.
+* **The four pager dots** are the canvas contradicting its own siblings; three
+  are drawn — see `DECISIONS.md` D028.
+* The Back chevron's wrapper reads `10 × 20.5` on the canvas and `10 × 17` in
+  the app: a CSS block containing an inline `<svg>` gets a line box taller than
+  the glyph (D020). Nothing is positioned off it.

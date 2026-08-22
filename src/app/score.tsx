@@ -309,14 +309,13 @@ function OverTime({
     <>
       <AppText style={[sans('600'), { position: 'absolute', left: 20, top: 26, fontSize: 18, letterSpacing: -0.2, color: '#1D1C1A' }]}>Score over time</AppText>
 
-      {/* The two ranges can only differ once the record is longer than the
-          shorter of them: below 90 days both windows cover everything there is,
-          so the pills swapped their highlight and the line never moved. The
-          canvas draws them because it composes a filled-in account. Offering a
-          choice that cannot change the answer is worse than not offering it,
-          so they appear when there is something to choose between. */}
+      {/* `20A · Score Detail` draws both pills whatever the account holds, so
+          both are drawn. Below 90 days the two windows cover the same record
+          and the line does not move when they are tapped — which is the truth
+          about a young account, not a fault, and the frame is the authority on
+          what is on the screen. */}
       <View style={{ position: 'absolute', right: 16, top: 22, flexDirection: 'row', gap: 6 }}>
-        {(history.values.length > SHORT_SPAN ? (['3M', '1Y'] as const) : []).map((r) => (
+        {(['3M', '1Y'] as const).map((r) => (
           <PressScale
             key={r}
             onPress={() => onRange(r)}

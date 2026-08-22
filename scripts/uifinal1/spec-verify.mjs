@@ -86,8 +86,19 @@ for (const [k, rowsA] of MA) {
     bad++; rows++;
     continue;
   }
+  // Two rows can carry the same word — a section action and a tab label both
+  // read "Library" — and the two sides need not list them in the same order.
+  const pool = rowsB.slice();
+  const paired = rowsA.map((ra) => {
+    let bi = 0, bd = Infinity;
+    for (let j = 0; j < pool.length; j++) {
+      const d = Math.hypot(Number(ra[1]) - Number(pool[j][1]), Number(ra[2]) - Number(pool[j][2]));
+      if (d < bd) { bd = d; bi = j; }
+    }
+    return pool.length ? pool.splice(bi, 1)[0] : null;
+  });
   for (let i = 0; i < Math.min(rowsA.length, rowsB.length); i++) {
-    const ra = rowsA[i], rb = rowsB[i];
+    const ra = rowsA[i], rb = paired[i];
     const diff = [];
     for (const f of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
       if (ra[f] === rb[f]) continue;

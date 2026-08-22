@@ -139,7 +139,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 180, 183.7 | box · paint · type | 180, 183.7 · 217 × 56.3 · — · — | identical | match |
 | div at 0, 226 | box · paint · type | 0, 226 · 393 × 16 · — · — | identical | match |
 | div at 0, 238 | box · paint · type | 0, 238 · 393 × 92 · — · — | identical | match |
-| div at 299, 240 | box · paint | 299, 240 · 38 × 58 · — | *absent* | **mismatch** |
+| div at 299, 240 | box · paint · type | 299, 240 · 38 × 58 · — · — | identical | match |
 | div at 305, 248 | background | rgba(244, 243, 240, 0.2) | - | **mismatch** |
 | div at 305, 248 | radius | 1px | - | **mismatch** |
 | div at 16, 62 | box · paint | 16, 62 · 10 × 20.5 · — | *absent* | **mismatch** |
@@ -176,7 +176,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | “Lessons” | box · paint · type | 20, 506 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 509 | box · paint · type | 140, 509 · 183 × 10 · — · — | identical | match |
 | div at 140, 509 | box · paint | 140, 509 · 44 × 10 · rgba(19, 19, 19, 0.38) · r 5px | *absent* | **mismatch** |
-| “+12” | box · paint · type | 335, 506 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+0" | match (value) |
+| “+12” | box · paint · type | 335, 506 · 38 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 20, 558 | box · paint · type | 20, 558 · 353 × 16 · — · — | identical | match |
 | “Urges ridden” | box · paint · type | 20, 558 · 108 × 16 · — · 13.5px/500/normal/normal/rgb(29, 28, 26) | identical | match |
 | div at 140, 561 | box · paint · type | 140, 561 · 183 × 10 · — · — | identical | match |
@@ -193,7 +193,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 42.5, 726 | box · paint · type | 42.5, 726 · 13 × 8 · — · — | identical | match |
 | path at 51.8, 726 | box · paint · type | 51.8, 726 · 3.7 × 3.7 · — · — | identical | match |
 | div at 80, 714.3 | box · paint · type | 80, 714.3 · 57.8 × 31.5 · — · — | identical | match |
-| “+86 net” | box · paint · type | 80, 714.3 · 57.8 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+156 net" | match (value) |
+| “+86 net” | box · paint · type | 80, 714.3 · 57.8 × 16 · — · 13.5px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "+168 net" | match (value) |
 | div at 149.8, 730 | box · paint · type | 149.8, 730 · 49.2 × 0 · — · — | identical | match |
 | “Clean days do the heavy lifting. Keep the evenin” | box · paint · type | 211, 704.5 · 152 × 51 · — · 12px/400/normal/17px/rgb(85, 83, 78) | identical | match |
 | div at 0, 806 | box · paint · type | 0, 806 · 393 × 6 · — · — | identical | match |
@@ -203,4 +203,42 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 193.5, 806 | radius | 50% | 3px | **mismatch** |
 | div at 207.5, 806 | radius | 50% | 3px | **mismatch** |
 
-**72 elements compared; 54 match, 18 differ.**
+**72 elements compared; 55 match, 17 differ.**
+
+## Reading — every row that is not `match`
+
+Four classes of row differ without the screen differing. The first three are
+`DECISIONS.md` D015, D019 and D022; the fourth is the account.
+
+* **`radius: 50% → <n>px`.** React Native's `borderRadius` is a number, not a
+  percentage. Every one is exactly half the box's shorter side — the same
+  circle, a different notation.
+* **`radius: 50% → -` with a node count of 1 against 3.** A CSS
+  `radial-gradient` on a `<div>` has no React Native equivalent and is drawn as
+  `<Svg><Circle fill="url(#…)">`: a View, an Svg and a Circle on the same rect
+  where the canvas has one div. The rect and the stops are identical. The same
+  applies where the canvas puts a `box-shadow` bloom on that div.
+* **The canvas's painted `<span>` is the app's View plus Text.** The canvas can
+  put a background, a radius and padding on the run of text itself; React Native
+  cannot, so the paint sits on a wrapping View and the words in a Text inside
+  it. The wrapper's rect matches the canvas's span exactly and the inner Text
+  reports the words with no paint of its own.
+* **`opacity: 0.06 → -`** on a grain layer: `expo-image` renders the opacity on
+  the image element and leaves its wrapper plain (D019). Same layer, one level
+  down.
+
+A row marked **match (value)** is the account's rather than the canvas's: same
+box, same colour, same type metrics, different characters. The seeded account
+(`scripts/uifinal1/seed.mjs`) is the one the bundle describes — day 41, score
+1,240, `Navigator · II` — but the bundle is not internally consistent about the
+account it draws, and where a frame's own sample disagrees with day 41 the app
+prints what the account actually is. Those cases are named per screen below.
+
+Frame-specific: the ledger's chrome matches — five rows on their own baselines,
+the bar track, the net row and its glyph — and every number in it is the
+account's. The canvas draws `+64 / +18 / +12 / +8 / −16` for a net of `+86`;
+the seeded account's month is `+108 / +60 / +12 / +36 / −48` for `+168`, and the
+canvas's fifth row reads `Slip · Jul 8` where the app reads `3 slips`, because
+the account has three. Four of the five bars are sized in proportion to their
+own points, so they are reported as absent rather than as differing; the first
+bar, which is the longest on both sides, pairs exactly at `140, 457`.

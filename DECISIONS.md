@@ -418,3 +418,48 @@ three step back two days apiece.
 
 The lesson count is unchanged at four, so the score the frames print (1,240)
 is unchanged.
+
+## D028 — `20A · Score Detail` draws four pager dots for three pages; three wins
+
+The score sheet is a horizontal pager with three pages, and the bundle draws all
+three of them: `Score-Detail.html` ("Score over time"), `Score-Detail-Moves.html`
+("What moved it this month") and `Score-Detail-Ranks.html` ("The ranks"). Each
+frame ends with the same block —
+
+```
+<div position:absolute left:0 right:0 top:504px display:flex justify-content:center gap:8px>
+```
+
+— and `Score-Detail-Moves` and `Score-Detail-Ranks` put **three** 6pt dots in it,
+lighting index 1 and index 2 respectively. `Score-Detail` puts **four** in it and
+lights index 0.
+
+There is no fourth page in the bundle, and a four-dot row is 48 wide against the
+siblings' 34, so the row would visibly jump width as you paged. Two frames
+against one, and the page count settles it.
+
+**Decision:** three dots, on the canvas's own `top: 504`, 6pt at `gap: 8`,
+`#131313` for the current page and `rgba(19,19,19,0.16)` for the rest — which is
+what `src/app/score.tsx` already draws. The fourth dot on `Score-Detail` is a
+leftover and is not implemented. Flagged for REPORT.md.
+
+## D029 — the 3M / 1Y range pills are drawn whatever the account holds
+
+`20A · Score Detail` draws two pills at `right:16 top:22`, 30 tall on a 15
+radius: `3M` filled `#131313` with white 12.5/600 type, `1Y` on
+`rgba(19,19,19,0.06)` with `#8B8882`.
+
+`src/app/score.tsx` was rendering them only once `history.values.length >
+SHORT_SPAN` (90 days), on the reasoning that below that both windows cover the
+same record, so tapping a pill moves the highlight and nothing else.
+
+That is a judgement about whether a control is worth offering, and this run's
+authority split does not leave it open: the design is the source of truth for
+what is on the screen. The seeded account is 41 days old and the frame still
+draws both pills — and the same frame's own axis runs May → July, which is more
+than 90 days, so the bundle is not consistent about the account it is drawing
+either.
+
+**Decision:** both pills render unconditionally, at the canvas's numbers. The
+range still does exactly what it did; on a young account both windows show the
+whole record, which is the truth about that account rather than a fault.

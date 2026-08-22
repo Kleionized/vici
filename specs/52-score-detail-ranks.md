@@ -133,7 +133,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 180, 183.7 | box · paint · type | 180, 183.7 · 217 × 56.3 · — · — | identical | match |
 | div at 0, 226 | box · paint · type | 0, 226 · 393 × 16 · — · — | identical | match |
 | div at 0, 238 | box · paint · type | 0, 238 · 393 × 92 · — · — | identical | match |
-| div at 299, 240 | box · paint | 299, 240 · 38 × 58 · — | *absent* | **mismatch** |
+| div at 299, 240 | box · paint · type | 299, 240 · 38 × 58 · — · — | identical | match |
 | div at 305, 248 | background | rgba(244, 243, 240, 0.2) | - | **mismatch** |
 | div at 305, 248 | radius | 1px | - | **mismatch** |
 | div at 16, 62 | box · paint | 16, 62 · 10 × 20.5 · — | *absent* | **mismatch** |
@@ -198,4 +198,40 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 207.5, 806 | background | rgb(19, 19, 19) | rgba(19, 19, 19, 0.16) | **mismatch** |
 | div at 207.5, 806 | radius | 50% | 3px | **mismatch** |
 
-**68 elements compared; 49 match, 19 differ.**
+**68 elements compared; 50 match, 18 differ.**
+
+## Reading — every row that is not `match`
+
+Four classes of row differ without the screen differing. The first three are
+`DECISIONS.md` D015, D019 and D022; the fourth is the account.
+
+* **`radius: 50% → <n>px`.** React Native's `borderRadius` is a number, not a
+  percentage. Every one is exactly half the box's shorter side — the same
+  circle, a different notation.
+* **`radius: 50% → -` with a node count of 1 against 3.** A CSS
+  `radial-gradient` on a `<div>` has no React Native equivalent and is drawn as
+  `<Svg><Circle fill="url(#…)">`: a View, an Svg and a Circle on the same rect
+  where the canvas has one div. The rect and the stops are identical. The same
+  applies where the canvas puts a `box-shadow` bloom on that div.
+* **The canvas's painted `<span>` is the app's View plus Text.** The canvas can
+  put a background, a radius and padding on the run of text itself; React Native
+  cannot, so the paint sits on a wrapping View and the words in a Text inside
+  it. The wrapper's rect matches the canvas's span exactly and the inner Text
+  reports the words with no paint of its own.
+* **`opacity: 0.06 → -`** on a grain layer: `expo-image` renders the opacity on
+  the image element and leaves its wrapper plain (D019). Same layer, one level
+  down.
+
+A row marked **match (value)** is the account's rather than the canvas's: same
+box, same colour, same type metrics, different characters. The seeded account
+(`scripts/uifinal1/seed.mjs`) is the one the bundle describes — day 41, score
+1,240, `Navigator · II` — but the bundle is not internally consistent about the
+account it draws, and where a frame's own sample disagrees with day 41 the app
+prints what the account actually is. Those cases are named per screen below.
+
+Frame-specific: the rank ladder matches row for row. The `you’re here` pill is
+the span/View equivalence — the canvas paints `#131313` at radius 9 with `3px
+9px` of padding on the run itself, and the app's wrapping View reports exactly
+`237.5, 476.3 · 82.5 × 19.5 · rgb(19, 19, 19) · r 9px`, with the words in a Text
+inside it. The pace line is the account's: "About a week at this pace" against
+"About 2 weeks at this pace", from `paceLine()` over the month's own net.

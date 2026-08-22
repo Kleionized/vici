@@ -69,7 +69,12 @@ for (let i = DAYS_IN - 1; i >= 0; i--) {
   if (i === 0) {
     // Today is checked in but not closed: `21 · Today` reads "Fine" and "Low"
     // off this morning and still offers the night check-in.
-    checkins[k] = { _id: 'seed-c-today', userId: 'SEED', date: k, mood: 3, energy: 2, dailyAction: 'Phone out of the bedroom', dailyActionDone: false };
+    //
+    // No `dailyAction`: `21 · Today — task` draws the card in its
+    // lesson-sourced register — the bed scene, the lesson's own name and the
+    // smaller sentence — and a hand-named action takes precedence over it, so
+    // naming one here would hide the state the frame draws.
+    checkins[k] = { _id: 'seed-c-today', userId: 'SEED', date: k, mood: 3, energy: 2 };
     continue;
   }
   checkins[k] = {

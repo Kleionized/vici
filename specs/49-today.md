@@ -162,7 +162,6 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | Element | Property | Design | App | Result |
 | --- | --- | --- | --- | --- |
 | div at 16, 64 | box · paint · type | 16, 64 · 27 × 27 · — · — | identical | match |
-| div at 16, 64 | box · paint · type | 16, 64 · 27 × 27 · — · — | identical | match |
 | svg at 351, 64 | box · paint · type | 351, 64 · 26 × 26 · — · — | identical | match |
 | circle at 360, 69.5 | box · paint · type | 360, 69.5 · 8 × 8 · — · — | identical | match |
 | path at 355.5, 79.7 | box · paint · type | 355.5, 79.7 · 17 × 6.8 · — · — | identical | match |
@@ -172,24 +171,18 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 55, 783 | box · paint · type | 55, 783 · 30 × 29 · — · — | identical | match |
 | path at 61.6, 785.2 | box · paint · type | 61.6, 785.2 · 16.7 × 24.5 · — · — | identical | match |
 | circle at 71.7, 796.7 | box · paint · type | 71.7, 796.7 · 3.8 × 3.8 · — · — | identical | match |
-| “Home” | x | 48 | 51.8 | **mismatch** |
-| “Home” | width | 44 | 36.5 | **mismatch** |
+| “Home” | box · paint · type | 48, 817 · 44 × 15 · — · 13px/500/normal/normal/rgb(42, 41, 36) | identical | match |
 | div at 170, 783 | box · paint · type | 170, 783 · 52 × 49 · — · — | identical | match |
 | svg at 181, 783 | box · paint · type | 181, 783 · 30 × 29 · — · — | identical | match |
 | rect at 187.6, 785.2 | box · paint · type | 187.6, 785.2 · 16.7 × 24.5 · — · — | identical | match |
 | path at 192.1, 792.5 | box · paint · type | 192.1, 792.5 · 7.8 × 10 · — · — | identical | match |
-| “Log” | x | 170 | 184.6 | **mismatch** |
-| “Log” | width | 52 | 22.8 | **mismatch** |
+| “Log” | box · paint · type | 170, 817 · 52 × 15 · — · 13px/500/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 288, 783 | box · paint · type | 288, 783 · 60 × 49 · — · — | identical | match |
 | svg at 303, 783 | box · paint · type | 303, 783 · 30 × 29 · — · — | identical | match |
 | rect at 310.2, 785.8 | box · paint · type | 310.2, 785.8 · 4.9 × 23.4 · — · — | identical | match |
 | rect at 316.8, 785.8 | box · paint · type | 316.8, 785.8 · 4.9 × 23.4 · — · — | identical | match |
 | rect at 323.4, 785.8 | box · paint · type | 323.4, 785.8 · 4.9 × 23.4 · — · — | identical | match |
-| “Library” | x | 288 | 318.6 | **mismatch** |
-| “Library” | y | 817 | 750 | **mismatch** |
-| “Library” | width | 60 | 42.4 | **mismatch** |
-| “Library” | height | 15 | 13 | **mismatch** |
-| “Library” | type | 13px/500/normal/normal/rgb(139, 136, 130) | 11px/600/0.5px/normal/rgb(139, 136, 130) | **mismatch** |
+| “Library” | box · paint · type | 288, 817 · 60 × 15 · — · 13px/500/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 12, 164 | box · paint · type | 12, 164 · 369 × 222 · rgb(12, 13, 16) · r 22px · rgba(0, 0, 0, 0.25) 0px 0px 0px 1px, rgba(30, 28, 24, 0.28) 0px 14px 30px 0px · — | identical | match |
 | div at 12, 164 | box · paint · type | 12, 164 · 369 × 222 · — · — | identical | match |
 | div at 12, 164 | opacity | 0.06 | - | **mismatch** |
@@ -288,4 +281,49 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 370, 731 | box · paint · type | 370, 731 · 7 × 12 · — · — | identical | match |
 | path at 371.4, 732.3 | box · paint · type | 371.4, 732.3 · 4.3 × 9.4 · — · — | identical | match |
 
-**114 elements compared; 65 match, 49 differ.**
+**113 elements compared; 67 match, 46 differ.**
+
+## Reading — every row that is not `match`
+
+Four classes of row differ without the screen differing. The first three are
+`DECISIONS.md` D015, D019 and D022; the fourth is the account.
+
+* **`radius: 50% → <n>px`.** React Native's `borderRadius` is a number, not a
+  percentage. Every one is exactly half the box's shorter side — the same
+  circle, a different notation.
+* **`radius: 50% → -` with a node count of 1 against 3.** A CSS
+  `radial-gradient` on a `<div>` has no React Native equivalent and is drawn as
+  `<Svg><Circle fill="url(#…)">`: a View, an Svg and a Circle on the same rect
+  where the canvas has one div. The rect and the stops are identical. The same
+  applies where the canvas puts a `box-shadow` bloom on that div.
+* **The canvas's painted `<span>` is the app's View plus Text.** The canvas can
+  put a background, a radius and padding on the run of text itself; React Native
+  cannot, so the paint sits on a wrapping View and the words in a Text inside
+  it. The wrapper's rect matches the canvas's span exactly and the inner Text
+  reports the words with no paint of its own.
+* **`opacity: 0.06 → -`** on a grain layer: `expo-image` renders the opacity on
+  the image element and leaves its wrapper plain (D019). Same layer, one level
+  down.
+
+A row marked **match (value)** is the account's rather than the canvas's: same
+box, same colour, same type metrics, different characters. The seeded account
+(`scripts/uifinal1/seed.mjs`) is the one the bundle describes — day 41, score
+1,240, `Navigator · II` — but the bundle is not internally consistent about the
+account it draws, and where a frame's own sample disagrees with day 41 the app
+prints what the account actually is. Those cases are named per screen below.
+
+Frame-specific:
+
+* **The trend delta reads `18` on the canvas and `8` in the app.** It is
+  `buildScore()`'s own week-over-week figure for the seeded account. The two
+  wrappers around it — the `align-items: baseline` row at `32, 212` and the
+  arrow-plus-number span at `156, 241` — are sized by that number, so they are
+  reported as absent rather than as differing.
+* **"Fine" and "Low" read `y: 428 → 445, h: 48 → 14`.** The canvas gives each
+  reading's label a `top:0 bottom:0` flex box the full 48 of the cell and
+  centres the words in it; the app centres a 14-tall Text in the same cell. Both
+  put the words' centre on 452.
+* Everything else — the 30-mark strip on its 24pt discs at a 9.88 gap, the
+  score card's sky, hills, moon, rail and rank line, the two reading cells with
+  their five dots and five bars, the urge bar and the three tab items on their
+  44 / 52 / 60 label boxes — matches to the point.

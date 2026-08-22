@@ -1,11 +1,11 @@
-# Today Home II
+# Today Home Task
 
-* **Design frame** `Email-Login/Today Home II`
-* **App file** src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx
+* **Design frame** `Email-Login/Today Home Task`
+* **App file** src/app/(app)/today.tsx → PageTwo; src/components/today/kit.tsx → TaskCard, LessonNightArt
 
-## Transcription — `Today Home II`
+## Transcription — `Today Home Task`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `Today-Home-II.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `UI Final 1/project/Email Login.dc.html`, frame `Today-Home-Task.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -49,21 +49,27 @@ element on the frame is here, in paint order, indented by depth.
           <path> d="M14 3 A9 9 0 1 0 21 12 A7.2 7.2 0 0 1 14 3Z"  fill="#E8E6DC"
       <svg> viewBox="0 0 361 96"  position:absolute  inset:0  width:100%  height:100%
         <path> d="M-4,96 L-4,72 Q80,58 170,68 Q260,80 365,66 L365,96 Z"  fill="#171B22"
-      <div> position:absolute  right:40px  top:20px  width:70px  height:70px  background:radial-gradient(closest-side, rgba(226,186,120,0.20), rgba(226,186,120,0) 74%)  border-radius:50%
-      <div> position:absolute  right:60px  top:26px  width:38px  height:52px  background:linear-gradient(180deg, #343A44 0%, #262B33 100%)  border-radius:5px
-        <div> position:absolute  left:4px  right:4px  top:7px  height:14px  background:rgba(244,243,240,0.10)  border-radius:3px
-        <div> position:absolute  left:4px  right:4px  top:24px  height:14px  background:rgba(244,243,240,0.06)  border-radius:3px
-        <div> position:absolute  left:14px  top:12px  width:10px  height:3px  background:rgba(244,243,240,0.35)  border-radius:1.5px
-        <div> position:absolute  left:8px  top:5px  width:9px  height:17px  background:#0E1116  border-radius:2px  box-shadow:inset 0 0 0 1px rgba(244,243,240,0.22)  transform:rotate(-14deg)
+      <div> position:absolute  left:96px  top:62px  width:7px  height:38px  background:#2C3844  border-radius:2.5px
+      <div> position:absolute  left:101px  top:80px  width:64px  height:17px  background:#394656  border-radius:5px
+      <div> position:absolute  left:106px  top:73px  width:22px  height:9px  background:#55677C  border-radius:4px
+      <div> position:absolute  left:158px  top:90px  width:5px  height:10px  background:#26303C  border-radius:2px
+      <div> position:absolute  right:64px  top:66px  width:42px  height:8px  background:#2C3844  border-radius:3px
+      <div> position:absolute  right:81px  top:74px  width:7px  height:28px  background:#26303C  border-radius:2px
+      <div> position:absolute  right:76px  top:42px  width:13px  height:22px  background:#DCE3EA  border-radius:3px
+      <div> position:absolute  right:60px  top:34px  width:17px  height:17px  display:flex  align-items:center  justify-content:center  background:#E9D2A4  border-radius:50%
+        <svg> viewBox="0 0 9 8"  width="9"  height="8"
+          <path> d="M1.5 4l2 2 4-4.5"  fill="none"  stroke="#131313"  stroke-width="1.6"  stroke-linecap="round"  stroke-linejoin="round"
     <div> position:absolute  left:20px  top:142px  display:flex  align-items:center  gap:10px
       <div> width:34px  height:34px  display:flex  flex-shrink:0  align-items:center  justify-content:center  background:#131313  border-radius:50%
-        <svg> viewBox="0 0 24 24"  width="15"  height="15"
-          <path> d="M14 3 A9 9 0 1 0 21 12 A7.2 7.2 0 0 1 14 3Z"  fill="#F4F3F0"
+        <svg> viewBox="0 0 20 20"  width="16"  height="16"
+          <path> d="M3 15.5V6"  stroke="#F4F3F0"  stroke-width="1.7"  stroke-linecap="round"
+          <path> d="M3 12.5h14M17 15.5v-5a2 2 0 0 0-2-2H8v4.5"  fill="none"  stroke="#F4F3F0"  stroke-width="1.7"  stroke-linecap="round"  stroke-linejoin="round"
+          <circle> cx="5.6"  cy="8.9"  r="1.5"  fill="#F4F3F0"
       <span> color:#1D1C1A  font-size:13px  font-weight:600
-        · Today’s task
+        · Surviving the night
     <div> position:absolute  right:20px  top:146px  width:26px  height:26px  border-radius:50%  box-shadow:inset 0 0 0 2px rgba(19,19,19,0.22)
-    <div> position:absolute  left:20px  right:24px  top:194px  color:#1D1C1A  font-size:18px  font-weight:600  letter-spacing:-0.1px  line-height:26px  text-wrap:pretty
-      · Put your phone somewhere difficult to access before you sleep.
+    <div> position:absolute  left:20px  right:24px  top:190px  color:#1D1C1A  font-size:15px  font-weight:500  line-height:22px  text-wrap:pretty
+      · Put the device you use for porn out of reach before you sleep.
   <div> position:absolute  left:20px  top:138px  color:#8B8882  font-size:12.5px  font-weight:600
     · This week
   <div> position:absolute  right:20px  top:136px  display:flex  align-items:center  gap:5px
@@ -108,7 +114,6 @@ element on the frame is here, in paint order, indented by depth.
       <path> d="M1.5 1.5L6.5 7l-5 5.5"  fill="none"  stroke="rgba(244,243,240,0.5)"  stroke-width="2"  stroke-linecap="round"
 ```
 
-
 ## Comparison — design frame vs the running app
 
 Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
@@ -140,7 +145,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | rect at 323.4, 785.8 | box · paint · type | 323.4, 785.8 · 4.9 × 23.4 · — · — | identical | match |
 | “Library” | box · paint · type | 288, 817 · 60 × 15 · — · 13px/500/normal/normal/rgb(139, 136, 130) | identical | match |
 | “Library” | box · paint · type | 318.6, 136 · 42.4 × 13 · — · 11px/600/0.5px/normal/rgb(139, 136, 130) | identical | match |
-| div at 12, 340 | box · paint · type | 12, 340 · 369 × 274 · rgb(255, 255, 255) · r 20px · rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(40, 38, 32, 0.07) 0px 10px 24px 0px · — | identical | match |
+| div at 12, 340 | box · paint | 12, 340 · 369 × 274 · rgb(255, 255, 255) · r 20px · rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(40, 38, 32, 0.07) 0px 10px 24px 0px | *absent* | **mismatch** |
 | div at 12, 340 | box · paint · type | 12, 340 · 369 × 124 · — · — | identical | match |
 | div at 12, 340 | box · paint · type | 12, 340 · 369 × 124 · — · — | identical | match |
 | div at 70, 358 | radius | 50% | 1px | **mismatch** |
@@ -151,34 +156,40 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | div at 50, 362 | box · paint · type | 50, 362 · 20 × 20 · — · — | identical | match |
 | path at 52.5, 364.3 | box · paint · type | 52.5, 364.3 · 15 × 15 · — · — | identical | match |
 | path at 7.9, 422.5 | box · paint · type | 7.9, 422.5 · 377.2 × 41.5 · — · — | identical | match |
-| div at 271, 360 | radius | 50% | - | **mismatch** |
-| div at 283, 366 | box · paint · type | 283, 366 · 38 × 52 · r 5px · — | identical | match |
-| div at 287, 373 | box · paint · type | 287, 373 · 30 × 14 · rgba(244, 243, 240, 0.1) · r 3px · — | identical | match |
-| div at 287, 390 | box · paint · type | 287, 390 · 30 × 14 · rgba(244, 243, 240, 0.06) · r 3px · — | identical | match |
-| div at 297, 378 | box · paint · type | 297, 378 · 10 × 3 · rgba(244, 243, 240, 0.35) · r 1.5px · — | identical | match |
-| div at 289.1, 370.2 | box · paint · type | 289.1, 370.2 · 12.8 × 18.7 · rgb(14, 17, 22) · r 2px · rgba(244, 243, 240, 0.22) 0px 0px 0px 1px inset · — | identical | match |
-| div at 32, 482 | box · paint · type | 32, 482 · 123 × 34 · — · — | identical | match |
+| div at 108, 402 | box · paint · type | 108, 402 · 7 × 38 · rgb(44, 56, 68) · r 2.5px · — | identical | match |
+| div at 113, 420 | box · paint · type | 113, 420 · 64 × 17 · rgb(57, 70, 86) · r 5px · — | identical | match |
+| div at 118, 413 | box · paint · type | 118, 413 · 22 × 9 · rgb(85, 103, 124) · r 4px · — | identical | match |
+| div at 170, 430 | box · paint · type | 170, 430 · 5 × 10 · rgb(38, 48, 60) · r 2px · — | identical | match |
+| div at 275, 406 | box · paint · type | 275, 406 · 42 × 8 · rgb(44, 56, 68) · r 3px · — | identical | match |
+| div at 293, 414 | box · paint · type | 293, 414 · 7 × 28 · rgb(38, 48, 60) · r 2px · — | identical | match |
+| div at 292, 382 | box · paint · type | 292, 382 · 13 × 22 · rgb(220, 227, 234) · r 3px · — | identical | match |
+| div at 304, 374 | radius | 50% | 8.5px | **mismatch** |
+| svg at 308, 378.5 | box · paint · type | 308, 378.5 · 9 × 8 · — · — | identical | match |
+| path at 309.5, 380 | box · paint · type | 309.5, 380 · 6 × 4.5 · — · — | identical | match |
+| div at 32, 482 | box · paint | 32, 482 · 163.5 × 34 · — | *absent* | **mismatch** |
 | div at 32, 482 | radius | 50% | 17px | **mismatch** |
-| svg at 41.5, 491.5 | box · paint · type | 41.5, 491.5 · 15 × 15 · — · — | identical | match |
-| path at 43.4, 493.2 | box · paint · type | 43.4, 493.2 · 11.2 × 11.3 · — · — | identical | match |
-| “Today’s task” | box · paint · type | 76, 491.5 · 79 × 15 · — · 13px/600/normal/normal/rgb(29, 28, 26) | identical | match |
+| svg at 41, 491 | box · paint · type | 41, 491 · 16 × 16 · — · — | identical | match |
+| path at 43.4, 495.8 | box · paint · type | 43.4, 495.8 · 0 × 7.6 · — · — | identical | match |
+| path at 43.4, 497.8 | box · paint · type | 43.4, 497.8 · 11.2 × 5.6 · — · — | identical | match |
+| circle at 44.3, 496.9 | box · paint · type | 44.3, 496.9 · 2.4 × 2.4 · — · — | identical | match |
+| “Surviving the night” | box · paint · type | 76, 491.5 · 119.5 × 15 · — · 13px/600/normal/normal/rgb(29, 28, 26) | same box and metrics, value "Choose your action" | match (value) |
 | div at 335, 486 | radius | 50% | 13px | **mismatch** |
-| “Put your phone somewhere difficult to access bef” | height | 52 | 80 | **mismatch** |
+| “Put the device you use for porn out of reach bef” | box · paint · type | 32, 530 · 325 × 44 · — · 15px/500/normal/22px/rgb(29, 28, 26) | same box and metrics, value "Write three simple rules for situations that have caught you before and make one easier to follow." | match (value) |
 | “This week” | box · paint · type | 20, 138 · 61.3 × 14.5 · — · 12.5px/600/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 318.6, 136 | box · paint · type | 318.6, 136 · 54.4 × 13 · — · — | identical | match |
 | svg at 366, 136.5 | box · paint · type | 366, 136.5 · 7 × 12 · — · — | identical | match |
 | path at 367.4, 137.8 | box · paint · type | 367.4, 137.8 · 4.3 × 9.4 · — · — | identical | match |
 | div at 12, 164 | box · paint · type | 12, 164 · 369 × 152 · rgb(255, 255, 255) · r 20px · rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(40, 38, 32, 0.07) 0px 10px 24px 0px · — | identical | match |
-| “Naming your triggers” | box · paint · type | 32, 190 · 182.7 × 22.5 · — · 19px/600/-0.2px/normal/rgb(29, 28, 26) | same box and metrics, value "Start the first lesson" | match (value) |
-| “Lesson 5 · Week II” | box · paint · type | 32, 220 · 105.7 × 14.5 · — · 12.5px/400/normal/normal/rgb(139, 136, 130) | same box and metrics, value "Week I" | match (value) |
+| “Naming your triggers” | box · paint · type | 32, 190 · 182.7 × 22.5 · — · 19px/600/-0.2px/normal/rgb(29, 28, 26) | same box and metrics, value "Choose Your Action" | match (value) |
+| “Lesson 5 · Week II” | box · paint · type | 32, 220 · 105.7 × 14.5 · — · 12.5px/400/normal/normal/rgb(139, 136, 130) | same box and metrics, value "Lesson 6 · Week VI" | match (value) |
 | div at 229, 180 | box · paint · type | 229, 180 · 108 × 80 · r 999px 999px 0px 0px · — | identical | match |
 | div at 229, 180 | box · paint · type | 229, 180 · 108 × 80 · — · — | identical | match |
-| div at 248, 190 | radius | 50% | - | **mismatch** |
-| ellipse at 263, 242.5 | box · paint · type | 263, 242.5 · 42 × 7 · — · — | identical | match |
-| g at 263.4, 205.2 | box · paint · type | 263.4, 205.2 · 40.9 × 32 · — · — | identical | match |
-| circle at 270, 220.4 | box · paint · type | 270, 220.4 · 7.4 × 7.4 · — · — | identical | match |
-| path at 279.8, 214.4 | box · paint · type | 279.8, 214.4 · 15.5 × 11.1 · — · — | identical | match |
-| path at 261.8, 190 | box · paint · type | 261.8, 190 · 9.2 × 28 · — · — | identical | match |
+| div at 248, 190 | box · paint | 248, 190 · 70 × 58 · r 50% | *absent* | **mismatch** |
+| ellipse at 263, 242.5 | box · paint | 263, 242.5 · 42 × 7 · — | *absent* | **mismatch** |
+| g at 263.4, 205.2 | box · paint | 263.4, 205.2 · 40.9 × 32 · — | *absent* | **mismatch** |
+| circle at 270, 220.4 | box · paint | 270, 220.4 · 7.4 × 7.4 · — | *absent* | **mismatch** |
+| path at 279.8, 214.4 | box · paint | 279.8, 214.4 · 15.5 × 11.1 · — | *absent* | **mismatch** |
+| path at 261.8, 190 | box · paint | 261.8, 190 · 9.2 × 28 · — | *absent* | **mismatch** |
 | svg at 357, 186 | box · paint · type | 357, 186 · 8 × 14 · — · — | identical | match |
 | path at 358.5, 187.5 | box · paint · type | 358.5, 187.5 · 5 × 11 · — · — | identical | match |
 | div at 32, 291.5 | box · paint · type | 32, 291.5 · 329 × 4.5 · — · — | identical | match |
@@ -196,7 +207,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | svg at 370, 731 | box · paint · type | 370, 731 · 7 × 12 · — · — | identical | match |
 | path at 371.4, 732.3 | box · paint · type | 371.4, 732.3 · 4.3 × 9.4 · — · — | identical | match |
 
-**77 elements compared; 61 match, 16 differ.**
+**83 elements compared; 61 match, 22 differ.**
 
 ## Reading — every row that is not `match`
 
@@ -227,31 +238,17 @@ box, same colour, same type metrics, different characters. The seeded account
 account it draws, and where a frame's own sample disagrees with day 41 the app
 prints what the account actually is. Those cases are named per screen below.
 
-Frame-specific — the state this frame draws, and how it was captured:
+Frame-specific: this is the task card's **lesson-sourced** register — the bed
+and shelf scene, the bed glyph, the lesson's own name in place of "Today’s
+task", and the sentence set one step down at 15/500/22 from `top: 190` rather
+than 18/600/26 from `top: 194`. Every layer of the scene pairs exactly: the
+headboard, the bed, the pillow, the foot, the shelf and its leg, the phone and
+the `#E9D2A4` seal with its tick.
 
-`21 · Today — p2` draws the task card in its **fallback** register: the
-`PhoneDownArt` night, the crescent glyph, the label "Today’s task" and the
-18/600/26/−0.1 sentence. `src/app/(app)/today.tsx` reaches that register only
-when nobody has named the day's action *and* the day is past the 84-lesson
-curriculum — before then the card takes the day's lesson instead, which is the
-sibling frame `21 · Today — task` (`specs/54-today-home-task.md`). The two
-cannot both be on screen for one account, so this capture was taken with the
-account's `createdAt` moved back to day 86 and restored immediately after.
-
-Residuals:
-
-* **The caption's box is 52 on the canvas and 80 in the app** at the same
-  origin, width and type. The canvas's card is a fixed 274 tall and its caption
-  is absolutely placed; the app's card is `minHeight: 274` with the caption as
-  its only child in flow, so the 28 the frame leaves under a two-line sentence
-  is carried as `paddingBottom` — which the probe measures as part of the box.
-  The words occupy the same two 26pt lines.
-* **The week bar draws six segments on the canvas and seven in the app.** The
-  bar's rule is identical — `left: 20 right: 20`, `flex: 1`, `gap: 7`, 4.5 tall
-  at radius 2.5, filled for the lessons behind you — but the count is the week's
-  own length, and this app's curriculum (`src/content/curriculum84.ts`) runs
-  seven lessons a week where the canvas's runs six. The app is the source of
-  truth for content, so seven stands.
-* The lesson card's title and meta are the account's: the canvas draws
-  "Naming your triggers · Lesson 5 · Week II" on an account it also numbers
-  Day 41, which this curriculum places in Week VI.
+Residuals are the account's own: the canvas draws day one's lesson
+("Surviving the night" / "Put the device you use for porn out of reach before
+you sleep.") on an account it numbers Day 41, and the seeded account is on day
+41, whose lesson is "Choose your action". The card's own box and the label row
+are sized by that copy, so they report as absent rather than as differing. The
+week bar's six segments against the app's seven are the same curriculum
+difference described in `specs/53-today-p2.md`.

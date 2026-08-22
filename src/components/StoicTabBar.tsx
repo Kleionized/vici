@@ -98,9 +98,13 @@ export function StoicTabBar() {
             accessibilityState={{ selected: active }}
             accessibilityLabel={item.label}
             hitSlop={{ top: 14, bottom: 20, left: 22, right: 22 }}
-            style={{ position: 'absolute', top: 14, left: item.at, marginLeft: -item.w / 2, width: item.w, alignItems: 'center' }}>
-            <View style={{ height: 29 }}>{item.icon(active)}</View>
-            <AppText style={[sans('500'), { marginTop: 5, fontSize: 13, color: active ? colors.textTitle : colors.textSoft }]}>
+            style={{ position: 'absolute', top: 14, left: item.at, marginLeft: -item.w / 2, width: item.w }}>
+            {/* the canvas centres the glyph with `margin: 0 auto` and lets the
+                label fill the item's stated width under `text-align: center`,
+                so the label's box is 44 / 52 / 60 wide, not the width of the
+                word */}
+            <View style={{ height: 29, alignItems: 'center' }}>{item.icon(active)}</View>
+            <AppText center style={[sans('500'), { marginTop: 5, fontSize: 13, color: active ? colors.textTitle : colors.textSoft }]}>
               {item.label}
             </AppText>
           </PressScale>
