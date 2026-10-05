@@ -1,0 +1,32 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 281.5 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 347.5 | 329 | 293 | - | - | - | - | - | -
+div | 32 | 347.5 | 329 | 67 | - | - | - | - | - | -
+div | 32 | 347.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 355.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 362.1 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 364.9 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 363.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 347.5 | 275 | 67 | - | - | - | - | - | -
+div | 86 | 347.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Keep the facts narrow
+div | 86 | 372.5 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | what you did, when it happened, and what the consequence was.
+div | 32 | 440.5 | 329 | 66 | - | - | - | - | - | -
+div | 32 | 440.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 448.5 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 451.8 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 451.8 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 456.8 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 460 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 440.5 | 275 | 66 | - | - | - | - | - | -
+div | 86 | 443.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Do not replace the insult with praise. You are only making the sentence accurate.
+div | 32 | 532.5 | 329 | 108 | - | - | - | - | - | -
+div | 32 | 532.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 540.5 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 546 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 550.4 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 532.5 | 275 | 108 | - | - | - | - | - | -
+div | 86 | 535.5 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | After writing the facts, do something basic for yourself: eat, shower, go outside, clean one surface, take medication you normally take, or go to bed on time.

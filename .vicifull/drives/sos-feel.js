@@ -1,0 +1,10 @@
+await tap('Start the interrupt');
+await tap('Continue');
+await tap('Continue');
+await tap('Door is open');
+await tap('I’m up');
+await tap('I’ve left');
+await tap('Phone is away');
+await tap('Doomscrolling');
+await tap('Continue');
+await tap('Locked');

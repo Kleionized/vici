@@ -1,0 +1,2282 @@
+[
+ {
+  "frame": "Splash",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Login",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Welcome Back",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q24 Name",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q25 Age",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q26 Gender",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Onboarding Start",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q1",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q2",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q3",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q3b",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "First Principle",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q5",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q6",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q7",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "What starts it",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Transition",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q21",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "What it affects",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q10",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q13",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q15",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q16",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "V3 Q17",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Goal Confirmation",
+  "group": "auth-funnel",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Enlisting Aegis",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Where We’d Start",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Start Here",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Start Here Step 1",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Start Here Step 2",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Your Plan",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Starting Score",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cost Next 30",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cost Next 365",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cost By Age 80",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Line If Nothing Changes",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Line With the Plan",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "A Clean Day",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "One Bad Day",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "What You Want Back",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Letter Received",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Letter Week XII",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "The Vow",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Medallion Received",
+  "group": "tail",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Reminders Setup",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Paywall",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Day Zero",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Paywall Rescue",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Paywall Confirmed",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Manage Subscription",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Check-in Time",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Nightly Check-in Time",
+  "group": "paywall-reminders",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Today Home",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Score Detail",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Score Detail Moves",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Score Detail Ranks",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Today Home II",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Today Home Task",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Today Home III",
+  "group": "today",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Check-in Cover",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Task Check",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning 1 Yesterday",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Feeling",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Energy",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Morning Resign Pledge",
+  "group": "day",
+  "status": "CAPTURE FAILED",
+  "note": "Error: page.evaluate: Error: no control for \"Begin\" :: \n    at window.tap (eval at evaluate (:311:30), <anonymous>:18:18)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:22)\n    at eval (eval a"
+ },
+ {
+  "frame": "Morning Pledge Signed",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Change Pledge Sheet",
+  "group": "day",
+  "status": "CAPTURE FAILED",
+  "note": "Error: page.evaluate: Error: no control for \"Begin\" :: \n    at window.tap (eval at evaluate (:311:30), <anonymous>:18:18)\n    at eval (eval at evaluate (:311:30), <anonymous>:6:7)\n    at eval (eval at"
+ },
+ {
+  "frame": "Morning 5 Done",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night Check-in Cover",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night 1 Mood",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Checkin Emotions",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Checkin Reasons",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night 3 Reflection",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night 2 Record",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night Action Reminder",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Night 4 Closed",
+  "group": "day",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week I Reset",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week I Reset P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week II Changing Your Mindset",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week II Changing Your Mindset P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week III In the Moment",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week III In the Moment P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week IV Know Your Brain",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week IV Know Your Brain P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week V Why It Feels Worth It",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week V Why It Feels Worth It P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VI Discipline",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VI Discipline P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VII Relapse and Adversity",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VII Relapse and Adversity P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week IX Connection",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week IX Connection P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week X Yourself",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week X Yourself P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week XI Build a Life You Want",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week XI Build a Life You Want P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week XII Leave It Behind",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Week XII Leave It Behind P2",
+  "group": "library",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cue Intro Modal",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Strength",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cue Hue Picker",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Surf Step 1",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Surf Step 3",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Cue Set Confirmation",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Reason Picker",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feeling Picker",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Challenge",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Reassess",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Afterward",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Surf Complete",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Relapse Log",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Relapse Twice",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Relapse Resign",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Relapse Begin",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Now",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Score",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Proof",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Surfed",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Pledges",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Hub Breathe",
+  "group": "sos-flow",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Bed",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Bathroom",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Home Alone",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Private Room",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Work",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Public",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Loc Elsewhere",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Turned On",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Bored",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Lonely",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Stressed",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Anxious",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Angry",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Low",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Rejected",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Tired",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Restless",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Numb",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Ashamed",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Feel Unknown",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Content",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Doomscroll",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Fantasy",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Late Phone",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Habit",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Cant Sleep",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Argument",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Rejection",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Alone",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "SOS Trig Unknown",
+  "group": "sos-boards",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Medallions",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Medallions Still To Earn",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Album Earned II",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Breakwater Paper",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Breakwater Bronze",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Breakwater Silver",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Breakwater Gold",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Breakwater Platinum",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Vidi",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Vici",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Rebound",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Breakwater",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Logbook",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Pulse",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Archive",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers Lessons",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Tiers One-offs",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Detail Paper",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Detail Bronze",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Detail Silver",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Detail Gold",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Detail Platinum",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Log Chooser",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lapse When",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lapse Trigger",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lapse Done",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Log Urges",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Log Check-ins",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Log Reports",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Overview Summary",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Overview",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Overview Mood",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Overview When",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Report Ready",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Weekly Report",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Weekly Report Days",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Weekly Report Urges",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Log Intensity",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Log Trigger",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Log Outcome",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Log When",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Urge Log Done",
+  "group": "logs",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Settings",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Edit Profile",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Sheet Profile Photo",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Sheet Edit Name",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Settings Weekly Report",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Settings Check-in Time",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Your Vow Page",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Sheet Sign Out",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Data Privacy",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "App Lock",
+  "group": "settings",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Entry",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Close It",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip When",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Fed",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Logged",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Urge Now",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Dont Fail Twice",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Stop Here",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Third",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Pledge",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Begin Again",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Morning After",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Ashamed",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Bored",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Lonely",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Stressed",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Rejected",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Tired",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Turned on",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Feel Not sure",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Late night",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Scrolling",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Sexual content",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Boredom",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Loneliness",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Stress",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Argument",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Couldn’t sleep",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Being alone",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Habit",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Slip Trigger Not sure",
+  "group": "slip",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Letter Arrival",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Letter Read",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Medallion Letter",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Yearly Drop",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Drop Received",
+  "group": "medallions-letters",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 1",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 2",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 3",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 4",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 5",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 6",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 7",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 8",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 9",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 10",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 11",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 12",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 13",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ },
+ {
+  "frame": "Lesson Scroll 14",
+  "group": "lessons",
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
+ }
+]

@@ -1,0 +1,5 @@
+~ Focus                                    x: 24 → 175.8   y: 272 → 294.5   w: 345 → 41.3   h: 64 → 19   bg: rgb(242, 240, 236) → -   radius: 32px → -   type: 16px/700/normal/normal/rgb(17, 17, 17) → 16px/700/normal/19px/rgb(17, 17, 17)
+~ Sleep                                    x: 24 → 177   y: 354 → 376.5   w: 345 → 39.1   h: 64 → 19   bg: rgb(242, 240, 236) → -   radius: 32px → -   type: 16px/700/normal/normal/rgb(17, 17, 17) → 16px/700/normal/19px/rgb(17, 17, 17)
+~ Confidence                               x: 24 → 155.8   y: 436 → 458.5   w: 345 → 81.5   h: 64 → 19   bg: rgb(242, 240, 236) → -   radius: 32px → -   type: 16px/700/normal/normal/rgb(17, 17, 17) → 16px/700/normal/19px/rgb(17, 17, 17)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 16 design rows, 26 app rows; 4 differing, 0 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)

@@ -1,0 +1,916 @@
+
+VICI Questionnaire Changes
+Complete change log + final production copy
+Scope: questionnaire and questionnaire-adjacent transition screens only. This document intentionally excludes personalized result screens, pattern scoring, result visualizations, VICI rating logic, projections, reminder personalization, and all post-questionnaire profile customization.
+INCLUDED
+Screens 03–24: wording, options, deletions, added questions, branching required to administer the questionnaire, field names, and transition copy.
+EXCLUDED
+Screens 25 onward: personalized setup/driver/window results, interventions, plan intensity, rating, projections, “what you get back,” reminders, etc.
+1. Global questionnaire wording rules
+Say the thing directly. Use “watch porn,” “quit,” “cut down,” “relapse,” “in bed,” “scrolling,” etc. Avoid euphemisms such as “when it happens,” “start looking,” or “your porn use” when a simpler phrase exists.
+Ask about remembered behaviour. Prefer questions a user can answer from a concrete memory over abstract self-ratings. Example: “How long do you usually make it before watching again?” is better than “How often do you still end up watching?”
+Do not use “relapse” too early. Only use relapse language after the user has said they have tried to quit. A user who has never attempted abstinence has no relapse history to report.
+No dramatic identity language. Remove options such as “I can’t remember a time when it wasn’t an issue.” They are emotionally loaded and do not add useful precision.
+Keep options conversational. Use phrases that sound like things a person would naturally say: “Nothing obvious,” “Now and then,” “I’m not sure yet,” “Keep it, just without porn.”
+Do not sneak in a diagnosis. Question labels and options should describe behaviour, context, and goals. Avoid “severity,” “self-control problem,” “addiction type,” or other clinical/moral framing.
+Keep porn and masturbation separate. The questionnaire must preserve a user’s stated masturbation goal. “Keep it, just without porn” must not be silently converted into abstinence.
+Use conditional questions when they are genuinely relevant. Do not ask everyone about relapse history, loneliness, or time alone if earlier answers make those questions irrelevant.
+Phrases to remove from questionnaire copy
+“when it happens”
+“start looking”
+“wanted to change your porn use”
+“I can’t remember a time when it wasn’t an issue”
+“Almost every time / More often than not / About half the time / Not very often” as a control scale
+“There isn’t one clear thing”
+“Self-control” as an affected-area label
+“Your target” as a heading
+“Analysing your behaviour,” “identifying your triggers,” “generating your personalised recovery plan,” or other fake-AI loading language
+2. Change summary
+Screen
+Original
+Final
+Change
+03
+Name
+Name
+No copy change; first-name-only rule added.
+04
+Age
+Age
+No visible copy change; age gate/explicit purpose retained.
+05
+Gender
+Gender
+No visible copy change; do not infer causes from gender.
+06
+Start
+Start
+Rewritten to say exactly what the questions are for.
+07
+Frequency
+Frequency
+Question made more conversational; all answer labels revised.
+08
+Duration
+How long
+Question + ranges rebuilt; dramatic final option deleted.
+09
+Control
+09A Previous quit attempts + 09B Relapse
+Old abstract control scale removed entirely.
+10
+First Principle
+First principle
+Same idea, simpler wording.
+11
+Risky Times
+When
+Question + every option made conversational.
+12
+Before the Urge
+Beforehand
+“start looking” removed; Sad→Low; Not sure→Nothing in particular.
+13
+Place
+Place
+“when it happens” removed; every location label naturalized.
+14
+What Happens First
+What starts it
+Question and most answers rewritten.
+15
+We Have Enough
+Transition
+Keyword dump + “YOUR PLAN” removed; honest transition added.
+16
+Impact
+Impact
+“right now” removed; “Hardly at all”→“Not really.”
+17
+What It Affects
+What it affects
+Question simplified; Self-control→Feeling in control.
+18
+Loneliness
+Loneliness
+Copy retained; now conditional where possible.
+19
+Time Alone
+Time alone
+Question + “Occasionally” rewritten; conditional where possible.
+20
+Porn Goal
+Goal
+Question and 3 of 4 answers rewritten.
+21
+Masturbation
+Masturbation goal
+Question shortened; answers made conversational.
+22
+What You Have Tried
+What you’ve tried
+Question + category labels rewritten as actual behaviours.
+23
+Putting Your Plan Together
+Goal confirmation
+New direct confirmation of the user’s stated goal; not a pattern result.
+24
+— / old loading screen
+Build plan
+Loading copy rewritten; fake-AI language explicitly banned.
+3. Screen-by-screen specification
+03 · Name
+UNCHANGED COPY / LOGIC CLARIFIED  ·  Collect a first name for direct address later.
+ORIGINAL
+What should we call you?
+Your name
+Continue
+
+FINAL QUESTIONNAIRE COPY
+What should we call you?
+{name field}
+Continue
+Every change
+Visible wording is unchanged.
+Clarify implementation: collect a first name only; do not force a legal/full name.
+Stores: first_name
+04 · Age
+UNCHANGED COPY / LOGIC ADDED  ·  Collect age for age gating and any later long-term projection.
+ORIGINAL
+How old are you?
+24
+We use this for the long-term projection later on.
+Continue
+
+FINAL QUESTIONNAIRE COPY
+How old are you?
+{age selector}
+We use this for the long-term projection later on.
+Continue
+Every change
+Visible copy is unchanged.
+Add explicit age logic: if age < 18, leave the adult onboarding flow and show an age-appropriate support message.
+Keep the explanatory line so the age request is not mysterious.
+Questionnaire logic
+If age < 18: exit adult onboarding.
+If age ≥ 18: continue.
+Stores: age
+05 · Gender
+UNCHANGED COPY / USE RESTRICTED  ·  Collect optional gender information without overusing it.
+ORIGINAL
+How do you describe your gender?
+Male
+Female
+Non-binary
+Another identity
+Prefer not to say
+Continue
+
+FINAL QUESTIONNAIRE COPY
+How do you describe your gender?
+Male
+Female
+Non-binary
+Another identity
+Prefer not to say
+Continue
+Every change
+Visible copy and answer choices are unchanged.
+Add a rule that questionnaire/results must not infer why someone watches porn from gender.
+Stores: gender
+06 · Start
+CHANGED  ·  Explain the purpose of the questionnaire in plain language.
+ORIGINAL
+Sam, let’s work out when this usually happens.
+It takes about two minutes. Then you’ll see what VICI would focus on first.
+Start
+
+FINAL QUESTIONNAIRE COPY
+{first_name}, let’s figure out what usually leads you back to porn.
+It’ll take about two minutes. Then we’ll show you what we’d change first.
+Start
+Every change
+“work out when this usually happens” → “figure out what usually leads you back to porn.”
+Remove the vague “this / happens” wording and name porn directly.
+“It takes” → conversational contraction “It’ll take.”
+“what VICI would focus on first” → “what we’d change first,” which promises a concrete payoff rather than analysis.
+Stores: none
+07 · Frequency
+CHANGED  ·  Measure current frequency with simple, natural ranges.
+ORIGINAL
+How often do you watch porn right now?
+Several times a day
+Once a day
+A few times a week
+Once a week
+A few times a month
+Rarely
+
+FINAL QUESTIONNAIRE COPY
+How often are you watching porn right now?
+More than once a day
+About once a day
+A few times a week
+About once a week
+A few times a month
+Less than once a month
+Every change
+Question: “do you watch” → “are you watching” to sound less survey-like.
+“Several times a day” → “More than once a day.”
+“Once a day” → “About once a day.”
+“Once a week” → “About once a week.”
+“Rarely” → “Less than once a month” so the lowest band is concrete rather than subjective.
+Keep “A few times a week” and “A few times a month.”
+Remove the decorative weekday row (M T W T F S S) unless it has an actual interaction purpose.
+Questionnaire logic
+Single select.
+Continue immediately after selection if that matches the existing interaction pattern.
+Do not call any selection a relapse.
+Stores: frequency
+08 · How long
+CHANGED  ·  Measure how long the user has wanted to quit/cut down without dramatic language.
+ORIGINAL
+How long have you wanted to change your porn use?
+Less than a year
+1–3 years
+4–10 years
+10+ years
+I can’t remember a time when it wasn’t an issue
+
+FINAL QUESTIONNAIRE COPY
+How long have you wanted to quit or cut down?
+Less than 3 months
+3–12 months
+1–3 years
+3–5 years
+5+ years
+Every change
+Rename screen “Duration” → “How long.”
+Question: “wanted to change your porn use” → “wanted to quit or cut down.”
+Split the old broad “Less than a year” into “Less than 3 months” and “3–12 months.”
+Keep “1–3 years.”
+Replace “4–10 years” and “10+ years” with “3–5 years” and “5+ years.”
+Delete “I can’t remember a time when it wasn’t an issue.” It is dramatic, vague, and adds little useful precision.
+Delete the stray “.” visual/text artifact from the old screen.
+Stores: duration
+09A · Previous quit attempts
+OLD SCREEN REMOVED / NEW SCREEN ADDED  ·  Find out whether relapse history is relevant before asking about it.
+ORIGINAL
+09 · Control
+When you decide not to watch, how often do you still end up watching?
+Almost every time
+More often than not
+About half the time
+Not very often
+
+FINAL QUESTIONNAIRE COPY
+Have you tried to quit before?
+Yes, several times
+Yes, once or twice
+No
+Every change
+Delete the old “Control” screen entirely.
+Delete the abstract question “When you decide not to watch, how often do you still end up watching?”
+Delete all four probability-style answer choices.
+Add a new gating question: “Have you tried to quit before?”
+Use simple attempt-history answers rather than asking the user to estimate an abstract level of control.
+Questionnaire logic
+If “No,” skip 09B entirely.
+If either “Yes” option is selected, show 09B.
+Stores: quit_attempts
+09B · Relapse
+NEW  ·  Measure a concrete remembered outcome from prior quit attempts.
+FINAL QUESTIONNAIRE COPY
+When you’ve tried to quit, how long do you usually make it before watching again?
+Less than a day
+A few days
+About a week
+A few weeks
+A month or longer
+Every change
+This is a completely new conditional question.
+It replaces the old abstract control scale with something the user can remember: how long previous quit attempts usually lasted.
+Use “watching again” rather than a clinical or moralized phrase.
+The screen title can use “Relapse” because it is only shown after the user has confirmed a quit attempt.
+Questionnaire logic
+Show only when 09A = “Yes, several times” or “Yes, once or twice.”
+Single select.
+Skip entirely for users who have never tried to quit.
+Stores: relapse_latency
+10 · First principle
+CHANGED  ·  Give a useful idea before continuing the questions.
+ORIGINAL
+Urges do not stay at full strength forever.
+The first job is to get through the few minutes when acting on one feels easiest.
+Continue
+
+FINAL QUESTIONNAIRE COPY
+An urge doesn’t stay at its worst for very long.
+The first job is getting through the part where giving in feels easiest.
+Continue
+Every change
+“Urges do not stay at full strength forever” → “An urge doesn’t stay at its worst for very long.”
+“The first job is to get through the few minutes when acting on one feels easiest” → “The first job is getting through the part where giving in feels easiest.”
+Use contractions and ordinary language; remove the slightly clinical “full strength / acting on one” phrasing.
+Stores: none
+11 · When
+CHANGED  ·  Ask where/when porn use actually occurs in everyday language.
+ORIGINAL
+When are you most likely to watch?
+Select all that apply
+Late nights
+Mornings
+Being bored
+Stress
+Can’t sleep
+Weekends
+Drinking
+Home alone
+Scrolling
+Continue
+
+FINAL QUESTIONNAIRE COPY
+When do you usually end up watching?
+Select all that apply
+Late at night
+In the morning
+When I’m bored
+When I’m stressed
+When I can’t sleep
+On weekends
+After drinking
+When I’m home alone
+While scrolling
+Continue
+Every change
+Rename screen “Risky Times” → “When.”
+Question: “When are you most likely to watch?” → “When do you usually end up watching?”
+Late nights → Late at night.
+Mornings → In the morning.
+Being bored → When I’m bored.
+Stress → When I’m stressed.
+Can’t sleep → When I can’t sleep.
+Weekends → On weekends.
+Drinking → After drinking.
+Home alone → When I’m home alone.
+Scrolling → While scrolling.
+All options now read like natural continuations of the question rather than analytics tags.
+Questionnaire logic
+Multi-select.
+Allow continuing with zero selections if none fit, or add a plain “None of these” option if the UI requires an explicit answer.
+Stores: risky_times (multi)
+12 · Beforehand
+CHANGED  ·  Ask about the feeling immediately before without euphemisms.
+ORIGINAL
+How do you usually feel just before you start looking?
+Select all that apply
+Horny
+Bored
+Lonely
+Stressed
+Sad
+Angry
+Numb
+Tired
+Not sure
+Continue
+
+FINAL QUESTIONNAIRE COPY
+What are you usually feeling right before?
+Select all that apply
+Horny
+Bored
+Lonely
+Stressed
+Low
+Angry
+Numb
+Tired
+Nothing in particular
+Continue
+Every change
+Rename screen “Before the Urge” → “Beforehand.”
+Delete “start looking.” It sounds indirect and AI-written.
+Question becomes “What are you usually feeling right before?”
+Sad → Low.
+Not sure → Nothing in particular. This is a real answer rather than uncertainty about the questionnaire.
+Keep Horny, Bored, Lonely, Stressed, Angry, Numb, Tired.
+Questionnaire logic
+Multi-select.
+“Nothing in particular” must be exclusive: selecting it clears the other feeling options, and selecting another feeling clears it.
+Stores: pre_urge_feelings (multi)
+13 · Place
+CHANGED  ·  Ask directly where the user watches.
+ORIGINAL
+Where are you usually when it happens?
+Select all that apply
+In bed
+Bathroom
+My desk
+Living room
+Around home
+Out
+Continue
+
+FINAL QUESTIONNAIRE COPY
+Where are you usually watching?
+Select all that apply
+In bed
+In the bathroom
+At my desk
+In the living room
+Somewhere else at home
+Outside home
+Continue
+Every change
+Question: “Where are you usually when it happens?” → “Where are you usually watching?”
+Delete vague “it happens.”
+Bathroom → In the bathroom.
+My desk → At my desk.
+Living room → In the living room.
+Around home → Somewhere else at home.
+Out → Outside home.
+Keep In bed.
+Stores: places (multi)
+14 · What starts it
+CHANGED  ·  Ask what usually sets the sequence off, using phrases a person would actually say.
+ORIGINAL
+What usually happens right before you start watching?
+Select all that apply
+I see something sexual online
+I start doomscrolling
+I can’t fall asleep
+Something stressful happens
+An argument, or feeling rejected
+A fantasy gets stuck in my head
+There isn’t one clear thing
+Continue
+
+FINAL QUESTIONNAIRE COPY
+What usually sets it off?
+Select all that apply
+I see something sexual online
+I start scrolling
+I can’t sleep
+I’ve had a stressful day
+I argue with someone or feel rejected
+I start fantasising
+Nothing obvious
+Continue
+Every change
+Rename screen “What Happens First” → “What starts it.”
+Question shortened from “What usually happens right before you start watching?” to “What usually sets it off?”
+Keep “I see something sexual online.”
+I start doomscrolling → I start scrolling.
+I can’t fall asleep → I can’t sleep.
+Something stressful happens → I’ve had a stressful day.
+An argument, or feeling rejected → I argue with someone or feel rejected.
+A fantasy gets stuck in my head → I start fantasising.
+There isn’t one clear thing → Nothing obvious.
+Questionnaire logic
+Multi-select.
+“Nothing obvious” must be exclusive.
+Stores: proximal_triggers (multi)
+15 · Transition
+CHANGED  ·  End the pattern-mapping half honestly without pretending the questionnaire is finished.
+ORIGINAL
+15 · We Have Enough
+Late nights
+Scrolling
+Home alone
+Stress
+Being bored
+YOUR PLAN
+Sam, that’s enough to build your first plan.
+Your answers shape what SOS tells you to do when an urge hits.
+Continue
+
+FINAL QUESTIONNAIRE COPY
+Okay. That’s enough to see where things usually start.
+A few more questions, then we’ll show you what we’d change first.
+Continue
+Every change
+Rename “We Have Enough” → a simple transition screen.
+Remove the selected-keyword dump (Late nights / Scrolling / Home alone / Stress / Being bored).
+Remove the “YOUR PLAN” label.
+Delete “Sam, that’s enough to build your first plan.” It is misleading because several questions still follow.
+Delete “Your answers shape what SOS tells you to do when an urge hits.” from this point in the flow.
+Replace with an honest transition: enough to see where things start; a few more questions remain.
+Questionnaire logic
+No analysis or correction UI here.
+Do not show pseudo-analysis, keyword confetti, or a fake “pattern found” result at this point.
+Stores: none
+16 · Impact
+CHANGED  ·  Ask how much porn is getting in the way without over-formal language.
+ORIGINAL
+How much is porn getting in the way of your life right now?
+Hardly at all
+A little
+Quite a bit
+A lot
+
+FINAL QUESTIONNAIRE COPY
+How much is porn getting in the way of your life?
+Not really
+A little
+Quite a bit
+A lot
+Every change
+Remove “right now” from the question.
+Hardly at all → Not really.
+Keep A little / Quite a bit / A lot.
+Do not label this answer as “severity” in user-facing copy.
+Stores: impact
+17 · What it affects
+CHANGED  ·  Turn impact into concrete areas without moralizing.
+ORIGINAL
+What does it interfere with most?
+Choose up to three
+Time
+Focus
+Sleep
+Confidence
+Relationships
+Sex or intimacy
+Energy
+Self-control
+Peace of mind
+Continue
+
+FINAL QUESTIONNAIRE COPY
+What does it affect most?
+Choose up to three
+Time
+Focus
+Sleep
+Confidence
+Relationships
+Sex or intimacy
+Energy
+Feeling in control
+Peace of mind
+Continue
+Every change
+Question: “What does it interfere with most?” → “What does it affect most?”
+Self-control → Feeling in control. This describes the user’s experience rather than sounding like a character judgement.
+All other options remain unchanged.
+Questionnaire logic
+Maximum 3 selections.
+If impact = “Not really,” allow zero selections and optionally change prompt to “If anything, what would you most like to improve?”
+Stores: affected_areas (multi)
+18 · Loneliness
+COPY UNCHANGED / CONDITIONALIZED  ·  Keep the wording, but stop asking it when there is no reason to.
+ORIGINAL
+How often have you felt lonely lately?
+Rarely
+Sometimes
+Often
+Most days
+
+FINAL QUESTIONNAIRE COPY
+How often have you felt lonely lately?
+Rarely
+Sometimes
+Often
+Most days
+Every change
+Visible copy and options are unchanged.
+Change the flow: show this question only when an earlier answer gives a reason to ask, such as “Lonely,” “When I’m home alone,” or “I argue with someone or feel rejected.”
+Do not infer that loneliness causes porn use just because this answer is high.
+Questionnaire logic
+Conditional where possible; skip for users whose earlier answers contain no social/isolation signal.
+Stores: loneliness
+19 · Time alone
+CHANGED  ·  Ask about isolation in normal English and only where relevant.
+ORIGINAL
+How often do you have long stretches of time alone?
+Most days
+A few days a week
+Occasionally
+Rarely
+
+FINAL QUESTIONNAIRE COPY
+How often are you on your own for long stretches?
+Most days
+A few days a week
+Now and then
+Rarely
+Every change
+Question: “How often do you have long stretches of time alone?” → “How often are you on your own for long stretches?”
+Occasionally → Now and then.
+Keep Most days / A few days a week / Rarely.
+Prefer showing this only when home/alone context is relevant.
+Questionnaire logic
+Conditional where possible.
+This measures opportunity/environment, not a moral or clinical trait.
+Stores: time_alone
+20 · Goal
+CHANGED  ·  Ask what the user is actually aiming for.
+ORIGINAL
+What do you want to do about porn?
+Stop using it
+Watch much less
+Keep a limit
+I haven’t decided yet
+
+FINAL QUESTIONNAIRE COPY
+What are you aiming for with porn?
+Stop completely
+Watch much less
+Set a limit and stick to it
+I’m not sure yet
+Every change
+Rename “Porn Goal” → “Goal.”
+Question: “What do you want to do about porn?” → “What are you aiming for with porn?”
+Stop using it → Stop completely.
+Keep a limit → Set a limit and stick to it.
+I haven’t decided yet → I’m not sure yet.
+Keep Watch much less.
+Do not force an abstinence goal later if the user chose reduction or a limit.
+Stores: porn_goal
+21 · Masturbation goal
+CHANGED  ·  Keep this separate from porn and make the question conversational.
+ORIGINAL
+What do you want to do about masturbation?
+Stop for now
+Do it less
+Keep it, without porn
+Not decided yet
+
+FINAL QUESTIONNAIRE COPY
+What about masturbation?
+Stop for now
+Do it less
+Keep it, just without porn
+I’m not sure yet
+Every change
+Question shortened from “What do you want to do about masturbation?” to “What about masturbation?”
+Keep it, without porn → Keep it, just without porn.
+Not decided yet → I’m not sure yet.
+Keep Stop for now / Do it less.
+Downstream logic must preserve “keep it, just without porn” as a separate goal; it must not become porn+masturbation abstinence.
+Stores: masturbation_goal
+22 · What you’ve tried
+CHANGED  ·  Replace category labels with descriptions of what the user actually did.
+ORIGINAL
+What have you tried before?
+Select all that apply
+Blockers
+Cold turkey
+A partner
+Deleting apps
+Therapy
+New habits
+Nothing yet
+Continue
+
+FINAL QUESTIONNAIRE COPY
+What have you tried already?
+Select all that apply
+Blocking sites or apps
+Going cold turkey
+Asking someone to keep me accountable
+Deleting apps or accounts
+Therapy or counselling
+Replacing it with other habits
+Nothing yet
+Continue
+Every change
+Question: “What have you tried before?” → “What have you tried already?”
+Blockers → Blocking sites or apps.
+Cold turkey → Going cold turkey.
+A partner → Asking someone to keep me accountable.
+Deleting apps → Deleting apps or accounts.
+Therapy → Therapy or counselling.
+New habits → Replacing it with other habits.
+Keep Nothing yet.
+Use actual behaviours instead of category labels.
+Questionnaire logic
+Multi-select.
+“Nothing yet” must be exclusive.
+Stores: tried_before (multi)
+23 · Goal confirmation
+NEW QUESTIONNAIRE EXIT SCREEN  ·  Close the questionnaire by reflecting the goal the user just chose. This is not a pattern/result personalization screen.
+FINAL QUESTIONNAIRE COPY
+{goal_confirmation_title}
+{goal_confirmation_body}
+{masturbation_clarifier_optional}
+Continue
+Every change
+This is new.
+Do not title it “Your target.” Keep it as a natural transition.
+If goal = stop: “You want to stop.” / “That’s what we’ll build around.”
+If goal = reduce: “You want porn to take up a lot less of your life.” / “That’s what we’ll build around.”
+If goal = limit: “You want to set a limit and actually keep it.” / “That’s what we’ll build around.”
+If goal = undecided: “You don’t need to decide forever today.” / “We’ll start with getting the choice back.”
+If masturbation = keep without porn, add: “Masturbation isn’t part of what you’re trying to stop. Porn is.”
+This screen may echo the explicit goal answer only; it must not infer a profile, driver, trigger, or psychological cause.
+Questionnaire logic
+Direct branching from the answer selected on Screens 20–21 only.
+Stores: none
+24 · Build plan
+CHANGED  ·  Use a short transition into results without fake AI analysis.
+ORIGINAL
+Putting your plan together…
+Looking at when it usually happens
+Looking at what usually comes right before it
+Building your first week
+
+FINAL QUESTIONNAIRE COPY
+Putting your plan together…
+Finding where you usually get caught
+Looking at what tends to lead into it
+Choosing what to change first
+Every change
+Keep “Putting your plan together…”
+“Looking at when it usually happens” → “Finding where you usually get caught.”
+“Looking at what usually comes right before it” → “Looking at what tends to lead into it.”
+“Building your first week” → “Choosing what to change first.”
+Explicitly ban fake-AI loading language such as “analysing your behaviour,” “identifying your triggers,” “generating your personalised recovery plan,” or “building your profile.”
+Questionnaire logic
+This can animate briefly (about 1.5–2.5 seconds) if desired.
+Do not block on fake loading if the next screen is ready.
+This is the final screen included in this questionnaire document. Everything after it belongs to the separate personalization/results specification.
+Stores: none
+
+4. Final questionnaire copy — clean implementation version
+This section removes the before/after commentary and contains only the production copy + required questionnaire branching.
+03 · Name
+What should we call you?
+{name field}
+Continue
+04 · Age
+How old are you?
+{age selector}
+We use this for the long-term projection later on.
+Continue
+05 · Gender
+How do you describe your gender?
+Male
+Female
+Non-binary
+Another identity
+Prefer not to say
+Continue
+06 · Start
+{first_name}, let’s figure out what usually leads you back to porn.
+It’ll take about two minutes. Then we’ll show you what we’d change first.
+Start
+07 · Frequency
+How often are you watching porn right now?
+More than once a day
+About once a day
+A few times a week
+About once a week
+A few times a month
+Less than once a month
+08 · How long
+How long have you wanted to quit or cut down?
+Less than 3 months
+3–12 months
+1–3 years
+3–5 years
+5+ years
+09A · Previous quit attempts
+Have you tried to quit before?
+Yes, several times
+Yes, once or twice
+No
+09B · Relapse — only if 09A = yes
+When you’ve tried to quit, how long do you usually make it before watching again?
+Less than a day
+A few days
+About a week
+A few weeks
+A month or longer
+10 · First principle
+An urge doesn’t stay at its worst for very long.
+The first job is getting through the part where giving in feels easiest.
+Continue
+11 · When
+When do you usually end up watching?
+Select all that apply
+Late at night
+In the morning
+When I’m bored
+When I’m stressed
+When I can’t sleep
+On weekends
+After drinking
+When I’m home alone
+While scrolling
+Continue
+12 · Beforehand
+What are you usually feeling right before?
+Select all that apply
+Horny
+Bored
+Lonely
+Stressed
+Low
+Angry
+Numb
+Tired
+Nothing in particular
+Continue
+13 · Place
+Where are you usually watching?
+Select all that apply
+In bed
+In the bathroom
+At my desk
+In the living room
+Somewhere else at home
+Outside home
+Continue
+14 · What starts it
+What usually sets it off?
+Select all that apply
+I see something sexual online
+I start scrolling
+I can’t sleep
+I’ve had a stressful day
+I argue with someone or feel rejected
+I start fantasising
+Nothing obvious
+Continue
+15 · Transition
+Okay. That’s enough to see where things usually start.
+A few more questions, then we’ll show you what we’d change first.
+Continue
+16 · Impact
+How much is porn getting in the way of your life?
+Not really
+A little
+Quite a bit
+A lot
+17 · What it affects
+What does it affect most?
+Choose up to three
+Time
+Focus
+Sleep
+Confidence
+Relationships
+Sex or intimacy
+Energy
+Feeling in control
+Peace of mind
+Continue
+18 · Loneliness — conditional
+How often have you felt lonely lately?
+Rarely
+Sometimes
+Often
+Most days
+19 · Time alone — conditional where relevant
+How often are you on your own for long stretches?
+Most days
+A few days a week
+Now and then
+Rarely
+20 · Goal
+What are you aiming for with porn?
+Stop completely
+Watch much less
+Set a limit and stick to it
+I’m not sure yet
+21 · Masturbation goal
+What about masturbation?
+Stop for now
+Do it less
+Keep it, just without porn
+I’m not sure yet
+22 · What you’ve tried
+What have you tried already?
+Select all that apply
+Blocking sites or apps
+Going cold turkey
+Asking someone to keep me accountable
+Deleting apps or accounts
+Therapy or counselling
+Replacing it with other habits
+Nothing yet
+Continue
+23 · Goal confirmation
+Stop: “You want to stop.” / “That’s what we’ll build around.”
+Reduce: “You want porn to take up a lot less of your life.” / “That’s what we’ll build around.”
+Limit: “You want to set a limit and actually keep it.” / “That’s what we’ll build around.”
+Undecided: “You don’t need to decide forever today.” / “We’ll start with getting the choice back.”
+If masturbation = keep without porn: “Masturbation isn’t part of what you’re trying to stop. Porn is.”
+Continue
+24 · Build plan
+Putting your plan together…
+Finding where you usually get caught
+Looking at what tends to lead into it
+Choosing what to change first
+5. Questionnaire-only branching rules
+09B relapse history: show only if the user answered yes to a previous quit attempt.
+12 “Nothing in particular”: exclusive with all other feeling options.
+14 “Nothing obvious”: exclusive with all other “what starts it” options.
+17 affected areas: maximum three. If Impact = Not really, allow zero.
+18 loneliness: prefer showing only when earlier answers include loneliness, being home alone, or rejection/argument.
+19 time alone: prefer showing only when an alone/home context is relevant.
+22 “Nothing yet”: exclusive with all other previous-attempt options.
+23 goal confirmation: may branch only from the explicit goals the user selected. It must not infer a trigger, driver, profile, or diagnosis.
+End of scope: after Screen 24, use the separate results/personalization specification. Do not put result logic into the questionnaire implementation.

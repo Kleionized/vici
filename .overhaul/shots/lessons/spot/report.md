@@ -1,0 +1,33 @@
+| Lesson | Week | pages | worst % | failing pages |
+|---|---|---|---|---|
+| L5 | Week-01-Reset | 15 | 0.01 |  |
+| L6 | Week-01-Reset | 14 | 0.00 |  |
+| L8 | Week-02-Changing-Your-Mindset | 14 | 0.00 |  |
+| L9 | Week-02-Changing-Your-Mindset | 15 | 0.00 |  |
+| L11 | Week-02-Changing-Your-Mindset | 14 | 0.00 |  |
+| L12 | Week-02-Changing-Your-Mindset | 14 | 0.00 |  |
+| L13 | Week-02-Changing-Your-Mindset | 17 | 0.00 |  |
+| L14 | Week-02-Changing-Your-Mindset | 15 | 0.00 |  |
+| L15 | Week-03-In-the-Moment | 14 | 0.00 |  |
+| L18 | Week-03-In-the-Moment | 16 | 0.00 |  |
+| L19 | Week-03-In-the-Moment | 16 | 0.00 |  |
+| L20 | Week-03-In-the-Moment | 16 | 0.00 |  |
+| L23 | Week-04-Know-Your-Brain | 14 | 0.00 |  |
+| L26 | Week-04-Know-Your-Brain | 16 | 0.00 |  |
+| L28 | Week-04-Know-Your-Brain | 15 | 0.00 |  |
+| L29 | Week-05-Why-It-Feels-Worth-It | 13 | 0.00 |  |
+| L31 | Week-05-Why-It-Feels-Worth-It | 15 | 0.00 |  |
+| L36 | Week-06-Discipline | 17 | 0.00 |  |
+| L38 | Week-06-Discipline | 15 | 0.00 |  |
+| L39 | Week-06-Discipline | 17 | 0.00 |  |
+| L40 | Week-06-Discipline | 18 | 0.00 |  |
+| L42 | Week-06-Discipline | 13 | 0.00 |  |
+| L45 | Week-07-Relapse-and-Adversity | 15 | 0.00 |  |
+| L49 | Week-07-Relapse-and-Adversity | 14 | 0.00 |  |
+| L62 | Week-09-Connection | 14 | 0.00 |  |
+| L64 | Week-10-Yourself | 16 | 0.00 |  |
+| L66 | Week-10-Yourself | 15 | 0.00 |  |
+| L72 | Week-11-Build-a-Life-You-Want | 16 | 0.00 |  |
+| L80 | Week-12-Leave-It-Behind | 18 | 0.00 |  |
+| L82 | Week-12-Leave-It-Behind | 17 | 0.00 |  |
+| L84 | Week-12-Leave-It-Behind | 14 | 0.00 |  |

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#E9E7E1;}</style>
+</head><body><div id="host" style="display:flex; flex-wrap:wrap; gap:8px; width:4000px;"></div>
+<script>
+(async () => { try {
+  console.log('CHECK start');
+  const files = ['Week 01 Reset','Week 02 Changing Your Mindset','Week 03 In the Moment','Week 04 Know Your Brain','Week 05 Why It Feels Worth It','Week 06 Discipline','Week 07 Relapse and Adversity','Week 08 Boredom and Meaning','Week 09 Connection','Week 10 Yourself','Week 11 Build a Life You Want','Week 12 Leave It Behind'];
+  await document.fonts.load('400 18px Lato'); await document.fonts.load('700 18px Lato');
+  const host = document.getElementById('host'); const issues = []; let n = 0; const fillTop = [];
+  for (const f of files) {
+    const t = await (await fetch('../' + encodeURIComponent(f) + '.dc.html?' + Date.now())).text();
+    const body = t.slice(t.indexOf('</helmet>') + 9, t.lastIndexOf('</x-dc>')).replace(/url\('noise-dark\.png'\)/g, "url('../noise-dark.png')");
+    console.log('CHECK file ' + f + ' ' + t.length);
+    host.innerHTML = body; await new Promise(r => setTimeout(r, 50));
+    host.querySelectorAll('[data-screen-label]').forEach(fr => {
+      n++; const R = fr.getBoundingClientRect(); const lbl = f.slice(5, 7) + ' ' + fr.dataset.screenLabel;
+      const blk = [...fr.children].find(c => c.style.top === '140px'); if (!blk) return;
+      const scrollP = blk.style.justifyContent === 'flex-start';
+      const over = blk.scrollHeight - blk.clientHeight;
+      if (over > 1 && !scrollP) issues.push(lbl + ' vOverflow ' + over);
+      const kids = blk.querySelectorAll('div,span');
+      let top = 1e9, bot = 0;
+      kids.forEach(el => {
+        const hasText = [...el.childNodes].some(x => x.nodeType === 3 && x.textContent.trim());
+        if (!hasText) return;
+        const r = el.getBoundingClientRect();
+        top = Math.min(top, r.top - R.top); bot = Math.max(bot, r.bottom - R.top);
+        if (r.right - R.left > 362 || r.left - R.left < 31) issues.push(lbl + ' hOut "' + el.textContent.slice(0, 30) + '"');
+        if (el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).display !== 'inline') issues.push(lbl + ' clip "' + el.textContent.slice(0, 30) + '" ' + el.scrollWidth + '>' + el.clientWidth);
+      });
+      if (!scrollP && bot > 726) issues.push(lbl + ' bottom ' + Math.round(bot));
+      if (top < 140 && top < 1e9) issues.push(lbl + ' top ' + Math.round(top));
+    });
+  }
+  console.log('CHECK frames=' + n + ' issues=' + issues.length);
+  for (let i = 0; i < issues.length; i += 6) console.log('ISS ' + issues.slice(i, i + 6).join(' | '));
+  document.title = 'checked';
+} catch (e) { console.log('CHECK error ' + e.message); } })();
+</script></body></html>

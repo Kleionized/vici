@@ -1,0 +1,132 @@
+[
+  {
+    "frame": "curriculum · week page titles (/week/1)",
+    "route": "/week/1",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 2500,
+    "note": "Consumer proof, not a frame-parity recipe (the label matches no Email-Login frame, so audit skips it). Rows read lessonForDay titles: Prepare for tonight · Remove easy access to porn · Choose where to go instead · Prepare for sleep — the strings Week-I-Reset draws."
+  },
+  {
+    "frame": "curriculum · /lesson-card/19 redirects into the reader",
+    "route": "/lesson-card/19",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 2500,
+    "note": "The previous drop's card is a redirect to /lesson/day/19 (D324); its titleSize and two-board task fields are gone from curriculum84 (Phase 2, D339 carry-over)."
+  },
+  {
+    "frame": "curriculum · search results (/search)",
+    "route": "/search",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 3500,
+    "do": "try { await tap('Tonight'); } catch (e) {} ; await __sleep(1200)",
+    "note": "84 results: new titles over the previous build's one-line summaries (D396). The day-38 library seed sometimes raises the post arrival over the route; 'Tonight' dismisses it."
+  },
+  {
+    "frame": "curriculum · first steps (/first-steps)",
+    "route": "/first-steps",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 3500,
+    "do": "try { await tap('Tonight'); } catch (e) {} ; await __sleep(1200)",
+    "note": "Lessons 1–6 by their new titles over the previous build's one-line summaries (D396)."
+  },
+  {
+    "frame": "curriculum · lessons browser (/lessons-browser)",
+    "route": "/lessons-browser",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 3500,
+    "do": "try { await tap('Tonight'); } catch (e) {} ; await __sleep(1200)",
+    "note": "Reads CURRICULUM_84 (week names, lesson titles)."
+  },
+  {
+    "frame": "curriculum · Today page two at day 41 (/today)",
+    "route": "/today",
+    "initseed": ".overhaul/today-seed.js",
+    "wait": 2500,
+    "do": "try { await tap('Tonight'); } catch (e) {} ; await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; if (n) n.scrollTop=614; await __sleep(1000)",
+    "note": "Lesson tile reads lessonForDay(41): 'Give the action a time and place'. With no action named, the task row would read L41's cardSummary, 'Write one cue and action for a decision you keep postponing.' (D339); today-seed.js names its own action."
+  },
+  {
+    "frame": "curriculum · Night action card, day 1 (/day/night)",
+    "route": "/day/night",
+    "initseed": ".overhaul/vday-seed-d1.js",
+    "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "Day 1: 'Prepare for tonight' + 'Put the device you use for porn out of reach before you sleep.' — the pair Night-Action-Reminder draws (D397; day 1 keeps it under D339). Same driver as day.json's Night Action Reminder; audit-fast --frame=\"Night Action Reminder\" is the parity check (0 %)."
+  },
+  {
+    "frame": "curriculum · /task/2 redirects to the task pages",
+    "route": "/task/2",
+    "initseed": ".overhaul/understand/scratch-library/library-seed.js",
+    "wait": 3000,
+    "do": "try { await tap('Tonight'); } catch (e) {} ; await __sleep(1200)",
+    "note": "Redirects to /lesson/day/2?page=task (D324); the frozen two-board fields are no longer emitted."
+  },
+  {
+    "frame": "curriculum · Today page two at day 58, page top",
+    "route": "/today",
+    "initseed": ".overhaul/curriculum-d58-today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; const pages=[...n.firstElementChild.children]; n.scrollTop=pages[1].offsetTop; await __sleep(1000)",
+    "note": "Today II's account at day 58, no action named: page two falls back to the day's lesson — lesson register 'Today’s task: Choose contact that fits' over L58’s task sentence (196 characters, the longest cardSummary — D339), undone, bench crop. Six lines at 17/24 in the 255–273 column; the tiles move down and page two grows past the viewport (D230), so the pager also snaps to the page's foot. Seeds: node .overhaul/curriculum-d58-seeds.mjs."
+  },
+  {
+    "frame": "curriculum · Today page two at day 58, page foot",
+    "route": "/today",
+    "initseed": ".overhaul/curriculum-d58-today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; const pages=[...n.firstElementChild.children]; n.scrollTop=pages[1].offsetTop+pages[1].offsetHeight-n.clientHeight; await __sleep(1000)",
+    "note": "Foot of the same page: sentence 414–558, tiles 578–728, tab bar from 748."
+  },
+  {
+    "frame": "curriculum · Today page two at day 58, page top, 375×667",
+    "size": "375x667",
+    "route": "/today",
+    "initseed": ".overhaul/curriculum-d58-today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; const pages=[...n.firstElementChild.children]; n.scrollTop=pages[1].offsetTop; await __sleep(1000)",
+    "note": "Capture with --w=375 --h=667. The sentence ends just above the tab bar at the page top; the tiles come into view at the foot."
+  },
+  {
+    "frame": "curriculum · Today page two at day 58, page foot, 375×667",
+    "size": "375x667",
+    "route": "/today",
+    "initseed": ".overhaul/curriculum-d58-today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; const pages=[...n.firstElementChild.children]; n.scrollTop=pages[1].offsetTop+pages[1].offsetHeight-n.clientHeight; await __sleep(1000)",
+    "note": "Capture with --w=375 --h=667. Sentence 229–373, tiles to 543, all above the tab bar."
+  },
+  {
+    "frame": "curriculum · Night action at day 58",
+    "route": "/day/night",
+    "initseed": ".overhaul/curriculum-d58-night-seed.js",
+    "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "day-seed.js opened 57 days back: 'Choose contact that fits' over L58’s task sentence (196 characters, the longest cardSummary — D339) at 15/24, four lines; the charger hero and Done / Skip tonight stay clear."
+  },
+  {
+    "frame": "curriculum · Night action at day 58, 375×667",
+    "size": "375x667",
+    "route": "/day/night",
+    "initseed": ".overhaul/curriculum-d58-night-seed.js",
+    "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "Capture with --w=375 --h=667. Five lines (\"particular person.\" last); the hero drops out (D320); Done / Skip tonight clear."
+  },
+  {
+    "frame": "curriculum · Morning Task Check at day 58",
+    "route": "/day/morning",
+    "initseed": ".overhaul/curriculum-d58-morning-seed.js",
+    "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(400)",
+    "note": "day-seed.js at day 58 with yesterday's row naming L58’s task sentence (196 characters, the longest cardSummary — D339): the Yesterday card grows to six lines at 19/28 (255–423); Yes / Not yet 485–547, the charger hero's box from 563 (16 clear), the next disc at 740."
+  },
+  {
+    "frame": "curriculum · Morning Task Check at day 58, 375×667",
+    "size": "375x667",
+    "route": "/day/morning",
+    "initseed": ".overhaul/curriculum-d58-morning-seed.js",
+    "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(400)",
+    "note": "Capture with --w=375 --h=667. Seven lines; Yes / Not yet 479–541, the next disc 555–615 (14 clear); the hero drops out."
+  }
+]

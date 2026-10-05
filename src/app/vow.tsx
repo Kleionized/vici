@@ -1,158 +1,144 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { useId, useState } from 'react';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, RadialGradient, Stop } from 'react-native-svg';
+import { useState } from 'react';
+import { View, useWindowDimensions } from 'react-native';
 
-import { AppText, BackGlyph, Grain, PressScale, SignatureMark, SignaturePad } from '@/components/ui';
-import { useCurrentUser, useJournalEntries, useUpdateSettings } from '@/lib/backend';
-import { fonts, sans } from '@/lib/theme';
+import {
+  GhostLink,
+  Hero,
+  heroArtTop,
+  LoadingView,
+  MonoText,
+  NavBar,
+  Pill,
+  PledgeCard,
+  PrimaryButton,
+  Screen,
+  ScrollRegion,
+  SHEET_TOP,
+  Sheet,
+  useCanvasTop,
+} from '@/components/mono';
+import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/backend';
+import { shortDate } from '@/lib/format';
+import { mono } from '@/lib/theme';
 
 /**
- * 92C · Your vow — the line you signed on night zero, kept where you can find
- * it again, with the signature under it and how long it has held.
+ * 92C · Your vow — the flag hero, then the vow read back in its card (the kit
+ * `PledgeCard`, quote setting: the line in Lato 700, the first name in 700
+ * italic), how long it has held and when it was signed, and the line about
+ * re-signing — which the ghost at `bottom 48` now does (D294).
  *
- * Canvas tops include the 54pt status bar the app never builds, so every number
- * below is the canvas value less 54; the ones anchored to the card's own bottom
- * are card-local and carry over unchanged.
+ * Short phones (D320, as `HeroBoard` does it): when the stack would come within
+ * 16 of the ghost, the flag and the stack rise together; past the flag's room
+ * above canvas 108 the flag goes. The flag's room is only 25, so once it goes
+ * the stack is centred in the band it frees between the nav's foot and the
+ * ghost rather than rising by the deficit alone, which left ~180 of bare
+ * ground over the card on a 667 phone (D297). A vow too long even for that
+ * scrolls between the nav and the ghost. At 393 × 852 nothing moves, and like
+ * `HeroBoard` nothing paints until the stack has been measured, so a short
+ * phone never shows one frame of the unlifted layout.
  */
-
-const noiseDark = require('../../assets/images/noise-dark.png');
 
 /** The line the canvas draws when nothing has been signed yet. */
 const PLACEHOLDER = 'I’m done letting the wave decide. One evening at a time, I take the watch back.';
+
+const DAY = 86_400_000;
+const STACK_TOP = 340;
+const HERO_TOP = 104;
+/** the ghost's 18 line box at `bottom 48` */
+const GHOST_RESERVE = 48 + 18;
+/** where the scroll region starts: the nav row's foot */
+const NAV_FOOT = 100;
 
 export default function Vow() {
   const router = useRouter();
   const user = useCurrentUser();
   const journal = useJournalEntries();
-  const updateSettings = useUpdateSettings();
-  const id = useId().replace(/:/g, '');
+  const createJournalEntry = useCreateJournalEntry();
+  const { height } = useWindowDimensions();
+  const canvasTop = useCanvasTop();
   // Read once on mount so the day count cannot move while the page is open.
   const [now] = useState(() => Date.now());
+  const [stackH, setStackH] = useState(0);
+  const [resignOpen, setResignOpen] = useState(false);
 
-  const vow = (journal ?? []).find((entry) => entry.tag === 'Vow') ?? (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
+
+  if (user === undefined || journal === undefined) return <LoadingView onBack={back} />;
+
+  // newest first: a re-signed vow is the one read back
+  const vow = journal.find((entry) => entry.tag === 'Vow') ?? journal.find((entry) => entry.tag === 'Pledge');
+  const text = vow?.body ?? PLACEHOLDER;
   const signedAt = vow?.createdAt ?? user?.createdAt;
-  const held = signedAt ? Math.max(0, Math.floor((now - signedAt) / 86_400_000)) : 0;
-  const name = user?.displayName?.split(' ')[0] ?? 'You';
-  const stamp = signedAt
-    ? `${new Date(signedAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} · Day 0`
-    : 'Not signed yet';
-  /** The strokes the person drew, or nothing yet — the card shows one or the other. */
-  const signature = user?.settings?.signature ?? '';
+  const held = signedAt ? Math.max(0, Math.floor((now - signedAt) / DAY)) : 0;
+  const name = user?.displayName?.split(' ')[0] || 'You';
+
+  // the lift the short-screen rule asks for (0 at 852)
+  const ghostTop = height - canvasTop - GHOST_RESERVE;
+  const measured = stackH > 0;
+  const deficit = measured ? Math.ceil(STACK_TOP + stackH + 16 - ghostTop) : 0;
+  const room = Math.max(0, Math.floor(heroArtTop('flag', HERO_TOP) - 108));
+  const dropArt = deficit > room;
+  // with the flag gone: centred between the nav's foot and the ghost's 16, never above 108
+  const freeTop = Math.max(108, NAV_FOOT + Math.floor((ghostTop - 16 - NAV_FOOT - stackH) / 2));
+  const lift = deficit <= 0 ? 0 : dropArt ? STACK_TOP - freeTop : deficit;
+  const hidden = measured ? null : { opacity: 0 };
+
+  // "It resets the promise, never the progress": a new Vow entry with the same
+  // words — the page reads the newest, so `Signed` becomes today and `Held for`
+  // starts again. Like any journal entry (a morning pledge included) it is
+  // listed in Past pledges and counts toward the album's Archive and Vidi;
+  // nothing is removed or rewritten (D294). Signed today already, there is
+  // nothing to restart, so a second tap writes no second entry.
+  const signedToday = signedAt !== undefined && new Date(signedAt).toDateString() === new Date().toDateString();
+  async function resign() {
+    setResignOpen(false);
+    if (signedToday) return;
+    await createJournalEntry({ tag: 'Vow', title: 'Vow', body: text }).catch(() => {});
+  }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <StatusBar style="dark" />
-      <Grain source={noiseDark} opacity={0.07} />
-
-      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-        {/* Yoga positions an absolute child against its parent's border box and
-          ignores the padding SafeAreaView spends the inset with, so absolute
-          children of the SafeAreaView itself sit at the top of the screen
-          rather than below the notch. One plain View deeper restores it. */}
-        <View style={{ flex: 1 }}>
-          {/* canvas 64 — the way back reads "Settings", not "Back" */}
-          <PressScale
-            onPress={() => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'))}
-            accessibilityRole="button"
-            accessibilityLabel="Settings"
-            hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
-            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9, zIndex: 5 }}>
-            <BackGlyph color="#55534E" />
-            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Settings</AppText>
-          </PressScale>
-
-          {/* canvas 114 */}
-          <AppText numberOfLines={1} style={[sans('600'), { position: 'absolute', left: 16, right: 16, top: 60, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>
-            Your vow
-          </AppText>
-
-          {/* canvas 168 / 196 — a 170pt halo with the 46pt sun sitting inside it */}
-          <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 114, alignItems: 'center' }}>
-            <Svg width={170} height={170}>
-              <Defs>
-                <RadialGradient id={`halo${id}`} cx="85" cy="85" rx="85" ry="85" gradientUnits="userSpaceOnUse">
-                  <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.38} />
-                  <Stop offset="0.72" stopColor="#E2BA78" stopOpacity={0} />
-                </RadialGradient>
-                {/* `radial-gradient(circle at 50% 38%, …)` names no size, so CSS
-                    uses farthest-corner: from (50%, 38%) of a 46px box that is
-                    √(23² + 28.52²) = 36.66, which is 159.4% of the box's half. */}
-                <RadialGradient id={`sun${id}`} cx="85" cy="82.48" rx="36.66" ry="36.66" gradientUnits="userSpaceOnUse">
-                  <Stop offset="0" stopColor="#F8E9CB" />
-                  <Stop offset="0.7" stopColor="#EFD3A2" />
-                  <Stop offset="1" stopColor="#E3BE85" />
-                </RadialGradient>
-              </Defs>
-              <Circle cx={85} cy={85} r={85} fill={`url(#halo${id})`} />
-              <Circle cx={85} cy={51} r={23} fill={`url(#sun${id})`} />
-            </Svg>
-            {/* the disc's own `box-shadow: 0 6px 18px rgba(226,186,120,0.45)`,
-                which cannot ride on a circle inside the Svg */}
-            <View
-              pointerEvents="none"
-              style={{ position: 'absolute', left: 62, top: 28, width: 46, height: 46, borderRadius: 23, boxShadow: '0 6px 18px rgba(226,186,120,0.45)' }}
-            />
-          </View>
-
-          {/* canvas 296 — the vow itself, set in the serif the pledge uses */}
-          <AppText
-            center
-            style={{ position: 'absolute', left: 40, right: 40, top: 242, fontFamily: fonts.quote, fontSize: 20, lineHeight: 32, color: '#1D1C1A' }}>
-            {vow?.body ?? PLACEHOLDER}
-          </AppText>
-
-          {/* canvas 452 — the signature card */}
-          <View
-            style={{
-              position: 'absolute',
-              left: 36,
-              right: 36,
-              top: 398,
-              height: 170,
-              borderRadius: 18,
-              borderCurve: 'continuous',
-              backgroundColor: '#FFFFFF',
-              boxShadow: '0 0 0 1.5px rgba(0,0,0,0.08), 0 14px 34px rgba(40,38,32,0.10)',
-            }}>
-            <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 13, fontSize: 10.5, letterSpacing: 1.6, color: '#C6C3BC' }]}>
-              SIGNATURE
-            </AppText>
-            {/* The signature is the person's own. The canvas draws one fixed
-                stroke here because a mock has nobody to sign it; a vow signed
-                with someone else's hand is the one thing on this screen that
-                should not be decoration. Signed once, it is drawn back; unsigned,
-                the card is the pad. */}
-            {signature ? (
-              <SignatureMark value={signature} width={216} height={70} style={{ position: 'absolute', left: 44, bottom: 38 }} />
-            ) : (
-              <View style={{ position: 'absolute', left: 44, bottom: 38 }}>
-                <SignaturePad
-                  value={signature}
-                  onChange={(next) => void updateSettings({ signature: next }).catch(() => {})}
-                  width={216}
-                  height={70}
-                  hint="Sign your name"
-                />
-              </View>
-            )}
-            <AppText style={{ position: 'absolute', left: 24, bottom: 42, fontSize: 14, color: '#B0AEA8' }}>×</AppText>
-            <View style={{ position: 'absolute', left: 22, right: 22, bottom: 38, height: 1.5, backgroundColor: 'rgba(0,0,0,0.26)' }} />
-            <AppText style={[sans('500'), { position: 'absolute', left: 24, bottom: 15, fontSize: 11.5, color: '#B0AEA8' }]}>{name}</AppText>
-            <AppText style={[sans('500'), { position: 'absolute', right: 22, bottom: 15, fontSize: 11.5, color: '#B0AEA8' }]}>{stamp}</AppText>
-          </View>
-
-          {/* canvas 648 and 692 */}
-          <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 594, fontSize: 13, color: '#8B8882' }]}>
-            {`Held for ${held} ${held === 1 ? 'day' : 'days'}.`}
-          </AppText>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 36, right: 36, top: 638, fontSize: 13, lineHeight: 19, color: '#8B8882' }]}>
-            After a relapse you can re-sign the vow. It resets the promise, never the progress.
-          </AppText>
+    <Screen>
+      <NavBar left="back" centre={{ title: 'Your vow' }} right="empty" onBack={back} />
+      {dropArt ? null : (
+        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+          <Hero id="flag" top={HERO_TOP - lift} />
         </View>
-      </SafeAreaView>
-    </View>
+      )}
+
+      <ScrollRegion top={NAV_FOOT} bottom={GHOST_RESERVE} contentStyle={{ paddingTop: STACK_TOP - lift - NAV_FOOT, paddingHorizontal: 24, paddingBottom: 16 }}>
+        <View onLayout={(e) => setStackH(Math.ceil(e.nativeEvent.layout.height))} style={[{ gap: 16 }, hidden]}>
+          <PledgeCard variant="quote" pledge={text} name={name} />
+          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
+            <Pill kind="status" filled label={`Held for ${held} ${held === 1 ? 'day' : 'days'}`} />
+            <Pill kind="status" label={signedAt ? `Signed ${shortDate(signedAt)}` : 'Not signed yet'} />
+          </View>
+          <MonoText v="p" color={mono.mute} center style={{ fontSize: 14, lineHeight: 21 }}>
+            After a relapse you can re-sign the vow. It resets the promise, never the progress.
+          </MonoText>
+        </View>
+      </ScrollRegion>
+
+      <GhostLink label="Re-sign the vow" bottom={48} onPress={() => setResignOpen(true)} />
+
+      {/* No frame draws what re-signing looks like; the confirmation is the
+          sign-out sheet's shell, worded from this page's own lines (D294). */}
+      <Sheet
+        open={resignOpen}
+        top={SHEET_TOP.signOut}
+        gap={10}
+        onClose={() => setResignOpen(false)}
+        footer={
+          <>
+            <PrimaryButton label="Sign it again" bottom={96} sheet onPress={() => void resign()} />
+            <GhostLink label="Cancel" zIndex={42} onPress={() => setResignOpen(false)} />
+          </>
+        }>
+        <MonoText v="h1SheetLg">Re-sign the vow?</MonoText>
+        <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
+          It resets the promise, never the progress.
+        </MonoText>
+      </Sheet>
+    </Screen>
   );
 }

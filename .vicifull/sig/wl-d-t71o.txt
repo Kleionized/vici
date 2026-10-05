@@ -1,0 +1,41 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Three answers, one change
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 359 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 66 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+path | 38.9 | 237.5 | 10.1 | 15 | - | - | - | - | - | -
+circle | 42.3 | 240.9 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 66 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 66 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | When are you most likely to relapse? Write the time, place, device, or situation.
+div | 24 | 313 | 345 | 102 | - | - | - | - | - | -
+div | 24 | 313 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 322 | 22 | 22 | - | - | - | - | - | -
+circle | 36.3 | 325.3 | 15.4 | 15.4 | - | - | - | - | - | -
+path | 40.5 | 330.4 | 7 | 5.3 | - | - | - | - | - | -
+div | 78 | 313 | 291 | 102 | - | - | - | - | - | -
+div | 78 | 313 | 291 | 42 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | What has helped in that situation before? For example
+div | 78 | 358 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | phone away from bed, a shared space, earlier sleep, plans with someone, or Vici Urge Surfing one tap away.
+div | 24 | 437 | 345 | 44 | - | - | - | - | - | -
+div | 24 | 437 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 446 | 22 | 22 | - | - | - | - | - | -
+circle | 36.7 | 449.7 | 14.5 | 14.5 | - | - | - | - | - | -
+circle | 40.3 | 453.3 | 7.5 | 7.5 | - | - | - | - | - | -
+circle | 43 | 456 | 2 | 2 | - | - | - | - | - | -
+div | 78 | 437 | 291 | 44 | - | - | - | - | - | -
+div | 78 | 437 | 291 | 44 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | What will you change today? Pick one change you can make now.
+div | 24 | 503 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 503 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 512 | 22 | 22 | - | - | - | - | - | -
+path | 39 | 515.7 | 0 | 15.2 | - | - | - | - | - | -
+path | 39 | 515.9 | 12.7 | 9.1 | - | - | - | - | - | -
+div | 78 | 503 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 503 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Do it
+div | 78 | 527 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Move the charger, add the Vici shortcut or widget, change where you use the phone, or put the activity on your calendar.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

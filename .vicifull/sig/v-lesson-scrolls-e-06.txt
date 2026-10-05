@@ -1,0 +1,7 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 83 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 49.1 | 347 | 294.9 | 38 | - | - | - | - | 26px/500/normal/38px/rgb(29, 28, 26) | Make the problem smaller
+div | 41.5 | 433 | 310 | 72 | - | - | - | - | 21px/400/normal/36px/rgb(85, 83, 78) | The mind likes to turn quitting into an enormous promise.

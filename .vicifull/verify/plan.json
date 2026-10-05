@@ -1,0 +1,96 @@
+{
+  "group": "plan",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All five frames (#27–#31) were reached in the real onboarding flow (`node .vicifull/funnel-cap.mjs \"/welcome\" … --script=.vicifull/drives/tail-walk.js --do=\"window.__T='<step id>'\"`), captured, signature-diffed against their own design frames, and whole-image pixel-diffed. The report's headline claim is true as far as it goes: every signature is clean apart from the D010/D015/D019 equivalences — 0 missing rows, 0 geometry/type/text mismatches, and the copy, positions, type metrics, glyph paths, hairlines, pager dots, discs, shadows and both washes match the canvas exactly (frame 27's title and caption regions, and 28/29/30's title and note regions, diff at ZERO pixels).\n\nWhat the report calls a recorded equivalence is not one. Its judgement call #1 — drawing each `filter: blur()`ed SOLID as a box-sized radial falloff — is exactly the approach `DECISIONS.md` D082 was written to overturn, and it is visible. D010 covers a blurred radial *gradient* (a shape with no edge); D082 covers a blurred *solid* and states the two things this code gets wrong: the peak is not the stated alpha (a shape thinner than its blur never reaches it), and the falloff carries on 2σ outside the box. Eight layers across `28`, `29` and `30` are affected. Measured inside the 240×200 art box at 2× device scale, 25–31 % of the shadow band's pixels are out by more than 6/255, peaking at 21–29/255; whole-frame diffs at 12/255 are 4,169 px (`28`), 5,668 px (`29`) and 3,937 px (`30`), essentially ALL of it in rows 356–388 where those layers live. `27` and `31`, which have no blurred solids, diff at 771 px and 620 px — antialiasing only. Side-by-side crops show it plainly: the canvas draws a broad, flat, soft band under the bed and a warm halo spilling out around the nightstand and the door; the app draws a small ellipse that is slightly too dark at its centre and has fallen to nothing by the box's own edge.\n\nSecond genuine defect, in a state the report did not exercise: `CHIP_LABEL` (D053) leaves \"When I’m bored\" at full length, and at 13.5/600 it is wider than the frame's 100pt `white-space: nowrap` column, so the app WRAPS it to two lines (label box 100×31 against the canvas's 16 tall) and paints both. `numberOfLines={1}` does not prevent this on react-native-web — it clamps visually but the box is still two lines tall. Driven and captured: `.vicifull/shots/v-plan-a-chips2.png`. The canonical three chips and the other five options all fit (82 / 77.4 / 84.8 / 94.7 / 90.3 / 87.8 / 58.2 / 73.9), so \"When I’m bored\" is the single entry the table got wrong by its own stated rule.\n\nAlso: `.vicifull/recipes/<group>.json` — a named deliverable of the run — did not exist for this group. I wrote `/Users/admin/Documents/tideline/.vicifull/recipes/plan.json` with the seven recipes I used, including the trap that dropping \"When I’m home alone\" from the walk kills it on `18 · Loneliness` (D077 branching).\n\nVerified clean and NOT defects: the flow order 26→27→28→29→30→31→32 agrees with `.vicifull/FLOW.txt`; the three `27` glyphs are byte-identical to `FUNNEL_GLYPHS`' own `13 · When` paths; the moon's `opacity=\"0.9\"` is real in the frame (body.mjs drops it) and the app carries it; every art-box layer is in the canvas's own paint order on all three scenes; `border-radius: 10px 10px 4px 4px` maps TL/TR/BR/BL correctly; every `<Svg>` with an absolute sibling carries `position:'absolute'` (the SVG trap is handled, and the art is visible in every PNG); the rotated phone uses a `transform` string, not `rotation`; `TailCopy`'s omitted `wrap` correctly falls through to AppText's `pretty` where the frame says `pretty`; no withdrawn board is drawn anywhere in `src/`; `Choose another` works and does not crash; and no console errors appeared on any capture. The 42×42 fast-refresh badge the report warns about does NOT appear in headless `funnel-cap` captures.",
+  "findings": [
+    {
+      "frame": "28 · Start Here",
+      "element": "bed cast shadow — `left:10 top:160 width:146 height:14 border-radius:50% background:rgba(0,0,0,0.1) filter:blur(5px)` (abs x86–232, y356–370)",
+      "property": "blur falloff — profile, extent and peak alpha",
+      "design": "a broad flat band: 229 at centre (159,363), still 236 at (100,363) 59pt off centre, 237 at the box's top edge (159,356), 239 at the bottom edge (159,370), and 248 six points BELOW the box (159,376) — i.e. the shape is soft-edged only at its ends and its falloff continues outside the div",
+      "app": "a small ellipse: 227 at centre (2/255 too dark), 246 at (100,363), 249 at the top edge, 251 at the bottom edge, 251 six points below — the alpha has reached zero at the div's own boundary",
+      "confidence": "certain",
+      "note": "`SoftBlob` in src/components/onboarding/plan.tsx draws `<Ellipse rx={w/2} ry={h/2}>` with a radial from the FULL stated alpha at centre to 0 at the box edge. DECISIONS D082 states the rule for a blurred solid: peak = α·erf(halfHeight/(σ√2)) (here 0.1·erf(7/5√2)=0.084) and the ellipse is drawn 2σ (10pt) past the stated box, because the blur IS the shape. The report files this under D010/D015 as a recorded equivalence; D010 covers blurred radial GRADIENTS, which have no edge to soften, and D082 was written specifically to narrow it. `SosSceneLayer` (src/components/urge/index.tsx:1336) has the same bug, so the precedent the report cites is itself pre-D082."
+    },
+    {
+      "frame": "28 · Start Here",
+      "element": "nightstand warm glow — `left:166 top:146 width:76 height:26 border-radius:50% background:rgba(226,186,120,0.22) filter:blur(5px)` (abs x242–318, y342–368)",
+      "property": "warm halo reach at the box edge",
+      "design": "247,242,236 at (242,355) — a visible warm spill to the left of the nightstand, R−B = 11",
+      "app": "250,249,248 at the same point — neutral paper, no warm halo at all (R−B = 2)",
+      "confidence": "certain",
+      "note": "Same cause as the bed shadow. In the crops the canvas shows the nightstand base sitting in a warm pool that reaches past it on both sides; the app's is confined inside the 76×26 box and dead at its rim."
+    },
+    {
+      "frame": "29 · Start Here Step 1",
+      "element": "nightstand warm glow — `left:68 top:150 width:104 height:28 rgba(226,186,120,0.22) filter:blur(5px)` (abs x144–248, y346–374)",
+      "property": "warm halo reach",
+      "design": "247,239,227 at (150,360) and 245,239,230 at (244,360) — warm on both sides of the nightstand (R−B = 20 and 15)",
+      "app": "249,247,244 and 250,249,247 — essentially neutral (R−B = 5 and 3), a Δ of 17/255 on the blue channel at both samples",
+      "confidence": "certain",
+      "note": "The whole-frame diff for this board is 5,668 px over 12/255 and the fourteen worst rows are 361–376 — exactly this layer plus the shadow below it. Everything else on the board (pager, art solids, title, note, pill) diffs at 0–140 px."
+    },
+    {
+      "frame": "29 · Start Here Step 1",
+      "element": "nightstand cast shadow — `left:78 top:168 width:84 height:12 rgba(0,0,0,0.1) filter:blur(5px)` (abs x154–238, y364–376)",
+      "property": "blur falloff extent",
+      "design": "230,221,207 at (196,366) and 247,246,244 at (196,382), six points below the div — the shadow still has alpha outside its own box",
+      "app": "238,232,223 and 250,249,248 — too light inside, nothing at all outside",
+      "confidence": "certain"
+    },
+    {
+      "frame": "30 · Start Here Step 2",
+      "element": "bed cast shadow — `left:12 top:174 width:116 height:14 rgba(0,0,0,0.10) filter:blur(5px)` (abs x88–204, y370–384)",
+      "property": "blur falloff — profile and extent",
+      "design": "228 at centre (146,377), 235 at (100,377), 238 at the top edge (146,370), 242 two points below the box (146,386), 247 six points above (146,364)",
+      "app": "226 at centre, 246 at (100,377) [Δ11], 246 at the top edge [Δ8], 251 below and 251 above [Δ9] — the band has no reach",
+      "confidence": "certain",
+      "note": "At threshold 6/255 this board's 240×56 shadow band differs on 16,883 of ~53,760 device pixels (31 %)."
+    },
+    {
+      "frame": "30 · Start Here Step 2",
+      "element": "door warm glow — `left:150 top:150 width:70 height:26 rgba(226,186,120,0.22) filter:blur(5px)` (abs x226–296, y346–372); and door shadow `left:160 top:180 width:66 height:12 rgba(0,0,0,0.08) filter:blur(4px)`",
+      "property": "warm spill left of the door frame / shadow reach",
+      "design": "247,239,226 at (232,359) — a distinct warm patch outside the door's left edge, clearly visible in the crop; 240,239,238 at (240,382)",
+      "app": "250,247,243 at (232,359) — the spill is all but gone; 246,245,244 at (240,382)",
+      "confidence": "certain"
+    },
+    {
+      "frame": "27 · Where We’d Start",
+      "element": "signal chip label, third slot — the 100pt column, `font-size:13.5 font-weight:600 text-align:center white-space:nowrap`",
+      "property": "line count / label box height (state: `11 · When` answered 'When I’m bored')",
+      "design": "one line, 16 tall, `white-space: nowrap` — a label wider than the 100pt column overflows it horizontally and stays centred",
+      "app": "two lines, 100 × 31 — 'When I’m bored' wraps to 'When I’m' / 'bored' and BOTH lines are painted (see .vicifull/shots/v-plan-a-chips2.png)",
+      "confidence": "certain",
+      "note": "`numberOfLines={1}` on react-native-web is `-webkit-line-clamp`, which clamps the paint but still lays the run out over two lines, so the box grows to 31 and the second line renders. D053's own stated rule is 'keep the current label where it fits the column and shorten where it does not'; `CHIP_LABEL['When I’m bored']` is the one entry that does not fit. Every other option measures 58.2–94.7 and is fine. Reachable by any user who picks 'When I’m bored' among his first three risky times. Two fixes: shorten the entry (as slots 4 and 5 already are), or drop numberOfLines and give the run RN's `flexShrink:0` + web `whiteSpace:'nowrap'` so it overflows the way the canvas does."
+    },
+    {
+      "frame": "28 · Start Here",
+      "element": "`Choose another` — the frame's `left:0 right:0 top:764` run, 393 × 18",
+      "property": "tap-target box height in the signature",
+      "design": "18 (the run's own line box; the frame draws no larger control)",
+      "app": "a `button` row of 393 × 44 at top 764 — `PressScale`'s app-wide `minHeight: 44`",
+      "confidence": "likely",
+      "note": "The report discloses this. It is not visible — the painted run is at 764 × 18 on both sides, confirmed row-for-row — but it is avoidable and inconsistent within the group's own code: `TailCta` in tail.tsx explicitly passes `minHeight: 0` to kill it and this `PressScale` call does not. One line."
+    },
+    {
+      "frame": "28 · Start Here",
+      "element": "the subtitle at `top:516` under the heading at `top:432`, in the D054 `Choose another` state",
+      "property": "copy coherence between the heading and the sentence beneath it",
+      "design": "the canvas draws one board, where 'Keep your phone out of bed tonight.' is supported by 'Late night, bed and scrolling came up together in your answers.'",
+      "app": "tapping `Choose another` swaps the heading to 'Keep one door open tonight.' but leaves the sentence as 'Late night, bed and scrolling came up together in your answers.' — captured verbatim from the running app",
+      "confidence": "likely",
+      "note": "Not a canvas mismatch: the swapped boards are the group's own invention under D054 and the canvas designs no frame for them. But the sentence is generated from `whenShort/whereShort/starterFor` and is never re-read against the change that was actually proposed, so the board argues for a door using evidence about a phone. Flagged as a defect in the invented content rather than a parity miss. `31 · Your Plan` does follow the swap (row 4 becomes 'A door left open')."
+    },
+    {
+      "frame": "(group-level deliverable)",
+      "element": "`.vicifull/recipes/plan.json`",
+      "property": "existence",
+      "design": "the shared brief requires every group to record how each screen was reached, including the paths that failed — 'an accurate recipe … is part of the deliverable'",
+      "app": "the file did not exist; eleven other groups had written theirs",
+      "confidence": "certain",
+      "note": "I wrote /Users/admin/Documents/tideline/.vicifull/recipes/plan.json with the seven recipes this pass used. The non-obvious part, which cost me one dead run: `tail-walk.js` cannot simply have 'When I’m home alone' swapped out of its `11 · When` answer, because `18 · Loneliness` and `19 · Time alone` are conditional on that signal (D077) and the walk then dies on 'no control for \"Sometimes\"'. The 18/19 rows must be stripped in the same edit."
+    }
+  ]
+}

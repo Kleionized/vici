@@ -1,0 +1,293 @@
+[
+  {
+    "frame": "Lesson Scroll 1",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-01.html",
+    "seed": false,
+    "wait": 1600,
+    "note": "The reader opens on page 1 at its own URL — /lesson/day/N reads LESSON_READER[N] and nothing else, no account state. `designBundle`/`designFile` are load-bearing: D085 rules `Lesson 1 Surviving the Night` the current authoring of lesson one and the app is built from it, so auditing these 26 against Email-Login's pre-restyle `Lesson Scroll N` copies would report 26 misses for a difference the decisions log already settled. Measured this pass: 389 px over a per-channel 5 of 1,254,456 (the status bar excluded, nothing else), all of it the window's two vertical edges and its top rule — D083."
+  },
+  {
+    "frame": "Lesson Scroll 2",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-02.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p2.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' once, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 7%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 3",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-03.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p3.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 2 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 11%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 4",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-04.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p4.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 3 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 15%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 5",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-05.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p5.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 4 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 19%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 6",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-06.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p6.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 5 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 23%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 7",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-07.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p7.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 6 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 26%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 8",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-08.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p8.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 7 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 30%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 9",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-09.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p9.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 8 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 34%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight. The audit reports this frame DIFF on one MISSING row, `div | 172.5 | 407 | 48 | 24` with every paint column `-`: the canvas's `overflow:hidden` clipper that shows the sun's top half, which the app expresses as an SVG `<ClipPath>` and so has no DOM box. Nothing is painted either side of it. Whole-frame residual 484 px past a per-channel 5, and every one of them is on rows 431–432.5 — the 1.5pt horizon rule's edge, D083."
+  },
+  {
+    "frame": "Lesson Scroll 10",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-10.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p10.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 9 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 38%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 11",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-11.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p11.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 10 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 42%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 12",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-12.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p12.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 11 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 46%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 13",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-13.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p13.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 12 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 50%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 14",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-14.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p14.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 13 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 53%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 15",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-15.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p15.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 14 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 57%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 16",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-16.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p16-selected.js",
+    "wait": 1200,
+    "note": "L1-Frame-16 draws the pick board with row 1 ('In bed with my phone') ALREADY CHOSEN, and the app opens it with nothing chosen — so the recipe has to drive to page 16 and then tap the row, or the capture is of a different state (D044). The script settles 900 ms, taps 'Next' fifteen times confirming each turn by the progress hairline, then taps the row; it must land on 61%. Chosen: signature 0 differing / 0 missing and 108 px past a per-channel 5 of 1,254,456, all of it the radio dot's rim, which the canvas feathers to r 5.5 where the app draws a hard r 5. Resting (the plain p16.js driver): 20,938 px — the row's own selected state, not a defect."
+  },
+  {
+    "frame": "Lesson Scroll 17",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-17.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p17.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 16 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 65%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 18",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-18.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p18.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 17 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 69%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight. This and #23 are the only two pages in all 1,858 that draw the night room. Whole-frame residual 383 px past a per-channel 5, max 52; the door's floor light pool went from 412 to 45 differing pixels inside its own 84 x 12 box when its `clip-path` trapezoid was restored."
+  },
+  {
+    "frame": "Lesson Scroll 19",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-19.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p19.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 18 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 73%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 20",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-20.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p20.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 19 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 76%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 21",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-21.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p21.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 20 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 80%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 22",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-22.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p22.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 21 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 84%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 23",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-23.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p23.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 22 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 88%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight. The audit reports this frame DIFF on two MISSING rows, `div | 26.5 | 378 | 340 | 170` and `div | 52 | 378 | 289 | 144.5`, both with every paint column `-`: the canvas's two transparent layout wrappers around the 340 x 200 room, which the app expresses as one `transform: scale(0.85)` View. The 25 differing rows are 1 radius-notation (D015) and 24 paint-absent-geometry-exact (a CSS box drawn as an SVG shape, D010/D022) — net 0. Whole-frame residual 3,364 px past a per-channel 5, max 193, and it is one-device-pixel edging throughout: the 0.85 scale puts every edge in the room on a half device pixel, and Chrome snaps the canvas's DOM boxes where it does not snap the app's SVG paths (D083)."
+  },
+  {
+    "frame": "Lesson Scroll 24",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-24.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p24.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 23 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 92%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 25",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-25.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p25.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 24 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 96%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 26",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-26.html",
+    "seed": false,
+    "script": ".vicifull/lsdrive/p26.js",
+    "wait": 1200,
+    "note": "Drive from page 1: settle 900 ms, then tap 'Next' 25 times, each turn confirmed by the progress hairline's own width and retried up to four times. The script returns the percent it landed on; for this page it must read 100%. Reject any capture that does not. A tap is swallowed while the page's FadeIn runs and Metro's hot reload can remount the reader mid-run, so a driver that just taps N times lands wrong about one run in eight."
+  },
+  {
+    "frame": "Lesson Scroll 16 — the resting state",
+    "route": "/lesson/day/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-16.html",
+    "script": ".vicifull/lsdrive/p16.js",
+    "wait": 1200,
+    "note": "The same board with nothing chosen, which is how the app opens it and what a user sees first. It is 20,938 px from the frame because the frame draws the chosen state; that gap is D044, not a miss. Kept as a recipe so the difference stays measured rather than asserted."
+  },
+  {
+    "frame": "Lesson Scroll 1 — reached the designed way",
+    "route": "/lesson-card/1",
+    "designBundle": "Lesson-1-Surviving-the-Night",
+    "designFile": "L1-Frame-01.html",
+    "do": "await __sleep(1500); await tap('Start lesson'); await __sleep(900)",
+    "wait": 1200,
+    "note": "F20: a pushed screen can lose its SVG paint to the copy expo-router leaves mounted underneath at display:none, and a signature diff cannot see it. coverL1.tsx used to hard-code cs-win / cs-glass2 / cs-sh1b / cs-lampb / cs-sh2b; it now derives every id from useId(), so a second mount cannot steal the paint. Captured both ways and the two PNGs are identical to 0 px at threshold 6."
+  },
+  {
+    "frame": "any lesson 2–84 reader page",
+    "route": "/lesson/day/N",
+    "script": ".vicifull/lsdrive/pNN.js",
+    "note": "The same driver works for every lesson; the page count differs, so read the hairline back rather than counting taps. Used here on lesson 5 page 17 (a pick board) and page 21 (a task-options board) to prove the generator fixes beyond lesson one. There is no Email-Login frame for these, so they are not audit rows — recorded so the next pass does not rediscover the path."
+  },
+  {
+    "frame": "capture caveat — the Expo dev fab",
+    "unreachable": "not a screen. Within roughly a minute of a Metro hot reload the web build paints Expo's dev-tools bubble — a 40 x 40 near-black rounded square at frame (18, 793) — over the bottom-left of every capture. It costs about 6,870 px at a per-channel threshold of 5 with max delta 217, and it is not app UI. Any frame whose diff is ~6.9k px concentrated in tiles (0,768) and (0,832) is this, not a defect: wait for Metro to settle and re-capture. Hit p8 and p12 of this group's own sweep."
+  },
+  {
+    "frame": "measurement tooling written for this group",
+    "unreachable": "not a screen. .vicifull/lsdrive/pxdiff.mjs <design> <app> [thr] [--worst] [--out] — whole-frame pixel comparison; it excludes ONLY the top 54 pt (the status-bar chrome the app never builds, D009) and nothing else: no flatness test and no gradient skip, so it can see a wash (F35). .vicifull/fls/rectdiff.mjs <design> <app> <x> <y> <w> <h> [thr] measures one stated rectangle in frame points with no exclusions at all, which is how each finding here was measured where it lives. .vicifull/fls/rectwhere.mjs prints the differing columns and rows of that rectangle, which is how a one-device-pixel edge (D083) is told from a wrong area. .vicifull/fls/col.mjs walks a row or column of both images side by side. .vicifull/fls/sweep.sh captures and diffs all 26 pages in one run."
+  }
+]

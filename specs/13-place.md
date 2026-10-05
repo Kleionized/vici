@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q7`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q7`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q7.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q7.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,7 +32,7 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · Where are you usually when it happens?
+    · Where are you usually watching?
   <div> position:absolute  left:0  right:0  top:226px  color:rgba(244,243,240,0.55)  font-size:13px  font-weight:500  text-align:center
     · Select all that apply
   <div> position:absolute  left:24px  right:24px  top:269px  display:flex  gap:10px
@@ -35,11 +43,52 @@ element on the frame is here, in paint order, indented by depth.
       <svg> viewBox="0 0 24 24"  width="22"  height="22"
         <path> d="M3 7v10M3 14h18v3M3 11h18v3"  fill="none"  stroke="#131313"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
         <rect> width="6"  height="3"  x="5"  y="8.5"  rx="1.5"  fill="#131313"
-      <span> color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
+      <span> max-width:86px  color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
         · In bed
     <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
       <svg> viewBox="0 0 24 24"  width="22"  height="22"
         <path> d="M12 3.5c3.5 4.2 6 7.2 6 10.2a6 6 0 1 1-12 0c0-3 2.5-6 6-10.2Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+      <span> max-width:86px  color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · In the
+        <br> 
+        · bathroom
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <rect> width="17"  height="11.5"  x="3.5"  y="4.5"  rx="2"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"
+        <path> d="M9 20h6M12 16.5V20"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> max-width:86px  color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · At my desk
+  <div> position:absolute  left:24px  right:24px  top:371px  display:flex  gap:10px
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"
+        <path> d="M3.5 13a2 2 0 0 1 4 0v1h9v-1a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+        <path> d="M6 18v2M18 18v2"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> max-width:86px  color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · In the
+        <br> 
+        · living room
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+      <div> position:absolute  right:8px  top:8px  width:15px  height:15px  display:flex  align-items:center  justify-content:center  background:#131313  border-radius:50%
+        <svg> viewBox="0 0 16 12"  width="8"  height="6"
+          <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.8"  stroke-linecap="round"  stroke-linejoin="round"
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <rect> width="10"  height="18"  x="7"  y="3"  rx="2.5"  fill="none"  stroke="#131313"  stroke-width="2.5"
+        <path> d="M10.5 18h3"  stroke="#131313"  stroke-width="2.5"  stroke-linecap="round"
+      <span> max-width:86px  color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Somewhere else at home
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M12 21s-6.5-5.3-6.5-10a6.5 6.5 0 0 1 13 0c0 4.7-6.5 10-6.5 10Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+        <circle> cx="12"  cy="10.6"  r="2.2"  fill="#F4F3F0"
+      <span> max-width:86px  color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Outside home
+  <div> position:absolute  left:24px  right:24px  top:744px  height:56px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:28px  cursor:pointer
+    <span> color:#131313  font-size:16.5px  font-weight:600
+      · Continue
+```
+
+Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
       <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
         · Bathroom
     <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)

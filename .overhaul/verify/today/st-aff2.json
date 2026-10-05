@@ -1,0 +1,4 @@
+[
+{"name":"g1","wait":900,"js":"return 1"},
+{"name":"g3","wait":900,"js":"await tap('Write my own prompt'); await __sleep(800); return 1"}
+]

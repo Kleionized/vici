@@ -1,0 +1,74 @@
+--- .vicifull/pretty/prev/V3-Q5.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q5.html	2026-09-05 00:22:35
+@@ -152,7 +152,7 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · When are you most likely to watch?
++    · When do you usually end up watching?
+   </div>
+   <div style="
+     | position:absolute;
+@@ -248,7 +248,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Early morning
++        · In the morning
+       </span>
+     </div>
+     <div style="
+@@ -279,7 +279,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Bored in the day
++        · When I’m bored
+       </span>
+     </div>
+   </div>
+@@ -334,7 +334,7 @@
+         | color:#131313;
+         | text-align:center;
+       ">
+-        · After stress
++        · When I’m stressed
+       </span>
+     </div>
+     <div style="
+@@ -365,7 +365,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Can’t sleep
++        · When I can’t sleep
+       </span>
+     </div>
+     <div style="
+@@ -396,7 +396,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Weekends
++        · On weekends
+       </span>
+     </div>
+   </div>
+@@ -467,7 +467,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Home alone
++        · When I’m home alone
+       </span>
+     </div>
+     <div style="
+@@ -515,7 +515,7 @@
+         | color:#131313;
+         | text-align:center;
+       ">
+-        · Phone in bed
++        · While scrolling
+       </span>
+     </div>
+   </div>

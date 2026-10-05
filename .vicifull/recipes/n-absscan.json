@@ -1,0 +1,39 @@
+[
+  {
+    "frame": "Locked Weeks",
+    "route": "/locked",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "NOT A BUNDLE FRAME — no frame in this drop draws it (the file's `canvas 106` is an older numbering; 106 in FLOW.txt is now `29C · SOS — Command II`), so there is nothing to diff against and the label is deliberately not one in map.json. Reached in-app from /all -> `Locked weeks`. Any signed-in seed will do; settings-seed.js is the cheapest. Captured for the absolute-overflow sweep: the `Weeks` title measures 24 | 122 | 81.3 | 32."
+  },
+  {
+    "frame": "Past Pledges",
+    "route": "/journal",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "NOT A BUNDLE FRAME — journal.tsx says so itself; built in the canvas's list idiom. Reached in-app from Today's `Past pledges ›`. Captured for the absolute-overflow sweep: the title measures 16 | 106 | 155.4 | 32."
+  },
+  {
+    "frame": "All Screens",
+    "route": "/all",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "NOT A BUNDLE FRAME — the drawer every screen that normally arrives on its own terms is reachable from. It is a tab, so the tab bar draws and its own `All` label lands a second `All` row in the signature at 321.9,817. Captured for the absolute-overflow sweep: the title measures 16 | 70 | 31 | 32."
+  },
+  {
+    "frame": "SOS Settings Sheet",
+    "route": "/urge-hub",
+    "initseed": ".vicifull/hub-seed.js",
+    "wait": 1600,
+    "settle": 900,
+    "do": "await __sleep(900); await tap('Breathe'); await waitFor('Breathe with me.'); await __sleep(600); await tap('SOS settings'); await __sleep(700)",
+    "note": "NOT A BUNDLE FRAME — the in-code badge `141 · SOS settings` is the PREVIOUS drop's numbering; 141 in FLOW.txt is now `96L · SOS — Feeling · Ashamed`, and no frame in Latest Vici FULL or the previous drop draws a sound/orb-light/background sheet. Captured for the absolute-overflow sweep: SheetLabel measures Sound 39.0, Orb light 53.5, Background 73.4 at left 24 of 369 available; the thumb labels measure Night sea 47.7, Starfield 43.6, Dawn 27.8 at left 8 of 100.3. All content-width, all closed literal sets."
+  },
+  {
+    "frame": "Journey Chapters",
+    "route": "/journey",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "NOT A BUNDLE FRAME — `grep -rl \"The campaign|The Highlands|Five grounds\" .vicifull/final .vicifull/prev` finds nothing, so JourneyScreens.tsx draws no frame in EITHER drop, and its head comment's `176–179 · one chapter` is stale (176–179 in FLOW.txt are the four Lapse frames). Reachable only from the /all drawer. Captured for the absolute-overflow sweep: the four chapter titles measure 149.8 / 160.0 / 174.9 / 129.7 at left 24 of 369 available. CampaignGrounds (JourneyScreens.tsx:732) is exported but routed from nowhere, so its two unbounded runs cannot be captured at all."
+  }
+]

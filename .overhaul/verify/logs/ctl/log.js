@@ -1,0 +1,16 @@
+const o = {};
+const tabs = () => [...document.querySelectorAll('[role="tab"]')].map((t) => (t.getAttribute('aria-selected') === 'true' ? '*' : '') + t.textContent.trim()).join('|');
+await waitFor('Your log');
+o.t0 = tabs();
+await tap('Check-ins'); await __sleep(400); o.t1 = tabs(); o.c = __txt().includes('Days in a row');
+await tap('Reports'); await __sleep(600); o.t2 = tabs(); o.r = __txt().includes('this week');
+await tap('Jul 7–13'); await __sleep(1800); o.rowUrl = location.pathname + location.search; o.rowPill = __txt().includes('Jul 7–13');
+history.back(); await __sleep(1800); o.backTab = tabs();
+await waitFor('Your log');
+if (!__txt().includes('Open this week')) await tap('Reports');
+await __sleep(500);
+await tap('Open this week’s report'); await __sleep(1800); o.ctaUrl = location.pathname + location.search;
+history.back(); await __sleep(1800);
+await waitFor('Your log');
+await tap('Back'); await __sleep(1800); o.backUrl = location.pathname;
+return o;

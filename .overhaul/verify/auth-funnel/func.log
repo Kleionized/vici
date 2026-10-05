@@ -1,0 +1,99 @@
+## boot
+PASS  boot / signed out: splash wordmark then door  — early="VICI" url=/sign-in
+PASS  boot / ends on /sign-in  — /sign-in
+PASS  /splash holds then replaces into /sign-in  — /splash "VICI" → /sign-in
+## doors
+PASS  Login direct: no back chevron
+PASS  Login Apple → refusal line
+PASS  Login Google → refusal line
+PASS  Login email pill → /sign-up?step=form  — /sign-up?step=form
+PASS  form Back → /sign-in  — /sign-in
+PASS  Login footer → /welcome-back  — /welcome-back
+PASS  Welcome Back (pushed) back chevron count  — 0
+PASS  Welcome Back footer → Login  — /sign-in
+PASS  Welcome Back direct → footer → /sign-in (replace)  — /sign-in
+## wb
+PASS  WB Apple → refusal
+PASS  WB email pill → address step
+PASS  address: input focused
+PASS  address: empty → ask
+PASS  address: ✕ appears with text
+PASS  address: ✕ clears
+PASS  address Back → door
+PASS  address: Enter key → password step  — Welcome back. Email Password Sign in
+PASS  password step: email carried  — sam@example.com
+PASS  password: empty → ask
+PASS  password: wrong → refusal
+PASS  password Back → address step  — Sign in to keep building toward the life you want Let's Go
+PASS  password: Enter with right password → signed in, /welcome  — /welcome
+## signup
+PASS  gate: title
+PASS  gate: back chevron present
+PASS  gate: Google → refusal
+PASS  gate → form
+PASS  form Back → gate
+PASS  gate Back (no history) → /sign-in  — /sign-in
+PASS  form: updates checkbox toggles  — true→false
+PASS  form: empty name ask
+PASS  form: empty email ask
+PASS  form: password toggle adds field + label flips  — inputs=3
+PASS  form: short password ask
+PASS  form: toggle back removes field
+PASS  form: create → /welcome (Name)  — /welcome
+## nameback
+PASS  Name: back chevron present
+PASS  Name Back → /sign-in  — /sign-in
+PASS  door after Name back: chevron count  — 0
+## funnel
+PASS  Name: focused on arrival
+PASS  Name: Enter key → Age
+PASS  Age: opens on 24  — 24
+PASS  Age: tap 23 → 23  — 23
+PASS  Age: tap +2 neighbour 25 → 25  — 25
+PASS  Age: walked to 15  — 15
+PASS  Age: drag down 80pt → 13 (from 15)  — 13
+PASS  Age: clamps at 13  — 13
+PASS  Age 13 → Continue → under-18 gate
+PASS  gate: only Back as control  — Back
+PASS  gate Back → Age, value kept  — 13
+PASS  Age 19 → Gender (no gate)
+PASS  Gender auto-advances to Start, reads name  — Alex, let’s figure out what usually leads you back to porn. It’ll take about two
+PASS  Start Back → Gender, Male shown chosen  — true
+PASS  Start → Q1
+PASS  → Q3
+PASS  Q3 No skips Q3b → First Principle
+PASS  FP Back skips Q3b → Q3
+PASS  Q3 Yes → Q3b
+PASS  FP Continue → Q5
+PASS  Q5: Continue disabled with none  — true
+PASS  Q5: disabled Continue does nothing
+PASS  Q5: pick enables Continue  — null
+PASS  Q5: second tap unpicks  — false true
+PASS  → Q6
+PASS  Q6: Nothing in particular clears Bored
+PASS  Q6: Lonely clears Nothing in particular
+PASS  → What starts it
+PASS  WSI: Nothing obvious exclusive
+PASS  WSI: pick clears Nothing obvious
+PASS  → Transition
+PASS  → What it affects
+PASS  WIA: zero allowed after Not really  — null
+PASS  WIA: fourth pick refused  — true,true,true,false
+PASS  → Q10 (lonely signal)
+PASS  → Q13
+PASS  → Q17
+PASS  Q17: Nothing yet exclusive
+PASS  GC: watch-less reading  — You want porn to take up a lot less of your life. That’s what we’ll work toward. Continue
+PASS  GC: no card for Do it less
+PASS  Back twice → Q16
+PASS  Back ×3 → Q15  — What are you aiming for with porn? Stop completely Watch muc
+PASS  GC: not-sure reading + card  — You don’t need to decide forever today. We’ll start with getting the choice back. Masturbation isn’t part of what you’re trying to stop. Porn is. Continue
+PASS  GC Continue → Putting your plan together  — Putting your plan together… Finding where you usually struggle Looking at what t
+PASS  no page errors
+## lifemap
+FAIL  lifemap threw  — page.goto: Timeout 120000ms exceeded.
+Call log:
+  - navigating to "http://localhost:8096/lifemap", waiting until "domcontentloaded"
+
+
+86 pass, 1 fail

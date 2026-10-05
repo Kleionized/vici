@@ -1,0 +1,10 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 151.6 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 46.5 | 293 | 300 | 180 | - | - | - | - | - | -
+div | 140.1 | 293 | 112.9 | 32 | - | - | - | - | 22px/500/normal/32px/rgb(139, 136, 130) | Not forever.
+div | 50.9 | 351 | 291.2 | 32 | - | - | - | - | 22px/500/normal/32px/rgb(165, 162, 155) | Not for the next three months.
+div | 46.5 | 409 | 300 | 64 | - | - | - | - | 22px/500/normal/32px/rgb(187, 184, 177) | Not even for the rest of the week.
+div | 124.8 | 521 | 143.3 | 38 | - | - | - | - | 26px/500/normal/38px/rgb(29, 28, 26) | Just tonight.

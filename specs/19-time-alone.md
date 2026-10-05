@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q13`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q13`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q13.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q13.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,20 +32,75 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · How often do you have long stretches of time alone?
-  <div> position:absolute  left:24px  right:24px  top:310px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
-    <span> color:#131313  font-size:17px  font-weight:500  line-height:20px
+    · How often are you on your own for long stretches?
+  <div> position:absolute  left:0  right:0  top:236px  height:180px
+    <div> position:absolute  left:50%  top:50%  width:240px  height:190px  margin:-95px 0 0 -120px  background:radial-gradient(closest-side, rgba(226,186,120,0.14), rgba(226,186,120,0) 72%)  border-radius:50%  filter:blur(8px)
+    <div> position:relative  width:100%  height:100%  display:flex  justify-content:center
+      <svg> viewBox="0 0 176 180"  width="176"  height="180"
+        <defs> 
+          <radialgradient> id="q13f"  cx="0.5"  cy="0.42"
+            <stop> offset="0"  stop-color="rgba(255,255,255,0.10)"
+            <stop> offset="1"  stop-color="rgba(255,255,255,0.04)"
+        <circle> cx="88"  cy="88"  r="82"  fill="url(#q13f)"  stroke="rgba(255,255,255,0.14)"  stroke-width="1.5"
+        <line> x1="88.0"  y1="16.0"  x2="88.0"  y2="7.0"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="107.7"  y1="14.6"  x2="109.0"  y2="9.8"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="124.0"  y1="25.6"  x2="128.5"  y2="17.9"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="141.7"  y1="34.3"  x2="145.3"  y2="30.7"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="150.4"  y1="52.0"  x2="158.1"  y2="47.5"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="161.4"  y1="68.3"  x2="166.2"  y2="67.0"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="160.0"  y1="88.0"  x2="169.0"  y2="88.0"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="161.4"  y1="107.7"  x2="166.2"  y2="109.0"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="150.4"  y1="124.0"  x2="158.1"  y2="128.5"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="141.7"  y1="141.7"  x2="145.3"  y2="145.3"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="124.0"  y1="150.4"  x2="128.5"  y2="158.1"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="107.7"  y1="161.4"  x2="109.0"  y2="166.2"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="88.0"  y1="160.0"  x2="88.0"  y2="169.0"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="68.3"  y1="161.4"  x2="67.0"  y2="166.2"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="52.0"  y1="150.4"  x2="47.5"  y2="158.1"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="34.3"  y1="141.7"  x2="30.7"  y2="145.3"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="25.6"  y1="124.0"  x2="17.9"  y2="128.5"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="14.6"  y1="107.7"  x2="9.8"  y2="109.0"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="16.0"  y1="88.0"  x2="7.0"  y2="88.0"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="14.6"  y1="68.3"  x2="9.8"  y2="67.0"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="25.6"  y1="52.0"  x2="17.9"  y2="47.5"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="34.3"  y1="34.3"  x2="30.7"  y2="30.7"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="52.0"  y1="25.6"  x2="47.5"  y2="17.9"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.7"  stroke-linecap="round"
+        <line> x1="68.3"  y1="14.6"  x2="67.0"  y2="9.8"  stroke="rgba(244,243,240,0.15)"  stroke-width="1.2"  stroke-linecap="round"
+        <circle> cx="88"  cy="88"  r="66"  fill="none"  stroke="rgba(255,255,255,0.10)"  stroke-width="7"
+        <circle> cx="88"  cy="88"  r="66"  transform="rotate(-90 88 88)"  fill="none"  stroke="#E2BA78"  stroke-width="7"  stroke-linecap="round"  stroke-dasharray="149.3 414.7"
+        <circle> cx="88"  cy="22"  r="6"  fill="#E2BA78"
+        <g> stroke="#E2BA78"  stroke-width="1.5"  stroke-linecap="round"
+          <line> x1="88"  y1="9"  x2="88"  y2="12.5"
+          <line> x1="77"  y1="14"  x2="79.5"  y2="16.5"
+          <line> x1="99"  y1="14"  x2="96.5"  y2="16.5"
+        <path> d="M148 124a8.5 8.5 0 1 0 5.5 14.8A10.8 10.8 0 1 1 148 124z"  fill="#E2BA78"
+        <circle> cx="88"  cy="88"  r="4.5"  fill="#E2BA78"
+        <circle> cx="88"  cy="88"  r="9"  fill="none"  stroke="rgba(255,255,255,0.2)"  stroke-width="1.3"
+  <div> position:absolute  left:24px  right:24px  top:460px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(19,19,19,0.14)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="77.6 81.7"
+    <span> flex:1  color:#131313  font-size:17px  font-weight:500  line-height:20px
       · Most days
     <svg> viewBox="0 0 16 12"  width="16"  height="12"
       <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
-  <div> position:absolute  left:24px  right:24px  top:384px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+  <div> position:absolute  left:24px  right:24px  top:534px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="53.1 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · A few days a week
-  <div> position:absolute  left:24px  right:24px  top:458px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
-      · Occasionally
-  <div> position:absolute  left:24px  right:24px  top:532px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+  <div> position:absolute  left:24px  right:24px  top:608px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="28.6 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+      · Now and then
+  <div> position:absolute  left:24px  right:24px  top:682px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="9.8 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · Rarely
 ```
 

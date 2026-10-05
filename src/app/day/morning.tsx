@@ -1,51 +1,41 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { View } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 
+import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard, dayNumber } from '@/components/day/board';
+import { dayAction } from '@/components/day/kit';
 import {
-  ActionCard,
-  ChangePledgeSheet,
-  CheckinCover,
-  DayBadge,
-  DayClosing,
-  DayDots,
-  DayShell,
-  DayTitle,
-  LedgerMark,
-  LedgerRow,
-  LedgerRule,
-  MoodDial,
-  MorningSky,
-  NightActionArt,
+  EnergyBars,
+  GhostLink,
+  Grid2,
+  Hero,
+  MonoText,
+  NavBar,
+  NextFab,
+  PledgeCard,
+  PrimaryButton,
+  SHEET_TOP,
   ScaleReading,
-  dayAction,
-} from '@/components/day/kit';
-import { BoardTitle } from '@/components/MoodLogger';
-import { AppText, PressScale } from '@/components/ui';
+  Screen,
+  Sheet,
+  TextField,
+  ToneScale,
+} from '@/components/mono';
 import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
 import { toDateKey, todayKey } from '@/lib/date';
-import { roman } from '@/lib/lessonArt';
+import { countOf, groupDigits, roman } from '@/lib/format';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
-import { fonts, sans } from '@/lib/theme';
 
 /**
- * 21D0–21D6 · the morning check-in.
+ * The morning check-in (today-day §3): a cover, then five steps on the eight
+ * dashes — whether yesterday's task happened, what yesterday came to, how the
+ * day feels, what is in the tank, and the pledge re-signed — and the close.
  *
- * A cover, then six steps on the rail: whether yesterday's task happened, what
- * yesterday came to, how the day feels, what is in the tank, the pledge re-signed,
- * and the ground it all puts you on.
- *
- * `UI Final 1` re-cuts the flow. It puts a cover in front of it, swaps the first
- * two steps so the day opens on a question rather than on the recap, takes the
- * rail from seven dots to six, withdraws the standalone "One action for today"
- * board, and replaces the compose-a-pledge screen with a re-sign-the-standing-one
- * screen behind which a sheet does the composing. Five of the eight frames are
- * new; none is unchanged.
+ * The flow and what it writes are unchanged; every board is the overhaul's
+ * mono kit at the frame's own canvas numbers. The rail's lit count is the
+ * kit's `round(step / 5 × 8)`, which lights 2, 3, 5, 6 and 8 as the frames do.
  */
 
-/** The steps, in the order `UI Final 1` numbers them. */
 const COVER = 0;
 const TASK = 1;
 const LEDGER = 2;
@@ -54,11 +44,10 @@ const ENERGY = 4;
 const PLEDGE = 5;
 const DONE = 6;
 
-const RAIL = 6;
-/** The rail index each screen shows, or `null` where the frame draws none. */
-const RAIL_AT = [null, 0, 1, 2, 3, 4, 5] as const;
+/** Steps the dashes count: TASK … PLEDGE. */
+const RAIL = 5;
 
-/** What the mood dial reads back. The canvas draws the third rung. */
+/** What the mood discs read back. The canvas draws the third rung. */
 const MOOD_READ: [string, string][] = [
   ['Rough', 'Start slow'],
   ['Low', 'Not much in reserve'],
@@ -67,7 +56,7 @@ const MOOD_READ: [string, string][] = [
   ['Great', 'Ready for it'],
 ];
 
-/** What the energy dial reads back. The canvas draws the second rung. */
+/** What the energy meter reads back. The canvas draws the second bar. */
 const ENERGY_READ: [string, string][] = [
   ['Empty', 'Ask little of yourself'],
   ['Low', 'Still warming up'],
@@ -76,46 +65,8 @@ const ENERGY_READ: [string, string][] = [
   ['Full', 'Use it'],
 ];
 
-/** Day one is the day you signed up, not the day after. */
-function dayNumber(createdAt?: number): number {
-  if (!createdAt) return 1;
-  return Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1);
-}
-
-/**
- * `21D1 · Did you complete this task?` answers with two glyph pills rather than
- * the two 74pt discs the previous bundle drew: one row, 54 tall, split down the
- * middle with a 12 gap.
- *
- * Neither `<path>` on the canvas carries a `fill`, so both fall back to black —
- * the cross encloses nothing and paints nothing, but the check's three points
- * enclose a thin triangle that paints `#000000` over the ink pill. `fill="none"`
- * is stated on both here.
- */
-function AnswerRow({ onNo, onYes }: { onNo: () => void; onYes: () => void }) {
-  return (
-    <View style={{ position: 'absolute', left: 16, right: 16, bottom: 84, height: 54, flexDirection: 'row', gap: 12 }}>
-      <PressScale
-        onPress={onNo}
-        accessibilityRole="button"
-        accessibilityLabel="No"
-        style={{ flex: 1, minHeight: 0, borderRadius: 27, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
-        <Svg width={17} height={17} viewBox="0 0 17 17">
-          <Path d="M4 4L13 13M13 4L4 13" fill="none" stroke="#1D1C1A" strokeWidth={2.2} strokeLinecap="round" />
-        </Svg>
-      </PressScale>
-      <PressScale
-        onPress={onYes}
-        accessibilityRole="button"
-        accessibilityLabel="Yes"
-        style={{ flex: 1, minHeight: 0, borderRadius: 27, alignItems: 'center', justifyContent: 'center', backgroundColor: '#131313' }}>
-        <Svg width={19} height={15} viewBox="0 0 19 15">
-          <Path d="M2 8L7 13L17 2" fill="none" stroke="#FFFFFF" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
-      </PressScale>
-    </View>
-  );
-}
+const ANSWERS = ['Yes', 'Not yet'] as const;
+type Answer = (typeof ANSWERS)[number];
 
 export default function Morning() {
   const router = useRouter();
@@ -134,6 +85,7 @@ export default function Morning() {
   const [energy, setEnergy] = useState(1);
   const [signed, setSigned] = useState(false);
   const [sheet, setSheet] = useState(false);
+  const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
 
   const day = dayNumber(user?.createdAt);
@@ -144,7 +96,7 @@ export default function Morning() {
   const dawn = midnight - 86_400_000;
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
 
-  // The action the flow asks after, read off the check-in row so it never
+  // The action the flow asks after, read off yesterday's check-in row so it never
   // invents an action the user was never actually given.
   const yesterdayTask = (checkins ?? []).find((c) => c.date === toDateKey(new Date(dawn)))?.dailyAction ?? dayAction(Math.max(1, day - 1));
 
@@ -156,8 +108,8 @@ export default function Morning() {
     return at != null && yesterday(at);
   });
 
-  // The standing pledge — the same entry `21 · Today — p3` prints, and the words
-  // `21D5` sets in type. A draft written in the sheet stands in until it is signed.
+  // The standing pledge — the latest `Pledge` entry, the words Today p3 prints.
+  // A draft written in the sheet stands in until it is signed.
   const standing = (journal ?? []).find((entry) => entry.tag === 'Pledge');
   const pledgeBody = draft ?? standing?.body ?? 'The mornings are mine again.';
 
@@ -172,7 +124,7 @@ export default function Morning() {
     lapses * SCORE_WEIGHTS.slip;
 
   async function finish() {
-    // The upsert merges now, so only what this flow asked for is written.
+    // The upsert merges, so only what this flow asked for is written.
     await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1 }).catch(() => {});
     // The answer about yesterday's action belongs to yesterday's row.
     if (yesterdayDone !== undefined) {
@@ -184,206 +136,143 @@ export default function Morning() {
     close();
   }
 
-  const label = ['', '', 'Continue', 'Continue', 'Continue', 'Sign for today', 'Done'][step];
-  // The task check carries its own two-pill row instead of the flow's pill.
-  const own = step === TASK;
-  const onCta = () => {
-    // The pledge page draws the signature ghosted under a "Sign for today"
-    // pill: the first press inks it, the second moves on.
-    if (step === PLEDGE && !signed) return setSigned(true);
-    if (step === DONE) return void finish();
-    setStep((s) => s + 1);
-  };
-  const answer = (done: boolean) => {
-    setYesterdayDone(done);
-    setStep(LEDGER);
-  };
+  if (step === COVER) return <CheckinCover part="morning" day={day} onBegin={() => setStep(TASK)} onClose={close} />;
 
-  // The cover is a whole frame — no rail, no Back, no shell pill — so it is
-  // returned rather than drawn inside `DayShell`.
-  if (step === COVER) {
-    return (
-      <>
-        <StatusBar style="dark" />
-        <CheckinCover part="morning" day={day} onBegin={() => setStep(TASK)} />
-      </>
-    );
-  }
+  const back = () => setStep((s) => s - 1);
+  const next = () => setStep((s) => s + 1);
+  const answer: Answer | null = yesterdayDone === undefined ? null : yesterdayDone ? 'Yes' : 'Not yet';
+  const openSheet = () => {
+    // the field opens on the pledge as it stands, never on an abandoned edit
+    setSheetText(pledgeBody);
+    setSheet(true);
+  };
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <DayShell
-        rail={RAIL_AT[step] == null ? undefined : <DayDots step={RAIL_AT[step]!} count={RAIL} />}
-        onBack={step === TASK ? () => setStep(COVER) : () => setStep((s) => s - 1)}
-        cta={own ? undefined : onCta}
-        ctaLabel={label}
-        backdrop={
-          step === FEELING ? (
-            <MorningSky
-              glow={{ top: 53, size: 240, color: '#E2BA78', opacity: 0.3 }}
-              disc={{ top: 150, size: 46 }}
-              clouds={[
-                [76, 118, 48, 8, 0.55],
-                [268, 138, 38, 8, 0.45],
-              ]}
-              hills={[
-                { top: 196, height: 150, rise: 88, color: '#E7E5DB', fade: [0, 0.8] },
-                { top: 218, height: 150, rise: 70, color: '#DFDDD3', fade: [0, 0.8] },
-              ]}
-            />
-          ) : step === ENERGY ? (
-            // the only frame whose glow and hills go warm
-            <MorningSky
-              glow={{ top: -8, size: 300, color: '#E2A25A', opacity: 0.34 }}
-              disc={{ top: 118, size: 48 }}
-              clouds={[
-                [70, 96, 52, 8, 0.6],
-                [262, 120, 40, 8, 0.5],
-              ]}
-              hills={[
-                { top: 180, height: 150, rise: 88, color: '#E9E4D6', fade: [0, 0.8] },
-                { top: 204, height: 150, rise: 70, color: '#E1DCCB', fade: [0, 0.8] },
-              ]}
-            />
-          ) : step === PLEDGE ? (
-            // the only frame with no clouds
-            <MorningSky
-              glow={{ top: -13, size: 260, color: '#E2B068', opacity: 0.32 }}
-              disc={{ top: 92, size: 50 }}
-              hills={[
-                { top: 150, height: 150, rise: 88, color: '#EAE8DF', fade: [0, 0.8] },
-                { top: 172, height: 150, rise: 70, color: '#E2E0D6', fade: [0, 0.8] },
-              ]}
-            />
-          ) : step === DONE ? (
-            <MorningSky
-              glow={{ top: 27, size: 340, color: '#E2BA78', opacity: 0.34 }}
-              disc={{ top: 168, size: 58 }}
-              clouds={[
-                [64, 140, 54, 8, 0.6],
-                [272, 168, 42, 8, 0.5],
-              ]}
-              hills={[
-                { top: 360, height: 150, rise: 88, color: '#E7E5DB', fade: [0, 0.8] },
-                { top: 385, height: 150, rise: 70, color: '#DFDDD3', fade: [0, 0.8] },
-              ]}
-            />
-          ) : undefined
-        }
-        footer={own ? <AnswerRow onNo={() => answer(false)} onYes={() => answer(true)} /> : undefined}>
-        {step === TASK ? (
-          <>
-            <BoardTitle>Did you complete this task?</BoardTitle>
-            {/* the canvas pins the card at `top: 236` rather than centring it in
-                the band between the title and the answer row */}
-            <ActionCard top={182} art={<NightActionArt />} mark="moon" label="Last night" line={yesterdayTask} />
-          </>
-        ) : null}
-
-        {step === LEDGER ? (
-          <>
-            <LedgerMark top={96} />
-            <DayTitle top={324}>Yesterday held.</DayTitle>
-            {/* five rows now — the relapse count came in with `UI Final 1`, and
-                every trailing detail string but the score's is gone */}
-            <View style={{ position: 'absolute', left: 12, right: 12, top: 384, height: 298, borderRadius: 14, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
-              <LedgerRow top={14} mark="gauge" glyph={[18, 11]} title="Recovery score" detail={`+${gained} → ${score.total.toLocaleString()}`} strong />
-              <LedgerRule top={62} />
-              <LedgerRow top={70} mark="check" glyph={[13, 11]} title={signedPledge ? 'Pledge kept' : 'No pledge signed'} />
-              <LedgerRule top={118} />
-              <LedgerRow
-                top={126}
-                mark="wave"
-                glyph={[17, 12]}
-                title={urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`}
-              />
-              <LedgerRule top={174} />
-              <LedgerRow top={182} mark="cross" glyph={[16, 16]} plate="#F3E2C0" title={lapses === 1 ? '1 relapse' : `${lapses} relapses`} />
-              <LedgerRule top={230} />
-              <LedgerRow top={238} mark="play" glyph={[11, 14]} title={finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday'} />
-            </View>
-          </>
-        ) : null}
-
-        {step === FEELING ? (
-          <>
-            <DayTitle top={216}>How are you feeling?</DayTitle>
-            <MoodDial value={mood} onChange={setMood} top={326} />
-            <ScaleReading top={448} label={MOOD_READ[mood][0]} note={MOOD_READ[mood][1]} />
-          </>
-        ) : null}
-
-        {step === ENERGY ? (
-          <>
-            <DayTitle top={216}>Where’s your energy?</DayTitle>
-            {/* the bars are withdrawn: energy is the same five discs the feeling
-                step turns */}
-            <MoodDial value={energy} onChange={setEnergy} top={326} label="Energy" />
-            <ScaleReading top={448} label={ENERGY_READ[energy][0]} note={ENERGY_READ[energy][1]} />
-          </>
-        ) : null}
-
-        {step === PLEDGE ? (
-          <>
-            <DayTitle top={216}>Re-sign your pledge.</DayTitle>
-            <AppText center style={{ position: 'absolute', left: 0, right: 0, top: 276, fontFamily: fonts.quote, fontSize: 46, lineHeight: 46, color: '#C9C6BE' }}>
-              “
-            </AppText>
-            <AppText center style={[sans('500'), { position: 'absolute', left: 44, right: 44, top: 324, fontSize: 21, lineHeight: 31, color: '#1D1C1A' }]}>
-              {pledgeBody}
-            </AppText>
-            <AppText
-              center
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                top: 494,
-                fontFamily: fonts.script,
-                fontSize: 42,
-                lineHeight: 42,
-                color: signed ? '#1D1C1A' : '#C9C6BE',
-                transform: [{ rotate: '-3deg' }],
-              }}>
-              {user?.displayName || 'You'}
-            </AppText>
-            <View style={{ position: 'absolute', left: 64, right: 64, top: 562, height: 1.5, backgroundColor: '#131313' }} />
-            <PressScale
-              onPress={() => setSheet(true)}
-              accessibilityRole="button"
-              hitSlop={{ top: 14, bottom: 14, left: 24, right: 24 }}
-              style={{ position: 'absolute', left: 0, right: 0, top: 662, minHeight: 0 }}>
-              <AppText center style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>
-                Change the pledge
-              </AppText>
-            </PressScale>
-          </>
-        ) : null}
-
-        {step === DONE ? (
-          <>
-            <DayBadge top={438} mark="laurel" />
-            <DayClosing top={526} headline={`Day ${day}, underway.`} note={`Pledge re-signed · Day ${day}`} />
-          </>
-        ) : null}
-      </DayShell>
-
-      {/* Mounted only while open, so the field opens on the standing pledge
-          every time rather than on the last thing that was typed into it. */}
-      {sheet ? (
-        <ChangePledgeSheet
-          pledge={pledgeBody}
-          onKeep={() => setSheet(false)}
-          onSign={(next: string) => {
-            // The sheet writes the words; the page behind it still has to be
-            // signed for today, which is what its own pill is for.
-            setDraft(next.trim() || pledgeBody);
-            setSigned(false);
-            setSheet(false);
-          }}
-        />
+    <Screen>
+      {step === TASK ? (
+        <>
+          {/* The sentence is yesterday's lesson task — up to seven lines (L58). */}
+          <StepStack gap={18} controls={CONTROLS.fab} hero={{ id: 'charger', top: 506 }}>
+            <MonoText v="h1">Did you complete this task?</MonoText>
+            <View style={{ height: 4 }} />
+            <TaskCard label="Yesterday" sentence={yesterdayTask} />
+            <View style={{ height: 4 }} />
+            {/* Nothing is chosen until it is tapped: a default "Yes" would write a
+                completion the user never claimed (CRITIC §5, OQ-M1). */}
+            <Grid2 options={ANSWERS} value={answer} onChange={(a) => setYesterdayDone(a === 'Yes')} />
+          </StepStack>
+          <NextFab onPress={next} disabled={answer == null} />
+        </>
       ) : null}
-    </>
+
+      {step === LEDGER ? (
+        <>
+          <Stack gap={20}>
+            <MonoText v="h1">Yesterday’s record.</MonoText>
+          </Stack>
+          <RecordRows
+            rows={[
+              { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}` },
+              { label: signedPledge ? 'Pledge kept' : 'No pledge signed', done: !!signedPledge },
+              {
+                label: urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
+                done: urges.length > 0,
+              },
+              { label: countOf(lapses, 'slip'), done: lapses === 0 },
+              { label: finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday', done: !!finished },
+            ]}
+          />
+          <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
+          <PrimaryButton label="Continue" onPress={next} />
+        </>
+      ) : null}
+
+      {step === FEELING ? (
+        <>
+          <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
+          <Stack gap={20}>
+            <MonoText v="h1">How are you feeling?</MonoText>
+          </Stack>
+          <ToneScale value={mood} onChange={setMood} labels={MOOD_READ.map((r) => r[0])} />
+          <ScaleReading word={MOOD_READ[mood][0]} line={MOOD_READ[mood][1]} />
+          <PrimaryButton label="Continue" onPress={next} />
+        </>
+      ) : null}
+
+      {step === ENERGY ? (
+        <>
+          <Hero id="battery" top={506} controls={CONTROLS.primary} />
+          <Stack gap={20}>
+            <MonoText v="h1">Where’s your energy?</MonoText>
+          </Stack>
+          <EnergyBars value={energy} onChange={setEnergy} labels={ENERGY_READ.map((r) => r[0])} />
+          <ScaleReading word={ENERGY_READ[energy][0]} line={ENERGY_READ[energy][1]} />
+          <PrimaryButton label="Continue" onPress={next} />
+        </>
+      ) : null}
+
+      {step === PLEDGE ? (
+        <>
+          {/* The pledge is the user's own words, any length. */}
+          <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+            <MonoText v="h1">Re-sign your pledge.</MonoText>
+            <View style={{ height: 6 }} />
+            {/* One step, two frames: the first press inks the line, the second
+                moves on. The line itself signs and un-signs — the old plate's
+                clear-× is not drawn, so the line keeps that function (OQ-M4). */}
+            <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+          </StepStack>
+          <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
+          <GhostLink label="Change the pledge" onPress={openSheet} />
+        </>
+      ) : null}
+
+      {step === DONE ? (
+        <>
+          <DoneMark />
+          <Stack top={458} gap={18} center>
+            <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
+            <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{`Pledge re-signed on Day ${day}`}</MonoText>
+          </Stack>
+          <PrimaryButton label="Done" onPress={() => void finish()} />
+        </>
+      ) : null}
+
+      {/* Back walks to the cover; the ✕ leaves without saving. On the closing
+          board the day is already complete, so its ✕ files it like Done (D235). */}
+      <NavBar
+        left={step === DONE ? 'empty' : 'back'}
+        centre={step === DONE ? null : { step, total: RAIL }}
+        right="close"
+        onBack={back}
+        onClose={step === DONE ? () => void finish() : close}
+      />
+
+      <Sheet
+        open={sheet}
+        top={SHEET_TOP.pledge}
+        onClose={() => setSheet(false)}
+        footer={
+          <>
+            <PrimaryButton
+              label="Sign the new pledge"
+              bottom={96}
+              onPress={() => {
+                // The sheet writes the words; the page behind it still has to be
+                // signed for today, which is what its own pill is for.
+                setDraft(sheetText.trim() || pledgeBody);
+                setSigned(false);
+                setSheet(false);
+              }}
+            />
+            <GhostLink label="Keep current pledge" zIndex={42} onPress={() => setSheet(false)} />
+          </>
+        }>
+        <MonoText v="h1">Change the pledge</MonoText>
+        <MonoText v="p">One promise you can keep every day.</MonoText>
+        <View style={{ height: 8 }} />
+        <TextField variant="card" value={sheetText} onChangeText={setSheetText} accessibilityLabel="Your pledge" />
+      </Sheet>
+    </Screen>
   );
 }

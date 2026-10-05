@@ -1,0 +1,129 @@
+env: load .env.local
+env: export CONVEX_DEPLOYMENT EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY EXPO_PUBLIC_CONVEX_SITE_URL EXPO_PUBLIC_CONVEX_URL EXPO_PUBLIC_REVENUECAT_KEY
+env: export CONVEX_DEPLOYMENT EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY EXPO_PUBLIC_CONVEX_SITE_URL EXPO_PUBLIC_CONVEX_URL EXPO_PUBLIC_REVENUECAT_KEY
+- Creating native directory (./ios)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json
+- Running prebuild
+✔ Finished prebuild
+- Installing CocoaPods...
+  CocoaPods CLI not found in your PATH, installing it now.
+› Attempting to install CocoaPods CLI with Gem
+› Failed to install CocoaPods CLI with Gem
+Failed to install CocoaPods CLI with gem (recommended)
+└─ Cause: gem install cocoapods --no-document exited with non-zero code: 1
+› Attempting to install CocoaPods CLI with Homebrew
+==> Would install 1 formula:
+cocoapods
+==> Would upgrade 1 dependency for cocoapods:
+ruby
+==> `brew cleanup` has not been run in the last 30 days, running now...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+Removing: /Users/admin/Library/Caches/Homebrew/ada-url--3.4.3... (345.5KB)
+Removing: /Users/admin/Library/Caches/Homebrew/ada-url_bottle_manifest--3.4.3... (8.5KB)
+Removing: /Users/admin/Library/Caches/Homebrew/brotli--1.2.0... (793.9KB)
+Removing: /Users/admin/Library/Caches/Homebrew/brotli_bottle_manifest--1.2.0... (8.0KB)
+Removing: /Users/admin/Library/Caches/Homebrew/c-ares--1.34.6... (304.1KB)
+Removing: /Users/admin/Library/Caches/Homebrew/c-ares_bottle_manifest--1.34.6... (7.5KB)
+Removing: /opt/homebrew/Cellar/ca-certificates/2025-12-02... (4 files, 236.4KB)
+Removing: /Users/admin/Library/Caches/Homebrew/ca-certificates--2025-12-02... (131.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/ca-certificates_bottle_manifest--2025-12-02-1... (2KB)
+Removing: /Users/admin/Library/Caches/Homebrew/cloc--2.08... (439.2KB)
+Removing: /Users/admin/Library/Caches/Homebrew/cloc_bottle_manifest--2.08... (12.6KB)
+Removing: /Users/admin/Library/Caches/Homebrew/coreutils--9.10... (3.7MB)
+Removing: /Users/admin/Library/Caches/Homebrew/coreutils_bottle_manifest--9.10... (16.6KB)
+Removing: /Users/admin/Library/Caches/Homebrew/fmt--12.1.0... (283KB)
+Removing: /Users/admin/Library/Caches/Homebrew/fmt_bottle_manifest--12.1.0... (7.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/gmp--6.3.0... (1MB)
+Removing: /Users/admin/Library/Caches/Homebrew/gmp_bottle_manifest--6.3.0... (13.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/hdrhistogram_c--0.11.9... (43.6KB)
+Removing: /Users/admin/Library/Caches/Homebrew/hdrhistogram_c_bottle_manifest--0.11.9-1... (7.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/icu4c@78--78.3... (32.0MB)
+Removing: /Users/admin/Library/Caches/Homebrew/icu4c@78_bottle_manifest--78.3... (9.7KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libnghttp2--1.68.0... (220.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libnghttp2_bottle_manifest--1.68.0... (7.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libnghttp3--1.15.0... (189.0KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libnghttp3_bottle_manifest--1.15.0... (7.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libngtcp2--1.21.0... (396.5KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libngtcp2_bottle_manifest--1.21.0... (9.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libuv--1.52.1... (376.0KB)
+Removing: /Users/admin/Library/Caches/Homebrew/libuv_bottle_manifest--1.52.1... (7.5KB)
+Removing: /Users/admin/Library/Caches/Homebrew/llhttp--9.3.1... (36.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/llhttp_bottle_manifest--9.3.1... (7.2KB)
+Removing: /Users/admin/Library/Caches/Homebrew/lz4--1.10.0... (276.1KB)
+Removing: /Users/admin/Library/Caches/Homebrew/lz4_bottle_manifest--1.10.0-1... (13.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/node--25.8.1_1... (18.8MB)
+Removing: /Users/admin/Library/Caches/Homebrew/node_bottle_manifest--25.8.1_1... (27.7KB)
+Removing: /opt/homebrew/Cellar/openssl@3/3.6.1... (7,624 files, 37.6MB)
+Removing: /Users/admin/Library/Caches/Homebrew/openssl@3--3.6.1... (10.9MB)
+Removing: /Users/admin/Library/Caches/Homebrew/openssl@3_bottle_manifest--3.6.1... (11.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/readline--8.3.3... (758.1KB)
+Removing: /Users/admin/Library/Caches/Homebrew/readline_bottle_manifest--8.3.3... (10.0KB)
+Removing: /Users/admin/Library/Caches/Homebrew/simdjson--4.4.0... (1.4MB)
+Removing: /Users/admin/Library/Caches/Homebrew/simdjson_bottle_manifest--4.4.0... (7.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/sqlite--3.51.3... (2.4MB)
+Removing: /Users/admin/Library/Caches/Homebrew/sqlite_bottle_manifest--3.51.3... (11.4KB)
+Removing: /Users/admin/Library/Caches/Homebrew/uvwasi--0.0.23... (70.1KB)
+Removing: /Users/admin/Library/Caches/Homebrew/uvwasi_bottle_manifest--0.0.23-1... (8.3KB)
+Removing: /Users/admin/Library/Caches/Homebrew/xz--5.8.2... (764.9KB)
+Removing: /Users/admin/Library/Caches/Homebrew/xz_bottle_manifest--5.8.2... (11.8KB)
+Removing: /Users/admin/Library/Caches/Homebrew/zstd--1.5.7_1... (794.7KB)
+Removing: /Users/admin/Library/Caches/Homebrew/zstd_bottle_manifest--1.5.7_1... (13.2KB)
+==> Autoremoving 2 unneeded formulae:
+libyaml
+ruby
+Removing: /Users/admin/Library/Caches/Homebrew/portable-ruby-4.0.2_1.arm64_big_sur.bottle.tar.gz... (12.7MB)
+Removing: /Users/admin/Library/Caches/Homebrew/portable-ruby-4.0.6.arm64_big_sur.bottle.tar.gz... (12.7MB)
+Removing: /Users/admin/Library/Caches/Homebrew/nylas--3.1.1.tar.gz... (13.6MB)
+Removing: /Users/admin/Library/Caches/Homebrew/portable-ruby-4.0.1.arm64_big_sur.bottle.tar.gz... (12.5MB)
+Removing: /Users/admin/Library/Caches/Homebrew/bootsnap/a560222e91cb09751c2842346eb1f1fee7f0cd2e9baf991c88e2e2dc4b84cc1c... (648 files, 5.9MB)
+Removing: /Users/admin/Library/Caches/Homebrew/bootsnap/d5cd286ef4797f0335745a777e53aa167a06cf0ec824323c181c4d7011cac37d... (636 files, 5.9MB)
+Removing: /Users/admin/Library/Caches/Homebrew/bootsnap/40ce95b4e3227861473c22050240346bae44b1dfdc10f866cc8b09654b1d79cf... (658 files, 5.9MB)
+Removing: /Users/admin/Library/Logs/Homebrew/llhttp... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/coreutils... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/gmp... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/simdjson... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/libuv... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/hdrhistogram_c... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/fmt... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/brotli... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/readline... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/lz4... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/libnghttp3... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/sqlite... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/c-ares... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/xz... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/libnghttp2... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/uvwasi... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/nylas... (117B)
+Removing: /Users/admin/Library/Logs/Homebrew/openssl@3... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/ca-certificates... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/zstd... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/cloc... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/ada-url... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/node... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/libngtcp2... (64B)
+Removing: /Users/admin/Library/Logs/Homebrew/icu4c@78... (64B)
+Removing: /opt/homebrew/var/homebrew/tmp/.cellar/cocoapods... (13,199 files, 23.6MB)
+Removing: /opt/homebrew/var/homebrew/tmp/.cellar/ruby... (19,311 files, 59.4MB)
+› Failed to install CocoaPods with Homebrew. Install CocoaPods CLI and try again: https://cocoapods.org/
+⚠️  Unable to install the CocoaPods CLI.
+Failed to install CocoaPods with Homebrew. Install CocoaPods CLI and try again: https://cocoapods.org/
+└─ Cause: brew install cocoapods exited with non-zero code: 1
+› Using --device B5BBAE52-4E34-46F4-A58D-4A585215F842
+› Planning build
+› Executing tideline » [CP] Check Pods Manifest.lock
+
+❌  error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+
+
+⚠️  Script has ambiguous dependencies causing it to run on every build.
+   To fix, go to: Xcode » tideline/tideline » Build Phases » '[Expo Dev Launcher] Strip Local Network Keys for Release'
+   Either: Uncheck "Based on dependency analysis", or select output files to trigger the script
+
+
+› 1 error(s), and 1 warning(s)
+
+CommandError: Failed to build iOS project. "xcodebuild" exited with error code 65.

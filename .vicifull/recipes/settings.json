@@ -1,0 +1,77 @@
+[
+  {
+    "frame": "Settings",
+    "route": "/settings",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "The route is `/settings`, NOT `/(app)/settings` — the group segment in the URL does not resolve and the capture lands on the splash. `--seed` cannot be used either: nothing signs a mock user in when /settings is opened directly. `.vicifull/settings-seed.js` signs Sam Reyes in before the first paint and stamps `tideline.checkinPromptAt` and `tideline.weeklyReport.seenWeek`, which are the two gates (app)/_layout pushes over the first launch — without them the night check-in or Report Ready covers the screen on roughly every other capture. It also seeds `tideline.routines.v2` to this frame's own 8:00 AM / 9:30 PM (D120: `Settings Check-in Time` samples 10:30 PM for the same setting). IN-APP PATH, restored this pass under F33: Today's avatar glyph (top right, accessibilityLabel `Open settings`) now opens this screen — `await tap('Open settings')` from /today reaches it. Re-measured after the fix pass: 0 differing / 0 missing signature rows and 0 blocks over 4/255 on a whole-frame 8x8 block diff."
+  },
+  {
+    "frame": "Edit Profile",
+    "route": "/profile",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "Same seed; reachable in-app as /today -> `Open settings` -> `Edit profile`, which is the hierarchy the canvas draws (F33). The seed carries 8 check-in days, 6 ride-outs, 1 lapse and 1 journal entry, which earns seven of the eight album faces — four coins and a `+3` chip, the shelf the frame draws. `Started VICI` and `Current week` cannot both be seeded (D121): the app derives the week from the sign-up date and the canvas's `14 Mar 2026` is 25 weeks back from this run's today, so the seed uses 36 days back to hold the week on VI and the Started line reads its own date. Residue after the fix pass, whole-frame 8x8 blocks over 6/255: the coin row (css y 534-574 — the app's four earned faces are veni/firstlight/vidi/vici in album order and three of the canvas's four samples are device-less placeholders) and the `Started VICI` value (css y 666-678). The disc finish itself now matches: design 239,238,231 against app 240,239,234 across the top of the first coin."
+  },
+  {
+    "frame": "Sheet Profile Photo",
+    "route": "/profile",
+    "initseed": ".vicifull/settings-seed.js",
+    "do": "await __sleep(1500); await tap('Change photo'); await __sleep(900)",
+    "wait": 900,
+    "note": "`Change photo` is the only trigger for the sheet; the canvas draws it as a plain label with no affordance. Re-measured: 0 blocks over 6/255 across the whole frame — the sheet is tall enough to cover the medallion shelf, so this frame is clean where its Edit-Profile parent still shows the coin row."
+  },
+  {
+    "frame": "Sheet Edit Name",
+    "route": "/profile",
+    "initseed": ".vicifull/settings-seed.js",
+    "do": "await __sleep(1500); await tap('Name, Sam Reyes'); await __sleep(900)",
+    "wait": 900,
+    "note": "The Name row's accessibilityLabel is `Name, <name>`; tapping the bare text `Name` matches the 86pt label span, which is not the control. The sheet autofocuses its TextInput, so the platform caret may or may not be in its visible blink phase when the shot is taken — the canvas draws the caret as a hand-built 2 x 22 bar. Its sheet is shorter than the photo sheet's, so the medallion shelf stays visible above it and carries Edit Profile's coin-row residue (css y 538-574); nothing else on the frame differs."
+  },
+  {
+    "frame": "Settings Weekly Report",
+    "route": "/settings",
+    "initseed": ".vicifull/settings-seed.js",
+    "do": "await __sleep(1500); await tap('Weekly reports'); await __sleep(1600)",
+    "wait": 1200,
+    "note": "Driven from Settings so the `?from=settings` wiring is exercised and the back row reads `Settings`. /weekly-report can also be opened directly with the same seed. The body belongs to GROUP logs (frame #188). 35 of the frame's 68 rows report MISSING and they are all the 93D header block D118 rules stale — the 91C family wins. Group-owned rows verified live: `Recovery score` 19px/500/-0.1px at 24,294, Back reads `Settings`, `steady climb` carries 91C's 12/500."
+  },
+  {
+    "frame": "Settings Check-in Time",
+    "route": "/settings",
+    "initseed": ".vicifull/settings-checkin-seed.js",
+    "do": "await __sleep(1500); await tap('Night check-in'); await __sleep(1500)",
+    "wait": 1200,
+    "note": "Must be driven from Settings, or reached as /routines/night-time?from=settings: the back label AND the reassurance line at y 676 are both conditional on `from === 'settings'`. Opening /routines/night-time bare gives frame #54, not this one. Uses `.vicifull/settings-checkin-seed.js`, NOT the group's main seed — this frame parks its wheel on 10:30 PM where `Settings` writes 9:30 PM in the pill for the same setting (D120), so each capture seeds the value its own frame draws. Residue after the fix pass: every block over 4/255 is inside one of the three wheel columns — 137 in the AM/PM column, which the canvas draws with its selected PM below its own selection band and the app draws centred on it (D120); 34 in the hour column, whose canvas slots 2 and 3 read 11 and 12 above a 10; 11 in the minute column, none over 8/255. The reassurance line, the seven day chips and the minute column all match exactly."
+  },
+  {
+    "frame": "Your Vow Page",
+    "route": "/vow",
+    "initseed": ".vicifull/settings-vow-seed.js",
+    "wait": 1800,
+    "note": "Uses `.vicifull/settings-vow-seed.js`, not the group's main seed: this frame is drawn for a different sample account — the hand signs **Jerry** and the line reads **Held for 92 days.**, where Edit Profile's account is Sam Reyes 36 days in (F28). The seed signs the vow at the account's own creation, 92 days back at local midnight, so both rows land on the frame's values. Reachable in-app as /today -> `Open settings` -> `Your vow`. Re-measured after the F34 fix: the sun disc is Δ0,0,0 at every sample across its whole face (design 244,223,184 / 247,230,197 / 245,226,191 / 242,217,173 / 238,209,160 top to bottom), and the whole-frame 8x8 block diff has 45 blocks over 4/255, all three rows of the signature stamp (css y 582-590) and nothing else — that slot is D119's blank sample."
+  },
+  {
+    "frame": "Sheet Sign Out",
+    "route": "/settings",
+    "initseed": ".vicifull/settings-seed.js",
+    "do": "await __sleep(1500); await tap('Sign out'); await __sleep(900)",
+    "wait": 900,
+    "note": "`tap('Sign out')` hits the Account card's text link, which is the first control with that exact text; the sheet's own ink pill is second and would sign the account out. The frame's BACKDROP is an older generation of Settings — first caption at 168 against 158, second group at 330 against 318, three groups against four (D118) — so only the sheet is comparable. Measured: every differing block sits above css y 610; below that the sheet is identical, scrim and `0 -12px 40px rgba(19,19,19,0.3)` lift included."
+  },
+  {
+    "frame": "Data Privacy",
+    "route": "/privacy",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 1600,
+    "note": "The seed sets `settings.pauseAnalytics: true` — the canvas draws that switch only in its ON state and the app's own default is off. Reachable in-app as /today -> `Open settings` -> `Data & privacy`. Re-measured: 0 blocks over 6/255 across the whole frame. The copy sweep reports the delete warning missing from src/; it is not — `privacy.tsx:101` writes it with `can&apos;t`, which the raw-source grep cannot see and the block diff proves renders identically."
+  },
+  {
+    "frame": "App Lock",
+    "route": "/applock",
+    "initseed": ".vicifull/settings-seed.js",
+    "wait": 2000,
+    "note": "The seed sets appLockFaceId / appLockOnLeave / hideSensitivePreviews all true — the canvas draws all three switches ON and no off state anywhere. Give this one 2000ms: at 1600 the mock store had not hydrated and the two Lock switches captured in their default-off state. Reachable in-app as /today -> `Open settings` -> `App lock`. Re-measured: 0 blocks over 6/255 across the whole frame; the four remaining signature rows are the `50%` -> `10px` knob radii (D015)."
+  }
+]

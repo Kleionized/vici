@@ -1,0 +1,118 @@
+[
+  {
+    "frame": "Settings",
+    "route": "/settings",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "The route is `/settings`, NOT `/(app)/settings` (the group segment does not resolve in a URL). The seed signs Sam Reyes in before the first paint, stamps the two (app)/_layout launch gates (`tideline.checkinPromptAt`, `tideline.weeklyReport.seenWeek`), writes the frame's own 8:00 AM / 9:30 PM routines, and carries `settings.premium: true` so `Manage subscription` reads `Yearly` (the mock PurchasesProvider derives the plan from it). In-app: /today -> `await tap('Open settings')`. Vici Overhaul pass: whole frame 0.00 % (0 px > 24); sigdiff rows left are the D020 explicit line boxes and the stack's own div (the column is a ScrollRegion's content here). 375x667: the groups scroll between the fixed nav and the fixed `Sign out` ghost (D320); 430x932: as drawn, ghost 48 off the foot.",
+    "group": "settings"
+  },
+  {
+    "frame": "Edit Profile",
+    "route": "/profile",
+    "initseed": ".overhaul/settings-profile-seed.js",
+    "wait": 2000,
+    "note": "`.overhaul/settings-profile-seed.js` = `window.__CLOCK='2026-04-19T10:00'` + `.overhaul/clock.js` + `.overhaul/settings-seed.js` (regenerate with the cat in that file's header if either changes). On that frozen day the main seed's `36 days back` is 14 Mar 2026, so `Started VICI · 14 Mar 2026` and `Current week · Week VI, Discipline` hold together — D121's contradiction does not arise in this capture. The seed's history earns exactly 10 of the 12 album faces (src/lib/album.ts — the same ledger the Medallions page reads): `Medallions · 10 of 12`. In-app: /today -> `Open settings` -> `Edit profile`. Whole frame 0.00 % (2 px > 24).",
+    "group": "settings"
+  },
+  {
+    "frame": "Sheet Profile Photo",
+    "route": "/profile",
+    "initseed": ".overhaul/settings-profile-seed.js",
+    "do": "await __sleep(1500); await tap('Change photo'); await __sleep(900)",
+    "wait": 900,
+    "note": "`Change photo` (the words) and the monogram disc (`Profile photo`) both open the kit Sheet. 0.00 % with the status bar ignored (the scrim covers it on the canvas; CRITIC G10).",
+    "group": "settings"
+  },
+  {
+    "frame": "Sheet Edit Name",
+    "route": "/profile",
+    "initseed": ".overhaul/settings-profile-seed.js",
+    "do": "await __sleep(1500); await tap('Name, Sam Reyes'); await __sleep(900)",
+    "wait": 900,
+    "note": "The Name row's accessibilityLabel is `Name, <saved name>`. The sheet autofocuses its field with the saved name as the draft. 0.01 %: one 4x28 region at 132,520 — the canvas's drawn 2x22 caret bar against the platform caret (D364).",
+    "group": "settings"
+  },
+  {
+    "frame": "Settings Weekly Report · via Settings",
+    "route": "/settings",
+    "initseed": ".overhaul/logs-wr-score-seed.js",
+    "do": "await waitFor('Weekly report'); await __sleep(800); await tap('Weekly report'); await __sleep(1800)",
+    "wait": 1200,
+    "note": "WIRING — labelled so it does not shadow group logs' own `Settings Weekly Report` recipe (logs owns the board). The Settings row is `Weekly report` (under Reminders, `Every Sunday`) and pushes `/weekly-report?from=settings`; Back returns to /settings. On logs' dated seed (clock 21 Jul 2025, so the default week is Jul 14–20) the board reached by tapping the row diffs 0.01 % against `Settings-Weekly-Report.png`: the only region is the `W` day label sitting ~0.5 px right (logs' board). On `.overhaul/settings-seed.js` the board shows Sam's own week instead (data only).",
+    "group": "settings"
+  },
+  {
+    "frame": "Settings Check-in Time · via Settings",
+    "route": "/settings",
+    "initseed": ".overhaul/settings-checkin-seed.js",
+    "do": "await __sleep(1500); await tap('Night check-in'); await __sleep(1500)",
+    "wait": 1200,
+    "note": "WIRING — labelled so it does not shadow paywall-reminders' recipe for the frame (the board is theirs; it is byte-identical to Nightly Check-in Time). Driven from Settings it lands on `/routines/night-time?from=settings` and diffs 0.00 % against `Settings-Check-in-Time.png` (the seed parks 10:30 PM, the wheel's own value; Settings draws 9:30 PM — D120). `Save time` returns to /settings. Also reachable as `/routines/night-time?from=settings` with the same seed.",
+    "group": "settings"
+  },
+  {
+    "frame": "Your Vow Page",
+    "route": "/vow",
+    "initseed": ".overhaul/settings-vow-dated-seed.js",
+    "wait": 2000,
+    "note": "`.overhaul/settings-vow-dated-seed.js` = `window.__CLOCK='2026-07-19T10:00'` + clock.js + `.overhaul/settings-vow-seed.js` (Jerry, vow signed 92 days back at local midnight = 18 Apr 2026), so both pills read the frame's `Held for 92 days` / `Signed Apr 18`. In-app: /today -> `Open settings` -> `Your vow`. 0.00 % (flag drawn — strip looked at). `Re-sign the vow` opens a confirmation sheet (D294): drive `tap('Re-sign the vow')`, then `tap('Sign it again')` -> `Held for 0 days` / `Signed Jul 19`. Re-signing a second time the same day writes no second entry (D294). 375x667: the flag drops and the stack is centred between the nav's foot and the ghost (card at canvas 190; D297); nothing paints before the stack is measured.",
+    "group": "settings"
+  },
+  {
+    "frame": "Sheet Sign Out",
+    "route": "/settings",
+    "initseed": ".overhaul/settings-seed.js",
+    "do": "await __sleep(1500); await tap('Sign out'); await __sleep(900)",
+    "wait": 900,
+    "note": "`tap('Sign out')` hits the ghost (the first `Sign out` in the tree); the sheet's ink pill comes after it and would sign out. The backdrop is today's Settings (D118 obsolete), so the whole composite compares: 0.00 % with the status bar ignored. A long address: `.overhaul/verify/settings/seed-long.js` (50-char email) — the body wraps to three lines and the panel rises 23 pt so the body still ends 12 above the pill (D297), at 393, 375 and 430.",
+    "group": "settings"
+  },
+  {
+    "frame": "Data Privacy",
+    "route": "/privacy",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "The seed sets `settings.pauseAnalytics: true` (the frame draws only ON; the app's default is off). In-app: /today -> `Open settings` -> `Data & privacy`. 0.00 % (4 px > 24, the toggle track's left edge anti-aliasing at 300,508).",
+    "group": "settings"
+  },
+  {
+    "frame": "App Lock",
+    "route": "/applock",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "The seed sets appLockFaceId / appLockOnLeave / hideSensitivePreviews all true (the frame draws all three ON). In-app: /today -> `Open settings` -> `App lock`. 0.00 % (6 px > 24: the Privacy toggle's two rounded track ends at y 604, anti-aliasing); the one signature row left is the disc's `50%` -> `38px` radius notation (D015).",
+    "group": "settings"
+  },
+  {
+    "frame": "Back Tap · unframed",
+    "route": "/backtap",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "No frame. Set after App Lock (nav caption, 76 ink disc, centred line, the link as a settings row that copies, ruled steps card, footnote, primary + ghost pair). Reached from All -> `Back Tap`. Its column scrolls even at 852 (the steps are long) — `--scroll=end` shows the foot.",
+    "group": "settings"
+  },
+  {
+    "frame": "Find support · unframed",
+    "route": "/support",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "No frame. Set after Data & privacy (h1 + line, resource cards, footnote, ghost `Back` at 48). Reached from All -> `Find support` (invariant #5; its only door).",
+    "group": "settings"
+  },
+  {
+    "frame": "All · unframed",
+    "route": "/all",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2000,
+    "note": "No frame. The review drawer in the Settings idiom (nav back row, 32/38 title + line, captioned 54-row groups whose notes ellipsise). Door: long-press the Today tab in mock/dev builds (D385). `--scroll=<y>` for the lower groups.",
+    "group": "settings"
+  },
+  {
+    "frame": "Settings · functional drives",
+    "route": "/settings",
+    "initseed": ".overhaul/settings-seed.js",
+    "note": "Not a frame. `.overhaul/drives/settings-func-nav.js` (every Settings row -> its route, back home), `settings-func-signout.js` (scrim / Stay signed in close, the pill signs out -> /sign-in), `settings-func-profile.js` (run on /profile with settings-profile-seed.js: photo-sheet doors and rows, name sheet discard/save, Medallions -> /milestones), `settings-func-toggles.js` (run on /applock: three switches flip, write settings, Back), `settings-func-vow.js` (run on /vow with settings-vow-dated-seed.js: re-sign confirm/cancel/scrim). Pass with `--script=<file>`; each returns its checks as JSON.",
+    "group": "settings"
+  }
+]

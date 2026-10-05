@@ -1,5 +1,4 @@
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 
 import { CheckinFlow, checkinCopy, isMorningCheckin, type CheckinResult } from '@/components/MoodLogger';
@@ -8,7 +7,8 @@ import { useCheckins, useTodayCheckin, useUpsertCheckin } from '@/lib/backend';
 import { todayKey } from '@/lib/date';
 
 /**
- * `21E2` and `21E3` · the check-in, lifted out of the night flow.
+ * The check-in, lifted out of the night flow (no frame draws this route; it is
+ * Night 1 Mood, Checkin Emotions and Checkin Reasons on a three-step rail).
  *
  * How the head is, what it felt like, what fed it — the same three boards the
  * evening flow draws, on their own route so a mood can be logged on the spot.
@@ -49,20 +49,17 @@ export default function CheckIn() {
 
   // Held until the rows have loaded: the flow seeds its picks from them once,
   // at mount.
-  if (today === undefined || checkins === undefined) return <LoadingView />;
+  if (today === undefined || checkins === undefined) return <LoadingView onClose={close} />;
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <CheckinFlow
-        head={copy.head}
-        feel={copy.feel}
-        initialMood={today?.mood}
-        initialEmotions={today?.emotions}
-        initialReasons={today?.reasons}
-        onDone={(result) => void save(result)}
-        onExit={close}
-      />
-    </>
+    <CheckinFlow
+      head={copy.head}
+      feel={copy.feel}
+      initialMood={today?.mood}
+      initialEmotions={today?.emotions}
+      initialReasons={today?.reasons}
+      onDone={(result) => void save(result)}
+      onExit={close}
+    />
   );
 }

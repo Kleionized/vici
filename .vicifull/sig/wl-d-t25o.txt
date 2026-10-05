@@ -1,0 +1,26 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Tell the two apart
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 222 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+path | 39.7 | 237.3 | 8.6 | 12.5 | - | - | - | - | - | -
+path | 42.5 | 252.5 | 3.1 | 0 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Anger
+div | 78 | 249 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write what happened, one physical sign you remember in your body, and the first safe action that would have helped: walk, train, cool down, delay the message, or talk to someone.
+div | 24 | 347 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 347 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 356 | 22 | 22 | - | - | - | - | - | -
+path | 35.1 | 360.5 | 17.2 | 11.4 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Loneliness
+div | 78 | 371 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write what was happening, what you did next, and what could have put you around another person: call someone, eat with people, work in a shared place, or make a plan.
+div | 24 | 513 | 345 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Pick whichever causes more trouble for you and practise what you would do today. If you are neither angry nor lonely today, practise while calm so the action is familiar next time.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

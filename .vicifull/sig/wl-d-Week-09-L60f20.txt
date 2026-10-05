@@ -1,0 +1,51 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 129.5 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 191.5 | 329 | 601 | - | - | - | - | - | -
+div | 32 | 191.5 | 329 | 151 | - | - | - | - | - | -
+div | 32 | 191.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 199.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 206.1 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 208.9 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 207.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 191.5 | 275 | 151 | - | - | - | - | - | -
+div | 86 | 191.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If you have a partner
+div | 86 | 216.5 | 275 | 126 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Spend 20 minutes together without phones and tell them something you want more of: time together, affection, conversation, a date, or better sexual communication. Sex is not required for the task.
+div | 32 | 356.5 | 329 | 109 | - | - | - | - | - | -
+div | 32 | 356.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 364.5 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 367.8 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 367.8 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 372.8 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 376 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 356.5 | 275 | 109 | - | - | - | - | - | -
+div | 86 | 356.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If you are single
+div | 86 | 381.5 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Invite someone to coffee, food, a walk, training, a game, or something else. Friendship counts; you do not need to turn this into dating.
+div | 32 | 479.5 | 329 | 131 | - | - | - | - | - | -
+div | 32 | 479.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 487.5 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 493 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 497.4 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 479.5 | 275 | 131 | - | - | - | - | - | -
+div | 86 | 479.5 | 275 | 44 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If you have been rejected or hurt recently
+div | 86 | 526.5 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Contact someone you trust who is not the person you are chasing for reassurance, or arrange to be around other people.
+div | 32 | 624.5 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 624.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 632.5 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 638 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 641.5 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 637.5 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 624.5 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 624.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If social contact feels difficult
+div | 86 | 649.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Send a short message or spend 20 minutes somewhere other people are around.
+div | 32 | 726.5 | 329 | 66 | - | - | - | - | - | -
+div | 32 | 726.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 734.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 741.1 | 0 | 10.5 | - | - | - | - | - | -
+path | 43.3 | 743.8 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 742.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 726.5 | 275 | 66 | - | - | - | - | - | -
+div | 86 | 729.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | If the issue is mainly sexual release and you are not lonely: Follow the boundary you chose in Lesson 21.

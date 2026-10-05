@@ -1,468 +1,546 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { useId, useState } from 'react';
-import { Platform, Pressable, View, useWindowDimensions } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { useMemo, useRef, useState, type ReactNode } from 'react';
+import { Alert, Platform, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import Svg, { Line } from 'react-native-svg';
 
-import { AppText, Grain, PressScale } from '@/components/ui';
+import {
+  Apple,
+  Card,
+  CheckDisc,
+  CloseX,
+  GhostLink,
+  H1,
+  LaurelMark,
+  MonoText,
+  NavBar,
+  P,
+  PrimaryButton,
+  Row,
+  RowGroup,
+  Screen,
+  ScrollRegion,
+  Sheet,
+  Tap,
+} from '@/components/mono';
+import { numberWords, shortDate } from '@/lib/format';
 import { useAuth } from '@/lib/auth';
-import { useUpdateSettings } from '@/lib/backend';
-import { fonts, sans } from '@/lib/theme';
+import { usePurchases } from '@/lib/purchases';
+import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 /**
- * VICI Plus paywall (canvas 103 · 104 · 105).
+ * VICI paywall — `Paywall` (43), `Paywall Rescue` (11B), `Paywall Confirmed`
+ * (11C), in the flat dark system.
  *
- * 103 — a 296-tall drawn headland band dissolving into paper, the mark, and the
- * two plan rows where the chosen plan floods dark ($39.99/yr · $12.99/mo, no
- * trial up front). 104 — pressing ✕ is rescued ONCE by the three-day offer;
- * declining that really closes. 105 — the paper confirmation.
+ * Paywall — the laurel lockup, the promise, two plan cards side by side (the
+ * chosen one in ink with a "Save 74%" tab on Yearly), four check discs under
+ * "What you get", Continue, and "Terms · Restore". Rescue — walking away is
+ * met ONCE by the free days, as a three-step timeline; declining that really
+ * closes. Confirmed — the 132 check disc and the sentence that says when the
+ * first charge lands.
  *
- * Laid out from the canvas's 393 × 852 frame: the status bar ends at 54, so
- * every canvas `top` below is written as `top − 54` under the safe area.
+ * The Paywall frame draws no way out. The app keeps one (D323): the kit ✕ in
+ * the nav's right slot — exactly where Rescue draws its own, so the ✕ does not
+ * move between the two boards — and the top-right "Restore" it displaces lives
+ * on in the footer's "Restore", which is now tappable.
+ *
+ * Every price, cycle and trial length is read from the offering rather than
+ * drawn in — the canvas's $39.99 / $12.99 / three days are what the offline
+ * catalogue serves, so the frame still renders exactly, while a real store
+ * shows the customer their own currency and their own introductory offer. The
+ * drawn pay sheet is likewise only reached offline: with RevenueCat configured
+ * the store presents its own sheet and this one never opens.
  */
 
-const noiseDark = require('../../../assets/images/noise-dark.png');
-
 type PlanKey = 'year' | 'month' | 'trial';
+
+/** The catalogue plan a drawn card buys. The rescue offer sells the year too. */
+const CATALOGUE = { year: 'yearly', trial: 'yearly', month: 'monthly' } as const;
+
+/**
+ * The prices this render draws, resolved from the offering with the canvas's
+ * own numbers as the fallback.
+ */
+interface Money {
+  yearPrice: string;
+  yearCycle: string;
+  yearPerMonth: string;
+  /** The tab on the yearly card — "Save 74%", or nothing if it saves nothing. */
+  yearSaving?: string;
+  monthPrice: string;
+  monthCycle: string;
+  /** Length of the yearly plan's introductory offer, in days. */
+  trialDays: number;
+}
+
+const DRAWN_MONEY: Money = { yearPrice: '$39.99', yearCycle: '/year', yearPerMonth: '$3.33', yearSaving: 'Save 74%', monthPrice: '$12.99', monthCycle: '/month', trialDays: 3 };
+
+/**
+ * "Save 74%" (title case — the frame sets no `text-transform`) — the yearly
+ * price against twelve of the monthly one, rounded the way the canvas rounds
+ * it. Undefined where either price is unknown or the year is not actually the
+ * cheaper of the two, so the tab never claims a saving the store is not
+ * offering.
+ */
+export function savingBadge(yearly: number | undefined, monthly: number | undefined): string | undefined {
+  if (!yearly || !monthly) return undefined;
+  const full = monthly * 12;
+  const pct = Math.round((1 - yearly / full) * 100);
+  return pct > 0 ? `Save ${pct}%` : undefined;
+}
 
 function fmtDate(d: Date) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-/** The confirmed page names the charge day without a year — "until Jul 24". */
-function fmtShort(d: Date) {
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-function checkoutFor(plan: PlanKey) {
+function checkoutFor(plan: PlanKey, m: Money) {
   const now = new Date();
-  const in3 = new Date(now.getTime() + 3 * 86400000);
+  const afterTrial = new Date(now.getTime() + m.trialDays * 86400000);
   const in1y = new Date(now);
   in1y.setFullYear(in1y.getFullYear() + 1);
   const in1m = new Date(now);
   in1m.setMonth(in1m.getMonth() + 1);
-  if (plan === 'trial') return { app: 'VICI Plus · Yearly', trial: `3 days free, then $39.99/year`, due: '$0.00', note: `$39.99 on ${fmtDate(in3)} · cancel anytime` };
-  if (plan === 'month') return { app: 'VICI Plus · Monthly', trial: null, due: '$12.99', note: `Renews ${fmtDate(in1m)} · cancel anytime` };
-  return { app: 'VICI Plus · Yearly', trial: null, due: '$39.99', note: `Renews ${fmtDate(in1y)} · cancel anytime` };
+  if (plan === 'trial')
+    return {
+      app: 'VICI Plus · Yearly',
+      trial: `${m.trialDays} days free, then ${m.yearPrice}${m.yearCycle}`,
+      due: '$0.00',
+      note: `${m.yearPrice} on ${fmtDate(afterTrial)} · cancel anytime`,
+    };
+  if (plan === 'month') return { app: 'VICI Plus · Monthly', trial: null, due: m.monthPrice, note: `Renews ${fmtDate(in1m)} · cancel anytime` };
+  return { app: 'VICI Plus · Yearly', trial: null, due: m.yearPrice, note: `Renews ${fmtDate(in1y)} · cancel anytime` };
 }
 
-// ── small shared pieces ──────────────────────────────────────────────
-/** The 34pt close disc. `minHeight: 0` keeps PressScale from inflating it to 44. */
-function PwX({ onPress, label, fill, ring }: { onPress: () => void; label: string; fill: string; ring: string }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      hitSlop={{ top: 14, bottom: 14, left: 14, right: 14 }}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      style={{ width: 34, height: 34, minHeight: 0, borderRadius: 17, backgroundColor: fill, boxShadow: `0 0 0 1px ${ring}`, alignItems: 'center', justifyContent: 'center' }}>
-      <Svg width={15} height={15} viewBox="0 0 20 20">
-        <Path d="M3 3l14 14M17 3L3 17" stroke="#1D1C1A" strokeWidth={2.4} strokeLinecap="round" />
-      </Svg>
-    </PressScale>
-  );
-}
+// ── shared pieces (OfferingPaywall draws the same board from an offering) ──
 
-// 103's pill states no letter-spacing and 104/105's states 0.2, so tracking
-// stays undefined here rather than being forced to 0 — AppText only keeps the
-// variant's inherited tracking when a caller asks for one.
-function PwCTA({ label, onPress, height, radius, size, tracking }: { label: string; onPress: () => void; height: number; radius: number; size: number; tracking?: number }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      style={{ height, borderRadius: radius, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
-      <AppText style={[sans('600'), { fontSize: size, letterSpacing: tracking, color: '#FFFFFF' }]}>{label}</AppText>
-    </PressScale>
-  );
-}
+const SLOP = { top: 4, bottom: 4, left: 12, right: 12 };
 
-// ── the header band — a drawn coast, not a photograph ────────────────
 /**
- * Every offset the canvas gives this band is a percentage of its own box, so
- * the whole composition is recomputed against the real frame rather than
- * pinned to the 393 × 296 it was drawn at.
+ * The ✕ in the nav's right slot — the kit's 18 `CloseX` at x 353, y 71, as
+ * Rescue draws it. Its label is the old one: "Close" standalone, "Skip" inside
+ * the onboarding funnel, where it moves the funnel on rather than closing.
  */
-function PwHeaderArt({ w, h }: { w: number; h: number }) {
-  const glow = useId().replace(/:/g, '');
-  // the sun's halo: radial-gradient(closest-side, rgba(243,227,196,0.95), transparent 78%)
-  const gx = 0.74 * w;
-  const gy = 0.18 * h;
-  // the low sun sits inside a 40 × 26 box scaled to 11% of the frame width
-  const s = (0.11 * w) / 40;
-  const hill = (left: number, right: number, top: number, ryPct: number) => {
-    const x1 = left * w;
-    const x2 = right * w;
-    const rx = (x2 - x1) / 2;
-    const ry = ryPct * 0.8 * h;
-    const cy = top * h + ry;
-    const bottom = top * h + 0.8 * h;
-    return `M ${x1} ${cy} A ${rx} ${ry} 0 0 1 ${x2} ${cy} L ${x2} ${bottom} L ${x1} ${bottom} Z`;
-  };
+export function PwNav({ label, onClose }: { label: string; onClose: () => void }) {
   return (
-    <Svg width={w} height={h} style={{ position: 'absolute', left: 0, top: 0 }}>
-      <Defs>
-        <RadialGradient id={glow} cx="50%" cy="50%" r="50%">
-          <Stop offset="0" stopColor="#F3E3C4" stopOpacity={0.95} />
-          <Stop offset="0.78" stopColor="#F3E3C4" stopOpacity={0} />
-          <Stop offset="1" stopColor="#F3E3C4" stopOpacity={0} />
-        </RadialGradient>
-      </Defs>
-      <Ellipse cx={gx} cy={gy} rx={0.22 * w} ry={0.22 * h} fill={`url(#${glow})`} />
-      <Rect x={0.08 * w} y={0.12 * h} width={0.16 * w} height={0.05 * h} rx={0.025 * h} fill="#FFFFFF" opacity={0.7} />
-      <Rect x={0.74 * w} y={0.2 * h} width={0.12 * w} height={0.04 * h} rx={0.02 * h} fill="#FFFFFF" opacity={0.55} />
-      <Circle cx={0.58 * w + 20 * s} cy={0.3 * h + 13 * s} r={9 * s} fill="#E9D2A4" />
-      <Path d={hill(-0.2, 1.2, 0.48, 0.6)} fill="#DEDDD6" />
-      <Path d={hill(-0.42, 1.1, 0.62, 0.52)} fill="#C8D7E5" />
-      <Path d={hill(-0.1, 1.42, 0.78, 0.46)} fill="#C0BFB8" />
-    </Svg>
+    <NavBar
+      left="empty"
+      right={{
+        node: (
+          <Tap label={label} onPress={onClose} hitSlop={SLOP} style={{ width: 36, height: 40, alignItems: 'flex-end', justifyContent: 'center' }}>
+            <CloseX />
+          </Tap>
+        ),
+      }}
+    />
   );
 }
 
-/** The warm floor light on the rescue and confirmed pages: a 560 circle whose
- * centre hangs 300 below the frame. Each frame names both of its own stops —
- * 104 is 0.3 → 0.13, 105 is 0.44 → 0.2 — so the mid is passed in rather than
- * derived from the peak, which would put 105 at 0.1907. */
-function PwFloorGlow({ peak, mid }: { peak: number; mid: number }) {
-  const id = useId().replace(/:/g, '');
+/** The lockup at `left 24 top 66`: the 28 laurel (white, stretched) and "VICI Unlimited" 14/700. */
+export function PwBrand({ eyebrow = 'VICI Unlimited' }: { eyebrow?: string }) {
   return (
-    <View style={{ position: 'absolute', left: '50%', bottom: -300, marginLeft: -280, width: 560, height: 560 }} pointerEvents="none">
-      {/* positioned, not static: on web a bare <Svg> paints under every
-          absolutely-positioned sibling regardless of document order */}
-      <Svg width={560} height={560} style={{ position: 'absolute', top: 0, left: 0 }}>
-        <Defs>
-          <RadialGradient id={id} cx="50%" cy="50%" r="50%">
-            <Stop offset="0" stopColor="#FFECC4" stopOpacity={peak} />
-            <Stop offset="0.45" stopColor="#FFECC4" stopOpacity={mid} />
-            <Stop offset="0.72" stopColor="#FFECC4" stopOpacity={0} />
-            <Stop offset="1" stopColor="#FFECC4" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Circle cx={280} cy={280} r={280} fill={`url(#${id})`} />
-      </Svg>
+    <View pointerEvents="none" style={{ position: 'absolute', left: 24, top: 66, flexDirection: 'row', alignItems: 'center', gap: 10, zIndex: 5 }}>
+      <LaurelMark size={28} />
+      <MonoText v="pill" wrap="nowrap" style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
+        {eyebrow}
+      </MonoText>
     </View>
   );
 }
 
-// ── the plan row — 76 tall, the chosen one floods ink ────────────────
-function PwPlanRow({
-  active,
+/**
+ * One plan card (`flex 1, r22, padding 20 18 18`). Chosen: the ink card with
+ * `#111111` words, `rgba(17,17,17,0.6)` tagline and cycle, `rgba(17,17,17,0.7)`
+ * bottom line and the dark radio holding an ink check. Not chosen: the
+ * `#1E1E1E` card in its 1.5 line ring, ink words, mute small print and an
+ * empty ringed radio. The frame draws Yearly chosen; Monthly chosen is the same
+ * two palettes the other way round. The "Save" tab overhangs the card's top by
+ * 12 and keeps its dark-pill-in-ink-ring look on either palette.
+ */
+export function PwPlanCard({
+  on,
   onPress,
   name,
-  badge,
-  sub,
+  tagline,
   price,
   cycle,
-  top,
+  line,
+  badge,
+  style,
 }: {
-  active: boolean;
+  on: boolean;
   onPress: () => void;
   name: string;
-  badge?: string;
-  sub: string;
+  /** "Best value" / "Cancel anytime" */
+  tagline?: string;
   price: string;
   cycle: string;
-  top: number;
+  /** "$3.33 a month" / "Billed monthly" */
+  line?: string;
+  /** "Save 74%" */
+  badge?: string;
+  style?: StyleProp<ViewStyle>;
 }) {
+  const fg = on ? mono.onInk : mono.ink;
+  const soft = on ? mono.onInkMuted : mono.mute;
   return (
-    <PressScale
+    <Card
+      variant={on ? 'selected' : 'outline'}
       onPress={onPress}
       accessibilityRole="radio"
-      accessibilityState={{ checked: active }}
-      style={{
-        position: 'absolute',
-        left: 16,
-        right: 16,
-        top,
-        height: 76,
-        borderRadius: 18,
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 14,
-        paddingHorizontal: 18,
-        backgroundColor: active ? '#131313' : '#FFFFFF',
-        boxShadow: active ? undefined : '0 0 0 1px rgba(0,0,0,0.08)',
-      }}>
-      {active ? (
-        <View style={{ width: 23, height: 23, borderRadius: 11.5, backgroundColor: '#F4F3F0', alignItems: 'center', justifyContent: 'center' }}>
-          <Svg width={12} height={12} viewBox="0 0 24 24" fill="none">
-            <Path d="M4 12l5 5L20 6" stroke="#131313" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
-          </Svg>
+      accessibilityState={{ checked: on }}
+      accessibilityLabel={`${name}, ${price}${cycle}`}
+      style={[{ flex: 1 }, style]}>
+      {badge ? (
+        <View
+          style={{ position: 'absolute', top: -12, left: 18, height: 24, borderRadius: 12, backgroundColor: mono.card, boxShadow: ring.outlineInk, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center' }}>
+          <MonoText v="pill" wrap="nowrap" style={{ fontSize: 11, lineHeight: lhNormal(11), letterSpacing: 1 }}>
+            {badge}
+          </MonoText>
         </View>
-      ) : (
-        <View style={{ width: 23, height: 23, borderRadius: 11.5, borderWidth: 2, borderColor: 'rgba(0,0,0,0.18)' }} />
-      )}
-      <View style={{ flex: 1 }}>
-        {/* `minHeight: 19` is the block's own strut — a bare 15px run sits on a
-            19pt line box in the frame, which Yoga has no equivalent for
-            (DECISIONS.md D020). The badge is taller, so it only shows on the
-            monthly row. */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 19 }}>
-          <AppText style={[sans('500'), { fontSize: 15, color: active ? '#F5F4F1' : '#1D1C1A' }]}>{name}</AppText>
-          {/* the canvas only ever draws this badge on the ink row; off ink it
-              borrows the unselected radio's hairline so it stays legible */}
-          {badge ? (
-            <View style={{ borderWidth: 1, borderColor: active ? 'rgba(245,244,241,0.4)' : 'rgba(0,0,0,0.18)', borderRadius: 9, paddingHorizontal: 8, paddingVertical: 3 }}>
-              <AppText style={[sans('500'), { fontSize: 12.5, color: active ? '#F5F4F1' : '#1D1C1A' }]}>{badge}</AppText>
-            </View>
-          ) : null}
-        </View>
-        <AppText style={[sans('400'), { marginTop: 3, fontSize: 13, color: active ? 'rgba(245,244,241,0.62)' : '#8B8882' }]}>{sub}</AppText>
-      </View>
-      <View style={{ alignItems: 'flex-end' }}>
-        <AppText style={[sans('500'), { fontSize: 16, color: active ? '#F5F4F1' : '#1D1C1A' }]}>{price}</AppText>
-        <AppText style={[sans('400'), { fontSize: 12, color: active ? 'rgba(245,244,241,0.45)' : '#8B8882' }]}>{cycle}</AppText>
-      </View>
-    </PressScale>
-  );
-}
-
-/** The four promises, two to a row: 165 wide boxes at canvas y 560 and 610,
- * pinned to the canvas's own columns at x 18 and x 208. */
-const PW_BENEFITS = [
-  'The full twelve-week programme',
-  'SOS whenever an urge hits',
-  'Weekly reports from what you log',
-  'Progress and medallions in one place',
-];
-
-function PwBenefit({ text, top, left }: { text: string; top: number; left: number }) {
-  return (
-    <View style={{ position: 'absolute', top, left, width: 165, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
-      <Svg width={13} height={13} viewBox="0 0 24 24" fill="none" style={{ marginTop: 2.5 }}>
-        <Path d="M4 12.5l4.8 4.8L20 6.5" stroke="#1D1C1A" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-      </Svg>
-      <AppText style={[sans('400'), { flex: 1, fontSize: 13.5, lineHeight: 18, color: '#55534E' }]}>{text}</AppText>
-    </View>
-  );
-}
-
-// ═════ 103 — THE PLANS ═══════════════════════════════════════════════
-function PwMain({ plan, setPlan, onPay, onClose, closeLabel }: { plan: PlanKey; setPlan: (p: PlanKey) => void; onPay: () => void; onClose: () => void; closeLabel: string }) {
-  return (
-    <View style={{ flex: 1 }}>
-      {/* the paper the band dissolves into, drawn over its last 8px seam */}
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 234, height: 38, backgroundColor: '#F4F3F0' }} />
-
-      <View style={{ position: 'absolute', left: 20, top: 12 }}>
-        <PwX onPress={onClose} label={closeLabel} fill="rgba(19,19,19,0.06)" ring="rgba(0,0,0,0.18)" />
-      </View>
-      <AppText style={[sans('500'), { position: 'absolute', right: 20, top: 20, fontSize: 14, color: '#55534E' }]}>Restore</AppText>
-
-      <View style={{ position: 'absolute', left: 20, top: 174, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-        <AppText style={{ fontFamily: fonts.quote, fontSize: 15, fontWeight: '500', letterSpacing: 4, color: '#1D1C1A' }}>VICI</AppText>
-        <View style={{ backgroundColor: '#131313', borderRadius: 7, paddingHorizontal: 8, paddingVertical: 3 }}>
-          <AppText style={[sans('600'), { fontSize: 10.5, letterSpacing: 1, color: '#F4F3F0' }]}>PLUS</AppText>
-        </View>
-      </View>
-      <AppText style={[sans('500'), { position: 'absolute', left: 20, right: 80, top: 206, fontSize: 28, letterSpacing: -0.2, lineHeight: 36, color: '#1D1C1A' }]}>
-        Give it twelve weeks
-      </AppText>
-
-      <PwPlanRow active={plan === 'year'} onPress={() => setPlan('year')} name="Yearly" badge="Best value" sub="$3.33 a month" price="$39.99" cycle="/year" top={276} />
-      <PwPlanRow active={plan === 'month'} onPress={() => setPlan('month')} name="Monthly" sub="Cancel anytime" price="$12.99" cycle="/month" top={364} />
-
-      <AppText style={[sans('600'), { position: 'absolute', left: 18, top: 476, fontSize: 12.5, color: '#8B8882' }]}>Everything, unlocked</AppText>
-      <PwBenefit text={PW_BENEFITS[0]} top={506} left={18} />
-      <PwBenefit text={PW_BENEFITS[1]} top={506} left={208} />
-      <PwBenefit text={PW_BENEFITS[2]} top={556} left={18} />
-      <PwBenefit text={PW_BENEFITS[3]} top={556} left={208} />
-
-      <View style={{ position: 'absolute', left: 16, right: 16, top: 630 }}>
-        {/* the canvas labels this pill the same whichever plan is on */}
-        <PwCTA label="Start my free trial" onPress={onPay} height={52} radius={26} size={16.5} />
-      </View>
-      <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: 702, fontSize: 13, color: '#8B8882' }]}>
-        {'Terms  ·  Restore'}
-      </AppText>
-    </View>
-  );
-}
-
-// ═════ 104 — THE RESCUE: three days free, shown once when he walks ═══
-function OfferIcon({ k, c }: { k: string; c: string }) {
-  if (k === 'today')
-    return (
-      <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
-        <Path d="M7.5 10.5V7a4.5 4.5 0 0 1 8.6-1.8" stroke={c} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-        <Rect x={4.4} y={10} width={15.2} height={10.5} rx={2.6} stroke={c} strokeWidth={1.8} strokeLinejoin="round" />
-        <Path d="M12 14v2.6" stroke={c} strokeWidth={1.8} strokeLinecap="round" />
-      </Svg>
-    );
-  if (k === 'day2')
-    return (
-      <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
-        <Path d="M12 3.4a5.8 5.8 0 0 1 5.8 5.8v3.6l1.7 2.4a1 1 0 0 1-.8 1.6H5.3a1 1 0 0 1-.8-1.6l1.7-2.4V9.2A5.8 5.8 0 0 1 12 3.4z" stroke={c} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-        <Path d="M10 19.6a2.2 2.2 0 0 0 4 0" stroke={c} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-      </Svg>
-    );
-  return (
-    <Svg width={21} height={21} viewBox="0 0 24 24" fill="none">
-      <Rect x={3.5} y={5.5} width={17} height={13.5} rx={2.6} stroke={c} strokeWidth={1.8} strokeLinejoin="round" />
-      <Path d="M3.5 9.5h17" stroke={c} strokeWidth={1.8} strokeLinecap="round" />
-      <Path d="M7 15h4" stroke={c} strokeWidth={1.8} strokeLinecap="round" />
-    </Svg>
-  );
-}
-
-/** The three days, at canvas y 300 / 396 / 492 — a 96 pitch, not a stack. */
-const PW_OFFER: [string, string, number][] = [
-  ['today', 'Today — everything unlocks', 246],
-  ['day2', 'Day 2 — a reminder, before any charge', 342],
-  ['day3', 'Day 3 — $39.99/year begins, unless you cancel', 438],
-];
-
-function PwTrialOffer({ onStart, onNo, closeLabel }: { onStart: () => void; onNo: () => void; closeLabel: string }) {
-  return (
-    <View style={{ flex: 1 }}>
-      <View style={{ position: 'absolute', left: 20, top: 12 }}>
-        <PwX onPress={onNo} label={closeLabel} fill="rgba(0,0,0,0.06)" ring="rgba(0,0,0,0.10)" />
-      </View>
-      <AppText style={[sans('500'), { position: 'absolute', left: 24, right: 60, top: 104, fontSize: 28, letterSpacing: -0.2, lineHeight: 36, color: '#1D1C1A' }]}>
-        Before you go — three days on us.
-      </AppText>
-
-      {/* the thread runs from under the first disc to the foot of the last */}
-      <View style={{ position: 'absolute', left: 45, top: 290, width: 2, height: 192, backgroundColor: 'rgba(0,0,0,0.12)' }} />
-      {PW_OFFER.map(([k, t, top], i) => (
-        <View key={k} style={{ position: 'absolute', left: 24, right: 24, top, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-          <View
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 22,
-              backgroundColor: i === 0 ? '#131313' : '#FFFFFF',
-              boxShadow: i === 0 ? undefined : '0 0 0 1px rgba(0,0,0,0.12)',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <OfferIcon k={k} c={i === 0 ? '#F4F3F0' : '#1D1C1A'} />
-          </View>
-          <AppText style={[sans('500'), { flex: 1, fontSize: 15, lineHeight: 21, color: '#1D1C1A' }]}>{t}</AppText>
-        </View>
-      ))}
-
-      <View style={{ position: 'absolute', left: 24, right: 24, bottom: 96 }}>
-        <PwCTA label="Start my 3 free days" onPress={onStart} height={58} radius={29} size={17} tracking={0.2} />
-      </View>
-      <PressScale onPress={onNo} accessibilityRole="button" style={{ position: 'absolute', left: 0, right: 0, bottom: 56, minHeight: 0, alignItems: 'center' }} hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}>
-        <AppText style={[sans('500'), { fontSize: 13.5, color: '#8B8882' }]}>No thanks</AppText>
-      </PressScale>
-    </View>
-  );
-}
-
-// ═════ THE PAYMENT — the Apple Pay sheet ═════════════════════════════
-const PW_SYS = Platform.select({ ios: 'System', default: 'Helvetica Neue' }) as string;
-
-function SheetRow({ label, value, chev, last }: { label: string; value: string; chev?: boolean; last?: boolean }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 11, borderBottomWidth: last ? 0 : 1, borderBottomColor: 'rgba(0,0,0,0.08)' }}>
-      <AppText style={{ fontFamily: PW_SYS, width: 76, fontSize: 12.5, color: 'rgba(0,0,0,0.45)' }}>{label}</AppText>
-      <AppText style={{ fontFamily: PW_SYS, flex: 1, fontSize: 13.5, color: '#111' }}>{value}</AppText>
-      {chev ? (
-        <Svg width={7} height={12} viewBox="0 0 8 14">
-          <Path d="M1.5 1.5 6 7l-4.5 5.5" stroke="rgba(0,0,0,0.3)" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
       ) : null}
-    </View>
-  );
-}
-
-function PwPaySheet({ plan, email, onCancel, onPay }: { plan: PlanKey; email: string; onCancel: () => void; onPay: () => void }) {
-  const C = checkoutFor(plan);
-  return (
-    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 9 }}>
-      <Pressable onPress={onCancel} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.45)' }} />
-      {/* the side button, armed */}
-      <View style={{ position: 'absolute', right: -2, top: 168, width: 5, height: 76, borderRadius: 4, backgroundColor: '#2E63F6' }} />
-      <View style={{ position: 'absolute', left: 5, right: 5, bottom: 5, backgroundColor: '#FCFCFE', borderRadius: 34, paddingHorizontal: 20, paddingTop: 16, paddingBottom: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-            <Svg width={19} height={19} viewBox="0 0 24 24" fill="#111">
-              <Path d="M17.05 12.5c0-2.1 1.7-3.1 1.8-3.16-1-1.45-2.5-1.65-3.05-1.67-1.3-.13-2.53.76-3.19.76-.65 0-1.67-.74-2.74-.72-1.41.02-2.71.82-3.43 2.08-1.46 2.54-.37 6.3 1.05 8.36.69 1.01 1.51 2.14 2.59 2.1 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.03 2.51-2.04.79-1.17 1.12-2.3 1.13-2.36-.02-.01-2.17-.83-2.19-3.29zM15.1 6.2c.57-.69.95-1.65.85-2.6-.82.03-1.81.54-2.4 1.23-.52.6-.98 1.58-.86 2.5.91.07 1.84-.46 2.41-1.13z" />
-            </Svg>
-            <AppText style={{ fontFamily: PW_SYS, fontSize: 21, fontWeight: '600', color: '#111', letterSpacing: -0.21 }}>Pay</AppText>
-          </View>
-          <PressScale onPress={onCancel} hitSlop={8} accessibilityLabel="Cancel" style={{ width: 44, minHeight: 44, borderRadius: 9999, backgroundColor: 'rgba(0,0,0,0.07)', alignItems: 'center', justifyContent: 'center' }}>
-            <Svg width={11} height={11} viewBox="0 0 20 20">
-              <Path d="M3 3l14 14M17 3L3 17" stroke="rgba(0,0,0,0.55)" strokeWidth={2.6} strokeLinecap="round" />
-            </Svg>
-          </PressScale>
-        </View>
-        <SheetRow label="App" value={C.app} />
-        {C.trial ? <SheetRow label="Trial" value={C.trial} /> : null}
-        <SheetRow label="Account" value={email} />
-        <SheetRow label="Payment" value="Visa •••• 4271" chev />
-        <SheetRow label="Billing" value="Apple ID" chev last />
-        <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', borderTopWidth: 1.5, borderTopColor: 'rgba(0,0,0,0.12)', marginTop: 4, paddingTop: 12 }}>
-          <AppText style={{ fontFamily: PW_SYS, fontSize: 13, color: 'rgba(0,0,0,0.45)' }}>Due today</AppText>
-          <View style={{ alignItems: 'flex-end' }}>
-            <AppText style={{ fontFamily: PW_SYS, fontSize: 17, fontWeight: '600', color: '#111' }}>{C.due}</AppText>
-            <AppText style={{ fontFamily: PW_SYS, fontSize: 11.5, color: 'rgba(0,0,0,0.45)', marginTop: 2 }}>{C.note}</AppText>
-          </View>
-        </View>
-        <PressScale onPress={onPay} style={{ width: '100%', minHeight: 44, marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 9 }}>
-          <Svg width={22} height={30} viewBox="0 0 22 30" fill="none">
-            <Rect x={8} y={2} width={6} height={26} rx={3} stroke="#2E63F6" strokeWidth={2} />
-            <Path d="M18 9l2.5 2M18 15l2.5 2" stroke="#2E63F6" strokeWidth={2} strokeLinecap="round" />
-          </Svg>
-          <AppText style={{ fontFamily: PW_SYS, fontSize: 14, fontWeight: '500', color: '#2E63F6' }}>Confirm with Side Button</AppText>
-        </PressScale>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <MonoText v="pill" style={{ flexShrink: 1, fontSize: 18, lineHeight: lhNormal(18), color: fg }}>
+          {name}
+        </MonoText>
+        <CheckDisc size={22} state={on ? 'inverse' : 'empty'} />
       </View>
+      {tagline ? (
+        <MonoText v="pill" wrap="wrap" style={{ marginTop: 6, fontSize: 12, lineHeight: lhNormal(12), color: soft }}>
+          {tagline}
+        </MonoText>
+      ) : null}
+      {/* one line box: the cycle is an inline span on the price's baseline */}
+      <MonoText v="pill" wrap="wrap" style={{ marginTop: 22, fontSize: 26, lineHeight: lhNormal(26), letterSpacing: -0.8, color: fg }}>
+        {price}
+        <MonoText v="pill" style={{ fontSize: 13, letterSpacing: 0, color: soft }}>
+          {cycle}
+        </MonoText>
+      </MonoText>
+      {line ? (
+        <MonoText v="pill" wrap="wrap" style={{ marginTop: 2, color: on ? 'rgba(17,17,17,0.7)' : mono.mute }}>
+          {line}
+        </MonoText>
+      ) : null}
+    </Card>
+  );
+}
+
+/** The four promises, in the frame's order. The frame breaks none of them by hand. */
+export const PW_FEATURES = ['12-week plan', 'SOS help', 'Weekly insights', 'Progress tracking'] as const;
+
+/** `What you get` and the four 34 ink discs (row `gap 8`, columns `gap 8`), labels 12/700/16 `#B5B0A8`. */
+export function PwFeatures({ title = 'What you get', labels = PW_FEATURES }: { title?: string; labels?: readonly string[] }) {
+  return (
+    <>
+      <MonoText v="caps" style={{ marginTop: 49 }}>
+        {title}
+      </MonoText>
+      <View style={{ marginTop: 16, flexDirection: 'row', gap: 8 }}>
+        {labels.map((f) => (
+          <View key={f} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
+            <CheckDisc size={34} />
+            {/* no `text-wrap` in the frame: "Weekly insights" and "Progress tracking" wrap where the column runs out */}
+            <MonoText v="pill" wrap="wrap" center style={{ alignSelf: 'stretch', fontSize: 12, lineHeight: 16, color: mono.sub }}>
+              {f}
+            </MonoText>
+          </View>
+        ))}
+      </View>
+    </>
+  );
+}
+
+/**
+ * "Terms · Restore", 12/700 ls 0.4 mute at `bottom 52`. "Restore" is the
+ * control the top-right word used to be (D323); "Terms" has no destination in
+ * the app and stays words. Any other footnote is drawn as text.
+ */
+export function PwFooter({ text = 'Terms · Restore', onRestore }: { text?: string; onRestore: () => void }) {
+  const at = text.lastIndexOf('Restore');
+  return (
+    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52, zIndex: 6 }}>
+      {/* drawn as one run: splitting it into spans re-kerns the line at the
+          seam and moves the centred words by a fraction of a point */}
+      <MonoText v="legal" center accessibilityElementsHidden={at >= 0} importantForAccessibility={at >= 0 ? 'no-hide-descendants' : 'auto'} aria-hidden={at >= 0 || undefined}>
+        {text}
+      </MonoText>
+      {at < 0 ? null : (
+        // the same line again over it in transparent ink: its "Restore" span is the
+        // control (transparent rather than opacity 0, which iOS drops from VoiceOver)
+        <MonoText v="legal" center color="transparent" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
+          {text.slice(0, at)}
+          <Text onPress={onRestore} accessibilityRole="link" suppressHighlighting>
+            Restore
+          </Text>
+          {text.slice(at + 'Restore'.length)}
+        </MonoText>
+      )}
     </View>
   );
 }
 
-// ═════ 105 — CONFIRMED, the paper landing ════════════════════════════
-function PwConfirmed({ plan, name, email, confirmLabel, onDone }: { plan: PlanKey; name?: string; email: string; confirmLabel: string; onDone: () => void }) {
+/** The pill (82 off the edge) and the footer under it take 140 off the screen's bottom. */
+const PAYWALL_CONTROLS = 82 + 58;
+
+/**
+ * `Paywall`'s board, in canvas coordinates: the ✕, the lockup, then the stack
+ * from 130 in flow — title and sub (gap 14), the plan row at 318, "What you
+ * get" at 520, the discs at 552 — which scrolls between the nav row and the
+ * pill only on a phone too short to hold it (D320). `plans` is the card row.
+ */
+export function PwBoard({
+  closeLabel,
+  onClose,
+  eyebrow,
+  headline = 'Take your life back.',
+  plans,
+  benefitsTitle,
+  benefits,
+  cta = 'Continue',
+  onCta,
+  footnote,
+  onRestore,
+}: {
+  closeLabel: string;
+  onClose: () => void;
+  eyebrow?: string;
+  headline?: string;
+  plans: ReactNode;
+  benefitsTitle?: string;
+  benefits?: readonly string[];
+  cta?: string;
+  onCta: () => void;
+  footnote?: string;
+  onRestore: () => void;
+}) {
+  return (
+    <>
+      <PwNav label={closeLabel} onClose={onClose} />
+      <PwBrand eyebrow={eyebrow} />
+      <ScrollRegion top={100} bottom={PAYWALL_CONTROLS} contentStyle={{ paddingTop: 30, paddingHorizontal: 24, paddingBottom: 24 }}>
+        <View style={{ gap: 14 }}>
+          <MonoText v="titleCover">{headline}</MonoText>
+          <P>Break the cycle, rebuild your self-control, and become someone you can trust again.</P>
+        </View>
+        {/* 318 − (130 + 40 + 14 + 48) */}
+        <View accessibilityRole="radiogroup" style={{ marginTop: 86, flexDirection: 'row', flexWrap: 'wrap', gap: 12, rowGap: 24 }}>
+          {plans}
+        </View>
+        <PwFeatures title={benefitsTitle} labels={benefits} />
+      </ScrollRegion>
+      <PrimaryButton label={cta} bottom={82} onPress={onCta} />
+      <PwFooter text={footnote} onRestore={onRestore} />
+    </>
+  );
+}
+
+// ═════ PAYWALL ═══════════════════════════════════════════════════════
+function PwMain({
+  plan,
+  setPlan,
+  onPay,
+  onClose,
+  onRestore,
+  closeLabel,
+  money,
+}: {
+  plan: PlanKey;
+  setPlan: (p: PlanKey) => void;
+  onPay: () => void;
+  onClose: () => void;
+  onRestore: () => void;
+  closeLabel: string;
+  money: Money;
+}) {
+  return (
+    <PwBoard
+      closeLabel={closeLabel}
+      onClose={onClose}
+      onCta={onPay}
+      onRestore={onRestore}
+      plans={
+        <>
+          <PwPlanCard
+            on={plan === 'year'}
+            onPress={() => setPlan('year')}
+            name="Yearly"
+            tagline="Best value"
+            price={money.yearPrice}
+            cycle={money.yearCycle}
+            line={`${money.yearPerMonth} a month`}
+            badge={money.yearSaving}
+          />
+          <PwPlanCard
+            on={plan === 'month'}
+            onPress={() => setPlan('month')}
+            name="Monthly"
+            tagline="Cancel anytime"
+            price={money.monthPrice}
+            cycle={money.monthCycle}
+            line="Billed monthly"
+          />
+        </>
+      }
+    />
+  );
+}
+
+// ═════ RESCUE: the free days, shown once when he walks ═══════════════
+/**
+ * The timeline's connector: `flex 1; border-left 2px dashed #5A574F; margin
+ * 6px 0` under the disc. On web the border is the frame's own, so Chrome fits
+ * the same dashes to the run (6 / 4 / 6 over 16); native cannot dash one side
+ * of a box, so there it is an SVG line with the 6 4 pattern.
+ */
+function Connector() {
+  if (Platform.OS === 'web') return <View style={{ flex: 1, marginVertical: 6, borderLeftWidth: 2, borderStyle: 'dashed', borderColor: mono.art }} />;
+  return (
+    <View style={{ flex: 1, marginVertical: 6, width: 2 }}>
+      <Svg width={2} height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
+        <Line x1={1} y1={0} x2={1} y2="100%" stroke={mono.art} strokeWidth={2} strokeDasharray="6 4" />
+      </Svg>
+    </View>
+  );
+}
+
+/** The three days: today in ink with a check, then two ringed dark discs. */
+function TimelineRow({ first, last, children }: { first?: boolean; last?: boolean; children: string }) {
+  return (
+    <View style={{ flexDirection: 'row', gap: 16 }}>
+      <View style={{ width: 22, alignItems: 'center', flexShrink: 0 }}>
+        {first ? (
+          <CheckDisc size={22} />
+        ) : (
+          <View style={{ width: 22, height: 22, borderRadius: 11, backgroundColor: mono.card, boxShadow: ring.outlineInk }} />
+        )}
+        {last ? null : <Connector />}
+      </View>
+      {/* no `text-wrap`: "…unless you" / "cancel" breaks where the box runs out */}
+      <MonoText
+        v="p"
+        wrap="wrap"
+        style={{ flex: 1, paddingBottom: last ? 0 : 26, fontSize: 16, lineHeight: 24, color: mono.ink, ...(first ? sans('700') : null) }}>
+        {children}
+      </MonoText>
+    </View>
+  );
+}
+
+/** The pill at 96 over the ghost link takes 154 off the screen's bottom. */
+const RESCUE_CONTROLS = 96 + 58;
+
+function PwRescue({ onStart, onNo, closeLabel, money }: { onStart: () => void; onNo: () => void; closeLabel: string; money: Money }) {
+  const days = money.trialDays;
+  return (
+    <>
+      <PwNav label={closeLabel} onClose={onNo} />
+      {/* title at 257, rows at 367 — in flow, so a short phone scrolls instead of meeting the pill */}
+      <ScrollRegion top={100} bottom={RESCUE_CONTROLS} contentStyle={{ paddingTop: 157, paddingHorizontal: 24, paddingBottom: 24 }}>
+        {/* the frame balances after the em dash; the break is written in so
+            native (which cannot balance) and every width break there too */}
+        <H1>{`Before you go —\n${numberWords(days)} days on us.`}</H1>
+        <View style={{ marginTop: 44 }}>
+          <TimelineRow first>Today — everything unlocks</TimelineRow>
+          <TimelineRow>{`Day ${days - 1} — a reminder, before any charge`}</TimelineRow>
+          <TimelineRow last>{`Day ${days} — ${money.yearPrice}${money.yearCycle} begins, unless you cancel`}</TimelineRow>
+        </View>
+      </ScrollRegion>
+      <PrimaryButton label="Start free trial" bottom={96} onPress={onStart} />
+      <GhostLink label="No thanks" onPress={onNo} />
+    </>
+  );
+}
+
+// ═════ THE PAYMENT — the drawn pay sheet (offline only) ══════════════
+/**
+ * No frame draws it: offline there is no store, so this stands in for the
+ * system purchase sheet. It is the kit sheet (`#171717` panel over the scrim)
+ * rather than an imitation of Apple's light one — the system face and hues it
+ * used are gone from the app (D224). Its rows, the sum and "Confirm with Side
+ * Button" keep their words.
+ */
+function PwPaySheet({ open, plan, email, money, onCancel, onPay }: { open: boolean; plan: PlanKey; email: string; money: Money; onCancel: () => void; onPay: () => void }) {
+  const C = checkoutFor(plan, money);
+  // 44 + head 28 + 12 + rows (54 + 55 each after) + 12 + note 20, ending 24 above the pill at 698
+  const rows = C.trial ? 6 : 5;
+  const top = 698 - 24 - (44 + 28 + 12 + 54 + 55 * (rows - 1) + 12 + 20);
+  return (
+    <Sheet
+      open={open}
+      top={top}
+      onClose={onCancel}
+      footer={
+        <>
+          <PrimaryButton label="Confirm with Side Button" bottom={96} sheet onPress={onPay} />
+          <GhostLink label="Cancel" zIndex={42} onPress={onCancel} />
+        </>
+      }>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+        <Apple color={mono.ink} />
+        <MonoText v="h1Sheet">Pay</MonoText>
+      </View>
+      <RowGroup>
+        <Row label="App" value={C.app} chevron={false} />
+        {C.trial ? <Row label="Trial" value={C.trial} chevron={false} valueLines={1} /> : null}
+        <Row label="Account" value={email} chevron={false} valueLines={1} />
+        <Row label="Payment" value="Visa •••• 4271" chevron={false} />
+        <Row label="Billing" value="Apple ID" chevron={false} />
+        <Row label="Due today" value={C.due} chevron={false} />
+      </RowGroup>
+      <MonoText v="p" wrap="wrap" style={{ fontSize: 14, lineHeight: 20, color: mono.mute }}>
+        {C.note}
+      </MonoText>
+    </Sheet>
+  );
+}
+
+// ═════ CONFIRMED ═════════════════════════════════════════════════════
+/** The pill at 82 and the receipt line under it take 140 off the screen's bottom. */
+const CONFIRMED_CONTROLS = 82 + 58;
+
+function PwConfirmed({ plan, name, email, money, confirmLabel, onDone }: { plan: PlanKey; name?: string; email: string; money: Money; confirmLabel: string; onDone: () => void }) {
   const [now] = useState(() => new Date());
-  const in3 = fmtShort(new Date(now.getTime() + 3 * 86400000));
+  const charge = shortDate(new Date(now.getTime() + money.trialDays * 86400000)).replace(' ', '\u00A0');
   const nextYear = new Date(now);
   nextYear.setFullYear(nextYear.getFullYear() + 1);
-  // 105 sets its apostrophes as plain U+0027, not the &rsquo; other frames use
   const line =
     plan === 'trial'
-      ? `Let's take the first ground. Nothing is charged until ${in3} — cancelling is one tap in Settings.`
+      ? // no-break spaces keep "Jul 24 —" whole: a wider phone otherwise splits the date or opens a line on the dash
+        `Let’s take the first ground. Nothing is charged until ${charge}\u00A0— cancelling is one tap in Settings.`
       : plan === 'month'
-        ? `Let's take the first ground. The campaign is unlocked, month by month.`
-        : `Let's take the first ground. The whole campaign is yours until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+        ? `Let’s take the first ground. The campaign is unlocked, month by month.`
+        : `Let’s take the first ground. The whole campaign is yours until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Grain source={noiseDark} opacity={0.07} />
-      <PwFloorGlow peak={0.44} mid={0.2} />
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <View style={{ position: 'absolute', left: 0, right: 0, top: 242, alignItems: 'center' }}>
-            <View style={{ width: 84, height: 84, borderRadius: 42, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center', boxShadow: '0 14px 30px rgba(40,38,32,0.3)' }}>
-              <Svg width={34} height={34} viewBox="0 0 24 24" fill="none">
-                <Path d="M4.5 12.5l4.8 4.8L19.5 6.8" stroke="#F4F3F0" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </View>
-          </View>
-          <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 360, fontSize: 28, letterSpacing: -0.2, color: '#1D1C1A' }]}>
-            {name ? `We're in, ${name}.` : `We're in.`}
-          </AppText>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 56, right: 56, top: 412, fontSize: 14.5, lineHeight: 22, color: '#55534E' }]}>
-            {line}
-          </AppText>
-          <View style={{ position: 'absolute', left: 24, right: 24, bottom: 96 }}>
-            <PwCTA label={confirmLabel} onPress={onDone} height={58} radius={29} size={17} tracking={0.2} />
-          </View>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, bottom: 60, fontSize: 12, color: '#8B8882' }]}>
-            Receipt sent to {email}
-          </AppText>
+    <>
+      <NavBar left="empty" right="empty" />
+      {/* the disc at 266 and the stack at 436, in flow (D320) */}
+      <ScrollRegion top={100} bottom={CONFIRMED_CONTROLS} contentStyle={{ paddingTop: 166, paddingHorizontal: 24, paddingBottom: 24 }}>
+        <View style={{ alignItems: 'center' }}>
+          <CheckDisc size={132} />
         </View>
-      </SafeAreaView>
-    </View>
+        <View style={{ marginTop: 38, gap: 18, alignItems: 'center' }}>
+          <H1 center style={{ alignSelf: 'stretch' }}>
+            {name ? `We’re in, ${name}.` : 'We’re in.'}
+          </H1>
+          <P center style={{ alignSelf: 'stretch' }}>
+            {line}
+          </P>
+        </View>
+      </ScrollRegion>
+      <PrimaryButton label={confirmLabel} bottom={82} onPress={onDone} />
+      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52 }}>
+        <MonoText v="legal" center wrap="wrap" style={{ letterSpacing: 0, paddingHorizontal: 24 }}>
+          {`Receipt sent to ${email}`}
+        </MonoText>
+      </View>
+    </>
   );
 }
 
 // ═════ THE FLOW ══════════════════════════════════════════════════════
 export function PaywallFlow({
   name,
-  triggers = [],
-  emotions = [],
-  load,
-  confirmLabel = 'Begin Day I',
+  triggers: _triggers = [],
+  emotions: _emotions = [],
+  load: _load,
+  confirmLabel = 'Begin',
   embedded = false,
   onDone,
 }: {
@@ -480,10 +558,8 @@ export function PaywallFlow({
   /** Called when the funnel ends — purchased true/false. */
   onDone: (purchased: boolean) => void;
 }) {
-  const updateSettings = useUpdateSettings();
+  const purchases = usePurchases();
   const { email } = useAuth();
-  const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
   const [plan, setPlan] = useState<PlanKey>('year');
   const [checkout, setCheckout] = useState<PlanKey | null>(null);
   const [offer, setOffer] = useState(false);
@@ -493,9 +569,84 @@ export function PaywallFlow({
   const closeLabel = embedded ? 'Skip' : 'Close';
   const receipt = email ?? 'your Apple ID';
 
-  // walking away gets one rescue: 3 days free
+  const year = purchases.planFor('yearly');
+  const month = purchases.planFor('monthly');
+  const money = useMemo<Money>(
+    () => ({
+      yearPrice: year?.priceString ?? DRAWN_MONEY.yearPrice,
+      yearCycle: year?.cycle || DRAWN_MONEY.yearCycle,
+      yearPerMonth: year?.pricePerMonthString ?? DRAWN_MONEY.yearPerMonth,
+      // The canvas's "Save 74%" is $39.99 against twelve months at $12.99, so
+      // it is arithmetic and not a slogan: against a real store it is worked
+      // out from that store's own two prices, and withheld where the year is
+      // not in fact cheaper.
+      yearSaving: savingBadge(year?.pkg?.product.price, month?.pkg?.product.price) ?? DRAWN_MONEY.yearSaving,
+      monthPrice: month?.priceString ?? DRAWN_MONEY.monthPrice,
+      monthCycle: month?.cycle || DRAWN_MONEY.monthCycle,
+      trialDays: year?.intro?.days ?? DRAWN_MONEY.trialDays,
+    }),
+    [year, month],
+  );
+
+  /**
+   * The rescue page promises free days, so it only appears where free days
+   * exist: offline, where the canvas supplies them, and against a store whose
+   * yearly product carries an introductory offer. Without one, ✕ closes on the
+   * first press — the same path the canvas gives a second press.
+   */
+  const hasTrial = purchases.mode === 'mock' || !!year?.intro?.isFree;
+
+  // One store sheet at a time: a second press while the first is open would
+  // queue a second purchase behind it.
+  const busy = useRef(false);
+
+  async function buy(which: PlanKey) {
+    if (busy.current) return;
+    busy.current = true;
+    const outcome = await purchases.purchase(CATALOGUE[which]);
+    busy.current = false;
+    setSheet(false);
+    if (outcome.status === 'purchased' || (outcome.status === 'restored' && outcome.entitled)) {
+      setDone(true);
+      return;
+    }
+    if (outcome.status === 'cancelled' || outcome.status === 'restored') return;
+    Alert.alert('The store could not complete that', outcome.message);
+  }
+
+  /** The paywall's Continue and the rescue's pill both start here. */
+  function start(which: PlanKey) {
+    setCheckout(which);
+    // Offline there is no store, so the drawn sheet stands in for one; with
+    // RevenueCat configured the store presents its own and this never opens.
+    if (purchases.mode === 'mock') {
+      setSheet(true);
+      return;
+    }
+    void buy(which);
+  }
+
+  async function restore() {
+    if (busy.current) return;
+    busy.current = true;
+    const outcome = await purchases.restore();
+    busy.current = false;
+    if (outcome.status === 'restored') {
+      if (outcome.entitled) {
+        setCheckout(plan);
+        setDone(true);
+      } else {
+        Alert.alert('Nothing to restore', 'This store account has no VICI Plus purchase on it.');
+      }
+      return;
+    }
+    if (outcome.status === 'cancelled' || outcome.status === 'purchased') return;
+    Alert.alert('Could not restore', outcome.message);
+  }
+
+  // walking away gets one rescue: the free days, where there are any
   const decline = () => {
-    if (!offered) {
+    if (!offered && hasTrial) {
       setOffered(true);
       setOffer(true);
       return;
@@ -503,60 +654,18 @@ export function PaywallFlow({
     onDone(false);
   };
 
-  async function pay() {
-    await updateSettings({ premium: true }).catch(() => {});
-    setSheet(false);
-    setDone(true);
-  }
-
-  if (done) return <PwConfirmed plan={checkout || plan} name={name} email={receipt} confirmLabel={confirmLabel} onDone={() => onDone(true)} />;
-
-  // the band is drawn from the physical top so it runs behind the status bar;
-  // its canvas height of 296 ends 242 below the safe area, where the paper takes over
-  const bandH = insets.top + 242;
-
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      {offer ? (
-        <>
-          <Grain source={noiseDark} opacity={0.07} />
-          <PwFloorGlow peak={0.3} mid={0.13} />
-        </>
+    <Screen>
+      {done ? (
+        <PwConfirmed plan={checkout || plan} name={name} email={receipt} money={money} confirmLabel={confirmLabel} onDone={() => onDone(true)} />
+      ) : offer ? (
+        <PwRescue closeLabel={closeLabel} money={money} onStart={() => start('trial')} onNo={() => onDone(false)} />
       ) : (
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: bandH, overflow: 'hidden' }} pointerEvents="none">
-          <LinearGradient colors={['#F0EFE9', '#F0EBDF']} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
-          <PwHeaderArt w={width} h={bandH} />
-          <LinearGradient
-            colors={['rgba(244,243,240,0)', '#F4F3F0', '#F4F3F0']}
-            locations={[0, 0.62, 1]}
-            style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 240 }}
-          />
-        </View>
+        <PwMain plan={plan} setPlan={setPlan} closeLabel={closeLabel} money={money} onPay={() => start(plan)} onClose={decline} onRestore={() => void restore()} />
       )}
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        {offer ? (
-          <PwTrialOffer
-            closeLabel={closeLabel}
-            onStart={() => {
-              setCheckout('trial');
-              setSheet(true);
-            }}
-            onNo={() => onDone(false)}
-          />
-        ) : (
-          <PwMain
-            plan={plan}
-            setPlan={setPlan}
-            closeLabel={closeLabel}
-            onPay={() => {
-              setCheckout(plan);
-              setSheet(true);
-            }}
-            onClose={decline}
-          />
-        )}
-      </SafeAreaView>
-      {sheet ? <PwPaySheet plan={checkout || plan} email={receipt} onCancel={() => setSheet(false)} onPay={pay} /> : null}
-    </View>
+      {done ? null : (
+        <PwPaySheet open={sheet} plan={checkout || plan} email={receipt} money={money} onCancel={() => setSheet(false)} onPay={() => void buy(checkout || plan)} />
+      )}
+    </Screen>
   );
 }

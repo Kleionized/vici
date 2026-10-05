@@ -1,0 +1,6116 @@
+[
+ {
+  "frame": "Splash",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 0,
+   "extra": 3,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Login",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 7,
+   "missing": 0,
+   "extra": 9,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Welcome Back",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 7,
+   "missing": 0,
+   "extra": 9,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q24 Name",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 2,
+   "extra": 6,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q25 Age",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 0,
+   "extra": 7,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q26 Gender",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 5,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Onboarding Start",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 3,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q1",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 6,
+   "missing": 0,
+   "extra": 3,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q2",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 5,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q3",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 4,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q3b",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 5,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "First Principle",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 2,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q5",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 0,
+   "extra": 3,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q6",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q7",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 7,
+   "missing": 1,
+   "extra": 5,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "What starts it",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 8,
+   "missing": 0,
+   "extra": 3,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Transition",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q21",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 5,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "What it affects",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q10",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 5,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q13",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 5,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q15",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 5,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q16",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 5,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "V3 Q17",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 8,
+   "missing": 0,
+   "extra": 3,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Goal Confirmation",
+  "group": "auth-funnel",
+  "recipe": "auth-funnel.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Enlisting Aegis",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.092,
+  "regions": [
+   {
+    "x": 188,
+    "y": 240,
+    "w": 36,
+    "h": 12,
+    "px": 455
+   },
+   {
+    "x": 224,
+    "y": 280,
+    "w": 16,
+    "h": 28,
+    "px": 432
+   },
+   {
+    "x": 172,
+    "y": 308,
+    "w": 24,
+    "h": 12,
+    "px": 50
+   },
+   {
+    "x": 156,
+    "y": 260,
+    "w": 8,
+    "h": 16,
+    "px": 29
+   },
+   {
+    "x": 156,
+    "y": 288,
+    "w": 8,
+    "h": 4,
+    "px": 19
+   },
+   {
+    "x": 200,
+    "y": 316,
+    "w": 4,
+    "h": 4,
+    "px": 19
+   },
+   {
+    "x": 180,
+    "y": 244,
+    "w": 4,
+    "h": 4,
+    "px": 17
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 17
+   }
+  ],
+  "sig": {
+   "differing": 3,
+   "missing": 3,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Where We’d Start",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.012,
+  "regions": [
+   {
+    "x": 252,
+    "y": 664,
+    "w": 12,
+    "h": 12,
+    "px": 49
+   },
+   {
+    "x": 164,
+    "y": 664,
+    "w": 8,
+    "h": 12,
+    "px": 39
+   },
+   {
+    "x": 280,
+    "y": 664,
+    "w": 8,
+    "h": 12,
+    "px": 38
+   },
+   {
+    "x": 220,
+    "y": 664,
+    "w": 8,
+    "h": 12,
+    "px": 24
+   }
+  ],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 7,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Start Here",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Start Here Step 1",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Start Here Step 2",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Your Plan",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 48,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 52,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 72,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 76,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 11,
+   "missing": 0,
+   "extra": 4,
+   "net": 11
+  },
+  "errors": []
+ },
+ {
+  "frame": "Starting Score",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "DIFF",
+  "px": 1.801,
+  "regions": [
+   {
+    "x": 112,
+    "y": 360,
+    "w": 176,
+    "h": 68,
+    "px": 20162
+   },
+   {
+    "x": 292,
+    "y": 364,
+    "w": 36,
+    "h": 64,
+    "px": 2256
+   }
+  ],
+  "sig": {
+   "differing": 6,
+   "missing": 10,
+   "extra": 13,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cost Next 30",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.011,
+  "regions": [
+   {
+    "x": 36,
+    "y": 420,
+    "w": 8,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 212,
+    "y": 420,
+    "w": 4,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 60,
+    "y": 420,
+    "w": 8,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 96,
+    "y": 420,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 236,
+    "y": 420,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 328,
+    "y": 420,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 120,
+    "y": 420,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 156,
+    "y": 420,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   }
+  ],
+  "sig": {
+   "differing": 4,
+   "missing": 0,
+   "extra": 7,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cost Next 365",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cost By Age 80",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 2343,
+   "extra": 6,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Line If Nothing Changes",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 192,
+    "y": 512,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Line With the Plan",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 180,
+    "y": 544,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 188,
+    "y": 544,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "A Clean Day",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 0,
+   "extra": 2,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "One Bad Day",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 0,
+   "extra": 2,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "What You Want Back",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 0,
+   "extra": 7,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Received",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Week XII",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 0,
+   "extra": 5,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "The Vow",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 0,
+   "extra": 5,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallion Received",
+  "group": "tail",
+  "recipe": "tail.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Reminders Setup",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 6,
+   "missing": 1,
+   "extra": 8,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Paywall",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0.105,
+  "regions": [
+   {
+    "x": 316,
+    "y": 72,
+    "w": 56,
+    "h": 16,
+    "px": 1311
+   }
+  ],
+  "sig": {
+   "differing": 18,
+   "missing": 1,
+   "extra": 12,
+   "net": 18
+  },
+  "errors": []
+ },
+ {
+  "frame": "Day Zero",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 4,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Paywall Rescue",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Paywall Confirmed",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 236,
+    "y": 380,
+    "w": 8,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 152,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   }
+  ],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Manage Subscription",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 16,
+   "missing": 1,
+   "extra": 5,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Check-in Time",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 28,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 60,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 160,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 180,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 212,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 228,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 260,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 280,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 23,
+   "missing": 4,
+   "extra": 27,
+   "net": 23
+  },
+  "errors": []
+ },
+ {
+  "frame": "Nightly Check-in Time",
+  "group": "paywall-reminders",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 28,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 60,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 160,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 180,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 212,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 228,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 260,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 280,
+    "y": 608,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 23,
+   "missing": 4,
+   "extra": 29,
+   "net": 23
+  },
+  "errors": []
+ },
+ {
+  "frame": "Today Home",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "DIFF",
+  "px": 1.89,
+  "regions": [
+   {
+    "x": 24,
+    "y": 368,
+    "w": 328,
+    "h": 180,
+    "px": 23533
+   }
+  ],
+  "sig": {
+   "differing": 20,
+   "missing": 1,
+   "extra": 107,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Score Detail",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "DIFF",
+  "px": 1.775,
+  "regions": [
+   {
+    "x": 0,
+    "y": 392,
+    "w": 396,
+    "h": 116,
+    "px": 9126
+   },
+   {
+    "x": 0,
+    "y": 428,
+    "w": 396,
+    "h": 96,
+    "px": 8613
+   },
+   {
+    "x": 92,
+    "y": 604,
+    "w": 184,
+    "h": 20,
+    "px": 4355
+   },
+   {
+    "x": 60,
+    "y": 636,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 13,
+   "missing": 4,
+   "extra": 84,
+   "net": 13
+  },
+  "errors": []
+ },
+ {
+  "frame": "Score Detail Moves",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "DIFF",
+  "px": 0.747,
+  "regions": [
+   {
+    "x": 192,
+    "y": 408,
+    "w": 48,
+    "h": 16,
+    "px": 1896
+   },
+   {
+    "x": 36,
+    "y": 540,
+    "w": 80,
+    "h": 20,
+    "px": 1558
+   },
+   {
+    "x": 300,
+    "y": 604,
+    "w": 60,
+    "h": 20,
+    "px": 1549
+   },
+   {
+    "x": 172,
+    "y": 496,
+    "w": 36,
+    "h": 16,
+    "px": 1320
+   },
+   {
+    "x": 320,
+    "y": 364,
+    "w": 40,
+    "h": 16,
+    "px": 694
+   },
+   {
+    "x": 172,
+    "y": 452,
+    "w": 16,
+    "h": 16,
+    "px": 548
+   },
+   {
+    "x": 328,
+    "y": 496,
+    "w": 32,
+    "h": 16,
+    "px": 503
+   },
+   {
+    "x": 188,
+    "y": 540,
+    "w": 36,
+    "h": 16,
+    "px": 497
+   }
+  ],
+  "sig": {
+   "differing": 16,
+   "missing": 10,
+   "extra": 77,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Score Detail Ranks",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 19,
+   "missing": 0,
+   "extra": 60,
+   "net": 19
+  },
+  "errors": []
+ },
+ {
+  "frame": "Today Home II",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "CLEAN",
+  "px": 0.42,
+  "regions": [
+   {
+    "x": 40,
+    "y": 648,
+    "w": 120,
+    "h": 16,
+    "px": 2778
+   },
+   {
+    "x": 48,
+    "y": 668,
+    "w": 96,
+    "h": 16,
+    "px": 2203
+   },
+   {
+    "x": 80,
+    "y": 628,
+    "w": 16,
+    "h": 12,
+    "px": 241
+   },
+   {
+    "x": 136,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 168,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 224,
+    "y": 320,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 34,
+   "missing": 2,
+   "extra": 99,
+   "net": 33
+  },
+  "errors": []
+ },
+ {
+  "frame": "Today Home Task",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "CLEAN",
+  "px": 0.42,
+  "regions": [
+   {
+    "x": 40,
+    "y": 648,
+    "w": 120,
+    "h": 16,
+    "px": 2778
+   },
+   {
+    "x": 48,
+    "y": 668,
+    "w": 96,
+    "h": 16,
+    "px": 2203
+   },
+   {
+    "x": 80,
+    "y": 628,
+    "w": 16,
+    "h": 12,
+    "px": 241
+   },
+   {
+    "x": 136,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 168,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 224,
+    "y": 320,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 34,
+   "missing": 2,
+   "extra": 99,
+   "net": 33
+  },
+  "errors": []
+ },
+ {
+  "frame": "Today Home III",
+  "group": "today",
+  "recipe": "today.json",
+  "status": "CLEAN",
+  "px": 0.004,
+  "regions": [
+   {
+    "x": 204,
+    "y": 308,
+    "w": 16,
+    "h": 12,
+    "px": 27
+   },
+   {
+    "x": 296,
+    "y": 304,
+    "w": 4,
+    "h": 4,
+    "px": 9
+   },
+   {
+    "x": 96,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   }
+  ],
+  "sig": {
+   "differing": 41,
+   "missing": 2,
+   "extra": 97,
+   "net": 41
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Check-in Cover",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Task Check",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 4,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning 1 Yesterday",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0.085,
+  "regions": [
+   {
+    "x": 340,
+    "y": 232,
+    "w": 28,
+    "h": 12,
+    "px": 608
+   },
+   {
+    "x": 280,
+    "y": 232,
+    "w": 32,
+    "h": 12,
+    "px": 337
+   },
+   {
+    "x": 312,
+    "y": 232,
+    "w": 16,
+    "h": 12,
+    "px": 111
+   }
+  ],
+  "sig": {
+   "differing": 6,
+   "missing": 2,
+   "extra": 5,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Feeling",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Energy",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Resign Pledge",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 7,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning Pledge Signed",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 7,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Change Pledge Sheet",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0.188,
+  "regions": [
+   {
+    "x": 352,
+    "y": 72,
+    "w": 20,
+    "h": 16,
+    "px": 396
+   },
+   {
+    "x": 20,
+    "y": 68,
+    "w": 16,
+    "h": 24,
+    "px": 238
+   },
+   {
+    "x": 80,
+    "y": 76,
+    "w": 24,
+    "h": 8,
+    "px": 192
+   },
+   {
+    "x": 108,
+    "y": 76,
+    "w": 28,
+    "h": 8,
+    "px": 192
+   },
+   {
+    "x": 140,
+    "y": 76,
+    "w": 24,
+    "h": 8,
+    "px": 192
+   },
+   {
+    "x": 168,
+    "y": 76,
+    "w": 28,
+    "h": 8,
+    "px": 192
+   },
+   {
+    "x": 200,
+    "y": 76,
+    "w": 24,
+    "h": 8,
+    "px": 192
+   },
+   {
+    "x": 228,
+    "y": 76,
+    "w": 28,
+    "h": 8,
+    "px": 192
+   }
+  ],
+  "sig": {
+   "differing": 3,
+   "missing": 2,
+   "extra": 44,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Morning 5 Done",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 0,
+   "extra": 2,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night Check-in Cover",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night 1 Mood",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Checkin Emotions",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 8,
+   "missing": 1,
+   "extra": 8,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Checkin Reasons",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 8,
+   "missing": 1,
+   "extra": 7,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night 3 Reflection",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0.015,
+  "regions": [
+   {
+    "x": 336,
+    "y": 236,
+    "w": 4,
+    "h": 28,
+    "px": 192
+   }
+  ],
+  "sig": {
+   "differing": 2,
+   "missing": 3,
+   "extra": 6,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night 2 Record",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 6,
+   "missing": 0,
+   "extra": 3,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night Action Reminder",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Night 4 Closed",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week I Reset",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 2,
+   "extra": 130,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week I Reset P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 9,
+   "missing": 2,
+   "extra": 138,
+   "net": 9
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week II Changing Your Mindset",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 240,
+    "y": 168,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 240,
+    "y": 188,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 2,
+   "extra": 215,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week II Changing Your Mindset P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 240,
+    "y": 168,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 240,
+    "y": 188,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 9,
+   "missing": 2,
+   "extra": 223,
+   "net": 9
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week III In the Moment",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.005,
+  "regions": [
+   {
+    "x": 128,
+    "y": 240,
+    "w": 12,
+    "h": 8,
+    "px": 22
+   },
+   {
+    "x": 144,
+    "y": 240,
+    "w": 12,
+    "h": 4,
+    "px": 22
+   },
+   {
+    "x": 276,
+    "y": 248,
+    "w": 4,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 228,
+    "y": 240,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 116,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 3,
+   "extra": 208,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week III In the Moment P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.005,
+  "regions": [
+   {
+    "x": 128,
+    "y": 240,
+    "w": 12,
+    "h": 8,
+    "px": 22
+   },
+   {
+    "x": 144,
+    "y": 240,
+    "w": 12,
+    "h": 4,
+    "px": 22
+   },
+   {
+    "x": 276,
+    "y": 248,
+    "w": 4,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 228,
+    "y": 240,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 116,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 9,
+   "missing": 3,
+   "extra": 216,
+   "net": 9
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week IV Know Your Brain",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.009,
+  "regions": [
+   {
+    "x": 232,
+    "y": 284,
+    "w": 16,
+    "h": 8,
+    "px": 34
+   },
+   {
+    "x": 128,
+    "y": 276,
+    "w": 8,
+    "h": 4,
+    "px": 12
+   },
+   {
+    "x": 248,
+    "y": 228,
+    "w": 8,
+    "h": 8,
+    "px": 11
+   },
+   {
+    "x": 212,
+    "y": 164,
+    "w": 8,
+    "h": 4,
+    "px": 8
+   },
+   {
+    "x": 212,
+    "y": 184,
+    "w": 12,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 124,
+    "y": 180,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 204,
+    "y": 168,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 120,
+    "y": 184,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 20,
+   "missing": 2,
+   "extra": 223,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week IV Know Your Brain P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.009,
+  "regions": [
+   {
+    "x": 232,
+    "y": 284,
+    "w": 16,
+    "h": 8,
+    "px": 34
+   },
+   {
+    "x": 128,
+    "y": 276,
+    "w": 8,
+    "h": 4,
+    "px": 12
+   },
+   {
+    "x": 248,
+    "y": 228,
+    "w": 8,
+    "h": 8,
+    "px": 11
+   },
+   {
+    "x": 212,
+    "y": 164,
+    "w": 8,
+    "h": 4,
+    "px": 8
+   },
+   {
+    "x": 212,
+    "y": 184,
+    "w": 12,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 124,
+    "y": 180,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 204,
+    "y": 168,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 120,
+    "y": 184,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 19,
+   "missing": 2,
+   "extra": 231,
+   "net": 19
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week V Why It Feels Worth It",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.011,
+  "regions": [
+   {
+    "x": 200,
+    "y": 152,
+    "w": 44,
+    "h": 8,
+    "px": 72
+   },
+   {
+    "x": 116,
+    "y": 164,
+    "w": 12,
+    "h": 8,
+    "px": 22
+   },
+   {
+    "x": 112,
+    "y": 220,
+    "w": 12,
+    "h": 8,
+    "px": 16
+   },
+   {
+    "x": 128,
+    "y": 216,
+    "w": 8,
+    "h": 8,
+    "px": 12
+   },
+   {
+    "x": 260,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 252,
+    "y": 156,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 256,
+    "y": 200,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 2,
+   "extra": 192,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week V Why It Feels Worth It P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.011,
+  "regions": [
+   {
+    "x": 200,
+    "y": 152,
+    "w": 44,
+    "h": 8,
+    "px": 72
+   },
+   {
+    "x": 116,
+    "y": 164,
+    "w": 12,
+    "h": 8,
+    "px": 22
+   },
+   {
+    "x": 112,
+    "y": 220,
+    "w": 12,
+    "h": 8,
+    "px": 16
+   },
+   {
+    "x": 128,
+    "y": 216,
+    "w": 8,
+    "h": 8,
+    "px": 12
+   },
+   {
+    "x": 260,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 252,
+    "y": 156,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 256,
+    "y": 200,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 9,
+   "missing": 2,
+   "extra": 200,
+   "net": 9
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VI Discipline",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.006,
+  "regions": [
+   {
+    "x": 192,
+    "y": 196,
+    "w": 36,
+    "h": 4,
+    "px": 66
+   },
+   {
+    "x": 216,
+    "y": 144,
+    "w": 8,
+    "h": 4,
+    "px": 7
+   },
+   {
+    "x": 200,
+    "y": 144,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 13,
+   "missing": 2,
+   "extra": 177,
+   "net": 13
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VI Discipline P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.006,
+  "regions": [
+   {
+    "x": 192,
+    "y": 196,
+    "w": 36,
+    "h": 4,
+    "px": 66
+   },
+   {
+    "x": 216,
+    "y": 144,
+    "w": 8,
+    "h": 4,
+    "px": 7
+   },
+   {
+    "x": 200,
+    "y": 144,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 186,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VII Relapse and Adversity",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 252,
+    "y": 240,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 256,
+    "y": 244,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 248,
+    "y": 236,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 240,
+    "y": 272,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 220,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 173,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VII Relapse and Adversity P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 252,
+    "y": 240,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 256,
+    "y": 244,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 248,
+    "y": 236,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 240,
+    "y": 272,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 220,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 179,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 168,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 160,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 168,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 166,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week IX Connection",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 167,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week IX Connection P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 173,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week X Yourself",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 166,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week X Yourself P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 172,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week XI Build a Life You Want",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 256,
+    "y": 224,
+    "w": 8,
+    "h": 12,
+    "px": 12
+   },
+   {
+    "x": 252,
+    "y": 220,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 166,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week XI Build a Life You Want P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 256,
+    "y": 224,
+    "w": 8,
+    "h": 12,
+    "px": 12
+   },
+   {
+    "x": 252,
+    "y": 220,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 172,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week XII Leave It Behind",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 14,
+   "missing": 2,
+   "extra": 104,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Week XII Leave It Behind P2",
+  "group": "library",
+  "recipe": "library.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 12,
+   "missing": 2,
+   "extra": 110,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cue Intro Modal",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Strength",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 8,
+   "missing": 2,
+   "extra": 13,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cue Hue Picker",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 24,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 368,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 11,
+   "missing": 2,
+   "extra": 6,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Surf Step 1",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Surf Step 3",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Cue Set Confirmation",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Reason Picker",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 2,
+   "extra": 6,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feeling Picker",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 2,
+   "extra": 6,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Challenge",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Reassess",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 7,
+   "missing": 2,
+   "extra": 12,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Afterward",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0.014,
+  "regions": [
+   {
+    "x": 172,
+    "y": 288,
+    "w": 4,
+    "h": 28,
+    "px": 176
+   }
+  ],
+  "sig": {
+   "differing": 2,
+   "missing": 3,
+   "extra": 7,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Surf Complete",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 2,
+   "extra": 6,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Relapse Log",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Relapse Twice",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Relapse Resign",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 2,
+   "extra": 9,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Relapse Begin",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Now",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "DIFF",
+  "px": 0.662,
+  "regions": [
+   {
+    "x": 100,
+    "y": 308,
+    "w": 48,
+    "h": 164,
+    "px": 8089
+   },
+   {
+    "x": 156,
+    "y": 476,
+    "w": 20,
+    "h": 12,
+    "px": 29
+   },
+   {
+    "x": 204,
+    "y": 484,
+    "w": 16,
+    "h": 4,
+    "px": 21
+   },
+   {
+    "x": 224,
+    "y": 480,
+    "w": 8,
+    "h": 4,
+    "px": 13
+   },
+   {
+    "x": 280,
+    "y": 368,
+    "w": 4,
+    "h": 12,
+    "px": 11
+   },
+   {
+    "x": 288,
+    "y": 360,
+    "w": 4,
+    "h": 12,
+    "px": 9
+   },
+   {
+    "x": 292,
+    "y": 380,
+    "w": 4,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 140,
+    "y": 468,
+    "w": 4,
+    "h": 4,
+    "px": 9
+   }
+  ],
+  "sig": {
+   "differing": 7,
+   "missing": 1,
+   "extra": 128,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Score",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 35,
+   "missing": 1,
+   "extra": 102,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Proof",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 6,
+   "missing": 0,
+   "extra": 117,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Surfed",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 15,
+   "missing": 1,
+   "extra": 111,
+   "net": 15
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Pledges",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 0,
+   "extra": 117,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Hub Breathe",
+  "group": "sos-flow",
+  "recipe": "sos-flow.json",
+  "status": "CLEAN",
+  "px": 0.177,
+  "regions": [
+   {
+    "x": 312,
+    "y": 68,
+    "w": 24,
+    "h": 24,
+    "px": 658
+   },
+   {
+    "x": 156,
+    "y": 464,
+    "w": 76,
+    "h": 16,
+    "px": 285
+   },
+   {
+    "x": 124,
+    "y": 372,
+    "w": 16,
+    "h": 76,
+    "px": 280
+   },
+   {
+    "x": 176,
+    "y": 336,
+    "w": 52,
+    "h": 8,
+    "px": 191
+   },
+   {
+    "x": 260,
+    "y": 376,
+    "w": 8,
+    "h": 52,
+    "px": 187
+   },
+   {
+    "x": 136,
+    "y": 340,
+    "w": 40,
+    "h": 32,
+    "px": 178
+   },
+   {
+    "x": 232,
+    "y": 428,
+    "w": 32,
+    "h": 40,
+    "px": 177
+   },
+   {
+    "x": 228,
+    "y": 344,
+    "w": 32,
+    "h": 32,
+    "px": 153
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 0,
+   "extra": 11,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Bed",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Bathroom",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Home Alone",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Private Room",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Work",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Public",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Loc Elsewhere",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Turned On",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Bored",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Lonely",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Stressed",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Anxious",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Angry",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Low",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Rejected",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Tired",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 4,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Restless",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Numb",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Ashamed",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Feel Unknown",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Content",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Doomscroll",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Fantasy",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Late Phone",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Habit",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Cant Sleep",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Argument",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 3,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Rejection",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Alone",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "SOS Trig Unknown",
+  "group": "sos-boards",
+  "recipe": "sos-boards.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 4,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallions",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 20,
+   "missing": 2,
+   "extra": 218,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallions Still To Earn",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 12,
+   "missing": 1,
+   "extra": 8,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Album Earned II",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 308,
+    "y": 384,
+    "w": 8,
+    "h": 12,
+    "px": 36
+   }
+  ],
+  "sig": {
+   "differing": 16,
+   "missing": 2,
+   "extra": 327,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Paper",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Bronze",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Silver",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Gold",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Platinum",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.004,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 24,
+    "h": 8,
+    "px": 25
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 264,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 268,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 140,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 248,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 144,
+    "y": 300,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Vidi",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.013,
+  "regions": [
+   {
+    "x": 200,
+    "y": 256,
+    "w": 16,
+    "h": 4,
+    "px": 19
+   },
+   {
+    "x": 176,
+    "y": 256,
+    "w": 16,
+    "h": 4,
+    "px": 17
+   },
+   {
+    "x": 176,
+    "y": 212,
+    "w": 12,
+    "h": 4,
+    "px": 10
+   },
+   {
+    "x": 208,
+    "y": 212,
+    "w": 8,
+    "h": 4,
+    "px": 9
+   },
+   {
+    "x": 164,
+    "y": 248,
+    "w": 12,
+    "h": 8,
+    "px": 8
+   },
+   {
+    "x": 180,
+    "y": 204,
+    "w": 8,
+    "h": 4,
+    "px": 7
+   },
+   {
+    "x": 220,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 208,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Vici",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Rebound",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Breakwater",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 176,
+    "y": 228,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 200,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 196,
+    "y": 228,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 192,
+    "y": 232,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Logbook",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Pulse",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Archive",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Lessons",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.004,
+  "regions": [
+   {
+    "x": 180,
+    "y": 252,
+    "w": 16,
+    "h": 8,
+    "px": 20
+   },
+   {
+    "x": 200,
+    "y": 252,
+    "w": 12,
+    "h": 8,
+    "px": 19
+   },
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers One-offs",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 96,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 268,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 292,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 1,
+   "extra": 7,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Paper",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "DIFF",
+  "px": 5.648,
+  "regions": [
+   {
+    "x": 40,
+    "y": 464,
+    "w": 324,
+    "h": 100,
+    "px": 21596
+   },
+   {
+    "x": 72,
+    "y": 600,
+    "w": 248,
+    "h": 76,
+    "px": 18965
+   },
+   {
+    "x": 36,
+    "y": 404,
+    "w": 324,
+    "h": 52,
+    "px": 11891
+   },
+   {
+    "x": 156,
+    "y": 212,
+    "w": 80,
+    "h": 80,
+    "px": 7822
+   },
+   {
+    "x": 168,
+    "y": 360,
+    "w": 56,
+    "h": 40,
+    "px": 3386
+   },
+   {
+    "x": 156,
+    "y": 308,
+    "w": 84,
+    "h": 16,
+    "px": 564
+   },
+   {
+    "x": 268,
+    "y": 232,
+    "w": 12,
+    "h": 32,
+    "px": 495
+   },
+   {
+    "x": 116,
+    "y": 212,
+    "w": 16,
+    "h": 40,
+    "px": 466
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 54,
+   "extra": 58,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Bronze",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Silver",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 200,
+    "y": 496,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 44,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 68,
+    "y": 500,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 72,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 180,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 208,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Gold",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Platinum",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.005,
+  "regions": [
+   {
+    "x": 116,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 496,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 72,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 112,
+    "y": 504,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 136,
+    "y": 504,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 324,
+    "y": 504,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 44,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 272,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Log Chooser",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lapse When",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 24,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 112,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 20,
+   "missing": 3,
+   "extra": 26,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lapse Trigger",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 144,
+    "y": 348,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 28,
+    "y": 348,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 24,
+    "y": 352,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lapse Done",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 6,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Log Urges",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 29,
+   "missing": 1,
+   "extra": 20,
+   "net": 29
+  },
+  "errors": []
+ },
+ {
+  "frame": "Log Check-ins",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 33,
+   "missing": 2,
+   "extra": 37,
+   "net": 26
+  },
+  "errors": []
+ },
+ {
+  "frame": "Log Reports",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.426,
+  "regions": [
+   {
+    "x": 88,
+    "y": 356,
+    "w": 212,
+    "h": 48,
+    "px": 5296
+   }
+  ],
+  "sig": {
+   "differing": 18,
+   "missing": 1,
+   "extra": 17,
+   "net": 18
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Overview Summary",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 16,
+   "missing": 0,
+   "extra": 140,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Overview",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 32,
+   "missing": 0,
+   "extra": 108,
+   "net": 19
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Overview Mood",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 18,
+   "missing": 0,
+   "extra": 113,
+   "net": 14
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Overview When",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 22,
+   "missing": 2,
+   "extra": 100,
+   "net": 13
+  },
+  "errors": []
+ },
+ {
+  "frame": "Report Ready",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Weekly Report",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.012,
+  "regions": [
+   {
+    "x": 140,
+    "y": 476,
+    "w": 16,
+    "h": 12,
+    "px": 97
+   },
+   {
+    "x": 240,
+    "y": 396,
+    "w": 4,
+    "h": 8,
+    "px": 12
+   },
+   {
+    "x": 48,
+    "y": 456,
+    "w": 8,
+    "h": 8,
+    "px": 11
+   },
+   {
+    "x": 336,
+    "y": 368,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 148,
+    "y": 428,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 152,
+    "y": 432,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 340,
+    "y": 364,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 85,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Weekly Report Days",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 224,
+    "y": 380,
+    "w": 8,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 260,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 32,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 80,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 128,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 176,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 272,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 320,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 13,
+   "missing": 0,
+   "extra": 38,
+   "net": 13
+  },
+  "errors": []
+ },
+ {
+  "frame": "Weekly Report Urges",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 11,
+   "missing": 0,
+   "extra": 81,
+   "net": 11
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Log Intensity",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 7,
+   "missing": 2,
+   "extra": 9,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Log Trigger",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 144,
+    "y": 348,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 28,
+    "y": 348,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 24,
+    "y": 352,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Log Outcome",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 6,
+   "missing": 1,
+   "extra": 5,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Log When",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 24,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 112,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 20,
+   "missing": 3,
+   "extra": 26,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Urge Log Done",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 192,
+    "y": 280,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 188,
+    "y": 200,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 6,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Settings",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 21,
+   "missing": 1,
+   "extra": 4,
+   "net": 21
+  },
+  "errors": []
+ },
+ {
+  "frame": "Edit Profile",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 16,
+   "missing": 1,
+   "extra": 5,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Sheet Profile Photo",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 20,
+   "missing": 1,
+   "extra": 6,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Sheet Edit Name",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0.014,
+  "regions": [
+   {
+    "x": 132,
+    "y": 520,
+    "w": 4,
+    "h": 28,
+    "px": 176
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 2,
+   "extra": 7,
+   "net": 17
+  },
+  "errors": []
+ },
+ {
+  "frame": "Settings Weekly Report",
+  "group": "settings",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0.012,
+  "regions": [
+   {
+    "x": 140,
+    "y": 476,
+    "w": 16,
+    "h": 12,
+    "px": 97
+   },
+   {
+    "x": 240,
+    "y": 396,
+    "w": 4,
+    "h": 8,
+    "px": 12
+   },
+   {
+    "x": 48,
+    "y": 456,
+    "w": 8,
+    "h": 8,
+    "px": 11
+   },
+   {
+    "x": 336,
+    "y": 368,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 148,
+    "y": 428,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 152,
+    "y": 432,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 340,
+    "y": 364,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 85,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Settings Check-in Time",
+  "group": "settings",
+  "recipe": "paywall-reminders.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 23,
+   "missing": 4,
+   "extra": 29,
+   "net": 23
+  },
+  "errors": []
+ },
+ {
+  "frame": "Your Vow Page",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 8,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Sheet Sign Out",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 23,
+   "missing": 1,
+   "extra": 5,
+   "net": 23
+  },
+  "errors": []
+ },
+ {
+  "frame": "Data Privacy",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 300,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 9,
+   "missing": 1,
+   "extra": 3,
+   "net": 9
+  },
+  "errors": []
+ },
+ {
+  "frame": "App Lock",
+  "group": "settings",
+  "recipe": "settings.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 300,
+    "y": 604,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 348,
+    "y": 604,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 9,
+   "missing": 1,
+   "extra": 3,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Entry",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Close It",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip When",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 24,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 112,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 20,
+   "missing": 3,
+   "extra": 27,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Fed",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 144,
+    "y": 348,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 28,
+    "y": 348,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 24,
+    "y": 352,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 10,
+   "missing": 1,
+   "extra": 5,
+   "net": 10
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Logged",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 6,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Urge Now",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 352,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 36,
+    "y": 380,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 6,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Dont Fail Twice",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Stop Here",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Third",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Pledge",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 9,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Begin Again",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 1,
+   "missing": 1,
+   "extra": 4,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Morning After",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Ashamed",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Bored",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Lonely",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Stressed",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Rejected",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Tired",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Turned on",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Feel Not sure",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Late night",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Scrolling",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Sexual content",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Boredom",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Loneliness",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Stress",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Argument",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 4,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Couldn’t sleep",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Being alone",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Habit",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Slip Trigger Not sure",
+  "group": "slip",
+  "recipe": "slip.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Arrival",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Read",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 4,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallion Letter",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "DIFF",
+  "px": 0.547,
+  "regions": [
+   {
+    "x": 116,
+    "y": 480,
+    "w": 192,
+    "h": 36,
+    "px": 5804
+   },
+   {
+    "x": 68,
+    "y": 488,
+    "w": 24,
+    "h": 20,
+    "px": 978
+   },
+   {
+    "x": 56,
+    "y": 488,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 60,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 96,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 96,
+    "y": 488,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 100,
+    "y": 492,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 4,
+   "missing": 8,
+   "extra": 10,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Yearly Drop",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.103,
+  "regions": [
+   {
+    "x": 316,
+    "y": 72,
+    "w": 56,
+    "h": 16,
+    "px": 1288
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 5,
+   "extra": 11,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Drop Received",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 0,
+   "extra": 3,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 1",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 128,
+    "y": 328,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 1,
+   "missing": 2,
+   "extra": 6,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 2",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 3",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 4",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 5",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 1,
+   "extra": 6,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 6",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 7",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [
+   {
+    "x": 260,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 276,
+    "y": 256,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 2,
+   "missing": 2,
+   "extra": 7,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 8",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 9",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 10",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 11",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 12",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 1
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 13",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ },
+ {
+  "frame": "Lesson Scroll 14",
+  "group": "lessons",
+  "recipe": "lessons.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 2,
+   "missing": 1,
+   "extra": 5,
+   "net": 2
+  },
+  "errors": []
+ }
+]

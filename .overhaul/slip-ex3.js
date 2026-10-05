@@ -1,0 +1,20 @@
+/* GROUP slip — a yesterday slip through the card deck, the pledge, begin → morning → check-in. */
+const log = (s) => console.error('EX ' + s);
+await tap('Log the slip'); await tap('Continue'); await tap('Yesterday'); await tap('Continue');
+await tap('Late night'); await tap('Continue', { wait: 600 });
+log('logged rows: ' + __txt().slice(70, 230));
+await tap('Continue'); await tap('Continue');
+log('warn: ' + __txt().slice(0, 30));
+await tap('Continue');
+log('card0: ' + __txt().slice(0, 40));
+await tap('Give me another');
+log('card1: ' + __txt().slice(0, 40));
+await tap('Done');
+log('cta -> ' + __txt().slice(0, 40));
+await tap('Sign it again');
+log('begin: ' + __txt().slice(0, 40));
+await tap('Start again', { wait: 600 });
+log('start again -> ' + location.pathname + ' :: ' + __txt().slice(0, 30));
+await tap('Check in', { wait: 1500 });
+log('check in -> ' + location.pathname + ' :: ' + __txt().slice(0, 40));
+return 'done';

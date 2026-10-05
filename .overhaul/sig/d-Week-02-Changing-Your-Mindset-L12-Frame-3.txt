@@ -1,0 +1,25 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 12
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 72.4 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 184.5 | 329 | 138 | - | - | - | - | - | -
+div | 32 | 184.5 | 329 | 138 | - | - | - | - | - | -
+div | 32 | 184.5 | 159.5 | 138 | rgb(30, 30, 30) | 18px | - | rgb(242, 240, 236) 0px 0px 0px 1.5px inset | - | -
+div | 48 | 200.5 | 127.5 | 32 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Describes something you do
+div | 48 | 240.5 | 127.5 | 66 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | “I keep watching longer than I intend.”
+div | 201.5 | 184.5 | 159.5 | 138 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 217.5 | 200.5 | 127.5 | 32 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Claims to be everything you are
+div | 217.5 | 240.5 | 127.5 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | “I’m hopeless.”
+div | 32 | 350.5 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Part 1
+div | 32 | 378.5 | 329 | 31 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Something you do
+div | 32 | 437.5 | 329 | 112 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | “I keep watching longer than I intend” describes something you do. “I’m hopeless” claims to describe everything you are.
+div | 32 | 571.5 | 329 | 84 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | The first sentence gives you a problem to work on. The second makes the next attempt seem pointless.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

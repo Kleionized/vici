@@ -1,0 +1,34 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Clear what remains
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 388 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 85 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+circle | 37 | 238 | 11 | 11 | - | - | - | - | - | -
+path | 46.6 | 247.6 | 5.1 | 5.1 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 85 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 63 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | If you still have a porn bookmark, saved file, secondary account, stored login, browser profile, or physical item
+div | 78 | 291 | 291 | 19 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Remove one today.
+div | 24 | 332 | 345 | 157 | - | - | - | - | - | -
+div | 24 | 332 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 341 | 22 | 22 | - | - | - | - | - | -
+circle | 36.3 | 344.3 | 15.4 | 15.4 | - | - | - | - | - | -
+path | 40.5 | 349.4 | 7 | 5.3 | - | - | - | - | - | -
+div | 78 | 332 | 291 | 157 | - | - | - | - | - | -
+div | 78 | 332 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | If you already removed all of it
+div | 78 | 356 | 291 | 133 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Do not invent another trigger just to complete the task. Write one sentence naming what you removed during the course, then spend 20 minutes using the time or place for something you want to keep: a book, instrument, workout, project, walk, meal, or time with another person.
+div | 24 | 511 | 345 | 102 | - | - | - | - | - | -
+div | 24 | 511 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 520 | 22 | 22 | - | - | - | - | - | -
+path | 36.1 | 525.9 | 15.8 | 10.1 | - | - | - | - | - | -
+circle | 41.7 | 528.7 | 4.6 | 4.6 | - | - | - | - | - | -
+div | 78 | 511 | 291 | 102 | - | - | - | - | - | -
+div | 78 | 511 | 291 | 42 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | If a social feed you still use keeps becoming sexual
+div | 78 | 556 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Remove the accounts, searches, or recommendations causing it. Keep the rest of the service if you still use it.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

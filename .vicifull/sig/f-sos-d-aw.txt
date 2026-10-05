@@ -1,0 +1,9 @@
+div | 0 | 52 | 393 | 800 | rgb(244, 243, 240) | - | - | - | - | -
+svg | 351 | 70 | 20 | 20 | - | - | - | - | - | -
+path | 354 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 44 | 202 | 305 | 31 | - | - | - | - | 23px/500/0.1px/31px/rgb(29, 28, 26) | One more thing.
+div | 44 | 266 | 305 | 69 | - | - | - | - | 15px/400/normal/23px/rgb(85, 83, 78) | The relationship doesn’t need solving tonight. Write the one thing you need to say tomorrow.
+div | 36 | 378 | 103.3 | 18 | - | - | - | - | 16px/400/normal/normal/rgb(176, 174, 168) | I need to say…
+div | 36 | 408 | 321 | 1.5 | rgba(0, 0, 0, 0.22) | - | - | - | - | -
+div | 24 | 710 | 345 | 54 | rgb(19, 19, 19) | 27px | - | - | - | -
+span | 175.3 | 727 | 42.5 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Done

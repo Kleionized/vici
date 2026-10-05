@@ -1,0 +1,243 @@
+--- .vicifull/pretty/prev/V3-Q1.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q1.html	2026-09-05 00:22:35
+@@ -152,13 +152,85 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · How often do you watch porn right now?
++    · How often are you watching porn right now?
++  </div>
++  <div style="
++    | position:absolute;
++    | left:0;
++    | right:0;
++    | top:232px;
++    | height:116px;
++  ">
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:50%;
++      | width:300px;
++      | height:150px;
++      | margin:-75px 0 0 -150px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,186,120,0.13), rgba(226,186,120,0) 72%);
++      | filter:blur(8px);
++    ">
++    </div>
++    <div style="
++      | position:relative;
++      | width:100%;
++      | height:100%;
++      | display:flex;
++      | justify-content:center;
++    ">
++      <svg width="322" height="116" viewBox="0 0 322 116">
++        <defs>
++          <linearGradient id="q1b" x1="0" y1="0" x2="0" y2="1">
++            <stop offset="0" stop-color="rgba(255,255,255,0.20)">
++            </stop>
++            <stop offset="1" stop-color="rgba(255,255,255,0.05)">
++            </stop>
++          </linearGradient>
++        </defs>
++        <line x1="2" y1="30" x2="320" y2="30" stroke="rgba(255,255,255,0.06)" stroke-width="1">
++        </line>
++        <line x1="2" y1="59" x2="320" y2="59" stroke="rgba(255,255,255,0.06)" stroke-width="1">
++        </line>
++        <line x1="2" y1="88.5" x2="320" y2="88.5" stroke="rgba(255,255,255,0.18)" stroke-width="1.4">
++        </line>
++        <rect x="4" y="12" width="38" height="76" rx="10" fill="url(#q1b)" opacity="1.00">
++        </rect>
++        <rect x="14" y="19" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.95">
++        </rect>
++        <rect x="49" y="24" width="38" height="64" rx="10" fill="url(#q1b)" opacity="0.91">
++        </rect>
++        <rect x="59" y="31" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.7">
++        </rect>
++        <rect x="94" y="38" width="38" height="50" rx="10" fill="url(#q1b)" opacity="0.82">
++        </rect>
++        <rect x="104" y="45" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.5">
++        </rect>
++        <rect x="139" y="50" width="38" height="38" rx="10" fill="url(#q1b)" opacity="0.73">
++        </rect>
++        <rect x="149" y="57" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.36">
++        </rect>
++        <rect x="184" y="60" width="38" height="28" rx="10" fill="url(#q1b)" opacity="0.64">
++        </rect>
++        <rect x="194" y="67" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.24">
++        </rect>
++        <rect x="229" y="68" width="38" height="20" rx="10" fill="url(#q1b)" opacity="0.55">
++        </rect>
++        <rect x="239" y="75" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.15">
++        </rect>
++        <rect x="274" y="74" width="38" height="14" rx="10" fill="url(#q1b)" opacity="0.46">
++        </rect>
++        <rect x="284" y="81" width="18" height="4.5" rx="2.25" fill="#E2BA78" opacity="0.1">
++        </rect>
++      </svg>
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:310px;
++    | top:368px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -169,20 +241,29 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="81.7 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+       | color:#F4F3F0;
+     ">
+-      · Several times a day
++      · More than once a day
+     </span>
+   </div>
+   <div style="
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:384px;
++    | top:442px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -193,7 +274,16 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="65.4 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+@@ -206,7 +296,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:458px;
++    | top:516px;
+     | height:60px;
+     | border-radius:16px;
+     | background:#F4F3F0;
+@@ -217,7 +307,16 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(19,19,19,0.14)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="44.9 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+@@ -234,7 +333,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:532px;
++    | top:590px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -245,7 +344,16 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="31.0 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+@@ -258,7 +366,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:606px;
++    | top:664px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -269,7 +377,16 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="18.0 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+@@ -282,7 +399,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:680px;
++    | top:738px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -293,7 +410,16 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <circle cx="15" cy="15" r="13" stroke="#E2BA78" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-dasharray="6.5 81.7" transform="rotate(-90 15 15)">
++      </circle>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;

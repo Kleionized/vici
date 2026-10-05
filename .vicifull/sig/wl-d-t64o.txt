@@ -1,0 +1,35 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Four honest lines
+div | 24 | 209 | 345 | 535 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 373 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 73 | - | - | - | - | - | -
+div | 24 | 210 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 33 | 214.5 | 6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 1
+div | 60 | 209 | 309 | 73 | - | - | - | - | - | -
+div | 60 | 209 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Past
+div | 60 | 231 | 309 | 51 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Write about the experience only if one already comes to mind. If not, note that you do not know of a trauma link here.
+div | 24 | 292 | 345 | 90 | - | - | - | - | - | -
+div | 24 | 293 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32.2 | 297.5 | 7.6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 2
+div | 60 | 292 | 309 | 90 | - | - | - | - | - | -
+div | 60 | 292 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Now
+div | 60 | 314 | 309 | 68 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Write what happens when it comes up, such as tension, panic, numbness, shame, withdrawing, avoiding intimacy, or another reaction you recognise.
+div | 24 | 392 | 345 | 90 | - | - | - | - | - | -
+div | 24 | 393 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32.1 | 397.5 | 7.9 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 3
+div | 60 | 392 | 309 | 90 | - | - | - | - | - | -
+div | 60 | 392 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Escape
+div | 60 | 414 | 309 | 68 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Write what you usually do to get away from the feeling or memory. Porn can be one answer, but so can scrolling, drinking, isolating, overworking, or shutting down.
+div | 24 | 492 | 345 | 90 | - | - | - | - | - | -
+div | 24 | 493 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32 | 497.5 | 8.1 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 4
+div | 60 | 492 | 309 | 90 | - | - | - | - | - | -
+div | 60 | 492 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Next time
+div | 60 | 514 | 309 | 68 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Write what you could do instead, such as leaving an unsafe setting, grounding yourself in the room, calling a trusted person, writing down what is happening, or contacting a professional.
+div | 24 | 606 | 345 | 64 | - | - | - | - | 12.5px/400/normal/16px/rgb(118, 115, 112) | Prepare for that situation today. Save the contact, book the appointment, write down grounding steps, or tell the trusted person you may reach out. If you do not know of a trauma link, leave it there; do not invent one.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

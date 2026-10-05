@@ -1,0 +1,15 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.45 | - | - | -
+div | 12 | 164 | 369 | 48 | rgb(232, 231, 225) | 12px | - | - | - | -
+div | 36 | 228 | 321 | 236 | rgb(232, 231, 225) | 16px | - | - | - | -
+div | 12 | 544 | 369 | 152 | rgb(232, 231, 225) | 14px | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgba(38, 37, 30, 0.42) | - | - | - | - | -
+div | 0 | 320 | 393 | 532 | rgb(244, 243, 240) | 22px 22px 0px 0px | - | rgba(20, 19, 16, 0.22) 0px -12px 36px 0px | - | -
+div | 178.5 | 330 | 36 | 4 | rgba(0, 0, 0, 0.15) | 2px | - | - | - | -
+div | 24 | 364 | 329 | 29 | - | - | - | - | 22px/500/-0.2px/29px/rgb(29, 28, 26) | Change the pledge
+div | 24 | 400 | 345 | 16 | - | - | - | - | 13px/400/normal/normal/rgb(139, 136, 130) | One promise you can keep every day.
+div | 16 | 436 | 361 | 126 | rgb(255, 255, 255) | 14px | - | rgba(0, 0, 0, 0.06) 0px 0px 0px 1px | - | -
+div | 34 | 452 | 325 | 26 | - | - | - | - | 17px/500/normal/26px/rgb(29, 28, 26) | Phone stays out of the bedroom
+span | 284.4 | 455 | 2 | 19 | rgb(19, 19, 19) | - | - | - | - | -
+div | 16 | 594 | 361 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 115.8 | 610 | 161.4 | 20 | - | - | - | - | 17px/600/normal/normal/rgb(255, 255, 255) | Sign the new pledge
+div | 0 | 666 | 393 | 16 | - | - | - | - | 13.5px/500/normal/normal/rgb(139, 136, 130) | Keep current pledge

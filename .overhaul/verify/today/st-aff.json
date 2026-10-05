@@ -1,0 +1,7 @@
+[
+{"name":"f1","wait":900,"js":"return __btns().map(b=>(b.getAttribute('aria-label')||b.textContent.trim().slice(0,30))).join(' | ')"},
+{"name":"f2","noshot":true,"wait":500,"js":"const h=()=>__txt().slice(0,60); const a=h(); await tap('Different prompt'); await __sleep(500); const b=h(); return [a,b]"},
+{"name":"f3","wait":900,"js":"await tap('Write my own prompt'); await __sleep(800); return __txt().slice(0,200)"},
+{"name":"f4","noshot":true,"wait":600,"js":"const ta=[...document.querySelectorAll('textarea,input')]; const el=ta[ta.length-1]; const d=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el),'value'); d.set.call(el, 'What will tomorrow-me thank me for?'); el.dispatchEvent(new Event('input',{bubbles:true})); await __sleep(300); await tap('Use this prompt'); await __sleep(800); return [__txt().slice(0,120), localStorage.getItem('tideline.affirmation.prompt')]"},
+{"name":"f5","noshot":true,"wait":900,"js":"const ta=[...document.querySelectorAll('textarea,input')]; const el=ta[ta.length-1]; const d=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el),'value'); d.set.call(el, 'A clear head on Friday'); el.dispatchEvent(new Event('input',{bubbles:true})); await __sleep(300); await tap('Save today’s line'); await __sleep(1500); const k=Object.keys(localStorage).find(k=>k.startsWith('tideline.mock.userdata.')); const d2=JSON.parse(localStorage.getItem(k)); return [location.pathname, (d2.journalEntries||[]).slice(0,2).map(e=>[e.tag,e.title,e.body])]"}
+]

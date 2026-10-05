@@ -1,0 +1,69 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 346.5 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+button | 38 | 72 | 317 | 708 | - | - | - | - | - | -
+div | 38 | 426 | 317 | 0 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 88.6 | 150 | 215.8 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Match your situation
+div | 32 | 216 | 329 | 556 | - | - | - | - | - | -
+div | 32 | 216 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 216 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 224 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 230.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 233.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 232.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 216 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 216 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Past
+div | 86 | 241 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write about the experience only if one already comes to mind. If not, note that you do not know of a trauma link here.
+div | 32 | 330 | 329 | 109 | - | - | - | - | - | -
+div | 32 | 330 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 338 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 341.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 341.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 346.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 349.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 330 | 275 | 109 | - | - | - | - | - | -
+div | 86 | 330 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Now
+div | 86 | 355 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write what happens when it comes up, such as tension, panic, numbness, shame, withdrawing, avoiding intimacy, or another reaction you recognise.
+div | 32 | 465 | 329 | 130 | - | - | - | - | - | -
+div | 32 | 465 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 473 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 478.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 482.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 465 | 275 | 130 | - | - | - | - | - | -
+div | 86 | 465 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Escape
+div | 86 | 490 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write what you usually do to get away from the feeling or memory. Porn can be one answer, but so can scrolling, drinking, isolating, overworking, or shutting down.
+div | 32 | 621 | 329 | 151 | - | - | - | - | - | -
+div | 32 | 621 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 629 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 634.5 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 638 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 634 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 621 | 275 | 151 | - | - | - | - | - | -
+div | 86 | 621 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Next time
+div | 86 | 646 | 275 | 126 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write what you could do instead, such as leaving an unsafe setting, grounding yourself in the room, calling a trusted person, writing down what is happening, or contacting a professional.
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

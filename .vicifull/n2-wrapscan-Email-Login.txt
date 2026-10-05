@@ -1,0 +1,188 @@
+Breakwater-Bronze.html  [pretty]  “Five storms met at full height. The wall is real now.”
+     canvas 269@552 61.5@573
+     plain  296.6@552 34@573
+Breakwater-Platinum.html  [pretty]  “Fifty waves. The sea hasn’t changed. The wall did.”
+     canvas 273.2@552 57.3@573
+     plain  301.8@552 28.7@573
+Change-the-Line.html  [pretty]  You only have to make the next decision different. Then the next one. 
+     canvas 265.8@239 267.1@261 102.9@283
+     plain  265.8@239 303.2@261 66.9@283
+Cue-Intro-Modal.html  [pretty]  A universal interrupt for the moment the wave hits. Six small moves — 
+     canvas 321.4@606 306.5@629 66.8@652
+     plain  321.4@606 319.5@629 53.8@652
+Day-Zero.html  [pretty]  Your first lesson is ready. Start with one thing today.
+     canvas 262.5@160 77.9@181
+     plain  300.1@160 40.3@181
+Detail-Silver.html  [pretty]  “Twenty-five behind you now — the pattern is unmistakable.”
+     canvas 278.7@552 108.2@573
+     plain  293@552 94@573
+Lesson-Scroll-11.html  [balance]  Not even for the rest of the week.
+     canvas 155.2@412 160.9@444
+     plain  258.9@412 57.2@444
+Lesson-Scroll-15.html  [balance]  Before you are fully caught in it.
+     canvas 140.1@515 159.3@547
+     plain  281.4@515 18@547
+Lesson-Scroll-18.html  [pretty]  If the phone is across the room, you have to stand up. If it is downst
+     canvas 285.4@484 246@520 266.5@556 75@592
+     plain  285.4@484 246@520 300.9@556 40.5@592
+Lesson-Scroll-19.html  [pretty]  If the laptop is closed and put away, you have to make another decisio
+     canvas 232.8@282 249.2@318 215.4@354 168.2@390
+     plain  267.9@282 289.5@318 223.8@354 84.4@390
+Lesson-Scroll-2.html  [balance]  A journey of a thousand miles begins with a single step.
+     canvas 175.5@362 279.8@406 226.3@450
+     plain  299.6@362 241.2@406 140.7@450
+Lesson-Scroll-21.html  [balance]  No huge promise about the future.
+     canvas 166@381 162.1@413
+     plain  264@381 64.1@413
+Lesson-Scroll-21.html  [balance]  No test of whether you are “strong enough.”
+     canvas 220.8@471 199.1@503
+     plain  256.5@471 163.4@503
+Lesson-Scroll-23.html  [pretty]  Set up tonight before you get tired. Use the option that matches where
+     canvas 265.8@282 266.4@308 77.2@334
+     plain  300@282 264.1@308 45.3@334
+Lesson-Scroll-25.html  [balance]  Well begun is half done.
+     canvas 141@384 152.2@428
+     plain  224.3@384 69@428
+Lesson-Scroll-26.html  [pretty]  Your answer is saved to the log. One decision tonight — get to tomorro
+     canvas 248.1@459 284@495 114.5@531
+     plain  286.3@459 269.2@495 91.5@531
+Lesson-Scroll-3.html  [balance]  You do not need to fix your life tonight.
+     canvas 213.5@431 217@469
+     plain  246.9@431 183.6@469
+Lesson-Scroll-5.html  [balance]  For tonight, one decision is enough.
+     canvas 178.2@483 220.3@521
+     plain  280.6@483 118@521
+Letter-Read.html  [pretty]  If you're reading this, it happened. Good — you opened the letter inst
+     canvas 300.1@190 324.4@218 231.4@246 92.2@274
+     plain  300.1@190 324.4@218 261.1@246 62.5@274
+Letter-Week-XII.html  [pretty]  So here is the part I wish you knew: you do not need twelve perfect we
+     canvas 300.1@362 289.5@390 299.3@418 49.4@446
+     plain  300.1@362 307.8@390 299.3@418 31.2@446
+Letter-Week-XII.html  [pretty]  There were nights when I wanted to watch badly. Some days the only thi
+     canvas 296.8@736 257.5@764 277.4@792 90.3@820
+     plain  296.8@736 294.2@764 268.8@792 62.3@820
+Letter-Week-XII.html  [pretty]  At the start, porn still felt like the quickest relief when I was bore
+     canvas 292.3@1027 303@1055 314.4@1083 292.4@1111 308.6@1139 284.5@1166 46@1194
+     plain  292.3@1027 303@1055 314.4@1083 311@1111 290@1139 303.1@1166 27.4@1194
+Letter-Week-XII.html  [pretty]  The biggest difference is not a streak. It is waking up without the fe
+     canvas 295.2@1402 305.5@1430 291.3@1458 283.5@1485 94.1@1513
+     plain  295.2@1402 305.5@1430 321.7@1458 308.8@1485 38.4@1513
+Morning-Pledge-Signed.html  [balance]  The mornings are mine again.
+     canvas 131.9@433 144.2@465
+     plain  218.5@433 57.6@465
+Morning-Resign-Pledge.html  [balance]  The mornings are mine again.
+     canvas 131.9@433 144.2@465
+     plain  218.5@433 57.6@465
+Onboarding-Start.html  [balance]  Sam, let’s figure out what usually leads you back to porn.
+     canvas 219.2@339 207.2@373 193.5@407
+     plain  280.7@339 281.2@373 58.1@407
+One-Bad-Day.html  [pretty]  It doesn’t erase the work before it. Your lessons, logs, rating histor
+     canvas 221.6@232 237.6@253 102.9@274
+     plain  254.6@232 277.7@253 29.8@274
+Paywall-Rescue.html  [balance]  Before you go — three days on us.
+     canvas 196.7@159 206@195
+     plain  265.9@159 136.8@195
+Paywall-Rescue.html  [pretty]  Day 3 — $39.99/year begins, unless you cancel
+     canvas 250.8@494 75.1@515
+     plain  280.1@494 45.8@515
+Relapse-Resign.html  [balance]  The mornings are mine again.
+     canvas 131.9@383 144.2@415
+     plain  218.5@383 57.6@415
+Report-Ready.html  [pretty]  Score, urges, and the pattern — two quiet minutes.
+     canvas 253.1@524 99.8@547
+     plain  292.6@524 60.3@547
+SOS-Afterward.html  [pretty]  The relationship doesn’t need solving tonight. Write the one thing you
+     canvas 256@268 271.8@291 96.2@314
+     plain  256@268 299@291 68.9@314
+SOS-Feel-Ashamed.html  [pretty]  Put the phone away and do the next useful thing. Thinking about how ba
+     canvas 299.4@534 272.7@557 62.6@580
+     plain  299.4@534 302.3@557 33@580
+SOS-Feel-Bored.html  [pretty]  Walk, train, take the stairs, or do a short set of something. Get movi
+     canvas 239.2@534 272@557 89.7@580
+     plain  280@534 260.6@557 60.3@580
+SOS-Feel-Rejected.html  [pretty]  Don’t check their profile or messages. Give yourself ten minutes with 
+     canvas 267.8@534 233.8@557 117.6@580
+     plain  303.1@534 231.6@557 84.4@580
+SOS-Loc-Elsewhere.html  [pretty]  Move somewhere you’d be less likely to watch.
+     canvas 259.4@534 64.8@557
+     plain  277.6@534 46.6@557
+Score-Detail-Moves.html  [pretty]  Clean days do the heavy lifting. Keep the evenings boring.
+     canvas 101.3@706 125.8@723 93.7@740
+     plain  138@706 142.8@723 39.9@740
+Slip-Feel-Lonely.html  [pretty]  You don’t have to tell anyone what happened. Just don’t stay alone wit
+     canvas 240.9@534 258.9@557 67.2@580
+     plain  240.9@534 271.9@557 54.2@580
+Slip-Pledge.html  [balance]  The mornings are mine again.
+     canvas 131.9@383 144.2@415
+     plain  218.5@383 57.6@415
+Slip-Third.html  [pretty]  The day is not gone. The phone goes away for the rest of the evening —
+     canvas 300.5@532 269.6@555 59.4@578
+     plain  300.5@532 303.2@555 25.9@578
+Slip-Urge-Now.html  [balance]  Do you still want to keep watching?
+     canvas 160.7@152 178.8@182
+     plain  238.3@152 101.2@182
+Start-Here.html  [balance]  Keep your phone out of bed tonight.
+     canvas 175.6@434 190.1@466
+     plain  286.1@434 79.6@466
+Urge-Hub-Pledges.html  [balance]  The mornings are mine again.
+     canvas 160.5@311 175.1@349
+     plain  265.5@311 70.1@349
+V3-Q10.html  [pretty]  How often have you felt lonely lately?
+     canvas 230.8@159 127.6@188
+     plain  294.5@159 64@188
+V3-Q15.html  [pretty]  What are you aiming for with porn?
+     canvas 232.5@159 103.6@188
+     plain  279.3@159 56.7@188
+V3-Q26-Gender.html  [pretty]  How do you describe your gender?
+     canvas 206.7@159 130@188
+     plain  255.4@159 81.3@188
+V3-Q5.html  [pretty]  When do you usually end up watching?
+     canvas 245.8@159 131.5@188
+     plain  276.1@159 101.2@188
+V3-Q7.html  [pretty]  Where are you usually watching?
+     canvas 141.9@159 175.5@188
+     plain  216.2@159 101.2@188
+Week-I-Reset-P2.html  [pretty]  Week I · Survive the nights and steady the basics.
+     canvas 253.2@160 72.2@181
+     plain  278.5@160 46.8@181
+Week-I-Reset.html  [pretty]  Week I · Survive the nights and steady the basics.
+     canvas 253.2@160 72.2@181
+     plain  278.5@160 46.8@181
+Week-III-In-the-Moment-P2.html  [pretty]  Week III · What to do in the sixty seconds that matter.
+     canvas 273@160 77.1@181
+     plain  303.2@160 46.9@181
+Week-III-In-the-Moment.html  [pretty]  Week III · What to do in the sixty seconds that matter.
+     canvas 273@160 77.1@181
+     plain  303.2@160 46.9@181
+Week-V-Why-It-Feels-Worth-It-P2.html  [pretty]  Week V · The honest math of what it gives and takes.
+     canvas 279.3@160 68.5@181
+     plain  308@160 39.8@181
+Week-V-Why-It-Feels-Worth-It.html  [pretty]  Week V · The honest math of what it gives and takes.
+     canvas 279.3@160 68.5@181
+     plain  308@160 39.8@181
+Week-VIII-Boredom-and-Meaning-P2.html  [pretty]  Week VIII · Empty hours, and what fills them well.
+     canvas 252.8@160 67.8@181
+     plain  290.6@160 29.9@181
+Week-VIII-Boredom-and-Meaning.html  [pretty]  Week VIII · Empty hours, and what fills them well.
+     canvas 252.8@160 67.8@181
+     plain  290.6@160 29.9@181
+Week-X-Yourself-P2.html  [pretty]  Week X · Repairing how you see and treat yourself.
+     canvas 240.5@160 91.7@181
+     plain  275.6@160 56.6@181
+Week-X-Yourself.html  [pretty]  Week X · Repairing how you see and treat yourself.
+     canvas 240.5@160 91.7@181
+     plain  275.6@160 56.6@181
+Week-XI-Build-a-Life-You-Want-P2.html  [pretty]  Week XI · Point the freed-up energy at something.
+     canvas 237.8@160 90.9@181
+     plain  254.5@160 74.1@181
+Week-XI-Build-a-Life-You-Want.html  [pretty]  Week XI · Point the freed-up energy at something.
+     canvas 237.8@160 90.9@181
+     plain  254.5@160 74.1@181
+Yearly-Drop.html  [pretty]  Unlock everything VICI has to offer for an entire year.
+     canvas 257.7@202 69.5@222
+     plain  297.2@202 30@222
+Your-Vow-Page.html  [balance]  I’m done letting the wave decide. One evening at a time, I take the wa
+     canvas 222.7@301 214.3@333 241.9@365
+     plain  290.2@301 285@333 103.8@365
+
+62 of 335 text-wrap boxes in Email-Login actually move a line break

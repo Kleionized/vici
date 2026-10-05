@@ -1,0 +1,77 @@
+=== Splash (15.4s)
+
+=== Login (18.0s)
+
+=== Welcome Back (18.6s)
+
+=== (no frame) Login — SSO refusal (18.7s)
+
+=== (no frame) Welcome Back — address step (18.8s)
+
+=== (no frame) Welcome Back — password step (18.9s)
+
+=== (no frame) Sign-up gate — Save your progress (16.7s)
+
+=== (no frame) Create account form (20.5s)
+
+=== (no frame) Under-18 gate (22.4s)
+script -> "This one is for over-18s. Come back when you are. If porn is already getting in the way, someone you trust — a doctor, a counsellor, a parent — is a better first step than an app."
+=== (no frame) Life Map (16.8s)
+
+=== Login (17.0s)
+scroll -> {"scroller":true,"scrollTop":151,"scrollHeight":798,"clientHeight":647}
+=== (no frame) Login — SSO refusal (16.1s)
+scroll -> {"scroller":true,"scrollTop":151,"scrollHeight":798,"clientHeight":647}
+=== (no frame) Sign-up gate — Save your progress (15.4s)
+scroll -> {"scroller":true,"scrollTop":151,"scrollHeight":798,"clientHeight":647}
+=== (no frame) Create account form (18.3s)
+scroll -> {"scroller":true,"scrollTop":28,"scrollHeight":629,"clientHeight":601}
+=== (no frame) Life Map (17.9s)
+scroll -> {"scroller":true,"scrollTop":320,"scrollHeight":815,"clientHeight":495}
+=== Splash (13.7s)
+
+=== Login (17.8s)
+
+=== Welcome Back (20.4s)
+
+=== (no frame) Login — SSO refusal (20.9s)
+
+=== (no frame) Welcome Back — address step (21.5s)
+
+=== (no frame) Welcome Back — password step (22.2s)
+
+=== (no frame) Sign-up gate — Save your progress (19.4s)
+
+=== (no frame) Create account form (5.9s)
+FAIL node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Error: no control for "Continue with email" :: 
+    at window.tap (eval at evaluate (:311:30), <anonymous>:18:18)
+    at eval (eval at evaluate (:311:30), <anonymous>:1:22)
+    at eval (eval at evaluate (:311:30), <anonymous>:1:51)
+    at eval (<anonymous>)
+    at UtilityScript.evaluate (<anonymous>:311:30)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /Users/admin/Documents/Vici/scripts/overhaul/shot.mjs:86:26 {
+  log: []
+}
+
+Node.js v25.8.1
+=== (no frame) Under-18 gate (25.2s)
+script -> "This one is for over-18s. Come back when you are. If porn is already getting in the way, someone you trust — a doctor, a counsellor, a parent — is a better first step than an app."
+=== (no frame) Life Map (17.3s)
+
+=== (no frame) Welcome Back — address step (18.6s)
+
+=== (no frame) Welcome Back — password step (19.5s)
+
+=== (no frame) Sign-up gate — Save your progress (15.9s)
+
+=== (no frame) Create account form (18.6s)
+
+=== (no frame) Under-18 gate (21.5s)
+script -> "This one is for over-18s. Come back when you are. If porn is already getting in the way, someone you trust — a doctor, a counsellor, a parent — is a better first step than an app."
+=== (no frame) Life Map (17.0s)
+

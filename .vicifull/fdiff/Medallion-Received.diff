@@ -1,0 +1,68 @@
+--- .vicifull/pretty/prev/Medallion-Received.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Medallion-Received.html	2026-09-05 00:22:35
+@@ -98,19 +98,6 @@
+   </svg>
+   <div style="
+     | position:absolute;
+-    | left:0;
+-    | right:0;
+-    | top:100px;
+-    | text-align:center;
+-    | font-size:11px;
+-    | font-weight:600;
+-    | letter-spacing:1.6px;
+-    | color:rgba(91,74,40,0.55);
+-  ">
+-    · MEDALLION EARNED
+-  </div>
+-  <div style="
+-    | position:absolute;
+     | left:50%;
+     | top:140px;
+     | width:260px;
+@@ -199,35 +186,9 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:0;
+-    | right:0;
+-    | top:476px;
+-    | display:flex;
+-    | justify-content:center;
+-  ">
+-    <div style="
+-      | height:30px;
+-      | border-radius:15px;
+-      | background:#FFFFFF;
+-      | box-shadow:0 0 0 1px rgba(0,0,0,0.1);
+-      | display:flex;
+-      | align-items:center;
+-      | padding:0 14px;
+-    ">
+-      <span style="
+-        | font-size:12.5px;
+-        | font-weight:600;
+-        | color:#55534E;
+-      ">
+-        · Tier I
+-      </span>
+-    </div>
+-  </div>
+-  <div style="
+-    | position:absolute;
+     | left:44px;
+     | right:44px;
+-    | top:530px;
++    | top:482px;
+     | text-align:center;
+     | font-size:15.5px;
+     | font-weight:400;
+@@ -235,7 +196,7 @@
+     | color:#55534E;
+     | text-wrap:pretty;
+   ">
+-    · You started.
++    · Your first medallion. You started.
+   </div>
+   <div style="
+     | position:absolute;

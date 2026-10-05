@@ -1,0 +1,1086 @@
+[
+ {
+  "frame": "Medallions",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 20,
+   "missing": 2,
+   "extra": 218,
+   "net": 20
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallions Still To Earn",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 12,
+   "missing": 1,
+   "extra": 8,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Album Earned II",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 308,
+    "y": 384,
+    "w": 8,
+    "h": 12,
+    "px": 36
+   }
+  ],
+  "sig": {
+   "differing": 16,
+   "missing": 2,
+   "extra": 327,
+   "net": 16
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Paper",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Bronze",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Silver",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Gold",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.003,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 9
+   },
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 176,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 172,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Breakwater Platinum",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.004,
+  "regions": [
+   {
+    "x": 156,
+    "y": 248,
+    "w": 24,
+    "h": 8,
+    "px": 25
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 264,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 268,
+    "y": 288,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 140,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 248,
+    "y": 292,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 144,
+    "y": 300,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Vidi",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.013,
+  "regions": [
+   {
+    "x": 200,
+    "y": 256,
+    "w": 16,
+    "h": 4,
+    "px": 19
+   },
+   {
+    "x": 176,
+    "y": 256,
+    "w": 16,
+    "h": 4,
+    "px": 17
+   },
+   {
+    "x": 176,
+    "y": 212,
+    "w": 12,
+    "h": 4,
+    "px": 10
+   },
+   {
+    "x": 208,
+    "y": 212,
+    "w": 8,
+    "h": 4,
+    "px": 9
+   },
+   {
+    "x": 164,
+    "y": 248,
+    "w": 12,
+    "h": 8,
+    "px": 8
+   },
+   {
+    "x": 180,
+    "y": 204,
+    "w": 8,
+    "h": 4,
+    "px": 7
+   },
+   {
+    "x": 220,
+    "y": 248,
+    "w": 8,
+    "h": 8,
+    "px": 7
+   },
+   {
+    "x": 208,
+    "y": 204,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Vici",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Rebound",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Breakwater",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 176,
+    "y": 228,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 200,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 196,
+    "y": 228,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 192,
+    "y": 232,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Logbook",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Pulse",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Archive",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers Lessons",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.004,
+  "regions": [
+   {
+    "x": 180,
+    "y": 252,
+    "w": 16,
+    "h": 8,
+    "px": 20
+   },
+   {
+    "x": 200,
+    "y": 252,
+    "w": 12,
+    "h": 8,
+    "px": 19
+   },
+   {
+    "x": 272,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 5
+   },
+   {
+    "x": 116,
+    "y": 224,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   }
+  ],
+  "sig": {
+   "differing": 17,
+   "missing": 1,
+   "extra": 5,
+   "net": 12
+  },
+  "errors": []
+ },
+ {
+  "frame": "Tiers One-offs",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 96,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 268,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 292,
+    "y": 248,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 1,
+   "extra": 7,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Paper",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "DIFF",
+  "px": 5.648,
+  "regions": [
+   {
+    "x": 40,
+    "y": 464,
+    "w": 324,
+    "h": 100,
+    "px": 21596
+   },
+   {
+    "x": 72,
+    "y": 600,
+    "w": 248,
+    "h": 76,
+    "px": 18965
+   },
+   {
+    "x": 36,
+    "y": 404,
+    "w": 324,
+    "h": 52,
+    "px": 11891
+   },
+   {
+    "x": 156,
+    "y": 212,
+    "w": 80,
+    "h": 80,
+    "px": 7822
+   },
+   {
+    "x": 168,
+    "y": 360,
+    "w": 56,
+    "h": 40,
+    "px": 3386
+   },
+   {
+    "x": 156,
+    "y": 308,
+    "w": 84,
+    "h": 16,
+    "px": 564
+   },
+   {
+    "x": 268,
+    "y": 232,
+    "w": 12,
+    "h": 32,
+    "px": 495
+   },
+   {
+    "x": 116,
+    "y": 212,
+    "w": 16,
+    "h": 40,
+    "px": 466
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 54,
+   "extra": 58,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Bronze",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Silver",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.002,
+  "regions": [
+   {
+    "x": 200,
+    "y": 496,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 44,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   },
+   {
+    "x": 68,
+    "y": 500,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 72,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 180,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 208,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Gold",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.001,
+  "regions": [
+   {
+    "x": 264,
+    "y": 288,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 268,
+    "y": 284,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Detail Platinum",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.005,
+  "regions": [
+   {
+    "x": 116,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 200,
+    "y": 496,
+    "w": 4,
+    "h": 4,
+    "px": 6
+   },
+   {
+    "x": 72,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 112,
+    "y": 504,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 136,
+    "y": 504,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 324,
+    "y": 504,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 44,
+    "y": 508,
+    "w": 4,
+    "h": 4,
+    "px": 4
+   },
+   {
+    "x": 272,
+    "y": 252,
+    "w": 4,
+    "h": 4,
+    "px": 3
+   }
+  ],
+  "sig": {
+   "differing": 12,
+   "missing": 0,
+   "extra": 4,
+   "net": 7
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Arrival",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 3,
+   "missing": 1,
+   "extra": 5,
+   "net": 3
+  },
+  "errors": []
+ },
+ {
+  "frame": "Letter Read",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 5,
+   "missing": 1,
+   "extra": 4,
+   "net": 5
+  },
+  "errors": []
+ },
+ {
+  "frame": "Medallion Letter",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "DIFF",
+  "px": 0.547,
+  "regions": [
+   {
+    "x": 116,
+    "y": 480,
+    "w": 192,
+    "h": 36,
+    "px": 5804
+   },
+   {
+    "x": 68,
+    "y": 488,
+    "w": 24,
+    "h": 20,
+    "px": 978
+   },
+   {
+    "x": 56,
+    "y": 488,
+    "w": 8,
+    "h": 8,
+    "px": 6
+   },
+   {
+    "x": 60,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 96,
+    "y": 504,
+    "w": 4,
+    "h": 8,
+    "px": 5
+   },
+   {
+    "x": 96,
+    "y": 488,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   },
+   {
+    "x": 100,
+    "y": 492,
+    "w": 4,
+    "h": 4,
+    "px": 2
+   }
+  ],
+  "sig": {
+   "differing": 4,
+   "missing": 8,
+   "extra": 10,
+   "net": 4
+  },
+  "errors": []
+ },
+ {
+  "frame": "Yearly Drop",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0.103,
+  "regions": [
+   {
+    "x": 316,
+    "y": 72,
+    "w": 56,
+    "h": 16,
+    "px": 1288
+   }
+  ],
+  "sig": {
+   "differing": 8,
+   "missing": 5,
+   "extra": 11,
+   "net": 8
+  },
+  "errors": []
+ },
+ {
+  "frame": "Drop Received",
+  "group": "medallions-letters",
+  "recipe": "medallions-letters.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 4,
+   "missing": 0,
+   "extra": 3,
+   "net": 3
+  },
+  "errors": []
+ }
+]

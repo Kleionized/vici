@@ -1,0 +1,13 @@
+~ Late at night                            type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ When it usually happens                  type: 13px/400/normal/normal/rgb(155, 150, 142) → 13px/400/normal/16px/rgb(155, 150, 142)
+~ In bed                                   type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ Where it usually happens                 type: 13px/400/normal/normal/rgb(155, 150, 142) → 13px/400/normal/16px/rgb(155, 150, 142)
+# count P:58,443,10,15: design 1, app 2
+~ Scrolling                                type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ What tends to set it off                 type: 13px/400/normal/normal/rgb(155, 150, 142) → 13px/400/normal/16px/rgb(155, 150, 142)
+~ Phone out of bed                         type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ Your first change                        type: 13px/400/normal/normal/rgb(155, 150, 142) → 13px/400/normal/16px/rgb(155, 150, 142)
+~ SOS gets you out first                   type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ When an urge hits                        type: 13px/400/normal/normal/rgb(155, 150, 142) → 13px/400/normal/16px/rgb(155, 150, 142)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 46 design rows, 53 app rows; 11 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)

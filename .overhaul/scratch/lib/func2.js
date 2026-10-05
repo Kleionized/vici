@@ -1,0 +1,16 @@
+const out = {};
+const vis = () => [...document.querySelectorAll('[role="heading"]')].filter(e=>{const r=e.getBoundingClientRect();return r.left>-1&&r.right<innerWidth+1&&r.width>0}).map(e=>e.textContent);
+await __sleep(500);
+out.start = location.pathname;
+await tap('Library'); await __sleep(1500);
+out.tab = { path: location.pathname, h: vis() };
+await tap('Back'); await __sleep(1200);
+out.back = location.pathname;
+await tap('Library'); await __sleep(1200);
+await tap('Practise the response, lesson 37, completed'); await __sleep(1500);
+out.doneRow = location.pathname;
+history.back(); await __sleep(1500);
+out.afterLesson = { path: location.pathname, h: vis() };
+await tap('Practise the part that gets in the way, lesson 39, upcoming'); await __sleep(1500);
+out.upRow = location.pathname;
+return out;

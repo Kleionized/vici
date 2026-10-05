@@ -1,0 +1,25 @@
+MISSING in app:  div | 24 | 136 | 345 | 449 | - | - | - | - | - | -
+~ Just now                                 x: 24 → 42   y: 199 → 212.5   w: 91.3 → 55.3   h: 44 → 17   bg: rgb(242, 240, 236) → -   radius: 22px → -   type: 14px/700/normal/normal/rgb(17, 17, 17) → 14px/700/normal/17px/rgb(17, 17, 17)
+~ Earlier today                            x: 125.3 → 143.3   y: 199 → 212.5   w: 116.5 → 80.5   h: 44 → 17   bg: rgb(30, 30, 30) → -   radius: 22px → -   type: 14px/700/normal/normal/rgb(242, 240, 236) → 14px/700/normal/17px/rgb(242, 240, 236)
+~ Yesterday                                x: 251.8 → 269.8   y: 199 → 212.5   w: 98.8 → 62.8   h: 44 → 17   bg: rgb(30, 30, 30) → -   radius: 22px → -   type: 14px/700/normal/normal/rgb(242, 240, 236) → 14px/700/normal/17px/rgb(242, 240, 236)
+~ Or choose a time                         type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ 9                                        y: 307 → 315.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(46, 46, 46) → 22px/400/normal/27px/rgb(46, 46, 46)
+~ 10                                       y: 351 → 359.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(155, 150, 142) → 22px/400/normal/27px/rgb(155, 150, 142)
+~ 11                                       y: 395 → 399   h: 44 → 36   type: 30px/900/normal/normal/rgb(242, 240, 236) → 30px/900/normal/36px/rgb(242, 240, 236)
+~ 12                                       y: 439 → 447.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(155, 150, 142) → 22px/400/normal/27px/rgb(155, 150, 142)
+~ 1                                        y: 483 → 491.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(46, 46, 46) → 22px/400/normal/27px/rgb(46, 46, 46)
+~ :                                        y: 307 → 399   h: 220 → 36   type: 30px/700/normal/normal/rgb(242, 240, 236) → 30px/700/normal/36px/rgb(242, 240, 236)
+~ 38                                       y: 307 → 315.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(46, 46, 46) → 22px/400/normal/27px/rgb(46, 46, 46)
+~ 39                                       y: 351 → 359.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(155, 150, 142) → 22px/400/normal/27px/rgb(155, 150, 142)
+~ 40                                       y: 395 → 399   h: 44 → 36   type: 30px/900/normal/normal/rgb(242, 240, 236) → 30px/900/normal/36px/rgb(242, 240, 236)
+~ 41                                       y: 439 → 447.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(155, 150, 142) → 22px/400/normal/27px/rgb(155, 150, 142)
+~ 42                                       y: 483 → 491.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(46, 46, 46) → 22px/400/normal/27px/rgb(46, 46, 46)
+MISSING in app:  div | 288.5 | 307 | 0 | 44 | - | - | - | - | - | -
+~ AM                                       y: 351 → 359.5   h: 44 → 27   type: 22px/400/normal/normal/rgb(155, 150, 142) → 22px/400/normal/27px/rgb(155, 150, 142)
+~ PM                                       y: 395 → 399   h: 44 → 36   type: 30px/900/normal/normal/rgb(242, 240, 236) → 30px/900/normal/36px/rgb(242, 240, 236)
+MISSING in app:  div | 288.5 | 439 | 0 | 44 | - | - | - | - | - | -
+MISSING in app:  div | 288.5 | 483 | 0 | 44 | - | - | - | - | - | -
+~ Tonight, Tue Jul 22                      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Change                                   x: 291 → 305   y: 547 → 555   w: 72 → 44   h: 32 → 16   bg: rgb(13, 13, 13) → -   radius: 16px → -   type: 13px/700/normal/normal/rgb(242, 240, 236) → 13px/700/normal/16px/rgb(242, 240, 236)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 52 design rows, 81 app rows; 20 differing, 4 missing, 27 extra, 0 sub-0.25pt rounding (use --all to list extras)

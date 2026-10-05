@@ -1,0 +1,68 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:582px  overflow:visible  transform:scale(0.76)  transform-origin:196px 190px
+    <circle> cx="196"  cy="40"  r="3"  fill="#F2F0EC"
+    <path> d="M196 42 L157 60 M196 42 L235 60"  fill="none"  stroke="#F2F0EC"  stroke-width="1.6"  stroke-linecap="round"  stroke-linejoin="round"
+    <rect> width="144"  height="120"  x="124"  y="70"  rx="12"  fill="#F2F0EC"
+    <rect> width="128"  height="80"  x="132"  y="102"  rx="6"  fill="#0D0D0D"
+    <rect> width="48"  height="6"  x="172"  y="82"  rx="3"  fill="#0D0D0D"
+    <rect> width="10"  height="28"  x="150"  y="56"  rx="5"  fill="#F2F0EC"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+    <rect> width="4"  height="20"  x="153"  y="60"  rx="2"  fill="#0D0D0D"
+    <rect> width="10"  height="28"  x="232"  y="56"  rx="5"  fill="#F2F0EC"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+    <rect> width="4"  height="20"  x="235"  y="60"  rx="2"  fill="#0D0D0D"
+    <circle> cx="143"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="160.67"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="178.34"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="196.01"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="213.68"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="231.35"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="249.02"  cy="118"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="143"  cy="142"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="160.67"  cy="142"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="178.34"  cy="142"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="196.01"  cy="142"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="213.68"  cy="142"  r="3.6"  fill="#F2F0EC"
+    <circle> cx="213.68"  cy="142"  r="9"  fill="none"  stroke="#F2F0EC"  stroke-width="2.4"  stroke-linejoin="round"
+    <circle> cx="231.35"  cy="142"  r="3.6"  fill="#55524D"
+    <circle> cx="249.02"  cy="142"  r="3.6"  fill="#55524D"
+    <circle> cx="143"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="160.67"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="178.34"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="196.01"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="213.68"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="231.35"  cy="166"  r="3.6"  fill="#55524D"
+    <circle> cx="249.02"  cy="166"  r="3.6"  fill="#55524D"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · When you’ve tried to quit, how long do you usually make it before watching again?
+    <div> height:18px
+    <div> display:flex  flex-direction:column  gap:12px
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Less than a day
+      <div> height:58px  border-radius:18px  background:#F2F0EC  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:none
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · A few days
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · About a week
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · A few weeks
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · A month or longer

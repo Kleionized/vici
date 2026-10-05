@@ -1,0 +1,14 @@
+~ Restore                                  x: 291 → 318.1   y: 60 → 71   w: 80 → 52.9   h: 40 → 18   type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+MISSING in app:  div | 24 | 175 | 345 | 72 | - | - | - | - | 30px/700/-0.6px/36px/rgb(242, 240, 236) | One decision.A year of change.
+MISSING in app:  br | 282.9 | 175 | 0 | 36 | - | - | - | - | - | -
+~ -                                        bg: - → rgb(30, 30, 30)   radius: - → 24px
+# count P:24,325,345,285: design 2, app 1
+MISSING in app:  div | 46 | 347 | 301 | 239 | - | - | - | - | - | -
+~ Yearly access                            type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Save 74%                                 x: 272 → 284   y: 347 → 353.5   w: 75 → 51   h: 28 → 15   bg: rgb(242, 240, 236) → -   radius: 14px → -   type: 12px/700/normal/normal/rgb(17, 17, 17) → 12px/700/normal/15px/rgb(17, 17, 17)
+~ / year                                   type: 16px/700/normal/normal/rgb(155, 150, 142) → 16px/700/normal/19px/rgb(155, 150, 142)
+~ $39.99                                   type: 16px/700/normal/normal/rgb(90, 87, 79) → 16px/700/normal/19px/rgb(90, 87, 79)
+~ That’s $2.25 a month.                    type: 15px/700/normal/normal/rgb(181, 176, 168) → 15px/700/normal/18px/rgb(181, 176, 168)
+~ Unlock my year                           type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Terms · Restore                          type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 37 design rows, 47 app rows; 9 differing, 3 missing, 11 extra, 0 sub-0.25pt rounding (use --all to list extras)

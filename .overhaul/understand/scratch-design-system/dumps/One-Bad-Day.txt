@@ -1,0 +1,47 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:0  right:0  top:329px  display:flex  justify-content:center
+    <svg> viewBox="0 0 344 86"  width="344"  height="86"
+      <text> x="22"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · M
+      <rect> width="36"  height="56"  x="4"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M14 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+      <text> x="70"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · T
+      <rect> width="36"  height="56"  x="52"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M62 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+      <text> x="118"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · W
+      <rect> width="36"  height="56"  x="100"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M110 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+      <text> x="166"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · T
+      <rect> width="36"  height="56"  x="148"  y="22"  rx="12"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="2.5"
+      <circle> cx="166"  cy="50"  r="4"  fill="#F2F0EC"
+      <text> x="214"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · F
+      <rect> width="36"  height="56"  x="196"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M206 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+      <text> x="262"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · S
+      <rect> width="36"  height="56"  x="244"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M254 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+      <text> x="310"  y="12"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="700"
+        · S
+      <rect> width="36"  height="56"  x="292"  y="22"  rx="12"  fill="#F2F0EC"  stroke="#F2F0EC"  stroke-width="0"
+      <path> d="M302 51 l5 5 l11 -12"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:451px  display:flex  flex-direction:column  gap:16px  align-items:center  text-align:center
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · One bad day is one bad day.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · It doesn’t erase the work before it. Your lessons, logs, rating history and medallions stay.
+    <div> width:100%  font-size:16px  font-weight:400  line-height:25px  color:#F2F0EC  text-wrap:pretty  text-align:center
+      · What matters is that you come back.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

@@ -1,0 +1,6 @@
+# count P:351,70,20,20: design 1, app 2
+~ -                                        radius: 50% → 11px
+~ -                                        radius: 50% → 11px
+~ -                                        radius: 50% → 11px
+~ -                                        radius: 50% → 11px
+--- 20 design rows, 24 app rows; 4 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015) (use --all to list extras)

@@ -49,6 +49,7 @@ npx convex dev      # real backend, in a second terminal (see SETUP.md)
 | App | Expo SDK 56 (React Native 0.85, React 19), TypeScript, Expo Router |
 | Backend | Convex (`convex/`) — queries/mutations/actions, authenticated per call |
 | Auth | Clerk (`@clerk/clerk-expo`) + Clerk↔Convex integration |
+| Payments | RevenueCat (`react-native-purchases`) — one entitlement, `vici_unlimited`; see **docs/revenuecat.md** |
 | Local | AsyncStorage + expo-secure-store (mock layer, ephemeral state) |
 
 The app talks only to a **backend facade** (`src/lib/backend`, `src/lib/auth`) that

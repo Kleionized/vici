@@ -1,0 +1,46 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <path> d="M80 43 Q80 46 83 46 Q80 46 80 49 Q80 46 77 46 Q80 46 80 43 Z"  fill="#F2F0EC"
+    <path> d="M128 52 Q128 54 130 54 Q128 54 128 56 Q128 54 126 54 Q128 54 128 52 Z"  fill="#F2F0EC"
+    <path> d="M266 31.6 Q266 34 268.4 34 Q266 34 266 36.4 Q266 34 263.6 34 Q266 34 266 31.6 Z"  fill="#F2F0EC"
+    <path> d="M348 121.6 Q348 124 350.4 124 Q348 124 348 126.4 Q348 124 345.6 124 Q348 124 348 121.6 Z"  fill="#F2F0EC"
+    <path> d="M52 117.8 Q52 120 54.2 120 Q52 120 52 122.2 Q52 120 49.8 120 Q52 120 52 117.8 Z"  fill="#F2F0EC"
+    <path> d="M343.65 40.88 A12 12 0 1 1 331.61 26.01 A9.6 9.6 0 1 0 343.65 40.88 Z"  fill="#F2F0EC"
+    <path> d="M184 84 L14 60 V108 Z M208 84 L378 60 V108 Z"  fill="#F2F0EC"  fill-opacity="0.12"
+    <rect> width="473"  height="1.5"  x="-40"  y="183.25"  rx="0.75"  fill="#A8A39A"
+    <path> d="M30 198 q8 -5 16 0 t16 0 t16 0 M262 198 q8 -5 16 0 t16 0 t16 0 M76 210 q8 -5 16 0 t16 0 M228 210 q8 -5 16 0 t16 0 t16 0 M146 220 q8 -5 16 0 t16 0 t16 0 t16 0"  fill="none"  stroke="#55524D"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M300 184 l5 7 h26 l5 -7 z"  fill="#55524D"
+    <rect> width="2.4"  height="26"  x="317"  y="158"  rx="1"  fill="#55524D"
+    <path> d="M321 160 L336 180 H321 Z"  fill="#55524D"
+    <path> d="M118 190 C 136 180, 164 176, 196 176 C 228 176, 256 180, 274 190 Z"  fill="#F2F0EC"
+    <path> d="M182 101 L210 101 L217 180 L175 180 Z"  fill="#F2F0EC"
+    <path> d="M180.5 118 H211.5 L212.4 128 H179.6 Z M178.5 140 H213.5 L214.3 150 H177.7 Z"  fill="#0D0D0D"
+    <rect> width="6"  height="8"  x="193"  y="106"  rx="3"  fill="#0D0D0D"
+    <rect> width="10"  height="16"  x="191"  y="160"  rx="5"  fill="#0D0D0D"
+    <rect> width="52"  height="7"  x="170"  y="94"  rx="2"  fill="#F2F0EC"
+    <rect> width="24"  height="20"  x="184"  y="74"  fill="#F2F0EC"
+    <rect> width="16"  height="12"  x="188"  y="78"  fill="#0D0D0D"
+    <circle> cx="196"  cy="84"  r="3.5"  fill="#F2F0EC"
+    <path> d="M182 74 Q196 58 210 74 Z"  fill="#F2F0EC"
+    <rect> width="2.4"  height="6"  x="194.8"  y="58"  fill="#F2F0EC"
+    <circle> cx="196"  cy="57"  r="2.5"  fill="#F2F0EC"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · The wave passed.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · You outlasted it. Twenty-two minutes, start to finish.
+    <div> height:2px
+    <div> height:44px  border-radius:22px  background:#1E1E1E  display:inline-flex  align-items:center  gap:10px  padding:0 18px 0 8px  font-size:15px  font-weight:700  color:#F2F0EC
+      <div> width:30px  height:30px  border-radius:15px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      · Logged as ridden out
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Back to Today

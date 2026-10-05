@@ -1,18 +1,22 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { View } from 'react-native';
-import Svg, { Path, Rect } from 'react-native-svg';
+import { ScrollView, useWindowDimensions, View } from 'react-native';
 
-import { AN_RANGES, AnCaps, AnDowHeader, AnLabel, AnLegend, AnRangeFilter, AnStats, AnWeekRow } from '@/components/insights/heat';
-import { AppText, LoadingView, PressScale, Screen, ScreenHeader } from '@/components/ui';
+import { tally, useLabelColumn } from '@/components/logflow';
+import { AN_RANGES, HeatHeader, HeatLegend, HeatRow } from '@/components/insights/heat';
+import { Caps, LoadingView, MonoText, NavBar, P, Row, RowGroup, Screen, Segmented, TitleHead } from '@/components/mono';
 import { useCheckins, useEvents } from '@/lib/backend';
 import { lastNDateKeys } from '@/lib/date';
-import { colors, sans, spacing } from '@/lib/theme';
+import { splitStored } from '@/lib/format';
+import { mono } from '@/lib/theme';
 
 /**
- * You · Insights (canvas: screens-analytics · AnalyticsScreen) — stripped
- * to essentials: a mood heatmap (one tinted cell per day, 2W/4W/12W),
- * three numerals, four trigger bars. Nothing else.
+ * Insights (no frame draws it — routes §4.3): a mood heat, one disc a day over
+ * 2, 4 or 12 weeks, three numbers, the four triggers that come up most, and the
+ * doors to the mail and the medallions. Styled after Urge Overview: the title
+ * head with the range as the segmented switch, the numbers as big-stat columns,
+ * the triggers as its dot-row idiom with a bar, the doors as a settings group.
+ * The whole page scrolls, its head included.
  */
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -27,6 +31,8 @@ export default function Dashboard() {
   const events = useEvents();
   const [range, setRange] = useState(14);
   const [openedAt] = useState(() => Date.now());
+  // the Library tab no longer lights for Insights, so the way back is Today
+  const back = () => (router.canGoBack() ? router.back() : router.navigate('/(app)/today'));
 
   const data = useMemo(() => {
     if (!checkins || !events) return null;
@@ -45,129 +51,107 @@ export default function Dashboard() {
     const kept = range - lapses;
     const nCheckins = moods.filter((v) => v != null).length;
 
-    // top triggers — counted off the logged urges in this range
-    const counts = new Map<string, number>();
-    for (const e of inRange) {
-      if (!isUrge(e.type) || !e.trigger) continue;
-      const first = e.trigger.split(' · ')[0];
-      counts.set(first, (counts.get(first) ?? 0) + 1);
-    }
-    const triggers = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4);
+    // top triggers — the first one each logged urge names, as before
+    const triggers = tally(inRange.filter((e) => isUrge(e.type) && e.trigger).map((e) => splitStored(e.trigger)[0])).slice(0, 4);
     const tMax = Math.max(...triggers.map(([, n]) => n), 1);
 
     return { cfg, keys, weeks, urges, kept, nCheckins, triggers, tMax };
   }, [checkins, events, openedAt, range]);
 
-  if (!data) {
-    return (
-      <Screen>
-        <LoadingView />
-      </Screen>
-    );
-  }
+  // the trigger names are the pickers' own (`Something online`), wider than the 96 column
+  const { width } = useWindowDimensions();
+  const labels = useLabelColumn((data?.triggers ?? []).map(([label]) => label), width - 48 - 4);
+
+  if (!data) return <LoadingView onBack={back} />;
 
   const { cfg, keys, weeks, urges, kept, nCheckins, triggers, tMax } = data;
   const lastWeekLen = weeks.length ? weeks[weeks.length - 1].length : 7;
 
   return (
-    <Screen contentStyle={{ paddingTop: spacing.md }}>
-      <ScreenHeader title="Insights" pad={0} onBack={() => (router.canGoBack() ? router.back() : router.navigate('/(app)/library'))} trailing={<AnRangeFilter value={range} onChange={setRange} />} />
-
-      {/* mood, one cell per day */}
-      <View style={{ paddingTop: 4 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' }}>
-          <AnLabel>Mood, day by day</AnLabel>
-          <AnCaps>
-            {fmt(keys[0])} – {fmt(keys[keys.length - 1])}
-          </AnCaps>
+    <Screen>
+      <ScrollView style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+        <View style={{ height: 236 }}>
+          <NavBar left="back" onBack={back} />
+          <TitleHead title="Insights" />
+          <Segmented
+            items={AN_RANGES.map((r) => ({ key: String(r.days), label: r.label }))}
+            value={String(range)}
+            onChange={(key) => setRange(Number(key))}
+            style={{ position: 'absolute', left: 16, right: 16, top: 164 }}
+          />
         </View>
-        <AnDowHeader style={{ marginTop: 20, marginBottom: 8 }} />
-        <View style={{ gap: 6 }}>
-          {weeks.map((w, i) => (
-            <AnWeekRow key={i} week={w} h={cfg.h} r={cfg.r} todayIdx={i === weeks.length - 1 ? lastWeekLen - 1 : -1} />
-          ))}
-        </View>
-        <AnLegend />
-      </View>
 
-      {/* the numerals */}
-      <View style={{ marginTop: 52 }}>
-        <AnStats stats={[[nCheckins, 'Check-ins'], [urges, 'Urges logged'], [kept, 'Days kept']]} />
-      </View>
+        <View style={{ paddingHorizontal: 24, gap: 40 }}>
+          {/* mood, one disc per day */}
+          <View style={{ gap: 16 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Caps>Mood, day by day</Caps>
+              <Caps>
+                {fmt(keys[0])} – {fmt(keys[keys.length - 1])}
+              </Caps>
+            </View>
+            <HeatHeader first={(new Date(`${keys[0]}T00:00:00`).getDay() + 6) % 7} />
+            <View style={{ gap: 8 }}>
+              {weeks.map((w, i) => (
+                <HeatRow key={i} week={w} d={cfg.d} todayIdx={i === weeks.length - 1 ? lastWeekLen - 1 : -1} />
+              ))}
+            </View>
+            <HeatLegend />
+          </View>
 
-      {/* top triggers — four thin bars */}
-      <View style={{ paddingTop: 52, paddingBottom: 24 }}>
-        <AnLabel>What sets it off</AnLabel>
-        {triggers.length ? (
-          <View style={{ gap: 21, marginTop: 24 }}>
-            {triggers.map(([label, n]) => (
-              <View key={label} style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                <AppText style={[sans('500'), { width: 84, fontSize: 14, color: colors.text }]} numberOfLines={1}>
-                  {label}
-                </AppText>
-                <View style={{ flex: 1, height: 3, borderRadius: 9999, backgroundColor: colors.accentSoft }}>
-                  <View style={{ width: `${(n / tMax) * 100}%`, height: '100%', borderRadius: 9999, backgroundColor: colors.ink }} />
-                </View>
-                <AppText style={[sans('500'), { width: 20, textAlign: 'right', fontSize: 13, color: colors.textSoft, fontVariant: ['tabular-nums'] }]}>
-                  {n}
-                </AppText>
+          {/* the three numbers */}
+          <View style={{ flexDirection: 'row' }}>
+            {(
+              [
+                [nCheckins, 'Check-ins'],
+                [urges, 'Urges logged'],
+                [kept, 'Days kept'],
+              ] as [number, string][]
+            ).map(([v, label]) => (
+              <View key={label} style={{ flex: 1, alignItems: 'center', gap: 6 }}>
+                <MonoText v="title" center wrap="nowrap">
+                  {String(v)}
+                </MonoText>
+                <Caps center>{label}</Caps>
               </View>
             ))}
           </View>
-        ) : (
-          <AppText style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, marginTop: 20 }]}>
-            Log an urge and its trigger. The bars build from there.
-          </AppText>
-        )}
-        <AppText style={[sans('400'), { fontSize: 11.5, color: colors.textSofter, marginTop: 18 }]}>
-          From the {urges} urge{urges === 1 ? '' : 's'} you logged in this range
-        </AppText>
-      </View>
 
-      {/* quiet doors — mail + medallions (navigation, not analytics) */}
-      <View style={{ gap: 10, marginTop: 12, marginBottom: 8 }}>
-        {(
-          [
-            ['Your mail', 'Weekly reports & letters', () => router.push('/mail')],
-            ['Medallions', 'The campaign album', () => router.push('/milestones')],
-          ] as [string, string, () => void][]
-        ).map(([title, sub, go]) => (
-          <PressScale
-            key={title}
-            onPress={go}
-            accessibilityRole="button"
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 14,
-              backgroundColor: colors.surface,
-              borderRadius: 16,
-              paddingVertical: 14,
-              paddingHorizontal: 16,
-            }}>
-            <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
-              {title === 'Your mail' ? (
-                <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
-                  <Rect x={3} y={5} width={18} height={14} rx={2.4} stroke={colors.text} strokeWidth={1.8} />
-                  <Path d="M4.5 7.5l7.5 5.5 7.5-5.5" stroke={colors.text} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
-              ) : (
-                <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
-                  <Path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z" stroke={colors.text} strokeWidth={1.6} strokeDasharray="1.8 3.4" />
-                  <Path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6z" stroke={colors.text} strokeWidth={1.6} />
-                </Svg>
-              )}
-            </View>
-            <View style={{ flex: 1 }}>
-              <AppText style={[sans('600'), { fontSize: 15.5, color: colors.text }]}>{title}</AppText>
-              <AppText style={[sans('400'), { fontSize: 13, color: colors.textMuted, marginTop: 1 }]}>{sub}</AppText>
-            </View>
-            <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
-              <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-            </Svg>
-          </PressScale>
-        ))}
-      </View>
+          {/* what sets it off — the four most named, as dot-row bars */}
+          <View style={{ gap: 8 }}>
+            <Caps>What sets it off</Caps>
+            {triggers.length ? (
+              <View>
+                {labels.measure}
+                {triggers.map(([label, n], i) => (
+                  <View
+                    key={label}
+                    style={{ height: i ? 47 : 46, flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 2, borderTopWidth: i ? 1 : 0, borderTopColor: mono.line }}>
+                    <MonoText v="rowLabel" numberOfLines={1} style={{ width: labels.column }}>
+                      {label}
+                    </MonoText>
+                    <View style={{ flex: 1, height: 3, borderRadius: 1.5, backgroundColor: mono.line }}>
+                      <View style={{ width: `${(n / tMax) * 100}%`, height: 3, borderRadius: 1.5, backgroundColor: mono.ink }} />
+                    </View>
+                    <MonoText v="rowValue">{String(n)}</MonoText>
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <P color={mono.mute}>Log an urge and its trigger. The bars build from there.</P>
+            )}
+            <MonoText v="pill" color={mono.mute} style={{ fontSize: 12, lineHeight: 15 }}>
+              From the {urges} urge{urges === 1 ? '' : 's'} you logged in this range
+            </MonoText>
+          </View>
+
+          {/* quiet doors — mail + medallions (navigation, not analytics) */}
+          <RowGroup>
+            <Row label="Your mail" value="Weekly reports & letters" valueLines={1} onPress={() => router.push('/mail')} />
+            <Row label="Medallions" value="The campaign album" valueLines={1} onPress={() => router.push('/milestones')} />
+          </RowGroup>
+        </View>
+      </ScrollView>
     </Screen>
   );
 }

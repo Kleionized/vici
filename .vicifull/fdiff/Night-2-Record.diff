@@ -1,0 +1,306 @@
+--- .vicifull/pretty/prev/Night-2-Record.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Night-2-Record.html	2026-09-05 00:22:35
+@@ -125,20 +125,156 @@
+   </div>
+   <div style="
+     | position:absolute;
++    | left:86px;
++    | top:150px;
++    | width:220px;
++    | height:190px;
++  ">
++    <div style="
++      | position:absolute;
++      | left:44px;
++      | top:6px;
++      | width:130px;
++      | height:130px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(142,153,168,0.28), rgba(142,153,168,0) 74%);
++      | filter:blur(4px);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:50px;
++      | top:134px;
++      | width:120px;
++      | height:12px;
++      | border-radius:50%;
++      | background:rgba(0,0,0,0.10);
++      | filter:blur(4px);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:48px;
++      | top:38px;
++      | width:126px;
++      | height:94px;
++      | border-radius:10px;
++      | background:#E0DFDA;
++      | transform:rotate(-2deg);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:54px;
++      | top:32px;
++      | width:114px;
++      | height:94px;
++      | border-radius:8px;
++      | background:#F7F6F2;
++      | transform:rotate(-2deg);
++      | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:110px;
++      | top:34px;
++      | width:2px;
++      | height:88px;
++      | background:#E0DFDA;
++      | transform:rotate(-2deg);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:66px;
++      | top:54px;
++      | width:34px;
++      | height:4px;
++      | border-radius:2px;
++      | background:#E0DFDA;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:66px;
++      | top:68px;
++      | width:34px;
++      | height:4px;
++      | border-radius:2px;
++      | background:#E0DFDA;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:66px;
++      | top:82px;
++      | width:24px;
++      | height:4px;
++      | border-radius:2px;
++      | background:#E0DFDA;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:122px;
++      | top:52px;
++      | width:34px;
++      | height:4px;
++      | border-radius:2px;
++      | background:#E0DFDA;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:122px;
++      | top:66px;
++      | width:26px;
++      | height:4px;
++      | border-radius:2px;
++      | background:#E0DFDA;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:140px;
++      | top:84px;
++      | width:64px;
++      | height:8px;
++      | border-radius:4px;
++      | background:#55534E;
++      | transform:rotate(-28deg);
++      | transform-origin:left center;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:196px;
++      | top:52px;
++      | width:8px;
++      | height:8px;
++      | border-radius:2px;
++      | background:#B4B1AB;
++      | transform:rotate(17deg);
++    ">
++    </div>
++  </div>
++  <div style="
++    | position:absolute;
+     | left:24px;
+-    | top:170px;
++    | top:378px;
+     | font-size:27px;
+     | font-weight:500;
+     | letter-spacing:-0.1px;
+     | color:#1D1C1A;
+   ">
+-    · The record.
++    · Today’s record.
+   </div>
+   <div style="
+     | position:absolute;
+     | left:12px;
+     | right:12px;
+-    | top:240px;
++    | top:438px;
+     | height:284px;
+     | border-radius:14px;
+     | background:#FFFFFF;
+@@ -331,143 +467,7 @@
+       ">
+         · Add to the record
+       </span>
+-    </div>
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:86px;
+-    | top:556px;
+-    | width:220px;
+-    | height:160px;
+-  ">
+-    <div style="
+-      | position:absolute;
+-      | left:44px;
+-      | top:6px;
+-      | width:130px;
+-      | height:130px;
+-      | border-radius:50%;
+-      | background:radial-gradient(closest-side, rgba(142,153,168,0.28), rgba(142,153,168,0) 74%);
+-      | filter:blur(4px);
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:50px;
+-      | top:134px;
+-      | width:120px;
+-      | height:12px;
+-      | border-radius:50%;
+-      | background:rgba(0,0,0,0.10);
+-      | filter:blur(4px);
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:48px;
+-      | top:38px;
+-      | width:126px;
+-      | height:94px;
+-      | border-radius:10px;
+-      | background:#E0DFDA;
+-      | transform:rotate(-2deg);
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:54px;
+-      | top:32px;
+-      | width:114px;
+-      | height:94px;
+-      | border-radius:8px;
+-      | background:#F7F6F2;
+-      | transform:rotate(-2deg);
+-      | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:110px;
+-      | top:34px;
+-      | width:2px;
+-      | height:88px;
+-      | background:#E0DFDA;
+-      | transform:rotate(-2deg);
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:66px;
+-      | top:54px;
+-      | width:34px;
+-      | height:4px;
+-      | border-radius:2px;
+-      | background:#E0DFDA;
+-    ">
+     </div>
+-    <div style="
+-      | position:absolute;
+-      | left:66px;
+-      | top:68px;
+-      | width:34px;
+-      | height:4px;
+-      | border-radius:2px;
+-      | background:#E0DFDA;
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:66px;
+-      | top:82px;
+-      | width:24px;
+-      | height:4px;
+-      | border-radius:2px;
+-      | background:#E0DFDA;
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:122px;
+-      | top:52px;
+-      | width:34px;
+-      | height:4px;
+-      | border-radius:2px;
+-      | background:#E0DFDA;
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:122px;
+-      | top:66px;
+-      | width:26px;
+-      | height:4px;
+-      | border-radius:2px;
+-      | background:#E0DFDA;
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:140px;
+-      | top:84px;
+-      | width:64px;
+-      | height:8px;
+-      | border-radius:4px;
+-      | background:#55534E;
+-      | transform:rotate(-28deg);
+-      | transform-origin:left center;
+-    ">
+-    </div>
+-    <div style="
+-      | position:absolute;
+-      | left:196px;
+-      | top:52px;
+-      | width:8px;
+-      | height:8px;
+-      | border-radius:2px;
+-      | background:#B4B1AB;
+-      | transform:rotate(17deg);
+-    ">
+-    </div>
+   </div>
+   <div style="
+     | position:absolute;

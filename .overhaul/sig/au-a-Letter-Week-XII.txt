@@ -1,0 +1,44 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(13, 13, 13) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(13, 13, 13) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(13, 13, 13) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.05 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 22 | 60 | 36 | 40 | - | - | - | - | - | -
+button | 335 | 60 | 36 | 40 | - | - | - | - | - | -
+svg | 353 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 355 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 24 | 112 | 345 | 740 | rgb(30, 30, 30) | 24px 24px 0px 0px | - | - | - | -
+div | 24 | 112 | 345 | 644 | - | - | - | - | - | -
+div | 24 | 112 | 345 | 618 | - | - | - | - | - | -
+div | 52 | 146 | 289 | 16 | - | - | - | - | 13px/700/normal/16px/rgb(155, 150, 142) | Week XII, from Sam
+div | 52 | 180 | 289 | 32 | - | - | - | - | 26px/700/-0.6px/32px/rgb(242, 240, 236) | Sam —
+div | 52 | 230 | 289 | 426 | - | - | - | - | - | -
+div | 52 | 230 | 289 | 120 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | I’m writing this at the end of week XII. I remember where you are right now — you want this to be the time it finally changes, and part of you is already wondering how long you’ll last.
+div | 52 | 364 | 289 | 96 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | Here is the part I wish you knew: You need to stop turning one bad night into a reason to quit.
+span | 52 | 367 | 287.7 | 42 | - | - | - | - | 15px/700/normal/24px/rgb(242, 240, 236) | you do not need twelve perfect weeks.
+div | 52 | 474 | 289 | 72 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | There were nights I wanted to watch badly. Some days the only thing I did right was get through the evening. That still counted.
+div | 52 | 560 | 289 | 96 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | Every time I waited one out, left the room, or used the SOS instead, I learned the same thing: the urge ends whether you obey it or not.
+div | 24 | 662 | 345 | 190 | - | - | - | - | - | -
+button | 24 | 698 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+div | 163 | 717.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/19px/rgb(17, 17, 17) | Continue
+button | 0 | 774 | 393 | 18 | - | - | - | - | - | -
+div | 0 | 774 | 393 | 18 | - | - | - | - | 15px/400/normal/18px/rgb(155, 150, 142) | Keep this letter
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

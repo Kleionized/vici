@@ -1,0 +1,22 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 44
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 262.2 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 267 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Best answers
+div | 32 | 299 | 329 | 190 | - | - | - | - | - | -
+div | 32 | 299 | 329 | 79 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 50 | 315 | 28 | 28 | rgb(242, 240, 236) | 8px | - | - | 13px/700/normal/normal/rgb(17, 17, 17) | A
+div | 92 | 315 | 251 | 47 | - | - | - | - | - | -
+div | 92 | 318 | 251 | 44 | - | - | - | - | 16px/700/normal/22px/rgb(242, 240, 236) | Stop watching and meet necessary needs
+div | 32 | 388 | 329 | 101 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 50 | 404 | 28 | 28 | rgb(242, 240, 236) | 8px | - | - | 13px/700/normal/normal/rgb(17, 17, 17) | B
+div | 92 | 404 | 251 | 69 | - | - | - | - | - | -
+div | 92 | 407 | 251 | 66 | - | - | - | - | 16px/700/normal/22px/rgb(242, 240, 236) | Identify a real consequence and make a fitting repair or request for help
+div | 32 | 517 | 329 | 56 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | Address the event and any consequence while keeping necessary care.
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

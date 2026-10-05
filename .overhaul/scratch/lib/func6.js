@@ -1,0 +1,26 @@
+const out = {};
+const go = async (p) => { history.pushState(null, '', p); dispatchEvent(new PopStateEvent('popstate')); await __sleep(1500); };
+await __sleep(400);
+// lessons-browser: disabled upcoming row does nothing, done row opens the lesson
+await tap('Practise the part that gets in the way, lesson 39, upcoming'); await __sleep(1000);
+out.upcomingStays = location.pathname;
+await tap('Prepare for tonight, lesson 01, completed'); await __sleep(1500);
+out.doneRow = location.pathname;
+history.back(); await __sleep(1500);
+out.backToBrowser = location.pathname;
+await tap('Search lessons'); await __sleep(1500);
+out.search = location.pathname;
+out.count0 = [...document.querySelectorAll('div')].map(d=>d.textContent).find(t=>/^\d+ results?$/.test(t));
+await tap('sleep'); await __sleep(600);
+out.countSleep = [...document.querySelectorAll('div')].map(d=>d.textContent).find(t=>/^\d+ results?$/.test(t));
+out.inputValue = document.querySelector('input').value;
+await typeIn(0, 'brain'); await __sleep(600);
+out.countBrain = [...document.querySelectorAll('div')].map(d=>d.textContent).find(t=>/^\d+ results?$/.test(t));
+await tap('Understand what starts the habit, lesson 22'); await __sleep(1500);
+out.searchRow = location.pathname;
+history.back(); await __sleep(1500);
+await tap('Cancel'); await __sleep(1500);
+out.cancel = location.pathname;
+await tap('Cancel'); await __sleep(1500);
+out.cancel2 = location.pathname;
+return out;

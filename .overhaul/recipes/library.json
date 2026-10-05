@@ -1,0 +1,224 @@
+[
+ {
+  "frame": "Week I Reset",
+  "route": "/week/1",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/1 redirects to the Library tab turned to week I (/library?week=1, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week I Reset P2",
+  "route": "/week/1",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week II Changing Your Mindset",
+  "route": "/week/2",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/2 redirects to the Library tab turned to week II (/library?week=2, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week II Changing Your Mindset P2",
+  "route": "/week/2",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week III In the Moment",
+  "route": "/week/3",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/3 redirects to the Library tab turned to week III (/library?week=3, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week III In the Moment P2",
+  "route": "/week/3",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week IV Know Your Brain",
+  "route": "/week/4",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/4 redirects to the Library tab turned to week IV (/library?week=4, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week IV Know Your Brain P2",
+  "route": "/week/4",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week V Why It Feels Worth It",
+  "route": "/week/5",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/5 redirects to the Library tab turned to week V (/library?week=5, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week V Why It Feels Worth It P2",
+  "route": "/week/5",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week VI Discipline",
+  "route": "/week/6",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/6 redirects to the Library tab turned to week VI (/library?week=6, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week VI Discipline P2",
+  "route": "/week/6",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week VII Relapse and Adversity",
+  "route": "/week/7",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/7 redirects to the Library tab turned to week VII (/library?week=7, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week VII Relapse and Adversity P2",
+  "route": "/week/7",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning",
+  "route": "/week/8",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/8 redirects to the Library tab turned to week VIII (/library?week=8, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week VIII Boredom and Meaning P2",
+  "route": "/week/8",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week IX Connection",
+  "route": "/week/9",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/9 redirects to the Library tab turned to week IX (/library?week=9, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week IX Connection P2",
+  "route": "/week/9",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week X Yourself",
+  "route": "/week/10",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/10 redirects to the Library tab turned to week X (/library?week=10, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week X Yourself P2",
+  "route": "/week/10",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week XI Build a Life You Want",
+  "route": "/week/11",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/11 redirects to the Library tab turned to week XI (/library?week=11, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week XI Build a Life You Want P2",
+  "route": "/week/11",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Week XII Leave It Behind",
+  "route": "/week/12",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "Day-38 seed (lessons 01–37 done, 38 current, 39–84 upcoming — the state all 24 week pages draw). /week/12 redirects to the Library tab turned to week XII (/library?week=12, D240). Rows viewport at scroll 0."
+ },
+ {
+  "frame": "Week XII Leave It Behind P2",
+  "route": "/week/12",
+  "initseed": ".overhaul/library-seed.js",
+  "do": "const els=[...document.querySelectorAll(\"*\")].filter(e=>{const cs=getComputedStyle(e);const r=e.getBoundingClientRect();return /(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1&&r.height>100&&r.left>-1&&r.right<innerWidth+1});els.forEach(e=>e.scrollTop=e.scrollHeight);return els.map(e=>e.scrollTop)",
+  "wait": 1200,
+  "note": "Same page with the rows viewport (canvas 472–736) scrolled to its end, 264 = four rows, so rows 5–7 sit at 472/538/604. Not --scroll=end: the pager keeps the neighbouring week pages mounted, each with its own rows scroller, and --scroll picks the first; the `do` scrolls only the scrollers inside the viewport."
+ },
+ {
+  "frame": "Library tab (current week)",
+  "route": "/library",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "No ?week: the pager opens on the current week (day 38 → Week VI) — pixel-identical to Week VI Discipline."
+ },
+ {
+  "frame": "(unframed) /lessons-browser",
+  "route": "/lessons-browser",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "No frame (routes §4.10). Day 38: weeks I–V done, 38 Continue, 39+ upcoming and disabled. Cancel → back/today; search glyph (label 'Search lessons') → /search; rows → /lesson/day/N."
+ },
+ {
+  "frame": "(unframed) /search",
+  "route": "/search",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "No frame (routes §4.11). 84 results empty; chips fill the query (sleep → 3 results); typeIn(0,'brain') → 8; rows → /lesson/day/N; Cancel → back or /library."
+ },
+ {
+  "frame": "(unframed) /first-steps",
+  "route": "/first-steps",
+  "initseed": ".overhaul/library-day3-seed.js",
+  "wait": 2500,
+  "note": "No frame (routes §4.9). Day-3 seed with lesson 1 completed: step 1 done, 3 current (Continue), 4–6 locked (disabled, no glyph). With library-seed.js (day 38, nothing completed): 'None done yet · 6 to go', all open."
+ },
+ {
+  "frame": "(unframed) /locked",
+  "route": "/locked",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "No frame (routes §4.5, CRITIC C7). Unlock VICI Plus → /paywall; back → tab history / Today. The door hero drops at 375×667 (D320 rule 1)."
+ },
+ {
+  "frame": "(unframed) /journey",
+  "route": "/journey",
+  "initseed": ".overhaul/library-seed.js",
+  "wait": 2500,
+  "note": "No frame (routes §4.12). The four chapters end to end; day 38 → The Highlands is the current row inside The Crossing. /journey/<landing|crossing|highlands|watch>; an unknown key opens The Landing."
+ }
+]

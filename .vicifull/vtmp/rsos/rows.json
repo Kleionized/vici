@@ -1,0 +1,296 @@
+[
+  {
+    "frame": "Cue Intro Modal",
+    "unreachable": false,
+    "sig": "--- 26 design rows, 33 app rows; 9 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Cue-Intro-Modal.png vs a-Cue-Intro-Modal.png: mean|Δ| 0.053  max 7 at 196,348  px>=4 82  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Strength",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 21 app rows; 6 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-SOS-Strength.png vs a-SOS-Strength.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Cue Hue Picker",
+    "unreachable": false,
+    "sig": "--- 40 design rows, 43 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Cue-Hue-Picker.png vs a-Cue-Hue-Picker.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Surf Step 1",
+    "unreachable": false,
+    "sig": "--- 30 design rows, 39 app rows; 8 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Surf-Step-1.png vs a-Surf-Step-1.png: mean|Δ| 0.016  max 5 at 186,335  px>=4 33  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Surf Step 3",
+    "unreachable": false,
+    "sig": "--- 20 design rows, 28 app rows; 5 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Surf-Step-3.png vs a-Surf-Step-3.png: mean|Δ| 0.002  max 12 at 223,259  px>=4 16  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Cue Set Confirmation",
+    "unreachable": false,
+    "sig": "--- 26 design rows, 32 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Cue-Set-Confirmation.png vs a-Cue-Set-Confirmation.png: mean|Δ| 0.014  max 3 at 249,354  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Reason Picker",
+    "unreachable": false,
+    "sig": "--- 69 design rows, 72 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-SOS-Reason-Picker.png vs a-SOS-Reason-Picker.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feeling Picker",
+    "unreachable": false,
+    "sig": "--- 64 design rows, 67 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-SOS-Feeling-Picker.png vs a-SOS-Feeling-Picker.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Loc Private Room",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 22 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Loc-Private-Room.png vs a-SOS-Loc-Private-Room.png: mean|Δ| 0.001  max 2 at 231,295  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Loc Bed",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Loc-Bed.png vs a-SOS-Loc-Bed.png: mean|Δ| 0.017  max 5 at 255,317  px>=4 35  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Loc Public",
+    "unreachable": false,
+    "sig": "--- 18 design rows, 24 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Loc-Public.png vs a-SOS-Loc-Public.png: mean|Δ| 0.017  max 6 at 281,294  px>=4 117  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Loc Work",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Loc-Work.png vs a-SOS-Loc-Work.png: mean|Δ| 0.014  max 5 at 265,297  px>=4 20  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Loc Elsewhere",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 26 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Loc-Elsewhere.png vs a-SOS-Loc-Elsewhere.png: mean|Δ| 0.016  max 6 at 276,292  px>=4 72  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Turned On",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 24 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Turned-On.png vs a-SOS-Feel-Turned-On.png: mean|Δ| 0.014  max 4 at 250,305  px>=4 22  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Bored",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Bored.png vs a-SOS-Feel-Bored.png: mean|Δ| 0.010  max 3 at 243,300  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Lonely",
+    "unreachable": false,
+    "sig": "--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Lonely.png vs a-SOS-Feel-Lonely.png: mean|Δ| 0.012  max 3 at 255,310  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Stressed",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 25 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Stressed.png vs a-SOS-Feel-Stressed.png: mean|Δ| 0.002  max 3 at 221,278  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Anxious",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 25 app rows; 9 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Anxious.png vs a-SOS-Feel-Anxious.png: mean|Δ| 0.023  max 3 at 215,325  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Angry",
+    "unreachable": false,
+    "sig": "--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Angry.png vs a-SOS-Feel-Angry.png: mean|Δ| 0.013  max 5 at 245,297  px>=4 25  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Low",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Low.png vs a-SOS-Feel-Low.png: mean|Δ| 0.020  max 14 at 192,269  px>=4 154  px>12 1  tiles>12 1\n  box 176,256-192,272  px 1  max 14  meanΔ 14.0"
+  },
+  {
+    "frame": "SOS Feel Rejected",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 24 app rows; 5 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Rejected.png vs a-SOS-Feel-Rejected.png: mean|Δ| 0.013  max 5 at 255,307  px>=4 23  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Tired",
+    "unreachable": false,
+    "sig": "--- 20 design rows, 26 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Tired.png vs a-SOS-Feel-Tired.png: mean|Δ| 0.015  max 6 at 192,290  px>=4 72  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Restless",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 26 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Restless.png vs a-SOS-Feel-Restless.png: mean|Δ| 0.013  max 6 at 281,297  px>=4 47  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Numb",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 23 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Numb.png vs a-SOS-Feel-Numb.png: mean|Δ| 0.011  max 5 at 240,285  px>=4 66  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Ashamed",
+    "unreachable": false,
+    "sig": "--- 24 design rows, 31 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Ashamed.png vs a-SOS-Feel-Ashamed.png: mean|Δ| 0.011  max 5 at 240,289  px>=4 66  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Feel Unknown",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 23 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Feel-Unknown.png vs a-SOS-Feel-Unknown.png: mean|Δ| 0.002  max 3 at 238,291  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Challenge",
+    "unreachable": false,
+    "sig": "--- 11 design rows, 16 app rows; 0 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)",
+    "px": "d-SOS-Challenge.png vs a-SOS-Challenge.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Content",
+    "unreachable": false,
+    "sig": "--- 15 design rows, 20 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Content.png vs a-SOS-Trig-Content.png: mean|Δ| 0.013  max 4 at 250,311  px>=4 22  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Doomscroll",
+    "unreachable": false,
+    "sig": "--- 20 design rows, 25 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Doomscroll.png vs a-SOS-Trig-Doomscroll.png: mean|Δ| 0.012  max 5 at 254,303  px>=4 45  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Fantasy",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 21 app rows; 7 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Fantasy.png vs a-SOS-Trig-Fantasy.png: mean|Δ| 0.008  max 3 at 180,292  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Late Phone",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Late-Phone.png vs a-SOS-Trig-Late-Phone.png: mean|Δ| 0.014  max 6 at 177,281  px>=4 49  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Habit",
+    "unreachable": false,
+    "sig": "--- 15 design rows, 20 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Habit.png vs a-SOS-Trig-Habit.png: mean|Δ| 0.013  max 6 at 244,298  px>=4 55  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Cant Sleep",
+    "unreachable": false,
+    "sig": "--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Cant-Sleep.png vs a-SOS-Trig-Cant-Sleep.png: mean|Δ| 0.012  max 4 at 204,292  px>=4 1  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Argument",
+    "unreachable": false,
+    "sig": "--- 20 design rows, 26 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Argument.png vs a-SOS-Trig-Argument.png: mean|Δ| 0.010  max 5 at 237,294  px>=4 18  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Alone",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 21 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Alone.png vs a-SOS-Trig-Alone.png: mean|Δ| 0.005  max 3 at 253,275  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Trig Unknown",
+    "unreachable": false,
+    "sig": "--- 17 design rows, 22 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-SOS-Trig-Unknown.png vs a-SOS-Trig-Unknown.png: mean|Δ| 0.010  max 5 at 240,289  px>=4 66  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Reassess",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 20 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-SOS-Reassess.png vs a-SOS-Reassess.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "SOS Afterward",
+    "unreachable": false,
+    "sig": "--- 9 design rows, 13 app rows; 0 differing, 1 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)",
+    "px": "d-SOS-Afterward.png vs a-SOS-Afterward.png: mean|Δ| 0.000  max 0 at null  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Surf Complete",
+    "unreachable": false,
+    "sig": "--- 13 design rows, 37 app rows; 3 differing, 2 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Surf-Complete.png vs a-Surf-Complete.png: mean|Δ| 1.329  max 38 at 184,208  px>=4 61597  px>12 1261  tiles>12 94\n  box 176,208-192,224  px 26  max 38  meanΔ 36.5\n  box 256,448-272,464  px 41  max 19  meanΔ 14.4\n  box 96,528-112,544  px 36  max 21  meanΔ 14.8\n  box 112,464-128,480  px 37  max 18  meanΔ 14.2\n  box 288,528-304,544  px 33  max 22  meanΔ 15.5\n  box 160,448-176,464  px 33  max 18  meanΔ 13.8"
+  },
+  {
+    "frame": "Relapse Log",
+    "unreachable": false,
+    "sig": "--- 24 design rows, 30 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Relapse-Log.png vs a-Relapse-Log.png: mean|Δ| 0.001  max 2 at 195,294  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Relapse Twice",
+    "unreachable": false,
+    "sig": "--- 18 design rows, 25 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Relapse-Twice.png vs a-Relapse-Twice.png: mean|Δ| 0.026  max 5 at 211,349  px>=4 18  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Relapse Resign",
+    "unreachable": false,
+    "sig": "--- 21 design rows, 30 app rows; 4 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+    "px": "d-Relapse-Resign.png vs a-Relapse-Resign.png: mean|Δ| 0.002  max 3 at 265,487  px>=4 0  px>12 0  tiles>12 0"
+  },
+  {
+    "frame": "Relapse Begin",
+    "unreachable": false,
+    "sig": "--- 16 design rows, 41 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Relapse-Begin.png vs a-Relapse-Begin.png: mean|Δ| 1.398  max 20 at 290,491  px>=4 77182  px>12 1373  tiles>12 123\n  box 96,448-112,464  px 41  max 18  meanΔ 14.3\n  box 144,384-160,400  px 40  max 18  meanΔ 14.7\n  box 240,384-256,400  px 38  max 18  meanΔ 14.4\n  box 192,368-208,384  px 33  max 17  meanΔ 14.2\n  box 272,432-288,448  px 32  max 16  meanΔ 13.7\n  box 96,464-112,480  px 30  max 16  meanΔ 14.2"
+  },
+  {
+    "frame": "Urge Hub Now",
+    "unreachable": false,
+    "sig": "--- 35 design rows, 217 app rows; 8 differing, 1 missing, 173 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Urge-Hub-Now.png vs a-Urge-Hub-Now.png: mean|Δ| 0.682  max 227 at 244,363  px>=4 1775  px>12 1174  tiles>12 35\n  box 224,352-240,368  px 381  max 226  meanΔ 176.5\n  box 240,352-256,368  px 285  max 227  meanΔ 189.8\n  box 224,336-240,352  px 107  max 225  meanΔ 93.2\n  box 240,336-256,352  px 68  max 225  meanΔ 115.0\n  box 144,288-160,304  px 30  max 185  meanΔ 100.6\n  box 224,368-240,384  px 13  max 206  meanΔ 142.1"
+  },
+  {
+    "frame": "Urge Hub Score",
+    "unreachable": false,
+    "sig": "--- 71 design rows, 217 app rows; 39 differing, 7 missing, 140 extra, 0 sub-0.25pt rounding, 38 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Urge-Hub-Score.png vs a-Urge-Hub-Score.png: mean|Δ| 1.839  max 227 at 63,280  px>=4 10746  px>12 9984  tiles>12 71\n  box 32,288-48,304  px 1023  max 227  meanΔ 226.5\n  box 96,288-112,304  px 865  max 227  meanΔ 217.1\n  box 32,304-48,320  px 581  max 227  meanΔ 223.0\n  box 48,304-64,320  px 579  max 227  meanΔ 191.1\n  box 96,272-112,288  px 501  max 224  meanΔ 220.1\n  box 112,288-128,304  px 472  max 224  meanΔ 216.0"
+  },
+  {
+    "frame": "Urge Hub Proof",
+    "unreachable": false,
+    "sig": "--- 45 design rows, 217 app rows; 8 differing, 1 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Urge-Hub-Proof.png vs a-Urge-Hub-Proof.png: mean|Δ| 0.702  max 215 at 342,524  px>=4 371  px>12 356  tiles>12 4\n  box 336,528-352,544  px 170  max 215  meanΔ 150.5\n  box 336,512-352,528  px 142  max 215  meanΔ 111.9\n  box 320,512-336,528  px 34  max 215  meanΔ 99.3\n  box 320,528-336,544  px 10  max 26  meanΔ 25.2"
+  },
+  {
+    "frame": "Urge Hub Surfed",
+    "unreachable": false,
+    "sig": "--- 67 design rows, 217 app rows; 10 differing, 8 missing, 144 extra, 0 sub-0.25pt rounding, 10 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Urge-Hub-Surfed.png vs a-Urge-Hub-Surfed.png: mean|Δ| 0.933  max 191 at 88,302  px>=4 5261  px>12 5134  tiles>12 48\n  box 96,304-112,320  px 128  max 190  meanΔ 188.8\n  box 96,288-112,304  px 128  max 190  meanΔ 188.7\n  box 112,288-128,304  px 103  max 189  meanΔ 183.9\n  box 112,304-128,320  px 103  max 189  meanΔ 183.8\n  box 336,272-352,288  px 169  max 133  meanΔ 88.5\n  box 320,336-336,352  px 139  max 133  meanΔ 100.4"
+  },
+  {
+    "frame": "Urge Hub Pledges",
+    "unreachable": false,
+    "sig": "--- 44 design rows, 217 app rows; 7 differing, 0 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+    "px": "d-Urge-Hub-Pledges.png vs a-Urge-Hub-Pledges.png: mean|Δ| 0.660  max 21 at 254,516  px>=4 26  px>12 2  tiles>12 2\n  box 240,512-256,528  px 1  max 21  meanΔ 21.0\n  box 192,256-208,272  px 1  max 13  meanΔ 13.0"
+  },
+  {
+    "frame": "Urge Hub — Breathe handoff",
+    "unreachable": false,
+    "sig": "",
+    "px": ""
+  }
+]

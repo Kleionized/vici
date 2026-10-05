@@ -1,0 +1,205 @@
+--- .vicifull/pretty/prev/V3-Q15.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q15.html	2026-09-05 00:22:35
+@@ -152,13 +152,73 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · What do you want to do about porn?
++    · What are you aiming for with porn?
++  </div>
++  <div style="
++    | position:absolute;
++    | left:0;
++    | right:0;
++    | top:232px;
++    | height:185px;
++  ">
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:50%;
++      | width:300px;
++      | height:190px;
++      | margin:-95px 0 0 -150px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,186,120,0.13), rgba(226,186,120,0) 72%);
++      | filter:blur(8px);
++    ">
++    </div>
++    <div style="
++      | position:relative;
++      | width:100%;
++      | height:100%;
++      | display:flex;
++      | justify-content:center;
++    ">
++      <svg width="260" height="185" viewBox="0 0 260 185">
++        <defs>
++          <linearGradient id="q15p" x1="0" y1="0" x2="0" y2="1">
++            <stop offset="0" stop-color="rgba(255,255,255,0.20)">
++            </stop>
++            <stop offset="1" stop-color="rgba(255,255,255,0.08)">
++            </stop>
++          </linearGradient>
++          <radialGradient id="q15d" cx="0.45" cy="0.35">
++            <stop offset="0" stop-color="#F4E2BE">
++            </stop>
++            <stop offset="1" stop-color="#E2BA78">
++            </stop>
++          </radialGradient>
++        </defs>
++        <path d="M60.5,34 H150 A8,8 0 0 1 158,42 V66 A6,6 0 0 1 152,72 H144 A6,6 0 0 1 138,66 V51 H60.5 A8.5,8.5 0 0 1 60.5,34 Z" fill="url(#q15p)" stroke="rgba(255,255,255,0.16)" stroke-width="1.2" stroke-linejoin="round">
++        </path>
++        <rect x="88" y="14" width="5" height="20" rx="2.5" fill="rgba(255,255,255,0.22)">
++        </rect>
++        <rect x="72" y="8" width="37" height="9" rx="4.5" fill="none" stroke="#E2BA78" stroke-opacity="0.8" stroke-width="1.8">
++        </rect>
++        <path d="M148 88c-4.5 6.2-4.5 10.4 0 13.4 4.5-3 4.5-7.2 0-13.4z" fill="url(#q15d)">
++        </path>
++        <path d="M148 118c-3.4 4.8-3.4 8 0 10.3 3.4-2.3 3.4-5.5 0-10.3z" fill="#E2BA78" opacity="0.45">
++        </path>
++        <path d="M148 144c-2.5 3.5-2.5 5.8 0 7.5 2.5-1.7 2.5-4 0-7.5z" fill="#E2BA78" opacity="0.2">
++        </path>
++        <ellipse cx="148" cy="170" rx="28" ry="5.5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1">
++        </ellipse>
++        <ellipse cx="148" cy="170" rx="14" ry="3" fill="none" stroke="#E2BA78" stroke-opacity="0.3" stroke-width="1.2">
++        </ellipse>
++      </svg>
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:281px;
++    | top:460px;
+     | height:60px;
+     | border-radius:16px;
+     | background:#F4F3F0;
+@@ -169,13 +229,24 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(19,19,19,0.14)" stroke-width="3.2" fill="none">
++      </circle>
++      <g stroke="#131313" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
++        <rect x="10" y="10" width="10" height="10" rx="2.5">
++        </rect>
++      </g>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+       | color:#131313;
+     ">
+-      · Stop using it
++      · Stop completely
+     </span>
+     <svg width="16" height="12" viewBox="0 0 16 12">
+       <path d="M1.5 6l4.4 4.5L14.5 1.5" fill="none" stroke="#131313" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+@@ -186,7 +257,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:355px;
++    | top:534px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -197,20 +268,31 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <g stroke="#F4F3F0" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
++        <path d="M15 9v12M10.5 16.5L15 21l4.5-4.5">
++        </path>
++      </g>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+       | color:#F4F3F0;
+     ">
+-      · Use it much less often
++      · Watch much less
+     </span>
+   </div>
+   <div style="
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:429px;
++    | top:608px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -221,7 +303,20 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <g stroke="#F4F3F0" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
++        <path d="M9.5 18.5a6.5 6.5 0 1 1 11 0">
++        </path>
++        <path d="M15 15l3.2-3.2">
++        </path>
++      </g>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:17px;
+       | font-weight:500;
+       | line-height:20px;
+@@ -234,7 +329,7 @@
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:503px;
++    | top:682px;
+     | height:60px;
+     | border-radius:16px;
+     | background:rgba(255,255,255,0.07);
+@@ -245,13 +340,26 @@
+     | justify-content:space-between;
+     | gap:12px;
+   ">
++    <svg width="30" height="30" viewBox="0 0 30 30" style="
++      | flex-shrink:0;
++    ">
++      <circle cx="15" cy="15" r="13" stroke="rgba(244,243,240,0.18)" stroke-width="3.2" fill="none">
++      </circle>
++      <g stroke="#F4F3F0" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
++        <path d="M11.8 12.2a3.2 3.2 0 1 1 4.6 2.9c-1 .5-1.4 1-1.4 2.1">
++        </path>
++        <circle cx="15" cy="20.6" r="0.4" fill="#F4F3F0">
++        </circle>
++      </g>
++    </svg>
+     <span style="
++      | flex:1;
+       | font-size:15.5px;
+       | font-weight:500;
+       | line-height:20px;
+       | color:#F4F3F0;
+     ">
+-      · I haven’t decided yet
++      · I’m not sure yet
+     </span>
+   </div>
+ </div>

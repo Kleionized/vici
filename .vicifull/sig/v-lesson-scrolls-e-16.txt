@@ -1,0 +1,22 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 223.8 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 41.5 | 209 | 310 | 76 | - | - | - | - | 26px/500/normal/38px/rgb(29, 28, 26) | Where do most of your night-time relapses begin?
+div | 83.7 | 325 | 225.6 | 18 | - | - | - | - | 15px/500/normal/normal/rgb(139, 136, 130) | Pick the one that happens most.
+div | 38 | 383 | 317 | 260 | - | - | - | - | - | -
+div | 38 | 383 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(29, 28, 26) 0px 0px 0px 2px, rgba(40, 38, 32, 0.08) 0px 4px 10px 0px | - | -
+div | 56 | 400 | 22 | 22 | - | 50% | - | - | - | -
+span | 92 | 402 | 161.7 | 18 | - | - | - | - | 16px/600/normal/normal/rgb(29, 28, 26) | In bed with my phone
+div | 38 | 451 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 468 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 470 | 167 | 18 | - | - | - | - | 16px/500/normal/normal/rgb(29, 28, 26) | Alone on my computer
+div | 38 | 519 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 536 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 538 | 136.5 | 18 | - | - | - | - | 16px/500/normal/normal/rgb(29, 28, 26) | When I can’t sleep
+div | 38 | 587 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 604 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 606 | 122.2 | 18 | - | - | - | - | 16px/500/normal/normal/rgb(29, 28, 26) | Somewhere else
+div | 16 | 770 | 361 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 159.7 | 786 | 73.7 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Continue

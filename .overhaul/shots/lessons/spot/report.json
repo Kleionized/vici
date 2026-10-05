@@ -1,0 +1,412 @@
+{
+ "5": {
+  "week": "Week-01-Reset",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.013,
+    "bands": [
+     [
+      298,
+      299
+     ],
+     [
+      309,
+      310
+     ],
+     [
+      323,
+      327
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "6": {
+  "week": "Week-01-Reset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "8": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "9": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "11": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "12": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "13": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "14": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "15": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0.001,
+    "bands": [
+     [
+      262,
+      263
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "18": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "19": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "20": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "23": {
+  "week": "Week-04-Know-Your-Brain",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "26": {
+  "week": "Week-04-Know-Your-Brain",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "28": {
+  "week": "Week-04-Know-Your-Brain",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "29": {
+  "week": "Week-05-Why-It-Feels-Worth-It",
+  "pages": 13,
+  "rows": [
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "31": {
+  "week": "Week-05-Why-It-Feels-Worth-It",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "36": {
+  "week": "Week-06-Discipline",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "38": {
+  "week": "Week-06-Discipline",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 8,
+    "share": 0.001,
+    "bands": [
+     [
+      252,
+      253
+     ],
+     [
+      255,
+      256
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "39": {
+  "week": "Week-06-Discipline",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "40": {
+  "week": "Week-06-Discipline",
+  "pages": 18,
+  "rows": [
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "42": {
+  "week": "Week-06-Discipline",
+  "pages": 13,
+  "rows": [
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "45": {
+  "week": "Week-07-Relapse-and-Adversity",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "49": {
+  "week": "Week-07-Relapse-and-Adversity",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.002,
+    "bands": [
+     [
+      382,
+      383
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "62": {
+  "week": "Week-09-Connection",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "64": {
+  "week": "Week-10-Yourself",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "66": {
+  "week": "Week-10-Yourself",
+  "pages": 15,
+  "rows": [
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "72": {
+  "week": "Week-11-Build-a-Life-You-Want",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "80": {
+  "week": "Week-12-Leave-It-Behind",
+  "pages": 18,
+  "rows": [
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "82": {
+  "week": "Week-12-Leave-It-Behind",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "84": {
+  "week": "Week-12-Leave-It-Behind",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ }
+}

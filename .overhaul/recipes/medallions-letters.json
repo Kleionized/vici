@@ -1,0 +1,219 @@
+[
+  {
+    "frame": "Medallions",
+    "route": "/milestones",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 2000,
+    "note": "Earned, page 1. The seed is the frames’ one consistent ledger (medallions-letters §8): 10 of 12 earned, Jun 9 / Jul 20 dates at local noon. It quiets the (app) launch gate. pxdiff 0.00 %."
+  },
+  {
+    "frame": "Album Earned II",
+    "route": "/milestones",
+    "initseed": ".overhaul/medallions-seed.js",
+    "do": "await __sleep(800); const d=[...document.querySelectorAll(\"div\")].find(x=>x.scrollWidth>x.clientWidth+8); d.scrollLeft=d.clientWidth; await __sleep(600)",
+    "wait": 600,
+    "note": "Page 2 of the Earned pager (six faces a page, horizontal, no dots — D270). In the app: swipe left on the grid. pxdiff 0.00 % (36 px: the l of Jul 20, glyph raster inside the scrolled pager; boxes identical)."
+  },
+  {
+    "frame": "Medallions Still To Earn",
+    "route": "/milestones",
+    "initseed": ".overhaul/medallions-seed.js",
+    "do": "await __sleep(800); await tap(\"Still to earn\"); await __sleep(600)",
+    "wait": 600,
+    "note": "drive.js tap() finds role=tab now. Two faces → the centred row (gap 48) the frame draws. pxdiff 0.00 %."
+  },
+  {
+    "frame": "Breakwater Paper",
+    "route": "/medallions/breakwater?tier=paper",
+    "wait": 1500,
+    "note": "No seed: the board reads the face and the rung off the route (the album pushes ?tier=<metal>). T = 196 − 13·quoteLines (+1 on Platinum). pxdiff 0.00 % (≤ 46 px of coin AA)."
+  },
+  {
+    "frame": "Breakwater Bronze",
+    "route": "/medallions/breakwater?tier=bronze",
+    "wait": 1500,
+    "note": "No seed: the board reads the face and the rung off the route (the album pushes ?tier=<metal>). T = 196 − 13·quoteLines (+1 on Platinum). pxdiff 0.00 % (≤ 46 px of coin AA)."
+  },
+  {
+    "frame": "Breakwater Silver",
+    "route": "/medallions/breakwater?tier=silver",
+    "wait": 1500,
+    "note": "No seed: the board reads the face and the rung off the route (the album pushes ?tier=<metal>). T = 196 − 13·quoteLines (+1 on Platinum). pxdiff 0.00 % (≤ 46 px of coin AA)."
+  },
+  {
+    "frame": "Breakwater Gold",
+    "route": "/medallions/breakwater?tier=gold",
+    "wait": 1500,
+    "note": "No seed: the board reads the face and the rung off the route (the album pushes ?tier=<metal>). T = 196 − 13·quoteLines (+1 on Platinum). pxdiff 0.00 % (≤ 46 px of coin AA)."
+  },
+  {
+    "frame": "Breakwater Platinum",
+    "route": "/medallions/breakwater?tier=platinum",
+    "wait": 1500,
+    "note": "No seed: the board reads the face and the rung off the route (the album pushes ?tier=<metal>). T = 196 − 13·quoteLines (+1 on Platinum). pxdiff 0.00 % (≤ 46 px of coin AA)."
+  },
+  {
+    "frame": "Detail Paper",
+    "route": "/medallions/vici?tier=none",
+    "wait": 1500,
+    "note": "Unearned board. The frame is the previous drop's seven-rung Vici left unredrawn: `First at ×1` and “Nine minutes…” were that ladder's first rung and the line Detail Bronze carried at it. Computed per CRITIC §1.4 / D274: `Not yet. First at ×5` and stories[0] “Five ridden. Each one shortens the next.” (2 lines → T 170, as Detail Gold). pxdiff 5.65 %: the whole block sits 13 lower (one quote line fewer) plus the two strings. The board's geometry at T 170 is Detail Gold's (0.00 %)."
+  },
+  {
+    "frame": "Detail Bronze",
+    "route": "/medallions/vici?tier=bronze",
+    "wait": 1500,
+    "note": "pxdiff 0.00 %. These four now agree with Tiers Vici word for word (D057/D101 divergence gone)."
+  },
+  {
+    "frame": "Detail Silver",
+    "route": "/medallions/vici?tier=silver",
+    "wait": 1500,
+    "note": "pxdiff 0.00 %. These four now agree with Tiers Vici word for word (D057/D101 divergence gone)."
+  },
+  {
+    "frame": "Detail Gold",
+    "route": "/medallions/vici?tier=gold",
+    "wait": 1500,
+    "note": "pxdiff 0.00 %. These four now agree with Tiers Vici word for word (D057/D101 divergence gone)."
+  },
+  {
+    "frame": "Detail Platinum",
+    "route": "/medallions/vici?tier=platinum",
+    "wait": 1500,
+    "note": "pxdiff 0.00 %. These four now agree with Tiers Vici word for word (D057/D101 divergence gone)."
+  },
+  {
+    "frame": "Tiers Vici",
+    "route": "/medallions/tiers/vici",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Rebound",
+    "route": "/medallions/tiers/rebound",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Breakwater",
+    "route": "/medallions/tiers/breakwater",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Logbook",
+    "route": "/medallions/tiers/logbook",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Pulse",
+    "route": "/medallions/tiers/pulse",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Archive",
+    "route": "/medallions/tiers/archive",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Lessons",
+    "route": "/medallions/tiers/lessons",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "A state page now: needs the ledger seed (count, fill, next line). In the app: the board’s tier track is the door (D273). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Tiers Vidi",
+    "route": "/medallions/tiers/vidi",
+    "initseed": ".overhaul/medallions-vidi-seed.js",
+    "wait": 1500,
+    "note": "Day 13 cannot coexist with the 19 check-ins of the main ledger (one record per date), so Vidi has its own world: 13 recorded days and nothing else. pxdiff 0.01 % (coin AA)."
+  },
+  {
+    "frame": "Tiers One-offs",
+    "route": "/medallions/tiers/once",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "`once` is not a face key. In the app: any one-off board’s caps line opens it. pxdiff 0.00 %."
+  },
+  {
+    "frame": "Letter Arrival",
+    "route": "/letter",
+    "initseed": ".overhaul/ml-letters-seed.js",
+    "wait": 1800,
+    "note": "ml-letters-seed.js = letters-seed.js with the account 80 days old, so the caps read `Week XII post` (the caps are the programme week, CRITIC C8). pxdiff 0.00 %."
+  },
+  {
+    "frame": "Letter Read",
+    "route": "/letter",
+    "initseed": ".overhaul/ml-letters-seed.js",
+    "do": "await tap(\"Read\"); await __sleep(900)",
+    "wait": 600,
+    "note": "The arrival’s primary is `Read` now. pxdiff 0.00 % (needed `Dear ${name},` as ONE text node — split nodes shape differently in Chrome, D277)."
+  },
+  {
+    "frame": "Medallion Letter",
+    "route": "/medallion-post",
+    "initseed": ".overhaul/ml-letters-seed.js",
+    "do": "await tap(\"Read\"); await __sleep(900)",
+    "wait": 600,
+    "note": "The medallion post arrives on Letter Arrival too (CRITIC C8). pxdiff 0.55 %: the enclosure is the account’s Vici, Tier I where the frame’s sample encloses Rebound, Tier I (D275). With the face forced to Rebound (temporary edit, reverted) the frame diffs 0.01 %."
+  },
+  {
+    "frame": "Yearly Drop",
+    "route": "/drop",
+    "initseed": ".overhaul/ml-letters-seed.js",
+    "wait": 1800,
+    "note": "pxdiff 0.10 %: one region, 316,72 56×16 — the nav's `Restore` replaced by the ✕ (D323: the ✕ in the right slot, as Paywall; the ghost `Terms · Restore` restores, D276). Same residual region as Paywall's."
+  },
+  {
+    "frame": "Drop Received",
+    "route": "/drop",
+    "initseed": ".overhaul/ml-letters-seed.js",
+    "do": "await tap(\"Unlock my year\"); await __sleep(1400)",
+    "wait": 600,
+    "note": "FORCE_MOCK purchase() grants at once, so the pill lands on the claimed phase. pxdiff 0.00 %."
+  },
+  {
+    "frame": "(no frame) /letter?variant=week12 — arrival",
+    "route": "/letter?variant=week12",
+    "initseed": ".overhaul/letters-seed.js",
+    "wait": 1800,
+    "note": "Draws tail’s `Letter Received` through the kit HeroBoard (no ✕, 26/33 at 451, Open / Save it for later): pxdiff 0.00 % against Letter-Received.png. Reached from Settings › Your letter and All. `tap(\"Open\")` then opens tail’s O3LetterRead (tail’s file, its current props)."
+  },
+  {
+    "frame": "(no frame) /mail",
+    "route": "/mail",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1800,
+    "note": "Log—Reports idiom (CRITIC C6): title head + 64-tall ruled rows, chevrons #5A574F. The post row names the enclosure in its card’s words (`Vici, Tier I · enclosure inside`). The medallions seed has ~17 closed weeks, the post delivered and the sealed letter. Rows push /weekly-report?week=…, /medallion-post, /letter (driven). The empty state needs no letter row, which the app always adds, so it is not reachable from a signed-in account."
+  },
+  {
+    "frame": "(no frame) /milestones fresh account",
+    "route": "/milestones",
+    "initseed": ".overhaul/medallions-fresh-seed.js",
+    "wait": 1800,
+    "note": "Veni alone on Earned (the centred row, D271); `tap(\"Still to earn\")` → eleven faces on two pages of the grid, unearned tiered cells with their empty 56×3 bars. The pager is sized to its tallest row (2 × 122 + 36), so the second row's bars draw their full 3 pt (y 565–568, as row 1's 407–410); singular `0 of 1 wave` / `0 of 1 morning`. Page 2: scroll the pager as in Album Earned II."
+  },
+  {
+    "frame": "(no frame) one-off and unearned boards",
+    "route": "/medallions/veni?tier=platinum",
+    "initseed": ".overhaul/medallions-seed.js",
+    "wait": 1500,
+    "note": "Earned one-off: no numeral, caps = mint date from the ledger (tappable → /medallions/tiers/once), no track, quote at T+338 with T+50 (D279). Also /medallions/return?tier=none (faded coin, `Not yet`, Back to medallions), /medallions/archive?tier=none (blank coin, `Not yet. First at ×10`, empty track), /medallions/zzz and /medallions/tiers/veni (Medallion not found)."
+  },
+  {
+    "frame": "(no frame) handover copies of the post boards",
+    "unreachable": "tail’s frames",
+    "note": "Not this group’s: the handover’s own `Medallion Earned` / `Letter Received` / `Letter Week XII` are tail’s, reached with `/welcome?step=letter-arrived|letter-read|medallion` + `.overhaul/tail-session-seed.js` (recipes in tail.json). `/letter?variant=week12` (above) draws the same two letter boards from Settings and All."
+  }
+]

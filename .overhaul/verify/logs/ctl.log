@@ -1,0 +1,67 @@
+== chooser
+script -> {"init":"010","lapse":"001","check":"100","url1":"/checkin","urlBack":"/log-chooser","radiosBack":"100","url2":"/urge-log","url3":"/lapse","urlClose":"/log"}
+== lapse-save
+page.evaluate: Error: never saw "What fed it?" :: When did it happen? Just now Earlier today Yesterday Or choose a time 9 10 11 12 1 : 38 39 40 41 42 AM PM Tonight, Tue Jul 22 Change Continue
+== lapse-back
+page.evaluate: Error: never saw "What fed it?" :: When did it happen? Just now Earlier today Yesterday Or choose a time 9 10 11 12 1 : 38 39 40 41 42 AM PM Tonight, Tue Jul 22 Change Continue
+== urge-ride
+page.evaluate: Error: never saw "What set it off?" :: How strong was the urge? 1 2 3 4 5 Intense Hard to resist Continue
+== urge-slip
+script -> {"saved":{"type":"urge_acted_on","sev":6,"trig":"Stress","help":null,"at":"Mon Jul 21 2025 23:40"},"letter":true,"done":"Urge logged. Intensity Strong Set off by Stress What I did I slipped Done","afterDone":"/letter"}
+shot -> .overhaul/verify/logs/u-urge-slip-after.png
+== urge-slip-board
+shot -> .overhaul/verify/logs/u-urge-slip-done.png
+== change-sheet
+shot -> .overhaul/verify/logs/u-change-sheet.png
+== change-sheet-375
+shot -> .overhaul/verify/logs/u-change-sheet-375.png
+== trigger-0
+shot -> .overhaul/verify/logs/u-trigger0.png
+== chooser-lapse
+shot -> .overhaul/verify/logs/u-chooser-lapse.png
+== log
+script -> {"t0":"*Urges|Check-ins|Reports|Today|*Log|Library|Journey","t1":"Urges|*Check-ins|Reports|Today|*Log|Library|Journey","c":true,"t2":"Urges|Check-ins|*Reports|Today|*Log|Library|Journey","r":true,"rowUrl":"/weekly-report?week=2025-07-07","rowPill":false,"backTab":"Urges|Check-ins|*Reports|Today|*Log|Library|Journey","ctaUrl":"/weekly-report?week=2025-07-14","backUrl":"/log-chooser"}
+== overview
+script -> {"s0":"Overview","s1":"Timing","left1":1179,"s2":"Strength","s3":"Mood","s4":"Overview","left4":0,"backUrl":"/log"}
+== wr
+script -> {"s":"Urges","rowUrl":"/urge-overview?week=2025-07-14","pill":"3 Urges, 3 ridden out Jul 18 7 min Jul 1","back":"/weekly-report","backUrl":"/dashboard"}
+== rr
+script -> {"openUrl":"/weekly-report?week=2025-07-14","t":"1,212 +48 this week M T W T F S S 7 of 7"}
+== rr-later
+script -> {"laterUrl":"/today"}
+== rr-close
+script -> {"closeUrl":"/today"}
+shot -> .overhaul/verify/logs/u-rr-noweek.png
+== rr-noweek-shot
+shot -> .overhaul/verify/logs/u-rr-noweek.png
+== dash
+  name: 'Error'
+== dash-shot
+shot -> .overhaul/verify/logs/u-dash.png
+== dash-shot-end
+shot -> .overhaul/verify/logs/u-dash-end.png
+== empty-urges
+shot -> .overhaul/verify/logs/u-empty-urges.png
+== empty-checkins
+shot -> .overhaul/verify/logs/u-empty-checkins.png
+== empty-reports
+shot -> .overhaul/verify/logs/u-empty-reports.png
+== empty-overview
+shot -> .overhaul/verify/logs/u-empty-overview.png
+== empty-overview-strength
+shot -> .overhaul/verify/logs/u-empty-overview-s.png
+== empty-wr
+shot -> .overhaul/verify/logs/u-empty-wr.png
+== overview-week
+shot -> .overhaul/verify/logs/u-overview-week.png
+== realfeel
+shot -> .overhaul/verify/logs/u-realfeel.png
+== realplace
+shot -> .overhaul/verify/logs/u-realplace.png
+== log-checkins-375-end
+shot -> .overhaul/verify/logs/u-checkins-375-end.png
+== log-reports-375-end
+shot -> .overhaul/verify/logs/u-reports-375-end.png
+== log-urges-852-end
+shot -> .overhaul/verify/logs/u-checkins-852-end.png
+CTL-DONE

@@ -1,0 +1,60 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Fifteen minutes at the wall
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 421 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 57.5 | - | - | - | - | - | -
+div | 24 | 226 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 33 | 230.5 | 6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 1
+div | 60 | 225 | 309 | 57.5 | - | - | - | - | - | -
+div | 60 | 225 | 309 | 19.5 | - | - | - | - | 14.5px/600/normal/19.5px/rgb(29, 28, 26) | Work or study
+div | 60 | 247.5 | 309 | 35 | - | - | - | - | 12.5px/400/normal/17.5px/rgb(118, 115, 112) | Open the file and produce one paragraph, calculation, outline, or other visible piece of work.
+div | 24 | 295.5 | 345 | 57.5 | - | - | - | - | - | -
+div | 24 | 296.5 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32.2 | 301 | 7.6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 2
+div | 60 | 295.5 | 309 | 57.5 | - | - | - | - | - | -
+div | 60 | 295.5 | 309 | 19.5 | - | - | - | - | 14.5px/600/normal/19.5px/rgb(29, 28, 26) | Message
+div | 60 | 318 | 309 | 35 | - | - | - | - | 12.5px/400/normal/17.5px/rgb(118, 115, 112) | Read it once and send the reply or the question you need answered.
+div | 24 | 366 | 345 | 57.5 | - | - | - | - | - | -
+div | 24 | 367 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32.1 | 371.5 | 7.9 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 3
+div | 60 | 366 | 309 | 57.5 | - | - | - | - | - | -
+div | 60 | 366 | 309 | 19.5 | - | - | - | - | 14.5px/600/normal/19.5px/rgb(29, 28, 26) | Money or admin
+div | 60 | 388.5 | 309 | 35 | - | - | - | - | 12.5px/400/normal/17.5px/rgb(118, 115, 112) | Open the account, pay one bill, gather the document, submit the form, or make the call.
+div | 24 | 436.5 | 345 | 57.5 | - | - | - | - | - | -
+div | 24 | 437.5 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32 | 442 | 8.1 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 4
+div | 60 | 436.5 | 309 | 57.5 | - | - | - | - | - | -
+div | 60 | 436.5 | 309 | 19.5 | - | - | - | - | 14.5px/600/normal/19.5px/rgb(29, 28, 26) | Conversation
+div | 60 | 459 | 309 | 35 | - | - | - | - | 12.5px/400/normal/17.5px/rgb(118, 115, 112) | If it is safe, send a message and ask when they can talk.
+div | 24 | 507 | 345 | 75 | - | - | - | - | - | -
+div | 24 | 508 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32.1 | 512.5 | 7.8 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 5
+div | 60 | 507 | 309 | 75 | - | - | - | - | - | -
+div | 60 | 507 | 309 | 19.5 | - | - | - | - | 14.5px/600/normal/19.5px/rgb(29, 28, 26) | Health
+div | 60 | 529.5 | 309 | 52.5 | - | - | - | - | 12.5px/400/normal/17.5px/rgb(118, 115, 112) | Book the appointment, write the symptoms you need to describe, or prepare what you need for the visit.
+div | 24 | 612 | 345 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Stop after 15 minutes if you want. The task is done when you have done one part of the thing you were avoiding.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

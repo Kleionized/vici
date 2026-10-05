@@ -1,11 +1,17 @@
-# Cost Next 365
+# 30 · One Year From Now
 
-* **Design frame** `Email-Login/Cost Next 365`
-* **App file** src/components/onboarding/tail.tsx + src/content/onboardingTail.ts
+* **Design frame** `Email-Login/Cost Next 365` — `.vicifull/final/Email-Login/Cost-Next-365.html`
+* **Design badge** `30 · One Year From Now` (`.vicifull/FLOW.txt`, which the run's brief makes the
+  authority on badges). The group lists this run was cut on call the same frame **#34**; this
+  drop renumbered onboarding, so the two schemes disagree and both appear in the codebase. This
+  file names the badge.
+* **Status in `Latest Vici FULL`** changed, 1136 diff lines
+* **App files** `src/components/onboarding/tail.tsx` (`O3OneYear`) + `src/content/onboardingTail.ts`,
+  wired from `src/app/(onboarding)/welcome.tsx`
 
 ## Transcription — `Cost Next 365`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `Cost-Next-365.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `Cost-Next-365.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -16,372 +22,372 @@ element on the frame is here, in paint order, indented by depth.
     <div> position:absolute  left:-40px  top:-140px  width:540px  height:270px  background:radial-gradient(closest-side, rgba(180,170,150,0.14), rgba(19,19,19,0) 72%)  border-radius:50%  filter:blur(6px)
     <div> position:absolute  left:50%  bottom:-300px  width:560px  height:560px  margin-left:-280px  background:radial-gradient(closest-side, rgba(255,236,196,0.42), rgba(255,236,196,0.19) 45%, rgba(255,236,196,0) 72%)  border-radius:50%
     <div> position:absolute  inset:0  background-image:url('noise-dark.png')  opacity:0.12
-  <div> position:absolute  left:20px  right:20px  top:72px  bottom:100px  display:grid  gap:4px  grid-template-columns:repeat(15,1fr)  z-index:5  grid-auto-rows:1fr
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#131313  border-radius:5px
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
-    <div> background:#FFFFFF  border-radius:5px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+  <div> position:absolute  left:0  right:0  top:60px  padding:0 4px  box-sizing:border-box  display:grid  gap:4px  grid-template-columns:repeat(17,1fr)  z-index:5
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#131313  border-radius:4px
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
+    <div> aspect-ratio:1  background:#FFFFFF  border-radius:4px  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06)
     <div> visibility:hidden
     <div> visibility:hidden
     <div> visibility:hidden
@@ -392,9 +398,13 @@ element on the frame is here, in paint order, indented by depth.
     <div> visibility:hidden
     <div> visibility:hidden
     <div> visibility:hidden
-  <div> position:absolute  left:50%  bottom:120px  padding:13px 24px 14px  background:rgba(255,255,255,0.94)  backdrop-filter:blur(12px)  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0.08), 0 18px 44px rgba(40,38,32,0.26)  transform:translateX(-50%)  z-index:12  white-space:nowrap  -webkit-backdrop-filter:blur(12px)
-    <span> color:#1D1C1A  font-size:15px  font-weight:500
-      · A year at this pace — about 110 days
+  <div> position:absolute  left:50%  bottom:120px  width:300px  padding:18px 24px 18px  box-sizing:border-box  background:rgba(255,255,255,0.94)  backdrop-filter:blur(12px)  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0.08), 0 18px 44px rgba(40,38,32,0.26)  transform:translateX(-50%)  z-index:12  text-align:center  -webkit-backdrop-filter:blur(12px)
+    <div> color:#55534E  font-size:15px  font-weight:500
+      · One year from now.
+    <div> color:#1D1C1A  font-size:28px  font-weight:600  letter-spacing:-0.5px  margin-top:6px
+      · About 110 days
+    <div> color:#55534E  font-size:13px  line-height:18px  margin-top:8px
+      · Where you’re predicted to relapse.
   <div> position:absolute  left:24px  right:24px  top:744px  height:58px  display:flex  align-items:center  justify-content:center  background:#131313  border-radius:29px  z-index:15  cursor:pointer
     <span> color:#FFFFFF  font-size:17px  font-weight:600  letter-spacing:0.2px
       · Next
@@ -402,7 +412,7 @@ element on the frame is here, in paint order, indented by depth.
 
 ## Comparison — design frame vs the running app
 
-Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
+Both sides measured with the same probe (`.vicifull/probe.js`): every visible box's rect in
 frame coordinates plus its background, radius, opacity, shadow and type metrics. The design
 frame is served from the split at `localhost:8097`; the app is the Expo web build. The canvas
 status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
@@ -411,387 +421,402 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | --- | --- | --- | --- | --- |
 | div at -40, -140 | radius | 50% | - | **mismatch** |
 | div at -83.5, 592 | radius | 50% | - | **mismatch** |
-| div at 20, 72 | box · paint · type | 20, 72 · 353 × 680 · — · — | identical | match |
-| div at 20, 72 | box · paint · type | 20, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 72 | box · paint · type | 43.8, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 72 | box · paint · type | 67.6, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 72 | box · paint · type | 91.4, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 72 | box · paint · type | 115.2, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 72 | box · paint · type | 139, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 72 | box · paint · type | 162.8, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 72 | box · paint · type | 186.6, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 72 | box · paint · type | 210.4, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 72 | box · paint · type | 234.2, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 72 | box · paint · type | 258, 72 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 72 | box · paint · type | 281.8, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 72 | box · paint · type | 305.6, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 72 | box · paint · type | 329.4, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 72 | box · paint · type | 353.2, 72 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 99.4 | box · paint · type | 20, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 99.4 | box · paint · type | 43.8, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 99.4 | box · paint · type | 67.6, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 99.4 | box · paint · type | 91.4, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 99.4 | box · paint · type | 115.2, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 99.4 | box · paint · type | 139, 99.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 99.4 | box · paint · type | 162.8, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 99.4 | box · paint · type | 186.6, 99.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 99.4 | box · paint · type | 210.4, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 99.4 | box · paint · type | 234.2, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 99.4 | box · paint · type | 258, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 99.4 | box · paint · type | 281.8, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 99.4 | box · paint · type | 305.6, 99.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 99.4 | box · paint · type | 329.4, 99.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 99.4 | box · paint · type | 353.2, 99.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 20, 126.7 | box · paint · type | 20, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 126.7 | box · paint · type | 43.8, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 126.7 | box · paint · type | 67.6, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 126.7 | box · paint · type | 91.4, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 115.2, 126.7 | box · paint · type | 115.2, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 126.7 | box · paint · type | 139, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 126.7 | box · paint · type | 162.8, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 126.7 | box · paint · type | 186.6, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 126.7 | box · paint · type | 210.4, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 126.7 | box · paint · type | 234.2, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 126.7 | box · paint · type | 258, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 126.7 | box · paint · type | 281.8, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 126.7 | box · paint · type | 305.6, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 126.7 | box · paint · type | 329.4, 126.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 126.7 | box · paint · type | 353.2, 126.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 154.1 | box · paint · type | 20, 154.1 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 154.1 | box · paint · type | 43.8, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 154.1 | box · paint · type | 67.6, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 154.1 | box · paint · type | 91.4, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 154.1 | box · paint · type | 115.2, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 154.1 | box · paint · type | 139, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 154.1 | box · paint · type | 162.8, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 154.1 | box · paint · type | 186.6, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 154.1 | box · paint · type | 210.4, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 154.1 | box · paint · type | 234.2, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 154.1 | box · paint · type | 258, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 154.1 | box · paint · type | 281.8, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 154.1 | box · paint · type | 305.6, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 154.1 | box · paint · type | 329.4, 154.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 154.1 | box · paint · type | 353.2, 154.1 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 20, 181.4 | box · paint · type | 20, 181.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 181.4 | box · paint · type | 43.8, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 181.4 | box · paint · type | 67.6, 181.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 181.4 | box · paint · type | 91.4, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 181.4 | box · paint · type | 115.2, 181.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 181.4 | box · paint · type | 139, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 181.4 | box · paint · type | 162.8, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 181.4 | box · paint · type | 186.6, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 181.4 | box · paint · type | 210.4, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 181.4 | box · paint · type | 234.2, 181.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 181.4 | box · paint · type | 258, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 181.4 | box · paint · type | 281.8, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 181.4 | box · paint · type | 305.6, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 181.4 | box · paint · type | 329.4, 181.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 181.4 | box · paint · type | 353.2, 181.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 208.8 | box · paint · type | 20, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 208.8 | box · paint · type | 43.8, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 208.8 | box · paint · type | 67.6, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 208.8 | box · paint · type | 91.4, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 208.8 | box · paint · type | 115.2, 208.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 208.8 | box · paint · type | 139, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 208.8 | box · paint · type | 162.8, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 208.8 | box · paint · type | 186.6, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 208.8 | box · paint · type | 210.4, 208.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 234.2, 208.8 | box · paint · type | 234.2, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 208.8 | box · paint · type | 258, 208.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 208.8 | box · paint · type | 281.8, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 208.8 | box · paint · type | 305.6, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 208.8 | box · paint · type | 329.4, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 208.8 | box · paint · type | 353.2, 208.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 236.2 | box · paint · type | 20, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 236.2 | box · paint · type | 43.8, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 236.2 | box · paint · type | 67.6, 236.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 236.2 | box · paint · type | 91.4, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 236.2 | box · paint · type | 115.2, 236.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 236.2 | box · paint · type | 139, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 236.2 | box · paint · type | 162.8, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 236.2 | box · paint · type | 186.6, 236.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 236.2 | box · paint · type | 210.4, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 236.2 | box · paint · type | 234.2, 236.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 236.2 | box · paint · type | 258, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 236.2 | box · paint · type | 281.8, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 236.2 | box · paint · type | 305.6, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 236.2 | box · paint · type | 329.4, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 236.2 | box · paint · type | 353.2, 236.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 263.5 | box · paint · type | 20, 263.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 263.5 | box · paint · type | 43.8, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 263.5 | box · paint · type | 67.6, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 263.5 | box · paint · type | 91.4, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 263.5 | box · paint · type | 115.2, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 263.5 | box · paint · type | 139, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 263.5 | box · paint · type | 162.8, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 263.5 | box · paint · type | 186.6, 263.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 263.5 | box · paint · type | 210.4, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 263.5 | box · paint · type | 234.2, 263.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 263.5 | box · paint · type | 258, 263.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 263.5 | box · paint · type | 281.8, 263.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 263.5 | box · paint · type | 305.6, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 263.5 | box · paint · type | 329.4, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 263.5 | box · paint · type | 353.2, 263.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 290.9 | box · paint · type | 20, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 290.9 | box · paint · type | 43.8, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 290.9 | box · paint · type | 67.6, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 290.9 | box · paint · type | 91.4, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 290.9 | box · paint · type | 115.2, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 290.9 | box · paint · type | 139, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 290.9 | box · paint · type | 162.8, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 186.6, 290.9 | box · paint · type | 186.6, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 290.9 | box · paint · type | 210.4, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 234.2, 290.9 | box · paint · type | 234.2, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 290.9 | box · paint · type | 258, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 290.9 | box · paint · type | 281.8, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 290.9 | box · paint · type | 305.6, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 290.9 | box · paint · type | 329.4, 290.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 290.9 | box · paint · type | 353.2, 290.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 318.2 | box · paint · type | 20, 318.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 318.2 | box · paint · type | 43.8, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 318.2 | box · paint · type | 67.6, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 318.2 | box · paint · type | 91.4, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 318.2 | box · paint · type | 115.2, 318.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 318.2 | box · paint · type | 139, 318.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 318.2 | box · paint · type | 162.8, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 318.2 | box · paint · type | 186.6, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 318.2 | box · paint · type | 210.4, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 318.2 | box · paint · type | 234.2, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 318.2 | box · paint · type | 258, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 318.2 | box · paint · type | 281.8, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 318.2 | box · paint · type | 305.6, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 318.2 | box · paint · type | 329.4, 318.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 318.2 | box · paint · type | 353.2, 318.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 20, 345.6 | box · paint · type | 20, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 345.6 | box · paint · type | 43.8, 345.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 345.6 | box · paint · type | 67.6, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 345.6 | box · paint · type | 91.4, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 345.6 | box · paint · type | 115.2, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 345.6 | box · paint · type | 139, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 345.6 | box · paint · type | 162.8, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 345.6 | box · paint · type | 186.6, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 345.6 | box · paint · type | 210.4, 345.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 234.2, 345.6 | box · paint · type | 234.2, 345.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 345.6 | box · paint · type | 258, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 345.6 | box · paint · type | 281.8, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 345.6 | box · paint · type | 305.6, 345.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 345.6 | box · paint · type | 329.4, 345.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 345.6 | box · paint · type | 353.2, 345.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 20, 373 | box · paint · type | 20, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 373 | box · paint · type | 43.8, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 373 | box · paint · type | 67.6, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 373 | box · paint · type | 91.4, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 373 | box · paint · type | 115.2, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 373 | box · paint · type | 139, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 373 | box · paint · type | 162.8, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 373 | box · paint · type | 186.6, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 373 | box · paint · type | 210.4, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 373 | box · paint · type | 234.2, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 373 | box · paint · type | 258, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 373 | box · paint · type | 281.8, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 373 | box · paint · type | 305.6, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 373 | box · paint · type | 329.4, 373 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 373 | box · paint · type | 353.2, 373 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 20, 400.3 | box · paint · type | 20, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 400.3 | box · paint · type | 43.8, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 400.3 | box · paint · type | 67.6, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 400.3 | box · paint · type | 91.4, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 115.2, 400.3 | box · paint · type | 115.2, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 400.3 | box · paint · type | 139, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 400.3 | box · paint · type | 162.8, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 186.6, 400.3 | box · paint · type | 186.6, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 400.3 | box · paint · type | 210.4, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 400.3 | box · paint · type | 234.2, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 400.3 | box · paint · type | 258, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 400.3 | box · paint · type | 281.8, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 400.3 | box · paint · type | 305.6, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 400.3 | box · paint · type | 329.4, 400.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 400.3 | box · paint · type | 353.2, 400.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 427.7 | box · paint · type | 20, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 427.7 | box · paint · type | 43.8, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 427.7 | box · paint · type | 67.6, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 427.7 | box · paint · type | 91.4, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 427.7 | box · paint · type | 115.2, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 427.7 | box · paint · type | 139, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 427.7 | box · paint · type | 162.8, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 186.6, 427.7 | box · paint · type | 186.6, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 427.7 | box · paint · type | 210.4, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 427.7 | box · paint · type | 234.2, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 427.7 | box · paint · type | 258, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 427.7 | box · paint · type | 281.8, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 427.7 | box · paint · type | 305.6, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 427.7 | box · paint · type | 329.4, 427.7 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 427.7 | box · paint · type | 353.2, 427.7 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 455 | box · paint · type | 20, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 455 | box · paint · type | 43.8, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 455 | box · paint · type | 67.6, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 455 | box · paint · type | 91.4, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 455 | box · paint · type | 115.2, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 455 | box · paint · type | 139, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 455 | box · paint · type | 162.8, 455 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 186.6, 455 | box · paint · type | 186.6, 455 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 455 | box · paint · type | 210.4, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 455 | box · paint · type | 234.2, 455 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 455 | box · paint · type | 258, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 455 | box · paint · type | 281.8, 455 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 455 | box · paint · type | 305.6, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 455 | box · paint · type | 329.4, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 455 | box · paint · type | 353.2, 455 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 482.4 | box · paint · type | 20, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 482.4 | box · paint · type | 43.8, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 482.4 | box · paint · type | 67.6, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 482.4 | box · paint · type | 91.4, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 482.4 | box · paint · type | 115.2, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 482.4 | box · paint · type | 139, 482.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 482.4 | box · paint · type | 162.8, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 482.4 | box · paint · type | 186.6, 482.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 482.4 | box · paint · type | 210.4, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 482.4 | box · paint · type | 234.2, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 482.4 | box · paint · type | 258, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 482.4 | box · paint · type | 281.8, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 482.4 | box · paint · type | 305.6, 482.4 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 482.4 | box · paint · type | 329.4, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 482.4 | box · paint · type | 353.2, 482.4 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 509.8 | box · paint · type | 20, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 509.8 | box · paint · type | 43.8, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 509.8 | box · paint · type | 67.6, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 509.8 | box · paint · type | 91.4, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 115.2, 509.8 | box · paint · type | 115.2, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 509.8 | box · paint · type | 139, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 509.8 | box · paint · type | 162.8, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 509.8 | box · paint · type | 186.6, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 509.8 | box · paint · type | 210.4, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 509.8 | box · paint · type | 234.2, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 509.8 | box · paint · type | 258, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 509.8 | box · paint · type | 281.8, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 509.8 | box · paint · type | 305.6, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 509.8 | box · paint · type | 329.4, 509.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 509.8 | box · paint · type | 353.2, 509.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 537.1 | box · paint · type | 20, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 537.1 | box · paint · type | 43.8, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 537.1 | box · paint · type | 67.6, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 537.1 | box · paint · type | 91.4, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 537.1 | box · paint · type | 115.2, 537.1 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 537.1 | box · paint · type | 139, 537.1 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 537.1 | box · paint · type | 162.8, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 537.1 | box · paint · type | 186.6, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 537.1 | box · paint · type | 210.4, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 537.1 | box · paint · type | 234.2, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 537.1 | box · paint · type | 258, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 537.1 | box · paint · type | 281.8, 537.1 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 537.1 | box · paint · type | 305.6, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 537.1 | box · paint · type | 329.4, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 537.1 | box · paint · type | 353.2, 537.1 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 564.5 | box · paint · type | 20, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 564.5 | box · paint · type | 43.8, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 564.5 | box · paint · type | 67.6, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 564.5 | box · paint · type | 91.4, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 564.5 | box · paint · type | 115.2, 564.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 564.5 | box · paint · type | 139, 564.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 564.5 | box · paint · type | 162.8, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 564.5 | box · paint · type | 186.6, 564.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 564.5 | box · paint · type | 210.4, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 564.5 | box · paint · type | 234.2, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 564.5 | box · paint · type | 258, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 564.5 | box · paint · type | 281.8, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 564.5 | box · paint · type | 305.6, 564.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 564.5 | box · paint · type | 329.4, 564.5 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 353.2, 564.5 | box · paint · type | 353.2, 564.5 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 591.8 | box · paint · type | 20, 591.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 591.8 | box · paint · type | 43.8, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 591.8 | box · paint · type | 67.6, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 591.8 | box · paint · type | 91.4, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 591.8 | box · paint · type | 115.2, 591.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 591.8 | box · paint · type | 139, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 591.8 | box · paint · type | 162.8, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 591.8 | box · paint · type | 186.6, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 591.8 | box · paint · type | 210.4, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 591.8 | box · paint · type | 234.2, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 591.8 | box · paint · type | 258, 591.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 591.8 | box · paint · type | 281.8, 591.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 591.8 | box · paint · type | 305.6, 591.8 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 591.8 | box · paint · type | 329.4, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 591.8 | box · paint · type | 353.2, 591.8 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 619.2 | box · paint · type | 20, 619.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 619.2 | box · paint · type | 43.8, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 619.2 | box · paint · type | 67.6, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 619.2 | box · paint · type | 91.4, 619.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 115.2, 619.2 | box · paint · type | 115.2, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 619.2 | box · paint · type | 139, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 619.2 | box · paint · type | 162.8, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 619.2 | box · paint · type | 186.6, 619.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 619.2 | box · paint · type | 210.4, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 619.2 | box · paint · type | 234.2, 619.2 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 258, 619.2 | box · paint · type | 258, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 619.2 | box · paint · type | 281.8, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 305.6, 619.2 | box · paint · type | 305.6, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 619.2 | box · paint · type | 329.4, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 619.2 | box · paint · type | 353.2, 619.2 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 646.6 | box · paint · type | 20, 646.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 43.8, 646.6 | box · paint · type | 43.8, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 646.6 | box · paint · type | 67.6, 646.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 646.6 | box · paint · type | 91.4, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 646.6 | box · paint · type | 115.2, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 646.6 | box · paint · type | 139, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 646.6 | box · paint · type | 162.8, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 646.6 | box · paint · type | 186.6, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 646.6 | box · paint · type | 210.4, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 646.6 | box · paint · type | 234.2, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 646.6 | box · paint · type | 258, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 646.6 | box · paint · type | 281.8, 646.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 646.6 | box · paint · type | 305.6, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 646.6 | box · paint · type | 329.4, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 646.6 | box · paint · type | 353.2, 646.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 673.9 | box · paint · type | 20, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 673.9 | box · paint · type | 43.8, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 673.9 | box · paint · type | 67.6, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 91.4, 673.9 | box · paint · type | 91.4, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 673.9 | box · paint · type | 115.2, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 139, 673.9 | box · paint · type | 139, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 162.8, 673.9 | box · paint · type | 162.8, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 673.9 | box · paint · type | 186.6, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 210.4, 673.9 | box · paint · type | 210.4, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 234.2, 673.9 | box · paint · type | 234.2, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 673.9 | box · paint · type | 258, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 281.8, 673.9 | box · paint · type | 281.8, 673.9 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 673.9 | box · paint · type | 305.6, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 329.4, 673.9 | box · paint · type | 329.4, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 673.9 | box · paint · type | 353.2, 673.9 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 701.3 | box · paint · type | 20, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 701.3 | box · paint · type | 43.8, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 67.6, 701.3 | box · paint · type | 67.6, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 701.3 | box · paint · type | 91.4, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 115.2, 701.3 | box · paint · type | 115.2, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 139, 701.3 | box · paint · type | 139, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 162.8, 701.3 | box · paint · type | 162.8, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 186.6, 701.3 | box · paint · type | 186.6, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 210.4, 701.3 | box · paint · type | 210.4, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 234.2, 701.3 | box · paint · type | 234.2, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 258, 701.3 | box · paint · type | 258, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 281.8, 701.3 | box · paint · type | 281.8, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 305.6, 701.3 | box · paint · type | 305.6, 701.3 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 329.4, 701.3 | box · paint · type | 329.4, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 353.2, 701.3 | box · paint · type | 353.2, 701.3 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 20, 728.6 | box · paint · type | 20, 728.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 43.8, 728.6 | box · paint · type | 43.8, 728.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 67.6, 728.6 | box · paint · type | 67.6, 728.6 · 19.8 × 23.4 · rgb(19, 19, 19) · r 5px · — | identical | match |
-| div at 91.4, 728.6 | box · paint · type | 91.4, 728.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 115.2, 728.6 | box · paint · type | 115.2, 728.6 · 19.8 × 23.4 · rgb(255, 255, 255) · r 5px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
-| div at 45.1, 686 | background | rgba(255, 255, 255, 0.94) | - | **mismatch** |
-| “A year at this pace — about 110 days” | box · paint · type | 69.1, 700 · 254.8 × 17.5 · — · 15px/500/normal/normal/rgb(29, 28, 26) | identical | match |
+| div at 0, 60 | box · paint · type | 0, 60 · 393 × 503.6 · — · — | identical | match |
+| div at 4, 60 | box · paint · type | 4, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 60 | box · paint · type | 26.9, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 60 | box · paint · type | 49.8, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 60 | box · paint · type | 72.7, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 60 | box · paint · type | 95.6, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 60 | box · paint · type | 118.5, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 60 | box · paint · type | 141.3, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 60 | box · paint · type | 164.2, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 60 | box · paint · type | 187.1, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 60 | box · paint · type | 210, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 60 | box · paint · type | 232.9, 60 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 60 | box · paint · type | 255.8, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 60 | box · paint · type | 278.7, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 60 | box · paint · type | 301.6, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 60 | box · paint · type | 324.5, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 60 | box · paint · type | 347.4, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 60 | box · paint · type | 370.3, 60 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 82.9 | box · paint · type | 4, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 82.9 | box · paint · type | 26.9, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 82.9 | box · paint · type | 49.8, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 82.9 | box · paint · type | 72.7, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 82.9 | box · paint · type | 95.6, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 82.9 | box · paint · type | 118.5, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 82.9 | box · paint · type | 141.3, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 82.9 | box · paint · type | 164.2, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 82.9 | box · paint · type | 187.1, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 82.9 | box · paint · type | 210, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 82.9 | box · paint · type | 232.9, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 82.9 | box · paint · type | 255.8, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 82.9 | box · paint · type | 278.7, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 82.9 | box · paint · type | 301.6, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 82.9 | box · paint · type | 324.5, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 82.9 | box · paint · type | 347.4, 82.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 82.9 | box · paint · type | 370.3, 82.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 105.8 | box · paint · type | 4, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 105.8 | box · paint · type | 26.9, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 105.8 | box · paint · type | 49.8, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 105.8 | box · paint · type | 72.7, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 105.8 | box · paint · type | 95.6, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 105.8 | box · paint · type | 118.5, 105.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 105.8 | box · paint · type | 141.3, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 105.8 | box · paint · type | 164.2, 105.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 105.8 | box · paint · type | 187.1, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 105.8 | box · paint · type | 210, 105.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 105.8 | box · paint · type | 232.9, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 105.8 | box · paint · type | 255.8, 105.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 105.8 | box · paint · type | 278.7, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 105.8 | box · paint · type | 301.6, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 105.8 | box · paint · type | 324.5, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 105.8 | box · paint · type | 347.4, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 105.8 | box · paint · type | 370.3, 105.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 128.7 | box · paint · type | 4, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 128.7 | box · paint · type | 26.9, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 128.7 | box · paint · type | 49.8, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 128.7 | box · paint · type | 72.7, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 128.7 | box · paint · type | 95.6, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 128.7 | box · paint · type | 118.5, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 128.7 | box · paint · type | 141.3, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 128.7 | box · paint · type | 164.2, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 128.7 | box · paint · type | 187.1, 128.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 210, 128.7 | box · paint · type | 210, 128.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 128.7 | box · paint · type | 232.9, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 128.7 | box · paint · type | 255.8, 128.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 128.7 | box · paint · type | 278.7, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 128.7 | box · paint · type | 301.6, 128.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 128.7 | box · paint · type | 324.5, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 128.7 | box · paint · type | 347.4, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 128.7 | box · paint · type | 370.3, 128.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 151.6 | box · paint · type | 4, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 151.6 | box · paint · type | 26.9, 151.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 49.8, 151.6 | box · paint · type | 49.8, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 151.6 | box · paint · type | 72.7, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 151.6 | box · paint · type | 95.6, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 151.6 | box · paint · type | 118.5, 151.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 151.6 | box · paint · type | 141.3, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 151.6 | box · paint · type | 164.2, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 151.6 | box · paint · type | 187.1, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 151.6 | box · paint · type | 210, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 151.6 | box · paint · type | 232.9, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 151.6 | box · paint · type | 255.8, 151.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 151.6 | box · paint · type | 278.7, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 151.6 | box · paint · type | 301.6, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 151.6 | box · paint · type | 324.5, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 151.6 | box · paint · type | 347.4, 151.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 370.3, 151.6 | box · paint · type | 370.3, 151.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 174.5 | box · paint · type | 4, 174.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 26.9, 174.5 | box · paint · type | 26.9, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 174.5 | box · paint · type | 49.8, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 174.5 | box · paint · type | 72.7, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 174.5 | box · paint · type | 95.6, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 174.5 | box · paint · type | 118.5, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 174.5 | box · paint · type | 141.3, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 174.5 | box · paint · type | 164.2, 174.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 174.5 | box · paint · type | 187.1, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 174.5 | box · paint · type | 210, 174.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 174.5 | box · paint · type | 232.9, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 174.5 | box · paint · type | 255.8, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 174.5 | box · paint · type | 278.7, 174.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 174.5 | box · paint · type | 301.6, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 174.5 | box · paint · type | 324.5, 174.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 174.5 | box · paint · type | 347.4, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 174.5 | box · paint · type | 370.3, 174.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 197.3 | box · paint · type | 4, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 197.3 | box · paint · type | 26.9, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 197.3 | box · paint · type | 49.8, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 197.3 | box · paint · type | 72.7, 197.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 197.3 | box · paint · type | 95.6, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 197.3 | box · paint · type | 118.5, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 197.3 | box · paint · type | 141.3, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 197.3 | box · paint · type | 164.2, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 197.3 | box · paint · type | 187.1, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 197.3 | box · paint · type | 210, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 197.3 | box · paint · type | 232.9, 197.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 197.3 | box · paint · type | 255.8, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 197.3 | box · paint · type | 278.7, 197.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 197.3 | box · paint · type | 301.6, 197.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 197.3 | box · paint · type | 324.5, 197.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 197.3 | box · paint · type | 347.4, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 197.3 | box · paint · type | 370.3, 197.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 220.2 | box · paint · type | 4, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 220.2 | box · paint · type | 26.9, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 49.8, 220.2 | box · paint · type | 49.8, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 220.2 | box · paint · type | 72.7, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 220.2 | box · paint · type | 95.6, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 220.2 | box · paint · type | 118.5, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 220.2 | box · paint · type | 141.3, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 220.2 | box · paint · type | 164.2, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 220.2 | box · paint · type | 187.1, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 220.2 | box · paint · type | 210, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 220.2 | box · paint · type | 232.9, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 220.2 | box · paint · type | 255.8, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 220.2 | box · paint · type | 278.7, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 220.2 | box · paint · type | 301.6, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 220.2 | box · paint · type | 324.5, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 220.2 | box · paint · type | 347.4, 220.2 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 220.2 | box · paint · type | 370.3, 220.2 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 243.1 | box · paint · type | 4, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 243.1 | box · paint · type | 26.9, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 243.1 | box · paint · type | 49.8, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 243.1 | box · paint · type | 72.7, 243.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 243.1 | box · paint · type | 95.6, 243.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 118.5, 243.1 | box · paint · type | 118.5, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 243.1 | box · paint · type | 141.3, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 243.1 | box · paint · type | 164.2, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 243.1 | box · paint · type | 187.1, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 243.1 | box · paint · type | 210, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 243.1 | box · paint · type | 232.9, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 243.1 | box · paint · type | 255.8, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 243.1 | box · paint · type | 278.7, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 243.1 | box · paint · type | 301.6, 243.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 243.1 | box · paint · type | 324.5, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 243.1 | box · paint · type | 347.4, 243.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 370.3, 243.1 | box · paint · type | 370.3, 243.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 266 | box · paint · type | 4, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 266 | box · paint · type | 26.9, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 266 | box · paint · type | 49.8, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 266 | box · paint · type | 72.7, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 266 | box · paint · type | 95.6, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 266 | box · paint · type | 118.5, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 266 | box · paint · type | 141.3, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 266 | box · paint · type | 164.2, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 266 | box · paint · type | 187.1, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 266 | box · paint · type | 210, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 266 | box · paint · type | 232.9, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 266 | box · paint · type | 255.8, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 266 | box · paint · type | 278.7, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 266 | box · paint · type | 301.6, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 266 | box · paint · type | 324.5, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 266 | box · paint · type | 347.4, 266 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 266 | box · paint · type | 370.3, 266 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 288.9 | box · paint · type | 4, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 288.9 | box · paint · type | 26.9, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 288.9 | box · paint · type | 49.8, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 288.9 | box · paint · type | 72.7, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 288.9 | box · paint · type | 95.6, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 288.9 | box · paint · type | 118.5, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 288.9 | box · paint · type | 141.3, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 288.9 | box · paint · type | 164.2, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 288.9 | box · paint · type | 187.1, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 288.9 | box · paint · type | 210, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 288.9 | box · paint · type | 232.9, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 288.9 | box · paint · type | 255.8, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 288.9 | box · paint · type | 278.7, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 288.9 | box · paint · type | 301.6, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 288.9 | box · paint · type | 324.5, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 288.9 | box · paint · type | 347.4, 288.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 288.9 | box · paint · type | 370.3, 288.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 311.8 | box · paint · type | 4, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 311.8 | box · paint · type | 26.9, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 311.8 | box · paint · type | 49.8, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 311.8 | box · paint · type | 72.7, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 311.8 | box · paint · type | 95.6, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 118.5, 311.8 | box · paint · type | 118.5, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 311.8 | box · paint · type | 141.3, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 311.8 | box · paint · type | 164.2, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 311.8 | box · paint · type | 187.1, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 311.8 | box · paint · type | 210, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 311.8 | box · paint · type | 232.9, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 311.8 | box · paint · type | 255.8, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 311.8 | box · paint · type | 278.7, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 311.8 | box · paint · type | 301.6, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 311.8 | box · paint · type | 324.5, 311.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 311.8 | box · paint · type | 347.4, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 311.8 | box · paint · type | 370.3, 311.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 334.7 | box · paint · type | 4, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 334.7 | box · paint · type | 26.9, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 334.7 | box · paint · type | 49.8, 334.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 72.7, 334.7 | box · paint · type | 72.7, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 334.7 | box · paint · type | 95.6, 334.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 118.5, 334.7 | box · paint · type | 118.5, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 334.7 | box · paint · type | 141.3, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 334.7 | box · paint · type | 164.2, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 334.7 | box · paint · type | 187.1, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 334.7 | box · paint · type | 210, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 334.7 | box · paint · type | 232.9, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 334.7 | box · paint · type | 255.8, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 334.7 | box · paint · type | 278.7, 334.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 301.6, 334.7 | box · paint · type | 301.6, 334.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 334.7 | box · paint · type | 324.5, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 334.7 | box · paint · type | 347.4, 334.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 370.3, 334.7 | box · paint · type | 370.3, 334.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 357.6 | box · paint · type | 4, 357.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 26.9, 357.6 | box · paint · type | 26.9, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 357.6 | box · paint · type | 49.8, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 357.6 | box · paint · type | 72.7, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 357.6 | box · paint · type | 95.6, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 357.6 | box · paint · type | 118.5, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 357.6 | box · paint · type | 141.3, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 357.6 | box · paint · type | 164.2, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 357.6 | box · paint · type | 187.1, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 357.6 | box · paint · type | 210, 357.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 357.6 | box · paint · type | 232.9, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 357.6 | box · paint · type | 255.8, 357.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 357.6 | box · paint · type | 278.7, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 357.6 | box · paint · type | 301.6, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 357.6 | box · paint · type | 324.5, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 357.6 | box · paint · type | 347.4, 357.6 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 357.6 | box · paint · type | 370.3, 357.6 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 380.5 | box · paint · type | 4, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 380.5 | box · paint · type | 26.9, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 380.5 | box · paint · type | 49.8, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 380.5 | box · paint · type | 72.7, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 380.5 | box · paint · type | 95.6, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 118.5, 380.5 | box · paint · type | 118.5, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 380.5 | box · paint · type | 141.3, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 380.5 | box · paint · type | 164.2, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 380.5 | box · paint · type | 187.1, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 380.5 | box · paint · type | 210, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 380.5 | box · paint · type | 232.9, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 380.5 | box · paint · type | 255.8, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 380.5 | box · paint · type | 278.7, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 380.5 | box · paint · type | 301.6, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 380.5 | box · paint · type | 324.5, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 380.5 | box · paint · type | 347.4, 380.5 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 370.3, 380.5 | box · paint · type | 370.3, 380.5 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 403.4 | box · paint · type | 4, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 403.4 | box · paint · type | 26.9, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 403.4 | box · paint · type | 49.8, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 403.4 | box · paint · type | 72.7, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 403.4 | box · paint · type | 95.6, 403.4 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 118.5, 403.4 | box · paint · type | 118.5, 403.4 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 403.4 | box · paint · type | 141.3, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 403.4 | box · paint · type | 164.2, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 403.4 | box · paint · type | 187.1, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 403.4 | box · paint · type | 210, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 403.4 | box · paint · type | 232.9, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 403.4 | box · paint · type | 255.8, 403.4 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 403.4 | box · paint · type | 278.7, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 403.4 | box · paint · type | 301.6, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 403.4 | box · paint · type | 324.5, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 403.4 | box · paint · type | 347.4, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 403.4 | box · paint · type | 370.3, 403.4 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 426.3 | box · paint · type | 4, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 426.3 | box · paint · type | 26.9, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 426.3 | box · paint · type | 49.8, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 72.7, 426.3 | box · paint · type | 72.7, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 426.3 | box · paint · type | 95.6, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 426.3 | box · paint · type | 118.5, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 426.3 | box · paint · type | 141.3, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 426.3 | box · paint · type | 164.2, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 426.3 | box · paint · type | 187.1, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 426.3 | box · paint · type | 210, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 426.3 | box · paint · type | 232.9, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 426.3 | box · paint · type | 255.8, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 426.3 | box · paint · type | 278.7, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 426.3 | box · paint · type | 301.6, 426.3 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 324.5, 426.3 | box · paint · type | 324.5, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 426.3 | box · paint · type | 347.4, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 426.3 | box · paint · type | 370.3, 426.3 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 449.1 | box · paint · type | 4, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 26.9, 449.1 | box · paint · type | 26.9, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 449.1 | box · paint · type | 49.8, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 449.1 | box · paint · type | 72.7, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 449.1 | box · paint · type | 95.6, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 449.1 | box · paint · type | 118.5, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 449.1 | box · paint · type | 141.3, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 449.1 | box · paint · type | 164.2, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 449.1 | box · paint · type | 187.1, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 210, 449.1 | box · paint · type | 210, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 449.1 | box · paint · type | 232.9, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 449.1 | box · paint · type | 255.8, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 449.1 | box · paint · type | 278.7, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 449.1 | box · paint · type | 301.6, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 449.1 | box · paint · type | 324.5, 449.1 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 449.1 | box · paint · type | 347.4, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 449.1 | box · paint · type | 370.3, 449.1 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 472 | box · paint · type | 4, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 472 | box · paint · type | 26.9, 472 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 49.8, 472 | box · paint · type | 49.8, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 472 | box · paint · type | 72.7, 472 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 472 | box · paint · type | 95.6, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 472 | box · paint · type | 118.5, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 472 | box · paint · type | 141.3, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 472 | box · paint · type | 164.2, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 472 | box · paint · type | 187.1, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 210, 472 | box · paint · type | 210, 472 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 232.9, 472 | box · paint · type | 232.9, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 472 | box · paint · type | 255.8, 472 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 472 | box · paint · type | 278.7, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 472 | box · paint · type | 301.6, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 472 | box · paint · type | 324.5, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 472 | box · paint · type | 347.4, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 472 | box · paint · type | 370.3, 472 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 494.9 | box · paint · type | 4, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 26.9, 494.9 | box · paint · type | 26.9, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 494.9 | box · paint · type | 49.8, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 494.9 | box · paint · type | 72.7, 494.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 95.6, 494.9 | box · paint · type | 95.6, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 494.9 | box · paint · type | 118.5, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 494.9 | box · paint · type | 141.3, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 494.9 | box · paint · type | 164.2, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 187.1, 494.9 | box · paint · type | 187.1, 494.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 210, 494.9 | box · paint · type | 210, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 494.9 | box · paint · type | 232.9, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 255.8, 494.9 | box · paint · type | 255.8, 494.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 278.7, 494.9 | box · paint · type | 278.7, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 494.9 | box · paint · type | 301.6, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 494.9 | box · paint · type | 324.5, 494.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 347.4, 494.9 | box · paint · type | 347.4, 494.9 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 370.3, 494.9 | box · paint · type | 370.3, 494.9 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 4, 517.8 | box · paint · type | 4, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 26.9, 517.8 | box · paint · type | 26.9, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 49.8, 517.8 | box · paint · type | 49.8, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 517.8 | box · paint · type | 72.7, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 517.8 | box · paint · type | 95.6, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 517.8 | box · paint · type | 118.5, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 141.3, 517.8 | box · paint · type | 141.3, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 164.2, 517.8 | box · paint · type | 164.2, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 187.1, 517.8 | box · paint · type | 187.1, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 210, 517.8 | box · paint · type | 210, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 232.9, 517.8 | box · paint · type | 232.9, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 255.8, 517.8 | box · paint · type | 255.8, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 278.7, 517.8 | box · paint · type | 278.7, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 301.6, 517.8 | box · paint · type | 301.6, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 324.5, 517.8 | box · paint · type | 324.5, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 347.4, 517.8 | box · paint · type | 347.4, 517.8 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 370.3, 517.8 | box · paint · type | 370.3, 517.8 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 4, 540.7 | box · paint · type | 4, 540.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 26.9, 540.7 | box · paint · type | 26.9, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 49.8, 540.7 | box · paint · type | 49.8, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 72.7, 540.7 | box · paint · type | 72.7, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 95.6, 540.7 | box · paint · type | 95.6, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 118.5, 540.7 | box · paint · type | 118.5, 540.7 · 18.9 × 18.9 · rgb(19, 19, 19) · r 4px · — | identical | match |
+| div at 141.3, 540.7 | box · paint · type | 141.3, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 164.2, 540.7 | box · paint · type | 164.2, 540.7 · 18.9 × 18.9 · rgb(255, 255, 255) · r 4px · rgba(0, 0, 0, 0.06) 0px 0px 0px 1px inset · — | identical | match |
+| div at 46.5, 613 | background | rgba(255, 255, 255, 0.94) | - | **mismatch** |
+| “One year from now.” | box · paint · type | 70.5, 631 · 252 × 18 · — · 15px/500/normal/normal/rgb(85, 83, 78) | identical | match |
+| “About 110 days” | box · paint · type | 70.5, 655 · 252 × 33 · — · 28px/600/-0.5px/normal/rgb(29, 28, 26) | identical | match |
+| “Where you’re predicted to relapse.” | box · paint · type | 70.5, 696 · 252 × 18 · — · 13px/400/normal/18px/rgb(85, 83, 78) | identical | match |
 | div at 24, 744 | box · paint · type | 24, 744 · 345 × 58 · rgb(19, 19, 19) · r 29px · — | identical | match |
 | “Next” | box · paint · type | 177.5, 763 · 38 × 20 · — · 17px/600/0.2px/normal/rgb(255, 255, 255) | identical | match |
 
-**372 elements compared; 369 match, 3 differ.**
+**374 elements compared; 371 match, 3 differ.**
 
 ## Resolutions
 
-All 365 cells and which 110 are inked are read off the frame. The canvas lays them out with
-`grid-template-columns: repeat(15,1fr); grid-auto-rows: 1fr; gap:4` between y 72 and 100 off the
-bottom, so a cell is 19.8 × 23.4 rather than square, and the last row is padded with
-`visibility:hidden` fillers. The app builds twenty-five flex rows of fifteen, which is the same
-layout; the two engines round the fractional row pitch differently by up to a tenth of a point,
-reported separately as rounding rather than as a difference.
+**The grid changed shape in this drop.** It is now `grid-template-columns: repeat(17,1fr)` with
+`gap: 4` inside `padding: 0 4px` on the full 393 — so a cell is (393 − 8 − 16 × 4) / 17 = 18.88
+**square**, edge to edge, where the previous drop drew fifteen columns of 19.8 × 23.4. 365 cells
+fill twenty-one whole rows and eight of the twenty-second; the frame pads the rest with
+`visibility: hidden` cells, which carry no aspect ratio and so add a zero-height twenty-third row.
+That empty row is reproduced, so the grid's own box measures the canvas's 503.8 rather than 499.8.
+
+All 365 cells and which 110 are inked are read off the frame into `COST_365`; the pill's "about
+110 days" counts that array.
+
+**The 0.1–0.2pt column drift is not a defect.** The app builds flex rows of seventeen `flex: 1`
+cells, which is the same layout as `repeat(17,1fr)`, but a browser distributing flex free space
+and a browser sizing grid tracks accumulate the fraction differently. Measured across all
+seventeen columns: every cell **width** is identical to 0.0, and the left offsets drift 0.0 →
+−0.2pt, reaching −0.2 only at columns 16 and 17. At deviceScaleFactor 2 that lands one device
+pixel of the gap on the wrong side of the seam on part of the grid's height, which is the whole of
+the pixel difference in that band. It is the same class as `DECISIONS.md` D083 and is left alone;
+hard-coding cell widths would be drawing something the canvas does not state.
 
 The floating pill — `backdrop-filter: blur(12px)` under a 94%-opaque white, 120 off the bottom
-edge — is built per `DECISIONS.md` D018, and its line box per D020.
+edge — is built per `DECISIONS.md` D018, and its line box per D020. The corner bloom takes D105's
+fade stop.

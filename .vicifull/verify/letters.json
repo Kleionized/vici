@@ -1,0 +1,89 @@
+{
+  "findings": [
+    {
+      "frame": "#238 Letter Read",
+      "element": "the journal entry `keep()` writes when \"Tuck it into your Log\" is pressed — `src/app/letter.tsx:88`, the `const body = ...` template",
+      "property": "apostrophe in \"Don’t fail twice.\"",
+      "design": "Don’t (U+2019 curly) — the frame is the only paragraph in the bundle that keeps a curly apostrophe, and `PostLetter` renders it correctly as `Don&rsquo;t`",
+      "app": "Don't (U+0027 straight) in the journal body only — verified by extracting the template literal: journal body carries you're / That's / Don't / I'll, the frame carries you're / That's / Don’t / I'll",
+      "confidence": "certain",
+      "note": "The report claims \"Both the on-screen text and the journal entry the letter is tucked into now follow the frame.\" Three of the four apostrophes do; the fourth does not. Off-frame (it shows in the Log, not on #238), so cosmetic, but it contradicts the report and BRIEF's \"keep the canvas's own strings verbatim\"."
+    },
+    {
+      "frame": "#241 Drop Received",
+      "element": "the laurel mark on the THE YEAR tile (ink box 172.5–219.5 × 247–288.5 in frame coords)",
+      "property": "stroke weight / edge tone of the inverted mark",
+      "design": "filter: invert(1) brightness(1.6) on laurel-mark.webp — 1,124 pixels above 170/255 in that box, mean 236",
+      "app": "expo-image tintColor=\"#FFFFFF\" — 1,036 pixels above 170/255 in the same box, mean 229; individual antialiased-edge pixels differ by up to Δ98/255 (e.g. 214.5,266.5 design 32,32,32 vs app 130,130,130). 1,500 px over 6/255, 1,018 px over 12/255, all inside y 240–290",
+      "confidence": "likely",
+      "note": "Genuine, not a D015/D019 equivalence: brightness(1.6) blows the mark's mid-tones to full white and so thickens the apparent stroke, while a tint only recolours and leaves the alpha ramp. Bounding box and position are identical, so it is tone not placement. Invisible at reading distance; the report named it and I confirm it is real and unfixed."
+    },
+    {
+      "frame": "#238 Letter Read / #239 Medallion Letter",
+      "element": "line 2 of the paragraph beginning \"One slip is a wave…\" (#238) and \"Last night an urge rose…\" (#239)",
+      "property": "vertical position of that one line box",
+      "design": "first ink row at device y 358.5 (line 1 at 340.0, line 3 at 386.5)",
+      "app": "first ink row at device y 359.5 — exactly 1 device px (0.5pt) low; lines 1, 3, 4, 5 are pixel-identical",
+      "confidence": "unsure",
+      "note": "Rasterisation, not layout: line-height is 15.5×1.8 = 27.9 and the two engines round the fraction opposite ways on that one line. Confirmed by per-row ink profile. Accounts for ~4,000 of the ~4,700 non-chrome diff pixels on both frames. Not a fixable defect, and not one of the two D015 washes either — listing it so the next pass does not re-chase it."
+    },
+    {
+      "frame": "#45 Medallion Received (drawn by `src/app/medallion-post.tsx`, a letters-group file)",
+      "element": "the secondary control at canvas y 764",
+      "property": "presence of a label",
+      "design": "a 15px/500 box at left 0 right 0 top 764 with no words in it (probe row: `div | 0 | 764 | 393 | 0`)",
+      "app": "\"Put it on the shelf\" — probe row `div | 135 | 764 | 122.9 | 18`, ~2,000 differing pixels in the 680–800 band",
+      "confidence": "certain",
+      "note": "Acknowledged in the report as a judgement call. It is still the one visible copy on this board that no frame draws, and it is the largest remaining pixel block on the screen."
+    },
+    {
+      "frame": "#45 Medallion Received (drawn by `src/app/medallion-post.tsx`)",
+      "element": "the name at canvas y 432 and the line at y 482",
+      "property": "text",
+      "design": "\"Veni\" / \"Your first medallion. You started.\"",
+      "app": "\"Vici\" / \"Five ridden. Each one shortens the next.\" — the face is hard-coded `kkFace('vici')` in medallion-post.tsx:59 and only the rung/story index is derived from the urge count",
+      "confidence": "likely",
+      "note": "Deliberate (the post fires on a ridden-out urge, which is Vici's own rule) and defensible, but two things in the report overstate it: it says the board \"reads the face out of KK_ALBUM instead of naming one\" — the face IS named ('vici'); only the rung varies. Box geometry, type metrics and colour all match the frame exactly, so this is a content divergence, not a layout one."
+    },
+    {
+      "frame": "#45 Medallion Received / mail list",
+      "element": "`src/app/mail.tsx:65` — the mail row subtitle for the medallion post",
+      "property": "tier claimed",
+      "design": "n/a — no Mail frame exists in this drop; this is app copy",
+      "app": "hard-coded 'Vici, tier II · enclosure inside', while the post it opens now derives the rung from the urge_rode_out count (the seeded account, 5 ridden, clears step 5 only → kkStanding = 1 = tier I, and the post says \"Five ridden…\")",
+      "confidence": "certain",
+      "note": "Left inconsistent by the F11 rework the letters agent did. mail.tsx is outside the group's declared file list and was not touched, but the change made its hard-coded tier wrong. Also `POST_DONE_KEY = 'tideline.post.backondeck.delivered'` and the comment at `src/app/(app)/_layout.tsx:44` still name the retired \"Back on deck\" face (storage key is load-bearing, the comment is not)."
+    },
+    {
+      "frame": "#45 Medallion Earned (`O3MedallionEarned`, `src/components/onboarding/handover.tsx:455`) — cross-group, handover owns it",
+      "element": "the laurel strike inside the gold disc",
+      "property": "CSS position / paint order (the SVG trap)",
+      "design": "the mark is drawn on top of the disc face",
+      "app": "`<Svg width={42} height={27.3} style={{ opacity: 0.55 }}>` carries no `position`. I measured that react-native-svg's web build gives an unstyled `<Svg>` `position: static` (evaluated getComputedStyle on the running app: an unstyled Svg reports `static`, every styled one reports `absolute`). Its siblings — the face `<Svg>` at line 441 and the ring `<View>` at line 452 — are absolutely positioned, so CSS paints the laurel underneath them and it is invisible on web",
+      "confidence": "likely",
+      "note": "NOT captured — that step sits inside the onboarding funnel and welcome.tsx offers no jump parameter, so I read it rather than drove it. `src/app/letter.tsx`'s `LaurelStrike` fixes exactly this with an explicit `position: 'relative'` and a comment saying why; the handover copy never got it. Same file also still has `medFace` stating `rx`/`ry` without `r` (D064) and does not repaint the disc's two `inset` shadow segments over the face `<Svg>` — both confirmed by reading lines 425–460, both as the letters report said."
+    },
+    {
+      "frame": "#44 Letter Week XII (handover's frame; `/letter?variant=week12` is a second caller after this group's rework)",
+      "element": "paragraph tops down the 2,100pt scroll, inside `O3LetterRead`",
+      "property": "y position",
+      "design": "\"At the start, porn still felt…\" 1023 · \"That is how you make it out…\" 1848.2 · \"— Sam, at week XII\" 2061.5 · \"Keep this letter\" 2153",
+      "app": "1023.3 · 1848.9 · 2062.3 · 2153.8 — a monotonic drift reaching +0.8pt by the sign-off",
+      "confidence": "certain",
+      "note": "Measured in the signature, confirming the report's claim. It lives in `src/components/onboarding/handover.tsx`, not in this group's files, and is still open. Everything else on that route is clean: the arrival diffs at 2 px over 12/255 and the illustrated block renders in full."
+    },
+    {
+      "frame": "#240 Yearly Drop",
+      "element": "\"Unlock my year\" pill (canvas top 748) and the \"Terms · Restore\" foot (canvas top 816), `src/app/drop.tsx`",
+      "property": "anchoring reference",
+      "design": "tops stated on an 852-tall frame",
+      "app": "`Y(748)` / `Y(816)`, i.e. measured down from the safe-area top — while `MailArrival` in the same feature deliberately anchors its two controls off the bottom edge, with a comment saying it does so \"so a shorter phone loses artwork rather than the way in\"",
+      "confidence": "unsure",
+      "note": "Reproduces the frame exactly at 393×852 with the mock's 54 inset (verified: every box matches). Flagged only because the two halves of the same flow disagree about which edge they measure from, so on a device with a larger top inset the drop's foot slides toward the home indicator while the arrival's does not. D026 governs bottom-anchored offsets and says nothing about this direction, so it may well be intended."
+    }
+  ],
+  "group": "letters",
+  "reachedAll": true,
+  "summary": "All five `letters` frames were reached, captured and diffed numerically and visually with the `v-letters-` prefix, plus the three boards these files also draw (`Letter Received` #43, `Letter Week XII` #44 via /letter?variant=week12, and `Medallion Received` #45 via /medallion-post). The recipes in `.vicifull/recipes/letters.json` are accurate and every one of them worked first time; nothing was unreachable.\\n\\nThe implementation holds up. Non-chrome pixel diffs at 12/255 (the design frame's own 54pt status bar is the only large band and is D009 chrome): Letter Arrival 2 px, Yearly Drop 29 px, Drop Received 1,018 px (all on the laurel's antialiased strokes), Letter Read and Medallion Letter ~4,700 px of which ~4,000 is one line rounding half a pixel. Signature diffs are clean apart from D015 (wash radius), D019 (grain wrapper) and D022 (centred/right-aligned text vs painted span) — I checked each reported pair by hand and every one is a genuine equivalence: the `SAVE 74%` pill's painted View lands at exactly the canvas's 275.4/488/79.6/22, the right-aligned price column's right edge is 351 on both sides, and the nine \\\"missing/extra\\\" rows on Yearly Drop are the same boxes differing only in whether a `<br>` joins with a space. I independently re-derived the 44 arc dots from the frame's raw HTML — all 132 numbers including the per-dot opacity `body.mjs` does not print reproduce exactly. I looked at every PNG: no artwork is missing anywhere in this group's three files, and I confirmed none of their `<Svg>` elements is static under an absolutely-positioned sibling. `npx tsc --noEmit` is clean and `npx eslint` reports nothing in letter.tsx, drop.tsx or medallion-post.tsx.\\n\\nWhat is still wrong is small and mostly off-frame: one straight apostrophe in the journal body the letter is tucked into (contradicting the report's explicit claim), a hard-coded \\\"tier II\\\" in `src/app/mail.tsx` left stale by this group's own F11 rework, the two acknowledged divergences on `Medallion Received` (\\\"Put it on the shelf\\\" where the frame draws an empty box, and Vici/Five-ridden where the frame draws Veni/first-medallion), and the laurel tint-vs-invert residual on `Drop Received`. Two cross-group items are confirmed open: the paragraph drift inside `O3LetterRead`, and `O3MedallionEarned` in handover.tsx, whose laurel `<Svg>` carries no `position` and will therefore paint under the absolutely-positioned face on web — I verified by evaluating getComputedStyle in the running app that an unstyled react-native-svg `<Svg>` really does report `position: static`, but I could not drive the onboarding funnel to that step to see it, so that one is code-read rather than captured.",
+  "unreachable": []
+}

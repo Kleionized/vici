@@ -1,0 +1,13 @@
+const o = {};
+const ev = () => { const k = Object.keys(localStorage).find((x) => x.startsWith('tideline.mock.userdata.')); return JSON.parse(localStorage.getItem(k)).events; };
+await waitFor('How strong was the urge?');
+await tap('Strong'); await tap('Continue'); await waitFor('What set it off?');
+await tap('Stress'); await tap('Continue'); await waitFor('What did you do?');
+await tap('I slipped'); await tap('Continue'); await waitFor('When was it?');
+await tap('Yesterday'); await tap('Log the urge'); await waitFor('Urge logged.');
+const e = ev(); const last = e[e.length - 1];
+o.saved = { type: last.type, sev: last.severity, trig: last.trigger, help: last.whatHelped ?? null, at: new Date(last.createdAt).toString().slice(0, 21) };
+o.letter = !!localStorage.getItem('tideline.letter.pending');
+o.done = __txt().slice(0, 140);
+await tap('Done'); await __sleep(2000); o.afterDone = location.pathname;
+return o;

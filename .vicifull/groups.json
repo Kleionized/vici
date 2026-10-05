@@ -1,0 +1,2520 @@
+[
+  {
+    "key": "auth",
+    "files": "src/app/(auth)/**, src/components/auth/kit.tsx, src/app/index.tsx",
+    "frames": [
+      {
+        "n": 1,
+        "label": "Splash",
+        "file": "Splash.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "01-splash.md",
+        "app": ""
+      },
+      {
+        "n": 2,
+        "label": "Login",
+        "file": "Login.html",
+        "status": "changed",
+        "diff": 293,
+        "spec": "02-login.md",
+        "app": "`src/app/(auth)/sign-in.tsx` (`mode === 'email'` board) + `src/components/auth/kit.tsx` (`EnvelopeMark`, `PaperAuthGlow`)"
+      },
+      {
+        "n": 3,
+        "label": "Welcome Back",
+        "file": "Welcome-Back.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "funnel",
+    "files": "src/components/onboarding/v3.tsx, src/content/onboardingFunnel.ts, src/components/onboarding/art.tsx",
+    "frames": [
+      {
+        "n": 4,
+        "label": "V3 Q24 Name",
+        "file": "V3-Q24-Name.html",
+        "status": "changed",
+        "diff": 14,
+        "spec": "03-name.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 5,
+        "label": "V3 Q25 Age",
+        "file": "V3-Q25-Age.html",
+        "status": "changed",
+        "diff": 14,
+        "spec": "04-age.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 6,
+        "label": "V3 Q26 Gender",
+        "file": "V3-Q26-Gender.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "05-gender.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 7,
+        "label": "Onboarding Start",
+        "file": "Onboarding-Start.html",
+        "status": "changed",
+        "diff": 6,
+        "spec": "06-onboarding-start.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 8,
+        "label": "V3 Q1",
+        "file": "V3-Q1.html",
+        "status": "changed",
+        "diff": 142,
+        "spec": "07-frequency.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 9,
+        "label": "V3 Q2",
+        "file": "V3-Q2.html",
+        "status": "changed",
+        "diff": 131,
+        "spec": "08-duration.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 10,
+        "label": "V3 Q3",
+        "file": "V3-Q3.html",
+        "status": "changed",
+        "diff": 146,
+        "spec": "09-control.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 11,
+        "label": "V3 Q3b",
+        "file": "V3-Q3b.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 12,
+        "label": "First Principle",
+        "file": "First-Principle.html",
+        "status": "changed",
+        "diff": 4,
+        "spec": "10-first-principle.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 13,
+        "label": "V3 Q5",
+        "file": "V3-Q5.html",
+        "status": "changed",
+        "diff": 16,
+        "spec": "11-risky-times.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 14,
+        "label": "V3 Q6",
+        "file": "V3-Q6.html",
+        "status": "changed",
+        "diff": 6,
+        "spec": "12-before-the-urge.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 15,
+        "label": "V3 Q7",
+        "file": "V3-Q7.html",
+        "status": "changed",
+        "diff": 20,
+        "spec": "13-place.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 16,
+        "label": "What starts it",
+        "file": "What-starts-it.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 17,
+        "label": "Transition",
+        "file": "Transition.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 18,
+        "label": "V3 Q21",
+        "file": "V3-Q21.html",
+        "status": "changed",
+        "diff": 149,
+        "spec": "16-impact.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 19,
+        "label": "What it affects",
+        "file": "What-it-affects.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 20,
+        "label": "V3 Q10",
+        "file": "V3-Q10.html",
+        "status": "changed",
+        "diff": 134,
+        "spec": "18-loneliness.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 21,
+        "label": "V3 Q13",
+        "file": "V3-Q13.html",
+        "status": "changed",
+        "diff": 156,
+        "spec": "19-time-alone.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 22,
+        "label": "V3 Q15",
+        "file": "V3-Q15.html",
+        "status": "changed",
+        "diff": 124,
+        "spec": "20-porn-goal.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 23,
+        "label": "V3 Q16",
+        "file": "V3-Q16.html",
+        "status": "changed",
+        "diff": 130,
+        "spec": "21-masturbation.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 24,
+        "label": "V3 Q17",
+        "file": "V3-Q17.html",
+        "status": "changed",
+        "diff": 77,
+        "spec": "22-what-you-have-tried.md",
+        "app": "src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts"
+      },
+      {
+        "n": 25,
+        "label": "Goal Confirmation",
+        "file": "Goal-Confirmation.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 26,
+        "label": "Enlisting Aegis",
+        "file": "Enlisting-Aegis.html",
+        "status": "changed",
+        "diff": 6,
+        "spec": "23-putting-your-plan-together.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      }
+    ]
+  },
+  {
+    "key": "plan",
+    "files": "NEW sub-flow — new files under src/components/onboarding/ plus its wiring in src/app/(onboarding)/welcome.tsx",
+    "frames": [
+      {
+        "n": 27,
+        "label": "Where We’d Start",
+        "file": "Where-We-d-Start.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 28,
+        "label": "Start Here",
+        "file": "Start-Here.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 29,
+        "label": "Start Here Step 1",
+        "file": "Start-Here-Step-1.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 30,
+        "label": "Start Here Step 2",
+        "file": "Start-Here-Step-2.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 31,
+        "label": "Your Plan",
+        "file": "Your-Plan.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "tail",
+    "files": "src/components/onboarding/tail.tsx, src/content/onboardingTail.ts",
+    "frames": [
+      {
+        "n": 32,
+        "label": "Starting Score",
+        "file": "Starting-Score.html",
+        "status": "changed",
+        "diff": 12,
+        "spec": "27-your-starting-point.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 33,
+        "label": "Cost Next 30",
+        "file": "Cost-Next-30.html",
+        "status": "changed",
+        "diff": 87,
+        "spec": "28-the-next-30-days.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 34,
+        "label": "Cost Next 365",
+        "file": "Cost-Next-365.html",
+        "status": "changed",
+        "diff": 1136,
+        "spec": "29-one-year-from-now.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 35,
+        "label": "Cost By Age 80",
+        "file": "Cost-By-Age-80.html",
+        "status": "changed",
+        "diff": 29,
+        "spec": "30-if-nothing-changes.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 36,
+        "label": "Change the Line",
+        "file": "Change-the-Line.html",
+        "status": "changed",
+        "diff": 4,
+        "spec": "31-change-the-line.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 37,
+        "label": "A Clean Day",
+        "file": "A-Clean-Day.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 38,
+        "label": "One Bad Day",
+        "file": "One-Bad-Day.html",
+        "status": "changed",
+        "diff": 15,
+        "spec": "32-one-bad-day.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      },
+      {
+        "n": 39,
+        "label": "What You Want Back",
+        "file": "What-You-Want-Back.html",
+        "status": "changed",
+        "diff": 282,
+        "spec": "33-what-you-want-back.md",
+        "app": "src/components/onboarding/tail.tsx + src/content/onboardingTail.ts"
+      }
+    ]
+  },
+  {
+    "key": "handover",
+    "files": "src/components/onboarding/handover.tsx, src/app/vow.tsx, src/app/medallion-post.tsx, src/app/reminders.tsx",
+    "frames": [
+      {
+        "n": 40,
+        "label": "Campaign Map",
+        "file": "Campaign-Map.html",
+        "status": "changed",
+        "diff": 16,
+        "spec": "34-twelve-weeks-i.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 41,
+        "label": "Campaign Map II",
+        "file": "Campaign-Map-II.html",
+        "status": "changed",
+        "diff": 16,
+        "spec": "35-twelve-weeks-ii.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 42,
+        "label": "Campaign Map III",
+        "file": "Campaign-Map-III.html",
+        "status": "changed",
+        "diff": 2,
+        "spec": "36-twelve-weeks-iii.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 43,
+        "label": "Letter Received",
+        "file": "Letter-Received.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "37-a-letter-arrived.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 44,
+        "label": "Letter Week XII",
+        "file": "Letter-Week-XII.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "38-a-letter-from-week-xii.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 45,
+        "label": "The Vow",
+        "file": "The-Vow.html",
+        "status": "changed",
+        "diff": 2,
+        "spec": "39-the-vow.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 46,
+        "label": "Medallion Received",
+        "file": "Medallion-Received.html",
+        "status": "changed",
+        "diff": 43,
+        "spec": "40-medallion-earned.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 47,
+        "label": "Reminders Setup",
+        "file": "Reminders-Setup.html",
+        "status": "changed",
+        "diff": 6,
+        "spec": "41-reminders.md",
+        "app": "see the Comparison table below"
+      }
+    ]
+  },
+  {
+    "key": "paywall",
+    "files": "src/app/paywall.tsx, src/app/subscription.tsx, src/components/paywall/**, src/app/routines/**",
+    "frames": [
+      {
+        "n": 48,
+        "label": "Paywall",
+        "file": "Paywall.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 49,
+        "label": "Day Zero",
+        "file": "Day-Zero.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "43-day-0.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 50,
+        "label": "Paywall Rescue",
+        "file": "Paywall-Rescue.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 51,
+        "label": "Paywall Confirmed",
+        "file": "Paywall-Confirmed.html",
+        "status": "changed",
+        "diff": 58,
+        "spec": "45-paywall-confirmed.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 52,
+        "label": "Manage Subscription",
+        "file": "Manage-Subscription.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 53,
+        "label": "Morning Check-in Time",
+        "file": "Morning-Check-in-Time.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "47-morning-check-in-time.md",
+        "app": "see the Comparison table below"
+      },
+      {
+        "n": 54,
+        "label": "Nightly Check-in Time",
+        "file": "Nightly-Check-in-Time.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "48-nightly-check-in-time.md",
+        "app": "see the Comparison table below"
+      }
+    ]
+  },
+  {
+    "key": "today",
+    "files": "src/app/(app)/today.tsx, src/app/score.tsx, src/components/today/kit.tsx",
+    "frames": [
+      {
+        "n": 55,
+        "label": "Today Home",
+        "file": "Today-Home.html",
+        "status": "changed",
+        "diff": 24,
+        "spec": "49-today.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      },
+      {
+        "n": 56,
+        "label": "Score Detail",
+        "file": "Score-Detail.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "50-score-detail.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      },
+      {
+        "n": 57,
+        "label": "Score Detail Moves",
+        "file": "Score-Detail-Moves.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "51-score-detail-moves.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      },
+      {
+        "n": 58,
+        "label": "Score Detail Ranks",
+        "file": "Score-Detail-Ranks.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "52-score-detail-ranks.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      },
+      {
+        "n": 59,
+        "label": "Today Home II",
+        "file": "Today-Home-II.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "53-today-p2.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      },
+      {
+        "n": 60,
+        "label": "Today Home Task",
+        "file": "Today-Home-Task.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "54-today-home-task.md",
+        "app": "src/app/(app)/today.tsx → PageTwo; src/components/today/kit.tsx → TaskCard, LessonNightArt"
+      },
+      {
+        "n": 61,
+        "label": "Today Home III",
+        "file": "Today-Home-III.html",
+        "status": "changed",
+        "diff": 25,
+        "spec": "55-today-p3.md",
+        "app": "src/app/(app)/today.tsx · src/app/score.tsx · src/components/today/kit.tsx"
+      }
+    ]
+  },
+  {
+    "key": "day",
+    "files": "src/app/day/morning.tsx, src/app/day/night.tsx, src/components/day/kit.tsx, src/components/MoodLogger.tsx",
+    "frames": [
+      {
+        "n": 62,
+        "label": "Morning Check-in Cover",
+        "file": "Morning-Check-in-Cover.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "56-morning-check-in-cover.md",
+        "app": "src/components/day/kit.tsx → CheckinCover; src/app/day/morning.tsx step COVER"
+      },
+      {
+        "n": 63,
+        "label": "Morning Task Check",
+        "file": "Morning-Task-Check.html",
+        "status": "changed",
+        "diff": 2,
+        "spec": "57-morning-task-check.md",
+        "app": "src/app/day/morning.tsx step TASK → AnswerRow; src/components/day/kit.tsx → ActionCard, NightActionArt"
+      },
+      {
+        "n": 64,
+        "label": "Morning 1 Yesterday",
+        "file": "Morning-1-Yesterday.html",
+        "status": "changed",
+        "diff": 2,
+        "spec": "58-morning-yesterday.md",
+        "app": "src/app/day/morning.tsx step LEDGER; src/components/day/kit.tsx → LedgerMark, LedgerRow, LedgerRule"
+      },
+      {
+        "n": 65,
+        "label": "Morning Feeling",
+        "file": "Morning-Feeling.html",
+        "status": "changed",
+        "diff": 129,
+        "spec": "59-morning-feeling.md",
+        "app": "src/app/day/morning.tsx step FEELING; src/components/day/kit.tsx → MorningSky, MoodDial, ScaleReading"
+      },
+      {
+        "n": 66,
+        "label": "Morning Energy",
+        "file": "Morning-Energy.html",
+        "status": "changed",
+        "diff": 129,
+        "spec": "60-morning-energy.md",
+        "app": "src/app/day/morning.tsx step ENERGY; src/components/day/kit.tsx → MorningSky, MoodDial, ScaleReading"
+      },
+      {
+        "n": 67,
+        "label": "Morning Resign Pledge",
+        "file": "Morning-Resign-Pledge.html",
+        "status": "changed",
+        "diff": 246,
+        "spec": "61-morning-resign-pledge.md",
+        "app": "src/app/day/morning.tsx step PLEDGE; src/components/day/kit.tsx → MorningSky"
+      },
+      {
+        "n": 68,
+        "label": "Morning Pledge Signed",
+        "file": "Morning-Pledge-Signed.html",
+        "status": "ADDED",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 69,
+        "label": "Change Pledge Sheet",
+        "file": "Change-Pledge-Sheet.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "62-change-pledge-sheet.md",
+        "app": "src/components/day/kit.tsx → ChangePledgeSheet"
+      },
+      {
+        "n": 70,
+        "label": "Morning 5 Done",
+        "file": "Morning-5-Done.html",
+        "status": "changed",
+        "diff": 135,
+        "spec": "63-morning-done.md",
+        "app": "src/app/day/morning.tsx step DONE; src/components/day/kit.tsx → MorningSky, DayBadge, DayClosing"
+      },
+      {
+        "n": 71,
+        "label": "Night Check-in Cover",
+        "file": "Night-Check-in-Cover.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "64-night-check-in-cover.md",
+        "app": "src/components/day/kit.tsx → CheckinCover; src/app/day/night.tsx step COVER"
+      },
+      {
+        "n": 72,
+        "label": "Night 1 Mood",
+        "file": "Night-1-Mood.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "65-night-mood.md",
+        "app": "src/app/day/night.tsx step MOOD; src/components/day/kit.tsx → WarmNightSky, MoodDial, ScaleReading"
+      },
+      {
+        "n": 73,
+        "label": "Checkin Emotions",
+        "file": "Checkin-Emotions.html",
+        "status": "changed",
+        "diff": 188,
+        "spec": "66-checkin-emotions.md",
+        "app": "src/components/MoodLogger.tsx → EmotionsBoard"
+      },
+      {
+        "n": 74,
+        "label": "Checkin Reasons",
+        "file": "Checkin-Reasons.html",
+        "status": "changed",
+        "diff": 12,
+        "spec": "67-checkin-reasons.md",
+        "app": "src/components/MoodLogger.tsx → ReasonsBoard"
+      },
+      {
+        "n": 75,
+        "label": "Night 3 Reflection",
+        "file": "Night-3-Reflection.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "68-night-reflection.md",
+        "app": "src/app/day/night.tsx step REFLECTION"
+      },
+      {
+        "n": 76,
+        "label": "Night 2 Record",
+        "file": "Night-2-Record.html",
+        "status": "changed",
+        "diff": 278,
+        "spec": "69-night-record.md",
+        "app": "src/app/day/night.tsx step RECORD; src/components/day/kit.tsx → LedgerRow, LedgerRule, DayGlyph, JournalMark"
+      },
+      {
+        "n": 77,
+        "label": "Night Action Reminder",
+        "file": "Night-Action-Reminder.html",
+        "status": "changed",
+        "diff": 2,
+        "spec": "70-night-action.md",
+        "app": "src/app/day/night.tsx step ACTION; src/components/day/kit.tsx → ActionCard, NightActionArt, ActionButton"
+      },
+      {
+        "n": 78,
+        "label": "Night 4 Closed",
+        "file": "Night-4-Closed.html",
+        "status": "changed",
+        "diff": 20,
+        "spec": "71-night-closed.md",
+        "app": "src/app/day/night.tsx step CLOSED; src/components/day/kit.tsx → NightSky, DayBadge, DayClosing"
+      }
+    ]
+  },
+  {
+    "key": "weeks",
+    "files": "src/app/week/[week].tsx, src/components/library/WeekBoard.tsx, src/components/journey/WeekScene.tsx, src/content/weekScenes.ts",
+    "frames": [
+      {
+        "n": 79,
+        "label": "Week I Reset",
+        "file": "Week-I-Reset.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "72-week-i-reset.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 80,
+        "label": "Week I Reset P2",
+        "file": "Week-I-Reset-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "73-week-i-reset-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 81,
+        "label": "Week II Changing Your Mindset",
+        "file": "Week-II-Changing-Your-Mindset.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "74-week-ii.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 82,
+        "label": "Week II Changing Your Mindset P2",
+        "file": "Week-II-Changing-Your-Mindset-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "75-week-ii-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 83,
+        "label": "Week III In the Moment",
+        "file": "Week-III-In-the-Moment.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "76-week-iii.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 84,
+        "label": "Week III In the Moment P2",
+        "file": "Week-III-In-the-Moment-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "77-week-iii-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 85,
+        "label": "Week IV Know Your Brain",
+        "file": "Week-IV-Know-Your-Brain.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "78-week-iv.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 86,
+        "label": "Week IV Know Your Brain P2",
+        "file": "Week-IV-Know-Your-Brain-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "79-week-iv-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 87,
+        "label": "Week V Why It Feels Worth It",
+        "file": "Week-V-Why-It-Feels-Worth-It.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "80-week-v.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 88,
+        "label": "Week V Why It Feels Worth It P2",
+        "file": "Week-V-Why-It-Feels-Worth-It-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "81-week-v-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 89,
+        "label": "Week VI Discipline",
+        "file": "Week-VI-Discipline.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "82-week-vi.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 90,
+        "label": "Week VI Discipline P2",
+        "file": "Week-VI-Discipline-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "83-week-vi-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 91,
+        "label": "Week VII Relapse and Adversity",
+        "file": "Week-VII-Relapse-and-Adversity.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "84-week-vii.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 92,
+        "label": "Week VII Relapse and Adversity P2",
+        "file": "Week-VII-Relapse-and-Adversity-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "85-week-vii-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 93,
+        "label": "Week VIII Boredom and Meaning",
+        "file": "Week-VIII-Boredom-and-Meaning.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "86-week-viii.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 94,
+        "label": "Week VIII Boredom and Meaning P2",
+        "file": "Week-VIII-Boredom-and-Meaning-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "87-week-viii-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 95,
+        "label": "Week IX Connection",
+        "file": "Week-IX-Connection.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "88-week-ix.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 96,
+        "label": "Week IX Connection P2",
+        "file": "Week-IX-Connection-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "89-week-ix-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 97,
+        "label": "Week X Yourself",
+        "file": "Week-X-Yourself.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "90-week-x.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 98,
+        "label": "Week X Yourself P2",
+        "file": "Week-X-Yourself-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "91-week-x-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 99,
+        "label": "Week XI Build a Life You Want",
+        "file": "Week-XI-Build-a-Life-You-Want.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "92-week-xi.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 100,
+        "label": "Week XI Build a Life You Want P2",
+        "file": "Week-XI-Build-a-Life-You-Want-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "93-week-xi-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 101,
+        "label": "Week XII Leave It Behind",
+        "file": "Week-XII-Leave-It-Behind.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "94-week-xii.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      },
+      {
+        "n": 102,
+        "label": "Week XII Leave It Behind P2",
+        "file": "Week-XII-Leave-It-Behind-P2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "95-week-xii-p2.md",
+        "app": "src/app/week/[week].tsx → WeekOverview; src/components/library/WeekBoard.tsx; src/components/journey/WeekScene.tsx; src/content/weekScenes.ts"
+      }
+    ]
+  },
+  {
+    "key": "sos",
+    "files": "src/components/urge/index.tsx, src/app/urge.tsx, src/components/ChallengeSheet.tsx",
+    "frames": [
+      {
+        "n": 103,
+        "label": "Cue Intro Modal",
+        "file": "Cue-Intro-Modal.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "96-sos-intro.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → IntroPage"
+      },
+      {
+        "n": 104,
+        "label": "SOS Strength",
+        "file": "SOS-Strength.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "97-sos-strength.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → StrengthPage"
+      },
+      {
+        "n": 105,
+        "label": "Cue Hue Picker",
+        "file": "Cue-Hue-Picker.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "98-sos-where.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → WherePage"
+      },
+      {
+        "n": 106,
+        "label": "Surf Step 1",
+        "file": "Surf-Step-1.html",
+        "status": "changed",
+        "diff": 13,
+        "spec": "99-sos-stand.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → MovePage index 0"
+      },
+      {
+        "n": 107,
+        "label": "Surf Step 3",
+        "file": "Surf-Step-3.html",
+        "status": "changed",
+        "diff": 13,
+        "spec": "100-sos-leave.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → MovePage index 1, LeaveStepArt"
+      },
+      {
+        "n": 108,
+        "label": "Cue Set Confirmation",
+        "file": "Cue-Set-Confirmation.html",
+        "status": "changed",
+        "diff": 13,
+        "spec": "101-sos-phone.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → MovePage index 2"
+      },
+      {
+        "n": 109,
+        "label": "SOS Reason Picker",
+        "file": "SOS-Reason-Picker.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "102-sos-trigger.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → ReasonPage, PickerGrid"
+      },
+      {
+        "n": 110,
+        "label": "SOS Feeling Picker",
+        "file": "SOS-Feeling-Picker.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "103-sos-feeling.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → FeelingPage, PickerGrid"
+      },
+      {
+        "n": 111,
+        "label": "SOS Challenge",
+        "file": "SOS-Challenge.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "104-sos-challenge.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → ResponsePage"
+      },
+      {
+        "n": 112,
+        "label": "SOS Reassess",
+        "file": "SOS-Reassess.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "105-sos-reassess.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → ReassessPage"
+      },
+      {
+        "n": 113,
+        "label": "SOS Afterward",
+        "file": "SOS-Afterward.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "106-sos-afterward.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → AfterwardPage"
+      },
+      {
+        "n": 114,
+        "label": "Surf Complete",
+        "file": "Surf-Complete.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "107-sos-complete.md",
+        "app": "src/components/urge/index.tsx → UrgeFlow → DonePage"
+      },
+      {
+        "n": 115,
+        "label": "Relapse Log",
+        "file": "Relapse-Log.html",
+        "status": "changed",
+        "diff": 14,
+        "spec": "108-relapse-log.md",
+        "app": "src/app/relapse.tsx → PAGES[0]"
+      },
+      {
+        "n": 116,
+        "label": "Relapse Twice",
+        "file": "Relapse-Twice.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "109-relapse-twice.md",
+        "app": "src/app/relapse.tsx → PAGES[1]"
+      },
+      {
+        "n": 117,
+        "label": "Relapse Resign",
+        "file": "Relapse-Resign.html",
+        "status": "changed",
+        "diff": 11,
+        "spec": "110-relapse-resign.md",
+        "app": "src/app/relapse.tsx → ResignPledge"
+      },
+      {
+        "n": 118,
+        "label": "Relapse Begin",
+        "file": "Relapse-Begin.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "111-relapse-begin.md",
+        "app": "src/app/relapse.tsx → BeginAgain"
+      },
+      {
+        "n": 119,
+        "label": "Urge Hub Now",
+        "file": "Urge-Hub-Now.html",
+        "status": "changed",
+        "diff": 358,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 120,
+        "label": "Urge Hub Score",
+        "file": "Urge-Hub-Score.html",
+        "status": "changed",
+        "diff": 302,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 121,
+        "label": "Urge Hub Proof",
+        "file": "Urge-Hub-Proof.html",
+        "status": "changed",
+        "diff": 360,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 122,
+        "label": "Urge Hub Surfed",
+        "file": "Urge-Hub-Surfed.html",
+        "status": "changed",
+        "diff": 667,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 123,
+        "label": "Urge Hub Pledges",
+        "file": "Urge-Hub-Pledges.html",
+        "status": "changed",
+        "diff": 390,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 124,
+        "label": "SOS Loc Bed",
+        "file": "SOS-Loc-Bed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 125,
+        "label": "SOS Loc Bathroom",
+        "file": "SOS-Loc-Bathroom.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 126,
+        "label": "SOS Loc Home Alone",
+        "file": "SOS-Loc-Home-Alone.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 127,
+        "label": "SOS Loc Private Room",
+        "file": "SOS-Loc-Private-Room.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 128,
+        "label": "SOS Loc Work",
+        "file": "SOS-Loc-Work.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 129,
+        "label": "SOS Loc Public",
+        "file": "SOS-Loc-Public.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 130,
+        "label": "SOS Loc Elsewhere",
+        "file": "SOS-Loc-Elsewhere.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 131,
+        "label": "SOS Feel Turned On",
+        "file": "SOS-Feel-Turned-On.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 132,
+        "label": "SOS Feel Bored",
+        "file": "SOS-Feel-Bored.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 133,
+        "label": "SOS Feel Lonely",
+        "file": "SOS-Feel-Lonely.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 134,
+        "label": "SOS Feel Stressed",
+        "file": "SOS-Feel-Stressed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 135,
+        "label": "SOS Feel Anxious",
+        "file": "SOS-Feel-Anxious.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 136,
+        "label": "SOS Feel Angry",
+        "file": "SOS-Feel-Angry.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 137,
+        "label": "SOS Feel Low",
+        "file": "SOS-Feel-Low.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 138,
+        "label": "SOS Feel Rejected",
+        "file": "SOS-Feel-Rejected.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 139,
+        "label": "SOS Feel Tired",
+        "file": "SOS-Feel-Tired.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 140,
+        "label": "SOS Feel Restless",
+        "file": "SOS-Feel-Restless.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 141,
+        "label": "SOS Feel Numb",
+        "file": "SOS-Feel-Numb.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 142,
+        "label": "SOS Feel Ashamed",
+        "file": "SOS-Feel-Ashamed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 143,
+        "label": "SOS Feel Unknown",
+        "file": "SOS-Feel-Unknown.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 144,
+        "label": "SOS Trig Content",
+        "file": "SOS-Trig-Content.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 145,
+        "label": "SOS Trig Doomscroll",
+        "file": "SOS-Trig-Doomscroll.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 146,
+        "label": "SOS Trig Fantasy",
+        "file": "SOS-Trig-Fantasy.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 147,
+        "label": "SOS Trig Late Phone",
+        "file": "SOS-Trig-Late-Phone.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 148,
+        "label": "SOS Trig Habit",
+        "file": "SOS-Trig-Habit.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 149,
+        "label": "SOS Trig Cant Sleep",
+        "file": "SOS-Trig-Cant-Sleep.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 150,
+        "label": "SOS Trig Argument",
+        "file": "SOS-Trig-Argument.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 151,
+        "label": "SOS Trig Rejection",
+        "file": "SOS-Trig-Rejection.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 152,
+        "label": "SOS Trig Alone",
+        "file": "SOS-Trig-Alone.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 153,
+        "label": "SOS Trig Unknown",
+        "file": "SOS-Trig-Unknown.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "medallions",
+    "files": "src/app/medallions/[key].tsx, src/app/(app)/milestones.tsx, src/components/keepsakes/**",
+    "frames": [
+      {
+        "n": 154,
+        "label": "Medallions",
+        "file": "Medallions.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 155,
+        "label": "Medallions Still To Earn",
+        "file": "Medallions-Still-To-Earn.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 156,
+        "label": "Album Earned II",
+        "file": "Album-Earned-II.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 157,
+        "label": "Breakwater Paper",
+        "file": "Breakwater-Paper.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 158,
+        "label": "Breakwater Bronze",
+        "file": "Breakwater-Bronze.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 159,
+        "label": "Breakwater Silver",
+        "file": "Breakwater-Silver.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 160,
+        "label": "Breakwater Gold",
+        "file": "Breakwater-Gold.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 161,
+        "label": "Breakwater Platinum",
+        "file": "Breakwater-Platinum.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 162,
+        "label": "Tiers Vidi",
+        "file": "Tiers-Vidi.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 163,
+        "label": "Tiers Vici",
+        "file": "Tiers-Vici.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 164,
+        "label": "Tiers Rebound",
+        "file": "Tiers-Rebound.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 165,
+        "label": "Tiers Breakwater",
+        "file": "Tiers-Breakwater.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 166,
+        "label": "Tiers Logbook",
+        "file": "Tiers-Logbook.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 167,
+        "label": "Tiers Pulse",
+        "file": "Tiers-Pulse.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 168,
+        "label": "Tiers Archive",
+        "file": "Tiers-Archive.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 169,
+        "label": "Tiers Lessons",
+        "file": "Tiers-Lessons.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 170,
+        "label": "Tiers One-offs",
+        "file": "Tiers-One-offs.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 171,
+        "label": "Detail Paper",
+        "file": "Detail-Paper.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 172,
+        "label": "Detail Bronze",
+        "file": "Detail-Bronze.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 173,
+        "label": "Detail Silver",
+        "file": "Detail-Silver.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 174,
+        "label": "Detail Gold",
+        "file": "Detail-Gold.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 175,
+        "label": "Detail Platinum",
+        "file": "Detail-Platinum.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "logs",
+    "files": "src/app/(app)/log.tsx, src/app/urge-log.tsx, src/app/lapse.tsx, src/app/urge-overview.tsx, src/app/weekly-report.tsx, src/app/report-ready.tsx",
+    "frames": [
+      {
+        "n": 176,
+        "label": "Log Chooser",
+        "file": "Log-Chooser.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 177,
+        "label": "Lapse When",
+        "file": "Lapse-When.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 178,
+        "label": "Lapse Trigger",
+        "file": "Lapse-Trigger.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 179,
+        "label": "Lapse Done",
+        "file": "Lapse-Done.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 180,
+        "label": "Log Urges",
+        "file": "Log-Urges.html",
+        "status": "changed",
+        "diff": 193,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 181,
+        "label": "Log Check-ins",
+        "file": "Log-Check-ins.html",
+        "status": "changed",
+        "diff": 256,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 182,
+        "label": "Log Reports",
+        "file": "Log-Reports.html",
+        "status": "changed",
+        "diff": 206,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 183,
+        "label": "Urge Overview Summary",
+        "file": "Urge-Overview-Summary.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 184,
+        "label": "Urge Overview",
+        "file": "Urge-Overview.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 185,
+        "label": "Urge Overview Mood",
+        "file": "Urge-Overview-Mood.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 186,
+        "label": "Urge Overview When",
+        "file": "Urge-Overview-When.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 187,
+        "label": "Report Ready",
+        "file": "Report-Ready.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 188,
+        "label": "Weekly Report",
+        "file": "Weekly-Report.html",
+        "status": "changed",
+        "diff": 220,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 189,
+        "label": "Weekly Report Days",
+        "file": "Weekly-Report-Days.html",
+        "status": "changed",
+        "diff": 218,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 190,
+        "label": "Weekly Report Urges",
+        "file": "Weekly-Report-Urges.html",
+        "status": "changed",
+        "diff": 295,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 191,
+        "label": "Urge Log Intensity",
+        "file": "Urge-Log-Intensity.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 192,
+        "label": "Urge Log Trigger",
+        "file": "Urge-Log-Trigger.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 193,
+        "label": "Urge Log Outcome",
+        "file": "Urge-Log-Outcome.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 194,
+        "label": "Urge Log When",
+        "file": "Urge-Log-When.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 195,
+        "label": "Urge Log Done",
+        "file": "Urge-Log-Done.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "settings",
+    "files": "src/app/(app)/settings.tsx, src/app/profile.tsx, src/app/privacy.tsx, src/app/applock.tsx, src/app/vow.tsx",
+    "frames": [
+      {
+        "n": 196,
+        "label": "Settings",
+        "file": "Settings.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 197,
+        "label": "Edit Profile",
+        "file": "Edit-Profile.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 198,
+        "label": "Sheet Profile Photo",
+        "file": "Sheet-Profile-Photo.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 199,
+        "label": "Sheet Edit Name",
+        "file": "Sheet-Edit-Name.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 200,
+        "label": "Settings Weekly Report",
+        "file": "Settings-Weekly-Report.html",
+        "status": "changed",
+        "diff": 4,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 201,
+        "label": "Settings Check-in Time",
+        "file": "Settings-Check-in-Time.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 202,
+        "label": "Your Vow Page",
+        "file": "Your-Vow-Page.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 203,
+        "label": "Sheet Sign Out",
+        "file": "Sheet-Sign-Out.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 204,
+        "label": "Data Privacy",
+        "file": "Data-Privacy.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 205,
+        "label": "App Lock",
+        "file": "App-Lock.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "slip",
+    "files": "src/app/relapse.tsx, src/components/roughDays/kit.tsx, src/app/rough-protocol.tsx, src/app/rough-first90.tsx",
+    "frames": [
+      {
+        "n": 206,
+        "label": "Slip Entry",
+        "file": "Slip-Entry.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 207,
+        "label": "Slip Close It",
+        "file": "Slip-Close-It.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 208,
+        "label": "Slip When",
+        "file": "Slip-When.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 209,
+        "label": "Slip Fed",
+        "file": "Slip-Fed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 210,
+        "label": "Slip Logged",
+        "file": "Slip-Logged.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 211,
+        "label": "Slip Urge Now",
+        "file": "Slip-Urge-Now.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 212,
+        "label": "Slip Dont Fail Twice",
+        "file": "Slip-Dont-Fail-Twice.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 213,
+        "label": "Slip Stop Here",
+        "file": "Slip-Stop-Here.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 214,
+        "label": "Slip Third",
+        "file": "Slip-Third.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 215,
+        "label": "Slip Pledge",
+        "file": "Slip-Pledge.html",
+        "status": "changed",
+        "diff": 11,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 216,
+        "label": "Slip Begin Again",
+        "file": "Slip-Begin-Again.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 217,
+        "label": "Slip Morning After",
+        "file": "Slip-Morning-After.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 218,
+        "label": "Slip Feel Ashamed",
+        "file": "Slip-Feel-Ashamed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 219,
+        "label": "Slip Feel Bored",
+        "file": "Slip-Feel-Bored.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 220,
+        "label": "Slip Feel Lonely",
+        "file": "Slip-Feel-Lonely.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 221,
+        "label": "Slip Feel Stressed",
+        "file": "Slip-Feel-Stressed.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 222,
+        "label": "Slip Feel Rejected",
+        "file": "Slip-Feel-Rejected.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 223,
+        "label": "Slip Feel Tired",
+        "file": "Slip-Feel-Tired.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 224,
+        "label": "Slip Feel Turned on",
+        "file": "Slip-Feel-Turned-on.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 225,
+        "label": "Slip Feel Not sure",
+        "file": "Slip-Feel-Not-sure.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 226,
+        "label": "Slip Trigger Late night",
+        "file": "Slip-Trigger-Late-night.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 227,
+        "label": "Slip Trigger Scrolling",
+        "file": "Slip-Trigger-Scrolling.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 228,
+        "label": "Slip Trigger Sexual content",
+        "file": "Slip-Trigger-Sexual-content.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 229,
+        "label": "Slip Trigger Boredom",
+        "file": "Slip-Trigger-Boredom.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 230,
+        "label": "Slip Trigger Loneliness",
+        "file": "Slip-Trigger-Loneliness.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 231,
+        "label": "Slip Trigger Stress",
+        "file": "Slip-Trigger-Stress.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 232,
+        "label": "Slip Trigger Argument",
+        "file": "Slip-Trigger-Argument.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 233,
+        "label": "Slip Trigger Couldn’t sleep",
+        "file": "Slip-Trigger-Couldn-t-sleep.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 234,
+        "label": "Slip Trigger Being alone",
+        "file": "Slip-Trigger-Being-alone.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 235,
+        "label": "Slip Trigger Habit",
+        "file": "Slip-Trigger-Habit.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 236,
+        "label": "Slip Trigger Not sure",
+        "file": "Slip-Trigger-Not-sure.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "letters",
+    "files": "src/app/letter.tsx, src/app/drop.tsx, src/app/medallion-post.tsx",
+    "frames": [
+      {
+        "n": 237,
+        "label": "Letter Arrival",
+        "file": "Letter-Arrival.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 238,
+        "label": "Letter Read",
+        "file": "Letter-Read.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 239,
+        "label": "Medallion Letter",
+        "file": "Medallion-Letter.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 240,
+        "label": "Yearly Drop",
+        "file": "Yearly-Drop.html",
+        "status": "changed",
+        "diff": 669,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 241,
+        "label": "Drop Received",
+        "file": "Drop-Received.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "lesson-scrolls",
+    "files": "src/components/lesson/**, src/content/lessonReader.ts, src/content/readerRoom.ts, src/app/lesson/day/[day].tsx",
+    "frames": [
+      {
+        "n": 242,
+        "label": "Lesson Scroll 1",
+        "file": "Lesson-Scroll-1.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 243,
+        "label": "Lesson Scroll 2",
+        "file": "Lesson-Scroll-2.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 244,
+        "label": "Lesson Scroll 3",
+        "file": "Lesson-Scroll-3.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 245,
+        "label": "Lesson Scroll 4",
+        "file": "Lesson-Scroll-4.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 246,
+        "label": "Lesson Scroll 5",
+        "file": "Lesson-Scroll-5.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 247,
+        "label": "Lesson Scroll 6",
+        "file": "Lesson-Scroll-6.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 248,
+        "label": "Lesson Scroll 7",
+        "file": "Lesson-Scroll-7.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 249,
+        "label": "Lesson Scroll 8",
+        "file": "Lesson-Scroll-8.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 250,
+        "label": "Lesson Scroll 9",
+        "file": "Lesson-Scroll-9.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 251,
+        "label": "Lesson Scroll 10",
+        "file": "Lesson-Scroll-10.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 252,
+        "label": "Lesson Scroll 11",
+        "file": "Lesson-Scroll-11.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 253,
+        "label": "Lesson Scroll 12",
+        "file": "Lesson-Scroll-12.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 254,
+        "label": "Lesson Scroll 13",
+        "file": "Lesson-Scroll-13.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 255,
+        "label": "Lesson Scroll 14",
+        "file": "Lesson-Scroll-14.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 256,
+        "label": "Lesson Scroll 15",
+        "file": "Lesson-Scroll-15.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 257,
+        "label": "Lesson Scroll 16",
+        "file": "Lesson-Scroll-16.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 258,
+        "label": "Lesson Scroll 17",
+        "file": "Lesson-Scroll-17.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 259,
+        "label": "Lesson Scroll 18",
+        "file": "Lesson-Scroll-18.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 260,
+        "label": "Lesson Scroll 19",
+        "file": "Lesson-Scroll-19.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 261,
+        "label": "Lesson Scroll 20",
+        "file": "Lesson-Scroll-20.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 262,
+        "label": "Lesson Scroll 21",
+        "file": "Lesson-Scroll-21.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 263,
+        "label": "Lesson Scroll 22",
+        "file": "Lesson-Scroll-22.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 264,
+        "label": "Lesson Scroll 23",
+        "file": "Lesson-Scroll-23.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 265,
+        "label": "Lesson Scroll 24",
+        "file": "Lesson-Scroll-24.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 266,
+        "label": "Lesson Scroll 25",
+        "file": "Lesson-Scroll-25.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      },
+      {
+        "n": 267,
+        "label": "Lesson Scroll 26",
+        "file": "Lesson-Scroll-26.html",
+        "status": "identical",
+        "diff": 0,
+        "spec": "",
+        "app": ""
+      }
+    ]
+  },
+  {
+    "key": "week-lessons",
+    "files": "src/content/interactiveLessons.ts, src/content/lessonPlates.ts, src/content/taskScenes.ts, src/content/curriculum84.ts, src/components/lesson/**, src/components/task/**",
+    "frames": [],
+    "bundles": [
+      "Week-01-Reset",
+      "Week-02-Changing-Your-Mindset",
+      "Week-03-In-the-Moment",
+      "Week-04-Know-Your-Brain",
+      "Week-05-Why-It-Feels-Worth-It",
+      "Week-06-Discipline",
+      "Week-07-Relapse-and-Adversity",
+      "Week-08-Boredom-and-Meaning",
+      "Week-09-Connection",
+      "Week-10-Yourself",
+      "Week-11-Build-a-Life-You-Want",
+      "Week-12-Leave-It-Behind"
+    ]
+  }
+]

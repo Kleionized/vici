@@ -1,0 +1,79 @@
+[
+  { "frame": "Morning Check-in Cover", "file": "Morning-Check-in-Cover.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "do": "", "wait": 1200,
+    "note": "Nothing signs a mock user in on /day/*, so `.vicifull/reseed.js` finds no `tideline.mock.userdata.*` key and bails — pass the account as an INIT script instead (`--initseed`), which lands before the first paint and needs no reload. `.vicifull/day-seed.js` is the account these frames are drawn for: Marcus, day 13, yesterday clean with one urge surfed, pledges on both days, Part III finished yesterday and Part IV today. The cover's `Day 13` is that seed's own day number." },
+
+  { "frame": "Morning Task Check", "file": "Morning-Task-Check.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin day 13'); await __sleep(700)",
+    "note": "the canvas omits `fill` on the Yes pill's check, so the frame paints the wedge black and the app does not (D096) — 120 px at Δ19, the only difference on the frame." },
+
+  { "frame": "Morning 1 Yesterday", "file": "Morning-1-Yesterday.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700)",
+    "note": "the two answer pills carry no text — reach them by their accessibilityLabel, 'No' and 'Yes'. The score row's `+12 → 1,240` is a day-41 number on a day-13 flow and is not reachable from any seed (D097); the ledger's ground shadow is a real Gaussian now (D091)." },
+
+  { "frame": "Morning Feeling", "file": "Morning-Feeling.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700); await tap('Continue'); await __sleep(600)" },
+
+  { "frame": "Morning Energy", "file": "Morning-Energy.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600)" },
+
+  { "frame": "Morning Resign Pledge", "file": "Morning-Resign-Pledge.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700)",
+    "note": "the frame hides its own Back row and rail behind the sky band; the app draws them (D094)." },
+
+  { "frame": "Morning Pledge Signed", "file": "Morning-Pledge-Signed.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700); await tap('Sign for today'); await __sleep(800)",
+    "note": "same screen as Morning Resign Pledge, second state — the pill renames itself to Confirm and the name is written in Snell Roundhand. D094 applies here too." },
+
+  { "frame": "Change Pledge Sheet", "file": "Change-Pledge-Sheet.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1200, "script": ".vicifull/fday-sheet.js",
+    "note": "the sheet's card is drawn mid-edit with a REPLACEMENT sentence ('Phone stays out of the bedroom') where Morning Resign Pledge's card draws the standing one, so the state is 'opened the sheet and typed', not a differently-seeded pledge. The script opens the sheet and sets the textarea. Behind the scrim the canvas draws three flat placeholder blocks and the app draws the live screen (D095)." },
+
+  { "frame": "Morning 5 Done", "file": "Morning-5-Done.html", "route": "/day/morning",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin day 13'); await __sleep(700); await tap('Yes'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700); await tap('Sign for today'); await __sleep(800); await tap('Confirm'); await __sleep(900)",
+    "note": "D094 applies here too — the 452pt band is ordered after the Back row and the rail." },
+
+  { "frame": "Night Check-in Cover", "file": "Night-Check-in-Cover.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "do": "", "wait": 1200 },
+
+  { "frame": "Night 1 Mood", "file": "Night-1-Mood.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Close the day'); await __sleep(800)" },
+
+  { "frame": "Checkin Emotions", "file": "Checkin-Emotions.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Hopeful'); await __sleep(400)",
+    "note": "the frame draws Calm and Hopeful selected" },
+
+  { "frame": "Checkin Reasons", "file": "Checkin-Reasons.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Self-image'); await __sleep(400); await tap('Loneliness'); await __sleep(400)",
+    "note": "the frame draws Self-image and Loneliness selected; the pill is disabled until one row is on, so a feeling has to be picked on the step before" },
+
+  { "frame": "Night 3 Reflection", "file": "Night-3-Reflection.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1400,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Loneliness'); await __sleep(400); await tap('Continue'); await __sleep(800)",
+    "note": "the canvas paints a 2 × 18 caret after the placeholder; the platform owns the caret (D025) and the field is not focused on open — no frame in the bundle draws a keyboard, so the canvas is not stating a focused field." },
+
+  { "frame": "Night 2 Record", "file": "Night-2-Record.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1600,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Loneliness'); await __sleep(400); await tap('Continue'); await __sleep(800); await tap('Close the day'); await __sleep(900)",
+    "note": "the Reflection step's pill says 'Close the day' two steps before the day actually closes — that is what the frame draws. The notebook's ground shadow is a real Gaussian (D091)." },
+
+  { "frame": "Night Action Reminder", "file": "Night-Action-Reminder.html", "route": "/day/night",
+    "initseed": ".vicifull/vday-seed-d1.js", "wait": 1800,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Loneliness'); await __sleep(400); await tap('Continue'); await __sleep(800); await tap('Close the day'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "THIS ONE NEEDS THE DAY-1 SEED. The card is the account's real daily task, and the canvas draws day 1's ('Surviving the night', bed glyph, 372 tall). `.vicifull/vday-seed-d1.js` is `day-seed.js` with `createdAt: midnight`; on the day-13 seed the card is 394 tall and reads 'Values, not shame'. The opening pill is still 'Close the day' on both seeds." },
+
+  { "frame": "Night 4 Closed", "file": "Night-4-Closed.html", "route": "/day/night",
+    "initseed": ".vicifull/day-seed.js", "wait": 1800,
+    "do": "await tap('Close the day'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Loneliness'); await __sleep(400); await tap('Continue'); await __sleep(800); await tap('Close the day'); await __sleep(900); await tap('Continue'); await __sleep(900); await tap('Done'); await __sleep(1000)",
+    "note": "reached through Night Action Reminder, whose card differs between seeds but is off-screen by this step — either seed lands this frame identically." }
+]

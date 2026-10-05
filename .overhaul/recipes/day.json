@@ -1,0 +1,83 @@
+[
+  { "frame": "Morning Check-in Cover", "file": "Morning-Check-in-Cover.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "do": "", "wait": 1200,
+    "note": "`.overhaul/day-seed.js` is the account these frames are drawn for: Jerry, day 13, yesterday clean with one urge surfed, pledges on both days, Part III finished yesterday and Part IV today. It must go in as an INIT script (`--initseed`): nothing signs a mock user in on /day/*. The caps' `Day 13` is the seed's own day number." },
+
+  { "frame": "Morning Task Check", "file": "Morning-Task-Check.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(400)",
+    "note": "nothing is chosen until tapped (OQ-M1) — the frame's selected Yes is one tap; the round next is labelled 'Next' and stays dimmed until a choice." },
+
+  { "frame": "Morning 1 Yesterday", "file": "Morning-1-Yesterday.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700)" },
+
+  { "frame": "Morning Feeling", "file": "Morning-Feeling.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Continue'); await __sleep(600)" },
+
+  { "frame": "Morning Energy", "file": "Morning-Energy.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600)" },
+
+  { "frame": "Morning Resign Pledge", "file": "Morning-Resign-Pledge.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700)" },
+
+  { "frame": "Morning Pledge Signed", "file": "Morning-Pledge-Signed.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700); await tap('Sign for today'); await __sleep(800)",
+    "note": "same step as Morning Resign Pledge, second state: the pill renames itself Confirm and the line carries the name in Lato 700 italic." },
+
+  { "frame": "Change Pledge Sheet", "file": "Change-Pledge-Sheet.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200, "script": ".overhaul/fday-sheet.js",
+    "note": "the frame draws the field mid-edit with a REPLACEMENT sentence ('Phone stays out of the bedroom'), so the state is 'opened the sheet and typed': the script opens the sheet and sets the textarea. Residuals (0.19 %): the canvas draws empty ground behind the scrim where the app keeps the live Resign step (D095) — only its nav row shows, dimmed, above the panel at 120 — and the drawn 2 × 22 caret (D364)." },
+
+  { "frame": "Morning 5 Done", "file": "Morning-5-Done.html", "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(600); await tap('Continue'); await __sleep(700); await tap('Sign for today'); await __sleep(800); await tap('Confirm'); await __sleep(900)" },
+
+  { "frame": "Night Check-in Cover", "file": "Night-Check-in-Cover.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "do": "", "wait": 1200 },
+
+  { "frame": "Night 1 Mood", "file": "Night-1-Mood.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(800)" },
+
+  { "frame": "Checkin Emotions", "file": "Checkin-Emotions.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Tired'); await __sleep(400)",
+    "note": "the frame draws Calm and Tired selected" },
+
+  { "frame": "Checkin Reasons", "file": "Checkin-Reasons.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('School / work'); await __sleep(300); await tap('Loneliness'); await __sleep(400)",
+    "note": "the frame draws School / work and Loneliness selected; the round next is dimmed until one tile is on, so a feeling has to be picked on the step before" },
+
+  { "frame": "Night 3 Reflection", "file": "Night-3-Reflection.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); { const el = document.querySelector('textarea'); const d = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), 'value'); d.set.call(el, 'Sam called at the right moment…'); el.dispatchEvent(new Event('input', { bubbles: true })); } await __sleep(500)",
+    "note": "the frame is the TYPED state (caret after ink text, CRITIC C9), so the recipe types the sentence; the platform owns the caret (D025, D364), so the drawn 2 × 24 bar is the one residual." },
+
+  { "frame": "Night 2 Record", "file": "Night-2-Record.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1600,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900)" },
+
+  { "frame": "Night Action Reminder", "file": "Night-Action-Reminder.html", "route": "/day/night",
+    "initseed": ".overhaul/vday-seed-d1.js", "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "THIS ONE NEEDS THE DAY-1 SEED: the step reads the account's own lesson (`lessonForDay(day).task`), and the canvas draws lesson 1's — 'Prepare for tonight' over 'Put the device you use for porn out of reach before you sleep.' `.overhaul/vday-seed-d1.js` is `day-seed.js` with `createdAt: midnight`." },
+
+  { "frame": "Night 4 Closed", "file": "Night-4-Closed.html", "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900); await tap('Done'); await __sleep(1000)" },
+
+  { "frame": "/checkin (unframed)", "unframed": true, "route": "/checkin?part=evening",
+    "initseed": ".overhaul/day-seed.js", "wait": 1000, "do": "",
+    "note": "No frame draws the standalone check-in. It is Night 1 Mood (bed 506 ×1.075, tone discs, its own five words), Checkin Emotions and Checkin Reasons on a three-step rail, ending on its own 'Log it' pill. Step 2: `await tap('Continue'); await __sleep(700); await tap('Calm')`; step 3: then `await tap('Next')`. Without `?part=evening` a morning clock redirects to /day/morning." },
+
+  { "frame": "Morning/Night negatives (unframed)", "unframed": true, "route": "/day/morning",
+    "initseed": ".overhaul/day-seed-negatives.js", "wait": 900,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700)",
+    "note": "the undrawn record rows (No pledge signed / No urges logged / 1 slip / No lesson yesterday; night: … today) on the kit's empty disc, the score row's −14, and Night Action with no lesson (day 91: 'Tonight' + `nightAction`). The `do` reaches the morning ledger; for the night record/action replay the Night 2 Record recipe's taps on /day/night." }
+]

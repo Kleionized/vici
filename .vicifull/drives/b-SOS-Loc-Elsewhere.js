@@ -1,0 +1,10 @@
+await __sleep(900);
+await waitFor('The First 90 Seconds');
+await tap("Start the interrupt");
+await waitFor("How strong is it right now?");
+await tap("Continue");
+await waitFor("Where are you right now?");
+await tap("Out and about");
+await waitFor("Out and about");
+await tap("Continue");
+await waitFor("Get somewhere less private.");

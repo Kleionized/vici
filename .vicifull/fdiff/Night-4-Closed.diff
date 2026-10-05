@@ -1,0 +1,61 @@
+--- .vicifull/pretty/prev/Night-4-Closed.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Night-4-Closed.html	2026-09-05 00:22:35
+@@ -22,14 +22,14 @@
+     | left:0;
+     | right:0;
+     | top:0;
+-    | height:360px;
++    | height:452px;
+     | overflow:hidden;
+     | background:linear-gradient(180deg, #14171B 0%, #1A2027 55%, #232B34 100%);
+   ">
+     <div style="
+       | position:absolute;
+       | right:74px;
+-      | top:30px;
++      | top:130px;
+       | width:110px;
+       | height:110px;
+       | border-radius:50%;
+@@ -39,7 +39,7 @@
+     <div style="
+       | position:absolute;
+       | right:104px;
+-      | top:60px;
++      | top:160px;
+       | width:34px;
+       | height:34px;
+       | border-radius:50%;
+@@ -103,7 +103,7 @@
+       | position:absolute;
+       | left:-60px;
+       | right:-60px;
+-      | top:290px;
++      | top:382px;
+       | height:110px;
+       | border-radius:50% 50% 0 0 / 50px 50px 0 0;
+       | background:#1C232B;
+@@ -113,22 +113,12 @@
+       | position:absolute;
+       | left:-120px;
+       | right:-30px;
+-      | top:310px;
++      | top:402px;
+       | height:110px;
+       | border-radius:50% 50% 0 0 / 44px 44px 0 0;
+       | background:#242C36;
+     ">
+     </div>
+-    <div style="
+-      | position:absolute;
+-      | left:70px;
+-      | top:320px;
+-      | width:18px;
+-      | height:2.5px;
+-      | border-radius:2px;
+-      | background:rgba(244,243,240,0.14);
+-    ">
+-    </div>
+   </div>
+   <div style="
+     | position:absolute;

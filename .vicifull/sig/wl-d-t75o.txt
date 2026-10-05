@@ -1,0 +1,33 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Goal, rhythm, first block
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 271 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 102 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 235 | 20 | 20 | - | - | - | - | - | -
+rect | 38.5 | 238 | 11 | 14 | - | - | - | - | - | -
+path | 41.5 | 242.5 | 5 | 6 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 102 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 42 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Pick a result you can tell whether you reached
+div | 78 | 270 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | finish a project, train three times a week, submit an application, pass a course, build a portfolio, or something similar.
+div | 24 | 349 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 349 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 359 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 362 | 14 | 14 | - | - | - | - | - | -
+path | 40.8 | 366.6 | 6.4 | 4.8 | - | - | - | - | - | -
+div | 78 | 349 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 349 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Decide what you will do each week
+div | 78 | 373 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | two study blocks, three workouts, one application session, one project block, or another repeated action.
+div | 24 | 452 | 345 | 44 | - | - | - | - | - | -
+div | 24 | 452 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 462 | 20 | 20 | - | - | - | - | - | -
+path | 38 | 465.5 | 12.5 | 12.5 | - | - | - | - | - | -
+div | 78 | 452 | 291 | 44 | - | - | - | - | - | -
+div | 78 | 452 | 291 | 44 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | Put the repeated time on the calendar for the next four weeks.
+div | 24 | 536 | 345 | 19 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Start the first 20 minutes now.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

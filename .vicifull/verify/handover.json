@@ -1,0 +1,116 @@
+{
+  "group": "handover",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 8 frames were reached and captured (recipe now written to .vicifull/recipes/handover.json plus .vicifull/drives/handover-walk.js — the previous agent left none). Sigs: v-handover-d-* vs v-handover-a-*. Geometry, type and copy are in fact very good: Reminders Setup is 0 differing / 0 missing, The Vow and Medallion Received differ only in radius notation, and Letter Week XII's margin-collapse fixes are correct (26 / 56 / 36 all land). But the report's single biggest \"could not match\" claim is false, and it hides five real, currently-visible defects. The claim that a RadialGradient's radius \"cannot reach the DOM through the public component\" is wrong: on web `RadialGradient` is elements.web.js's WebShape (tag `radialGradient`) and `prepare()` forwards props verbatim, so `r` DOES reach the DOM — I read the live DOM and it shows `<radialGradient cx=\"38%\" cy=\"30%\" rx=\"93.5%\" ry=\"93.5%\">` with no `r`. This is already a recorded project decision (D064) and is already applied to the IDENTICAL art in two sibling files the same agent had open: src/app/letter.tsx:419 (WaxSeal) and src/app/medallion-post.tsx:177 (md-face), and src/app/vow.tsx:86-93 carries the explanation verbatim. So all three farthest-corner gradients in handover.tsx (letSeal, vowSun, medFace) render 50%-radius and measurably too dark — up to 53 alpha-units off. Those same two sibling files also re-paint the disc's inset rim light with `insetOf()` because an absolutely-positioned <Svg> face covers the parent View's inset box-shadow; handover.tsx does not, so the wax seal's and the medallion's white rims are simply not drawn — plainly visible in a 3x/6x crop. Separately, the three Campaign Map frames draw their paper grain through art.tsx's local `Noise` (expo-image contentFit=\"cover\"), which magnifies the 96x96 tile ~8.9x into a smear — the exact failure src/components/ui/Grain.tsx documents and avoids; the signature diff is clean while the texture is visibly wrong, which is this project's known failure mode. Finally I confirmed the report's textWrap observation is a real, visible line-break mismatch on both Reminders notification bodies, and that src/app/vow.tsx:26 already establishes the local workaround the agent chose not to apply.",
+  "findings": [
+    {
+      "frame": "#43 Letter Received",
+      "element": "the wax seal, 48x48 disc at left 106 / top 112 inside the 260x260 art frame",
+      "property": "radial-gradient(circle at 38% 30%, …) — the gradient's radius",
+      "design": "farthest-corner = 93.5% of the box; measured upper-left 238,216,177 and right rim 227,189,125",
+      "app": "handover.tsx:200 `<RadialGradient id=\"letSeal\" cx=\"38%\" cy=\"30%\" rx=\"93.5%\" ry=\"93.5%\">` with no `r`, so the browser falls back to r=50%; measured 227,189,126 (Δ51) and 201,159,95 (Δ30)",
+      "note": "NOT one of the two known equivalences. The report calls this unverifiable and unfixable; that is wrong. On web react-native-svg resolves RadialGradient from elements.web.js (a WebShape with tag 'radialGradient') and `prepare()` copies unknown props straight onto the DOM node — I read the live app DOM and it is `<radialGradient cx=\"38%\" cy=\"30%\" rx=\"93.5%\" ry=\"93.5%\">`. Adding `r=\"93.5%\"` fixes web and is inert on native (elements/RadialGradient.js does `rx: rx || r`). This is already DECISIONS D064, and src/app/letter.tsx:419 draws this exact seal with `r=\"93.5%\" rx=\"93.5%\" ry=\"93.5%\"` and the comment explaining why.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#43 Letter Received",
+      "element": "the wax seal's rim light",
+      "property": "box-shadow `inset 0 0 0 3px rgba(255,255,255,0.25)`",
+      "design": "a pale 3px ring visible all the way round the seal (clear at 6x crop)",
+      "app": "not drawn at all — handover.tsx:188 puts the inset shadow on the wrapper View and then paints the gradient with an absolutely-positioned `<Svg>` child, which CSS paints above the parent's inset shadow",
+      "note": "src/app/letter.tsx solves precisely this: `insetOf(shadow)` lifts the inset segments out and re-paints them on an overlay View above the art (letter.tsx:399-431), with a comment stating the rule. handover.tsx's own engraved-ring View (line 452) is drawn as such an overlay and IS visible, which is the control that proves the mechanism.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#46 Medallion Received",
+      "element": "the 136pt medallion face at left 62 / top 52",
+      "property": "radial-gradient(circle at 38% 30%, …) — the gradient's radius",
+      "design": "93.5%; measured lower-left 222,195,148, right rim 224,185,120, centre 234,206,156",
+      "app": "handover.tsx:444 `medFace` states only rx/ry 93.5%, so web renders r=50%; measured 201,159,95 (Δ53), 201,159,95 (Δ26), 229,194,135 (Δ21)",
+      "note": "Same D064 violation. src/app/medallion-post.tsx:177 draws the same disc with `r=\"93.5%\" rx=\"93.5%\" ry=\"93.5%\"` and names D064 in its comment.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#46 Medallion Received",
+      "element": "the medallion disc's rim light and warm floor",
+      "property": "box-shadow `inset 0 0 0 4px rgba(255,255,255,0.25), inset 0 -8px 18px rgba(120,88,40,0.28)`",
+      "design": "a pale 4px ring outside the engraved circle and a soft warm darkening along the bottom inner edge — both obvious at 3x",
+      "app": "neither is drawn; handover.tsx:433 puts both insets on the parent View and the face `<Svg>` (line 441, position absolute) paints over them",
+      "note": "medallion-post.tsx:181 fixes the identical disc with `<View ... boxShadow={insetOf(DISC_SHADOW)} />` above the face. Together with the radius defect this is why the app's coin reads as a flat darker ball rather than a lit struck disc.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#45 The Vow",
+      "element": "the 56pt sun at left 50%/-28, top 342",
+      "property": "radial-gradient(circle at 50% 38%, …) — the gradient's radius",
+      "design": "farthest-corner = 79.7%; measured bottom 239,212,165, right 241,217,173, upper-left 248,240,222",
+      "app": "handover.tsx:355 `vowSun` states only rx/ry 79.7%, web renders r=50%; measured 227,190,133 (Δ32), 235,204,152 (Δ21), 245,231,207 (Δ15) — a visible dark ring at the rim",
+      "note": "Same D064 violation. src/app/vow.tsx:86-97 — a file in this same group — already writes its two gradients with `r` and `gradientUnits=\"userSpaceOnUse\"` and carries the comment 'on web prepare() forwards props straight to the DOM, and rx/ry are not <radialGradient> attributes'. The agent had the answer in the file next door.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#40 Campaign Map / #41 Campaign Map II / #42 Campaign Map III",
+      "element": "the full-frame paper grain over the map field",
+      "property": "background-image: url('noise-dark.png') with no background-size → tiles at the file's own 96x96; opacity 0.12",
+      "design": "fine even speckle; sign-changes per row in a flat band (frame y648-688) = 148, sd 1.34",
+      "app": "a ~8.9x magnified smear — large soft blotches; flips/row = 62 at the same amplitude (sd 1.26). CampaignMapField (art.tsx:1026) uses art.tsx's local `Noise` (line 54), an expo-image with `contentFit=\"cover\"`, so one 96x96 tile is stretched to 393x852. Confirmed in the live DOM: `<img>` natural 96x96, computed object-fit cover, 393px x 852px.",
+      "note": "src/components/ui/Grain.tsx exists specifically to avoid this and says so in its header ('expo-image has no repeat mode — its contentFit=\"cover\" blows one tile up to fill the box, roughly a 9x magnification, and turns the grain into a smear'); it uses RN Image resizeMode=\"repeat\", which does work on web — the letter and medallion frames, which use Grain, measure 118 vs 116 flips/row against their designs. Signature-invisible, PNG-obvious: exactly the failure mode the brief warns about. The file is art.tsx (GROUP funnel's), but these three frames are where it shows; `Noise` is also used at art.tsx:168/323/336/384, so other groups are affected.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#47 Reminders Setup",
+      "element": "both notification card bodies — 'Twenty seconds — where's your head at today?' and 'The time you told us about. SOS is one tap away.'",
+      "property": "line break position (text-wrap)",
+      "design": "the canvas sets no `text-wrap` on these runs; they break '…where's your head at / today?' and '…SOS is one tap / away.'",
+      "app": "'…where's your head / at today?' and '…SOS is one / tap away.' — src/components/ui/AppText.tsx:128 forces `textWrap: 'pretty'` on web for every non-hero/display/title variant",
+      "note": "Confirmed by 2x crops of both cards. The signature diff is clean (0 differing, 0 missing) because the line count and the 309pt box are unchanged — a screenshot was needed. The report flagged this but left it; src/app/vow.tsx:26 already establishes the local fix (a Platform.OS === 'web' textWrap override on the one run whose canvas value differs), so a per-run override on these two bodies is available without touching the shared file. The report's claim that device rendering is unaffected is plausible (RN ignores textWrap) but I could not verify it on device.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#40 Campaign Map / #41 / #42",
+      "element": "each week tile's contact shadow, 52x9 at left 38 / top 74 inside the tile",
+      "property": "rgba(0,0,0,0.08) under filter: blur(3px)",
+      "design": "a plateau — measured top edge 241,232,212, bottom edge 236,230,214, left 233,227,213",
+      "app": "a two-stop linear Wash 0.08 → 0 (art.tsx CampaignWeekRow), which loses weight away from centre — measured 245,237,216 (Δ5), 242,236,219 (Δ6), 239,233,219 (Δ6); centres agree to Δ1",
+      "note": "Small (max Δ6/255) and in art.tsx rather than handover.tsx, but it is the same plateau-vs-peak argument the agent made for the letter and medallion contact shadows and did not carry across. Not one of the D015 equivalences; listed low so it is not mistaken for one.",
+      "confidence": "likely"
+    },
+    {
+      "frame": "(process) group handover",
+      "element": ".vicifull/recipes/handover.json",
+      "property": "the brief's per-group recipe deliverable",
+      "design": "required: 'whenever you capture an app screen, write down how you got there'",
+      "app": "absent — the previous agent captured all eight screens through a temporary route (src/app/hz-parity.tsx) that it then deleted, leaving no record of how to reach any of them",
+      "note": "I have written it, together with .vicifull/drives/handover-walk.js. There is no jump into the handover: /welcome holds the step index in React state, so the only route is a full walk of the funnel + plan + tail (36 taps) driven with .vicifull/funnel-cap.mjs. Every frame in the group is reachable this way; nothing in this group is unreachable.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "#44 Letter Week XII",
+      "element": "paragraphs 6-13, the sign-off and the 'Keep this letter' pill",
+      "property": "vertical position down a 2,100pt scroll",
+      "design": "y 1023 → 2153",
+      "app": "y 1023.3 → 2153.8; every paragraph height is exact (111.6 / 139.5) and the drift grows monotonically at ~0.1pt per block",
+      "note": "I agree with the report: accumulated line-box rounding, not a spacing error. The margin-collapse fixes (D023) are correct — sign-off 6+20=26, pill 48+8=56, LetterMark 16+20=36. Also confirmed the design's 'Continue' box is left:0/right:0/text-align:center (393 wide) where the app's is a content-width Text centred inside a full-width button: same pixels, the D022 pattern. Recorded as verified-not-a-defect.",
+      "confidence": "certain"
+    },
+    {
+      "frame": "(no frame) src/app/reminders.tsx",
+      "element": "the second notification card, lines 26 and 67",
+      "property": "copy retired by this drop on frame #47",
+      "design": "#47 replaced '10:41 PM' with 'You pick the time' and 'Your risky window. The wave tool is one tap away.' with 'The time you told us about. SOS is one tap away.'",
+      "app": "unmodified (git status confirms it was not touched): still `when: '10:41 PM'`, `body: 'Your risky window. The wave tool is one tap away.'`, and 'Timed to your risky window.' at line 67",
+      "note": "I agree with the report that no frame in this drop authorises new copy for this screen, so it is a judgement call rather than a parity miss. Worth flagging because it is now the only place in the app that still says '10:41 PM' and 'the wave tool', both of which this drop deliberately retired, and it is reachable from src/app/(app)/all.tsx:112.",
+      "confidence": "likely"
+    },
+    {
+      "frame": "(report accuracy) group handover",
+      "element": "the report's 'Could not match' section, first bullet",
+      "property": "factual correctness of a blocking claim",
+      "design": "n/a",
+      "app": "'Neither rx, ry nor r can reach the DOM through the public component (RadialGradient.render forwards only rx/ry, and extractGradient drops the rest). So the three farthest-corner fixes above are correct on device and inert in the web preview.'",
+      "note": "False, and it is the reason five of the defects above are still live. lib/module/elements/RadialGradient.js is the NATIVE component; metro resolves lib/module/ReactNativeSVG.web.js → elements.web.js for web, where RadialGradient is `class RadialGradient extends WebShape { tag = 'radialGradient' }` and web/utils/prepare.js spreads `...rest` onto the element. `r` therefore reaches the DOM on web, and native honours `rx || r`, so stating all three is right on both — which is exactly what DECISIONS D064 already rules ('worth sweeping across every other screen that draws a farthest-corner radial') and what letter.tsx, medallion-post.tsx and vow.tsx already do. Also note art.tsx:512 (SunDisc, called at art.tsx:457 with r=\"93.5%\") has the same unswept defect, outside this group.",
+      "confidence": "certain"
+    }
+  ]
+}

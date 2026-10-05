@@ -1,0 +1,156 @@
+{
+  "group": "week-lessons",
+  "summary": "The reader shell and the copy are genuinely in the state the report claims: all 34 distinct page shapes across the twelve week canvases, twelve of Lesson 1's 26 pages, and five of the 83 task-options boards captured and diffed — 0 differing rows on every one, and pixel diffs of 0–0.03 % apart from a 0.5 px feather on the pick radio and one antialiased button corner. F2 (cover sun) and F4 (progress hairline) are verifiably closed, the D74/D76 \"broken canvas\" claim is true and the app matches the numbers those frames state, and the report's copy verification holds (the only real copy misses in the sweep are escaped-quote artefacts and the canvas's own two mangled fragments). Everything still wrong is in ONE file — `src/components/task/TaskScene.tsx`, the renderer that draws both `TASK_SCENES` and `LESSON_PLATES` — and none of it is visible to a signature diff, which is exactly the failure mode this run was told to hunt. Four defects: (1) a layer with no `background` gets a `<Path>` with no `fill`, and SVG's initial fill is BLACK — 37 hollow rings across 14 task scenes and 8 lesson plates render as solid black discs, including Task D56's clock face (1.32 % of the screen, mean Δ195), Lesson 22's two orbit rings (3.48 %, mean Δ224), Task D44's six chain links and Lesson 74's bicycle wheels; (2) the CSS border-triangle idiom is dropped, so both sails vanish from the boats on lesson plates 47, 83 and 84, the tail from Lesson 66's speech bubble and an arrow from Lesson 18; (3) the inset-shadow regex accepts only `inset 0 0 0 Npx`, dropping 121 offset inset \"lip\" shadows (book pages, pillows, lamp canopies); (4) `radii()` never applies CSS's overlapping-radius scale-down, so 202 layers emit arcs that overshoot the box and self-cross — Task D35's plant pot and Task D14's lamp canopy draw as deep half-circles with spikes instead of shallow flattened domes. A fifth, milder one: blurred solids are drawn box-clipped at their stated peak alpha, against D082/F26.",
+  "reachedAll": false,
+  "unreachable": [
+    "Lessons-and-Tasks/L01-Reader-1 … L01-Reader-25 (25 frames) — no app screen draws them and none is intended to. They are a THIRD, pre-restyle copy of Lesson 1 (28/40 headings, gap 36, progress 4 %) alongside Email-Login's Lesson Scroll 1..26 and the current Lesson-1-Surviving-the-Night (24/32, gap 36, progress 3 %). Same class as FINDINGS F5, but the report never names them, so a later audit will read them as 25 unexplained misses.",
+    "Lessons-and-Tasks/Task-D01-Card … Task-D84-Card (83 frames) — design catalogue, not app screens (FINDINGS F6). Verified only by copy sweep, not captured.",
+    "Task D74 Intro and Task D76 Intro — capturable, but the DESIGN frame renders broken, so a signature diff against it is meaningless. Verified against the frame's stated numbers instead."
+  ],
+  "findings": [
+    {
+      "frame": "Task D56 Intro",
+      "element": "the clock face — 72 × 72 box at scene-local (?), `border-radius: 50%`, `box-shadow: inset 0 0 0 …`, NO `background`",
+      "property": "fill",
+      "design": "transparent (the page ground shows through; only the inset ring, the four ticks and the two hands are painted)",
+      "app": "solid #000000 — the whole dial is a black disc",
+      "confidence": "certain",
+      "note": "Root cause, and by far the largest defect in the group. `src/components/task/TaskScene.tsx` `Layer()`: `const solid = !conic && !stops && layer.background ? splitColor(layer.background) : null;` then `<Path … fill={stops || soft ? url : solid?.color} />`. When the layer states no `background`, `solid` is null, `fill` is undefined, no `fill` attribute is emitted, and SVG's initial `fill` value is black. Measured: 17,687 device px over Δ6 (1.321 % of the frame), mean Δ195, max Δ251, concentrated in the 40×40 cells covering the dial. The signature diff does not see it — the box is right, only the paint is wrong."
+    },
+    {
+      "frame": "Lesson 22 card (/lesson-card/22)",
+      "element": "the two orbit rings — 128 × 128 at (56,36) `inset 0 0 0 1.5px rgba(85,83,78,0.16)` and 92 × 92 at (74,54) `inset 0 0 0 1.5px rgba(85,83,78,0.22)`, neither with a `background`",
+      "property": "fill",
+      "design": "transparent, two 1.5 pt hairline circles on the page ground",
+      "app": "two solid #000000 discs, 128 pt and 92 pt across, that swallow the halo and most of the plate",
+      "confidence": "certain",
+      "note": "Same cause as Task D56. 46,571 device px over Δ6 = 3.477 % of the whole frame, mean Δ224, max Δ244 — the single worst pair of pixels in anything I captured. Signature diff for this card reported 0 missing rows."
+    },
+    {
+      "frame": "Task D44 Intro",
+      "element": "the chain — six links `26 × 18 border-radius: 9px` plus two half-links `13 × 15`, each `inset 0 0 0 Npx #55534E`, none with a `background`",
+      "property": "fill",
+      "design": "six hollow oval links with a 55534E rim",
+      "app": "six solid black-grey blobs; the chain reads as a row of pebbles",
+      "confidence": "certain",
+      "note": "Same cause. 6,992 px over Δ6, mean Δ131, max Δ244."
+    },
+    {
+      "frame": "Lesson 74 card (/lesson-card/74)",
+      "element": "the bicycle's two wheels — 30 × 30 `border-radius: 50%`, `inset 0 0 0 Npx`, no `background`",
+      "property": "fill",
+      "design": "two hollow rims",
+      "app": "two solid black discs",
+      "confidence": "certain",
+      "note": "Same cause. 5,319 px over Δ6, mean Δ152, max Δ244."
+    },
+    {
+      "frame": "every frame that draws these scenes/plates",
+      "element": "37 non-zero-size layers that state a `box-shadow` and no `background`",
+      "property": "fill (missing `fill` attribute → SVG initial value black)",
+      "design": "transparent",
+      "app": "#000000",
+      "confidence": "certain",
+      "note": "Complete list, derived by walking `TASK_SCENES` and `LESSON_PLATES`. Task days 6, 8, 19, 22, 43, 44, 50, 56, 60, 61, 68, 76, 77, 81 (26 layers). Lesson plates 10, 22, 42, 48, 57, 58, 74, 78 (19 layers, of which 8 are the zero-size border-triangles below). Each task day is drawn on THREE screens — the intro board, the lesson card's banner and Today's task card — so the blast radius is larger than 22 screens. Fix is one line in `src/components/task/TaskScene.tsx`: give the `<Path>` `fill=\"none\"` when the layer states no background."
+    },
+    {
+      "frame": "Lesson 47 card, Lesson 83 card, Lesson 84 card",
+      "element": "the boat's two sails — `width:0; height:0; border-right:20.24px solid #D6D5D0; border-top:33.12px solid transparent` and `border-left:22.08px solid #E9D2A4; border-top:36.8px solid transparent` (Lesson 47; 83 and 84 are the same pair at 13.64/14.88 and 24.64/26.88)",
+      "property": "the whole layer",
+      "design": "a grey triangle and a gold triangle — the two sails",
+      "app": "nothing at all; the boat is a hull and a bare mast",
+      "confidence": "certain",
+      "note": "The CSS border-triangle idiom. `gen-lesson-art.mjs` transcribes it as `{\"kind\":\"box\",\"left\":21.92,\"top\":26.16,\"width\":0,\"height\":0}` — the borders are dropped — and `TaskScene` then draws a zero-size path. Lesson 47: 3,933 px over Δ6, mean Δ44, max Δ149; the sigdiff names the two boxes as `MISSING in app: div | 197 | 304.4 | 22.8 | 34.6` and `div | 222.4 | 298.3 | 25.1 | 37.8`. Lesson 84 reports the same two rows at 165.1/281.8 and 196.5/277.3."
+    },
+    {
+      "frame": "Lesson 66 card",
+      "element": "the speech bubble's tail — `left:118 top:96 width:0 height:0 border-left:14px solid #1A2027; border-bottom:12px solid transparent`",
+      "property": "the whole layer",
+      "design": "a dark triangle pointing down-left off the bubble's lower edge",
+      "app": "absent; the bubble is a plain rounded rectangle",
+      "confidence": "certain",
+      "note": "Same idiom. Also on this plate: the warm halo above the figure's head is drawn about half the design's diameter and much more concentrated (see the blurred-solid finding)."
+    },
+    {
+      "frame": "Lesson 18 card",
+      "element": "`left:60 top:106 width:0 height:0 border-left:10px solid rgba(244,243,240,0.28); border-top:6px / border-bottom:6px solid transparent`",
+      "property": "the whole layer",
+      "design": "a 10 × 12 pale arrow",
+      "app": "absent",
+      "confidence": "certain",
+      "note": "Same idiom; the sigdiff reports it as `MISSING in app: div | 136 | 308 | 10 | 12`. Eight border-triangle layers in total across plates 18, 47, 66, 83, 84 — that is every one in the whole group's bundles; no task scene uses the idiom."
+    },
+    {
+      "frame": "Task D02 Intro",
+      "element": "the open book's two pages — `left:67 top:114 29×16` and `left:96 top:114 29×16`, `box-shadow: inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)`",
+      "property": "box-shadow (the inset part)",
+      "design": "a 3 pt #D6D5D0 band along the bottom edge of each page — the paper's thickness",
+      "app": "nothing; both pages are flat white to their bottom edge",
+      "confidence": "certain",
+      "note": "`TaskScene.tsx`'s inset reader is `/inset 0 0 0 ([0-9.]+)px (rgba?\\([^)]+\\)|#[0-9A-Fa-f]{3,8})/` — it matches only a spread-only inset with zero offsets. Every offset inset is silently dropped: 64 parts in `taskScenes.ts` and 57 in `lessonPlates.ts`, 121 in all. The commonest are `inset 0 -2px 0 rgba(196,152,86,0.5)` ×16, `inset 0 -3px 0 #D6D5D0` ×12, `inset 0 -2px 0 #D6D5D0` ×21, `inset 0 -1.5px 0 rgba(0,0,0,0.08)` ×11, plus three two-axis ones (`inset -2px -2px 0 rgba(0,0,0,0.05)`)."
+    },
+    {
+      "frame": "Task D14 Intro",
+      "element": "the lamp canopy — `left:196 top:68 62 × 26  border-radius: 31px 31px 4px 4px  box-shadow: inset 0 -3px 0 rgba(196,152,86,0.45)  transform: rotate(6deg)`",
+      "property": "border-radius (CSS overlapping-radius scale-down) and the inset rim",
+      "design": "a squat dome: CSS scales all four radii by f = 26/(31+4) = 0.743, giving 23.03/23.03/2.97/2.97, so the top is flattened, the bottom corners are nearly square, and a 3 pt darker rim runs along the foot",
+      "app": "a full half-circle with no rim, and a thin gold spike flaring at each bottom corner where the arc overshoots the box and the path self-crosses",
+      "confidence": "certain",
+      "note": "`radii()` in `TaskScene.tsx` reads the four radii literally and `boxPath()` then writes `A31 31 … ${y+31}` on a box only 26 tall, followed by `V${y+22}` — a path that doubles back on itself. 2,932 px over Δ6, mean Δ35, max Δ127. Two separate defects on the same layer (the radius clamp and the dropped inset)."
+    },
+    {
+      "frame": "Task D35 Intro",
+      "element": "the plant pot — 38 × 11, `border-radius: 3px 3px 19px 19px`",
+      "property": "border-radius (CSS overlapping-radius scale-down)",
+      "design": "f = 11/(3+19) = 0.5, so the effective radii are 1.5/1.5/9.5/9.5 — a shallow bowl with a nearly flat top and a rounded foot",
+      "app": "a deep semicircular bowl hanging well below its own box, with a thin gold spike at each top corner",
+      "confidence": "certain",
+      "note": "The clearest single illustration of the radius bug. 3,972 px over Δ6, mean Δ12, max Δ164, with three 40×40 cells carrying 489/482/325 px at Δ116–132. `3px 3px 19px 19px on 38x11` occurs 4× in `taskScenes.ts` and 6× in `lessonPlates.ts`. In total 202 layers (101 + 101) need the scale-down and never get it; most of the rest are small (f 0.75–0.9 on 3 × 8 pills), but they are all a fraction of a point off."
+    },
+    {
+      "frame": "Task D01 Intro (and every scene with a blurred solid)",
+      "element": "the nightstand's cast shadow — `left:279 top:135 46 × 11 border-radius:50% background:rgba(0,0,0,0.09) filter:blur(5px)`",
+      "property": "the extent and peak of the blurred solid",
+      "design": "the Gaussian spills about 2σ past the box: measured 238,237,234 at x=289 and 229,228,224 at x=326, both outside the div's own edges",
+      "app": "244,243,240 and 240,239,236 at the same points — the falloff stops dead at the box edge, and the centre carries the full stated 0.09 that a shape thinner than its blur never reaches",
+      "confidence": "likely",
+      "note": "DECISIONS D082 and FINDINGS F26 state the rule and say every group must audit its own blurred solids; `TaskScene.tsx`'s `softStops()` is the box-clipped radial D082 rules out, and the comment above it still says 'RN SVG has no blur filter' even though the file now imports `FeGaussianBlur` for cast shadows. Magnitude is 4–12/255 in a narrow band on a small shadow, but on the large halos it is obvious by eye: the warm glow above the figure on Lesson 66's plate and the sun's halo on Lesson 83's are drawn roughly half the design's diameter and visibly tighter. Graded 'likely' rather than 'certain' only because the per-pixel magnitude on the small shadows is modest; the mechanism itself is not in doubt."
+    },
+    {
+      "frame": "Task D74 Intro",
+      "element": "the scene wrapper — the frame states `left:26px top:419px width:340px height:186px` with `overflow:hidden`",
+      "property": "height",
+      "design": "186",
+      "app": "200 (signature row `div | 26 | 419 | 340 | 200`; the scaled group inside is correct at `37.9 | 419 | 316.2 | 186`)",
+      "confidence": "likely",
+      "note": "`Scene()` sizes its clip box as `boxH * (width / boxW)` and ignores the frame's stated slot height, so the clip sits 14 pt lower than the canvas's. Nothing is drawn in the extra 14 pt, so it is invisible today — but it is the box the frame states, and on any scene whose art reaches its own foot it would stop clipping. Everything else the D74 frame states, the app matches exactly: title 30/144 at 27/35, intro 38/193 at 14.5/21, rule card 24/625 h68 (text at 75/640), dots 706, button 744 (label 759.7). The report's claim that this frame's canvas is broken is TRUE and I verified it — a botched string replacement leaves `ion:absolute; left:26px; top:419px; width:340px; height:186px;\">` as a visible 16 px body text node, duplicates the `scale(0.93)` wrapper, and nests the card, dots and button inside the scene box so they render at y 1044–1215. The app does not double-apply the duplicated 0.93."
+    },
+    {
+      "frame": "Lessons-and-Tasks/L01-Reader-1 … 25",
+      "element": "25 frames of the group's own bundle",
+      "property": "coverage",
+      "design": "a pre-restyle authoring of Lesson 1 — `L01-Reader-1` states a 28/40 title and `width:4%` on the progress hairline",
+      "app": "the app builds Lesson 1 from `Lesson-1-Surviving-the-Night/L1-Frame-01`, which states 24/32 and `width:3%`",
+      "confidence": "certain",
+      "note": "Not an app defect — it is the same deliberate decision as FINDINGS F5, and the current authoring is the right one. Reported because the implementer's report does not mention these 25 frames at all, so the next audit will read them as 25 unexplained misses in `Lessons-and-Tasks`. Worth a line in FINDINGS beside F5."
+    },
+    {
+      "frame": "Week-05-Why-It-Feels-Worth-It/L30 Frame 01 vs Lessons-and-Tasks/Lesson-30",
+      "element": "the lesson title `The \"Benefits\" of Porn`",
+      "property": "quotation marks",
+      "design": "the two canvases disagree: the reader frame uses straight ASCII `\"` (bytes 0x22), the lesson-card frame uses `&ldquo;`/`&rdquo;` (U+201C/U+201D)",
+      "app": "faithful to each — `lessonReader.ts` carries the straight pair, `curriculum84.ts` carries the curly pair",
+      "confidence": "unsure",
+      "note": "Recorded as a canvas contradiction, NOT an app defect: each generated file matches the frame it was generated from, which is what the brief asks. It is what `copy-sweep` reports as `The &ldquo;benefits&rdquo; of porn` missing, and it is a genuine miss only if someone later decides the two screens should read the same. Someone should decide which the app ships."
+    },
+    {
+      "frame": "(reporting accuracy) the twelve week canvases",
+      "element": "the report's claim of '159 distinct shapes, one representative each'",
+      "property": "shape count",
+      "design": "34 distinct page shapes across all twelve week bundles (Week-01 introduces 15, Week-02 3 more, Week-03 2, Week-04 2, Week-05 1, Week-06 1, Week-07 3, Week-08 1, Week-09 2, Week-10 0, Week-11 3, Week-12 1)",
+      "app": "n/a",
+      "confidence": "certain",
+      "note": "159 is the sum of the per-bundle shape counts, which double-counts the same shape twelve times over. The report therefore over-sampled rather than under-sampled, so this is a description error, not a coverage gap. I verified all 34 by capturing one representative of every shape not already covered — every one is 0 differing rows and 0–0.03 % pixel difference. The residual pixels are two known equivalences: the chosen pick row's inner dot (the canvas states `radial-gradient(circle, #1D1C1A 0 5px, rgba(0,0,0,0) 5.5px)`, a 0.5 pt feather the app draws as a hard 10 pt circle — same 62..72 × 341..351 box, ~106 px at Δ176 on the rim) and the button's antialiased corners."
+    }
+  ]
+}

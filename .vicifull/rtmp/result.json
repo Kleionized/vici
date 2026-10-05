@@ -1,0 +1,306 @@
+[
+ {
+  "frame": "Cue Intro Modal",
+  "sig": "--- 26 design rows, 33 app rows; 9 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.057  max 7 at 196,348  px>6 1  px>12 0  | blocks8 56/19404 >1  0 >4  blkmax 3.02 at 196,348  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n~ -                                        radius: 50% → -\n# count P:96,202,200,280: design 1, app 2\n~ -                                        radius: 50% → -\n# count P:134,286,124,124: design 1, app 2\n~ -                                        radius: 50% → 21px\n~ -                                        radius: 50% → 21px\n~ -                                        bg: rgba(0, 0, 0, 0.09) → -   radius: 50% → -\n~ -                                        radius: 50% → 19px\n~ -                                        radius: 50% → 1px\n~ -                                        radius: 50% → 1px\n~ -                                        radius: 50% → 1px\n--- 26 design rows, 33 app rows; 9 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Strength",
+  "sig": "--- 16 design rows, 21 app rows; 6 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 5.5px\n~ -                                        radius: 50% → 24px\n--- 16 design rows, 21 app rows; 6 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Cue Hue Picker",
+  "sig": "--- 40 design rows, 43 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "~ -                                        radius: 50% → 19px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 19px\n~ -                                        radius: 50% → 19px\n~ -                                        radius: 50% → 19px\n~ -                                        radius: 50% → 19px\n--- 40 design rows, 43 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Surf Step 1",
+  "sig": "--- 30 design rows, 39 app rows; 8 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.017  max 5 at 186,335  px>6 0  px>12 0  | blocks8 55/19404 >1  0 >4  blkmax 2.97 at 184,336  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,200: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:126,276,120,120: design 1, app 2\n~ -                                        radius: 50% → 17px\n~ -                                        radius: 50% → 17px\n# count P:250,278,34,126: design 1, app 2\n~ -                                        bg: rgba(226, 186, 120, 0.22) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.08) → -   radius: 50% → -\n~ -                                        radius: 50% → 1px\n~ -                                        radius: 50% → 1px\n--- 30 design rows, 39 app rows; 8 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Surf Step 3",
+  "sig": "--- 20 design rows, 28 app rows; 5 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.002  max 12 at 223,259  px>6 12  px>12 0  | blocks8 8/19404 >1  0 >4  blkmax 1.31 at 152,336  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,200: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:134,260,124,124: design 1, app 2\n~ -                                        shadow: rgba(0, 0, 0, 0.05) 1px 0px 0px 0px inset → -\n~ -                                        radius: 50% → 2px\n~ -                                        bg: rgba(226, 186, 120, 0.25) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 20 design rows, 28 app rows; 5 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Cue Set Confirmation",
+  "sig": "--- 26 design rows, 32 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.015  max 3 at 249,354  px>6 0  px>12 0  | blocks8 48/19404 >1  0 >4  blkmax 1.34 at 244,304  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,200: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:188,288,130,130: design 1, app 2\n~ -                                        radius: 50% → 17px\n~ -                                        radius: 50% → 17px\n~ -                                        bg: rgba(226, 186, 120, 0.22) → -   radius: 50% → -\n~ -                                        radius: 50% → 2px\n--- 26 design rows, 32 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Reason Picker",
+  "sig": "--- 69 design rows, 72 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n--- 69 design rows, 72 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feeling Picker",
+  "sig": "--- 64 design rows, 67 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n~ -                                        radius: 50% → 23px\n--- 64 design rows, 67 app rows; 9 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 9 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Private Room",
+  "sig": "--- 16 design rows, 22 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.001  max 2 at 231,295  px>6 0  px>12 0  | blocks8 3/19404 >1  0 >4  blkmax 1.23 at 232,304  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:132,258,120,120: design 1, app 2\n~ -                                        radius: 50% → 2px\n~ -                                        bg: rgba(226, 186, 120, 0.25) → -   radius: 8px → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 16 design rows, 22 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Bed",
+  "sig": "--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.018  max 5 at 255,317  px>6 0  px>12 0  | blocks8 48/19404 >1  0 >4  blkmax 3.02 at 252,316  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,258,120,120: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Public",
+  "sig": "--- 18 design rows, 24 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.018  max 6 at 281,294  px>6 0  px>12 0  | blocks8 64/19404 >1  1 >4  blkmax 4.36 at 280,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:226,240,110,110: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 18 design rows, 24 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Work",
+  "sig": "--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.015  max 5 at 265,297  px>6 0  px>12 0  | blocks8 55/19404 >1  0 >4  blkmax 3.25 at 264,296  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:216,248,100,100: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Elsewhere",
+  "sig": "--- 19 design rows, 26 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.017  max 6 at 276,292  px>6 0  px>12 0  | blocks8 70/19404 >1  0 >4  blkmax 3.20 at 276,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:226,242,100,100: design 1, app 2\n# count P:214,282,16,24: design 1, app 2\n# count P:165,324,15,22: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 26 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Loc Bathroom",
+  "status": "CAPTURE FAILED"
+ },
+ {
+  "frame": "SOS Loc Home Alone",
+  "status": "CAPTURE FAILED"
+ },
+ {
+  "frame": "SOS Feel Turned On",
+  "sig": "--- 16 design rows, 24 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.015  max 4 at 250,305  px>6 0  px>12 0  | blocks8 34/19404 >1  0 >4  blkmax 2.84 at 248,304  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,252,110,110: design 1, app 2\n~ -                                        bg: rgb(220, 225, 228) → -   radius: 50% 50% 0px 0px / 70px 70px 0px 0px → -\n# count P:36,352,180,120: design 1, app 2\n~ -                                        bg: rgb(207, 214, 218) → -   radius: 50% 50% 0px 0px / 60px 60px 0px 0px → -\n# count P:156,372,200,120: design 1, app 2\n~ -                                        radius: 50% → 27px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 16 design rows, 24 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Bored",
+  "sig": "--- 17 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.010  max 3 at 243,300  px>6 0  px>12 0  | blocks8 26/19404 >1  0 >4  blkmax 1.66 at 244,300  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,246,100,100: design 1, app 2\n~ -                                        radius: 50% → 11px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Lonely",
+  "sig": "--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.012  max 3 at 255,310  px>6 0  px>12 0  | blocks8 49/19404 >1  0 >4  blkmax 1.42 at 236,272  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:206,252,110,110: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Stressed",
+  "sig": "--- 17 design rows, 25 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.003  max 3 at 221,278  px>6 0  px>12 0  | blocks8 17/19404 >1  0 >4  blkmax 1.52 at 228,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:136,250,110,110: design 1, app 2\n# count P:272,312,16,26: design 1, app 2\n~ -                                        bg: rgba(226, 186, 120, 0.25) → -   radius: 7px → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 25 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Anxious",
+  "sig": "--- 19 design rows, 25 app rows; 9 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.025  max 3 at 215,325  px>6 0  px>12 0  | blocks8 4/19404 >1  0 >4  blkmax 1.59 at 212,328  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:146,258,140,140: design 1, app 2\n~ -                                        radius: 50% → 60px\n~ -                                        radius: 50% → 42px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 8px\n~ -                                        radius: 50% → 4.5px\n~ -                                        radius: 50% → 4px\n~ -                                        radius: 50% → 3.5px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 25 app rows; 9 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 8 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Angry",
+  "sig": "--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.014  max 5 at 245,297  px>6 0  px>12 0  | blocks8 49/19404 >1  0 >4  blkmax 3.39 at 244,296  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,248,100,100: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 18 design rows, 24 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Low",
+  "sig": "--- 16 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.021  max 14 at 192,269  px>6 9  px>12 1  | blocks8 81/19404 >1  1 >4  blkmax 4.98 at 236,300  | badge px 11648 max 0\n  box 176,256-192,272  px 1  max 14  meanΔ 14.0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:178,242,120,120: design 1, app 2\n~ -                                        bg: rgb(233, 185, 95) → -   radius: 50% / 60% 60% 40% 40% → -\n# count P:190,266,12,18: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 16 design rows, 23 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Rejected",
+  "sig": "--- 17 design rows, 24 app rows; 5 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.014  max 5 at 255,307  px>6 0  px>12 0  | blocks8 46/19404 >1  0 >4  blkmax 2.70 at 256,304  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:206,258,100,100: design 1, app 2\n~ -                                        radius: 50% → 2.5px\n~ -                                        radius: 50% → 25px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 24 app rows; 5 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Tired",
+  "sig": "--- 20 design rows, 26 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.016  max 6 at 192,290  px>6 0  px>12 0  | blocks8 70/19404 >1  0 >4  blkmax 3.63 at 192,288  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:142,240,100,100: design 1, app 2\n~ -                                        radius: 50% → 2.5px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 20 design rows, 26 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Restless",
+  "sig": "--- 19 design rows, 26 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.014  max 6 at 281,297  px>6 0  px>12 0  | blocks8 59/19404 >1  0 >4  blkmax 3.50 at 280,296  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:236,252,90,90: design 1, app 2\n# count P:266,318,26,18: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 26 app rows; 2 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Numb",
+  "sig": "--- 17 design rows, 23 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.012  max 5 at 240,285  px>6 0  px>12 0  | blocks8 50/19404 >1  0 >4  blkmax 3.61 at 240,284  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,242,90,90: design 1, app 2\n~ -                                        radius: 50% 50% 50% 0px → 8px 8px 8px 0px\n~ -                                        radius: 50% → 27px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 23 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Ashamed",
+  "sig": "--- 24 design rows, 31 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.012  max 5 at 240,289  px>6 0  px>12 0  | blocks8 43/19404 >1  0 >4  blkmax 3.61 at 240,288  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,246,90,90: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 24 design rows, 31 app rows; 3 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Feel Unknown",
+  "sig": "--- 17 design rows, 23 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.002  max 3 at 238,291  px>6 0  px>12 0  | blocks8 14/19404 >1  0 >4  blkmax 1.47 at 240,304  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:146,252,110,110: design 1, app 2\n~ -                                        radius: 50% → 4.5px\n~ -                                        radius: 50% → 4px\n~ -                                        radius: 50% → 3.5px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 23 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Challenge",
+  "sig": "--- 11 design rows, 16 app rows; 0 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n--- 11 design rows, 16 app rows; 0 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Content",
+  "sig": "--- 15 design rows, 20 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.014  max 4 at 250,311  px>6 0  px>12 0  | blocks8 34/19404 >1  0 >4  blkmax 2.95 at 248,312  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,258,110,110: design 1, app 2\n~ -                                        radius: 50% → 4px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 15 design rows, 20 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Doomscroll",
+  "sig": "--- 20 design rows, 25 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.012  max 5 at 254,303  px>6 0  px>12 0  | blocks8 41/19404 >1  0 >4  blkmax 3.14 at 252,300  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:206,256,96,96: design 1, app 2\n~ -                                        radius: 50% → 3px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 20 design rows, 25 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Fantasy",
+  "sig": "--- 16 design rows, 21 app rows; 7 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.009  max 3 at 180,292  px>6 0  px>12 0  | blocks8 15/19404 >1  0 >4  blkmax 1.95 at 180,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:136,248,90,90: design 1, app 2\n~ -                                        radius: 50% → 42px\n~ -                                        radius: 50% → 42px\n~ -                                        radius: 50% → 8px\n~ -                                        radius: 50% → 5px\n~ -                                        radius: 50% → 3px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 16 design rows, 21 app rows; 7 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Late Phone",
+  "sig": "--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.015  max 6 at 177,281  px>6 0  px>12 0  | blocks8 66/19404 >1  0 >4  blkmax 3.48 at 176,280  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:132,236,90,90: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 24 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Habit",
+  "sig": "--- 15 design rows, 20 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.014  max 6 at 244,298  px>6 0  px>12 0  | blocks8 59/19404 >1  0 >4  blkmax 3.28 at 240,296  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,250,96,96: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 15 design rows, 20 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Cant Sleep",
+  "sig": "--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.013  max 4 at 204,292  px>6 0  px>12 0  | blocks8 53/19404 >1  0 >4  blkmax 1.84 at 200,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:150,240,110,110: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 19 design rows, 25 app rows; 3 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Argument",
+  "sig": "--- 20 design rows, 26 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.011  max 5 at 237,294  px>6 0  px>12 0  | blocks8 32/19404 >1  0 >4  blkmax 2.72 at 236,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:192,250,90,90: design 1, app 2\n~ -                                        radius: 50% → 20px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 20 design rows, 26 app rows; 4 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Alone",
+  "sig": "--- 16 design rows, 21 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.006  max 3 at 253,275  px>6 0  px>12 0  | blocks8 25/19404 >1  0 >4  blkmax 1.67 at 256,276  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:172,254,120,120: design 1, app 2\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 16 design rows, 21 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Unknown",
+  "sig": "--- 17 design rows, 22 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.011  max 5 at 240,289  px>6 0  px>12 0  | blocks8 43/19404 >1  0 >4  blkmax 3.61 at 240,288  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n# count P:76,232,240,220: design 2, app 1\n~ -                                        radius: 50% → -\n# count P:196,246,90,90: design 1, app 2\n~ -                                        radius: 50% → 2.5px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n--- 17 design rows, 22 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Trig Rejection",
+  "status": "CAPTURE FAILED"
+ },
+ {
+  "frame": "SOS Reassess",
+  "sig": "--- 16 design rows, 20 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 5.5px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n~ -                                        radius: 50% → 24px\n--- 16 design rows, 20 app rows; 6 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "SOS Afterward",
+  "sig": "--- 9 design rows, 13 app rows; 0 differing, 1 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)",
+  "px": "mean|Δ| 0.000  max 0 at null  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.00 at null  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\nMISSING in app:  div | 36 | 378 | 103.3 | 18 | - | - | - | - | 16px/400/normal/normal/rgb(176, 174, 168) | I need to say…\n--- 9 design rows, 13 app rows; 0 differing, 1 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)\n"
+ },
+ {
+  "frame": "Surf Complete",
+  "sig": "--- 13 design rows, 37 app rows; 3 differing, 2 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 1.333  max 38 at 184,208  px>6 18955  px>12 1261  | blocks8 1761/19404 >1  36 >4  blkmax 7.17 at 112,512  | badge px 11648 max 5\n  box 176,208-192,224  px 26  max 38  meanΔ 36.5\n  box 256,448-272,464  px 41  max 19  meanΔ 14.4\n  box 96,528-112,544  px 36  max 21  meanΔ 14.8\n  box 112,464-128,480  px 37  max 18  meanΔ 14.2\n  box 288,528-304,544  px 33  max 22  meanΔ 15.5\n  box 160,448-176,464  px 33  max 18  meanΔ 13.8",
+  "sigfull": "# count P:-194,-70,308,445: design 1, app 4\n# count P:85,-67,184,442: design 1, app 4\n# count P:292,-58,247,444: design 1, app 4\n~ -                                        radius: 50% → 100px\n~ -                                        opacity: 0.5 → -\n# count P:96,425,200,200: design 2, app 7\n~ -                                        radius: 50% → -\n# count P:56,385,280,280: design 1, app 2\nMISSING in app:  div | 40 | 128 | 313 | 64 | - | - | - | - | 22px/500/normal/32px/rgb(29, 28, 26) | The wave passed.You outlasted it.\nMISSING in app:  br | 283.7 | 131 | 0 | 26 | - | - | - | - | - | -\n--- 13 design rows, 37 app rows; 3 differing, 2 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Relapse Log",
+  "sig": "--- 24 design rows, 30 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.001  max 2 at 195,294  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.89 at 200,292  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n~ -                                        radius: 50% → -\n# count P:132,276,136,136: design 1, app 2\n~ -                                        radius: 50% → 15px\n--- 24 design rows, 30 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Relapse Twice",
+  "sig": "--- 18 design rows, 25 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.028  max 5 at 211,349  px>6 0  px>12 0  | blocks8 234/19404 >1  0 >4  blkmax 2.91 at 208,348  | badge px 11648 max 0",
+  "sigfull": "# count P:351,70,20,20: design 1, app 2\n~ -                                        radius: 50% → -\n# count P:146,284,130,130: design 1, app 2\n~ -                                        radius: 50% → 17px\n~ -                                        radius: 50% → 17px\n~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -\n~ -                                        bg: rgba(0, 0, 0, 0.14) → -   radius: 50% → -\n--- 18 design rows, 25 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Relapse Resign",
+  "sig": "--- 21 design rows, 30 app rows; 4 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)",
+  "px": "mean|Δ| 0.002  max 3 at 265,487  px>6 0  px>12 0  | blocks8 0/19404 >1  0 >4  blkmax 0.17 at 276,328  | badge px 11648 max 0",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:217,242,180,180: design 1, app 2\n~ -                                        radius: 50% → 15px\n~ -                                        bg: rgb(239, 238, 233) → -   radius: 50% 50% 0px 0px / 50px 50px 0px 0px → -\n# count P:6,484,381,110: design 1, app 3\n~ -                                        bg: rgb(233, 232, 226) → -   radius: 50% 50% 0px 0px / 44px 44px 0px 0px → -\n# count P:-24,498,391,110: design 1, app 3\nMISSING in app:  span | 52 | 514 | 0 | 0 | - | - | - | - | - | -\n--- 21 design rows, 30 app rows; 4 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Relapse Begin",
+  "sig": "--- 16 design rows, 41 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 1.408  max 20 at 290,491  px>6 25101  px>12 1373  | blocks8 2047/19404 >1  41 >4  blkmax 7.13 at 280,448  | badge px 11648 max 5\n  box 96,448-112,464  px 41  max 18  meanΔ 14.3\n  box 144,384-160,400  px 40  max 18  meanΔ 14.7\n  box 240,384-256,400  px 38  max 18  meanΔ 14.4\n  box 192,368-208,384  px 33  max 17  meanΔ 14.2\n  box 272,432-288,448  px 32  max 16  meanΔ 13.7\n  box 96,464-112,480  px 30  max 16  meanΔ 14.2",
+  "sigfull": "# count P:-194,-70,308,445: design 1, app 4\n# count P:85,-67,184,442: design 1, app 4\n# count P:292,-58,247,444: design 1, app 4\n~ -                                        radius: 50% → 100px\n~ -                                        opacity: 0.5 → -\n# count P:96,368,200,200: design 2, app 7\n~ -                                        radius: 50% → -\n# count P:56,328,280,280: design 1, app 2\n--- 16 design rows, 41 app rows; 3 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub Now",
+  "sig": "--- 35 design rows, 217 app rows; 8 differing, 1 missing, 173 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.691  max 227 at 244,363  px>6 1451  px>12 1189  | blocks8 460/19404 >1  40 >4  blkmax 188.03 at 236,356  | badge px 11648 max 3\n  box 224,352-240,368  px 381  max 226  meanΔ 176.5\n  box 240,352-256,368  px 285  max 227  meanΔ 189.8\n  box 224,336-240,352  px 107  max 225  meanΔ 93.2\n  box 240,336-256,352  px 68  max 225  meanΔ 115.0\n  box 144,288-160,304  px 28  max 163  meanΔ 86.3\n  box 224,368-240,384  px 13  max 206  meanΔ 142.1",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:17,60,360,360: design 1, app 2\nMISSING in app:  div | 144.1 | 332.5 | 104.8 | 40 | - | - | - | - | 40px/500/-1px/40px/rgb(244, 243, 240) | 17:42\n~ -                                        bg: rgba(255, 255, 255, 0.055) → rgba(255, 255, 255, 0.05)\n~ -                                        bg: rgba(255, 255, 255, 0.055) → rgba(255, 255, 255, 0.05)\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n--- 35 design rows, 217 app rows; 8 differing, 1 missing, 173 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub Score",
+  "sig": "--- 71 design rows, 217 app rows; 39 differing, 7 missing, 140 extra, 0 sub-0.25pt rounding, 38 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 1.935  max 227 at 63,280  px>6 10477  px>12 9984  | blocks8 324/19404 >1  246 >4  blkmax 226.97 at 36,300  | badge px 11648 max 3\n  box 32,288-48,304  px 1023  max 227  meanΔ 226.5\n  box 96,288-112,304  px 865  max 227  meanΔ 217.1\n  box 32,304-48,320  px 581  max 227  meanΔ 223.0\n  box 48,304-64,320  px 579  max 227  meanΔ 191.1\n  box 96,272-112,288  px 501  max 224  meanΔ 220.1\n  box 112,288-128,304  px 472  max 224  meanΔ 216.0",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:17,60,360,360: design 1, app 2\n~ of 10                                    type: 20px/500/normal/normal/rgba(244, 243, 240, 0.58) → 20px/500/normal/24px/rgba(244, 243, 240, 0.58)\nMISSING in app:  line | 84 | 318 | 0 | 40 | - | - | - | - | - | -\nMISSING in app:  circle | 75 | 327 | 18 | 18 | - | - | - | - | - | -\nMISSING in app:  circle | 79.8 | 331.8 | 8.4 | 8.4 | - | - | - | - | - | -\nMISSING in app:  rect | 48 | 280 | 72 | 30 | - | - | - | - | - | -\nMISSING in app:  path | 80 | 310 | 8 | 8 | - | - | - | - | - | -\nMISSING in app:  text | 71 | 283 | 26 | 15 | - | - | - | - | 13px/700/normal/normal/rgb(0, 0, 0) | 32%\nMISSING in app:  text | 71.2 | 297.5 | 25.5 | 10 | - | - | - | - | 8.5px/500/normal/normal/rgb(0, 0, 0) | 2:18 in\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 12.3px\n~ -                                        radius: 50% → 4.5px\n~ -                                        radius: 50% → 4.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n--- 71 design rows, 217 app rows; 39 differing, 7 missing, 140 extra, 0 sub-0.25pt rounding, 38 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub Proof",
+  "sig": "--- 45 design rows, 217 app rows; 8 differing, 1 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.712  max 215 at 342,524  px>6 365  px>12 356  | blocks8 2090/19404 >1  14 >4  blkmax 52.16 at 340,524  | badge px 11648 max 3\n  box 336,528-352,544  px 170  max 215  meanΔ 150.5\n  box 336,512-352,528  px 142  max 215  meanΔ 111.9\n  box 320,512-336,528  px 34  max 215  meanΔ 99.3\n  box 320,528-336,544  px 10  max 26  meanΔ 25.2",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:17,60,360,360: design 1, app 2\n~ -                                        bg: rgba(255, 255, 255, 0.055) → rgba(255, 255, 255, 0.05)\n~ -                                        bg: rgba(255, 255, 255, 0.055) → rgba(255, 255, 255, 0.05)\nMISSING in app:  span | 332.2 | 518 | 16.8 | 18 | - | - | - | - | 15px/600/normal/normal/rgb(244, 243, 240) | 13\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n--- 45 design rows, 217 app rows; 8 differing, 1 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub Surfed",
+  "sig": "--- 67 design rows, 217 app rows; 10 differing, 8 missing, 144 extra, 0 sub-0.25pt rounding, 10 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.961  max 191 at 88,302  px>6 5206  px>12 5134  | blocks8 197/19404 >1  174 >4  blkmax 95.23 at 88,300  | badge px 11648 max 3\n  box 96,304-112,320  px 128  max 190  meanΔ 188.8\n  box 96,288-112,304  px 128  max 190  meanΔ 188.7\n  box 112,288-128,304  px 103  max 189  meanΔ 183.9\n  box 112,304-128,320  px 103  max 189  meanΔ 183.8\n  box 336,272-352,288  px 169  max 133  meanΔ 88.5\n  box 320,336-336,352  px 139  max 133  meanΔ 100.4",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:17,60,360,360: design 1, app 2\n~ -                                        radius: 50% → 7px\nMISSING in app:  span | 328.4 | 274 | 40.6 | 16 | - | - | - | - | 13px/500/normal/normal/rgba(244, 243, 240, 0.58) | 14 min\nMISSING in app:  div | 58 | 301.5 | 67 | 4 | rgb(233, 210, 164) | 2px | - | - | - | -\n~ -                                        radius: 50% → 7px\nMISSING in app:  span | 327.1 | 338 | 41.9 | 16 | - | - | - | - | 13px/500/normal/normal/rgba(244, 243, 240, 0.58) | 22 min\nMISSING in app:  div | 58 | 365.5 | 106.4 | 4 | rgba(244, 243, 240, 0.45) | 2px | - | - | - | -\n~ -                                        radius: 50% → 7px\nMISSING in app:  span | 334.6 | 402 | 34.4 | 16 | - | - | - | - | 13px/500/normal/normal/rgba(244, 243, 240, 0.58) | 9 min\nMISSING in app:  div | 58 | 429.5 | 43.3 | 4 | rgba(244, 243, 240, 0.45) | 2px | - | - | - | -\n~ -                                        radius: 50% → 7px\nMISSING in app:  span | 328.6 | 466 | 40.4 | 16 | - | - | - | - | 13px/500/normal/normal/rgba(244, 243, 240, 0.58) | 31 min\nMISSING in app:  div | 58 | 493.5 | 149.7 | 4 | rgba(244, 243, 240, 0.45) | 2px | - | - | - | -\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n--- 67 design rows, 217 app rows; 10 differing, 8 missing, 144 extra, 0 sub-0.25pt rounding, 10 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub Pledges",
+  "sig": "--- 44 design rows, 217 app rows; 7 differing, 0 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)",
+  "px": "mean|Δ| 0.667  max 21 at 254,516  px>6 10  px>12 2  | blocks8 2144/19404 >1  0 >4  blkmax 1.88 at 392,108  | badge px 11648 max 3\n  box 240,512-256,528  px 1  max 21  meanΔ 21.0\n  box 192,256-208,272  px 1  max 13  meanΔ 13.0",
+  "sigfull": "~ -                                        radius: 50% → -\n# count P:17,60,360,360: design 1, app 2\n~ -                                        bg: rgba(255, 255, 255, 0.055) → rgba(255, 255, 255, 0.05)\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n~ -                                        radius: 50% → 3.5px\n--- 44 design rows, 217 app rows; 7 differing, 0 missing, 159 extra, 0 sub-0.25pt rounding, 6 radius-notation only (D015) (use --all to list extras)\n"
+ },
+ {
+  "frame": "Urge Hub — Breathe handoff",
+  "status": "NOT-A-FRAME"
+ }
+]

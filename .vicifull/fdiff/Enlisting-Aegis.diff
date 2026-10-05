@@ -1,0 +1,29 @@
+--- .vicifull/pretty/prev/Enlisting-Aegis.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Enlisting-Aegis.html	2026-09-05 00:22:35
+@@ -133,7 +133,7 @@
+         | font-weight:500;
+         | color:#F4F3F0;
+       ">
+-        · Looking at when it usually happens
++        · Finding where you usually struggle
+       </span>
+     </div>
+     <div style="
+@@ -150,7 +150,7 @@
+         | font-weight:500;
+         | color:#F4F3F0;
+       ">
+-        · Looking at what usually comes right before it
++        · Looking at what tends to set it off
+       </span>
+     </div>
+     <div style="
+@@ -172,7 +172,7 @@
+         | font-weight:500;
+         | color:rgba(244,243,240,0.75);
+       ">
+-        · Building your first week
++        · Choosing where to start
+       </span>
+     </div>
+   </div>

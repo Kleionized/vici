@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q3`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q3`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q3.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q3.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,21 +32,56 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · When you decide not to watch, how often do you still end up watching?
-  <div> position:absolute  left:24px  right:24px  top:339px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
-      · Almost every time
-  <div> position:absolute  left:24px  right:24px  top:413px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
-    <span> color:#131313  font-size:15.5px  font-weight:500  line-height:20px
-      · More often than not
+    · Have you tried to quit before?
+  <div> position:absolute  left:0  right:0  top:250px  height:152px
+    <div> position:absolute  left:50%  top:50%  width:320px  height:160px  margin:-80px 0 0 -160px  background:radial-gradient(closest-side, rgba(226,186,120,0.14), rgba(226,186,120,0) 72%)  border-radius:50%  filter:blur(8px)
+    <div> position:relative  width:100%  height:100%  display:flex  justify-content:center
+      <svg> viewBox="-41 0 322 152"  width="322"  height="152"
+        <defs> 
+          <lineargradient> id="c3f"  x1="0"  y1="0"  x2="0"  y2="1"
+            <stop> offset="0"  stop-color="rgba(255,255,255,0.13)"
+            <stop> offset="1"  stop-color="rgba(255,255,255,0.05)"
+          <radialgradient> id="c3o"  cx="0.45"  cy="0.4"
+            <stop> offset="0"  stop-color="#F4E2BE"
+            <stop> offset="1"  stop-color="#E2BA78"
+        <circle> cx="120"  cy="78"  r="62"  fill="url(#c3f)"  stroke="rgba(255,255,255,0.2)"  stroke-width="1.6"
+        <line> x1="120.0"  y1="28.0"  x2="120.0"  y2="22.0"  stroke="rgba(244,243,240,0.35)"  stroke-width="1.8"  stroke-linecap="round"
+        <line> x1="145.0"  y1="34.7"  x2="148.0"  y2="29.5"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="163.3"  y1="53.0"  x2="168.5"  y2="50.0"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="170.0"  y1="78.0"  x2="176.0"  y2="78.0"  stroke="rgba(244,243,240,0.35)"  stroke-width="1.8"  stroke-linecap="round"
+        <line> x1="163.3"  y1="103.0"  x2="168.5"  y2="106.0"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="145.0"  y1="121.3"  x2="148.0"  y2="126.5"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="120.0"  y1="128.0"  x2="120.0"  y2="134.0"  stroke="rgba(244,243,240,0.35)"  stroke-width="1.8"  stroke-linecap="round"
+        <line> x1="95.0"  y1="121.3"  x2="92.0"  y2="126.5"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="76.7"  y1="103.0"  x2="71.5"  y2="106.0"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="70.0"  y1="78.0"  x2="64.0"  y2="78.0"  stroke="rgba(244,243,240,0.35)"  stroke-width="1.8"  stroke-linecap="round"
+        <line> x1="76.7"  y1="53.0"  x2="71.5"  y2="50.0"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <line> x1="95.0"  y1="34.7"  x2="92.0"  y2="29.5"  stroke="rgba(244,243,240,0.16)"  stroke-width="1.2"  stroke-linecap="round"
+        <text> x="120"  y="40"  fill="rgba(244,243,240,0.5)"  text-anchor="middle"  font-size="12"  font-weight="700"
+          · N
+        <path> d="M84.9,69.8 L119.1,81.9 L120.9,74.1 Z"  fill="rgba(244,243,240,0.35)"
+        <path> d="M162.9,87.9 L119.1,81.9 L120.9,74.1 Z"  fill="#E2BA78"
+        <circle> cx="120"  cy="78"  r="5"  fill="#131313"  stroke="rgba(244,243,240,0.6)"  stroke-width="1.6"
+  <div> position:absolute  left:24px  right:24px  top:460px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="81.7 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+      · Yes, several times
+  <div> position:absolute  left:24px  right:24px  top:534px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(19,19,19,0.14)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="45.0 81.7"
+    <span> flex:1  color:#131313  font-size:17px  font-weight:500  line-height:20px
+      · Yes, once or twice
     <svg> viewBox="0 0 16 12"  width="16"  height="12"
       <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
-  <div> position:absolute  left:24px  right:24px  top:487px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
-      · About half the time
-  <div> position:absolute  left:24px  right:24px  top:561px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:20px
-      · Not very often
+  <div> position:absolute  left:24px  right:24px  top:608px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="6.5 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+      · No
 ```
 
 ## Comparison — design frame vs the running app

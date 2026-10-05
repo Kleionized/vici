@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q24 Name`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q24 Name`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q24-Name.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q24-Name.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -25,6 +33,8 @@ element on the frame is here, in paint order, indented by depth.
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
     · What should we call you?
+  <div> position:absolute  left:44px  right:44px  top:200px  color:rgba(244,243,240,0.6)  font-size:13.5px  font-weight:400  line-height:20px  text-align:center  text-wrap:pretty
+    · All your data will be encrypted.
   <div> position:absolute  left:24px  right:24px  top:281px  height:60px  padding:0 22px  display:flex  align-items:center  gap:3px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
     <div> width:2px  height:22px  background:#F4F3F0  border-radius:1px
     <span> color:rgba(244,243,240,0.45)  font-size:17px  font-weight:400
@@ -62,9 +72,12 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 
 ## Resolutions
 
-* **Back row** — the canvas draws it at `left:16, top:94`; the app draws none on this frame only.
-  See `DECISIONS.md` D016: the account has just been made and the auth stack redirects a signed-in
-  user straight back out, so the control would loop. Every later funnel frame draws it as drawn.
+* **Back row** — the canvas draws it at `left:16, top:94` and **the app now draws it**, on this
+  frame as on every other funnel frame. `DECISIONS.md` **D122 supersedes D016**, which had left it
+  off because the auth stack redirected a signed-in man straight back out and the control would
+  have looped: `(auth)/_layout.tsx` now exempts a man whose onboarding is incomplete, so Back from
+  here leaves at `/sign-in` — `02 · Login`, the board the account was made on. Measured after:
+  0 blocks over 4/255 on the whole frame below the status-bar chrome.
 * **"Your name"** — the canvas draws the placeholder as a `<span>` at x 51; the app draws a
   `TextInput` whose box starts at exactly x 51 and whose `placeholder` is the canvas's own string.
   A DOM placeholder has no element of its own for the probe to measure, so it reads as one row

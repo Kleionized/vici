@@ -1,0 +1,66 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 0 | 96 | 393 | 602 | - | - | - | - | - | -
+div | 196.5 | 140 | 0 | 16 | - | - | - | - | - | -
+div | 64.5 | 182 | 264 | 38 | - | - | - | - | 26px/500/normal/38px/rgb(29, 28, 26) | Match where you sleep
+div | 32 | 246 | 329 | 408 | - | - | - | - | - | -
+div | 32 | 246 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 246 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 254 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 260.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 263.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 262.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 246 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 246 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Own bedroom
+div | 86 | 272 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Set the alarm now. Charge the phone outside the room. Put a laptop or tablet in a closed bag, drawer, or cupboard away from the bed.
+div | 32 | 347 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 347 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 355 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 358.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 358.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 363.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 366.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 347 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 347 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Shared room
+div | 86 | 373 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Put the device in a bag, locker, desk drawer, or fixed charging spot that you cannot reach while lying down.
+div | 32 | 448 | 329 | 105 | - | - | - | - | - | -
+div | 32 | 448 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 456 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 461.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 465.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 448 | 275 | 105 | - | - | - | - | - | -
+div | 86 | 448 | 275 | 44 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Studio, sofa bed, or temporary space
+div | 86 | 496 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Put the device at the farthest practical point from where you sleep: a kitchen counter, shelf, zipped bag, or other fixed place.
+div | 32 | 571 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 571 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 579 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 584.5 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 588 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 584 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 571 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 571 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Phone needed as an alarm
+div | 86 | 597 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Set the alarm first. Put the phone across the room or outside it. Turn off non-essential notifications before you put it down.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

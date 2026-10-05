@@ -1,0 +1,107 @@
+{
+  "group": "settings",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All ten frames were driven and captured with the sig prefix v-settings-, diffed numerically and read as PNGs. Seven frames (#196 Settings, #198 Sheet Profile Photo, #199 Sheet Edit Name, #201 Settings Check-in Time, #203's sheet, #204 Data Privacy, #205 App Lock) are genuinely clean apart from the known border-radius equivalences. The report is broadly honest, but it missed three real defects and understated a fourth.\n\nThe one visible artwork defect is on #202 Your Vow Page: the sun disc's RadialGradient centre is written cy=\"82.48\" where the disc sits at cy=51, so the gradient's focus lands 37pt below the disc and the highlight is inverted — the app's disc reads dark at the top (measured exactly #E3BE85, the outermost stop) and light at the bottom, the canvas's the reverse. Δ up to 55/255. The report claimed it \"verified the sun renders its real fill\"; the numbers say otherwise, and the signature diff cannot see it — this is precisely the class of failure the brief warns about.\n\nSecond, #197 Edit Profile's medallion shelf is struck in silver/platinum where every album and shelf frame in the bundle draws plain paper stock (#F1F0EB→#ECEAE3). profile.tsx:164 passes metal={k.metal}; the album screen (milestones.tsx:311) passes metal=\"paper\" for the same coins. Measured across the first coin: design flat 239,237,231; app a cool 243,245,247→218,222,227 gradient. The report dismissed the whole shelf as \"data-driven\" and did not check the finish.\n\nThird — and the most consequential — removing Edit Profile's \"App\" section removed the last tap-path to /settings. src/app/(app)/settings.tsx is referenced only from src/app/(app)/all.tsx:112, and nothing in the app navigates to /(app)/all (D024 took it out of the bar). Six of this group's ten frames (#196, #201, #202, #203, #204, #205) now have no in-app entry at all. FINDINGS F15 records /support and /lifemap as stranded but assumed Settings itself was still reachable; it is not.\n\nFourth, the two check-in rows are wired asymmetrically and both leak out of Settings. Driven: /settings → Night check-in → Save time lands on /today (night-time.tsx:34 router.replace). /settings → Morning check-in draws \"Back\" rather than \"Settings\" (settings.tsx:72 omits ?from=settings) and its Save pushes the onboarding /routines/night-time board, then that board replaces to /today. The report called the entry \"verified live\" having only checked the back label.\n\nConfirmed as accurate in the report: the Find support removal, the #200 93D-vs-91C read (I re-measured the five rows that will never match), the #203 background read (the sheet itself matches row for row, including the scrim and the -12px 40px lift), the note gating on #201 (frame #54 takes the undefined branch and draws no note — verified), and both translation residues. No F20-class gradient-id collision: /vow captured by URL and by the Settings push are byte-identical signatures and identical pixels.",
+  "findings": [
+    {
+      "frame": "#202 Your Vow Page",
+      "element": "the 46 × 46 sun disc at canvas left 50%/top 196 (Svg circle cx 85 cy 51 r 23)",
+      "property": "radial-gradient focus (RadialGradient cy, userSpaceOnUse)",
+      "design": "radial-gradient(circle at 50% 38%, #F8E9CB, #EFD3A2 70%, #E3BE85 100%) — focus at y = 28 + 0.38×46 = 45.48 in the 170pt Svg space; measured disc top rgb(244,225,188), centre rgb(246,228,193), bottom rgb(240,215,169)",
+      "app": "src/app/vow.tsx:93 writes cy=\"82.48\", 37pt below the disc, so the gradient runs backwards; measured disc top rgb(227,190,133) (= #E3BE85, the outermost stop, exactly), centre rgb(233,200,147), bottom rgb(242,219,177)",
+      "confidence": "certain",
+      "note": "Δ55 at the top of the disc, Δ46 at its centre, and the light/dark axis is flipped. cx=85 and r=36.66 are both right; only cy is wrong — 45.48 is the value. Invisible to the signature diff (the box and the shadow both match), visible in the PNG and in the pixel sample. The 170pt halo gradient above it (cx 85 cy 85 r 85) is correct."
+    },
+    {
+      "frame": "#197 Edit Profile",
+      "element": "the four 48 × 48 medallion faces in the Medallions card at canvas 512",
+      "property": "disc fill / metal finish",
+      "design": "every face on Edit-Profile.html is plain stock — `linear-gradient(180deg, #F1F0EB 0%, #ECEAE3 100%)` (or #EFEEE8→#EFEDE6) with hill bands over it and no metallic sheen; sampled flat rgb(239,237,231) right across the first coin. Medallions.html draws all six of its earned faces the same way.",
+      "app": "src/app/profile.tsx:164 renders `<KKMedallion … metal={k.metal} />`, which strikes the disc in silver/platinum (DISC.silver #F2F3F5→#C6CBD1→#969DA6, DISC.platinum #FFFFFF→#EDF0F4→#C7CDD8); sampled rgb(243,245,247) at x31 falling to rgb(218,222,227) at x77 — a cool blue-grey gradient where the canvas is flat warm grey",
+      "confidence": "likely",
+      "note": "The same album on src/app/(app)/milestones.tsx:311 passes metal=\"paper\", which matches the canvas; the profile shelf is the outlier. No shelf or album frame in the bundle draws a metal — the metals only appear on the Breakwater-* detail frames in Medallions-v2. Not one of the two known equivalences. Downgraded from certain only because the app's four earned faces are a different set from the canvas's four samples, so the comparison is per-finish rather than per-coin."
+    },
+    {
+      "frame": "#196 Settings (and #201, #202, #203, #204, #205 downstream of it)",
+      "element": "the route itself — every tap-path into /(app)/settings",
+      "property": "reachability",
+      "design": "the canvas draws Settings and five sub-pages as a live section of the app (FLOW.txt 195→205)",
+      "app": "nothing in the running app navigates to /(app)/settings. The only reference is src/app/(app)/all.tsx:112, and nothing anywhere navigates to /(app)/all either (StoicTabBar.tsx took it out of the bar under D024). The `App` section this run deleted from Edit Profile — `My values`, `Settings` — was the last one.",
+      "confidence": "certain",
+      "note": "Verified by grep across src/ and by the /profile capture, which draws no Settings row. Six of this group's ten frames are now URL-only. /today's avatar (today.tsx:128) still reaches /profile, so #197/#198/#199 remain reachable. This is strictly larger than FINDINGS F15, which named only /support and /lifemap and implicitly assumed Settings was still entered from somewhere. The canvas draws no Settings entry on any of its 267 frames either, so this needs the same orchestrator decision F15 asks for — but it should be recorded that the whole section, not two side routes, is what went dark."
+    },
+    {
+      "frame": "#201 Settings Check-in Time",
+      "element": "the 361 × 48 `Save time` pill at canvas 744",
+      "property": "destination on press",
+      "design": "92B is a Settings sub-page: its Back row reads `Settings` and the flow returns there",
+      "app": "src/app/routines/night-time.tsx:34 `router.replace('/(app)/today')` — driven from /settings, tapping Save time lands on /today (verified: location.pathname === '/today', page text `Day 36 Recovery score …`), replacing the whole stack so Back cannot return",
+      "confidence": "likely",
+      "note": "The canvas states no navigation, so this is a behavioural rather than a pixel finding — but every other Settings sub-page (#202, #203, #204, #205, #200) returns to Settings, and this one silently ejects the user out of the section it belongs to. The board's own Back row is correct."
+    },
+    {
+      "frame": "#201 Settings Check-in Time (its Morning sibling)",
+      "element": "the `Morning check-in` row in the Reminders card, canvas 194",
+      "property": "navigation parameters / back label",
+      "design": "Settings-Check-in-Time.html shows the Settings entry to a check-in board draws `Settings` in the Back row, not `Back`",
+      "app": "src/app/(app)/settings.tsx:72 pushes `/routines/morning-time` with no `?from=settings` (line 74 does pass it for Night). Driven: the morning board opens with the Back row reading `Back`, and morning-time.tsx:29 then pushes `/routines/night-time` — the onboarding chain — whose Save replaces to /today. Verified end to end.",
+      "confidence": "likely",
+      "note": "No frame draws `Settings Morning Check-in Time`, so the back label is inferred from its night sibling; the navigation chain is not inferred — editing the morning time from Settings drags the user through the onboarding night-time board and dumps them on Today. RoutineShell already takes backLabel and the note is already gated, so the row needs only the query parameter plus a settings-aware `next`."
+    },
+    {
+      "frame": "#202 Your Vow Page",
+      "element": "the 12/500 #B0AEA8 stamp at the signature block's bottom:14 (canvas 594)",
+      "property": "text content",
+      "design": "the slot is drawn empty — the probe reports `div | 36 | 594 | 321 | 0`, height 0, no text run",
+      "app": "src/app/vow.tsx:47-49 fills it with `${month} ${day} · Day 0`; captured as `Jul 31 · Day 0` at 12px/500/rgb(176,174,168), box 36,579,321,15",
+      "confidence": "unsure",
+      "note": "Defensible as a blank sample — The-Vow.html fills the same slot with `Jun 9 · Day 0` — and the box is bottom-aligned to the canvas's 594 correctly. What is not defensible is the literal `Day 0`: on a vow kept for weeks the app prints `Jul 31 · Day 0` directly above its own `Held for 35 days.`, so the page contradicts itself. Either the slot follows the canvas and stays empty, or the day number is live."
+    },
+    {
+      "frame": "#200 Settings Weekly Report",
+      "element": "the header block — `Your week at a glance`, the 88 × 78 desk-lamp illustration, the three white chips",
+      "property": "presence",
+      "design": "subtitle 14.5/400 #8B8882 at 24,157; illustration 88 × 78 at right 16 / top 100 with a 56px blurred #E2BA78 wash and 13 SVG shapes; three 27-tall #FFFFFF chips with `0 0 0 1px rgba(0,0,0,0.08)` at 24,212 reading `7 check-ins`, `3 urges`, `0 relapses`",
+      "app": "none of those rows exist; the app draws 91C's 361 × 106 gold card (`linear-gradient(150deg,#F1E8D6,#D9CBAA)`) at 164 instead. 30 of the frame's 68 rows report MISSING.",
+      "confidence": "certain",
+      "note": "This is the recorded F18 decision (93D is a stale copy, 91C wins, one route renders both), and I reached the same read independently — 91C/91C2/91C3 are internally consistent and 93D received only this drop's automated restyle. Reported so the row count is on the record, not as work to do. The group-owned parts are all correct: `Recovery score` is 19px/500/-0.1px at 24,294 exactly, the Back row reads `Settings`, the entry passes ?from=settings, and Back returns to /settings (driven)."
+    },
+    {
+      "frame": "#200 Settings Weekly Report",
+      "element": "`steady climb` inside the trend pill at right 24 / top 288",
+      "property": "font-weight",
+      "design": "12px/600 (Settings-Weekly-Report.html)",
+      "app": "12px/500 — which is what Weekly-Report.html (91C) states",
+      "confidence": "certain",
+      "note": "A consequence of the 91C reading above, not an independent defect: one Text cannot carry both weights. Listed because it is the single type row inside the shared area of the board where 93D and 91C disagree, and the report did not mention it."
+    },
+    {
+      "frame": "#197 Edit Profile",
+      "element": "`Started VICI` value in the Journey card, canvas 646",
+      "property": "text",
+      "design": "14 Mar 2026",
+      "app": "31 Jul 2026",
+      "confidence": "unsure",
+      "note": "Data, as the report says: the app derives Current week from the sign-up date, and the canvas's two samples (14 Mar 2026 and week VI) cannot both hold for any single today. The seed holds the week and lets the date read its own value. The type metrics, colour and origin of the row all match. Not a defect."
+    },
+    {
+      "frame": "#197 Edit Profile",
+      "element": "the third shelf coin (the blue-hill face)",
+      "property": "sun radial",
+      "design": "Edit-Profile.html gives faces 1, 2 and 4 a `radial-gradient(closest-side, rgba(243,227,196,…))` sun and face 3 none",
+      "app": "src/app/profile.tsx:164 passes `sun` unconditionally to all four",
+      "confidence": "unsure",
+      "note": "Low value while the four faces are a different set from the canvas's samples, so it cannot be measured against this frame directly. Flagged only because the album screen gates the same prop (`sun={struck.earned}` at milestones.tsx:311) and the shelf does not."
+    },
+    {
+      "frame": "#204 Data Privacy / #205 App Lock / #197 Edit Profile / #196 Settings",
+      "element": "the toggle knobs, the 92 disc, the 88 monogram, the 48 coins, the +3 chip",
+      "property": "border-radius",
+      "design": "50%",
+      "app": "10px / 46px / 44px / 24px",
+      "confidence": "certain",
+      "note": "Known equivalence, not a defect: RN has no percentage radius and half the box side is the same circle. These plus `h: 47 → 46` on card rows (canvas puts the hairline on the row as border-bottom, the app in a sibling 1px View; card totals identical) are the only signature rows I am leaving standing across #204 (1 row), #205 (4 rows) and #196 (0 rows). #196 is 0 differing / 0 missing and its PNG is indistinguishable."
+    }
+  ]
+}

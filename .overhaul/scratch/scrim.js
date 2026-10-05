@@ -1,0 +1,1 @@
+return [...document.querySelectorAll('*')].filter((d) => /0\.68/.test(getComputedStyle(d).backgroundColor)).map((d) => { const r = d.getBoundingClientRect(); return { tag: d.tagName, bg: getComputedStyle(d).backgroundColor, x: r.left, y: r.top, w: r.width, h: r.height, op: getComputedStyle(d).opacity }; });

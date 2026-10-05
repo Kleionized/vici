@@ -1,0 +1,12 @@
+const log = [];
+const url = () => location.pathname + location.search;
+const ls = (k) => localStorage.getItem(k);
+const uid = 'letters-seed-user';
+const journal = () => { try { return (JSON.parse(ls('tideline.mock.userdata.' + uid)).journalEntries || []).map((j) => [j.tag, j.title, (j.body || '').slice(0, 60), (j.body || '').slice(-40)]); } catch (e) { return 'ERR ' + e.message; } };
+const step = async (name, fn, wait = 1300) => { try { await fn(); await __sleep(wait); log.push([name, url(), __txt().slice(0, 140)]); } catch (e) { log.push([name, 'ERR ' + e.message.slice(0, 200)]); } };
+await __sleep(800);
+log.push(['start', url(), __txt().slice(0, 200), 'pending=' + ls('tideline.letter.pending')]);
+await step('Read', () => tap('Read'), 900);
+await step('Save to Log', () => tap('Save to Log'), 2000);
+log.push(['after save', 'day3=' + ls('tideline.letter.day3'), 'pending=' + ls('tideline.letter.pending'), JSON.stringify(journal())]);
+console.error("LOG " + JSON.stringify(log)); return 1;

@@ -1,0 +1,24 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:150px  display:flex  flex-direction:column  gap:18px
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+      · Day 0, Jun 9
+    <div> width:100%  font-size:40px  font-weight:700  letter-spacing:-0.6px  line-height:46px  color:#F2F0EC  text-wrap:balance
+      · The vow.
+    <div> font-size:21px  font-weight:400  line-height:33px  color:#F2F0EC  margin-top:8px
+      · I’m giving this twelve weeks. I don’t need to be perfect. When I want to watch, I’ll use the plan first. If I have a bad day, I’ll come back the next day.
+  <div> position:absolute  left:24px  right:24px  top:530px
+    <div> font-size:30px  font-weight:700  font-style:italic  letter-spacing:-0.5px  color:#F2F0EC  padding-bottom:10px  border-bottom:1.5px solid #F2F0EC
+      · Sam
+    <div> margin-top:10px  font-size:13px  font-weight:700  letter-spacing:0.5px  color:#9B968E
+      · Signed on day 0
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Sign
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Not now

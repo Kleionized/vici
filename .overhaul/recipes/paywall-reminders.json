@@ -1,0 +1,61 @@
+[
+  { "frame": "Reminders Setup", "route": "/welcome?step=reminders",
+    "initseed": ".overhaul/tail-session-seed.js", "wait": 1800,
+    "note": "D216's mock-only `?step=` opens the onboarding host on the board with the canvas's own answers (triggers incl. 'Late at night' → windowFor → 'Late night', the frame's headline). 0.00 % (0 px > 24) whole frame. 375×667: the band under the nav row scrolls (bell, words, notes) between 100 and the pill; 430×932: fits. Turn on reminders / Not now both advance to the paywall step (.overhaul/pr-func.mjs funnel). The old walk (.overhaul/drives/handover-walk.js, window.__H='rem') passes through other groups' boards and is not needed." },
+
+  { "frame": "Paywall", "route": "/paywall",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "EXPO_PUBLIC_FORCE_MOCK pins PAYWALL_SOURCE to 'designed', so /paywall renders PaywallFlow's board with no driving (the funnel's embedded copy: /welcome?step=paywall with tail-session-seed.js, ✕ labelled 'Skip'). 0.11 %: the one region is 316,72 56×16 — the frame's top-right 'Restore' replaced by the kit ✕ at 353,71 (D323, the deliberate way out; Restore moved to the tappable footer). Everything else 0 px. Monthly chosen (undrawn): `await tap('Monthly, $12.99/month')` — palettes swap, the 'Save 74%' tab stays on Yearly." },
+
+  { "frame": "Paywall Rescue", "route": "/paywall",
+    "initseed": ".overhaul/v-premium-seed.js",
+    "do": "await tap('Close'); await waitFor('No thanks')", "wait": 1200,
+    "note": "The ✕ on the paywall is rescued once (mock always has the free days). 0.00 % (1 px > 24). The dashed connectors are the frame's own CSS border on web (Chrome fits 6/4/6 to the 16 run); native draws an SVG 6 4 line." },
+
+  { "frame": "Paywall Confirmed", "route": "/paywall",
+    "initseed": ".overhaul/f-pw-confirmed-seed.js",
+    "script": ".overhaul/drives/pw-confirmed-trial.js", "wait": 1200,
+    "note": "✕ → Start free trial → the drawn pay sheet (kit Sheet, D224) → 'Confirm with Side Button' → Confirmed. The seed plants Sam / sam@hey.com and pins the clock to 21 Jul 2026 → 'until Jul 24'. 0.00 % (15 px > 24): two 4-pt spots on the 132 disc's antialiased rim at y 380 (x 152, 236), ≤ 40/255. drives/pw-confirmed.js takes Continue instead and gives the undrawn yearly line." },
+
+  { "frame": "Day Zero", "route": "/welcome?step=day-zero",
+    "initseed": ".overhaul/tail-session-seed.js", "wait": 1800,
+    "note": "?step= (D216) instead of the whole-funnel walk (drives/v-pw-dayzero.js, whose labels belong to other groups). welcome.tsx passes 'Lesson 1 · Prepare for tonight' (lessonForDay(1)); O3DayZero splits it at the middot. 0.00 % (0 px > 24). 375×667: hero + both stacks rise together (D320 rule 2). Begin → finish() → /routines/morning-time (pr-func.mjs funnel)." },
+
+  { "frame": "Manage Subscription", "route": "/subscription",
+    "initseed": ".overhaul/f-pw-sub-dated.js", "wait": 1800,
+    "note": "Premium Sam with the clock pinned to 10 Jul 2026 → 'Renews 10 Jul 2027'. 0.00 % (0 px > 24). The next-charge value must be ONE text node (`${price} on ${renews}`): three JSX children re-kerned it (111 px at 236–268,248). 375×667: the stack scrolls between the nav row and the cancel line." },
+
+  { "frame": "Morning Check-in Time", "route": "/routines/morning-time",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "DEFAULT_ROUTINES.morning is now 8:00 AM (D324), the frame's own, so nothing is seeded. 0.00 % (0 px > 24). Kit TimeWheel + DayToggles; 375×667 scrolls the stack under the nav (wheel gestures are native handlers, D362)." },
+
+  { "frame": "Nightly Check-in Time", "route": "/routines/night-time",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "10:30 PM default = the frame. 0.00 % (0 px > 24). D120/D154 no longer apply: the new frame draws a real two-row AM/PM column." },
+
+  { "frame": "Settings Check-in Time", "route": "/routines/night-time?from=settings",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "Byte-identical to Nightly Check-in Time in this drop: the old 'Settings' back label and the reassurance line are gone; only the exit differs (Save/Back → Settings). 0.00 % (0 px > 24). settings.json drives the same board from the Settings row ('Settings Check-in Time · via Settings')." },
+
+  { "frame": "Paywall — Monthly chosen", "route": "/paywall",
+    "initseed": ".overhaul/v-premium-seed.js",
+    "do": "await tap('Monthly, $12.99/month')", "wait": 900,
+    "note": "NOT A BUNDLE FRAME (label not in _index.json; the audit skips it). Monthly takes the ink card, Yearly the outline card; the Save tab stays on Yearly. Capture: .overhaul/shots/pr/u-pw-monthly.png" },
+
+  { "frame": "Pay sheet (mock) — trial", "route": "/paywall",
+    "initseed": ".overhaul/f-pw-confirmed-seed.js",
+    "do": "await tap('Close'); await waitFor('Before you go'); await tap('Start free trial'); await waitFor('Due today')", "wait": 900,
+    "note": "NOT A BUNDLE FRAME. Offline-only stand-in for the store sheet, on the kit Sheet (D224). Cancel / scrim close it; Confirm with Side Button buys. Capture: .overhaul/shots/pr/u-paysheet-trial.png" },
+
+  { "frame": "/reminders (unframed)", "route": "/reminders",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "NOT A BUNDLE FRAME. Reminders Setup's board with the back chevron and its own words (D225). Turn on reminders writes morningCheckin + riskTimeSupport and goes back." },
+
+  { "frame": "/notify-primer (unframed)", "route": "/notify-primer",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "NOT A BUNDLE FRAME. Reminders Setup's board with the ✕ and its 8-of-9 dashes (D225). All three controls close." },
+
+  { "frame": "Subscription — free (unframed state)", "route": "/subscription",
+    "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
+    "note": "NOT A BUNDLE FRAME. Replace `premium: true` with `premium: false` in the seed (pr-func.mjs does): 'Free tools' / 'Core tools included' / 'Free' pill, Change plan value 'Free', no next charge, no cancel (D222)." }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "frame": "Week I Reset",
+    "route": "/week/1",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week I Reset P2",
+    "route": "/week/1",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week II Changing Your Mindset",
+    "route": "/week/2",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture. Week II is the only board in the family whose current row (day 12) is one of rows 05-07, so its P2 is the only frame where the current card sits at the top of the scroller — see D157."
+  },
+  {
+    "frame": "Week II Changing Your Mindset P2",
+    "route": "/week/2",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe. Week II is the only board in the family whose current row (day 12) is one of rows 05-07, so its P2 is the only frame where the current card sits at the top of the scroller — see D157."
+  },
+  {
+    "frame": "Week III In the Moment",
+    "route": "/week/3",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week III In the Moment P2",
+    "route": "/week/3",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week IV Know Your Brain",
+    "route": "/week/4",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week IV Know Your Brain P2",
+    "route": "/week/4",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week V Why It Feels Worth It",
+    "route": "/week/5",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week V Why It Feels Worth It P2",
+    "route": "/week/5",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week VI Discipline",
+    "route": "/week/6",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week VI Discipline P2",
+    "route": "/week/6",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week VII Relapse and Adversity",
+    "route": "/week/7",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week VII Relapse and Adversity P2",
+    "route": "/week/7",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week VIII Boredom and Meaning",
+    "route": "/week/8",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week VIII Boredom and Meaning P2",
+    "route": "/week/8",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week IX Connection",
+    "route": "/week/9",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week IX Connection P2",
+    "route": "/week/9",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week X Yourself",
+    "route": "/week/10",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week X Yourself P2",
+    "route": "/week/10",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week XI Build a Life You Want",
+    "route": "/week/11",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week XI Build a Life You Want P2",
+    "route": "/week/11",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  },
+  {
+    "frame": "Week XII Leave It Behind",
+    "route": "/week/12",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "note": "The board unscrolled. `--initseed` is required: nothing signs a mock user in when a capture opens /week/N directly, and .vicifull/reseed.js finds no account to seed. .vicifull/weeks-seed.js puts the user on day 12, which is the state every one of the 24 frames is drawn for — 01-11 done, 12 current, 13-84 locked (.vicifull/reseed.js would give day 54 and unlock all twelve boards). Capture artefact to know about: for a minute or so after a hot reload the Expo dev-tools badge — a black rounded square with a lightning bolt — floats at css 8,798 and lands in the shot as ~7,000 pixels over 8/255 with worst 209. It is not the app; recapture."
+  },
+  {
+    "frame": "Week XII Leave It Behind P2",
+    "route": "/week/12",
+    "initseed": ".vicifull/weeks-seed.js",
+    "wait": 2200,
+    "do": "await scrollBy(400); await scrollBy(400)",
+    "note": "The same board scrolled to its end — 320pt, which is exactly where the P2 frame is drawn (D-019). Two scrollBy calls, not one: a single 400 sometimes lands short while the rows are still laying out. Same dev-tools-badge artefact as the P1 recipe."
+  }
+]

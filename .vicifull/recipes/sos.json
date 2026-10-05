@@ -1,0 +1,336 @@
+[
+  {
+    "frame": "Cue Intro Modal",
+    "route": "/urge",
+    "wait": 1800,
+    "note": "the interrupt opens on this page; nothing has to be seeded for it"
+  },
+  {
+    "frame": "SOS Strength",
+    "route": "/urge",
+    "wait": 1600,
+    "do": "await tap('Start the interrupt')"
+  },
+  {
+    "frame": "Cue Hue Picker",
+    "route": "/urge",
+    "wait": 1600,
+    "do": "await tap('Start the interrupt'); await tap('Continue')",
+    "note": "the Expo dev-tools badge lands on x 0-64 / y 788-852 and reads as a false Δ75 here — mask it or crop below 788"
+  },
+  {
+    "frame": "Surf Step 1",
+    "route": "/urge",
+    "wait": 1800,
+    "do": "await tap('Start the interrupt'); await tap('Continue'); await tap('Continue'); await tap('Door is open')",
+    "note": "the file names describe the previous drop's order: Surf-Step-1 is the SECOND move, 'Stand up.'"
+  },
+  {
+    "frame": "Surf Step 3",
+    "route": "/urge",
+    "wait": 1600,
+    "do": "await tap('Start the interrupt'); await tap('Continue'); await tap('Continue'); await tap('Door is open'); await tap('I’m up')"
+  },
+  {
+    "frame": "Cue Set Confirmation",
+    "route": "/urge",
+    "wait": 1600,
+    "do": "await tap('Start the interrupt'); await tap('Continue'); await tap('Continue'); await tap('Door is open'); await tap('I’m up'); await tap('I’ve left')"
+  },
+  {
+    "frame": "SOS Reason Picker",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/sos-reason.js",
+    "note": "pass 1 recorded this one as prose ('…the Cue Set Confirmation recipe, then tap Phone is away') and the audit could not run it; it is a drive file now"
+  },
+  {
+    "frame": "SOS Feeling Picker",
+    "route": "/urge",
+    "wait": 1600,
+    "script": ".vicifull/drives/sos-feel.js"
+  },
+  {
+    "frame": "SOS Loc Private Room",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Loc-Private-Room.js"
+  },
+  {
+    "frame": "SOS Loc Bed",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Loc-Bed.js"
+  },
+  {
+    "frame": "SOS Loc Public",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Loc-Public.js"
+  },
+  {
+    "frame": "SOS Loc Work",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Loc-Work.js"
+  },
+  {
+    "frame": "SOS Loc Elsewhere",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Loc-Elsewhere.js"
+  },
+  {
+    "frame": "SOS Loc Bathroom",
+    "unreachable": "no picker card reaches it: the location picker draws five rows against seven boards and no board on this branch carries \"Give me another\" (DECISIONS D038, unchanged — no picker gains an option the canvas does not draw). Both halves are proven rather than assumed. DATA: re-running scripts/vicifull/gen-sos-responses.mjs reproduces src/content/sosResponses.ts byte for byte. RENDER (new in pass 2, D146): temporarily set PLACE_BOARD.private to 'SOS-Loc-Bathroom' in src/components/urge/index.tsx, run the drive named below, then revert — the file was diffed against a pre-swap copy afterwards and is byte-identical. Measured that way against its own frame: mean |Δ| 0.015, max 5.",
+    "verifyRoute": "/urge",
+    "verifyWait": 1200,
+    "verifyScript": ".vicifull/drives/d038-loc-bathroom.js"
+  },
+  {
+    "frame": "SOS Loc Home Alone",
+    "unreachable": "no picker card reaches it: the location picker draws five rows against seven boards and no board on this branch carries \"Give me another\" (DECISIONS D038, unchanged — no picker gains an option the canvas does not draw). Both halves are proven rather than assumed. DATA: re-running scripts/vicifull/gen-sos-responses.mjs reproduces src/content/sosResponses.ts byte for byte. RENDER (new in pass 2, D146): temporarily set PLACE_BOARD.private to 'SOS-Loc-Home-Alone' in src/components/urge/index.tsx, run the drive named below, then revert — the file was diffed against a pre-swap copy afterwards and is byte-identical. Measured that way against its own frame: mean |Δ| 0.030, max 5.",
+    "verifyRoute": "/urge",
+    "verifyWait": 1200,
+    "verifyScript": ".vicifull/drives/d038-loc-home-alone.js"
+  },
+  {
+    "frame": "SOS Feel Turned On",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Turned-On.js"
+  },
+  {
+    "frame": "SOS Feel Bored",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Bored.js"
+  },
+  {
+    "frame": "SOS Feel Lonely",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Lonely.js"
+  },
+  {
+    "frame": "SOS Feel Stressed",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Stressed.js"
+  },
+  {
+    "frame": "SOS Feel Anxious",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Anxious.js"
+  },
+  {
+    "frame": "SOS Feel Angry",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Angry.js"
+  },
+  {
+    "frame": "SOS Feel Low",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Low.js"
+  },
+  {
+    "frame": "SOS Feel Rejected",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Rejected.js"
+  },
+  {
+    "frame": "SOS Feel Tired",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Tired.js"
+  },
+  {
+    "frame": "SOS Feel Restless",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Restless.js"
+  },
+  {
+    "frame": "SOS Feel Numb",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Numb.js"
+  },
+  {
+    "frame": "SOS Feel Ashamed",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Ashamed.js"
+  },
+  {
+    "frame": "SOS Feel Unknown",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Feel-Unknown.js"
+  },
+  {
+    "frame": "SOS Challenge",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Challenge.js",
+    "note": "reached by pressing \"Give me another\" through the feeling branch, which is the only thing that reaches it (D038)"
+  },
+  {
+    "frame": "SOS Trig Content",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Content.js"
+  },
+  {
+    "frame": "SOS Trig Doomscroll",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Doomscroll.js"
+  },
+  {
+    "frame": "SOS Trig Fantasy",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Fantasy.js"
+  },
+  {
+    "frame": "SOS Trig Late Phone",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Late-Phone.js"
+  },
+  {
+    "frame": "SOS Trig Habit",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Habit.js"
+  },
+  {
+    "frame": "SOS Trig Cant Sleep",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Cant-Sleep.js"
+  },
+  {
+    "frame": "SOS Trig Argument",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Argument.js"
+  },
+  {
+    "frame": "SOS Trig Alone",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Alone.js"
+  },
+  {
+    "frame": "SOS Trig Unknown",
+    "route": "/urge",
+    "wait": 900,
+    "script": ".vicifull/drives/b-SOS-Trig-Unknown.js"
+  },
+  {
+    "frame": "SOS Trig Rejection",
+    "unreachable": "no picker card reaches it: the trigger picker draws nine cards against ten boards and this branch carries no \"Give me another\" (DECISIONS D038, unchanged). DATA proven by regenerating src/content/sosResponses.ts byte for byte. RENDER proven in pass 2 (D146) by temporarily setting TRIGGER_BOARD.Doomscrolling to 'SOS-Trig-Rejection', running the drive below and reverting: mean |Δ| 0.015, max 5 against its own frame.",
+    "verifyRoute": "/urge",
+    "verifyWait": 1200,
+    "verifyScript": ".vicifull/drives/d038-trig-rejection.js"
+  },
+  {
+    "frame": "SOS Reassess",
+    "route": "/urge",
+    "wait": 1200,
+    "script": ".vicifull/drives/sos-reassess.js"
+  },
+  {
+    "frame": "SOS Afterward",
+    "route": "/urge",
+    "wait": 1200,
+    "script": ".vicifull/drives/sos-afterward.js"
+  },
+  {
+    "frame": "Surf Complete",
+    "route": "/urge",
+    "wait": 1600,
+    "script": ".vicifull/drives/sos-done.js",
+    "initseed": ".vicifull/sos-seed.js",
+    "note": "the frame states 'Logged — rode it out · ×3' and the count is the account's own urge_rode_out events with this run included, so the seed carries two (FINDINGS F28). Unseeded it draws ×1 and the line reads as a Δ150 defect that is not one."
+  },
+  {
+    "frame": "Relapse Log",
+    "route": "/relapse",
+    "wait": 1200,
+    "script": ".vicifull/drives/rel-log.js"
+  },
+  {
+    "frame": "Relapse Twice",
+    "route": "/relapse",
+    "wait": 1200,
+    "script": ".vicifull/drives/rel-twice.js"
+  },
+  {
+    "frame": "Relapse Resign",
+    "route": "/relapse",
+    "wait": 1200,
+    "initseed": ".vicifull/day-seed.js",
+    "script": ".vicifull/drives/rel-resign.js",
+    "note": "needs a signed-in account for the pledge and the signature. --seed timed out at networkidle twice under load where --initseed worked."
+  },
+  {
+    "frame": "Relapse Begin",
+    "route": "/relapse",
+    "wait": 1200,
+    "initseed": ".vicifull/day-seed.js",
+    "script": ".vicifull/drives/rel-begin.js"
+  },
+  {
+    "frame": "Urge Hub Now",
+    "route": "/urge-hub",
+    "wait": 1400,
+    "initseed": ".vicifull/hub-seed.js",
+    "note": "the hub seed now carries a LIVE urge session, startedAt = now − 138 s at severity 7 — 85A draws 17:42 inside stroke-dasharray 433.7 490.1 (88.49% of the r=78 ring) and 85B labels its marker \"2:18 in\" (D066/D067). Without it UrgeHub calls newUrgeSession() and the pane renders 20:00 against a full ring, i.e. the clock and the arc are never actually compared."
+  },
+  {
+    "frame": "Urge Hub Score",
+    "route": "/urge-hub",
+    "wait": 1400,
+    "initseed": ".vicifull/hub-seed.js",
+    "script": ".vicifull/drives/hub-pane2.js",
+    "note": "the hub seed now carries a LIVE urge session, startedAt = now − 138 s at severity 7 — 85A draws 17:42 inside stroke-dasharray 433.7 490.1 (88.49% of the r=78 ring) and 85B labels its marker \"2:18 in\" (D066/D067). Without it UrgeHub calls newUrgeSession() and the pane renders 20:00 against a full ring, i.e. the clock and the arc are never actually compared."
+  },
+  {
+    "frame": "Urge Hub Proof",
+    "route": "/urge-hub",
+    "wait": 1400,
+    "initseed": ".vicifull/hub-seed.js",
+    "script": ".vicifull/drives/hub-pane3.js",
+    "note": "85C's twelve bars and its 'Longest urge survived · 41 min' row read durationSeconds; the seed carries the canvas's own twelve lengths"
+  },
+  {
+    "frame": "Urge Hub Surfed",
+    "route": "/urge-hub",
+    "wait": 1400,
+    "initseed": ".vicifull/hub-seed.js",
+    "script": ".vicifull/drives/hub-pane4.js"
+  },
+  {
+    "frame": "Urge Hub Pledges",
+    "route": "/urge-hub",
+    "wait": 1400,
+    "initseed": ".vicifull/hub-seed.js",
+    "script": ".vicifull/drives/hub-pane5.js",
+    "note": "85E dates the pledge fourteen days back; the seed rewrites the Pledge entry to now − 13 days"
+  },
+  {
+    "frame": "Urge Hub — Breathe handoff",
+    "route": "/urge-hub",
+    "wait": 1200,
+    "initseed": ".vicifull/hub-seed.js",
+    "script": ".vicifull/drives/hub-breathe.js",
+    "note": "not a frame in the bundle; proves the paper pill hands over to the SOS breathing stage and comes back (D069)"
+  }
+]

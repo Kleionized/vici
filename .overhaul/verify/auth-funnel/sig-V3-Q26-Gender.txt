@@ -1,0 +1,7 @@
+MISSING in app:  svg | 24.1 | 605.4 | 344.7 | 210.5 | - | - | - | - | - | -
+~ Male                                     type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Female                                   type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Non-binary                               type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Another identity                         type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Prefer not to say                        type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+--- 40 design rows, 48 app rows; 5 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)

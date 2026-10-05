@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q6`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q6`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q6.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q6.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,7 +32,7 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · How do you usually feel just before you start looking?
+    · What are you usually feeling right before?
   <div> position:absolute  left:0  right:0  top:226px  color:rgba(244,243,240,0.55)  font-size:13px  font-weight:500  text-align:center
     · Select all that apply
   <div> position:absolute  left:24px  right:24px  top:278px  display:flex  gap:10px
@@ -55,6 +63,41 @@ element on the frame is here, in paint order, indented by depth.
     <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
       <svg> viewBox="0 0 24 24"  width="22"  height="22"
         <path> d="M12 3.5c3.5 4.2 6 7.2 6 10.2a6 6 0 1 1-12 0c0-3 2.5-6 6-10.2Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Stressed
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Low
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <circle> cx="12"  cy="12"  r="7.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-dasharray="3.5 4"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Angry
+  <div> position:absolute  left:24px  right:24px  top:482px  display:flex  gap:10px
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M18.5 12a6.5 6.5 0 1 1-2-4.7"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+        <path> d="M16 3.5l1 3.5-3.5 1"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Numb
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.6 2.2-5.2.6 1 1.4 1.7 2.3 2C11 7.5 11.4 5 12 3Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Tired
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.6 2.2-5.2.6 1 1.4 1.7 2.3 2C11 7.5 11.4 5 12 3Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Nothing in particular
+  <div> position:absolute  left:24px  right:24px  top:744px  height:56px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:28px  cursor:pointer
+    <span> color:#131313  font-size:16.5px  font-weight:600
+      · Continue
+```
+
+Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
       <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
         · Stressed
     <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)

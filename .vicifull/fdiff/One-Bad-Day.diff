@@ -1,0 +1,31 @@
+--- .vicifull/pretty/prev/One-Bad-Day.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/One-Bad-Day.html	2026-09-05 00:22:35
+@@ -126,7 +126,7 @@
+     | color:#55534E;
+     | text-wrap:pretty;
+   ">
+-    · A bad day does not erase the work before it. Your lessons, logs, and medallions stay.
++    · It doesn’t erase the work before it. Your lessons, logs, rating history and medallions stay.
+   </div>
+   <div style="
+     | position:absolute;
+@@ -177,6 +177,19 @@
+   </div>
+   <div style="
+     | position:absolute;
++    | left:44px;
++    | right:44px;
++    | top:572px;
++    | text-align:center;
++    | font-size:15.5px;
++    | font-weight:500;
++    | line-height:22px;
++    | color:#1D1C1A;
++  ">
++    · What matters is that you come back.
++  </div>
++  <div style="
++    | position:absolute;
+     | left:24px;
+     | right:24px;
+     | top:744px;

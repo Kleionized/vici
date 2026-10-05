@@ -1,0 +1,13 @@
+const log = [];
+await tap('Continue with email');
+await __sleep(1200);
+log.push('after email row: ' + location.pathname + location.search + ' :: ' + __txt().slice(0, 80));
+await typeIn(0, 'Marcus');
+await typeIn(1, 'marcus@example.com');
+await tap('Create Account');
+await __sleep(2500);
+log.push('after create: ' + location.pathname + ' :: ' + __txt().slice(0, 110));
+await tap('Back');
+await __sleep(1600);
+log.push('after back: ' + location.pathname + ' :: ' + __txt().slice(0, 110));
+return log;

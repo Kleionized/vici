@@ -1,0 +1,220 @@
+[
+  {
+    "note": "GROUP slip (Overhaul run, Phase 1) — the twelve `98 · RELAPSE — POST-SLIP` boards and the nineteen response cards, all one route, `/slip`, with internal steps. Every entry runs on scripts/overhaul/shot.mjs (what scripts/overhaul/audit.mjs drives). Seeds: `.overhaul/slip-seed{0,1,2}.js` = clock.js pinned to Tue 22 Jul 2025 23:40 and TICKING (RN Animated timing reads Date.now(), so a frozen clock leaves presses and the wheel mid-move) + a signed-in mock account (Jerry, pledge signed six days earlier) with 0 / 1 / 2 slips already logged today — 98G / 98H / 98I are chosen by that count; `slip-seed-nopledge.js` has no pledge (98J is skipped, D148). The pinned date is what makes 98C read “Tonight, Tue Jul 22” with the wheel on 11 · 40 · PM and 98E “Tonight, 11:40 PM”. Each step renders only its own controls, so repeated “Continue” taps are unambiguous. Results at 393×852: all 31 frames 0.00 % pxdiff (t=24); Slip When / Fed / Urge Now carry 7–12 antialiased px on the edge of the chip or row that was just pressed. A capture that shows the old-style “The post is in.” over the flow is (app)/_layout.tsx's launch prompt firing after a hot reload remounted it (the save sets `tideline.letter.pending`) — retake. Superseded files: recipes/slip-verify.json (deleted), the old f-slip-seed*-2340.js (kept only because logs.md cites them as the clock precedent).",
+    "sizes": "Checked at 375×667, 390×844 and 430×932 (scripts/overhaul/size-sweep.mjs --group=slip --scroll; Phase 2 re-looked at every PNG): hero boards lift hero + stack (D320 rule 2), 98D/98F/98J drop their bottom hero below ~800 tall, 98E lifts disc + stack toward 108 and only then scrolls (Phase 2 amendment to D300: at 375×667 the four-row card sits whole 16 pt above the pill), 98C/98D/98F/98J lift a stack that would meet the controls toward 108 before scrolling (98C at 375×667 rises 14 pt and fits); nothing runs under a control. 98E values bind their last two words (no orphan at 430)."
+  },
+  {
+    "frame": "Slip Entry",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "wait": 1500,
+    "note": "98A, the first step."
+  },
+  {
+    "frame": "Slip Close It",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\")"
+  },
+  {
+    "frame": "Slip When",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\")",
+    "note": "Just now selected, wheel 11 · 40 · PM, date row “Tonight, Tue Jul 22”."
+  },
+  {
+    "frame": "Slip Fed",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\")"
+  },
+  {
+    "frame": "Slip Logged",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue\")",
+    "note": "writes the lapse event (trigger “Tired · Phone in bed · Late night”) and tideline.letter.pending"
+  },
+  {
+    "frame": "Slip Urge Now",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"A little\")",
+    "note": "98F is drawn with “A little” selected; first paint has none."
+  },
+  {
+    "frame": "Slip Dont Fail Twice",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "0 slips before this one today"
+  },
+  {
+    "frame": "Slip Stop Here",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed1.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "1 slip before this one today"
+  },
+  {
+    "frame": "Slip Third",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed2.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "2 slips before this one today — the #111111 board"
+  },
+  {
+    "frame": "Slip Pledge",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Done\")",
+    "note": "pledge exists and no slip since signing (D148); nopledge/seed1 go straight to 98K"
+  },
+  {
+    "frame": "Slip Begin Again",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Done\"); await tap(\"Sign it again\")"
+  },
+  {
+    "frame": "Slip Morning After",
+    "route": "/slip?stage=morning",
+    "initseed": ".overhaul/slip-seed0.js",
+    "wait": 1500,
+    "note": "also reached in-flow: a slip dated yesterday → 98K Start again → 98L"
+  },
+  {
+    "frame": "Slip Feel Bored",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\")",
+    "note": "deck index 0: only “Bored” picked, then 0 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Ashamed",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\")",
+    "note": "deck index 1: only “Bored” picked, then 1 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Lonely",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 2: only “Bored” picked, then 2 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Stressed",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 3: only “Bored” picked, then 3 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Rejected",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 4: only “Bored” picked, then 4 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Tired",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 5: only “Bored” picked, then 5 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Turned on",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 6: only “Bored” picked, then 6 × Give me another"
+  },
+  {
+    "frame": "Slip Feel Not sure",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 7: only “Bored” picked, then 7 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Late night",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 8: only “Bored” picked, then 8 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Scrolling",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 9: only “Bored” picked, then 9 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Sexual content",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 10: only “Bored” picked, then 10 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Boredom",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 11: only “Bored” picked, then 11 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Loneliness",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 12: only “Bored” picked, then 12 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Stress",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 13: only “Bored” picked, then 13 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Argument",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 14: only “Bored” picked, then 14 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Couldn’t sleep",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 15: only “Bored” picked, then 15 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Being alone",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 16: only “Bored” picked, then 16 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Habit",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 17: only “Bored” picked, then 17 × Give me another"
+  },
+  {
+    "frame": "Slip Trigger Not sure",
+    "route": "/slip",
+    "initseed": ".overhaul/slip-seed0.js",
+    "do": "await tap(\"Log the slip\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 18: only “Bored” picked, then 18 × Give me another"
+  }
+]

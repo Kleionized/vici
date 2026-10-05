@@ -1,0 +1,58 @@
+[
+  {
+    "frame": "Today Home",
+    "route": "/today",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500)",
+    "note": "Page one. `.vicifull/today-seed.js` is written by `node .vicifull/f-today-seed.mjs`, which runs `scripts/uifinal1/seed.mjs` and re-emits it as a browser init script: day 41, score 1,240, Navigator · II, name Jerry (the canvas's own; `Marcus` is printed on no frame in the drop), six of the seed's urges moved onto today so buildScore's delta reads the canvas's 18, and both of `src/app/(app)/_layout.tsx`'s one-shot gates (the weekly report and the check-in prompt) marked seen so /today and /score open directly. Every timestamp is stored as an offset from midnight and re-based in the page, so the file does not go stale the way `.vicifull/seed.json` did. Pass 1 drove these seven frames through `.vicifull/todayshot.mjs`, which `scripts/vicifull/audit.mjs` cannot run — it only knows `shot.mjs --initseed=` — so the recipes replayed unseeded (FINDINGS F27). Measured this pass: 1 of 19,502 8x8 block means over 4/255 across css rows 54-852, worst 4.9 — the whole page, gradients included."
+  },
+  {
+    "frame": "Today Home Task",
+    "route": "/today",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=614; await __sleep(1000)",
+    "note": "Page two at the default day 41, where lessonForDay(41) exists and the task card takes its lesson-sourced register. pageH is 614 (852 - 54 status - 37 mark row - 64 urge bar - 83 tab bar). The seed must NOT name a dailyAction for today: one named by hand takes precedence and draws NoteArt instead. Residual 1,917 blocks, ALL of it the D132 mock card and the day's own content: css y 180-259 is the mock title/meta AND the mock ARTWORK (at day 41 the app draws week VI's flag-on-a-hill scene where the canvas draws week I's luggage tag — the canvas's card carries week I art under a Week II caption, which is a fourth strand of D132's evidence); y 280-299 the seven-slot rail (D133); y 480-599 the day's own title and three-line caption; y 600-659 D135's +22 overhang and its shadow. Re-measured pass 2 (r-today-): 1,917 of 19,502 8x8 block means over 4/255, worst 201.7."
+  },
+  {
+    "frame": "Today Home II",
+    "route": "/today",
+    "initseed": ".vicifull/today-seed-d86.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=614; await __sleep(1000)",
+    "note": "The same page two at day 86. The frame draws the task card's FALLBACK register (phone in the drawer, crescent, 'Today's task'), which today.tsx reaches only past the 84-lesson curriculum. The frame's own composition — that register under a 'Lesson 5 · Week II' card — is NOT reachable and is not a defect: the lesson card on this frame and on Today Home Task is a mock the canvas reused (D132). At day 86 the task card measures 274.0, the frame's own number. Residual 349 blocks, all inside css y 180-239 and 280-299."
+  },
+  {
+    "frame": "Today Home III",
+    "route": "/today",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=1228; await __sleep(1000)",
+    "note": "Page three, 2 x 614. Needs a journalEntries row tagged 'Pledge' — the seed carries one ('The mornings are mine again.'). 0 of 19,502 block means over 4/255, worst 2.1: pixel-identical."
+  },
+  {
+    "frame": "Score Detail",
+    "route": "/score",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1400)",
+    "note": "Opens straight onto the sheet's first page. Two known non-matches, both settled: the y axis floors at 1,000 because SCORE_BASE is 1,000 and no account this app can hold produces the canvas's 800; and the fourth pager dot is D028 (re-checked against this drop's Score-Detail.html — still four here against three on both siblings, and three wins). Everything else pairs: the two month gridlines at x 150 and 282, the dashed rules, the plot box, the marker circles and the value badge with its 0 6 14 rgba(19,19,19,0.22) shadow. Pass 2 re-measure (r-today-): 1,659 blocks over 4/255 — y 400-660 the chart data, 700-759 the insight card's values, 800-819 D028's fourth dot, and 6 blocks at y 240-259 which are the badge hairline's one-device-row height difference, not data. Reached the designed way (tapping 'Recovery score' on /today) the page is 0 of 19,502 blocks over 2/255 against this URL capture, so F20's duplicate-paint-server class is clear here."
+  },
+  {
+    "frame": "Score Detail Moves",
+    "route": "/score",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1400); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=393; await __sleep(1200)",
+    "note": "The sheet is a horizontal pager. Set scrollLeft directly — n.scrollTo({left}) does NOT move it. The active dot follows onScroll (D065). The five ledger rows differ because the frame's ledger and the frame's own header describe two different accounts (D134); the ledger account itself is seedable and reproduces every value exactly — see .vicifull/f-today-ledger.mjs, which is the proof, not a capture recipe."
+  },
+  {
+    "frame": "Score Detail Ranks",
+    "route": "/score",
+    "initseed": ".vicifull/today-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1400); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=786; await __sleep(1200)",
+    "note": "Third page of the same pager. 144 blocks over 4/255: 138 in css y 700-759 — the footer card's pace line, `About {n} weeks at this pace` computed from month.net/days — and 6 in css y 240-259, the score badge's 26 x 1.5 hairline, which the design frame rasterises over 4 device rows and the app's SVG rect over 3 (Delta 40/255 on that one row; the same 6 blocks appear on all three score pages). The canvas's own `About a week` needs >= 6 points a day; its own Moves ledger states +86 net over a 17-day window = 5.06 a day, which renders `About 2 weeks` — so the two frames' footers cannot both be drawn by one account, the same shape as D134. The '60 to go' title, the 'Helmsman' sub, the four rank rows, the 'you're here' pill at 237.5,476.5,82.5,19 and the night header are all exact."
+  }
+]

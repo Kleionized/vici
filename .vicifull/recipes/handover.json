@@ -1,0 +1,81 @@
+[
+ {
+  "frame": "Campaign Map",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "seed": false,
+  "do": "window.__H='map1'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200,
+  "note": "Nothing in the app jumps to the handover: /welcome holds the step index in React state, so the only way in is to walk the whole funnel. Use `node .vicifull/funnel-cap.mjs \"/welcome\" out.png --sig=… --do=\"window.__H='<stop>'\" --script=.vicifull/drives/handover-walk.js --wait=1200` — funnel-cap plants tideline.session.userId + tideline.mock.users for 'Sam' before the first navigation, which shot.mjs cannot do. __H is the stop: map1 | map2 | map3 | letter | read | vow | med | rem. The walk answers 09A 'Yes, once or twice' so 09B shows, and 11 'When I'm home alone' so 18 and 19 show. 26 Enlisting Aegis hands over on its own after ~6.8s, so the walk waits on the text 'this is where' rather than tapping. pass 2 (r-handover): a capture taken while Metro is rebuilding catches Expo's fast-refresh overlay — a 42x42 dark rounded box with a lightning bolt at css 8,802 — which adds three signature rows and reads as a 120-block, Δ228 defect at the bottom left. It hit 2 of 8 captures here. Check the app sig for a row `8 | 802 | 42 | 42` and re-shoot. Residual on all three map frames: the four week-tile text stacks render exactly 1 device px (0.5pt) below the design because the canvas centres the stack with top:50% + translateY(-50%) and CampaignWeekRow centres it with flex justifyContent:'center' — same box top (221.5) and height (15), different glyph snapping. Patching the design frame to flex centring drops its glyphs by the same 1 device px, which is the proof."
+ },
+ {
+  "frame": "Campaign Map II",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='map2'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200
+ },
+ {
+  "frame": "Campaign Map III",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='map3'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200
+ },
+ {
+  "frame": "Letter Received",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='letter'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1400,
+  "note": "pass 2: 1/19502 8x8 blocks over 4/255 against the design, mean |d| 0.31 — the wax seal's r=93.5% gradient and its inset rim light are both drawn now, and the envelope's contact shadow is a real FeGaussianBlur"
+ },
+ {
+  "frame": "Letter Week XII",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='read'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200,
+  "note": "the sheet opens at the top of a 2,100pt scroll; the frame draws that first screenful. Use window.scrollBy(dy) to reach the sign-off and the Keep this letter pill. pass 2: the design frame's letter body is `overflow:auto`, so BOTH sides scroll — `.vicifull/r-handover-scroll.mjs <dy>` sets scrollTop on the scrollable div of each and shoots the pair. At dy 900 and 1424 the two are 0 raw pixels over 4/255 (worst px 3), and both scrollers report clientHeight 636 / scrollHeight 2060, so the pass-1 accumulated drift is gone."
+ },
+ {
+  "frame": "The Vow",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='vow'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200,
+  "note": "the date line reads today's date, not the frame's 'Jun 9 · Day 0' — the frame's is the authoring day pass 2: the date is `new Date()` at welcome.tsx:223, not account state, so it is pinned with a clock override rather than a seed — `.vicifull/r-handover-vowdate.mjs` freezes the page clock at 2026-06-09 and re-walks. With it the whole frame is 0/19502 8x8 blocks over 4/255 (worst raw px 19), which proves the date line is the wall clock and nothing else on this frame differs."
+ },
+ {
+  "frame": "Medallion Received",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='med'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1400,
+  "note": "pass 2: 1/19502 blocks over 4/255, mean |d| 0.35"
+ },
+ {
+  "frame": "Reminders Setup",
+  "route": "/welcome",
+  "initseed": ".vicifull/f-funnel-user.js",
+  "do": "window.__H='rem'",
+  "script": ".vicifull/drives/handover-walk.js",
+  "wait": 1200,
+  "note": "the headline's window comes from windowFor(answers); the walk's 'Late at night' gives the frame's 'Late night' pass 2: residual is 14 blocks over 4/255, worst 11.3, all inside the two 24pt laurel marks — expo-image contentFit=\"contain\" carries 10.6% less ink than the design's <img width=24 height=24> at the same bbox."
+ },
+ {
+  "frame": "(no frame) /reminders",
+  "route": "/reminders",
+  "seed": false,
+  "do": "await __sleep(1500)",
+  "wait": 1400,
+  "note": "Reachable — Settings > All > Reminders (src/app/(app)/all.tsx:114) — but NO frame in this drop draws it, so there is nothing to diff it against. Its two notification cards were carrying the copy `VICI-previous/Reminders-Setup` draws; `47 · Reminders Setup` restates the same two cards, and D099 takes that reading (the recipe cited D091 — the FeGaussianBlur decision — by mistake), so they now read 'You pick the time' / 'The time you told us about. SOS is one tap away.' The headline ('Two reminders a day.') and sub are still unauthored by any frame in this drop and were left alone."
+ }
+]

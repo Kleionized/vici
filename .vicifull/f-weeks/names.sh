@@ -1,0 +1,1 @@
+FR1=(Week-I-Reset Week-II-Changing-Your-Mindset Week-III-In-the-Moment Week-IV-Know-Your-Brain Week-V-Why-It-Feels-Worth-It Week-VI-Discipline Week-VII-Relapse-and-Adversity Week-VIII-Boredom-and-Meaning Week-IX-Connection Week-X-Yourself Week-XI-Build-a-Life-You-Want Week-XII-Leave-It-Behind)

@@ -1,0 +1,41 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Change one dynamic
+div | 24 | 209 | 345 | 535 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 394 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 73 | - | - | - | - | - | -
+div | 24 | 210 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 33 | 214.5 | 6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 1
+div | 60 | 209 | 309 | 73 | - | - | - | - | - | -
+div | 60 | 209 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Late-night contact
+div | 60 | 231 | 309 | 51 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Decide the time after which you stop answering non-urgent calls or messages, and tell the person if they need to know.
+div | 24 | 292 | 345 | 94 | - | - | - | - | - | -
+div | 24 | 293 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32.2 | 297.5 | 7.6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 2
+div | 60 | 292 | 309 | 94 | - | - | - | - | - | -
+div | 60 | 292 | 309 | 57 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | A group chat or account that repeatedly humiliates, pressures, or drags you toward behaviour you are leaving
+div | 60 | 352 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Mute it, leave it, or stop opening it for the next seven days.
+div | 24 | 396 | 345 | 75 | - | - | - | - | - | -
+div | 24 | 397 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32.1 | 401.5 | 7.9 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 3
+div | 60 | 396 | 309 | 75 | - | - | - | - | - | -
+div | 60 | 396 | 309 | 38 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | A subject someone repeatedly pushes after you have said no
+div | 60 | 437 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Send one plain sentence such as "I do not want to discuss that."
+div | 24 | 481 | 345 | 56 | - | - | - | - | - | -
+div | 24 | 482 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32 | 486.5 | 8.1 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 4
+div | 60 | 481 | 309 | 56 | - | - | - | - | - | -
+div | 60 | 481 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | Invitations you repeatedly regret accepting
+div | 60 | 503 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Decline the next one now if it is already on the calendar.
+div | 24 | 547 | 345 | 56 | - | - | - | - | - | -
+div | 24 | 548 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+span | 32.1 | 552.5 | 7.8 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 5
+div | 60 | 547 | 309 | 56 | - | - | - | - | - | -
+div | 60 | 547 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | No relationship fits
+div | 60 | 569 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Do not invent one for the lesson. Make plans with someone you like being around instead.
+div | 24 | 627 | 345 | 64 | - | - | - | - | 12.5px/400/normal/16px/rgb(118, 115, 112) | If you are afraid of someone’s reaction, the relationship is controlling, or there is abuse or a threat of violence, do not confront them alone. Involve someone you trust or a qualified professional and put your safety first.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

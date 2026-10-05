@@ -1,0 +1,27 @@
+--- .vicifull/pretty/prev/Onboarding-Start.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Onboarding-Start.html	2026-09-05 00:22:35
+@@ -164,13 +164,13 @@
+     | color:#F4F3F0;
+     | text-wrap:balance;
+   ">
+-    · Sam, let’s work out when this usually happens.
++    · Sam, let’s figure out what usually leads you back to porn.
+   </div>
+   <div style="
+     | position:absolute;
+     | left:44px;
+     | right:44px;
+-    | top:434px;
++    | top:466px;
+     | text-align:center;
+     | font-size:15.5px;
+     | font-weight:400;
+@@ -178,7 +178,7 @@
+     | color:rgba(244,243,240,0.7);
+     | text-wrap:pretty;
+   ">
+-    · It takes about two minutes. Then you’ll see what VICI would focus on first.
++    · It’ll take about two minutes. Then we’ll show you what we’d change first.
+   </div>
+   <div style="
+     | position:absolute;

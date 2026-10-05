@@ -1,0 +1,12 @@
+MISSING in app:  svg | -19.6 | 487 | 432.3 | 264 | - | - | - | - | - | -
+~ Time                                     type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Focus                                    type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Sleep                                    type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Confidence                               type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Relationships                            type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Sex or intimacy                          type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Energy                                   type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Feeling in control                       type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Peace of mind                            type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 62 design rows, 70 app rows; 10 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

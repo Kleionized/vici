@@ -1,0 +1,10 @@
+const log = (k, v) => console.error('R:' + k + ' = ' + JSON.stringify(v));
+await tap('Log the slip'); await tap('Continue'); await tap('Continue');
+await tap('Bored'); await tap('Continue'); await __sleep(1000);
+await tap('Continue'); await __sleep(400); await tap('Continue'); await __sleep(400);
+await tap('Continue'); await __sleep(400);
+log('card', document.body.innerText.slice(0, 80));
+await tap('Done'); await __sleep(800);
+log('after Done', { path: location.pathname, text: document.body.innerText.slice(0, 200) });
+await tap('Read my pledge'); await __sleep(2500);
+log('after Read my pledge', { path: location.pathname, text: document.body.innerText.slice(0, 100) });

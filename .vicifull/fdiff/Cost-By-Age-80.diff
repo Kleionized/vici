@@ -1,0 +1,43 @@
+--- .vicifull/pretty/prev/Cost-By-Age-80.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Cost-By-Age-80.html	2026-09-05 00:22:35
+@@ -82,16 +82,35 @@
+     | -webkit-backdrop-filter:blur(12px);
+     | border-radius:16px;
+     | box-shadow:0 0 0 1px rgba(255,255,255,0.16), 0 18px 44px rgba(0,0,0,0.5);
+-    | padding:13px 24px 14px;
+-    | white-space:nowrap;
++    | padding:18px 24px 18px;
++    | width:300px;
++    | box-sizing:border-box;
++    | text-align:center;
+   ">
+-    <span style="
++    <div style="
+       | font-size:15px;
+       | font-weight:500;
++      | color:rgba(255,255,255,0.7);
++    ">
++      · By age 80
++    </div>
++    <div style="
++      | margin-top:6px;
++      | font-size:28px;
++      | font-weight:600;
++      | letter-spacing:-0.5px;
+       | color:#FFFFFF;
+     ">
+-      · By age 80 — about 6,100 days
+-    </span>
++      · About 6,100 days
++    </div>
++    <div style="
++      | margin-top:8px;
++      | font-size:13px;
++      | line-height:18px;
++      | color:rgba(255,255,255,0.6);
++    ">
++      · If nothing changes.
++    </div>
+   </div>
+   <div style="
+     | position:absolute;

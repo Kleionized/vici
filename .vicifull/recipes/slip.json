@@ -1,0 +1,285 @@
+[
+  {
+    "note": "GROUP slip — the twelve-frame `98 · RELAPSE — POST-SLIP` flow and its nineteen response cards, all at /slip. NOT /relapse, which draws the older four-frame `36 · Relapse` authoring of the same four beats (D147). Every entry below runs on scripts/vicifull/shot.mjs, which is what scripts/vicifull/audit.mjs drives — the previous file's `do` strings were .vicifull/slipshot.mjs argument lists and the audit could not run them. `.vicifull/drive.js`'s tap() DOES work on this build; slipshot.mjs is a convenience, not a necessity.",
+    "seeds": "`.vicifull/f-slip-seed{0,1,2}-2340.js` sign a mock account (Jerry, day 13, a pledge signed six days ago) in before the first paint with 0 / 1 / 2 slips already on today's log — 98G, 98H and 98I are chosen by that count — AND freeze the page clock at tonight 23:40, which is what makes 98E read “Tonight · 11:40 PM” and 98C's wheel centre on 11 / 40 / PM instead of the capture host's own time (F28). `-nopledge-2340.js` is the same account with no pledge, for the state D148 says 98J must not be drawn in.",
+    "tool": "sh .vicifull/f-slip-run.sh <Frame.html> <slug> <route> <seedfile|-> <do|-> captures both sides and block-diffs the PNGs; .vicifull/f-slip-blocks.mjs is the diff (8x8 block means over the whole frame, only the D009 status bar excluded).",
+    "entryPoints": "D147 gives /slip two doors in the product, both in src/components/urge/index.tsx (the `sos` group's file). DRIVEN AND VERIFIED: the urge hub's 'I slipped' — `node scripts/vicifull/shot.mjs app \"/urge-hub\" … --do='await tap(\"I slipped\")'` lands on /slip with 98A drawn. NOT DRIVEN: the surf board's 'I slipped — log it' (`logSlip()`), because `WaveStage` sits behind three timed SOS stages (breathe → tap → odd) that only `onDone` advances; `.vicifull/f-slip-sosexit.js` walks `.vicifull/drives/sos-done.js`'s path and stops at 'Breathe with me.', where the control does not exist yet. It is the same one-line `router.replace('/slip')` as the verified door, and it is recorded as unverified rather than assumed.",
+    "copySweep": "`node scripts/vicifull/copy-sweep.mjs Email-Login --missing` reports exactly four missing strings across all 31 frames — 'Sat Jul 18', 'Sun Jul 19', 'Wed Jul 22', 'Thu Jul 23', the impossible date column of D150. Every other string in the group is in src/.",
+    "auditResult": "`node scripts/vicifull/audit.mjs --group=slip` on these recipes: 31 frames — CLEAN 28, DIFF 3, unreachable 0, capture failed 0, NO RECIPE 0. Block-diffing all 31 of the audit's own captured pairs (8x8 means over the whole page, only the D009 status bar excluded): 29 of 31 at 0 of 19502 blocks over 4/255. The two that are not, and the three DIFF rows, are each accounted for and none is a paint loss: (a) `Slip When` net 22 / 5 missing / 224 blocks — every one of those blocks lies in x 84…172, the date column of D150, which the canvas draws as six days' labels in five rows; nothing at all differs past x 180. (b) `Slip Pledge` 1 missing — the canvas's 0 x 0 empty `<span>` spacer opposite the signature, which the app expresses as `alignItems: 'flex-end'` (D022). 0 blocks. (c) `Slip Begin Again` net 1 and 48 blocks, worst 6.0 — the net row is `opacity: 0.5 -> -` on the sun's grain, because `src/components/ui/Grain.tsx` emits a wrapper `View` plus an `<Image>` that carries the opacity where the canvas states one div, and the signature reads the wrapper; the blocks are the grain TILE PHASE, 0 of 19502 over 8/255, and the tiling was checked by eye at 2x rather than inferred — 96 x 96 on both sides, not the F31 magnification. Every group that uses `Grain` will show that row.",
+    "captureArtefact": "Expo's dev-server overlay — a dark rounded square with a lightning bolt — drops into the bottom-left corner of the app page at random while Metro is rebuilding under another agent's edit. It is exactly 120 8x8 blocks at delta 217 and it is NOT the app. `.vicifull/f-slip-blocks.mjs` names it when every differing block falls inside it; the answer is to re-take the shot, and three of the nineteen cards needed that.",
+    "blurLayers": "F26/F44/D091/D113 and then D151. The group's 31 frames carry exactly two kinds of blurred layer, both now drawn as the canvas states them rather than approximated: (a) 16 ground shadows — a flat rgba(0,0,0,0.10-0.14) ellipse under blur(4-5px), i.e. a blurred SOLID, which D010 never covered. Measured on `Slip Entry` down the shadow's centre at x 208, design vs app, y 386/390/394/398/402/406/410/414 and the spill 5pt outside the box: 0/255 on all eleven sample points, where the box-clipped radial was half as tall and a quarter too dark. (b) 21 warm washes — a two-stop closest-side ramp under blur(4px). D010 absorbed that and D151 retires the exemption; measured per pixel over each wash's own box with nothing masked, the unblurred ramp was worst 6/255 in the CORE of `Slip Morning After`'s 140pt wash (mean |d| 0.34) and 5/255 on `Slip Entry`'s (mean 0.41). With the canvas's own FeGaussianBlur they are worst 2 and 1, mean 0.14 and 0.10. The declared signature consequence is D091's: each blurred layer reports one row 3sigma larger than the frame's own div, because the div is not what the canvas paints — those are the `extra` rows in the audit line."
+  },
+  {
+    "frame": "Slip Entry",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "note": "0 of 19502 8x8 blocks over 4/255."
+  },
+  {
+    "frame": "Slip Close It",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\")",
+    "note": "the only card frame with no ghost link under its pill. 0 blocks."
+  },
+  {
+    "frame": "Slip When",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Choose a time\")",
+    "data": true,
+    "note": "the wheel is closed until 'Choose a time' is tapped and the canvas draws it open — D150. With the clock frozen the hour, minute and meridiem columns match exactly; the 224 remaining blocks are all in x 84…172, the DATE column, whose canvas mock (Sat Jul 18 / Sun Jul 19 / Today / Wed Jul 22 / Thu Jul 23) is six days' labels in five rows and cannot be produced. Nothing differs past x 180."
+  },
+  {
+    "frame": "Slip Fed",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\")",
+    "note": "the canvas draws Tired, Phone in bed and Late night selected and the CTA as 'Continue · 3'. 0 blocks."
+  },
+  {
+    "frame": "Slip Logged",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue · 3\")",
+    "note": "0 blocks, 0 missing rows — including 'Tonight · 11:40 PM' and 'Change for next time · Phone charges outside the bedroom', both of which the frozen clock and the Late night card produce rather than excuse."
+  },
+  {
+    "frame": "Slip Urge Now",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue · 3\"); await tap(\"Continue\"); await tap(\"A little\")",
+    "note": "'A little' IS required — the canvas draws that row selected. 0 blocks."
+  },
+  {
+    "frame": "Slip Dont Fail Twice",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Phone in bed\"); await tap(\"Late night\"); await tap(\"Continue · 3\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "98G/98H/98I are alternates chosen by how many slips are already on today's log — 0, 1, 2+. 0 blocks."
+  },
+  {
+    "frame": "Slip Stop Here",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed1-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "0 blocks."
+  },
+  {
+    "frame": "Slip Third",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed2-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Tired\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"A little\"); await tap(\"Continue\")",
+    "note": "the group's only dark frame."
+  },
+  {
+    "frame": "Slip Feel Bored",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\")",
+    "note": "deck index 0. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Ashamed",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\")",
+    "note": "deck index 1. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Lonely",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 2. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Stressed",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 3. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Rejected",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 4. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Tired",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 5. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Turned on",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 6. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Feel Not sure",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 7. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Late night",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 8. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Scrolling",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 9. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Sexual content",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 10. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Boredom",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 11. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Loneliness",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 12. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Stress",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 13. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Argument",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 14. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Couldn’t sleep",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 15. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Being alone",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 16. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Habit",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 17. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Trigger Not sure",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "settle": 1800,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\"); await tap(\"Give me another\")",
+    "note": "deck index 18. With only `Bored` picked the deck is the Bored card, the other seven Feeling cards in file order, then the eleven Trigger cards — so N ghost taps of 'Give me another' reaches index N. F27: this replaces the single family entry the previous pass recorded."
+  },
+  {
+    "frame": "Slip Pledge",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Done\")",
+    "note": "needs the seeded account: D148 gates 98J on an active pledge with no slip already standing between the signature and this one, so an unseeded run goes straight to 98K."
+  },
+  {
+    "frame": "Slip Begin Again",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed0-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Done\"); await tap(\"Sign it again\")",
+    "note": "reached through 98J; from an account with no pledge the card's CTA lands here directly."
+  },
+  {
+    "frame": "Slip Morning After",
+    "route": "/slip?stage=morning",
+    "wait": 2500,
+    "note": "98L is the next morning — its own words say so, and relapse-workflow.md §14 makes it the follow-up. It is also reached in-flow when the slip was logged as 'Yesterday'."
+  },
+  {
+    "frame": "(state the canvas does not draw) Slip Pledge with NO signed pledge",
+    "route": "/slip",
+    "initseed": ".vicifull/f-slip-seed-nopledge-2340.js",
+    "wait": 2500,
+    "do": "await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Continue\"); await tap(\"Bored\"); await tap(\"Continue · 1\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Continue\"); await tap(\"Done\")",
+    "unreachable": "D148 — with no pledge on the account 98J is skipped and the card's CTA lands on 98K. Kept as a recipe so the next pass can confirm the gate rather than rediscover the bug it closes: before D148 this path drew 98J with the canvas's own sample pledge, signed 'You'."
+  }
+]

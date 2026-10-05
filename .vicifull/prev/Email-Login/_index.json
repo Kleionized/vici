@@ -1,0 +1,1826 @@
+{
+  "source": "UI Final 1/project/Email Login.dc.html",
+  "count": 260,
+  "frames": [
+    {
+      "label": "Splash",
+      "file": "Splash.html",
+      "bytes": 3947,
+      "start": 1679,
+      "end": 5626
+    },
+    {
+      "label": "Login",
+      "file": "Login.html",
+      "bytes": 8420,
+      "start": 5992,
+      "end": 14412
+    },
+    {
+      "label": "V3 Q24 Name",
+      "file": "V3-Q24-Name.html",
+      "bytes": 4120,
+      "start": 14777,
+      "end": 18897
+    },
+    {
+      "label": "V3 Q25 Age",
+      "file": "V3-Q25-Age.html",
+      "bytes": 4365,
+      "start": 19260,
+      "end": 23625
+    },
+    {
+      "label": "V3 Q26 Gender",
+      "file": "V3-Q26-Gender.html",
+      "bytes": 5745,
+      "start": 23992,
+      "end": 29737
+    },
+    {
+      "label": "Onboarding Start",
+      "file": "Onboarding-Start.html",
+      "bytes": 4142,
+      "start": 30103,
+      "end": 34245
+    },
+    {
+      "label": "V3 Q1",
+      "file": "V3-Q1.html",
+      "bytes": 5863,
+      "start": 34615,
+      "end": 40478
+    },
+    {
+      "label": "V3 Q2",
+      "file": "V3-Q2.html",
+      "bytes": 5510,
+      "start": 40846,
+      "end": 46356
+    },
+    {
+      "label": "V3 Q3",
+      "file": "V3-Q3.html",
+      "bytes": 5131,
+      "start": 46724,
+      "end": 51855
+    },
+    {
+      "label": "First Principle",
+      "file": "First-Principle.html",
+      "bytes": 6005,
+      "start": 52231,
+      "end": 58236
+    },
+    {
+      "label": "V3 Q5",
+      "file": "V3-Q5.html",
+      "bytes": 10982,
+      "start": 58608,
+      "end": 69590
+    },
+    {
+      "label": "V3 Q6",
+      "file": "V3-Q6.html",
+      "bytes": 10524,
+      "start": 69965,
+      "end": 80489
+    },
+    {
+      "label": "V3 Q7",
+      "file": "V3-Q7.html",
+      "bytes": 8815,
+      "start": 80855,
+      "end": 89670
+    },
+    {
+      "label": "What Happens First",
+      "file": "What-Happens-First.html",
+      "bytes": 7965,
+      "start": 90049,
+      "end": 98014
+    },
+    {
+      "label": "We Have Enough",
+      "file": "We-Have-Enough.html",
+      "bytes": 4154,
+      "start": 98388,
+      "end": 102542
+    },
+    {
+      "label": "V3 Q21",
+      "file": "V3-Q21.html",
+      "bytes": 5088,
+      "start": 102909,
+      "end": 107997
+    },
+    {
+      "label": "What It Affects",
+      "file": "What-It-Affects.html",
+      "bytes": 10962,
+      "start": 108373,
+      "end": 119335
+    },
+    {
+      "label": "V3 Q10",
+      "file": "V3-Q10.html",
+      "bytes": 5057,
+      "start": 119705,
+      "end": 124762
+    },
+    {
+      "label": "V3 Q13",
+      "file": "V3-Q13.html",
+      "bytes": 5087,
+      "start": 125133,
+      "end": 130220
+    },
+    {
+      "label": "V3 Q15",
+      "file": "V3-Q15.html",
+      "bytes": 5111,
+      "start": 130590,
+      "end": 135701
+    },
+    {
+      "label": "V3 Q16",
+      "file": "V3-Q16.html",
+      "bytes": 5107,
+      "start": 136073,
+      "end": 141180
+    },
+    {
+      "label": "V3 Q17",
+      "file": "V3-Q17.html",
+      "bytes": 7903,
+      "start": 141560,
+      "end": 149463
+    },
+    {
+      "label": "Enlisting Aegis",
+      "file": "Enlisting-Aegis.html",
+      "bytes": 4233,
+      "start": 149849,
+      "end": 154082
+    },
+    {
+      "label": "Root Loop",
+      "file": "Root-Loop.html",
+      "bytes": 5394,
+      "start": 154462,
+      "end": 159856
+    },
+    {
+      "label": "What Comes Before It",
+      "file": "What-Comes-Before-It.html",
+      "bytes": 5279,
+      "start": 160237,
+      "end": 165516
+    },
+    {
+      "label": "Results Pattern",
+      "file": "Results-Pattern.html",
+      "bytes": 5850,
+      "start": 165897,
+      "end": 171747
+    },
+    {
+      "label": "Starting Score",
+      "file": "Starting-Score.html",
+      "bytes": 11527,
+      "start": 172125,
+      "end": 183652
+    },
+    {
+      "label": "Cost Next 30",
+      "file": "Cost-Next-30.html",
+      "bytes": 6876,
+      "start": 184028,
+      "end": 190904
+    },
+    {
+      "label": "Cost Next 365",
+      "file": "Cost-Next-365.html",
+      "bytes": 36477,
+      "start": 191282,
+      "end": 227759
+    },
+    {
+      "label": "Cost By Age 80",
+      "file": "Cost-By-Age-80.html",
+      "bytes": 3610,
+      "start": 228137,
+      "end": 231747
+    },
+    {
+      "label": "Change the Line",
+      "file": "Change-the-Line.html",
+      "bytes": 3514,
+      "start": 232122,
+      "end": 235636
+    },
+    {
+      "label": "One Bad Day",
+      "file": "One-Bad-Day.html",
+      "bytes": 4558,
+      "start": 236007,
+      "end": 240565
+    },
+    {
+      "label": "What You Want Back",
+      "file": "What-You-Want-Back.html",
+      "bytes": 5296,
+      "start": 240943,
+      "end": 246239
+    },
+    {
+      "label": "Campaign Map",
+      "file": "Campaign-Map.html",
+      "bytes": 8407,
+      "start": 246619,
+      "end": 255026
+    },
+    {
+      "label": "Campaign Map II",
+      "file": "Campaign-Map-II.html",
+      "bytes": 9456,
+      "start": 255407,
+      "end": 264863
+    },
+    {
+      "label": "Campaign Map III",
+      "file": "Campaign-Map-III.html",
+      "bytes": 9687,
+      "start": 265245,
+      "end": 274932
+    },
+    {
+      "label": "Letter Received",
+      "file": "Letter-Received.html",
+      "bytes": 5219,
+      "start": 275307,
+      "end": 280526
+    },
+    {
+      "label": "Letter Week XII",
+      "file": "Letter-Week-XII.html",
+      "bytes": 9339,
+      "start": 280909,
+      "end": 290248
+    },
+    {
+      "label": "The Vow",
+      "file": "The-Vow.html",
+      "bytes": 3977,
+      "start": 290615,
+      "end": 294592
+    },
+    {
+      "label": "Medallion Received",
+      "file": "Medallion-Received.html",
+      "bytes": 5204,
+      "start": 294969,
+      "end": 300173
+    },
+    {
+      "label": "Reminders Setup",
+      "file": "Reminders-Setup.html",
+      "bytes": 4107,
+      "start": 300542,
+      "end": 304649
+    },
+    {
+      "label": "Free Trial Paywall",
+      "file": "Free-Trial-Paywall.html",
+      "bytes": 8803,
+      "start": 305017,
+      "end": 313820
+    },
+    {
+      "label": "Day Zero",
+      "file": "Day-Zero.html",
+      "bytes": 6588,
+      "start": 314186,
+      "end": 320774
+    },
+    {
+      "label": "Paywall Rescue",
+      "file": "Paywall-Rescue.html",
+      "bytes": 5637,
+      "start": 321161,
+      "end": 326798
+    },
+    {
+      "label": "Paywall Confirmed",
+      "file": "Paywall-Confirmed.html",
+      "bytes": 3626,
+      "start": 327179,
+      "end": 330805
+    },
+    {
+      "label": "Manage Subscription",
+      "file": "Manage-Subscription.html",
+      "bytes": 8404,
+      "start": 331182,
+      "end": 339586
+    },
+    {
+      "label": "Morning Check-in Time",
+      "file": "Morning-Check-in-Time.html",
+      "bytes": 6404,
+      "start": 340451,
+      "end": 346855
+    },
+    {
+      "label": "Nightly Check-in Time",
+      "file": "Nightly-Check-in-Time.html",
+      "bytes": 6408,
+      "start": 347238,
+      "end": 353646
+    },
+    {
+      "label": "Today Home",
+      "file": "Today-Home.html",
+      "bytes": 14859,
+      "start": 354012,
+      "end": 368871
+    },
+    {
+      "label": "Score Detail",
+      "file": "Score-Detail.html",
+      "bytes": 11095,
+      "start": 369245,
+      "end": 380340
+    },
+    {
+      "label": "Score Detail Moves",
+      "file": "Score-Detail-Moves.html",
+      "bytes": 10458,
+      "start": 380730,
+      "end": 391188
+    },
+    {
+      "label": "Score Detail Ranks",
+      "file": "Score-Detail-Ranks.html",
+      "bytes": 10384,
+      "start": 391570,
+      "end": 401954
+    },
+    {
+      "label": "Today Home II",
+      "file": "Today-Home-II.html",
+      "bytes": 11418,
+      "start": 402325,
+      "end": 413743
+    },
+    {
+      "label": "Today Home Task",
+      "file": "Today-Home-Task.html",
+      "bytes": 11880,
+      "start": 414127,
+      "end": 426007
+    },
+    {
+      "label": "Today Home III",
+      "file": "Today-Home-III.html",
+      "bytes": 6771,
+      "start": 426378,
+      "end": 433149
+    },
+    {
+      "label": "Morning Check-in Cover",
+      "file": "Morning-Check-in-Cover.html",
+      "bytes": 3696,
+      "start": 433531,
+      "end": 437227
+    },
+    {
+      "label": "Morning Task Check",
+      "file": "Morning-Task-Check.html",
+      "bytes": 7820,
+      "start": 437616,
+      "end": 445436
+    },
+    {
+      "label": "Morning 1 Yesterday",
+      "file": "Morning-1-Yesterday.html",
+      "bytes": 9122,
+      "start": 445818,
+      "end": 454940
+    },
+    {
+      "label": "Morning Feeling",
+      "file": "Morning-Feeling.html",
+      "bytes": 5718,
+      "start": 455320,
+      "end": 461038
+    },
+    {
+      "label": "Morning Energy",
+      "file": "Morning-Energy.html",
+      "bytes": 5711,
+      "start": 461416,
+      "end": 467127
+    },
+    {
+      "label": "Morning Resign Pledge",
+      "file": "Morning-Resign-Pledge.html",
+      "bytes": 5138,
+      "start": 467518,
+      "end": 472656
+    },
+    {
+      "label": "Change Pledge Sheet",
+      "file": "Change-Pledge-Sheet.html",
+      "bytes": 4058,
+      "start": 473045,
+      "end": 477103
+    },
+    {
+      "label": "Morning 5 Done",
+      "file": "Morning-5-Done.html",
+      "bytes": 5115,
+      "start": 477480,
+      "end": 482595
+    },
+    {
+      "label": "Night Check-in Cover",
+      "file": "Night-Check-in-Cover.html",
+      "bytes": 3910,
+      "start": 482974,
+      "end": 486884
+    },
+    {
+      "label": "Night 1 Mood",
+      "file": "Night-1-Mood.html",
+      "bytes": 6225,
+      "start": 487267,
+      "end": 493492
+    },
+    {
+      "label": "Checkin Emotions",
+      "file": "Checkin-Emotions.html",
+      "bytes": 8110,
+      "start": 493870,
+      "end": 501980
+    },
+    {
+      "label": "Checkin Reasons",
+      "file": "Checkin-Reasons.html",
+      "bytes": 12990,
+      "start": 502364,
+      "end": 515354
+    },
+    {
+      "label": "Night 3 Reflection",
+      "file": "Night-3-Reflection.html",
+      "bytes": 3730,
+      "start": 515734,
+      "end": 519464
+    },
+    {
+      "label": "Night 2 Record",
+      "file": "Night-2-Record.html",
+      "bytes": 8050,
+      "start": 519841,
+      "end": 527891
+    },
+    {
+      "label": "Night Action Reminder",
+      "file": "Night-Action-Reminder.html",
+      "bytes": 6956,
+      "start": 528279,
+      "end": 535235
+    },
+    {
+      "label": "Night 4 Closed",
+      "file": "Night-4-Closed.html",
+      "bytes": 6020,
+      "start": 535613,
+      "end": 541633
+    },
+    {
+      "label": "Week I Reset",
+      "file": "Week-I-Reset.html",
+      "bytes": 9540,
+      "start": 542509,
+      "end": 552049
+    },
+    {
+      "label": "Week I Reset P2",
+      "file": "Week-I-Reset-P2.html",
+      "bytes": 8508,
+      "start": 552428,
+      "end": 560936
+    },
+    {
+      "label": "Week II Changing Your Mindset",
+      "file": "Week-II-Changing-Your-Mindset.html",
+      "bytes": 9256,
+      "start": 561330,
+      "end": 570586
+    },
+    {
+      "label": "Week II Changing Your Mindset P2",
+      "file": "Week-II-Changing-Your-Mindset-P2.html",
+      "bytes": 8364,
+      "start": 570984,
+      "end": 579348
+    },
+    {
+      "label": "Week III In the Moment",
+      "file": "Week-III-In-the-Moment.html",
+      "bytes": 9567,
+      "start": 579735,
+      "end": 589302
+    },
+    {
+      "label": "Week III In the Moment P2",
+      "file": "Week-III-In-the-Moment-P2.html",
+      "bytes": 8411,
+      "start": 589692,
+      "end": 598103
+    },
+    {
+      "label": "Week IV Know Your Brain",
+      "file": "Week-IV-Know-Your-Brain.html",
+      "bytes": 9228,
+      "start": 598494,
+      "end": 607722
+    },
+    {
+      "label": "Week IV Know Your Brain P2",
+      "file": "Week-IV-Know-Your-Brain-P2.html",
+      "bytes": 8089,
+      "start": 608114,
+      "end": 616203
+    },
+    {
+      "label": "Week V Why It Feels Worth It",
+      "file": "Week-V-Why-It-Feels-Worth-It.html",
+      "bytes": 8973,
+      "start": 616598,
+      "end": 625571
+    },
+    {
+      "label": "Week V Why It Feels Worth It P2",
+      "file": "Week-V-Why-It-Feels-Worth-It-P2.html",
+      "bytes": 7843,
+      "start": 625969,
+      "end": 633812
+    },
+    {
+      "label": "Week VI Discipline",
+      "file": "Week-VI-Discipline.html",
+      "bytes": 9387,
+      "start": 634196,
+      "end": 643583
+    },
+    {
+      "label": "Week VI Discipline P2",
+      "file": "Week-VI-Discipline-P2.html",
+      "bytes": 8247,
+      "start": 643968,
+      "end": 652215
+    },
+    {
+      "label": "Week VII Relapse and Adversity",
+      "file": "Week-VII-Relapse-and-Adversity.html",
+      "bytes": 10343,
+      "start": 652610,
+      "end": 662953
+    },
+    {
+      "label": "Week VII Relapse and Adversity P2",
+      "file": "Week-VII-Relapse-and-Adversity-P2.html",
+      "bytes": 9219,
+      "start": 663352,
+      "end": 672571
+    },
+    {
+      "label": "Week VIII Boredom and Meaning",
+      "file": "Week-VIII-Boredom-and-Meaning.html",
+      "bytes": 10100,
+      "start": 672965,
+      "end": 683065
+    },
+    {
+      "label": "Week VIII Boredom and Meaning P2",
+      "file": "Week-VIII-Boredom-and-Meaning-P2.html",
+      "bytes": 8967,
+      "start": 683462,
+      "end": 692429
+    },
+    {
+      "label": "Week IX Connection",
+      "file": "Week-IX-Connection.html",
+      "bytes": 9969,
+      "start": 692815,
+      "end": 702784
+    },
+    {
+      "label": "Week IX Connection P2",
+      "file": "Week-IX-Connection-P2.html",
+      "bytes": 8846,
+      "start": 703171,
+      "end": 712017
+    },
+    {
+      "label": "Week X Yourself",
+      "file": "Week-X-Yourself.html",
+      "bytes": 9422,
+      "start": 712399,
+      "end": 721821
+    },
+    {
+      "label": "Week X Yourself P2",
+      "file": "Week-X-Yourself-P2.html",
+      "bytes": 8297,
+      "start": 722206,
+      "end": 730503
+    },
+    {
+      "label": "Week XI Build a Life You Want",
+      "file": "Week-XI-Build-a-Life-You-Want.html",
+      "bytes": 9422,
+      "start": 730898,
+      "end": 740320
+    },
+    {
+      "label": "Week XI Build a Life You Want P2",
+      "file": "Week-XI-Build-a-Life-You-Want-P2.html",
+      "bytes": 8309,
+      "start": 740716,
+      "end": 749025
+    },
+    {
+      "label": "Week XII Leave It Behind",
+      "file": "Week-XII-Leave-It-Behind.html",
+      "bytes": 10159,
+      "start": 749414,
+      "end": 759573
+    },
+    {
+      "label": "Week XII Leave It Behind P2",
+      "file": "Week-XII-Leave-It-Behind-P2.html",
+      "bytes": 9019,
+      "start": 759966,
+      "end": 768985
+    },
+    {
+      "label": "Cue Intro Modal",
+      "file": "Cue-Intro-Modal.html",
+      "bytes": 5504,
+      "start": 769859,
+      "end": 775363
+    },
+    {
+      "label": "SOS Strength",
+      "file": "SOS-Strength.html",
+      "bytes": 4046,
+      "start": 775741,
+      "end": 779787
+    },
+    {
+      "label": "Cue Hue Picker",
+      "file": "Cue-Hue-Picker.html",
+      "bytes": 7022,
+      "start": 780166,
+      "end": 787188
+    },
+    {
+      "label": "Surf Step 1",
+      "file": "Surf-Step-1.html",
+      "bytes": 5619,
+      "start": 787578,
+      "end": 793197
+    },
+    {
+      "label": "Surf Step 3",
+      "file": "Surf-Step-3.html",
+      "bytes": 4332,
+      "start": 793591,
+      "end": 797923
+    },
+    {
+      "label": "Cue Set Confirmation",
+      "file": "Cue-Set-Confirmation.html",
+      "bytes": 5123,
+      "start": 798316,
+      "end": 803439
+    },
+    {
+      "label": "SOS Reason Picker",
+      "file": "SOS-Reason-Picker.html",
+      "bytes": 9787,
+      "start": 803824,
+      "end": 813611
+    },
+    {
+      "label": "SOS Feeling Picker",
+      "file": "SOS-Feeling-Picker.html",
+      "bytes": 9586,
+      "start": 813994,
+      "end": 823580
+    },
+    {
+      "label": "SOS Challenge",
+      "file": "SOS-Challenge.html",
+      "bytes": 3603,
+      "start": 823960,
+      "end": 827563
+    },
+    {
+      "label": "SOS Reassess",
+      "file": "SOS-Reassess.html",
+      "bytes": 4056,
+      "start": 827945,
+      "end": 832001
+    },
+    {
+      "label": "SOS Afterward",
+      "file": "SOS-Afterward.html",
+      "bytes": 3197,
+      "start": 832378,
+      "end": 835575
+    },
+    {
+      "label": "Surf Complete",
+      "file": "Surf-Complete.html",
+      "bytes": 4612,
+      "start": 835956,
+      "end": 840568
+    },
+    {
+      "label": "Relapse Log",
+      "file": "Relapse-Log.html",
+      "bytes": 5512,
+      "start": 840942,
+      "end": 846454
+    },
+    {
+      "label": "Relapse Twice",
+      "file": "Relapse-Twice.html",
+      "bytes": 4409,
+      "start": 846842,
+      "end": 851251
+    },
+    {
+      "label": "Relapse Resign",
+      "file": "Relapse-Resign.html",
+      "bytes": 4506,
+      "start": 851641,
+      "end": 856147
+    },
+    {
+      "label": "Relapse Begin",
+      "file": "Relapse-Begin.html",
+      "bytes": 4972,
+      "start": 856528,
+      "end": 861500
+    },
+    {
+      "label": "Urge Hub Now",
+      "file": "Urge-Hub-Now.html",
+      "bytes": 11409,
+      "start": 862368,
+      "end": 873777
+    },
+    {
+      "label": "Urge Hub Score",
+      "file": "Urge-Hub-Score.html",
+      "bytes": 8849,
+      "start": 874163,
+      "end": 883012
+    },
+    {
+      "label": "Urge Hub Proof",
+      "file": "Urge-Hub-Proof.html",
+      "bytes": 8566,
+      "start": 883395,
+      "end": 891961
+    },
+    {
+      "label": "Urge Hub Surfed",
+      "file": "Urge-Hub-Surfed.html",
+      "bytes": 9447,
+      "start": 892346,
+      "end": 901793
+    },
+    {
+      "label": "Urge Hub Pledges",
+      "file": "Urge-Hub-Pledges.html",
+      "bytes": 6299,
+      "start": 902177,
+      "end": 908476
+    },
+    {
+      "label": "SOS Loc Bed",
+      "file": "SOS-Loc-Bed.html",
+      "bytes": 4519,
+      "start": 909343,
+      "end": 913862
+    },
+    {
+      "label": "SOS Loc Bathroom",
+      "file": "SOS-Loc-Bathroom.html",
+      "bytes": 4413,
+      "start": 914248,
+      "end": 918661
+    },
+    {
+      "label": "SOS Loc Home Alone",
+      "file": "SOS-Loc-Home-Alone.html",
+      "bytes": 4503,
+      "start": 919050,
+      "end": 923553
+    },
+    {
+      "label": "SOS Loc Private Room",
+      "file": "SOS-Loc-Private-Room.html",
+      "bytes": 4276,
+      "start": 923943,
+      "end": 928219
+    },
+    {
+      "label": "SOS Loc Work",
+      "file": "SOS-Loc-Work.html",
+      "bytes": 4497,
+      "start": 928612,
+      "end": 933109
+    },
+    {
+      "label": "SOS Loc Public",
+      "file": "SOS-Loc-Public.html",
+      "bytes": 4384,
+      "start": 933493,
+      "end": 937877
+    },
+    {
+      "label": "SOS Loc Elsewhere",
+      "file": "SOS-Loc-Elsewhere.html",
+      "bytes": 4574,
+      "start": 938270,
+      "end": 942844
+    },
+    {
+      "label": "SOS Feel Turned On",
+      "file": "SOS-Feel-Turned-On.html",
+      "bytes": 4284,
+      "start": 943230,
+      "end": 947514
+    },
+    {
+      "label": "SOS Feel Bored",
+      "file": "SOS-Feel-Bored.html",
+      "bytes": 4295,
+      "start": 947897,
+      "end": 952192
+    },
+    {
+      "label": "SOS Feel Lonely",
+      "file": "SOS-Feel-Lonely.html",
+      "bytes": 4468,
+      "start": 952575,
+      "end": 957043
+    },
+    {
+      "label": "SOS Feel Stressed",
+      "file": "SOS-Feel-Stressed.html",
+      "bytes": 4410,
+      "start": 957429,
+      "end": 961839
+    },
+    {
+      "label": "SOS Feel Anxious",
+      "file": "SOS-Feel-Anxious.html",
+      "bytes": 4634,
+      "start": 962224,
+      "end": 966858
+    },
+    {
+      "label": "SOS Feel Angry",
+      "file": "SOS-Feel-Angry.html",
+      "bytes": 4410,
+      "start": 967241,
+      "end": 971651
+    },
+    {
+      "label": "SOS Feel Low",
+      "file": "SOS-Feel-Low.html",
+      "bytes": 4226,
+      "start": 972031,
+      "end": 976257
+    },
+    {
+      "label": "SOS Feel Rejected",
+      "file": "SOS-Feel-Rejected.html",
+      "bytes": 4394,
+      "start": 976643,
+      "end": 981037
+    },
+    {
+      "label": "SOS Feel Tired",
+      "file": "SOS-Feel-Tired.html",
+      "bytes": 4643,
+      "start": 981419,
+      "end": 986062
+    },
+    {
+      "label": "SOS Feel Restless",
+      "file": "SOS-Feel-Restless.html",
+      "bytes": 4611,
+      "start": 986448,
+      "end": 991059
+    },
+    {
+      "label": "SOS Feel Numb",
+      "file": "SOS-Feel-Numb.html",
+      "bytes": 4341,
+      "start": 991440,
+      "end": 995781
+    },
+    {
+      "label": "SOS Feel Ashamed",
+      "file": "SOS-Feel-Ashamed.html",
+      "bytes": 5287,
+      "start": 996166,
+      "end": 1001453
+    },
+    {
+      "label": "SOS Feel Unknown",
+      "file": "SOS-Feel-Unknown.html",
+      "bytes": 4322,
+      "start": 1001840,
+      "end": 1006162
+    },
+    {
+      "label": "SOS Trig Content",
+      "file": "SOS-Trig-Content.html",
+      "bytes": 4008,
+      "start": 1006557,
+      "end": 1010565
+    },
+    {
+      "label": "SOS Trig Doomscroll",
+      "file": "SOS-Trig-Doomscroll.html",
+      "bytes": 4612,
+      "start": 1010955,
+      "end": 1015567
+    },
+    {
+      "label": "SOS Trig Fantasy",
+      "file": "SOS-Trig-Fantasy.html",
+      "bytes": 4180,
+      "start": 1015960,
+      "end": 1020140
+    },
+    {
+      "label": "SOS Trig Late Phone",
+      "file": "SOS-Trig-Late-Phone.html",
+      "bytes": 4487,
+      "start": 1020533,
+      "end": 1025020
+    },
+    {
+      "label": "SOS Trig Habit",
+      "file": "SOS-Trig-Habit.html",
+      "bytes": 4147,
+      "start": 1025403,
+      "end": 1029550
+    },
+    {
+      "label": "SOS Trig Cant Sleep",
+      "file": "SOS-Trig-Cant-Sleep.html",
+      "bytes": 4498,
+      "start": 1029938,
+      "end": 1034436
+    },
+    {
+      "label": "SOS Trig Argument",
+      "file": "SOS-Trig-Argument.html",
+      "bytes": 4738,
+      "start": 1034825,
+      "end": 1039563
+    },
+    {
+      "label": "SOS Trig Rejection",
+      "file": "SOS-Trig-Rejection.html",
+      "bytes": 4156,
+      "start": 1039949,
+      "end": 1044105
+    },
+    {
+      "label": "SOS Trig Alone",
+      "file": "SOS-Trig-Alone.html",
+      "bytes": 4139,
+      "start": 1044494,
+      "end": 1048633
+    },
+    {
+      "label": "SOS Trig Unknown",
+      "file": "SOS-Trig-Unknown.html",
+      "bytes": 4268,
+      "start": 1049018,
+      "end": 1053286
+    },
+    {
+      "label": "Medallions",
+      "file": "Medallions.html",
+      "bytes": 16700,
+      "start": 1053657,
+      "end": 1070357
+    },
+    {
+      "label": "Medallions Still To Earn",
+      "file": "Medallions-Still-To-Earn.html",
+      "bytes": 9069,
+      "start": 1070745,
+      "end": 1079814
+    },
+    {
+      "label": "Album Earned II",
+      "file": "Album-Earned-II.html",
+      "bytes": 13402,
+      "start": 1080198,
+      "end": 1093600
+    },
+    {
+      "label": "Breakwater Paper",
+      "file": "Breakwater-Paper.html",
+      "bytes": 6383,
+      "start": 1093979,
+      "end": 1100362
+    },
+    {
+      "label": "Breakwater Bronze",
+      "file": "Breakwater-Bronze.html",
+      "bytes": 7004,
+      "start": 1100743,
+      "end": 1107747
+    },
+    {
+      "label": "Breakwater Silver",
+      "file": "Breakwater-Silver.html",
+      "bytes": 7001,
+      "start": 1108127,
+      "end": 1115128
+    },
+    {
+      "label": "Breakwater Gold",
+      "file": "Breakwater-Gold.html",
+      "bytes": 7228,
+      "start": 1115507,
+      "end": 1122735
+    },
+    {
+      "label": "Breakwater Platinum",
+      "file": "Breakwater-Platinum.html",
+      "bytes": 7365,
+      "start": 1123117,
+      "end": 1130482
+    },
+    {
+      "label": "Tiers Vidi",
+      "file": "Tiers-Vidi.html",
+      "bytes": 13099,
+      "start": 1130856,
+      "end": 1143955
+    },
+    {
+      "label": "Tiers Vici",
+      "file": "Tiers-Vici.html",
+      "bytes": 12640,
+      "start": 1144326,
+      "end": 1156966
+    },
+    {
+      "label": "Tiers Rebound",
+      "file": "Tiers-Rebound.html",
+      "bytes": 12915,
+      "start": 1157343,
+      "end": 1170258
+    },
+    {
+      "label": "Tiers Breakwater",
+      "file": "Tiers-Breakwater.html",
+      "bytes": 13256,
+      "start": 1170637,
+      "end": 1183893
+    },
+    {
+      "label": "Tiers Logbook",
+      "file": "Tiers-Logbook.html",
+      "bytes": 13179,
+      "start": 1184270,
+      "end": 1197449
+    },
+    {
+      "label": "Tiers Pulse",
+      "file": "Tiers-Pulse.html",
+      "bytes": 12827,
+      "start": 1197823,
+      "end": 1210650
+    },
+    {
+      "label": "Tiers Archive",
+      "file": "Tiers-Archive.html",
+      "bytes": 13500,
+      "start": 1211027,
+      "end": 1224527
+    },
+    {
+      "label": "Tiers Lessons",
+      "file": "Tiers-Lessons.html",
+      "bytes": 15713,
+      "start": 1224903,
+      "end": 1240616
+    },
+    {
+      "label": "Tiers One-offs",
+      "file": "Tiers-One-offs.html",
+      "bytes": 11544,
+      "start": 1240994,
+      "end": 1252538
+    },
+    {
+      "label": "Detail Paper",
+      "file": "Detail-Paper.html",
+      "bytes": 6336,
+      "start": 1252920,
+      "end": 1259256
+    },
+    {
+      "label": "Detail Bronze",
+      "file": "Detail-Bronze.html",
+      "bytes": 6916,
+      "start": 1259638,
+      "end": 1266554
+    },
+    {
+      "label": "Detail Silver",
+      "file": "Detail-Silver.html",
+      "bytes": 6897,
+      "start": 1266937,
+      "end": 1273834
+    },
+    {
+      "label": "Detail Gold",
+      "file": "Detail-Gold.html",
+      "bytes": 7152,
+      "start": 1274214,
+      "end": 1281366
+    },
+    {
+      "label": "Detail Platinum",
+      "file": "Detail-Platinum.html",
+      "bytes": 7282,
+      "start": 1281751,
+      "end": 1289033
+    },
+    {
+      "label": "Log Chooser",
+      "file": "Log-Chooser.html",
+      "bytes": 7660,
+      "start": 1289408,
+      "end": 1297068
+    },
+    {
+      "label": "Lapse When",
+      "file": "Lapse-When.html",
+      "bytes": 8535,
+      "start": 1297442,
+      "end": 1305977
+    },
+    {
+      "label": "Lapse Trigger",
+      "file": "Lapse-Trigger.html",
+      "bytes": 9859,
+      "start": 1306359,
+      "end": 1316218
+    },
+    {
+      "label": "Lapse Done",
+      "file": "Lapse-Done.html",
+      "bytes": 5355,
+      "start": 1316594,
+      "end": 1321949
+    },
+    {
+      "label": "Log Urges",
+      "file": "Log-Urges.html",
+      "bytes": 10050,
+      "start": 1322321,
+      "end": 1332371
+    },
+    {
+      "label": "Log Check-ins",
+      "file": "Log-Check-ins.html",
+      "bytes": 10827,
+      "start": 1332749,
+      "end": 1343576
+    },
+    {
+      "label": "Log Reports",
+      "file": "Log-Reports.html",
+      "bytes": 9602,
+      "start": 1343951,
+      "end": 1353553
+    },
+    {
+      "label": "Urge Overview Summary",
+      "file": "Urge-Overview-Summary.html",
+      "bytes": 8462,
+      "start": 1353938,
+      "end": 1362400
+    },
+    {
+      "label": "Urge Overview",
+      "file": "Urge-Overview.html",
+      "bytes": 5816,
+      "start": 1362784,
+      "end": 1368600
+    },
+    {
+      "label": "Urge Overview Mood",
+      "file": "Urge-Overview-Mood.html",
+      "bytes": 6527,
+      "start": 1368981,
+      "end": 1375508
+    },
+    {
+      "label": "Urge Overview When",
+      "file": "Urge-Overview-When.html",
+      "bytes": 8444,
+      "start": 1375902,
+      "end": 1384346
+    },
+    {
+      "label": "Report Ready",
+      "file": "Report-Ready.html",
+      "bytes": 5578,
+      "start": 1384720,
+      "end": 1390298
+    },
+    {
+      "label": "Weekly Report",
+      "file": "Weekly-Report.html",
+      "bytes": 9690,
+      "start": 1390680,
+      "end": 1400370
+    },
+    {
+      "label": "Weekly Report Days",
+      "file": "Weekly-Report-Days.html",
+      "bytes": 9423,
+      "start": 1400753,
+      "end": 1410176
+    },
+    {
+      "label": "Weekly Report Urges",
+      "file": "Weekly-Report-Urges.html",
+      "bytes": 9916,
+      "start": 1410559,
+      "end": 1420475
+    },
+    {
+      "label": "Urge Log Intensity",
+      "file": "Urge-Log-Intensity.html",
+      "bytes": 4718,
+      "start": 1420856,
+      "end": 1425574
+    },
+    {
+      "label": "Urge Log Trigger",
+      "file": "Urge-Log-Trigger.html",
+      "bytes": 9957,
+      "start": 1425955,
+      "end": 1435912
+    },
+    {
+      "label": "Urge Log Outcome",
+      "file": "Urge-Log-Outcome.html",
+      "bytes": 7973,
+      "start": 1436291,
+      "end": 1444264
+    },
+    {
+      "label": "Urge Log When",
+      "file": "Urge-Log-When.html",
+      "bytes": 8598,
+      "start": 1444641,
+      "end": 1453239
+    },
+    {
+      "label": "Urge Log Done",
+      "file": "Urge-Log-Done.html",
+      "bytes": 5341,
+      "start": 1453617,
+      "end": 1458958
+    },
+    {
+      "label": "Settings",
+      "file": "Settings.html",
+      "bytes": 8420,
+      "start": 1459327,
+      "end": 1467747
+    },
+    {
+      "label": "Edit Profile",
+      "file": "Edit-Profile.html",
+      "bytes": 10524,
+      "start": 1468120,
+      "end": 1478644
+    },
+    {
+      "label": "Sheet Profile Photo",
+      "file": "Sheet-Profile-Photo.html",
+      "bytes": 12039,
+      "start": 1479025,
+      "end": 1491064
+    },
+    {
+      "label": "Sheet Edit Name",
+      "file": "Sheet-Edit-Name.html",
+      "bytes": 11722,
+      "start": 1491442,
+      "end": 1503164
+    },
+    {
+      "label": "Settings Weekly Report",
+      "file": "Settings-Weekly-Report.html",
+      "bytes": 9703,
+      "start": 1503539,
+      "end": 1513242
+    },
+    {
+      "label": "Settings Check-in Time",
+      "file": "Settings-Check-in-Time.html",
+      "bytes": 6663,
+      "start": 1513624,
+      "end": 1520287
+    },
+    {
+      "label": "Your Vow Page",
+      "file": "Your-Vow-Page.html",
+      "bytes": 4392,
+      "start": 1520657,
+      "end": 1525049
+    },
+    {
+      "label": "Sheet Sign Out",
+      "file": "Sheet-Sign-Out.html",
+      "bytes": 7828,
+      "start": 1525426,
+      "end": 1533254
+    },
+    {
+      "label": "Data Privacy",
+      "file": "Data-Privacy.html",
+      "bytes": 6507,
+      "start": 1533634,
+      "end": 1540141
+    },
+    {
+      "label": "App Lock",
+      "file": "App-Lock.html",
+      "bytes": 6366,
+      "start": 1540510,
+      "end": 1546876
+    },
+    {
+      "label": "Slip Entry",
+      "file": "Slip-Entry.html",
+      "bytes": 4344,
+      "start": 1547740,
+      "end": 1552084
+    },
+    {
+      "label": "Slip Close It",
+      "file": "Slip-Close-It.html",
+      "bytes": 4359,
+      "start": 1552464,
+      "end": 1556823
+    },
+    {
+      "label": "Slip When",
+      "file": "Slip-When.html",
+      "bytes": 8544,
+      "start": 1557196,
+      "end": 1565740
+    },
+    {
+      "label": "Slip Fed",
+      "file": "Slip-Fed.html",
+      "bytes": 9880,
+      "start": 1566119,
+      "end": 1575999
+    },
+    {
+      "label": "Slip Logged",
+      "file": "Slip-Logged.html",
+      "bytes": 6195,
+      "start": 1576374,
+      "end": 1582569
+    },
+    {
+      "label": "Slip Urge Now",
+      "file": "Slip-Urge-Now.html",
+      "bytes": 4772,
+      "start": 1582949,
+      "end": 1587721
+    },
+    {
+      "label": "Slip Dont Fail Twice",
+      "file": "Slip-Dont-Fail-Twice.html",
+      "bytes": 4445,
+      "start": 1588106,
+      "end": 1592551
+    },
+    {
+      "label": "Slip Stop Here",
+      "file": "Slip-Stop-Here.html",
+      "bytes": 4303,
+      "start": 1592926,
+      "end": 1597229
+    },
+    {
+      "label": "Slip Third",
+      "file": "Slip-Third.html",
+      "bytes": 4576,
+      "start": 1597608,
+      "end": 1602184
+    },
+    {
+      "label": "Slip Pledge",
+      "file": "Slip-Pledge.html",
+      "bytes": 4498,
+      "start": 1602575,
+      "end": 1607073
+    },
+    {
+      "label": "Slip Begin Again",
+      "file": "Slip-Begin-Again.html",
+      "bytes": 3624,
+      "start": 1607453,
+      "end": 1611077
+    },
+    {
+      "label": "Slip Morning After",
+      "file": "Slip-Morning-After.html",
+      "bytes": 4418,
+      "start": 1611458,
+      "end": 1615876
+    },
+    {
+      "label": "Slip Feel Ashamed",
+      "file": "Slip-Feel-Ashamed.html",
+      "bytes": 4510,
+      "start": 1616260,
+      "end": 1620770
+    },
+    {
+      "label": "Slip Feel Bored",
+      "file": "Slip-Feel-Bored.html",
+      "bytes": 4246,
+      "start": 1621151,
+      "end": 1625397
+    },
+    {
+      "label": "Slip Feel Lonely",
+      "file": "Slip-Feel-Lonely.html",
+      "bytes": 4407,
+      "start": 1625780,
+      "end": 1630187
+    },
+    {
+      "label": "Slip Feel Stressed",
+      "file": "Slip-Feel-Stressed.html",
+      "bytes": 4522,
+      "start": 1630569,
+      "end": 1635091
+    },
+    {
+      "label": "Slip Feel Rejected",
+      "file": "Slip-Feel-Rejected.html",
+      "bytes": 4653,
+      "start": 1635476,
+      "end": 1640129
+    },
+    {
+      "label": "Slip Feel Tired",
+      "file": "Slip-Feel-Tired.html",
+      "bytes": 4605,
+      "start": 1640510,
+      "end": 1645115
+    },
+    {
+      "label": "Slip Feel Turned on",
+      "file": "Slip-Feel-Turned-on.html",
+      "bytes": 4282,
+      "start": 1645501,
+      "end": 1649783
+    },
+    {
+      "label": "Slip Feel Not sure",
+      "file": "Slip-Feel-Not-sure.html",
+      "bytes": 4475,
+      "start": 1650167,
+      "end": 1654642
+    },
+    {
+      "label": "Slip Trigger Late night",
+      "file": "Slip-Trigger-Late-night.html",
+      "bytes": 4350,
+      "start": 1655030,
+      "end": 1659380
+    },
+    {
+      "label": "Slip Trigger Scrolling",
+      "file": "Slip-Trigger-Scrolling.html",
+      "bytes": 4541,
+      "start": 1659766,
+      "end": 1664307
+    },
+    {
+      "label": "Slip Trigger Sexual content",
+      "file": "Slip-Trigger-Sexual-content.html",
+      "bytes": 4664,
+      "start": 1664699,
+      "end": 1669363
+    },
+    {
+      "label": "Slip Trigger Boredom",
+      "file": "Slip-Trigger-Boredom.html",
+      "bytes": 4229,
+      "start": 1669745,
+      "end": 1673974
+    },
+    {
+      "label": "Slip Trigger Loneliness",
+      "file": "Slip-Trigger-Loneliness.html",
+      "bytes": 4399,
+      "start": 1674362,
+      "end": 1678761
+    },
+    {
+      "label": "Slip Trigger Stress",
+      "file": "Slip-Trigger-Stress.html",
+      "bytes": 4511,
+      "start": 1679144,
+      "end": 1683655
+    },
+    {
+      "label": "Slip Trigger Argument",
+      "file": "Slip-Trigger-Argument.html",
+      "bytes": 4395,
+      "start": 1684041,
+      "end": 1688436
+    },
+    {
+      "label": "Slip Trigger Couldn’t sleep",
+      "file": "Slip-Trigger-Couldn-t-sleep.html",
+      "bytes": 4646,
+      "start": 1688827,
+      "end": 1693473
+    },
+    {
+      "label": "Slip Trigger Being alone",
+      "file": "Slip-Trigger-Being-alone.html",
+      "bytes": 4314,
+      "start": 1693862,
+      "end": 1698176
+    },
+    {
+      "label": "Slip Trigger Habit",
+      "file": "Slip-Trigger-Habit.html",
+      "bytes": 4731,
+      "start": 1698558,
+      "end": 1703289
+    },
+    {
+      "label": "Slip Trigger Not sure",
+      "file": "Slip-Trigger-Not-sure.html",
+      "bytes": 4488,
+      "start": 1703675,
+      "end": 1708163
+    },
+    {
+      "label": "Letter Arrival",
+      "file": "Letter-Arrival.html",
+      "bytes": 5228,
+      "start": 1709028,
+      "end": 1714256
+    },
+    {
+      "label": "Letter Read",
+      "file": "Letter-Read.html",
+      "bytes": 5000,
+      "start": 1714634,
+      "end": 1719634
+    },
+    {
+      "label": "Medallion Letter",
+      "file": "Medallion-Letter.html",
+      "bytes": 4081,
+      "start": 1720018,
+      "end": 1724099
+    },
+    {
+      "label": "Yearly Drop",
+      "file": "Yearly-Drop.html",
+      "bytes": 6502,
+      "start": 1724481,
+      "end": 1730983
+    },
+    {
+      "label": "Drop Received",
+      "file": "Drop-Received.html",
+      "bytes": 4740,
+      "start": 1731365,
+      "end": 1736105
+    },
+    {
+      "label": "Lesson Scroll 1",
+      "file": "Lesson-Scroll-1.html",
+      "bytes": 7428,
+      "start": 1736979,
+      "end": 1744407
+    },
+    {
+      "label": "Lesson Scroll 2",
+      "file": "Lesson-Scroll-2.html",
+      "bytes": 3583,
+      "start": 1744789,
+      "end": 1748372
+    },
+    {
+      "label": "Lesson Scroll 3",
+      "file": "Lesson-Scroll-3.html",
+      "bytes": 3161,
+      "start": 1748755,
+      "end": 1751916
+    },
+    {
+      "label": "Lesson Scroll 4",
+      "file": "Lesson-Scroll-4.html",
+      "bytes": 2960,
+      "start": 1752298,
+      "end": 1755258
+    },
+    {
+      "label": "Lesson Scroll 5",
+      "file": "Lesson-Scroll-5.html",
+      "bytes": 3357,
+      "start": 1755641,
+      "end": 1758998
+    },
+    {
+      "label": "Lesson Scroll 6",
+      "file": "Lesson-Scroll-6.html",
+      "bytes": 2873,
+      "start": 1759380,
+      "end": 1762253
+    },
+    {
+      "label": "Lesson Scroll 7",
+      "file": "Lesson-Scroll-7.html",
+      "bytes": 3065,
+      "start": 1762636,
+      "end": 1765701
+    },
+    {
+      "label": "Lesson Scroll 8",
+      "file": "Lesson-Scroll-8.html",
+      "bytes": 2934,
+      "start": 1766083,
+      "end": 1769017
+    },
+    {
+      "label": "Lesson Scroll 9",
+      "file": "Lesson-Scroll-9.html",
+      "bytes": 3612,
+      "start": 1769400,
+      "end": 1773012
+    },
+    {
+      "label": "Lesson Scroll 10",
+      "file": "Lesson-Scroll-10.html",
+      "bytes": 2872,
+      "start": 1773395,
+      "end": 1776267
+    },
+    {
+      "label": "Lesson Scroll 11",
+      "file": "Lesson-Scroll-11.html",
+      "bytes": 3249,
+      "start": 1776651,
+      "end": 1779900
+    },
+    {
+      "label": "Lesson Scroll 12",
+      "file": "Lesson-Scroll-12.html",
+      "bytes": 2883,
+      "start": 1780283,
+      "end": 1783166
+    },
+    {
+      "label": "Lesson Scroll 13",
+      "file": "Lesson-Scroll-13.html",
+      "bytes": 4071,
+      "start": 1783550,
+      "end": 1787621
+    },
+    {
+      "label": "Lesson Scroll 14",
+      "file": "Lesson-Scroll-14.html",
+      "bytes": 4495,
+      "start": 1788004,
+      "end": 1792499
+    },
+    {
+      "label": "Lesson Scroll 15",
+      "file": "Lesson-Scroll-15.html",
+      "bytes": 3284,
+      "start": 1792883,
+      "end": 1796167
+    },
+    {
+      "label": "Lesson Scroll 16",
+      "file": "Lesson-Scroll-16.html",
+      "bytes": 4815,
+      "start": 1796550,
+      "end": 1801365
+    },
+    {
+      "label": "Lesson Scroll 17",
+      "file": "Lesson-Scroll-17.html",
+      "bytes": 3050,
+      "start": 1801749,
+      "end": 1804799
+    },
+    {
+      "label": "Lesson Scroll 18",
+      "file": "Lesson-Scroll-18.html",
+      "bytes": 7455,
+      "start": 1805182,
+      "end": 1812637
+    },
+    {
+      "label": "Lesson Scroll 19",
+      "file": "Lesson-Scroll-19.html",
+      "bytes": 2966,
+      "start": 1813021,
+      "end": 1815987
+    },
+    {
+      "label": "Lesson Scroll 20",
+      "file": "Lesson-Scroll-20.html",
+      "bytes": 2861,
+      "start": 1816370,
+      "end": 1819231
+    },
+    {
+      "label": "Lesson Scroll 21",
+      "file": "Lesson-Scroll-21.html",
+      "bytes": 3119,
+      "start": 1819615,
+      "end": 1822734
+    },
+    {
+      "label": "Lesson Scroll 22",
+      "file": "Lesson-Scroll-22.html",
+      "bytes": 3307,
+      "start": 1823117,
+      "end": 1826424
+    },
+    {
+      "label": "Lesson Scroll 23",
+      "file": "Lesson-Scroll-23.html",
+      "bytes": 8512,
+      "start": 1826808,
+      "end": 1835320
+    },
+    {
+      "label": "Lesson Scroll 24",
+      "file": "Lesson-Scroll-24.html",
+      "bytes": 7094,
+      "start": 1835703,
+      "end": 1842797
+    },
+    {
+      "label": "Lesson Scroll 25",
+      "file": "Lesson-Scroll-25.html",
+      "bytes": 3555,
+      "start": 1843181,
+      "end": 1846736
+    },
+    {
+      "label": "Lesson Scroll 26",
+      "file": "Lesson-Scroll-26.html",
+      "bytes": 3681,
+      "start": 1847119,
+      "end": 1850800
+    }
+  ]
+}

@@ -1,817 +1,626 @@
 /**
- * The onboarding tail — `23 · Putting Your Plan Together` … `33 · What You
- * Want Back`.
+ * The onboarding tail — `24 · Build plan` and `28 · Your VICI Rating` …
+ * `34 · What You Want Back`.
  *
- * `UI Final 1` strips the tail's chrome: not one of these eleven frames draws
- * the eight-segment rule or the Back row the previous bundle gave them. Each
- * owns its whole frame, so each is rendered whole rather than inside the
- * funnel's shell.
+ * `Vici Overhaul` redrew every one of these on the kit: the #0D0D0D ground and
+ * its noise, the nav row with a Back chevron (the previous drop drew none), the
+ * 26/33 heading, the 15/24 paragraph and the primary at bottom 48. What is
+ * left screen-specific is the drawing each board makes its point with — the
+ * tick gauge, the three dot fields, the line chart, the calendar, the week
+ * strip and the three pills — and each is transcribed from its frame's own svg.
  *
- * Ten of the eleven share one field — a `#FAF9F8 → #FDFDFC` ground, a
- * `rgba(180,170,150,0.14)` bloom off the top-left corner, a 560pt warm sun
- * hung 300 below the bottom edge, and grain at 0.12. `25 · What Comes Before
- * It` states its own, `30 · If Nothing Changes` is a night sky, and
- * `23 · Putting Your Plan Together` is the sunrise the funnel breaks on.
+ * `32 · Change the Line` is gone: the drop split it into `32 · If Nothing
+ * Changes` and `32A · With the Plan`, one line chart drawn two ways.
  *
- * Design y minus 54 throughout (`DECISIONS.md` D009). Numbers come from
- * `src/content/onboardingTail.ts`, generated from the frames.
+ * Children of `Screen` are in canvas coordinates (D009). Where a board's copy
+ * would meet its primary on a shorter phone, the band between the nav row and
+ * the primary scrolls (`Band`, D320 rule 3) — at 852 it fits and nothing moves;
+ * the boards with a picture over a centred stack are `HeroBoard`s and lift
+ * instead (rule 2).
  */
-import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useEffect, type ReactNode } from 'react';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useWindowDimensions, View } from 'react-native';
+import Svg, { Circle, Path, Rect, Text as SvgText } from 'react-native-svg';
 
-import { AppText, Grain } from '@/components/ui';
-import { PressScale } from '@/components/ui/press-scale';
-import { AGE_80_STARS, COST_30, COST_365, SCORE_CURVE, SCORE_RING, WINDOW_BARS } from '@/content/onboardingTail';
-import { fonts, sans } from '@/lib/theme';
+import { HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
+import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS, COST_30, COST_365 } from '@/content/onboardingTail';
+import { groupDigits } from '@/lib/format';
+import { LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
 
-const noiseDark = require('../../../assets/images/noise-dark.png');
-
-/** Design y → the app's y under the safe-area inset. */
-const Y = (top: number) => top - 54;
-
-// ── the field ten of the eleven frames share ─────────────────────────
-export function TailField({
-  ground = ['#FAF9F8', '#FDFDFC'] as const,
-  bloomAlpha = 0.14,
-  sun = { size: 560, bottom: -300, a0: 0.42, a45: 0.19 },
-  grain = 0.12,
-}: {
-  ground?: readonly [string, string];
-  bloomAlpha?: number;
-  sun?: { size: number; bottom: number; a0: number; a45: number } | null;
-  grain?: number;
-}) {
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
-      <LinearGradient colors={[ground[0], ground[1]]} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
-      {/* the corner bloom — the canvas blurs it 6px, and a closest-side radial
-          already dies at its own edge, so the gradient's falloff carries it */}
-      <Svg width={540} height={270} style={{ position: 'absolute', left: -40, top: -140 }}>
-        <Defs>
-          <RadialGradient id="tailBloom" cx="50%" cy="50%" rx="50%" ry="50%">
-            <Stop offset="0" stopColor="#B4AA96" stopOpacity={bloomAlpha} />
-            <Stop offset="0.72" stopColor="#131313" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Ellipse cx={270} cy={135} rx={270} ry={135} fill="url(#tailBloom)" />
-      </Svg>
-      {sun ? (
-        <Svg width={sun.size} height={sun.size} style={{ position: 'absolute', left: '50%', marginLeft: -sun.size / 2, bottom: sun.bottom }}>
-          <Defs>
-            <RadialGradient id="tailSun" cx="50%" cy="50%" rx="50%" ry="50%">
-              <Stop offset="0" stopColor="#FFECC4" stopOpacity={sun.a0} />
-              <Stop offset="0.45" stopColor="#FFECC4" stopOpacity={sun.a45} />
-              <Stop offset="0.72" stopColor="#FFECC4" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Ellipse cx={sun.size / 2} cy={sun.size / 2} rx={sun.size / 2} ry={sun.size / 2} fill="url(#tailSun)" />
-        </Svg>
-      ) : null}
-      <Grain source={noiseDark} opacity={grain} />
-    </View>
-  );
-}
-
-/** The frame under the safe-area inset that every tail screen positions inside. */
-export function TailFrame({ children, field }: { children: ReactNode; field?: ReactNode }) {
-  return (
-    <View style={{ flex: 1, backgroundColor: '#FAF9F8' }}>
-      {field ?? <TailField />}
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        {/* Yoga places an absolute child from its parent's border box and never
-            consults padding, and SafeAreaView spends the inset as padding — so
-            the content has to sit in a plain view that already starts at it. */}
-        <View style={{ flex: 1 }}>{children}</View>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-// ── shared pieces ────────────────────────────────────────────────────
-
-/** The tail's pill: 58 tall at radius 29, or 56 at 28. */
-export function TailCta({
-  label,
-  onPress,
-  y,
-  h = 58,
-  tone = 'ink',
-  tracking = 0.2,
-}: {
-  label: string;
-  onPress: () => void;
-  /** the pill's own top on the canvas */
-  y: number;
-  h?: 56 | 58;
-  tone?: 'ink' | 'paper';
-  tracking?: number;
-}) {
-  const ink = tone === 'ink';
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      style={{
-        position: 'absolute',
-        left: 24,
-        right: 24,
-        top: Y(y),
-        height: h,
-        minHeight: 0,
-        borderRadius: h / 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: ink ? '#131313' : '#FFFFFF',
-      }}>
-      <AppText style={[sans('600'), { fontSize: 17, letterSpacing: tracking, color: ink ? '#FFFFFF' : '#131313' }]}>{label}</AppText>
-    </PressScale>
-  );
-}
-
-/** A centred run of copy at the canvas's own inset, top, size and leading. */
-export function TailCopy({
-  children,
-  top,
-  inset,
-  size,
-  lineHeight,
-  weight = '400',
-  color = '#55534E',
-  tracking,
-}: {
-  children: ReactNode;
-  top: number;
-  inset: number;
-  size: number;
-  /** Omitted where the canvas states none — the platform's own line box then. */
-  lineHeight?: number;
-  weight?: '400' | '500' | '600';
-  color?: string;
-  tracking?: number;
-}) {
-  return (
-    <AppText
-      center
-      style={[
-        sans(weight),
-        {
-          position: 'absolute',
-          left: inset,
-          right: inset,
-          top: Y(top),
-          fontSize: size,
-          color,
-          ...(lineHeight != null ? { lineHeight } : null),
-          ...(tracking != null ? { letterSpacing: tracking } : null),
-        },
-      ]}>
-      {children}
-    </AppText>
-  );
-}
+/** A `<text>`'s 600/700 in the canvas's face: 600 resolves to Lato 700 (the canvas loads 400/700/900). */
+const BOLD = { fontFamily: LATO.bold, fontWeight: 'normal' } as const;
 
 /**
- * A chart the canvas sizes with `width: 100%` and a viewBox.
+ * The band between the nav row (canvas 100) and the primary's top. Its
+ * children keep **canvas** coordinates (the inner box starts at canvas 0).
+ * `start` and `end` are the canvas y of the first and last thing drawn;
+ * `bottom` is the space the controls take (106 for the primary at 48, 154 at 96).
  *
- * An SVG given a width and a viewBox takes its height from the ratio; give it a
- * fixed height instead and `preserveAspectRatio` centres the drawing inside a
- * viewport of the wrong shape, which shifts every label. The aspect ratio is
- * carried on the wrapper so the box grows with the card.
+ * At 852 everything clears the controls and nothing moves. On a shorter phone
+ * (D320, as `HeroBoard` does it): when the drawing would come within 16 of the
+ * primary, the whole of it rises into the ground between the nav and its first
+ * line (never above canvas 108) — by the deficit when there is that much ground,
+ * and the board reads exactly as drawn, only higher. Where there is not, it
+ * rises as far as the ground allows and the rest scrolls between the nav and
+ * the controls (rule 3), never under a control — so a 667 phone sees the most
+ * of the board it can before it has to scroll (D219).
  */
-function TailChart({ vb, children }: { vb: [number, number]; children: ReactNode }) {
+export function Band({ start, end, bottom = 106, children }: { start: number; end: number; bottom?: number; children: ReactNode }) {
+  const { height: winH } = useWindowDimensions();
+  const canvasTop = useCanvasTop();
+  const deficit = Math.ceil(end + 16 - (winH - canvasTop - bottom));
+  const lift = deficit > 0 ? Math.min(deficit, Math.max(0, Math.floor(start - 108))) : 0;
   return (
-    <View style={{ width: '100%', aspectRatio: vb[0] / vb[1] }}>
-      <Svg width="100%" height="100%" viewBox={`0 0 ${vb[0]} ${vb[1]}`}>
-        {children}
-      </Svg>
-    </View>
+    <ScrollRegion top={100} bottom={bottom} alwaysBounceVertical={false} contentStyle={{ paddingBottom: 16 }}>
+      <View style={{ marginTop: -100 - lift, height: end }}>{children}</View>
+    </ScrollRegion>
   );
 }
 
-/**
- * The floating pill `29 · One Year From Now` and `30 · If Nothing Changes` hang
- * 120 off the bottom edge.
- *
- * The canvas gives it `backdrop-filter: blur(12px)` under a 94%-opaque fill.
- * React Native has no backdrop filter, so the blur is an `expo-blur` layer
- * inside the pill with the stated colour painted over it — see DECISIONS.md
- * D018 for the intensity mapping.
- */
-function TailPill({ tint, fill, ring, shadow, color, children }: { tint: 'light' | 'dark'; fill: string; ring: string; shadow: string; color: string; children: ReactNode }) {
+/** A heading + paragraph stack hung at a canvas top (`stack(T, { gap })`), left-aligned. */
+function Stack({ top, gap = 18, onLayout, children }: { top: number; gap?: number; onLayout?: (height: number) => void; children: ReactNode }) {
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, bottom: 120, alignItems: 'center' }}>
-      <View style={{ borderRadius: 16, overflow: 'hidden', boxShadow: `0 0 0 1px ${ring}, ${shadow}` }}>
-        <BlurView intensity={24} tint={tint} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
-        <View style={{ backgroundColor: fill, paddingTop: 13, paddingBottom: 14, paddingHorizontal: 24 }}>
-          {/* The pill inherits the frame's 16px, so its line box is 19 even
-              though the 15px run inside it is 17.5 — CSS's strut, which Yoga
-              has no equivalent for. Stating the line box keeps the pill 46
-              tall and the run centred in it. See DECISIONS.md D020. */}
-          <View style={{ height: 19, justifyContent: 'center' }}>
-            <AppText style={[sans('500'), { fontSize: 15, color }]}>{children}</AppText>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-/** A white paper card with the tail's hairline and its own grain. */
-function TailCard({ top, padding, children, height }: { top: number; padding: string; children: ReactNode; height?: number }) {
-  const [pt, px, pb] = padding.split(' ').map(Number);
-  return (
-    <View
-      style={{
-        position: 'absolute',
-        left: 24,
-        right: 24,
-        top: Y(top),
-        ...(height != null ? { height } : null),
-        borderRadius: 20,
-        backgroundColor: '#FFFFFF',
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
-        paddingTop: pt,
-        paddingHorizontal: px,
-        paddingBottom: pb ?? px,
-        overflow: 'hidden',
-      }}>
-      <Grain source={noiseDark} opacity={0.05} />
+    <View onLayout={onLayout ? (e) => onLayout(e.nativeEvent.layout.height) : undefined} style={{ position: 'absolute', left: 24, right: 24, top, gap }}>
       {children}
     </View>
   );
 }
 
-// ── 23 · Putting Your Plan Together ──────────────────────────────────
-/**
- * The sunrise the funnel breaks on: a five-stop ground from `#131313` to white,
- * a progress rule 311 wide with 186 filled, three checklist rows, and a 399pt
- * white disc rising off the bottom edge.
- */
-const AEGIS_ROWS = ['Looking at when it usually happens', 'Looking at what usually comes right before it', 'Building your first week'];
+/** A 15/24 paragraph with one 700 ink run inside it, as the frames write them. */
+function Strong({ children }: { children: ReactNode }) {
+  return (
+    <MonoText v="p" style={{ ...sans('700'), color: mono.ink }}>
+      {children}
+    </MonoText>
+  );
+}
+
+/** The ink paragraph (`16/400 lh 25 #F2F0EC`) One Bad Day and What You Want Back end on. */
+function InkP({ children, center }: { children: ReactNode; center?: boolean }) {
+  return (
+    <MonoText v="p" center={center} color={mono.ink} style={{ fontSize: 16, lineHeight: 25, alignSelf: 'stretch' }}>
+      {children}
+    </MonoText>
+  );
+}
+
+// ── 24 · Build plan (frame `Enlisting Aegis`) ─────────────────────────
+
+// The questionnaire doc words the three lines differently again ("Finding
+// where you usually get caught" …); the frame is what is visible, so it wins.
+const AEGIS_ROWS = ['Finding where you usually struggle', 'Looking at what tends to set it off', 'Choosing where to start'];
 /** How long the board holds before it hands over. The app's own timing. */
 const AEGIS_MS = 6800;
 
-export function O3PuttingTogether({ next }: { next: () => void }) {
-  // The canvas draws no control here — the board hands over on its own.
+/**
+ * The kit's spinner over "Putting your plan together…" and the three rows in
+ * the frame's state — the first done, the second in progress, the third to
+ * come. The canvas draws no control: the board hands over on its own after
+ * `AEGIS_MS`. The rows hold that one state (as the previous drop's did); the
+ * mark turns (the kit's `Spinner`, D366). `hold` (mock builds only) keeps it up
+ * for a capture.
+ */
+export function O3PuttingTogether({ next, hold }: { next: () => void; hold?: boolean }) {
   useEffect(() => {
+    if (hold) return;
     const id = setTimeout(next, AEGIS_MS);
     return () => clearTimeout(id);
-  }, [next]);
+  }, [next, hold]);
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <LinearGradient
-          colors={['#131313', '#2A2924', '#6E7069', '#C9C8C4', '#FFFFFF']}
-          locations={[0, 0.26, 0.52, 0.74, 1]}
-          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-        />
-        <Grain source={noiseDark} opacity={0.12} />
+    <Screen>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 236, flexDirection: 'row', justifyContent: 'center' }}>
+        <Spinner />
       </View>
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 0, right: 0, top: Y(150), fontSize: 15, color: 'rgba(244,243,240,0.8)' }]}>
-            Putting your plan together…
-          </AppText>
-          <View style={{ position: 'absolute', left: 41, top: Y(177), width: 311, height: 3, borderRadius: 2, backgroundColor: 'rgba(244,243,240,0.25)' }}>
-            <View style={{ width: 186, height: 3, borderRadius: 2, backgroundColor: '#F4F3F0' }} />
-          </View>
-          <View style={{ position: 'absolute', left: 0, right: 0, top: Y(262), alignItems: 'center', gap: 16 }}>
-            {AEGIS_ROWS.map((label, i) => {
-              const done = i < 2;
-              return (
-                <View key={label} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  {done ? (
-                    <Svg width={15} height={15} viewBox="0 0 15 15" fill="none">
-                      <Path d="M2.5 8l3.2 3.2L12.5 4" stroke="#F4F3F0" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-                    </Svg>
-                  ) : (
-                    /* the third row's mark is a 13pt ring with its top edge cut
-                       away — a spinner frozen at one frame on the canvas */
-                    <View
-                      style={{
-                        width: 13,
-                        height: 13,
-                        borderRadius: 6.5,
-                        borderWidth: 2,
-                        borderColor: 'rgba(244,243,240,0.55)',
-                        borderTopColor: 'transparent',
-                      }}
-                    />
-                  )}
-                  <AppText style={[sans('500'), { fontSize: 15.5, color: done ? '#F4F3F0' : 'rgba(244,243,240,0.75)' }]}>{label}</AppText>
-                </View>
-              );
-            })}
-          </View>
-          {/* the frame carries a 20px/500 line at y 434 with no words in it */}
-          <View
-            pointerEvents="none"
-            style={{ position: 'absolute', left: -3, top: Y(563), width: 399, height: 399, borderRadius: 199.5, backgroundColor: '#FFFFFF', overflow: 'hidden', boxShadow: '0 -20px 70px rgba(255,255,255,0.6)' }}>
-            <Grain source={noiseDark} opacity={0.08} />
-          </View>
-        </View>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-// ── 24 · Where You Get Caught ────────────────────────────────────────
-/** The loop, drawn as an ellipse with two arrowheads and four labels on it. */
-export function O3WhereYouGetCaught({ name, triggers, issue, next }: { name?: string; triggers: string[]; issue: string; next: () => void }) {
-  const who = (name ?? '').trim();
-  return (
-    <TailFrame>
-      <TailCopy top={166} inset={36} size={24} lineHeight={32} weight="500" color="#1D1C1A" tracking={-0.2}>
-        {who ? `${who}, this is where you seem to get caught most often.` : 'This is where you seem to get caught most often.'}
-      </TailCopy>
-      <TailCard top={316} padding="18 12 12">
-        {/* The warm core of the loop and the bead riding it. The canvas puts
-            both at `left:50%; top:50%` of the *card*, with `margin-top` −32 on
-            the 64pt glow and −14 on the 34pt bead — so the bead sits 3 below
-            the card's centre, not on it. Yoga places an absolute child from its
-            parent's border box and ignores the padding, so both carry the
-            offset from the card's own top-left. */}
-        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}>
-          <Svg width={64} height={64} style={{ position: 'absolute', left: 140.5, top: 75 }}>
-            <Defs>
-              <RadialGradient id="loopCore" cx="50%" cy="50%" rx="50%" ry="50%">
-                <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.5} />
-                <Stop offset="0.74" stopColor="#E2BA78" stopOpacity={0} />
-              </RadialGradient>
-            </Defs>
-            <Circle cx={32} cy={32} r={32} fill="url(#loopCore)" />
-          </Svg>
-          <View style={{ position: 'absolute', left: 155.5, top: 93, width: 34, height: 34, borderRadius: 17, overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
-            <Svg width={34} height={34} style={{ position: 'absolute' }}>
-              <Defs>
-                <RadialGradient id="loopBead" cx="50%" cy="30%" rx="70%" ry="70%">
-                  <Stop offset="0" stopColor="#FBF2E2" />
-                  <Stop offset="0.65" stopColor="#F0DBB4" />
-                  <Stop offset="1" stopColor="#DFC08B" />
-                </RadialGradient>
-              </Defs>
-              <Circle cx={17} cy={17} r={17} fill="url(#loopBead)" />
-            </Svg>
-            <Grain source={noiseDark} opacity={0.4} />
-          </View>
-        </View>
-        <TailChart vb={[300, 172]}>
-          <Ellipse cx={150} cy={86} rx={104} ry={55} fill="none" stroke="#8B8882" strokeWidth={1.7} />
-          <Path d="M249 80 h11 l-5.5 10 z" fill="#8B8882" />
-          <Path d="M40 92 h11 l-5.5 -10 z" fill="#8B8882" />
-          {/* the canvas knocks each label out of the ellipse with a 7pt white
-              stroke drawn under the fill — `paint-order: stroke` */}
-          <LoopLabel x={150} y={36} size={11.5} weight="600" fill="#1D1C1A">{`the ${issue} rises`}</LoopLabel>
-          <LoopLabel x={254} y={90} size={11} weight="400" fill="#55534E">the escape</LoopLabel>
-          <LoopLabel x={150} y={143} size={11} weight="400" fill="#55534E">minutes of relief</LoopLabel>
-          <LoopLabel x={46} y={90} size={11} weight="400" fill="#55534E">back — deeper</LoopLabel>
-        </TailChart>
-      </TailCard>
-      <TailCopy top={566} inset={44} size={14} lineHeight={21}>
-        {`${triggers.slice(0, 3).join(' · ') || 'Late at night · Home alone · Phone in bed'} — the first situation VICI will help you change.`}
-      </TailCopy>
-      <TailCta label="Continue" onPress={next} y={744} />
-    </TailFrame>
-  );
-}
-
-function LoopLabel({ x, y, size, weight, fill, children }: { x: number; y: number; size: number; weight: string; fill: string; children: ReactNode }) {
-  return (
-    <>
-      {/* the canvas knocks the label out of the ellipse with a 7pt white stroke
-          drawn *under* the fill — `paint-order: stroke`, which RN SVG has no
-          property for, so the run is drawn twice */}
-      <SvgText x={x} y={y} textAnchor="middle" fontFamily={fonts.sans} fontSize={size} fontWeight={weight} fill="none" stroke="#FFFFFF" strokeWidth={7} strokeLinejoin="round">
-        {children}
-      </SvgText>
-      <SvgText x={x} y={y} textAnchor="middle" fontFamily={fonts.sans} fontSize={size} fontWeight={weight} fill={fill}>
-        {children}
-      </SvgText>
-    </>
-  );
-}
-
-// ── 25 · What Comes Before It ────────────────────────────────────────
-/** A tilted card with a dotted climb, a waypoint and a flag on it. */
-export function O3WhatComesBeforeIt({ trigger, next }: { trigger?: string; next: () => void }) {
-  return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
-        <Grain source={noiseDark} opacity={0.07} />
-        <Svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
-          <Defs>
-            <RadialGradient id="wcbTop" cx="50%" cy="50%" rx="50%" ry="50%">
-              <Stop offset="0" stopColor="#B4AA96" stopOpacity={0.32} />
-              <Stop offset="0.55" stopColor="#B4AA96" stopOpacity={0.1} />
-              <Stop offset="0.75" stopColor="#B4AA96" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Ellipse cx="50%" cy={-40} rx="65%" ry={150} fill="url(#wcbTop)" />
-        </Svg>
-        <Svg width={520} height={520} style={{ position: 'absolute', left: '50%', marginLeft: -260, bottom: -260 }}>
-          <Defs>
-            <RadialGradient id="wcbSun" cx="50%" cy="50%" rx="50%" ry="50%">
-              <Stop offset="0" stopColor="#FFECC4" stopOpacity={0.4} />
-              <Stop offset="0.45" stopColor="#FFECC4" stopOpacity={0.18} />
-              <Stop offset="0.72" stopColor="#FFECC4" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Ellipse cx={260} cy={260} rx={260} ry={260} fill="url(#wcbSun)" />
-        </Svg>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 352, alignItems: 'center' }}>
+        <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>
+          Putting your plan together…
+        </MonoText>
       </View>
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <View style={{ position: 'absolute', left: '50%', marginLeft: -130, top: Y(150), width: 260, height: 280 }}>
-            <Svg width={172} height={172} style={{ position: 'absolute', left: 44, top: 16 }}>
-              <Defs>
-                <RadialGradient id="wcbGlow" cx="50%" cy="50%" rx="50%" ry="50%">
-                  <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.46} />
-                  <Stop offset="0.74" stopColor="#E2BA78" stopOpacity={0} />
-                </RadialGradient>
-              </Defs>
-              <Circle cx={86} cy={86} r={86} fill="url(#wcbGlow)" />
-            </Svg>
-            <Svg width={156} height={15} style={{ position: 'absolute', left: 52, top: 248 }}>
-              <Defs>
-                <RadialGradient id="wcbShadow" cx="50%" cy="50%" rx="50%" ry="50%">
-                  <Stop offset="0" stopColor="#000000" stopOpacity={0.14} />
-                  <Stop offset="1" stopColor="#000000" stopOpacity={0} />
-                </RadialGradient>
-              </Defs>
-              <Ellipse cx={78} cy={7.5} rx={78} ry={7.5} fill="url(#wcbShadow)" />
-            </Svg>
-            <View
-              style={{
-                position: 'absolute',
-                left: 56,
-                top: 52,
-                width: 148,
-                height: 152,
-                borderRadius: 9,
-                backgroundColor: '#FFFFFF',
-                boxShadow: '0 0 0 1px rgba(0,0,0,0.07), 0 18px 36px rgba(40,38,32,0.16)',
-                transform: [{ rotate: '-2deg' }],
-                overflow: 'hidden',
-              }}>
-              <Grain source={noiseDark} opacity={0.05} />
-              <View style={{ position: 'absolute', left: 14, top: 13, width: 52, height: 5, borderRadius: 3, backgroundColor: '#E0DFDA' }} />
-              <Svg width={120} height={100} viewBox="0 0 120 100" style={{ position: 'absolute', left: 14, top: 30 }}>
-                <Path d="M8 88 C30 74 22 52 44 44 C68 35 78 26 104 12" fill="none" stroke="#131313" strokeWidth={2.4} strokeLinecap="round" strokeDasharray="1 8" />
-                <Circle cx={8} cy={88} r={5} fill="#131313" />
-                <Circle cx={44} cy={44} r={4} fill="#FFFFFF" stroke="#131313" strokeWidth={2} />
-                <Rect x={102} y={-2} width={3} height={18} rx={1.5} fill="#131313" />
-                <Path d="M105 0 L118 4.5 L105 9 Z" fill="#131313" />
-              </Svg>
-              <Svg width={26} height={26} style={{ position: 'absolute', right: 12, bottom: 12 }}>
-                <Defs>
-                  <RadialGradient id="wcbSeal" cx="38%" cy="30%" rx="70%" ry="70%">
-                    <Stop offset="0" stopColor="#F0DBB4" />
-                    <Stop offset="0.7" stopColor="#E2BA78" />
-                    <Stop offset="1" stopColor="#E2BA78" />
-                  </RadialGradient>
-                </Defs>
-                <Circle cx={13} cy={13} r={13} fill="url(#wcbSeal)" />
-              </Svg>
-            </View>
-          </View>
-          <TailCopy top={472} inset={36} size={24} lineHeight={32} weight="500" color="#1D1C1A" tracking={-0.1}>
-            {`You said ${(trigger ?? 'stress').toLowerCase()} often shows up before you watch.`}
-          </TailCopy>
-          <TailCopy top={560} inset={44} size={15.5} lineHeight={23}>
-            When that happens, SOS will first help you get out of the situation — not sit and argue with the urge.
-          </TailCopy>
-          <TailCta label="Continue" onPress={next} y={688} h={56} />
-          {/* the frame carries a 15px/500 #8B8882 line at y 764 with no words */}
-        </View>
-      </SafeAreaView>
-    </View>
+      <StepList style={{ position: 'absolute', left: 24, right: 24, top: 462 }} current={1} steps={AEGIS_ROWS} />
+    </Screen>
   );
 }
 
-// ── 26 · The Window to Protect ───────────────────────────────────────
-export function O3WindowToProtect({ triggers, next }: { triggers: string[]; next: () => void }) {
-  return (
-    <TailFrame>
-      <TailCopy top={158} inset={26} size={22} lineHeight={22 * 1.32} weight="500" color="#1D1C1A" tracking={0.1}>
-        The window to protect first.
-      </TailCopy>
-      <View style={{ position: 'absolute', left: 24, right: 24, top: Y(268), height: 250, borderRadius: 16, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.09)' }}>
-        <AppText style={[sans('600'), { position: 'absolute', left: 20, top: 18, fontSize: 12.5, color: '#8B8882' }]}>Urges by night</AppText>
-        <View style={{ position: 'absolute', left: 20, right: 20, bottom: 44, height: 130, flexDirection: 'row', alignItems: 'flex-end', gap: 14 }}>
-          {WINDOW_BARS.map((b, i) => (
-            <View
-              key={i}
-              style={{
-                flex: 1,
-                height: b.h,
-                borderTopLeftRadius: 6,
-                borderTopRightRadius: 6,
-                borderBottomLeftRadius: 2,
-                borderBottomRightRadius: 2,
-                backgroundColor: b.on ? '#131313' : '#DCDBD6',
-              }}
-            />
-          ))}
-        </View>
-        <View style={{ position: 'absolute', left: 20, right: 20, bottom: 16, flexDirection: 'row', gap: 14 }}>
-          {WINDOW_BARS.map((b, i) => (
-            <AppText key={i} center style={[sans('500'), { flex: 1, fontSize: 11.5, color: '#8B8882' }]}>
-              {b.label}
-            </AppText>
-          ))}
-        </View>
-      </View>
-      <View
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          top: Y(540),
-          height: 76,
-          borderRadius: 16,
-          backgroundColor: '#FFFFFF',
-          boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingHorizontal: 20,
-          gap: 16,
-        }}>
-        <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>
-          <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
-            <Path d="M14.5 2.5a9.5 9.5 0 1 0 7 14 9 9 0 0 1-7-14z" fill="#131313" />
-          </Svg>
-        </View>
-        <View style={{ flexShrink: 1 }}>
-          <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>Most active trigger</AppText>
-          <AppText style={[sans('600'), { marginTop: 4, fontSize: 17.5, color: '#1D1C1A' }]}>{triggers.slice(0, 3).join(' · ') || 'Late night · Weekends · Phone in bed'}</AppText>
-        </View>
-      </View>
-      <AppText style={[sans('400'), { position: 'absolute', left: 26, right: 26, top: Y(648), fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-        Protect this window first, and a lot of the rest gets easier.
-      </AppText>
-      <TailCta label="Continue" onPress={next} y={764} tracking={0.3} />
-    </TailFrame>
-  );
-}
+// ── 28 · Your VICI Rating (frame `Starting Score`) ───────────────────
 
-// ── 27 · Your Starting Point ─────────────────────────────────────────
-const SCORE_MAX = 3000;
-const CURVE_W = 345;
-const CURVE_H = 88;
+/** The gauge's ticks: 49 of them over the half circle, the scale 0 … 1,000. */
+const TICKS = 48;
+const GAUGE_MAX = 1000;
+const f1 = (v: number) => v.toFixed(1);
 
 /**
- * The ring gauge and the ELO curve.
+ * The tick gauge, drawn from the score. Tick `i` sits at 180° − 3.75°·i about
+ * (150, 156); a tick at or under the score runs r 108 → 128 at 3.4, one above
+ * it r 119 → 128 at 2. The marker is an r 6 dot at r 96 on the score's angle.
+ * Endpoints are written to one decimal, as the frame writes them, so at 842 every
+ * path is the frame's. The scale is the frame's 0 … 1,000; a rating above it
+ * pins the gauge full (D329: the board shows the app's own rating).
  *
- * The ring's arc is `score / 3000` of the circumference, which is exactly what
- * the frame's own `stroke-dasharray: 89.7 653.5` states for its 412. The
- * curve's x-axis is the same 0…3,000 — its peak sits at x 172.5, which is
- * 1,500 — so the marker is placed by the same fraction. See `DECISIONS.md`
- * D017 for the frame's own marker, which disagrees with its own readout.
+ * A full gauge draws no marker (D219). At 0° the dot lands 2.5 right of and 4
+ * under the last glyph of a four-digit figure — "1,000." — and the app opens
+ * every account at 1,000, so every man would read it. Every tick lit already
+ * says where the rating sits; at 842 (and anywhere short of full) the marker is
+ * the frame's.
  */
-export function O3StartingPoint({ score, next }: { score: number; next: () => void }) {
-  const frac = Math.max(0, Math.min(1, score / SCORE_MAX));
-  const dash = SCORE_RING.circumference * frac;
-  const angle = -Math.PI / 2 + frac * Math.PI * 2;
-  const mx = 120 + SCORE_RING.trackR * Math.cos(angle);
-  const my = 120 + SCORE_RING.trackR * Math.sin(angle);
-  const markerX = CURVE_W * frac;
-  // the bell the canvas samples: y = 80 − 68·exp(−((x−172.5)/63.8)²)
-  const curveY = (x: number) => 80 - 68 * Math.exp(-(((x - 172.5) / 63.8) ** 2));
-  const line = SCORE_CURVE.map(([x, y], i) => `${i ? 'L ' : ''}${x},${y}`).join(' ');
-  const area = `M0,${CURVE_H} L${line} L${CURVE_W},${CURVE_H} Z`;
+function ScoreGauge({ score }: { score: number }) {
+  const share = Math.max(0, Math.min(score, GAUGE_MAX)) / GAUGE_MAX;
+  const ticks = Array.from({ length: TICKS + 1 }, (_, i) => {
+    const a = ((180 - 3.75 * i) * Math.PI) / 180;
+    const on = i / TICKS <= share;
+    const r0 = on ? 108 : 119;
+    const cos = Math.cos(a);
+    const sin = Math.sin(a);
+    return { d: `M${f1(150 + r0 * cos)} ${f1(156 - r0 * sin)}L${f1(150 + 128 * cos)} ${f1(156 - 128 * sin)}`, w: on ? 3.4 : 2 };
+  });
+  const m = Math.PI * (1 - share);
   return (
-    <TailFrame>
-      <AppText center style={[sans('600'), { position: 'absolute', left: 0, right: 0, top: Y(150), fontSize: 12.5, letterSpacing: 1.2, color: '#8B8882' }]}>
-        YOUR RECOVERY SCORE
-      </AppText>
-      <View style={{ position: 'absolute', left: '50%', marginLeft: -120, top: Y(192), width: 240, height: 240 }}>
-        <Svg width={240} height={240} viewBox="0 0 240 240" style={{ position: 'absolute', left: 0, top: 0 }}>
-          {SCORE_RING.ticks.map(([x1, y1, x2, y2], i) => (
-            <Line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#DDDAD2" strokeWidth={1.4} />
-          ))}
-          <Circle cx={120} cy={120} r={SCORE_RING.trackR} fill="none" stroke="#ECEAE4" strokeWidth={SCORE_RING.strokeW} />
-          <Circle
-            cx={120}
-            cy={120}
-            r={SCORE_RING.trackR}
-            fill="none"
-            stroke="#131313"
-            strokeWidth={SCORE_RING.strokeW}
-            strokeDasharray={`${dash} ${SCORE_RING.circumference - dash}`}
-            transform="rotate(-90 120 120)"
-          />
-          <Circle cx={mx} cy={my} r={7.5} fill="#D9A441" />
-          <Circle cx={mx} cy={my} r={7.5} fill="none" stroke="#FFFFFF" strokeWidth={2.5} />
-        </Svg>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-          <AppText style={[sans('600'), { fontSize: 60, letterSpacing: -2, lineHeight: 60, color: '#1D1C1A', fontVariant: ['tabular-nums'] as const }]}>{score.toLocaleString('en-US')}</AppText>
-          <AppText style={[sans('600'), { fontSize: 12.5, color: '#8B8882' }]}>of {SCORE_MAX.toLocaleString('en-US')}</AppText>
-        </View>
-      </View>
-      <View style={{ position: 'absolute', left: 24, right: 24, top: Y(474), height: CURVE_H }}>
-        <Svg width="100%" height={CURVE_H} viewBox={`0 0 ${CURVE_W} ${CURVE_H}`}>
-          <Defs>
-            <ClipPath id="vici-elo-clip">
-              <Rect x={0} y={0} width={markerX} height={CURVE_H} />
-            </ClipPath>
-          </Defs>
-          <Path d={area} fill="#F1F0EB" />
-          <G clipPath="url(#vici-elo-clip)">
-            <Path d={area} fill="rgba(217,164,65,0.32)" />
-          </G>
-          <Path d={`M${line}`} fill="none" stroke="#D8D5CE" strokeWidth={1.5} />
-          <Line x1={markerX} y1={curveY(markerX)} x2={markerX} y2={CURVE_H} stroke="#131313" strokeWidth={1.8} />
-          <Circle cx={markerX} cy={curveY(markerX)} r={5} fill="#D9A441" stroke="#FFFFFF" strokeWidth={2} />
-        </Svg>
-      </View>
-      <TailCopy top={584} inset={44} size={14.5} lineHeight={21}>
-        This is not a grade — just where you start. It can move.
-      </TailCopy>
-      <TailCta label="Next" onPress={next} y={744} />
-    </TailFrame>
+    <Svg width={300} height={196} viewBox="0 0 300 196">
+      {ticks.map((t, i) => (
+        <Path key={i} d={t.d} stroke={mono.ink} strokeWidth={t.w} strokeLinecap="round" />
+      ))}
+      {share < 1 ? <Circle cx={f1(150 + 96 * Math.cos(m))} cy={f1(156 - 96 * Math.sin(m))} r={6} fill={mono.ink} /> : null}
+      <SvgText x={150} y={146} fill={mono.ink} textAnchor="middle" fontSize={76} letterSpacing={-3} {...BOLD}>
+        {groupDigits(score)}
+      </SvgText>
+      <SvgText x={150} y={176} fill={mono.mute} textAnchor="middle" fontSize={14} {...BOLD}>
+        of 1,000
+      </SvgText>
+      <SvgText x={22} y={192} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
+        0
+      </SvgText>
+      <SvgText x={278} y={192} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
+        1,000
+      </SvgText>
+    </Svg>
   );
 }
 
-// ── 28 · The Next 30 Days ────────────────────────────────────────────
-export function O3Next30({ times, next }: { times: number; next: () => void }) {
+export function O3StartingPoint({ score, next, back }: { score: number; next: () => void; back?: () => void }) {
+  // the closing line wraps to three on a narrow phone; the band measures it
+  const [lineH, setLineH] = useState(48);
   return (
-    <TailFrame>
-      {/* the frame carries an empty 26px line at y 152 above the title */}
-      <TailCopy top={190} inset={32} size={26} weight="500" color="#1D1C1A" tracking={-0.2}>
-        This is your next 30 days
-      </TailCopy>
-      <TailCopy top={238} inset={44} size={14.5} lineHeight={21}>
-        {`At the rate you reported, about ${times} of the next 30 days end the same way.`}
-      </TailCopy>
-      <TailCard top={308} padding="16 16 16">
-        {/* `grid-template-columns: repeat(6,1fr); gap:8` with square cells */}
-        <View style={{ gap: 8 }}>
-          {Array.from({ length: Math.ceil(COST_30.length / 6) }, (_, r) => (
-            <View key={r} style={{ flexDirection: 'row', gap: 8 }}>
-              {COST_30.slice(r * 6, r * 6 + 6).map((on, i) => (
-                <View
-                  key={i}
-                  style={{
-                    flex: 1,
-                    aspectRatio: 1,
-                    borderRadius: 10,
-                    backgroundColor: on ? '#131313' : '#F7F6F3',
-                    boxShadow: on ? undefined : 'inset 0 0 0 1px rgba(0,0,0,0.06)',
-                  }}
-                />
-              ))}
-            </View>
-          ))}
+    <Screen>
+      <NavBar left="back" right="empty" onBack={back} />
+      <Band start={224} end={556 + lineH}>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 224 }}>
+          <MonoText v="caps" center>
+            Your VICI rating
+          </MonoText>
         </View>
-      </TailCard>
-      <TailCta label="Next" onPress={next} y={744} />
-    </TailFrame>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 270, flexDirection: 'row', justifyContent: 'center' }}>
+          <ScoreGauge score={score} />
+        </View>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', justifyContent: 'center' }}>
+          <Pill kind="outline" label="Starting point" />
+        </View>
+        <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
+          <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
+            This is where you start. What you do from here matters more than the questionnaire.
+          </MonoText>
+        </View>
+      </Band>
+      <PrimaryButton label="Next" onPress={next} />
+    </Screen>
   );
 }
 
-// ── 29 · One Year From Now ───────────────────────────────────────────
-export function O3OneYear({ days, next }: { days: number; next: () => void }) {
+// ── 29 · The Next 30 Days (frame `Cost Next 30`) ─────────────────────
+
+/**
+ * 30 circles, 6 across, r 14 at (22 + 58c, 22 + 50r). The frame's relapse days
+ * are filled `#0D0D0D` stroked 1.6 and the others `#111111` stroked 1.8 — on
+ * the ground they read alike, and the key's "Clean day" swatch (`#1E1E1E` in a
+ * `#5A574F` ring) matches no cell. Reproduced as drawn (CRITIC §5, tail Q2).
+ */
+function MonthDots() {
   return (
-    <TailFrame>
-      {/* `grid-template-columns: repeat(15,1fr); grid-auto-rows: 1fr; gap:4`
-          between y 72 and 100 off the bottom — the rows share the height, so a
-          cell is 19.8 x 23.4 on the canvas rather than square */}
-      <View style={{ position: 'absolute', left: 20, right: 20, top: Y(72), bottom: 100, gap: 4 }}>
-        {Array.from({ length: Math.ceil(COST_365.length / 15) }, (_, r) => (
-          <View key={r} style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
-            {COST_365.slice(r * 15, r * 15 + 15).map((on, i) => (
-              <View
-                key={i}
-                style={{
-                  flex: 1,
-                  borderRadius: 5,
-                  backgroundColor: on ? '#131313' : '#FFFFFF',
-                  boxShadow: on ? undefined : 'inset 0 0 0 1px rgba(0,0,0,0.06)',
-                }}
-              />
-            ))}
-            {COST_365.slice(r * 15, r * 15 + 15).length < 15
-              ? Array.from({ length: 15 - COST_365.slice(r * 15, r * 15 + 15).length }, (_, k) => <View key={'g' + k} style={{ flex: 1 }} />)
-              : null}
-          </View>
-        ))}
-      </View>
-      <TailPill tint="light" fill="rgba(255,255,255,0.94)" ring="rgba(0,0,0,0.08)" shadow="0 18px 44px rgba(40,38,32,0.26)" color="#1D1C1A">
-        {`A year at this pace — about ${days} days`}
-      </TailPill>
-      <TailCta label="Next" onPress={next} y={744} />
-    </TailFrame>
+    <Svg width={334} height={244} viewBox="0 0 334 244">
+      {COST_30.map((relapse, i) => (
+        <Circle
+          key={i}
+          cx={22 + 58 * (i % 6)}
+          cy={22 + 50 * Math.floor(i / 6)}
+          r={14}
+          fill={relapse ? mono.ground : mono.onInk}
+          stroke={mono.ink}
+          strokeWidth={relapse ? 1.6 : 1.8}
+        />
+      ))}
+    </Svg>
   );
 }
 
-// ── 30 · If Nothing Changes ──────────────────────────────────────────
-export function O3IfNothingChanges({ days, next }: { days: number; next: () => void }) {
+function KeyItem({ fill, ringColor, label }: { fill: string; ringColor: string; label: string }) {
   return (
-    <View style={{ flex: 1, backgroundColor: '#060606' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
-          {AGE_80_STARS.map(([x, y], i) => (
-            <Circle key={i} cx={x} cy={y} r={1.3} fill="#FFFFFF" />
-          ))}
-        </Svg>
-      </View>
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <TailPill tint="dark" fill="rgba(19,19,19,0.82)" ring="rgba(255,255,255,0.16)" shadow="0 18px 44px rgba(0,0,0,0.5)" color="#FFFFFF">
-            {`By age 80 — about ${days.toLocaleString('en-US')} days`}
-          </TailPill>
-          <TailCta label="Next" onPress={next} y={744} tone="paper" />
-        </View>
-      </SafeAreaView>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: fill, boxShadow: `0 0 0 1.5px ${ringColor}` }} />
+      <MonoText v="rowValue" color={mono.sub} wrap="wrap">
+        {label}
+      </MonoText>
     </View>
   );
 }
 
-// ── 31 · Change the Line ─────────────────────────────────────────────
-export function O3ChangeTheLine({ next }: { next: () => void }) {
+export function O3Next30({ times, next, back }: { times: number; next: () => void; back?: () => void }) {
   return (
-    <TailFrame>
-      <TailCopy top={148} inset={32} size={26} weight="500" color="#1D1C1A" tracking={-0.2}>
-        You don’t have to fix the next year tonight.
-      </TailCopy>
-      <TailCopy top={237} inset={44} size={14.5} lineHeight={22}>
-        You only have to make the next decision different. Then again tomorrow. That is how the line changes.
-      </TailCopy>
-      {/* the veil that takes the year grid down to black */}
+    <Screen>
+      <NavBar left="back" right="empty" onBack={back} />
+      <Band start={199} end={675}>
+        <Stack top={199}>
+          <MonoText v="h1">This is your next 30 days.</MonoText>
+          <MonoText v="p">
+            If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
+          </MonoText>
+        </Stack>
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 343, flexDirection: 'row', justifyContent: 'center' }}>
+          <MonthDots />
+        </View>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 603, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
+          <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
+          <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
+        </View>
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 653 }}>
+          <MonoText v="pTight" color={mono.mute} center wrap="wrap">
+            The line can start changing with the next one.
+          </MonoText>
+        </View>
+      </Band>
+      <PrimaryButton label="Next" onPress={next} />
+    </Screen>
+  );
+}
+
+// ── 30 · One Year From Now (frame `Cost Next 365`) ───────────────────
+
+/** A circle as two arcs — one `<Path>` draws a whole class of dots (thousands of `<Circle>`s are heavy on native). */
+const dot = (cx: number, cy: number, r: number) => `M${cx - r} ${cy}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0`;
+
+/** The column the frames draw the year grid and the line chart in: 345 at left 24 on a 393 frame. */
+const COLUMN = 345;
+
+/**
+ * The 365 grid and the line chart span the column on every width (D219). The
+ * frames draw them 345 wide at left 24, which is the column at 393 — but held
+ * at 345 they run 6 from the edge of a 375 phone and stop 61 short of it on a
+ * 430. So their x's scale by `k` = (window − 48) / 345; radii, strokes, type and
+ * every y stay the frame's, and at 393 `k` is exactly 1 (as Today's and the
+ * report's charts scale theirs).
+ */
+function useColumn() {
+  const w = useWindowDimensions().width - 48;
+  return { w, k: w / COLUMN };
+}
+
+/** An absolute `M`/`C` path with every x scaled by `k` — the frame's own string at `k` = 1. */
+const scaleX = (d: string, k: number) => (k === 1 ? d : d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${f1(Number(x) * k)} ${y}`));
+
+/** 365 dots, 25 across at (7 + 13.8c, 7 + 13.8r): a relapse day r 4.4 ink, the rest r 2.4 at 0.28. */
+function YearDots() {
+  const { w, k } = useColumn();
+  return (
+    <Svg width={w} height={208} viewBox={`0 0 ${w} 208`}>
+      {COST_365.map((relapse, i) => (
+        <Circle key={i} cx={(7 + (i % 25) * 13.8) * k} cy={7 + Math.floor(i / 25) * 13.8} r={relapse ? 4.4 : 2.4} fill={relapse ? mono.ink : 'rgba(242,240,236,0.28)'} />
+      ))}
+    </Svg>
+  );
+}
+
+/** The 44/700 figure ("About 110 days", "About 6,100 days"). */
+function Figure({ children, color = mono.ink }: { children: string; color?: string }) {
+  return (
+    <MonoText v="statValue" wrap="wrap" color={color} style={{ fontSize: 44, lineHeight: 52, letterSpacing: -1.5 }}>
+      {children}
+    </MonoText>
+  );
+}
+
+export function O3OneYear({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
+  return (
+    <Screen>
+      <NavBar left="back" right="empty" onBack={back} />
+      <Band start={199} end={612}>
+        <Stack top={199} gap={20}>
+          <MonoText v="h1">One year from now.</MonoText>
+        </Stack>
+        <View style={{ position: 'absolute', left: 24, top: 284 }}>
+          <YearDots />
+        </View>
+        <Stack top={530} gap={6}>
+          <Figure>{`About ${groupDigits(days)} days`}</Figure>
+          <MonoText v="p">Where you’re predicted to relapse.</MonoText>
+        </Stack>
+      </Band>
+      <PrimaryButton label="Next" onPress={next} />
+    </Screen>
+  );
+}
+
+// ── 31 · If Nothing Changes (frame `Cost By Age 80`) ─────────────────
+
+/**
+ * The night field: dots every 12 from (6, 6) over the whole window — bright
+ * r 2.6 `#FFFFFF`, dim r 1.6 at 0.22. The frame's 33 × 71 are `AGE_80_FIELD`
+ * (the designer's LCG, verified by the generator); a larger screen continues
+ * the same LCG for the cells the frame does not have, so 393 × 852 is the frame
+ * dot for dot. Anchored at the window's (0, 0), as the canvas's is at the
+ * frame's — it runs under the status bar.
+ */
+function AgeField({ width, height }: { width: number; height: number }) {
+  const [bright, dim] = useMemo(() => {
+    const cols = Math.max(AGE_80_COLS, Math.ceil((width - 3) / 12));
+    const rows = Math.max(AGE_80_ROWS, Math.ceil((height - 3) / 12));
+    let seed = AGE_80_NEXT_SEED;
+    const a: string[] = [];
+    const b: string[] = [];
+    for (let r = 0; r < rows; r++)
+      for (let c = 0; c < cols; c++) {
+        let on: boolean;
+        if (r < AGE_80_ROWS && c < AGE_80_COLS) on = AGE_80_FIELD[r * AGE_80_COLS + c];
+        else {
+          seed = (seed * 9301 + 49297) % 233280;
+          on = seed / 233280 < 0.3;
+        }
+        (on ? a : b).push(dot(6 + c * 12, 6 + r * 12, on ? 2.6 : 1.6));
+      }
+    return [a.join(''), b.join('')];
+  }, [width, height]);
+  return (
+    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ position: 'absolute', left: 0, top: 0 }}>
+      <Path d={dim} fill="rgba(255,255,255,0.22)" />
+      <Path d={bright} fill={monoDark.dotOn} />
+    </Svg>
+  );
+}
+
+/**
+ * The kit's dark frame (`#111111`, noise-dark at 0.09). The field, then a veil
+ * from 96 to 326 (`#111111` solid to 62 %, clear by 100 %) behind the caps, the
+ * figure and the line. The Back chevron is stroked `#17160F` — the old light
+ * kit's ink, near-invisible on `#111111` — reproduced, with its 36×40 target
+ * intact (CRITIC §5, tail Q3).
+ */
+export function O3IfNothingChanges({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
+  const win = useWindowDimensions();
+  const canvasTop = useCanvasTop();
+  return (
+    <Screen variant="dark">
+      <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
+        <AgeField width={win.width} height={win.height} />
+      </View>
       <LinearGradient
         pointerEvents="none"
-        colors={['rgba(6,6,6,0)', 'rgba(6,6,6,0.45)', 'rgba(6,6,6,0.85)', '#060606']}
-        locations={[0.38, 0.5, 0.58, 0.66]}
-        style={{ position: 'absolute', left: 0, right: 0, top: -54, bottom: 0 }}
+        colors={[mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
+        locations={[0, 0.62, 1]}
+        style={{ position: 'absolute', left: 0, right: 0, top: 96, height: 230 }}
       />
-      <TailCta label="Start changing it" onPress={next} y={744} tone="paper" />
-    </TailFrame>
+      <NavBar left="back" right="empty" tone="dark" chevronColor="#17160F" onBack={back} />
+      <View style={{ position: 'absolute', left: 24, top: 126, zIndex: 2 }}>
+        <MonoText v="caps" color={monoDark.caps}>
+          By age 80
+        </MonoText>
+      </View>
+      <View style={{ position: 'absolute', left: 24, top: 160, zIndex: 2 }}>
+        <Figure color={monoDark.text}>{`About ${groupDigits(days)} days`}</Figure>
+      </View>
+      <View style={{ position: 'absolute', left: 24, top: 222, zIndex: 2 }}>
+        <MonoText v="p" wrap="wrap" color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
+          If nothing changes.
+        </MonoText>
+      </View>
+      <PrimaryButton label="Next" onPress={next} tone="dark" />
+    </Screen>
   );
 }
 
-// ── 32 · One Bad Day ─────────────────────────────────────────────────
-export function O3OneBadDay({ day, next }: { day: number; next: () => void }) {
+// ── 32 · If Nothing Changes / 32A · With the Plan ────────────────────
+
+/**
+ * The two line boards share one chart (345 × 270 at 24, 389): the caption, the
+ * axis, the lead-in, then the board's own line, the dashed drop at x 208, the
+ * tooltip and the marker. Every value is the frame's literal — an illustration,
+ * not a readout of his frequency (CRITIC §5, tail Q7) — and spans the column on
+ * another width (`useColumn`: the x's scale, the tooltip keeps its 128).
+ */
+const LINES = {
+  nothing: {
+    title: 'If nothing changes.',
+    body: 'The line keeps climbing. Relapses get more frequent, not less.',
+    line: 'M86 150 C 170 128, 250 92, 330 58',
+    y: 104,
+    rate: '5× a week',
+    cta: 'Next',
+  },
+  plan: {
+    title: 'With the plan.',
+    body: 'You only have to make the next decision different. Then the next one. Then come back tomorrow.',
+    line: 'M86 150 C 140 138, 190 172, 240 190 C 272 200, 304 206, 330 208',
+    y: 172,
+    rate: '2× a week',
+    cta: 'Continue',
+  },
+} as const;
+
+function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () => void; back?: () => void }) {
+  const L = LINES[mode];
+  const { w, k } = useColumn();
+  const x = 208 * k;
   return (
-    <TailFrame>
-      <TailCopy top={170} inset={40} size={24} lineHeight={32} weight="500" color="#1D1C1A" tracking={-0.2}>
-        One bad day is one bad day.
-      </TailCopy>
-      <TailCopy top={230} inset={48} size={14} lineHeight={21}>
-        A bad day does not erase the work before it. Your lessons, logs, and medallions stay.
-      </TailCopy>
-      <TailCard top={316} padding="20 16 16">
-        <TailChart vb={[320, 190]}>
-          <Line x1={16} y1={152} x2={304} y2={152} stroke="rgba(19,19,19,0.16)" strokeWidth={1.5} />
-          <Circle cx={24} cy={148} r={4.5} fill="#131313" />
-          <Path d="M24,148 C100,136 180,92 288,34" fill="none" stroke="#131313" strokeWidth={3} strokeLinecap="round" />
-          <Path d="M288,34 l-10.5,-1 M288,34 l-4,9.5" stroke="#131313" strokeWidth={3} strokeLinecap="round" />
-          <Path d="M118,116 l8 8 M212,74 l8 8" stroke="#E2BA78" strokeWidth={3.6} strokeLinecap="round" />
-          <SvgText x={122} y={140} fontFamily={fonts.sans} fontSize={11} fontWeight="500" fill="#C99F5F">slip</SvgText>
-          <SvgText x={216} y={98} fontFamily={fonts.sans} fontSize={11} fontWeight="500" fill="#C99F5F">slip</SvgText>
-          <SvgText x={24} y={170} fontFamily={fonts.sans} fontSize={10.5} fontWeight="500" fill="#8B8882">day 0</SvgText>
-          <SvgText x={304} y={170} fontFamily={fonts.sans} fontSize={10.5} fontWeight="500" fill="#8B8882" textAnchor="end">{`today · day ${day}`}</SvgText>
-        </TailChart>
-      </TailCard>
-      <TailCta label="Continue" onPress={next} y={744} />
-    </TailFrame>
+    <Screen>
+      <NavBar left="back" right="empty" onBack={back} />
+      <Band start={199} end={659}>
+        <Stack top={199}>
+          <MonoText v="h1">{L.title}</MonoText>
+          <MonoText v="p">{L.body}</MonoText>
+        </Stack>
+        <View style={{ position: 'absolute', left: 24, top: 389 }}>
+          <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
+            <SvgText x={0} y={16} fill={mono.ink} fontSize={14} {...BOLD}>
+              Relapse frequency
+            </SvgText>
+            <Path d={`M0 236H${w}`} stroke={mono.ink} strokeWidth={1.5} />
+            <Path d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+            <Path d={scaleX(L.line, k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+            <Path d={`M${x} ${L.y}V236`} stroke={mono.ink} strokeWidth={1.5} strokeDasharray="3 5" />
+            <Rect x={x - 64} y={L.y - 58} width={128} height={40} rx={10} fill={mono.ink} />
+            <SvgText x={x} y={L.y - 42} fill="#6B675F" textAnchor="middle" fontSize={11} letterSpacing={1.2} {...BOLD}>
+              3 MONTHS
+            </SvgText>
+            <SvgText x={x} y={L.y - 26} fill={mono.onInk} textAnchor="middle" fontSize={14} {...BOLD}>
+              {L.rate}
+            </SvgText>
+            <Circle cx={x} cy={L.y} r={9} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
+          </Svg>
+        </View>
+      </Band>
+      <PrimaryButton label={L.cta} onPress={next} />
+    </Screen>
   );
 }
 
-// ── 33 · What You Want Back ──────────────────────────────────────────
-/** Twelve bars falling from 100 to 16, each a shade fainter than the last. */
-const WANT_BACK_BARS = Array.from({ length: 12 }, (_, i) => {
-  const h = [100, 90, 80, 71, 62, 54, 46, 39, 32, 26, 21, 16][i];
-  const o = [1.0, 0.94, 0.88, 0.81, 0.75, 0.69, 0.63, 0.57, 0.5, 0.44, 0.38, 0.32][i];
-  return { x: 18 + i * 22.4, y: 138 - h, h, o };
-});
+export function O3LineIfNothingChanges(p: { next: () => void; back?: () => void }) {
+  return <LineBoard mode="nothing" {...p} />;
+}
 
-export function O3WhatYouWantBack({ affects, next }: { affects: string[]; next: () => void }) {
-  const named = affects.slice(0, 3).map((s) => s.toLowerCase());
-  const list = named.length === 3 ? `${named[0]}, ${named[1]}, and ${named[2]}` : named.join(', ') || 'focus, sleep, and confidence';
+export function O3LineWithThePlan(p: { next: () => void; back?: () => void }) {
+  return <LineBoard mode="plan" {...p} />;
+}
+
+// ── 32B · A Clean Day ────────────────────────────────────────────────
+
+/** The calendar page: 393 × 240 at 175, no transform — drawn in the frame's own user space. */
+function CleanDayArt() {
   return (
-    <TailFrame>
-      <TailCopy top={170} inset={40} size={24} lineHeight={32} weight="500" color="#1D1C1A" tracking={-0.2}>
-        The goal is not a long streak.
-      </TailCopy>
-      <TailCopy top={230} inset={44} size={14} lineHeight={21}>
-        {`You said porn gets in the way of your ${list}. These twelve weeks are about taking those back.`}
-      </TailCopy>
-      <TailCard top={338} padding="20 16 10">
-        <TailChart vb={[300, 170]}>
-          <SvgText x={18} y={18} fontFamily={fonts.sans} fontSize={11} fontWeight="500" fill="#B0AEA8">how hard urges pull</SvgText>
-          {WANT_BACK_BARS.map((b, i) => (
-            <Rect key={i} x={b.x} y={b.y} width={14} height={b.h} rx={4} fill="#131313" fillOpacity={b.o} />
+    <View style={{ position: 'absolute', left: 0, right: 0, top: 175, height: 240, alignItems: 'center' }}>
+      <Svg width={393} height={240} viewBox="0 0 393 240">
+        <Rect x={126} y={40} width={140} height={150} rx={16} fill={mono.ink} />
+        <Rect x={134} y={82} width={124} height={100} rx={8} fill={mono.ground} />
+        <Rect x={150} y={26} width={10} height={30} rx={5} fill={mono.ink} />
+        <Rect x={153} y={30} width={4} height={22} rx={2} fill={mono.ground} />
+        <Rect x={232} y={26} width={10} height={30} rx={5} fill={mono.ink} />
+        <Rect x={235} y={30} width={4} height={22} rx={2} fill={mono.ground} />
+        <SvgText x={196} y={152} fill={mono.ink} textAnchor="middle" fontSize={68} letterSpacing={-2} {...BOLD}>
+          1
+        </SvgText>
+        <SvgText x={196} y={172} fill={mono.mute} textAnchor="middle" fontSize={11} {...BOLD}>
+          Clean day
+        </SvgText>
+        <Path d="M170 66h52" stroke={mono.ground} strokeWidth={3} strokeLinecap="round" />
+      </Svg>
+    </View>
+  );
+}
+
+export function O3CleanDay({ next, back }: { next: () => void; back?: () => void }) {
+  return (
+    <HeroBoard
+      nav={{ left: 'back', right: 'empty', onBack: back }}
+      art={<CleanDayArt />}
+      artTop={175 + 26}
+      stackTop={451}
+      gap={18}
+      titleSize={26}
+      title="One clean day."
+      body="That’s all today has to be."
+      cta="Continue"
+      onCta={next}
+    />
+  );
+}
+
+// ── 33 · One Bad Day ─────────────────────────────────────────────────
+
+const WEEK = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+/** The week strip's one bad day — Thursday. */
+const BAD_DAY = 3;
+
+/** Seven 36 × 56 cells at cx 22 + 48i: six ink with a ground check, Thursday ground in an ink ring with a dot. */
+function WeekStrip() {
+  return (
+    <View style={{ position: 'absolute', left: 0, right: 0, top: 329, flexDirection: 'row', justifyContent: 'center' }}>
+      <Svg width={344} height={86} viewBox="0 0 344 86">
+        {WEEK.map((d, i) => {
+          const cx = 22 + 48 * i;
+          const bad = i === BAD_DAY;
+          return [
+            <SvgText key={`l${i}`} x={cx} y={12} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
+              {d}
+            </SvgText>,
+            <Rect key={`c${i}`} x={cx - 18} y={22} width={36} height={56} rx={12} fill={bad ? mono.ground : mono.ink} stroke={mono.ink} strokeWidth={bad ? 2.5 : 0} />,
+            bad ? (
+              <Circle key={`d${i}`} cx={cx} cy={50} r={4} fill={mono.ink} />
+            ) : (
+              <Path key={`k${i}`} d={`M${cx - 8} 51 l5 5 l11 -12`} fill="none" stroke={mono.ground} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+            ),
+          ];
+        })}
+      </Svg>
+    </View>
+  );
+}
+
+export function O3OneBadDay({ next, back }: { next: () => void; back?: () => void }) {
+  return (
+    <HeroBoard
+      nav={{ left: 'back', right: 'empty', onBack: back }}
+      art={<WeekStrip />}
+      artTop={329}
+      stackTop={451}
+      gap={16}
+      titleSize={26}
+      title="One bad day is one bad day."
+      body="It doesn’t erase the work before it. Your lessons, logs, rating history and medallions stay."
+      extra={<InkP center>What matters is that you come back.</InkP>}
+      cta="Continue"
+      onCta={next}
+    />
+  );
+}
+
+// ── 34 · What You Want Back ──────────────────────────────────────────
+
+/** The trio the frame draws — `17 · What it affects` as the canvas answers it. */
+export const WANT_BACK_DEFAULT = ['Focus', 'Sleep', 'Confidence'];
+
+/**
+ * Three 64pt ink pills, his `17 · What it affects` answers read back in the
+ * picker's order (CRITIC §5, tail Q5) — topped up from the frame's own trio
+ * when he picked fewer than three, so the board always draws three.
+ */
+export function wantBackPills(affects: string[], order: readonly string[]): string[] {
+  const picked = [...affects].sort((x, y) => order.indexOf(x) - order.indexOf(y));
+  const out: string[] = [];
+  for (const p of [...picked, ...WANT_BACK_DEFAULT]) {
+    if (!out.includes(p)) out.push(p);
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
+export function O3WhatYouWantBack({ pills = WANT_BACK_DEFAULT, next, back }: { pills?: string[]; next: () => void; back?: () => void }) {
+  // the heading takes two lines on a narrow phone; the band measures the stack
+  const [stackH, setStackH] = useState(445);
+  return (
+    <Screen>
+      <NavBar left="back" right="empty" onBack={back} />
+      <Band start={193} end={193 + stackH}>
+        <Stack top={193} onLayout={setStackH}>
+          <MonoText v="h1">This is what you’re doing it for.</MonoText>
+          <View style={{ height: 10 }} />
+          {pills.map((label) => (
+            <View key={label} style={{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+              <MonoText v="gridLabel" color={mono.onInk} wrap="wrap" style={{ lineHeight: lhNormal(16) }}>
+                {label}
+              </MonoText>
+            </View>
           ))}
-          <Line x1={14} y1={138} x2={286} y2={138} stroke="rgba(19,19,19,0.16)" strokeWidth={1.5} />
-          <SvgText x={18} y={158} fontFamily={fonts.sans} fontSize={10.5} fontWeight="500" fill="#8B8882">week I</SvgText>
-          <SvgText x={282} y={158} fontFamily={fonts.sans} fontSize={10.5} fontWeight="500" fill="#8B8882" textAnchor="end">week XII</SvgText>
-        </TailChart>
-      </TailCard>
-      <TailCta label="See the twelve weeks" onPress={next} y={744} />
-    </TailFrame>
+          <View style={{ height: 10 }} />
+          <MonoText v="p">Not a perfect streak for its own sake.</MonoText>
+          <InkP>More of your time and attention going where you actually want them.</InkP>
+        </Stack>
+      </Band>
+      <PrimaryButton label="Continue" onPress={next} />
+    </Screen>
   );
 }

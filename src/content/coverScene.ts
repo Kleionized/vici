@@ -6,7 +6,7 @@
  * is transcribed once: a horizon dome, three stars, the sun with its blurred
  * halo, and the shadow it casts on the ground.
  *
- * Rebuild: node scripts/uifinal/gen-lesson-scrolls.mjs
+ * Rebuild: node scripts/vicifull/gen-lesson-scrolls.mjs
  */
 import type { TaskSceneLayer } from './taskScenes';
 

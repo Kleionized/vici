@@ -1,0 +1,43 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 332.1 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 126 | 393 | 670 | - | - | - | - | - | -
+div | 64.5 | 196 | 264 | 38 | - | - | - | - | 26px/500/normal/38px/rgb(29, 28, 26) | Match where you sleep
+div | 32 | 274 | 329 | 408 | - | - | - | - | - | -
+div | 32 | 274 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 274 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 282 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 288.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 291.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 290.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 274 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 274 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Own bedroom
+div | 86 | 300 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Set the alarm now. Charge the phone outside the room. Put a laptop or tablet in a closed bag, drawer, or cupboard away from the bed.
+div | 32 | 375 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 375 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 383 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 386.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 386.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 391.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 394.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 375 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 375 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Shared room
+div | 86 | 401 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Put the device in a bag, locker, desk drawer, or fixed charging spot that you cannot reach while lying down.
+div | 32 | 476 | 329 | 105 | - | - | - | - | - | -
+div | 32 | 476 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 484 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 489.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 493.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 476 | 275 | 105 | - | - | - | - | - | -
+div | 86 | 476 | 275 | 44 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Studio, sofa bed, or temporary space
+div | 86 | 524 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Put the device at the farthest practical point from where you sleep: a kitchen counter, shelf, zipped bag, or other fixed place.
+div | 32 | 599 | 329 | 83 | - | - | - | - | - | -
+div | 32 | 599 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 607 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 612.5 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 616 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 612 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 599 | 275 | 83 | - | - | - | - | - | -
+div | 86 | 599 | 275 | 22 | - | - | - | - | 16px/600/normal/22px/rgb(29, 28, 26) | Phone needed as an alarm
+div | 86 | 625 | 275 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Set the alarm first. Put the phone across the room or outside it. Turn off non-essential notifications before you put it down.

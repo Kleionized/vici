@@ -1,203 +1,145 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import type { ReactNode } from 'react';
-import { Linking, Platform, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Path, Rect } from 'react-native-svg';
+import { Alert, View } from 'react-native';
 
-import { AppText, Grain, PressScale } from '@/components/ui';
-import { useCurrentUser } from '@/lib/backend';
-import { sans } from '@/lib/theme';
+import { Card, GhostLink, ListRow, ListRows, MonoText, NavBar, Pill, Screen, ScrollRegion } from '@/components/mono';
+import { dayMonthYear } from '@/lib/format';
+import { usePurchases } from '@/lib/purchases';
+import { lhNormal, mono, sans } from '@/lib/theme';
 
 /**
- * 15 · Manage subscription — the membership stated plainly up top
- * (plan · price · renewal · Active), then the Plan and Billing cards, and the
- * quiet cancel the board now ends on. `UI Final` withdrew the swell and the
- * line under it; nothing renders below the cancel any more.
+ * `Manage Subscription` (15) — the membership card (plan, the sentence under
+ * it, the "Active" pill, the next charge under a rule), then the Plan and
+ * Billing row groups, and the quiet cancel the board ends on.
  *
- * Laid out from the canvas's 393 × 852 frame; the status bar ends at 54, so
- * every canvas `top` is written here as `top − 54` under the safe area.
+ * The plan, the price and the renewal date are read from RevenueCat's
+ * CustomerInfo rather than from a stored flag, so a renewal, a cancellation in
+ * the store's own settings, a refund or a Family Sharing change is reflected
+ * the next time this screen is opened. The five rows and the cancel line open
+ * RevenueCat's Customer Center where the build can present it, and the store's
+ * own subscription settings where it cannot (DECISIONS D-092).
+ *
+ * The frame draws only a renewing yearly membership. The other states keep
+ * the app's own words in the frame's sentence (D222): monthly is the same
+ * sentence with "a month"; cancelled-but-active says "Runs until"; lifetime
+ * keeps "· billed once"; a free account keeps "Free tools" / "Core tools
+ * included" and a "Free" pill, with no next charge and no cancel.
  */
 
-const noiseDark = require('../../assets/images/noise-dark.png');
-
-const CHEVRON = 'M1.5 1.5 6 7l-4.5 5.5';
-
-function RowChevron() {
-  return (
-    <Svg width={7} height={12} viewBox="0 0 8 14">
-      <Path d={CHEVRON} stroke="rgba(0,0,0,0.28)" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </Svg>
-  );
-}
-
-/** A row inside one of the two cards: 32pt inset chip, label, optional value. */
-function Row({ icon, title, detail, last, onPress }: { icon: ReactNode; title: string; detail?: string; last?: boolean; onPress?: () => void }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      disabled={!onPress}
-      accessibilityRole="button"
-      style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 13, borderBottomWidth: last ? 0 : 1, borderBottomColor: 'rgba(0,0,0,0.06)' }}>
-      <View style={{ width: 32, height: 32, borderRadius: 9, backgroundColor: '#F1EFE9', alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
-      <AppText style={[sans('500'), { flex: 1, fontSize: 15, color: '#1D1C1A' }]}>{title}</AppText>
-      {detail ? <AppText style={[sans('400'), { fontSize: 13.5, color: '#8B8882' }]}>{detail}</AppText> : null}
-      <RowChevron />
-    </PressScale>
-  );
-}
-
-function GroupLabel({ text, top }: { text: string; top: number }) {
-  return <AppText style={[sans('600'), { position: 'absolute', left: 28, top, fontSize: 12.5, color: '#8B8882' }]}>{text}</AppText>;
-}
-
-function Card({ top, children }: { top: number; children: ReactNode }) {
-  return (
-    <View
-      style={{
-        position: 'absolute',
-        left: 24,
-        right: 24,
-        top,
-        borderRadius: 18,
-        backgroundColor: '#FFFFFF',
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.09)',
-        paddingVertical: 4,
-        paddingHorizontal: 20,
-      }}>
-      {children}
-    </View>
-  );
-}
-
-const ICON = {
-  plan: (
-    <Svg width={19} height={19} viewBox="0 0 24 24">
-      <Circle cx={12} cy={12} r={9} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
-      <Path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#1D1C1A" />
-    </Svg>
-  ),
-  code: (
-    <Svg width={19} height={19} viewBox="0 0 24 24">
-      <Rect x={3.5} y={8} width={17} height={4} rx={1} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
-      <Path
-        d="M5 12v7.5h14V12M12 8v11.5M12 8c-4 0-5.5-1.6-5.5-3a2 2 0 0 1 3.6-1.2C11.2 5 12 8 12 8zm0 0c4 0 5.5-1.6 5.5-3a2 2 0 0 0-3.6-1.2C12.8 5 12 8 12 8z"
-        stroke="#1D1C1A"
-        strokeWidth={1.9}
-        fill="none"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  ),
-  restore: (
-    <Svg width={19} height={19} viewBox="0 0 24 24">
-      <Path d="M4.5 12a7.5 7.5 0 1 1 2.2 5.3M4.5 12V7.5M4.5 12H9" stroke="#1D1C1A" strokeWidth={1.9} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </Svg>
-  ),
-  card: (
-    <Svg width={19} height={19} viewBox="0 0 24 24">
-      <Rect x={3} y={5.5} width={18} height={13} rx={2.4} stroke="#1D1C1A" strokeWidth={1.9} fill="none" />
-      <Path d="M3 9.5h18" stroke="#1D1C1A" strokeWidth={1.9} />
-    </Svg>
-  ),
-  receipts: (
-    <Svg width={19} height={19} viewBox="0 0 24 24">
-      <Path d="M6 3.5h8l4 4v13H6z" stroke="#1D1C1A" strokeWidth={1.9} fill="none" strokeLinejoin="round" />
-      <Path d="M9 12h6M9 15.5h6" stroke="#1D1C1A" strokeWidth={1.7} strokeLinecap="round" />
-    </Svg>
-  ),
+/** The store an entitlement came from, in that store's own words. */
+const STORE_NAME: Record<string, string> = {
+  APP_STORE: 'Apple ID',
+  MAC_APP_STORE: 'Apple ID',
+  PLAY_STORE: 'Google Play',
+  AMAZON: 'Amazon',
+  STRIPE: 'Card',
+  RC_BILLING: 'Card',
+  PADDLE: 'Card',
+  PROMOTIONAL: 'Granted',
+  TEST_STORE: 'Test Store',
 };
+
+/** The ghost link (15 tall text at bottom 56) takes 74 off the screen's bottom edge. */
+const CONTROLS = 56 + 18;
 
 export default function Subscription() {
   const router = useRouter();
-  const user = useCurrentUser();
-  const premium = !!user?.settings.premium;
-  const drop = !!user?.settings.yearlyDrop;
-  // The canvas draws all five of these as pressable. Redeeming, restoring,
-  // billing and cancelling all live in the store's own sheet, not in the app —
-  // so each opens the platform's subscription settings rather than a screen we
-  // would have to invent (DECISIONS D-092).
-  const manage = () => void Linking.openURL(Platform.OS === 'ios' ? 'https://apps.apple.com/account/subscriptions' : 'https://play.google.com/store/account/subscriptions');
+  const { membership, planFor, restore, presentCustomerCenter, presentCodeRedemption, manageSubscriptions } = usePurchases();
+  const premium = membership.isActive;
+  const plan = membership.plan ?? 'yearly';
 
-  const price = drop ? '$26.99' : '$39.99';
-  const renews = (() => {
+  // The canvas draws all five rows and the cancel line as pressable. Managing,
+  // cancelling, requesting a refund and changing plan all live outside the app,
+  // and Customer Center is the surface RevenueCat gives for them; where a build
+  // cannot present it — Expo Go, web, an SDK without it — each falls through to
+  // the store's own subscription settings (DECISIONS D-092).
+  const support = () => {
+    void (async () => {
+      if (!(await presentCustomerCenter())) await manageSubscriptions();
+    })();
+  };
+
+  const redeem = () => {
+    void (async () => {
+      if (await presentCodeRedemption()) return;
+      if (!(await presentCustomerCenter())) await manageSubscriptions();
+    })();
+  };
+
+  const restorePurchases = () => {
+    void (async () => {
+      const outcome = await restore();
+      if (outcome.status === 'restored') {
+        Alert.alert(outcome.entitled ? 'Restored' : 'Nothing to restore', outcome.entitled ? 'Your VICI Plus purchase is back on this device.' : 'This store account has no VICI Plus purchase on it.');
+      } else if (outcome.status === 'error' || outcome.status === 'unavailable') {
+        Alert.alert('Could not restore', outcome.message);
+      }
+    })();
+  };
+
+  const planName = plan === 'lifetime' ? 'Lifetime' : plan === 'monthly' ? 'Monthly' : 'Yearly';
+  const price = planFor(plan)?.priceString ?? '$39.99';
+  // `10 Jul 2027`, the canvas's own day-first form, assembled by hand (en-GB's
+  // short September is `Sept`).
+  const renewsOn = membership.expiresAt ?? (() => {
     const d = new Date();
     d.setFullYear(d.getFullYear() + 1);
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    return d;
   })();
+  const renews = dayMonthYear(renewsOn);
+  // A lifetime purchase never renews, and a cancelled subscription has no next
+  // charge — the canvas only draws the renewing case, so the charge block is
+  // shown for that and withheld where it would state a charge that is not coming.
+  const charges = premium && membership.willRenew && plan !== 'lifetime';
+  const line = !premium
+    ? 'Core tools included'
+    : plan === 'lifetime'
+      ? `${price} · billed once`
+      : `${price} a ${plan === 'monthly' ? 'month' : 'year'}. ${membership.willRenew ? 'Renews' : 'Runs until'} ${renews}`;
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <StatusBar style="dark" />
-      <Grain source={noiseDark} opacity={0.07} />
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ height: 700 }} showsVerticalScrollIndicator={false}>
-          <PressScale
-            onPress={back}
-            accessibilityRole="button"
-            accessibilityLabel="Back"
-            hitSlop={{ top: 14, bottom: 14, left: 16, right: 16 }}
-            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-            <Svg width={11} height={19} viewBox="0 0 11 19">
-              <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-            </Svg>
-            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
-          </PressScale>
-
-          <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 68, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Subscription</AppText>
-
-          {/* the membership, stated rather than boxed */}
-          <View style={{ position: 'absolute', left: 24, right: 24, top: 150 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-              <View>
-                <AppText style={[sans('600'), { fontSize: 24, letterSpacing: -0.2, color: '#1D1C1A' }]}>{premium ? 'Yearly' : 'Free tools'}</AppText>
-                <AppText style={[sans('400'), { marginTop: 5, fontSize: 14, color: '#55534E' }]}>
-                  {premium ? `${price} / year · renews ${renews}` : 'Core tools included'}
-                </AppText>
-              </View>
-              <View style={{ backgroundColor: '#131313', borderRadius: 14, paddingHorizontal: 12, paddingVertical: 7, marginTop: 3 }}>
-                <AppText style={[sans('600'), { fontSize: 12.5, color: '#F4F3F0' }]}>{premium ? 'Active' : 'Free'}</AppText>
-              </View>
+    <Screen>
+      <NavBar left="back" centre={{ title: 'Subscription' }} right="empty" onBack={back} />
+      {/* D320: the stack scrolls under the nav row only where it would meet the cancel line */}
+      <ScrollRegion top={100} bottom={CONTROLS} contentStyle={{ paddingTop: 36, paddingHorizontal: 24, paddingBottom: 24, gap: 18 }}>
+        <Card>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+            <View style={{ flexShrink: 1 }}>
+              <MonoText v="p" style={{ ...sans('700'), fontSize: 24, lineHeight: lhNormal(24), letterSpacing: -0.5, color: mono.ink }}>
+                {premium ? planName : 'Free tools'}
+              </MonoText>
+              <MonoText v="p" wrap="wrap" style={{ marginTop: 4, fontSize: 14, lineHeight: lhNormal(14) }}>
+                {line}
+              </MonoText>
             </View>
-            {premium ? (
-              <>
-                <View style={{ height: 1, backgroundColor: 'rgba(0,0,0,0.09)', marginTop: 18, marginBottom: 14 }} />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <AppText style={[sans('400'), { fontSize: 14, color: '#55534E' }]}>Next charge</AppText>
-                  <AppText style={[sans('500'), { fontSize: 14, color: '#1D1C1A' }]}>
-                    {price} on {renews}
-                  </AppText>
-                </View>
-              </>
-            ) : null}
+            <Pill kind="badge" label={premium ? 'Active' : 'Free'} />
           </View>
-
-          <GroupLabel text="Plan" top={276} />
-          <Card top={298}>
-            <Row icon={ICON.plan} title="Change plan" detail={premium ? `Yearly · ${price}` : 'Free'} onPress={() => router.push('/paywall')} />
-            <Row icon={ICON.code} title="Redeem a code" onPress={manage} />
-            <Row icon={ICON.restore} title="Restore purchases" last onPress={manage} />
-          </Card>
-
-          <GroupLabel text="Billing" top={490} />
-          <Card top={512}>
-            <Row icon={ICON.card} title="Payment method" detail="Apple ID" onPress={manage} />
-            <Row icon={ICON.receipts} title="Receipts & invoices" last onPress={manage} />
-          </Card>
-
-          {premium ? (
-            <PressScale
-              onPress={manage}
-              accessibilityRole="button"
-              hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
-              style={{ position: 'absolute', left: 0, right: 0, top: 658, minHeight: 0, alignItems: 'center' }}>
-              <AppText style={[sans('500'), { fontSize: 15, color: '#8B8882' }]}>Cancel subscription</AppText>
-            </PressScale>
+          {charges ? (
+            <View style={{ marginTop: 20, paddingTop: 16, borderTopWidth: 1, borderTopColor: mono.line, flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
+              <MonoText v="p" color={mono.mute} style={{ lineHeight: lhNormal(15) }}>
+                Next charge
+              </MonoText>
+              <MonoText v="rowLabel">
+                {`${price} on ${renews}`}
+              </MonoText>
+            </View>
           ) : null}
-
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+        </Card>
+        <View style={{ height: 10 }} />
+        <MonoText v="caps">Plan</MonoText>
+        <ListRows>
+          <ListRow label="Change plan" value={premium ? planName : 'Free'} onPress={() => router.push('/paywall')} />
+          <ListRow label="Redeem a code" onPress={redeem} />
+          <ListRow label="Restore purchases" onPress={restorePurchases} />
+        </ListRows>
+        <View style={{ height: 10 }} />
+        <MonoText v="caps">Billing</MonoText>
+        <ListRows>
+          <ListRow label="Payment method" value={STORE_NAME[membership.store ?? ''] ?? 'Apple ID'} onPress={support} />
+          <ListRow label="Receipts & invoices" onPress={support} />
+        </ListRows>
+      </ScrollRegion>
+      {premium ? <GhostLink label="Cancel subscription" bottom={56} onPress={support} /> : null}
+    </Screen>
   );
 }

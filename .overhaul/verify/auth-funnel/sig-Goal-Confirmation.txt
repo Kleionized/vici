@@ -1,0 +1,4 @@
+MISSING in app:  svg | -19.6 | 171 | 432.3 | 264 | - | - | - | - | - | -
+~ Masturbation isn’t part of what you’re t x: 24 → 46   y: 558 → 576   w: 345 → 301   h: 82 → 46   bg: rgb(30, 30, 30) → -   radius: 18px → -
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 39 design rows, 45 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

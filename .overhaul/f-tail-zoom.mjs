@@ -1,0 +1,13 @@
+import fs from 'node:fs'; import { PNG } from 'pngjs';
+const [a,b,X0,Y0,X1,Y1,Z] = process.argv.slice(2);
+const A = PNG.sync.read(fs.readFileSync(`.overhaul/shots/${a}.png`));
+const B = PNG.sync.read(fs.readFileSync(`.overhaul/shots/${b}.png`));
+const S=A.width/393, z=Number(Z||6);
+const x0=Math.round(X0*S),y0=Math.round(Y0*S),w=Math.round((X1-X0)*S),h=Math.round((Y1-Y0)*S);
+const out=new PNG({width:(w*2+8)*z,height:h*z});
+const put=(src,ox)=>{for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=((y0+y)*src.width+(x0+x))*4;
+ for(let dy=0;dy<z;dy++)for(let dx=0;dx<z;dx++){const o=(((y*z+dy))*out.width+((ox+x)*z+dx))*4;
+ out.data[o]=src.data[i];out.data[o+1]=src.data[i+1];out.data[o+2]=src.data[i+2];out.data[o+3]=255;}}};
+put(A,0); put(B,w+8);
+fs.writeFileSync(`.overhaul/shots/zoom-${a}-${b}.png`, PNG.sync.write(out));
+console.log(`.overhaul/shots/zoom-${a}-${b}.png  ${out.width}x${out.height}`);

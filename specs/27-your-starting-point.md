@@ -1,11 +1,17 @@
-# Starting Score
+# 28 · Your VICI Rating
 
-* **Design frame** `Email-Login/Starting Score`
-* **App file** src/components/onboarding/tail.tsx + src/content/onboardingTail.ts
+* **Design frame** `Email-Login/Starting Score` — `.vicifull/final/Email-Login/Starting-Score.html`
+* **Design badge** `28 · Your VICI Rating` (`.vicifull/FLOW.txt`, which the run's brief makes the
+  authority on badges). The group lists this run was cut on call the same frame **#32**; this
+  drop renumbered onboarding, so the two schemes disagree and both appear in the codebase. This
+  file names the badge.
+* **Status in `Latest Vici FULL`** changed, 12 diff lines
+* **App files** `src/components/onboarding/tail.tsx` (`O3StartingPoint`) + `src/content/onboardingTail.ts`,
+  wired from `src/app/(onboarding)/welcome.tsx`
 
 ## Transcription — `Starting Score`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `Starting-Score.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `Starting-Score.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -17,7 +23,7 @@ element on the frame is here, in paint order, indented by depth.
     <div> position:absolute  left:50%  bottom:-300px  width:560px  height:560px  margin-left:-280px  background:radial-gradient(closest-side, rgba(255,236,196,0.42), rgba(255,236,196,0.19) 45%, rgba(255,236,196,0) 72%)  border-radius:50%
     <div> position:absolute  inset:0  background-image:url('noise-dark.png')  opacity:0.12
   <div> position:absolute  left:0  right:0  top:150px  color:#8B8882  font-size:12.5px  font-weight:600  letter-spacing:1.2px  text-align:center
-    · YOUR RECOVERY SCORE
+    · YOUR VICI RATING
   <div> position:absolute  left:50%  top:192px  width:240px  height:240px  margin-left:-120px
     <svg> viewBox="0 0 240 240"  width="240"  height="240"
       <line> x1="120.0"  y1="7.0"  x2="120.0"  y2="2.0"  stroke="#DDDAD2"  stroke-width="1.4"
@@ -73,12 +79,12 @@ element on the frame is here, in paint order, indented by depth.
       <circle> cx="199.0"  cy="52.4"  r="7.5"  fill="#D9A441"
       <circle> cx="199.0"  cy="52.4"  r="7.5"  fill="none"  stroke="#FFFFFF"  stroke-width="2.5"
     <div> position:absolute  inset:0  display:flex  flex-direction:column  align-items:center  justify-content:center  gap:4px
-      <span> color:#1D1C1A  font-size:60px  font-weight:600  font-variant-numeric:tabular-nums  letter-spacing:-2px  line-height:1
-        · 412
+      <span> color:#1D1C1A  font-size:60px  font-weight:500  font-variant-numeric:tabular-nums  letter-spacing:1.5px  line-height:1
+        · 842
       <span> color:#8B8882  font-size:12.5px  font-weight:600
-        · of 3,000
+        · Starting point
   <div> position:absolute  left:24px  right:24px  top:474px  height:88px
-    <svg> viewBox="0 0 345 88"  width="100%"  height="88"
+    <svg> viewBox="0 0 345 88"  preserveAspectRatio="none"  width="100%"  height="88"
       <defs> 
         <clippath> id="vici-elo-clip"
           <rect> width="79.4"  height="88"  x="0"  y="0"
@@ -88,7 +94,7 @@ element on the frame is here, in paint order, indented by depth.
       <line> x1="79.4"  y1="71.9"  x2="79.4"  y2="88"  stroke="#131313"  stroke-width="1.8"
       <circle> cx="79.4"  cy="71.9"  r="5"  fill="#D9A441"  stroke="#FFFFFF"  stroke-width="2"
   <div> position:absolute  left:44px  right:44px  top:584px  color:#55534E  font-size:14.5px  font-weight:400  line-height:21px  text-align:center
-    · This is not a grade — just where you start. It can move.
+    · This is where you start. What you do from here matters more than the questionnaire.
   <div> position:absolute  left:24px  right:24px  top:744px  height:58px  display:flex  align-items:center  justify-content:center  background:#131313  border-radius:29px  z-index:15  cursor:pointer
     <span> color:#FFFFFF  font-size:17px  font-weight:600  letter-spacing:0.2px
       · Next
@@ -96,7 +102,7 @@ element on the frame is here, in paint order, indented by depth.
 
 ## Comparison — design frame vs the running app
 
-Both sides measured with the same probe (`.uifinal1/probe.js`): every visible box's rect in
+Both sides measured with the same probe (`.vicifull/probe.js`): every visible box's rect in
 frame coordinates plus its background, radius, opacity, shadow and type metrics. The design
 frame is served from the split at `localhost:8097`; the app is the Expo web build. The canvas
 status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
@@ -105,7 +111,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | --- | --- | --- | --- | --- |
 | div at -40, -140 | radius | 50% | - | **mismatch** |
 | div at -83.5, 592 | radius | 50% | - | **mismatch** |
-| “YOUR RECOVERY SCORE” | box · paint · type | 0, 150 · 393 × 14.5 · — · 12.5px/600/1.2px/normal/rgb(139, 136, 130) | identical | match |
+| “YOUR VICI RATING” | box · paint · type | 0, 150 · 393 × 15 · — · 12.5px/600/1.2px/normal/rgb(139, 136, 130) | identical | match |
 | div at 76.5, 192 | box · paint · type | 76.5, 192 · 240 × 240 · — · — | identical | match |
 | div at 76.5, 192 | box · paint · type | 76.5, 192 · 240 × 240 · — · — | identical | match |
 | div at 76.5, 192 | box · paint · type | 76.5, 192 · 240 × 240 · — · — | identical | match |
@@ -160,8 +166,8 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | circle at 92.5, 208 | box · paint · type | 92.5, 208 · 208 × 208 · — · — | identical | match |
 | circle at 92.5, 208 | box · paint · type | 92.5, 208 · 208 × 208 · — · — | identical | match |
 | circle at 268, 236.9 | box · paint | 268, 236.9 · 15 × 15 · — | *absent* | **mismatch** |
-| “412” | box · paint | 142.1, 272.8 · 108.7 × 60 · — | *absent* | **mismatch** |
-| “of 3,000” | box · paint · type | 170.6, 336.8 · 51.9 × 14.5 · — · 12.5px/600/normal/normal/rgb(139, 136, 130) | identical | match |
+| “842” | box · paint | 138.2, 272.5 · 116.7 × 60 · — | *absent* | **mismatch** |
+| “Starting point” | box · paint · type | 154.4, 336.5 · 84.2 × 15 · — · 12.5px/600/normal/normal/rgb(139, 136, 130) | identical | match |
 | div at 24, 474 | box · paint · type | 24, 474 · 345 × 88 · — · — | identical | match |
 | div at 24, 474 | box · paint · type | 24, 474 · 345 × 88 · — · — | identical | match |
 | path at 24, 486 | box · paint · type | 24, 486 · 345 × 76 · — · — | identical | match |
@@ -169,7 +175,7 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 | path at 24, 486 | box · paint · type | 24, 486 · 345 × 68 · — · — | identical | match |
 | line at 103.4, 545.9 | box · paint | 103.4, 545.9 · 0 × 16.1 · — | *absent* | **mismatch** |
 | circle at 98.4, 540.9 | box · paint | 98.4, 540.9 · 10 × 10 · — | *absent* | **mismatch** |
-| “This is not a grade — just where you start. It c” | box · paint · type | 44, 584 · 305 × 42 · — · 14.5px/400/normal/21px/rgb(85, 83, 78) | identical | match |
+| “This is where you start. What you do from here m” | box · paint · type | 44, 584 · 305 × 42 · — · 14.5px/400/normal/21px/rgb(85, 83, 78) | identical | match |
 | div at 24, 744 | box · paint · type | 24, 744 · 345 × 58 · rgb(19, 19, 19) · r 29px · — | identical | match |
 | “Next” | box · paint · type | 177.5, 763 · 38 × 20 · — · 17px/600/0.2px/normal/rgb(255, 255, 255) | identical | match |
 
@@ -177,13 +183,42 @@ status bar and home indicator are excluded on both sides (`DECISIONS.md` D009).
 
 ## Resolutions
 
-The four rows that differ are the score. The canvas's sample is `412`; the app shows its own
-starting score, and everything that moves with it moves — the arc's dash, the gold marker's angle
-on the ring, and the marker on the ELO curve. `DECISIONS.md` D017 has the arithmetic, the evidence
-that the ring is `score / 3000`, and the note that the canvas's own curve marker sits at 690 while
-the same frame prints 412.
+**The board was renamed and the drawing was not.** The eyebrow is `YOUR VICI RATING` in this
+drop, the readout is restyled from 60/600 at −2 tracking to 60/500 at +1.5, the number itself
+changes from 412 to 842, and the denominator line `of 3,000` is replaced by `Starting point`. The ring is untouched: it still carries
+`stroke-dasharray: 89.7 653.5`.
 
-The 48 tick marks, the 104pt track at 10pt, and all 61 samples of the bell are transcribed from
-the frame into `src/content/onboardingTail.ts`, so the geometry is the canvas's rather than a
-redrawing of it. The bell is `y = 80 − 68·exp(−((x−172.5)/63.8)²)`, which reproduces every one of
-the frame's own 61 points to a tenth.
+**The frame states three different numbers for one rating.** Measured off the captures:
+
+| the frame's own statement | as a fraction of 3,000 |
+| --- | --- |
+| the readout, `842` | 28.07 % |
+| the ring's arc, 89.7 of a 653.45 circumference | 13.73 % → 412 |
+| the ELO marker at x 79.4 of 345 | 23.01 % → 690 |
+
+No reading reproduces the board coherently, so the app follows `DECISIONS.md` D050 (which
+continues D017): the arc's arithmetic is the authority — the ring is `rating / 3000`, the only
+quantitative statement either half of the frame makes — and the number is the app's own opening
+rating, `SCORE_BASE` = 1,000, because 842 is below the app's own floor and matches none of the
+ranks `Score Detail` draws (Deckhand 1,000 · Navigator 1,150 · Helmsman 1,300 · Captain 1,500).
+The frame's own 842 / 89.7 / 79.4 are kept in `SCORE_SAMPLE` so this spec can quote them.
+
+The app's three markers do agree with each other, which the frame's do not: the arc measures
+217.8 / 653.45 = 33.33 %, the gold dot sits at r 104.0 and 120.0° swept (33.33 %), and the ELO
+marker at x 115.0 of 345 (33.33 %). Those are four of the six mismatched rows in the
+table above — the other two are the background washes' radius notation (D015) — and they are the
+whole of this frame's divergence: every other row lands to the pixel.
+
+**`preserveAspectRatio="none"`.** The canvas states it on the ELO curve's `<svg>`, which is given
+both a width and a height. It was not transcribed in pass 1; without it `react-native-svg`'s
+default `xMidYMid meet` letterboxes the curve at 345 wide on any screen wider than the canvas's
+393 — 18.5pt of empty gutter each side at 430pt — and the marker's x moves with it. Now set.
+
+**The bloom.** The corner wash's zero-alpha stop takes the RGB of its opaque stop, not the
+canvas's literal `rgba(19,19,19,0)`; see `DECISIONS.md` D105. Measured over the bloom band
+(y 58…90, x 20…380, 10 × 10-device-pixel patches) the app was up to 5.06/255 dark and is now
+within ±1.20, which is the grain's own noise.
+
+The 48 tick marks, the 104pt track at 10pt and all 61 samples of the bell are transcribed from
+the frame into `src/content/onboardingTail.ts`. The bell is `y = 80 − 68·exp(−((x−172.5)/63.8)²)`,
+which reproduces every one of the frame's own 61 points to a tenth.

@@ -1,0 +1,52 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="268"  height="7"  x="62"  y="188"  rx="3.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="74"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="312"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <path> d="M78 140 A40 40 0 0 1 108 126"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M106 120 l5 6.5 l-8 2 z"  fill="#A8A39A"
+    <g> transform="rotate(26.74 98.8 188)"
+      <rect> width="16.8"  height="40"  x="82"  y="148"  rx="3"  fill="#F2F0EC"
+      <rect> width="10.08"  height="2"  x="85.36"  y="167"  rx="1"  fill="#0D0D0D"
+      <circle> cx="90.4"  cy="158"  r="1.51"  fill="#0D0D0D"
+      <circle> cx="86.7"  cy="174.92"  r="1.51"  fill="#0D0D0D"
+      <circle> cx="94.1"  cy="181.08"  r="1.51"  fill="#0D0D0D"
+    <rect> width="21"  height="50"  x="116.8"  y="138"  rx="3.36"  fill="#F2F0EC"
+    <rect> width="12.6"  height="2"  x="121"  y="162"  rx="1"  fill="#0D0D0D"
+    <circle> cx="122.68"  cy="146.32"  r="1.89"  fill="#0D0D0D"
+    <circle> cx="131.92"  cy="154.68"  r="1.89"  fill="#0D0D0D"
+    <circle> cx="122.26"  cy="170.94"  r="1.89"  fill="#0D0D0D"
+    <circle> cx="127.3"  cy="175.5"  r="1.89"  fill="#0D0D0D"
+    <circle> cx="132.34"  cy="180.06"  r="1.89"  fill="#0D0D0D"
+    <rect> width="25.2"  height="60"  x="159.8"  y="128"  rx="4.03"  fill="#F2F0EC"
+    <rect> width="15.12"  height="2"  x="164.84"  y="157"  rx="1"  fill="#0D0D0D"
+    <circle> cx="166.35"  cy="137.24"  r="2.27"  fill="#0D0D0D"
+    <circle> cx="172.4"  cy="143"  r="2.27"  fill="#0D0D0D"
+    <circle> cx="178.45"  cy="148.76"  r="2.27"  fill="#0D0D0D"
+    <circle> cx="172.4"  cy="173"  r="2.27"  fill="#0D0D0D"
+    <rect> width="30.24"  height="72"  x="211"  y="116"  rx="4.84"  fill="#F2F0EC"
+    <rect> width="18.14"  height="2"  x="217.05"  y="151"  rx="1"  fill="#0D0D0D"
+    <circle> cx="219.47"  cy="127.4"  r="2.72"  fill="#0D0D0D"
+    <circle> cx="232.77"  cy="140.6"  r="2.72"  fill="#0D0D0D"
+    <circle> cx="219.47"  cy="163.4"  r="2.72"  fill="#0D0D0D"
+    <circle> cx="232.77"  cy="176.6"  r="2.72"  fill="#0D0D0D"
+    <rect> width="36.12"  height="86"  x="271.24"  y="102"  rx="5.78"  fill="#F2F0EC"
+    <rect> width="21.67"  height="2"  x="278.46"  y="144"  rx="1"  fill="#0D0D0D"
+    <circle> cx="289.3"  cy="123.5"  r="3.25"  fill="#0D0D0D"
+    <circle> cx="280.63"  cy="157.62"  r="3.25"  fill="#0D0D0D"
+    <circle> cx="289.3"  cy="166.5"  r="3.25"  fill="#0D0D0D"
+    <circle> cx="297.97"  cy="175.38"  r="3.25"  fill="#0D0D0D"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Don’t let it become two.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · One slip happened. You can still turn the rest of today around.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

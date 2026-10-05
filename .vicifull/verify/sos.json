@@ -1,0 +1,84 @@
+{
+  "group": "sos",
+  "reachedAll": false,
+  "unreachable": [
+    "SOS Loc Bathroom — the location picker draws five cards (Somewhere private / In bed / A public space / At work or school / Out and about) against seven boards, and \"Give me another\" is drawn only on the thirteen feeling boards and SOS-Challenge, so nothing rotates into it (D038). Verified independently against Cue-Hue-Picker.html and PLACE_BOARDS at src/components/urge/index.tsx:2455. Its DATA is proven current — re-running scripts/vicifull/gen-sos-responses.mjs reproduces src/content/sosResponses.ts byte for byte — but nobody in this run has seen it RENDERED, and both rendering defects I found (the elliptic radius, the blurred solid) are in the shared renderer, not the data. This board carries two blur(5) solids, so finding 4 applies to it.",
+    "SOS Loc Home Alone — same cause, same evidence (D038).",
+    "SOS Trig Rejection — the trigger picker draws nine cards against ten boards; no card maps to it and it carries no \"Give me another\" (D038). Same data-proven / render-unproven status."
+  ],
+  "summary": "All 51 frames read with body.mjs, driven in the app, captured headlessly and diffed twice: a layout signature (sig prefix v-sos-, plus v-sos-a2- for the hub with a live urge session seeded and v-sos-a3- for the hub reached through its own door) and a pixel diff of the PNGs with the status bar (y<54) and home-indicator band (y>=834) excluded. 48 of 51 were reached; the three D038 boards were not. 44 frames are genuinely clean — mean |Δ| at or under 0.19/255 with no structural row missing — including all three grid pickers (0.000), SOS Challenge (0.000), SOS Reassess (0.000), SOS Afterward (0.000, so the TextInput placeholder the report said \"the probe cannot read\" does in fact draw pixel-identically), Cue Intro Modal, Cue Hue Picker (0.000 once the Expo dev badge is masked) and 25 of the 27 reachable response boards. Four genuine defects survive, none of them a D015 equivalence. In severity order: (1) convex/events.ts's create mutation was never given the durationSeconds argument this group added to the schema and to TidelineEvent, and the interrupt now sends it — on a real Convex backend the argument validator rejects the call and the .catch(()=>{}) at the call site swallows it, so no urge_rode_out event is written at all; the identical earlier change (severityAfter, D041) WAS added to the mutation. (2) Surf Complete's sun states rx/ry and no r, so the web build paints it at r=50% instead of the canvas's 86% and the rim reads 30/255 too dark — the report attributes this to FINDINGS F8, which is superseded by D064/F12/F22, and the same file's sibling in src/app/relapse.tsx:406 already carries the correct form and measures Δ<=8. (3) SosSceneLayer's elliptic branch reads only the first vertical radius and always emits Hill, so SOS Feel Low's candle flame — border-radius 50% 50% 50% 50% / 60% 60% 40% 40%, rounded at both ends — is drawn with a square bottom, Δ145/255. (4) A blurred SOLID pill is substituted by a SoftBlob whose falloff dies at the box edge, collapsing a 100x16 warm bar into a small lens: Δ28-31 on SOS Loc Private Room and SOS Feel Stressed, Δ17-26 on the three move boards and Relapse Twice. D082 already states the correct treatment for exactly this and it has not been applied here; D010 covers only soft-edged radials, so this is not a standing equivalence. The urge hub itself is sound: with a live session seeded (2:18 old, severity 7) every pane matches band by band at max Δ3 outside the marker (D067), the dot-grid data and the digits, the wash survives being pushed from /(app)/all so F20 does not bite here, \"Try a different step\" wraps 1->2->3->1 as D068 says, and the Breathe pill hands over and comes back. Capture note for other agents: the Expo dev-tools floating badge lands at x 0-64, y 788-852 in some app captures and produced a false Δ217 on Surf Step 1 and Δ75 on Cue Hue Picker before I masked it; and --seed on /relapse timed out at networkidle twice under load where --initseed worked. Tools left at .vicifull/vtmp/ (pxdiff.mjs, pxband.mjs, sample.mjs, crop.mjs, v-hub-seed.js).",
+  "findings": [
+    {
+      "frame": "Surf Complete (and every urge_rode_out the interrupt writes)",
+      "element": "createEvent({ type: 'urge_rode_out', … durationSeconds }) at src/components/urge/index.tsx:2610",
+      "property": "convex/events.ts `create` mutation args / insert",
+      "design": "the field exists in convex/schema.ts:153 (durationSeconds: v.optional(v.number())) and in TidelineEvent (src/lib/types.ts:156), and 85C/85D are read out in minutes from it (D070)",
+      "app": "convex/events.ts's `create` declares no durationSeconds arg and does not insert it; src/lib/backend/convex.ts:202 spreads the whole TidelineEventInput into the mutation, so Convex raises ArgumentValidationError and the call site's .catch(()=>{}) hides it — the ride-out event is not written at all on a real account",
+      "confidence": "certain",
+      "note": "HIGH. Not visual, and invisible to every capture in this run because EXPO_PUBLIC_FORCE_MOCK=1 routes through src/lib/backend/mock.ts, which stores the object verbatim. The precedent is in the same file: severityAfter and reopens (D041) were added to the mutation's args and to the insert when they were added to the schema. Fix is two lines: durationSeconds: v.optional(v.number()) in args, durationSeconds: args.durationSeconds in the insert. Until then 85C's twelve bars and 85D's four rows are permanently empty on Convex and the whole interrupt logs nothing."
+    },
+    {
+      "frame": "Surf Complete",
+      "element": "the sun — a 200x200 disc at canvas left:96 top:425, `radial-gradient(circle at 50% 30%, #FBF3E4, #F0DDBC 65%, #DFC79E 100%)`",
+      "property": "RadialGradient radius (src/components/urge/index.tsx:2350, id u90-done-sun)",
+      "design": "farthest-corner from (100,60) in a 200x200 box = 172.05 = 86% of the box; at 90pt from the centre the canvas paints 233,217,187 (left rim) and 231,214,185 (right rim)",
+      "app": "`<RadialGradient id=\"u90-done-sun\" cx=\"50%\" cy=\"30%\" rx=\"86%\" ry=\"86%\">` with no `r` — rx/ry are not <radialGradient> attributes, so the web build falls back to r=50% (=100pt); the same two points measure 218,197,157 and 213,192,154, i.e. Δ30 and Δ31 too dark, and the whole outer half of the disc sits on the final stop #DFC79E",
+      "confidence": "certain",
+      "note": "The report excuses this as FINDINGS F8 (\"RadialGradient's r cannot reach the DOM… correct on device\"). F8's own header says it is SUPERSEDED by F12/D064, and F22 proved it wrong by reading the live DOM. The proof is inside this group: src/app/relapse.tsx:406 draws the SAME sun on Relapse Begin as cx=100 cy=60 r=172.05 gradientUnits=\"userSpaceOnUse\" and measures Δ1 at the centre, Δ3 and Δ0 at the two rim points. Band y 420-560 on Surf Complete: mean |Δ| 6.30; the same band on Relapse Begin: 2.35. Two more in the same file need the same sweep and have no frame in this group: LightOrb (:1580, rx/ry 95%) and PaperOrb (:1600, rx/ry 76.6%), the SOS settings orbs."
+    },
+    {
+      "frame": "SOS Feel Low",
+      "element": "the candle flame — canvas layer left:114 top:34 width:12 height:18 background #E9B95F, i.e. frame box (190,266)-(202,284)",
+      "property": "border-radius (SosSceneLayer's `elliptic` branch, src/components/urge/index.tsx:1354-1368)",
+      "design": "border-radius: 50% 50% 50% 50% / 60% 60% 40% 40% — rounded at BOTH ends (top corners 6 x 10.8, bottom corners 6 x 7.2): a teardrop",
+      "app": "the branch reads only layer.radius.v[0] and always returns <Hill>, whose path is `M0 r A w/2 r 0 0 1 w r L w h L 0 h Z` — an elliptical top over a square-cornered rectangle; the flame renders as a dome sitting on a block",
+      "confidence": "certain",
+      "note": "Measured Δ145/255 at frame (190,280); ~100 device pixels above threshold in the tiles (176,272)-(208,288). This is the only board of the 31 whose elliptic radius is not a hill: src/content/sosResponses.ts carries three `kind: elliptic` layers and the other two are 50% 50% 0 0 / 70px 70px 0 0 and / 60px 60px 0 0, for which Hill is exactly right. The data is correct (the generator emits h and v in full); only the renderer throws v[2]/v[3] away."
+    },
+    {
+      "frame": "SOS Loc Private Room (worst case; also SOS Feel Stressed, Surf Step 1, Surf Step 3, Cue Set Confirmation, Relapse Twice)",
+      "element": "the warm floor pool — canvas layer left:72 top:176 width:100 height:16 border-radius:8px background rgba(226,186,120,0.25) filter:blur(5px), i.e. frame box (148,408)-(248,424)",
+      "property": "how a blurred SOLID is substituted (src/components/urge/index.tsx:1337-1339, and the hand-written u90-step1-pool / u90-step2-pool / u90-leave-pool blobs at :1150, :1202, :1249)",
+      "design": "blur(5) softens only the pill's edge; the middle 90pt of the bar stays at full alpha. Measured across the band at y 416: (160,416) 227,218,201 · (198,416) 225,216,198 · (236,416) 226,217,200 — an even warm bar",
+      "app": "`<SoftBlob … stop={1} />` — an SVG ellipse whose radial falls to zero at the box's own edge, so the alpha decays with the elliptical distance from the centre: (160,416) 239,236,229 (Δ28) · (198,416) 231,221,203 (Δ6) · (236,416) 240,236,230 (Δ30). A bright lens instead of a bar; by ±40pt the colour is gone",
+      "confidence": "likely",
+      "note": "Not a D015 equivalence and not covered by D010, whose text only justifies substituting a soft-edged RADIAL. D082 is the decision that covers a blurred solid and states the two things this substitution gets wrong — the peak is α·erf, not α, and the falloff runs 2σ PAST the stated box — and it has not been applied in this file. Same defect, measured max Δ per frame: SOS Feel Stressed 31 (rgba(226,186,120,0.25) 110x14 blur 5), Surf Step 3 26, Surf Step 1 17, Cue Set Confirmation 17, Relapse Twice 17. Black ground shadows (rgba(0,0,0,0.10)) show the same shape error at Δ<=17 because they are lower contrast. Marked \"likely\" rather than \"certain\" only because a run could reasonably decide the substitution is close enough; it is visibly different in the crops."
+    },
+    {
+      "frame": "Urge Hub Score",
+      "element": "the \" of 10\" run beside the severity number (src/components/urge/index.tsx:2989-2993)",
+      "property": "line-height / the wrapper's height",
+      "design": "the canvas's span carries no line-height (computed `normal`), and the wrapper div at left:0 top:182 measures 393 x 56",
+      "app": "the wrapper sets lineHeight: 56 and the small run inherits it (computed 56px); the wrapper measures 393 x 71",
+      "confidence": "likely",
+      "note": "No visible consequence today: both spans measure identically to the canvas (the 56px numeral at 157.1|177|29.9|66, \" of 10\" at 187|212|48.9|23) and the pixel band y 175-258 diffs at max Δ3. Reported because it is a stated metric the app does not reproduce and the box it produces is 15pt taller than the frame's, so the two will diverge visibly if the copy or the size ever changes. The comment above it explains why letterSpacing is zeroed on the wrapper but not why the line box is forced to 56."
+    },
+    {
+      "frame": "Relapse Log",
+      "element": "the head comment above PAGES (src/app/relapse.tsx:49-57)",
+      "property": "documentation accuracy",
+      "design": "`.vicifull/fdiff/Relapse-Log.diff` shows this drop DELETED the top:444 paragraph (\"Same calm screen as a win…\"); the frame now draws one body paragraph, at top:450",
+      "app": "the comment still says \"`Relapse-Log` draws **two** body paragraphs, one at `top: 444` and one at `top: 450`, overlapping … the one at 444 is the previous bundle's, still in the file\"",
+      "confidence": "certain",
+      "note": "The CODE is right — bodyTop 450, and the frame diffs at mean |Δ| 0.001, max 2. Only the comment describes the previous drop. One-line fix, but this file is shared with GROUP slip and the next reader will take it as current."
+    },
+    {
+      "frame": "(whole group)",
+      "element": "src/components/ChallengeSheet.tsx, 115 lines",
+      "property": "dead code",
+      "design": "n/a — `SOS Challenge` is now built by ResponsePage from `board.challenge` in src/content/sosResponses.ts",
+      "app": "`.vicifull/GROUPS.md` lists ChallengeSheet.tsx as one of the group's three app files; a grep of src/ finds no importer left",
+      "confidence": "certain",
+      "note": "Housekeeping for the F14 cleanup pass, not a parity defect. The SOS Challenge board itself is perfect: 11 design rows, 0 differing, 0 missing, pixel mean |Δ| 0.000."
+    },
+    {
+      "frame": "Urge Hub Now / Urge Hub Score",
+      "element": "the recipe in .vicifull/recipes/sos.json for the five hub panes",
+      "property": "capture state",
+      "design": "85A draws 17:42 inside stroke-dasharray 433.7 490.1 (88.49% of the ring) and 85B labels its marker `2:18 in` — i.e. a live urge 2:18 old (D066)",
+      "app": "the recorded recipe seeds only .vicifull/hub-seed.js, which sets no `tideline.urgeSession`, so UrgeHub calls newUrgeSession() and the pane renders 20:00 against a full ring — the arc's dash and the digits were never actually compared with the canvas's",
+      "confidence": "certain",
+      "note": "Not an app defect — a hole in the verification the report rests on (it claims \"35 rows, 0 missing\"; an unseeded capture gives 1 missing, the clock). I re-captured with .vicifull/vtmp/v-hub-seed.js, which adds a session startedAt = now - 138000 at severity 7. With it the arc tip and everything outside the digits land within Δ3 of the canvas, so the ring arithmetic in D066 checks out — but that seed needs to go into the recipe file or the next pass repeats the gap. Same file: `--seed` on /relapse timed out at networkidle twice under load; `--initseed=.vicifull/hub-seed.js` works."
+    }
+  ]
+}

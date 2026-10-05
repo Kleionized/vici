@@ -1,0 +1,23 @@
+--- .vicifull/pretty/prev/V3-Q24-Name.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q24-Name.html	2026-09-05 00:22:35
+@@ -156,6 +156,20 @@
+   </div>
+   <div style="
+     | position:absolute;
++    | left:44px;
++    | right:44px;
++    | top:200px;
++    | text-align:center;
++    | font-size:13.5px;
++    | font-weight:400;
++    | line-height:20px;
++    | color:rgba(244,243,240,0.6);
++    | text-wrap:pretty;
++  ">
++    · All your data will be encrypted.
++  </div>
++  <div style="
++    | position:absolute;
+     | left:24px;
+     | right:24px;
+     | top:281px;

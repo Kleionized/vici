@@ -1,0 +1,32 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 339.3 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 285 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 351 | 329 | 286 | - | - | - | - | - | -
+div | 32 | 351 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 351 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 359 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 365.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 368.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 367.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 351 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 351 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Use your own words
+div | 86 | 376 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | It might be something like 'only for a minute,' 'I already messed up today,' or 'I am too tired to care.'
+div | 32 | 465 | 329 | 108 | - | - | - | - | - | -
+div | 32 | 465 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 473 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 476.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 476.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 481.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 484.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 465 | 275 | 108 | - | - | - | - | - | -
+div | 86 | 468 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Under it, write what you want to do when that thought shows up: lock the phone, stand up, leave the room, open Vici Urge Surfing, or return to what you were meant to be doing.
+div | 32 | 599 | 329 | 38 | - | - | - | - | - | -
+div | 32 | 599 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 607 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 612.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 616.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 599 | 275 | 24 | - | - | - | - | - | -
+div | 86 | 602 | 275 | 21 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Practise that action once now.

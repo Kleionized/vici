@@ -1,0 +1,402 @@
+
+################ closeX — 1 variants
+
+  [1273× in 1273f] path d=M2 2l14 14M16 2L2 16 fill=none stroke=#F2F0EC stroke-width=2 stroke-linecap=round 
+     frames: 01/L1-Frame-1 01/L1-Frame-10 01/L1-Frame-11 01/L1-Frame-12 01/L1-Frame-13 01/L1-Frame-14 01/L1-Frame-2 01/L1-Frame-3 01/L1-Frame-4 01/L1-Frame-5 01/L1-Frame-6 01/L1-Frame-7 01/L1-Frame-8 01/L1-Frame-9 …(+1259)
+
+################ hero — 48 variants
+
+  [15× in 15f] position:absolute; left:0; top:-79px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M128 190 A68 68 0 |#F2F0EC|] path[M196 108 L196 92 M|#F2F0EC|3.5] path[M-40 190 V170 C 0 |#55524D|] path[M432 190 V170 C 39|#55524D|]
+     frames: 01/L2-Frame-1 01/L2-Frame-14 02/L9-Frame-1 02/L9-Frame-13 05/L34-Frame-7 07/L43-Frame-8 07/L49-Frame-4 08/L54-Frame-9 08/L55-Frame-1 08/L55-Frame-12 11/L74-Frame-1 11/L74-Frame-13 12/L83-Frame-8 12/L84-Frame-1 …(+1)
+
+  [15× in 15f] position:absolute; left:0; top:-35px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <g > <rect > path[M106 186 C 130 168|#0D0D0D|2.5] <circle >
+     frames: 02/L13-Frame-1 02/L13-Frame-15 03/L18-Frame-8 04/L23-Frame-6 04/L28-Frame-6 06/L39-Frame-1 06/L39-Frame-15 06/L41-Frame-8 08/L55-Frame-8 08/L56-Frame-1 08/L56-Frame-13 10/L69-Frame-1 10/L69-Frame-13 11/L71-Frame-8 …(+1)
+
+  [13× in 13f] position:absolute; left:0; top:-95px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M137 124 C 133.04 |#A8A39A|2.4]
+     frames: 01/L6-Frame-1 01/L6-Frame-12 04/L25-Frame-4 09/L57-Frame-1 09/L57-Frame-12 09/L60-Frame-1 09/L60-Frame-14 09/L61-Frame-1 09/L61-Frame-13 09/L63-Frame-1 09/L63-Frame-13 10/L68-Frame-7 12/L82-Frame-8
+
+  [13× in 13f] position:absolute; left:0; top:-20px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <circle > path[M196 42 L157 60 M1|#F2F0EC|1.6] <rect > <rect >
+     frames: 01/L7-Frame-7 02/L8-Frame-1 02/L8-Frame-12 05/L33-Frame-1 05/L33-Frame-13 07/L49-Frame-1 10/L69-Frame-4 11/L73-Frame-4 11/L75-Frame-1 11/L75-Frame-14 11/L77-Frame-4 12/L79-Frame-1 12/L79-Frame-14
+
+  [12× in 12f] position:absolute; left:0; top:-34px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M-40 190 V184 C 10|#3A3835|] <circle > <circle > <circle >
+     frames: 01/L3-Frame-1 01/L3-Frame-13 04/L25-Frame-8 08/L51-Frame-9 08/L52-Frame-1 08/L52-Frame-12 09/L57-Frame-6 09/L58-Frame-1 09/L58-Frame-15 09/L59-Frame-1 09/L59-Frame-12 11/L76-Frame-4
+
+  [12× in 12f] position:absolute; left:0; top:-29px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M-40 190 V184 C 10|#55524D|] <g > <circle > <circle >
+     frames: 02/L9-Frame-5 05/L33-Frame-7 06/L38-Frame-1 06/L38-Frame-13 06/L42-Frame-8 07/L43-Frame-1 07/L43-Frame-13 10/L69-Frame-7 12/L78-Frame-8 12/L81-Frame-1 12/L81-Frame-15 12/L83-Frame-4
+
+  [11× in 11f] position:absolute; left:0; top:-43px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 02/L12-Frame-6 05/L31-Frame-9 06/L38-Frame-5 07/L45-Frame-1 07/L45-Frame-13 10/L66-Frame-1 10/L66-Frame-13 10/L67-Frame-1 10/L67-Frame-12 11/L71-Frame-1 11/L71-Frame-12
+
+  [10× in 10f] position:absolute; left:0; top:-74px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > path[M60 132 H90 M46 15|#A8A39A|2.6] <g > path[M112 172 C 106 154|#F2F0EC|]
+     frames: 01/L3-Frame-7 02/L14-Frame-5 03/L17-Frame-1 03/L17-Frame-12 04/L27-Frame-6 06/L37-Frame-1 06/L37-Frame-13 06/L39-Frame-9 10/L70-Frame-7 11/L74-Frame-10
+
+  [10× in 10f] position:absolute; left:0; top:-62px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 02/L10-Frame-1 02/L10-Frame-14 02/L13-Frame-10 05/L29-Frame-1 05/L29-Frame-11 05/L30-Frame-9 05/L34-Frame-1 05/L34-Frame-12 05/L35-Frame-1 05/L35-Frame-15
+
+  [9× in 9f] position:absolute; left:0; top:-26px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M-40 190 V184 C 10|#55524D|] <g > <circle > <circle >
+     frames: 01/L3-Frame-4 02/L14-Frame-1 02/L14-Frame-13 03/L18-Frame-1 03/L18-Frame-14 06/L41-Frame-1 06/L41-Frame-15 11/L75-Frame-6 12/L79-Frame-6
+
+  [9× in 9f] position:absolute; left:0; top:-92px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 01/L5-Frame-1 01/L5-Frame-13 02/L10-Frame-7 04/L28-Frame-1 04/L28-Frame-13 09/L62-Frame-8 10/L70-Frame-10 12/L82-Frame-1 12/L82-Frame-15
+
+  [9× in 9f] position:absolute; left:0; top:-21px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M196 136 V64|#F2F0EC|4]
+     frames: 05/L35-Frame-8 08/L54-Frame-5 08/L56-Frame-9 09/L63-Frame-4 10/L65-Frame-1 10/L65-Frame-12 10/L68-Frame-1 10/L68-Frame-14 11/L76-Frame-9
+
+  [8× in 8f] position:absolute; left:0; top:-8px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M80 43 Q80 46 83 4|#F2F0EC|] path[M128 52 Q128 54 13|#F2F0EC|] path[M266 31.6 Q266 34 |#F2F0EC|] path[M348 121.6 Q348 12|#F2F0EC|]
+     frames: 03/L20-Frame-1 07/L47-Frame-10 10/L64-Frame-4 11/L72-Frame-9 11/L76-Frame-1 12/L78-Frame-1 12/L78-Frame-12 12/L84-Frame-6
+
+  [8× in 8f] position:absolute; left:0; top:-45px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 03/L20-Frame-6 05/L29-Frame-8 05/L32-Frame-8 05/L33-Frame-4 08/L50-Frame-10 08/L52-Frame-8 11/L73-Frame-1 11/L73-Frame-12
+
+  [8× in 8f] position:absolute; left:0; top:-36px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <g > <circle > <circle > <circle >
+     frames: 04/L25-Frame-1 06/L40-Frame-1 06/L40-Frame-16 07/L46-Frame-1 07/L46-Frame-15 09/L62-Frame-1 09/L62-Frame-12 10/L67-Frame-4
+
+  [7× in 7f] position:absolute; left:0; top:-36px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M170 166 L160 185 |#F2F0EC|7]
+     frames: 01/L4-Frame-6 05/L32-Frame-1 05/L32-Frame-13 08/L50-Frame-1 08/L50-Frame-15 08/L53-Frame-9 08/L55-Frame-4
+
+  [7× in 7f] position:absolute; left:0; top:-35px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > path[M196 60 V190|#55524D|5] path[M178 58 L142 190 M|#F2F0EC|6] <rect >
+     frames: 02/L11-Frame-1 02/L11-Frame-12 02/L8-Frame-6 05/L34-Frame-4 10/L70-Frame-1 10/L70-Frame-13 12/L80-Frame-8
+
+  [7× in 7f] position:absolute; left:0; top:-11px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M40 64 l-5 12 M62 |#55524D|2.2] path[M106 90 l-5 12 M28|#F2F0EC|3] <ellipse > path[M152 199 q44 -7 88|#A8A39A|1.5]
+     frames: 06/L42-Frame-1 07/L45-Frame-9 07/L46-Frame-5 07/L47-Frame-7 10/L64-Frame-1 11/L72-Frame-1 11/L72-Frame-14
+
+  [6× in 6f] position:absolute; left:0; top:-32px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <g > <rect > <rect >
+     frames: 01/L1-Frame-7 01/L4-Frame-1 01/L4-Frame-13 03/L19-Frame-8 03/L21-Frame-8 04/L24-Frame-5
+
+  [6× in 6f] position:absolute; left:0; top:-21px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M90 47 Q90 50 93 5|#F2F0EC|] path[M122 85.8 Q122 88 |#F2F0EC|] path[M262 41.6 Q262 44 |#F2F0EC|] path[M334 105.8 Q334 10|#F2F0EC|]
+     frames: 02/L11-Frame-7 07/L47-Frame-1 07/L47-Frame-13 08/L56-Frame-5 11/L77-Frame-9 12/L81-Frame-4
+
+  [6× in 6f] position:absolute; left:0; top:-34px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > path[M112 106 H84 M118 |#A8A39A|2.4] <rect > <rect >
+     frames: 03/L15-Frame-1 03/L15-Frame-12 06/L36-Frame-5 06/L37-Frame-8 07/L49-Frame-9 11/L74-Frame-6
+
+  [6× in 6f] position:absolute; left:0; top:-23px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M140 108 H112 V86 |#55524D|2.2] <circle > <circle > <circle >
+     frames: 04/L22-Frame-1 04/L22-Frame-14 04/L23-Frame-1 04/L23-Frame-12 12/L80-Frame-1 12/L80-Frame-16
+
+  [6× in 6f] position:absolute; left:0; top:-42px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > <g > path[M122 118 L197 66 L|#55524D|] <rect >
+     frames: 05/L31-Frame-1 05/L31-Frame-13 07/L48-Frame-5 10/L64-Frame-7 12/L83-Frame-1 12/L83-Frame-13
+
+  [5× in 5f] position:absolute; left:0; top:-91px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M96 110 Q148 100 1|#55524D|]
+     frames: 01/L2-Frame-7 01/L5-Frame-8 07/L44-Frame-1 07/L44-Frame-15 11/L71-Frame-4
+
+  [5× in 5f] position:absolute; left:0; top:-85px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > <g > <rect > path[M132 112 L197 158 |#0D0D0D|3.4]
+     frames: 01/L6-Frame-8 09/L57-Frame-9 09/L60-Frame-4 11/L77-Frame-1 11/L77-Frame-12
+
+  [5× in 5f] position:absolute; left:0; top:-70px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M287 106 C 282.16 |#A8A39A|2.6]
+     frames: 03/L19-Frame-1 03/L19-Frame-14 04/L24-Frame-1 04/L24-Frame-12 07/L46-Frame-9
+
+  [5× in 5f] position:absolute; left:0; top:-92px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > <g > <rect > <rect >
+     frames: 04/L22-Frame-4 04/L24-Frame-9 05/L32-Frame-4 06/L36-Frame-1 06/L36-Frame-15
+
+  [5× in 5f] position:absolute; left:0; top:-32px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 04/L26-Frame-1 04/L26-Frame-14 05/L30-Frame-1 05/L30-Frame-14 08/L51-Frame-1
+
+  [5× in 5f] position:absolute; left:0; top:-34px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 04/L26-Frame-6 05/L30-Frame-6 08/L51-Frame-6 08/L54-Frame-1 08/L54-Frame-14
+
+  [4× in 4f] position:absolute; left:0; top:-30px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > <rect > <circle > <rect >
+     frames: 03/L15-Frame-7 03/L16-Frame-1 03/L16-Frame-14 04/L27-Frame-9
+
+  [4× in 4f] position:absolute; left:0; top:-45px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <g > <rect > <rect >
+     frames: 08/L50-Frame-5 08/L53-Frame-1 08/L53-Frame-14 09/L60-Frame-7
+
+  [3× in 3f] position:absolute; left:0; top:-8px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 01/L7-Frame-1 01/L7-Frame-14 09/L61-Frame-10
+
+  [3× in 3f] position:absolute; left:0; top:-59px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <g > path[M128 72 H202 A14 1|#F2F0EC|] path[M130 94 H188 M130 |#0D0D0D|3.2] path[M192 112 H266 A14 |#0D0D0D|12]
+     frames: 03/L16-Frame-9 06/L40-Frame-4 10/L66-Frame-9
+
+  [3× in 3f] position:absolute; left:0; top:-18px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M146 36 V190 M186 |#232220|2] <rect > path[M114 48 H170 A14 1|#F2F0EC|10] <rect >
+     frames: 03/L21-Frame-1 04/L27-Frame-1 04/L27-Frame-12
+
+  [3× in 3f] position:absolute; left:0; top:-39px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <g > <rect > <rect >
+     frames: 07/L48-Frame-1 07/L48-Frame-13 10/L65-Frame-9
+
+  [3× in 3f] position:absolute; left:0; top:-23px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M120 56.8 Q120 60 |#F2F0EC|] path[M292 51 Q292 54 29|#F2F0EC|] path[M78 109.6 Q78 112 |#F2F0EC|] path[M318 123 Q318 126 |#F2F0EC|]
+     frames: 09/L58-Frame-10 10/L65-Frame-4 11/L73-Frame-9
+
+  [3× in 3f] position:absolute; left:0; top:-9px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M112 47 Q112 50 11|#F2F0EC|] path[M284 45.4 Q284 48 |#F2F0EC|] path[M326 93.8 Q326 96 |#F2F0EC|] path[M66 101.8 Q66 104 |#F2F0EC|]
+     frames: 09/L59-Frame-9 09/L61-Frame-5 09/L63-Frame-9
+
+  [2× in 2f] position:absolute; left:0; top:-54px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M162 118 H230 L262|#F2F0EC|]
+     frames: 01/L4-Frame-9 10/L67-Frame-8
+
+  [2× in 2f] position:absolute; left:0; top:-58px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <g > <rect > path[M108 142 H284 M108|#0D0D0D|1.6] path[M112 176 C 126 162|#F2F0EC|3]
+     frames: 01/L5-Frame-5 07/L44-Frame-10
+
+  [2× in 2f] position:absolute; left:0; top:-1px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  path[M172 24 L190 76 M2|#55524D|8] <rect > <rect > <rect >
+     frames: 02/L12-Frame-1 02/L12-Frame-12
+
+  [2× in 2f] position:absolute; left:0; top:-11px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 03/L17-Frame-9 07/L48-Frame-10
+
+  [1× in 1f] position:absolute; left:0; top:-36px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <g > path[M265.71 64.4 A10 1|#F2F0EC|] path[M222 51.7 Q222 54 |#F2F0EC|] path[M290 82 Q290 84 29|#F2F0EC|]
+     frames: 01/L1-Frame-1
+
+  [1× in 1f] position:absolute; left:0; top:-33px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <g > path[M151 190 H241 L290|#F2F0EC|] <rect >
+     frames: 03/L17-Frame-6
+
+  [1× in 1f] position:absolute; left:0; top:-23px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <ellipse > <circle > <circle > <circle >
+     frames: 06/L36-Frame-10
+
+  [1× in 1f] position:absolute; left:0; top:-92px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > path[M78 140 A40 40 0 0|#A8A39A|2.4]
+     frames: 06/L37-Frame-4
+
+  [1× in 1f] position:absolute; left:0; top:-44px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <rect > <rect > <rect >
+     frames: 07/L44-Frame-5
+
+  [1× in 1f] position:absolute; left:0; top:-59px; overflow:visible; transform:scale(1.1); transform-origin:196px 190px  ⟶  <rect > <g > <rect > <rect >
+     frames: 08/L53-Frame-4
+
+  [1× in 1f] position:absolute; left:0; top:-20px; overflow:visible; transform:scale(1); transform-origin:196px 190px  ⟶  path[M276.92 162 L288.6|#55524D|2.5] path[M264.68 191.56 L27|#55524D|2.5] path[M128.32 191.56 L11|#55524D|2.5] path[M116.08 162 L108.2|#55524D|2.5]
+     frames: 12/L81-Frame-10
+     text: V
+
+################ caps — 9 variants
+
+  [1189× in 1189f] font-size:13px; font-weight:700; color:#9B968E; text-align:center; white-space:nowrap; width:100%
+     frames: 01/L1-Frame-10 01/L1-Frame-11 01/L1-Frame-12 01/L1-Frame-13 01/L1-Frame-14 01/L1-Frame-2 01/L1-Frame-3 01/L1-Frame-4 01/L1-Frame-5 01/L1-Frame-6 01/L1-Frame-7 01/L1-Frame-8 01/L1-Frame-9 01/L2-Frame-10 …(+1175)
+     text: Lesson 1 | Lesson 2 | Lesson 3 | Lesson 4 | Lesson 5 | Lesson 6 | Lesson 7 | Lesson 10
+
+  [544× in 511f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance
+     frames: 01/L1-Frame-12 01/L1-Frame-13 01/L1-Frame-3 01/L1-Frame-5 01/L1-Frame-9 01/L2-Frame-11 01/L2-Frame-12 01/L2-Frame-14 01/L2-Frame-15 01/L2-Frame-3 01/L2-Frame-4 01/L2-Frame-6 01/L2-Frame-9 01/L3-Frame-13 …(+497)
+     text: Today’s task | Done when | Part 1 | A familiar evening | Part 2 | Part 3 | Question | After choosing
+
+  [252× in 252f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-align:center; text-wrap:balance
+     frames: 01/L1-Frame-1 01/L1-Frame-11 01/L1-Frame-2 01/L2-Frame-1 01/L2-Frame-13 01/L2-Frame-2 01/L3-Frame-1 01/L3-Frame-12 01/L3-Frame-2 01/L4-Frame-1 01/L4-Frame-12 01/L4-Frame-2 01/L5-Frame-1 01/L5-Frame-12 …(+238)
+     text: Lesson 1 | Aristotle | Lao Tzu | Lesson 2 | Epictetus | Seneca | Lesson 3 | Friedrich Nietzsche
+
+  [16× in 14f] font-size:13px; font-weight:700; color:#111111; width:28px
+     frames: 02/L10-Frame-12 03/L20-Frame-12 04/L22-Frame-12 04/L26-Frame-12 06/L36-Frame-13 06/L40-Frame-14 06/L41-Frame-13 07/L44-Frame-13 08/L50-Frame-13 08/L54-Frame-12 11/L72-Frame-12 11/L75-Frame-12 12/L80-Frame-14 12/L82-Frame-13
+     text: A | B
+
+  [8× in 2f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-align:center; white-space:nowrap; width:57.8px
+     frames: 05/L35-Frame-5 11/L75-Frame-8
+     text: Day 42 | Day 49 | Day 56 | Day 63 | 2 weeks | 30 days | 60 days | 90 days
+
+  [4× in 4f] font-size:13px; font-weight:700; line-height:16px; color:#111111; white-space:nowrap
+     frames: 01/L1-Frame-5 03/L15-Frame-5 04/L28-Frame-3 06/L40-Frame-6
+     text: Change this part | Close, move, begin | An earlier point to act | The thought can stay
+
+  [4× in 1f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; white-space:nowrap
+     frames: 03/L19-Frame-4
+     text: Hungry | Angry | Lonely | Tired
+
+  [2× in 1f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E
+     frames: 03/L15-Frame-5
+     text: Urge | Time
+
+  [2× in 2f] font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#F2F0EC; text-align:center; white-space:nowrap; width:57.8px
+     frames: 05/L35-Frame-5 11/L75-Frame-8
+     text: Today
+
+################ h1 — 5 variants
+
+  [397× in 397f] font-size:24px; font-weight:700; line-height:31px; letter-spacing:-0.4px; color:#F2F0EC; text-wrap:balance
+     frames: 01/L1-Frame-12 01/L1-Frame-3 01/L1-Frame-5 01/L1-Frame-9 01/L2-Frame-11 01/L2-Frame-12 01/L2-Frame-14 01/L2-Frame-3 01/L2-Frame-6 01/L2-Frame-9 01/L3-Frame-13 01/L3-Frame-3 01/L3-Frame-6 01/L3-Frame-9 …(+383)
+     text: Prepare for tonight | The smaller decision | An earlier moment | Where you’re starting | What still makes porn easy to  | Choose one thing to change tod | Remove easy access to porn | Small conveniences
+
+  [168× in 168f] font-size:30px; font-weight:700; line-height:36px; letter-spacing:-0.6px; color:#F2F0EC; text-align:center; text-wrap:balance
+     frames: 01/L1-Frame-1 01/L1-Frame-14 01/L2-Frame-1 01/L2-Frame-16 01/L3-Frame-1 01/L3-Frame-15 01/L4-Frame-1 01/L4-Frame-15 01/L5-Frame-1 01/L5-Frame-15 01/L6-Frame-1 01/L6-Frame-14 01/L7-Frame-1 01/L7-Frame-16 …(+154)
+     text: Prepare for tonight | Lesson complete. | Remove easy access to porn | Choose where to go instead | Prepare for sleep | Have another activity ready | Make time for contact | Review the first week
+
+  [168× in 168f] font-size:24px; font-weight:700; line-height:31px; letter-spacing:-0.4px; color:#F2F0EC; text-align:center; text-wrap:balance
+     frames: 01/L1-Frame-11 01/L1-Frame-2 01/L2-Frame-13 01/L2-Frame-2 01/L3-Frame-12 01/L3-Frame-2 01/L4-Frame-12 01/L4-Frame-2 01/L5-Frame-12 01/L5-Frame-2 01/L6-Frame-11 01/L6-Frame-2 01/L7-Frame-13 01/L7-Frame-2 …(+154)
+     text: Well begun is half done. | A journey of a thousand miles  | First say to yourself what you | Begin at once to live, and cou | All truly great thoughts are c | An early-morning walk is a ble | Sleep that knits up the ravell | There is a time for many words
+
+  [4× in 2f] font-size:24px; font-weight:700; line-height:31px; letter-spacing:-0.4px; color:#F2F0EC; white-space:nowrap
+     frames: 02/L10-Frame-5 02/L8-Frame-4
+     text: +1 hour | 20 min | 2 weeks
+
+  [4× in 1f] font-size:24px; font-weight:700; line-height:31px; color:#F2F0EC
+     frames: 03/L19-Frame-4
+     text: H | A | L | T
+
+################ primary — 1 variants
+
+  [316× in 316f] position:absolute; left:24px; right:24px; bottom:48px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; z-index:6  ⟶  <span font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111> "…"
+     frames: 01/L1-Frame-1 01/L1-Frame-13 01/L1-Frame-14 01/L2-Frame-1 01/L2-Frame-11 01/L2-Frame-12 01/L2-Frame-15 01/L2-Frame-16 01/L3-Frame-1 01/L3-Frame-14 01/L3-Frame-15 01/L4-Frame-1 01/L4-Frame-14 01/L4-Frame-15 …(+302)
+     text: Begin | Finish lesson | Done | Continue
+
+################ body — 6 variants
+
+  [1255× in 905f] font-size:18px; font-weight:400; line-height:28px; color:#B5B0A8; text-wrap:pretty
+     frames: 01/L1-Frame-10 01/L1-Frame-12 01/L1-Frame-13 01/L1-Frame-3 01/L1-Frame-4 01/L1-Frame-5 01/L1-Frame-6 01/L1-Frame-7 01/L1-Frame-8 01/L1-Frame-9 01/L2-Frame-10 01/L2-Frame-12 01/L2-Frame-14 01/L2-Frame-15 …(+891)
+     text: Approximate answers are useful | Start one private note called  | Write your porn boundary and w | Prepare tonight: set the alarm | Keep needed calls and accessib | It’s late. Your phone is besid | But at midnight, the useful de | Put it somewhere you can’t rea
+
+  [159× in 32f] font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty
+     frames: 01/L2-Frame-11 01/L7-Frame-11 02/L10-Frame-11 02/L13-Frame-12 03/L16-Frame-11 03/L18-Frame-11 03/L19-Frame-11 03/L20-Frame-11 04/L22-Frame-11 04/L26-Frame-11 04/L28-Frame-10 05/L30-Frame-11 05/L35-Frame-12 06/L36-Frame-12 …(+18)
+     text: Saved material or bookmarks | A feed or account that leads t | A device beside me where I usu | An empty hour with nothing pla | Something else | Nothing clear right now | Keeping my phone away at night | Removing saved material or cha
+
+  [84× in 84f] font-size:18px; font-weight:400; line-height:28px; color:#B5B0A8; text-align:center; text-wrap:pretty
+     frames: 01/L1-Frame-14 01/L2-Frame-16 01/L3-Frame-15 01/L4-Frame-15 01/L5-Frame-15 01/L6-Frame-14 01/L7-Frame-16 02/L10-Frame-16 02/L11-Frame-14 02/L12-Frame-14 02/L13-Frame-17 02/L14-Frame-15 02/L8-Frame-14 02/L9-Frame-15 …(+70)
+     text: One thing left today — the tas | Your answers are saved to the 
+
+  [43× in 18f] font-size:15px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty
+     frames: 01/L1-Frame-5 01/L6-Frame-4 02/L10-Frame-5 02/L12-Frame-3 02/L13-Frame-6 02/L8-Frame-4 02/L9-Frame-7 03/L18-Frame-5 03/L20-Frame-4 04/L22-Frame-7 04/L26-Frame-4 04/L28-Frame-3 05/L29-Frame-6 05/L31-Frame-7 …(+4)
+     text: Get into bed to answer a messa | Check a feed | Twenty minutes later, searchin | Talking to a stranger would be | Talking was more positive, on  | Tomorrow starts with even less | The next hour can be used diff | “I keep watching longer than I
+
+  [32× in 32f] font-size:15px; font-weight:400; line-height:22px; color:#9B968E; text-wrap:pretty
+     frames: 01/L2-Frame-11 01/L7-Frame-11 02/L10-Frame-11 02/L13-Frame-12 03/L16-Frame-11 03/L18-Frame-11 03/L19-Frame-11 03/L20-Frame-11 04/L22-Frame-11 04/L26-Frame-11 04/L28-Frame-10 05/L30-Frame-11 05/L35-Frame-12 06/L36-Frame-12 …(+18)
+     text: Choose all that fit. Choose F  | Choose one. | Choose all that fit. Choose H  | Choose all that fit. Choose E  | Choose all that fit. Choose G  | Choose all that fit.
+
+  [32× in 12f] font-size:15px; font-weight:400; line-height:22px; color:#B5B0A8; text-wrap:pretty
+     frames: 01/L2-Frame-4 02/L11-Frame-5 02/L14-Frame-10 03/L15-Frame-5 03/L16-Frame-5 03/L19-Frame-4 04/L23-Frame-4 06/L39-Frame-4 07/L45-Frame-5 09/L58-Frame-5 11/L72-Frame-5 12/L80-Frame-4
+     text: Unfollow or block it | Delete it without a last look | Move the charger | Help beginning the next action | A clearer warning sign | Open the next lesson, do one u | Use the after-a-slip steps, th | Keep the part that has been he
+
+################ ring44 — 1 variants
+
+  [957× in 957f] width:44px; height:44px; border-radius:22px; box-shadow:0 0 0 1.5px #2E2E2E; display:flex; align-items:center; justify-content:center  ⟶  svg14x14/0 0 14 14 path[M5 2l5 5-5 5|#F2F0EC|2]
+     frames: 01/L1-Frame-10 01/L1-Frame-11 01/L1-Frame-12 01/L1-Frame-2 01/L1-Frame-3 01/L1-Frame-4 01/L1-Frame-5 01/L1-Frame-6 01/L1-Frame-7 01/L1-Frame-8 01/L1-Frame-9 01/L2-Frame-10 01/L2-Frame-13 01/L2-Frame-14 …(+943)
+
+################ chevR — 1 variants
+
+  [957× in 957f] path d=M5 2l5 5-5 5 fill=none stroke=#F2F0EC stroke-width=2 stroke-linecap=round stroke-linejoin=round 
+     frames: 01/L1-Frame-10 01/L1-Frame-11 01/L1-Frame-12 01/L1-Frame-2 01/L1-Frame-3 01/L1-Frame-4 01/L1-Frame-5 01/L1-Frame-6 01/L1-Frame-7 01/L1-Frame-8 01/L1-Frame-9 01/L2-Frame-10 01/L2-Frame-13 01/L2-Frame-14 …(+943)
+
+################ card — 22 variants
+
+  [86× in 21f] min-height:48px; border-radius:24px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:13px 16px 13px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:12px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 02/L10-Frame-11 02/L13-Frame-12 03/L18-Frame-11 03/L20-Frame-11 04/L22-Frame-11 04/L26-Frame-11 04/L28-Frame-10 05/L35-Frame-12 06/L36-Frame-12 06/L39-Frame-12 06/L40-Frame-13 06/L41-Frame-12 08/L50-Frame-12 08/L53-Frame-11 …(+7)
+     text: A | B | C | D | E | F
+
+  [84× in 84f] margin-top:28px; border-radius:20px; background:#1E1E1E; padding:18px 20px; box-sizing:border-box; display:flex; gap:14px; align-items:flex-start; flex-shrink:0  ⟶  <div width:28px; height:28px; border-radius:14px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; flex-shrink:0> svg12x12/0 0 14 14 path[M2 7.5l3.2 3L12 3.|#111111|2.2] <div flex:1; min-width:0; display:flex; flex-direction:column; gap:4px>
+     frames: 01/L1-Frame-13 01/L2-Frame-15 01/L3-Frame-14 01/L4-Frame-14 01/L5-Frame-14 01/L6-Frame-13 01/L7-Frame-15 02/L10-Frame-15 02/L11-Frame-13 02/L12-Frame-13 02/L13-Frame-16 02/L14-Frame-14 02/L8-Frame-13 02/L9-Frame-14 …(+70)
+     text: Done when
+
+  [44× in 6f] min-height:44px; border-radius:22px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:11px 16px 11px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:7px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 03/L16-Frame-11 05/L30-Frame-11 07/L46-Frame-12 09/L58-Frame-12 12/L79-Frame-11 12/L81-Frame-12
+     text: A | B | C | D | E | F | G | H
+
+  [20× in 4f] min-height:48px; border-radius:24px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:13px 16px 13px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:7px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L2-Frame-11 03/L19-Frame-11 07/L44-Frame-12 12/L80-Frame-13
+     text: A | B | C | D | E | F
+
+  [17× in 12f] flex:1 1 0; min-width:0; border-radius:18px; background:#1E1E1E; padding:16px; box-sizing:border-box  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:8px; font-size:15px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L6-Frame-4 02/L12-Frame-3 02/L13-Frame-6 03/L18-Frame-5 03/L20-Frame-4 04/L22-Frame-7 04/L26-Frame-4 05/L29-Frame-6 05/L31-Frame-7 06/L38-Frame-8 06/L42-Frame-6 10/L66-Frame-3
+     text: What people predicted | Claims to be everything you ar | Less clear | Tuesday | Thursday | Reported urges | Cigarettes over the next week | At first
+
+  [12× in 12f] border-radius:18px; background:#1E1E1E; padding:16px 18px; box-sizing:border-box; display:flex; gap:14px; align-items:flex-start  ⟶  <div width:28px; height:28px; border-radius:14px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; font-weight:700; color:#111111> "…" <div flex:1; min-width:0; padding-top:3px> <div font-size:16px; font-weight:700; line-height:22px; color:#F2F0EC; text-wrap:pretty>
+     frames: 02/L10-Frame-12 03/L20-Frame-12 04/L22-Frame-12 04/L26-Frame-12 06/L36-Frame-13 06/L40-Frame-14 06/L41-Frame-13 08/L50-Frame-13 08/L54-Frame-12 11/L72-Frame-12 11/L75-Frame-12 12/L82-Frame-13
+     text: A | B
+
+  [9× in 1f] min-height:44px; border-radius:22px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:11px 16px 11px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:12px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L7-Frame-11
+     text: A | B | C | D | E | F | G | H
+
+  [8× in 8f] border-radius:20px; background:#1E1E1E; padding:6px 20px; box-sizing:border-box  ⟶  <div display:flex; gap:16px; padding:12px 0 10px> <div width:112px; flex-shrink:0> <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…"
+     frames: 01/L2-Frame-4 02/L11-Frame-5 03/L16-Frame-5 06/L39-Frame-4 07/L45-Frame-5 09/L58-Frame-5 11/L72-Frame-5 12/L80-Frame-4
+     text: What you use | What happens | What you notice | If you… | Usual plan | Already settled | What changes
+
+  [7× in 7f] flex:1 1 0; min-width:0; border-radius:18px; background:#1E1E1E; padding:16px; box-sizing:border-box; box-shadow:inset 0 0 0 1.5px #F2F0EC  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:8px; font-size:15px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L6-Frame-4 02/L12-Frame-3 02/L13-Frame-6 05/L31-Frame-7 06/L38-Frame-8 06/L42-Frame-6 10/L66-Frame-3
+     text: What commuters reported | Describes something you do | Clear | Gives you a start | Connected to the problem | Late-shift version | Names an event
+
+  [3× in 2f] flex:1 1 0; min-width:0; border-radius:18px; background:#1E1E1E; padding:16px; box-sizing:border-box  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:8px; font-size:24px; font-weight:700; line-height:31px; letter-spacing:-0.4px; color:#F2F0EC; white-space:nowrap> "…"
+     frames: 02/L10-Frame-5 02/L8-Frame-4
+     text: Keep searching | Person A | Person B
+
+  [2× in 2f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:14px; display:flex; flex-direction:column> <div display:flex; gap:14px>
+     frames: 01/L1-Frame-5 02/L9-Frame-7
+     text: A familiar evening | After a late-night slip
+
+  [2× in 2f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div position:relative; height:38px; margin-top:18px> <div position:absolute; left:28.9px; right:28.9px; top:5px; height:2px; background:#5A574F>
+     frames: 05/L35-Frame-5 11/L75-Frame-8
+     text: Activity check-ins | Reviews
+
+  [2× in 2f] border-radius:18px; background:#1E1E1E; padding:16px 18px; box-sizing:border-box; display:flex; gap:14px; align-items:flex-start  ⟶  <div width:28px; height:28px; border-radius:8px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; font-weight:700; color:#111111> "…" <div flex:1; min-width:0; padding-top:3px> <div font-size:16px; font-weight:700; line-height:22px; color:#F2F0EC; text-wrap:pretty>
+     frames: 07/L44-Frame-13 12/L80-Frame-14
+     text: A
+
+  [2× in 2f] margin-top:10px; border-radius:18px; background:#1E1E1E; padding:16px 18px; box-sizing:border-box; display:flex; gap:14px; align-items:flex-start  ⟶  <div width:28px; height:28px; border-radius:8px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; font-weight:700; color:#111111> "…" <div flex:1; min-width:0; padding-top:3px> <div font-size:16px; font-weight:700; line-height:22px; color:#F2F0EC; text-wrap:pretty>
+     frames: 07/L44-Frame-13 12/L80-Frame-14
+     text: B
+
+  [1× in 1f] flex:1 1 0; min-width:0; border-radius:18px; background:#1E1E1E; padding:16px; box-sizing:border-box; box-shadow:inset 0 0 0 1.5px #F2F0EC  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:8px; font-size:24px; font-weight:700; line-height:31px; letter-spacing:-0.4px; color:#F2F0EC; white-space:nowrap> "…"
+     frames: 02/L10-Frame-5
+     text: Close it now
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:6px 20px; box-sizing:border-box  ⟶  <div display:flex; gap:16px; padding:14px 0> <div width:112px; flex-shrink:0> <div font-size:15px; font-weight:700; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 02/L14-Frame-10
+     text: After a missed lesson
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div position:relative; height:144px> <div position:absolute; left:28px; top:0; height:24px; padding:0 10px; border-radius:12px; background:#F2F0EC; display:flex; align-items:center; font-size:13px; font-weight:700; line-height:16px; color:#111111; white-space:nowrap> "…" <div position:absolute; right:0; top:4px; font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E>
+     frames: 03/L15-Frame-5
+     text: Close, move, begin
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:6px 20px; box-sizing:border-box  ⟶  <div display:flex; gap:16px; padding:14px 0; align-items:center> <div width:64px; flex-shrink:0> <div font-size:24px; font-weight:700; line-height:31px; color:#F2F0EC> "…"
+     frames: 03/L19-Frame-4
+     text: H
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:6px 20px; box-sizing:border-box  ⟶  <div display:flex; gap:16px; padding:14px 0> <div width:44px; flex-shrink:0> <div font-size:15px; font-weight:700; line-height:22px; color:#F2F0EC> "…"
+     frames: 04/L23-Frame-4
+     text: If
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div display:flex; flex-direction:column> <div display:flex; gap:14px> <div width:12px; flex-shrink:0; display:flex; flex-direction:column; align-items:center> <div margin-top:5px; width:12px; height:12px; border-radius:6px; box-sizing:border-box; flex-shrink:0; border:2px solid #9B968E>
+     frames: 04/L28-Frame-3
+     text: Finish work
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div display:flex; flex-direction:column> <div display:flex; gap:14px> <div width:12px; flex-shrink:0; display:flex; flex-direction:column; align-items:center> <div margin-top:5px; width:12px; height:12px; border-radius:6px; box-sizing:border-box; flex-shrink:0; background:#F2F0EC>
+     frames: 06/L40-Frame-6
+     text: “There’s the quick-look idea a
+
+  [1× in 1f] border-radius:20px; background:#1E1E1E; padding:20px; box-sizing:border-box  ⟶  <div font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; text-wrap:balance> "…" <div margin-top:16px; display:flex; flex-direction:column; gap:16px> <div >
+     frames: 06/L41-Frame-4
+     text: Got vaccinated
+
+################ check — 1 variants
+
+  [168× in 168f] path d=M2 7.5l3.2 3L12 3.5 fill=none stroke=#111111 stroke-width=2.2 stroke-linecap=round stroke-linejoin=round 
+     frames: 01/L1-Frame-13 01/L1-Frame-14 01/L2-Frame-15 01/L2-Frame-16 01/L3-Frame-14 01/L3-Frame-15 01/L4-Frame-14 01/L4-Frame-15 01/L5-Frame-14 01/L5-Frame-15 01/L6-Frame-13 01/L6-Frame-14 01/L7-Frame-15 01/L7-Frame-16 …(+154)
+
+################ pill — 2 variants
+
+  [3× in 3f] height:24px; padding:0 10px; border-radius:12px; background:#F2F0EC; display:flex; align-items:center; font-size:13px; font-weight:700; line-height:16px; color:#111111; white-space:nowrap  ⟶  "…"
+     frames: 01/L1-Frame-5 04/L28-Frame-3 06/L40-Frame-6
+     text: Change this part | An earlier point to act | The thought can stay
+
+  [1× in 1f] position:absolute; left:28px; top:0; height:24px; padding:0 10px; border-radius:12px; background:#F2F0EC; display:flex; align-items:center; font-size:13px; font-weight:700; line-height:16px; color:#111111; white-space:nowrap  ⟶  "…"
+     frames: 03/L15-Frame-5
+     text: Close, move, begin
+
+################ chipMin — 4 variants
+
+  [86× in 21f] min-height:48px; border-radius:24px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:13px 16px 13px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:12px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 02/L10-Frame-11 02/L13-Frame-12 03/L18-Frame-11 03/L20-Frame-11 04/L22-Frame-11 04/L26-Frame-11 04/L28-Frame-10 05/L35-Frame-12 06/L36-Frame-12 06/L39-Frame-12 06/L40-Frame-13 06/L41-Frame-12 08/L50-Frame-12 08/L53-Frame-11 …(+7)
+     text: A | B | C | D | E | F
+
+  [44× in 6f] min-height:44px; border-radius:22px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:11px 16px 11px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:7px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 03/L16-Frame-11 05/L30-Frame-11 07/L46-Frame-12 09/L58-Frame-12 12/L79-Frame-11 12/L81-Frame-12
+     text: A | B | C | D | E | F | G | H
+
+  [20× in 4f] min-height:48px; border-radius:24px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:13px 16px 13px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:7px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L2-Frame-11 03/L19-Frame-11 07/L44-Frame-12 12/L80-Frame-13
+     text: A | B | C | D | E | F
+
+  [9× in 1f] min-height:44px; border-radius:22px; background:#1E1E1E; display:flex; align-items:center; gap:12px; padding:11px 16px 11px 14px; box-sizing:border-box  ⟶  <div width:24px; height:24px; border-radius:12px; box-shadow:inset 0 0 0 1.5px #9B968E; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:700; line-height:16px; color:#B5B0A8> "…" <div flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…"
+     frames: 01/L7-Frame-11
+     text: A | B | C | D | E | F | G | H
+
+################ chip48 — 1 variants
+
+  [18× in 18f] margin-top:32px; height:48px; border-radius:24px; box-shadow:inset 0 0 0 1.5px #2E2E2E; display:flex; align-items:center; gap:12px; padding:0 20px; box-sizing:border-box; flex-shrink:0  ⟶  svg16x16/0 0 16 16 path[M3 13l1-3.5L10.5 3|#9B968E|1.6] <div flex:1; min-width:0; font-size:16px; line-height:22px; color:#9B968E; white-space:nowrap> "…"
+     frames: 01/L2-Frame-12 01/L7-Frame-12 02/L13-Frame-13 03/L16-Frame-12 03/L18-Frame-12 03/L19-Frame-12 04/L28-Frame-11 05/L30-Frame-12 05/L35-Frame-13 06/L39-Frame-13 07/L46-Frame-13 08/L53-Frame-12 09/L58-Frame-13 09/L60-Frame-12 …(+4)
+     text: Add a note (optional)
+
+################ listRow — 3 variants
+
+  [24× in 9f] display:flex; gap:16px; padding:14px 0; border-top:1px solid #2E2E2E  ⟶  <div width:112px; flex-shrink:0> <div font-size:15px; font-weight:700; line-height:22px; color:#F2F0EC; text-wrap:pretty> "…" <div flex:1; min-width:0>
+     frames: 01/L2-Frame-4 02/L11-Frame-5 02/L14-Frame-10 03/L16-Frame-5 06/L39-Frame-4 07/L45-Frame-5 09/L58-Frame-5 11/L72-Frame-5 12/L80-Frame-4
+     text: A particular account | Saved material | The same feed in bed | You notice sooner, but can’t p | You notice only half an hour i | After a slip | When motivation is low | Hunger
+
+  [3× in 1f] display:flex; gap:16px; padding:14px 0; align-items:center; border-top:1px solid #2E2E2E  ⟶  <div width:64px; flex-shrink:0> <div font-size:24px; font-weight:700; line-height:31px; color:#F2F0EC> "…" <div margin-top:2px; font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E; white-space:nowrap>
+     frames: 03/L19-Frame-4
+     text: A | L | T
+
+  [1× in 1f] display:flex; gap:16px; padding:14px 0; border-top:1px solid #2E2E2E  ⟶  <div width:44px; flex-shrink:0> <div font-size:15px; font-weight:700; line-height:22px; color:#F2F0EC> "…" <div flex:1; min-width:0>
+     frames: 04/L23-Frame-4
+     text: Then
+
+################ gradient — 1 variants
+
+  [1× in 1f] position:absolute; left:0; right:0; bottom:0; height:150px; background:linear-gradient(rgba(13,13,13,0), #0D0D0D 40%); z-index:5; pointer-events:none  ⟶  
+     frames: 01/L7-Frame-11

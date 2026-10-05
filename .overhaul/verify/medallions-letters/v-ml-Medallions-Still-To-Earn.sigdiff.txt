@@ -1,0 +1,18 @@
+MISSING in app:  div | 371 | 80 | 0 | 0 | - | - | - | - | - | -
+~ -                                        bg: - → rgb(30, 30, 30)   radius: - → 22px
+# count P:16,164,361,44: design 2, app 1
+~ Earned                                   x: 20 → 87.6   y: 168 → 178   w: 176.5 → 41.3   h: 36 → 16   radius: 18px → -   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Still to earn                            x: 196.5 → 251.5   y: 168 → 178   w: 176.5 → 66.5   h: 36 → 16   bg: rgb(242, 240, 236) → -   radius: 18px → -   type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+# count P:93,288,64,64: design 1, app 2
+~ Archive                                  type: 15px/700/-0.2px/normal/rgb(155, 150, 142) → 15px/700/-0.2px/18px/rgb(155, 150, 142)
+~ 9 of 10 entries                          type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+# count P:227,288,64,64: design 1, app 2
+~ Return                                   type: 15px/700/-0.2px/normal/rgb(155, 150, 142) → 15px/700/-0.2px/18px/rgb(155, 150, 142)
+~ After 7 days away                        type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Journey                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+--- 100 design rows, 123 app rows; 12 differing, 1 missing, 8 extra, 0 sub-0.25pt rounding (use --all to list extras)

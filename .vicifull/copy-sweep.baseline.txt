@@ -1,0 +1,679 @@
+✗ V3 Q24 Name  (4/5)
+    - "All your data will be encrypted."
+✗ Onboarding Start  (2/4)
+    - "Sam, let’s figure out what usually leads you back to porn."
+    - "It’ll take about two minutes. Then we’ll show you what we’d change first."
+✗ V3 Q1  (6/8)
+    - "How often are you watching porn right now?"
+    - "More than once a day"
+✗ V3 Q2  (1/7)
+    - "How long have you wanted to quit or cut down?"
+    - "Less than 3 months"
+    - "3–12 months"
+    - "1–3 years"
+    - "3–5 years"
+    - "5+ years"
+✗ V3 Q3  (2/5)
+    - "Have you tried to quit before?"
+    - "Yes, several times"
+    - "Yes, once or twice"
+✗ V3 Q3b  (2/7)
+    - "When you’ve tried to quit, how long do you usually make it before watching again?"
+    - "Less than a day"
+    - "About a week"
+    - "A few weeks"
+    - "A month or longer"
+✗ First Principle  (2/4)
+    - "An urge doesn’t stay at its worst for very long."
+    - "The first job is getting through the part where giving in feels easiest."
+✗ V3 Q5  (7/13)
+    - "When do you usually end up watching?"
+    - "When I’m bored"
+    - "When I’m stressed"
+    - "On weekends"
+    - "When I’m home alone"
+    - "While scrolling"
+✗ V3 Q6  (12/13)
+    - "What are you usually feeling right before?"
+✗ V3 Q7  (9/11)
+    - "Where are you usually watching?"
+    - "Outside home"
+✗ What starts it  (7/11)
+    - "What usually sets it off?"
+    - "I’ve had a stressful day"
+    - "I argue with someone or feel rejected"
+    - "I start fantasising"
+✗ Transition  (2/4)
+    - "Okay. That’s enough to see where things usually start."
+    - "A few more questions, then we’ll show you what we’d change first."
+✗ V3 Q21  (4/6)
+    - "How much is porn getting in the way of your life?"
+    - "Not really"
+✗ What it affects  (12/14)
+    - "What does it affect most?"
+    - "Feeling in"
+✗ V3 Q13  (4/6)
+    - "How often are you on your own for long stretches?"
+    - "Now and then"
+✗ V3 Q15  (2/6)
+    - "What are you aiming for with porn?"
+    - "Stop completely"
+    - "Watch much less"
+    - "I’m not sure yet"
+✗ V3 Q16  (4/6)
+    - "What about masturbation?"
+    - "I’m not sure yet"
+✗ V3 Q17  (7/11)
+    - "What have you tried already?"
+    - "Blocking sites or apps"
+    - "Asking someone to keep me accountable"
+    - "Replacing it with other habits"
+✗ Goal Confirmation  (2/5)
+    - "You want to stop."
+    - "That’s what we’ll work toward."
+    - "Masturbation isn’t part of what you’re trying to stop. Porn is."
+✗ Enlisting Aegis  (1/4)
+    - "Finding where you usually struggle"
+    - "Looking at what tends to set it off"
+    - "Choosing where to start"
+✗ Where We’d Start  (4/8)
+    - "Sam, this is where we’d start."
+    - "These came up together in your answers."
+    - "You don’t need to change everything at once."
+    - "Start with this."
+✗ Start Here  (0/4)
+    - "Keep your phone out of bed tonight."
+    - "Late night, bed and scrolling came up together in your answers."
+    - "I can do that"
+    - "Choose another"
+✗ Start Here Step 1  (1/3)
+    - "Charge it away from the bed."
+    - "Tonight, before you lie down."
+✗ Start Here Step 2  (1/3)
+    - "Can’t sleep? Get out of bed before you start scrolling."
+    - "One change tonight. Build from there."
+✗ Your Plan  (7/12)
+    - "When it usually happens"
+    - "Where it usually happens"
+    - "What tends to set it off"
+    - "Your first change"
+    - "SOS gets you out first"
+✗ Starting Score  (2/5)
+    - "YOUR VICI RATING"
+    - "Starting point"
+    - "This is where you start. What you do from here matters more than the questionnaire."
+✗ Cost Next 30  (3/6)
+    - "This is your next 30 days."
+    - "If the rate you reported stayed the same, about 9 of the next 30 days could end with porn."
+    - "The line can start changing with the next one."
+✗ Cost Next 365  (1/4)
+    - "One year from now."
+    - "About 110 days"
+    - "Where you’re predicted to relapse."
+✗ Cost By Age 80  (2/4)
+    - "About 6,100 days"
+    - "If nothing changes."
+✗ Change the Line  (1/3)
+    - "You only have to make the next decision different. Then the next one. Then come back tomorrow."
+    - "Start with today"
+✗ A Clean Day  (1/3)
+    - "One clean day."
+    - "That’s all today has to be."
+✗ One Bad Day  (5/7)
+    - "It doesn’t erase the work before it. Your lessons, logs, rating history and medallions stay."
+    - "What matters is that you come back."
+✗ What You Want Back  (1/7)
+    - "This is what you’re doing it for."
+    - "FOCUS"
+    - "SLEEP"
+    - "CONFIDENCE"
+    - "Not a perfect streak for its own sake."
+    - "More of your time and attention going where you actually want them."
+✗ Letter Week XII  (14/16)
+    - "Sam —"
+    - "— Sam, at week XII"
+✗ Reminders Setup  (9/10)
+    - "Late night is when you’re most likely to watch."
+✗ Paywall  (18/26)
+    - "UNLIMITED"
+    - "Take your life back."
+    - "Break the cycle, rebuild your self-control, and become someone you can trust again."
+    - "SAVE 74%"
+    - "$3.33 a month"
+    - "What you get"
+    - "12-week"
+    - "Terms · Restore"
+✗ Paywall Rescue  (3/6)
+    - "Day 2 — a reminder, before any charge"
+    - "Day 3 — $39.99/year begins, unless you cancel"
+    - "Start my 3 free days"
+✗ Paywall Confirmed  (1/4)
+    - "We're in, Sam."
+    - "Let's take the first ground. Nothing is charged until Jul 24 — cancelling is one tap in Settings."
+    - "Receipt sent to sam@hey.com"
+✗ Manage Subscription  (14/17)
+    - "$39.99 / year · renews 10 Jul 2027"
+    - "$39.99 on 10 Jul 2027"
+    - "Yearly · $39.99"
+✗ Today Home  (13/15)
+    - "Navigator · 1,150"
+    - "Helmsman · 1,300"
+✗ Score Detail  (12/18)
+    - "Navigator · II"
+    - "Navigator · 1,150"
+    - "Helmsman · 1,300"
+    - "1,000"
+    - "+90 points"
+    - "vs Apr 3 – May 3"
+✗ Score Detail Moves  (10/19)
+    - "Navigator · II"
+    - "Navigator · 1,150"
+    - "Helmsman · 1,300"
+    - "+64"
+    - "+18"
+    - "+12"
+    - "Slip · Jul 8"
+    - "−16"
+    - "+86 net"
+✗ Score Detail Ranks  (11/17)
+    - "Navigator · II"
+    - "Navigator · 1,150"
+    - "Helmsman · 1,300"
+    - "1,000"
+    - "60 to go"
+    - "About a week at this pace. Steady beats fast."
+✗ Today Home II  (8/9)
+    - "Naming your triggers"
+✗ Today Home Task  (8/9)
+    - "Naming your triggers"
+✗ Today Home III  (6/7)
+    - "Jerry"
+✗ Morning Check-in Cover  (1/3)
+    - "Day 13 · two minutes"
+    - "Begin day 13"
+✗ Morning 1 Yesterday  (5/9)
+    - "Yesterday’s record."
+    - "+12 → 1,240"
+    - "0 relapses"
+    - "Part III finished"
+✗ Morning Pledge Signed  (5/6)
+    - "Jerry"
+✗ Change Pledge Sheet  (4/5)
+    - "Phone stays out of the bedroom"
+✗ Morning 5 Done  (2/4)
+    - "Day 13, underway."
+    - "Pledge re-signed · Day 13"
+✗ Night Check-in Cover  (2/3)
+    - "Day 13 · two minutes"
+✗ Night 2 Record  (4/7)
+    - "Today’s record."
+    - "0 relapses"
+    - "Part IV finished"
+✗ Night 4 Closed  (3/4)
+    - "Day 13, closed."
+✗ Week I Reset  (9/10)
+    - "Week I · Survive the nights and steady the basics."
+✗ Week I Reset P2  (7/8)
+    - "Week I · Survive the nights and steady the basics."
+✗ Week II Changing Your Mindset  (9/10)
+    - "Week II · Streaks, relapses, and how you talk to yourself."
+✗ Week II Changing Your Mindset P2  (7/8)
+    - "Week II · Streaks, relapses, and how you talk to yourself."
+✗ Week III In the Moment  (9/10)
+    - "Week III · What to do in the sixty seconds that matter."
+✗ Week III In the Moment P2  (7/8)
+    - "Week III · What to do in the sixty seconds that matter."
+✗ Week IV Know Your Brain  (9/10)
+    - "Week IV · The machinery behind the pull."
+✗ Week IV Know Your Brain P2  (7/8)
+    - "Week IV · The machinery behind the pull."
+✗ Week V Why It Feels Worth It  (9/10)
+    - "Week V · The honest math of what it gives and takes."
+✗ Week V Why It Feels Worth It P2  (7/8)
+    - "Week V · The honest math of what it gives and takes."
+✗ Week VI Discipline  (9/10)
+    - "Week VI · Training the response you want on hard nights."
+✗ Week VI Discipline P2  (7/8)
+    - "Week VI · Training the response you want on hard nights."
+✗ Week VII Relapse and Adversity  (9/10)
+    - "Week VII · Falling without unraveling."
+✗ Week VII Relapse and Adversity P2  (7/8)
+    - "Week VII · Falling without unraveling."
+✗ Week VIII Boredom and Meaning  (9/10)
+    - "Week VIII · Empty hours, and what fills them well."
+✗ Week VIII Boredom and Meaning P2  (7/8)
+    - "Week VIII · Empty hours, and what fills them well."
+✗ Week IX Connection  (9/10)
+    - "Week IX · The people side of recovery."
+✗ Week IX Connection P2  (7/8)
+    - "Week IX · The people side of recovery."
+✗ Week X Yourself  (9/10)
+    - "Week X · Repairing how you see and treat yourself."
+✗ Week X Yourself P2  (7/8)
+    - "Week X · Repairing how you see and treat yourself."
+✗ Week XI Build a Life You Want  (9/10)
+    - "Week XI · Point the freed-up energy at something."
+✗ Week XI Build a Life You Want P2  (7/8)
+    - "Week XI · Point the freed-up energy at something."
+✗ Week XII Leave It Behind  (9/10)
+    - "Week XII · Make it permanent, then let it go."
+✗ Week XII Leave It Behind P2  (7/8)
+    - "Week XII · Make it permanent, then let it go."
+✗ Surf Step 1  (2/3)
+    - "Try a different step"
+✗ Surf Step 3  (2/3)
+    - "Try a different step"
+✗ Cue Set Confirmation  (3/4)
+    - "Try a different step"
+✗ Surf Complete  (3/4)
+    - "Logged — rode it out · ×3"
+✗ Relapse Resign  (5/6)
+    - "Jerry"
+✗ Urge Hub Now  (6/9)
+    - "Change the room and the wave loses its grip. Stand up, move somewhere with light."
+    - "17:42"
+    - "Work or school"
+✗ Urge Hub Score  (3/9)
+    - "You’re riding a wave."
+    - "of 10"
+    - "32%"
+    - "2:18 in"
+    - "28 clean"
+    - "2 slips"
+✗ Urge Hub Proof  (5/11)
+    - "Every urge so far has ended."
+    - "Twelve in a row. The longest took 41 minutes. Most were gone in under ten."
+    - "How long the last twelve lasted"
+    - "Urges ridden out"
+    - "Longest urge survived"
+    - "41 min"
+✗ Urge Hub Surfed  (4/16)
+    - "You’ve outlasted this before."
+    - "The last four, how long they lasted, and what got you through."
+    - "Thu · 3:10 pm"
+    - "14 min"
+    - "Tue · 11:48 pm"
+    - "22 min"
+    - "went for a walk"
+    - "Sun · 9:22 pm"
+    - "9 min"
+    - "called a friend"
+    - "Sat · 1:05 am"
+    - "31 min"
+✗ Urge Hub Pledges  (4/7)
+    - "Your pledge."
+    - "Jerry"
+    - "Kept every day since you signed"
+✗ Medallions  (11/18)
+    - "10 of 12 earned"
+    - "Day 0 · Jun 9"
+    - "Tier I · Day VII"
+    - "Tier I · ×5"
+    - "Breakwater"
+    - "Tier I · ×1"
+    - "Rebound"
+✗ Medallions Still To Earn  (7/11)
+    - "2 still to earn"
+    - "Archive"
+    - "9 of 10 entries"
+    - "After 7 days away"
+✗ Album Earned II  (7/13)
+    - "10 of 12 earned"
+    - "Logbook"
+    - "Tier I · ×5"
+    - "Pulse"
+    - "Black Box"
+    - "Jul 20"
+✗ Breakwater Paper  (3/7)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier I · ×1"
+    - "“The first wave broke against you, not over you.”"
+✗ Breakwater Bronze  (3/7)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier II · ×5"
+    - "“Five storms met at full height. The wall is real now.”"
+✗ Breakwater Silver  (3/7)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier III · ×10"
+    - "“Ten overwhelming urges, none of them decisive.”"
+✗ Breakwater Gold  (3/7)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier IV · ×25"
+    - "“Twenty-five. What used to flood you now only gets loud.”"
+✗ Breakwater Platinum  (3/7)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier V · ×50"
+    - "“Fifty waves. The sea hasn’t changed. The wall did.”"
+✗ Tiers Vidi  (6/12)
+    - "Days Vici was opened and something recorded."
+    - "Tier I · Day 7"
+    - "Tier II · Day 30"
+    - "Tier III · Day 90"
+    - "Tier IV · Day 180"
+    - "Tier V · Day 365"
+✗ Tiers Vici  (6/12)
+    - "Urge logs that did not end in a slip."
+    - "Tier I · ×5"
+    - "Tier II · ×25"
+    - "Tier III · ×100"
+    - "Tier IV · ×250"
+    - "Tier V · ×1,000"
+✗ Tiers Rebound  (5/12)
+    - "Rebound"
+    - "A check-in on the day after a slip."
+    - "Tier I · ×1"
+    - "Tier II · ×10"
+    - "Tier III · ×25"
+    - "Tier IV · ×50"
+    - "Tier V · ×100"
+✗ Tiers Breakwater  (5/12)
+    - "Breakwater"
+    - "An Overwhelming urge that ended without a slip."
+    - "Tier I · ×1"
+    - "Tier II · ×5"
+    - "Tier III · ×10"
+    - "Tier IV · ×25"
+    - "Tier V · ×50"
+✗ Tiers Logbook  (5/12)
+    - "Logbook"
+    - "Urge logs saved, whatever the outcome."
+    - "Tier I · ×5"
+    - "Tier II · ×25"
+    - "Tier III · ×75"
+    - "Tier IV · ×200"
+    - "Tier V · ×500"
+✗ Tiers Pulse  (5/12)
+    - "Pulse"
+    - "Check-ins completed."
+    - "Tier I · ×5"
+    - "Tier II · ×25"
+    - "Tier III · ×75"
+    - "Tier IV · ×200"
+    - "Tier V · ×500"
+✗ Tiers Archive  (5/12)
+    - "Archive"
+    - "Journal entries saved."
+    - "Tier I · ×10"
+    - "Tier II · ×50"
+    - "Tier III · ×100"
+    - "Tier IV · ×200"
+    - "Tier V · ×365"
+✗ Tiers Lessons  (6/12)
+    - "Lessons completed."
+    - "Tier I · ×5"
+    - "Tier II · ×25"
+    - "Tier III · ×50"
+    - "Tier IV · ×75"
+    - "Tier V · ×110"
+✗ Tiers One-offs  (3/10)
+    - "Earned once"
+    - "One tier only · platinum"
+    - "Finished onboarding"
+    - "The first completed check-in"
+    - "Black Box"
+    - "First slip recorded in an urge log"
+    - "A check-in after 7+ days away"
+✗ Detail Paper  (5/7)
+    - "Not yet · first ×1"
+    - "“Nine minutes, start to finish. You watched it rise, crest, and leave without you.” — waiting at ×1."
+✗ Detail Bronze  (5/7)
+    - "Tier I · ×1"
+    - "“Nine minutes, start to finish. You watched it rise, crest, and leave without you.”"
+✗ Detail Silver  (5/7)
+    - "Tier III · ×25"
+    - "“Twenty-five behind you now — the pattern is unmistakable.”"
+✗ Detail Gold  (5/7)
+    - "Tier IV · ×100"
+    - "“A hundred waves met and outlasted. This stopped being a fight you were unsure of a while ago.”"
+✗ Detail Platinum  (5/7)
+    - "Tier VII · ×1,000"
+    - "“A thousand. The sea hasn’t changed. You’re just not the one it moves anymore.”"
+✗ Lapse When  (19/24)
+    - "Choose a time"
+    - "Sat Jul 18"
+    - "Sun Jul 19"
+    - "Wed Jul 22"
+    - "Thu Jul 23"
+✗ Lapse Trigger  (12/13)
+    - "Continue · 2"
+✗ Lapse Done  (5/8)
+    - "Slip logged."
+    - "Late night · Boredom"
+    - "Phone charges outside bedroom"
+✗ Log Urges  (13/24)
+    - "3 urges"
+    - "All ridden out"
+    - "Late night · Intense"
+    - "Boredom · Mild"
+    - "Thursday · 3:10 pm"
+    - "Stress · Strong"
+    - "Friday · 9:05 pm"
+    - "Home alone · Strong"
+    - "Sunday · 10:22 pm"
+    - "Late night · Mild"
+    - "Wednesday · 12:05 am"
+✗ Log Check-ins  (14/26)
+    - "7 check-ins"
+    - "12 mornings in a row"
+    - "Mood 4/5 · 7h sleep"
+    - "Today · 8:44 am"
+    - "Mood 3/5 · 6h sleep"
+    - "Yesterday · 8:51 am"
+    - "Mood 4/5 · 7.5h sleep"
+    - "Friday · 8:39 am"
+    - "Mood 4/5 · 8h sleep"
+    - "Sunday · 9:02 am"
+    - "Mood 2/5 · 5h sleep"
+    - "Tuesday · 8:47 am"
+✗ Log Reports  (14/23)
+    - "1,240 · +12 this week"
+    - "Earlier weeks"
+    - "Score 1,228 · 4 urges · 0 relapses"
+    - "Score 1,220 · 5 urges · 1 relapse"
+    - "Jun 23–29"
+    - "Score 1,224 · 2 urges · 0 relapses"
+    - "+6"
+    - "Jun 16–22"
+    - "Score 1,218 · 3 urges · 0 relapses"
+✗ Urge Overview Summary  (12/20)
+    - "3 this week"
+    - "2 of 3"
+    - "Tue Jul 15 · 7:42 PM"
+    - "rode it out · 4 min"
+    - "Thu Jul 17 · 11:26 PM"
+    - "rode it out · 6 min"
+    - "Sat Jul 19 · 12:04 AM"
+    - "ended in a slip"
+✗ Urge Overview  (12/14)
+    - "Stress on top"
+    - "Most land after 10 pm. The evening drill helps."
+✗ Urge Overview Mood  (17/19)
+    - "Tense first"
+    - "7 in 10 urges"
+✗ Urge Overview When  (20/21)
+    - "11 pm – 1 am"
+✗ Weekly Report  (13/14)
+    - "+12 points"
+✗ Weekly Report Days  (10/12)
+    - "vs Jul 7–13"
+    - "Five steady days of seven. Friday was the test."
+✗ Weekly Report Urges  (12/18)
+    - "Late night · Intense"
+    - "Boredom · Mild"
+    - "Thursday · 3:10 pm"
+    - "Stress · Strong"
+    - "Friday · 9:05 pm"
+    - "2 of 3 ridden out"
+✗ Urge Log Trigger  (12/13)
+    - "Continue · 2"
+✗ Urge Log When  (20/24)
+    - "Sat Jul 18"
+    - "Sun Jul 19"
+    - "Wed Jul 22"
+    - "Thu Jul 23"
+✗ Urge Log Done  (7/8)
+    - "Late night · Boredom"
+✗ Settings  (19/21)
+    - "8:00 AM"
+    - "9:30 PM"
+✗ Edit Profile  (12/17)
+    - "Sam Reyes"
+    - "@sam"
+    - "sam@example.com"
+    - "+3"
+    - "14 Mar 2026"
+✗ Sheet Profile Photo  (17/22)
+    - "Sam Reyes"
+    - "@sam"
+    - "sam@example.com"
+    - "+3"
+    - "14 Mar 2026"
+✗ Sheet Edit Name  (14/19)
+    - "Sam Reyes"
+    - "@sam"
+    - "sam@example.com"
+    - "+3"
+    - "14 Mar 2026"
+✗ Settings Weekly Report  (11/15)
+    - "7 check-ins"
+    - "3 urges"
+    - "0 relapses"
+    - "+12 points"
+✗ Settings Check-in Time  (21/22)
+    - "Set it for the start of your riskiest hours — you can change this any time."
+✗ Your Vow Page  (4/6)
+    - "Jerry"
+    - "Held for 92 days."
+✗ Sheet Sign Out  (17/22)
+    - "8:00 AM"
+    - "9:30 PM"
+    - "Sam Reyes"
+    - "sam@example.com"
+    - "Your log, letters and medallions stay saved to sam@example.com."
+✗ Data Privacy  (11/12)
+    - "Deleting your account erases your journal, urges and Life Map permanently. This can't be undone."
+✗ Slip Close It  (1/3)
+    - "Close it now."
+    - "Everything else can wait. Close the tab, close the app, put the screen down."
+✗ Slip When  (19/24)
+    - "Choose a time"
+    - "Sat Jul 18"
+    - "Sun Jul 19"
+    - "Wed Jul 22"
+    - "Thu Jul 23"
+✗ Slip Fed  (11/13)
+    - "Not sure"
+    - "Continue · 3"
+✗ Slip Logged  (4/11)
+    - "Slip logged."
+    - "You stopped, logged it, and changed something for next time."
+    - "Tonight · 11:40 PM"
+    - "What was going on"
+    - "Phone in bed · Late night"
+    - "Change for next time"
+    - "Phone charges outside the bedroom"
+✗ Slip Urge Now  (4/6)
+    - "Do you still want to keep watching?"
+    - "I’m already watching again"
+✗ Slip Stop Here  (0/3)
+    - "Stop here."
+    - "It happened again. The next hour can still be different."
+    - "Turn it around"
+✗ Slip Third  (1/3)
+    - "You can still stop here."
+    - "The day is not gone. The phone goes away for the rest of the evening — that’s the only job."
+✗ Slip Pledge  (4/6)
+    - "Jerry"
+    - "Read my pledge"
+✗ Slip Morning After  (2/4)
+    - "Morning after."
+    - "Last night happened. Today still counts. Start with the next decision."
+✗ Slip Feel Ashamed  (2/4)
+    - "Skip the self-lecture."
+    - "Don’t spend the next ten minutes punishing yourself. The useful part starts now: change what happens next."
+✗ Slip Feel Bored  (2/4)
+    - "Pick the next thing."
+    - "The slip doesn’t get to decide the rest of your day. Choose one thing to do and get out of the feed."
+✗ Slip Feel Lonely  (2/4)
+    - "Don’t stay cut off."
+    - "You don’t have to tell anyone what happened. Just don’t stay alone with it tonight."
+✗ Slip Feel Stressed  (2/4)
+    - "The problem can wait."
+    - "Ten minutes. Stop here, take a real break, and give yourself a clean next hour."
+✗ Slip Feel Rejected  (2/4)
+    - "Don’t go back yet."
+    - "No messages, no profiles, no replies. Cool down first — then decide."
+✗ Slip Feel Tired  (2/4)
+    - "Do less, not more."
+    - "Put the phone away and make the rest of the night easier."
+✗ Slip Feel Turned on  (2/4)
+    - "Stop feeding it."
+    - "Being turned on is not the problem. Cut the cue and let the rest of it pass."
+✗ Slip Feel Not sure  (2/4)
+    - "No reason needed tonight."
+    - "You don’t need the story. Stop here and make the next slip harder."
+✗ Slip Trigger Late night  (2/4)
+    - "Move the phone."
+    - "Charge it outside the bedroom tonight."
+✗ Slip Trigger Scrolling  (2/4)
+    - "Close it for the rest of the night. Don’t replace it with another feed."
+    - "Feed is closed"
+✗ Slip Trigger Sexual content  (2/4)
+    - "Close everything."
+    - "Close the page, app, or account that got you there. Don’t look again."
+✗ Slip Trigger Boredom  (2/4)
+    - "Give the next hour a job."
+    - "A short, hard set beats an open feed. Then pick one thing to actually do."
+✗ Slip Trigger Loneliness  (2/4)
+    - "Move toward people."
+    - "Message one person, or go where people are. No explanation required."
+✗ Slip Trigger Stress  (2/4)
+    - "Contained break."
+    - "Step away from the problem properly. Name one task for later — just one."
+✗ Slip Trigger Argument  (2/4)
+    - "Stop rereading the messages. Leave it alone for ten minutes."
+    - "I’ll leave it"
+✗ Slip Trigger Couldn’t sleep  (1/4)
+    - "Get out of bed for a few minutes."
+    - "Stay off feeds. Go back when you are actually ready to sleep."
+    - "I’m out of bed"
+✗ Slip Trigger Being alone  (2/4)
+    - "Move somewhere less private for the next ten minutes."
+    - "I’ve moved"
+✗ Slip Trigger Habit  (3/4)
+    - "Do something different from what you normally do after a slip."
+✗ Letter Read  (8/10)
+    - "If you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that matters this morning."
+    - "The only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don’t fail twice."
+✗ Yearly Drop  (8/18)
+    - "One decision."
+    - "A year of change."
+    - "Unlock everything VICI has to offer for an entire year."
+    - "SAVE 74%"
+    - "Yearly Access"
+    - "That’s $2.25 a month."
+    - "Full 12-week"
+    - "SOS support"
+    - "Unlock my year"
+    - "Terms · Restore"
+✗ Drop Received  (4/5)
+    - "One drop covers the year — twelve months of VICI, billed once."
+✗ Lesson Scroll 7  (2/4)
+    - "Ninety days."
+    - "The rest of your life."
+✗ Lesson Scroll 11  (3/5)
+    - "Not for the next three months."
+    - "Not even for the rest of the week."
+✗ Lesson Scroll 15  (3/5)
+    - "Before the tab."
+    - "Before you are fully caught in it."
+✗ Lesson Scroll 21  (2/4)
+    - "No huge promise about the future."
+    - "No test of whether you are “strong enough.”"
+
+--- Email-Login: 2062 strings, 1554 found in src/, 508 missing

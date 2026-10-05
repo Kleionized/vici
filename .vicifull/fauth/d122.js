@@ -1,0 +1,11 @@
+await tap('Continue with email');
+await __sleep(800);
+await typeIn(0, 'Marcus');
+await typeIn(1, 'marcus@example.com');
+await __sleep(200);
+await tap('Create Account');
+await __sleep(3000);
+const afterCreate = __txt().slice(0, 200) + ' @ ' + location.href;
+await tap('Back');
+await __sleep(1500);
+return { afterCreate, afterBack: __txt().slice(0, 200), url: location.href };

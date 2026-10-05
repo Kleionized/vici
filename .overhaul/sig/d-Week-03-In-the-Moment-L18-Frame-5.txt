@@ -1,0 +1,24 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 18
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 106.9 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 220.5 | 329 | 144 | - | - | - | - | - | -
+div | 32 | 220.5 | 329 | 144 | - | - | - | - | - | -
+div | 32 | 220.5 | 159.5 | 144 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 48 | 236.5 | 127.5 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Tuesday
+div | 48 | 260.5 | 127.5 | 44 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Ingredients ready. You began cooking.
+div | 201.5 | 220.5 | 159.5 | 144 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 217.5 | 236.5 | 127.5 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Thursday
+div | 217.5 | 260.5 | 127.5 | 88 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Hungry, fridge empty. You reached for the phone.
+div | 32 | 392.5 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Part 2
+div | 32 | 420.5 | 329 | 31 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | When the beginning isn’t ready
+div | 32 | 479.5 | 329 | 140 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | Suppose you planned to cook after work instead of browsing in bed. On Tuesday you had ingredients and began. On Thursday you were hungry, the fridge was empty, and you reached for the phone.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

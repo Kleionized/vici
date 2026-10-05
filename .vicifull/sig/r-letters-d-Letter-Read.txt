@@ -1,0 +1,21 @@
+div | 0 | 52 | 393 | 800 | rgb(244, 243, 240) | 24px 24px 0px 0px | - | - | - | -
+div | 0 | 52 | 393 | 800 | - | - | 0.07 | - | - | -
+div | 0 | 64 | 393 | 5 | - | - | - | - | - | -
+div | 177.5 | 64 | 38 | 5 | rgba(19, 19, 19, 0.16) | 3px | - | - | - | -
+svg | 351 | 78 | 20 | 20 | - | - | - | - | - | -
+path | 354 | 81 | 14 | 14 | - | - | - | - | - | -
+div | 34 | 136 | 325 | 556 | - | - | - | - | - | -
+div | 34 | 136 | 325 | 26 | - | - | - | - | 22px/600/0.6px/normal/rgb(29, 28, 26) | Dear Sam,
+p | 34 | 186 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | If you're reading this, it happened. Good — you opened the letter instead of disappearing. That's the only door that matters this morning.
+p | 34 | 323.6 | 325 | 139.5 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | One slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: . All still yours.
+em | 34 | 383.3 | 289.2 | 45.9 | - | - | - | - | 15.5px/500/normal/27.9px/rgb(29, 28, 26) | I want to be present for the people I love
+p | 34 | 489 | 325 | 83.7 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | The only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don’t fail twice.
+p | 34 | 598.7 | 325 | 27.9 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | I'll see you tonight, steadier.
+div | 34 | 652.6 | 325 | 18 | - | - | - | - | 16px/600/normal/normal/rgb(29, 28, 26) | — the you who makes it out
+svg | 34 | 674.6 | 150 | 12 | - | - | - | - | - | -
+path | 36 | 678.3 | 146 | 4.2 | - | - | - | - | - | -
+div | 24 | 710 | 345 | 54 | rgb(19, 19, 19) | 27px | - | - | - | -
+svg | 103.4 | 729 | 16 | 16 | - | - | - | - | - | -
+path | 106.7 | 731.9 | 9.3 | 10.7 | - | - | - | - | - | -
+span | 128.4 | 727.5 | 161.2 | 19 | - | - | - | - | 16.5px/600/0.2px/normal/rgb(255, 255, 255) | Tuck it into your Log
+div | 0 | 791 | 393 | 17 | - | - | - | - | 14.5px/500/normal/normal/rgb(139, 136, 130) | Close

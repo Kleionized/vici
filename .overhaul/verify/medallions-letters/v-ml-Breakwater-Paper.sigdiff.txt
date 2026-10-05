@@ -1,0 +1,19 @@
+# count P:113,170,168,168: design 1, app 2
+~ Tier I, ×1                               type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ -                                        radius: 50% → 15px
+# count P:44,508,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:113,508,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:182,508,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:251,508,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:320,508,30,30: design 2, app 3
+~ Paper                                    type: 13px/700/normal/normal/rgb(242, 240, 236) → 13px/700/normal/16px/rgb(242, 240, 236)
+~ Bronze                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Silver                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Gold                                     type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Platinum                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Share this                               type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 122 design rows, 135 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)

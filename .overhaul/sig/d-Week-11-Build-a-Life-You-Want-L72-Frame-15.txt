@@ -1,0 +1,19 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 72
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 324.3 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 286 | 329 | 140 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | If no repair fits, choose a valued activity. If reflection is upsetting or unhelpful, skip and choose care or support. Gratitude, forgiveness, and retelling a painful event aren’t required.
+div | 32 | 454 | 329 | 100 | rgb(30, 30, 30) | 20px | - | - | - | -
+div | 52 | 472 | 28 | 28 | rgb(242, 240, 236) | 14px | - | - | - | -
+svg | 60 | 480 | 12 | 12 | - | - | - | - | - | -
+path | 61.7 | 483 | 8.6 | 6 | - | - | - | - | - | -
+div | 94 | 472 | 247 | 64 | - | - | - | - | - | -
+div | 94 | 472 | 247 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Done when
+div | 94 | 492 | 247 | 44 | - | - | - | - | 16px/700/normal/22px/rgb(242, 240, 236) | You’ve taken a fitting action or chosen to skip the reflection.
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 150.3 | 765.5 | 92.3 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Finish lesson

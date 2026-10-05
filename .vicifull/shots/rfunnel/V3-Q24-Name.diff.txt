@@ -1,0 +1,6 @@
+~ -                                        radius: 50% → -
+# count P:-40,-140,540,270: design 1, app 2
+~ -                                        radius: 50% → -
+# count P:-123,564,640,640: design 1, app 2
+MISSING in app:  span | 51 | 301 | 80.9 | 20 | - | - | - | - | 17px/400/normal/normal/rgba(244, 243, 240, 0.45) | Your name
+--- 15 design rows, 22 app rows; 2 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)

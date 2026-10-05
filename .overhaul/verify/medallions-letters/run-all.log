@@ -1,0 +1,243 @@
+=== Medallions (Medallions.html)
+
+sig: --- 351 design rows, 599 app rows; 20 differing, 2 missing, 218 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Medallions.strip.png  .overhaul/verify/medallions-letters/v-ml-Medallions.diff.png  .overhaul/verify/medallions-letters/v-ml-Medallions.overlay.png
+=== Album Earned II (Album-Earned-II.html)
+
+sig: --- 241 design rows, 599 app rows; 16 differing, 2 missing, 327 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (36 of 1245888 px > 24), mean Δ 0.50
+regions (frame pt, largest first): 1
+  308,384 8x12  (36 px)
+-> .overhaul/verify/medallions-letters/v-ml-Album-Earned-II.strip.png  .overhaul/verify/medallions-letters/v-ml-Album-Earned-II.diff.png  .overhaul/verify/medallions-letters/v-ml-Album-Earned-II.overlay.png
+=== Medallions Still To Earn (Medallions-Still-To-Earn.html)
+
+sig: --- 100 design rows, 123 app rows; 12 differing, 1 missing, 8 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.52
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Medallions-Still-To-Earn.strip.png  .overhaul/verify/medallions-letters/v-ml-Medallions-Still-To-Earn.diff.png  .overhaul/verify/medallions-letters/v-ml-Medallions-Still-To-Earn.overlay.png
+=== Breakwater Paper (Breakwater-Paper.html)
+
+sig: --- 122 design rows, 135 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (27 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 5
+  156,248 8x8  (9 px)
+  264,288 4x8  (6 px)
+  176,252 4x4  (4 px)
+  172,248 4x4  (2 px)
+  268,284 4x4  (2 px)
+-> .overhaul/verify/medallions-letters/v-ml-Breakwater-Paper.strip.png  .overhaul/verify/medallions-letters/v-ml-Breakwater-Paper.diff.png  .overhaul/verify/medallions-letters/v-ml-Breakwater-Paper.overlay.png
+=== Breakwater Bronze (Breakwater-Bronze.html)
+
+sig: --- 123 design rows, 136 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (27 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 5
+  156,248 8x8  (9 px)
+  264,288 4x8  (6 px)
+  176,252 4x4  (4 px)
+  172,248 4x4  (2 px)
+  268,284 4x4  (2 px)
+-> .overhaul/verify/medallions-letters/v-ml-Breakwater-Bronze.strip.png  .overhaul/verify/medallions-letters/v-ml-Breakwater-Bronze.diff.png  .overhaul/verify/medallions-letters/v-ml-Breakwater-Bronze.overlay.png
+=== Breakwater Silver (Breakwater-Silver.html)
+
+sig: --- 123 design rows, 136 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (33 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 6
+  156,248 8x8  (9 px)
+  264,288 4x8  (6 px)
+  200,508 4x4  (6 px)
+  176,252 4x4  (4 px)
+  172,248 4x4  (2 px)
+  268,284 4x4  (2 px)
+=== Breakwater Gold (Breakwater-Gold.html)
+
+sig: --- 123 design rows, 136 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (33 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 6
+  156,248 8x8  (9 px)
+  264,288 4x8  (6 px)
+  200,508 4x4  (6 px)
+  176,252 4x4  (4 px)
+  172,248 4x4  (2 px)
+  268,284 4x4  (2 px)
+=== Breakwater Platinum (Breakwater-Platinum.html)
+
+sig: --- 123 design rows, 136 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (46 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 7
+  156,248 24x8  (25 px)
+  200,508 4x4  (6 px)
+  264,292 4x4  (4 px)
+  268,288 4x4  (2 px)
+  140,292 4x4  (2 px)
+  248,292 4x4  (2 px)
+=== Detail Paper (Detail-Paper.html)
+
+sig: --- 77 design rows, 90 app rows; 11 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.01% (108 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 1
+  240,464 12x12  (107 px)
+-> .overhaul/verify/medallions-letters/v-ml-Detail-Paper.strip.png  .overhaul/verify/medallions-letters/v-ml-Detail-Paper.diff.png  .overhaul/verify/medallions-letters/v-ml-Detail-Paper.overlay.png
+=== Detail Bronze (Detail-Bronze.html)
+
+sig: --- 121 design rows, 134 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (11 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 2
+  264,288 4x8  (6 px)
+  268,284 4x4  (2 px)
+-> .overhaul/verify/medallions-letters/v-ml-Detail-Bronze.strip.png  .overhaul/verify/medallions-letters/v-ml-Detail-Bronze.diff.png  .overhaul/verify/medallions-letters/v-ml-Detail-Bronze.overlay.png
+=== Detail Silver (Detail-Silver.html)
+
+sig: --- 121 design rows, 134 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (23 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 6
+  200,496 4x4  (6 px)
+  44,508 4x4  (3 px)
+  68,500 4x4  (2 px)
+  72,508 4x4  (2 px)
+  180,508 4x4  (2 px)
+  208,508 4x4  (2 px)
+=== Detail Gold (Detail-Gold.html)
+
+sig: --- 121 design rows, 134 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (17 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 3
+  264,288 4x8  (6 px)
+  200,508 4x4  (6 px)
+  268,284 4x4  (2 px)
+-> .overhaul/verify/medallions-letters/v-ml-Detail-Gold.strip.png  .overhaul/verify/medallions-letters/v-ml-Detail-Gold.diff.png  .overhaul/verify/medallions-letters/v-ml-Detail-Gold.overlay.png
+=== Detail Platinum (Detail-Platinum.html)
+
+sig: --- 121 design rows, 134 app rows; 12 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (61 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 13
+  116,252 4x4  (6 px)
+  200,496 4x4  (6 px)
+  72,504 4x8  (6 px)
+  112,504 8x8  (6 px)
+  136,504 8x8  (6 px)
+  324,504 4x4  (4 px)
+=== Tiers Vici (Tiers-Vici.html)
+
+sig: --- 126 design rows, 138 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (10 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 2
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Vici.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Vici.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Vici.overlay.png
+=== Tiers Rebound (Tiers-Rebound.html)
+
+sig: --- 127 design rows, 139 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (12 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 2
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Rebound.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Rebound.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Rebound.overlay.png
+=== Tiers Breakwater (Tiers-Breakwater.html)
+
+sig: --- 128 design rows, 140 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (25 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 6
+  176,228 8x8  (6 px)
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+  200,224 4x4  (3 px)
+  196,228 4x4  (3 px)
+  192,232 4x4  (2 px)
+=== Tiers Logbook (Tiers-Logbook.html)
+
+sig: --- 126 design rows, 138 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (10 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 2
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Logbook.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Logbook.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Logbook.overlay.png
+=== Tiers Pulse (Tiers-Pulse.html)
+
+sig: --- 125 design rows, 137 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (10 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 2
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Pulse.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Pulse.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Pulse.overlay.png
+=== Tiers Archive (Tiers-Archive.html)
+
+sig: --- 83 design rows, 95 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Archive.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Archive.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Archive.overlay.png
+=== Tiers Lessons (Tiers-Lessons.html)
+
+sig: --- 126 design rows, 138 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (49 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 4
+  180,252 16x8  (20 px)
+  200,252 12x8  (19 px)
+  272,224 4x4  (5 px)
+  116,224 4x4  (4 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-Lessons.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Lessons.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-Lessons.overlay.png
+=== Tiers Vidi (Tiers-Vidi.html)
+
+sig: --- 126 design rows, 138 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+mismatch 0.01% (165 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 28
+  200,256 16x4  (19 px)
+  176,256 16x4  (17 px)
+  176,212 12x4  (10 px)
+  208,212 8x4  (9 px)
+  164,248 12x8  (8 px)
+  180,204 8x4  (7 px)
+=== Tiers One-offs (Tiers-One-offs.html)
+
+sig: --- 221 design rows, 234 app rows; 8 differing, 1 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (14 of 1245888 px > 24), mean Δ 0.53
+regions (frame pt, largest first): 3
+  96,248 4x4  (3 px)
+  268,248 4x4  (3 px)
+  292,248 4x4  (3 px)
+-> .overhaul/verify/medallions-letters/v-ml-Tiers-One-offs.strip.png  .overhaul/verify/medallions-letters/v-ml-Tiers-One-offs.diff.png  .overhaul/verify/medallions-letters/v-ml-Tiers-One-offs.overlay.png
+=== Letter Arrival (Letter-Arrival.html)
+
+sig: --- 20 design rows, 26 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Letter-Arrival.strip.png  .overhaul/verify/medallions-letters/v-ml-Letter-Arrival.diff.png  .overhaul/verify/medallions-letters/v-ml-Letter-Arrival.overlay.png
+=== Letter Read (Letter-Read.html)
+
+sig: --- 19 design rows, 24 app rows; 5 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.17
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Letter-Read.strip.png  .overhaul/verify/medallions-letters/v-ml-Letter-Read.diff.png  .overhaul/verify/medallions-letters/v-ml-Letter-Read.overlay.png
+=== Medallion Letter (Medallion-Letter.html)
+
+sig: --- 69 design rows, 74 app rows; 4 differing, 8 missing, 10 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.55% (6813 of 1245888 px > 24), mean Δ 0.93
+regions (frame pt, largest first): 7
+  116,480 192x36  (5804 px)
+  68,488 24x20  (978 px)
+  56,488 8x8  (6 px)
+  60,504 4x8  (5 px)
+  96,504 4x8  (5 px)
+  96,488 4x4  (2 px)
+=== Yearly Drop (Yearly-Drop.html)
+
+sig: --- 37 design rows, 47 app rows; 9 differing, 3 missing, 11 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.03% (400 of 1245888 px > 24), mean Δ 0.40
+regions (frame pt, largest first): 1
+  20,72 20x16  (396 px)
+-> .overhaul/verify/medallions-letters/v-ml-Yearly-Drop.strip.png  .overhaul/verify/medallions-letters/v-ml-Yearly-Drop.diff.png  .overhaul/verify/medallions-letters/v-ml-Yearly-Drop.overlay.png
+=== Drop Received (Drop-Received.html)
+
+sig: --- 33 design rows, 39 app rows; 4 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015) (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/medallions-letters/v-ml-Drop-Received.strip.png  .overhaul/verify/medallions-letters/v-ml-Drop-Received.diff.png  .overhaul/verify/medallions-letters/v-ml-Drop-Received.overlay.png
+=== (no frame) /letter?variant=week12 — arrival (no frame)
+
+=== (no frame) /mail (no frame)
+
+=== (no frame) /milestones fresh account (no frame)
+
+=== (no frame) one-off and unearned boards (no frame)
+

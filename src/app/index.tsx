@@ -1,5 +1,4 @@
 import { Redirect } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 
 import { SplashScene, WaterlineScene } from '@/components/ui';
@@ -9,9 +8,15 @@ import { useCurrentUser } from '@/lib/backend';
 /**
  * Boot — the cold open, and the route decider.
  *
- * 01 · Splash holds the mark for a beat, then 02 · Finding the Waterline keeps
- * the same night field while the session and the user resolve. No progress bar
- * and no percentage: the canvas gives the wait one ring and one line.
+ * `01 · Splash` is the only launch frame the canvas draws, so it is the
+ * only one the normal path shows: the mark holds while the session and the user
+ * resolve, and the moment both are in, this hands over. The signed-out branch
+ * hands over to `(auth)/splash`, which paints the same scene and owns the beat
+ * that makes the mark readable — so the field never blinks between the two.
+ *
+ * `WaterlineScene` has no frame in this bundle or the last ones. It is kept for
+ * the case it was built for — a boot that is genuinely still waiting after the
+ * mark has been on screen for a second — rather than shown on every launch.
  *
  *   not authed          → (auth)
  *   authed, !onboarded  → (onboarding)
@@ -20,26 +25,15 @@ import { useCurrentUser } from '@/lib/backend';
 export default function Index() {
   const { isLoaded, isSignedIn } = useAuth();
   const user = useCurrentUser();
-  const [looking, setLooking] = useState(false);
-  // Hold the mark long enough to read it, then hand over to the ring.
-  const [settled, setSettled] = useState(false);
+  const [slow, setSlow] = useState(false);
   useEffect(() => {
-    const toWaterline = setTimeout(() => setLooking(true), 900);
-    const done = setTimeout(() => setSettled(true), 1900);
-    return () => {
-      clearTimeout(toWaterline);
-      clearTimeout(done);
-    };
+    const t = setTimeout(() => setSlow(true), 900);
+    return () => clearTimeout(t);
   }, []);
 
   const hydrated = isLoaded && (!isSignedIn || user !== undefined);
-  if (!hydrated || !settled) {
-    return (
-      <>
-        <StatusBar style="light" />
-        {looking ? <WaterlineScene /> : <SplashScene />}
-      </>
-    );
+  if (!hydrated) {
+    return slow ? <WaterlineScene /> : <SplashScene />;
   }
   if (!isSignedIn) return <Redirect href="/(auth)/splash" />;
   if (!user?.onboardingComplete) return <Redirect href="/(onboarding)/welcome" />;

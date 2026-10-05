@@ -1,0 +1,43 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 346.5 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 88.6 | 212.5 | 215.8 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Match your situation
+div | 32 | 278.5 | 329 | 431 | - | - | - | - | - | -
+div | 32 | 278.5 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 278.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 286.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 293.1 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 295.9 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 294.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 278.5 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 278.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Place
+div | 86 | 303.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write where you will be: library, gym, cafe, common room, kitchen, friend's place, class, or another shared setting.
+div | 32 | 392.5 | 329 | 67 | - | - | - | - | - | -
+div | 32 | 392.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 400.5 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 403.8 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 403.8 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 408.8 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 412 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 392.5 | 275 | 67 | - | - | - | - | - | -
+div | 86 | 392.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Activity
+div | 86 | 417.5 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write exactly what you will do during the block.
+div | 32 | 485.5 | 329 | 109 | - | - | - | - | - | -
+div | 32 | 485.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 493.5 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 499 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 503.4 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 485.5 | 275 | 109 | - | - | - | - | - | -
+div | 86 | 485.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Phone rule
+div | 86 | 510.5 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write where the phone will stay. If you expect an urge, make sure the Vici Urge Surfing shortcut or widget is already on your Home Screen or Lock Screen.
+div | 32 | 620.5 | 329 | 89 | - | - | - | - | - | -
+div | 32 | 620.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 628.5 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 634 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 637.5 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 633.5 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 620.5 | 275 | 89 | - | - | - | - | - | -
+div | 86 | 620.5 | 275 | 44 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If your schedule changes constantly
+div | 86 | 667.5 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Use tonight or the next evening you expect to be free.

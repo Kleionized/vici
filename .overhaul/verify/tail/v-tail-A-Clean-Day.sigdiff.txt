@@ -1,0 +1,3 @@
+# count P:0,175,393,240: design 1, app 2
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 20 design rows, 24 app rows; 1 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding (use --all to list extras)

@@ -1,0 +1,10 @@
+const log = [];
+const url = () => location.pathname + location.search;
+const ls = (k) => localStorage.getItem(k);
+await __sleep(800);
+const closes = __btns().filter((b) => b.getAttribute('aria-label') === 'Close');
+log.push(['close controls', closes.length, closes.map((c) => { const r = c.getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; })]);
+const el = closes[closes.length - 1];
+__fire(el); await __sleep(1500);
+log.push(['after X', url(), 'seen=' + ls('tideline.post.yearlydrop.seen')]);
+console.error("LOG " + JSON.stringify(log)); return 1;

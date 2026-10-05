@@ -1,0 +1,36 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 30
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 238 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 171 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Question
+div | 32 | 199 | 329 | 62 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | What did you want from watching?
+div | 32 | 269 | 329 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(155, 150, 142) | Choose all that fit. Choose G alone if it fits.
+div | 32 | 311 | 329 | 358 | - | - | - | - | - | -
+div | 32 | 311 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 322 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | A
+div | 82 | 323 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Sexual pleasure or arousal
+div | 32 | 363 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 374 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | B
+div | 82 | 375 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | A break from a task
+div | 32 | 415 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 426 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | C
+div | 82 | 427 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Something interesting
+div | 32 | 467 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 478 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | D
+div | 82 | 479 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Comfort or brief relief
+div | 32 | 519 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 530 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | E
+div | 82 | 531 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | A feeling of company or closeness
+div | 32 | 571 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 582 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | F
+div | 82 | 583 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Something else
+div | 32 | 623 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 634 | 24 | 24 | - | 7px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | G
+div | 82 | 635 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | No recent example or no clear answer
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

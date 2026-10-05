@@ -1,0 +1,17 @@
+[
+  { "frame": "Tiers One-offs — re-captured for the absolute-overflow re-audit",
+    "route": "/medallions/tiers/once", "wait": 1800,
+    "note": "NOT A NEW FRAME — medallions.json already drives this; captured again independently as `n2-a-tiers-once` because it carries the WIDEST string the ladder title (`tiers/[key].tsx:116`, unbounded `left:16`) can ever hold. App renders `Earned once` at 16 | 114 | 150.7 | 32 — byte-identical to the Tiers-One-offs frame, against 377 available. The app's web font stack therefore measures the same as the canvas's." },
+
+  { "frame": "(no frame · tooling) how the re-audit measured a clamp",
+    "unreachable": "not a screen",
+    "note": ".overhaul/n2-clamp.mjs <bundle> <Frame.html> — lists every absolutely-positioned DESIGN node with one horizontal anchor and no width, with its rendered width, its max-content width (what Yoga gives it) and the space left inside its containing block. `rendered == avail && maxc > rendered` is the browser clamp the app must answer with the opposing anchor; `rendered == maxc` is content-width in the design too, and adding an anchor there would move the signature. Note it reads el.style, not getComputedStyle: computed left/right are USED values on a positioned box and always read as px, which makes every node look bounded." },
+
+  { "frame": "(no frame · tooling) the widest a dynamic run could ever be",
+    "unreachable": "not a screen",
+    "note": ".overhaul/n2-widest.mjs <bundle> <Frame.html> \"<existing text>\" cand1 cand2 … — clones the frame's own node, swaps each candidate string in and measures at width:max-content, i.e. the device's box. Used to bound `{title}` on the tier ladder (widest `Earned once` 150.7 of 377), the milestones counter (widest `12 still to earn` 88.6 of 377) and the medallion card title (widest `What waits at tier one` 160.1 of 349)." },
+
+  { "frame": "(no frame · tooling) which canvas line breaks the device cannot reproduce",
+    "unreachable": "not a screen",
+    "note": ".overhaul/n2-wrap.mjs <bundle> <Frame.html> and .overhaul/n2-wrapscan.mjs <bundle> — flip every `text-wrap: pretty|balance` box to plain `wrap` and diff its line rects. 62 of 335 such boxes in Email-Login actually move a break; full list in .overhaul/n2-wrapscan-Email-Login.txt. `textWrap` is web-only, and AppText applies the same value on web, so the web capture matches the frame and the device does not — the same shape of blindness as the absolute-overflow class." }
+]

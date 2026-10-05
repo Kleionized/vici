@@ -1,0 +1,41 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | The if-it-slips note
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 390 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 235 | 20 | 20 | - | - | - | - | - | -
+rect | 38.5 | 238 | 11 | 14 | - | - | - | - | - | -
+path | 41.5 | 242.5 | 5 | 6 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Warning signs
+div | 78 | 249 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write three changes you can notice, such as the phone returning to bed, repeated late nights, isolating in the room, reopening risky feeds, or cancelling plans.
+div | 24 | 347 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 347 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 357 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 360 | 14 | 14 | - | - | - | - | - | -
+path | 40.8 | 364.6 | 6.4 | 4.8 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | First thing you will do
+div | 78 | 371 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write one action, such as putting the phone in its charging place and leaving the room for 20 minutes.
+div | 24 | 450 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 450 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 460 | 20 | 20 | - | - | - | - | - | -
+path | 38 | 463.5 | 12.5 | 12.5 | - | - | - | - | - | -
+div | 78 | 450 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 450 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Two rules you are keeping
+div | 78 | 474 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write the one or two habits from the course you intend to continue.
+div | 24 | 534 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 534 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 544 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 547 | 14 | 14 | - | - | - | - | - | -
+path | 44 | 550.5 | 2.5 | 5.5 | - | - | - | - | - | -
+div | 78 | 534 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 534 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Who you will contact
+div | 78 | 558 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Write the first person or service you would contact if you start relapsing often or feel unable to stop.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

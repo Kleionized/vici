@@ -1,0 +1,41 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#111111  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(20,20,22,0.14)
+  <div> position:absolute  inset:0  background-image:url('noise-dark.png')  opacity:0.09  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:rgba(255,255,255,0.55)
+      · Ride it out
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#FFFFFF
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:160px  display:flex  flex-direction:column  gap:12px  align-items:center  text-align:center
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#FFFFFF  text-wrap:balance  text-align:center
+      · Get out of bed.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:rgba(255,255,255,0.62)  text-wrap:pretty  text-align:center
+      · Stand up. Move somewhere with light.
+  <div> position:absolute  left:0  right:0  top:270px  display:flex  justify-content:center
+    <svg> viewBox="0 0 240 240"  width="240"  height="240"
+      <circle> cx="120"  cy="120"  r="92"  fill="none"  stroke="rgba(255,255,255,0.15)"  stroke-width="10"
+      <circle> cx="120"  cy="120"  r="92"  fill="none"  stroke="#FFFFFF"  stroke-width="10"  stroke-linecap="round"  stroke-dasharray="358.4 578.1"  transform="rotate(-90 120 120)"
+      <circle> cx="57.0"  cy="187.1"  r="9"  fill="#111111"  stroke="#FFFFFF"  stroke-width="4"
+      <text> x="120"  y="126"  fill="#FFFFFF"  text-anchor="middle"  font-size="46"  font-weight="700"  letter-spacing="-1.5"
+        · 17:42
+      <text> x="120"  y="152"  fill="rgba(255,255,255,0.5)"  text-anchor="middle"  font-size="13"  font-weight="600"
+        · Until it passes
+  <div> position:absolute  left:0  right:0  top:546px  display:flex  justify-content:center  gap:8px
+    <div> height:36px  border-radius:18px  background:#1E1E1E  box-shadow:0 0 0 1px rgba(255,255,255,0.15)  display:inline-flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  white-space:nowrap  color:#FFFFFF
+      · Bored
+    <div> height:36px  border-radius:18px  background:#1E1E1E  box-shadow:0 0 0 1px rgba(255,255,255,0.15)  display:inline-flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  white-space:nowrap  color:#FFFFFF
+      · Relationship
+    <div> height:36px  border-radius:18px  background:#1E1E1E  box-shadow:0 0 0 1px rgba(255,255,255,0.15)  display:inline-flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  white-space:nowrap  color:#FFFFFF
+      · Work or school
+  <div> position:absolute  left:0  right:0  bottom:180px  display:flex  justify-content:center  gap:7px
+    <div> width:6px  height:6px  border-radius:3px  background:#FFFFFF
+    <div> width:6px  height:6px  border-radius:3px  background:rgba(255,255,255,0.28)
+    <div> width:6px  height:6px  border-radius:3px  background:rgba(255,255,255,0.28)
+    <div> width:6px  height:6px  border-radius:3px  background:rgba(255,255,255,0.28)
+    <div> width:6px  height:6px  border-radius:3px  background:rgba(255,255,255,0.28)
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#FFFFFF  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Breathe
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:rgba(255,255,255,0.6)  cursor:pointer  z-index:6
+    · I slipped

@@ -1,0 +1,285 @@
+[
+  {
+    "frame": "Splash",
+    "route": "/splash",
+    "fast": true,
+    "wait": 250,
+    "note": "01 · Splash replaces itself into /sign-in 900 ms after it mounts, so the capture starts at domcontentloaded (--fast) and shoots at 250 ms, after the laurel has decoded."
+  },
+  {
+    "frame": "Login",
+    "route": "/sign-in",
+    "wait": 2400,
+    "note": "Direct URL: no back chevron (router.canGoBack() is false). 2400 ms gives laurel-mark.webp time to decode under load."
+  },
+  {
+    "frame": "Welcome Back",
+    "route": "/sign-in",
+    "do": "await tap(\"Sign in\")",
+    "wait": 1400,
+    "note": "The designed path: 02 · Login’s footer link (“Already have an account? Sign in”, the bold run is the control)."
+  },
+  {
+    "frame": "V3 Q24 Name",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=0;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The field takes focus on arrival (autoFocus): the frame draws the focused, empty state — the 2×24 bar before the #9B968E placeholder (CRITIC C9)."
+  },
+  {
+    "frame": "V3 Q25 Age",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=1;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The wheel opens on 24, the frame’s own value, and stores it untouched; no AFTER."
+  },
+  {
+    "frame": "V3 Q26 Gender",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=2; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Male');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "No primary since the overhaul (D324): a pick turns the board over after 260 ms, so the AFTER cancels that one timer first."
+  },
+  {
+    "frame": "Onboarding Start",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=3;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The walk types “Sam” on Name, so the title reads the frame’s sample name."
+  },
+  {
+    "frame": "V3 Q1",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=4; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('A few times a week');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "Single-select boards turn over 260 ms after the tap; the AFTER replaces setTimeout so that one 260 ms timer fires never — needed on Gender, Q1, Q2, Q3, Q3b, Q21, Q10, Q13, Q15, Q16."
+  },
+  {
+    "frame": "V3 Q2",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=5; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('1–3 years');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q3",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=6; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Yes, several times');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q3b",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=7; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('A few days');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "09B is conditional: the walk answers 09A “Yes, once or twice”, which earns it."
+  },
+  {
+    "frame": "First Principle",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=8;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q5",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=9; window.__AFTER=\"await t('Late at night'); await t('When I can’t sleep'); await t('When I’m home alone'); await t('While scrolling');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The stack sits at 140 on this frame (and on What starts it and Q17)."
+  },
+  {
+    "frame": "V3 Q6",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=10; window.__AFTER=\"await t('Bored'); await t('Lonely'); await t('Tired');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q7",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=11; window.__AFTER=\"await t('In bed');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "What starts it",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=12; window.__AFTER=\"await t('I start scrolling'); await t('I can’t sleep');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "Transition",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=13;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q21",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=14; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Quite a bit');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "What it affects",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=15; window.__AFTER=\"await t('Focus'); await t('Sleep'); await t('Confidence');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q10",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=16; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Sometimes');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "18 is conditional on a loneliness signal; the walk’s “When I’m home alone” on Q5 earns it (and 19)."
+  },
+  {
+    "frame": "V3 Q13",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=17; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('A few days a week');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q15",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=18; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Stop completely');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q16",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=19; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Keep it, just without porn');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q17",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=20; window.__AFTER=\"await t('Blocking sites or apps'); await t('Going cold turkey');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "Goal Confirmation",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=21;",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The walk answers Q15 “Stop completely” and Q16 “Keep it, just without porn” — the reading the frame draws, card included."
+  },
+  {
+    "frame": "(no frame) Login — SSO refusal",
+    "route": "/sign-in",
+    "do": "await tap(\"Continue with Apple\")",
+    "wait": 1400,
+    "note": "D330: the refusal line, 14/700 ink on a 20 line, centred in the frame’s empty gap between the email pill (672) and the footer (726). Mock auth has no SSO, so this is the state every SSO tap reaches here."
+  },
+  {
+    "frame": "(no frame) Welcome Back — address step",
+    "route": "/welcome-back",
+    "do": "await tap(\"Sign in with email\")",
+    "wait": 1200,
+    "note": "D207: the door’s laurel (150) and a centred title (284) over Name’s field (focused on arrival — the 2×24 bar shows) with the primary in flow under it."
+  },
+  {
+    "frame": "(no frame) Welcome Back — password step",
+    "route": "/welcome-back",
+    "do": "await tap(\"Sign in with email\"); await typeIn(0, \"sam@example.com\"); await tap(\"Let's Go\", { wait: 700 })",
+    "wait": 1200,
+    "note": "D207: Name’s template — left title at 136, 15/22 mute labels over 60/18 fields, primary in flow."
+  },
+  {
+    "frame": "(no frame) Sign-up gate — Save your progress",
+    "route": "/sign-up",
+    "wait": 1600,
+    "note": "D207: the door’s stack with the gate’s three pills (no “or”) and the legal line as the caption."
+  },
+  {
+    "frame": "(no frame) Create account form",
+    "route": "/sign-in",
+    "do": "await tap(\"Continue with email\")",
+    "wait": 1400,
+    "note": "Login’s email pill pushes /sign-up?step=form. D207: Name’s template; the updates checkbox is the 26 CheckDisc; the info card is Goal confirmation’s card."
+  },
+  {
+    "frame": "(no frame) verification code boards",
+    "route": "/welcome-back",
+    "unreachable": "mock auth (src/lib/auth/mockAuth.tsx) never returns needsVerification, so neither welcome-back’s nor sign-up’s verify board can be reached on the web build. Both are the password board’s pieces (AuthSurface, AuthTitle, AuthSub, AuthField, AuthButton) plus AuthGhost for “Resend code”."
+  },
+  {
+    "frame": "(no frame) Under-18 gate",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=1; window.__AFTER=\"await t('22'); await t('20'); await t('18'); await t('16'); await t('15'); await t('Continue');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The wheel’s visible neighbours are buttons; tapping the row two above steps two years. 24 → 15, then Continue. D201/§7.3: the Age chrome (nav, one dash) with the question template’s title and a 15/24 paragraph; Back is the only control."
+  },
+  {
+    "frame": "(no frame) Goal confirmation — another reading",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=18; window.__AFTER=\"await t('Watch much less'); await t('Do it less'); await t('Blocking sites or apps'); await t('Continue');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "No frame draws the other goals: “Watch much less” reads its own two-line title, and “Do it less” earns no card. The statement board lifts on a short phone (HeroBoard, D320)."
+  },
+  {
+    "frame": "(no frame) Onboarding Start — a long name",
+    "route": "/welcome",
+    "initseed": ".overhaul/f-funnel-user.js",
+    "do": "window.__N=0; window.__AFTER=\"await window.typeIn(0, 'Maximilian'); await t('Continue'); await t('Continue'); await t('Male');\";",
+    "script": ".overhaul/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "Start writes the typed name over the canvas’s “Sam”; a longer one wraps the title to three lines at 375 and the board lifts."
+  },
+  {
+    "frame": "(no frame) Life Map",
+    "route": "/lifemap",
+    "initseed": ".overhaul/settings-seed.js",
+    "wait": 2500,
+    "note": "routes.md §4.4. Reached from All. --scroll=end shows the values and “Add your own”. (settings-seed.js stores lifeMap.values as {label, importance}[], the shape the schema and the screen write; the screen still reads bare strings from older rows.)"
+  },
+  {
+    "frame": "(no frame) Finding the waterline",
+    "route": "/",
+    "unreachable": "src/app/index.tsx shows WaterlineScene only when boot is still unresolved 900 ms in, which the local mock build never is (D131). D208 restyles it: the splash plus the 44 mute Spinner and its label."
+  }
+]

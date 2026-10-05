@@ -1,0 +1,1856 @@
+{
+ "SOS-Feel-Angry": {
+  "fonts": true,
+  "title": [
+   "Use the energy."
+  ],
+  "body": [
+   "Walk fast, train, or do a hard set of something before",
+   "you open another app or send a message."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Use the energy."
+  ],
+  "bodyGreedy": [
+   "Walk fast, train, or do a hard set of something before",
+   "you open another app or send a message."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Anxious": {
+  "fonts": true,
+  "title": [
+   "Give yourself one job."
+  ],
+  "body": [
+   "Pick one simple thing to do for the next five minutes",
+   "and keep your attention there."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Give yourself one job."
+  ],
+  "bodyGreedy": [
+   "Pick one simple thing to do for the next five minutes",
+   "and keep your attention there."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Ashamed": {
+  "fonts": true,
+  "title": [
+   "Stop punishing yourself."
+  ],
+  "body": [
+   "Put the phone away and do the next useful thing.",
+   "Thinking about how bad you feel can wait."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Stop punishing yourself."
+  ],
+  "bodyGreedy": [
+   "Put the phone away and do the next useful thing.",
+   "Thinking about how bad you feel can wait."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Bored": {
+  "fonts": true,
+  "title": [
+   "Do something physical."
+  ],
+  "body": [
+   "Walk, train, take the stairs, or do a short set of",
+   "something. Get moving for five minutes."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Do something physical."
+  ],
+  "bodyGreedy": [
+   "Walk, train, take the stairs, or do a short set of",
+   "something. Get moving for five minutes."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Lonely": {
+  "fonts": true,
+  "title": [
+   "Talk to someone."
+  ],
+  "body": [
+   "Send one message or go somewhere you’re around",
+   "other people."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Talk to someone."
+  ],
+  "bodyGreedy": [
+   "Send one message or go somewhere you’re around",
+   "other people."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Low": {
+  "fonts": true,
+  "title": [
+   "Get out of the room."
+  ],
+  "body": [
+   "Change clothes, shower, walk, or sit somewhere",
+   "brighter. Don’t stay where you usually watch."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Get out of the room."
+  ],
+  "bodyGreedy": [
+   "Change clothes, shower, walk, or sit somewhere",
+   "brighter. Don’t stay where you usually watch."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Numb": {
+  "fonts": true,
+  "title": [
+   "Wake yourself up."
+  ],
+  "body": [
+   "Wash your face, go for a walk, change rooms, or put",
+   "some music on and move."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Wake yourself up."
+  ],
+  "bodyGreedy": [
+   "Wash your face, go for a walk, change rooms, or put",
+   "some music on and move."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Rejected": {
+  "fonts": true,
+  "title": [
+   "Leave it alone",
+   "for ten minutes."
+  ],
+  "body": [
+   "Don’t check their profile or messages. Give yourself",
+   "ten minutes with no new information."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   72
+  ],
+  "pRect": [
+   24,
+   542,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Leave it alone for ten",
+   "minutes."
+  ],
+  "bodyGreedy": [
+   "Don’t check their profile or messages. Give yourself",
+   "ten minutes with no new information."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Restless": {
+  "fonts": true,
+  "title": [
+   "Move."
+  ],
+  "body": [
+   "Walk, take the stairs, stretch, or train until the",
+   "restless feeling comes down."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Move."
+  ],
+  "bodyGreedy": [
+   "Walk, take the stairs, stretch, or train until the",
+   "restless feeling comes down."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Stressed": {
+  "fonts": true,
+  "title": [
+   "Take ten minutes off."
+  ],
+  "body": [
+   "Step away from what’s stressing you without",
+   "replacing it with porn or scrolling."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Take ten minutes off."
+  ],
+  "bodyGreedy": [
+   "Step away from what’s stressing you without",
+   "replacing it with porn or scrolling."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Tired": {
+  "fonts": true,
+  "title": [
+   "Make tonight easier."
+  ],
+  "body": [
+   "Put the phone away, leave the risky room, and start",
+   "getting ready to sleep."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Make tonight easier."
+  ],
+  "bodyGreedy": [
+   "Put the phone away, leave the risky room, and start",
+   "getting ready to sleep."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Turned-On": {
+  "fonts": true,
+  "title": [
+   "Let it pass."
+  ],
+  "body": [
+   "You don’t have to do anything with the feeling. Stay",
+   "away from anything that makes it stronger."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Let it pass."
+  ],
+  "bodyGreedy": [
+   "You don’t have to do anything with the feeling. Stay",
+   "away from anything that makes it stronger."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Feel-Unknown": {
+  "fonts": true,
+  "title": [
+   "Move first."
+  ],
+  "body": [
+   "You don’t need to know why right now. Change",
+   "rooms and put some distance between you and",
+   "the phone."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   72
+  ],
+  "titleGreedy": [
+   "Move first."
+  ],
+  "bodyGreedy": [
+   "You don’t need to know why right now. Change",
+   "rooms and put some distance between you and the",
+   "phone."
+  ],
+  "btn": [
+   24,
+   698,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   717.5,
+   39.11,
+   19
+  ],
+  "ghost": [
+   0,
+   774,
+   393,
+   18
+  ],
+  "kicker": [
+   140.52,
+   72,
+   111.97,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Bathroom": {
+  "fonts": true,
+  "title": [
+   "Leave the bathroom."
+  ],
+  "body": [
+   "Finish what you need to do, then take your phone",
+   "with you and leave."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Leave the bathroom."
+  ],
+  "bodyGreedy": [
+   "Finish what you need to do, then take your phone",
+   "with you and leave."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Bed": {
+  "fonts": true,
+  "title": [
+   "Get out of bed."
+  ],
+  "body": [
+   "Both feet on the floor. Stand up and leave",
+   "the bedroom."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Get out of bed."
+  ],
+  "bodyGreedy": [
+   "Both feet on the floor. Stand up and leave the",
+   "bedroom."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Elsewhere": {
+  "fonts": true,
+  "title": [
+   "Get somewhere",
+   "less private."
+  ],
+  "body": [
+   "Move somewhere you’d be less likely to watch."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   72
+  ],
+  "pRect": [
+   24,
+   542,
+   345,
+   24
+  ],
+  "titleGreedy": [
+   "Get somewhere less",
+   "private."
+  ],
+  "bodyGreedy": [
+   "Move somewhere you’d be less likely to watch."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   765.5,
+   39.11,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Home-Alone": {
+  "fonts": true,
+  "title": [
+   "Move somewhere open."
+  ],
+  "body": [
+   "Turn the lights on and leave the room where you",
+   "usually watch."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Move somewhere open."
+  ],
+  "bodyGreedy": [
+   "Turn the lights on and leave the room where you",
+   "usually watch."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Private-Room": {
+  "fonts": true,
+  "title": [
+   "Open the door and move."
+  ],
+  "body": [
+   "Get away from the bed or chair and make the room",
+   "less private."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Open the door and move."
+  ],
+  "bodyGreedy": [
+   "Get away from the bed or chair and make the room",
+   "less private."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Public": {
+  "fonts": true,
+  "title": [
+   "Stay here."
+  ],
+  "body": [
+   "You’re in a safer place already. Keep the phone away",
+   "and stay around people."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Stay here."
+  ],
+  "bodyGreedy": [
+   "You’re in a safer place already. Keep the phone away",
+   "and stay around people."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Loc-Work": {
+  "fonts": true,
+  "title": [
+   "Stay where people are."
+  ],
+  "body": [
+   "Put your phone away. Don’t move somewhere",
+   "more private."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Stay where people are."
+  ],
+  "bodyGreedy": [
+   "Put your phone away. Don’t move somewhere more",
+   "private."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   153.61,
+   72,
+   85.8,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Alone": {
+  "fonts": true,
+  "title": [
+   "Leave the room."
+  ],
+  "body": [
+   "Move somewhere less private. If it’s safe, go",
+   "somewhere other people are around."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Leave the room."
+  ],
+  "bodyGreedy": [
+   "Move somewhere less private. If it’s safe, go",
+   "somewhere other people are around."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   765.5,
+   39.11,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Argument": {
+  "fonts": true,
+  "title": [
+   "Don’t reply yet."
+  ],
+  "body": [
+   "Stop rereading the messages. Give yourself ten",
+   "minutes before you respond."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Don’t reply yet."
+  ],
+  "bodyGreedy": [
+   "Stop rereading the messages. Give yourself ten",
+   "minutes before you respond."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Cant-Sleep": {
+  "fonts": true,
+  "title": [
+   "Get out of bed."
+  ],
+  "body": [
+   "Leave the bed for a few minutes. Keep the lights low",
+   "and stay off feeds."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Get out of bed."
+  ],
+  "bodyGreedy": [
+   "Leave the bed for a few minutes. Keep the lights low",
+   "and stay off feeds."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   765.5,
+   39.11,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Content": {
+  "fonts": true,
+  "title": [
+   "Close it."
+  ],
+  "body": [
+   "Don’t look again to see if the urge is still there. Close",
+   "it and leave it closed."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Close it."
+  ],
+  "bodyGreedy": [
+   "Don’t look again to see if the urge is still there. Close",
+   "it and leave it closed."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Doomscroll": {
+  "fonts": true,
+  "title": [
+   "Get off the feed."
+  ],
+  "body": [
+   "Close the app for 15 minutes. Don’t replace one feed",
+   "with another."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Get off the feed."
+  ],
+  "bodyGreedy": [
+   "Close the app for 15 minutes. Don’t replace one feed",
+   "with another."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Fantasy": {
+  "fonts": true,
+  "title": [
+   "Stop adding to it."
+  ],
+  "body": [
+   "Don’t keep the thought going. Get up and do",
+   "something that needs your attention."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Stop adding to it."
+  ],
+  "bodyGreedy": [
+   "Don’t keep the thought going. Get up and do",
+   "something that needs your attention."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Habit": {
+  "fonts": true,
+  "title": [
+   "Change what",
+   "happens next."
+  ],
+  "body": [
+   "Do something different from what you normally do",
+   "right before you watch."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   72
+  ],
+  "pRect": [
+   24,
+   542,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Change what happens",
+   "next."
+  ],
+  "bodyGreedy": [
+   "Do something different from what you normally do",
+   "right before you watch."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Late-Phone": {
+  "fonts": true,
+  "title": [
+   "Put the phone away."
+  ],
+  "body": [
+   "Charge it away from the bed and leave it there for",
+   "the next 15 minutes."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Put the phone away."
+  ],
+  "bodyGreedy": [
+   "Charge it away from the bed and leave it there for",
+   "the next 15 minutes."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Rejection": {
+  "fonts": true,
+  "title": [
+   "Stop checking."
+  ],
+  "body": [
+   "No profile checks, message refreshes, or looking for",
+   "something else to numb it."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Stop checking."
+  ],
+  "bodyGreedy": [
+   "No profile checks, message refreshes, or looking for",
+   "something else to numb it."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   163,
+   765.5,
+   67,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ },
+ "SOS-Trig-Unknown": {
+  "fonts": true,
+  "title": [
+   "Put the phone down."
+  ],
+  "body": [
+   "Move somewhere different and keep the phone out",
+   "of reach for ten minutes."
+  ],
+  "hRect": [
+   24,
+   452,
+   345,
+   36
+  ],
+  "pRect": [
+   24,
+   506,
+   345,
+   48
+  ],
+  "titleGreedy": [
+   "Put the phone down."
+  ],
+  "bodyGreedy": [
+   "Move somewhere different and keep the phone out",
+   "of reach for ten minutes."
+  ],
+  "btn": [
+   24,
+   746,
+   345,
+   58
+  ],
+  "btnText": [
+   176.94,
+   765.5,
+   39.11,
+   19
+  ],
+  "kicker": [
+   147.25,
+   72,
+   98.52,
+   16
+  ],
+  "close": [
+   353,
+   71,
+   18,
+   18
+  ],
+  "art": [
+   -19.6,
+   171,
+   432.3,
+   264
+  ]
+ }
+}

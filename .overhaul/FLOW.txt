@@ -1,0 +1,254 @@
+—                                              | Splash
+02 · Login                                     | Login
+02B · Welcome back                             | Welcome Back
+03 · Name                                      | V3 Q24 Name
+04 · Age                                       | V3 Q25 Age
+05 · Gender                                    | V3 Q26 Gender
+06 · Start                                     | Onboarding Start
+07 · Frequency                                 | V3 Q1
+08 · How long                                  | V3 Q2
+09A · Previous quit attempts                   | V3 Q3
+09B · Relapse                                  | V3 Q3b
+10 · First principle                           | First Principle
+11 · When                                      | V3 Q5
+12 · Beforehand                                | V3 Q6
+13 · Place                                     | V3 Q7
+14 · What starts it                            | What starts it
+15 · Transition                                | Transition
+16 · Impact                                    | V3 Q21
+17 · What it affects                           | What it affects
+18 · Loneliness                                | V3 Q10
+19 · Time alone                                | V3 Q13
+20 · Goal                                      | V3 Q15
+21 · Masturbation goal                         | V3 Q16
+22 · What you’ve tried                         | V3 Q17
+23 · Goal confirmation                         | Goal Confirmation
+24 · Build plan                                | Enlisting Aegis
+25 · This Is Where We’d Start                  | Where We’d Start
+26 · Start Here                                | Start Here
+26A · Start Here — Step 1                      | Start Here Step 1
+26A2 · Start Here — Step 2                     | Start Here Step 2
+27 · Your Plan                                 | Your Plan
+28 · Your VICI Rating                          | Starting Score
+29 · The Next 30 Days                          | Cost Next 30
+30 · One Year From Now                         | Cost Next 365
+31 · If Nothing Changes                        | Cost By Age 80
+32 · If Nothing Changes                        | Line If Nothing Changes
+32A · With the Plan                            | Line With the Plan
+32B · A Clean Day                              | A Clean Day
+33 · One Bad Day                               | One Bad Day
+34 · What You Want Back                        | What You Want Back
+38 · A Letter Arrived                          | Letter Received
+39 · A Letter From Week XII                    | Letter Week XII
+40 · The Vow                                   | The Vow
+41 · Medallion Earned                          | Medallion Received
+42 · Reminders                                 | Reminders Setup
+43 · Paywall                                   | Paywall
+44 · Day 0                                     | Day Zero
+11B · Paywall — Three Days Free                | Paywall Rescue
+11C · Paywall — Confirmed                      | Paywall Confirmed
+15 · Manage Subscription                       | Manage Subscription
+PERSONALIZATION 19B · Morning check-in time    | Morning Check-in Time
+19C · Nightly check-in time                    | Nightly Check-in Time
+21 · Today                                     | Today Home
+21B · Score Detail                             | Score Detail
+20B · Score Detail — What Moved It             | Score Detail Moves
+20C · Score Detail — Ranks                     | Score Detail Ranks
+21 · Today — p2                                | Today Home II
+21p2B · Today — Task summary                   | Today Home Task
+21 · Today — p3                                | Today Home III
+21D0 · Morning — Check-in                      | Morning Check-in Cover
+21D1 · Morning — Yesterday’s task              | Morning Task Check
+21D2 · Morning — Yesterday                     | Morning 1 Yesterday
+21D3 · Morning — Feeling                       | Morning Feeling
+21D4 · Morning — Energy                        | Morning Energy
+21D5 · Morning — Re-sign your pledge           | Morning Resign Pledge
+21D5B · Morning — Pledge signed                | Morning Pledge Signed
+21D6 · Morning — Change the pledge             | Change Pledge Sheet
+21D7 · Morning — Done                          | Morning 5 Done
+21E0 · Night — Check-in                        | Night Check-in Cover
+21E1 · Night — How was today                   | Night 1 Mood
+21E2 · Night — Emotions                        | Checkin Emotions
+21E3 · Night — What caused it                  | Checkin Reasons
+21E4 · Night — Reflection                      | Night 3 Reflection
+21E5 · Night — Record                          | Night 2 Record
+21E5B · Night — Tonight’s action               | Night Action Reminder
+21E6 · Night — Closed                          | Night 4 Closed
+LIBRARY — THE 12-WEEK COURSE 92A · Week I — Reset · i | Week I Reset
+92A2 · Week I — Reset · ii                     | Week I Reset P2
+92B · Week II — Changing Your Mindset · i      | Week II Changing Your Mindset
+92B2 · Week II — Changing Your Mindset · ii    | Week II Changing Your Mindset P2
+92C · Week III — In the Moment · i             | Week III In the Moment
+92C2 · Week III — In the Moment · ii           | Week III In the Moment P2
+92D · Week IV — Know Your Brain · i            | Week IV Know Your Brain
+92D2 · Week IV — Know Your Brain · ii          | Week IV Know Your Brain P2
+92E · Week V — Why It Feels Worth It · i       | Week V Why It Feels Worth It
+92E2 · Week V — Why It Feels Worth It · ii     | Week V Why It Feels Worth It P2
+92F · Week VI — Discipline · i                 | Week VI Discipline
+92F2 · Week VI — Discipline · ii               | Week VI Discipline P2
+92G · Week VII — Relapse and Adversity · i     | Week VII Relapse and Adversity
+92G2 · Week VII — Relapse and Adversity · ii   | Week VII Relapse and Adversity P2
+92H · Week VIII — Boredom and Meaning · i      | Week VIII Boredom and Meaning
+92H2 · Week VIII — Boredom and Meaning · ii    | Week VIII Boredom and Meaning P2
+92I · Week IX — Connection · i                 | Week IX Connection
+92I2 · Week IX — Connection · ii               | Week IX Connection P2
+92J · Week X — Yourself · i                    | Week X Yourself
+92J2 · Week X — Yourself · ii                  | Week X Yourself P2
+92K · Week XI — Build a Life You Want · i      | Week XI Build a Life You Want
+92K2 · Week XI — Build a Life You Want · ii    | Week XI Build a Life You Want P2
+92L · Week XII — Leave It Behind · i           | Week XII Leave It Behind
+92L2 · Week XII — Leave It Behind · ii         | Week XII Leave It Behind P2
+URGE SOS — FIRST 90 SECONDS 28 · SOS — First 90 Seconds | Cue Intro Modal
+28B · SOS — How Strong                         | SOS Strength
+29 · SOS — Where Are You                       | Cue Hue Picker
+29B · SOS — Command I · Out of Bed             | Surf Step 1
+29C · SOS — Command II · Leave the Room        | Surf Step 3
+29D · SOS — Command III · Phone Away           | Cue Set Confirmation
+30 · SOS — Remove the Trigger                  | SOS Reason Picker
+30B · SOS — Name the Feeling                   | SOS Feeling Picker
+31 · SOS — The Challenge                       | SOS Challenge
+32 · SOS — Where Is It Now                     | SOS Reassess
+32B · SOS — Afterward                          | SOS Afterward
+33 · SOS — The Wave Passed                     | Surf Complete
+34 · SOS — Slipped                             | Relapse Log
+36 · Relapse — Don't Fail Twice                | Relapse Twice
+36B · Relapse — Re-sign the Pledge             | Relapse Resign
+37 · Relapse — Begin Again                     | Relapse Begin
+URGE HUB — RIDE IT OUT 85A · Urge Hub — Right now | Urge Hub Now
+85B · Urge Hub — Recovery score                | Urge Hub Score
+85C · Urge Hub — Your proof                    | Urge Hub Proof
+85D · Urge Hub — Surfed before                 | Urge Hub Surfed
+85E · Urge Hub — Your pledge                   | Urge Hub Pledges
+85F · Urge Hub — Breathe                       | Urge Hub Breathe
+ROUGH DAYS — COPING 95A · SOS — Location · Bed | SOS Loc Bed
+95B · SOS — Location · Bathroom                | SOS Loc Bathroom
+95C · SOS — Location · Home alone              | SOS Loc Home Alone
+95D · SOS — Location · Private room            | SOS Loc Private Room
+95E · SOS — Location · Work or school          | SOS Loc Work
+95F · SOS — Location · Public                  | SOS Loc Public
+95G · SOS — Location · Somewhere else          | SOS Loc Elsewhere
+96A · SOS — Feeling · Turned on                | SOS Feel Turned On
+96B · SOS — Feeling · Bored                    | SOS Feel Bored
+96C · SOS — Feeling · Lonely                   | SOS Feel Lonely
+96D · SOS — Feeling · Stressed                 | SOS Feel Stressed
+96E · SOS — Feeling · Anxious                  | SOS Feel Anxious
+96F · SOS — Feeling · Angry                    | SOS Feel Angry
+96G · SOS — Feeling · Low                      | SOS Feel Low
+96H · SOS — Feeling · Rejected                 | SOS Feel Rejected
+96I · SOS — Feeling · Tired                    | SOS Feel Tired
+96J · SOS — Feeling · Restless                 | SOS Feel Restless
+96K · SOS — Feeling · Numb                     | SOS Feel Numb
+96L · SOS — Feeling · Ashamed                  | SOS Feel Ashamed
+96M · SOS — Feeling · Don’t know               | SOS Feel Unknown
+97A · SOS — Trigger · Something you saw        | SOS Trig Content
+97B · SOS — Trigger · Doomscrolling            | SOS Trig Doomscroll
+97C · SOS — Trigger · A stuck fantasy          | SOS Trig Fantasy
+97D · SOS — Trigger · Late-night phone         | SOS Trig Late Phone
+97E · SOS — Trigger · Habit                    | SOS Trig Habit
+97F · SOS — Trigger · Can’t sleep              | SOS Trig Cant Sleep
+97G · SOS — Trigger · An argument              | SOS Trig Argument
+97H · SOS — Trigger · Rejection                | SOS Trig Rejection
+97I · SOS — Trigger · Being alone              | SOS Trig Alone
+97J · SOS — Trigger · Not sure                 | SOS Trig Unknown
+88 · Medallions                                | Medallions
+88B · Medallions — Still to earn               | Medallions Still To Earn
+88C · Medallions — Earned II                   | Album Earned II
+88D · Breakwater — Paper                       | Breakwater Paper
+88E · Breakwater — Bronze                      | Breakwater Bronze
+88F · Breakwater — Silver                      | Breakwater Silver
+88G · Breakwater — Gold                        | Breakwater Gold
+88H · Breakwater — Platinum                    | Breakwater Platinum
+88I · Tiers — Vidi                             | Tiers Vidi
+88J · Tiers — Vici                             | Tiers Vici
+88K · Tiers — Rebound                          | Tiers Rebound
+88L · Tiers — Breakwater                       | Tiers Breakwater
+88M · Tiers — Logbook                          | Tiers Logbook
+88N · Tiers — Pulse                            | Tiers Pulse
+88O · Tiers — Archive                          | Tiers Archive
+88P · Tiers — Lessons                          | Tiers Lessons
+88Q · Tiers — One-offs                         | Tiers One-offs
+89A · Vici Detail — Paper                      | Detail Paper
+89C · Vici Detail — Bronze                     | Detail Bronze
+89D · Vici Detail — Silver                     | Detail Silver
+89E · Vici Detail — Gold                       | Detail Gold
+89F · Vici Detail — Platinum                   | Detail Platinum
+90 · Log — Chooser                             | Log Chooser
+90B · Lapse — When                             | Lapse When
+90C · Lapse — What fed it                      | Lapse Trigger
+90D · Lapse — Logged                           | Lapse Done
+91 · Log — Urges                               | Log Urges
+91-2 · Log — Check-ins                         | Log Check-ins
+91-3 · Log — Reports                           | Log Reports
+91A · Urge Overview — Summary                  | Urge Overview Summary
+91B · Urge Overview — Strength                 | Urge Overview
+91C · Urge Overview — Mood                     | Urge Overview Mood
+91D · Urge Overview — When & Where             | Urge Overview When
+91C0 · Report Ready                            | Report Ready
+91C · Weekly Report — Score                    | Weekly Report
+91C2 · Weekly Report — Days                    | Weekly Report Days
+91C3 · Weekly Report — Urges                   | Weekly Report Urges
+91D · Urge Log — Intensity                     | Urge Log Intensity
+91E · Urge Log — Triggers                      | Urge Log Trigger
+91F · Urge Log — Outcome                       | Urge Log Outcome
+91G · Urge Log — When                          | Urge Log When
+91H · Urge Log — Logged                        | Urge Log Done
+92 · Settings                                  | Settings
+93 · Edit Profile                              | Edit Profile
+93B · Profile photo sheet                      | Sheet Profile Photo
+93C · Edit name sheet                          | Sheet Edit Name
+93D · Weekly report                            | Settings Weekly Report
+92B · Night check-in time                      | Settings Check-in Time
+92C · Your vow                                 | Your Vow Page
+92D · Sign out sheet                           | Sheet Sign Out
+94 · Data & Privacy                            | Data Privacy
+95 · App Lock                                  | App Lock
+RELAPSE — POST-SLIP 98A · Slip — It Happened   | Slip Entry
+98B · Slip — Close It Now                      | Slip Close It
+98C · Slip — When                              | Slip When
+98D · Slip — What Fed It                       | Slip Fed
+98E · Slip — Logged                            | Slip Logged
+98F · Slip — Current Urge                      | Slip Urge Now
+98G · Slip — Don’t Fail Twice                  | Slip Dont Fail Twice
+98H · Slip — Stop Here                         | Slip Stop Here
+98I · Slip — Third Slip                        | Slip Third
+98J · Slip — The Pledge Still Stands           | Slip Pledge
+98K · Slip — Begin Again                       | Slip Begin Again
+98L · Slip — Morning After                     | Slip Morning After
+99A · Slip Feeling — Ashamed                   | Slip Feel Ashamed
+99B · Slip Feeling — Bored                     | Slip Feel Bored
+99C · Slip Feeling — Lonely                    | Slip Feel Lonely
+99D · Slip Feeling — Stressed                  | Slip Feel Stressed
+99E · Slip Feeling — Rejected                  | Slip Feel Rejected
+99F · Slip Feeling — Tired                     | Slip Feel Tired
+99G · Slip Feeling — Turned on                 | Slip Feel Turned on
+99H · Slip Feeling — Not sure                  | Slip Feel Not sure
+100A · Slip Trigger — Late night               | Slip Trigger Late night
+100B · Slip Trigger — Scrolling                | Slip Trigger Scrolling
+100C · Slip Trigger — Sexual content           | Slip Trigger Sexual content
+100D · Slip Trigger — Boredom                  | Slip Trigger Boredom
+100E · Slip Trigger — Loneliness               | Slip Trigger Loneliness
+100F · Slip Trigger — Stress                   | Slip Trigger Stress
+100G · Slip Trigger — Argument                 | Slip Trigger Argument
+100H · Slip Trigger — Couldn’t sleep           | Slip Trigger Couldn’t sleep
+100I · Slip Trigger — Being alone              | Slip Trigger Being alone
+100J · Slip Trigger — Habit                    | Slip Trigger Habit
+100K · Slip Trigger — Not sure                 | Slip Trigger Not sure
+ROUTINES & JOURNEY 90B · VICI Post — Arrival   | Letter Arrival
+39 · The Letter — Read                         | Letter Read
+39B · Post — Medallion Letter                  | Medallion Letter
+39C · Post — The Yearly Drop                   | Yearly Drop
+39D · You Received a Drop                      | Drop Received
+LESSONS & RIDE IT OUT 84 · Lesson — Frame 1 of 14 | Lesson Scroll 1
+84 · Lesson — Frame 2 of 14                    | Lesson Scroll 2
+84 · Lesson — Frame 3 of 14                    | Lesson Scroll 3
+84 · Lesson — Frame 4 of 14                    | Lesson Scroll 4
+84 · Lesson — Frame 5 of 14                    | Lesson Scroll 5
+84 · Lesson — Frame 6 of 14                    | Lesson Scroll 6
+84 · Lesson — Frame 7 of 14                    | Lesson Scroll 7
+84 · Lesson — Frame 8 of 14                    | Lesson Scroll 8
+84 · Lesson — Frame 9 of 14                    | Lesson Scroll 9
+84 · Lesson — Frame 10 of 14                   | Lesson Scroll 10
+84 · Lesson — Frame 11 of 14                   | Lesson Scroll 11
+84 · Lesson — Frame 12 of 14                   | Lesson Scroll 12
+84 · Lesson — Frame 13 of 14                   | Lesson Scroll 13
+84 · Lesson — Frame 14 of 14                   | Lesson Scroll 14

@@ -1,0 +1,15 @@
+const log = [];
+const url = () => location.pathname + location.search;
+const ls = (k) => localStorage.getItem(k);
+const uid = 'letters-seed-user';
+const journal = () => { try { return (JSON.parse(ls('tideline.mock.userdata.' + uid)).journalEntries || []).map((j) => [j.tag, j.title, (j.body || '').slice(-60)]); } catch (e) { return 'ERR ' + e.message; } };
+const step = async (name, fn, wait = 1300) => { try { await fn(); await __sleep(wait); log.push([name, url(), __txt().slice(0, 160)]); } catch (e) { log.push([name, 'ERR ' + e.message.slice(0, 200)]); } };
+await __sleep(800);
+log.push(['start', url(), __txt().slice(0, 200)]);
+await step('Read', () => tap('Read'), 900);
+await step('Open the enclosure', () => tap('Open the enclosure'), 1500);
+await step('drop X', () => tap('Close'), 1500);
+log.push(['after drop X', 'seen=' + ls('tideline.post.yearlydrop.seen')]);
+await step('Save to Log', () => tap('Save to Log'), 2000);
+log.push(['after save', 'done=' + ls('tideline.post.backondeck.delivered'), JSON.stringify(journal())]);
+console.error("LOG " + JSON.stringify(log)); return 1;

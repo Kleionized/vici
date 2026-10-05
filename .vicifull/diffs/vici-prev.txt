@@ -1,0 +1,97 @@
+## .vicifull/final/vici-prev
+prev=87 final=87  identical=87 changed=0 added=0 removed=0
+
+### ADDED (new in UI Final)
+
+### REMOVED (gone from UI Final)
+
+### CHANGED
+
+### IDENTICAL
+  = Splash
+  = Standing Guard
+  = Login Empty
+  = Login Typing
+  = Create Account
+  = Push Notifications
+  = Quiz Frequency
+  = Quiz Triggers
+  = Lesson Willpower
+  = Results Pattern
+  = Campaign Map
+  = Quiz Duration
+  = Lesson Rewire
+  = Lesson Small Steps
+  = Lesson Anchor
+  = Reminders Setup
+  = Auth Save Progress
+  = V3 Q1
+  = V3 Q2
+  = V3 Q3
+  = V3 Q4
+  = V3 Q5
+  = V3 Q6
+  = V3 Q7
+  = V3 Q8
+  = V3 Q9
+  = V3 Q10
+  = V3 Q11
+  = V3 Q12
+  = V3 Q13
+  = V3 Q14
+  = V3 Q15
+  = V3 Q16
+  = V3 Q17
+  = V3 Q18
+  = V3 Q19
+  = V3 Q20
+  = V3 Q21
+  = V3 Q22
+  = V3 Q23
+  = Device Not Found
+  = Waking Up Device
+  = Select Device
+  = Enlisting Aegis
+  = Name Your Aegis
+  = Ready Make It Mine
+  = Master the Urge
+  = Membership Compare
+  = Free Trial Paywall
+  = Help With First
+  = Choose Evening Drill
+  = Choose Morning Muster
+  = Wake Time Picker
+  = Rise and Shine
+  = My Regimen Tooltip
+  = My Regimen
+  = My Regimen Decluttered
+  = My Regimen One Card
+  = My Regimen Reminder
+  = My Regimen Cue Banner
+  = My Regimen 6 Steps
+  = My Regimen Upsell
+  = My Regimen Morning Moment
+  = My Regimen Cue Home
+  = My Regimen Alarm Editor
+  = Lesson Reader
+  = Urge SOS Wave
+  = Urge SOS Breathe
+  = Daily Check-in
+  = Cue Intro Modal
+  = Cue Hue Picker
+  = Cue Set Confirmation
+  = Training Drills Browser
+  = Sound Library
+  = Library Cue
+  = Library Train Featured
+  = Library Train Meditations
+  = Library Wake
+  = Library Search
+  = Story Detail
+  = Story Tracks
+  = Immersive Light Modal
+  = Wake Sound Detail
+  = Now Playing
+  = Add Guard Sheet
+  = Add Morning Muster Sheet
+  = Six Steps Checklist

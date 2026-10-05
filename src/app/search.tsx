@@ -1,17 +1,22 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useMemo, useState } from 'react';
-import { ScrollView, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 
-import { Scene } from '@/components/task/TaskScene';
-import { AppText, Glyph, PressScale, SectionLabel } from '@/components/ui';
+import { CourseRow, ROW_GAP, lessonNumber } from '@/components/library/WeekPage';
+import { Chip, ChevronR, MonoText, Screen, ScrollRegion, Tap, TextField } from '@/components/mono';
 import { CURRICULUM_84_DAYS, weekFor } from '@/content/curriculum84';
-import { LESSON_PLATES, LESSON_PLATE_H, LESSON_PLATE_W } from '@/content/lessonPlates';
-import { colors, fonts, spacing } from '@/lib/theme';
+import { mono } from '@/lib/theme';
 
 const RECENT = ['urge', 'sleep', 'relapse'];
 
+/**
+ * Search — no frame draws it (routes §4.11). The field is Sheet Edit Name's
+ * (`h60 r18 #1E1E1E`, 18/700, placeholder `#9B968E`) with "Cancel" beside it,
+ * the three recent words as chips that fill the query, the count as caps, and
+ * the results as week-page rows carrying their week on a caps line and the
+ * lesson's one-liner under the title. The previous drop's lesson plates are
+ * gone with the plates.
+ */
 export default function Search() {
   const router = useRouter();
   const [q, setQ] = useState('');
@@ -31,79 +36,52 @@ export default function Search() {
       );
     });
   }, [q]);
+  const asked = q.trim().toLowerCase();
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        {/* search bar */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: spacing.xl, paddingTop: spacing.sm, paddingBottom: spacing.md }}>
-          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: colors.surface, borderRadius: 9999, paddingHorizontal: 18, paddingVertical: 12 }}>
-            {Glyph.search(colors.text)}
-            <TextInput
-              value={q}
-              onChangeText={setQ}
-              autoFocus
-              placeholder="Search the twelve weeks"
-              placeholderTextColor={colors.textSoft}
-              style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, color: colors.text, padding: 0 }}
-            />
-          </View>
-          <PressScale onPress={back} hitSlop={8} style={{ minWidth: 60, minHeight: 44, alignItems: 'flex-end', justifyContent: 'center' }}>
-            <AppText weightOverride="600" style={{ fontSize: 16 }}>
-              Cancel
-            </AppText>
-          </PressScale>
+    <Screen>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 60, gap: 16 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <TextField
+            variant="sheet"
+            value={q}
+            onChangeText={setQ}
+            autoFocus
+            placeholder="Search the twelve weeks"
+            returnKeyType="search"
+            accessibilityLabel="Search the twelve weeks"
+            style={{ flex: 1 }}
+          />
+          <Tap onPress={back} hitSlop={{ top: 10, bottom: 10, left: 8, right: 12 }} style={{ height: 40, justifyContent: 'center' }}>
+            <MonoText v="rowLabel">Cancel</MonoText>
+          </Tap>
         </View>
-
-        {/* recent chips */}
-        <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap', paddingHorizontal: spacing.xl, paddingBottom: spacing.md }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           {RECENT.map((r) => (
-            <PressScale key={r} onPress={() => setQ(r)} style={{ minHeight: 44, backgroundColor: colors.surface, borderRadius: 9999, paddingHorizontal: 14, alignItems: 'center', justifyContent: 'center' }}>
-              <AppText weightOverride="600" style={{ fontSize: 13.5, color: colors.textMuted }}>
-                {r}
-              </AppText>
-            </PressScale>
+            <Chip key={r} label={r} multi={false} on={asked === r} onPress={() => setQ(r)} />
           ))}
         </View>
+        <MonoText v="caps" style={{ marginTop: 8 }}>{`${results.length} result${results.length === 1 ? '' : 's'}`}</MonoText>
+      </View>
 
-        <SectionLabel style={{ paddingHorizontal: 24, paddingBottom: spacing.md }}>
-          {`${results.length} result${results.length === 1 ? '' : 's'}`}
-        </SectionLabel>
-
-        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xl, gap: 11 }} keyboardShouldPersistTaps="handled">
-          {results.map((lesson) => {
-            const week = weekFor(lesson.week);
-            const plate = LESSON_PLATES[lesson.day];
-            return (
-              <PressScale key={lesson.day} onPress={() => router.push(`/lesson-card/${lesson.day}`)}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.surface, borderRadius: 18, padding: 14 }}>
-                  {/* the lesson's own plate, at the size the row leaves it */}
-                  <View style={{ width: 46, height: 46, borderRadius: 13, overflow: 'hidden', backgroundColor: colors.accentSoft }}>
-                    {plate ? (
-                      <View style={{ position: 'absolute', left: 0, bottom: 0 }}>
-                        <Scene layers={plate} boxW={LESSON_PLATE_W} boxH={LESSON_PLATE_H} width={46} />
-                      </View>
-                    ) : null}
-                  </View>
-                  <View style={{ flex: 1 }}>
-                    <SectionLabel size={10.5} style={{ marginBottom: 3 }}>
-                      {week ? `Week ${week.roman} · ${week.name}` : `Week ${lesson.week}`}
-                    </SectionLabel>
-                    <AppText weightOverride="500" style={{ fontSize: 14.5, lineHeight: 18 }}>
-                      {lesson.title}
-                    </AppText>
-                    <AppText numberOfLines={2} variant="muted" weightOverride="500" style={{ fontSize: 13, marginTop: 2, lineHeight: 18 }}>
-                      {lesson.summary}
-                    </AppText>
-                  </View>
-                  {Glyph.chevR(colors.textSoft)}
-                </View>
-              </PressScale>
-            );
-          })}
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+      <ScrollRegion top={240} contentStyle={{ paddingHorizontal: 16, paddingBottom: 48, gap: ROW_GAP }}>
+        {results.map((lesson) => {
+          const week = weekFor(lesson.week);
+          return (
+            <CourseRow
+              key={lesson.day}
+              lead={lessonNumber(lesson.day)}
+              caps={week ? `Week ${week.roman} · ${week.name}` : `Week ${lesson.week}`}
+              title={lesson.title}
+              detail={lesson.summary}
+              state="upcoming"
+              trailing={<ChevronR color={mono.mute} />}
+              label={`${lesson.title}, lesson ${lessonNumber(lesson.day)}`}
+              onPress={() => router.push(`/lesson/day/${lesson.day}`)}
+            />
+          );
+        })}
+      </ScrollRegion>
+    </Screen>
   );
 }

@@ -26,7 +26,9 @@ export type Routines = {
 };
 
 export const DEFAULT_ROUTINES: Routines = {
-  morning: { hour: 7, minute: 0, period: 'AM' },
+  // `Morning Check-in Time` parks on 8:00 AM, and so does the Settings frame's
+  // Morning row — the two frames that state it agree (D324)
+  morning: { hour: 8, minute: 0, period: 'AM' },
   // `19C · Nightly check-in time` draws the wheel at 10:30 PM before it is touched
   night: { hour: 10, minute: 30, period: 'PM' },
 };

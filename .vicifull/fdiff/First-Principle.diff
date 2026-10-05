@@ -1,0 +1,20 @@
+--- .vicifull/pretty/prev/First-Principle.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/First-Principle.html	2026-09-05 00:22:35
+@@ -211,7 +211,7 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · Urges do not stay at full strength forever.
++    · An urge doesn’t stay at its worst for very long.
+   </div>
+   <div style="
+     | position:absolute;
+@@ -225,7 +225,7 @@
+     | color:rgba(244,243,240,0.75);
+     | text-wrap:pretty;
+   ">
+-    · The first job is to get through the few minutes when acting on one feels easiest.
++    · The first job is getting through the part where giving in feels easiest.
+   </div>
+   <div style="
+     | position:absolute;

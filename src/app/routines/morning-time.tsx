@@ -1,11 +1,10 @@
-import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { CheckinPicker, RoutineCTA, RoutineShell, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
+import { CheckinTimeBoard, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
 import { useRoutines, useSaveRoutines, type TimeOfDay } from '@/lib/routines';
 
-/** 108 · Morning check-in time. */
+/** `Morning Check-in Time` (19B). */
 export default function MorningTime() {
   const router = useRouter();
   const routines = useRoutines();
@@ -19,25 +18,32 @@ export default function MorningTime() {
   const time = draftTime ?? routines.morning;
   const days = draftDays ?? stored;
 
-  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
+  /* The same board serves onboarding and the Settings > Reminders row, and the
+     two exits are different: entered from Settings, `Save time` returns there;
+     entered from onboarding it carries on to the night board. Without the
+     parameter, editing the morning time from Settings dragged the user through
+     the onboarding night board and left them on Today. */
+  const { from } = useLocalSearchParams<{ from?: string }>();
+  const fromSettings = from === 'settings';
 
-  const toggle = (day: number) => setDraftDays(days.includes(day) ? days.filter((d) => d !== day) : [...days, day].sort((a, b) => a - b));
+  const back = () => (router.canGoBack() ? router.back() : router.replace(fromSettings ? '/(app)/settings' : '/(app)/today'));
 
   const next = async () => {
     await save({ morning: time });
     await saveCheckinDays('morning', days);
+    if (fromSettings) return back();
     router.push('/routines/night-time');
   };
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <RoutineShell
-        onBack={back}
-        title="When should the morning check-in come?"
-        cta={<RoutineCTA label="Save time" onPress={() => void next()} />}>
-        <CheckinPicker time={time} onTime={setDraftTime} days={days} onToggleDay={toggle} />
-      </RoutineShell>
-    </>
+    <CheckinTimeBoard
+      kind="morning"
+      onBack={back}
+      time={time}
+      onTime={setDraftTime}
+      days={days}
+      onDays={setDraftDays}
+      onSave={() => void next()}
+    />
   );
 }

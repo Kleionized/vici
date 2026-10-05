@@ -1,0 +1,89 @@
+{
+  "group": "lesson-scrolls",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 26 frames (#242-#267) were driven and captured independently with the \"v-lesson-scrolls-\" sig prefix, each capture's identity proved by reading the progress hairline back (3, 7, 11, 15, 19, 23, 26, 30, 34, 38, 42, 46, 50, 53, 57, 61, 65, 69, 73, 76, 80, 84, 88, 92, 96, 100 — the frames' own percents), plus one extra capture of page 16 with row 1 chosen and one of page 1 reached the designed way (pushed from /lesson-card/1) rather than at its URL.\n\nI independently re-derived the report's governing decision and it holds. Transcribing all 26 Email-Login/Lesson-Scroll-N frames and all 26 Lesson-1-Surviving-the-Night/L1-Frame-NN frames and diffing pairwise gives 198 differing lines and not one is a word: every text-run difference is an HTML-entity encoding (&middot; / &rsquo; / &ldquo; / &mdash; in the L1 copies against literal UTF-8 in Email-Login's), and the generator decodes those correctly (0 entities survive into lessonReader.ts). The remaining 198 lines are exactly restyle-lessons.js's substitutions. So D085/F5 is sound and the app is correctly built from the restyled authoring. I also re-ran scripts/vicifull/lesson-verify.mjs: 1858 frames, 4521 text runs drawn, 4521 transcribed, 0 either way — the D086 copy restoration is real.\n\nAgainst the current authoring (L1-Frame-NN) the app is very close: 16 of the 26 pages differ by ZERO pixels at a per-channel threshold of 5 (frames 4, 6, 7, 8, 10, 11, 12, 13, 15, 17, 19, 20, 21, 24), and page 16 with the frame's own row chosen has a completely clean signature diff. The report's own per-frame pixel counts reproduce exactly, so its numbers are honest.\n\nTWO GENUINE DEFECTS REMAIN, both on the two frames that draw the night room (#259 Lesson Scroll 18 and #264 Lesson Scroll 23), and both are local to this group — LESSON_READER contains exactly two pages with the \"room\" mark, so nothing outside lesson one is affected:\n\n1. The door's floor light pool is drawn as a rectangle where the canvas cuts a trapezoid. The report deferred this to week-lessons on the grounds that src/components/task/TaskScene.tsx was mid-edit by another agent. That blocker is GONE: TaskScene.tsx:373 now has a clipPath() helper, TaskSceneBox carries clip?: string (taskScenes.ts:43), scripts/vicifull/gen-task-art.mjs:115 reads clip-path, and src/content/taskScenes.ts:224 already carries this exact polygon. Only scripts/vicifull/gen-reader-art.mjs was left behind — it never reads clip-path — so src/content/readerRoom.ts's light-pool layer has no clip. This is now a three-line generator fix belonging to THIS group, not week-lessons.\n\n2. NOT IN THE REPORT AT ALL: the pillow's inset band is missing on both room frames. TaskScene.tsx:494 matches only the uniform ring form (inset 0 0 0 Npx colour); the pillow states inset 0 -2.5px 0 #D6D5D0, an offset inset with zero spread, which falls through and is dropped. The design's signature row carries the shadow and the app has no counterpart at all. The same shadow on the same pillow shape IS drawn correctly on frames 1 and 14 (hand-written components with real DOM boxShadow), which is what makes this a defect rather than a translation rule.\n\nEverything else I could still see is one of the standing equivalences and I am confident none of it is a defect: frame 1's 427px are two vertical column edges (x=111.5, x=176.5) and one horizontal (y=466.5) — D083; frame 9's 470px are entirely on two scanlines (y=431.5, 432.5), the 1.5px horizon rule's edge; frame 14's 91px are the 8deg-rotated phone's edges; frames 2/3/5/22/25/26's 14-110px are scattered single-pixel edges on the small round marks; frame 16's resting-state 15,187px is D044 by design and resolves to 101px (the radio dot's feathered rim, canvas feathers to 5.5px where the app draws a hard r=5) once the frame's own row is chosen. Frame 1's residual at threshold 5 (7,150px, all deltas 5-12/255) is the blurred ground shadows and lamp halo profile, D082.\n\nI also cleared the F20 risk that a signature diff cannot see: src/components/lesson/coverL1.tsx hard-codes five SVG gradient ids (cs-win, cs-glass2, cs-sh1b, cs-lampb, cs-sh2b), so I captured page 1 both at its URL and pushed from /lesson-card/1. The two PNGs are identical to 0 pixels at threshold 6 — no collision today, because CoverSceneL1 is mounted in exactly one place. Recorded in .vicifull/recipes/lesson-scrolls.json.\n\nThe group's own 26 assigned frames (Email-Login/Lesson-Scroll-1...26) are deliberately not matched under D085; I measured the delta so the number is on record rather than inferred: 1.5% to 12.2% of pixels per frame, max channel delta 215-230.\n\nCaptures, signatures and the measurement helpers are under .vicifull/vls/ (d-NN.png design, a-NN.png app, e-NN.png the Email-Login authoring, vpxdiff.mjs, vhist.mjs, vbox.mjs, vcrop.mjs, vrow.mjs).",
+  "findings": [
+    {
+      "frame": "#259 Lesson Scroll 18 (built from Lesson-1-Surviving-the-Night/L1-Frame-18)",
+      "element": "the door's floor light pool — the 84 x 12 box at scene-local left 200, top 158, filled linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06)); frame coords 226.5, 434, 84 x 12",
+      "property": "clip-path",
+      "design": "polygon(6% 0, 78% 0, 100% 100%, 0 100%) — a trapezoid narrowing toward the doorway",
+      "app": "none — the full rectangle is painted; src/content/readerRoom.ts's layer at left 200/top 158 carries no `clip` key, because scripts/vicifull/gen-reader-art.mjs never reads clip-path",
+      "confidence": "certain",
+      "note": "Measured: 1,396 of 4,032 pixels inside the pool box differ at threshold 5 (94 at threshold 12), max channel delta 25/255, and the slanted left edge is plainly visible side by side. The report deferred this to week-lessons because TaskScene.tsx was mid-edit; that is no longer true. TaskScene.tsx:373 now carries clipPath(), TaskScene.tsx:485 uses it as the layer's shape, taskScenes.ts:43 declares `clip?: string`, gen-task-art.mjs:115 emits `clip: decl(style,'clip-path')`, and taskScenes.ts:224 already holds this exact polygon. Only the reader-art generator was left behind. LESSON_READER has exactly two pages with the 'room' mark, so this closes THIS group's frames and nothing of week-lessons'."
+    },
+    {
+      "frame": "#264 Lesson Scroll 23 (built from Lesson-1-Surviving-the-Night/L1-Frame-23)",
+      "element": "the door's floor light pool — same layer, frame coords 222, 512.3, 71.4 x 10.2 (the board scales the scene 0.85)",
+      "property": "clip-path",
+      "design": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)",
+      "app": "none — the full rectangle is painted",
+      "confidence": "certain",
+      "note": "1,206 of 3,168 pixels inside the pool box differ at threshold 5 (112 at threshold 12), max delta 27/255. It is also the single largest solid-area cluster in this frame's whole-image overlay: everything else red in the overlay is one-device-pixel edging (D083). Same root cause and same fix as #259."
+    },
+    {
+      "frame": "#259 Lesson Scroll 18 (built from L1-Frame-18)",
+      "element": "the pillow on the bed — 28 x 14 white box, radius 7px 7px 5px 5px, scene-local left 40 top 117; frame coords 66.5, 393, 28 x 14",
+      "property": "box-shadow (the inset half)",
+      "design": "inset 0 -2.5px 0 #D6D5D0 — a grey band along the inside of the bottom edge (the outer 0 1.5px 3px rgba(40,38,32,0.14) is drawn correctly)",
+      "app": "not drawn — the pillow is white to its bottom edge. The design signature row carries `rgb(214, 213, 208) 0px -2.5px 0px 0px inset` and the app signature has no counterpart row at all",
+      "confidence": "certain",
+      "note": "NOT reported by the implementing agent. Cause: src/components/task/TaskScene.tsx:494 matches only /inset 0 0 0 ([0-9.]+)px .../ — the uniform ring form — so an offset inset with zero spread never matches and is silently dropped. Measured 278 of 1,568 pixels inside the pillow box differ, max channel delta 47/255, and the band is obvious at 12x magnification. The proof it is a defect rather than a translation rule: the identical shadow on the identical pillow shape IS drawn on frames 1 and 14, where the pillow is a real DOM View with boxShadow — the app and design signature rows there match character for character. readerRoom.ts line 109 is the only layer in the room with this shadow form, so one regex widening in TaskScene fixes both frames."
+    },
+    {
+      "frame": "#264 Lesson Scroll 23 (built from L1-Frame-23)",
+      "element": "the pillow on the bed — frame coords 86, 477.5, 23.8 x 11.9",
+      "property": "box-shadow (the inset half)",
+      "design": "inset 0 -2.5px 0 #D6D5D0",
+      "app": "not drawn",
+      "confidence": "certain",
+      "note": "255 of 1,152 pixels inside the pillow box differ at threshold 12, max delta 47/255. Same layer, same cause as on #259."
+    },
+    {
+      "frame": "#242-#267, all twenty-six (measured against the group's own assigned frames, Email-Login/Lesson-Scroll-1...26)",
+      "element": "whole frame",
+      "property": "type ramp, column gaps, list-board geometry and progress rail — the substitutions in Latest Vici FULL/project/restyle-lessons.js",
+      "design": "Email-Login's pre-restyle authoring: e.g. Lesson Scroll 7 draws gap 48 with 22/32 runs at 27%; Lesson Scroll 23 draws gap 30 with a 26/38 title; Lesson Scroll 18 draws gap 48 with 21/36 body",
+      "app": "the restyled authoring: L1-Frame-07 gap 22, 20/28 runs at 26%; L1-Frame-23 gap 24, 24/32 title; L1-Frame-18 gap 22, 17/26 body",
+      "confidence": "certain",
+      "note": "NOT a defect to fix — this is D085/F5, already held by the orchestrator, and I re-derived it independently rather than taking it on trust: 198 differing transcript lines across the 26 pairs, of which the only text-run differences are HTML-entity encodings that render identically and that the generator decodes correctly. Recorded here only so the number is on the record: measured app-versus-Email-Login pixel deltas run 1.544% (frame 25) to 12.193% (frame 24) of the image, max channel delta 215-230. If a later audit reads the 26 assigned frames as 26 misses, this is why."
+    },
+    {
+      "frame": "#242-#267 (code, not visible on any capture)",
+      "element": "src/components/lesson/scroll.tsx:250 and src/app/lesson/day/[day].tsx:52-53 — the head comments explaining the progress hairline",
+      "property": "the stated example ramp",
+      "design": "lesson one's frames state 3, 7, 11, 15 for pages 1-4 (26 pages, floor(n/26 x 100)) — which is what the app now draws and what I read back off every capture",
+      "app": "both comments say \"lesson 1 runs 3, 6, 9, 12\" — that is lesson 2's 32-page ramp, borrowed from FINDINGS F4's lesson-2 example",
+      "confidence": "certain",
+      "note": "Documentation only, no pixel consequence; DECISIONS D088 states lesson one's ramp correctly. Worth fixing because these two comments are the justification for the D088 change and they cite the wrong lesson's numbers."
+    },
+    {
+      "frame": "#259 / #264 (generator provenance)",
+      "element": "scripts/vicifull/gen-reader-art.mjs:11 and the generated header of src/content/readerRoom.ts",
+      "property": "input bundle",
+      "design": "D085 rules Lesson 1 Surviving the Night the current authoring of lesson one",
+      "app": "the room art is still transcribed off `.vicifull/lessons/Email Login`, and readerRoom.ts's header says \"transcribed layer by layer off `Lesson Scroll 23` in `Latest Vici FULL/project/Email Login.dc.html`\"",
+      "confidence": "certain",
+      "note": "No visible consequence today and I checked rather than assumed: I diffed L1-Frame-18/23 against Lesson-Scroll-18/23 and the 340 x 200 room subtree is byte-identical between the two authorings — the only differences on those two frames are the outer column gap (22 vs 48, 24 vs 30) and the type ramp. But it means the one file this group generates still reads the authoring D085 declares stale, which is a trap the moment a future drop restyles only one copy. Flagging as latent, not as a mismatch."
+    },
+    {
+      "frame": "#257 Lesson Scroll 16 (and every reader page with a pill)",
+      "element": "src/components/lesson/reader.tsx:280 — the Cta label (\"Continue\" on #257, \"Done\" on #267)",
+      "property": "text-wrap",
+      "design": "the frames state none on the CTA span, i.e. CSS's initial `wrap`",
+      "app": "the one text run in the reader that is not passed through wrapOf(), so it inherits AppText's web default `pretty` (D052 / F8)",
+      "confidence": "certain",
+      "note": "Latent only: no visible effect on any of these 26 frames, because both CTA strings are single words and cannot rebalance. Every other run in reader.tsx (lines 76, 128, 147, 173, 249, 308, 311, 402) does state its own wrap. Worth closing for consistency with the F8 sweep rather than because a pixel moves."
+    },
+    {
+      "frame": "#242 Lesson Scroll 1 (verified clear, recorded as a standing risk)",
+      "element": "src/components/lesson/coverL1.tsx — the five SVG gradient/def ids: cs-win, cs-glass2, cs-sh1b, cs-lampb, cs-sh2b",
+      "property": "gradient id derivation",
+      "design": "n/a — this is the F20 web-build defect class, where a pushed screen binds url(#id) to a hidden duplicate and the art loses its paint while the signature stays clean",
+      "app": "hard-coded, where TaskScene.tsx:620 derives its ids from useId()",
+      "confidence": "likely",
+      "note": "I tested it rather than assuming: page 1 captured at /lesson/day/1 and page 1 captured by pushing from /lesson-card/1 (tap 'Start lesson') are identical to 0 pixels at threshold 6, and both sit at 427px against the design. So there is no collision today — CoverSceneL1 is mounted in exactly one place in the app. Marked 'likely' because the risk is real and is exactly what F20 tells every group to sweep, but no defect is currently visible. Recipe for the pushed path appended to .vicifull/recipes/lesson-scrolls.json."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#121212  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · Enclosure from VICI
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:16px  right:16px  top:112px  bottom:150px  border-radius:26px  background:#1E1E1E  overflow:hidden
+    <div> padding:28px 26px 0  display:flex  flex-direction:column  gap:16px
+      <div> font-size:22px  font-weight:700  letter-spacing:-0.3px  color:#F2F0EC
+        · Dear Sam,
+      <div> font-size:15.5px  line-height:25px  color:#B5B0A8  text-wrap:pretty
+        · Last night an urge rose, crested, and left without you. This morning you opened the app anyway — logged it, stayed. Most men vanish for a week after a night like that. You came back.
+      <div> font-size:15.5px  line-height:25px  color:#B5B0A8  text-wrap:pretty
+        · The return is the strongest predictor there is — stronger than any count. This one isn’t for resisting. It’s for coming back.
+      <div> font-size:15.5px  line-height:25px  color:#F2F0EC  font-weight:700
+        · — VICI
+      <div> margin-top:6px  display:flex  align-items:center  gap:14px  padding:14px 16px  border-radius:18px  background:#0D0D0D
+        <svg> viewBox="0 0 64 64"  width="44"  height="44"  flex-shrink:0  display:block
+          <circle> cx="32"  cy="32"  r="30"  fill="#F2F0EC"
+          <g> fill="#0D0D0D"  fill-opacity="0.3"
+            <circle>×40 r="0.7" first=(60.1,32.0) x[3.9..60.1] y[3.9..60.1]
+          <circle> cx="32"  cy="32"  r="25.5"  fill="none"  stroke="#0D0D0D"  stroke-width="1.1"  stroke-opacity="0.5"
+          <g> transform="translate(0 -2.6)"
+            <path> d="M19.5 22Q27 56 37 30.5"  fill="none"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"  stroke-dasharray="0 4.4"
+            <circle> cx="41"  cy="25"  r="4.2"  fill="#0D0D0D"
+            <path> d="M17 43.5h30"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+          <text> x="32"  y="53.2"  fill="#0D0D0D"  text-anchor="middle"  font-size="6.4"  font-weight="900"  letter-spacing="0.6"
+            · I
+        <div> display:flex  flex-direction:column  gap:2px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC
+            · Rebound, Tier I
+          <span> font-size:13px  font-weight:400  color:#9B968E
+            · A check-in on the day after a slip.
+    <div> position:absolute  left:0  right:0  bottom:0  height:70px  background:linear-gradient(180deg, rgba(30,30,30,0), #111111)
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Save to Log
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Open the enclosure

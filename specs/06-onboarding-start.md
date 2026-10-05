@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/Onboarding Start`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `Onboarding Start`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `Onboarding-Start.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `Onboarding-Start.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -25,9 +33,9 @@ element on the frame is here, in paint order, indented by depth.
       · Back
   <div> position:absolute  left:0  right:0  top:308px  color:rgba(244,243,240,0.55)  font-size:13px  font-weight:600  letter-spacing:0.3px  text-align:center
   <div> position:absolute  left:36px  right:36px  top:338px  color:#F4F3F0  font-size:26px  font-weight:500  letter-spacing:-0.2px  line-height:1.3  text-align:center  text-wrap:balance
-    · Sam, let’s work out when this usually happens.
-  <div> position:absolute  left:44px  right:44px  top:434px  color:rgba(244,243,240,0.7)  font-size:15.5px  font-weight:400  line-height:24px  text-align:center  text-wrap:pretty
-    · It takes about two minutes. Then you’ll see what VICI would focus on first.
+    · Sam, let’s figure out what usually leads you back to porn.
+  <div> position:absolute  left:44px  right:44px  top:466px  color:rgba(244,243,240,0.7)  font-size:15.5px  font-weight:400  line-height:24px  text-align:center  text-wrap:pretty
+    · It’ll take about two minutes. Then we’ll show you what we’d change first.
   <div> position:absolute  left:24px  right:24px  top:744px  height:56px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:28px  cursor:pointer
     <span> color:#131313  font-size:16.5px  font-weight:600
       · Start

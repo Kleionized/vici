@@ -1,0 +1,31 @@
+# count P:351,70,20,20: design 1, app 2
+~ Just now                                 x: 22.7 → 42.7   y: 206 → 219   w: 99.3 → 59.3   h: 43 → 17   bg: rgb(19, 19, 19) → -   radius: 24px → -
+~ Earlier today                            x: 132 → 152   y: 206 → 219   w: 122.8 → 82.8   h: 43 → 17   bg: rgb(255, 255, 255) → -   radius: 24px → -   shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px → -
+~ Yesterday                                x: 264.8 → 284.8   y: 206 → 219   w: 105.5 → 65.5   h: 43 → 17   bg: rgb(255, 255, 255) → -   radius: 24px → -   shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px → -
+~ -                                        bg: rgba(0, 0, 0, 0.043) → rgba(0, 0, 0, 0.04)
+MISSING in app:  div | 64.5 | 338 | 264 | 170 | - | - | - | - | - | -
+MISSING in app:  div | 64.5 | 338 | 132 | 34 | - | - | 0.16 | - | 18px/400/normal/normal/rgb(29, 28, 26) | Sat Jul 18
+MISSING in app:  div | 64.5 | 372 | 132 | 34 | - | - | 0.42 | - | 18px/400/normal/normal/rgb(29, 28, 26) | Sun Jul 19
+~ Today                                    x: 64.5 → 102.3   y: 406 → 411   w: 132 → 56.4   h: 34 → 24
+MISSING in app:  div | 64.5 | 440 | 132 | 34 | - | - | 0.42 | - | 18px/400/normal/normal/rgb(29, 28, 26) | Wed Jul 22
+MISSING in app:  div | 64.5 | 474 | 132 | 34 | - | - | 0.16 | - | 18px/400/normal/normal/rgb(29, 28, 26) | Thu Jul 23
+~ 9                                        x: 196.5 → 212   y: 338 → 344.5   w: 42 → 11   h: 34 → 21
+~ 10                                       x: 196.5 → 208.1   y: 372 → 378.5   w: 42 → 18.8   h: 34 → 21
+~ 11                                       x: 196.5 → 208   y: 406 → 411   w: 42 → 19.1   h: 34 → 24
+~ 12                                       x: 196.5 → 208.4   y: 440 → 446.5   w: 42 → 18.3   h: 34 → 21
+~ 1                                        x: 196.5 → 213.5   y: 474 → 480.5   w: 42 → 7.9   h: 34 → 21
+~ 38                                       x: 238.5 → 251.6   y: 338 → 344.5   w: 48 → 21.8   h: 34 → 21
+~ 39                                       x: 238.5 → 251.6   y: 372 → 378.5   w: 48 → 21.8   h: 34 → 21
+~ 40                                       x: 238.5 → 249.4   y: 406 → 411   w: 48 → 26.2   h: 34 → 24
+~ 41                                       x: 238.5 → 253.1   y: 440 → 446.5   w: 48 → 18.8   h: 34 → 21
+~ 42                                       x: 238.5 → 251.8   y: 474 → 480.5   w: 48 → 21.5   h: 34 → 21
+~ AM                                       x: 286.5 → 294   y: 338 → 344.5   w: 42 → 26.9   h: 34 → 21
+~ PM                                       x: 286.5 → 292.2   y: 372 → 377   w: 42 → 30.7   h: 34 → 24
+~ -                                        opacity: 0.42 → -
+~ -                                        opacity: 0.16 → -
+~ -                                        opacity: 0.16 → -
+~ Cancel                                   x: 24 → 85   y: 517 → 532   w: 172 → 49.9   h: 48 → 18
+~ Save                                     x: 197 → 265.3   y: 517 → 532   w: 172 → 35.5   h: 48 → 18
+~ -                                        bg: rgb(19, 19, 19) → -   radius: 29px → -
+# count P:24,744,345,58: design 1, app 2
+--- 51 design rows, 82 app rows; 23 differing, 5 missing, 33 extra, 0 sub-0.25pt rounding, 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)

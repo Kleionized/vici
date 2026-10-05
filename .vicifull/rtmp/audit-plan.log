@@ -1,0 +1,7 @@
+Where We’d Start: --- 49 design rows, 59 app rows; 6 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)
+Start Here: --- 25 design rows, 36 app rows; 7 differing, 0 missing, 7 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)
+Start Here Step 1: --- 23 design rows, 32 app rows; 6 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015), 2 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)
+Start Here Step 2: --- 28 design rows, 38 app rows; 10 differing, 0 missing, 6 extra, 0 sub-0.25pt rounding, 7 radius-notation only (D015), 3 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)
+Your Plan: --- 45 design rows, 51 app rows; 7 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 7 radius-notation only (D015) (use --all to list extras)
+
+5 frames — clean 4, differing 1, unreachable 0, capture failed 0, no recipe 0

@@ -1,0 +1,93 @@
+== Slip Entry  
+   sig: --- 45 design rows, 51 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Entry.strip.png  .overhaul/verify/slip/Slip-Entry.diff.png  .overhaul/verify/slip/Slip-Entry.overlay.png
+== Slip Close It  
+   sig: --- 33 design rows, 39 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.45 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Close-It.strip.png  .overhaul/verify/slip/Slip-Close-It.diff.png  .overhaul/verify/slip/Slip-Close-It.overlay.png
+== Slip When  
+   sig: --- 52 design rows, 81 app rows; 20 differing, 4 missing, 27 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (7 of 1245888 px > 24), mean Δ 0.45 / regions (frame pt, largest first): 2 /   24,224 4x4  (3 px) /   112,224 4x4  (2 px)
+== Slip Fed  
+   sig: --- 63 design rows, 71 app rows; 10 differing, 2 missing, 5 extra, 3 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (12 of 1245888 px > 24), mean Δ 0.43 / regions (frame pt, largest first): 3 /   144,348 4x8  (6 px) /   28,348 4x4  (4 px)
+== Slip Logged  
+   sig: --- 28 design rows, 35 app rows; 5 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.36 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Logged.strip.png  .overhaul/verify/slip/Slip-Logged.diff.png  .overhaul/verify/slip/Slip-Logged.overlay.png
+== Slip Urge Now  
+   sig: --- 43 design rows, 52 app rows; 5 differing, 2 missing, 6 extra, 1 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (8 of 1245888 px > 24), mean Δ 0.32 / regions (frame pt, largest first): 2 /   352,380 4x4  (4 px) /   36,380 4x4  (3 px)
+== Slip Dont Fail Twice  
+   sig: --- 47 design rows, 52 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Dont-Fail-Twice.strip.png  .overhaul/verify/slip/Slip-Dont-Fail-Twice.diff.png  .overhaul/verify/slip/Slip-Dont-Fail-Twice.overlay.png
+== Slip Stop Here  
+   sig: --- 47 design rows, 52 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Stop-Here.strip.png  .overhaul/verify/slip/Slip-Stop-Here.diff.png  .overhaul/verify/slip/Slip-Stop-Here.overlay.png
+== Slip Third  
+   sig: --- 25 design rows, 31 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.00 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Third.strip.png  .overhaul/verify/slip/Slip-Third.diff.png  .overhaul/verify/slip/Slip-Third.overlay.png
+== Slip Pledge  
+   sig: --- 29 design rows, 40 app rows; 4 differing, 2 missing, 9 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.35 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Pledge.strip.png  .overhaul/verify/slip/Slip-Pledge.diff.png  .overhaul/verify/slip/Slip-Pledge.overlay.png
+== Slip Begin Again  
+   sig: --- 16 design rows, 21 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Begin-Again.strip.png  .overhaul/verify/slip/Slip-Begin-Again.diff.png  .overhaul/verify/slip/Slip-Begin-Again.overlay.png
+== Slip Morning After  
+   sig: --- 20 design rows, 26 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Morning-After.strip.png  .overhaul/verify/slip/Slip-Morning-After.diff.png  .overhaul/verify/slip/Slip-Morning-After.overlay.png
+== Slip Feel Bored  
+   sig: --- 22 design rows, 28 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Bored.strip.png  .overhaul/verify/slip/Slip-Feel-Bored.diff.png  .overhaul/verify/slip/Slip-Feel-Bored.overlay.png
+== Slip Feel Ashamed  
+   sig: --- 27 design rows, 33 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Ashamed.strip.png  .overhaul/verify/slip/Slip-Feel-Ashamed.diff.png  .overhaul/verify/slip/Slip-Feel-Ashamed.overlay.png
+== Slip Feel Lonely  
+   sig: --- 20 design rows, 26 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Lonely.strip.png  .overhaul/verify/slip/Slip-Feel-Lonely.diff.png  .overhaul/verify/slip/Slip-Feel-Lonely.overlay.png
+== Slip Feel Stressed  
+   sig: --- 30 design rows, 37 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Stressed.strip.png  .overhaul/verify/slip/Slip-Feel-Stressed.diff.png  .overhaul/verify/slip/Slip-Feel-Stressed.overlay.png
+== Slip Feel Rejected  
+   sig: --- 26 design rows, 32 app rows; 3 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.43 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Rejected.strip.png  .overhaul/verify/slip/Slip-Feel-Rejected.diff.png  .overhaul/verify/slip/Slip-Feel-Rejected.overlay.png
+== Slip Feel Tired  
+   sig: --- 30 design rows, 37 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Tired.strip.png  .overhaul/verify/slip/Slip-Feel-Tired.diff.png  .overhaul/verify/slip/Slip-Feel-Tired.overlay.png
+== Slip Feel Turned on  
+   sig: --- 39 design rows, 46 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Turned-on.strip.png  .overhaul/verify/slip/Slip-Feel-Turned-on.diff.png  .overhaul/verify/slip/Slip-Feel-Turned-on.overlay.png
+== Slip Feel Not sure  
+   sig: --- 33 design rows, 39 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Feel-Not-sure.strip.png  .overhaul/verify/slip/Slip-Feel-Not-sure.diff.png  .overhaul/verify/slip/Slip-Feel-Not-sure.overlay.png
+== Slip Trigger Late night  
+   sig: --- 27 design rows, 34 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Late-night.strip.png  .overhaul/verify/slip/Slip-Trigger-Late-night.diff.png  .overhaul/verify/slip/Slip-Trigger-Late-night.overlay.png
+== Slip Trigger Scrolling  
+   sig: --- 27 design rows, 34 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Scrolling.strip.png  .overhaul/verify/slip/Slip-Trigger-Scrolling.diff.png  .overhaul/verify/slip/Slip-Trigger-Scrolling.overlay.png
+== Slip Trigger Sexual content  
+   sig: --- 35 design rows, 42 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.44 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Sexual-content.strip.png  .overhaul/verify/slip/Slip-Trigger-Sexual-content.diff.png  .overhaul/verify/slip/Slip-Trigger-Sexual-content.overlay.png
+== Slip Trigger Boredom  
+   sig: --- 22 design rows, 28 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Boredom.strip.png  .overhaul/verify/slip/Slip-Trigger-Boredom.diff.png  .overhaul/verify/slip/Slip-Trigger-Boredom.overlay.png
+== Slip Trigger Loneliness  
+   sig: --- 26 design rows, 32 app rows; 3 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Loneliness.strip.png  .overhaul/verify/slip/Slip-Trigger-Loneliness.diff.png  .overhaul/verify/slip/Slip-Trigger-Loneliness.overlay.png
+== Slip Trigger Stress  
+   sig: --- 30 design rows, 37 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Stress.strip.png  .overhaul/verify/slip/Slip-Trigger-Stress.diff.png  .overhaul/verify/slip/Slip-Trigger-Stress.overlay.png
+== Slip Trigger Argument  
+   sig: --- 19 design rows, 25 app rows; 3 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Argument.strip.png  .overhaul/verify/slip/Slip-Trigger-Argument.diff.png  .overhaul/verify/slip/Slip-Trigger-Argument.overlay.png
+== Slip Trigger Couldn’t sleep  
+   sig: --- 30 design rows, 37 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Couldn-t-sleep.strip.png  .overhaul/verify/slip/Slip-Trigger-Couldn-t-sleep.diff.png  .overhaul/verify/slip/Slip-Trigger-Couldn-t-sleep.overlay.png
+== Slip Trigger Being alone  
+   sig: --- 24 design rows, 31 app rows; 3 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.47 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Being-alone.strip.png  .overhaul/verify/slip/Slip-Trigger-Being-alone.diff.png  .overhaul/verify/slip/Slip-Trigger-Being-alone.overlay.png
+== Slip Trigger Habit  
+   sig: --- 33 design rows, 39 app rows; 3 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Habit.strip.png  .overhaul/verify/slip/Slip-Trigger-Habit.diff.png  .overhaul/verify/slip/Slip-Trigger-Habit.overlay.png
+== Slip Trigger Not sure  
+   sig: --- 26 design rows, 32 app rows; 3 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+   px : mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.43 / regions (frame pt, largest first): 0 / -> .overhaul/verify/slip/Slip-Trigger-Not-sure.strip.png  .overhaul/verify/slip/Slip-Trigger-Not-sure.diff.png  .overhaul/verify/slip/Slip-Trigger-Not-sure.overlay.png

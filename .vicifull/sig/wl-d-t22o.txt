@@ -1,0 +1,43 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Ten minutes, one cue group
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 333 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+rect | 40.2 | 237.3 | 7.7 | 15.4 | - | - | - | - | - | -
+path | 42.9 | 250.1 | 2.2 | 0 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Feeds
+div | 78 | 249 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Unfollow, mute, or block sexualised accounts and recommendation pages.
+div | 24 | 309 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 309 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 318 | 22 | 22 | - | - | - | - | - | -
+circle | 37 | 322 | 11 | 11 | - | - | - | - | - | -
+path | 46.6 | 331.6 | 5.1 | 5.1 | - | - | - | - | - | -
+div | 78 | 309 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 309 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Browser
+div | 78 | 333 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Delete saved links, old tabs, bookmarks, and autofill entries that lead back to porn.
+div | 24 | 393 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 393 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 402 | 22 | 22 | - | - | - | - | - | -
+rect | 36.8 | 405.9 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 45.2 | 405.9 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 36.8 | 414.2 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 45.2 | 414.2 | 5.9 | 5.9 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Apps
+div | 78 | 417 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Delete the app, log out, or move it off the home screen if it repeatedly starts the same sequence.
+div | 24 | 496 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 496 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 505 | 22 | 22 | - | - | - | - | - | -
+path | 36.8 | 509 | 14.3 | 14.2 | - | - | - | - | - | -
+div | 78 | 496 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 496 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Room
+div | 78 | 520 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Move the charger, laptop, or other device away from the place where you usually use porn.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

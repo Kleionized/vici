@@ -1,0 +1,42 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Body first, before the risk
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 333 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+circle | 37.8 | 239.9 | 12.3 | 12.3 | - | - | - | - | - | -
+circle | 41.1 | 243.2 | 5.7 | 5.7 | - | - | - | - | - | -
+path | 41.4 | 238 | 5.3 | 2.2 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Food
+div | 78 | 249 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Decide what your next proper meal is and eat it before you become very hungry.
+div | 24 | 309 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 309 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 318 | 22 | 22 | - | - | - | - | - | -
+path | 39.6 | 321.9 | 8.8 | 14.3 | - | - | - | - | - | -
+path | 40.3 | 327.2 | 7.5 | 0 | - | - | - | - | - | -
+div | 78 | 309 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 309 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Water
+div | 78 | 333 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Fill a bottle or glass now and keep it somewhere you will drink from it.
+div | 24 | 393 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 393 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 402 | 22 | 22 | - | - | - | - | - | -
+path | 35.9 | 406.6 | 14.4 | 14.4 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Sleep
+div | 78 | 417 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Set the next alarm and decide the exact time your phone leaves the bed or sleeping area.
+div | 24 | 477 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 477 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 486 | 22 | 22 | - | - | - | - | - | -
+circle | 36.3 | 489.3 | 15.4 | 15.4 | - | - | - | - | - | -
+path | 44 | 492.8 | 2.9 | 6.2 | - | - | - | - | - | -
+div | 78 | 477 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 477 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Shift work
+div | 78 | 501 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use the same steps before the sleep period that fits your schedule; it does not have to happen at night.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

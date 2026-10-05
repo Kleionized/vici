@@ -1,0 +1,6 @@
+[
+{"name":"s0","noshot":true,"js":"return __btns().map(b=>(b.getAttribute('aria-label')||b.textContent.trim().slice(0,30))+':'+(b.getAttribute('role')||'')).join(' | ')"},
+{"name":"s1","wait":900,"js":"await tap('Range: Months'); await __sleep(900); return __btns().map(b=>(b.getAttribute('aria-label')||b.textContent.trim().slice(0,30))+':'+(b.getAttribute('aria-checked')||b.getAttribute('aria-selected')||'')).join(' | ')"},
+{"name":"s2","wait":900,"js":"await tap('One year'); await __sleep(1200); return __txt().slice(0,300)"},
+{"name":"s3","noshot":true,"js":"await tap('Range: Year'); await __sleep(900); await tap('Three months'); await __sleep(1000); const t=__txt().slice(0,200); await tap('Back'); await __sleep(1000); return [t, location.pathname]"}
+]

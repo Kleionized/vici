@@ -1,0 +1,139 @@
+--- .vicifull/pretty/prev/Morning-Energy.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Morning-Energy.html	2026-09-05 00:22:35
+@@ -19,66 +19,77 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:50%;
+-    | top:-8px;
+-    | width:300px;
+-    | height:300px;
+-    | margin-left:-150px;
+-    | border-radius:50%;
+-    | background:radial-gradient(closest-side, rgba(226,162,90,0.34), rgba(226,162,90,0) 72%);
+-    | filter:blur(4px);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:50%;
+-    | top:118px;
+-    | width:48px;
+-    | height:48px;
+-    | margin-left:-24px;
+-    | border-radius:50%;
+-    | background:#E9D2A4;
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:70px;
+-    | top:96px;
+-    | width:52px;
+-    | height:8px;
+-    | border-radius:5px;
+-    | background:rgba(255,255,255,0.6);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:262px;
+-    | top:120px;
+-    | width:40px;
+-    | height:8px;
+-    | border-radius:5px;
+-    | background:rgba(255,255,255,0.5);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:-80px;
+-    | right:-80px;
+-    | top:180px;
+-    | height:150px;
+-    | border-radius:50% 50% 0 0 / 88px 88px 0 0;
+-    | background:linear-gradient(180deg, #E9E4D6 0%, rgba(244,243,240,0) 80%);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:-150px;
+-    | right:-50px;
+-    | top:204px;
+-    | height:150px;
+-    | border-radius:50% 50% 0 0 / 70px 70px 0 0;
+-    | background:linear-gradient(180deg, #E1DCCB 0%, rgba(244,243,240,0) 80%);
++    | left:0;
++    | right:0;
++    | top:0;
++    | height:212px;
++    | overflow:hidden;
++    | background:linear-gradient(180deg, #F8F4E9 0%, #EFECE1 100%);
++    | box-shadow:0 1px 0 rgba(0,0,0,0.07);
+   ">
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:-8px;
++      | width:300px;
++      | height:300px;
++      | margin-left:-150px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,162,90,0.34), rgba(226,162,90,0) 72%);
++      | filter:blur(4px);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:118px;
++      | width:48px;
++      | height:48px;
++      | margin-left:-24px;
++      | border-radius:50%;
++      | background:#E9D2A4;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:70px;
++      | top:96px;
++      | width:52px;
++      | height:8px;
++      | border-radius:5px;
++      | background:rgba(255,255,255,0.6);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:262px;
++      | top:120px;
++      | width:40px;
++      | height:8px;
++      | border-radius:5px;
++      | background:rgba(255,255,255,0.5);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:-80px;
++      | right:-80px;
++      | top:180px;
++      | height:150px;
++      | border-radius:50% 50% 0 0 / 88px 88px 0 0;
++      | background:linear-gradient(180deg, #E9E4D6 0%, rgba(244,243,240,0) 80%);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:-150px;
++      | right:-50px;
++      | top:204px;
++      | height:150px;
++      | border-radius:50% 50% 0 0 / 70px 70px 0 0;
++      | background:linear-gradient(180deg, #E1DCCB 0%, rgba(244,243,240,0) 80%);
++    ">
++    </div>
+   </div>
+   <div style="
+     | position:absolute;

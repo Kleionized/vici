@@ -1,0 +1,31 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 339.3 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 303 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 369 | 329 | 250 | - | - | - | - | - | -
+div | 32 | 369 | 329 | 45 | - | - | - | - | - | -
+div | 32 | 369 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 377 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 383.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 386.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 385.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 369 | 275 | 45 | - | - | - | - | - | -
+div | 86 | 372 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Set a 60-minute timer and put those apps and sites aside for the hour.
+div | 32 | 440 | 329 | 87 | - | - | - | - | - | -
+div | 32 | 440 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 448 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 451.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 451.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 456.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 459.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 440 | 275 | 87 | - | - | - | - | - | -
+div | 86 | 443 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | You can still cook, walk, read, talk to someone, listen to music you chose, watch one film or episode you picked in advance, or work on a hobby.
+div | 32 | 553 | 329 | 66 | - | - | - | - | - | -
+div | 32 | 553 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 561 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 566.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 570.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 553 | 275 | 66 | - | - | - | - | - | -
+div | 86 | 556 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | If you need to stay reachable, use Do Not Disturb and allow calls from family, favourites, or emergency contacts.

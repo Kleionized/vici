@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q25 Age`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q25 Age`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q25-Age.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q25-Age.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -29,8 +37,6 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:#F4F3F0  font-size:17px  font-weight:500  font-variant-numeric:tabular-nums
       · 24
     <div> width:2px  height:22px  background:#F4F3F0  border-radius:1px
-  <div> position:absolute  left:44px  right:44px  top:365px  color:rgba(244,243,240,0.6)  font-size:13.5px  font-weight:400  line-height:20px  text-align:center  text-wrap:pretty
-    · We use this for the long-term projection later on.
   <div> position:absolute  left:24px  right:24px  top:744px  height:58px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:29px  cursor:pointer
     <span> color:#131313  font-size:17px  font-weight:600  letter-spacing:0.2px
       · Continue

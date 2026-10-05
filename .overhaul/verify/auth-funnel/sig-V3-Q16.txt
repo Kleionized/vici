@@ -1,0 +1,6 @@
+MISSING in app:  svg | -19.6 | 563 | 432.3 | 264 | - | - | - | - | - | -
+~ Stop for now                             type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Do it less                               type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Keep it, just without porn               type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ I’m not sure yet                         type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+--- 47 design rows, 55 app rows; 4 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

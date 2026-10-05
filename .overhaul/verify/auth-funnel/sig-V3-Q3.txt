@@ -1,0 +1,6 @@
+MISSING in app:  svg | -19.6 | 563 | 432.3 | 264 | - | - | - | - | - | -
+# count P:68,619,256,186: design 2, app 3
+~ Yes, several times                       type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Yes, once or twice                       type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ No                                       type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+--- 42 design rows, 50 app rows; 3 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)

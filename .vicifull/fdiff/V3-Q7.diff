@@ -1,0 +1,75 @@
+--- .vicifull/pretty/prev/V3-Q7.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q7.html	2026-09-05 00:22:35
+@@ -152,7 +152,7 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · Where are you usually when it happens?
++    · Where are you usually watching?
+   </div>
+   <div style="
+     | position:absolute;
+@@ -218,6 +218,7 @@
+         | line-height:15px;
+         | color:#131313;
+         | text-align:center;
++        | max-width:86px;
+       ">
+         · In bed
+       </span>
+@@ -247,8 +248,11 @@
+         | line-height:15px;
+         | color:#F4F3F0;
+         | text-align:center;
++        | max-width:86px;
+       ">
+-        · Bathroom
++        · In the
++        <br>
++        · bathroom
+       </span>
+     </div>
+     <div style="
+@@ -278,6 +282,7 @@
+         | line-height:15px;
+         | color:#F4F3F0;
+         | text-align:center;
++        | max-width:86px;
+       ">
+         · At my desk
+       </span>
+@@ -320,8 +325,11 @@
+         | line-height:15px;
+         | color:#F4F3F0;
+         | text-align:center;
++        | max-width:86px;
+       ">
+-        · Living room
++        · In the
++        <br>
++        · living room
+       </span>
+     </div>
+     <div style="
+@@ -368,8 +376,9 @@
+         | line-height:15px;
+         | color:#131313;
+         | text-align:center;
++        | max-width:86px;
+       ">
+-        · Elsewhere at home
++        · Somewhere else at home
+       </span>
+     </div>
+     <div style="
+@@ -399,8 +408,9 @@
+         | line-height:15px;
+         | color:#F4F3F0;
+         | text-align:center;
++        | max-width:86px;
+       ">
+-        · Away from home
++        · Outside home
+       </span>
+     </div>
+   </div>

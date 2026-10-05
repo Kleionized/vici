@@ -1,0 +1,29 @@
+--- .vicifull/pretty/prev/V3-Q6.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/V3-Q6.html	2026-09-05 00:22:35
+@@ -152,7 +152,7 @@
+     | color:#F4F3F0;
+     | text-wrap:pretty;
+   ">
+-    · How do you usually feel just before you start looking?
++    · What are you usually feeling right before?
+   </div>
+   <div style="
+     | position:absolute;
+@@ -363,7 +363,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Low or sad
++        · Low
+       </span>
+     </div>
+     <div style="
+@@ -490,7 +490,7 @@
+         | color:#F4F3F0;
+         | text-align:center;
+       ">
+-        · Nothing much
++        · Nothing in particular
+       </span>
+     </div>
+   </div>

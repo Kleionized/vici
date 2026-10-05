@@ -1,0 +1,11 @@
+<!doctype html><meta charset=utf-8><style>body{margin:0;background:#FAF8F3}.p{position:relative;width:393px;height:230px;background:#FAF8F3;overflow:hidden}</style>
+<!-- V0: HTML div, css filter drop-shadow 18px -->
+<div class="p" id="V0"><div style="position:absolute;left:150px;top:82px;width:92px;height:92px;border-radius:50%;background:#282623;filter:drop-shadow(0 10px 18px rgba(40,38,32,0.28))"></div></div>
+<!-- W0: svg ellipse with css filter blur(4px), the canvas's contact shadow, unscaled -->
+<div class="p" id="W0"><svg viewBox="0 0 393 230" width="393" height="230"><ellipse cx="196" cy="120" rx="44" ry="6" fill="rgba(0,0,0,0.14)" style="filter:blur(4px)"/></svg></div>
+<!-- W1: feGaussianBlur stdDeviation 4 -->
+<div class="p" id="W1"><svg viewBox="0 0 393 230" width="393" height="230"><defs><filter id="w1" x="-200%" y="-200%" width="500%" height="500%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="4"/></filter></defs><ellipse cx="196" cy="120" rx="44" ry="6" fill="rgba(0,0,0,0.14)" filter="url(#w1)"/></svg></div>
+<!-- W2: feGaussianBlur stdDeviation 4, linearRGB (default) -->
+<div class="p" id="W2"><svg viewBox="0 0 393 230" width="393" height="230"><defs><filter id="w2" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="4"/></filter></defs><ellipse cx="196" cy="120" rx="44" ry="6" fill="rgba(0,0,0,0.14)" filter="url(#w2)"/></svg></div>
+<!-- W3: feGaussianBlur stdDeviation 8 -->
+<div class="p" id="W3"><svg viewBox="0 0 393 230" width="393" height="230"><defs><filter id="w3" x="-200%" y="-200%" width="500%" height="500%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="8"/></filter></defs><ellipse cx="196" cy="120" rx="44" ry="6" fill="rgba(0,0,0,0.14)" filter="url(#w3)"/></svg></div>

@@ -1,0 +1,266 @@
+  1 after Splash:  02 · Login
+  2 after Login:  02B · Welcome back
+  3 after Welcome Back:  03 · Name
+  4 after V3 Q24 Name:  04 · Age
+  5 after V3 Q25 Age:  05 · Gender
+  6 after V3 Q26 Gender:  06 · Start
+  7 after Onboarding Start:  07 · Frequency
+  8 after V3 Q1:  08 · How long
+  9 after V3 Q2:  09A · Previous quit attempts
+ 10 after V3 Q3:  09B · Relapse
+ 11 after V3 Q3b:  10 · First principle
+ 12 after First Principle:  11 · When
+ 13 after V3 Q5:  12 · Beforehand
+ 14 after V3 Q6:  13 · Place
+ 15 after V3 Q7:  14 · What starts it
+ 16 after What starts it:  15 · Transition
+ 17 after Transition:  16 · Impact
+ 18 after V3 Q21:  17 · What it affects
+ 19 after What it affects:  18 · Loneliness
+ 20 after V3 Q10:  19 · Time alone
+ 21 after V3 Q13:  20 · Goal
+ 22 after V3 Q15:  21 · Masturbation goal
+ 23 after V3 Q16:  22 · What you’ve tried
+ 24 after V3 Q17:  23 · Goal confirmation
+ 25 after Goal Confirmation:  24 · Build plan
+ 26 after Enlisting Aegis:  25 · This Is Where We’d Start
+ 27 after Where We’d Start:  26 · Start Here
+ 28 after Start Here:  26A · Start Here — Step 1
+ 29 after Start Here Step 1:  26A2 · Start Here — Step 2
+ 30 after Start Here Step 2:  27 · Your Plan
+ 31 after Your Plan:  28 · Your VICI Rating
+ 32 after Starting Score:  29 · The Next 30 Days
+ 33 after Cost Next 30:  30 · One Year From Now
+ 34 after Cost Next 365:  31 · If Nothing Changes
+ 35 after Cost By Age 80:  32 · Change the Line
+ 36 after Change the Line:  32B · A Clean Day
+ 37 after A Clean Day:  33 · One Bad Day
+ 38 after One Bad Day:  34 · What You Want Back
+ 39 after What You Want Back:  35 · Twelve Weeks — I–IV
+ 40 after Campaign Map:  36 · Twelve Weeks — V–VIII
+ 41 after Campaign Map II:  37 · Twelve Weeks — IX–XII
+ 42 after Campaign Map III:  38 · A Letter Arrived
+ 43 after Letter Received:  39 · A Letter From Week XII
+ 44 after Letter Week XII:  40 · The Vow
+ 45 after The Vow:  41 · Medallion Earned
+ 46 after Medallion Received:  42 · Reminders
+ 47 after Reminders Setup:  43 · Paywall
+ 48 after Paywall:  44 · Day 0
+ 49 after Day Zero:  11B · Paywall — Three Days Free
+ 50 after Paywall Rescue:  11C · Paywall — Confirmed
+ 51 after Paywall Confirmed:  15 · Manage Subscription
+ 52 after Manage Subscription:  PERSONALIZATION 19B · Morning check-in time
+ 53 after Morning Check-in Time:  19C · Nightly check-in time
+ 54 after Nightly Check-in Time:  21 · Today
+ 55 after Today Home:  21B · Score Detail
+ 56 after Score Detail:  20B · Score Detail — What Moved It
+ 57 after Score Detail Moves:  20C · Score Detail — Ranks
+ 58 after Score Detail Ranks:  21 · Today — p2
+ 59 after Today Home II:  21p2B · Today — Task summary
+ 60 after Today Home Task:  21 · Today — p3
+ 61 after Today Home III:  21D0 · Morning — Check-in
+ 62 after Morning Check-in Cover:  21D1 · Morning — Yesterday’s task
+ 63 after Morning Task Check:  21D2 · Morning — Yesterday
+ 64 after Morning 1 Yesterday:  21D3 · Morning — Feeling
+ 65 after Morning Feeling:  21D4 · Morning — Energy
+ 66 after Morning Energy:  21D5 · Morning — Re-sign your pledge
+ 67 after Morning Resign Pledge:  21D5B · Morning — Pledge signed
+ 68 after Morning Pledge Signed:  21D6 · Morning — Change the pledge
+ 69 after Change Pledge Sheet:  21D7 · Morning — Done
+ 70 after Morning 5 Done:  21E0 · Night — Check-in
+ 71 after Night Check-in Cover:  21E1 · Night — How was today
+ 72 after Night 1 Mood:  21E2 · Night — Emotions
+ 73 after Checkin Emotions:  21E3 · Night — What caused it
+ 74 after Checkin Reasons:  21E4 · Night — Reflection
+ 75 after Night 3 Reflection:  21E5 · Night — Record
+ 76 after Night 2 Record:  21E5B · Night — Tonight’s action
+ 77 after Night Action Reminder:  21E6 · Night — Closed
+ 78 after Night 4 Closed:  LIBRARY — THE 12-WEEK COURSE 92A · Week I — Reset · i
+ 79 after Week I Reset:  92A2 · Week I — Reset · ii
+ 80 after Week I Reset P2:  92B · Week II — Changing Your Mindset · i
+ 81 after Week II Changing Your Mindset:  92B2 · Week II — Changing Your Mindset · ii
+ 82 after Week II Changing Your Mindset P2:  92C · Week III — In the Moment · i
+ 83 after Week III In the Moment:  92C2 · Week III — In the Moment · ii
+ 84 after Week III In the Moment P2:  92D · Week IV — Know Your Brain · i
+ 85 after Week IV Know Your Brain:  92D2 · Week IV — Know Your Brain · ii
+ 86 after Week IV Know Your Brain P2:  92E · Week V — Why It Feels Worth It · i
+ 87 after Week V Why It Feels Worth It:  92E2 · Week V — Why It Feels Worth It · ii
+ 88 after Week V Why It Feels Worth It P2:  92F · Week VI — Discipline · i
+ 89 after Week VI Discipline:  92F2 · Week VI — Discipline · ii
+ 90 after Week VI Discipline P2:  92G · Week VII — Relapse and Adversity · i
+ 91 after Week VII Relapse and Adversity:  92G2 · Week VII — Relapse and Adversity · ii
+ 92 after Week VII Relapse and Adversity P2:  92H · Week VIII — Boredom and Meaning · i
+ 93 after Week VIII Boredom and Meaning:  92H2 · Week VIII — Boredom and Meaning · ii
+ 94 after Week VIII Boredom and Meaning P2:  92I · Week IX — Connection · i
+ 95 after Week IX Connection:  92I2 · Week IX — Connection · ii
+ 96 after Week IX Connection P2:  92J · Week X — Yourself · i
+ 97 after Week X Yourself:  92J2 · Week X — Yourself · ii
+ 98 after Week X Yourself P2:  92K · Week XI — Build a Life You Want · i
+ 99 after Week XI Build a Life You Want:  92K2 · Week XI — Build a Life You Want · ii
+100 after Week XI Build a Life You Want P2:  92L · Week XII — Leave It Behind · i
+101 after Week XII Leave It Behind:  92L2 · Week XII — Leave It Behind · ii
+102 after Week XII Leave It Behind P2:  URGE SOS — FIRST 90 SECONDS 28 · SOS — First 90 Seconds
+103 after Cue Intro Modal:  28B · SOS — How Strong
+104 after SOS Strength:  29 · SOS — Where Are You
+105 after Cue Hue Picker:  29B · SOS — Command I · Out of Bed
+106 after Surf Step 1:  29C · SOS — Command II · Leave the Room
+107 after Surf Step 3:  29D · SOS — Command III · Phone Away
+108 after Cue Set Confirmation:  30 · SOS — Remove the Trigger
+109 after SOS Reason Picker:  30B · SOS — Name the Feeling
+110 after SOS Feeling Picker:  31 · SOS — The Challenge
+111 after SOS Challenge:  32 · SOS — Where Is It Now
+112 after SOS Reassess:  32B · SOS — Afterward
+113 after SOS Afterward:  33 · SOS — The Wave Passed
+114 after Surf Complete:  34 · SOS — Slipped
+115 after Relapse Log:  36 · Relapse — Don't Fail Twice
+116 after Relapse Twice:  36B · Relapse — Re-sign the Pledge
+117 after Relapse Resign:  37 · Relapse — Begin Again
+118 after Relapse Begin:  URGE HUB — RIDE IT OUT 85A · Urge Hub — Right now
+119 after Urge Hub Now:  85B · Urge Hub — Recovery score
+120 after Urge Hub Score:  85C · Urge Hub — Your proof
+121 after Urge Hub Proof:  85D · Urge Hub — Surfed before
+122 after Urge Hub Surfed:  85E · Urge Hub — Your pledge
+123 after Urge Hub Pledges:  ROUGH DAYS — COPING 95A · SOS — Location · Bed
+124 after SOS Loc Bed:  95B · SOS — Location · Bathroom
+125 after SOS Loc Bathroom:  95C · SOS — Location · Home alone
+126 after SOS Loc Home Alone:  95D · SOS — Location · Private room
+127 after SOS Loc Private Room:  95E · SOS — Location · Work or school
+128 after SOS Loc Work:  95F · SOS — Location · Public
+129 after SOS Loc Public:  95G · SOS — Location · Somewhere else
+130 after SOS Loc Elsewhere:  96A · SOS — Feeling · Turned on
+131 after SOS Feel Turned On:  96B · SOS — Feeling · Bored
+132 after SOS Feel Bored:  96C · SOS — Feeling · Lonely
+133 after SOS Feel Lonely:  96D · SOS — Feeling · Stressed
+134 after SOS Feel Stressed:  96E · SOS — Feeling · Anxious
+135 after SOS Feel Anxious:  96F · SOS — Feeling · Angry
+136 after SOS Feel Angry:  96G · SOS — Feeling · Low
+137 after SOS Feel Low:  96H · SOS — Feeling · Rejected
+138 after SOS Feel Rejected:  96I · SOS — Feeling · Tired
+139 after SOS Feel Tired:  96J · SOS — Feeling · Restless
+140 after SOS Feel Restless:  96K · SOS — Feeling · Numb
+141 after SOS Feel Numb:  96L · SOS — Feeling · Ashamed
+142 after SOS Feel Ashamed:  96M · SOS — Feeling · Don’t know
+143 after SOS Feel Unknown:  97A · SOS — Trigger · Something you saw
+144 after SOS Trig Content:  97B · SOS — Trigger · Doomscrolling
+145 after SOS Trig Doomscroll:  97C · SOS — Trigger · A stuck fantasy
+146 after SOS Trig Fantasy:  97D · SOS — Trigger · Late-night phone
+147 after SOS Trig Late Phone:  97E · SOS — Trigger · Habit
+148 after SOS Trig Habit:  97F · SOS — Trigger · Can’t sleep
+149 after SOS Trig Cant Sleep:  97G · SOS — Trigger · An argument
+150 after SOS Trig Argument:  97H · SOS — Trigger · Rejection
+151 after SOS Trig Rejection:  97I · SOS — Trigger · Being alone
+152 after SOS Trig Alone:  97J · SOS — Trigger · Not sure
+153 after SOS Trig Unknown:  88 · Medallions
+154 after Medallions:  88B · Medallions — Still to earn
+155 after Medallions Still To Earn:  88C · Medallions — Earned II
+156 after Album Earned II:  88D · Breakwater — Paper
+157 after Breakwater Paper:  88E · Breakwater — Bronze
+158 after Breakwater Bronze:  88F · Breakwater — Silver
+159 after Breakwater Silver:  88G · Breakwater — Gold
+160 after Breakwater Gold:  88H · Breakwater — Platinum
+161 after Breakwater Platinum:  88I · Tiers — Vidi
+162 after Tiers Vidi:  88J · Tiers — Vici
+163 after Tiers Vici:  88K · Tiers — Rebound
+164 after Tiers Rebound:  88L · Tiers — Breakwater
+165 after Tiers Breakwater:  88M · Tiers — Logbook
+166 after Tiers Logbook:  88N · Tiers — Pulse
+167 after Tiers Pulse:  88O · Tiers — Archive
+168 after Tiers Archive:  88P · Tiers — Lessons
+169 after Tiers Lessons:  88Q · Tiers — One-offs
+170 after Tiers One-offs:  89A · Vici Detail — Paper
+171 after Detail Paper:  89C · Vici Detail — Bronze
+172 after Detail Bronze:  89D · Vici Detail — Silver
+173 after Detail Silver:  89E · Vici Detail — Gold
+174 after Detail Gold:  89F · Vici Detail — Platinum
+175 after Detail Platinum:  90 · Log — Chooser
+176 after Log Chooser:  90B · Lapse — When
+177 after Lapse When:  90C · Lapse — What fed it
+178 after Lapse Trigger:  90D · Lapse — Logged
+179 after Lapse Done:  91 · Log — Urges
+180 after Log Urges:  91-2 · Log — Check-ins
+181 after Log Check-ins:  91-3 · Log — Reports
+182 after Log Reports:  91A · Urge Overview — Summary
+183 after Urge Overview Summary:  91B · Urge Overview — Strength
+184 after Urge Overview:  91C · Urge Overview — Mood
+185 after Urge Overview Mood:  91D · Urge Overview — When &amp; Where
+186 after Urge Overview When:  91C0 · Report Ready
+187 after Report Ready:  91C · Weekly Report — Score
+188 after Weekly Report:  91C2 · Weekly Report — Days
+189 after Weekly Report Days:  91C3 · Weekly Report — Urges
+190 after Weekly Report Urges:  91D · Urge Log — Intensity
+191 after Urge Log Intensity:  91E · Urge Log — Triggers
+192 after Urge Log Trigger:  91F · Urge Log — Outcome
+193 after Urge Log Outcome:  91G · Urge Log — When
+194 after Urge Log When:  91H · Urge Log — Logged
+195 after Urge Log Done:  92 · Settings
+196 after Settings:  93 · Edit Profile
+197 after Edit Profile:  93B · Profile photo sheet
+198 after Sheet Profile Photo:  93C · Edit name sheet
+199 after Sheet Edit Name:  93D · Weekly report
+200 after Settings Weekly Report:  92B · Night check-in time
+201 after Settings Check-in Time:  92C · Your vow
+202 after Your Vow Page:  92D · Sign out sheet
+203 after Sheet Sign Out:  94 · Data &amp; Privacy
+204 after Data Privacy:  95 · App Lock
+205 after App Lock:  RELAPSE — POST-SLIP 98A · Slip — It Happened
+206 after Slip Entry:  98B · Slip — Close It Now
+207 after Slip Close It:  98C · Slip — When
+208 after Slip When:  98D · Slip — What Fed It
+209 after Slip Fed:  98E · Slip — Logged
+210 after Slip Logged:  98F · Slip — Current Urge
+211 after Slip Urge Now:  98G · Slip — Don’t Fail Twice
+212 after Slip Dont Fail Twice:  98H · Slip — Stop Here
+213 after Slip Stop Here:  98I · Slip — Third Slip
+214 after Slip Third:  98J · Slip — The Pledge Still Stands
+215 after Slip Pledge:  98K · Slip — Begin Again
+216 after Slip Begin Again:  98L · Slip — Morning After
+217 after Slip Morning After:  99A · Slip Feeling — Ashamed
+218 after Slip Feel Ashamed:  99B · Slip Feeling — Bored
+219 after Slip Feel Bored:  99C · Slip Feeling — Lonely
+220 after Slip Feel Lonely:  99D · Slip Feeling — Stressed
+221 after Slip Feel Stressed:  99E · Slip Feeling — Rejected
+222 after Slip Feel Rejected:  99F · Slip Feeling — Tired
+223 after Slip Feel Tired:  99G · Slip Feeling — Turned on
+224 after Slip Feel Turned on:  99H · Slip Feeling — Not sure
+225 after Slip Feel Not sure:  100A · Slip Trigger — Late night
+226 after Slip Trigger Late night:  100B · Slip Trigger — Scrolling
+227 after Slip Trigger Scrolling:  100C · Slip Trigger — Sexual content
+228 after Slip Trigger Sexual content:  100D · Slip Trigger — Boredom
+229 after Slip Trigger Boredom:  100E · Slip Trigger — Loneliness
+230 after Slip Trigger Loneliness:  100F · Slip Trigger — Stress
+231 after Slip Trigger Stress:  100G · Slip Trigger — Argument
+232 after Slip Trigger Argument:  100H · Slip Trigger — Couldn’t sleep
+233 after Slip Trigger Couldn’t sleep:  100I · Slip Trigger — Being alone
+234 after Slip Trigger Being alone:  100J · Slip Trigger — Habit
+235 after Slip Trigger Habit:  100K · Slip Trigger — Not sure
+236 after Slip Trigger Not sure:  ROUTINES &amp; JOURNEY 90B · VICI Post — Arrival
+237 after Letter Arrival:  39 · The Letter — Read
+238 after Letter Read:  39B · Post — Medallion Letter
+239 after Medallion Letter:  39C · Post — The Yearly Drop
+240 after Yearly Drop:  39D · You Received a Drop
+241 after Drop Received:  LESSONS &amp; RIDE IT OUT 84 · Lesson — Frame 1 of 26
+242 after Lesson Scroll 1:  84 · Lesson — Frame 2 of 26
+243 after Lesson Scroll 2:  84 · Lesson — Frame 3 of 26
+244 after Lesson Scroll 3:  84 · Lesson — Frame 4 of 26
+245 after Lesson Scroll 4:  84 · Lesson — Frame 5 of 26
+246 after Lesson Scroll 5:  84 · Lesson — Frame 6 of 26
+247 after Lesson Scroll 6:  84 · Lesson — Frame 7 of 26
+248 after Lesson Scroll 7:  84 · Lesson — Frame 8 of 26
+249 after Lesson Scroll 8:  84 · Lesson — Frame 9 of 26
+250 after Lesson Scroll 9:  84 · Lesson — Frame 10 of 26
+251 after Lesson Scroll 10:  84 · Lesson — Frame 11 of 26
+252 after Lesson Scroll 11:  84 · Lesson — Frame 12 of 26
+253 after Lesson Scroll 12:  84 · Lesson — Frame 13 of 26
+254 after Lesson Scroll 13:  84 · Lesson — Frame 14 of 26
+255 after Lesson Scroll 14:  84 · Lesson — Frame 15 of 26
+256 after Lesson Scroll 15:  84 · Lesson — Frame 16 of 26
+257 after Lesson Scroll 16:  84 · Lesson — Frame 17 of 26
+258 after Lesson Scroll 17:  84 · Lesson — Frame 18 of 26
+259 after Lesson Scroll 18:  84 · Lesson — Frame 19 of 26
+260 after Lesson Scroll 19:  84 · Lesson — Frame 20 of 26
+261 after Lesson Scroll 20:  84 · Lesson — Frame 21 of 26
+262 after Lesson Scroll 21:  84 · Lesson — Frame 22 of 26
+263 after Lesson Scroll 22:  84 · Lesson — Frame 23 of 26
+264 after Lesson Scroll 23:  84 · Lesson — Frame 24 of 26
+265 after Lesson Scroll 24:  84 · Lesson — Frame 25 of 26
+266 after Lesson Scroll 25:  84 · Lesson — Frame 26 of 26

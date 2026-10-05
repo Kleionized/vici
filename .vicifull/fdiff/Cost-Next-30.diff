@@ -1,0 +1,125 @@
+--- .vicifull/pretty/prev/Cost-Next-30.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Cost-Next-30.html	2026-09-05 00:22:35
+@@ -103,45 +103,33 @@
+     | position:absolute;
+     | left:32px;
+     | right:32px;
+-    | top:152px;
++    | top:150px;
+     | text-align:center;
+     | font-size:26px;
+     | font-weight:500;
+     | letter-spacing:-0.2px;
+     | color:#1D1C1A;
+   ">
++    · This is your next 30 days.
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:32px;
+-    | right:32px;
+-    | top:190px;
+-    | text-align:center;
+-    | font-size:26px;
+-    | font-weight:500;
+-    | letter-spacing:-0.2px;
+-    | color:#1D1C1A;
+-  ">
+-    · This is your next 30 days
+-  </div>
+-  <div style="
+-    | position:absolute;
+     | left:44px;
+     | right:44px;
+-    | top:238px;
++    | top:198px;
+     | text-align:center;
+     | font-size:14.5px;
+     | font-weight:400;
+     | line-height:21px;
+     | color:#55534E;
+   ">
+-    · At the rate you reported, about 9 of the next 30 days end the same way.
++    · If the rate you reported stayed the same, about 9 of the next 30 days could end with porn.
+   </div>
+   <div style="
+     | position:absolute;
+     | left:24px;
+     | right:24px;
+-    | top:308px;
++    | top:284px;
+     | border-radius:20px;
+     | background:#FFFFFF;
+     | box-shadow:0 0 0 1px rgba(0,0,0,0.09);
+@@ -358,6 +346,71 @@
+   </div>
+   <div style="
+     | position:absolute;
++    | left:0;
++    | right:0;
++    | top:606px;
++    | display:flex;
++    | justify-content:center;
++    | align-items:center;
++    | gap:22px;
++  ">
++    <div style="
++      | display:flex;
++      | align-items:center;
++      | gap:8px;
++    ">
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:4px;
++        | background:#131313;
++      ">
++      </div>
++      <span style="
++        | font-size:13px;
++        | font-weight:500;
++        | color:#55534E;
++      ">
++        · Relapse
++      </span>
++    </div>
++    <div style="
++      | display:flex;
++      | align-items:center;
++      | gap:8px;
++    ">
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:4px;
++        | background:#F7F6F3;
++        | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.10);
++      ">
++      </div>
++      <span style="
++        | font-size:13px;
++        | font-weight:500;
++        | color:#55534E;
++      ">
++        · Clean day
++      </span>
++    </div>
++  </div>
++  <div style="
++    | position:absolute;
++    | left:44px;
++    | right:44px;
++    | top:660px;
++    | text-align:center;
++    | font-size:15.5px;
++    | font-weight:500;
++    | line-height:22px;
++    | color:#1D1C1A;
++  ">
++    · The line can start changing with the next one.
++  </div>
++  <div style="
++    | position:absolute;
+     | left:24px;
+     | right:24px;
+     | top:744px;

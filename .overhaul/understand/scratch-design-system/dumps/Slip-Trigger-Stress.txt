@@ -1,0 +1,37 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · What fed it
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="224"  height="7"  x="84"  y="188"  rx="3.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="96"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="290"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <path> d="M287 106 C 282.16 98.08, 291.84 91.92, 287 84"  fill="none"  stroke="#A8A39A"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M298 99 C 301.08 93.96, 294.92 90.04, 298 85"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M174 112 C 174 78, 218 78, 218 112"  fill="none"  stroke="#F2F0EC"  stroke-width="8"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M138 184 C 140 142, 160 118, 196 118 C 232 118, 252 142, 254 184 Z"  fill="#F2F0EC"
+    <rect> width="52"  height="12"  x="170"  y="110"  rx="6"  fill="#F2F0EC"
+    <circle> cx="196"  cy="104"  r="6"  fill="#F2F0EC"
+    <path> d="M244 150 L282 116 L294 126 L252 170 Z"  fill="#F2F0EC"
+    <rect> width="128"  height="8"  x="132"  y="180"  rx="4"  fill="#F2F0EC"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+    <path> d="M160 152 C 160 138, 166 130, 174 126"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M106 152 C 102.92 146.96, 109.08 143.04, 106 138"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M116 148 C 119 144.4, 113 141.6, 116 138"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <rect> width="30"  height="28"  x="96"  y="160"  rx="5"  fill="#F2F0EC"
+    <rect> width="20"  height="3"  x="101"  y="165"  rx="1.5"  fill="#0D0D0D"
+    <path> d="M96 168 h-6 a8 8 0 0 0 0 16 h6"  fill="none"  stroke="#F2F0EC"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Contained break.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · Step away from the problem properly. Name one task for later — just one.
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Done
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Give me another

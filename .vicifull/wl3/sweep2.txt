@@ -1,0 +1,38 @@
+### lesson 14
+  RAW 472 px over 6 (0.038% of 1254456) mean 60 max 120   [status-bar rows y<54: 0 | body y>=54: 472]
+    cell 208,336: 13 px worst 20
+  BLOCKS (y>=54 css only): 29 over 4, 0 survive a +/-1 device-px nudge
+### lesson 41
+  RAW 418 px over 6 (0.033% of 1254456) mean 55 max 115   [status-bar rows y<54: 0 | body y>=54: 418]
+    cell 160,336: 11 px worst 10
+  BLOCKS (y>=54 css only): 26 over 4, 0 survive a +/-1 device-px nudge
+### lesson 43
+  RAW 486 px over 6 (0.039% of 1254456) mean 61 max 116   [status-bar rows y<54: 0 | body y>=54: 486]
+    cell 240,288: 19 px worst 49
+  BLOCKS (y>=54 css only): 17 over 4, 0 survive a +/-1 device-px nudge
+### lesson 50
+  RAW 110 px over 6 (0.009% of 1254456) mean 38 max 127   [status-bar rows y<54: 0 | body y>=54: 110]
+### lesson 7
+  RAW 1253043 px over 6 (99.887% of 1254456) mean 30 max 244   [status-bar rows y<54: 0 | body y>=54: 1253043]
+    cell 144,64: 1024 px worst 15
+  BLOCKS (y>=54 css only): 19500 over 4, 19500 survive a +/-1 device-px nudge
+    236.0 at css 40,714
+    236.0 at css 44,714
+    236.0 at css 48,714
+### lesson 26
+  RAW 212 px over 6 (0.017% of 1254456) mean 17 max 54   [status-bar rows y<54: 0 | body y>=54: 212]
+    cell 208,256: 9 px worst 29
+  BLOCKS (y>=54 css only): 1 over 4, 0 survive a +/-1 device-px nudge
+### lesson 17
+  RAW 427 px over 6 (0.034% of 1254456) mean 19 max 46   [status-bar rows y<54: 0 | body y>=54: 427]
+    cell 224,320: 13 px worst 39
+  BLOCKS (y>=54 css only): 0 over 4, 0 survive a +/-1 device-px nudge
+### task 7
+  RAW 905 px over 6 (0.072% of 1254456) mean 37 max 120   [status-bar rows y<54: 0 | body y>=54: 905]
+    cell 192,416: 33 px worst 14
+  BLOCKS (y>=54 css only): 28 over 4, 1 survive a +/-1 device-px nudge
+    4.5 at css 320,338
+### task 75
+  RAW 405 px over 6 (0.032% of 1254456) mean 59 max 119   [status-bar rows y<54: 0 | body y>=54: 405]
+    cell 80,304: 13 px worst 17
+  BLOCKS (y>=54 css only): 25 over 4, 0 survive a +/-1 device-px nudge

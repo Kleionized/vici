@@ -1,0 +1,202 @@
+{
+  "group": "medallions",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 22 frames were re-captured independently (sig prefix `v-medallions-`, shots `.vicifull/shots/v-med-*`, 46 signatures, 50 PNGs) and every one was driven to successfully — the recipes in `.vicifull/recipes/medallions.json` are accurate and reproducible. I also read every PNG and ran a whole-image pixel diff (`.vicifull/v-pxdiff.mjs`, status bar excluded) rather than trusting signatures, because `.vicifull/mdiff.mjs` forgives `background`/`border-radius`/`shadow` on *any* row where the app side is bare — which is exactly what a lost background also looks like.\n\nThe implementation is genuinely strong. The nine `Tiers *` pages are pixel-identical to the canvas (mean abs delta 0.57–0.70 / 255, zero pixels over 32); `Medallions` is 0.35; `Medallions Still To Earn` 0.55; the five `Breakwater *` boards 0.57–1.41 apart from the noise issue below. Every string, type metric, colour, box and rung on the nine ladders and the five Breakwater boards matches character for character. Navigation is real: the detail pill opens `/medallions/tiers/<key>` (verified for an earned metal, an unearned face, and a one-off → `/medallions/tiers/once`), the album pushes the right `?tier=`, and `/milestones` is reachable from profile, dashboard and All. `tsc --noEmit` and `eslint` on the five files both exit 0. There is no SVG trap: `KKMedallion`'s `<Svg>` is the only child of a plain `View`, no absolutely-positioned sibling, and the art is visibly present in every PNG.\n\nTwo defects survive that the implementing agent did not report, one of them affecting ten frames. Four further mismatches are real but were disclosed as decisions (D057, D062); I've listed them so the count is honest, and I've flagged one factual error in D057's stated evidence.\n\nNEW DEFECT 1 — the detail screens' background grain is stretched instead of tiled, on all ten `Breakwater *` and `Detail *` frames. `src/app/medallions/[key].tsx:185` draws the noise with expo-image `contentFit=\"cover\"`, which scales the 96×96 `noise-dark.png` to fill 393×852 (≈4× wide, ≈9× tall). The canvas states `background-image: url('noise-dark.png')`, which repeats at native size, and every other screen in the app uses the shared `<Grain>` component (`src/components/ui/Grain.tsx:17`, `resizeMode=\"repeat\"`) — including `src/app/medallions/tiers/[key].tsx` and `src/app/(app)/milestones.tsx`, which is why those pages are clean and these ten are not. Side-by-side crops of the same 200×250pt region show fine 1px speckle on the design and soft blobs tens of points across on the app. It is invisible to the signature (no row carries a texture) and it is exactly the \"clean signature, wrong art\" failure this project was told to watch for.\n\nNEW DEFECT 2 — `Album Earned II` cannot be reached at the canvas's position. Measured scroller: viewport 290→769 (h 479), scrollHeight 1015, max scrollTop 536; row 4's content offset is 555, so the grid bottoms out with Logbook/Pulse at y 309 and Black Box/Lessons at 494, where the canvas draws 290 and 475 — a uniform 19pt shortfall on every row and every coin (whole-image delta jumps to mean 6.11, 4.05% of pixels over 32). `src/app/(app)/milestones.tsx:239` sets `paddingBottom: tabBar + 24` = 107; 126 is required. Contrary to the implementing agent's note, the frame *does* state that number: `Album Earned II` leaves exactly 126pt between the last card's bottom edge (643) and the tab bar (769).\n\nVerification-record inaccuracies worth correcting: (a) the claimed `mdiff --dy=19 → 0 differing` for `Album Earned II` does not reproduce — `--dy=19` shifts the header, rail and tab bar too, giving 26 missing / 3 differing; (b) D057 argues the five-rung model from \"the `Medallions` album card for Vici was re-lined **this drop** from `Tier II · ×5` to `Tier I · ×5`\", but all 22 medallions frames are byte-identical between `.vicifull/prev/Email-Login/` and `.vicifull/final/Email-Login/` (no fdiff files exist for any of them), so nothing was re-lined this drop. The five-rung reading is still the better one — two current frames (`Medallions`, `Tiers Vici`) against one (`Detail *`) — but the decision log's evidence should be fixed.\n\nCross-group, and broader than reported: the retired `Back on Deck` face's storage keys `tideline.post.backondeck.pending/delivered` survive in five files, not the two named — `src/app/medallion-post.tsx:47`, `src/app/(app)/_layout.tsx:14-15`, `src/app/mail.tsx:30`, `src/app/urge-log.tsx:446`, `src/components/urge/index.tsx:2618`. The report's claim that `medallion-post.tsx` still delivers \"Back on Deck / Tier II · The Return\" is now stale — that file has since been rewritten to read the face off `kkFace('vici')` and drops the eyebrow and chip, matching `Medallion Received`'s current cut. Minor dead code: `KKMedallion`'s `progress` prop (and the in-progress arc it draws, `src/components/keepsakes/Medallion.tsx:406-421`) is never passed by any caller.",
+  "findings": [
+    {
+      "frame": "Breakwater Paper",
+      "element": "the board's grain layer, full-bleed 393×852 behind everything",
+      "property": "background-image tiling",
+      "design": "background-image: url('noise-dark.png') — a 96×96 asset, CSS default `repeat`, laid twice at opacity 0.07",
+      "app": "expo-image <Image source={noiseDark} contentFit=\"cover\"> — the 96×96 tile stretched to 393×852, so the grain becomes soft blobs tens of points across instead of 1px speckle (src/app/medallions/[key].tsx:185)",
+      "confidence": "certain",
+      "note": "Not one of the two known equivalences. Verified by cropping the same 200×250pt region from both PNGs: design = fine speckle, app = large smooth blotches. The rest of the app draws this correctly through src/components/ui/Grain.tsx:17 (resizeMode=\"repeat\"), including the tiers screen and milestones — so this file is the only one that diverges. Invisible to sigdiff/mdiff: no signature row carries a texture."
+    },
+    {
+      "frame": "Breakwater Bronze",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96, two layers at 0.07",
+      "app": "same 96×96 asset stretched to fill 393×852 (contentFit=\"cover\")",
+      "confidence": "certain",
+      "note": "Same single line, src/app/medallions/[key].tsx:185. (The lightning-bolt glyph at the bottom-left of .vicifull/shots/v-med-a-BW-bronze.png is the Expo dev-refresh badge, not app content — it accounts for the 212 worst-pixel on that pair alone.)"
+    },
+    {
+      "frame": "Breakwater Silver",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96",
+      "app": "stretched to 393×852",
+      "confidence": "certain",
+      "note": "src/app/medallions/[key].tsx:185."
+    },
+    {
+      "frame": "Breakwater Gold",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96",
+      "app": "stretched to 393×852",
+      "confidence": "certain",
+      "note": "src/app/medallions/[key].tsx:185. Everything else on this board matches: both glows, the mount ring #F5EBD2, the coin, all type (mean pixel delta 1.41, zero pixels over 32)."
+    },
+    {
+      "frame": "Breakwater Platinum",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96, one layer at opacity 0.12",
+      "app": "stretched to 393×852",
+      "confidence": "certain",
+      "note": "src/app/medallions/[key].tsx:185. The night board is otherwise excellent — mean delta 0.57."
+    },
+    {
+      "frame": "Detail Paper",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96, two layers at 0.07",
+      "app": "stretched to 393×852",
+      "confidence": "certain",
+      "note": "src/app/medallions/[key].tsx:185 — same screen file serves all ten detail frames."
+    },
+    {
+      "frame": "Detail Bronze",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96",
+      "app": "stretched to 393×852",
+      "confidence": "certain"
+    },
+    {
+      "frame": "Detail Silver",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96",
+      "app": "stretched to 393×852",
+      "confidence": "certain"
+    },
+    {
+      "frame": "Detail Gold",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96",
+      "app": "stretched to 393×852",
+      "confidence": "certain"
+    },
+    {
+      "frame": "Detail Platinum",
+      "element": "the board's grain layer",
+      "property": "background-image tiling",
+      "design": "noise-dark.png repeated at 96×96, one layer at 0.12",
+      "app": "stretched to 393×852",
+      "confidence": "certain"
+    },
+    {
+      "frame": "Album Earned II",
+      "element": "the whole card grid — Logbook/Pulse row and Black Box/Lessons row, and every coin, name and rung inside them",
+      "property": "top (scroll rest position)",
+      "design": "row 4 card top 290, row 5 card top 475; card text baselines at 394.1 / 416.9 and 579.1 / 601.9",
+      "app": "row 4 card top 309, row 5 card top 494; text at 413.1 / 435.9 and 598.1 / 620.9 — a uniform +19",
+      "confidence": "certain",
+      "note": "Measured directly: scroller rect 290→769 (h 479), scrollHeight 1015, max scrollTop 536, row-4 content offset 555 → 290+555−536 = 309. src/app/(app)/milestones.tsx:239 sets paddingBottom: tabBar + 24 = 107; 126 is needed. The frame states 126 itself — it is the gap it draws between the last card's bottom (643) and the tab bar (769). The implementing agent's note that 'no frame states' this bottom padding is wrong. Whole-image delta for this pair is mean 6.11 / 4.05% of pixels over 32, by far the worst in the group; every other pair is under 2.7."
+    },
+    {
+      "frame": "Album Earned II",
+      "element": "the Lessons coin's low sun (app draws an SVG circle 38.1×38.1 at 265.9, 524.2 filled with a #E2BA78 0.42→0 radial)",
+      "property": "presence of the warm radial behind the device",
+      "design": "absent — this earned card carries field + two dunes + device only",
+      "app": "present",
+      "confidence": "certain",
+      "note": "A real, confirmed mismatch, but a deliberate one: DECISIONS D062 rules Lessons' missing sun a canvas slip and follows the rule the other twenty cards keep. Not one of the two known equivalences. If the parity standard is 'the frame wins', this row should be removed; the judgement is defensible but it is a live deviation, not a match."
+    },
+    {
+      "frame": "Medallions Still To Earn",
+      "element": "the Return coin's low sun — design div at right:6% top:34% 44%×44% (box 289, 339.2, 29.9×29.9, radial-gradient rgba(226,186,120,0.42)→0 at 75%)",
+      "property": "presence of the warm radial behind the device",
+      "design": "present",
+      "app": "absent",
+      "confidence": "certain",
+      "note": "The mirror image of the Lessons case, also D062 (the canvas box is a byte-copy of Vidi's, on an unearned card). This is the single 'MISSING in app' row in the whole Still To Earn signature; everything else on that frame is exact."
+    },
+    {
+      "frame": "Detail Paper",
+      "element": "the pill under the coin (design box 133.6, 424, 125.8×30)",
+      "property": "text",
+      "design": "Not yet · first ×1",
+      "app": "Not yet · first ×5",
+      "confidence": "certain",
+      "note": "Deliberate, DECISIONS D057 — the app carries the five-rung Vici ladder that `Tiers Vici` and `Medallions` state, and Detail * models the retired seven-rung one. The pill's shape, geometry, skin and type all match exactly; only the number differs. Flagged because D057's supporting evidence is wrong: it claims the Medallions album card was 're-lined this drop', but all 22 medallions frames are byte-identical between .vicifull/prev and .vicifull/final."
+    },
+    {
+      "frame": "Detail Paper",
+      "element": "the card's quote line (32, 550, 329×42)",
+      "property": "text",
+      "design": "“Nine minutes, start to finish. You watched it rise, crest, and leave without you.” — waiting at ×1.",
+      "app": "“Five ridden. Each one shortens the next.” — waiting at ×5.",
+      "confidence": "certain",
+      "note": "Same cause (D057). The card heading 'What waits at tier one', the box, the 14/21 type and the colour all match exactly."
+    },
+    {
+      "frame": "Detail Bronze",
+      "element": "pill and card quote",
+      "property": "text",
+      "design": "pill 'Tier I · ×1'; quote “Nine minutes, start to finish. You watched it rise, crest, and leave without you.”",
+      "app": "pill 'Tier II · ×25'; quote “Twenty-five behind you now — the pattern is unmistakable.”",
+      "confidence": "certain",
+      "note": "Deliberate (D057). Geometry, bronze skin, glow, mount ring #F2E8DA and every type metric match; only the rung content differs."
+    },
+    {
+      "frame": "Detail Silver",
+      "element": "pill and card quote",
+      "property": "text",
+      "design": "pill 'Tier III · ×25'; quote “Twenty-five behind you now — the pattern is unmistakable.”",
+      "app": "pill 'Tier III · ×100'; quote “A hundred waves met and outlasted. This stopped being a fight you were unsure of a while ago.”",
+      "confidence": "certain",
+      "note": "Deliberate (D057)."
+    },
+    {
+      "frame": "Detail Gold",
+      "element": "pill and card quote",
+      "property": "text",
+      "design": "pill 'Tier IV · ×100'; quote “A hundred waves met and outlasted. This stopped being a fight you were unsure of a while ago.”",
+      "app": "pill 'Tier IV · ×250'; quote “Two hundred and fifty. Vici isn’t a moment anymore. It’s just what you do.”",
+      "confidence": "certain",
+      "note": "Deliberate (D057)."
+    },
+    {
+      "frame": "Detail Platinum",
+      "element": "the pill under the coin",
+      "property": "text",
+      "design": "Tier VII · ×1,000",
+      "app": "Tier V · ×1,000",
+      "confidence": "certain",
+      "note": "Deliberate (D057). The platinum quote itself matches verbatim, and the night board is otherwise the closest of the five (mean delta 0.72)."
+    },
+    {
+      "frame": "Tiers Vidi",
+      "element": "the four struck coins' inner bevel (design div inset:3px, 58×58 at 39/329, 39/439, 39/549, 39/659, box-shadow inset 0 0 0 1.5px rgba(255,255,255,0.4), inset 0 -7px 12px rgba(0,0,0,0.14))",
+      "property": "box-shadow (inset)",
+      "design": "a CSS inset shadow: 1.5px white hairline ring plus a 12px-blur dark seat rising 7px from the bottom",
+      "app": "no such box — redrawn inside the SVG as a Circle hairline plus a vertical black 0→alpha wash (src/components/keepsakes/Medallion.tsx:369-374, 395-399)",
+      "confidence": "likely",
+      "note": "Reported as four 'MISSING in app' rows on every tiered Tiers frame and one on each metal Detail/Breakwater frame. I judge this NOT a defect: react-native-svg has no inner-shadow blur, the substitution is documented (D058/D059), and the whole-image pixel diff for all nine Tiers pages is mean 0.57–0.70/255 with zero pixels over 32 — the bevel is visually reproduced. Listed only so the signature rows are accounted for rather than silently forgiven by mdiff.mjs."
+    },
+    {
+      "frame": "Medallions",
+      "element": "src/app/medallion-post.tsx, src/app/(app)/_layout.tsx, src/app/mail.tsx, src/app/urge-log.tsx, src/components/urge/index.tsx",
+      "property": "persisted gate keys naming a withdrawn face",
+      "design": "the album no longer contains 'Back on deck'",
+      "app": "the keys 'tideline.post.backondeck.pending' and 'tideline.post.backondeck.delivered' remain in five files (medallion-post.tsx:47, (app)/_layout.tsx:14-15, mail.tsx:30, urge-log.tsx:446, components/urge/index.tsx:2618)",
+      "confidence": "likely",
+      "note": "Cross-group, no visual effect — the strings are storage keys, and medallion-post.tsx has since been rewritten to deliver Vici (the report's claim that it still shows 'Back on Deck / Tier II · The Return' is stale). Named because the implementing agent listed only two of the five sites."
+    },
+    {
+      "frame": "Medallions",
+      "element": "KKMedallion's `progress` prop and the in-progress arc it draws (src/components/keepsakes/Medallion.tsx:406-421)",
+      "property": "dead code",
+      "design": "the canvas draws no in-progress ring on any of the 22 frames",
+      "app": "the code path exists but no caller passes `progress` (milestones.tsx:311, medallions/[key].tsx:219, tiers/[key].tsx:141, profile.tsx:164 all omit it), so nothing renders",
+      "confidence": "certain",
+      "note": "Not a visual defect — confirmed by inspection of every call site and by the clean album signatures. Worth removing so a later edit cannot accidentally light up art the canvas does not state."
+    }
+  ]
+}

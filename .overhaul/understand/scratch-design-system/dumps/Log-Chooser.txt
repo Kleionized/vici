@@ -1,0 +1,57 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:506px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="248"  height="7"  x="72"  y="188"  rx="3.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="84"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="302"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <path> d="M96 110 Q148 100 196 114 Q244 100 296 110 V186 Q246 178 196 190 Q146 178 96 186 Z"  fill="#55524D"
+    <path> d="M102 106 Q150 96 194 110 V186 Q150 174 102 182 Z"  fill="#F2F0EC"
+    <path> d="M290 106 Q242 96 198 110 V186 Q242 174 290 182 Z"  fill="#F2F0EC"
+    <path> d="M114 122 Q150 112 182 124 M114 136 Q150 126 182 138 M114 150 Q150 140 182 152 M114 164 Q136 157 156 160"  fill="none"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M278 122 Q242 112 210 124 M278 136 Q242 126 210 138 M278 150 Q242 140 210 152"  fill="none"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M258 102 H266 V192 L262 187.5 L258 192 Z"  fill="#55524D"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · What are you logging?
+    <div> height:6px
+    <div> display:flex  flex-direction:column  gap:12px
+      <div> height:84px  border-radius:22px  background:#1E1E1E  display:flex  align-items:center  gap:16px  padding:0 20px  box-sizing:border-box
+        <div> width:44px  height:44px  border-radius:50%  background:transparent  box-shadow:0 0 0 1.5px #2E2E2E  display:flex  align-items:center  justify-content:center  flex-shrink:0
+          <svg> viewBox="0 0 22 22"  width="22"  height="22"
+            <path> d="M11 3v3M11 16v3M3 11h3M16 11h3M6 6l2 2M14 14l2 2M6 16l2-2M14 8l2-2"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> flex:1  display:flex  flex-direction:column  gap:3px
+          <span> font-size:17px  font-weight:700  color:#F2F0EC
+            · Daily check-in
+          <span> font-size:13px  font-weight:400  color:#9B968E
+            · Mood, energy, the pledge
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> height:84px  border-radius:22px  background:#F2F0EC  display:flex  align-items:center  gap:16px  padding:0 20px  box-sizing:border-box
+        <div> width:44px  height:44px  border-radius:50%  background:transparent  box-shadow:0 0 0 1.5px rgba(17,17,17,0.3)  display:flex  align-items:center  justify-content:center  flex-shrink:0
+          <svg> viewBox="0 0 22 22"  width="22"  height="22"
+            <path> d="M3 15c3 0 4-6 8-6s5 6 8 6M3 18c3 0 4-3 8-3s5 3 8 3"  fill="none"  stroke="#111111"  stroke-width="1.8"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> flex:1  display:flex  flex-direction:column  gap:3px
+          <span> font-size:17px  font-weight:700  color:#111111
+            · An urge
+          <span> font-size:13px  font-weight:400  color:rgba(17,17,17,0.6)
+            · How strong, what fed it, what you did
+        <div> width:10px  height:10px  border-radius:5px  background:#1E1E1E
+      <div> height:84px  border-radius:22px  background:#1E1E1E  display:flex  align-items:center  gap:16px  padding:0 20px  box-sizing:border-box
+        <div> width:44px  height:44px  border-radius:50%  background:transparent  box-shadow:0 0 0 1.5px #2E2E2E  display:flex  align-items:center  justify-content:center  flex-shrink:0
+          <svg> viewBox="0 0 22 22"  width="22"  height="22"
+            <path> d="M3 12c3 0 5-4 8-4s3 8 6 8 2-4 2-4"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> flex:1  display:flex  flex-direction:column  gap:3px
+          <span> font-size:17px  font-weight:700  color:#F2F0EC
+            · A lapse
+          <span> font-size:13px  font-weight:400  color:#9B968E
+            · When, what fed it, what changes
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

@@ -1,0 +1,75 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · When was it?
+    <div> height:2px
+    <div> display:flex  gap:10px
+      <div> height:44px  border-radius:22px  background:#F2F0EC  display:flex  align-items:center  padding:0 18px  font-size:14px  font-weight:700  color:#111111  white-space:nowrap
+        · Just now
+      <div> height:44px  border-radius:22px  background:#1E1E1E  display:flex  align-items:center  padding:0 18px  font-size:14px  font-weight:700  color:#F2F0EC  white-space:nowrap
+        · Earlier today
+      <div> height:44px  border-radius:22px  background:#1E1E1E  display:flex  align-items:center  padding:0 18px  font-size:14px  font-weight:700  color:#F2F0EC  white-space:nowrap
+        · Yesterday
+    <div> height:6px
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+      · Or choose a time
+    <div> position:relative  height:220px  display:flex  justify-content:center  gap:10px
+      <div> position:absolute  left:40px  right:40px  top:88px  height:44px  border-radius:14px  background:#1E1E1E
+      <div> position:relative  display:flex  gap:12px
+        <div> width:70px  display:flex  flex-direction:column  align-items:center
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+            · 9
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+            · 10
+          <div> height:44px  display:flex  align-items:center  font-size:30px  font-weight:900  color:#F2F0EC
+            · 11
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+            · 12
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+            · 1
+        <div> height:220px  display:flex  align-items:center  font-size:30px  font-weight:700  color:#F2F0EC
+          · :
+        <div> width:70px  display:flex  flex-direction:column  align-items:center
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+            · 38
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+            · 39
+          <div> height:44px  display:flex  align-items:center  font-size:30px  font-weight:900  color:#F2F0EC
+            · 40
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+            · 41
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+            · 42
+        <div> width:60px  display:flex  flex-direction:column  align-items:center
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+            · AM
+          <div> height:44px  display:flex  align-items:center  font-size:30px  font-weight:900  color:#F2F0EC
+            · PM
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#9B968E
+          <div> height:44px  display:flex  align-items:center  font-size:22px  font-weight:400  color:#2E2E2E
+    <div> display:flex  justify-content:space-between  align-items:center  height:44px  border-radius:14px  background:#1E1E1E  padding:0 6px 0 18px  box-sizing:border-box
+      <span> font-size:15px  font-weight:700  color:#F2F0EC
+        · Tonight, Tue Jul 22
+      <div> height:32px  border-radius:16px  background:#0D0D0D  display:flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  color:#F2F0EC
+        · Change
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Log the urge

@@ -1,0 +1,10 @@
+### L2 Frame 09 (Week-01-Reset)
+  RAW 0 px over 6 (0.000% of 1254456) mean 0 max 0   [status-bar rows y<54: 0 | body y>=54: 0]
+### L2 Frame 14 (Week-01-Reset)
+  RAW 0 px over 6 (0.000% of 1254456) mean 0 max 0   [status-bar rows y<54: 0 | body y>=54: 0]
+### L22 Frame 05 (Week-04-Know-Your-Brain)
+  RAW 0 px over 6 (0.000% of 1254456) mean 0 max 0   [status-bar rows y<54: 0 | body y>=54: 0]
+### L50 Frame 12 (Week-08-Boredom-and-Meaning)
+  RAW 0 px over 6 (0.000% of 1254456) mean 0 max 0   [status-bar rows y<54: 0 | body y>=54: 0]
+### L84 Frame 07 (Week-12-Leave-It-Behind)
+  RAW 0 px over 6 (0.000% of 1254456) mean 0 max 0   [status-bar rows y<54: 0 | body y>=54: 0]

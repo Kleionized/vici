@@ -87,6 +87,8 @@ export default defineSchema({
       reminderTime: v.optional(v.string()),
       theme: v.optional(v.string()),
       premium: v.optional(v.boolean()),
+      // The yearly-drop enclosure was claimed — the year at the drop's price.
+      yearlyDrop: v.optional(v.boolean()),
       morningCheckin: v.optional(v.boolean()),
       riskTimeSupport: v.optional(v.boolean()),
       eveningWindDown: v.optional(v.boolean()),
@@ -95,9 +97,12 @@ export default defineSchema({
       appLockOnLeave: v.optional(v.boolean()),
       hideSensitivePreviews: v.optional(v.boolean()),
       pauseAnalytics: v.optional(v.boolean()),
-      // The vow's signature, as the SVG path the person drew — one `M…`
-      // subpath per stroke, recorded against a 260 x 84 box so it reads the
-      // same wherever it is drawn again.
+      // Retired. `Your Vow Page` lost the white signature card in this drop and
+      // types the first name in a script face instead, so nothing draws or
+      // stores strokes any more (F16); the pad, the mark and the mutation
+      // argument are gone. The field stays declared only because dropping it
+      // fails the schema push for any account that already wrote one — it goes
+      // in a widen-migrate-narrow pass, not in a UI parity pass.
       signature: v.optional(v.string()),
     }),
   }).index('by_clerkUserId', ['clerkUserId']),
@@ -147,6 +152,8 @@ export default defineSchema({
     severityAfter: v.optional(v.number()),
     /** App reopens during the same urge (severe flow's close-your-phone loop). */
     reopens: v.optional(v.number()),
+    /** How long the urge lasted, start to resolution — the urge hub reads it. */
+    durationSeconds: v.optional(v.number()),
   })
     .index('by_user', ['userId'])
     .index('by_user_createdAt', ['userId', 'createdAt']),

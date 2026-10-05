@@ -1,0 +1,26 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 88.6 | 285 | 215.8 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Match your situation
+div | 32 | 351 | 329 | 286 | - | - | - | - | - | -
+div | 32 | 351 | 329 | 130 | - | - | - | - | - | -
+div | 32 | 351 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 359 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 365.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 368.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 367.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 351 | 275 | 130 | - | - | - | - | - | -
+div | 86 | 351 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Anger
+div | 86 | 376 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write what happened, one physical sign you remember in your body, and the first safe action that would have helped: walk, train, cool down, delay the message, or talk to someone.
+div | 32 | 507 | 329 | 130 | - | - | - | - | - | -
+div | 32 | 507 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 515 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 518.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 518.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 523.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 526.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 507 | 275 | 130 | - | - | - | - | - | -
+div | 86 | 507 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Loneliness
+div | 86 | 532 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Write what was happening, what you did next, and what could have put you around another person: call someone, eat with people, work in a shared place, or make a plan.

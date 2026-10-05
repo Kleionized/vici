@@ -1,174 +1,80 @@
-import { Image } from 'expo-image';
-import { Grain } from '@/components/ui';
-import { useEffect } from 'react';
-import { View } from 'react-native';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
-import Svg, { Circle, Defs, Ellipse, LinearGradient, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { Text, useWindowDimensions, View } from 'react-native';
 
-import { AppText } from './AppText';
-import { sans } from '@/lib/theme';
+import { LaurelMark } from '@/components/mono/LaurelMark';
+import { Spinner } from '@/components/mono/Progress';
+import { Screen, useCanvasTop } from '@/components/mono/Screen';
+import { MonoText } from '@/components/mono/Text';
+import { lhNormal, mono, sans } from '@/lib/theme';
 
 /**
- * 01 · Splash and 02 · Finding the Waterline — the two launch frames.
+ * 01 · Splash, and the launch wait no frame draws.
  *
- * Both are the same night field: a #131313 → #2E2C29 gradient with soft radial
- * washes bled off the edges and a handful of 2px stars. The canvas blurs each
- * wash by 6–8px; a `closest-side` radial is already that soft, so the SVG
- * ellipse stands in for it without a filter (RN SVG has none).
- *
- * Laid out in the canvas's own 393 × 852 frame and stretched to the device, so
- * the composition holds its proportions on any screen.
+ * The overhaul's splash is the ground and its noise, a 120 white laurel at
+ * (136, 330) and the `VICI` wordmark 148 under the laurel's top (14/700, ls 7).
+ * The board paints under the status bar, so its place is a share of the whole
+ * screen — the laurel's top at 330/852 of the window — rather than an offset
+ * under the safe area; on 852 it is the frame's 330 exactly, and on a shorter
+ * phone the pair keeps its place in the composition instead of sinking.
  */
 
-const laurelMark = require('../../../assets/images/laurel-mark.webp');
-const noiseDark = require('../../../assets/images/noise-dark.png');
+/** The laurel's top as a share of the frame's height. */
+const LAUREL_TOP = 330 / 852;
+/** The wordmark sits 148 below the laurel's top (478 − 330). */
+const MARK_GAP = 148;
 
-/** A `radial-gradient(closest-side, c, transparent <fade>%)` wash. */
-function Wash({
-  id,
-  left,
-  top,
-  width,
-  height,
-  color,
-  opacity,
-  fade,
-}: {
-  id: string;
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-  color: string;
-  opacity: number;
-  fade: number;
-}) {
+function useMarkTop() {
+  const { height } = useWindowDimensions();
+  const canvasTop = useCanvasTop();
+  // canvas coordinates: the window's top is −canvasTop
+  return height * LAUREL_TOP - canvasTop;
+}
+
+function Mark({ top }: { top: number }) {
   return (
     <>
-      <Defs>
-        <RadialGradient id={id} cx="50%" cy="50%" rx="50%" ry="50%">
-          <Stop offset="0" stopColor={color} stopOpacity={opacity} />
-          <Stop offset={fade / 2 / 100} stopColor={color} stopOpacity={opacity * 0.42} />
-          <Stop offset={fade / 100} stopColor={color} stopOpacity={0} />
-        </RadialGradient>
-      </Defs>
-      <Ellipse cx={left + width / 2} cy={top + height / 2} rx={width / 2} ry={height / 2} fill={`url(#${id})`} />
+      {/* the frame's 136 is half a point left of centre (196.5 − 60.5) */}
+      <LaurelMark size={120} style={{ position: 'absolute', left: '50%', marginLeft: -60.5, top }} />
+      {/* CSS adds the 7 of letter-spacing after the last "I" too, so the word
+          sits 3.5 left of the axis — RN does the same */}
+      <Text
+        accessibilityRole="header"
+        maxFontSizeMultiplier={1.3}
+        style={{ position: 'absolute', left: 0, right: 0, top: top + MARK_GAP, textAlign: 'center', ...sans('700'), fontSize: 14, lineHeight: lhNormal(14), letterSpacing: 7, color: mono.ink }}>
+        VICI
+      </Text>
     </>
   );
 }
 
-function Star({ x, y, opacity }: { x: number; y: number; opacity: number }) {
-  return <Circle cx={x + 1} cy={y + 1} r={1} fill="#A09B91" fillOpacity={opacity} />;
-}
-
-/**
- * 01 · Splash — the mark, held between a cool wash above and a warm one below.
- */
+/** `01 · Splash` — rendered by `/` while boot resolves and by `(auth)/splash`. */
 export function SplashScene() {
+  const top = useMarkTop();
   return (
-    <View style={{ flex: 1, backgroundColor: '#131313', overflow: 'hidden' }}>
-      <Svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 393 852"
-        preserveAspectRatio="none"
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Defs>
-          <LinearGradient id="spField" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#131313" />
-            <Stop offset="0.55" stopColor="#1D1C1A" />
-            <Stop offset="1" stopColor="#2E2C29" />
-          </LinearGradient>
-        </Defs>
-        <Rect x={0} y={0} width={393} height={852} fill="url(#spField)" />
-        <Wash id="spA" left={-30} top={-120} width={480} height={240} color="#787369" opacity={0.2} fade={72} />
-        <Wash id="spB" left={120} top={290} width={230} height={230} color="#788C96" opacity={0.1} fade={70} />
-        <Wash id="spC" left={118} top={395} width={120} height={150} color="#E2BE8C" opacity={0.16} fade={72} />
-        <Wash id="spD" left={-60} top={620} width={420} height={260} color="#787369" opacity={0.14} fade={72} />
-        <Star x={96} y={140} opacity={0.22} />
-        <Star x={290} y={205} opacity={0.18} />
-        <Star x={200} y={590} opacity={0.15} />
-        <Star x={330} y={700} opacity={0.14} />
-      </Svg>
-
-      {/* the mark, at 41% across and 47% down — where the canvas sets it */}
-      <Image
-        source={laurelMark}
-        tintColor="#FFFFFF"
-        contentFit="contain"
-        style={{ position: 'absolute', left: '40.7%', top: '46.9%', width: 72, height: 72, opacity: 0.9 }}
-      />
-
-      <Grain source={noiseDark} opacity={0.1} />
-    </View>
+    <Screen>
+      <Mark top={top} />
+    </Screen>
   );
 }
 
 /**
- * 02 · Finding the Waterline — the same field with the washes pulled to the top
- * and bottom edges, and the ring low on the screen where the thumb already is.
+ * The boot that is still waiting after the mark has held for 900 ms (unreachable
+ * on the mock build — D131). No frame draws it: it is the splash with the
+ * bundle's one loading mark under it — the kit `Spinner` (Enlisting Aegis's
+ * dotted ring and arc) at 44 in `#9B968E`, as `LoadingView` draws it (D386) —
+ * and its label in the ghost line's 15/400 mute, low on the screen where the
+ * old board put them.
  */
 export function WaterlineScene({ label = 'Finding the waterline...' }: { label?: string }) {
-  const spin = useSharedValue(0);
-  useEffect(() => {
-    spin.value = withRepeat(withTiming(1, { duration: 1100, easing: Easing.linear }), -1, false);
-  }, [spin]);
-  const ring = useAnimatedStyle(() => ({ transform: [{ rotate: `${spin.value * 360}deg` }] }));
-
+  const top = useMarkTop();
   return (
-    <View style={{ flex: 1, backgroundColor: '#131313', overflow: 'hidden' }}>
-      <Svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 393 852"
-        preserveAspectRatio="none"
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Defs>
-          <LinearGradient id="wgField" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#131313" />
-            <Stop offset="0.55" stopColor="#1D1C1A" />
-            <Stop offset="1" stopColor="#2E2C29" />
-          </LinearGradient>
-        </Defs>
-        <Rect x={0} y={0} width={393} height={852} fill="url(#wgField)" />
-        <Wash id="wgA" left={-40} top={-140} width={540} height={270} color="#B4AA96" opacity={0.34} fade={72} />
-        <Wash id="wgB" left={230} top={-110} width={330} height={210} color="#B4AA96" opacity={0.26} fade={70} />
-        <Wash id="wgC" left={-40} top={610} width={470} height={300} color="#787369" opacity={0.3} fade={72} />
-        <Wash id="wgD" left={170} top={690} width={330} height={230} color="#787369" opacity={0.22} fade={70} />
-        <Star x={96} y={415} opacity={0.28} />
-        <Star x={288} y={372} opacity={0.2} />
-        <Star x={186} y={540} opacity={0.16} />
-      </Svg>
-
-      {/* 770 / 852 down the frame — low, next to the home indicator */}
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: '90.4%',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 13,
-        }}>
-        <Animated.View style={ring}>
-          <Svg width={36} height={36} viewBox="0 0 36 36">
-            <Circle
-              cx={18}
-              cy={18}
-              r={15}
-              fill="none"
-              stroke="#131313"
-              strokeWidth={3.5}
-              strokeLinecap="round"
-              strokeDasharray="82 13"
-              transform="rotate(-70 18 18)"
-            />
-          </Svg>
-        </Animated.View>
-        <AppText style={[sans('400'), { fontSize: 17.5, letterSpacing: 0.2, color: 'rgba(244,243,240,0.8)' }]}>{label}</AppText>
+    <Screen>
+      <Mark top={top} />
+      <View style={{ position: 'absolute', left: 24, right: 24, bottom: 96, alignItems: 'center', gap: 14 }}>
+        <Spinner size={44} color={mono.mute} />
+        <MonoText v="ghost" center>
+          {label}
+        </MonoText>
       </View>
-    </View>
+    </Screen>
   );
 }

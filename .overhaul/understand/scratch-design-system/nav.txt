@@ -1,0 +1,460 @@
+
+=== 54 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div font-size:13px,font-weight:700,color:#9B968E :: "…"}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Cue-Set-Confirmation ::  | "Move III of 3" | 
+    - Letter-Read ::  | "From VICI" | 
+    - Medallion-Letter ::  | "Enclosure from VICI" | 
+    - SOS-Feel-Angry ::  | "What’s underneath" | 
+    - SOS-Feel-Anxious ::  | "What’s underneath" | 
+    - SOS-Feel-Ashamed ::  | "What’s underneath" | 
+    - SOS-Feel-Bored ::  | "What’s underneath" | 
+    - SOS-Feel-Lonely ::  | "What’s underneath" | 
+    - SOS-Feel-Low ::  | "What’s underneath" | 
+    - SOS-Feel-Numb ::  | "What’s underneath" | 
+    - SOS-Feel-Rejected ::  | "What’s underneath" | 
+    - SOS-Feel-Restless ::  | "What’s underneath" | 
+    - SOS-Feel-Stressed ::  | "What’s underneath" | 
+    - SOS-Feel-Tired ::  | "What’s underneath" | 
+    - SOS-Feel-Turned-On ::  | "What’s underneath" | 
+    - SOS-Feel-Unknown ::  | "What’s underneath" | 
+    - SOS-Loc-Bathroom ::  | "Where you are" | 
+    - SOS-Loc-Bed ::  | "Where you are" | 
+    - SOS-Loc-Elsewhere ::  | "Where you are" | 
+    - SOS-Loc-Home-Alone ::  | "Where you are" | 
+    - SOS-Loc-Private-Room ::  | "Where you are" | 
+    - SOS-Loc-Public ::  | "Where you are" | 
+    - SOS-Loc-Work ::  | "Where you are" | 
+    - SOS-Trig-Alone ::  | "What’s feeding it" | 
+    - SOS-Trig-Argument ::  | "What’s feeding it" | 
+    - SOS-Trig-Cant-Sleep ::  | "What’s feeding it" | 
+    - SOS-Trig-Content ::  | "What’s feeding it" | 
+    - SOS-Trig-Doomscroll ::  | "What’s feeding it" | 
+    - SOS-Trig-Fantasy ::  | "What’s feeding it" | 
+    - SOS-Trig-Habit ::  | "What’s feeding it" | 
+    - SOS-Trig-Late-Phone ::  | "What’s feeding it" | 
+    - SOS-Trig-Rejection ::  | "What’s feeding it" | 
+    - SOS-Trig-Unknown ::  | "What’s feeding it" | 
+    - Slip-Feel-Ashamed ::  | "After the slip" | 
+    - Slip-Feel-Bored ::  | "After the slip" | 
+    - Slip-Feel-Lonely ::  | "After the slip" | 
+    - Slip-Feel-Not-sure ::  | "After the slip" | 
+    - Slip-Feel-Rejected ::  | "After the slip" | 
+    - Slip-Feel-Stressed ::  | "After the slip" | 
+    - Slip-Feel-Tired ::  | "After the slip" | 
+    - Slip-Feel-Turned-on ::  | "After the slip" | 
+    - Slip-Trigger-Argument ::  | "What fed it" | 
+    - Slip-Trigger-Being-alone ::  | "What fed it" | 
+    - Slip-Trigger-Boredom ::  | "What fed it" | 
+    - Slip-Trigger-Couldn-t-sleep ::  | "What fed it" | 
+    - Slip-Trigger-Habit ::  | "What fed it" | 
+    - Slip-Trigger-Late-night ::  | "What fed it" | 
+    - Slip-Trigger-Loneliness ::  | "What fed it" | 
+    - Slip-Trigger-Not-sure ::  | "What fed it" | 
+    - Slip-Trigger-Scrolling ::  | "What fed it" | 
+    - Slip-Trigger-Sexual-content ::  | "What fed it" | 
+    - Slip-Trigger-Stress ::  | "What fed it" | 
+    - Surf-Step-1 ::  | "Move I of 3" | 
+    - Surf-Step-3 ::  | "Move II of 3" | 
+
+=== 24 frames
+   left:22px right:- padding:- justify-content:- z-index:5
+      {svg  :: path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+    - Week-I-Reset-P2 :: 
+    - Week-I-Reset :: 
+    - Week-II-Changing-Your-Mindset-P2 :: 
+    - Week-II-Changing-Your-Mindset :: 
+    - Week-III-In-the-Moment-P2 :: 
+    - Week-III-In-the-Moment :: 
+    - Week-IV-Know-Your-Brain-P2 :: 
+    - Week-IV-Know-Your-Brain :: 
+    - Week-IX-Connection-P2 :: 
+    - Week-IX-Connection :: 
+    - Week-V-Why-It-Feels-Worth-It-P2 :: 
+    - Week-V-Why-It-Feels-Worth-It :: 
+    - Week-VI-Discipline-P2 :: 
+    - Week-VI-Discipline :: 
+    - Week-VII-Relapse-and-Adversity-P2 :: 
+    - Week-VII-Relapse-and-Adversity :: 
+    - Week-VIII-Boredom-and-Meaning-P2 :: 
+    - Week-VIII-Boredom-and-Meaning :: 
+    - Week-X-Yourself-P2 :: 
+    - Week-X-Yourself :: 
+    - Week-XI-Build-a-Life-You-Want-P2 :: 
+    - Week-XI-Build-a-Life-You-Want :: 
+    - Week-XII-Leave-It-Behind-P2 :: 
+    - Week-XII-Leave-It-Behind :: 
+
+=== 23 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Cue-Intro-Modal ::  | 
+    - Drop-Received ::  | 
+    - Lapse-Done ::  | 
+    - Letter-Arrival ::  | 
+    - Log-Chooser ::  | 
+    - Morning-5-Done ::  | 
+    - Morning-Check-in-Cover ::  | 
+    - Relapse-Log ::  | 
+    - Relapse-Resign ::  | 
+    - Relapse-Twice ::  | 
+    - Report-Ready ::  | 
+    - SOS-Afterward ::  | 
+    - Slip-Begin-Again ::  | 
+    - Slip-Close-It ::  | 
+    - Slip-Dont-Fail-Twice ::  | 
+    - Slip-Entry ::  | 
+    - Slip-Logged ::  | 
+    - Slip-Morning-After ::  | 
+    - Slip-Pledge ::  | 
+    - Slip-Stop-Here ::  | 
+    - Slip-Urge-Now ::  | 
+    - Surf-Complete ::  | 
+    - Urge-Log-Done ::  | 
+
+=== 15 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: }
+    - Album-Earned-II ::  | 
+    - Log-Check-ins ::  | 
+    - Log-Reports ::  | 
+    - Log-Urges ::  | 
+    - Medallions-Still-To-Earn ::  | 
+    - Medallions ::  | 
+    - Tiers-Archive ::  | 
+    - Tiers-Breakwater ::  | 
+    - Tiers-Lessons ::  | 
+    - Tiers-Logbook ::  | 
+    - Tiers-One-offs ::  | 
+    - Tiers-Pulse ::  | 
+    - Tiers-Rebound ::  | 
+    - Tiers-Vici ::  | 
+    - Tiers-Vidi ::  | 
+
+=== 14 frames
+   left:22px right:- padding:- justify-content:- z-index:5
+      {svg  :: path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Lesson-Scroll-1 :: 
+    - Lesson-Scroll-10 :: 
+    - Lesson-Scroll-11 :: 
+    - Lesson-Scroll-12 :: 
+    - Lesson-Scroll-13 :: 
+    - Lesson-Scroll-14 :: 
+    - Lesson-Scroll-2 :: 
+    - Lesson-Scroll-3 :: 
+    - Lesson-Scroll-4 :: 
+    - Lesson-Scroll-5 :: 
+    - Lesson-Scroll-6 :: 
+    - Lesson-Scroll-7 :: 
+    - Lesson-Scroll-8 :: 
+    - Lesson-Scroll-9 :: 
+
+=== 13 frames
+   left:0 right:0 padding:- justify-content:center z-index:4
+      {div width:100%,font-size:13px,font-weight:700,color:#9B968E :: "…"}
+    - Lesson-Scroll-10 :: "Lesson 1"
+    - Lesson-Scroll-11 :: "Lesson 1"
+    - Lesson-Scroll-12 :: "Lesson 1"
+    - Lesson-Scroll-13 :: "Lesson 1"
+    - Lesson-Scroll-14 :: "Lesson 1"
+    - Lesson-Scroll-2 :: "Lesson 1"
+    - Lesson-Scroll-3 :: "Lesson 1"
+    - Lesson-Scroll-4 :: "Lesson 1"
+    - Lesson-Scroll-5 :: "Lesson 1"
+    - Lesson-Scroll-6 :: "Lesson 1"
+    - Lesson-Scroll-7 :: "Lesson 1"
+    - Lesson-Scroll-8 :: "Lesson 1"
+    - Lesson-Scroll-9 :: "Lesson 1"
+
+=== 10 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div width:36px,height:40px :: }
+    - A-Clean-Day ::  | 
+    - Cost-Next-30 ::  | 
+    - Cost-Next-365 ::  | 
+    - Line-If-Nothing-Changes ::  | 
+    - Line-With-the-Plan ::  | 
+    - Onboarding-Start ::  | 
+    - One-Bad-Day ::  | 
+    - Starting-Score ::  | 
+    - What-You-Want-Back ::  | 
+    - Your-Plan ::  | 
+
+=== 10 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div width:36px,height:40px :: svg18x18 path(M9 11V2M5.5 5.5L9 2l3. #F2F0EC sw1.8)}
+    - Breakwater-Bronze ::  | 
+    - Breakwater-Gold ::  | 
+    - Breakwater-Paper ::  | 
+    - Breakwater-Platinum ::  | 
+    - Breakwater-Silver ::  | 
+    - Detail-Bronze ::  | 
+    - Detail-Gold ::  | 
+    - Detail-Paper ::  | 
+    - Detail-Platinum ::  | 
+    - Detail-Silver ::  | 
+
+=== 9 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div font-size:13px,font-weight:700,color:#9B968E :: "…"}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: }
+    - App-Lock ::  | "App lock" | 
+    - Data-Privacy ::  | "Data &amp; privacy" | 
+    - Edit-Profile ::  | "Edit profile" | 
+    - Manage-Subscription ::  | "Subscription" | 
+    - Settings ::  | "Settings" | 
+    - Sheet-Edit-Name ::  | "Edit profile" | 
+    - Sheet-Profile-Photo ::  | "Edit profile" | 
+    - Sheet-Sign-Out ::  | "Settings" | 
+    - Your-Vow-Page ::  | "Your vow" | 
+
+=== 8 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div height:40px :: <div size:13px,weight:700,color:#F2F0EC,height:32px> "…"}
+    - Settings-Weekly-Report ::  | "Jul 14–20"
+    - Urge-Overview-Mood ::  | "Last 30 days"
+    - Urge-Overview-Summary ::  | "Last 30 days"
+    - Urge-Overview-When ::  | "Last 30 days"
+    - Urge-Overview ::  | "Last 30 days"
+    - Weekly-Report-Days ::  | "Jul 14–20"
+    - Weekly-Report-Urges ::  | "Jul 14–20"
+    - Weekly-Report ::  | "Jul 14–20"
+
+=== 7 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div width:36px,height:40px :: }
+    - Day-Zero ::  | 
+    - Letter-Received ::  | 
+    - Medallion-Received ::  | 
+    - Paywall-Confirmed ::  | 
+    - Reminders-Setup ::  | 
+    - Start-Here ::  | 
+    - Where-We-d-Start ::  | 
+
+=== 5 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDddddd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Checkin-Emotions ::  |  | 
+    - Cue-Hue-Picker ::  |  | 
+    - Lapse-When ::  |  | 
+    - Morning-1-Yesterday ::  |  | 
+    - Slip-When ::  |  | 
+
+=== 5 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDddd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Lapse-Trigger ::  |  | 
+    - Morning-Feeling ::  |  | 
+    - Night-3-Reflection ::  |  | 
+    - SOS-Feeling-Picker ::  |  | 
+    - Slip-Fed ::  |  | 
+
+=== 5 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDDD]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Morning-Pledge-Signed ::  |  | 
+    - Morning-Resign-Pledge ::  |  | 
+    - Night-Action-Reminder ::  |  | 
+    - SOS-Reassess ::  |  | 
+    - Urge-Log-When ::  |  | 
+
+=== 5 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div font-size:13px,font-weight:700,color:rgba(255,255,255,0.55) :: "…"}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#FFFFFF :: svg18x18 path(M2 2l14 14M16 2L2 16 #FFFFFF sw2)}
+    - Urge-Hub-Now ::  | "Ride it out" | 
+    - Urge-Hub-Pledges ::  | "Ride it out" | 
+    - Urge-Hub-Proof ::  | "Ride it out" | 
+    - Urge-Hub-Score ::  | "Ride it out" | 
+    - Urge-Hub-Surfed ::  | "Ride it out" | 
+
+=== 4 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [Dddddddd]}
+      {div width:36px,height:40px :: }
+    - V3-Q1 ::  |  | 
+    - V3-Q24-Name ::  |  | 
+    - V3-Q25-Age ::  |  | 
+    - V3-Q26-Gender ::  |  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDdddd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Checkin-Reasons ::  |  | 
+    - SOS-Reason-Picker ::  |  | 
+    - Urge-Log-Trigger ::  |  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDddddd]}
+      {div width:36px,height:40px :: }
+    - First-Principle ::  |  | 
+    - V3-Q3b ::  |  | 
+    - V3-Q5 ::  |  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div width:36px,height:40px :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Letter-Week-XII ::  | 
+    - Paywall-Rescue ::  | 
+    - The-Vow ::  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: }
+    - Morning-Check-in-Time ::  | 
+    - Nightly-Check-in-Time ::  | 
+    - Settings-Check-in-Time ::  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: }
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#FFFFFF :: svg18x18 path(M2 2l14 14M16 2L2 16 #FFFFFF sw2)}
+    - Night-4-Closed ::  | 
+    - Night-Check-in-Cover ::  | 
+    - Slip-Third ::  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:-
+      {svg  :: path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div height:44px,font-size:15px,font-weight:700,color:#F2F0EC :: "…" svg14x14 path(M2 5l5 5 5-5 #F2F0EC sw2)}
+    - Score-Detail-Moves ::  | "Months"
+    - Score-Detail-Ranks ::  | "Months"
+    - Score-Detail ::  | "Months"
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDddd]}
+      {div width:36px,height:40px :: }
+    - Transition ::  |  | 
+    - V3-Q21 ::  |  | 
+    - What-it-affects ::  |  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDDd]}
+      {div width:36px,height:40px :: }
+    - V3-Q15 ::  |  | 
+    - V3-Q16 ::  |  | 
+    - V3-Q17 ::  |  | 
+
+=== 3 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDdddd]}
+      {div width:36px,height:40px :: }
+    - V3-Q6 ::  |  | 
+    - V3-Q7 ::  |  | 
+    - What-starts-it ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDdd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Morning-Energy ::  |  | 
+    - Urge-Log-Outcome ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDdddddd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Morning-Task-Check ::  |  | 
+    - Urge-Log-Intensity ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [Dddddddd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Night-1-Mood ::  |  | 
+    - SOS-Strength ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDDd]}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Night-2-Record ::  |  | 
+    - SOS-Challenge ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div font-size:13px,font-weight:700,color:#9B968E :: "…"}
+      {div width:36px,height:40px :: }
+    - Start-Here-Step-1 ::  | "Step 1 of 2" | 
+    - Start-Here-Step-2 ::  | "Step 2 of 2" | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDdd]}
+      {div width:36px,height:40px :: }
+    - V3-Q10 ::  |  | 
+    - V3-Q13 ::  |  | 
+
+=== 2 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDdddddd]}
+      {div width:36px,height:40px :: }
+    - V3-Q2 ::  |  | 
+    - V3-Q3 ::  |  | 
+
+=== 1 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #17160F sw2.2)}
+      {div width:36px,height:40px :: }
+    - Cost-By-Age-80 ::  | 
+
+=== 1 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div  :: [DDDDDDDD]}
+      {div width:36px,height:40px :: }
+    - Goal-Confirmation ::  |  | 
+
+=== 1 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #F2F0EC sw2.2)}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: svg18x18 path(M2 2l14 14M16 2L2 16 #F2F0EC sw2)}
+    - Relapse-Begin ::  | 
+
+=== 1 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:36px,height:40px :: svg12x20 path(M10 2L2 10l8 8 #FFFFFF sw2.2)}
+      {div font-size:13px,font-weight:700,color:rgba(255,255,255,0.55) :: "…"}
+      {div width:36px,height:40px,font-size:15px,font-weight:700,color:#FFFFFF :: svg18x18 path(M2 2l14 14M16 2L2 16 #FFFFFF sw2)}
+    - Urge-Hub-Breathe ::  | "Ride it out" | 
+
+=== 1 frames
+   left:0 right:0 padding:0 22px justify-content:space-between z-index:5
+      {div width:80px,height:40px :: }
+      {div width:80px,height:40px,font-size:15px,font-weight:700,color:#F2F0EC :: "…"}
+    - Yearly-Drop ::  | "Restore"

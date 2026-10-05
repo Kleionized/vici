@@ -1,0 +1,164 @@
+--- .vicifull/pretty/prev/Morning-5-Done.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Morning-5-Done.html	2026-09-05 00:22:35
+@@ -145,72 +145,83 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:50%;
+-    | top:27px;
+-    | width:340px;
+-    | height:340px;
+-    | margin-left:-170px;
+-    | border-radius:50%;
+-    | background:radial-gradient(closest-side, rgba(226,186,120,0.34), rgba(226,186,120,0) 72%);
+-    | filter:blur(4px);
++    | left:0;
++    | right:0;
++    | top:0;
++    | height:452px;
++    | overflow:hidden;
++    | background:linear-gradient(180deg, #F8F4E9 0%, #EFECE1 100%);
++    | box-shadow:0 1px 0 rgba(0,0,0,0.07);
+   ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:50%;
+-    | top:168px;
+-    | width:58px;
+-    | height:58px;
+-    | margin-left:-29px;
+-    | border-radius:50%;
+-    | background:#E9D2A4;
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:64px;
+-    | top:140px;
+-    | width:54px;
+-    | height:8px;
+-    | border-radius:5px;
+-    | background:rgba(255,255,255,0.6);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:272px;
+-    | top:168px;
+-    | width:42px;
+-    | height:8px;
+-    | border-radius:5px;
+-    | background:rgba(255,255,255,0.5);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:-80px;
+-    | right:-80px;
+-    | top:360px;
+-    | height:150px;
+-    | border-radius:50% 50% 0 0 / 88px 88px 0 0;
+-    | background:linear-gradient(180deg, #E7E5DB 0%, rgba(244,243,240,0) 80%);
+-  ">
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:-150px;
+-    | right:-50px;
+-    | top:385px;
+-    | height:150px;
+-    | border-radius:50% 50% 0 0 / 70px 70px 0 0;
+-    | background:linear-gradient(180deg, #DFDDD3 0%, rgba(244,243,240,0) 80%);
+-  ">
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:60px;
++      | width:460px;
++      | height:460px;
++      | margin-left:-230px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,186,120,0.36), rgba(226,186,120,0) 72%);
++      | filter:blur(6px);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:50%;
++      | top:236px;
++      | width:84px;
++      | height:84px;
++      | margin-left:-42px;
++      | border-radius:50%;
++      | background:#E9D2A4;
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:52px;
++      | top:176px;
++      | width:64px;
++      | height:9px;
++      | border-radius:5px;
++      | background:rgba(255,255,255,0.6);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:276px;
++      | top:228px;
++      | width:50px;
++      | height:9px;
++      | border-radius:5px;
++      | background:rgba(255,255,255,0.5);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:-80px;
++      | right:-80px;
++      | top:300px;
++      | height:180px;
++      | border-radius:50% 50% 0 0 / 100px 100px 0 0;
++      | background:linear-gradient(180deg, #E7E5DB 0%, rgba(244,243,240,0) 80%);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:-150px;
++      | right:-50px;
++      | top:328px;
++      | height:180px;
++      | border-radius:50% 50% 0 0 / 80px 80px 0 0;
++      | background:linear-gradient(180deg, #DFDDD3 0%, rgba(244,243,240,0) 80%);
++    ">
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+     | left:0;
+     | right:0;
+-    | top:492px;
++    | top:420px;
+     | display:flex;
+     | justify-content:center;
+   ">
+@@ -234,7 +245,7 @@
+     | position:absolute;
+     | left:0;
+     | right:0;
+-    | top:580px;
++    | top:512px;
+     | text-align:center;
+     | font-size:27px;
+     | font-weight:500;
+@@ -247,7 +258,7 @@
+     | position:absolute;
+     | left:0;
+     | right:0;
+-    | top:622px;
++    | top:554px;
+     | text-align:center;
+     | font-size:14.5px;
+     | font-weight:400;

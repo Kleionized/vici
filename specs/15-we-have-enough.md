@@ -1,5 +1,10 @@
 # We Have Enough
 
+> **WITHDRAWN in `Latest Vici FULL` (Sep 2026).** The canvas no longer draws this board and
+> the app no longer builds it. Kept as a record of what was removed — do not build from it,
+> and do not read its copy as a target. `.vicifull/FLOW.txt` is the authority on what this
+> drop draws in its place.
+
 * **Design frame** `Email-Login/We Have Enough`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 

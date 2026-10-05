@@ -1,0 +1,20 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.05 | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 22 | 60 | 36 | 40 | - | - | - | - | - | -
+div | 166.9 | 72 | 59.2 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | From VICI
+div | 335 | 60 | 36 | 40 | - | - | - | - | - | -
+svg | 353 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 355 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 16 | 112 | 361 | 590 | rgb(30, 30, 30) | 26px | - | - | - | -
+div | 16 | 112 | 361 | 485 | - | - | - | - | - | -
+div | 42 | 140 | 309 | 27 | - | - | - | - | 22px/700/-0.3px/normal/rgb(242, 240, 236) | Dear Sam,
+div | 42 | 183 | 309 | 100 | - | - | - | - | 15.5px/400/normal/25px/rgb(181, 176, 168) | If you’re reading this, it happened. Good — you opened the letter instead of disappearing. That’s the only door that matters this morning.
+div | 42 | 299 | 309 | 125 | - | - | - | - | 15.5px/400/normal/25px/rgb(181, 176, 168) | One slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: All still yours.
+span | 42 | 352 | 274.7 | 43 | - | - | - | - | 15.5px/700/normal/25px/rgb(242, 240, 236) | I want to be present for the people I love.
+div | 42 | 440 | 309 | 75 | - | - | - | - | 15.5px/400/normal/25px/rgb(181, 176, 168) | The only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don’t fail twice.
+div | 42 | 531 | 309 | 25 | - | - | - | - | 15.5px/400/normal/25px/rgb(181, 176, 168) | I’ll see you tonight, steadier.
+div | 42 | 572 | 309 | 25 | - | - | - | - | 15.5px/700/normal/25px/rgb(242, 240, 236) | — the you who makes it out
+div | 16 | 632 | 361 | 70 | - | - | - | - | - | -
+div | 24 | 698 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 155.8 | 717.5 | 81.4 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Save to Log
+div | 0 | 774 | 393 | 18 | - | - | - | - | 15px/400/normal/normal/rgb(155, 150, 142) | Close

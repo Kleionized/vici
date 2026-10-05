@@ -1,0 +1,39 @@
+--- .vicifull/pretty/prev/Today-Home-III.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Today-Home-III.html	2026-09-05 00:22:35
+@@ -161,23 +161,24 @@
+     <div style="
+       | position:absolute;
+       | left:16px;
+-      | top:30px;
+-      | font-size:30px;
+-      | line-height:20px;
+-      | font-weight:600;
+-      | color:#C9C0AC;
++      | top:20px;
+     ">
+-      · “
++      <svg width="16" height="12" viewBox="0 0 44 32">
++        <path d="M9.8 0C4.2 3.4 0 9.6 0 16.9 0 26 5.4 32 12.4 32c5.4 0 9.3-3.8 9.3-9 0-5-3.6-8.6-8.4-8.6-.9 0-2 .2-2.6.4C11 10.1 14.1 5.4 18.3 2.9L9.8 0z" fill="#C9C0AC">
++        </path>
++        <path d="M31.9 0c-5.6 3.4-9.8 9.6-9.8 16.9 0 9.1 5.4 15.1 12.4 15.1 5.4 0 9.3-3.8 9.3-9 0-5-3.6-8.6-8.4-8.6-.9 0-2 .2-2.6.4.3-4.7 3.4-9.4 7.6-11.9L31.9 0z" fill="#C9C0AC">
++        </path>
++      </svg>
+     </div>
+     <div style="
+       | position:absolute;
+-      | left:38px;
+-      | right:38px;
+-      | top:36px;
+-      | font-size:17.5px;
++      | left:36px;
++      | right:60px;
++      | top:26px;
++      | font-size:15px;
+       | font-weight:500;
+-      | letter-spacing:-0.2px;
+-      | line-height:27px;
++      | letter-spacing:-0.1px;
++      | line-height:22px;
+       | color:#3A3934;
+       | text-wrap:pretty;
+     ">

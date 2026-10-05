@@ -8,7 +8,7 @@
  *
  * Day 32 has no card frame in the bundle, so it has no plate.
  *
- * Rebuild: node scripts/uifinal/gen-lesson-art.mjs
+ * Rebuild: node scripts/vicifull/gen-lesson-art.mjs
  */
 
 import type { TaskSceneLayer } from './taskScenes';
@@ -433,6 +433,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 98,
       "radius": "2px",
       "background": "#D6D5D0",
+      "transform": "skewY(-7deg)",
+      "origin": "top right",
       "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
     },
     {
@@ -450,7 +452,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 158,
       "width": 84,
       "height": 12,
-      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+      "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -711,7 +714,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -721,7 +724,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -741,7 +744,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -751,7 +754,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -761,7 +764,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 11.76,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -771,7 +775,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 17.36,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -939,7 +944,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "3px 6px 2px 4px",
       "background": "#F7F6F2",
-      "rotate": -6,
+      "transform": "rotate(-6deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.14)"
     },
     {
@@ -950,7 +955,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "6px 3px 4px 2px",
       "background": "#FBFAF7",
-      "rotate": 6,
+      "transform": "rotate(6deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.14)"
     },
     {
@@ -961,7 +966,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -6
+      "transform": "rotate(-6deg)"
     },
     {
       "kind": "box",
@@ -971,7 +976,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -6
+      "transform": "rotate(-6deg)"
     },
     {
       "kind": "box",
@@ -981,7 +986,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -991,7 +996,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -1048,6 +1053,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 98,
       "radius": "2px",
       "background": "#D6D5D0",
+      "transform": "skewY(-7deg)",
+      "origin": "top right",
       "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
     },
     {
@@ -1065,7 +1072,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 156,
       "width": 84,
       "height": 12,
-      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+      "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -1113,7 +1121,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "box",
@@ -1132,7 +1140,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 19,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#D3D7CB",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -1693,7 +1701,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 4,
       "height": 20,
       "background": "#8A857C",
-      "rotate": -14
+      "transform": "rotate(-14deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -1702,7 +1711,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 4,
       "height": 20,
       "background": "#B4B1AB",
-      "rotate": 14
+      "transform": "rotate(14deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -2182,7 +2192,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -2192,7 +2202,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -2212,7 +2222,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "5px",
       "background": "rgba(255,255,255,0.8)",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -2324,6 +2334,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 58,
       "height": 19,
       "background": "#E9D2A4",
+      "clip": "polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%)",
       "shadow": "0 2px 5px rgba(40,38,32,0.14)"
     },
     {
@@ -2341,7 +2352,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 86,
       "width": 58,
       "height": 19,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(16% 0, 100% 0, 100% 100%, 16% 100%, 0 50%)"
     },
     {
       "kind": "box",
@@ -2492,7 +2504,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2.5px",
       "background": "rgba(255,255,255,0.75)",
-      "rotate": -14
+      "transform": "rotate(-14deg)"
     },
     {
       "kind": "box",
@@ -2502,7 +2514,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4.5,
       "radius": "2.5px",
       "background": "rgba(255,255,255,0.7)",
-      "rotate": -18
+      "transform": "rotate(-18deg)"
     },
     {
       "kind": "box",
@@ -2512,7 +2524,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.65)",
-      "rotate": -22
+      "transform": "rotate(-22deg)"
     },
     {
       "kind": "box",
@@ -2522,7 +2534,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "rgba(255,255,255,0.6)",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "svg",
@@ -2843,7 +2855,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 21,
       "radius": "2.5px",
       "background": "#8A857C",
-      "rotate": -45
+      "transform": "rotate(-45deg)",
+      "origin": "2.5px 2.5px"
     },
     {
       "kind": "box",
@@ -2947,7 +2960,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 132,
       "width": 44,
       "height": 20,
-      "rotate": -12,
+      "transform": "rotate(-12deg)",
       "children": [
         {
           "kind": "box",
@@ -3105,7 +3118,21 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "left": 60,
       "top": 106,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "top": {
+          "width": 6,
+          "color": "transparent"
+        },
+        "bottom": {
+          "width": 6,
+          "color": "transparent"
+        },
+        "left": {
+          "width": 10,
+          "color": "rgba(244,243,240,0.28)"
+        }
+      }
     },
     {
       "kind": "svg",
@@ -3188,7 +3215,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 117,
       "width": 52,
       "height": 44,
-      "background": "linear-gradient(180deg, rgba(233,210,164,0.4), rgba(233,210,164,0.04))"
+      "background": "linear-gradient(180deg, rgba(233,210,164,0.4), rgba(233,210,164,0.04))",
+      "clip": "polygon(8% 0, 86% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -3312,7 +3340,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -3322,7 +3350,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -3342,7 +3370,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -3352,7 +3380,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -3362,7 +3390,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -3372,7 +3401,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 9.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -3458,7 +3488,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "50%",
       "background": "#E9D2A4",
-      "rotate": -13,
+      "transform": "rotate(-13deg)",
       "shadow": "inset 0 -2.5px 0 #E2BA78"
     },
     {
@@ -3469,7 +3499,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1.5px",
       "background": "#E2BA78",
-      "rotate": -13
+      "transform": "rotate(-13deg)"
     },
     {
       "kind": "box",
@@ -3479,7 +3509,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.85)",
-      "rotate": -10
+      "transform": "rotate(-10deg)"
     },
     {
       "kind": "box",
@@ -3489,7 +3519,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "rgba(255,255,255,0.7)",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -4238,7 +4268,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 34,
       "radius": "3px 8px 2px 2px",
       "background": "#E4E3DE",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -4296,7 +4326,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 64,
       "width": 52,
       "height": 62,
-      "rotate": -28,
+      "transform": "rotate(-28deg)",
       "children": [
         {
           "kind": "box",
@@ -4823,7 +4853,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 124,
       "height": 3.5,
       "radius": "2px",
-      "background": "#55534E"
+      "background": "#55534E",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -4851,7 +4882,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -4861,7 +4893,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": -38
+      "transform": "rotate(-38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -4890,7 +4923,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -4900,7 +4934,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": -38
+      "transform": "rotate(-38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -5032,7 +5067,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 9,
       "radius": "6px 6px 0 6px",
       "background": "#E2BA78",
-      "rotate": -18
+      "transform": "rotate(-18deg)"
     },
     {
       "kind": "box",
@@ -5042,7 +5077,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 9,
       "radius": "6px 6px 6px 0",
       "background": "#E2BA78",
-      "rotate": 18
+      "transform": "rotate(18deg)"
     },
     {
       "kind": "box",
@@ -5155,7 +5190,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "3px",
       "background": "#DEDDD7",
-      "rotate": 24,
+      "transform": "rotate(24deg)",
+      "origin": "left bottom",
       "shadow": "0 2px 4px rgba(40,38,32,0.1)"
     },
     {
@@ -5550,7 +5586,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 10
+      "transform": "rotate(10deg)"
     },
     {
       "kind": "box",
@@ -5578,7 +5614,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#E2BA78",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -5588,7 +5625,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#E2BA78",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -5627,7 +5665,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -5637,7 +5676,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -5778,7 +5818,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#E2BA78",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -5788,7 +5829,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#E2BA78",
-      "rotate": -38
+      "transform": "rotate(-38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -5827,7 +5869,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -5837,7 +5880,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": -38
+      "transform": "rotate(-38deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -6240,7 +6284,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 9,
       "radius": "3px",
       "background": "#D6D5D0",
-      "rotate": -4,
+      "transform": "rotate(-4deg)",
       "shadow": "0 2px 4px rgba(40,38,32,0.12)"
     },
     {
@@ -6567,7 +6611,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.6)",
-      "rotate": 14
+      "transform": "rotate(14deg)"
     },
     {
       "kind": "box",
@@ -6577,7 +6621,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.5)",
-      "rotate": 18
+      "transform": "rotate(18deg)"
     },
     {
       "kind": "box",
@@ -6587,7 +6631,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "rgba(255,255,255,0.42)",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -6597,7 +6641,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(233,210,164,0.9)",
-      "rotate": -16
+      "transform": "rotate(-16deg)"
     },
     {
       "kind": "box",
@@ -6607,7 +6651,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(233,210,164,0.8)",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -6617,7 +6661,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "rgba(233,210,164,0.7)",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -6854,7 +6898,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "#B4B1AB",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -6864,7 +6908,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -6874,7 +6918,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.6)",
-      "rotate": -16
+      "transform": "rotate(-16deg)"
     },
     {
       "kind": "box",
@@ -6884,7 +6928,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "rgba(255,255,255,0.55)",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -6894,7 +6938,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "rgba(255,255,255,0.5)",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -7130,7 +7174,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2.5px",
       "background": "#E9D2A4",
-      "rotate": -18
+      "transform": "rotate(-18deg)"
     },
     {
       "kind": "box",
@@ -7139,7 +7183,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 6,
       "height": 5,
       "background": "#55534E",
-      "rotate": -18
+      "transform": "rotate(-18deg)",
+      "clip": "polygon(0 0, 100% 50%, 0 100%)"
     },
     {
       "kind": "box",
@@ -7205,7 +7250,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "6px",
       "background": "#F7F6F2",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
       "shadow": "0 1px 3px rgba(40,38,32,0.14)"
     },
     {
@@ -7216,7 +7261,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -7226,7 +7271,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -7301,7 +7346,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7312,7 +7357,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -7323,7 +7368,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7334,7 +7379,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7345,7 +7390,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -7356,7 +7401,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7386,7 +7431,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 2.5,
       "height": 30,
       "background": "#E2BA78",
-      "rotate": 16
+      "transform": "rotate(16deg)",
+      "origin": "bottom"
     },
     {
       "kind": "box",
@@ -7395,7 +7441,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 2.5,
       "height": 30,
       "background": "#E2BA78",
-      "rotate": -16
+      "transform": "rotate(-16deg)",
+      "origin": "bottom"
     },
     {
       "kind": "box",
@@ -7507,7 +7554,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7518,7 +7565,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -7529,7 +7576,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -7576,7 +7623,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 76,
       "width": 88,
       "height": 74,
-      "rotate": -5,
+      "transform": "rotate(-5deg)",
       "children": [
         {
           "kind": "box",
@@ -7600,14 +7647,34 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
           "left": 21.919999999999998,
           "top": 26.159999999999997,
           "width": 0,
-          "height": 0
+          "height": 0,
+          "borders": {
+            "top": {
+              "width": 33.120000000000005,
+              "color": "transparent"
+            },
+            "right": {
+              "width": 20.240000000000002,
+              "color": "#D6D5D0"
+            }
+          }
         },
         {
           "kind": "box",
           "left": 47.68,
           "top": 22.479999999999997,
           "width": 0,
-          "height": 0
+          "height": 0,
+          "borders": {
+            "top": {
+              "width": 36.800000000000004,
+              "color": "transparent"
+            },
+            "left": {
+              "width": 22.080000000000002,
+              "color": "#E9D2A4"
+            }
+          }
         }
       ]
     },
@@ -7826,7 +7893,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "3px",
       "background": "#F7F6F2",
-      "rotate": -8,
+      "transform": "rotate(-8deg)",
       "shadow": "0 1px 3px rgba(40,38,32,0.1)"
     },
     {
@@ -7837,7 +7904,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -7996,7 +8063,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 46
+      "transform": "rotate(46deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -8006,7 +8074,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -38
+      "transform": "rotate(-38deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -8250,7 +8319,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": 38
+      "transform": "rotate(38deg)"
     },
     {
       "kind": "box",
@@ -8260,7 +8329,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -8830,7 +8899,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -8840,7 +8909,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 26
+      "transform": "rotate(26deg)"
     },
     {
       "kind": "box",
@@ -8961,7 +9030,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -8971,7 +9040,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -8991,7 +9060,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -9001,7 +9070,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -9011,7 +9080,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5.88,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -9021,7 +9091,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 8.68,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -9227,7 +9298,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "8px",
       "background": "#55534E",
-      "rotate": -28
+      "transform": "rotate(-28deg)",
+      "origin": "center"
     },
     {
       "kind": "box",
@@ -9237,7 +9309,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "4px",
       "background": "#E2BA78",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -9247,7 +9319,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "4px",
       "background": "#6B6862",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -9257,7 +9329,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 72,
       "radius": "2.5px",
       "background": "#8A857C",
-      "rotate": 16
+      "transform": "rotate(16deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -9267,7 +9340,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 72,
       "radius": "2.5px",
       "background": "#8A857C",
-      "rotate": -16
+      "transform": "rotate(-16deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -9745,7 +9819,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 88,
       "width": 100,
       "height": 80,
-      "background": "linear-gradient(120deg, #F7F6F2 0%, #E4E3DE 100%)"
+      "background": "linear-gradient(120deg, #F7F6F2 0%, #E4E3DE 100%)",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -9753,7 +9828,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 128,
       "width": 28,
       "height": 40,
-      "background": "#C9C8C1"
+      "background": "#C9C8C1",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -9782,7 +9858,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2.5px",
       "background": "#8A857C",
-      "rotate": 14
+      "transform": "rotate(14deg)"
     },
     {
       "kind": "box",
@@ -9792,7 +9868,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2.5px",
       "background": "#6B6862",
-      "rotate": -12
+      "transform": "rotate(-12deg)"
     },
     {
       "kind": "svg",
@@ -10067,7 +10143,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 28,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -10077,7 +10153,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 31,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 26
+      "transform": "rotate(26deg)"
     },
     {
       "kind": "box",
@@ -10087,7 +10163,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 19,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#B5BBAA",
-      "rotate": -42
+      "transform": "rotate(-42deg)"
     },
     {
       "kind": "box",
@@ -10256,7 +10332,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -10266,7 +10342,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 38,
+      "transform": "rotate(38deg)",
       "opacity": 0.8
     },
     {
@@ -10277,7 +10353,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": -30,
+      "transform": "rotate(-30deg)",
       "opacity": 0.8
     },
     {
@@ -10288,7 +10364,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.5
     },
     {
@@ -10411,7 +10487,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -10448,7 +10524,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -6
+      "transform": "rotate(-6deg)"
     },
     {
       "kind": "box",
@@ -10539,7 +10615,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 149,
       "width": 5,
       "height": 14,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewX(-14deg)"
     },
     {
       "kind": "box",
@@ -10547,7 +10624,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 149,
       "width": 5,
       "height": 14,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewX(14deg)"
     },
     {
       "kind": "box",
@@ -10687,7 +10765,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "box",
@@ -10697,7 +10775,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -10866,7 +10944,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "box",
@@ -10876,7 +10954,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -10922,7 +11000,17 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "left": 118,
       "top": 96,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "bottom": {
+          "width": 12,
+          "color": "transparent"
+        },
+        "left": {
+          "width": 14,
+          "color": "#1A2027"
+        }
+      }
     },
     {
       "kind": "box",
@@ -11383,7 +11471,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 14,
       "radius": "50%",
       "background": "#E9D2A4",
-      "rotate": 18,
+      "transform": "rotate(18deg)",
       "shadow": "inset 0 0 0 2.2px #E2BA78"
     },
     {
@@ -11394,7 +11482,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -11404,7 +11492,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": 30
+      "transform": "rotate(30deg)"
     },
     {
       "kind": "box",
@@ -11767,7 +11855,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 4.5,
       "radius": "2.5px",
       "background": "#E9D2A4",
-      "rotate": -14
+      "transform": "rotate(-14deg)"
     },
     {
       "kind": "box",
@@ -11776,7 +11864,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 6,
       "height": 4.5,
       "background": "#55534E",
-      "rotate": -14
+      "transform": "rotate(-14deg)",
+      "clip": "polygon(0 0, 100% 50%, 0 100%)"
     },
     {
       "kind": "box",
@@ -11953,7 +12042,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 33,
       "radius": "8px",
       "background": "#E4E3DE",
-      "rotate": 10,
+      "transform": "rotate(10deg)",
       "shadow": "0 3px 8px rgba(40,38,32,0.1)"
     },
     {
@@ -11964,7 +12053,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "50%",
       "background": "#B4B1AB",
-      "rotate": 10
+      "transform": "rotate(10deg)"
     },
     {
       "kind": "box",
@@ -11974,7 +12063,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "50%",
       "background": "#B4B1AB",
-      "rotate": 10
+      "transform": "rotate(10deg)"
     },
     {
       "kind": "box",
@@ -12057,7 +12146,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 65,
       "width": 48,
       "height": 36,
-      "background": "rgba(238,237,231,0.85)"
+      "background": "rgba(238,237,231,0.85)",
+      "clip": "polygon(0 0, 100% 0, 54% 100%, 46% 100%)"
     },
     {
       "kind": "box",
@@ -12065,7 +12155,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 103,
       "width": 48,
       "height": 36,
-      "background": "rgba(238,237,231,0.85)"
+      "background": "rgba(238,237,231,0.85)",
+      "clip": "polygon(46% 0, 54% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -12073,7 +12164,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 82,
       "width": 24,
       "height": 14,
-      "background": "#E9D2A4"
+      "background": "#E9D2A4",
+      "clip": "polygon(0 0, 100% 0, 54% 100%, 46% 100%)"
     },
     {
       "kind": "box",
@@ -12858,7 +12950,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": -60
+      "transform": "rotate(-60deg)"
     },
     {
       "kind": "box",
@@ -12868,7 +12960,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -12877,7 +12969,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 3,
       "height": 10,
       "radius": "2px",
-      "background": "#E2BA78"
+      "background": "#E2BA78",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -12887,7 +12980,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": 30
+      "transform": "rotate(30deg)"
     },
     {
       "kind": "box",
@@ -12897,7 +12990,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": 60
+      "transform": "rotate(60deg)"
     },
     {
       "kind": "box",
@@ -13290,7 +13383,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "top": 100,
       "width": 68,
       "height": 22,
-      "background": "#E2BA78"
+      "background": "#E2BA78",
+      "clip": "polygon(0 0, 100% 0, 50% 100%)"
     },
     {
       "kind": "box",
@@ -13534,7 +13628,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 11,
       "height": 30,
       "background": "#8A857C",
-      "rotate": 16
+      "transform": "rotate(16deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -13543,7 +13638,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 11,
       "height": 30,
       "background": "#B4B1AB",
-      "rotate": -16
+      "transform": "rotate(-16deg)",
+      "origin": "top"
     },
     {
       "kind": "box",
@@ -13858,7 +13954,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 38,
       "radius": "2px",
       "background": "#DEDDD7",
-      "rotate": 12
+      "transform": "rotate(12deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -13930,14 +14027,34 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "left": 181.12,
       "top": 83.75999999999999,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "top": {
+          "width": 22.32,
+          "color": "transparent"
+        },
+        "right": {
+          "width": 13.64,
+          "color": "#D6D5D0"
+        }
+      }
     },
     {
       "kind": "box",
       "left": 198.48,
       "top": 81.28,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "top": {
+          "width": 24.8,
+          "color": "transparent"
+        },
+        "left": {
+          "width": 14.879999999999999,
+          "color": "#E9D2A4"
+        }
+      }
     },
     {
       "kind": "box",
@@ -14123,7 +14240,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": -60
+      "transform": "rotate(-60deg)"
     },
     {
       "kind": "box",
@@ -14133,7 +14250,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": -30
+      "transform": "rotate(-30deg)"
     },
     {
       "kind": "box",
@@ -14142,7 +14259,8 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "width": 3,
       "height": 10,
       "radius": "2px",
-      "background": "#E2BA78"
+      "background": "#E2BA78",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -14152,7 +14270,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": 30
+      "transform": "rotate(30deg)"
     },
     {
       "kind": "box",
@@ -14162,7 +14280,7 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": 60
+      "transform": "rotate(60deg)"
     },
     {
       "kind": "svg",
@@ -14261,14 +14379,34 @@ export const LESSON_PLATES: Record<number, TaskSceneLayer[]> = {
       "left": 89.12,
       "top": 79.75999999999999,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "top": {
+          "width": 40.32000000000001,
+          "color": "transparent"
+        },
+        "right": {
+          "width": 24.64,
+          "color": "#D6D5D0"
+        }
+      }
     },
     {
       "kind": "box",
       "left": 120.48,
       "top": 75.28,
       "width": 0,
-      "height": 0
+      "height": 0,
+      "borders": {
+        "top": {
+          "width": 44.800000000000004,
+          "color": "transparent"
+        },
+        "left": {
+          "width": 26.880000000000003,
+          "color": "#E9D2A4"
+        }
+      }
     },
     {
       "kind": "box",

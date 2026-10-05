@@ -1,0 +1,11 @@
+--- .vicifull/pretty/prev/Morning-1-Yesterday.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Morning-1-Yesterday.html	2026-09-05 00:22:35
+@@ -290,7 +290,7 @@
+     | letter-spacing:-0.1px;
+     | color:#1D1C1A;
+   ">
+-    · Yesterday held.
++    · Yesterday’s record.
+   </div>
+   <div style="
+     | position:absolute;

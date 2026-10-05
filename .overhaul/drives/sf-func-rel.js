@@ -1,0 +1,20 @@
+// sos-flow functional walk 4: /relapse.
+const log = [];
+const ok = (c, m) => { log.push((c ? 'ok ' : 'FAIL ') + m); };
+const seen = async (needles, ms = 9000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { const t = __txt(); if (needles.some((n) => t.includes(n))) return true; await __sleep(90); } return false; };
+await __sleep(800);
+ok(await seen(['It happened.']), 'log board');
+await tap('Log the slip'); ok(await seen(['Don’t let it become two.']), 'Log the slip → twice');
+await tap('Continue'); ok(await seen(['The pledge still stands.']), 'twice → resign');
+ok(__txt().includes('Jerry'), 'signature reads the first name');
+await tap('Sign it again'); ok(await seen(['The day is still yours.']), 'sign → begin');
+await tap('Back'); ok(await seen(['The pledge still stands.']), 'begin back → resign');
+await tap('Sign it again'); await seen(['The day is still yours.']);
+const uid = localStorage.getItem('tideline.session.userId');
+const before = (JSON.parse(localStorage.getItem('tideline.mock.userdata.' + uid)).events || []).filter((e) => e.type === 'lapse').length;
+await tap('Start again'); await __sleep(1500);
+const after = (JSON.parse(localStorage.getItem('tideline.mock.userdata.' + uid)).events || []).filter((e) => e.type === 'lapse').length;
+ok(after === before + 1, 'Start again logs a lapse (' + before + '→' + after + ')');
+ok(!!localStorage.getItem('tideline.letter.pending'), 'letter pending set');
+ok(location.pathname !== '/relapse', 'Start again leaves → ' + location.pathname);
+return log.filter((l) => !l.startsWith('ok ')).join(' || ').slice(0, 380) || 'all ok (' + log.length + ')';

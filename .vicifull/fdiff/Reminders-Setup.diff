@@ -1,0 +1,29 @@
+--- .vicifull/pretty/prev/Reminders-Setup.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Reminders-Setup.html	2026-09-05 00:22:35
+@@ -90,7 +90,7 @@
+     | color:#55534E;
+     | text-wrap:pretty;
+   ">
+-    · Want VICI there before that window starts?
++    · Want VICI there before that time?
+   </div>
+   <div style="
+     | position:absolute;
+@@ -171,7 +171,7 @@
+         | font-weight:500;
+         | color:#8B8882;
+       ">
+-        · 10:41 PM
++        · You pick the time
+       </div>
+     </div>
+     <div style="
+@@ -181,7 +181,7 @@
+       | line-height:21px;
+       | color:#55534E;
+     ">
+-      · Your risky window. The wave tool is one tap away.
++      · The time you told us about. SOS is one tap away.
+     </div>
+   </div>
+   <div style="

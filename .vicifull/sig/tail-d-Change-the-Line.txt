@@ -1,0 +1,9 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | -40 | -140 | 540 | 270 | - | 50% | - | - | - | -
+div | -83.5 | 592 | 560 | 560 | - | 50% | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.12 | - | - | -
+div | 32 | 148 | 329 | 60 | - | - | - | - | 26px/500/-0.2px/normal/rgb(29, 28, 26) | You don’t have to fix the next year tonight.
+div | 44 | 237 | 305 | 66 | - | - | - | - | 14.5px/400/normal/22px/rgb(85, 83, 78) | You only have to make the next decision different. Then the next one. Then come back tomorrow.
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 24 | 744 | 345 | 58 | rgb(255, 255, 255) | 29px | - | - | - | -
+span | 131.3 | 763 | 130.3 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(19, 19, 19) | Start with today

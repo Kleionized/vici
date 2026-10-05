@@ -1,0 +1,42 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 70 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Thirty minutes among people
+div | 24 | 260 | 345 | 484 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 314 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 260 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 269 | 22 | 22 | - | - | - | - | - | -
+rect | 38 | 274 | 12.1 | 13.8 | - | - | - | - | - | -
+path | 41.3 | 277.6 | 5.5 | 10.1 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | School or university
+div | 78 | 284 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use a common room, dining hall, library, club, class, or sports session.
+div | 24 | 344 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 344 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 353 | 22 | 22 | - | - | - | - | - | -
+circle | 37.8 | 358.9 | 12.3 | 12.3 | - | - | - | - | - | -
+circle | 41.1 | 362.2 | 5.7 | 5.7 | - | - | - | - | - | -
+path | 41.4 | 357 | 5.3 | 2.2 | - | - | - | - | - | -
+div | 78 | 344 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 344 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Work
+div | 78 | 368 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Eat in the shared area, take a break with others, or stay for a short conversation.
+div | 24 | 428 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 428 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 437 | 22 | 22 | - | - | - | - | - | -
+circle | 40.3 | 444.3 | 7.5 | 7.5 | - | - | - | - | - | -
+path | 35.9 | 439.9 | 16.3 | 16.3 | - | - | - | - | - | -
+div | 78 | 428 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 428 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Living alone
+div | 78 | 452 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use a cafe, gym, library, class, place of worship, club, or another regular public setting.
+div | 24 | 512 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 512 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 521 | 22 | 22 | - | - | - | - | - | -
+path | 36 | 525.2 | 14.8 | 14.8 | - | - | - | - | - | -
+div | 78 | 512 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 512 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Cannot leave home
+div | 78 | 536 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Have a 20-minute phone or video conversation instead.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

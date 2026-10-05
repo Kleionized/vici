@@ -1,0 +1,14 @@
+const log = [];
+const url = () => location.pathname + location.search;
+const step = async (name, fn, wait = 1300) => { try { await fn(); await __sleep(wait); log.push([name, url(), __txt().slice(0, 120)]); } catch (e) { log.push([name, 'ERR ' + e.message.slice(0, 200)]); } };
+await __sleep(800);
+const rows = __btns().map((b) => b.getAttribute('aria-label')).filter(Boolean);
+log.push(['rows', rows.length, rows.slice(0, 3), rows.slice(-3)]);
+await step('first report', () => tap(rows.find((r) => r.startsWith('Weekly report'))), 1800);
+await step('back', () => tap('Back'), 1300);
+await step('post row', () => tap(rows.find((r) => r.startsWith('VICI Post'))), 1500);
+await step('post close', () => tap('Close'), 1500);
+await step('letter row', () => tap(rows.find((r) => r.startsWith('A letter from day zero'))), 1500);
+await step('letter Tonight', () => tap('Tonight'), 1500);
+await step('mail back', () => tap('Back'), 1300);
+console.error("LOG " + JSON.stringify(log)); return 1;

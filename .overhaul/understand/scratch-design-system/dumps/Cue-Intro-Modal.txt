@@ -1,0 +1,41 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <ellipse> cx="196"  cy="202"  rx="64"  ry="3.84"  fill="#3A3835"
+    <path> d="M112 106 H84 M118 130 H76 M112 154 H84"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+    <rect> width="20"  height="8"  x="186"  y="50"  rx="3"  fill="#F2F0EC"
+    <rect> width="12"  height="14"  x="190"  y="56"  fill="#F2F0EC"
+    <rect> width="10"  height="18"  x="238"  y="68"  rx="2"  fill="#F2F0EC"  transform="rotate(45 243 77)"
+    <circle> cx="196"  cy="130"  r="60"  fill="#F2F0EC"
+    <circle> cx="196"  cy="130"  r="49"  fill="#0D0D0D"
+    <path> d="M196 130 L196 86 A44 44 0 0 1 240 130 Z"  fill="#55524D"
+    <path> d="M236 130 L241 130"  fill="none"  stroke="#F2F0EC"  stroke-width="3.5"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M230.64 150 L234.97 152.5"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M216 164.64 L218.5 168.97"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M196 170 L196 175"  fill="none"  stroke="#F2F0EC"  stroke-width="3.5"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M176 164.64 L173.5 168.97"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M161.36 150 L157.03 152.5"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M156 130 L151 130"  fill="none"  stroke="#F2F0EC"  stroke-width="3.5"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M161.36 110 L157.03 107.5"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M176 95.36 L173.5 91.03"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M196 90 L196 85"  fill="none"  stroke="#F2F0EC"  stroke-width="3.5"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M216 95.36 L218.5 91.03"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M230.64 110 L234.97 107.5"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M196 130 L232 130"  fill="none"  stroke="#F2F0EC"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"
+    <circle> cx="196"  cy="130"  r="6"  fill="#F2F0EC"
+    <circle> cx="196"  cy="130"  r="2.5"  fill="#0D0D0D"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E  text-align:center
+      · The interrupt
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · The first 90 seconds.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · A universal interrupt for the moment the wave hits. Six small moves — decide nothing until it passes.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Start

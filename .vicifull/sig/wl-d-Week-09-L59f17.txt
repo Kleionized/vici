@@ -1,0 +1,34 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 339.3 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 88.6 | 280 | 215.8 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Match your situation
+div | 32 | 346 | 329 | 296 | - | - | - | - | - | -
+div | 32 | 346 | 329 | 89 | - | - | - | - | - | -
+div | 32 | 346 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 354 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 360.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 363.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 362.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 346 | 275 | 89 | - | - | - | - | - | -
+div | 86 | 346 | 275 | 44 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Choose one activity before you start
+div | 86 | 393 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Cook, read, draw, play music, stretch, clean, write by hand, or sit with tea.
+div | 32 | 461 | 329 | 67 | - | - | - | - | - | -
+div | 32 | 461 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 469 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 472.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 472.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 477.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 480.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 461 | 275 | 67 | - | - | - | - | - | -
+div | 86 | 461 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Do not use feeds
+div | 86 | 486 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | No porn, social media, short-form video, or endless browsing.
+div | 32 | 554 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 554 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 562 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 567.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 571.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 554 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 554 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Shared home
+div | 86 | 579 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | You can use a quiet corner or headphones for music, but keep the phone away from your hands.

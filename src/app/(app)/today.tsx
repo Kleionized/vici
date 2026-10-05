@@ -1,54 +1,104 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useId, useRef, useState } from 'react';
-import { ScrollView, View, useWindowDimensions } from 'react-native';
-import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgLinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useId, useState, type ReactNode } from 'react';
+import { Platform, ScrollView, Share, View, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Svg, { Circle, Defs, LinearGradient, Path, Stop, Text as SvgText } from 'react-native-svg';
 
-import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, Grain, Hill, LoadingView, PressScale } from '@/components/ui';
-import { BedArt, type DayStep, DoorwayArt, LessonDome, LessonNightArt, NoteArt, PhoneDownArt, ReadingsStrip, TaskCard, WaterArt } from '@/components/today/kit';
+import {
+  Bolt,
+  Card,
+  CheckDisc,
+  CheckinDisc,
+  ChevronR,
+  DISABLED_OPACITY,
+  Hero,
+  LoadingView,
+  MonoText,
+  Person,
+  Pill,
+  PledgeCard,
+  Screen,
+  Tap,
+  useTabBarHeight,
+} from '@/components/mono';
+import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/content/curriculum84';
+import type { HeroKey } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
-import { lessonForDay, weekFor, type Curriculum84Lesson, type Curriculum84Week } from '@/content/curriculum84';
-import { buildScore } from '@/lib/score';
-import { colors, fonts, sans } from '@/lib/theme';
+import { checkinPartNow } from '@/lib/routines';
+import { buildScore, lastDays, scoreDayKey, scoreHistory } from '@/lib/score';
+import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
 
 /**
- * 21 · Today — three pages, scrolled down.
+ * Today — Today Home, Today Home II / Today Home Task, Today Home III.
  *
- * Page one answers "where am I": the day count, the score drawn as the night
- * you are climbing out of, this morning's two readings, and the last thirty
- * days as thirty marks. Page two is the work in front of you — the lesson and
- * the day's one step. Page three is the line you signed. The mark, the profile
- * door and the urge bar hold across all three, because those are the three
- * things that must stay reachable without reading anything.
+ * The four frames share the header (greeting, day pill, profile door) and the
+ * Sunday-first week strip, pixel for pixel; only the band between the strip
+ * (199) and the tab bar (748) changes. That band is the three-page vertical
+ * pager this screen always was, re-dealt: page one is the score and this
+ * morning's readings, page two the day's task, its lesson and the urge door,
+ * page three the pledge and tonight's urge door. Every y below is the canvas's;
+ * a page's children subtract the pager's top (200).
  *
- * `UI Final` re-dealt these blocks: the readings moved up to page one, the
- * lesson card moved down to page two beside the task, the pledge took a page of
- * its own, the pager dots were deleted, and the thirty-day strip is new.
- *
- * Laid out from the canvas's 393 × 852 frame: the status bar ends at 54, the
- * urge bar starts at 705 and the tab bar at 769.
+ * The old night-sky score card, the thirty-dot strip, the paper lesson and
+ * task cards, the paper pledge and the pinned urge bar are gone (D324: the SOS
+ * disc and the two "Urge surfing" doors replace the bar).
  */
 
-const laurelMark = require('../../../assets/images/laurel-mark.webp');
-const noiseDark = require('../../../assets/images/noise-dark.png');
+/** The pager's top: the week strip ends at 199. */
+const PAGER_TOP = 200;
+/**
+ * Where each page's content ends, page-relative, as the frames draw it: the
+ * chips at 694, the tiles at 703, the Tonight card at 718 (less 200). Measured
+ * once laid out, so a sentence or pledge that wraps further moves its own page's
+ * end; these are the first render's.
+ */
+const PAGE_ENDS = [494, 503, 518];
+/** The least ground kept between a page's content and the tab bar (the frames keep 30–54; Today II's gap between blocks is 20). */
+const BAR_GAP = 20;
 
 const MOOD_WORD = ['Heavy', 'Low', 'Fine', 'Good', 'Clear'];
 const ENERGY_WORD = ['Empty', 'Low', 'Steady', 'Good', 'Full'];
+/**
+ * The check-in chip draws its tone a rung lighter than the check-in's own disc
+ * (Today Home: mood 3, "Fine", `#BAB5AD`; Morning Feeling draws the same answer
+ * `#8A857D`), so the darkest rung still reads on the `#1E1E1E` chip; the top two
+ * rungs share the ink (D231).
+ */
+const CHIP_TONE = [toneRamp[1], toneRamp[2], toneRamp[3], toneRamp[4], toneRamp[4]];
+
+type DayStep = { caption: string; hero: HeroKey };
 
 /**
- * The steps the card falls back on when nobody has named the day's action yet.
- * The first is the one the canvas draws; the rest follow its shape — when it
- * belongs, one plain sentence, and the thing itself drawn into the card's night.
+ * The steps the task falls back on when nobody has named the day's action and
+ * the course has no lesson for the day. The first is the one Today Home II
+ * draws ("hard to reach" — the frame's words; the old card said "difficult to
+ * access"); each now carries an illustration instead of its old drawn night.
+ * Each is one whose art fills the crop's width at 375–430 (or has no floor to
+ * fill it): the open door's floor line, cropped, stops 11 short of both edges
+ * at 393, so "get outside" draws the park bench.
  */
 const DAY_STEPS: DayStep[] = [
-  { when: 'Tonight', caption: 'Put your phone somewhere difficult to access before you sleep.', art: PhoneDownArt },
-  { when: 'Today', caption: 'Drink a full glass of water before anything else.', art: WaterArt },
-  { when: 'Today', caption: 'Get outside for ten minutes, even if it is only around the block.', art: DoorwayArt },
-  { when: 'Today', caption: 'Write down what set it off, in the words you would say out loud.', art: NoteArt },
-  { when: 'Before bed', caption: 'Make the bed now, so tonight you walk into a room that is ready.', art: BedArt },
+  { caption: 'Put your phone somewhere hard to reach before you sleep.', hero: 'nightPhone' },
+  { caption: 'Drink a full glass of water before anything else.', hero: 'twoCups' },
+  { caption: 'Get outside for ten minutes, even if it is only around the block.', hero: 'bench' },
+  { caption: 'Write down what set it off, in the words you would say out loud.', hero: 'notebook' },
+  { caption: 'Make the bed now, so tonight you walk into a room that is ready.', hero: 'bed' },
 ];
+
+/**
+ * A named action keeps the register and the picture of whatever set it. The
+ * night check-in names tomorrow's action from the day's lesson (D236), so a
+ * named action that is a lesson's task is still that lesson's — its title in
+ * the label, its hero, its task page behind the sentence (D232). Anything else
+ * (a fallback step, an older hand-named action) is the generic register.
+ */
+function namedTask(action: string): Task {
+  const lesson = CURRICULUM_84_DAYS.find((l) => l.task.cardSummary === action);
+  if (lesson) return { caption: action, hero: lesson.hero, lesson };
+  return { caption: action, hero: DAY_STEPS.find((s) => s.caption === action)?.hero ?? 'notebook' };
+}
+
+const WEEKDAY = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
 export default function Today() {
   const router = useRouter();
@@ -58,639 +108,562 @@ export default function Today() {
   const events = useEvents();
   const journal = useJournalEntries();
   const upsertCheckin = useUpsertCheckin();
-  const pager = useRef<ScrollView>(null);
-  // Both pages are exactly one viewport tall, so the scroll snaps between them.
-  // Computed rather than measured: onLayout on web settles a frame late and the
-  // first page would render at its natural height.
   const insets = useSafeAreaInsets();
-  const pageH = useWindowDimensions().height - insets.top - 37 - 64 - useTabBarHeight();
+  const winH = useWindowDimensions().height;
+  const tabBar = useTabBarHeight();
   // Read once on mount: the day count and today's key must not shift under a
   // re-render while the screen is open.
   const [now] = useState(() => Date.now());
+  const [ends, setEnds] = useState(PAGE_ENDS);
+  const endAt = (i: number) => (y: number) => setEnds((e) => (Math.abs(e[i] - y) < 0.5 ? e : e.map((v, j) => (j === i ? y : v))));
 
   if (progress === undefined || checkins === undefined || events === undefined) {
-    return <LoadingView />;
+    return <LoadingView spinner={false} />;
   }
 
+  // The viewport is computed rather than measured: onLayout on web settles a
+  // frame late and the first page would render at its natural height. The
+  // scene ends at the bar's top; the Screen's canvas box starts 54 above the
+  // safe-area top. Each page fills the viewport (548 at 852 — the frames' 200 →
+  // 748) and grows past it only when its own content needs more (a 667 phone, a
+  // pledge that wraps to three lines), so the pager always snaps page to page
+  // and a taller page scrolls within itself before the next one (D230, D320).
+  const viewport = winH - tabBar - (insets.top - 54) - PAGER_TOP;
+  const pageH = ends.map((e) => Math.max(viewport, Math.ceil(e) + BAR_GAP));
+  // Native snaps to each page's top and, for a page taller than the viewport,
+  // to its foot as well; the web build pages with CSS scroll snap, which lets an
+  // oversized page scroll within itself (`snapToOffsets` overrides `pagingEnabled`
+  // on native).
+  const offsets: number[] = [];
+  pageH.reduce((top, h) => {
+    offsets.push(top);
+    if (h > viewport) offsets.push(top + h - viewport);
+    return top + h;
+  }, 0);
+
+  const createdAt = user?.createdAt ?? now;
   const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
   const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
   const score = buildScore(checkins, events, lessonsDone, user?.createdAt);
+  const series = lastDays(scoreHistory(checkins, events, progress, createdAt, now, score.total), 30);
 
-  const n = new Date(now);
-  const todayKeyLocal = `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`;
-  const todayCheckin = checkins.find((c) => c.date === todayKeyLocal);
+  const todayKey = scoreDayKey(now);
+  const todayCheckin = checkins.find((c) => c.date === todayKey);
   const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
-  const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : moodIdx;
+  const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : null;
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const name = user?.displayName?.trim().split(/\s+/)[0];
 
-  // The last thirty days, oldest first. A day is held unless a lapse landed on
-  // it; the canvas draws thirty slots and exactly two marks, so a day before the
-  // account existed takes the ring rather than a third tone it has no support
-  // for. The counter is derived, never stated.
-  const lapsedDays = new Set(
-    (events ?? [])
-      .filter((event) => event.type === 'lapse')
-      .map((event) => {
-        const at = new Date(event.createdAt);
-        return `${at.getFullYear()}-${String(at.getMonth() + 1).padStart(2, '0')}-${String(at.getDate()).padStart(2, '0')}`;
-      }),
-  );
-  const held = Array.from({ length: 30 }, (_, index) => {
-    const at = new Date(now - (29 - index) * 86_400_000);
-    const key = `${at.getFullYear()}-${String(at.getMonth() + 1).padStart(2, '0')}-${String(at.getDate()).padStart(2, '0')}`;
-    if (user?.createdAt && at.getTime() < user.createdAt) return false;
-    return !lapsedDays.has(key);
+  // The week strip, Sunday first (Today Home draws `Su … Sa`; the Log's strip
+  // is Monday-first — CRITIC C16). A past day is held unless a slip landed on
+  // it or the account did not exist yet; today fills once the night check-in
+  // has filed it (Today Home III, D231).
+  const lapsed = new Set(events.filter((e) => e.type === 'lapse').map((e) => scoreDayKey(e.createdAt)));
+  const firstDay = new Date(createdAt).setHours(0, 0, 0, 0);
+  const n = new Date(now);
+  const closed = !!(todayCheckin?.emotions?.length || todayCheckin?.reasons?.length);
+  const week: WeekDay[] = WEEKDAY.map((label, i) => {
+    const at = new Date(n.getFullYear(), n.getMonth(), n.getDate() - n.getDay() + i);
+    const t = at.getTime();
+    const held = t >= firstDay && !lapsed.has(scoreDayKey(t));
+    const state: WeekDay['state'] = i < n.getDay() ? (held ? 'held' : 'open') : i === n.getDay() ? (closed ? 'held' : 'today') : 'open';
+    return { label, date: at.getDate(), state, today: i === n.getDay() };
   });
 
   // The day's one action. The night check-in names it and files it under the
-  // day it is *for*, so by the time it reaches this card it is simply today's.
-  // Until someone names one, the card carries the day's own step instead.
-  // A task the curriculum set for the day is the card's lesson-sourced state:
-  // it takes the lesson's own name and glyph and is set a step smaller. One
-  // named by hand in the night check-in stays the generic state.
+  // day it is *for*, so by the time it reaches Today it is simply today's.
+  // Without one, the day's lesson sets it in the lesson's register (Today Home
+  // Task); past the course, the day's own step (Today Home II's register).
   const dayLesson = lessonForDay(day);
-  const dayWeek = dayLesson ? weekFor(dayLesson.week) : undefined;
-  const step: DayStep = todayCheckin?.dailyAction
-    ? { when: 'Today', caption: todayCheckin.dailyAction, art: NoteArt }
+  const task: Task = todayCheckin?.dailyAction
+    ? namedTask(todayCheckin.dailyAction)
     : dayLesson
-      ? { when: 'Today', caption: dayLesson.task.cardSummary, art: LessonNightArt, lesson: dayLesson.task.cardTitle }
+      ? { caption: dayLesson.task.cardSummary, hero: dayLesson.hero, lesson: dayLesson }
       : DAY_STEPS[(day - 1) % DAY_STEPS.length];
-  const stepDone = todayCheckin?.dailyActionDone ?? false;
+  const taskDone = todayCheckin?.dailyActionDone ?? false;
+  const toggleTask = () => void upsertCheckin({ date: todayKey, dailyActionDone: !taskDone });
+  // The sentence opens a task page whenever the course has one to open: the
+  // lesson that set the task, else the day's own lesson — as the old card opened
+  // `/task/<day>` for any task on a lesson day (D324). Only past the course,
+  // with no page behind it, is the sentence the done mark too.
+  const taskLesson = task.lesson ?? dayLesson;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Grain source={noiseDark} opacity={0.07} />
+    <Screen>
+      <Header greeting={checkinPartNow(n) === 'morning' ? 'Good morning.' : 'Good evening.'} day={day} onProfile={() => router.push('/(app)/settings')} />
+      <WeekStrip days={week} />
 
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        {/* the mark and the profile door — design y 64, 27 tall */}
-        <View style={{ height: 37, paddingTop: 10, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <Image source={laurelMark} contentFit="contain" style={{ width: 27, height: 27 }} />
-          <PressScale onPress={() => router.push('/profile')} accessibilityLabel="Open profile" hitSlop={16}>
-            <Svg width={26} height={26} viewBox="0 0 26 26" fill="none">
-              <Circle cx={13} cy={9.5} r={4} stroke={colors.textMuted} strokeWidth={2} />
-              <Path d="M4.5 22.5c1-4.5 4.2-6.8 8.5-6.8s7.5 2.3 8.5 6.8" stroke={colors.textMuted} strokeWidth={2} strokeLinecap="round" />
-            </Svg>
-          </PressScale>
-        </View>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
+        <ScrollView
+          pagingEnabled={Platform.OS === 'web'}
+          snapToOffsets={Platform.OS === 'web' ? undefined : offsets}
+          decelerationRate="fast"
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={16}
+          style={{ flex: 1 }}>
+          <View style={{ height: pageH[0] }}>
+            <PageOne
+              score={score}
+              series={series}
+              mood={moodIdx}
+              energy={energyIdx}
+              onScore={() => router.push('/score')}
+              onMorning={() => router.push('/day/morning')}
+              onEnd={endAt(0)}
+            />
+          </View>
+          <View style={{ height: pageH[1] }}>
+            <PageTwo
+              task={task}
+              done={taskDone}
+              lesson={dayLesson}
+              opensTask={!!taskLesson}
+              onTask={() => (taskLesson ? router.push(`/lesson/day/${taskLesson.day}?page=task`) : toggleTask())}
+              onCheck={toggleTask}
+              onLesson={() => (dayLesson ? router.push(`/lesson/day/${dayLesson.day}`) : router.push('/lessons-browser'))}
+              onUrge={() => router.push('/urge-hub')}
+              onEnd={endAt(1)}
+            />
+          </View>
+          <View style={{ height: pageH[2] }}>
+            <PageThree
+              onEnd={endAt(2)}
+              pledge={pledge?.body}
+              name={name}
+              onAdd={() =>
+                router.push({
+                  pathname: '/journal-new',
+                  params: { tag: 'Pledge' },
+                })
+              }
+              onSaved={() => router.push('/(app)/journal')}
+              onShare={() => (pledge?.body ? void Share.share({ message: pledge.body }).catch(() => {}) : undefined)}
+              onUrge={() => router.push('/urge-hub')}
+            />
+          </View>
+        </ScrollView>
+      </View>
+    </Screen>
+  );
+}
 
-        <View style={{ flex: 1 }}>
-          <ScrollView
-            ref={pager}
-            pagingEnabled
-            snapToInterval={pageH}
-            decelerationRate="fast"
-            showsVerticalScrollIndicator={false}
-            scrollEventThrottle={16}
-            style={{ flex: 1 }}>
-            <View style={{ height: pageH }}>
-              <PageOne
-                day={day}
-                score={score}
-                mood={moodIdx}
-                energy={energyIdx}
-                held={held}
-                onScore={() => router.push('/score')}
-                onMorning={() => router.push('/day/morning')}
-              />
-            </View>
-            <View style={{ height: pageH }}>
-              <PageTwo
-                lesson={dayLesson}
-                week={dayWeek}
-                step={step}
-                stepDone={stepDone}
-                onStep={() => (dayLesson ? router.push(`/task/${dayLesson.day}`) : void upsertCheckin({ date: todayKeyLocal, dailyActionDone: !stepDone }))}
-                onLesson={() => (dayLesson ? router.push(`/lesson-card/${dayLesson.day}`) : router.push('/lessons-browser'))}
-                onLibrary={() => router.push('/(app)/library')}
-              />
-            </View>
-            <View style={{ height: pageH }}>
-              <PageThree pledge={pledge} name={user?.displayName} onPledges={() => router.push('/(app)/journal')} />
-            </View>
-          </ScrollView>
-        </View>
-      </SafeAreaView>
+/* ---------------------------------------------------------------- the header */
 
-      {/* the one door that stays open on every page */}
-      <PressScale
-        onPress={() => router.push('/urge')}
-        accessibilityRole="button"
-        accessibilityLabel="Urge surfing and SOS"
-        style={{
-          height: 64,
-          borderTopLeftRadius: 18,
-          borderTopRightRadius: 18,
-          backgroundColor: colors.ink,
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 13,
-          paddingHorizontal: 16,
-        }}>
-        <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(244,243,240,0.12)', alignItems: 'center', justifyContent: 'center' }}>
-          <Svg width={20} height={13} viewBox="0 0 26 16" fill="none">
-            <Path d="M2 12c4-7 8 3 12-3s8 2 10-2" stroke="#F4F3F0" strokeWidth={2.4} strokeLinecap="round" />
-          </Svg>
-        </View>
-        {/* the bar carried two lines in the previous bundle; this one names it once */}
-        <AppText style={[sans('600'), { flex: 1, fontSize: 15, color: '#F7F6F2' }]}>Urge surfing</AppText>
-        <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
-          <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="rgba(244,243,240,0.5)" strokeWidth={2} strokeLinecap="round" />
-        </Svg>
-      </PressScale>
+/**
+ * `left 24 right 24 top 64`: the greeting, then the day pill and the profile
+ * door (gap 10). The pill counts the day (today-day OQ-T1: the frame's 41 is
+ * the account's day number, and a streak stays opt-in — invariant #1), so the
+ * old "Day 41" heading lives here now. The avatar is the frame's outline ring
+ * and glyph; it opens Settings, as the old person glyph did.
+ */
+function Header({ greeting, day, onProfile }: { greeting: string; day: number; onProfile: () => void }) {
+  return (
+    <View style={{ position: 'absolute', left: 24, right: 24, top: 64, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+      <MonoText v="greeting">{greeting}</MonoText>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Pill kind="streak" label={String(day)} accessibilityLabel={`Day ${day}`} />
+        <Tap
+          label="Open settings"
+          onPress={onProfile}
+          hitSlop={4}
+          style={{ width: 40, height: 40, borderRadius: 20, boxShadow: ring.outline, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <Person />
+        </Tap>
+      </View>
     </View>
   );
 }
 
-/* ------------------------------------------------------------------- page one */
+type WeekDay = { label: string; date: number; state: 'held' | 'today' | 'open'; today: boolean };
+
+/**
+ * `left 24 right 24 top 136`, seven 36-wide columns spread `space-between`: the
+ * day (12px; today 700 ink) over a 36 disc, gap 12. Held — the ink disc with a
+ * 14 check; today, still open — the ink ring and the date; anything else (a
+ * day to come, a slip, a day before the account) — the line ring and a muted
+ * date (D231).
+ */
+function WeekStrip({ days }: { days: WeekDay[] }) {
+  return (
+    <View style={{ position: 'absolute', left: 24, right: 24, top: 136, flexDirection: 'row', justifyContent: 'space-between' }}>
+      {days.map((d) => (
+        <View key={d.label} accessibilityLabel={`${d.label} ${d.date}${d.state === 'held' ? ', held' : ''}`} style={{ alignItems: 'center', gap: 12 }}>
+          <MonoText
+            v="caps"
+            color={d.today ? mono.ink : mono.mute}
+            style={{
+              ...sans(d.today ? '700' : '400'),
+              fontSize: 12,
+              lineHeight: lhNormal(12),
+            }}>
+            {d.label}
+          </MonoText>
+          {d.state === 'held' ? (
+            <CheckDisc size={36} />
+          ) : (
+            <View
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: 18,
+                boxShadow: d.state === 'today' ? ring.outlineInk : ring.outline,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <MonoText v="pill" color={d.state === 'today' ? mono.ink : mono.mute} style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
+                {d.date}
+              </MonoText>
+            </View>
+          )}
+        </View>
+      ))}
+    </View>
+  );
+}
+
+/* ------------------------------------------------------------------ page one */
+
+/** The page's children are in canvas y less the pager's top. */
+const py = (y: number) => y - PAGER_TOP;
 
 function PageOne({
-  day,
   score,
+  series,
   mood,
   energy,
-  held,
   onScore,
   onMorning,
+  onEnd,
 }: {
-  day: number;
   score: ReturnType<typeof buildScore>;
+  series: number[];
   mood: number | null;
   energy: number | null;
-  held: boolean[];
   onScore: () => void;
   onMorning: () => void;
+  /** where the page's content ends (page y) */
+  onEnd: (y: number) => void;
 }) {
   return (
-    <View style={{ flex: 1 }}>
-      {/* design 114, i.e. 23 below the mark row */}
-      {/* the canvas's box is as wide as the words, not as wide as the row */}
-      <AppText style={[sans('600'), { alignSelf: 'flex-start', marginLeft: 16, marginTop: 23, fontSize: 27, lineHeight: 27, letterSpacing: -0.2, color: colors.text }]}>
-        Day {day}
-      </AppText>
-
-      <View style={{ marginTop: 23 }}>
-        <ScoreCard score={score} onPress={onScore} />
-      </View>
-
-      {/* design 402 — 16 under the score card */}
-      <SectionRow label="This morning" onPress={onMorning} marginTop={16} />
-
-      <View style={{ marginTop: 11.5 }}>
-        <ReadingsStrip
-          mood={mood}
-          energy={energy}
-          moodWord={mood != null ? MOOD_WORD[mood] : '—'}
-          energyWord={energy != null ? ENERGY_WORD[energy] : '—'}
-        />
-      </View>
-
-      {/* design 492 — 16 under the readings */}
-      <View style={{ marginTop: 16 }}>
-        <HeldStrip held={held} />
-      </View>
-    </View>
-  );
-}
-
-/**
- * The score, drawn as the thing it measures: a night sky with a low moon and a
- * ridge you are climbing. The number sits on the dark because that is where the
- * work happens.
- */
-function ScoreCard({ score, onPress }: { score: ReturnType<typeof buildScore>; onPress: () => void }) {
-  const id = useId().replace(/:/g, '');
-  // The card runs full width inside a 12pt gutter; the sky art is positioned
-  // from its right edge, as the canvas does.
-  const W = useWindowDimensions().width - 24;
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={`Recovery score ${score.total}`}
-      style={{
-        marginHorizontal: 12,
-        height: 222,
-        borderRadius: 22,
-        borderCurve: 'continuous',
-        overflow: 'hidden',
-        backgroundColor: '#0C0D10',
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.25), 0 14px 30px rgba(30,28,24,0.28)',
-      }}>
-      {/* sky */}
-      <Svg width="100%" height={222} style={{ position: 'absolute' }}>
-        <Defs>
-          <SvgLinearGradient id={`sky${id}`} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#08090B" />
-            <Stop offset="0.55" stopColor="#0E1014" />
-            <Stop offset="1" stopColor="#151920" />
-          </SvgLinearGradient>
-          {/* `radial-gradient(circle at 36% 30%, …)` names no size, so CSS uses
-              farthest-corner: from (36%, 30%) of a 30px box the far corner is
-              √((0.64·30)² + (0.70·30)²) = 28.45px, which is 94.8% of the box. */}
-          <RadialGradient id={`moon${id}`} cx="36%" cy="30%" rx="94.8%" ry="94.8%">
-            <Stop offset="0" stopColor="#F5F3EC" />
-            <Stop offset="0.46" stopColor="#D9D6CD" />
-            <Stop offset="1" stopColor="#A5A197" />
-          </RadialGradient>
-          {/* The moon div's own `box-shadow: 0 0 26px rgba(223,220,211,0.26)`.
-              A shadow blur is a Gaussian of σ = blur/2, not a linear ramp: the
-              stated alpha is reached deep inside the shape, is already halved at
-              its edge, and is all but gone by one blur radius out. So on a 41pt
-              gradient (15 disc + 26 blur) the stops track erf, which is why they
-              fall away so much faster than the distance suggests. */}
-          <RadialGradient id={`moonGlow${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
-            <Stop offset="0.366" stopColor="#DFDCD3" stopOpacity={0.13} />
-            <Stop offset="0.512" stopColor="#DFDCD3" stopOpacity={0.085} />
-            <Stop offset="0.683" stopColor="#DFDCD3" stopOpacity={0.042} />
-            <Stop offset="0.829" stopColor="#DFDCD3" stopOpacity={0.015} />
-            <Stop offset="1" stopColor="#DFDCD3" stopOpacity={0} />
-          </RadialGradient>
-          <RadialGradient id={`halo${id}`} cx="50%" cy="50%" rx="50%" ry="50%">
-            <Stop offset="0" stopColor="#DFDCD3" stopOpacity={0.15} />
-            {/* the CSS ramp is 0.15 @ 0% → 0 @ 72%, so 40% is exactly 0.0666667 */}
-            <Stop offset="0.4" stopColor="#DFDCD3" stopOpacity={0.0666667} />
-            <Stop offset="0.72" stopColor="#DFDCD3" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Rect x={0} y={0} width="100%" height={222} fill={`url(#sky${id})`} />
-        {/* the canvas's `left`/`top` place a star box's corner, not its centre,
-            so each centre is the stated offset plus half the box */}
-        <Circle cx={117} cy={35} r={1} fill="#F4F3F0" fillOpacity={0.45} />
-        <Circle cx={W - 151.25} cy={57.25} r={1.25} fill="#F4F3F0" fillOpacity={0.35} />
-        <Circle cx={53} cy={97} r={1} fill="#F4F3F0" fillOpacity={0.3} />
-        <Circle cx={W - 66} cy={76} r={42} fill={`url(#halo${id})`} />
-        <Circle cx={W - 63} cy={71} r={41} fill={`url(#moonGlow${id})`} />
-        <Circle cx={W - 63} cy={71} r={15} fill={`url(#moon${id})`} />
-      </Svg>
-
-      {/* the two ridges, drawn in the canvas's own 369 × 76 frame */}
-      <Svg width="100%" height={64} viewBox="0 0 369 76" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, right: 0, top: 102 }}>
-        <Defs>
-          <SvgLinearGradient id={`h1${id}`} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#232830" />
-            <Stop offset="1" stopColor="#0A0B0D" />
-          </SvgLinearGradient>
-          <SvgLinearGradient id={`h2${id}`} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#2A303B" />
-            <Stop offset="1" stopColor="#0C0D10" />
-          </SvgLinearGradient>
-        </Defs>
-        <Path d="M-4,76 L-4,50 Q56,22 124,48 Q160,61 188,68 L188,76 Z" fill={`url(#h1${id})`} />
-        <Path d="M168,76 L168,66 Q226,57 270,36 Q316,17 373,25 L373,76 Z" fill={`url(#h2${id})`} />
-      </Svg>
-
-      {/* the waterline glow, then the flat dark below it */}
-      <Svg width="100%" height={68} style={{ position: 'absolute', left: 0, right: 0, top: 154 }}>
-        <Defs>
-          <SvgLinearGradient id={`glow${id}`} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#E9C78A" stopOpacity={0} />
-            <Stop offset="1" stopColor="#E9C78A" stopOpacity={0.12} />
-          </SvgLinearGradient>
-          <SvgLinearGradient id={`sea${id}`} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#131720" />
-            <Stop offset="1" stopColor="#0B0C0F" />
-          </SvgLinearGradient>
-          {/* The canvas blurs this shaft by 5px; RN SVG has no blur filter, so
-              it is drawn as a soft radial instead of a hard-edged bar. */}
-          <RadialGradient id={`shaft${id}`} cx="50%" cy="0%" rx="50%" ry="100%">
-            <Stop offset="0" stopColor="#DFDCD3" stopOpacity={0.13} />
-            <Stop offset="1" stopColor="#DFDCD3" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Rect x={0} y={0} width="100%" height={12} fill={`url(#glow${id})`} />
-        <Rect x={0} y={12} width="100%" height={56} fill={`url(#sea${id})`} />
-        {/* the moon's reflection on the water — the canvas's own 38 × 44 shaft
-            at right 50, top 168, with the gradient's falloff standing in for
-            the 5px blur rather than a larger box (DECISIONS.md D010) */}
-        <Ellipse cx={W - 69} cy={36} rx={19} ry={22} fill={`url(#shaft${id})`} />
-      </Svg>
-
-      <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 22, fontSize: 13, color: '#F7F6F2' }]}>Recovery score</AppText>
-
-      <View
-        style={{
-          position: 'absolute',
-          right: 16,
-          top: 16,
-          // the canvas states no box-sizing and carries no reset, so its 30 is
-          // content: 30 + two 1px borders = 32 outer
-          height: 32,
-          // the canvas states 15 on a pill its own borders make 32 tall
-          borderRadius: 15,
-          borderWidth: 1,
-          borderColor: 'rgba(244,243,240,0.28)',
-          backgroundColor: 'rgba(20,19,16,0.25)',
-          paddingHorizontal: 12,
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 6,
-        }}>
-        <Svg width={14} height={10} viewBox="0 0 14 10" fill="none">
-          <Path d="M1 8.5L5 4.5l2.5 2L12.5 1.5" stroke="#F4F3F0" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-          <Path d="M9.2 1.5h3.3V4.8" stroke="#F4F3F0" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
-        <AppText style={[sans('600'), { fontSize: 12, color: '#F4F3F0' }]}>Trend</AppText>
-      </View>
-
-      <View style={{ position: 'absolute', left: 20, top: 48, flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
-        <AppText style={[sans('500'), { fontSize: 43, letterSpacing: 1.5, color: '#F7F6F2' }]}>
-          {score.total.toLocaleString()}
-        </AppText>
-        {score.delta !== 0 ? (
-          <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 3 }}>
-            <Svg width={9} height={8} viewBox="0 0 10 9">
-              <Path d={score.delta > 0 ? 'M5 0.5L9.5 8.5H0.5z' : 'M5 8.5L0.5 0.5h9z'} fill="rgba(244,243,240,0.8)" />
-            </Svg>
-            <AppText style={[sans('500'), { fontSize: 13, color: 'rgba(244,243,240,0.8)' }]}>{Math.abs(score.delta)}</AppText>
+    <>
+      {/* the number and its chart are one door into Score Detail (240 → 584) */}
+      <Tap
+        label={`Recovery score ${score.total.toLocaleString('en-US')}`}
+        onPress={onScore}
+        style={{ position: 'absolute', left: 24, right: 24, top: py(240), height: 344 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <View style={{ gap: 12 }}>
+            <MonoText v="caps">Recovery score</MonoText>
+            <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
+              {score.total.toLocaleString('en-US')}
+            </MonoText>
           </View>
-        ) : null}
-      </View>
-
-      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 50, height: 6, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.14)', overflow: 'hidden' }}>
-        <View style={{ width: `${score.progress * 100}%`, height: 6, borderRadius: 3, backgroundColor: 'rgba(244,243,240,0.92)' }} />
-      </View>
-      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 22, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <AppText style={[sans('500'), { fontSize: 11, color: 'rgba(244,243,240,0.55)' }]}>
-          {score.rank.name} · {score.rank.at.toLocaleString()}
-        </AppText>
-        {score.next ? (
-          <AppText style={[sans('500'), { fontSize: 11, color: 'rgba(244,243,240,0.55)' }]}>
-            {score.next.name} · {score.next.at.toLocaleString()}
-          </AppText>
-        ) : null}
-      </View>
-
-      <Grain source={noiseDark} opacity={0.06} />
-    </PressScale>
-  );
-}
-
-/**
- * The lesson in front of you, under a dome carrying its own plate.
- *
- * The canvas draws the rail as six segments; a week is seven lessons, so a
- * six-slot rail can never fill. It is one per lesson in the week instead, which
- * is what the lesson card's own dot rail already does (DECISIONS D-112).
- */
-function LessonCard({ title, meta, day, done, count, onPress }: { title: string; meta: string; day?: number; done: number; count: number; onPress: () => void }) {
-  const id = useId().replace(/:/g, '');
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={`${title}. ${meta}`}
-      style={{
-        marginHorizontal: 12,
-        height: 152,
-        borderRadius: 20,
-        borderCurve: 'continuous',
-        overflow: 'hidden',
-        backgroundColor: colors.surface,
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
-      }}>
-      {/* the canvas gives the title no right bound and no clamp — it may run
-          under the dome, which does not start until x 217 */}
-      <AppText style={[sans('600'), { position: 'absolute', left: 20, top: 26, fontSize: 19, letterSpacing: -0.2, color: colors.text }]}>
-        {title}
-      </AppText>
-      <AppText style={[sans('400'), { position: 'absolute', left: 20, top: 56, fontSize: 12.5, color: colors.textSoft }]}>{meta}</AppText>
-
-      <LessonDome id={id} day={day} />
-
-      <Svg width={8} height={14} viewBox="0 0 8 14" fill="none" style={{ position: 'absolute', right: 16, top: 22 }}>
-        <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke={colors.textSoft} strokeWidth={2} strokeLinecap="round" />
-      </Svg>
-
-      <View style={{ position: 'absolute', left: 20, right: 20, bottom: 20, flexDirection: 'row', gap: 7 }}>
-        {Array.from({ length: count }, (_, i) => (
-          <View key={i} style={{ flex: 1, height: 4.5, borderRadius: 2.5, backgroundColor: i < done ? colors.ink : 'rgba(19,19,19,0.15)' }} />
-        ))}
-      </View>
-    </PressScale>
-  );
-}
-
-/* ------------------------------------------------------------------- page two */
-
-function PageTwo({
-  lesson,
-  week,
-  step,
-  stepDone,
-  onStep,
-  onLesson,
-  onLibrary,
-}: {
-  lesson: Curriculum84Lesson | undefined;
-  week: Curriculum84Week | undefined;
-  step: DayStep;
-  stepDone: boolean;
-  onStep: () => void;
-  onLesson: () => void;
-  onLibrary: () => void;
-}) {
-  // Where this lesson sits in its own week, and how much of the week is behind
-  // it. The canvas prints "Lesson 5 · Week II" — a within-week index and a
-  // roman week, which a global lesson number can never produce.
-  const indexInWeek = week && lesson ? week.lessons.findIndex((l) => l.day === lesson.day) : -1;
-  return (
-    <View style={{ flex: 1 }}>
-      {/* design 138 — 47 below the mark row */}
-      <SectionRow label="This week" action="Library" actionOffset={-2} onPress={onLibrary} marginTop={47} />
-
-      <View style={{ marginTop: 11.5 }}>
-        <LessonCard
-          title={lesson?.title ?? 'Start the first lesson'}
-          meta={lesson && week ? `Lesson ${indexInWeek + 1} · Week ${week.roman}` : 'Week I'}
-          day={lesson?.day}
-          done={indexInWeek < 0 ? 0 : indexInWeek}
-          count={week?.lessons.length ?? 7}
-          onPress={onLesson}
-        />
-      </View>
-
-      {/* design 340 — 24 under the lesson card */}
-      <View style={{ marginTop: 24 }}>
-        <TaskCard step={step} done={stepDone} onPress={onStep} />
-      </View>
-    </View>
-  );
-}
-
-function PageThree({ pledge, name, onPledges }: { pledge?: { body: string; createdAt: number }; name?: string; onPledges: () => void }) {
-  return (
-    <View style={{ flex: 1 }}>
-      {/* the canvas leaves nothing on the right of this row now — no label and
-          no chevron — so the row is a label with a hit target behind it */}
-      <SectionRow label="Your pledge" chevron={false} onPress={onPledges} marginTop={47} />
-
-      <View style={{ marginTop: 11.5 }}>
-        <PledgeCard pledge={pledge} name={name} onPress={onPledges} />
-      </View>
-    </View>
-  );
-}
-
-/**
- * The last thirty days as thirty marks. Ten to a row, and the columns are pinned
- * with a derived gap rather than left to a wrapping flex row, which would
- * silently drop to nine columns on a 375pt phone and push the block past the
- * card's content line.
- *
- * `UI Final 1` re-cuts the grid: the marks grow 20 → 24, the inset comes in
- * 35 → 20, and the gap falls to 9.88 — `10 × 24 + 9 × 9.88 = 329`, exact at the
- * canvas's 393. An unheld day is now a white disc with a 1pt ring rather than
- * an empty one with a 1.5pt ring, and today carries a 2pt gold one.
- */
-const HELD_DOT = 24;
-const HELD_INSET = 20;
-function HeldStrip({ held }: { held: boolean[] }) {
-  const width = useWindowDimensions().width;
-  const inner = width - 24 - HELD_INSET * 2;
-  const gap = Math.max(0, (inner - 10 * HELD_DOT) / 9);
-  return (
-    <View
-      style={{
-        marginHorizontal: 12,
-        height: 184,
-        borderRadius: 20,
-        borderCurve: 'continuous',
-        overflow: 'hidden',
-        backgroundColor: colors.surface,
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.05), 0 10px 24px rgba(40,38,32,0.07)',
-      }}>
-      <AppText style={[sans('500'), { position: 'absolute', left: 20, top: 20, fontSize: 13, color: colors.text }]}>Last 30 days</AppText>
-      <View style={{ position: 'absolute', left: HELD_INSET, top: 58, right: HELD_INSET, flexDirection: 'row', flexWrap: 'wrap', gap }}>
-        {held.map((on, index) => {
-          const today = index === held.length - 1;
-          return (
-            <View
-              key={index}
-              style={{
-                width: HELD_DOT,
-                height: HELD_DOT,
-                borderRadius: HELD_DOT / 2,
-                backgroundColor: on ? colors.ink : '#FFFFFF',
-                boxShadow: today ? 'inset 0 0 0 2px #D9A441' : on ? undefined : 'inset 0 0 0 1px rgba(0,0,0,0.14)',
-              }}
-            />
-          );
-        })}
-      </View>
-    </View>
-  );
-}
-
-/**
- * A quiet section label with its way through on the right. The row is only as
- * tall as its label — the canvas measures from the label's own box — so the
- * touch target comes from hitSlop rather than from padding it out.
- */
-function SectionRow({
-  label,
-  action,
-  actionOffset = 0,
-  chevron = true,
-  onPress,
-  marginTop,
-}: {
-  label: string;
-  action?: string;
-  actionOffset?: number;
-  /**
-   * `21 · Today` draws a bare chevron on "This morning", a label *and* a
-   * chevron on "This week", and nothing at all on "Your pledge" — so the
-   * right-hand side is stated per row rather than implied by the label.
-   */
-  chevron?: boolean;
-  onPress: () => void;
-  marginTop: number;
-}) {
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={action ?? label}
-      hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-      style={{ minHeight: 0, marginTop, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-      <AppText style={[sans('600'), { fontSize: 12.5, color: colors.textSoft }]}>{label}</AppText>
-      {action || chevron ? (
-        <View style={{ marginTop: actionOffset, flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-          {action ? <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 0.5, color: colors.textSoft }]}>{action}</AppText> : null}
-          {chevron ? (
-            <Svg width={7} height={12} viewBox="0 0 8 14" fill="none">
-              <Path d="M1.5 1.5L6.5 7l-5 5.5" stroke="#B0AEA8" strokeWidth={2} strokeLinecap="round" />
-            </Svg>
-          ) : null}
+          {/* today's own contribution; nothing is drawn on a day that has not moved it */}
+          {score.delta !== 0 ? <Pill kind="delta" label={String(Math.abs(score.delta))} down={score.delta < 0} style={{ marginBottom: 8 }} /> : null}
         </View>
-      ) : null}
-    </PressScale>
-  );
-}
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 94 }}>
+          <ThirtyDays series={series} />
+        </View>
+      </Tap>
 
-/**
- * The line you signed this morning, on the paper you signed it on.
- *
- * `UI Final 1` rebuilds this card: the pledge is one plain sentence — the
- * "I am abstaining today because" stem and the underline under the reason are
- * both gone — the serif is dropped for the frame's own sans, the timestamp is
- * deleted, and a warm scene comes in behind the words: a glow off the top-right
- * corner with a sun disc in it, and two hills breaking the bottom edge.
- */
-function PledgeCard({ pledge, name, onPress }: { pledge?: { body: string; createdAt: number }; name?: string; onPress: () => void }) {
-  const body = pledge?.body ?? '';
-
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={body || 'Your pledge'}
-      style={{
-        marginHorizontal: 12,
-        height: 140,
-        borderRadius: 14,
-        borderCurve: 'continuous',
-        overflow: 'hidden',
-        backgroundColor: colors.surface,
-        boxShadow: '0 0 0 1px rgba(0,0,0,0.06)',
-      }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Svg width={150} height={150} style={{ position: 'absolute', right: -34, top: -44 }}>
-          <Defs>
-            <RadialGradient id="pledgeSun" cx="50%" cy="50%" rx="50%" ry="50%">
-              <Stop offset="0" stopColor="#E9D2A4" stopOpacity={0.34} />
-              <Stop offset="0.74" stopColor="#E9D2A4" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Circle cx={75} cy={75} r={75} fill="url(#pledgeSun)" />
-        </Svg>
-        <View style={{ position: 'absolute', right: 24, top: 22, width: 26, height: 26, borderRadius: 13, backgroundColor: '#F0DDB4' }} />
-        {/* two hills, each a box whose top edge is an elliptical arc: the
-            canvas gives them a 50% horizontal radius and a 46 / 40pt vertical
-            one, which no single `borderRadius` can express */}
-        <Hill height={100} rise={46} color="#EFEEE9" style={{ position: 'absolute', left: -30, right: -30, bottom: -58 }} />
-        <Hill height={100} rise={40} color="#E9E8E2" style={{ position: 'absolute', left: -60, right: -10, bottom: -70 }} />
+      <View style={{ position: 'absolute', left: 24, right: 24, top: py(622) }}>
+        <MonoText v="caps" style={{ lineHeight: 16 }}>
+          This morning
+        </MonoText>
       </View>
-
-      <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 30, fontSize: 30, lineHeight: 20, color: '#C9C0AC' }]}>&ldquo;</AppText>
-      <AppText style={[sans('500'), { position: 'absolute', left: 38, right: 38, top: 36, fontSize: 17.5, lineHeight: 27, letterSpacing: -0.2, color: '#3A3934' }]}>
-        {body}
-      </AppText>
-
-      {/* the canvas leaves an empty span where the timestamp was, purely as the
-          flex spacer that keeps the signature on the right */}
-      <View style={{ position: 'absolute', left: 16, right: 16, bottom: 11, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
-        {pledge ? (
-          <View style={{ alignItems: 'flex-end' }}>
-            <AppText style={{ fontFamily: fonts.script, fontSize: 24, lineHeight: 24, color: colors.text, transform: [{ rotate: '-3.5deg' }] }}>
-              {name?.split(' ')[0] ?? 'You'}
-            </AppText>
-            <View style={{ marginTop: 4, width: 92, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
-          </View>
+      <View
+        onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)}
+        style={{ position: 'absolute', left: 24, right: 24, top: py(650), flexDirection: 'row', gap: 10 }}>
+        {mood == null ? (
+          // no frame draws the morning before its check-in: one chip that opens it, in the cover's words
+          <Pill kind="checkin" label="Morning check-in" lead={<CheckinDisc />} onPress={onMorning} />
         ) : (
-          <View style={{ width: 92, height: 1, backgroundColor: 'rgba(0,0,0,0.2)' }} />
+          <>
+            <Pill
+              kind="checkin"
+              label={MOOD_WORD[mood]}
+              lead={<CheckinDisc tone={CHIP_TONE[mood]} />}
+              onPress={onMorning}
+              accessibilityLabel={`This morning: ${MOOD_WORD[mood]}`}
+            />
+            {energy != null ? <Pill kind="checkin" label={`${ENERGY_WORD[energy]} energy`} lead={<CheckinDisc icon={<Bolt />} />} onPress={onMorning} /> : null}
+          </>
         )}
       </View>
-    </PressScale>
+    </>
+  );
+}
+
+const round1 = (v: number) => Math.round(v * 10) / 10;
+/** Today Home's band: the lowest of the thirty days sits at 210.6, the highest 172.7 above it. */
+const CHART_LOW = 210.6;
+const CHART_SPAN = 172.7;
+
+/**
+ * The last thirty days (`left 24 top 334`, 345 × 250 at 393): three dashed
+ * rules, the area under the line in a fading ink, the line (straight segments,
+ * stroke 3) and an end ring on today. x steps `(W − 64) / 29` to one decimal —
+ * the frame's own 11.3, 22.7 … 329 — and y maps the series' own range onto the
+ * band, so the newest high lands where the frame's does (a flat or one-day
+ * series lies on the band's floor — today-day OQ-T3).
+ */
+function ThirtyDays({ series }: { series: number[] }) {
+  const id = useId().replace(/:/g, '');
+  const W = useWindowDimensions().width - 48;
+  const run = W - 16;
+  const lo = Math.min(...series);
+  const hi = Math.max(...series);
+  const pts = series.map((v, i) => [round1((i * run) / (series.length - 1)), round1(CHART_LOW - (hi === lo ? 0 : ((v - lo) / (hi - lo)) * CHART_SPAN))] as const);
+  const line = pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ');
+  const [ex, ey] = pts[pts.length - 1];
+  const label = sans('700').fontFamily;
+  return (
+    <Svg width={W} height={250} viewBox={`0 0 ${W} 250`} style={{ position: 'absolute', left: 0, top: 0 }}>
+      <Defs>
+        <LinearGradient id={`scoreFill${id}`} x1="0" y1="0" x2="0" y2="1">
+          <Stop offset="0" stopColor={mono.ink} stopOpacity={0.22} />
+          <Stop offset="1" stopColor={mono.ink} stopOpacity={0} />
+        </LinearGradient>
+      </Defs>
+      {[70, 130, 190].map((y) => (
+        <Path key={y} d={`M0 ${y}H${W}`} stroke={mono.line} strokeWidth={1} strokeDasharray="2 5" />
+      ))}
+      <Path d={`${line} L${ex} 232 L0 232 Z`} fill={`url(#scoreFill${id})`} />
+      <Path d={line} fill="none" stroke={mono.ink} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+      <Circle cx={ex} cy={ey} r={7} fill={mono.ground} stroke={mono.ink} strokeWidth={3} />
+      {/* the frame asks for 600, which the canvas never loads: its browser drew 700 */}
+      <SvgText x={0} y={246} fill={mono.mute} fontSize={12} fontFamily={label}>
+        30 days ago
+      </SvgText>
+      <SvgText x={W} y={246} fill={mono.ink} textAnchor="end" fontSize={12} fontFamily={label}>
+        Today
+      </SvgText>
+    </Svg>
+  );
+}
+
+/* ------------------------------------------------------------------ page two */
+
+type Task = DayStep & { lesson?: Curriculum84Lesson };
+
+/**
+ * Today Home II (the generic register: "Today’s task", 20/27) and Today Home
+ * Task (the lesson's: "Today’s task: <lesson title>", 17/24): the day's hero
+ * cropped at 241.3, the task row at 433 and the two tiles at 553.
+ *
+ * The sentence opens a task page whenever the course has one (the lesson that
+ * set the task, else the day's — D324, as the old card did on any lesson day);
+ * the 52 disc is the done mark either way — `dailyActionDone` on today's row,
+ * which the morning check-in asks after. Past the course the sentence is that
+ * mark too, as the old card was.
+ */
+function PageTwo({
+  task,
+  done,
+  lesson,
+  opensTask,
+  onTask,
+  onCheck,
+  onLesson,
+  onUrge,
+  onEnd,
+}: {
+  task: Task;
+  done: boolean;
+  lesson: Curriculum84Lesson | undefined;
+  /** the sentence opens a task page (else it toggles the mark) */
+  opensTask: boolean;
+  onTask: () => void;
+  onCheck: () => void;
+  onLesson: () => void;
+  onUrge: () => void;
+  onEnd: (y: number) => void;
+}) {
+  const lessonRegister = !!task.lesson;
+  return (
+    <>
+      <Hero mode="crop" id={task.hero} top={py(241.3)} />
+
+      {/* a column, so a sentence that wraps further on a narrow phone pushes the
+          tiles down (≥ 20 under it) instead of running into them; at 393 the
+          task row's band is the frame's 433 → 553 */}
+      <View onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: py(433) }}>
+        <View style={{ minHeight: 553 - 433, paddingBottom: 20 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
+            <Tap label={opensTask ? 'Open today’s task' : undefined} onPress={onTask} style={{ flex: 1, minWidth: 0, gap: 6 }}>
+              <MonoText v="caps" wrap="wrap">
+                {task.lesson ? `Today’s task: ${task.lesson.title}` : 'Today’s task'}
+              </MonoText>
+              <MonoText
+                v="p"
+                wrap="pretty"
+                style={{
+                  ...sans('700'),
+                  color: mono.ink,
+                  letterSpacing: -0.4,
+                  ...(lessonRegister ? { fontSize: 17, lineHeight: 24 } : { fontSize: 20, lineHeight: 27 }),
+                }}>
+                {task.caption}
+              </MonoText>
+            </Tap>
+            <Tap label="Today’s task done" accessibilityRole="checkbox" aria-checked={done} onPress={onCheck} hitSlop={8} style={{ flexShrink: 0 }}>
+              {done ? <CheckDisc size={52} /> : <View style={{ width: 52, height: 52, borderRadius: 26, boxShadow: ring.outlineInk }} />}
+            </Tap>
+          </View>
+        </View>
+
+        <View style={{ flexDirection: 'row', gap: 12 }}>
+          {/* the frames' "Lesson 5 / Naming your triggers" is a mock (D132); the tile carries the day's lesson, numbered as the course numbers it (1–84) */}
+          <Tile glyph={<BookGlyph />} caps={lesson ? `Lesson ${lesson.day}` : 'Week I'} title={lesson?.title ?? 'Start the first lesson'} onPress={onLesson} />
+          <Tile glyph={<WavesGlyph />} caps="Ride it out" title="Urge surfing" onPress={onUrge} />
+        </View>
+      </View>
+    </>
+  );
+}
+
+function Tile({ glyph, caps, title, onPress }: { glyph: ReactNode; caps: string; title: string; onPress: () => void }) {
+  return (
+    <Card variant="tile" onPress={onPress} accessibilityLabel={`${caps}. ${title}`} style={{ flex: 1, minWidth: 0 }}>
+      {glyph}
+      <View style={{ gap: 4 }}>
+        <MonoText v="caps" wrap="wrap" style={{ fontSize: 12, lineHeight: lhNormal(12) }}>
+          {caps}
+        </MonoText>
+        <MonoText v="gridLabel" wrap="wrap" style={{ letterSpacing: -0.2, lineHeight: 20 }}>
+          {title}
+        </MonoText>
+      </View>
+    </Card>
+  );
+}
+
+const GLYPH28 = { fill: 'none', stroke: mono.ink, strokeWidth: 1.8 } as const;
+
+/** The tile's book — the Library tab's glyph, drawn at 28. */
+function BookGlyph() {
+  return (
+    <Svg width={28} height={28} viewBox="0 0 26 26">
+      <Path d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15" {...GLYPH28} strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
+function WavesGlyph() {
+  return (
+    <Svg width={28} height={28} viewBox="0 0 26 26">
+      <Path d="M3 15c3 0 3-4 6-4s3 4 6 4 3-4 6-4M3 20c3 0 3-4 6-4s3 4 6 4 3-4 6-4" {...GLYPH28} strokeLinecap="round" />
+    </Svg>
+  );
+}
+
+/* ---------------------------------------------------------------- page three */
+
+const ICON18 = { fill: 'none', stroke: mono.ink, strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
+
+/**
+ * Today Home III: nightMoon cropped at 231.5, the pledge (`PledgeCard
+ * plain`) at 413 with its three 42 rings, and tonight's urge door at 595/623.
+ *
+ * The rings have no drawn targets (today-day OQ-T5): + writes a new pledge
+ * (the journal editor, tagged Pledge — the newest Pledge entry is the standing
+ * one), ☆ opens the past pledges (the old card's door), and share shares the
+ * line (D233). No frame draws the block before any pledge exists: the
+ * pledge's line then holds the app's own "Write a pledge" (the All drawer's
+ * words) in the mute, and opens the editor as + does; share has nothing to
+ * share and is dimmed.
+ */
+function PageThree({
+  pledge,
+  name,
+  onAdd,
+  onSaved,
+  onShare,
+  onUrge,
+  onEnd,
+}: {
+  pledge?: string;
+  name?: string;
+  onAdd: () => void;
+  onSaved: () => void;
+  onShare: () => void;
+  onUrge: () => void;
+  onEnd: (y: number) => void;
+}) {
+  const ringBtn = (d: string, label: string, onPress: () => void, disabled?: boolean) => (
+    <Tap
+      key={label}
+      label={label}
+      onPress={onPress}
+      disabled={disabled}
+      style={{
+        width: 42,
+        height: 42,
+        borderRadius: 21,
+        boxShadow: ring.outline,
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: disabled ? DISABLED_OPACITY : 1,
+      }}>
+      <Svg width={18} height={18} viewBox="0 0 18 18">
+        <Path d={d} {...ICON18} />
+      </Svg>
+    </Tap>
+  );
+  const rings = (
+    <View style={{ flexDirection: 'row', gap: 10, marginTop: 6 }}>
+      {ringBtn('M3 9h12M9 3v12', 'New pledge', onAdd)}
+      {ringBtn('M9 3l1.8 3.8 4.2.6-3 3 .7 4.2L9 12.6l-3.7 2 .7-4.2-3-3 4.2-.6z', 'Past pledges', onSaved)}
+      {ringBtn('M9 11V3M6 6l3-3 3 3M4 11v3h10v-3', 'Share', onShare, !pledge)}
+    </View>
+  );
+  return (
+    <>
+      <Hero mode="crop" id="nightMoon" top={py(231.5)} />
+
+      {/* a column, as on page two: a pledge that wraps pushes "Tonight" down
+          (≥ 24 under the rings); at 393 the block's band is the frame's 413 → 595 */}
+      <View onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: py(413) }}>
+        <View style={{ minHeight: 595 - 413, paddingBottom: 24 }}>
+          {pledge ? (
+            <PledgeCard variant="plain" pledge={pledge} name={name}>
+              {rings}
+            </PledgeCard>
+          ) : (
+            // PledgeCard's plain column (caps, line, gap 10) with the line as the way in
+            <View style={{ gap: 10 }}>
+              <MonoText v="caps" style={{ lineHeight: 16 }}>
+                Your pledge
+              </MonoText>
+              <Tap label="Write a pledge" onPress={onAdd} style={{ alignSelf: 'flex-start' }}>
+                <MonoText style={{ ...sans('700'), fontSize: 22, lineHeight: 31, letterSpacing: -0.3, color: mono.mute }}>Write a pledge</MonoText>
+              </Tap>
+              {rings}
+            </View>
+          )}
+        </View>
+
+        <MonoText v="caps" style={{ lineHeight: 16 }}>
+          Tonight
+        </MonoText>
+        <Card padding={[18, 20]} onPress={onUrge} accessibilityLabel="Urge surfing" style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Svg width={26} height={26} viewBox="0 0 26 26">
+              <Circle cx={13} cy={15} r={8} fill="none" stroke={mono.onInk} strokeWidth={2.4} strokeLinecap="round" />
+              <Path d="M13 15V10M13 3h0M10 3h6M13 3v4" fill="none" stroke={mono.onInk} strokeWidth={2.4} strokeLinecap="round" />
+            </Svg>
+          </View>
+          <View style={{ flex: 1, minWidth: 0, gap: 3 }}>
+            <MonoText v="gridLabel" wrap="wrap" style={{ fontSize: 18, lineHeight: lhNormal(18) }}>
+              Urge surfing
+            </MonoText>
+            <MonoText v="p" wrap="pretty" style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
+              Five minutes. Ride the next one out.
+            </MonoText>
+          </View>
+          <ChevronR />
+        </Card>
+      </View>
+    </>
   );
 }

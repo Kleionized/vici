@@ -1,0 +1,125 @@
+{
+  "group": "tail",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All eight tail frames were driven to and captured (sigs `.vicifull/sig/v-tail-{d,a}-32…39.txt`, PNGs `.vicifull/shots/v-tail-*.png`). Signature diffs are clean apart from the documented equivalences and the four `Starting Score` rows the group already declared. Geometry, type metrics, strings, COST_30 and all 365 COST_365 cells verified byte-for-byte; `scripts/vicifull/gen-tail.mjs` re-run and reproduces `src/content/onboardingTail.ts` identically. The PNGs were compared pixel-for-pixel, and that is where the real defects are — a signature-clean but measurably wrong wash and two measurably wrong ground shadows. Mean |Δ| over the body: 32 = 5.13 (the ring/readout), 33 = 1.00, 34 = 1.03, 35 = 0.13, 36 = 0.87, 37 = 0.05, 38 = 1.26, 39 = 1.53. Note the two frames that do NOT use `TailField` (35 and 37) are the two near-zero ones — that difference is finding 1. Three deliverables are missing: `.vicifull/recipes/tail.json` (which the brief calls part of the deliverable — I have written it), updated specs, and the `LoopLabel` deletion the report claims it made.",
+  "findings": [
+    {
+      "frame": "Starting Score / Cost Next 30 / Cost Next 365 / Change the Line / One Bad Day / What You Want Back",
+      "element": "TailField corner bloom — the 540×270 wash at left −40, top −140 (src/components/onboarding/tail.tsx:61)",
+      "property": "radial gradient fade stop colour",
+      "design": "radial-gradient(closest-side, rgba(180,170,150,0.14), rgba(19,19,19,0) 72%) — CSS interpolates premultiplied, so the RGB stays 180,170,150 all the way out and only the alpha falls",
+      "app": "<Stop offset=\"0.72\" stopColor=\"#131313\" stopOpacity={0}/> — SVG interpolates NON-premultiplied, so the RGB ramps toward 19,19,19 as the alpha falls and the wash is painted with a near-black tint at low alpha",
+      "confidence": "certain",
+      "note": "Measured on the captures: at y=60 the app is 4–8/255 DARKER than the design across x 110…350 (design 246–248, app 239–244); vertically the band runs y 54…80. Proved in isolation: rendering the canvas's own CSS gradient beside both SVG readings gives, at r = 0.20/0.40/0.60 of the ellipse, css 243/246/249, svg-with-#131313 239/241/245, svg-with-#B4AA96 243/246/249 — the same-RGB stop is exact to 0/255, the #131313 stop is up to 5/255 dark. This is exactly the class of error DECISIONS D048 declared a defect and fixed for a 5/255 halo on 01 · Splash and 02 · Login, and D048 states the condition under which the two-stop SVG is exact: \"both stops name the same RGB\". Here they do not. Fix is one line: stopColor \"#B4AA96\" instead of \"#131313\" on the fade stop. It affects six of the eight tail frames — every one that draws TailField — and it is why frames 35 and 37 (no TailField) sit at mean |Δ| 0.13 and 0.05 while the other six sit at 0.87–5.13. CROSS-GROUP: the identical line is at src/components/onboarding/v3.tsx:283 (funnel's field). art.tsx's Wash helper writes rgb(180,170,150) on every stop and is correct."
+    },
+    {
+      "frame": "What You Want Back",
+      "element": "the ground shadow under the sunrise — design left 16, top 152, 208×14 inside the art box at 76,176 (frame coords 92,328,208,14)",
+      "property": "fill / spread",
+      "design": "background: rgba(0,0,0,0.10) — a SOLID fill, softened by filter: blur(5px), so it holds ~0.10 across its middle and spills roughly 5–6 pt beyond its own box",
+      "app": "an SVG Ellipse filled with a radial that starts at rgba(0,0,0,0.10) in the centre and reaches 0 at the box edge, clipped to the 208×14 Svg",
+      "confidence": "certain",
+      "note": "Measured: at y=328 (the shadow's top edge) design 233,228,219 vs app 247,241,232 — 14/255 too light. At x=120,y=334 design 232 vs app 242; at x=260,y=334 design 231 vs app 241. Below the box at y=468 on the same construction the design still reads 243 where the app reads 255 — the design's blur spills past the box and the app's does not. DECISIONS D010 sanctions substituting a radial for a blurred solid, but D082 states the correct treatment: \"a blurred solid is drawn the size its blur covers\", i.e. the box has to be grown by the blur radius and the plateau kept. The app used the frame's exact box with no plateau, so the sun sits less firmly on the ground than the canvas draws it."
+    },
+    {
+      "frame": "A Clean Day",
+      "element": "the ground shadow under the pot — design left 90, top 152, 60×16 inside the art box at 76,300 (frame coords 166,452,60,16)",
+      "property": "fill / spread",
+      "design": "background: rgba(0,0,0,0.10) solid + filter: blur(5px)",
+      "app": "SVG Ellipse with a radial falling from 0.10 to 0 at the box edge",
+      "confidence": "certain",
+      "note": "Same construction and same defect as the sunrise shadow. Measured: x=180,y=460 design 234 vs app 243; x=210,y=460 design 233 vs app 242; y=468 design 243 vs app 255 (the design's blur spills below the box, the app's stops). ~9–12/255 too light. The rest of this frame is otherwise the best match in the group — every one of its 16 signature rows lands to the pixel, including the bud's `border-radius: 100% 100% 100% 100% / 120% 120% 80% 80%`, and mean |Δ| over the whole body is 0.05."
+    },
+    {
+      "frame": "Starting Score",
+      "element": "the readout — the 60/500 run at frame 138.2,272.5",
+      "property": "text",
+      "design": "842",
+      "app": "1,000",
+      "confidence": "certain",
+      "note": "A genuine divergence from the frame, taken deliberately under DECISIONS D050 (continuing D017 from the previous run): the app shows SCORE_BASE because 842 is below its own floor and matches none of the ranks Score Detail draws. I am reporting it because the brief asks for every mismatch: the frame prints 842 and the app prints 1,000, and the divergence is not confined to the number — see the next three rows. Had the app drawn the frame's own 842 against the frame's own 13.73% arc, this screen would be pixel-identical; as it stands it matches neither the frame's number nor the frame's drawing."
+    },
+    {
+      "frame": "Starting Score",
+      "element": "the ring's progress arc — circle r 104, stroke #131313, width 10",
+      "property": "stroke-dasharray (arc length)",
+      "design": "89.7 653.5 — 13.73% of the 653.45 circumference, an arc that stops just past 1 o'clock",
+      "app": "217.8 653.45 — 33.3% (score 1000 / SCORE_MAX 3000), an arc that runs to just past 4 o'clock",
+      "confidence": "certain",
+      "note": "Consequence of D050. Visually the largest difference on the screen: compare .vicifull/shots/v-tail-d-32.png with v-tail-a-32.png — the black arc is nearly two and a half times longer in the app."
+    },
+    {
+      "frame": "Starting Score",
+      "element": "the ring's gold marker dot (r 7.5, #D9A441 with a 2.5 white ring)",
+      "property": "position",
+      "design": "cx 199.0, cy 52.4 in the 240×240 box → frame box 268,236.9,15,15",
+      "app": "cx 210.1, cy 172 → frame box 279.1,356.5,15,15 — 120 pt lower on the ring",
+      "confidence": "certain",
+      "note": "Reported by sigdiff as a MISSING design row plus an EXTRA app row. Consequence of D050."
+    },
+    {
+      "frame": "Starting Score",
+      "element": "the ELO curve's marker line + dot (line stroke #131313 w 1.8, circle r 5 #D9A441)",
+      "property": "x position on the 345-wide curve",
+      "design": "x 79.4 (line box 103.4,545.9,0,16.1; dot 98.4,540.9,10,10)",
+      "app": "x 115 (line box 139,523.8,0,38.2; dot 134,518.8,10,10) — 35.6 pt to the right and 22 pt taller, because the marker rides the bell and 115 is further up the slope",
+      "confidence": "certain",
+      "note": "Consequence of D050 / D017. Two more MISSING + EXTRA row pairs. These four rows are the whole of frame 32's signature divergence; everything else on the frame — the 48 ticks, the track, the eyebrow, the sub-label, the copy, the CTA — lands to the pixel."
+    },
+    {
+      "frame": "Starting Score",
+      "element": "the ELO curve <svg viewBox=\"0 0 345 88\"> at left 24, right 24, top 474",
+      "property": "preserveAspectRatio",
+      "design": "preserveAspectRatio=\"none\" — the canvas states it explicitly",
+      "app": "not set, so react-native-svg's default xMidYMid meet applies",
+      "confidence": "likely",
+      "note": "Invisible at the canvas's own 393 pt, because the container is then exactly 345 × 88 and the viewBox matches — which is why no capture catches it. On any other width it diverges: at 430 pt (iPhone 15 Pro Max) the container is 382 wide, `meet` scales to fit the height and centres, leaving the curve 345 wide with ~18.5 pt of empty gutter each side, where the canvas would stretch it to 382 — and the marker's x, and therefore its relationship to the copy under it, moves with it. A stated canvas attribute that was not transcribed."
+    },
+    {
+      "frame": "(group deliverable)",
+      "element": ".vicifull/recipes/tail.json",
+      "property": "existence",
+      "design": "the brief: \"whenever you capture an app screen, write down how you got there … an accurate recipe — including the ones that failed — is part of the deliverable\"",
+      "app": "the file did not exist; nine other groups have theirs",
+      "confidence": "certain",
+      "note": "The tail is 22 funnel steps plus five plan boards deep, with a 6.8 s self-advancing board in the middle, and the group deleted its own harness (src/app/tailprobe.tsx) without leaving a recipe — so the next pass would have had to rediscover the path from scratch. I have written .vicifull/recipes/tail.json with all eight entries, plus the two files it needs: .vicifull/drives/tail-walk.js (walks the questionnaire, waits out Enlisting Aegis, taps the plan and tail CTAs to window.__T) and .vicifull/vtail-cap.mjs (funnel-cap.mjs with a tolerant goto — plain networkidle times out at 30 s under the current load, which is the first thing that will bite the next agent)."
+    },
+    {
+      "frame": "Starting Score / Cost Next 30 / Cost Next 365 / Cost By Age 80 / Change the Line / One Bad Day / What You Want Back",
+      "element": "specs/27-your-starting-point.md … specs/33-what-you-want-back.md",
+      "property": "transcription source",
+      "design": "this drop — `YOUR VICI RATING`, `Starting point`, the new copy on every board",
+      "app": "all seven still carry the PREVIOUS drop's transcription, headed \"Source `UI Final 1/project/Email Login.dc.html`\" and still printing `YOUR RECOVERY SCORE`. No spec exists for the added frame `A Clean Day`",
+      "confidence": "likely",
+      "note": "GROUPS.md lists a spec against seven of the eight frames and the auth group updated theirs in this run (specs/01, 02 modified, 03-welcome-back.md added), so the convention is that they move with the drop. Marked `likely` only because the brief's own six-point definition of \"done\" does not name specs."
+    },
+    {
+      "frame": "(report claim)",
+      "element": "src/components/onboarding/art.tsx:553-621 — LoopLabel, RootLoopCard, ROOT_LOOP_STATIONS",
+      "property": "deleted?",
+      "design": "the report states \"the LoopLabel helper and the WINDOW_BARS dataset were deleted\"",
+      "app": "WINDOW_BARS is indeed gone from onboardingTail.ts, but LoopLabel, RootLoopCard and ROOT_LOOP_STATIONS are all still in art.tsx, still imported by v3.tsx:44 and rendered at v3.tsx:1592",
+      "confidence": "certain",
+      "note": "No visual consequence — nothing routes to the screen that draws it. It is dead code, and it sits inside the larger v3.tsx dead-screen pile that FINDINGS F14 already assigns to the end-of-run cleanup (along with MonthGrid, YearGrid, ByAge80Card, LAST_30, NEXT_30, NEXT_365, REVERSAL_CLEARED, all of which are likewise only reachable from v3.tsx's withdrawn boards). Reported because the group's report asserts a deletion that did not happen, so nobody downstream should treat that art as removed."
+    },
+    {
+      "frame": "Cost Next 365",
+      "element": "the 17-column day grid, columns 3–5 and 9–16",
+      "property": "cell left offset",
+      "design": "col 13 left 301.6, col 15 left 347.4, col 16 left 370.3",
+      "app": "col 13 left 301.5, col 15 left 347.2, col 16 left 370.1 — −0.1 to −0.2 pt",
+      "confidence": "unsure",
+      "note": "NOT a defect in my judgement, recorded so the next pass does not re-chase it. Max drift over all 365 cells is 0.200 pt, exactly as the group reported, and every cell width is identical to 0.0. At deviceScaleFactor 2 the rounding lands the seam between columns 12 and 13 one device pixel apart on part of the grid's height, which is the whole of the pixel difference in that band (histogram: 320 differing device px at x=301.5, 280 at x=301.0, 192 at x=297.0, and essentially nothing anywhere else). Yoga vs CSS-grid subpixel rounding, invisible."
+    },
+    {
+      "frame": "Starting Score / Cost Next 30 / Cost Next 365 / Cost By Age 80 / Change the Line / A Clean Day / One Bad Day / What You Want Back",
+      "element": "the section comments in tail.tsx and the step table in welcome.tsx",
+      "property": "design badge number",
+      "design": ".vicifull/FLOW.txt, which the brief calls \"the authority on … a screen's design badge\": 28 · Your VICI Rating, 29 · The Next 30 Days, 30 · One Year From Now, 31 · If Nothing Changes, 32 · Change the Line, 32B · A Clean Day, 33 · One Bad Day, 34 · What You Want Back",
+      "app": "the code labels them 32 · Starting Score … 39 · What You Want Back — the GROUPS.md frame ordinals, not the canvas's badges",
+      "confidence": "likely",
+      "note": "Documentation only, nothing rendered. Flagged because the flow ORDER the group implemented is right (I checked FLOW.txt lines 31-39: A Clean Day does sit between Change the Line and One Bad Day, as the group placed it), so only the numbering in the comments is off — and it will read as a contradiction to anyone who checks the badges next drop. FINDINGS F10 already flags the same drift in the spec filenames."
+    }
+  ]
+}

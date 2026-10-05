@@ -1,0 +1,31 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 41
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 82.8 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 201 | 329 | 164 | - | - | - | - | - | -
+div | 32 | 201 | 329 | 164 | rgb(30, 30, 30) | 20px | - | - | - | -
+div | 52 | 221 | 289 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Got vaccinated
+div | 52 | 253 | 289 | 92 | - | - | - | - | - | -
+div | 52 | 253 | 289 | 38 | - | - | - | - | - | -
+div | 52 | 253 | 289 | 22 | - | - | - | - | - | -
+span | 52 | 253 | 92.3 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Control group
+span | 299.5 | 253 | 41.5 | 22 | - | - | - | - | 15px/700/normal/22px/rgb(242, 240, 236) | 33.1%
+div | 52 | 283 | 289 | 8 | rgb(46, 46, 46) | 4px | - | - | - | -
+div | 52 | 283 | 95.7 | 8 | rgb(155, 150, 142) | 4px | - | - | - | -
+div | 52 | 307 | 289 | 38 | - | - | - | - | - | -
+div | 52 | 307 | 289 | 22 | - | - | - | - | - | -
+span | 52 | 307 | 145.7 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Wrote a date and time
+span | 269.4 | 307 | 71.6 | 22 | - | - | - | - | 15px/700/normal/22px/rgb(242, 240, 236) | about 37%
+div | 52 | 337 | 289 | 8 | rgb(46, 46, 46) | 4px | - | - | - | -
+div | 52 | 337 | 107.8 | 8 | rgb(242, 240, 236) | 4px | - | - | - | -
+div | 32 | 393 | 329 | 112 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | In a workplace vaccination study, employees prompted to write a date and time were more likely to get vaccinated than the control group.
+div | 32 | 527 | 329 | 112 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | The increase was about 4.2 percentage points above a control rate of 33.1 percent; a date-only prompt didn’t produce a statistically clear increase.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

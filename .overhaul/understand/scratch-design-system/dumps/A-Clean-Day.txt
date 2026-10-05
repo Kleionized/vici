@@ -1,0 +1,27 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:175px  overflow:visible
+    <rect> width="140"  height="150"  x="126"  y="40"  rx="16"  fill="#F2F0EC"
+    <rect> width="124"  height="100"  x="134"  y="82"  rx="8"  fill="#0D0D0D"
+    <rect> width="10"  height="30"  x="150"  y="26"  rx="5"  fill="#F2F0EC"
+    <rect> width="4"  height="22"  x="153"  y="30"  rx="2"  fill="#0D0D0D"
+    <rect> width="10"  height="30"  x="232"  y="26"  rx="5"  fill="#F2F0EC"
+    <rect> width="4"  height="22"  x="235"  y="30"  rx="2"  fill="#0D0D0D"
+    <text> x="196"  y="152"  fill="#F2F0EC"  text-anchor="middle"  font-size="68"  font-weight="700"  letter-spacing="-2"
+      · 1
+    <text> x="196"  y="172"  fill="#9B968E"  text-anchor="middle"  font-size="11"  font-weight="700"
+      · Clean day
+    <path> d="M170 66h52"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:451px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · One clean day.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · That’s all today has to be.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

@@ -1,0 +1,686 @@
+=== Week I Reset
+250 rows -> v-lib-Week-I-Reset
+shot -> .overhaul/verify/library/a-Week-I-Reset.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:84,118,220,173: design 1, app 2
+~ Week I                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ Prepare for tonight                      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Remove easy access to porn               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Choose where to go instead               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Prepare for sleep                        type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 78 design rows, 239 app rows; 10 differing, 2 missing, 130 extra, 4 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (2 of 1245888 px > 24), mean Δ 0.39
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-I-Reset.strip.png  .overhaul/verify/library/a-Week-I-Reset.diff.png  .overhaul/verify/library/a-Week-I-Reset.overlay.png
+=== Week I Reset P2
+do -> [264]
+250 rows -> v-lib-Week-I-Reset-P2
+shot -> .overhaul/verify/library/a-Week-I-Reset-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:84,118,220,173: design 1, app 2
+~ Week I                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ Have another activity ready              type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Make time for contact                    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Review the first week                    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 70 design rows, 239 app rows; 9 differing, 2 missing, 138 extra, 4 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (2 of 1245888 px > 24), mean Δ 0.43
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-I-Reset-P2.strip.png  .overhaul/verify/library/a-Week-I-Reset-P2.diff.png  .overhaul/verify/library/a-Week-I-Reset-P2.overlay.png
+=== Week II Changing Your Mindset
+341 rows -> v-lib-Week-II-Changing-Your-Mindset
+shot -> .overhaul/verify/library/a-Week-II-Changing-Your-Mindset.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week II                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ Measure more than a streak               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Stop sooner after a slip                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Use the hours that remain                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Try one change for a week                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 83 design rows, 330 app rows; 10 differing, 2 missing, 215 extra, 20 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (6 of 1245888 px > 24), mean Δ 0.37
+regions (frame pt, largest first): 2
+  240,168 4x4  (2 px)
+  240,188 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-II-Changing-Your-Mindset.strip.png  .overhaul/verify/library/a-Week-II-Changing-Your-Mindset.diff.png  .overhaul/verify/library/a-Week-II-Changing-Your-Mindset.overlay.png
+=== Week II Changing Your Mindset P2
+do -> [264]
+341 rows -> v-lib-Week-II-Changing-Your-Mindset-P2
+shot -> .overhaul/verify/library/a-Week-II-Changing-Your-Mindset-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week II                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ Repeat one useful action                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Choose your own reason                   type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Return after a missed day                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 75 design rows, 330 app rows; 9 differing, 2 missing, 223 extra, 20 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (6 of 1245888 px > 24), mean Δ 0.41
+regions (frame pt, largest first): 2
+  240,168 4x4  (2 px)
+  240,188 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-II-Changing-Your-Mindset-P2.strip.png  .overhaul/verify/library/a-Week-II-Changing-Your-Mindset-P2.diff.png  .overhaul/verify/library/a-Week-II-Changing-Your-Mindset-P2.overlay.png
+=== Week III In the Moment
+336 rows -> v-lib-Week-III-In-the-Moment
+shot -> .overhaul/verify/library/a-Week-III-In-the-Moment.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 44.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week III                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ What to do when an urge starts           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Check what you need                      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Close the screen and move                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Prepare another activity                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 87 design rows, 325 app rows; 10 differing, 2 missing, 207 extra, 25 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (63 of 1245888 px > 24), mean Δ 0.39
+regions (frame pt, largest first): 5
+  128,240 12x8  (22 px)
+  144,240 12x4  (22 px)
+  276,248 4x8  (7 px)
+  228,240 4x4  (4 px)
+  116,248 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-III-In-the-Moment.strip.png  .overhaul/verify/library/a-Week-III-In-the-Moment.diff.png  .overhaul/verify/library/a-Week-III-In-the-Moment.overlay.png
+=== Week III In the Moment P2
+do -> [264]
+336 rows -> v-lib-Week-III-In-the-Moment-P2
+shot -> .overhaul/verify/library/a-Week-III-In-the-Moment-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 44.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week III                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ Check hunger, anger, loneliness, and tir type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Notice an urge without acting on it      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Make a separate choice about masturbatio type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 79 design rows, 325 app rows; 9 differing, 2 missing, 215 extra, 25 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (63 of 1245888 px > 24), mean Δ 0.43
+regions (frame pt, largest first): 5
+  128,240 12x8  (22 px)
+  144,240 12x4  (22 px)
+  276,248 4x8  (7 px)
+  228,240 4x4  (4 px)
+  116,248 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-III-In-the-Moment-P2.strip.png  .overhaul/verify/library/a-Week-III-In-the-Moment-P2.diff.png  .overhaul/verify/library/a-Week-III-In-the-Moment-P2.overlay.png
+=== Week IV Know Your Brain
+335 rows -> v-lib-Week-IV-Know-Your-Brain
+shot -> .overhaul/verify/library/a-Week-IV-Know-Your-Brain.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 95.4 | 432.3 | 264 | - | - | - | - | - | -
+~ -                                        y: 143.8 → 143.4
+~ -                                        y: 185.6 → 185.2
+~ -                                        y: 275.8 → 275.4
+~ -                                        y: 185.6 → 185.2
+~ -                                        y: 275.8 → 275.4
+~ -                                        y: 139.4 → 139
+~ -                                        y: 165.5 → 165.1
+~ -                                        y: 165.5 → 165.1
+~ -                                        y: 181.2 → 180.8
+~ -                                        y: 181.2 → 180.8
+~ Week IV                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ Understand what starts the habit         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Decide before the difficult hour         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Make room for food and sleep             type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Respond to anger and loneliness          type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 73 design rows, 324 app rows; 20 differing, 2 missing, 223 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (108 of 1245888 px > 24), mean Δ 0.38
+regions (frame pt, largest first): 14
+  232,284 16x8  (34 px)
+  128,276 8x4  (12 px)
+  248,228 8x8  (11 px)
+  212,164 8x4  (8 px)
+  212,184 12x4  (6 px)
+  124,180 4x4  (4 px)
+  204,168 4x4  (3 px)
+  120,184 4x4  (3 px)
+  264,180 4x4  (2 px)
+  116,192 4x4  (2 px)
+  116,268 4x4  (2 px)
+  252,276 4x4  (2 px)
+=== Week IV Know Your Brain P2
+do -> [264]
+335 rows -> v-lib-Week-IV-Know-Your-Brain-P2
+shot -> .overhaul/verify/library/a-Week-IV-Know-Your-Brain-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 95.4 | 432.3 | 264 | - | - | - | - | - | -
+~ -                                        y: 143.8 → 143.4
+~ -                                        y: 185.6 → 185.2
+~ -                                        y: 275.8 → 275.4
+~ -                                        y: 185.6 → 185.2
+~ -                                        y: 275.8 → 275.4
+~ -                                        y: 139.4 → 139
+~ -                                        y: 165.5 → 165.1
+~ -                                        y: 165.5 → 165.1
+~ -                                        y: 181.2 → 180.8
+~ -                                        y: 181.2 → 180.8
+~ Week IV                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ Notice when searching keeps going        type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Try movement, breathing, or another room type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Act earlier in the habit                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 65 design rows, 324 app rows; 19 differing, 2 missing, 231 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (108 of 1245888 px > 24), mean Δ 0.41
+regions (frame pt, largest first): 14
+  232,284 16x8  (34 px)
+  128,276 8x4  (12 px)
+  248,228 8x8  (11 px)
+  212,164 8x4  (8 px)
+  212,184 12x4  (6 px)
+  124,180 4x4  (4 px)
+  204,168 4x4  (3 px)
+  120,184 4x4  (3 px)
+  264,180 4x4  (2 px)
+  116,192 4x4  (2 px)
+  116,268 4x4  (2 px)
+  252,276 4x4  (2 px)
+=== Week V Why It Feels Worth It
+317 rows -> v-lib-Week-V-Why-It-Feels-Worth-It
+shot -> .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:97,191,26,24: design 1, app 2
+# count P:105,184,11,8: design 1, app 2
+# count P:264,175,37,25: design 1, app 2
+~ Week V                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ Look at the benefit and cost             type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Meet the need you can identify           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Begin a task you are avoiding            type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Address one immediate cost               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 79 design rows, 306 app rows; 10 differing, 2 missing, 192 extra, 2 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (139 of 1245888 px > 24), mean Δ 0.40
+regions (frame pt, largest first): 8
+  200,152 44x8  (72 px)
+  116,164 12x8  (22 px)
+  112,220 12x8  (16 px)
+  128,216 8x8  (12 px)
+  260,204 4x4  (4 px)
+  252,156 4x4  (3 px)
+  256,200 4x4  (2 px)
+  268,204 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It.strip.png  .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It.diff.png  .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It.overlay.png
+=== Week V Why It Feels Worth It P2
+do -> [264]
+317 rows -> v-lib-Week-V-Why-It-Feels-Worth-It-P2
+shot -> .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:97,191,26,24: design 1, app 2
+# count P:105,184,11,8: design 1, app 2
+# count P:264,175,37,25: design 1, app 2
+~ Week V                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ Make time for what viewing displaced     type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Make one change for tonight              type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Give an activity a place in the week     type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 71 design rows, 306 app rows; 9 differing, 2 missing, 200 extra, 2 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (139 of 1245888 px > 24), mean Δ 0.44
+regions (frame pt, largest first): 8
+  200,152 44x8  (72 px)
+  116,164 12x8  (22 px)
+  112,220 12x8  (16 px)
+  128,216 8x8  (12 px)
+  260,204 4x4  (4 px)
+  252,156 4x4  (3 px)
+  256,200 4x4  (2 px)
+  268,204 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It-P2.strip.png  .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It-P2.diff.png  .overhaul/verify/library/a-Week-V-Why-It-Feels-Worth-It-P2.overlay.png
+=== Week VI Discipline
+298 rows -> v-lib-Week-VI-Discipline
+shot -> .overhaul/verify/library/a-Week-VI-Discipline.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week VI                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ Prepare a simpler response when tired    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Practise the response                    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 38                                       type: 14px/700/normal/normal/rgba(17, 17, 17, 0.6) → 14px/700/normal/17px/rgba(17, 17, 17, 0.6)
+~ Keep rules that serve a purpose          type: 15px/700/normal/normal/rgb(17, 17, 17) → 15px/700/normal/18px/rgb(17, 17, 17)
+~ Continue                                 type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ 39                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Practise the part that gets in the way   type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 75 design rows, 287 app rows; 13 differing, 2 missing, 177 extra, 17 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (78 of 1245888 px > 24), mean Δ 0.38
+regions (frame pt, largest first): 3
+  192,196 36x4  (66 px)
+  216,144 8x4  (7 px)
+  200,144 4x4  (3 px)
+-> .overhaul/verify/library/a-Week-VI-Discipline.strip.png  .overhaul/verify/library/a-Week-VI-Discipline.diff.png  .overhaul/verify/library/a-Week-VI-Discipline.overlay.png
+=== Week VI Discipline P2
+do -> [264]
+298 rows -> v-lib-Week-VI-Discipline-P2
+shot -> .overhaul/verify/library/a-Week-VI-Discipline-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week VI                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 40                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Let a thought remain while you act       type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 41                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Give the action a time and place         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 42                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Plan for a difficult day                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 66 design rows, 287 app rows; 12 differing, 2 missing, 186 extra, 17 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.01% (78 of 1245888 px > 24), mean Δ 0.41
+regions (frame pt, largest first): 3
+  192,196 36x4  (66 px)
+  216,144 8x4  (7 px)
+  200,144 4x4  (3 px)
+-> .overhaul/verify/library/a-Week-VI-Discipline-P2.strip.png  .overhaul/verify/library/a-Week-VI-Discipline-P2.diff.png  .overhaul/verify/library/a-Week-VI-Discipline-P2.overlay.png
+=== Week VII Relapse and Adversity
+277 rows -> v-lib-Week-VII-Relapse-and-Adversity
+shot -> .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week VII                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 43                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Learn from a slip                        type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 44                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Take care and make a repair              type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 45                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Adjust the plan for today                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 46                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Get support during a difficult period    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 60 design rows, 266 app rows; 14 differing, 2 missing, 173 extra, 5 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (20 of 1245888 px > 24), mean Δ 0.37
+regions (frame pt, largest first): 5
+  252,240 4x4  (4 px)
+  256,244 4x4  (4 px)
+  248,236 4x4  (3 px)
+  240,272 4x4  (3 px)
+  220,284 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity.strip.png  .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity.diff.png  .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity.overlay.png
+=== Week VII Relapse and Adversity P2
+do -> [264]
+277 rows -> v-lib-Week-VII-Relapse-and-Adversity-P2
+shot -> .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week VII                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 47                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Return to the task you postponed         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 48                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Begin the next part of the day           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 49                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Take a step after a longer setback       type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 54 design rows, 266 app rows; 12 differing, 2 missing, 179 extra, 5 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (20 of 1245888 px > 24), mean Δ 0.41
+regions (frame pt, largest first): 5
+  252,240 4x4  (4 px)
+  256,244 4x4  (4 px)
+  248,236 4x4  (3 px)
+  240,272 4x4  (3 px)
+  220,284 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity-P2.strip.png  .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity-P2.diff.png  .overhaul/verify/library/a-Week-VII-Relapse-and-Adversity-P2.overlay.png
+=== Week VIII Boredom and Meaning
+270 rows -> v-lib-Week-VIII-Boredom-and-Meaning
+shot -> .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:143,256,106,12: design 1, app 2
+~ Week VIII                                type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 50                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Give an activity time before switching   type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 51                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Choose what begins in an empty gap       type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 52                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Try fifteen minutes without switching    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 53                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Change one screen habit                  type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 66 design rows, 259 app rows; 14 differing, 2 missing, 160 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (3 of 1245888 px > 24), mean Δ 0.39
+regions (frame pt, largest first): 1
+  168,224 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning.strip.png  .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning.diff.png  .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning.overlay.png
+=== Week VIII Boredom and Meaning P2
+do -> [264]
+270 rows -> v-lib-Week-VIII-Boredom-and-Meaning-P2
+shot -> .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+# count P:143,256,106,12: design 1, app 2
+~ Week VIII                                type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 54                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Try an hour away from one feed           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 55                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Prepare the first hour after waking      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 56                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Give time to something that matters      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 60 design rows, 259 app rows; 12 differing, 2 missing, 166 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (3 of 1245888 px > 24), mean Δ 0.42
+regions (frame pt, largest first): 1
+  168,224 4x4  (2 px)
+-> .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning-P2.strip.png  .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning-P2.diff.png  .overhaul/verify/library/a-Week-VIII-Boredom-and-Meaning-P2.overlay.png
+=== Week IX Connection
+279 rows -> v-lib-Week-IX-Connection
+shot -> .overhaul/verify/library/a-Week-IX-Connection.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+~ Week IX                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 57                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Arrange a shared activity                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 58                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Choose contact that fits                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 59                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Choose how to spend time alone           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 60                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Separate desire from wanting company     type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 68 design rows, 268 app rows; 14 differing, 2 missing, 167 extra, 1 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (1 of 1245888 px > 24), mean Δ 0.39
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-IX-Connection.strip.png  .overhaul/verify/library/a-Week-IX-Connection.diff.png  .overhaul/verify/library/a-Week-IX-Connection.overlay.png
+=== Week IX Connection P2
+do -> [264]
+279 rows -> v-lib-Week-IX-Connection-P2
+shot -> .overhaul/verify/library/a-Week-IX-Connection-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+~ Week IX                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 61                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Follow up on a connection                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 62                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Set a safe limit on harmful contact      type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 63                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Give a relationship attention            type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 62 design rows, 268 app rows; 12 differing, 2 missing, 173 extra, 1 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (1 of 1245888 px > 24), mean Δ 0.42
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-IX-Connection-P2.strip.png  .overhaul/verify/library/a-Week-IX-Connection-P2.diff.png  .overhaul/verify/library/a-Week-IX-Connection-P2.overlay.png
+=== Week X Yourself
+278 rows -> v-lib-Week-X-Yourself
+shot -> .overhaul/verify/library/a-Week-X-Yourself.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+~ Week X                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 64                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Choose support without revisiting painfu type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 65                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Change one difficult setting             type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 66                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Describe a mistake without an insult     type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 67                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ When you feel bad about yourself         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 69 design rows, 267 app rows; 14 differing, 2 missing, 166 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.38
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-X-Yourself.strip.png  .overhaul/verify/library/a-Week-X-Yourself.diff.png  .overhaul/verify/library/a-Week-X-Yourself.overlay.png
+=== Week X Yourself P2
+do -> [264]
+278 rows -> v-lib-Week-X-Yourself-P2
+shot -> .overhaul/verify/library/a-Week-X-Yourself-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 61 | 432.3 | 264 | - | - | - | - | - | -
+~ Week X                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 68                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Check your response to self-criticism    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 69                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Keep one manageable commitment           type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 70                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Simplify the plan                        type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 63 design rows, 267 app rows; 12 differing, 2 missing, 172 extra, 0 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.42
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-X-Yourself-P2.strip.png  .overhaul/verify/library/a-Week-X-Yourself-P2.diff.png  .overhaul/verify/library/a-Week-X-Yourself-P2.overlay.png
+=== Week XI Build a Life You Want
+275 rows -> v-lib-Week-XI-Build-a-Life-You-Want
+shot -> .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week XI                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 71                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Use what your notes show                 type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 72                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Choose what you can do now               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 73                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Reserve time for what matters            type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 74                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Begin an activity you postponed          type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 66 design rows, 264 app rows; 14 differing, 2 missing, 166 extra, 13 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (21 of 1245888 px > 24), mean Δ 0.35
+regions (frame pt, largest first): 2
+  256,224 8x12  (12 px)
+  252,220 4x4  (4 px)
+-> .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want.strip.png  .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want.diff.png  .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want.overlay.png
+=== Week XI Build a Life You Want P2
+do -> [264]
+275 rows -> v-lib-Week-XI-Build-a-Life-You-Want-P2
+shot -> .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 79.9 | 432.3 | 264 | - | - | - | - | - | -
+~ Week XI                                  type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 75                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Plan the next ninety days                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 76                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Give one activity your attention         type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 77                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Schedule something you want to keep doin type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 60 design rows, 264 app rows; 12 differing, 2 missing, 172 extra, 13 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (21 of 1245888 px > 24), mean Δ 0.39
+regions (frame pt, largest first): 2
+  256,224 8x12  (12 px)
+  252,220 4x4  (4 px)
+-> .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want-P2.strip.png  .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want-P2.diff.png  .overhaul/verify/library/a-Week-XI-Build-a-Life-You-Want-P2.overlay.png
+=== Week XII Leave It Behind
+208 rows -> v-lib-Week-XII-Leave-It-Behind
+shot -> .overhaul/verify/library/a-Week-XII-Leave-It-Behind.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 69.8 | 432.3 | 264 | - | - | - | - | - | -
+~ Week XII                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 256 | - | - | - | - | - | -
+~ 78                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Keep the reason and next action clear    type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 79                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Compare the start with now               type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 80                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Prepare for a changed situation          type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 81                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Use the changes that helped              type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 65 design rows, 197 app rows; 14 differing, 2 missing, 104 extra, 10 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.37
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-XII-Leave-It-Behind.strip.png  .overhaul/verify/library/a-Week-XII-Leave-It-Behind.diff.png  .overhaul/verify/library/a-Week-XII-Leave-It-Behind.overlay.png
+=== Week XII Leave It Behind P2
+do -> [264]
+208 rows -> v-lib-Week-XII-Leave-It-Behind-P2
+shot -> .overhaul/verify/library/a-Week-XII-Leave-It-Behind-P2.png
+--- sigdiff
+MISSING in app:  svg | -19.6 | 69.8 | 432.3 | 264 | - | - | - | - | - | -
+~ Week XII                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 16 | 472 | 361 | 190 | - | - | - | - | - | -
+~ 82                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Check how to ask for help                type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 83                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Finish with an honest next step          type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ 84                                       type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Save a short plan for after the course   type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+~ Journey                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+--- 59 design rows, 197 app rows; 12 differing, 2 missing, 110 extra, 10 sub-0.25pt rounding (use --all to list extras)
+--- pxdiff
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.40
+regions (frame pt, largest first): 0
+-> .overhaul/verify/library/a-Week-XII-Leave-It-Behind-P2.strip.png  .overhaul/verify/library/a-Week-XII-Leave-It-Behind-P2.diff.png  .overhaul/verify/library/a-Week-XII-Leave-It-Behind-P2.overlay.png
+NO FRAME Library tab (current week)
+NO FRAME (unframed) /lessons-browser
+NO FRAME (unframed) /search
+NO FRAME (unframed) /first-steps
+NO FRAME (unframed) /locked
+NO FRAME (unframed) /journey

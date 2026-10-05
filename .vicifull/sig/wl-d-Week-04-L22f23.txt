@@ -1,0 +1,22 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 332.1 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 196.5 | 159 | 0 | 16 | - | - | - | - | - | -
+div | 96 | 199 | 201 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | The reward system
+div | 41.5 | 255 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Set a 10-minute timer and remove one group of cues that regularly puts sexual content in front of you.
+div | 61.5 | 357 | 270 | 190 | - | - | - | - | - | -
+div | 61.5 | 357 | 270 | 190 | - | - | - | - | - | -
+div | 33.5 | 495 | 326 | 64 | rgb(234, 233, 227) | 50% 50% 0px 0px / 26px 26px 0px 0px | - | - | - | -
+div | 157.5 | 383 | 2.5 | 2.5 | rgba(200, 225, 235, 0.45) | 50% | - | - | - | -
+div | 267.5 | 401 | 2 | 2 | rgba(200, 225, 235, 0.35) | 50% | - | - | - | -
+div | 119.5 | 421 | 2 | 2 | rgba(200, 225, 235, 0.3) | 50% | - | - | - | -
+div | 174.5 | 415 | 44 | 44 | - | 50% | - | - | - | -
+div | 187.5 | 428 | 18 | 18 | - | 50% | - | rgba(160, 120, 50, 0.3) 0px 2px 6px 0px | - | -
+div | 164.5 | 498 | 64 | 10 | rgba(0, 0, 0, 0.07) | 50% | - | - | - | -
+div | 38 | 571 | 317 | 122 | rgb(255, 255, 255) | 16px | - | rgba(0, 0, 0, 0.07) 0px 0px 0px 1px, rgba(40, 38, 32, 0.05) 0px 6px 16px 0px | - | -
+svg | 56 | 622 | 20 | 20 | - | - | - | - | - | -
+circle | 57.7 | 623.7 | 16.7 | 16.7 | - | - | - | - | - | -
+path | 62.4 | 629.4 | 7.1 | 5.1 | - | - | - | - | - | -
+span | 90 | 588 | 247 | 88 | - | - | - | - | 15px/500/normal/22px/rgb(85, 83, 78) | Done when the timer ends and at least one recurring cue is harder to reach or no longer appears automatically.

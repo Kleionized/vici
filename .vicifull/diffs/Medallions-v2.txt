@@ -1,0 +1,27 @@
+## .vicifull/final/Medallions-v2
+prev=17 final=17  identical=17 changed=0 added=0 removed=0
+
+### ADDED (new in UI Final)
+
+### REMOVED (gone from UI Final)
+
+### CHANGED
+
+### IDENTICAL
+  = Album Earned
+  = Album Earned II
+  = Album Still To Earn
+  = Breakwater Paper
+  = Breakwater Bronze
+  = Breakwater Silver
+  = Breakwater Gold
+  = Breakwater Platinum
+  = Tiers Vidi
+  = Tiers Vici
+  = Tiers Rebound
+  = Tiers Breakwater
+  = Tiers Logbook
+  = Tiers Pulse
+  = Tiers Archive
+  = Tiers Lessons
+  = Tiers One-offs

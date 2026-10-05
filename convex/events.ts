@@ -27,6 +27,11 @@ export const create = mutation({
     note: v.optional(v.string()),
     severity: v.optional(v.number()),
     severityAfter: v.optional(v.number()),
+    // How long the urge ran, written by the SOS interrupt on resolve. An arg the
+    // schema accepts but the validator here does not is a rejected call, and the
+    // call site swallows the rejection — so a missing line means the event is
+    // never written at all.
+    durationSeconds: v.optional(v.number()),
     reopens: v.optional(v.number()),
     createdAt: v.optional(v.number()),
   },
@@ -43,6 +48,7 @@ export const create = mutation({
       note: args.note,
       severity: args.severity,
       severityAfter: args.severityAfter,
+      durationSeconds: args.durationSeconds,
       reopens: args.reopens,
     });
   },

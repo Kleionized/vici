@@ -1,0 +1,24 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 72
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 238 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 226 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Question
+div | 32 | 254 | 329 | 62 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Which meaning of acceptance fits the lesson?
+div | 32 | 324 | 329 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(155, 150, 142) | Choose one.
+div | 32 | 366 | 329 | 248 | - | - | - | - | - | -
+div | 32 | 366 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 389 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | A
+div | 82 | 379 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | I have to feel grateful for every harmful event
+div | 32 | 444 | 329 | 92 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 478 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | B
+div | 82 | 457 | 263 | 66 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | I can recognise what happened and take a fitting action now, without approving the harm
+div | 32 | 544 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 567 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | C
+div | 82 | 557 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | I must contact everyone involved in a regret
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

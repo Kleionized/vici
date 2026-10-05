@@ -1,0 +1,58 @@
+{
+  "findings": [
+    {
+      "frame": "ALL 22 night frames (03 · Name … 23 · Goal confirmation) — every funnel frame except 24 · Enlisting Aegis",
+      "element": "the top-left corner bloom: the 540 × 270 wash at left:-40, top:-140, background radial-gradient(closest-side, rgba(180,170,150,0.14), rgba(19,19,19,0) 72%)",
+      "property": "the SVG fade stop's RGB (src/components/onboarding/v3.tsx:283)",
+      "design": "the visible hue stays rgb(180,170,150) all the way out — CSS composites a premultiplied ramp, so the zero-alpha end contributes no colour",
+      "app": "<Stop offset=\"0.72\" stopColor=\"#131313\" stopOpacity={0} /> — react-native-svg interpolates the RGB as well, so the ramp drifts toward near-black and the whole bloom composites 6–8/255 too dark",
+      "confidence": "certain",
+      "note": "Measured on every captured pair over canvas y 56–130 (the strip below the status bar, excluding the rule and the Back row): design-minus-app mean +0.55…+0.62, worst +6 to +8/255, on all 22 frames; Enlisting Aegis, which draws no corner bloom, is at −0.04 / worst 2. Consistently one-directional, so it is not antialiasing. `node scripts/vicifull/stopcheck.mjs` lists this exact line, and .vicifull/FINDINGS.md F23 already records it as a CONFIRMED defect (\"src/components/onboarding/v3.tsx:283 … the same line, six tail frames and the whole funnel\") under DECISIONS D048's rule: when a CSS radial becomes an SVG gradient the zero-alpha stop must take the RGB of the opaque stop. The funnel report does not mention it. Its own instrument cannot see it: .vicifull/funnel-pxdiff3.mjs starts at device row 110 (css y 55) and counts a pixel only where the design's 3×3 neighbourhood varies by ≤6, so a gradient wash is structurally excluded — which is why the report reads \"0 flat pixels\" on every frame. Most of the bloom sits above canvas y 54, where the design frame paints its own status bar and no comparison is possible, so the 6–8/255 measured in the fringe is the floor, not the peak. Fix: stopColor=\"#B4AA96\" on the 0.72 stop. Note the identical line at src/components/onboarding/tail.tsx:61 belongs to the tail group.",
+      "app_name": "tideline"
+    },
+    {
+      "frame": "03 · Name (V3 Q24 Name)",
+      "element": "the Back row — chevron svg 11 × 19, path M9.5 1.5L2 9.5l7.5 8, stroke rgba(244,243,240,0.75) at 2.4, plus \"Back\" — at left 16, top 94, gap 9",
+      "property": "presence",
+      "design": "drawn, exactly as on every other funnel frame",
+      "app": "not drawn — src/app/(onboarding)/welcome.tsx passes onBack={chrome.back === false || i === 0 ? null : back}, so step 0 gets none",
+      "confidence": "certain",
+      "note": "This is the whole of that frame's pixel difference: 24 of the 37 8×8 blocks over 10/255 fall in x 16–68, y 94–110, worst 104/255; nothing else on the frame differs (the \"Your name\" placeholder, which sigdiff reports as MISSING because it is a DOM attribute with no element, is pixel-correct in position, size and colour). The funnel report presents this as an open judgement call under D016. It is not open any more: .vicifull/FINDINGS.md F13 is titled \"DECIDED: 03 · Name's Back row gets drawn, reversing D016\" and specifies the fix (let the auth door render while onboarding is incomplete so router.back() lands on 02 · Login, plus the onboarding-incomplete exemption in the redirect guard). Neither half is implemented: src/app/(auth)/_layout.tsx still reads `if (isLoaded && isSignedIn) return <Redirect href=\"/\" />;` with no exemption, and DECISIONS.md still carries D016 unamended with no superseding entry.",
+      "app_name": "tideline"
+    },
+    {
+      "frame": "10 · First principle (First Principle)",
+      "element": "the art block at canvas top 206, height 310 — the warm header bloom (left:50% top:60 220 × 200, radial-gradient(closest-side, rgba(255,236,196,0.3), rgba(255,236,196,0) 74%), blur 7px) together with the ground shadow beneath it",
+      "property": "composited luminance across the band",
+      "design": "sampled at canvas x 160/196/230 over y 340–410: R = 55, 70, 61 … 44, 55, 46",
+      "app": "same points: R = 50, 67, 56 … 41, 50, 42 — 2 to 6/255 darker throughout, converging to 0 at the periphery",
+      "confidence": "unsure",
+      "note": "The ground shadow itself is correct — I checked the geometry against the canvas: the app's Ellipse cx 150 cy 69 rx 90 ry 9 inside a 300 × 138 userSpaceOnUse filter region at top 98 puts the centre at canvas (196.5, 373) with a 180 × 18 box, exactly the frame's `left:50% top:158 width:180 height:18 margin-left:-90`, and FeGaussianBlur stdDeviation 10 is the canvas's own blur(10px) (D075 landed properly). The residual is therefore the bloom, where the app substitutes a three-stop SVG radial (0 / 0.37 @ 0.126 / 0.74 @ 0) for a CSS closest-side ramp — D010's accepted approximation. Both stops name the same RGB, so this is not the F23 defect. I am flagging it only because at 6/255 it is the largest residual anywhere in the group outside the two findings above, and it is one-directional.",
+      "app_name": "tideline"
+    },
+    {
+      "frame": "13 · Place (V3 Q7)",
+      "element": "the pillow inside the \"In bed\" glyph on the selected paper tile — <rect width=\"6\" height=\"3\" x=\"5\" y=\"8.5\" rx=\"1.5\" fill=\"#131313\"> in the 24 × 24 viewBox, drawn at 22 × 22",
+      "property": "rasterised edge of the filled rect",
+      "design": "the bump reads as a distinct rounded rect meeting the mattress bar",
+      "app": "62 device pixels differ by up to 56/255 in a 55 × 30 css crop around the glyph; the shape is right, the edge lands a fraction differently",
+      "confidence": "unsure",
+      "note": "D076's fix is in and correct — FunnelGlyphMark now gives a child a stroke only where the canvas states stroke-width, so this rect is filled and not outlined. The remaining difference is almost certainly subpixel rasterisation of a filled rect inside a downscaled <Svg> (24 viewBox at 22pt). It is the only place on any of the 23 frames where a glyph differs at all, and the 8×8 block metric puts it at 13.9/255 mean over two blocks — well under anything visible. Recording it so the next pass does not rediscover it as new.",
+      "app_name": "tideline"
+    },
+    {
+      "frame": "the whole group — the specs/ files",
+      "element": "specs/03-name.md, specs/07-frequency.md, specs/09-control.md, specs/17-what-it-affects.md; and the absent specs for V3 Q3b, What starts it, Transition, Goal Confirmation",
+      "property": "transcription currency",
+      "design": "this drop's frames",
+      "app": "the previous drop's — verified: specs/17-what-it-affects.md transcribes the WITHDRAWN `What It Affects` frame (title \"What does it interfere with most?\", bottom wash 457 at −251) rather than the new, differently-capitalised `What it affects` (\"What does it affect most?\"); specs/03-name.md carries no \"All your data will be encrypted.\"; specs/07-frequency.md still contains \"Several times a day\"; there is no spec at all for the five ADDED frames",
+      "confidence": "certain",
+      "note": "Not a rendered defect — the app itself is correct on all of these. Reported because a stale spec that describes withdrawn copy is worse than no spec: a later pass reading specs/17-what-it-affects.md would 'correct' the app back to the withdrawn wording. The report acknowledges this and defers it to F10's renumbering pass.",
+      "app_name": "tideline"
+    }
+  ],
+  "group": "funnel",
+  "reachedAll": true,
+  "summary": "All 23 frames were driven to the exact state their frame draws, captured headlessly (sig prefix v-funnel-), diffed row-by-row with sigdiff, and diffed pixel-wise with a NEW instrument I wrote for this pass (.vicifull/vfunnel-blockdiff.mjs: 8×8 block means, which kill antialiasing but not a missing shape, a wrong gradient or a shifted box — unlike the report's funnel-pxdiff3.mjs it does not skip gradient regions). Every PNG was also read.\\n\\nThe implementation is genuinely strong: the nine new header drawings, the 09A compass's SVG <text> \\\"N\\\" in sans (D074 does not bite), the 30×30 gauge rings, the 26×26 tail marks on 22, the crescent/pillow glyphs (D076), First Principle's real FeGaussianBlur ground shadow (D075 — I checked its geometry against the canvas and it is exact), 16 · Impact's absent low sun, and all copy including the frames' curly apostrophes. src/content/onboardingFunnel.ts is in sync: I re-ran scripts/vicifull/gen-funnel.mjs and the output is byte-identical. The copy sweep reports nothing missing for any of the 23 frames.\\n\\nTWO REAL DEFECTS SURVIVE.\\n\\n(1) The top-left corner bloom is drawn 6–8/255 too dark on 22 of the 23 frames. src/components/onboarding/v3.tsx:283 gives the zero-alpha stop stopColor=\\\"#131313\\\" where the opaque stop is #B4AA96, so react-native-svg interpolates the RGB toward near-black. This is FINDINGS.md F23's already-CONFIRMED defect, naming this exact line, and the report does not mention it. The reason it was missed is instructive: the report's funnel-pxdiff3.mjs counts a pixel only where the design's 3×3 neighbourhood is flat, and starts at device row 110 — so a gradient wash near the top of the frame is doubly invisible to it. That is why \\\"0 flat pixels\\\" is reported on frames that are measurably wrong. Fix is one token.\\n\\n(2) 03 · Name's Back row is still not drawn. The report frames this as an open call under D016; FINDINGS.md F13 is titled \\\"DECIDED … reversing D016\\\" and specifies both halves of the fix. Neither is in the tree: welcome.tsx still passes onBack={null} at i===0 and (auth)/_layout.tsx still redirects unconditionally with no onboarding-incomplete exemption.\\n\\nThree smaller items are recorded with honest confidence: First Principle's bloom band runs 2–6/255 dark (D010's accepted radial approximation, one-directional, the largest residual outside the two above); 13 · Place's bed-pillow edge differs by 62 subpixels; and the group's specs/ files still transcribe withdrawn copy.\\n\\nI also drove and confirmed every piece of questionnaire logic no frame can state: 09B skipped on \\\"No\\\" at 09A (lands on 10 · First principle); the exclusive answers on 12, 14 and 22 each clear the rest (verified in the signature — only the exclusive row carries rgba(255,255,255,0.13)/0.45); 17 refuses a fourth pick; 23's \\\"Set a limit\\\" reading renders at the frame's own 338/434 with the clarifier correctly absent; the under-18 gate fires at 04. windowFor() covers all nine of 11 · When's renamed labels and O3_ISSUE all nine of 12 · Beforehand's. I re-grepped all 22 dead exports in v3.tsx: genuinely unreferenced (the 8 hits for \\\"O3Letter\\\" are handover.tsx's O3LetterArrived/O3LetterRead, a different symbol).\\n\\nThe two glyph oddities that look like bugs are not: 17 · What it affects really does give \\\"Time\\\" a crescent and \\\"Sleep\\\" a clock, and 12 · Beforehand really does give \\\"Lonely\\\" a clock — the canvas draws them that way and the app matches at 0 blocks over 8/255.",
+  "unreachable": []
+}

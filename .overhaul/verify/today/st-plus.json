@@ -1,0 +1,6 @@
+[
+{"name":"n1","wait":1200,"js":"await tap('New pledge'); await __sleep(1500); return [location.pathname+location.search, [...document.querySelectorAll('[role=radio],[role=button],[role=tab]')].map(b=>(b.textContent.trim().slice(0,20))+':'+(b.getAttribute('aria-checked')||b.getAttribute('aria-selected')||'')).join(' | '), document.activeElement && document.activeElement.tagName]"},
+{"name":"n2","noshot":true,"wait":300,"js":"const ta=[...document.querySelectorAll('textarea,input')]; const el=ta[ta.length-1]; const d=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el),'value'); d.set.call(el, 'Phone stays out of the bedroom'); el.dispatchEvent(new Event('input',{bubbles:true})); await __sleep(300); return ta.map(t=>t.value)"},
+{"name":"n3","wait":1200,"js":"await tap('Save'); await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=1096; await __sleep(800); return [location.pathname, __txt().match(/Your pledge (.{0,60})/)?.[1]]"},
+{"name":"n4","noshot":true,"wait":800,"js":"await tap('New pledge'); await __sleep(1200); const p=location.pathname; await tap('Back'); await __sleep(1200); return [p, location.pathname, __txt().match(/Your pledge (.{0,60})/)?.[1]]"}
+]

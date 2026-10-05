@@ -1,0 +1,83 @@
+lessons 84 frames 1273
+frames per lesson [
+  [ '13', 3 ],
+  [ '14', 27 ],
+  [ '15', 23 ],
+  [ '16', 18 ],
+  [ '17', 11 ],
+  [ '18', 2 ]
+]
+
+KINDS {
+  cover: 84,
+  quote: 168,
+  section: 263,
+  continuation: 442,
+  'task-first': 84,
+  'task-cont': 84,
+  complete: 84,
+  question: 32,
+  'answer-reflect': 18,
+  'answer-best': 14
+}
+
+BLOCK VARIANTS
+   14 answer-best pb=24px jc=center center=false fade=false
+   18 answer-reflect pb=24px jc=center center=false fade=false
+   84 complete pb=24px jc=center center=true fade=false
+  442 continuation pb=24px jc=center center=false fade=false
+   84 cover pb=24px jc=center center=true fade=false
+    2 question pb=0px jc=center center=false fade=false
+    1 question pb=0px jc=flex-start center=false fade=true
+   29 question pb=24px jc=center center=false fade=false
+  168 quote pb=24px jc=center center=true fade=false
+  263 section pb=24px jc=center center=false fade=false
+   84 task-cont pb=24px jc=center center=false fade=false
+   84 task-first pb=24px jc=center center=false fade=false
+
+BOTTOM CONTROLS
+   14 answer-best primary Continue
+   18 answer-reflect primary Continue
+   84 complete primary Done
+  442 continuation next 
+   84 cover primary Begin
+   32 question primary Continue
+  168 quote next 
+  263 section next 
+   84 task-cont primary Finish lesson
+   84 task-first next 
+
+SIGNATURES
+  225 continuation :: body body 
+  168 quote :: quoteGlyph title label 
+  154 section :: label title body 
+   97 continuation :: body 
+   84 cover :: hero label display 
+   84 complete :: checkCircle display body 
+   82 continuation :: hero body 
+   81 task-cont :: body done 
+   71 section :: label title body body 
+   68 task-first :: hero label title body 
+   32 question :: label title small options 
+   22 section :: hero label title body 
+   20 continuation :: hero body body 
+   18 answer-reflect :: label title body noteField 
+   14 answer-best :: label bestCards body 
+    9 task-first :: label title body body 
+    7 task-first :: hero label title body body 
+    7 continuation :: viz:compare body body 
+    6 continuation :: viz:pairs body 
+    4 section :: viz:pairs label title body  <- L11 Frame 5, L14 Frame 10, L16 Frame 5, L58 Frame 5
+    3 section :: viz:chain label title body  <- L1 Frame 5, L28 Frame 3, L40 Frame 6
+    3 task-cont :: body body done  <- L1 Frame 13, L20 Frame 15, L35 Frame 16
+    3 section :: viz:compare label title body body  <- L12 Frame 3, L13 Frame 6, L42 Frame 6
+    2 continuation :: viz:compare body  <- L6 Frame 4, L29 Frame 6
+    2 section :: viz:compare label title body  <- L18 Frame 5, L66 Frame 3
+    2 section :: viz:track label title body body  <- L35 Frame 5, L75 Frame 8
+    1 continuation :: viz:chain body  <- L9 Frame 7
+    1 section :: viz:wave label title body  <- L15 Frame 5
+    1 continuation :: viz:bars body body  <- L41 Frame 4
+    1 section :: hero label title body body  <- L42 Frame 8
+    1 continuation :: viz:pairs body body  <- L72 Frame 5
+
+ANOMALIES 0

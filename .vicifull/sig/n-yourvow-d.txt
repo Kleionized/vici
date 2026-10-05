@@ -1,0 +1,17 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 64 | 82.8 | 20 | - | - | - | - | - | -
+svg | 16 | 64.5 | 11 | 19 | - | - | - | - | - | -
+path | 18 | 66 | 7.5 | 16 | - | - | - | - | - | -
+span | 36 | 64 | 62.8 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(85, 83, 78) | Settings
+div | 16 | 114 | 361 | 32 | - | - | - | - | 27px/600/-0.2px/normal/rgb(29, 28, 26) | Your vow
+div | 111.5 | 168 | 170 | 170 | - | 50% | - | - | - | -
+div | 173.5 | 196 | 46 | 46 | - | 50% | - | rgba(226, 186, 120, 0.45) 0px 6px 18px 0px | - | -
+div | 40 | 296 | 313 | 96 | - | - | - | - | 20px/400/normal/32px/rgb(29, 28, 26) | I’m done letting the wave decide. One evening at a time, I take the watch back.
+div | 36 | 466 | 321 | 142 | - | - | - | - | - | -
+div | 36 | 500 | 321 | 44 | - | - | - | - | - | -
+span | 150.2 | 497.7 | 92.6 | 48.7 | - | - | - | - | 44px/400/normal/44px/rgb(29, 28, 26) | Jerry
+div | 50 | 547 | 8.7 | 17 | - | - | - | - | 14px/400/normal/normal/rgb(176, 174, 168) | ×
+div | 48 | 566.5 | 297 | 1.5 | rgba(0, 0, 0, 0.24) | - | - | - | - | -
+div | 36 | 594 | 321 | 0 | - | - | - | - | - | -
+div | 0 | 648 | 393 | 16 | - | - | - | - | 13px/500/normal/normal/rgb(139, 136, 130) | Held for 92 days.
+div | 36 | 692 | 321 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(139, 136, 130) | After a relapse you can re-sign the vow. It resets the promise, never the progress.

@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/Enlisting Aegis`
 * **App file** src/components/onboarding/tail.tsx + src/content/onboardingTail.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `Enlisting Aegis`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `Enlisting-Aegis.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `Enlisting-Aegis.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -23,16 +31,16 @@ element on the frame is here, in paint order, indented by depth.
       <svg> viewBox="0 0 15 15"  width="15"  height="15"
         <path> d="M2.5 8l3.2 3.2L12.5 4"  fill="none"  stroke="#F4F3F0"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
       <span> color:#F4F3F0  font-size:15.5px  font-weight:500
-        · Looking at when it usually happens
+        · Finding where you usually struggle
     <div> display:flex  align-items:center  gap:10px
       <svg> viewBox="0 0 15 15"  width="15"  height="15"
         <path> d="M2.5 8l3.2 3.2L12.5 4"  fill="none"  stroke="#F4F3F0"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
       <span> color:#F4F3F0  font-size:15.5px  font-weight:500
-        · Looking at what usually comes right before it
+        · Looking at what tends to set it off
     <div> display:flex  align-items:center  gap:10px
       <div> width:13px  height:13px  box-sizing:border-box  border:2px solid rgba(244,243,240,0.55)  border-radius:50%  border-top-color:transparent
       <span> color:rgba(244,243,240,0.75)  font-size:15.5px  font-weight:500
-        · Building your first week
+        · Choosing where to start
   <div> position:absolute  left:20px  right:20px  top:434px  color:#2A2924  font-size:20px  font-weight:500  letter-spacing:0.1px  line-height:31px  text-align:center  text-wrap:pretty
   <div> position:absolute  left:-3px  top:563px  width:399px  height:399px  background:#FFFFFF  border-radius:50%  box-shadow:0 -20px 70px rgba(255,255,255,0.6)  overflow:hidden
     <div> position:absolute  inset:0  background-image:url('noise-dark.png')  opacity:0.08

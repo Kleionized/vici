@@ -1,0 +1,76 @@
+[
+  {
+    "frame": "Starting Score",
+    "route": "/welcome",
+    "seed": false,
+    "do": "window.__T=\"starting-point\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "note": "The tail sits 22 funnel steps + 5 plan boards deep and no route reaches it directly, so every entry here drives `/welcome` with `.vicifull/drives/tail-walk.js` and names its board in `window.__T`. `\"seedScript\": \".vicifull/tail-session-seed.js\"` signs a mock user in BEFORE the first paint — without it /welcome opens with no account and the first step draws no name field — which is what lets `scripts/vicifull/audit.mjs` run these unattended through shot.mjs. By hand, `node .vicifull/vtail-cap.mjs \"/welcome\" out.png --sig=… --do='window.__T=\"<board id>\"' --script=.vicifull/drives/tail-walk.js --wait=2400` does the same (it is funnel-cap.mjs with a tolerant goto; plain networkidle times out at 30s when several agents are capturing). tail-walk.js is a STATE MACHINE, not a script: each tick reads the page, matches a string only one board draws, does that board's whole action, and stops on __T's own headline. It was a fixed list of taps in pass 1 and that raced twice — first on a flat 420ms per tap, then on a Metro rebuild reloading the page mid-walk and dropping it back to an early funnel board. At ~55-70s this is the longest drive in the run and the most exposed to a hot reload; the state machine simply answers whatever board it lands on. It answers age 24, 'A few times a week', and BOTH 'Late at night' and 'When I’m home alone' — the second is what keeps 18 and 19 from being skipped (D077). Budget 70-90s per capture.",
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "Cost Next 30",
+    "route": "/welcome",
+    "do": "window.__T=\"next30\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "note": "Watch for a capture taken while Metro is rebuilding: it catches Expo's fast-refresh overlay — a 42x42 dark rounded box with a lightning bolt at 8,802 — which adds three signature rows and takes mean |Δ| from 0.97 to 1.72. It is a capture artefact, not the app. Check the sig for a row at `8 | 802 | 42 | 42` and re-shoot.",
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "Cost Next 365",
+    "route": "/welcome",
+    "do": "window.__T=\"one-year\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "Cost By Age 80",
+    "route": "/welcome",
+    "do": "window.__T=\"age80\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "note": "the frame's 'About 6,100 days' needs age 24 and nine dark days in COST_30, which is what the walk answers",
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "Change the Line",
+    "route": "/welcome",
+    "do": "window.__T=\"change-line\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "A Clean Day",
+    "route": "/welcome",
+    "do": "window.__T=\"clean-day\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "One Bad Day",
+    "route": "/welcome",
+    "do": "window.__T=\"one-bad-day\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "note": "the chart's `today · day 41` is the frame's own literal, passed as day={41} from welcome.tsx — not account data, so no seed affects it",
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "What You Want Back",
+    "route": "/welcome",
+    "do": "window.__T=\"want-back\"",
+    "script": ".vicifull/drives/tail-walk.js",
+    "wait": 2400,
+    "seedScript": ".vicifull/tail-session-seed.js"
+  },
+  {
+    "frame": "(measurement tools used on this group)",
+    "unreachable": "not a frame — recorded so the next pass does not rebuild them",
+    "note": "`.vicifull/vtail-px.mjs d a [x,y …]` mean/max |Δ| over the whole body y54…830 with NO region excluded, plus an 8x16 block map and point samples. `.vicifull/f-tail-grid.mjs d a` a 10x10-device-pixel patch average over the corner-bloom band (y 58…130), which is the only way to see a 5/255 wash error through 0.12 grain. `.vicifull/f-tail-band.mjs d a x0 y0 x1 y1` pixel count over a threshold in one region, with a histogram. `.vicifull/f-tail-zoom.mjs d a x0 y0 x1 y1 z` a side-by-side magnified crop — the thing that settles whether a numeric residue is a defect or antialiasing. `.vicifull/f-tail-col.mjs d a x y0 y1` the darkness centroid down one column, for asking where a stroke actually sits. `.vicifull/f-tail-rowavg.mjs`, `.vicifull/f-tail-spec.mjs` (re-cut a spec's Transcription from this drop), `.vicifull/f-tail-cmp.mjs` (re-cut its Comparison from two sigs)."
+  }
+]

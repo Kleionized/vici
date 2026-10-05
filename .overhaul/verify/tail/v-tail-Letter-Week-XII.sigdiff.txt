@@ -1,0 +1,7 @@
+# count P:24,112,345,740: design 1, app 2
+~ Week XII, from Sam                       type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Sam —                                    type: 26px/700/-0.6px/normal/rgb(242, 240, 236) → 26px/700/-0.6px/32px/rgb(242, 240, 236)
+~ you do not need twelve perfect weeks.    w: 284.8 → 287.7
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Keep this letter                         type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 18 design rows, 24 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)

@@ -1,0 +1,21 @@
+--- .vicifull/pretty/prev/Checkin-Reasons.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Checkin-Reasons.html	2026-09-05 00:22:35
+@@ -155,6 +155,18 @@
+     | color:#1D1C1A;
+   ">
+     · What caused the feeling?
++  </div>
++  <div style="
++    | position:absolute;
++    | left:0;
++    | right:0;
++    | top:158px;
++    | text-align:center;
++    | font-size:15px;
++    | font-weight:400;
++    | color:#55534E;
++  ">
++    · Select all that apply.
+   </div>
+   <div style="
+     | position:absolute;

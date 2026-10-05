@@ -1,0 +1,10 @@
+const out = {};
+const vis = () => [...document.querySelectorAll('[role="heading"]')].filter(e=>{const r=e.getBoundingClientRect();return r.left>-1&&r.right<innerWidth+1&&r.width>0}).map(e=>e.textContent);
+await __sleep(500);
+await tap('The library'); await __sleep(1800);
+out.lib = { path: location.pathname + location.search, h: vis() };
+await tap('A week · board'); await __sleep(1800);
+out.week1 = { path: location.pathname + location.search, h: vis() };
+await tap('A week · board'); await __sleep(1800);
+out.week1again = { path: location.pathname + location.search, h: vis() };
+return out;

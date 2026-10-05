@@ -1,0 +1,1 @@
+await __sleep(600); for (let i=0;i<9;i++) { await tap("Next", {wait:150}); } await tap("“One mistake doesn't erase everything”");

@@ -1,0 +1,72 @@
+[
+  {
+    "frame": "Task D01 Intro",
+    "route": "/task/1",
+    "wait": 1600,
+    "note": "day 1 draws both boards as a centred flow column, not the absolute stack the other 82 use; no driving needed, the intro board is the route's first page"
+  },
+  {
+    "frame": "Task D01 Options",
+    "route": "/task/1",
+    "wait": 1600,
+    "do": "await __sleep(1200); await tap('Continue')"
+  },
+  {
+    "frame": "Task DNN Intro (N = 2..84, no 32)",
+    "route": "/task/N",
+    "wait": 2200,
+    "note": "no driving needed. Day 32 has no frames in the bundle at all. Verified pass 2: 1, 5, 9, 14, 21, 28, 35, 41, 44, 48, 55, 56, 62, 69, 74, 76, 78, 84 — every one 0-15 differing 8x8 blocks at 4/255 apart from days 1, 35 and 41 (grain and rotated-bar antialiasing, worst 13.5/255 block mean)"
+  },
+  {
+    "frame": "Task DNN Options (N = 2..84, no 32)",
+    "route": "/task/N",
+    "wait": 1500,
+    "do": "await __sleep(1200); await tap('Continue')",
+    "note": "the sleep is load-bearing: tapping before the route settles finds no control and leaves the capture on the intro board. Days 74 and 76 draw this board EMPTY in the canvas and the app draws it empty too — that is authored, not a gap"
+  },
+  {
+    "frame": "Task D74 Intro / Task D76 Intro",
+    "route": "/task/74",
+    "wait": 2200,
+    "note": "capturable, but the DESIGN frame renders broken — a botched string replacement leaves `ion:absolute; left:26px; top:419px; width:340px; height:186px;\">` as a visible 16px body text node, duplicates the scale wrapper and nests the rule card, dots and button inside the scene box so they render at y 1044-1215. A sigdiff against it is meaningless; compare against the frame's STATED numbers instead — title 30/144 at 27/35, intro 38/193 at 14.5/21, scene 26/419 340x186 (day 76: 26/440 340x164), rule card 24/625 h68, dots 706, button 744. The app's captured rows are now `div | 26 | 419 | 340 | 186` and `div | 26 | 440 | 340 | 164`, which is what the two frames state (D114)"
+  },
+  {
+    "frame": "Lesson NN card (NN = 1..84, no 32)",
+    "route": "/lesson-card/NN",
+    "wait": 2000,
+    "note": "no driving needed. The plates with a clip-path silhouette are days 3, 6, 13, 18, 44, 59, 71, 73 and 79; the grouped plates are 17, 26 and 47; the border-triangle plates are 18, 47, 66, 83 and 84 (D108). Verified pass 2: 1, 3, 5, 9, 13, 17, 18, 21, 22, 27, 31, 36, 40, 44, 47, 50, 55, 59, 63, 66, 68, 71, 73, 74, 77, 79, 81, 83, 84"
+  },
+  {
+    "frame": "Lesson 1 Surviving the Night, L1 Frame NN (NN = 1..26)",
+    "route": "/lesson/day/1",
+    "wait": 900,
+    "do": "await __sleep(900); for (let i=0;i<NN-1;i++) { await tap('Next', {wait:170}); }",
+    "note": "the reader advances by tapping the page; the press target is labelled Next"
+  },
+  {
+    "frame": "Week-WW L<lesson> Frame NN",
+    "route": "/lesson/day/<lesson>",
+    "wait": 900,
+    "do": "await __sleep(850); for (let i=0;i<NN-1;i++) { await tap('Next', {wait:150}); }",
+    "note": "the week bundles number their lessons by day: Week-01 holds L2..L7, Week-02 L8..L14, and so on to Week-12 L78..L84. `L2 Frame 01` is the cover page and carries the shared 270x190 cover scene (F2/D113) — it diffs at 0 blocks over 4/255"
+  },
+  {
+    "frame": "L<lesson> Frame NN, the pick boards",
+    "route": "/lesson/day/<lesson>",
+    "wait": 900,
+    "do": "await __sleep(1000); for (let i=0;i<NN-1;i++) { await tap('Next', {wait:170}); } await tap('<the label of the row the frame draws chosen>')",
+    "note": "the canvas draws one row already chosen as a specimen of the chosen state; the app starts with none, so the row has to be tapped before the two compare. The row the canvas draws chosen is the one whose shell states `box-shadow:0 0 0 2px #1D1C1A`; `.vicifull/tmp-verify/chosen.mjs <frame.html>` prints its label"
+  },
+  {
+    "frame": "Lessons-and-Tasks/Task-D01-Card … Task-D84-Card (83 frames)",
+    "unreachable": "design catalogue, not app screens (FINDINGS F6, DECISIONS D008). Each draws two cards under the eyebrows `HOME · TODAY’S TASK` and `NIGHT · REMINDER`, neither of which appears on the Email-Login frames that draw those two places — `Today Home Task` labels its card with the lesson title and `Night Action Reminder` heads the page `Tonight’s action`. The 168 copy-sweep misses for those two eyebrows are expected"
+  },
+  {
+    "frame": "Lessons-and-Tasks/L01-Reader-1 … L01-Reader-25 (25 frames)",
+    "unreachable": "a THIRD, pre-restyle copy of lesson one (28/40 headings, gap 36, progress 4 %) alongside Email-Login's `Lesson Scroll 1..26` and the current `Lesson-1-Surviving-the-Night` (24/32, gap 36, progress 3 %). Same decision as D085/F5: the app is built from `Lesson 1 Surviving the Night`, so these 25 are deliberately not matched and no app screen draws them. Named in DECISIONS D116 so a later audit does not read them as 25 unexplained misses"
+  },
+  {
+    "frame": "Lesson 32 card and Task D32",
+    "unreachable": "day 32 has no card frame and no task frames anywhere in the bundle; Week V's overview still lists the lesson, which is where `curriculum84.ts` gets its title. `/lesson-card/32` therefore has no frame to diff against"
+  }
+]

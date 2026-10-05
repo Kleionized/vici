@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q5`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q5`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q5.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q5.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,7 +32,7 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · When are you most likely to watch?
+    · When do you usually end up watching?
   <div> position:absolute  left:0  right:0  top:226px  color:rgba(244,243,240,0.55)  font-size:13px  font-weight:500  text-align:center
     · Select all that apply
   <div> position:absolute  left:24px  right:24px  top:278px  display:flex  gap:10px
@@ -34,6 +42,69 @@ element on the frame is here, in paint order, indented by depth.
           <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.8"  stroke-linecap="round"  stroke-linejoin="round"
       <svg> viewBox="0 0 30 30"  width="22"  height="22"
         <path> d="M17 4 A10.5 10.5 0 1 0 25 20 A8.2 8.2 0 1 1 17 4 Z"  fill="#131313"
+      <span> color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · Late at night
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M7 15a5 5 0 0 1 10 0"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"
+        <path> d="M3 18h18M12 4v3M5 7l2 2M19 7l-2 2"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · In the morning
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <circle> cx="12"  cy="12"  r="8.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"
+        <path> d="M12 7.5V12l3 2"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · When I’m bored
+  <div> position:absolute  left:24px  right:24px  top:380px  display:flex  gap:10px
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+      <div> position:absolute  right:8px  top:8px  width:15px  height:15px  display:flex  align-items:center  justify-content:center  background:#131313  border-radius:50%
+        <svg> viewBox="0 0 16 12"  width="8"  height="6"
+          <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.8"  stroke-linecap="round"  stroke-linejoin="round"
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M3 16l5-6 4 4 6-8"  fill="none"  stroke="#131313"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · When I’m stressed
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M3 7v10M3 14h18v3M3 11h18v3"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
+        <rect> width="6"  height="3"  x="5"  y="8.5"  rx="1.5"  fill="#F4F3F0"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · When I can’t sleep
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <rect> width="17"  height="15"  x="3.5"  y="5"  rx="3"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"
+        <path> d="M8 3v4M16 3v4M3.5 10h17"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · On weekends
+  <div> position:absolute  left:24px  right:24px  top:482px  display:flex  gap:10px
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M7 3h10l-1.2 13a3.8 3.8 0 0 1-7.6 0Z"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+        <path> d="M9 21h6M12 17v4"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · After drinking
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <path> d="M4 11l8-7 8 7"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M6 10v10h12V10"  fill="none"  stroke="#F4F3F0"  stroke-width="2.5"  stroke-linejoin="round"
+      <span> color:#F4F3F0  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · When I’m home alone
+    <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+      <div> position:absolute  right:8px  top:8px  width:15px  height:15px  display:flex  align-items:center  justify-content:center  background:#131313  border-radius:50%
+        <svg> viewBox="0 0 16 12"  width="8"  height="6"
+          <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#F4F3F0"  stroke-width="2.8"  stroke-linecap="round"  stroke-linejoin="round"
+      <svg> viewBox="0 0 24 24"  width="22"  height="22"
+        <rect> width="10"  height="18"  x="7"  y="3"  rx="2.5"  fill="none"  stroke="#131313"  stroke-width="2.5"
+        <path> d="M10.5 18h3"  stroke="#131313"  stroke-width="2.5"  stroke-linecap="round"
+      <span> color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
+        · While scrolling
+  <div> position:absolute  left:24px  right:24px  top:744px  height:56px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:28px  cursor:pointer
+    <span> color:#131313  font-size:16.5px  font-weight:600
+      · Continue
+```
+
+Z"  fill="#131313"
       <span> color:#131313  font-size:12px  font-weight:500  line-height:15px  text-align:center
         · Late at night
     <div> position:relative  height:94px  padding:0 4px  box-sizing:border-box  display:flex  flex:1  flex-direction:column  align-items:center  justify-content:center  gap:8px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.2)

@@ -1,0 +1,125 @@
+{
+  "group": "day",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 17 GROUP day frames were driven, captured headlessly (sig prefix v-day-) and compared both numerically (sigdiff) and pixel-for-pixel (imgdiff/imgwhere over y54-852, threshold 8). Seven frames are flat clean — Morning Check-in Cover, Morning Feeling, Morning Energy, Night Check-in Cover, Night 1 Mood, Checkin Emotions, Checkin Reasons show ZERO pixel clusters over Δ8 anywhere below the status bar, and their signatures differ only by the two D015 wash/radius equivalences. The implementer's report is broadly accurate and its four disclosed judgement calls all check out on the evidence it cites. What it missed: (1) a genuine F12/D064 defect on Night 4 Closed's crescent — the mask RadialGradient reaches the DOM with no `r`, so the bite is a hard edge at 14.5 instead of the canvas's 13.5→14.5 feather (Δ131 over 299 device px); (2) the Change Pledge Sheet is NOT \"identical\" outside the sheet — the app draws the live screen where the canvas draws three flat #E8E7E1 placeholder blocks, which is ~160k differing pixels at up to Δ131, a real judgement call recorded only in a code comment; (3) one SVG attribute divergence on Morning Task Check (the canvas omits `fill` on the Yes check, the app writes fill=\"none\"). I also promoted Night Action Reminder from \"sample data, cannot compare\" to fully verified: re-seeding a day-1 account (.vicifull/vday-seed-d1.js) makes that frame pixel-identical to the canvas (worst Δ3, no band over 40px), so the card, its bed glyph, its 372pt height and both text runs are proved rather than excused. The Back-row/rail occlusion on the three morning frames and the two soft-shadow approximations stand as disclosed deviations. No hard-coded SVG gradient ids anywhere in the group's four files, so the F20 push-collision class does not apply here. Artefacts left in .vicifull/: vdayside.mjs, vdaypk.mjs, vdayworst.mjs, vday-seed-d1.js, shots/vday/*, 35 v-day-* signatures.",
+  "findings": [
+    {
+      "frame": "Night 4 Closed",
+      "element": "the 34pt crescent moon disc at right 104 / top 160 (canvas 255,160,34×34)",
+      "property": "the crescent cut-out's edge profile — mask-image radial hard-stop radius",
+      "design": "mask-image: radial-gradient(circle 15px at 67% 30%, transparent 0 13.5px, #000 14.5px) — the bite is clean to r=13.5 and feathers over the last pixel to r=14.5. Sampled on the frame at (268.5,181), r=14.24 from the hole centre: 185,191,198 (part-lit, inside the feather).",
+      "app": "NightMoon (src/components/day/kit.tsx:693) emits <radialGradient cx=22.78 cy=10.2 rx=14.5 ry=14.5 gradientUnits=userSpaceOnUse> with NO r attribute — verified in the live DOM. SVG's default r=50% resolves to 17 in that 34×34 user space, so the black→white stops land at 15.83/17, past the masking <Circle r=14.5>; the whole circle is therefore solid black and the bite is a HARD edge at 14.5 with no feather. Same point reads 80,84,91 (fully dark). 299 device px differ on a one-pixel ring around the bite, max Δ131/255.",
+      "confidence": "certain",
+      "note": "Exactly the FINDINGS F12 / D064 class the run says to sweep app-wide: rx/ry reach the DOM, r does not, and the web build silently falls back to 50%. Fix is one attribute — r=\"14.5\" alongside rx/ry. Not a D015 equivalence: the box and the geometry match, only the paint ramp is wrong. Note the sibling Glow and SoftShadow helpers in the same file also omit r, but their cx/cy/rx/ry are all 50% in the default objectBoundingBox units where r=50% coincides with the intent, so those render correctly (confirmed: every glow and wash in the group is pixel-clean)."
+    },
+    {
+      "frame": "Change Pledge Sheet",
+      "element": "everything behind the scrim — the whole 0..320 backdrop",
+      "property": "what is drawn under the rgba(38,37,30,0.42) scrim",
+      "design": "three flat #E8E7E1 placeholder blocks at opacity 0.45 — 12/164/369×48, 36/228/321×236, 12/544/369×152 — and nothing else. No Back row, no rail, no sky band, no title.",
+      "app": "the live Re-sign page renders behind the scrim. Pixel bands: y50-99 30,167 px differ (max Δ131 — the Back row and the six-dot rail), y100-149 62,483 px (max Δ44 — the sky band, glow and sun disc), y150-199 60,439 px (max Δ20 — the two hills), y200-249 20,436 px (max Δ14), y250-299 7,396 px (max Δ126 — the \"Re-sign your pledge.\" title showing through).",
+      "confidence": "likely",
+      "note": "The verify pass agrees this is defensible — the three blocks match nothing the re-sign page draws, so they read as the canvas's stand-in for a screenshot, and #E8E7E1 appears on no other frame in the whole 267-frame bundle. The finding is that the report called this frame \"[identical] — verified, no change needed: 0 differing rows inside the sheet\", which is true only INSIDE the sheet; the deviation is recorded solely in a code comment in ChangePledgeSheet. It should be a disclosed judgement call, not a clean row. Separately confirmed the scrim itself IS present and correct: the app reads 148,146,138 at (196,200) against the design's 154,153,148 — I initially misread a side-by-side render as an undimmed backdrop and the pixel numbers falsified that."
+    },
+    {
+      "frame": "Morning Resign Pledge",
+      "element": "the Back row (chevron 11×19 + \"Back\" 17/400 #55534E at left 16 / top 66) and the six-dot rail at top 72",
+      "property": "whether they are visible at all",
+      "design": "not visible — the frame orders the opaque 212pt sky band AFTER the Back row and the rail in the DOM, so the band paints over both. The rendered frame shows a bare cream band there.",
+      "app": "both drawn over the band. 2,088 device px differ; clusters at 37.5..73 × 69.5..82 (n=658, Δ160, the word \"Back\"), 16.5..26.5 × 67..85.5 (n=283, Δ161, the chevron) and 207..224.5 × 72..77.5 (n=412, Δ224, the active rail stadium).",
+      "confidence": "certain",
+      "note": "Genuine visible difference from the frame, deliberately taken and disclosed as the report's judgement call #1. I verified the ordering claim directly: Morning-Resign-Pledge, Morning-Pledge-Signed and Morning-5-Done put the band last in the DOM; Morning-Feeling, Morning-Energy, Night-1-Mood and Night-4-Closed put it first. The occluded rows are inked for the band they sit on (#55534E chevron on the light morning band), which supports the export-slip reading. Recording it here because it is a real pixel mismatch a later audit will otherwise re-find, and because the signature diff cannot see it (getBoundingClientRect does not see occlusion)."
+    },
+    {
+      "frame": "Morning Pledge Signed",
+      "element": "the Back row and the six-dot rail at top 66/72",
+      "property": "whether they are visible at all",
+      "design": "not visible — same band-after-navigation DOM ordering as Morning Resign Pledge",
+      "app": "both drawn over the band; identical clusters, 2,088 device px, max Δ224",
+      "confidence": "certain",
+      "note": "Same call as Morning Resign Pledge. Listed separately because it is a separate frame."
+    },
+    {
+      "frame": "Morning 5 Done",
+      "element": "the Back row and the six-dot rail at top 66/72",
+      "property": "whether they are visible at all",
+      "design": "not visible — the 452pt band is ordered after them",
+      "app": "both drawn over the band; clusters 37.5..73 × 69.5..82 (n=658, Δ162), 16.5..26.5 × 67..85.5 (n=283, Δ162), 220..237.5 × 72..77.5 (n=412, Δ228)",
+      "confidence": "certain",
+      "note": "This is the ONLY difference on the whole frame — with the Back row and rail set aside, Morning 5 Done is pixel-identical to the canvas, so every number the report changed on it (band 452, glow 60/460/0.36, disc 236/84, hills 300/328 × 180 rise 100/80, badge 420, closing 512/554) checks out."
+    },
+    {
+      "frame": "Morning Task Check",
+      "element": "the \"Yes\" pill's check glyph — <svg viewBox=\"0 0 19 15\" width=19 height=15> at 280.3,733.5, path d=\"M2 8L7 13L17 2\"",
+      "property": "fill",
+      "design": "no fill attribute at all in the canvas markup, so SVG's initial value fill:black applies and the wedge the stroke encloses is painted pure black. Design pixels in that wedge read 0,0,0.",
+      "app": "fill=\"none\" (src/app/day/morning.tsx:114), so the wedge is left showing the #131313 pill. App pixels read 19,19,19.",
+      "confidence": "certain",
+      "note": "132 device px, max Δ19/255 — invisible in practice, and almost certainly a canvas slip rather than intent. Reported because it is the one place in the group where the app's SVG attributes diverge from the canvas's, and because the same omission would be conspicuous on a light plate. I checked every other stroked path in all 17 frames that omits fill (Morning-1-Yesterday, Morning-Pledge-Signed, Night-2-Record ×2, Night-Action-Reminder, Morning-Task-Check ×2 more): all of them are open straight-line subpaths that enclose no area, so this is the only one that shows. Also worth knowing as a tooling caveat: scripts/vicifull/body.mjs prints the attribute list verbatim, so a missing fill shows as a missing attribute, not as fill=\"none\"."
+    },
+    {
+      "frame": "Morning 1 Yesterday",
+      "element": "the ledger's ground shadow — canvas div at left 50% / top 134 / 180×20 / margin-left -90, background rgba(40,38,32,0.10), filter blur(7px)",
+      "property": "the blur falloff",
+      "design": "a solid 10%-alpha ellipse Gaussian-blurred by 7px, spreading roughly ±14px past its box",
+      "app": "SoftShadow (src/components/day/kit.tsx:51) redraws it as a 3-stop RadialGradient (0 → opacity, 0.55 → opacity, 1 → 0) on an Ellipse of the same bounding box. 6,017 device px differ over 108.5..286.5 × 277.5..310.5, max Δ14/255.",
+      "confidence": "unsure",
+      "note": "Same class as the D010 blessing (a CSS blur has no RN equivalent) but D010 is written about a radial WASH, not a blurred solid, so this is one step outside the letter of the decision. Δ14 is well under anything the eye picks up. Flagged as a residual, not as a defect to fix."
+    },
+    {
+      "frame": "Night 2 Record",
+      "element": "the notebook's ground shadow — canvas 136/284/120×12, rgba(0,0,0,0.10), filter blur",
+      "property": "the blur falloff",
+      "design": "blurred solid ellipse",
+      "app": "the same SoftShadow 3-stop gradient stand-in. 1,743 device px differ over 139..253 × 282..298.5, max Δ15/255.",
+      "confidence": "unsure",
+      "note": "Identical residual to Morning 1 Yesterday's. Apart from this the frame is clean, so the re-stack the report describes (notebook 556 → 150, title 170 → 378 and retitled \"Today's record.\", card 240 → 438, JournalMark box 160 → 190) all lands correctly."
+    },
+    {
+      "frame": "Night 3 Reflection",
+      "element": "the insertion caret after the field's placeholder — canvas span at 288.6,336, 2×18, background #131313",
+      "property": "whether a caret is drawn",
+      "design": "drawn, as a 2×18 solid #131313 bar immediately after \"Sam called at the right moment…\"",
+      "app": "nothing — the field is a real TextInput and is not focused when the step opens, so no platform caret is showing. 144 device px, max Δ236/255.",
+      "confidence": "unsure",
+      "note": "D025 already rules that a drawn caret is the platform's own, so the app's TextInput is the right build. What the canvas is also stating is that the field opens focused; that is behaviour no frame can settle and the app currently does not autofocus. Everything else on this frame matches to the pixel — including the placeholder string, its 17/400/27 metrics and its #8B8882 colour — and the frame draws no Back row, which the app also correctly omits."
+    },
+    {
+      "frame": "Change Pledge Sheet",
+      "element": "the insertion caret in the sheet's white card — canvas span at 284.4,455, 2×19, background #131313",
+      "property": "whether a caret is drawn",
+      "design": "drawn, immediately after the pledge text at 34,452",
+      "app": "nothing — the sheet's TextInput is unfocused on open. ~112 device px, max Δ236/255.",
+      "confidence": "unsure",
+      "note": "Same D025 reading as Night 3 Reflection. Everything else inside the sheet matches exactly: sheet 0/320/393×532 radius 22 22 0 0 with the -12px shadow, grabber 178.5/330/36×4, title 24/364 at 22/500/-0.2/29, sub 24/400 at 13/400, white card 16/436/361×126, pill 16/594/361×52, \"Keep current pledge\" at 0/666."
+    },
+    {
+      "frame": "Night Action Reminder",
+      "element": ".vicifull/recipes/day.json — the last two entries",
+      "property": "the recorded drive string",
+      "design": "n/a — this is the run's own deliverable, not a canvas property",
+      "app": "the \"Night Action Reminder\" and \"Night 4 Closed\" entries carry prose placeholders (\"… as Night 2 Record, then await tap('Continue')\", \"… as Night Action Reminder, then await tap('Done')\") instead of executable strings, so the next pass cannot run them as written.",
+      "confidence": "certain",
+      "note": "The strings that do work, verified this pass and usable with `node scripts/vicifull/shot.mjs app \"/day/night\" out.png --sig=… --initseed=.vicifull/day-seed.js --do='…' --wait=1800`. Night Action Reminder: await tap('Close the day'); await __sleep(700); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(400); await tap('Continue'); await __sleep(700); await tap('Loneliness'); await __sleep(400); await tap('Continue'); await __sleep(800); await tap('Close the day'); await __sleep(900); await tap('Continue'); await __sleep(900). Night 4 Closed: the same plus await tap('Done'); await __sleep(1000). Also: .vicifull/dayshot.mjs is now redundant — scripts/vicifull/shot.mjs's own --initseed does the same job and I drove all 17 frames with it (FINDINGS F14 already lists that wrapper for deletion)."
+    },
+    {
+      "frame": "Night Action Reminder",
+      "element": "the whole action card — 56/236/281 tall, its art block, the 34pt mark plate at 74/500, the 13/600 label at 118/509 and the 15/500/22 body at 74/546",
+      "property": "card height, label text, body text",
+      "design": "372 tall; \"Surviving the night\" under a bed glyph; \"Put the device you use for porn out of reach before you sleep.\" over two lines",
+      "app": "with the group's day-13 seed: 394 tall; \"Values, not shame\"; \"Spend 20 minutes on something you care about that porn has been taking time from.\" over three lines. 33,164 + 5,292 + 5,136 + 2,766 + 1,940 device px differ at Δ204-229.",
+      "confidence": "certain",
+      "note": "NOT a defect — this is the seeded account's real day-13 task, and the report was right to call it sample data. I promoted it from excuse to proof: I forked the seed to a day-1 account (.vicifull/vday-seed-d1.js, createdAt: midnight) and re-captured, and the frame then goes PIXEL-IDENTICAL to the canvas — worst Δ3, no band over 40px, signature clean apart from the D015 radius rows. So the card's height, its bed glyph, both text runs, the 132pt title, the 714 pill and the 791 \"Skip tonight\" are all verified against the canvas rather than merely explained away. Listed as a finding only so the next pass knows the day-1 seed exists and that this frame is genuinely closed."
+    },
+    {
+      "frame": "Morning 1 Yesterday",
+      "element": "the ledger's first row — \"Recovery score\" (flex:1, 15/500) and its trailing detail (13.5/600 #131313) at 285.3,468",
+      "property": "text value and the resulting flex width",
+      "design": "\"+12 → 1,240\", 79.7 wide; \"Recovery score\" fills to 195.3",
+      "app": "\"+11 → 1,064\", 78.1 wide; \"Recovery score\" fills to 196.9. 693 + 480 device px differ at Δ236.",
+      "confidence": "certain",
+      "note": "NOT a defect. Both rows sit at the canvas's own origin with identical type metrics (13.5px/600/normal/normal/rgb(19,19,19) and 15px/500/…/rgb(29,28,26)); the 1.6pt width move on \"Recovery score\" is arithmetic, not layout — it is the flex:1 remainder after a score string 1.6pt narrower. Confirmed the same way for \"Day 13\" on Morning Check-in Cover and for \"Marcus\" vs \"Jerry\" in Snell Roundhand 40/40 at -4° on Morning Pledge Signed, where the plate, the 28pt clear button at 299/557 and its 12×12 glyph all match to the pixel."
+    }
+  ]
+}

@@ -1,11 +1,15 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 
-import { CheckinPicker, RoutineCTA, RoutineShell, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
+import { CheckinTimeBoard, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
 import { useRoutines, useSaveRoutines, type TimeOfDay } from '@/lib/routines';
 
-/** 109 · Nightly check-in time — the last board before Today. */
+/**
+ * `Nightly Check-in Time` (19C) — the last board before Today. With
+ * `?from=settings` it is `Settings Check-in Time` (92B), which this drop draws
+ * byte-identical to 19C: the old "Settings" back label and the reassurance
+ * line under the chips are gone, and only the exit differs.
+ */
 export default function NightTime() {
   const router = useRouter();
   const routines = useRoutines();
@@ -19,26 +23,29 @@ export default function NightTime() {
   const days = draftDays ?? stored;
 
   const { from } = useLocalSearchParams<{ from?: string }>();
-  const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
-
-  const toggle = (day: number) => setDraftDays(days.includes(day) ? days.filter((d) => d !== day) : [...days, day].sort((a, b) => a - b));
+  const fromSettings = from === 'settings';
+  const back = () => (router.canGoBack() ? router.back() : router.replace(fromSettings ? '/(app)/settings' : '/(app)/today'));
 
   const done = async () => {
     await save({ night: time });
     await saveCheckinDays('night', days);
+    /* Onboarding ends here, so that path replaces the stack with Today. The
+       Settings path must not: 92B is a Settings sub-page and every one of its
+       siblings returns to Settings, and a `replace` here threw the whole stack
+       away so Back could not go home either. */
+    if (fromSettings) return back();
     router.replace('/(app)/today');
   };
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <RoutineShell
-        backLabel={from === 'settings' ? 'Settings' : 'Back'}
-        onBack={back}
-        title="When should the nightly check-in come?"
-        cta={<RoutineCTA label="Save time" onPress={() => void done()} />}>
-        <CheckinPicker time={time} onTime={setDraftTime} days={days} onToggleDay={toggle} />
-      </RoutineShell>
-    </>
+    <CheckinTimeBoard
+      kind="night"
+      onBack={back}
+      time={time}
+      onTime={setDraftTime}
+      days={days}
+      onDays={setDraftDays}
+      onSave={() => void done()}
+    />
   );
 }

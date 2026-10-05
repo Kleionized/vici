@@ -1,0 +1,9 @@
+# count P:145,150,104,104: design 1, app 3
+~ Continue with Apple                      type: 17px/700/normal/normal/rgb(17, 17, 17) → 17px/700/normal/21px/rgb(17, 17, 17)
+~ Continue with Google                     type: 17px/700/normal/normal/rgb(242, 240, 236) → 17px/700/normal/21px/rgb(242, 240, 236)
+~ or                                       type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Continue with email                      type: 17px/700/normal/normal/rgb(242, 240, 236) → 17px/700/normal/21px/rgb(242, 240, 236)
+~ Already have an account?                 type: 15px/400/normal/normal/rgb(181, 176, 168) → 15px/400/normal/18px/rgb(181, 176, 168)
+~ Sign in                                  type: 15px/700/normal/normal/rgb(242, 240, 236) → 15px/700/normal/18px/rgb(242, 240, 236)
+~ Terms · Privacy                          type: 12px/700/0.4px/normal/rgb(155, 150, 142) → 12px/700/0.4px/15px/rgb(155, 150, 142)
+--- 25 design rows, 38 app rows; 7 differing, 0 missing, 8 extra, 0 sub-0.25pt rounding (use --all to list extras)

@@ -1,0 +1,136 @@
+[
+ {
+  "frame": "Medallions",
+  "route": "/milestones",
+  "wait": 2000,
+  "initseed": ".vicifull/medallions-seed.js",
+  "note": "The shared seed.json puts nine of the twelve faces in reach, not the canvas's ten, and shot.mjs --seed cannot be used here at all: it needs a mock user to already exist and a fresh headless context has none. .vicifull/medallions-seed.js signs one in and plants the exact album the frames draw — created Jun 9, seven consecutive check-ins, five ridden urges one of them severity 10, a lapse whose morning after is a check-in, one urge_acted_on on Jul 20, nine journal entries, five lessons completed — which renders `10 of 12 earned` and the canvas's own Jun 9 / Jul 20 dates. It also quiets the (app) launch gate, which otherwise pushes the night check-in over Today. The Expo dev-refresh badge sits at the bottom left over the tab bar (x 8–30, y 795–815) and is the only thing over 32/255 on this pair; measure 0,54–393,769 to exclude it."
+ },
+ {
+  "frame": "Album Earned II",
+  "route": "/milestones",
+  "wait": 900,
+  "initseed": ".vicifull/medallions-seed.js",
+  "do": "await __sleep(1800); const d=[...document.querySelectorAll('div')].find(x=>x.scrollHeight>x.clientHeight+8); d.scrollTop=9999; await __sleep(600)",
+  "note": "Page two of the Earned grid, at the bottom of the scroll. Since D102 the grid bottoms out on the canvas's own row origins (290 / 475) — diff straight, with no --dy. The old note asking for `--dy=19` described the bug, not the screen."
+ },
+ {
+  "frame": "Medallions Still To Earn",
+  "route": "/milestones",
+  "wait": 900,
+  "initseed": ".vicifull/medallions-seed.js",
+  "do": "await __sleep(1800); const el=[...document.querySelectorAll('[role=tab]')].find(e=>e.textContent.trim()==='Still to earn'); __fire(el); await __sleep(700)",
+  "note": "drive.js's tap() cannot find it: the segment halves are role=\"tab\", which __btns() does not query."
+ },
+ {
+  "frame": "Tiers Vidi",
+  "route": "/medallions/tiers/vidi",
+  "wait": 1800,
+  "note": "No seed: the ladder reads no account data. In the app it is reached by opening the face's detail and tapping the pill under the coin (D060)."
+ },
+ {
+  "frame": "Tiers Vici",
+  "route": "/medallions/tiers/vici",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Rebound",
+  "route": "/medallions/tiers/rebound",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Breakwater",
+  "route": "/medallions/tiers/breakwater",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Logbook",
+  "route": "/medallions/tiers/logbook",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Pulse",
+  "route": "/medallions/tiers/pulse",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Archive",
+  "route": "/medallions/tiers/archive",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers Lessons",
+  "route": "/medallions/tiers/lessons",
+  "wait": 1800
+ },
+ {
+  "frame": "Tiers One-offs",
+  "route": "/medallions/tiers/once",
+  "wait": 1800,
+  "note": "The four faces that mint once share one ladder page; `once` is not a face key. In the app it is reached by opening any one-off face's detail and tapping the pill."
+ },
+ {
+  "frame": "Breakwater Paper",
+  "route": "/medallions/breakwater?tier=paper",
+  "wait": 1800,
+  "note": "No seed: the board reads the face and the metal off the route. In the app the metal comes from the album card's own standing, and the card pushes `?tier=<metal>`."
+ },
+ {
+  "frame": "Breakwater Bronze",
+  "route": "/medallions/breakwater?tier=bronze",
+  "wait": 1800
+ },
+ {
+  "frame": "Breakwater Silver",
+  "route": "/medallions/breakwater?tier=silver",
+  "wait": 1800
+ },
+ {
+  "frame": "Breakwater Gold",
+  "route": "/medallions/breakwater?tier=gold",
+  "wait": 1800
+ },
+ {
+  "frame": "Breakwater Platinum",
+  "route": "/medallions/breakwater?tier=platinum",
+  "wait": 1800
+ },
+ {
+  "frame": "Detail Paper",
+  "route": "/medallions/vici?tier=none",
+  "wait": 1800,
+  "note": "`tier=none` is the unearned state, which is what Detail Paper draws. Every other `?tier=` is a metal, and paper is now tier I rather than the absence of a tier (D056/D057). The pill and the card quote deliberately differ from this frame — D057/D101 — and are the only rows in the group that do."
+ },
+ {
+  "frame": "Detail Bronze",
+  "route": "/medallions/vici?tier=bronze",
+  "wait": 1800
+ },
+ {
+  "frame": "Detail Silver",
+  "route": "/medallions/vici?tier=silver",
+  "wait": 1800
+ },
+ {
+  "frame": "Detail Gold",
+  "route": "/medallions/vici?tier=gold",
+  "wait": 1800
+ },
+ {
+  "frame": "Detail Platinum",
+  "route": "/medallions/vici?tier=platinum",
+  "wait": 1800
+ },
+ {
+  "tool": "node .vicifull/mdiff.mjs <designSig> <appSig>",
+  "note": "sigdiff.mjs reports the coin's field, sun, dunes and bevel as differing on every medallion frame: the canvas states them as CSS boxes with backgrounds and radii, and the app draws them as SVG shapes at the same coordinates. mdiff.mjs pairs those rows and forgives exactly the background/radius/shadow columns where the app side is bare, plus a `50%` written as a pixel radius. Nothing else. It forgives those columns on ANY such row, so it cannot tell a translated paint server from a lost one — never call a medallion frame clean on mdiff alone."
+ },
+ {
+  "tool": "node .vicifull/v-pxdiff.mjs '[[\"<designShot>\",\"<appShot>\",\"<label>\"]]'",
+  "note": "Whole-image |Δ| over the pair. Excludes the top 54pt status bar the app never draws and NOTHING else — gradients, grain and blurred washes are all counted. Pass-2 helpers alongside it, all in .vicifull/vtmp/: f-med-band.mjs (|Δ| over one frame-point rect, nothing masked inside it), f-med-grain.mjs (mean level and horizontal high-frequency energy of a background band — the instrument that tells a repeated 96×96 tile from a stretched one), f-med-crop.mjs and f-med-heat.mjs (design | app [| |Δ|×6] side by side at a magnification), f-med-diag.mjs (signed app − design along the coin's 135° gloss axis), f-med-gloss.mjs/.html (the CSS gradient and both SVG transcriptions rendered side by side in isolation)."
+ },
+ {
+  "tool": "known signature rows on every medallion frame, all notation not paint",
+  "note": "sigdiff/audit report these on the boards and ladders and they are none of them defects. (1) The two background washes — `filter: blur()` has no RN equivalent, BRIEF rule 3 / D015. (2) `radius: 50% → -` on the coin's field, sun and dunes: the canvas states CSS boxes, the app draws SVG shapes at the same coordinates (audit's `paint-absent-geometry-exact` bucket — confirmed in the PNGs at 2–5x). (3) `radius: 50% → 2.25px` on the three page dots, and `50% → 9999px` on any circle: notation. (4) ONE uncategorised row per board: the mount ring. The canvas hangs `0 0 0 1.5px rgba(0,0,0,0.2), 0 0 0 7px <mount>, 0 0 0 8.5px rgba(0,0,0,0.16)` on the 150x150 disc itself and the app hangs it on the 150x150 wrapper immediately outside it, so the design's two boxes at 121.5,128,150,150 pair one apart and the shadow reads as `- -> …` on the first and `… -> -` on the second. Both boxes are the same square at the same origin; the ring lands on the same pixels, measured. Do not chase it."
+ }
+]

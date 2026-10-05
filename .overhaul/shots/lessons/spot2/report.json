@@ -1,0 +1,60 @@
+{
+ "1": {
+  "week": "Week-01-Reset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [
+     [
+      328,
+      329
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "7": {
+  "week": "Week-01-Reset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "15": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 5,
+    "share": 0.001,
+    "bands": [
+     [
+      262,
+      263
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "16": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ }
+}

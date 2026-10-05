@@ -1,0 +1,21 @@
+--- .vicifull/pretty/prev/Cue-Set-Confirmation.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Cue-Set-Confirmation.html	2026-09-05 00:22:35
+@@ -297,5 +297,18 @@
+         · Phone is away
+       </span>
+     </div>
++    <div style="
++      | position:absolute;
++      | left:0;
++      | right:0;
++      | bottom:44px;
++      | text-align:center;
++      | font-size:15px;
++      | font-weight:500;
++      | color:#8B8882;
++      | cursor:pointer;
++    ">
++      · Try a different step
++    </div>
+   </div>
+ </div>

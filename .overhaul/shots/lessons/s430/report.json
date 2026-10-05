@@ -1,0 +1,169 @@
+{
+ "1": {
+  "week": "Week-01-Reset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 1,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "2": {
+  "week": "Week-01-Reset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "under": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "7": {
+  "week": "Week-01-Reset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 11,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "10": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 5,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "15": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 5,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "16": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 11,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "19": {
+  "week": "Week-03-In-the-Moment",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 4,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "35": {
+  "week": "Week-05-Why-It-Feels-Worth-It",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 5,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "41": {
+  "week": "Week-06-Discipline",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 4,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "44": {
+  "week": "Week-07-Relapse-and-Adversity",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 13,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "68": {
+  "week": "Week-10-Yourself",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 14,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "81": {
+  "week": "Week-12-Leave-It-Behind",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 10,
+    "under": [],
+    "status": "ok"
+   }
+  ]
+ }
+}

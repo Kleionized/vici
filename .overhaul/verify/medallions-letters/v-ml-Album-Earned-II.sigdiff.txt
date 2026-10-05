@@ -1,0 +1,27 @@
+MISSING in app:  div | 371 | 80 | 0 | 0 | - | - | - | - | - | -
+~ -                                        bg: - → rgb(30, 30, 30)   radius: - → 22px
+# count P:16,164,361,44: design 2, app 1
+~ Earned                                   x: 20 → 87.6   y: 168 → 178   w: 176.5 → 41.3   h: 36 → 16   bg: rgb(242, 240, 236) → -   radius: 18px → -   type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Still to earn                            x: 196.5 → 251.5   y: 168 → 178   w: 176.5 → 66.5   h: 36 → 16   radius: 18px → -   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  div | 24 | 288 | 345 | 254 | - | - | - | - | - | -
+# count P:47,288,64,64: design 1, app 2
+~ Logbook                                  type: 15px/700/-0.2px/normal/rgb(242, 240, 236) → 15px/700/-0.2px/18px/rgb(242, 240, 236)
+~ Tier II, ×25                             type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+# count P:165,288,64,64: design 1, app 2
+# count T:I: design 2, app 6
+~ Pulse                                    type: 15px/700/-0.2px/normal/rgb(242, 240, 236) → 15px/700/-0.2px/18px/rgb(242, 240, 236)
+~ Tier I, ×5                               type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+~ Tier I, ×5                               type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+# count T:Tier I, ×5: design 2, app 3
+# count P:282,288,64,64: design 1, app 2
+~ Black Box                                type: 15px/700/-0.2px/normal/rgb(242, 240, 236) → 15px/700/-0.2px/18px/rgb(242, 240, 236)
+~ Jul 20                                   type: 12px/700/normal/normal/rgb(155, 150, 142) → 12px/700/normal/15px/rgb(155, 150, 142)
+# count P:47,433,64,64: design 1, app 2
+~ Lessons                                  type: 15px/700/-0.2px/normal/rgb(242, 240, 236) → 15px/700/-0.2px/18px/rgb(242, 240, 236)
+# count P:0,748,393,104: design 1, app 2
+~ Today                                    type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Log                                      type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ SOS                                      type: 13px/700/normal/normal/rgb(17, 17, 17) → 13px/700/normal/16px/rgb(17, 17, 17)
+~ Library                                  type: 11.5px/400/normal/normal/rgb(155, 150, 142) → 11.5px/400/normal/13px/rgb(155, 150, 142)
+~ Journey                                  type: 11.5px/700/normal/normal/rgb(242, 240, 236) → 11.5px/700/normal/13px/rgb(242, 240, 236)
+--- 241 design rows, 599 app rows; 16 differing, 2 missing, 327 extra, 0 sub-0.25pt rounding (use --all to list extras)

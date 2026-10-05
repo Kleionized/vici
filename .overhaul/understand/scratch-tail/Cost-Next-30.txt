@@ -1,0 +1,59 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:24px  right:24px  top:199px  display:flex  flex-direction:column  gap:18px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · This is your next 30 days.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty
+      · If the rate you reported stayed the same, about
+      <span> font-weight:700  color:#F2F0EC
+        · 9 of the next 30 days
+      · could end with porn.
+  <div> position:absolute  left:24px  right:24px  top:343px  display:flex  justify-content:center
+    <svg> viewBox="0 0 334 244"  width="334"  height="244"
+      <circle> cx="22"  cy="22"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="80"  cy="22"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="138"  cy="22"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="196"  cy="22"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="254"  cy="22"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="312"  cy="22"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="22"  cy="72"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="80"  cy="72"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="138"  cy="72"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="196"  cy="72"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="254"  cy="72"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="312"  cy="72"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="22"  cy="122"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="80"  cy="122"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="138"  cy="122"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="196"  cy="122"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="254"  cy="122"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="312"  cy="122"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="22"  cy="172"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="80"  cy="172"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="138"  cy="172"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="196"  cy="172"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="254"  cy="172"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="312"  cy="172"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="22"  cy="222"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="80"  cy="222"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="138"  cy="222"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="196"  cy="222"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+      <circle> cx="254"  cy="222"  r="14"  fill="#111111"  stroke="#F2F0EC"  stroke-width="1.8"
+      <circle> cx="312"  cy="222"  r="14"  fill="#0D0D0D"  stroke="#F2F0EC"  stroke-width="1.6"
+  <div> position:absolute  left:0  right:0  top:603px  display:flex  justify-content:center  gap:28px
+    <div> display:flex  align-items:center  gap:8px  font-size:14px  font-weight:700  color:#B5B0A8
+      <div> width:12px  height:12px  border-radius:6px  background:#0D0D0D  box-shadow:0 0 0 1.5px #F2F0EC
+      · Relapse
+    <div> display:flex  align-items:center  gap:8px  font-size:14px  font-weight:700  color:#B5B0A8
+      <div> width:12px  height:12px  border-radius:6px  background:#1E1E1E  box-shadow:0 0 0 1.5px #5A574F
+      · Clean day
+  <div> position:absolute  left:24px  right:24px  top:653px  text-align:center  font-size:15px  line-height:22px  color:#9B968E
+    · The line can start changing with the next one.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Next

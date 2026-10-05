@@ -1,0 +1,3 @@
+[
+{"name":"b1","noshot":true,"wait":600,"js":"const get=()=>{ const k=Object.keys(localStorage).find(k=>k.startsWith('tideline.mock.userdata.')); const d=JSON.parse(localStorage.getItem(k)); const c=Object.values(d.checkins||{}).find(c=>c.date==='2025-07-18'); return c ? {done:c.dailyActionDone, action:c.dailyAction} : 'no row: '+Object.keys(d).join(','); }; const cb=()=>document.querySelector('[aria-label=\"Today’s task done\"]'); const r=[get(), cb().getAttribute('aria-checked')]; await tap('Today’s task done'); await __sleep(900); r.push(get(), cb().getAttribute('aria-checked')); await tap('Today’s task done'); await __sleep(900); r.push(get(), cb().getAttribute('aria-checked')); return r"}
+]

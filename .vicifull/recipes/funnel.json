@@ -1,0 +1,210 @@
+[
+  {
+    "frame": "V3 Q24 Name",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=0;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "The funnel needs a signed-in mock account, which /welcome will not make. `--initseed=.vicifull/f-funnel-user.js` plants tideline.session.userId + tideline.mock.users for Sam before the first paint, so no reload is needed and the walk keeps its context. `window.__N` is the index into FUNNEL_STEPS the walk stops at; `window.__AFTER` is JS run once it is there, to put the board into the state its frame draws. shot.mjs settles 1500 ms before driving (F21). `03 · Name` is step 0 and draws its Back row (D122): tapping it leaves at /sign-in."
+  },
+  {
+    "frame": "V3 Q25 Age",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=1; window.__AFTER=\"await window.typeIn(0,'24')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "the frame draws the field filled with 24 and the caret after it"
+  },
+  {
+    "frame": "V3 Q26 Gender",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=2; window.__AFTER=\"await t('Male')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "Onboarding Start",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=3;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q1",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=4; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('A few times a week')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "Single-select boards with no CTA turn themselves over 260 ms after the tap, so the state the frame draws is gone before the probe runs. The __AFTER opens by replacing window.setTimeout with one that fires a 260 ms timer immediately — it cancels that one turn and nothing else. Needed on 07, 08, 09A, 09B, 16, 18, 19, 20 and 21."
+  },
+  {
+    "frame": "V3 Q2",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=5; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('1–3 years')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q3",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=6; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Yes, once or twice')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q3b",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=7; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('About a week')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "09B is conditional — the walk must have answered 09A with one of the two Yes options or the step is skipped"
+  },
+  {
+    "frame": "First Principle",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=8;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q5",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=9; window.__AFTER=\"await t('Late at night'); await t('When I’m stressed'); await t('While scrolling')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q6",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=10; window.__AFTER=\"await t('Bored'); await t('Lonely')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q7",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=11; window.__AFTER=\"await t('In bed'); await t('Somewhere else at home')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "What starts it",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=12; window.__AFTER=\"await t('I see something sexual online'); await t('I start scrolling'); await t('I can’t sleep')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "Transition",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=13;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q21",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=14; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('A little')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "What it affects",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=15; window.__AFTER=\"await t('Time'); await t('Confidence'); await t('Peace of mind')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q10",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=16; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Sometimes')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "18 is conditional: the walk answers `11 · When` with \"When I’m home alone\" so the loneliness signal is present. Without it the step is skipped and __N=16 lands on 19."
+  },
+  {
+    "frame": "V3 Q13",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=17; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Most days')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "same conditional as 18"
+  },
+  {
+    "frame": "V3 Q15",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=18; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Stop completely')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q16",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=19; window.__AFTER=\"const st=window.setTimeout; window.setTimeout=(fn,ms)=>(ms===260?0:st(fn,ms)); await t('Do it less')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "V3 Q17",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=20; window.__AFTER=\"await t('Blocking sites or apps'); await t('Going cold turkey'); await t('Deleting apps or accounts')\";",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900
+  },
+  {
+    "frame": "Goal Confirmation",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=21;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "the frame draws the goal='Stop completely' + masturbation='Keep it, just without porn' reading, which is what the walk answers. The other three goals and the two-line form are driven by changing those two taps."
+  },
+  {
+    "frame": "Enlisting Aegis",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "window.__N=22;",
+    "script": ".vicifull/drives/funnel-walk.js",
+    "wait": 900,
+    "note": "the board hands itself over after 6.8 s, so the capture has to land inside that: settle 1500 + wait 900 does."
+  },
+  {
+    "frame": "(04 · Age under-18 exit — no frame in the bundle)",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "await window.typeIn(0,'Sam'); await window.tap('Continue',{wait:520}); await window.typeIn(0,'15'); await window.tap('Continue',{wait:520})",
+    "wait": 900,
+    "note": "the under-18 gate the questionnaire doc requires; the canvas draws no frame for it, so there is nothing to diff against — driven to prove the branch fires."
+  },
+  {
+    "frame": "(03 · Name Back → 02 · Login — the D122 path)",
+    "route": "/welcome",
+    "initseed": ".vicifull/f-funnel-user.js",
+    "do": "await window.tap('Back',{wait:900}); return location.pathname",
+    "wait": 1200,
+    "note": "proves the Back row D122 reinstates is not a loop: it leaves at /sign-in with 02 · Login on screen, and (auth)/_layout.tsx does not bounce it back while onboarding is incomplete."
+  }
+]

@@ -1,0 +1,19 @@
+### options 5
+  RAW 49 px over 6 (0.004% of 1254456) mean 17 max 36   [status-bar rows y<54: 0 | body y>=54: 49]
+    cell 368,768: 2 px worst 28
+    cell 32,336: 1 px worst 9
+  BLOCKS (y>=54 css only): 0 over 4, 0 survive a +/-1 device-px nudge
+### options 20
+  RAW 35 px over 6 (0.003% of 1254456) mean 18 max 36   [status-bar rows y<54: 0 | body y>=54: 35]
+### options 43
+  RAW 35 px over 6 (0.003% of 1254456) mean 18 max 36   [status-bar rows y<54: 0 | body y>=54: 35]
+### options 61
+  RAW 45 px over 6 (0.004% of 1254456) mean 33 max 140   [status-bar rows y<54: 0 | body y>=54: 45]
+    cell 368,768: 2 px worst 28
+  BLOCKS (y>=54 css only): 2 over 4, 0 survive a +/-1 device-px nudge
+### options 78
+  RAW 61 px over 6 (0.005% of 1254456) mean 15 max 36   [status-bar rows y<54: 0 | body y>=54: 61]
+    cell 48,464: 4 px worst 13
+    cell 16,768: 3 px worst 22
+    cell 368,768: 2 px worst 28
+  BLOCKS (y>=54 css only): 0 over 4, 0 survive a +/-1 device-px nudge

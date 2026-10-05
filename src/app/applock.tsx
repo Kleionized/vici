@@ -1,141 +1,80 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import type { ReactNode } from 'react';
-import { ScrollView, View, type ViewStyle } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
+import { View } from 'react-native';
+import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { AppText, BackGlyph, ChevronGlyph, Grain, PressScale } from '@/components/ui';
+import { LoadingView, MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
 import { useCurrentUser, useUpdateSettings } from '@/lib/backend';
 import type { UserSettings } from '@/lib/types';
-import { colors, sans } from '@/lib/theme';
+import { mono } from '@/lib/theme';
 
 /**
- * 042 · App lock — the face on an ink disc, one line about why, then the two
- * lists. Reads as a decision rather than a preference pane.
+ * 95 · App lock — the padlock on a 76 ink disc at canvas 124, then a `gap 14`
+ * column from 222: the heading and its line centred, the Lock and Privacy
+ * groups, and the footnote.
  *
- * Canvas geometry with the 54px status bar removed: back at y 10, title at 60,
- * the disc at 124, the line at 242, and every caption exactly 26 above its card.
+ * The three switches write `appLockFaceId` (default off), `appLockOnLeave`
+ * (default off) and `hideSensitivePreviews` (default on); the row is the
+ * control (role `switch`). `Ask after · Immediately` was inert before this drop
+ * and stays so. Nothing in the app enforces the lock yet — unchanged. The
+ * column scrolls between the nav and the screen's foot if it has to (D320).
+ *
+ * The switches wait for the account: drawn from the defaults first, the two
+ * that default off opened off and slid on once the settings arrived (a cold
+ * open — a reload, a deep link — showed it).
  */
 
-const noiseDark = require('../../assets/images/noise-dark.png');
-
-const HAIRLINE = 'rgba(0,0,0,0.06)';
+type Flag = 'appLockFaceId' | 'appLockOnLeave' | 'hideSensitivePreviews';
 
 export default function AppLock() {
   const router = useRouter();
   const user = useCurrentUser();
   const update = useUpdateSettings();
   const s = user?.settings;
-  const flag = (key: keyof UserSettings, def: boolean) => {
-    const value = (s?.[key] as boolean | undefined) ?? def;
-    return { switchTo: value, right: <Toggle on={value} />, onPress: () => void update({ [key]: !value }) };
+  const flag = (key: Flag, def: boolean) => {
+    const value = (s?.[key as keyof UserSettings] as boolean | undefined) ?? def;
+    return { value, onChange: (next: boolean) => void update({ [key]: next }) };
   };
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
+  if (user === undefined) return <LoadingView onBack={back} />;
+
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <Grain source={noiseDark} opacity={0.07} />
+    <Screen>
+      <NavBar left="back" centre={{ title: 'App lock' }} right="empty" onBack={back} />
 
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ height: 60 }}>
-          <PressScale
-            onPress={back}
-            accessibilityRole="button"
-            accessibilityLabel="Back to Settings"
-            hitSlop={{ top: 16, bottom: 16, left: 16, right: 24 }}
-            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-            <BackGlyph />
-            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Settings</AppText>
-          </PressScale>
-        </View>
-        {/* the title box carries the 64 down to the disc, so the disc lands at y 124 */}
-        <View style={{ height: 64, paddingHorizontal: 16 }}>
-          <AppText style={[sans('600'), { fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>App lock</AppText>
+      <ScrollRegion top={100} contentStyle={{ paddingTop: 24, paddingHorizontal: 24, paddingBottom: 24 }}>
+        {/* the frame's disc keeps the kit's palette inverted: a `#111111` padlock
+            with an ink keyhole on the ink disc */}
+        <View style={{ alignSelf: 'center', width: 76, height: 76, borderRadius: 38, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+          <Svg width={30} height={30} viewBox="0 0 30 30">
+            <Rect width={18} height={13} x={6} y={13} rx={3.5} fill={mono.onInk} />
+            <Path d="M10 13V9.5a5 5 0 0 1 10 0V13" fill="none" stroke={mono.onInk} strokeWidth={2.6} />
+            <Circle cx={15} cy={19.5} r={2} fill={mono.ink} />
+          </Svg>
         </View>
 
-        <ScrollView contentInsetAdjustmentBehavior="never" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
-          <View style={{ alignItems: 'center' }}>
-            <View style={{ width: 92, height: 92, borderRadius: 46, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
-              <Svg width={40} height={40} viewBox="0 0 40 40" fill="none">
-                <Path d="M6 13V9a3 3 0 013-3h4M27 6h4a3 3 0 013 3v4M34 27v4a3 3 0 01-3 3h-4M13 34H9a3 3 0 01-3-3v-4" stroke="#F4F3F0" strokeWidth={2.4} strokeLinecap="round" fill="none" />
-                <Path d="M14 16v2M26 16v2M20 16v6h-2" stroke="#F4F3F0" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                <Path d="M14 26c1.6 1.8 3.6 2.8 6 2.8s4.4-1 6-2.8" stroke="#F4F3F0" strokeWidth={2.2} strokeLinecap="round" fill="none" />
-              </Svg>
-            </View>
-          </View>
-
-          {/* the line runs to two 20pt rows in its 313pt column, which is what
-              puts the canvas's "Lock" caption at y 316 — hence the 34 below */}
-          <AppText center style={[sans('400'), { marginHorizontal: 40, marginTop: 26, marginBottom: 34, fontSize: 14, lineHeight: 20, color: '#55534E' }]}>
+        {/* 124 + 76 = 200; the column starts at 222 */}
+        <View style={{ marginTop: 22, gap: 14 }}>
+          <MonoText v="h1" center>
+            Only opens for you.
+          </MonoText>
+          <MonoText v="p" center>
             This work is personal. Keep VICI behind Face ID so it opens only for you.
-          </AppText>
-
-          <Section header="Lock" gap={32} card={{ paddingVertical: 4 }}>
-            <Row title="Require Face ID" {...flag('appLockFaceId', false)} />
-            <Divider />
-            <Row title="Lock when I leave the app" {...flag('appLockOnLeave', false)} />
-            <Divider />
-            <Row title="Ask after" detail="Immediately" />
-          </Section>
-
-          <Section header="Privacy" gap={0} card={{ paddingVertical: 4 }}>
-            <Row title="Hide sensitive previews" {...flag('hideSensitivePreviews', true)} />
-          </Section>
-
-          <AppText style={[sans('400'), { marginHorizontal: 28, marginTop: 20, fontSize: 13, lineHeight: 18.5, color: '#8B8882' }]}>
+          </MonoText>
+          <View style={{ height: 4 }} />
+          <RowGroup label="Lock">
+            <Row label="Require Face ID" toggle={flag('appLockFaceId', false)} />
+            <Row label="Lock when I leave the app" toggle={flag('appLockOnLeave', false)} />
+            <Row label="Ask after" value="Immediately" />
+          </RowGroup>
+          <RowGroup label="Privacy">
+            <Row label="Hide sensitive previews" toggle={flag('hideSensitivePreviews', true)} />
+          </RowGroup>
+          <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19 }}>
             Hides journal previews and entry titles in notifications and the app switcher.
-          </AppText>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-/** A captioned group; the 26-tall caption box is the canvas's caption-to-card gap. */
-function Section({ header, gap = 32, card, children }: { header: string; gap?: number; card?: ViewStyle; children: ReactNode }) {
-  return (
-    <View style={{ marginBottom: gap }}>
-      <View style={{ height: 26, paddingHorizontal: 16 }}>
-        <AppText style={[sans('600'), { fontSize: 13, color: '#55534E' }]}>{header}</AppText>
-      </View>
-      <View style={[{ marginHorizontal: 12, borderRadius: 16, backgroundColor: '#FFFFFF' }, card]}>{children}</View>
-    </View>
-  );
-}
-
-/** A list row — 50 tall on the settings sub-pages. */
-function Row({ title, detail, right, onPress, switchTo }: { title: string; detail?: string; right?: ReactNode; onPress?: () => void; switchTo?: boolean }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      disabled={!onPress}
-      accessibilityRole={switchTo === undefined ? (onPress ? 'button' : undefined) : 'switch'}
-      accessibilityState={switchTo === undefined ? undefined : { checked: switchTo }}
-      style={{ height: 50, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18 }}>
-      <AppText style={[sans('500'), { flex: 1, fontSize: 16, color: '#1D1C1A' }]}>{title}</AppText>
-      {right ?? (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          {detail ? <AppText style={[sans('400'), { fontSize: 14, color: '#8B8882' }]}>{detail}</AppText> : null}
-          <ChevronGlyph color="#B0AEA8" />
+          </MonoText>
         </View>
-      )}
-    </PressScale>
-  );
-}
-
-/** The hairline stops 18 short of both card edges. */
-function Divider() {
-  return <View style={{ height: 1, marginHorizontal: 18, backgroundColor: HAIRLINE }} />;
-}
-
-/** The pill switch: 44 × 26 with a 20px knob inset 3 (canvas). */
-function Toggle({ on }: { on: boolean }) {
-  return (
-    <View style={{ width: 44, height: 26, borderRadius: 13, backgroundColor: on ? '#131313' : colors.borderStrong }}>
-      {/* the canvas never draws the off state — it borrows the app's resting track */}
-      <View style={{ position: 'absolute', top: 3, left: on ? undefined : 3, right: on ? 3 : undefined, width: 20, height: 20, borderRadius: 10, backgroundColor: on ? '#ffffff' : '#F2F2EE' }} />
-    </View>
+      </ScrollRegion>
+    </Screen>
   );
 }

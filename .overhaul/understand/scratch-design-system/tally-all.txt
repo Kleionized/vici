@@ -1,0 +1,650 @@
+
+## frame backgrounds (3 distinct)
+  1515  1515f  #0D0D0D   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    10    10f  #111111   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+     2     2f  #121212   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+
+## frame shadows (2 distinct)
+  1297  1297f  0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(20,20,22,0.14)   e.g. Email-Login/Cost-By-Age-80 Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10
+   230   230f  0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+
+## noise layers (5 distinct)
+  1287  1287f  url('noise-dark.png') op 0.06 inset:0 on #0D0D0D   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11
+   228   228f  url('noise.png') op 0.05 inset:0 on #0D0D0D   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    53    53f  url('noise-dark.png') op 0.06 inset:0 on undefined   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    10    10f  url('noise-dark.png') op 0.09 inset:0 on #111111   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+     2     2f  url('noise.png') op 0.05 inset:0 on #121212   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+
+## status bar text colour (2 distinct)
+  1517  1517f  #F2F0EC   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    10    10f  #FFFFFF   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+
+## home indicator colour (2 distinct)
+  1517  1517f  #F2F0EC   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    10    10f  #FFFFFF   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+
+## colours (61 distinct)
+ 12395  1573f  #F2F0EC   [svg:stroke×3936, svg:fill×3888, background×2506, color×2034, box-shadow×23, border-bottom×4, svg:stop-color×2, outline×1]   {Email-Login×3882, Lesson-Illustrations-v4×891, Week-08-Boredom-and-Meaning×691, Week-05-Why-It-Feels-Worth-It×686, Week-09-Connection×668, Week-11-Build-a-Life-You-Want×652, Week-12-Leave-It-Behind×636, Week-06-Discipline×628}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  3742  1570f  #0D0D0D   [background×1717, svg:fill×1192, svg:stroke×831, box-shadow×2]   {Email-Login×1129, Lesson-Illustrations-v4×467, Week-04-Know-Your-Brain×209, Week-02-Changing-Your-Mindset×194, Week-06-Discipline×193, Week-05-Why-It-Feels-Worth-It×187, Week-12-Leave-It-Behind×177, Week-09-Connection×175}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  3251  1480f  #9B968E   [color×2795, svg:stroke×241, box-shadow×159, svg:fill×33, border×22, background×1]   {Email-Login×1004, Week-12-Leave-It-Behind×213, Week-03-In-the-Moment×207, Week-06-Discipline×201, Week-05-Why-It-Feels-Worth-It×191, Week-01-Reset×186, Week-02-Changing-Your-Mindset×186, Week-09-Connection×182}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  2693  1385f  #2E2E2E   [background×1488, box-shadow×1043, border-top×99, color×38, svg:stroke×24, svg:fill×1]   {Email-Login×415, Week-06-Discipline×201, Week-12-Leave-It-Behind×197, Week-07-Relapse-and-Adversity×195, Week-03-In-the-Moment×192, Week-01-Reset×190, Week-02-Changing-Your-Mindset×190, Week-09-Connection×190}   e.g. Email-Login/App-Lock Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+  1737  1191f  #B5B0A8   [color×1737]   {Email-Login×207, Week-03-In-the-Moment×145, Week-12-Leave-It-Behind×143, Week-06-Discipline×132, Week-09-Connection×131, Week-01-Reset×129, Week-07-Relapse-and-Adversity×126, Week-02-Changing-Your-Mindset×125}   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Breakwater-Bronze
+  1673   358f  #55524D   [svg:fill×1525, svg:stroke×148]   {Email-Login×487, Lesson-Illustrations-v4×287, Week-12-Leave-It-Behind×125, Week-07-Relapse-and-Adversity×99, Week-11-Build-a-Life-You-Want×95, Week-06-Discipline×92, Week-10-Yourself×88, Week-02-Changing-Your-Mindset×73}   e.g. Email-Login/Checkin-Emotions Email-Login/Cue-Hue-Picker Email-Login/Cue-Intro-Modal
+  1623     1f  rgba(255,255,255,0.22)   [svg:fill×1623]   {Email-Login×1623}   e.g. Email-Login/Cost-By-Age-80
+  1297  1297f  rgba(0,0,0,0.09)   [box-shadow×1297]   {Week-06-Discipline×112, Week-12-Leave-It-Behind×111, Week-07-Relapse-and-Adversity×108, Week-03-In-the-Moment×106, Week-08-Boredom-and-Meaning×106, Week-01-Reset×105, Week-02-Changing-Your-Mindset×105, Week-05-Why-It-Feels-Worth-It×105}   e.g. Email-Login/Cost-By-Age-80 Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10
+  1297  1297f  rgba(20,20,22,0.14)   [box-shadow×1297]   {Week-06-Discipline×112, Week-12-Leave-It-Behind×111, Week-07-Relapse-and-Adversity×108, Week-03-In-the-Moment×106, Week-08-Boredom-and-Meaning×106, Week-01-Reset×105, Week-02-Changing-Your-Mindset×105, Week-05-Why-It-Feels-Worth-It×105}   e.g. Email-Login/Cost-By-Age-80 Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10
+   990   560f  #111111   [color×651, svg:stroke×296, svg:fill×29, background×14]   {Email-Login×486, Week-12-Leave-It-Behind×48, Week-06-Discipline×47, Week-03-In-the-Moment×45, Week-04-Know-Your-Brain×44, Week-08-Boredom-and-Meaning×43, Week-07-Relapse-and-Adversity×41, Week-11-Build-a-Life-You-Want×41}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+   879    63f  #FFFFFF   [svg:fill×731, background×102, color×34, svg:stroke×12]   {Email-Login×817, Lesson-Illustrations-v4×62}   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+   683   288f  #1E1E1E   [background×682, svg:stroke×1]   {Email-Login×368, Week-03-In-the-Moment×38, Week-12-Leave-It-Behind×38, Week-06-Discipline×32, Week-02-Changing-Your-Mindset×28, Week-05-Why-It-Feels-Worth-It×28, Week-04-Know-Your-Brain×27, Week-01-Reset×26}   e.g. Email-Login/Album-Earned-II Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+   356   223f  #5A574F   [svg:fill×173, svg:stroke×94, color×68, background×15, border-left×4, box-shadow×1, border-bottom×1]   {Email-Login×173, Week-02-Changing-Your-Mindset×17, Week-04-Know-Your-Brain×17, Week-06-Discipline×17, Week-01-Reset×16, Week-03-In-the-Moment×16, Week-05-Why-It-Feels-Worth-It×15, Week-11-Build-a-Life-You-Want×15}   e.g. Email-Login/App-Lock Email-Login/Cost-Next-30 Email-Login/Data-Privacy
+   356   181f  #A8A39A   [svg:stroke×258, svg:fill×98]   {Email-Login×101, Lesson-Illustrations-v4×58, Week-09-Connection×37, Week-03-In-the-Moment×27, Week-11-Build-a-Life-You-Want×18, Week-04-Know-Your-Brain×17, Week-06-Discipline×17, Week-10-Yourself×17}   e.g. Email-Login/Checkin-Emotions Email-Login/Cue-Hue-Picker Email-Login/Cue-Intro-Modal
+   255     1f  rgba(242,240,236,0.28)   [svg:fill×255]   {Email-Login×255}   e.g. Email-Login/Cost-Next-365
+   241    53f  #8B8882   [background×135, color×106]   {Lesson-Illustrations-v4×241}   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+   230   230f  rgba(0,0,0,0.12)   [box-shadow×230]   {Email-Login×230}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+   230   230f  rgba(20,20,22,0.18)   [box-shadow×230]   {Email-Login×230}   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+   173   103f  #3A3835   [svg:fill×173]   {Email-Login×64, Week-04-Know-Your-Brain×21, Lesson-Illustrations-v4×20, Week-05-Why-It-Feels-Worth-It×20, Week-08-Boredom-and-Meaning×17, Week-09-Connection×8, Week-03-In-the-Moment×5, Week-06-Discipline×5}   e.g. Email-Login/Cue-Intro-Modal Email-Login/Lapse-Trigger Email-Login/Lesson-Scroll-1
+   135    53f  #37352F   [color×135]   {Lesson-Illustrations-v4×135}   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    68    17f  rgba(0,0,0,0.04)   [box-shadow×68]   {Email-Login×68}   e.g. Email-Login/Reminders-Setup Email-Login/V3-Q1 Email-Login/V3-Q10
+    53    24f  transparent   [background×53]   {Email-Login×53}   e.g. Email-Login/Album-Earned-II Email-Login/Cue-Hue-Picker Email-Login/Log-Check-ins
+    53    53f  rgba(0,0,0,0.06)   [box-shadow×53]   {Lesson-Illustrations-v4×53}   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    53    53f  rgba(40,38,32,0.08)   [box-shadow×53]   {Lesson-Illustrations-v4×53}   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    53    53f  #1D1C1A   [color×53]   {Lesson-Illustrations-v4×53}   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    34    22f  #232220   [svg:fill×18, svg:stroke×16]   {Email-Login×10, Lesson-Illustrations-v4×8, Week-10-Yourself×4, Week-02-Changing-Your-Mindset×3, Week-04-Know-Your-Brain×2, Week-09-Connection×2, Week-11-Build-a-Life-You-Want×2, Week-03-In-the-Moment×1}   e.g. Email-Login/Checkin-Emotions Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+    31     5f  rgba(255,255,255,0.28)   [background×31]   {Email-Login×31}   e.g. Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Pledges Email-Login/Urge-Hub-Proof
+    13     6f  rgba(255,255,255,0.62)   [color×11, box-shadow×2]   {Email-Login×13}   e.g. Email-Login/Slip-Third Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now
+    10     8f  rgba(255,255,255,0.55)   [color×10]   {Email-Login×10}   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-Check-in-Cover Email-Login/Urge-Hub-Breathe
+     8     2f  rgba(255,255,255,0.15)   [background×4, box-shadow×3, svg:stroke×1]   {Email-Login×8}   e.g. Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Surfed
+     7     7f  rgba(255,255,255,0.6)   [color×7]   {Email-Login×7}   e.g. Email-Login/Night-4-Closed Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now
+     4     4f  rgba(0,0,0,0.68)   [background×4]   {Email-Login×4}   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     4     4f  #171717   [background×4]   {Email-Login×4}   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     4     3f  rgba(17,17,17,0.6)   [color×4]   {Email-Login×4}   e.g. Email-Login/Log-Chooser Email-Login/Paywall Email-Login/Week-VI-Discipline
+     4     2f  #45423E   [box-shadow×4]   {Email-Login×4}   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     3     3f  #141414   [svg:fill×3]   {Email-Login×3}   e.g. Email-Login/Detail-Paper Email-Login/Medallions-Still-To-Earn Email-Login/Tiers-Archive
+     3     3f  #3A3833   [svg:stroke×3]   {Email-Login×3}   e.g. Email-Login/Detail-Paper Email-Login/Medallions-Still-To-Earn Email-Login/Tiers-Archive
+     3     3f  #2A2926   [svg:stroke×3]   {Email-Login×3}   e.g. Email-Login/Detail-Paper Email-Login/Medallions-Still-To-Earn Email-Login/Tiers-Archive
+     3     3f  rgba(30,30,30,0)   [background×3]   {Email-Login×3}   e.g. Email-Login/Letter-Read Email-Login/Letter-Week-XII Email-Login/Medallion-Letter
+     3     3f  #BAB5AD   [background×3]   {Email-Login×3}   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood Email-Login/Today-Home
+     3     2f  rgba(255,255,255,0.3)   [color×2, svg:fill×1]   {Email-Login×3}   e.g. Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Pledges
+     2     2f  rgba(17,17,17,0.3)   [box-shadow×2]   {Email-Login×2}   e.g. Email-Login/Cue-Hue-Picker Email-Login/Log-Chooser
+     2     2f  #121212   [background×2]   {Email-Login×2}   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     2     2f  #6B675F   [svg:fill×2]   {Email-Login×2}   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     2     2f  #EA4335   [svg:fill×2]   {Email-Login×2}   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  #4285F4   [svg:fill×2]   {Email-Login×2}   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  #FBBC05   [svg:fill×2]   {Email-Login×2}   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  #34A853   [svg:fill×2]   {Email-Login×2}   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  #34322F   [background×2]   {Email-Login×2}   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     2     2f  #5A5751   [background×2]   {Email-Login×2}   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     2     2f  #8A857D   [background×2]   {Email-Login×2}   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     2     1f  rgba(255,255,255,0.4)   [color×2]   {Email-Login×2}   e.g. Email-Login/Urge-Hub-Breathe
+     2     2f  rgba(255,255,255,0.5)   [svg:fill×1, color×1]   {Email-Login×2}   e.g. Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Score
+     1     1f  #17160F   [svg:stroke×1]   {Email-Login×1}   e.g. Email-Login/Cost-By-Age-80
+     1     1f  rgba(17,17,17,0)   [background×1]   {Email-Login×1}   e.g. Email-Login/Cost-By-Age-80
+     1     1f  rgba(255,255,255,0.75)   [color×1]   {Email-Login×1}   e.g. Email-Login/Cost-By-Age-80
+     1     1f  rgba(17,17,17,0.7)   [color×1]   {Email-Login×1}   e.g. Email-Login/Paywall
+     1     1f  rgba(255,255,255,0.12)   [svg:stroke×1]   {Email-Login×1}   e.g. Email-Login/Urge-Hub-Breathe
+     1     1f  rgba(255,255,255,0.05)   [svg:fill×1]   {Email-Login×1}   e.g. Email-Login/Urge-Hub-Breathe
+     1     1f  rgba(255,255,255,0.08)   [svg:fill×1]   {Email-Login×1}   e.g. Email-Login/Urge-Hub-Breathe
+     1     1f  rgba(13,13,13,0)   [background×1]   {Week-01-Reset×1}   e.g. Week-01-Reset/L7-Frame-11
+
+## font sizes (40 distinct)
+  2600  1510f  13px   e.g. Email-Login/Album-Earned-II Email-Login/App-Lock Email-Login/Breakwater-Bronze
+  1377  1017f  18px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+   883   550f  16px   e.g. Email-Login/A-Clean-Day Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   802   288f  15px   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+   586   581f  24px   e.g. Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12 Email-Login/Lesson-Scroll-2
+   324   110f  12px   e.g. Email-Login/Album-Earned-II Email-Login/Login Email-Login/Manage-Subscription
+   296   276f  30px   e.g. Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+   176    48f  14px   e.g. Email-Login/App-Lock Email-Login/Cost-Next-30 Email-Login/Data-Privacy
+   148    37f  11.5px   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    98    96f  26px   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+    75    57f  11px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Urges Email-Login/Paywall
+    61    13f  22px   e.g. Email-Login/Lapse-When Email-Login/Letter-Read Email-Login/Medallion-Letter
+    33    33f  32px   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    26     6f  12(svg)   e.g. Email-Login/One-Bad-Day Email-Login/Settings-Weekly-Report Email-Login/Starting-Score
+    25    20f  6.4(svg)   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    16     7f  17px   e.g. Email-Login/Cost-By-Age-80 Email-Login/Log-Chooser Email-Login/Login
+    10     2f  15.5px   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     9     5f  11(svg)   e.g. Email-Login/A-Clean-Day Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     9     9f  64px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Reports Email-Login/Log-Urges
+     8     8f  48px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     6     6f  44px   e.g. Email-Login/Cost-By-Age-80 Email-Login/Cost-Next-365 Email-Login/Day-Zero
+     6     5f  34px   e.g. Email-Login/Morning-Check-in-Cover Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+     5     3f  14(svg)   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan Email-Login/Starting-Score
+     4     3f  66(svg)   e.g. Email-Login/Medallion-Received Lesson-Illustrations-v4/Medal Week-12-Leave-It-Behind/L81-Frame-10
+     4     2f  13(svg)   e.g. Email-Login/Score-Detail Email-Login/Urge-Hub-Now
+     3     3f  20px   e.g. Email-Login/Change-Pledge-Sheet Email-Login/SOS-Afterward Email-Login/Today-Home-II
+     3     3f  38px   e.g. Email-Login/Edit-Profile Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     3     3f  28px   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+     3     3f  60px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     2     2f  19px   e.g. Email-Login/Day-Zero Email-Login/Morning-Task-Check
+     1     1f  68(svg)   e.g. Email-Login/A-Clean-Day
+     1     1f  60(svg)   e.g. Email-Login/Drop-Received
+     1     1f  76(svg)   e.g. Email-Login/Starting-Score
+     1     1f  40px   e.g. Email-Login/The-Vow
+     1     1f  21px   e.g. Email-Login/The-Vow
+     1     1f  56px   e.g. Email-Login/Today-Home
+     1     1f  46(svg)   e.g. Email-Login/Urge-Hub-Now
+     1     1f  20(svg)   e.g. Email-Login/Urge-Overview-When
+     1     1f  72px   e.g. Email-Login/V3-Q25-Age
+     1     1f  23px   e.g. Email-Login/Your-Vow-Page
+
+## font weights (7 distinct)
+  5072  1580f  700   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  2454  1316f  400   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    44    27f  900   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    22     7f  600   e.g. Email-Login/Score-Detail Email-Login/Settings-Weekly-Report Email-Login/Starting-Score
+    10    10f  400 italic   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     7     7f  700 italic   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+     2     2f  800   e.g. Email-Login/Settings-Weekly-Report Email-Login/Weekly-Report
+
+## font styles (2 distinct)
+    10    10f  italic 400   «“Five storms met at full height. The wall is real now.”×1, “Twenty-five. What used to flood you now only gets loud.”×1, “The first wave broke against you, not over you.”×1, “Fifty waves. The sea hasn’t changed. The wall did.”×1, “Ten overwhelming urges, none of them decisive.”×1, “Twenty-five behind you now — the pattern is unmistakable.”×1, “Two hundred and fifty. The sea keeps coming. You keep stand×1, “Nine minutes, start to finish. You watched it rise, crest, ×1»   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     7     7f  italic 700   «Jerry×6, Sam×1»   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+
+## letter-spacing (21 distinct)
+   821   772f  0.2px   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12
+   582   580f  -0.4px   e.g. Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12 Email-Login/Lesson-Scroll-2
+   487   487f  0.1px   e.g. Email-Login/A-Clean-Day Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   401   395f  -0.6px   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    74    60f  -0.2px   e.g. Email-Login/Album-Earned-II Email-Login/Medallions-Still-To-Earn Email-Login/Medallions
+    53    53f  0.3px   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+     9     9f  -2.2px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Reports Email-Login/Log-Urges
+     8     8f  -1.7px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     4     4f  -1.5px   e.g. Email-Login/Cost-By-Age-80 Email-Login/Cost-Next-365 Email-Login/Urge-Overview-Mood
+     4     4f  -0.5px   e.g. Email-Login/Manage-Subscription Email-Login/The-Vow Email-Login/Today-Home
+     4     4f  -0.7px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+     3     3f  -0.3px   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter Email-Login/Today-Home-III
+     3     3f  0.4px   e.g. Email-Login/Login Email-Login/Paywall Email-Login/Welcome-Back
+     3     3f  -2.4px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     2     1f  0   e.g. Email-Login/Paywall
+     2     1f  -0.8px   e.g. Email-Login/Paywall
+     1     1f  1px   e.g. Email-Login/Paywall
+     1     1f  7px   e.g. Email-Login/Splash
+     1     1f  0.5px   e.g. Email-Login/The-Vow
+     1     1f  -2px   e.g. Email-Login/V3-Q25-Age
+     1     1f  -1.6px   e.g. Email-Login/Yearly-Drop
+
+## line-height (34 distinct)
+  1369  1013f  28px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+   992   775f  16px   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12
+   580   575f  31px   e.g. Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12 Email-Login/Lesson-Scroll-2
+   511   260f  22px   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   262   262f  36px   e.g. Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+   142    57f  20px   e.g. Email-Login/Reminders-Setup Email-Login/Sheet-Edit-Name Email-Login/Today-Home-II
+   117   114f  24px   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+    94    90f  33px   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+    33    33f  38px   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    11     5f  25px   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter Email-Login/Night-4-Closed
+    10    10f  67px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Reports Email-Login/Log-Urges
+     9     9f  50px   e.g. Email-Login/Day-Zero Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater
+     5     5f  32px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+     4     4f  40px   e.g. Email-Login/Morning-Check-in-Cover Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+     4     1f  18px   e.g. Email-Login/Tiers-One-offs
+     3     3f  70px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     3     2f  56px   e.g. Email-Login/Today-Home Email-Login/V3-Q25-Age
+     3     1f  17px   e.g. Email-Login/Yearly-Drop
+     2     2f  19px   e.g. Email-Login/App-Lock Email-Login/Data-Privacy
+     2     2f  52px   e.g. Email-Login/Cost-By-Age-80 Email-Login/Cost-Next-365
+     2     2f  23px   e.g. Email-Login/Goal-Confirmation Email-Login/Sheet-Sign-Out
+     2     2f  30px   e.g. Email-Login/SOS-Afterward Email-Login/Sheet-Sign-Out
+     2     2f  27px   e.g. Email-Login/SOS-Challenge Email-Login/Today-Home-II
+     2     1f  60px   e.g. Email-Login/V3-Q25-Age
+     1     1f  1   e.g. Email-Login/Night-2-Record
+     1     1f  29px   e.g. Email-Login/Change-Pledge-Sheet
+     1     1f  26px   e.g. Email-Login/Cost-By-Age-80
+     1     1f  34px   e.g. Email-Login/Night-3-Reflection
+     1     1f  46px   e.g. Email-Login/The-Vow
+     1     1f  35px   e.g. Email-Login/Urge-Hub-Pledges
+     1     1f  68px   e.g. Email-Login/Urge-Hub-Proof
+     1     1f  100px   e.g. Email-Login/V3-Q25-Age
+     1     1f  48px   e.g. Email-Login/Yearly-Drop
+     1     1f  21px   e.g. Email-Login/Your-Vow-Page
+
+## border-radius (33 distinct)
+  2583  1293f  border-radius:2px   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10
+  1066  1006f  border-radius:22px   e.g. Email-Login/Album-Earned-II Email-Login/Lapse-Done Email-Login/Lapse-When
+   495   491f  border-radius:29px   e.g. Email-Login/A-Clean-Day Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   377    47f  border-radius:1px   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Cue-Hue-Picker
+   328   143f  border-radius:18px   e.g. Email-Login/Album-Earned-II Email-Login/Cue-Hue-Picker Email-Login/Goal-Confirmation
+   243    73f  border-radius:24px   e.g. Email-Login/Lapse-Trigger Email-Login/Manage-Subscription Email-Login/Morning-Feeling
+   195    94f  border-radius:12px   e.g. Email-Login/App-Lock Email-Login/Data-Privacy Email-Login/Lesson-Scroll-5
+   162    26f  border-radius:50%   e.g. Email-Login/App-Lock Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   157   123f  border-radius:20px   e.g. Email-Login/App-Lock Email-Login/Change-Pledge-Sheet Email-Login/Checkin-Emotions
+   135    53f  border-radius:2.5px   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+   113   106f  border-radius:14px   e.g. Email-Login/Lapse-When Email-Login/Lesson-Scroll-13 Email-Login/Manage-Subscription
+    88    88f  border-radius:48px   e.g. Email-Login/Edit-Profile Email-Login/Lesson-Scroll-14 Email-Login/Sheet-Edit-Name
+    65    11f  border-radius:7px   e.g. Email-Login/Today-Home Week-01-Reset/L2-Frame-11 Week-03-In-the-Moment/L16-Frame-11
+    57    55f  border-radius:8px   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    56    11f  border-radius:6px   e.g. Email-Login/Cost-Next-30 Email-Login/Lesson-Scroll-5 Email-Login/Score-Detail-Moves
+    40    40f  border-radius:30px   e.g. Email-Login/Album-Earned-II Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons
+    36     7f  border-radius:3px   e.g. Email-Login/Log-Urges Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Pledges
+    29     5f  border-radius:21px   e.g. Email-Login/Morning-Check-in-Time Email-Login/Nightly-Check-in-Time Email-Login/Settings-Check-in-Time
+    23     7f  border-radius:15px   e.g. Email-Login/App-Lock Email-Login/Data-Privacy Email-Login/SOS-Reassess
+    17     9f  border-radius:4px   e.g. Email-Login/Enlisting-Aegis Email-Login/Log-Urges Email-Login/SOS-Reassess
+    17    15f  border-radius:16px   e.g. Email-Login/Lapse-When Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks
+    14     4f  border-radius:11px   e.g. Email-Login/Morning-1-Yesterday Email-Login/Night-2-Record Email-Login/Paywall-Rescue
+     8     3f  border-radius:17px   e.g. Email-Login/Log-Urges Email-Login/Paywall Email-Login/Starting-Score
+     7     2f  border-radius:13px   e.g. Email-Login/Enlisting-Aegis Email-Login/Score-Detail-Ranks
+     7     1f  border-radius:9px   e.g. Email-Login/Weekly-Report-Days
+     6     6f  border-radius:26px   e.g. Email-Login/Letter-Read Email-Login/Log-Reports Email-Login/Medallion-Letter
+     5     3f  border-radius:32px   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood Email-Login/What-You-Want-Back
+     4     4f  border-radius:28px 28px 0 0   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     3     3f  border-radius:42px   e.g. Email-Login/Lapse-Done Email-Login/Slip-Logged Email-Login/Urge-Log-Done
+     2     2f  border-radius:5px   e.g. Email-Login/Cue-Hue-Picker Email-Login/Log-Chooser
+     2     2f  border-radius:66px   e.g. Email-Login/Morning-5-Done Email-Login/Paywall-Confirmed
+     2     1f  border-radius:10px   e.g. Email-Login/Reminders-Setup
+     1     1f  border-radius:24px 24px 0 0   e.g. Email-Login/Letter-Week-XII
+
+## box-shadow (19 distinct)
+  1297  1297f  0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(20,20,22,0.14)   e.g. Email-Login/Cost-By-Age-80 Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10
+  1023   987f  0 0 0 1.5px #2E2E2E   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Cue-Hue-Picker
+   230   230f  0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+   159    32f  inset 0 0 0 1.5px #9B968E   e.g. Week-01-Reset/L2-Frame-11 Week-01-Reset/L7-Frame-11 Week-02-Changing-Your-Mindset/L10-Frame-11
+   102    36f  none   e.g. Email-Login/App-Lock Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons
+    68    17f  0 1px 2px rgba(0,0,0,0.04)   e.g. Email-Login/Reminders-Setup Email-Login/V3-Q1 Email-Login/V3-Q10
+    53    53f  0 1px 2px rgba(0,0,0,0.06), 0 12px 32px rgba(40,38,32,0.08)   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    18    18f  inset 0 0 0 1.5px #2E2E2E   e.g. Week-01-Reset/L2-Frame-12 Week-01-Reset/L7-Frame-12 Week-02-Changing-Your-Mindset/L13-Frame-13
+    11     8f  0 0 0 1.5px #F2F0EC   e.g. Email-Login/Cost-Next-30 Email-Login/Enlisting-Aegis Email-Login/Paywall-Rescue
+     8     8f  inset 0 0 0 1.5px #F2F0EC   e.g. Week-01-Reset/L6-Frame-4 Week-02-Changing-Your-Mindset/L10-Frame-5 Week-02-Changing-Your-Mindset/L12-Frame-3
+     4     2f  inset 0 0 0 1.5px #45423E   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     3     1f  0 0 0 1px rgba(255,255,255,0.15)   e.g. Email-Login/Urge-Hub-Now
+     2     2f  0 0 0 1.5px rgba(17,17,17,0.3)   e.g. Email-Login/Cue-Hue-Picker Email-Login/Log-Chooser
+     2     2f  0 0 0 4px #0D0D0D, 0 0 0 6px #F2F0EC   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     2     1f  0 0 0 1.5px rgba(255,255,255,0.62)   e.g. Email-Login/Urge-Hub-Score
+     2     1f  0 0 0 1.5px #2E2E2E inset   e.g. Email-Login/Weekly-Report-Days
+     1     1f  0 0 0 1.5px #5A574F   e.g. Email-Login/Cost-Next-30
+     1     1f  0 0 0 1.5px #F2F0EC inset   e.g. Email-Login/Score-Detail-Moves
+     1     1f  0 0 0 2px #F2F0EC inset   e.g. Email-Login/Weekly-Report-Days
+
+## opacity (15 distinct)
+  1340  1340f  0.06   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11
+   230   230f  0.05   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+    53    18f  0.32   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+    32    21f  svg fill-opacity=0.3   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    32    21f  svg stroke-opacity=0.5   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    16    14f  svg fill-opacity=0.12   e.g. Email-Login/First-Principle Email-Login/Surf-Complete Email-Login/Week-III-In-the-Moment-P2
+    10    10f  0.09   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+    10    10f  svg fill-opacity=0.09   e.g. Email-Login/Cue-Hue-Picker Email-Login/SOS-Loc-Bathroom Email-Login/SOS-Loc-Private-Room
+     7     7f  svg fill-opacity=0.08   e.g. Email-Login/SOS-Feel-Low Email-Login/SOS-Loc-Home-Alone Email-Login/V3-Q10
+     1     1f  svg stop-opacity=0.22   e.g. Email-Login/Today-Home
+     1     1f  svg stop-opacity=0   e.g. Email-Login/Today-Home
+     1     1f  svg fill-opacity=0.14   e.g. Lesson-Illustrations-v4/Lighthouse
+     1     1f  svg fill-opacity=0.06   e.g. Lesson-Illustrations-v4/Lit-match
+     1     1f  svg fill-opacity=0.1   e.g. Lesson-Illustrations-v4/Open-door
+     1     1f  svg fill-opacity=0.35   e.g. Week-03-In-the-Moment/L15-Frame-5
+
+## borders (6 distinct)
+    99    33f  border-top:1px solid #2E2E2E   e.g. Email-Login/App-Lock Email-Login/Data-Privacy Email-Login/Edit-Profile
+    22     7f  border:2px solid #9B968E   e.g. Email-Login/Lesson-Scroll-5 Week-01-Reset/L1-Frame-5 Week-02-Changing-Your-Mindset/L9-Frame-7
+     4     4f  border-bottom:1.5px solid #F2F0EC   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+     4     2f  border-left:2px dashed #5A574F   e.g. Email-Login/Paywall-Rescue Email-Login/Score-Detail-Ranks
+     1     1f  border-bottom:1.5px dashed #5A574F   e.g. Email-Login/Morning-Resign-Pledge
+     1     1f  border-left:2px solid #F2F0EC   e.g. Email-Login/Score-Detail-Ranks
+
+## filters (1 distinct)
+     6     5f  filter:brightness(0) invert(1)   e.g. Email-Login/Login Email-Login/Paywall Email-Login/Reminders-Setup
+
+## transforms (15 distinct)
+   520   468f  scale(1.1)   e.g. Email-Login/Checkin-Reasons Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation
+    53    53f  scale(0.3333)   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+     4     3f  scale(1)   e.g. Email-Login/Medallion-Received Lesson-Illustrations-v4/Medal Week-12-Leave-It-Behind/L81-Frame-10
+     2     2f  scale(0.869)   e.g. Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+     2     2f  scale(1.062)   e.g. Email-Login/SOS-Reassess Email-Login/Urge-Log-Intensity
+     1     1f  scale(0.954)   e.g. Email-Login/Checkin-Emotions
+     1     1f  scale(0.723)   e.g. Email-Login/Cue-Hue-Picker
+     1     1f  scale(1.075)   e.g. Email-Login/Night-1-Mood
+     1     1f  scale(1.071)   e.g. Email-Login/SOS-Reason-Picker
+     1     1f  scale(0.731)   e.g. Email-Login/SOS-Strength
+     1     1f  scale(0.965)   e.g. Email-Login/Slip-Urge-Now
+     1     1f  scale(0.989)   e.g. Email-Login/Urge-Log-Outcome
+     1     1f  scale(0.877)   e.g. Email-Login/V3-Q26-Gender
+     1     1f  scale(0.76)   e.g. Email-Login/V3-Q3b
+     1     1f  scale(1.089)   e.g. Email-Login/V3-Q7
+
+## images (4 distinct)
+     2     2f  laurel-mark.webp 104x104 brightness(0) invert(1)   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     1f  laurel-mark.webp 40x40 brightness(0) invert(1)   e.g. Email-Login/Reminders-Setup
+     1     1f  laurel-mark.webp 28x28 brightness(0) invert(1)   e.g. Email-Login/Paywall
+     1     1f  laurel-mark.webp 120x120 brightness(0) invert(1)   e.g. Email-Login/Splash
+
+## text-wrap (2 distinct)
+  2091  1265f  pretty   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Breakwater-Bronze
+  1770  1079f  balance   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+
+## type combos (184 distinct)
+  1450  1357f  13px / 700 / lh normal / ls 0 / #9B968E   «Lesson 1×27, Lesson 40×17, Lesson 80×17, Platinum×16, Lesson 13×16, Lesson 35×16, Lesson 36×16, Lesson 39×16»   e.g. Email-Login/Album-Earned-II Email-Login/App-Lock Email-Login/Breakwater-Bronze
+  1356  1000f  18px / 400 / lh 28px / ls 0 / #B5B0A8   «One thing left today — the task.×53, Your answers are saved to the log. One t×32, Approximate answers are useful. Guessing×2, Start one private note called My recover×2, Write your porn boundary and what you kn×2, Prepare tonight: set the alarm, put the ×2, Keep needed calls and accessibility avai×2, It’s late. Your phone is beside you, and×2»   e.g. Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-12 Email-Login/Lesson-Scroll-13
+   819   772f  13px / 700 / lh 16px / ls 0.2px / #9B968E   «Today’s task×85, Done when×85, Part 1×85, Part 2×85, Part 3×85, Question×32, After choosing×18, Seneca×17»   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12
+   575   573f  24px / 700 / lh 31px / ls -0.4px / #F2F0EC   «We are what we repeatedly do.×3, Well begun is half done.×2, Prepare for tonight×2, A journey of a thousand miles begins wit×2, The smaller decision×2, An earlier moment×2, Where you’re starting×2, Try it today×2»   e.g. Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12 Email-Login/Lesson-Scroll-2
+   487   487f  16px / 700 / lh normal / ls 0.1px / #111111   «Continue×138, Done×120, Begin×89, Finish lesson×85, Share this×9, Back to medallions×9, Next×6, Breathe×5»   e.g. Email-Login/A-Clean-Day Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+   262   261f  30px / 700 / lh 36px / ls -0.6px / #F2F0EC   «Lesson complete.×85, Put the phone away.×3, Leave the room.×3, Prepare for tonight×2, The day is still yours.×2, It happened.×2, Don’t let it become two.×2, Get out of bed.×2»   e.g. Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+   191    57f  15px / 700 / lh normal / ls 0 / #F2F0EC   «41×4, Name×3, Username×3, Email×3, Started VICI×3, Current week×3, Medallions×3, Tonight, Tue Jul 22×3»   e.g. Email-Login/App-Lock Email-Login/Data-Privacy Email-Login/Edit-Profile
+   163    33f  12px / 700 / lh 16px / ls 0 / #B5B0A8   «A×32, B×32, C×32, D×20, E×18, F×14, G×7, H×3»   e.g. Email-Login/Paywall Week-01-Reset/L2-Frame-11 Week-01-Reset/L7-Frame-11
+   159    32f  16px / 400 / lh 22px / ls 0 / #F2F0EC   «Something else×6, I’m unsure×2, Saved material or bookmarks×1, A feed or account that leads to porn×1, A device beside me where I usually watch×1, An empty hour with nothing planned×1, Nothing clear right now×1, Keeping my phone away at night×1»   e.g. Week-01-Reset/L2-Frame-11 Week-01-Reset/L7-Frame-11 Week-02-Changing-Your-Mindset/L10-Frame-11
+   135    53f  13px / 400 / lh 20px / ls 0 / #37352F   «Wall clock sitting on a shelf replaced b×1, Real hands instead of an ambiguous wedge×1, Plant and clutter removed×1, Pans hang from V-strings like a real bal×1, Weight and leaf no longer fuse with the ×1, Highlight drawn as a glint, not a hole×1, Stars removed from a daytime sky×1, Stars removed×1»   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+   118    35f  14px / 700 / lh normal / ls 0 / #9B968E   «19×4, Sam Reyes×3, @sam×3, sam@example.com×3, 14 Mar 2026×3, Week VI, Discipline×3, 10 of 12×3, Set off by×3»   e.g. Email-Login/App-Lock Email-Login/Data-Privacy Email-Login/Edit-Profile
+   114   108f  15px / 400 / lh 24px / ls 0 / #B5B0A8   «One part of it went wrong. Nothing else ×2, The day isn’t over. Log what happened, t×2, A slip doesn’t erase what you decided. S×2, One slip happened. You can still turn th×2, Hard to resist×2, Do something different from what you nor×2, Move somewhere different and keep the ph×2, That’s all today has to be.×1»   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+   111    37f  11.5px / 400 / lh normal / ls 0 / #9B968E   «Log×34, Today×33, Journey×31, Library×13»   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+   109    23f  15px / 400 / lh normal / ls 0 / #F2F0EC   «Lonely×3, Tired×3, Argument×3, Stress×2, Social×2, Phone×2, Craving×2, Bored×2»   e.g. Email-Login/Lapse-Trigger Email-Login/SOS-Feeling-Picker Email-Login/SOS-Reason-Picker
+   101    99f  16px / 700 / lh 22px / ls 0 / #F2F0EC   «Your starting notes are saved and tonigh×2, The activity review is recorded or resch×2, You’ve made one useful change, or confir×1, You’ve tried the change and saved the st×1, The sleep plan and device setup are read×1, You’ve tried the activity and recorded w×1, You’ve taken a contact step or checked a×1, You’ve recorded the review and taken tim×1»   e.g. Email-Login/Lesson-Scroll-13 Week-01-Reset/L1-Frame-13 Week-01-Reset/L2-Frame-15
+    83    83f  26px / 700 / lh 33px / ls -0.6px / #F2F0EC   «Slip logged.×2, What fed it?×2, When did it happen?×2, Re-sign your pledge.×2, When should the nightly check-in come?×2, The pledge still stands.×2, One clean day.×1, Only opens for you.×1»   e.g. Email-Login/A-Clean-Day Email-Login/App-Lock Email-Login/Change-Pledge-Sheet
+    76    56f  15px / 400 / lh 22px / ls 0 / #B5B0A8   «An overwhelming urge that ended without ×6, Urges met and outlasted — the conquering×5, Survive the nights and steady the basics×2, Streaks, relapses, and how you talk to y×2, What to do in the sixty seconds that mat×2, The machinery behind the pull.×2, The people side of recovery.×2, The honest math of what it gives and tak×2»   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+    69    60f  13px / 700 / lh normal / ls 0 / #111111   «SOS×37, B×12, A×4, Earned×2, Urges×2, Score×2, Check-ins×1, Reports×1»   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    67    67f  15px / 400 / lh 22px / ls 0 / #9B968E   «Choose one.×22, Select all that apply×5, Select all that apply.×4, Tap all that apply.×3, +12 this week×3, Choose all that fit. Choose G alone if i×3, 2 more to Bronze×2, Choose all that fit. Choose F alone if i×2»   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Cost-Next-30
+    65    62f  15px / 400 / lh normal / ls 0 / #9B968E   «Give me another×33, Try a different step×3, Change the pledge×3, Not now×3, Later×2, Sign out×2, Keep current pledge×1, See the receipt×1»   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+    61    35f  13px / 700 / lh normal / ls 0 / #F2F0EC   «Paper×16, Bronze×9, Silver×6, Gold×4, Jul 14–20×4, Last 30 days×4, 4×3, Change×3»   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+    53    53f  16px / 700 / lh normal / ls -0.2px / #1D1C1A   «Alarm clock×1, Balance scale×1, Balloon×1, Battery×1, Bed at night×1, Bell×1, Brain×1, Browser tabs×1»   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    53    53f  12px / 700 / lh normal / ls 0 / #8B8882   «clock · 9 uses×1, scale · 13 uses×1, balloon · 2 uses×1, battery · 6 uses×1, bed · 15 uses×1, bell · 3 uses×1, brain · 9 uses×1, tab · 10 uses×1»   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    53    53f  11px / 700 / lh normal / ls 0.3px / #8B8882   «Before×53»   e.g. Lesson-Illustrations-v4/Alarm-clock Lesson-Illustrations-v4/Balance-scale Lesson-Illustrations-v4/Balloon
+    48    20f  15px / 400 / lh 22px / ls 0 / #F2F0EC   «Get into bed to answer a message×2, Check a feed×2, Twenty minutes later, searching×2, Close the content×2, Talking to a stranger would be less plea×1, Talking was more positive, on average×1, Tomorrow starts with even less sleep×1, The next hour can be used differently×1»   e.g. Email-Login/Lesson-Scroll-5 Week-01-Reset/L1-Frame-5 Week-01-Reset/L6-Frame-4
+    39    14f  15px / 700 / lh 22px / ls 0 / #F2F0EC   «Late night, boredom×2, Last night×1, Phone charges outside bedroom×1, Tonight, 11:40 PM×1, Tired×1, Phone in bed, late night×1, Phone charges outside the bedroom×1, Intense×1»   e.g. Email-Login/Lapse-Done Email-Login/Slip-Logged Email-Login/Urge-Log-Done
+    37    37f  11.5px / 700 / lh normal / ls 0 / #F2F0EC   «Library×24, Journey×6, Today×4, Log×3»   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    36    23f  15px / 400 / lh normal / ls 0 / #111111   «Late night×3, Boredom×2, Lonely×2, Phone in bed×2, Tired×2, A little×1, Rode it out×1, A few times a week×1»   e.g. Email-Login/Lapse-Trigger Email-Login/SOS-Feeling-Picker Email-Login/SOS-Reason-Picker
+    33    33f  32px / 700 / lh 38px / ls -0.6px / #F2F0EC   «Breakwater×6, Vici×6, Weekly report×4, Urge overview×4, Medallions×3, Your log×3, Archive×1, Lessons×1»   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    33     9f  12px / 700 / lh normal / ls 0 / #5A574F   «×25×5, ×50×4, ×10×3, ×100×3, ×200×3, ×75×3, ×500×2, ×365×1»   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+    30     6f  22px / 400 / lh normal / ls 0 / #9B968E   «AM×5, 9×3, 10×3, 12×3, 39×3, 41×3, 11×2, 29×2»   e.g. Email-Login/Lapse-When Email-Login/Morning-Check-in-Time Email-Login/Nightly-Check-in-Time
+    27     7f  14px / 700 / lh normal / ls 0 / #111111   «1×3, Just now×3, Su×3, M×3, Tu×3, W×3, Th×3, F×3»   e.g. Email-Login/Lapse-When Email-Login/Log-Urges Email-Login/Morning-Check-in-Time
+    24    19f  6.4(svg) / 900 / lh normal / ls 0.6 / #0D0D0D   «I×14, II×4, IV×2, V×2, III×2»   e.g. Email-Login/Album-Earned-II Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    24     9f  12px / 700 / lh normal / ls 0 / #9B968E   «Tier I, ×5×3, Jun 9×2, Tier I, ×1×2, Lesson 5×2, Ride it out×2, 1×1, 3×1, 4×1»   e.g. Email-Login/Album-Earned-II Email-Login/Medallions-Still-To-Earn Email-Login/Medallions
+    24     6f  22px / 400 / lh normal / ls 0 / #2E2E2E   «1×3, 9×3, 38×3, 42×3, 8×2, 12×2, 28×2, 32×2»   e.g. Email-Login/Lapse-When Email-Login/Morning-Check-in-Time Email-Login/Nightly-Check-in-Time
+    24     4f  12px / 400 / lh normal / ls 0 / #9B968E   «Su×4, Mo×4, Tu×4, We×4, Th×4, Sa×4»   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+    22     6f  16px / 700 / lh normal / ls 0 / #F2F0EC   «Tense×1, Hopeful×1, Flat×1, Proud×1, Lonely×1, Restless×1, Relationship×1, Family×1»   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Enlisting-Aegis
+    21    13f  14px / 700 / lh normal / ls 0 / #F2F0EC   «18×4, Change photo×3, Earlier today×3, Yesterday×3, Slipped×3, VICI Unlimited×1, Tense×1, Flat×1»   e.g. Email-Login/Edit-Profile Email-Login/Lapse-When Email-Login/Log-Urges
+    18     4f  16px / 400 / lh normal / ls 0 / #F2F0EC   «Pledge kept×2, One urge surfed×2, 0 slips×2, In bed×1, A public space×1, At work or school×1, Out and about×1, Change plan×1»   e.g. Email-Login/Cue-Hue-Picker Email-Login/Manage-Subscription Email-Login/Morning-1-Yesterday
+    18     6f  30px / 900 / lh normal / ls 0 / #F2F0EC   «PM×5, 11×3, 40×3, 10×2, 30×2, 8×1, 00×1, AM×1»   e.g. Email-Login/Lapse-When Email-Login/Morning-Check-in-Time Email-Login/Nightly-Check-in-Time
+    18     3f  11px / 700 / lh normal / ls 0 / #5A574F   «T×6, M×3, W×3, F×3, S×3»   e.g. Email-Login/Log-Check-ins Email-Login/Log-Urges Email-Login/Weekly-Report-Days
+    18    18f  16px / 400 / lh 22px / ls 0 / #9B968E   «Add a note (optional)×18»   e.g. Week-01-Reset/L2-Frame-12 Week-01-Reset/L7-Frame-12 Week-02-Changing-Your-Mindset/L13-Frame-13
+    16     5f  12(svg) / 600 / lh normal / ls 0 / #9B968E   «T×4, M×2, W×2, F×2, S×2, 0×1, 1,000×1, 30 days ago×1»   e.g. Email-Login/Settings-Weekly-Report Email-Login/Starting-Score Email-Login/Today-Home
+    14     5f  13px / 700 / lh normal / ls 0 / #5A574F   «1×3, 3×3, 5×3, 2×2, 4×1, Not yet. First at ×1×1, Not yet. First at ×10×1»   e.g. Email-Login/Detail-Paper Email-Login/SOS-Reassess Email-Login/SOS-Strength
+    11     8f  12px / 700 / lh normal / ls 0 / #B5B0A8   «×5×4, ×1×2, Jun 9×2, ×25×1, Jul 20×1, Day 7×1»   e.g. Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons Email-Login/Tiers-Logbook
+    10     2f  15px / 700 / lh normal / ls -0.2px / #F2F0EC   «Logbook×1, Pulse×1, Black Box×1, Lessons×1, Veni×1, First light×1, Vidi×1, Vici×1»   e.g. Email-Login/Album-Earned-II Email-Login/Medallions
+    10    10f  18px / 400 italic / lh 28px / ls 0 / #F2F0EC   «“Five storms met at full height. The wal×1, “Twenty-five. What used to flood you now×1, “The first wave broke against you, not o×1, “Fifty waves. The sea hasn’t changed. Th×1, “Ten overwhelming urges, none of them de×1, “Twenty-five behind you now — the patter×1, “Two hundred and fifty. The sea keeps co×1, “Nine minutes, start to finish. You watc×1»   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+    10     6f  16px / 700 / lh normal / ls 0 / #111111   «Calm×1, Tired×1, School / work×1, Loneliness×1, Yes×1, Save×1, Sign out×1, Focus×1»   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Morning-Task-Check
+     9     2f  15px / 700 / lh normal / ls 0 / #FFFFFF   «In×1, Thu, 3:10 pm×1, 14 min×1, Tue, 11:48 pm×1, 22 min×1, Sun, 9:22 pm×1, 9 min×1, Sat, 1:05 am×1»   e.g. Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Surfed
+     8     8f  13px / 700 / lh normal / ls 0 / rgba(255,255,255,0.55)   «Ride it out×6, By age 80×1, Day 13, about two minutes×1»   e.g. Email-Login/Cost-By-Age-80 Email-Login/Night-Check-in-Cover Email-Login/Urge-Hub-Breathe
+     8     8f  64px / 700 / lh 67px / ls -2.2px / #F2F0EC   «1,240×3, 3×2, 9×1, 12×1, 7 of 7×1»   e.g. Email-Login/Log-Check-ins Email-Login/Log-Reports Email-Login/Log-Urges
+     8     3f  13px / 400 / lh normal / ls 0 / #9B968E   «Mood, energy, the pledge×1, When, what fed it, what changes×1, A check-in on the day after a slip.×1, When it usually happens×1, Where it usually happens×1, What tends to set it off×1, Your first change×1, When an urge hits×1»   e.g. Email-Login/Log-Chooser Email-Login/Medallion-Letter Email-Login/Your-Plan
+     8     8f  48px / 700 / lh 50px / ls -1.7px / #F2F0EC   «×9×1, ×3×1, ×12×1, ×26×1, ×19×1, ×2×1, ×23×1, Day 13×1»   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     7     5f  15px / 700 / lh normal / ls 0 / #9B968E   «Delete account×1, Restore×1, Slip on Jul 8×1, 1,500×1, 1,300×1, Remove photo×1, Cancel×1»   e.g. Email-Login/Data-Privacy Email-Login/Paywall Email-Login/Score-Detail-Moves
+     7     2f  15.5px / 400 / lh 25px / ls 0 / #B5B0A8   «If you’re reading this, it happened. Goo×1, One slip is a wave, not the sea. Nothing×1, All still yours.×1, The only slip that can end this is the o×1, I’ll see you tonight, steadier.×1, Last night an urge rose, crested, and le×1, The return is the strongest predictor th×1»   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     7     1f  12(svg) / 700 / lh normal / ls 0 / #9B968E   «T×2, S×2, M×1, W×1, F×1»   e.g. Email-Login/One-Bad-Day
+     6     6f  30px / 700 / lh normal / ls 0 / #F2F0EC   «:×6»   e.g. Email-Login/Lapse-When Email-Login/Morning-Check-in-Time Email-Login/Nightly-Check-in-Time
+     6     3f  17px / 700 / lh normal / ls 0 / #F2F0EC   «Continue with Google×2, Daily check-in×1, A lapse×1, Continue with email×1, Sign in with email×1»   e.g. Email-Login/Log-Chooser Email-Login/Login Email-Login/Welcome-Back
+     6     6f  30px / 700 / lh normal / ls -0.6px / #F2F0EC   «Intense×2, Low×1, Steady×1, Mixed×1, Noticeable×1»   e.g. Email-Login/Morning-Energy Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     6     6f  26px / 700 / lh 33px / ls -0.6px / #FFFFFF   «Breathe in.×1, Get out of bed.×1, Your pledge.×1, Every urge so far has ended.×1, You’re riding a wave.×1, You’ve outlasted this before.×1»   e.g. Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Pledges
+     6     6f  15px / 400 / lh normal / ls 0 / rgba(255,255,255,0.6)   «I slipped×6»   e.g. Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Pledges
+     5     2f  11(svg) / 700 / lh normal / ls 0 / #9B968E   «Clean day×1, 12 am×1, 6 am×1, 12 pm×1, 6 pm×1»   e.g. Email-Login/A-Clean-Day Email-Login/Urge-Overview-When
+     5     5f  13px / 700 / lh 16px / ls 0 / #111111   «Change this part×2, Close, move, begin×1, An earlier point to act×1, The thought can stay×1»   e.g. Email-Login/Lesson-Scroll-5 Week-01-Reset/L1-Frame-5 Week-03-In-the-Moment/L15-Frame-5
+     5     3f  15px / 700 / lh normal / ls 0 / #111111   «Open this week’s report×1, Keep rules that serve a purpose×1, Late at night×1, Home alone×1, Phone in bed×1»   e.g. Email-Login/Log-Reports Email-Login/Week-VI-Discipline Email-Login/Where-We-d-Start
+     5     2f  13px / 400 / lh normal / ls 0 / rgba(255,255,255,0.62)   «4 sec×1, Waited out the timer×1, Went for a walk×1, Called a friend×1, Took a cold shower×1»   e.g. Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Surfed
+     4     3f  66(svg) / 700 / lh normal / ls 0 / #0D0D0D   «V×4»   e.g. Email-Login/Medallion-Received Lesson-Illustrations-v4/Medal Week-12-Leave-It-Behind/L81-Frame-10
+     4     4f  24px / 700 / lh 33px / ls -0.4px / #F2F0EC   «The mornings are mine again.×4»   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Morning-Resign-Pledge Email-Login/Relapse-Resign
+     4     4f  18px / 700 / lh normal / ls 0 / #F2F0EC   «Monthly×1, Deckhand×1, Sam Reyes×1, Urge surfing×1»   e.g. Email-Login/Paywall Email-Login/Score-Detail-Ranks Email-Login/Sheet-Edit-Name
+     4     4f  15px / 400 / lh 24px / ls 0 / rgba(255,255,255,0.62)   «The day is not gone. The phone goes away×1, Slowly, through your nose. Let your shou×1, Stand up. Move somewhere with light.×1, This one is strong. None this strong has×1»   e.g. Email-Login/Slip-Third Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now
+     4     1f  13px / 400 / lh 18px / ls 0 / #9B968E   «Finished onboarding×1, The first check-in×1, First slip logged×1, Back after 7+ days away×1»   e.g. Email-Login/Tiers-One-offs
+     4     4f  26px / 700 / lh 32px / ls -0.7px / #F2F0EC   «Good morning.×3, Good evening.×1»   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+     4     4f  12px / 700 / lh normal / ls 0 / #F2F0EC   «Fr×4»   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+     4     2f  16px / 700 / lh 20px / ls -0.2px / #F2F0EC   «Naming your triggers×2, Urge surfing×2»   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-Task
+     4     2f  13px / 700 / lh normal / ls 0 / #FFFFFF   «Bored×1, Relationship×1, Work or school×1, 28 clean, 2 slips×1»   e.g. Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Score
+     4     1f  24px / 700 / lh 31px / ls 0 / #F2F0EC   «H×1, A×1, L×1, T×1»   e.g. Week-03-In-the-Moment/L19-Frame-4
+     3     3f  13px / 700 / lh 22px / ls 0 / #9B968E   «10 of 12 earned×2, 2 still to earn×1»   e.g. Email-Login/Album-Earned-II Email-Login/Medallions-Still-To-Earn Email-Login/Medallions
+     3     3f  15px / 700 / lh 24px / ls 0 / #F2F0EC   «9 of the next 30 days×1, you do not need twelve perfect weeks.×1, Start with this.×1»   e.g. Email-Login/Cost-Next-30 Email-Login/Letter-Week-XII Email-Login/Where-We-d-Start
+     3     3f  38px / 700 / lh normal / ls 0 / #111111   «S×3»   e.g. Email-Login/Edit-Profile Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     3     2f  15.5px / 700 / lh 25px / ls 0 / #F2F0EC   «I want to be present for the people I lo×1, — the you who makes it out×1, — VICI×1»   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     3     3f  11px / 700 / lh normal / ls 0 / #F2F0EC   «S×3»   e.g. Email-Login/Log-Check-ins Email-Login/Log-Urges Email-Login/Weekly-Report-Days
+     3     3f  17px / 700 / lh normal / ls 0 / #111111   «Continue with Apple×2, An urge×1»   e.g. Email-Login/Log-Chooser Email-Login/Login Email-Login/Welcome-Back
+     3     3f  15px / 400 / lh normal / ls 0 / #B5B0A8   «Already have an account?×1, May – July×1, New here?×1»   e.g. Email-Login/Login Email-Login/Score-Detail Email-Login/Welcome-Back
+     3     3f  12px / 700 / lh normal / ls 0.4px / #9B968E   «Terms · Privacy×2, Terms · Restore×1»   e.g. Email-Login/Login Email-Login/Paywall Email-Login/Welcome-Back
+     3     3f  28px / 700 italic / lh normal / ls 0 / #F2F0EC   «Jerry×3»   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Relapse-Resign Email-Login/Slip-Pledge
+     3     3f  60px / 700 / lh 70px / ls -2.4px / #F2F0EC   «1,240×3»   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     3     1f  17px / 700 / lh normal / ls -0.2px / #F2F0EC   «Veni×1, First light×1, Black Box×1»   e.g. Email-Login/Tiers-One-offs
+     3     2f  13px / 700 / lh 16px / ls 0 / #9B968E   «Your pledge×1, Tonight×1, This morning×1»   e.g. Email-Login/Today-Home-III Email-Login/Today-Home
+     3     1f  12px / 700 / lh normal / ls 0 / rgba(255,255,255,0.55)   «Oldest×1, Longest: 41 min×1, Latest×1»   e.g. Email-Login/Urge-Hub-Proof
+     3     1f  12px / 700 / lh 17px / ls 0 / #B5B0A8   «Full 12-week programme×1, SOS support anytime×1, Track your progress×1»   e.g. Email-Login/Yearly-Drop
+     2     2f  13px / 400 / lh 19px / ls 0 / #9B968E   «Hides journal previews and entry titles ×1, Deleting your account erases your journa×1»   e.g. Email-Login/App-Lock Email-Login/Data-Privacy
+     2     1f  14px / 700 / lh normal / ls 0 / #B5B0A8   «Relapse×1, Clean day×1»   e.g. Email-Login/Cost-Next-30
+     2     2f  15px / 400 / lh 23px / ls 0 / #B5B0A8   «Masturbation isn’t part of what you’re t×1, Your log, letters and medallions stay sa×1»   e.g. Email-Login/Goal-Confirmation Email-Login/Sheet-Sign-Out
+     2     2f  22px / 700 / lh normal / ls -0.3px / #F2F0EC   «Dear Sam,×2»   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     2     2f  26px / 700 / lh normal / ls -0.6px / #F2F0EC   «Sam —×1, +86×1»   e.g. Email-Login/Letter-Week-XII Email-Login/Score-Detail-Moves
+     2     2f  14(svg) / 700 / lh normal / ls 0 / #F2F0EC   «Relapse frequency×2»   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     2     2f  11(svg) / 700 / lh normal / ls 1.2 / #6B675F   «3 MONTHS×2»   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     2     2f  14(svg) / 700 / lh normal / ls 0 / #111111   «5× a week×1, 2× a week×1»   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     2     2f  14px / 400 / lh normal / ls 0 / #B5B0A8   «$39.99 a year. Renews 10 Jul 2027×1, Five minutes. Ride the next one out.×1»   e.g. Email-Login/Manage-Subscription Email-Login/Today-Home-III
+     2     2f  12px / 700 / lh normal / ls 0 / #111111   «Active×1, Save 74%×1»   e.g. Email-Login/Manage-Subscription Email-Login/Yearly-Drop
+     2     1f  15px / 700 / lh normal / ls -0.2px / #9B968E   «Archive×1, Return×1»   e.g. Email-Login/Medallions-Still-To-Earn
+     2     2f  34px / 700 / lh 40px / ls -0.6px / #F2F0EC   «Morning check-in.×1, Take your life back.×1»   e.g. Email-Login/Morning-Check-in-Cover Email-Login/Paywall
+     2     2f  34px / 700 / lh 40px / ls -0.6px / #FFFFFF   «Day 13, closed.×1, Night check-in.×1»   e.g. Email-Login/Night-4-Closed Email-Login/Night-Check-in-Cover
+     2     2f  16px / 400 / lh 25px / ls 0 / #F2F0EC   «What matters is that you come back.×1, More of your time and attention going wh×1»   e.g. Email-Login/One-Bad-Day Email-Login/What-You-Want-Back
+     2     1f  16px / 400 / lh 24px / ls 0 / #F2F0EC   «Day 2 — a reminder, before any charge×1, Day 3 — $39.99/year begins, unless you c×1»   e.g. Email-Login/Paywall-Rescue
+     2     1f  14px / 400 / lh 20px / ls 0 / #B5B0A8   «Twenty seconds — where’s your head at to×1, The time you told us about. SOS is one t×1»   e.g. Email-Login/Reminders-Setup
+     2     1f  18px / 700 / lh normal / ls 0 / #9B968E   «Captain×1, Helmsman×1»   e.g. Email-Login/Score-Detail-Ranks
+     2     1f  11(svg) / 600 / lh normal / ls 0 / #9B968E   «1,400×1, 1,000×1»   e.g. Email-Login/Score-Detail
+     2     1f  13(svg) / 600 / lh normal / ls 0 / #9B968E   «May×1, Jun×1»   e.g. Email-Login/Score-Detail
+     2     2f  12(svg) / 800 / lh normal / ls 0 / #F2F0EC   «S×2»   e.g. Email-Login/Settings-Weekly-Report Email-Login/Weekly-Report
+     2     2f  22px / 700 / lh 28px / ls -0.6px / #F2F0EC   «Name×1, Profile photo×1»   e.g. Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     2     1f  15px / 700 / lh normal / ls 0 / rgba(255,255,255,0.4)   «Hold×1, Out×1»   e.g. Email-Login/Urge-Hub-Breathe
+     2     1f  13px / 400 / lh normal / ls 0 / rgba(255,255,255,0.3)   «4 sec×1, 6 sec×1»   e.g. Email-Login/Urge-Hub-Breathe
+     2     2f  44px / 700 / lh 67px / ls -1.5px / #F2F0EC   «Tense×1, Strong×1»   e.g. Email-Login/Urge-Overview-Mood Email-Login/Urge-Overview
+     2     1f  30px / 700 / lh 56px / ls 0 / #2E2E2E   «22×1, 26×1»   e.g. Email-Login/V3-Q25-Age
+     2     1f  34px / 700 / lh 60px / ls 0 / #5A574F   «23×1, 25×1»   e.g. Email-Login/V3-Q25-Age
+     2     2f  13px / 700 / lh 16px / ls 0.2px / #F2F0EC   «Today×2»   e.g. Week-05-Why-It-Feels-Worth-It/L35-Frame-5 Week-11-Build-a-Life-You-Want/L75-Frame-8
+     1     1f  68(svg) / 700 / lh normal / ls -2 / #F2F0EC   «1×1»   e.g. Email-Login/A-Clean-Day
+     1     1f  20px / 700 / lh 29px / ls 0 / #F2F0EC   «Phone stays out of the bedroom×1»   e.g. Email-Login/Change-Pledge-Sheet
+     1     1f  44px / 700 / lh 52px / ls -1.5px / #FFFFFF   «About 6,100 days×1»   e.g. Email-Login/Cost-By-Age-80
+     1     1f  17px / 400 / lh 26px / ls 0 / rgba(255,255,255,0.75)   «If nothing changes.×1»   e.g. Email-Login/Cost-By-Age-80
+     1     1f  44px / 700 / lh 52px / ls -1.5px / #F2F0EC   «About 110 days×1»   e.g. Email-Login/Cost-Next-365
+     1     1f  16px / 400 / lh normal / ls 0 / #111111   «Somewhere private×1»   e.g. Email-Login/Cue-Hue-Picker
+     1     1f  44px / 700 / lh 50px / ls -0.6px / #F2F0EC   «Day 0×1»   e.g. Email-Login/Day-Zero
+     1     1f  19px / 700 / lh normal / ls 0 / #F2F0EC   «Prepare for tonight×1»   e.g. Email-Login/Day-Zero
+     1     1f  60(svg) / 700 / lh normal / ls 0 / #0D0D0D   «V×1»   e.g. Email-Login/Drop-Received
+     1     1f  16px / 400 / lh normal / ls 0 / #9B968E   «Choosing where to start×1»   e.g. Email-Login/Enlisting-Aegis
+     1     1f  15px / 700 / lh 23px / ls 0 / #F2F0EC   «Porn is.×1»   e.g. Email-Login/Goal-Confirmation
+     1     1f  13px / 400 / lh normal / ls 0 / rgba(17,17,17,0.6)   «How strong, what fed it, what you did×1»   e.g. Email-Login/Log-Chooser
+     1     1f  24px / 700 / lh normal / ls -0.5px / #F2F0EC   «Yearly×1»   e.g. Email-Login/Manage-Subscription
+     1     1f  6.4(svg) / 900 / lh normal / ls 0.6 / #5A574F   «I×1»   e.g. Email-Login/Medallions-Still-To-Earn
+     1     1f  19px / 700 / lh 28px / ls 0 / #F2F0EC   «Write down each trigger the moment you n×1»   e.g. Email-Login/Morning-Task-Check
+     1     1f  18px / 700 / lh 1 / ls 0 / #F2F0EC   «+×1»   e.g. Email-Login/Night-2-Record
+     1     1f  22px / 400 / lh 34px / ls 0 / #F2F0EC   «Sam called at the right moment…×1»   e.g. Email-Login/Night-3-Reflection
+     1     1f  16px / 400 / lh 25px / ls 0 / rgba(255,255,255,0.6)   «See you in the morning.×1»   e.g. Email-Login/Night-4-Closed
+     1     1f  16px / 700 / lh 24px / ls 0 / #F2F0EC   «Today — everything unlocks×1»   e.g. Email-Login/Paywall-Rescue
+     1     1f  11px / 700 / lh normal / ls 1px / #F2F0EC   «Save 74%×1»   e.g. Email-Login/Paywall
+     1     1f  18px / 700 / lh normal / ls 0 / #111111   «Yearly×1»   e.g. Email-Login/Paywall
+     1     1f  12px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)   «Best value×1»   e.g. Email-Login/Paywall
+     1     1f  26px / 700 / lh normal / ls -0.8px / #111111   «$39.99×1»   e.g. Email-Login/Paywall
+     1     1f  13px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)   «/year×1»   e.g. Email-Login/Paywall
+     1     1f  13px / 700 / lh normal / ls 0 / rgba(17,17,17,0.7)   «$3.33 a month×1»   e.g. Email-Login/Paywall
+     1     1f  26px / 700 / lh normal / ls -0.8px / #F2F0EC   «$12.99×1»   e.g. Email-Login/Paywall
+     1     1f  20px / 400 / lh 30px / ls 0 / #F2F0EC   «I need to say…×1»   e.g. Email-Login/SOS-Afterward
+     1     1f  18px / 700 / lh 27px / ls 0 / #F2F0EC   «Send one message — anything — or go stan×1»   e.g. Email-Login/SOS-Challenge
+     1     1f  18px / 900 / lh normal / ls 0 / #F2F0EC   «Navigator×1»   e.g. Email-Login/Score-Detail-Ranks
+     1     1f  13px / 700 / lh normal / ls 0 / #B5B0A8   «You’re here. 60 to go×1»   e.g. Email-Login/Score-Detail-Ranks
+     1     1f  13(svg) / 700 / lh normal / ls 0 / #F2F0EC   «Jul×1»   e.g. Email-Login/Score-Detail
+     1     1f  18px / 700 / lh normal / ls -0.2px / #F2F0EC   «+90 points this quarter×1»   e.g. Email-Login/Score-Detail
+     1     1f  14px / 400 / lh 20px / ls 0 / #9B968E   «Shown on your vow and your letters.×1»   e.g. Email-Login/Sheet-Edit-Name
+     1     1f  24px / 700 / lh 30px / ls -0.6px / #F2F0EC   «Sign out?×1»   e.g. Email-Login/Sheet-Sign-Out
+     1     1f  30px / 700 / lh 36px / ls -0.6px / #FFFFFF   «You can still stop here.×1»   e.g. Email-Login/Slip-Third
+     1     1f  14px / 700 / lh normal / ls 7px / #F2F0EC   «VICI×1»   e.g. Email-Login/Splash
+     1     1f  76(svg) / 700 / lh normal / ls -3 / #F2F0EC   «842×1»   e.g. Email-Login/Starting-Score
+     1     1f  14(svg) / 600 / lh normal / ls 0 / #9B968E   «of 1,000×1»   e.g. Email-Login/Starting-Score
+     1     1f  40px / 700 / lh 46px / ls -0.6px / #F2F0EC   «The vow.×1»   e.g. Email-Login/The-Vow
+     1     1f  21px / 400 / lh 33px / ls 0 / #F2F0EC   «I’m giving this twelve weeks. I don’t ne×1»   e.g. Email-Login/The-Vow
+     1     1f  30px / 700 italic / lh normal / ls -0.5px / #F2F0EC   «Sam×1»   e.g. Email-Login/The-Vow
+     1     1f  13px / 700 / lh normal / ls 0.5px / #9B968E   «Signed on day 0×1»   e.g. Email-Login/The-Vow
+     1     1f  17px / 700 / lh normal / ls -0.2px / #9B968E   «Return×1»   e.g. Email-Login/Tiers-One-offs
+     1     1f  20px / 700 / lh 27px / ls -0.4px / #F2F0EC   «Put your phone somewhere hard to reach b×1»   e.g. Email-Login/Today-Home-II
+     1     1f  22px / 700 / lh 31px / ls -0.3px / #F2F0EC   «The mornings are mine again.×1»   e.g. Email-Login/Today-Home-III
+     1     1f  16px / 700 italic / lh normal / ls 0 / #9B968E   «Jerry×1»   e.g. Email-Login/Today-Home-III
+     1     1f  17px / 700 / lh 24px / ls -0.4px / #F2F0EC   «Put the device you use for porn out of r×1»   e.g. Email-Login/Today-Home-Task
+     1     1f  56px / 700 / lh 56px / ls -0.5px / #F2F0EC   «1,240×1»   e.g. Email-Login/Today-Home
+     1     1f  12(svg) / 700 / lh normal / ls 0 / #F2F0EC   «Today×1»   e.g. Email-Login/Today-Home
+     1     1f  46(svg) / 700 / lh normal / ls -1.5 / #FFFFFF   «17:42×1»   e.g. Email-Login/Urge-Hub-Now
+     1     1f  13(svg) / 600 / lh normal / ls 0 / rgba(255,255,255,0.5)   «Until it passes×1»   e.g. Email-Login/Urge-Hub-Now
+     1     1f  26px / 700 / lh 35px / ls -0.5px / #FFFFFF   «The mornings are mine again.×1»   e.g. Email-Login/Urge-Hub-Pledges
+     1     1f  22px / 700 italic / lh normal / ls 0 / rgba(255,255,255,0.62)   «Jerry×1»   e.g. Email-Login/Urge-Hub-Pledges
+     1     1f  15px / 400 / lh 22px / ls 0 / rgba(255,255,255,0.62)   «Signed 14 days ago. Kept every day since×1»   e.g. Email-Login/Urge-Hub-Pledges
+     1     1f  64px / 700 / lh 68px / ls -2.2px / #FFFFFF   «23×1»   e.g. Email-Login/Urge-Hub-Proof
+     1     1f  15px / 400 / lh 22px / ls 0 / rgba(255,255,255,0.55)   «Urges ridden out×1»   e.g. Email-Login/Urge-Hub-Proof
+     1     1f  13px / 700 / lh normal / ls 0 / rgba(255,255,255,0.5)   «Last 30 days×1»   e.g. Email-Login/Urge-Hub-Score
+     1     1f  20(svg) / 700 / lh normal / ls -0.4 / #F2F0EC   «11 pm – 1 am×1»   e.g. Email-Login/Urge-Overview-When
+     1     1f  17px / 400 / lh normal / ls 0 / #9B968E   «Your name×1»   e.g. Email-Login/V3-Q24-Name
+     1     1f  72px / 700 / lh 100px / ls -2px / #F2F0EC   «24×1»   e.g. Email-Login/V3-Q25-Age
+     1     1f  14px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)   «38×1»   e.g. Email-Login/Week-VI-Discipline
+     1     1f  44px / 700 / lh 48px / ls -1.6px / #F2F0EC   «$26.99×1»   e.g. Email-Login/Yearly-Drop
+     1     1f  16px / 700 / lh normal / ls 0 / #9B968E   «/ year×1»   e.g. Email-Login/Yearly-Drop
+     1     1f  16px / 700 / lh normal / ls 0 / #5A574F   «$39.99×1»   e.g. Email-Login/Yearly-Drop
+     1     1f  15px / 700 / lh normal / ls 0 / #B5B0A8   «That’s $2.25 a month.×1»   e.g. Email-Login/Yearly-Drop
+     1     1f  23px / 700 / lh 32px / ls -0.4px / #F2F0EC   «I’m done letting the wave decide. One ev×1»   e.g. Email-Login/Your-Vow-Page
+     1     1f  24px / 700 italic / lh normal / ls 0 / #F2F0EC   «Jerry×1»   e.g. Email-Login/Your-Vow-Page
+     1     1f  14px / 400 / lh 21px / ls 0 / #9B968E   «After a relapse you can re-sign the vow.×1»   e.g. Email-Login/Your-Vow-Page
+
+## depth-1 absolute positions (167 distinct)
+  1532  1527f  inset:0   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  1408  1408f  left:0 right:0 top:60px height:40px   e.g. Email-Login/A-Clean-Day Email-Login/Album-Earned-II Email-Login/App-Lock
+  1311  1311f  left:22px top:60px height:40px   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11
+  1287  1287f  left:24px right:24px top:108px height:3px   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11
+  1287  1287f  left:32px right:32px top:140px bottom:128px   e.g. Email-Login/Lesson-Scroll-1 Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11
+   970   970f  left:0 right:0 bottom:52px   e.g. Email-Login/Lesson-Scroll-10 Email-Login/Lesson-Scroll-11 Email-Login/Lesson-Scroll-12
+   422   422f  left:24px right:24px bottom:48px height:58px   e.g. Email-Login/A-Clean-Day Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold
+    79    79f  left:0 top:190px   e.g. Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation Email-Login/First-Principle
+    69    69f  left:24px right:24px top:452px   e.g. Email-Login/Cue-Intro-Modal Email-Login/Cue-Set-Confirmation Email-Login/Letter-Arrival
+    65    65f  left:24px right:24px bottom:96px height:58px   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+    65    65f  left:0 right:0 bottom:60px   e.g. Email-Login/Change-Pledge-Sheet Email-Login/Cue-Set-Confirmation Email-Login/Drop-Received
+    53    53f  left:24px right:24px top:136px   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Cue-Hue-Picker
+    37    37f  left:0 right:0 bottom:0 height:104px   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    24    24f  left:0 top:506px   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Cue-Hue-Picker
+    24    24f  left:24px right:24px top:338px   e.g. Email-Login/Week-I-Reset-P2 Email-Login/Week-I-Reset Email-Login/Week-II-Changing-Your-Mindset-P2
+    24    24f  left:16px right:16px top:472px   e.g. Email-Login/Week-I-Reset-P2 Email-Login/Week-I-Reset Email-Login/Week-II-Changing-Your-Mindset-P2
+    15    15f  left:24px right:24px top:108px   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    14    14f  left:16px right:16px top:164px   e.g. Email-Login/Album-Earned-II Email-Login/Log-Check-ins Email-Login/Log-Reports
+    11    11f  left:24px right:24px top:451px   e.g. Email-Login/A-Clean-Day Email-Login/First-Principle Email-Login/Goal-Confirmation
+    10    10f  left:24px right:24px top:236px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Reports Email-Login/Log-Urges
+    10    10f  left:0 top:80px   e.g. Email-Login/Week-I-Reset-P2 Email-Login/Week-I-Reset Email-Login/Week-IX-Connection-P2
+     9     9f  left:0 top:582px   e.g. Email-Login/V3-Q10 Email-Login/V3-Q13 Email-Login/V3-Q15
+     8     8f  left:24px right:24px top:440px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Urges Email-Login/Morning-Energy
+     8     8f  left:0 right:0 top:155px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     8     8f  left:24px right:24px top:351px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     8     8f  left:24px right:24px top:493px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     8     8f  left:24px right:24px top:603px   e.g. Email-Login/Tiers-Archive Email-Login/Tiers-Breakwater Email-Login/Tiers-Lessons
+     8     8f  left:0 top:98.9px   e.g. Email-Login/Week-II-Changing-Your-Mindset-P2 Email-Login/Week-II-Changing-Your-Mindset Email-Login/Week-VI-Discipline-P2
+     7     7f  left:24px right:24px top:160px   e.g. Email-Login/Tiers-One-offs Email-Login/Urge-Hub-Breathe Email-Login/Urge-Hub-Now
+     6     6f  left:0 right:0 top:170px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     6     6f  left:24px right:24px top:366px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     6     6f  left:24px right:24px top:508px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     6     6f  left:44px right:44px top:608px   e.g. Email-Login/Breakwater-Bronze Email-Login/Breakwater-Gold Email-Login/Breakwater-Paper
+     6     6f  left:0 top:458px   e.g. Email-Login/Morning-Pledge-Signed Email-Login/Morning-Resign-Pledge Email-Login/Night-Action-Reminder
+     5     5f  left:32px right:32px top:352px   e.g. Email-Login/Log-Check-ins Email-Login/Log-Urges Email-Login/Settings-Weekly-Report
+     5     5f  left:0 right:0 bottom:180px   e.g. Email-Login/Urge-Hub-Now Email-Login/Urge-Hub-Pledges Email-Login/Urge-Hub-Proof
+     4     4f  left:24px right:24px top:199px   e.g. Email-Login/Cost-Next-30 Email-Login/Cost-Next-365 Email-Login/Line-If-Nothing-Changes
+     4     4f  left:0 right:0 top:232px   e.g. Email-Login/Morning-Energy Email-Login/SOS-Reassess Email-Login/SOS-Strength
+     4     4f  left:0 right:0 top:248px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     4     4f  left:24px right:24px top:64px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-III Email-Login/Today-Home-Task
+     3     3f  left:0 right:0 top:238px   e.g. Email-Login/Album-Earned-II Email-Login/Medallions-Still-To-Earn Email-Login/Medallions
+     3     3f  left:24px right:24px top:288px   e.g. Email-Login/Album-Earned-II Email-Login/Medallions-Still-To-Earn Email-Login/Medallions
+     3     3f  right:24px bottom:52px width:60px height:60px   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons Email-Login/Morning-Task-Check
+     3     3f  left:24px right:24px top:120px   e.g. Email-Login/Data-Privacy Email-Login/Settings Email-Login/Sheet-Sign-Out
+     3     3f  left:24px right:24px top:124px   e.g. Email-Login/Edit-Profile Email-Login/Sheet-Edit-Name Email-Login/Sheet-Profile-Photo
+     3     3f  left:0 right:0 top:200px   e.g. Email-Login/Lapse-Done Email-Login/Slip-Logged Email-Login/Urge-Log-Done
+     3     3f  left:24px right:24px top:308px   e.g. Email-Login/Lapse-Done Email-Login/Slip-Logged Email-Login/Urge-Log-Done
+     3     3f  left:24px right:24px top:436px   e.g. Email-Login/Login Email-Login/Paywall-Confirmed Email-Login/Welcome-Back
+     3     3f  left:24px right:24px top:372px   e.g. Email-Login/SOS-Challenge Email-Login/Urge-Overview-Summary Email-Login/Weekly-Report-Urges
+     3     3f  left:0 right:0 top:128px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     3     3f  left:0 right:0 top:160px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks Email-Login/Score-Detail
+     3     3f  left:0 right:0 bottom:48px   e.g. Email-Login/Settings Email-Login/Sheet-Sign-Out Email-Login/Your-Vow-Page
+     3     3f  left:24px right:24px top:140px   e.g. Email-Login/V3-Q17 Email-Login/V3-Q5 Email-Login/What-starts-it
+     2     2f  left:24px right:24px top:367px   e.g. Email-Login/Breakwater-Platinum Email-Login/Paywall-Rescue
+     2     2f  left:24px right:24px top:232px   e.g. Email-Login/Checkin-Emotions Email-Login/Checkin-Reasons
+     2     2f  left:24px right:24px top:530px   e.g. Email-Login/Cost-Next-365 Email-Login/The-Vow
+     2     2f  left:0 right:0 top:157px   e.g. Email-Login/Detail-Paper Email-Login/Detail-Silver
+     2     2f  left:24px right:24px top:353px   e.g. Email-Login/Detail-Paper Email-Login/Detail-Silver
+     2     2f  left:24px right:24px top:495px   e.g. Email-Login/Detail-Paper Email-Login/Detail-Silver
+     2     2f  left:44px right:44px top:595px   e.g. Email-Login/Detail-Paper Email-Login/Detail-Silver
+     2     2f  left:0 right:0 top:236px   e.g. Email-Login/Enlisting-Aegis Email-Login/V3-Q25-Age
+     2     2f  left:24px right:24px top:352px   e.g. Email-Login/Enlisting-Aegis Email-Login/Urge-Overview-Mood
+     2     2f  left:16px right:16px top:112px bottom:150px   e.g. Email-Login/Letter-Read Email-Login/Medallion-Letter
+     2     2f  left:24px top:389px   e.g. Email-Login/Line-If-Nothing-Changes Email-Login/Line-With-the-Plan
+     2     2f  left:144.5px top:150px   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  left:24px right:24px top:284px   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  left:0 right:0 bottom:108px   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  left:0 right:0 bottom:64px   e.g. Email-Login/Login Email-Login/Welcome-Back
+     2     2f  left:0 right:0 bottom:56px   e.g. Email-Login/Manage-Subscription Email-Login/Sheet-Profile-Photo
+     2     2f  left:24px right:24px top:208px   e.g. Email-Login/Morning-1-Yesterday Email-Login/Night-2-Record
+     2     2f  left:0 right:0 top:232px height:150px   e.g. Email-Login/Morning-Feeling Email-Login/Night-1-Mood
+     2     2f  left:24px right:24px bottom:82px height:58px   e.g. Email-Login/Paywall-Confirmed Email-Login/Paywall
+     2     2f  left:0 right:0 top:300px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks
+     2     2f  left:16px right:16px top:334px   e.g. Email-Login/Score-Detail-Moves Email-Login/Score-Detail-Ranks
+     2     2f  left:0 right:0 top:270px   e.g. Email-Login/Starting-Score Email-Login/Urge-Hub-Now
+     2     2f  left:0 top:241.3px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-Task
+     2     2f  left:24px right:24px top:433px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-Task
+     2     2f  left:24px right:24px top:553px   e.g. Email-Login/Today-Home-II Email-Login/Today-Home-Task
+     2     2f  left:0 top:63.9px   e.g. Email-Login/Week-III-In-the-Moment-P2 Email-Login/Week-III-In-the-Moment
+     2     2f  left:0 top:114.4px   e.g. Email-Login/Week-IV-Know-Your-Brain-P2 Email-Login/Week-IV-Know-Your-Brain
+     2     2f  left:0 top:88.8px   e.g. Email-Login/Week-XII-Leave-It-Behind-P2 Email-Login/Week-XII-Leave-It-Behind
+     1     1f  left:0 top:175px   e.g. Email-Login/A-Clean-Day
+     1     1f  left:0 right:0 top:124px   e.g. Email-Login/App-Lock
+     1     1f  left:24px right:24px top:222px   e.g. Email-Login/App-Lock
+     1     1f  left:0 right:0 top:171px   e.g. Email-Login/Breakwater-Platinum
+     1     1f  left:24px right:24px top:509px   e.g. Email-Login/Breakwater-Platinum
+     1     1f  left:44px right:44px top:609px   e.g. Email-Login/Breakwater-Platinum
+     1     1f  left:0 right:0 top:120px bottom:0   e.g. Email-Login/Change-Pledge-Sheet
+     1     1f  left:24px top:126px   e.g. Email-Login/Cost-By-Age-80
+     1     1f  left:24px top:160px   e.g. Email-Login/Cost-By-Age-80
+     1     1f  left:24px top:222px   e.g. Email-Login/Cost-By-Age-80
+     1     1f  left:24px right:24px top:343px   e.g. Email-Login/Cost-Next-30
+     1     1f  left:0 right:0 top:603px   e.g. Email-Login/Cost-Next-30
+     1     1f  left:24px right:24px top:653px   e.g. Email-Login/Cost-Next-30
+     1     1f  left:24px top:284px   e.g. Email-Login/Cost-Next-365
+     1     1f  left:0 top:126px   e.g. Email-Login/Day-Zero
+     1     1f  left:24px right:24px top:382px   e.g. Email-Login/Day-Zero
+     1     1f  left:24px right:24px top:504px   e.g. Email-Login/Day-Zero
+     1     1f  left:0 right:0 top:158px   e.g. Email-Login/Detail-Platinum
+     1     1f  left:24px right:24px top:354px   e.g. Email-Login/Detail-Platinum
+     1     1f  left:24px right:24px top:496px   e.g. Email-Login/Detail-Platinum
+     1     1f  left:44px right:44px top:596px   e.g. Email-Login/Detail-Platinum
+     1     1f  left:0 right:0 top:212px   e.g. Email-Login/Drop-Received
+     1     1f  left:24px right:24px top:432px   e.g. Email-Login/Drop-Received
+     1     1f  left:24px right:24px top:462px   e.g. Email-Login/Enlisting-Aegis
+     1     1f  left:24px right:24px top:112px bottom:0   e.g. Email-Login/Letter-Week-XII
+     1     1f  left:24px right:24px bottom:0 height:190px   e.g. Email-Login/Letter-Week-XII
+     1     1f  left:0 right:0 top:352px   e.g. Email-Login/Log-Reports
+     1     1f  left:24px right:24px top:432px height:52px   e.g. Email-Login/Log-Reports
+     1     1f  left:24px right:24px top:518px   e.g. Email-Login/Log-Reports
+     1     1f  left:0 right:0 top:288px   e.g. Email-Login/Morning-5-Done
+     1     1f  left:24px right:24px top:458px   e.g. Email-Login/Morning-5-Done
+     1     1f  left:0 right:0 top:470px   e.g. Email-Login/Night-2-Record
+     1     1f  left:24px right:24px top:453px   e.g. Email-Login/Night-4-Closed
+     1     1f  left:0 right:0 top:329px   e.g. Email-Login/One-Bad-Day
+     1     1f  left:0 right:0 top:266px   e.g. Email-Login/Paywall-Confirmed
+     1     1f  left:24px right:24px top:257px   e.g. Email-Login/Paywall-Rescue
+     1     1f  right:24px top:70px   e.g. Email-Login/Paywall
+     1     1f  left:24px top:66px   e.g. Email-Login/Paywall
+     1     1f  left:24px right:24px top:130px   e.g. Email-Login/Paywall
+     1     1f  left:24px right:24px top:318px   e.g. Email-Login/Paywall
+     1     1f  left:24px right:24px top:520px   e.g. Email-Login/Paywall
+     1     1f  left:24px right:24px top:552px   e.g. Email-Login/Paywall
+     1     1f  left:0 top:90px   e.g. Email-Login/Reminders-Setup
+     1     1f  left:24px right:24px top:320px   e.g. Email-Login/Reminders-Setup
+     1     1f  left:24px right:24px top:470px   e.g. Email-Login/Reminders-Setup
+     1     1f  left:0 top:111px   e.g. Email-Login/SOS-Challenge
+     1     1f  left:0 top:324px   e.g. Email-Login/Score-Detail
+     1     1f  left:24px right:24px top:600px   e.g. Email-Login/Score-Detail
+     1     1f  left:0 right:0 top:420px bottom:0   e.g. Email-Login/Sheet-Edit-Name
+     1     1f  left:0 right:0 top:512px bottom:0   e.g. Email-Login/Sheet-Profile-Photo
+     1     1f  left:0 right:0 top:556px bottom:0   e.g. Email-Login/Sheet-Sign-Out
+     1     1f  left:136px top:330px   e.g. Email-Login/Splash
+     1     1f  left:0 right:0 top:478px   e.g. Email-Login/Splash
+     1     1f  left:0 right:0 top:224px   e.g. Email-Login/Starting-Score
+     1     1f  left:0 right:0 top:494px   e.g. Email-Login/Starting-Score
+     1     1f  left:24px right:24px top:556px   e.g. Email-Login/Starting-Score
+     1     1f  left:24px right:24px top:150px   e.g. Email-Login/The-Vow
+     1     1f  left:32px right:32px top:240px   e.g. Email-Login/Tiers-One-offs
+     1     1f  left:0 top:231.5px   e.g. Email-Login/Today-Home-III
+     1     1f  left:24px right:24px top:413px   e.g. Email-Login/Today-Home-III
+     1     1f  left:24px right:24px top:439px   e.g. Email-Login/Today-Home-III
+     1     1f  left:24px right:24px top:595px   e.g. Email-Login/Today-Home-III
+     1     1f  left:24px right:24px top:623px   e.g. Email-Login/Today-Home-III
+     1     1f  left:24px right:24px top:240px   e.g. Email-Login/Today-Home
+     1     1f  left:24px top:334px   e.g. Email-Login/Today-Home
+     1     1f  left:24px right:24px top:622px   e.g. Email-Login/Today-Home
+     1     1f  left:24px right:24px top:650px   e.g. Email-Login/Today-Home
+     1     1f  left:0 right:0 top:262px   e.g. Email-Login/Urge-Hub-Breathe
+     1     1f  left:0 right:0 top:590px   e.g. Email-Login/Urge-Hub-Breathe

@@ -1,0 +1,8 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 46.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 74.7 | 310 | 243.7 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | The afternoon decision
+div | 41.5 | 364 | 310 | 52 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | At 3 p.m., you decide you do not want to watch porn tonight.
+div | 41.5 | 438 | 310 | 104 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | That decision uses capacities like planning, holding a goal in mind, comparing consequences, and stopping an immediate response.

@@ -1,0 +1,32 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 70 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Fifteen minutes, no switching
+div | 24 | 260 | 345 | 484 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 279 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 260 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 270 | 20 | 20 | - | - | - | - | - | -
+rect | 38.5 | 273 | 11 | 14 | - | - | - | - | - | -
+path | 41.5 | 277.5 | 5 | 6 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Choose one thing with a fixed end
+div | 78 | 284 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | one article, one chapter, one tutorial, one document, one piece of music, or another single item.
+div | 24 | 363 | 345 | 44 | - | - | - | - | - | -
+div | 24 | 363 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 373 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 376 | 14 | 14 | - | - | - | - | - | -
+path | 40.8 | 380.6 | 6.4 | 4.8 | - | - | - | - | - | -
+div | 78 | 363 | 291 | 44 | - | - | - | - | - | -
+div | 78 | 363 | 291 | 44 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | Close every unrelated tab or app. Turn off autoplay if it applies.
+div | 24 | 429 | 345 | 110 | - | - | - | - | - | -
+div | 24 | 429 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 439 | 20 | 20 | - | - | - | - | - | -
+path | 38 | 442.5 | 12.5 | 12.5 | - | - | - | - | - | -
+div | 78 | 429 | 291 | 110 | - | - | - | - | - | -
+div | 78 | 429 | 291 | 110 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | Put a sheet of paper beside you. Every time you want to switch tabs, check another app, search for something new, or skip ahead for novelty, make one tally mark and stay with the original item.
+div | 24 | 595 | 345 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | At the end, write the number of tally marks. Do not aim for zero; the count only shows how often you wanted to switch.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

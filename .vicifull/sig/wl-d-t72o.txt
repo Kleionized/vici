@@ -1,0 +1,25 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 70 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Two columns: fixed, possible
+div | 24 | 260 | 345 | 484 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 286 | - | - | - | - | - | -
+div | 24 | 260 | 345 | 110 | - | - | - | - | - | -
+div | 24 | 260 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 270 | 20 | 20 | - | - | - | - | - | -
+rect | 38.5 | 273 | 11 | 14 | - | - | - | - | - | -
+path | 41.5 | 277.5 | 5 | 6 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 110 | - | - | - | - | - | -
+div | 78 | 260 | 291 | 110 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | What has already happened and cannot be changed, such as years spent on porn, a relapse, a breakup, a missed opportunity, lost money, or another past event.
+div | 24 | 392 | 345 | 154 | - | - | - | - | - | -
+div | 24 | 392 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 402 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 405 | 14 | 14 | - | - | - | - | - | -
+path | 40.8 | 409.6 | 6.4 | 4.8 | - | - | - | - | - | -
+div | 78 | 392 | 291 | 154 | - | - | - | - | - | -
+div | 78 | 392 | 291 | 154 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | What you can still do now, such as apologising, repaying something, making a booking, applying, deleting an old porn account or saved link, contacting someone, finishing a piece of work, or not repeating the same behaviour tonight.
+div | 24 | 612 | 345 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Spend 15 minutes on the action that is still possible, or finish it immediately if it is a message, booking, or payment.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

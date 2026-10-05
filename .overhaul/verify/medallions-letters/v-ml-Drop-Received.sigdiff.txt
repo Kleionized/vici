@@ -1,0 +1,6 @@
+~ -                                        radius: - → 88px
+# count P:109,212,176,176: design 1, app 3
+~ The year                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ See the receipt                          type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 33 design rows, 39 app rows; 4 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 1 radius-notation only (D015) (use --all to list extras)

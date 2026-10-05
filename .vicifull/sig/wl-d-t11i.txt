@@ -1,0 +1,31 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Progress isn’t linear
+div | 38 | 193 | 317 | 105 | - | - | - | - | 14.5px/400/normal/21px/rgb(85, 83, 78) | Compare the last seven days with the period just before you started Vici. Use the app if it has the data; otherwise use what you can remember. Write a short comparison in three areas:
+div | 26 | 314 | 340 | 200 | - | - | - | - | - | -
+div | 26 | 314 | 340 | 200 | - | - | - | - | - | -
+div | 196 | 340 | 2.5 | 2.5 | rgba(200, 225, 235, 0.4) | 50% | - | - | - | -
+div | -4 | 488 | 400 | 56 | rgb(236, 235, 229) | 50% 50% 0px 0px / 20px 20px 0px 0px | - | - | - | -
+div | 70 | 370 | 100 | 100 | rgb(251, 250, 247) | 12px | 0.85 | rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, rgba(40, 38, 32, 0.1) 0px 6px 14px 0px | - | -
+div | 86 | 404 | 14 | 46 | rgb(198, 197, 192) | 4px 4px 2px 2px | - | - | - | -
+div | 108 | 420 | 14 | 30 | rgb(198, 197, 192) | 4px 4px 2px 2px | - | - | - | -
+div | 130 | 412 | 14 | 38 | rgb(198, 197, 192) | 4px 4px 2px 2px | - | - | - | -
+div | 86 | 454 | 68 | 3 | rgb(214, 213, 208) | 1.5px | - | - | - | -
+svg | 181 | 406 | 30 | 22 | - | - | - | - | - | -
+path | 185 | 410 | 18 | 14 | - | - | - | - | - | -
+div | 222 | 358 | 100 | 112 | rgb(251, 250, 247) | 12px | - | rgba(0, 0, 0, 0.07) 0px 0px 0px 1px, rgba(40, 38, 32, 0.12) 0px 8px 18px 0px | - | -
+div | 238 | 410 | 14 | 34 | rgb(198, 197, 192) | 4px 4px 2px 2px | - | - | - | -
+div | 260 | 396 | 14 | 48 | rgb(198, 197, 192) | 4px 4px 2px 2px | - | - | - | -
+div | 282 | 382 | 14 | 62 | rgb(233, 210, 164) | 4px 4px 2px 2px | - | - | - | -
+div | 288 | 386 | 36 | 36 | - | 50% | - | - | - | -
+div | 238 | 454 | 68 | 3 | rgb(214, 213, 208) | 1.5px | - | - | - | -
+div | 24 | 534 | 345 | 68 | rgb(255, 255, 255) | 16px | - | rgba(0, 0, 0, 0.07) 0px 0px 0px 1px, rgba(40, 38, 32, 0.05) 0px 6px 16px 0px | - | -
+svg | 42 | 558 | 20 | 20 | - | - | - | - | - | -
+circle | 43.7 | 559.7 | 16.7 | 16.7 | - | - | - | - | - | -
+path | 48.4 | 565.4 | 7.1 | 5.1 | - | - | - | - | - | -
+span | 75 | 549 | 276 | 38 | - | - | - | - | 13.5px/500/normal/19px/rgb(85, 83, 78) | Done when three comparisons are written and this week’s change has begun.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 205.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 159.7 | 760 | 73.7 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Continue

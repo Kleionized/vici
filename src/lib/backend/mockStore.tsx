@@ -207,18 +207,15 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     async (input: TidelineEventInput) => {
       const cur = dataRef.current;
       if (!cur) return;
+      // Every field the input carries is kept, as the real `events:create`
+      // mutation keeps it — listing them by hand dropped `durationSeconds` and
+      // `severityAfter`, so a mock build's ridden urges never reached the hub's
+      // proof and surfed panes.
       const event: TidelineEvent = {
+        ...input,
         _id: genId('evt'),
         userId: cur.user.clerkUserId,
         createdAt: input.createdAt ?? Date.now(),
-        type: input.type,
-        trigger: input.trigger,
-        precedingState: input.precedingState,
-        whatHelped: input.whatHelped,
-        lesson: input.lesson,
-        note: input.note,
-        severity: input.severity,
-        reopens: input.reopens,
       };
       await apply({ ...cur, events: [...cur.events, event] });
     },

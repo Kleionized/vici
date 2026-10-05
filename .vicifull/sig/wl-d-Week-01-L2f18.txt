@@ -1,0 +1,28 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 202.2 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 634 | - | - | - | - | - | -
+div | 41.5 | 156 | 310 | 64 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Where are the easiest routes back for you?
+div | 125.9 | 260 | 141.3 | 18 | - | - | - | - | 15px/500/normal/normal/rgb(139, 136, 130) | Select all that apply.
+div | 38 | 318 | 317 | 396 | - | - | - | - | - | -
+div | 38 | 318 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(29, 28, 26) 0px 0px 0px 2px, rgba(40, 38, 32, 0.08) 0px 4px 10px 0px | - | -
+div | 56 | 335 | 22 | 22 | - | 50% | - | - | - | -
+span | 92 | 335.5 | 236.6 | 21 | - | - | - | - | 17px/600/normal/21px/rgb(29, 28, 26) | Saved photos, videos, or links
+div | 38 | 386 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 403 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 403.5 | 242.4 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Social media accounts or feeds
+div | 38 | 454 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 471 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 471.5 | 130.3 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Certain websites
+div | 38 | 522 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 539 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 539.5 | 223.4 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Hidden folders or downloads
+div | 38 | 590 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 607 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 607.5 | 131.3 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Physical material
+div | 38 | 658 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 675 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 675.5 | 120.2 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Something else
+div | 16 | 770 | 361 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 159.7 | 786 | 73.7 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Continue

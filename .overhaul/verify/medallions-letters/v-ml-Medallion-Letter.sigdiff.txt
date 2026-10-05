@@ -1,0 +1,15 @@
+~ Enclosure from VICI                      type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+# count P:16,112,361,590: design 1, app 2
+MISSING in app:  div | 16 | 112 | 361 | 422 | - | - | - | - | - | -
+~ Dear Sam,                                type: 22px/700/-0.3px/normal/rgb(242, 240, 236) → 22px/700/-0.3px/27px/rgb(242, 240, 236)
+# count P:58,476,44,44: design 1, app 2
+MISSING in app:  g | 69.7 | 488.5 | 20.6 | 15.6 | - | - | - | - | - | -
+MISSING in app:  path | 71.4 | 489.3 | 12 | 13.4 | - | - | - | - | - | -
+MISSING in app:  circle | 83.3 | 488.5 | 5.8 | 5.8 | - | - | - | - | - | -
+MISSING in app:  path | 69.7 | 504.1 | 20.6 | 0 | - | - | - | - | - | -
+MISSING in app:  div | 116 | 480 | 184.8 | 36 | - | - | - | - | - | -
+MISSING in app:  span | 116 | 480 | 184.8 | 18 | - | - | - | - | 15px/700/normal/normal/rgb(242, 240, 236) | Rebound, Tier I
+MISSING in app:  span | 116 | 500 | 184.8 | 16 | - | - | - | - | 13px/400/normal/normal/rgb(155, 150, 142) | A check-in on the day after a slip.
+~ Save to Log                              type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Open the enclosure                       type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 69 design rows, 74 app rows; 4 differing, 8 missing, 10 extra, 0 sub-0.25pt rounding (use --all to list extras)

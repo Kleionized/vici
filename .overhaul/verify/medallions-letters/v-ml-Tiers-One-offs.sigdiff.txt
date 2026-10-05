@@ -1,0 +1,14 @@
+MISSING in app:  div | 371 | 80 | 0 | 0 | - | - | - | - | - | -
+# count P:68,240,84,84: design 1, app 2
+~ Veni                                     type: 17px/700/-0.2px/normal/rgb(242, 240, 236) → 17px/700/-0.2px/21px/rgb(242, 240, 236)
+~ Jun 9                                    type: 12px/700/normal/normal/rgb(181, 176, 168) → 12px/700/normal/15px/rgb(181, 176, 168)
+~ Jun 9                                    type: 12px/700/normal/normal/rgb(181, 176, 168) → 12px/700/normal/15px/rgb(181, 176, 168)
+# count P:241,240,84,84: design 1, app 2
+~ First light                              type: 17px/700/-0.2px/normal/rgb(242, 240, 236) → 17px/700/-0.2px/21px/rgb(242, 240, 236)
+# count P:68,442,84,84: design 1, app 2
+~ Black Box                                type: 17px/700/-0.2px/normal/rgb(242, 240, 236) → 17px/700/-0.2px/21px/rgb(242, 240, 236)
+~ Jul 20                                   type: 12px/700/normal/normal/rgb(181, 176, 168) → 12px/700/normal/15px/rgb(181, 176, 168)
+# count P:241,442,84,84: design 1, app 2
+~ Return                                   type: 17px/700/-0.2px/normal/rgb(155, 150, 142) → 17px/700/-0.2px/21px/rgb(155, 150, 142)
+~ Not yet                                  type: 12px/700/normal/normal/rgb(90, 87, 79) → 12px/700/normal/15px/rgb(90, 87, 79)
+--- 221 design rows, 234 app rows; 8 differing, 1 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)

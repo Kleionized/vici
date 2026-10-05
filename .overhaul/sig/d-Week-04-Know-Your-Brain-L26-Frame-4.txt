@@ -1,0 +1,23 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 26
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 86.3 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 219 | 329 | 100 | - | - | - | - | - | -
+div | 32 | 219 | 329 | 100 | - | - | - | - | - | -
+div | 32 | 219 | 159.5 | 100 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 48 | 235 | 127.5 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Near misses felt
+div | 48 | 259 | 127.5 | 44 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Less pleasant than wins
+div | 201.5 | 219 | 159.5 | 100 | rgb(30, 30, 30) | 18px | - | - | - | -
+div | 217.5 | 235 | 127.5 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Yet they could
+div | 217.5 | 259 | 127.5 | 44 | - | - | - | - | 15px/400/normal/22px/rgb(242, 240, 236) | Increase the wish to keep playing
+div | 32 | 347 | 329 | 168 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | A gambling experiment by Luke Clark and colleagues helps illustrate one part of this. Near misses could increase the wish to keep playing even though they were less pleasant than wins, especially when people had chosen the play themselves.
+div | 32 | 537 | 329 | 84 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | It was a specific gambling task, not a study of porn. Wanting another attempt and enjoying the result were different things.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

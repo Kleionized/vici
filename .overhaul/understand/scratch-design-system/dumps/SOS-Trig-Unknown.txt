@@ -1,0 +1,31 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · What’s feeding it
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="276"  height="144"  x="58"  y="64"  rx="18"  fill="#3A3835"
+    <g> transform="rotate(-12 176 136)"
+      <rect> width="72"  height="140"  x="140"  y="66"  rx="14"  fill="#F2F0EC"
+      <rect> width="30"  height="34"  x="149"  y="75"  rx="9"  fill="#0D0D0D"
+      <circle> cx="158.5"  cy="85"  r="5.5"  fill="#F2F0EC"
+      <circle> cx="158.5"  cy="85"  r="2.4"  fill="#0D0D0D"
+      <circle> cx="158.5"  cy="99.5"  r="5.5"  fill="#F2F0EC"
+      <circle> cx="158.5"  cy="99.5"  r="2.4"  fill="#0D0D0D"
+      <circle> cx="171"  cy="85"  r="2.4"  fill="#F2F0EC"
+    <rect> width="26"  height="18"  x="282"  y="102"  rx="7"  fill="#F2F0EC"
+    <circle> cx="270"  cy="112"  r="26"  fill="#F2F0EC"
+    <circle> cx="270"  cy="112"  r="18.5"  fill="#0D0D0D"
+    <path> d="M258 104 C 262 99, 268 97, 274 98"  fill="none"  stroke="#A8A39A"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Put the phone down.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · Move somewhere different and keep the phone out of reach for ten minutes.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Done

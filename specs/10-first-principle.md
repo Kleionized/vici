@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/First Principle`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `First Principle`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `First-Principle.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `First-Principle.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -38,9 +46,9 @@ element on the frame is here, in paint order, indented by depth.
       <path> d="M96 100 C106 104 118 100 136 97"  fill="none"  stroke="rgba(244,243,240,0.28)"  stroke-width="3.5"  stroke-linecap="round"
       <circle> cx="115"  cy="76"  r="4"  fill="#E9D2A4"
   <div> position:absolute  left:26px  right:26px  top:514px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · Urges do not stay at full strength forever.
+    · An urge doesn’t stay at its worst for very long.
   <div> position:absolute  left:26px  right:26px  top:593px  color:rgba(244,243,240,0.75)  font-size:15.5px  font-weight:400  line-height:23px  text-align:center  text-wrap:pretty
-    · The first job is to get through the few minutes when acting on one feels easiest.
+    · The first job is getting through the part where giving in feels easiest.
   <div> position:absolute  left:0  right:0  top:712px  display:flex  justify-content:center  gap:10px
     <div> width:7px  height:7px  background:#F4F3F0  border-radius:50%
     <div> width:7px  height:7px  background:rgba(255,255,255,0.25)  border-radius:50%

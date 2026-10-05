@@ -1,0 +1,7 @@
+MISSING in app:  div | 24 | 308 | 345 | 364 | - | - | - | - | - | -
+~ When                                     type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ What was going on                        type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Set off by                               type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Change for next time                     type: 14px/700/normal/normal/rgb(155, 150, 142) → 14px/700/normal/17px/rgb(155, 150, 142)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 28 design rows, 35 app rows; 5 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

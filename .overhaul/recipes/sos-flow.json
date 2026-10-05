@@ -1,0 +1,178 @@
+[
+  {
+    "frame": "Cue Intro Modal",
+    "route": "/urge",
+    "wait": 1500,
+    "note": "the interrupt opens on this board; no seed. /rough-first90 opens the same board (0.00 %)."
+  },
+  {
+    "frame": "SOS Strength",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-strength.js",
+    "wait": 900,
+    "note": "default band 3 (Intense) is the drawn state"
+  },
+  {
+    "frame": "Cue Hue Picker",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-where.js",
+    "wait": 900,
+    "note": "default place \"Somewhere private\" is the drawn state; 8 px of AA on the chosen row's lower corner arcs"
+  },
+  {
+    "frame": "Surf Step 1",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-move1.js",
+    "wait": 900,
+    "note": "Move I — the place board (sos-boards) now closes on \"Continue\""
+  },
+  {
+    "frame": "Surf Step 3",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-move2.js",
+    "wait": 900,
+    "note": "Move II — the file name describes an older order"
+  },
+  {
+    "frame": "Cue Set Confirmation",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-move3.js",
+    "wait": 900,
+    "note": "Move III"
+  },
+  {
+    "frame": "SOS Reason Picker",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-reason.js",
+    "wait": 900,
+    "note": "multi-select (D324): the drive clears any chosen chip, then picks \"Phone in bed\""
+  },
+  {
+    "frame": "SOS Feeling Picker",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-feel.js",
+    "wait": 900,
+    "note": "picks \"Lonely\" only"
+  },
+  {
+    "frame": "SOS Reassess",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-reassess.js",
+    "wait": 900,
+    "note": "defaults: first read 3 (shown dashed), second read 1 — \"Coming down — from 4 to 2\". The line follows the direction (D254): `node scripts/overhaul/shot.mjs app /urge \"\" --do=\"window.__BAND='Faint'\" --script=.overhaul/drives/sf-func-reassess.js` prints every second read for that first read (Rising / Holding steady — still at N / Coming down / It passed). Default second read (D254, Phase 2): min(1, first read) until answered — Faint opens on Gone / It passed, Mild on Holding steady — still at 2, Intense on the frame."
+  },
+  {
+    "frame": "SOS Afterward",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-afterward.js",
+    "wait": 900,
+    "note": "the drive types \"I need to say…\" (CRITIC C9: the frame draws the typed state); residue = the frame's drawn 2×22 caret (172,288 4×28). Long text: `--script=.overhaul/drives/sf-func-longnote.js` types ~330 characters — the card stops at 8 lines (240) and scrolls inside, clear of the envelope (393) and of Done (375×667)."
+  },
+  {
+    "frame": "Surf Complete",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-done.js",
+    "wait": 900,
+    "note": "the drive advances Date.now by 22 min before the breathing board's Done, so the board reads \"Twenty-two minutes\"; no seed needed (the count is gone)"
+  },
+  {
+    "frame": "Relapse Log",
+    "route": "/relapse",
+    "script": ".overhaul/drives/sf-rlog.js",
+    "wait": 900
+  },
+  {
+    "frame": "Relapse Twice",
+    "route": "/relapse",
+    "script": ".overhaul/drives/sf-rtwice.js",
+    "wait": 900
+  },
+  {
+    "frame": "Relapse Resign",
+    "route": "/relapse",
+    "script": ".overhaul/drives/sf-rresign.js",
+    "wait": 900,
+    "initseed": ".overhaul/day-seed.js",
+    "note": "needs the signed-in \"Jerry\" with a Pledge entry"
+  },
+  {
+    "frame": "Relapse Begin",
+    "route": "/relapse",
+    "script": ".overhaul/drives/sf-rbegin.js",
+    "wait": 900,
+    "initseed": ".overhaul/day-seed.js"
+  },
+  {
+    "frame": "Urge Hub Now",
+    "route": "/urge-hub",
+    "wait": 1500,
+    "initseed": ".overhaul/sosflow-hub-seed.js",
+    "note": "seeds from `node .overhaul/f-sosflow-seeds.mjs` (frozen clock Fri 25 Jul 2025 20:00, live urge 2:18 old). Residue 0.66 %: the arc is the remaining 88.5 % of the 20-min window (D066/D257), the frame draws 62 % beside the same 17:42 — no single moment draws both"
+  },
+  {
+    "frame": "Urge Hub Score",
+    "route": "/urge-hub",
+    "script": ".overhaul/drives/sf-hubscore.js",
+    "wait": 900,
+    "initseed": ".overhaul/sosflow-hub-seed.js"
+  },
+  {
+    "frame": "Urge Hub Proof",
+    "route": "/urge-hub",
+    "script": ".overhaul/drives/sf-hubproof.js",
+    "wait": 900,
+    "initseed": ".overhaul/sosflow-hub-seed.js"
+  },
+  {
+    "frame": "Urge Hub Surfed",
+    "route": "/urge-hub",
+    "script": ".overhaul/drives/sf-hubsurfed.js",
+    "wait": 900,
+    "initseed": ".overhaul/sosflow-hub-surfed-seed.js",
+    "note": "85D has its own seed — its four lengths contradict 85C's last four (Q14)"
+  },
+  {
+    "frame": "Urge Hub Pledges",
+    "route": "/urge-hub",
+    "script": ".overhaul/drives/sf-hubpledge.js",
+    "wait": 900,
+    "initseed": ".overhaul/sosflow-hub-pledge-seed.js",
+    "note": "85E has its own seed — \"Kept every day since.\" needs no slip after the signing, 85B's grid has one 10 days back (Q13)"
+  },
+  {
+    "frame": "Urge Hub Breathe",
+    "route": "/urge-hub",
+    "script": ".overhaul/drives/sf-hubbreathe.js",
+    "wait": 60,
+    "initseed": ".overhaul/sosflow-hub-seed.js",
+    "note": "capture at once: the disc starts breathing in on mount; ~0.3 s in it is r70.4. Residue 0.18 %: the SOS settings gear left of ✕ (312,68 24×24, D256 — the hub keeps the old stage's door to settings; not drawn by the frame) plus the disc's edge ring. Under prefers-reduced-motion (`node .overhaul/f-sosflow-shot-rm.mjs app /urge-hub out.png --rm --initseed=.overhaul/sosflow-hub-seed.js --script=.overhaul/drives/sf-hubbreathe.js --wait=60`) only the gear remains: 0.05 % (658 px + 4 px AA)."
+  },
+  {
+    "frame": "(unframed) interrupt breathing stage",
+    "route": "/urge",
+    "script": ".overhaul/drives/sf-ibreathe.js",
+    "wait": 200,
+    "note": "85F's board in the interrupt: gear (SOS settings) left of ✕, empty left slot, no dots. 375×667: the orb fits itself (≈0.645) so the phase row clears Done."
+  },
+  {
+    "frame": "(functional) hub settings gear",
+    "route": "/urge-hub",
+    "initseed": ".overhaul/sosflow-hub-seed.js",
+    "script": ".overhaul/drives/sf-func-hubsettings.js",
+    "wait": 600,
+    "note": "Breathe → gear → sheet → Silent / Violet / Dawn saved → sheet Done → Back → Breathe reopens with no sheet. Returns \"all ok (7)\"."
+  },
+  {
+    "frame": "(functional) hub pager return",
+    "route": "/urge-hub",
+    "initseed": ".overhaul/sosflow-hub-seed.js",
+    "script": ".overhaul/drives/sf-func-hubreturn.js",
+    "wait": 300,
+    "note": "Pane 3 → Breathe → Back comes back on page 3 with dot 3 (was page 1 with dot 3); also Pane 5 → Done, Pane 1 → Back."
+  },
+  {
+    "frame": "(unframed) SOS stages at short sizes",
+    "unreachable": "not a single capture: walked by `node .overhaul/f-sosflow-stages.mjs <W> <H> <outdir> interrupt|hub` (breathing → tap → three taps → odd one out → ring, or the hub chain back to the panes), which prints each band's scroll extent and writes one PNG per stage",
+    "note": "Phase 2: at 375×667 nothing scrolls on any stage in either context"
+  }
+]

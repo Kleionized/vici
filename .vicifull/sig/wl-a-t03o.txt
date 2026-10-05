@@ -1,0 +1,59 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Pick your twenty minutes
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 409 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+circle | 40.3 | 241.3 | 7.5 | 7.5 | - | - | - | - | - | -
+path | 35.9 | 236.9 | 16.3 | 16.3 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Good weather
+div | 78 | 249 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Walk around the block, sit in a park, get a drink, run an errand, or take a route that keeps you moving.
+div | 24 | 328 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 328 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 337 | 22 | 22 | - | - | - | - | - | -
+path | 36.1 | 340.2 | 15.1 | 10.6 | - | - | - | - | - | -
+path | 39.7 | 353.1 | 8.7 | 2.4 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Bad weather
+div | 78 | 352 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use a library, cafe, gym, lobby, shopping centre, covered walkway, or another shared indoor place.
+div | 24 | 431 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 431 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 440 | 22 | 22 | - | - | - | - | - | -
+path | 36.8 | 444 | 14.3 | 14.2 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Cannot leave home
+div | 78 | 455 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Move to the least isolated part of the home. Open the curtains. Sit near other people if possible. Use a window, balcony, or doorway for fresh air.
+div | 24 | 553 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 553 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 562 | 22 | 22 | - | - | - | - | - | -
+path | 35.9 | 568.2 | 16.4 | 9.2 | - | - | - | - | - | -
+div | 78 | 553 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 553 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Urge already strong
+div | 78 | 577 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Close the tab or app first. Leave the room before deciding anything else. Take the phone only if you need it for safety or directions.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

@@ -1,0 +1,21 @@
+--- .vicifull/pretty/prev/Surf-Step-1.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Surf-Step-1.html	2026-09-05 00:22:35
+@@ -335,5 +335,18 @@
+         · I’m up
+       </span>
+     </div>
++    <div style="
++      | position:absolute;
++      | left:0;
++      | right:0;
++      | bottom:44px;
++      | text-align:center;
++      | font-size:15px;
++      | font-weight:500;
++      | color:#8B8882;
++      | cursor:pointer;
++    ">
++      · Try a different step
++    </div>
+   </div>
+ </div>

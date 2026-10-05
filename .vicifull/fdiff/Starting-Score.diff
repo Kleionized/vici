@@ -1,0 +1,45 @@
+--- .vicifull/pretty/prev/Starting-Score.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Starting-Score.html	2026-09-05 00:22:35
+@@ -110,7 +110,7 @@
+     | letter-spacing:1.2px;
+     | color:#8B8882;
+   ">
+-    · YOUR RECOVERY SCORE
++    · YOUR VICI RATING
+   </div>
+   <div style="
+     | position:absolute;
+@@ -237,20 +237,20 @@
+     ">
+       <span style="
+         | font-size:60px;
+-        | font-weight:600;
+-        | letter-spacing:-2px;
++        | font-weight:500;
++        | letter-spacing:1.5px;
+         | line-height:1;
+         | color:#1D1C1A;
+         | font-variant-numeric:tabular-nums;
+       ">
+-        · 412
++        · 842
+       </span>
+       <span style="
+         | font-size:12.5px;
+         | font-weight:600;
+         | color:#8B8882;
+       ">
+-        · of 3,000
++        · Starting point
+       </span>
+     </div>
+   </div>
+@@ -291,7 +291,7 @@
+     | line-height:21px;
+     | color:#55534E;
+   ">
+-    · This is not a grade — just where you start. It can move.
++    · This is where you start. What you do from here matters more than the questionnaire.
+   </div>
+   <div style="
+     | position:absolute;

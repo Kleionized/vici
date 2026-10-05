@@ -1,21 +1,21 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
+import { View } from 'react-native';
 
-import { AppText, CloseGlyph, LoadingView, LockGlyph, PressScale } from '@/components/ui';
-import { useCurrentUser, useLessonProgressMap } from '@/lib/backend';
+import { CourseRow, ROW_GAP, courseDay } from '@/components/library/WeekPage';
+import { ChevronR, LoadingView, MonoText, NavBar, Screen, ScrollRegion } from '@/components/mono';
 import { CURRICULUM_84_DAYS } from '@/content/curriculum84';
+import { useCurrentUser, useLessonProgressMap } from '@/lib/backend';
 import { lessonSlug } from '@/lib/curriculum';
-import { colors, sans } from '@/lib/theme';
+import { mono } from '@/lib/theme';
 
 /**
- * The six first steps, opened from the Today card. A sheet rather than a
- * screen: it is a look at a checklist, not somewhere you go — the card used to
- * jump straight into whichever lesson you were up to, which told you nothing
- * about the other five.
+ * The six first steps, opened from the Today card — no frame draws it (routes
+ * §4.9). A close-only nav with its caption, the heading and its line, the
+ * lesson reader's 3pt progress rail for how many are done, and the six as
+ * week-page rows: done (check), today's (`Continue`), and the rest by number —
+ * the ones not open yet listed but disabled, with no lock glyph (CRITIC C7).
+ * Tapping one closes the checklist and opens that lesson.
  */
 export default function FirstSteps() {
   const router = useRouter();
@@ -25,135 +25,64 @@ export default function FirstSteps() {
   const [now] = useState(() => Date.now());
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  if (progress === undefined) return <LoadingView />;
+  if (progress === undefined) return <LoadingView onClose={close} />;
 
   // The first six days of week one, and the day the reader is on — the same
-  // reckoning the week board and the lessons browser use.
+  // reckoning the week pages and the lessons browser use.
   const steps = CURRICULUM_84_DAYS.slice(0, 6);
-  const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  const day = courseDay(user?.createdAt, now);
   const done = steps.filter((lesson) => progress[lessonSlug(lesson.day)]?.status === 'completed').length;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1 }}>
-        {/* the sheet's own grabber and header, as the canvas draws them */}
-        <View style={{ alignItems: 'center', paddingTop: 8 }}>
-          <View style={{ width: 44, height: 5, borderRadius: 3, backgroundColor: 'rgba(0,0,0,0.14)' }} />
-        </View>
-        <View style={{ height: 52, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-          <AppText style={[sans('600'), { fontSize: 17.5, color: colors.text }]}>First steps</AppText>
-          <PressScale
-            onPress={close}
-            accessibilityRole="button"
-            accessibilityLabel="Close"
-            hitSlop={10}
-            style={{ position: 'absolute', right: 12, width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.05)' }}>
-            <CloseGlyph />
-          </PressScale>
-        </View>
+    <Screen>
+      <NavBar left="empty" centre={{ title: 'First steps' }} right="close" onClose={close} />
 
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 10, paddingBottom: 32 }}>
-          <AppText style={[sans('500'), { fontSize: 24, lineHeight: 31, letterSpacing: -0.3, color: colors.text }]}>
+      <ScrollRegion top={100} contentStyle={{ paddingTop: 36, paddingBottom: 48 }}>
+        <View style={{ marginHorizontal: 24, gap: 8 }}>
+          <MonoText v="h1" accessibilityRole="header">
             Six gentle first steps
-          </AppText>
-          <AppText style={[sans('400'), { marginTop: 10, marginRight: 24, fontSize: 15, lineHeight: 23, color: colors.textMuted }]}>
-            No rush. These help VICI fit your life, and they open one at a time as you go.
-          </AppText>
+          </MonoText>
+          <MonoText v="p">No rush. These help VICI fit your life, and they open one at a time as you go.</MonoText>
+        </View>
 
-          <View style={{ marginTop: 22, flexDirection: 'row', gap: 8 }}>
-            {steps.map((lesson, index) => (
-              <View
-                key={lesson.day}
-                style={{ flex: 1, height: 5, borderRadius: 3, backgroundColor: index < done ? colors.ink : '#CFDCE8' }}
-              />
-            ))}
-          </View>
-          <AppText style={[sans('500'), { marginTop: 12, fontSize: 13.5, color: colors.textSoft }]}>
-            {done ? `${done} of ${steps.length} done` : `None done yet · ${steps.length} to go`}
-          </AppText>
-
-          <View style={{ marginTop: 22, borderRadius: 16, borderCurve: 'continuous', backgroundColor: colors.surface, overflow: 'hidden' }}>
-            {steps.map((lesson, index) => {
-              const complete = progress[lessonSlug(lesson.day)]?.status === 'completed';
-              return (
-                <StepRow
-                  key={lesson.day}
-                  n={index + 1}
-                  title={lesson.title}
-                  meta={lesson.summary}
-                  complete={complete}
-                  locked={lesson.day > day && !complete}
-                  last={index === steps.length - 1}
-                  onPress={() => {
-                    close();
-                    router.push(`/lesson-card/${lesson.day}`);
-                  }}
-                />
-              );
-            })}
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
-  );
-}
-
-function StepRow({
-  n,
-  title,
-  meta,
-  complete,
-  locked,
-  last,
-  onPress,
-}: {
-  n: number;
-  title: string;
-  meta: string;
-  complete: boolean;
-  locked: boolean;
-  last: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <View>
-      <PressScale
-        onPress={locked ? undefined : onPress}
-        disabled={locked}
-        accessibilityRole="button"
-        accessibilityState={{ disabled: locked }}
-        accessibilityLabel={`Step ${n}, ${title}${complete ? ', done' : locked ? ', locked' : ''}`}
-        style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, minHeight: 68, opacity: locked ? 0.6 : 1 }}>
+        {/* the lesson reader's progress rail: 3 tall, r2, the line under an ink fill */}
         <View
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: 16,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: complete ? colors.ink : locked ? 'transparent' : '#E7EEF4',
-            boxShadow: locked ? 'inset 0 0 0 1.5px rgba(0,0,0,0.10)' : undefined,
-          }}>
-          {complete ? (
-            <Svg width={14} height={11} viewBox="0 0 16 13" fill="none">
-              <Path d="M1.5 7l4.4 4.5L14.5 1.5" stroke="#F4F3F0" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-            </Svg>
-          ) : locked ? (
-            <LockGlyph color={colors.textSofter} />
-          ) : (
-            <AppText style={[sans('600'), { fontSize: 13, color: colors.text, fontVariant: ['tabular-nums'] }]}>{n}</AppText>
-          )}
+          accessibilityRole="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={steps.length}
+          aria-valuenow={done}
+          style={{ marginTop: 24, marginHorizontal: 24, height: 3, borderRadius: 2, backgroundColor: mono.line, overflow: 'hidden' }}>
+          <View style={{ width: `${(done / steps.length) * 100}%`, height: 3, borderRadius: 2, backgroundColor: mono.ink }} />
         </View>
-        <View style={{ flex: 1, gap: 3 }}>
-          <AppText numberOfLines={2} style={[sans('500'), { fontSize: 16, lineHeight: 21, color: colors.text }]}>{title}</AppText>
-          <AppText style={[sans('400'), { fontSize: 13, color: colors.textSoft }]}>{meta}</AppText>
+        <MonoText v="caps" style={{ marginTop: 12, marginHorizontal: 24 }}>
+          {done ? `${done} of ${steps.length} done` : `None done yet · ${steps.length} to go`}
+        </MonoText>
+
+        <View style={{ marginTop: 24, marginHorizontal: 16, gap: ROW_GAP }}>
+          {steps.map((lesson, index) => {
+            const complete = progress[lessonSlug(lesson.day)]?.status === 'completed';
+            const locked = lesson.day > day && !complete;
+            const n = index + 1;
+            return (
+              <CourseRow
+                key={lesson.day}
+                lead={complete ? 'check' : String(n)}
+                title={lesson.title}
+                detail={lesson.summary}
+                state={complete ? 'done' : lesson.day === day ? 'current' : 'upcoming'}
+                // open but not today's: the done row's brighter chevron; not open yet: the upcoming one
+                trailing={!complete && !locked && lesson.day !== day ? <ChevronR color={mono.mute} /> : undefined}
+                disabled={locked}
+                label={`Step ${n}, ${lesson.title}${complete ? ', done' : locked ? ', locked' : ''}`}
+                onPress={() => {
+                  close();
+                  router.push(`/lesson/day/${lesson.day}`);
+                }}
+              />
+            );
+          })}
         </View>
-      </PressScale>
-      {!last ? <View style={{ position: 'absolute', left: 16, right: 16, bottom: 0, height: 1, backgroundColor: colors.hairline }} /> : null}
-    </View>
+      </ScrollRegion>
+    </Screen>
   );
 }

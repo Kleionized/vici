@@ -1,0 +1,47 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:458px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <g> transform="rotate(-3 210 162)"
+      <rect> width="200"  height="84"  x="110"  y="120"  rx="4"  fill="#55524D"
+      <path> d="M126 140 H294 M126 156 H294 M126 172 H294 M126 188 H294"  fill="none"  stroke="#0D0D0D"  stroke-width="1.6"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M128 176 C 144 162, 160 190, 178 176 C 194 164, 210 186, 228 174 C 242 166, 252 174, 262 166"  fill="none"  stroke="#F2F0EC"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+    <g> transform="translate(134.6 62.1) rotate(35)"
+      <rect> width="128"  height="24"  x="0"  y="0"  rx="12"  fill="#F2F0EC"
+      <rect> width="4"  height="24"  x="86"  y="0"  fill="#0D0D0D"
+      <rect> width="5"  height="24"  x="10"  y="0"  fill="#0D0D0D"
+      <path> d="M127 2 L164 12 L127 22 Z"  fill="#F2F0EC"
+      <path> d="M142 12 H158"  fill="none"  stroke="#0D0D0D"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <circle> cx="139"  cy="12"  r="2.6"  fill="#0D0D0D"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:18px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · Re-sign your pledge.
+    <div> height:6px
+    <div> border-radius:24px  background:#1E1E1E  padding:24px 24px 20px  box-sizing:border-box
+      <div> display:flex  flex-direction:column  gap:22px
+        <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+          · Your pledge
+        <div> font-size:24px  font-weight:700  letter-spacing:-0.4px  line-height:33px  color:#F2F0EC
+          · The mornings are mine again.
+        <div> padding-top:12px  border-bottom:1.5px solid #F2F0EC  height:44px  display:flex  align-items:flex-end  padding-bottom:8px  font-size:28px  font-weight:700  font-style:italic  color:#F2F0EC
+          · Jerry
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Confirm
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Change the pledge

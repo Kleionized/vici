@@ -1,0 +1,11 @@
+~ -                                        radius: 50% → -
+# count P:-40,-140,540,270: design 1, app 2
+~ -                                        radius: 50% → -
+# count P:-41,638,475,475: design 1, app 2
+~ -                                        radius: 50% → 7.5px
+MISSING in app:  span | 168.6 | 316 | 55.8 | 30 | - | - | - | - | 12px/500/normal/15px/rgb(244, 243, 240) | In thebathroom
+MISSING in app:  br | 212.8 | 316 | 0 | 15 | - | - | - | - | - | -
+MISSING in app:  span | 46.3 | 418 | 63.8 | 30 | - | - | - | - | 12px/500/normal/15px/rgb(244, 243, 240) | In theliving room
+MISSING in app:  br | 94.5 | 418 | 0 | 15 | - | - | - | - | - | -
+~ -                                        radius: 50% → 7.5px
+--- 52 design rows, 57 app rows; 4 differing, 4 missing, 5 extra, 0 sub-0.25pt rounding, 4 radius-notation only (D015) (use --all to list extras)

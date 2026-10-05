@@ -1,0 +1,8 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 180.5 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 46.5 | 307 | 300 | 64 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Do not make willpower do every job
+div | 41.5 | 393 | 310 | 52 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Willpower matters most when the conflict cannot be removed.
+div | 41.5 | 467 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | But you should not create the same difficult choice every night just to prove you can win it.

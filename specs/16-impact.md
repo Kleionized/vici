@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q21`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q21`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q21.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q21.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -14,7 +22,6 @@ element on the frame is here, in paint order, indented by depth.
 <div> position:relative  width:393px  height:852px  flex-shrink:0  background:linear-gradient(180deg, rgb(33,33,31) 0%, rgb(55,54,52) 100%)  box-shadow:0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(40,38,32,0.16)  overflow:hidden  font-family:-apple-system,'SF Pro Text',system-ui,'Helvetica Neue',sans-serif  -webkit-font-smoothing:antialiased
   <div> position:absolute  inset:0  overflow:hidden  pointer-events:none
     <div> position:absolute  left:-40px  top:-140px  width:540px  height:270px  background:radial-gradient(closest-side, rgba(180,170,150,0.14), rgba(19,19,19,0) 72%)  border-radius:50%  filter:blur(6px)
-    <div> position:absolute  left:50%  bottom:-347px  width:631px  height:631px  margin-left:-315.5px  background:radial-gradient(closest-side, rgba(255,255,255,0.52), rgba(255,255,255,0.23) 45%, rgba(255,255,255,0) 72%)  border-radius:50%
     <div> position:absolute  inset:0  background-image:url('noise-dark.png')  opacity:0.12
   <div> position:absolute  left:24px  right:24px  top:66px  height:4px  background:rgba(255,255,255,0.2)  border-radius:2px
     <div> position:absolute  left:0  top:0  width:91%  height:4px  background:#F4F3F0  border-radius:2px
@@ -24,20 +31,66 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · How much is porn getting in the way of your life right now?
-  <div> position:absolute  left:24px  right:24px  top:310px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
-      · Hardly at all
-  <div> position:absolute  left:24px  right:24px  top:384px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
-    <span> color:#131313  font-size:17px  font-weight:500  line-height:20px
+    · How much is porn getting in the way of your life?
+  <div> position:absolute  left:0  right:0  top:252px  height:178px
+    <div> position:absolute  left:50%  top:50%  width:320px  height:180px  margin:-90px 0 0 -160px  background:radial-gradient(closest-side, rgba(226,186,120,0.13), rgba(226,186,120,0) 72%)  border-radius:50%  filter:blur(8px)
+    <div> position:relative  width:100%  height:100%  display:flex  justify-content:center
+      <svg> viewBox="0 0 337 178"  width="337"  height="178"
+        <defs> 
+          <lineargradient> id="tunRock"  x1="0"  y1="0"  x2="0"  y2="1"
+            <stop> offset="0"  stop-color="#3B3730"
+            <stop> offset="1"  stop-color="#26241F"
+          <radialgradient> id="tunHole"  cx="0.5"  cy="0.9"  r="0.75"
+            <stop> offset="0"  stop-color="#0B0B0E"
+            <stop> offset="1"  stop-color="#1C1C22"
+          <lineargradient> id="tunRoad"  x1="0"  y1="0"  x2="0"  y2="1"
+            <stop> offset="0"  stop-color="rgba(255,255,255,0.05)"
+            <stop> offset="1"  stop-color="rgba(255,255,255,0.11)"
+          <lineargradient> id="tunDash"  x1="188"  y1="110"  x2="188"  y2="176"  gradientUnits="userSpaceOnUse"
+            <stop> offset="0"  stop-color="rgba(244,243,240,0.05)"
+            <stop> offset="1"  stop-color="rgba(244,243,240,0.45)"
+        <path> d="M0,116 Q90,92 180,108 T337,100 L337,178 0,178 Z"  fill="rgba(255,255,255,0.05)"
+        <path> d="M0,140 Q120,120 240,136 T337,128 L337,178 0,178 Z"  fill="rgba(255,255,255,0.08)"
+        <path> d="M112,104 C112,58 142,30 188,30 C234,30 264,58 264,104 Z"  fill="url(#tunRock)"
+        <path> d="M112,104 C112,58 142,30 188,30 C234,30 264,58 264,104"  fill="none"  stroke="rgba(255,255,255,0.09)"  stroke-width="1.2"
+        <path> d="M150,104 L150,84 A38,38 0 0 1 226,84 L226,104 Z"  fill="url(#tunHole)"
+        <path> d="M150,104 L150,84 A38,38 0 0 1 226,84 L226,104"  fill="none"  stroke="rgba(255,255,255,0.13)"  stroke-width="9"
+        <path> d="M150,104 L150,84 A38,38 0 0 1 226,84 L226,104"  fill="none"  stroke="rgba(0,0,0,0.35)"  stroke-width="1.2"
+        <path> d="M160,104 L160,88 A28,28 0 0 1 216,88 L216,104"  fill="none"  stroke="rgba(255,255,255,0.05)"  stroke-width="1.2"
+        <path> d="M170,104 L170,92 A18,18 0 0 1 206,92 L206,104"  fill="none"  stroke="rgba(255,255,255,0.04)"  stroke-width="1"
+        <ellipse> cx="188"  cy="101"  rx="9"  ry="3.5"  fill="#E2BA78"
+        <ellipse> cx="188"  cy="101"  rx="4"  ry="1.6"  fill="#F4E2BE"
+        <path> d="M144,104 L144,84 A44,44 0 0 1 232,84 L232,104"  fill="none"  stroke="#E2BA78"  stroke-width="6"  stroke-opacity="0.16"  stroke-linecap="round"
+        <path> d="M144,104 L144,84 A44,44 0 0 1 232,84 L232,104"  fill="none"  stroke="#E2BA78"  stroke-width="1.8"  stroke-opacity="0.7"  stroke-linecap="round"
+        <path> d="M62,178 L314,178 L216,104 L160,104 Z"  fill="url(#tunRoad)"
+        <path> d="M62,178 L160,104 M314,178 L216,104"  fill="none"  stroke="rgba(255,255,255,0.16)"  stroke-width="1.4"
+        <line> x1="188"  y1="110"  x2="188"  y2="176"  stroke="url(#tunDash)"  stroke-width="3"  stroke-linecap="round"  stroke-dasharray="12 12"
+        <ellipse> cx="188"  cy="105"  rx="62"  ry="3.5"  fill="rgba(0,0,0,0.28)"
+  <div> position:absolute  left:24px  right:24px  top:460px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="8.2 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+      · Not really
+  <div> position:absolute  left:24px  right:24px  top:534px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(19,19,19,0.14)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="28.6 81.7"
+    <span> flex:1  color:#131313  font-size:17px  font-weight:500  line-height:20px
       · A little
     <svg> viewBox="0 0 16 12"  width="16"  height="12"
       <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
-  <div> position:absolute  left:24px  right:24px  top:458px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+  <div> position:absolute  left:24px  right:24px  top:608px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="53.1 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · Quite a bit
-  <div> position:absolute  left:24px  right:24px  top:532px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+  <div> position:absolute  left:24px  right:24px  top:682px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <circle> cx="15"  cy="15"  r="13"  transform="rotate(-90 15 15)"  fill="none"  stroke="#E2BA78"  stroke-width="3.2"  stroke-linecap="round"  stroke-dasharray="77.6 81.7"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · A lot
 ```
 

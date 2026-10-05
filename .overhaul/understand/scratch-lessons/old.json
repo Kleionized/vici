@@ -1,0 +1,1657 @@
+{
+ "reader": {
+  "1": {
+   "pages": 26,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "2": {
+   "pages": 32,
+   "picks": [
+    "Where are the easiest routes back for you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "3": {
+   "pages": 29,
+   "picks": [
+    "Where are you most likely to relapse?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "4": {
+   "pages": 28,
+   "picks": [
+    "What time will you aim to wake up most days?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "5": {
+   "pages": 27,
+   "picks": [
+    "What would you most like to put more time into?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "6": {
+   "pages": 25,
+   "picks": [
+    "Who could you have a little more contact with today?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "7": {
+   "pages": 28,
+   "picks": [
+    "Which change helped you most this week?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "8": {
+   "pages": 27,
+   "picks": [
+    "Besides your streak, what would you most like to improve?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "9": {
+   "pages": 32,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "10": {
+   "pages": 29,
+   "picks": [
+    "Which of these tends to happen to you after one mistake?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "11": {
+   "pages": 27,
+   "picks": [
+    "Which change have you noticed most so far?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "12": {
+   "pages": 28,
+   "picks": [
+    "Which description matters most to you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "13": {
+   "pages": 32,
+   "picks": [
+    "What is the biggest reason you want porn out of your life?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "14": {
+   "pages": 26,
+   "picks": [
+    "When have you usually stopped trying in the past?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "15": {
+   "pages": 23,
+   "picks": [
+    "What usually happens first for you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "16": {
+   "pages": 26,
+   "picks": [
+    "The last few times you had a strong urge, what was usually happening?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "17": {
+   "pages": 21,
+   "picks": [
+    "What could you realistically do within two minutes of noticing an urge?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "18": {
+   "pages": 21,
+   "picks": [
+    "Which kind of distraction can hold your attention best?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "19": {
+   "pages": 18,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "20": {
+   "pages": 19,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "21": {
+   "pages": 22,
+   "picks": [
+    "How are masturbation and porn connected for you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "22": {
+   "pages": 25,
+   "picks": [
+    "Which cue most reliably pulls your attention towards porn?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "23": {
+   "pages": 23,
+   "picks": [
+    "When is it hardest to make the choice you planned?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "24": {
+   "pages": 20,
+   "picks": [
+    "Which is more often present before your relapses: hunger or tiredness?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "25": {
+   "pages": 24,
+   "picks": [
+    "Which one appears more often before your urges: anger or loneliness?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "26": {
+   "pages": 20,
+   "picks": [
+    "When you watch, which part tends to keep you there longest?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "27": {
+   "pages": 21,
+   "picks": [
+    "Which of these could you actually do within a few minutes: leave the room, walk outside, shower, exercise briefly, or go somewhere other people are?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "28": {
+   "pages": 24,
+   "picks": [
+    "Which action tends to happen before you fully notice the urge?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "29": {
+   "pages": 28,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "30": {
+   "pages": 19,
+   "picks": [
+    "Which of these is usually the strongest reason you keep watching in the moment?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "31": {
+   "pages": 21,
+   "picks": [
+    "Which deeper issue has shown up most often for you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "32": {
+   "pages": 18,
+   "picks": [
+    "Which short-term cost bothers you most?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "33": {
+   "pages": 22,
+   "picks": [
+    "If nothing changed for the next year, which consequence would bother you most?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "34": {
+   "pages": 20,
+   "picks": [
+    "Which change would lower your risk most tonight?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "35": {
+   "pages": 22,
+   "picks": [
+    "Which part of your life do you most want to grow over the next year?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "36": {
+   "pages": 30,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "37": {
+   "pages": 21,
+   "picks": [
+    "Which action would you most like to do without debating it first?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "38": {
+   "pages": 19,
+   "picks": [
+    "What do you most often mistake for discipline?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "39": {
+   "pages": 18,
+   "picks": [
+    "Where does discipline break down most often for you?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "40": {
+   "pages": 19,
+   "picks": [
+    "What do you tend to judge yourself for having?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "41": {
+   "pages": 18,
+   "picks": [
+    "Which situation deserves a rule most?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "42": {
+   "pages": 19,
+   "picks": [
+    "Which minimum would protect you most on a bad day?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "43": {
+   "pages": 18,
+   "picks": [
+    "If a relapse did not cancel the next 24 hours, what would still happen?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "44": {
+   "pages": 23,
+   "picks": [
+    "Thinking about your most recent relapse, what was the earliest moment you could realistically have changed?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "45": {
+   "pages": 22,
+   "picks": [
+    "What do you usually say to yourself after a relapse?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "46": {
+   "pages": 22,
+   "picks": [
+    "On a rough day, which protective habit usually disappears first?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "47": {
+   "pages": 23,
+   "picks": [
+    "If life became much harder for a month, which two habits would you most want to protect?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "48": {
+   "pages": 19,
+   "picks": [
+    "Is there something in your life right now that gets harder every time you avoid it?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "49": {
+   "pages": 19,
+   "picks": [
+    "After something goes wrong, when do you usually tell yourself you'll restart?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "50": {
+   "pages": 21,
+   "picks": [
+    "When you're bored, what do you usually reach for first?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "51": {
+   "pages": 20,
+   "picks": [
+    "Which behaviour most often removes boredom before you even notice it?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "52": {
+   "pages": 20,
+   "picks": [
+    "Which slower activity would you like to have more patience for?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "53": {
+   "pages": 20,
+   "picks": [
+    "Which type of screen use most often leads you towards porn or sexual content?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "54": {
+   "pages": 19,
+   "picks": [
+    "Which stimulation would be most useful to reduce for one day?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "55": {
+   "pages": 20,
+   "picks": [
+    "Which specific morning commitment would make it easiest for you to get out of bed?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "56": {
+   "pages": 22,
+   "picks": [
+    "If porn disappeared from your life tomorrow, what would you want the freed attention to serve?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "57": {
+   "pages": 21,
+   "picks": [
+    "Who currently makes you feel most like yourself?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "58": {
+   "pages": 22,
+   "picks": [
+    "Which kind of loneliness feels closest to yours?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "59": {
+   "pages": 18,
+   "picks": [
+    "When you spend a few hours alone, what usually happens?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "60": {
+   "pages": 21,
+   "picks": [
+    "When porn feels most attractive during loneliness or rejection, what are you hoping to get from it?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "61": {
+   "pages": 18,
+   "picks": [
+    "Which place in your life has the best chance of producing repeated contact?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "62": {
+   "pages": 20,
+   "picks": [
+    "Is there a relationship that regularly leaves you worse afterwards?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "63": {
+   "pages": 17,
+   "picks": [
+    "Which relationship in your life feels healthiest right now?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "64": {
+   "pages": 28,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "65": {
+   "pages": 19,
+   "picks": [
+    "Is there an environment that regularly pushes you towards your worst days?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "66": {
+   "pages": 18,
+   "picks": [
+    "After a relapse or mistake, what do you usually sound like inside your own head?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "67": {
+   "pages": 20,
+   "picks": [
+    "Which thought shows up most often when you feel ashamed?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "68": {
+   "pages": 21,
+   "picks": [
+    "Imagine a close friend described the exact problem you are hardest on yourself about. What would you most likely say first?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "69": {
+   "pages": 18,
+   "picks": [
+    "Which kind of promise to yourself is hardest to keep?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "70": {
+   "pages": 18,
+   "picks": [
+    "Which reason matters most to you right now?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "71": {
+   "pages": 22,
+   "picks": [
+    "Which specific fact about your relapses or urges has become clearest during this course?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "72": {
+   "pages": 20,
+   "picks": [
+    "Which part of the past is hardest for you to stop arguing with?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "73": {
+   "pages": 20,
+   "picks": [
+    "If the next five years mattered more than the next fifty, what would rise in priority?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "74": {
+   "pages": 23,
+   "picks": [],
+   "kinds": [
+    "column"
+   ]
+  },
+  "75": {
+   "pages": 21,
+   "picks": [
+    "Which area deserves most of your deliberate effort for the next ninety days?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "76": {
+   "pages": 21,
+   "picks": [
+    "Which source most often leaves your mind noisier than before?"
+   ],
+   "kinds": [
+    "column",
+    "pick"
+   ]
+  },
+  "77": {
+   "pages": 20,
+   "picks": [
+    "Which change would make you happiest to see one year from now?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "78": {
+   "pages": 20,
+   "picks": [
+    "When you say you want to quit porn, what matters most about that decision?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "79": {
+   "pages": 17,
+   "picks": [
+    "Which part of you feels most different from twelve weeks ago?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "80": {
+   "pages": 22,
+   "picks": [
+    "Which change have you noticed most clearly?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "81": {
+   "pages": 17,
+   "picks": [
+    "Which protection has helped you enough that you want to keep it?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "82": {
+   "pages": 28,
+   "picks": [],
+   "kinds": [
+    "column",
+    "board"
+   ]
+  },
+  "83": {
+   "pages": 21,
+   "picks": [
+    "What do you most want to leave behind with the end of this course?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  },
+  "84": {
+   "pages": 22,
+   "picks": [
+    "Which three changes usually happen before you relapse?"
+   ],
+   "kinds": [
+    "column",
+    "pick",
+    "board"
+   ]
+  }
+ },
+ "cur": [
+  {
+   "day": 1,
+   "title": "Surviving the Night",
+   "summary": "The first nights are the steepest. Get through tonight, nothing else.",
+   "cardTitle": "Surviving the night",
+   "cardSummary": "Put the device you use for porn out of reach before you sleep.",
+   "done": "Done when you can’t reach your usual device from bed without standing up.",
+   "taskTitle": "Surviving the night"
+  },
+  {
+   "day": 2,
+   "title": "A New Start",
+   "summary": "Day zero isn’t a loss. It’s the start of the count that matters.",
+   "cardTitle": "A new start",
+   "cardSummary": "Clean the space you use most and remove easy porn cues.",
+   "done": "Done when the timer rings and your most-used space holds fewer cues.",
+   "taskTitle": "A new start"
+  },
+  {
+   "day": 3,
+   "title": "Get Outside",
+   "summary": "Daylight, air, one walk. The room you’re in is half the battle.",
+   "cardTitle": "Get outside",
+   "cardSummary": "Spend 20 minutes away from your usual relapse setting.",
+   "done": "Done after 20 minutes away from the usual setting — not scrolling elsewhere.",
+   "taskTitle": "Get outside"
+  },
+  {
+   "day": 4,
+   "title": "Fix Your Sleep",
+   "summary": "Tired brains lose to urges. Protect the hours that rebuild you.",
+   "cardTitle": "Fix your sleep",
+   "cardSummary": "Set tomorrow’s alarm and decide when and where your phone goes away tonight.",
+   "done": "Done when the alarm is set and the phone has a cutoff time and a fixed place.",
+   "taskTitle": "Fix your sleep"
+  },
+  {
+   "day": 5,
+   "title": "What Replaces Porn?",
+   "summary": "The habit filled a slot. Decide what takes the space.",
+   "cardTitle": "What replaces porn?",
+   "cardSummary": "Spend 20 minutes learning something new.",
+   "done": "Done when you can explain or use one thing you couldn’t this morning.",
+   "taskTitle": "What replaces porn?"
+  },
+  {
+   "day": 6,
+   "title": "Isolation",
+   "summary": "Urges grow in closed rooms. Open one door today.",
+   "cardTitle": "Isolation",
+   "cardSummary": "Spend at least 10 minutes talking with or being around another person.",
+   "done": "Done after 10 minutes talking or doing something together.",
+   "taskTitle": "Isolation"
+  },
+  {
+   "day": 7,
+   "title": "One Week In",
+   "summary": "Seven days held. Look at what a week actually bought you.",
+   "cardTitle": "One week in",
+   "cardSummary": "Reward yourself for finishing your first week.",
+   "done": "Done when you’ve taken the reward. Nothing else is assigned today.",
+   "taskTitle": "One week in"
+  },
+  {
+   "day": 8,
+   "title": "More Than a Streak",
+   "summary": "The count is a tool, not the point. You’re building a person.",
+   "cardTitle": "More than a streak",
+   "cardSummary": "Notice three ways your behaviour has changed and repeat one today.",
+   "done": "Done when three changes are written and you’ve repeated one today.",
+   "taskTitle": "More than a streak"
+  },
+  {
+   "day": 9,
+   "title": "After a Relapse",
+   "summary": "A relapse is data. Read it, log it, move.",
+   "cardTitle": "After a relapse",
+   "cardSummary": "Review what happened after your last relapse and plan how to stop the next part sooner.",
+   "done": "Done when the note holds what happened, the stop point, and next time’s plan.",
+   "taskTitle": "After a relapse"
+  },
+  {
+   "day": 10,
+   "title": "The All-or-Nothing Trap",
+   "summary": "One slip doesn’t erase thirty days. Refuse the reset story.",
+   "cardTitle": "The all-or-nothing trap",
+   "cardSummary": "Practise a four-step plan for stopping one relapse from turning into another.",
+   "done": "Done when the four steps are written and the route is physically tested.",
+   "taskTitle": "The all-or-nothing trap"
+  },
+  {
+   "day": 11,
+   "title": "Progress Isn’t Linear",
+   "summary": "The curve wobbles on its way up. Zoom out.",
+   "cardTitle": "Progress isn’t linear",
+   "cardSummary": "Compare this week with before Vici and change the area that still causes the most trouble.",
+   "done": "Done when three comparisons are written and this week’s change has begun.",
+   "taskTitle": "Progress isn’t linear"
+  },
+  {
+   "day": 12,
+   "title": "Identity",
+   "summary": "Stop fighting as a user who quits. Act as someone who doesn’t need it.",
+   "cardTitle": "Identity",
+   "cardSummary": "Choose one behaviour you want to repeat for the next week and prepare for it today.",
+   "done": "Done when the rule is written, prepared for, and rep one is done or booked.",
+   "taskTitle": "Identity"
+  },
+  {
+   "day": 13,
+   "title": "Values, Not Shame",
+   "summary": "Shame burns fuel. Values steer. Swap the engine.",
+   "cardTitle": "Values, not shame",
+   "cardSummary": "Spend 20 minutes on something you care about that porn has been taking time from.",
+   "done": "Done when it’s written down and has had its 20 minutes.",
+   "taskTitle": "Values, not shame"
+  },
+  {
+   "day": 14,
+   "title": "Keep Going",
+   "summary": "Two weeks of momentum. Don’t trade it for a quiet Tuesday.",
+   "cardTitle": "Keep going",
+   "cardSummary": "Make a simple plan for how you will continue after missed days, relapse, or low motivation.",
+   "done": "Done when you know your move for all three — no motivation required.",
+   "taskTitle": "Keep going"
+  },
+  {
+   "day": 15,
+   "title": "The Life of an Urge",
+   "summary": "Every urge has a birth, a peak, and a death. Learn its shape.",
+   "cardTitle": "The life of an urge",
+   "cardSummary": "Keep your phone away for 10 minutes and rate how much you want to check it.",
+   "done": "Done when the phone stayed away 10 minutes and all three ratings exist.",
+   "taskTitle": "The life of an urge"
+  },
+  {
+   "day": 16,
+   "title": "What’s the Urge Really For?",
+   "summary": "The urge points at a need. Find what it’s actually asking for.",
+   "cardTitle": "What’s the urge really for?",
+   "cardSummary": "Look at the circumstances around your most recent strong urge.",
+   "done": "Done when the facts are written — even if the why stays unknown.",
+   "taskTitle": "What’s the urge really for?"
+  },
+  {
+   "day": 17,
+   "title": "Move First",
+   "summary": "Don’t negotiate standing still. Move your body first.",
+   "cardTitle": "Move first",
+   "cardSummary": "Practise leaving the place where you are most likely to relapse.",
+   "done": "Done when the whole exit has been physically performed once.",
+   "taskTitle": "Move first"
+  },
+  {
+   "day": 18,
+   "title": "Redirection",
+   "summary": "Attention is a channel. You hold the remote.",
+   "cardTitle": "Redirection",
+   "cardSummary": "Prepare four easy things you can do instead of staying on a screen.",
+   "done": "Done when all four can be started in under a minute.",
+   "taskTitle": "Redirection"
+  },
+  {
+   "day": 19,
+   "title": "HALT",
+   "summary": "Hungry, angry, lonely, tired — check the gauges before you judge the pull.",
+   "cardTitle": "HALT",
+   "cardSummary": "Check whether you are hungry, angry, lonely, or tired and deal with any that apply.",
+   "done": "Done when all four are answered and every yes got its response.",
+   "taskTitle": "HALT"
+  },
+  {
+   "day": 20,
+   "title": "Urge Surfing",
+   "summary": "Don’t fight the wave. Ride it until it breaks.",
+   "cardTitle": "Urge surfing",
+   "cardSummary": "Practise urge surfing for five minutes using the urge to check your phone.",
+   "done": "Done after five clean minutes and one written body sensation.",
+   "taskTitle": "Urge surfing"
+  },
+  {
+   "day": 21,
+   "title": "Masturbation",
+   "summary": "Decide the rule on purpose, not in the moment.",
+   "cardTitle": "Masturbation",
+   "cardSummary": "Set a two-week masturbation rule based on whether it tends to lead you back to porn.",
+   "done": "Done when the rule is written and devices sit where the rule says.",
+   "taskTitle": "Masturbation"
+  },
+  {
+   "day": 22,
+   "title": "The Reward System",
+   "summary": "Dopamine isn’t pleasure. It’s the promise of it.",
+   "cardTitle": "The reward system",
+   "cardSummary": "Remove one set of cues that regularly puts sexual content in front of you.",
+   "done": "Done when the timer ends and one recurring cue is harder to reach.",
+   "taskTitle": "The reward system"
+  },
+  {
+   "day": 23,
+   "title": "The Control Center",
+   "summary": "The prefrontal cortex tires like a muscle. Guard its hours.",
+   "cardTitle": "The control center",
+   "cardSummary": "Put Vici Urge Surfing one tap away and give your phone a fixed place for tonight.",
+   "done": "Done when Urge Surfing opens in one tap and tonight’s spot is fixed.",
+   "taskTitle": "The control center"
+  },
+  {
+   "day": 24,
+   "title": "Hungry and Tired",
+   "summary": "Low fuel and low sleep read as craving. Feed the real need.",
+   "cardTitle": "Hungry and tired",
+   "cardSummary": "Eat, drink, and prepare for sleep before the risky part of the day.",
+   "done": "Done when food is handled, water is poured, and sleep has its plan.",
+   "taskTitle": "Hungry and tired"
+  },
+  {
+   "day": 25,
+   "title": "Angry and Lonely",
+   "summary": "Anger and loneliness borrow the same circuits. Name them early.",
+   "cardTitle": "Angry and lonely",
+   "cardSummary": "Compare how anger and loneliness affect you and practise one response.",
+   "done": "Done when both are written and one response has been practised.",
+   "taskTitle": "Angry and lonely"
+  },
+  {
+   "day": 26,
+   "title": "The Pull of Novelty",
+   "summary": "Novelty is the hook. Infinite variety is the trap.",
+   "cardTitle": "The pull of novelty",
+   "cardSummary": "Spend 15 minutes on one thing without switching to something newer.",
+   "done": "Done when the 15 minutes end and the tally count is written.",
+   "taskTitle": "The pull of novelty"
+  },
+  {
+   "day": 27,
+   "title": "Change Your State",
+   "summary": "State beats willpower. Change temperature, posture, place.",
+   "cardTitle": "Change your state",
+   "cardSummary": "Compare your physical arousal before and after movement and slower breathing.",
+   "done": "Done when both ratings and one observation are written.",
+   "taskTitle": "Change your state"
+  },
+  {
+   "day": 28,
+   "title": "Autopilot",
+   "summary": "Half your day runs on scripts. Rewrite the opening scene.",
+   "cardTitle": "Autopilot",
+   "cardSummary": "Change the first action that usually starts your porn routine.",
+   "done": "Done when that first step is harder to repeat the usual way.",
+   "taskTitle": "Autopilot"
+  },
+  {
+   "day": 29,
+   "title": "The Scale",
+   "summary": "Every choice sits on a scale. See both pans clearly.",
+   "cardTitle": "The scale",
+   "cardSummary": "Plan one high-risk two-hour block before it arrives.",
+   "done": "Done when the block has a place, an activity, and a phone rule.",
+   "taskTitle": "The scale"
+  },
+  {
+   "day": 30,
+   "title": "The “Benefits” of Porn",
+   "summary": "It gives something real. Name it honestly or it keeps the leverage.",
+   "cardTitle": "The “benefits” of porn",
+   "cardSummary": "Spend 20 minutes meeting the need that usually makes porn appealing in another way.",
+   "done": "Done after 20 minutes on the alternative, porn unopened.",
+   "taskTitle": "The “benefits” of porn"
+  },
+  {
+   "day": 31,
+   "title": "The Hidden Reward",
+   "summary": "Relief now is the hidden payment. Check the receipt.",
+   "cardTitle": "The hidden reward",
+   "cardSummary": "Spend 15 minutes starting something you have been avoiding.",
+   "done": "Done when the timer ends and something visible exists.",
+   "taskTitle": "The hidden reward"
+  },
+  {
+   "day": 32,
+   "title": "The Short-Term Cost",
+   "summary": "Write down what a late relapse costs tomorrow morning and prepare that morning now.",
+   "cardTitle": "The Short-Term Cost",
+   "cardSummary": "Write down what a late relapse costs tomorrow morning and prepare that morning now.",
+   "done": "The task is done when the three costs are written and tomorrow has an alarm, a first activity, and a phone location.",
+   "taskTitle": "The Short-Term Cost"
+  },
+  {
+   "day": 33,
+   "title": "The Long-Term Cost",
+   "summary": "Years of nights compound. Price the decade, not the evening.",
+   "cardTitle": "The long-term cost",
+   "cardSummary": "Spend 30 minutes on something you want to be better a year from now.",
+   "done": "Done after 30 minutes on the thing you chose.",
+   "taskTitle": "The long-term cost"
+  },
+  {
+   "day": 34,
+   "title": "Tipping the Scale",
+   "summary": "Stack today’s pan: one call, one walk, one early night.",
+   "cardTitle": "Tipping the scale",
+   "cardSummary": "Make porn harder to reach by removing one saved route and moving one device.",
+   "done": "Done when both routes cost more effort than they did this morning.",
+   "taskTitle": "Tipping the scale"
+  },
+  {
+   "day": 35,
+   "title": "Repairing the Scale",
+   "summary": "Rig the scale so staying clean is the easy read.",
+   "cardTitle": "Repairing the scale",
+   "cardSummary": "Schedule four sessions of something you want more of in your week.",
+   "done": "Done when four sessions are booked and the first is moving.",
+   "taskTitle": "Repairing the scale"
+  },
+  {
+   "day": 36,
+   "title": "What is Willpower?",
+   "summary": "Willpower drains. Systems don’t. Build for the tired version of you.",
+   "cardTitle": "What is willpower?",
+   "cardSummary": "Spend 15 minutes staying with one task even when you want to switch away.",
+   "done": "Done when you’ve stayed with the one task the full 15 minutes.",
+   "taskTitle": "What is willpower?"
+  },
+  {
+   "day": 37,
+   "title": "Train Your Response",
+   "summary": "Reps, not speeches. Each refusal makes the next one cheaper.",
+   "cardTitle": "Train your response",
+   "cardSummary": "Practise your urge-exit sequence three times.",
+   "done": "Done when the same exit has been run three times.",
+   "taskTitle": "Train your response"
+  },
+  {
+   "day": 38,
+   "title": "What Discipline Isn’t",
+   "summary": "Discipline isn’t punishment or gritted teeth.",
+   "cardTitle": "What discipline isn’t",
+   "cardSummary": "Finish one necessary task without turning it into a punishment or test.",
+   "done": "Done when the task is finished. Nothing extra is required.",
+   "taskTitle": "What discipline isn’t"
+  },
+  {
+   "day": 39,
+   "title": "What Discipline Is",
+   "summary": "It’s choosing once, early, and letting the choice stand.",
+   "cardTitle": "What discipline is",
+   "cardSummary": "Practise starting, staying with, returning to, and stopping a task on time.",
+   "done": "Done when the full 15-minute run is complete.",
+   "taskTitle": "What discipline is"
+  },
+  {
+   "day": 40,
+   "title": "Thoughts and Feelings",
+   "summary": "Thoughts and feelings are weather. You’re the ground.",
+   "cardTitle": "Thoughts and feelings",
+   "cardSummary": "Write down a thought that usually comes before porn and practise what you want to do instead.",
+   "done": "Done when thought and action are written and rehearsed once.",
+   "taskTitle": "Thoughts and feelings"
+  },
+  {
+   "day": 41,
+   "title": "Choose Your Action",
+   "summary": "You can’t pick the impulse. You pick the action.",
+   "cardTitle": "Choose your action",
+   "cardSummary": "Write three simple rules for situations that have caught you before and make one easier to follow.",
+   "done": "Done when three rules exist and one got physically easier today.",
+   "taskTitle": "Choose your action"
+  },
+  {
+   "day": 42,
+   "title": "Damage Control",
+   "summary": "Bad night? Contain it. One fire, not a season.",
+   "cardTitle": "Damage control",
+   "cardSummary": "Decide the three things you will still do on a bad day.",
+   "done": "Done when the three rules are saved somewhere reachable.",
+   "taskTitle": "Damage control"
+  },
+  {
+   "day": 43,
+   "title": "Relapse Isn’t the End",
+   "summary": "A relapse ends a streak. It doesn’t end the campaign.",
+   "cardTitle": "Relapse isn’t the end",
+   "cardSummary": "Write down what the next 24 hours should look like after a relapse.",
+   "done": "Done when all five parts are written and morning is prepared.",
+   "taskTitle": "Relapse isn’t the end"
+  },
+  {
+   "day": 44,
+   "title": "Learn From the Relapse",
+   "summary": "Autopsy, not funeral. What time, what door, what state?",
+   "cardTitle": "Learn from the relapse",
+   "cardSummary": "Reconstruct your last relapse and change the earliest step you can control.",
+   "done": "Done when the order is written and the earliest change is made.",
+   "taskTitle": "Learn from the relapse"
+  },
+  {
+   "day": 45,
+   "title": "Don’t Punish Yourself",
+   "summary": "Punishment teaches hiding. Debrief teaches prevention.",
+   "cardTitle": "Don’t punish yourself",
+   "cardSummary": "Write and save a plan for the first hour after a relapse.",
+   "done": "Done when the note is written and pinned.",
+   "taskTitle": "Don’t punish yourself"
+  },
+  {
+   "day": 46,
+   "title": "Rough Days",
+   "summary": "Some days the plan is smaller: eat, walk, sleep clean.",
+   "cardTitle": "Rough days",
+   "cardSummary": "Reduce a rough day to three things that still need to happen.",
+   "done": "Done when the list is three items and the first has started.",
+   "taskTitle": "Rough days"
+  },
+  {
+   "day": 47,
+   "title": "When Life Gets Hard",
+   "summary": "Hard seasons raise the stakes. Shrink the promise, keep it daily.",
+   "cardTitle": "When life gets hard",
+   "cardSummary": "Decide what you will keep doing through several bad days and tell someone you may contact them.",
+   "done": "Done when the note exists and the message is sent.",
+   "taskTitle": "When life gets hard"
+  },
+  {
+   "day": 48,
+   "title": "Face What You’re Avoiding",
+   "summary": "The urge often guards a door. Open what you’re avoiding.",
+   "cardTitle": "Face what you’re avoiding",
+   "cardSummary": "Spend 15 minutes on the first part of something you have been avoiding.",
+   "done": "Done when one part of the avoided thing exists.",
+   "taskTitle": "Face what you’re avoiding"
+  },
+  {
+   "day": 49,
+   "title": "Don’t Wait for Tomorrow",
+   "summary": "The comeback starts tonight, not Monday.",
+   "cardTitle": "Don’t wait for tomorrow",
+   "cardSummary": "Start something today that you were going to leave until tomorrow.",
+   "done": "Done when the 10-minute timer ends. Stopping then is allowed.",
+   "taskTitle": "Don’t wait for tomorrow"
+  },
+  {
+   "day": 50,
+   "title": "Boredom",
+   "summary": "Boredom is withdrawal’s echo. It fades if you don’t feed it.",
+   "cardTitle": "Boredom",
+   "cardSummary": "Spend 10 minutes without filling boredom with new content.",
+   "done": "Done when the timer ends and nothing new was opened.",
+   "taskTitle": "Boredom"
+  },
+  {
+   "day": 51,
+   "title": "Escaping Boredom",
+   "summary": "The reflex reach is the enemy. Put friction on the exits.",
+   "cardTitle": "Escaping boredom",
+   "cardSummary": "Take a 20-minute walk without using your phone.",
+   "done": "Done after 20 phone-free minutes of walking.",
+   "taskTitle": "Escaping boredom"
+  },
+  {
+   "day": 52,
+   "title": "Learn to Be Bored",
+   "summary": "Sit in the flat minutes. They’re retraining your baseline.",
+   "cardTitle": "Learn to be bored",
+   "cardSummary": "Spend 20 minutes on one slow, screen-free activity.",
+   "done": "Done when the timer ends without a screen.",
+   "taskTitle": "Learn to be bored"
+  },
+  {
+   "day": 53,
+   "title": "Screen Boundaries",
+   "summary": "Screens after ten made the rules. Take the hours back.",
+   "cardTitle": "Screen boundaries",
+   "cardSummary": "Choose one screen-free time or place and follow the rule today.",
+   "done": "Done when the phone’s place is chosen and the rule held once.",
+   "taskTitle": "Screen boundaries"
+  },
+  {
+   "day": 54,
+   "title": "Dopamine Detox",
+   "summary": "You don’t need a detox monk-week. You need fewer triggers.",
+   "cardTitle": "Dopamine detox",
+   "cardSummary": "Spend one hour without feeds, porn, news, or short-form content.",
+   "done": "Done when the hour passes without the set-aside feeds.",
+   "taskTitle": "Dopamine detox"
+  },
+  {
+   "day": 55,
+   "title": "Wake Up With Purpose",
+   "summary": "A planned morning outruns a random night.",
+   "cardTitle": "Wake up with purpose",
+   "cardSummary": "Prepare tomorrow’s first hour before you go to bed.",
+   "done": "Done when alarm, first activity, and kit are all ready.",
+   "taskTitle": "Wake up with purpose"
+  },
+  {
+   "day": 56,
+   "title": "Meaning",
+   "summary": "Meaning is the long cure. Boredom can’t survive a mission.",
+   "cardTitle": "Meaning",
+   "cardSummary": "Spend 30 minutes on a person, project, skill, or responsibility that matters to you.",
+   "done": "Done when the 30 minutes are up.",
+   "taskTitle": "Meaning"
+  },
+  {
+   "day": 57,
+   "title": "Why Relationships Matter",
+   "summary": "Recovery is a team sport played quietly.",
+   "cardTitle": "Why relationships matter",
+   "cardSummary": "Invite someone to do something with a specific day and time.",
+   "done": "Done when the invitation has been sent.",
+   "taskTitle": "Why relationships matter"
+  },
+  {
+   "day": 58,
+   "title": "Loneliness",
+   "summary": "Loneliness is a signal, not a sentence. Answer it in person.",
+   "cardTitle": "Loneliness",
+   "cardSummary": "Spend 30 minutes around other people, or have a 20-minute call if you cannot leave home.",
+   "done": "Done after 30 minutes around people — or a 20-minute call.",
+   "taskTitle": "Loneliness"
+  },
+  {
+   "day": 59,
+   "title": "Solitude",
+   "summary": "Alone on purpose is solitude. Alone by default is exposure.",
+   "cardTitle": "Solitude",
+   "cardSummary": "Spend 30 minutes alone without using your phone to escape the quiet.",
+   "done": "Done when the 30 minutes end without the phone as escape.",
+   "taskTitle": "Solitude"
+  },
+  {
+   "day": 60,
+   "title": "What Porn Replaces",
+   "summary": "It rehearses connection with none of the risk. That’s the theft.",
+   "cardTitle": "What porn replaces",
+   "cardSummary": "Spend time with another person today, or make plans to.",
+   "done": "Done when the invitation is sent or the 20 minutes happened.",
+   "taskTitle": "What porn replaces"
+  },
+  {
+   "day": 61,
+   "title": "Friendship",
+   "summary": "Friendships grow on schedules. Plant one this week.",
+   "cardTitle": "Friendship",
+   "cardSummary": "Turn one casual connection into a second meeting, call, or group session.",
+   "done": "Done when the next meeting, call, or session is set or attended.",
+   "taskTitle": "Friendship"
+  },
+  {
+   "day": 62,
+   "title": "Unhealthy Relationships",
+   "summary": "Some rooms reopen the wound. Choose your rooms.",
+   "cardTitle": "Unhealthy relationships",
+   "cardSummary": "Change one relationship, chat, or account that regularly leaves you worse.",
+   "done": "Done when the change is made — or plans exist with someone good.",
+   "taskTitle": "Unhealthy relationships"
+  },
+  {
+   "day": 63,
+   "title": "Healthy Relationships",
+   "summary": "Real intimacy is slower, riskier, and worth the trade.",
+   "cardTitle": "Healthy relationships",
+   "cardSummary": "Do something today for a relationship you care about.",
+   "done": "Done when the call, plan, help, or apology is finished.",
+   "taskTitle": "Healthy relationships"
+  },
+  {
+   "day": 64,
+   "title": "Trauma",
+   "summary": "The habit started as armor. Thank it, then retire it.",
+   "cardTitle": "Trauma",
+   "cardSummary": "Write about a past experience that still affects you and how you want to handle it next time.",
+   "done": "Done when all four parts are written and next-time is prepared.",
+   "taskTitle": "Trauma"
+  },
+  {
+   "day": 65,
+   "title": "Your Environment",
+   "summary": "If the house is on fire, stop blaming the smoke.",
+   "cardTitle": "Your environment",
+   "cardSummary": "Change one person, account, place, or routine that regularly leaves you more upset or more likely to use porn.",
+   "done": "Done when the exposure has actually changed.",
+   "taskTitle": "Your environment"
+  },
+  {
+   "day": 66,
+   "title": "Self-Criticism",
+   "summary": "The inner critic isn’t a coach. Fire the voice, keep the standard.",
+   "cardTitle": "Self-criticism",
+   "cardSummary": "Replace one harsh judgment about yourself with the facts and one repair you can start now.",
+   "done": "Done when facts and repair are written and the repair has begun.",
+   "taskTitle": "Self-criticism"
+  },
+  {
+   "day": 67,
+   "title": "Self-Loathing",
+   "summary": "Self-loathing feeds the loop it hates. Starve it.",
+   "cardTitle": "Self-loathing",
+   "cardSummary": "Replace one insult about yourself with facts, then do one basic thing for yourself.",
+   "done": "Done when facts replace the insult and the basic thing is done.",
+   "taskTitle": "Self-loathing"
+  },
+  {
+   "day": 68,
+   "title": "Self-Compassion",
+   "summary": "Talk to yourself like someone you’re responsible for.",
+   "cardTitle": "Self-compassion",
+   "cardSummary": "Look at one recent mistake without insults and start the next useful action.",
+   "done": "Done when the three lines exist and the action has started.",
+   "taskTitle": "Self-compassion"
+  },
+  {
+   "day": 69,
+   "title": "Self-Trust",
+   "summary": "Trust rebuilds in kept promises, smallest first.",
+   "cardTitle": "Self-trust",
+   "cardSummary": "Make one small promise you can keep before bed, then keep it.",
+   "done": "Done when the promised action is finished before bed.",
+   "taskTitle": "Self-trust"
+  },
+  {
+   "day": 70,
+   "title": "Self-Improvement",
+   "summary": "Improvement is proof. Log the gains somewhere you’ll see.",
+   "cardTitle": "Self-improvement",
+   "cardSummary": "Spend 20 minutes practising a skill instead of watching advice about it.",
+   "done": "Done after 20 minutes of practice. Watching doesn’t count.",
+   "taskTitle": "Self-improvement"
+  },
+  {
+   "day": 71,
+   "title": "Know Yourself",
+   "summary": "Know what pulls you, what drains you, what you’re for.",
+   "cardTitle": "Know yourself",
+   "cardSummary": "Identify when you are most likely to relapse, what has helped before, and one change to make today.",
+   "done": "Done when all three are answered and the change is made.",
+   "taskTitle": "Know yourself"
+  },
+  {
+   "day": 72,
+   "title": "Amor Fati",
+   "summary": "Love the hand you were dealt. It’s the only playable one.",
+   "cardTitle": "Amor fati",
+   "cardSummary": "Write about something in the past you cannot change and act on what is still possible now.",
+   "done": "Done when both parts are written and the possible one has begun.",
+   "taskTitle": "Amor fati"
+  },
+  {
+   "day": 73,
+   "title": "Memento Mori",
+   "summary": "Five years left: what stays, what goes, what starts tonight?",
+   "cardTitle": "Memento mori",
+   "cardSummary": "Put one hour on the calendar for something porn or empty screen time has been taking time from.",
+   "done": "Done when the hour is booked and the first 10 minutes are spent.",
+   "taskTitle": "Memento mori"
+  },
+  {
+   "day": 74,
+   "title": "Carpe Diem",
+   "summary": "Seize the day means this one. Before noon.",
+   "cardTitle": "Carpe diem",
+   "cardSummary": "Spend 20 minutes doing something you keep saying you want to do more often.",
+   "done": "Done after the 20 minutes — or once the date is booked.",
+   "taskTitle": "Carpe diem"
+  },
+  {
+   "day": 75,
+   "title": "The Next 90 Days",
+   "summary": "Ninety days is enough to change the trend line of a life.",
+   "cardTitle": "The next 90 days",
+   "cardSummary": "Choose one 90-day goal, schedule the weekly work, and start for 20 minutes today.",
+   "done": "Done when goal and weekly times exist and today’s 20 minutes ran.",
+   "taskTitle": "The next 90 days"
+  },
+  {
+   "day": 76,
+   "title": "Peace of Mind",
+   "summary": "Peace of mind is the quiet dividend of kept vows.",
+   "cardTitle": "Peace of mind",
+   "cardSummary": "Spend 30 minutes tonight without incoming content.",
+   "done": "Done when 30 minutes pass without swapping one feed for another.",
+   "taskTitle": "Peace of mind"
+  },
+  {
+   "day": 77,
+   "title": "This Time Next Year",
+   "summary": "Picture next year’s you. Start acting like their friend.",
+   "cardTitle": "This time next year",
+   "cardSummary": "Schedule the next four times you will do one thing you want in your life a year from now.",
+   "done": "Done when four dates are set and the first is ready to happen.",
+   "taskTitle": "This time next year"
+  },
+  {
+   "day": 78,
+   "title": "What Forever Means",
+   "summary": "Forever is just today, kept daily.",
+   "cardTitle": "What forever means",
+   "cardSummary": "Choose one rule from the course to keep for the next 90 days and start it today.",
+   "done": "Done when the rule ran once today and the review date is booked.",
+   "taskTitle": "What forever means"
+  },
+  {
+   "day": 79,
+   "title": "Twelve Weeks Ago",
+   "summary": "Twelve weeks ago this felt impossible. Read your own letter.",
+   "cardTitle": "Twelve weeks ago",
+   "cardSummary": "Compare Week 1 with today in six parts of your life and recovery.",
+   "done": "Done when each line says what you did then and do now — no “better.”",
+   "taskTitle": "Twelve weeks ago"
+  },
+  {
+   "day": 80,
+   "title": "What Changed in Your Brain",
+   "summary": "The pathways quieted. The wiring is yours again.",
+   "cardTitle": "What changed in your brain",
+   "cardSummary": "Practise one recovery action that has become easier three times today.",
+   "done": "Done when the same action has run three full times.",
+   "taskTitle": "What changed in your brain"
+  },
+  {
+   "day": 81,
+   "title": "Winning the Battle",
+   "summary": "Keep the morning pledge, the log, the walk. Drop the scaffolding.",
+   "cardTitle": "Winning the battle",
+   "cardSummary": "Use the three things that helped you most during the course.",
+   "done": "Done when all three have been used today.",
+   "taskTitle": "Winning the battle"
+  },
+  {
+   "day": 82,
+   "title": "Lessons From Addiction Recovery",
+   "summary": "Borrow from the recovered: meetings, sponsors, service, honesty.",
+   "cardTitle": "Lessons from addiction recovery",
+   "cardSummary": "Save three people or services you could contact if you start struggling.",
+   "done": "Done when three contacts and the message live in one note.",
+   "taskTitle": "Lessons from addiction recovery"
+  },
+  {
+   "day": 83,
+   "title": "Saying Goodbye",
+   "summary": "Say goodbye like you mean it. Write it down.",
+   "cardTitle": "Saying goodbye",
+   "cardSummary": "Remove anything that still belongs to the old habit, or use the time for something you want to keep.",
+   "done": "Done when one remnant is gone — or 20 minutes went to what stays.",
+   "taskTitle": "Saying goodbye"
+  },
+  {
+   "day": 84,
+   "title": "The Future",
+   "summary": "The future is unwritten and finally yours to write.",
+   "cardTitle": "The future",
+   "cardSummary": "Write and pin a short plan for what you will do if things start slipping again.",
+   "done": "Done when the note is pinned and reads in under a minute.",
+   "taskTitle": "The future"
+  }
+ ]
+}

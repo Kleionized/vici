@@ -1,0 +1,71 @@
+[
+  {
+    "frame": "Letter Arrival",
+    "route": "/letter",
+    "initseed": ".vicifull/letters-seed.js",
+    "wait": 1800,
+    "note": "pass 2: 0 blocks over 4/255 on the 8x8 block-mean diff. The arrival is the route's first phase, so nothing has to be driven. The seed is what makes the sheet behind it say 'Dear Sam,' — the frames draw that account, and without a signed-in mock user the app falls back to 'friend'."
+  },
+  {
+    "frame": "Letter Read",
+    "route": "/letter",
+    "initseed": ".vicifull/letters-seed.js",
+    "do": "await new Promise(r => setTimeout(r, 1300)); await tap('Read it'); await new Promise(r => setTimeout(r, 1200))",
+    "wait": 600,
+    "note": "pass 2: 4 blocks over 4/255, worst 6.5 — glyph rasterisation on 'Dear Sam,' and the pill's corner. 1 device row in the whole 570-row body differs by more than 4 ink pixels (D136 closed the paragraph drift). tap() misses if it fires before the route has mounted — wait ~1.3s first. The seed carries whyStatement 'I want to be present for the people I love', which is the underlined run the frame draws. sigdiff shows five `type:` rows reading 27.9px vs 27.8906px — that is D136's reporting cost, not a layout difference."
+  },
+  {
+    "frame": "Medallion Letter",
+    "route": "/medallion-post",
+    "initseed": ".vicifull/letters-seed.js",
+    "do": "await new Promise(r => setTimeout(r, 1300)); await tap('Take it'); await new Promise(r => setTimeout(r, 1200))",
+    "wait": 600,
+    "note": "pass 2: 3 blocks over 4/255, worst 6.5, all on 'Dear Sam,'; 0 device rows in the body differ by more than 4 ink pixels. 'Take it' is the arrival's pill. The arrival itself is `Medallion Received`, which the handover owns — see the decorated entry below. If the capture shows a dark lightning-bolt badge bottom-left, that is Metro's rebuild indicator, not the app: wait for the bundle to settle and re-capture."
+  },
+  {
+    "frame": "Yearly Drop",
+    "route": "/drop",
+    "initseed": ".vicifull/letters-seed.js",
+    "wait": 2000,
+    "note": "RECHECK pass: the residual is the lamp disc's DROP SHADOW, not the floor gradient, and it is larger than pass 2 reported. At the run's own 4/255 block threshold the 8x8 block-mean diff is 257 blocks, bbox css 140,310-252,422 — the annulus just outside the disc. Only 6 of them clear 8/255, which is why a threshold of 8 read as clean (FINDINGS F35). Cause: `ydSoft9` models `drop-shadow(0 10px 18px …)` as sigma 9; Chrome renders that CSS filter at sigma 18 in sRGB. Measured in isolation (.vicifull/rl/ctl.html, ctl3.html): feGaussianBlur 18 + color-interpolation-filters=\"sRGB\" reproduces it at rms 0.136 / max 0.65, sigma 9 at rms 4.44 / max 7.96, sigma 18 in the default linearRGB at rms 1.905. Everything else on this board is exact: the nine 'missing/extra' signature rows are the same boxes differing only in whether a <br> joins with a space, the SAVE 74% pill's painted View lands at the canvas's 275.4/488/79.6/22, and all 132 of the arc's own numbers were re-derived from the raw frame. The offer is the route's first phase, so nothing is driven. The same board reached the designed way (/medallion-post > Take it > Open the enclosure) is identical to this capture, so there is no F20 gradient-id collision on that push."
+  },
+  {
+    "frame": "Drop Received",
+    "route": "/drop",
+    "initseed": ".vicifull/letters-seed.js",
+    "do": "await new Promise(r => setTimeout(r, 1400)); await tap('Unlock my year'); await new Promise(r => setTimeout(r, 1400))",
+    "wait": 600,
+    "note": "pass 2: 0 blocks over 4/255, and the laurel's ink box measures mean |d| 0.00 — not one pixel differs — after D137 replaced the tint with the canvas's own filter. EXPO_PUBLIC_FORCE_MOCK=1 puts the offline catalogue behind usePurchases, whose purchase() grants immediately, so the pill lands straight on the claimed phase. Against RevenueCat it would open the store sheet instead."
+  },
+  {
+    "frame": "Letter Received — the /letter route's second caller (the frame itself belongs to handover)",
+    "route": "/letter?variant=week12",
+    "initseed": ".vicifull/letters-seed.js",
+    "wait": 1800,
+    "note": "pass 2: 0 blocks over 4/255 against Letter-Received.html. Reached in the app from Settings > Your letter and from /(app)/all. Not keyed to the map label, so it does not collide with the handover group's own recipe for the same frame."
+  },
+  {
+    "frame": "Letter Week XII — the /letter route's second caller (the frame itself belongs to handover)",
+    "route": "/letter?variant=week12",
+    "initseed": ".vicifull/letters-seed.js",
+    "do": "await new Promise(r => setTimeout(r, 1300)); await tap('Open it'); await new Promise(r => setTimeout(r, 1200))",
+    "wait": 800,
+    "note": "pass 2: after D136 the signature has no y difference at all — 0 rows in the sub-0.25pt bucket, where nine paragraph tops used to sit. The letter is 2,100pt of scroll; the capture only sees the first screen of it, and the signature is what proves the rest. The 23 'differing' rows are all `type:` line-height strings (D136's stated cost) plus the D022 centred-text rows."
+  },
+  {
+    "frame": "Medallion Received — the /medallion-post arrival, which borrows this frame (the frame itself belongs to handover)",
+    "route": "/medallion-post",
+    "initseed": ".vicifull/letters-seed.js",
+    "wait": 1800,
+    "note": "pass 2: in the 680-810 css band 0 device rows differ by more than 4 ink pixels, after D138 emptied the secondary slot the frame draws empty. The residual is the name and the line under it — Vici / 'Five ridden…' where the frame says Veni / 'Your first medallion. You started.' — which is D138's content divergence, not a layout one: box geometry, type metrics and colour all match."
+  },
+  {
+    "frame": "Medallion Earned — the handover's own copy of Medallion Received, checked for D140",
+    "route": "/welcome",
+    "initseed": ".vicifull/letters-onb-seed.js",
+    "do": "window.__H='med'",
+    "script": ".vicifull/drives/handover-walk.js",
+    "wait": 1400,
+    "note": "pass 2: 0 blocks over 4/255. The handover recipe for this frame omits a seed and cannot work from cold: (onboarding)/_layout.tsx redirects a signed-out visitor to / and a completed one to Today, so the walk needs an account with onboardingComplete false — .vicifull/letters-onb-seed.js is letters-seed.js with that one field flipped. Same seed reaches Letter Received (__H='letter'), Letter Week XII (__H='read'), The Vow, Reminders Setup and Day 0."
+  }
+]

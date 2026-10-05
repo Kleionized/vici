@@ -1,0 +1,40 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 238.5 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 304.5 | 329 | 379 | - | - | - | - | - | -
+div | 32 | 304.5 | 329 | 108 | - | - | - | - | - | -
+div | 32 | 304.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 312.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 319.1 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 321.9 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 320.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 304.5 | 275 | 108 | - | - | - | - | - | -
+div | 86 | 307.5 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Pick a result you can tell whether you reached: finish a project, train three times a week, submit an application, pass a course, build a portfolio, or something similar.
+div | 32 | 438.5 | 329 | 110 | - | - | - | - | - | -
+div | 32 | 438.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 446.5 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 449.8 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 449.8 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 454.8 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 458 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 438.5 | 275 | 110 | - | - | - | - | - | -
+div | 86 | 438.5 | 275 | 44 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Decide what you will do each week
+div | 86 | 485.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | two study blocks, three workouts, one application session, one project block, or another repeated action.
+div | 32 | 574.5 | 329 | 45 | - | - | - | - | - | -
+div | 32 | 574.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 582.5 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 588 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 592.4 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 574.5 | 275 | 45 | - | - | - | - | - | -
+div | 86 | 577.5 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Put the repeated time on the calendar for the next four weeks.
+div | 32 | 645.5 | 329 | 38 | - | - | - | - | - | -
+div | 32 | 645.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 653.5 | 22 | 22 | - | - | - | - | - | -
+circle | 44.4 | 659 | 13.2 | 13.2 | - | - | - | - | - | -
+path | 51 | 662.5 | 2.2 | 4.6 | - | - | - | - | - | -
+path | 43.3 | 658.5 | 15.4 | 1.6 | - | - | - | - | - | -
+div | 86 | 645.5 | 275 | 24 | - | - | - | - | - | -
+div | 86 | 648.5 | 275 | 21 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Start the first 20 minutes now.

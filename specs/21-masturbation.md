@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q16`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q16`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q16.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q16.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,21 +32,62 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · What do you want to do about masturbation?
-  <div> position:absolute  left:24px  right:24px  top:281px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+    · What about masturbation?
+  <div> position:absolute  left:0  right:0  top:236px  height:166px
+    <div> position:absolute  left:50%  top:50%  width:300px  height:175px  margin:-87.5px 0 0 -150px  background:radial-gradient(closest-side, rgba(226,186,120,0.14), rgba(226,186,120,0) 72%)  border-radius:50%  filter:blur(8px)
+    <div> position:relative  width:100%  height:100%  display:flex  justify-content:center
+      <svg> viewBox="0 0 280 166"  width="280"  height="166"
+        <defs> 
+          <lineargradient> id="cn1"  x1="0"  y1="0"  x2="0"  y2="1"
+            <stop> offset="0"  stop-color="rgba(255,255,255,0.20)"
+            <stop> offset="1"  stop-color="rgba(255,255,255,0.08)"
+          <radialgradient> id="cnf"  cx="0.5"  cy="0.35"
+            <stop> offset="0"  stop-color="#FBEECF"
+            <stop> offset="0.55"  stop-color="#F0CE8E"
+            <stop> offset="1"  stop-color="#DFA85C"
+        <ellipse> cx="86"  cy="158"  rx="30"  ry="5"  fill="rgba(0,0,0,0.35)"
+        <ellipse> cx="152"  cy="158"  rx="26"  ry="4.5"  fill="rgba(0,0,0,0.3)"
+        <ellipse> cx="210"  cy="158"  rx="22"  ry="4"  fill="rgba(0,0,0,0.26)"
+        <circle> cx="86"  cy="56"  r="17"  fill="#E2BA78"
+        <path> d="M86 40c-6 8.5-6 14.2 0 18.3 6-4.1 6-9.8 0-18.3z"  fill="url(#cnf)"
+        <line> x1="86"  y1="60"  x2="86"  y2="68"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.8"  stroke-linecap="round"
+        <rect> width="36"  height="88"  x="68"  y="68"  rx="7"  fill="url(#cn1)"  stroke="rgba(255,255,255,0.16)"  stroke-width="1.2"
+        <path> d="M152 78 C146,68 158,62 152,50 C160,60 148,66 152,78"  fill="none"  stroke="rgba(244,243,240,0.3)"  stroke-width="1.6"  stroke-linecap="round"
+        <line> x1="152"  y1="86"  x2="152"  y2="94"  stroke="rgba(244,243,240,0.45)"  stroke-width="1.7"  stroke-linecap="round"
+        <rect> width="32"  height="62"  x="136"  y="94"  rx="6.5"  fill="url(#cn1)"  stroke="rgba(255,255,255,0.13)"  stroke-width="1.1"
+        <line> x1="210"  y1="112"  x2="210"  y2="119"  stroke="rgba(244,243,240,0.35)"  stroke-width="1.6"  stroke-linecap="round"
+        <rect> width="28"  height="37"  x="196"  y="119"  rx="6"  fill="url(#cn1)"  stroke="rgba(255,255,255,0.10)"  stroke-width="1"
+  <div> position:absolute  left:24px  right:24px  top:460px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <g> fill="none"  stroke="#F4F3F0"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M12.2 10.5v9M17.8 10.5v9"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · Stop for now
-  <div> position:absolute  left:24px  right:24px  top:355px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
-    <span> color:#131313  font-size:17px  font-weight:500  line-height:20px
-      · Do it less often
+  <div> position:absolute  left:24px  right:24px  top:534px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:#F4F3F0  border-radius:16px  box-shadow:0 0 0 1px rgba(0,0,0,0)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(19,19,19,0.14)"  stroke-width="3.2"
+      <g> fill="none"  stroke="#131313"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M15 9v12M10.5 16.5L15 21l4.5-4.5"
+    <span> flex:1  color:#131313  font-size:17px  font-weight:500  line-height:20px
+      · Do it less
     <svg> viewBox="0 0 16 12"  width="16"  height="12"
       <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.4"  stroke-linecap="round"  stroke-linejoin="round"
-  <div> position:absolute  left:24px  right:24px  top:429px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+  <div> position:absolute  left:24px  right:24px  top:608px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <g> fill="none"  stroke="#F4F3F0"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M9.5 15.5l3.5 3.5 7.5-8"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
       · Keep it, just without porn
-  <div> position:absolute  left:24px  right:24px  top:503px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
-    <span> color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
-      · I haven’t decided yet
+  <div> position:absolute  left:24px  right:24px  top:682px  height:60px  padding:0 22px  display:flex  align-items:center  justify-content:space-between  gap:12px  background:rgba(255,255,255,0.07)  border-radius:16px  box-shadow:0 0 0 1px rgba(255,255,255,0.22)
+    <svg> viewBox="0 0 30 30"  width="30"  height="30"  flex-shrink:0
+      <circle> cx="15"  cy="15"  r="13"  fill="none"  stroke="rgba(244,243,240,0.18)"  stroke-width="3.2"
+      <g> fill="none"  stroke="#F4F3F0"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M11.8 12.2a3.2 3.2 0 1 1 4.6 2.9c-1 .5-1.4 1-1.4 2.1"
+        <circle> cx="15"  cy="20.6"  r="0.4"  fill="#F4F3F0"
+    <span> flex:1  color:#F4F3F0  font-size:17px  font-weight:500  line-height:20px
+      · I’m not sure yet
 ```
 
 ## Comparison — design frame vs the running app

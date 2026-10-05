@@ -1,0 +1,6 @@
+MISSING in app:  svg | -19.6 | 563 | 432.3 | 264 | - | - | - | - | - | -
+~ Rarely                                   type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Sometimes                                type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Often                                    type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Most days                                type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+--- 38 design rows, 46 app rows; 4 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

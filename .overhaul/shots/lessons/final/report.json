@@ -1,0 +1,50 @@
+{
+ "1": {
+  "week": "Week-01-Reset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "10": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "44": {
+  "week": "Week-07-Relapse-and-Adversity",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ }
+}

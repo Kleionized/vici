@@ -1,0 +1,24 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 10
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 238 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 221.5 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Question
+div | 32 | 249.5 | 329 | 93 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | You watched late at night after deciding not to. What helps with the rest of the night?
+div | 32 | 350.5 | 329 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(155, 150, 142) | Choose one.
+div | 32 | 392.5 | 329 | 226 | - | - | - | - | - | -
+div | 32 | 392.5 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 415.5 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | A
+div | 82 | 405.5 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Close the content and follow the steps for bed
+div | 32 | 470.5 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 493.5 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | B
+div | 82 | 483.5 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Keep watching because the streak has ended
+div | 32 | 548.5 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 571.5 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | C
+div | 82 | 561.5 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Stay awake reviewing every detail before putting the phone away
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

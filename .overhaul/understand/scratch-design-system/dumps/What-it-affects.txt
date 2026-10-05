@@ -1,0 +1,76 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:506px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="232"  height="7"  x="80"  y="188"  rx="3.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="92"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="294"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <path> d="M196 136 V64"  fill="none"  stroke="#F2F0EC"  stroke-width="4"  stroke-linecap="round"  stroke-linejoin="round"
+    <ellipse> cx="172"  cy="112"  rx="24"  ry="10"  fill="#F2F0EC"  transform="rotate(-32 172 112)"
+    <ellipse> cx="220"  cy="98"  rx="24"  ry="10"  fill="#F2F0EC"  transform="rotate(32 220 98)"
+    <ellipse> cx="176"  cy="80"  rx="18"  ry="8"  fill="#F2F0EC"  transform="rotate(-36 176 80)"
+    <ellipse> cx="214"  cy="70"  rx="18"  ry="8"  fill="#F2F0EC"  transform="rotate(36 214 70)"
+    <ellipse> cx="196"  cy="54"  rx="8"  ry="16"  fill="#F2F0EC"
+    <path> d="M156 122 L190 101 M236 108 L203 88 M164 89 L188 71 M228 79 L203 61 M196 66 V44"  fill="none"  stroke="#0D0D0D"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <rect> width="96"  height="13"  x="148"  y="134"  rx="5"  fill="#F2F0EC"
+    <path> d="M154 147 H238 L230 188 H162 Z"  fill="#F2F0EC"
+    <path> d="M154 148.5 H238"  fill="none"  stroke="#0D0D0D"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M170 157 L167 178"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M262 188 L265 168 H287 L290 188 Z"  fill="#55524D"
+    <path> d="M276 168 V150 M276 158 C 268 155, 265 147, 267 141 C 274 144, 277 151, 276 158 M276 154 C 284 151, 287 143, 285 137 C 278 140, 275 147, 276 154"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · What does it affect most?
+    <div> width:100%  font-size:15px  font-weight:400  line-height:22px  color:#9B968E  text-wrap:pretty
+      · Choose up to three
+    <div> height:10px
+    <div> display:flex  flex-wrap:wrap  gap:12px
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Time
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:none
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Focus
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:none
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Sleep
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:none
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Confidence
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Relationships
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Sex or intimacy
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Energy
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Feeling in control
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Peace of mind
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

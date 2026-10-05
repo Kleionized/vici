@@ -1,0 +1,93 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box
+    <svg> viewBox="0 0 12 20"  width="12"  height="20"
+      <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> height:44px  border-radius:22px  background:#1E1E1E  display:flex  align-items:center  gap:10px  padding:0 18px  font-size:15px  font-weight:700  color:#F2F0EC
+      · Months
+      <svg> viewBox="0 0 14 14"  width="14"  height="14"
+        <path> d="M2 5l5 5 5-5"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:0  right:0  top:128px  text-align:center
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+      · Recovery score
+  <div> position:absolute  left:0  right:0  top:160px  text-align:center  font-size:60px  font-weight:700  letter-spacing:-2.4px  line-height:70px  color:#F2F0EC
+    · 1,240
+  <div> position:absolute  left:0  right:0  top:248px  display:flex  justify-content:center
+    <div> height:32px  border-radius:16px  background:#1E1E1E  display:inline-flex  align-items:center  gap:8px  padding:0 14px  font-size:13px  font-weight:700  color:#F2F0EC  white-space:nowrap
+      <div> width:8px  height:8px  border-radius:4px  background:#F2F0EC
+      · Navigator II
+  <div> position:absolute  left:0  right:0  top:300px  text-align:center
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+      · The ranks
+  <div> position:absolute  left:16px  right:16px  top:334px  display:flex  flex-direction:column  gap:20px
+    <div> border-radius:24px  background:#1E1E1E  padding:22px 22px 20px  box-sizing:border-box
+      <div> display:flex  gap:18px
+        <div> display:flex  flex-direction:column  align-items:center  width:26px
+          <div> width:26px  height:26px  border-radius:13px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  justify-content:center
+          <div> flex:1  border-left:2px dashed #5A574F  margin:4px 0
+        <div> flex:1  display:flex  justify-content:space-between  align-items:flex-start  padding-bottom:30px
+          <div> display:flex  flex-direction:column  gap:2px
+            <span> font-size:18px  font-weight:700  color:#9B968E
+              · Captain
+          <span> font-size:15px  font-weight:700  color:#9B968E
+            · 1,500
+      <div> display:flex  gap:18px
+        <div> display:flex  flex-direction:column  align-items:center  width:26px
+          <div> width:26px  height:26px  border-radius:13px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  justify-content:center
+          <div> flex:1  border-left:2px dashed #5A574F  margin:4px 0
+        <div> flex:1  display:flex  justify-content:space-between  align-items:flex-start  padding-bottom:30px
+          <div> display:flex  flex-direction:column  gap:2px
+            <span> font-size:18px  font-weight:700  color:#9B968E
+              · Helmsman
+          <span> font-size:15px  font-weight:700  color:#9B968E
+            · 1,300
+      <div> display:flex  gap:18px
+        <div> display:flex  flex-direction:column  align-items:center  width:26px
+          <div> width:26px  height:26px  border-radius:13px  background:#F2F0EC  box-shadow:none  display:flex  align-items:center  justify-content:center
+            <div> width:8px  height:8px  border-radius:4px  background:#1E1E1E
+          <div> flex:1  border-left:2px solid #F2F0EC  margin:4px 0
+        <div> flex:1  display:flex  justify-content:space-between  align-items:flex-start  padding-bottom:30px
+          <div> display:flex  flex-direction:column  gap:2px
+            <span> font-size:18px  font-weight:900  color:#F2F0EC
+              · Navigator
+            <span> font-size:13px  font-weight:700  color:#B5B0A8  white-space:nowrap
+              · You’re here. 60 to go
+          <span> font-size:15px  font-weight:700  color:#F2F0EC
+            · 1,150
+      <div> display:flex  gap:18px
+        <div> display:flex  flex-direction:column  align-items:center  width:26px
+          <div> width:26px  height:26px  border-radius:13px  background:#F2F0EC  box-shadow:none  display:flex  align-items:center  justify-content:center
+            <svg> viewBox="0 0 14 14"  width="12"  height="12"
+              <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> flex:1  display:flex  justify-content:space-between  align-items:flex-start  padding-bottom:0px
+          <div> display:flex  flex-direction:column  gap:2px
+            <span> font-size:18px  font-weight:700  color:#F2F0EC
+              · Deckhand
+          <span> font-size:15px  font-weight:700  color:#F2F0EC
+            · 1,000
+  <div> position:absolute  left:0  right:0  bottom:0  height:104px  display:flex  align-items:flex-start  justify-content:space-between  padding:14px 14px 0  box-sizing:border-box  z-index:8
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M4 12.5L13 4l9 8.5V21a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 4 21z"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Today
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <rect> width="16"  height="19"  x="5"  y="3.5"  rx="3"  fill="none"  stroke="#9B968E"  stroke-width="1.8"
+        <path> d="M9 9h8M9 13h8M9 17h5"  stroke="#9B968E"  stroke-width="1.8"  stroke-linecap="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Log
+    <div> width:60px  height:60px  border-radius:30px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  margin-top:-6px  cursor:pointer
+      <span> font-size:13px  font-weight:700  color:#111111
+        · SOS
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Library
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <circle> cx="13"  cy="10"  r="6.5"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"
+        <path> d="M9 15.5L7 23l6-3 6 3-2-7.5"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:700  color:#F2F0EC
+        · Journey

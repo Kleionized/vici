@@ -1,0 +1,27 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Catch the sentence
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 205 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+path | 37.4 | 239.8 | 13.8 | 11.4 | - | - | - | - | - | -
+path | 41.4 | 244.8 | 5.3 | 0 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Use your own words
+div | 78 | 249 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | It might be something like ’only for a minute,’ ’I already messed up today,’ or ’I am too tired to care.’
+div | 24 | 328 | 345 | 102 | - | - | - | - | - | -
+div | 24 | 328 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 337 | 22 | 22 | - | - | - | - | - | -
+path | 39 | 340.7 | 0 | 15.2 | - | - | - | - | - | -
+path | 39 | 340.9 | 12.7 | 9.1 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 102 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 42 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Under it, write what you want to do when that thought shows up
+div | 78 | 373 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | lock the phone, stand up, leave the room, open Vici Urge Surfing, or return to what you were meant to be doing.
+div | 24 | 470 | 345 | 19 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Practise that action once now.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

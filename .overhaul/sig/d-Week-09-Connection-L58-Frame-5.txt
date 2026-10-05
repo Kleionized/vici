@@ -1,0 +1,38 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 58
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 100 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 161 | 329 | 291 | - | - | - | - | - | -
+div | 32 | 161 | 329 | 291 | rgb(30, 30, 30) | 20px | - | - | - | -
+div | 52 | 167 | 289 | 38 | - | - | - | - | - | -
+div | 52 | 179 | 112 | 16 | - | - | - | - | - | -
+div | 52 | 179 | 112 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | If you…
+div | 180 | 179 | 161 | 16 | - | - | - | - | - | -
+div | 180 | 179 | 161 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Try
+div | 52 | 205 | 289 | 73 | - | - | - | - | - | -
+div | 52 | 220 | 112 | 44 | - | - | - | - | - | -
+div | 52 | 220 | 112 | 44 | - | - | - | - | 15px/700/normal/22px/rgb(242, 240, 236) | Rarely see people
+div | 180 | 220 | 161 | 44 | - | - | - | - | - | -
+div | 180 | 220 | 161 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(181, 176, 168) | A regular shared activity
+div | 52 | 278 | 289 | 95 | - | - | - | - | - | -
+div | 52 | 293 | 112 | 66 | - | - | - | - | - | -
+div | 52 | 293 | 112 | 66 | - | - | - | - | 15px/700/normal/22px/rgb(242, 240, 236) | Know people, but feel close to no one
+div | 180 | 293 | 161 | 66 | - | - | - | - | - | -
+div | 180 | 293 | 161 | 66 | - | - | - | - | 15px/400/normal/22px/rgb(181, 176, 168) | A one-to-one conversation with a safe person
+div | 52 | 373 | 289 | 73 | - | - | - | - | - | -
+div | 52 | 388 | 112 | 44 | - | - | - | - | - | -
+div | 52 | 388 | 112 | 44 | - | - | - | - | 15px/700/normal/22px/rgb(242, 240, 236) | Miss someone unavailable
+div | 180 | 388 | 161 | 44 | - | - | - | - | - | -
+div | 180 | 388 | 161 | 44 | - | - | - | - | 15px/400/normal/22px/rgb(181, 176, 168) | Contact with people who are available
+div | 32 | 480 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Part 2
+div | 32 | 508 | 329 | 31 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | A step that fits
+div | 32 | 567 | 329 | 112 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | If you rarely see people, a regular shared activity may be a useful start. Seeing the same people again gives contact another chance to develop.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

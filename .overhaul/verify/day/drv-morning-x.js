@@ -1,0 +1,13 @@
+const L = [];
+const key = Object.keys(localStorage).find((k) => k.startsWith('tideline.mock.userdata.'));
+const before = localStorage.getItem(key);
+await tap('Begin'); await __sleep(600);
+await tap('Yes'); await __sleep(250);
+await tap('Next'); await __sleep(600);
+await tap('Continue'); await __sleep(600);
+await tap('Great'); await __sleep(300);
+await tap('Close'); await __sleep(2000);
+L.push('url after close ' + location.pathname);
+L.push('storage unchanged ' + (localStorage.getItem(key) === before));
+console.error('LOG ' + JSON.stringify(L));
+return L;

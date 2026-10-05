@@ -1,0 +1,77 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  right:24px  top:70px  font-size:15px  font-weight:700  color:#9B968E  cursor:pointer
+    · Restore
+  <div> position:absolute  left:24px  top:66px  display:flex  align-items:center  gap:10px
+    <img> width="28"  height="28"  src="laurel-mark.webp"  alt=""  filter:brightness(0) invert(1)
+    <span> font-size:14px  font-weight:700  color:#F2F0EC  white-space:nowrap
+      · VICI Unlimited
+  <div> position:absolute  left:24px  right:24px  top:130px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:34px  font-weight:700  letter-spacing:-0.6px  line-height:40px  color:#F2F0EC  text-wrap:balance
+      · Take your life back.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty
+      · Break the cycle, rebuild your self-control, and become someone you can trust again.
+  <div> position:absolute  left:24px  right:24px  top:318px  display:flex  gap:12px
+    <div> flex:1  border-radius:22px  background:#F2F0EC  padding:20px 18px 18px  position:relative
+      <div> white-space:nowrap  position:absolute  top:-12px  left:18px  height:24px  border-radius:12px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  padding:0 10px  font-size:11px  font-weight:700  letter-spacing:1px  color:#F2F0EC
+        · Save 74%
+      <div> display:flex  justify-content:space-between  align-items:center
+        <span> font-size:18px  font-weight:700  color:#111111
+          · Yearly
+        <div> width:22px  height:22px  border-radius:11px  background:#1E1E1E  display:flex  align-items:center  justify-content:center
+          <svg> viewBox="0 0 14 14"  width="12"  height="12"
+            <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> margin-top:6px  font-size:12px  font-weight:700  color:rgba(17,17,17,0.6)
+        · Best value
+      <div> margin-top:22px  font-size:26px  font-weight:700  letter-spacing:-0.8px  color:#111111
+        · $39.99
+        <span> font-size:13px  font-weight:700  color:rgba(17,17,17,0.6)  letter-spacing:0
+          · /year
+      <div> margin-top:2px  font-size:13px  font-weight:700  color:rgba(17,17,17,0.7)
+        · $3.33 a month
+    <div> flex:1  border-radius:22px  background:#1E1E1E  box-shadow:0 0 0 1.5px #2E2E2E  padding:20px 18px 18px
+      <div> display:flex  justify-content:space-between  align-items:center
+        <span> font-size:18px  font-weight:700  color:#F2F0EC
+          · Monthly
+        <div> width:22px  height:22px  border-radius:11px  box-shadow:0 0 0 1.5px #2E2E2E
+      <div> margin-top:6px  font-size:12px  font-weight:700  color:#9B968E
+        · Cancel anytime
+      <div> margin-top:22px  font-size:26px  font-weight:700  letter-spacing:-0.8px  color:#F2F0EC
+        · $12.99
+        <span> font-size:13px  font-weight:700  color:#9B968E  letter-spacing:0
+          · /month
+      <div> margin-top:2px  font-size:13px  font-weight:700  color:#9B968E
+        · Billed monthly
+  <div> position:absolute  left:24px  right:24px  top:520px
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+      · What you get
+  <div> position:absolute  left:24px  right:24px  top:552px  display:flex  gap:8px
+    <div> display:flex  flex-direction:column  align-items:center  gap:8px  flex:1
+      <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> font-size:12px  font-weight:700  line-height:16px  text-align:center  color:#B5B0A8
+        · 12-week plan
+    <div> display:flex  flex-direction:column  align-items:center  gap:8px  flex:1
+      <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> font-size:12px  font-weight:700  line-height:16px  text-align:center  color:#B5B0A8
+        · SOS help
+    <div> display:flex  flex-direction:column  align-items:center  gap:8px  flex:1
+      <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> font-size:12px  font-weight:700  line-height:16px  text-align:center  color:#B5B0A8
+        · Weekly insights
+    <div> display:flex  flex-direction:column  align-items:center  gap:8px  flex:1
+      <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> font-size:12px  font-weight:700  line-height:16px  text-align:center  color:#B5B0A8
+        · Progress tracking
+  <div> position:absolute  left:24px  right:24px  bottom:82px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue
+  <div> position:absolute  left:0  right:0  bottom:52px  text-align:center  font-size:12px  font-weight:700  letter-spacing:0.4px  color:#9B968E
+    · Terms · Restore

@@ -1,0 +1,26 @@
+MISSING in app:  div | 371 | 80 | 0 | 0 | - | - | - | - | - | -
+# count P:113,155,168,168: design 1, app 2
+~ Tier I, ×1                               type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+# count P:24,493,345,74: design 2, app 1
+~ -                                        radius: 50% → 15px
+# count P:44,493,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:113,493,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:182,493,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:251,493,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:320,493,30,30: design 2, app 3
+~ Paper                                    type: 13px/700/normal/normal/rgb(242, 240, 236) → 13px/700/normal/16px/rgb(242, 240, 236)
+~ ×1                                       type: 12px/700/normal/normal/rgb(181, 176, 168) → 12px/700/normal/15px/rgb(181, 176, 168)
+~ Bronze                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ ×5                                       type: 12px/700/normal/normal/rgb(90, 87, 79) → 12px/700/normal/15px/rgb(90, 87, 79)
+~ Silver                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ ×10                                      type: 12px/700/normal/normal/rgb(90, 87, 79) → 12px/700/normal/15px/rgb(90, 87, 79)
+~ Gold                                     type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ ×25                                      type: 12px/700/normal/normal/rgb(90, 87, 79) → 12px/700/normal/15px/rgb(90, 87, 79)
+~ Platinum                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ ×50                                      type: 12px/700/normal/normal/rgb(90, 87, 79) → 12px/700/normal/15px/rgb(90, 87, 79)
+~ Back to medallions                       type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 128 design rows, 140 app rows; 17 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)

@@ -1,0 +1,3 @@
+[
+{"name":"c1","noshot":true,"wait":600,"js":"const get=()=>{ const k=Object.keys(localStorage).find(k=>k.startsWith('tideline.mock.userdata.')); const d=JSON.parse(localStorage.getItem(k)); const c=Object.values(d.checkins||{}).find(c=>c.date==='2025-07-18'); return c ? {done:c.dailyActionDone, action:c.dailyAction} : 'no row'; }; const r=[get(), __btns().map(b=>b.getAttribute('aria-label')||'').filter(Boolean).join('|')]; const tl=[...document.querySelectorAll('[role=button],[role=checkbox]')].find(b=>b.textContent.startsWith('Today’s task')); __fire(tl); await __sleep(900); r.push(get(), location.pathname); return r"}
+]

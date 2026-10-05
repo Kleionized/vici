@@ -1,0 +1,58 @@
+[
+  {
+    "frame": "Today Home",
+    "route": "/today",
+    "initseed": ".overhaul/today-0900-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500)",
+    "note": "Page one. The seeds are written by `node .overhaul/f-today-clockseeds.mjs` from `.overhaul/today-seed.js` (day 41, 1,240, Navigator II, delta 18 = clean day 4 + this morning's check-in 2 + six urges ridden today 12, mood 3 / energy 2, the Pledge entry, Jerry) behind `.overhaul/clock.js` frozen at Fri 18 Jul 2025 09:00 (OQ-X1), with the account's opening moved to local midnight 40 days back so the day pill reads 41 at the frame's hour. Phase 1 result: 1.89 % pxdiff, one region (24,368 328x180) = the thirty-day line itself: the frame's thirty y values are drawn, not data (nine falling days in thirty, which on SCORE_WEIGHTS would take nine slips and contradict Moves and the header) — the app plots the account's own last thirty days on the frame's band (min at 210.6, max 172.7 above). Header, strip, number, delta pill, rules, area fill, end ring, labels, chips and tab bar are pixel-identical."
+  },
+  {
+    "frame": "Today Home II",
+    "route": "/today",
+    "initseed": ".overhaul/today-ii-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=548; await __sleep(1000)",
+    "note": "Page two (pager page 548 tall at 852: 200 → 748). Today's row names the action 'Put your phone somewhere hard to reach before you sleep.' — not a lesson's task, so the generic register (\"Today’s task\", 20/27) with DAY_STEPS[0]'s nightPhone crop; undone. Residual 0.4 %: the Lesson tile reads the day's lesson ('Lesson 41 / Give the action a time and place') where the frame prints the D132 mock 'Lesson 5 / Naming your triggers' (not a lesson in the new 84 — lesson 5 is 'Have another activity ready'); plus 3 px of hero anti-aliasing."
+  },
+  {
+    "frame": "Today Home Task",
+    "route": "/today",
+    "initseed": ".overhaul/today-task-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=548; await __sleep(1000)",
+    "note": "Page two, the lesson register (\"Today’s task: Prepare for tonight\", 17/24), done. Today's row names lesson 1's task sentence and dailyActionDone=true; a named lesson task keeps its lesson's register (D232). On day 41 the app's own night check-in would have named lesson 40's — the frame pairs day 41 with lesson 1, so the seed names lesson 1's. Residual 0.42 %: the D132 mock tile only. The same register reached the app's own way: `--initseed=.overhaul/today-task-d1-seed.js` (a day-1 account, lesson 1 by day) — identical task row and hero, but the pill reads 1 and Su–Th are open (the week before the account)."
+  },
+  {
+    "frame": "Today Home III",
+    "route": "/today",
+    "initseed": ".overhaul/today-2000-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=1096; await __sleep(1000)",
+    "note": "Page three (2 × 548), clock 20:00 (\"Good evening.\"), today's row carries the night check-in's emotions/reasons so today's disc fills (D231). 0.00 % (46 px, hero anti-aliasing)."
+  },
+  {
+    "frame": "Score Detail",
+    "route": "/score",
+    "initseed": ".overhaul/today-0900-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500)",
+    "note": "First page of the horizontal pager. 1.78 %: the curve (0,392 396x116 / 0,420 396x108) and the insight's number (+234 vs +90). The frame's curve is drawn — its ring at y 80 reads ≈1,343 on its own 1,000–1,400 axis under a 1,240 header (OQ-S2); the app plots the account's own three calendar months (May 1 → today; the account opens Jun 8, so May–Jun 7 hold its first day's score, flat on the floor). Axis values (1,400 / 1,000), the rules, month labels, ring style, insight layout, header, pill and tab bar are pixel-identical."
+  },
+  {
+    "frame": "Score Detail Moves",
+    "route": "/score",
+    "initseed": ".overhaul/today-0900-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=393; await __sleep(1200)",
+    "note": "Second page (set scrollLeft directly). The row values are the 1,240 account's (+108 · +60 · +12 · +36 · '3 slips' −48, net +168) — D134 still holds: the frame's ledger (+64 · +18 · +12 · +8 · Slip on Jul 8 −16, +86) is a 17-day account whose header reads 1,086 Deckhand I. Proof that the page draws the frame's ledger exactly: `--initseed=.overhaul/today-ledger-seed.js` (same do) — 0.74 %, every residual pixel in the header's number and rank pill, the five rows and the net pixel-identical."
+  },
+  {
+    "frame": "Score Detail Ranks",
+    "route": "/score",
+    "initseed": ".overhaul/today-0900-seed.js",
+    "wait": 900,
+    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=786; await __sleep(1200)",
+    "note": "Third page. 0.00 % (4 px) — the dashed rails are the CSS border on web, as the frame's."
+  }
+]

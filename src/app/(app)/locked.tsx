@@ -1,184 +1,92 @@
 import { useRouter } from 'expo-router';
-import { useId } from 'react';
-import { ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Defs, Ellipse, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { useRef, useState } from 'react';
+import { View } from 'react-native';
 
-import { AppText, Grain, PressScale } from '@/components/ui';
+import { CourseRow, ROW_GAP } from '@/components/library/WeekPage';
+import { Hero, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion } from '@/components/mono';
 import { CURRICULUM_84 } from '@/content/curriculum84';
-import { sans } from '@/lib/theme';
 
 /**
- * The locked curriculum (canvas 106) — week I walked, the weeks beyond as
- * ghosted rows, then the road disappearing into the mist: "N more weeks
- * ahead", and the unlock pill.
- *
- * Laid out from the canvas's 393 × 852 frame; the status bar ends at 54, so
- * every canvas `top` is written here as `top − 54` under the safe area.
+ * The locked curriculum (old canvas 106) — no frame in `Vici Overhaul` draws it
+ * (routes §4.5). Week I walked, the three weeks after it as week-page rows, the
+ * count of what is left and the unlock pill. The rows are upcoming rows — the
+ * week's numeral, its name and its blurb — with no lock glyph and no fade
+ * (CRITIC C7): the title, the count and "Unlock VICI Plus" carry the meaning.
+ * The paper mist vignette has no dark equivalent; the Closed-door illustration
+ * stands in its place.
  */
 
-const noiseDark = require('../../../assets/images/noise-dark.png');
-
-/** The three ghosted rows, at canvas y 268 / 346 / 424 — week I sits above them. */
-/** The canvas pins the three ghosted rows at these tops; the weeks are the real ones. */
-const WEEK_TOPS = [214, 292, 370];
-
-function LockGlyph() {
-  return (
-    <Svg width={17} height={19} viewBox="0 0 17 19">
-      <Rect x={1.5} y={8} width={14} height={9.5} rx={2.4} stroke="#55534E" strokeWidth={1.9} fill="none" />
-      <Path d="M4.8 8V5.6a3.7 3.7 0 0 1 7.4 0V8" stroke="#55534E" strokeWidth={1.9} fill="none" />
-    </Svg>
-  );
-}
-
-/**
- * The road ahead, lost in mist — a 240 × 130 vignette: a pale apron of ground,
- * a milestone tipped away from the eye, a signpost, and two banks of fog. The
- * canvas blurs the fog with `filter: blur(3px)`, which RN SVG has no filter
- * for, so each bank is redrawn as a radial gradient with the same soft falloff.
- */
-function MistRoadArt() {
-  const fogA = useId().replace(/:/g, '');
-  const fogB = useId().replace(/:/g, '');
-  return (
-    <View style={{ width: 240, height: 130 }}>
-      <Svg width={240} height={130} style={{ position: 'absolute', left: 0, top: 0 }}>
-        <Ellipse cx={120} cy={107} rx={100} ry={11} fill="#E7E5DE" />
-      </Svg>
-
-      {/* the milestone, tipped away with the canvas's own perspective */}
-      <View
-        style={{
-          position: 'absolute',
-          left: 108,
-          top: 58,
-          width: 26,
-          height: 52,
-          backgroundColor: '#DCDAD2',
-          borderTopLeftRadius: 13,
-          borderTopRightRadius: 13,
-          borderBottomLeftRadius: 4,
-          borderBottomRightRadius: 4,
-          transform: [{ perspective: 120 }, { rotateX: '48deg' }],
-        }}
-      />
-      <View style={{ position: 'absolute', left: 150, top: 20, width: 3, height: 30, borderRadius: 2, backgroundColor: '#8B8882', opacity: 0.45 }} />
-      <View style={{ position: 'absolute', left: 132, top: 22, width: 18, height: 10, backgroundColor: '#8B8882', opacity: 0.45, borderTopLeftRadius: 2, borderBottomLeftRadius: 2 }} />
-
-      <Svg width={240} height={130} style={{ position: 'absolute', left: 0, top: 0 }}>
-        <Defs>
-          <RadialGradient id={fogA} cx="50%" cy="50%" r="50%">
-            <Stop offset="0" stopColor="#FBFAF6" stopOpacity={0.95} />
-            <Stop offset="0.7" stopColor="#FBFAF6" stopOpacity={0.9} />
-            <Stop offset="1" stopColor="#FBFAF6" stopOpacity={0} />
-          </RadialGradient>
-          <RadialGradient id={fogB} cx="50%" cy="50%" r="50%">
-            <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0.8} />
-            <Stop offset="0.7" stopColor="#FFFFFF" stopOpacity={0.74} />
-            <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Ellipse cx={119} cy={57} rx={99} ry={17} fill={`url(#${fogA})`} />
-        <Ellipse cx={127} cy={73} rx={79} ry={13} fill={`url(#${fogB})`} />
-      </Svg>
-
-      <View style={{ position: 'absolute', left: 30, top: 104, width: 10, height: 26, backgroundColor: '#B9B6AE', borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomLeftRadius: 2, borderBottomRightRadius: 2 }} />
-      <View style={{ position: 'absolute', left: 26, top: 96, width: 18, height: 16, backgroundColor: '#C9C6BE', borderTopLeftRadius: 9, borderTopRightRadius: 9, borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }} />
-    </View>
-  );
-}
+/** The three weeks the old canvas lists under week I. */
+const GHOSTED = 3;
 
 export default function Locked() {
   const router = useRouter();
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/library'));
 
-  // The curriculum's own shape: week one, the three the canvas ghosts under it,
-  // and how many are left after that.
+  // The curriculum's own shape: week one, the three listed under it, and how
+  // many are left after that.
   const first = CURRICULUM_84[0];
   const firstCount = first?.lessons.length ?? 0;
   const ahead = Math.max(0, CURRICULUM_84.length - 1);
-  const ghosted = CURRICULUM_84.slice(1, 1 + WEEK_TOPS.length);
+  const ghosted = CURRICULUM_84.slice(1, 1 + GHOSTED);
+
+  // The door is decoration between the rows and the words: where the column
+  // would not fit above the pill with it, it goes (D320 rule 1) — once, so the
+  // shorter column cannot bring it back and drop it again.
+  const [door, setDoor] = useState(true);
+  const regionH = useRef(0);
+  const contentH = useRef(0);
+  const fit = () => {
+    if (door && regionH.current > 0 && contentH.current > regionH.current) setDoor(false);
+  };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <Grain source={noiseDark} opacity={0.07} />
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ height: 764 }} showsVerticalScrollIndicator={false}>
-          <PressScale
-            onPress={back}
-            accessibilityRole="button"
-            accessibilityLabel="Back"
-            hitSlop={{ top: 14, bottom: 14, left: 16, right: 16 }}
-            style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-            <Svg width={11} height={19} viewBox="0 0 11 19">
-              <Path d="M9.5 1.5L2 9.5l7.5 8" fill="none" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-            </Svg>
-            <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
-          </PressScale>
+    <Screen>
+      <NavBar left="back" onBack={back} />
 
-          <AppText style={[sans('600'), { position: 'absolute', left: 24, top: 68, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Weeks</AppText>
+      {/* the column between the nav and the pill (a 58 pill at bottom 48) */}
+      <ScrollRegion
+        top={100}
+        bottom={106}
+        contentStyle={{ paddingTop: 8, paddingBottom: 24 }}
+        onLayout={(e) => {
+          regionH.current = e.nativeEvent.layout.height;
+          fit();
+        }}
+        onContentSizeChange={(_, h) => {
+          contentH.current = h;
+          fit();
+        }}>
+        <MonoText v="titlePage" accessibilityRole="header" style={{ marginHorizontal: 24 }}>
+          Weeks
+        </MonoText>
 
-          {/* week one — walked */}
-          <View style={{ position: 'absolute', left: 24, right: 24, top: 144, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-            <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
-              <Svg width={16} height={13} viewBox="0 0 16 13">
-                <Path d="M1.5 7l4.4 4.5L14.5 1.5" fill="none" stroke="#F4F3F0" strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-              </Svg>
-            </View>
-            <View style={{ flex: 1 }}>
-              <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>{first ? `Week ${first.roman} · ${first.name}` : 'Week I'}</AppText>
-              <AppText style={[sans('400'), { marginTop: 2, fontSize: 13, color: '#55534E' }]}>Completed · {firstCount} lessons</AppText>
-            </View>
-          </View>
-
-          {/* the weeks beyond — ghosted, each under its own hairline */}
-          {ghosted.map((week, index) => (
-            <View
-              key={week.n}
-              style={{
-                position: 'absolute',
-                left: 24,
-                right: 24,
-                top: WEEK_TOPS[index],
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 14,
-                opacity: 0.55,
-                borderTopWidth: 1,
-                borderTopColor: 'rgba(0,0,0,0.09)',
-                paddingTop: 15,
-              }}>
-              <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: '#EAE8E1', alignItems: 'center', justifyContent: 'center' }}>
-                <LockGlyph />
-              </View>
-              <View style={{ flex: 1 }}>
-                <AppText style={[sans('500'), { fontSize: 14.5, color: '#1D1C1A' }]}>{`Week ${week.roman} · ${week.name}`}</AppText>
-                <AppText numberOfLines={1} style={[sans('400'), { marginTop: 2, fontSize: 13, color: '#55534E' }]}>{week.blurb}</AppText>
-              </View>
-            </View>
+        <View style={{ marginTop: 24, marginHorizontal: 16, gap: ROW_GAP }}>
+          <CourseRow
+            lead="check"
+            title={first ? `Week ${first.roman} · ${first.name}` : 'Week I'}
+            detail={`Completed · ${firstCount} lessons`}
+            state="done"
+            trailing={null}
+          />
+          {ghosted.map((week) => (
+            <CourseRow key={week.n} lead={week.roman} title={`Week ${week.roman} · ${week.name}`} detail={week.blurb} state="upcoming" trailing={null} />
           ))}
+        </View>
 
-          {/* the canvas pins the vignette at x 76, not to the frame's centre */}
-          <View style={{ position: 'absolute', left: 76, top: 466 }}>
-            <MistRoadArt />
-          </View>
+        {door ? <Hero mode="box" id="door" bleed={0} style={{ marginTop: 16 }} /> : <View style={{ height: 16 }} />}
 
-          <AppText center style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 598, fontSize: 20, color: '#1D1C1A' }]}>
-            {ahead} more weeks ahead
-          </AppText>
-          <AppText center style={[sans('400'), { position: 'absolute', left: 64, right: 64, top: 630, fontSize: 13.5, lineHeight: 20, color: '#55534E' }]}>
+        <View style={{ marginTop: 8, marginHorizontal: 24, gap: 8 }}>
+          <MonoText v="h1" center>
+            {`${ahead} more weeks ahead`}
+          </MonoText>
+          <MonoText v="p" center>
             {`You've finished week one. The road carries on past the mist.`}
-          </AppText>
+          </MonoText>
+        </View>
+      </ScrollRegion>
 
-          <PressScale
-            onPress={() => router.push('/paywall')}
-            accessibilityRole="button"
-            style={{ position: 'absolute', left: 24, right: 24, top: 690, height: 58, borderRadius: 29, backgroundColor: '#131313', alignItems: 'center', justifyContent: 'center' }}>
-            <AppText style={[sans('600'), { fontSize: 17, letterSpacing: 0.2, color: '#FFFFFF' }]}>Unlock VICI Plus</AppText>
-          </PressScale>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+      <PrimaryButton label="Unlock VICI Plus" onPress={() => router.push('/paywall')} />
+    </Screen>
   );
 }

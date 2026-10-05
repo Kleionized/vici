@@ -1,4 +1,4 @@
-import { Redirect, Tabs, useRouter } from 'expo-router';
+import { Redirect, Tabs, usePathname, useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
 
 import { StoicTabBar } from '@/components/StoicTabBar';
@@ -6,6 +6,7 @@ import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { checkinPartNow } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
+import { mono } from '@/lib/theme';
 import { loadUrgeSession } from '@/lib/urgeSession';
 import { buildWeeklyReport, hasReportContent, latestCompletedWeek } from '@/lib/weeklyReport';
 
@@ -20,6 +21,7 @@ export default function AppLayout() {
   const { isLoaded, isSignedIn } = useAuth();
   const user = useCurrentUser();
   const checkins = useCheckins();
+  const pathname = usePathname();
   const events = useEvents();
   const router = useRouter();
   const prompted = useRef(false);
@@ -28,6 +30,10 @@ export default function AppLayout() {
   // Waits for the logs to load: the weekly-report gate below has to read them
   // to know whether there is a report worth opening.
   useEffect(() => {
+    // `All` is the review drawer, not a destination a user arrives at: being
+    // bounced to a pending check-in the moment it opens defeats the one thing
+    // it is for. Every other route keeps the arrival order below.
+    if (pathname === '/all') return;
     if (prompted.current || !user?.onboardingComplete) return;
     if (checkins === undefined || events === undefined) return;
     prompted.current = true;
@@ -41,8 +47,10 @@ export default function AppLayout() {
         router.push('/letter');
         return;
       }
-      // Medallion post — Back on deck arrives the launch after an urge was
-      // ridden and logged (returning instead of vanishing), once.
+      // Medallion post — the medallion arrives the launch after an urge was
+      // ridden and logged (returning instead of vanishing), once. The face is
+      // Vici now; the storage keys still spell the retired `Back on deck`
+      // because they are load-bearing on accounts that already hold the post.
       const postPending = await getJSON<number>(POST_PENDING_KEY);
       const postDone = await getJSON<number>(POST_DONE_KEY);
       if (postPending && !postDone) {
@@ -70,25 +78,32 @@ export default function AppLayout() {
         router.push(checkinPartNow() === 'morning' ? '/day/morning' : '/day/night');
       }
     })();
-  }, [user?.onboardingComplete, user?.createdAt, checkins, events, router]);
+  }, [user?.onboardingComplete, user?.createdAt, checkins, events, router, pathname]);
 
   if (isLoaded && !isSignedIn) return <Redirect href="/" />;
   if (user && !user.onboardingComplete) return <Redirect href="/(onboarding)/welcome" />;
 
+  // The bar (StoicTabBar → the kit's TabBar) is the canvas's five items and
+  // paints its own ground; the scene ends at its top. The scene's fill is the
+  // ground too — the navigator's default is the light theme's grey.
   return (
-    <Tabs screenOptions={{ headerShown: false }} tabBar={() => <StoicTabBar />}>
+    <Tabs backBehavior="history" screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: mono.ground } }} tabBar={(props) => <StoicTabBar state={props.state} />}>
+      {/* The four tabs the bar lights (the fifth item, SOS, is a button). */}
       <Tabs.Screen name="today" />
       <Tabs.Screen name="log" />
       <Tabs.Screen name="library" />
+      <Tabs.Screen name="milestones" />
+      {/* Score Detail draws the bar with Journey lit; it lives here so it can. */}
+      <Tabs.Screen name="score" />
+      {/* Reachable via navigation but not drawn in the bar. `all` is the review
+          drawer, out of the bar since the canvas draws five items. */}
       <Tabs.Screen name="all" />
-      {/* Reachable via navigation but not shown in the tab bar. */}
       <Tabs.Screen name="dashboard" />
       <Tabs.Screen name="lifemap" />
       <Tabs.Screen name="settings" />
       <Tabs.Screen name="support" />
       <Tabs.Screen name="locked" />
       <Tabs.Screen name="journal" />
-      <Tabs.Screen name="milestones" />
       <Tabs.Screen name="rough-days" />
     </Tabs>
   );

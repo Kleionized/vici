@@ -1,0 +1,54 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:80px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:80px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      · Restore
+  <div> position:absolute  left:24px  right:24px  top:175px  display:flex  flex-direction:column  gap:12px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · One decision.
+      <br> 
+      · A year of change.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · Unlock everything VICI has to offer for an entire year.
+  <div> position:absolute  left:24px  right:24px  top:325px  display:flex  flex-direction:column  gap:20px
+    <div> border-radius:24px  background:#1E1E1E  padding:22px 22px 24px  box-sizing:border-box
+      <div> display:flex  flex-direction:column  gap:18px
+        <div> display:flex  justify-content:space-between  align-items:center
+          <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+            · Yearly access
+          <div> height:28px  border-radius:14px  background:#F2F0EC  display:inline-flex  align-items:center  padding:0 12px  font-size:12px  font-weight:700  color:#111111  white-space:nowrap
+            · Save 74%
+        <div> display:flex  align-items:baseline  gap:10px
+          <span> font-size:44px  font-weight:700  letter-spacing:-1.6px  line-height:48px  color:#F2F0EC
+            · $26.99
+          <span> font-size:16px  font-weight:700  white-space:nowrap  color:#9B968E
+            · / year
+          <span> font-size:16px  font-weight:700  white-space:nowrap  color:#5A574F  text-decoration:line-through
+            · $39.99
+        <div> font-size:15px  font-weight:700  color:#B5B0A8
+          · That’s $2.25 a month.
+        <div> display:flex  gap:10px  padding-top:16px  border-top:1px solid #2E2E2E
+          <div> flex:1  display:flex  flex-direction:column  align-items:center  gap:8px  text-align:center
+            <div> width:32px  height:32px  border-radius:16px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+              <svg> viewBox="0 0 14 14"  width="13"  height="13"
+                <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+            <span> font-size:12px  font-weight:700  line-height:17px  color:#B5B0A8
+              · Full 12-week programme
+          <div> flex:1  display:flex  flex-direction:column  align-items:center  gap:8px  text-align:center
+            <div> width:32px  height:32px  border-radius:16px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+              <svg> viewBox="0 0 14 14"  width="13"  height="13"
+                <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+            <span> font-size:12px  font-weight:700  line-height:17px  color:#B5B0A8
+              · SOS support anytime
+          <div> flex:1  display:flex  flex-direction:column  align-items:center  gap:8px  text-align:center
+            <div> width:32px  height:32px  border-radius:16px  background:#F2F0EC  display:flex  align-items:center  justify-content:center
+              <svg> viewBox="0 0 14 14"  width="13"  height="13"
+                <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+            <span> font-size:12px  font-weight:700  line-height:17px  color:#B5B0A8
+              · Track your progress
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Unlock my year
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Terms · Restore

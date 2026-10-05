@@ -1,0 +1,74 @@
+[
+  {
+    "frame": "Where We’d Start",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='whered-start'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Driven with this group's OWN walk, `.vicifull/drives/f-plan-walk.js`. It used to name `tail-walk.js`; the `tail` group rewrote that mid-run so its stop table carries only the eight tail boards and it now drives straight THROUGH 27-31, and every recipe here died in the handover. `seedScript` plants the mock user as an `--initseed` before the first paint, which is what a `/welcome` walk needs and what `--seed` (a post-load reload) cannot give it — a reload destroys the context the walk drives from. `--do` sets `window.__T` (and any override), then `--script` runs the walk; `scripts/vicifull/shot.mjs` evaluates them in that order, and so does `.vicifull/funnel-cap.mjs`. The walk answers `11 · When` with 'Late at night' + 'When I’m home alone', `13 · Place` with 'In bed' and `14` with 'I start scrolling', which is exactly the reading 27-31 draw. Do NOT drop 'When I’m home alone' by hand: `18 · Loneliness` and `19 · Time alone` are conditional on it (D077) and a fixed script then dies on 'Sometimes' — pass `window.__WHEN` instead and let the walk's board table simply not match those two rows. Two traps for the pixel pass. (1) The design PNG carries the phone status bar the app never draws (D009), so diff the body only — y 54 to 834 — or the top 54 rows read as a Δ223 defect. (2) Expo's 42 x 42 fast-refresh badge DOES appear in headless `shot.mjs` captures while Metro is rebuilding; it is three signature rows at `8,802,42,42`. Check for that row before reading a diff over y 800-844, and re-capture rather than explain it. Known signature artefact, NOT a defect: sigdiff leaves one `opacity: 0.14 → -` row on the dark card. `src/components/ui/Grain.tsx` is a `pointerEvents` wrapper View plus an Image, so the app has seven boxes at 24,222,345,150 where the canvas has three and the tool pairs the canvas's 0.14 div with the wrapper. The app's own 0.14 row is right there in the signature, and the card region diffs at worst 7/255."
+  },
+  {
+    "frame": "Start Here",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='start-here'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Three of the eight blurred solids D091 rebuilt live in this board's 240 x 200 art box at 76,196. Read the PNG of that box, not only the signature — a blurred layer is invisible to a signature diff, which is how the wrong one survived pass 1. The three `<Svg>` rows 3σ larger than the canvas's own divs (71,341,176,44 · 227,327,106,56 · 233,347,96,40) are D091's declared consequence, not a defect."
+  },
+  {
+    "frame": "Start Here Step 1",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='start-here-1'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Two blurred solids (D091): the nightstand glow and the shadow under it, `svg` rows at 144,331,134,58 and 154,349,114,42."
+  },
+  {
+    "frame": "Start Here Step 2",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='start-here-2'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Three blurred solids (D091), one of them the only `blur(4)` in the group — the door shadow at `left:160 top:180 width:66 height:12`, so its pad is 12 and not 15."
+  },
+  {
+    "frame": "Your Plan",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='your-plan'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Rows 1-4 are his own answers — `13 · When`, `15 · Place`, `16 · What starts it`, and the change `28` proposed. The walk produces the canvas's own four: 'Late at night', 'In bed', 'Scrolling', 'Phone out of bed'. No blurred solids on this board; it and `27` are the two frames in the group that were already right."
+  },
+  {
+    "frame": "Start Here — second board (D054 `Choose another`)",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='start-here'; window.__AFTER='await t(\"Choose another\")'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "The canvas draws no frame for this state — it is D054's own invention, so there is nothing to sigdiff it against. What to check: the heading swaps to 'Keep one door open tonight.' AND the sentence under it now leads with 'Being home alone' (D093); before D093 it still read 'Late night, bed and scrolling', arguing for a door with evidence about a phone. Also that the `Choose another` row is 393 x 18 and not a 44-tall button — `PressScale`'s app-wide `minHeight: 44` was showing through."
+  },
+  {
+    "frame": "Your Plan — after `Choose another` (D054/D055 row 4)",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__T='start-here'; window.__AFTER='await t(\"Choose another\"); await t(\"I can do that\"); await t(\"Next\"); await t(\"Continue\")'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "Proves the two step boards and `31`'s fourth row follow the swap: `29` becomes 'Pick the room you will not close.' / 'Tonight, before the house goes quiet.' and `31` row 4 becomes 'A door left open'. The artwork deliberately does NOT change with the board (D054) — inventing a second scene would be approximating a visualisation the canvas does not draw."
+  },
+  {
+    "frame": "Where We’d Start — the widest chip labels",
+    "route": "/welcome",
+    "seedScript": ".vicifull/f-plan-user.js",
+    "do": "window.__WHEN=['When I’m bored','When I’m stressed','When I can’t sleep']; window.__T='whered-start'",
+    "script": ".vicifull/drives/f-plan-walk.js",
+    "wait": 1600,
+    "note": "The state that caught D092. `11 · When` answered with the three longest options; no home-alone signal is given, so `18` and `19` are never shown (D077) and the walk's board table simply never matches them. What to check: the three chips are one line and 16 tall — 'Bored' 38.9, 'Stressed' 58.2, 'Can’t sleep' 73.9 against the frame's 100pt `white-space: nowrap` column. Before D092, `CHIP_LABEL['When I’m bored']` shipped at its full 103.4, wrapped to 100 x 31, and painted both lines."
+  }
+]

@@ -1,0 +1,21 @@
+--- .vicifull/pretty/prev/Slip-Pledge.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Slip-Pledge.html	2026-09-05 00:22:35
+@@ -154,12 +154,13 @@
+       | right:0;
+       | top:42px;
+       | text-align:center;
+-      | font-size:40px;
+-      | line-height:26px;
+-      | font-weight:600;
+-      | color:#C9C0AC;
+     ">
+-      · “
++      <svg width="29" height="21" viewBox="0 0 44 32">
++        <path d="M9.8 0C4.2 3.4 0 9.6 0 16.9 0 26 5.4 32 12.4 32c5.4 0 9.3-3.8 9.3-9 0-5-3.6-8.6-8.4-8.6-.9 0-2 .2-2.6.4C11 10.1 14.1 5.4 18.3 2.9L9.8 0z" fill="#C9C0AC">
++        </path>
++        <path d="M31.9 0c-5.6 3.4-9.8 9.6-9.8 16.9 0 9.1 5.4 15.1 12.4 15.1 5.4 0 9.3-3.8 9.3-9 0-5-3.6-8.6-8.4-8.6-.9 0-2 .2-2.6.4.3-4.7 3.4-9.4 7.6-11.9L31.9 0z" fill="#C9C0AC">
++        </path>
++      </svg>
+     </div>
+     <div style="
+       | position:absolute;

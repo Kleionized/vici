@@ -1,0 +1,60 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:24px  right:24px  top:170px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · Your plan
+    <div> height:6px
+    <div> display:flex  align-items:center  gap:16px  padding:16px 18px  border-radius:18px  background:#1E1E1E
+      <div> width:42px  height:42px  border-radius:21px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  flex-shrink:0
+        <svg> viewBox="0 0 20 20"  width="20"  height="20"
+          <path> d="M14 3a8 8 0 1 0 3 12.5A7 7 0 0 1 14 3z"  fill="#111111"
+      <div> display:flex  flex-direction:column  gap:2px  flex:1  min-width:0
+        <span> font-size:16px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Late at night
+        <span> font-size:13px  color:#9B968E
+          · When it usually happens
+    <div> display:flex  align-items:center  gap:16px  padding:16px 18px  border-radius:18px  background:#1E1E1E
+      <div> width:42px  height:42px  border-radius:21px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  flex-shrink:0
+        <svg> viewBox="0 0 20 20"  width="20"  height="20"
+          <path> d="M3 6v9M3 12h14v3M17 12v-3a2 2 0 0 0-2-2H8v4"  fill="none"  stroke="#111111"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> display:flex  flex-direction:column  gap:2px  flex:1  min-width:0
+        <span> font-size:16px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · In bed
+        <span> font-size:13px  color:#9B968E
+          · Where it usually happens
+    <div> display:flex  align-items:center  gap:16px  padding:16px 18px  border-radius:18px  background:#1E1E1E
+      <div> width:42px  height:42px  border-radius:21px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  flex-shrink:0
+        <svg> viewBox="0 0 20 20"  width="20"  height="20"
+          <rect> width="10"  height="15"  x="5"  y="2.5"  rx="2.5"  fill="none"  stroke="#111111"  stroke-width="2"
+          <path> d="M10 7v6M8 11l2 2 2-2"  fill="none"  stroke="#111111"  stroke-width="1.8"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> display:flex  flex-direction:column  gap:2px  flex:1  min-width:0
+        <span> font-size:16px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Scrolling
+        <span> font-size:13px  color:#9B968E
+          · What tends to set it off
+    <div> display:flex  align-items:center  gap:16px  padding:16px 18px  border-radius:18px  background:#1E1E1E
+      <div> width:42px  height:42px  border-radius:21px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  flex-shrink:0
+        <svg> viewBox="0 0 20 20"  width="20"  height="20"
+          <path> d="M7 3v4M13 3v4M5 7h10v3a5 5 0 0 1-10 0z M10 15v3"  fill="none"  stroke="#111111"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> display:flex  flex-direction:column  gap:2px  flex:1  min-width:0
+        <span> font-size:16px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Phone out of bed
+        <span> font-size:13px  color:#9B968E
+          · Your first change
+    <div> display:flex  align-items:center  gap:16px  padding:16px 18px  border-radius:18px  background:#1E1E1E
+      <div> width:42px  height:42px  border-radius:21px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  flex-shrink:0
+        <svg> viewBox="0 0 20 20"  width="20"  height="20"
+          <path> d="M11 2L4 11h6l-1 7 7-9h-6z"  fill="#111111"
+      <div> display:flex  flex-direction:column  gap:2px  flex:1  min-width:0
+        <span> font-size:16px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · SOS gets you out first
+        <span> font-size:13px  color:#9B968E
+          · When an urge hits
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

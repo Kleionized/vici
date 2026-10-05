@@ -1,93 +1,70 @@
 import { useRouter } from 'expo-router';
 import { ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useTabBarHeight } from '@/components/StoicTabBar';
-import { AppText, BackGlyph, Grain, LoadingView, PressScale } from '@/components/ui';
+import { Card, EmptyState, LoadingView, MonoText, NavBar, Screen } from '@/components/mono';
 import { useJournalEntries } from '@/lib/backend';
-import { colors, fonts, sans } from '@/lib/theme';
+import { WEEKDAYS_SHORT, clockTime, shortDate } from '@/lib/format';
+import { mono, sans } from '@/lib/theme';
 
 /**
- * Past pledges — what Today's "Past pledges ›" opens onto.
- *
- * The canvas draws no frame for this, so it is built in the canvas's own list
- * idiom: the 27pt title at 16/16, a captioned group, flat white cards 12 in
- * from both edges. It used to carry a serif hero, a dead search field and an
- * invented empty state ("Nothing logged yet. The page is patient." over a quote
- * glyph, with a Write-the-first-line button) — all of it furniture rather than
- * anything the record actually holds, and all of it now gone. An empty list
- * says it is empty in one line and stops there.
+ * Past pledges — what Today III's ☆ opens onto (and the review drawer's
+ * "Past pledges"). No frame draws it, so it takes the title-head pages' idiom
+ * (Medallions, Your log): the back chevron at 60, the 32/700 title at 108, and
+ * the entries as the frames' `#1E1E1E` r24 cards in the 24 gutter, the whole
+ * page scrolling under the fixed nav (D320). Each card is the entry's day and
+ * time beside its tag in the caps line, then the line itself in the task
+ * sentence's 17/700 ink. A tap opens it in the editor, as before. An empty list
+ * says so in its one existing line.
  */
 
-const noiseDark = require('../../../assets/images/noise-dark.png');
-
-/** "Today · 8:12 AM" / "Mon · 7:05 AM" for an entry timestamp. */
+/** "Today · 8:12 AM" / "Mon, Jul 14 · 7:05 AM" for an entry timestamp. */
 function entryDate(ts: number): string {
   const d = new Date(ts);
-  const today = new Date();
   const startOf = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
-  const days = Math.round((startOf(today) - startOf(d)) / 86400000);
-  const day = days === 0 ? 'Today' : days === 1 ? 'Yesterday' : d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-  return `${day} · ${d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}`;
+  const days = Math.round((startOf(new Date()) - startOf(d)) / 86_400_000);
+  const day = days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${WEEKDAYS_SHORT[d.getDay()]}, ${shortDate(d)}`;
+  return `${day} · ${clockTime(d)}`;
 }
 
 export default function Journal() {
   const router = useRouter();
   const entries = useJournalEntries();
-  const tabBar = useTabBarHeight();
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
+  if (entries === undefined) return <LoadingView onBack={back} />;
+
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <Grain source={noiseDark} opacity={0.07} />
-
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <View style={{ height: 96 }}>
-            <PressScale
-              onPress={back}
-              accessibilityRole="button"
-              accessibilityLabel="Back"
-              hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-              style={{ position: 'absolute', left: 16, top: 10, minHeight: 0, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-              <BackGlyph color="#55534E" />
-              <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>Back</AppText>
-            </PressScale>
-            <AppText style={[sans('600'), { position: 'absolute', left: 16, top: 52, fontSize: 27, letterSpacing: -0.2, color: '#1D1C1A' }]}>Past pledges</AppText>
-          </View>
-
-          {entries === undefined ? (
-            <LoadingView />
+    <Screen>
+      <NavBar left="back" onBack={back} />
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 100, bottom: 0 }}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 8, paddingHorizontal: 24, paddingBottom: 48 }}>
+          <MonoText v="titlePage">Past pledges</MonoText>
+          {entries.length === 0 ? (
+            <EmptyState body="Nothing here yet." style={{ paddingHorizontal: 0 }} />
           ) : (
-            <ScrollView contentInsetAdjustmentBehavior="never" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: tabBar + 24 }}>
-              {entries.length === 0 ? (
-                <AppText style={[sans('400'), { paddingHorizontal: 16, fontSize: 13.5, color: colors.textSoft }]}>Nothing here yet.</AppText>
-              ) : (
-                <View style={{ marginHorizontal: 12, gap: 10 }}>
-                  {entries.map((e) => (
-                    <PressScale
-                      key={e._id}
-                      onPress={() => router.push({ pathname: '/journal-new', params: { id: e._id } })}
-                      accessibilityRole="button"
-                      accessibilityLabel={e.title || 'Entry'}
-                      style={{ borderRadius: 16, backgroundColor: '#FFFFFF', paddingHorizontal: 18, paddingTop: 14, paddingBottom: 16 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-                        <AppText style={[sans('500'), { fontSize: 12.5, color: '#8B8882' }]}>{entryDate(e.createdAt)}</AppText>
-                        <AppText style={[sans('600'), { fontSize: 11, letterSpacing: 0.5, color: '#8B8882' }]}>{e.tag.toUpperCase()}</AppText>
-                      </View>
-                      {/* the pledge is a written line, so it keeps the canvas's Georgia */}
-                      <AppText numberOfLines={3} style={{ marginTop: 8, fontFamily: fonts.quote, fontSize: 16, lineHeight: 24, color: '#1D1C1A' }}>
-                        {e.body || e.title || 'Untitled'}
-                      </AppText>
-                    </PressScale>
-                  ))}
-                </View>
-              )}
-            </ScrollView>
+            <View style={{ marginTop: 24, gap: 12 }}>
+              {entries.map((e) => (
+                <Card
+                  key={e._id}
+                  padding={[18, 20]}
+                  onPress={() => router.push({ pathname: '/journal-new', params: { id: e._id } })}
+                  accessibilityLabel={e.title || 'Entry'}
+                  style={{ gap: 8 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                    <MonoText v="caps">{entryDate(e.createdAt)}</MonoText>
+                    <MonoText v="caps">{e.tag}</MonoText>
+                  </View>
+                  <MonoText v="p" wrap="pretty" numberOfLines={3} style={{ ...sans('700'), fontSize: 17, lineHeight: 24, letterSpacing: -0.4, color: mono.ink }}>
+                    {e.body || e.title || 'Untitled'}
+                  </MonoText>
+                </Card>
+              ))}
+            </View>
           )}
-        </View>
-      </SafeAreaView>
-    </View>
+        </ScrollView>
+      </View>
+    </Screen>
   );
 }
+

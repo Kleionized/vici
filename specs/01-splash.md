@@ -1,6 +1,6 @@
 # 01 · Splash
 
-* **Design frame** `Email-Login/Splash` — `.uifinal1/final/Email-Login/Splash.html`
+* **Design frame** `Email-Login/Splash` — `.vicifull/final/Email-Login/Splash.html` (identical to the previous drop)
 * **App files** `src/components/ui/Waterline.tsx` (`SplashScene`), used by `src/app/index.tsx` and `src/app/(auth)/splash.tsx`
 * **Frame** 393 × 852, `overflow: hidden`
 
@@ -35,8 +35,12 @@ No type. No padding, margins or gaps — every child is absolutely positioned.
 No pressed/disabled/loading/empty/error/focus state: the frame is not interactive
 (`pointer-events:none` on the art layer, nothing else takes a touch).
 No motion is declared in the frame. The app holds the mark for 900 ms and then
-crossfades to `02 · Finding the Waterline`; that timing is app behaviour, not a
-design value, and is left as it is.
+replaces into `02 · Login`; that timing is app behaviour, not a design value.
+It used to spend a second on `Finding the Waterline` on the way — a board no
+drop of this canvas has ever drawn — and because boot showed the same pair
+first, the whole cold open played twice. Boot now shows `01 · Splash` while the
+session resolves and `(auth)/splash` owns the single beat after it, so the field
+is continuous from launch to the login door.
 
 ## Comparison — design vs `SplashScene`
 
@@ -54,10 +58,10 @@ design value, and is left as it is.
 | star opacities | .22 / .18 / .15 / .14 | .22 / .18 / .15 / .14 | match |
 | star colour | `rgb(160,155,145)` | `#A09B91` | match |
 | laurel size | 72 × 72 | 72 × 72 | match |
-| laurel position | `left:160 top:400` | `left:'40.7%' top:'46.9%'` → 159.95, 399.7 on a 393 × 852 screen | match |
+| laurel position | `left:160 top:400` | `left:'40.712%' top:'46.948%'` → 160.0, 400.0 on a 393 × 852 screen | match |
 | laurel opacity | 0.9 | 0.9 | match |
 | laurel colour | `brightness(0) invert(1)` = pure white | `tintColor="#FFFFFF"` | match |
-| laurel fit | `<img>` at intrinsic 72 × 72 | `contentFit="contain"` in a 72 × 72 box | match |
+| laurel fit | `<img width=72 height=72>`, no `object-fit` — the browser **stretches** the 280 × 252 asset into the square | `contentFit="fill"` in a 72 × 72 box | match — was `contain`, which drew a 72 × 65 mark 11% short of the frame's |
 | grain source | `noise-dark.png` | `assets/images/noise-dark.png` | match |
 | grain opacity | 0.10 | 0.1 | match |
 | paint order | washes A–C, laurel, wash D, stars, grain | washes A–D + stars (one `<Svg>`), laurel, grain | equivalent — see note |
@@ -76,7 +80,29 @@ because moving the laurel into the `<Svg>` would cost the `tintColor` treatment 
 ### Platform gap — `filter: blur()`
 `react-native-svg` has no filter primitive on either platform, so the four washes carry no
 blur. Each is a `radial-gradient(closest-side, …)`, which already reaches zero alpha at its
-own edge, and the app's `Wash` inserts an extra midpoint stop at `fade/2` with `opacity × 0.42`
-to reproduce the falloff curve rather than a linear ramp. The residual difference is the
-5–8 px of additional softening the canvas applies to a shape that is already soft-edged;
-it is sub-perceptual against a `#131313` field. Logged in `DECISIONS.md` as D010.
+own edge, so each is reproduced with the canvas's own two stops.
+
+D010 had the app's `Wash` insert a third stop at `fade/2` with `opacity × 0.42`, on the
+reading that a CSS `closest-side` radial does not ramp linearly. For these washes it does:
+CSS interpolates a gradient in premultiplied alpha, and both stops name the same RGB, so
+alpha falls linearly and an SVG two-stop radial is exact. Measured against the frame, the
+0.42 midpoint darkened the mark's halo by up to 5/255; with it dropped the whole frame is
+within 1/255 of the canvas outside the status bar and home indicator. The residual
+difference is the 5–8 px of extra softening the canvas applies to an already soft-edged
+shape, which is sub-perceptual against a `#131313` field. D010 otherwise stands.
+
+## Pass 2 — the cold-open path, and a capture note
+
+`SplashScene` is rendered by two routes — `/` while the session resolves and `(auth)/splash`
+after it redirects — and both are mounted at once for about half a second on a cold open. That is
+the D130 exposure, so this scene's gradient ids are now per mount rather than per call site.
+Measured on that window before the change, the washes were still within 2/255 of the frame: a
+duplicate id only *loses* paint when the first copy in the document is inside a `display: none`
+subtree, and here both copies are visible and identical. The fix removes an exposure rather than
+a visible defect, and is recorded so the measurement is not re-derived.
+
+Capture note for the audit: `/splash --fast --wait=250` is clean (0 of 19,208 blocks over 3/255,
+worst 2.3/255, all four stars within 1/255). The cold-open path `/` needs **600**, not 250 — at
+250 ms the boot chain has not decoded `laurel-mark.webp` and the mark is missing from the capture,
+which reads as a Δ151 defect and is not one. At 1400 ms both routes have already handed over to
+`02 · Login`.

@@ -1,0 +1,39 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | The next 24 hours
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 230 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 40 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 235 | 20 | 20 | - | - | - | - | - | -
+rect | 38.5 | 238 | 11 | 14 | - | - | - | - | - | -
+path | 41.5 | 242.5 | 5 | 6 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 22 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 22 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | The next proper meal you will still eat.
+div | 24 | 287 | 345 | 40 | - | - | - | - | - | -
+div | 24 | 287 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 297 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 300 | 14 | 14 | - | - | - | - | - | -
+path | 40.8 | 304.6 | 6.4 | 4.8 | - | - | - | - | - | -
+div | 78 | 287 | 291 | 22 | - | - | - | - | - | -
+div | 78 | 287 | 291 | 22 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | The next responsibility you will still keep.
+div | 24 | 349 | 345 | 44 | - | - | - | - | - | -
+div | 24 | 349 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 359 | 20 | 20 | - | - | - | - | - | -
+path | 38 | 362.5 | 12.5 | 12.5 | - | - | - | - | - | -
+div | 78 | 349 | 291 | 44 | - | - | - | - | - | -
+div | 78 | 349 | 291 | 44 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | One person you will stay in contact with instead of disappearing.
+div | 24 | 415 | 345 | 40 | - | - | - | - | - | -
+div | 24 | 415 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 34 | 425 | 20 | 20 | - | - | - | - | - | -
+circle | 37 | 428 | 14 | 14 | - | - | - | - | - | -
+path | 44 | 431.5 | 2.5 | 5.5 | - | - | - | - | - | -
+div | 78 | 415 | 291 | 22 | - | - | - | - | - | -
+div | 78 | 415 | 291 | 22 | - | - | - | - | 15.5px/400/normal/22px/rgb(58, 57, 52) | Where your phone will go at bedtime.
+div | 24 | 521 | 345 | 19 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | What you will start with tomorrow morning.
+div | 24 | 550 | 345 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | If you have relapsed recently, use today. If you have not, write this for the next time it happens. Prepare tomorrow morning now by laying out what you need, setting the alarm, or putting the first task on your desk.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

@@ -1,0 +1,88 @@
+=== V3 Q24 Name (18.0s)
+script -> "What should we call you? All your data will be encrypted. Continue"
+sig: --- 35 design rows, 43 app rows; 1 differing, 2 missing, 6 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.44 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q24-Name.strip.png  .overhaul/verify/auth-funnel/s-V3-Q24-Name.diff.png  .overhaul/verify/auth-funnel/s-V3-Q24-Name.overlay.png
+=== V3 Q25 Age (18.6s)
+script -> "How old are you? 22 23 24 25 26 Continue"
+sig: --- 26 design rows, 35 app rows; 1 differing, 0 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.51 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q25-Age.strip.png  .overhaul/verify/auth-funnel/s-V3-Q25-Age.diff.png  .overhaul/verify/auth-funnel/s-V3-Q25-Age.overlay.png
+=== V3 Q26 Gender (18.8s)
+script -> "How do you describe your gender? Male Female Non-binary Another identity Prefer not to say"
+sig: --- 40 design rows, 48 app rows; 5 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (3 of 1245888 px > 24), mean Δ 0.37 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q26-Gender.strip.png  .overhaul/verify/auth-funnel/s-V3-Q26-Gender.diff.png  .overhaul/verify/auth-funnel/s-V3-Q26-Gender.overlay.png
+=== Onboarding Start (17.9s)
+script -> "Sam, let’s figure out what usually leads you back to porn. It’ll take about two minutes. Then we’ll show you what we’d change first. Start"
+sig: --- 26 design rows, 31 app rows; 1 differing, 1 missing, 3 extra, 3 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-Onboarding-Start.strip.png  .overhaul/verify/auth-funnel/s-Onboarding-Start.diff.png  .overhaul/verify/auth-funnel/s-Onboarding-Start.overlay.png
+=== V3 Q1 (19.6s)
+script -> "How often are you watching porn right now? More than once a day About once a day A few times a week About once a week A few times a month Less than once a month"
+sig: --- 30 design rows, 36 app rows; 6 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.35 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q1.strip.png  .overhaul/verify/auth-funnel/s-V3-Q1.diff.png  .overhaul/verify/auth-funnel/s-V3-Q1.overlay.png
+=== V3 Q2 (21.3s)
+script -> "How long have you wanted to quit or cut down? Less than 3 months 3–12 months 1–3 years 3–5 years 5+ years"
+sig: --- 40 design rows, 49 app rows; 5 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.37 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q2.strip.png  .overhaul/verify/auth-funnel/s-V3-Q2.diff.png  .overhaul/verify/auth-funnel/s-V3-Q2.overlay.png
+=== V3 Q3 (24.5s)
+script -> "Have you tried to quit before? Yes, several times Yes, once or twice No"
+sig: --- 42 design rows, 50 app rows; 3 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.38 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q3.strip.png  .overhaul/verify/auth-funnel/s-V3-Q3.diff.png  .overhaul/verify/auth-funnel/s-V3-Q3.overlay.png
+=== V3 Q3b (23.1s)
+script -> "When you’ve tried to quit, how long do you usually make it before watching again? Less than a day A few days About a week A few weeks A month or longer"
+sig: --- 60 design rows, 70 app rows; 5 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (2 of 1245888 px > 24), mean Δ 0.36 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q3b.strip.png  .overhaul/verify/auth-funnel/s-V3-Q3b.diff.png  .overhaul/verify/auth-funnel/s-V3-Q3b.overlay.png
+=== First Principle (21.9s)
+script -> "An urge doesn’t stay at its worst for very long. The first job is getting through the part where giving in feels easiest. Continue"
+sig: --- 44 design rows, 49 app rows; 1 differing, 1 missing, 4 extra, 1 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.50 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-First-Principle.strip.png  .overhaul/verify/auth-funnel/s-First-Principle.diff.png  .overhaul/verify/auth-funnel/s-First-Principle.overlay.png
+=== V3 Q5 (29.0s)
+script -> "When do you usually end up watching? Select all that apply Late at night In the morning When I’m bored When I’m stressed When I can’t sleep On weekends After drinking When I’m home alone While scrolli"
+sig: --- 47 design rows, 53 app rows; 10 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (1 of 1245888 px > 24), mean Δ 0.41 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q5.strip.png  .overhaul/verify/auth-funnel/s-V3-Q5.diff.png  .overhaul/verify/auth-funnel/s-V3-Q5.overlay.png
+=== V3 Q6 (25.6s)
+script -> "What are you usually feeling right before? Select all that apply Horny Bored Lonely Stressed Low Angry Numb Tired Nothing in particular Continue"
+sig: --- 68 design rows, 77 app rows; 10 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.43 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q6.strip.png  .overhaul/verify/auth-funnel/s-V3-Q6.diff.png  .overhaul/verify/auth-funnel/s-V3-Q6.overlay.png
+=== V3 Q7 (26.8s)
+script -> "Where are you usually watching? Select all that apply In bed In the bathroom At my desk In the living room Somewhere else at home Outside home Continue"
+sig: --- 53 design rows, 62 app rows; 7 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.43 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q7.strip.png  .overhaul/verify/auth-funnel/s-V3-Q7.diff.png  .overhaul/verify/auth-funnel/s-V3-Q7.overlay.png
+=== What starts it (27.3s)
+script -> "What usually sets it off? Select all that apply I see something sexual online I start scrolling I can’t sleep I’ve had a stressful day I argue with someone or feel rejected I start fantasising Nothing"
+sig: --- 39 design rows, 45 app rows; 8 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.42 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-What-starts-it.strip.png  .overhaul/verify/auth-funnel/s-What-starts-it.diff.png  .overhaul/verify/auth-funnel/s-What-starts-it.overlay.png
+=== Transition (27.1s)
+script -> "Okay. That’s enough to see where things usually start. A few more questions, then we’ll show you what we’d change first. Continue"
+sig: --- 40 design rows, 45 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-Transition.strip.png  .overhaul/verify/auth-funnel/s-Transition.diff.png  .overhaul/verify/auth-funnel/s-Transition.overlay.png
+=== V3 Q21 (27.5s)
+script -> "How much is porn getting in the way of your life? Not really A little Quite a bit A lot"
+sig: --- 43 design rows, 54 app rows; 4 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.41 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q21.strip.png  .overhaul/verify/auth-funnel/s-V3-Q21.diff.png  .overhaul/verify/auth-funnel/s-V3-Q21.overlay.png
+=== What it affects (33.7s)
+script -> "What does it affect most? Choose up to three Time Focus Sleep Confidence Relationships Sex or intimacy Energy Feeling in control Peace of mind Continue"
+sig: --- 62 design rows, 70 app rows; 10 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.42 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-What-it-affects.strip.png  .overhaul/verify/auth-funnel/s-What-it-affects.diff.png  .overhaul/verify/auth-funnel/s-What-it-affects.overlay.png
+=== V3 Q10 (32.2s)
+script -> "How often have you felt lonely lately? Rarely Sometimes Often Most days"
+sig: --- 38 design rows, 46 app rows; 4 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.41 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q10.strip.png  .overhaul/verify/auth-funnel/s-V3-Q10.diff.png  .overhaul/verify/auth-funnel/s-V3-Q10.overlay.png
+=== V3 Q13 (32.1s)
+script -> "How often are you on your own for long stretches? Most days A few days a week Now and then Rarely"
+sig: --- 38 design rows, 47 app rows; 4 differing, 1 missing, 5 extra, 1 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.38 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q13.strip.png  .overhaul/verify/auth-funnel/s-V3-Q13.diff.png  .overhaul/verify/auth-funnel/s-V3-Q13.overlay.png
+=== V3 Q15 (31.0s)
+script -> "What are you aiming for with porn? Stop completely Watch much less Set a limit and stick to it I’m not sure yet"
+sig: --- 44 design rows, 52 app rows; 4 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (3 of 1245888 px > 24), mean Δ 0.39 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q15.strip.png  .overhaul/verify/auth-funnel/s-V3-Q15.diff.png  .overhaul/verify/auth-funnel/s-V3-Q15.overlay.png
+=== V3 Q16 (31.9s)
+script -> "What about masturbation? Stop for now Do it less Keep it, just without porn I’m not sure yet"
+sig: --- 47 design rows, 55 app rows; 4 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.38 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q16.strip.png  .overhaul/verify/auth-funnel/s-V3-Q16.diff.png  .overhaul/verify/auth-funnel/s-V3-Q16.overlay.png
+=== V3 Q17 (31.2s)
+script -> "What have you tried already? Select all that apply Blocking sites or apps Going cold turkey Asking someone to keep me accountable Deleting apps or accounts Therapy or counselling Replacing it with oth"
+sig: --- 39 design rows, 45 app rows; 8 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.41 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-V3-Q17.strip.png  .overhaul/verify/auth-funnel/s-V3-Q17.diff.png  .overhaul/verify/auth-funnel/s-V3-Q17.overlay.png
+=== Goal Confirmation (33.9s)
+script -> "You want to stop. That’s what we’ll work toward. Masturbation isn’t part of what you’re trying to stop. Porn is. Continue"
+sig: --- 39 design rows, 45 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+px: mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.44 | regions (frame pt, largest first): 0 | -> .overhaul/verify/auth-funnel/s-Goal-Confirmation.strip.png  .overhaul/verify/auth-funnel/s-Goal-Confirmation.diff.png  .overhaul/verify/auth-funnel/s-Goal-Confirmation.overlay.png

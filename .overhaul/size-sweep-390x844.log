@@ -1,0 +1,255 @@
+Splash: ok
+Login: ok
+Welcome Back: ok
+V3 Q24 Name: ok
+V3 Q25 Age: ok
+V3 Q26 Gender: ok
+Onboarding Start: ok
+V3 Q1: ok
+V3 Q2: ok
+V3 Q3: ok
+V3 Q3b: ok
+First Principle: ok
+V3 Q5: ok
+V3 Q6: ok
+V3 Q7: ok
+What starts it: ok
+Transition: ok
+V3 Q21: ok
+What it affects: ok
+V3 Q10: ok
+V3 Q13: ok
+V3 Q15: ok
+V3 Q16: ok
+V3 Q17: ok
+Goal Confirmation: ok
+Enlisting Aegis: ok
+Where We’d Start: ok
+Start Here: ok
+Start Here Step 1: ok
+Start Here Step 2: ok
+Your Plan: ok
+Starting Score: ok
+Cost Next 30: ok
+Cost Next 365: ok
+Cost By Age 80: ok
+Line If Nothing Changes: ok
+Line With the Plan: ok
+A Clean Day: ok
+One Bad Day: ok
+What You Want Back: ok
+Letter Received: ok
+Letter Week XII: ok
+The Vow: ok
+Medallion Received: ok
+Reminders Setup: ok
+Paywall: ok
+Day Zero: ok
+Paywall Rescue: ok
+Paywall Confirmed: ok
+Manage Subscription: ok
+Morning Check-in Time: ok
+Nightly Check-in Time: ok
+Today Home: ok
+Score Detail: CHECK {"overflowX":["What moved it this month [390..780]","Clean days [426..538]","+108 [700..744]","Check-ins [426..538]","+60 [700..744]","Lessons [426..538]","+12 [700..744]","Urges ridden [426..538]"],"
+Score Detail Moves: CHECK {"overflowX":["+234 points this quarter [-306..-24]","May – July [-306..-24]","The ranks [390..780]","Captain [472..535]","1,500 [704..742]","Helmsman [472..558]","1,300 [704..742]","Navigator [472..5
+Score Detail Ranks: CHECK {"overflowX":["+234 points this quarter [-696..-414]","May – July [-696..-414]","What moved it this month [-390..0]","Clean days [-354..-242]","+108 [-80..-36]","Check-ins [-354..-242]","+60 [-80..-36
+Today Home II: ok
+Today Home Task: ok
+Today Home III: ok
+Morning Check-in Cover: ok
+Morning Task Check: ok
+Morning 1 Yesterday: ok
+Morning Feeling: ok
+Morning Energy: ok
+Morning Resign Pledge: ok
+Morning Pledge Signed: ok
+Change Pledge Sheet: CHECK {"overflowX":[],"underCtl":["Sign for today under Sign the new pledge","Sign the new pledge under Sign for today"],"clipped":[],"offscreen":[]}
+Morning 5 Done: ok
+Night Check-in Cover: ok
+Night 1 Mood: ok
+Checkin Emotions: ok
+Checkin Reasons: ok
+Night 3 Reflection: ok
+Night 2 Record: ok
+Night Action Reminder: ok
+Night 4 Closed: ok
+Week I Reset: CHECK {"overflowX":["Week II [414..756]","Streaks, relapses, and how you talk to y [414..756]","Measure more than a streak [468..716]","Stop sooner after a slip [468..716]","Use the hours that remain [468..
+Week I Reset P2: CHECK {"overflowX":["Week II [414..756]","Streaks, relapses, and how you talk to y [414..756]","Measure more than a streak [468..716]","Stop sooner after a slip [468..716]","Use the hours that remain [468..
+Week II Changing Your Mindset: CHECK {"overflowX":["Week I [-366..-24]","Survive the nights and steady the basics [-366..-24]","Prepare for tonight [-312..-64]","Remove easy access to porn [-312..-64]","Choose where to go instead [-312..
+Week II Changing Your Mindset P2: CHECK {"overflowX":["Week I [-366..-24]","Survive the nights and steady the basics [-366..-24]","Prepare for tonight [-312..-64]","Remove easy access to porn [-312..-64]","Choose where to go instead [-312..
+Week III In the Moment: CHECK {"overflowX":["Week II [-366..-24]","Streaks, relapses, and how you talk to y [-366..-24]","Measure more than a streak [-312..-64]","Stop sooner after a slip [-312..-64]","Use the hours that remain [-
+Week III In the Moment P2: CHECK {"overflowX":["Week II [-366..-24]","Streaks, relapses, and how you talk to y [-366..-24]","Measure more than a streak [-312..-64]","Stop sooner after a slip [-312..-64]","Use the hours that remain [-
+Week IV Know Your Brain: CHECK {"overflowX":["Week III [-366..-24]","What to do in the sixty seconds that mat [-366..-24]","What to do when an urge starts [-312..-64]","Check what you need [-312..-64]","Close the screen and move [-
+Week IV Know Your Brain P2: CHECK {"overflowX":["Week III [-366..-24]","What to do in the sixty seconds that mat [-366..-24]","What to do when an urge starts [-312..-64]","Check what you need [-312..-64]","Close the screen and move [-
+Week V Why It Feels Worth It: CHECK {"overflowX":["Week IV [-366..-24]","The machinery behind the pull. [-366..-24]","Understand what starts the habit [-312..-64]","Decide before the difficult hour [-312..-64]","Make room for food and s
+Week V Why It Feels Worth It P2: CHECK {"overflowX":["Week IV [-366..-24]","The machinery behind the pull. [-366..-24]","Understand what starts the habit [-312..-64]","Decide before the difficult hour [-312..-64]","Make room for food and s
+Week VI Discipline: CHECK {"overflowX":["Week V [-366..-24]","The honest math of what it gives and tak [-366..-24]","Look at the benefit and cost [-312..-64]","Meet the need you can identify [-312..-64]","Begin a task you are 
+Week VI Discipline P2: CHECK {"overflowX":["Week V [-366..-24]","The honest math of what it gives and tak [-366..-24]","Look at the benefit and cost [-312..-64]","Meet the need you can identify [-312..-64]","Begin a task you are 
+Week VII Relapse and Adversity: CHECK {"overflowX":["Week VI [-366..-24]","Training the response you want on hard n [-366..-24]","Prepare a simpler response when tired [-312..-64]","Practise the response [-312..-64]","38 [-350..-334]","Ke
+Week VII Relapse and Adversity P2: CHECK {"overflowX":["Week VI [-366..-24]","Training the response you want on hard n [-366..-24]","Prepare a simpler response when tired [-312..-64]","Practise the response [-312..-64]","38 [-350..-334]","Ke
+Week VIII Boredom and Meaning: CHECK {"overflowX":["Week VII [-366..-24]","Falling without unraveling. [-366..-24]","43 [-350..-334]","Learn from a slip [-312..-64]","44 [-350..-334]","Take care and make a repair [-312..-64]","45 [-350..
+Week VIII Boredom and Meaning P2: CHECK {"overflowX":["Week VII [-366..-24]","Falling without unraveling. [-366..-24]","43 [-350..-334]","Learn from a slip [-312..-64]","44 [-350..-334]","Take care and make a repair [-312..-64]","45 [-350..
+Week IX Connection: CHECK {"overflowX":["Week VIII [-366..-24]","Empty hours, and what fills them well. [-366..-24]","50 [-350..-334]","Give an activity time before switching [-312..-64]","51 [-350..-334]","Choose what begins 
+Week IX Connection P2: CHECK {"overflowX":["Week VIII [-366..-24]","Empty hours, and what fills them well. [-366..-24]","50 [-350..-334]","Give an activity time before switching [-312..-64]","51 [-350..-334]","Choose what begins 
+Week X Yourself: CHECK {"overflowX":["Week IX [-366..-24]","The people side of recovery. [-366..-24]","57 [-350..-334]","Arrange a shared activity [-312..-64]","58 [-350..-334]","Choose contact that fits [-312..-64]","59 [-
+Week X Yourself P2: CHECK {"overflowX":["Week IX [-366..-24]","The people side of recovery. [-366..-24]","57 [-350..-334]","Arrange a shared activity [-312..-64]","58 [-350..-334]","Choose contact that fits [-312..-64]","59 [-
+Week XI Build a Life You Want: CHECK {"overflowX":["Week X [-366..-24]","Repairing how you see and treat yourself [-366..-24]","64 [-350..-334]","Choose support without revisiting painfu [-312..-64]","65 [-350..-334]","Change one difficu
+Week XI Build a Life You Want P2: CHECK {"overflowX":["Week X [-366..-24]","Repairing how you see and treat yourself [-366..-24]","64 [-350..-334]","Choose support without revisiting painfu [-312..-64]","65 [-350..-334]","Change one difficu
+Week XII Leave It Behind: CHECK {"overflowX":["Week XI [-366..-24]","Point the freed-up energy at something. [-366..-24]","71 [-350..-334]","Use what your notes show [-312..-64]","72 [-350..-334]","Choose what you can do now [-312..
+Week XII Leave It Behind P2: CHECK {"overflowX":["Week XI [-366..-24]","Point the freed-up energy at something. [-366..-24]","71 [-350..-334]","Use what your notes show [-312..-64]","72 [-350..-334]","Choose what you can do now [-312..
+Cue Intro Modal: ok
+SOS Strength: ok
+Cue Hue Picker: ok
+Surf Step 1: ok
+Surf Step 3: ok
+Cue Set Confirmation: ok
+SOS Reason Picker: ok
+SOS Feeling Picker: ok
+SOS Challenge: ok
+SOS Reassess: ok
+SOS Afterward: ok
+Surf Complete: ok
+Relapse Log: ok
+Relapse Twice: ok
+Relapse Resign: ok
+Relapse Begin: ok
+Urge Hub Now: CHECK {"overflowX":["You’re riding a wave. [414..756]","This one is strong. None this strong has [414..756]","Last 30 days [436..507]","28 clean, 2 slips [644..734]","Every urge so far has ended. [804..1146
+Urge Hub Score: CHECK {"overflowX":["Get out of bed. [-366..-24]","Stand up. Move somewhere with light. [-366..-24]","Bored [-330..-294]","Relationship [-258..-185]","Work or school [-149..-60]","Every urge so far has ende
+Urge Hub Proof: CHECK {"overflowX":["Get out of bed. [-756..-414]","Stand up. Move somewhere with light. [-756..-414]","Bored [-720..-684]","Relationship [-648..-575]","Work or school [-539..-450]","You’re riding a wave. [
+Urge Hub Surfed: CHECK {"overflowX":["Get out of bed. [-1146..-804]","Stand up. Move somewhere with light. [-1146..-804]","Bored [-1110..-1074]","Relationship [-1038..-965]","Work or school [-929..-840]","You’re riding a wa
+Urge Hub Pledges: CHECK {"overflowX":["Get out of bed. [-1536..-1194]","Stand up. Move somewhere with light. [-1536..-1194]","Bored [-1500..-1464]","Relationship [-1428..-1355]","Work or school [-1319..-1230]","You’re riding
+Urge Hub Breathe: ok
+SOS Loc Bed: ok
+SOS Loc Bathroom: ok
+SOS Loc Home Alone: ok
+SOS Loc Private Room: ok
+SOS Loc Work: ok
+SOS Loc Public: ok
+SOS Loc Elsewhere: ok
+SOS Feel Turned On: ok
+SOS Feel Bored: ok
+SOS Feel Lonely: ok
+SOS Feel Stressed: ok
+SOS Feel Anxious: ok
+SOS Feel Angry: ok
+SOS Feel Low: ok
+SOS Feel Rejected: ok
+SOS Feel Tired: ok
+SOS Feel Restless: ok
+SOS Feel Numb: ok
+SOS Feel Ashamed: ok
+SOS Feel Unknown: ok
+SOS Trig Content: ok
+SOS Trig Doomscroll: ok
+SOS Trig Fantasy: ok
+SOS Trig Late Phone: ok
+SOS Trig Habit: ok
+SOS Trig Cant Sleep: ok
+SOS Trig Argument: ok
+SOS Trig Rejection: ok
+SOS Trig Alone: ok
+SOS Trig Unknown: ok
+Medallions: CHECK {"overflowX":["Logbook [440..497]","Tier II, ×25 [440..497]","Pulse [562..608]","Tier I, ×5 [562..608]","Black Box [670..734]","Jul 20 [670..734]","Lessons [443..494]","Tier I, ×5 [443..494]"],"underC
+Medallions Still To Earn: ok
+Album Earned II: CHECK {"overflowX":["Veni [-326..-297]","Jun 9 [-326..-297]","First light [-226..-164]","Jun 9 [-226..-164]","Vidi [-110..-47]","Tier I, Day 7 [-110..-47]","Vici [-335..-288]","Tier I, ×5 [-335..-288]"],"un
+Breakwater Paper: ok
+Breakwater Bronze: ok
+Breakwater Silver: ok
+Breakwater Gold: ok
+Breakwater Platinum: ok
+Tiers Vidi: ok
+Tiers Vici: ok
+Tiers Rebound: ok
+Tiers Breakwater: ok
+Tiers Logbook: ok
+Tiers Pulse: ok
+Tiers Archive: ok
+Tiers Lessons: ok
+Tiers One-offs: ok
+Detail Paper: ok
+Detail Bronze: ok
+Detail Silver: ok
+Detail Gold: ok
+Detail Platinum: ok
+Log Chooser: ok
+Lapse When: ok
+Lapse Trigger: ok
+Lapse Done: ok
+Log Urges: ok
+Log Check-ins: CHECK {"overflowX":[],"underCtl":["Monday under Today","Good under Journey"],"clipped":[],"offscreen":[]}
+Log Reports: ok
+Urge Overview Summary: CHECK {"overflowX":["Strong [524..646]","Most urges [548..622]","1 [430..492]","2 [492..554]","3 [554..616]","4 [616..678]","5 [678..740]","Stress [416..512]"],"underCtl":[],"clipped":[],"offscreen":[]}
+Urge Overview: CHECK {"overflowX":["9 [-212..-178]","Urges, 7 ridden out [-257..-133]","Jul 19 [-364..-325]","Slipped [-72..-26]","Jul 17 [-364..-325]","6 min [-60..-26]","Jul 15 [-364..-325]","4 min [-60..-26]"],"underCt
+Urge Overview Mood: CHECK {"overflowX":["14 [-620..-550]","Urges, 14 ridden out [-652..-518]","Jul 19 [-754..-715]","5 min [-450..-416]","Jul 17 [-754..-715]","Jul 15 [-754..-715]","Jul 13 [-754..-715]","Jul 11 [-754..-715]"],
+Urge Overview When: CHECK {"overflowX":["9 [-992..-958]","Urges, 7 ridden out [-1037..-913]","Jul 19 [-1144..-1105]","Slipped [-852..-806]","Jul 17 [-1144..-1105]","6 min [-840..-806]","Jul 15 [-1144..-1105]","4 min [-840..-80
+Report Ready: ok
+Weekly Report: CHECK {"overflowX":["6 of 7 [513..657]","Clean days [550..620]","M [437..447]","T [486..493]","W [532..543]","T [582..588]","F [630..636]","S [677..683]"],"underCtl":[],"clipped":[],"offscreen":[]}
+Weekly Report Days: CHECK {"overflowX":["1,130 [-271..-119]","+44 this week [-241..-149]","1 [568..602]","Urge, ridden out [532..638]","Fri, 9:05 pm [416..495]","Strong [712..754]"],"underCtl":[],"clipped":[],"offscreen":[]}
+Weekly Report Urges: CHECK {"overflowX":["1,212 [-661..-509]","+48 this week [-631..-539]","7 of 7 [-267..-123]","Clean days [-230..-160]","M [-343..-333]","T [-294..-287]","W [-248..-237]","T [-198..-192]"],"underCtl":[],"clip
+Urge Log Intensity: ok
+Urge Log Trigger: ok
+Urge Log Outcome: ok
+Urge Log When: ok
+Urge Log Done: ok
+Settings: ok
+Edit Profile: ok
+Sheet Profile Photo: CHECK {"overflowX":[],"underCtl":["Medallions under Take photo","10 of 12 under Take photo","Take photo under Medallions10 of 12"],"clipped":[],"offscreen":[]}
+Sheet Edit Name: ok
+Settings Weekly Report: CHECK {"overflowX":["6 of 7 [513..657]","Clean days [550..620]","M [437..447]","T [486..493]","W [532..543]","T [582..588]","F [630..636]","S [677..683]"],"underCtl":[],"clipped":[],"offscreen":[]}
+Settings Check-in Time: ok
+Your Vow Page: ok
+Sheet Sign Out: CHECK {"overflowX":[],"underCtl":["Edit profile under Sign out","Manage subscription under Sign out","Yearly under Sign out","Your log, letters and medallions stay sa under Edit profile","Sign out under Edi
+Data Privacy: ok
+App Lock: ok
+Slip Entry: ok
+Slip Close It: ok
+Slip When: ok
+Slip Fed: ok
+Slip Logged: ok
+Slip Urge Now: ok
+Slip Dont Fail Twice: ok
+Slip Stop Here: ok
+Slip Third: ok
+Slip Pledge: ok
+Slip Begin Again: ok
+Slip Morning After: ok
+Slip Feel Ashamed: ok
+Slip Feel Bored: ok
+Slip Feel Lonely: ok
+Slip Feel Stressed: ok
+Slip Feel Rejected: ok
+Slip Feel Tired: ok
+Slip Feel Turned on: ok
+Slip Feel Not sure: ok
+Slip Trigger Late night: ok
+Slip Trigger Scrolling: ok
+Slip Trigger Sexual content: ok
+Slip Trigger Boredom: ok
+Slip Trigger Loneliness: ok
+Slip Trigger Stress: ok
+Slip Trigger Argument: ok
+Slip Trigger Couldn’t sleep: ok
+Slip Trigger Being alone: ok
+Slip Trigger Habit: ok
+Slip Trigger Not sure: ok
+Letter Arrival: ok
+Letter Read: ok
+Medallion Letter: ok
+Yearly Drop: ok
+Drop Received: ok
+Lesson Scroll 1: ok
+Lesson Scroll 2: ok
+Lesson Scroll 3: ok
+Lesson Scroll 4: ok
+Lesson Scroll 5: ok
+Lesson Scroll 6: ok
+Lesson Scroll 7: ok
+Lesson Scroll 8: ok
+Lesson Scroll 9: ok
+Lesson Scroll 10: ok
+Lesson Scroll 11: ok
+Lesson Scroll 12: ok
+Lesson Scroll 13: ok
+Lesson Scroll 14: ok
+390x844: 254 frames — ok 208, check 46, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/390x844/report.md

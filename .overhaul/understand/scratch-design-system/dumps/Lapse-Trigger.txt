@@ -1,0 +1,69 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:506px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <ellipse> cx="196"  cy="202"  rx="36"  ry="3"  fill="#3A3835"
+    <circle> cx="150"  cy="78"  r="2"  fill="#A8A39A"
+    <circle> cx="242"  cy="64"  r="2.4"  fill="#A8A39A"
+    <circle> cx="236"  cy="106"  r="1.8"  fill="#A8A39A"
+    <circle> cx="158"  cy="112"  r="1.6"  fill="#A8A39A"
+    <rect> width="12"  height="88"  x="190"  y="104"  rx="3"  fill="#F2F0EC"
+    <ellipse> cx="196"  cy="106"  rx="10"  ry="12"  fill="#F2F0EC"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+    <path> d="M196 40 C 206 54, 220 66, 218 82 C 216 96, 206 100, 196 100 C 186 100, 176 96, 174 82 C 172 66, 186 54, 196 40 Z"  fill="#F2F0EC"
+    <path> d="M196 64 C 201 72, 206 78, 205 84 C 204 90, 200 93, 196 93 C 192 93, 188 90, 187 84 C 186 78, 191 72, 196 64 Z"  fill="#0D0D0D"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:8px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · What fed it?
+    <div> width:100%  font-size:15px  font-weight:400  line-height:22px  color:#9B968E  text-wrap:pretty
+      · Tap all that apply.
+    <div> height:6px
+    <div> display:flex  flex-wrap:wrap  gap:12px
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Stress
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Boredom
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Lonely
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Tired
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Social
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Phone
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Late night
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Argument
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Craving
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

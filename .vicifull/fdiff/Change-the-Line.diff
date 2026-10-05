@@ -1,0 +1,20 @@
+--- .vicifull/pretty/prev/Change-the-Line.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Change-the-Line.html	2026-09-05 00:22:35
+@@ -125,7 +125,7 @@
+     | text-wrap:pretty;
+     | z-index:6;
+   ">
+-    · You only have to make the next decision different. Then again tomorrow. That is how the line changes.
++    · You only have to make the next decision different. Then the next one. Then come back tomorrow.
+   </div>
+   <div style="
+     | position:absolute;
+@@ -154,7 +154,7 @@
+       | letter-spacing:0.2px;
+       | color:#131313;
+     ">
+-      · Start changing it
++      · Start with today
+     </span>
+   </div>
+ </div>

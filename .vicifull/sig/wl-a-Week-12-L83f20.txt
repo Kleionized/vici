@@ -1,0 +1,58 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+button | 38 | 72 | 317 | 708 | - | - | - | - | - | -
+div | 38 | 426 | 317 | 0 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 133.4 | 208 | 126.3 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | How to do it
+div | 32 | 274 | 329 | 440 | - | - | - | - | - | -
+div | 32 | 274 | 329 | 87 | - | - | - | - | - | -
+div | 32 | 274 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 282 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 288.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 291.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 290.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 274 | 275 | 87 | - | - | - | - | - | -
+div | 86 | 277 | 275 | 84 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | If you still have a porn bookmark, saved file, secondary account, stored login, browser profile, or physical item: Remove one today.
+div | 32 | 387 | 329 | 193 | - | - | - | - | - | -
+div | 32 | 387 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 395 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 398.3 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 398.3 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 403.3 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 406.5 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 387 | 275 | 193 | - | - | - | - | - | -
+div | 86 | 387 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | If you already removed all of it
+div | 86 | 412 | 275 | 168 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Do not invent another trigger just to complete the task. Write one sentence naming what you removed during the course, then spend 20 minutes using the time or place for something you want to keep: a book, instrument, workout, project, walk, meal, or time with another person.
+div | 32 | 606 | 329 | 108 | - | - | - | - | - | -
+div | 32 | 606 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 614 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 619.5 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 623.9 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 606 | 275 | 108 | - | - | - | - | - | -
+div | 86 | 609 | 275 | 105 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | If a social feed you still use keeps becoming sexual: Remove the accounts, searches, or recommendations causing it. Keep the rest of the service if you still use it.
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

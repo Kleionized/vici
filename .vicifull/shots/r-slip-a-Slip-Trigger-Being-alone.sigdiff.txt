@@ -1,0 +1,7 @@
+# count P:351,70,20,20: design 1, app 2
+~ -                                        radius: 50% → -
+# count P:226,288,26,100: design 1, app 2
+~ -                                        radius: 50% → 3.5px
+~ -                                        bg: rgba(0, 0, 0, 0.1) → -   radius: 50% → -
+~ -                                        radius: 50% → 1px
+--- 17 design rows, 25 app rows; 4 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding, 3 radius-notation only (D015), 1 paint-absent-geometry-exact (CSS box drawn as SVG — CONFIRM IN THE PNG) (use --all to list extras)

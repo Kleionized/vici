@@ -1,0 +1,2872 @@
+--- .vicifull/pretty/prev/Cost-Next-365.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Cost-Next-365.html	2026-09-05 00:22:35
+@@ -101,2092 +101,2457 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:20px;
+-    | right:20px;
+-    | top:72px;
+-    | bottom:100px;
++    | left:0;
++    | right:0;
++    | top:60px;
+     | display:grid;
+-    | grid-template-columns:repeat(15,1fr);
+-    | grid-auto-rows:1fr;
++    | grid-template-columns:repeat(17,1fr);
+     | gap:4px;
++    | padding:0 4px;
++    | box-sizing:border-box;
+     | z-index:5;
+   ">
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#131313;
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+     </div>
+     <div style="
+-      | border-radius:5px;
++      | aspect-ratio:1;
++      | border-radius:4px;
+       | background:#FFFFFF;
+       | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.06);
+     ">
+@@ -2243,16 +2608,35 @@
+     | -webkit-backdrop-filter:blur(12px);
+     | border-radius:16px;
+     | box-shadow:0 0 0 1px rgba(0,0,0,0.08), 0 18px 44px rgba(40,38,32,0.26);
+-    | padding:13px 24px 14px;
+-    | white-space:nowrap;
++    | padding:18px 24px 18px;
++    | width:300px;
++    | box-sizing:border-box;
++    | text-align:center;
+   ">
+-    <span style="
++    <div style="
+       | font-size:15px;
+       | font-weight:500;
++      | color:#55534E;
++    ">
++      · One year from now.
++    </div>
++    <div style="
++      | margin-top:6px;
++      | font-size:28px;
++      | font-weight:600;
++      | letter-spacing:-0.5px;
+       | color:#1D1C1A;
+     ">
+-      · A year at this pace — about 110 days
+-    </span>
++      · About 110 days
++    </div>
++    <div style="
++      | margin-top:8px;
++      | font-size:13px;
++      | line-height:18px;
++      | color:#55534E;
++    ">
++      · Where you’re predicted to relapse.
++    </div>
+   </div>
+   <div style="
+     | position:absolute;

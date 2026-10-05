@@ -1,0 +1,72 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:506px  overflow:visible  transform:scale(1.071)  transform-origin:196px 190px
+    <rect> width="224"  height="7"  x="84"  y="188"  rx="3.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="96"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="6"  height="14"  x="290"  y="195"  rx="1.5"  fill="#F2F0EC"
+    <rect> width="74"  height="138"  x="150"  y="50"  rx="13"  fill="#F2F0EC"
+    <rect> width="64"  height="118"  x="155"  y="58"  rx="7"  fill="#0D0D0D"
+    <rect> width="18"  height="5"  x="178"  y="63"  rx="2.5"  fill="#F2F0EC"
+    <rect> width="48"  height="24"  x="163"  y="76"  rx="5"  fill="#55524D"
+    <rect> width="48"  height="24"  x="163"  y="106"  rx="5"  fill="#55524D"
+    <rect> width="48"  height="24"  x="163"  y="136"  rx="5"  fill="#3A3835"
+    <path> d="M222 150 V140 a14 14 0 0 1 28 0 V150"  fill="none"  stroke="#0D0D0D"  stroke-width="12"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M222 150 V140 a14 14 0 0 1 28 0 V150"  fill="none"  stroke="#F2F0EC"  stroke-width="6"  stroke-linecap="round"  stroke-linejoin="round"
+    <rect> width="44"  height="38"  x="214"  y="148"  rx="7"  fill="#F2F0EC"  stroke="#0D0D0D"  stroke-width="4"  stroke-linejoin="round"
+    <circle> cx="236"  cy="163"  r="4.5"  fill="#0D0D0D"
+    <rect> width="4"  height="9"  x="234"  y="165"  rx="2"  fill="#0D0D0D"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:8px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · What’s feeding it right now?
+    <div> width:100%  font-size:15px  font-weight:400  line-height:22px  color:#9B968E  text-wrap:pretty
+      · Select all that apply.
+    <div> height:6px
+    <div> display:flex  flex-wrap:wrap  gap:12px
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Something online
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Doomscrolling
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · A stuck fantasy
+      <div> height:48px  border-radius:24px  background:#F2F0EC  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · Phone in bed
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Pure habit
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Can’t sleep
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · An argument
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Being alone
+      <div> height:48px  border-radius:24px  background:#1E1E1E  display:flex  align-items:center  gap:8px  padding:0 20px  box-sizing:border-box  cursor:pointer
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · I don’t know
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

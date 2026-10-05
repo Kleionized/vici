@@ -1,0 +1,16 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.05 | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 22 | 60 | 36 | 40 | - | - | - | - | - | -
+div | 335 | 60 | 36 | 40 | - | - | - | - | - | -
+svg | 353 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 355 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 24 | 150 | 345 | 238 | - | - | - | - | - | -
+div | 24 | 150 | 345 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Day 0, Jun 9
+div | 24 | 184 | 345 | 46 | - | - | - | - | 40px/700/-0.6px/46px/rgb(242, 240, 236) | The vow.
+div | 24 | 256 | 345 | 132 | - | - | - | - | 21px/400/normal/33px/rgb(242, 240, 236) | I’m giving this twelve weeks. I don’t need to be perfect. When I want to watch, I’ll use the plan first. If I have a bad day, I’ll come back the next day.
+div | 24 | 530 | 345 | 73 | - | - | - | - | - | -
+div | 24 | 530 | 345 | 47 | - | - | - | - | 30px/700i/-0.5px/normal/rgb(242, 240, 236) | Sam
+div | 24 | 587 | 345 | 16 | - | - | - | - | 13px/700/0.5px/normal/rgb(155, 150, 142) | Signed on day 0
+div | 24 | 698 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 181.1 | 717.5 | 30.7 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Sign
+div | 0 | 774 | 393 | 18 | - | - | - | - | 15px/400/normal/normal/rgb(155, 150, 142) | Not now

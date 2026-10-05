@@ -1,0 +1,14 @@
+const o = {};
+await waitFor('Insights');
+o.range0 = (__txt().match(/[A-Z][a-z]{2} \d+ – [A-Z][a-z]{2} \d+/) || [])[0];
+await tap('4W'); await __sleep(600); o.range4 = (__txt().match(/[A-Z][a-z]{2} \d+ – [A-Z][a-z]{2} \d+/) || [])[0];
+await tap('12W'); await __sleep(600); o.range12 = (__txt().match(/[A-Z][a-z]{2} \d+ – [A-Z][a-z]{2} \d+/) || [])[0];
+o.nums = (__txt().match(/\d+ Check-ins \d+ Urges logged \d+ Days kept/) || [])[0];
+await tap('Your mail'); await __sleep(1800); o.mail = location.pathname;
+history.back(); await __sleep(1800);
+await waitFor('Insights');
+await tap('Medallions'); await __sleep(1800); o.med = location.pathname;
+history.back(); await __sleep(1800);
+await waitFor('Insights');
+await tap('Back'); await __sleep(1800); o.back = location.pathname;
+return o;

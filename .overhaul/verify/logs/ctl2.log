@@ -1,0 +1,15 @@
+== lapse-save
+script -> {"sheet":"Just now*|Earlier today|Yesterday|Tonight, Tue Jul 22*|Last night, Mon Jul 21|Sun Jul 20|Sat Jul 19|Fri Jul 18|Thu Jul 17|Wed Jul 16","chips":"Just now|Earlier today|Yesterday","dateRow":"Yesterday Or choose a time 9 10 11 12 1 : 38 39 40 41 42 AM PM Sun Jul 20 ","disabled0":"true/0.38","stillTrigger":true,"added":1,"saved":{"type":"lapse","trigger":"Late night · Boredom","at":"Sun Jul 2
+shot -> .overhaul/verify/logs/u-lapse-done.png
+== lapse-back
+script -> {"back1":true,"back0url":"/log"}
+== urge-ride
+script -> {"word":"Overwhelming","dis0":"true","dateRow":"Yesterday Or choose a time 5 ","added":1,"saved":{"type":"urge_rode_out","sev":8,"trig":"Late night","help":"Reached out","at":"Tue Jul 22 2025 19:40"},"post":true,"done":"Urge logged. Twenty-three ridden out. Two to Bronze. Intensity Intense Set off by Late night What I did Reached out Done"}
+== mouse
+CHECK at http://localhost:8096/lapse
+CHECK hour10 at 109.515625 373 <div dir="auto" class="css-text-146c3p1" style="font-family: Lato_400Regular, -apple-system, system-ui, sans-serif; font / closest label: Hour 10
+CHECK after Hour 10 tap: Hour=10 | Minute=40 | AM or PM=PM | when chips on: A lapseWhen, what fed it, what changes
+CHECK after minute drag: Hour=10 | Minute=38 | AM or PM=PM
+CHECK saved: Tue Jul 22 2025 22:38
+CHECK close -> /log-chooser
+CTL2-DONE

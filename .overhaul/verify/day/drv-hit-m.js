@@ -1,0 +1,15 @@
+eval(window.__HITSRC);
+const R = [];
+const step = async (tag) => { R.push(...__hit(tag)); R.push(tag + ': ' + __btns().length + ' ctl'); };
+await step('cover');
+await tap('Begin'); await __sleep(600); await step('task');
+await tap('Yes'); await __sleep(250); await tap('Next'); await __sleep(600); await step('ledger');
+await tap('Continue'); await __sleep(600); await step('feeling');
+await tap('Continue'); await __sleep(600); await step('energy');
+await tap('Continue'); await __sleep(700); await step('pledge');
+await tap('Sign for today'); await __sleep(400); await step('signed');
+await tap('Change the pledge'); await __sleep(900); await step('sheet');
+await tap('Keep current pledge'); await __sleep(700);
+await tap('Confirm'); await __sleep(700); await step('done');
+console.error('HIT ' + JSON.stringify(R));
+return R.filter((x) => /OCCLUDED|OFFSCREEN/.test(x)).length;

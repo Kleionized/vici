@@ -1,0 +1,36 @@
+## .vicifull/final/Lesson-1-Surviving-the-Night
+prev=26 final=26  identical=0 changed=26 added=0 removed=0
+
+### ADDED (new in UI Final)
+
+### REMOVED (gone from UI Final)
+
+### CHANGED
+  ~ L1 Frame 01  (7431 -> 7431, +0)
+  ~ L1 Frame 02  (3579 -> 3579, +0)
+  ~ L1 Frame 03  (3157 -> 3157, +0)
+  ~ L1 Frame 04  (2956 -> 2956, +0)
+  ~ L1 Frame 05  (3353 -> 3353, +0)
+  ~ L1 Frame 06  (2869 -> 2869, +0)
+  ~ L1 Frame 07  (3061 -> 3061, +0)
+  ~ L1 Frame 08  (2930 -> 2930, +0)
+  ~ L1 Frame 09  (3608 -> 3608, +0)
+  ~ L1 Frame 10  (2867 -> 2867, +0)
+  ~ L1 Frame 11  (3244 -> 3244, +0)
+  ~ L1 Frame 12  (2878 -> 2878, +0)
+  ~ L1 Frame 13  (4066 -> 4066, +0)
+  ~ L1 Frame 14  (4490 -> 4490, +0)
+  ~ L1 Frame 15  (3279 -> 3279, +0)
+  ~ L1 Frame 16  (4816 -> 4816, +0)
+  ~ L1 Frame 17  (3045 -> 3045, +0)
+  ~ L1 Frame 18  (7450 -> 7450, +0)
+  ~ L1 Frame 19  (2961 -> 2961, +0)
+  ~ L1 Frame 20  (2856 -> 2856, +0)
+  ~ L1 Frame 21  (3126 -> 3126, +0)
+  ~ L1 Frame 22  (3302 -> 3302, +0)
+  ~ L1 Frame 23  (8513 -> 8513, +0)
+  ~ L1 Frame 24  (7089 -> 7080, -9)
+  ~ L1 Frame 25  (3550 -> 3550, +0)
+  ~ L1 Frame 26  (3682 -> 3682, +0)
+
+### IDENTICAL

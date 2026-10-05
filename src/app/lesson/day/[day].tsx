@@ -1,79 +1,154 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Board, Cta, Part } from '@/components/lesson/reader';
-import { LessonScroll } from '@/components/lesson/scroll';
-import { LESSON_READER, type ReaderPage } from '@/content/lessonReader';
+import { LessonPageView } from '@/components/lesson/LessonPages';
+import { LessonShell, type LessonBottom } from '@/components/lesson/LessonShell';
+import { EmptyState, toggleChoice } from '@/components/mono';
+import { LESSONS, type LessonPage } from '@/content/lessons';
+import { useCompleteLesson, useLessonDetail, useLessonProgressMap, useSaveReflection, useStartLesson } from '@/lib/backend';
+import { lessonSlug } from '@/lib/curriculum';
 
 /**
- * The lesson reader — all 84 lessons, as the `lesson UI` bundle draws them.
+ * The lesson reader — all 84 lessons of `Vici Overhaul`, one page per Week
+ * frame (`src/content/lessons.ts`, generated). Each lesson is cover · quote ·
+ * three or four Parts · [question · answer] · quote · the day's task (two
+ * pages ending in the Done-when card) · complete.
  *
- * The last drop authored one lesson's body and left the other 83 with a card
- * and a task; this one authors every page of all 84, 1,398 in total. The page
- * still advances by tapping the board: only the pick and completion boards
- * carry a pill, and the cover's chevron is the only other hint of a control.
+ * `?page=<k>` opens on frame k (1-based) and `?page=task` on `Today’s task` —
+ * Today's task row and the old `/task/<n>` link land there (D324), and the
+ * verification sweep reaches any of the 1,273 frames directly.
  *
- * Everything about how a page looks lives in `src/content/lessonReader.ts`,
- * transcribed frame by frame. This file decides only what a tap does.
+ * Writes (lessons.md §12.3, D311): `Begin` records the lesson as started; a
+ * question's `Continue` saves the choice, and the reflect page's `Continue`
+ * the note, as the lesson's reflection (merged — `reflections:save` replaces
+ * the whole record); `Finish lesson` records completion once (re-stamping
+ * `completedAt` would move Morning's "finished yesterday" and the score day).
+ * The day's task itself is still completed where it always was — Today's
+ * check and Morning's question — as the complete page says.
  */
+
+/** The page `?page=` names: `task` → the first task page; a number is 1-based; anything else → the cover. */
+function startIndex(pages: readonly LessonPage[], param: string | undefined) {
+  if (param === 'task') return Math.max(0, pages.findIndex((p) => p.k === 'task'));
+  const k = Number(param);
+  return Number.isInteger(k) && k >= 1 ? Math.min(k, pages.length) - 1 : 0;
+}
+
 export default function LessonReader() {
   const router = useRouter();
-  const { day } = useLocalSearchParams<{ day?: string }>();
+  const { day, page: pageParam } = useLocalSearchParams<{ day?: string; page?: string }>();
   const n = Number(String(day ?? '').replace(/^day-/, '')) || 1;
-  // The cursor carries the lesson it belongs to. Opening a different lesson
-  // reuses this component rather than remounting it, so a bare `useState(0)`
-  // would drop the reader on whatever page number the last lesson left behind.
-  const [cursor, setCursor] = useState({ day: n, index: 0 });
-  const index = cursor.day === n ? cursor.index : 0;
-  const setIndex = (next: (i: number) => number) => setCursor({ day: n, index: next(index) });
-  const insets = useSafeAreaInsets();
+  const lesson = LESSONS[n];
+  const pages = lesson?.pages ?? [];
+  const slug = lessonSlug(n);
 
-  const pages: ReaderPage[] | undefined = LESSON_READER[n];
-  const close = () => (router.canGoBack() ? router.back() : router.replace(`/lesson-card/${n}`));
+  // The cursor carries the lesson (and deep link) it belongs to. Opening a
+  // different lesson reuses this component rather than remounting it, so a
+  // bare `useState(0)` would drop the reader on whatever page — and with
+  // whatever answers — the last lesson left behind.
+  const at = `${n}|${pageParam ?? ''}`;
+  const fresh = { at, index: startIndex(pages, pageParam), chosen: [] as string[], note: '' };
+  const [state, setState] = useState(fresh);
+  const cur = state.at === at ? state : fresh;
+  const set = (patch: Partial<typeof fresh>) => setState({ ...cur, ...patch });
 
-  if (!pages?.length) return null;
+  const progress = useLessonProgressMap();
+  const detail = useLessonDetail(slug);
+  const startLesson = useStartLesson();
+  const completeLesson = useCompleteLesson();
+  const saveReflection = useSaveReflection();
 
-  const page = pages[Math.min(index, pages.length - 1)];
-  const next = () => (index >= pages.length - 1 ? close() : setIndex((i) => i + 1));
-  // The completion and pick boards are the only pages that draw a pill; the
-  // task-options board states none.
-  const cta = page.k === 'board' ? undefined : page.cta;
+  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
+
+  if (!lesson || !pages.length) {
+    // an unknown lesson: the ground, the way out and the kit's not-found state,
+    // worded as the medallion route words its own (it used to render nothing at all)
+    return (
+      <LessonShell n={n} index={0} count={0} bottom={null} tapAnywhere={false} onClose={close}>
+        <EmptyState title="Lesson not found" body="The course has 84 lessons." h1 />
+      </LessonShell>
+    );
+  }
+
+  const index = Math.min(cur.index, pages.length - 1);
+  const page = pages[index];
+  const next = () => (index >= pages.length - 1 ? close() : set({ index: index + 1 }));
+
+  // `reflections:save` replaces the record, so every save carries what is already there
+  const save = (answers: Record<string, string | number>) => {
+    const prev = detail && detail.reflection ? detail.reflection.answers : {};
+    saveReflection(slug, { ...prev, ...answers }).catch(() => {});
+  };
+
+  let bottom: LessonBottom;
+  switch (page.k) {
+    case 'cover':
+      bottom = {
+        kind: 'pill',
+        label: 'Begin',
+        onPress: () => {
+          startLesson(slug).catch(() => {});
+          next();
+        },
+      };
+      break;
+    case 'question':
+      bottom = {
+        kind: 'pill',
+        label: 'Continue',
+        // the frame draws Continue live with nothing chosen, so it never waits for one
+        onPress: () => {
+          if (cur.chosen.length) save({ q: cur.chosen.join(',') });
+          next();
+        },
+      };
+      break;
+    case 'answer':
+      bottom = { kind: 'pill', label: 'Continue', onPress: next };
+      break;
+    case 'reflect':
+      bottom = {
+        kind: 'pill',
+        label: 'Continue',
+        onPress: () => {
+          const note = cur.note.trim();
+          if (note) save({ ...(cur.chosen.length ? { q: cur.chosen.join(',') } : {}), note });
+          next();
+        },
+      };
+      break;
+    case 'taskEnd':
+      bottom = {
+        kind: 'pill',
+        label: 'Finish lesson',
+        onPress: () => {
+          if (progress?.[slug]?.status !== 'completed') completeLesson(slug).catch(() => {});
+          next();
+        },
+      };
+      break;
+    case 'complete':
+      bottom = { kind: 'pill', label: 'Done', onPress: close };
+      break;
+    default:
+      bottom = { kind: 'ring', onPress: next };
+  }
+
+  const choose = (letter: string) => {
+    if (page.k !== 'question') return;
+    set({ chosen: page.multi ? toggleChoice(cur.chosen, letter, { exclusive: page.exclusive ?? [] }) : [letter] });
+  };
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <LessonScroll
-        index={index}
-        count={pages.length}
-        gap={page.k === 'column' ? page.gap : undefined}
-        // The cover is the one page that draws the scroll chevron, and it is
-        // always the first: every lesson opens on its eyebrow and title.
-        chevron={index === 0}
-        // Only the boards that ask something take a touch; every reading page
-        // stays transparent so a tap anywhere turns it.
-        interactive={page.k === 'pick' || (page.k === 'column' && page.parts.some((p) => p.t === 'picklist'))}
-        onClose={close}
-        onNext={next}
-        footer={cta ? <Cta cta={cta} onPress={next} bottomInset={insets.bottom} /> : null}
-        overlay={
-          page.k === 'column' ? null : (
-            // The board pages state their own top and foot, so they sit over
-            // the scroller rather than in it.
-            //
-            // The pick board owns its taps: its rows are the answer and its
-            // pill is the way on. The options board draws no pill, so it stays
-            // transparent to touch and the page advances by tapping it, like
-            // the 1,241 pages that are just reading.
-            <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} pointerEvents={page.k === 'pick' ? 'box-none' : 'none'}>
-              <Board page={page} />
-            </View>
-          )
-        }>
-        {page.k === 'column' ? page.parts.map((part, i) => <Part key={i} part={part} />) : null}
-      </LessonScroll>
-    </>
+    <LessonShell
+      n={n}
+      index={index}
+      count={pages.length}
+      bottom={bottom}
+      // the question's rows and the note field own their touches; every other page turns on a tap anywhere
+      tapAnywhere={page.k !== 'question' && page.k !== 'reflect'}
+      onClose={close}>
+      <LessonPageView lesson={lesson} page={page} chosen={cur.chosen} onChoose={choose} note={cur.note} onNote={(note) => set({ note })} />
+    </LessonShell>
   );
 }

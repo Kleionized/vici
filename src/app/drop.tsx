@@ -1,40 +1,54 @@
-import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { View, useWindowDimensions } from 'react-native';
-import Svg, { Defs, Ellipse, Path, RadialGradient, Stop } from 'react-native-svg';
+import { Alert, View, useWindowDimensions } from 'react-native';
 
-import { MailArrival, MailSheet } from '@/app/letter';
-import { AppText, PressScale } from '@/components/ui';
+import { Check, GhostLink, HeroBoard, MedalTier, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion } from '@/components/mono';
 import { useUpdateSettings } from '@/lib/backend';
+import { DROP_OFFERING_ID, usePurchases } from '@/lib/purchases';
 import { setJSON } from '@/lib/storage';
-import { sans } from '@/lib/theme';
+import { lhNormal, mono } from '@/lib/theme';
 
 /**
- * The yearly drop — canvas 174 → 175.
+ * The yearly drop — `39C · Post — The Yearly Drop` → `39D · You Received a Drop`.
  *
  * The enclosure that comes with the medallion post: the whole year for one
- * payment. It reads as a sheet, like the letter it was folded into, and once
- * it is claimed the year itself arrives as an object on the lit field — the
- * same arrival every other piece of post gets.
+ * payment. The offer is a plain board — the title, the one price card (the
+ * year, its saving, the monthly sum, three things it buys) and `Unlock my year`
+ * over `Terms · Restore`. Once it is claimed the year arrives as the platinum
+ * tier medal with its V, on the post's own hero board.
  *
- * Canvas tops inside the sheet are the sheet's own (its top edge is canvas
- * y 52); tops on the arrival are the 852 frame's, less the 54pt status bar.
+ * The frame draws no way out of the offer. The ✕ takes the nav's right slot
+ * (D323) — where Paywall puts its own and where the claimed board keeps it, so
+ * it does not move between the three — and leaving marks the drop seen as the
+ * old close did. The `Restore` it displaces lives on in the ghost's
+ * `Terms · Restore`, which restores (D323, D276).
+ *
+ * Claiming buys the year from the `drop` offering — the same yearly product at
+ * the enclosure's price. A dashboard with no such offering falls back to the
+ * current one, so the drop still sells the year rather than failing shut.
  */
-
-const laurelMark = require('../../assets/images/laurel-mark.webp');
 
 const DROP_SEEN_KEY = 'tideline.post.yearlydrop.seen';
 
 const FULL_PRICE = '$39.99';
 const DROP_PRICE = '$26.99';
+/** the drop price over twelve months, as the card says it */
+const MONTHLY = '$2.25';
+
+const NAV_BOTTOM = 100;
+/** the primary at bottom 96 and its 58 */
+const CONTROLS = 154;
+/** what the offer keeps clear above the pill when it scrolls (D320) */
+const CLEAR = 24;
+/** a perk's cell at 393: (345 − 2·22 − 2·10) / 3 — where the frame breaks its words */
+const PERK_W = (345 - 44 - 20) / 3;
 
 type Phase = 'offer' | 'claimed';
 
 export default function Drop() {
   const router = useRouter();
   const updateSettings = useUpdateSettings();
+  const { purchase, restore } = usePurchases();
   const [phase, setPhase] = useState<Phase>('offer');
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
@@ -47,182 +61,130 @@ export default function Drop() {
   const claim = () => {
     void (async () => {
       await setJSON(DROP_SEEN_KEY, Date.now());
-      await updateSettings({ premium: true, yearlyDrop: true }).catch(() => {});
+      const outcome = await purchase('yearly', DROP_OFFERING_ID);
+      if (outcome.status === 'cancelled') return;
+      if (outcome.status === 'error' || outcome.status === 'unavailable') {
+        Alert.alert('The store could not complete that', outcome.message);
+        return;
+      }
+      // Kept for the record: which price the year was taken at.
+      await updateSettings({ yearlyDrop: true }).catch(() => {});
+      setPhase('claimed');
     })();
-    setPhase('claimed');
+  };
+
+  const restorePurchases = () => {
+    void (async () => {
+      const outcome = await restore();
+      if (outcome.status === 'restored') {
+        if (outcome.entitled) {
+          await setJSON(DROP_SEEN_KEY, Date.now());
+          setPhase('claimed');
+          return;
+        }
+        Alert.alert('Nothing to restore', 'This store account has no VICI purchase on it.');
+        return;
+      }
+      if (outcome.status === 'error' || outcome.status === 'unavailable') Alert.alert('Could not restore', outcome.message);
+    })();
   };
 
   if (phase === 'claimed') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-        <StatusBar style="dark" />
-        <MailArrival
-          art={<YearTile />}
-          title="You received a drop."
-          sub="One drop covers the year. Twelve months of VICI, billed once."
-          primary="Begin the year"
-          secondary="See the receipt"
-          onPrimary={close}
-          onSecondary={() => router.replace('/subscription')}
-          onClose={close}
-        />
-      </View>
+      <HeroBoard
+        nav={{ left: 'empty', right: 'close', onClose: close }}
+        art={
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 212, alignItems: 'center' }}>
+            <MedalTier tier={4} size={176} glyph="V" disc={false} />
+          </View>
+        }
+        artTop={212}
+        stackTop={432}
+        caps="The year"
+        title="You received a drop."
+        body="One drop covers the year — twelve months of VICI, billed once."
+        cta="Continue"
+        onCta={close}
+        ghost="See the receipt"
+        onGhost={() => router.replace('/subscription')}
+      />
     );
   }
 
+  const y = (canvas: number) => canvas - NAV_BOTTOM;
   return (
-    <View style={{ flex: 1, backgroundColor: '#EDECE7' }}>
-      <StatusBar style="dark" />
-      <MailSheet onClose={later}>
-        <Offer onClaim={claim} onLater={later} />
-      </MailSheet>
-    </View>
+    <Screen>
+      {/* between the nav and the pill the offer scrolls on a phone too short for it (D320) */}
+      <ScrollRegion top={NAV_BOTTOM} bottom={CONTROLS}>
+        <View style={{ height: 610 + CLEAR - NAV_BOTTOM }}>
+          <View style={{ position: 'absolute', left: 24, right: 24, top: y(175), alignItems: 'center', gap: 12 }}>
+            {/* the frame breaks the title itself (`<br>`) */}
+            <MonoText v="title" center style={{ alignSelf: 'stretch' }}>
+              {'One decision.\nA year of change.'}
+            </MonoText>
+            <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
+              Unlock everything VICI has to offer for an entire year.
+            </MonoText>
+          </View>
+          <PriceCard top={y(325)} />
+        </View>
+      </ScrollRegion>
+      <NavBar left="empty" right="close" onClose={later} />
+      <PrimaryButton label="Unlock my year" onPress={claim} bottom={96} />
+      <GhostLink label="Terms · Restore" onPress={restorePurchases} />
+    </Screen>
   );
 }
-
-/* ------------------------------------------------------------ 174 · the offer */
-
-function Offer({ onClaim, onLater }: { onClaim: () => void; onLater: () => void }) {
-  const { width } = useWindowDimensions();
-  // The twelve-month diagram is drawn on the canvas's 321pt interior (left 36,
-  // right 36 of a 393 frame); the rays stretch to whatever that interior is here.
-  const interior = width - 72;
-
-  return (
-    <>
-      <AppText
-        center
-        style={[sans('500'), { position: 'absolute', left: 0, right: 0, top: 112, fontSize: 26, lineHeight: 33, letterSpacing: -0.2, color: '#1D1C1A' }]}>
-        The year, at a drop
-      </AppText>
-      <AppText center style={[sans('400'), { position: 'absolute', left: 56, right: 56, top: 158, fontSize: 14.5, lineHeight: 21, color: '#8B8882' }]}>
-        One payment covers all twelve months.
-      </AppText>
-
-      <View pointerEvents="none" style={{ position: 'absolute', left: 36, right: 36, top: 232, height: 206 }}>
-        {/* canvas blurs this by 4px — redrawn as the equivalent radial falloff */}
-        <Svg width={170} height={170} style={{ position: 'absolute', left: '50%', top: -24, marginLeft: -85 }}>
-          <Defs>
-            <RadialGradient id="drop-glow" cx="50%" cy="50%" rx="50%" ry="50%">
-              <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.38} />
-              <Stop offset="0.75" stopColor="#E2BA78" stopOpacity={0} />
-            </RadialGradient>
-          </Defs>
-          <Ellipse cx={85} cy={85} rx={85} ry={85} fill="url(#drop-glow)" />
-        </Svg>
-
-        <Image source={laurelMark} contentFit="contain" style={{ position: 'absolute', left: '50%', top: 2, marginLeft: -32, width: 64, height: 64 }} />
-
-        {/* the mark paying out to the twelve months */}
-        <Svg width={interior} height={58} viewBox="0 0 321 58" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, top: 70 }}>
-          <Path
-            d="M160.5 0 C160.5 20 40 24 12 50 M160.5 0 C160.5 20 281 24 309 50 M160.5 0 C160.5 24 104 28 78 52 M160.5 0 C160.5 24 217 28 243 52 M160.5 0 L160.5 52"
-            stroke="rgba(19,19,19,0.15)"
-            strokeWidth={1.5}
-            fill="none"
-            strokeDasharray="1 6"
-            strokeLinecap="round"
-          />
-        </Svg>
-
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 130, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
-          {Array.from({ length: 12 }).map((_, i) => (
-            <View key={i} style={{ width: 19, height: 19, borderRadius: 6, backgroundColor: '#131313' }} />
-          ))}
-        </View>
-
-        <AppText style={[sans('500'), { position: 'absolute', left: 0, top: 160, fontSize: 11.5, color: '#B0AEA8' }]}>Jan</AppText>
-        <AppText style={[sans('500'), { position: 'absolute', right: 0, top: 160, fontSize: 11.5, color: '#B0AEA8' }]}>Dec</AppText>
-      </View>
-
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center', gap: 12 }}>
-        <AppText style={[sans('500'), { fontSize: 17, color: '#A5A29B', textDecorationLine: 'line-through' }]}>{FULL_PRICE}</AppText>
-        <AppText style={[sans('600'), { fontSize: 46, lineHeight: 46, letterSpacing: -0.5, color: '#131313' }]}>{DROP_PRICE}</AppText>
-        <AppText style={[sans('500'), { fontSize: 14, color: '#8B8882' }]}>/year</AppText>
-      </View>
-
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 556, alignItems: 'center' }}>
-        <View style={{ height: 30, borderRadius: 15, backgroundColor: '#FFFFFF', boxShadow: '0 0 0 1px rgba(0,0,0,0.1)', justifyContent: 'center', paddingHorizontal: 14 }}>
-          <AppText style={[sans('600'), { fontSize: 12.5, color: '#55534E' }]}>Billed once · $2.25 a month</AppText>
-        </View>
-      </View>
-
-      <PressScale
-        onPress={onClaim}
-        accessibilityRole="button"
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          bottom: 96,
-          height: 58,
-          borderRadius: 29,
-          backgroundColor: '#131313',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <AppText style={[sans('600'), { fontSize: 16.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>Claim the year — {DROP_PRICE}</AppText>
-      </PressScale>
-      <PressScale
-        onPress={onLater}
-        accessibilityRole="button"
-        hitSlop={{ top: 14, bottom: 14, left: 40, right: 40 }}
-        style={{ position: 'absolute', left: 0, right: 0, bottom: 56, minHeight: 0, alignItems: 'center' }}>
-        <AppText style={[sans('500'), { fontSize: 14, color: '#8B8882' }]}>Maybe later</AppText>
-      </PressScale>
-    </>
-  );
-}
-
-/* --------------------------------------------------------- 175 · the year, in */
 
 /**
- * The year as an object: an ink tile, tilted, with the mark inverted on it.
- * Same 260 × 260 frame, same light and contact shadow as the medallion.
+ * The price card: `r24 #1E1E1E padding 22 22 24`, a `gap 18` column — the caps
+ * and the "Save 74%" tab; the price on a shared baseline with "/ year" and the
+ * struck full price; the monthly sum; and three check discs under a hairline.
  */
-function YearTile() {
+function PriceCard({ top }: { top: number }) {
+  // A wider phone narrows each perk's words to the 393 cell, centred, so they
+  // keep the frame's two-line breaks; at 393 and below nothing is inset.
+  const { width } = useWindowDimensions();
+  const spare = (width - 48 - 44 - 20) / 3 - PERK_W;
+  const perkInset = spare > 0.5 ? spare / 2 : 0;
   return (
-    <>
-      {/* canvas blurs the light and the shadow by 6px — both redrawn as radials */}
-      <Svg width={200} height={200} style={{ position: 'absolute', left: 30, top: 20 }}>
-        <Defs>
-          <RadialGradient id="year-glow" cx="50%" cy="50%" rx="50%" ry="50%">
-            <Stop offset="0" stopColor="#E2BA78" stopOpacity={0.55} />
-            <Stop offset="0.74" stopColor="#E2BA78" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Ellipse cx={100} cy={100} rx={100} ry={100} fill="url(#year-glow)" />
-      </Svg>
-      <Svg width={156} height={16} style={{ position: 'absolute', left: 52, top: 230 }}>
-        <Defs>
-          <RadialGradient id="year-shadow" cx="50%" cy="50%" rx="50%" ry="50%">
-            <Stop offset="0" stopColor="#000000" stopOpacity={0.11} />
-            <Stop offset="0.6" stopColor="#000000" stopOpacity={0.055} />
-            <Stop offset="1" stopColor="#000000" stopOpacity={0} />
-          </RadialGradient>
-        </Defs>
-        <Ellipse cx={78} cy={8} rx={78} ry={8} fill="url(#year-shadow)" />
-      </Svg>
-
-      <View
-        style={{
-          position: 'absolute',
-          left: 62,
-          top: 52,
-          width: 136,
-          height: 136,
-          borderRadius: 32,
-          backgroundColor: '#131313',
-          boxShadow: 'inset 0 0 0 1.5px rgba(244,243,240,0.14), 0 14px 30px rgba(30,28,24,0.35)',
-          transform: [{ rotate: '-3deg' }],
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 10,
-        }}>
-        {/* the canvas inverts the dark-on-transparent mark and lifts it — a tint */}
-        <Image source={laurelMark} tintColor="#FFFFFF" contentFit="contain" style={{ width: 58, height: 58 }} />
-        <AppText style={[sans('600'), { fontSize: 12, letterSpacing: 2.5, color: 'rgba(244,243,240,0.65)', marginRight: -2.5 }]}>THE YEAR</AppText>
+    <View style={{ position: 'absolute', left: 24, right: 24, top, borderRadius: 24, backgroundColor: mono.card, paddingTop: 22, paddingHorizontal: 22, paddingBottom: 24, gap: 18 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <MonoText v="caps" style={{ flex: 1 }}>
+          Yearly access
+        </MonoText>
+        <View style={{ height: 28, borderRadius: 14, backgroundColor: mono.ink, paddingHorizontal: 12, justifyContent: 'center' }}>
+          <MonoText v="pill" color={mono.onInk} style={{ fontSize: 12, lineHeight: lhNormal(12) }}>
+            Save 74%
+          </MonoText>
+        </View>
       </View>
-    </>
+      <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+        <MonoText v="titlePage" wrap="wrap" style={{ fontSize: 44, lineHeight: 48, letterSpacing: -1.6 }}>
+          {DROP_PRICE}
+        </MonoText>
+        <MonoText v="pill" color={mono.mute} style={{ fontSize: 16, lineHeight: lhNormal(16) }}>
+          / year
+        </MonoText>
+        <MonoText v="pill" color={mono.art} style={{ fontSize: 16, lineHeight: lhNormal(16), textDecorationLine: 'line-through' }}>
+          {FULL_PRICE}
+        </MonoText>
+      </View>
+      <MonoText v="rowLabel" wrap="wrap" color={mono.sub}>
+        {`That’s ${MONTHLY} a month.`}
+      </MonoText>
+      <View style={{ flexDirection: 'row', gap: 10, paddingTop: 16, borderTopWidth: 1, borderTopColor: mono.line }}>
+        {['Full 12-week programme', 'SOS support anytime', 'Track your progress'].map((perk) => (
+          <View key={perk} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
+            <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+              <Check size={13} />
+            </View>
+            <MonoText v="legal" wrap="wrap" center color={mono.sub} style={{ letterSpacing: 0, lineHeight: 17, alignSelf: 'stretch', marginHorizontal: perkInset }}>
+              {perk}
+            </MonoText>
+          </View>
+        ))}
+      </View>
+    </View>
   );
 }

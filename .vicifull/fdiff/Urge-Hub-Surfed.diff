@@ -1,0 +1,778 @@
+--- .vicifull/pretty/prev/Urge-Hub-Surfed.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Urge-Hub-Surfed.html	2026-09-05 00:22:35
+@@ -3,7 +3,7 @@
+   | height:852px;
+   | position:relative;
+   | overflow:hidden;
+-  | background:#0F0F0E;
++  | background:#111211;
+   | font-family:-apple-system,'SF Pro Text',system-ui,'Helvetica Neue',sans-serif;
+   | -webkit-font-smoothing:antialiased;
+   | flex-shrink:0;
+@@ -12,28 +12,21 @@
+   <div style="
+     | position:absolute;
+     | inset:0;
+-    | overflow:hidden;
+-    | background:linear-gradient(180deg, #14171B 0%, #191E25 55%, #202730 100%);
++    | background-image:url('noise.png');
++    | opacity:0.05;
++    | pointer-events:none;
+   ">
+-    <div style="
+-      | position:absolute;
+-      | left:50%;
+-      | top:130px;
+-      | width:280px;
+-      | height:280px;
+-      | margin-left:-140px;
+-      | border-radius:50%;
+-      | background:radial-gradient(closest-side, rgba(233,210,164,0.10), rgba(233,210,164,0) 80%);
+-    ">
+-    </div>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:0;
+-    | right:0;
+-    | bottom:0;
+-    | height:230px;
+-    | background:linear-gradient(180deg, rgba(15,15,14,0) 0%, rgba(15,15,14,0.55) 55%, rgba(15,15,14,0.82) 100%);
++    | left:50%;
++    | top:60px;
++    | width:360px;
++    | height:360px;
++    | margin-left:-180px;
++    | border-radius:50%;
++    | background:radial-gradient(closest-side, rgba(233,210,164,0.07), rgba(233,210,164,0) 78%);
++    | pointer-events:none;
+   ">
+   </div>
+   <div style="
+@@ -99,232 +92,408 @@
+     | z-index:20;
+   ">
+     <svg width="22" height="22" viewBox="0 0 22 22">
+-      <path d="M5 5l12 12M17 5L5 17" fill="none" stroke="rgba(244,243,240,0.85)" stroke-width="2" stroke-linecap="round">
++      <path d="M5 5l12 12M17 5L5 17" fill="none" stroke="rgba(244,243,240,0.58)" stroke-width="2" stroke-linecap="round">
+       </path>
+     </svg>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:40px;
+-    | right:40px;
+-    | top:112px;
++    | left:44px;
++    | right:44px;
++    | top:138px;
+     | text-align:center;
+     | font-size:22px;
+     | font-weight:500;
+-    | line-height:32px;
++    | line-height:30px;
++    | letter-spacing:0.1px;
+     | color:#F4F3F0;
+-    | z-index:5;
++    | text-wrap:balance;
+   ">
+     · You’ve outlasted this before.
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:0;
+-    | top:188px;
+-    | width:393px;
+-    | height:172px;
+-    | z-index:5;
++    | left:44px;
++    | right:44px;
++    | top:192px;
++    | text-align:center;
++    | font-size:15px;
++    | font-weight:400;
++    | line-height:22px;
++    | color:rgba(244,243,240,0.58);
++    | text-wrap:pretty;
+   ">
+-    <svg width="393" height="172" viewBox="0 0 393 172">
+-      <defs>
+-        <radialGradient id="uhD4_halo" cx="50%" cy="50%" r="50%">
+-          <stop offset="0%" stop-color="rgba(220,227,234,0.25)">
+-          </stop>
+-          <stop offset="100%" stop-color="rgba(220,227,234,0)">
+-          </stop>
+-        </radialGradient>
+-        <linearGradient id="uhD4_b1" x1="0" y1="0" x2="0" y2="1">
+-          <stop offset="0%" stop-color="#2C3745">
+-          </stop>
+-          <stop offset="100%" stop-color="#232C38">
+-          </stop>
+-        </linearGradient>
+-        <linearGradient id="uhD4_b2" x1="0" y1="0" x2="0" y2="1">
+-          <stop offset="0%" stop-color="#38465A">
+-          </stop>
+-          <stop offset="100%" stop-color="#28323F">
+-          </stop>
+-        </linearGradient>
+-        <linearGradient id="uhD4_b3" x1="0" y1="0" x2="0" y2="1">
+-          <stop offset="0%" stop-color="#4A5B6F">
+-          </stop>
+-          <stop offset="100%" stop-color="#2E3A48">
+-          </stop>
+-        </linearGradient>
+-        <radialGradient id="uhD4_lamp" cx="50%" cy="50%" r="50%">
+-          <stop offset="0%" stop-color="rgba(243,220,168,0.5)">
+-          </stop>
+-          <stop offset="100%" stop-color="rgba(243,220,168,0)">
+-          </stop>
+-        </radialGradient>
+-        <linearGradient id="uhD4_fade" x1="0" y1="0" x2="0" y2="1">
+-          <stop offset="0%" stop-color="#1A212B" stop-opacity="0">
+-          </stop>
+-          <stop offset="100%" stop-color="#1A212B">
+-          </stop>
+-        </linearGradient>
+-        <filter id="uhD4_soft" x="-60%" y="-60%" width="220%" height="220%">
+-          <feGaussianBlur stdDeviation="1.5">
+-          </feGaussianBlur>
+-        </filter>
+-      </defs>
+-      <circle cx="306" cy="30" r="30" fill="url(#uhD4_halo)">
+-      </circle>
+-      <circle cx="306" cy="30" r="11" fill="#DCE3EA">
+-      </circle>
+-      <circle cx="310.5" cy="25.5" r="8.6" fill="#181E27">
+-      </circle>
+-      <circle cx="84" cy="18" r="1.2" fill="rgba(244,243,240,0.35)">
+-      </circle>
+-      <circle cx="176" cy="10" r="1" fill="rgba(244,243,240,0.28)">
+-      </circle>
+-      <circle cx="238" cy="26" r="1" fill="rgba(244,243,240,0.3)">
+-      </circle>
+-      <circle cx="30" cy="42" r="1" fill="rgba(244,243,240,0.24)">
+-      </circle>
+-      <circle cx="356" cy="52" r="1" fill="rgba(244,243,240,0.26)">
+-      </circle>
+-      <path d="M0 84 Q80 70 170 80 T393 72 L393 172 L0 172 Z" fill="url(#uhD4_b1)">
+-      </path>
+-      <ellipse cx="304" cy="92" rx="17" ry="2.4" fill="rgba(220,227,234,0.18)" filter="url(#uhD4_soft)">
+-      </ellipse>
+-      <ellipse cx="299" cy="103" rx="11" ry="2" fill="rgba(220,227,234,0.12)" filter="url(#uhD4_soft)">
+-      </ellipse>
+-      <ellipse cx="307" cy="114" rx="7" ry="1.6" fill="rgba(220,227,234,0.08)" filter="url(#uhD4_soft)">
+-      </ellipse>
+-      <path d="M0 114 Q95 92 200 104 Q305 116 393 98 L393 172 L0 172 Z" fill="url(#uhD4_b2)">
+-      </path>
+-      <circle cx="150" cy="84" r="15" fill="url(#uhD4_lamp)">
+-      </circle>
+-      <rect x="148.6" y="78" width="2.8" height="14" rx="1.4" fill="#1C242E">
+-      </rect>
+-      <circle cx="150" cy="84" r="3" fill="#F3DCA8">
+-      </circle>
+-      <circle cx="150" cy="84" r="1.4" fill="#FBF3DD">
+-      </circle>
+-      <path d="M114 99 L186 99 C 184 110 170 115 150 115 C 130 115 116 110 114 99 Z" fill="#1C242E">
+-      </path>
+-      <path d="M114 99 L186 99 C 185.5 101.5 184 103.5 181.5 105 L118.5 105 C 116 103.5 114.5 101.5 114 99 Z" fill="#26303C">
+-      </path>
+-      <ellipse cx="150" cy="119" rx="30" ry="2.6" fill="rgba(243,220,168,0.10)" filter="url(#uhD4_soft)">
+-      </ellipse>
+-      <path d="M0 152 Q100 132 222 138 Q320 142 393 128 L393 172 L0 172 Z" fill="url(#uhD4_b3)">
+-      </path>
+-      <rect x="0" y="146" width="393" height="26" fill="url(#uhD4_fade)">
+-      </rect>
+-    </svg>
++    · The last four, how long they lasted, and what got you through.
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:16px;
+-    | right:16px;
+-    | top:382px;
+-    | height:48px;
++    | left:28px;
++    | right:24px;
++    | top:272px;
+     | display:flex;
+-    | align-items:center;
+-    | gap:12px;
+-    | border-bottom:1px solid rgba(255,255,255,0.10);
+-    | z-index:5;
++    | flex-direction:column;
+   ">
+-    <span style="
+-      | flex:1;
+-      | font-size:14.5px;
+-      | font-weight:500;
+-      | color:#F7F6F2;
+-    ">
+-      · Thursday · 3:10 pm
+-    </span>
+-    <span style="
+-      | font-size:12.5px;
+-      | font-weight:500;
+-      | color:rgba(244,243,240,0.45);
++    <div style="
++      | display:flex;
++      | align-items:stretch;
++      | gap:16px;
++      | min-height:64px;
+     ">
+-      · surfed the timer
+-    </span>
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:16px;
+-    | right:16px;
+-    | top:430px;
+-    | height:48px;
+-    | display:flex;
+-    | align-items:center;
+-    | gap:12px;
+-    | border-bottom:1px solid rgba(255,255,255,0.10);
+-    | z-index:5;
+-  ">
+-    <span style="
+-      | flex:1;
+-      | font-size:14.5px;
+-      | font-weight:500;
+-      | color:#F7F6F2;
++      <div style="
++        | width:14px;
++        | display:flex;
++        | flex-direction:column;
++        | align-items:center;
++      ">
++        <div style="
++          | width:14px;
++          | height:14px;
++          | border-radius:50%;
++          | margin-top:5px;
++          | background:#E9D2A4;
++          | box-shadow:inset 0 0 0 2px #E9D2A4;
++          | flex-shrink:0;
++        ">
++        </div>
++        <div style="
++          | width:1.5px;
++          | flex:1;
++          | background:rgba(255,255,255,0.10);
++          | margin:6px 0 -6px;
++        ">
++        </div>
++      </div>
++      <div style="
++        | flex:1;
++        | display:flex;
++        | flex-direction:column;
++        | gap:6px;
++        | padding-bottom:20px;
++      ">
++        <div style="
++          | display:flex;
++          | justify-content:space-between;
++          | align-items:baseline;
++        ">
++          <span style="
++            | font-size:15px;
++            | font-weight:500;
++            | color:#F4F3F0;
++          ">
++            · Thu · 3:10 pm
++          </span>
++          <span style="
++            | font-size:13px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.58);
++          ">
++            · 14 min
++          </span>
++        </div>
++        <div style="
++          | display:flex;
++          | align-items:center;
++          | gap:10px;
++        ">
++          <div style="
++            | flex:1;
++            | height:4px;
++            | border-radius:2px;
++            | background:rgba(255,255,255,0.10);
++            | position:relative;
++          ">
++            <div style="
++              | position:absolute;
++              | left:0;
++              | top:0;
++              | bottom:0;
++              | width:34%;
++              | border-radius:2px;
++              | background:#E9D2A4;
++            ">
++            </div>
++          </div>
++          <span style="
++            | font-size:12.5px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.36);
++            | width:104px;
++            | text-align:right;
++          ">
++            · surfed the timer
++          </span>
++        </div>
++      </div>
++    </div>
++    <div style="
++      | display:flex;
++      | align-items:stretch;
++      | gap:16px;
++      | min-height:64px;
+     ">
+-      · Tuesday · 11:48 pm
+-    </span>
+-    <span style="
+-      | font-size:12.5px;
+-      | font-weight:500;
+-      | color:rgba(244,243,240,0.45);
+-    ">
+-      · went for a walk
+-    </span>
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:16px;
+-    | right:16px;
+-    | top:478px;
+-    | height:48px;
+-    | display:flex;
+-    | align-items:center;
+-    | gap:12px;
+-    | border-bottom:1px solid rgba(255,255,255,0.10);
+-    | z-index:5;
+-  ">
+-    <span style="
+-      | flex:1;
+-      | font-size:14.5px;
+-      | font-weight:500;
+-      | color:#F7F6F2;
+-    ">
+-      · Sunday · 9:22 pm
+-    </span>
+-    <span style="
+-      | font-size:12.5px;
+-      | font-weight:500;
+-      | color:rgba(244,243,240,0.45);
++      <div style="
++        | width:14px;
++        | display:flex;
++        | flex-direction:column;
++        | align-items:center;
++      ">
++        <div style="
++          | width:14px;
++          | height:14px;
++          | border-radius:50%;
++          | margin-top:5px;
++          | background:transparent;
++          | box-shadow:inset 0 0 0 2px rgba(255,255,255,0.35);
++          | flex-shrink:0;
++        ">
++        </div>
++        <div style="
++          | width:1.5px;
++          | flex:1;
++          | background:rgba(255,255,255,0.10);
++          | margin:6px 0 -6px;
++        ">
++        </div>
++      </div>
++      <div style="
++        | flex:1;
++        | display:flex;
++        | flex-direction:column;
++        | gap:6px;
++        | padding-bottom:20px;
++      ">
++        <div style="
++          | display:flex;
++          | justify-content:space-between;
++          | align-items:baseline;
++        ">
++          <span style="
++            | font-size:15px;
++            | font-weight:500;
++            | color:#F4F3F0;
++          ">
++            · Tue · 11:48 pm
++          </span>
++          <span style="
++            | font-size:13px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.58);
++          ">
++            · 22 min
++          </span>
++        </div>
++        <div style="
++          | display:flex;
++          | align-items:center;
++          | gap:10px;
++        ">
++          <div style="
++            | flex:1;
++            | height:4px;
++            | border-radius:2px;
++            | background:rgba(255,255,255,0.10);
++            | position:relative;
++          ">
++            <div style="
++              | position:absolute;
++              | left:0;
++              | top:0;
++              | bottom:0;
++              | width:54%;
++              | border-radius:2px;
++              | background:rgba(244,243,240,0.45);
++            ">
++            </div>
++          </div>
++          <span style="
++            | font-size:12.5px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.36);
++            | width:104px;
++            | text-align:right;
++          ">
++            · went for a walk
++          </span>
++        </div>
++      </div>
++    </div>
++    <div style="
++      | display:flex;
++      | align-items:stretch;
++      | gap:16px;
++      | min-height:64px;
+     ">
+-      · called a friend
+-    </span>
+-  </div>
+-  <div style="
+-    | position:absolute;
+-    | left:16px;
+-    | right:16px;
+-    | top:526px;
+-    | height:48px;
+-    | display:flex;
+-    | align-items:center;
+-    | gap:12px;
+-    | border-bottom:1px solid rgba(255,255,255,0.10);
+-    | z-index:5;
+-  ">
+-    <span style="
+-      | flex:1;
+-      | font-size:14.5px;
+-      | font-weight:500;
+-      | color:#F7F6F2;
++      <div style="
++        | width:14px;
++        | display:flex;
++        | flex-direction:column;
++        | align-items:center;
++      ">
++        <div style="
++          | width:14px;
++          | height:14px;
++          | border-radius:50%;
++          | margin-top:5px;
++          | background:transparent;
++          | box-shadow:inset 0 0 0 2px rgba(255,255,255,0.35);
++          | flex-shrink:0;
++        ">
++        </div>
++        <div style="
++          | width:1.5px;
++          | flex:1;
++          | background:rgba(255,255,255,0.10);
++          | margin:6px 0 -6px;
++        ">
++        </div>
++      </div>
++      <div style="
++        | flex:1;
++        | display:flex;
++        | flex-direction:column;
++        | gap:6px;
++        | padding-bottom:20px;
++      ">
++        <div style="
++          | display:flex;
++          | justify-content:space-between;
++          | align-items:baseline;
++        ">
++          <span style="
++            | font-size:15px;
++            | font-weight:500;
++            | color:#F4F3F0;
++          ">
++            · Sun · 9:22 pm
++          </span>
++          <span style="
++            | font-size:13px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.58);
++          ">
++            · 9 min
++          </span>
++        </div>
++        <div style="
++          | display:flex;
++          | align-items:center;
++          | gap:10px;
++        ">
++          <div style="
++            | flex:1;
++            | height:4px;
++            | border-radius:2px;
++            | background:rgba(255,255,255,0.10);
++            | position:relative;
++          ">
++            <div style="
++              | position:absolute;
++              | left:0;
++              | top:0;
++              | bottom:0;
++              | width:22%;
++              | border-radius:2px;
++              | background:rgba(244,243,240,0.45);
++            ">
++            </div>
++          </div>
++          <span style="
++            | font-size:12.5px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.36);
++            | width:104px;
++            | text-align:right;
++          ">
++            · called a friend
++          </span>
++        </div>
++      </div>
++    </div>
++    <div style="
++      | display:flex;
++      | align-items:stretch;
++      | gap:16px;
++      | min-height:64px;
+     ">
+-      · Saturday · 1:05 am
+-    </span>
+-    <span style="
+-      | font-size:12.5px;
+-      | font-weight:500;
+-      | color:rgba(244,243,240,0.45);
+-    ">
+-      · cold shower
+-    </span>
++      <div style="
++        | width:14px;
++        | display:flex;
++        | flex-direction:column;
++        | align-items:center;
++      ">
++        <div style="
++          | width:14px;
++          | height:14px;
++          | border-radius:50%;
++          | margin-top:5px;
++          | background:transparent;
++          | box-shadow:inset 0 0 0 2px rgba(255,255,255,0.35);
++          | flex-shrink:0;
++        ">
++        </div>
++      </div>
++      <div style="
++        | flex:1;
++        | display:flex;
++        | flex-direction:column;
++        | gap:6px;
++        | padding-bottom:20px;
++      ">
++        <div style="
++          | display:flex;
++          | justify-content:space-between;
++          | align-items:baseline;
++        ">
++          <span style="
++            | font-size:15px;
++            | font-weight:500;
++            | color:#F4F3F0;
++          ">
++            · Sat · 1:05 am
++          </span>
++          <span style="
++            | font-size:13px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.58);
++          ">
++            · 31 min
++          </span>
++        </div>
++        <div style="
++          | display:flex;
++          | align-items:center;
++          | gap:10px;
++        ">
++          <div style="
++            | flex:1;
++            | height:4px;
++            | border-radius:2px;
++            | background:rgba(255,255,255,0.10);
++            | position:relative;
++          ">
++            <div style="
++              | position:absolute;
++              | left:0;
++              | top:0;
++              | bottom:0;
++              | width:76%;
++              | border-radius:2px;
++              | background:rgba(244,243,240,0.45);
++            ">
++            </div>
++          </div>
++          <span style="
++            | font-size:12.5px;
++            | font-weight:500;
++            | color:rgba(244,243,240,0.36);
++            | width:104px;
++            | text-align:right;
++          ">
++            · cold shower
++          </span>
++        </div>
++      </div>
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+@@ -333,27 +502,27 @@
+     | top:656px;
+     | display:flex;
+     | justify-content:center;
+-    | gap:10px;
++    | gap:8px;
+   ">
+     <div style="
+       | width:7px;
+       | height:7px;
+       | border-radius:50%;
+-      | background:rgba(255,255,255,0.28);
++      | background:rgba(255,255,255,0.22);
+     ">
+     </div>
+     <div style="
+       | width:7px;
+       | height:7px;
+       | border-radius:50%;
+-      | background:rgba(255,255,255,0.28);
++      | background:rgba(255,255,255,0.22);
+     ">
+     </div>
+     <div style="
+       | width:7px;
+       | height:7px;
+       | border-radius:50%;
+-      | background:rgba(255,255,255,0.28);
++      | background:rgba(255,255,255,0.22);
+     ">
+     </div>
+     <div style="
+@@ -367,62 +536,56 @@
+       | width:7px;
+       | height:7px;
+       | border-radius:50%;
+-      | background:rgba(255,255,255,0.28);
++      | background:rgba(255,255,255,0.22);
+     ">
+     </div>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:16px;
+-    | right:16px;
++    | left:24px;
++    | right:24px;
+     | top:696px;
+-    | height:64px;
+-    | border-radius:20px;
+-    | background:rgba(255,255,255,0.08);
+-    | box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.16);
++    | height:58px;
++    | border-radius:29px;
++    | background:#F4F3F0;
+     | display:flex;
+     | align-items:center;
+     | justify-content:center;
+-    | gap:11px;
++    | gap:10px;
+     | cursor:pointer;
+-    | z-index:5;
+   " style-active="transform:scale(0.98);">
+-    <svg width="26" height="26" viewBox="0 0 20 20">
+-      <circle cx="10" cy="10" r="4" fill="none" stroke="rgba(244,243,240,0.85)" stroke-width="1.7">
++    <svg width="22" height="22" viewBox="0 0 20 20">
++      <circle cx="10" cy="10" r="4" fill="none" stroke="#131313" stroke-width="1.7">
+       </circle>
+-      <circle cx="10" cy="10" r="7.8" fill="none" stroke="rgba(244,243,240,0.55)" stroke-width="1.4" stroke-dasharray="3.4 4.2">
++      <circle cx="10" cy="10" r="7.8" fill="none" stroke="rgba(19,19,19,0.55)" stroke-width="1.4" stroke-dasharray="3.4 4.2">
+       </circle>
+     </svg>
+     <span style="
+-      | font-size:15.5px;
++      | font-size:17px;
+       | font-weight:600;
+       | letter-spacing:0.2px;
+-      | color:#F4F3F0;
++      | color:#131313;
+     ">
+       · Breathe
+     </span>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:16px;
+-    | right:16px;
+-    | top:776px;
+-    | height:48px;
+-    | border-radius:24px;
+-    | box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.15);
++    | left:24px;
++    | right:24px;
++    | top:766px;
++    | height:44px;
+     | display:flex;
+     | align-items:center;
+     | justify-content:center;
+     | cursor:pointer;
+-    | z-index:5;
+-  " style-active="transform:scale(0.98);">
++  ">
+     <span style="
+-      | font-size:14.5px;
+-      | font-weight:600;
+-      | letter-spacing:0.2px;
+-      | color:rgba(244,243,240,0.78);
++      | font-size:15px;
++      | font-weight:500;
++      | color:rgba(244,243,240,0.58);
+     ">
+-      · I want to relapse
++      · I slipped
+     </span>
+   </div>
+ </div>

@@ -1,0 +1,247 @@
+[
+  {
+    "frame": "Log Chooser",
+    "route": "/log-chooser",
+    "initseed": ".overhaul/logs-seed.js",
+    "wait": 1600,
+    "note": "the urge row is the chooser's default (CRITIC §5 / logs Q1), so the frame's selection needs no tap. The tab bar's Log item opens this route (D124); ✕ goes on to `/log`.",
+    "group": "logs"
+  },
+  {
+    "frame": "Lapse When",
+    "route": "/lapse",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await __sleep(400)",
+    "note": "clock pinned to Tue 22 Jul 2025 23:40 (the seed starts with `window.__CLOCK` + clock.js), so the wheel reads 11 : 40 PM and the date row `Tonight, Tue Jul 22`. The wheel is always open now; `Change` opens the last seven days in a sheet. To drive the wheel (tap a neighbour row, drag), use `.overhaul/logs-flow-tick-seed.js` (the same world with `__CLOCK_TICK`): under a frozen `Date.now` RN `Animated.timing` never finishes, so a column never settles and never reports. Real-mouse check: `node .overhaul/f-logs-mouse.mjs`.",
+    "group": "logs"
+  },
+  {
+    "frame": "Lapse Trigger",
+    "route": "/lapse",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await tap('Continue'); await waitFor('What fed it?'); await tap('Late night'); await tap('Boredom'); await __sleep(400)",
+    "note": "tap Late night before Boredom — 90D's `Set off by` reads them in tap order.",
+    "group": "logs"
+  },
+  {
+    "frame": "Lapse Done",
+    "route": "/lapse",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await tap('Yesterday'); await waitFor('Last night, Mon Jul 21'); await tap('Continue'); await waitFor('What fed it?'); await tap('Late night'); await tap('Boredom'); await tap('Continue'); await waitFor('Slip logged.'); await __sleep(500)",
+    "note": "`Yesterday` at 23:40 is Mon 21 23:40 → `When · Last night` (format.ts day parts); `Changed` is today's check-in `dailyAction`, seeded.",
+    "group": "logs"
+  },
+  {
+    "frame": "Log Urges",
+    "route": "/log",
+    "initseed": ".overhaul/logs-week-sun-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await __sleep(500)",
+    "note": "clock pinned to Sun 20 Jul 2025 21:30 — the strip's last S is today. This week's three urges (Tue/Thu/Fri) and last week's slip + Wed urge, newest first.",
+    "group": "logs"
+  },
+  {
+    "frame": "Log Check-ins",
+    "route": "/log",
+    "initseed": ".overhaul/logs-week-sun-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await tap('Check-ins'); await waitFor('Days in a row'); await __sleep(400)",
+    "note": "twelve mornings Jul 9–20; energies 4/3 draw the 29.6/25.2 circles; the list's window ends at the fifth row (D283), the other seven scroll.",
+    "group": "logs"
+  },
+  {
+    "frame": "Log Reports",
+    "route": "/log",
+    "initseed": ".overhaul/logs-reports-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await tap('Reports'); await waitFor('this week'); await __sleep(500)",
+    "note": "clock Mon 21 Jul 2025 09:00; five closed weeks since Jun 16 whose `scoreAt` deltas are the frame's +5, +6, −4, +8, +12 → 1,240 (seed header explains the arithmetic). The spark is data: the frame's four-point curve is drawn art (it rises through the −4 week).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview Summary",
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Overview'); await __sleep(900)",
+    "note": "Sun 20 Jul 2025, last 30 days: nine urges, seven ridden out; the five newest listed (logs Q10).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview",
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Strength'); await __sleep(900)",
+    "note": "same nine urges: bands 1·1·3·3·1 (tie → Strong), triggers Stress 5 · Late night 4 · Boredom 3 · Tired 1 (`Tiredness`, D128).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview Mood",
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-mood-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Mood'); await __sleep(900)",
+    "note": "its own seed: the frame's 6+4+3+1 = 14 feelings against the Summary's nine urges (D126 style).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview When",
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Timing'); await __sleep(900)",
+    "note": "hours 0,0,1,15,19,21,22,23,23 → peak 11 pm – 1 am; places Bedroom 5 · Desk 3 · Bathroom 1.",
+    "group": "logs"
+  },
+  {
+    "frame": "Report Ready",
+    "route": "/report-ready?week=2025-07-14",
+    "initseed": ".overhaul/logs-wr-urges-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Open the report'); await __sleep(500)",
+    "note": "the `(app)` launch gate pushes it with `?week=`; the line is the week's label.",
+    "group": "logs"
+  },
+  {
+    "frame": "Weekly Report",
+    "route": "/weekly-report?week=2025-07-14",
+    "initseed": ".overhaul/logs-wr-score-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(600)",
+    "note": "its own seed: the frame's line shape and `+12 → 1,240` only meet on the app's weights with two slips on the Monday (seed header). 0.01 %: the frame squashes its svg text 329/330 (`preserveAspectRatio: none`); the app scales x instead so the dots stay round.",
+    "group": "logs"
+  },
+  {
+    "frame": "Weekly Report Days",
+    "route": "/weekly-report?week=2025-07-14",
+    "initseed": ".overhaul/logs-wr-days-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(300); await tap('Days'); await __sleep(900)",
+    "note": "its own seed: no slip all week, one ride on Friday (the wave); last week's slips Wed + Sat (hollow).",
+    "group": "logs"
+  },
+  {
+    "frame": "Weekly Report Urges",
+    "route": "/weekly-report?week=2025-07-14",
+    "initseed": ".overhaul/logs-wr-urges-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(300); await tap('Urges'); await __sleep(900)",
+    "note": "the Log's own week (Tue/Thu/Fri urges) read on Mon 21 Jul; rows read forward and open `/urge-overview?week=`.",
+    "group": "logs"
+  },
+  {
+    "frame": "Settings Weekly Report",
+    "route": "/weekly-report?week=2025-07-14&from=settings",
+    "initseed": ".overhaul/logs-wr-score-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(600)",
+    "note": "the same board from Settings; the frame no longer names where it came from.",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Log Intensity",
+    "route": "/urge-log",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400)",
+    "note": "default band Intense (index 3) is the frame's.",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Log Trigger",
+    "route": "/urge-log",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await __sleep(400)",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Log Outcome",
+    "route": "/urge-log",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue'); await waitFor('What did you do?'); await __sleep(400)",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Log When",
+    "route": "/urge-log",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue'); await waitFor('What did you do?'); await tap('Continue'); await waitFor('When was it?'); await __sleep(400)",
+    "group": "logs",
+    "note": " To drive the wheel (tap a neighbour row, drag), use `.overhaul/logs-flow-tick-seed.js` (the same world with `__CLOCK_TICK`): under a frozen `Date.now` RN `Animated.timing` never finishes, so a column never settles and never reports. Real-mouse check: `node .overhaul/f-logs-mouse.mjs`."
+  },
+  {
+    "frame": "Urge Log Done",
+    "route": "/urge-log",
+    "initseed": ".overhaul/logs-flow-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue'); await waitFor('What did you do?'); await tap('Continue'); await waitFor('When was it?'); await tap('Log the urge'); await waitFor('Urge logged.'); await __sleep(500)",
+    "note": "the seed holds 22 rides, so this one is the 23rd: `Twenty-three ridden out. Two to Bronze.` (Vici ×25 = Bronze).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview Mood — the app’s own words (unframed)",
+    "unframed": true,
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-real-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Mood'); await __sleep(900)",
+    "note": "feelings from the SOS picker: `Stressed or anxious` wraps the big word to two balanced lines (393, 375; one line at 430) and its bubble name to two; at 375 `I don’t know` wraps too; nothing passes the 24 gutters (D286).",
+    "group": "logs"
+  },
+  {
+    "frame": "Urge Overview Strength/Timing — the app’s own words (unframed)",
+    "unframed": true,
+    "route": "/urge-overview",
+    "initseed": ".overhaul/logs-overview-real-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(300); await tap('Timing'); await __sleep(900)",
+    "note": "SOS places (`Somewhere private` 5, `At work or school` 3) widen the label column to the widest label; a note standing in for a place ends in an ellipsis at half the row. Tap `Strength` for `Something online` / `A stuck fantasy` / `Doomscrolling` / `Can’t sleep`. Insights (`/dashboard`, 4W) reads the same seed for its trigger bars.",
+    "group": "logs"
+  },
+  {
+    "frame": "Weekly Report of a week with no mood logged (unframed)",
+    "unframed": true,
+    "route": "/log",
+    "initseed": ".overhaul/logs-reports-seed.js",
+    "wait": 1500,
+    "do": "await waitFor('Your log'); await tap('Reports'); await waitFor('this week'); await __sleep(500); await tap('Jul 7–13, +8'); await __sleep(1500)",
+    "note": "Jul 7–13 has one slip and no check-in: the report draws `1,228 · +8 this week`, `6 of 7`, `0 · No urges logged this week.` (D287). `/weekly-report?week=2025-06-02` (before the account) keeps “Nothing was logged that week…”; logs-empty-seed `/weekly-report` keeps “Your first week is still being written…”.",
+    "group": "logs"
+  },
+  {
+    "frame": "Report Ready with no closed week (unframed)",
+    "unframed": true,
+    "route": "/report-ready",
+    "initseed": ".overhaul/logs-empty-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Open the report'); await __sleep(500)",
+    "note": "no `?week=` and a three-day-old account: the old line `Score, urges, and the pattern — two quiet minutes.` (D289).",
+    "group": "logs"
+  },
+  {
+    "frame": "Log empty — Urges / Check-ins / Reports (unframed)",
+    "unframed": true,
+    "route": "/log",
+    "initseed": ".overhaul/logs-empty-seed.js",
+    "wait": 1600,
+    "do": "await waitFor(\"Your log\"); await __sleep(400)",
+    "note": "three-day-old account, nothing logged: big 0 + all-dot strip + the kit EmptyState (old title + line) in the page column (Phase 2: the EmptyState no longer adds its own 24 gutter inside the page’s, which had squeezed the line to 297 at 393). Tap Check-ins / Reports for the other two.",
+    "group": "logs"
+  },
+  {
+    "frame": "Log back paths (walk, unframed)",
+    "unframed": true,
+    "route": "/today",
+    "initseed": ".overhaul/logs-week-sun-seed.js",
+    "wait": 2500,
+    "do": "tab Log → /log-chooser; ✕ → /log; ‹ → /log-chooser; ✕ → /log; Reports → Open this week’s report → /weekly-report?week=2025-07-07; Urges → row → /urge-overview?week=…; ‹ → /weekly-report; ‹ → /log; Today tab; history.back() → /log (D340). Drive with a tap that only fires visible controls: the stack keeps covered screens in the DOM and drive.js tap() takes the first match.",
+    "group": "logs"
+  }
+]

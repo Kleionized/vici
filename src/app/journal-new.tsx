@@ -1,27 +1,34 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 
-import { AppText, PressScale } from '@/components/ui';
+import { NavBar, Screen, TextField, WhenChips } from '@/components/mono';
 import { useCreateJournalEntry, useJournalEntries, useUpdateJournalEntry } from '@/lib/backend';
-import { colors, fonts, spacing } from '@/lib/theme';
+import { clockTime, WEEKDAYS_SHORT } from '@/lib/format';
 
 const TAGS = ['Reflection', 'Urge', 'Lesson'];
-const FORMATS = ['B', 'I', 'U'];
 
+/**
+ * The journal editor — a new entry, or (`?id=`) an existing one from Past
+ * pledges. `?tag=` opens a new entry under that tag: Today III's + writes a
+ * new pledge here (`tag=Pledge`), and the newest Pledge entry is the pledge
+ * Today and the morning check-in stand on (D233).
+ *
+ * No frame draws it; it takes the sheets' and the check-ins' pieces: the nav
+ * row (back = Cancel, the entry's time centred, Save on the right), the tags as
+ * when-chips, the title in the one-line sheet field and the body in the note
+ * field. The old B / I / U toolbar formatted nothing and is gone (D233).
+ */
 export default function JournalNew() {
   const router = useRouter();
-  const { id } = useLocalSearchParams<{ id?: string }>();
+  const { id, tag: tagParam } = useLocalSearchParams<{ id?: string; tag?: string }>();
   const entries = useJournalEntries();
   const createEntry = useCreateJournalEntry();
   const updateEntry = useUpdateJournalEntry();
 
   const existing = id ? entries?.find((e) => e._id === id) : undefined;
 
-  const [tag, setTag] = useState('Reflection');
+  const [tag, setTag] = useState(tagParam || 'Reflection');
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [loaded, setLoaded] = useState(false);
@@ -52,91 +59,41 @@ export default function JournalNew() {
     close();
   }
 
-  const headerTime = existing
-    ? new Date(existing.createdAt).toLocaleString(undefined, { weekday: 'short', hour: 'numeric', minute: '2-digit' })
-    : `Today · ${new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}`;
+  const stamp = existing ? new Date(existing.createdAt) : new Date();
+  const headerTime = existing ? `${WEEKDAYS_SHORT[stamp.getDay()]} · ${clockTime(stamp)}` : `Today · ${clockTime(stamp)}`;
+  // a tag the three chips do not carry (Pledge, Affirmation) is offered as its own chip, first —
+  // the one the entry came with, so it stays offered after another chip is picked
+  const extra = [existing?.tag, tagParam, tag].find((t) => t && !TAGS.includes(t));
+  const tags = extra ? [extra, ...TAGS] : TAGS;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-          {/* top bar */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.xl, paddingTop: spacing.sm, paddingBottom: 14 }}>
-            <PressScale onPress={close} hitSlop={8} style={{ minWidth: 60, minHeight: 44, justifyContent: 'center' }}>
-              <AppText weightOverride="600" style={{ fontSize: 16.5, color: colors.textMuted }}>
-                Cancel
-              </AppText>
-            </PressScale>
-            <AppText weightOverride="600" style={{ fontSize: 14, color: colors.textSoft }}>
-              {headerTime}
-            </AppText>
-            <PressScale onPress={save} style={{ minHeight: 44, backgroundColor: colors.accent, borderRadius: 9999, paddingHorizontal: 18, alignItems: 'center', justifyContent: 'center' }}>
-              <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 15 }}>
-                Save
-              </AppText>
-            </PressScale>
-          </View>
-
-          {/* tag chips */}
-          <View style={{ flexDirection: 'row', gap: 8, paddingHorizontal: spacing.xl, paddingBottom: 14 }}>
-            {TAGS.map((t) => {
-              const on = t === tag;
-              return (
-                <PressScale
-                  key={t}
-                  onPress={() => setTag(t)}
-                  style={{ minHeight: 44, paddingHorizontal: 13, borderRadius: 9999, backgroundColor: on ? colors.accent : 'transparent', borderWidth: on ? 0 : 1.5, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' }}>
-                  <AppText weightOverride="600" color={on ? colors.accentText : colors.textMuted} style={{ fontSize: 12.5, letterSpacing: 0.4 }}>
-                    {t}
-                  </AppText>
-                </PressScale>
-              );
-            })}
-          </View>
-
-          {/* body */}
-          <ScrollView contentInsetAdjustmentBehavior="automatic" style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingTop: 6 }} keyboardShouldPersistTaps="handled">
-            <TextInput
-              value={title}
-              onChangeText={setTitle}
-              placeholder="A quiet win"
-              placeholderTextColor={colors.textSoft}
-              style={{ fontFamily: fonts.serif, fontSize: 26, letterSpacing: 0.26, color: colors.text, marginBottom: 12, padding: 0 }}
-            />
-            <TextInput
+    <Screen>
+      <NavBar left="back" onBack={close} centre={{ title: headerTime }} right={{ text: 'Save', onPress: () => void save() }} />
+      <KeyboardAvoidingView style={{ position: 'absolute', left: 0, right: 0, top: 108, bottom: 0 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 48, gap: 16 }}>
+          {/* one row that scrolls sideways: a fourth chip (Pledge, Affirmation) would
+              otherwise wrap "Lesson" alone onto a second line at 375 and 393 */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            style={{ marginHorizontal: -24, flexGrow: 0 }}
+            contentContainerStyle={{ paddingHorizontal: 24 }}>
+            <WhenChips options={tags} value={tag} onChange={setTag} style={{ flexWrap: 'nowrap' }} />
+          </ScrollView>
+          <View style={{ gap: 12 }}>
+            <TextField variant="sheet" value={title} onChangeText={setTitle} placeholder="A quiet win" accessibilityLabel="Title" />
+            <TextField
+              variant="note"
               value={body}
               onChangeText={setBody}
               placeholder="Write freely. No one sees this but you."
-              placeholderTextColor={colors.textSoft}
-              multiline
               autoFocus={!id}
-              style={{ fontFamily: fonts.body, fontSize: 15.5, lineHeight: 23, letterSpacing: 0.1, color: colors.text, padding: 0, minHeight: 200, textAlignVertical: 'top' }}
+              accessibilityLabel="Entry"
             />
-          </ScrollView>
-
-          {/* format toolbar */}
-          <View style={{ paddingHorizontal: 14, paddingVertical: 10 }}>
-            <View style={{ flexDirection: 'row', gap: 6, backgroundColor: colors.surface, borderRadius: 14, padding: 6 }}>
-              {FORMATS.map((f, i) => (
-                <View key={f} style={{ flex: 1, height: 40, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: i === 0 ? colors.accent : 'transparent' }}>
-                  <AppText
-                    color={i === 0 ? colors.accentText : colors.text}
-                    weightOverride={f === 'B' ? '700' : '600'}
-                    style={{ fontSize: 18, fontStyle: f === 'I' ? 'italic' : 'normal', textDecorationLine: f === 'U' ? 'underline' : 'none' }}>
-                    {f}
-                  </AppText>
-                </View>
-              ))}
-              <View style={{ flex: 1, height: 40, borderRadius: 9, alignItems: 'center', justifyContent: 'center' }}>
-                <Svg width={22} height={18} viewBox="0 0 24 20">
-                  <Path d="M3 5h18M3 11h18M3 17h12" stroke={colors.text} strokeWidth={2} strokeLinecap="round" />
-                </Svg>
-              </View>
-            </View>
           </View>
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </Screen>
   );
 }

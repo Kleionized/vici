@@ -1,0 +1,363 @@
+--- .vicifull/pretty/prev/Log-Urges.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Log-Urges.html	2026-09-05 00:22:35
+@@ -163,24 +163,83 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | top:230px;
+-    | font-size:12.5px;
+-    | font-weight:600;
+-    | color:#8B8882;
++    | left:16px;
++    | right:16px;
++    | top:222px;
++    | height:128px;
++    | border-radius:20px;
++    | overflow:hidden;
++    | background:linear-gradient(150deg, #EDE6D8 0%, #D5CAB4 100%);
++    | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05);
+   ">
+-    · This week
++    <div style="
++      | position:absolute;
++      | left:-24px;
++      | right:-24px;
++      | top:78px;
++      | bottom:0;
++      | border-radius:50% 50% 0 0 / 30px 30px 0 0;
++      | background:rgba(255,255,255,0.34);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | right:22px;
++      | top:10px;
++      | width:62px;
++      | height:62px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,186,120,0.42), rgba(226,186,120,0) 72%);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | right:40px;
++      | top:26px;
++      | width:26px;
++      | height:26px;
++      | border-radius:50%;
++      | background:linear-gradient(180deg, #E9C687 0%, #D9A95C 100%);
++      | box-shadow:0 0 0 5px rgba(226,186,120,0.16);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:18px;
++      | top:22px;
++      | font-size:22px;
++      | font-weight:500;
++      | letter-spacing:-0.2px;
++      | color:#1D1C1A;
++    ">
++      · 3 urges
++    </div>
++    <div style="
++      | position:absolute;
++      | left:18px;
++      | bottom:16px;
++      | font-size:13px;
++      | font-weight:400;
++      | color:#55534E;
++    ">
++      · All ridden out
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:256px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:366px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -192,17 +251,18 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="15" height="15" viewBox="0 0 30 30">
++      <svg width="17" height="17" viewBox="0 0 30 30">
+         <path d="M17 3 A11 11 0 1 0 25.5 20 A8.6 8.6 0 1 1 17 3 Z" fill="#131313">
+         </path>
+       </svg>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Late night · Intense
+@@ -220,6 +280,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · rode it out
+     </span>
+@@ -232,14 +293,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:320px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:440px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -252,8 +318,8 @@
+       | flex-shrink:0;
+     ">
+       <div style="
+-        | width:12px;
+-        | height:12px;
++        | width:13px;
++        | height:13px;
+         | border-radius:50%;
+         | box-shadow:inset 0 0 0 3.5px #131313;
+       ">
+@@ -261,10 +327,11 @@
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Boredom · Mild
+@@ -282,6 +349,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · surfed the timer
+     </span>
+@@ -294,13 +362,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:384px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:514px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -312,17 +386,18 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="14" height="11" viewBox="0 0 14 11">
++      <svg width="15" height="12" viewBox="0 0 14 11">
+         <path d="M1 9.5L5 5l3 3 5-6.5" stroke="#131313" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+         </path>
+       </svg>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Stress · Strong
+@@ -340,6 +415,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · rode it out
+     </span>
+@@ -353,7 +429,7 @@
+   <div style="
+     | position:absolute;
+     | left:24px;
+-    | top:468px;
++    | top:598px;
+     | font-size:12.5px;
+     | font-weight:600;
+     | color:#8B8882;
+@@ -362,14 +438,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:494px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:622px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -381,7 +462,7 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="15" height="15" viewBox="0 0 24 24">
++      <svg width="17" height="17" viewBox="0 0 24 24">
+         <path d="M4 11l8-7 8 7" fill="none" stroke="#131313" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         </path>
+         <path d="M6 10v10h12V10" fill="none" stroke="#131313" stroke-width="2.5" stroke-linejoin="round">
+@@ -390,10 +471,11 @@
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Home alone · Strong
+@@ -411,6 +493,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · slipped
+     </span>
+@@ -423,13 +506,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:558px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:696px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -441,17 +530,18 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="15" height="15" viewBox="0 0 30 30">
++      <svg width="17" height="17" viewBox="0 0 30 30">
+         <path d="M17 3 A11 11 0 1 0 25.5 20 A8.6 8.6 0 1 1 17 3 Z" fill="#131313">
+         </path>
+       </svg>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Late night · Mild
+@@ -469,6 +559,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · rode it out
+     </span>

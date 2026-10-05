@@ -1,0 +1,57 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · Data &amp; privacy
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+  <div> position:absolute  left:24px  right:24px  top:120px  display:flex  flex-direction:column  gap:16px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · Yours, and only yours.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty
+      · Your journal, urges and log stay on your device and your private account. We never sell your data, ever.
+    <div> height:2px
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Your data
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Export my data
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · JSON
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Privacy policy
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Terms of service
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Controls
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Pause analytics
+          <div> display:flex  align-items:center  gap:10px
+            <div> width:50px  height:30px  border-radius:15px  background:#F2F0EC  position:relative
+              <div> position:absolute  top:3px  right:3px  width:24px  height:24px  border-radius:12px  background:#1E1E1E
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#9B968E  white-space:nowrap
+            · Delete account
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> width:100%  font-size:13px  font-weight:400  line-height:19px  color:#9B968E  text-wrap:pretty
+      · Deleting your account erases your journal, urges and log permanently. This can’t be undone.

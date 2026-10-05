@@ -1,0 +1,75 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:22px  top:60px  height:40px  display:flex  align-items:center  z-index:5
+    <svg> viewBox="0 0 12 20"  width="12"  height="20"
+      <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:88.8px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="473"  height="3"  x="-40"  y="189"  rx="1.5"  fill="#55524D"
+    <g> transform="translate(-14 0)"
+      <rect> width="104"  height="136"  x="144"  y="54"  rx="3"  fill="#55524D"
+      <rect> width="90"  height="129"  x="151"  y="61"  rx="1.5"  fill="#F2F0EC"
+      <rect> width="66"  height="46"  x="163"  y="75"  rx="2"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linejoin="round"
+      <rect> width="66"  height="44"  x="163"  y="133"  rx="2"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linejoin="round"
+      <circle> cx="229"  cy="127"  r="3.6"  fill="#0D0D0D"
+      <rect> width="72"  height="6"  x="160"  y="195"  rx="2.5"  fill="#55524D"
+      <path> d="M286 190 L289.5 168 H306.5 L310 190 Z"  fill="#55524D"
+      <path> d="M298 168 V150 M298 158 C 290 155, 287 147, 289 141 C 296 144, 299 151, 298 158 M298 154 C 306 151, 309 143, 307 137 C 300 140, 297 147, 298 154"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:338px  display:flex  flex-direction:column  gap:8px  align-items:center  text-align:center
+    <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E  text-align:center
+      · Week XII
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Leave It Behind
+    <div> width:100%  font-size:15px  font-weight:400  line-height:22px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · Make it permanent, then let it go.
+  <div> position:absolute  left:16px  right:16px  top:472px  display:flex  flex-direction:column  gap:20px
+    <div> display:flex  flex-direction:column  gap:8px
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  gap:16px  padding:0 18px  box-sizing:border-box
+        <div> width:28px  display:flex  justify-content:center
+          <span> font-size:14px  font-weight:700  color:#9B968E
+            · 82
+        <span> flex:1  font-size:15px  font-weight:700  color:#F2F0EC
+          · Check how to ask for help
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  gap:16px  padding:0 18px  box-sizing:border-box
+        <div> width:28px  display:flex  justify-content:center
+          <span> font-size:14px  font-weight:700  color:#9B968E
+            · 83
+        <span> flex:1  font-size:15px  font-weight:700  color:#F2F0EC
+          · Finish with an honest next step
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  gap:16px  padding:0 18px  box-sizing:border-box
+        <div> width:28px  display:flex  justify-content:center
+          <span> font-size:14px  font-weight:700  color:#9B968E
+            · 84
+        <span> flex:1  font-size:15px  font-weight:700  color:#F2F0EC
+          · Save a short plan for after the course
+        <svg> viewBox="0 0 14 14"  width="14"  height="14"
+          <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:0  right:0  bottom:0  height:104px  display:flex  align-items:flex-start  justify-content:space-between  padding:14px 14px 0  box-sizing:border-box  z-index:8
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M4 12.5L13 4l9 8.5V21a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 4 21z"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Today
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <rect> width="16"  height="19"  x="5"  y="3.5"  rx="3"  fill="none"  stroke="#9B968E"  stroke-width="1.8"
+        <path> d="M9 9h8M9 13h8M9 17h5"  stroke="#9B968E"  stroke-width="1.8"  stroke-linecap="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Log
+    <div> width:60px  height:60px  border-radius:30px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  margin-top:-6px  cursor:pointer
+      <span> font-size:13px  font-weight:700  color:#111111
+        · SOS
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:700  color:#F2F0EC
+        · Library
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <circle> cx="13"  cy="10"  r="6.5"  fill="none"  stroke="#9B968E"  stroke-width="1.8"
+        <path> d="M9 15.5L7 23l6-3 6 3-2-7.5"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Journey

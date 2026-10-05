@@ -1,0 +1,1141 @@
+{
+ "1": {
+  "week": "Week-01-Reset",
+  "pages": 14,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [
+     [
+      328,
+      329
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   }
+  ]
+ },
+ "2": {
+  "week": "Week-01-Reset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.002,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "10": {
+  "week": "Week-02-Changing-Your-Mindset",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.017,
+    "bands": [
+     [
+      293,
+      298
+     ],
+     [
+      299,
+      300
+     ],
+     [
+      358,
+      360
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "41": {
+  "week": "Week-06-Discipline",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0.001,
+    "bands": [
+     [
+      381,
+      382
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 17,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "44": {
+  "week": "Week-07-Relapse-and-Adversity",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.002,
+    "bands": [
+     [
+      379,
+      380
+     ],
+     [
+      381,
+      383
+     ],
+     [
+      384,
+      385
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0.007,
+    "bands": [
+     [
+      248,
+      255
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 17,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "54": {
+  "week": "Week-08-Boredom-and-Meaning",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0.002,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0.001,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "58": {
+  "week": "Week-09-Connection",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0.001,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 17,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "68": {
+  "week": "Week-10-Yourself",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0.004,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0.001,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "75": {
+  "week": "Week-11-Build-a-Life-You-Want",
+  "pages": 16,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0.001,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ },
+ "81": {
+  "week": "Week-12-Leave-It-Behind",
+  "pages": 17,
+  "rows": [
+   {
+    "k": 1,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 2,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 3,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 4,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 5,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 6,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 7,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 8,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 9,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 10,
+    "share": 0.006,
+    "bands": [
+     [
+      326,
+      327
+     ],
+     [
+      328,
+      330
+     ],
+     [
+      334,
+      335
+     ],
+     [
+      383,
+      385
+     ],
+     [
+      389,
+      390
+     ]
+    ],
+    "status": "ok"
+   },
+   {
+    "k": 11,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 12,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 13,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 14,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 15,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 16,
+    "share": 0,
+    "bands": [],
+    "status": "ok"
+   },
+   {
+    "k": 17,
+    "share": 0,
+    "bands": [
+     [
+      395,
+      396
+     ]
+    ],
+    "status": "ok"
+   }
+  ]
+ }
+}

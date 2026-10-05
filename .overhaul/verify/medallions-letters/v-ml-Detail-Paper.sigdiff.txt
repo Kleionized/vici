@@ -1,0 +1,19 @@
+# count P:113,157,168,168: design 1, app 2
+MISSING in app:  div | 142.7 | 463 | 107.7 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(90, 87, 79) | Not yet. First at ×1
+~ -                                        radius: 50% → 15px
+# count P:44,495,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:113,495,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:182,495,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:251,495,30,30: design 2, app 3
+~ -                                        radius: 50% → 15px
+# count P:320,495,30,30: design 2, app 3
+~ Paper                                    type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Bronze                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Silver                                   type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Gold                                     type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Platinum                                 type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Back to medallions                       type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 77 design rows, 90 app rows; 11 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding, 5 radius-notation only (D015) (use --all to list extras)

@@ -1,0 +1,31 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · Move II of 3
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="473"  height="3"  x="-40"  y="189"  rx="1.5"  fill="#55524D"
+    <g> transform="translate(-7 0)"
+      <path> d="M151 190 H241 L290 228 H120 Z"  fill="#F2F0EC"  fill-opacity="0.09"
+      <rect> width="104"  height="136"  x="144"  y="54"  rx="3"  fill="#55524D"
+      <rect> width="90"  height="129"  x="151"  y="61"  fill="#F2F0EC"
+      <path> d="M151 166 C 168 156, 188 156, 206 164 C 218 169, 228 168, 241 162 V190 H151 Z"  fill="#A8A39A"
+      <path> d="M151 61 L112 50 V204 L151 190 Z"  fill="#55524D"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+      <path> d="M143.98 73.71 L119.02 68.43 V122.25 L143.98 121.77 Z M143.98 133.78 L119.02 135.7 V186.53 L143.98 179.17 Z"  fill="none"  stroke="#0D0D0D"  stroke-width="2.2"  stroke-linejoin="round"
+      <circle> cx="116.5"  cy="130"  r="3"  fill="#A8A39A"
+      <path> d="M286 190 L289.5 168 H306.5 L310 190 Z"  fill="#55524D"
+      <path> d="M298 168 V150 M298 158 C 290 155, 287 147, 289 141 C 296 144, 299 151, 298 158 M298 154 C 306 151, 309 143, 307 137 C 300 140, 297 147, 298 154"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:452px  display:flex  flex-direction:column  gap:18px  align-items:center  text-align:center
+    <div> width:100%  font-size:30px  font-weight:700  letter-spacing:-0.6px  line-height:36px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Leave the room.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · Go somewhere with light, and somewhere you don’t usually watch.
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Try a different step

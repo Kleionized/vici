@@ -1,0 +1,89 @@
+{
+  "group": "paywall",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All seven frames were driven, captured and diffed both numerically (sigdiff) and by pixel (per-band and per-20pt-cell RGB diff against the design PNG), and every PNG was read to rule out the invisible-SVG failure mode. #48 Paywall, #49 Day Zero, #50 Paywall Rescue, #51 Paywall Confirmed and #52 Manage Subscription are genuinely clean: on #48 the whole 290-tall sunrise band including both feGaussianBlur filters is pixel-identical (worst band delta is 46 on the monthly radio's ring, which is the inset-shadow-vs-border equivalence), #50 is worst delta 3 over the whole frame, #49 and #51 differ only in glyph-edge antialiasing and the frames' own sample data (Sam / sam@hey.com / Jul 24), #52 only in the computed renewal date. #53 Morning Check-in Time matches to the pixel apart from a 0.5pt paint shift on four wheel glyphs. The real residue is on #54 Nightly Check-in Time: two deliberate departures from the frame (the hour column's digits and the AM/PM column's y) that the implementer disclosed as canvas contradictions but which are visible, plus a sub-pixel scroll-rounding shift. Separately, and outside the seven frames but inside the group's files, `src/components/paywall/OfferingPaywall.tsx` still draws the withdrawn `Free Trial Paywall` board and it — not PaywallFlow — is what a build with a RevenueCat key presents.",
+  "findings": [
+    {
+      "frame": "#54 Nightly Check-in Time",
+      "element": "hour wheel, the two rows above the selected 10 (canvas y 279 and y 308, x 105 w 40)",
+      "property": "text",
+      "design": "11 (21px/rgba(120,117,110,0.5)) then 12 (22px/rgba(90,88,82,0.55))",
+      "app": "8 then 9, at the same two sizes and tones",
+      "confidence": "certain",
+      "note": "A genuine text mismatch against the frame, and a deliberate one: the frame's hour run is 7, 11, 12, [10], 11, 12, 1 — 11 and 12 appear twice and 8/9 are missing, while the minute run (27..33) and the morning board's hour run (4..10) are both correct. src/components/routines/wheel.tsx builds HOURS as 1..12 and loops, so it renders 7, 8, 9, [10], 11, 12, 1. Reading it as a canvas slip is defensible, but DECISIONS' own precedent for a self-inconsistent canvas (the funnel progress rule) was to implement as drawn, so this needs a ruling rather than a note. Verified in both PNGs side by side."
+    },
+    {
+      "frame": "#54 Nightly Check-in Time",
+      "element": "AM / PM column (canvas left 238, width 60)",
+      "property": "top (y of each label)",
+      "design": "column top 337: AM at 337 (22px/29 line), PM at 366 (30px/44 line) — the selected PM therefore hangs below the 335/44 selection band",
+      "app": "AM at 307.6, PM at 336.5 — PM centred in the band",
+      "confidence": "certain",
+      "note": "A ~29pt mismatch on both labels, plainly visible: in the design PNG 'PM' sits below the grey band and 'AM' inside it; in the app 'PM' is inside the band and 'AM' above it. The whole 60x73 column box is reported MISSING in the app because the app has no column wrapper at 238/337. The frame is internally odd — it appears to reuse the morning frame's column top without shifting for the unselected row above — but it states the numbers literally. Same deviation reappears on #201 Settings Check-in Time (settings group's frame, same component)."
+    },
+    {
+      "frame": "#54 Nightly Check-in Time",
+      "element": "hour column (7 / 10 / 1) and the AM–PM column",
+      "property": "top",
+      "design": "250 / 337 / 439; AM 337, PM 366",
+      "app": "249.6 / 336.5 / 438.6; AM 307.6, PM 336.5 (i.e. 0.4–0.5pt high on top of the 29pt offset above)",
+      "confidence": "likely",
+      "note": "src/components/routines/wheel.tsx uses ITEM_H = 36.5, so scrollTo({y: index * 36.5}) lands on a half CSS pixel whenever the target row index is odd — hour 10 is index 9, plus the loop base 12 gives 21 x 36.5 = 766.5, and the browser rounds the scroll offset, lifting the whole column half a point. The morning board is exact because hour 7 gives 18 x 36.5 = 657, and the minute column is exact because minute 30 gives 90 x 36.5 = 3285. Sub-pixel, but it is a real, reproducible offset that only bites on some values."
+    },
+    {
+      "frame": "#53 Morning Check-in Time",
+      "element": "the 21px wheel rows — '5' and '9' in the hour column, '58' and '02' in the minute column",
+      "property": "painted glyph position (the layout box is exact)",
+      "design": "glyph ink spans y 286.5–300.5 for '5'",
+      "app": "glyph ink spans y 287.0–301.0 — 0.5pt lower; rows 4, 6, 7, 8, 10 and every minute row outside these two are pixel-exact",
+      "confidence": "unsure",
+      "note": "The reported Text boxes are identical (105/279/40/29 vs 118.8/279/12.4/29 — the width difference is the D022 span-vs-Text equivalence). The shift comes from the transform: [{translateY: ±7.5}] that wheel.tsx applies to the away===2 rows to pull them back onto the canvas's non-uniform spacing; the away===3 rows carry translateY ±15 and land exactly. It accounts for the entire y250-299 / y400-449 pixel-diff bands (about 1130 subpixels over 20 on the morning board). Half a point of rasterisation, not a layout error — flagging it because it is the only thing left on #53 and #54's shared component."
+    },
+    {
+      "frame": "#48 Paywall (withdrawn 'Free Trial Paywall')",
+      "element": "src/components/paywall/OfferingPaywall.tsx — the VICI + 'PLUS' chip, the headline 'Give it twelve weeks', the 'Everything, unlocked' rule and its four checklist benefits, and the 'Start my free trial' pill",
+      "property": "which board the shipping build draws",
+      "design": "'Free Trial Paywall' was WITHDRAWN from this drop; #48 Paywall replaces it (icon discs, 'Take your life back.', flat 'Continue')",
+      "app": "OfferingPaywall still draws the withdrawn board, and src/lib/purchases/catalogue.ts:101 makes it the paywall whenever PURCHASES_MODE === 'revenuecat' and EXPO_PUBLIC_REVENUECAT_PAYWALL is unset — i.e. any build with a RevenueCat key. PaywallFlow's #48 board then only renders in the mock preview and inside the onboarding funnel.",
+      "confidence": "likely",
+      "note": "The file is untracked in-progress RevenueCat work rather than a bundle frame, and the implementer disclosed moving PW_BENEFITS into it as OP_BENEFITS. But the brief is explicit that the seven withdrawn labels' screens must go if the app still draws them, and this one is the default paywall of the release build. Its band, close disc, paper and 226 padding were updated to #48; its body was not. Needs an owner's ruling, not a silent carry-over. (src/lib/purchases/metadata.ts carries the same strings, but only inside a docstring example — harmless.)"
+    },
+    {
+      "frame": "#52 Manage Subscription",
+      "element": "'$39.99 / year · renews …' and 'Next charge  $39.99 on …'",
+      "property": "month abbreviation in the renewal date",
+      "design": "10 Jul 2027 — three-letter month",
+      "app": "5 Sept 2027 — toLocaleDateString('en-GB', {month:'short'}) returns the four-letter 'Sept' for September; every other month returns three letters",
+      "confidence": "unsure",
+      "note": "The date itself is computed sample data and correctly differs from the canvas (mock membership.expiresAt is null, so the screen falls back to now + 1 year). Only the September abbreviation departs from the canvas's convention, and only for one month of the year. Everything else on this board — all 61 design rows including both cards, all five icons and the cancel line — is pixel-identical."
+    },
+    {
+      "frame": "#48 Paywall",
+      "element": "monthly row's radio (24pt disc at canvas 44/522)",
+      "property": "ring",
+      "design": "box-shadow: inset 0 0 0 1.6px rgba(0,0,0,0.18)",
+      "app": "borderWidth: 1.6, borderColor rgba(0,0,0,0.18) — the probe reports no shadow on that row",
+      "confidence": "unsure",
+      "note": "NOT a defect: an 8x zoom of both sides shows the same ring at the same diameter. It is the only source of the frame's one non-trivial pixel band (y500-549, 262 subpixels, worst delta 46 at 53,523.5) and that is entirely the ring's antialiasing. Recorded so the next pass does not chase it. Same category as the two washes' border-radius (D015) and the span-vs-View+Text rows (D022) that account for every other differing row on #48, #49, #50, #51 and #52."
+    },
+    {
+      "frame": "#48 Paywall",
+      "element": "'Best value' pill and the 'SAVE 74%' tab when Monthly is the chosen row",
+      "property": "palette in a state the bundle does not draw",
+      "design": "not drawn — the frame only ever shows Yearly selected",
+      "app": "both stay gold on the now-white yearly row: 'Best value' becomes #E2BA78 text inside a #D9B878 hairline on #FFFFFF, and the gold SAVE tab laps the white row's 1px hairline",
+      "confidence": "unsure",
+      "note": "Captured by tapping 'Monthly'; the row inversion itself (ink+gold check on Monthly, hairline+hollow ring on Yearly) is coherent and is the only reading the drawing supports. The residual point is contrast: those two golds were drawn to sit on #131313 and now sit on white. No frame governs it, so it is a judgement call to surface rather than a mismatch to fix."
+    },
+    {
+      "frame": "#51 Paywall Confirmed",
+      "element": "PwConfirmedRidge — the 393x300 band and its two hairline #D9B878 circles at r 70 / r 98",
+      "property": "horizontal scaling on a device wider than 393",
+      "design": "393-wide viewBox, circles",
+      "app": "preserveAspectRatio=\"none\" stretched to useWindowDimensions().width — exact at 393 (verified: the band and both rings are pixel-identical in the capture), progressively elliptical above it",
+      "confidence": "unsure",
+      "note": "Same convention as src/app/score.tsx and PwBand, disclosed by the implementer. Parity holds at the canvas width, which is what this run measures; recorded because the two rings are the one place in the group where the stretch is geometrically visible rather than just a wider gradient."
+    }
+  ]
+}

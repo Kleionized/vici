@@ -1,0 +1,43 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 7
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 238 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 140 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Question
+div | 32 | 168 | 329 | 62 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Which change helped you most this week?
+div | 32 | 238 | 329 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(155, 150, 142) | Choose one.
+div | 32 | 276 | 329 | 494 | - | - | - | - | - | -
+div | 32 | 276 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 287 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | A
+div | 82 | 288 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Keeping my phone away at night
+div | 32 | 327 | 329 | 66 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 348 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | B
+div | 82 | 338 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Removing saved material or changing where I browse
+div | 32 | 398 | 329 | 66 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 419 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | C
+div | 82 | 409 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Going outside or moving to another room
+div | 32 | 469 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 480 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | D
+div | 82 | 481 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Preparing for sleep
+div | 32 | 520 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 531 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | E
+div | 82 | 532 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Having another activity ready
+div | 32 | 571 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 582 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | F
+div | 82 | 583 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Spending time with someone
+div | 32 | 622 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 633 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | G
+div | 82 | 634 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Another change
+div | 32 | 673 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 684 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | H
+div | 82 | 685 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Nothing clearly helped
+div | 32 | 724 | 329 | 46 | rgb(30, 30, 30) | 22px | - | - | - | -
+div | 46 | 735 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | I
+div | 82 | 736 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | I haven’t tried enough to know
+div | 0 | 702 | 393 | 150 | - | - | - | - | - | -
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

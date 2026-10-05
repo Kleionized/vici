@@ -1,0 +1,45 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:582px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="473"  height="3"  x="-40"  y="189"  rx="1.5"  fill="#55524D"
+    <g> transform="translate(-7 0)"
+      <path> d="M151 190 H241 L290 228 H120 Z"  fill="#F2F0EC"  fill-opacity="0.09"
+      <rect> width="104"  height="136"  x="144"  y="54"  rx="3"  fill="#55524D"
+      <rect> width="90"  height="129"  x="151"  y="61"  fill="#F2F0EC"
+      <path> d="M151 166 C 168 156, 188 156, 206 164 C 218 169, 228 168, 241 162 V190 H151 Z"  fill="#A8A39A"
+      <path> d="M151 61 L112 50 V204 L151 190 Z"  fill="#55524D"  stroke="#0D0D0D"  stroke-width="3"  stroke-linejoin="round"
+      <path> d="M143.98 73.71 L119.02 68.43 V122.25 L143.98 121.77 Z M143.98 133.78 L119.02 135.7 V186.53 L143.98 179.17 Z"  fill="none"  stroke="#0D0D0D"  stroke-width="2.2"  stroke-linejoin="round"
+      <circle> cx="116.5"  cy="130"  r="3"  fill="#A8A39A"
+      <path> d="M286 190 L289.5 168 H306.5 L310 190 Z"  fill="#55524D"
+      <path> d="M298 168 V150 M298 158 C 290 155, 287 147, 289 141 C 296 144, 299 151, 298 158 M298 154 C 306 151, 309 143, 307 137 C 300 140, 297 147, 298 154"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  gap:6px  align-items:center
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#F2F0EC
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+      <div> width:24px  height:2px  border-radius:1px  background:#2E2E2E
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <div> position:absolute  left:24px  right:24px  top:136px  display:flex  flex-direction:column  gap:14px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · How often are you on your own for long stretches?
+    <div> height:18px
+    <div> display:flex  flex-direction:column  gap:12px
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Most days
+      <div> height:58px  border-radius:18px  background:#F2F0EC  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:none
+        <span> font-size:15px  font-weight:400  color:#111111  white-space:nowrap
+          · A few days a week
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Now and then
+      <div> height:58px  border-radius:18px  background:#1E1E1E  display:flex  align-items:center  padding:0 22px  box-sizing:border-box  cursor:pointer  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+        <span> font-size:15px  font-weight:400  color:#F2F0EC  white-space:nowrap
+          · Rarely

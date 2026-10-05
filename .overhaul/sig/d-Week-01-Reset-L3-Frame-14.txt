@@ -1,0 +1,19 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 3
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 320.8 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 264 | 329 | 140 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | If movement is limited, change your seat or put the device away and bring another activity within reach. Keep a phone when needed for safety or access. Save the place and first step under First response.
+div | 32 | 432 | 329 | 144 | rgb(30, 30, 30) | 20px | - | - | - | -
+div | 52 | 450 | 28 | 28 | rgb(242, 240, 236) | 14px | - | - | - | -
+svg | 60 | 458 | 12 | 12 | - | - | - | - | - | -
+path | 61.7 | 461 | 8.6 | 6 | - | - | - | - | - | -
+div | 94 | 450 | 247 | 108 | - | - | - | - | - | -
+div | 94 | 450 | 247 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Done when
+div | 94 | 470 | 247 | 88 | - | - | - | - | 16px/700/normal/22px/rgb(242, 240, 236) | You’ve tried the change and saved the steps. If you can’t try it today, prepare an accessible option and choose when to try it.
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 150.3 | 765.5 | 92.3 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Finish lesson

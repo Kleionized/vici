@@ -1,0 +1,64 @@
+const N = {
+  whered: 'this is where we’d start', here: 'Late night, bed and scrolling came up together', s1: 'Charge it away from the bed.', s2: 'Get out of bed before you start scrolling',
+  plan: 'SOS gets you out first', score: 'Your VICI rating', n30: 'This is your next 30 days.', y1: 'One year from now.', a80: 'By age 80',
+  ln: 'The line keeps climbing', lp: 'With the plan.', clean: 'One clean day.', bad: 'One bad day is one bad day.', want: 'This is what you’re doing it for.',
+  arr: 'A letter arrived.', read: 'Week XII, from', vow: 'The vow.', med: 'Your first medallion.',
+};
+await window.__has(N.whered, 10000);
+window.__noteCtl('whered');
+window.__log.push('whered no Back: ' + window.__noCtl('Back'));
+await __step('whered Continue', () => tap('Continue'), N.here, N.whered);
+window.__noteCtl('start-here');
+window.__log.push('start-here no Back: ' + window.__noCtl('Back'));
+await __step('Choose another #1', () => tap('Choose another'), 'Keep one door open tonight.');
+window.__log.push('  evidence: ' + (window.__txt().match(/[A-Z][^.]*came up together in your answers\./) || [''])[0]);
+await __step('Choose another #2', () => tap('Choose another'), 'Pick the hour you stop tonight.');
+window.__log.push('  evidence: ' + (window.__txt().match(/[A-Z][^.]*came up together in your answers\./) || [''])[0]);
+await __step('Choose another #3 (wrap)', () => tap('Choose another'), 'Keep your phone out of bed tonight.');
+await __step('start-here Continue', () => tap('Continue'), N.s1);
+await __step('s1 Back', () => tap('Back'), N.here, N.s1);
+await __step('start-here Continue again', () => tap('Continue'), N.s1);
+await __step('s1 Next', () => tap('Next'), N.s2);
+await __step('s2 Back', () => tap('Back'), N.s1, N.s2);
+await __step('s1 Next', () => tap('Next'), N.s2);
+await __step('s2 Continue', () => tap('Continue'), N.plan);
+await __step('plan Back', () => tap('Back'), N.s2, N.plan);
+await __step('s2 Continue', () => tap('Continue'), N.plan);
+await __step('plan Continue', () => tap('Continue'), N.score);
+await __step('score Back', () => tap('Back'), N.plan, N.score);
+await __step('plan Continue', () => tap('Continue'), N.score);
+await __step('score Next', () => tap('Next'), N.n30);
+await __step('n30 Back', () => tap('Back'), N.score, N.n30);
+await __step('score Next', () => tap('Next'), N.n30);
+await __step('n30 Next', () => tap('Next'), N.y1);
+await __step('y1 Back', () => tap('Back'), N.n30, N.y1);
+await __step('n30 Next', () => tap('Next'), N.y1);
+await __step('y1 Next', () => tap('Next'), N.a80);
+await __step('a80 Back (tapAt chevron 28,80)', () => tapAt(28, 80), N.y1, N.a80);
+await __step('y1 Next', () => tap('Next'), N.a80);
+await __step('a80 Next', () => tap('Next'), N.ln);
+await __step('ln Back', () => tap('Back'), N.a80, N.ln);
+await __step('a80 Next', () => tap('Next'), N.ln);
+await __step('ln Next', () => tap('Next'), N.lp);
+await __step('lp Back', () => tap('Back'), N.ln, N.lp);
+await __step('ln Next', () => tap('Next'), N.lp);
+await __step('lp Continue', () => tap('Continue'), N.clean);
+await __step('clean Back', () => tap('Back'), N.lp, N.clean);
+await __step('lp Continue', () => tap('Continue'), N.clean);
+await __step('clean Continue', () => tap('Continue'), N.bad);
+await __step('bad Back', () => tap('Back'), N.clean, N.bad);
+await __step('clean Continue', () => tap('Continue'), N.bad);
+await __step('bad Continue', () => tap('Continue'), N.want);
+await __step('want Back', () => tap('Back'), N.bad, N.want);
+await __step('bad Continue', () => tap('Continue'), N.want);
+await __step('want Continue', () => tap('Continue'), N.arr);
+window.__noteCtl('letter-arrived');
+await __step('arr Open', () => tap('Open'), N.read);
+window.__noteCtl('letter-read');
+await __step('read Continue', () => tap('Continue'), N.vow);
+window.__noteCtl('vow');
+await __step('vow Sign', () => tap('Sign'), N.med);
+window.__noteCtl('medallion');
+await __step('med Continue', () => tap('Continue'), 'most likely to watch');
+window.__log.push('reminders text: ' + window.__txt().slice(0, 160));
+return window.__log;

@@ -1,0 +1,44 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Peace of mind
+div | 38 | 193 | 317 | 210 | - | - | - | - | 14.5px/400/normal/21px/rgb(85, 83, 78) | Choose a 30-minute part of tonight when you would usually be on a screen or listening to something. Spend it without messages, feeds, news, videos, podcasts, porn, or email. You can cook, shower, walk, stretch, read a physical book, talk to someone, write, or sit quietly. If you need to stay reachable, allow important calls. If the quiet feels boring, leave it boring for the half hour instead of opening another feed, video, message thread, podcast, or porn.
+div | 26 | 440 | 340 | 164 | - | - | - | - | - | -
+div | 56.6 | 440 | 278.8 | 164 | - | - | - | - | 16px/400/normal/normal/rgb(0, 0, 0) | ion:absolute; left:26px; top:440px; width:340px; height:164px;">
+div | 81.7 | 440 | 228.6 | 134.5 | - | - | - | - | - | -
+div | 122 | 466.9 | 1.7 | 1.7 | rgba(200, 225, 235, 0.4) | 50% | - | - | - | -
+div | 275.3 | 462.9 | 1.3 | 1.3 | rgba(200, 225, 235, 0.3) | 50% | - | - | - | -
+div | 61.5 | 550.3 | 269 | 44.4 | rgb(234, 233, 227) | 50% 50% 0px 0px / 26px 26px 0px 0px | - | - | - | -
+div | 202.1 | 549.6 | 49.8 | 7.4 | rgba(0, 0, 0, 0.09) | 50% | - | - | - | -
+div | 206.8 | 511.3 | 10.8 | 29.6 | rgb(214, 213, 208) | 8px 6px 4px 4px | - | - | - | -
+div | 209.4 | 530.1 | 35 | 12.1 | rgb(214, 213, 208) | 6px 10px 4px 4px | - | rgba(255, 255, 255, 0.35) 0px 3px 0px 0px inset | - | -
+div | 239 | 526.1 | 8.1 | 16.1 | rgb(214, 213, 208) | 6px 6px 4px 4px | - | - | - | -
+div | 210.8 | 542.2 | 4 | 7.4 | rgb(180, 177, 171) | 0px 0px 3px 3px | - | - | - | -
+div | 239 | 542.2 | 4 | 7.4 | rgb(180, 177, 171) | 0px 0px 3px 3px | - | - | - | -
+div | 263.9 | 519.3 | 20.2 | 20.2 | - | 50% | - | - | - | -
+div | 270 | 534.1 | 8.1 | 16.1 | rgb(251, 250, 247) | 3px 3px 2px 2px | - | rgba(0, 0, 0, 0.06) 0px 0px 0px 1.2px inset | - | -
+div | 273.5 | 531.4 | 1.1 | 2.7 | rgb(180, 177, 171) | - | - | - | - | -
+div | 272 | 526.1 | 4 | 6.1 | rgb(226, 186, 120) | 50% / 62% 62% 38% 38% | - | - | - | -
+div | 264.6 | 551.6 | 18.8 | 7.4 | rgba(0, 0, 0, 0.07) | 50% | - | - | - | -
+div | 116.5 | 553.6 | 59.4 | 7.4 | rgba(0, 0, 0, 0.09) | 50% | - | - | - | -
+div | 114 | 530.1 | 64.6 | 6.1 | rgb(224, 223, 218) | 4.5px | - | - | - | -
+div | 120.7 | 536.2 | 4 | 21.5 | rgb(198, 197, 192) | 3px | - | - | - | -
+div | 167.8 | 536.2 | 4 | 21.5 | rgb(198, 197, 192) | 3px | - | - | - | -
+div | 127.4 | 520 | 13.4 | 10.1 | rgb(233, 210, 164) | 2px 2px 7px 7px | - | rgb(226, 186, 120) 0px 0px 0px 1.5px inset | - | -
+div | 140.2 | 522 | 4.7 | 4.7 | - | 50% | - | rgb(226, 186, 120) 0px 0px 0px 2px inset | - | -
+svg | 129.4 | 511.9 | 9.4 | 6.7 | - | - | - | - | - | -
+path | 131 | 511.9 | 5.6 | 6.1 | - | - | - | - | - | -
+div | 151.6 | 515.3 | 21.5 | 13.4 | rgb(214, 213, 208) | 4px 4px 2px 2px | - | - | - | -
+div | 151.6 | 520.7 | 21.5 | 2 | rgb(198, 197, 192) | - | - | - | - | -
+div | 210.8 | 504.6 | 32.3 | 32.3 | - | 50% | - | - | - | -
+svg | 189.3 | 469.6 | 9.7 | 4.8 | - | - | - | - | - | -
+path | 190 | 471.7 | 8.4 | 1.5 | - | - | - | - | - | -
+div | 50 | 1064 | 292 | 68 | rgb(255, 255, 255) | 16px | - | rgba(0, 0, 0, 0.07) 0px 0px 0px 1px, rgba(40, 38, 32, 0.05) 0px 6px 16px 0px | - | -
+svg | 68 | 1088 | 20 | 20 | - | - | - | - | - | -
+circle | 69.7 | 1089.7 | 16.7 | 16.7 | - | - | - | - | - | -
+path | 74.4 | 1095.4 | 7.1 | 5.1 | - | - | - | - | - | -
+span | 101 | 1069.5 | 223 | 57 | - | - | - | - | 13.5px/500/normal/19px/rgb(85, 83, 78) | Done when 30 minutes pass without swapping one feed for another.
+div | 26 | 1146 | 340 | 6 | - | - | - | - | - | -
+div | 181 | 1146 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 205 | 1146 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 50 | 1184 | 292 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 159.2 | 1200 | 73.7 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Continue

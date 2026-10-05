@@ -1,0 +1,24 @@
+[
+  {
+    "note": "GROUP slip — VERIFICATION pass (prefix v-slip-). Corrections to .vicifull/recipes/slip.json: (a) `scripts/vicifull/shot.mjs --do` with .vicifull/drive.js's tap() DOES work on this build — `--do='await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Choose a time\")'` drives /slip to 98C, and `--do='await tap(\"Start the interrupt\")'` drives /urge past its first board. The claim in slip.json that Pressable ignores drive.js's synthetic events is wrong; .vicifull/slipshot.mjs is a convenience, not a necessity. (b) The Slip Urge Now, Dont Fail Twice, Stop Here and Third recipes omit the answer tap — 98F is drawn with `A little` SELECTED, so the step list needs \"A little\" before the last \"Continue\" or the capture reports the selected row's ring, weight, disc and check as four mismatches. (c) In zsh, `\"${arr[@]}\"` on an EMPTY array still passes one empty word to slipshot.mjs, which then clicks an arbitrary element — deck index 0 was captured as the wrong card until that was removed."
+  },
+  { "frame": "Slip Entry", "route": "/slip", "sig": "v-slip-a-Slip-Entry", "wait": 2500 },
+  { "frame": "Slip Close It", "route": "/slip", "do": "\"Log the slip\"" },
+  { "frame": "Slip When", "route": "/slip", "do": "\"Log the slip\" \"Closed\" \"Choose a time\"", "note": "the wheel's dates/hours/minutes/meridiem are live data; only the highlight band's 1/255 alpha differs" },
+  { "frame": "Slip Fed", "route": "/slip", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Phone in bed\" \"Late night\"" },
+  { "frame": "Slip Logged", "route": "/slip", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Phone in bed\" \"Late night\" \"Continue · 3\"", "note": "the `When` value is the live clock; every other row matches the canvas character for character" },
+  { "frame": "Slip Urge Now", "route": "/slip", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Phone in bed\" \"Late night\" \"Continue · 3\" \"Continue\" \"A little\"", "note": "\"A little\" IS required — the canvas draws it selected" },
+  { "frame": "Slip Dont Fail Twice", "route": "/slip", "seed": "--slips=0", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Phone in bed\" \"Late night\" \"Continue · 3\" \"Continue\" \"A little\" \"Continue\"" },
+  { "frame": "Slip Stop Here", "route": "/slip", "seed": "--slips=1", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Continue · 1\" \"Continue\" \"A little\" \"Continue\"" },
+  { "frame": "Slip Third", "route": "/slip", "seed": "--slips=2", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Tired\" \"Continue · 1\" \"Continue\" \"A little\" \"Continue\"" },
+  { "frame": "Slip Feel * / Slip Trigger * (19 cards)", "route": "/slip", "seed": "--slips=0", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Bored\" \"Continue · 1\" \"Continue\" \"Continue\" \"Continue\"  then N x \"Give me another\"", "note": "deck index N: 0 Feel Bored, 1 Ashamed, 2 Lonely, 3 Stressed, 4 Rejected, 5 Tired, 6 Turned on, 7 Feel Not sure, 8 Trigger Late night, 9 Scrolling, 10 Sexual content, 11 Boredom, 12 Loneliness, 13 Stress, 14 Argument, 15 Couldn’t sleep, 16 Being alone, 17 Habit, 18 Trigger Not sure. All nineteen captured and diffed one at a time; all nineteen clean." },
+  { "frame": "Slip Pledge", "route": "/slip", "seed": "--slips=0", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Bored\" \"Continue · 1\" \"Continue\" \"Continue\" \"Continue\" \"Done\"" },
+  { "frame": "Slip Begin Again", "route": "/slip", "seed": "--slips=0", "do": "\"Log the slip\" \"Closed\" \"Continue\" \"Bored\" \"Continue · 1\" \"Continue\" \"Continue\" \"Continue\" \"Done\" \"Sign it again\"" },
+  { "frame": "Slip Morning After", "route": "/slip?stage=morning", "wait": 2000, "note": "plain shot.mjs; no seed needed" },
+  {
+    "frame": "(state the canvas does not draw) Slip Pledge with NO signed pledge",
+    "route": "/slip",
+    "do": "same as Slip Pledge but WITHOUT --slips (no seeded account)",
+    "note": "the app still draws 98J and fills the card with the canvas's own sample line 'The mornings are mine again.' signed 'You'. relapse-workflow.md §9 says skip the screen when no pledge exists."
+  }
+]

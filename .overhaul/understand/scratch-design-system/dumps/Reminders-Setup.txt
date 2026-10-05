@@ -1,0 +1,45 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:90px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <ellipse> cx="196"  cy="200"  rx="64"  ry="3.84"  fill="#3A3835"
+    <circle> cx="196"  cy="60"  r="6"  fill="none"  stroke="#F2F0EC"  stroke-width="3"  stroke-linejoin="round"
+    <rect> width="6"  height="14"  x="193"  y="64"  fill="#F2F0EC"
+    <path> d="M196 76 C 164 76 150 102 150 130 V160 H242 V130 C 242 102 228 76 196 76 Z"  fill="#F2F0EC"
+    <rect> width="116"  height="8"  x="138"  y="158"  rx="4"  fill="#F2F0EC"
+    <circle> cx="196"  cy="177"  r="8"  fill="#F2F0EC"
+    <path> d="M166 130 C 167 112, 175 100, 187 93"  fill="none"  stroke="#0D0D0D"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+    <path> d="M128 98 L118 90 M264 98 L274 90 M120 130 H108 M272 130 H284"  fill="none"  stroke="#F2F0EC"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:320px  display:flex  flex-direction:column  gap:18px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · Late night is when you’re most likely to watch.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty
+      · Want VICI there before that time?
+  <div> position:absolute  left:24px  right:24px  top:470px  display:flex  flex-direction:column  gap:14px
+    <div> border-radius:20px  background:#1E1E1E  padding:16px 18px  display:flex  gap:14px  align-items:flex-start  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+      <img> width="40"  height="40"  src="laurel-mark.webp"  alt=""  filter:brightness(0) invert(1)  flex-shrink:0  border-radius:10px
+      <div> display:flex  flex-direction:column  gap:3px  flex:1
+        <div> display:flex  justify-content:space-between  align-items:baseline
+          <span> font-size:15px  font-weight:700  color:#F2F0EC
+            · Morning check-in
+          <span> font-size:12px  font-weight:700  color:#9B968E
+            · now
+        <span> font-size:14px  line-height:20px  color:#B5B0A8
+          · Twenty seconds — where’s your head at today?
+    <div> border-radius:20px  background:#1E1E1E  padding:16px 18px  display:flex  gap:14px  align-items:flex-start  box-shadow:0 1px 2px rgba(0,0,0,0.04)
+      <img> width="40"  height="40"  src="laurel-mark.webp"  alt=""  filter:brightness(0) invert(1)  flex-shrink:0  border-radius:10px
+      <div> display:flex  flex-direction:column  gap:3px  flex:1
+        <div> display:flex  justify-content:space-between  align-items:baseline
+          <span> font-size:15px  font-weight:700  color:#F2F0EC
+            · Late night ahead
+          <span> font-size:12px  font-weight:700  color:#9B968E
+            · You pick the time
+        <span> font-size:14px  line-height:20px  color:#B5B0A8
+          · The time you told us about. SOS is one tap away.
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Turn on reminders
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Not now

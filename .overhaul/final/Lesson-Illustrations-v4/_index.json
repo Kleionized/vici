@@ -1,0 +1,377 @@
+{
+  "source": "Vici Overhaul/project/Lesson Illustrations v4.dc.html",
+  "count": 53,
+  "frames": [
+    {
+      "label": "Phone parked for the night",
+      "file": "Phone-parked-for-the-night.html",
+      "bytes": 5813,
+      "start": 6035,
+      "end": 11848
+    },
+    {
+      "label": "Bed at night",
+      "file": "Bed-at-night.html",
+      "bytes": 5996,
+      "start": 11849,
+      "end": 17845
+    },
+    {
+      "label": "Phone on charge",
+      "file": "Phone-on-charge.html",
+      "bytes": 5350,
+      "start": 17846,
+      "end": 23196
+    },
+    {
+      "label": "Moon over a lone house",
+      "file": "Moon-over-a-lone-house.html",
+      "bytes": 6507,
+      "start": 23197,
+      "end": 29704
+    },
+    {
+      "label": "Phone face-down",
+      "file": "Phone-face-down.html",
+      "bytes": 5204,
+      "start": 29705,
+      "end": 34909
+    },
+    {
+      "label": "Desk lamp",
+      "file": "Desk-lamp.html",
+      "bytes": 4588,
+      "start": 34910,
+      "end": 39498
+    },
+    {
+      "label": "Alarm clock",
+      "file": "Alarm-clock.html",
+      "bytes": 6986,
+      "start": 39499,
+      "end": 46485
+    },
+    {
+      "label": "Closed door",
+      "file": "Closed-door.html",
+      "bytes": 5018,
+      "start": 46888,
+      "end": 51906
+    },
+    {
+      "label": "Open door",
+      "file": "Open-door.html",
+      "bytes": 5928,
+      "start": 51907,
+      "end": 57835
+    },
+    {
+      "label": "Shower",
+      "file": "Shower.html",
+      "bytes": 5709,
+      "start": 57836,
+      "end": 63545
+    },
+    {
+      "label": "Stairs",
+      "file": "Stairs.html",
+      "bytes": 4364,
+      "start": 63546,
+      "end": 67910
+    },
+    {
+      "label": "Mirror",
+      "file": "Mirror.html",
+      "bytes": 4940,
+      "start": 67911,
+      "end": 72851
+    },
+    {
+      "label": "Sunrise",
+      "file": "Sunrise.html",
+      "bytes": 3913,
+      "start": 73250,
+      "end": 77163
+    },
+    {
+      "label": "Park bench",
+      "file": "Park-bench.html",
+      "bytes": 5892,
+      "start": 77164,
+      "end": 83056
+    },
+    {
+      "label": "Signpost",
+      "file": "Signpost.html",
+      "bytes": 5698,
+      "start": 83057,
+      "end": 88755
+    },
+    {
+      "label": "Sneaker",
+      "file": "Sneaker.html",
+      "bytes": 5737,
+      "start": 88756,
+      "end": 94493
+    },
+    {
+      "label": "Flag",
+      "file": "Flag.html",
+      "bytes": 4794,
+      "start": 94494,
+      "end": 99288
+    },
+    {
+      "label": "Flag at half-mast",
+      "file": "Flag-at-half-mast.html",
+      "bytes": 4861,
+      "start": 99289,
+      "end": 104150
+    },
+    {
+      "label": "Mountain",
+      "file": "Mountain.html",
+      "bytes": 5049,
+      "start": 104151,
+      "end": 109200
+    },
+    {
+      "label": "Lighthouse",
+      "file": "Lighthouse.html",
+      "bytes": 7046,
+      "start": 109201,
+      "end": 116247
+    },
+    {
+      "label": "Campfire",
+      "file": "Campfire.html",
+      "bytes": 8468,
+      "start": 116248,
+      "end": 124716
+    },
+    {
+      "label": "Balloon",
+      "file": "Balloon.html",
+      "bytes": 4926,
+      "start": 124717,
+      "end": 129643
+    },
+    {
+      "label": "Umbrella in the rain",
+      "file": "Umbrella-in-the-rain.html",
+      "bytes": 6130,
+      "start": 129644,
+      "end": 135774
+    },
+    {
+      "label": "Storm cloud",
+      "file": "Storm-cloud.html",
+      "bytes": 6021,
+      "start": 135775,
+      "end": 141796
+    },
+    {
+      "label": "Open notebook",
+      "file": "Open-notebook.html",
+      "bytes": 4767,
+      "start": 142199,
+      "end": 146966
+    },
+    {
+      "label": "Stack of books",
+      "file": "Stack-of-books.html",
+      "bytes": 5572,
+      "start": 146967,
+      "end": 152539
+    },
+    {
+      "label": "Two cups",
+      "file": "Two-cups.html",
+      "bytes": 5356,
+      "start": 152540,
+      "end": 157896
+    },
+    {
+      "label": "Cake",
+      "file": "Cake.html",
+      "bytes": 7079,
+      "start": 157897,
+      "end": 164976
+    },
+    {
+      "label": "Kettle",
+      "file": "Kettle.html",
+      "bytes": 6021,
+      "start": 164977,
+      "end": 170998
+    },
+    {
+      "label": "Plant",
+      "file": "Plant.html",
+      "bytes": 5876,
+      "start": 170999,
+      "end": 176875
+    },
+    {
+      "label": "Hourglass",
+      "file": "Hourglass.html",
+      "bytes": 4466,
+      "start": 176876,
+      "end": 181342
+    },
+    {
+      "label": "Balance scale",
+      "file": "Balance-scale.html",
+      "bytes": 5215,
+      "start": 181343,
+      "end": 186558
+    },
+    {
+      "label": "Dominoes",
+      "file": "Dominoes.html",
+      "bytes": 6782,
+      "start": 186559,
+      "end": 193341
+    },
+    {
+      "label": "First domino tipping",
+      "file": "First-domino-tipping.html",
+      "bytes": 6818,
+      "start": 193342,
+      "end": 200160
+    },
+    {
+      "label": "Envelope",
+      "file": "Envelope.html",
+      "bytes": 3630,
+      "start": 200161,
+      "end": 203791
+    },
+    {
+      "label": "Open letter",
+      "file": "Open-letter.html",
+      "bytes": 4390,
+      "start": 203792,
+      "end": 208182
+    },
+    {
+      "label": "Clipboard",
+      "file": "Clipboard.html",
+      "bytes": 5827,
+      "start": 208183,
+      "end": 214010
+    },
+    {
+      "label": "Feed locked",
+      "file": "Feed-locked.html",
+      "bytes": 5575,
+      "start": 214011,
+      "end": 219586
+    },
+    {
+      "label": "Lit match",
+      "file": "Lit-match.html",
+      "bytes": 5504,
+      "start": 219587,
+      "end": 225091
+    },
+    {
+      "label": "Progress chart",
+      "file": "Progress-chart.html",
+      "bytes": 4927,
+      "start": 225092,
+      "end": 230019
+    },
+    {
+      "label": "Pencil",
+      "file": "Pencil.html",
+      "bytes": 4519,
+      "start": 230427,
+      "end": 234946
+    },
+    {
+      "label": "Fountain pen",
+      "file": "Fountain-pen.html",
+      "bytes": 4712,
+      "start": 234947,
+      "end": 239659
+    },
+    {
+      "label": "Wall calendar",
+      "file": "Wall-calendar.html",
+      "bytes": 7485,
+      "start": 239660,
+      "end": 247145
+    },
+    {
+      "label": "Compass and map",
+      "file": "Compass-and-map.html",
+      "bytes": 5775,
+      "start": 247146,
+      "end": 252921
+    },
+    {
+      "label": "ID badge",
+      "file": "ID-badge.html",
+      "bytes": 4789,
+      "start": 252922,
+      "end": 257711
+    },
+    {
+      "label": "Stopwatch",
+      "file": "Stopwatch.html",
+      "bytes": 6964,
+      "start": 257712,
+      "end": 264676
+    },
+    {
+      "label": "Thermometer",
+      "file": "Thermometer.html",
+      "bytes": 4943,
+      "start": 264677,
+      "end": 269620
+    },
+    {
+      "label": "Speech bubbles",
+      "file": "Speech-bubbles.html",
+      "bytes": 4385,
+      "start": 269621,
+      "end": 274006
+    },
+    {
+      "label": "Brain",
+      "file": "Brain.html",
+      "bytes": 5306,
+      "start": 274007,
+      "end": 279313
+    },
+    {
+      "label": "Battery",
+      "file": "Battery.html",
+      "bytes": 4629,
+      "start": 279314,
+      "end": 283943
+    },
+    {
+      "label": "Bell",
+      "file": "Bell.html",
+      "bytes": 3872,
+      "start": 283944,
+      "end": 287816
+    },
+    {
+      "label": "Browser tabs",
+      "file": "Browser-tabs.html",
+      "bytes": 5428,
+      "start": 287817,
+      "end": 293245
+    },
+    {
+      "label": "Medal",
+      "file": "Medal.html",
+      "bytes": 7345,
+      "start": 293246,
+      "end": 300591
+    }
+  ]
+}

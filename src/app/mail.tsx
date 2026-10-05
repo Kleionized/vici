@@ -1,21 +1,34 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useState } from 'react';
-import { ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Path, Rect } from 'react-native-svg';
+import { View } from 'react-native';
 
-import { AppText, BackChevron, LoadingView, PressScale } from '@/components/ui';
+import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
+import { ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
+import { roman } from '@/lib/format';
 import { getJSON } from '@/lib/storage';
+import { mono } from '@/lib/theme';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
-import { colors, fonts, sans, spacing } from '@/lib/theme';
+
+/**
+ * Mail — every report and letter the app has delivered. No frame draws it;
+ * it takes `Log — Reports`' idiom (CRITIC C6, routes §4.15): a title head and
+ * ruled rows on the ground — the title 15/700 over its line 14/700 `#9B968E`,
+ * 64 tall, a `#5A574F` chevron — and the app's own copy. Empty, a centred
+ * 26/33 heading and its line.
+ */
 
 const LETTER_KEY = 'tideline.letter.day3';
+const POST_DONE_KEY = 'tideline.post.backondeck.delivered';
 
-type Item =
-  | { kind: 'letter'; title: string; sub: string; kept: boolean; go: () => void }
-  | { kind: 'report'; title: string; sub: string; go: () => void };
+const NAV_BOTTOM = 100;
+/** the title head's 32/38 at 108 (`TitleHead`), in flow here so it scrolls with the rows */
+const TITLE_TOP = 108;
+/** the title ends at 146; the rows start a gutter under it */
+const ROWS_TOP = 170;
+const ROW_H = 64;
+
+type Item = { key: string; title: string; sub: string; go: () => void };
 
 export default function Mail() {
   const router = useRouter();
@@ -27,7 +40,9 @@ export default function Mail() {
 
   useEffect(() => {
     void getJSON<{ kept?: boolean }>(LETTER_KEY).then(setLetter);
-    void getJSON<number>('tideline.post.backondeck.delivered').then((v) => setPostDelivered(!!v));
+    // The key still spells the retired `Back on deck` face; it is load-bearing
+    // storage on accounts that already have the post, so it keeps its name.
+    void getJSON<number>(POST_DONE_KEY).then((v) => setPostDelivered(!!v));
   }, []);
 
   const items = useMemo<Item[]>(() => {
@@ -48,30 +63,34 @@ export default function Mail() {
                 ? 'A heavier week'
                 : 'A steady week';
       out.push({
-        kind: 'report',
+        key: `report-${weekStart}`,
         title: 'Weekly report',
         sub: `${r.label} · ${verdict}`,
         go: () => router.push({ pathname: '/weekly-report', params: { week: weekStart } }),
       });
     }
 
-    // post from VICI — the medallion letter (and its enclosure), re-readable
+    // Post from VICI — the medallion letter (and its enclosure), re-readable.
+    // The row names the face and the rung the post itself encloses, which
+    // `/medallion-post` reads from the ridden-out count — in the enclosure
+    // card's own words (`Vici, Tier I`, 39B's casing).
     if (postDelivered) {
+      const face = kkFace('vici');
+      const ridden = events.filter((e) => e.type === 'urge_rode_out').length;
+      const standing = face ? kkStanding(face, ridden) : 0;
       out.push({
-        kind: 'letter',
+        key: 'post',
         title: 'VICI Post · A medallion',
-        sub: 'Vici, tier II · enclosure inside',
-        kept: true,
+        sub: `${face?.name ?? 'Vici'}, Tier ${roman(Math.max(1, standing))} · enclosure inside`,
         go: () => router.push('/medallion-post'),
       });
     }
 
     // the sealed letter — written on day zero, resealed after each reading
     out.push({
-      kind: 'letter',
+      key: 'letter',
       title: 'A letter from day zero',
       sub: letter?.kept ? 'Resealed · don’t fail twice' : 'Sealed · waits until it’s needed',
-      kept: !!letter?.kept,
       go: () => router.push('/letter'),
     });
     return out;
@@ -79,88 +98,48 @@ export default function Mail() {
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/dashboard'));
 
-  if (checkins === undefined || events === undefined) {
-    return (
-      <View style={{ flex: 1, backgroundColor: colors.bg }}>
-        <LoadingView />
-      </View>
-    );
-  }
+  if (checkins === undefined || events === undefined) return <LoadingView onBack={back} />;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ paddingHorizontal: 16, paddingTop: spacing.sm }}>
-          <BackChevron onPress={back} />
-          <AppText style={[sans('600'), { fontSize: 27, letterSpacing: -0.4, color: colors.inkAlt, marginTop: 8 }]}>Mail</AppText>
-        </View>
-
+    <Screen>
+      {/* a title-head page scrolls whole, under the fixed nav row (D320) */}
+      <ScrollRegion top={NAV_BOTTOM} contentStyle={{ paddingTop: TITLE_TOP - NAV_BOTTOM, paddingHorizontal: 24, paddingBottom: 58 }}>
+        <MonoText v="titlePage" style={{ marginBottom: ROWS_TOP - TITLE_TOP - 38 }}>
+          Mail
+        </MonoText>
         {items.length === 0 ? (
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 40, gap: 8 }}>
-            <QuoteMark />
-            <AppText center style={[sans('500'), { fontSize: 22, color: colors.text, maxWidth: 260, lineHeight: 28 }]}>
-              Nothing’s arrived yet.
-            </AppText>
-            <AppText center style={[sans('400'), { fontSize: 13.5, color: colors.textMuted, maxWidth: 280, lineHeight: 20 }]}>
-              A report lands here at the end of each week, and letters arrive along the way.
-            </AppText>
-          </View>
+          <EmptyState
+            h1
+            title="Nothing’s arrived yet."
+            body="A report lands here at the end of each week, and letters arrive along the way."
+            style={{ marginTop: 300 - ROWS_TOP, paddingVertical: 0 }}
+          />
         ) : (
-          <ScrollView contentInsetAdjustmentBehavior="automatic" showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 16, paddingTop: 24, gap: 11 }}>
-            {items.map((it, i) => (
-              <PressScale
-                key={i}
-                onPress={it.go}
-                accessibilityRole="button"
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 14,
-                  backgroundColor: colors.surface,
-                  borderRadius: 18,
-                  padding: 16,
-                }}>
-                <View style={{ width: 46, height: 46, borderRadius: 12, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' }}>
-                  {it.kind === 'letter' ? <LetterMark /> : <ReportMark />}
-                </View>
-                <View style={{ flex: 1 }}>
-                  <AppText style={[sans('600'), { fontSize: 15.5, color: colors.text }]}>{it.title}</AppText>
-                  <AppText style={[sans('400'), { fontSize: 13, color: colors.textMuted, marginTop: 2 }]}>{it.sub}</AppText>
-                </View>
-                <Svg width={9} height={16} viewBox="0 0 9 16" fill="none">
-                  <Path d="M1.5 1l6 7-6 7" stroke={colors.textSoft} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
-              </PressScale>
-            ))}
-          </ScrollView>
+          items.map((it, i) => (
+            <Tap
+              key={it.key}
+              onPress={it.go}
+              label={`${it.title}. ${it.sub}`}
+              style={[
+                { height: i ? ROW_H + 1 : ROW_H, paddingHorizontal: 2, flexDirection: 'row', alignItems: 'center', gap: 14 },
+                // a ruled list: the rule is the row's own top border, as `Log — Reports` draws it
+                i ? { borderTopWidth: 1, borderTopColor: mono.line } : null,
+              ]}>
+              <View style={{ flex: 1, gap: 2 }}>
+                <MonoText v="rowLabel">
+                  {it.title}
+                </MonoText>
+                {/* a dynamic line may ellipsise on a narrow phone; nothing else does (CRITIC C11) */}
+                <MonoText v="rowValue" numberOfLines={1}>
+                  {it.sub}
+                </MonoText>
+              </View>
+              <ChevronR color={mono.art} />
+            </Tap>
+          ))
         )}
-      </SafeAreaView>
-    </View>
-  );
-}
-
-function QuoteMark() {
-  return (
-    <AppText style={{ fontFamily: fonts.serifSharp, fontSize: 52, lineHeight: 40, color: 'rgba(29,28,26,0.18)' }}>{'“'}</AppText>
-  );
-}
-
-function LetterMark() {
-  return (
-    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none">
-      <Rect x={3} y={5} width={18} height={14} rx={2.4} stroke={colors.text} strokeWidth={1.8} />
-      <Path d="M4.5 7.5l7.5 5.5 7.5-5.5" stroke={colors.text} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-    </Svg>
-  );
-}
-
-function ReportMark() {
-  return (
-    <Svg width={24} height={22} viewBox="0 0 24 22" fill="none">
-      <Circle cx={17} cy={7} r={3.4} fill={colors.text} />
-      <Path d="M2 13c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0" stroke={colors.text} strokeWidth={1.8} strokeLinecap="round" />
-      <Path d="M2 17.5c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0" stroke={colors.text} strokeWidth={1.6} strokeLinecap="round" opacity={0.5} />
-    </Svg>
+      </ScrollRegion>
+      <NavBar left="back" onBack={back} />
+    </Screen>
   );
 }

@@ -1,0 +1,118 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> 
+  <div> position:absolute  left:24px  right:24px  top:108px
+    <div> width:100%  font-size:32px  font-weight:700  letter-spacing:-0.6px  line-height:38px  color:#F2F0EC  text-wrap:balance
+      · Your log
+  <div> position:absolute  left:16px  right:16px  top:164px
+    <div> height:44px  border-radius:22px  background:#1E1E1E  padding:4px  box-sizing:border-box  display:flex
+      <div> flex:1  height:36px  border-radius:18px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#111111  white-space:nowrap
+        · Urges
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Check-ins
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Reports
+  <div> position:absolute  left:24px  right:24px  top:236px  display:flex  flex-direction:column  align-items:center  text-align:center  gap:10px
+    <div> font-size:64px  font-weight:700  letter-spacing:-2.2px  line-height:67px  color:#F2F0EC  white-space:nowrap
+      · 3
+    <div> font-size:15px  font-weight:400  line-height:22px  color:#9B968E  text-align:center  white-space:nowrap
+      · Urges this week
+  <div> position:absolute  left:32px  right:32px  top:352px
+    <div> display:flex  justify-content:space-between
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:8px  height:8px  border-radius:4px  background:#2E2E2E
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · M
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:14px  font-weight:700  color:#111111
+            · 1
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · T
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:8px  height:8px  border-radius:4px  background:#2E2E2E
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · W
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:14px  font-weight:700  color:#111111
+            · 1
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · T
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:34px  height:34px  border-radius:17px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:14px  font-weight:700  color:#111111
+            · 1
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · F
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:8px  height:8px  border-radius:4px  background:#2E2E2E
+        <span> font-size:11px  font-weight:700  color:#5A574F
+          · S
+      <div> width:36px  display:flex  flex-direction:column  align-items:center  gap:10px
+        <div> height:36px  display:flex  align-items:center  justify-content:center
+          <div> width:8px  height:8px  border-radius:4px  background:#2E2E2E
+        <span> font-size:11px  font-weight:700  color:#F2F0EC
+          · S
+  <div> position:absolute  left:24px  right:24px  top:440px
+    <div> display:flex  flex-direction:column  gap:8px
+      <div> display:flex  flex-direction:column
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Fri, 9:05 pm
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · Strong
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Thu, 3:10 pm
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · Mild
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Tue, 11:40 pm
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · Intense
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Sun, 10:22 pm
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#F2F0EC  display:flex  align-items:center  gap:8px
+            <span> width:6px  height:6px  border-radius:3px  background:#F2F0EC  display:inline-block
+            · Slipped
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Wed, 12:05 am
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · Mild
+  <div> position:absolute  left:0  right:0  bottom:0  height:104px  display:flex  align-items:flex-start  justify-content:space-between  padding:14px 14px 0  box-sizing:border-box  z-index:8
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M4 12.5L13 4l9 8.5V21a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 4 21z"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Today
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <rect> width="16"  height="19"  x="5"  y="3.5"  rx="3"  fill="none"  stroke="#F2F0EC"  stroke-width="1.8"
+        <path> d="M9 9h8M9 13h8M9 17h5"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linecap="round"
+      <span> font-size:11.5px  font-weight:700  color:#F2F0EC
+        · Log
+    <div> width:60px  height:60px  border-radius:30px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  margin-top:-6px  cursor:pointer
+      <span> font-size:13px  font-weight:700  color:#111111
+        · SOS
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <path> d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Library
+    <div> display:flex  flex-direction:column  align-items:center  gap:4px  width:72px
+      <svg> viewBox="0 0 26 26"  width="26"  height="26"
+        <circle> cx="13"  cy="10"  r="6.5"  fill="none"  stroke="#9B968E"  stroke-width="1.8"
+        <path> d="M9 15.5L7 23l6-3 6 3-2-7.5"  fill="none"  stroke="#9B968E"  stroke-width="1.8"  stroke-linejoin="round"
+      <span> font-size:11.5px  font-weight:400  color:#9B968E
+        · Journey

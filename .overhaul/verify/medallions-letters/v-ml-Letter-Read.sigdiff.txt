@@ -1,0 +1,8 @@
+~ From VICI                                type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+# count P:16,112,361,590: design 1, app 2
+MISSING in app:  div | 16 | 112 | 361 | 485 | - | - | - | - | - | -
+~ Dear Sam,                                type: 22px/700/-0.3px/normal/rgb(242, 240, 236) → 22px/700/-0.3px/27px/rgb(242, 240, 236)
+~ I want to be present for the people I lo w: 274.7 → 277.7
+~ Save to Log                              type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Close                                    type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 19 design rows, 24 app rows; 5 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)

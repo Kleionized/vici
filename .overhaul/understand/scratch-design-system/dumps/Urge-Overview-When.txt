@@ -1,0 +1,97 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> height:40px  display:flex  align-items:center
+      <div> height:32px  border-radius:16px  background:#1E1E1E  display:inline-flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  white-space:nowrap  color:#F2F0EC
+        · Last 30 days
+  <div> position:absolute  left:24px  right:24px  top:108px
+    <div> width:100%  font-size:32px  font-weight:700  letter-spacing:-0.6px  line-height:38px  color:#F2F0EC  text-wrap:balance
+      · Urge overview
+  <div> position:absolute  left:16px  right:16px  top:164px
+    <div> height:44px  border-radius:22px  background:#1E1E1E  padding:4px  box-sizing:border-box  display:flex
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Overview
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Strength
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Mood
+      <div> flex:1  height:36px  border-radius:18px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#111111  white-space:nowrap
+        · Timing
+  <div> position:absolute  left:0  right:0  top:248px  display:flex  justify-content:center
+    <svg> viewBox="0 0 236 236"  width="236"  height="236"  overflow:visible
+      <circle> cx="118"  cy="118"  r="96"  fill="none"  stroke="#2E2E2E"  stroke-width="2"
+      <path> d="M118.0 32.0L118.0 22.0"  stroke="#9B968E"  stroke-width="2"  stroke-linecap="round"
+      <path> d="M141.3 31.1L142.8 25.3"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M163.0 40.1L166.0 34.9"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M181.6 54.4L185.9 50.1"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M195.9 73.0L201.1 70.0"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M204.9 94.7L210.7 93.2"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M204.0 118.0L214.0 118.0"  stroke="#9B968E"  stroke-width="2"  stroke-linecap="round"
+      <path> d="M204.9 141.3L210.7 142.8"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M195.9 163.0L201.1 166.0"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M181.6 181.6L185.9 185.9"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M163.0 195.9L166.0 201.1"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M141.3 204.9L142.8 210.7"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M118.0 204.0L118.0 214.0"  stroke="#9B968E"  stroke-width="2"  stroke-linecap="round"
+      <path> d="M94.7 204.9L93.2 210.7"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M73.0 195.9L70.0 201.1"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M54.4 181.6L50.1 185.9"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M40.1 163.0L34.9 166.0"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M31.1 141.3L25.3 142.8"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M32.0 118.0L22.0 118.0"  stroke="#9B968E"  stroke-width="2"  stroke-linecap="round"
+      <path> d="M31.1 94.7L25.3 93.2"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M40.1 73.0L34.9 70.0"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M54.4 54.4L50.1 50.1"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M73.0 40.1L70.0 34.9"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <path> d="M94.7 31.1L93.2 25.3"  stroke="#2E2E2E"  stroke-width="1.5"  stroke-linecap="round"
+      <circle> cx="130.5"  cy="22.8"  r="10"  fill="#F2F0EC"
+      <circle> cx="154.7"  cy="29.3"  r="7.5"  fill="#F2F0EC"
+      <circle> cx="41.8"  cy="176.4"  r="7.5"  fill="#F2F0EC"
+      <circle> cx="29.3"  cy="81.3"  r="7.5"  fill="#F2F0EC"
+      <circle> cx="59.6"  cy="41.8"  r="7.5"  fill="#F2F0EC"
+      <circle> cx="81.3"  cy="29.3"  r="7.5"  fill="#F2F0EC"
+      <circle> cx="105.5"  cy="22.8"  r="10"  fill="#F2F0EC"
+      <text> x="118.0"  y="8.0"  fill="#9B968E"  text-anchor="middle"  font-size="11"  font-weight="700"
+        · 12 am
+      <text> x="236.0"  y="122.0"  fill="#9B968E"  text-anchor="middle"  font-size="11"  font-weight="700"
+        · 6 am
+      <text> x="118.0"  y="238.0"  fill="#9B968E"  text-anchor="middle"  font-size="11"  font-weight="700"
+        · 12 pm
+      <text> x="0.0"  y="122.0"  fill="#9B968E"  text-anchor="middle"  font-size="11"  font-weight="700"
+        · 6 pm
+      <text> x="118"  y="120"  fill="#F2F0EC"  text-anchor="middle"  font-size="20"  font-weight="700"  letter-spacing="-0.4"
+        · 11 pm – 1 am
+      <text> x="118"  y="142"  fill="#9B968E"  text-anchor="middle"  font-size="12"  font-weight="600"
+        · Most urges
+  <div> position:absolute  left:24px  right:24px  top:540px
+    <div> display:flex  flex-direction:column
+      <div> display:flex  align-items:center  gap:14px  height:46px  padding:0 2px
+        <span> width:96px  font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Bedroom
+        <div> flex:1  display:flex  gap:6px  align-items:center
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+        <span> font-size:14px  font-weight:700  color:#9B968E
+          · 5
+      <div> display:flex  align-items:center  gap:14px  height:46px  padding:0 2px  border-top:1px solid #2E2E2E
+        <span> width:96px  font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Desk
+        <div> flex:1  display:flex  gap:6px  align-items:center
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+        <span> font-size:14px  font-weight:700  color:#9B968E
+          · 3
+      <div> display:flex  align-items:center  gap:14px  height:46px  padding:0 2px  border-top:1px solid #2E2E2E
+        <span> width:96px  font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+          · Bathroom
+        <div> flex:1  display:flex  gap:6px  align-items:center
+          <span> width:9px  height:9px  border-radius:50%  background:#F2F0EC  display:inline-block
+        <span> font-size:14px  font-weight:700  color:#9B968E
+          · 1

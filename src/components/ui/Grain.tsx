@@ -11,9 +11,10 @@ import { Image, View, type ImageStyle, type StyleProp } from 'react-native';
  * place in the app that reaches for it instead.
  */
 export function Grain({ source, opacity = 0.07, style }: { source: number; opacity?: number; style?: StyleProp<ImageStyle> }) {
-  // `pointerEvents` is not an Image prop, so the wrapper carries it.
+  // `pointerEvents` is not an Image prop, so the wrapper carries it — as a style:
+  // the prop form is deprecated on RN-web and warns on every frame.
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+    <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none' }}>
       <Image source={source} resizeMode="repeat" style={[{ width: '100%', height: '100%', opacity }, style]} />
     </View>
   );

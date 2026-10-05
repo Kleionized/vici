@@ -1,0 +1,8 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 256.3 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 41.5 | 313 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Fresh sheets. A clear desk. A photograph. A book you actually want to read.
+div | 41.5 | 413 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Your guitar on a stand. A notebook where the old clutter was. Open the curtains.
+div | 128.4 | 513 | 136.2 | 26 | - | - | - | - | 17px/400/normal/26px/rgb(29, 28, 26) | Nothing dramatic.

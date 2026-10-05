@@ -1,0 +1,37 @@
+await __sleep(900);
+const any = async (labels) => { let last; for (const l of labels) { try { await tap(l); return l; } catch (e) { last = e; } } throw last; };
+const seen = async (needles, ms = 9000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { const t = __txt(); if (needles.some((n) => t.includes(n))) return; await __sleep(90); } throw new Error('never saw ' + JSON.stringify(needles) + ' :: ' + __txt().slice(0, 200)); };
+const only = async (label) => {
+  const chips = [...document.querySelectorAll('[role="checkbox"],[role="radio"]')];
+  for (const c of chips) if (c.getAttribute('aria-checked') === 'true' && c.textContent.trim() !== label) { __fire(c); await __sleep(200); }
+  const me = chips.find((c) => c.textContent.trim() === label);
+  if (!me || me.getAttribute('aria-checked') !== 'true') await tap(label);
+};
+await seen(['The first 90 seconds.', 'The First 90 Seconds']);
+await any(['Start', 'Start the interrupt']);
+await seen(['How strong is it right now?']);
+await tap('Continue');
+await seen(['Where are you right now?']);
+await only("Somewhere private");
+await tap('Continue');
+await seen(['Open the door and move.']);
+await any(['Continue', 'Door is open']);
+await seen(['Move I of 3', 'Stand up.']);
+await any(['Continue', 'I’m up']);
+await seen(['Move II of 3', 'Leave the room.']);
+await any(['Continue', 'I’ve left']);
+await seen(['Move III of 3', 'Put the phone away.']);
+await any(['Continue', 'Phone is away']);
+await seen(['What’s feeding it right now?']);
+await only('Doomscrolling');
+await tap('Continue');
+await seen(['Get off the feed.']);
+await tap('Continue');
+await seen(['What’s underneath it?']);
+await only("Restless");
+await tap('Continue');
+await seen(["Move."]);
+await tap('Give me another');
+await seen(["Wake yourself up."]);
+await __sleep(300);
+return __txt().slice(0, 120);

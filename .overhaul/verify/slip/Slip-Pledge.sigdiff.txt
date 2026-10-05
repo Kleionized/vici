@@ -1,0 +1,7 @@
+MISSING in app:  svg | 25.7 | 482.9 | 341.5 | 208.6 | - | - | - | - | - | -
+MISSING in app:  div | 24 | 136 | 345 | 364 | - | - | - | - | - | -
+~ Your pledge                              type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Jerry                                    y: 415 → 437   w: 297 → 58.8   h: 65 → 34   type: 28px/700i/normal/normal/rgb(242, 240, 236) → 28px/700i/normal/34px/rgb(242, 240, 236)
+~ Sign it again                            type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Read my pledge                           type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 29 design rows, 40 app rows; 4 differing, 2 missing, 9 extra, 0 sub-0.25pt rounding (use --all to list extras)

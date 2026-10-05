@@ -1,0 +1,9 @@
+MISSING in app:  svg | 6.9 | 512.7 | 379.2 | 231.6 | - | - | - | - | - | -
+# count P:222,582,17,27: design 2, app 3
+MISSING in app:  div | 24 | 136 | 345 | 386 | - | - | - | - | - | -
+~ No                                       type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ A little                                 type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ Yes                                      type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ I’m already watching again               type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 43 design rows, 52 app rows; 5 differing, 2 missing, 6 extra, 1 sub-0.25pt rounding (use --all to list extras)

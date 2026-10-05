@@ -1,0 +1,17 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 2
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 193.2 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 281.5 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Part 3
+div | 32 | 309.5 | 329 | 31 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Give it an ending
+div | 32 | 368.5 | 329 | 56 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | Give this job an ending. Twenty minutes is enough for a first pass.
+div | 32 | 446.5 | 329 | 112 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | You can spend a whole evening comparing blockers, organising folders, and calling it preparation. Stop when one change is in place. Then use the rest of the evening.
+div | 0 | 756 | 393 | 44 | - | - | - | - | - | -
+div | 174.5 | 756 | 44 | 44 | - | 22px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px | - | -
+svg | 189.5 | 771 | 14 | 14 | - | - | - | - | - | -
+path | 194.5 | 773 | 5 | 10 | - | - | - | - | - | -

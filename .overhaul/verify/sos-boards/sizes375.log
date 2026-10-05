@@ -1,0 +1,33 @@
+SOS-Loc-Bed 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x166@0,186 op1 | Get out of bed:1 Both feet on t:2
+SOS-Loc-Bathroom 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x204@0,187 op1 | Leave the bath:1 Finish what yo:2
+SOS-Loc-Home-Alone 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x162@0,208 op1 | Move somewhere:1 Turn the light:2
+SOS-Loc-Private-Room 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x204@0,187 op1 | Open the door :1 Get away from :2
+SOS-Loc-Work 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x164@0,188 op1 | Stay where peo:1 Put your phone:2
+SOS-Loc-Public 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x164@0,188 op1 | Stay here.:1 You’re in a sa:2
+SOS-Loc-Elsewhere 375x667 | stack 418-529 | pillTop 561.0 | clear 32.0 | ghost - | hero 375x172@0,180 op1 | Get somewhere
+:2 Move somewhere:1
+SOS-Feel-Turned-On 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x200@0,142 op1 | Let it pass.:1 You don’t have:2
+SOS-Feel-Bored 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x187@0,142 op1 | Do something p:1 Walk, train, t:2
+SOS-Feel-Lonely 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x133@0,216 op1 | Talk to someon:1 Send one messa:2
+SOS-Feel-Stressed 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x146@0,201 op1 | Take ten minut:1 Step away from:2
+SOS-Feel-Anxious 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x180@0,167 op1 | Give yourself :1 Pick one simpl:2
+SOS-Feel-Angry 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x177@0,152 op1 | Use the energy:1 Walk fast, tra:2
+SOS-Feel-Low 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x162@0,185 op1 | Get out of the:1 Change clothes:2
+SOS-Feel-Rejected 375x667 | stack 359-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x175@0,140 op1 | Leave it alone:2 Don’t check th:2
+SOS-Feel-Tired 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x180@0,167 op1 | Make tonight e:1 Put the phone :2
+SOS-Feel-Restless 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x124@0,205 op1 | Move.:1 Walk, take the:2
+SOS-Feel-Numb 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x184@0,149 op1 | Wake yourself :1 Wash your face:2
+SOS-Feel-Ashamed 375x667 | stack 395-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x173@0,174 op1 | Stop punishing:1 Put the phone :2
+SOS-Feel-Unknown 375x667 | stack 371-494 | pillTop 513.0 | clear 19.0 | ghost 589 | hero 375x169@0,146 op1 | Move first.:1 You don’t need:3
+SOS-Trig-Content 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x172@0,186 op1 | Close it.:1 Don’t look aga:2
+SOS-Trig-Doomscroll 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x182@0,188 op1 | Get off the fe:1 Close the app :2
+SOS-Trig-Fantasy 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x165@0,186 op1 | Stop adding to:1 Don’t keep the:2
+SOS-Trig-Late-Phone 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x139@0,213 op1 | Put the phone :1 Charge it away:2
+SOS-Trig-Habit 375x667 | stack 407-542 | pillTop 561.0 | clear 19.0 | ghost - | hero 375x172@0,169 op1 | Change what
+ha:2 Do something d:2
+SOS-Trig-Cant-Sleep 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x166@0,186 op1 | Get out of bed:1 Leave the bed :2
+SOS-Trig-Argument 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x139@0,213 op1 | Don’t reply ye:1 Stop rereading:2
+SOS-Trig-Rejection 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x175@0,199 op1 | Stop checking.:1 No profile che:2
+SOS-Trig-Alone 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x204@0,187 op1 | Leave the room:1 Move somewhere:2
+SOS-Trig-Unknown 375x667 | stack 418-517 | pillTop 561.0 | clear 44.0 | ghost - | hero 375x175@0,199 op1 | Put the phone :1 Move somewhere:2
+SOS-Challenge 375x667 | stack 207-470 | pillTop 513.0 | clear 43.0 | ghost 589 | hero NONE | Break the isol:1 Rejection make:2 The challenge:1 Send one messa:3

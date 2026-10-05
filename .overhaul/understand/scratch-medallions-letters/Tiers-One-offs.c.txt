@@ -1,0 +1,81 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> 
+  <div> position:absolute  left:24px  right:24px  top:108px
+    <div> width:100%  font-size:32px  font-weight:700  letter-spacing:-0.6px  line-height:38px  color:#F2F0EC  text-wrap:balance
+      · Earned once
+  <div> position:absolute  left:24px  right:24px  top:160px  display:flex  flex-direction:column  gap:20px
+    <div> width:100%  font-size:15px  font-weight:400  line-height:22px  color:#B5B0A8  text-wrap:pretty
+      · One tier. Kept for good.
+  <div> position:absolute  left:32px  right:32px  top:240px  display:grid  grid-template-columns:1fr 1fr  row-gap:44px  column-gap:16px
+    <div> display:flex  flex-direction:column  align-items:center  text-align:center  gap:12px
+      <svg> viewBox="0 0 64 64"  width="84"  height="84"  flex-shrink:0  display:block
+        <circle> cx="32"  cy="32"  r="30"  fill="#F2F0EC"
+        <g> fill="#0D0D0D"  fill-opacity="0.3"
+          <circle>×40 r="0.7" first=(60.1,32.0) x[3.9..60.1] y[3.9..60.1]
+        <circle> cx="32"  cy="32"  r="25.5"  fill="none"  stroke="#0D0D0D"  stroke-width="1.1"  stroke-opacity="0.5"
+        <path> d="M23 42V31a9 9 0 0 1 18 0v11"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M19 42h26"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linecap="round"
+      <div> display:flex  flex-direction:column  gap:3px
+        <span> font-size:17px  font-weight:700  letter-spacing:-0.2px  color:#F2F0EC  white-space:nowrap
+          · Veni
+        <span> font-size:13px  font-weight:400  line-height:18px  color:#9B968E  white-space:nowrap
+          · Finished onboarding
+        <span> font-size:12px  font-weight:700  color:#B5B0A8  white-space:nowrap  margin-top:2px
+          · Jun 9
+    <div> display:flex  flex-direction:column  align-items:center  text-align:center  gap:12px
+      <svg> viewBox="0 0 64 64"  width="84"  height="84"  flex-shrink:0  display:block
+        <circle> cx="32"  cy="32"  r="30"  fill="#F2F0EC"
+        <g> fill="#0D0D0D"  fill-opacity="0.3"
+          <circle>×40 r="0.7" first=(60.1,32.0) x[3.9..60.1] y[3.9..60.1]
+        <circle> cx="32"  cy="32"  r="25.5"  fill="none"  stroke="#0D0D0D"  stroke-width="1.1"  stroke-opacity="0.5"
+        <path> d="M24.5 39a7.5 7.5 0 0 1 15 0z"  fill="#0D0D0D"
+        <path> d="M22.13 35.41L18.37 34.04"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+        <path> d="M25.98 30.4L23.68 27.12"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+        <path> d="M32 28.5L32 24.5"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+        <path> d="M38.02 30.4L40.32 27.12"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+        <path> d="M41.87 35.41L45.63 34.04"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+        <path> d="M17 39h30"  stroke="#0D0D0D"  stroke-width="2.4"  stroke-linecap="round"
+      <div> display:flex  flex-direction:column  gap:3px
+        <span> font-size:17px  font-weight:700  letter-spacing:-0.2px  color:#F2F0EC  white-space:nowrap
+          · First light
+        <span> font-size:13px  font-weight:400  line-height:18px  color:#9B968E  white-space:nowrap
+          · The first check-in
+        <span> font-size:12px  font-weight:700  color:#B5B0A8  white-space:nowrap  margin-top:2px
+          · Jun 9
+    <div> display:flex  flex-direction:column  align-items:center  text-align:center  gap:12px
+      <svg> viewBox="0 0 64 64"  width="84"  height="84"  flex-shrink:0  display:block
+        <circle> cx="32"  cy="32"  r="30"  fill="#F2F0EC"
+        <g> fill="#0D0D0D"  fill-opacity="0.3"
+          <circle>×40 r="0.7" first=(60.1,32.0) x[3.9..60.1] y[3.9..60.1]
+        <circle> cx="32"  cy="32"  r="25.5"  fill="none"  stroke="#0D0D0D"  stroke-width="1.1"  stroke-opacity="0.5"
+        <path> d="M27.5 25v-3a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5v3"  fill="none"  stroke="#0D0D0D"  stroke-width="2.4"
+        <rect> width="25"  height="18.5"  x="19.5"  y="25"  rx="2.6"  fill="#0D0D0D"
+        <path> d="M23.5 31.5h17M23.5 36.5h17"  stroke="#F2F0EC"  stroke-width="1.8"  stroke-linecap="round"
+      <div> display:flex  flex-direction:column  gap:3px
+        <span> font-size:17px  font-weight:700  letter-spacing:-0.2px  color:#F2F0EC  white-space:nowrap
+          · Black Box
+        <span> font-size:13px  font-weight:400  line-height:18px  color:#9B968E  white-space:nowrap
+          · First slip logged
+        <span> font-size:12px  font-weight:700  color:#B5B0A8  white-space:nowrap  margin-top:2px
+          · Jul 20
+    <div> display:flex  flex-direction:column  align-items:center  text-align:center  gap:12px
+      <svg> viewBox="0 0 64 64"  width="84"  height="84"  flex-shrink:0  display:block  opacity:0.32
+        <circle> cx="32"  cy="32"  r="30"  fill="#F2F0EC"
+        <g> fill="#0D0D0D"  fill-opacity="0.3"
+          <circle>×40 r="0.7" first=(60.1,32.0) x[3.9..60.1] y[3.9..60.1]
+        <circle> cx="32"  cy="32"  r="25.5"  fill="none"  stroke="#0D0D0D"  stroke-width="1.1"  stroke-opacity="0.5"
+        <path> d="M40.6 25.98A10.5 10.5 0 1 1 27.56 22.48"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linecap="round"
+        <path> d="M31.37 20.71L25.14 19.19L28.53 26.44z"  fill="#0D0D0D"  stroke="#0D0D0D"  stroke-width="1.2"  stroke-linejoin="round"
+        <circle> cx="32"  cy="32"  r="2.6"  fill="#0D0D0D"
+      <div> display:flex  flex-direction:column  gap:3px
+        <span> font-size:17px  font-weight:700  letter-spacing:-0.2px  color:#9B968E  white-space:nowrap
+          · Return
+        <span> font-size:13px  font-weight:400  line-height:18px  color:#9B968E  white-space:nowrap
+          · Back after 7+ days away
+        <span> font-size:12px  font-weight:700  color:#5A574F  white-space:nowrap  margin-top:2px
+          · Not yet

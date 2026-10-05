@@ -1,0 +1,43 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Ten minutes with someone
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 371 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+circle | 37.8 | 238.8 | 5.7 | 5.7 | - | - | - | - | - | -
+path | 36.1 | 247 | 9.2 | 4.6 | - | - | - | - | - | -
+circle | 46.1 | 240.1 | 4.6 | 4.6 | - | - | - | - | - | -
+path | 47.3 | 247.8 | 4.8 | 3.8 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Someone nearby
+div | 78 | 249 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Eat with them, walk with them, sit in a common area, attend a class or club, or stay for a conversation instead of leaving immediately.
+div | 24 | 328 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 328 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 337 | 22 | 22 | - | - | - | - | - | -
+path | 36 | 341.2 | 14.8 | 14.8 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | People far away
+div | 78 | 352 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Call someone. If you text, ask a question, suggest a call, or make a plan that gives them something to answer.
+div | 24 | 431 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 431 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 440 | 22 | 22 | - | - | - | - | - | -
+rect | 38 | 445 | 12.1 | 13.8 | - | - | - | - | - | -
+path | 41.3 | 448.6 | 5.5 | 10.1 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | No close person comes to mind
+div | 78 | 455 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Go to a repeated social setting such as a sports session, class, club, study space, workplace common area, or regular cafe.
+div | 24 | 534 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 534 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 543 | 22 | 22 | - | - | - | - | - | -
+circle | 36.3 | 546.3 | 15.4 | 15.4 | - | - | - | - | - | -
+path | 44 | 549.8 | 2.9 | 6.2 | - | - | - | - | - | -
+div | 78 | 534 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 534 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Busy day
+div | 78 | 558 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use a short window: eat lunch with someone, walk with a colleague, or make a 10-minute call.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

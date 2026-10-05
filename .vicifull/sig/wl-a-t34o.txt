@@ -1,0 +1,64 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | One route, one device
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 428 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+circle | 37 | 238 | 11 | 11 | - | - | - | - | - | -
+path | 46.6 | 247.6 | 5.1 | 5.1 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Saved shortcut
+div | 78 | 249 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Delete one porn bookmark, saved file, stored login, open tab group, secondary account, or another saved way you have used to get there quickly.
+div | 24 | 347 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 347 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 356 | 22 | 22 | - | - | - | - | - | -
+rect | 36.8 | 359.9 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 45.2 | 359.9 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 36.8 | 368.2 | 5.9 | 5.9 | - | - | - | - | - | -
+rect | 45.2 | 368.2 | 5.9 | 5.9 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 347 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Feed or account
+div | 78 | 371 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | If recommendations are the problem, unfollow, mute, or log out of the account that keeps leading you there.
+div | 24 | 450 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 450 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 459 | 22 | 22 | - | - | - | - | - | -
+path | 36.8 | 463 | 14.3 | 14.2 | - | - | - | - | - | -
+div | 78 | 450 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 450 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Physical change
+div | 78 | 474 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Move the phone charger, laptop, or tablet away from the bed, bathroom, or private place where you usually use porn.
+div | 24 | 553 | 345 | 100 | - | - | - | - | - | -
+div | 24 | 553 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 562 | 22 | 22 | - | - | - | - | - | -
+path | 37.7 | 566.6 | 11.7 | 4.6 | - | - | - | - | - | -
+path | 46 | 565.7 | 3.7 | 3.7 | - | - | - | - | - | -
+path | 38.6 | 574.8 | 11.7 | 4.6 | - | - | - | - | - | -
+path | 38.3 | 576.5 | 3.7 | 3.7 | - | - | - | - | - | -
+div | 78 | 553 | 291 | 100 | - | - | - | - | - | -
+div | 78 | 553 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Nothing obvious to delete
+div | 78 | 577 | 291 | 76 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Skip the digital step and make a second physical change instead, such as putting the laptop in a bag or moving the tablet to a shared room.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

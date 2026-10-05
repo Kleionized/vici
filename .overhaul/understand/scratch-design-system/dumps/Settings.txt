@@ -1,0 +1,94 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · Settings
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer  font-size:15px  font-weight:700  color:#F2F0EC
+  <div> position:absolute  left:24px  right:24px  top:120px  display:flex  flex-direction:column  gap:18px
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Reminders
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Morning check-in
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · 8:00 AM
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Night check-in
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · 9:30 PM
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Weekly report
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · Every Sunday
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Anchors
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Your vow
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Your letter
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · Opens Week XII
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Privacy
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · App lock
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · Face ID
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Data &amp; privacy
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> display:flex  flex-direction:column  gap:10px
+      <div> width:100%  white-space:nowrap  font-size:13px  font-weight:700  color:#9B968E
+        · Account
+      <div> border-radius:20px  background:#1E1E1E  overflow:hidden
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Edit profile
+          <div> display:flex  align-items:center  gap:10px
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> display:flex  align-items:center  justify-content:space-between  gap:12px  height:54px  padding:0 18px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Manage subscription
+          <div> display:flex  align-items:center  gap:10px
+            <span> font-size:14px  font-weight:700  color:#9B968E  white-space:nowrap
+              · Yearly
+            <svg> viewBox="0 0 14 14"  width="14"  height="14"
+              <path> d="M5 2l5 5-5 5"  fill="none"  stroke="#5A574F"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:0  right:0  bottom:48px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Sign out

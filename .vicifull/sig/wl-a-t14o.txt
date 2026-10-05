@@ -1,0 +1,54 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Plan the bad days now
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 390 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 78.5 | - | - | - | - | - | -
+div | 24 | 225 | 36 | 36 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 31 | 232 | 22 | 22 | - | - | - | - | - | -
+rect | 34.8 | 237.5 | 14.3 | 12.6 | - | - | - | - | - | -
+path | 34.8 | 235.5 | 14.3 | 5.9 | - | - | - | - | - | -
+circle | 38.2 | 244.2 | 2.4 | 2.4 | - | - | - | - | - | -
+div | 74 | 225 | 295 | 78.5 | - | - | - | - | - | -
+div | 74 | 225 | 295 | 20 | - | - | - | - | 15px/600/normal/20px/rgb(29, 28, 26) | Missing a day
+div | 74 | 248 | 295 | 55.5 | - | - | - | - | 13px/400/normal/18.5px/rgb(118, 115, 112) | Write when and how you will resume. Do not plan to restart from Day 1 or catch up several lessons at once.
+div | 24 | 319.5 | 345 | 97 | - | - | - | - | - | -
+div | 24 | 319.5 | 36 | 36 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 31 | 326.5 | 22 | 22 | - | - | - | - | - | -
+path | 36.7 | 334.9 | 11.9 | 8.8 | - | - | - | - | - | -
+path | 36.5 | 331.6 | 3.3 | 6.6 | - | - | - | - | - | -
+div | 74 | 319.5 | 295 | 97 | - | - | - | - | - | -
+div | 74 | 319.5 | 295 | 20 | - | - | - | - | 15px/600/normal/20px/rgb(29, 28, 26) | Relapsing
+div | 74 | 342.5 | 295 | 74 | - | - | - | - | 13px/400/normal/18.5px/rgb(118, 115, 112) | Write what you will do afterwards. Include the Lesson 10 steps and one ordinary part of the day that still happens, such as the next meal, class, work block, training session, or bedtime.
+div | 24 | 432.5 | 345 | 78.5 | - | - | - | - | - | -
+div | 24 | 432.5 | 36 | 36 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 31 | 439.5 | 22 | 22 | - | - | - | - | - | -
+path | 33.1 | 444 | 17.2 | 11.4 | - | - | - | - | - | -
+div | 74 | 432.5 | 295 | 78.5 | - | - | - | - | - | -
+div | 74 | 432.5 | 295 | 20 | - | - | - | - | 15px/600/normal/20px/rgb(29, 28, 26) | Losing motivation
+div | 74 | 455.5 | 295 | 55.5 | - | - | - | - | 13px/400/normal/18.5px/rgb(118, 115, 112) | Write one thing you will still do, such as keeping the phone out of bed, going outside, going to bed on time, or contacting someone.
+div | 24 | 561 | 345 | 54 | - | - | - | - | 13px/400/normal/18px/rgb(118, 115, 112) | Pin the note somewhere easy to find. The task is done when you know what you will do in all three situations without waiting to feel motivated.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

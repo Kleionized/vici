@@ -1,0 +1,28 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 187.7 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 634 | - | - | - | - | - | -
+div | 41.5 | 140 | 310 | 96 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Is there an environment that regularly pushes you towards your worst days?
+div | 104.8 | 276 | 183.3 | 18 | - | - | - | - | 15px/500/normal/normal/rgb(139, 136, 130) | Pick the one that fits best.
+div | 38 | 334 | 317 | 396 | - | - | - | - | - | -
+div | 38 | 334 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(29, 28, 26) 0px 0px 0px 2px, rgba(40, 38, 32, 0.08) 0px 4px 10px 0px | - | -
+div | 56 | 351 | 22 | 22 | - | 50% | - | - | - | -
+span | 92 | 351.5 | 47.3 | 21 | - | - | - | - | 17px/600/normal/21px/rgb(29, 28, 26) | Home
+div | 38 | 402 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 419 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 419.5 | 106.6 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | A relationship
+div | 38 | 470 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 487 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 487.5 | 111.4 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | A friend group
+div | 38 | 538 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 555 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 555.5 | 201.3 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Work, school or university
+div | 38 | 606 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 623 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 623.5 | 123 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | An online space
+div | 38 | 674 | 317 | 56 | rgb(255, 255, 255) | 16px | - | rgb(228, 226, 219) 0px 0px 0px 1.5px inset | - | -
+div | 56 | 691 | 22 | 22 | - | 50% | - | rgb(201, 199, 192) 0px 0px 0px 1.6px inset | - | -
+span | 92 | 691.5 | 128.4 | 21 | - | - | - | - | 17px/500/normal/21px/rgb(29, 28, 26) | Somewhere else
+div | 16 | 770 | 361 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 159.7 | 786 | 73.7 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Continue

@@ -1,165 +1,136 @@
 # 02 · Login
 
-* **Design frame** `Email-Login/Login` — `.uifinal1/final/Email-Login/Login.html` (canvas note `02 · Login`)
-* **App file** `src/app/(auth)/sign-in.tsx` (`mode === 'email'` board) + `src/components/auth/kit.tsx` (`EnvelopeMark`, `PaperAuthGlow`)
-* **Frame** 393 × 852, `background: #F4F3F0`
+* **Design frame** `Email-Login/Login` — `.vicifull/final/Email-Login/Login.html` (canvas note `02 · Login`)
+* **Diff since the last drop** `.vicifull/fdiff/Login.diff` — 293 lines
+* **App files** `src/app/(auth)/sign-in.tsx` + `src/components/auth/kit.tsx` (`AuthDoor`, `AuthNightField`, `AuthMark`)
+* **Frame** 393 × 852, `background: linear-gradient(180deg, #131313 0%, #1D1C1A 55%, #2E2C29 100%)`
 
-New in this drop. It replaces the two frames the previous bundle had here — `Login Empty`
-and `Login Typing` — with a single landing board. Design y values below are the canvas's;
-the app's y is **design y − 54** (D009).
+The board turned around in this drop. The previous bundle drew it on warm paper
+(`#F4F3F0`) under a 240 × 190 envelope-and-letter mark; this one drops the envelope
+entirely, puts the board on `01 · Splash`'s night field, and hangs the laurel over it.
+**Every colour on the board inverted** and the mark was replaced — nothing about the old
+composition survives except the geometry of the controls, which did not move by a pixel.
 
-## Field
+The bundle also adds `03 · Welcome Back`, the same composition with four strings changed.
+The two are one component (`AuthDoor`) with a `variant`; see `specs/03-welcome-back.md`.
+
+Design y values below are the canvas's; the app's y is **design y − 54** (D009).
+
+## Field — identical on both doors
 
 | Element | Declaration |
 | --- | --- |
-| frame | `background: #F4F3F0`, `font-family: -apple-system,'SF Pro Text',system-ui,'Helvetica Neue',sans-serif`, `-webkit-font-smoothing: antialiased` |
+| frame | `linear-gradient(180deg, #131313 0%, #1D1C1A 55%, #2E2C29 100%)`, `font-family: -apple-system,'SF Pro Text',system-ui,'Helvetica Neue',sans-serif`, `-webkit-font-smoothing: antialiased` |
 | art layer | `position:absolute; inset:0; overflow:hidden; pointer-events:none` |
-| top wash | `left:-15%; top:-190px; width:130%; height:300px; border-radius:50%` · `radial-gradient(closest-side, rgba(180,170,150,0.40), rgba(180,170,150,0.12) 55%, rgba(180,170,150,0) 75%)` · `filter: blur(5px)` |
-| bottom wash | `left:-60px; top:620px; width:420px; height:260px` · `radial-gradient(closest-side, rgba(180,170,150,0.22), rgba(180,170,150,0) 72%)` · `filter: blur(8px)` |
+| warm wash | `left:82 top:120 230×230 radius:50%` · `radial-gradient(closest-side, rgba(226,190,140,0.13), rgba(226,190,140,0) 72%)` · `blur(6px)` |
+| low wash | `left:-60 top:620 420×260 radius:50%` · `radial-gradient(closest-side, rgba(120,115,105,0.14), rgba(120,115,105,0) 72%)` · `blur(8px)` |
+| star 1 | `left:96 top:110 2×2 radius:50% rgba(160,155,145,0.25)` |
+| star 2 | `left:318 top:168 2×2 rgba(160,155,145,0.20)` |
+| star 3 | `left:256 top:96 2×2 rgba(160,155,145,0.18)` |
+| star 4 | `left:44 top:236 2×2 rgba(160,155,145,0.16)` |
 
-`rgb(180,170,150)` = `#B4AA96`.
+`rgb(226,190,140)` = `#E2BE8C`, `rgb(120,115,105)` = `#787369`, `rgb(160,155,145)` = `#A09B91`.
+No grain: unlike `01 · Splash` (0.10) and the funnel (0.12), neither door draws a noise layer.
 
-## The envelope mark — 240 × 190, centred
+The field paints under the status bar, so those y's are **not** reduced by 54. The low
+wash is anchored to the bottom edge in the app (design `top:620` + 260 tall in an 852
+frame → `bottom: -28`) so it stays with the edge on a taller screen (D026).
 
-Container: `left:50%; top:150px; width:240px; height:190px; margin-left:-120px`, with an inner
-`position:absolute; inset:0; overflow:hidden` clip. **All offsets below are relative to that
-240 × 190 box**, and the box is 40 wider and 20 taller than the 200 × 170 block the previous
-bundle used — the whole mark is redrawn, not nudged.
+## The mark — 150 × 150, centred
+
+Container `left:50%; top:170px; width:150px; height:150px; margin-left:-75px`. Offsets below
+are relative to that box; the box has no `overflow:hidden`, so the wash overflows it.
 
 | # | Part | Declaration |
 | --- | --- | --- |
-| 1 | warm bloom | `left:70 top:20 130×130 radius:50%` · `radial-gradient(closest-side, rgba(226,186,120,0.40), rgba(226,186,120,0) 74%)` · `blur(4px)` |
-| 2 | moon, back | `left:34 top:10 30×30 radius:50% background:#DCDED8` |
-| 3 | moon, front | `left:26 top:4 30×30 radius:50% background:#F4F3F0` |
-| 4 | star R | `left:216 top:26 2×2 radius:50% background:rgba(200,225,235,0.4)` |
-| 5 | star L | `left:14 top:64 2×2 radius:50% background:rgba(200,225,235,0.3)` |
-| 6 | letter page | `left:76 top:34 104×80 radius:5px background:#FFFFFF` · `box-shadow: 0 0 0 1px rgba(0,0,0,0.06)` |
-| 7 | rule 1 | `left:90 top:50 50×5 radius:3px background:#E0DFDA` |
-| 8 | rule 2 | `left:90 top:63 66×5 radius:3px #E0DFDA` |
-| 9 | rule 3 | `left:90 top:76 42×5 radius:3px #E0DFDA` |
-| 10 | envelope body | `left:52 top:92 152×76 radius:8px background:#E4E3DE` |
-| 11 | envelope face | `left:58 top:98 140×64 radius:5px` · `linear-gradient(180deg, #F0EFEA, #E9E7E0)` |
-| 12 | flap | `<svg width=140 height=42 viewBox="0 0 140 42">` at `left:58 top:98` · `<path d="M2 2 L70 40 L138 2" fill=none stroke=#D6D5D0 stroke-width=2 stroke-linejoin=round>` |
-| 13 | seal | `left:119 top:128 18×18 radius:50% background:#E9D2A4` |
-| 14 | seal ring | `left:124 top:133 8×8 radius:50%` · `box-shadow: inset 0 0 0 1.5px rgba(122,103,67,0.45)` |
-| 15 | ground shadow | `left:44 top:172 168×13 radius:50% background:rgba(0,0,0,0.10)` · `blur(5px)` |
+| 1 | halo | `left:50% top:50% 190×190 margin:-95px 0 0 -95px radius:50%` · `radial-gradient(closest-side, rgba(226,186,120,0.16), rgba(226,186,120,0) 72%)` · `blur(5px)` |
+| 2 | laurel | `<img src="laurel-mark.webp" alt="VICI" width=96 height=96>` · `left:50% top:50% margin:-48px 0 0 -48px` · `opacity:0.95` · `filter: brightness(0) invert(1)` |
 
-`rgb(226,186,120)` = `#E2BA78`. `rgb(200,225,235)` = `#C8E1EB`. `rgb(122,103,67)` = `#7A6743`.
+`rgb(226,186,120)` = `#E2BA78` — a warmer amber than the field's wash, and a different value.
 
-Changes from the mark the app currently draws: the block grows 200×170 → 240×190; the
-rotated 72×72 tile behind the page is **gone**, replaced by the two overlapping 30×30 moon
-discs at top-left; two 2×2 stars are added; the signature squiggle on the page is **gone**;
-the envelope gains a separate `#E4E3DE` body behind a gradient face; the flap becomes a
-stroked chevron rather than two rotated bars; the seal moves and shrinks 22 → 18 (ring 10 → 8).
+**The `<img>` has no `object-fit`.** The asset is 280 × 252, so the browser stretches it into
+the 96 × 96 box and the laurel on this frame is 11% taller than its own aspect. The app
+therefore uses `contentFit="fill"`; `contain` draws a 96 × 86 mark the frame does not.
 
-## Type and controls
+## The board
 
-| y (design) | y (app) | Element | Declaration |
-| --- | --- | --- | --- |
-| 380 | 326 | title | `left:24` · `font-size:27px; font-weight:600; letter-spacing:-0.2px; color:#1D1C1A` · **"Welcome to VICI."** |
-| 420 | 366 | subtitle | `left:24` · `font-size:14.5px; font-weight:400; color:#8B8882` · **"Sign in or create an account to keep your plan and progress."** |
-| 472 | 418 | Apple pill | `left:24 right:24 height:54 border-radius:27px background:#131313` · flex row, `align-items:center; justify-content:center; gap:9px; cursor:pointer` |
-| — | — | ↳ mark | `<svg width=15 height=18 viewBox="0 0 384 512">`, `fill:#FFFFFF` |
-| — | — | ↳ label | `font-size:16px; font-weight:600; color:#FFFFFF` · "Continue with Apple" |
-| 538 | 484 | Google pill | `left:24 right:24 height:54 radius:27px background:#FFFFFF` · `box-shadow: 0 0 0 1px rgba(0,0,0,0.12)` · `gap:10px` |
-| — | — | ↳ mark | `<svg width=17 height=17 viewBox="0 0 48 48">` — four paths `#EA4335 #4285F4 #FBBC05 #34A853` |
-| — | — | ↳ label | `font-size:16px; font-weight:600; color:#1D1C1A` · "Continue with Google" |
-| 614 | 560 | or-rule | `left:24 right:24` flex row `align-items:center; gap:14px`; two `flex:1; height:1px; background:rgba(0,0,0,0.1)` rules around `font-size:12.5px; font-weight:500; color:#8B8882` · "or" |
-| 642 | 588 | email row | `left:24 right:24 height:56 box-sizing:border-box radius:16px background:#FFFFFF` · `box-shadow: 0 0 0 1px rgba(0,0,0,0.09)` · flex row `align-items:center; gap:12px; padding:0 8px 0 20px` |
-| — | — | ↳ label | `flex:1; font-size:16.5px; font-weight:400; color:rgba(90,88,82,0.5)` · "Continue with email" |
-| — | — | ↳ button | `40×40 radius:50% background:#131313`, centred, `flex-shrink:0; cursor:pointer` |
-| — | — | ↳ arrow | `<svg width=15 height=13 viewBox="0 0 16 14">` · `d="M1.5 7h12M9 2.5L13.5 7 9 11.5" stroke=#FFFFFF stroke-width=2 fill=none stroke-linecap=round stroke-linejoin=round` |
-| 740 | 686 | account row | `left:0 right:0; text-align:center; font-size:13.5px; font-weight:400; color:#8B8882` · "Already have an account? " + `<span font-weight:600 color:#1D1C1A cursor:pointer>` **"Sign in"** |
-| 818 | 764 | legal | `left:0 right:0; text-align:center; font-size:12px; color:#8B8882` · "Terms &nbsp;·&nbsp; Privacy" |
-
-No `line-height` is declared anywhere on this frame, so every run uses the platform default
-for its size. No `text-transform`, no `max-lines`, no truncation. The status-bar glyphs here
-are `#1D1C1A` (the dark variant) rather than the splash's `#F4F3F0`.
-
-## States and motion
-
-The frame draws one state. `cursor:pointer` marks four hit targets: the Apple pill, the Google
-pill, the 40 × 40 arrow button, and the "Sign in" span. No pressed, disabled, loading, focus or
-error styling is drawn, and no transition, animation or keyframe appears anywhere in the frame.
-The app's existing press feedback (`PressScale`, 0.97 at 120 ms) and its error/notice line are
-behaviour and stay.
-
-## Comparison — design vs the board as it stood
-
-| Property | Design | App before | Result |
-| --- | --- | --- | --- |
-| field colour | `#F4F3F0` | `colors.bg` = `#F4F3F0` | match |
-| top wash box | −15%, −190, 130% × 300 | `Ellipse cx="50%" cy={-40} rx="65%" ry={150}` | match |
-| top wash stops | .40 → .12 @55% → 0 @75% | same three stops, `#B4AA96` | match |
-| bottom wash | −60, 620, 420 × 260, .22 → 0 @72% | `cx=150 cy=750 rx=210 ry=130`, .22 → 0 @72% | match |
-| mark block | 240 × 190 at design y 150, centred | 200 × 170 at app y 96 | **mismatch** |
-| mark contents | 15 parts (above) | 13 parts, different geometry | **mismatch** |
-| title text | "Welcome to VICI." | "Welcome back." | **mismatch** |
-| title metrics | 27 / 600 / −0.2 / `#1D1C1A` | 27 / 600 / −0.2 / `colors.text` `#1D1C1A` | match |
-| title y | 326 | 326 | match |
-| subtitle text | "Sign in or create an account to keep your plan and progress." | "Sign in to keep the run going." | **mismatch** |
-| subtitle metrics | 14.5 / 400 / `#8B8882` | 14.5 / 400 / `colors.textSoft` `#8B8882` | match |
-| subtitle y | 366 | 366 | match |
-| Apple pill | y 418, 54 h, r 27, `#131313`, gap 9 | identical | match |
-| Apple mark | 15 × 18, `#FFFFFF` | identical | match |
-| Apple label | 16 / 600 / `#FFFFFF` | identical | match |
-| Google pill | y 484, 54 h, r 27, `#FFFFFF`, ring `rgba(0,0,0,0.12)`, gap 10 | identical | match |
-| Google label | 16 / 600 / `#1D1C1A` | identical | match |
-| or-rule | y 560, gap 14, 1px `rgba(0,0,0,0.1)`, 12.5 / 500 / `#8B8882` | identical | match |
-| email row box | y 588, 56 h, r 16, `#FFFFFF`, ring `rgba(0,0,0,0.09)`, gap 12, pad `0 8 0 20` | identical | match |
-| email row content | static label "Continue with email" at 16.5 / 400 / `rgba(90,88,82,0.5)` | live `TextInput` placeholder `yourname@email.com` at 16.5 | **mismatch** |
-| arrow button | 40 × 40, r 20, `#131313` | identical | match |
-| arrow path | `M1.5 7h12M9 2.5L13.5 7 9 11.5`, 15 × 13 / `0 0 16 14`, 2px round | identical | match |
-| account row | y 686, centred, 13.5 / 400 `#8B8882` + 600 `#1D1C1A` "Sign in" | "New here? **Create an account**" | **mismatch** (copy + destination) |
-| legal line | y 764, centred, 12 / `#8B8882`, "Terms · Privacy" | absent | **mismatch** (missing) |
-| typing board | not drawn in this bundle | present | see note |
-
-## Resolutions
-
-**The email row is a button, not a field.** The canvas draws a static grey label, not a caret
-or a value, and the previous bundle's `Login Typing` frame — the board where an address is
-actually typed — has been withdrawn. The app still has to collect an address, so the row
-becomes a control that opens the typing board, and the typing board keeps the implementation
-it already has. That is the only reading that changes the look to what is drawn without
-inventing a screen the bundle does not contain (`DECISIONS.md` D011).
-
-**"Already have an account? Sign in".** The board is now the shared entry for both new and
-returning users — its own subtitle says "Sign in or create an account", and `Create Account` was
-withdrawn from the bundle. In the app this board *is* `(auth)/sign-in`, so the link routes to
-the password step for an address already on file rather than to a separate screen (D011).
-
-**"Terms · Privacy" is added**, replacing nothing — the board previously ended at the account row.
-
-## Numeric verification — 2026-08-21
-
-Both the served design frame and the running app were measured with the same probe
-(`getBoundingClientRect` plus computed paint properties, in frame coordinates). Every box on
-the board agrees to 0.1 px and every type run agrees on size, weight, tracking and colour:
-
-| Element | Design x/y/w/h | App x/y/w/h |
+| # | Element | Declaration |
 | --- | --- | --- |
-| mark block | 76.5, 150, 240 × 190 | 76.5, 150, 240 × 190 |
-| bloom | 146.5, 170, 130 × 130 | 146.5, 170, 130 × 130 |
-| moon back / front | 110.5, 160, 30 × 30 · 102.5, 154, 30 × 30 | identical |
-| star R / L | 292.5, 176, 2 × 2 · 90.5, 214, 2 × 2 | identical |
-| page | 152.5, 184, 104 × 80 | identical |
-| rules | 166.5 at y 200 / 213 / 226, w 50 / 66 / 42, h 5 | identical |
-| envelope body | 128.5, 242, 152 × 76 | identical |
-| envelope face | 134.5, 248, 140 × 64 | identical |
-| flap path | 136.5, 250, 136 × 38 | identical |
-| seal / ring | 195.5, 278, 18 × 18 · 200.5, 283, 8 × 8 | identical |
-| ground shadow | 120.5, 322, 168 × 13 | identical |
-| title | 24, 380, 205.8 × 31.5 · 27px/600/−0.2px/rgb(29,28,26) | identical |
-| subtitle | 24, 420, 369 × 34 · 14.5px/400/normal/rgb(139,136,130) | identical — wraps to the same two lines |
-| Apple pill / mark / label | 24, 472, 345 × 54 · 108, 490, 15 × 18 · 132, 489.5, 153.1 × 19 | identical |
-| Google pill / mark / label | 24, 538, 345 × 54 · 101.6, 556.5, 17 × 17 · 128.6, 555.5, 162.8 × 19 | identical |
-| or-rule / "or" | 24, 620.8, 152.3 × 1 · 190.3, 614, 12.4 × 14.5 · 216.7, 620.8, 152.3 × 1 | identical |
-| email row / label / button / arrow | 24, 642, 345 × 56 · 44, 660.3, 265 × 19.5 · 321, 650, 40 × 40 · 333.5, 663.5, 15 × 13 | identical |
-| account row / "Sign in" span | 0, 740, 393 × 16 · 256.4, 740, 44.2 × 16 | identical |
-| legal | 0, 818, 393 × 14 · 12px/400/rgb(139,136,130) | identical |
+| 1 | title | `left:24 top:380` · 27px/600 · `letter-spacing:-0.2px` · `#F4F3F0` · "Welcome to VICI." |
+| 2 | subtitle | `left:24 top:420` · 14.5px/400 · `rgba(244,243,240,0.5)` · "Sign in or create an account to keep your plan and progress." |
+| 3 | Apple pill | `left:24 right:24 top:472 height:54 radius:27` · `background:#F4F3F0` · flex row, centred, `gap:9` · `cursor:pointer` |
+| 3a | Apple glyph | `viewBox="0 0 384 512"` 15 × 18, `fill:#131313` |
+| 3b | Apple label | 16px/600 · `#131313` · "Continue with Apple" |
+| 4 | Google pill | `left:24 right:24 top:538 height:54 radius:27` · `background:rgba(244,243,240,0.08)` · `box-shadow: 0 0 0 1px rgba(244,243,240,0.2)` · flex row, centred, `gap:10` · `cursor:pointer` |
+| 4a | Google glyph | `viewBox="0 0 48 48"` 17 × 17, the four-path mark, `#EA4335 #4285F4 #FBBC05 #34A853` |
+| 4b | Google label | 16px/600 · `#F4F3F0` · "Continue with Google" |
+| 5 | divider row | `left:24 right:24 top:614` · flex row, centred, `gap:14` |
+| 5a | rules | `flex:1; height:1px; background:rgba(244,243,240,0.14)` (one either side) |
+| 5b | "or" | 12.5px/500 · `rgba(244,243,240,0.4)` |
+| 6 | email row | `left:24 right:24 top:642 height:56 radius:16 box-sizing:border-box` · `background:rgba(244,243,240,0.06)` · `box-shadow: 0 0 0 1px rgba(244,243,240,0.16)` · flex row, `gap:12`, `padding: 0 8px 0 20px` |
+| 6a | label | `flex:1` · 16.5px/400 · `rgba(244,243,240,0.45)` · "Continue with email" |
+| 6b | arrow button | `40×40 radius:50% background:#F4F3F0` · `flex-shrink:0` · `cursor:pointer` |
+| 6c | arrow | `viewBox="0 0 16 14"` 15 × 13 · `M1.5 7h12M9 2.5L13.5 7 9 11.5` · `stroke:#131313` `stroke-width:2` round caps and joins |
+| 7 | footer | `left:0 right:0 top:740 text-align:center` · 13.5px/400 · `rgba(244,243,240,0.5)` · "Already have an account? " + `<span>` 600 `#F4F3F0` `cursor:pointer` "Sign in" |
+| 8 | legal | `left:0 right:0 top:818 text-align:center` · 12px · `rgba(244,243,240,0.35)` · `Terms &nbsp;·&nbsp; Privacy` |
 
-The app carries one extra box the design does not: a zero-height container at 24, 704 that
-holds the error/notice line. It is the app's own feedback slot, has no height when empty, and
-displaces nothing.
+The email row's label is static grey with no caret: the board where an address is typed
+(`Login Typing`) was withdrawn a drop ago and has not come back.
 
-**Status: implemented, numerically verified.**
+## What the controls do
+
+`cursor:pointer` is on both pills, the arrow button and the footer `<span>` — and on nothing
+else. The legal line carries none, is one run in one colour, and is drawn as the caption it
+is (D013; D021 for why that reading does not generalise past this board).
+
+The canvas gives no destinations, but `03 · Welcome Back` now answers the question D011 had
+to answer from the labels alone:
+
+* **Continue with email** → `/(auth)/sign-up?step=form`. The subtitle frames this board as
+  "Sign in **or create an account**" and the footer sends people who already have one
+  elsewhere, so this is the create path. It opens sign-up's *form*, not its gate, because
+  the gate is the same Apple / Google / email choice just made. Unchanged from D011.
+* **Already have an account? Sign in** → `/(auth)/welcome-back`. D011 sent this to the app's
+  own address step because the bundle drew no returning-user board. It draws one now, its
+  copy is "Sign in to pick up where you left off", and it is frame #3 — directly after this
+  one. The address step moved with it and now opens from that board's email row.
+
+## Comparison — design vs `AuthDoor variant="new"`
+
+Verified numerically: `.vicifull/sig/auth-d-login.txt` vs `.vicifull/sig/auth-a-login.txt`.
+34 design rows, 0 missing, 0 positional or type differences. The eight reported rows are the
+two washes and the mark halo reporting no `border-radius` (SVG, D015/D010), the four stars
+and the arrow button reporting `1px`/`20px` where the canvas writes `50%` on the same box,
+and the mark's `<Svg>` counting twice against one `<div>`. Pixel-differenced against the
+frame at 2×, the whole board is within 1/255 of the canvas outside the status bar and home
+indicator, which the app does not draw (D009).
+
+Two things the first pass got wrong and the comparison caught:
+
+* **`text-wrap`.** `AppText` asks for `text-wrap: pretty` on web; the frame states none, so
+  Chrome wraps normally. `pretty` rebalanced the last two lines and pushed "and" off line
+  one. The subtitle now overrides it back to `wrap` — a web-only property, so nothing
+  changes on device, where the box already wrapped like the frame.
+* **The footer's box.** The canvas's footer is one full-width centred `<div>`; the app had
+  the text shrink-wrapped inside a centred press target, which put the same glyphs on the
+  same centre axis in a 208-wide box. `alignSelf:'stretch'` makes the text box the frame's
+  own 393 (D022 in reverse).
+
+## Pass 2 — the SSO refusal line, and the gap the canvas leaves empty
+
+The canvas draws nothing between the email row (bottom edge design 698) and the footer
+(design 740) — 42pt of empty board. The app has to say something there when Apple or Google
+sign-in fails, and pass 1 anchored that line at design 704 with no box around it. The refusal
+the mock build returns ("Apple & Google sign-in need the online build. Use email for now.")
+wraps to two lines at 13/19, so it ran 704 → 742 and its second line overlapped
+"Already have an account? Sign in" at 740 by two points. Measured from the capture's own
+signature, not by eye.
+
+The slot is now the gap itself — `top: 644, height: 42` under the safe area, the line centred in
+it — so the two-line refusal measures **700 → 738**, two points clear of the email row above and
+two clear of the footer below. The box paints nothing, so it adds one unpainted extra row to the
+signature and changes no drawn number.
+
+Re-verified against `Login.html` at 2× after the change, with a block-mean diff excluding only
+the D009 chrome: **0 of 19,208 8 × 8 blocks over 3/255, worst 2.8/255**; 34 design rows, 0
+missing, 8 differing and all 8 D015 radius-notation.

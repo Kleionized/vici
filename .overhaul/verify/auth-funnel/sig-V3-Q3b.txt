@@ -1,0 +1,9 @@
+MISSING in app:  svg | 47 | 627.6 | 298.7 | 182.4 | - | - | - | - | - | -
+# count P:161,670,8,21: design 1, app 2
+# count P:223,670,8,21: design 1, app 2
+~ Less than a day                          type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ A few days                               type: 15px/400/normal/normal/rgb(17, 17, 17) → 15px/400/normal/18px/rgb(17, 17, 17)
+~ About a week                             type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ A few weeks                              type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+~ A month or longer                        type: 15px/400/normal/normal/rgb(242, 240, 236) → 15px/400/normal/18px/rgb(242, 240, 236)
+--- 60 design rows, 70 app rows; 5 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

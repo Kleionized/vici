@@ -1,0 +1,24 @@
+
+[1273× 1273f] svg 18x18 vb=0 0 18 18 :: <path d=M2 2l14 14M16 2L2 16 fill=none stroke=§ stroke-width=2 stroke-linecap=round>
+   colours: stroke=#F2F0EC×1273
+   frames: L1-Frame-1 L1-Frame-10 L1-Frame-11 L1-Frame-12 L1-Frame-13 L1-Frame-14 L1-Frame-2 L1-Frame-3 L1-Frame-4 L1-Frame-5 L1-Frame-6 L1-Frame-7 …
+
+[957× 957f] svg 14x14 vb=0 0 14 14 :: <path d=M5 2l5 5-5 5 fill=none stroke=§ stroke-width=2 stroke-linecap=round stroke-linejoin=round>
+   colours: stroke=#F2F0EC×957
+   frames: L1-Frame-10 L1-Frame-11 L1-Frame-12 L1-Frame-2 L1-Frame-3 L1-Frame-4 L1-Frame-5 L1-Frame-6 L1-Frame-7 L1-Frame-8 L1-Frame-9 L2-Frame-10 …
+
+[168× 168f] svg 28x22 vb=0 0 28 22 :: <path d=M2 12c0-6 4-10 10-10v4c-3 0-5 2-5 5h5v9H2zM16 12c0-6 4-10 10-10v4c-3 0-5 2-5 5h5v9H16z fill=§>
+   colours: fill=#5A574F×168
+   frames: L1-Frame-11 L1-Frame-2 L2-Frame-13 L2-Frame-2 L3-Frame-12 L3-Frame-2 L4-Frame-12 L4-Frame-2 L5-Frame-12 L5-Frame-2 L6-Frame-11 L6-Frame-2 …
+
+[84× 84f] svg 12x12 vb=0 0 14 14 :: <path d=M2 7.5l3.2 3L12 3.5 fill=none stroke=§ stroke-width=2.2 stroke-linecap=round stroke-linejoin=round>
+   colours: stroke=#111111×84
+   frames: L1-Frame-13 L2-Frame-15 L3-Frame-14 L4-Frame-14 L5-Frame-14 L6-Frame-13 L7-Frame-15 L10-Frame-15 L11-Frame-13 L12-Frame-13 L13-Frame-16 L14-Frame-14 …
+
+[84× 84f] svg 34x34 vb=0 0 14 14 :: <path d=M2 7.5l3.2 3L12 3.5 fill=none stroke=§ stroke-width=2.2 stroke-linecap=round stroke-linejoin=round>
+   colours: stroke=#111111×84
+   frames: L1-Frame-14 L2-Frame-16 L3-Frame-15 L4-Frame-15 L5-Frame-15 L6-Frame-14 L7-Frame-16 L10-Frame-16 L11-Frame-14 L12-Frame-14 L13-Frame-17 L14-Frame-15 …
+
+[18× 18f] svg 16x16 vb=0 0 16 16 :: <path d=M3 13l1-3.5L10.5 3l2.5 2.5L6.5 12z fill=none stroke=§ stroke-width=1.6 stroke-linejoin=round>
+   colours: stroke=#9B968E×18
+   frames: L2-Frame-12 L7-Frame-12 L13-Frame-13 L16-Frame-12 L18-Frame-12 L19-Frame-12 L28-Frame-11 L30-Frame-12 L35-Frame-13 L39-Frame-13 L46-Frame-13 L53-Frame-12 …

@@ -148,6 +148,12 @@ export interface TidelineEvent {
   severityAfter?: number;
   /** How many times the app was reopened during the same urge (severe flow). */
   reopens?: number;
+  /**
+   * How long the urge lasted, start to resolution. The urge hub's own panes —
+   * `85C · Your proof` and `85D · Surfed before` — are read out in minutes, and
+   * nothing else in the log records a length.
+   */
+  durationSeconds?: number;
 }
 
 export type TidelineEventInput = Omit<TidelineEvent, '_id' | 'userId' | 'createdAt'> & {
@@ -200,7 +206,10 @@ export interface UserSettings {
   showStreak: boolean;
   reminderTime?: string;
   theme?: string;
-  /** Premium entitlement (RevenueCat later; a local flag for now). */
+  /**
+   * Mirror of the `vici_unlimited` entitlement, written down from RevenueCat.
+   * Treat it as a cache — `usePremium()` in `@/lib/purchases` is the truth.
+   */
   premium?: boolean;
   /** The yearly-drop enclosure was claimed — $26.99/yr. */
   yearlyDrop?: boolean;
@@ -214,11 +223,6 @@ export interface UserSettings {
   appLockOnLeave?: boolean;
   hideSensitivePreviews?: boolean;
   pauseAnalytics?: boolean;
-  /**
-   * The vow's signature, as the SVG path the person drew: one `M…` subpath per
-   * stroke, against the 260 x 84 box `components/ui/Signature` records in.
-   */
-  signature?: string;
 }
 
 /** Matches the `users` table. */

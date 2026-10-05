@@ -1,0 +1,6976 @@
+{
+ "colors": [
+  {
+   "key": "#F2F0EC",
+   "n": 12395,
+   "frames": 1573,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "svg:stroke×3936, svg:fill×3888, background×2506, color×2034, box-shadow×23, border-bottom×4, svg:stop-color×2, outline×1",
+   "bundle": "Email-Login×3882, Lesson-Illustrations-v4×891, Week-08-Boredom-and-Meaning×691, Week-05-Why-It-Feels-Worth-It×686, Week-09-Connection×668, Week-11-Build-a-Life-You-Want×652, Week-12-Leave-It-Behind×636, Week-06-Discipline×628"
+  },
+  {
+   "key": "#0D0D0D",
+   "n": 3742,
+   "frames": 1570,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "background×1717, svg:fill×1192, svg:stroke×831, box-shadow×2",
+   "bundle": "Email-Login×1129, Lesson-Illustrations-v4×467, Week-04-Know-Your-Brain×209, Week-02-Changing-Your-Mindset×194, Week-06-Discipline×193, Week-05-Why-It-Feels-Worth-It×187, Week-12-Leave-It-Behind×177, Week-09-Connection×175"
+  },
+  {
+   "key": "#9B968E",
+   "n": 3251,
+   "frames": 1480,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "color×2795, svg:stroke×241, box-shadow×159, svg:fill×33, border×22, background×1",
+   "bundle": "Email-Login×1004, Week-12-Leave-It-Behind×213, Week-03-In-the-Moment×207, Week-06-Discipline×201, Week-05-Why-It-Feels-Worth-It×191, Week-01-Reset×186, Week-02-Changing-Your-Mindset×186, Week-09-Connection×182"
+  },
+  {
+   "key": "#2E2E2E",
+   "n": 2693,
+   "frames": 1385,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "props": "background×1488, box-shadow×1043, border-top×99, color×38, svg:stroke×24, svg:fill×1",
+   "bundle": "Email-Login×415, Week-06-Discipline×201, Week-12-Leave-It-Behind×197, Week-07-Relapse-and-Adversity×195, Week-03-In-the-Moment×192, Week-01-Reset×190, Week-02-Changing-Your-Mindset×190, Week-09-Connection×190"
+  },
+  {
+   "key": "#B5B0A8",
+   "n": 1737,
+   "frames": 1191,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum"
+   ],
+   "props": "color×1737",
+   "bundle": "Email-Login×207, Week-03-In-the-Moment×145, Week-12-Leave-It-Behind×143, Week-06-Discipline×132, Week-09-Connection×131, Week-01-Reset×129, Week-07-Relapse-and-Adversity×126, Week-02-Changing-Your-Mindset×125"
+  },
+  {
+   "key": "#55524D",
+   "n": 1673,
+   "frames": 358,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Day-Zero",
+    "Email-Login/First-Principle"
+   ],
+   "props": "svg:fill×1525, svg:stroke×148",
+   "bundle": "Email-Login×487, Lesson-Illustrations-v4×287, Week-12-Leave-It-Behind×125, Week-07-Relapse-and-Adversity×99, Week-11-Build-a-Life-You-Want×95, Week-06-Discipline×92, Week-10-Yourself×88, Week-02-Changing-Your-Mindset×73"
+  },
+  {
+   "key": "rgba(255,255,255,0.22)",
+   "n": 1623,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "props": "svg:fill×1623",
+   "bundle": "Email-Login×1623"
+  },
+  {
+   "key": "rgba(0,0,0,0.09)",
+   "n": 1297,
+   "frames": 1297,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13"
+   ],
+   "props": "box-shadow×1297",
+   "bundle": "Week-06-Discipline×112, Week-12-Leave-It-Behind×111, Week-07-Relapse-and-Adversity×108, Week-03-In-the-Moment×106, Week-08-Boredom-and-Meaning×106, Week-01-Reset×105, Week-02-Changing-Your-Mindset×105, Week-05-Why-It-Feels-Worth-It×105"
+  },
+  {
+   "key": "rgba(20,20,22,0.14)",
+   "n": 1297,
+   "frames": 1297,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13"
+   ],
+   "props": "box-shadow×1297",
+   "bundle": "Week-06-Discipline×112, Week-12-Leave-It-Behind×111, Week-07-Relapse-and-Adversity×108, Week-03-In-the-Moment×106, Week-08-Boredom-and-Meaning×106, Week-01-Reset×105, Week-02-Changing-Your-Mindset×105, Week-05-Why-It-Feels-Worth-It×105"
+  },
+  {
+   "key": "#111111",
+   "n": 990,
+   "frames": 560,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "color×651, svg:stroke×296, svg:fill×29, background×14",
+   "bundle": "Email-Login×486, Week-12-Leave-It-Behind×48, Week-06-Discipline×47, Week-03-In-the-Moment×45, Week-04-Know-Your-Brain×44, Week-08-Boredom-and-Meaning×43, Week-07-Relapse-and-Adversity×41, Week-11-Build-a-Life-You-Want×41"
+  },
+  {
+   "key": "#FFFFFF",
+   "n": 879,
+   "frames": 63,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ],
+   "props": "svg:fill×731, background×102, color×34, svg:stroke×12",
+   "bundle": "Email-Login×817, Lesson-Illustrations-v4×62"
+  },
+  {
+   "key": "#1E1E1E",
+   "n": 683,
+   "frames": 288,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-30"
+   ],
+   "props": "background×682, svg:stroke×1",
+   "bundle": "Email-Login×368, Week-03-In-the-Moment×38, Week-12-Leave-It-Behind×38, Week-06-Discipline×32, Week-02-Changing-Your-Mindset×28, Week-05-Why-It-Feels-Worth-It×28, Week-04-Know-Your-Brain×27, Week-01-Reset×26"
+  },
+  {
+   "key": "#5A574F",
+   "n": 356,
+   "frames": 223,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Detail-Paper",
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lesson-Scroll-11"
+   ],
+   "props": "svg:fill×173, svg:stroke×94, color×68, background×15, border-left×4, box-shadow×1, border-bottom×1",
+   "bundle": "Email-Login×173, Week-02-Changing-Your-Mindset×17, Week-04-Know-Your-Brain×17, Week-06-Discipline×17, Week-01-Reset×16, Week-03-In-the-Moment×16, Week-05-Why-It-Feels-Worth-It×15, Week-11-Build-a-Life-You-Want×15"
+  },
+  {
+   "key": "#A8A39A",
+   "n": 356,
+   "frames": 181,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/First-Principle",
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Night-4-Closed"
+   ],
+   "props": "svg:stroke×258, svg:fill×98",
+   "bundle": "Email-Login×101, Lesson-Illustrations-v4×58, Week-09-Connection×37, Week-03-In-the-Moment×27, Week-11-Build-a-Life-You-Want×18, Week-04-Know-Your-Brain×17, Week-06-Discipline×17, Week-10-Yourself×17"
+  },
+  {
+   "key": "rgba(242,240,236,0.28)",
+   "n": 255,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-365"
+   ],
+   "props": "svg:fill×255",
+   "bundle": "Email-Login×255"
+  },
+  {
+   "key": "#8B8882",
+   "n": 241,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "props": "background×135, color×106",
+   "bundle": "Lesson-Illustrations-v4×241"
+  },
+  {
+   "key": "rgba(0,0,0,0.12)",
+   "n": 230,
+   "frames": 230,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "box-shadow×230",
+   "bundle": "Email-Login×230"
+  },
+  {
+   "key": "rgba(20,20,22,0.18)",
+   "n": 230,
+   "frames": 230,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "props": "box-shadow×230",
+   "bundle": "Email-Login×230"
+  },
+  {
+   "key": "#3A3835",
+   "n": 173,
+   "frames": 103,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Letter-Received",
+    "Email-Login/Morning-Energy"
+   ],
+   "props": "svg:fill×173",
+   "bundle": "Email-Login×64, Week-04-Know-Your-Brain×21, Lesson-Illustrations-v4×20, Week-05-Why-It-Feels-Worth-It×20, Week-08-Boredom-and-Meaning×17, Week-09-Connection×8, Week-03-In-the-Moment×5, Week-06-Discipline×5"
+  },
+  {
+   "key": "#37352F",
+   "n": 135,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "props": "color×135",
+   "bundle": "Lesson-Illustrations-v4×135"
+  },
+  {
+   "key": "rgba(0,0,0,0.04)",
+   "n": 68,
+   "frames": 17,
+   "ex": [
+    "Email-Login/Reminders-Setup",
+    "Email-Login/V3-Q1",
+    "Email-Login/V3-Q10",
+    "Email-Login/V3-Q13",
+    "Email-Login/V3-Q15",
+    "Email-Login/V3-Q16"
+   ],
+   "props": "box-shadow×68",
+   "bundle": "Email-Login×68"
+  },
+  {
+   "key": "transparent",
+   "n": 53,
+   "frames": 24,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Chooser",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges"
+   ],
+   "props": "background×53",
+   "bundle": "Email-Login×53"
+  },
+  {
+   "key": "rgba(0,0,0,0.06)",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "props": "box-shadow×53",
+   "bundle": "Lesson-Illustrations-v4×53"
+  },
+  {
+   "key": "rgba(40,38,32,0.08)",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "props": "box-shadow×53",
+   "bundle": "Lesson-Illustrations-v4×53"
+  },
+  {
+   "key": "#1D1C1A",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "props": "color×53",
+   "bundle": "Lesson-Illustrations-v4×53"
+  },
+  {
+   "key": "#232220",
+   "n": 34,
+   "frames": 22,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Report-Ready",
+    "Email-Login/SOS-Feel-Numb",
+    "Email-Login/Today-Home-III"
+   ],
+   "props": "svg:fill×18, svg:stroke×16",
+   "bundle": "Email-Login×10, Lesson-Illustrations-v4×8, Week-10-Yourself×4, Week-02-Changing-Your-Mindset×3, Week-04-Know-Your-Brain×2, Week-09-Connection×2, Week-11-Build-a-Life-You-Want×2, Week-03-In-the-Moment×1"
+  },
+  {
+   "key": "rgba(255,255,255,0.28)",
+   "n": 31,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "props": "background×31",
+   "bundle": "Email-Login×31"
+  },
+  {
+   "key": "rgba(255,255,255,0.62)",
+   "n": 13,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "props": "color×11, box-shadow×2",
+   "bundle": "Email-Login×13"
+  },
+  {
+   "key": "rgba(255,255,255,0.55)",
+   "n": 10,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof"
+   ],
+   "props": "color×10",
+   "bundle": "Email-Login×10"
+  },
+  {
+   "key": "rgba(255,255,255,0.15)",
+   "n": 8,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "props": "background×4, box-shadow×3, svg:stroke×1",
+   "bundle": "Email-Login×8"
+  },
+  {
+   "key": "rgba(255,255,255,0.6)",
+   "n": 7,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score"
+   ],
+   "props": "color×7",
+   "bundle": "Email-Login×7"
+  },
+  {
+   "key": "rgba(0,0,0,0.68)",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo",
+    "Email-Login/Sheet-Sign-Out"
+   ],
+   "props": "background×4",
+   "bundle": "Email-Login×4"
+  },
+  {
+   "key": "#171717",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo",
+    "Email-Login/Sheet-Sign-Out"
+   ],
+   "props": "background×4",
+   "bundle": "Email-Login×4"
+  },
+  {
+   "key": "rgba(17,17,17,0.6)",
+   "n": 4,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Chooser",
+    "Email-Login/Paywall",
+    "Email-Login/Week-VI-Discipline"
+   ],
+   "props": "color×4",
+   "bundle": "Email-Login×4"
+  },
+  {
+   "key": "#45423E",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ],
+   "props": "box-shadow×4",
+   "bundle": "Email-Login×4"
+  },
+  {
+   "key": "#141414",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Tiers-Archive"
+   ],
+   "props": "svg:fill×3",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "#3A3833",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Tiers-Archive"
+   ],
+   "props": "svg:stroke×3",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "#2A2926",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Tiers-Archive"
+   ],
+   "props": "svg:stroke×3",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "rgba(30,30,30,0)",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Letter-Week-XII",
+    "Email-Login/Medallion-Letter"
+   ],
+   "props": "background×3",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "#BAB5AD",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood",
+    "Email-Login/Today-Home"
+   ],
+   "props": "background×3",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "rgba(255,255,255,0.3)",
+   "n": 3,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Pledges"
+   ],
+   "props": "color×2, svg:fill×1",
+   "bundle": "Email-Login×3"
+  },
+  {
+   "key": "rgba(17,17,17,0.3)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Log-Chooser"
+   ],
+   "props": "box-shadow×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#121212",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ],
+   "props": "background×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#6B675F",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ],
+   "props": "svg:fill×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#EA4335",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "props": "svg:fill×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#4285F4",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "props": "svg:fill×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#FBBC05",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "props": "svg:fill×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#34A853",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "props": "svg:fill×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#34322F",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ],
+   "props": "background×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#5A5751",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ],
+   "props": "background×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#8A857D",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ],
+   "props": "background×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "rgba(255,255,255,0.4)",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "props": "color×2",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "rgba(255,255,255,0.5)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Score"
+   ],
+   "props": "svg:fill×1, color×1",
+   "bundle": "Email-Login×2"
+  },
+  {
+   "key": "#17160F",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "props": "svg:stroke×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(17,17,17,0)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "props": "background×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(255,255,255,0.75)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "props": "color×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(17,17,17,0.7)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "props": "color×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(255,255,255,0.12)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "props": "svg:stroke×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(255,255,255,0.05)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "props": "svg:fill×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(255,255,255,0.08)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "props": "svg:fill×1",
+   "bundle": "Email-Login×1"
+  },
+  {
+   "key": "rgba(13,13,13,0)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Week-01-Reset/L7-Frame-11"
+   ],
+   "props": "background×1",
+   "bundle": "Week-01-Reset×1"
+  }
+ ],
+ "type": [
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 1450,
+   "frames": 1357,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum"
+   ],
+   "sample": "Lesson 1×27, Lesson 40×17, Lesson 80×17, Platinum×16, Lesson 13×16, Lesson 35×16, Lesson 36×16, Lesson 39×16"
+  },
+  {
+   "key": "18px / 400 / lh 28px / ls 0 / #B5B0A8",
+   "n": 1356,
+   "frames": 1000,
+   "ex": [
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-4"
+   ],
+   "sample": "One thing left today — the task.×53, Your answers are saved to the log. One t×32, Approximate answers are useful. Guessing×2, Start one private note called My recover×2, Write your porn boundary and what you kn×2, Prepare tonight: set the alarm, put the ×2, Keep needed calls and accessibility avai×2, It’s late. Your phone is beside you, and×2"
+  },
+  {
+   "key": "13px / 700 / lh 16px / ls 0.2px / #9B968E",
+   "n": 819,
+   "frames": 772,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3"
+   ],
+   "sample": "Today’s task×85, Done when×85, Part 1×85, Part 2×85, Part 3×85, Question×32, After choosing×18, Seneca×17"
+  },
+  {
+   "key": "24px / 700 / lh 31px / ls -0.4px / #F2F0EC",
+   "n": 575,
+   "frames": 573,
+   "ex": [
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Lesson-Scroll-9"
+   ],
+   "sample": "We are what we repeatedly do.×3, Well begun is half done.×2, Prepare for tonight×2, A journey of a thousand miles begins wit×2, The smaller decision×2, An earlier moment×2, Where you’re starting×2, Try it today×2"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls 0.1px / #111111",
+   "n": 487,
+   "frames": 487,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "sample": "Continue×138, Done×120, Begin×89, Finish lesson×85, Share this×9, Back to medallions×9, Next×6, Breathe×5"
+  },
+  {
+   "key": "30px / 700 / lh 36px / ls -0.6px / #F2F0EC",
+   "n": 262,
+   "frames": 261,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-14",
+    "Email-Login/Letter-Arrival"
+   ],
+   "sample": "Lesson complete.×85, Put the phone away.×3, Leave the room.×3, Prepare for tonight×2, The day is still yours.×2, It happened.×2, Don’t let it become two.×2, Get out of bed.×2"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 191,
+   "frames": 57,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lapse-When",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports"
+   ],
+   "sample": "41×4, Name×3, Username×3, Email×3, Started VICI×3, Current week×3, Medallions×3, Tonight, Tue Jul 22×3"
+  },
+  {
+   "key": "12px / 700 / lh 16px / ls 0 / #B5B0A8",
+   "n": 163,
+   "frames": 33,
+   "ex": [
+    "Email-Login/Paywall",
+    "Week-01-Reset/L2-Frame-11",
+    "Week-01-Reset/L7-Frame-11",
+    "Week-02-Changing-Your-Mindset/L10-Frame-11",
+    "Week-02-Changing-Your-Mindset/L13-Frame-12",
+    "Week-03-In-the-Moment/L16-Frame-11"
+   ],
+   "sample": "A×32, B×32, C×32, D×20, E×18, F×14, G×7, H×3"
+  },
+  {
+   "key": "16px / 400 / lh 22px / ls 0 / #F2F0EC",
+   "n": 159,
+   "frames": 32,
+   "ex": [
+    "Week-01-Reset/L2-Frame-11",
+    "Week-01-Reset/L7-Frame-11",
+    "Week-02-Changing-Your-Mindset/L10-Frame-11",
+    "Week-02-Changing-Your-Mindset/L13-Frame-12",
+    "Week-03-In-the-Moment/L16-Frame-11",
+    "Week-03-In-the-Moment/L18-Frame-11"
+   ],
+   "sample": "Something else×6, I’m unsure×2, Saved material or bookmarks×1, A feed or account that leads to porn×1, A device beside me where I usually watch×1, An empty hour with nothing planned×1, Nothing clear right now×1, Keeping my phone away at night×1"
+  },
+  {
+   "key": "13px / 400 / lh 20px / ls 0 / #37352F",
+   "n": 135,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "sample": "Wall clock sitting on a shelf replaced b×1, Real hands instead of an ambiguous wedge×1, Plant and clutter removed×1, Pans hang from V-strings like a real bal×1, Weight and leaf no longer fuse with the ×1, Highlight drawn as a glint, not a hole×1, Stars removed from a daytime sky×1, Stars removed×1"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 118,
+   "frames": 35,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lapse-Done",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports"
+   ],
+   "sample": "19×4, Sam Reyes×3, @sam×3, sam@example.com×3, 14 Mar 2026×3, Week VI, Discipline×3, 10 of 12×3, Set off by×3"
+  },
+  {
+   "key": "15px / 400 / lh 24px / ls 0 / #B5B0A8",
+   "n": 114,
+   "frames": 108,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Cue-Intro-Modal"
+   ],
+   "sample": "One part of it went wrong. Nothing else ×2, The day isn’t over. Log what happened, t×2, A slip doesn’t erase what you decided. S×2, One slip happened. You can still turn th×2, Hard to resist×2, Do something different from what you nor×2, Move somewhere different and keep the ph×2, That’s all today has to be.×1"
+  },
+  {
+   "key": "11.5px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 111,
+   "frames": 37,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ],
+   "sample": "Log×34, Today×33, Journey×31, Library×13"
+  },
+  {
+   "key": "15px / 400 / lh normal / ls 0 / #F2F0EC",
+   "n": 109,
+   "frames": 23,
+   "ex": [
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/SOS-Feeling-Picker",
+    "Email-Login/SOS-Reason-Picker",
+    "Email-Login/Slip-Fed",
+    "Email-Login/Slip-Urge-Now",
+    "Email-Login/Urge-Log-Outcome"
+   ],
+   "sample": "Lonely×3, Tired×3, Argument×3, Stress×2, Social×2, Phone×2, Craving×2, Bored×2"
+  },
+  {
+   "key": "16px / 700 / lh 22px / ls 0 / #F2F0EC",
+   "n": 101,
+   "frames": 99,
+   "ex": [
+    "Email-Login/Lesson-Scroll-13",
+    "Week-01-Reset/L1-Frame-13",
+    "Week-01-Reset/L2-Frame-15",
+    "Week-01-Reset/L3-Frame-14",
+    "Week-01-Reset/L4-Frame-14",
+    "Week-01-Reset/L5-Frame-14"
+   ],
+   "sample": "Your starting notes are saved and tonigh×2, The activity review is recorded or resch×2, You’ve made one useful change, or confir×1, You’ve tried the change and saved the st×1, The sleep plan and device setup are read×1, You’ve tried the activity and recorded w×1, You’ve taken a contact step or checked a×1, You’ve recorded the review and taken tim×1"
+  },
+  {
+   "key": "26px / 700 / lh 33px / ls -0.6px / #F2F0EC",
+   "n": 83,
+   "frames": 83,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-30"
+   ],
+   "sample": "Slip logged.×2, What fed it?×2, When did it happen?×2, Re-sign your pledge.×2, When should the nightly check-in come?×2, The pledge still stands.×2, One clean day.×1, Only opens for you.×1"
+  },
+  {
+   "key": "15px / 400 / lh 22px / ls 0 / #B5B0A8",
+   "n": 76,
+   "frames": 56,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Day-Zero"
+   ],
+   "sample": "An overwhelming urge that ended without ×6, Urges met and outlasted — the conquering×5, Survive the nights and steady the basics×2, Streaks, relapses, and how you talk to y×2, What to do in the sixty seconds that mat×2, The machinery behind the pull.×2, The people side of recovery.×2, The honest math of what it gives and tak×2"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #111111",
+   "n": 69,
+   "frames": 60,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ],
+   "sample": "SOS×37, B×12, A×4, Earned×2, Urges×2, Score×2, Check-ins×1, Reports×1"
+  },
+  {
+   "key": "15px / 400 / lh 22px / ls 0 / #9B968E",
+   "n": 67,
+   "frames": 67,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports"
+   ],
+   "sample": "Choose one.×22, Select all that apply×5, Select all that apply.×4, Tap all that apply.×3, +12 this week×3, Choose all that fit. Choose G alone if i×3, 2 more to Bronze×2, Choose all that fit. Choose F alone if i×2"
+  },
+  {
+   "key": "15px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 65,
+   "frames": 62,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Letter-Read",
+    "Email-Login/Letter-Received"
+   ],
+   "sample": "Give me another×33, Try a different step×3, Change the pledge×3, Not now×3, Later×2, Sign out×2, Keep current pledge×1, See the receipt×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 61,
+   "frames": 35,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ],
+   "sample": "Paper×16, Bronze×9, Silver×6, Gold×4, Jul 14–20×4, Last 30 days×4, 4×3, Change×3"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls -0.2px / #1D1C1A",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "sample": "Alarm clock×1, Balance scale×1, Balloon×1, Battery×1, Bed at night×1, Bell×1, Brain×1, Browser tabs×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #8B8882",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "sample": "clock · 9 uses×1, scale · 13 uses×1, balloon · 2 uses×1, battery · 6 uses×1, bed · 15 uses×1, bell · 3 uses×1, brain · 9 uses×1, tab · 10 uses×1"
+  },
+  {
+   "key": "11px / 700 / lh normal / ls 0.3px / #8B8882",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ],
+   "sample": "Before×53"
+  },
+  {
+   "key": "15px / 400 / lh 22px / ls 0 / #F2F0EC",
+   "n": 48,
+   "frames": 20,
+   "ex": [
+    "Email-Login/Lesson-Scroll-5",
+    "Week-01-Reset/L1-Frame-5",
+    "Week-01-Reset/L6-Frame-4",
+    "Week-02-Changing-Your-Mindset/L10-Frame-5",
+    "Week-02-Changing-Your-Mindset/L12-Frame-3",
+    "Week-02-Changing-Your-Mindset/L13-Frame-6"
+   ],
+   "sample": "Get into bed to answer a message×2, Check a feed×2, Twenty minutes later, searching×2, Close the content×2, Talking to a stranger would be less plea×1, Talking was more positive, on average×1, Tomorrow starts with even less sleep×1, The next hour can be used differently×1"
+  },
+  {
+   "key": "15px / 700 / lh 22px / ls 0 / #F2F0EC",
+   "n": 39,
+   "frames": 14,
+   "ex": [
+    "Email-Login/Lapse-Done",
+    "Email-Login/Slip-Logged",
+    "Email-Login/Urge-Log-Done",
+    "Week-01-Reset/L2-Frame-4",
+    "Week-02-Changing-Your-Mindset/L11-Frame-5",
+    "Week-02-Changing-Your-Mindset/L14-Frame-10"
+   ],
+   "sample": "Late night, boredom×2, Last night×1, Phone charges outside bedroom×1, Tonight, 11:40 PM×1, Tired×1, Phone in bed, late night×1, Phone charges outside the bedroom×1, Intense×1"
+  },
+  {
+   "key": "11.5px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 37,
+   "frames": 37,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ],
+   "sample": "Library×24, Journey×6, Today×4, Log×3"
+  },
+  {
+   "key": "15px / 400 / lh normal / ls 0 / #111111",
+   "n": 36,
+   "frames": 23,
+   "ex": [
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/SOS-Feeling-Picker",
+    "Email-Login/SOS-Reason-Picker",
+    "Email-Login/Slip-Fed",
+    "Email-Login/Slip-Urge-Now",
+    "Email-Login/Urge-Log-Outcome"
+   ],
+   "sample": "Late night×3, Boredom×2, Lonely×2, Phone in bed×2, Tired×2, A little×1, Rode it out×1, A few times a week×1"
+  },
+  {
+   "key": "32px / 700 / lh 38px / ls -0.6px / #F2F0EC",
+   "n": 33,
+   "frames": 33,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "sample": "Breakwater×6, Vici×6, Weekly report×4, Urge overview×4, Medallions×3, Your log×3, Archive×1, Lessons×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #5A574F",
+   "n": 33,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-One-offs",
+    "Email-Login/Tiers-Pulse"
+   ],
+   "sample": "×25×5, ×50×4, ×10×3, ×100×3, ×200×3, ×75×3, ×500×2, ×365×1"
+  },
+  {
+   "key": "22px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 30,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Slip-When",
+    "Email-Login/Urge-Log-When"
+   ],
+   "sample": "AM×5, 9×3, 10×3, 12×3, 39×3, 41×3, 11×2, 29×2"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 0 / #111111",
+   "n": 27,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Log-Urges",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Slip-When"
+   ],
+   "sample": "1×3, Just now×3, Su×3, M×3, Tu×3, W×3, Th×3, F×3"
+  },
+  {
+   "key": "6.4(svg) / 900 / lh normal / ls 0.6 / #0D0D0D",
+   "n": 24,
+   "frames": 19,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "sample": "I×14, II×4, IV×2, V×2, III×2"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 24,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions",
+    "Email-Login/Paywall-Confirmed",
+    "Email-Login/Paywall",
+    "Email-Login/Reminders-Setup"
+   ],
+   "sample": "Tier I, ×5×3, Jun 9×2, Tier I, ×1×2, Lesson 5×2, Ride it out×2, 1×1, 3×1, 4×1"
+  },
+  {
+   "key": "22px / 400 / lh normal / ls 0 / #2E2E2E",
+   "n": 24,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Slip-When",
+    "Email-Login/Urge-Log-When"
+   ],
+   "sample": "1×3, 9×3, 38×3, 42×3, 8×2, 12×2, 28×2, 32×2"
+  },
+  {
+   "key": "12px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 24,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home"
+   ],
+   "sample": "Su×4, Mo×4, Tu×4, We×4, Th×4, Sa×4"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 22,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Morning-Task-Check",
+    "Email-Login/Your-Plan"
+   ],
+   "sample": "Tense×1, Hopeful×1, Flat×1, Proud×1, Lonely×1, Restless×1, Relationship×1, Family×1"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 21,
+   "frames": 13,
+   "ex": [
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lapse-When",
+    "Email-Login/Log-Urges",
+    "Email-Login/Paywall",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo"
+   ],
+   "sample": "18×4, Change photo×3, Earlier today×3, Yesterday×3, Slipped×3, VICI Unlimited×1, Tense×1, Flat×1"
+  },
+  {
+   "key": "16px / 400 / lh normal / ls 0 / #F2F0EC",
+   "n": 18,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Morning-1-Yesterday",
+    "Email-Login/Night-2-Record"
+   ],
+   "sample": "Pledge kept×2, One urge surfed×2, 0 slips×2, In bed×1, A public space×1, At work or school×1, Out and about×1, Change plan×1"
+  },
+  {
+   "key": "30px / 900 / lh normal / ls 0 / #F2F0EC",
+   "n": 18,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Slip-When",
+    "Email-Login/Urge-Log-When"
+   ],
+   "sample": "PM×5, 11×3, 40×3, 10×2, 30×2, 8×1, 00×1, AM×1"
+  },
+  {
+   "key": "11px / 700 / lh normal / ls 0 / #5A574F",
+   "n": 18,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Urges",
+    "Email-Login/Weekly-Report-Days"
+   ],
+   "sample": "T×6, M×3, W×3, F×3, S×3"
+  },
+  {
+   "key": "16px / 400 / lh 22px / ls 0 / #9B968E",
+   "n": 18,
+   "frames": 18,
+   "ex": [
+    "Week-01-Reset/L2-Frame-12",
+    "Week-01-Reset/L7-Frame-12",
+    "Week-02-Changing-Your-Mindset/L13-Frame-13",
+    "Week-03-In-the-Moment/L16-Frame-12",
+    "Week-03-In-the-Moment/L18-Frame-12",
+    "Week-03-In-the-Moment/L19-Frame-12"
+   ],
+   "sample": "Add a note (optional)×18"
+  },
+  {
+   "key": "12(svg) / 600 / lh normal / ls 0 / #9B968E",
+   "n": 16,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Starting-Score",
+    "Email-Login/Today-Home",
+    "Email-Login/Urge-Overview-When",
+    "Email-Login/Weekly-Report"
+   ],
+   "sample": "T×4, M×2, W×2, F×2, S×2, 0×1, 1,000×1, 30 days ago×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #5A574F",
+   "n": 14,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/SOS-Reassess",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Urge-Log-Intensity"
+   ],
+   "sample": "1×3, 3×3, 5×3, 2×2, 4×1, Not yet. First at ×1×1, Not yet. First at ×10×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #B5B0A8",
+   "n": 11,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-One-offs",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ],
+   "sample": "×5×4, ×1×2, Jun 9×2, ×25×1, Jul 20×1, Day 7×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls -0.2px / #F2F0EC",
+   "n": 10,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions"
+   ],
+   "sample": "Logbook×1, Pulse×1, Black Box×1, Lessons×1, Veni×1, First light×1, Vidi×1, Vici×1"
+  },
+  {
+   "key": "18px / 400 italic / lh 28px / ls 0 / #F2F0EC",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ],
+   "sample": "“Five storms met at full height. The wal×1, “Twenty-five. What used to flood you now×1, “The first wave broke against you, not o×1, “Fifty waves. The sea hasn’t changed. Th×1, “Ten overwhelming urges, none of them de×1, “Twenty-five behind you now — the patter×1, “Two hundred and fifty. The sea keeps co×1, “Nine minutes, start to finish. You watc×1"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls 0 / #111111",
+   "n": 10,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Morning-Task-Check",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Sign-Out",
+    "Email-Login/What-You-Want-Back"
+   ],
+   "sample": "Calm×1, Tired×1, School / work×1, Loneliness×1, Yes×1, Save×1, Sign out×1, Focus×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / #FFFFFF",
+   "n": 9,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "sample": "In×1, Thu, 3:10 pm×1, 14 min×1, Tue, 11:48 pm×1, 22 min×1, Sun, 9:22 pm×1, 9 min×1, Sat, 1:05 am×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / rgba(255,255,255,0.55)",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof"
+   ],
+   "sample": "Ride it out×6, By age 80×1, Day 13, about two minutes×1"
+  },
+  {
+   "key": "64px / 700 / lh 67px / ls -2.2px / #F2F0EC",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Urge-Overview-Summary",
+    "Email-Login/Weekly-Report-Days"
+   ],
+   "sample": "1,240×3, 3×2, 9×1, 12×1, 7 of 7×1"
+  },
+  {
+   "key": "13px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 8,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Chooser",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Your-Plan"
+   ],
+   "sample": "Mood, energy, the pledge×1, When, what fed it, what changes×1, A check-in on the day after a slip.×1, When it usually happens×1, Where it usually happens×1, What tends to set it off×1, Your first change×1, When an urge hits×1"
+  },
+  {
+   "key": "48px / 700 / lh 50px / ls -1.7px / #F2F0EC",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ],
+   "sample": "×9×1, ×3×1, ×12×1, ×26×1, ×19×1, ×2×1, ×23×1, Day 13×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 7,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Data-Privacy",
+    "Email-Login/Paywall",
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Sheet-Profile-Photo"
+   ],
+   "sample": "Delete account×1, Restore×1, Slip on Jul 8×1, 1,500×1, 1,300×1, Remove photo×1, Cancel×1"
+  },
+  {
+   "key": "15.5px / 400 / lh 25px / ls 0 / #B5B0A8",
+   "n": 7,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ],
+   "sample": "If you’re reading this, it happened. Goo×1, One slip is a wave, not the sea. Nothing×1, All still yours.×1, The only slip that can end this is the o×1, I’ll see you tonight, steadier.×1, Last night an urge rose, crested, and le×1, The return is the strongest predictor th×1"
+  },
+  {
+   "key": "12(svg) / 700 / lh normal / ls 0 / #9B968E",
+   "n": 7,
+   "frames": 1,
+   "ex": [
+    "Email-Login/One-Bad-Day"
+   ],
+   "sample": "T×2, S×2, M×1, W×1, F×1"
+  },
+  {
+   "key": "30px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Slip-When",
+    "Email-Login/Urge-Log-When"
+   ],
+   "sample": ":×6"
+  },
+  {
+   "key": "17px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 6,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Chooser",
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "sample": "Continue with Google×2, Daily check-in×1, A lapse×1, Continue with email×1, Sign in with email×1"
+  },
+  {
+   "key": "30px / 700 / lh normal / ls -0.6px / #F2F0EC",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Morning-Energy",
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood",
+    "Email-Login/SOS-Reassess",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Urge-Log-Intensity"
+   ],
+   "sample": "Intense×2, Low×1, Steady×1, Mixed×1, Noticeable×1"
+  },
+  {
+   "key": "26px / 700 / lh 33px / ls -0.6px / #FFFFFF",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "sample": "Breathe in.×1, Get out of bed.×1, Your pledge.×1, Every urge so far has ended.×1, You’re riding a wave.×1, You’ve outlasted this before.×1"
+  },
+  {
+   "key": "15px / 400 / lh normal / ls 0 / rgba(255,255,255,0.6)",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "sample": "I slipped×6"
+  },
+  {
+   "key": "11(svg) / 700 / lh normal / ls 0 / #9B968E",
+   "n": 5,
+   "frames": 2,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Urge-Overview-When"
+   ],
+   "sample": "Clean day×1, 12 am×1, 6 am×1, 12 pm×1, 6 pm×1"
+  },
+  {
+   "key": "13px / 700 / lh 16px / ls 0 / #111111",
+   "n": 5,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Lesson-Scroll-5",
+    "Week-01-Reset/L1-Frame-5",
+    "Week-03-In-the-Moment/L15-Frame-5",
+    "Week-04-Know-Your-Brain/L28-Frame-3",
+    "Week-06-Discipline/L40-Frame-6"
+   ],
+   "sample": "Change this part×2, Close, move, begin×1, An earlier point to act×1, The thought can stay×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / #111111",
+   "n": 5,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Reports",
+    "Email-Login/Week-VI-Discipline",
+    "Email-Login/Where-We-d-Start"
+   ],
+   "sample": "Open this week’s report×1, Keep rules that serve a purpose×1, Late at night×1, Home alone×1, Phone in bed×1"
+  },
+  {
+   "key": "13px / 400 / lh normal / ls 0 / rgba(255,255,255,0.62)",
+   "n": 5,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Surfed"
+   ],
+   "sample": "4 sec×1, Waited out the timer×1, Went for a walk×1, Called a friend×1, Took a cold shower×1"
+  },
+  {
+   "key": "66(svg) / 700 / lh normal / ls 0 / #0D0D0D",
+   "n": 4,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Medallion-Received",
+    "Lesson-Illustrations-v4/Medal",
+    "Week-12-Leave-It-Behind/L81-Frame-10"
+   ],
+   "sample": "V×4"
+  },
+  {
+   "key": "24px / 700 / lh 33px / ls -0.4px / #F2F0EC",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Morning-Resign-Pledge",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge"
+   ],
+   "sample": "The mornings are mine again.×4"
+  },
+  {
+   "key": "18px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Paywall",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Today-Home-III"
+   ],
+   "sample": "Monthly×1, Deckhand×1, Sam Reyes×1, Urge surfing×1"
+  },
+  {
+   "key": "15px / 400 / lh 24px / ls 0 / rgba(255,255,255,0.62)",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Score"
+   ],
+   "sample": "The day is not gone. The phone goes away×1, Slowly, through your nose. Let your shou×1, Stand up. Move somewhere with light.×1, This one is strong. None this strong has×1"
+  },
+  {
+   "key": "13px / 400 / lh 18px / ls 0 / #9B968E",
+   "n": 4,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Tiers-One-offs"
+   ],
+   "sample": "Finished onboarding×1, The first check-in×1, First slip logged×1, Back after 7+ days away×1"
+  },
+  {
+   "key": "26px / 700 / lh 32px / ls -0.7px / #F2F0EC",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home"
+   ],
+   "sample": "Good morning.×3, Good evening.×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home"
+   ],
+   "sample": "Fr×4"
+  },
+  {
+   "key": "16px / 700 / lh 20px / ls -0.2px / #F2F0EC",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-Task"
+   ],
+   "sample": "Naming your triggers×2, Urge surfing×2"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #FFFFFF",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Score"
+   ],
+   "sample": "Bored×1, Relationship×1, Work or school×1, 28 clean, 2 slips×1"
+  },
+  {
+   "key": "24px / 700 / lh 31px / ls 0 / #F2F0EC",
+   "n": 4,
+   "frames": 1,
+   "ex": [
+    "Week-03-In-the-Moment/L19-Frame-4"
+   ],
+   "sample": "H×1, A×1, L×1, T×1"
+  },
+  {
+   "key": "13px / 700 / lh 22px / ls 0 / #9B968E",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ],
+   "sample": "10 of 12 earned×2, 2 still to earn×1"
+  },
+  {
+   "key": "15px / 700 / lh 24px / ls 0 / #F2F0EC",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Letter-Week-XII",
+    "Email-Login/Where-We-d-Start"
+   ],
+   "sample": "9 of the next 30 days×1, you do not need twelve perfect weeks.×1, Start with this.×1"
+  },
+  {
+   "key": "38px / 700 / lh normal / ls 0 / #111111",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Edit-Profile",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo"
+   ],
+   "sample": "S×3"
+  },
+  {
+   "key": "15.5px / 700 / lh 25px / ls 0 / #F2F0EC",
+   "n": 3,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ],
+   "sample": "I want to be present for the people I lo×1, — the you who makes it out×1, — VICI×1"
+  },
+  {
+   "key": "11px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Urges",
+    "Email-Login/Weekly-Report-Days"
+   ],
+   "sample": "S×3"
+  },
+  {
+   "key": "17px / 700 / lh normal / ls 0 / #111111",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Chooser",
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ],
+   "sample": "Continue with Apple×2, An urge×1"
+  },
+  {
+   "key": "15px / 400 / lh normal / ls 0 / #B5B0A8",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Score-Detail",
+    "Email-Login/Welcome-Back"
+   ],
+   "sample": "Already have an account?×1, May – July×1, New here?×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0.4px / #9B968E",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Paywall",
+    "Email-Login/Welcome-Back"
+   ],
+   "sample": "Terms · Privacy×2, Terms · Restore×1"
+  },
+  {
+   "key": "28px / 700 italic / lh normal / ls 0 / #F2F0EC",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge"
+   ],
+   "sample": "Jerry×3"
+  },
+  {
+   "key": "60px / 700 / lh 70px / ls -2.4px / #F2F0EC",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ],
+   "sample": "1,240×3"
+  },
+  {
+   "key": "17px / 700 / lh normal / ls -0.2px / #F2F0EC",
+   "n": 3,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Tiers-One-offs"
+   ],
+   "sample": "Veni×1, First light×1, Black Box×1"
+  },
+  {
+   "key": "13px / 700 / lh 16px / ls 0 / #9B968E",
+   "n": 3,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home"
+   ],
+   "sample": "Your pledge×1, Tonight×1, This morning×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / rgba(255,255,255,0.55)",
+   "n": 3,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ],
+   "sample": "Oldest×1, Longest: 41 min×1, Latest×1"
+  },
+  {
+   "key": "12px / 700 / lh 17px / ls 0 / #B5B0A8",
+   "n": 3,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "Full 12-week programme×1, SOS support anytime×1, Track your progress×1"
+  },
+  {
+   "key": "13px / 400 / lh 19px / ls 0 / #9B968E",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy"
+   ],
+   "sample": "Hides journal previews and entry titles ×1, Deleting your account erases your journa×1"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 0 / #B5B0A8",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ],
+   "sample": "Relapse×1, Clean day×1"
+  },
+  {
+   "key": "15px / 400 / lh 23px / ls 0 / #B5B0A8",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Sheet-Sign-Out"
+   ],
+   "sample": "Masturbation isn’t part of what you’re t×1, Your log, letters and medallions stay sa×1"
+  },
+  {
+   "key": "22px / 700 / lh normal / ls -0.3px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ],
+   "sample": "Dear Sam,×2"
+  },
+  {
+   "key": "26px / 700 / lh normal / ls -0.6px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Week-XII",
+    "Email-Login/Score-Detail-Moves"
+   ],
+   "sample": "Sam —×1, +86×1"
+  },
+  {
+   "key": "14(svg) / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ],
+   "sample": "Relapse frequency×2"
+  },
+  {
+   "key": "11(svg) / 700 / lh normal / ls 1.2 / #6B675F",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ],
+   "sample": "3 MONTHS×2"
+  },
+  {
+   "key": "14(svg) / 700 / lh normal / ls 0 / #111111",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ],
+   "sample": "5× a week×1, 2× a week×1"
+  },
+  {
+   "key": "14px / 400 / lh normal / ls 0 / #B5B0A8",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Today-Home-III"
+   ],
+   "sample": "$39.99 a year. Renews 10 Jul 2027×1, Five minutes. Ride the next one out.×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / #111111",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "Active×1, Save 74%×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls -0.2px / #9B968E",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Medallions-Still-To-Earn"
+   ],
+   "sample": "Archive×1, Return×1"
+  },
+  {
+   "key": "34px / 700 / lh 40px / ls -0.6px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Check-in-Cover",
+    "Email-Login/Paywall"
+   ],
+   "sample": "Morning check-in.×1, Take your life back.×1"
+  },
+  {
+   "key": "34px / 700 / lh 40px / ls -0.6px / #FFFFFF",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover"
+   ],
+   "sample": "Day 13, closed.×1, Night check-in.×1"
+  },
+  {
+   "key": "16px / 400 / lh 25px / ls 0 / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/One-Bad-Day",
+    "Email-Login/What-You-Want-Back"
+   ],
+   "sample": "What matters is that you come back.×1, More of your time and attention going wh×1"
+  },
+  {
+   "key": "16px / 400 / lh 24px / ls 0 / #F2F0EC",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall-Rescue"
+   ],
+   "sample": "Day 2 — a reminder, before any charge×1, Day 3 — $39.99/year begins, unless you c×1"
+  },
+  {
+   "key": "14px / 400 / lh 20px / ls 0 / #B5B0A8",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ],
+   "sample": "Twenty seconds — where’s your head at to×1, The time you told us about. SOS is one t×1"
+  },
+  {
+   "key": "18px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail-Ranks"
+   ],
+   "sample": "Captain×1, Helmsman×1"
+  },
+  {
+   "key": "11(svg) / 600 / lh normal / ls 0 / #9B968E",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ],
+   "sample": "1,400×1, 1,000×1"
+  },
+  {
+   "key": "13(svg) / 600 / lh normal / ls 0 / #9B968E",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ],
+   "sample": "May×1, Jun×1"
+  },
+  {
+   "key": "12(svg) / 800 / lh normal / ls 0 / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Weekly-Report"
+   ],
+   "sample": "S×2"
+  },
+  {
+   "key": "22px / 700 / lh 28px / ls -0.6px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo"
+   ],
+   "sample": "Name×1, Profile photo×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / rgba(255,255,255,0.4)",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "sample": "Hold×1, Out×1"
+  },
+  {
+   "key": "13px / 400 / lh normal / ls 0 / rgba(255,255,255,0.3)",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ],
+   "sample": "4 sec×1, 6 sec×1"
+  },
+  {
+   "key": "44px / 700 / lh 67px / ls -1.5px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Urge-Overview-Mood",
+    "Email-Login/Urge-Overview"
+   ],
+   "sample": "Tense×1, Strong×1"
+  },
+  {
+   "key": "30px / 700 / lh 56px / ls 0 / #2E2E2E",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ],
+   "sample": "22×1, 26×1"
+  },
+  {
+   "key": "34px / 700 / lh 60px / ls 0 / #5A574F",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ],
+   "sample": "23×1, 25×1"
+  },
+  {
+   "key": "13px / 700 / lh 16px / ls 0.2px / #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Week-05-Why-It-Feels-Worth-It/L35-Frame-5",
+    "Week-11-Build-a-Life-You-Want/L75-Frame-8"
+   ],
+   "sample": "Today×2"
+  },
+  {
+   "key": "68(svg) / 700 / lh normal / ls -2 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/A-Clean-Day"
+   ],
+   "sample": "1×1"
+  },
+  {
+   "key": "20px / 700 / lh 29px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet"
+   ],
+   "sample": "Phone stays out of the bedroom×1"
+  },
+  {
+   "key": "44px / 700 / lh 52px / ls -1.5px / #FFFFFF",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "sample": "About 6,100 days×1"
+  },
+  {
+   "key": "17px / 400 / lh 26px / ls 0 / rgba(255,255,255,0.75)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ],
+   "sample": "If nothing changes.×1"
+  },
+  {
+   "key": "44px / 700 / lh 52px / ls -1.5px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-365"
+   ],
+   "sample": "About 110 days×1"
+  },
+  {
+   "key": "16px / 400 / lh normal / ls 0 / #111111",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker"
+   ],
+   "sample": "Somewhere private×1"
+  },
+  {
+   "key": "44px / 700 / lh 50px / ls -0.6px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Day-Zero"
+   ],
+   "sample": "Day 0×1"
+  },
+  {
+   "key": "19px / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Day-Zero"
+   ],
+   "sample": "Prepare for tonight×1"
+  },
+  {
+   "key": "60(svg) / 700 / lh normal / ls 0 / #0D0D0D",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Drop-Received"
+   ],
+   "sample": "V×1"
+  },
+  {
+   "key": "16px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Enlisting-Aegis"
+   ],
+   "sample": "Choosing where to start×1"
+  },
+  {
+   "key": "15px / 700 / lh 23px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Goal-Confirmation"
+   ],
+   "sample": "Porn is.×1"
+  },
+  {
+   "key": "13px / 400 / lh normal / ls 0 / rgba(17,17,17,0.6)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Log-Chooser"
+   ],
+   "sample": "How strong, what fed it, what you did×1"
+  },
+  {
+   "key": "24px / 700 / lh normal / ls -0.5px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Manage-Subscription"
+   ],
+   "sample": "Yearly×1"
+  },
+  {
+   "key": "6.4(svg) / 900 / lh normal / ls 0.6 / #5A574F",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Medallions-Still-To-Earn"
+   ],
+   "sample": "I×1"
+  },
+  {
+   "key": "19px / 700 / lh 28px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Morning-Task-Check"
+   ],
+   "sample": "Write down each trigger the moment you n×1"
+  },
+  {
+   "key": "18px / 700 / lh 1 / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-2-Record"
+   ],
+   "sample": "+×1"
+  },
+  {
+   "key": "22px / 400 / lh 34px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-3-Reflection"
+   ],
+   "sample": "Sam called at the right moment…×1"
+  },
+  {
+   "key": "16px / 400 / lh 25px / ls 0 / rgba(255,255,255,0.6)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-4-Closed"
+   ],
+   "sample": "See you in the morning.×1"
+  },
+  {
+   "key": "16px / 700 / lh 24px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall-Rescue"
+   ],
+   "sample": "Today — everything unlocks×1"
+  },
+  {
+   "key": "11px / 700 / lh normal / ls 1px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "Save 74%×1"
+  },
+  {
+   "key": "18px / 700 / lh normal / ls 0 / #111111",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "Yearly×1"
+  },
+  {
+   "key": "12px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "Best value×1"
+  },
+  {
+   "key": "26px / 700 / lh normal / ls -0.8px / #111111",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "$39.99×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "/year×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / rgba(17,17,17,0.7)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "$3.33 a month×1"
+  },
+  {
+   "key": "26px / 700 / lh normal / ls -0.8px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ],
+   "sample": "$12.99×1"
+  },
+  {
+   "key": "20px / 400 / lh 30px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/SOS-Afterward"
+   ],
+   "sample": "I need to say…×1"
+  },
+  {
+   "key": "18px / 700 / lh 27px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/SOS-Challenge"
+   ],
+   "sample": "Send one message — anything — or go stan×1"
+  },
+  {
+   "key": "18px / 900 / lh normal / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail-Ranks"
+   ],
+   "sample": "Navigator×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / #B5B0A8",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail-Ranks"
+   ],
+   "sample": "You’re here. 60 to go×1"
+  },
+  {
+   "key": "13(svg) / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ],
+   "sample": "Jul×1"
+  },
+  {
+   "key": "18px / 700 / lh normal / ls -0.2px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ],
+   "sample": "+90 points this quarter×1"
+  },
+  {
+   "key": "14px / 400 / lh 20px / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Sheet-Edit-Name"
+   ],
+   "sample": "Shown on your vow and your letters.×1"
+  },
+  {
+   "key": "24px / 700 / lh 30px / ls -0.6px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Sheet-Sign-Out"
+   ],
+   "sample": "Sign out?×1"
+  },
+  {
+   "key": "30px / 700 / lh 36px / ls -0.6px / #FFFFFF",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Slip-Third"
+   ],
+   "sample": "You can still stop here.×1"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 7px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Splash"
+   ],
+   "sample": "VICI×1"
+  },
+  {
+   "key": "76(svg) / 700 / lh normal / ls -3 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ],
+   "sample": "842×1"
+  },
+  {
+   "key": "14(svg) / 600 / lh normal / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ],
+   "sample": "of 1,000×1"
+  },
+  {
+   "key": "40px / 700 / lh 46px / ls -0.6px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ],
+   "sample": "The vow.×1"
+  },
+  {
+   "key": "21px / 400 / lh 33px / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ],
+   "sample": "I’m giving this twelve weeks. I don’t ne×1"
+  },
+  {
+   "key": "30px / 700 italic / lh normal / ls -0.5px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ],
+   "sample": "Sam×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0.5px / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ],
+   "sample": "Signed on day 0×1"
+  },
+  {
+   "key": "17px / 700 / lh normal / ls -0.2px / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Tiers-One-offs"
+   ],
+   "sample": "Return×1"
+  },
+  {
+   "key": "20px / 700 / lh 27px / ls -0.4px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-II"
+   ],
+   "sample": "Put your phone somewhere hard to reach b×1"
+  },
+  {
+   "key": "22px / 700 / lh 31px / ls -0.3px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ],
+   "sample": "The mornings are mine again.×1"
+  },
+  {
+   "key": "16px / 700 italic / lh normal / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ],
+   "sample": "Jerry×1"
+  },
+  {
+   "key": "17px / 700 / lh 24px / ls -0.4px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-Task"
+   ],
+   "sample": "Put the device you use for porn out of r×1"
+  },
+  {
+   "key": "56px / 700 / lh 56px / ls -0.5px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ],
+   "sample": "1,240×1"
+  },
+  {
+   "key": "12(svg) / 700 / lh normal / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ],
+   "sample": "Today×1"
+  },
+  {
+   "key": "46(svg) / 700 / lh normal / ls -1.5 / #FFFFFF",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Now"
+   ],
+   "sample": "17:42×1"
+  },
+  {
+   "key": "13(svg) / 600 / lh normal / ls 0 / rgba(255,255,255,0.5)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Now"
+   ],
+   "sample": "Until it passes×1"
+  },
+  {
+   "key": "26px / 700 / lh 35px / ls -0.5px / #FFFFFF",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Pledges"
+   ],
+   "sample": "The mornings are mine again.×1"
+  },
+  {
+   "key": "22px / 700 italic / lh normal / ls 0 / rgba(255,255,255,0.62)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Pledges"
+   ],
+   "sample": "Jerry×1"
+  },
+  {
+   "key": "15px / 400 / lh 22px / ls 0 / rgba(255,255,255,0.62)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Pledges"
+   ],
+   "sample": "Signed 14 days ago. Kept every day since×1"
+  },
+  {
+   "key": "64px / 700 / lh 68px / ls -2.2px / #FFFFFF",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ],
+   "sample": "23×1"
+  },
+  {
+   "key": "15px / 400 / lh 22px / ls 0 / rgba(255,255,255,0.55)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ],
+   "sample": "Urges ridden out×1"
+  },
+  {
+   "key": "13px / 700 / lh normal / ls 0 / rgba(255,255,255,0.5)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Score"
+   ],
+   "sample": "Last 30 days×1"
+  },
+  {
+   "key": "20(svg) / 700 / lh normal / ls -0.4 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview-When"
+   ],
+   "sample": "11 pm – 1 am×1"
+  },
+  {
+   "key": "17px / 400 / lh normal / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q24-Name"
+   ],
+   "sample": "Your name×1"
+  },
+  {
+   "key": "72px / 700 / lh 100px / ls -2px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ],
+   "sample": "24×1"
+  },
+  {
+   "key": "14px / 700 / lh normal / ls 0 / rgba(17,17,17,0.6)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Week-VI-Discipline"
+   ],
+   "sample": "38×1"
+  },
+  {
+   "key": "44px / 700 / lh 48px / ls -1.6px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "$26.99×1"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "/ year×1"
+  },
+  {
+   "key": "16px / 700 / lh normal / ls 0 / #5A574F",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "$39.99×1"
+  },
+  {
+   "key": "15px / 700 / lh normal / ls 0 / #B5B0A8",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ],
+   "sample": "That’s $2.25 a month.×1"
+  },
+  {
+   "key": "23px / 700 / lh 32px / ls -0.4px / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ],
+   "sample": "I’m done letting the wave decide. One ev×1"
+  },
+  {
+   "key": "24px / 700 italic / lh normal / ls 0 / #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ],
+   "sample": "Jerry×1"
+  },
+  {
+   "key": "14px / 400 / lh 21px / ls 0 / #9B968E",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ],
+   "sample": "After a relapse you can re-sign the vow.×1"
+  }
+ ],
+ "radius": [
+  {
+   "key": "border-radius:2px",
+   "n": 2583,
+   "frames": 1293,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13"
+   ]
+  },
+  {
+   "key": "border-radius:22px",
+   "n": 1066,
+   "frames": 1006,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Lapse-Done",
+    "Email-Login/Lapse-When",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12"
+   ]
+  },
+  {
+   "key": "border-radius:29px",
+   "n": 495,
+   "frames": 491,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "border-radius:1px",
+   "n": 377,
+   "frames": 47,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/First-Principle",
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Lapse-Trigger"
+   ]
+  },
+  {
+   "key": "border-radius:18px",
+   "n": 328,
+   "frames": 143,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges"
+   ]
+  },
+  {
+   "key": "border-radius:24px",
+   "n": 243,
+   "frames": 73,
+   "ex": [
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Morning-Resign-Pledge",
+    "Email-Login/Morning-Task-Check"
+   ]
+  },
+  {
+   "key": "border-radius:12px",
+   "n": 195,
+   "frames": 94,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Paywall",
+    "Email-Login/Week-I-Reset-P2",
+    "Email-Login/Week-I-Reset"
+   ]
+  },
+  {
+   "key": "border-radius:50%",
+   "n": 162,
+   "frames": 26,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "border-radius:20px",
+   "n": 157,
+   "frames": 123,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Day-Zero"
+   ]
+  },
+  {
+   "key": "border-radius:2.5px",
+   "n": 135,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "border-radius:14px",
+   "n": 113,
+   "frames": 106,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Morning-Energy",
+    "Email-Login/Nightly-Check-in-Time"
+   ]
+  },
+  {
+   "key": "border-radius:48px",
+   "n": 88,
+   "frames": 88,
+   "ex": [
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lesson-Scroll-14",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo",
+    "Week-01-Reset/L1-Frame-14",
+    "Week-01-Reset/L2-Frame-16"
+   ]
+  },
+  {
+   "key": "border-radius:7px",
+   "n": 65,
+   "frames": 11,
+   "ex": [
+    "Email-Login/Today-Home",
+    "Week-01-Reset/L2-Frame-11",
+    "Week-03-In-the-Moment/L16-Frame-11",
+    "Week-03-In-the-Moment/L19-Frame-11",
+    "Week-05-Why-It-Feels-Worth-It/L30-Frame-11",
+    "Week-07-Relapse-and-Adversity/L44-Frame-12"
+   ]
+  },
+  {
+   "key": "border-radius:8px",
+   "n": 57,
+   "frames": 55,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "border-radius:6px",
+   "n": 56,
+   "frames": 11,
+   "ex": [
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Overview",
+    "Week-01-Reset/L1-Frame-5"
+   ]
+  },
+  {
+   "key": "border-radius:30px",
+   "n": 40,
+   "frames": 40,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges"
+   ]
+  },
+  {
+   "key": "border-radius:3px",
+   "n": 36,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Log-Urges",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ]
+  },
+  {
+   "key": "border-radius:21px",
+   "n": 29,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Nightly-Check-in-Time",
+    "Email-Login/Settings-Check-in-Time",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Your-Plan"
+   ]
+  },
+  {
+   "key": "border-radius:15px",
+   "n": 23,
+   "frames": 7,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy",
+    "Email-Login/SOS-Reassess",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Surf-Complete",
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "border-radius:4px",
+   "n": 17,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Log-Urges",
+    "Email-Login/SOS-Reassess",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  },
+  {
+   "key": "border-radius:16px",
+   "n": 17,
+   "frames": 15,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Slip-When"
+   ]
+  },
+  {
+   "key": "border-radius:11px",
+   "n": 14,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Morning-1-Yesterday",
+    "Email-Login/Night-2-Record",
+    "Email-Login/Paywall-Rescue",
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "border-radius:17px",
+   "n": 8,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Log-Urges",
+    "Email-Login/Paywall",
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "border-radius:13px",
+   "n": 7,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  },
+  {
+   "key": "border-radius:9px",
+   "n": 7,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Weekly-Report-Days"
+   ]
+  },
+  {
+   "key": "border-radius:26px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Log-Reports",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task"
+   ]
+  },
+  {
+   "key": "border-radius:32px",
+   "n": 5,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood",
+    "Email-Login/What-You-Want-Back"
+   ]
+  },
+  {
+   "key": "border-radius:28px 28px 0 0",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo",
+    "Email-Login/Sheet-Sign-Out"
+   ]
+  },
+  {
+   "key": "border-radius:42px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Lapse-Done",
+    "Email-Login/Slip-Logged",
+    "Email-Login/Urge-Log-Done"
+   ]
+  },
+  {
+   "key": "border-radius:5px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Log-Chooser"
+   ]
+  },
+  {
+   "key": "border-radius:66px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-5-Done",
+    "Email-Login/Paywall-Confirmed"
+   ]
+  },
+  {
+   "key": "border-radius:10px",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ]
+  },
+  {
+   "key": "border-radius:24px 24px 0 0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Letter-Week-XII"
+   ]
+  }
+ ],
+ "shadow": [
+  {
+   "key": "0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(20,20,22,0.14)",
+   "n": 1297,
+   "frames": 1297,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px #2E2E2E",
+   "n": 1023,
+   "frames": 987,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11"
+   ]
+  },
+  {
+   "key": "0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)",
+   "n": 230,
+   "frames": 230,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "inset 0 0 0 1.5px #9B968E",
+   "n": 159,
+   "frames": 32,
+   "ex": [
+    "Week-01-Reset/L2-Frame-11",
+    "Week-01-Reset/L7-Frame-11",
+    "Week-02-Changing-Your-Mindset/L10-Frame-11",
+    "Week-02-Changing-Your-Mindset/L13-Frame-12",
+    "Week-03-In-the-Moment/L16-Frame-11",
+    "Week-03-In-the-Moment/L18-Frame-11"
+   ]
+  },
+  {
+   "key": "none",
+   "n": 102,
+   "frames": 36,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Login",
+    "Email-Login/Morning-Energy"
+   ]
+  },
+  {
+   "key": "0 1px 2px rgba(0,0,0,0.04)",
+   "n": 68,
+   "frames": 17,
+   "ex": [
+    "Email-Login/Reminders-Setup",
+    "Email-Login/V3-Q1",
+    "Email-Login/V3-Q10",
+    "Email-Login/V3-Q13",
+    "Email-Login/V3-Q15",
+    "Email-Login/V3-Q16"
+   ]
+  },
+  {
+   "key": "0 1px 2px rgba(0,0,0,0.06), 0 12px 32px rgba(40,38,32,0.08)",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "inset 0 0 0 1.5px #2E2E2E",
+   "n": 18,
+   "frames": 18,
+   "ex": [
+    "Week-01-Reset/L2-Frame-12",
+    "Week-01-Reset/L7-Frame-12",
+    "Week-02-Changing-Your-Mindset/L13-Frame-13",
+    "Week-03-In-the-Moment/L16-Frame-12",
+    "Week-03-In-the-Moment/L18-Frame-12",
+    "Week-03-In-the-Moment/L19-Frame-12"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px #F2F0EC",
+   "n": 11,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Paywall-Rescue",
+    "Email-Login/Paywall",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Today-Home-II"
+   ]
+  },
+  {
+   "key": "inset 0 0 0 1.5px #F2F0EC",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Week-01-Reset/L6-Frame-4",
+    "Week-02-Changing-Your-Mindset/L10-Frame-5",
+    "Week-02-Changing-Your-Mindset/L12-Frame-3",
+    "Week-02-Changing-Your-Mindset/L13-Frame-6",
+    "Week-05-Why-It-Feels-Worth-It/L31-Frame-7",
+    "Week-06-Discipline/L38-Frame-8"
+   ]
+  },
+  {
+   "key": "inset 0 0 0 1.5px #45423E",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ]
+  },
+  {
+   "key": "0 0 0 1px rgba(255,255,255,0.15)",
+   "n": 3,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px rgba(17,17,17,0.3)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Log-Chooser"
+   ]
+  },
+  {
+   "key": "0 0 0 4px #0D0D0D, 0 0 0 6px #F2F0EC",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px rgba(255,255,255,0.62)",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Score"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px #2E2E2E inset",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Weekly-Report-Days"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px #5A574F",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "0 0 0 1.5px #F2F0EC inset",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail-Moves"
+   ]
+  },
+  {
+   "key": "0 0 0 2px #F2F0EC inset",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Weekly-Report-Days"
+   ]
+  }
+ ],
+ "opacity": [
+  {
+   "key": "0.06",
+   "n": 1340,
+   "frames": 1340,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14"
+   ],
+   "tag": "div×1340"
+  },
+  {
+   "key": "0.05",
+   "n": 230,
+   "frames": 230,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ],
+   "tag": "div×230"
+  },
+  {
+   "key": "0.32",
+   "n": 53,
+   "frames": 18,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze",
+    "Email-Login/Detail-Gold"
+   ],
+   "tag": "svg×53"
+  },
+  {
+   "key": "svg fill-opacity=0.3",
+   "n": 32,
+   "frames": 21,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "tag": "g×32"
+  },
+  {
+   "key": "svg stroke-opacity=0.5",
+   "n": 32,
+   "frames": 21,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ],
+   "tag": "circle×32"
+  },
+  {
+   "key": "svg fill-opacity=0.12",
+   "n": 16,
+   "frames": 14,
+   "ex": [
+    "Email-Login/First-Principle",
+    "Email-Login/Surf-Complete",
+    "Email-Login/Week-III-In-the-Moment-P2",
+    "Email-Login/Week-III-In-the-Moment",
+    "Lesson-Illustrations-v4/Cake",
+    "Lesson-Illustrations-v4/Lighthouse"
+   ],
+   "tag": "path×13, circle×3"
+  },
+  {
+   "key": "0.09",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ],
+   "tag": "div×10"
+  },
+  {
+   "key": "svg fill-opacity=0.09",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/SOS-Loc-Bathroom",
+    "Email-Login/SOS-Loc-Private-Room",
+    "Email-Login/SOS-Trig-Alone",
+    "Email-Login/Slip-Trigger-Being-alone",
+    "Email-Login/Surf-Step-3"
+   ],
+   "tag": "path×10"
+  },
+  {
+   "key": "svg fill-opacity=0.08",
+   "n": 7,
+   "frames": 7,
+   "ex": [
+    "Email-Login/SOS-Feel-Low",
+    "Email-Login/SOS-Loc-Home-Alone",
+    "Email-Login/V3-Q10",
+    "Lesson-Illustrations-v4/Desk-lamp",
+    "Lesson-Illustrations-v4/Park-bench",
+    "Week-01-Reset/L4-Frame-9"
+   ],
+   "tag": "path×6, circle×1"
+  },
+  {
+   "key": "svg stop-opacity=0.22",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ],
+   "tag": "stop×1"
+  },
+  {
+   "key": "svg stop-opacity=0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ],
+   "tag": "stop×1"
+  },
+  {
+   "key": "svg fill-opacity=0.14",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Lesson-Illustrations-v4/Lighthouse"
+   ],
+   "tag": "path×1"
+  },
+  {
+   "key": "svg fill-opacity=0.06",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Lesson-Illustrations-v4/Lit-match"
+   ],
+   "tag": "circle×1"
+  },
+  {
+   "key": "svg fill-opacity=0.1",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Lesson-Illustrations-v4/Open-door"
+   ],
+   "tag": "path×1"
+  },
+  {
+   "key": "svg fill-opacity=0.35",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Week-03-In-the-Moment/L15-Frame-5"
+   ],
+   "tag": "path×1"
+  }
+ ],
+ "letterSpacing": [
+  {
+   "key": "0.2px",
+   "n": 821,
+   "frames": 772,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3"
+   ]
+  },
+  {
+   "key": "-0.4px",
+   "n": 582,
+   "frames": 580,
+   "ex": [
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Lesson-Scroll-9"
+   ]
+  },
+  {
+   "key": "0.1px",
+   "n": 487,
+   "frames": 487,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "-0.6px",
+   "n": 401,
+   "frames": 395,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "-0.2px",
+   "n": 74,
+   "frames": 60,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions",
+    "Email-Login/Score-Detail",
+    "Email-Login/Tiers-One-offs",
+    "Email-Login/Today-Home-II"
+   ]
+  },
+  {
+   "key": "0.3px",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "-2.2px",
+   "n": 9,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Overview-Summary"
+   ]
+  },
+  {
+   "key": "-1.7px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "-1.5px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Urge-Overview-Mood",
+    "Email-Login/Urge-Overview"
+   ]
+  },
+  {
+   "key": "-0.5px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Manage-Subscription",
+    "Email-Login/The-Vow",
+    "Email-Login/Today-Home",
+    "Email-Login/Urge-Hub-Pledges"
+   ]
+  },
+  {
+   "key": "-0.7px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "-0.3px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "0.4px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Paywall",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "-2.4px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "0",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "-0.8px",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "1px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "7px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Splash"
+   ]
+  },
+  {
+   "key": "0.5px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "-2px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "-1.6px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ]
+  }
+ ],
+ "lineHeight": [
+  {
+   "key": "28px",
+   "n": 1369,
+   "frames": 1013,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ]
+  },
+  {
+   "key": "16px",
+   "n": 992,
+   "frames": 775,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3"
+   ]
+  },
+  {
+   "key": "31px",
+   "n": 580,
+   "frames": 575,
+   "ex": [
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Lesson-Scroll-9"
+   ]
+  },
+  {
+   "key": "22px",
+   "n": 511,
+   "frames": 260,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "36px",
+   "n": 262,
+   "frames": 262,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-14",
+    "Email-Login/Letter-Arrival"
+   ]
+  },
+  {
+   "key": "20px",
+   "n": 142,
+   "frames": 57,
+   "ex": [
+    "Email-Login/Reminders-Setup",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-Task",
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale"
+   ]
+  },
+  {
+   "key": "24px",
+   "n": 117,
+   "frames": 114,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Cue-Intro-Modal"
+   ]
+  },
+  {
+   "key": "33px",
+   "n": 94,
+   "frames": 90,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "38px",
+   "n": 33,
+   "frames": 33,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "25px",
+   "n": 11,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/One-Bad-Day",
+    "Email-Login/What-You-Want-Back"
+   ]
+  },
+  {
+   "key": "67px",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Urge-Overview-Mood",
+    "Email-Login/Urge-Overview-Summary"
+   ]
+  },
+  {
+   "key": "50px",
+   "n": 9,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Day-Zero",
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse"
+   ]
+  },
+  {
+   "key": "32px",
+   "n": 5,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home",
+    "Email-Login/Your-Vow-Page"
+   ]
+  },
+  {
+   "key": "40px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Morning-Check-in-Cover",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "18px",
+   "n": 4,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Tiers-One-offs"
+   ]
+  },
+  {
+   "key": "70px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "56px",
+   "n": 3,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home",
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "17px",
+   "n": 3,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ]
+  },
+  {
+   "key": "19px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy"
+   ]
+  },
+  {
+   "key": "52px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Cost-Next-365"
+   ]
+  },
+  {
+   "key": "23px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Sheet-Sign-Out"
+   ]
+  },
+  {
+   "key": "30px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/SOS-Afterward",
+    "Email-Login/Sheet-Sign-Out"
+   ]
+  },
+  {
+   "key": "27px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/SOS-Challenge",
+    "Email-Login/Today-Home-II"
+   ]
+  },
+  {
+   "key": "60px",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "1",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-2-Record"
+   ]
+  },
+  {
+   "key": "29px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet"
+   ]
+  },
+  {
+   "key": "26px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ]
+  },
+  {
+   "key": "34px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-3-Reflection"
+   ]
+  },
+  {
+   "key": "46px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "35px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Pledges"
+   ]
+  },
+  {
+   "key": "68px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ]
+  },
+  {
+   "key": "100px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "48px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ]
+  },
+  {
+   "key": "21px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ]
+  }
+ ],
+ "fontSize": [
+  {
+   "key": "13px",
+   "n": 2600,
+   "frames": 1510,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "18px",
+   "n": 1377,
+   "frames": 1017,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ]
+  },
+  {
+   "key": "16px",
+   "n": 883,
+   "frames": 550,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "15px",
+   "n": 802,
+   "frames": 288,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "24px",
+   "n": 586,
+   "frames": 581,
+   "ex": [
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-5",
+    "Email-Login/Lesson-Scroll-9"
+   ]
+  },
+  {
+   "key": "12px",
+   "n": 324,
+   "frames": 110,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Login",
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions",
+    "Email-Login/Paywall-Confirmed"
+   ]
+  },
+  {
+   "key": "30px",
+   "n": 296,
+   "frames": 276,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Lapse-When",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-14"
+   ]
+  },
+  {
+   "key": "14px",
+   "n": 176,
+   "frames": 48,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lapse-Done",
+    "Email-Login/Lapse-When"
+   ]
+  },
+  {
+   "key": "11.5px",
+   "n": 148,
+   "frames": 37,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "26px",
+   "n": 98,
+   "frames": 96,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "11px",
+   "n": 75,
+   "frames": 57,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Urges",
+    "Email-Login/Paywall",
+    "Email-Login/Weekly-Report-Days",
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale"
+   ]
+  },
+  {
+   "key": "22px",
+   "n": 61,
+   "frames": 13,
+   "ex": [
+    "Email-Login/Lapse-When",
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Morning-Check-in-Time",
+    "Email-Login/Night-3-Reflection",
+    "Email-Login/Nightly-Check-in-Time"
+   ]
+  },
+  {
+   "key": "32px",
+   "n": 33,
+   "frames": 33,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "12(svg)",
+   "n": 26,
+   "frames": 6,
+   "ex": [
+    "Email-Login/One-Bad-Day",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Starting-Score",
+    "Email-Login/Today-Home",
+    "Email-Login/Urge-Overview-When",
+    "Email-Login/Weekly-Report"
+   ]
+  },
+  {
+   "key": "6.4(svg)",
+   "n": 25,
+   "frames": 20,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "17px",
+   "n": 16,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Log-Chooser",
+    "Email-Login/Login",
+    "Email-Login/Tiers-One-offs",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/V3-Q24-Name"
+   ]
+  },
+  {
+   "key": "15.5px",
+   "n": 10,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ]
+  },
+  {
+   "key": "11(svg)",
+   "n": 9,
+   "frames": 5,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan",
+    "Email-Login/Score-Detail",
+    "Email-Login/Urge-Overview-When"
+   ]
+  },
+  {
+   "key": "64px",
+   "n": 9,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Overview-Summary"
+   ]
+  },
+  {
+   "key": "48px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "44px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Day-Zero",
+    "Email-Login/Urge-Overview-Mood",
+    "Email-Login/Urge-Overview",
+    "Email-Login/Yearly-Drop"
+   ]
+  },
+  {
+   "key": "34px",
+   "n": 6,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Morning-Check-in-Cover",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Paywall",
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "14(svg)",
+   "n": 5,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan",
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "66(svg)",
+   "n": 4,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Medallion-Received",
+    "Lesson-Illustrations-v4/Medal",
+    "Week-12-Leave-It-Behind/L81-Frame-10"
+   ]
+  },
+  {
+   "key": "13(svg)",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Score-Detail",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "20px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/SOS-Afterward",
+    "Email-Login/Today-Home-II"
+   ]
+  },
+  {
+   "key": "38px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Edit-Profile",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo"
+   ]
+  },
+  {
+   "key": "28px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge"
+   ]
+  },
+  {
+   "key": "60px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "19px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Day-Zero",
+    "Email-Login/Morning-Task-Check"
+   ]
+  },
+  {
+   "key": "68(svg)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/A-Clean-Day"
+   ]
+  },
+  {
+   "key": "60(svg)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Drop-Received"
+   ]
+  },
+  {
+   "key": "76(svg)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "40px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "21px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "56px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "46(svg)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "20(svg)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview-When"
+   ]
+  },
+  {
+   "key": "72px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "23px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ]
+  }
+ ],
+ "fontWeight": [
+  {
+   "key": "700",
+   "n": 5072,
+   "frames": 1580,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "400",
+   "n": 2454,
+   "frames": 1316,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "900",
+   "n": 44,
+   "frames": 27,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "600",
+   "n": 22,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Score-Detail",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Starting-Score",
+    "Email-Login/Today-Home",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Overview-When"
+   ]
+  },
+  {
+   "key": "400 italic",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ]
+  },
+  {
+   "key": "700 italic",
+   "n": 7,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge",
+    "Email-Login/The-Vow",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Urge-Hub-Pledges"
+   ]
+  },
+  {
+   "key": "800",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Weekly-Report"
+   ]
+  }
+ ],
+ "fontStyle": [
+  {
+   "key": "italic 400",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ],
+   "sample": "“Five storms met at full height. The wall is real now.”×1, “Twenty-five. What used to flood you now only gets loud.”×1, “The first wave broke against you, not over you.”×1, “Fifty waves. The sea hasn’t changed. The wall did.”×1, “Ten overwhelming urges, none of them decisive.”×1, “Twenty-five behind you now — the pattern is unmistakable.”×1, “Two hundred and fifty. The sea keeps coming. You keep stand×1, “Nine minutes, start to finish. You watched it rise, crest, ×1"
+  },
+  {
+   "key": "italic 700",
+   "n": 7,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge",
+    "Email-Login/The-Vow",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Urge-Hub-Pledges"
+   ],
+   "sample": "Jerry×6, Sam×1"
+  }
+ ],
+ "frameBg": [
+  {
+   "key": "#0D0D0D",
+   "n": 1515,
+   "frames": 1515,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "#111111",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "#121212",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ]
+  }
+ ],
+ "frameShadow": [
+  {
+   "key": "0 0 0 1px rgba(0,0,0,0.09), 0 16px 40px rgba(20,20,22,0.14)",
+   "n": 1297,
+   "frames": 1297,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13"
+   ]
+  },
+  {
+   "key": "0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)",
+   "n": 230,
+   "frames": 230,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  }
+ ],
+ "noise": [
+  {
+   "key": "url('noise-dark.png') op 0.06 inset:0 on #0D0D0D",
+   "n": 1287,
+   "frames": 1287,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14"
+   ]
+  },
+  {
+   "key": "url('noise.png') op 0.05 inset:0 on #0D0D0D",
+   "n": 228,
+   "frames": 228,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "url('noise-dark.png') op 0.06 inset:0 on undefined",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "url('noise-dark.png') op 0.09 inset:0 on #111111",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "url('noise.png') op 0.05 inset:0 on #121212",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ]
+  }
+ ],
+ "statusColor": [
+  {
+   "key": "#F2F0EC",
+   "n": 1517,
+   "frames": 1517,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "#FFFFFF",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  }
+ ],
+ "homeColor": [
+  {
+   "key": "#F2F0EC",
+   "n": 1517,
+   "frames": 1517,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "#FFFFFF",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Cost-By-Age-80",
+    "Email-Login/Night-4-Closed",
+    "Email-Login/Night-Check-in-Cover",
+    "Email-Login/Slip-Third",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  }
+ ],
+ "absPos": [
+  {
+   "key": "inset:0",
+   "n": 1532,
+   "frames": 1527,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:60px height:40px",
+   "n": 1408,
+   "frames": 1408,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  },
+  {
+   "key": "left:22px top:60px height:40px",
+   "n": 1311,
+   "frames": 1311,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:108px height:3px",
+   "n": 1287,
+   "frames": 1287,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14"
+   ]
+  },
+  {
+   "key": "left:32px right:32px top:140px bottom:128px",
+   "n": 1287,
+   "frames": 1287,
+   "ex": [
+    "Email-Login/Lesson-Scroll-1",
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-14"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:52px",
+   "n": 970,
+   "frames": 970,
+   "ex": [
+    "Email-Login/Lesson-Scroll-10",
+    "Email-Login/Lesson-Scroll-11",
+    "Email-Login/Lesson-Scroll-12",
+    "Email-Login/Lesson-Scroll-2",
+    "Email-Login/Lesson-Scroll-3",
+    "Email-Login/Lesson-Scroll-4"
+   ]
+  },
+  {
+   "key": "left:24px right:24px bottom:48px height:58px",
+   "n": 422,
+   "frames": 422,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver"
+   ]
+  },
+  {
+   "key": "left:0 top:190px",
+   "n": 79,
+   "frames": 79,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/First-Principle",
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Letter-Received"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:452px",
+   "n": 69,
+   "frames": 69,
+   "ex": [
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Medallion-Received",
+    "Email-Login/Morning-Check-in-Cover",
+    "Email-Login/Night-Check-in-Cover"
+   ]
+  },
+  {
+   "key": "left:24px right:24px bottom:96px height:58px",
+   "n": 65,
+   "frames": 65,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Letter-Read",
+    "Email-Login/Letter-Received"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:60px",
+   "n": 65,
+   "frames": 65,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Drop-Received",
+    "Email-Login/Letter-Arrival",
+    "Email-Login/Letter-Read",
+    "Email-Login/Letter-Received"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:136px",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Lapse-When",
+    "Email-Login/Log-Chooser"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:0 height:104px",
+   "n": 37,
+   "frames": 37,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "left:0 top:506px",
+   "n": 24,
+   "frames": 24,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Lapse-Trigger",
+    "Email-Login/Log-Chooser",
+    "Email-Login/Morning-1-Yesterday"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:338px",
+   "n": 24,
+   "frames": 24,
+   "ex": [
+    "Email-Login/Week-I-Reset-P2",
+    "Email-Login/Week-I-Reset",
+    "Email-Login/Week-II-Changing-Your-Mindset-P2",
+    "Email-Login/Week-II-Changing-Your-Mindset",
+    "Email-Login/Week-III-In-the-Moment-P2",
+    "Email-Login/Week-III-In-the-Moment"
+   ]
+  },
+  {
+   "key": "left:16px right:16px top:472px",
+   "n": 24,
+   "frames": 24,
+   "ex": [
+    "Email-Login/Week-I-Reset-P2",
+    "Email-Login/Week-I-Reset",
+    "Email-Login/Week-II-Changing-Your-Mindset-P2",
+    "Email-Login/Week-II-Changing-Your-Mindset",
+    "Email-Login/Week-III-In-the-Moment-P2",
+    "Email-Login/Week-III-In-the-Moment"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:108px",
+   "n": 15,
+   "frames": 15,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "left:16px right:16px top:164px",
+   "n": 14,
+   "frames": 14,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:451px",
+   "n": 11,
+   "frames": 11,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/First-Principle",
+    "Email-Login/Goal-Confirmation",
+    "Email-Login/Letter-Received",
+    "Email-Login/Onboarding-Start",
+    "Email-Login/One-Bad-Day"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:236px",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Urge-Overview-Mood",
+    "Email-Login/Urge-Overview-Summary"
+   ]
+  },
+  {
+   "key": "left:0 top:80px",
+   "n": 10,
+   "frames": 10,
+   "ex": [
+    "Email-Login/Week-I-Reset-P2",
+    "Email-Login/Week-I-Reset",
+    "Email-Login/Week-IX-Connection-P2",
+    "Email-Login/Week-IX-Connection",
+    "Email-Login/Week-V-Why-It-Feels-Worth-It-P2",
+    "Email-Login/Week-V-Why-It-Feels-Worth-It"
+   ]
+  },
+  {
+   "key": "left:0 top:582px",
+   "n": 9,
+   "frames": 9,
+   "ex": [
+    "Email-Login/V3-Q10",
+    "Email-Login/V3-Q13",
+    "Email-Login/V3-Q15",
+    "Email-Login/V3-Q16",
+    "Email-Login/V3-Q2",
+    "Email-Login/V3-Q21"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:440px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Urges",
+    "Email-Login/Morning-Energy",
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood",
+    "Email-Login/SOS-Reassess"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:155px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:351px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:493px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:603px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Tiers-Archive",
+    "Email-Login/Tiers-Breakwater",
+    "Email-Login/Tiers-Lessons",
+    "Email-Login/Tiers-Logbook",
+    "Email-Login/Tiers-Pulse",
+    "Email-Login/Tiers-Rebound"
+   ]
+  },
+  {
+   "key": "left:0 top:98.9px",
+   "n": 8,
+   "frames": 8,
+   "ex": [
+    "Email-Login/Week-II-Changing-Your-Mindset-P2",
+    "Email-Login/Week-II-Changing-Your-Mindset",
+    "Email-Login/Week-VI-Discipline-P2",
+    "Email-Login/Week-VI-Discipline",
+    "Email-Login/Week-VII-Relapse-and-Adversity-P2",
+    "Email-Login/Week-VII-Relapse-and-Adversity"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:160px",
+   "n": 7,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Tiers-One-offs",
+    "Email-Login/Urge-Hub-Breathe",
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:170px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze",
+    "Email-Login/Detail-Gold"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:366px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze",
+    "Email-Login/Detail-Gold"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:508px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze",
+    "Email-Login/Detail-Gold"
+   ]
+  },
+  {
+   "key": "left:44px right:44px top:608px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze",
+    "Email-Login/Detail-Gold"
+   ]
+  },
+  {
+   "key": "left:0 top:458px",
+   "n": 6,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Morning-Resign-Pledge",
+    "Email-Login/Night-Action-Reminder",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Slip-Pledge"
+   ]
+  },
+  {
+   "key": "left:32px right:32px top:352px",
+   "n": 5,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Urges",
+    "Email-Login/Settings-Weekly-Report",
+    "Email-Login/Weekly-Report-Days",
+    "Email-Login/Weekly-Report"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:180px",
+   "n": 5,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:199px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:232px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Morning-Energy",
+    "Email-Login/SOS-Reassess",
+    "Email-Login/SOS-Strength",
+    "Email-Login/Urge-Log-Intensity"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:248px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail",
+    "Email-Login/Urge-Overview-When"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:64px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-III",
+    "Email-Login/Today-Home-Task",
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:238px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:288px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions"
+   ]
+  },
+  {
+   "key": "right:24px bottom:52px width:60px height:60px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Morning-Task-Check"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:120px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Data-Privacy",
+    "Email-Login/Settings",
+    "Email-Login/Sheet-Sign-Out"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:124px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Edit-Profile",
+    "Email-Login/Sheet-Edit-Name",
+    "Email-Login/Sheet-Profile-Photo"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:200px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Lapse-Done",
+    "Email-Login/Slip-Logged",
+    "Email-Login/Urge-Log-Done"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:308px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Lapse-Done",
+    "Email-Login/Slip-Logged",
+    "Email-Login/Urge-Log-Done"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:436px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Paywall-Confirmed",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:372px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/SOS-Challenge",
+    "Email-Login/Urge-Overview-Summary",
+    "Email-Login/Weekly-Report-Urges"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:128px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:160px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:48px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Settings",
+    "Email-Login/Sheet-Sign-Out",
+    "Email-Login/Your-Vow-Page"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:140px",
+   "n": 3,
+   "frames": 3,
+   "ex": [
+    "Email-Login/V3-Q17",
+    "Email-Login/V3-Q5",
+    "Email-Login/What-starts-it"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:367px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Paywall-Rescue"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:232px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:530px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Cost-Next-365",
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:157px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Detail-Silver"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:353px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Detail-Silver"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:495px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Detail-Silver"
+   ]
+  },
+  {
+   "key": "left:44px right:44px top:595px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Detail-Paper",
+    "Email-Login/Detail-Silver"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:236px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:352px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Urge-Overview-Mood"
+   ]
+  },
+  {
+   "key": "left:16px right:16px top:112px bottom:150px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Letter-Read",
+    "Email-Login/Medallion-Letter"
+   ]
+  },
+  {
+   "key": "left:24px top:389px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Line-If-Nothing-Changes",
+    "Email-Login/Line-With-the-Plan"
+   ]
+  },
+  {
+   "key": "left:144.5px top:150px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:284px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:108px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:64px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:56px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Manage-Subscription",
+    "Email-Login/Sheet-Profile-Photo"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:208px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-1-Yesterday",
+    "Email-Login/Night-2-Record"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:232px height:150px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Morning-Feeling",
+    "Email-Login/Night-1-Mood"
+   ]
+  },
+  {
+   "key": "left:24px right:24px bottom:82px height:58px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Paywall-Confirmed",
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:300px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  },
+  {
+   "key": "left:16px right:16px top:334px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Score-Detail-Moves",
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:270px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Starting-Score",
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "left:0 top:241.3px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-Task"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:433px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-Task"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:553px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Today-Home-II",
+    "Email-Login/Today-Home-Task"
+   ]
+  },
+  {
+   "key": "left:0 top:63.9px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Week-III-In-the-Moment-P2",
+    "Email-Login/Week-III-In-the-Moment"
+   ]
+  },
+  {
+   "key": "left:0 top:114.4px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Week-IV-Know-Your-Brain-P2",
+    "Email-Login/Week-IV-Know-Your-Brain"
+   ]
+  },
+  {
+   "key": "left:0 top:88.8px",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Week-XII-Leave-It-Behind-P2",
+    "Email-Login/Week-XII-Leave-It-Behind"
+   ]
+  },
+  {
+   "key": "left:0 top:175px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/A-Clean-Day"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:124px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/App-Lock"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:222px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/App-Lock"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:171px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:509px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "left:44px right:44px top:609px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:120px bottom:0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Change-Pledge-Sheet"
+   ]
+  },
+  {
+   "key": "left:24px top:126px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ]
+  },
+  {
+   "key": "left:24px top:160px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ]
+  },
+  {
+   "key": "left:24px top:222px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-By-Age-80"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:343px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:603px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:653px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "left:24px top:284px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-365"
+   ]
+  },
+  {
+   "key": "left:0 top:126px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Day-Zero"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:382px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Day-Zero"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:504px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Day-Zero"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:158px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Detail-Platinum"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:354px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Detail-Platinum"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:496px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Detail-Platinum"
+   ]
+  },
+  {
+   "key": "left:44px right:44px top:596px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Detail-Platinum"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:212px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Drop-Received"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:432px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Drop-Received"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:462px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Enlisting-Aegis"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:112px bottom:0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Letter-Week-XII"
+   ]
+  },
+  {
+   "key": "left:24px right:24px bottom:0 height:190px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Letter-Week-XII"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:352px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Log-Reports"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:432px height:52px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Log-Reports"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:518px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Log-Reports"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:288px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Morning-5-Done"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:458px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Morning-5-Done"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:470px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-2-Record"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:453px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-4-Closed"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:329px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/One-Bad-Day"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:266px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall-Confirmed"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:257px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall-Rescue"
+   ]
+  },
+  {
+   "key": "right:24px top:70px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:24px top:66px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:130px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:318px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:520px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:552px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "left:0 top:90px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:320px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:470px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ]
+  },
+  {
+   "key": "left:0 top:111px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/SOS-Challenge"
+   ]
+  },
+  {
+   "key": "left:0 top:324px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:600px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:420px bottom:0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Sheet-Edit-Name"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:512px bottom:0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Sheet-Profile-Photo"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:556px bottom:0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Sheet-Sign-Out"
+   ]
+  },
+  {
+   "key": "left:136px top:330px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Splash"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:478px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Splash"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:224px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:494px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:556px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Starting-Score"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:150px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "left:32px right:32px top:240px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Tiers-One-offs"
+   ]
+  },
+  {
+   "key": "left:0 top:231.5px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:413px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:439px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:595px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:623px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home-III"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:240px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "left:24px top:334px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:622px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:650px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Today-Home"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:262px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:590px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ]
+  },
+  {
+   "key": "left:0 right:0 top:546px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Now"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:238px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Pledges"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:274px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ]
+  },
+  {
+   "key": "left:32px right:32px top:410px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Proof"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:276px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Score"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:270px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Surfed"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:540px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview-When"
+   ]
+  },
+  {
+   "key": "left:40px right:40px top:352px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:524px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview"
+   ]
+  },
+  {
+   "key": "left:32px right:32px top:450px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Weekly-Report-Days"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:193px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/What-You-Want-Back"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:175px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:325px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Yearly-Drop"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:170px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Plan"
+   ]
+  },
+  {
+   "key": "left:0 top:104px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ]
+  },
+  {
+   "key": "left:24px right:24px top:340px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Your-Vow-Page"
+   ]
+  },
+  {
+   "key": "left:0 right:0 bottom:0 height:150px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Week-01-Reset/L7-Frame-11"
+   ]
+  }
+ ],
+ "transform": [
+  {
+   "key": "scale(1.1)",
+   "n": 520,
+   "frames": 468,
+   "ex": [
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Day-Zero",
+    "Email-Login/First-Principle",
+    "Email-Login/Goal-Confirmation"
+   ]
+  },
+  {
+   "key": "scale(0.3333)",
+   "n": 53,
+   "frames": 53,
+   "ex": [
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night",
+    "Lesson-Illustrations-v4/Bell"
+   ]
+  },
+  {
+   "key": "scale(1)",
+   "n": 4,
+   "frames": 3,
+   "ex": [
+    "Email-Login/Medallion-Received",
+    "Lesson-Illustrations-v4/Medal",
+    "Week-12-Leave-It-Behind/L81-Frame-10"
+   ]
+  },
+  {
+   "key": "scale(0.869)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge"
+   ]
+  },
+  {
+   "key": "scale(1.062)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/SOS-Reassess",
+    "Email-Login/Urge-Log-Intensity"
+   ]
+  },
+  {
+   "key": "scale(0.954)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Checkin-Emotions"
+   ]
+  },
+  {
+   "key": "scale(0.723)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cue-Hue-Picker"
+   ]
+  },
+  {
+   "key": "scale(1.075)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Night-1-Mood"
+   ]
+  },
+  {
+   "key": "scale(1.071)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/SOS-Reason-Picker"
+   ]
+  },
+  {
+   "key": "scale(0.731)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/SOS-Strength"
+   ]
+  },
+  {
+   "key": "scale(0.965)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Slip-Urge-Now"
+   ]
+  },
+  {
+   "key": "scale(0.989)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Log-Outcome"
+   ]
+  },
+  {
+   "key": "scale(0.877)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q26-Gender"
+   ]
+  },
+  {
+   "key": "scale(0.76)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q3b"
+   ]
+  },
+  {
+   "key": "scale(1.089)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q7"
+   ]
+  }
+ ],
+ "filter": [
+  {
+   "key": "filter:brightness(0) invert(1)",
+   "n": 6,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Paywall",
+    "Email-Login/Reminders-Setup",
+    "Email-Login/Splash",
+    "Email-Login/Welcome-Back"
+   ]
+  }
+ ],
+ "border": [
+  {
+   "key": "border-top:1px solid #2E2E2E",
+   "n": 99,
+   "frames": 33,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Data-Privacy",
+    "Email-Login/Edit-Profile",
+    "Email-Login/Lapse-Done",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports"
+   ]
+  },
+  {
+   "key": "border:2px solid #9B968E",
+   "n": 22,
+   "frames": 7,
+   "ex": [
+    "Email-Login/Lesson-Scroll-5",
+    "Week-01-Reset/L1-Frame-5",
+    "Week-02-Changing-Your-Mindset/L9-Frame-7",
+    "Week-04-Know-Your-Brain/L28-Frame-3",
+    "Week-05-Why-It-Feels-Worth-It/L35-Frame-5",
+    "Week-06-Discipline/L40-Frame-6"
+   ]
+  },
+  {
+   "key": "border-bottom:1.5px solid #F2F0EC",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge",
+    "Email-Login/The-Vow"
+   ]
+  },
+  {
+   "key": "border-left:2px dashed #5A574F",
+   "n": 4,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Paywall-Rescue",
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  },
+  {
+   "key": "border-bottom:1.5px dashed #5A574F",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Morning-Resign-Pledge"
+   ]
+  },
+  {
+   "key": "border-left:2px solid #F2F0EC",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Score-Detail-Ranks"
+   ]
+  }
+ ],
+ "svgText": [],
+ "imgs": [
+  {
+   "key": "laurel-mark.webp 104x104 brightness(0) invert(1)",
+   "n": 2,
+   "frames": 2,
+   "ex": [
+    "Email-Login/Login",
+    "Email-Login/Welcome-Back"
+   ]
+  },
+  {
+   "key": "laurel-mark.webp 40x40 brightness(0) invert(1)",
+   "n": 2,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Reminders-Setup"
+   ]
+  },
+  {
+   "key": "laurel-mark.webp 28x28 brightness(0) invert(1)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall"
+   ]
+  },
+  {
+   "key": "laurel-mark.webp 120x120 brightness(0) invert(1)",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Splash"
+   ]
+  }
+ ],
+ "textWrap": [
+  {
+   "key": "pretty",
+   "n": 2091,
+   "frames": 1265,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "balance",
+   "n": 1770,
+   "frames": 1079,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper"
+   ]
+  }
+ ],
+ "gap": [
+  {
+   "key": "12px",
+   "n": 385,
+   "frames": 171,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Change-Pledge-Sheet",
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Data-Privacy"
+   ]
+  },
+  {
+   "key": "14px",
+   "n": 322,
+   "frames": 207,
+   "ex": [
+    "Email-Login/App-Lock",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Lapse-When",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Lesson-Scroll-5"
+   ]
+  },
+  {
+   "key": "4px",
+   "n": 241,
+   "frames": 124,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Day-Zero",
+    "Email-Login/Lesson-Scroll-13",
+    "Email-Login/Log-Check-ins",
+    "Email-Login/Log-Reports",
+    "Email-Login/Log-Urges"
+   ]
+  },
+  {
+   "key": "8px",
+   "n": 238,
+   "frames": 99,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Checkin-Emotions"
+   ]
+  },
+  {
+   "key": "6px",
+   "n": 185,
+   "frames": 119,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/First-Principle",
+    "Email-Login/Goal-Confirmation"
+   ]
+  },
+  {
+   "key": "10px",
+   "n": 180,
+   "frames": 75,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/App-Lock",
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum"
+   ]
+  },
+  {
+   "key": "16px",
+   "n": 158,
+   "frames": 54,
+   "ex": [
+    "Email-Login/Data-Privacy",
+    "Email-Login/Lapse-Done",
+    "Email-Login/Letter-Read",
+    "Email-Login/Log-Chooser",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/One-Bad-Day"
+   ]
+  },
+  {
+   "key": "9px",
+   "n": 139,
+   "frames": 54,
+   "ex": [
+    "Email-Login/Urge-Hub-Surfed",
+    "Lesson-Illustrations-v4/Alarm-clock",
+    "Lesson-Illustrations-v4/Balance-scale",
+    "Lesson-Illustrations-v4/Balloon",
+    "Lesson-Illustrations-v4/Battery",
+    "Lesson-Illustrations-v4/Bed-at-night"
+   ]
+  },
+  {
+   "key": "18px",
+   "n": 106,
+   "frames": 103,
+   "ex": [
+    "Email-Login/A-Clean-Day",
+    "Email-Login/Cost-Next-30",
+    "Email-Login/Cue-Hue-Picker",
+    "Email-Login/Cue-Intro-Modal",
+    "Email-Login/Cue-Set-Confirmation",
+    "Email-Login/Day-Zero"
+   ]
+  },
+  {
+   "key": "3px",
+   "n": 100,
+   "frames": 22,
+   "ex": [
+    "Email-Login/Breakwater-Bronze",
+    "Email-Login/Breakwater-Gold",
+    "Email-Login/Breakwater-Paper",
+    "Email-Login/Breakwater-Platinum",
+    "Email-Login/Breakwater-Silver",
+    "Email-Login/Detail-Bronze"
+   ]
+  },
+  {
+   "key": "20px",
+   "n": 48,
+   "frames": 48,
+   "ex": [
+    "Email-Login/Checkin-Emotions",
+    "Email-Login/Checkin-Reasons",
+    "Email-Login/Cost-Next-365",
+    "Email-Login/Enlisting-Aegis",
+    "Email-Login/Morning-1-Yesterday",
+    "Email-Login/Morning-Energy"
+   ]
+  },
+  {
+   "key": "2px",
+   "n": 28,
+   "frames": 9,
+   "ex": [
+    "Email-Login/Album-Earned-II",
+    "Email-Login/Medallion-Letter",
+    "Email-Login/Medallions-Still-To-Earn",
+    "Email-Login/Medallions",
+    "Email-Login/Score-Detail-Ranks",
+    "Email-Login/Score-Detail"
+   ]
+  },
+  {
+   "key": "7px",
+   "n": 10,
+   "frames": 6,
+   "ex": [
+    "Email-Login/Urge-Hub-Now",
+    "Email-Login/Urge-Hub-Pledges",
+    "Email-Login/Urge-Hub-Proof",
+    "Email-Login/Urge-Hub-Score",
+    "Email-Login/Urge-Hub-Surfed",
+    "Email-Login/Urge-Overview"
+   ]
+  },
+  {
+   "key": "22px",
+   "n": 5,
+   "frames": 5,
+   "ex": [
+    "Email-Login/Morning-Pledge-Signed",
+    "Email-Login/Morning-Resign-Pledge",
+    "Email-Login/Relapse-Resign",
+    "Email-Login/Slip-Pledge",
+    "Email-Login/Urge-Hub-Surfed"
+   ]
+  },
+  {
+   "key": "5px",
+   "n": 4,
+   "frames": 4,
+   "ex": [
+    "Email-Login/Today-Home",
+    "Week-01-Reset/L7-Frame-11",
+    "Week-03-In-the-Moment/L16-Frame-11",
+    "Week-09-Connection/L58-Frame-12"
+   ]
+  },
+  {
+   "key": "0",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/V3-Q25-Age"
+   ]
+  },
+  {
+   "key": "28px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Cost-Next-30"
+   ]
+  },
+  {
+   "key": "48px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Medallions-Still-To-Earn"
+   ]
+  },
+  {
+   "key": "0px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Paywall-Rescue"
+   ]
+  },
+  {
+   "key": "36px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Hub-Breathe"
+   ]
+  },
+  {
+   "key": "26px",
+   "n": 1,
+   "frames": 1,
+   "ex": [
+    "Email-Login/Urge-Overview-Mood"
+   ]
+  }
+ ],
+ "padding": []
+}

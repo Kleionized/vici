@@ -1,0 +1,79 @@
+{
+  "group": "slip",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 31 frames in GROUP slip were driven, captured and diffed with sig prefix `v-slip-`; recipes recorded in /Users/admin/Documents/tideline/.vicifull/recipes/slip-verify.json. The implementation is genuinely good: 0 missing signature rows on all 31 frames, every string/type metric/offset/radius/shadow matches, and the 19 card frames' copy matches src/content/slipCards.ts character for character. The report's headline (the group was unbuilt, GROUPS.md's file mapping is stale, no `Rough *` frame exists in any of the 18 bundles, the four `Relapse *` frames are a different flow) all check out.\n\nWhat is still wrong, in order of weight:\n(1) The ground shadow under every illustration is drawn ~25% too dark and ~half as tall as the canvas's. Measured, not eyeballed — see finding 1.\n(2) The whole flow is unreachable from the product; `/slip` is linked only from the `/all` debug index, and SOS's \"I slipped\" still opens `/relapse`.\n(3) 98J is shown unconditionally, and when the account has no pledge it presents the canvas's *sample* pledge line as the user's own words, signed \"You\".\n(4) 98F's answer is captured and thrown away.\n\nTwo corrections to the report's tooling section, both verified:\n- FALSE: \"`.vicifull/drive.js`'s tap() does not work on this build ... any recipe recorded with --do may not have driven the screen it claims.\" It works. `node scripts/vicifull/shot.mjs app \"/slip\" - --sig=x --do='await tap(\"Log the slip\"); await tap(\"Closed\"); await tap(\"Choose a time\")'` reaches 98C, and `--do='await tap(\"Start the interrupt\")'` on `/urge` reaches \"How strong is it right now?\". Other groups' `--do` recipes should NOT be distrusted on the strength of that claim. `.vicifull/slipshot.mjs` is a convenience (its `--slips=N` seed is genuinely useful), not a necessity.\n- TRUE: `SVG_ATTRS` at scripts/vicifull/decl.mjs:33-37 lists `fill-opacity` and `stroke-opacity` but not plain `opacity`, so `body.mjs` silently drops `opacity=\"0.55\"` from Slip Fed's Argument glyph. That is the only plain `opacity` attribute in the whole 31-frame family, and src/components/slip/kit.tsx:245 does carry it — so no defect follows from it here, but the whitelist gap is real and worth fixing for other groups.\n\nTwo things the report flagged that are NOT defects, checked and cleared:\n- The warm `Glow` washes. I sampled pixels rather than trusting the eye: Slip Entry at (202,334) design rgb(238,225,203) vs app rgb(237,223,198); (202,310) 242,234,220 vs 241,233,219. Within 5/255 everywhere. The two-stop SVG ramp reproduces the CSS `closest-side` ramp correctly here, and the `border-radius: 50% → -` rows are the D015 equivalence exactly.\n- Slip When's AM/PM opacity ladder (\"opacity 0.42 → -\", \"0.16 → -\"). That is the live clock landing in AM where the canvas's mock is PM, so the fade ladder is shifted. Data, not geometry.\n\nAlso confirmed the report's three branching judgement calls against `Latest Vici FULL/project/relapse-workflow.md`, which the report never cites but which D006 makes the flow authority for these screens. Its §22 canonical decision tree states \"REPEAT COUNT 24H? 0 previous → DON'T FAIL TWICE / 1 previous → STOP HERE / 2+ previous → minimal copy + access barrier\", and §14 makes 98L the next-morning follow-up. The report's readings are right, and the doc's §6 \"Screen: Slip Logged\" table explicitly authors the \"Change for next time\" row and the exact value `Phone charges outside the bedroom` — so that row is less of an invention than the report admits, though the other eighteen `change` strings are still authored.\n\nHelper scripts I added for this pass (new, untracked): .vicifull/vcrop.mjs (side-by-side crop of N PNGs at a frame-coordinate window) and .vicifull/vpx.mjs (pixel sampling at frame coordinates across two PNGs). Both are how findings 1 was measured rather than asserted.",
+  "findings": [
+    {
+      "frame": "Slip Entry (98A) — and identically on all 21 illustrated frames in the group",
+      "element": "the ground shadow: canvas `left:84 top:166 width:96 height:13 border-radius:50% background:rgba(0,0,0,0.10) filter:blur(5px)` inside the 240x200 art slot; frame box 160,388,96,13",
+      "property": "rendered falloff — vertical extent and peak darkness",
+      "design": "the blur spreads the flat 10% ellipse well outside its own box: sampling x=202 down the centre gives y388=rgb(232,231,228), y392=225, y396=225, y400=231, y404=237, y408=242, y412=244 — visible over ~24pt, peak 19 levels below the rgb(244,243,240) paper",
+      "app": "the SVG radial in `Shade` (src/components/slip/art.tsx:49-62, stops 0/0.45 at full alpha then 1.0 at zero) stays inside the 13pt box: y388=243, y392=220, y396=220, y400=239, y404=244, y408=244 — visible over ~12pt, peak 24 levels below the paper",
+      "confidence": "likely",
+      "note": "Same on every frame I sampled: Slip Close It (292,410) design rgb(237,236,233) vs app rgb(244,243,240); Slip Trigger Being alone (200,398) design 232 vs app 243. Most visible on Slip Morning After and Slip Feel Turned on, where the canvas's `overflow:hidden` cuts the shadow at 8 of 13 points and the app's clipped ellipse reads as a defined dark arc where the canvas has a diffuse smear. D010 sanctions the substitution — 'a radial with the same bounding box falling to zero at its edge, which is what the blur produces there' — but that premise does not hold for a 13pt-tall shape blurred by 5px, where the blur roughly doubles the height and halves the peak. This is the same class as FINDINGS F2 (the lesson cover scene's ground shadow), so it is a project-wide renderer issue, not a slip-agent mistake; `Shade` is a local copy of the same substitution. Fix: give the radial a taller bounding box (about the box height plus 2x the blur radius), drop the 0.45 plateau, and scale the peak alpha down."
+    },
+    {
+      "frame": "Slip Entry (98A) — the flow's entry point",
+      "element": "the route `/slip`",
+      "property": "reachability from the product",
+      "design": "`relapse-workflow.md` (the flow authority for these screens under D006) opens with 'The flow begins when an SOS session ends with \"I slipped,\" or when the user manually records a slip later', and its Implementation Brief says 'Build this as a separate post-slip flow'",
+      "app": "`/slip` is referenced from exactly one place in `src/`: the debug index row at src/app/(app)/all.tsx:67. SOS's two slip exits — `logSlip()` at src/components/urge/index.tsx:2625 and the hub's 'I slipped' at src/components/urge/index.tsx:3397 — both still `router.replace('/relapse')` / `router.push('/relapse')`, i.e. the older four-frame `36 · Relapse` run",
+      "confidence": "likely",
+      "note": "Genuinely contested, and the orchestrator should rule rather than the slip agent. `.vicifull/FLOW.txt:114` says 'after Surf Complete: 34 · SOS — Slipped', and line 115 chains `Relapse Log` -> `36 · Relapse — Don't Fail Twice`, so the CANVAS's own chain sends the SOS slip into `/relapse` and gives 98A no incoming edge at all — which is exactly what the app does. The workflow doc says the opposite, and its §3 terminology table says to stop showing 'relapse'/'lapse' in user copy. As it stands the twelve new screens and all nineteen cards ship dead: no user can see them."
+    },
+    {
+      "frame": "Slip Pledge (98J)",
+      "element": "the pledge card's 22/32/-0.2 line and the script signature over the 104x1 rule",
+      "property": "value shown when the account has no signed pledge",
+      "design": "the canvas's card carries a real user's pledge ('The mornings are mine again.') and their name ('Jerry'); `relapse-workflow.md` §9 states 'No pledge exists -> Show: No -> Skip the screen'",
+      "app": "98J is still drawn, and src/components/slip/kit.tsx:428/440 fall back to the canvas's own sample string — I captured it: the card reads 'The mornings are mine again.' at 72,380 signed 'You' at 232,478, with no pledge in the journal",
+      "confidence": "likely",
+      "note": "Captured as sig `v-slip-a-Pledge-nopledge` (drive /slip with no --slips seed through to 'Done'). Putting the design frame's sample pledge in a user's mouth as if they had written it is worse than an empty state; the doc's answer is to skip the screen."
+    },
+    {
+      "frame": "Slip Pledge (98J)",
+      "element": "the screen itself, in the step machine (src/app/slip.tsx `case 'card'` -> `onCta={() => go('pledge')}`)",
+      "property": "conditionality",
+      "design": "`relapse-workflow.md` §9: 'Active pledge + same-day repeat slip -> Usually no. Focus on access/friction first. Re-signing again can feel ritualistic.' §21 QA checklist: 'Pledge re-sign is not shown repeatedly in the same day.' §22 tree: 'PLEDGE ELIGIBLE? first slip since signing -> re-sign / change; otherwise -> skip'",
+      "app": "the card screen's CTA always advances to 'pledge', for a first, second and third slip alike — verified by driving with --slips=0, --slips=1 and --slips=2, all three of which land on 98J after the card",
+      "confidence": "likely"
+    },
+    {
+      "frame": "Slip Urge Now (98F)",
+      "element": "the four answers 'No / A little / Yes / I’m already watching again'",
+      "property": "effect on the flow",
+      "design": "`relapse-workflow.md` §11 branches on it — '0–1 finish log', '2 one 5–10 minute reset action', '3 require location/device change before pledge/final screen', '4 return to SOS emergency mode', '5 SOS command mode' — and §4 and §17 repeat the 4–5 override",
+      "app": "`watching` (src/app/slip.tsx:110) is written by `SlipAnswerRow` and read only back into `selected={watching === index}`. Nothing branches on it; 'Continue' goes to `'warn'` unconditionally, and it is not gated on an answer being picked",
+      "confidence": "likely",
+      "note": "Presentation is pixel-clean once 'A little' is selected — the state the canvas draws. This is behaviour, not pixels, but 98F is the only question in the flow whose whole purpose is to branch it, and the doc that D006 makes authoritative for these screens spells the branch out twice."
+    },
+    {
+      "frame": "Slip Pledge (98J)",
+      "element": "the signature block — `<div text-align:right>` holding the script name over the 104x1 rule (src/components/slip/kit.tsx:436-441)",
+      "property": "width of the name run",
+      "design": "the canvas gives the name div no width; the row is `justify-content:space-between` with an empty spacer span, so the block is as wide as the name (or as the 104pt rule's `margin-left:auto`, whichever is greater)",
+      "app": "`width: 104` is hard-set on both the wrapper and the name `AppText`",
+      "confidence": "unsure",
+      "note": "Invisible with 'Jerry' — the captured row matched the canvas exactly — but a first name that sets wider than 104pt at 26pt Snell Roundhand will wrap or clip in the app where the canvas widens the block. Edge case, cheap to fix by dropping the width from the Text and letting the rule alone carry it."
+    },
+    {
+      "frame": "Slip When (98C)",
+      "element": "the wheel's selection band, `left:12 right:12 top:50% height:36 border-radius:10` (frame box 36,405,321,36)",
+      "property": "background alpha",
+      "design": "rgba(0, 0, 0, 0.043) as Chrome computes it",
+      "app": "rgba(0, 0, 0, 0.04)",
+      "confidence": "unsure",
+      "note": "NOT a defect, and the report's account of it is wrong in a way worth correcting: it says the canvas states 0.043 and the app 0.04. Both sources actually say 0.045 — the canvas frame declares `rgba(0,0,0,0.045)` and so does src/app/urge-log.tsx:299. Chrome rounds it to 11/255 = 0.043 and react-native-web's normalizeColor round-trips it to 0.04. One step of 255 on a 4.5% black; no code change would fix it. Geometry, radius and position are identical."
+    },
+    {
+      "frame": "Slip When (98C)",
+      "element": "the date/time wheel card at 24,330,345,235",
+      "property": "initial visibility",
+      "design": "the frame draws the wheel open, with 'Just now' selected above it",
+      "app": "the wheel is hidden until 'Choose a time' is tapped (`showWheel`, src/app/slip.tsx:104); the canvas's state is reproduced exactly once it is",
+      "confidence": "unsure",
+      "note": "Reported by the agent and I agree with the reading: `relapse-workflow.md` §6 says 'The custom picker should only open when the user taps Specify time', src/app/lapse.tsx already ships the same behaviour for `Lapse When`, and the canvas draws only one state so it cannot say which is the default. Recording it because the app's opening state is a screen no frame in the bundle draws."
+    }
+  ]
+}

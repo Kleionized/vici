@@ -1,0 +1,284 @@
+## .vicifull/final/Email-Login
+prev=260 final=267  identical=189 changed=64 added=14 removed=7
+
+### ADDED (new in UI Final)
+  + Welcome Back
+  + V3 Q3b
+  + What starts it
+  + Transition
+  + What it affects
+  + Goal Confirmation
+  + Where We’d Start
+  + Start Here
+  + Start Here Step 1
+  + Start Here Step 2
+  + Your Plan
+  + A Clean Day
+  + Paywall
+  + Morning Pledge Signed
+
+### REMOVED (gone from UI Final)
+  - What Happens First
+  - We Have Enough
+  - What It Affects
+  - Root Loop
+  - What Comes Before It
+  - Results Pattern
+  - Free Trial Paywall
+
+### CHANGED
+  ~ Login  (8420 -> 7192, -1228)
+  ~ V3 Q24 Name  (4120 -> 4343, +223)
+  ~ V3 Q25 Age  (4365 -> 4123, -242)
+  ~ Onboarding Start  (4142 -> 4152, +10)
+  ~ V3 Q1  (5863 -> 10251, +4388)
+  ~ V3 Q2  (5510 -> 9165, +3655)
+  ~ V3 Q3  (5131 -> 8662, +3531)
+  ~ First Principle  (6005 -> 6001, -4)
+  ~ V3 Q5  (10982 -> 11010, +28)
+  ~ V3 Q6  (10524 -> 10514, -10)
+  ~ V3 Q7  (8815 -> 8927, +112)
+  ~ V3 Q21  (5088 -> 9375, +4287)
+  ~ V3 Q10  (5057 -> 9078, +4021)
+  ~ V3 Q13  (5087 -> 11177, +6090)
+  ~ V3 Q15  (5111 -> 8387, +3276)
+  ~ V3 Q16  (5107 -> 8680, +3573)
+  ~ V3 Q17  (7903 -> 10017, +2114)
+  ~ Enlisting Aegis  (4233 -> 4222, -11)
+  ~ Starting Score  (11527 -> 11558, +31)
+  ~ Cost Next 30  (6876 -> 7561, +685)
+  ~ Cost Next 365  (36477 -> 42568, +6091)
+  ~ Cost By Age 80  (3610 -> 3877, +267)
+  ~ Change the Line  (3514 -> 3506, -8)
+  ~ One Bad Day  (4558 -> 4760, +202)
+  ~ What You Want Back  (5296 -> 6867, +1571)
+  ~ Campaign Map  (8407 -> 8680, +273)
+  ~ Campaign Map II  (9456 -> 9728, +272)
+  ~ Campaign Map III  (9687 -> 9691, +4)
+  ~ The Vow  (3977 -> 3969, -8)
+  ~ Medallion Received  (5204 -> 4701, -503)
+  ~ Reminders Setup  (4107 -> 4106, -1)
+  ~ Paywall Confirmed  (3626 -> 5208, +1582)
+  ~ Today Home  (14859 -> 14843, -16)
+  ~ Today Home III  (6771 -> 7103, +332)
+  ~ Morning Task Check  (7820 -> 7820, +0)
+  ~ Morning 1 Yesterday  (9122 -> 9126, +4)
+  ~ Morning Feeling  (5718 -> 5910, +192)
+  ~ Morning Energy  (5711 -> 5902, +191)
+  ~ Morning Resign Pledge  (5138 -> 6652, +1514)
+  ~ Morning 5 Done  (5115 -> 5309, +194)
+  ~ Checkin Emotions  (8110 -> 12131, +4021)
+  ~ Checkin Reasons  (12990 -> 13146, +156)
+  ~ Night 2 Record  (8050 -> 8054, +4)
+  ~ Night Action Reminder  (6956 -> 6956, +0)
+  ~ Night 4 Closed  (6020 -> 5879, -141)
+  ~ Surf Step 1  (5619 -> 5793, +174)
+  ~ Surf Step 3  (4332 -> 4506, +174)
+  ~ Cue Set Confirmation  (5123 -> 5297, +174)
+  ~ Relapse Log  (5512 -> 5224, -288)
+  ~ Relapse Resign  (4506 -> 4840, +334)
+  ~ Urge Hub Now  (11409 -> 6444, -4965)
+  ~ Urge Hub Score  (8849 -> 9850, +1001)
+  ~ Urge Hub Proof  (8566 -> 7187, -1379)
+  ~ Urge Hub Surfed  (9447 -> 9243, -204)
+  ~ Urge Hub Pledges  (6299 -> 6583, +284)
+  ~ Log Urges  (10050 -> 11635, +1585)
+  ~ Log Check-ins  (10827 -> 11196, +369)
+  ~ Log Reports  (9602 -> 10858, +1256)
+  ~ Weekly Report  (9690 -> 8546, -1144)
+  ~ Weekly Report Days  (9423 -> 8279, -1144)
+  ~ Weekly Report Urges  (9916 -> 9108, -808)
+  ~ Settings Weekly Report  (9703 -> 9703, +0)
+  ~ Slip Pledge  (4498 -> 4832, +334)
+  ~ Yearly Drop  (6502 -> 13047, +6545)
+
+### IDENTICAL
+  = Splash
+  = V3 Q26 Gender
+  = Letter Received
+  = Letter Week XII
+  = Day Zero
+  = Paywall Rescue
+  = Manage Subscription
+  = Morning Check-in Time
+  = Nightly Check-in Time
+  = Score Detail
+  = Score Detail Moves
+  = Score Detail Ranks
+  = Today Home II
+  = Today Home Task
+  = Morning Check-in Cover
+  = Change Pledge Sheet
+  = Night Check-in Cover
+  = Night 1 Mood
+  = Night 3 Reflection
+  = Week I Reset
+  = Week I Reset P2
+  = Week II Changing Your Mindset
+  = Week II Changing Your Mindset P2
+  = Week III In the Moment
+  = Week III In the Moment P2
+  = Week IV Know Your Brain
+  = Week IV Know Your Brain P2
+  = Week V Why It Feels Worth It
+  = Week V Why It Feels Worth It P2
+  = Week VI Discipline
+  = Week VI Discipline P2
+  = Week VII Relapse and Adversity
+  = Week VII Relapse and Adversity P2
+  = Week VIII Boredom and Meaning
+  = Week VIII Boredom and Meaning P2
+  = Week IX Connection
+  = Week IX Connection P2
+  = Week X Yourself
+  = Week X Yourself P2
+  = Week XI Build a Life You Want
+  = Week XI Build a Life You Want P2
+  = Week XII Leave It Behind
+  = Week XII Leave It Behind P2
+  = Cue Intro Modal
+  = SOS Strength
+  = Cue Hue Picker
+  = SOS Reason Picker
+  = SOS Feeling Picker
+  = SOS Challenge
+  = SOS Reassess
+  = SOS Afterward
+  = Surf Complete
+  = Relapse Twice
+  = Relapse Begin
+  = SOS Loc Bed
+  = SOS Loc Bathroom
+  = SOS Loc Home Alone
+  = SOS Loc Private Room
+  = SOS Loc Work
+  = SOS Loc Public
+  = SOS Loc Elsewhere
+  = SOS Feel Turned On
+  = SOS Feel Bored
+  = SOS Feel Lonely
+  = SOS Feel Stressed
+  = SOS Feel Anxious
+  = SOS Feel Angry
+  = SOS Feel Low
+  = SOS Feel Rejected
+  = SOS Feel Tired
+  = SOS Feel Restless
+  = SOS Feel Numb
+  = SOS Feel Ashamed
+  = SOS Feel Unknown
+  = SOS Trig Content
+  = SOS Trig Doomscroll
+  = SOS Trig Fantasy
+  = SOS Trig Late Phone
+  = SOS Trig Habit
+  = SOS Trig Cant Sleep
+  = SOS Trig Argument
+  = SOS Trig Rejection
+  = SOS Trig Alone
+  = SOS Trig Unknown
+  = Medallions
+  = Medallions Still To Earn
+  = Album Earned II
+  = Breakwater Paper
+  = Breakwater Bronze
+  = Breakwater Silver
+  = Breakwater Gold
+  = Breakwater Platinum
+  = Tiers Vidi
+  = Tiers Vici
+  = Tiers Rebound
+  = Tiers Breakwater
+  = Tiers Logbook
+  = Tiers Pulse
+  = Tiers Archive
+  = Tiers Lessons
+  = Tiers One-offs
+  = Detail Paper
+  = Detail Bronze
+  = Detail Silver
+  = Detail Gold
+  = Detail Platinum
+  = Log Chooser
+  = Lapse When
+  = Lapse Trigger
+  = Lapse Done
+  = Urge Overview Summary
+  = Urge Overview
+  = Urge Overview Mood
+  = Urge Overview When
+  = Report Ready
+  = Urge Log Intensity
+  = Urge Log Trigger
+  = Urge Log Outcome
+  = Urge Log When
+  = Urge Log Done
+  = Settings
+  = Edit Profile
+  = Sheet Profile Photo
+  = Sheet Edit Name
+  = Settings Check-in Time
+  = Your Vow Page
+  = Sheet Sign Out
+  = Data Privacy
+  = App Lock
+  = Slip Entry
+  = Slip Close It
+  = Slip When
+  = Slip Fed
+  = Slip Logged
+  = Slip Urge Now
+  = Slip Dont Fail Twice
+  = Slip Stop Here
+  = Slip Third
+  = Slip Begin Again
+  = Slip Morning After
+  = Slip Feel Ashamed
+  = Slip Feel Bored
+  = Slip Feel Lonely
+  = Slip Feel Stressed
+  = Slip Feel Rejected
+  = Slip Feel Tired
+  = Slip Feel Turned on
+  = Slip Feel Not sure
+  = Slip Trigger Late night
+  = Slip Trigger Scrolling
+  = Slip Trigger Sexual content
+  = Slip Trigger Boredom
+  = Slip Trigger Loneliness
+  = Slip Trigger Stress
+  = Slip Trigger Argument
+  = Slip Trigger Couldn’t sleep
+  = Slip Trigger Being alone
+  = Slip Trigger Habit
+  = Slip Trigger Not sure
+  = Letter Arrival
+  = Letter Read
+  = Medallion Letter
+  = Drop Received
+  = Lesson Scroll 1
+  = Lesson Scroll 2
+  = Lesson Scroll 3
+  = Lesson Scroll 4
+  = Lesson Scroll 5
+  = Lesson Scroll 6
+  = Lesson Scroll 7
+  = Lesson Scroll 8
+  = Lesson Scroll 9
+  = Lesson Scroll 10
+  = Lesson Scroll 11
+  = Lesson Scroll 12
+  = Lesson Scroll 13
+  = Lesson Scroll 14
+  = Lesson Scroll 15
+  = Lesson Scroll 16
+  = Lesson Scroll 17
+  = Lesson Scroll 18
+  = Lesson Scroll 19
+  = Lesson Scroll 20
+  = Lesson Scroll 21
+  = Lesson Scroll 22
+  = Lesson Scroll 23
+  = Lesson Scroll 24
+  = Lesson Scroll 25
+  = Lesson Scroll 26

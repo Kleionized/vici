@@ -1,0 +1,33 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 53
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 238 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 160 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | Question
+div | 32 | 188 | 329 | 62 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Which screen habit will you try changing this week?
+div | 32 | 258 | 329 | 22 | - | - | - | - | 15px/400/normal/22px/rgb(155, 150, 142) | Choose one.
+div | 32 | 300 | 329 | 380 | - | - | - | - | - | -
+div | 32 | 300 | 329 | 50 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 313 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | A
+div | 82 | 314 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Browsing in bed
+div | 32 | 358 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 381 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | B
+div | 82 | 371 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Using the device where I usually start watching porn
+div | 32 | 436 | 329 | 70 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 459 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | C
+div | 82 | 449 | 263 | 44 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Continuing to browse after work on the device ends
+div | 32 | 514 | 329 | 50 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 527 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | D
+div | 82 | 528 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | Another particular habit or time
+div | 32 | 572 | 329 | 50 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 585 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | E
+div | 82 | 586 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | I’ll keep an existing rule that helps
+div | 32 | 630 | 329 | 50 | rgb(30, 30, 30) | 24px | - | - | - | -
+div | 46 | 643 | 24 | 24 | - | 12px | - | rgb(155, 150, 142) 0px 0px 0px 1.5px inset | 12px/700/normal/16px/rgb(181, 176, 168) | F
+div | 82 | 644 | 263 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(242, 240, 236) | No clear screen habit needs changing
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Lato',-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased;} #box div{position:relative;}</style>
+</head><body><div id="box" style="position:absolute;left:0;top:0;"></div>
+<script>
+(async () => {
+  const src = await (await fetch('measure-in.json?' + Date.now())).json();
+  await document.fonts.load('400 18px Lato'); await document.fonts.load('700 18px Lato'); await document.fonts.ready;
+  const box = document.getElementById('box'); let out = '';
+  for (const [s, t] of src.items) {
+    const st = src.styles[s];
+    const d = document.createElement('div');
+    d.style.cssText = `width:${st.w}px; font-size:${st.fs}px; font-weight:${st.fw}; line-height:${st.lh}px; letter-spacing:${st.ls || 0}px; text-wrap:${st.wrap};`;
+    d.textContent = t; box.appendChild(d);
+    out += Math.round(d.getBoundingClientRect().height / st.lh).toString(36);
+    box.removeChild(d);
+  }
+  console.log('MEASURE_LEN ' + out.length + ' fonts ' + document.fonts.check('700 18px Lato'));
+  for (let i = 0; i < out.length; i += 400) console.log('M' + String(i / 400).padStart(2, '0') + ' ' + out.slice(i, i + 400));
+  document.title = 'done';
+})();
+</script></body></html>

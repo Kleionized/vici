@@ -51,6 +51,7 @@ export const updateSettings = mutation({
     reminderTime: v.optional(v.string()),
     theme: v.optional(v.string()),
     premium: v.optional(v.boolean()),
+    yearlyDrop: v.optional(v.boolean()),
     morningCheckin: v.optional(v.boolean()),
     riskTimeSupport: v.optional(v.boolean()),
     eveningWindDown: v.optional(v.boolean()),
@@ -59,7 +60,6 @@ export const updateSettings = mutation({
     appLockOnLeave: v.optional(v.boolean()),
     hideSensitivePreviews: v.optional(v.boolean()),
     pauseAnalytics: v.optional(v.boolean()),
-    signature: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const userId = await requireUserId(ctx);

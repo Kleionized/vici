@@ -1,37 +1,9 @@
-import { ActivityIndicator, View } from 'react-native';
-
-import { colors, spacing } from '@/lib/theme';
-import { AppText } from './AppText';
-import { Illustration } from './Illustration';
 /**
- * The wait, inside the app. The canvas gives the dark "Finding the waterline"
- * field to the cold open only — see `WaterlineScene` and `app/index.tsx` — so
- * navigating between two paper screens gets this quiet spinner instead of a
- * full-bleed night flash.
+ * The wait and the empty list, app-wide. Both are the mono kit's now
+ * (`src/components/mono/Feedback.tsx`): no frame draws either, and the paper
+ * system's spinner-on-nothing and `tide` illustration have no place on the
+ * #0D0D0D ground. Every existing caller keeps its import and its props and gets
+ * the new look — the ground and noise with a late, small `#9B968E` spinner, and
+ * centred type with no art.
  */
-export function LoadingView({ label }: { label?: string }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.md, padding: spacing.xl }}>
-      <ActivityIndicator color={colors.textSoft} />
-      {label ? <AppText variant="soft">{label}</AppText> : null}
-    </View>
-  );
-}
-
-export function EmptyState({ title, body }: { title: string; body?: string }) {
-  return (
-    <View style={{ alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xxl }}>
-      <View style={{ marginBottom: spacing.sm }}>
-        <Illustration name="tide" width={150} color={colors.textSofter} accent={colors.borderStrong} />
-      </View>
-      <AppText variant="subtitle" center>
-        {title}
-      </AppText>
-      {body ? (
-        <AppText variant="soft" center>
-          {body}
-        </AppText>
-      ) : null}
-    </View>
-  );
-}
+export { EmptyState, LoadingView } from '@/components/mono/Feedback';

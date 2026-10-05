@@ -1,0 +1,54 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Compare, then change one
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 391 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+path | 35.9 | 240.2 | 16.4 | 9.2 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Urges
+div | 78 | 249 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Compare their frequency or strength, how early you notice them, or what you do when they appear.
+div | 24 | 328 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 328 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 337 | 22 | 22 | - | - | - | - | - | -
+path | 38.7 | 345.4 | 11.9 | 8.8 | - | - | - | - | - | -
+path | 38.5 | 342.1 | 3.3 | 6.6 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 328 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | After a bad moment
+div | 78 | 352 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Compare how long it takes you to get back to the rest of your day and what you do afterwards.
+div | 24 | 431 | 345 | 62 | - | - | - | - | - | -
+div | 24 | 431 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 440 | 22 | 22 | - | - | - | - | - | -
+rect | 36.8 | 445.5 | 14.3 | 12.6 | - | - | - | - | - | -
+path | 36.8 | 443.5 | 14.3 | 5.9 | - | - | - | - | - | -
+circle | 40.2 | 452.2 | 2.4 | 2.4 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 62 | - | - | - | - | - | -
+div | 78 | 431 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Routine
+div | 78 | 455 | 291 | 38 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Compare sleep, phone location, time alone, exercise, work, or contact with other people.
+div | 24 | 559 | 345 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | An area can be unchanged or worse. Pick the one that still causes the most trouble and decide what you will change for the next seven days. Start that change today.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

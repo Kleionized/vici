@@ -1,0 +1,1210 @@
+[
+{
+"frame": "Checkin-Emotions",
+"hero": "windowNight",
+"top": "506",
+"scale": "0.954",
+"match": false,
+"artIs": "nightMoon"
+},
+{
+"frame": "Checkin-Reasons",
+"hero": "bubbles",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "bubbles"
+},
+{
+"frame": "Cue-Hue-Picker",
+"hero": "openDoor",
+"top": "506",
+"scale": "0.723",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "Cue-Intro-Modal",
+"hero": "stopwatch",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "stopwatch"
+},
+{
+"frame": "Cue-Set-Confirmation",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Day-Zero",
+"hero": "sunrise",
+"top": "126",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "First-Principle",
+"hero": "lighthouse",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "lighthouse"
+},
+{
+"frame": "Goal-Confirmation",
+"hero": "flag",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "flag"
+},
+{
+"frame": "Lapse-Trigger",
+"hero": "match",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "match"
+},
+{
+"frame": "Lesson-Scroll-1",
+"hero": "nightPhone",
+"top": "-36",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Lesson-Scroll-7",
+"hero": "bed",
+"top": "-32",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Letter-Arrival",
+"hero": "envelope",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "envelope"
+},
+{
+"frame": "Letter-Received",
+"hero": "envelope",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "envelope"
+},
+{
+"frame": "Log-Chooser",
+"hero": "notebook",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "notebook"
+},
+{
+"frame": "Medallion-Received",
+"hero": "medal",
+"top": "190",
+"scale": "1",
+"match": true,
+"artIs": "medal"
+},
+{
+"frame": "Morning-1-Yesterday",
+"hero": "sunrise",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Morning-Check-in-Cover",
+"hero": "sunrise",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Morning-Energy",
+"hero": "battery",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "battery"
+},
+{
+"frame": "Morning-Feeling",
+"hero": "sunrise",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Morning-Pledge-Signed",
+"hero": "fountainPen",
+"top": "458",
+"scale": "1.1",
+"match": true,
+"artIs": "fountainPen"
+},
+{
+"frame": "Morning-Resign-Pledge",
+"hero": "fountainPen",
+"top": "458",
+"scale": "1.1",
+"match": true,
+"artIs": "fountainPen"
+},
+{
+"frame": "Morning-Task-Check",
+"hero": "charger",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Night-1-Mood",
+"hero": "bed",
+"top": "506",
+"scale": "1.075",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Night-3-Reflection",
+"hero": "notebook",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "notebook"
+},
+{
+"frame": "Night-4-Closed",
+"hero": "nightMoon",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "nightMoon"
+},
+{
+"frame": "Night-Action-Reminder",
+"hero": "charger",
+"top": "458",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Night-Check-in-Cover",
+"hero": "nightMoon",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "nightMoon"
+},
+{
+"frame": "Onboarding-Start",
+"hero": "nightPhone",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Relapse-Begin",
+"hero": "sunrise",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Relapse-Log",
+"hero": "dominoes",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "dominoes"
+},
+{
+"frame": "Relapse-Resign",
+"hero": "fountainPen",
+"top": "458",
+"scale": "0.869",
+"match": true,
+"artIs": "fountainPen"
+},
+{
+"frame": "Relapse-Twice",
+"hero": "dominoes2",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "dominoes2"
+},
+{
+"frame": "Reminders-Setup",
+"hero": "bell",
+"top": "90",
+"scale": "1.1",
+"match": true,
+"artIs": "bell"
+},
+{
+"frame": "Report-Ready",
+"hero": "chartUp",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "chartUp"
+},
+{
+"frame": "SOS-Afterward",
+"hero": "envelope",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "envelope"
+},
+{
+"frame": "SOS-Challenge",
+"hero": "twoCups",
+"top": "111",
+"scale": "1.1",
+"match": true,
+"artIs": "twoCups"
+},
+{
+"frame": "SOS-Feel-Angry",
+"hero": "mountain",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "mountain"
+},
+{
+"frame": "SOS-Feel-Anxious",
+"hero": "clock",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "clock"
+},
+{
+"frame": "SOS-Feel-Ashamed",
+"hero": "mirror",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "mirror"
+},
+{
+"frame": "SOS-Feel-Bored",
+"hero": "stairs",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "stairs"
+},
+{
+"frame": "SOS-Feel-Lonely",
+"hero": "envelope",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "envelope"
+},
+{
+"frame": "SOS-Feel-Low",
+"hero": "lamp",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "lamp"
+},
+{
+"frame": "SOS-Feel-Numb",
+"hero": "shower",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "shower"
+},
+{
+"frame": "SOS-Feel-Rejected",
+"hero": "phoneTable",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "phoneTable"
+},
+{
+"frame": "SOS-Feel-Restless",
+"hero": "sneaker",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "sneaker"
+},
+{
+"frame": "SOS-Feel-Stressed",
+"hero": "kettle",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "kettle"
+},
+{
+"frame": "SOS-Feel-Tired",
+"hero": "nightPhone",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "SOS-Feel-Turned-On",
+"hero": "umbrella",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "umbrella"
+},
+{
+"frame": "SOS-Feel-Unknown",
+"hero": "door",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "door"
+},
+{
+"frame": "SOS-Feeling-Picker",
+"hero": "thunderCloud",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "thunderCloud"
+},
+{
+"frame": "SOS-Loc-Bathroom",
+"hero": "openDoor",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "SOS-Loc-Bed",
+"hero": "bed",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "SOS-Loc-Elsewhere",
+"hero": "signpost",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "SOS-Loc-Home-Alone",
+"hero": "lamp",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "lamp"
+},
+{
+"frame": "SOS-Loc-Private-Room",
+"hero": "openDoor",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "SOS-Loc-Public",
+"hero": "bench",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bench"
+},
+{
+"frame": "SOS-Loc-Work",
+"hero": "bench",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bench"
+},
+{
+"frame": "SOS-Reason-Picker",
+"hero": "feedOff",
+"top": "506",
+"scale": "1.071",
+"match": true,
+"artIs": "feedOff"
+},
+{
+"frame": "SOS-Reassess",
+"hero": "thermometer",
+"top": "506",
+"scale": "1.062",
+"match": true,
+"artIs": "thermometer"
+},
+{
+"frame": "SOS-Strength",
+"hero": "thermometer",
+"top": "458",
+"scale": "0.731",
+"match": true,
+"artIs": "thermometer"
+},
+{
+"frame": "SOS-Trig-Alone",
+"hero": "openDoor",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "SOS-Trig-Argument",
+"hero": "bubbles",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bubbles"
+},
+{
+"frame": "SOS-Trig-Cant-Sleep",
+"hero": "bed",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "SOS-Trig-Content",
+"hero": "tab",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "tab"
+},
+{
+"frame": "SOS-Trig-Doomscroll",
+"hero": "feedOff",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "feedOff"
+},
+{
+"frame": "SOS-Trig-Fantasy",
+"hero": "balloon",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "balloon"
+},
+{
+"frame": "SOS-Trig-Habit",
+"hero": "signpost",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "SOS-Trig-Late-Phone",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "SOS-Trig-Rejection",
+"hero": "phoneTable",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "phoneTable"
+},
+{
+"frame": "SOS-Trig-Unknown",
+"hero": "phoneTable",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "phoneTable"
+},
+{
+"frame": "Slip-Begin-Again",
+"hero": "sunrise",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Slip-Close-It",
+"hero": "tab",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "tab"
+},
+{
+"frame": "Slip-Dont-Fail-Twice",
+"hero": "dominoes2",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "dominoes2"
+},
+{
+"frame": "Slip-Entry",
+"hero": "dominoes",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "dominoes"
+},
+{
+"frame": "Slip-Fed",
+"hero": "nightPhone",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Slip-Feel-Ashamed",
+"hero": "mirror",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "mirror"
+},
+{
+"frame": "Slip-Feel-Bored",
+"hero": "stairs",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "stairs"
+},
+{
+"frame": "Slip-Feel-Lonely",
+"hero": "envelope",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "envelope"
+},
+{
+"frame": "Slip-Feel-Not-sure",
+"hero": "signpost",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "Slip-Feel-Rejected",
+"hero": "phoneTable",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "phoneTable"
+},
+{
+"frame": "Slip-Feel-Stressed",
+"hero": "kettle",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "kettle"
+},
+{
+"frame": "Slip-Feel-Tired",
+"hero": "bed",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Slip-Feel-Turned-on",
+"hero": "campfire",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "campfire"
+},
+{
+"frame": "Slip-Morning-After",
+"hero": "bell",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bell"
+},
+{
+"frame": "Slip-Pledge",
+"hero": "fountainPen",
+"top": "458",
+"scale": "0.869",
+"match": true,
+"artIs": "fountainPen"
+},
+{
+"frame": "Slip-Stop-Here",
+"hero": "dominoes2",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "dominoes2"
+},
+{
+"frame": "Slip-Third",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Slip-Trigger-Argument",
+"hero": "bubbles",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bubbles"
+},
+{
+"frame": "Slip-Trigger-Being-alone",
+"hero": "openDoor",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "Slip-Trigger-Boredom",
+"hero": "stairs",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "stairs"
+},
+{
+"frame": "Slip-Trigger-Couldn-t-sleep",
+"hero": "bed",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Slip-Trigger-Habit",
+"hero": "signpost",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "Slip-Trigger-Late-night",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Slip-Trigger-Loneliness",
+"hero": "twoCups",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "twoCups"
+},
+{
+"frame": "Slip-Trigger-Not-sure",
+"hero": "phoneTable",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "phoneTable"
+},
+{
+"frame": "Slip-Trigger-Scrolling",
+"hero": "feedOff",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "feedOff"
+},
+{
+"frame": "Slip-Trigger-Sexual-content",
+"hero": "tab",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "tab"
+},
+{
+"frame": "Slip-Trigger-Stress",
+"hero": "kettle",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "kettle"
+},
+{
+"frame": "Slip-Urge-Now",
+"hero": "tab",
+"top": "506",
+"scale": "0.965",
+"match": true,
+"artIs": "tab"
+},
+{
+"frame": "Start-Here-Step-1",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Start-Here-Step-2",
+"hero": "door",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "door"
+},
+{
+"frame": "Start-Here",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Surf-Complete",
+"hero": "lighthouse",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "lighthouse"
+},
+{
+"frame": "Surf-Step-1",
+"hero": "bed",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Surf-Step-3",
+"hero": "openDoor",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "Today-Home-II",
+"hero": "nightPhone",
+"top": "241.3",
+"scale": null,
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Today-Home-III",
+"hero": "nightMoon",
+"top": "231.5",
+"scale": null,
+"match": true,
+"artIs": "nightMoon"
+},
+{
+"frame": "Today-Home-Task",
+"hero": "nightPhone",
+"top": "241.3",
+"scale": null,
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Transition",
+"hero": "signpost",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "Urge-Log-Intensity",
+"hero": "thermometer",
+"top": "506",
+"scale": "1.062",
+"match": true,
+"artIs": "thermometer"
+},
+{
+"frame": "Urge-Log-Outcome",
+"hero": "clipboard",
+"top": "506",
+"scale": "0.989",
+"match": true,
+"artIs": "clipboard"
+},
+{
+"frame": "Urge-Log-Trigger",
+"hero": "match",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "match"
+},
+{
+"frame": "V3-Q10",
+"hero": "lamp",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "lamp"
+},
+{
+"frame": "V3-Q13",
+"hero": "openDoor",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "openDoor"
+},
+{
+"frame": "V3-Q15",
+"hero": "flag",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "flag"
+},
+{
+"frame": "V3-Q16",
+"hero": "signpost",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "V3-Q2",
+"hero": "hourglass",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "hourglass"
+},
+{
+"frame": "V3-Q21",
+"hero": "scale",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "scale"
+},
+{
+"frame": "V3-Q24-Name",
+"hero": "pencil",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "pencil"
+},
+{
+"frame": "V3-Q26-Gender",
+"hero": "idCard",
+"top": "582",
+"scale": "0.877",
+"match": true,
+"artIs": "idCard"
+},
+{
+"frame": "V3-Q3",
+"hero": "compass",
+"top": "582",
+"scale": "1.1",
+"match": true,
+"artIs": "compass"
+},
+{
+"frame": "V3-Q3b",
+"hero": "calendar",
+"top": "582",
+"scale": "0.76",
+"match": true,
+"artIs": "calendar"
+},
+{
+"frame": "V3-Q6",
+"hero": "thunderCloud",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "thunderCloud"
+},
+{
+"frame": "V3-Q7",
+"hero": "bed",
+"top": "506",
+"scale": "1.089",
+"match": true,
+"artIs": "bed"
+},
+{
+"frame": "Week-I-Reset-P2",
+"hero": "nightPhone",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Week-I-Reset",
+"hero": "nightPhone",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "nightPhone"
+},
+{
+"frame": "Week-II-Changing-Your-Mindset-P2",
+"hero": "signpost",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "Week-II-Changing-Your-Mindset",
+"hero": "signpost",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "signpost"
+},
+{
+"frame": "Week-III-In-the-Moment-P2",
+"hero": "lighthouse",
+"top": "63.9",
+"scale": "1.1",
+"match": true,
+"artIs": "lighthouse"
+},
+{
+"frame": "Week-III-In-the-Moment",
+"hero": "lighthouse",
+"top": "63.9",
+"scale": "1.1",
+"match": true,
+"artIs": "lighthouse"
+},
+{
+"frame": "Week-IV-Know-Your-Brain-P2",
+"hero": "brain",
+"top": "114.4",
+"scale": "1.1",
+"match": true,
+"artIs": "brain"
+},
+{
+"frame": "Week-IV-Know-Your-Brain",
+"hero": "brain",
+"top": "114.4",
+"scale": "1.1",
+"match": true,
+"artIs": "brain"
+},
+{
+"frame": "Week-IX-Connection-P2",
+"hero": "twoCups",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "twoCups"
+},
+{
+"frame": "Week-IX-Connection",
+"hero": "twoCups",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "twoCups"
+},
+{
+"frame": "Week-V-Why-It-Feels-Worth-It-P2",
+"hero": "scale",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "scale"
+},
+{
+"frame": "Week-V-Why-It-Feels-Worth-It",
+"hero": "scale",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "scale"
+},
+{
+"frame": "Week-VI-Discipline-P2",
+"hero": "flag",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "flag"
+},
+{
+"frame": "Week-VI-Discipline",
+"hero": "flag",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "flag"
+},
+{
+"frame": "Week-VII-Relapse-and-Adversity-P2",
+"hero": "sunrise",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Week-VII-Relapse-and-Adversity",
+"hero": "sunrise",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "sunrise"
+},
+{
+"frame": "Week-VIII-Boredom-and-Meaning-P2",
+"hero": "hourglass",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "hourglass"
+},
+{
+"frame": "Week-VIII-Boredom-and-Meaning",
+"hero": "hourglass",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "hourglass"
+},
+{
+"frame": "Week-X-Yourself-P2",
+"hero": "mirror",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "mirror"
+},
+{
+"frame": "Week-X-Yourself",
+"hero": "mirror",
+"top": "80",
+"scale": "1.1",
+"match": true,
+"artIs": "mirror"
+},
+{
+"frame": "Week-XI-Build-a-Life-You-Want-P2",
+"hero": "mountain",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "mountain"
+},
+{
+"frame": "Week-XI-Build-a-Life-You-Want",
+"hero": "mountain",
+"top": "98.9",
+"scale": "1.1",
+"match": true,
+"artIs": "mountain"
+},
+{
+"frame": "Week-XII-Leave-It-Behind-P2",
+"hero": "door",
+"top": "88.8",
+"scale": "1.1",
+"match": true,
+"artIs": "door"
+},
+{
+"frame": "Week-XII-Leave-It-Behind",
+"hero": "door",
+"top": "88.8",
+"scale": "1.1",
+"match": true,
+"artIs": "door"
+},
+{
+"frame": "What-it-affects",
+"hero": "plant",
+"top": "506",
+"scale": "1.1",
+"match": true,
+"artIs": "plant"
+},
+{
+"frame": "Where-We-d-Start",
+"hero": "charger",
+"top": "190",
+"scale": "1.1",
+"match": true,
+"artIs": "charger"
+},
+{
+"frame": "Your-Vow-Page",
+"hero": "flag",
+"top": "104",
+"scale": "1.1",
+"match": true,
+"artIs": "flag"
+}
+]

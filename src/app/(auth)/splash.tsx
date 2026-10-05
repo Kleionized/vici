@@ -1,32 +1,24 @@
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { SplashScene, WaterlineScene } from '@/components/ui';
+import { SplashScene } from '@/components/ui';
 
 /**
- * 01 · Splash → 02 · Finding the Waterline.
+ * 01 · Splash — the laurel and the wordmark on the ground, and then the door.
  *
- * The mark holds for a beat, then the field keeps going while the ring looks
- * for the waterline. Two frames, one continuous background.
+ * The bundle draws one launch frame and puts `02 · Login` straight after it, so
+ * this holds `01 · Splash` long enough to be read and hands over. It used to
+ * spend a second on `Finding the Waterline` on the way — a board no drop of the
+ * canvas has ever drawn — which, coming after boot had already shown the mark
+ * and that same board, played the whole cold open twice.
  */
 export default function Splash() {
   const router = useRouter();
-  const [looking, setLooking] = useState(false);
 
   useEffect(() => {
-    const toWaterline = setTimeout(() => setLooking(true), 900);
-    const onward = setTimeout(() => router.replace('/(auth)/sign-in'), 1900);
-    return () => {
-      clearTimeout(toWaterline);
-      clearTimeout(onward);
-    };
+    const onward = setTimeout(() => router.replace('/(auth)/sign-in'), 900);
+    return () => clearTimeout(onward);
   }, [router]);
 
-  return (
-    <>
-      <StatusBar style="light" />
-      {looking ? <WaterlineScene /> : <SplashScene />}
-    </>
-  );
+  return <SplashScene />;
 }

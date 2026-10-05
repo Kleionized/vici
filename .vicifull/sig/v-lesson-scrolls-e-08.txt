@@ -1,0 +1,7 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 111.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 41.5 | 312 | 310 | 144 | - | - | - | - | 21px/400/normal/36px/rgb(85, 83, 78) | At midnight, those promises are almost useless. They ask a tired version of you to carry a future that has not happened yet.
+div | 116.2 | 504 | 160.6 | 36 | - | - | - | - | 21px/400/normal/36px/rgb(29, 28, 26) | So do not carry it.

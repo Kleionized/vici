@@ -1,0 +1,8 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 162.4 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 46.5 | 294 | 300 | 64 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Plan around how you actually behave
+div | 41.5 | 380 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Some people need a busy week and plenty of contact. Others need more quiet.
+div | 41.5 | 480 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Some do well with strict routines; others need flexibility with a few hard boundaries.

@@ -91,7 +91,31 @@ npx convex run importLessons:importLessons '{ "lessons": [ { "slug": "...", "tit
 or call `api.importLessons.importLessons` from a Node script with the full ~94-lesson
 array.
 
-## 4. What still needs a human
+## 4. Payments
+
+VICI sells one entitlement, `vici_unlimited`, through three products
+(`lifetime`, `yearly`, `monthly`) via RevenueCat. The SDK is installed and
+wired; what is left is the dashboard side and the store keys.
+
+```bash
+# already installed — listed here so a fresh clone knows what it needs
+npx expo install react-native-purchases react-native-purchases-ui expo-dev-client
+```
+
+Add one key to `.env.local` and the app switches from the offline catalogue to
+the real store:
+
+```
+EXPO_PUBLIC_REVENUECAT_KEY=test_...          # Test Store: works everywhere, simulates purchases
+EXPO_PUBLIC_REVENUECAT_IOS_KEY=appl_...      # production
+EXPO_PUBLIC_REVENUECAT_ANDROID_KEY=goog_...  # production
+```
+
+In-app purchases need a development build, not Expo Go — `eas.json` carries the
+profiles. **docs/revenuecat.md** has the dashboard setup, the entitlement and
+product identifiers, both paywalls, Customer Center and the testing notes.
+
+## 5. What still needs a human
 
 - Real crisis / professional-help resources in `src/app/(app)/support.tsx`
   (currently clearly-marked placeholders — invariant #5).

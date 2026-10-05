@@ -3,9 +3,17 @@
 * **Design frame** `Email-Login/V3 Q17`
 * **App file** src/components/onboarding/v3.tsx (O3FunnelStep) + src/content/onboardingFunnel.ts
 
+> **Re-emitted for `Latest Vici FULL` (Sep 2026).** The transcription block below is this
+> drop's frame, emitted by `scripts/vicifull/spec.mjs`. **The comparison table and the
+> resolutions under it were written against the PREVIOUS drop** and have not been re-measured
+> row by row: where the two disagree the transcription is the frame and wins. Do not "correct"
+> the app back to a row in the old table — several of them quote copy this drop withdrew
+> (`Several times a day`, `What does it interfere with most?`). Re-measuring them belongs to
+> F10's renumbering pass.
+
 ## Transcription — `V3 Q17`
 
-Source `UI Final 1/project/Email Login.dc.html`, frame `V3-Q17.html`. Emitted by `scripts/uifinal1/spec.mjs` from the
+Source `Latest Vici FULL/project/Email Login.dc.html`, frame `V3-Q17.html`. Emitted by `scripts/vicifull/spec.mjs` from the
 frame's own inline styles, so every number below is the canvas's, not a reading of a render.
 The 54px status bar and the home indicator are omitted (`DECISIONS.md` D009); every other
 element on the frame is here, in paint order, indented by depth.
@@ -24,7 +32,7 @@ element on the frame is here, in paint order, indented by depth.
     <span> color:rgba(244,243,240,0.75)  font-size:17px  font-weight:400
       · Back
   <div> position:absolute  left:44px  right:44px  top:158px  color:#F4F3F0  font-size:22px  font-weight:500  letter-spacing:0.1px  line-height:1.32  text-align:center  text-wrap:pretty
-    · What have you tried before?
+    · What have you tried already?
   <div> position:absolute  left:0  right:0  top:197px  color:rgba(244,243,240,0.55)  font-size:13px  font-weight:500  text-align:center
     · Select all that apply
   <div> position:absolute  left:24px  right:24px  top:259px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.13)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.45)
@@ -32,35 +40,58 @@ element on the frame is here, in paint order, indented by depth.
       <svg> viewBox="0 0 16 12"  width="12"  height="9"
         <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
-      · Blockers or filters
+      · Blocking sites or apps
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M15 9l5.5 2v4.2c0 3.4-2.3 5.6-5.5 6.8-3.2-1.2-5.5-3.4-5.5-6.8V11z"
   <div> position:absolute  left:24px  right:24px  top:321px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.13)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.45)
     <div> width:22px  height:22px  display:flex  flex-shrink:0  align-items:center  justify-content:center  background:#F4F3F0  border-radius:7px
       <svg> viewBox="0 0 16 12"  width="12"  height="9"
         <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
       · Going cold turkey
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M15 9v12M9.8 12l10.4 6M9.8 18l10.4-6"
   <div> position:absolute  left:24px  right:24px  top:383px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.06)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.18)
     <div> width:22px  height:22px  flex-shrink:0  border-radius:7px  box-shadow:inset 0 0 0 1.5px rgba(244,243,240,0.4)
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
-      · An accountability partner
+      · Asking someone to keep me accountable
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <circle> cx="11.8"  cy="12.5"  r="2.4"
+        <circle> cx="18.6"  cy="13.5"  r="2"
+        <path> d="M8 20.5c.5-2.4 2-3.7 3.8-3.7s3.3 1.3 3.8 3.7M16.5 20.5c.4-1.9 1.2-2.9 2.4-2.9 1.2 0 2.1 1 2.5 2.9"
   <div> position:absolute  left:24px  right:24px  top:445px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.13)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.45)
     <div> width:22px  height:22px  display:flex  flex-shrink:0  align-items:center  justify-content:center  background:#F4F3F0  border-radius:7px
       <svg> viewBox="0 0 16 12"  width="12"  height="9"
         <path> d="M1.5 6l4.4 4.5L14.5 1.5"  fill="none"  stroke="#131313"  stroke-width="2.6"  stroke-linecap="round"  stroke-linejoin="round"
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
       · Deleting apps or accounts
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M10 12h10M12.5 12v-1.6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V12M11.5 12l.7 8h5.6l.7-8"
   <div> position:absolute  left:24px  right:24px  top:507px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.06)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.18)
     <div> width:22px  height:22px  flex-shrink:0  border-radius:7px  box-shadow:inset 0 0 0 1.5px rgba(244,243,240,0.4)
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
       · Therapy or counselling
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M9.5 11.5h11v7h-6l-3 2.6v-2.6h-2z"
   <div> position:absolute  left:24px  right:24px  top:569px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.06)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.18)
     <div> width:22px  height:22px  flex-shrink:0  border-radius:7px  box-shadow:inset 0 0 0 1.5px rgba(244,243,240,0.4)
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
-      · Replacing porn with other habits
+      · Replacing it with other habits
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <path> d="M10 12.5h8.5M16 9.5l3 3-3 3M20 18.5h-8.5M14 15.5l-3 3 3 3"
   <div> position:absolute  left:24px  right:24px  top:631px  height:52px  padding:0 18px  display:flex  align-items:center  gap:14px  background:rgba(255,255,255,0.06)  border-radius:15px  box-shadow:0 0 0 1px rgba(255,255,255,0.18)
     <div> width:22px  height:22px  flex-shrink:0  border-radius:7px  box-shadow:inset 0 0 0 1.5px rgba(244,243,240,0.4)
     <span> color:#F4F3F0  font-size:15.5px  font-weight:500  line-height:19px
-      · Nothing structured yet
+      · Nothing yet
+    <svg> viewBox="0 0 30 30"  width="26"  height="26"  margin-left:auto  flex-shrink:0
+      <g> fill="none"  stroke="rgba(244,243,240,0.55)"  stroke-width="1.9"  stroke-linecap="round"  stroke-linejoin="round"
+        <circle> cx="15"  cy="15"  r="5.5"  stroke-dasharray="2.6 3"
   <div> position:absolute  left:24px  right:24px  top:744px  height:56px  display:flex  align-items:center  justify-content:center  background:#F4F3F0  border-radius:28px  cursor:pointer
     <span> color:#131313  font-size:16.5px  font-weight:600
       · Continue

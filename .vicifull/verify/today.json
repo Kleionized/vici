@@ -1,0 +1,91 @@
+{
+  "group": "today",
+  "summary": "All seven frames captured with sig prefix v-today- and diffed both numerically (sigdiff) and by pixel (banded whole-image diff plus side-by-side crops read as images). Much of the implementer's report holds up under measurement: the D063 Gaussian work and the D064 `r=` fix are real — I sampled the moon and its bloom across the disc on Today Home and design/app agree within 2/255 at every sample; Today Home diffs at 3,876 px over 12/255 and every one of those pixels is circle- or glyph-edge antialiasing (I traced a dot edge device-pixel by device-pixel: design 32, app 19, Δ13, one pixel wide). Today Home III is clean apart from the signature name; the quote mark now lands at 28,187,16,12, exactly the frame. Score Detail's night header is right (~250 px, stars and the water glint painted and within 5/255). Score Detail Moves and Ranks pair element for element once the pager's x offset is removed — the \"you're here\" pill, the four rank rows, the footer icons and captions all land on the canvas's numbers. I also checked the F20 failure class: /score reached the designed way (tapping \"Recovery score\" on Today) is pixel-identical to /score reached by URL, 0 px difference, so no duplicate-gradient-id defect there. What the report missed or understated is on page two of Today and in the score sheet's date formatting: the \"This week\" card picks its lesson by calendar day where three independent canvas numbers say it should pick by curriculum progress; frame #59's own composition is unreachable in the app; the score sheet's dates are locale-dependent and rendered in the wrong order under the capture host's own locale; and the Moves ledger was written off as unmatchable account data when four of its five rows are in fact seedable.",
+  "findings": [
+    {
+      "frame": "#59 Today Home II / #60 Today Home Task",
+      "element": "the \"This week\" card's title and meta line — \"Naming your triggers\" / \"Lesson 5 · Week II\" at left 32, top 190 and 220",
+      "property": "which lesson the card shows (selection rule)",
+      "design": "Lesson 5 · Week II, with four of the week's rail filled — the same account the family numbers Day 41",
+      "app": "\"Choose Your Action\" / \"Lesson 6 · Week VI\", four filled. src/app/(app)/today.tsx:111 does `const dayLesson = lessonForDay(day)` with day = 41",
+      "confidence": "likely",
+      "note": "The implementer and specs/53-today-p2.md both write this off as \"the canvas contradicts itself: Day 41 is Week VI\". Under a progress reading the canvas is self-consistent and the app matches none of it. Evidence: (a) scripts/uifinal1/seed.mjs:122 marks exactly day-08…day-11 complete — week II's first four — so the next incomplete lesson is day 12, which weekFor/indexInWeek render as literally \"Lesson 5 · Week II\"; (b) the same account's Score Detail Moves credits \"Lessons +12\", i.e. 4 lessons × 3 points, which is the same four; (c) the canvas's rail is 4-of-N filled, which is the count of completed lessons in that week. So \"first incomplete lesson\" reproduces the frame's meta line character for character and its rail fill exactly, while `lessonForDay(day)` reproduces neither. The title itself (\"Naming your triggers\") is mock — it appears nowhere in the bundle except these two frames — but the meta line and the fill are reproducible and currently are not reproduced. This is a behaviour call the app is entitled to make, which is why it is `likely` and not `certain`; it should at least be a numbered decision in this run's log rather than an unexamined inheritance of prior-run D-112."
+    },
+    {
+      "frame": "#59 Today Home II / #60 Today Home Task",
+      "element": "the week rail at the foot of the This week card (left 20, right 20, bottom 20, gap 7, 4.5 tall, radius 2.5)",
+      "property": "segment count, segment width and pitch",
+      "design": "6 segments, 49 wide, at x 32 · 88 · 144 · 200 · 256 · 312 (pitch 56); first four #131313, last two rgba(19,19,19,0.15)",
+      "app": "7 segments, 41 wide, at x 32 · 80 · 128 · 176 · 224 · 272 · 320 (pitch 48)",
+      "confidence": "certain",
+      "note": "Confirmed in both signatures and visible in the side-by-side crop. Not one of the two D015 wash equivalences. The deviation is defensible — curriculum84 runs seven lessons a week and D084 records that the week boards draw seven rows, so a six-slot rail could never fill — but it is a real, visible difference on two frames and it is the only element of the card whose geometry does not pair. It is also undocumented in this run: src/app/(app)/today.tsx:450 cites \"DECISIONS D-112\", a number that exists only in prior-runs/UI_FINAL/DECISIONS.md:1163. This run's DECISIONS.md has no entry for it, and the implementer's own D063–D065 additions did not add one."
+    },
+    {
+      "frame": "#59 Today Home II",
+      "element": "the whole page-two composition — a day-41 \"This week\" card above the generic task card (phone-in-the-drawer art, crescent glyph, \"Today’s task\", the sentence at top 194 in 18/600/26/−0.1)",
+      "property": "reachability of the state the frame draws",
+      "design": "\"Naming your triggers · Lesson 5 · Week II\" with four rail segments filled, above the generic phone-in-a-drawer task card",
+      "app": "unreachable as one screen. today.tsx:113–117 chooses the task register from `dayLesson`, so any day that has a lesson takes the lesson-sourced register (#60) and the generic one is only reached past day 84. The capture recipe therefore drives the account to day 86, where the same page draws \"Start the first lesson · Week I\" with an all-empty seven-slot rail",
+      "confidence": "certain",
+      "note": "So frame #59's task card was verified (it matches — I cropped it and read it, the art, label, ring and sentence all pair) but its lesson card was verified only via #60, at a different account, and the frame's own combination cannot be produced at all. The one register reachable at day 41 that yields the label \"Today’s task\" is a hand-named `dailyAction` from the night check-in, and that path draws `NoteArt`, not the frame's phone-in-the-drawer (`PhoneDownArt`). The report presented the day-86 capture as if it verified the frame; it verifies half of it."
+    },
+    {
+      "frame": "#56 Score Detail / #57 Score Detail Moves",
+      "element": "the footer card's subtitle \"vs Apr 3 – May 3\" (80, 732.5) and the chart's month labels \"May\" / \"Jun\" / \"Jul\" (40, 178, 314 at y 632)",
+      "property": "date format — component order and month abbreviation",
+      "design": "\"vs Apr 3 – May 3\"; axis \"May\", \"Jun\", \"Jul\" (month-then-day, three-letter month)",
+      "app": "\"vs 27 Jul – 5 Sept\"; axis \"Jul\", \"Aug\", \"Sept\" (day-then-month, four-letter \"Sept\"). src/app/score.tsx:608 `monthDay()` and :388 the axis label both call `toLocaleDateString(undefined, …)`, so the format follows the device locale — the capture host is en_GB",
+      "confidence": "likely",
+      "note": "The report listed \"vs Apr 3 – May 3\" among values that are \"a template or a datum\", which understates it: the values are data but the ORDER and the abbreviation are formatting, and the canvas states one form. Only an en-US device reproduces the canvas. Two consequences: the screen does not match the frame for a large share of users, and every capture taken on this host renders these strings in a form no frame draws, which is a trap for the next pass. Passing an explicit locale (or formatting the parts by hand) makes it deterministic."
+    },
+    {
+      "frame": "#56 Score Detail",
+      "element": "the pager dot row at top 806 (canvas y), 6pt dots at gap 8",
+      "property": "number of dots",
+      "design": "four dots at x 172.5 · 186.5 · 200.5 · 214.5, index 0 lit",
+      "app": "three dots at x 179.5 · 193.5 · 207.5, index 0 lit",
+      "confidence": "certain",
+      "note": "Standing decision D028 — the sibling frames #57 and #58 both draw three, there is no fourth page, and both rows centre on 196.5. Reported for completeness rather than as a new defect; note only that D028 names the frame by its previous badge (`20A`) and has not been restated against this drop, and that the row is the one place frame #56 is deliberately not matched."
+    },
+    {
+      "frame": "#56 Score Detail",
+      "element": "the chart's y axis (labels at left 16, y 416 / 480 / 546 / 605) and the plotted curve",
+      "property": "axis floor and the series",
+      "design": "800 / 1,000 / 1,200 / 1,400, series running 800 → 1,240",
+      "app": "1,000 / 1,200 / 1,400 / 1,600, series running 1,000 → 1,240",
+      "confidence": "certain",
+      "note": "Genuinely unmatchable, and the report's reasoning checks out: SCORE_BASE is 1,000, so no account this app can hold produces an 800 floor. Everything around it does pair exactly — the two month gridlines at x 150 and 282 (y 438, 184 tall), the dashed current-value rule 341 wide from x 52, the right-hand dashed rule at x 352 (y 426, 196 tall), the plot path box at x 56 width 296, the marker circles at x 343 / 347.5 and the value badge at x 321.3 width 61.3 with its 0 6 14 rgba(19,19,19,0.22) shadow. Only the y coordinates inside the plot move, and they move with the data."
+    },
+    {
+      "frame": "#57 Score Detail Moves",
+      "element": "the five ledger rows — Clean days / Check-ins / Lessons / Urges ridden / Slip · Jul 8 — and the footer's \"+86 net\"",
+      "property": "the account behind the numbers",
+      "design": "+64 · +18 · +12 · +8 · −16, net +86, one slip dated Jul 8",
+      "app": "+108 · +60 · +12 · +36 · −48, net +168, \"3 slips\"",
+      "confidence": "unsure",
+      "note": "A verification-coverage gap rather than a proven app defect, and the report closed it too quickly by grouping it with the unmatchable axis. Nothing about SCORE_BASE blocks these: the numbers are 16 clean days, 9 check-ins, 4 lessons, 4 urges ridden and 1 slip, all seedable, and the seed already reproduces other parts of this same account exactly — the total 1,240, the delta 18, the lessons row +12, and the Last-30-days dot pattern on Today Home (three white days at the same three indices as the canvas, gold ring on the last dot). Only the lessons row currently matches. I did separately verify the thing that is app logic rather than data: the bar-width rule. Fitting the app's own widths gives w = 19.5 + (150 − 19.5)·|v|/max, and evaluating that against the canvas's max of 64 gives 150 / 56.2 / 44.0 / 35.8 / 52.1 against the frame's 150 / 58 / 44 / 34 / 52 — within 2pt on every bar. So the renderer is right and only the inputs differ."
+    },
+    {
+      "frame": "#55 Today Home vs #57 Score Detail Moves",
+      "element": "the Last 30 days dot grid (three #FFFFFF dots with a 1px inset ring at indices 5, 12 and 20) against the Moves ledger's slip row",
+      "property": "how many slips the account has in the last month",
+      "design": "Today Home draws three slipped days in thirty; Score Detail Moves draws one, \"Slip · Jul 8\", at −16",
+      "app": "three white dots and \"3 slips\" at −48 — internally consistent",
+      "confidence": "certain",
+      "note": "A canvas contradiction, not an app defect, and worth naming because it is the second one in this family (the first being Day 41 against Week II). The app is the self-consistent side here. Neither the implementer's report nor specs/51-score-detail-moves.md records it."
+    },
+    {
+      "frame": "#60 Today Home Task",
+      "element": "the task card at left 12, right 12, top 340",
+      "property": "card height / where its foot lands",
+      "design": "274 tall, fixed, with overflow:hidden — foot at y 614",
+      "app": "minHeight 274 (src/components/today/kit.tsx:230), so at day 41 the three-line caption \"Write three simple rules for situations that have caught you before and make one easier to follow.\" pushes the foot to ~636",
+      "confidence": "certain",
+      "note": "Deliberate and documented in the component, and the arithmetic does land on exactly 274 for a two-line sentence (marginTop 190 + 44 + paddingBottom 40). But it is worth stating plainly what it costs on this frame: 22pt of white card below the canvas's own card edge, which is 33,845 of the frame's 64,692 differing pixels — over half the whole-frame diff, and it is not mentioned in the report's #60 entry, which called that frame \"verified, no change needed\". The residual is content length, not geometry."
+    }
+  ],
+  "reachedAll": false,
+  "unreachable": [
+    "#59 Today Home II — captured, but not in the state the frame draws. The frame composes a day-41 lesson card (\"Naming your triggers · Lesson 5 · Week II\", four rail segments filled) above the generic task card (phone-in-the-drawer, crescent, \"Today’s task\"). In the app those two are mutually exclusive: today.tsx:113-117 takes the lesson-sourced task register whenever the day has a lesson, so the generic register is only reached past day 84, where the lesson card degrades to \"Start the first lesson · Week I\" with an empty rail. I tried the day-41 hand-named `dailyAction` register, which does give the label \"Today’s task\" at day 41, but it draws NoteArt rather than the frame's PhoneDownArt. Captured at day 86 (which verifies the task card) and relied on #60's capture for the lesson card."
+  ]
+}

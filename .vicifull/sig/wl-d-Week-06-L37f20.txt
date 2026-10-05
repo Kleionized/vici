@@ -1,0 +1,34 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 342.9 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 118 | 393 | 686 | - | - | - | - | - | -
+div | 88.6 | 280.5 | 215.8 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Match your situation
+div | 32 | 346.5 | 329 | 295 | - | - | - | - | - | -
+div | 32 | 346.5 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 346.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 354.5 | 22 | 22 | - | - | - | - | - | -
+path | 43.3 | 361.1 | 0 | 10.4 | - | - | - | - | - | -
+path | 43.3 | 363.9 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 44.5 | 362.6 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 86 | 346.5 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 346.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Each repetition
+div | 86 | 371.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Put the phone down, lock the screen, stand up, leave the room, walk to the place you chose, then return.
+div | 32 | 460.5 | 329 | 88 | - | - | - | - | - | -
+div | 32 | 460.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 468.5 | 22 | 22 | - | - | - | - | - | -
+rect | 44.4 | 471.8 | 13.2 | 15.4 | - | - | - | - | - | -
+path | 51 | 471.8 | 0 | 15.4 | - | - | - | - | - | -
+path | 47.5 | 476.8 | 7 | 0 | - | - | - | - | - | -
+path | 47.5 | 480 | 7 | 2.2 | - | - | - | - | - | -
+div | 86 | 460.5 | 275 | 88 | - | - | - | - | - | -
+div | 86 | 460.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Practise where it usually happens
+div | 86 | 485.5 | 275 | 63 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | the bed, desk, bathroom entrance, or another place where the sequence tends to start.
+div | 32 | 574.5 | 329 | 67 | - | - | - | - | - | -
+div | 32 | 574.5 | 38 | 38 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 40 | 582.5 | 22 | 22 | - | - | - | - | - | -
+path | 44.4 | 588 | 13.2 | 4.4 | - | - | - | - | - | -
+path | 42.2 | 592.4 | 17.6 | 7.1 | - | - | - | - | - | -
+div | 86 | 574.5 | 275 | 67 | - | - | - | - | - | -
+div | 86 | 574.5 | 275 | 22 | - | - | - | - | 17px/600/normal/22px/rgb(29, 28, 26) | Keep each repetition short
+div | 86 | 599.5 | 275 | 42 | - | - | - | - | 15px/400/normal/21px/rgb(118, 115, 112) | Practise the first movement only. Come back after a minute or two.

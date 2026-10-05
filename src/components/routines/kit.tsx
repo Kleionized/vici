@@ -1,183 +1,86 @@
-import type { ReactNode } from 'react';
-import { useSyncExternalStore } from 'react';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Path } from 'react-native-svg';
+import { useState, useSyncExternalStore } from 'react';
+import { Platform, View, useWindowDimensions } from 'react-native';
 
-import { TimeWheel } from '@/components/routines/wheel';
-import { AppText, PressScale } from '@/components/ui';
+import { DayToggles, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, TimeWheel, useCanvasTop, type WheelTime } from '@/components/mono';
 import type { TimeOfDay } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
-import { sans } from '@/lib/theme';
 
 /**
- * The two check-in boards (108/109 on the canvas) are the same board twice: a
- * plain Back, a centred question, the time wheel, a row of day chips, one line
- * of reassurance and a dark pill. Only the question, the note and which time it
- * writes differ, so the skeleton lives here once.
+ * `Morning Check-in Time` / `Nightly Check-in Time` (and `Settings Check-in
+ * Time`, which the canvas draws byte-identical to the nightly one) are one
+ * board: the back chevron, a left question at 136, "Select time" over the
+ * kit wheel, "Select days" over the seven toggles, and "Save time" at the
+ * frame's bottom 48. Only the question and which time it writes differ.
  *
- * Every offset below is the canvas y less the 54px status bar, and they add up
- * to the 764pt a 393 × 852 phone leaves between the two insets.
+ * The stack is the frame's own `stack(136, gap 18)` with its two 6-tall
+ * spacers. On a phone where it would run under the pill it scrolls between
+ * the nav row's foot and the pill (D320, D226); at 393 × 852 it fits and
+ * nothing moves.
  */
 
-export function RoutineBack({ label = 'Back', onPress }: { label?: string; onPress: () => void }) {
-  return (
-    <PressScale
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      hitSlop={{ top: 16, bottom: 16, left: 20, right: 20 }}
-      // the canvas's row starts at x 16 rather than being inset from x 0 —
-      // the reach lost on the left comes back as hit slop
-      style={{ flexDirection: 'row', alignItems: 'center', gap: 9, alignSelf: 'flex-start', minHeight: 0, marginLeft: 16 }}>
-      <Svg width={11} height={19} viewBox="0 0 11 19" fill="none">
-        <Path d="M9.5 1.5L2 9.5l7.5 8" stroke="#55534E" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-      </Svg>
-      <AppText style={[sans('400'), { fontSize: 17, color: '#55534E' }]}>{label}</AppText>
-    </PressScale>
-  );
+/**
+ * The questions balance after "the" on the canvas (`text-wrap: balance`).
+ * Native has no balancing pass and greedy would keep "morning"/"nightly" on
+ * the first line, so native carries the break the frame draws (D332); web
+ * balances it itself.
+ */
+export function checkinQuestion(kind: CheckinKind): string {
+  const word = kind === 'morning' ? 'morning' : 'nightly';
+  return Platform.OS === 'web' ? `When should the ${word} check-in come?` : `When should the\n${word} check-in come?`;
 }
 
-/** The 361 × 48 ink pill both boards end on. */
-export function RoutineCTA({ label, onPress, enabled = true }: { label: string; onPress: () => void; enabled?: boolean }) {
-  return (
-    <PressScale
-      onPress={enabled ? onPress : undefined}
-      disabled={!enabled}
-      accessibilityRole="button"
-      style={{
-        marginHorizontal: 16,
-        height: 48,
-        borderRadius: 25,
-        backgroundColor: '#131313',
-        alignItems: 'center',
-        justifyContent: 'center',
-        opacity: enabled ? 1 : 0.32,
-      }}>
-      <AppText style={[sans('600'), { fontSize: 17.5, letterSpacing: 0.2, color: '#FFFFFF' }]}>{label}</AppText>
-    </PressScale>
-  );
-}
+const toWheel = (t: TimeOfDay): WheelTime => ({ hour12: t.hour, minute: t.minute, period: t.period });
+const fromWheel = (t: WheelTime): TimeOfDay => ({ hour: t.hour12, minute: t.minute, period: t.period });
 
-export function RoutineShell({
-  backLabel,
+/** The 58 pill at bottom 48 takes 106 off the screen's bottom edge. */
+const CONTROLS = 48 + 58;
+/** The nav row (`top 60`, 40 tall) ends here; the frame's stack starts at 136. */
+const NAV_FOOT = 100;
+const STACK_TOP = 136;
+
+export function CheckinTimeBoard({
+  kind,
   onBack,
-  title,
-  note,
-  cta,
-  children,
-}: {
-  /** `Settings Check-in Time` (92B) draws "Settings" here instead of "Back". */
-  backLabel?: string;
-  onBack: () => void;
-  title: string;
-  /**
-   * `92B · Night check-in time` still carries a line of reassurance at y 676;
-   * the two onboarding boards, `19B` and `19C`, withdrew theirs in this bundle.
-   */
-  note?: string;
-  cta: ReactNode;
-  children: ReactNode;
-}) {
-  return (
-    <View style={{ flex: 1, backgroundColor: '#F4F3F0' }}>
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        {/* canvas 64 */}
-        <View style={{ marginTop: 10, height: 20, justifyContent: 'center' }}>
-          <RoutineBack label={backLabel} onPress={onBack} />
-        </View>
-
-        {/* canvas 132. The block is held at the full 76 to 'Select time' so a two-line question never shifts the wheel. */}
-        <View style={{ marginTop: 48, height: 76 }}>
-          <AppText center style={[sans('500'), { fontSize: 22, color: '#1D1C1A' }]}>
-            {title}
-          </AppText>
-        </View>
-
-        {children}
-
-        {/* canvas leaves 90 here; on a taller phone the slack belongs between the chips and the reassurance */}
-        <View style={{ flex: 1, minHeight: 90 }} />
-        {note ? (
-          <>
-            <AppText center style={[sans('400'), { paddingHorizontal: 36, fontSize: 15, lineHeight: 22, color: '#55534E' }]}>
-              {note}
-            </AppText>
-            <View style={{ height: 24 }} />
-          </>
-        ) : (
-          /* the boards that dropped the line keep the space it stood in, so the
-             pill still lands on the canvas's y 744 */
-          <View style={{ height: 46 }} />
-        )}
-        {cta}
-        <View style={{ height: 26 }} />
-      </SafeAreaView>
-    </View>
-  );
-}
-
-const DAY_LABELS = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
-const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-/** The middle of both boards: the wheel under 'Select time', the chips under 'Select days'. */
-export function CheckinPicker({
   time,
   onTime,
   days,
-  onToggleDay,
+  onDays,
+  onSave,
 }: {
+  kind: CheckinKind;
+  onBack: () => void;
   time: TimeOfDay;
   onTime: (next: TimeOfDay) => void;
   days: number[];
-  onToggleDay: (day: number) => void;
+  onDays: (next: number[]) => void;
+  onSave: () => void;
 }) {
+  const { height: winH } = useWindowDimensions();
+  const canvasTop = useCanvasTop();
+  const [stackH, setStackH] = useState(0);
+  // Where the stack fits (393 × 852 and up) the band starts at the question, as it
+  // always has. Where it scrolls, it starts at the nav row's foot with the 36 as
+  // padding — every row stays put, but the question scrolls up to the chevron's
+  // line instead of being cut 36 below it, in open ground.
+  const scrolls = stackH > 0 && STACK_TOP + stackH + 24 > winH - canvasTop - CONTROLS;
+  const top = scrolls ? NAV_FOOT : STACK_TOP;
   return (
-    <>
-      {/* canvas 208, running to the wheel's first row at 250 */}
-      <View style={{ height: 42 }}>
-        <AppText center style={[sans('600'), { fontSize: 14.5, color: '#2A2924' }]}>
-          Select time
-        </AppText>
-      </View>
-
-      <TimeWheel value={time} onChange={onTime} />
-
-      {/* canvas 508, running to the chips at 548 */}
-      <View style={{ marginTop: 40, height: 40 }}>
-        <AppText center style={[sans('600'), { fontSize: 14.5, color: '#2A2924' }]}>
-          Select days
-        </AppText>
-      </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 34 }}>
-        {DAY_LABELS.map((label, day) => {
-          const on = days.includes(day);
-          return (
-            <PressScale
-              key={label}
-              onPress={() => onToggleDay(day)}
-              accessibilityRole="checkbox"
-              accessibilityLabel={DAY_NAMES[day]}
-              accessibilityState={{ checked: on }}
-              hitSlop={{ top: 12, bottom: 12, left: 4, right: 4 }}
-              style={{
-                width: 38,
-                height: 38,
-                minHeight: 0,
-                borderRadius: 19,
-                backgroundColor: on ? '#131313' : '#EFEEEA',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              {/* `Nightly Check-in Time` draws every selected chip
-                  `color:#F4F3F0` on `#131313`; the app inked both states the
-                  same, so a selected day's letter was invisible. */}
-              <AppText style={[sans('600'), { fontSize: 14, color: on ? '#F4F3F0' : '#1D1C1A' }]}>{label}</AppText>
-            </PressScale>
-          );
-        })}
-      </View>
-    </>
+    <Screen>
+      <NavBar left="back" right="empty" onBack={onBack} />
+      <ScrollRegion top={top} bottom={CONTROLS} contentStyle={{ paddingTop: STACK_TOP - top, paddingHorizontal: 24, paddingBottom: 24 }}>
+        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ gap: 18 }}>
+          <MonoText v="h1">{checkinQuestion(kind)}</MonoText>
+          <View style={{ height: 6 }} />
+          <MonoText v="caps">Select time</MonoText>
+          {/* answered synchronously: the wheel rolls back to whatever `value` holds after a settle */}
+          <TimeWheel value={toWheel(time)} onChange={(next) => onTime(fromWheel(next))} />
+          <View style={{ height: 6 }} />
+          <MonoText v="caps">Select days</MonoText>
+          <DayToggles value={days} onChange={onDays} />
+        </View>
+      </ScrollRegion>
+      <PrimaryButton label="Save time" onPress={onSave} />
+    </Screen>
   );
 }
 

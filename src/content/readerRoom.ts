@@ -1,12 +1,13 @@
 /**
  * GENERATED FILE — do not edit by hand.
  *
- * The reader's night room, transcribed layer by layer off `Lesson Scroll 23`
- * in `UI Final/project/Email Login.dc.html`. Frame 18 draws the same subtree,
- * so both boards share it. Coordinates are scene-local against the canvas's own
+ * The reader's night room, transcribed layer by layer off `L1-Frame-23`
+ * in `Latest Vici FULL/project/Lesson 1 Surviving the Night.dc.html` — the
+ * copy of lesson one D085 rules current. Frame 18 draws the same subtree, so
+ * both boards share it. Coordinates are scene-local against the canvas's own
  * 340 × 200 box, which the boards scale to 0.85.
  *
- * Rebuild: node scripts/uifinal/gen-reader-art.mjs
+ * Rebuild: node scripts/vicifull/gen-reader-art.mjs
  */
 
 import type { TaskSceneLayer } from './taskScenes';
@@ -152,6 +153,8 @@ export const READER_ROOM: TaskSceneLayer[] = [
     "height": 98,
     "radius": "2px",
     "background": "#D6D5D0",
+    "transform": "skewY(-7deg)",
+    "origin": "top right",
     "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
   },
   {
@@ -169,7 +172,8 @@ export const READER_ROOM: TaskSceneLayer[] = [
     "top": 158,
     "width": 84,
     "height": 12,
-    "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+    "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+    "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
   },
   {
     "kind": "box",

@@ -1,0 +1,28 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> font-size:13px  font-weight:700  white-space:nowrap  color:#9B968E
+      · Step 2 of 2
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+  <svg> viewBox="0 0 393 240"  width="393"  height="240"  position:absolute  left:0  top:190px  overflow:visible  transform:scale(1.1)  transform-origin:196px 190px
+    <rect> width="473"  height="3"  x="-40"  y="189"  rx="1.5"  fill="#55524D"
+    <g> transform="translate(-14 0)"
+      <rect> width="104"  height="136"  x="144"  y="54"  rx="3"  fill="#55524D"
+      <rect> width="90"  height="129"  x="151"  y="61"  rx="1.5"  fill="#F2F0EC"
+      <rect> width="66"  height="46"  x="163"  y="75"  rx="2"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linejoin="round"
+      <rect> width="66"  height="44"  x="163"  y="133"  rx="2"  fill="none"  stroke="#0D0D0D"  stroke-width="2.6"  stroke-linejoin="round"
+      <circle> cx="229"  cy="127"  r="3.6"  fill="#0D0D0D"
+      <rect> width="72"  height="6"  x="160"  y="195"  rx="2.5"  fill="#55524D"
+      <path> d="M286 190 L289.5 168 H306.5 L310 190 Z"  fill="#55524D"
+      <path> d="M298 168 V150 M298 158 C 290 155, 287 147, 289 141 C 296 144, 299 151, 298 158 M298 154 C 306 151, 309 143, 307 137 C 300 140, 297 147, 298 154"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+  <div> position:absolute  left:24px  right:24px  top:451px  display:flex  flex-direction:column  gap:16px  align-items:center  text-align:center
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Can’t sleep? Get out of bed before you start scrolling.
+    <div> width:100%  font-size:15px  font-weight:400  line-height:24px  color:#B5B0A8  text-wrap:pretty  text-align:center
+      · One change tonight. Build from there.
+  <div> position:absolute  left:24px  right:24px  bottom:48px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue

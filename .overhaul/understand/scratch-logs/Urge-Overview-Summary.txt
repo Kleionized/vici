@@ -1,0 +1,57 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center
+      <svg> viewBox="0 0 12 20"  width="12"  height="20"
+        <path> d="M10 2L2 10l8 8"  fill="none"  stroke="#F2F0EC"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+    <div> height:40px  display:flex  align-items:center
+      <div> height:32px  border-radius:16px  background:#1E1E1E  display:inline-flex  align-items:center  padding:0 14px  font-size:13px  font-weight:700  white-space:nowrap  color:#F2F0EC
+        · Last 30 days
+  <div> position:absolute  left:24px  right:24px  top:108px
+    <div> width:100%  font-size:32px  font-weight:700  letter-spacing:-0.6px  line-height:38px  color:#F2F0EC  text-wrap:balance
+      · Urge overview
+  <div> position:absolute  left:16px  right:16px  top:164px
+    <div> height:44px  border-radius:22px  background:#1E1E1E  padding:4px  box-sizing:border-box  display:flex
+      <div> flex:1  height:36px  border-radius:18px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#111111  white-space:nowrap
+        · Overview
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Strength
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Mood
+      <div> flex:1  height:36px  border-radius:18px  background:transparent  display:flex  align-items:center  justify-content:center  font-size:13px  font-weight:700  color:#9B968E  white-space:nowrap
+        · Timing
+  <div> position:absolute  left:24px  right:24px  top:236px  display:flex  flex-direction:column  align-items:center  text-align:center  gap:10px
+    <div> font-size:64px  font-weight:700  letter-spacing:-2.2px  line-height:67px  color:#F2F0EC  white-space:nowrap
+      · 9
+    <div> font-size:15px  font-weight:400  line-height:22px  color:#9B968E  text-align:center  white-space:nowrap
+      · Urges, 7 ridden out
+  <div> position:absolute  left:24px  right:24px  top:372px
+    <div> display:flex  flex-direction:column  gap:8px
+      <div> display:flex  flex-direction:column
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Jul 19
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#F2F0EC  display:flex  align-items:center  gap:8px
+            <span> width:6px  height:6px  border-radius:3px  background:#F2F0EC  display:inline-block
+            · Slipped
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Jul 17
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · 6 min
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Jul 15
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · 4 min
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Jul 13
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#F2F0EC  display:flex  align-items:center  gap:8px
+            <span> width:6px  height:6px  border-radius:3px  background:#F2F0EC  display:inline-block
+            · Slipped
+        <div> display:flex  align-items:center  justify-content:space-between  gap:14px  height:52px  padding:0 2px  border-top:1px solid #2E2E2E
+          <span> font-size:15px  font-weight:700  color:#F2F0EC  white-space:nowrap
+            · Jul 9
+          <span> font-size:14px  font-weight:700  white-space:nowrap  color:#9B968E  display:flex  align-items:center  gap:8px
+            · 3 min

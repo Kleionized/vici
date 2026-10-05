@@ -1,0 +1,156 @@
+43 rows -> r-lesson-scrolls-d01
+shot -> .vicifull/rls/d01.png
+71 rows -> r-lesson-scrolls-a01
+shot -> .vicifull/rls/a01.png
+== 01 done
+13 rows -> r-lesson-scrolls-d02
+shot -> .vicifull/rls/d02.png
+script -> "7% :: Close A journey of a thousand miles begins with a single step. LAO TZU"
+38 rows -> r-lesson-scrolls-a02
+shot -> .vicifull/rls/a02.png
+== 02 done
+9 rows -> r-lesson-scrolls-d03
+shot -> .vicifull/rls/d03.png
+script -> "11% :: Close You do not need to fix your life tonight."
+32 rows -> r-lesson-scrolls-a03
+shot -> .vicifull/rls/a03.png
+== 03 done
+7 rows -> r-lesson-scrolls-d04
+shot -> .vicifull/rls/d04.png
+script -> "15% :: Close Maybe you opened this after a relapse. Maybe the last few days h"
+29 rows -> r-lesson-scrolls-a04
+shot -> .vicifull/rls/a04.png
+== 04 done
+10 rows -> r-lesson-scrolls-d05
+shot -> .vicifull/rls/d05.png
+script -> "19% :: Close Good. That gives us somewhere to start. For tonight, one decisio"
+35 rows -> r-lesson-scrolls-a05
+shot -> .vicifull/rls/a05.png
+== 05 done
+7 rows -> r-lesson-scrolls-d06
+shot -> .vicifull/rls/d06.png
+script -> "23% :: Close Make the problem smaller The mind likes to turn quitting into an"
+29 rows -> r-lesson-scrolls-a06
+shot -> .vicifull/rls/a06.png
+== 06 done
+9 rows -> r-lesson-scrolls-d07
+shot -> .vicifull/rls/d07.png
+script -> "26% :: Close Never again. Ninety days. The rest of your life."
+31 rows -> r-lesson-scrolls-a07
+shot -> .vicifull/rls/a07.png
+== 07 done
+7 rows -> r-lesson-scrolls-d08
+shot -> .vicifull/rls/d08.png
+script -> "30% :: Close At midnight, those promises are almost useless. They ask a tired"
+29 rows -> r-lesson-scrolls-a08
+shot -> .vicifull/rls/a08.png
+== 08 done
+13 rows -> r-lesson-scrolls-d09
+shot -> .vicifull/rls/d09.png
+script -> "34% :: Close Get to tomorrow."
+35 rows -> r-lesson-scrolls-a09
+shot -> .vicifull/rls/a09.png
+== 09 done
+7 rows -> r-lesson-scrolls-d10
+shot -> .vicifull/rls/d10.png
+script -> "38% :: Close What tonight requires For the next few hours, the job is simple:"
+29 rows -> r-lesson-scrolls-a10
+shot -> .vicifull/rls/a10.png
+== 10 done
+10 rows -> r-lesson-scrolls-d11
+shot -> .vicifull/rls/d11.png
+script -> "42% :: Close Not forever. Not for the next three months. Not even for the res"
+32 rows -> r-lesson-scrolls-a11
+shot -> .vicifull/rls/a11.png
+== 11 done
+7 rows -> r-lesson-scrolls-d12
+shot -> .vicifull/rls/d12.png
+script -> "46% :: Close Tomorrow, we can work on the habit itself. Tonight, make sure it"
+29 rows -> r-lesson-scrolls-a12
+shot -> .vicifull/rls/a12.png
+== 12 done
+16 rows -> r-lesson-scrolls-d13
+shot -> .vicifull/rls/d13.png
+script -> "50% :: Close Think about the last night Go back to the last time it happened "
+38 rows -> r-lesson-scrolls-a13
+shot -> .vicifull/rls/a13.png
+== 13 done
+17 rows -> r-lesson-scrolls-d14
+shot -> .vicifull/rls/d14.png
+script -> "53% :: Close Maybe you were in bed with your phone. Maybe you could not sleep"
+43 rows -> r-lesson-scrolls-a14
+shot -> .vicifull/rls/a14.png
+== 14 done
+10 rows -> r-lesson-scrolls-d15
+shot -> .vicifull/rls/d15.png
+script -> "57% :: Close There is usually an earlier moment when stopping is cheap. Befor"
+32 rows -> r-lesson-scrolls-a15
+shot -> .vicifull/rls/a15.png
+== 15 done
+22 rows -> r-lesson-scrolls-d16
+shot -> .vicifull/rls/d16.png
+script -> "61% :: Close Where do most of your night-time relapses begin? Pick the one th"
+44 rows -> r-lesson-scrolls-a16
+shot -> .vicifull/rls/a16.png
+== 16 done
+8 rows -> r-lesson-scrolls-d17
+shot -> .vicifull/rls/d17.png
+script -> "65% :: Close Add distance An urge at midnight is much more convincing when th"
+30 rows -> r-lesson-scrolls-a17
+shot -> .vicifull/rls/a17.png
+== 17 done
+36 rows -> r-lesson-scrolls-d18
+shot -> .vicifull/rls/d18.png
+script -> "69% :: Close If the phone is across the room, you have to stand up. If it is "
+90 rows -> r-lesson-scrolls-a18
+shot -> .vicifull/rls/a18.png
+== 18 done
+7 rows -> r-lesson-scrolls-d19
+shot -> .vicifull/rls/d19.png
+script -> "73% :: Close If the laptop is closed and put away, you have to make another d"
+29 rows -> r-lesson-scrolls-a19
+shot -> .vicifull/rls/a19.png
+== 19 done
+7 rows -> r-lesson-scrolls-d20
+shot -> .vicifull/rls/d20.png
+script -> "76% :: Close Before you sleep Once you have done that, you are finished for t"
+29 rows -> r-lesson-scrolls-a20
+shot -> .vicifull/rls/a20.png
+== 20 done
+9 rows -> r-lesson-scrolls-d21
+shot -> .vicifull/rls/d21.png
+script -> "80% :: Close No autopsy of the past. No huge promise about the future. No tes"
+31 rows -> r-lesson-scrolls-a21
+shot -> .vicifull/rls/a21.png
+== 21 done
+10 rows -> r-lesson-scrolls-d22
+shot -> .vicifull/rls/d22.png
+script -> "84% :: Close Get through tonight. Tomorrow can have tomorrow."
+33 rows -> r-lesson-scrolls-a22
+shot -> .vicifull/rls/a22.png
+== 22 done
+45 rows -> r-lesson-scrolls-d23
+shot -> .vicifull/rls/d23.png
+script -> "88% :: Close Surviving the night Set up tonight before you get tired. Use the"
+98 rows -> r-lesson-scrolls-a23
+shot -> .vicifull/rls/a23.png
+== 23 done
+43 rows -> r-lesson-scrolls-d24
+shot -> .vicifull/rls/d24.png
+script -> "92% :: Close Match where you sleep Own bedroom Set the alarm now. Charge the "
+69 rows -> r-lesson-scrolls-a24
+shot -> .vicifull/rls/a24.png
+== 24 done
+13 rows -> r-lesson-scrolls-d25
+shot -> .vicifull/rls/d25.png
+script -> "96% :: Close Well begun is half done. ARISTOTLE"
+38 rows -> r-lesson-scrolls-a25
+shot -> .vicifull/rls/a25.png
+== 25 done
+12 rows -> r-lesson-scrolls-d26
+shot -> .vicifull/rls/d26.png
+script -> "100% :: Close Lesson complete. Your answer is saved to the log. One decision t"
+37 rows -> r-lesson-scrolls-a26
+shot -> .vicifull/rls/a26.png
+== 26 done
+SWEEP 1-26 COMPLETE

@@ -1,0 +1,76 @@
+### task 12
+  RAW 972 px over 6 (0.077% of 1254456) mean 48 max 156   [status-bar rows y<54: 0 | body y>=54: 972]
+    cell 112,352: 32 px worst 39
+  BLOCKS (y>=54 css only): 99 over 4, 91 survive a +/-1 device-px nudge
+    15.9 at css 220,346
+    15.9 at css 268,346
+    15.8 at css 224,346
+### task 25
+  RAW 1417 px over 6 (0.113% of 1254456) mean 53 max 161   [status-bar rows y<54: 0 | body y>=54: 1417]
+    cell 96,400: 56 px worst 55
+  BLOCKS (y>=54 css only): 130 over 4, 34 survive a +/-1 device-px nudge
+    6.9 at css 104,398
+    6.9 at css 108,398
+    6.9 at css 112,398
+### task 33
+  RAW 801 px over 6 (0.064% of 1254456) mean 39 max 120   [status-bar rows y<54: 0 | body y>=54: 801]
+    cell 144,400: 40 px worst 120
+  BLOCKS (y>=54 css only): 26 over 4, 3 survive a +/-1 device-px nudge
+    7.0 at css 148,418
+    6.9 at css 140,418
+    4.1 at css 144,418
+### task 52
+  RAW 133 px over 6 (0.011% of 1254456) mean 40 max 164   [status-bar rows y<54: 0 | body y>=54: 133]
+  BLOCKS (y>=54 css only): 7 over 4, 1 survive a +/-1 device-px nudge
+    4.7 at css 96,338
+### task 65
+  RAW 495 px over 6 (0.039% of 1254456) mean 39 max 55   [status-bar rows y<54: 0 | body y>=54: 495]
+    cell 112,336: 18 px worst 55
+  BLOCKS (y>=54 css only): 42 over 4, 25 survive a +/-1 device-px nudge
+    6.9 at css 176,338
+    6.9 at css 180,338
+    6.9 at css 184,338
+### task 70
+  RAW 119 px over 6 (0.009% of 1254456) mean 51 max 164   [status-bar rows y<54: 0 | body y>=54: 119]
+### task 80
+  RAW 704 px over 6 (0.056% of 1254456) mean 20 max 52   [status-bar rows y<54: 0 | body y>=54: 704]
+    cell 48,368: 35 px worst 28
+  BLOCKS (y>=54 css only): 20 over 4, 3 survive a +/-1 device-px nudge
+    7.3 at css 64,410
+    7.0 at css 64,414
+    6.7 at css 64,406
+### task 2
+  RAW 273 px over 6 (0.022% of 1254456) mean 37 max 164   [status-bar rows y<54: 0 | body y>=54: 273]
+    cell 112,400: 1 px worst 6
+  BLOCKS (y>=54 css only): 15 over 4, 5 survive a +/-1 device-px nudge
+    6.9 at css 108,390
+    6.9 at css 132,390
+    5.4 at css 128,390
+### task 16
+  RAW 200 px over 6 (0.016% of 1254456) mean 62 max 158   [status-bar rows y<54: 0 | body y>=54: 200]
+    6.9 at css 96,422
+    6.9 at css 100,422
+    6.9 at css 104,422
+    4.4 at css 136,426
+    4.2 at css 108,414
+### task 30
+  RAW 135 px over 6 (0.011% of 1254456) mean 45 max 164   [status-bar rows y<54: 0 | body y>=54: 135]
+  BLOCKS (y>=54 css only): 8 over 4, 2 survive a +/-1 device-px nudge
+    7.0 at css 112,414
+    4.0 at css 108,410
+### task 46
+  RAW 129 px over 6 (0.010% of 1254456) mean 21 max 55   [status-bar rows y<54: 0 | body y>=54: 129]
+  BLOCKS (y>=54 css only): 4 over 4, 2 survive a +/-1 device-px nudge
+    7.0 at css 164,374
+    4.0 at css 168,374
+### task 58
+  RAW 378 px over 6 (0.030% of 1254456) mean 16 max 43   [status-bar rows y<54: 0 | body y>=54: 378]
+    cell 80,288: 9 px worst 18
+  BLOCKS (y>=54 css only): 6 over 4, 3 survive a +/-1 device-px nudge
+    5.8 at css 60,394
+    5.7 at css 60,398
+    5.4 at css 60,402
+### task 72
+  RAW 236 px over 6 (0.019% of 1254456) mean 33 max 127   [status-bar rows y<54: 0 | body y>=54: 236]
+    7.1 at css 100,366
+    4.4 at css 104,366

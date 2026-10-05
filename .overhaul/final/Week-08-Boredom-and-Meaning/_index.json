@@ -1,0 +1,748 @@
+{
+  "source": "Vici Overhaul/project/Week 08 Boredom and Meaning.dc.html",
+  "count": 106,
+  "frames": [
+    {
+      "label": "L50 Frame 1",
+      "file": "L50-Frame-1.html",
+      "bytes": 6725,
+      "start": 1597,
+      "end": 8322
+    },
+    {
+      "label": "L50 Frame 2",
+      "file": "L50-Frame-2.html",
+      "bytes": 4121,
+      "start": 8672,
+      "end": 12793
+    },
+    {
+      "label": "L50 Frame 3",
+      "file": "L50-Frame-3.html",
+      "bytes": 4053,
+      "start": 13143,
+      "end": 17196
+    },
+    {
+      "label": "L50 Frame 4",
+      "file": "L50-Frame-4.html",
+      "bytes": 3764,
+      "start": 17546,
+      "end": 21310
+    },
+    {
+      "label": "L50 Frame 5",
+      "file": "L50-Frame-5.html",
+      "bytes": 4939,
+      "start": 21660,
+      "end": 26599
+    },
+    {
+      "label": "L50 Frame 6",
+      "file": "L50-Frame-6.html",
+      "bytes": 3940,
+      "start": 26949,
+      "end": 30889
+    },
+    {
+      "label": "L50 Frame 7",
+      "file": "L50-Frame-7.html",
+      "bytes": 4238,
+      "start": 31239,
+      "end": 35477
+    },
+    {
+      "label": "L50 Frame 8",
+      "file": "L50-Frame-8.html",
+      "bytes": 3921,
+      "start": 35827,
+      "end": 39748
+    },
+    {
+      "label": "L50 Frame 9",
+      "file": "L50-Frame-9.html",
+      "bytes": 4085,
+      "start": 40098,
+      "end": 44183
+    },
+    {
+      "label": "L50 Frame 10",
+      "file": "L50-Frame-10.html",
+      "bytes": 5205,
+      "start": 44534,
+      "end": 49739
+    },
+    {
+      "label": "L50 Frame 11",
+      "file": "L50-Frame-11.html",
+      "bytes": 3770,
+      "start": 50090,
+      "end": 53860
+    },
+    {
+      "label": "L50 Frame 12",
+      "file": "L50-Frame-12.html",
+      "bytes": 5642,
+      "start": 54211,
+      "end": 59853
+    },
+    {
+      "label": "L50 Frame 13",
+      "file": "L50-Frame-13.html",
+      "bytes": 4348,
+      "start": 60204,
+      "end": 64552
+    },
+    {
+      "label": "L50 Frame 14",
+      "file": "L50-Frame-14.html",
+      "bytes": 4122,
+      "start": 64903,
+      "end": 69025
+    },
+    {
+      "label": "L50 Frame 15",
+      "file": "L50-Frame-15.html",
+      "bytes": 7371,
+      "start": 69376,
+      "end": 76747
+    },
+    {
+      "label": "L50 Frame 16",
+      "file": "L50-Frame-16.html",
+      "bytes": 4489,
+      "start": 77098,
+      "end": 81587
+    },
+    {
+      "label": "L50 Frame 17",
+      "file": "L50-Frame-17.html",
+      "bytes": 4141,
+      "start": 81938,
+      "end": 86079
+    },
+    {
+      "label": "L51 Frame 1",
+      "file": "L51-Frame-1.html",
+      "bytes": 5547,
+      "start": 86907,
+      "end": 92454
+    },
+    {
+      "label": "L51 Frame 2",
+      "file": "L51-Frame-2.html",
+      "bytes": 4114,
+      "start": 92804,
+      "end": 96918
+    },
+    {
+      "label": "L51 Frame 3",
+      "file": "L51-Frame-3.html",
+      "bytes": 4004,
+      "start": 97268,
+      "end": 101272
+    },
+    {
+      "label": "L51 Frame 4",
+      "file": "L51-Frame-4.html",
+      "bytes": 3927,
+      "start": 101622,
+      "end": 105549
+    },
+    {
+      "label": "L51 Frame 5",
+      "file": "L51-Frame-5.html",
+      "bytes": 4236,
+      "start": 105899,
+      "end": 110135
+    },
+    {
+      "label": "L51 Frame 6",
+      "file": "L51-Frame-6.html",
+      "bytes": 5464,
+      "start": 110485,
+      "end": 115949
+    },
+    {
+      "label": "L51 Frame 7",
+      "file": "L51-Frame-7.html",
+      "bytes": 3980,
+      "start": 116299,
+      "end": 120279
+    },
+    {
+      "label": "L51 Frame 8",
+      "file": "L51-Frame-8.html",
+      "bytes": 4039,
+      "start": 120629,
+      "end": 124668
+    },
+    {
+      "label": "L51 Frame 9",
+      "file": "L51-Frame-9.html",
+      "bytes": 5453,
+      "start": 125018,
+      "end": 130471
+    },
+    {
+      "label": "L51 Frame 10",
+      "file": "L51-Frame-10.html",
+      "bytes": 3754,
+      "start": 130822,
+      "end": 134576
+    },
+    {
+      "label": "L51 Frame 11",
+      "file": "L51-Frame-11.html",
+      "bytes": 4154,
+      "start": 134927,
+      "end": 139081
+    },
+    {
+      "label": "L51 Frame 12",
+      "file": "L51-Frame-12.html",
+      "bytes": 4257,
+      "start": 139432,
+      "end": 143689
+    },
+    {
+      "label": "L51 Frame 13",
+      "file": "L51-Frame-13.html",
+      "bytes": 4519,
+      "start": 144040,
+      "end": 148559
+    },
+    {
+      "label": "L51 Frame 14",
+      "file": "L51-Frame-14.html",
+      "bytes": 4106,
+      "start": 148910,
+      "end": 153016
+    },
+    {
+      "label": "L52 Frame 1",
+      "file": "L52-Frame-1.html",
+      "bytes": 5148,
+      "start": 153847,
+      "end": 158995
+    },
+    {
+      "label": "L52 Frame 2",
+      "file": "L52-Frame-2.html",
+      "bytes": 4159,
+      "start": 159345,
+      "end": 163504
+    },
+    {
+      "label": "L52 Frame 3",
+      "file": "L52-Frame-3.html",
+      "bytes": 4030,
+      "start": 163854,
+      "end": 167884
+    },
+    {
+      "label": "L52 Frame 4",
+      "file": "L52-Frame-4.html",
+      "bytes": 3908,
+      "start": 168234,
+      "end": 172142
+    },
+    {
+      "label": "L52 Frame 5",
+      "file": "L52-Frame-5.html",
+      "bytes": 3988,
+      "start": 172492,
+      "end": 176480
+    },
+    {
+      "label": "L52 Frame 6",
+      "file": "L52-Frame-6.html",
+      "bytes": 4218,
+      "start": 176830,
+      "end": 181048
+    },
+    {
+      "label": "L52 Frame 7",
+      "file": "L52-Frame-7.html",
+      "bytes": 3763,
+      "start": 181398,
+      "end": 185161
+    },
+    {
+      "label": "L52 Frame 8",
+      "file": "L52-Frame-8.html",
+      "bytes": 5225,
+      "start": 185511,
+      "end": 190736
+    },
+    {
+      "label": "L52 Frame 9",
+      "file": "L52-Frame-9.html",
+      "bytes": 4049,
+      "start": 191086,
+      "end": 195135
+    },
+    {
+      "label": "L52 Frame 10",
+      "file": "L52-Frame-10.html",
+      "bytes": 3929,
+      "start": 195486,
+      "end": 199415
+    },
+    {
+      "label": "L52 Frame 11",
+      "file": "L52-Frame-11.html",
+      "bytes": 4107,
+      "start": 199766,
+      "end": 203873
+    },
+    {
+      "label": "L52 Frame 12",
+      "file": "L52-Frame-12.html",
+      "bytes": 5786,
+      "start": 204224,
+      "end": 210010
+    },
+    {
+      "label": "L52 Frame 13",
+      "file": "L52-Frame-13.html",
+      "bytes": 4533,
+      "start": 210361,
+      "end": 214894
+    },
+    {
+      "label": "L52 Frame 14",
+      "file": "L52-Frame-14.html",
+      "bytes": 4106,
+      "start": 215245,
+      "end": 219351
+    },
+    {
+      "label": "L53 Frame 1",
+      "file": "L53-Frame-1.html",
+      "bytes": 4640,
+      "start": 220168,
+      "end": 224808
+    },
+    {
+      "label": "L53 Frame 2",
+      "file": "L53-Frame-2.html",
+      "bytes": 4086,
+      "start": 225158,
+      "end": 229244
+    },
+    {
+      "label": "L53 Frame 3",
+      "file": "L53-Frame-3.html",
+      "bytes": 4043,
+      "start": 229594,
+      "end": 233637
+    },
+    {
+      "label": "L53 Frame 4",
+      "file": "L53-Frame-4.html",
+      "bytes": 5160,
+      "start": 233987,
+      "end": 239147
+    },
+    {
+      "label": "L53 Frame 5",
+      "file": "L53-Frame-5.html",
+      "bytes": 3771,
+      "start": 239497,
+      "end": 243268
+    },
+    {
+      "label": "L53 Frame 6",
+      "file": "L53-Frame-6.html",
+      "bytes": 3766,
+      "start": 243618,
+      "end": 247384
+    },
+    {
+      "label": "L53 Frame 7",
+      "file": "L53-Frame-7.html",
+      "bytes": 4233,
+      "start": 247734,
+      "end": 251967
+    },
+    {
+      "label": "L53 Frame 8",
+      "file": "L53-Frame-8.html",
+      "bytes": 4035,
+      "start": 252317,
+      "end": 256352
+    },
+    {
+      "label": "L53 Frame 9",
+      "file": "L53-Frame-9.html",
+      "bytes": 7356,
+      "start": 256702,
+      "end": 264058
+    },
+    {
+      "label": "L53 Frame 10",
+      "file": "L53-Frame-10.html",
+      "bytes": 3761,
+      "start": 264409,
+      "end": 268170
+    },
+    {
+      "label": "L53 Frame 11",
+      "file": "L53-Frame-11.html",
+      "bytes": 7346,
+      "start": 268521,
+      "end": 275867
+    },
+    {
+      "label": "L53 Frame 12",
+      "file": "L53-Frame-12.html",
+      "bytes": 4444,
+      "start": 276218,
+      "end": 280662
+    },
+    {
+      "label": "L53 Frame 13",
+      "file": "L53-Frame-13.html",
+      "bytes": 4118,
+      "start": 281013,
+      "end": 285131
+    },
+    {
+      "label": "L53 Frame 14",
+      "file": "L53-Frame-14.html",
+      "bytes": 5259,
+      "start": 285482,
+      "end": 290741
+    },
+    {
+      "label": "L53 Frame 15",
+      "file": "L53-Frame-15.html",
+      "bytes": 4573,
+      "start": 291092,
+      "end": 295665
+    },
+    {
+      "label": "L53 Frame 16",
+      "file": "L53-Frame-16.html",
+      "bytes": 4141,
+      "start": 296016,
+      "end": 300157
+    },
+    {
+      "label": "L54 Frame 1",
+      "file": "L54-Frame-1.html",
+      "bytes": 4995,
+      "start": 300981,
+      "end": 305976
+    },
+    {
+      "label": "L54 Frame 2",
+      "file": "L54-Frame-2.html",
+      "bytes": 4115,
+      "start": 306326,
+      "end": 310441
+    },
+    {
+      "label": "L54 Frame 3",
+      "file": "L54-Frame-3.html",
+      "bytes": 4069,
+      "start": 310791,
+      "end": 314860
+    },
+    {
+      "label": "L54 Frame 4",
+      "file": "L54-Frame-4.html",
+      "bytes": 3906,
+      "start": 315210,
+      "end": 319116
+    },
+    {
+      "label": "L54 Frame 5",
+      "file": "L54-Frame-5.html",
+      "bytes": 5763,
+      "start": 319466,
+      "end": 325229
+    },
+    {
+      "label": "L54 Frame 6",
+      "file": "L54-Frame-6.html",
+      "bytes": 4075,
+      "start": 325579,
+      "end": 329654
+    },
+    {
+      "label": "L54 Frame 7",
+      "file": "L54-Frame-7.html",
+      "bytes": 3945,
+      "start": 330004,
+      "end": 333949
+    },
+    {
+      "label": "L54 Frame 8",
+      "file": "L54-Frame-8.html",
+      "bytes": 4247,
+      "start": 334299,
+      "end": 338546
+    },
+    {
+      "label": "L54 Frame 9",
+      "file": "L54-Frame-9.html",
+      "bytes": 4618,
+      "start": 338896,
+      "end": 343514
+    },
+    {
+      "label": "L54 Frame 10",
+      "file": "L54-Frame-10.html",
+      "bytes": 3899,
+      "start": 343865,
+      "end": 347764
+    },
+    {
+      "label": "L54 Frame 11",
+      "file": "L54-Frame-11.html",
+      "bytes": 5647,
+      "start": 348115,
+      "end": 353762
+    },
+    {
+      "label": "L54 Frame 12",
+      "file": "L54-Frame-12.html",
+      "bytes": 4289,
+      "start": 354113,
+      "end": 358402
+    },
+    {
+      "label": "L54 Frame 13",
+      "file": "L54-Frame-13.html",
+      "bytes": 4117,
+      "start": 358753,
+      "end": 362870
+    },
+    {
+      "label": "L54 Frame 14",
+      "file": "L54-Frame-14.html",
+      "bytes": 5575,
+      "start": 363221,
+      "end": 368796
+    },
+    {
+      "label": "L54 Frame 15",
+      "file": "L54-Frame-15.html",
+      "bytes": 4601,
+      "start": 369147,
+      "end": 373748
+    },
+    {
+      "label": "L54 Frame 16",
+      "file": "L54-Frame-16.html",
+      "bytes": 4141,
+      "start": 374099,
+      "end": 378240
+    },
+    {
+      "label": "L55 Frame 1",
+      "file": "L55-Frame-1.html",
+      "bytes": 4330,
+      "start": 379069,
+      "end": 383399
+    },
+    {
+      "label": "L55 Frame 2",
+      "file": "L55-Frame-2.html",
+      "bytes": 4120,
+      "start": 383749,
+      "end": 387869
+    },
+    {
+      "label": "L55 Frame 3",
+      "file": "L55-Frame-3.html",
+      "bytes": 4037,
+      "start": 388219,
+      "end": 392256
+    },
+    {
+      "label": "L55 Frame 4",
+      "file": "L55-Frame-4.html",
+      "bytes": 7171,
+      "start": 392606,
+      "end": 399777
+    },
+    {
+      "label": "L55 Frame 5",
+      "file": "L55-Frame-5.html",
+      "bytes": 3910,
+      "start": 400127,
+      "end": 404037
+    },
+    {
+      "label": "L55 Frame 6",
+      "file": "L55-Frame-6.html",
+      "bytes": 4240,
+      "start": 404387,
+      "end": 408627
+    },
+    {
+      "label": "L55 Frame 7",
+      "file": "L55-Frame-7.html",
+      "bytes": 3906,
+      "start": 408977,
+      "end": 412883
+    },
+    {
+      "label": "L55 Frame 8",
+      "file": "L55-Frame-8.html",
+      "bytes": 5681,
+      "start": 413233,
+      "end": 418914
+    },
+    {
+      "label": "L55 Frame 9",
+      "file": "L55-Frame-9.html",
+      "bytes": 4203,
+      "start": 419264,
+      "end": 423467
+    },
+    {
+      "label": "L55 Frame 10",
+      "file": "L55-Frame-10.html",
+      "bytes": 3915,
+      "start": 423818,
+      "end": 427733
+    },
+    {
+      "label": "L55 Frame 11",
+      "file": "L55-Frame-11.html",
+      "bytes": 4125,
+      "start": 428084,
+      "end": 432209
+    },
+    {
+      "label": "L55 Frame 12",
+      "file": "L55-Frame-12.html",
+      "bytes": 4981,
+      "start": 432560,
+      "end": 437541
+    },
+    {
+      "label": "L55 Frame 13",
+      "file": "L55-Frame-13.html",
+      "bytes": 4546,
+      "start": 437892,
+      "end": 442438
+    },
+    {
+      "label": "L55 Frame 14",
+      "file": "L55-Frame-14.html",
+      "bytes": 4106,
+      "start": 442789,
+      "end": 446895
+    },
+    {
+      "label": "L56 Frame 1",
+      "file": "L56-Frame-1.html",
+      "bytes": 5404,
+      "start": 447724,
+      "end": 453128
+    },
+    {
+      "label": "L56 Frame 2",
+      "file": "L56-Frame-2.html",
+      "bytes": 4102,
+      "start": 453478,
+      "end": 457580
+    },
+    {
+      "label": "L56 Frame 3",
+      "file": "L56-Frame-3.html",
+      "bytes": 4017,
+      "start": 457930,
+      "end": 461947
+    },
+    {
+      "label": "L56 Frame 4",
+      "file": "L56-Frame-4.html",
+      "bytes": 3923,
+      "start": 462297,
+      "end": 466220
+    },
+    {
+      "label": "L56 Frame 5",
+      "file": "L56-Frame-5.html",
+      "bytes": 5225,
+      "start": 466570,
+      "end": 471795
+    },
+    {
+      "label": "L56 Frame 6",
+      "file": "L56-Frame-6.html",
+      "bytes": 4208,
+      "start": 472145,
+      "end": 476353
+    },
+    {
+      "label": "L56 Frame 7",
+      "file": "L56-Frame-7.html",
+      "bytes": 3921,
+      "start": 476703,
+      "end": 480624
+    },
+    {
+      "label": "L56 Frame 8",
+      "file": "L56-Frame-8.html",
+      "bytes": 3894,
+      "start": 480974,
+      "end": 484868
+    },
+    {
+      "label": "L56 Frame 9",
+      "file": "L56-Frame-9.html",
+      "bytes": 5967,
+      "start": 485218,
+      "end": 491185
+    },
+    {
+      "label": "L56 Frame 10",
+      "file": "L56-Frame-10.html",
+      "bytes": 3718,
+      "start": 491536,
+      "end": 495254
+    },
+    {
+      "label": "L56 Frame 11",
+      "file": "L56-Frame-11.html",
+      "bytes": 3902,
+      "start": 495605,
+      "end": 499507
+    },
+    {
+      "label": "L56 Frame 12",
+      "file": "L56-Frame-12.html",
+      "bytes": 4121,
+      "start": 499858,
+      "end": 503979
+    },
+    {
+      "label": "L56 Frame 13",
+      "file": "L56-Frame-13.html",
+      "bytes": 6015,
+      "start": 504330,
+      "end": 510345
+    },
+    {
+      "label": "L56 Frame 14",
+      "file": "L56-Frame-14.html",
+      "bytes": 4592,
+      "start": 510696,
+      "end": 515288
+    },
+    {
+      "label": "L56 Frame 15",
+      "file": "L56-Frame-15.html",
+      "bytes": 4106,
+      "start": 515639,
+      "end": 519745
+    }
+  ]
+}

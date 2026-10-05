@@ -1,0 +1,7 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 166 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 41.5 | 330 | 310 | 72 | - | - | - | - | 21px/400/normal/36px/rgb(85, 83, 78) | Tomorrow, we can work on the habit itself.
+div | 41.5 | 450 | 310 | 72 | - | - | - | - | 21px/400/normal/36px/rgb(29, 28, 26) | Tonight, make sure it does not get another round.

@@ -1,0 +1,8 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 274.4 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 71.7 | 323 | 249.5 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | Name the right problem
+div | 41.5 | 377 | 310 | 78 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | You cannot fix every difficult feeling immediately. But the next useful action depends on what is actually happening.
+div | 41.5 | 477 | 310 | 52 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Sexual arousal may call for the boundary you chose in Lesson 21.

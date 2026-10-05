@@ -1,0 +1,71 @@
+{
+  "group": "weeks",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 24 frames (#79–#102) were driven to and captured independently: 24 design shots, 24 app shots at /week/1..12 with --initseed=.vicifull/weeks-seed.js (day 12), the P2 states at --do='await scrollBy(400); await scrollBy(400)'. sigdiff plus a whole-image cluster diff (threshold Δ8) was run on all 24 pairs, and the PNGs were read. The implementation is in far better shape than a report of this size usually is: the app's max scroll is exactly 320pt on every week, so the P2 captures land on the frame with no nudging (week II P2 differs by ONE pixel over the whole screen; week V P2 by zero). I re-verified the report's two big content claims independently rather than trusting them — a fresh script re-extracted all 84 lesson titles, 12 week names and 12 blurbs from the frames and compared them to curriculum84.ts (all match), and a second script compared all 172 scene layers field for field (left/right/top/bottom/width/height/background/radius kind and value/blur/rotate/clip/shadow/opacity plus the five inline bird SVG boxes) against weekScenes.ts — zero mismatches. Artwork is genuinely visible, not merely coordinate-correct: I cropped and read the week IX birds, the week VI mountain, both boats and the week I flag disc at 4–8x. All three row states the family draws (done, current with the moon glyph and the 0 0 0 2px ring, locked with the padlock) are exercised and pixel-exact at day 12. What is still wrong is small and mostly latent. The one thing a user can see is the extra pip pair the app draws at y 787/795 on every P1 frame (Δ44 over ~106 device px) — deliberate, argued in D084, but it is a real difference from the canvas and it is plainly visible when the two PNGs are put side by side. The one thing the report gets factually wrong is its week VII/XII line \"the boat's 0 1px 2px page shadow now uses σ = blur/2\": that branch of WeekScene.tsx is dead code. Its regex is /^(-?[0-9.]+)px? /, where the ? binds to the x alone, so it demands a literal \"p\" and can never match the canvas's own spelling \"0 1px 2px\". I confirmed this by evaluating the regex and by measuring the pixels. The output is right anyway — CSS clip-path clips a box-shadow, so the canvas paints nothing there either (design and app are byte-identical at 219,340) — but the code, its comment and the report all claim a shadow is being drawn that is not, and if the regex were repaired the app would paint an UNCLIPPED soft ellipse where the canvas paints a clipped one. The remaining items are a text-wrap divergence on the week name that no current name is wide enough to expose, the ten deliberate blurred-solid signature rows (D082), the fractional-coordinate edges (D083), and one probe artefact worth recording so the next audit does not chase it. No screen in this group is unreachable; the recipes in .vicifull/recipes/weeks.json are accurate and I used them verbatim. I also confirmed the seed is genuinely required: /week/1 with no seed renders day 1 (row 01 current, 02–04 locked) and diffs 40,496 px against the frame.",
+  "findings": [
+    {
+      "frame": "Week I Reset — and identically on Week II, III, IV, V, VI, VII, VIII, IX, X, XI, XII (all twelve P1 frames, #79/81/83/85/87/89/91/93/95/97/99/101)",
+      "element": "the pip pair in the seam between row 04 and row 05 — two 3.5 × 3.5 dots at left 52, canvas y 787 and 795, above the closing land at 798",
+      "property": "presence (whether the pair is drawn)",
+      "design": "not drawn. Every P1 frame draws n cards and n−1 pip pairs and stops: Week I Reset puts rows 01–04 at 486/566/646/726 and pips at 547/555, 627/635, 707/715 and nothing after",
+      "app": "both dots drawn, background rgba(40,38,32,0.2), borderRadius 1.75, at 52/787 and 52/795 — the largest visible difference in the group at Δ44/255 over roughly 106 device pixels, and clearly visible when the two PNGs are compared by eye (I read v-weeks-d-10.png and v-weeks-a-10.png side by side)",
+      "confidence": "unsure",
+      "note": "This is a real, deliberate divergence, argued in DECISIONS D084, and it is NOT one of the two D015 equivalences — it is pixels the canvas does not draw. I checked the argument rather than accepting it: the app's contentContainer is paddingTop 2 + 7 rows on an 80 pitch + paddingBottom 150 = 688 against a 368-tall scroller, so max scroll is exactly 320, which is exactly where the P2 frame is drawn; and P2 does draw pips after rows 05 and 06, so under the canvas's own rule (a pair between every two consecutive lessons) the 04→05 pair exists and a scrolling board must draw it. At the P2 scroll position it lands at 467, above the scroller's own clip at 484, so P2 agrees with the frame without needing to. The reading is defensible; I am flagging it because the brief's standard is the frame's numbers and this is the one place the group knowingly departs from them."
+    },
+    {
+      "frame": "Week VII Relapse and Adversity, Week VII … P2, Week XII Leave It Behind, Week XII … P2 (#91, #92, #101, #102)",
+      "element": "the boat's near sail — week VII the 13.64 × 22.32 layer at 216.96,121.72; week XII the 20.9 × 34.2 layer at 155.6,101.7 (both #F7F6F2, clip-path polygon(100% 0, 100% 100%, 0 100%))",
+      "property": "box-shadow: 0 1px 2px rgba(0,0,0,0.06) — the soft-drop branch in src/components/journey/WeekScene.tsx",
+      "design": "stated on the layer, but clipped away: CSS clip-path clips an element's box-shadow along with the rest of it, and the element's own background paints over what is left, so the canvas shows nothing (design pixels at 219,340 / 220,342 / 218,338 are plain sky 243,238,227)",
+      "app": "nothing drawn either — but for the wrong reason. The parser is const drop = layer.shadow?.match(/^(-?[0-9.]+)px? (-?[0-9.]+)px (-?[0-9.]+)px (rgba?\\([^)]+\\)|#[0-9A-Fa-f]{3,8})$/). The ? binds to the x, not to px, so the first length must end in a literal p: 'px' matches, bare '0' does not. Evaluated directly, '0 1px 2px rgba(0,0,0,0.06)' → null and '0px 1px 2px rgba(0,0,0,0.06)' → match. Both weekScenes.ts layers carrying this shadow spell it '0 1px 2px', so dropSoft is never computed and the Ellipse is never rendered",
+      "confidence": "certain",
+      "note": "Certain that the branch is dead; the current visual output is nevertheless correct, so this costs zero pixels today (design and app are byte-identical across the whole sail box — verified at six sample points and with a Δ-per-pixel grid at 1/255 resolution over 212,332 44×28, which shows nothing but the hull's sub-pixel edge). Two reasons it still matters: (a) the implementing agent's report claims for #91 that 'the boat's 0 1px 2px page shadow now uses σ = blur/2' and the code comment above the branch says the same — both are false, and a later reader will trust them; (b) the branch is live for any future layer whose shadow is written with an explicit 0px, and it would then paint an UNCLIPPED soft ellipse (peak alpha 0.06, rx 8.82 ry 13.16 for week VII) where the canvas paints a clipped one — i.e. repairing the regex without also passing layer.clip to the shadow ellipse would introduce a visible defect. The sibling ring branch /^0 0 0 ([0-9.]+)px …/ is literal and does work; the hull's 0 0 0 1px rgba(0,0,0,0.05) stroke is present in both renders."
+    },
+    {
+      "frame": "all 24 frames (#79–#102)",
+      "element": "the week name — 27px/600, letter-spacing −0.2, colour #1D1C1A, at left 24, canvas top 114 (WeekHeading in src/components/library/WeekBoard.tsx)",
+      "property": "text-wrap",
+      "design": "none stated. Of the whole 24-frame family only the 14.5px blurb states text-wrap:pretty (24 occurrences, one per frame); the 27px name and the 15.5px row title state none",
+      "app": "text-wrap: pretty, inherited from AppText's web default (src/components/ui/AppText.tsx:128 sets balance on hero/display/title and pretty on everything else). The row title was fixed to textWrap:'auto' for the same reason; the name was not",
+      "confidence": "certain",
+      "note": "Certain it is a divergence from the frame and certain it costs nothing today: the widest name is 'Changing Your Mindset' at 281.9pt against 369pt of available width, so none of the twelve wraps, and the design and app name rows are identical to 0.1pt on all twelve (checked in the signatures). The report itself admits this one and defers it to F8's shared AppText change, which is the right call — recording it so it is not lost. The same applies with even less consequence to the 12.5px lesson-number span."
+    },
+    {
+      "frame": "Week I Reset (+ P2), Week II (+ P2), Week V (+ P2), Week VI (+ P2), Week VII (+ P2), Week VIII (+ P2), Week IX (+ P2, two layers), Week X (+ P2), Week XII (+ P2)",
+      "element": "the ten blurred-solid scene layers — e.g. week I's flag shadow, canvas div 56 × 10 at 106,418, rgba(0,0,0,0.08) under filter: blur(4px); week X's glow, 30 × 44 at 154,404 under blur(6px); week VII's water shadow, 39.68 × 6.2 at 215.72,358 under blur(3px)",
+      "property": "the layer's box in the layout signature (left / top / width / height)",
+      "design": "the div's own stated box — week I 106,418,56,10; week VII 215.7,358,39.7,6.2; week XII 153.7,349.9,60.8,9.5",
+      "app": "an SVG Ellipse drawn 2σ past the box in each direction — week I 98,410,72,26; week VII 209.7,352,51.7,18.2; week XII 147.7,343.9,72.8,21.5. sigdiff therefore reports one MISSING row and one EXTRA ellipse row per blurred solid, ten of each across the group",
+      "confidence": "likely",
+      "note": "Likely NOT a defect. This is DECISIONS D082 and it is not one of the two D015 equivalences, so it is a standing signature mismatch that has to be declared. I verified the rendering rather than the argument: at threshold Δ8 not one of the ten blurred-solid positions produces a diff cluster in any of the 24 whole-image comparisons, and a variance sample inside week I's flag shadow matches the design exactly. Drawing the ellipse at the div's own size would leave a hard rim and a too-dark centre, since a 56 × 10 shape under blur(4) peaks at 0.063 rather than the stated 0.08; the wider ellipse is the correct transcription of what the canvas paints."
+    },
+    {
+      "frame": "Week VII Relapse and Adversity (+ P2) and Week XII Leave It Behind (+ P2) worst; Week I, III, IV, VIII, IX, XI (+ their P2s) faintly",
+      "element": "the boats' masts, sails and hulls, and most weeks' cloud edges — every scene part the canvas composes on a fractional coordinate (left 230.6, 216.96, 234.32, 153.7, 155.6, 182.2, 60.6, 303.2, 307.2, 211.3, 273.9, 291.9)",
+      "property": "the painted edge's x/y position, to within one device pixel",
+      "design": "Chrome snaps a DOM box's painted edge to whole CSS pixels: week VII's mast at left 230.6 width 3 paints over roughly [231,234)",
+      "app": "an SVG rect is not snapped, so it paints [230.6,233.6) — a residue of Δ41 over 392 px on week VII's boat, Δ46 over 689 px on week XII's, and Δ11–17 on one to three cloud edges in weeks I, III, IV, VIII, IX and XI. Everything else on those frames is inside Δ8",
+      "confidence": "likely",
+      "note": "Likely not a defect — DECISIONS D083. I did not take this on trust: I cropped both boats at 4–5x and read them, and they are the same drawing (same mast, both sails, same hull, same hull ring); a per-pixel Δ grid over week VII's boat shows the difference is a one-pixel-wide line along the hull's top and bottom edges and nothing in the sail interiors. The app is drawing the number the canvas states, and on device there is no DOM box to snap. Worth knowing that these two frames account for the group's two largest whole-image deltas, so a future audit that sorts by delta will land on them first and they are already explained."
+    },
+    {
+      "frame": "Week VIII Boredom and Meaning (+ P2), Week IX Connection (+ P2), Week XII Leave It Behind (+ P2)",
+      "element": "the inline bird <svg> layers — week VIII one at 258,306 (16 × 8); week IX two at 154,272 (16 × 8) and 174,264 (13.6 × 6.8); week XII two at 132,274 (16 × 8) and 160,262 (13 × 7)",
+      "property": "the svg element's own reported bounding box in the layout signature",
+      "design": "the stated viewport box, e.g. svg | 132 | 274 | 16 | 8",
+      "app": "the probe reads the nested <Svg>'s box as its path's ink box instead — svg | 133 | 277.5 | 14 | 2.5 — so sigdiff lists five svg rows as MISSING in app across those six frames",
+      "confidence": "unsure",
+      "note": "This is a measurement artefact, not a defect, and I am recording it precisely so the next pass does not spend a session on it. getBoundingClientRect on a nested <svg> in Chrome returns the union of its rendered content, not its viewport rect, so the app's row collapses onto the path row — and the path row itself matches the design's path row exactly (design path 133,277.5,14,2.5 vs app 133,277.5,14,2.5; week XII's second bird 160.8,265.1,11.4,2.1 on both sides). The birds do render: I cropped week IX's pair at 8x from both PNGs and they are indistinguishable, and no whole-image diff cluster appears at any of the five bird positions. This is exactly the shape of the SVG trap the brief warns about, with the opposite outcome — the numbers look wrong and the art is right."
+    },
+    {
+      "frame": "all 24 frames (#79–#102)",
+      "element": "the blurb under the week name — 14.5/21, colour #55534E, left 24 right 60, canvas top 158",
+      "property": "line clamp",
+      "design": "none stated; the div is free to take as many lines as the copy needs",
+      "app": "numberOfLines={2}, to keep HEADER_H fixed at 160 for the Library's getItemLayout",
+      "confidence": "unsure",
+      "note": "Not a defect today and possibly never: I measured every one of the twelve blurbs in the design signatures and they set to either one line (weeks IV, VII, IX, XII, height 21) or two (the other eight, height 42) at the frame's own 309pt measure, so the clamp is never reached. Recorded only because it is a constraint the canvas does not state, and a longer blurb in a future drop would be silently truncated rather than pushing the board down."
+    }
+  ]
+}

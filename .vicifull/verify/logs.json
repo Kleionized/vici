@@ -1,0 +1,80 @@
+{
+  "group": "logs",
+  "reachedAll": true,
+  "unreachable": [],
+  "summary": "All 20 `logs` frames were captured from the running app and diffed numerically (sig prefix `v-logs-`), and both PNGs were read for every one. The group is in good shape: the rebuilt boards (Log Chooser scenes, the three register summary cards, the report sparkline, the weekly-report stats card) all land on the canvas's own numbers, the artwork is genuinely painted (no SVG-trap losses), and every \"identical\" frame I re-measured is clean apart from data. The report's own list of judgement calls is accurate on 6 of 7 points, and its claim about the canvas's malformed `Craving` path is correct (`d=\"…-2#1D1C1A7 7.2…\"` in Lapse-Trigger and Urge-Log-Trigger; the app draws the repaired heart). Two real problems survive. (1) The eight Lapse/Urge-Log frames put the primary pill 34pt below the canvas, and the report files this as a headless artefact — but DECISIONS D026 already ruled that exact pattern a defect (`edges={['top','bottom']}` + `paddingBottom: 16`), and `report-ready.tsx` in the same group does it the correct way, so the group is internally inconsistent with its own decision log. (2) Log Chooser's pill is still 33pt high with a tab bar the frame does not draw (FINDINGS F17, decided but not done). Three smaller items are copy/behaviour inferences the canvas does not settle. One correction to the group's recipes: the urge-overview segmented control DOES follow the page and highlight correctly when the tab is fired as a `[role=\"tab\"]` node (`__fire(...)`), so the \"the segmented control keeps highlighting page 1\" caveat is an artefact of driving with `scrollLeft`, not app behaviour — I re-verified all three overview pages that way and they are clean.",
+  "findings": [
+    {
+      "frame": "Lapse When, Lapse Trigger, Lapse Done",
+      "element": "the primary pill (`Continue` / `Continue · 2` / `Continue`), 345 × 58 at left 24",
+      "property": "top / bottom offset",
+      "design": "top 744, i.e. 50pt off the frame's own bottom edge (802 + 50 = 852)",
+      "app": "top 778, i.e. 16pt off the frame edge — `src/app/lapse.tsx:93` takes `SafeAreaView edges={['top','bottom']}` and line 193 spends the home-indicator inset as `paddingBottom: 16`, so the offset only resolves to 50 on hardware that happens to report a 34pt bottom inset",
+      "confidence": "certain",
+      "note": "This is the exact pattern DECISIONS D026 already ruled against for `DayShell`: \"every bottom-anchored child states the canvas's own number… identical on the web preview and on any device, rather than one that moves with the hardware.\" The implementer's report classes it as judgement call #7, \"a fixed artefact in the web preview\" — that reading contradicts a standing decision. `src/app/report-ready.tsx:64` uses the correct idiom (`edges={['top']}` plus absolute canvas offsets) and its pill and `Later` row land on 688/764 with zero missing rows, so the correct pattern is already in the group. Fix: `edges={['top']}` and state 50."
+    },
+    {
+      "frame": "Urge Log Intensity, Urge Log Trigger, Urge Log Outcome, Urge Log When, Urge Log Done",
+      "element": "the primary pill (`Continue` ×3, `Log the urge`, `Done`), 345 × 58 at left 24",
+      "property": "top / bottom offset",
+      "design": "top 744 (50pt off the frame's bottom edge)",
+      "app": "top 778 — same cause, `src/app/urge-log.tsx:456` `SafeAreaView edges={['top','bottom']}` and line 567 `paddingBottom: 16`",
+      "confidence": "certain",
+      "note": "Same D026 violation as the Lapse flow; the two files share the idiom. Everything else on these five frames is clean: Urge Log Outcome's rows now land at canvas 238/314/390/466/542, the trigger grid and tile labels (`Tired`) match, and `Specify time` vs the Lapse flow's `Choose a time` is correctly differentiated (`urge-log.tsx:524` / `lapse.tsx:131`)."
+    },
+    {
+      "frame": "Log Chooser",
+      "element": "the `Continue` pill (345 × 58) and the tab bar",
+      "property": "pill top; presence of the tab bar",
+      "design": "pill top 744 (text baseline row at 763), and frame 90 draws no tab bar at all",
+      "app": "pill top 711 (text row 730) — `src/app/(app)/log.tsx` sets `bottom: Math.max(0, 50 - tabBar)`, which evaluates to 0 because the chooser lives inside `(app)` and the bar claims 83pt; the bar is drawn at y 769–852",
+      "confidence": "certain",
+      "note": "Already held as FINDINGS F17 and decided (\"do it properly in the fix pass — move the chooser to its own route outside `(app)`\"), but not done, so it is still a live 33pt miss on the entry screen to the whole section. The only signature miss on this frame; everything else — the three 150-tall cards at 200/374/548, the sun/halo/hill, the seedling and pot, the three stars, crescent, rotated cloud and ground ellipse, the 26pt check pip and the two 24pt rings — matches the canvas exactly and is visibly painted in the PNG."
+    },
+    {
+      "frame": "Urge Log Done, Lapse Done, Log Urges, Weekly Report Urges",
+      "element": "`LoggedNote`'s two radial washes and `report-ready`'s five",
+      "property": "SVG gradient `id`",
+      "design": "n/a — this is the F20 platform rule",
+      "app": "`src/app/urge-log.tsx:328,339` hard-code `urgelog-glow` and `urgelog-ground`, and `LoggedNote` is exported and also rendered by `src/app/lapse.tsx`; `src/app/report-ready.tsx:44,54,130,141,181` hard-code `ready-top`, `ready-bottom`, `ready-glow`, `ready-shadow`, `ready-seal`",
+      "confidence": "unsure",
+      "note": "FINDINGS F20 is a HIGH, cross-cutting rule — \"Fix: derive ids from `useId()` everywhere, in all 21 files\" — and it explicitly credits `(app)/log.tsx` and `weekly-report.tsx` with already complying. Those two do (`log.tsx` `Halo`/`ReportSpark` and `Hill` all use `useId()`), and `urge-overview.tsx` has no defs at all, but `urge-log.tsx` and `report-ready.tsx` were left outside the rule. I could not construct a path inside this group that mounts two instances of the same art at once (nothing pushes `/lapse` over `/urge-log`), so I am marking the *live break* unsure; the *code being out of compliance with a standing HIGH finding* is not in doubt."
+    },
+    {
+      "frame": "Urge Overview",
+      "element": "third `Common triggers` bar label, 88 × 18 at left 24, top 422",
+      "property": "text",
+      "design": "`Tiredness`",
+      "app": "`Tired` — the bar is labelled with the raw stored trigger string, and the tile in Urge Log Trigger / Lapse Trigger is `Tired`",
+      "confidence": "unsure",
+      "note": "The canvas draws `Tired` on the tile and `Tiredness` on this bar, in this drop and in `.vicifull/prev` alike, so it may be a deliberate display mapping for the overview rather than sample sloppiness. `Stress` and `Boredom` are identical in both places, which is what makes the single divergence look intentional. Nothing else on this page is wrong: heading 244, rows 306/364/422, bar box 128 × 241 × 10, tones #131313/#767267/#CDC9BD and the 566-tall insight card all land exactly, and the insight body's `after 10 pm` phrase exists in `BAND_PHRASE`."
+    },
+    {
+      "frame": "Log Urges",
+      "element": "row title, 14px/500 at left 76",
+      "property": "composed text",
+      "design": "always two parts — `Late night · Intense`, `Boredom · Mild`, `Stress · Strong`",
+      "app": "`src/app/(app)/log.tsx:582` joins `event.trigger` with the severity word, and `event.trigger` is itself already a ' · '-joined multi-select (`urge-log.tsx:441` writes `triggers.join(' · ')`), so an urge logged with two triggers renders `Boredom · Late night · Mild` — three parts in a 64pt row with a fixed right-hand outcome column",
+      "confidence": "unsure",
+      "note": "The canvas never draws a multi-trigger row, so this is not provably a miss — but `src/app/urge-overview.tsx:368` splits the same field on ' · ' before tallying, which shows the compound value was understood in one place and not the other. The same `LogRow` is shared by Weekly Report Urges. Worth a deliberate decision (first trigger only, or a `+1` suffix) rather than leaving it to `numberOfLines`."
+    },
+    {
+      "frame": "Weekly Report Days",
+      "element": "a day well with no check-in, 43.3 × 44, radius 12",
+      "property": "background",
+      "design": "the canvas's scale has exactly four inks — #CDC9BD, #A9A597, #767267, #131313 — and every one of its fourteen wells carries one of them",
+      "app": "`rgba(19,19,19,0.06)` (`src/app/weekly-report.tsx:434`), a fifth tone that appears nowhere in the bundle",
+      "confidence": "unsure",
+      "note": "An unlogged day has to look like something and the canvas never draws one, so this is an app-side invention rather than a transcription error; it is commented as such at line 423. Flagging it only because it dominates the board on a sparse account — my seeded capture drew 12 of 14 wells in the invented tone, which reads very differently from the frame. Everything measurable on this page is right: captions 342/374/466, well rows 398/490, the 0.4 opacity on the `Last week` strip, gap 7 and the 592 insight card."
+    },
+    {
+      "frame": "Lapse When, Urge Log When",
+      "element": "the time wheel's selection band, 321 × 36 at left 36, radius 10",
+      "property": "background alpha",
+      "design": "`rgba(0,0,0,0.045)` (computed by the browser to `rgba(0,0,0,0.043)`)",
+      "app": "`rgba(0,0,0,0.04)` as computed — `src/app/urge-log.tsx:299` states `rgba(0,0,0,0.045)` correctly, but react-native-web's colour normaliser rounds the alpha to two decimals",
+      "confidence": "unsure",
+      "note": "Not a transcription defect — the source carries the canvas's own number and the loss is a platform rounding of 0.005 alpha (Δ1/255). Recorded only so a later signature diff does not chase it. It is the sole remaining non-wrapper difference on the two wheel boards; the columns (132/42/48/42), rows (338/372/406/440/474 at 34pt), the 18/400 vs 21/500 ramp, the 0.16/0.42/1 opacity ladder, the 1px rule at 516 and the Cancel/Save split all match."
+    }
+  ]
+}

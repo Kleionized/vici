@@ -1,0 +1,143 @@
+=== Enlisting Aegis (Enlisting-Aegis.html)
+
+sig: --- 19 design rows, 23 app rows; 3 differing, 2 missing, 4 extra, 2 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.18% (2263 of 1245888 px > 24), mean Δ 0.89
+regions (frame pt, largest first): 1
+  156,240 84x80  (2257 px)
+-> .overhaul/verify/tail/v-tail-Enlisting-Aegis.strip.png  .overhaul/verify/tail/v-tail-Enlisting-Aegis.diff.png  .overhaul/verify/tail/v-tail-Enlisting-Aegis.overlay.png
+=== Where We’d Start (Where-We-d-Start.html)
+
+sig: --- 29 design rows, 38 app rows; 5 differing, 1 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.01% (151 of 1245888 px > 24), mean Δ 0.47
+regions (frame pt, largest first): 4
+  252,664 12x12  (49 px)
+  164,664 8x12  (39 px)
+  280,664 8x12  (38 px)
+  220,664 8x12  (24 px)
+-> .overhaul/verify/tail/v-tail-Where-We-d-Start.strip.png  .overhaul/verify/tail/v-tail-Where-We-d-Start.diff.png  .overhaul/verify/tail/v-tail-Where-We-d-Start.overlay.png
+=== Start Here (Start-Here.html)
+
+sig: --- 24 design rows, 31 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Start-Here.strip.png  .overhaul/verify/tail/v-tail-Start-Here.diff.png  .overhaul/verify/tail/v-tail-Start-Here.overlay.png
+=== Start Here Step 1 (Start-Here-Step-1.html)
+
+sig: --- 26 design rows, 32 app rows; 2 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Start-Here-Step-1.strip.png  .overhaul/verify/tail/v-tail-Start-Here-Step-1.diff.png  .overhaul/verify/tail/v-tail-Start-Here-Step-1.overlay.png
+=== Start Here Step 2 (Start-Here-Step-2.html)
+
+sig: --- 22 design rows, 27 app rows; 2 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Start-Here-Step-2.strip.png  .overhaul/verify/tail/v-tail-Start-Here-Step-2.diff.png  .overhaul/verify/tail/v-tail-Start-Here-Step-2.overlay.png
+=== Your Plan (Your-Plan.html)
+
+sig: --- 46 design rows, 53 app rows; 11 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (13 of 1245888 px > 24), mean Δ 0.30
+regions (frame pt, largest first): 4
+  48,288 4x4  (3 px)
+  52,292 4x4  (3 px)
+  72,292 4x4  (3 px)
+  76,288 4x4  (2 px)
+-> .overhaul/verify/tail/v-tail-Your-Plan.strip.png  .overhaul/verify/tail/v-tail-Your-Plan.diff.png  .overhaul/verify/tail/v-tail-Your-Plan.overlay.png
+=== Starting Score (Starting-Score.html)
+
+sig: --- 69 design rows, 77 app rows; 6 differing, 10 missing, 14 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 1.84% (22912 of 1245888 px > 24), mean Δ 4.38
+regions (frame pt, largest first): 2
+  112,360 176x68  (20162 px)
+  284,364 44x68  (2734 px)
+-> .overhaul/verify/tail/v-tail-Starting-Score.strip.png  .overhaul/verify/tail/v-tail-Starting-Score.diff.png  .overhaul/verify/tail/v-tail-Starting-Score.overlay.png
+=== Cost Next 30 (Cost-Next-30.html)
+
+sig: --- 49 design rows, 59 app rows; 4 differing, 0 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.01% (138 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 28
+  36,420 8x8  (7 px)
+  212,420 4x8  (7 px)
+  60,420 8x4  (6 px)
+  96,420 4x8  (6 px)
+  236,420 4x4  (6 px)
+  328,420 4x8  (6 px)
+  120,420 4x8  (5 px)
+  156,420 4x8  (5 px)
+=== Cost Next 365 (Cost-Next-365.html)
+
+sig: --- 379 design rows, 386 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.51
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Cost-Next-365.strip.png  .overhaul/verify/tail/v-tail-Cost-Next-365.diff.png  .overhaul/verify/tail/v-tail-Cost-Next-365.overlay.png
+=== Cost By Age 80 (Cost-By-Age-80.html)
+
+sig: --- 2355 design rows, 19 app rows; 2 differing, 2343 missing, 6 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (15 of 1245888 px > 24), mean Δ 0.05
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Cost-By-Age-80.strip.png  .overhaul/verify/tail/v-tail-Cost-By-Age-80.diff.png  .overhaul/verify/tail/v-tail-Cost-By-Age-80.overlay.png
+=== Line If Nothing Changes (Line-If-Nothing-Changes.html)
+
+sig: --- 21 design rows, 28 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (5 of 1245888 px > 24), mean Δ 0.51
+regions (frame pt, largest first): 1
+  192,512 4x4  (3 px)
+-> .overhaul/verify/tail/v-tail-Line-If-Nothing-Changes.strip.png  .overhaul/verify/tail/v-tail-Line-If-Nothing-Changes.diff.png  .overhaul/verify/tail/v-tail-Line-If-Nothing-Changes.overlay.png
+=== Line With the Plan (Line-With-the-Plan.html)
+
+sig: --- 21 design rows, 28 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (9 of 1245888 px > 24), mean Δ 0.51
+regions (frame pt, largest first): 2
+  180,544 4x8  (5 px)
+  188,544 4x4  (2 px)
+-> .overhaul/verify/tail/v-tail-Line-With-the-Plan.strip.png  .overhaul/verify/tail/v-tail-Line-With-the-Plan.diff.png  .overhaul/verify/tail/v-tail-Line-With-the-Plan.overlay.png
+=== A Clean Day (A-Clean-Day.html)
+
+sig: --- 20 design rows, 24 app rows; 1 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.48
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-A-Clean-Day.strip.png  .overhaul/verify/tail/v-tail-A-Clean-Day.diff.png  .overhaul/verify/tail/v-tail-A-Clean-Day.overlay.png
+=== One Bad Day (One-Bad-Day.html)
+
+sig: --- 34 design rows, 37 app rows; 1 differing, 0 missing, 2 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-One-Bad-Day.strip.png  .overhaul/verify/tail/v-tail-One-Bad-Day.diff.png  .overhaul/verify/tail/v-tail-One-Bad-Day.overlay.png
+=== What You Want Back (What-You-Want-Back.html)
+
+sig: --- 16 design rows, 26 app rows; 4 differing, 0 missing, 7 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (3 of 1245888 px > 24), mean Δ 0.41
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-What-You-Want-Back.strip.png  .overhaul/verify/tail/v-tail-What-You-Want-Back.diff.png  .overhaul/verify/tail/v-tail-What-You-Want-Back.overlay.png
+=== Letter Received (Letter-Received.html)
+
+sig: --- 17 design rows, 23 app rows; 2 differing, 1 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Letter-Received.strip.png  .overhaul/verify/tail/v-tail-Letter-Received.diff.png  .overhaul/verify/tail/v-tail-Letter-Received.overlay.png
+=== Letter Week XII (Letter-Week-XII.html)
+
+sig: --- 18 design rows, 24 app rows; 5 differing, 0 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.14
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Letter-Week-XII.strip.png  .overhaul/verify/tail/v-tail-Letter-Week-XII.diff.png  .overhaul/verify/tail/v-tail-Letter-Week-XII.overlay.png
+=== The Vow (The-Vow.html)
+
+sig: --- 15 design rows, 23 app rows; 5 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.51
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-The-Vow.strip.png  .overhaul/verify/tail/v-tail-The-Vow.diff.png  .overhaul/verify/tail/v-tail-The-Vow.overlay.png
+=== Medallion Received (Medallion-Received.html)
+
+sig: --- 31 design rows, 38 app rows; 2 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
+mismatch 0.00% (0 of 1245888 px > 24), mean Δ 0.49
+regions (frame pt, largest first): 0
+-> .overhaul/verify/tail/v-tail-Medallion-Received.strip.png  .overhaul/verify/tail/v-tail-Medallion-Received.diff.png  .overhaul/verify/tail/v-tail-Medallion-Received.overlay.png
+=== (no frame) tail — Choose another boards (no frame)
+
+=== (no frame) tail — other answers (no frame)
+
+=== (no frame) tail — no name (no frame)
+
+=== (no frame) tail — Build plan hands over (no frame)
+

@@ -1,0 +1,6 @@
+MISSING in app:  circle | 158.5 | 242 | 76 | 76 | - | - | - | - | - | -
+MISSING in app:  path | 196.5 | 242 | 38 | 38 | - | - | - | - | - | -
+~ Finding where you usually struggle       type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ Looking at what tends to set it off      type: 16px/700/normal/normal/rgb(242, 240, 236) → 16px/700/normal/19px/rgb(242, 240, 236)
+~ Choosing where to start                  type: 16px/400/normal/normal/rgb(155, 150, 142) → 16px/400/normal/19px/rgb(155, 150, 142)
+--- 19 design rows, 23 app rows; 3 differing, 2 missing, 4 extra, 2 sub-0.25pt rounding (use --all to list extras)

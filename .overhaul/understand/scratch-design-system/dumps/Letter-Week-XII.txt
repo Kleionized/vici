@@ -1,0 +1,30 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:112px  bottom:0  border-radius:24px 24px 0 0  background:#1E1E1E  padding:34px 28px 0  box-sizing:border-box  overflow:hidden
+    <div> font-size:13px  font-weight:700  color:#9B968E  margin-bottom:18px
+      · Week XII, from Sam
+    <div> font-size:26px  font-weight:700  letter-spacing:-0.6px  color:#F2F0EC  margin-bottom:18px
+      · Sam —
+    <div> display:flex  flex-direction:column  gap:14px  font-size:15px  line-height:24px  color:#B5B0A8
+      <div> 
+        · I’m writing this at the end of week XII. I remember where you are right now — you want this to be the time it finally changes, and part of you is already wondering how long you’ll last.
+      <div> 
+        · Here is the part I wish you knew:
+        <span> font-weight:700  color:#F2F0EC
+          · you do not need twelve perfect weeks.
+        · You need to stop turning one bad night into a reason to quit.
+      <div> 
+        · There were nights I wanted to watch badly. Some days the only thing I did right was get through the evening. That still counted.
+      <div> 
+        · Every time I waited one out, left the room, or used the SOS instead, I learned the same thing: the urge ends whether you obey it or not.
+  <div> position:absolute  left:24px  right:24px  bottom:0  height:190px  background:linear-gradient(180deg, rgba(30,30,30,0) 0%, #1E1E1E 60%)  pointer-events:none
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Continue
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · Keep this letter

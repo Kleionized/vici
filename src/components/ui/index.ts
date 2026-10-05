@@ -29,7 +29,6 @@ export { Header } from './Header';
 export { Hill } from './Hill';
 export { Pill } from './Pill';
 export { PressScale } from './press-scale';
-export { SignatureMark, SignaturePad, SIGNATURE_H, SIGNATURE_W } from './Signature';
 export { Screen } from './Screen';
 export { BackChevron, ScreenHeader } from './ScreenHeader';
 export { SectionLabel } from './SectionLabel';

@@ -1,0 +1,5 @@
+[
+{"name":"j1","wait":900,"js":"return [location.pathname, __btns().map(b=>(b.getAttribute('aria-label')||b.textContent.trim().slice(0,30))).join(' | ')]"},
+{"name":"j2","wait":1200,"js":"await tap('Today’s pledge'); await __sleep(1200); return [location.pathname+location.search, __txt().slice(-200), [...document.querySelectorAll('input,textarea')].map(i=>i.value)]"},
+{"name":"j3","wait":1200,"js":"const ta=[...document.querySelectorAll('textarea,input')]; const el=ta[ta.length-1]; const d=Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el),'value'); d.set.call(el, 'The mornings are mine again. Edited.'); el.dispatchEvent(new Event('input',{bubbles:true})); await __sleep(300); await tap('Save'); await __sleep(1400); return [location.pathname, __txt().slice(-200)]"}
+]

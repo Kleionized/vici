@@ -1,0 +1,11 @@
+const o = {};
+const tabs = () => [...document.querySelectorAll('[role="tab"]')].filter((t) => t.getAttribute('aria-selected') === 'true').map((t) => t.textContent.trim()).join('|');
+const pager = () => [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 100 && getComputedStyle(d).overflowX !== 'visible');
+await waitFor('Urge overview');
+o.s0 = tabs();
+await tap('Timing'); await __sleep(1200); o.s1 = tabs(); o.left1 = pager()?.scrollLeft;
+const p = pager(); p.scrollLeft = innerWidth * 1; p.dispatchEvent(new Event('scroll')); await __sleep(900); o.s2 = tabs();
+p.scrollLeft = innerWidth * 2; p.dispatchEvent(new Event('scroll')); await __sleep(900); o.s3 = tabs();
+await tap('Overview'); await __sleep(1200); o.s4 = tabs(); o.left4 = pager()?.scrollLeft;
+await tap('Back'); await __sleep(1800); o.backUrl = location.pathname;
+return o;

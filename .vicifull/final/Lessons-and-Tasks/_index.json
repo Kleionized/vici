@@ -1,0 +1,2505 @@
+{
+  "source": "Latest Vici FULL/project/Lessons and Tasks.dc.html",
+  "count": 357,
+  "frames": [
+    {
+      "label": "L01 Reader 1",
+      "file": "L01-Reader-1.html",
+      "bytes": 7432,
+      "start": 1348,
+      "end": 8780
+    },
+    {
+      "label": "L01 Reader 2",
+      "file": "L01-Reader-2.html",
+      "bytes": 3580,
+      "start": 8781,
+      "end": 12361
+    },
+    {
+      "label": "L01 Reader 3",
+      "file": "L01-Reader-3.html",
+      "bytes": 3158,
+      "start": 12362,
+      "end": 15520
+    },
+    {
+      "label": "L01 Reader 4",
+      "file": "L01-Reader-4.html",
+      "bytes": 2957,
+      "start": 15521,
+      "end": 18478
+    },
+    {
+      "label": "L01 Reader 5",
+      "file": "L01-Reader-5.html",
+      "bytes": 3354,
+      "start": 18479,
+      "end": 21833
+    },
+    {
+      "label": "L01 Reader 6",
+      "file": "L01-Reader-6.html",
+      "bytes": 2870,
+      "start": 21834,
+      "end": 24704
+    },
+    {
+      "label": "L01 Reader 7",
+      "file": "L01-Reader-7.html",
+      "bytes": 3062,
+      "start": 24705,
+      "end": 27767
+    },
+    {
+      "label": "L01 Reader 8",
+      "file": "L01-Reader-8.html",
+      "bytes": 2931,
+      "start": 27768,
+      "end": 30699
+    },
+    {
+      "label": "L01 Reader 9",
+      "file": "L01-Reader-9.html",
+      "bytes": 3609,
+      "start": 30700,
+      "end": 34309
+    },
+    {
+      "label": "L01 Reader 10",
+      "file": "L01-Reader-10.html",
+      "bytes": 2869,
+      "start": 34310,
+      "end": 37179
+    },
+    {
+      "label": "L01 Reader 11",
+      "file": "L01-Reader-11.html",
+      "bytes": 3246,
+      "start": 37180,
+      "end": 40426
+    },
+    {
+      "label": "L01 Reader 12",
+      "file": "L01-Reader-12.html",
+      "bytes": 2880,
+      "start": 40427,
+      "end": 43307
+    },
+    {
+      "label": "L01 Reader 13",
+      "file": "L01-Reader-13.html",
+      "bytes": 4068,
+      "start": 43308,
+      "end": 47376
+    },
+    {
+      "label": "L01 Reader 14",
+      "file": "L01-Reader-14.html",
+      "bytes": 4492,
+      "start": 47377,
+      "end": 51869
+    },
+    {
+      "label": "L01 Reader 15",
+      "file": "L01-Reader-15.html",
+      "bytes": 3281,
+      "start": 51870,
+      "end": 55151
+    },
+    {
+      "label": "L01 Reader 16",
+      "file": "L01-Reader-16.html",
+      "bytes": 4818,
+      "start": 55152,
+      "end": 59970
+    },
+    {
+      "label": "L01 Reader 17",
+      "file": "L01-Reader-17.html",
+      "bytes": 3047,
+      "start": 59971,
+      "end": 63018
+    },
+    {
+      "label": "L01 Reader 18",
+      "file": "L01-Reader-18.html",
+      "bytes": 7452,
+      "start": 63019,
+      "end": 70471
+    },
+    {
+      "label": "L01 Reader 19",
+      "file": "L01-Reader-19.html",
+      "bytes": 2963,
+      "start": 70472,
+      "end": 73435
+    },
+    {
+      "label": "L01 Reader 20",
+      "file": "L01-Reader-20.html",
+      "bytes": 2858,
+      "start": 73436,
+      "end": 76294
+    },
+    {
+      "label": "L01 Reader 21",
+      "file": "L01-Reader-21.html",
+      "bytes": 3128,
+      "start": 76295,
+      "end": 79423
+    },
+    {
+      "label": "L01 Reader 22",
+      "file": "L01-Reader-22.html",
+      "bytes": 3304,
+      "start": 79424,
+      "end": 82728
+    },
+    {
+      "label": "L01 Reader 23",
+      "file": "L01-Reader-23.html",
+      "bytes": 8515,
+      "start": 82729,
+      "end": 91244
+    },
+    {
+      "label": "L01 Reader 24",
+      "file": "L01-Reader-24.html",
+      "bytes": 3593,
+      "start": 91245,
+      "end": 94838
+    },
+    {
+      "label": "L01 Reader 25",
+      "file": "L01-Reader-25.html",
+      "bytes": 3684,
+      "start": 94839,
+      "end": 98523
+    },
+    {
+      "label": "Lesson 01",
+      "file": "Lesson-01.html",
+      "bytes": 8100,
+      "start": 99368,
+      "end": 107468
+    },
+    {
+      "label": "Lesson 02",
+      "file": "Lesson-02.html",
+      "bytes": 5903,
+      "start": 107848,
+      "end": 113751
+    },
+    {
+      "label": "Lesson 03",
+      "file": "Lesson-03.html",
+      "bytes": 7654,
+      "start": 114128,
+      "end": 121782
+    },
+    {
+      "label": "Lesson 04",
+      "file": "Lesson-04.html",
+      "bytes": 7191,
+      "start": 122165,
+      "end": 129356
+    },
+    {
+      "label": "Lesson 05",
+      "file": "Lesson-05.html",
+      "bytes": 7625,
+      "start": 129743,
+      "end": 137368
+    },
+    {
+      "label": "Lesson 06",
+      "file": "Lesson-06.html",
+      "bytes": 6662,
+      "start": 137745,
+      "end": 144407
+    },
+    {
+      "label": "Lesson 07",
+      "file": "Lesson-07.html",
+      "bytes": 8350,
+      "start": 144787,
+      "end": 153137
+    },
+    {
+      "label": "Lesson 08",
+      "file": "Lesson-08.html",
+      "bytes": 7673,
+      "start": 153523,
+      "end": 161196
+    },
+    {
+      "label": "Lesson 09",
+      "file": "Lesson-09.html",
+      "bytes": 5915,
+      "start": 161580,
+      "end": 167495
+    },
+    {
+      "label": "Lesson 10",
+      "file": "Lesson-10.html",
+      "bytes": 6723,
+      "start": 167884,
+      "end": 174607
+    },
+    {
+      "label": "Lesson 11",
+      "file": "Lesson-11.html",
+      "bytes": 5632,
+      "start": 174997,
+      "end": 180629
+    },
+    {
+      "label": "Lesson 12",
+      "file": "Lesson-12.html",
+      "bytes": 5975,
+      "start": 181005,
+      "end": 186980
+    },
+    {
+      "label": "Lesson 13",
+      "file": "Lesson-13.html",
+      "bytes": 6426,
+      "start": 187365,
+      "end": 193791
+    },
+    {
+      "label": "Lesson 14",
+      "file": "Lesson-14.html",
+      "bytes": 6765,
+      "start": 194170,
+      "end": 200935
+    },
+    {
+      "label": "Lesson 15",
+      "file": "Lesson-15.html",
+      "bytes": 6093,
+      "start": 201322,
+      "end": 207415
+    },
+    {
+      "label": "Lesson 16",
+      "file": "Lesson-16.html",
+      "bytes": 6466,
+      "start": 207811,
+      "end": 214277
+    },
+    {
+      "label": "Lesson 17",
+      "file": "Lesson-17.html",
+      "bytes": 6565,
+      "start": 214653,
+      "end": 221218
+    },
+    {
+      "label": "Lesson 18",
+      "file": "Lesson-18.html",
+      "bytes": 6913,
+      "start": 221598,
+      "end": 228511
+    },
+    {
+      "label": "Lesson 19",
+      "file": "Lesson-19.html",
+      "bytes": 7453,
+      "start": 228883,
+      "end": 236336
+    },
+    {
+      "label": "Lesson 20",
+      "file": "Lesson-20.html",
+      "bytes": 6362,
+      "start": 236716,
+      "end": 243078
+    },
+    {
+      "label": "Lesson 21",
+      "file": "Lesson-21.html",
+      "bytes": 6925,
+      "start": 243459,
+      "end": 250384
+    },
+    {
+      "label": "Lesson 22",
+      "file": "Lesson-22.html",
+      "bytes": 5637,
+      "start": 250769,
+      "end": 256406
+    },
+    {
+      "label": "Lesson 23",
+      "file": "Lesson-23.html",
+      "bytes": 6420,
+      "start": 256793,
+      "end": 263213
+    },
+    {
+      "label": "Lesson 24",
+      "file": "Lesson-24.html",
+      "bytes": 6797,
+      "start": 263595,
+      "end": 270392
+    },
+    {
+      "label": "Lesson 25",
+      "file": "Lesson-25.html",
+      "bytes": 6454,
+      "start": 270777,
+      "end": 277231
+    },
+    {
+      "label": "Lesson 26",
+      "file": "Lesson-26.html",
+      "bytes": 6237,
+      "start": 277618,
+      "end": 283855
+    },
+    {
+      "label": "Lesson 27",
+      "file": "Lesson-27.html",
+      "bytes": 7378,
+      "start": 284240,
+      "end": 291618
+    },
+    {
+      "label": "Lesson 28",
+      "file": "Lesson-28.html",
+      "bytes": 5901,
+      "start": 291996,
+      "end": 297897
+    },
+    {
+      "label": "Lesson 29",
+      "file": "Lesson-29.html",
+      "bytes": 6661,
+      "start": 298274,
+      "end": 304935
+    },
+    {
+      "label": "Lesson 30",
+      "file": "Lesson-30.html",
+      "bytes": 6419,
+      "start": 305338,
+      "end": 311757
+    },
+    {
+      "label": "Lesson 31",
+      "file": "Lesson-31.html",
+      "bytes": 6151,
+      "start": 312140,
+      "end": 318291
+    },
+    {
+      "label": "Lesson 33",
+      "file": "Lesson-33.html",
+      "bytes": 9563,
+      "start": 318678,
+      "end": 328241
+    },
+    {
+      "label": "Lesson 34",
+      "file": "Lesson-34.html",
+      "bytes": 6971,
+      "start": 328626,
+      "end": 335597
+    },
+    {
+      "label": "Lesson 35",
+      "file": "Lesson-35.html",
+      "bytes": 7452,
+      "start": 335985,
+      "end": 343437
+    },
+    {
+      "label": "Lesson 36",
+      "file": "Lesson-36.html",
+      "bytes": 5723,
+      "start": 343823,
+      "end": 349546
+    },
+    {
+      "label": "Lesson 37",
+      "file": "Lesson-37.html",
+      "bytes": 6553,
+      "start": 349934,
+      "end": 356487
+    },
+    {
+      "label": "Lesson 38",
+      "file": "Lesson-38.html",
+      "bytes": 6166,
+      "start": 356874,
+      "end": 363040
+    },
+    {
+      "label": "Lesson 39",
+      "file": "Lesson-39.html",
+      "bytes": 6317,
+      "start": 363427,
+      "end": 369744
+    },
+    {
+      "label": "Lesson 40",
+      "file": "Lesson-40.html",
+      "bytes": 5895,
+      "start": 370133,
+      "end": 376028
+    },
+    {
+      "label": "Lesson 41",
+      "file": "Lesson-41.html",
+      "bytes": 6957,
+      "start": 376414,
+      "end": 383371
+    },
+    {
+      "label": "Lesson 42",
+      "file": "Lesson-42.html",
+      "bytes": 5938,
+      "start": 383754,
+      "end": 389692
+    },
+    {
+      "label": "Lesson 43",
+      "file": "Lesson-43.html",
+      "bytes": 6640,
+      "start": 390584,
+      "end": 397224
+    },
+    {
+      "label": "Lesson 44",
+      "file": "Lesson-44.html",
+      "bytes": 6871,
+      "start": 397615,
+      "end": 404486
+    },
+    {
+      "label": "Lesson 45",
+      "file": "Lesson-45.html",
+      "bytes": 5650,
+      "start": 404873,
+      "end": 410523
+    },
+    {
+      "label": "Lesson 46",
+      "file": "Lesson-46.html",
+      "bytes": 7152,
+      "start": 410902,
+      "end": 418054
+    },
+    {
+      "label": "Lesson 47",
+      "file": "Lesson-47.html",
+      "bytes": 7116,
+      "start": 418441,
+      "end": 425557
+    },
+    {
+      "label": "Lesson 48",
+      "file": "Lesson-48.html",
+      "bytes": 6238,
+      "start": 425950,
+      "end": 432188
+    },
+    {
+      "label": "Lesson 49",
+      "file": "Lesson-49.html",
+      "bytes": 6695,
+      "start": 432580,
+      "end": 439275
+    },
+    {
+      "label": "Lesson 50",
+      "file": "Lesson-50.html",
+      "bytes": 6980,
+      "start": 439650,
+      "end": 446630
+    },
+    {
+      "label": "Lesson 51",
+      "file": "Lesson-51.html",
+      "bytes": 6959,
+      "start": 447015,
+      "end": 453974
+    },
+    {
+      "label": "Lesson 52",
+      "file": "Lesson-52.html",
+      "bytes": 7351,
+      "start": 454357,
+      "end": 461708
+    },
+    {
+      "label": "Lesson 53",
+      "file": "Lesson-53.html",
+      "bytes": 6595,
+      "start": 462094,
+      "end": 468689
+    },
+    {
+      "label": "Lesson 54",
+      "file": "Lesson-54.html",
+      "bytes": 6774,
+      "start": 469071,
+      "end": 475845
+    },
+    {
+      "label": "Lesson 55",
+      "file": "Lesson-55.html",
+      "bytes": 7904,
+      "start": 476233,
+      "end": 484137
+    },
+    {
+      "label": "Lesson 56",
+      "file": "Lesson-56.html",
+      "bytes": 6401,
+      "start": 484513,
+      "end": 490914
+    },
+    {
+      "label": "Lesson 57",
+      "file": "Lesson-57.html",
+      "bytes": 7830,
+      "start": 491306,
+      "end": 499136
+    },
+    {
+      "label": "Lesson 58",
+      "file": "Lesson-58.html",
+      "bytes": 6349,
+      "start": 499515,
+      "end": 505864
+    },
+    {
+      "label": "Lesson 59",
+      "file": "Lesson-59.html",
+      "bytes": 6653,
+      "start": 506238,
+      "end": 512891
+    },
+    {
+      "label": "Lesson 60",
+      "file": "Lesson-60.html",
+      "bytes": 6765,
+      "start": 513278,
+      "end": 520043
+    },
+    {
+      "label": "Lesson 61",
+      "file": "Lesson-61.html",
+      "bytes": 6224,
+      "start": 520421,
+      "end": 526645
+    },
+    {
+      "label": "Lesson 62",
+      "file": "Lesson-62.html",
+      "bytes": 6451,
+      "start": 527036,
+      "end": 533487
+    },
+    {
+      "label": "Lesson 63",
+      "file": "Lesson-63.html",
+      "bytes": 6820,
+      "start": 533877,
+      "end": 540697
+    },
+    {
+      "label": "Lesson 64",
+      "file": "Lesson-64.html",
+      "bytes": 7145,
+      "start": 541572,
+      "end": 548717
+    },
+    {
+      "label": "Lesson 65",
+      "file": "Lesson-65.html",
+      "bytes": 7078,
+      "start": 549102,
+      "end": 556180
+    },
+    {
+      "label": "Lesson 66",
+      "file": "Lesson-66.html",
+      "bytes": 6062,
+      "start": 556560,
+      "end": 562622
+    },
+    {
+      "label": "Lesson 67",
+      "file": "Lesson-67.html",
+      "bytes": 5447,
+      "start": 563004,
+      "end": 568451
+    },
+    {
+      "label": "Lesson 68",
+      "file": "Lesson-68.html",
+      "bytes": 6514,
+      "start": 568834,
+      "end": 575348
+    },
+    {
+      "label": "Lesson 69",
+      "file": "Lesson-69.html",
+      "bytes": 6781,
+      "start": 575726,
+      "end": 582507
+    },
+    {
+      "label": "Lesson 70",
+      "file": "Lesson-70.html",
+      "bytes": 6363,
+      "start": 582892,
+      "end": 589255
+    },
+    {
+      "label": "Lesson 71",
+      "file": "Lesson-71.html",
+      "bytes": 6959,
+      "start": 589636,
+      "end": 596595
+    },
+    {
+      "label": "Lesson 72",
+      "file": "Lesson-72.html",
+      "bytes": 6492,
+      "start": 596973,
+      "end": 603465
+    },
+    {
+      "label": "Lesson 73",
+      "file": "Lesson-73.html",
+      "bytes": 6240,
+      "start": 603843,
+      "end": 610083
+    },
+    {
+      "label": "Lesson 74",
+      "file": "Lesson-74.html",
+      "bytes": 7122,
+      "start": 610462,
+      "end": 617584
+    },
+    {
+      "label": "Lesson 75",
+      "file": "Lesson-75.html",
+      "bytes": 8878,
+      "start": 617968,
+      "end": 626846
+    },
+    {
+      "label": "Lesson 76",
+      "file": "Lesson-76.html",
+      "bytes": 6357,
+      "start": 627227,
+      "end": 633584
+    },
+    {
+      "label": "Lesson 77",
+      "file": "Lesson-77.html",
+      "bytes": 7125,
+      "start": 633972,
+      "end": 641097
+    },
+    {
+      "label": "Lesson 78",
+      "file": "Lesson-78.html",
+      "bytes": 6274,
+      "start": 641483,
+      "end": 647757
+    },
+    {
+      "label": "Lesson 79",
+      "file": "Lesson-79.html",
+      "bytes": 6653,
+      "start": 648142,
+      "end": 654795
+    },
+    {
+      "label": "Lesson 80",
+      "file": "Lesson-80.html",
+      "bytes": 6188,
+      "start": 655187,
+      "end": 661375
+    },
+    {
+      "label": "Lesson 81",
+      "file": "Lesson-81.html",
+      "bytes": 6859,
+      "start": 661762,
+      "end": 668621
+    },
+    {
+      "label": "Lesson 82",
+      "file": "Lesson-82.html",
+      "bytes": 6302,
+      "start": 669020,
+      "end": 675322
+    },
+    {
+      "label": "Lesson 83",
+      "file": "Lesson-83.html",
+      "bytes": 7442,
+      "start": 675704,
+      "end": 683146
+    },
+    {
+      "label": "Lesson 84",
+      "file": "Lesson-84.html",
+      "bytes": 7399,
+      "start": 683525,
+      "end": 690924
+    },
+    {
+      "label": "Task D01 Intro",
+      "file": "Task-D01-Intro.html",
+      "bytes": 8878,
+      "start": 691865,
+      "end": 700743
+    },
+    {
+      "label": "Task D01 Options",
+      "file": "Task-D01-Options.html",
+      "bytes": 7451,
+      "start": 701135,
+      "end": 708586
+    },
+    {
+      "label": "Task D01 Card",
+      "file": "Task-D01-Card.html",
+      "bytes": 17166,
+      "start": 708977,
+      "end": 726143
+    },
+    {
+      "label": "Task D02 Intro",
+      "file": "Task-D02-Intro.html",
+      "bytes": 8065,
+      "start": 726603,
+      "end": 734668
+    },
+    {
+      "label": "Task D02 Options",
+      "file": "Task-D02-Options.html",
+      "bytes": 7167,
+      "start": 735061,
+      "end": 742228
+    },
+    {
+      "label": "Task D02 Card",
+      "file": "Task-D02-Card.html",
+      "bytes": 14446,
+      "start": 742618,
+      "end": 757064
+    },
+    {
+      "label": "Task D03 Intro",
+      "file": "Task-D03-Intro.html",
+      "bytes": 8074,
+      "start": 757525,
+      "end": 765599
+    },
+    {
+      "label": "Task D03 Options",
+      "file": "Task-D03-Options.html",
+      "bytes": 6897,
+      "start": 765991,
+      "end": 772888
+    },
+    {
+      "label": "Task D03 Card",
+      "file": "Task-D03-Card.html",
+      "bytes": 14404,
+      "start": 773279,
+      "end": 787683
+    },
+    {
+      "label": "Task D04 Intro",
+      "file": "Task-D04-Intro.html",
+      "bytes": 8212,
+      "start": 788143,
+      "end": 796355
+    },
+    {
+      "label": "Task D04 Options",
+      "file": "Task-D04-Options.html",
+      "bytes": 7008,
+      "start": 796748,
+      "end": 803756
+    },
+    {
+      "label": "Task D04 Card",
+      "file": "Task-D04-Card.html",
+      "bytes": 16550,
+      "start": 804146,
+      "end": 820696
+    },
+    {
+      "label": "Task D05 Intro",
+      "file": "Task-D05-Intro.html",
+      "bytes": 7460,
+      "start": 821157,
+      "end": 828617
+    },
+    {
+      "label": "Task D05 Options",
+      "file": "Task-D05-Options.html",
+      "bytes": 6974,
+      "start": 829009,
+      "end": 835983
+    },
+    {
+      "label": "Task D05 Card",
+      "file": "Task-D05-Card.html",
+      "bytes": 13060,
+      "start": 836374,
+      "end": 849434
+    },
+    {
+      "label": "Task D06 Intro",
+      "file": "Task-D06-Intro.html",
+      "bytes": 7468,
+      "start": 849894,
+      "end": 857362
+    },
+    {
+      "label": "Task D06 Options",
+      "file": "Task-D06-Options.html",
+      "bytes": 7095,
+      "start": 857755,
+      "end": 864850
+    },
+    {
+      "label": "Task D06 Card",
+      "file": "Task-D06-Card.html",
+      "bytes": 13422,
+      "start": 865240,
+      "end": 878662
+    },
+    {
+      "label": "Task D07 Intro",
+      "file": "Task-D07-Intro.html",
+      "bytes": 7058,
+      "start": 879123,
+      "end": 886181
+    },
+    {
+      "label": "Task D07 Options",
+      "file": "Task-D07-Options.html",
+      "bytes": 7164,
+      "start": 886573,
+      "end": 893737
+    },
+    {
+      "label": "Task D07 Card",
+      "file": "Task-D07-Card.html",
+      "bytes": 13882,
+      "start": 894128,
+      "end": 908010
+    },
+    {
+      "label": "Task D08 Intro",
+      "file": "Task-D08-Intro.html",
+      "bytes": 9795,
+      "start": 908470,
+      "end": 918265
+    },
+    {
+      "label": "Task D08 Options",
+      "file": "Task-D08-Options.html",
+      "bytes": 6249,
+      "start": 918658,
+      "end": 924907
+    },
+    {
+      "label": "Task D08 Card",
+      "file": "Task-D08-Card.html",
+      "bytes": 19496,
+      "start": 925297,
+      "end": 944793
+    },
+    {
+      "label": "Task D09 Intro",
+      "file": "Task-D09-Intro.html",
+      "bytes": 6171,
+      "start": 945254,
+      "end": 951425
+    },
+    {
+      "label": "Task D09 Options",
+      "file": "Task-D09-Options.html",
+      "bytes": 7048,
+      "start": 951817,
+      "end": 958865
+    },
+    {
+      "label": "Task D09 Card",
+      "file": "Task-D09-Card.html",
+      "bytes": 12302,
+      "start": 959256,
+      "end": 971558
+    },
+    {
+      "label": "Task D10 Intro",
+      "file": "Task-D10-Intro.html",
+      "bytes": 7088,
+      "start": 972018,
+      "end": 979106
+    },
+    {
+      "label": "Task D10 Options",
+      "file": "Task-D10-Options.html",
+      "bytes": 6342,
+      "start": 979499,
+      "end": 985841
+    },
+    {
+      "label": "Task D10 Card",
+      "file": "Task-D10-Card.html",
+      "bytes": 12330,
+      "start": 986231,
+      "end": 998561
+    },
+    {
+      "label": "Task D11 Intro",
+      "file": "Task-D11-Intro.html",
+      "bytes": 6421,
+      "start": 999022,
+      "end": 1005443
+    },
+    {
+      "label": "Task D11 Options",
+      "file": "Task-D11-Options.html",
+      "bytes": 6180,
+      "start": 1005835,
+      "end": 1012015
+    },
+    {
+      "label": "Task D11 Card",
+      "file": "Task-D11-Card.html",
+      "bytes": 12650,
+      "start": 1012406,
+      "end": 1025056
+    },
+    {
+      "label": "Task D12 Intro",
+      "file": "Task-D12-Intro.html",
+      "bytes": 6862,
+      "start": 1025516,
+      "end": 1032378
+    },
+    {
+      "label": "Task D12 Options",
+      "file": "Task-D12-Options.html",
+      "bytes": 6714,
+      "start": 1032771,
+      "end": 1039485
+    },
+    {
+      "label": "Task D12 Card",
+      "file": "Task-D12-Card.html",
+      "bytes": 11944,
+      "start": 1039875,
+      "end": 1051819
+    },
+    {
+      "label": "Task D13 Intro",
+      "file": "Task-D13-Intro.html",
+      "bytes": 6272,
+      "start": 1052280,
+      "end": 1058552
+    },
+    {
+      "label": "Task D13 Options",
+      "file": "Task-D13-Options.html",
+      "bytes": 6767,
+      "start": 1058944,
+      "end": 1065711
+    },
+    {
+      "label": "Task D13 Card",
+      "file": "Task-D13-Card.html",
+      "bytes": 10602,
+      "start": 1066102,
+      "end": 1076704
+    },
+    {
+      "label": "Task D14 Intro",
+      "file": "Task-D14-Intro.html",
+      "bytes": 7614,
+      "start": 1077164,
+      "end": 1084778
+    },
+    {
+      "label": "Task D14 Options",
+      "file": "Task-D14-Options.html",
+      "bytes": 6270,
+      "start": 1085171,
+      "end": 1091441
+    },
+    {
+      "label": "Task D14 Card",
+      "file": "Task-D14-Card.html",
+      "bytes": 15320,
+      "start": 1091831,
+      "end": 1107151
+    },
+    {
+      "label": "Task D15 Intro",
+      "file": "Task-D15-Intro.html",
+      "bytes": 6417,
+      "start": 1107612,
+      "end": 1114029
+    },
+    {
+      "label": "Task D15 Options",
+      "file": "Task-D15-Options.html",
+      "bytes": 5701,
+      "start": 1114421,
+      "end": 1120122
+    },
+    {
+      "label": "Task D15 Card",
+      "file": "Task-D15-Card.html",
+      "bytes": 12762,
+      "start": 1120513,
+      "end": 1133275
+    },
+    {
+      "label": "Task D16 Intro",
+      "file": "Task-D16-Intro.html",
+      "bytes": 6985,
+      "start": 1133735,
+      "end": 1140720
+    },
+    {
+      "label": "Task D16 Options",
+      "file": "Task-D16-Options.html",
+      "bytes": 7463,
+      "start": 1141113,
+      "end": 1148576
+    },
+    {
+      "label": "Task D16 Card",
+      "file": "Task-D16-Card.html",
+      "bytes": 13918,
+      "start": 1148966,
+      "end": 1162884
+    },
+    {
+      "label": "Task D17 Intro",
+      "file": "Task-D17-Intro.html",
+      "bytes": 7330,
+      "start": 1163345,
+      "end": 1170675
+    },
+    {
+      "label": "Task D17 Options",
+      "file": "Task-D17-Options.html",
+      "bytes": 7311,
+      "start": 1171067,
+      "end": 1178378
+    },
+    {
+      "label": "Task D17 Card",
+      "file": "Task-D17-Card.html",
+      "bytes": 12900,
+      "start": 1178769,
+      "end": 1191669
+    },
+    {
+      "label": "Task D18 Intro",
+      "file": "Task-D18-Intro.html",
+      "bytes": 7883,
+      "start": 1192129,
+      "end": 1200012
+    },
+    {
+      "label": "Task D18 Options",
+      "file": "Task-D18-Options.html",
+      "bytes": 6956,
+      "start": 1200405,
+      "end": 1207361
+    },
+    {
+      "label": "Task D18 Card",
+      "file": "Task-D18-Card.html",
+      "bytes": 14022,
+      "start": 1207751,
+      "end": 1221773
+    },
+    {
+      "label": "Task D19 Intro",
+      "file": "Task-D19-Intro.html",
+      "bytes": 7971,
+      "start": 1222234,
+      "end": 1230205
+    },
+    {
+      "label": "Task D19 Options",
+      "file": "Task-D19-Options.html",
+      "bytes": 6831,
+      "start": 1230597,
+      "end": 1237428
+    },
+    {
+      "label": "Task D19 Card",
+      "file": "Task-D19-Card.html",
+      "bytes": 14174,
+      "start": 1237819,
+      "end": 1251993
+    },
+    {
+      "label": "Task D20 Intro",
+      "file": "Task-D20-Intro.html",
+      "bytes": 6623,
+      "start": 1252453,
+      "end": 1259076
+    },
+    {
+      "label": "Task D20 Options",
+      "file": "Task-D20-Options.html",
+      "bytes": 5990,
+      "start": 1259469,
+      "end": 1265459
+    },
+    {
+      "label": "Task D20 Card",
+      "file": "Task-D20-Card.html",
+      "bytes": 13166,
+      "start": 1265849,
+      "end": 1279015
+    },
+    {
+      "label": "Task D21 Intro",
+      "file": "Task-D21-Intro.html",
+      "bytes": 6806,
+      "start": 1279476,
+      "end": 1286282
+    },
+    {
+      "label": "Task D21 Options",
+      "file": "Task-D21-Options.html",
+      "bytes": 6459,
+      "start": 1286674,
+      "end": 1293133
+    },
+    {
+      "label": "Task D21 Card",
+      "file": "Task-D21-Card.html",
+      "bytes": 13328,
+      "start": 1293524,
+      "end": 1306852
+    },
+    {
+      "label": "Task D22 Intro",
+      "file": "Task-D22-Intro.html",
+      "bytes": 6335,
+      "start": 1307312,
+      "end": 1313647
+    },
+    {
+      "label": "Task D22 Options",
+      "file": "Task-D22-Options.html",
+      "bytes": 6786,
+      "start": 1314040,
+      "end": 1320826
+    },
+    {
+      "label": "Task D22 Card",
+      "file": "Task-D22-Card.html",
+      "bytes": 12680,
+      "start": 1321216,
+      "end": 1333896
+    },
+    {
+      "label": "Task D23 Intro",
+      "file": "Task-D23-Intro.html",
+      "bytes": 7378,
+      "start": 1334357,
+      "end": 1341735
+    },
+    {
+      "label": "Task D23 Options",
+      "file": "Task-D23-Options.html",
+      "bytes": 6888,
+      "start": 1342127,
+      "end": 1349015
+    },
+    {
+      "label": "Task D23 Card",
+      "file": "Task-D23-Card.html",
+      "bytes": 15214,
+      "start": 1349406,
+      "end": 1364620
+    },
+    {
+      "label": "Task D24 Intro",
+      "file": "Task-D24-Intro.html",
+      "bytes": 8080,
+      "start": 1365080,
+      "end": 1373160
+    },
+    {
+      "label": "Task D24 Options",
+      "file": "Task-D24-Options.html",
+      "bytes": 6717,
+      "start": 1373553,
+      "end": 1380270
+    },
+    {
+      "label": "Task D24 Card",
+      "file": "Task-D24-Card.html",
+      "bytes": 16336,
+      "start": 1380660,
+      "end": 1396996
+    },
+    {
+      "label": "Task D25 Intro",
+      "file": "Task-D25-Intro.html",
+      "bytes": 7575,
+      "start": 1397457,
+      "end": 1405032
+    },
+    {
+      "label": "Task D25 Options",
+      "file": "Task-D25-Options.html",
+      "bytes": 5357,
+      "start": 1405424,
+      "end": 1410781
+    },
+    {
+      "label": "Task D25 Card",
+      "file": "Task-D25-Card.html",
+      "bytes": 14866,
+      "start": 1411172,
+      "end": 1426038
+    },
+    {
+      "label": "Task D26 Intro",
+      "file": "Task-D26-Intro.html",
+      "bytes": 6686,
+      "start": 1426498,
+      "end": 1433184
+    },
+    {
+      "label": "Task D26 Options",
+      "file": "Task-D26-Options.html",
+      "bytes": 5897,
+      "start": 1433577,
+      "end": 1439474
+    },
+    {
+      "label": "Task D26 Card",
+      "file": "Task-D26-Card.html",
+      "bytes": 11664,
+      "start": 1439864,
+      "end": 1451528
+    },
+    {
+      "label": "Task D27 Intro",
+      "file": "Task-D27-Intro.html",
+      "bytes": 7109,
+      "start": 1451989,
+      "end": 1459098
+    },
+    {
+      "label": "Task D27 Options",
+      "file": "Task-D27-Options.html",
+      "bytes": 6956,
+      "start": 1459490,
+      "end": 1466446
+    },
+    {
+      "label": "Task D27 Card",
+      "file": "Task-D27-Card.html",
+      "bytes": 13934,
+      "start": 1466837,
+      "end": 1480771
+    },
+    {
+      "label": "Task D28 Intro",
+      "file": "Task-D28-Intro.html",
+      "bytes": 5917,
+      "start": 1481231,
+      "end": 1487148
+    },
+    {
+      "label": "Task D28 Options",
+      "file": "Task-D28-Options.html",
+      "bytes": 7143,
+      "start": 1487541,
+      "end": 1494684
+    },
+    {
+      "label": "Task D28 Card",
+      "file": "Task-D28-Card.html",
+      "bytes": 11540,
+      "start": 1495074,
+      "end": 1506614
+    },
+    {
+      "label": "Task D29 Intro",
+      "file": "Task-D29-Intro.html",
+      "bytes": 7422,
+      "start": 1507562,
+      "end": 1514984
+    },
+    {
+      "label": "Task D29 Options",
+      "file": "Task-D29-Options.html",
+      "bytes": 7095,
+      "start": 1515377,
+      "end": 1522472
+    },
+    {
+      "label": "Task D29 Card",
+      "file": "Task-D29-Card.html",
+      "bytes": 12820,
+      "start": 1522862,
+      "end": 1535682
+    },
+    {
+      "label": "Task D30 Intro",
+      "file": "Task-D30-Intro.html",
+      "bytes": 7504,
+      "start": 1536143,
+      "end": 1543647
+    },
+    {
+      "label": "Task D30 Options",
+      "file": "Task-D30-Options.html",
+      "bytes": 6954,
+      "start": 1544039,
+      "end": 1550993
+    },
+    {
+      "label": "Task D30 Card",
+      "file": "Task-D30-Card.html",
+      "bytes": 13170,
+      "start": 1551384,
+      "end": 1564554
+    },
+    {
+      "label": "Task D31 Intro",
+      "file": "Task-D31-Intro.html",
+      "bytes": 6311,
+      "start": 1565014,
+      "end": 1571325
+    },
+    {
+      "label": "Task D31 Options",
+      "file": "Task-D31-Options.html",
+      "bytes": 6705,
+      "start": 1571718,
+      "end": 1578423
+    },
+    {
+      "label": "Task D31 Card",
+      "file": "Task-D31-Card.html",
+      "bytes": 10928,
+      "start": 1578813,
+      "end": 1589741
+    },
+    {
+      "label": "Task D33 Intro",
+      "file": "Task-D33-Intro.html",
+      "bytes": 7874,
+      "start": 1590273,
+      "end": 1598147
+    },
+    {
+      "label": "Task D33 Options",
+      "file": "Task-D33-Options.html",
+      "bytes": 6734,
+      "start": 1598540,
+      "end": 1605274
+    },
+    {
+      "label": "Task D33 Card",
+      "file": "Task-D33-Card.html",
+      "bytes": 15728,
+      "start": 1605664,
+      "end": 1621392
+    },
+    {
+      "label": "Task D34 Intro",
+      "file": "Task-D34-Intro.html",
+      "bytes": 8480,
+      "start": 1621853,
+      "end": 1630333
+    },
+    {
+      "label": "Task D34 Options",
+      "file": "Task-D34-Options.html",
+      "bytes": 7296,
+      "start": 1630725,
+      "end": 1638021
+    },
+    {
+      "label": "Task D34 Card",
+      "file": "Task-D34-Card.html",
+      "bytes": 17006,
+      "start": 1638412,
+      "end": 1655418
+    },
+    {
+      "label": "Task D35 Intro",
+      "file": "Task-D35-Intro.html",
+      "bytes": 7548,
+      "start": 1655878,
+      "end": 1663426
+    },
+    {
+      "label": "Task D35 Options",
+      "file": "Task-D35-Options.html",
+      "bytes": 6895,
+      "start": 1663819,
+      "end": 1670714
+    },
+    {
+      "label": "Task D35 Card",
+      "file": "Task-D35-Card.html",
+      "bytes": 13378,
+      "start": 1671104,
+      "end": 1684482
+    },
+    {
+      "label": "Task D36 Intro",
+      "file": "Task-D36-Intro.html",
+      "bytes": 7112,
+      "start": 1684943,
+      "end": 1692055
+    },
+    {
+      "label": "Task D36 Options",
+      "file": "Task-D36-Options.html",
+      "bytes": 5990,
+      "start": 1692447,
+      "end": 1698437
+    },
+    {
+      "label": "Task D36 Card",
+      "file": "Task-D36-Card.html",
+      "bytes": 12478,
+      "start": 1698828,
+      "end": 1711306
+    },
+    {
+      "label": "Task D37 Intro",
+      "file": "Task-D37-Intro.html",
+      "bytes": 6513,
+      "start": 1711766,
+      "end": 1718279
+    },
+    {
+      "label": "Task D37 Options",
+      "file": "Task-D37-Options.html",
+      "bytes": 6148,
+      "start": 1718672,
+      "end": 1724820
+    },
+    {
+      "label": "Task D37 Card",
+      "file": "Task-D37-Card.html",
+      "bytes": 11768,
+      "start": 1725210,
+      "end": 1736978
+    },
+    {
+      "label": "Task D38 Intro",
+      "file": "Task-D38-Intro.html",
+      "bytes": 6121,
+      "start": 1737439,
+      "end": 1743560
+    },
+    {
+      "label": "Task D38 Options",
+      "file": "Task-D38-Options.html",
+      "bytes": 6661,
+      "start": 1743952,
+      "end": 1750613
+    },
+    {
+      "label": "Task D38 Card",
+      "file": "Task-D38-Card.html",
+      "bytes": 10354,
+      "start": 1751004,
+      "end": 1761358
+    },
+    {
+      "label": "Task D39 Intro",
+      "file": "Task-D39-Intro.html",
+      "bytes": 6826,
+      "start": 1761818,
+      "end": 1768644
+    },
+    {
+      "label": "Task D39 Options",
+      "file": "Task-D39-Options.html",
+      "bytes": 6869,
+      "start": 1769037,
+      "end": 1775906
+    },
+    {
+      "label": "Task D39 Card",
+      "file": "Task-D39-Card.html",
+      "bytes": 11854,
+      "start": 1776296,
+      "end": 1788150
+    },
+    {
+      "label": "Task D40 Intro",
+      "file": "Task-D40-Intro.html",
+      "bytes": 6779,
+      "start": 1788611,
+      "end": 1795390
+    },
+    {
+      "label": "Task D40 Options",
+      "file": "Task-D40-Options.html",
+      "bytes": 5247,
+      "start": 1795782,
+      "end": 1801029
+    },
+    {
+      "label": "Task D40 Card",
+      "file": "Task-D40-Card.html",
+      "bytes": 13550,
+      "start": 1801420,
+      "end": 1814970
+    },
+    {
+      "label": "Task D41 Intro",
+      "file": "Task-D41-Intro.html",
+      "bytes": 7176,
+      "start": 1815430,
+      "end": 1822606
+    },
+    {
+      "label": "Task D41 Options",
+      "file": "Task-D41-Options.html",
+      "bytes": 7048,
+      "start": 1822999,
+      "end": 1830047
+    },
+    {
+      "label": "Task D41 Card",
+      "file": "Task-D41-Card.html",
+      "bytes": 14468,
+      "start": 1830437,
+      "end": 1844905
+    },
+    {
+      "label": "Task D42 Intro",
+      "file": "Task-D42-Intro.html",
+      "bytes": 6416,
+      "start": 1845366,
+      "end": 1851782
+    },
+    {
+      "label": "Task D42 Options",
+      "file": "Task-D42-Options.html",
+      "bytes": 5902,
+      "start": 1852174,
+      "end": 1858076
+    },
+    {
+      "label": "Task D42 Card",
+      "file": "Task-D42-Card.html",
+      "bytes": 12946,
+      "start": 1858467,
+      "end": 1871413
+    },
+    {
+      "label": "Task D43 Intro",
+      "file": "Task-D43-Intro.html",
+      "bytes": 7780,
+      "start": 1871873,
+      "end": 1879653
+    },
+    {
+      "label": "Task D43 Options",
+      "file": "Task-D43-Options.html",
+      "bytes": 6525,
+      "start": 1880046,
+      "end": 1886571
+    },
+    {
+      "label": "Task D43 Card",
+      "file": "Task-D43-Card.html",
+      "bytes": 15418,
+      "start": 1886961,
+      "end": 1902379
+    },
+    {
+      "label": "Task D44 Intro",
+      "file": "Task-D44-Intro.html",
+      "bytes": 7234,
+      "start": 1902840,
+      "end": 1910074
+    },
+    {
+      "label": "Task D44 Options",
+      "file": "Task-D44-Options.html",
+      "bytes": 7827,
+      "start": 1910466,
+      "end": 1918293
+    },
+    {
+      "label": "Task D44 Card",
+      "file": "Task-D44-Card.html",
+      "bytes": 14552,
+      "start": 1918684,
+      "end": 1933236
+    },
+    {
+      "label": "Task D45 Intro",
+      "file": "Task-D45-Intro.html",
+      "bytes": 6607,
+      "start": 1933696,
+      "end": 1940303
+    },
+    {
+      "label": "Task D45 Options",
+      "file": "Task-D45-Options.html",
+      "bytes": 6217,
+      "start": 1940696,
+      "end": 1946913
+    },
+    {
+      "label": "Task D45 Card",
+      "file": "Task-D45-Card.html",
+      "bytes": 13158,
+      "start": 1947303,
+      "end": 1960461
+    },
+    {
+      "label": "Task D46 Intro",
+      "file": "Task-D46-Intro.html",
+      "bytes": 6423,
+      "start": 1960922,
+      "end": 1967345
+    },
+    {
+      "label": "Task D46 Options",
+      "file": "Task-D46-Options.html",
+      "bytes": 6051,
+      "start": 1967737,
+      "end": 1973788
+    },
+    {
+      "label": "Task D46 Card",
+      "file": "Task-D46-Card.html",
+      "bytes": 12910,
+      "start": 1974179,
+      "end": 1987089
+    },
+    {
+      "label": "Task D47 Intro",
+      "file": "Task-D47-Intro.html",
+      "bytes": 7070,
+      "start": 1987549,
+      "end": 1994619
+    },
+    {
+      "label": "Task D47 Options",
+      "file": "Task-D47-Options.html",
+      "bytes": 5862,
+      "start": 1995012,
+      "end": 2000874
+    },
+    {
+      "label": "Task D47 Card",
+      "file": "Task-D47-Card.html",
+      "bytes": 14132,
+      "start": 2001264,
+      "end": 2015396
+    },
+    {
+      "label": "Task D48 Intro",
+      "file": "Task-D48-Intro.html",
+      "bytes": 5989,
+      "start": 2015857,
+      "end": 2021846
+    },
+    {
+      "label": "Task D48 Options",
+      "file": "Task-D48-Options.html",
+      "bytes": 6778,
+      "start": 2022238,
+      "end": 2029016
+    },
+    {
+      "label": "Task D48 Card",
+      "file": "Task-D48-Card.html",
+      "bytes": 10120,
+      "start": 2029407,
+      "end": 2039527
+    },
+    {
+      "label": "Task D49 Intro",
+      "file": "Task-D49-Intro.html",
+      "bytes": 6305,
+      "start": 2039987,
+      "end": 2046292
+    },
+    {
+      "label": "Task D49 Options",
+      "file": "Task-D49-Options.html",
+      "bytes": 6468,
+      "start": 2046685,
+      "end": 2053153
+    },
+    {
+      "label": "Task D49 Card",
+      "file": "Task-D49-Card.html",
+      "bytes": 12788,
+      "start": 2053543,
+      "end": 2066331
+    },
+    {
+      "label": "Task D50 Intro",
+      "file": "Task-D50-Intro.html",
+      "bytes": 6507,
+      "start": 2066792,
+      "end": 2073299
+    },
+    {
+      "label": "Task D50 Options",
+      "file": "Task-D50-Options.html",
+      "bytes": 5934,
+      "start": 2073691,
+      "end": 2079625
+    },
+    {
+      "label": "Task D50 Card",
+      "file": "Task-D50-Card.html",
+      "bytes": 10946,
+      "start": 2080016,
+      "end": 2090962
+    },
+    {
+      "label": "Task D51 Intro",
+      "file": "Task-D51-Intro.html",
+      "bytes": 6727,
+      "start": 2091422,
+      "end": 2098149
+    },
+    {
+      "label": "Task D51 Options",
+      "file": "Task-D51-Options.html",
+      "bytes": 5757,
+      "start": 2098542,
+      "end": 2104299
+    },
+    {
+      "label": "Task D51 Card",
+      "file": "Task-D51-Card.html",
+      "bytes": 11826,
+      "start": 2104689,
+      "end": 2116515
+    },
+    {
+      "label": "Task D52 Intro",
+      "file": "Task-D52-Intro.html",
+      "bytes": 7244,
+      "start": 2116976,
+      "end": 2124220
+    },
+    {
+      "label": "Task D52 Options",
+      "file": "Task-D52-Options.html",
+      "bytes": 6701,
+      "start": 2124612,
+      "end": 2131313
+    },
+    {
+      "label": "Task D52 Card",
+      "file": "Task-D52-Card.html",
+      "bytes": 12782,
+      "start": 2131704,
+      "end": 2144486
+    },
+    {
+      "label": "Task D53 Intro",
+      "file": "Task-D53-Intro.html",
+      "bytes": 6830,
+      "start": 2144946,
+      "end": 2151776
+    },
+    {
+      "label": "Task D53 Options",
+      "file": "Task-D53-Options.html",
+      "bytes": 7131,
+      "start": 2152169,
+      "end": 2159300
+    },
+    {
+      "label": "Task D53 Card",
+      "file": "Task-D53-Card.html",
+      "bytes": 13520,
+      "start": 2159690,
+      "end": 2173210
+    },
+    {
+      "label": "Task D54 Intro",
+      "file": "Task-D54-Intro.html",
+      "bytes": 8747,
+      "start": 2173671,
+      "end": 2182418
+    },
+    {
+      "label": "Task D54 Options",
+      "file": "Task-D54-Options.html",
+      "bytes": 4946,
+      "start": 2182810,
+      "end": 2187756
+    },
+    {
+      "label": "Task D54 Card",
+      "file": "Task-D54-Card.html",
+      "bytes": 17658,
+      "start": 2188147,
+      "end": 2205805
+    },
+    {
+      "label": "Task D55 Intro",
+      "file": "Task-D55-Intro.html",
+      "bytes": 8917,
+      "start": 2206265,
+      "end": 2215182
+    },
+    {
+      "label": "Task D55 Options",
+      "file": "Task-D55-Options.html",
+      "bytes": 6913,
+      "start": 2215575,
+      "end": 2222488
+    },
+    {
+      "label": "Task D55 Card",
+      "file": "Task-D55-Card.html",
+      "bytes": 17954,
+      "start": 2222878,
+      "end": 2240832
+    },
+    {
+      "label": "Task D56 Intro",
+      "file": "Task-D56-Intro.html",
+      "bytes": 6408,
+      "start": 2241293,
+      "end": 2247701
+    },
+    {
+      "label": "Task D56 Options",
+      "file": "Task-D56-Options.html",
+      "bytes": 6911,
+      "start": 2248093,
+      "end": 2255004
+    },
+    {
+      "label": "Task D56 Card",
+      "file": "Task-D56-Card.html",
+      "bytes": 11018,
+      "start": 2255395,
+      "end": 2266413
+    },
+    {
+      "label": "Task D57 Intro",
+      "file": "Task-D57-Intro.html",
+      "bytes": 6172,
+      "start": 2267363,
+      "end": 2273535
+    },
+    {
+      "label": "Task D57 Options",
+      "file": "Task-D57-Options.html",
+      "bytes": 5214,
+      "start": 2273927,
+      "end": 2279141
+    },
+    {
+      "label": "Task D57 Card",
+      "file": "Task-D57-Card.html",
+      "bytes": 10564,
+      "start": 2279532,
+      "end": 2290096
+    },
+    {
+      "label": "Task D58 Intro",
+      "file": "Task-D58-Intro.html",
+      "bytes": 7540,
+      "start": 2290556,
+      "end": 2298096
+    },
+    {
+      "label": "Task D58 Options",
+      "file": "Task-D58-Options.html",
+      "bytes": 6887,
+      "start": 2298489,
+      "end": 2305376
+    },
+    {
+      "label": "Task D58 Card",
+      "file": "Task-D58-Card.html",
+      "bytes": 13698,
+      "start": 2305766,
+      "end": 2319464
+    },
+    {
+      "label": "Task D59 Intro",
+      "file": "Task-D59-Intro.html",
+      "bytes": 7827,
+      "start": 2319925,
+      "end": 2327752
+    },
+    {
+      "label": "Task D59 Options",
+      "file": "Task-D59-Options.html",
+      "bytes": 5854,
+      "start": 2328144,
+      "end": 2333998
+    },
+    {
+      "label": "Task D59 Card",
+      "file": "Task-D59-Card.html",
+      "bytes": 15920,
+      "start": 2334389,
+      "end": 2350309
+    },
+    {
+      "label": "Task D60 Intro",
+      "file": "Task-D60-Intro.html",
+      "bytes": 8421,
+      "start": 2350769,
+      "end": 2359190
+    },
+    {
+      "label": "Task D60 Options",
+      "file": "Task-D60-Options.html",
+      "bytes": 6822,
+      "start": 2359583,
+      "end": 2366405
+    },
+    {
+      "label": "Task D60 Card",
+      "file": "Task-D60-Card.html",
+      "bytes": 17216,
+      "start": 2366795,
+      "end": 2384011
+    },
+    {
+      "label": "Task D61 Intro",
+      "file": "Task-D61-Intro.html",
+      "bytes": 7953,
+      "start": 2384472,
+      "end": 2392425
+    },
+    {
+      "label": "Task D61 Options",
+      "file": "Task-D61-Options.html",
+      "bytes": 7078,
+      "start": 2392817,
+      "end": 2399895
+    },
+    {
+      "label": "Task D61 Card",
+      "file": "Task-D61-Card.html",
+      "bytes": 14140,
+      "start": 2400286,
+      "end": 2414426
+    },
+    {
+      "label": "Task D62 Intro",
+      "file": "Task-D62-Intro.html",
+      "bytes": 7316,
+      "start": 2414886,
+      "end": 2422202
+    },
+    {
+      "label": "Task D62 Options",
+      "file": "Task-D62-Options.html",
+      "bytes": 7038,
+      "start": 2422595,
+      "end": 2429633
+    },
+    {
+      "label": "Task D62 Card",
+      "file": "Task-D62-Card.html",
+      "bytes": 14580,
+      "start": 2430023,
+      "end": 2444603
+    },
+    {
+      "label": "Task D63 Intro",
+      "file": "Task-D63-Intro.html",
+      "bytes": 7727,
+      "start": 2445064,
+      "end": 2452791
+    },
+    {
+      "label": "Task D63 Options",
+      "file": "Task-D63-Options.html",
+      "bytes": 6838,
+      "start": 2453183,
+      "end": 2460021
+    },
+    {
+      "label": "Task D63 Card",
+      "file": "Task-D63-Card.html",
+      "bytes": 13586,
+      "start": 2460412,
+      "end": 2473998
+    },
+    {
+      "label": "Task D64 Intro",
+      "file": "Task-D64-Intro.html",
+      "bytes": 6606,
+      "start": 2474458,
+      "end": 2481064
+    },
+    {
+      "label": "Task D64 Options",
+      "file": "Task-D64-Options.html",
+      "bytes": 6428,
+      "start": 2481457,
+      "end": 2487885
+    },
+    {
+      "label": "Task D64 Card",
+      "file": "Task-D64-Card.html",
+      "bytes": 13036,
+      "start": 2488275,
+      "end": 2501311
+    },
+    {
+      "label": "Task D65 Intro",
+      "file": "Task-D65-Intro.html",
+      "bytes": 8533,
+      "start": 2501772,
+      "end": 2510305
+    },
+    {
+      "label": "Task D65 Options",
+      "file": "Task-D65-Options.html",
+      "bytes": 7223,
+      "start": 2510697,
+      "end": 2517920
+    },
+    {
+      "label": "Task D65 Card",
+      "file": "Task-D65-Card.html",
+      "bytes": 15122,
+      "start": 2518311,
+      "end": 2533433
+    },
+    {
+      "label": "Task D66 Intro",
+      "file": "Task-D66-Intro.html",
+      "bytes": 7450,
+      "start": 2533893,
+      "end": 2541343
+    },
+    {
+      "label": "Task D66 Options",
+      "file": "Task-D66-Options.html",
+      "bytes": 5995,
+      "start": 2541736,
+      "end": 2547731
+    },
+    {
+      "label": "Task D66 Card",
+      "file": "Task-D66-Card.html",
+      "bytes": 14836,
+      "start": 2548121,
+      "end": 2562957
+    },
+    {
+      "label": "Task D67 Intro",
+      "file": "Task-D67-Intro.html",
+      "bytes": 7666,
+      "start": 2563418,
+      "end": 2571084
+    },
+    {
+      "label": "Task D67 Options",
+      "file": "Task-D67-Options.html",
+      "bytes": 5983,
+      "start": 2571476,
+      "end": 2577459
+    },
+    {
+      "label": "Task D67 Card",
+      "file": "Task-D67-Card.html",
+      "bytes": 15308,
+      "start": 2577850,
+      "end": 2593158
+    },
+    {
+      "label": "Task D68 Intro",
+      "file": "Task-D68-Intro.html",
+      "bytes": 8277,
+      "start": 2593618,
+      "end": 2601895
+    },
+    {
+      "label": "Task D68 Options",
+      "file": "Task-D68-Options.html",
+      "bytes": 5729,
+      "start": 2602288,
+      "end": 2608017
+    },
+    {
+      "label": "Task D68 Card",
+      "file": "Task-D68-Card.html",
+      "bytes": 16152,
+      "start": 2608407,
+      "end": 2624559
+    },
+    {
+      "label": "Task D69 Intro",
+      "file": "Task-D69-Intro.html",
+      "bytes": 6890,
+      "start": 2625020,
+      "end": 2631910
+    },
+    {
+      "label": "Task D69 Options",
+      "file": "Task-D69-Options.html",
+      "bytes": 6179,
+      "start": 2632302,
+      "end": 2638481
+    },
+    {
+      "label": "Task D69 Card",
+      "file": "Task-D69-Card.html",
+      "bytes": 13686,
+      "start": 2638872,
+      "end": 2652558
+    },
+    {
+      "label": "Task D70 Intro",
+      "file": "Task-D70-Intro.html",
+      "bytes": 7265,
+      "start": 2653018,
+      "end": 2660283
+    },
+    {
+      "label": "Task D70 Options",
+      "file": "Task-D70-Options.html",
+      "bytes": 6598,
+      "start": 2660676,
+      "end": 2667274
+    },
+    {
+      "label": "Task D70 Card",
+      "file": "Task-D70-Card.html",
+      "bytes": 12788,
+      "start": 2667664,
+      "end": 2680452
+    },
+    {
+      "label": "Task D71 Intro",
+      "file": "Task-D71-Intro.html",
+      "bytes": 7400,
+      "start": 2680913,
+      "end": 2688313
+    },
+    {
+      "label": "Task D71 Options",
+      "file": "Task-D71-Options.html",
+      "bytes": 6637,
+      "start": 2688705,
+      "end": 2695342
+    },
+    {
+      "label": "Task D71 Card",
+      "file": "Task-D71-Card.html",
+      "bytes": 14842,
+      "start": 2695733,
+      "end": 2710575
+    },
+    {
+      "label": "Task D72 Intro",
+      "file": "Task-D72-Intro.html",
+      "bytes": 6782,
+      "start": 2711035,
+      "end": 2717817
+    },
+    {
+      "label": "Task D72 Options",
+      "file": "Task-D72-Options.html",
+      "bytes": 5140,
+      "start": 2718210,
+      "end": 2723350
+    },
+    {
+      "label": "Task D72 Card",
+      "file": "Task-D72-Card.html",
+      "bytes": 13524,
+      "start": 2723740,
+      "end": 2737264
+    },
+    {
+      "label": "Task D73 Intro",
+      "file": "Task-D73-Intro.html",
+      "bytes": 7078,
+      "start": 2737725,
+      "end": 2744803
+    },
+    {
+      "label": "Task D73 Options",
+      "file": "Task-D73-Options.html",
+      "bytes": 6729,
+      "start": 2745195,
+      "end": 2751924
+    },
+    {
+      "label": "Task D73 Card",
+      "file": "Task-D73-Card.html",
+      "bytes": 14116,
+      "start": 2752315,
+      "end": 2766431
+    },
+    {
+      "label": "Task D74 Intro",
+      "file": "Task-D74-Intro.html",
+      "bytes": 7132,
+      "start": 2766891,
+      "end": 2774023
+    },
+    {
+      "label": "Task D74 Options",
+      "file": "Task-D74-Options.html",
+      "bytes": 3081,
+      "start": 2774409,
+      "end": 2777490
+    },
+    {
+      "label": "Task D74 Card",
+      "file": "Task-D74-Card.html",
+      "bytes": 12892,
+      "start": 2777880,
+      "end": 2790772
+    },
+    {
+      "label": "Task D75 Intro",
+      "file": "Task-D75-Intro.html",
+      "bytes": 6444,
+      "start": 2791233,
+      "end": 2797677
+    },
+    {
+      "label": "Task D75 Options",
+      "file": "Task-D75-Options.html",
+      "bytes": 5886,
+      "start": 2798069,
+      "end": 2803955
+    },
+    {
+      "label": "Task D75 Card",
+      "file": "Task-D75-Card.html",
+      "bytes": 12688,
+      "start": 2804346,
+      "end": 2817034
+    },
+    {
+      "label": "Task D76 Intro",
+      "file": "Task-D76-Intro.html",
+      "bytes": 8650,
+      "start": 2817494,
+      "end": 2826144
+    },
+    {
+      "label": "Task D76 Options",
+      "file": "Task-D76-Options.html",
+      "bytes": 3086,
+      "start": 2826530,
+      "end": 2829616
+    },
+    {
+      "label": "Task D76 Card",
+      "file": "Task-D76-Card.html",
+      "bytes": 15792,
+      "start": 2830006,
+      "end": 2845798
+    },
+    {
+      "label": "Task D77 Intro",
+      "file": "Task-D77-Intro.html",
+      "bytes": 8968,
+      "start": 2846259,
+      "end": 2855227
+    },
+    {
+      "label": "Task D77 Options",
+      "file": "Task-D77-Options.html",
+      "bytes": 6930,
+      "start": 2855619,
+      "end": 2862549
+    },
+    {
+      "label": "Task D77 Card",
+      "file": "Task-D77-Card.html",
+      "bytes": 16142,
+      "start": 2862940,
+      "end": 2879082
+    },
+    {
+      "label": "Task D78 Intro",
+      "file": "Task-D78-Intro.html",
+      "bytes": 7453,
+      "start": 2879542,
+      "end": 2886995
+    },
+    {
+      "label": "Task D78 Options",
+      "file": "Task-D78-Options.html",
+      "bytes": 6726,
+      "start": 2887388,
+      "end": 2894114
+    },
+    {
+      "label": "Task D78 Card",
+      "file": "Task-D78-Card.html",
+      "bytes": 15442,
+      "start": 2894504,
+      "end": 2909946
+    },
+    {
+      "label": "Task D79 Intro",
+      "file": "Task-D79-Intro.html",
+      "bytes": 6965,
+      "start": 2910407,
+      "end": 2917372
+    },
+    {
+      "label": "Task D79 Options",
+      "file": "Task-D79-Options.html",
+      "bytes": 7082,
+      "start": 2917764,
+      "end": 2924846
+    },
+    {
+      "label": "Task D79 Card",
+      "file": "Task-D79-Card.html",
+      "bytes": 13986,
+      "start": 2925237,
+      "end": 2939223
+    },
+    {
+      "label": "Task D80 Intro",
+      "file": "Task-D80-Intro.html",
+      "bytes": 7587,
+      "start": 2939683,
+      "end": 2947270
+    },
+    {
+      "label": "Task D80 Options",
+      "file": "Task-D80-Options.html",
+      "bytes": 7011,
+      "start": 2947663,
+      "end": 2954674
+    },
+    {
+      "label": "Task D80 Card",
+      "file": "Task-D80-Card.html",
+      "bytes": 13904,
+      "start": 2955064,
+      "end": 2968968
+    },
+    {
+      "label": "Task D81 Intro",
+      "file": "Task-D81-Intro.html",
+      "bytes": 7242,
+      "start": 2969429,
+      "end": 2976671
+    },
+    {
+      "label": "Task D81 Options",
+      "file": "Task-D81-Options.html",
+      "bytes": 6371,
+      "start": 2977063,
+      "end": 2983434
+    },
+    {
+      "label": "Task D81 Card",
+      "file": "Task-D81-Card.html",
+      "bytes": 14362,
+      "start": 2983825,
+      "end": 2998187
+    },
+    {
+      "label": "Task D82 Intro",
+      "file": "Task-D82-Intro.html",
+      "bytes": 6297,
+      "start": 2998647,
+      "end": 3004944
+    },
+    {
+      "label": "Task D82 Options",
+      "file": "Task-D82-Options.html",
+      "bytes": 6569,
+      "start": 3005337,
+      "end": 3011906
+    },
+    {
+      "label": "Task D82 Card",
+      "file": "Task-D82-Card.html",
+      "bytes": 12522,
+      "start": 3012296,
+      "end": 3024818
+    },
+    {
+      "label": "Task D83 Intro",
+      "file": "Task-D83-Intro.html",
+      "bytes": 7842,
+      "start": 3025279,
+      "end": 3033121
+    },
+    {
+      "label": "Task D83 Options",
+      "file": "Task-D83-Options.html",
+      "bytes": 6117,
+      "start": 3033513,
+      "end": 3039630
+    },
+    {
+      "label": "Task D83 Card",
+      "file": "Task-D83-Card.html",
+      "bytes": 15774,
+      "start": 3040021,
+      "end": 3055795
+    },
+    {
+      "label": "Task D84 Intro",
+      "file": "Task-D84-Intro.html",
+      "bytes": 6116,
+      "start": 3056255,
+      "end": 3062371
+    },
+    {
+      "label": "Task D84 Options",
+      "file": "Task-D84-Options.html",
+      "bytes": 6763,
+      "start": 3062764,
+      "end": 3069527
+    },
+    {
+      "label": "Task D84 Card",
+      "file": "Task-D84-Card.html",
+      "bytes": 12106,
+      "start": 3069917,
+      "end": 3082023
+    }
+  ]
+}

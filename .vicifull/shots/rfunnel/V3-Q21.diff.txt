@@ -1,0 +1,6 @@
+~ -                                        radius: 50% → -
+# count P:-40,-140,540,270: design 1, app 2
+# count P:0,252,393,178: design 2, app 1
+~ -                                        radius: 50% → -
+# count P:37,251,320,180: design 1, app 2
+--- 51 design rows, 57 app rows; 2 differing, 0 missing, 3 extra, 0 sub-0.25pt rounding, 2 radius-notation only (D015) (use --all to list extras)

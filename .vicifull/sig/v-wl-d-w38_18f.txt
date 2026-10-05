@@ -1,0 +1,1 @@
+pre | 8 | 13 | 377 | 45 | - | - | - | - | 13px/400/normal/normal/rgb(0, 0, 0) | Error: ENOENT: no such file or directory, open '/Users/admin/Documents/tideline/.vicifull/final/Week-06-Discipline/L38 18-Frame-00.html'

@@ -1,0 +1,42 @@
+div | 0 | 52 | 393 | 800 | rgb(244, 243, 240) | 24px 24px 0px 0px | - | - | - | -
+div | 0 | 52 | 393 | 800 | - | - | 0.07 | - | - | -
+div | 0 | 64 | 393 | 5 | - | - | - | - | - | -
+div | 177.5 | 64 | 38 | 5 | rgba(19, 19, 19, 0.16) | 3px | - | - | - | -
+svg | 351 | 78 | 20 | 20 | - | - | - | - | - | -
+path | 354 | 81 | 14 | 14 | - | - | - | - | - | -
+div | 34 | 136 | 325 | 636 | - | - | - | - | - | -
+div | 34 | 136 | 325 | 21 | - | - | - | - | 18px/600/-0.1px/normal/rgb(29, 28, 26) | Sam —
+p | 34 | 179 | 325 | 27.9 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | I’m writing this at the end of week XII.
+p | 34 | 226.9 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | I remember where you are right now. You want this to be the time it finally changes, but part of you is already wondering how long you’ll last. I was thinking the same thing.
+p | 34 | 358.5 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | So here is the part I wish you knew: you do not need twelve perfect weeks. You need to stop turning one bad night into a reason to quit.
+div | 76.5 | 506 | 240 | 186 | - | - | - | - | - | -
+div | 204.5 | 510 | 112 | 112 | - | 50% | - | - | - | -
+div | 238.5 | 538 | 34 | 34 | rgb(233, 210, 164) | 50% | - | - | - | -
+div | 90.5 | 530 | 2 | 2 | rgba(200, 225, 235, 0.4) | 50% | - | - | - | -
+div | 120.5 | 558 | 2 | 2 | rgba(200, 225, 235, 0.3) | 50% | - | - | - | -
+div | 36.5 | 606 | 320 | 100 | rgb(222, 221, 214) | 50% 50% 0px 0px / 48px 48px 0px 0px | - | - | - | -
+div | -13.5 | 632 | 360 | 100 | rgb(207, 206, 199) | 50% 50% 0px 0px / 42px 42px 0px 0px | - | - | - | -
+div | 46.5 | 654 | 370 | 100 | rgb(197, 196, 189) | 50% 50% 0px 0px / 36px 36px 0px 0px | - | - | - | -
+div | 110.2 | 654.5 | 13.6 | 7 | rgba(255, 255, 255, 0.55) | 2px | - | - | - | -
+div | 134.3 | 640.9 | 13.5 | 6.2 | rgba(255, 255, 255, 0.55) | 2px | - | - | - | -
+div | 160.3 | 629.3 | 13.3 | 5.3 | rgba(255, 255, 255, 0.55) | 2px | - | - | - | -
+div | 215.5 | 562 | 3 | 46 | rgb(198, 197, 192) | 2px | - | - | - | -
+div | 218.5 | 563 | 15 | 10 | rgb(233, 210, 164) | 1px 3px 3px 1px | - | - | - | -
+div | 188.5 | 570 | 11 | 11 | rgb(180, 177, 171) | 50% | - | - | - | -
+div | 186.5 | 583 | 15 | 27 | rgb(198, 197, 192) | 7px | - | - | - | -
+div | 176.5 | 606 | 44 | 10 | rgba(0, 0, 0, 0.1) | 50% | - | - | - | -
+p | 34 | 732 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | There were nights when I wanted to watch badly. Some days the only thing I did right was get through the evening. That still counted.
+p | 34 | 863.6 | 325 | 139.5 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | And there were bad days. What changed was what happened after them. I stopped saying “I’ve ruined it now, so what is the point?” I came back the next morning. I logged what happened. I carried on.
+p | 34 | 1023 | 325 | 195.2 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | At the start, porn still felt like the quickest relief when I was bored, stressed, lonely, or fed up. That did not disappear in a week. But every time I waited one out, left the room, or used the SOS instead, I learned the same thing: the urge ends whether you obey it or not.
+p | 34 | 1238.3 | 325 | 139.5 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | After a while, that changes you. You stop being scared of an urge because you have seen enough of them come and go. You stop treating every difficult night like an emergency. You start trusting yourself again.
+p | 34 | 1397.7 | 325 | 139.5 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | The biggest difference is not a streak. It is waking up without the feeling that you gave another night away. It is having more time and attention for the things you said you wanted back.
+p | 34 | 1557.2 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | I am not going to tell you everything is fixed here. It is not. I still have bad days. I still get urges. They are just not running the whole show anymore.
+p | 34 | 1688.7 | 325 | 139.5 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | If you are reading this on day 0, do not try to get to week XII tonight. Get through tonight. Tomorrow, come back. If you slip, do not disappear for a week because you are embarrassed. Come back the next morning.
+p | 34 | 1848.2 | 325 | 55.8 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | That is how you make it out: you keep coming back long enough for things to change.
+p | 34 | 1924 | 325 | 111.6 | - | - | - | - | 15.5px/400/normal/27.9px/rgb(58, 57, 52) | Hard nights end. Urges end. Bad days end. None of them has to be the day you give up. Do not quit on yourself halfway through. I’ll see you at week XII.
+div | 34 | 2061.5 | 325 | 18 | - | - | - | - | 16px/600/normal/normal/rgb(29, 28, 26) | — Sam, at week XII
+div | 34 | 2135.5 | 325 | 54 | rgb(19, 19, 19) | 27px | - | - | - | -
+svg | 123.4 | 2154.5 | 16 | 16 | - | - | - | - | - | -
+path | 126.7 | 2157.5 | 9.3 | 10.7 | - | - | - | - | - | -
+span | 148.4 | 2153 | 121.2 | 19 | - | - | - | - | 16.5px/600/0.2px/normal/rgb(255, 255, 255) | Keep this letter
+div | 0 | 799 | 393 | 17 | - | - | - | - | 14.5px/500/normal/normal/rgb(139, 136, 130) | Continue

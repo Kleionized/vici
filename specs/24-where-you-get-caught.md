@@ -1,5 +1,11 @@
 # Root Loop
 
+> **WITHDRAWN in `Latest Vici FULL` (Sep 2026).** The canvas no longer draws this board and
+> the app no longer builds it. Kept as a record of what was removed — do not build from it,
+> and do not read its copy as a target. `.vicifull/FLOW.txt` is the authority on what this
+> drop draws in its place.
+> Its "Resolutions" name `O3_ISSUE` and `O3Root`, which went with the board (F14).
+
 * **Design frame** `Email-Login/Root Loop`
 * **App file** src/components/onboarding/tail.tsx + src/content/onboardingTail.ts
 

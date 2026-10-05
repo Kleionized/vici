@@ -7,7 +7,7 @@
  *
  * Day 32 has no frames in the bundle at all, so it has no scene.
  *
- * Rebuild: node scripts/uifinal/gen-task-art.mjs
+ * Rebuild: node scripts/vicifull/gen-task-art.mjs
  */
 
 export interface TaskSvgChild {
@@ -34,9 +34,22 @@ export interface TaskSceneBox {
   height?: number;
   /** The raw CSS `border-radius`, including the elliptical `/` form. */
   radius?: string;
+  /**
+   * The `border-<side>` widths and colours, where a layer states any. Eight
+   * layers are CSS border triangles — `width:0; height:0` plus one solid and
+   * one or two transparent borders — which is how the canvas draws the boats'
+   * sails, plate 66's bubble tail and plate 18's arrow.
+   */
+  borders?: Partial<Record<'top' | 'right' | 'bottom' | 'left', { width: number; color: string }>>;
   background?: string;
   /** CSS blur radius in px — folded into a gradient falloff when drawn. */
   blur?: number;
+  /** The raw CSS `transform` and `transform-origin`, resolved when drawn. */
+  transform?: string;
+  origin?: string;
+  /** A CSS `clip-path: polygon(...)`, where the layer cuts its own shape. */
+  clip?: string;
+  /** Kept for `readerRoom.ts`, whose generator still states only a rotation. */
   rotate?: number;
   opacity?: number;
   shadow?: string;
@@ -195,6 +208,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 98,
       "radius": "2px",
       "background": "#D6D5D0",
+      "transform": "skewY(-7deg)",
+      "origin": "top right",
       "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
     },
     {
@@ -212,7 +227,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 158,
       "width": 84,
       "height": 12,
-      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+      "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -393,6 +409,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -403,6 +421,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -420,7 +440,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 16,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -429,7 +450,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 16,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -505,7 +527,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 21,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 125.99999999999999
+      "transform": "rotate(125.99999999999999deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -985,7 +1008,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -996,7 +1020,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(27px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -1005,7 +1030,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -1015,7 +1042,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -1025,7 +1052,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -1045,7 +1072,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -1055,7 +1082,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -1065,7 +1092,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6.72,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -1075,7 +1103,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 9.92,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -1142,7 +1171,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 64,
       "radius": "3px",
       "background": "#B4B1AB",
-      "rotate": 9
+      "transform": "rotate(9deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -1152,7 +1182,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": 9
+      "transform": "rotate(9deg)"
     },
     {
       "kind": "box",
@@ -1197,7 +1227,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 1.4,
       "height": 82,
       "background": "rgba(85,83,78,0.35)",
-      "rotate": 9
+      "transform": "rotate(9deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -1283,7 +1314,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 118.80000000000001
+      "transform": "rotate(118.80000000000001deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -1468,7 +1500,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 76.5,
       "width": 9,
       "height": 8,
-      "background": "#FBFAF7"
+      "background": "#FBFAF7",
+      "clip": "polygon(0 0, 100% 0, 80% 100%)"
     },
     {
       "kind": "box",
@@ -1504,7 +1537,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 66.5,
       "width": 9,
       "height": 8,
-      "background": "#FBFAF7"
+      "background": "#FBFAF7",
+      "clip": "polygon(0 0, 100% 0, 20% 100%)"
     },
     {
       "kind": "box",
@@ -2073,6 +2107,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -2083,6 +2119,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -2100,7 +2138,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 33,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -2109,7 +2148,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 33,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -2264,7 +2304,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -28,
+      "transform": "rotate(-28deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -2275,7 +2316,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -28
+      "transform": "rotate(-28deg) translateX(31px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -2284,7 +2326,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -28
+      "transform": "rotate(-28deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -2343,7 +2387,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 34,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": 76
+      "transform": "rotate(76deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -2363,7 +2408,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 34,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": 68
+      "transform": "rotate(68deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -2383,7 +2429,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 34,
       "radius": "3px",
       "background": "#C0BFB8",
-      "rotate": 58
+      "transform": "rotate(58deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -2432,7 +2479,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 15,
       "height": 34,
       "radius": "3px",
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "transform": "rotate(0deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -2451,7 +2500,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 15,
       "height": 34,
       "radius": "3px",
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "transform": "rotate(0deg)",
+      "origin": "bottom right"
     },
     {
       "kind": "box",
@@ -2470,7 +2521,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 15,
       "height": 34,
       "radius": "3px",
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "transform": "rotate(0deg)",
+      "origin": "bottom right"
     }
   ],
   "11": [
@@ -2773,7 +2826,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -2784,7 +2838,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(33px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -2793,7 +2848,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -2899,7 +2956,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -2909,7 +2966,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 19,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#E9D2A4",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -2919,7 +2976,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": -3
+      "transform": "rotate(-3deg)"
     },
     {
       "kind": "svg",
@@ -2995,7 +3052,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -3006,7 +3063,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -3017,7 +3074,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -3028,7 +3085,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -3039,7 +3096,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -3105,7 +3162,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 34,
       "radius": "1px",
       "background": "#8A857C",
-      "rotate": 10
+      "transform": "rotate(10deg)"
     },
     {
       "kind": "box",
@@ -3115,7 +3172,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "31px 31px 4px 4px",
       "background": "#E9D2A4",
-      "rotate": 6,
+      "transform": "rotate(6deg)",
       "shadow": "inset 0 -3px 0 rgba(196,152,86,0.45)"
     },
     {
@@ -3126,7 +3183,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "0 0 7px 7px",
       "background": "#F7F6F2",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -3136,7 +3193,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "0 0 7px 7px",
       "background": "#F7F6F2",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -3146,7 +3203,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "0 0 7px 7px",
       "background": "#F7F6F2",
-      "rotate": 6
+      "transform": "rotate(6deg)"
     },
     {
       "kind": "box",
@@ -3486,7 +3543,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "4.5px",
       "background": "#C6C5C0",
-      "rotate": -42
+      "transform": "rotate(-42deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -3524,7 +3582,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -20,
+      "transform": "rotate(-20deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -3535,7 +3594,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -20
+      "transform": "rotate(-20deg) translateX(25px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -3544,7 +3604,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -3611,6 +3673,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 98,
       "radius": "2px",
       "background": "#D6D5D0",
+      "transform": "skewY(-7deg)",
+      "origin": "top right",
       "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
     },
     {
@@ -3628,7 +3692,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 158,
       "width": 84,
       "height": 12,
-      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+      "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -3866,7 +3931,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 52,
       "radius": "8px",
       "background": "#FBFAF7",
-      "rotate": -7,
+      "transform": "rotate(-7deg)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07), 0 5px 12px rgba(40,38,32,0.12)"
     },
     {
@@ -3877,7 +3942,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#C6C5C0",
-      "rotate": -7
+      "transform": "rotate(-7deg)"
     },
     {
       "kind": "box",
@@ -3887,7 +3952,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#D6D5D0",
-      "rotate": -7
+      "transform": "rotate(-7deg)"
     },
     {
       "kind": "box",
@@ -3897,7 +3962,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#D6D5D0",
-      "rotate": -7
+      "transform": "rotate(-7deg)"
     },
     {
       "kind": "box",
@@ -3917,7 +3982,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 52,
       "radius": "8px",
       "background": "#FBFAF7",
-      "rotate": 7,
+      "transform": "rotate(7deg)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07), 0 5px 12px rgba(40,38,32,0.12)"
     },
     {
@@ -3928,7 +3993,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#C6C5C0",
-      "rotate": 7
+      "transform": "rotate(7deg)"
     },
     {
       "kind": "box",
@@ -3938,7 +4003,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#D6D5D0",
-      "rotate": 7
+      "transform": "rotate(7deg)"
     },
     {
       "kind": "box",
@@ -3948,7 +4013,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3,
       "radius": "1.5px",
       "background": "#D6D5D0",
-      "rotate": 7
+      "transform": "rotate(7deg)"
     },
     {
       "kind": "box",
@@ -3968,6 +4033,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 52,
       "radius": "8px",
       "background": "#FBFAF7",
+      "transform": "rotate(0deg)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07), 0 5px 12px rgba(40,38,32,0.12)"
     },
     {
@@ -3977,7 +4043,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 42,
       "height": 9,
       "radius": "8px 8px 0 0",
-      "background": "#E9D2A4"
+      "background": "#E9D2A4",
+      "transform": "rotate(0deg)",
+      "origin": "center 26px"
     },
     {
       "kind": "box",
@@ -3986,7 +4054,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 26,
       "height": 3,
       "radius": "1.5px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -3995,7 +4064,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 20,
       "height": 3,
       "radius": "1.5px",
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -4004,7 +4074,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 23,
       "height": 3,
       "radius": "1.5px",
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "transform": "rotate(0deg)"
     }
   ],
   "19": [
@@ -4128,7 +4199,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 94,
       "width": 14,
       "height": 20,
-      "background": "#55534E"
+      "background": "#55534E",
+      "clip": "polygon(58% 0, 12% 56%, 44% 56%, 36% 100%, 88% 40%, 54% 40%)"
     },
     {
       "kind": "svg",
@@ -4932,7 +5004,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 91,
       "width": 5,
       "height": 12,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "clip": "polygon(0 0, 100% 0, 60% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -4940,7 +5013,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 91,
       "width": 5,
       "height": 12,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "clip": "polygon(0 0, 100% 0, 100% 100%, 40% 100%)"
     },
     {
       "kind": "box",
@@ -5177,7 +5251,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -5187,7 +5261,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -5207,7 +5281,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -5217,7 +5291,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -5227,7 +5301,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 5.88,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -5237,7 +5312,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8.68,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -5339,7 +5415,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 61,
       "width": 10,
       "height": 14,
-      "background": "#55534E"
+      "background": "#55534E",
+      "clip": "polygon(58% 0, 12% 56%, 44% 56%, 36% 100%, 88% 40%, 54% 40%)"
     },
     {
       "kind": "box",
@@ -5432,7 +5509,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -22,
+      "transform": "rotate(-22deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -5443,7 +5521,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(31px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -5452,7 +5531,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -5551,7 +5632,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "3px",
       "background": "#E2BA78",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "box",
@@ -5686,7 +5767,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -5742,7 +5824,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "3px",
       "background": "#55534E",
-      "rotate": 38
+      "transform": "rotate(38deg)"
     },
     {
       "kind": "box",
@@ -5752,7 +5834,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "3px",
       "background": "#55534E",
-      "rotate": -38
+      "transform": "rotate(-38deg)"
     },
     {
       "kind": "box",
@@ -5762,7 +5844,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "3px",
       "background": "#55534E",
-      "rotate": 52
+      "transform": "rotate(52deg)",
+      "origin": "right center"
     },
     {
       "kind": "box",
@@ -5772,7 +5855,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "3px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "left center"
     },
     {
       "kind": "svg",
@@ -6097,7 +6181,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -6107,7 +6191,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -6127,7 +6211,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -6137,7 +6221,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -6147,7 +6231,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -6157,7 +6242,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 9.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -6225,7 +6311,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 64,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": 9
+      "transform": "rotate(9deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -6235,7 +6322,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 64,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": -9
+      "transform": "rotate(-9deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -6311,7 +6399,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 5,
       "radius": "2.5px",
       "background": "#E9D2A4",
-      "rotate": -14
+      "transform": "rotate(-14deg)"
     },
     {
       "kind": "box",
@@ -6321,7 +6409,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 4,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -14
+      "transform": "rotate(-14deg)"
     },
     {
       "kind": "box",
@@ -6360,7 +6448,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 118.80000000000001
+      "transform": "rotate(118.80000000000001deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -6499,7 +6588,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 20,
       "height": 5,
       "radius": "3px 3px 0 0",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "translateY(-4px)"
     },
     {
       "kind": "svg",
@@ -6915,7 +7005,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 3.5,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 10
+      "transform": "rotate(10deg)"
     },
     {
       "kind": "box",
@@ -6943,7 +7033,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -6953,7 +7044,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -6992,7 +7084,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7002,7 +7095,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7022,7 +7116,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -7032,7 +7126,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -7052,7 +7146,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -7062,7 +7156,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -7072,7 +7166,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -7082,7 +7177,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 9.3,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -7176,7 +7272,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 124,
       "height": 3.5,
       "radius": "2px",
-      "background": "#55534E"
+      "background": "#55534E",
+      "transform": "rotate(0deg)"
     },
     {
       "kind": "box",
@@ -7204,7 +7301,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7214,7 +7312,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7243,7 +7342,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": 36
+      "transform": "rotate(36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7253,7 +7353,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 27,
       "radius": "1px",
       "background": "#6B6862",
-      "rotate": -36
+      "transform": "rotate(-36deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -7292,7 +7393,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 14,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -7302,7 +7403,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "svg",
@@ -7426,7 +7527,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 19,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 90
+      "transform": "rotate(90deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -7461,7 +7563,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 71,
       "width": 5,
       "height": 12,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "clip": "polygon(0 0, 100% 0, 60% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -7469,7 +7572,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 71,
       "width": 5,
       "height": 12,
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "clip": "polygon(0 0, 100% 0, 100% 100%, 40% 100%)"
     },
     {
       "kind": "box",
@@ -7880,6 +7984,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 68,
       "height": 88,
       "background": "#FBFAF7",
+      "clip": "polygon(28% 0, 72% 0, 100% 100%, 0 100%)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07)"
     },
     {
@@ -7888,7 +7993,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 86,
       "width": 52,
       "height": 70,
-      "background": "#F1F0EA"
+      "background": "#F1F0EA",
+      "clip": "polygon(30% 0, 70% 0, 94% 100%, 6% 100%)"
     },
     {
       "kind": "box",
@@ -7917,7 +8023,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 58,
       "radius": "2px",
       "background": "#E2BA78",
-      "rotate": 22
+      "transform": "rotate(22deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -7927,7 +8034,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -7966,7 +8073,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 90
+      "transform": "rotate(90deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -8051,6 +8159,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 98,
       "radius": "2px",
       "background": "#D6D5D0",
+      "transform": "skewY(-7deg)",
+      "origin": "top right",
       "shadow": "-4px 3px 7px rgba(40,38,32,0.16)"
     },
     {
@@ -8068,7 +8178,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 158,
       "width": 84,
       "height": 12,
-      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))"
+      "background": "linear-gradient(100deg, rgba(233,210,164,0.5), rgba(233,210,164,0.06))",
+      "clip": "polygon(6% 0, 78% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -8096,7 +8207,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 95.5,
       "width": 9,
       "height": 8,
-      "background": "#FBFAF7"
+      "background": "#FBFAF7",
+      "clip": "polygon(0 0, 100% 0, 80% 100%)"
     },
     {
       "kind": "box",
@@ -8330,7 +8442,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -22,
+      "transform": "rotate(-22deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -8341,7 +8454,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(31px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -8350,7 +8464,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -8445,7 +8561,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 30,
       "radius": "3px",
       "background": "#FBFAF7",
-      "rotate": -3,
+      "transform": "rotate(-3deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -8456,7 +8572,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -3
+      "transform": "rotate(-3deg)"
     },
     {
       "kind": "box",
@@ -8466,7 +8582,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -3
+      "transform": "rotate(-3deg)"
     },
     {
       "kind": "box",
@@ -8476,7 +8592,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -3
+      "transform": "rotate(-3deg)"
     },
     {
       "kind": "box",
@@ -8871,7 +8987,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 15,
       "radius": "7px 3px 3px 7px",
-      "rotate": -14,
+      "transform": "rotate(-14deg)",
       "shadow": "inset 0 0 0 4px #E2BA78"
     },
     {
@@ -8881,7 +8997,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 15,
       "radius": "3px 7px 7px 3px",
-      "rotate": -14,
+      "transform": "rotate(-14deg)",
       "shadow": "inset 0 0 0 4px #E2BA78"
     },
     {
@@ -8950,7 +9066,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -20,
+      "transform": "rotate(-20deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -8961,7 +9078,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -20
+      "transform": "rotate(-20deg) translateX(27px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -8970,7 +9088,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -9096,7 +9216,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -9107,7 +9228,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(29px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -9116,7 +9238,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -9202,7 +9326,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 22,
       "radius": "5px",
       "background": "#FBFAF7",
-      "rotate": -8,
+      "transform": "rotate(-8deg)",
       "shadow": "0 2px 6px rgba(40,38,32,0.14)"
     },
     {
@@ -9213,7 +9337,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -9223,7 +9347,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 2.5,
       "radius": "1px",
       "background": "#C6C5C0",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -9243,7 +9367,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "5px",
       "background": "#E9D2A4",
-      "rotate": 7,
+      "transform": "rotate(7deg)",
       "shadow": "inset 0 -2px 0 rgba(196,152,86,0.5)"
     },
     {
@@ -9350,7 +9474,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -9361,7 +9485,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -9372,7 +9496,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -9383,7 +9507,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.55
     },
     {
@@ -9394,7 +9518,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8,
       "radius": "2px",
       "background": "#B9C3CC",
-      "rotate": 12,
+      "transform": "rotate(12deg)",
       "opacity": 0.75
     },
     {
@@ -9440,7 +9564,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 102,
       "width": 104,
       "height": 64,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -9449,6 +9574,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 76,
       "height": 46,
       "background": "#C6C5C0",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)",
       "opacity": 0.5
     },
     {
@@ -9467,7 +9593,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 140,
       "width": 22,
       "height": 26,
-      "background": "#E9D2A4"
+      "background": "#E9D2A4",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -9562,7 +9689,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "6px",
       "background": "rgba(255,255,255,0.4)",
-      "rotate": -18
+      "transform": "rotate(-18deg)"
     },
     {
       "kind": "box",
@@ -9580,7 +9707,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 94,
       "width": 22,
       "height": 20,
-      "background": "#F7F6F2"
+      "background": "#F7F6F2",
+      "clip": "polygon(0 0, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -9590,7 +9718,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 10,
       "radius": "3px",
       "background": "#E9D2A4",
-      "rotate": 14
+      "transform": "rotate(14deg)"
     },
     {
       "kind": "box",
@@ -9600,7 +9728,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 22,
       "radius": "3px",
       "background": "#B4B1AB",
-      "rotate": 32
+      "transform": "rotate(32deg)"
     },
     {
       "kind": "box",
@@ -9610,7 +9738,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "2px",
       "background": "#C6C5C0",
-      "rotate": 32
+      "transform": "rotate(32deg)"
     },
     {
       "kind": "box",
@@ -9696,7 +9824,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "5px",
       "background": "#FBFAF7",
-      "rotate": 4,
+      "transform": "rotate(4deg)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07), 0 3px 8px rgba(40,38,32,0.1)"
     },
     {
@@ -9707,7 +9835,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "5px",
       "background": "#FBFAF7",
-      "rotate": -3,
+      "transform": "rotate(-3deg)",
       "shadow": "0 0 0 1px rgba(0,0,0,0.07), 0 3px 8px rgba(40,38,32,0.1)"
     },
     {
@@ -9728,7 +9856,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "5px",
       "background": "#E9D2A4",
-      "rotate": -4,
+      "transform": "rotate(-4deg)",
       "shadow": "inset 0 -2px 0 rgba(196,152,86,0.5)"
     },
     {
@@ -10293,7 +10421,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 22,
       "radius": "4px",
       "background": "#E9D2A4",
-      "rotate": -6,
+      "transform": "rotate(-6deg)",
       "shadow": "inset 0 -2px 0 rgba(196,152,86,0.5)"
     },
     {
@@ -10304,7 +10432,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "4px",
       "background": "#E2BA78",
-      "rotate": 8
+      "transform": "rotate(8deg)"
     },
     {
       "kind": "box",
@@ -10314,7 +10442,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 24,
       "radius": "3px",
       "background": "#FBFAF7",
-      "rotate": 6,
+      "transform": "rotate(6deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -10354,7 +10482,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 118.80000000000001
+      "transform": "rotate(118.80000000000001deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -10677,6 +10806,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -10687,6 +10818,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -10704,7 +10837,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -10713,7 +10847,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -11045,7 +11180,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": -24
+      "transform": "rotate(-24deg)"
     },
     {
       "kind": "box",
@@ -11055,7 +11190,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "5px 5px 0 0",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -11075,7 +11210,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": 20
+      "transform": "rotate(20deg)"
     },
     {
       "kind": "box",
@@ -11085,7 +11220,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#55534E",
-      "rotate": -20
+      "transform": "rotate(-20deg)"
     },
     {
       "kind": "box",
@@ -11095,7 +11230,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 5.46,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": 40
+      "transform": "rotate(40deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -11105,7 +11241,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 8.06,
       "radius": "1px",
       "background": "#55534E",
-      "rotate": -52
+      "transform": "rotate(-52deg)",
+      "origin": "50% 100%"
     },
     {
       "kind": "box",
@@ -11237,7 +11374,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 26,
       "radius": "3px 3px 0 0",
       "background": "#E2BA78",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -11247,7 +11385,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 22,
       "radius": "0 0 3px 3px",
       "background": "#C6C5C0",
-      "rotate": 38
+      "transform": "rotate(38deg)",
+      "origin": "top center"
     },
     {
       "kind": "box",
@@ -11801,7 +11940,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": -8,
+      "transform": "rotate(-8deg)",
       "shadow": "0 1px 4px rgba(40,38,32,0.14)"
     },
     {
@@ -11812,7 +11951,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "1px",
       "background": "#E9D2A4",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -12674,7 +12813,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 118,
       "width": 28,
       "height": 22,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(6% 0, 94% 0, 82% 100%, 18% 100%)"
     },
     {
       "kind": "box",
@@ -12702,7 +12842,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -62
+      "transform": "rotate(-62deg)"
     },
     {
       "kind": "box",
@@ -12712,7 +12852,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 17,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 58
+      "transform": "rotate(58deg)"
     },
     {
       "kind": "box",
@@ -12722,7 +12862,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 13,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#CDD2C5",
-      "rotate": 110
+      "transform": "rotate(110deg)"
     },
     {
       "kind": "box",
@@ -12732,7 +12872,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 13,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#CDD2C5",
-      "rotate": 118,
+      "transform": "rotate(118deg)",
       "opacity": 0.8
     },
     {
@@ -12743,7 +12883,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#CDD2C5",
-      "rotate": 96,
+      "transform": "rotate(96deg)",
       "opacity": 0.55
     },
     {
@@ -12904,7 +13044,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 113.8,
       "width": 30.800000000000004,
       "height": 24.200000000000003,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(6% 0, 94% 0, 82% 100%, 18% 100%)"
     },
     {
       "kind": "box",
@@ -12932,7 +13073,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 18.700000000000003,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -12942,7 +13083,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20.900000000000002,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -12952,7 +13093,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16.5,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#D3D7CB",
-      "rotate": -2
+      "transform": "rotate(-2deg)"
     },
     {
       "kind": "box",
@@ -12972,7 +13113,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 28,
       "radius": "5px 5px 8px 8px",
       "background": "#D6D5D0",
-      "rotate": -18
+      "transform": "rotate(-18deg)"
     },
     {
       "kind": "box",
@@ -12982,7 +13123,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "3px",
       "background": "#C6C5C0",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "svg",
@@ -13256,7 +13397,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": 2,
+      "transform": "rotate(2deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13304,7 +13445,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": 3,
+      "transform": "rotate(3deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13342,7 +13483,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": -3,
+      "transform": "rotate(-3deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13380,7 +13521,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": -2,
+      "transform": "rotate(-2deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13418,7 +13559,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": 1,
+      "transform": "rotate(1deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13466,7 +13607,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 20,
       "radius": "4px",
       "background": "#FBFAF7",
-      "rotate": 2,
+      "transform": "rotate(2deg)",
       "shadow": "0 2px 5px rgba(40,38,32,0.12)"
     },
     {
@@ -13681,7 +13822,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -22,
+      "transform": "rotate(-22deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -13692,7 +13834,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(29px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -13701,7 +13844,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -22
+      "transform": "rotate(-22deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -13941,7 +14086,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "1.5px",
       "background": "#E2BA78",
-      "rotate": 14
+      "transform": "rotate(14deg)"
     },
     {
       "kind": "box",
@@ -13951,7 +14096,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 13,
       "radius": "1.5px",
       "background": "#B4B1AB",
-      "rotate": -8
+      "transform": "rotate(-8deg)"
     },
     {
       "kind": "box",
@@ -14084,7 +14229,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "6px 6px 3px 3px",
       "background": "#E9D2A4",
-      "rotate": -4,
+      "transform": "rotate(-4deg)",
       "shadow": "inset 0 -2px 0 rgba(196,152,86,0.4)"
     },
     {
@@ -14199,6 +14344,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -14209,6 +14356,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -14226,7 +14375,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 9,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -14235,7 +14385,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 9,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "svg",
@@ -14337,7 +14488,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 118,
       "width": 24,
       "height": 20,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(8% 0, 92% 0, 78% 100%, 22% 100%)"
     },
     {
       "kind": "box",
@@ -14375,7 +14527,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 14,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -26
+      "transform": "rotate(-26deg)"
     },
     {
       "kind": "box",
@@ -14385,7 +14537,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#E9D2A4",
-      "rotate": 22
+      "transform": "rotate(22deg)"
     },
     {
       "kind": "box",
@@ -14604,7 +14756,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15,
       "radius": "1.5px",
       "background": "#55534E",
-      "rotate": 118.80000000000001
+      "transform": "rotate(118.80000000000001deg)",
+      "origin": "bottom center"
     },
     {
       "kind": "box",
@@ -14746,6 +14899,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -14756,6 +14911,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -14773,7 +14930,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 31,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -14782,7 +14940,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 31,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -14791,7 +14950,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 28,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -14800,7 +14960,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 22,
       "height": 2.5,
       "radius": "1px",
-      "background": "#E2BA78"
+      "background": "#E2BA78",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -14809,7 +14970,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 26,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -14839,7 +15001,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 18,
       "radius": "3.5px",
       "background": "#C6C5C0",
-      "rotate": -42
+      "transform": "rotate(-42deg)",
+      "origin": "top center"
     },
     {
       "kind": "svg",
@@ -14989,7 +15152,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 11,
       "radius": "50% 50% 46% 46% / 70% 70% 30% 30%",
       "background": "#E9D2A4",
-      "rotate": -10,
+      "transform": "rotate(-10deg)",
       "shadow": "inset 0 -2px 0 rgba(196,152,86,0.4)"
     },
     {
@@ -15000,7 +15163,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 6,
       "radius": "1px",
       "background": "#E2BA78",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "svg",
@@ -15122,7 +15285,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 40,
       "width": 52,
       "height": 52,
-      "background": "rgba(200,215,229,0.35)"
+      "background": "rgba(200,215,229,0.35)",
+      "clip": "polygon(0 0, 100% 0, 54% 96%, 46% 96%)"
     },
     {
       "kind": "box",
@@ -15130,7 +15294,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 92,
       "width": 52,
       "height": 52,
-      "background": "rgba(200,215,229,0.35)"
+      "background": "rgba(200,215,229,0.35)",
+      "clip": "polygon(46% 4%, 54% 4%, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -15138,7 +15303,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 58,
       "width": 52,
       "height": 34,
-      "background": "#E9D2A4"
+      "background": "#E9D2A4",
+      "clip": "polygon(14% 0, 86% 0, 54% 60%, 46% 60%)"
     },
     {
       "kind": "box",
@@ -15155,7 +15321,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 30,
       "height": 16,
       "radius": "3px",
-      "background": "#E9D2A4"
+      "background": "#E9D2A4",
+      "clip": "polygon(50% 0, 100% 100%, 0 100%)"
     },
     {
       "kind": "box",
@@ -15232,6 +15399,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 0,
       "width": 340,
       "height": 200,
+      "transform": "scale(0.93)",
+      "origin": "top center",
       "children": [
         {
           "kind": "box",
@@ -15287,7 +15456,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
           "height": 12,
           "radius": "5px 3px 3px 3px",
           "background": "#C6C5C0",
-          "rotate": -24
+          "transform": "rotate(-24deg)",
+          "origin": "bottom right"
         },
         {
           "kind": "box",
@@ -15297,7 +15467,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
           "height": 12,
           "radius": "3px 5px 3px 3px",
           "background": "#C6C5C0",
-          "rotate": 24
+          "transform": "rotate(24deg)",
+          "origin": "bottom left"
         },
         {
           "kind": "box",
@@ -15587,6 +15758,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 0,
       "width": 340,
       "height": 200,
+      "transform": "scale(0.82)",
+      "origin": "top center",
       "children": [
         {
           "kind": "box",
@@ -16035,6 +16208,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "6px 2px 2px 4px",
       "background": "#FBFAF7",
+      "transform": "skewY(-6deg)",
+      "origin": "bottom right",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -16045,6 +16220,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 16,
       "radius": "2px 6px 4px 2px",
       "background": "#FBFAF7",
+      "transform": "skewY(6deg)",
+      "origin": "bottom left",
       "shadow": "inset 0 -3px 0 #D6D5D0, 0 1px 3px rgba(40,38,32,0.12)"
     },
     {
@@ -16062,7 +16239,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(-6deg)"
     },
     {
       "kind": "box",
@@ -16071,7 +16249,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 13,
       "height": 2.5,
       "radius": "1px",
-      "background": "#C6C5C0"
+      "background": "#C6C5C0",
+      "transform": "skewY(6deg)"
     },
     {
       "kind": "box",
@@ -16089,7 +16268,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "top": 148.4,
       "width": 22.400000000000002,
       "height": 17.6,
-      "background": "#D6D5D0"
+      "background": "#D6D5D0",
+      "clip": "polygon(6% 0, 94% 0, 82% 100%, 18% 100%)"
     },
     {
       "kind": "box",
@@ -16117,7 +16297,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 13.600000000000001,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#BEC4B4",
-      "rotate": -28
+      "transform": "rotate(-28deg)"
     },
     {
       "kind": "box",
@@ -16127,7 +16307,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 15.200000000000001,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#C9CEC1",
-      "rotate": 24
+      "transform": "rotate(24deg)"
     },
     {
       "kind": "box",
@@ -16137,7 +16317,7 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 12,
       "radius": "50% 50% 46% 46% / 66% 66% 34% 34%",
       "background": "#D3D7CB",
-      "rotate": -2
+      "transform": "rotate(-2deg)"
     },
     {
       "kind": "svg",
@@ -16540,7 +16720,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -16551,7 +16732,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(27px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -16560,7 +16742,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -17380,7 +17564,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px",
       "background": "#E9D2A4",
-      "rotate": -24,
+      "transform": "rotate(-24deg)",
+      "origin": "left center",
       "shadow": "inset 0 -1.5px 0 rgba(0,0,0,0.08)"
     },
     {
@@ -17391,7 +17576,8 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "height": 7,
       "radius": "2px 0 0 2px",
       "background": "#C6C5C0",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(25px)",
+      "origin": "left center"
     },
     {
       "kind": "box",
@@ -17400,7 +17586,9 @@ export const TASK_SCENES: Record<number, TaskSceneLayer[]> = {
       "width": 7,
       "height": 6,
       "background": "#55534E",
-      "rotate": -24
+      "transform": "rotate(-24deg) translateX(-6.5px)",
+      "origin": "left center",
+      "clip": "polygon(0 50%, 100% 0, 100% 100%)"
     },
     {
       "kind": "box",
@@ -19141,7 +19329,150 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "16": [],
+  "16": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M10 6.5V10l2.5 2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "2.6",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        }
+      ]
+    }
+  ],
   "17": [
     {
       "attrs": {
@@ -20070,7 +20401,89 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "26": [],
+  "26": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    }
+  ],
   "27": [
     {
       "attrs": {
@@ -21900,7 +22313,119 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "43": [],
+  "43": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M10 6.5V10l2.5 2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    }
+  ],
   "44": [],
   "45": [
     {
@@ -22092,7 +22617,89 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "47": [],
+  "47": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    }
+  ],
   "48": [],
   "49": [
     {
@@ -22641,7 +23248,70 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "54": [],
+  "54": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    }
+  ],
   "55": [
     {
       "attrs": {
@@ -24293,7 +24963,70 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "72": [],
+  "72": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    }
+  ],
   "73": [
     {
       "attrs": {
@@ -24412,7 +25145,89 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
     }
   ],
   "74": [],
-  "75": [],
+  "75": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    }
+  ],
   "76": [],
   "77": [
     {
@@ -24531,7 +25346,119 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "78": [],
+  "78": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M10 6.5V10l2.5 2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    }
+  ],
   "79": [],
   "80": [
     {
@@ -24843,7 +25770,119 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "82": [],
+  "82": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M10 6.5V10l2.5 2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    }
+  ],
   "83": [
     {
       "attrs": {
@@ -24936,5 +25975,117 @@ export const TASK_OPTION_ICONS: Record<number, { attrs: Record<string, string>; 
       ]
     }
   ],
-  "84": []
+  "84": [
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "attrs": {
+            "x": "4.5",
+            "y": "3",
+            "width": "11",
+            "height": "14",
+            "rx": "2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M7.5 7.5h5M7.5 10.5h5M7.5 13.5h3",
+            "stroke": "#3A3934",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M6.8 10.2l2.2 2.2 4.2-4.8",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M4 16l1-3.5L13.5 4a1.6 1.6 0 012.4 0l.1.1a1.6 1.6 0 010 2.3L7.5 15 4 16z",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linejoin": "round"
+          }
+        }
+      ]
+    },
+    {
+      "attrs": {
+        "width": "20",
+        "height": "20",
+        "viewBox": "0 0 20 20"
+      },
+      "children": [
+        {
+          "tag": "circle",
+          "attrs": {
+            "cx": "10",
+            "cy": "10",
+            "r": "7",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6"
+          }
+        },
+        {
+          "tag": "path",
+          "attrs": {
+            "d": "M10 6.5V10l2.5 2",
+            "fill": "none",
+            "stroke": "#3A3934",
+            "stroke-width": "1.6",
+            "stroke-linecap": "round"
+          }
+        }
+      ]
+    }
+  ]
 } as unknown as Record<number, { attrs: Record<string, string>; children: TaskSvgChild[] }[]>;

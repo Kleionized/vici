@@ -1,0 +1,46 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | One screen-free zone
+div | 24 | 225 | 345 | 519 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 352 | - | - | - | - | - | -
+div | 24 | 225 | 345 | 43 | - | - | - | - | - | -
+div | 24 | 225 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 234 | 22 | 22 | - | - | - | - | - | -
+path | 36.3 | 240.6 | 0 | 10.4 | - | - | - | - | - | -
+path | 36.3 | 243.4 | 15.4 | 7.7 | - | - | - | - | - | -
+circle | 37.5 | 242.1 | 3.3 | 3.3 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 43 | - | - | - | - | - | -
+div | 78 | 225 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Bed
+div | 78 | 249 | 291 | 19 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Move the charger outside the bed area.
+div | 24 | 290 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 290 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 299 | 22 | 22 | - | - | - | - | - | -
+path | 39.8 | 303.2 | 8.4 | 5.1 | - | - | - | - | - | -
+path | 44 | 301.9 | 0 | 1.3 | - | - | - | - | - | -
+path | 40 | 311.3 | 7.3 | 6.2 | - | - | - | - | - | -
+div | 78 | 290 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 290 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Bathroom
+div | 78 | 314 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Choose a fixed shelf, table, bag, or charging place outside the bathroom where the phone stays.
+div | 24 | 393 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 393 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 402 | 22 | 22 | - | - | - | - | - | -
+circle | 37.8 | 407.9 | 12.3 | 12.3 | - | - | - | - | - | -
+circle | 41.1 | 411.2 | 5.7 | 5.7 | - | - | - | - | - | -
+path | 41.4 | 406 | 5.3 | 2.2 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 393 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | Meals
+div | 78 | 417 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Put the phone on a shelf, counter, or charging spot away from the table and use that place at the next meal.
+div | 24 | 496 | 345 | 81 | - | - | - | - | - | -
+div | 24 | 496 | 40 | 40 | rgb(255, 255, 255) | 12px | - | rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(40, 38, 32, 0.06) 0px 3px 8px 0px | - | -
+svg | 33 | 505 | 22 | 22 | - | - | - | - | - | -
+path | 36.3 | 521.7 | 15.4 | 0 | - | - | - | - | - | -
+path | 39.8 | 517.5 | 8.4 | 4.2 | - | - | - | - | - | -
+path | 38.3 | 509.8 | 11.4 | 5.3 | - | - | - | - | - | -
+div | 78 | 496 | 291 | 81 | - | - | - | - | - | -
+div | 78 | 496 | 291 | 21 | - | - | - | - | 15.5px/600/normal/21px/rgb(29, 28, 26) | First hour awake
+div | 78 | 520 | 291 | 57 | - | - | - | - | 13px/400/normal/19px/rgb(118, 115, 112) | Use the alarm, then put the phone back in its charging place until the first planned task is finished.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+div | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+span | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done

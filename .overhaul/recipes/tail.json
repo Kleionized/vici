@@ -1,0 +1,188 @@
+[
+  {
+    "frame": "Enlisting Aegis",
+    "route": "/welcome?step=plan-together&hold=1",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Mock-only jump (D216): `/welcome?step=<id>` opens the board with the canvas's own sample answers (Sam, 24, Late at night + When I’m home alone, In bed, I start scrolling, Focus/Sleep/Confidence). `&hold=1` keeps the board up past its 6.8 s hand-over (mock builds only). The kit Spinner turns (D366), so diff with `--ignore=150,234,92,92` — 0.00 % outside it. Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"plan-together\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Where We’d Start",
+    "route": "/welcome?step=whered-start",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "0.01 % = sub-point glyph offsets in the inline-bold paragraph at y 664 (the kit lab measured the same, D358). Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"whered-start\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Start Here",
+    "route": "/welcome?step=start-here",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "`Choose another` walks home alone → late night → back to the phone (D054). Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"start-here\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Start Here Step 1",
+    "route": "/welcome?step=start-here-1",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"start-here-1\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Start Here Step 2",
+    "route": "/welcome?step=start-here-2",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"start-here-2\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Your Plan",
+    "route": "/welcome?step=your-plan",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"your-plan\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Starting Score",
+    "route": "/welcome?step=starting-point",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "D329: the gauge shows SCORE_BASE (1,000 — every tick filled; a full gauge draws no marker, D219); the frame prints its sample 842, so the gauge region (112,360 176×68 and 292,364 36×64) differs by design (1.80 %). Rendered at 842 the board diffs 0.00 % (3 px). Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"starting-point\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Cost Next 30",
+    "route": "/welcome?step=next30",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"next30\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Cost Next 365",
+    "route": "/welcome?step=one-year",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"one-year\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Cost By Age 80",
+    "route": "/welcome?step=age80",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "“About 6,100 days” = age 24 at nine relapse days a month. Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"age80\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Line If Nothing Changes",
+    "route": "/welcome?step=line-nothing",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"line-nothing\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Line With the Plan",
+    "route": "/welcome?step=line-plan",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"line-plan\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "A Clean Day",
+    "route": "/welcome?step=clean-day",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"clean-day\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "One Bad Day",
+    "route": "/welcome?step=one-bad-day",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"one-bad-day\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "What You Want Back",
+    "route": "/welcome?step=want-back",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "The pills read `17 · What it affects` back (CRITIC §5 tail Q5); the sample answers pick the frame’s trio. Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"want-back\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Letter Received",
+    "route": "/welcome?step=letter-arrived",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"letter-arrived\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Letter Week XII",
+    "route": "/welcome?step=letter-read",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"letter-read\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "The Vow",
+    "route": "/welcome?step=vow&now=2026-06-09T12:00",
+    "initseed": ".overhaul/tail-vow-seed.js",
+    "wait": 1500,
+    "note": "The date is the day it is signed: `tail-vow-seed.js` is clock.js pinned to 9 Jun 2026 + the session seed, so the caps read “Day 0, Jun 9”. Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"vow\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "Medallion Received",
+    "route": "/welcome?step=medallion",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1500,
+    "note": "Full path (no mock jump): route `/welcome`, same initseed, `--do='window.__T=\"medallion\"' --script=.overhaul/drives/tail-walk.js` — walks all 22 questionnaire boards (≈45 s) and stops on this board.",
+    "group": "tail"
+  },
+  {
+    "frame": "(no frame) tail — Choose another boards",
+    "route": "/welcome?step=start-here",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1200,
+    "do": "await waitFor('Keep your phone out of bed tonight.'); await tap('Choose another'); await __sleep(400)",
+    "note": "D054: the proposal walks his own signals — home alone (“Keep one door open tonight.”, evidence “Being home alone, bed and scrolling…”), late night (“Pick the hour you stop tonight.”), then back to the phone. Continue → Step 1/2/Your Plan carry the swapped steps and row 4. Charger/door heroes unchanged. Exercised by tap (42/42 controls ok).",
+    "group": "tail"
+  },
+  {
+    "frame": "(no frame) tail — other answers",
+    "route": "/welcome?step=whered-start",
+    "initseed": ".overhaul/tail-alt-seed.js",
+    "wait": 1200,
+    "note": "window.__ONB_ANSWERS (D216): In the morning / On weekends / After drinking pills (wrap to two rows), Outside home + an argument (evidence + plan rows), Peace of mind / Sex or intimacy / Feeling in control on What You Want Back (chip order), age 18 → “About 6,800 days”. Same seed with step=start-here | your-plan | want-back | age80.",
+    "group": "tail"
+  },
+  {
+    "frame": "(no frame) tail — no name",
+    "route": "/welcome?step=whered-start",
+    "initseed": ".overhaul/tail-unnamed-seed.js",
+    "wait": 1200,
+    "note": "“This is where we’d start.”; step=letter-read → “Week XII, from you” / “Friend —”; step=vow → “Friend”.",
+    "group": "tail"
+  },
+  {
+    "frame": "(no frame) tail — Build plan hands over",
+    "route": "/welcome?step=plan-together",
+    "initseed": ".overhaul/tail-session-seed.js",
+    "wait": 1200,
+    "do": "await waitFor('this is where we’d start', 12000)",
+    "note": "Without &hold=1 the board hands over to Where We’d Start after 6.8 s (AEGIS_MS), as before.",
+    "group": "tail"
+  }
+]

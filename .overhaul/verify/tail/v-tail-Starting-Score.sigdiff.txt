@@ -1,0 +1,18 @@
+~ Your VICI rating                         type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+MISSING in app:  path | 303.2 | 369.4 | 8.1 | 4 | - | - | - | - | - | -
+MISSING in app:  path | 306.4 | 377 | 8.4 | 3.5 | - | - | - | - | - | -
+MISSING in app:  path | 309.2 | 384.9 | 8.5 | 2.8 | - | - | - | - | - | -
+MISSING in app:  path | 311.4 | 392.9 | 8.7 | 2.3 | - | - | - | - | - | -
+MISSING in app:  path | 313.2 | 401 | 8.8 | 1.8 | - | - | - | - | - | -
+MISSING in app:  path | 314.5 | 409.3 | 8.9 | 1.2 | - | - | - | - | - | -
+MISSING in app:  path | 315.2 | 417.6 | 9 | 0.6 | - | - | - | - | - | -
+MISSING in app:  path | 315.5 | 426 | 9 | 0 | - | - | - | - | - | -
+MISSING in app:  circle | 274.9 | 374.3 | 12 | 12 | - | - | - | - | - | -
+MISSING in app:  text | 134.9 | 341 | 123.3 | 91 | - | - | - | - | 76px/700/-3px/normal/rgb(0, 0, 0) | 842
+~ of 1,000                                 type: 14px/600/normal/normal/rgb(0, 0, 0) → 14px/700/normal/normal/rgb(0, 0, 0)
+~ 0                                        type: 12px/600/normal/normal/rgb(0, 0, 0) → 12px/700/normal/normal/rgb(0, 0, 0)
+~ 1,000                                    type: 12px/600/normal/normal/rgb(0, 0, 0) → 12px/700/normal/normal/rgb(0, 0, 0)
+# count T:1,000: design 1, app 2
+~ Starting point                           x: 140.5 → 156.5   y: 494 → 503   w: 112 → 80   h: 34 → 16   bg: rgb(30, 30, 30) → -   radius: 17px → -   shadow: rgb(46, 46, 46) 0px 0px 0px 1.5px → -   type: 13px/700/normal/normal/rgb(242, 240, 236) → 13px/700/normal/16px/rgb(242, 240, 236)
+~ Next                                     type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 69 design rows, 77 app rows; 6 differing, 10 missing, 14 extra, 0 sub-0.25pt rounding (use --all to list extras)

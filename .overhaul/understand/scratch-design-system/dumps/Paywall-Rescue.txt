@@ -1,0 +1,35 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:60px  height:40px  display:flex  align-items:center  justify-content:space-between  padding:0 22px  box-sizing:border-box  z-index:5
+    <div> width:36px  height:40px  display:flex  align-items:center  cursor:pointer
+    <div> width:36px  height:40px  display:flex  align-items:center  justify-content:flex-end  cursor:pointer
+      <svg> viewBox="0 0 18 18"  width="18"  height="18"
+        <path> d="M2 2l14 14M16 2L2 16"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:257px  display:flex  flex-direction:column  gap:20px
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance
+      · Before you go — three days on us.
+  <div> position:absolute  left:24px  right:24px  top:367px  display:flex  flex-direction:column  gap:0px
+    <div> display:flex  gap:16px
+      <div> display:flex  flex-direction:column  align-items:center  width:22px  flex-shrink:0
+        <div> width:22px  height:22px  border-radius:11px  background:#F2F0EC  box-shadow:none  display:flex  align-items:center  justify-content:center
+          <svg> viewBox="0 0 14 14"  width="11"  height="11"
+            <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+        <div> flex:1  border-left:2px dashed #5A574F  margin:6px 0
+      <div> flex:1  padding-bottom:26px  font-size:16px  line-height:24px  color:#F2F0EC  font-weight:700
+        · Today — everything unlocks
+    <div> display:flex  gap:16px
+      <div> display:flex  flex-direction:column  align-items:center  width:22px  flex-shrink:0
+        <div> width:22px  height:22px  border-radius:11px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  justify-content:center
+        <div> flex:1  border-left:2px dashed #5A574F  margin:6px 0
+      <div> flex:1  padding-bottom:26px  font-size:16px  line-height:24px  color:#F2F0EC  font-weight:400
+        · Day 2 — a reminder, before any charge
+    <div> display:flex  gap:16px
+      <div> display:flex  flex-direction:column  align-items:center  width:22px  flex-shrink:0
+        <div> width:22px  height:22px  border-radius:11px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  justify-content:center
+      <div> padding-bottom:0px  font-size:16px  line-height:24px  color:#F2F0EC  font-weight:400
+        · Day 3 — $39.99/year begins, unless you cancel
+  <div> position:absolute  left:24px  right:24px  bottom:96px  height:58px  border-radius:29px  background:#F2F0EC  display:flex  align-items:center  justify-content:center  cursor:pointer  z-index:6
+    <span> font-size:16px  font-weight:700  letter-spacing:0.1px  white-space:nowrap  color:#111111
+      · Start free trial
+  <div> position:absolute  left:0  right:0  bottom:60px  text-align:center  font-size:15px  font-weight:400  color:#9B968E  cursor:pointer  z-index:6
+    · No thanks

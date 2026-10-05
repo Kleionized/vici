@@ -1,12 +1,24 @@
 import * as Clipboard from 'expo-clipboard';
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Linking, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Linking, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
-import { AppText, Button, Card, Glyph, IconChip, PressScale, SettingsTopBar } from '@/components/ui';
-import { colors, radius, spacing } from '@/lib/theme';
+import { GhostLink, MonoText, NavBar, PrimaryButton, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
+import { mono } from '@/lib/theme';
+
+/**
+ * Back Tap — how to put the urge tool on a double tap of the phone's back. No
+ * frame draws it (it is a settings sub-page, reached from All); it is set after
+ * `App Lock` (settings.md §12): the nav row with its caption, a 76 ink disc with
+ * the wave in `#111111`, the line centred under it, the four steps in a ruled
+ * card, the link they point to under them as one settings row (tap to copy —
+ * step 2 says "the link below"; it used to sit above the steps), the footnote,
+ * and the two actions as the frames' primary + ghost pair. The copy is the
+ * screen's own (CRITIC G12).
+ *
+ * Between the nav and the pair the column scrolls (D320).
+ */
 
 const DEEP_LINK = 'tideline://urge';
 
@@ -14,8 +26,20 @@ const STEPS = [
   'Open the Shortcuts app and tap + to create a new shortcut.',
   'Add the “Open URLs” action and paste the link below.',
   'Name it something like “Ride it out” and save.',
-  'Go to Settings → Accessibility → Touch → Back Tap → Double Tap, and pick your shortcut.',
+  // the menu names hold together (no-break spaces): a 430 phone broke `Back | Tap`
+  'Go to Settings → Accessibility → Touch → Back\u00a0Tap → Double\u00a0Tap, and pick your shortcut.',
 ];
+
+/** the primary's top off the screen's foot (58 at `bottom 96`); the column stops 16 above it */
+const CONTROLS = 96 + 58;
+
+function Wave() {
+  return (
+    <Svg width={30} height={30} viewBox="0 0 24 24">
+      <Path d="M2 9c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6-1.5M2 15c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6-1.5" fill="none" stroke={mono.onInk} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  );
+}
 
 export default function BackTap() {
   const router = useRouter();
@@ -30,67 +54,48 @@ export default function BackTap() {
   const openShortcuts = () => Linking.openURL('shortcuts://').catch(() => {});
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <View style={{ paddingBottom: spacing.lg }}>
-          <SettingsTopBar title="Back Tap" onBack={back} />
+    <Screen>
+      <NavBar left="back" centre={{ title: 'Back Tap' }} right="empty" onBack={back} />
+
+      <ScrollRegion top={100} bottom={CONTROLS + 16} contentStyle={{ paddingTop: 24, paddingHorizontal: 24, paddingBottom: 24, gap: 14 }}>
+        <View style={{ alignSelf: 'center', width: 76, height: 76, borderRadius: 38, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+          <Wave />
+        </View>
+        <MonoText v="p" center style={{ marginTop: 8 }}>
+          Open urge support in one move: double-tap the back of your iPhone, from anywhere. iOS runs a Shortcut that opens VICI straight to the urge tool.
+        </MonoText>
+        <View style={{ height: 4 }} />
+
+        <View style={{ borderRadius: 20, backgroundColor: mono.card, overflow: 'hidden' }}>
+          {STEPS.map((step, i) => (
+            <View
+              key={i}
+              style={[
+                { flexDirection: 'row', gap: 14, paddingVertical: 16, paddingHorizontal: 18 },
+                i > 0 ? { borderTopWidth: 1, borderTopColor: mono.line } : null,
+              ]}>
+              <MonoText v="rowLabel" color={mono.mute} style={{ width: 12, lineHeight: 22 }}>
+                {i + 1}
+              </MonoText>
+              <MonoText v="pTight" color={mono.ink} style={{ flex: 1 }}>
+                {step}
+              </MonoText>
+            </View>
+          ))}
         </View>
 
-        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: spacing.xxl, gap: spacing.lg }} showsVerticalScrollIndicator={false}>
-          <View style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
-            <IconChip name="wave" size={46} radius={14} tone="ink" />
-            <AppText variant="muted" weightOverride="500" style={{ flex: 1, fontSize: 15, lineHeight: 21 }}>
-              Open urge support in one move: double-tap the back of your iPhone, from anywhere. iOS runs a Shortcut that opens VICI straight to the urge tool.
-            </AppText>
-          </View>
+        {/* after the steps: step 2 says "paste the link below" */}
+        <RowGroup label="Shortcut link">
+          <Row label={DEEP_LINK} value={copied ? 'Copied' : 'Copy'} chevron={false} onPress={() => void copy()} accessibilityLabel="Copy the shortcut link" />
+        </RowGroup>
 
-          {/* the deep link */}
-          <Card>
-            <AppText variant="label" style={{ marginBottom: spacing.sm }}>
-              Shortcut link
-            </AppText>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: spacing.md }}>
-              <AppText selectable weightOverride="600" style={{ flex: 1, fontSize: 16, letterSpacing: 0.2 }}>
-                {DEEP_LINK}
-              </AppText>
-              <PressScale onPress={copy} hitSlop={8} style={{ minHeight: 44, backgroundColor: colors.accent, borderRadius: radius.pill, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center' }}>
-                <AppText weightOverride="600" color={colors.accentText} style={{ fontSize: 14 }}>
-                  {copied ? 'Copied' : 'Copy'}
-                </AppText>
-              </PressScale>
-            </View>
-          </Card>
+        <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19 }}>
+          Back Tap is an iOS accessibility setting, so it’s set up once on your phone. VICI only provides the link it opens.
+        </MonoText>
+      </ScrollRegion>
 
-          {/* steps */}
-          <View style={{ gap: spacing.md }}>
-            {STEPS.map((s, i) => (
-              <View key={i} style={{ flexDirection: 'row', gap: spacing.md, alignItems: 'flex-start' }}>
-                <View style={{ width: 28, height: 28, borderRadius: radius.pill, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}>
-                  <AppText weightOverride="600" style={{ fontSize: 13 }}>
-                    {i + 1}
-                  </AppText>
-                </View>
-                <AppText variant="muted" weightOverride="500" style={{ flex: 1, fontSize: 15, lineHeight: 22, paddingTop: 2 }}>
-                  {s}
-                </AppText>
-              </View>
-            ))}
-          </View>
-
-          <View style={{ gap: spacing.sm }}>
-            <Button label="Open Shortcuts app" onPress={openShortcuts} />
-            <Button label="Test it now" variant="secondary" onPress={() => router.push('/urge')} />
-          </View>
-
-          <View style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start', backgroundColor: colors.surface, borderRadius: radius.lg, padding: spacing.lg }}>
-            <View style={{ marginTop: 1 }}>{Glyph.shield(colors.textMuted)}</View>
-            <AppText variant="soft" weightOverride="500" style={{ flex: 1, fontSize: 13.5, lineHeight: 19 }}>
-              Back Tap is an iOS accessibility setting, so it’s set up once on your phone. VICI only provides the link it opens.
-            </AppText>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+      <PrimaryButton label="Open Shortcuts app" bottom={96} onPress={openShortcuts} />
+      <GhostLink label="Test it now" onPress={() => router.push('/urge-hub')} />
+    </Screen>
   );
 }

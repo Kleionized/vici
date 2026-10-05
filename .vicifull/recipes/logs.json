@@ -1,0 +1,178 @@
+[
+  {
+    "frame": "Log Chooser",
+    "group": "logs",
+    "route": "/log-chooser",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "note": "D124 moved the chooser out of `(app)`, so it draws no tab bar and its pill lands at the canvas's 744. The tab bar's `Log` item now opens this route; `/log` is the register list. `.vicifull/logs-seed.js` pre-satisfies the launch gates in `(app)/_layout` (check-in prompt, letter, medallion post, weekly report) so nothing pushes over the capture."
+  },
+  {
+    "frame": "Lapse When",
+    "group": "logs",
+    "route": "/lapse",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await __sleep(400); await tapAt(196, 286)",
+    "note": "the frame draws the time wheel OPEN — `tap('Choose a time')` does not fire on this PressScale, `tapAt` does. The wheel's five date/hour/minute columns and the AM/PM ramp read the capture clock, so those rows never match the frame's `Sat Jul 18 … 11:40 PM`; everything structural does."
+  },
+  {
+    "frame": "Lapse Trigger",
+    "group": "logs",
+    "route": "/lapse",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await __sleep(400); await tap('Continue'); await waitFor('What fed it?'); await tap('Late night'); await tap('Boredom')",
+    "note": "the frame selects `Late night` and `Boredom` in that order — tap them the other way round and the summary card on 90D reads `Boredom · Late night`. The one design row with no app match is the canvas's own malformed `Craving` path (`d=\"…-2#1D1C1A7 7.2…\"`); the app draws the repaired heart."
+  },
+  {
+    "frame": "Lapse Done",
+    "group": "logs",
+    "route": "/lapse",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('When did it happen?'); await __sleep(400); await tap('Continue'); await waitFor('What fed it?'); await tap('Late night'); await tap('Boredom'); await tap('Continue · 2'); await waitFor('Slip logged.'); await __sleep(500)",
+    "note": "the `Changed` row reads today's check-in `dailyAction`, which the seed carries as the frame's own `Phone charges outside bedroom`. The `When` row's `Last night` is not producible — see D126."
+  },
+  {
+    "frame": "Log Urges",
+    "group": "logs",
+    "route": "/log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await __sleep(500)",
+    "note": "`/log` IS the register list since D124; the chooser is `/log-chooser`. Every row lands on the frame's own y. The frame's `This week` run reads oldest-first and its `Last week` run newest-first — one list cannot do both, and the app is newest-first throughout (D127)."
+  },
+  {
+    "frame": "Log Check-ins",
+    "group": "logs",
+    "route": "/log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await __sleep(500); __fire([...document.querySelectorAll('[role=\"tab\"]')].find((e) => e.textContent.trim() === 'Check-ins')); await __sleep(500)",
+    "note": "the register switch is `role=tab`, which drive.js's `tap()` does not look at — fire the DOM node. All five rows match the frame in text and order; only the clock strings are the seed's."
+  },
+  {
+    "frame": "Log Reports",
+    "group": "logs",
+    "route": "/log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your log'); await __sleep(500); __fire([...document.querySelectorAll('[role=\"tab\"]')].find((e) => e.textContent.trim() === 'Reports')); await __sleep(500)",
+    "note": "the seed's account is 41 days old so five weeks have closed and the sparkline has a line. The week labels and score strings are computed, so they carry the seed's dates rather than the frame's."
+  },
+  {
+    "frame": "Urge Overview Summary",
+    "group": "logs",
+    "route": "/urge-overview",
+    "initseed": ".vicifull/logs-summary-seed.js",
+    "wait": 2000,
+    "do": "await waitFor('Urge overview'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 0; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "its own seed: 91B draws a three-urge week, two ridden out (4 and 6 min) and one ending in a slip, and the other three overview pages draw different accounts (D126). Only the three date stamps differ."
+  },
+  {
+    "frame": "Urge Overview",
+    "group": "logs",
+    "route": "/urge-overview",
+    "initseed": ".vicifull/logs-triggers-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 1; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "its own seed: the bars are 100 % / 62 % / 34 %, which needs tallies of 29 / 18 / 10 — no three-urge week can produce it (D126). The third bar is `Tiredness` where the picker tile is `Tired` (D128). Only the week label differs."
+  },
+  {
+    "frame": "Urge Overview Mood",
+    "group": "logs",
+    "route": "/urge-overview",
+    "initseed": ".vicifull/logs-mood-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 2; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "its own seed. The frame's four shares sum to 160 % and the app records one preceding feeling per urge, so 45 % / 30 % / 15 % cannot be reached (D126); the seed fixes the labels, order, tones, geometry and the insight card, and those three percents are the only difference."
+  },
+  {
+    "frame": "Urge Overview When",
+    "group": "logs",
+    "route": "/urge-overview",
+    "initseed": ".vicifull/logs-timing-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Urge overview'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 3; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "its own seed: 2 + 2 + 1 band dots is a five-urge week. `tally` keeps insertion order on a tie and the store returns newest first, so the two Late nights have to be the most recent. The frame's `3. Bathroom 0` row is not seedable — a tally has no zero rows (D126)."
+  },
+  {
+    "frame": "Report Ready",
+    "group": "logs",
+    "route": "/report-ready",
+    "initseed": ".vicifull/logs-week-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Your weekly report is ready.'); await __sleep(600)",
+    "note": "the five radial washes derive their ids from `useId()` (F20) and the wax seal states `r=\"93.5%\"` alongside `rx`/`ry` (D064) — without `r` the browser fell back to 50 % and the disc read Δ25 dark at the rim. Seven sampled points on the seal are now exact."
+  },
+  {
+    "frame": "Weekly Report",
+    "group": "logs",
+    "route": "/weekly-report",
+    "initseed": ".vicifull/logs-week-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 0; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "no `?week=` reads the latest COMPLETED week, which this seed fills as the frame draws it. The score axis (`1,240 / 1,220 / 1,200`) and `+12 points` are the borrowed day-41 numbers of D097: seeded to the card's own 7 check-ins / 3 urges / 0 relapses the app's weights give +48, and 12 is not reachable."
+  },
+  {
+    "frame": "Weekly Report Days",
+    "group": "logs",
+    "route": "/weekly-report",
+    "initseed": ".vicifull/logs-week-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 1; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "all fourteen wells come out in the canvas's four inks on this seed, so the invented empty tone never appears (D129). This frame alone paints the header card's sun grey where its two siblings paint it gold — the app draws gold (D125), and a signature diff cannot see the difference."
+  },
+  {
+    "frame": "Weekly Report Urges",
+    "group": "logs",
+    "route": "/weekly-report",
+    "initseed": ".vicifull/logs-week-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('Weekly report'); await __sleep(700); const p = [...document.querySelectorAll('div')].find((d) => d.scrollWidth > d.clientWidth + 8 && getComputedStyle(d).overflowX !== 'visible'); p.scrollLeft = 393 * 2; p.dispatchEvent(new Event('scroll', { bubbles: true })); await __sleep(900)",
+    "note": "the verdict reads `3 of 3 ridden out` where the frame reads `2 of 3` — the frame contradicts `Log Urges`'s `All ridden out` over the identical three rows (D126). The outcome word now comes from the Log's own table, so it reads `surfed the timer` and not `surfed with the timer` (D128)."
+  },
+  {
+    "frame": "Urge Log Intensity",
+    "group": "logs",
+    "route": "/urge-log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400)"
+  },
+  {
+    "frame": "Urge Log Trigger",
+    "group": "logs",
+    "route": "/urge-log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom')",
+    "note": "same `Late night` then `Boredom` order as the lapse flow, and the same malformed `Craving` path on the design side."
+  },
+  {
+    "frame": "Urge Log Outcome",
+    "group": "logs",
+    "route": "/urge-log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue · 2'); await waitFor('What did you do?')"
+  },
+  {
+    "frame": "Urge Log When",
+    "group": "logs",
+    "route": "/urge-log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue · 2'); await waitFor('What did you do?'); await tap('Continue'); await waitFor('When was it?'); await tapAt(196, 286); await __sleep(400)",
+    "note": "the frame draws the wheel open; `tapAt(196, 286)` opens it here too. `Specify time` here vs the lapse flow's `Choose a time` is the canvas's own difference."
+  },
+  {
+    "frame": "Urge Log Done",
+    "group": "logs",
+    "route": "/urge-log",
+    "initseed": ".vicifull/logs-seed.js",
+    "wait": 1600,
+    "do": "await waitFor('How strong was the urge?'); await __sleep(400); await tap('Continue'); await waitFor('What set it off?'); await tap('Late night'); await tap('Boredom'); await tap('Continue · 2'); await waitFor('What did you do?'); await tap('Continue'); await waitFor('When was it?'); await tap('Log the urge'); await waitFor('Urge logged.'); await __sleep(500)"
+  }
+]

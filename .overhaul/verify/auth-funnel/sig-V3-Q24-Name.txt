@@ -1,0 +1,4 @@
+MISSING in app:  svg | -19.6 | 487 | 432.3 | 264 | - | - | - | - | - | -
+MISSING in app:  span | 50 | 262.5 | 79.3 | 21 | - | - | - | - | 17px/400/normal/normal/rgb(155, 150, 142) | Your name
+~ Continue                                 type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 35 design rows, 43 app rows; 1 differing, 2 missing, 6 extra, 0 sub-0.25pt rounding (use --all to list extras)

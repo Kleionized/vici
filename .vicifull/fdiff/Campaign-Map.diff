@@ -1,0 +1,31 @@
+--- .vicifull/pretty/prev/Campaign-Map.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Campaign-Map.html	2026-09-05 00:22:35
+@@ -112,7 +112,7 @@
+     | color:#1D1C1A;
+     | text-wrap:pretty;
+   ">
+-    · Your twelve weeks.
++    · The next twelve weeks.
+   </div>
+   <div style="
+     | position:absolute;
+@@ -523,5 +523,19 @@
+     ">
+       · Next
+     </span>
++  </div>
++  <div style="
++    | position:absolute;
++    | left:26px;
++    | right:26px;
++    | top:692px;
++    | font-size:14px;
++    | font-weight:400;
++    | line-height:21px;
++    | color:#55534E;
++    | text-align:center;
++    | text-wrap:pretty;
++  ">
++    · In the first four weeks, you’ll reset, rethink the habit, and learn what to do in the moment.
+   </div>
+ </div>

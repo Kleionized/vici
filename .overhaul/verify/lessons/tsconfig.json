@@ -1,0 +1,6 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": { "noEmit": true, "incremental": false },
+  "include": [],
+  "files": ["../../../src/app/lesson/day/[day].tsx", "../../../src/app/lesson-card/[day].tsx", "../../../src/app/task/[day].tsx", "../../../src/components/lesson/LessonShell.tsx", "../../../src/components/lesson/LessonPages.tsx", "../../../src/components/lesson/LessonViz.tsx", "../../../src/components/lesson/LessonText.tsx", "../../../src/content/lessons.ts"]
+}

@@ -1,0 +1,16 @@
+const o = {};
+const radios = () => [...document.querySelectorAll('[role="radio"]')].map((r) => (r.getAttribute('aria-checked') === 'true' ? 1 : 0)).join('');
+await waitFor('What are you logging?');
+o.init = radios();
+await tap('A lapse'); o.lapse = radios();
+await tap('Daily check-in'); o.check = radios();
+await tap('Continue'); await __sleep(1800);
+o.url1 = location.pathname;
+history.back(); await __sleep(1800);
+o.urlBack = location.pathname; o.radiosBack = radios();
+await tap('An urge'); await tap('Continue'); await __sleep(1800); o.url2 = location.pathname;
+history.back(); await __sleep(1500);
+await tap('A lapse'); await tap('Continue'); await __sleep(1800); o.url3 = location.pathname;
+history.back(); await __sleep(1500);
+await tap('Close'); await __sleep(1800); o.urlClose = location.pathname;
+return o;

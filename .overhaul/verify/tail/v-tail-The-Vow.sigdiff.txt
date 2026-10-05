@@ -1,0 +1,6 @@
+~ Day 0, Jun 9                             type: 13px/700/normal/normal/rgb(155, 150, 142) → 13px/700/normal/16px/rgb(155, 150, 142)
+~ Sam                                      type: 30px/700i/-0.5px/normal/rgb(242, 240, 236) → 30px/700i/-0.5px/36px/rgb(242, 240, 236)
+~ Signed on day 0                          type: 13px/700/0.5px/normal/rgb(155, 150, 142) → 13px/700/0.5px/16px/rgb(155, 150, 142)
+~ Sign                                     type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+~ Not now                                  type: 15px/400/normal/normal/rgb(155, 150, 142) → 15px/400/normal/18px/rgb(155, 150, 142)
+--- 15 design rows, 23 app rows; 5 differing, 0 missing, 5 extra, 0 sub-0.25pt rounding (use --all to list extras)

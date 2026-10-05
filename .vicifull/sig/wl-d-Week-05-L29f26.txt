@@ -1,0 +1,22 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 16 | 108 | 361 | 2 | rgba(0, 0, 0, 0.05) | 1px | - | - | - | -
+div | 16 | 108 | 332.1 | 2 | rgb(180, 177, 171) | 1px | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 196.5 | 131 | 0 | 16 | - | - | - | - | - | -
+div | 145.6 | 171 | 101.9 | 32 | - | - | - | - | 24px/500/normal/32px/rgb(29, 28, 26) | The scale
+div | 41.5 | 227 | 310 | 156 | - | - | - | - | 17px/400/normal/26px/rgb(85, 83, 78) | Open your calendar. Pick a two-hour block in the next three days when you are likely to be alone, tired, bored, or unstructured. Decide in advance where you will be, what you will do, and where the phone will stay.
+div | 61.5 | 407 | 270 | 190 | - | - | - | - | - | -
+div | 61.5 | 407 | 270 | 190 | - | - | - | - | - | -
+div | 33.5 | 545 | 326 | 64 | rgb(234, 233, 227) | 50% 50% 0px 0px / 26px 26px 0px 0px | - | - | - | -
+div | 157.5 | 433 | 2.5 | 2.5 | rgba(200, 225, 235, 0.45) | 50% | - | - | - | -
+div | 267.5 | 451 | 2 | 2 | rgba(200, 225, 235, 0.35) | 50% | - | - | - | -
+div | 119.5 | 471 | 2 | 2 | rgba(200, 225, 235, 0.3) | 50% | - | - | - | -
+div | 174.5 | 465 | 44 | 44 | - | 50% | - | - | - | -
+div | 187.5 | 478 | 18 | 18 | - | 50% | - | rgba(160, 120, 50, 0.3) 0px 2px 6px 0px | - | -
+div | 164.5 | 548 | 64 | 10 | rgba(0, 0, 0, 0.07) | 50% | - | - | - | -
+div | 38 | 621 | 317 | 100 | rgb(255, 255, 255) | 16px | - | rgba(0, 0, 0, 0.07) 0px 0px 0px 1px, rgba(40, 38, 32, 0.05) 0px 6px 16px 0px | - | -
+svg | 56 | 661 | 20 | 20 | - | - | - | - | - | -
+circle | 57.7 | 662.7 | 16.7 | 16.7 | - | - | - | - | - | -
+path | 62.4 | 668.4 | 7.1 | 5.1 | - | - | - | - | - | -
+span | 90 | 638 | 247 | 66 | - | - | - | - | 15px/500/normal/22px/rgb(85, 83, 78) | Done when the two-hour block is on the calendar with a place, activity, and phone rule.

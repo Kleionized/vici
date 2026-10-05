@@ -1,0 +1,1048 @@
+ 1287 1287f  height:3px; border-radius:2px; background:#2E2E2E
+              layout: position:absolute left:24px right:24px top:108px×1287
+              frames: Lesson-Scroll-1 Lesson-Scroll-10 Lesson-Scroll-11 Lesson-Scroll-12 Lesson-Scroll-13 Lesson-Scroll-14 Lesson-Scroll-2 Lesson-Scroll-3 Lesson-Scroll-4 Lesson-Scroll-5 …
+  968  968f  width:44px; height:44px; border-radius:22px; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#F2F0EC fill=none×968
+              layout: display:flex align-items:center justify-content:center×968
+              frames: Lesson-Scroll-10 Lesson-Scroll-11 Lesson-Scroll-12 Lesson-Scroll-2 Lesson-Scroll-3 Lesson-Scroll-4 Lesson-Scroll-5 Lesson-Scroll-6 Lesson-Scroll-7 Lesson-Scroll-8 …
+  479  479f  height:58px; border-radius:29px; background:#F2F0EC
+              type: 16px 700 0.1px #111111×477 | 16px 700 #111111×2   txt: Continue×137 | Done×118 | Begin×88 | Finish lesson×85
+              layout: display:flex align-items:center justify-content:center position:absolute left:24px right:24px bottom:48px×418 | display:flex align-items:center justify-content:center position:absolute left:24px right:24px bottom:96px×59
+              frames: A-Clean-Day Breakwater-Bronze Breakwater-Gold Breakwater-Paper Breakwater-Platinum Breakwater-Silver Change-Pledge-Sheet Cost-Next-30 Cost-Next-365 Cue-Hue-Picker …
+  209   47f  width:24px; height:2px; border-radius:1px; background:#F2F0EC
+              layout: ×209
+              frames: Checkin-Emotions Checkin-Reasons Cue-Hue-Picker First-Principle Goal-Confirmation Lapse-Trigger Lapse-When Morning-1-Yesterday Morning-Energy Morning-Feeling …
+  167   41f  width:24px; height:2px; border-radius:1px; background:#2E2E2E
+              layout: ×167
+              frames: Checkin-Emotions Checkin-Reasons Cue-Hue-Picker First-Principle Lapse-Trigger Lapse-When Morning-1-Yesterday Morning-Energy Morning-Feeling Morning-Task-Check …
+  106   25f  min-height:48px; border-radius:24px; background:#1E1E1E; padding:13px 16px 13px 14px
+              type: 12px 700 16px #B5B0A8×106   txt: A×25 | B×25 | C×25 | D×13
+              layout: display:flex align-items:center gap:12px×106
+              frames: Week-01/L2-Frame-11 Week-02/L10-Frame-11 Week-02/L13-Frame-12 Week-03/L18-Frame-11 Week-03/L19-Frame-11 Week-03/L20-Frame-11 Week-04/L22-Frame-11 Week-04/L26-Frame-11 Week-04/L28-Frame-10 Week-05/L35-Frame-12 …
+   97   97f  width:28px; height:28px; border-radius:14px; background:#F2F0EC
+              type: 13px 700 #111111×12   txt: B×10 | A×2
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×85
+              layout: display:flex align-items:center justify-content:center×97
+              frames: Lesson-Scroll-13 Week-01/L1-Frame-13 Week-01/L2-Frame-15 Week-01/L3-Frame-14 Week-01/L4-Frame-14 Week-01/L5-Frame-14 Week-01/L6-Frame-13 Week-01/L7-Frame-15 Week-02/L10-Frame-12 Week-02/L10-Frame-15 …
+   95   22f  width:24px; height:24px; border-radius:12px; box-shadow:inset 0 0 0 1.5px #9B968E
+              type: 12px 700 16px #B5B0A8×95   txt: A×22 | B×22 | C×22 | D×10
+              layout: display:flex align-items:center justify-content:center×95
+              frames: Week-01/L7-Frame-11 Week-02/L10-Frame-11 Week-02/L13-Frame-12 Week-03/L18-Frame-11 Week-03/L20-Frame-11 Week-04/L22-Frame-11 Week-04/L26-Frame-11 Week-04/L28-Frame-10 Week-05/L35-Frame-12 Week-06/L36-Frame-12 …
+   90   18f  width:30px; height:30px; border-radius:50%; background:#0D0D0D
+              svg: svg30x30 circle stroke=#F2F0EC fill=#0D0D0D×52 | svg30x30 circle  fill=#F2F0EC×36
+              layout: ×90
+              frames: Breakwater-Bronze Breakwater-Gold Breakwater-Paper Breakwater-Platinum Breakwater-Silver Detail-Bronze Detail-Gold Detail-Paper Detail-Platinum Detail-Silver …
+   88   88f  width:96px; height:96px; border-radius:48px; background:#F2F0EC
+              type: 38px 700 #111111×3   txt: S×3
+              svg: svg34x34 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×85
+              layout: display:flex align-items:center justify-content:center×88
+              frames: Edit-Profile Lesson-Scroll-14 Sheet-Edit-Name Sheet-Profile-Photo Week-01/L1-Frame-14 Week-01/L2-Frame-16 Week-01/L3-Frame-15 Week-01/L4-Frame-15 Week-01/L5-Frame-15 Week-01/L6-Frame-14 …
+   86   86f  border-radius:20px; background:#1E1E1E; padding:18px 20px
+              type: 13px 700 16px 0.2px #9B968E×85 | 13px 700 #9B968E×1   txt: Done when×85 | Lesson 1×1
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×85
+              layout: display:flex align-items:flex-start gap:14px margin-top:28px×85 | display:flex gap:4px flex-direction:column×1
+              frames: Day-Zero Lesson-Scroll-13 Week-01/L1-Frame-13 Week-01/L2-Frame-15 Week-01/L3-Frame-14 Week-01/L4-Frame-14 Week-01/L5-Frame-14 Week-01/L6-Frame-13 Week-01/L7-Frame-15 Week-02/L10-Frame-15 …
+   85   85f  width:100%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×85
+              frames: Lesson-Scroll-14 Week-01/L1-Frame-14 Week-01/L2-Frame-16 Week-01/L3-Frame-15 Week-01/L4-Frame-15 Week-01/L5-Frame-15 Week-01/L6-Frame-14 Week-01/L7-Frame-16 Week-02/L10-Frame-16 Week-02/L11-Frame-14 …
+   83   24f  height:58px; border-radius:18px; background:#1E1E1E; padding:0 18px
+              type: 14px 700 #9B968E×46 | 15px 700 #F2F0EC×37   txt: 39×1 | 40×1 | 41×1 | 42×1
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#5A574F fill=none×46 | svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×37
+              layout: display:flex align-items:center gap:16px×83
+              frames: Week-I-Reset-P2 Week-I-Reset Week-II-Changing-Your-Mindset-P2 Week-II-Changing-Your-Mindset Week-III-In-the-Moment-P2 Week-III-In-the-Moment Week-IV-Know-Your-Brain-P2 Week-IV-Know-Your-Brain Week-IX-Connection-P2 Week-IX-Connection …
+   64   10f  width:24px; height:24px; border-radius:7px; box-shadow:inset 0 0 0 1.5px #9B968E
+              type: 12px 700 16px #B5B0A8×64   txt: A×10 | B×10 | C×10 | D×10
+              layout: display:flex align-items:center justify-content:center×64
+              frames: Week-01/L2-Frame-11 Week-03/L16-Frame-11 Week-03/L19-Frame-11 Week-05/L30-Frame-11 Week-07/L44-Frame-12 Week-07/L46-Frame-12 Week-09/L58-Frame-12 Week-12/L79-Frame-11 Week-12/L80-Frame-13 Week-12/L81-Frame-12
+   53    7f  min-height:44px; border-radius:22px; background:#1E1E1E; padding:11px 16px 11px 14px
+              type: 12px 700 16px #B5B0A8×53   txt: A×7 | B×7 | C×7 | D×7
+              layout: display:flex align-items:center gap:12px×53
+              frames: Week-01/L7-Frame-11 Week-03/L16-Frame-11 Week-05/L30-Frame-11 Week-07/L46-Frame-12 Week-09/L58-Frame-12 Week-12/L79-Frame-11 Week-12/L81-Frame-12
+   51   51f  width:7%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×51
+              frames: Lesson-Scroll-1 Week-01/L1-Frame-1 Week-01/L3-Frame-1 Week-01/L4-Frame-1 Week-01/L5-Frame-1 Week-01/L6-Frame-1 Week-02/L11-Frame-1 Week-02/L12-Frame-1 Week-02/L14-Frame-1 Week-02/L8-Frame-1 …
+   51   51f  width:93%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×51
+              frames: Lesson-Scroll-13 Week-01/L1-Frame-13 Week-01/L3-Frame-14 Week-01/L4-Frame-14 Week-01/L5-Frame-14 Week-01/L6-Frame-13 Week-02/L11-Frame-13 Week-02/L12-Frame-13 Week-02/L14-Frame-14 Week-02/L8-Frame-13 …
+   48   48f  width:50%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×48
+              frames: Lesson-Scroll-7 Week-01/L1-Frame-7 Week-01/L2-Frame-8 Week-01/L6-Frame-7 Week-01/L7-Frame-8 Week-02/L10-Frame-8 Week-02/L11-Frame-7 Week-02/L12-Frame-7 Week-02/L8-Frame-7 Week-03/L15-Frame-7 …
+   41   41f  width:13%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×41
+              frames: Week-01/L2-Frame-2 Week-01/L3-Frame-2 Week-01/L4-Frame-2 Week-01/L5-Frame-2 Week-01/L7-Frame-2 Week-02/L10-Frame-2 Week-02/L14-Frame-2 Week-02/L9-Frame-2 Week-03/L16-Frame-2 Week-03/L18-Frame-2 …
+   40   40f  width:60px; height:60px; border-radius:30px; background:#F2F0EC
+              type: 13px 700 #111111×37   txt: SOS×37
+              svg: svg14x22 path d=M2 2l8 8-8 8 stroke=#111111 fill=none×3
+              layout: display:flex align-items:center justify-content:center margin-top:-6px×37 | display:flex align-items:center justify-content:center position:absolute right:24px bottom:52px×3
+              frames: Album-Earned-II Checkin-Emotions Checkin-Reasons Log-Check-ins Log-Reports Log-Urges Medallions-Still-To-Earn Medallions Morning-Task-Check Score-Detail-Moves …
+   39   39f  width:71%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×39
+              frames: Lesson-Scroll-10 Week-01/L1-Frame-10 Week-01/L6-Frame-10 Week-02/L11-Frame-10 Week-02/L12-Frame-10 Week-02/L13-Frame-12 Week-02/L8-Frame-10 Week-03/L15-Frame-10 Week-03/L17-Frame-10 Week-03/L21-Frame-10 …
+   39   39f  width:29%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×39
+              frames: Lesson-Scroll-4 Week-01/L1-Frame-4 Week-01/L6-Frame-4 Week-02/L11-Frame-4 Week-02/L12-Frame-4 Week-02/L13-Frame-5 Week-02/L8-Frame-4 Week-03/L15-Frame-4 Week-03/L17-Frame-4 Week-03/L21-Frame-4 …
+   37   11f  width:24px; height:24px; border-radius:12px; background:#F2F0EC
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×37
+              layout: display:flex align-items:center justify-content:center×37
+              frames: Week-I-Reset-P2 Week-I-Reset Week-II-Changing-Your-Mindset-P2 Week-II-Changing-Your-Mindset Week-III-In-the-Moment-P2 Week-III-In-the-Moment Week-IV-Know-Your-Brain-P2 Week-IV-Know-Your-Brain Week-V-Why-It-Feels-Worth-It-P2 Week-V-Why-It-Feels-Worth-It …
+   36    5f  height:48px; border-radius:24px; background:#1E1E1E; padding:0 20px
+              type: 15px 400 #F2F0EC×36   txt: Lonely×3 | Tired×3 | Argument×3 | Stress×2
+              layout: display:flex align-items:center gap:8px×36
+              frames: Lapse-Trigger SOS-Feeling-Picker SOS-Reason-Picker Slip-Fed Urge-Log-Trigger
+   34   10f  height:58px; border-radius:18px; background:#1E1E1E; box-shadow:0 1px 2px rgba(0,0,0,0.04); padding:0 22px
+              type: 15px 400 #F2F0EC×34   txt: Rarely×2 | Most days×2 | I’m not sure yet×2 | More than once a day×1
+              layout: display:flex align-items:center×34
+              frames: V3-Q1 V3-Q10 V3-Q13 V3-Q15 V3-Q16 V3-Q2 V3-Q21 V3-Q26-Gender V3-Q3 V3-Q3b
+   34   34f  width:47%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×34
+              frames: Week-01/L3-Frame-7 Week-01/L4-Frame-7 Week-01/L5-Frame-7 Week-02/L13-Frame-8 Week-02/L14-Frame-7 Week-02/L9-Frame-7 Week-04/L28-Frame-7 Week-05/L31-Frame-7 Week-05/L32-Frame-7 Week-05/L33-Frame-7 …
+   34   34f  width:53%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×34
+              frames: Week-01/L3-Frame-8 Week-01/L4-Frame-8 Week-01/L5-Frame-8 Week-02/L13-Frame-9 Week-02/L14-Frame-8 Week-02/L9-Frame-8 Week-04/L28-Frame-8 Week-05/L31-Frame-8 Week-05/L32-Frame-8 Week-05/L33-Frame-8 …
+   32    6f  height:48px; border-radius:24px; background:#1E1E1E; box-shadow:0 1px 2px rgba(0,0,0,0.04); padding:0 20px
+              type: 15px 400 #F2F0EC×32   txt: Asking someone to keep m×1 | Deleting apps or account×1 | Therapy or counselling×1 | Replacing it with other ×1
+              layout: display:flex align-items:center gap:8px×32
+              frames: V3-Q17 V3-Q5 V3-Q6 V3-Q7 What-it-affects What-starts-it
+   31   31f  width:6%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×31
+              frames: Week-01/L2-Frame-1 Week-01/L7-Frame-1 Week-02/L10-Frame-1 Week-02/L13-Frame-1 Week-03/L16-Frame-1 Week-03/L18-Frame-1 Week-03/L19-Frame-1 Week-03/L20-Frame-1 Week-04/L22-Frame-1 Week-04/L26-Frame-1 …
+   31   31f  width:94%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×31
+              frames: Week-01/L2-Frame-15 Week-01/L7-Frame-15 Week-02/L10-Frame-15 Week-02/L13-Frame-16 Week-03/L16-Frame-15 Week-03/L18-Frame-15 Week-03/L19-Frame-15 Week-03/L20-Frame-15 Week-04/L22-Frame-15 Week-04/L26-Frame-15 …
+   29   14f  height:36px; border-radius:18px; background:transparent
+              type: 13px 700 #9B968E×29   txt: Urges×5 | Days×3 | Overview×3 | Strength×3
+              layout: display:flex align-items:center justify-content:center flex:1×29
+              frames: Album-Earned-II Log-Check-ins Log-Reports Log-Urges Medallions-Still-To-Earn Medallions Settings-Weekly-Report Urge-Overview-Mood Urge-Overview-Summary Urge-Overview-When …
+   29    7f  height:54px; border-top:1px solid #2E2E2E; padding:0 18px
+              type: 15px 700 #F2F0EC×27 | 15px 700 #9B968E×2   txt: Username×3 | Email×3 | Current week×3 | Medallions×3
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#5A574F fill=none×23
+              layout: display:flex align-items:center justify-content:space-between gap:12px×29
+              frames: App-Lock Data-Privacy Edit-Profile Settings Sheet-Edit-Name Sheet-Profile-Photo Sheet-Sign-Out
+   29   29f  width:88%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×29
+              frames: Week-01/L2-Frame-14 Week-01/L7-Frame-14 Week-02/L10-Frame-14 Week-02/L13-Frame-15 Week-03/L16-Frame-14 Week-03/L18-Frame-14 Week-03/L19-Frame-14 Week-03/L20-Frame-14 Week-04/L22-Frame-14 Week-04/L26-Frame-14 …
+   28   28f  width:79%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-11 Week-01/L1-Frame-11 Week-01/L6-Frame-11 Week-02/L11-Frame-11 Week-02/L12-Frame-11 Week-02/L8-Frame-11 Week-03/L15-Frame-11 Week-03/L17-Frame-11 Week-03/L21-Frame-11 Week-04/L23-Frame-11 …
+   28   28f  width:86%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-12 Week-01/L1-Frame-12 Week-01/L6-Frame-12 Week-02/L11-Frame-12 Week-02/L12-Frame-12 Week-02/L8-Frame-12 Week-03/L15-Frame-12 Week-03/L17-Frame-12 Week-03/L21-Frame-12 Week-04/L23-Frame-12 …
+   28   28f  width:14%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-2 Week-01/L1-Frame-2 Week-01/L6-Frame-2 Week-02/L11-Frame-2 Week-02/L12-Frame-2 Week-02/L8-Frame-2 Week-03/L15-Frame-2 Week-03/L17-Frame-2 Week-03/L21-Frame-2 Week-04/L23-Frame-2 …
+   28   28f  width:21%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-3 Week-01/L1-Frame-3 Week-01/L6-Frame-3 Week-02/L11-Frame-3 Week-02/L12-Frame-3 Week-02/L8-Frame-3 Week-03/L15-Frame-3 Week-03/L17-Frame-3 Week-03/L21-Frame-3 Week-04/L23-Frame-3 …
+   28   28f  width:36%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-5 Week-01/L1-Frame-5 Week-01/L6-Frame-5 Week-02/L11-Frame-5 Week-02/L12-Frame-5 Week-02/L8-Frame-5 Week-03/L15-Frame-5 Week-03/L17-Frame-5 Week-03/L21-Frame-5 Week-04/L23-Frame-5 …
+   28   28f  width:43%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-6 Week-01/L1-Frame-6 Week-01/L6-Frame-6 Week-02/L11-Frame-6 Week-02/L12-Frame-6 Week-02/L8-Frame-6 Week-03/L15-Frame-6 Week-03/L17-Frame-6 Week-03/L21-Frame-6 Week-04/L23-Frame-6 …
+   28   28f  width:57%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-8 Week-01/L1-Frame-8 Week-01/L6-Frame-8 Week-02/L11-Frame-8 Week-02/L12-Frame-8 Week-02/L8-Frame-8 Week-03/L15-Frame-8 Week-03/L17-Frame-8 Week-03/L21-Frame-8 Week-04/L23-Frame-8 …
+   28   28f  width:64%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×28
+              frames: Lesson-Scroll-9 Week-01/L1-Frame-9 Week-01/L6-Frame-9 Week-02/L11-Frame-9 Week-02/L12-Frame-9 Week-02/L8-Frame-9 Week-03/L15-Frame-9 Week-03/L17-Frame-9 Week-03/L21-Frame-9 Week-04/L23-Frame-9 …
+   28    1f  border-radius:50%; background:#FFFFFF; box-shadow:none
+              layout: ×28
+              frames: Urge-Hub-Score
+   28   11f  border-top:1px solid #2E2E2E; padding:14px 0
+              type: 15px 700 22px #F2F0EC×25 | 24px 700 31px #F2F0EC×3   txt: A particular account×1 | Saved material×1 | The same feed in bed×1 | You notice sooner, but c×1
+              layout: display:flex gap:16px×25 | display:flex align-items:center gap:16px×3
+              frames: Week-01/L2-Frame-4 Week-02/L11-Frame-5 Week-02/L14-Frame-10 Week-03/L16-Frame-5 Week-03/L19-Frame-4 Week-04/L23-Frame-4 Week-06/L39-Frame-4 Week-07/L45-Frame-5 Week-09/L58-Frame-5 Week-11/L72-Frame-5 …
+   26    4f  width:42px; height:42px; border-radius:21px; background:#F2F0EC
+              type: 14px 700 #111111×21   txt: Su×3 | M×3 | Tu×3 | W×3
+              svg: svg20x20 path d=M14 3a8 8 0 1 0 3 12.5A7 7 0 0  fill=#111111×1 | svg20x20 path d=M3 6v9M3 12h14v3M17 12v-3a2 2  stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×26
+              frames: Morning-Check-in-Time Nightly-Check-in-Time Settings-Check-in-Time Your-Plan
+   25   25f  width:67%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×25
+              frames: Week-01/L3-Frame-10 Week-01/L4-Frame-10 Week-01/L5-Frame-10 Week-02/L14-Frame-10 Week-02/L9-Frame-10 Week-04/L28-Frame-10 Week-05/L31-Frame-10 Week-05/L32-Frame-10 Week-05/L33-Frame-10 Week-06/L37-Frame-10 …
+   25   25f  width:33%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×25
+              frames: Week-01/L3-Frame-5 Week-01/L4-Frame-5 Week-01/L5-Frame-5 Week-02/L14-Frame-5 Week-02/L9-Frame-5 Week-04/L28-Frame-5 Week-05/L31-Frame-5 Week-05/L32-Frame-5 Week-05/L33-Frame-5 Week-06/L37-Frame-5 …
+   23   23f  width:73%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-11 Week-01/L4-Frame-11 Week-01/L5-Frame-11 Week-02/L14-Frame-11 Week-02/L9-Frame-11 Week-04/L28-Frame-11 Week-05/L31-Frame-11 Week-05/L32-Frame-11 Week-05/L33-Frame-11 Week-06/L37-Frame-11 …
+   23   23f  width:80%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-12 Week-01/L4-Frame-12 Week-01/L5-Frame-12 Week-02/L14-Frame-12 Week-02/L9-Frame-12 Week-04/L28-Frame-12 Week-05/L31-Frame-12 Week-05/L32-Frame-12 Week-05/L33-Frame-12 Week-06/L37-Frame-12 …
+   23   23f  width:87%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-13 Week-01/L4-Frame-13 Week-01/L5-Frame-13 Week-02/L14-Frame-13 Week-02/L9-Frame-13 Week-04/L28-Frame-13 Week-05/L31-Frame-13 Week-05/L32-Frame-13 Week-05/L33-Frame-13 Week-06/L37-Frame-13 …
+   23   23f  width:20%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-3 Week-01/L4-Frame-3 Week-01/L5-Frame-3 Week-02/L14-Frame-3 Week-02/L9-Frame-3 Week-04/L28-Frame-3 Week-05/L31-Frame-3 Week-05/L32-Frame-3 Week-05/L33-Frame-3 Week-06/L37-Frame-3 …
+   23   23f  width:27%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-4 Week-01/L4-Frame-4 Week-01/L5-Frame-4 Week-02/L14-Frame-4 Week-02/L9-Frame-4 Week-04/L28-Frame-4 Week-05/L31-Frame-4 Week-05/L32-Frame-4 Week-05/L33-Frame-4 Week-06/L37-Frame-4 …
+   23   23f  width:40%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-6 Week-01/L4-Frame-6 Week-01/L5-Frame-6 Week-02/L14-Frame-6 Week-02/L9-Frame-6 Week-04/L28-Frame-6 Week-05/L31-Frame-6 Week-05/L32-Frame-6 Week-05/L33-Frame-6 Week-06/L37-Frame-6 …
+   23   23f  width:60%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×23
+              frames: Week-01/L3-Frame-9 Week-01/L4-Frame-9 Week-01/L5-Frame-9 Week-02/L14-Frame-9 Week-02/L9-Frame-9 Week-04/L28-Frame-9 Week-05/L31-Frame-9 Week-05/L32-Frame-9 Week-05/L33-Frame-9 Week-06/L37-Frame-9 …
+   22    2f  width:9px; height:9px; border-radius:50%; background:#F2F0EC
+              layout: display:inline-block×22
+              frames: Urge-Overview-When Urge-Overview
+   21    4f  width:36px; height:36px; border-radius:18px; background:#F2F0EC; box-shadow:none
+              svg: svg14x14 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×21
+              layout: display:flex align-items:center justify-content:center×21
+              frames: Today-Home-II Today-Home-III Today-Home-Task Today-Home
+   21   15f  border-radius:18px; background:#1E1E1E; padding:16px 18px
+              type: 13px 700 #111111×16 | 16px 700 #F2F0EC×5   txt: B×12 | A×4 | Late at night×1 | In bed×1
+              svg: svg20x20 path d=M14 3a8 8 0 1 0 3 12.5A7 7 0 0  fill=#111111×1 | svg20x20 path d=M3 6v9M3 12h14v3M17 12v-3a2 2  stroke=#111111 fill=none×1
+              layout: display:flex align-items:flex-start gap:14px×14 | display:flex align-items:center gap:16px×5
+              frames: Your-Plan Week-02/L10-Frame-12 Week-03/L20-Frame-12 Week-04/L22-Frame-12 Week-04/L26-Frame-12 Week-06/L36-Frame-13 Week-06/L40-Frame-14 Week-06/L41-Frame-13 Week-07/L44-Frame-13 Week-08/L50-Frame-13 …
+   21   21f  width:69%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×21
+              frames: Week-01/L2-Frame-11 Week-01/L7-Frame-11 Week-02/L10-Frame-11 Week-03/L16-Frame-11 Week-03/L18-Frame-11 Week-03/L19-Frame-11 Week-03/L20-Frame-11 Week-04/L22-Frame-11 Week-04/L25-Frame-9 Week-04/L26-Frame-11 …
+   21   21f  width:31%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×21
+              frames: Week-01/L2-Frame-5 Week-01/L7-Frame-5 Week-02/L10-Frame-5 Week-03/L16-Frame-5 Week-03/L18-Frame-5 Week-03/L19-Frame-5 Week-03/L20-Frame-5 Week-04/L22-Frame-5 Week-04/L25-Frame-4 Week-04/L26-Frame-5 …
+   21   21f  width:38%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×21
+              frames: Week-01/L2-Frame-6 Week-01/L7-Frame-6 Week-02/L10-Frame-6 Week-03/L16-Frame-6 Week-03/L18-Frame-6 Week-03/L19-Frame-6 Week-03/L20-Frame-6 Week-04/L22-Frame-6 Week-04/L25-Frame-5 Week-04/L26-Frame-6 …
+   20    5f  width:6px; height:6px; border-radius:3px; background:rgba(255,255,255,0.28)
+              layout: ×20
+              frames: Urge-Hub-Now Urge-Hub-Pledges Urge-Hub-Proof Urge-Hub-Score Urge-Hub-Surfed
+   20   20f  width:44%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×20
+              frames: Week-01/L2-Frame-7 Week-01/L7-Frame-7 Week-02/L10-Frame-7 Week-03/L16-Frame-7 Week-03/L18-Frame-7 Week-03/L19-Frame-7 Week-03/L20-Frame-7 Week-04/L22-Frame-7 Week-04/L26-Frame-7 Week-05/L30-Frame-7 …
+   20   20f  width:56%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×20
+              frames: Week-01/L2-Frame-9 Week-01/L7-Frame-9 Week-02/L10-Frame-9 Week-03/L16-Frame-9 Week-03/L18-Frame-9 Week-03/L19-Frame-9 Week-03/L20-Frame-9 Week-04/L22-Frame-9 Week-04/L26-Frame-9 Week-05/L30-Frame-9 …
+   20   14f  min-width:0; border-radius:18px; background:#1E1E1E; padding:16px
+              type: 13px 700 16px 0.2px #9B968E×20   txt: What people predicted×1 | Keep searching×1 | Claims to be everything ×1 | Less clear×1
+              layout: flex:1 1 0×20
+              frames: Week-01/L6-Frame-4 Week-02/L10-Frame-5 Week-02/L12-Frame-3 Week-02/L13-Frame-6 Week-02/L8-Frame-4 Week-03/L18-Frame-5 Week-03/L20-Frame-4 Week-04/L22-Frame-7 Week-04/L26-Frame-4 Week-05/L29-Frame-6 …
+   19    7f  border-radius:20px; background:#1E1E1E
+              type: 15px 700 #F2F0EC×19   txt: Name×3 | Started VICI×3 | Morning check-in×2 | Your vow×2
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#5A574F fill=none×17
+              layout: ×19
+              frames: App-Lock Data-Privacy Edit-Profile Settings Sheet-Edit-Name Sheet-Profile-Photo Sheet-Sign-Out
+   18   18f  height:2px; background:#2E2E2E
+              layout: position:absolute left:10% right:10% top:14px×18
+              frames: Breakwater-Bronze Breakwater-Gold Breakwater-Paper Breakwater-Platinum Breakwater-Silver Detail-Bronze Detail-Gold Detail-Paper Detail-Platinum Detail-Silver …
+   18   18f  width:63%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×18
+              frames: Week-01/L2-Frame-10 Week-01/L7-Frame-10 Week-02/L10-Frame-10 Week-03/L16-Frame-10 Week-03/L18-Frame-10 Week-03/L19-Frame-10 Week-03/L20-Frame-10 Week-04/L22-Frame-10 Week-04/L26-Frame-10 Week-05/L30-Frame-10 …
+   18   18f  width:75%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×18
+              frames: Week-01/L2-Frame-12 Week-01/L7-Frame-12 Week-02/L10-Frame-12 Week-03/L16-Frame-12 Week-03/L18-Frame-12 Week-03/L19-Frame-12 Week-03/L20-Frame-12 Week-04/L22-Frame-12 Week-04/L26-Frame-12 Week-05/L30-Frame-12 …
+   18   18f  height:48px; border-radius:24px; box-shadow:inset 0 0 0 1.5px #2E2E2E; padding:0 20px
+              type: 16px 22px #9B968E×18   txt: Add a note (optional)×18
+              svg: svg16x16 path d=M3 13l1-3.5L10.5 3l2.5 2.5L6.5 stroke=#9B968E fill=none×18
+              layout: display:flex align-items:center gap:12px margin-top:32px×18
+              frames: Week-01/L2-Frame-12 Week-01/L7-Frame-12 Week-02/L13-Frame-13 Week-03/L16-Frame-12 Week-03/L18-Frame-12 Week-03/L19-Frame-12 Week-04/L28-Frame-11 Week-05/L30-Frame-12 Week-05/L35-Frame-13 Week-06/L39-Frame-13 …
+   18   18f  width:81%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×18
+              frames: Week-01/L2-Frame-13 Week-01/L7-Frame-13 Week-02/L10-Frame-13 Week-03/L16-Frame-13 Week-03/L18-Frame-13 Week-03/L19-Frame-13 Week-03/L20-Frame-13 Week-04/L22-Frame-13 Week-04/L26-Frame-13 Week-05/L30-Frame-13 …
+   18   18f  width:19%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×18
+              frames: Week-01/L2-Frame-3 Week-01/L7-Frame-3 Week-02/L10-Frame-3 Week-03/L16-Frame-3 Week-03/L18-Frame-3 Week-03/L19-Frame-3 Week-03/L20-Frame-3 Week-04/L22-Frame-3 Week-04/L26-Frame-3 Week-05/L30-Frame-3 …
+   18   18f  width:25%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×18
+              frames: Week-01/L2-Frame-4 Week-01/L7-Frame-4 Week-02/L10-Frame-4 Week-03/L16-Frame-4 Week-03/L18-Frame-4 Week-03/L19-Frame-4 Week-03/L20-Frame-4 Week-04/L22-Frame-4 Week-04/L26-Frame-4 Week-05/L30-Frame-4 …
+   15    7f  width:12px; height:12px; border-radius:6px; background:#F2F0EC
+              layout: ×9 | margin-top:5px×4
+              frames: Lesson-Scroll-5 Urge-Overview Week-01/L1-Frame-5 Week-04/L28-Frame-3 Week-05/L35-Frame-5 Week-06/L40-Frame-6 Week-11/L75-Frame-8
+   15    4f  height:52px; border-top:1px solid #2E2E2E; padding:0 2px
+              type: 15px 700 #F2F0EC×15   txt: Yesterday×1 | Friday×1 | Thursday×1 | Wednesday×1
+              layout: display:flex align-items:center justify-content:space-between gap:14px×15
+              frames: Log-Check-ins Log-Reports Log-Urges Urge-Overview-Summary
+   15    6f  height:48px; border-radius:24px; background:#F2F0EC; box-shadow:none; padding:0 20px
+              type: 15px 400 #111111×15   txt: Blocking sites or apps×1 | Going cold turkey×1 | Late at night×1 | When I can’t sleep×1
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×15
+              layout: display:flex align-items:center gap:8px×15
+              frames: V3-Q17 V3-Q5 V3-Q6 V3-Q7 What-it-affects What-starts-it
+   14   14f  height:44px; border-radius:22px; background:#1E1E1E; padding:4px
+              type: 13px 700 #9B968E×8 | 13px 700 #111111×6   txt: Score×4 | Overview×4 | Earned×3 | Urges×3
+              layout: display:flex×14
+              frames: Album-Earned-II Log-Check-ins Log-Reports Log-Urges Medallions-Still-To-Earn Medallions Settings-Weekly-Report Urge-Overview-Mood Urge-Overview-Summary Urge-Overview-When …
+   14   14f  height:36px; border-radius:18px; background:#F2F0EC
+              type: 13px 700 #111111×14   txt: Earned×2 | Urges×2 | Score×2 | Check-ins×1
+              layout: display:flex align-items:center justify-content:center flex:1×14
+              frames: Album-Earned-II Log-Check-ins Log-Reports Log-Urges Medallions-Still-To-Earn Medallions Settings-Weekly-Report Urge-Overview-Mood Urge-Overview-Summary Urge-Overview-When …
+   14    5f  width:12px; height:12px; border-radius:6px; border:2px solid #9B968E
+              layout: margin-top:5px×14
+              frames: Lesson-Scroll-5 Week-01/L1-Frame-5 Week-02/L9-Frame-7 Week-04/L28-Frame-3 Week-06/L40-Frame-6
+   13    3f  height:62px; border-radius:20px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              type: 16px 700 #F2F0EC×13   txt: Tense×1 | Hopeful×1 | Flat×1 | Proud×1
+              layout: display:flex align-items:center justify-content:center×13
+              frames: Checkin-Emotions Checkin-Reasons Morning-Task-Check
+   13    5f  width:2px; background:#5A574F
+              layout: margin-top:5px flex:1×13
+              frames: Lesson-Scroll-5 Week-01/L1-Frame-5 Week-02/L9-Frame-7 Week-04/L28-Frame-3 Week-06/L40-Frame-6
+   11   11f  height:32px; border-radius:16px; background:#1E1E1E; padding:0 14px
+              type: 13px 700 #F2F0EC×11   txt: Jul 14–20×4 | Last 30 days×4 | Navigator II×3
+              layout: display:inline-flex align-items:center×8 | display:inline-flex align-items:center gap:8px×3
+              frames: Score-Detail-Moves Score-Detail-Ranks Score-Detail Settings-Weekly-Report Urge-Overview-Mood Urge-Overview-Summary Urge-Overview-When Urge-Overview Weekly-Report-Days Weekly-Report-Urges …
+   11   11f  border-radius:20px; background:#1E1E1E; padding:6px 20px
+              type: 13px 700 16px 0.2px #9B968E×8 | 15px 700 22px #F2F0EC×2 | 24px 700 31px #F2F0EC×1   txt: If you…×2 | What you use×1 | What happens×1 | After a missed lesson×1
+              layout: ×11
+              frames: Week-01/L2-Frame-4 Week-02/L11-Frame-5 Week-02/L14-Frame-10 Week-03/L16-Frame-5 Week-03/L19-Frame-4 Week-04/L23-Frame-4 Week-06/L39-Frame-4 Week-07/L45-Frame-5 Week-09/L58-Frame-5 Week-11/L72-Frame-5 …
+   11   11f  width:59%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-10 Week-05/L35-Frame-10 Week-06/L36-Frame-10 Week-06/L39-Frame-10 Week-06/L41-Frame-10 Week-07/L44-Frame-10 Week-07/L46-Frame-10 Week-08/L50-Frame-10 Week-09/L58-Frame-10 Week-12/L81-Frame-10 …
+   11   11f  width:65%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-11 Week-05/L35-Frame-11 Week-06/L36-Frame-11 Week-06/L39-Frame-11 Week-06/L41-Frame-11 Week-07/L44-Frame-11 Week-07/L46-Frame-11 Week-08/L50-Frame-11 Week-09/L58-Frame-11 Week-12/L81-Frame-11 …
+   11   11f  width:76%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-13 Week-05/L35-Frame-13 Week-06/L36-Frame-13 Week-06/L39-Frame-13 Week-06/L41-Frame-13 Week-07/L44-Frame-13 Week-07/L46-Frame-13 Week-08/L50-Frame-13 Week-09/L58-Frame-13 Week-12/L81-Frame-13 …
+   11   11f  width:82%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-14 Week-05/L35-Frame-14 Week-06/L36-Frame-14 Week-06/L39-Frame-14 Week-06/L41-Frame-14 Week-07/L44-Frame-14 Week-07/L46-Frame-14 Week-08/L50-Frame-14 Week-09/L58-Frame-14 Week-12/L81-Frame-14 …
+   11   11f  width:12%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-2 Week-05/L35-Frame-2 Week-06/L36-Frame-2 Week-06/L39-Frame-2 Week-06/L41-Frame-2 Week-07/L44-Frame-2 Week-07/L46-Frame-2 Week-08/L50-Frame-2 Week-09/L58-Frame-2 Week-12/L81-Frame-2 …
+   11   11f  width:18%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-3 Week-05/L35-Frame-3 Week-06/L36-Frame-3 Week-06/L39-Frame-3 Week-06/L41-Frame-3 Week-07/L44-Frame-3 Week-07/L46-Frame-3 Week-08/L50-Frame-3 Week-09/L58-Frame-3 Week-12/L81-Frame-3 …
+   11   11f  width:24%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-4 Week-05/L35-Frame-4 Week-06/L36-Frame-4 Week-06/L39-Frame-4 Week-06/L41-Frame-4 Week-07/L44-Frame-4 Week-07/L46-Frame-4 Week-08/L50-Frame-4 Week-09/L58-Frame-4 Week-12/L81-Frame-4 …
+   11   11f  width:35%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-6 Week-05/L35-Frame-6 Week-06/L36-Frame-6 Week-06/L39-Frame-6 Week-06/L41-Frame-6 Week-07/L44-Frame-6 Week-07/L46-Frame-6 Week-08/L50-Frame-6 Week-09/L58-Frame-6 Week-12/L81-Frame-6 …
+   11   11f  width:41%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×11
+              frames: Week-02/L13-Frame-7 Week-05/L35-Frame-7 Week-06/L36-Frame-7 Week-06/L39-Frame-7 Week-06/L41-Frame-7 Week-07/L44-Frame-7 Week-07/L46-Frame-7 Week-08/L50-Frame-7 Week-09/L58-Frame-7 Week-12/L81-Frame-7 …
+   10   10f  height:58px; border-radius:29px; background:#FFFFFF
+              type: 16px 700 0.1px #111111×10   txt: Breathe×5 | Done×2 | Next×1 | Begin×1
+              layout: display:flex align-items:center justify-content:center position:absolute left:24px right:24px bottom:96px×6 | display:flex align-items:center justify-content:center position:absolute left:24px right:24px bottom:48px×4
+              frames: Cost-By-Age-80 Night-4-Closed Night-Check-in-Cover Slip-Third Urge-Hub-Breathe Urge-Hub-Now Urge-Hub-Pledges Urge-Hub-Proof Urge-Hub-Score Urge-Hub-Surfed
+   10   10f  height:58px; border-radius:18px; background:#F2F0EC; box-shadow:none; padding:0 22px
+              type: 15px 400 #111111×10   txt: A few times a week×1 | Sometimes×1 | A few days a week×1 | Stop completely×1
+              layout: display:flex align-items:center×10
+              frames: V3-Q1 V3-Q10 V3-Q13 V3-Q15 V3-Q16 V3-Q2 V3-Q21 V3-Q26-Gender V3-Q3 V3-Q3b
+    9    5f  height:48px; border-radius:24px; background:#F2F0EC; padding:0 20px
+              type: 15px 400 #111111×9   txt: Late night×3 | Boredom×2 | Phone in bed×2 | Lonely×1
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×9
+              layout: display:flex align-items:center gap:8px×9
+              frames: Lapse-Trigger SOS-Feeling-Picker SOS-Reason-Picker Slip-Fed Urge-Log-Trigger
+    9    6f  height:44px; border-radius:22px; background:#1E1E1E; padding:0 18px
+              type: 14px 700 #F2F0EC×6 | 15px 700 #F2F0EC×3   txt: Earlier today×3 | Yesterday×3 | Months×3
+              svg: svg14x14 path d=M2 5l5 5 5-5 stroke=#F2F0EC fill=none×3
+              layout: display:flex align-items:center×6 | display:flex align-items:center gap:10px×3
+              frames: Lapse-When Score-Detail-Moves Score-Detail-Ranks Score-Detail Slip-When Urge-Log-When
+    9    9f  border-radius:20px; background:#1E1E1E; padding:20px
+              type: 13px 700 16px 0.2px #9B968E×6 | 15px 400 22px #F2F0EC×2 | 13px 700 16px #111111×1   txt: A familiar evening×2 | After a late-night slip×1 | Close, move, begin×1 | Finish work×1
+              svg: svg289x96 path d=M0 84 C28 82 52 14 96 10 C134   fill=#5A574F×1
+              layout: ×9
+              frames: Lesson-Scroll-5 Week-01/L1-Frame-5 Week-02/L9-Frame-7 Week-03/L15-Frame-5 Week-04/L28-Frame-3 Week-05/L35-Frame-5 Week-06/L40-Frame-6 Week-06/L41-Frame-4 Week-11/L75-Frame-8
+    9    2f  width:22px; height:22px; border-radius:11px; background:#F2F0EC
+              svg: svg11x11 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×9
+              layout: display:flex align-items:center justify-content:center×9
+              frames: Morning-1-Yesterday Night-2-Record
+    8    8f  min-width:0; border-radius:18px; background:#1E1E1E; box-shadow:inset 0 0 0 1.5px #F2F0EC; padding:16px
+              type: 13px 700 16px 0.2px #9B968E×8   txt: What commuters reported×1 | Close it now×1 | Describes something you ×1 | Clear×1
+              layout: flex:1 1 0×8
+              frames: Week-01/L6-Frame-4 Week-02/L10-Frame-5 Week-02/L12-Frame-3 Week-02/L13-Frame-6 Week-05/L31-Frame-7 Week-06/L38-Frame-8 Week-06/L42-Frame-6 Week-10/L66-Frame-3
+    8    2f  width:12px; height:12px; border-radius:6px; background:#1E1E1E; border:2px solid #9B968E
+              layout: position:absolute left:80.7px top:0×2 | position:absolute left:138.5px top:0×2
+              frames: Week-05/L35-Frame-5 Week-11/L75-Frame-8
+    7    3f  border-top:1px solid #2E2E2E; padding:16px 20px
+              type: 14px 700 #9B968E×7   txt: Set off by×3 | Changed×1 | What was going on×1 | Change for next time×1
+              layout: display:flex align-items:flex-start justify-content:space-between gap:16px×7
+              frames: Lapse-Done Slip-Logged Urge-Log-Done
+    7    2f  width:34px; height:34px; border-radius:17px; background:#F2F0EC
+              type: 14px 700 #111111×3   txt: 1×3
+              svg: svg14x14 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×4
+              layout: display:flex align-items:center justify-content:center×7
+              frames: Log-Urges Paywall
+    7    2f  height:58px; border-top:1px solid #2E2E2E; padding:0 2px
+              type: 16px 400 #F2F0EC×7   txt: One urge surfed×2 | 0 slips×2 | Pledge kept×1 | Part III finished×1
+              svg: svg11x11 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×7
+              layout: display:flex align-items:center gap:14px×7
+              frames: Morning-1-Yesterday Night-2-Record
+    7    2f  height:58px; border-radius:18px; background:#1E1E1E; padding:0 22px
+              type: 15px 400 #F2F0EC×7   txt: No×1 | Yes×1 | I’m already watching aga×1 | Surfed with the timer×1
+              layout: display:flex align-items:center×7
+              frames: Slip-Urge-Now Urge-Log-Outcome
+    6    4f  height:44px; border-radius:22px; background:#F2F0EC; padding:0 18px
+              type: 14px 700 #111111×3 | 15px 700 #111111×3   txt: Just now×3 | Late at night×1 | Home alone×1 | Phone in bed×1
+              layout: display:flex align-items:center×3 | display:inline-flex align-items:center×3
+              frames: Lapse-When Slip-When Urge-Log-When Where-We-d-Start
+    6    6f  height:44px; border-radius:14px; background:#1E1E1E
+              layout: position:absolute left:40px right:40px top:88px×6
+              frames: Lapse-When Morning-Check-in-Time Nightly-Check-in-Time Settings-Check-in-Time Slip-When Urge-Log-When
+    6    1f  width:40px; height:40px; border-radius:20px; background:#F2F0EC
+              svg: svg16x16 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×6
+              layout: display:flex align-items:center justify-content:center×6
+              frames: Weekly-Report-Days
+    5    3f  height:62px; border-radius:20px; background:#F2F0EC; box-shadow:none
+              type: 16px 700 #111111×5   txt: Calm×1 | Tired×1 | School / work×1 | Loneliness×1
+              layout: display:flex align-items:center justify-content:center×5
+              frames: Checkin-Emotions Checkin-Reasons Morning-Task-Check
+    5    5f  width:8px; height:8px; border-radius:4px; background:#F2F0EC
+              layout: ×5
+              frames: Enlisting-Aegis SOS-Reassess Score-Detail-Moves Score-Detail-Ranks Score-Detail
+    5    4f  border-radius:22px; background:#1E1E1E
+              type: 14px 700 #9B968E×3 | 16px 400 #F2F0EC×2   txt: When×2 | Change plan×1 | Payment method×1 | Intensity×1
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#9B968E fill=none×2
+              layout: ×5
+              frames: Lapse-Done Manage-Subscription Slip-Logged Urge-Log-Done
+    5    5f  height:24px; border-radius:12px; background:#F2F0EC; padding:0 10px
+              type: 13px 700 16px #111111×5   txt: Change this part×2 | Close, move, begin×1 | An earlier point to act×1 | The thought can stay×1
+              layout: display:flex align-items:center×4 | display:flex align-items:center position:absolute left:28px top:0×1
+              frames: Lesson-Scroll-5 Week-01/L1-Frame-5 Week-03/L15-Frame-5 Week-04/L28-Frame-3 Week-06/L40-Frame-6
+    5    1f  width:29.6px; height:29.6px; border-radius:50%; background:#F2F0EC
+              layout: ×5
+              frames: Log-Check-ins
+    5    3f  height:1px; background:#2E2E2E
+              layout: flex:1×4 | ×1
+              frames: Login Urge-Overview Welcome-Back
+    5    5f  width:6px; height:6px; border-radius:3px; background:#FFFFFF
+              layout: ×5
+              frames: Urge-Hub-Now Urge-Hub-Pledges Urge-Hub-Proof Urge-Hub-Score Urge-Hub-Surfed
+    5    2f  height:46px; border-top:1px solid #2E2E2E; padding:0 2px
+              type: 15px 700 #F2F0EC×5   txt: Desk×1 | Bathroom×1 | Late night×1 | Boredom×1
+              layout: display:flex align-items:center gap:14px×5
+              frames: Urge-Overview-When Urge-Overview
+    5    1f  width:18px; height:18px; border-radius:9px; background:#F2F0EC; box-shadow:none
+              layout: ×5
+              frames: Weekly-Report-Days
+    4    2f  width:50px; height:30px; border-radius:15px; background:#F2F0EC
+              layout: position:relative×4
+              frames: App-Lock Data-Privacy
+    4    2f  width:24px; height:24px; border-radius:12px; background:#1E1E1E
+              layout: position:absolute right:3px top:3px×4
+              frames: App-Lock Data-Privacy
+    4    4f  background:rgba(0,0,0,0.68)
+              layout: position:absolute×4
+              frames: Change-Pledge-Sheet Sheet-Edit-Name Sheet-Profile-Photo Sheet-Sign-Out
+    4    4f  border-radius:28px 28px 0 0; background:#171717
+              type: 22px 700 28px -0.6px #F2F0EC×2 | 26px 700 33px -0.6px #F2F0EC×1 | 24px 700 30px -0.6px #F2F0EC×1   txt: Change the pledge×1 | Name×1 | Profile photo×1 | Sign out?×1
+              layout: position:absolute left:0 right:0 top:120px bottom:0×1 | position:absolute left:0 right:0 top:420px bottom:0×1
+              frames: Change-Pledge-Sheet Sheet-Edit-Name Sheet-Profile-Photo Sheet-Sign-Out
+    4    4f  width:40px; height:4px; border-radius:2px; background:#2E2E2E
+              layout: position:absolute left:50% top:10px×4
+              frames: Change-Pledge-Sheet Sheet-Edit-Name Sheet-Profile-Photo Sheet-Sign-Out
+    4    1f  height:60px; border-radius:18px; background:#1E1E1E; padding:0 18px 0 16px
+              type: 16px 400 #F2F0EC×4   txt: In bed×1 | A public space×1 | At work or school×1 | Out and about×1
+              svg: svg20x20 path d=M3 15V9h14v6M3 12h14M5 9V6h4v3 stroke=currentColor fill=none×1 | svg20x20 path d=M6 9a2.5 2.5 0 1 0 0-5 2.5 2.5 stroke=currentColor fill=none×1
+              layout: display:flex align-items:center gap:14px×4
+              frames: Cue-Hue-Picker
+    4    1f  width:34px; height:34px; border-radius:50%; background:transparent; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg20x20 path d=M3 15V9h14v6M3 12h14M5 9V6h4v3 stroke=currentColor fill=none×1 | svg20x20 path d=M6 9a2.5 2.5 0 1 0 0-5 2.5 2.5 stroke=currentColor fill=none×1
+              layout: display:flex align-items:center justify-content:center×4
+              frames: Cue-Hue-Picker
+    4    1f  width:8px; height:8px; border-radius:4px; background:#2E2E2E
+              layout: ×4
+              frames: Log-Urges
+    4    2f  height:58px; border-radius:29px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              type: 17px 700 #F2F0EC×4   txt: Continue with Google×2 | Continue with email×1 | Sign in with email×1
+              svg: svg19x19 path d=M24 9.5c3.54 0 6.71 1.22 9.21   fill=#EA4335×2
+              layout: display:flex align-items:center justify-content:center gap:10px×4
+              frames: Login Welcome-Back
+    4    4f  border-radius:24px; background:#1E1E1E; padding:24px 24px 20px
+              type: 13px 700 #9B968E×4   txt: Your pledge×4
+              layout: ×4
+              frames: Morning-Pledge-Signed Morning-Resign-Pledge Relapse-Resign Slip-Pledge
+    4    2f  border-left:2px dashed #5A574F
+              layout: flex:1×4
+              frames: Paywall-Rescue Score-Detail-Ranks
+    4    4f  width:8px; height:8px; border-radius:4px; background:#1E1E1E
+              layout: ×4
+              frames: SOS-Reassess SOS-Strength Score-Detail-Ranks Urge-Log-Intensity
+    4    4f  height:36px; border-radius:18px; background:#1E1E1E; padding:0 12px 0 10px
+              type: 15px 700 #F2F0EC×4   txt: 41×4
+              svg: svg16x18 path d=M8 1c1 3 4 4.5 4 8.5A4 4 0 0 1  fill=#F2F0EC×4
+              layout: display:flex align-items:center gap:6px×4
+              frames: Today-Home-II Today-Home-III Today-Home-Task Today-Home
+    4    4f  width:40px; height:40px; border-radius:20px; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg22x22 circle stroke=#F2F0EC fill=none×4
+              layout: display:flex align-items:center justify-content:center×4
+              frames: Today-Home-II Today-Home-III Today-Home-Task Today-Home
+    4    4f  width:36px; height:36px; border-radius:18px; background:transparent; box-shadow:0 0 0 1.5px #2E2E2E
+              type: 14px 700 #9B968E×4   txt: 19×4
+              layout: display:flex align-items:center justify-content:center×4
+              frames: Today-Home-II Today-Home-III Today-Home-Task Today-Home
+    4    2f  height:150px; border-radius:24px; background:#1E1E1E; padding:18px
+              type: 12px 700 #9B968E×4   txt: Lesson 5×2 | Ride it out×2
+              svg: svg28x28 path d=M13 6.5C11 5 8 4.5 4 4.5v15c4  stroke=#F2F0EC fill=none×2 | svg28x28 path d=M3 15c3 0 3-4 6-4s3 4 6 4 3-4  stroke=#F2F0EC fill=none×2
+              layout: display:flex justify-content:space-between flex-direction:column flex:1×4
+              frames: Today-Home-II Today-Home-Task
+    4    1f  height:6px; border-radius:3px; background:rgba(255,255,255,0.15)
+              layout: position:relative×4
+              frames: Urge-Hub-Surfed
+    4    2f  width:28px; height:28px; border-radius:8px; background:#F2F0EC
+              type: 13px 700 #111111×4   txt: A×2 | B×2
+              layout: display:flex align-items:center justify-content:center×4
+              frames: Week-07/L44-Frame-13 Week-12/L80-Frame-14
+    3    3f  width:2px; height:22px; background:#F2F0EC
+              layout: display:inline-block×3
+              frames: Change-Pledge-Sheet SOS-Afterward Sheet-Edit-Name
+    3    2f  width:26px; height:26px; border-radius:13px; background:#F2F0EC; box-shadow:none
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1 | svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Enlisting-Aegis Score-Detail-Ranks
+    3    2f  width:26px; height:26px; border-radius:13px; background:#1E1E1E; box-shadow:0 0 0 1.5px #F2F0EC
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Enlisting-Aegis Score-Detail-Ranks
+    3    3f  width:84px; height:84px; border-radius:42px; background:#F2F0EC
+              svg: svg36x36 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×3
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Lapse-Done Slip-Logged Urge-Log-Done
+    3    3f  height:44px; border-radius:14px; background:#1E1E1E; padding:0 6px 0 18px
+              type: 15px 700 #F2F0EC×3   txt: Tonight, Tue Jul 22×3
+              layout: display:flex align-items:center justify-content:space-between×3
+              frames: Lapse-When Slip-When Urge-Log-When
+    3    3f  height:32px; border-radius:16px; background:#0D0D0D; padding:0 14px
+              type: 13px 700 #F2F0EC×3   txt: Change×3
+              layout: display:flex align-items:center×3
+              frames: Lapse-When Slip-When Urge-Log-When
+    3    2f  width:6px; height:6px; border-radius:3px; background:#F2F0EC
+              layout: display:inline-block×3
+              frames: Log-Urges Urge-Overview-Summary
+    3    3f  border-top:1px solid #2E2E2E
+              type: 15px #9B968E×1 | 13px 700 #9B968E×1 | 12px 700 17px #B5B0A8×1   txt: Next charge×1 | Net this month×1 | Full 12-week programme×1
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: display:flex justify-content:space-between margin-top:20px×1 | display:flex align-items:baseline justify-content:space-between margin-top:12px×1
+              frames: Manage-Subscription Score-Detail-Moves Yearly-Drop
+    3    1f  height:60px; border-top:1px solid #2E2E2E; padding:0 20px
+              type: 16px 400 #F2F0EC×3   txt: Redeem a code×1 | Restore purchases×1 | Receipts &amp; invoices×1
+              svg: svg14x14 path d=M5 2l5 5-5 5 stroke=#9B968E fill=none×3
+              layout: display:flex align-items:center justify-content:space-between gap:12px×3
+              frames: Manage-Subscription
+    3    3f  height:44px; border-bottom:1.5px solid #F2F0EC
+              type: 28px 700 italic #F2F0EC×3   txt: Jerry×3
+              layout: display:flex align-items:flex-end×3
+              frames: Morning-Pledge-Signed Relapse-Resign Slip-Pledge
+    3    3f  border-radius:24px; background:#1E1E1E; padding:22px 22px 24px
+              type: 13px 700 #9B968E×2 | 15px 700 #FFFFFF×1   txt: The challenge×1 | Thu, 3:10 pm×1 | Yearly access×1
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: ×3
+              frames: SOS-Challenge Urge-Hub-Surfed Yearly-Drop
+    3    3f  width:46px; height:46px; border-radius:15px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:flex-start justify-content:center×3
+              frames: SOS-Reassess SOS-Strength Urge-Log-Intensity
+    3    3f  width:46px; height:98px; border-radius:15px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:flex-start justify-content:center×3
+              frames: SOS-Reassess SOS-Strength Urge-Log-Intensity
+    3    3f  width:46px; height:150px; border-radius:15px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:flex-start justify-content:center×3
+              frames: SOS-Reassess SOS-Strength Urge-Log-Intensity
+    3    2f  height:44px; border-radius:22px; background:#1E1E1E; padding:0 18px 0 8px
+              type: 15px 700 #F2F0EC×3   txt: Logged as ridden out×1 | Fine×1 | Low energy×1
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1 | svg14x14 path d=M8 1L2 8h5l-1 5 6-7H7z  fill=#F2F0EC×1
+              layout: display:flex align-items:center gap:10px×2 | display:inline-flex align-items:center gap:10px×1
+              frames: Surf-Complete Today-Home
+    3    3f  width:36px; height:36px; border-radius:18px; background:transparent; box-shadow:0 0 0 1.5px #F2F0EC
+              type: 14px 700 #F2F0EC×3   txt: 18×3
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Today-Home-II Today-Home-Task Today-Home
+    3    1f  width:42px; height:42px; border-radius:21px; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg18x18 path d=M3 9h12M9 3v12 stroke=#F2F0EC fill=none×1 | svg18x18 path d=M9 3l1.8 3.8 4.2.6-3 3 .7 4.2L stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Today-Home-III
+    3    1f  height:36px; border-radius:18px; background:#1E1E1E; box-shadow:0 0 0 1px rgba(255,255,255,0.15); padding:0 14px
+              type: 13px 700 #FFFFFF×3   txt: Bored×1 | Relationship×1 | Work or school×1
+              layout: display:inline-flex align-items:center×3
+              frames: Urge-Hub-Now
+    3    1f  height:64px; border-radius:32px; background:#F2F0EC
+              type: 16px 700 #111111×3   txt: Focus×1 | Sleep×1 | Confidence×1
+              layout: display:flex align-items:center justify-content:center×3
+              frames: What-You-Want-Back
+    3    1f  width:32px; height:32px; border-radius:16px; background:#F2F0EC
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×3
+              layout: display:flex align-items:center justify-content:center×3
+              frames: Yearly-Drop
+    3    3f  width:8%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-1 Week-05/L29-Frame-1 Week-06/L42-Frame-1
+    3    3f  width:77%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-10 Week-05/L29-Frame-10 Week-06/L42-Frame-10
+    3    3f  width:85%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-11 Week-05/L29-Frame-11 Week-06/L42-Frame-11
+    3    3f  width:92%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-12 Week-05/L29-Frame-12 Week-06/L42-Frame-12
+    3    3f  width:15%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-2 Week-05/L29-Frame-2 Week-06/L42-Frame-2
+    3    3f  width:23%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-3 Week-05/L29-Frame-3 Week-06/L42-Frame-3
+    3    3f  width:46%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-6 Week-05/L29-Frame-6 Week-06/L42-Frame-6
+    3    3f  width:54%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-7 Week-05/L29-Frame-7 Week-06/L42-Frame-7
+    3    3f  width:62%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×3
+              frames: Week-04/L25-Frame-8 Week-05/L29-Frame-8 Week-06/L42-Frame-8
+    2    2f  width:20.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×2
+              frames: Breakwater-Bronze Detail-Bronze
+    2    2f  width:60.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×2
+              frames: Breakwater-Gold Detail-Gold
+    2    2f  width:80.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×2
+              frames: Breakwater-Platinum Detail-Platinum
+    2    2f  width:40.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×2
+              frames: Breakwater-Silver Detail-Silver
+    2    2f  width:10px; height:10px; border-radius:5px; background:#1E1E1E
+              layout: ×2
+              frames: Cue-Hue-Picker Log-Chooser
+    2    2f  border-radius:26px; background:#1E1E1E
+              type: 22px 700 -0.3px #F2F0EC×2   txt: Dear Sam,×2
+              svg: svg44x44 circle  fill=#F2F0EC×1
+              layout: position:absolute left:16px right:16px top:112px bottom:150px×2
+              frames: Letter-Read Medallion-Letter
+    2    2f  height:70px; background:linear-gradient(180deg, rgba(30,30,30,0), #111111)
+              layout: position:absolute left:0 right:0 bottom:0×2
+              frames: Letter-Read Medallion-Letter
+    2    1f  width:25.200000000000003px; height:25.200000000000003px; border-radius:50%; background:#F2F0EC
+              layout: ×2
+              frames: Log-Check-ins
+    2    1f  height:84px; border-radius:22px; background:#1E1E1E; padding:0 20px
+              type: 17px 700 #F2F0EC×2   txt: Daily check-in×1 | A lapse×1
+              svg: svg22x22 path d=M11 3v3M11 16v3M3 11h3M16 11h3 stroke=#F2F0EC fill=none×1 | svg22x22 path d=M3 12c3 0 5-4 8-4s3 8 6 8 2-4  stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center gap:16px×2
+              frames: Log-Chooser
+    2    1f  width:44px; height:44px; border-radius:50%; background:transparent; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg22x22 path d=M11 3v3M11 16v3M3 11h3M16 11h3 stroke=#F2F0EC fill=none×1 | svg22x22 path d=M3 12c3 0 5-4 8-4s3 8 6 8 2-4  stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center justify-content:center×2
+              frames: Log-Chooser
+    2    2f  height:58px; border-radius:29px; background:#F2F0EC; box-shadow:none
+              type: 17px 700 #111111×2   txt: Continue with Apple×2
+              svg: svg16x19 path d=M13.3 10c0-2.5 2-3.6 2.1-3.7-1  fill=#111111×2
+              layout: display:flex align-items:center justify-content:center gap:10px×2
+              frames: Login Welcome-Back
+    2    2f  border-radius:24px; background:#1E1E1E; padding:22px 22px
+              type: 24px 700 -0.5px #F2F0EC×1 | 13px 700 #9B968E×1   txt: Yearly×1 | Yesterday×1
+              layout: ×2
+              frames: Manage-Subscription Morning-Task-Check
+    2    2f  height:28px; border-radius:14px; background:#F2F0EC; padding:0 12px
+              type: 12px 700 #111111×2   txt: Active×1 | Save 74%×1
+              layout: display:flex align-items:center×1 | display:inline-flex align-items:center×1
+              frames: Manage-Subscription Yearly-Drop
+    2    2f  width:132px; height:132px; border-radius:66px; background:#F2F0EC
+              svg: svg56x56 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×2
+              layout: display:flex align-items:center justify-content:center×2
+              frames: Morning-5-Done Paywall-Confirmed
+    2    2f  width:48px; height:48px; border-radius:24px; background:#34322F; box-shadow:inset 0 0 0 1.5px #45423E
+              layout: ×2
+              frames: Morning-Feeling Night-1-Mood
+    2    2f  width:48px; height:48px; border-radius:24px; background:#5A5751; box-shadow:inset 0 0 0 1.5px #45423E
+              layout: ×2
+              frames: Morning-Feeling Night-1-Mood
+    2    2f  width:64px; height:64px; border-radius:32px; background:#8A857D; box-shadow:0 0 0 4px #0D0D0D, 0 0 0 6px #F2F0EC
+              layout: ×2
+              frames: Morning-Feeling Night-1-Mood
+    2    2f  width:48px; height:48px; border-radius:24px; background:#BAB5AD
+              layout: ×2
+              frames: Morning-Feeling Night-1-Mood
+    2    2f  width:48px; height:48px; border-radius:24px; background:#F2F0EC
+              layout: ×2
+              frames: Morning-Feeling Night-1-Mood
+    2    1f  width:22px; height:22px; border-radius:11px; background:#1E1E1E; box-shadow:0 0 0 1.5px #F2F0EC
+              layout: display:flex align-items:center justify-content:center×2
+              frames: Paywall-Rescue
+    2    1f  border-radius:20px; background:#1E1E1E; box-shadow:0 1px 2px rgba(0,0,0,0.04); padding:16px 18px
+              type: 15px 700 #F2F0EC×2   txt: Morning check-in×1 | Late night ahead×1
+              layout: display:flex align-items:flex-start gap:14px×2
+              frames: Reminders-Setup
+    2    1f  border-radius:10px
+              layout: ×2
+              frames: Reminders-Setup
+    2    2f  width:46px; height:72px; border-radius:15px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:flex-start justify-content:center×2
+              frames: SOS-Strength Urge-Log-Intensity
+    2    2f  width:46px; height:124px; border-radius:15px; background:#F2F0EC; box-shadow:none
+              layout: display:flex align-items:flex-start justify-content:center×2
+              frames: SOS-Strength Urge-Log-Intensity
+    2    2f  height:58px; border-radius:18px; background:#F2F0EC; padding:0 22px
+              type: 15px 400 #111111×2   txt: A little×1 | Rode it out×1
+              layout: display:flex align-items:center×2
+              frames: Slip-Urge-Now Urge-Log-Outcome
+    2    1f  width:24px; height:3px; border-radius:2px; background:transparent
+              layout: margin-top:6px×2
+              frames: Urge-Hub-Breathe
+    2    1f  width:12px; height:29px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×2
+              frames: Urge-Hub-Proof
+    2    1f  border-radius:50%; background:transparent; box-shadow:0 0 0 1.5px rgba(255,255,255,0.62)
+              layout: ×2
+              frames: Urge-Hub-Score
+    2    1f  width:200px; height:1.5px; background:#F2F0EC
+              layout: ×2
+              frames: V3-Q25-Age
+    2    1f  width:18px; height:18px; border-radius:9px; background:transparent; box-shadow:0 0 0 1.5px #2E2E2E inset
+              layout: ×2
+              frames: Weekly-Report-Days
+    2    1f  height:56px; border-top:1px solid #2E2E2E; padding:0 2px
+              type: 15px 700 #F2F0EC×2   txt: Thu, 3:10 pm×1 | Fri, 9:05 pm×1
+              layout: display:flex align-items:center justify-content:space-between gap:14px×2
+              frames: Weekly-Report-Urges
+    2    2f  height:2px; background:#5A574F
+              layout: position:absolute left:28.9px right:28.9px top:5px×2
+              frames: Week-05/L35-Frame-5 Week-11/L75-Frame-8
+    2    2f  width:61%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-11 Week-12/L80-Frame-11
+    2    2f  width:72%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-13 Week-12/L80-Frame-13
+    2    2f  width:78%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-14 Week-12/L80-Frame-14
+    2    2f  width:83%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-15 Week-12/L80-Frame-15
+    2    2f  width:89%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-16 Week-12/L80-Frame-16
+    2    2f  width:11%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-2 Week-12/L80-Frame-2
+    2    2f  width:17%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-3 Week-12/L80-Frame-3
+    2    2f  width:22%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-4 Week-12/L80-Frame-4
+    2    2f  width:28%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-5 Week-12/L80-Frame-5
+    2    2f  width:39%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×2
+              frames: Week-06/L40-Frame-7 Week-12/L80-Frame-7
+    2    1f  height:8px; border-radius:4px; background:#2E2E2E
+              layout: margin-top:8px×2
+              frames: Week-06/L41-Frame-4
+    1    1f  width:76px; height:76px; border-radius:50%; background:#F2F0EC; box-shadow:none
+              svg: svg30x30 rect  fill=#111111×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: App-Lock
+    1    1f  min-height:100px; border-radius:20px; background:#1E1E1E; padding:20px 22px
+              type: 20px 700 29px #F2F0EC×1   txt: Phone stays out of the b×1
+              layout: ×1
+              frames: Change-Pledge-Sheet
+    1    1f  height:230px; background:linear-gradient(180deg, #111111 0%, #111111 62%, rgba(17,17,17,0) 100%)
+              layout: position:absolute left:0 right:0 top:96px×1
+              frames: Cost-By-Age-80
+    1    1f  width:12px; height:12px; border-radius:6px; background:#0D0D0D; box-shadow:0 0 0 1.5px #F2F0EC
+              layout: ×1
+              frames: Cost-Next-30
+    1    1f  width:12px; height:12px; border-radius:6px; background:#1E1E1E; box-shadow:0 0 0 1.5px #5A574F
+              layout: ×1
+              frames: Cost-Next-30
+    1    1f  height:60px; border-radius:18px; background:#F2F0EC; padding:0 18px 0 16px
+              type: 16px 400 #111111×1   txt: Somewhere private×1
+              svg: svg20x20 path d=M4 17V8l6-5 6 5v9M8 17v-5h4v5 stroke=currentColor fill=none×1
+              layout: display:flex align-items:center gap:14px×1
+              frames: Cue-Hue-Picker
+    1    1f  width:34px; height:34px; border-radius:50%; background:transparent; box-shadow:0 0 0 1.5px rgba(17,17,17,0.3)
+              svg: svg20x20 path d=M4 17V8l6-5 6 5v9M8 17v-5h4v5 stroke=currentColor fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Cue-Hue-Picker
+    1    1f  width:26px; height:26px; border-radius:13px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Enlisting-Aegis
+    1    1f  border-radius:18px; background:#1E1E1E; padding:18px 22px
+              type: 15px 23px #B5B0A8×1   txt: Masturbation isn’t part ×1
+              layout: margin-top:14px×1
+              frames: Goal-Confirmation
+    1    1f  border-radius:24px 24px 0 0; background:#1E1E1E; padding:34px 28px 0
+              type: 13px 700 #9B968E×1   txt: Week XII, from Sam×1
+              layout: position:absolute left:24px right:24px top:112px bottom:0×1
+              frames: Letter-Week-XII
+    1    1f  height:190px; background:linear-gradient(180deg, rgba(30,30,30,0) 0%, #1E1E1E 60%)
+              layout: position:absolute left:24px right:24px bottom:0×1
+              frames: Letter-Week-XII
+    1    1f  height:84px; border-radius:22px; background:#F2F0EC; padding:0 20px
+              type: 17px 700 #111111×1   txt: An urge×1
+              svg: svg22x22 path d=M3 15c3 0 4-6 8-6s5 6 8 6M3 18 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center gap:16px×1
+              frames: Log-Chooser
+    1    1f  width:44px; height:44px; border-radius:50%; background:transparent; box-shadow:0 0 0 1.5px rgba(17,17,17,0.3)
+              svg: svg22x22 path d=M3 15c3 0 4-6 8-6s5 6 8 6M3 18 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Log-Chooser
+    1    1f  height:52px; border-radius:26px; background:#F2F0EC
+              type: 15px 700 #111111×1   txt: Open this week’s report×1
+              layout: display:flex align-items:center justify-content:center position:absolute left:24px right:24px top:432px×1
+              frames: Log-Reports
+    1    1f  border-radius:18px; background:#0D0D0D; padding:14px 16px
+              svg: svg44x44 circle  fill=#F2F0EC×1
+              layout: display:flex align-items:center gap:14px margin-top:6px×1
+              frames: Medallion-Letter
+    1    1f  width:56px; height:3px; border-radius:2px; background:#2E2E2E
+              layout: ×1
+              frames: Medallions-Still-To-Earn
+    1    1f  width:90%; height:3px; border-radius:2px; background:#F2F0EC
+              layout: ×1
+              frames: Medallions-Still-To-Earn
+    1    1f  width:44px; height:50px; border-radius:14px; background:#F2F0EC; box-shadow:none
+              layout: ×1
+              frames: Morning-Energy
+    1    1f  width:44px; height:75px; border-radius:14px; background:#F2F0EC; box-shadow:none
+              layout: ×1
+              frames: Morning-Energy
+    1    1f  width:44px; height:100px; border-radius:14px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: ×1
+              frames: Morning-Energy
+    1    1f  width:44px; height:125px; border-radius:14px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: ×1
+              frames: Morning-Energy
+    1    1f  width:44px; height:150px; border-radius:14px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: ×1
+              frames: Morning-Energy
+    1    1f  height:44px; border-bottom:1.5px dashed #5A574F
+              type: 15px 400 normal #9B968E×1   txt: Sign here×1
+              layout: display:flex align-items:flex-end×1
+              frames: Morning-Resign-Pledge
+    1    1f  height:44px; border-radius:22px; box-shadow:0 0 0 1.5px #2E2E2E; padding:0 18px
+              type: 18px 700 1 #F2F0EC×1   txt: +×1
+              layout: display:inline-flex align-items:center gap:8px×1
+              frames: Night-2-Record
+    1    1f  width:2px; height:24px; background:#F2F0EC
+              layout: display:inline-block×1
+              frames: Night-3-Reflection
+    1    1f  width:22px; height:22px; border-radius:11px; background:#F2F0EC; box-shadow:none
+              svg: svg11x11 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Paywall-Rescue
+    1    1f  border-radius:22px; background:#F2F0EC; padding:20px 18px 18px
+              type: 11px 700 1px #F2F0EC×1   txt: Save 74%×1
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#F2F0EC fill=none×1
+              layout: position:relative flex:1×1
+              frames: Paywall
+    1    1f  height:24px; border-radius:12px; background:#1E1E1E; box-shadow:0 0 0 1.5px #F2F0EC; padding:0 10px
+              type: 11px 700 1px #F2F0EC×1   txt: Save 74%×1
+              layout: display:flex align-items:center position:absolute left:18px top:-12px×1
+              frames: Paywall
+    1    1f  width:22px; height:22px; border-radius:11px; background:#1E1E1E
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Paywall
+    1    1f  border-radius:22px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E; padding:20px 18px 18px
+              type: 18px 700 #F2F0EC×1   txt: Monthly×1
+              layout: flex:1×1
+              frames: Paywall
+    1    1f  width:22px; height:22px; border-radius:11px; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: ×1
+              frames: Paywall
+    1    1f  min-height:150px; border-radius:22px; background:#1E1E1E; padding:22px 24px
+              type: 20px 400 30px #F2F0EC×1   txt: I need to say…×1
+              layout: ×1
+              frames: SOS-Afterward
+    1    1f  width:46px; height:72px; border-radius:15px; background:#F2F0EC; box-shadow:none
+              layout: display:flex align-items:flex-start justify-content:center×1
+              frames: SOS-Reassess
+    1    1f  width:46px; height:124px; border-radius:15px; background:transparent; box-shadow:none
+              layout: display:flex align-items:flex-start justify-content:center×1
+              frames: SOS-Reassess
+    1    1f  border-radius:24px; background:#1E1E1E; padding:16px 20px 18px
+              type: 15px 700 #F2F0EC×1   txt: Clean days×1
+              layout: ×1
+              frames: Score-Detail-Moves
+    1    1f  width:100%; height:12px; border-radius:6px; background:#F2F0EC; box-shadow:none
+              layout: position:absolute left:0 top:0×1
+              frames: Score-Detail-Moves
+    1    1f  width:28%; height:12px; border-radius:6px; background:#F2F0EC; box-shadow:none
+              layout: position:absolute left:0 top:0×1
+              frames: Score-Detail-Moves
+    1    1f  width:19%; height:12px; border-radius:6px; background:#F2F0EC; box-shadow:none
+              layout: position:absolute left:0 top:0×1
+              frames: Score-Detail-Moves
+    1    1f  width:13%; height:12px; border-radius:6px; background:#F2F0EC; box-shadow:none
+              layout: position:absolute left:0 top:0×1
+              frames: Score-Detail-Moves
+    1    1f  width:25%; height:12px; border-radius:6px; background:transparent; box-shadow:0 0 0 1.5px #F2F0EC inset
+              layout: position:absolute left:0 top:0×1
+              frames: Score-Detail-Moves
+    1    1f  border-radius:24px; background:#1E1E1E; padding:22px 22px 20px
+              type: 18px 700 #9B968E×1   txt: Captain×1
+              svg: svg12x12 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: ×1
+              frames: Score-Detail-Ranks
+    1    1f  border-left:2px solid #F2F0EC
+              layout: flex:1×1
+              frames: Score-Detail-Ranks
+    1    1f  width:44px; height:44px; border-radius:22px; background:#F2F0EC
+              svg: svg16x16 path d=M8 13V3M3.5 7.5L8 3l4.5 4.5 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Score-Detail
+    1    1f  height:60px; border-radius:18px; background:#1E1E1E; padding:0 20px
+              type: 18px 700 #F2F0EC×1   txt: Sam Reyes×1
+              layout: display:flex align-items:center×1
+              frames: Sheet-Edit-Name
+    1    1f  height:34px; border-radius:17px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E; padding:0 16px
+              type: 13px 700 #F2F0EC×1   txt: Starting point×1
+              layout: display:inline-flex align-items:center×1
+              frames: Starting-Score
+    1    1f  width:30px; height:30px; border-radius:15px; background:#F2F0EC
+              svg: svg13x13 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Surf-Complete
+    1    1f  border-bottom:1.5px solid #F2F0EC
+              type: 30px 700 italic -0.5px #F2F0EC×1   txt: Sam×1
+              layout: ×1
+              frames: The-Vow
+    1    1f  width:10.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Breakwater
+    1    1f  width:7.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Lessons
+    1    1f  width:20.4%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Logbook
+    1    1f  width:14.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Pulse
+    1    1f  width:2.2%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Rebound
+    1    1f  width:18.0%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Vici
+    1    1f  width:5.2%; height:2px; background:#F2F0EC
+              layout: position:absolute left:10% top:14px×1
+              frames: Tiers-Vidi
+    1    1f  width:52px; height:52px; border-radius:26px; background:transparent; box-shadow:0 0 0 1.5px #F2F0EC
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Today-Home-II
+    1    1f  border-radius:24px; background:#1E1E1E; padding:18px 20px
+              type: 18px 700 #F2F0EC×1   txt: Urge surfing×1
+              svg: svg26x26 circle stroke=#111111 fill=none×1
+              layout: ×1
+              frames: Today-Home-III
+    1    1f  width:52px; height:52px; border-radius:26px; background:#F2F0EC
+              svg: svg26x26 circle stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Today-Home-III
+    1    1f  width:52px; height:52px; border-radius:26px; background:#F2F0EC; box-shadow:none
+              svg: svg20x20 path d=M2 7.5l3.2 3L12 3.5 stroke=#111111 fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Today-Home-Task
+    1    1f  height:30px; border-radius:15px; background:#1E1E1E; padding:0 12px
+              type: 14px 700 #F2F0EC×1   txt: 18×1
+              svg: svg10x10 path d=M5 9V1M1.5 4.5L5 1l3.5 3.5 stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center gap:5px×1
+              frames: Today-Home
+    1    1f  width:30px; height:30px; border-radius:15px; background:#1E1E1E; box-shadow:0 0 0 1.5px #2E2E2E
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Today-Home
+    1    1f  width:14px; height:14px; border-radius:7px; background:#BAB5AD
+              layout: ×1
+              frames: Today-Home
+    1    1f  width:30px; height:30px; border-radius:15px; box-shadow:0 0 0 1.5px #2E2E2E
+              svg: svg14x14 path d=M8 1L2 8h5l-1 5 6-7H7z  fill=#F2F0EC×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Today-Home
+    1    1f  width:24px; height:3px; border-radius:2px; background:#FFFFFF
+              layout: margin-top:6px×1
+              frames: Urge-Hub-Breathe
+    1    1f  border-radius:24px; background:#1E1E1E; padding:26px 28px 30px
+              type: 26px 700 35px -0.5px #FFFFFF×1   txt: The mornings are mine ag×1
+              svg: svg28x22 path d=M2 12c0-6 4-10 10-10v4c-3 0-5   fill=rgba(255,255,255,0.3)×1
+              layout: ×1
+              frames: Urge-Hub-Pledges
+    1    1f  width:12px; height:39px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:23px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:56px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:35px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:96px; border-radius:6px; background:#FFFFFF
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:27px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:46px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:20px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:33px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  width:12px; height:65px; border-radius:6px; background:rgba(255,255,255,0.28)
+              layout: ×1
+              frames: Urge-Hub-Proof
+    1    1f  border-radius:24px; background:#1E1E1E; padding:20px 22px
+              type: 13px 700 rgba(255,255,255,0.5)×1   txt: Last 30 days×1
+              layout: ×1
+              frames: Urge-Hub-Score
+    1    1f  width:45%; border-radius:3px; background:#FFFFFF
+              layout: position:absolute left:0 top:0 bottom:0×1
+              frames: Urge-Hub-Surfed
+    1    1f  width:71%; border-radius:3px; background:#FFFFFF
+              layout: position:absolute left:0 top:0 bottom:0×1
+              frames: Urge-Hub-Surfed
+    1    1f  width:29%; border-radius:3px; background:#FFFFFF
+              layout: position:absolute left:0 top:0 bottom:0×1
+              frames: Urge-Hub-Surfed
+    1    1f  width:100%; border-radius:3px; background:#FFFFFF
+              layout: position:absolute left:0 top:0 bottom:0×1
+              frames: Urge-Hub-Surfed
+    1    1f  width:88px; height:88px; border-radius:50%; background:#F2F0EC
+              layout: ×1
+              frames: Urge-Overview-Mood
+    1    1f  width:66px; height:66px; border-radius:50%; background:#F2F0EC
+              layout: ×1
+              frames: Urge-Overview-Mood
+    1    1f  width:54px; height:54px; border-radius:50%; background:#F2F0EC
+              layout: ×1
+              frames: Urge-Overview-Mood
+    1    1f  width:36px; height:36px; border-radius:50%; background:#F2F0EC
+              layout: ×1
+              frames: Urge-Overview-Mood
+    1    1f  height:60px; border-radius:18px; background:#1E1E1E; padding:0 22px
+              type: 17px 400 #9B968E×1   txt: Your name×1
+              layout: display:flex align-items:center gap:2px×1
+              frames: V3-Q24-Name
+    1    1f  width:2px; height:24px; border-radius:1px; background:#F2F0EC
+              layout: ×1
+              frames: V3-Q24-Name
+    1    1f  height:58px; border-radius:18px; background:#F2F0EC; padding:0 18px
+              type: 14px 700 rgba(17,17,17,0.6)×1   txt: 38×1
+              layout: display:flex align-items:center gap:16px×1
+              frames: Week-VI-Discipline
+    1    1f  width:40px; height:40px; border-radius:20px; box-shadow:0 0 0 2px #F2F0EC inset
+              svg: svg16x16 path d=M2 9c2.5 0 3-4 5-4s3 4 5 4 2-2 stroke=#F2F0EC fill=none×1
+              layout: display:flex align-items:center justify-content:center×1
+              frames: Weekly-Report-Days
+    1    1f  border-radius:24px; background:#1E1E1E; padding:26px 26px 24px
+              type: 23px 700 32px -0.4px #F2F0EC×1   txt: I’m done letting the wav×1
+              svg: svg28x22 path d=M2 12c0-6 4-10 10-10v4c-3 0-5   fill=#2E2E2E×1
+              layout: ×1
+              frames: Your-Vow-Page
+    1    1f  height:36px; border-radius:18px; background:#F2F0EC; padding:0 14px
+              type: 13px 700 #111111×1   txt: Held for 92 days×1
+              layout: display:inline-flex align-items:center×1
+              frames: Your-Vow-Page
+    1    1f  height:36px; border-radius:18px; background:#1E1E1E; padding:0 14px
+              type: 13px 700 #F2F0EC×1   txt: Signed Apr 18×1
+              layout: display:inline-flex align-items:center×1
+              frames: Your-Vow-Page
+    1    1f  height:150px; background:linear-gradient(rgba(13,13,13,0), #0D0D0D 40%)
+              layout: position:absolute left:0 right:0 bottom:0×1
+              frames: Week-01/L7-Frame-11
+    1    1f  width:33.1%; height:8px; border-radius:4px; background:#9B968E
+              layout: ×1
+              frames: Week-06/L41-Frame-4
+    1    1f  width:37.3%; height:8px; border-radius:4px; background:#F2F0EC
+              layout: ×1
+              frames: Week-06/L41-Frame-4

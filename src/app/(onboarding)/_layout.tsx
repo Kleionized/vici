@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { useAuth } from '@/lib/auth';
 import { useCurrentUser } from '@/lib/backend';
-import { colors } from '@/lib/theme';
+import { mono } from '@/lib/theme';
 
 export default function OnboardingLayout() {
   const { isLoaded, isSignedIn } = useAuth();
@@ -12,13 +12,13 @@ export default function OnboardingLayout() {
   if (user?.onboardingComplete) return <Redirect href="/(app)/today" />;
   return (
     <>
-      {/* Onboarding is a dark field — light status-bar glyphs. */}
-      <StatusBar style="dark" />
+      {/* Every onboarding frame stands on the #0D0D0D ground — light status-bar glyphs. */}
+      <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,
           gestureEnabled: false,
-          contentStyle: { backgroundColor: colors.night.bottom },
+          contentStyle: { backgroundColor: mono.ground },
         }}
       />
     </>

@@ -1,0 +1,154 @@
+[
+  {
+    "frame": "Lesson Scroll 1",
+    "route": "/lesson/day/1?page=1",
+    "wait": 1200,
+    "note": "Email-Login `Lesson Scroll 1–14` are `Week-01-Reset/L1 Frame 1–14` byte for byte apart from the label; the reader opens on frame k with `?page=k` (1-based) and reads no account state, so no seed. Supersedes lesson-scrolls.json (whose entries point at the retired `Lesson-1-Surviving-the-Night` bundle; this file sorts after it and its keys win)."
+  },
+  {
+    "frame": "Lesson Scroll 2",
+    "route": "/lesson/day/1?page=2",
+    "wait": 1200,
+    "note": "expect rail 14%"
+  },
+  {
+    "frame": "Lesson Scroll 3",
+    "route": "/lesson/day/1?page=3",
+    "wait": 1200,
+    "note": "expect rail 21%"
+  },
+  {
+    "frame": "Lesson Scroll 4",
+    "route": "/lesson/day/1?page=4",
+    "wait": 1200,
+    "note": "expect rail 29%"
+  },
+  {
+    "frame": "Lesson Scroll 5",
+    "route": "/lesson/day/1?page=5",
+    "wait": 1200,
+    "note": "expect rail 36%"
+  },
+  {
+    "frame": "Lesson Scroll 6",
+    "route": "/lesson/day/1?page=6",
+    "wait": 1200,
+    "note": "expect rail 43%"
+  },
+  {
+    "frame": "Lesson Scroll 7",
+    "route": "/lesson/day/1?page=7",
+    "wait": 1200,
+    "note": "expect rail 50%"
+  },
+  {
+    "frame": "Lesson Scroll 8",
+    "route": "/lesson/day/1?page=8",
+    "wait": 1200,
+    "note": "expect rail 57%"
+  },
+  {
+    "frame": "Lesson Scroll 9",
+    "route": "/lesson/day/1?page=9",
+    "wait": 1200,
+    "note": "expect rail 64%"
+  },
+  {
+    "frame": "Lesson Scroll 10",
+    "route": "/lesson/day/1?page=10",
+    "wait": 1200,
+    "note": "expect rail 71%"
+  },
+  {
+    "frame": "Lesson Scroll 11",
+    "route": "/lesson/day/1?page=11",
+    "wait": 1200,
+    "note": "expect rail 79%"
+  },
+  {
+    "frame": "Lesson Scroll 12",
+    "route": "/lesson/day/1?page=12",
+    "wait": 1200,
+    "note": "expect rail 86%"
+  },
+  {
+    "frame": "Lesson Scroll 13",
+    "route": "/lesson/day/1?page=13",
+    "wait": 1200,
+    "note": "expect rail 93%"
+  },
+  {
+    "frame": "Lesson Scroll 14",
+    "route": "/lesson/day/1?page=14",
+    "wait": 1200,
+    "note": "expect rail 100%"
+  },
+  {
+    "frame": "L<n> Frame <k> (Week-01-Reset … Week-12-Leave-It-Behind, all 1,273)",
+    "route": "/lesson/day/<n>?page=<k>",
+    "wait": 700,
+    "designBundle": "Week-<WW>-<Name>",
+    "designFile": "L<n>-Frame-<k>.html",
+    "note": "Not Email-Login frames, so audit.mjs does not walk them: `node scripts/overhaul/lesson-sweep.mjs --lessons=<list>` opens each page by its deep link, waits for fonts and the 220 ms fade, and diffs against `.overhaul/shots/design/<Week>/L<n>-Frame-<k>.png` (status bar and home indicator excluded). `?page=task` opens the first `Today’s task` page."
+  },
+  {
+    "frame": "Lesson question — option selected (undrawn, D322)",
+    "route": "/lesson/day/2?page=11",
+    "wait": 900,
+    "do": "await tap(\"A. Saved material or bookmarks\"); await tap(\"F. Nothing clear right now\"); await __sleep(300)",
+    "note": "Every question frame is drawn with nothing chosen. Multi-choice L2: F is exclusive (\"Choose F alone if it fits.\"), so the drive above ends with only F lit. Single choice: /lesson/day/10?page=11 + tap(\"A. Close the content and follow the steps for bed\")."
+  },
+  {
+    "frame": "Lesson unknown (undrawn)",
+    "route": "/lesson/day/999",
+    "wait": 900,
+    "note": "ground + ✕ + the kit EmptyState \"Lesson not found\" / \"The course has 84 lessons.\" centred in the band (D317, Phase 2); the ✕ closes (back, else /today)."
+  },
+  {
+    "frame": "Lesson card (retired, D324)",
+    "route": "/lesson-card/1",
+    "wait": 1200,
+    "note": "redirects to /lesson/day/1 (the cover)."
+  },
+  {
+    "frame": "Day task (retired, D324)",
+    "route": "/task/1",
+    "wait": 1200,
+    "note": "redirects to /lesson/day/1?page=task (L1 Frame 12)."
+  },
+  {
+    "frame": "Lesson writes — Begin / band tap / ring (functional)",
+    "route": "/lesson/day/13?page=1",
+    "initseed": ".overhaul/weeks-seed.js",
+    "script": ".overhaul/drives/lessons-begin.js",
+    "wait": 600,
+    "note": "returns {cover 6, afterBegin {rail 12, progress day-13 in_progress}, afterBand 18, afterRing 24}"
+  },
+  {
+    "frame": "Lesson writes — question → reflect → Finish lesson (functional)",
+    "route": "/lesson/day/13?page=12",
+    "initseed": ".overhaul/weeks-seed.js",
+    "script": ".overhaul/drives/lessons-flow13.js",
+    "wait": 600,
+    "note": "returns reflection {q:\"D\"} then {q:\"D\", note:…}, progress day-13 completed, ends on Lesson complete."
+  },
+  {
+    "frame": "Lesson writes — Finish lesson does not re-stamp (functional)",
+    "route": "/lesson/day/5?page=14",
+    "initseed": ".overhaul/lessons-done-seed.js",
+    "script": ".overhaul/drives/lessons-refinish.js",
+    "wait": 600,
+    "note": "weeks-seed + day-05 completed two days ago; returns same:true; Done closes to /today (the (app) launch gate may then push a check-in)."
+  },
+  {
+    "frame": "Lesson pages by list (any n:k, any size)",
+    "route": "/lesson/day/<n>?page=<k>",
+    "note": "node .overhaul/scratch/lessons-spot.mjs --pages=15:5,41:4 [--w=375 --h=667] --out=<dir> — lesson-sweep.mjs with a per-page filter."
+  },
+  {
+    "frame": "Lesson pages in scroll mode (other sizes, Phase 2)",
+    "route": "/lesson/day/<n>?page=<k>",
+    "script": ".overhaul/scratch/lessons-scrollcheck.mjs --w=<W> --h=<H> [--lessons=1-84]",
+    "note": "Walks all 1,273 pages by their own controls, finds the band's scroller, and for every page in scroll mode (D313) checks the stack starts at the band top at scroll 0 and, scrolled to the end, its last painted row clears the 150 fade (and so the pill/ring); fit pages are checked for nothing under the control and no clipping; every page for horizontal overflow. Writes an end PNG per scroll page. Oct 5: 375x667 — 98 scroll pages (the lesson-sweep's 46 CHECK pages are all among them), all scroll clear (last row 515 vs fade 517), 0 faults; hero art never starts above the band top (107.4–108.4 vs 106). 390x844 — 3 scroll pages (L7 F11, L16 F11, L58 F12: the canvas's tall pages overflow the 8-shorter band), 0 faults. 430x932 — 0 scroll, 0 faults. Controls/back paths: .overhaul/scratch/lessons-func.mjs."
+  }
+]

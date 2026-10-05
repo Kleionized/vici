@@ -1,0 +1,18 @@
+div | 0 | 0 | 393 | 852 | - | - | 0.06 | - | - | -
+div | 22 | 60 | 18 | 40 | - | - | - | - | - | -
+svg | 22 | 71 | 18 | 18 | - | - | - | - | - | -
+path | 24 | 73 | 14 | 14 | - | - | - | - | - | -
+div | 0 | 60 | 393 | 40 | - | - | - | - | - | -
+div | 0 | 72 | 393 | 16 | - | - | - | - | 13px/700/normal/normal/rgb(155, 150, 142) | Lesson 46
+div | 24 | 108 | 345 | 3 | rgb(46, 46, 46) | 2px | - | - | - | -
+div | 24 | 108 | 262.2 | 3 | rgb(242, 240, 236) | 2px | - | - | - | -
+div | 32 | 140 | 329 | 584 | - | - | - | - | - | -
+div | 32 | 279 | 329 | 16 | - | - | - | - | 13px/700/0.2px/16px/rgb(155, 150, 142) | After choosing
+div | 32 | 307 | 329 | 62 | - | - | - | - | 24px/700/-0.4px/31px/rgb(242, 240, 236) | Choose an adjustment or support that fits.
+div | 32 | 397 | 329 | 84 | - | - | - | - | 18px/400/normal/28px/rgb(181, 176, 168) | If no difficult period applies, confirm your support details and keep the routine that works.
+div | 32 | 513 | 329 | 48 | - | 24px | - | rgb(46, 46, 46) 0px 0px 0px 1.5px inset | - | -
+svg | 52 | 529 | 16 | 16 | - | - | - | - | - | -
+path | 55 | 532 | 10 | 10 | - | - | - | - | - | -
+div | 80 | 526 | 261 | 22 | - | - | - | - | 16px/400/normal/22px/rgb(155, 150, 142) | Add a note (optional)
+div | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
+span | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/normal/rgb(17, 17, 17) | Continue

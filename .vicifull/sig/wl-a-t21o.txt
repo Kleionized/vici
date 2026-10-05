@@ -1,0 +1,54 @@
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(242, 242, 242) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | rgb(244, 243, 240) | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | 0.07 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+img | 0 | 0 | 393 | 852 | - | - | 0 | - | - | -
+div | 0 | 0 | 393 | 852 | - | - | - | - | - | -
+div | 0 | 54 | 393 | 798 | - | - | - | - | - | -
+button | 16 | 66 | 43 | 20 | - | - | - | - | - | -
+div | 16 | 66 | 43 | 20 | - | - | - | - | 17px/400/normal/normal/rgb(58, 57, 52) | Close
+div | 30 | 144 | 333 | 35 | - | - | - | - | 27px/500/normal/35px/rgb(29, 28, 26) | Set the two-week rule
+div | 24 | 209 | 345 | 535 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 432 | - | - | - | - | - | -
+div | 24 | 209 | 345 | 75 | - | - | - | - | - | -
+div | 24 | 210 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 33 | 214.5 | 6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 1
+div | 60 | 209 | 309 | 75 | - | - | - | - | - | -
+div | 60 | 209 | 309 | 38 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | If masturbation does not usually lead you to porn
+div | 60 | 250 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Keep it allowed if that fits your values. Porn, sexual browsing, and porn-capable devices stay out of it.
+div | 24 | 294 | 345 | 73 | - | - | - | - | - | -
+div | 24 | 295 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32.2 | 299.5 | 7.6 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 2
+div | 60 | 294 | 309 | 73 | - | - | - | - | - | -
+div | 60 | 294 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | If masturbation often leads directly to porn
+div | 60 | 316 | 309 | 51 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Either take a two-week break or keep the phone and laptop completely outside the room. Choose the option you are more likely to follow.
+div | 24 | 377 | 345 | 107 | - | - | - | - | - | -
+div | 24 | 378 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32.1 | 382.5 | 7.9 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 3
+div | 60 | 377 | 309 | 107 | - | - | - | - | - | -
+div | 60 | 377 | 309 | 19 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | If you are not sure
+div | 60 | 399 | 309 | 85 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Do not ban it by default. Keep screens out of it and, if masturbation happens during the next two weeks, briefly note whether porn was involved, whether a porn-capable device was in the room, and whether it led to sexual searching afterwards.
+div | 24 | 494 | 345 | 75 | - | - | - | - | - | -
+div | 24 | 495 | 24 | 24 | rgb(255, 255, 255) | 50% | - | rgba(0, 0, 0, 0.09) 0px 0px 0px 1px | - | -
+div | 32 | 499.5 | 8.1 | 15 | - | - | - | - | 12px/600/normal/normal/rgb(85, 83, 78) | 4
+div | 60 | 494 | 309 | 75 | - | - | - | - | - | -
+div | 60 | 494 | 309 | 38 | - | - | - | - | 14px/600/normal/19px/rgb(29, 28, 26) | If you choose not to masturbate for personal or religious reasons
+div | 60 | 535 | 309 | 34 | - | - | - | - | 12.5px/400/normal/17px/rgb(118, 115, 112) | Write that boundary plainly and leave it there. You do not need a second reason.
+div | 24 | 593 | 345 | 48 | - | - | - | - | 12.5px/400/normal/16px/rgb(118, 115, 112) | Move the devices to the place your rule requires. The task is done when the rule is written and the devices are where you said they would be.
+div | 0 | 706 | 393 | 6 | - | - | - | - | - | -
+div | 181.5 | 706 | 6 | 6 | rgba(19, 19, 19, 0.18) | 3px | - | - | - | -
+div | 193.5 | 706 | 18 | 6 | rgb(19, 19, 19) | 3px | - | - | - | -
+button | 24 | 744 | 345 | 52 | rgb(19, 19, 19) | 26px | - | - | - | -
+div | 141.9 | 760 | 109.2 | 20 | - | - | - | - | 17px/600/0.2px/normal/rgb(255, 255, 255) | Mark as done
+div | 0 | 852 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -
+div | 0 | 0 | 0 | 0 | - | - | - | - | - | -

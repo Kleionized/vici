@@ -1,0 +1,25 @@
+<div> width:393px  height:852px  position:relative  overflow:hidden  background:#0D0D0D  font-family:'Lato',-apple-system,system-ui,sans-serif  -webkit-font-smoothing:antialiased  flex-shrink:0  box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18)
+  <div> position:absolute  inset:0  background-image:url('noise.png')  opacity:0.05  pointer-events:none
+  <div> position:absolute  left:0  right:0  top:236px  display:flex  justify-content:center
+    <svg> viewBox="0 0 88 88"  width="88"  height="88"
+      <circle> cx="44"  cy="44"  r="38"  fill="none"  stroke="#F2F0EC"  stroke-width="2"  stroke-dasharray="2 7"
+      <path> d="M44 6 A38 38 0 0 1 82 44"  fill="none"  stroke="#F2F0EC"  stroke-width="4"  stroke-linecap="round"
+  <div> position:absolute  left:24px  right:24px  top:352px  display:flex  flex-direction:column  gap:20px  align-items:center  text-align:center
+    <div> width:100%  font-size:26px  font-weight:700  letter-spacing:-0.6px  line-height:33px  color:#F2F0EC  text-wrap:balance  text-align:center
+      · Putting your plan together…
+  <div> position:absolute  left:24px  right:24px  top:462px  display:flex  flex-direction:column  gap:18px
+    <div> display:flex  align-items:center  gap:14px
+      <div> width:26px  height:26px  border-radius:13px  background:#F2F0EC  box-shadow:none  display:flex  align-items:center  justify-content:center
+        <svg> viewBox="0 0 14 14"  width="13"  height="13"
+          <path> d="M2 7.5l3.2 3L12 3.5"  fill="none"  stroke="#111111"  stroke-width="2.2"  stroke-linecap="round"  stroke-linejoin="round"
+      <span> font-size:16px  font-weight:700  color:#F2F0EC  flex:1
+        · Finding where you usually struggle
+    <div> display:flex  align-items:center  gap:14px
+      <div> width:26px  height:26px  border-radius:13px  background:#1E1E1E  box-shadow:0 0 0 1.5px #F2F0EC  display:flex  align-items:center  justify-content:center
+        <div> width:8px  height:8px  border-radius:4px  background:#F2F0EC
+      <span> font-size:16px  font-weight:700  color:#F2F0EC  flex:1
+        · Looking at what tends to set it off
+    <div> display:flex  align-items:center  gap:14px
+      <div> width:26px  height:26px  border-radius:13px  background:#1E1E1E  box-shadow:0 0 0 1.5px #2E2E2E  display:flex  align-items:center  justify-content:center
+      <span> font-size:16px  font-weight:400  color:#9B968E  flex:1
+        · Choosing where to start

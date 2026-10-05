@@ -1,0 +1,409 @@
+--- .vicifull/pretty/prev/Log-Check-ins.html	2026-09-05 00:22:35
++++ .vicifull/pretty/final/Log-Check-ins.html	2026-09-05 00:22:35
+@@ -163,24 +163,83 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | top:230px;
+-    | font-size:12.5px;
+-    | font-weight:600;
+-    | color:#8B8882;
++    | left:16px;
++    | right:16px;
++    | top:222px;
++    | height:128px;
++    | border-radius:20px;
++    | overflow:hidden;
++    | background:linear-gradient(150deg, #E9E8E3 0%, #C9C8C1 100%);
++    | box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05);
+   ">
+-    · This week
++    <div style="
++      | position:absolute;
++      | left:-24px;
++      | right:-24px;
++      | top:78px;
++      | bottom:0;
++      | border-radius:50% 50% 0 0 / 30px 30px 0 0;
++      | background:rgba(255,255,255,0.38);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | right:14px;
++      | top:2px;
++      | width:90px;
++      | height:90px;
++      | border-radius:50%;
++      | background:radial-gradient(closest-side, rgba(226,186,120,0.45), rgba(226,186,120,0) 72%);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | right:40px;
++      | top:30px;
++      | width:38px;
++      | height:38px;
++      | border-radius:50%;
++      | background:linear-gradient(180deg, #E9C687 0%, #D9A95C 100%);
++      | box-shadow:0 0 0 6px rgba(226,186,120,0.16);
++    ">
++    </div>
++    <div style="
++      | position:absolute;
++      | left:18px;
++      | top:22px;
++      | font-size:22px;
++      | font-weight:500;
++      | letter-spacing:-0.2px;
++      | color:#1D1C1A;
++    ">
++      · 7 check-ins
++    </div>
++    <div style="
++      | position:absolute;
++      | left:18px;
++      | bottom:16px;
++      | font-size:13px;
++      | font-weight:400;
++      | color:#55534E;
++    ">
++      · 12 mornings in a row
++    </div>
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:256px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:366px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -192,21 +251,21 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="16" height="16" viewBox="0 0 26 26">
+-        <path d="M13 4.5V1.5M6.2 7.6L4.2 5.6M19.8 7.6l2-2" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-        <path d="M6.8 15a6.2 6.2 0 0 1 12.4 0Z" fill="#131313">
+-        </path>
+-        <path d="M3 15h20M8 19.5h10" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-      </svg>
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:50%;
++        | background:#131313;
++      ">
++      </div>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Mood 4/5 · 7h sleep
+@@ -224,6 +283,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · steady
+     </span>
+@@ -236,14 +296,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:320px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:440px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -255,21 +320,21 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="16" height="16" viewBox="0 0 26 26">
+-        <path d="M13 4.5V1.5M6.2 7.6L4.2 5.6M19.8 7.6l2-2" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-        <path d="M6.8 15a6.2 6.2 0 0 1 12.4 0Z" fill="#131313">
+-        </path>
+-        <path d="M3 15h20M8 19.5h10" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-      </svg>
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:50%;
++        | background:#B0AEA8;
++      ">
++      </div>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Mood 3/5 · 6h sleep
+@@ -287,6 +352,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · flat
+     </span>
+@@ -299,13 +365,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:384px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:514px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -317,21 +389,21 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="16" height="16" viewBox="0 0 26 26">
+-        <path d="M13 4.5V1.5M6.2 7.6L4.2 5.6M19.8 7.6l2-2" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-        <path d="M6.8 15a6.2 6.2 0 0 1 12.4 0Z" fill="#131313">
+-        </path>
+-        <path d="M3 15h20M8 19.5h10" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-      </svg>
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:50%;
++        | background:#131313;
++      ">
++      </div>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Mood 4/5 · 7.5h sleep
+@@ -349,6 +421,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · good
+     </span>
+@@ -362,7 +435,7 @@
+   <div style="
+     | position:absolute;
+     | left:24px;
+-    | top:468px;
++    | top:598px;
+     | font-size:12.5px;
+     | font-weight:600;
+     | color:#8B8882;
+@@ -371,14 +444,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:494px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:622px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
+-    | border-bottom:1px solid rgba(0,0,0,0.05);
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -390,21 +468,21 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="16" height="16" viewBox="0 0 26 26">
+-        <path d="M13 4.5V1.5M6.2 7.6L4.2 5.6M19.8 7.6l2-2" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-        <path d="M6.8 15a6.2 6.2 0 0 1 12.4 0Z" fill="#131313">
+-        </path>
+-        <path d="M3 15h20M8 19.5h10" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-      </svg>
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:50%;
++        | background:#131313;
++      ">
++      </div>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Mood 4/5 · 8h sleep
+@@ -422,6 +500,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · rested
+     </span>
+@@ -434,13 +513,19 @@
+   </div>
+   <div style="
+     | position:absolute;
+-    | left:24px;
+-    | right:24px;
+-    | top:558px;
+-    | height:60px;
++    | left:16px;
++    | right:16px;
++    | top:696px;
++    | height:64px;
++    | border-radius:16px;
++    | background:#FFFFFF;
++    | box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     | display:flex;
+     | align-items:center;
+-    | gap:13px;
++    | gap:12px;
++    | padding:0 14px 0 12px;
++    | box-sizing:border-box;
++    | cursor:pointer;
+   ">
+     <div style="
+       | width:36px;
+@@ -452,21 +537,21 @@
+       | justify-content:center;
+       | flex-shrink:0;
+     ">
+-      <svg width="16" height="16" viewBox="0 0 26 26">
+-        <path d="M13 4.5V1.5M6.2 7.6L4.2 5.6M19.8 7.6l2-2" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-        <path d="M6.8 15a6.2 6.2 0 0 1 12.4 0Z" fill="#131313">
+-        </path>
+-        <path d="M3 15h20M8 19.5h10" stroke="#131313" stroke-width="2.5" stroke-linecap="round">
+-        </path>
+-      </svg>
++      <div style="
++        | width:14px;
++        | height:14px;
++        | border-radius:50%;
++        | background:#B0AEA8;
++      ">
++      </div>
+     </div>
+     <div style="
+       | flex:1;
++      | min-width:0;
+     ">
+       <div style="
+-        | font-size:14.5px;
+-        | font-weight:600;
++        | font-size:14px;
++        | font-weight:500;
+         | color:#1D1C1A;
+       ">
+         · Mood 2/5 · 5h sleep
+@@ -484,6 +569,7 @@
+       | font-size:12.5px;
+       | font-weight:400;
+       | color:#8B8882;
++      | flex-shrink:0;
+     ">
+       · rough
+     </span>

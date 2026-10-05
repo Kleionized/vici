@@ -1,0 +1,4 @@
+MISSING in app:  div | 24 | 284 | 345 | 211 | - | - | - | - | - | -
+# count P:24,284,345,208: design 1, app 2
+~ Next                                     type: 16px/700/0.1px/normal/rgb(17, 17, 17) → 16px/700/0.1px/19px/rgb(17, 17, 17)
+--- 379 design rows, 386 app rows; 1 differing, 1 missing, 4 extra, 0 sub-0.25pt rounding (use --all to list extras)
