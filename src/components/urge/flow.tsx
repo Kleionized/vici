@@ -339,8 +339,9 @@ function AfterwardPage({ note, onNote, onClose, onNext }: { note: string; onNote
 
 /** "Twenty-two minutes, start to finish." — the session's own length, in words (D255). */
 function lengthLine(seconds: number): string {
-  if (seconds < 60) return 'You outlasted it. Under a minute, start to finish.';
-  return `You outlasted it. ${minutesWords(seconds / 60)}, start to finish.`;
+  // no-break spaces keep 'start to finish' one unit when the line wraps
+  if (seconds < 60) return 'You outlasted it. Under a minute, start\u00A0to\u00A0finish.';
+  return `You outlasted it. ${minutesWords(seconds / 60)}, start\u00A0to\u00A0finish.`;
 }
 
 function DonePage({ seconds, onClose }: { seconds: number; onClose: () => void }) {
@@ -689,7 +690,11 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
           title="What’s underneath it?"
           labels={FEELING_LABELS}
           picked={feelings}
-          onPick={answer(setFeelings, 'feeling-said')}
+          // a new answer starts its own board, not the old one shifted by earlier "Give me another"s
+          onPick={(v: typeof feelings) => {
+            setRoll(0);
+            answer(setFeelings, 'feeling-said')(v);
+          }}
           hero={{ id: 'thunderCloud', top: 506, scale: 1.1 }}
           dashes={5}
           onBack={back}
@@ -704,7 +709,11 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
           answer={suggestion}
           onClose={close}
           onNext={next}
-          onBack={back}
+          // back to the picker clears the rotation: Continue then shows the answer's own board again
+          onBack={() => {
+            setRoll(0);
+            back();
+          }}
           onAnother={() => setRoll((current) => current + 1)}
         />
       );

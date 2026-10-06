@@ -37,7 +37,13 @@ for (const f of fs.readdirSync('.overhaul/recipes').filter((x) => x.endsWith('.j
 }
 
 const DRIVE = fs.readFileSync('.overhaul/drive.js', 'utf8');
-const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--disable-gpu', '--disable-dev-shm-usage'] });
+const launch = () => chromium.launch({ channel: 'chrome', headless: true, args: ['--disable-gpu', '--disable-dev-shm-usage'] });
+// A long sweep can outlive one Chrome on an 8 GB machine; a closed browser is relaunched, not fatal.
+let browser = await launch();
+const freshContext = async (opts) => {
+  try { return await browser.newContext(opts); }
+  catch (e) { process.stderr.write(`  (browser closed — relaunching: ${String(e).slice(0, 80)})\n`); try { await browser.close(); } catch {} browser = await launch(); return browser.newContext(opts); }
+};
 const findings = [];
 const shots = [];
 for (const fr of frames) {
@@ -45,7 +51,7 @@ for (const fr of frames) {
   if (flags.frame && fr.label !== flags.frame) continue;
   const r = recipes.get(fr.label);
   if (!r || r.unreachable) { findings.push({ frame: fr.label, group: fr.group, status: r ? 'UNREACHABLE' : 'NO RECIPE' }); continue; }
-  const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
+  const ctx = await freshContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
   await ctx.addInitScript(() => { const add = () => { const s = document.createElement('style'); s.textContent = '.__expo_fast_refresh{display:none!important}'; (document.head || document.documentElement).appendChild(s); }; if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add(); });
   const seed = r.initseed ?? r.seedScript ?? (r.seed === 'init' ? '.overhaul/day-seed.js' : null);
   if (seed && fs.existsSync(seed)) {
@@ -135,11 +141,18 @@ for (const fr of frames) {
       for (const k of Object.keys(out)) out[k] = [...new Set(out[k])].slice(0, 8);
       return out;
     });
+    await page.evaluate(async () => {
+      // every image decoded (the noise tile is a background image backed by an <img>),
+      // then two frames so RN-web's onLoad re-render has painted it
+      await Promise.all([...document.images].map((i) => (i.complete ? (i.decode ? i.decode().catch(() => {}) : null) : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    });
     const png = path.join(OUT, `${slug}.png`);
     await page.screenshot({ path: png });
     shots.push({ label: fr.label, png });
     if (flags.scroll) {
-      const sc = await page.evaluate(() => { const all = [...document.querySelectorAll('*')].filter((el) => /(auto|scroll)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight + 1); all.sort((a, b) => b.clientHeight * b.clientWidth - a.clientHeight * a.clientWidth); if (!all[0]) return false; all[0].scrollTop = all[0].scrollHeight; return true; });
+      // the scroller on screen — a pager mounts its neighbours' scrollers off-screen, at equal size
+      const sc = await page.evaluate(() => { const vw = innerWidth, vh = innerHeight; const vis = (el) => { const r = el.getBoundingClientRect(); return Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)); }; const all = [...document.querySelectorAll('*')].filter((el) => /(auto|scroll)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight + 1 && vis(el) > 0); all.sort((a, b) => vis(b) - vis(a)); if (!all[0]) return false; all[0].scrollTop = all[0].scrollHeight; return true; });
       if (sc) { await page.waitForTimeout(400); const p2 = path.join(OUT, `${slug}.end.png`); await page.screenshot({ path: p2 }); shots.push({ label: fr.label + ' (end)', png: p2 }); }
     }
     const n = Object.values(probe).reduce((a, v) => a + v.length, 0);
@@ -147,10 +160,16 @@ for (const fr of frames) {
     process.stderr.write(`${fr.label}: ${n ? 'CHECK ' + JSON.stringify(probe).slice(0, 200) : 'ok'}\n`);
   } catch (e) {
     findings.push({ frame: fr.label, group: fr.group, status: 'CAPTURE FAILED', note: String(e).slice(0, 200) });
+    // the app server gone: stop rather than record every remaining frame as failed
+    if (/ERR_CONNECTION_REFUSED/.test(String(e)) && findings.slice(-3).every((f) => /ERR_CONNECTION_REFUSED/.test(f.note ?? ''))) {
+      process.stderr.write('app server unreachable — stopping the sweep\n');
+      await ctx.close().catch(() => {});
+      break;
+    }
   }
-  await ctx.close();
+  await ctx.close().catch(() => {});
 }
-await browser.close();
+await browser.close().catch(() => {});
 
 // contact sheets: 12 per sheet, half size, labelled by order in report.md
 const PER = 12, COLS = 6, sw = W, sh = H; // half of the dpr-2 capture = 1x

@@ -23,12 +23,11 @@
  *  - `Vici Overhaul/project/gen/lessons-v3.json` — the designer's clean course:
  *    week names, titles, practice, "Done when" and each lesson's first reading
  *    piece must equal what the frames draw, or the run fails.
- *  - `scripts/overhaul/curriculum-legacy.json` — the previous drop's one-line
- *    summaries and week names, frozen from the last `scripts/vicifull` build. No
- *    frame draws a one-line summary, so `summary` keeps the previous strings
- *    (D396). The file also holds that drop's two-board task layouts; nothing
- *    reads them since `/task/[day]` and `/lesson-card/[day]` became redirects
- *    (D324), and they are no longer emitted.
+ *  - `scripts/overhaul/curriculum-legacy.json` — the previous drop's week names,
+ *    frozen from the last `scripts/vicifull` build, for the cross-check. Its
+ *    one-line summaries were written for the previous course and no longer
+ *    describe these lessons, so `summary` is now the lesson's own task sentence
+ *    (`cardSummary`, D339 / D401); its two-board task layouts are not emitted.
  *
  * Usage:
  *   node scripts/overhaul/gen-curriculum.mjs            write src/content/curriculum84.ts
@@ -323,8 +322,8 @@ P(` * each lesson's title and hero from its reader's cover (\`L<n> Frame 1\`), a
 P(` * its task — the practice and the "Done when" line — from the reader's two`);
 P(` * task pages. The short task sentence (\`cardSummary\`) is the first sentence`);
 P(` * of the lesson's own task (D339); day 1 keeps the one \`Today Home Task\` and`);
-P(` * \`Night Action Reminder\` draw. No frame draws a one-line \`summary\`; it keeps`);
-P(` * the previous build's.`);
+P(` * \`Night Action Reminder\` draw. No frame draws a one-line \`summary\`; it is`);
+P(` * the same task sentence (D401).`);
 P(` *`);
 P(` * Rebuild: node scripts/overhaul/gen-curriculum.mjs`);
 P(` */`);
@@ -366,9 +365,9 @@ P(`  title: string;`);
 P(`  /** The cover's hero. */`);
 P(`  hero: CurriculumHeroId;`);
 P(`  /**`);
-P(`   * The previous build's one-line summary, kept as it was: no frame in this drop draws`);
-P(`   * one, and it was written for the previous lesson under this day, so it may not`);
-P(`   * describe the new title (D396). Read by search, first-steps and \`lib/curriculum\`.`);
+P(`   * The line under the title in search and first steps: the lesson's own task sentence`);
+P(`   * (\`task.cardSummary\`). No frame draws a one-line summary, and the previous course's`);
+P(`   * described other lessons (D401). Read by search, first-steps and \`lib/curriculum\`.`);
 P(`   */`);
 P(`  summary: string;`);
 P(`  task: DailyTask;`);
@@ -399,7 +398,7 @@ for (const w of [...weeks.values()].sort((a, b) => a.n - b.n)) {
     P(`        week: ${l.week},`);
     P(`        title: ${q(l.title)},`);
     P(`        hero: ${q(l.hero)},`);
-    P(`        summary: ${q(l.legacy.summary)},`);
+    P(`        summary: ${q(l.cardSummary)},`);
     P(`        task: {`);
     P(`          day: ${l.day},`);
     P(`          cardTitle: ${q(l.title)},`);

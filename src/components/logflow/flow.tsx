@@ -74,15 +74,22 @@ export function useWhen(): When {
   const [now] = useState(() => Date.now());
   const [chip, setChip] = useState(0);
   const [customAt, setCustomAt] = useState<number | null>(null);
+  // 'Earlier today' stays today before 04:00 (D403)
+  const preset = Math.max(WHEN_CHIPS[chip].offsetMs === 24 * 3600_000 ? 0 : new Date(now).setHours(0, 0, 0, 0), now - WHEN_CHIPS[chip].offsetMs);
+  const at = customAt ?? preset;
   return {
     now,
-    at: customAt ?? now - WHEN_CHIPS[chip].offsetMs,
+    at,
     chip: customAt == null ? chip : null,
     pickChip: (index) => {
       setChip(index);
       setCustomAt(null);
     },
-    setAt: (ms) => setCustomAt(Math.min(ms, now)),
+    // a pick that leaves the moment unchanged keeps the lit chip lit
+    setAt: (ms) => {
+      const next = Math.min(ms, now);
+      if (next !== at) setCustomAt(next);
+    },
   };
 }
 

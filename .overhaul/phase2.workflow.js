@@ -78,22 +78,30 @@ VERIFIER'S ISSUES:
 ${JSON.stringify(ver.issues).slice(0, 25000)}`, { label: `fix:${g}`, phase: 'Fix', schema: REPORT })
 
 phase('Curriculum')
-const cur = await agent(`${COMMON}
+const cur = args?.skipCurriculum ? null : await agent(`${COMMON}
 
 YOUR TASK: the "curriculum" carry-over item in PHASE2.md (D339 in .overhaul/decisions/orchestrator.md). You may edit only scripts/overhaul/gen-curriculum.mjs, src/content/curriculum84.ts (by regenerating it), src/lib/curriculum.ts (the comment), seeds/recipes under .overhaul/. Keep every export the app imports (grep consumers; npx tsc --noEmit must stay clean). Verify exactly as PHASE2.md says (day 1 frames still 0 % — run node scripts/overhaul/audit-fast.mjs --frame="Today Home Task", --frame="Night Action Reminder", --frame="Morning Task Check"; day 58 at 393x852 and 375x667 on Today II, Night Action, Morning Task Check — build seeds for day 58 by copying the frames' seeds and changing the day). Report what the today/day screens need if a long sentence does not fit (do not edit their files).`, { label: 'curriculum', phase: 'Curriculum', schema: REPORT })
 log(`curriculum: ${cur ? cur.carryOver.join(' | ').slice(0, 400) : 'no result'}`)
 
-const results = await pipeline(
-  GROUPS,
-  (g) => review(g),
-  async (rep, g) => (rep ? { rep, ver: await verify(g, rep) } : null),
-  async (x, g) => {
-    if (!x) return { group: g, failed: 'review returned nothing' }
-    if (!x.ver || x.ver.verdict === 'pass') return { group: g, final: x.rep, ver: x.ver, fixed: false }
-    const f = await fix(g, x.rep, x.ver)
-    return { group: g, final: f ?? x.rep, ver: x.ver, fixed: !!f }
-  },
-)
+// At most LIMIT agents at once — the user's machine (8 GB) cannot carry more alongside Metro and Chrome.
+const LIMIT = args?.limit ?? 2
+async function pool(items, fn) {
+  const out = new Array(items.length)
+  let next = 0
+  const worker = async () => { while (next < items.length) { const i = next++; out[i] = await fn(items[i], i) } }
+  await Promise.all(Array.from({ length: Math.min(LIMIT, items.length) }, worker))
+  return out
+}
+const chain = async (g) => {
+  const rep = await review(g)
+  if (!rep) return { group: g, failed: 'review returned nothing' }
+  if (args?.noVerify) return { group: g, final: rep, ver: null, fixed: false }
+  const ver = await verify(g, rep)
+  if (!ver || ver.verdict === 'pass') return { group: g, final: rep, ver, fixed: false }
+  const f = await fix(g, rep, ver)
+  return { group: g, final: f ?? rep, ver, fixed: !!f }
+}
+const results = await pool(GROUPS, chain)
 
 return {
   curriculum: cur && { carryOver: cur.carryOver, open: cur.open, requests: cur.requestsForOrchestrator },

@@ -1,0 +1,9 @@
+== audit 15:22:09
+254 frames — clean 247, diff 7, unreachable 0, failed 0, no recipe 0 -> .overhaul/audit/report.md
+== lessons 15:49:58
+1273 pages over 84 lessons — 0 over 0.5% -> .overhaul/lesson-sweep/report.md
+== size 375x667 16:09:40
+375x667: 254 frames — ok 254, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== size 390x844 16:36:40
+390x844: 254 frames — ok 254, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/390x844/report.md
+== size 430x932 17:03:23

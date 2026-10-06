@@ -1,3 +1,4 @@
+== auth-funnel
 Splash: ok
 Login: ok
 Welcome Back: ok
@@ -10,7 +11,7 @@ V3 Q2: ok
 V3 Q3: ok
 V3 Q3b: ok
 First Principle: ok
-V3 Q5: CHECK {"overflowX":[],"underCtl":["While scrolling under Continue"],"clipped":[],"offscreen":[]}
+V3 Q5: ok
 V3 Q6: ok
 V3 Q7: ok
 What starts it: ok
@@ -21,50 +22,57 @@ V3 Q10: ok
 V3 Q13: ok
 V3 Q15: ok
 V3 Q16: ok
-V3 Q17: CHECK {"overflowX":[],"underCtl":["Nothing yet under Continue"],"clipped":[],"offscreen":[]}
+V3 Q17: ok
 Goal Confirmation: ok
+375x667: 25 frames — ok 25, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== tail
 Enlisting Aegis: ok
 Where We’d Start: ok
 Start Here: ok
 Start Here Step 1: ok
 Start Here Step 2: ok
-Your Plan: CHECK {"overflowX":[],"underCtl":["SOS gets you out first under Continue","When an urge hits under Continue"],"clipped":[],"offscreen":[]}
+Your Plan: ok
 Starting Score: ok
-Cost Next 30: CHECK {"overflowX":[],"underCtl":["Relapse under Next","Clean day under Next"],"clipped":[],"offscreen":[]}
+Cost Next 30: ok
 Cost Next 365: ok
 Cost By Age 80: ok
 Line If Nothing Changes: ok
 Line With the Plan: ok
 A Clean Day: ok
 One Bad Day: ok
-What You Want Back: CHECK {"overflowX":[],"underCtl":["Not a perfect streak for its own sake. under Continue","More of your time and attention going wh under Continue"],"clipped":[],"offscreen":[]}
+What You Want Back: ok
 Letter Received: ok
-Letter Week XII: CHECK {"overflowX":[],"underCtl":["There were nights I wanted to watch badl under Continue","Every time I waited one out, left the ro under Continue"],"clipped":[],"offscreen":[]}
+Letter Week XII: ok
 The Vow: ok
 Medallion Received: ok
-Reminders Setup: CHECK {"overflowX":[],"underCtl":["Late night ahead under Turn on reminders","You pick the time under Turn on reminders"],"clipped":[],"offscreen":[]}
-Paywall: CHECK {"overflowX":[],"underCtl":["12-week plan under Continue","SOS help under Continue","Weekly insights under Continue","Progress tracking under Continue"],"clipped":[],"offscreen":[]}
+375x667: 19 frames — ok 19, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== paywall-reminders
+Reminders Setup: ok
+Paywall: ok
 Day Zero: ok
 Paywall Rescue: ok
 Paywall Confirmed: ok
-Manage Subscription: CHECK {"overflowX":[],"underCtl":["Cancel subscription under Payment methodApple "],"clipped":[],"offscreen":[]}
-Morning Check-in Time: CHECK {"overflowX":[],"underCtl":["Su under Save time","M under Save time","Tu under Save time","W under Save time","Th under Save time","F under Save time","Sa under Save time"],"clipped":[],"offscreen":[]
-Nightly Check-in Time: CHECK {"overflowX":[],"underCtl":["Su under Save time","M under Save time","Tu under Save time","W under Save time","Th under Save time","F under Save time","Sa under Save time"],"clipped":[],"offscreen":[]
-Today Home: CHECK {"overflowX":[],"underCtl":["This morning under Today","Today under Fine","Log under Fine","Library under Low energy"],"clipped":[],"offscreen":[]}
-Score Detail: CHECK {"overflowX":["What moved it this month [375..750]","Clean days [411..523]","+108 [670..714]","Check-ins [411..523]","+60 [670..714]","Lessons [411..523]","+12 [670..714]","Urges ridden [411..523]"],"
-Score Detail Moves: CHECK {"overflowX":["+234 points this quarter [-291..-24]","May – July [-291..-24]","The ranks [375..750]","Captain [457..520]","1,500 [674..712]","Helmsman [457..543]","1,300 [674..712]","Navigator [457..5
-Score Detail Ranks: CHECK {"overflowX":["+234 points this quarter [-666..-399]","May – July [-666..-399]","What moved it this month [-375..0]","Clean days [-339..-227]","+108 [-80..-36]","Check-ins [-339..-227]","+60 [-80..-36
-Today Home II: CHECK {"overflowX":[],"underCtl":["Lesson 41 under SOS","Give the action a time and place under Today","Ride it out under SOS","Urge surfing under SOS","Today under Lesson 41Give the ac","Log under Lesson 4
-Today Home Task: CHECK {"overflowX":[],"underCtl":["Give the action a time and place under Today","Ride it out under SOS","Urge surfing under SOS","Today under Lesson 41Give the ac","Log under Lesson 41Give the ac","SOS und
-Today Home III: CHECK {"overflowX":[],"underCtl":["Urge surfing under Log","Five minutes. Ride the next one out. under Log","Today under Urge surfingFive min","Log under Urge surfingFive min","SOS under Urge surfingFive mi
+Manage Subscription: ok
+Morning Check-in Time: ok
+Nightly Check-in Time: ok
+375x667: 8 frames — ok 8, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== today
+Today Home: ok
+Score Detail: ok
+Score Detail Moves: ok
+Score Detail Ranks: ok
+Today Home II: ok
+Today Home Task: ok
+Today Home III: ok
+375x667: 7 frames — ok 7, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== day
 Morning Check-in Cover: ok
-Morning Task Check: ok
 Morning 1 Yesterday: ok
 Morning Feeling: ok
 Morning Energy: ok
 Morning Resign Pledge: ok
 Morning Pledge Signed: ok
-Change Pledge Sheet: CHECK {"overflowX":[],"underCtl":["Sign for today under Sign the new pledge","Sign the new pledge under Sign for today"],"clipped":[],"offscreen":[]}
+Change Pledge Sheet: ok
 Morning 5 Done: ok
 Night Check-in Cover: ok
 Night 1 Mood: ok
@@ -74,30 +82,50 @@ Night 3 Reflection: ok
 Night 2 Record: ok
 Night Action Reminder: ok
 Night 4 Closed: ok
-Week I Reset: CHECK {"overflowX":["Week II [399..726]","Streaks, relapses, and how you talk to y [399..726]","Measure more than a streak [453..686]","Stop sooner after a slip [453..686]","Use the hours that remain [453..
-Week I Reset P2: CHECK {"overflowX":["Week II [399..726]","Streaks, relapses, and how you talk to y [399..726]","Measure more than a streak [453..686]","Stop sooner after a slip [453..686]","Use the hours that remain [453..
-Week II Changing Your Mindset: CHECK {"overflowX":["Week I [-351..-24]","Survive the nights and steady the basics [-351..-24]","Prepare for tonight [-297..-64]","Remove easy access to porn [-297..-64]","Choose where to go instead [-297..
-Week II Changing Your Mindset P2: CHECK {"overflowX":["Week I [-351..-24]","Survive the nights and steady the basics [-351..-24]","Prepare for tonight [-297..-64]","Remove easy access to porn [-297..-64]","Choose where to go instead [-297..
-Week III In the Moment: CHECK {"overflowX":["Week II [-351..-24]","Streaks, relapses, and how you talk to y [-351..-24]","Measure more than a streak [-297..-64]","Stop sooner after a slip [-297..-64]","Use the hours that remain [-
-Week III In the Moment P2: CHECK {"overflowX":["Week II [-351..-24]","Streaks, relapses, and how you talk to y [-351..-24]","Measure more than a streak [-297..-64]","Stop sooner after a slip [-297..-64]","Use the hours that remain [-
-Week IV Know Your Brain: CHECK {"overflowX":["Week III [-351..-24]","What to do in the sixty seconds that mat [-351..-24]","What to do when an urge starts [-297..-64]","Check what you need [-297..-64]","Close the screen and move [-
-Week IV Know Your Brain P2: CHECK {"overflowX":["Week III [-351..-24]","What to do in the sixty seconds that mat [-351..-24]","What to do when an urge starts [-297..-64]","Check what you need [-297..-64]","Close the screen and move [-
-Week V Why It Feels Worth It: CHECK {"overflowX":["Week IV [-351..-24]","The machinery behind the pull. [-351..-24]","Understand what starts the habit [-297..-64]","Decide before the difficult hour [-297..-64]","Make room for food and s
-Week V Why It Feels Worth It P2: CHECK {"overflowX":["Week IV [-351..-24]","The machinery behind the pull. [-351..-24]","Understand what starts the habit [-297..-64]","Decide before the difficult hour [-297..-64]","Make room for food and s
-Week VI Discipline: CHECK {"overflowX":["Week V [-351..-24]","The honest math of what it gives and tak [-351..-24]","Look at the benefit and cost [-297..-64]","Meet the need you can identify [-297..-64]","Begin a task you are 
-Week VI Discipline P2: CHECK {"overflowX":["Week V [-351..-24]","The honest math of what it gives and tak [-351..-24]","Look at the benefit and cost [-297..-64]","Meet the need you can identify [-297..-64]","Begin a task you are 
-Week VII Relapse and Adversity: CHECK {"overflowX":["Week VI [-351..-24]","Training the response you want on hard n [-351..-24]","Prepare a simpler response when tired [-297..-64]","Practise the response [-297..-64]","38 [-335..-319]","Ke
-Week VII Relapse and Adversity P2: CHECK {"overflowX":["Week VI [-351..-24]","Training the response you want on hard n [-351..-24]","Prepare a simpler response when tired [-297..-64]","Practise the response [-297..-64]","38 [-335..-319]","Ke
-Week VIII Boredom and Meaning: CHECK {"overflowX":["Week VII [-351..-24]","Falling without unraveling. [-351..-24]","43 [-335..-319]","Learn from a slip [-297..-64]","44 [-335..-319]","Take care and make a repair [-297..-64]","45 [-335..
-Week VIII Boredom and Meaning P2: CHECK {"overflowX":["Week VII [-351..-24]","Falling without unraveling. [-351..-24]","43 [-335..-319]","Learn from a slip [-297..-64]","44 [-335..-319]","Take care and make a repair [-297..-64]","45 [-335..
-Week IX Connection: CHECK {"overflowX":["Week VIII [-351..-24]","Empty hours, and what fills them well. [-351..-24]","50 [-335..-319]","Give an activity time before switching [-297..-64]","51 [-335..-319]","Choose what begins 
-Week IX Connection P2: CHECK {"overflowX":["Week VIII [-351..-24]","Empty hours, and what fills them well. [-351..-24]","50 [-335..-319]","Give an activity time before switching [-297..-64]","51 [-335..-319]","Choose what begins 
-Week X Yourself: CHECK {"overflowX":["Week IX [-351..-24]","The people side of recovery. [-351..-24]","57 [-335..-319]","Arrange a shared activity [-297..-64]","58 [-335..-319]","Choose contact that fits [-297..-64]","59 [-
-Week X Yourself P2: CHECK {"overflowX":["Week IX [-351..-24]","The people side of recovery. [-351..-24]","57 [-335..-319]","Arrange a shared activity [-297..-64]","58 [-335..-319]","Choose contact that fits [-297..-64]","59 [-
-Week XI Build a Life You Want: CHECK {"overflowX":["Week X [-351..-24]","Repairing how you see and treat yourself [-351..-24]","64 [-335..-319]","Choose support without revisiting painfu [-297..-64]","65 [-335..-319]","Change one difficu
-Week XI Build a Life You Want P2: CHECK {"overflowX":["Week X [-351..-24]","Repairing how you see and treat yourself [-351..-24]","64 [-335..-319]","Choose support without revisiting painfu [-297..-64]","65 [-335..-319]","Change one difficu
-Week XII Leave It Behind: CHECK {"overflowX":["Week XI [-351..-24]","Point the freed-up energy at something. [-351..-24]","71 [-335..-319]","Use what your notes show [-297..-64]","72 [-335..-319]","Choose what you can do now [-297..
-Week XII Leave It Behind P2: CHECK {"overflowX":["Week XI [-351..-24]","Point the freed-up energy at something. [-351..-24]","71 [-335..-319]","Use what your notes show [-297..-64]","72 [-335..-319]","Choose what you can do now [-297..
+375x667: 17 frames — ok 16, check 0, no recipe 0, unreachable 0, failed 1 -> .overhaul/size-sweep/375x667/report.md
+== library
+Week I Reset: ok
+Week I Reset P2: ok
+Week II Changing Your Mindset: ok
+Week II Changing Your Mindset P2: ok
+Week III In the Moment: ok
+Week III In the Moment P2: ok
+Week IV Know Your Brain: ok
+Week IV Know Your Brain P2: ok
+Week V Why It Feels Worth It: ok
+Week V Why It Feels Worth It P2: ok
+Week VI Discipline: ok
+Week VI Discipline P2: ok
+Week VII Relapse and Adversity: ok
+Week VII Relapse and Adversity P2: ok
+Week VIII Boredom and Meaning: ok
+Week VIII Boredom and Meaning P2: ok
+Week IX Connection: ok
+Week IX Connection P2: ok
+Week X Yourself: ok
+Week X Yourself P2: ok
+Week XI Build a Life You Want: ok
+Week XI Build a Life You Want P2: ok
+Week XII Leave It Behind: ok
+Week XII Leave It Behind P2: ok
+375x667: 24 frames — ok 24, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== lessons
+Lesson Scroll 1: ok
+Lesson Scroll 2: ok
+Lesson Scroll 3: ok
+Lesson Scroll 4: ok
+Lesson Scroll 5: ok
+Lesson Scroll 6: ok
+Lesson Scroll 7: ok
+Lesson Scroll 8: ok
+Lesson Scroll 9: ok
+Lesson Scroll 10: ok
+Lesson Scroll 11: ok
+Lesson Scroll 12: ok
+Lesson Scroll 13: ok
+Lesson Scroll 14: ok
+375x667: 14 frames — ok 14, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== sos-flow
 Cue Intro Modal: ok
 SOS Strength: ok
 Cue Hue Picker: ok
@@ -106,7 +134,6 @@ Surf Step 3: ok
 Cue Set Confirmation: ok
 SOS Reason Picker: ok
 SOS Feeling Picker: ok
-SOS Challenge: ok
 SOS Reassess: ok
 SOS Afterward: ok
 Surf Complete: ok
@@ -114,12 +141,15 @@ Relapse Log: ok
 Relapse Twice: ok
 Relapse Resign: ok
 Relapse Begin: ok
-Urge Hub Now: CHECK {"overflowX":["You’re riding a wave. [399..726]","This one is strong. None this strong has [399..726]","Last 30 days [421..492]","28 clean, 2 slips [614..704]","Every urge so far has ended. [774..1101
-Urge Hub Score: CHECK {"overflowX":["Get out of bed. [-351..-24]","Stand up. Move somewhere with light. [-351..-24]","Bored [-322..-287]","Relationship [-251..-177]","Work or school [-141..-53]","Every urge so far has ende
-Urge Hub Proof: CHECK {"overflowX":["Get out of bed. [-726..-399]","Stand up. Move somewhere with light. [-726..-399]","Bored [-697..-662]","Relationship [-626..-552]","Work or school [-516..-428]","You’re riding a wave. [
-Urge Hub Surfed: CHECK {"overflowX":["Get out of bed. [-1101..-774]","Stand up. Move somewhere with light. [-1101..-774]","Bored [-1072..-1037]","Relationship [-1001..-927]","Work or school [-891..-803]","You’re riding a wa
-Urge Hub Pledges: CHECK {"overflowX":["Get out of bed. [-1476..-1149]","Stand up. Move somewhere with light. [-1476..-1149]","Bored [-1447..-1412]","Relationship [-1376..-1302]","Work or school [-1266..-1178]","You’re riding
+Urge Hub Now: ok
+Urge Hub Score: ok
+Urge Hub Proof: ok
+Urge Hub Surfed: ok
+Urge Hub Pledges: ok
 Urge Hub Breathe: ok
+375x667: 21 frames — ok 21, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== sos-boards
+SOS Challenge: ok
 SOS Loc Bed: ok
 SOS Loc Bathroom: ok
 SOS Loc Home Alone: ok
@@ -150,63 +180,76 @@ SOS Trig Argument: ok
 SOS Trig Rejection: ok
 SOS Trig Alone: ok
 SOS Trig Unknown: ok
-Medallions: CHECK {"overflowX":["Logbook [422..480]","Tier II, ×25 [422..480]","Pulse [539..586]","Tier I, ×5 [539..586]","Black Box [642..706]","Jul 20 [642..706]","Lessons [425..476]","Tier I, ×5 [425..476]"],"underC
+375x667: 31 frames — ok 31, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== medallions-letters
+Medallions: ok
 Medallions Still To Earn: ok
-Album Earned II: CHECK {"overflowX":["Veni [-314..-284]","Jun 9 [-314..-284]","First light [-218..-157]","Jun 9 [-218..-157]","Vidi [-108..-44]","Tier I, Day 7 [-108..-44]","Vici [-323..-276]","Tier I, ×5 [-323..-276]"],"un
-Breakwater Paper: CHECK {"overflowX":[],"underCtl":["“The first wave broke against you, not o under Share this"],"clipped":[],"offscreen":[]}
-Breakwater Bronze: CHECK {"overflowX":[],"underCtl":["“Five storms met at full height. The wal under Share this"],"clipped":[],"offscreen":[]}
-Breakwater Silver: CHECK {"overflowX":[],"underCtl":["“Ten overwhelming urges, none of them de under Share this"],"clipped":[],"offscreen":[]}
-Breakwater Gold: CHECK {"overflowX":[],"underCtl":["“Twenty-five. What used to flood you now under Share this"],"clipped":[],"offscreen":[]}
-Breakwater Platinum: CHECK {"overflowX":[],"underCtl":["“Fifty waves. The sea hasn’t changed. Th under Share this"],"clipped":[],"offscreen":[]}
-Tiers Vidi: CHECK {"overflowX":[],"underCtl":["Day 13 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Vici: CHECK {"overflowX":[],"underCtl":["×23 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Rebound: CHECK {"overflowX":[],"underCtl":["×2 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Breakwater: CHECK {"overflowX":[],"underCtl":["×3 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Logbook: CHECK {"overflowX":[],"underCtl":["×26 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Pulse: CHECK {"overflowX":[],"underCtl":["×19 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Archive: CHECK {"overflowX":[],"underCtl":["×9 under Back to medallions"],"clipped":[],"offscreen":[]}
-Tiers Lessons: CHECK {"overflowX":[],"underCtl":["×12 under Back to medallions"],"clipped":[],"offscreen":[]}
+Album Earned II: ok
+Breakwater Paper: ok
+Breakwater Bronze: ok
+Breakwater Silver: ok
+Breakwater Gold: ok
+Breakwater Platinum: ok
+Tiers Vidi: ok
+Tiers Vici: ok
+Tiers Rebound: ok
+Tiers Breakwater: ok
+Tiers Logbook: ok
+Tiers Pulse: ok
+Tiers Archive: ok
+Tiers Lessons: ok
 Tiers One-offs: ok
-Detail Paper: CHECK {"overflowX":[],"underCtl":["“Five ridden. Each one shortens the next under Back to medallions"],"clipped":[],"offscreen":[]}
-Detail Bronze: CHECK {"overflowX":[],"underCtl":["“Twenty-five behind you now — the patter under Share this"],"clipped":[],"offscreen":[]}
-Detail Silver: CHECK {"overflowX":[],"underCtl":["“A hundred waves met and outlasted. This under Share this"],"clipped":[],"offscreen":[]}
-Detail Gold: CHECK {"overflowX":[],"underCtl":["“Two hundred and fifty. The sea keeps co under Share this"],"clipped":[],"offscreen":[]}
-Detail Platinum: CHECK {"overflowX":[],"underCtl":["“A thousand. The sea hasn’t changed. You under Share this"],"clipped":[],"offscreen":[]}
+Detail Paper: ok
+Detail Bronze: ok
+Detail Silver: ok
+Detail Gold: ok
+Detail Platinum: ok
+Letter Arrival: ok
+Letter Read: ok
+Medallion Letter: ok
+Yearly Drop: ok
+Drop Received: ok
+375x667: 27 frames — ok 27, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== logs
 Log Chooser: ok
 Lapse When: ok
 Lapse Trigger: ok
 Lapse Done: ok
-Log Urges: CHECK {"overflowX":[],"underCtl":["Sun, 10:22 pm under Today","Slipped under Journey"],"clipped":[],"offscreen":[]}
-Log Check-ins: CHECK {"overflowX":[],"underCtl":["Thursday under Today","Good under Journey"],"clipped":[],"offscreen":[]}
-Log Reports: CHECK {"overflowX":[],"underCtl":["Jun 23–29 under Today","+6 under Journey","Today under Jun 23–29+6","Log under Jun 23–29+6","SOS under Jun 23–29+6","Library under Jun 23–29+6","Journey under Jun 23–29+6"
-Urge Overview Summary: CHECK {"overflowX":["Strong [501..624]","Most urges [526..599]","1 [415..474]","2 [474..533]","3 [533..592]","4 [592..651]","5 [651..710]","Stress [401..497]"],"underCtl":[],"clipped":[],"offscreen":[]}
-Urge Overview: CHECK {"overflowX":["9 [-205..-170]","Urges, 7 ridden out [-250..-125]","Jul 19 [-349..-310]","Slipped [-72..-26]","Jul 17 [-349..-310]","6 min [-60..-26]","Jul 15 [-349..-310]","4 min [-60..-26]"],"underCt
-Urge Overview Mood: CHECK {"overflowX":["14 [-597..-528]","Urges, 14 ridden out [-629..-496]","Jul 19 [-724..-685]","5 min [-435..-401]","Jul 17 [-724..-685]","Jul 15 [-724..-685]","Jul 13 [-724..-685]","Jul 11 [-724..-685]"],
-Urge Overview When: CHECK {"overflowX":["9 [-955..-920]","Urges, 7 ridden out [-1000..-875]","Jul 19 [-1099..-1060]","Slipped [-822..-776]","Jul 17 [-1099..-1060]","6 min [-810..-776]","Jul 15 [-1099..-1060]","4 min [-810..-77
+Log Urges: ok
+Log Check-ins: ok
+Log Reports: ok
+Urge Overview Summary: ok
+Urge Overview: ok
+Urge Overview Mood: ok
+Urge Overview When: ok
 Report Ready: ok
-Weekly Report: CHECK {"overflowX":["6 of 7 [490..635]","Clean days [527..598]","M [422..432]","T [469..475]","W [512..523]","T [559..566]","F [605..611]","S [650..656]"],"underCtl":[],"clipped":[],"offscreen":[]}
-Weekly Report Days: CHECK {"overflowX":["1,130 [-263..-112]","+44 this week [-233..-142]","1 [545..580]","Urge, ridden out [509..616]","Fri, 9:05 pm [401..480]","Strong [682..724]"],"underCtl":[],"clipped":[],"offscreen":[]}
-Weekly Report Urges: CHECK {"overflowX":["1,212 [-638..-487]","+48 this week [-608..-517]","7 of 7 [-260..-115]","Clean days [-223..-152]","M [-328..-318]","T [-281..-275]","W [-238..-227]","T [-191..-184]"],"underCtl":[],"clip
+Weekly Report: ok
+Weekly Report Days: ok
+Weekly Report Urges: ok
 Urge Log Intensity: ok
 Urge Log Trigger: ok
 Urge Log Outcome: ok
 Urge Log When: ok
 Urge Log Done: ok
+375x667: 20 frames — ok 20, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== settings
 Settings: ok
 Edit Profile: ok
-Sheet Profile Photo: CHECK {"overflowX":[],"underCtl":["Started VICI under Choose from library","14 Mar 2026 under Choose from library","Current week under Remove photo","Week VI, Discipline under Remove photo","Cancel under Me
-Sheet Edit Name: CHECK {"overflowX":[],"underCtl":["Medallions under Save","10 of 12 under Save","Save under Medallions10 of 12"],"clipped":[],"offscreen":[]}
-Settings Weekly Report: CHECK {"overflowX":["6 of 7 [490..635]","Clean days [527..598]","M [422..432]","T [469..475]","W [512..523]","T [559..566]","F [605..611]","S [650..656]"],"underCtl":[],"clipped":[],"offscreen":[]}
-Settings Check-in Time: CHECK {"overflowX":[],"underCtl":["Su under Save time","M under Save time","Tu under Save time","W under Save time","Th under Save time","F under Save time","Sa under Save time"],"clipped":[],"offscreen":[]
+Sheet Profile Photo: ok
+Sheet Edit Name: ok
+Settings Weekly Report: ok
+Settings Check-in Time: ok
 Your Vow Page: ok
-Sheet Sign Out: CHECK {"overflowX":[],"underCtl":["Data & privacy under Sign out","Your log, letters and medallions stay sa under App lockFace ID","Sign out under Data & privacy"],"clipped":[],"offscreen":[]}
+Sheet Sign Out: ok
 Data Privacy: ok
 App Lock: ok
+375x667: 10 frames — ok 10, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+== slip
 Slip Entry: ok
 Slip Close It: ok
 Slip When: ok
 Slip Fed: ok
-Slip Logged: CHECK {"overflowX":[],"underCtl":["Change for next time under Continue","Phone charges outside the bedroom under Continue"],"clipped":[],"offscreen":[]}
+Slip Logged: ok
 Slip Urge Now: ok
 Slip Dont Fail Twice: ok
 Slip Stop Here: ok
@@ -233,23 +276,4 @@ Slip Trigger Couldn’t sleep: ok
 Slip Trigger Being alone: ok
 Slip Trigger Habit: ok
 Slip Trigger Not sure: ok
-Letter Arrival: ok
-Letter Read: CHECK {"overflowX":[],"underCtl":["I’ll see you tonight, steadier. under Save to Log","— the you who makes it out under Save to Log"],"clipped":[],"offscreen":[]}
-Medallion Letter: ok
-Yearly Drop: CHECK {"overflowX":[],"underCtl":["Full 12-week programme under Unlock my year","SOS support anytime under Unlock my year","Track your progress under Unlock my year"],"clipped":[],"offscreen":[]}
-Drop Received: ok
-Lesson Scroll 1: ok
-Lesson Scroll 2: ok
-Lesson Scroll 3: ok
-Lesson Scroll 4: ok
-Lesson Scroll 5: CHECK {"overflowX":[],"underCtl":["Think of the evening that usually goes w under Next"],"clipped":[],"offscreen":[]}
-Lesson Scroll 6: ok
-Lesson Scroll 7: ok
-Lesson Scroll 8: ok
-Lesson Scroll 9: ok
-Lesson Scroll 10: ok
-Lesson Scroll 11: ok
-Lesson Scroll 12: ok
-Lesson Scroll 13: ok
-Lesson Scroll 14: ok
-375x667: 254 frames — ok 167, check 87, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md
+375x667: 31 frames — ok 31, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/375x667/report.md

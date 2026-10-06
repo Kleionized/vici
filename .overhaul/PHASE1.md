@@ -106,7 +106,7 @@ Frames: the 30 in `sos-boards` + `SOS Challenge`. Files: `src/components/urge/bo
 
 ### `medallions-letters` (D270–279) — doc `medallions-letters.md`
 Frames: the 27 in `medallions-letters`. Files: `src/app/(app)/milestones.tsx`, `src/app/medallions/**`,
-`src/components/keepsakes/*` (keep `KK_ALBUM`, `kkStanding`, `KK_METALS`, `KKMedallion` exported),
+`src/components/keepsakes/*` (keep `KK_ALBUM`, `kkStanding`, `KK_METALS` exported; the `KKMedallion` shim was removed in Phase 2 — nothing imported it),
 `src/lib/album.ts` (`useMedallionLedger` + `useAlbumStanding`), `src/app/{letter,medallion-post,drop,mail}.tsx`.
 D323: ✕ on Yearly Drop. Letter Arrival is the arrival for both posts (CRITIC C8). [medallions.json, letters.json]
 

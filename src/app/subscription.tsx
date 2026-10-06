@@ -100,8 +100,10 @@ export default function Subscription() {
   return (
     <Screen>
       <NavBar left="back" centre={{ title: 'Subscription' }} right="empty" onBack={back} />
-      {/* D320: the stack scrolls under the nav row only where it would meet the cancel line */}
-      <ScrollRegion top={100} bottom={CONTROLS} contentStyle={{ paddingTop: 36, paddingHorizontal: 24, paddingBottom: 24, gap: 18 }}>
+      {/* D320: the stack scrolls under the nav row only where it would meet the cancel line;
+          a free account has no cancel line, so its band runs to the bottom edge instead of
+          stopping 74 short over empty ground */}
+      <ScrollRegion top={100} bottom={premium ? CONTROLS : 0} contentStyle={{ paddingTop: 36, paddingHorizontal: 24, paddingBottom: 24, gap: 18 }}>
         <Card>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
             <View style={{ flexShrink: 1 }}>

@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
-import { ScrollView, View, useWindowDimensions } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 
-import { CheckDisc, ChevronL, ChevronR, Hero, MonoText, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
+import { CheckDisc, ChevronL, ChevronR, CueScrollView, Hero, MonoText, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import type { Curriculum84Lesson, Curriculum84Week } from '@/content/curriculum84';
 import { useCurrentUser } from '@/lib/backend';
 import { mono } from '@/lib/theme';
@@ -159,17 +159,20 @@ export function CourseRow({
         )}
       </View>
       {tall ? (
+        // Only the unframed screens draw these rows (search, first steps,
+        // locked), so their two-line runs take `pretty` rather than the week
+        // rows' greedy wrap: no lone last word on a narrow phone (D248).
         <View style={{ flex: 1, gap: 2 }}>
           {caps ? (
             <MonoText v="caps" wrap="wrap" color={current ? mono.onInkMuted : mono.mute}>
               {caps}
             </MonoText>
           ) : null}
-          <MonoText v="rowLabel" wrap="wrap" color={ink}>
+          <MonoText v="rowLabel" wrap="pretty" color={ink}>
             {title}
           </MonoText>
           {detail ? (
-            <MonoText v="pTight" wrap="wrap" color={current ? mono.onInkMuted : mono.mute} style={{ fontSize: 13, lineHeight: 18 }}>
+            <MonoText v="pTight" wrap="pretty" color={current ? mono.onInkMuted : mono.mute} style={{ fontSize: 13, lineHeight: 18 }}>
               {detail}
             </MonoText>
           ) : null}
@@ -316,14 +319,13 @@ export function WeekPage({
       <View style={{ width, height: '100%' }}>
         {hero}
         <WeekHeader week={week} />
-        <ScrollView
-          showsVerticalScrollIndicator={false}
+        <CueScrollView
           style={{ position: 'absolute', left: 0, right: 0, top: ROWS_TOP, height: view }}
           // the last scroll position is P2 — row 5 on the viewport's top edge —
           // whatever the viewport's height
           contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: view + ROWS_SCROLL - (7 * ROW_H + 6 * ROW_GAP) }}>
           {rows}
-        </ScrollView>
+        </CueScrollView>
       </View>
     );
   }
@@ -333,7 +335,7 @@ export function WeekPage({
   const top = 54;
   return (
     <View style={{ width, height: '100%' }}>
-      <ScrollView showsVerticalScrollIndicator={false} style={{ position: 'absolute', left: 0, right: 0, top, bottom: 0 }}>
+      <CueScrollView style={{ position: 'absolute', left: 0, right: 0, top, bottom: 0 }}>
         <View style={{ height: ROWS_TOP - top + 7 * ROW_H + 6 * ROW_GAP + 24 }}>
           <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -top, width }}>
             {hero}
@@ -342,7 +344,7 @@ export function WeekPage({
           <View style={{ position: 'absolute', left: 16, right: 16, top: ROWS_TOP - top }}>{rows}</View>
           <WeekBack onPress={onBack} top={60 - top} />
         </View>
-      </ScrollView>
+      </CueScrollView>
     </View>
   );
 }

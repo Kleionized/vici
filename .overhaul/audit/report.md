@@ -25,7 +25,7 @@
 | V3 Q16 | auth-funnel | CLEAN | 0 |  | 4/1/5 |
 | V3 Q17 | auth-funnel | CLEAN | 0 |  | 8/0/3 |
 | Goal Confirmation | auth-funnel | CLEAN | 0 |  | 2/1/5 |
-| Enlisting Aegis | tail | CLEAN | 0.092 | 188,240 36×12; 224,280 16×28; 172,308 24×12 | 3/3/5 |
+| Enlisting Aegis | tail | CLEAN | 0.169 | 156,240 84×52; 172,308 24×12; 208,312 4×8 | 3/3/5 |
 | Where We’d Start | tail | CLEAN | 0.012 | 252,664 12×12; 164,664 8×12; 280,664 8×12 | 5/1/7 |
 | Start Here | tail | CLEAN | 0 |  | 2/1/5 |
 | Start Here Step 1 | tail | CLEAN | 0 |  | 2/1/4 |
@@ -45,13 +45,13 @@
 | The Vow | tail | CLEAN | 0 |  | 5/0/5 |
 | Medallion Received | tail | CLEAN | 0 |  | 2/1/4 |
 | Reminders Setup | paywall-reminders | CLEAN | 0 |  | 6/1/8 |
-| Paywall | paywall-reminders | CLEAN | 0.105 | 316,72 56×16 | 18/1/12 |
+| Paywall | paywall-reminders | CLEAN | 0.105 | 316,72 56×16 | 18/1/16 |
 | Day Zero | paywall-reminders | CLEAN | 0 |  | 4/1/4 |
 | Paywall Rescue | paywall-reminders | CLEAN | 0 |  | 2/1/4 |
 | Paywall Confirmed | paywall-reminders | CLEAN | 0.001 | 236,380 8×4; 152,380 4×4 | 2/1/5 |
 | Manage Subscription | paywall-reminders | CLEAN | 0 |  | 16/1/5 |
-| Morning Check-in Time | paywall-reminders | CLEAN | 0.003 | 28,608 4×4; 60,608 4×4; 160,608 4×4 | 23/4/27 |
-| Nightly Check-in Time | paywall-reminders | CLEAN | 0.003 | 28,608 4×4; 60,608 4×4; 160,608 4×4 | 23/4/29 |
+| Morning Check-in Time | paywall-reminders | CLEAN | 0 |  | 23/5/33 |
+| Nightly Check-in Time | paywall-reminders | CLEAN | 0 |  | 23/5/35 |
 | Today Home | today | DIFF | 1.89 | 24,368 328×180 | 20/1/107 |
 | Score Detail | today | DIFF | 1.775 | 0,392 396×116; 0,428 396×96; 92,604 184×20 | 13/4/84 |
 | Score Detail Moves | today | DIFF | 0.747 | 192,408 48×16; 36,540 80×20; 300,604 60×20 | 16/10/77 |
@@ -60,21 +60,21 @@
 | Today Home Task | today | CLEAN | 0.42 | 40,648 120×16; 48,668 96×16; 80,628 16×12 | 33/2/99 |
 | Today Home III | today | CLEAN | 0.004 | 204,308 16×12; 296,304 4×4; 96,292 4×4 | 41/2/97 |
 | Morning Check-in Cover | day | CLEAN | 0 |  | 2/1/4 |
-| Morning Task Check | day | CLEAN | 0 |  | 3/1/4 |
-| Morning 1 Yesterday | day | CLEAN | 0.085 | 340,232 28×12; 280,232 32×12; 312,232 16×12 | 6/2/5 |
+| Morning Task Check | day | CLEAN | 0.002 | 24,380 8×12; 184,380 8×4; 188,388 4×4 | 3/1/5 |
+| Morning 1 Yesterday | day | CLEAN | 0.063 | 340,232 28×12; 300,232 12×12 | 6/2/6 |
 | Morning Feeling | day | CLEAN | 0 |  | 2/1/4 |
 | Morning Energy | day | CLEAN | 0 |  | 2/1/4 |
-| Morning Resign Pledge | day | CLEAN | 0 |  | 4/1/7 |
-| Morning Pledge Signed | day | CLEAN | 0 |  | 4/1/7 |
-| Change Pledge Sheet | day | CLEAN | 0.188 | 352,72 20×16; 20,68 16×24; 80,76 24×8 | 3/2/44 |
+| Morning Resign Pledge | day | CLEAN | 0 |  | 4/1/8 |
+| Morning Pledge Signed | day | CLEAN | 0 |  | 4/1/8 |
+| Change Pledge Sheet | day | CLEAN | 0.188 | 352,72 20×16; 20,68 16×24; 80,76 24×8 | 3/2/45 |
 | Morning 5 Done | day | CLEAN | 0 |  | 2/0/2 |
 | Night Check-in Cover | day | CLEAN | 0 |  | 2/1/4 |
 | Night 1 Mood | day | CLEAN | 0 |  | 2/1/5 |
 | Checkin Emotions | day | CLEAN | 0 |  | 8/1/8 |
 | Checkin Reasons | day | CLEAN | 0 |  | 8/1/7 |
-| Night 3 Reflection | day | CLEAN | 0.015 | 336,236 4×28 | 2/3/6 |
+| Night 3 Reflection | day | CLEAN | 0.015 | 336,236 4×28 | 2/2/6 |
 | Night 2 Record | day | CLEAN | 0 |  | 6/0/3 |
-| Night Action Reminder | day | CLEAN | 0 |  | 3/1/5 |
+| Night Action Reminder | day | CLEAN | 0 |  | 3/1/6 |
 | Night 4 Closed | day | CLEAN | 0 |  | 1/1/4 |
 | Week I Reset | library | CLEAN | 0 |  | 10/2/130 |
 | Week I Reset P2 | library | CLEAN | 0 |  | 9/2/138 |
@@ -121,7 +121,7 @@
 | Urge Hub Proof | sos-flow | CLEAN | 0 |  | 6/0/117 |
 | Urge Hub Surfed | sos-flow | CLEAN | 0 |  | 15/1/111 |
 | Urge Hub Pledges | sos-flow | CLEAN | 0 |  | 4/0/117 |
-| Urge Hub Breathe | sos-flow | CLEAN | 0.177 | 312,68 24×24; 156,464 76×16; 124,372 16×76 | 10/0/11 |
+| Urge Hub Breathe | sos-flow | CLEAN | 0.188 | 312,68 24×24; 136,336 92×36; 232,376 36×92 | 10/0/11 |
 | SOS Loc Bed | sos-boards | CLEAN | 0 |  | 2/1/4 |
 | SOS Loc Bathroom | sos-boards | CLEAN | 0 |  | 2/1/4 |
 | SOS Loc Home Alone | sos-boards | CLEAN | 0 |  | 2/1/4 |
@@ -199,7 +199,7 @@
 | Sheet Profile Photo | settings | CLEAN | 0 |  | 20/1/6 |
 | Sheet Edit Name | settings | CLEAN | 0.014 | 132,520 4×28 | 17/2/7 |
 | Settings Weekly Report | settings | CLEAN | 0.012 | 140,476 16×12; 240,396 4×8; 48,456 8×8 | 12/0/85 |
-| Settings Check-in Time | settings | CLEAN | 0 |  | 23/4/29 |
+| Settings Check-in Time | settings | CLEAN | 0 |  | 23/5/35 |
 | Your Vow Page | settings | CLEAN | 0 |  | 5/1/8 |
 | Sheet Sign Out | settings | CLEAN | 0 |  | 23/1/5 |
 | Data Privacy | settings | CLEAN | 0 | 300,508 4×4 | 9/1/3 |
@@ -238,7 +238,7 @@
 | Letter Arrival | medallions-letters | CLEAN | 0 |  | 3/1/5 |
 | Letter Read | medallions-letters | CLEAN | 0 |  | 5/1/4 |
 | Medallion Letter | medallions-letters | DIFF | 0.547 | 116,480 192×36; 68,488 24×20; 56,488 8×8 | 4/8/10 |
-| Yearly Drop | medallions-letters | CLEAN | 0.103 | 316,72 56×16 | 8/5/11 |
+| Yearly Drop | medallions-letters | CLEAN | 0.103 | 316,72 56×16 | 8/5/13 |
 | Drop Received | medallions-letters | CLEAN | 0 |  | 3/0/3 |
 | Lesson Scroll 1 | lessons | CLEAN | 0 | 128,328 4×4 | 1/2/6 |
 | Lesson Scroll 2 | lessons | CLEAN | 0 |  | 1/1/5 |

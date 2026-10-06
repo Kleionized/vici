@@ -39,7 +39,7 @@ frames draw upcoming rows with a chevron and the app never gated the board. Each
 none; `rowLabel`'s default `nowrap` is overridden) — the nine two-line titles break where the frames do.
 
 ## D243 — Other phone sizes
-Taller than 852 the viewport runs to the scene's foot (430 × 932: 344 tall, rows 1–5 and the top of 6) rather
+Taller than 852 the viewport runs towards the scene's foot (430 × 932: rows 1–5, its foot trimmed per D247) rather
 than stopping at 264 over a band of empty ground; the last position is still P2. Below three rows of viewport
 (a phone under ~770 tall — 375 × 667 gives 113) the page scrolls whole from the safe-area top (D320 rule 3):
 chevron, hero, header and rows in one scroll, the chevron riding with it so nothing passes under a pinned glyph.
@@ -86,3 +86,23 @@ re-rendered with its svg at `top: 99` instead of `98.9` diffs 0 px against the o
 svg box to the whole point — D373 confirmed by capture), and the app against either is the same 78 px on Week VI.
 It is the browser rasterising a CSS-transformed `<svg>` versus react-native-svg's `<G transform>`; the kit's
 `Hero` owns that choice.
+
+## D247 — The taller viewport stops on a row edge
+The frame's own 264 lands exactly on row 5's top edge. Run to the scene's foot, 430 × 932 leaves 344, which shows
+14pt of row 6 as a stray band just above the bar. `useRowsViewport` raises the foot to the edge of the first row it
+would cut (`view − view % 66` when the cut falls inside a row), so 932 shows rows 1–5 whole (330) and P2 still ends
+on row 5's top. 852 (264) and 844 (256 — the cut falls in the 8 gap) cut no row and are unchanged. Re-checked in
+Phase 2 at all three sweep sizes, scroll 0 and end.
+
+## D248 — Phase 2: two-line runs on the unframed rows, the centred lines
+No frame draws these; each is a line-break fault seen on the size captures, fixed without touching the frames.
+* `CourseRow`'s `caps`/`detail` form (search, first steps, locked — never the week rows, whose titles keep the
+  frames' greedy wrap) sets its title and detail `pretty`, so a two-line title or one-liner does not end on a
+  lone word at the narrower widths (search at 375 now reads "Get support during a / difficult period").
+* Locked's line is two sentences under a centred `h1`; greedy left "the mist." alone at 393, balance split
+  "The / road". It now breaks between the sentences (`\n`; each fits a line at every width — fixed copy, D332), and
+  its straight apostrophe is the system's `’`.
+* The campaign chapters' lines (two lines each, centred under the title) balance, as a centred two-line `p`
+  does elsewhere: "…keep / the light on for the long run." instead of a lone "run.".
+Phase 2 verification scripts: `.overhaul/lib-unframed.mjs` (the unframed screens at 393/375/390/430, scroll 0
+and end) and `.overhaul/lib-backpaths.mjs` (20 flows, every back path and lesson door, D340 history included).

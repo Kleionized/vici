@@ -578,8 +578,11 @@
  {
   "frame": "Morning Resign Pledge",
   "group": "day",
-  "status": "CAPTURE FAILED",
-  "note": "Error: page.evaluate: Error: no control for \"Begin\" :: \n    at window.tap (eval at evaluate (:311:30), <anonymous>:18:18)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:22)\n    at eval (eval a"
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
  },
  {
   "frame": "Morning Pledge Signed",
@@ -593,8 +596,11 @@
  {
   "frame": "Change Pledge Sheet",
   "group": "day",
-  "status": "CAPTURE FAILED",
-  "note": "Error: page.evaluate: Error: no control for \"Begin\" :: \n    at window.tap (eval at evaluate (:311:30), <anonymous>:18:18)\n    at eval (eval at evaluate (:311:30), <anonymous>:6:7)\n    at eval (eval at"
+  "status": "ok",
+  "overflowX": [],
+  "underCtl": [],
+  "clipped": [],
+  "offscreen": []
  },
  {
   "frame": "Morning 5 Done",

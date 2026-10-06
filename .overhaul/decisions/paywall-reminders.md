@@ -29,6 +29,8 @@ words inside that sentence (CRITIC G12, D328): monthly `$12.99 a month. Renews �
 …` (the old "runs until"); lifetime `$X · billed once` (unchanged); free `Free tools` / `Core tools included` and a
 "Free" pill in the same `badge` kind, Change plan's value "Free", no next charge, no cancel line (as before). The
 Change plan value is the plan name only ("Yearly"), as drawn — the old `Yearly · $39.99` detail is gone.
+With no cancel line the band runs to the bottom edge (Phase 2): it used to stop 74 short over empty ground, which
+on 375×667 cut the Billing rows above a blank strip.
 
 ## D223 — OfferingPaywall on the frame's board, any number of packages
 It renders `PwBoard` (the frame's chrome, words and discs) with one `PwPlanCard` per package: two packages are the
@@ -104,3 +106,29 @@ obsolete: both frames draw a real two-row meridiem.
 | Morning Check-in Time | `/routines/morning-time` | 0.00 % (0 px) | — |
 | Nightly Check-in Time | `/routines/night-time` | 0.00 % (0 px) | — |
 | Settings Check-in Time | `/routines/night-time?from=settings` | 0.00 % (0 px) | — |
+
+## Phase 2 — review (393×852 audit, the three sweep sizes, unframed screens)
+
+Fresh audit (`audit-fast.mjs --group=paywall-reminders`) and sweeps (`size-sweep.mjs --size=… --scroll`): every frame
+CLEAN, every sweep row `ok`, every strip and size PNG read. Unframed screens and undrawn states at 393×852, 375×667,
+390×844 and 430×932: `node .overhaul/pr-unframed.mjs` (captures + `.overhaul/pr-row.mjs` rows in
+`.overhaul/shots/pr/unframed/`). Controls and back paths under D340: `node .overhaul/pr-func.mjs` — all PASS, incl.
+Settings → Subscription / check-in boards → Back/Save → Settings, All → Reminders / primer / time / subscription /
+paywall → All, Locked → Unlock → ✕ ✕ → Locked.
+
+| frame | px | residual |
+| --- | --- | --- |
+| Reminders Setup | 0.00 % | — |
+| Paywall | 0.105 % | 316,72 56×16 — Restore → ✕ (D220/D323) |
+| Day Zero | 0.00 % | — |
+| Paywall Rescue | 0.00 % | — |
+| Paywall Confirmed | 0.001 % | 11 px on the 132 disc's antialiased rim (152,380 / 236,380), ≤ 40/255; the kit `CheckDisc` is built as the frame's div |
+| Manage Subscription | 0.00 % | — |
+| Morning / Nightly / Settings Check-in Time | 0.00 % | (the day-disc specks of the earlier audit were gone on re-run) |
+
+Short phones (375×667) behave per D320/D226 and are not defects: Reminders' first note, Paywall's discs, the check-in
+boards' day toggles and Subscription's Billing rows sit under the band's foot until scrolled; the `.end` captures
+show each whole above its control. At 430 Paywall's "Weekly insights" fits one line while "Progress tracking" wraps —
+the frame's no-`text-wrap` columns doing what the canvas CSS does at that width. A sweep capture once showed the
+paywall lockup without its laurel (the `<img>` not yet decoded); the re-run and `pr-unframed.mjs` (which waits for
+images) show it at every size.

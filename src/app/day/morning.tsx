@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard, dayNumber } from '@/components/day/board';
 import { dayAction } from '@/components/day/kit';
+import { lessonForDay } from '@/content/curriculum84';
 import {
   EnergyBars,
   GhostLink,
@@ -25,6 +26,7 @@ import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJourn
 import { toDateKey, todayKey } from '@/lib/date';
 import { countOf, groupDigits, roman } from '@/lib/format';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
+import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
  * The morning check-in (today-day §3): a cover, then five steps on the eight
@@ -97,8 +99,13 @@ export default function Morning() {
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
 
   // The action the flow asks after, read off yesterday's check-in row so it never
-  // invents an action the user was never actually given.
-  const yesterdayTask = (checkins ?? []).find((c) => c.date === toDateKey(new Date(dawn)))?.dailyAction ?? dayAction(Math.max(1, day - 1));
+  // invents an action the user was never actually given. When the row names
+  // none, yesterday's Today showed that day's lesson task (`cardSummary`, D339),
+  // so that is what the morning asks after; past the course, the generic list.
+  const yesterdayTask =
+    (checkins ?? []).find((c) => c.date === toDateKey(new Date(dawn)))?.dailyAction ??
+    lessonForDay(day - 1)?.task.cardSummary ??
+    dayAction(Math.max(1, day - 1));
 
   const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && yesterday(e.createdAt));
   const lapses = (events ?? []).filter((e) => e.type === 'lapse' && yesterday(e.createdAt)).length;
@@ -110,8 +117,8 @@ export default function Morning() {
 
   // The standing pledge — the latest `Pledge` entry, the words Today p3 prints.
   // A draft written in the sheet stands in until it is signed.
-  const standing = (journal ?? []).find((entry) => entry.tag === 'Pledge');
-  const pledgeBody = draft ?? standing?.body ?? 'The mornings are mine again.';
+  const standing = standingPledge(journal);
+  const pledgeBody = draft ?? (pledgeText(standing) || 'The mornings are mine again.');
 
   // The score row shows what yesterday alone put on the board, on the same
   // weights the score itself is built from.
@@ -136,9 +143,15 @@ export default function Morning() {
     close();
   }
 
-  if (step === COVER) return <CheckinCover part="morning" day={day} onBegin={() => setStep(TASK)} onClose={close} />;
+  // Day 1 has no yesterday: no task to ask after and no ledger to read out, so the
+  // flow opens on the feeling and its dashes count the three steps it has —
+  // nothing is written to a row dated before the account (D400). Only a loaded
+  // account is a first day: while it loads `day` reads 1 for everyone, and a
+  // quick Begin would skip yesterday's task for a user on day 13.
+  const firstDay = user != null && day <= 1;
+  if (step === COVER) return <CheckinCover part="morning" day={day} onBegin={() => setStep(firstDay ? FEELING : TASK)} onClose={close} />;
 
-  const back = () => setStep((s) => s - 1);
+  const back = () => setStep((s) => (firstDay && s === FEELING ? COVER : s - 1));
   const next = () => setStep((s) => s + 1);
   const answer: Answer | null = yesterdayDone === undefined ? null : yesterdayDone ? 'Yes' : 'Not yet';
   const openSheet = () => {
@@ -172,7 +185,9 @@ export default function Morning() {
           </Stack>
           <RecordRows
             rows={[
-              { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}` },
+              // A day that put nothing on the board — or took some off — is not a
+              // row the day earned, so it gets the kit's empty disc like the others (D237).
+              { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}`, done: gained > 0 },
               { label: signedPledge ? 'Pledge kept' : 'No pledge signed', done: !!signedPledge },
               {
                 label: urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
@@ -242,7 +257,7 @@ export default function Morning() {
           board the day is already complete, so its ✕ files it like Done (D235). */}
       <NavBar
         left={step === DONE ? 'empty' : 'back'}
-        centre={step === DONE ? null : { step, total: RAIL }}
+        centre={step === DONE ? null : firstDay ? { step: step - LEDGER, total: RAIL - LEDGER } : { step, total: RAIL }}
         right="close"
         onBack={back}
         onClose={step === DONE ? () => void finish() : close}

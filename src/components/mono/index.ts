@@ -6,7 +6,7 @@
  *
  * Screens lay their children out in canvas coordinates inside `Screen`.
  */
-export { Screen, ScrollRegion, SCREEN_VARIANTS, useCanvasTop, type ScreenVariant } from './Screen';
+export { CueScrollView, Screen, ScrollRegion, SCREEN_VARIANTS, Slack, useCanvasTop, type ScreenVariant } from './Screen';
 export { Tap } from './Tap';
 export { MonoText, H1, Title, P, Caps, type MonoTextProps, type TextVariant, type Wrap } from './Text';
 export { NavBar, NavDashes, TitleHead, type NavCentre, type NavLeft, type NavRight } from './NavBar';

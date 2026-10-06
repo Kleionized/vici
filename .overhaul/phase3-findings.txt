@@ -1,0 +1,142 @@
+##### onboarding (auth-funnel + tail)
+
+[1] MEDIUM [auth-funnel] /sign-up gate → Create Account form (unframed), every size
+  PROBLEM: If you tap Apple or Google on the gate and then 'Continue with email', the gate's SSO refusal stays on the email form. The form shows 'Apple & Google sign-in need the online build. Use email for now.' between the info card and Create Account, an error about a choice that board does not offer.
+  EVIDENCE: Driven headlessly (copy of .overhaul/af-func.mjs `signup`): /sign-up → tap 'Continue with Apple' (refusal shows) → tap 'Continue with email'. The form screenshot shows the refusal line centred above 'Create Account'. Cause: src/app/(auth)/sign-up.tsx, gate's third pill `onPress={() => setMode('form')}` does not call `reset()`, but `back()`, `sso()`, `submit()` and the password toggle all do.
+  FIX: In sign-up.tsx change the gate's email pill to `onPress={() => { reset(); setMode('form'); }}`, the same as welcome-back.tsx's `onEmail`.
+
+[2] MEDIUM [orchestrator (kit HeroBoard in src/components/mono/Hero.tsx); seen on tail's Where We'd Start] Where We'd Start (/welcome?step=whered-start) at 375×667 with any name longer than about 4 letters
+  PROBLEM: With a real name such as 'Michael', the title wraps to two lines at 375. HeroBoard then drops the charger art completely and lifts the stack only by the deficit. The top ~250 pt of the screen is empty ground above a stack pushed down against Continue. With the sample 'Sam' the art stays (lifted). D320 says hero boards lift hero and stack together to art top 108 and then scroll. They do not lose the art.
+  EVIDENCE: Capture with window.__ONB_ANSWERS={name:'Michael'} at --w=375 --h=667: no charger, empty ground from the nav to the title at ~260, 'Start with this.' ending ~533 over Continue at 561. Same board with 'Sam' (size-sweep/375x667/Where-We-d-Start.png) keeps the art lifted. At 393 'Michael' keeps the art. Code: Hero.tsx `if (deficit <= room) lift = deficit; else { dropArt = true; lift = Math.min(deficit, stackTop - 108); … }`. Once the deficit is past the art's room (art top − 108), the art drops even though the empty band above it would still hold it.
+  FIX: When deficit > room, keep the art and lift hero+stack by `room` (art top at 108), then scroll the rest of the stack between 108 and the controls (D320 rule 2 then rule 3). Drop the art only when the stack alone overflows the 108→controls band. If the art is dropped, lift the stack to 108 (or centre it) rather than by the deficit, so the board does not open on empty ground.
+
+[3] LOW [tail] Letter Week XII (/welcome?step=letter-read), long names; seen at 375×667
+  PROBLEM: The salutation `${who} —` wraps the em dash onto its own line when the name is long ('Maximilian-Alexander' / '—'). This leaves an orphaned dash under the name.
+  EVIDENCE: Capture with __ONB_ANSWERS={name:'Maximilian-Alexander'} at 375×667: salutation renders as two lines, the second just '—'. handover.tsx O3LetterRead: `{who ? `${who} —` : 'Friend —'}`.
+  FIX: Join with a no-break space (`${who} —`) so the dash stays with the name. The letters group's /letter?variant=week12 uses the same component and gets the fix too.
+
+[4] LOW [tail] Start Here / Your Plan, undrawn answer sets (e.g. .overhaul/tail-alt-seed.js)
+  PROBLEM: If the man named neither scrolling nor bed, the board still proposes 'Keep your phone out of bed tonight.' It then tells him 'Scrolling, being out and an argument came up together in your answers.' Scrolling never came up. His fourth trigger 'When I can’t sleep', which has its own change ('Leave the room instead of lying there.'), is never offered because planSignals keeps only the first three. This logic predates the run (D054/D093), but the board states something false to him.
+  EVIDENCE: /welcome?step=start-here with tail-alt-seed (triggers In the morning/On weekends/After drinking/When I can’t sleep, place Outside home, starter argument) at 393: heading 'Keep your phone out of bed tonight.', body 'Scrolling, being out and an argument came up together in your answers.'. Your Plan's 4th row is 'Phone out of bed'. plan.tsx: changeCandidates(planSignals(triggers)) falls back to DEFAULT_CHANGE 'While scrolling', and evidenceLine writes whenShort('While scrolling') into terms[0].
+  FIX: Build the change candidates from all of his triggers, not only the three pills, so 'When I can’t sleep' proposes its own change. When the fallback change is not one of his signals, keep his own when/where/starter terms in the sentence instead of putting 'Scrolling' in. This changes behaviour outside D324, so it needs an orchestrator ruling.
+
+[5] LOW [auth-funnel] Unframed boards: sign-up form, Welcome Back address step, Life Map (all sizes)
+  PROBLEM: Straight ASCII apostrophes in visible copy: 'I'd like VICI updates via email.', 'we'll send you an email with a magic link.', the 'Let's Go' primary, and Life Map's 'Why you're here'. Every frame and every framed board in the area sets the curly ’ (e.g. 'You don’t need to change everything at once', 'That’s what we’ll work toward').
+  EVIDENCE: sign-up.tsx:162 `I&apos;d like…`, :172 `we'll send you…`; welcome-back.tsx:152 `label="Let's Go"`; lifemap.tsx:98 `Why you&apos;re here`. Visible in the captured form, address step and Life Map at 393.
+  FIX: Swap ' for ’ in these four strings. The words do not change, so D328 still holds.
+
+[6] LOW [auth-funnel] WaterlineScene (src/components/ui/Waterline.tsx), slow-boot board; unreachable on mock (D131)
+  PROBLEM: The default label 'Finding the waterline...' uses three periods. The system sets a single ellipsis glyph everywhere else ('Putting your plan together…', Life Map's 'In your own words…').
+  EVIDENCE: Waterline.tsx: `label = 'Finding the waterline...'`.
+  FIX: Use 'Finding the waterline…'.
+##### today-day
+
+[7] MEDIUM [today] /journal-new?tag=Pledge (from Today III + or the 'Write a pledge' line) -> /today page three, all sizes
+  PROBLEM: A pledge saved with only the first field filled does not show on Today. The editor offers a title field ('A quiet win') and a body field. Today reads only `body`, so page three still says 'Write a pledge', share stays dimmed, and the line the user just wrote is missing.
+  EVIDENCE: today-2000 seed -> page three -> 'New pledge' -> typeIn(0,'Phone stays out of the bedroom') -> Save -> back on /today. Page three reads 'Your pledge / Write a pledge' with share dimmed (captured at 393x852). The entry was stored as {tag:'Pledge', title:'Phone stays out of the bedroom', body:''}. The cause is today.tsx:144/259 `pledge?.body` and journal-new.tsx save(), which allows an empty body. /journal shows the entry (`e.body || e.title`), so the two screens disagree.
+  FIX: Read the standing pledge as `entry.body.trim() || (entry.title !== 'Untitled' ? entry.title : '')` in today.tsx. Better, in journal-new, when tag is Pledge and the body is empty, store the title as the body, or show only one field for a pledge. Do the same anywhere else that reads `Pledge.body` (relapse.tsx, slip.tsx and urge/hub.tsx read it the same way).
+
+[8] MEDIUM [day] /day/morning step PLEDGE (Morning Resign Pledge state), all sizes
+  PROBLEM: When the newest Pledge entry has an empty body (the title-only pledge above), Re-sign shows a blank card: 'Your pledge' over nothing above 'Sign here'. Signing then files another Pledge entry with an empty body.
+  EVIDENCE: Same account after the title-only save -> Today chip -> /day/morning -> Begin, Yes, Next, Continue ×3. The card shows caps 'Your pledge', an empty 33-pt line, then 'Sign here' (captured at 393x852). morning.tsx:119-120 uses `draft ?? standing?.body ?? 'The mornings are mine again.'`, and `''` passes `??`.
+  FIX: Use `draft ?? (standing?.body?.trim() || standing-title-fallback || default)`, sharing the helper with Today's fix. Never file `body: ''` from finish().
+
+[9] MEDIUM [day] /day/morning on day 1 (any account's first morning; the launch gate opens it automatically), steps TASK and LEDGER
+  PROBLEM: On day 1 there is no yesterday, but Morning Task Check asks 'Did you complete this task? / Yesterday / Put the device you use for porn out of reach before you sleep.' That is lesson 1's task, the same sentence Today page two shows that morning as today's task. The ledger then reports a record for a day before the account existed ('Recovery score +4 -> 1,004'). The answer is written to a check-in row dated before the account, and buildScore counts it as a check-in (+2).
+  EVIDENCE: Fresh account (created 2025-07-18 07:00, clock 09:00). Opening /today redirects to /day/morning. Task Check shows the lesson-1 sentence under 'Yesterday'; Today p2 shows 'Today’s task: Prepare for tonight' with the same sentence. After Yes -> Done, storage holds checkins ['2025-07-18 m3', '2025-07-17 dailyActionDone:true'], and the second is the day before createdAt. Cause: morning.tsx:104-107 `lessonForDay(Math.max(1, day - 1))`. D348 says 'yesterday’s lesson task', and on day 1 there is none.
+  FIX: When yesterday predates the account's first midnight (day 1), skip TASK and LEDGER: Begin goes to FEELING and the rail counts 3 steps. At minimum, show no task card and do not upsert yesterday's row. Drop the `Math.max(1, …)` so day 1 never borrows today's lesson.
+
+[10] LOW [day] /day/morning PLEDGE on an account with no Pledge entry (every new user)
+  PROBLEM: Re-sign shows the canvas's sample 'The mornings are mine again.' as 'Your pledge' and files it as the user's Pledge on Done. On the same account, Today III (D233) says 'Write a pledge'. The two screens contradict each other, and the app files a promise the user never wrote. The fallback predates this run, but the contradiction is new.
+  EVIDENCE: Fresh day-1 account: Today p3 shows 'Write a pledge' with share dimmed, while /day/morning -> Re-sign shows 'Your pledge / The mornings are mine again. / Sign here'. Sign -> Confirm -> Done files a 'Day 1 pledge' entry with that body (morning.tsx:120, 141).
+  FIX: With no standing pledge, open the step in a write state: the card's line reads 'Write a pledge' in mute and opens the Change Pledge sheet, and the primary stays disabled until a pledge exists. Alternatively, open the sheet first. Keep the sample only as the sheet's placeholder.
+
+[11] LOW [orchestrator (kit: src/lib/theme.ts sans() web fallback / mono CheckRow value)] Morning 1 Yesterday at 393x852, the score row value
+  PROBLEM: The '→' in '+11 → 1,064' still draws thinner than the frame's. The web fallback chain (D359) now reaches the system face, but at weight 400 because the bold is carried by the family name with `fontWeight: 'normal'`. The frame asks for 700, so its fallback arrow is the system bold.
+  EVIDENCE: Crops of the strip at 280–330 × 225–250 (frame 'm1-yesterday' vs app) show a visibly heavier shaft and larger head on the frame's arrow. The app's computed style for the value is `font-family: Lato_700Bold, -apple-system, system-ui, sans-serif; font-weight: 400`. Audit region (312,232 16x12) is the arrow. The digits beside it are sample data (D097/D237).
+  FIX: Draw the arrow from a nested Text with a system bold face on web (e.g. `fontFamily: '-apple-system, system-ui, sans-serif', fontWeight: '700'`), either in CheckRow's value or by letting RecordRows pass a node. Do not put fontWeight 700 on the Lato_700Bold family itself, which would synthesise a faux bold.
+
+[12] LOW [today] /today page two, lesson register caps 'Today’s task: <lesson title>' — 375x667 (L41) and 393x852 (24 of 84 titles)
+  PROBLEM: The lesson-register caps wrap greedily (`wrap="wrap"`). At 375 L41's line leaves the single word 'place' on its own second line ('Today’s task: Give the action a time and / place'). At 393, 24 of the 84 titles are wider than the 273-pt column (for example L19 '…loneliness, / and tiredness'). The sentence under it already uses `pretty`.
+  EVIDENCE: Capture at 375x667 with today-2000 seed, page-two foot: caps on two lines with 'place' alone. Canvas measure at 13px Lato 700: L41's caps is 259.5 wide against the 255 column at 375. 24 titles are over 273 at 393 (L19 340, L21 330, L27 322 …). L19 captured at 393 wraps to 'and tiredness'.
+  FIX: Give the caps `wrap="pretty"` (web, the same treatment as the sentence) so no single-word last line is left. Native wraps greedily per D332.
+
+[13] LOW [today] /score third page (Score Detail Ranks) at 375x667
+  PROBLEM: The Ranks page scrolls by 3 pt although its card ends above the tab bar. `Page` adds 24 of padding past the card's end (576) and compares that against the band, so the ladder rubber-bands a few points (in Score-Detail-Ranks.end.png 'The ranks' moves up 2–3 px).
+  EVIDENCE: Page need = py(576)+24 = 312 against H = 667 − 104 + 34 − 288 = 309, so scrollEnabled is true. Score-Detail-Ranks.png vs .end.png at 375x667 differ by a 3-pt shift with nothing new revealed.
+  FIX: Enable scrolling only when content extends past the band (need = py(bottom) + 20, Today's BAR_GAP), or drop the extra padding when the overflow is under ~8 pt.
+
+[14] LOW [today] /journal (Past pledges) empty state, all sizes
+  PROBLEM: The one empty line 'Nothing here yet.' is centred (kit EmptyState) under the left-aligned 32/700 title at x 24. The title-head idiom this page copies keeps everything in the 24 gutter, and the pre-overhaul line sat left under the title.
+  EVIDENCE: Captured /journal on a fresh account at 393x852: title left at x 24, empty line centred at about x 140–253, 16 below it.
+  FIX: Render the empty line left-aligned in the gutter (MonoText p, mute, marginTop 24), or give EmptyState an `align="left"` option.
+##### library-lessons
+
+[15] MEDIUM [orchestrator (curriculum generator, D396); shown by library's src/app/search.tsx and src/app/first-steps.tsx] /search and /first-steps, every size (unframed)
+  PROBLEM: The grey line under each lesson title is still the previous course's one-line summary. On many lessons it no longer describes the new lesson, and search also matches on it.
+  EVIDENCE: Search rows (u-search / search-end captures) show stale lines under new titles. L2 'Remove easy access to porn' reads 'Day zero isn’t a loss. It’s the start of the count that matters.' L46 'Get support during a difficult period' reads 'Some days the plan is smaller: eat, walk, sleep clean.', which is why the 'sleep' chip returns L46. L64 'Choose support without revisiting painful events' reads 'The habit started as armor. Thank it, then retire it.' L80 'Prepare for a changed situation' reads 'The pathways quieted. The wiring is yours again.' First steps shows the same L2 line. D396 kept these only because /lesson-card still displayed the field. D316 has since made /lesson-card a redirect, so that reason no longer holds (D396 itself says the switch is 'safe once /lesson-card is a redirect').
+  FIX: Make the one-line change D396 names in scripts/overhaul/gen-curriculum.mjs (`l.legacy.summary` → `l.firstPiece`) or point the detail at the D339 task sentence (`task.cardSummary`), then regenerate curriculum84.ts. Alternatively drop the detail line from search/first-steps and match on title + task sentence. Afterwards re-check row heights at 375 (pretty wrap).
+
+[16] MEDIUM [library] Week pages, rows viewport at every size (852: rows 5–7 hidden; 932: rows 6–7) and the whole-page scroll at 375x667; also /journey and /journey/<chapter> scrollers
+  PROBLEM: Nothing shows that rows continue below the fold. At 393x852, row 5's top sits exactly on the viewport's foot (the frame's P1), so a reader sees four lessons, then empty ground, then the bar. Lessons 5–7 of every week are reachable only through an invisible scroll. D347's native-only cue was applied to ScrollRegion but not to these hand-built ScrollViews.
+  EVIDENCE: src/components/library/WeekPage.tsx:322-323 and :339 and src/components/journey/JourneyScreens.tsx:272-273 and :294-295 are plain ScrollViews with showsVerticalScrollIndicator={false}. src/components/mono/Screen.tsx:103 (ScrollRegion) is the only flashScrollIndicators() call in src. Size PNGs: 390x844 and 852 P1 show rows 1–4 with clear ground beneath; 375x667 P1 cuts at row 2 above the bar.
+  FIX: Give the rows viewport (and the short-phone page scroll and the Journey scrollers) D347's treatment, native only so the 24 web frames stay at 0%: Platform.OS !== 'web' → showsVerticalScrollIndicator plus flashScrollIndicators() about 500 ms after mount or after the pager settles on a page. Or wrap them in ScrollRegion's logic.
+
+[17] LOW [library] /journey (campaign index) at 393x852, scroll 0
+  PROBLEM: A stray 5pt grey sliver of Chapter II's map card shows at the very foot of the screen. It is the same kind of stray band D247 removed from the week pages. At 430x932 about 90pt of the compass shows (reads as a deliberate cue); at 390/375 nothing shows.
+  EVIDENCE: journey@393x852 capture, cropped at y 700–852: a #5A574F card edge at x≈190–310, y≈846–852. Each stacked ChapterBody is 852 tall with its rows ending at 683, so the next hero's top lands on the window foot.
+  FIX: Shorten each stacked chapter block to its content (rows end + a fixed gap, e.g. 48) so the next chapter's hero clearly enters the first screen. Or push it below 852 so no partial band shows. Check 375/390/430 after.
+##### slip
+
+[18] MEDIUM [slip] 98K Slip-Begin-Again 'Start again' and 98L Slip-Morning-After 'Later' (src/app/slip.tsx:409, :425), every entry path, all sizes
+  PROBLEM: router.replace('/(app)/today') mounts a second (app) instance on top of the stack instead of returning to the one already there. The screens the user came through stay in history under the new Today. The (app) layout's once-per-mount launch prompts also run again, so 'The post is in.' letter opens straight after Start again, not over Today on the next launch as intended.
+  EVIDENCE: Seed: slip-seed-nopledge with the clock at 2025-07-22T14:10. Route: /today -> close the morning check-in -> Urge surfing (/urge-hub) -> I slipped (/slip) -> through to 98K -> Start again. The path went to /letter ('Week II post The post is in.'). history.back() -> /today ('Good morning'); history.back() again -> /urge-hub ('Get out of bed. Stand up. Move'). The letter can only open because (app)/_layout.tsx's `prompted` ref was fresh, i.e. a new layout instance. Its own comment says the letter 'arrives over Today the launch after a slip was logged'. The old code had the same replace, so this is not new in this run.
+  FIX: In slip.tsx use router.dismissTo('/(app)/today') for Start again and Later, as src/app/medallions/tiers/[key].tsx already does with dismissTo. It pops back to the existing (app) entry, or replaces when there is none, such as a cold /slip. Then re-run the Today -> hub -> slip -> Start again path: history should hold no hub, and no prompt should fire until the next launch.
+
+[19] MEDIUM [slip] 98F Slip-Urge-Now, answer 'I'm already watching again' then Continue, when the flow was opened from the hub's 'I slipped' (src/app/slip.tsx:333)
+  PROBLEM: The hub pushes /slip, and slip then router.replace('/urge-hub'), so the stack holds two identical hubs. The hub's X calls router.back(), which on the first tap lands on the same hub, so the close looks broken.
+  EVIDENCE: Seed slip-seed0. Route: /urge-hub -> I slipped -> Log the slip -> Continue -> Continue -> Tired -> Continue -> Continue -> I'm already watching again -> Continue. Path /urge-hub, history.length 3. Tap Close -> still /urge-hub with the same 'Get out of bed. Stand up. Move' pane. Tap Close again -> leaves the hub (to /letter). The surf-stage door (flow.tsx:624 replaces into /slip) does not duplicate; only the hub door does.
+  FIX: router.dismissTo('/urge-hub'): it pops back to the hub when the hub opened the flow, and replaces as now when the surf stage did. This keeps D305's destination; only the stack handling changes.
+
+[20] LOW [slip] 98C Slip-When 'Earlier today' chip between midnight and 04:00 (WHEN_CHIPS offset 4 h, src/app/slip.tsx:57), all sizes
+  PROBLEM: The preset is now minus 4 h, so before 04:00 the lit 'Earlier today' chip records a moment from yesterday. The date row, 98E's When and the 98K -> 98L branch then all say last night while the chip says today.
+  EVIDENCE: slip-seed0 with the clock at 2025-07-22T01:10: Log the slip -> Continue -> Earlier today. The date row changes from 'Today, Tue Jul 22' to 'Last night, Mon Jul 21' and the wheel shows 9:10 PM, with 'Earlier today' still lit.
+  FIX: Keep the preset on today: max(startOfDay(now), now - 4 h), or halfway between midnight and now. Logs' twin WHEN_CHIPS in src/components/logflow/flow.tsx has the same offset; that one is the logs group's to change.
+
+[21] LOW [slip] 98C Slip-When: Change sheet picking the day already selected, or a wheel step that the future-clamp undoes (src/app/slip.tsx:125, :236-242)
+  PROBLEM: pick() always sets customAt, so an action that leaves the moment unchanged still turns off the lit chip. 'Just now' goes dark although the time and date are exactly what it set.
+  EVIDENCE: slip-seed0: Log the slip -> Continue (aria-checked: 'Just now') -> Change -> 'Tonight, Tue Jul 22'. The wheel and date row are unchanged (11:40 PM, Tonight, Tue Jul 22) but no chip is lit. Same after 'Hour 12' at 11:40 PM, which clamps back to now.
+  FIX: In pick(), compute t2 = Math.min(t, now). If t2 equals the current `at`, do nothing (just close the sheet); otherwise setCustomAt(t2).
+##### sos (sos-flow + sos-boards)
+
+[22] HIGH [sos-flow] /urge — feeling-said / SOS Challenge → Back → SOS Feeling Picker → Continue (all sizes)
+  PROBLEM: The 'Give me another' rotation count (`roll`) survives the Challenge's back chevron. After going back to the feeling picker, the next Continue shows the wrong board: the board for the new answer, shifted by the old rolls. With the answer unchanged it reopens the Challenge, so Back → Continue loops on the same board.
+  EVIDENCE: Walked live at 393. Pick 'I don’t know' → 'Move first.' → Give me another → 'Break the isolation.' (the SOS-Challenge recipe path) → Back → untick 'I don’t know', tick 'Angry' → Continue shows 'Get out of the room.' (SOS-Feel-Low) where 'Use the energy.' (SOS-Feel-Angry) belongs. Second walk: Low + Bored, rolled 12 times to the Challenge → Back → Continue reopens 'Break the isolation.' Cause: flow.tsx `suggestion = FEELING_ROTATION[(indexOf(feelingBoard) + roll) % 14]`. `roll` is set only by onAnother and is never reset by `back()` or by the feeling picker's onPick. D263 and D259 make Challenge → Back return to the picker, so this path is reachable from the drawn frame.
+  FIX: In UrgeFlow, reset the rotation whenever the feeling answer can change. Call `setRoll(0)` in the feeling picker's onPick (wrap `answer(setFeelings, 'feeling-said')`), or in `back()` when `step === 'feeling-said'`. Re-walk: Challenge → Back → Angry → Continue should show 'Use the energy.'
+
+[23] MEDIUM [orchestrator] Cue Hue Picker (sos-flow) at 390×844, kit Hero `controls` rule (src/components/mono/Hero.tsx:205)
+  PROBLEM: At 390×844 the open-door hero is dropped for a 2-pt shortfall. That leaves an empty band of about 180 pt between the last row ('Out and about', ends at canvas 557) and Continue (738). It is the only question board in the area that loses its art at 390×844; Strength, Reason, Feeling, Reassess, Afterward and Resign all keep theirs.
+  EVIDENCE: size-sweep/390x844/Cue-Hue-Picker.png shows no door; 393 and 430 draw it. openDoor HERO_BOUNDS bottom is 229, so the art bottom is round(506 + 190 + 0.723·39) = 724, and 724 + 16 = 740 > 844 − 0 − 106 = 738, so Hero returns null. The art top is about 593, which leaves 36 pt clear above it to the rows. The sweep uses the 54 inset; a real 390×844 iPhone (47 inset) has 7 pt more and would draw it. 375×812-class phones also lose it.
+  FIX: Before Hero drops the art under `controls`, let it rise by the shortfall when the shortfall is small (for example ≤ 16 pt; every question board has ≥ 30 clear above its art at 852). This mirrors D344 on taller phones: the art keeps its distance to the bottom. Alternatively, pass the board's content bottom so the rise is bounded by it. Re-run the 390×844 sweep for Cue Hue Picker.
+
+[24] LOW [sos-flow] /urge-hub pane 85D (Surfed before), no timed urges, all sizes
+  PROBLEM: With nothing timed on record, 85D shows only the head 'You’ve outlasted this before.' over an empty band down to the dots. The head claims something a new user has not done, and the pane looks unfinished. The other empty panes still carry content: 85C keeps its count and 85E its fallback card.
+  EVIDENCE: Captured /urge-hub with no seed and tapped Pane 4: the head sits at 160 and nothing follows until the dots at 666. hub.tsx renders the card only when `rows.length`. D257 records 'no card when nothing is timed'; the analysis (sos-flow §3.21, Q12) proposed a line in the card instead.
+  FIX: Keep the card with a single 15/400 rgba(255,255,255,0.62) line when `rows` is empty (the analysis proposed 'Nothing timed yet.'; app copy, flag it), or change the head for the empty case. Record it as an addendum to D257.
+
+[25] LOW [sos-flow] SOS settings sheet (85F gear, interrupt and hub)
+  PROBLEM: The Orb light radiogroup offers Blue, Violet, Gold and Silver but no choice for the default (light: null), the white disc 85F draws. At default no swatch is selected. Once a user picks a light, the sheet cannot bring the frame's white disc back.
+  EVIDENCE: Sheet captured at 393: four swatches, none ringed. stages.tsx: `DEFAULT_SOS_SETTINGS.light = null`; SOS_LIGHTS has no null entry, and onPress only sets `item.key`.
+  FIX: Add a first 'White' swatch (a flat #FFFFFF 44 disc) that writes `light: null` and shows the selected ring by default. Or let a second tap on the selected swatch clear it to null.
+
+[26] LOW [sos-flow] Cue Intro Modal at 430×932 and 375×667; Surf Complete at 375×667
+  PROBLEM: Off-canvas widths produce awkward breaks in fixed copy. At 430 Cue Intro reads '…for the moment the wave hits. Six / small moves — decide nothing until it passes.', stranding 'Six' from its phrase. At 375 it runs to three lines: '…the wave / hits. Six small moves — decide nothing until / it passes.'. At 375 Surf Complete reads 'You outlasted it. Twenty-two minutes, start / to finish.', splitting 'start to finish'.
+  EVIDENCE: size-sweep/430x932/Cue-Intro-Modal.png, 375x667/Cue-Intro-Modal.png and 375x667/Surf-Complete.png. The frame at 393 breaks Cue Intro after 'hits.' and sets Surf Complete on one line.
+  FIX: For the Cue Intro body, keep the frame's sentence break (a `\n` after 'hits.' through BREAKS/D332 when the column is ≥ 345, or cap the body at maxWidth 345) so 430 reads as 393 does. For Surf Complete's dynamic sentence, use a no-break space in 'start to finish' so the phrase wraps as one unit.
+
+[27] LOW [sos-boards] SOS Challenge at 430×932
+  PROBLEM: The body wraps 'Rejection makes quick comfort look more valuable than it / is. Don’t check their profile.', which breaks the clause 'than it is.' across the line. The frame breaks after 'valuable'.
+  EVIDENCE: size-sweep/430x932/SOS-Challenge.png. At 393 the strip matches the frame (0.00 %). At 390 the break falls after 'valuable', as in the frame.
+  FIX: Add the frame's break to BREAKS for the Challenge body (after 'valuable', checked by sos-breaks.mjs), or cap the board's body at the frame's 345 column on wider phones so 430 keeps the 393 lines.
+
+TOTAL 27

@@ -68,7 +68,11 @@ export function StepStack({
   return (
     <>
       {clear ? <Hero id={hero.id} top={hero.top} scale={hero.scale} controls={controls} /> : null}
-      <ScrollRegion top={136} bottom={controls + 16} contentStyle={{ paddingHorizontal: 24 }}>
+      {/* The band runs down to the controls' top and keeps its 16 as padding, so
+          the last row of a stack that only just overflows (L58's seven lines over
+          Yes / Not yet at 375 × 667) shows whole at rest instead of being cut by
+          the band's edge; scrolled to its end it still stops 16 above them. */}
+      <ScrollRegion top={136} bottom={controls} contentStyle={{ paddingHorizontal: 24, paddingBottom: 16 }}>
         <View onLayout={(e) => setHeight(Math.ceil(e.nativeEvent.layout.height))} style={{ gap }}>
           {children}
         </View>

@@ -149,7 +149,7 @@ export default function WelcomeBack() {
               returnKeyType="done"
             />
             <AuthMessage error={error} notice={notice} />
-            <AuthButton label="Let's Go" onPress={continueWithEmail} />
+            <AuthButton label="Let’s Go" onPress={continueWithEmail} />
           </View>
         </ScrollRegion>
       </Screen>

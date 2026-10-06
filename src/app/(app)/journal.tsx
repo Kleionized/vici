@@ -41,7 +41,7 @@ export default function Journal() {
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 8, paddingHorizontal: 24, paddingBottom: 48 }}>
           <MonoText v="titlePage">Past pledges</MonoText>
           {entries.length === 0 ? (
-            <EmptyState body="Nothing here yet." style={{ paddingHorizontal: 0 }} />
+            <EmptyState body="Nothing here yet." align="left" style={{ paddingHorizontal: 0 }} />
           ) : (
             <View style={{ marginTop: 24, gap: 12 }}>
               {entries.map((e) => (

@@ -105,7 +105,14 @@ export default function SignUp() {
           <>
             <AuthPill kind="ink" icon={<Apple />} label="Continue with Apple" onPress={() => void sso('oauth_apple')} disabled={loading} />
             <AuthPill icon={<Google />} label="Continue with Google" onPress={() => void sso('oauth_google')} disabled={loading} />
-            <AuthPill label="Continue with email" onPress={() => setMode('form')} />
+            <AuthPill
+              label="Continue with email"
+              onPress={() => {
+                // the gate's Apple/Google refusal belongs to the gate, not to the form
+                reset();
+                setMode('form');
+              }}
+            />
           </>
         }
         message={<AuthMessage error={error} notice={notice} />}
@@ -159,7 +166,7 @@ export default function SignUp() {
         style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
         <CheckDisc size={26} state={updates ? 'done' : 'pending'} />
         <MonoText v="pTight" style={{ flexShrink: 1 }}>
-          I&apos;d like VICI updates via email.
+          I’d like VICI updates via email.
         </MonoText>
       </Tap>
 
@@ -169,7 +176,7 @@ export default function SignUp() {
         <Text maxFontSizeMultiplier={1.3} style={{ ...sans('400'), fontSize: 15, lineHeight: 23, color: mono.sub }}>
           {usePassword
             ? 'Your account keeps reflections, logs, and lessons safe across devices. Your password stays private.'
-            : "No password needed to create an account! To log in next time, we'll send you an email with a magic link."}
+            : "No password needed to create an account! To log in next time, we’ll send you an email with a magic link."}
         </Text>
         <Tap
           onPress={() => {

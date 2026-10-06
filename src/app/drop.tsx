@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Alert, View, useWindowDimensions } from 'react-native';
 
-import { Check, GhostLink, HeroBoard, MedalTier, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion } from '@/components/mono';
+import { Check, GhostLink, HeroBoard, MedalTier, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Slack } from '@/components/mono';
 import { useUpdateSettings } from '@/lib/backend';
 import { DROP_OFFERING_ID, usePurchases } from '@/lib/purchases';
 import { setJSON } from '@/lib/storage';
@@ -111,13 +111,14 @@ export default function Drop() {
     );
   }
 
-  const y = (canvas: number) => canvas - NAV_BOTTOM;
   return (
     <Screen>
-      {/* between the nav and the pill the offer scrolls on a phone too short for it (D320) */}
+      {/* between the nav and the pill the offer scrolls on a phone too short for it (D320) —
+          after the 75 over the title has closed to 16, so a 667 phone reads the perks (D406) */}
       <ScrollRegion top={NAV_BOTTOM} bottom={CONTROLS}>
-        <View style={{ height: 610 + CLEAR - NAV_BOTTOM }}>
-          <View style={{ position: 'absolute', left: 24, right: 24, top: y(175), alignItems: 'center', gap: 12 }}>
+        <Slack h={175 - NAV_BOTTOM} min={16} />
+        <View style={{ height: 610 + CLEAR - 175 }}>
+          <View style={{ position: 'absolute', left: 24, right: 24, top: 0, alignItems: 'center', gap: 12 }}>
             {/* the frame breaks the title itself (`<br>`) */}
             <MonoText v="title" center style={{ alignSelf: 'stretch' }}>
               {'One decision.\nA year of change.'}
@@ -126,7 +127,7 @@ export default function Drop() {
               Unlock everything VICI has to offer for an entire year.
             </MonoText>
           </View>
-          <PriceCard top={y(325)} />
+          <PriceCard top={325 - 175} />
         </View>
       </ScrollRegion>
       <NavBar left="empty" right="close" onClose={later} />

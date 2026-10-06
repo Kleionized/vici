@@ -110,3 +110,22 @@ left 3 (D322). Every switch writes through `useUpdateSettings` as before (driven
 | App Lock | 0.00 % (6 px) | toggle track ends AA |
 | Settings Check-in Time (via Settings) | 0.00 % | paywall-reminders' board |
 | Settings Weekly Report (via Settings) | 0.01 % | logs' board, reached by tapping the Settings row on logs' dated seed; the `W` day label sits ~0.5 px right |
+
+## Phase 2 review (fresh audit, three size sweeps, unframed screens)
+
+Every frame re-audited (`audit-fast.mjs --group=settings`) and swept at 375 × 667, 390 × 844 and 430 × 932
+with `--scroll`; every strip and size PNG looked at. Frames unchanged: Settings, Edit Profile, Sheet Profile
+Photo, Your Vow Page, Sheet Sign Out, Settings Check-in Time 0.00 %; Data Privacy / App Lock 0.00 % (2 + 4 px of
+toggle-track anti-aliasing); Sheet Edit Name 0.014 % (the drawn 2 × 22 caret, D364); Settings Weekly Report
+0.012 % (logs' board: the `W` day label ~0.5 px right, line/dot anti-aliasing).
+* **Back Tap** (unframed): step 4's arrows now hold to the name before them (no-break spaces), so no line
+  opens on `→` — 393 broke `Touch | → Back Tap`; every width now ends its lines on the arrow.
+* **Carry-over** (All → `A rough-day protocol`): the row already pushes `?key=loneliness`; driven from All
+  it opens the Loneliness protocol (`Lonely tonight.`).
+* **D340**: every Settings row's screen comes back to Settings through its own Back, Settings back to
+  Today, and the All drawer's seven doors into this group back to All (drives in the recipe).
+* Seen and left: at 375 × 667 Settings' column (D320) stops in the gap above the Account group, so at rest
+  nothing of `Edit profile` / `Manage subscription` shows above `Sign out` — the kit ScrollRegion hides its
+  indicator; asked of the orchestrator as a kit-level cue rather than a one-screen fix. At 393 × 852 Back
+  Tap's column stops just under the `Shortcut link` caption, so at rest the caption sits alone over the
+  pill (its row and the footnote scroll into view).

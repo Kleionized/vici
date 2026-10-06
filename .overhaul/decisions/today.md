@@ -31,6 +31,18 @@ take nine slips on `SCORE_WEIGHTS` and contradict its own header and Moves — s
 residual (1.89 %). `scoreHistory` / `monthLedger` moved out of `score.tsx` into `src/lib/score.ts` (+ `lastDays`,
 `scoreDayKey`, `LEDGER_WINDOW`), additive; nothing else's API changed.
 
+Phase 2 — the foot never slices a block. On a 667 phone every page is taller than its 397 viewport, and the plain
+foot (`top + h − viewport`) came to rest 7 pt above the score's baseline on page one (the comma and the 2's tail hung
+under the strip's discs) and 37–38 pt above the art's floor on pages two and three (the phone's and the glass's stubs,
+a band of hills). Each page now names the blocks its foot may not cut — page one "Recovery score", the number (to the
+chart's top at 334, since the comma hangs below its 56 line box) and the chart's ink (its high point's ring to its
+labels); pages two and three their hero's crop box — and where the foot would fall inside one, it rests at that
+block's end and the page grows by the difference (at 375 × 667 the pages are 531 / 587 / 577: page one +17, page
+three +39, page two its hero box's end + 397). Nothing changes where a page fits its viewport (393 × 852, 390 × 844,
+430 × 932), nor where the foot already falls between blocks (day 58's six-line sentence at 393: the foot lands just
+above the hero's box and the art stays whole). The size-sweep recipes now scroll to each page's own `offsetTop`
+instead of multiples of 548, so a short phone's capture shows the page's top, as the pager rests there.
+
 ## D231 — The header, the strip and this morning's chips
 The flame pill counts the account's day (OQ-T1: the frame's 41 is the seed's day; a streak stays opt-in,
 invariant #1) — the old "Day 41" heading moved into it. The avatar is the frame's outline ring + glyph and opens
@@ -65,7 +77,15 @@ checked: tap → true in storage, tap → false). The sentence opens a task page
 lesson that set the task, else the day's lesson (`/lesson/day/<n>?page=task`, D324 — the old card opened
 `/task/<day>` for any task on a lesson day, generic register included). Only past the course, with no page to
 open, does the sentence toggle the mark, as the old card did there (checked: Today Home II's seed → /lesson/day/41
-?page=task, row unchanged; day 88 → stays, `dailyActionDone` true). Tiles: the day's lesson, numbered as the
+?page=task, row unchanged; day 88 → stays, `dailyActionDone` true). Phase 2: the two registers write the same way. The disc
+(and, past the course, the sentence) writes `dailyActionDone` and — when the row names no action yet (no night
+check-in) — `dailyAction` = the sentence it sits beside, as the old task page's "Mark as done" wrote both. Without the
+name, the next morning's Task Check fell back to `dayAction()` and asked after a sentence Today never showed (checked:
+day 41 with nothing named → tick → row `{dailyAction: L41's sentence, dailyActionDone: true}`; the next morning asks
+"Yesterday: Write one cue and action for a decision you keep postponing."; a named action is never overwritten;
+register, hero and task page are unchanged since a lesson's own sentence keeps its lesson). The lesson tile pushes
+`/lesson/day/<n>` directly; only past the course does it open `/lessons-browser` (a real list, not a redirect — no
+single lesson is the day's there). Tiles: the day's lesson, numbered as the
 course numbers it (OQ-T6 → CRITIC §5), opens `/lesson/day/<n>` (past the course: "Week I / Start the first
 lesson" → `/lessons-browser`, the old copy and door); "Ride it out / Urge surfing" opens `/urge-hub` (the old urge
 bar's door). The frames' "Lesson 5 / Naming your triggers" is the D132 mock — it is not a lesson in the new 84 —

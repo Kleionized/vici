@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import { PNG } from 'pngjs';
+const [out, ...files] = process.argv.slice(2);
+const imgs = files.filter((f) => fs.existsSync(f)).map((f) => PNG.sync.read(fs.readFileSync(f)));
+const COLS = 6, sc = 2, GAP = 12;
+const w = Math.max(...imgs.map((i) => i.width)) / sc, h = Math.max(...imgs.map((i) => i.height)) / sc;
+const rows = Math.ceil(imgs.length / COLS);
+const S = new PNG({ width: COLS * w + (COLS - 1) * GAP, height: rows * h + (rows - 1) * GAP });
+S.data.fill(255);
+imgs.forEach((P, n) => { const ox = (n % COLS) * (w + GAP), oy = Math.floor(n / COLS) * (h + GAP); for (let y = 0; y < P.height / sc; y++) for (let x = 0; x < P.width / sc; x++) { const s = (P.width * y * sc + x * sc) << 2, t = (S.width * (oy + y) + ox + x) << 2; S.data[t] = P.data[s]; S.data[t + 1] = P.data[s + 1]; S.data[t + 2] = P.data[s + 2]; S.data[t + 3] = 255; } });
+fs.writeFileSync(out, PNG.sync.write(S));
+console.log(out, imgs.length);

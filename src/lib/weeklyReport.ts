@@ -7,7 +7,7 @@
  */
 
 import { toDateKey } from '@/lib/date';
-import { dateRange, shortDate } from '@/lib/format';
+import { dateRange } from '@/lib/format';
 import { SCORE_BASE, SCORE_WEIGHTS } from '@/lib/score';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
 
@@ -39,16 +39,15 @@ export function latestCompletedWeek(createdAt: number, now = Date.now()): string
 }
 
 /**
- * A report week's name: `dateRange()`'s `Jul 14–20` — except across two
- * months, where the one frame that draws such a week (Log Reports' row
- * `Jun 30 – Jul 6`, bytes `30 – Jul`) spaces the en dash that `dateRange()`
- * closes up. The frame's string wins; every register prints this one label.
+ * A report week's name, as `dateRange()` writes it: `Jul 14–20` within a
+ * month, `Jun 30 – Jul 6` across two (Log Reports' row). Every register prints
+ * this one label.
  */
 export function weekLabel(weekStartKey: string): string {
   const start = new Date(`${weekStartKey}T00:00:00`);
   const end = new Date(start);
   end.setDate(start.getDate() + 6);
-  return start.getMonth() === end.getMonth() ? dateRange(start, end) : `${shortDate(start)} – ${shortDate(end)}`;
+  return dateRange(start, end);
 }
 
 export interface WeeklyReport {

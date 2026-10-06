@@ -12,24 +12,24 @@
     "route": "/today",
     "initseed": ".overhaul/today-ii-seed.js",
     "wait": 900,
-    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=548; await __sleep(1000)",
-    "note": "Page two (pager page 548 tall at 852: 200 → 748). Today's row names the action 'Put your phone somewhere hard to reach before you sleep.' — not a lesson's task, so the generic register (\"Today’s task\", 20/27) with DAY_STEPS[0]'s nightPhone crop; undone. Residual 0.4 %: the Lesson tile reads the day's lesson ('Lesson 41 / Give the action a time and place') where the frame prints the D132 mock 'Lesson 5 / Naming your triggers' (not a lesson in the new 84 — lesson 5 is 'Have another activity ready'); plus 3 px of hero anti-aliasing."
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=n.firstElementChild.children[1].offsetTop; await __sleep(1000)",
+    "note": "Page two (pager page 548 tall at 852: 200 → 748). Today's row names the action 'Put your phone somewhere hard to reach before you sleep.' — not a lesson's task, so the generic register (\"Today’s task\", 20/27) with DAY_STEPS[0]'s nightPhone crop; undone. Residual 0.4 %: the Lesson tile reads the day's lesson ('Lesson 41 / Give the action a time and place') where the frame prints the D132 mock 'Lesson 5 / Naming your triggers' (not a lesson in the new 84 — lesson 5 is 'Have another activity ready'); plus 3 px of hero anti-aliasing. Phase 2: the do scrolls to the page child’s own offsetTop (548 / 1096 at 852), so the size sweeps land on the page’s top at every size (a 667 phone’s pages are 531 / 587 / 577)."
   },
   {
     "frame": "Today Home Task",
     "route": "/today",
     "initseed": ".overhaul/today-task-seed.js",
     "wait": 900,
-    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=548; await __sleep(1000)",
-    "note": "Page two, the lesson register (\"Today’s task: Prepare for tonight\", 17/24), done. Today's row names lesson 1's task sentence and dailyActionDone=true; a named lesson task keeps its lesson's register (D232). On day 41 the app's own night check-in would have named lesson 40's — the frame pairs day 41 with lesson 1, so the seed names lesson 1's. Residual 0.42 %: the D132 mock tile only. The same register reached the app's own way: `--initseed=.overhaul/today-task-d1-seed.js` (a day-1 account, lesson 1 by day) — identical task row and hero, but the pill reads 1 and Su–Th are open (the week before the account)."
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=n.firstElementChild.children[1].offsetTop; await __sleep(1000)",
+    "note": "Page two, the lesson register (\"Today’s task: Prepare for tonight\", 17/24), done. Today's row names lesson 1's task sentence and dailyActionDone=true; a named lesson task keeps its lesson's register (D232). On day 41 the app's own night check-in would have named lesson 40's — the frame pairs day 41 with lesson 1, so the seed names lesson 1's. Residual 0.42 %: the D132 mock tile only. The same register reached the app's own way: `--initseed=.overhaul/today-task-d1-seed.js` (a day-1 account, lesson 1 by day) — identical task row and hero, but the pill reads 1 and Su–Th are open (the week before the account). Phase 2: the do scrolls to the page child’s own offsetTop (548 / 1096 at 852), so the size sweeps land on the page’s top at every size (a 667 phone’s pages are 531 / 587 / 577). Controls and back paths: `node .overhaul/today-p2-flows.mjs` (the disc writes dailyActionDone and, when nothing is named, dailyAction = the sentence; the sentence opens /lesson/day/<n>?page=task; tiles, score door, chips, avatar, page three’s rings, All’s three doors). `node .overhaul/today-morning-after.mjs`: the next morning asks after the ticked sentence."
   },
   {
     "frame": "Today Home III",
     "route": "/today",
     "initseed": ".overhaul/today-2000-seed.js",
     "wait": 900,
-    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=1096; await __sleep(1000)",
-    "note": "Page three (2 × 548), clock 20:00 (\"Good evening.\"), today's row carries the night check-in's emotions/reasons so today's disc fills (D231). 0.00 % (46 px, hero anti-aliasing)."
+    "do": "await __sleep(1500); const n=[...document.querySelectorAll('div')].filter(d=>d.scrollHeight>d.clientHeight+8 && getComputedStyle(d).overflowY!=='visible')[0]; n.scrollTop=n.firstElementChild.children[2].offsetTop; await __sleep(1000)",
+    "note": "Page three (2 × 548), clock 20:00 (\"Good evening.\"), today's row carries the night check-in's emotions/reasons so today's disc fills (D231). 0.00 % (46 px, hero anti-aliasing). Phase 2: the do scrolls to the page child’s own offsetTop (548 / 1096 at 852), so the size sweeps land on the page’s top at every size (a 667 phone’s pages are 531 / 587 / 577)."
   },
   {
     "frame": "Score Detail",
@@ -44,15 +44,15 @@
     "route": "/score",
     "initseed": ".overhaul/today-0900-seed.js",
     "wait": 900,
-    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=393; await __sleep(1200)",
-    "note": "Second page (set scrollLeft directly). The row values are the 1,240 account's (+108 · +60 · +12 · +36 · '3 slips' −48, net +168) — D134 still holds: the frame's ledger (+64 · +18 · +12 · +8 · Slip on Jul 8 −16, +86) is a 17-day account whose header reads 1,086 Deckhand I. Proof that the page draws the frame's ledger exactly: `--initseed=.overhaul/today-ledger-seed.js` (same do) — 0.74 %, every residual pixel in the header's number and rank pill, the five rows and the net pixel-identical."
+    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=p.clientWidth; await __sleep(1200)",
+    "note": "Second page (set scrollLeft directly). The row values are the 1,240 account's (+108 · +60 · +12 · +36 · '3 slips' −48, net +168) — D134 still holds: the frame's ledger (+64 · +18 · +12 · +8 · Slip on Jul 8 −16, +86) is a 17-day account whose header reads 1,086 Deckhand I. Proof that the page draws the frame's ledger exactly: `--initseed=.overhaul/today-ledger-seed.js` (same do) — 0.74 %, every residual pixel in the header's number and rank pill, the five rows and the net pixel-identical. Phase 2: scrollLeft = clientWidth (width-independent). At 375×667 the page scrolls inside itself to the net row (the sweep’s --scroll end capture scrolls page one’s scroller, the largest-by-area tie, so it repeats the rest capture; checked by hand: .overhaul/shots/today-p2/moves-375-end.png)."
   },
   {
     "frame": "Score Detail Ranks",
     "route": "/score",
     "initseed": ".overhaul/today-0900-seed.js",
     "wait": 900,
-    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=786; await __sleep(1200)",
+    "do": "await __sleep(1500); const p=[...document.querySelectorAll('div')].find(d=>d.scrollWidth>d.clientWidth+8); p.scrollLeft=2*p.clientWidth; await __sleep(1200)",
     "note": "Third page. 0.00 % (4 px) — the dashed rails are the CSS border on web, as the frame's."
   }
 ]

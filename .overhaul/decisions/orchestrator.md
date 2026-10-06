@@ -1,4 +1,4 @@
-# Orchestrator decisions — Vici Overhaul run (D320–D349)
+# Orchestrator decisions — Vici Overhaul run (D320–D349, D400–D407)
 
 Merged into DECISIONS.md at the end of the run. Evidence is in `.overhaul/understand/CRITIC.md` (§ refs).
 
@@ -91,3 +91,85 @@ urges never reached the hub's proof panes. It now keeps the whole input, as the 
 The rebuild left 14 files unimported (the old lesson reader, its art and the old task scenes, ~2.6 MB; listed
 by `.overhaul/scratch/deadfiles.mjs`). The session's permission policy refused the deletion; they stay on disk
 until the user approves (they are also in `refs/snapshots/pre-overhaul-full`).
+
+## D344 — A hero between content and controls keeps its distance to the bottom on taller phones
+Question-board and check-in heroes (the ones that pass `controls`) are bottom compositions: T 506 sets the
+art's box on the primary's top, T 582 30 above the edge. On a phone taller than the frame the art keeps that
+distance to the bottom, so the extra height opens between content and art instead of between art and pill.
+Identical at 852; shorter phones keep D320 rule 1 (the art drops out when it would meet the controls).
+
+## D345 — Cross-month ranges space the dash
+`dateRange()` writes `Jul 14–20` within a month and `Jun 30 – Jul 6` across two, as Log Reports and Score
+Detail (`May – July`) draw them; `weekLabel()` now just calls it.
+
+## D346 — L64's task line skips its preface
+L64's task opens "This exercise is optional.", which names no task; its card line is the next sentence (the
+bundle's words). D339 otherwise holds: card lines run 17–196 characters, median 71.
+
+## D347 — A scroll cue on native when a board overflows
+No frame draws a scroll indicator and at 852 nothing overflows. On a shorter phone a `ScrollRegion` that opens
+with rows below the fold shows the platform indicator and flashes it once after the push — native only, so web
+captures (the verification build) are unchanged.
+
+## D348 — Morning asks after the task Today showed
+When yesterday's row names no action, Morning Task Check asks after yesterday's lesson task (`cardSummary`, the
+sentence Today carried that day) instead of the generic `DAY_ACTIONS` line; past the course, the generic line.
+
+## D349 — Short phones keep their art where they can
+HeroBoard: when the stack needs more lift than the art has room for, the art rises to its limit (top 108) and
+keeps its place, and the stack scrolls in the band between it and the controls; the art goes only when that
+band would be under 160 pt, and then the stack is centred between the nav and the controls. A question-board
+hero (`controls`) that misses its clearance by ≤ 16 pt rises by the shortfall instead of dropping out (every
+such board keeps ≥ 30 pt clear above its art at 852). The frames themselves are untouched.
+
+## D400 — The first morning skips yesterday
+Day 1 has no yesterday: Morning opens on Feeling (dashes count Feeling · Energy · Pledge) and writes nothing to a
+row dated before the account. A pledge written in the editor's first field alone is that pledge (`pledgeText`,
+`src/lib/pledge.ts`), and every screen that shows the standing pledge reads it through that helper.
+
+## D401 — The line under a lesson title is its own task sentence
+Search, first steps and the lesson index showed the previous course's one-line summaries, which described other
+lessons. `summary` is now the lesson's task sentence (`cardSummary`, D339); search also matches on it.
+
+## D402 — Leaving the slip flow returns to the screen that is already there
+"Start again", "Later" and "I'm already watching again" use `dismissTo` (Today / the hub): back to the
+existing screen when it opened the flow, a replace when it did not — no second Today (and no second run of
+the launch prompts), no second hub under the first.
+
+## D403 — "Earlier today" stays today
+Before 04:00 the four-hour preset now stops at midnight; a pick that leaves the moment unchanged keeps the lit
+chip lit (slip and the log flows).
+
+## D404 — Polish at other widths
+Hero boards keep the frame's 345 text column on wider phones (frame line breaks hold at 430), and so do the
+Paywall's feature labels and Yearly Drop's perks, each held to its 393 cell; Journey's
+chapters sit 700 apart so the next chapter visibly enters the first screen; no-break spaces keep
+"start to finish" and a letter's "Name —" together; Today's task caps wrap `pretty`; Score's pages scroll only
+when their content overflows; an empty Past pledges list keeps its line in the gutter; a second tap on the
+chosen orb light restores the default white.
+
+## D405 — An overflowing band fades at its foot
+On a short phone a `ScrollRegion` that holds more than it shows used to cut its last row or disc in half
+against the pill. Its foot now fades 36 pt into the frame's ground while more lies below (gone at the end of the
+scroll) — the canvas's own treatment for content that runs past the controls (L7 F11), shorter. Never drawn
+where the content fits, so no 393 × 852 frame changes. Native also flashes the scroll indicator (D347).
+
+## D406 — A short phone tightens a board's open gaps before it scrolls
+D320's order gains a step before rule 3: where a fixed composition (not a list or a reading page) would
+overflow its band, the open gaps the frame leaves between its blocks close first — together, each in
+proportion to what it can spare, never under 24 between blocks (12–16 under the nav row) — by just the
+overflow, and only what is still left scrolls. Kit `Slack` (inside a `ScrollRegion`) and `Band`'s `squeeze`.
+It is exactly the frame's spacing wherever the board fits (every 393 × 852 frame), and type, cards, art
+and controls never shrink. Applied where a 667 phone otherwise opened on a half-cut last row: Paywall
+(the feature discs), the three check-in time boards (the day toggles), Cost Next 30 (its footnote) and Yearly
+Drop (its perks; the card is 28 taller than a 667 phone can hold even then, so its foot still scrolls).
+Hero boards keep D349 (their art already rises to 108; the gap under it is the frame's).
+
+## D407 — Native keeps a lone last word off its own line
+Native has no `text-wrap`, so away from the 393 break table (D332) a `pretty` / `balance` run wrapped greedily and
+could end on one word where the web never does ("…change one awkward / detail.", "…for an entire / year."). Kit
+`MonoText` now lays such a run out once and, when its last line holds a single word, draws it again with its last
+two words tied by a no-break space — `pretty`'s orphan rule — but only when the line giving the word keeps two
+words and half the run's width (else `pretty` leaves it too: "positive, on / average") and the pair fits the
+widest line, so no word can break inside itself in a narrow cell. Web is untouched; checked on the iPhone SE
+(375 × 667) simulator against the web captures.

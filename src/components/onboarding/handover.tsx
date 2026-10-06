@@ -102,7 +102,8 @@ export function O3LetterRead({
             {who ? `Week XII, from ${who}` : 'Week XII, from you'}
           </MonoText>
           <MonoText v="h1" wrap="wrap" style={{ lineHeight: lhNormal(26), marginBottom: 18 }}>
-            {who ? `${who} —` : 'Friend —'}
+            {/* a no-break space keeps the dash with the name however long it is */}
+            {who ? `${who}\u00A0—` : 'Friend\u00A0—'}
           </MonoText>
           <View style={{ gap: 14 }}>
             {paragraphs.map((p, i) => (

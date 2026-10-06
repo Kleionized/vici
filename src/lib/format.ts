@@ -195,7 +195,9 @@ export function dateRange(from: When, to: When): string {
   const a = at(from);
   const b = at(to);
   if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) return `${shortDate(a)}–${b.getDate()}`;
-  return `${shortDate(a)}–${shortDate(b)}`;
+  // Across two months the frames space the dash: Log Reports' `Jun 30 – Jul 6`
+  // (and Score Detail's `May – July`), against `Jul 14–20` within one.
+  return `${shortDate(a)} – ${shortDate(b)}`;
 }
 
 /** Whole calendar days from `d` to `now`, by the local calendar (0 = same day, 1 = yesterday). */

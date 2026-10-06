@@ -24,6 +24,7 @@ import { MonoText } from './Text';
  */
 
 const FRAME_W = 393;
+const FRAME_H = 852;
 /** points of canvas kept above and below the art's bounds (the bounds already sit ≥ 0.8 outside the paint) */
 const BLEED = 2;
 
@@ -200,10 +201,24 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
   }
   const s = props.scale ?? HERO_SCALE[id];
   // the screen's bottom edge in canvas y is `height − canvasTop` (Screen's children box)
-  if (props.controls != null && heroArtBottom(id, props.top, s) + 16 > win.height - canvasTop - props.controls) return null;
+  // whole points: the art's bottom is a fraction (716.034) and a 0.03 pt overrun must not drop it
+  const shortfall = props.controls != null ? Math.round(heroArtBottom(id, props.top, s)) + 16 - (win.height - canvasTop - props.controls) : 0;
+  // A small shortfall (a phone a few points shorter than the frame) raises the art
+  // instead of losing it — every such board keeps ≥ 30 clear above its art at 852
+  // (D349). A larger one drops it (D320 rule 1).
+  if (shortfall > 16) return null;
+  const rise = Math.max(0, shortfall);
+  /* A hero between the content and the bottom controls belongs to the bottom
+     of the board: T 506 sets its box on the primary's top, T 582 30 above the
+     edge. On a phone taller than the frame it keeps that distance to the
+     bottom instead of to the top, so the extra height opens above the art
+     rather than between the art and the pill (D344). The frame (852) and
+     shorter phones are untouched — there `controls` already drops the art when
+     it would meet the controls. */
+  const extra = props.controls != null ? Math.max(0, win.height - canvasTop - FRAME_H) : 0;
   // the browser paints the svg from its box's origin snapped to the whole point (see heroCrop) — the
   // week covers' 98.9, 63.9, 114.4 and 88.8 draw as 99, 64, 114 and 89
-  const { ox, oy } = cssOrigin(Math.round(props.top), s, width);
+  const { ox, oy } = cssOrigin(Math.round(props.top) + Math.round(extra) - rise, s, width);
   return <Placed id={id} ox={ox} oy={oy} k={s} width={width} />;
 }
 
@@ -295,7 +310,10 @@ export function HeroBoard({
   children?: ReactNode;
 }) {
   const dark = tone === 'dark';
-  const { height: winH } = useWindowDimensions();
+  const { height: winH, width: winW } = useWindowDimensions();
+  // The text column keeps the frame's 345 on a wider phone, so the frame's line
+  // breaks hold at 430 instead of re-wrapping across 382 (D404); 24 at 393.
+  const gutter = Math.max(24, (winW - 345) / 2);
   const canvasTop = useCanvasTop();
   const [stackH, setStackH] = useState(0);
   const bottom = ctaBottom ?? (ghost ? 96 : 48);
@@ -308,20 +326,33 @@ export function HeroBoard({
   let lift = 0;
   let dropArt = false;
   let scroll = false;
+  /* Where a lift by the whole deficit would push the art under the nav, the art
+     rises as far as it can (its top to 108) and keeps its place, and the stack
+     scrolls in the band between where it then starts and the controls — D320
+     rule 2, then rule 3. Only when that band is too short to read in (under
+     MIN_BAND) is the art let go, and then the stack is centred between the nav
+     and the controls rather than lifted by the deficit, so the board does not
+     open on empty ground (D349). */
+  const MIN_BAND = 160;
   if (measured && deficit > 0) {
     if (deficit <= room) lift = deficit;
-    else {
+    else if (controlsTop - 16 - (stackTop - room) >= MIN_BAND) {
+      lift = room;
+      scroll = true;
+    } else {
       dropArt = true;
-      lift = Math.min(deficit, stackTop - 108);
-      scroll = deficit > stackTop - 108;
+      const band = controlsTop - 16 - 108;
+      lift = stackTop - 108 - Math.max(0, Math.floor((band - stackH) / 2));
+      scroll = stackH > band;
     }
   }
+  const scrollTop = dropArt ? 108 : stackTop - lift;
   const hidden = measured ? null : { opacity: 0 };
 
   const stack = (
     <View
       onLayout={(e) => setStackH(e.nativeEvent.layout.height)}
-      style={[scroll ? { gap, alignItems: 'center' } : { position: 'absolute', left: 24, right: 24, top: stackTop - lift, gap, alignItems: 'center' }, hidden]}>
+      style={[scroll ? { gap, alignItems: 'center' } : { position: 'absolute', left: gutter, right: gutter, top: stackTop - lift, gap, alignItems: 'center' }, hidden]}>
       {caps ? (
         <MonoText v="caps" center color={dark ? monoDark.caps : mono.mute} style={{ alignSelf: 'stretch' }}>
           {caps}
@@ -362,7 +393,7 @@ export function HeroBoard({
         </View>
       ) : null}
       {scroll ? (
-        <ScrollRegion top={108} bottom={bottom + 58} contentStyle={{ paddingHorizontal: 24, paddingBottom: 16 }}>
+        <ScrollRegion top={scrollTop} bottom={bottom + 58} contentStyle={{ paddingHorizontal: gutter, paddingBottom: 16 }}>
           {stack}
         </ScrollRegion>
       ) : (

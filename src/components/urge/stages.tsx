@@ -403,7 +403,8 @@ export function SosSettingsSheet({ open, settings, onChange, onDone }: { open: b
           return (
             <Tap
               key={item.key}
-              onPress={() => onChange({ ...settings, light: item.key })}
+              // a second tap on the chosen light gives the orb back its own white (light: null), the disc 85F draws
+              onPress={() => onChange({ ...settings, light: on ? null : item.key })}
               accessibilityRole="radio"
               aria-checked={on}
               label={`${item.label} light`}

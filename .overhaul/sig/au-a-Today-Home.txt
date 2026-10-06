@@ -127,12 +127,12 @@ path | 149 | 863.8 | 92.1 | 26.3 | - | - | - | - | - | -
 path | 179.1 | 877 | 48.9 | 0 | - | - | - | - | - | -
 div | 24 | 981 | 345 | 270 | - | - | - | - | - | -
 div | 24 | 981 | 345 | 120 | - | - | - | - | - | -
-div | 24 | 981 | 345 | 94 | - | - | - | - | - | -
-button | 24 | 981 | 273 | 94 | - | - | - | - | - | -
+div | 24 | 981 | 345 | 70 | - | - | - | - | - | -
+button | 24 | 981 | 273 | 70 | - | - | - | - | - | -
 div | 24 | 981 | 273 | 16 | - | - | - | - | 13px/700/normal/16px/rgb(155, 150, 142) | Today’s task: Give the action a time and place
-div | 24 | 1003 | 273 | 72 | - | - | - | - | 17px/700/-0.4px/24px/rgb(242, 240, 236) | Write three simple rules for situations that have caught you before and make one easier to follow.
-div | 317 | 1002 | 52 | 52 | - | - | - | - | - | -
-div | 317 | 1002 | 52 | 52 | - | 26px | - | rgb(242, 240, 236) 0px 0px 0px 1.5px | - | -
+div | 24 | 1003 | 273 | 48 | - | - | - | - | 17px/700/-0.4px/24px/rgb(242, 240, 236) | Write one cue and action for a decision you keep postponing.
+div | 317 | 990 | 52 | 52 | - | - | - | - | - | -
+div | 317 | 990 | 52 | 52 | - | 26px | - | rgb(242, 240, 236) 0px 0px 0px 1.5px | - | -
 div | 24 | 1101 | 345 | 150 | - | - | - | - | - | -
 button | 24 | 1101 | 166.5 | 150 | rgb(30, 30, 30) | 24px | - | - | - | -
 svg | 42 | 1119 | 28 | 28 | - | - | - | - | - | -

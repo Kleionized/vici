@@ -21,6 +21,7 @@ import { useCreateEvent, useCurrentUser, useEvents, useJournalEntries } from '@/
 import { dayPartDate, dayPartTime, daysAgo, joinLower } from '@/lib/format';
 import { setJSON } from '@/lib/storage';
 import { mono } from '@/lib/theme';
+import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
  * The post-slip flow — canvas 98A–98L, plus the nineteen cards at 99A–100K.
@@ -103,7 +104,7 @@ export default function Slip() {
   const user = useCurrentUser();
   const events = useEvents();
   const journal = useJournalEntries();
-  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const pledge = standingPledge(journal);
 
   const [step, setStep] = useState<Step>(stage === 'morning' ? 'morning' : 'entry');
   const [when, setWhen] = useState(0);
@@ -120,9 +121,16 @@ export default function Slip() {
   const [logged, setLogged] = useState(false);
   const saving = useRef(false);
 
-  const at = customAt ?? now - WHEN_CHIPS[when].offsetMs;
+  // 'Earlier today' stays today: before 04:00 a four-hour offset would land in
+  // last night while the chip still says today (D403)
+  const at = customAt ?? Math.max(WHEN_CHIPS[when].offsetMs === 24 * 3600_000 ? 0 : new Date(now).setHours(0, 0, 0, 0), now - WHEN_CHIPS[when].offsetMs);
   /** A picked moment may not be in the future. */
-  const pick = (t: number) => setCustomAt(Math.min(t, now));
+  // a pick that leaves the moment where it is (the day already chosen, a wheel step the
+  // future-clamp undoes) keeps the lit chip lit
+  const pick = (t: number) => {
+    const next = Math.min(t, now);
+    if (next !== at) setCustomAt(next);
+  };
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   const go = (next: Step) => setStep(next);
   const back = () => {
@@ -330,7 +338,9 @@ export default function Slip() {
           gap={8}
           cta="Continue"
           // the answer is optional (D149); the one that says it is still going leaves the flow
-          onCta={() => (watching === STILL_WATCHING ? router.replace('/urge-hub') : go('warn'))}>
+          // dismissTo: back to the hub when the hub opened the flow (no second hub on the
+          // stack under it), a replace when the surf stage did (D402)
+          onCta={() => (watching === STILL_WATCHING ? router.dismissTo('/urge-hub') : go('warn'))}>
           {/* balance breaks it here on the web; native gets the same two lines from the \n (D332) */}
           <H1>{'Do you still want\nto keep watching?'}</H1>
           <MonoText v="pTight" color={mono.mute}>
@@ -389,7 +399,7 @@ export default function Slip() {
           <MonoText v="p">A slip doesn’t erase what you decided. Sign it again and keep going.</MonoText>
           <Gap h={6} />
           {/* gated on `pledgeEligible`, so the words are always ones the user signed */}
-          <PledgeCard pledge={pledge?.body ?? ''} name={user?.displayName?.split(' ')[0] || 'You'} signed />
+          <PledgeCard pledge={pledgeText(pledge)} name={user?.displayName?.split(' ')[0] || 'You'} signed />
         </SlipQuestion>
       );
 
@@ -406,7 +416,9 @@ export default function Slip() {
           // a slip logged for a day that is not today IS last night's, which is
           // the board 98L writes for — read the timestamp, not the chip, because
           // the wheel can move it after the chip was picked
-          onCta={() => (daysAgo(at, now) !== 0 ? go('morning') : router.replace('/(app)/today'))}
+          // back to the Today already on the stack: a replace mounted a second (app)
+          // and re-ran its once-per-launch prompts straight away (D402)
+          onCta={() => (daysAgo(at, now) !== 0 ? go('morning') : router.dismissTo('/(app)/today'))}
         />
       );
 
@@ -422,7 +434,7 @@ export default function Slip() {
           cta="Check in"
           onCta={() => router.replace('/day/morning')}
           ghost="Later"
-          onGhost={() => router.replace('/(app)/today')}
+          onGhost={() => router.dismissTo('/(app)/today')}
         />
       );
   }

@@ -5,7 +5,7 @@
    nothing signs a mock user in when the capture opens /day/* directly.
 
    The name is the canvas's own: `Morning Pledge Signed` writes `Jerry` on the
-   signature line in Snell Roundhand, and it is the only frame in the group that
+   signature line (Lato 700 italic in the overhaul), and it is the only frame in the group that
    prints a name at all (FINDINGS F28 — seed what the frame draws rather than
    parking the row as sample data). */
 const uid = 'day-seed-user';

@@ -66,3 +66,36 @@ Night 3 Reflection's stack is a `ScrollRegion` (top 136, to 16 above the pill): 
 draws empty ground (D095's reading carried): only its nav row shows, dimmed, above the panel at 120 — that
 and the caret are the frame's 0.19 %. `RerollGlyph` now strokes `#9B968E` by default (the old `#8B8882` is
 not in the palette) and takes `color`; `affirmation.tsx` (today group) keeps its call unchanged.
+
+## Phase 2 amendments (no new numbers — D235–D239 is the whole range)
+
+**D237, the score row.** The row's disc now follows the rule the other four rows follow: a ticked disc when
+yesterday put points on the board, the kit's empty ring when it put nothing on or took some off
+(`−14 → 1,326` on `.overhaul/day-seed-negatives.js`). The frame's `+12` row is unchanged (ticked); Morning 1
+Yesterday stays at 0.08 %, the value's glyphs (D097).
+
+**D239, the scrolling band.** `StepStack`'s band (Morning Task Check, Morning Resign Pledge, Night 3
+Reflection, Night Action Reminder) now runs down to the controls' top and keeps its 16 as bottom padding,
+instead of ending 16 above them. At 852 nothing moves (the frames' stacks fit). The scrolled end is the same
+(the last line stops 16 above the controls); what changes is the resting state when a stack only just
+overflows: D339's longest task line (L58, seven lines at 375 × 667) overflowed by 2 and the band's edge cut
+Yes / Not yet flat across their bottom corners — they now show whole, 14 above the round next. A stack that
+overflows by more is cut at the controls' top line (it reads as passing behind the pill) rather than by a
+hard edge floating 16 above it.
+
+**Checked, nothing to change.** All 17 frames at 393 × 852 (14 at 0.00 %; Morning Task Check 0.002 % —
+18 px of corner antialiasing on the just-pressed Yes tile, geometry exact at 24,373 166.5 × 62 r20;
+Morning 1 Yesterday, Change Pledge Sheet and Night 3 Reflection as recorded above) and at 375 × 667,
+390 × 844 and 430 × 932; `/checkin`'s three steps at the three sizes; the negatives; L58 on Morning Task
+Check and Night Action; a six-line pledge; a ten-line reflection. Back paths after D340: ✕ on a cover,
+mid-flow and on `/checkin` returns to the All drawer it was opened from; Done from Today's "Morning
+check-in" returns to Today with yesterday's `dailyActionDone` written. The night fallback reads "hard to
+reach", as Today II draws it.
+
+**Open (kit): Checkin Emotions at 390 × 844 loses its moon by 0.03 pt.** The kit's drop test
+(`Hero.tsx`: `heroArtBottom + 16 > height − canvasTop − controls`) compares the unrounded art bottom:
+nightMoon at 0.954 ends at 696 + 0.954 × 21 = 716.034, the round next's top at 844 is 732, so
+732.034 > 732 drops the art and the board shows 216 pt of empty ground where Night 1 Mood and Checkin
+Reasons at the same size keep theirs. On a real 390 × 844 phone (inset 47) the board is 851 tall and keeps
+it; the mock's 54 inset is what lands it on the edge. Asked of the orchestrator: round the art bottom in
+that test.

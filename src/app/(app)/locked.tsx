@@ -80,8 +80,10 @@ export default function Locked() {
           <MonoText v="h1" center>
             {`${ahead} more weeks ahead`}
           </MonoText>
+          {/* two sentences, centred under a centred h1: broken between them (each
+              fits a line at every width) rather than leaving "the mist." alone */}
           <MonoText v="p" center>
-            {`You've finished week one. The road carries on past the mist.`}
+            {`You’ve finished week one.\nThe road carries on past the mist.`}
           </MonoText>
         </View>
       </ScrollRegion>

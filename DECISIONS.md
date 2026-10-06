@@ -3244,3 +3244,2698 @@ birds is **byte-identical** between design and app — 6,720 pixels, worst Δ 0.
 
 Recorded so the next audit reads those five rows as known rather than spending a session on them.
 It is the SVG trap of the brief with the sign reversed: the numbers look wrong and the art is right.
+
+<!-- vici-overhaul-decisions:start -->
+
+# Vici Overhaul run (Oct 2026) — D200–D407
+
+The UI rebuilt to the `Vici Overhaul` bundle (flat dark monochrome, Lato, the new five-tab bar and the
+rebuilt 84-lesson course). D320–D349 and D400–D407 are the orchestrator's rulings and override any group
+entry they touch; D350–D399 the shared kit and prerequisites; D200–D319 the screen groups. Analysis behind them:
+`.overhaul/understand/`; the run's report: `.overhaul/REPORT.md`.
+
+## Orchestrator decisions — Vici Overhaul run (D320–D349, D400–D407) — `orchestrator`
+
+Merged into DECISIONS.md at the end of the run. Evidence is in `.overhaul/understand/CRITIC.md` (§ refs).
+
+## D320 — One small-screen policy for every board (CRITIC §7.3)
+At 393 × 852 every board renders exactly as drawn. Where content would meet the bottom controls on a
+shorter phone, in this order: hide decorative heroes that sit between content and controls; on hero
+boards translate hero + stack up together by the deficit (art top ≥ canvas 108); everything else scrolls
+in a `ScrollRegion` between the fixed nav and the controls (`paddingBottom` = controls + 24); title-head
+pages scroll whole; tab screens scroll under a bar painted with ground + noise. Never shrink type, never
+overlap a control. Checked at 375×667 (inset 20), 390×844, 430×932.
+
+## D321 — Disabled primary: the same pill at opacity 0.38
+No frame draws one. 0.38 is what the auth boards already used; no new colour is introduced.
+
+## D322 — States the frames never draw (CRITIC §7.4)
+Toggle off: track `#2E2E2E`, knob `#F2F0EC` at left 3. Day toggle off: `#1E1E1E` + 14/700 ink. Lesson
+option selected: ink row, `#111111` filled marker, `#F2F0EC` letter. Pressed: `Tap`'s 0.99 scale only.
+Inputs: ink caret, `#9B968E` placeholder, dark keyboard (`userInterfaceStyle: dark`).
+
+## D323 — Paywall and Yearly Drop keep a way out
+Neither frame draws a dismiss, and the user's brief says every control keeps working. Both get the ✕ in
+the nav's right slot, where Paywall Rescue draws it; Paywall's footer "Restore" is tappable. Recorded as a
+visible deviation from those two frames.
+
+## D324 — Behaviour that follows the frames
+Gender auto-advances (no primary drawn, 260 ms like every no-primary option screen); the SOS reason and
+feeling pickers are multi-select (board = first selection in canvas order; `reasons` stores all; `feeling`
+stays one value — no schema change); the onboarding `reading` (Campaign Map) step is removed (FLOW goes
+34 → 38); Today's pinned urge bar goes (the SOS disc and "Urge surfing" are the doors); the lesson reader
+contains the day's task, `/lesson-card/[day]` and `/task/[day]` become redirects into it; "Finish lesson"
+records completion once; morning check-in default 8:00 AM; `Health / wellbeing` is stored as `Health` and
+old values map on read.
+
+## D325 — Library tab = the twelve week pages
+The canvas draws no Library index. The tab opens the current week's page; the twelve pages are a
+horizontal pager; `/week/[week]` routes into it.
+
+## D326 — `/score` shows the tab bar (Journey active, per the frames) — moved under `(app)` if links survive.
+
+## D327 — The tab bar's ground
+The bar has no fill in the frames; content ending at 748 never shows through. The app paints ground +
+noise behind it so scrolled content cannot either — invisible at 852.
+
+## D328 — Nothing is retired
+Every route the app has stays reachable and is restyled to its closest frame (routes.md §4), including
+the All drawer's sixteen screens and `/journey*`. Copy on undrawn screens and states is the app's
+existing copy (CRITIC G12).
+
+## D329 — Starting Score shows the app's own rating
+The frame prints 842 of 1,000; the app starts at SCORE_BASE 1,000 and the canvas's own Score Detail and
+Ranks floor at 1,000. The gauge is parametric; the frame's number is sample data.
+
+## D330 — Auth errors: 14/700 ink; notices 14/400 `#9B968E` (no red exists in the system).
+## D331 — Age wheel 13–99 (keeps the under-18 gate reachable).
+## D332 — Native line breaks: `text-wrap: balance/pretty` is reproduced on web; on native, fixed copy
+whose greedy break differs at 393 carries `\n`; dynamic copy and lesson body wrap greedily.
+## D333 — Score's "Months" control opens a kit sheet (3M / 1Y).
+## D334 — Native splash: plain `#0D0D0D`.
+## D335 — No `presentation: 'modal'` page sheets (no frame draws one): `first-steps`, `lessons-browser`
+push; `affirmation` is a transparent fade.
+## D336 — Mock-only `/urge?board=<key>` so the three SOS boards no single account reaches can be verified.
+## D337 — Kit text caps Dynamic Type at 1.3×.
+## D338 — Hero ids are the illustration cards' own `data-hero` ids; `windowNight` aliases `nightMoon`.
+
+## D339 — Today's task sentence is the lesson's own first task sentence (days 2–84)
+D397 kept the previous course's one-line task (`task-src.json`) because Today Home Task and Night Action
+Reminder draw day 1's. But on most days that line now names a different task from the one the new lesson
+sets (L5 "Spend 20 minutes learning something new" vs the lesson's "Choose an activity for the hour when you
+usually want porn"; L18/L19 entirely different), and tapping it opens the lesson's task page. The new bundle
+has no short task line. So `cardSummary` = the first sentence of the lesson's own task (`practice[0]`) for
+days 2–84 — the bundle's words, not authored ones — and day 1 keeps the frames' sentence, which the new L1
+task contains ("put the phone out of reach from bed"). Sentences run 62–196 characters (median 71); the cards
+are checked at the longest (L58).
+
+## D340 — Tabs go back through history
+`backBehavior="history"`: a week page opened from the All drawer, or Score from Today, goes back where it came
+from instead of always to Today.
+
+## D341 — Full-bleed art reaches the edges on wider phones
+Crop-mode heroes with a floor (17 cards paint −40 … 433) are scaled just enough to cover the window when the
+frame's fit would leave them short (nightMoon at 430; openDoor and lighthouse at every width); every crop a
+frame draws is unchanged. The lighthouse's beams are extended collinearly to −40 … 433 in the generator —
+identical inside 393, edge to edge at 430.
+
+## D342 — The mock store keeps every event field
+`createEvent` listed fields by hand and dropped `durationSeconds` / `severityAfter`, so a mock build's ridden
+urges never reached the hub's proof panes. It now keeps the whole input, as the Convex mutation does.
+
+## D343 — Orphaned files are not deleted without the user's approval
+The rebuild left 14 files unimported (the old lesson reader, its art and the old task scenes, ~2.6 MB; listed
+by `.overhaul/scratch/deadfiles.mjs`). The session's permission policy refused the deletion; they stay on disk
+until the user approves (they are also in `refs/snapshots/pre-overhaul-full`).
+
+## D344 — A hero between content and controls keeps its distance to the bottom on taller phones
+Question-board and check-in heroes (the ones that pass `controls`) are bottom compositions: T 506 sets the
+art's box on the primary's top, T 582 30 above the edge. On a phone taller than the frame the art keeps that
+distance to the bottom, so the extra height opens between content and art instead of between art and pill.
+Identical at 852; shorter phones keep D320 rule 1 (the art drops out when it would meet the controls).
+
+## D345 — Cross-month ranges space the dash
+`dateRange()` writes `Jul 14–20` within a month and `Jun 30 – Jul 6` across two, as Log Reports and Score
+Detail (`May – July`) draw them; `weekLabel()` now just calls it.
+
+## D346 — L64's task line skips its preface
+L64's task opens "This exercise is optional.", which names no task; its card line is the next sentence (the
+bundle's words). D339 otherwise holds: card lines run 17–196 characters, median 71.
+
+## D347 — A scroll cue on native when a board overflows
+No frame draws a scroll indicator and at 852 nothing overflows. On a shorter phone a `ScrollRegion` that opens
+with rows below the fold shows the platform indicator and flashes it once after the push — native only, so web
+captures (the verification build) are unchanged.
+
+## D348 — Morning asks after the task Today showed
+When yesterday's row names no action, Morning Task Check asks after yesterday's lesson task (`cardSummary`, the
+sentence Today carried that day) instead of the generic `DAY_ACTIONS` line; past the course, the generic line.
+
+## D349 — Short phones keep their art where they can
+HeroBoard: when the stack needs more lift than the art has room for, the art rises to its limit (top 108) and
+keeps its place, and the stack scrolls in the band between it and the controls; the art goes only when that
+band would be under 160 pt, and then the stack is centred between the nav and the controls. A question-board
+hero (`controls`) that misses its clearance by ≤ 16 pt rises by the shortfall instead of dropping out (every
+such board keeps ≥ 30 pt clear above its art at 852). The frames themselves are untouched.
+
+## D400 — The first morning skips yesterday
+Day 1 has no yesterday: Morning opens on Feeling (dashes count Feeling · Energy · Pledge) and writes nothing to a
+row dated before the account. A pledge written in the editor's first field alone is that pledge (`pledgeText`,
+`src/lib/pledge.ts`), and every screen that shows the standing pledge reads it through that helper.
+
+## D401 — The line under a lesson title is its own task sentence
+Search, first steps and the lesson index showed the previous course's one-line summaries, which described other
+lessons. `summary` is now the lesson's task sentence (`cardSummary`, D339); search also matches on it.
+
+## D402 — Leaving the slip flow returns to the screen that is already there
+"Start again", "Later" and "I'm already watching again" use `dismissTo` (Today / the hub): back to the
+existing screen when it opened the flow, a replace when it did not — no second Today (and no second run of
+the launch prompts), no second hub under the first.
+
+## D403 — "Earlier today" stays today
+Before 04:00 the four-hour preset now stops at midnight; a pick that leaves the moment unchanged keeps the lit
+chip lit (slip and the log flows).
+
+## D404 — Polish at other widths
+Hero boards keep the frame's 345 text column on wider phones (frame line breaks hold at 430), and so do the
+Paywall's feature labels and Yearly Drop's perks, each held to its 393 cell; Journey's
+chapters sit 700 apart so the next chapter visibly enters the first screen; no-break spaces keep
+"start to finish" and a letter's "Name —" together; Today's task caps wrap `pretty`; Score's pages scroll only
+when their content overflows; an empty Past pledges list keeps its line in the gutter; a second tap on the
+chosen orb light restores the default white.
+
+## D405 — An overflowing band fades at its foot
+On a short phone a `ScrollRegion` that holds more than it shows used to cut its last row or disc in half
+against the pill. Its foot now fades 36 pt into the frame's ground while more lies below (gone at the end of the
+scroll) — the canvas's own treatment for content that runs past the controls (L7 F11), shorter. Never drawn
+where the content fits, so no 393 × 852 frame changes. Native also flashes the scroll indicator (D347).
+
+## D406 — A short phone tightens a board's open gaps before it scrolls
+D320's order gains a step before rule 3: where a fixed composition (not a list or a reading page) would
+overflow its band, the open gaps the frame leaves between its blocks close first — together, each in
+proportion to what it can spare, never under 24 between blocks (12–16 under the nav row) — by just the
+overflow, and only what is still left scrolls. Kit `Slack` (inside a `ScrollRegion`) and `Band`'s `squeeze`.
+It is exactly the frame's spacing wherever the board fits (every 393 × 852 frame), and type, cards, art
+and controls never shrink. Applied where a 667 phone otherwise opened on a half-cut last row: Paywall
+(the feature discs), the three check-in time boards (the day toggles), Cost Next 30 (its footnote) and Yearly
+Drop (its perks; the card is 28 taller than a 667 phone can hold even then, so its foot still scrolls).
+Hero boards keep D349 (their art already rises to 108; the gap under it is the frame's).
+
+## D407 — Native keeps a lone last word off its own line
+Native has no `text-wrap`, so away from the 393 break table (D332) a `pretty` / `balance` run wrapped greedily and
+could end on one word where the web never does ("…change one awkward / detail.", "…for an entire / year."). Kit
+`MonoText` now lays such a run out once and, when its last line holds a single word, draws it again with its last
+two words tied by a no-break space — `pretty`'s orphan rule — but only when the line giving the word keeps two
+words and half the run's width (else `pretty` leaves it too: "positive, on / average") and the pair fits the
+widest line, so no word can break inside itself in a narrow cell. Web is untouched; checked on the iPhone SE
+(375 × 667) simulator against the web captures.
+
+## kit-choices decisions — Vici Overhaul run, Phase 0 Part A (D350–D359) — `kit-choices`
+
+Files: `src/components/mono/choices.tsx`, `rows.tsx`, `pills.tsx`, `cards.tsx`, `lab/choices.tsx`,
+`lab/rows.tsx`. Replica record (route, ignore regions, result per replica):
+`.overhaul/shots/kit-choices/replicas.json`. Captures and strips: `.overhaul/shots/kit-choices/`.
+
+Exports — `choices.tsx`: `OptionList`, `Option`, `Grid2`, `Chips`, `Chip`, `WhenChips`, `DateRow`,
+`Segmented`, `toggleChoice`, `OPTION_LIFT`, types `Choice`, `SelectProps`, `SegmentItem`. `rows.tsx`:
+`RowGroup`, `Row`, `Toggle`, `ListRows`, `ListRow`, `RuledRows`, `RuledRow`, `SummaryCard` (= `DetailRows`),
+`DetailRow`, `CheckRows`, `CheckRow`. `pills.tsx`: `Pill` (+ `PillKind`), `CheckinDisc`, `CheckDisc`.
+`cards.tsx`: `Card` (+ `CardVariant`, `CardPadding`), `IconCard`.
+
+## D350 — One controlled selection API for options, tiles and chips
+`OptionList`, `Grid2` and `Chips` take `options` (a string, or `{key, label?, exclusive?, disabled?,
+accessibilityLabel?}`) and either `value: K | null` + `onChange(key)` (single) or `multi` + `value: K[]` +
+`onChange(keys)`, with `exclusive` (keys, or the per-option flag) and `max`. The rule is `toggleChoice()`,
+lifted from the funnel's own `O3FunnelStep.pick` so stored answers do not change shape: tapping a chosen
+answer removes it; an exclusive answer replaces everything and any other answer drops it; at `max` a further
+pick is **refused** (not rotated in) and the picker calls **no** `onChange` — the funnel's `pick` returned
+early, so a consumer's save/haptic/analytics must not fire on a no-op (verified in `States@choices`: three
+taps, one refused, two calls); picks stay in **tap order** (the funnel's existing order — the SOS
+pickers' "board = first selection in canvas order" is the consumer's sort, D324). Nothing advances on a pick
+— the 260 ms turn-over stays with the screen. Verified by a 9-case node test of `toggleChoice` and by
+tapping in the V3-Q5 lab (`In the morning` added, `Late at night` removed).
+
+## D351 — Ruled lists: the kit row carries the canvas's content-box point
+Every ruled list draws `border-top: 1px #2E2E2E` on rows 2+ and the canvas's rows are content-box, so a
+ruled 54 row measures 55 (52 → 53, 58 → 59, 60 → 61; Settings' card is 54+55+55 = 164). RN boxes are
+border-box, so each kit row takes `divider` and adds the point itself; `RowGroup`, `ListRows`, `RuledRows`,
+`CheckRows` and `SummaryCard` hand `divider` to every child but the first (an explicit `divider` wins), and
+`RuledRows` also hands down `height` (52 / 56 / 46). Children must be the kit's rows (they receive the props
+by `cloneElement`); `false`/`null` children are skipped, and **Fragments are opened** first
+(`{premium && (<><Row/><Row/></>)}` is ordinary settings code) with their keys prefixed, so rows inside
+one are ruled and +1 like their siblings (verified in `States@choices`: rows at 289 / 344 / 399). A row with no `onPress` is a plain `View` — no
+button role, no press scale; with `onPress` it is a `Tap`.
+
+## D352 — Toggle: the frames' on state, D322's off state, and who is the control
+On (the only drawn state, App Lock / Data & Privacy): track `#F2F0EC`, knob `#1E1E1E` at right 3. Off
+(D322): track `#2E2E2E`, knob `#F2F0EC` at left 3. The knob slides 3 ↔ 23 and both fills cross-fade over
+180 ms (Reanimated); the first render is already at the value, so captures never catch it mid-way. Inside a
+`Row` (`toggle={{ value, onChange }}`) the **row** is the control — role `switch`, `aria-checked`, a tap
+anywhere flips it (the app's applock/privacy rows already behaved so) and the `Toggle` only shows the
+state; a standalone `Toggle` with `onChange` is its own switch. Checked in the App-Lock lab by switching
+two rows off (`[role=switch]` fired — drive.js's `tap()` does not look at `switch`, same as before).
+
+## D353 — Selection state goes to the DOM as `aria-*`, not `accessibilityState`
+RN-web 0.21's `createDOMProps` reads `aria-checked` / `accessibilityChecked` and ignores
+`accessibilityState` — measured: an `Option` built with `accessibilityState={{checked}}` rendered
+`role=radio` with **no** `aria-checked`. The kit now passes `aria-checked` (options, tiles, chips, when
+chips, row switches), `aria-selected` (segments) and `aria-disabled`; RN 0.85 reads the same props on
+native. Roles: `radio` (single), `checkbox` (multi), `tablist`/`tab` (Segmented — as the Log register
+already was), `switch` (toggle rows), `button` (pressable rows/pills/cards). Recipes can read the selection
+with `[aria-checked=true]`.
+
+## D354 — Pills: one `Pill` with `kind`; inline-flex is opt-in
+`kind` = `range` (+ `dot`) · `badge` · `status` (+ `filled`) · `darkTag` · `place` · `lessonTag` ·
+`outline` · `streak` · `delta` · `checkin` (+ `lead`, usually a `CheckinDisc` — tone dot, ringed icon, or
+the done disc), each with design-system §7.17's box and its span's own `line-height: normal`. The canvas's
+`display: inline-flex` hugs the words; RN has no inline boxes, and a default `alignSelf: 'flex-start'`
+would break the frames' centred rows (Today's header aligns the streak pill and the avatar on their
+centres), so **`inline` is a prop** for pills placed in a column. The paywall plan card's "Save 74%" tab
+(h24 card + ink ring, 11/700 ls 1) is drawn once, on one screen — left to the paywall group, not a kind.
+`DateRow` (§7.17's "date row": the When step's chosen-moment row + ground "Change" pill) lives in
+`choices.tsx` with `WhenChips`, the step it belongs to. `WhenChips` **wraps** (gap 10 both ways): the three
+chips need 326.6 of a 375 phone's 327, so at 360 or at a larger text size the last one drops to a second
+line instead of running 14.6 past the gutter (checked at 360×780); at 393 it is one line, as drawn.
+`streak` and `delta` draw their own glyph unless `lead` is passed (`lead={null}` draws none); `delta` takes
+`down` for a falling score — the 10 up arrow turned 180°, today-day §5's "down-arrow mirror" (undrawn); a
+zero delta is the screen's to hide.
+
+## D355 — CheckDisc states and glyph sizes
+`state` = `done` (ink + `#111111` check) · `inverse` (Paywall's selected radio: `#1E1E1E` + ink check) ·
+`pending` (`#1E1E1E` + line ring) · `current` (`#1E1E1E` + ink ring + 8 ink dot) · `empty` (transparent +
+line ring: Paywall's unselected radio). The check's size defaults to §7.23's table per disc (22→11, 24→12,
+26→13, 28→12, 30→13, 32→13, 34→14, 36→14, 40→16, 52→20, 84→36, 96→34, 132→56; the inverse 22→12);
+`glyph` overrides (Score Detail Ranks' 26→12). `CheckRow` draws `done` by default; `done={false}` (a negative:
+"No urges logged") uses the **`empty`** disc — a bare 1.5 `#2E2E2E` ring, no check — exactly today-day OQ-M2's
+recommendation for the undrawn row (the negatives keep their own copy).
+
+## D356 — Summary card and long values
+`SummaryCard` (= `DetailRows`) is shrink-to-fit per CRITIC C10: `alignSelf: 'center'`, `maxWidth: '100%'`,
+label `flexShrink: 0`, value `flexShrink: 1` + right-aligned lh 22 — Lapse Done measures **326** and Urge
+Log Done **249** wide, exactly the frames; `stretch` opts out. Per C11 only dynamic values may ellipsise:
+`Row`/`ListRow` take `valueLines` (then the right cluster and the value may shrink); fixed copy never passes
+it and nowrap is never `numberOfLines` (design-system §10.10).
+
+## D357 — The 0.04 lift, cards, and what each variant pads
+`lift` (`OPTION_LIFT`, `0 1px 2px rgba(0,0,0,0.04)`) is a prop on `OptionList`/`Option`/`Chips`/`Chip`
+only, on the unselected state, as the V3 frames write it; `Grid2` never carries it (no frame does). `Card`
+variants: `filled` r24 card pad 22 22 (pass the frame's own `padding` in CSS order — `[26,26,24]` Your Vow
+Page …), `outline` r22 card + line ring pad 20 18 18, `selected` r22 ink pad 20 18 18, `tile` h150 r24
+pad 18 column space-between; `overflow` is never clipped by the card. A `Card` with `onPress` is a `Tap` with
+role **`button`** unless `accessibilityRole` says otherwise — `Tap` spreads its props over its own default, so
+passing the caller's `undefined` through had erased the role (no `role` on web, nothing for VoiceOver, and
+drive.js could not find it); measured after the fix: `role=button`, `tabindex=0`. `IconCard` is Your Plan's
+row card (42 ink disc + 20 glyph, 16/700 title, 13/400 mute line).
+
+## D358 — Lab keys: one replica per frame stem where this part can give it
+`lab/index.ts` spreads the parts in order core → choices → rows → overlay → hero → tabbar → misc, so a later
+part's key silently wins. **`Lapse-When`** is registered here, at the frame's own stem: the whole frame from
+kit pieces — `WhenChips` + `DateRow` around kit-overlay's real `TimeWheel` (0.00 %). The overlay part keys its
+chips-as-boxes check `Lapse-When@overlay` and its decisions (D367) say Part A owns the plain key; the earlier
+`Lapse-When@choices` is gone. **`Log-Urges`** stays kit-chrome's (bar-only, spread later); this part's
+`Log-Urges@choices` now draws kit-chrome's real `TabBar` too, so it is the whole frame at 0.00 % — the
+orchestrator decides which replica keeps the stem. `V3-Q1` is registered here built from `OptionList`, and
+**supersedes** the core lab's raw-row `V3-Q1` (same numbers, same 0.00 %). The three replicas whose frames
+carry a hero now draw kit-hero's `Hero` (Checkin Emotions `windowNight` 506/0.954, Your Vow Page `flag` 104,
+Morning 1 Yesterday `sunrise` 506), in the frame's paint order, so every required replica is a whole-frame
+check. Extra checks are keyed `<Frame>@choices` so they never shadow anyone's; `States@choices` is not a frame
+— it shows the undrawn states and drives `max`. The replicas are recorded in
+`.overhaul/shots/kit-choices/replicas.json`, **not** in `.overhaul/recipes/` — `audit.mjs` keys recipes by frame
+label across files in name order, so a `kit-choices.json` there would override `day.json`'s real `Checkin
+Emotions` recipe with a lab route.
+
+## D359 — The `→` in "+12 → 1,240" is a fallback glyph (orchestrator's call)
+Lato 700 (the `@expo-google-fonts/lato` TTF — Google's v1 cut) has no U+2192 (checked in its cmap). The
+canvas's stack `'Lato',-apple-system,system-ui,sans-serif` draws it from the system face; the app's
+`fontFamily: 'Lato_700Bold'` has no fallback on web, so the browser's default face draws a thinner arrow
+(the run is 85.1 wide against 84). It is the only residue on Morning 1 Yesterday (0.05 % of the whole frame, hero drawn).
+Native iOS falls back to the system face already. Fix belongs to `theme.ts` (`sans()` on web: append
+`, -apple-system, system-ui, sans-serif`) — requested, not made here.
+
+## Verification (all at 393×852, Lato loaded, strips looked at)
+
+Required replicas — whole-frame pxdiff, nothing ignored:
+
+| key | pxdiff | residue |
+| --- | --- | --- |
+| V3-Q1, V3-Q5, Checkin-Emotions, Lapse-When, Settings, App-Lock, Manage-Subscription, Log-Urges@choices, Lapse-Done, Urge-Log-Done, Your-Vow-Page | **0.00 %** | — (heroes, wheel and tab bar drawn by the other parts' kit components) |
+| Morning-1-Yesterday | 0.05 % | the `→` glyph only (280,232 32×12 · 312,232 16×12 · 328,232 12×12; D359); the sunrise is exact |
+
+Extra checks: Slip-Logged@choices (C10's third case: card 24,431 345×241, rows 54/55/55/77, last value 158.5
+wide at x 190.5 on two lines) 0.00 %; Your-Plan@choices (IconCard) 0.00 %; Paywall@choices (selected/outline
+cards, inverse/empty radios, 34 discs) 0.00 % (laurel ignored); Today-Home@choices (streak, delta, two check-in
+chips) 0.00 % (strip/chart/bar ignored); Urge-Overview@choices (range pill, 4-segment, 46 dot rows) 0.00 %;
+Where-We-d-Start@choices (place pills) 0.02 % = sub-point glyph offsets in the screen's inline-bold paragraph
+(y 664); region diffs 0.00 % for the 26 step discs (done/current/pending), dark tag, outline pill, range + dot,
+lesson tag. Signature diffs: every remaining row is the D022 span→View+Text box or the explicit `lhNormal` line
+height equal to the frame's `normal`. Size sweep 375×667 and 430×932 of every replica touched in the fix pass
+(Lapse-When, Checkin-Emotions, Your-Vow-Page, Morning-1-Yesterday, Log-Urges@choices, Slip-Logged@choices),
+plus Lapse-When at 360×780: no horizontal clipping or overflow from these components (the when-chips wrap at
+360; the summary card fills 382 at 430 and re-wraps its last value); vertical collisions with bottom controls
+at 667 are the screens' D320 work, not the kit's. Intermittent: Expo web's fast-refresh badge (a bolt at
+8,800 44×44) appears in a capture taken while another agent's edit hot-reloads — re-shoot, it is not app
+content (it hit one Log-Urges@choices capture in this pass).
+
+## kit-overlay decisions — Phase 0 Part B (D360–D369) — `kit-overlay`
+
+Files: `src/components/mono/Sheet.tsx`, `TimeWheel.tsx`, `Field.tsx`, `PledgeCard.tsx`, `Progress.tsx`,
+`lab/overlay.tsx`. Evidence: the replicas below (`/kit-lab?f=<key>`), captured at 393×852 and diffed with
+`scripts/overhaul/pxdiff.mjs` against `.overhaul/shots/design/Email-Login/<Frame>.png`; strips kept at
+`.overhaul/shots/lab/ov-<key>.strip.png` (`@` → `_`), size sweeps at `.overhaul/shots/lab/sz/`.
+
+Second pass (after the independent verification): the wheel is fully controlled and drags through
+native gesture handlers (D362); the sheet's modal flag moved to the layer (D360); the keyboard lift
+leaves the field clear on a 667 phone (D361); `TextField` composes a caller's `onContentSizeChange` and
+gains `multiline` / `accessory` (D364); the `quote`-light and `plain` PledgeCard replicas are back under
+suffixed keys, plus a `modal` sheet replica (D367); the hero boards drop their art on short screens (D368).
+
+## D360 — `Sheet` is an in-tree overlay with frame-level buttons
+The four sheet frames draw the whole screen underneath, a `rgba(0,0,0,0.68)` scrim over everything
+(status-bar band included, z 40), the `#171717` `28 28 0 0` panel (z 41) with the 40×4 `#2E2E2E` grabber at
+10 and its content column at `left 24 right 24 top 44`, and the buttons **outside** the panel at z 42,
+anchored to the screen bottom. So `Sheet` renders as the last child of `Screen` (canvas coordinates), its
+scrim starting at `-canvasTop` (the window's top), and takes the buttons as `footer` in canvas coordinates
+(`<PrimaryButton sheet bottom={96} />`, `<GhostLink zIndex={42} />`). `modal` renders the same layer in a
+transparent RN `Modal` (statusBarTranslucent, navigationBarTranslucent) for a sheet that must also cover
+navigator chrome — e.g. D333's Score "Months" sheet over the tab bar; replica `Sheet-Sign-Out@modal` diffs
+0.00 %, and its scrim tap closes it (real mouse, hit-tested).
+Dismissal = `onClose`: scrim tap (`Dismiss`), Android back (BackHandler), Escape on web, a downward drag
+on the panel past 96 pt or faster than 0.9 pt/ms (shorter drags spring back — a 40 pt drag returns the
+photo panel to 512, a 130 pt drag closes it). Without `onClose` only the sheet's own buttons close it.
+The panel drag's `onResponderGrant` returns `true` (blocks the native responder, so an Android scroll
+view under the finger cannot intercept it). Motion: open 300 ms out-cubic, close 220 ms in-cubic then
+unmount; Reduce Motion makes both instant. Closing a sheet dismisses its keyboard.
+**Accessibility:** `accessibilityViewIsModal` + `aria-modal` + `role="dialog"` sit on the **layer** that
+holds scrim, panel and footer — not on the panel. VoiceOver hides a modal view's siblings, and the
+frame-level buttons are the panel's siblings, so on the panel the flag hid Save / Sign out / Sign the new
+pledge / Keep current pledge / Stay signed in / Cancel from VoiceOver. The layer is `collapsable={false}`
+so Fabric cannot flatten the flag away. In `modal` mode the RN `Modal` is already the dialog (its own
+window natively, `role="dialog"` on web), so the layer does not repeat it — one dialog either way
+(checked: the dialog element contains Dismiss and every footer button).
+**Web `box-none`:** an inline `style.pointerEvents: 'box-none'` is written as CSS, where `box-none` is not
+a value — the full-window footer layer then swallowed every tap meant for the scrim. The layer uses a
+`StyleSheet`-registered box-none; the Reanimated footer (whose web view flattens styles inline) keeps the
+`pointerEvents` prop, which costs one RN-web deprecation notice.
+
+## D361 — A sheet keeps its drawn height, not its drawn top; the keyboard lifts it
+`top` is the frame's panel top at 852 (`SHEET_TOP` = pledge 120, name 420, photo 512, signOut 556). Off 852
+the panel stays **bottom-anchored at height 852 − T** (like the buttons it carries), clamped so it never
+climbs past canvas 60. Without this, Sign Out on a 667 phone would put its own pill above the panel's top.
+Checked at 375×667 and 430×932.
+Keyboard (settings R3, today-day R6): the footer rides the keyboard **less 32** (`KEYBOARD_GIVE`): the
+buttons' 48 off the screen edge exists to clear the home indicator, which the keyboard covers, so over
+the keyboard it becomes 16. The panel rises by `min(lift, panelTop − 60)`; a native-only `#171717`
+underlay fills what a lifted panel leaves below its edge. Computed for Change Pledge on 375×667 with a
+260 keyboard: the full-keyboard lift put the pill (window 253–311) 18 pt into the 100-tall field
+(171–271); with the give the pill top is 285, 14 clear. At 852 (336 keyboard incl. the 34 inset) Edit
+Name's pill sits 16 above the keyboard. Where Android resizes the window instead, the lift subtracts what
+the resize absorbed. Web has no keyboard events, so captures see the drawn geometry. **Not verifiable on
+the web build — check on a device.**
+
+## D362 — `TimeWheel`: one strip per column, fully controlled, native gesture handlers
+Replaces `src/components/routines/wheel.tsx` (not edited — its owners switch). Not a ScrollView: each
+column is a window onto an unbounded strip (virtual row → `values[row mod n]`), so hours and minutes loop
+with no copies and no re-centring jump, and every row sits at `88 + 44·k` — whole points, so FINDINGS §4b's
+half-point `lead` bug has nothing to come from. The frame's three looks (30/900 ink · 22/400 mute ·
+22/400 `#2E2E2E`) switch at the half-row mid-drag.
+**Controlled like a text input.** `value` is the truth: after every settle (a `settles` counter re-runs
+the check once the caller has answered) and on every value change, the strip is compared with `value` and
+rolled to it by the shortest way round, without reporting back. So a caller that refuses a change (keeps
+its state) or clamps it (slip.md §98C: never in the future) sees the column roll back to what it holds. A
+value arriving from outside while the strip is still or settling after the finger lifted wins (the
+settle is stopped and does not report); one arriving while a finger holds the column becomes the
+reference the drag's step is counted from, so the release reports relative to it — wheel and state end
+equal either way. Steps are built on `value` as the caller holds it (the old `latest` ref, which kept a
+refused value, is gone). Callers must answer inside `onChange`; a value that only arrives later rolls the
+wheel back and then forward.
+**Gestures:** `react-native-gesture-handler` `Gesture.Pan().runOnJS(true)` with `activeOffsetY ±4` and
+`failOffsetX ±10`. JS responder props could not keep a parent ScrollView from taking the touch: Android's
+ScrollView intercepts unless the native responder is blocked, and iOS Fabric ignores
+`blockNativeResponder` entirely — `RCTMountingManager setIsJSResponder` drops it, and the scroll view only
+stands down when an *ancestor* is the JS responder (`RCTScrollViewComponentView
+_shouldDisableScrollInteraction`). An RN ScrollView's vertical scroll bounces even when its content fits
+(`alwaysBounceVertical` defaults true), so the problem existed at 852 too, wherever a wheel sits in a
+`ScrollRegion`. With native handlers the first to activate wins, and 4 pt is under Android's 8 dp slop
+and UIKit's scroll pan. Release projects `velocity·180 ms`, ignoring velocity if the finger stood still
+for 90 ms (the web tracker keeps its last speed through a pause — a 250 ms pause produced a 2-row throw
+before this). Settles take 160–520 ms out-cubic; the meridiem rubber-bands at a third past its ends.
+**Tap a row above/below the band to step to it**; rows stay `Pressable`s labelled `Hour 10`,
+`Minute 59`, `AM or PM PM` for drives and screen readers; a touch that became a drag never also presses
+(guard, for the web build where a mouse drag still ends in a click). The gesture builder is wrapped in a
+scoped `eslint-disable react-hooks/refs, react-hooks/purity`: RNGH only stores the callbacks, which the
+compiler's rules cannot see.
+`onChange(next, { column, delta })` fires once a column settles; `delta` is for callers that shift a
+timestamp. Columns do not carry into each other (59 → 00 leaves the hour). `minuteStep` thins the minute
+column; an off-step minute shows as the step at or below it (58 → 55 at step 5 — the old rounding showed
+the next hour's 00) and nothing is reported until that column moves: hold minutes on the step. At rest a
+column mounts exactly its five rows (drives' `scrollBy` must never find a wheel). Each column is
+`adjustable` with increment/decrement and `aria-valuetext`. Helpers: `wheelToMinutes` / `wheelFromMinutes`.
+Checked with real mouse input on `_Wheel-Controlled` (a caller clamping at now = 11:40 PM, plus an outside
+preset): tap/drag/clamp/refuse/preset-at-rest/preset-mid-settle/preset-while-held all leave
+`aria-valuetext` equal to the caller's state; slow 220 pt drags step exactly 5; a 100 pt flick steps 4; a
+20 pt drag starting on a neighbour row steps nothing. **Device check still needed:** the iOS/Android
+arbitration against a real parent ScrollView.
+
+## D363 — `DayToggles`: Sunday-first, `value: number[]` (0 = Sunday)
+As `routines/kit.tsx` stores days. On = ink disc + `#111111` 14/700 (every frame); off = `#1E1E1E` + ink
+letter (D322). Checkbox role, day names as labels, state as `aria-checked` (RN-web did not render
+`accessibilityState`; now `Monday=false` after a tap, the rest `true`).
+
+## D364 — `TextField`: a real input everywhere; only `name` keeps a drawn bar
+Variants `name` (V3 Q24: 60 r18, padding 0 22, 17/400), `sheet` (Sheet Edit Name: 60 r18, padding 0 20,
+18/700), `card` (Change Pledge: min 100 r20, padding 20 22, 20/700/29, grows), `note` (SOS Afterward:
+min 150 r22, padding 22 24, 20/400/30, grows), `bare` (Night 3 Reflection: 22/400/34, grows). Placeholder
+`#9B968E`, value ink, caret ink (`selectionColor`/`cursorColor`, web `caretColor`), dark keyboard, no web
+focus ring. The frames' caret bars are a static frame's stand-in for focus (CRITIC C9): the platform caret
+replaces them, so **each typed-state replica's only residual is the drawn 2×22 caret** (Change Pledge
+0.01 %, Edit Name 0.01 %, Reflection 0.02 %, Afterward 0.01 %). `name` is the exception (the app's
+`onboarding/v3.tsx` precedent): its frame draws the bar *before* the placeholder, so the bar is part of the
+layout — shown while focused and empty, keeping its 2-pt slot once typed so the text stays at x 50.
+Growing fields size from `onContentSizeChange`; a caller's own `onContentSizeChange` now runs after the
+growth instead of replacing it. For the unframed screens (routes.md §4.4 Life Map, OQ-R9): `multiline`
+grows a one-line variant from 60 tall with its first line where the single line sat (`sheet` grown:
+padding (60 − 22)/2, two lines → 82), and `accessory` puts a control at the box's right (the 48 "+" disc).
+Checked on `_Field-Grown`. On web RN-web reports `scrollHeight`, so a field grows but does not shrink back
+after deleting lines (native shrinks).
+
+## D365 — `PledgeCard`: three settings, the signature rule as the frame draws it
+`sign` (Morning Resign / Signed, Slip Pledge, Relapse Resign), `quote` light (Your Vow Page) / dark (Urge
+Hub Pledges), `plain` (Today Home III; `children` follow in its gap-10 column). The signature line is the
+box's own bottom border: on web a CSS border, which Chrome dashes and snaps exactly as it did the frame's
+(the 1.5 rule renders 1 pt, 60 dashes of 3 on / 2 off fitted to 297); native cannot dash one side, so there
+the dashed rule is an SVG line `3 2`. The signed name has **no `numberOfLines`** — its overflow clip shaved
+the italic's overhang. Every variant now has a kept replica: `quote` light is `Your-Vow-Page@overlay`
+(whole frame, 0.00 %), `plain` is `Today-Home-III@overlay` (the pledge block 405–565 with the frame's
+three 42 rings as children, 0.00 % with `--ignore=0,0,393,405;0,565,393,287`).
+
+## D366 — `Spinner` turns the whole mark; `StepList` uses the kit `CheckDisc`
+The frame's spinner is static; the app rotates the 88 mark (1.2 s a turn, linear), still under Reduce
+Motion or `spinning={false}` (the replica's pose). `StepList({ steps, current })`: before `current` done,
+at it current, after it pending — 26 `CheckDisc` (Part A, glyph 13) + 16/700 ink or 16/400 mute.
+
+## D367 — Replica keys
+`Change-Pledge-Sheet`, `Sheet-Edit-Name`, `Sheet-Sign-Out`, `Sheet-Sign-Out@modal`, `Sheet-Profile-Photo`
+(backdrops as plain boxes; the photo sheet's rows are Part A's `RowGroup`/`Row`), `Morning-Check-in-Time`,
+`Nightly-Check-in-Time`, `Lapse-When@overlay` (Part A keys `Lapse-When` itself — its replica now runs this
+`TimeWheel` too, 0.00 %), `Morning-Resign-Pledge`, `Morning-Pledge-Signed`, `Slip-Pledge`,
+`Urge-Hub-Pledges` (Part D's `PagerDots`), `Your-Vow-Page@overlay`, `Today-Home-III@overlay` (partial —
+ignore string above), `Enlisting-Aegis`, `V3-Q24-Name`, `Night-3-Reflection`, `SOS-Afterward` (heroes from
+Part C's `Hero`). Not frames: `_Wheel-Controlled` (D362), `_Field-Grown` (D364). Sheet replicas hold real
+`open` state, so dismissal can be driven. No recipe entries were written: a kit-lab route in
+`.overhaul/recipes/*.json` would replace the real screen's recipe for the same frame label.
+
+## D368 — Short screens in the replicas (D320 rule 1)
+The pledge boards (`Morning-Resign-Pledge`, `Morning-Pledge-Signed`, `Slip-Pledge`) and the question
+boards (`V3-Q24-Name`, `Night-3-Reflection`, `SOS-Afterward`) leave their hero out when its art bottom
+(`heroArtBottom`) would pass the highest control's top — at 375×667 the pen ran across "Confirm" and
+"Change the pledge". Every one clears its controls at 852 and 932, so the frames are unchanged.
+`Your-Vow-Page@overlay` follows `HeroBoard`'s rule (flag and stack rise together within the flag's room
+above 108; past it the flag goes and the stack rises alone). The check-in-time replicas still run their
+day toggles under the pill at 375×667 on the web build only: they sit in the core `ScrollRegion`, which
+does not scroll on web (reported to the orchestrator).
+
+Results at 393×852 (pxdiff, chrome excluded): every replica 0.00 % except the four typed fields' drawn
+caret (0.01–0.02 %, one 4×28 region each — D364).
+
+## Kit-hero decisions — Phase 0 Part C (D370–D379) — `kit-hero`
+
+Merged into DECISIONS.md by the orchestrator. Files: `scripts/overhaul/gen-heroes.mjs` (new),
+`src/content/heroes.ts` (GENERATED), `src/components/mono/Hero.tsx`, `LaurelMark.tsx`, `MedalTier.tsx`,
+`lab/hero.tsx`; `scripts/overhaul/body.mjs` (`SVG_ATTRS`).
+
+## D370 — The hero registry is generated from the 53 cards and checked against every hero the bundle draws
+`node scripts/overhaul/gen-heroes.mjs` reads the **first** 393×240 svg of each
+`Lesson-Illustrations-v4` card (the second is the `Before` thumbnail) and writes `src/content/heroes.ts`:
+`HERO_IDS`/`HeroId` (the cards' own `data-hero` ids, canvas order), `HERO_ALIASES` + `heroId()`
+(`windowNight → nightMoon`, D338), `HERO_LABEL`, `HERO_SCALE` (1.1; `medal` 1), `HERO_BOUNDS`, `HERO_BOX`,
+`HEROES` (node trees). Attribute **values are the canvas's strings verbatim**; names are
+react-native-svg's (`stroke-width` → `strokeWidth` …); an attribute with no mapping stops the run.
+The run fails unless:
+- each card's parsed tree serialises back to the card's markup byte for byte (nothing dropped);
+- `paint-order="stroke"` is on exactly 22 shapes in 17 cards — each is emitted twice (as written, then
+  the same shape with `stroke: 'none'`, whose fill covers the stroke's inner half exactly as the
+  browser's stroke-under-fill order does; react-native-svg ignores the property). Opaque fills only —
+  asserted, because a translucent fill would be painted twice;
+- every `<svg data-hero>` on the 254 Email-Login frames (151: 150 by their own id, `Checkin-Emotions`
+  via the alias) and in the 1,273 lesson frames (284) is byte-identical to its card; all 53 cards used;
+- `HERO_BOX` reproduces the hero box height and svg top of all 286 lesson hero boxes (284 + the two
+  Lesson Scroll frames on Email-Login);
+- the Today crop formula reproduces the three cropped svgs' `width/height/viewBox` strings.
+
+The medal's `<text>` ("V", `'Lato'` 700) names the app's face, `fontFamily: 'Lato_700Bold'`,
+`fontWeight: 'normal'` (theme `sans()` rule — a weight is a family).
+
+## D371 — `HERO_BOUNDS` is the designer's `gen/hero-bounds.json`, verbatim, and it covers the paint
+The canvas computed the lesson boxes (`heroFit`) and the Today crops from these numbers, so they are the
+spec. They are not the painted extents: `--verify-paint` rasterises every card at 4× in headless Chrome
+and finds the vertical bounds sit 0.80–8.6 user units outside the paint (never inside); left/right are
+the object's and leave out the full-bleed floor lines (17 cards paint −40…433). `Hero` therefore sizes
+its canvas from the vertical bounds (+2 pt) and spans the screen width — nothing a card paints is clipped.
+
+## D372 — `Hero` (CSS mode): a screen-wide `<Svg>` over the art's band, the transform folded into one `<G>`
+CRITIC §7.1's ruling (screen-wide, no `overflow: visible`, always absolute) with one change of form: the
+canvas is not `240 + 2P` tall but only the art's vertical band (`round(T)+190+s(t−190)` … bottom, ±2 pt,
+snapped to whole points), and the frame's `scale(s)` about (196, 190) plus the centring offset
+`(W−393)/2` become `translate(ox oy) scale(s)` on the art. Same mapping (X = (W−393)/2 + 196 + s(x−196),
+Y = T + 190 + s(y−190)), a smaller canvas, and the art's sub-point position is independent of how the box
+is rounded. `scale` defaults to the card's own (`HERO_SCALE`: 1.1, the medal 1 — Medallion Received draws
+it at 1), not a flat 1.1. `HeroArt` (memoised) is exported for a caller that needs the bare art in its own
+`<Svg>`.
+
+**Small screens, rule 1 (D320).** A decorative hero between the content and the bottom controls (the
+question boards' T 458 / 506 / 582, the check-in heroes) takes `controls` — the space the controls take
+off the screen's bottom edge (106 for the primary at bottom 48; 0 for a board with none, so the screen's
+edge is the limit). Given, the hero is not drawn when its art's bottom (bounds) would come within 16 of
+that line. Measured over every Email-Login hero with controls, the frames keep ≥ 21.8 there at 852
+(Cue Hue Picker is the closest), so the prop never acts at 393 × 852; at 375 × 667 it drops Cue Hue
+Picker's door (which ran under Continue) and V3 Q3b's calendar (which the screen's edge would cut). It
+is the screen's opt-in: without `controls` the hero always draws. `heroArtBottom()` joins
+`heroArtTop()` for screens that need the numbers.
+
+## D373 — A fractional hero `top` draws from the whole point (measured)
+The canvas boxes at 241.3 / 231.5 (Today crops) and 114.4 (Week IV cover) do not land where the numbers
+say: Chrome paints an `<svg>`'s content from its border-box origin snapped to the whole point, at the
+unsnapped scale. Measured by band-wise sub-pixel fitting of the app capture to the design: Today Task
+lands as if at 241, Today III at 232, Week IV at 114 (every band within 0.07 pt once snapped; 0.3–0.5 pt
+off before, 0.44–1.53 % of the hero band in mismatch). `Hero` uses `Math.round(top)` in CSS and crop
+mode; the week covers' 98.9 / 63.9 / 88.8 follow the same rule (inferred, not captured). Box mode needs
+nothing: its svg offset inside the box is an integer, so on web the browser snaps the app's svg exactly as
+it snaps the canvas's (L2 Frame 1's box sits at y 154.5 → 0.00 %).
+
+## D374 — Crop mode (Today II / Task / III) and box mode (lesson reader)
+Crop: today-day §0.5 verbatim (`vy = t−3`, `vh = b−t+6`, `s = round2(148/vh)`, `vw = W/s`,
+`vx = 196.5−vw/2`, height `round1(vh·s)`, rounded as the frame writes them), then the browser's
+`xMidYMid meet` fit of that viewBox into that box, drawn without clipping (the canvas sets
+`overflow: visible`). At W ≠ 393 the crop widens with the screen and stays centred. Box: an in-flow
+`View` `width W, height HERO_BOX.h, marginHorizontal −bleed (32)`, art placed with `HERO_BOX.top` at the
+card's scale — the medal's box uses the 1.1 formula and its art scale 1, as the canvas does.
+
+## D375 — `HeroBoard`
+`tone` (light | dark), `nav` (`left` default `'empty'`, `centre`, `right` default `'close'`, handlers),
+`hero` + `heroTop` (190) + `heroScale`, or `art` (a canvas-coordinate layer, e.g. Drop Received's medal)
++ `artTop`; `stackTop` (452), `gap` (18), `caps`, `title`, `titleSize` 30 | 26 | 34 (→ `title` 30/36,
+`h1` 26/33, `titleCover` 34/40, centred, balance), `body` (string → 15/24 sub, dark 0.62; node replaces
+it), `extra`, `cta`/`onCta`/`ctaDisabled`, `ctaBottom` (96 when there is a ghost, else 48),
+`ghost`/`onGhost`, `children`. Small screens (D320 rule 2): the stack is measured (`onLayout`); when
+`stackTop + height + 16` passes the highest control's top, hero (or art) and stack rise together by the
+deficit, capped so the art's top stays ≥ canvas 108. The lift is a whole number of points (`ceil` of the deficit, `floor` of the
+room), so the hero (drawn at `round(top)`, D373) and the stack move by exactly the same amount and the
+clearance is never under 16. Until the stack has been measured, the hero/art and the stack render at
+opacity 0, so a short screen never paints one unlifted frame and then jumps. **When the deficit is
+larger than the room** (no frame and no real phone needs it; Dynamic Type 1.3× on a 667 phone could),
+the art is dropped — it is decoration, rule 1 — and the stack rises alone as far as canvas 108; if it
+still does not fit, it scrolls in a `ScrollRegion` from 108 to the primary's top (16 end padding).
+Never under a control. Verified at 375×667 (Slip Entry and Drop Received lift 23 / 37, body bottom 16 pt
+above the pill), at 430×932 (full-bleed grounds reach both edges), and the two fallbacks on Slip Entry
+at 375×480 (art dropped, stack 16 pt above the pill) and 375×340 (stack scrolls from 108).
+
+## D376 — `LaurelMark`: `Image` + `tintColor="#FFFFFF"` + `resizeMode="stretch"`
+The canvas's `filter: brightness(0) invert(1)` on a 280×252 webp drawn into a square box. `size` and an
+optional `radius` (Reminders Setup's 40 r10 notification icon); the caller positions it. Splash and Login
+diff at 0 px over 6/255 — the laurel is pixel-identical, including the stretch.
+
+## D377 — `MedalTier` + `TierLadder`
+`MedalTier({tier 0–4, size 30, dim, disc, glyph})` is the kit's `medal(tier, size, glyph)` (radii `c−2`, `c·0.72`,
+`c·0.74`, `c·0.82`, `c·0.66`; platinum's 16 ticks with `toFixed(1)` endpoints and `size·0.04` stroke, so
+at 30 every path string is the frame's). Unearned: Paper is redrawn as the dashed `#5A574F` ring
+(`3 6`), tiers 1–4 keep their drawing at opacity 0.32 (`TIER_DIM`). The frames set each medal on a
+`#0D0D0D` disc of its size (it masks the tier track) — `disc` (default on). `glyph` is
+Drop Received's centred letter (`medal(4, 176, 'V')`, the only frame that draws one): Lato 700 at
+`round(s·0.34)`, baseline `c + fontSize·0.36`, fill ground on tiers 3–4, else ink (`#5A574F` dim) — so
+at 176 it is the frame's `x 88 y 109.6 font-size 60`; that frame draws no disc (`disc={false}`).
+
+`TierLadder({reached: −1..4, progress?, thresholds?})` is the ladder of the five Breakwater / Detail
+boards **and** the eight Tiers pages (18 frames, one track): rail `left/right 10% top 14 h2`, ink fill,
+five medals, names 13/700 ink when reached, mute otherwise. The boards fill to the reached tier
+(`progress` defaults to `reached`); the Tiers pages run part-way to the next rung —
+`width = (progress·20).toFixed(1) %` as the frames print it, none at 0 or when nothing is reached — and
+carry `thresholds` (12/700 nowrap, `#B5B0A8` reached, `#5A574F` not) under the names (`gap 3`).
+`ladderStanding(count, rungs)` gives `{reached, progress}` per medallions-letters §1.4 (reached = rungs
+met − 1; progress = reached + (count − rung[reached]) / (rung[reached+1] − rung[reached]); 4 at the top;
+−1 when unearned — Archive's 9 of 10 draws no fill). It reproduces all eight frames' fills (Vidi 5.2,
+Vici 18.0, Rebound 2.2, Breakwater 10.0, Logbook 20.4, Pulse 14.0, Lessons 7.0, Archive none).
+Reached is told by colour and opacity only, so the ladder is one accessibility element:
+`role="progressbar"`, label "Tiers", value 0–5, and a value text that reads each tier, its rung and
+whether it is reached (RN-web renders the aria attributes and no tab stop).
+Verified: Breakwater Paper / Gold / Platinum, Detail Paper, all eight Tiers pages (0 px over 6/255 with
+the 168 coin — the medallions group's — masked) and Drop Received (0 px over 6/255, whole frame).
+
+## D378 — `body.mjs` prints `data-hero`, `paint-order` and `font-family`
+Those are the attributes the frames carry that it dropped (tallied over all 1,580 frames: the only others
+are `data-screen-label` on frame roots and the illustration canvas's `sc-if` wrappers, neither of which
+is screen content). `decl.mjs` keeps its own, unpatched copy of the list (not this part's file).
+
+## D379 — Kit-lab replicas are not written to `.overhaul/recipes/`
+`audit.mjs` keys recipes by frame label across every file, so a kit-lab "Splash" or "Login" entry would
+override the auth group's real one. The replicas live in `LAB_HERO` (`/kit-lab?f=<stem>`) and are re-run
+from there.
+
+## kit-chrome decisions — Vici Overhaul run, Phase 0 Part D (D380–D389) — `kit-chrome`
+
+Files: `src/components/mono/TabBar.tsx`, `scales.tsx`, `Feedback.tsx`, `lab/tabbar.tsx`, `lab/misc.tsx`;
+`src/components/StoicTabBar.tsx`, `src/app/(app)/_layout.tsx`, `src/app/+html.tsx`, `src/lib/format.ts`,
+`src/components/ui/Feedback.tsx`, `.overhaul/clock.js`; moved `src/app/score.tsx` → `src/app/(app)/score.tsx`;
+new `scripts/overhaul/format-test.mjs`.
+
+## D380 — The tab bar is the canvas's five items, lit by the navigator's focused route
+`mono/TabBar.tsx` exports the presentational `TabBar` (`active`, `onTab`, `onSOS`, `variant`, `ground`,
+`inline`), the router-wired `AppTabBar`, `TAB_ITEMS`, `TAB_FOR_ROUTE`, `tabForPath()`, `useTabBarHeight()`,
+`tabBarHeight()`, `SOS_ROUTE`. Geometry is design-system §7.18 verbatim (row space-between, padding 14 14 0,
+72-wide items, 26 glyph, gap 4, 11.5 label 700 ink / 400 `#9B968E`, 60 ink disc at −6 with "SOS" 13/700
+`#111111`). Destinations: Today `/(app)/today`; Log `/log-chooser` (D124); SOS pushes `/urge` (CRITIC C12,
+never lit); Library `/(app)/library`; Journey `/(app)/milestones`. Lit: Today on `today`; Log on `log`;
+Library on `library` (and `/week/*` via `tabForPath` for a standalone bar); Journey on `milestones` **and
+`score`** (the three Score Detail frames light it). `StoicTabBar` (the navigator adapter) reads the lit item
+from `state.routes[state.index].name`, not the URL: a screen pushed over the tabs (Log chooser, a lesson)
+changes the URL while the tab screen stays mounted under it, and a URL rule would drop that screen's bar
+during the push and the back-swipe. Routes not in `TAB_FOR_ROUTE` draw no bar (Settings, All, Journal,
+Insights, Life map, Weeks, Rough days, Support — the old `NO_BAR` list plus `all`). Each item is
+`role="tab"` with `aria-selected` (not `accessibilityState`, which react-native-web 0.21 drops without an
+ARIA attribute — the lit tab was invisible to assistive tech on web); RN maps `aria-selected` to the
+native selected state.
+
+## D381 — In the navigator the bar is laid out in flow; it paints ground + noise in phase with the window
+`height = 70 + max(insets.bottom, 34)` (104 on a 34-inset phone and on the mock web build). In `(app)` the
+bar sits under the scene in react-navigation's column (`inline`), so a tab scene ends at the bar's top
+(748 at 852) — where every one of the 37 bar frames' content already ends; none anchors anything to the
+bottom edge (checked: no depth-1 `bottom:` on any bar frame). The kit contract ("bottom is off the screen
+edge") is unchanged for every non-tab screen; a screen outside the navigator that draws the bar
+(`/week/*` if it stays a root route) renders `AppTabBar` absolutely over its own `Screen` and pads its
+scroller by `useTabBarHeight()`. Overlay mode was built first and rejected: with a full-height scene,
+today.tsx's pinned "Urge surfing" bar went under the tab bar (a hidden control) and the old Score footer
+lost 104 pt. Per D327 the bar paints `#0D0D0D` + `noise.png`@0.05 over its own band; the tile is offset by
+`(windowH − barH) mod 96` so its speckle is in phase with the screen's (0 px over 6/255 on the band). Below
+376 wide the four items shrink (CSS's default `flex-shrink:1`, which Yoga lacks) so the SOS disc keeps its
+circle. `(app)` scenes get `sceneStyle: {backgroundColor: #0D0D0D}` (the navigator default was the light
+theme's grey).
+
+## D382 — Scales: 0-based values, radio semantics, tappable pager dots; a chosen dark disc takes the double ring alone
+No frame chooses disc 0 or 1. The frames' selected rule replaces `box-shadow` (gap ring `#0D0D0D` 4 +
+ink 6), so a chosen `#34322F`/`#5A5751` disc loses its inset `#45423E` ring — the 4 pt ground gap and ink
+ring define its edge. Scales take the app's own 0-based index (the dials and `INTENSITY_BANDS` already
+store 0–4). Every scale's row is a `radiogroup` of `radio`s carrying `aria-checked` (logs §3.16: "role
+radio, label = band, `checked`"; the kit's choices/rows already do this) — `accessibilityState.selected`
+emitted nothing on web and announced "selected", not "checked", on native. Energy's fill meter checks only
+the chosen bar; the lit bars under it are drawing. `ScaleReading`'s word is the scale's value, not a
+heading: it is an `aria-live="polite"` region (it rendered as an `<h1>` before).
+
+**PagerDots are controls when given `onChange`** (sos-flow §3.17: "dots tappable (`accessibilityLabel`
+"Pane N")"; the hub's five dots call `goToPane(i)`). Each dot is then a `Tap` of the same 6×6 box —
+`label` defaults to `Pane N`, `aria-selected` on the active one — with `hitSlop` 19 above and below and 3
+to each side (44 tall; 12 of the 13 between centres, so neighbours' areas never meet); the row passes
+other touches through (`box-none`). Without `onChange` it stays drawing only (`pointerEvents: none`).
+Geometry unchanged: the replica's dots measure 6×6 at y 666, x 167.5 + 13n, 0.00 % on the frame.
+
+## D383 — Reassess's previous level: dashed outline as an overlay, shown only when it differs
+The frame draws `background:transparent; outline:1.5px dashed #F2F0EC; outline-offset:-1.5px` + an 8 ink
+dot (design-system §7.22 missed the outline). Ported as an absolutely-positioned 1.5 dashed border over
+the bar (same box as an inset outline) — not the bar's own border, because Chrome snaps border widths in
+layout and that moved the dot 0.5 pt. Dash pattern matches the frame at t=8 (0 px). Shown only when
+`previous !== value`, as `gen/mono-sos.js scale()` does.
+
+## D384 — `/score` lives under `(app)` (URL unchanged)
+`src/app/score.tsx` → `src/app/(app)/score.tsx` (+ its one relative `require` re-pointed), registered as a
+`Tabs.Screen` so it draws the bar with Journey lit (D326, today-day §6). `router.push('/score')` (Today,
+All) and the `/score` recipes still resolve — checked. Behaviour that comes with being a tab route, for
+today-day to know: it is a tab switch now (no slide-in, no iOS back-swipe; the back chevron's
+`router.back()` goes to the first tab, Today, per the navigator's default `backBehavior`); the screen stays
+mounted between visits (its `useState` page / range / `now` persist); a deep link passes the `(app)`
+guards and launch prompts like every tab; and the **old** Score layout's footer card is cut at 748 by the
+scene end — the frames' Score Detail ends above 748, so the rebuild resolves it. (The old pages place
+their cards at fixed tops, so sizing the pages to the shorter scene would not bring the card back; the old
+sheet's 3-dot page indicator, at canvas 806, is cut off with it — paging by swipe still works.)
+
+## D385 — `All` leaves the bar; its door is a long press on Today (mock / dev builds only)
+The canvas draws five items and no drawer. `/all` stays registered (D328); in `FORCE_MOCK || __DEV__`
+builds a long press on the Today tab pushes it (routes §5.4 proposed the Today avatar — that is today-day's
+file; the tab gives the same pixel-free door now, and both can coexist). `SHOW_ALL_TAB` is kept, `false`.
+
+## D386 — Loading and empty states
+`LoadingView` = a mono `Screen` (ground + noise) with, after 300 ms, the bundle's own loading mark — Part B's
+`Spinner` (Enlisting Aegis's dotted ring + arc) at 44 in `#9B968E` — rather than the platform activity
+indicator no frame draws; `onBack`/`onClose` keep the nav row's way out; `bare` (no ground, for a wait
+inside a painted screen); `spinner={false}` (ground only — routes §7's choice for Today). A `label` shows at once (as the old
+`LoadingView` did) under a 44 box kept from the first frame, so it does not jump when the spinner lands.
+The `Screen` keeps its light `StatusBar` (`status` prop, default true): its own ground is dark and so is
+every mono screen, and a stack screen that sets nothing would inherit the screen under it. Two old paper
+screens still nest it under a light header (milestones' safe-area view, journal's header) — a dark block
+with light glyphs over paper until they are rebuilt; the noise there is anchored to the nested box.
+`EmptyState` = optional caps (13/700 mute), optional title (22/700/28/−0.6 ink; `h1` → 26/33), body
+15/400/24 `#9B968E`, centred, gap 8, 24 gutter, no illustration (the paper `tide` art is gone). Its 32
+above and below is not in routes §8: it is the old `EmptyState`'s `paddingVertical: spacing.xxl` (32),
+kept so callers' lists keep their spacing; `style` overrides it. `ui/Feedback.tsx` now re-exports
+both, so every existing caller (17 sites) gets the new look with unchanged props. Copy stays the callers'.
+
+## D387 — Web root document (`src/app/+html.tsx`)
+Expo's default static document (viewport, `ScrollViewStyleReset`, `headNodes`/`bodyNodes`) plus
+`html,body{background-color:#0D0D0D;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}`
+and `theme-color #0D0D0D`. Deliberately **not** `color-scheme: dark` — it changes the browser's default
+text/caret/control colours under RN-web's styles. Verified served on :8096; V3-Q1 still diffs 0.00 %.
+
+## D388 — `src/lib/format.ts` rules
+Number words: hyphenated compounds, British "and" in hundreds ("one hundred and five", "one thousand and
+one" — the app's copy is British), `capital: true` for sentence-initial; `minutesWords` ("One minute",
+"Twenty-two minutes"); `groupDigits` ("1,240"); `countOf` ("0 slips"); `roman` (≤ 0 prints digits). Day
+parts (logs Q5 = slip Q3): the **moment's own hour** decides — same calendar day → `Today` / `Tonight`
+from 18:00; previous day → `Yesterday` / `Last night` from 18:00; older or future → no word.
+`dayPartDate` → `Tonight, Tue Jul 22` / `Sun Jul 20`; `dayPartTime` → `Tonight, 11:40 PM` /
+`Jul 20, 9:05 PM` (`lower` for the Log/hub's `pm`; `withTime:false` → Lapse Done's `Last night`).
+`joinLower` → `Late night, boredom` (keeps `I …` and initialisms like `TV`); `splitStored` reads the
+`' · '` storage join. Dates are assembled by hand in en-US (`Sep`, never `Sept`; no Intl dependence);
+`dayMonthYear` keeps Edit Profile's `14 Mar 2026`; `dateRange` → `Jul 14–20` / `Jun 30–Jul 6`. 89 checks:
+`node scripts/overhaul/format-test.mjs`.
+
+## D389 — `.overhaul/clock.js` (CRITIC G3)
+An init script that replaces `Date` (constructor, `Date()`, `Date.now`; `instanceof Date` intact via
+`Reflect.construct`) with one pinned to a moment from `window.__CLOCK` (set by a line concatenated above
+it), else `?now=` on the route, else `sessionStorage['vici.clock']` (so a seed's reload keeps it).
+Local date-time strings (`2025-07-22T23:40`) or epoch ms. While installed, the shared prototype's
+`constructor` is the replacement and its `name`/`length` are `Date`/7, so `new Date().constructor === Date`
+holds (it did not before). Frozen by default; `__CLOCK_TICK = true` /
+`?clock=tick` runs it from the moment. `performance.now()`/rAF untouched. Verified: `/kit-lab?…&now=
+2025-07-22T23:40` reads `Tue Jul 22 2025 23:40:00`; the concatenated `__CLOCK` + tick form advances 500 ms
+in 500 ms.
+
+## Evidence (kit lab, `/kit-lab?f=<stem>`, pxdiff t=24 unless noted)
+| replica | whole frame | outside named regions | residual (not this part) |
+| --- | --- | --- | --- |
+| Today-Home (bar only) | 7.55 % | 0.00 % on 748–852 (also at t=6) | rest of the frame not built (today-day) |
+| Log-Urges (bar only) | 4.56 % | 0.00 % on 748–852 | rest not built (logs) |
+| Medallions, Week-I-Reset (bar only, extra) | — | 0.00 % on 748–852 (t=6) | rest not built |
+| SOS-Strength | 0.67 % | 0.00 % | hero `thermometer` T458 ×0.731 (Part C) |
+| SOS-Reassess | 1.41 % | 0.00 % (also t=8) | hero T506 ×1.062 (Part C) |
+| Morning-Feeling | 5.87 % | 0.00 % | hero `sunrise` T506 (Part C) |
+| Morning-Energy | 2.89 % | 0.00 % | hero `battery` T506 (Part C) |
+| Urge-Hub-Score | 0.00 % (mean Δ 0.00) | — | the card's dot grid is now three rows of ten `flex: 1` dots, which lands where CSS's `repeat(10, 1fr)` does (flex-wrap at a computed width left 804 px of edge AA and wrapped nine-across at 375). Dots are the tappable form (`onChange`); tapping Pane 4 moves the white dot. |
+Live app, bar band 748–852 vs the frame: `/today` 0.00 %, `/log` 0.00 %, `/milestones` 0.00 %, `/score`
+0.00 % (the recipes' own seeds); `/library` 0.00 % vs Week I Reset with `logs-seed.js` — there is no
+`/library` recipe, and `weeks-seed.js` opens the launch check-in prompt over it. Drive: Journey→`/milestones`, Library→`/library`,
+Today→`/today`, Log→`/log-chooser`, SOS→`/urge`, long-press Today→`/all`. 375×667 and 430×932: bar, scales and
+readings neither clip nor overlap.
+
+## Part E — splits (D390–D394) — `splits`
+
+Three mechanical file splits so two Phase 1 groups never edit one file (CRITIC §3.1.4). Every
+statement was moved by a TypeScript-AST splitter, verbatim — its leading comments and any same-line
+trailing comment travel with it — and a line-multiset check confirms nothing was lost (only the copies
+named in D391 and the added `export` keywords differ). `npx tsc --noEmit -p .` is clean for the whole
+project after the split. Pixel proof: D394.
+
+The analysis docs (`sos-flow.md`, `sos-boards.md`, `slip.md`, `tail.md`, `auth-funnel.md`,
+`paywall-reminders.md`) cite `urge/index.tsx:<line>`, `handover.tsx` and `v3.tsx` by line number; those
+lines now live in the files below.
+
+## D390 — Where everything went
+
+### `src/components/urge/index.tsx` (3,600 lines) → five files, no import cycles
+
+| file | owner (Phase 1) | holds |
+| --- | --- | --- |
+| `urge/flow.tsx` | sos-flow | `UrgeFlow` and the interrupt: `NOISE_DARK`, `UrgePlace`, `PLACES`, `MOVES`, the paper chrome (`PaperSheet`, `SheetClose`, `StepPager`, `SheetPrimary`, `SheetSkip`), `BlurredSolid`, `IntroArt`/`SkyDot`/`IntroPage`, `StrengthPage`, the pickers (`PickerRow` … `PickerGrid`, `PLACE_GLYPH`, `WherePage`, `FeelingPage`, `ReasonPage`), the three moves (`ScreenStepArt`, `MoveStepArt`, `LeaveStepArt`, `MovePage`), `REASSESS_BANDS`/`ReassessPage`, `AfterwardPage`, `DawnShaft`/`DonePage`, `FlowStep`, `FLOW`, `PLACE_BOARD`, `TRIGGER_BOARD`, `FEELING_BOARD`, `FEELING_ROTATION` |
+| `urge/hub.tsx` | sos-flow | `UrgeHub` and 85A–85E: `NOISE_LIGHT`, every `HUB_*`/`hub*` helper, `HubClose`, `HubHead`, `HubPanel`, `HubNow`, `HubScore`, `HubStatRow`, `HubProof`, `HubSurfed`, `HubPledge` |
+| `urge/stages.tsx` | sos-flow | the dark SOS stages (`SosStage`, `BreatheStage`, `TapStage`, `OddStage`, `WaveStage`, `SosSettingsSheet` and their parts), the SOS settings (`SosSettings`, `SOS_SETTINGS_KEY`, `DEFAULT_SOS_SETTINGS`), `SURF_SECONDS`, the stage order (`SosStageName`, `SOS_ORDER`), the breathing ocean (`UrgeWave` + helpers), the old kit's unused exports (tints, `Breathe`, `FadeIn`, `NightSky`, `Stars`, `TideArt`, `NightIllustration`, `TopChrome`, `BrightButton`, `JourneyPage`, `RelapseLineArt`, `BreathCue`), and the pieces flow and hub both read: the sheet palette (`SHEET_*`, `SOS_PAPER`), `SoftBlob`, `Hill` |
+| `urge/boards.tsx` | sos-boards | `ResponsePage`, `SosSceneLayer`, `EllipticBox` (+ the copies in D391) |
+| `urge/index.tsx` | — | re-exports only (D392) |
+
+Import direction: `stages` imports no sibling; `boards` imports no sibling; `flow` imports `stages` and
+`boards`; `hub` imports `stages`. `stages.tsx` is the bottom layer because the stages themselves use
+`SHEET_INK` and `SoftBlob`, so those cannot live in `flow.tsx` without a `flow ⇄ stages` cycle (a cycle
+works for render-time references but breaks the first module-level constant that reads a sibling's
+export during evaluation). `SOS_ORDER` and `SosStageName` moved from the flow section into `stages.tsx`
+because both `UrgeFlow` and the hub's Breathe pill step through them.
+
+`src/app/urge.tsx`, `urge-hub.tsx`, `rough-first90.tsx` still import `UrgeFlow`/`UrgeHub` from
+`@/components/urge` — unchanged.
+
+### `src/components/onboarding/handover.tsx` → `handover.tsx` + `reminders.tsx`
+
+* `onboarding/reminders.tsx` (paywall-reminders): `O3Reminders` (`41 · Reminders`), `O3DayZero`
+  (`43 · Day 0`), `NotificationCard`, `laurelMark`, `WRAP` (+ copies, D391).
+* `onboarding/handover.tsx` (tail): `O3LetterArrived`, `O3LetterRead` + `LetterMark`, `O3TheVow`,
+  `O3MedallionEarned`, `PaperArrivalField`, and the private helpers. `WRAP`'s comment also explained
+  `BALANCE`, which stays here, so that comment is restated above `BALANCE` (the only text added to a
+  moved body). `src/app/letter.tsx` imports `O3LetterRead` from here — unchanged.
+
+### `src/components/onboarding/v3.tsx` → `funnel.tsx` + `v3.tsx`
+
+* `onboarding/funnel.tsx` (auth-funnel): `O3Shell`, `O3FunnelStep`, `O3AgeGate`, `O3_AGE_MIN`, the two
+  registers (`Tone`, `O3Tone`, `useTone`), the field (`O3Field`, `o3Field`, `useO3Field`, `O3Paper`,
+  `Ambient`), the voice primitives (`O3H`, `O3Sub`, `O3Eyebrow`, `O3Note`, `O3CTA`, `O3_MD_CTA_BOTTOM`,
+  `O3Chip`, `O3Opt`, `O3Kind` — unused outside, but they read the `O3Tone` context created here, so
+  they go with it), and every funnel-only helper (`FirstPrincipleArt`, `FunnelArtBlock`,
+  `FunnelRowMark`, `FunnelGlyphMark`, `O3PagerDots`, …). The file keeps v3's original header.
+* `onboarding/v3.tsx` (tail): `O3Reading` (+ `O3PaperCTA`, `CAMPAIGN_PAGE_LINES`), `buildWeekXiiLetter`,
+  `windowFor`, `o3Roman` (unused anywhere; left with tail rather than guessed into the engine).
+  It imports nothing from `funnel.tsx`.
+
+### Importers updated
+
+Only `src/app/(onboarding)/welcome.tsx` — its two import statements became four (`funnel`, `handover`,
+`reminders`, `v3`); no other line of it changed. Nothing else in `src/` or `scripts/` imported a moved
+name. `.vicifull/map.json` (the previous run's frame→file map, not this run's) still names
+`handover.tsx`/`v3.tsx`/`urge/index.tsx` for 12 frames; it is history and was left alone.
+
+## D391 — The other group's file is never imported; private helpers are copied
+
+`boards.tsx` needs `PaperSheet`, `SheetClose`, `SoftBlob`, `BlurredSolid` and five `SHEET_*` colours,
+which `flow.tsx`/`stages.tsx` (sos-flow) also use; `reminders.tsx` needs `Frame`, `Cta`, `Quiet`, `Y`
+and the noise tile, which `handover.tsx` (tail) also uses. Importing them would make each file depend
+on a file another group is rewriting in parallel — the first time sos-flow deleted its now-dead paper
+chrome, or tail restyled its `Cta`, the other group's screen would break or change under it. So each
+of the two files carries verbatim copies (≈140 lines in `boards.tsx`, ≈50 in `reminders.tsx`), named in
+its header; they go when those screens move onto the mono kit, which is the plan for both. Every page
+component is a distinct element type at its own slot in `UrgeFlow`/`welcome.tsx`, so two copies of
+`PaperSheet` change no reconciliation (proved by D394's identical captures).
+
+## D392 — `urge/index.tsx` keeps the old module's whole public surface
+
+Only `UrgeFlow` and `UrgeHub` are imported from outside, but the old file exported thirty names. The
+index re-exports all thirty explicitly (`UrgeFlow`, `UrgePlace` from `flow`; `UrgeHub` from `hub`; the
+other twenty-seven from `stages`) so the module's surface is byte-for-byte the same list; newly exported
+internals (`SoftBlob`, `SHEET_*`, `SOS_ORDER`, …) are deliberately **not** re-exported, so nothing
+outside the kit starts depending on them. `handover.tsx` and `v3.tsx` do not re-export what left them
+(CRITIC: "update imports everywhere") — a re-export would put the other group's names back in their file.
+
+## D393 — No code was deleted or edited
+
+Dead code the analysis docs list for deletion (`PaperSheet` … `PickerGrid`, `IntroArt`, the hub's
+`HubClose`/`HubHead`/…, the unused kit exports, `o3Roman`, `O3H`/`O3Chip`/…) was moved, not deleted:
+deleting is the owning group's call when it restyles, and a split that also deletes cannot be proved
+behaviour-neutral by a diff. The only non-moved text is: the five new file headers, the rewritten
+`v3.tsx`/`handover.tsx` headers, the `BALANCE` comment (D390), `export` on the sixteen `urge` declarations
+a sibling now imports (none in the onboarding splits — nothing crosses `funnel`/`v3` or `reminders`/
+`handover`), and two section banners in `stages.tsx` naming what flow and hub read from it.
+
+## D394 — Proof: before/after captures, exact
+
+Twenty captures across the four new urge files and both onboarding splits, each taken before and after
+the split from the same seed and drive, compared with `pxdiff --t=0 --keep-chrome` (one channel off by
+1/255 counts as a mismatch):
+
+| capture | exercises | result |
+| --- | --- | --- |
+| `u-intro`, `u-strength`, `u-where` | flow (`IntroPage`, `StrengthPage`, `WherePage`) | 0.00 % |
+| `u-locbed`, `u-challenge` | boards (`ResponsePage` via the flow) | 0.00 % |
+| `u-done` (frozen clock) | flow → stages → `DonePage` (Surf Complete) | 0.00 % |
+| `u-hub`, `u-hub2` (frozen clock) | hub (85A, 85B) | 0.00 % |
+| `u-hubbreathe-f` (frozen clock + frozen animation time) | hub → stages (`BreatheStage`) | 0.00 % |
+| `v-name`, `v-q1`, `v-q5`, `v-gate` | funnel (`O3Shell`, `O3FunnelStep` text/list/grid, `O3AgeGate`) | 0.00 % |
+| `h-map` | v3 `O3Reading` inside funnel `O3Shell` | 0.00 % |
+| `h-letter` | handover `O3LetterArrived` | 0.00 % |
+| `h-rem`, `h-day0` | reminders `O3Reminders`, `O3DayZero` | 0.00 % |
+| `h-letterroute` | `/letter?variant=week12` → handover `O3LetterRead` | 0.00 % |
+| `h-reminders` | `/reminders` (the route PHASE0 names; it imports none of the moved code) | 0.00 % |
+
+Method notes:
+* Clock-dependent screens run under a frozen `Date` (an init script prepended to their seed), so the
+  hub's session clock and "x days ago" cannot drift between runs.
+* `u-hubbreathe` without frozen animation time differed by 10.8 % — every differing pixel inside the
+  breathing orb (48,244 296×292), mean Δ 0.22: the orb scales on a Reanimated clock and two runs catch
+  it at different phases. Freezing `performance.now()` and rAF timestamps makes two runs of the same
+  code identical (verified 0.00 %), and the baseline for that pair was taken by putting the original
+  `urge/index.tsx` back for one capture — confirmed by fetching Metro's `urge-hub` route chunk, which
+  then listed only `src/components/urge/index.tsx` — and restoring the split straight after (md5
+  checked).
+* Expo's dev-tools rebuild badge (x 0–64, y 788–852) appears whenever any agent's edit triggers a
+  rebuild; it is not the app's and is excluded with `--ignore=0,788,64,64`. On `u-intro` it was the
+  only difference.
+
+Re-run: `node .overhaul/splits-proof.mjs <prefix> [name,…]` from the repo root (one Chrome at a time;
+it writes the frozen seeds itself), then
+`node scripts/overhaul/pxdiff.mjs .overhaul/shots/splits/b-<name>.png .overhaul/shots/splits/a-<name>.png --t=0 --keep-chrome --ignore=0,788,64,64`.
+The pairs and their strips are in `.overhaul/shots/splits/`. These are proof captures, not frames, so
+they are recorded in that runner rather than in `.overhaul/recipes/` (the audit replays recipes against
+design frames, and none of these has one).
+
+## Curriculum decisions — Phase 0 Part F (D395–D399) — `curriculum`
+
+Merged into DECISIONS.md by the orchestrator. Files: `scripts/overhaul/gen-curriculum.mjs` (new),
+`scripts/overhaul/curriculum-legacy.json` (new, frozen input), `src/content/curriculum84.ts` (regenerated).
+
+## D395 — `curriculum84.ts` is regenerated from the frames; the API keeps its shape
+`node scripts/overhaul/gen-curriculum.mjs` (`--check` to verify, `--table` for the title table) reads:
+the 12 Email-Login week pages (`Week-<R>-<Name>.html` + `-P2`: caps, name, blurb, `data-hero`, the seven
+rows), the 84 readers' covers (`L<n>-Frame-1`: `Lesson <n>`, title, `data-hero`), each reader's first
+`Part 1` page, and its two task pages (`Today’s task` + title + practice; practice + `Done when` card).
+All 1,273 lesson frames are read. The run fails unless: every week page lists exactly its seven cover
+titles in order; titles, practice arrays, "Done when" lines and first reading pieces equal
+`gen/lessons-v3.json` (84/84 each); the task page's title equals the cover's (84/84); week
+names/blurbs/romans equal the app's previous values (12/12 — unchanged); every hero id is one of the 53
+`Lesson-Illustrations-v4` `data-hero` ids.
+
+Every export and type the app imports is kept (`CURRICULUM_84`, `CURRICULUM_84_DAYS`, `lessonForDay`,
+`weekFor`, `Curriculum84Week`, `Curriculum84Lesson`, `DailyTask`, `TaskBoard`, `TaskIntro`, `TaskFlow`,
+`TaskOption`) with every field. Added: `CurriculumHeroId`, `Curriculum84Week.hero`,
+`Curriculum84Lesson.hero`, `DailyTask.practice: string[]`, `DailyTask.doneWhen: string`.
+
+The previous drop's two-board task (`task.title`, `secondTitle`, `intro`, `options`, `done`, `close`,
+`board`, `intro2`, `flow`) and `titleSize` are read only by `/task/[day]` and `/lesson-card/[day]`, which
+no frame in this drop draws and which become redirects (D324). They are kept byte-for-byte (deep-compared:
+0 differences) from a one-time snapshot of the previous build, `scripts/overhaul/curriculum-legacy.json`
+(`--freeze-legacy`, which refuses to run on an already regenerated file), and marked `@deprecated` in the
+types. When lessons turns both routes into redirects, drop those fields from the generator and delete the
+snapshot.
+
+## D396 — `summary` keeps the previous build's one-line strings (lessons Q8, option 1)
+No frame in this drop draws a one-line lesson summary (the old card is gone; covers carry only
+`Lesson <n>` + title). Lessons Q8 offered two answers: keep the old summaries, or drop the field. Dropping
+it would change the API. So `summary` is the previous build's string, unchanged (84/84 equal to
+`refs/snapshots/pre-overhaul-full`, 34–83 characters), read from the frozen `curriculum-legacy.json`.
+These were written for the previous lesson under each day, so some no longer describe the new title.
+L2 is an example: "Day zero isn’t a loss…" now sits under "Remove easy access to porn". That is the trade
+Q8 named. Its readers: `/search` (title + summary + week match), `/first-steps` (one line under each row),
+`/lesson-card` (legacy, until it becomes a redirect), and `lib/curriculum.ts` `bodyMarkdown` (not displayed).
+
+An earlier pass of this part set `summary` to the lesson's first reading piece (81–210 characters). No
+spec asked for that, and on `/lesson-card` at 375×667 (D320) it ran under the `Start lesson` pill on 84 of
+84 lessons, by up to 79pt. With the previous strings the count is back to the pre-overhaul figure: 1 of 84
+(L32, by 10pt, the same before this run), measured in-page over all 84 against the pill's rect. At
+393×852 and 430×932 the count is 0 of 84. The generator still reads the first reading piece and
+cross-checks it against `lessons-v3` `sections[0]` (84/84), but only as a check. If the orchestrator later
+wants the field on the new course's words, it is a one-line change in the generator (`l.legacy.summary` →
+`l.firstPiece`), safe once `/lesson-card` is a redirect.
+
+## D397 — Today/Night task card: the lesson's title over the previous drop's task sentence
+Canvas contradiction (lessons §10.3): `Today Home Task` ("Today’s task: Prepare for tonight" / "Put the
+device you use for porn out of reach before you sleep.") and `Night Action Reminder` ("Prepare for
+tonight" / the same sentence) draw `task-src.json[1].summary`, the previous drop's task, not the new
+reader's L1 practice. The frames win: `task.cardTitle` = the lesson title, `task.cardSummary` =
+`Vici Overhaul/project/task-src.json` `summary`, apostrophes/quotes curled (equals the app's previous
+`cardSummary` 84/84). The reader's own task is `task.practice` + `task.doneWhen`.
+The frames draw this pair only on day 1, where the two strings agree. On the other 83 days the
+sentence is the previous drop's task for that day, so it can describe a different task from the new
+title. Example: L41 "Give the action a time and place" over "Write three simple rules for situations
+that have caught you before and make one easier to follow." That follows CRITIC §3.1.5 / lessons §10.3
+as ruled. If the orchestrator wants the card to match the reader, `cardSummary` could become the first
+`practice` paragraph or `doneWhen`, a one-line change in the generator. Day 1 would then stop matching
+both frames.
+
+## D398 — `titleSize` (legacy) for the new titles
+`/lesson-card` sets the title at `titleSize` with a 23/30 or 20/27 ramp. The previous card stepped down
+only its one title longer than 27 characters. The same rule on the new titles: `length > 27 → 20`, else
+23 — 48 of 84 step down. It only keeps the legacy card from colliding with its summary until the route
+becomes a redirect; the new canvas sets every lesson title at one size (30/36 cover, 24/31 task).
+Measured in-page over all 84: every title that wraps to two lines is at 20/27, so its line box ends
+2pt past the summary's top (`top 396 + 54 = 450` vs `448`). This happens on 14 of 84 lessons at 393×852,
+23 of 84 at 375×667 and 5 of 84 at 430×932. The glyphs do not touch (`/lesson-card/19`, `/64`). No
+`titleSize` value can do better, because a two-line title at 23/30 would end at 452. The remaining 2pt
+comes from the route's fixed `top`s, which go away with the redirect.
+
+## D399 — Hero ids in the curriculum
+`hero` (lesson: the cover's `data-hero`; week: the week page's `data-hero` — not its first lesson's cover,
+e.g. Week II = `signpost`, L8 = `calendar`) is typed `CurriculumHeroId`, the union of the 38 ids the
+curriculum uses. It is a subset of the 53 card ids, so it is assignable to `src/content/heroes.ts`'s id
+type without importing a file another part generates concurrently. The cover ids agree with library.md
+appendix A (84/84) and the week ids with library.md §1 (12/12).
+
+## Old → new titles (L = day; cover hero)
+
+| L | Wk | old title | new title | cover hero |
+|---|---|---|---|---|
+| 1 | I | Surviving the Night | Prepare for tonight | `nightPhone` |
+| 2 | I | A New Start | Remove easy access to porn | `sunrise` |
+| 3 | I | Get Outside | Choose where to go instead | `bench` |
+| 4 | I | Fix Your Sleep | Prepare for sleep | `bed` |
+| 5 | I | What Replaces Porn? | Have another activity ready | `books` |
+| 6 | I | Isolation | Make time for contact | `twoCups` |
+| 7 | I | One Week In | Review the first week | `cake` |
+| 8 | II | More Than a Streak | Measure more than a streak | `calendar` |
+| 9 | II | After a Relapse | Stop sooner after a slip | `sunrise` |
+| 10 | II | The All-or-Nothing Trap | Use the hours that remain | `scale` |
+| 11 | II | Progress Isn’t Linear | Try one change for a week | `chartUp` |
+| 12 | II | Identity | Repeat one useful action | `idCard` |
+| 13 | II | Values, Not Shame | Choose your own reason | `compass` |
+| 14 | II | Keep Going | Return after a missed day | `signpost` |
+| 15 | III | The Life of an Urge | What to do when an urge starts | `stopwatch` |
+| 16 | III | What’s the Urge Really For? | Check what you need | `thermometer` |
+| 17 | III | Move First | Close the screen and move | `sneaker` |
+| 18 | III | Redirection | Prepare another activity | `signpost` |
+| 19 | III | HALT | Check hunger, anger, loneliness, and tiredness | `kettle` |
+| 20 | III | Urge Surfing | Notice an urge without acting on it | `lighthouse` |
+| 21 | III | Masturbation | Make a separate choice about masturbation | `shower` |
+| 22 | IV | The Reward System | Understand what starts the habit | `brain` |
+| 23 | IV | The Control Center | Decide before the difficult hour | `brain` |
+| 24 | IV | Hungry and Tired | Make room for food and sleep | `kettle` |
+| 25 | IV | Angry and Lonely | Respond to anger and loneliness | `thunderCloud` |
+| 26 | IV | The Pull of Novelty | Notice when searching keeps going | `tab` |
+| 27 | IV | Change Your State | Try movement, breathing, or another room | `shower` |
+| 28 | IV | Autopilot | Act earlier in the habit | `dominoes` |
+| 29 | V | The Scale | Look at the benefit and cost | `scale` |
+| 30 | V | The “Benefits” of Porn | Meet the need you can identify | `tab` |
+| 31 | V | The Hidden Reward | Begin a task you are avoiding | `envelopeOpen` |
+| 32 | V | The Short-Term Cost | Address one immediate cost | `clock` |
+| 33 | V | The Long-Term Cost | Make time for what viewing displaced | `calendar` |
+| 34 | V | Tipping the Scale | Make one change for tonight | `scale` |
+| 35 | V | Repairing the Scale | Give an activity a place in the week | `scale` |
+| 36 | VI | What is Willpower? | Prepare a simpler response when tired | `battery` |
+| 37 | VI | Train Your Response | Practise the response | `sneaker` |
+| 38 | VI | What Discipline Isn’t | Keep rules that serve a purpose | `halfMast` |
+| 39 | VI | What Discipline Is | Practise the part that gets in the way | `compass` |
+| 40 | VI | Thoughts and Feelings | Let a thought remain while you act | `thunderCloud` |
+| 41 | VI | Choose Your Action | Give the action a time and place | `signpost` |
+| 42 | VI | Damage Control | Plan for a difficult day | `umbrella` |
+| 43 | VII | Relapse Isn’t the End | Learn from a slip | `halfMast` |
+| 44 | VII | Learn From the Relapse | Take care and make a repair | `notebook` |
+| 45 | VII | Don’t Punish Yourself | Adjust the plan for today | `mirror` |
+| 46 | VII | Rough Days | Get support during a difficult period | `thunderCloud` |
+| 47 | VII | When Life Gets Hard | Return to the task you postponed | `mountain` |
+| 48 | VII | Face What You’re Avoiding | Begin the next part of the day | `door` |
+| 49 | VII | Don’t Wait for Tomorrow | Take a step after a longer setback | `calendar` |
+| 50 | VIII | Boredom | Give an activity time before switching | `clock` |
+| 51 | VIII | Escaping Boredom | Choose what begins in an empty gap | `tab` |
+| 52 | VIII | Learn to Be Bored | Try fifteen minutes without switching | `bench` |
+| 53 | VIII | Screen Boundaries | Change one screen habit | `phoneTable` |
+| 54 | VIII | Dopamine Detox | Try an hour away from one feed | `feedOff` |
+| 55 | VIII | Wake Up With Purpose | Prepare the first hour after waking | `sunrise` |
+| 56 | VIII | Meaning | Give time to something that matters | `compass` |
+| 57 | IX | Why Relationships Matter | Arrange a shared activity | `twoCups` |
+| 58 | IX | Loneliness | Choose contact that fits | `bench` |
+| 59 | IX | Solitude | Choose how to spend time alone | `bench` |
+| 60 | IX | What Porn Replaces | Separate desire from wanting company | `twoCups` |
+| 61 | IX | Friendship | Follow up on a connection | `twoCups` |
+| 62 | IX | Unhealthy Relationships | Set a safe limit on harmful contact | `thunderCloud` |
+| 63 | IX | Healthy Relationships | Give a relationship attention | `twoCups` |
+| 64 | X | Trauma | Choose support without revisiting painful events | `umbrella` |
+| 65 | X | Your Environment | Change one difficult setting | `plant` |
+| 66 | X | Self-Criticism | Describe a mistake without an insult | `mirror` |
+| 67 | X | Self-Loathing | When you feel bad about yourself | `mirror` |
+| 68 | X | Self-Compassion | Check your response to self-criticism | `plant` |
+| 69 | X | Self-Trust | Keep one manageable commitment | `compass` |
+| 70 | X | Self-Improvement | Simplify the plan | `chartUp` |
+| 71 | XI | Know Yourself | Use what your notes show | `mirror` |
+| 72 | XI | Amor Fati | Choose what you can do now | `umbrella` |
+| 73 | XI | Memento Mori | Reserve time for what matters | `hourglass` |
+| 74 | XI | Carpe Diem | Begin an activity you postponed | `sunrise` |
+| 75 | XI | The Next 90 Days | Plan the next ninety days | `calendar` |
+| 76 | XI | Peace of Mind | Give one activity your attention | `lighthouse` |
+| 77 | XI | This Time Next Year | Schedule something you want to keep doing | `envelope` |
+| 78 | XII | What Forever Means | Keep the reason and next action clear | `lighthouse` |
+| 79 | XII | Twelve Weeks Ago | Compare the start with now | `calendar` |
+| 80 | XII | What Changed in Your Brain | Prepare for a changed situation | `brain` |
+| 81 | XII | Winning the Battle | Use the changes that helped | `flag` |
+| 82 | XII | Lessons From Addiction Recovery | Check how to ask for help | `books` |
+| 83 | XII | Saying Goodbye | Finish with an honest next step | `envelopeOpen` |
+| 84 | XII | The Future | Save a short plan for after the course | `sunrise` |
+
+## auth-funnel decisions — Vici Overhaul run, Phase 1 (D200–D209) — `auth-funnel`
+
+Files: `src/app/(auth)/{_layout,sign-in,sign-up,splash,welcome-back}.tsx` (`_layout` unchanged),
+`src/app/(onboarding)/_layout.tsx`, `src/app/index.tsx`, `src/components/auth/kit.tsx`,
+`src/components/onboarding/funnel.tsx`, `src/content/onboardingFunnel.ts` (GENERATED) +
+`scripts/overhaul/gen-funnel.mjs` (new fork),
+`src/components/ui/Waterline.tsx`, unframed `src/app/(app)/lifemap.tsx`. Recipes:
+`.overhaul/recipes/auth-funnel.json` (replaces `auth.json` and `funnel.json`, deleted). Scratch tools:
+`.overhaul/af-sweep.mjs` (size sweep + contact sheet), `.overhaul/af-func.mjs` (drives every control).
+
+## D200 — The questionnaire's data is regenerated from the overhaul frames
+`node scripts/overhaul/gen-funnel.mjs` (fork of `scripts/vicifull/gen-funnel.mjs`) reads
+`.overhaul/scenes/Email-Login.json` and writes, per step, only what a frame states for itself: `kind`
+(`text` | `wheel` | `list` | `chips` | `statement`), the nav's inked `dashes` (`null` on Start — the frame
+draws no dash row), the `stack` (top 136 / 140 / 451, gap 14 / 18 / 20, centred), `title`, `sub`,
+`spacer`, the statement `body`, Goal confirmation's `card` as runs (`{text, bold}`, the trimmed scene's
+space restored before the bold span), `placeholder`, the `wheel`'s drawn values, `options`,
+`drawnSelected` (recipes/checks only, never read at runtime), the `hero` (`data-hero` id checked against
+`heroes.ts`, top, scale), and the primary's label (`null` on the single-select screens). The run throws
+on any stack child or option row it cannot read, on a missing title/options, and on a non-Start frame
+with no dash row. The answer ids are unchanged (every later screen reads them). Copy is unchanged from
+the previous drop's generated file (auth-funnel §1) — verified by the frames' text in the new file.
+`backTop` stays on the type as a deprecated `60` because `welcome.tsx` (tail's) still reads it.
+`FUNNEL_GLYPHS` (and its `FunnelGlyph`/`FunnelSvgKid` types) has no source in this drop; it was carried
+as a frozen legacy block while `plan.tsx` imported it, and dropped once the tail group decoupled
+`planSignals()` from it (grepped: no consumer left in `src/` or `scripts/overhaul/`).
+
+## D201 — `O3Shell` is a pass-through; each funnel screen draws its own frame
+The overhaul frames are two templates (question; statement = the kit's `HeroBoard`, 26/33 title, stack
+451). `O3FunnelStep` and `O3AgeGate` render the whole frame (`Screen`, nav, content, primary) and read
+`onBack` from the shell through context, so the dash count comes from the step's own data with no
+publish-after-mount flash. `O3Shell` keeps every prop `welcome.tsx` passes (`progress`, `bar`, `lit`,
+`paper`, `segments`, `backTop`) and ignores all but `onBack`; any other child (the tail's `reading`
+step, which D324 removes) gets the ground, a back chevron and the previous shell's padded box. The shell
+no longer imports `onboarding/art.tsx` (tail's), so tail can delete `CampaignMapField` & co. without
+breaking this file. The previous engine's night field, sun, bloom, rule, "‹ Back" label, `O3H`/`O3Sub`/
+`O3CTA`/`O3Chip`/…, the glyph grid, check rows, row marks, header drawings and First Principle's wave and
+dots are deleted (nothing outside `funnel.tsx` imported them — grepped).
+
+## D202 — The age wheel (bespoke; no kit primitive draws it)
+Five rows at rest exactly as drawn (30/700 `#2E2E2E` lh 56 · 34/700 `#5A574F` lh 60 · rule 200×1.5 ink ·
+72/700 ls −2 ink lh 100 · rule · 34 · 30), so the non-uniform pitch is reproduced; nothing animates.
+The value steps under the finger — one year per 40 pt of vertical drag (RNGH `Pan`, `runOnJS`,
+claims at ±4 pt, yields at ±10 pt sideways, as the kit `TimeWheel` does) — and a visible neighbour is a
+button that steps to it (the click a mouse drag ends in is ignored for 250 ms). Range 13–99 (D331);
+rows past either end are blank. `accessibilityRole="adjustable"`, label "Age", `aria-valuetext`,
+increment/decrement. An untouched wheel answers: arriving on Age with no stored value stores "24", so
+`welcome.tsx`'s gate and age-80 projection read the age shown.
+
+## D203 — Name takes focus on arrival
+The frame draws the focused, empty state (the 2×24 bar before the `#9B968E` placeholder — CRITIC C9;
+the kit `TextField name` shows the bar only while focused). `autoFocus`; and because the keyboard then
+covers the bottom primary on a device, the return key ("next") does what Continue does. Empty names are
+still allowed (unchanged).
+
+## D204 — Selection behaviour
+Single-select screens (now including Gender, D324) show the ink fill and turn over 260 ms later (the
+engine's own timer, unchanged). Multi-select screens use the kit `Chips` (`toggleChoice` = the old
+`pick`, D350): "Nothing in particular" / "Nothing obvious" / "Nothing yet" exclusive, What it affects
+capped at 3 (a fourth pick refused); the primary is the D321 disabled pill while nothing is chosen,
+except What it affects after "Not really" (zero allowed, unchanged). Goal confirmation keeps its four
+title/line readings; the card is drawn only for "Keep it, just without porn" (its runs come from the
+frame).
+
+## D205 — Small screens (D320) and native line breaks (D332)
+Question screens: the stack lives in a `ScrollRegion` from the nav's bottom (100) to the primary's top
+(106 off the edge; 0 with no primary), with the frame's stack top as its top padding — identical at 852
+(0.00 %), scrolling at 375×667 where Q5 / Q17's chips would run under the pill. Heroes pass `controls`
+(106 / 0) and drop out on a short phone (rule 1). Statement screens are `HeroBoard`s (rule 2 lift).
+Age's wheel stays absolute — it ends at canvas 571, above the 667 phone's primary top (595). The
+auth doors keep the frame's 852 of height and scroll: at 667 all four controls are on the first screen
+and the footer and caption sit under them, never across them; at 932 they stay on the bottom edge as
+drawn. Native has no `text-wrap: balance/pretty`: the twelve fixed question titles and Login's paragraph
+whose greedy wrap at 393 differs from the canvas carry the canvas's `\n` (auth-funnel §3.8) — only at
+≥ 393 wide and only when the copy is the frame's own (not Start's name, not Goal confirmation's
+variants); web balances them itself.
+
+## D206 — The doors and the splash
+`AuthBoard` is the door's stack: laurel 104 at 150 (centred), title/paragraph at 284 (gap 12), controls
+at 436 (gap 14: Apple ink pill with the 16×19 glyph, Google card pill with the 19 G, the "or" rule, the
+email pill), the footer bottom 108 and the caption bottom 64. The footer's whole row is the control (the
+frame puts the pointer on the bold run; six letters are not a finger target). A back chevron is drawn
+only when the door was pushed (`router.canGoBack()` — from Name's Back or All), at the nav row's 60. An
+SSO refusal (D330: 14/700 ink, lh 20) is centred in the frame's empty gap 672–726. Splash: the laurel at
+`left: 50%, marginLeft: −60.5` (the frame's 136 is half a point left of the axis — measured: centring it
+put it at 136.5 and cost 0.46 %), its top at 330/852 of the window, the wordmark 148 under it.
+
+## D207 — The boards behind the doors (no frame)
+Copy and behaviour unchanged. Address step: the door's laurel and a centred 26/33 title over Name's
+field (`TextField name`, email keyboard, autofocus, a mute ✕ accessory while it holds text) and the
+primary in flow under it, so the keyboard that opens with the board never covers it. Password, verify
+and the sign-up form: Name's template (`AuthSurface` — nav chevron, left 26/33 title at 136, 15/22 mute
+labels 8 above 60/18 fields, primary in flow, "Resend code" as an in-flow ghost link). Sign-up's gate:
+the door's stack with its three pills (Apple/Google with their glyphs, email plain; no "or" — the gate
+never had one) and the legal line as the caption (inset 24). The updates checkbox is the kit's 26
+`CheckDisc` (done when on, pending when off), `role=checkbox` + `aria-checked`; the info card is Goal
+confirmation's card (r18 `#1E1E1E`, padding 18/22, 15/23 sub) with its toggle as a 700 ink run. Legal:
+12/700 ls 0.4 mute, underlines kept. The verify boards are unreachable on the mock build (mock auth never
+asks for verification); they are the password board's pieces.
+
+## D208 — The slow-boot board
+`WaterlineScene` (unframed, unreachable in mock — D131) is the splash with the kit `Spinner` at 44 in
+`#9B968E` (as `LoadingView` draws it, D386) and its label in the ghost line's 15/400 mute, bottom 96.
+
+## D209 — Recipes and the walks other groups use
+`.overhaul/recipes/auth-funnel.json` holds all 25 frames; every single-select AFTER neutralises the 260 ms
+turn-over, and the AFTERs now tap the frames' drawn selections (Q3 "Yes, several times", Q3b "A few
+days", Q5 four chips, Q6 + Tired, Q7 In bed only, Q21 "Quite a bit", What it affects Focus/Sleep/
+Confidence, Q13 "A few days a week", Q16 "Keep it, just without porn", Q17 two chips).
+`.overhaul/drives/funnel-walk.js` changed two rows: Age is `t('Continue')` (no input any more — the wheel
+opens on 24), Gender is `t('Male')` alone (no Continue — it turns over). **The other groups' walks through
+the funnel (`f-plan-walk.js`, `handover-walk.js`, `tail-walk.js`, `v-plan-walk.js`) need the same two
+rows** — reported to the orchestrator; not edited here.
+
+## Phase 2 amendments (no new numbers — the range D200–D209 is full)
+
+* **D206 — the door's message keeps its distance and is seen.** The refusal a door says back (no frame draws
+  one) sat centred in the 54 the frame leaves between the email pill (672) and the footer (726): the mock's
+  two-line SSO refusal (and most of Clerk's) filled 40 of it, 7 from the pill and 7 from the footer, and a
+  three-line one would have run across both. `AuthBoard` now measures the line and keeps 12 (the stack's gap)
+  clear above and below it, growing the board by whatever the message needs past the gap — the footer and
+  caption move down with the bottom edge, never under the text (a two-line refusal at 852: footer 736, caption
+  bottom 54, nothing scrolls out of view). On a 667 phone that gap is below the fold, so the line answering a
+  tap on Apple or Google landed off-screen; the board now scrolls it into view when it appears (React 19's
+  `ref` prop through `ScrollRegion`'s spread). `AuthMessage` balances on web (`text-wrap: balance`, as the
+  frames' centred copy does), so "…Use email / for now." no longer strands two words. The undisturbed doors are
+  unchanged (Login, Welcome Back 0.00 %).
+* **D205 — what stays as it is.** At 375 × 667 the doors' footer link ("Already have an account? Sign in" /
+  "New here? Create an account") is below the fold, one short scroll away: lifting the board by the laurel's
+  room (art top ≥ 108, rule 2) brings it 42 up and leaves it 1 pt short, and the remaining options — dropping
+  the laurel, tightening the frame's gaps — are not in D320's list. The four controls are on the first screen.
+  On 430 × 932 the question boards' spot illustrations keep the frame's top (T 506 / 582), so the 80 the taller
+  phone adds falls between the art and the primary; every other group's question and check-in boards do the
+  same (kit `Hero`), so it is reported to the orchestrator rather than changed here.
+* **Carry-over.** `FUNNEL_GLYPHS` was already gone (D200; `gen-funnel.mjs` re-run as a dry run: byte-identical
+  output, no consumer in `src/` or `scripts/overhaul/`). `.overhaul/settings-seed.js` stored `lifeMap.values`
+  as bare strings; it — and the two seeds that copy its dataset, `settings-profile-seed.js` and
+  `r-set-seed-pinned.js` — now store `{label, importance}[]` (Presence 5, Health 4, Honesty 3: Life Map's own
+  save order), the shape `convex/schema.ts`, `src/lib/types.ts`, the funnel's `finish()` and Life Map's save
+  write. The readers of `lifeMap.values`: `src/app/(app)/lifemap.tsx` (reads both shapes — kept, for rows a
+  pre-schema mock store may hold) and nothing else (`letter.tsx` reads only `whyStatement`; Convex's
+  `lifemap:update` writes, `lifemap:get` returns the row).
+* **Back paths (D340).** Life Map ← All goes back to All (it is a hidden tab; history back). Name's Back
+  replaces into the door when nothing is behind `/welcome` — the sign-up path ends in a replace — so the door
+  draws no chevron there (it would be a dead control); `.overhaul/af-func.mjs` expected one and now checks the
+  opposite.
+
+## tail decisions — Vici Overhaul run, Phase 1 (D210–D219) — `tail`
+
+Group `tail`: the plan sub-flow, the cost/line boards and the handover keepsakes — 19 frames,
+`Enlisting Aegis` … `Medallion Received`. Files: `src/app/(onboarding)/welcome.tsx` (STEPS and the
+tail cases), `src/components/onboarding/{tail,plan,handover,v3}.tsx`, `art.tsx` (deleted),
+`src/content/onboardingTail.ts` + `scripts/overhaul/gen-tail.mjs`, `src/content/weekXiiLetter.ts` +
+`scripts/overhaul/gen-letter.mjs`. Recipes: `.overhaul/recipes/tail.json` (plan.json and
+handover.json migrated into it and deleted). Evidence: `.overhaul/shots/tail/a-<Frame>.strip.png`.
+
+## D210 — The flow follows the canvas's badges: two line boards in, the campaign map out
+`STEPS` runs `24 · Build plan` … `34 · What You Want Back` → `38 · A Letter Arrived` (FLOW.txt).
+`change-line` (`O3ChangeTheLine`) is split into `line-nothing` (`32 · If Nothing Changes`, CTA `Next`)
+and `line-plan` (`32A · With the Plan`, CTA `Continue` — the frame, not the generator's "Start with
+today", CRITIC §5 Q11), one `LineBoard` drawn two ways, every chart value the frame's literal (Q7).
+The three-page campaign map (`reading`, `O3Reading`) is removed (D324); with it go `CHROME`/`NOBAR`,
+`O3PaperCTA`, `o3Roman` (unused) and the whole of `onboarding/art.tsx`, whose only importer was the
+map (grepped). Every tail board is still whole-frame; the boards that draw a Back chevron (Step 1 …
+What You Want Back) get `back` = `move(i, -1)`, so Back skips the conditional questions exactly as
+the funnel does. Letter Received, Start Here, Where We'd Start, Medallion Received draw an empty nav
+row and get no Back (the frames); the two arrivals lose their ✕ (Q10 — their buttons do what it did).
+
+## D211 — Copy and API changes the frames make
+CTAs: Start Here "I can do that" → `Continue`; What You Want Back "See the twelve weeks" →
+`Continue`; Letter Received "Open it" → `Open`; The Vow "I sign it" → `Sign`; Medallion "Take it" →
+`Continue`. The vow's date reads `Day 0, Jun 9` (`format.shortDate`, the day it is signed) and gains
+"Signed on day 0". `O3MedallionEarned` takes `{eyebrow, title, body, next}` ("Veni" / "Your first
+medallion." / "You started."). `O3OneBadDay` drops its `day` prop (the week strip is an
+illustration). Starting Score's label is the frame's mixed-case "Your VICI rating" in caps style.
+`O3LetterRead` keeps its props (`name, paragraphs, onKeep, next` + optional `onClose`) so the
+letters group's `/letter?variant=week12` still calls it unchanged (verified: 0.00 % against Letter
+Week XII through that route); a paragraph equal to the letter's own picks its 700 ink run back up
+from `WEEK_XII_RUNS`. Name fallbacks: "Friend —" (salutation), "Week XII, from you" (eyebrow, Q14),
+"Friend" (vow), "This is where we’d start." (no name).
+
+## D212 — Generated content, forked to `scripts/overhaul/`
+`gen-letter.mjs` reads `Letter-Week-XII.html` raw (the scene trims the spaces round the span) and
+writes four paragraphs as runs plus the plain `WEEK_XII_LETTER` the journal entry and old callers
+use. `gen-tail.mjs` reads the three cost frames' circles (filtered by radius — every frame also
+carries the status bar's r 1.5 circle) and asserts the grids' geometry and that the designer's LCG
+reproduces both large fields; it writes `COST_30` (relapse = filled `#0D0D0D`: 2, 6, 9, 13, 16, 20,
+23, 27, 29), `COST_365` (25 across, 110), `AGE_80_FIELD` (33 × 71, 720 bright), `AGE_80_NEXT_SEED`
+(the LCG state after the frame's 2,343 draws) and `SCORE_SAMPLE` (842). `AGE_80_STARS`,
+`SCORE_RING`, `SCORE_CURVE` are retired with their boards. `NEXT_30_TIMES` / `YEAR_DAYS` still
+count the true cells (9, 110), so the sentences and "About 6,100 days" (age 24) are unchanged.
+
+## D213 — Drawings: transcribed, parametric where the board has data
+Starting Score's gauge is built from the score (49 ticks at 180° − 3.75°·i, a tick at or under the
+score r 108→128 at 3.4, above it r 119→128 at 2, endpoints to one decimal as the frame writes them;
+marker r 6 at r 96) — at 842 it is the frame pixel for pixel (0.00 %, 3 px); the board shows the
+app's own SCORE_BASE (D329), printed with `groupDigits` ("1,000"), the 0…1,000 scale pinned full
+above 1,000. Cost Next 30 reproduces the frame's two near-identical cell styles and its unmatched
+"Clean day" swatch literally (Q2). The 365 grid is 365 `<Circle>`s (a two-arc `<Path>` per class
+left 282 px of edge anti-aliasing; circles diff 0 px). The age-80 field is two `<Path>`s (2,343
+circles on native would be heavy): anchored at the window's (0, 0) under the status bar as the
+canvas's is, and on a screen larger than 393 × 852 the extra rows/columns continue the LCG, so the
+frame's dots never change. The veil is the frame's linear gradient (expo-linear-gradient). The Age-80
+Back chevron is the frame's `#17160F` with its 36×40 target (Q3). SVG `<text>` at 600/700 is
+`Lato_700Bold` with no `fontWeight` (the canvas loads no 600).
+
+## D214 — What You Want Back reads `17 · What it affects` back
+CRITIC §5 Q5: the pills are his picks in the picker's order; fewer than three are topped up from
+the frame's trio (Focus, Sleep, Confidence) rather than replaced by it, so his own answer is never
+dropped and the board always draws three (`wantBackPills`). `planSignals` no longer filters on the
+funnel's legacy `FUNNEL_GLYPHS` but on the nine `11 · When` labels (`CHIP_LABEL`'s keys) — tail no
+longer imports `FUNNEL_GLYPHS`, so auth-funnel may drop it.
+
+## D215 — Small screens: lift into free ground first, then scroll
+The hero boards (Where We'd Start, Start Here, Steps 1–2, Letter Received, Medallion, A Clean Day,
+One Bad Day) are kit `HeroBoard`s and lift (D320 rule 2; the calendar and the week strip pass as
+`art` with their `artTop`). The other boards lay their canvas inside `Band` (tail.tsx): a
+`ScrollRegion` from the nav (100) to the controls whose inner box keeps canvas y. At 852 nothing
+moves. Where the drawing would come within 16 of the primary, it rises by the deficit when there is
+that much ground above its first line (never above 108) — Starting Score, Cost Next 365, both line
+boards at 375 × 667 — else it stays and scrolls (Your Plan, Cost Next 30, What You Want Back);
+`end` is measured where a line can wrap (Starting Score's last line, Want Back's stack). The Vow's
+signature first rises into the gap under the vow (keeping 24) before the band acts, so at 667 the
+name sits above `Sign`, not cut by it. Letter Week XII scrolls its column inside the card, with
+170 pt of end room so the last paragraph clears the buttons; the fade and buttons stay fixed.
+Checked at 375 × 667 (inset 20) and 430 × 932; nothing overflows horizontally, nothing lies under a
+control unscrollably.
+
+## D216 — Mock-only `/welcome?step=<id>` (+ `&hold=1`, `window.__ONB_ANSWERS`)
+The tail sits 22 questions deep and the old walk took 45–70 s per capture and broke whenever a
+funnel board's labels changed. In `EXPO_PUBLIC_FORCE_MOCK=1` builds only, `?step=<id>` opens that
+board with the canvas's own man's answers (`SAMPLE_ANSWERS` — the walk's answers, which reproduce
+every drawn state), `&hold=1` keeps Build plan up past its 6.8 s hand-over, and a capture seed may
+set `window.__ONB_ANSWERS` to vary them (`.overhaul/tail-alt-seed.js`, `tail-unnamed-seed.js`).
+Production builds ignore all three. The full walk (`.overhaul/drives/tail-walk.js`, rewritten for
+the new labels, gender's auto-advance and the age wheel) still runs end to end (45 s to Medallion).
+
+## D217 — Build plan holds the frame's state; the mark turns
+The three rows hold the frame's done / now / to-come state for the whole 6.8 s, as the previous
+drop's rows did (Q9 — no behaviour change); the kit `Spinner` turns (D366), so its 88 box is the
+board's one moving pixel region (0.00 % outside it).
+
+## D218 — Native line breaks (D332)
+`.overhaul/f-tail-breaks.mjs` measures every fixed balance/pretty run in the group greedily at 345
+against the frame's wrap: 28 of 32 break alike; four headings do not ("Keep your phone / out of bed
+tonight.", "Leave the room / instead of lying there.", "Pick the room / you will not close.", "When
+the house empties, / the door stays open."). On native those four carry the frame's `\n`
+(`NATIVE_BREAKS`, plan.tsx); web balances the plain string. Dynamic copy (his name, the evidence
+sentence) wraps greedily.
+
+## D219 — Phase 2: small and wide phones, the full gauge, the letter's viewport
+Found by looking at every tail board at 375 × 667, 390 × 844 and 430 × 932 (393 × 852 is unchanged:
+every board diffs as before, 0.00–0.01 %, Starting Score 1.80 % by D329).
+* **`Band` lifts as far as the ground allows, then scrolls the rest.** It used to lift only when the
+  whole deficit fitted above the first line, else not at all — so at 667 Cost Next 30 left its key and
+  closing line under `Next` behind a 96 pt scroll and What You Want Back cut "Not a perfect streak…"
+  in half under `Continue`. Now the board rises by min(deficit, start − 108) and only the remainder
+  scrolls (5 pt and 7 pt there). Your Plan, which had its own `ScrollRegion`, uses `Band` too (rises
+  62, scrolls 22: the fifth card reads whole above `Continue`). Nothing moves at 852 or 844.
+* **The year grid and the line chart span the column.** Drawn 345 wide at left 24, they ran 6 from the
+  right edge at 375 and stopped 61 short of the 24 gutter at 430 (axis and grid visibly off-centre
+  against the full-width primary). Their x's now scale by (window − 48) / 345 — the frame's own numbers
+  at 393 (k = 1, still 0.00 %) — with radii, strokes, type, y's and the 128 tooltip unscaled, as Today's
+  and the weekly report's charts do.
+* **A full gauge draws no marker.** At 1,000 the r 6 marker lands at 0°, 2.5 right of and 4 under the
+  last zero of "1,000", reading as "1,000." — and every account opens at 1,000 (D329). Short of full the
+  marker is the frame's (842 still diffs 0.00 % with the sample score).
+* **The letter's column ends at the primary's bottom edge.** It ran to the card's bottom (the screen
+  edge), so on a short phone a line of the letter showed through the fade between `Continue` and
+  `Keep this letter`. The scroller now stops 96 off the bottom (under the primary, never below it) and
+  its end room is 58 + 16, so the last line still scrolls clear. `/letter?variant=week12` (same
+  component) still diffs 0.00 % against Letter Week XII.
+* **The vow wraps `pretty`.** The frame states no `text-wrap`; at 375 the greedy wrap left "day." alone
+  on the fifth line. `pretty` breaks it exactly as drawn at 393 (0.00 %), keeps four lines at 430 and ends 375 on "next day."
+
+## paywall-reminders decisions — Vici Overhaul run, Phase 1 (D220–D229) — `paywall-reminders`
+
+Files: `src/components/onboarding/reminders.tsx`, `src/components/paywall/{PaywallFlow,OfferingPaywall,RevenueCatPaywall}.tsx`,
+`src/app/{paywall,subscription,reminders,notify-primer}.tsx`, `src/app/routines/{morning-time,night-time}.tsx`,
+`src/components/routines/kit.tsx` (`wheel.tsx` deleted), `src/lib/routines.ts`. Recipes:
+`.overhaul/recipes/paywall-reminders.json` (replaces `paywall.json`). Controls: `node .overhaul/pr-func.mjs` (42 checks, all pass).
+Sizes: `.overhaul/pr-sizes.sh <board>`.
+
+## D220 — Paywall's way out (D323) and the Restore it displaces
+The ✕ is the kit `CloseX` in the nav's right slot (svg at 353,71 — where Paywall Rescue draws its own, so the ✕
+does not move between the two boards). Its label stays the old one: "Close" on `/paywall`, "Skip" inside the funnel
+(the funnel drives tap it by that name). The frame's top-right "Restore" (316,70) sat in that slot, so it goes; the
+footer's "Restore" becomes the control. The footer is drawn as **one** text run and an identical run in transparent
+ink lies over it, whose "Restore" span is the `link`: splitting the visible run into spans re-kerned the centred line
+(43 px at 152–172,788), and a nested `Text` with `accessibilityRole="button"` renders a `<button>` on RN-web whose UA
+styles moved it further. Transparent ink, not `opacity: 0` (iOS drops alpha-0 views from VoiceOver); the painted run is
+hidden from assistive tech. "Terms" has no destination in the app and stays words. Residual vs the frame: the 56×16
+region at 316,72 (Restore → ✕), by design.
+
+## D221 — A run is one string
+`{price} on {renews}` (three JSX children → three DOM text nodes) re-kerned "$39.99 on 10 Jul 2027" by a fraction of a
+point (111 px over threshold); `` {`${price} on ${renews}`} `` is exact. Every dynamic run in these files is a single
+template string; the only nested runs are the price's inline cycle span (the frame's own `<span>`) and the footer
+link's hit layer.
+
+## D222 — Subscription states the frame does not draw
+The frame draws a renewing yearly membership: "$39.99 a year. Renews 10 Jul 2027". The other states keep the app's own
+words inside that sentence (CRITIC G12, D328): monthly `$12.99 a month. Renews …`; cancelled-but-active `… Runs until
+…` (the old "runs until"); lifetime `$X · billed once` (unchanged); free `Free tools` / `Core tools included` and a
+"Free" pill in the same `badge` kind, Change plan's value "Free", no next charge, no cancel line (as before). The
+Change plan value is the plan name only ("Yearly"), as drawn — the old `Yearly · $39.99` detail is gone.
+With no cancel line the band runs to the bottom edge (Phase 2): it used to stop 74 short over empty ground, which
+on 375×667 cut the Billing rows above a blank strip.
+
+## D223 — OfferingPaywall on the frame's board, any number of packages
+It renders `PwBoard` (the frame's chrome, words and discs) with one `PwPlanCard` per package: two packages are the
+frame exactly; one takes the full width; three or more wrap two to a row with a 24 row gap so the "Save" tab (−12
+overhang) clears the card above; an odd last card takes its row; the band scrolls (verified with a throwaway harness,
+`.overhaul/shots/pr/m-offering.png`). Per package: name → title; tagline = dashboard badge ?? "Best value" on the best
+?? intro offer ?? "Cancel anytime" (a lifetime takes the store's description — nothing to cancel); bottom line =
+`${perMonth} a month` (non-monthly), "Billed monthly" (monthly), else the store's description; "Save NN%" (title case)
+on the best card. Metadata: `eyebrow` now replaces the lockup words (default "VICI Unlimited"); `benefits` (exactly 4)
+are read with any `\n` folded to a space, since the new discs break nowhere by hand. Loading = mono `LoadingView` with a
+✕ (was a paper `ActivityIndicator`). Not reachable in the mock build (no packages offline → `PaywallFlow`), so only the
+layout was captured. `savingBadge`/`savingFor` now say "Save 74%".
+
+## D224 — The drawn pay sheet is the kit sheet
+No frame draws it; it stands in, offline only, for the store's purchase sheet. It was a light imitation of Apple's in
+the system face with a blue side-button cue — a bare `System` family and hues the system no longer has. It is now the
+kit `Sheet` (scrim, `#171717` panel, grabber, frame-level buttons): the Apple glyph + "Pay" as an `h1Sheet`, a
+`RowGroup` of App / Trial / Account / Payment / Billing / Due today, the note line in 14/20 mute, the primary "Confirm
+with Side Button" (the string the drives tap) and a "Cancel" ghost; the scrim and a downward drag cancel too. Panel top
+is computed from its rows so the content ends 24 above the pill (229 with the trial row, 284 without).
+
+## D225 — `/reminders` and `/notify-primer` are Reminders Setup's board
+Both show the same two notifications the frame draws, so both render `ReminderBoard` (bell at 90, words at 320, notes,
+pill) with their own nav and words. `/reminders`: kit back chevron, "Two reminders a day." / "Timed to your risky
+window…" (D328), pill alone at bottom 48 (it has Back; no "Not now" added). `/notify-primer`: its ✕ and its progress
+(the old 9-segment strip with 8 filled → kit `NavDashes` step 8 of 9), the same words, "Not now"; the notes take the
+frame's words — the "10:41 PM" / "wave tool" pair it still carried was retired by D099 — and the "Discreet by default."
+promise follows the notes in 14/20 mute with the lock glyph dropped (no frame draws a lock, CRITIC C7). To keep that
+line clear of the pill at 852 the primer takes 18 from the space above the notes (`notesGap` 24). Behaviour unchanged
+(primer: all three controls close; `/reminders`: writes `morningCheckin`/`riskTimeSupport`, goes back).
+
+## D226 — Short phones, board by board (D320)
+Paywall, Rescue, Confirmed, Manage Subscription, Reminders Setup (+ the two routes above) and the check-in-time boards
+lay their stack **in flow** inside a `ScrollRegion` from the nav row's foot (100) to the controls, with the frame's
+offsets as padding/margins — identical at 393×852, scrolling instead of meeting the pill at 375×667 (Paywall's discs,
+Reminders' second note, Subscription's Billing group and the check-in days scroll; Rescue and Confirmed fit). The bell
+scrolls with the words (it sits above them). Day 0 is a hero board: hero + both stacks rise together by the deficit
+(44 at 375×667), never past the art's top at 108; past that the art is dropped. Checked at 375×667 and 430×932.
+
+## D227 — Copy that changed with the frames
+Rescue: CTA "Start free trial" (fixed); the title's day word through `numberWords` ("three"; a 7-day offer says
+"seven", was "7"); rows keep `Day ${n−1}` / `Day ${n}` from the offer. Confirmed: `We’re in, Sam.` / `Let’s …` with
+curly apostrophes (the "105 uses U+0027" note is obsolete), default `confirmLabel` "Begin" (was "Begin Day I"), the
+charge date from `shortDate`, and "Jul 24 —" bound with no-break spaces so a wider phone never splits the date or
+opens a line on the dash (no change at 393: the frame breaks before "Jul"). Reminders card 1 body `where’s` (U+2019).
+Paywall: "VICI Unlimited", "Save 74%", taglines "Best value"/"Cancel anytime", new bottom line "Billed monthly", feature
+labels without `\n`.
+
+## D228 — `O3DayZero` takes the lesson either way
+`welcome.tsx` (tail's) passes `lesson="Lesson 1 · Prepare for tonight"` from `lessonForDay(1)`; the card's two runs
+are that string split at the middot. `number` / `title` props say the same thing directly, for when tail wants them.
+No change to `welcome.tsx` was needed.
+
+## D229 — The check-in time boards on the kit
+`RoutineShell`/`RoutineBack`/`RoutineCTA`/`CheckinPicker` and `routines/wheel.tsx` are replaced by one
+`CheckinTimeBoard` on `NavBar` + kit `TimeWheel` + `DayToggles` + `PrimaryButton` (the Phase 0 lab replica, 0.00 %);
+`wheel.tsx` is deleted (its only importer was the old kit). `?from=settings` keeps its navigation (Save/Back → Settings)
+but loses the "Settings" back word and the reassurance line — `Settings Check-in Time` is now byte-identical to
+`Nightly Check-in Time`. The questions balance after "the" on web; native carries `\n` there (D332).
+`DEFAULT_ROUTINES.morning` is 8:00 AM (D324) — Settings' Morning row reads it too. D120/D154's period/hour excuses are
+obsolete: both frames draw a real two-row meridiem.
+
+## Verification (393×852, Lato loaded, strips read)
+
+| frame | route | pxdiff (t=24) | residual |
+| --- | --- | --- | --- |
+| Reminders Setup | `/welcome?step=reminders` | 0.00 % (0 px) | — |
+| Paywall | `/paywall` | 0.11 % (1,312 px) | 316,72 56×16 — Restore → ✕ (D220/D323) |
+| Day Zero | `/welcome?step=day-zero` | 0.00 % (0 px) | — |
+| Paywall Rescue | `/paywall` + Close | 0.00 % (1 px) | — |
+| Paywall Confirmed | `/paywall` + drive | 0.00 % (15 px) | two 4-pt spots on the 132 disc's antialiased rim (152,380 / 236,380) |
+| Manage Subscription | `/subscription` | 0.00 % (0 px) | — |
+| Morning Check-in Time | `/routines/morning-time` | 0.00 % (0 px) | — |
+| Nightly Check-in Time | `/routines/night-time` | 0.00 % (0 px) | — |
+| Settings Check-in Time | `/routines/night-time?from=settings` | 0.00 % (0 px) | — |
+
+## Phase 2 — review (393×852 audit, the three sweep sizes, unframed screens)
+
+Fresh audit (`audit-fast.mjs --group=paywall-reminders`) and sweeps (`size-sweep.mjs --size=… --scroll`): every frame
+CLEAN, every sweep row `ok`, every strip and size PNG read. Unframed screens and undrawn states at 393×852, 375×667,
+390×844 and 430×932: `node .overhaul/pr-unframed.mjs` (captures + `.overhaul/pr-row.mjs` rows in
+`.overhaul/shots/pr/unframed/`). Controls and back paths under D340: `node .overhaul/pr-func.mjs` — all PASS, incl.
+Settings → Subscription / check-in boards → Back/Save → Settings, All → Reminders / primer / time / subscription /
+paywall → All, Locked → Unlock → ✕ ✕ → Locked.
+
+| frame | px | residual |
+| --- | --- | --- |
+| Reminders Setup | 0.00 % | — |
+| Paywall | 0.105 % | 316,72 56×16 — Restore → ✕ (D220/D323) |
+| Day Zero | 0.00 % | — |
+| Paywall Rescue | 0.00 % | — |
+| Paywall Confirmed | 0.001 % | 11 px on the 132 disc's antialiased rim (152,380 / 236,380), ≤ 40/255; the kit `CheckDisc` is built as the frame's div |
+| Manage Subscription | 0.00 % | — |
+| Morning / Nightly / Settings Check-in Time | 0.00 % | (the day-disc specks of the earlier audit were gone on re-run) |
+
+Short phones (375×667) behave per D320/D226 and are not defects: Reminders' first note, Paywall's discs, the check-in
+boards' day toggles and Subscription's Billing rows sit under the band's foot until scrolled; the `.end` captures
+show each whole above its control. At 430 Paywall's "Weekly insights" fits one line while "Progress tracking" wraps —
+the frame's no-`text-wrap` columns doing what the canvas CSS does at that width. A sweep capture once showed the
+paywall lockup without its laurel (the `<img>` not yet decoded); the re-run and `pr-unframed.mjs` (which waits for
+images) show it at every size.
+
+## today — decisions (D230–D234), Vici Overhaul Phase 1 — `today`
+
+Group: Today Home, Today Home II, Today Home Task, Today Home III, Score Detail, Score Detail Moves, Score
+Detail Ranks, plus the unframed `/journal`, `/journal-new`, `/affirmation`. Files: `src/app/(app)/today.tsx`,
+`src/app/(app)/score.tsx`, `src/lib/score.ts` (additive), `src/app/(app)/journal.tsx`, `src/app/journal-new.tsx`,
+`src/app/affirmation.tsx`; `src/components/today/kit.tsx` deleted (nothing imported it after the rewrite).
+Evidence: `.overhaul/recipes/today.json` (seven frames; Today Home III and Score Detail Ranks 0.00 %, the rest
+named residuals), captures and strips in `.overhaul/shots/today/`, seeds from `.overhaul/f-today-clockseeds.mjs`,
+replay `node .overhaul/r-today-p1.mjs`.
+
+## D230 — Today is the frames' header and strip over a three-page pager; the chart is the account's own month
+The four Today frames share the header (64) and the Sunday-first week strip (136–199) pixel for pixel and differ
+only in the band 200 → 748, so the screen keeps its vertical pager there: page one Today Home, page two Today Home
+II / Task, page three Today Home III, each 548 tall at 852 (the band), children in canvas y less 200. Every page
+fills the viewport and grows past it only when its own content needs more: each page measures where its content
+ends (494 / 503 / 518 as drawn) and is `max(viewport, end + 20)` tall. The pager always snaps page to page — on
+web through CSS scroll snap (`pagingEnabled`), which lets an oversized page scroll within itself, natively through
+`snapToOffsets` (each page's top, plus its foot when it is taller than the viewport). So 390 × 844 (viewport 540),
+a real 393 × 852 with its 59 inset (543) and 844 with 47 (547) page exactly as 852 does; a 667 phone (397) snaps
+to each page's top and foot; a pledge that wraps to three lines makes page three 586 at 393 and the Tonight card
+stays reachable (D320; checked at 375 × 667, 390 × 844, 393 × 847, 393 × 852, 430 × 932). The earlier rule — snap
+only when the viewport is ≥ 548, else scroll freely — dropped paging on the commonest phones and clipped a long
+pledge's Tonight card at 393 (verifier). The old mark row, night-sky score card, 30-dot strip, paper lesson/task/pledge cards
+and the pinned urge bar are gone (D324).
+
+The thirty-day chart plots the account's own last thirty days on the frame's band: x steps `(W − 64)/29` to one
+decimal (the frame's 11.3 … 329), the lowest day at y 210.6 and the highest 172.7 above it, straight segments,
+the frame's rules, fill and end ring. A younger account is padded at the front with its first day; a flat series
+lies on the floor (OQ-T3). The frame's own thirty values are drawn, not data — nine falling days in thirty would
+take nine slips on `SCORE_WEIGHTS` and contradict its own header and Moves — so the line is Today Home's one
+residual (1.89 %). `scoreHistory` / `monthLedger` moved out of `score.tsx` into `src/lib/score.ts` (+ `lastDays`,
+`scoreDayKey`, `LEDGER_WINDOW`), additive; nothing else's API changed.
+
+Phase 2 — the foot never slices a block. On a 667 phone every page is taller than its 397 viewport, and the plain
+foot (`top + h − viewport`) came to rest 7 pt above the score's baseline on page one (the comma and the 2's tail hung
+under the strip's discs) and 37–38 pt above the art's floor on pages two and three (the phone's and the glass's stubs,
+a band of hills). Each page now names the blocks its foot may not cut — page one "Recovery score", the number (to the
+chart's top at 334, since the comma hangs below its 56 line box) and the chart's ink (its high point's ring to its
+labels); pages two and three their hero's crop box — and where the foot would fall inside one, it rests at that
+block's end and the page grows by the difference (at 375 × 667 the pages are 531 / 587 / 577: page one +17, page
+three +39, page two its hero box's end + 397). Nothing changes where a page fits its viewport (393 × 852, 390 × 844,
+430 × 932), nor where the foot already falls between blocks (day 58's six-line sentence at 393: the foot lands just
+above the hero's box and the art stays whole). The size-sweep recipes now scroll to each page's own `offsetTop`
+instead of multiples of 548, so a short phone's capture shows the page's top, as the pager rests there.
+
+## D231 — The header, the strip and this morning's chips
+The flame pill counts the account's day (OQ-T1: the frame's 41 is the seed's day; a streak stays opt-in,
+invariant #1) — the old "Day 41" heading moved into it. The avatar is the frame's outline ring + glyph and opens
+Settings, as the person glyph did (no photo pipeline exists, OQ-T8). The greeting follows `checkinPartNow()`.
+
+Strip (Sunday-first, CRITIC C16): a past day is **held** (ink disc + check) unless a slip landed on it or it is
+before the account; today is the **ink ring** with its date until the night check-in has filed the day (today's
+row carries `emotions`/`reasons` — what Night 1–4 and `/checkin` write), then held (Today Home III); a future,
+slipped or pre-account day is the line ring with a muted date (OQ-T2).
+
+Chips: mood word `MOOD_WORD` (Heavy · Low · Fine · Good · Clear, the app's own) with a swatch a rung lighter than
+the check-in's tone disc — Today Home pairs mood 3 "Fine" with `#BAB5AD` while Morning Feeling draws mood 3
+`#8A857D`, so the chip takes `toneRamp[i + 1]` (the top two rungs share the ink) and the darkest rung stays
+visible on the `#1E1E1E` chip (OQ-T4b). Energy reads `${ENERGY_WORD} energy` with the bolt and is left out when
+the row has no energy. Before this morning's check-in the row is one chip "Morning check-in" (the cover's own
+words) with an empty ringed disc. Every chip opens `/day/morning`, as the old section row did. Today's delta pill
+is `buildScore`'s own (OQ-T4), hidden at 0, arrow turned over when negative (the kit's `down`).
+
+## D232 — The task: two registers, one done mark, the lesson where it came from
+Generic register ("Today’s task", 20/27) for a hand-named action or a fallback step; lesson register
+("Today’s task: <lesson title>", 17/24) when a lesson set the task. Source precedence is unchanged (named
+`dailyAction` → the day's lesson → `DAY_STEPS`), with one refinement: the night check-in now names tomorrow's
+action *from the day's lesson* (D236), so a named action that is a lesson's `cardSummary` keeps that lesson's
+register, hero and task page. Without it, every Today after a night check-in would print a lesson's sentence
+under the generic label with no way into its lesson. `DAY_STEPS[0]` takes the frame's words ("hard to reach",
+was "difficult to access"); each step carries a hero (phone → nightPhone, water → twoCups, outside → bench,
+note → notebook, bed → bed — not openDoor: cropped at its s 0.79 its floor line stops 11 short of both edges at
+393; bench, bed, nightPhone, twoCups and notebook fill or need not fill the crop at 375–430); an unmatched named action draws the notebook.
+
+The 52 disc is the done mark in both registers (`dailyActionDone` on today's row — the morning asks after it;
+checked: tap → true in storage, tap → false). The sentence opens a task page whenever the course has one: the
+lesson that set the task, else the day's lesson (`/lesson/day/<n>?page=task`, D324 — the old card opened
+`/task/<day>` for any task on a lesson day, generic register included). Only past the course, with no page to
+open, does the sentence toggle the mark, as the old card did there (checked: Today Home II's seed → /lesson/day/41
+?page=task, row unchanged; day 88 → stays, `dailyActionDone` true). Phase 2: the two registers write the same way. The disc
+(and, past the course, the sentence) writes `dailyActionDone` and — when the row names no action yet (no night
+check-in) — `dailyAction` = the sentence it sits beside, as the old task page's "Mark as done" wrote both. Without the
+name, the next morning's Task Check fell back to `dayAction()` and asked after a sentence Today never showed (checked:
+day 41 with nothing named → tick → row `{dailyAction: L41's sentence, dailyActionDone: true}`; the next morning asks
+"Yesterday: Write one cue and action for a decision you keep postponing."; a named action is never overwritten;
+register, hero and task page are unchanged since a lesson's own sentence keeps its lesson). The lesson tile pushes
+`/lesson/day/<n>` directly; only past the course does it open `/lessons-browser` (a real list, not a redirect — no
+single lesson is the day's there). Tiles: the day's lesson, numbered as the
+course numbers it (OQ-T6 → CRITIC §5), opens `/lesson/day/<n>` (past the course: "Week I / Start the first
+lesson" → `/lessons-browser`, the old copy and door); "Ride it out / Urge surfing" opens `/urge-hub` (the old urge
+bar's door). The frames' "Lesson 5 / Naming your triggers" is the D132 mock — it is not a lesson in the new 84 —
+and is Today Home II / Task's only residual (0.42 %). Rows on pages two and three are columns with the frame's
+band as a minimum, so a sentence or pledge that wraps further on a 375 phone pushes the next block down instead
+of overlapping it; at 393 they land exactly.
+
+## D233 — The pledge rings, and the three unframed screens
+Today III's rings have no drawn targets (OQ-T5): **+** opens the journal editor tagged Pledge
+(`/journal-new?tag=Pledge` — the newest Pledge entry is the standing pledge Today and the morning stand on;
+checked: saving "Phone stays out of the bedroom" puts it on page three), **☆** opens Past pledges (the old card's
+door), **share** shares the line (`Share.share`; checked on web through `navigator.share`). No frame draws the
+block before any pledge: the pledge's line holds the app's own "Write a pledge" (the All drawer's words) in the
+22/700/31 register in mute `#9B968E`, tappable into the same editor as +, with the rings under it and share dimmed
+(D321) — an empty 31-pt line under the caps read as missing content (verifier). The name is the first word of `displayName`, 700
+italic (`PledgeCard plain`).
+
+`/journal` (Past pledges): the title-head idiom — back at 60, 32/700 title at 108, entries as r24 `#1E1E1E`
+cards (caps "Today · 7:12 AM" + tag, the line in 17/700 ink), the page scrolling under the fixed nav; empty is
+its existing one line. `/journal-new`: nav row (back = Cancel, the time centred, Save), the tags as when-chips in one
+sideways-scrolling row that bleeds to the screen edges (a `?tag=` or stored tag the three chips lack — Pledge,
+Affirmation — is offered first and stays offered after another chip is picked; four chips no longer wrap "Lesson"
+alone onto a second line at 375 and 393), title in the sheet field, body in the note field;
+the B / I / U toolbar formatted nothing and is gone. `/affirmation`: the Change Pledge Sheet's shell (kit `Sheet`
+at 120 over bare ground, h1 + line + card field, pill at 96 over the ghost at 60) with the old copy in both modes;
+scrim / drag / Escape close it. Checked: Different prompt cycles; Write my own prompt → Use this prompt stores
+`tideline.affirmation.prompt` and returns; Save today's line writes the Affirmation entry and closes.
+
+## D234 — Score Detail: one header, three pages, the account's own numbers
+Header per frame (back · "Months" pill · caps · 60/700 number · `Navigator II` range pill), a horizontal pager
+under it from 288 with no dots (OQ-S3), each page scrolling vertically only when its content does not fit (Moves
+on a 667 phone). "Months" opens the kit sheet with Months / Year (D333; a11y "Three months" / "One year", the old
+labels); the pill reads the current one. Months = the three calendar months to today, Year = the twelve; month
+labels at 40 / W/2 − 0.5 / W − 41 (current in ink), insight "+N points this quarter|year" over "May – July".
+
+The chart is the account's history sampled weekly (monthly for the year), drawn as a monotone cubic (no overshoot
+under the floor where a flat run turns into a rise), today at x W − 21 and a damped tail to the edge; the axis is
+the window's floor to the next 100 and the smallest of 100/200/400/500/1000… that clears the top, which gives the
+frame's own 1,000 / 1,400 for the 1,240 account. Days before the account read its first day. The frame's curve is
+drawn (its ring at y 80 reads ≈ 1,343 under a 1,240 header — OQ-S2), so the curve and the +90 are Score Detail's
+residual (1.77 %).
+
+Moves: `monthLedger` on the same weights; one slip reads `Slip on Jul 8` (was `Slip · Jul 8`), more `N slips`;
+bars are `round(|v| / max · 100) %` (ink, an ink ring for a loss), net under the rule. D134 still holds — the
+frame's ledger is a 17-day account whose header reads 1,086 Deckhand I; seeded (`today-ledger-seed.js`) the five
+rows and the net are pixel-identical, so the 1,240 capture's 0.75 % is the values only. Ranks: highest first,
+todo ring + dashed `#5A574F` rail (CSS dashed border on web, an SVG line natively), here = ink disc + dot +
+solid rail + 900 name + "You’re here. N to go" (just "You’re here." at the top rank), done = ink disc + check —
+0.00 %. The old night header, light sheet, rank bar, value badge, insight cards and `paceLine()` are gone.
+
+## day — decisions (D235–D239), Vici Overhaul Phase 1 — `day`
+
+Group: the seventeen check-in frames (Morning Check-in Cover … Night 4 Closed) at `/day/morning` and
+`/day/night`, plus the unframed `/checkin` (and the `MoodLogger` modal it shares). Files:
+`src/app/day/morning.tsx`, `src/app/day/night.tsx`, `src/app/checkin.tsx`, `src/components/MoodLogger.tsx`,
+`src/components/day/board.tsx` (new — the pieces both flows share), `src/components/day/kit.tsx` (cut to
+`RerollGlyph`, which `affirmation.tsx` imports, and the day-action lists). Evidence: `.overhaul/recipes/day.json`
+(17 frames: 14 at 0.00 % pxdiff t=24, the other three named below), captures and strips in
+`.overhaul/shots/day/`, drives `.overhaul/drives/day-{morning,night}-exercise.js`.
+
+## D235 — Every step is the kit's board; the ✕ on the two closing boards files the day
+The old paper shell (`DayShell`, the dot rail, `MorningSky`/`NightSky`, `LedgerMark`/`JournalMark`,
+`LedgerRow` plates, `MoodDial`, the paper `PledgeCard` with Snell Roundhand, `ChangePledgeSheet`,
+`ActionCard`/`NightActionArt`, `DayBadge`, `CheckinCover`'s painted sky) is gone. The covers and Night 4
+Closed are `HeroBoard`; every step is `Screen` + `NavBar` (back · `NavDashes {step, total: 5|6}` · ✕) +
+the kit control (`Grid2`, `CheckRows`, `ToneScale`, `EnergyBars` + `ScaleReading`, `PledgeCard sign`,
+`TextField bare`, `Sheet` + `TextField card`) + a decorative `Hero` carrying `controls` (D320 rule 1: at
+375 × 667 the T 506/458 heroes drop out; covers and Closed lift with `HeroBoard`). Every step now draws
+Back, the dashes and ✕ (the old night flow's Back-less Reflection/Record and rail-less Action are gone, as
+the frames draw them). D091/D094/D096 are moot.
+
+The frames add the ✕ to Morning 5 Done and Night 4 Closed, where the app had none. On every other step the
+✕ leaves without saving, as it always did (checked: closing mid-flow writes no row and leaves yesterday's
+`dailyActionDone` untouched). On the two closing boards the day is already complete, so the ✕ runs the same
+`finish()` as Done — leaving there must not throw the check-in away.
+
+## D236 — Morning: an answer before the round next; the signature line signs
+Morning Task Check's two glyph pills that advanced on tap become the frame's `Grid2` (Yes / Not yet, radio)
+and the `NextFab`. Nothing is chosen on arrival (CRITIC §5: a default "Yes" would write a completion the user
+never claimed); the fab is dimmed (D321) until a choice. Yes / Not yet write `dailyActionDone` true / false
+on **yesterday's** row at `finish()`, as No / Yes did. The old pledge plate's clear-× is not drawn (OQ-M4):
+the signature line itself is the control — it signs ("Sign here") and un-signs ("Signed by Jerry"); the
+primary still signs first and confirms second. The Change Pledge Sheet opens on the pledge as it stands
+each time; "Sign the new pledge" stands the draft in and un-signs, "Keep current pledge" / scrim / drag
+closes. Night Action's title is `lessonForDay(day).task.cardTitle` (= the new lesson title, "Prepare for
+tonight" on day 1) over `cardSummary`; past the course it falls back to "Tonight" + `nightAction(day)`.
+
+## D237 — The record rows: the frames' words, the kit's empty disc for what the day did not earn
+`0 relapses` → `countOf(n, 'slip')` ("0 slips" / "1 slip"). Rows the day did not earn keep the app's own
+copy (No pledge signed · No urges logged · 1 slip · No lesson yesterday; at night "… today") on
+`CheckRow done={false}` — the kit's bare ring (D355, OQ-M2). The score row prints a minus for a net loss
+(`−14 → 1,326`; the old `+${gained}` printed `+-14`). D097 still holds and is now provable: with the current
+`SCORE_WEIGHTS` yesterday's gain under the frame's other four rows (clean, a check-in, one urge ridden, a
+lesson) is 4 + 2 + 2 + 3 = 11, so the frame's `+12 → 1,240` cannot be seeded without contradicting a
+row; day-seed prints `+11 → 1,064` — Morning 1 Yesterday's only residual (0.08 %, the value's glyphs).
+`.overhaul/day-seed-negatives.js` reaches every negative (and Night Action's no-lesson fallback, day 91).
+
+## D238 — Reasons store `Health`; old rows read as `Health`
+Checkin Reasons draws `Health`; it is also the stored value (D324). `MoodLogger` exports `REASONS`,
+`EMOTIONS` and `normalizeReasons()` (maps `Health / wellbeing` → `Health`, de-duplicated); `/checkin` seeds
+its picks through it (checked: a stored `Health / wellbeing` opens selected as Health and saves as Health).
+Other readers of `reasons[]` (Log check-ins, weekly report — the logs group) should map through
+`normalizeReasons` when they display stored rows.
+
+## D239 — `/checkin` (unframed) and the residuals that stay
+`/checkin` (and the `MoodLogger` modal, which nothing mounts today) is the night flow's three boards on a
+three-step rail (`NavDashes {step, total: 3}`): Night 1 Mood's bed (506 × 1.075) and tone discs under its
+own question ("How did today land?") with its own five words (Heavy … Clear, no second line), Checkin
+Emotions with the fab, Checkin Reasons with its own **"Log it"** pill (it saves; dimmed until a pick, as
+before). Back on the first step and ✕ leave; the mood opens on the stored rung, else the fourth ("Mostly
+clear"), as before. The loading wait has the ✕ (`LoadingView onClose`).
+
+Night 3 Reflection's stack is a `ScrollRegion` (top 136, to 16 above the pill): identical at 852
+(0.02 %, the drawn caret only — D364), and a long entry scrolls instead of running under Continue (checked at
+375 × 667 with 14 lines). Change Pledge Sheet keeps the live Resign step under the scrim, where the canvas
+draws empty ground (D095's reading carried): only its nav row shows, dimmed, above the panel at 120 — that
+and the caret are the frame's 0.19 %. `RerollGlyph` now strokes `#9B968E` by default (the old `#8B8882` is
+not in the palette) and takes `color`; `affirmation.tsx` (today group) keeps its call unchanged.
+
+## Phase 2 amendments (no new numbers — D235–D239 is the whole range)
+
+**D237, the score row.** The row's disc now follows the rule the other four rows follow: a ticked disc when
+yesterday put points on the board, the kit's empty ring when it put nothing on or took some off
+(`−14 → 1,326` on `.overhaul/day-seed-negatives.js`). The frame's `+12` row is unchanged (ticked); Morning 1
+Yesterday stays at 0.08 %, the value's glyphs (D097).
+
+**D239, the scrolling band.** `StepStack`'s band (Morning Task Check, Morning Resign Pledge, Night 3
+Reflection, Night Action Reminder) now runs down to the controls' top and keeps its 16 as bottom padding,
+instead of ending 16 above them. At 852 nothing moves (the frames' stacks fit). The scrolled end is the same
+(the last line stops 16 above the controls); what changes is the resting state when a stack only just
+overflows: D339's longest task line (L58, seven lines at 375 × 667) overflowed by 2 and the band's edge cut
+Yes / Not yet flat across their bottom corners — they now show whole, 14 above the round next. A stack that
+overflows by more is cut at the controls' top line (it reads as passing behind the pill) rather than by a
+hard edge floating 16 above it.
+
+**Checked, nothing to change.** All 17 frames at 393 × 852 (14 at 0.00 %; Morning Task Check 0.002 % —
+18 px of corner antialiasing on the just-pressed Yes tile, geometry exact at 24,373 166.5 × 62 r20;
+Morning 1 Yesterday, Change Pledge Sheet and Night 3 Reflection as recorded above) and at 375 × 667,
+390 × 844 and 430 × 932; `/checkin`'s three steps at the three sizes; the negatives; L58 on Morning Task
+Check and Night Action; a six-line pledge; a ten-line reflection. Back paths after D340: ✕ on a cover,
+mid-flow and on `/checkin` returns to the All drawer it was opened from; Done from Today's "Morning
+check-in" returns to Today with yesterday's `dailyActionDone` written. The night fallback reads "hard to
+reach", as Today II draws it.
+
+**Open (kit): Checkin Emotions at 390 × 844 loses its moon by 0.03 pt.** The kit's drop test
+(`Hero.tsx`: `heroArtBottom + 16 > height − canvasTop − controls`) compares the unrounded art bottom:
+nightMoon at 0.954 ends at 696 + 0.954 × 21 = 716.034, the round next's top at 844 is 732, so
+732.034 > 732 drops the art and the board shows 216 pt of empty ground where Night 1 Mood and Checkin
+Reasons at the same size keep theirs. On a real 390 × 844 phone (inset 47) the board is 851 tall and keeps
+it; the mock's 54 inset is what lands it on the edge. Asked of the orchestrator: round the art bottom in
+that test.
+
+## Library decisions — Vici Overhaul run, Phase 1 (D240–D249) — `library`
+
+Files: `src/app/(app)/library.tsx`, `src/app/week/[week].tsx`, `src/components/library/WeekPage.tsx` (new;
+`WeekBoard.tsx` deleted), `src/components/journey/JourneyScreens.tsx`, `src/app/journey/{index,[chapter]}.tsx`,
+`src/app/{first-steps,lessons-browser,search}.tsx`, `src/app/(app)/locked.tsx`. Deleted (grepped, no importers):
+`src/components/library/WeekBoard.tsx`, `src/components/journey/{WeekScene,WorldArt,WorldCardArt}.tsx`,
+`src/content/weekScenes.ts`. Seeds `.overhaul/library-seed.js` (day 38), `.overhaul/library-day3-seed.js`.
+Recipes `.overhaul/recipes/library.json` (the old `weeks.json`, a day-12 world, is deleted — it sorted after
+`library.json` and would have overridden it).
+
+## D240 — The Library tab is the twelve week pages, a horizontal pager (D325)
+`(app)/library.tsx` lays the twelve `WeekPage`s side by side in a paging `ScrollView` and opens on the reader's
+current week (`ceil(day / 7)`, clamped 1–12: Week VI on the frames' day 38; Week XII past day 84), or on
+`?week=N`. Only the page in view and one either side are mounted. `/week/[week]` is now a `<Redirect>` to
+`/(app)/library?week=N` (clamped), so the All drawer's `A week · board`, the recipes and any old link land on
+the tab with the bar lit — the bar comes from the navigator, as on every tab. A request arriving while the tab
+is mounted turns the pager to it; the param is consumed (`setParams`) so asking for the same week again works
+after a swipe (checked). The back chevron — kit `chevronL()`, a 40-tall box at 22,60, z 5 — is held still over
+all twelve pages and does `router.back()` when there is history (inside the tabs that is the tab history: the
+navigator's default sends it to Today) and `navigate('/(app)/today')` otherwise. Sideways swiping is an
+interaction the canvas does not draw; it adds no pixels.
+
+## D241 — P1 / P2 are one rows viewport (CRITIC §5, library Q2)
+The rows sit in a vertical `ScrollView` from canvas 472 to 12 above the scene's foot (the bar's top): 264 at
+852. Its content is the seven rows (gap 8) plus `paddingBottom = view + 264 − 454`, so the last scroll position
+is always P2 (row 5 on the viewport's top edge) and scroll 0 is P1 (row 5's top on the clip — nothing shows in
+728–748). All 24 frames diff at ≤ 0.01 % with nothing outside the hero band. Recipes reach P2 with a `do` that
+scrolls only the scrollers inside the viewport — `--scroll=end` picks the first-mounted page's (the
+neighbouring week), so it cannot be used here.
+
+## D242 — Rows: calendar-day states, every row opens the reader
+`rowStateFor(lessonDay, day)`: `< day` done (24 ink disc + `#111111` check, chevron `#9B968E`), `=== day`
+current (ink card, number at `rgba(17,17,17,0.6)`, `#111111` title, `Continue` 13/700), otherwise upcoming
+(number `#9B968E`, chevron `#5A574F`). The day is `floor((now − createdAt)/1 day) + 1`, read against the moment
+the screen mounted — completion records are not consulted (library Q3, unchanged behaviour). Every row in every
+state pushes `/lesson/day/<n>` (PHASE1; `/lesson-card` is a redirect to it now). No lock and no gating — the
+frames draw upcoming rows with a chevron and the app never gated the board. Each row is one button labelled
+`"<title>, lesson <nn>, completed|today|upcoming"`. Titles are 15/700 with `text-wrap: wrap` (the span states
+none; `rowLabel`'s default `nowrap` is overridden) — the nine two-line titles break where the frames do.
+
+## D243 — Other phone sizes
+Taller than 852 the viewport runs towards the scene's foot (430 × 932: rows 1–5, its foot trimmed per D247) rather
+than stopping at 264 over a band of empty ground; the last position is still P2. Below three rows of viewport
+(a phone under ~770 tall — 375 × 667 gives 113) the page scrolls whole from the safe-area top (D320 rule 3):
+chevron, hero, header and rows in one scroll, the chevron riding with it so nothing passes under a pinned glyph.
+The pager hides its pinned chevron in that mode. Checked at 375×667 (scroll 0 and end) and 430×932.
+
+## D244 — `CourseRow`: the week-page row, reused by the unframed screens
+`WeekPage.tsx` exports `CourseRow` (`lead: 'check' | label`, `title`, optional `caps` line above and `detail`
+line below — 13/400 `#9B968E`, 18 — `state`, `trailing` override or `null`, `onPress`/`disabled`, `label`),
+`LessonRow`, `LessonRows`, `WeekHeader`, `WeekBack`, `WeekPage`, `rowStateFor`, `courseDay`, `useCourseDay`,
+`weekForDay`, `clampWeek`, `lessonNumber`, `useRowsViewport`, `WEEK_HERO_TOP`. With no `onPress` the row is a
+plain `View` (no button role). With `caps`/`detail` the row pads 11 above and below and grows past 58 only when
+its text needs it. The hero tops are the frames' stated values (80, 98.9, 63.9, 114.4, …), not the rule they
+follow (`T = 102 − 1.1·(bounds bottom − 190)`).
+
+## D245 — The unframed screens (routes §4.5, 4.9–4.12; copy unchanged, CRITIC G12)
+* **Lessons browser** — nav row geometry with an 80 word slot each side: `Cancel` (15/700 ink), caption
+  `Lessons`, an 18 search glyph (no frame draws one; drawn in the kit's 2-pt line) → `/search`. Each week:
+  caps `Week <roman>` + `h1` name, then its seven `LessonRow`s; lessons past today are listed and disabled
+  (CRITIC C7 — no lock glyph). The paper shelves and lesson plates are gone.
+* **Search** — Sheet Edit Name's field (`TextField variant="sheet"`, autofocus) with `Cancel` beside it; the
+  three recent words as single-select `Chip`s that fill the query (on while the query equals it); the count as
+  caps; results as `CourseRow`s with the week on a caps line and the summary under the title, chevron `#9B968E`.
+  Same filter (title + summary + week name/blurb). Rows push `/lesson/day/<n>`.
+* **First steps** — close-only `NavBar` with the caption, `h1` + `p`, the lesson reader's 3-pt rail (`#2E2E2E`,
+  ink fill = done/6) and the caps count line; the six as `CourseRow`s: completed → check, today → current, open
+  → number + `#9B968E` chevron, not open yet → number + `#5A574F` chevron, disabled. Close-then-push kept.
+* **Locked** — back `NavBar`, `Weeks` 32/38, Week I as a done row (`Completed · 7 lessons`), weeks II–IV as
+  upcoming rows (numeral, name, blurb, no glyph, no fade), the Closed-door illustration in place of the paper mist
+  vignette, `11 more weeks ahead` (`h1`, centred) + the existing line, `Unlock VICI Plus` primary → `/paywall`.
+  On a phone where the column would not fit above the pill the door is dropped (D320 rule 1, once).
+* **Campaign** (`/journey`, `/journey/[chapter]`) — the week page's form: a `Lesson-Illustrations-v4` hero
+  standing on canvas 292 by the week pages' rule (Landing `sunrise`, Crossing `compass`, Highlands `mountain`,
+  Watch `lighthouse`), caps `Chapter <roman>`, title 30/36, the chapter's line 15/22, and its three marks as
+  `CourseRow`s (done → check, here → current, not yet → number) with the day range where the week page puts
+  `Continue`/the chevron; the Watch closes on the laurel + `Day 90 · the vow, renewed` in caps. The index stacks
+  the four; each page scrolls from the safe-area top. `CHAPTERS`, `CHAPTER_ORDER`, `CHAPTER_LAST_DAY`,
+  `chapterForDay`, `useJourneyDay`, `useCurrentChapter`, `JourneyChapter`, `JourneyScroll` keep their names;
+  `ChapterKey` now lives here. The dead `CampaignMap` / `CampaignGrounds` (no importers) went with the paper art.
+
+## D246 — Residual: hero edge anti-aliasing
+Every week page's only mismatch is inside the hero band: 0–139 px over 24/255 (≤ 0.01 %), on near-horizontal
+art edges (the flag's hem, the scale's beam, the lighthouse island). Not a position error: the design frame
+re-rendered with its svg at `top: 99` instead of `98.9` diffs 0 px against the original (Chrome snaps the
+svg box to the whole point — D373 confirmed by capture), and the app against either is the same 78 px on Week VI.
+It is the browser rasterising a CSS-transformed `<svg>` versus react-native-svg's `<G transform>`; the kit's
+`Hero` owns that choice.
+
+## D247 — The taller viewport stops on a row edge
+The frame's own 264 lands exactly on row 5's top edge. Run to the scene's foot, 430 × 932 leaves 344, which shows
+14pt of row 6 as a stray band just above the bar. `useRowsViewport` raises the foot to the edge of the first row it
+would cut (`view − view % 66` when the cut falls inside a row), so 932 shows rows 1–5 whole (330) and P2 still ends
+on row 5's top. 852 (264) and 844 (256 — the cut falls in the 8 gap) cut no row and are unchanged. Re-checked in
+Phase 2 at all three sweep sizes, scroll 0 and end.
+
+## D248 — Phase 2: two-line runs on the unframed rows, the centred lines
+No frame draws these; each is a line-break fault seen on the size captures, fixed without touching the frames.
+* `CourseRow`'s `caps`/`detail` form (search, first steps, locked — never the week rows, whose titles keep the
+  frames' greedy wrap) sets its title and detail `pretty`, so a two-line title or one-liner does not end on a
+  lone word at the narrower widths (search at 375 now reads "Get support during a / difficult period").
+* Locked's line is two sentences under a centred `h1`; greedy left "the mist." alone at 393, balance split
+  "The / road". It now breaks between the sentences (`\n`; each fits a line at every width — fixed copy, D332), and
+  its straight apostrophe is the system's `’`.
+* The campaign chapters' lines (two lines each, centred under the title) balance, as a centred two-line `p`
+  does elsewhere: "…keep / the light on for the long run." instead of a lone "run.".
+Phase 2 verification scripts: `.overhaul/lib-unframed.mjs` (the unframed screens at 393/375/390/430, scroll 0
+and end) and `.overhaul/lib-backpaths.mjs` (20 flows, every back path and lesson door, D340 history included).
+
+## Lessons decisions — Vici Overhaul run, Phase 1 (D310–D319) — `lessons`
+
+Merged into DECISIONS.md by the orchestrator. Files: `scripts/overhaul/gen-lessons.mjs` (new),
+`scripts/overhaul/lesson-breaks.json` (new, measured input), `src/content/lessons.ts` (GENERATED),
+`src/app/lesson/day/[day].tsx` (rewritten), `src/components/lesson/{LessonShell,LessonPages,LessonViz,LessonText}.tsx`
+(new), `src/app/lesson-card/[day].tsx` and `src/app/task/[day].tsx` (redirects).
+
+## D310 — The readers are generated from the 1,273 Week frames, one page per frame
+`node scripts/overhaul/gen-lessons.mjs` (`--check` to verify) reads every `L<n>-Frame-<k>.html`, decomposes it
+into the reader grammar of lessons.md §3 and fails on any residue: an unknown atom or band child, a chrome
+that is not the shared one (✕, header, rail percent = `round(k/N·100)`, noise 0.06), a bottom control that
+is not the page kind's (`Begin` / `Continue` / `Finish lesson` / `Done` / ring), a vertical gap outside
+the §3.3 stops, an option density that does not follow the option count. The model is then checked
+against `gen/lessons-v3.json` (titles, both quotes, section titles, every reading piece in order, all 33
+visual payloads, the 32 questions and their answers, practice pieces, Done-when lines, the complete line)
+— 84/84 equal, or the run fails. Pages are the frames 1:1 (the designer's `paginate()` is a DP over
+measured line counts; the app never re-paginates). Where `gen/lesson-pool.json` disagrees with a frame
+(L52 F8 hourglass, L68 F7 twoCups) the frame's `data-hero` is emitted. Fixed copy (`Begin`, `Part n`,
+`Question`, `Best answer(s)`, `After choosing`, `Add a note (optional)`, `Today’s task`, `Done when`,
+`Lesson complete.`) lives in the components. The multi-choice "Choose X [or Y] alone if it fits."
+instruction is parsed into `exclusive` letters (8 of 10 multi questions).
+
+## D311 — What the reader writes (lessons.md §12.3; D324 "Finish lesson records completion once")
+`Begin` → `startLesson(day-NN)` (no-op if started/completed). A question's `Continue` → the choice as the
+lesson's reflection, `{ q: 'A,C' }`, only when something is chosen. The reflect page's `Continue` → the
+note, `{ q?, note }`, only when one is typed. `reflections:save` replaces the whole record, so every save
+merges into what is already stored. `Finish lesson` → `completeLesson(day-NN)` only when the lesson is not
+already completed (the mutation re-stamps `completedAt`, which would move Morning's "finished yesterday"
+and the score day). `Done` and the ✕ close (`back()`, else `/(app)/today` — the card the old fallback
+named is gone). Writes are fire-and-forget (`.catch(() => {})`), as elsewhere. The day's task is still
+marked done where it always was (`dailyCheckins.dailyActionDone`: Today's check, Morning's question) — the
+complete page says so ("One thing left today — the task.").
+
+## D312 — Native line breaks for the readers (D332 applied)
+Web states each run's own `text-wrap` (`balance` on display/title/label/compare label, `pretty` on the
+rest, `nowrap`/`wrap` where the frame says), so a web capture breaks exactly as the frame. Native has no
+`text-wrap`: `lessons.ts BREAKS` carries Chrome's lines for the 297 non-body runs whose balanced/pretty
+breaks differ from greedy at the canvas width (titles, quotes, prompts, options, best answers, Done-when,
+viz text; keyed `<ramp>|<text>`), joined with `\n` **only on a 393-wide screen at font scale 1**. The 230
+body runs that differ wrap greedily on native (D332: "lesson body wraps greedily") — a one-word difference
+at most, no line-count change (the only run whose line count changes, L68 F14's task title, is a title
+and is in `BREAKS`).
+
+## D313 — Band modes at runtime, and the keyboard
+The stack is measured and the generator's thresholds applied to the real band (`screenH − (insetTop+86)
+− 128`): ≤ band − 24 centre (with the 24 lift), ≤ band tall (lift dropped), else scroll (top-aligned at
+140, scrolling to the screen's foot, content padded 152 so the last row clears the pill, under the
+frame's 150 fade `rgba(13,13,13,0) → #0D0D0D 40%`, drawn as an SVG gradient). At 393×852 this
+reproduces the canvas's three non-centre frames (L16 F11, L58 F12 tall; L7 F11 scroll) and on a short
+phone gives every overflowing page the canvas's own answer (D320 rule 5). With the keyboard up (native;
+the reflect page's note) the band rises until the stack's foot is 16 above the keyboard, never past the
+band's top.
+
+## D314 — Controls (none of it is drawn; the old reader's behaviour kept)
+The pill and the 44 ring (kit `PrimaryButton`/`RingNext`, both `Next`/label-addressable) are real
+buttons. A tap anywhere in the band does what the page's bottom control does (ring → next, `Begin`,
+`Continue` on the best-answer page, `Finish lesson`, `Done`) — every page except the question (its rows
+own their taps) and the reflect page (the note field); a drag scrolls instead. The band's press carries
+`accessibilityLabel="Next"`, the ✕ `Close` (the word the old reader drew is gone). FadeIn 220 ms
+bezier(0.2,0,0,1) per page and the rail's 320 ms `LinearTransition`, both off under reduced motion. No
+back-a-page control (none drawn, none before); the stack's back gesture / Android back close.
+
+## D315 — Undrawn option state (D322) and Continue
+Every question frame is drawn with nothing chosen. Chosen: ink row, `#111111` text, the 24 mark a filled
+`#111111` disc with the ink letter, no ring — same geometry, nothing moves. Single choice is a radio
+(role `radio`), multi a checkbox set with the exclusive rule (`toggleChoice`): an exclusive letter clears
+the others and any other pick clears it. `Continue` is never disabled — the frame draws it live with
+nothing chosen.
+
+## D316 — `/lesson-card/[day]` and `/task/[day]` are redirects; `?page=`
+No frame in this drop draws either. `/lesson-card/<n>` → `/lesson/day/<n>` (the cover is the way in);
+`/task/<n>` → `/lesson/day/<n>?page=task` (the first `Today’s task` page). Both keep the `day-` prefix
+tolerance. `?page=<k>` (1-based, clamped) opens on frame k — Today's task row, the verification sweep and
+the recipes use it. The cursor (page, choice, note) belongs to the lesson and deep link it was opened
+with, so opening another lesson in the same component starts clean.
+
+## D317 — Unknown lesson
+`/lesson/day/999` draws the lesson ground and the ✕ (it rendered nothing — a blank screen with no way out).
+Phase 2: the band also carries the kit's not-found state, `EmptyState` "Lesson not found" / "The course has 84
+lessons." — the medallion routes' own pattern ("Medallion not found"), so a bad link says what happened instead
+of showing an empty ground. The body is short enough to stay on one line at 375.
+
+## D318 — Visualisations on other widths
+Card inner width = screen − 64 − 40 (289 at 393). `track` computes `cw = inner/n`, `cx = round1(cw·i +
+cw/2)` from it (the frame's own numbers at 393, incl. 254.1). The `wave` svg's viewport is widened to
+`-2 -8 293 104` to hold what the frame's `overflow: visible` draws outside its 289×96 box (the dashed
+marker from y −8, the curve's round cap past x 289) — native svg clips at its viewport — and scales with
+the inner width. Compare cards are `flex: 1 1 0` (150.5 each at 375); pairs' fixed left columns
+(112/64/44) still fit.
+
+## D319 — Old reader code left on disk (deletion pending)
+The rewrite orphans `src/components/lesson/{scroll,reader,pages,cover,coverL1,marks,scenes}.tsx` and
+`src/content/{lessonReader,coverScene,readerRoom}.ts` (grepped: nothing outside that set imports them;
+`lib/curriculum.ts` names `lessonReader.ts` only in a comment). Deleting them was refused by the session's
+permission policy, so they stay, unimported, until the user approves the deletion. `lessonPlates.ts`,
+`taskScenes.ts` and `src/components/task/*` are still imported by search, lessons-browser and the today kit
+(CRITIC G13) and stay regardless.
+
+## sos-flow decisions — Vici Overhaul Phase 1 (D250–D259) — `sos-flow`
+
+Merged into DECISIONS.md by the orchestrator. Files: `src/components/urge/{flow,hub,stages,index}.tsx`,
+`src/app/{urge,urge-hub,rough-first90,relapse}.tsx`. Evidence: `.overhaul/understand/sos-flow.md`, captures in
+`.overhaul/shots/sosflow/`, recipes `.overhaul/recipes/sos-flow.json` (drives `.overhaul/drives/sf-*.js`, hub seeds
+from `node .overhaul/f-sosflow-seeds.mjs`, functional walks `sf-func-*.js`, line-break check
+`node .overhaul/f-sosflow-breaks.mjs`, size sweep `.overhaul/f-sosflow-sizes.sh`).
+
+## D250 — The interrupt, the relapse boards and the hub are the kit; the paper kit is gone
+Hero boards (Intro, the three moves, Surf Complete, Relapse Log / Twice / Begin) are the kit's `HeroBoard`; the
+question boards (Strength, Where, the two pickers, Reassess, Afterward, Relapse Resign) are one `SosQuestion`
+in `stages.tsx` — nav row, a left stack at canvas 136 in a `ScrollRegion` from 100 to the controls (D320 rule 3),
+an optional `layer` for what the frames place beside the stack (the intensity bars at 232 and their reading at
+440), and the hero under it with the kit's `controls` (rule 1). The hub panes and the stages stand on the dark
+`Screen`. `/relapse` renders through the same pieces as the slip twins (CRITIC §3.2). Deleted with the restyle:
+the paper chrome and pickers (`PaperSheet` … `PickerGrid`, `PLACE_GLYPH`), the object art (`IntroArt`,
+`MoveStepArt`, `LeaveStepArt`, `ScreenStepArt`, `DawnShaft`, `SlipArt`, `TwiceArt`, `BeginSky`, `NoiseRay`), the
+hub's gold panes and wave chart, the breathing ocean (`UrgeWave`), and the old kit's 27 re-exports in
+`urge/index.tsx` (D392 kept them for the split; grep: nothing outside `src/components/urge/` imported any).
+`index.tsx` now exports `UrgeFlow`, `UrgePlace`, `UrgeHub` and the settings types. `assets/images/urge-wave.webp`
+is no longer referenced (left on disk).
+
+## D251 — The reason and feeling pickers are multi-select (D324)
+Kit `Chips multi`, nothing chosen by default (the drawn selections are the recipes' taps). The board is the
+first answer **in the picker's own order**, not the first tapped; `precedingState.reasons` keeps every reason,
+in picker order; `precedingState.feeling` keeps one — the first in picker order — so the schema is untouched.
+Nothing chosen → `SOS-Trig-Unknown` / `SOS-Feel-Unknown`, as before. "Where" stays single-select (radio rows).
+
+## D252 — The four SOS stages stay, on 85F's board (D328)
+The canvas runs Afterward → The wave passed and draws only 85F; the app's step `sos` keeps its four stages:
+85F's breathing board, then number tap, odd one out and the 90-second clock, all on the hub's dark shell (nav
+"Ride it out" · ✕, head at 160, white primary at 96, "I slipped" at 60). The hub's Breathe pill runs the first
+three and returns to the panes (as before). Controls map one-to-one onto the old ones: the primary is the old
+"End early" (interrupt: log the urge as ridden out → relief board; hub: back to the panes) — labelled "Done" on
+85F as drawn, "End early" on the three unframed stages (their own copy, G12); each stage still moves on by
+itself when it runs its course; ✕ closes (interrupt: abandon, as every interrupt ✕; hub: closes the hub); the
+hub's back chevron returns to the panes. New on the stages: "I slipped" (→ `/slip`, as the old 90-second stage's
+"I slipped — log it" did). The breathing board keeps the old gear (SOS settings) in both contexts — see D256 for
+where. The unframed stages show their place in the run with the hub's 6-pt dots at `bottom 180` (the old four
+stage dots); 85F draws none. The 90-second stage is 85A's ring (arc = what is left, clock m:ss, the old phase word
+in sentence case); the ocean is gone.
+**Short phones.** At 393 × 852 every stage draws where 85F's shell puts it. Below that each stage fits its play to
+the area between its head (+16) and the controls (−16; the dots' 202 already holds it) before the band scrolls:
+the tap stage keeps its five spots' size and closes up their heights (≥ 45 % of the drawn spacing — the nearest
+same-column pair is still 94 apart), the odd-one-out grid shrinks its tiles (72 → ≥ 56, the dot stays 12), the
+caption sits on the area's floor, and 85F's orb — art, not type — draws smaller (≥ 60 %) above an unchanged phase
+row; the ring stage keeps its size (its clock is type). The spots and the grid are centred on the screen's width.
+At 375 × 667 every spot, tile, caption and the whole orb are visible above the controls at rest (the first
+pass placed them at fixed canvas y and cut the fourth spot and the third tile row at the band's edge).
+
+## D253 — 85F breathes 4 · 4 · 6; Hold and Out use the old captions
+In 4, hold 4, out 6 (the frame's phase row), three breaths (42 s) to a round. Only "In" is drawn; Hold and Out
+take the old box-breathing captions in the frame's sentence form — "Hold it." / "Breathe out slowly." — with no
+line under them (no approved copy; proposals in the report). The white r70 disc grows to r92 (the middle ring)
+over In and back over Out; it holds still under Reduce Motion. At t = 0 the board is the frame (reduced-motion
+capture 0.00 %); a normal capture lands ~0.3 s into the inhale (r70.4, 0.12 %).
+
+## D254 — Reassess's line follows the direction; Afterward's card stops at eight lines
+"Coming down — from 4 to 2" is the way the urge went and both reads, numbered 1–5. The word follows the direction,
+never the second read alone (the first pass took the second read's own note, so Faint → the default 2 read
+"Coming down — from 1 to 2"): down → "Coming down — from X to Y" (to 1: "It passed — from X to 1", the old note for
+that read); unmoved → "Holding steady — still at N" (the old middle note; "It passed" when both are 1); up →
+"Rising — from X to Y" (app-authored, D-20 batch). The default second read stays 1 (the old default), so a Faint
+first read opens on "Rising — from 1 to 2" until it is answered. The dashed "was" bar shows only when the reads
+differ (kit `IntensityScale`, D383). Afterward: the note card grows a line at a time to eight (30 each, card 284,
+ending at canvas 549 — 42 clear of the envelope's art at 591) and then scrolls inside (sos-flow §3.11); the first
+pass let it grow over the envelope.
+
+## D255 — Surf Complete says how long it lasted
+"You outlasted it. {Twenty-two minutes}, start to finish." from the session's own length (`minutesWords`, the
+same number written to `durationSeconds`); under a minute: "Under a minute, start to finish." (app-authored,
+flagged). The "×N" count and the flow's `useEvents()` read are gone. ✕ and "Back to Today" both close.
+
+## D256 — SOS settings: the kit sheet, every choice kept, one tap from the hub as before
+Sound (stored, as before — the app plays none), the orb light and the ground, as a kit `Sheet` (top 420,
+`Segmented` for sound and ground, four 44 swatches, frame-level "Done"). The defaults draw the frames exactly
+(white disc, the dark ground). A light or ground the user picks keeps the look it always had (the orb's
+gradient; the starfield / dawn grounds, now with the old stage's bottom scrim — 0 → 55 % → 82 % of the ground
+over the last 230 pt — without which "I slipped" all but vanished into the dawn's glow) — a user's preference is
+honoured, not flattened; lint-mono lists those 17 hexes (all in `stages.tsx`) as that judgement call. Retiring
+them is the user's call.
+**The gear.** The old app opened the sheet from a gear on the breathing stage in both the interrupt and the hub
+(Breathe → gear: two taps from the hub). 85F gives the nav's left slot to the back chevron, and the first pass
+dropped the hub's gear, leaving settings ~14 taps into `/urge`. The gear is kept on both breathing boards, in one
+place: a 36 × 40 slot just inside the ✕ (glyph 22, right-aligned, x 313–335), as Paywall and Yearly Drop keep
+their ✕ (D323). It is a visible deviation from 85F (312,68 24×24, 658 px; 0.18 % with the breath's edge ring,
+0.05 % under reduced motion) — the orchestrator may rule the other way (one line: drop `onSettings` from the
+hub's breathing stage; settings then live only in the interrupt). The sheet is drawn over every stage, as the
+old flow drew it, so a round that ends under it does not close it; leaving the hub's stages closes it.
+
+## D257 — What the hub's panes read
+85A: the ring is D066's (arc = what is left of the 20-minute window, marker at its end). The frame's 17:42 and its
+62 % arc cannot both be one moment; the clock is kept and the arc is the frame's one residual (0.66 %). 85B: "This
+one is {band word}." from the live session's severity (`INTENSITY_BANDS`), then "None this {word} has lasted past
+{N minutes}." from the longest ridden-out urge at that severity or above — left out when there is none; the card
+is "N clean, M slips" over the 30-day grid. 85C: the ridden-out count, the twelve newest timed urges oldest →
+latest at `max(12, round(96·s/longest))` from unrounded seconds, the longest in white, "Longest: N min"; no bars
+when nothing is timed. 85D: the four newest, "Thu, 3:10 pm", fill against the longest of the four, the stored
+"what helped" in sentence case, default "Waited out the timer"; no card when nothing is timed (the old pane drew
+no rows either).
+
+## D258 — The hub's shell
+No chip chosen at first (CRITIC §5); a chosen chip is the white fill with `#111111` words, a radio, filed on the
+session as its trigger (as before). The pager dots are the kit's tappable `PagerDots`; coming back from Breathe
+(Back, Done or the round's end) the pager reopens on the pane its dots still mark (the pager remounts — the old
+hub had the same mismatch). On a short phone a pane that does not fit above the dots (each reports where it
+ends, so a longer wrap counts) first rises, head and all, by up to 52 (the head at canvas 108, `HeroBoard`'s art
+floor); then 85A's chips close up on the ring (to 16 under the marker's lowest point, ≤ 37); only what is still
+left over scrolls (D320 rule 3). At 375 × 667: 85A, 85B, 85C, 85E and 85F show everything at rest; 85D's card is
+taller than the band (63 over after the lift) and scrolls, its fourth row under the band's edge until it does.
+At 393 × 852 and wider nothing moves. Nothing runs under a control.
+
+## D259 — 85E, Relapse, `?board=` and the challenge's back
+85E: "Signed N days ago." (0 → "Signed today.", 1 → "Signed yesterday."), then "Kept every day since." only while
+no slip has landed after the signing (Q13). With no pledge on record 85E and Relapse Resign keep the words they
+always fell back to ("The mornings are mine again.", "You"); 85E then drops the caption. Relapse Log's ghost still
+opens the interrupt (Q9); its body carries a `\n` before "it here." — the frame's pretty break, which greedy
+native wrapping would put after "it" (D332; 313.8 pt, fits the 327 column at 375). D336 lands: `/urge?board=<key>`
+(mock builds only) opens the flow on that board's step, the board holding until that step's picker is answered —
+Loc Bathroom, Loc Home Alone and Trig Rejection diff 0.00 %. The flow passes `onBack` to the response boards, so
+SOS Challenge draws its back chevron (sos-boards' D263) — 0.00 % — and it returns to the feeling picker.
+
+## Phase 2 amendments (to D252, D254, D258)
+
+**D254 — the second read's default.** The default second read is now `min(1, first read)` until the user answers it
+(index 1, "Noticeable", for every first read from Mild up — the frame's state is unchanged). A Faint first read used to
+open on "Noticeable · Rising — from 1 to 2" and, if the board was left untouched, file a rise on the event
+(`severityAfter` above `severity`) that nobody reported; it now opens on "Gone · It passed" and Mild on "Holding steady —
+still at 2". The line itself was already direction-true; walked for Faint, Mild and Intense × all five second reads
+(`sf-func-reassess.js`): no read ever pairs "Coming down" with a rise or "Rising" with a fall.
+
+**D258 — one lift for the whole pager; 85D's card closes up; a band that fits never scrolls.** On a short phone the five
+panes now rise together by the largest lift any of them needs (≤ `BAND_LIFT`), so the heads stay on one line while the
+pager slides (at 375 × 667 they sat at 74 / 126 / 108 / 74 / 120 and jumped mid-swipe). After the lift, 85A's chips close
+up on the ring (as before) and 85D's card closes up on its head, to 12 under it (the head's own title-to-line gap) — at
+375 × 667 the whole card now shows with no scroll (it used to stop mid-way through its fourth row). `CanvasBand` adds the
+24-pt end gap only when its content does not fit: 85A fitted flush to the dots' edge still scrolled 24 (dragging the head
+under the nav) and the breathing board 8. 85A's measured bottom includes the chips' 1-pt ring, which the band used to clip
+flat. At 393 × 852 and wider nothing moves (audit unchanged).
+
+**D252 — the 90-second ring fits its svg box.** The fourth stage fits the ring's 240 box, not its ink (223): on web a
+scroller counts the svg's empty 17 under the marker, so the ring scrolled 11 at 375 × 667. It now rises 11 instead. Every
+stage (breathing, tap, odd one out, ring) in both the interrupt and the hub's chain was walked at 375 × 667
+(`node .overhaul/f-sosflow-stages.mjs 375 667 <outdir> interrupt|hub`): every spot, tile, caption and the whole orb and
+ring show at rest, nothing scrolls, nothing sits under a control.
+
+## sos-boards decisions — Vici Overhaul Phase 1 (D260–D269) — `sos-boards`
+
+Merged into DECISIONS.md by the orchestrator. Files: `src/components/urge/boards.tsx`,
+`src/content/sosResponses.ts` (GENERATED) + `scripts/overhaul/gen-sos-boards.mjs`, `scripts/overhaul/sos-breaks.mjs`
+(new), `src/app/(app)/rough-days.tsx`, `src/app/rough-protocol.tsx`, `src/content/roughDays.ts`;
+`src/components/roughDays/kit.tsx` deleted. Evidence: `.overhaul/understand/sos-boards.md`, captures in
+`.overhaul/shots/sosb/`, recipes `.overhaul/recipes/sos-boards.json` (drives written by `.overhaul/f-sosb-drives.mjs`).
+
+## D260 — Every response board is the kit's `HeroBoard`
+The thirty `SOS-Loc/Feel/Trig-*` frames are one template in two variants and `SOS-Challenge` is the same
+board with a card (sos-boards §0). `ResponsePage` (API unchanged: `answer`, `onClose`, `onNext`, `onAnother`;
+`onBack` added, optional) now draws `HeroBoard` from the generated data: kicker in the nav, ✕, the shared
+hero at 190 × 1.1, title 30/36 + body 15/24 at 452 gap 18, primary at bottom 48 — 96 over "Give me another".
+The paper sheet, `SheetClose`, the 239-layer scene renderer (`SosSceneLayer`, `EllipticBox`) and D391's copies
+of `PaperSheet`/`SoftBlob`/`BlurredSolid` left `boards.tsx` with the old scenes (nothing else imported them).
+Behaviour is unchanged: ✕ → `close()`, pill → `next()` (`Continue` and `Done` do the same thing), ghost →
+`onAnother`; the board writes nothing.
+
+## D261 — `scripts/overhaul/gen-sos-boards.mjs` replaces both `gen-sos-responses.mjs`
+It reads the 31 split frames, asserts every template value (ground + noise `0.05`, nav row, kicker 13/700
+`#9B968E`, ✕ path, hero `left 0 / overflow visible / origin 196 190 / scale 1.1`, stack top and gap, h1/p
+metrics, primary + label, ghost, `ctaBottom === (another ? 96 : 48)`, ghost only on the feeling branch and the
+challenge) and that each board's `<svg data-hero>` is its Lesson-Illustrations-v4 card byte for byte — so the
+board can draw the shared hero and a later drop that moves one board stops the run. Output keeps the file
+name and the `SOS_RESPONSES` export; keys are a literal union (`SosBoardKey`, `SOS_BOARD_KEYS`,
+`isSosBoardKey()`), so a typo in the flow's maps is a compile error instead of a blank board. `layers[]` is
+gone; the copy diff against the old file is exactly the 13 CTAs that became `Continue` (the four `Done`s stay
+`Done`, CRITIC §5) and the six `\n`s of D262; the kickers are new.
+
+## D262 — Six explicit line breaks; the challenge needs none
+`text-wrap: balance` (titles) and `pretty` (bodies) break six runs differently from a greedy wrap at 393:
+titles of Feel-Rejected, Loc-Elsewhere, Trig-Habit; bodies of Loc-Bed, Loc-Work, Feel-Unknown. The generator's
+`BREAKS` carries the frame's lines (asserted equal to the frame text with `\n` read as a space), so native draws
+the frame's lines (D332); on web the browser balances each forced line the same way. Every forced line is
+≤ 304.4 wide, inside the 327 column at 375. `node scripts/overhaul/sos-breaks.mjs` re-renders all 31 frames on
+`:8097` and checks the generated file (including Challenge's title, body and card text, whose greedy breaks
+equal the drawn ones): "31 frames: every break matches".
+
+## D263 — The challenge's back chevron is drawn when the flow hands a way back
+`SOS-Challenge` draws back + 7/8 dashes (sos-flow §3.9: back → the feeling picker). `ResponsePage` draws the
+chevron when the flow passes `onBack`; without it the 36-pt slot stays empty rather than holding a control that
+does nothing. Until `UrgeFlow` passes `onBack={back}` on the `feeling-said` step (sos-flow's file), the capture
+differs from the frame only by that chevron (0.02 %).
+
+## D264 — An answer the content does not know shows its branch's "I don’t know" board
+`ResponsePage` used to return `null` for an unknown key — a blank screen with no way out. It now falls back to
+`SOS-Loc-Elsewhere` / `SOS-Trig-Unknown` / `SOS-Feel-Unknown` by the key's prefix (and warns in dev), matching
+the flow's own fallbacks.
+
+## D265 — Rough Days shelf: the Settings list idiom with Today III's card
+No frame draws `/rough-days` (routes §4.6). It is set like `Settings`: nav back + caption "Rough days", captioned
+groups from canvas 120 `gap 18` inside a `ScrollRegion` (D320). "The universal interrupt" is the caps line over
+Today III's "Urge surfing" card (r24 `#1E1E1E`, padding 18 20, 52 ink disc with the stopwatch glyph, 18/700
+title, 14/400 sub line, chevron) → `/rough-first90`; the seven protocols are one `RowGroup` captioned "What today
+feels like" → `/rough-protocol?key=`. Copy is the screen's own (G12). Back falls back to `/(app)/library`.
+
+## D266 — A rough-day protocol is an SOS response board
+`/rough-protocol` renders `HeroBoard` like `SOS Feel *`: the protocol's name as the kicker, ✕, the page's
+illustration at 190, headline 30/36 + line 15/24 at 452, the third page's move as a second 15/24 line in ink,
+three light `PagerDots` inline at the foot of the stack (so the small-screen lift counts them), primary over a
+ghost ("Walk through it / Next / Done" over "Not tonight / Back / Back" — the screen's own labels and stepping).
+The 21 bespoke paper drawings (`src/components/roughDays/kit.tsx`, 749 lines, imported only by this route) are
+replaced by the nearest Lesson-Illustrations-v4 card per page (table in `roughDays.ts`) and the file is deleted.
+
+## D267 — `?key=lonely` opens Loneliness; an unknown key opens the first protocol
+The `All` drawer pushes `/rough-protocol?key=lonely` (settings' file), which matched nothing and drew a blank
+page. `rdProtocolKey()` maps the obvious short words (`lonely`, `anxious`, `stressed`, `bored`, `late`, `alone`)
+and falls back to the first protocol, so no link can open an empty screen.
+
+## D268 — Recipes walk the flow in either wording
+sos-flow is renaming the interrupt's labels in the same phase, so each drive (`.overhaul/drives/b-SOS-*.js`,
+generated by `.overhaul/f-sosb-drives.mjs`) accepts both (`Start`/`Start the interrupt`, `Continue`/`I’m up` …),
+and `only()` clears any pre-checked chip before picking (D324 multi-select pickers), so the board reached is the
+one named. Rotation-only boards press "Give me another" from their rotation neighbour. The three boards no
+answer reaches (D038) are recorded on the mock-only `/urge?board=<key>` (D336), which is sos-flow's to land in
+`urge.tsx`/`flow.tsx`. Until it lands, their render proof was taken D146's way inside this group's own file: a
+temporary swap in `boardFor()` (Loc-Bed → Loc-Bathroom, Loc-Work → Loc-Home-Alone, Trig-Content →
+Trig-Rejection), the sibling drive with its waited title changed, then reverted (grep-checked) — all three
+0.00 % against their frames.
+
+## D269 — Verification
+All 30 boards diff at **0.00 %** (0 px over 24/255, mean Δ 0.43–0.50, the grain) against their frames at
+393 × 852, Lato loaded; `SOS-Challenge` at 0.02 % — only the back chevron D263 leaves to the flow. Signature
+residue is representational on every board: the design's `<svg>` box is the CSS-transformed 432.3 × 264
+(the kit's screen-wide hero has no such box, D372), and the nav kicker / pill label report `line-height: normal`
+in the frame against the kit's explicit 16 / 19 (same box). 375 × 667: every feeling board and the location /
+trigger boards lift (D320 rule 2, the kit's `HeroBoard`) and keep 16 pt above the pill; the challenge drops its
+art (its 131-pt deficit is more than the 98 pt of room under the nav) and its stack rises alone to canvas 241 —
+no overlap anywhere. 430 × 932:
+full-bleed grounds reach both edges, text wraps naturally inside the 382 column (the six forced breaks hold).
+
+## Phase 2 amendments (no new numbers — the range is full)
+
+* **D263 resolved.** `UrgeFlow` now passes `onBack` on `feeling-said`, so `SOS-Challenge` draws the frame's
+  chevron and diffs 0.00 %. (It passes `onBack` on `place-said`/`trigger-said` too; those frames are `noBack`,
+  so `ResponsePage` still draws the empty slot there — the chevron is keyed to the challenge's own nav.)
+* **D262 addendum — the challenge card wraps `pretty`.** The frame sets the card sentence with no `text-wrap`.
+  At 375/390/393 `pretty` breaks exactly where the greedy wrap does (`.overhaul/f-sosb-chal-wrap.mjs`), so
+  the frame is untouched; at 430 the greedy wrap left "minutes." alone on the last line, `pretty` gives
+  "…or ⏎ go stand where other people are for ⏎ ten minutes.". Native keeps the greedy wrap (D332: no fixed
+  break differs at 393).
+* **D265 addendum — Rough Days' back falls back to the All drawer** (was the Library tab, which is the week
+  pages now and has no link here); with D340 history it returns to All, its one door. The interrupt card's
+  title is "The first 90 seconds", the case the flow's first board and the All drawer use (the screen's own
+  copy had title case; G12 keeps the words, the case follows the system's sentence case).
+* **D266 addendum — protocol copy keeps each em dash with the word before it.** The space before "—" is a
+  no-break space in `roughDays.ts`: at 390 and 393 Home alone III opened a line with the dash ("…can be
+  seen ⏎ — or leave…", `.overhaul/f-sosb-dash.mjs`). All 21 pages at 393/375/390/430
+  (`.overhaul/f-sosb-rp-sweep.mjs <outDir>`): no orphan, no dash-led line, stack ≥ 40 pt above the pill at
+  375 (lifted), ≥ 94 elsewhere.
+* **D268 addendum.** The three D038 boards are now reached on the landed `/urge?board=<key>` (D336) and audit
+  at 0.00 %; the recipe notes say so.
+
+## medallions-letters decisions — Vici Overhaul run, Phase 1 (D270–D279) — `medallions-letters`
+
+Files: `src/app/(app)/milestones.tsx`, `src/app/medallions/[key].tsx`, `src/app/medallions/tiers/[key].tsx`,
+`src/components/keepsakes/{Medallion,Board,Letter}.tsx`, `src/lib/album.ts` (new), `src/app/{letter,medallion-post,drop,mail}.tsx`.
+Seeds: `.overhaul/medallions-seed.js` (rewritten), `.overhaul/medallions-vidi-seed.js`, `.overhaul/ml-letters-seed.js` (new).
+Recipes: `.overhaul/recipes/medallions-letters.json` (replaces `medallions.json` + `letters.json`).
+
+These supersede D057, D059, D060, D061, D062, D100, D101, D102, D137 and D138, which describe the previous
+drop's geometry (struck metals, the sun, page dots, the vertical album scroll, the lamp, the laurel year tile,
+Medallion Received as the post's arrival).
+
+## D270 — The album is a pager of six
+`Medallions` leaves row 3's place (578–687) empty above a bar at 748, and `Album Earned II` redraws faces 7–10
+from the same origin (288): the only reading that draws both is pages of 3 × 2 (CRITIC §5, medallions Q1). A
+horizontal `ScrollView pagingEnabled` one screen wide, 2 rows tall, no page dots (none drawn). A page that ends
+short keeps the grid's `1fr` columns with empty tracks. Switching segment returns to page 1.
+
+## D271 — Two faces or fewer sit as a centred row, on either segment
+`Still to earn` lays its two faces out as a centred flex row (gap 48, shrink-wrapped cells), not the grid (Q2).
+The same rule applies to `Earned` (a fresh account has only Veni). An empty segment draws its count line
+(`0 still to earn`) and nothing else — no copy invented (G12).
+
+## D272 — One coin, one drawing (`FaceCoin`)
+The 27 frames draw every face on one `0 0 64 64` coin at 44 / 64 / 84 / 168: ink field, 40 rim dots at 0.3
+(radius 28.1, 9° apart, `toFixed(2)` — reproduces all 1,080 printed values), the 25.5 hairline, the device in
+ground ink. **The device lifts 2.6 iff a numeral is drawn** (that one rule explains every frame). Unearned
+one-off = the earned coin at 0.32; unearned tiered = `#141414` field, `#3A3833` dashed rim, `#2A2926` ring, no
+dots, `#5A574F` device — with the target numeral "I" in the album, bare on the 168 boards. The numeral is Lato
+900 by family (`sans('900')`), 6.4 in coin space, tracking 0.6. The metal is no longer painted; `KK_METALS`
+stays only as the `?tier=` route contract. Nothing draws the old coin any more (Edit Profile counts with
+`useAlbumStanding`): `kkSun` is deleted, and — Phase 2, the orchestrator's carry-over — the `KKMedallion` shim
+too (nothing in `src/` or `scripts/` imported it).
+
+## D273 — The doors the pill used to be
+No frame draws a way from a board to its `Tiers *` page. On a tiered face the **tier track** (345 × 56 at
+T + 338) is a button, "See every tier"; on a one-off (no track) the **caps line** opens `Tiers One-offs`.
+`Back to medallions` on a ladder goes to the album itself (`router.dismissTo('/(app)/milestones')`, which
+replaces when the album is not in the stack); on the unearned board it is `back`.
+
+## D274 — Detail Paper: computed caps and quote (CRITIC §1.4)
+`Detail Paper` is the previous drop's seven-rung Vici left unredrawn. In that drop `Detail Bronze` was
+`Tier I · ×1` and quoted "Nine minutes, start to finish. You watched it rise, crest, and leave without you.", and
+`Detail Paper` read `Not yet · first ×1` over the same line "— waiting at ×1": both the frame's `×1` and its
+quote are the old first rung. Vici's first rung is now ×5 (`Tiers Vici`, the album's data), so — as CRITIC
+§1.4 rules, successor of D057 — the board computes both: `Not yet. First at ×5` and the first rung's own line,
+`stories[0]` ("Five ridden. Each one shortens the next."), which every unearned tiered board quotes. Keeping the
+frame's line would also tell an account with no ridden urge that it rode one out. Residual: the quote is two
+lines, not three, so the block sits at T 170 (13 lower — the geometry is `Detail Gold`'s, 0.00 %), plus the two
+strings: 5.65 %. (The previous pass kept the frame's line as a `waiting` field without naming the departure;
+removed.) The four other `Detail` boards agree with `Tiers Vici` word for word; `vici.stories[3]` takes
+`Detail Gold`'s line.
+
+## D275 — The medallion post: Letter Arrival, and the enclosure the account earned
+The post arrives on `Letter Arrival` (CRITIC C8 — no frame draws a medallion arriving outside onboarding).
+`Tonight` and the ✕ both shelve it (POST_DONE), as the arrival's only exit did before — it stays readable
+from Mail. The letter encloses **Vici at its rung** (`Vici, Tier I` + its blurb): the post fires on a ridden-out
+urge, which is Vici's rule, and the album must agree with what the post claims. The frame's `Rebound, Tier I`
+is its sample account. Known tension, for the orchestrator: the letter's own words ("This one isn't for
+resisting. It's for coming back.") fit Rebound better than Vici; switching is one line in
+`medallion-post.tsx` if the user prefers the frame's face (it would then enclose a face the album may show
+unearned). Layout verified with the face forced to Rebound: 0.01 %.
+
+## D276 — Yearly Drop's way out: the ✕ in the right slot (D323)
+D323 puts the ✕ "in the nav's right slot" on both Paywall and the Drop. The Drop's right slot holds `Restore`,
+as Paywall's did; like Paywall (D220) the ✕ takes the slot (the kit's `right: 'close'`, x 353 — where Paywall,
+Paywall Rescue and the claimed `Drop Received` all draw it, so it never moves) and the `Restore` it displaces
+lives on in the ghost `Terms · Restore`, which restores. Leaving marks the drop seen, as the old close did.
+Residual: one region, 316,72 56×16 (Restore → ✕), 0.10 % — Paywall's own residual. (The previous pass put the
+✕ in the empty left slot, per CRITIC D-2's recommendation, and asked for a kit `left: 'close'`; D323 ruled the
+other way, so the local `Tap` and that request are gone.)
+
+## D277 — A run the frame sets as one text node must be one text node
+`<Salutation>Dear {name},</Salutation>` renders three DOM text nodes; Chrome shapes across them differently
+from the frame's single node and "Sam" moved by a sub-point (125 px of diff). `{`Dear ${name},`}` → 0.00 %. Same
+for `That’s {MONTHLY} a month.` on the Drop (93 px → 0). Worth knowing for every group: interpolate into a
+template string wherever the frame's run is one string.
+
+## D278 — The post's small decisions
+* The arrival's caps are the programme week: `Week <roman(ceil(day/7))> post`, day 1 = sign-up, capped at XII
+  (C8 / Q7). Recipes use `ml-letters-seed.js` (an 80-day-old account) to draw "Week XII".
+* The letter card's column is a `ScrollView` inside the card with the 70 fade's height at its end: at 852 the
+  copy fits (ends 105 above the fade) and nothing moves; at 667 it scrolls instead of being cut.
+* The reason run is set as a sentence: one full stop is added unless the user's own words end in one (the old
+  code printed "again.." for a why that ended in a period). The journal entry's apostrophes are curly now.
+* `/letter?variant=week12` draws `Letter Received` (tail's frame) through the kit `HeroBoard` — no ✕, 26/33 at
+  451, `Open` / `Save it for later` — and still opens tail's `O3LetterRead` with its current props.
+* `Drop Received` is the kit `HeroBoard` with `MedalTier(4, 176, 'V', disc=false)` at 212 as its art.
+
+## D279 — Ladders, ledger and copy
+* One ledger, `src/lib/album.ts`: `useMedallionLedger()` (faces, counts, standings, one-off dates, `byKey`) and
+  `useAlbumStanding()` (`{earned, total}` for Edit Profile's "10 of 12", CRITIC C17). `buildLedger` is pure.
+* A ladder's count is `Day N` / `×N`; its next line `N days|more to <Tier>` (singular `1 day`); at the top rung
+  there is no next tier and the line is omitted (Q6 — nothing drawn, nothing invented).
+* Boards: `T = 196 − 13·quoteLines (+1 on Platinum)`; the quote's line count is measured (`onLayout`) and the
+  board is held invisible for that one frame. Ladders `T = 155`. Between the nav (100) and the pill the page is
+  a `ScrollRegion` (D320) — a no-op at 852; on a short phone it scrolls to 24 above the pill (D320's
+  `controls + 24`), as the Drop's offer does.
+* The album's pager is as tall as its tallest row: a page holding an unearned tiered face (its 56 × 3 bar adds
+  10 + 3) is 2 × 122 + 36, not 2 × 109 + 36 — a fresh account's second row of bars was clipped to 1 pt. A first
+  rung of one reads in the singular (`0 of 1 wave`, `0 of 1 morning`).
+* The Drop's perk words keep the frame's breaks on a wider phone: each label is inset to the 393 cell
+  (93.67) — at 430 "Track your progress" no longer fits one line while its neighbours take two.
+* A one-off board's caps are its mint date (`Jun 9`, from the ledger), `Earned once` until the ledger loads, and
+  `Not yet` (`#5A574F`) unearned; no track; quote `stories[0]`.
+* `KK_ALBUM` copy now matches the frames: Breakwater's lower-case "overwhelming"; `First light` "The first
+  check-in"; `Black Box` "First slip logged"; `Return` "Back after 7+ days away" (`ahead` keeps "After 7 days
+  away"); `kkRung` writes days in Arabic everywhere (`Tier I, Day 7`, D061 superseded); tier lines use ", "
+  (`Tier I, ×5`); unearned caps `Not yet. First at ×10`.
+* `/mail` (unframed) is `Log — Reports`' idiom (C6): title head, 64-tall ruled rows (15/700 title over a
+  14/700 `#9B968E` line, `#5A574F` chevron), the app's own copy; empty = centred 26/33 + 15/24 mute.
+* **Phase 2 — the quote keeps the frame's measure.** A board's italic quote is `left 44 right 44` at 393, a 305
+  measure; on a wider phone it is held to 305, centred (the Drop's perk rule above), so it breaks where the frames
+  break it. Left free, 430 set "The / wall did." (Breakwater Platinum), "unsure of a / while ago." (Detail Silver)
+  and pulled Detail Paper's quote onto one line, which moved the whole block 13 lower. Exactly 44 at 393 and below
+  (0.00 % change at 393); 375 keeps its narrower 287.
+* **Phase 2 — Mail's post row** names the enclosure in the card's own words, `Vici, Tier I · enclosure inside`
+  (it read `tier I`, against 39B's `Rebound, Tier I` casing and the card it opens).
+
+## logs decisions — Vici Overhaul run, Phase 1 (D280–D289) — `logs`
+
+Files: `src/app/(app)/log.tsx`, `src/app/{log-chooser,lapse,urge-log,urge-overview,report-ready,weekly-report}.tsx`,
+`src/app/(app)/dashboard.tsx`, `src/components/logflow/*` (new), `src/components/insights/heat.tsx`,
+`src/lib/weeklyReport.ts` (additive). Recipes: `.overhaul/recipes/logs.json`. Seeds: `.overhaul/logs-*-seed.js`
+(each = `window.__CLOCK` + `clock.js` + `logs-data-common.js` + a `logs-data-*.js`).
+
+## D280 — The log flows are steps on the kit, in `src/components/logflow`
+`WhenStep` (chips · "Or choose a time" · the kit `TimeWheel`, always open · `DateRow`), `ChipsStep`,
+`OptionsStep`, `DoneBoard` (84 disc, shrink-to-fit `SummaryCard` per C10), `FlowNav`, `useWhen`, plus the
+Log's register pieces (`RegisterHead`, `BigStat`, `WeekStrip`, `DotRows`, `Histogram`, `Bubbles`, `Dial`,
+`Spark`, `ScoreLine`, `DayCells`, `LastWeek`, `PagedRegister`; `src/components/logflow/data.ts` holds what
+they print from an event). Each step's stack sits in a `ScrollRegion`
+between the nav row (100) and the primary (106 off the bottom) — the frame at 852; on a short phone the stack
+(and the done boards' disc + stack) first rises into the room under the nav (never above canvas 108) until it
+clears the pill by 16, and only what still does not fit scrolls (D320 rules 2–3, the `HeroBoard` lift applied to
+question and done boards — Lapse Done's card touched its pill at 375 × 667 before); the question boards' heroes pass `controls={106}` (rule 1). `urge-log.tsx`'s old exports
+(`FlowTop`, `TimeWheel`, `LoggedNote` …) were moved to a shim for `slip.tsx`, then deleted once the slip group's
+rewrite stopped importing them (grepped: no importer left). `(app)/log.tsx`'s old exports (`Halo`, `SunDisc`,
+`ramp150`, `LogRow`, `TriggerGlyph`, `OUTCOME_WORD`, `ONE_LINE`) had only this group's importers and are gone.
+
+## D281 — When: the wheel sets the time on the moment's own day; "Change" picks the day; never the future
+The old wheel's day column has no place in the frame — the date row's "Change" is the only door left to the
+day (logs Q4). It opens a kit `Sheet` of the last seven days as option rows (`Tonight, Tue Jul 22`,
+`Last night, Mon Jul 21`, `Sun Jul 20` …, each at the moment's own time). The wheel's columns do not carry
+(59 → 00 keeps the hour), so a wheel move sets hour/minute/period on the same calendar day rather than
+shifting a timestamp. A chip sets `now − offset` as before; the wheel or the day list turn every chip off
+(a chip tap puts them back in charge). Any moment later than the flow's clock is held at it — a logged urge
+cannot be in the future (the old date column could reach two days ahead).
+
+## D282 — Zero triggers keeps Continue disabled (undrawn)
+The app has always disabled the trigger step's Continue until something is picked; the frames never draw the
+zero state. Kept, with D321's 0.38 pill. The label is `Continue` in every state (the frames' — no `· 2`).
+
+## D283 — The Log's lists end at the last whole row on a phone that shows five
+Log Urges and Log Check-ins draw five ruled rows and nothing under them, yet Check-ins' "12 days in a row"
+means twelve check-ins. Showing all twelve put a sixth row at 704–748 above the bar, where the frame has bare
+ground. The page still scrolls whole (head included) and still holds every entry; where the phone shows at
+least five rows, its window ends at the last whole row's foot — at 852 the fifth's, 440 + 52 + 4 × 53 = 704,
+44 above the bar (seven rows and 18 on a 932 phone). A shorter phone keeps its cut row, which is what tells
+the reader the list scrolls. Reports' rows start at 518 and are not folded (its four earlier weeks end at 730).
+
+## D284 — One score for the Log's Reports and the Weekly Report
+The old Log card summed per-week deltas (`reportWeeks`, no lessons, seven clean days a week from day one)
+while the old report's line used `scoreAt` (lessons, days since the account opened) — the two would print
+different numbers for the frames' shared "1,240 · +12 this week". Both now read `weekScore()` in
+`src/lib/weeklyReport.ts` (`scoreAt` at each day's end, delta against the Sunday before), which also agrees
+with Today's `buildScore` total. logs.md §3.7 says to preserve `reportWeeks()` and §3.13 to preserve
+`scoreAt`; the two cannot both hold for one shared number, so this is a ruling the orchestrator is asked to
+confirm (not a D324 change). Additive lib exports: `scoreAt`, `weekScore`, `weekLabel`, `dayStatuses`,
+`DayStatus`.
+
+## D285 — What the Log prints from the log
+"This week" is the Monday-start calendar week the strip draws (CRITIC §5). `Urges this week` and the strip
+count urges (`urge_rode_out` + `urge_acted_on`); a lapse is a row (`● Slipped`, ink, never red) but not an
+urge. Row times: `Today` / `Yesterday`, the short weekday for 2–13 days ago, the date after
+(`Jul 6, 9:05 pm`); right side the band word, `Slipped`, or `Ridden out` for an urge logged without a
+strength. Check-ins: the circle is `12 + 4.4·energy` (the frame's 29.6/25.2 fit it exactly; mood stands in
+when a day has no energy), the word is the night's first feeling else the morning mood word
+(Rough/Low/Steady/Good/Great) — the frame mixes both vocabularies (logs Q9). Singular captions (`1` /
+`Day in a row`, `Urge this week`) are the frames' strings in the singular. Empty registers keep the old
+title + line in the kit `EmptyState` under the big number and an all-dot strip.
+
+## D286 — Urge overview rules
+Range = the last 30 days (the pill says so); `?week=` (from the report's Urges page) narrows it to that week
+and the pill names it. Summary lists the five newest (the frame: five rows for nine urges); a ridden urge
+prints its minutes (≥ 1) or `Ridden out` if never timed. Strength's word is the modal band, a tie going to
+the lower band (the frame's 3-and-3 reads `Strong`); five dots fit a band's column. Mood bubbles are the rank
+series 88/66/54/36 (CRITIC §5); the dial's dot is `5 + 2.5·n` (7.5 and 10 as drawn), capped at 12.5; the
+peak is the busiest two-hour window by sliding sum (the frame's 23-vs-0 tie resolves to 11 pm – 1 am).
+Dot rows cut their dots at what fits the row; the count still says how many. An empty page keeps the old
+sentence with the range said as the pill says it ("Nothing logged in the last 30 days, so …").
+**The app's own words** (verifier, Phase 1 re-check): the frames' sample words (`Bedroom`, `Tense`) fit their
+fixed columns; the words the app records do not — SOS places `Somewhere private` (131 at 15/700) and `At work
+or school`, SOS triggers `Something online`, feelings `Stressed or anxious` (354 at 44/700). So the columns
+read what they are given (`useLabelColumn` / `useTextWidths` in `logflow/parts.tsx`, off-screen one-line
+measures that drop out once read): the dot rows' label column is the widest label, never under the frame's
+96, at most half the row; past that a label (a note standing in for a place, as the old list allowed) ends
+in an ellipsis, as the old place list did. The Mood page flows from 236 (`PaneBody flowTop`): the big word
+wraps balanced and centred where it would overrun (type never shrinks, D320) and the bubbles follow 17
+under it; bubble names that cannot sit side by side close the 26 gap toward 16, then the widest wrap
+(balanced, never under `max(bubble, longest word)`), and only if even the longest words cannot fit do the
+smallest ranks drop. With the frame's words every one of these resolves to the frame (0.00 % on all four
+panes). Insights' trigger bars take the same label column. The dot row is a local row (the kit `RuledRow`'s
+box) because the kit row's label cannot end in an ellipsis — reported.
+
+## D287 — Weekly report rules
+Days: `slip` (a lapse or an urge acted on) and `none` (before the account, after now) draw the undrawn hollow
+40 cell (inset 1.5 `#2E2E2E`, as last week's hollow dot); a ride with no slip is the wave; the rest the check.
+The number is clean days of the days the account lived that week (`7 of 7`). Urges: the week read forward,
+every urge (the page scrolls), each row opening `/urge-overview?week=`; caption `Urges, all ridden out` /
+`Urges, 2 ridden out` (and `Urges this week` + the old "No urges logged this week." when there are none).
+The score line scales its x's to the column instead of the frame's `preserveAspectRatio: none`, so the dots
+stay round on a 430 phone — at 393 the only trace is the frame's own 329/330 squash of its day letters
+(0.01 %). The empty states are the old two sentences under the title head. `?from=settings` (93D) changes
+nothing drawn; back is `back()` / Insights as before.
+**What empties it**: the old screen was built on mood rows, so `hasReportContent` (a mood logged that week)
+gated it. This one draws the score, the days and the urges, which exist for every week the account lived —
+and the Log's Reports row and the mail row have already named that week (`Jul 7–13 · +8`, which opened
+"Nothing was logged that week" before). The report now draws every week the account lived; "Your first week
+is still being written…" stays for no closed week, "Nothing was logged that week…" for a `?week=` the
+account never lived (a stale link). The launch gate in `(app)/_layout` still reads `hasReportContent`, so it
+delivers no more reports than before — widening it is the orchestrator's call.
+
+## D288 — Urge Log Done's line
+`<count in words> ridden out. <to go in words> to <Metal>.` — the count is the Vici medallion's (rides
+logged, this one included), the next rung and its metal are the album's (`KK_ALBUM` vici steps 5/25/100/250/
+1000, `kkMetal(standing + 1)`): 23 → "Two to Bronze". Past ×1,000 only the count is said; after "I slipped"
+nothing was ridden out and the line is left out (logs Q7) — no new copy.
+
+## D289 — Unframed: Insights, Report Ready's fallback, seeds
+`/dashboard` is restyled after Urge Overview (routes §4.3): title head, the range as the segmented switch
+(its old `2W/4W/12W` labels kept, G12), the heat as discs on the check-in tone ramp with hollow no-check-in
+days, the three numbers as 30/700 columns, the triggers as dot-row bars, the doors as a `RowGroup`. Its
+day-letter header now starts on the weekday the range opens on (it always said `M` first, under rows that
+start fourteen days back). Back falls back to Today (the Library tab no longer lights for it). Report Ready
+is the kit `HeroBoard` (title written `Your weekly\nreport is ready.` for native, D332); its line is the
+frame's `<week>: score, days and urges.`, and with no closed week to name, the old screen's `Score, urges,
+and the pattern — two quiet minutes.` (D328). Without `?week=` the line's space is held blank while the
+account loads, so the other line never flashes (no spinner: the hook's `undefined` also means signed out).
+Seeds pin the frames' July 2025 moments. Where a frame's numbers are sample data the app's weights can still
+reach, the seed reaches them and says how in its header (Log Reports' +5/+6/−4/+8/+12 → 1,240; Weekly
+Report's line + `+12` needs two slips on its Monday); the Mood page's 14 feelings and the Days/Urges pages
+have their own seeds (D126 style).
+
+## Phase 2 amendments (no new numbers — the range D280–D289 is full)
+
+**D285, empty registers:** the kit `EmptyState` carries its own 24 gutter, and the Log page already hangs its
+rows in one, so the old title + line sat in a 297 column at 393 (`The first one arrives once a full week /
+has closed.` on two lines, `…turns / it into data.` with a ragged 108 inset at 375). The Log's three empty
+states now pass `paddingHorizontal: 0` and read in the page's own 345/327 column.
+
+**D287, the week's name:** `weekLabel()` now builds the same-month form with `dateRange()` (`Jul 14–20`).
+Across two months it keeps the **spaced** en dash, because the only frame that draws such a week — Log
+Reports' row — writes `Jun 30 – Jul 6` (the frame's bytes are `30 – Jul`, U+2013 with a space each side, as
+is the designer's own `gen/v2.js`); `dateRange()` closes it up (`Jun 30–Jul 6`, D388). The
+Phase 2 carry-over read the frame as unspaced; following it would put a mismatch into a row that diffs
+0.00 % today. One label still serves every register (Log row, report pill, overview pill, Report Ready
+line, the mail list), so the row a reader taps and the pill it opens always agree.
+
+**Stored check-in reasons (carry-over):** no screen of this group prints a check-in's `reasons` — the
+Log's check-in rows read the night's first feeling or the morning's mood word, the report and Insights read
+moods and events. Nothing to route through `normalizeReasons()`; the readers of `reasons` are `checkin.tsx`
+(already normalised by `CheckinFlow`) and `today.tsx` (a length test).
+
+## settings decisions — Vici Overhaul run, Phase 1 (D290–D299) — `settings`
+
+Files: `src/app/(app)/settings.tsx`, `src/app/profile.tsx`, `src/app/vow.tsx`, `src/app/privacy.tsx`,
+`src/app/applock.tsx`, `src/app/backtap.tsx`, `src/app/(app)/all.tsx`, `src/app/(app)/support.tsx`.
+Seeds: `.overhaul/settings-seed.js` (premium + 10-of-12 history), new `.overhaul/settings-profile-seed.js`
+and `.overhaul/settings-vow-dated-seed.js` (clock-pinned). Drives: `.overhaul/drives/settings-func-*.js`.
+Recipes: `.overhaul/recipes/settings.json`. Captures and strips: `.overhaul/shots/settings/`.
+
+## D290 — The settings rows are the kit's `RowGroup`/`Row`/`Toggle`; nothing is group-local
+settings.md §11 planned a group-local 54-row kit; CRITIC C3 moved it to `mono/rows.tsx`, and every
+screen here is built from it (Settings, Edit Profile, the photo sheet, Data & privacy, App lock, Back Tap,
+All). No local `Section`/`Row`/`Divider`/`Toggle` survives. Supersedes the per-group row heights
+(52/48/50/46), the inset hairlines and the paper cards of D118-era Settings.
+
+## D291 — D118, D119, D121 (shelf half) and the `from=settings` visual variants are obsolete
+`Sheet Sign Out`'s backdrop is exactly today's `Settings` (whole composite 0.00 %), so D118 is gone on
+both halves. The vow page has no signature stamp (D119): the stamp, its `signedOnDay` derivation, the sun
+halo, the serif line and the script signature are removed. Edit Profile's medallion shelf is replaced by
+the Journey card's `Medallions · N of 12` row, read from `src/lib/album.ts` `useAlbumStanding()` — the
+album's own ledger, so the profile and the Medallions page cannot disagree (the shelf's 8-face maths is
+deleted). `Weekly reports` moves from Anchors to Reminders as `Weekly report` (frame) and still opens the
+report (CRITIC §5); Edit Profile's own `Weekly reports` line is removed (Settings carries the door).
+The Settings Weekly Report / Check-in Time boards are the logs / paywall-reminders boards unchanged;
+this group keeps only the `?from=settings` wiring (Back and Save return to Settings — driven).
+
+## D292 — `Manage subscription`'s value is the active plan's name, else nothing
+`Yearly` / `Monthly` / `Lifetime` (Subscription's own words) while the membership is active; a free
+account shows the chevron alone, as the row did before this drop (settings OQ4; no copy invented).
+
+## D293 — Username and Email draw their chevrons and stay display rows
+CRITIC §5 (settings Q2): the frame draws chevrons; nothing edits either field, so the rows have no button
+role. Name is the one control (it opens the name sheet). The monogram disc is a second door to the photo
+sheet (`Profile photo`); the words `Change photo` stay the first.
+
+## D294 — "Re-sign the vow" re-signs, after a confirmation in the sign-out sheet's shell
+The frame draws the ghost and nothing after it (OQ 1, CRITIC D-20); the page before this drop had no
+re-sign control at all. Re-signing writes a new journal entry `{ tag: 'Vow', title: 'Vow', body: <the
+words on the page> }`; the page reads the newest Vow (else the newest Pledge), so `Signed` becomes today
+and `Held for` restarts — "It resets the promise, never the progress": no entry is removed or rewritten.
+The new entry is an ordinary journal entry, like the morning pledge: it is listed in Past pledges (as
+`Vow`) and counts toward the album's Archive (entries) and Vidi (days with a record) — re-signing is
+writing something down. A vow already signed today has nothing to restart, so a second `Sign it again`
+the same day writes nothing (no Archive inflation by repeated taps; driven: 2 Vow entries after two
+confirms on one day). On an account with no Vow and no Pledge the page shows the canvas's sentence as
+the vow, as it did before this run (`vow?.body ?? PLACEHOLDER`); re-signing stores exactly the words the
+confirmation was given over. The root cause is outside this group: onboarding's `The Vow` (tail,
+`O3TheVow`) signs without storing anything. Because one tap would otherwise restart the count, the
+ghost opens a confirmation: the `Sheet Sign Out` shell (T 556, gap 10, pill at 96, ghost at 60) with
+`Re-sign the vow?` / `It resets the promise, never the progress.` / `Sign it again` / `Cancel` — every
+string is already on this page, the slip flow's pledge board, or the photo sheet; no new copy. **Needs the
+user's approval** with the other undrawn-state strings (CRITIC D-20).
+
+## D295 — Edit Profile's name sheet edits a draft; the row shows the saved name
+Before, the row read the unsaved draft, so a dismissed edit still showed. Now opening the sheet copies the
+saved name into the draft; Save writes it (`updateProfile`) and closes; the scrim, Escape, a downward drag
+and Android back close without saving. The row keeps `accessibilityLabel="Name, <name>"` (recipes).
+
+## D296 — Pinned clocks remove two data residues the previous run excused
+Edit Profile's `Started VICI · 14 Mar 2026` with `Week VI` (D121) holds on 19 Apr 2026; Your Vow Page's
+`Held for 92 days` with `Signed Apr 18` holds on 19 Jul 2026. The group's two dated seeds pin those days
+(`.overhaul/clock.js`), so both frames diff 0.00 % with the app reading its own live data. D120's Night
+9:30 PM (Settings) vs 10:30 PM (Check-in Time) remains a canvas contradiction: `DEFAULT_ROUTINES` is
+untouched and each capture seeds its frame's value.
+
+## D297 — Short phones and dynamic copy
+Settings, Your vow, Back Tap, Find support: the column between the fixed nav and the fixed bottom control
+is a `ScrollRegion` (D320 rule 3); at 393 × 852 Settings fits flush (`paddingBottom 16` = the frame's 17 to
+the ghost, less a point) and nothing scrolls. **Your vow** follows `HeroBoard`'s rule (D368) for the flag:
+flag and stack rise together within the flag's room above 108 (25 pt), and past it the flag goes. With the
+flag gone the stack is **centred in the band it frees** (nav foot 100 → 16 above the ghost, never above
+108) instead of rising by the deficit alone: the deficit-only lift left ~180 pt of bare ground over the
+card on a 667 phone with the vow pressed onto the ghost (verifier). At 375 × 667 the card now starts at
+canvas 190 (90 under the nav's foot, 106 over the ghost). Like `HeroBoard`, flag and stack stay at
+opacity 0 until the stack is measured, so a short phone never paints the unlifted layout for a frame
+(rAF log: first painted frame is already the final one). Phones from 390 × 844 up draw the frame as is.
+**Sheet Sign Out**: its body names the account's own address, and the kit `Sheet` keeps the panel's drawn
+height, so an address past ~45 characters wrapped a third line under the pill. Settings measures the body
+and raises the panel by what it adds beyond the drawn two lines (`SHEET_TOP.signOut − lift`): the 12 pt
+over the pill holds at every length and width (up to the kit's canvas-60 ceiling), and at the frame's address nothing moves (0.00 %). The
+pre-drop sheet grew in flow the same way. Edit Profile, Data & privacy and App lock fit 375 × 667 (App
+lock scrolls 8 pt). Dynamic values (`Name`, `Username`, `Email`, `Current week`, the plan, All's notes)
+ellipsise (`valueLines`, CRITIC C11); fixed copy never does.
+
+## D298 — Unframed screens: Back Tap, Find support, All
+Copy is each screen's own (CRITIC G12; straight apostrophes made curly). **Back Tap** after App Lock: 76
+ink disc with the app's wave glyph in `#111111`, centred line, `Shortcut link` as one settings row (tap
+copies; value `Copy`/`Copied`), the four steps in a ruled `#1E1E1E` r20 card, footnote 13/19 (the shield
+glyph dropped — no frame draws one), `Open Shortcuts app` primary at 96 + `Test it now` ghost (was a
+secondary button); the column stops 16 above the pill. **Find support** after Data & privacy: nav back
+row, h1 + line, the two placeholder resources as r20 cards (still visibly `[PLACEHOLDER]`), the build
+note as the footnote, `Back` as the ghost at 48. **All** in the Settings idiom with its own back row —
+the drawer left the tab bar (D385), so without one a long press on Today led into a page with no exit.
+
+## D299 — Toggles: the kit's frame-variant on state and D322's off state
+Pause analytics and the three App-lock switches are kit `Row toggle=` rows (the row is the switch, role
+`switch`, `aria-checked`); ON = ink track + `#1E1E1E` knob (frames), OFF = `#2E2E2E` track + ink knob at
+left 3 (D322). Every switch writes through `useUpdateSettings` as before (driven: flips and stores).
+
+## Verification (393 × 852, Lato loaded, strips looked at)
+
+| frame | pxdiff | residue |
+| --- | --- | --- |
+| Settings | 0.00 % (0 px) | — |
+| Sheet Sign Out | 0.00 % (0 px, status bar ignored) | — (a long address raises the panel, D297) |
+| Edit Profile | 0.00 % (2 px) | — |
+| Sheet Profile Photo | 0.00 % (0 px) | — |
+| Sheet Edit Name | 0.01 % | the drawn 2×22 caret (D364) |
+| Your Vow Page | 0.00 % | — (flag drawn) |
+| Data Privacy | 0.00 % (4 px) | toggle track edge AA |
+| App Lock | 0.00 % (6 px) | toggle track ends AA |
+| Settings Check-in Time (via Settings) | 0.00 % | paywall-reminders' board |
+| Settings Weekly Report (via Settings) | 0.01 % | logs' board, reached by tapping the Settings row on logs' dated seed; the `W` day label sits ~0.5 px right |
+
+## Phase 2 review (fresh audit, three size sweeps, unframed screens)
+
+Every frame re-audited (`audit-fast.mjs --group=settings`) and swept at 375 × 667, 390 × 844 and 430 × 932
+with `--scroll`; every strip and size PNG looked at. Frames unchanged: Settings, Edit Profile, Sheet Profile
+Photo, Your Vow Page, Sheet Sign Out, Settings Check-in Time 0.00 %; Data Privacy / App Lock 0.00 % (2 + 4 px of
+toggle-track anti-aliasing); Sheet Edit Name 0.014 % (the drawn 2 × 22 caret, D364); Settings Weekly Report
+0.012 % (logs' board: the `W` day label ~0.5 px right, line/dot anti-aliasing).
+* **Back Tap** (unframed): step 4's arrows now hold to the name before them (no-break spaces), so no line
+  opens on `→` — 393 broke `Touch | → Back Tap`; every width now ends its lines on the arrow.
+* **Carry-over** (All → `A rough-day protocol`): the row already pushes `?key=loneliness`; driven from All
+  it opens the Loneliness protocol (`Lonely tonight.`).
+* **D340**: every Settings row's screen comes back to Settings through its own Back, Settings back to
+  Today, and the All drawer's seven doors into this group back to All (drives in the recipe).
+* Seen and left: at 375 × 667 Settings' column (D320) stops in the gap above the Account group, so at rest
+  nothing of `Edit profile` / `Manage subscription` shows above `Sign out` — the kit ScrollRegion hides its
+  indicator; asked of the orchestrator as a kit-level cue rather than a one-screen fix. At 393 × 852 Back
+  Tap's column stops just under the `Shortcut link` caption, so at rest the caption sits alone over the
+  pill (its row and the footnote scroll into view).
+
+## slip — decisions (D300–D309), Vici Overhaul Phase 1 — `slip`
+
+Group: the twelve `98 · RELAPSE — POST-SLIP` boards (98A–98L) and the nineteen cards (99A–99H, 100A–100K),
+all at `/slip`. Files: `src/app/slip.tsx`, `src/components/slip/kit.tsx`, `src/content/slipCards.ts`
+(`src/components/slip/art.tsx` deleted — nothing imported it). Evidence: `.overhaul/recipes/slip.json`
+(31 frames, every one 0.00 % pxdiff at t=24 against `.overhaul/shots/design/Email-Login/<Frame>.png`).
+
+## D300 — The flow is built from the kit; two local layouts cover the boards `HeroBoard` does not
+Twenty-six frames (98A, B, G, H, I, K, L and the nineteen cards) are the kit's `HeroBoard` with no
+overrides beyond `tone="dark"` on 98I and the nav kicker on the cards. The five others are two layouts in
+`slip/kit.tsx`, both composed of kit parts only: `SlipQuestion` (98C, 98D, 98F, 98J — `NavBar`, the
+optional decorative `Hero` drawn **before** the stack as the frames paint it, a `ScrollRegion` from the
+nav row's bottom edge (100) to the controls with the stack at 136, `PrimaryButton` at 48 or 96 over a
+`GhostLink`) and `SlipDone` (98E — `CheckDisc` 84 at 200 and the centred stack at 308 in the same band).
+On short phones (D320) the bottom heroes pass `controls` and drop out, and the band scrolls; at 393 × 852
+nothing moves and nothing scrolls. The old paper kit (`SlipPage`, `SlipSheet`, `SlipFedTile`,
+`SlipAnswerRow`, `SlipPledgeCard`, `SlipBeginSky`, the sixteen bespoke drawings) is gone; `SLIP_FED` and
+`FedName` survive as data, with `FED_FEELINGS` moved beside them.
+
+## D301 — 98C: the wheel is always open and shifts the moment
+The frame draws the kit `TimeWheel` inline under the caps label "Or choose a time" (CRITIC §5: slip Q1), so
+there is no "Choose a time" control and no Cancel/Save. Each settled column step moves the slip's moment by
+`delta × (1 h | 1 min | 12 h)` — the old wheel's `onShift`, so 11:59 → 12:00 carries the hour and the day
+as it always did — and the result is clamped to the moment the screen opened (`now`): a picked time is never
+in the future, and the wheel rolls back to the clamped value (D362). Any wheel or date change clears the
+chips (no chip lit: the undrawn state, all three `#1E1E1E`); tapping a chip restores its preset. The
+presets are slip's own copy of the three `WHEN_CHIPS` — slip no longer imports anything from
+`src/app/urge-log.tsx` (D309).
+
+## D302 — 98E reads the frame's format; an empty row is left out
+`When` is `dayPartTime(at, now)` ("Tonight, 11:40 PM", "Last night, 11:40 PM", "Jul 20, 9:05 PM"); the
+feelings and situations rows are `joinLower(...)` ("Phone in bed, late night"). Storage keeps the
+`' · '` join (`trigger: "Tired · Phone in bed · Late night"`) — Log, insights and the weekly report read it.
+A row whose value is empty (no feeling picked, or no situation) is omitted instead of printing "—", as
+Lapse Done draws fewer rows (slip Q5's recommendation). The change line is unchanged: the first picked
+trigger card's `change`, else the first card's.
+
+## D303 — "Change" on the date row opens a day sheet
+No frame draws what Change does (slip Q2). It opens the kit `Sheet` with seven kit option rows — today and
+the six days before — each labelled `dayPartDate(day at the picked time)` ("Tonight, Tue Jul 22",
+"Last night, Mon Jul 21", "Sun Jul 20" …), the current day selected; no title, so no invented copy (G12).
+Picking a day keeps the wheel's time, clamps to now (D301) and closes the sheet 260 ms later (the
+funnel's auto-advance beat). Panel top 282: the seven rows (7 × 58 + 6 × 12) under the content column's 44
+end at 804, where a primary's bottom edge sits. It replaces the old wheel's date column, whose ±2 days
+could step into the future; scrim tap, drag and Escape dismiss it as every kit sheet.
+
+## D304 — Copy and state changes the frames make
+CTA renames per the frames: 98B "Closed", 98H "Turn it around", 98I "Phone is away" → **Continue**;
+98D "Continue · N" → **Continue**; trigger cards Late night / Scrolling / Sexual content / Argument /
+Couldn't sleep / Being alone / Not sure → **Continue** (Boredom, Loneliness, Stress and every feeling keep
+**Done**) — kept as data in `slipCards.ts`. The cards gain the nav kicker ("After the slip" / "What fed it",
+`SLIP_KICKER` by `kind`); 98F gains the sub "Honest answer. It changes what comes next."; 98K gains the ✕;
+98I is the `#111111` tone. 98D's Continue stays gated until one chip is on, drawn as the kit's dimmed pill
+(D321, `aria-disabled`); 98F's answer stays optional and starts with none selected.
+
+## D305 — "I'm already watching again" still opens `/urge-hub`
+D149's text says `/urge`, the code has always done `router.replace('/urge-hub')`, and no frame or ruling
+moved it (slip Q6 is open). Kept as the app does it: the hub is the screen built to hold someone mid-urge.
+If the orchestrator rules for `/urge` (sos-flow's first-90 entry), it is a one-word change in `slip.tsx`.
+
+## D306 — Native line breaks (D332)
+Three fixed headlines carry `\n`: 98F "Do you still want\nto keep watching?", 100H "Get out of bed
+for\na few minutes.", 100J "Change what\nhappens next." — web balances to the same lines. Every other run
+uses the kit's per-variant wrap (h1/title balance, p pretty, the pledge sentence unwrapped — `PledgeCard`
+sets none).
+
+## D307 — Recipes run on a pinned, ticking clock
+`.overhaul/slip-seed{0,1,2}.js` and `slip-seed-nopledge.js` = `window.__CLOCK = '2025-07-22T23:40'` +
+`__CLOCK_TICK = true` + `.overhaul/clock.js` + the old account datasets. Pinned to the frames' Tue 22 Jul
+2025 so 98C's date row and 98E's stamp read as drawn; ticking because RN's Animated timing reads
+`Date.now()` — frozen, a press scale or a wheel settle never finishes. The old `f-slip-seed*-2340.js`
+pinned only the hour (today's date) and are superseded.
+
+## D308 — A failed save does not throw
+`save()` wraps the event write and the letter flag in `try/catch` (relapse.tsx's pattern): no frame draws a
+failure, the flow carries on, and an offline write can no longer raise an unhandled rejection. The
+`saving` re-entry guard and the "discount this run's own event" count are unchanged.
+
+## D309 — slip imports nothing from `src/app/urge-log.tsx`
+The eight symbols slip borrowed (`FlowTop`, `GRID_GAP`, `GRID_GUTTER`, `LoggedNote`, `PrimaryButton`,
+`TimeWheel`, `triggerTileWidth`, `WHEN_CHIPS`) are replaced by kit parts and a local `WHEN_CHIPS`, so the
+logs group may drop or rename them without breaking `/slip`.
+
+## Phase 2 amendments (the slip range D300–D309 is full; these amend D300 and D302)
+
+**D300, 98E on short phones.** The check disc is 98E's art, so a short phone now treats the board as a hero
+board (D320 rule 2) instead of scrolling it from canvas 200: disc and stack rise together by the deficit
+(`200 + h + 24 − controlsTop`), never above canvas 108, and only what still does not fit scrolls. At
+375 × 667 the four-row sample card now sits whole above the pill (foot 16 pt clear; the band keeps 12 pt
+of end padding to scroll) — the same treatment logs' Lapse Done gets from its `useLift` — where before the
+third row met the pill at 200 and the fourth was below the fold. Hidden until measured, as `HeroBoard` is,
+so it never jumps. At 393 × 852 the lift is 0 (audit 0.00 %).
+
+**D300, question boards on short phones.** `SlipQuestion` (98C, 98D, 98F, 98J) now does the same before it
+scrolls: once the bottom hero has dropped, a stack that would end within 24 pt of the controls rises by the
+deficit, never above canvas 108. 98C at 375 × 667 rose 14 pt and no longer scrolls — the date row sits 24 pt
+over the pill, as logs' Lapse When (the same board, `useLift`) already did, so the two When boards agree on
+a short phone; a three-line pledge on 98J rises 28 and then scrolls. At 393 × 852 the lift is 0.
+
+**D302, no orphan in 98E's values.** The values wrap greedily (the frame states no `text-wrap`), so at
+430 wide "Phone charges outside the / bedroom" stranded a word. The last two words of each value are now
+joined by a no-break space (`noOrphan` in `slip.tsx`, display only — storage is untouched). Every break
+the frame draws at 393 already ends on a pair, so 393 is unchanged (audit 0.00 %); at 430 it reads
+"Phone charges outside / the bedroom", at 375 "Phone charges / outside the bedroom".
+
+**Back paths under D340.** Re-checked: hub "I slipped" → ✕ returns to the hub; All → Post-slip flow → ✕
+returns to All; 98K "Start again" and 98L "Later" replace to Today, "Check in" to the morning check-in;
+98F's still-watching answer replaces to the hub. No change needed — slip is a root-stack route and its ✕ is
+`router.back()`.
+
+<!-- vici-overhaul-decisions:end -->

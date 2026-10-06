@@ -95,7 +95,7 @@ export default function LifeMapScreen() {
           <MonoText v="p">Your anchor. The app brings this back to you when it helps.</MonoText>
 
           <View style={{ marginTop: 18, gap: 8 }}>
-            <MonoText v="caps">Why you&apos;re here</MonoText>
+            <MonoText v="caps">Why you’re here</MonoText>
             <TextField variant="bare" value={why} onChangeText={setWhy} placeholder="In your own words…" accessibilityLabel="Why you're here" />
           </View>
           <View style={{ marginTop: 18, gap: 8 }}>

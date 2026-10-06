@@ -53,7 +53,9 @@ export default function JournalNew() {
       close();
       return;
     }
-    const input = { tag, title: t || 'Untitled', body: b };
+    // A pledge written in the first field alone is still the pledge: every screen
+    // that shows one reads its body (see src/lib/pledge.ts).
+    const input = { tag, title: t || 'Untitled', body: b || (tag === 'Pledge' ? t : '') };
     if (id) await updateEntry(id, input);
     else await createEntry(input);
     close();

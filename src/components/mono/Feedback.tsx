@@ -105,31 +105,35 @@ export function EmptyState({
   title,
   body,
   h1,
+  align = 'center',
   style,
 }: {
   caps?: string;
   title?: string;
   body?: string;
   h1?: boolean;
+  /** `left` under a left-aligned title-head page (Past pledges), so the line keeps its gutter */
+  align?: 'center' | 'left';
   style?: StyleProp<ViewStyle>;
 }) {
+  const center = align === 'center';
   // routes §8 sets only the 24 gutter; the 32 above and below is the old
   // EmptyState's own (`spacing.xxl`), kept so the callers' lists keep their
   // spacing around it — `style` overrides it
   return (
-    <View style={[{ alignItems: 'center', gap: 8, paddingHorizontal: 24, paddingVertical: 32 }, style]}>
+    <View style={[{ alignItems: center ? 'center' : 'flex-start', gap: 8, paddingHorizontal: 24, paddingVertical: 32 }, style]}>
       {caps ? (
-        <MonoText v="caps" center>
+        <MonoText v="caps" center={center}>
           {caps}
         </MonoText>
       ) : null}
       {title ? (
-        <MonoText v={h1 ? 'h1' : 'h1Sheet'} center style={{ alignSelf: 'stretch' }}>
+        <MonoText v={h1 ? 'h1' : 'h1Sheet'} center={center} style={{ alignSelf: 'stretch' }}>
           {title}
         </MonoText>
       ) : null}
       {body ? (
-        <MonoText v="p" center color={mono.mute} style={{ alignSelf: 'stretch' }}>
+        <MonoText v="p" center={center} color={mono.mute} style={{ alignSelf: 'stretch' }}>
           {body}
         </MonoText>
       ) : null}

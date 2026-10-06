@@ -26,8 +26,10 @@ const STEPS = [
   'Open the Shortcuts app and tap + to create a new shortcut.',
   'Add the “Open URLs” action and paste the link below.',
   'Name it something like “Ride it out” and save.',
-  // the menu names hold together (no-break spaces): a 430 phone broke `Back | Tap`
-  'Go to Settings → Accessibility → Touch → Back\u00a0Tap → Double\u00a0Tap, and pick your shortcut.',
+  // the menu names hold together (no-break spaces): a 430 phone broke `Back | Tap`;
+  // each arrow holds to the name before it, so no line opens on `→` (393 broke
+  // `Touch | → Back Tap`)
+  'Go to Settings\u00a0→ Accessibility\u00a0→ Touch\u00a0→ Back\u00a0Tap\u00a0→ Double\u00a0Tap, and pick your shortcut.',
 ];
 
 /** the primary's top off the screen's foot (58 at `bottom 96`); the column stops 16 above it */

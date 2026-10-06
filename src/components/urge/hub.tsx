@@ -23,6 +23,7 @@ import { getJSON, setJSON } from '@/lib/storage';
 import { mono, monoDark, ring, sans } from '@/lib/theme';
 import type { EventType, TidelineEvent } from '@/lib/types';
 import { loadUrgeSession, newUrgeSession, SAME_URGE_WINDOW_MS, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
+import { pledgeText, standingPledge } from '@/lib/pledge';
 
 import {
   BAND_LIFT,
@@ -408,7 +409,7 @@ export function UrgeHub() {
   }, []);
 
   const stats = hubStats(events);
-  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const pledge = standingPledge(journal);
   const elapsed = session ? Math.max(0, now - session.startedAt) : 0;
   const severity = session?.peakSeverity ?? bandToSeverity(3);
   const first = user?.displayName?.split(' ')[0];
@@ -480,7 +481,7 @@ export function UrgeHub() {
     <HubPledge
       key="pledge"
       // with no signed pledge the card keeps the words it always fell back to
-      pledge={pledge?.body ?? 'The mornings are mine again.'}
+      pledge={pledgeText(pledge) || 'The mornings are mine again.'}
       name={first ?? 'You'}
       line={pledge ? pledgeLine(pledge.createdAt, now, stats.slips) : undefined}
       onBottom={bottomOf(4)}

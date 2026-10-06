@@ -46,6 +46,12 @@ for (const key of [...keys].sort()) {
   await page.goto(`http://localhost:8096/kit-lab?f=${encodeURIComponent(key)}`, { waitUntil: 'networkidle', timeout: 120000 }).catch(() => {});
   await page.evaluate(async () => { await document.fonts.ready; });
   await page.waitForTimeout(900);
+  await page.evaluate(async () => {
+    // every image decoded (the noise tile is a background image backed by an <img>),
+    // then two frames so RN-web's onLoad re-render has painted it
+    await Promise.all([...document.images].map((i) => (i.complete ? (i.decode ? i.decode().catch(() => {}) : null) : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  });
   const A = PNG.sync.read(await page.screenshot());
   const D = PNG.sync.read(fs.readFileSync(d));
   const dpr = 2, w = Math.min(A.width, D.width), h = Math.min(A.height, D.height);

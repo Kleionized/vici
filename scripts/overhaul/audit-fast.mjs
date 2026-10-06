@@ -103,10 +103,16 @@ for (const fr of frames) {
     if (r.script) await page.evaluate(`(async () => { ${fs.readFileSync(r.script, 'utf8')} })()`);
     await page.waitForTimeout(Number(r.wait ?? 1600));
     await page.evaluate(async () => { await document.fonts.ready; });
-    if (r.scroll != null) await page.evaluate((y) => { const all = [...document.querySelectorAll('*')].filter((el) => /(auto|scroll)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight + 1); all.sort((a, b) => b.clientHeight * b.clientWidth - a.clientHeight * a.clientWidth); if (all[0]) all[0].scrollTop = y === 'end' ? all[0].scrollHeight : Number(y); }, String(r.scroll)).then(() => page.waitForTimeout(400));
+    if (r.scroll != null) await page.evaluate((y) => { const vw = innerWidth, vh = innerHeight; const vis = (el) => { const r = el.getBoundingClientRect(); return Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)); }; const all = [...document.querySelectorAll('*')].filter((el) => /(auto|scroll)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight + 1 && vis(el) > 0); all.sort((a, b) => vis(b) - vis(a)); if (all[0]) all[0].scrollTop = y === 'end' ? all[0].scrollHeight : Number(y); }, String(r.scroll)).then(() => page.waitForTimeout(400));
     await page.evaluate(PROBE);
     const sigName = `au-a-${slug}`;
     fs.writeFileSync(`.overhaul/sig/${sigName}.txt`, await page.evaluate((n) => window.__sigRows(n), sigName));
+    await page.evaluate(async () => {
+      // every image decoded (the noise tile is a background image backed by an <img>),
+      // then two frames so RN-web's onLoad re-render has painted it
+      await Promise.all([...document.images].map((i) => (i.complete ? (i.decode ? i.decode().catch(() => {}) : null) : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    });
     const buf = await page.screenshot();
     const px = pixels(dPng, buf, slug, r.ignore ?? []);
     let sig = null;

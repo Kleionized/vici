@@ -1,5 +1,5 @@
 import { Children, cloneElement, Fragment, isValidElement, useEffect, type Key, type ReactElement, type ReactNode } from 'react';
-import { View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { Platform, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { lhNormal, mono, sans } from '@/lib/theme';
@@ -407,7 +407,22 @@ export function CheckRow({ label, value, done = true, divider }: { label: string
       <MonoText v="optionLabel" style={{ ...t(16, '400', mono.ink), flex: 1 }}>
         {label}
       </MonoText>
-      {value ? <MonoText v="rowLabel">{value}</MonoText> : null}
+      {value ? <MonoText v="rowLabel">{withSystemArrows(value)}</MonoText> : null}
     </View>
   );
+}
+
+/**
+ * Lato has no `→` (U+2192). The frame's `'Lato',-apple-system,…` falls back
+ * for that one glyph to the system face **at the run's weight** (700), while a
+ * per-weight Lato family carries no weight to fall back with — the arrow came
+ * out regular. The glyph is drawn in the system face at 700 instead.
+ */
+const SYSTEM_BOLD: TextStyle = {
+  fontFamily: Platform.select({ ios: 'System', android: 'sans-serif', default: '-apple-system, system-ui, sans-serif' }),
+  fontWeight: '700',
+};
+function withSystemArrows(value: string) {
+  if (!value.includes('→')) return value;
+  return value.split('→').flatMap((part, i) => (i ? [<Text key={i} style={SYSTEM_BOLD}>→</Text>, part] : [part]));
 }

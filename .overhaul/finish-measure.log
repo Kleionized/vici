@@ -1,0 +1,9 @@
+== size 430x932 17:22:46
+430x932: 254 frames — ok 254, check 0, no recipe 0, unreachable 0, failed 0 -> .overhaul/size-sweep/430x932/report.md
+== lab 17:49:29
+80 replicas — 32 over 0.3 %: Breakwater-Gold 5.6, Breakwater-Paper 5.62, Breakwater-Platinum 5.61, Detail-Paper 1.56, Enlisting-Aegis@choices 0.9, L1-Frame-5@choices 3.93, Log-Urges@tabbar 4.56, Medallions 8.5, Morning-Energy 2.89, Morning-Feeling 5.87, SOS-Reassess 1.41, SOS-Strength 0.67, Score-Detail@choices 4.34, Starting-Score@choices 9.36, Tiers-Archive 1.28, Tiers-Breakwater 5.62, Tiers-Lessons 5.74, Tiers-Logbook 5.64, Tiers-Pulse 5.89, Tiers-Rebound 5.91, Tiers-Vici 5.33, Tiers-Vidi 5.75, Today-Home 7.55, Today-Home-III 6, Today-Home-III@overlay 9.9, Today-Home-Task 5.96, Today-Home@choices 6.9, Today-Home@tabbar 7.55, Urge-Hub-Now@choices 9.53, Week-I-Reset 4.08, Week-IV-Know-Your-Brain 4.15, Where-We-d-Start@choices 4
+== lint 17:52:38
+files scanned 221, with findings 16 — fontWeight 1, old font names 6, StatusBar dark 0, italic 0, off-palette hex 358
+== tsc
+tsc exit 0
+== done 17:52:43

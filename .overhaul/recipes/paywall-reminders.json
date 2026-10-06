@@ -57,5 +57,5 @@
 
   { "frame": "Subscription — free (unframed state)", "route": "/subscription",
     "initseed": ".overhaul/v-premium-seed.js", "wait": 1800,
-    "note": "NOT A BUNDLE FRAME. Replace `premium: true` with `premium: false` in the seed (pr-func.mjs does): 'Free tools' / 'Core tools included' / 'Free' pill, Change plan value 'Free', no next charge, no cancel (D222)." }
+    "note": "NOT A BUNDLE FRAME. Replace `premium: true` with `premium: false` in the seed (pr-func.mjs does): 'Free tools' / 'Core tools included' / 'Free' pill, Change plan value 'Free', no next charge, no cancel (D222); the band runs to the bottom edge. All unframed states at four sizes: node .overhaul/pr-unframed.mjs [outDir] [filter]." }
 ]

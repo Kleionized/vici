@@ -1,0 +1,47 @@
+[
+ {
+  "frame": "Morning 1 Yesterday",
+  "group": "day",
+  "recipe": "day.json",
+  "status": "CLEAN",
+  "px": 0.063,
+  "regions": [
+   {
+    "x": 340,
+    "y": 232,
+    "w": 28,
+    "h": 12,
+    "px": 608
+   },
+   {
+    "x": 300,
+    "y": 232,
+    "w": 12,
+    "h": 12,
+    "px": 175
+   }
+  ],
+  "sig": {
+   "differing": 6,
+   "missing": 2,
+   "extra": 6,
+   "net": 6
+  },
+  "errors": []
+ },
+ {
+  "frame": "Log Urges",
+  "group": "logs",
+  "recipe": "logs.json",
+  "status": "CLEAN",
+  "px": 0,
+  "regions": [],
+  "sig": {
+   "differing": 29,
+   "missing": 1,
+   "extra": 20,
+   "net": 29
+  },
+  "errors": []
+ }
+]

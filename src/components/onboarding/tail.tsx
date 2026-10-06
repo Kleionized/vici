@@ -45,15 +45,33 @@ const BOLD = { fontFamily: LATO.bold, fontWeight: 'normal' } as const;
  * rises as far as the ground allows and the rest scrolls between the nav and
  * the controls (rule 3), never under a control — so a 667 phone sees the most
  * of the board it can before it has to scroll (D219).
+ *
+ * A board with an open gap in the middle passes `squeeze` (how much of it may
+ * close) and children as a function of `give`: what the lift leaves over is
+ * taken out of that gap first — the board moves everything under it up by
+ * `give` — and only the rest scrolls (D406). `give` is 0 wherever it fits.
  */
-export function Band({ start, end, bottom = 106, children }: { start: number; end: number; bottom?: number; children: ReactNode }) {
+export function Band({
+  start,
+  end,
+  bottom = 106,
+  squeeze = 0,
+  children,
+}: {
+  start: number;
+  end: number;
+  bottom?: number;
+  squeeze?: number;
+  children: ReactNode | ((give: number) => ReactNode);
+}) {
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
   const deficit = Math.ceil(end + 16 - (winH - canvasTop - bottom));
   const lift = deficit > 0 ? Math.min(deficit, Math.max(0, Math.floor(start - 108))) : 0;
+  const give = Math.min(squeeze, Math.max(0, deficit - lift));
   return (
     <ScrollRegion top={100} bottom={bottom} alwaysBounceVertical={false} contentStyle={{ paddingBottom: 16 }}>
-      <View style={{ marginTop: -100 - lift, height: end }}>{children}</View>
+      <View style={{ marginTop: -100 - lift, height: end - give }}>{typeof children === 'function' ? children(give) : children}</View>
     </ScrollRegion>
   );
 }
@@ -246,25 +264,30 @@ export function O3Next30({ times, next, back }: { times: number; next: () => voi
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
-      <Band start={199} end={675}>
-        <Stack top={199}>
-          <MonoText v="h1">This is your next 30 days.</MonoText>
-          <MonoText v="p">
-            If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
-          </MonoText>
-        </Stack>
-        <View style={{ position: 'absolute', left: 24, right: 24, top: 343, flexDirection: 'row', justifyContent: 'center' }}>
-          <MonthDots />
-        </View>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 603, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
-          <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
-          <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
-        </View>
-        <View style={{ position: 'absolute', left: 24, right: 24, top: 653 }}>
-          <MonoText v="pTight" color={mono.mute} center wrap="wrap">
-            The line can start changing with the next one.
-          </MonoText>
-        </View>
+      {/* the ~54 between the paragraph and the first row of days may close to 30 (D406) */}
+      <Band start={199} end={675} squeeze={24}>
+        {(give) => (
+          <>
+            <Stack top={199}>
+              <MonoText v="h1">This is your next 30 days.</MonoText>
+              <MonoText v="p">
+                If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
+              </MonoText>
+            </Stack>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 343 - give, flexDirection: 'row', justifyContent: 'center' }}>
+              <MonthDots />
+            </View>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: 603 - give, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
+              <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
+              <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
+            </View>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 653 - give }}>
+              <MonoText v="pTight" color={mono.mute} center wrap="wrap">
+                The line can start changing with the next one.
+              </MonoText>
+            </View>
+          </>
+        )}
       </Band>
       <PrimaryButton label="Next" onPress={next} />
     </Screen>

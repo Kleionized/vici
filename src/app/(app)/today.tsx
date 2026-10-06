@@ -12,6 +12,7 @@ import {
   ChevronR,
   DISABLED_OPACITY,
   Hero,
+  heroCrop,
   LoadingView,
   MonoText,
   Person,
@@ -27,6 +28,7 @@ import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonPro
 import { checkinPartNow } from '@/lib/routines';
 import { buildScore, lastDays, scoreDayKey, scoreHistory } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
+import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
  * Today — Today Home, Today Home II / Today Home Task, Today Home III.
@@ -129,17 +131,6 @@ export default function Today() {
   // pledge that wraps to three lines), so the pager always snaps page to page
   // and a taller page scrolls within itself before the next one (D230, D320).
   const viewport = winH - tabBar - (insets.top - 54) - PAGER_TOP;
-  const pageH = ends.map((e) => Math.max(viewport, Math.ceil(e) + BAR_GAP));
-  // Native snaps to each page's top and, for a page taller than the viewport,
-  // to its foot as well; the web build pages with CSS scroll snap, which lets an
-  // oversized page scroll within itself (`snapToOffsets` overrides `pagingEnabled`
-  // on native).
-  const offsets: number[] = [];
-  pageH.reduce((top, h) => {
-    offsets.push(top);
-    if (h > viewport) offsets.push(top + h - viewport);
-    return top + h;
-  }, 0);
 
   const createdAt = user?.createdAt ?? now;
   const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
@@ -151,7 +142,8 @@ export default function Today() {
   const todayCheckin = checkins.find((c) => c.date === todayKey);
   const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
   const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : null;
-  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const pledge = standingPledge(journal);
+  const pledgeWords = pledgeText(pledge);
   const name = user?.displayName?.trim().split(/\s+/)[0];
 
   // The week strip, Sunday first (Today Home draws `Su … Sa`; the Log's strip
@@ -181,12 +173,50 @@ export default function Today() {
       ? { caption: dayLesson.task.cardSummary, hero: dayLesson.hero, lesson: dayLesson }
       : DAY_STEPS[(day - 1) % DAY_STEPS.length];
   const taskDone = todayCheckin?.dailyActionDone ?? false;
-  const toggleTask = () => void upsertCheckin({ date: todayKey, dailyActionDone: !taskDone });
+  // The disc marks the sentence it sits beside. When nobody named the day's
+  // action (no night check-in), that sentence is the lesson's or the day's
+  // step, so the tick names it too — as the old task page's "Mark as done"
+  // did — or tomorrow's morning would ask after a fallback the person never
+  // saw. Either register, one write; the register and the page it opens are
+  // unchanged, since a lesson's own sentence keeps its lesson (D232).
+  const toggleTask = () =>
+    void upsertCheckin({ date: todayKey, dailyActionDone: !taskDone, ...(todayCheckin?.dailyAction ? {} : { dailyAction: task.caption }) });
   // The sentence opens a task page whenever the course has one to open: the
   // lesson that set the task, else the day's own lesson — as the old card opened
   // `/task/<day>` for any task on a lesson day (D324). Only past the course,
   // with no page behind it, is the sentence the done mark too.
   const taskLesson = task.lesson ?? dayLesson;
+
+  // A page taller than the viewport rests at its top and at its foot. The foot
+  // never leaves a sliver of a block under the strip: on a 667 phone the plain
+  // foot cut page one 7 pt above the score's baseline (its comma and the 2's
+  // tail hung under the discs) and pages two and three 37 pt above their art's
+  // floor (the phone's and the glass's stubs, the hills). Where the foot would
+  // fall inside one of the blocks below, it rests at that block's end instead
+  // — the block wholly scrolled away — and the page grows by the difference.
+  const blocks: [number, number][][] = [
+    // "Recovery score"; the number, whose comma hangs below its 56 line box (to the chart's top,
+    // 334); the chart's ink, from its highest point's ring to its labels
+    [[py(240), py(256)], [py(268), py(334)], [py(334) + CHART_LOW - CHART_SPAN - 8.5, py(584)]],
+    [[py(241.3), py(241.3) + heroCrop(task.hero, 241.3).height]],
+    [[py(231.5), py(231.5) + heroCrop('nightMoon', 231.5).height]],
+  ];
+  const pageH = ends.map((e, i) => {
+    const need = Math.ceil(e) + BAR_GAP;
+    if (need <= viewport) return viewport;
+    const foot = blocks[i].reduce((at, [top, end]) => (at > top && at < end ? end : at), need - viewport);
+    return Math.ceil(foot + viewport);
+  });
+  // Native snaps to each page's top and, for a page taller than the viewport,
+  // to its foot as well; the web build pages with CSS scroll snap, which lets an
+  // oversized page scroll within itself (`snapToOffsets` overrides `pagingEnabled`
+  // on native).
+  const offsets: number[] = [];
+  pageH.reduce((top, h) => {
+    offsets.push(top);
+    if (h > viewport) offsets.push(top + h - viewport);
+    return top + h;
+  }, 0);
 
   return (
     <Screen>
@@ -228,7 +258,7 @@ export default function Today() {
           <View style={{ height: pageH[2] }}>
             <PageThree
               onEnd={endAt(2)}
-              pledge={pledge?.body}
+              pledge={pledgeWords || undefined}
               name={name}
               onAdd={() =>
                 router.push({
@@ -237,7 +267,7 @@ export default function Today() {
                 })
               }
               onSaved={() => router.push('/(app)/journal')}
-              onShare={() => (pledge?.body ? void Share.share({ message: pledge.body }).catch(() => {}) : undefined)}
+              onShare={() => (pledgeWords ? void Share.share({ message: pledgeWords }).catch(() => {}) : undefined)}
               onUrge={() => router.push('/urge-hub')}
             />
           </View>
@@ -491,7 +521,8 @@ function PageTwo({
         <View style={{ minHeight: 553 - 433, paddingBottom: 20 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <Tap label={opensTask ? 'Open today’s task' : undefined} onPress={onTask} style={{ flex: 1, minWidth: 0, gap: 6 }}>
-              <MonoText v="caps" wrap="wrap">
+              {/* `pretty`, as the sentence under it: a long title wraps without leaving one word alone */}
+              <MonoText v="caps" wrap="pretty">
                 {task.lesson ? `Today’s task: ${task.lesson.title}` : 'Today’s task'}
               </MonoText>
               <MonoText

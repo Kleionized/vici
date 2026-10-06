@@ -7,8 +7,8 @@
  * its task — the practice and the "Done when" line — from the reader's two
  * task pages. The short task sentence (`cardSummary`) is the first sentence
  * of the lesson's own task (D339); day 1 keeps the one `Today Home Task` and
- * `Night Action Reminder` draw. No frame draws a one-line `summary`; it keeps
- * the previous build's.
+ * `Night Action Reminder` draw. No frame draws a one-line `summary`; it is
+ * the same task sentence (D401).
  *
  * Rebuild: node scripts/overhaul/gen-curriculum.mjs
  */
@@ -87,9 +87,9 @@ export interface Curriculum84Lesson {
   /** The cover's hero. */
   hero: CurriculumHeroId;
   /**
-   * The previous build's one-line summary, kept as it was: no frame in this drop draws
-   * one, and it was written for the previous lesson under this day, so it may not
-   * describe the new title (D396). Read by search, first-steps and `lib/curriculum`.
+   * The line under the title in search and first steps: the lesson's own task sentence
+   * (`task.cardSummary`). No frame draws a one-line summary, and the previous course's
+   * described other lessons (D401). Read by search, first-steps and `lib/curriculum`.
    */
   summary: string;
   task: DailyTask;
@@ -118,7 +118,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Prepare for tonight",
         hero: "nightPhone",
-        summary: "The first nights are the steepest. Get through tonight, nothing else.",
+        summary: "Put the device you use for porn out of reach before you sleep.",
         task: {
           day: 1,
           cardTitle: "Prepare for tonight",
@@ -137,7 +137,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Remove easy access to porn",
         hero: "sunrise",
-        summary: "Day zero isn’t a loss. It’s the start of the count that matters.",
+        summary: "Spend up to twenty minutes making one change where you usually watch.",
         task: {
           day: 2,
           cardTitle: "Remove easy access to porn",
@@ -154,7 +154,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Choose where to go instead",
         hero: "bench",
-        summary: "Daylight, air, one walk. The room you’re in is half the battle.",
+        summary: "Name an exact place you can go when browsing starts: the kitchen table, a shared room, or a safe walk around the block.",
         task: {
           day: 3,
           cardTitle: "Choose where to go instead",
@@ -171,7 +171,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Prepare for sleep",
         hero: "bed",
-        summary: "Tired brains lose to urges. Protect the hours that rebuild you.",
+        summary: "Plan the next sleep period.",
         task: {
           day: 4,
           cardTitle: "Prepare for sleep",
@@ -188,7 +188,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Have another activity ready",
         hero: "books",
-        summary: "The habit filled a slot. Decide what takes the space.",
+        summary: "Choose an activity for the hour when you usually want porn.",
         task: {
           day: 5,
           cardTitle: "Have another activity ready",
@@ -205,7 +205,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Make time for contact",
         hero: "twoCups",
-        summary: "Urges grow in closed rooms. Open one door today.",
+        summary: "Call someone, send a specific invitation, or spend time in a conversation or shared activity.",
         task: {
           day: 6,
           cardTitle: "Make time for contact",
@@ -223,7 +223,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 1,
         title: "Review the first week",
         hero: "cake",
-        summary: "Seven days held. Look at what a week actually bought you.",
+        summary: "Read your plan for five minutes.",
         task: {
           day: 7,
           cardTitle: "Review the first week",
@@ -249,7 +249,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Measure more than a streak",
         hero: "calendar",
-        summary: "The count is a tool, not the point. You’re building a person.",
+        summary: "Choose one measure besides a streak: time spent watching, nights with the phone out of bed, or whether you used your response to an urge.",
         task: {
           day: 8,
           cardTitle: "Measure more than a streak",
@@ -266,7 +266,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Stop sooner after a slip",
         hero: "sunrise",
-        summary: "A relapse is data. Read it, log it, move.",
+        summary: "Add After a slip to your plan.",
         task: {
           day: 9,
           cardTitle: "Stop sooner after a slip",
@@ -284,7 +284,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Use the hours that remain",
         hero: "scale",
-        summary: "One slip doesn’t erase thirty days. Refuse the reset story.",
+        summary: "Try the after-slip steps once without an urge.",
         task: {
           day: 10,
           cardTitle: "Use the hours that remain",
@@ -301,7 +301,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Try one change for a week",
         hero: "chartUp",
-        summary: "The curve wobbles on its way up. Zoom out.",
+        summary: "Compare the past seven days with Day 1: time or disruption from porn, responses to urges or slips, and one daily routine.",
         task: {
           day: 11,
           cardTitle: "Try one change for a week",
@@ -318,7 +318,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Repeat one useful action",
         hero: "idCard",
-        summary: "Stop fighting as a user who quits. Act as someone who doesn’t need it.",
+        summary: "Choose one behaviour to repeat for a week.",
         task: {
           day: 12,
           cardTitle: "Repeat one useful action",
@@ -335,7 +335,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Choose your own reason",
         hero: "compass",
-        summary: "Shame burns fuel. Values steer. Swap the engine.",
+        summary: "Write one sentence under Goal explaining why you want to change porn use.",
         task: {
           day: 13,
           cardTitle: "Choose your own reason",
@@ -352,7 +352,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 2,
         title: "Return after a missed day",
         hero: "signpost",
-        summary: "Two weeks of momentum. Don’t trade it for a quiet Tuesday.",
+        summary: "Add three short answers under Continuing: when you’ll resume after a missed day, how you’ll use the after-slip steps, and which helpful behaviour you’ll keep when motivation is low.",
         task: {
           day: 14,
           cardTitle: "Return after a missed day",
@@ -378,7 +378,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "What to do when an urge starts",
         hero: "stopwatch",
-        summary: "Every urge has a birth, a peak, and a death. Learn its shape.",
+        summary: "Write your earliest recognisable sign of an urge and a first action under Early signs and First response.",
         task: {
           day: 15,
           cardTitle: "What to do when an urge starts",
@@ -395,7 +395,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Check what you need",
         hero: "thermometer",
-        summary: "The urge points at a need. Find what it’s actually asking for.",
+        summary: "For a recent urge, note the time and place, what you were doing beforehand, how you felt physically, and your mood or any task you were avoiding.",
         task: {
           day: 16,
           cardTitle: "Check what you need",
@@ -412,7 +412,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Close the screen and move",
         hero: "sneaker",
-        summary: "Don’t negotiate standing still. Move your body first.",
+        summary: "Start where you usually browse.",
         task: {
           day: 17,
           cardTitle: "Close the screen and move",
@@ -429,7 +429,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Prepare another activity",
         hero: "signpost",
-        summary: "Attention is a channel. You hold the remote.",
+        summary: "Review the Day 11 change: did you try it, what happened, and will you keep or change it?",
         task: {
           day: 18,
           cardTitle: "Prepare another activity",
@@ -447,7 +447,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Check hunger, anger, loneliness, and tiredness",
         hero: "kettle",
-        summary: "Hungry, angry, lonely, tired — check the gauges before you judge the pull.",
+        summary: "Review the Day 12 behaviour: attempts, obstacles, and what to keep or change.",
         task: {
           day: 19,
           cardTitle: "Check hunger, anger, loneliness, and tiredness",
@@ -464,7 +464,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Notice an urge without acting on it",
         hero: "lighthouse",
-        summary: "Don’t fight the wave. Ride it until it breaks.",
+        summary: "Close triggering content.",
         task: {
           day: 20,
           cardTitle: "Notice an urge without acting on it",
@@ -483,7 +483,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 3,
         title: "Make a separate choice about masturbation",
         hero: "shower",
-        summary: "Decide the rule on purpose, not in the moment.",
+        summary: "Write your choice about masturbation separately from the porn boundary.",
         task: {
           day: 21,
           cardTitle: "Make a separate choice about masturbation",
@@ -510,7 +510,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Understand what starts the habit",
         hero: "brain",
-        summary: "Dopamine isn’t pleasure. It’s the promise of it.",
+        summary: "Choose one account, feed, time, or device location that starts the habit.",
         task: {
           day: 22,
           cardTitle: "Understand what starts the habit",
@@ -527,7 +527,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Decide before the difficult hour",
         hero: "brain",
-        summary: "The prefrontal cortex tires like a muscle. Guard its hours.",
+        summary: "Make one decision ahead of the difficult hour.",
         task: {
           day: 23,
           cardTitle: "Decide before the difficult hour",
@@ -544,7 +544,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Make room for food and sleep",
         hero: "kettle",
-        summary: "Low fuel and low sleep read as craving. Feed the real need.",
+        summary: "Look at two or three difficult moments if you have examples.",
         task: {
           day: 24,
           cardTitle: "Make room for food and sleep",
@@ -561,7 +561,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Respond to anger and loneliness",
         hero: "thunderCloud",
-        summary: "Anger and loneliness borrow the same circuits. Name them early.",
+        summary: "For a known example of anger or loneliness, write what happened and one immediate response.",
         task: {
           day: 25,
           cardTitle: "Respond to anger and loneliness",
@@ -579,7 +579,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Notice when searching keeps going",
         hero: "tab",
-        summary: "Novelty is the hook. Infinite variety is the trap.",
+        summary: "Give one harmless chapter, task, piece of music, or hobby ten minutes without unrelated feeds.",
         task: {
           day: 26,
           cardTitle: "Notice when searching keeps going",
@@ -596,7 +596,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Try movement, breathing, or another room",
         hero: "shower",
-        summary: "State beats willpower. Change temperature, posture, place.",
+        summary: "Try three minutes of gentle movement, comfortable breathing, or a change of room.",
         task: {
           day: 27,
           cardTitle: "Try movement, breathing, or another room",
@@ -613,7 +613,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 4,
         title: "Act earlier in the habit",
         hero: "dominoes",
-        summary: "Half your day runs on scripts. Rewrite the opening scene.",
+        summary: "Review the cue change from Day 22 and care adjustment from Day 24.",
         task: {
           day: 28,
           cardTitle: "Act earlier in the habit",
@@ -639,7 +639,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Look at the benefit and cost",
         hero: "scale",
-        summary: "Every choice sits on a scale. See both pans clearly.",
+        summary: "Write an immediate benefit and a real cost of one recent or typical episode.",
         task: {
           day: 29,
           cardTitle: "Look at the benefit and cost",
@@ -656,7 +656,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Meet the need you can identify",
         hero: "tab",
-        summary: "It gives something real. Name it honestly or it keeps the leverage.",
+        summary: "Name what you wanted from a recent urge and try a fitting response: rest, an interesting activity, appropriate contact, or a first step on a task.",
         task: {
           day: 30,
           cardTitle: "Meet the need you can identify",
@@ -673,7 +673,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Begin a task you are avoiding",
         hero: "envelopeOpen",
-        summary: "Relief now is the hidden payment. Check the receipt.",
+        summary: "Ask whether an urge happened while you were avoiding something specific.",
         task: {
           day: 31,
           cardTitle: "Begin a task you are avoiding",
@@ -690,7 +690,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Address one immediate cost",
         hero: "clock",
-        summary: "Write down what a late relapse costs tomorrow morning and prepare that morning now.",
+        summary: "Review the period planned on Day 29: did it happen, did you follow the plan, and what needs changing?",
         task: {
           day: 32,
           cardTitle: "Address one immediate cost",
@@ -707,7 +707,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Make time for what viewing displaced",
         hero: "calendar",
-        summary: "Years of nights compound. Price the decade, not the evening.",
+        summary: "Choose an activity or commitment that viewing has displaced, if any.",
         task: {
           day: 33,
           cardTitle: "Make time for what viewing displaced",
@@ -724,7 +724,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Make one change for tonight",
         hero: "scale",
-        summary: "Stack today’s pan: one call, one walk, one early night.",
+        summary: "Choose the actual beginning of a recent difficult evening.",
         task: {
           day: 34,
           cardTitle: "Make one change for tonight",
@@ -741,7 +741,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 5,
         title: "Give an activity a place in the week",
         hero: "scale",
-        summary: "Rig the scale so staying clean is the easy read.",
+        summary: "Review the choice from Day 21.",
         task: {
           day: 35,
           cardTitle: "Give an activity a place in the week",
@@ -768,7 +768,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Prepare a simpler response when tired",
         hero: "battery",
-        summary: "Willpower drains. Systems don’t. Build for the tired version of you.",
+        summary: "Read your plan for a tired evening.",
         task: {
           day: 36,
           cardTitle: "Prepare a simpler response when tired",
@@ -785,7 +785,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Practise the response",
         hero: "sneaker",
-        summary: "Reps, not speeches. Each refusal makes the next one cheaper.",
+        summary: "Practise one response from the place where you usually begin browsing.",
         task: {
           day: 37,
           cardTitle: "Practise the response",
@@ -802,7 +802,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Keep rules that serve a purpose",
         hero: "halfMast",
-        summary: "Discipline isn’t punishment or gritted teeth.",
+        summary: "Choose one rule you follow and write what it protects.",
         task: {
           day: 38,
           cardTitle: "Keep rules that serve a purpose",
@@ -819,7 +819,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Practise the part that gets in the way",
         hero: "compass",
-        summary: "It’s choosing once, early, and letting the choice stand.",
+        summary: "Choose the part that gets in the way: noticing, remembering, beginning, stopping, continuing while tempted, or returning after interruption.",
         task: {
           day: 39,
           cardTitle: "Practise the part that gets in the way",
@@ -836,7 +836,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Let a thought remain while you act",
         hero: "thunderCloud",
-        summary: "Thoughts and feelings are weather. You’re the ground.",
+        summary: "When an ordinary distracting thought appears, name it briefly and return to the task.",
         task: {
           day: 40,
           cardTitle: "Let a thought remain while you act",
@@ -853,7 +853,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Give the action a time and place",
         hero: "signpost",
-        summary: "You can’t pick the impulse. You pick the action.",
+        summary: "Write one cue and action for a decision you keep postponing.",
         task: {
           day: 41,
           cardTitle: "Give the action a time and place",
@@ -870,7 +870,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 6,
         title: "Plan for a difficult day",
         hero: "umbrella",
-        summary: "Bad night? Contain it. One fire, not a season.",
+        summary: "Review the latest Day 35 session if it has happened.",
         task: {
           day: 42,
           cardTitle: "Plan for a difficult day",
@@ -897,7 +897,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Learn from a slip",
         hero: "halfMast",
-        summary: "A relapse ends a streak. It doesn’t end the campaign.",
+        summary: "Review a recent slip or close call, if available.",
         task: {
           day: 43,
           cardTitle: "Learn from a slip",
@@ -914,7 +914,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Take care and make a repair",
         hero: "notebook",
-        summary: "Autopsy, not funeral. What time, what door, what state?",
+        summary: "Describe a recent mistake factually, without an insult.",
         task: {
           day: 44,
           cardTitle: "Take care and make a repair",
@@ -931,7 +931,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Adjust the plan for today",
         hero: "mirror",
-        summary: "Punishment teaches hiding. Debrief teaches prevention.",
+        summary: "Adapt one commitment to today’s circumstances.",
         task: {
           day: 45,
           cardTitle: "Adjust the plan for today",
@@ -948,7 +948,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Get support during a difficult period",
         hero: "thunderCloud",
-        summary: "Some days the plan is smaller: eat, walk, sleep clean.",
+        summary: "If a difficult period is affecting the plan, choose one temporary adjustment and one support option.",
         task: {
           day: 46,
           cardTitle: "Get support during a difficult period",
@@ -966,7 +966,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Return to the task you postponed",
         hero: "mountain",
-        summary: "Hard seasons raise the stakes. Shrink the promise, keep it daily.",
+        summary: "Return to the Day 31 first step.",
         task: {
           day: 47,
           cardTitle: "Return to the task you postponed",
@@ -983,7 +983,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Begin the next part of the day",
         hero: "door",
-        summary: "The urge often guards a door. Open what you’re avoiding.",
+        summary: "Look at the hour and choose the next necessary activity: food, work, class, washing, or bed.",
         task: {
           day: 48,
           cardTitle: "Begin the next part of the day",
@@ -1000,7 +1000,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 7,
         title: "Take a step after a longer setback",
         hero: "calendar",
-        summary: "The comeback starts tonight, not Monday.",
+        summary: "Review the latest Day 35 session if it’s happened; keep the check for afterwards if not.",
         task: {
           day: 49,
           cardTitle: "Take a step after a longer setback",
@@ -1027,7 +1027,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Give an activity time before switching",
         hero: "clock",
-        summary: "Boredom is withdrawal’s echo. It fades if you don’t feed it.",
+        summary: "Try ten to fifteen minutes of one activity without unrelated switching.",
         task: {
           day: 50,
           cardTitle: "Give an activity time before switching",
@@ -1044,7 +1044,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Choose what begins in an empty gap",
         hero: "tab",
-        summary: "The reflex reach is the enemy. Put friction on the exits.",
+        summary: "If a feed or unplanned gap often leads to porn, write a specific stopping rule or alternative.",
         task: {
           day: 51,
           cardTitle: "Choose what begins in an empty gap",
@@ -1062,7 +1062,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Try fifteen minutes without switching",
         hero: "bench",
-        summary: "Sit in the flat minutes. They’re retraining your baseline.",
+        summary: "Give one activity fifteen minutes without unrelated switching.",
         task: {
           day: 52,
           cardTitle: "Try fifteen minutes without switching",
@@ -1079,7 +1079,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Change one screen habit",
         hero: "phoneTable",
-        summary: "Screens after ten made the rules. Take the hours back.",
+        summary: "Choose one screen rule for the problem you’ve observed.",
         task: {
           day: 53,
           cardTitle: "Change one screen habit",
@@ -1096,7 +1096,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Try an hour away from one feed",
         hero: "feedOff",
-        summary: "You don’t need a detox monk-week. You need fewer triggers.",
+        summary: "Set aside one troublesome automatic feed or browsing habit for an hour.",
         task: {
           day: 54,
           cardTitle: "Try an hour away from one feed",
@@ -1113,7 +1113,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Prepare the first hour after waking",
         hero: "sunrise",
-        summary: "A planned morning outruns a random night.",
+        summary: "If the hour after waking is difficult, choose its first activity and prepare the materials.",
         task: {
           day: 55,
           cardTitle: "Prepare the first hour after waking",
@@ -1130,7 +1130,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 8,
         title: "Give time to something that matters",
         hero: "compass",
-        summary: "Meaning is the long cure. Boredom can’t survive a mission.",
+        summary: "Review the latest Day 35 session and yesterday’s waking plan if they have happened.",
         task: {
           day: 56,
           cardTitle: "Give time to something that matters",
@@ -1156,7 +1156,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Arrange a shared activity",
         hero: "twoCups",
-        summary: "Recovery is a team sport played quietly.",
+        summary: "Suggest an activity, day, and approximate time to someone you trust or enjoy.",
         task: {
           day: 57,
           cardTitle: "Arrange a shared activity",
@@ -1173,7 +1173,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Choose contact that fits",
         hero: "bench",
-        summary: "Loneliness is a signal, not a sentence. Answer it in person.",
+        summary: "Choose the step that fits: more everyday contact through a shared activity, a one-to-one conversation with a safe person, or support from someone available when you’re missing a particular person.",
         task: {
           day: 58,
           cardTitle: "Choose contact that fits",
@@ -1190,7 +1190,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Choose how to spend time alone",
         hero: "bench",
-        summary: "Alone on purpose is solitude. Alone by default is exposure.",
+        summary: "Choose ten to twenty minutes for an activity alone, or a personal activity in a shared place.",
         task: {
           day: 59,
           cardTitle: "Choose how to spend time alone",
@@ -1207,7 +1207,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Separate desire from wanting company",
         hero: "twoCups",
-        summary: "It rehearses connection with none of the risk. That’s the theft.",
+        summary: "Review the Day 53 screen rule: did you follow it, did it help, and what should stay or change?",
         task: {
           day: 60,
           cardTitle: "Separate desire from wanting company",
@@ -1224,7 +1224,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Follow up on a connection",
         hero: "twoCups",
-        summary: "Friendships grow on schedules. Plant one this week.",
+        summary: "Make one reasonable follow-up with a person or group you know.",
         task: {
           day: 61,
           cardTitle: "Follow up on a connection",
@@ -1241,7 +1241,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Set a safe limit on harmful contact",
         hero: "thunderCloud",
-        summary: "Some rooms reopen the wound. Choose your rooms.",
+        summary: "If an interaction repeatedly causes harm or ignores your limit, choose one safe change: mute a channel, limit your availability, decline an invitation, or seek support before acting.",
         task: {
           day: 62,
           cardTitle: "Set a safe limit on harmful contact",
@@ -1258,7 +1258,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 9,
         title: "Give a relationship attention",
         hero: "twoCups",
-        summary: "Real intimacy is slower, riskier, and worth the trade.",
+        summary: "Review the four Day 35 activity opportunities.",
         task: {
           day: 63,
           cardTitle: "Give a relationship attention",
@@ -1285,7 +1285,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Choose support without revisiting painful events",
         hero: "umbrella",
-        summary: "The habit started as armor. Thank it, then retire it.",
+        summary: "You can name one present-day reaction and prepare a safe response, such as noticing the room, leaving an unsafe setting, or saving a qualified support contact.",
         task: {
           day: 64,
           cardTitle: "Choose support without revisiting painful events",
@@ -1303,7 +1303,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Change one difficult setting",
         hero: "plant",
-        summary: "If the house is on fire, stop blaming the smoke.",
+        summary: "Choose one setting that repeatedly makes difficult evenings harder, if any.",
         task: {
           day: 65,
           cardTitle: "Change one difficult setting",
@@ -1320,7 +1320,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Describe a mistake without an insult",
         hero: "mirror",
-        summary: "The inner critic isn’t a coach. Fire the voice, keep the standard.",
+        summary: "Choose a recent harsh judgement if available.",
         task: {
           day: 66,
           cardTitle: "Describe a mistake without an insult",
@@ -1337,7 +1337,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "When you feel bad about yourself",
         hero: "mirror",
-        summary: "Self-loathing feeds the loop it hates. Starve it.",
+        summary: "Use the Day 66 example if it fits.",
         task: {
           day: 67,
           cardTitle: "When you feel bad about yourself",
@@ -1354,7 +1354,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Check your response to self-criticism",
         hero: "plant",
-        summary: "Talk to yourself like someone you’re responsible for.",
+        summary: "Review a real use of the Day 66 response if there has been one.",
         task: {
           day: 68,
           cardTitle: "Check your response to self-criticism",
@@ -1371,7 +1371,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Keep one manageable commitment",
         hero: "compass",
-        summary: "Trust rebuilds in kept promises, smallest first.",
+        summary: "Choose one useful, modest action and give it a time or cue.",
         task: {
           day: 69,
           cardTitle: "Keep one manageable commitment",
@@ -1388,7 +1388,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 10,
         title: "Simplify the plan",
         hero: "chartUp",
-        summary: "Improvement is proof. Log the gains somewhere you’ll see.",
+        summary: "Review your plan.",
         task: {
           day: 70,
           cardTitle: "Simplify the plan",
@@ -1414,7 +1414,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Use what your notes show",
         hero: "mirror",
-        summary: "Know what pulls you, what drains you, what you’re for.",
+        summary: "Read two or three useful entries.",
         task: {
           day: 71,
           cardTitle: "Use what your notes show",
@@ -1431,7 +1431,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Choose what you can do now",
         hero: "umbrella",
-        summary: "Love the hand you were dealt. It’s the only playable one.",
+        summary: "If helpful, choose an everyday past event and distinguish what has happened from what you can do now.",
         task: {
           day: 72,
           cardTitle: "Choose what you can do now",
@@ -1448,7 +1448,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Reserve time for what matters",
         hero: "hourglass",
-        summary: "Five years left: what stays, what goes, what starts tonight?",
+        summary: "Choose a person, activity, or responsibility you want to give more time to.",
         task: {
           day: 73,
           cardTitle: "Reserve time for what matters",
@@ -1465,7 +1465,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Begin an activity you postponed",
         hero: "sunrise",
-        summary: "Seize the day means this one. Before noon.",
+        summary: "Begin ten to twenty minutes of something you want more of, using the Day 73 choice if it fits.",
         task: {
           day: 74,
           cardTitle: "Begin an activity you postponed",
@@ -1482,7 +1482,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Plan the next ninety days",
         hero: "calendar",
-        summary: "Ninety days is enough to change the trend line of a life.",
+        summary: "Choose one aim for ninety days and a realistic weekly action.",
         task: {
           day: 75,
           cardTitle: "Plan the next ninety days",
@@ -1499,7 +1499,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Give one activity your attention",
         hero: "lighthouse",
-        summary: "Peace of mind is the quiet dividend of kept vows.",
+        summary: "Set aside one distracting feed, notification source, or other input for twenty to thirty minutes when you’d normally use it.",
         task: {
           day: 76,
           cardTitle: "Give one activity your attention",
@@ -1517,7 +1517,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 11,
         title: "Schedule something you want to keep doing",
         hero: "envelope",
-        summary: "Picture next year’s you. Start acting like their friend.",
+        summary: "Name one recurring activity you’d like in life a year from now.",
         task: {
           day: 77,
           cardTitle: "Schedule something you want to keep doing",
@@ -1543,7 +1543,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Keep the reason and next action clear",
         hero: "lighthouse",
-        summary: "Forever is just today, kept daily.",
+        summary: "Keep or rewrite the reason from Day 13 under Goal.",
         task: {
           day: 78,
           cardTitle: "Keep the reason and next action clear",
@@ -1560,7 +1560,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Compare the start with now",
         hero: "calendar",
-        summary: "Twelve weeks ago this felt impossible. Read your own letter.",
+        summary: "Compare your actual starting notes with now: time or disruption from viewing, responses to urges and slips, and one routine or activity.",
         task: {
           day: 79,
           cardTitle: "Compare the start with now",
@@ -1577,7 +1577,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Prepare for a changed situation",
         hero: "brain",
-        summary: "The pathways quieted. The wiring is yours again.",
+        summary: "Choose a response that helped and a likely changed situation, such as travel, a shared room, or no phone.",
         task: {
           day: 80,
           cardTitle: "Prepare for a changed situation",
@@ -1594,7 +1594,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Use the changes that helped",
         hero: "flag",
-        summary: "Keep the morning pledge, the log, the walk. Drop the scaffolding.",
+        summary: "Choose up to three changes that helped and use them in today’s routine: device placement, a response, an activity, a sleep rule, or support.",
         task: {
           day: 81,
           cardTitle: "Use the changes that helped",
@@ -1611,7 +1611,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Check how to ask for help",
         hero: "books",
-        summary: "Borrow from the recovered: meetings, sponsors, service, honesty.",
+        summary: "Confirm a first support contact or service and a backup.",
         task: {
           day: 82,
           cardTitle: "Check how to ask for help",
@@ -1628,7 +1628,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Finish with an honest next step",
         hero: "envelopeOpen",
-        summary: "Say goodbye like you mean it. Write it down.",
+        summary: "Read an early entry beside a recent one.",
         task: {
           day: 83,
           cardTitle: "Finish with an honest next step",
@@ -1646,7 +1646,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         week: 12,
         title: "Save a short plan for after the course",
         hero: "sunrise",
-        summary: "The future is unwritten and finally yours to write.",
+        summary: "Save a short plan with your goal, early signs, first response, after-slip steps, smaller day, support details, and next review.",
         task: {
           day: 84,
           cardTitle: "Save a short plan for after the course",

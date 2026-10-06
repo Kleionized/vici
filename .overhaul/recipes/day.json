@@ -79,5 +79,24 @@
   { "frame": "Morning/Night negatives (unframed)", "unframed": true, "route": "/day/morning",
     "initseed": ".overhaul/day-seed-negatives.js", "wait": 900,
     "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(300); await tap('Next'); await __sleep(700)",
-    "note": "the undrawn record rows (No pledge signed / No urges logged / 1 slip / No lesson yesterday; night: … today) on the kit's empty disc, the score row's −14, and Night Action with no lesson (day 91: 'Tonight' + `nightAction`). The `do` reaches the morning ledger; for the night record/action replay the Night 2 Record recipe's taps on /day/night." }
+    "note": "the undrawn record rows (No pledge signed / No urges logged / 1 slip / No lesson yesterday; night: … today) on the kit's empty disc, the score row's −14, and Night Action with no lesson (day 91: 'Tonight' + `nightAction`). The `do` reaches the morning ledger; for the night record/action replay the Night 2 Record recipe's taps on /day/night. Since Phase 2 the score row's disc is empty too when yesterday put nothing on the board or took some off (−14 here) — D237." },
+
+  { "frame": "Morning Task Check · L58 (unframed)", "unframed": true, "route": "/day/morning",
+    "initseed": ".overhaul/curriculum-d58-morning-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(700); await tap('Yes'); await __sleep(400)",
+    "note": "D339's longest task line (L58, 196 characters) as yesterday's task: seven lines at 375, six at 393. At 852 the stack ends 18 above the charger, which stays. At 375 × 667 the band overflows by 2: since Phase 2 it runs down to the round next's top with its 16 kept as padding, so Yes / Not yet show whole at rest (they were cut flat by the band's edge) and the band still scrolls its last 16 clear." },
+
+  { "frame": "Night Action Reminder · L58 (unframed)", "unframed": true, "route": "/day/night",
+    "initseed": ".overhaul/curriculum-d58-night-seed.js", "wait": 1800,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); await tap('Continue'); await __sleep(900); await tap('Continue'); await __sleep(900)",
+    "note": "'Choose contact that fits' over L58's sentence: four lines at 393 (the charger keeps its place), five at 375 (the charger drops out with the controls, nothing scrolls)." },
+
+  { "frame": "Morning Resign Pledge · long pledge (unframed)", "unframed": true, "route": "/day/morning",
+    "initseed": ".overhaul/day-seed.js", "wait": 1200, "script": ".overhaul/drives/day-long-pledge.js",
+    "note": "a six-line pledge of the user's own, signed: at 852 the pen steps aside and the card ends 120 above the pill; at 375 × 667 the band scrolls (`--scroll=end` shows the signature line 16 above Confirm)." },
+
+  { "frame": "Night 3 Reflection · long entry (unframed)", "unframed": true, "route": "/day/night",
+    "initseed": ".overhaul/day-seed.js", "wait": 1400,
+    "do": "await tap('Begin'); await __sleep(800); await tap('Continue'); await __sleep(700); await tap('Calm'); await __sleep(300); await tap('Next'); await __sleep(700); await tap('Loneliness'); await __sleep(300); await tap('Next'); await __sleep(800); { const el = document.querySelector('textarea'); const d = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), 'value'); d.set.call(el, 'Sam called at the right moment and we talked for an hour about nothing much, which was exactly what I needed after the afternoon. I nearly opened the browser at four but went for a walk instead and the feeling passed before I got to the end of the road. Tomorrow I want to do the same thing earlier.'); el.dispatchEvent(new Event('input', { bubbles: true })); } await __sleep(600)",
+    "note": "ten lines: the notebook keeps its place at 852 (68 clear), drops out at 375 where the text ends 26 above Continue." }
 ]

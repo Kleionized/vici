@@ -21,6 +21,7 @@ import {
 import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/backend';
 import { shortDate } from '@/lib/format';
 import { mono } from '@/lib/theme';
+import { pledgeText } from '@/lib/pledge';
 
 /**
  * 92C · Your vow — the flag hero, then the vow read back in its card (the kit
@@ -68,7 +69,7 @@ export default function Vow() {
 
   // newest first: a re-signed vow is the one read back
   const vow = journal.find((entry) => entry.tag === 'Vow') ?? journal.find((entry) => entry.tag === 'Pledge');
-  const text = vow?.body ?? PLACEHOLDER;
+  const text = pledgeText(vow) || PLACEHOLDER;
   const signedAt = vow?.createdAt ?? user?.createdAt;
   const held = signedAt ? Math.max(0, Math.floor((now - signedAt) / DAY)) : 0;
   const name = user?.displayName?.split(' ')[0] || 'You';

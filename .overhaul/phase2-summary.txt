@@ -1,0 +1,281 @@
+===== curriculum tsc True
+  F Today Home Task: 0.42% | changed: Data only: cardSummary for days 2–84 is now practice[0]'s first sentence. Day 1 is unchanged, and the run verifies it against both frames and task-src. Re-audited: 0.42 %, the same as before. | sizes: 375x667 / 390x844 / 430x932 not re-swept: the day-1 strings are byte-identical to Phase 1 and none of these seeds' rows changed. Day 58 (the longest sentence) w
+  F Night Action Reminder: 0% | changed: Data only. Re-audited: 0 %. | sizes: Day 1 unchanged. Day 58 at 393x852: 'Choose contact that fits' over the 196-character sentence in four 15/24 lines; the charger hero and Done / Skip tonight are
+  F Morning Task Check: 0% | changed: Nothing on screen. Re-audited: 0 %. | sizes: Day 1 recipe unchanged (yesterday's action comes from the seed). Day 58 with yesterday naming L58's sentence, at 393x852: the Yesterday card is six 19/28 lines 
+  F Today Home II: 0.42% | changed: Nothing. Re-audited as a sanity check: 0.42 %, unchanged. | sizes: At day 58 Today II's own account has no named action, so it shows the lesson register with L58's sentence. That state was checked at 393x852 and 375x667, page t
+  CO curriculum (D339): DONE. scripts/overhaul/gen-curriculum.mjs now sets task.cardSummary as follows. Day 1 is read from the frames: Today-Home-Task's line after 'Today’s task: Prepare for tonight' and Night-Action-Reminder's line after its title. The run fails unless both agree with curled task-src.js
+  CO DEVIATION to rule on: L64's practice[0] opens with 'This exercise is optional.' That sentence states no task, and Morning would ask 'Did you complete this task? Yesterday: This exercise is optional.' So L64 skips that sentence and takes the next one: 'You can name one present-day reaction and prepar
+  CO Dropped the deprecated two-board task fields (task.title, secondTitle, intro, options, done, close, board, intro2, flow), the TaskBoard, TaskIntro, TaskFlow and TaskOption types, and titleSize. Before removing them I grepped src and scripts: no reader is left. The titleSize hits are Hero/sosResponse
+  CO scripts/overhaul/curriculum-legacy.json was not touched (it is not on my edit list). It still feeds summary and the week name/blurb cross-check. Its task layouts are now unused but still in the file.
+  CO src/lib/curriculum.ts: fixed the stale header comment. It now says Vici Overhaul and the generator, that the reader is content/lessons.ts (1,273 frames) at /lesson/day/[day], and that /lesson-card and /task redirect (D324). The bodyMarkdown and estimatedMinutes notes now say summary is the previous 
+  CO Verification: audit-fast gives Today Home Task 0.42 % (the known mock-tile residual; the task row is identical), Night Action Reminder 0 %, Morning Task Check 0 %, Today Home II 0.42 % (unchanged). Seeds for day 58 are built by .overhaul/curriculum-d58-seeds.mjs, which copies today-ii-seed.js and da
+  OPEN L64's preface skip goes beyond D339's literal wording and is waiting for the orchestrator to accept or revert it (see carryOver).
+  OPEN D339's stated range of 62–196 characters is wrong: it is 17–196. Very short card lines include L70 'Review your plan.', L20 'Close triggering content.', L4 'Plan the next sleep period.' and L9 'Add After a slip to your plan.'. They are accurate but terse under the lesson title. No layout problem.
+  OPEN Note for the today/day groups, no layout fix needed: every curriculum sentence fits. At 393x852 the longest one makes Today page two 41 pt taller than the viewport. At the page top the tiles are cut by the tab bar until the pager snaps to the page foot, which is D230 as designed. Morning Task Check 
+  OPEN Behaviour note for today (pre-existing, more visible now): the night check-in on day N names L(N)'s sentence as day N+1's action. So Today on day N+1 shows 'Today’s task: <L(N) title>' while the lesson tile shows L(N+1). Separately, an action stored before this change uses the previous drop's senten
+  REQ Rule on the L64 exception. It is kept unless you say otherwise; reverting means emptying PREFACE in gen-curriculum.mjs and dropping its L64 assertion. Then fold D339's outcome into DECISIONS.md / decisions/curriculum.md (I did not edit decision files): cardSummary is 17–196 characters, median 71, longest L58; the two-board fields and titleSize are removed.
+  REQ Optional cleanup outside my file list: scripts/overhaul/curriculum-legacy.json still holds the unused two-board task layouts. It could be slimmed to {weeks, days:[{day,title,summary}]}; the generator reads only summary, title (for --table) and the week fields.
+  FILES /Users/admin/Documents/Vici/scripts/overhaul/gen-curriculum.mjs, /Users/admin/Documents/Vici/src/content/curriculum84.ts, /Users/admin/Documents/Vici/src/lib/curriculum.ts, /Users/admin/Documents/Vici/.overhaul/curriculum-d58-seeds.mjs, /Users/admin/Documents/Vici/.overhaul/curriculum-d58-today-seed.js, /Users/admin/Documents/Vici/.overhaul/curriculum-d58-night-seed.js, /Users/admin/Documents/Vici/.overhaul/curriculum-d58-morning-seed.js, /Users/admin/Documents/Vici/.overhaul/recipes/curriculum.json
+===== medallions-letters tsc True
+  F Medallions: 0% | changed: nothing | sizes: 375x667 ok (grid 3x2 at 254, row 2 ends 508, clear of the bar at 563); 390x844 ok; 430x932 ok (1fr columns widen, page = window)
+  F Medallions Still To Earn: 0% | changed: nothing (carry-over re-checked) | sizes: 375 ok (centred row, bar whole); 390 ok; 430 ok. Fresh account (11 unearned, two pages) checked at all four sizes: row-2 bars a full 3 pt (375: y 531-534, above
+  F Album Earned II: 0.003% | changed: nothing | sizes: 375 ok; 390 ok; 430 ok (page 2 lands on scrollLeft = clientWidth at every width)
+  F Breakwater Paper: 0.002% | changed: quote measure held to the frame's 305 on phones wider than 393 (Board.tsx). No-op at 393 | sizes: 375: scrolls between nav and pill per D320, so the quote sits below the fold until scrolled. The .end capture shows it whole, 24 above the pill. 390 ok. 430 ok 
+  F Breakwater Bronze: 0.002% | changed: quote measure (shared Board.tsx) | sizes: 375 ok (scrolls, D320); 390 ok; 430 fixed: was 'The wall is / real now.', now 'The wall / is real now.' as the frame
+  F Breakwater Silver: 0.003% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Breakwater Gold: 0.003% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 fixed: was 'flood you now / only gets loud.', now the frame's 'flood you / now only gets loud.'
+  F Breakwater Platinum: 0.004% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 fixed: was 'changed. The / wall did.', now 'changed. / The wall did.'
+  F Tiers Vidi: 0.013% | changed: nothing | sizes: 375: scrolls, and the count block appears in the .end capture; 390 ok; 430 ok
+  F Tiers Vici: 0.001% | changed: nothing | sizes: 375 ok (scrolls, count block reachable); 390 ok; 430 ok
+  F Tiers Rebound: 0.001% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers Breakwater: 0.002% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers Logbook: 0.001% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers Pulse: 0.001% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers Archive: 0% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers Lessons: 0.004% | changed: nothing | sizes: 375 ok (scrolls); 390 ok; 430 ok
+  F Tiers One-offs: 0.001% | changed: nothing | sizes: 375 ok (fits, no scroll needed); 390 ok; 430 ok
+  F Detail Paper: 5.648% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 fixed: the quote had dropped onto one line and moved the whole block 13 lower; it now stays 2 lines at T 170, as at 393
+  F Detail Bronze: 0.001% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 ok (frame's breaks)
+  F Detail Silver: 0.002% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 fixed: was 'outlasted. This / stopped … unsure of a / while ago.', now the frame's three lines
+  F Detail Gold: 0.001% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 ok (frame's breaks)
+  F Detail Platinum: 0.005% | changed: quote measure (shared) | sizes: 375 ok (scrolls); 390 ok; 430 fixed: now the frame's 'hasn’t / changed. … it / moves anymore.'
+  F Letter Arrival: 0% | changed: nothing | sizes: 375 ok (kit HeroBoard lifts hero and stack; nothing under the pill); 390 ok; 430 ok (the body takes one line; kit board)
+  F Letter Read: 0% | changed: nothing | sizes: 375: the card's column scrolls inside the card under the 70 fade, and the .end capture shows the sign-off clear of the fade; 390 ok ('disappearing.' wraps, natu
+  F Medallion Letter: 0.547% | changed: nothing | sizes: 375 ok (column scrolls; .end shows the enclosure card whole); 390 ok; 430 ok
+  F Yearly Drop: 0.103% | changed: nothing | sizes: 375: the offer scrolls between nav and pill (D320); the card is cut flush at the pill top at rest, and the .end capture shows the perks whole; 390 ok; 430 ok (p
+  F Drop Received: 0% | changed: nothing | sizes: 375 ok; 390 ok; 430 ok
+  CO Remove the KKMedallion shim: DONE. grep of src/ and scripts/ found no importer, and the shim is deleted from src/components/keepsakes/Medallion.tsx. D272 is updated, and lint-mono and tsc are clean
+  CO Re-check the Still-to-earn pager at 375x667 and with 3+ unearned faces (the verifier's medium): VERIFIED, no change needed. With the fresh account (11 unearned, two pages) at 375x667, row-2 bars draw their full 3 pt at y 531-534, above the tab bar at 563, on both pages. Also checked at 393, 390 and 
+  CO D340, tabs go back through history: VERIFIED with .overhaul/ml-backpaths.mjs (8 flows, every step ok). Today → Journey → Back goes to /today. Album → board → 'See every tier' → Back returns to the board. 'Back to medallions' on a ladder goes to /milestones, and the next Back goes to /today. One-off 
+  OPEN User call (D274): Detail Paper computes 'First at ×5' and stories[0] where the frame prints the previous drop's '×1' and 'Nine minutes…'. This costs 5.65 % on that frame. Reverting to the frame's words means a `waiting` line on KK_ALBUM.vici
+  OPEN User call (D275): the medallion letter encloses the account's Vici, where the frame shows Rebound. Switching is one line in src/app/medallion-post.tsx
+  OPEN At 375x667 the medallion boards and ladders scroll between nav and pill (D320). At rest the quote or count block is below the fold (fully hidden on the framed boards, cut mid-line on one-off boards). This is the kit ScrollRegion's flush-to-pill edge; no lift or fade was invented
+  OPEN Album Earned II keeps a 36 px glyph-raster residual (the 'l' of 'Jul 20') inside the scrolled pager. The boxes are identical
+  REQ PHASE1 and CRITIC §7 (row for src/components/keepsakes/Medallion.tsx) still list KKMedallion as an export to keep. It is now deleted per the Phase 2 carry-over; nothing imports it. Please drop it from those lists
+  REQ DECISIONS.md: merge .overhaul/decisions/medallions-letters.md (D270–D279). D272 is now updated for the shim removal, and D279 gains two Phase 2 bullets: the quote keeps the frame's 305 measure on wider phones, and Mail's 'Tier I' casing. Mark D057/D059/D060/D061/D062/D100/D101/D102/D137/D138 superseded
+  REQ Bug in .overhaul/drive.js (orchestrator's): `window.scrollBy(dy, sel)` falls back to `window.scrollBy(0, dy)` when no scroller exists. That call re-enters the override with sel = dy and throws "'4000' is not a valid selector", which raises an Uncaught Error overlay in the capture. Any recipe that calls scrollBy on a page that fits will capture the overlay. Fix: keep the native function, e.g. `cons
+  FILES /Users/admin/Documents/Vici/src/components/keepsakes/Medallion.tsx, /Users/admin/Documents/Vici/src/components/keepsakes/Board.tsx, /Users/admin/Documents/Vici/src/app/mail.tsx, /Users/admin/Documents/Vici/.overhaul/decisions/medallions-letters.md, /Users/admin/Documents/Vici/.overhaul/recipes/medallions-letters.json, /Users/admin/Documents/Vici/.overhaul/ml-backpaths.mjs, /Users/admin/Documents/Vici/.overhaul/ml-unframed.mjs
+===== sos-boards tsc True
+  F SOS Challenge: 0% | changed: The challenge card sentence now wraps `pretty`. At 375, 390 and 393 that is identical to the greedy wrap (measured on :8097), so the frame is unchanged at 0.00 %. At 430 the greedy wrap had left 'minu | sizes: 375x667 ok: art dropped by design, card and stack clear the pill, no overlap. 390x844 ok: same breaks as 393. 430x932 ok after the fix: card reads '…or ⏎ go sta
+  F SOS Loc Bed: 0% | changed: nothing | sizes: 375 ok (no lift, 40 pt above pill; forced break holds) / 390 ok / 430 ok (ground full-bleed, bed scene edge to edge)
+  F SOS Loc Bathroom: 0% | changed: nothing (recipe note updated: deep link landed) | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Loc Home Alone: 0% | changed: nothing (recipe note updated) | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Loc Private Room: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Loc Work: 0% | changed: nothing | sizes: 375 ok (forced 'more private.' break holds) / 390 ok / 430 ok (hills full-bleed)
+  F SOS Loc Public: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Loc Elsewhere: 0% | changed: nothing | sizes: 375 ok (2-line title, 29+ pt above pill) / 390 ok / 430 ok
+  F SOS Feel Turned On: 0% | changed: nothing | sizes: 375 ok (hero and stack lifted, 16 pt above Done, ghost clear) / 390 ok / 430 ok
+  F SOS Feel Bored: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Lonely: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Stressed: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Anxious: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Angry: 0% | changed: nothing | sizes: 375 ok (lifted, mountain ground full-bleed) / 390 ok / 430 ok
+  F SOS Feel Low: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Rejected: 0% | changed: nothing | sizes: 375 ok (largest lift; art stays under the nav, 2-line title intact, 16 pt above Done) / 390 ok / 430 ok
+  F SOS Feel Tired: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Restless: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Numb: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Ashamed: 0% | changed: nothing | sizes: 375 ok (lifted) / 390 ok / 430 ok
+  F SOS Feel Unknown: 0% | changed: nothing | sizes: 375 ok (3-line body with forced breaks, lifted, 16 pt above Done) / 390 ok / 430 ok
+  F SOS Trig Content: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Doomscroll: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Fantasy: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Late Phone: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Habit: 0% | changed: nothing | sizes: 375 ok (small lift; 2-line title and body clear the pill) / 390 ok / 430 ok
+  F SOS Trig Cant Sleep: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Argument: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Rejection: 0% | changed: nothing (recipe note updated) | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Alone: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  F SOS Trig Unknown: 0% | changed: nothing | sizes: 375 ok / 390 ok / 430 ok
+  CO Everyone, D340 (tabs go back through history): back paths checked by driving the app. All → Rough days → protocol ✕ → /rough-days; → The first 90 seconds ✕ → /rough-days; Rough days back → /all. Protocol Done and Not tonight → /rough-days. Opened cold, Rough days back → /all; this fallback was chang
+  CO settings' carry-over (`all.tsx` ?key=lonely → ?key=loneliness) is settings' file. On my side, rdProtocolKey already maps 'lonely' to Loneliness; re-verified that /rough-protocol?key=lonely opens 'Lonely tonight.'
+  CO D263 (from Phase 1): resolved. sos-flow now passes onBack on feeling-said, SOS Challenge draws its chevron and diffs 0.00 %.
+  CO D268 (from Phase 1): the mock-only /urge?board= link has landed (D336). The three D038 boards are reached through it and audit at 0.00 %; the recipe notes are updated.
+  OPEN SOS Challenge at 430x932: the body breaks 'Rejection makes quick comfort look more valuable than it ⏎ is. Don’t check their profile.' This is the frame's own `pretty` wrap with no orphan. Keeping 'it is.' together would need a no-break space in the generated copy (gen-sos-boards.mjs plus a normalisa
+  OPEN Still flagged for the user from Phase 1 (Q2): four boards keep `Done` (Loc-Elsewhere, Trig-Cant-Sleep, Trig-Alone, Trig-Unknown) although they advance exactly like their `Continue` siblings. They are implemented verbatim from the frames.
+  OPEN sos-breaks.mjs reports '31 frames: every break matches'. gen-sos-boards.mjs regenerates sosResponses.ts byte for byte (checked against a scratch output).
+  FILES /Users/admin/Documents/Vici/src/components/urge/boards.tsx, /Users/admin/Documents/Vici/src/app/(app)/rough-days.tsx, /Users/admin/Documents/Vici/src/content/roughDays.ts, /Users/admin/Documents/Vici/.overhaul/recipes/sos-boards.json, /Users/admin/Documents/Vici/.overhaul/decisions/sos-boards.md, /Users/admin/Documents/Vici/.overhaul/f-sosb-rp-sweep.mjs, /Users/admin/Documents/Vici/.overhaul/f-sosb-chal-wrap.mjs, /Users/admin/Documents/Vici/.overhaul/f-sosb-dash.mjs, /Users/admin/Documents/Vici/.overhaul/f-sosb-sheet.mjs
+===== logs tsc True
+  F Log Chooser: 0% | changed: nothing | sizes: 375x667: notebook hero drops out (D320 rule 1). 'How strong, what / fed it, what you did' wraps balanced inside the 84 row. Rows and pill are clear. 390x844: as
+  F Lapse When: 0.001% | changed: nothing | sizes: 375x667: chips fit 327 exactly, wheel complete, date row ends 10 above Continue. 390x844 and 430x932: fine.
+  F Lapse Trigger: 0.001% | changed: nothing | sizes: 375x667: match hero hidden. Chips wrap the frame's way (Stress Boredom Lonely / Tired Social Phone / Late night Argument / Craving) and clear the pill. 390x844 
+  F Lapse Done: 0% | changed: nothing | sizes: 375x667: the stack rises under the nav. Card (When / Set off by / Changed) ends 17 above Continue, and the sub breaks 'changed for / next time.' as the frame do
+  F Log Urges: 0% | changed: nothing | sizes: 375x667: the page scrolls whole and the last visible row is cut under the bar (D283: that cut says 'scroll'). The .end capture shows all five rows clear of the 
+  F Log Check-ins: 0% | changed: nothing | sizes: 375x667: three rows plus a cut row; the .end capture reaches the twelfth row clear of the bar. 390x844: five whole rows; .end fine. 430x932: seven whole rows; .
+  F Log Reports: 0.426% | changed: weekLabel() now builds the same-month form with dateRange() (carry-over). The output is unchanged and confirmed by re-audit and the 375 .end capture. | sizes: 375x667: the rows start under the fold; the .end capture shows all four rows clear of the bar. 390x844 and 430x932: all four rows visible, spark centred.
+  F Urge Overview Summary: 0% | changed: nothing | sizes: 375x667: five rows fit under the standing head (the .end capture is identical, nothing to scroll). 390x844 and 430x932: fine.
+  F Urge Overview: 0% | changed: nothing | sizes: 375x667: the Tiredness row is cut at the bottom edge. The .end capture scrolls the pane under the standing head and the last row clears. 390x844 fine. 430x932: 
+  F Urge Overview Mood: 0% | changed: nothing | sizes: 375x667: four bubbles fit in 327 (Tense 88 … Low 36), names and counts not clipped. 390x844 and 430x932: centred. With the app's own SOS feelings (unframed seed
+  F Urge Overview When: 0% | changed: nothing | sizes: 375x667: dial labels inside the window; place rows reached by scrolling (the .end capture is clean). 390x844 and 430x932: fine. With the app's own places, the l
+  F Report Ready: 0% | changed: nothing | sizes: 375x667: HeroBoard lifts hero and stack together. The line sits 20 above 'Open the report', and 'Later' is clear. 390x844 fine. 430x932: the chartUp floor line 
+  F Weekly Report: 0.012% | changed: nothing | sizes: 375x667: line and letters clear; nothing below to scroll. 390x844 fine. 430x932: the line scales to the column and the dots stay round.
+  F Weekly Report Days: 0.003% | changed: nothing | sizes: 375x667, 390x844 and 430x932: seven cells and the 'Last week' row fit, with the wave cell on F.
+  F Weekly Report Urges: 0% | changed: nothing | sizes: 375x667, 390x844 and 430x932: three 56 rows clear. With no urges (unframed Jul 7–13 seed), it shows 0 / 'Urges this week' / 'No urges logged this week.'
+  F Urge Log Intensity: 0% | changed: nothing | sizes: 375x667: thermometer hero hidden. Bars, numbers and the Intense / 'Hard to resist' reading clear the pill. 390x844 fine. 430x932: fine, hero top-anchored.
+  F Urge Log Trigger: 0.001% | changed: nothing | sizes: 375x667: hero hidden, chips wrap as the frame does. 390x844 and 430x932: fine.
+  F Urge Log Outcome: 0% | changed: nothing | sizes: 375x667: clipboard hero hidden, five option rows end 33 above the pill. 390x844 and 430x932: fine.
+  F Urge Log When: 0.001% | changed: nothing | sizes: 375x667: wheel complete, date row 10 above 'Log the urge'. 390x844 and 430x932: fine.
+  F Urge Log Done: 0.001% | changed: nothing | sizes: 375x667: 'Twenty-three ridden out. Two to Bronze.' on one line; card ends 24 above Done. 390x844 and 430x932: fine.
+  F Settings Weekly Report: 0.012% | changed: nothing | sizes: Same board as Weekly Report at all three sizes.
+  CO normalizeReasons(): no change needed, after a grep of the whole of src. No logs-group screen prints a check-in's reasons. Log Check-ins rows read the night's first feeling, else the morning mood word; the weekly report and Insights read moods and events. The only readers of `reasons` are checkin.tsx
+  CO weeklyReport.ts:51 cross-month label: done, with one deviation from the instruction. weekLabel() now builds the same-month form with dateRange() ('Jul 14–20'), and buildWeeklyReport() uses weekLabel() instead of its own copy (the local MONTHS table is gone). Across two months it keeps the SPACED en 
+  CO D340 (tabs go back through history): walked all logs back paths (see unframed). Every one lands where it should, including history.back() from Today returning to /log.
+  OPEN Log Reports 0.426 %: the sparkline is data, while the frame's curve is a stylised rise that contradicts its own −4 row. Recorded residual; this can only change if the orchestrator rules the spark decorative.
+  OPEN Weekly Report / Settings Weekly Report 0.012 %: the frame's 329/330 svg squash of the day letters. Kept round on purpose (D287).
+  OPEN Sub-pixel anti-aliasing specks (≤ 12 px per frame) on chip curves, cell rims and the done disc: Lapse When / Trigger, Urge Log Trigger / When / Done, Weekly Report Days.
+  REQ src/lib/format.ts dateRange() (D388) closes up the cross-month dash ('Jun 30–Jul 6'), but the only frame that draws a cross-month week, Log-Reports.html, writes 'Jun 30 – Jul 6' (spaced U+2013). Consider making dateRange() space the dash across months (and updating D388's checks). weekLabel() could then call it for both forms; for now weeklyReport.ts keeps the spaced form itself. The Phase 2 carry
+  REQ Still open from Phase 1, unchanged and verified today. (1) The (app)/_layout.tsx launch gate still delivers Report Ready only when hasReportContent is true (a mood logged that week), while the report draws every week the account lived; gate on any dayStatuses(week) other than 'none' if the arrival should match. (2) Kit RuledRow has no labelLines/ellipsis option, so DotRows keeps a local row. (3) P
+  REQ drive.js tap() fires the first matching control in DOM order. Covered stack screens stay mounted on web, so 'Back' / 'Continue' can hit a hidden screen's control. A visible-only filter (elementFromPoint at the element's centre) would make multi-screen recipes reliable; I used one locally for the back-path walk.
+  FILES /Users/admin/Documents/Vici/src/app/(app)/log.tsx, /Users/admin/Documents/Vici/src/lib/weeklyReport.ts, /Users/admin/Documents/Vici/.overhaul/decisions/logs.md, /Users/admin/Documents/Vici/.overhaul/recipes/logs.json
+===== auth-funnel tsc True
+  F Splash: 0% | changed: nothing | sizes: 375x667 ok (laurel keeps its 330/852 share of the window, wordmark 148 under it); 390x844 ok; 430x932 ok
+  F Login: 0% | changed: Unframed refusal state (AuthBoard/AuthMessage in kit.tsx): the message keeps 12 clear of the email pill and the footer and grows the board when it needs more room. On a 667 phone it scrolls into view  | sizes: 375x667: all four controls on the first screen, footer and caption one short scroll below (the .end capture shows them clear). Kept from D205: lifting by the la
+  F Welcome Back: 0% | changed: Same AuthBoard message fix as Login (shared component); the framed state is unchanged | sizes: 375x667: same as Login (footer 'New here? Create an account' one scroll below; .end clean); 390x844 ok; 430x932 ok
+  F V3 Q24 Name: 0% | changed: nothing | sizes: 375x667 ok (Pencil hero dropped per D320 rule 1; field and Continue clear); 390x844 ok; 430x932 ok (the hero keeps T 506, so the extra 80 falls between the art 
+  F V3 Q25 Age: 0% | changed: nothing | sizes: 375x667 ok (the wheel ends at canvas 571, above the 561 primary top in screen terms, no overlap); 390x844 ok; 430x932 ok
+  F V3 Q26 Gender: 0% | changed: nothing | sizes: 375x667 ok (ID-badge hero dropped per D320; 5 options clear); 390x844 ok; 430x932 ok (the badge floats 80 higher than the frame's bottom-relative place; kit-wid
+  F Onboarding Start: 0% | changed: nothing (recipe added for the long-name state) | sizes: 375x667 ok (the title balances to 3 lines and the HeroBoard lifts; the paragraph sits 16 above Start, the kit's margin); 390x844 ok; 430x932 ok. Unframed long n
+  F V3 Q1: 0% | changed: nothing | sizes: 375x667 ok (no primary; the options scroll a few points, .end clean); 390x844 ok; 430x932 ok
+  F V3 Q2: 0% | changed: nothing | sizes: 375x667 ok (Hourglass dropped per D320); 390x844 ok; 430x932 ok (the hero floats 80 above its frame-relative place; kit-wide, reported)
+  F V3 Q3: 0% | changed: nothing | sizes: 375x667 ok (Compass dropped per D320 although about 300 pt below the 3 options are empty; this is the kit Hero rule, a suggestion is reported); 390x844 ok; 430x
+  F V3 Q3b: 0% | changed: nothing | sizes: 375x667 ok (3-line title, 5 options, Wall-calendar dropped); 390x844 ok; 430x932 ok
+  F First Principle: 0% | changed: nothing | sizes: 375x667 ok (the HeroBoard lifts; the paragraph sits 16 above Continue); 390x844 ok; 430x932 ok (the lighthouse beams and horizon reach both edges)
+  F V3 Q5: 0% | changed: nothing | sizes: 375x667 ok (the chips scroll between the nav and Continue; .end shows 'While scrolling' 40 clear of the pill; the probe's old 'While scrolling under Continue' f
+  F V3 Q6: 0% | changed: nothing | sizes: 375x667 ok (Storm-cloud dropped); 390x844 ok; 430x932 ok
+  F V3 Q7: 0% | changed: nothing | sizes: 375x667 ok (Bed hero dropped); 390x844 ok (the floor reaches both edges); 430x932 ok (the title fits on one balanced line)
+  F What starts it: 0% | changed: nothing | sizes: 375x667 ok; 390x844 ok; 430x932 ok
+  F Transition: 0% | changed: nothing | sizes: 375x667 ok (lifted, 16 above Continue); 390x844 ok; 430x932 ok
+  F V3 Q21: 0% | changed: nothing | sizes: 375x667 ok (Balance-scale dropped); 390x844 ok; 430x932 ok (the hero floats)
+  F What it affects: 0% | changed: nothing | sizes: 375x667 ok (Plant dropped, chips clear of Continue); 390x844 ok; 430x932 ok
+  F V3 Q10: 0% | changed: nothing | sizes: 375x667 ok (Desk-lamp dropped); 390x844 ok; 430x932 ok (the floor sits 110 above the bottom edge, not 30; kit-wide, reported)
+  F V3 Q13: 0% | changed: nothing | sizes: 375x667 ok (Open-door dropped); 390x844 ok; 430x932 ok (the floor floats; kit-wide)
+  F V3 Q15: 0% | changed: nothing | sizes: 375x667 ok (Flag dropped); 390x844 ok; 430x932 ok (the floor floats; kit-wide)
+  F V3 Q16: 0% | changed: nothing | sizes: 375x667 ok (Signpost dropped); 390x844 ok; 430x932 ok (the floor floats; kit-wide)
+  F V3 Q17: 0% | changed: nothing | sizes: 375x667 ok (the chips scroll; .end shows 'Nothing yet' clear of Continue; the old probe flag is gone); 390x844 ok; 430x932 ok
+  F Goal Confirmation: 0% | changed: nothing (recipe added for another reading) | sizes: 375x667 ok (lifted; the card wraps '…what you’re / trying to stop. Porn is.' and sits 16 above Continue); 390x844 ok; 430x932 ok (greedy '…trying to / stop. Por
+  CO FUNNEL_GLYPHS: already removed in Phase 1 (D200). Re-verified: grep finds no consumer in src/ or scripts/overhaul/, and a dry run of scripts/overhaul/gen-funnel.mjs --out=<scratch> is byte-identical to src/content/onboardingFunnel.ts. Nothing left to drop.
+  CO settings-seed lifeMap.values: .overhaul/settings-seed.js now stores [{label:'Presence',importance:5},{label:'Health',importance:4},{label:'Honesty',importance:3}] (Life Map's own save order). The two seeds that copy the same dataset, .overhaul/settings-profile-seed.js and .overhaul/r-set-seed-pinned
+  CO Readers of lifeMap.values checked: src/app/(app)/lifemap.tsx is the only reader. It accepts both shapes, which I kept for older mock rows, and it showed the three seeded values checked. Writers: welcome.tsx finish() ({label, importance:3}), lifemap.tsx save, and convex/lifemap.ts update, whose valid
+  CO D340 back paths: Life Map ← All goes back to /all (verified headless). Name → Back → /sign-in still works; Welcome Back footer → Login and sign-up form → Back → gate pass (af-func 56/56). af-func's old 'door reached by Back draws the chevron' expectation was wrong: that path is a replace with nothin
+  OPEN 375x667 doors (Login, Welcome Back, sign-up gate): the footer link and caption are one short scroll below the four controls (D205, kept). Every option that would fit them on the first screen either drops the laurel or tightens the frame's gaps, and D320 does not list those.
+  OPEN Pre-existing, not changed: All's 'Before the app' rows (Sign in, Create account, Welcome back, Splash, Onboarding) bounce an onboarded, signed-in account to Today/'/'. The door guards in (auth)/_layout.tsx and (onboarding)/_layout.tsx do this, and they are identical in refs/snapshots/pre-overhaul-fu
+  REQ Kit Hero on taller phones: the question boards' spot heroes are bottom-relative compositions. T 506 puts the box bottom at the primary's top; T 582 puts it 30 above the frame edge. The kit keeps the canvas top, so on 430x932 the extra 80 opens between the art and the primary, and floors such as Flag, Signpost, Open-door and Desk-lamp sit 110 above the bottom edge instead of 30. Every group's quest
+  REQ Kit Hero on 375x667 (optional): `controls` drops a T 582 hero even when the content ends far above it (V3 Q3: 3 options end near canvas 383 and about 300 pt are empty). Lifting the hero by the deficit while it stays 16 clear of the content would keep the art there; HeroBoard already lifts this way. This would also be an app-wide change.
+  REQ ScrollRegion (src/components/mono/Screen.tsx): add `ref?: Ref<ScrollView>` to its typed props. React 19 already passes it through `...rest`; kit.tsx reaches it with a cast spread (`{...({ ref } as { ref?: Ref<ScrollView> })}`) to scroll the door's refusal into view.
+  REQ Minor, kit HeroBoard: on a lift it keeps the stack 16 above the primary. D320's scroll rule pads 24 (controls + 24). On 375 Start, First Principle and Goal Confirmation the paragraph or card sits 16 above the pill. Consider 24 for one margin app-wide.
+  FILES /Users/admin/Documents/Vici/src/components/auth/kit.tsx, /Users/admin/Documents/Vici/.overhaul/settings-seed.js, /Users/admin/Documents/Vici/.overhaul/settings-profile-seed.js, /Users/admin/Documents/Vici/.overhaul/r-set-seed-pinned.js, /Users/admin/Documents/Vici/.overhaul/recipes/auth-funnel.json, /Users/admin/Documents/Vici/.overhaul/decisions/auth-funnel.md, /Users/admin/Documents/Vici/.overhaul/af-func.mjs
+===== slip tsc True
+  F Slip Entry: 0% | changed: nothing | sizes: 375x667: hero and stack lift together (D320 rule 2), ghost clear of the pill; 390x844 and 430x932: as drawn, no clipping. OK at all three
+  F Slip Close It: 0% | changed: nothing | sizes: 375: lifted, body has two clean lines above the pill; 390/430: as drawn. OK
+  F Slip When: 0.001% | changed: Short-phone lift added to SlipQuestion (shared by 98C/98D/98F/98J): a stack that would end within 24 pt of the controls rises by that deficit, never above canvas 108, and only scrolls after that. Lift | sizes: 375x667: before this pass the band scrolled its last 14 pt. Now the stack rises 14 pt and the date row sits 24 pt above Continue, with no scroll, the same as lo
+  F Slip Fed: 0.001% | changed: Shares the SlipQuestion lift; it is 0 on this board at every size, so nothing visible changed | sizes: 375: the bottom nightPhone hero drops out (D320 rule 1) and the four chip rows fit with no lift; 390/430: the hero is drawn and clear of the pill. OK
+  F Slip Logged: 0% | changed: SlipDone now lifts the disc and stack toward 108 before it scrolls, and is hidden until measured. 98E values join their last two words with a no-break space (display only; storage keeps the ' · ' join | sizes: 375x667: before this pass the band started at canvas 200, so the third row met the pill and the fourth was below the fold (the old sweep flagged it as under-con
+  F Slip Urge Now: 0.001% | changed: Shares the SlipQuestion lift (0 here) | sizes: 375: the tab hero drops out and the four options fit; 390/430: the hero is drawn and clear of the pill. The headline keeps its two drawn lines at every width. O
+  F Slip Dont Fail Twice: 0% | changed: nothing | sizes: 375: lifted, clear; 390/430 as drawn. OK
+  F Slip Stop Here: 0% | changed: nothing | sizes: 375: lifted, two-line body clear of the pill; 390/430 as drawn. OK
+  F Slip Third: 0% | changed: nothing | sizes: 375: lifted, the #111111 dark tone and white pill hold; 390/430 as drawn, and the charger floor line runs edge to edge. OK
+  F Slip Pledge: 0% | changed: Shares the SlipQuestion lift: 0 for the sample pledge, 28 pt then a scroll for a three-line pledge at 375 | sizes: 375: the fountainPen hero drops out and the card sits clear above Sign it again; 390/430: the hero is drawn. Unframed long-pledge state: at 393 the hero drops a
+  F Slip Begin Again: 0% | changed: nothing | sizes: 375: lifted; the sunrise ground runs edge to edge at 390 and 430. OK
+  F Slip Morning After: 0% | changed: nothing | sizes: 375: lifted, ghost 'Later' clear; 390/430 as drawn. OK
+  F Slip Feel Ashamed: 0% | changed: nothing | sizes: 375: lifted, three-line body clear of the pill; 390/430 as drawn. OK
+  F Slip Feel Bored: 0% | changed: nothing | sizes: 375/390/430 OK; the stairs floor reaches the edges
+  F Slip Feel Lonely: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Feel Stressed: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Feel Rejected: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Feel Tired: 0% | changed: nothing | sizes: 375/390/430 OK; the bed floor reaches the edges
+  F Slip Feel Turned on: 0% | changed: nothing | sizes: 375/390/430 OK; the campfire ground reaches the edges
+  F Slip Feel Not sure: 0% | changed: nothing | sizes: 375: the title balances to 'No reason / needed tonight.', a clean two-line break and the lift absorbs it; 390/430: one line as drawn. OK
+  F Slip Trigger Late night: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Scrolling: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Sexual content: 0% | changed: nothing | sizes: 375/390/430 OK; the laptop base stays inside the frame
+  F Slip Trigger Boredom: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Loneliness: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Stress: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Argument: 0% | changed: nothing | sizes: 375/390/430 OK
+  F Slip Trigger Couldn’t sleep: 0% | changed: nothing | sizes: 375/390/430 OK; the fixed '\n' break holds at every width
+  F Slip Trigger Being alone: 0% | changed: nothing | sizes: 375/390/430 OK; the openDoor floor reaches both edges (D341)
+  F Slip Trigger Habit: 0% | changed: nothing | sizes: 375/390/430 OK; the fixed two-line headline holds and the signpost hills run edge to edge
+  F Slip Trigger Not sure: 0% | changed: nothing | sizes: 375/390/430 OK
+  CO D340 (tabs go back through history), checked for every way out of /slip. Hub 'I slipped' → /slip → ✕ returns to /urge-hub. All → 'Post-slip flow' → ✕ returns to /all. 98K 'Start again' and 98L 'Later' replace to /today, 98L 'Check in' replaces to /day/morning, and 98F's still-watching answer replace
+  CO No other carry-over items are routed to slip in PHASE2.md
+  OPEN D305 is unchanged: 'I’m already watching again' still router.replace('/urge-hub'), as the app has always done. D149's text says /urge. Switching it is a one-word change in slip.tsx if the orchestrator rules for /urge
+  OPEN The slip range D300–D309 is full, so the Phase 2 changes are written as amendments to D300 and D302 at the end of .overhaul/decisions/slip.md. They need numbers if they are merged into DECISIONS.md
+  OPEN Observed during the back-path test, and not a slip defect: when the session starts on /all (which skips the launch prompt), the first arrival on /today after a slip runs (app)/_layout.tsx's deferred prompt, and the pending letter opens right away. A normal launch on /today shows it at launch as desi
+  FILES /Users/admin/Documents/Vici/src/components/slip/kit.tsx, /Users/admin/Documents/Vici/src/app/slip.tsx, /Users/admin/Documents/Vici/.overhaul/decisions/slip.md, /Users/admin/Documents/Vici/.overhaul/recipes/slip.json
+===== sos-flow tsc True
+  F Cue Intro Modal: 0% | changed: nothing | sizes: 375x667: hero+stack lifted (HeroBoard), body wraps to 3 lines ('…the wave / hits. Six small moves — decide nothing until / it passes.'), 20 clear of Start — ok.
+  F SOS Strength: 0% | changed: nothing | sizes: 375x667: thermometer hero drops (D320 rule 1), bars/reading/controls clear — ok. 390x844: ok. 430x932: ok (larger gap above pill from top-anchored hero, kit-lev
+  F Cue Hue Picker: 0.001% | changed: nothing | sizes: 375x667: door hero drops, five rows clear of Continue — ok. 390x844: door hero also drops (kit Hero rule: art 13.8 from the pill < 16) — acceptable, reported. 4
+  F Surf Step 1: 0% | changed: nothing | sizes: 375x667: lifted, body 2 lines, ~20 clear of Continue — ok. 390x844: ok. 430x932: ok.
+  F Surf Step 3: 0% | changed: nothing | sizes: 375x667: ok (door shadow clear of title). 390x844: ok. 430x932: ok.
+  F Cue Set Confirmation: 0% | changed: nothing | sizes: 375x667: ok. 390x844: ok. 430x932: ok.
+  F SOS Reason Picker: 0% | changed: nothing | sizes: 375x667: chips wrap 2·2·2·2·1, hero drops — ok. 390x844: ok. 430x932: chips rewrap 2·2·3·2 (wider column), hero kept — ok.
+  F SOS Feeling Picker: 0% | changed: nothing | sizes: 375x667: chips wrap 3·2·3·1, hero drops — ok. 390x844: ok. 430x932: ok.
+  F SOS Reassess: 0% | changed: Carry-over re-check: the line is direction-true for every first×second read (walked Faint/Mild/Intense × 5). Fixed the default: the second read now starts at min(1, first read) until answered, so a Fa | sizes: 375x667: hero drops, staircase + reading clear — ok. 390x844: ok. 430x932: ok.
+  F SOS Afterward: 0.014% | changed: nothing | sizes: 375x667: hero drops, card clear of Done — ok. 390x844: ok. 430x932: ok.
+  F Surf Complete: 0% | changed: nothing | sizes: 375x667: body wraps 'start / to finish.' (column 327 < 339), pill and Back to Today clear — ok. 390x844: one line — ok. 430x932: beams reach both edges — ok.
+  F Relapse Log: 0% | changed: nothing | sizes: 375x667: ok. 390x844: ok. 430x932: keeps the frame's 'then stop / it here.' break (D259 \n) — ok.
+  F Relapse Twice: 0% | changed: nothing | sizes: 375x667: ok. 390x844: ok. 430x932: ok.
+  F Relapse Resign: 0% | changed: nothing | sizes: 375x667: pen hero drops, card clear of Sign it again — ok. 390x844: ok. 430x932: pledge on one line — ok.
+  F Relapse Begin: 0% | changed: nothing | sizes: 375x667: ok. 390x844: ok. 430x932: ok.
+  F Urge Hub Now: 0.662% | changed: 375x667: the pane had 24 pt of pointless scroll (band end gap added though content fit) that dragged the head under the nav — CanvasBand now adds END_GAP only when content overflows; the measured bott | sizes: 375x667: lifted with the other panes, chips tucked to 21 under the marker, whole chips (ring no longer clipped), no scroll — ok. 390x844: as drawn — ok. 430x932
+  F Urge Hub Score: 0% | changed: 375x667: head no longer 52 pt lower than its neighbours (one lift for the whole pager). | sizes: 375x667: now lifted by the shared pager lift (head on the same line as the other panes) — ok. 390x844: ok. 430x932: ok.
+  F Urge Hub Proof: 0% | changed: 375x667: head aligned with the other panes (was lifted 34, now the pager's 52). | sizes: 375x667: shared lift, bars + labels clear of the dots — ok. 390x844: ok. 430x932: ok.
+  F Urge Hub Surfed: 0% | changed: 375x667: the card used to be cut mid-way through its fourth row (63 over, scrolling). After the shared lift the card now closes up on its head to 12 under it (65 available, 63 used) — whole card shows | sizes: 375x667: whole card visible at rest, 16 above the dots, no scroll — ok. 390x844: as drawn — ok. 430x932: ok.
+  F Urge Hub Pledges: 0% | changed: 375x667: head aligned with the other panes. (One audit capture failed transiently during another agent's reload; re-run alone: 0 %.) | sizes: 375x667: shared lift, caption clear of dots — ok. 390x844: ok. 430x932: pledge one line — ok.
+  F Urge Hub Breathe: 0.177% | changed: 375x667: the band no longer scrolls 8 pt (end gap only on overflow). | sizes: 375x667: orb fitted (~0.64), phase row 16 above Done, no scroll — ok. 390x844: ok. 430x932: ok.
+  CO Re-check Reassess's direction line (verifier medium): confirmed fixed — reassessLine() follows direction (Coming down / It passed / Holding steady — still at N / Rising), walked for 3 first reads × 5 second reads, no contradiction. Additionally fixed the default second read (min(1, first read) until
+  CO Unframed stages at 375×667 (verifier medium): walked all four stages in the interrupt and the hub chain with .overhaul/f-sosflow-stages.mjs — every spot, tile, caption, orb and ring visible at rest, nothing under a control; fixed the ring stage's 11-pt web scroll and the breathing board's 8-pt scrol
+  CO D340 back paths: /urge, /urge-hub and /relapse close via router.back() (else replace Today); SOS disc pushes /urge — unaffected by history back; hub pager return walks pass.
+  OPEN D256: the SOS settings gear on the hub's breathing board (0.18 % deviation from 85F) still awaits an orchestrator ruling.
+  OPEN D257: Urge Hub Now arc vs clock contradiction stays the frame's one residual (0.66 %).
+  OPEN Copy approvals (CRITIC D-20 batch) still pending: Reassess 'Rising — from X to Y' / 'Holding steady — still at N', 85F Hold/Out heads, 'Under a minute, start to finish.', 85E 'Signed today/yesterday.', 85B second-sentence rule, 85D empty state.
+  OPEN Tap stage caption counts the live number as landed ('One down, four to go' before the first tap, 'Five down, zero to go' on the last) — pre-existing copy, unchanged under G12; worth a copy look.
+  OPEN D256 opt-in orb lights / Starfield / Dawn grounds keep 17 off-palette hexes in stages.tsx (lint-mono) — user's call.
+  REQ Rule on D256: keep the settings gear inside the ✕ on the hub's 85F board, or drop `onSettings` from the hub's BreatheStage (one line in src/components/urge/hub.tsx) so 85F diffs ~0.05 %.
+  REQ Kit Hero `controls` rule (src/components/mono/Hero.tsx): its 16-pt clearance drops Cue Hue Picker's door at 390×844 (art would sit 13.8 above the pill, a margin the 393 frames themselves keep at ≥ 21.8). Optional: a 12-pt floor would keep it; not blocking.
+  REQ Kit/policy note: a ScrollRegion fitted flush to its content clips outside rings (boxShadow) at the band edge, and on web absolutely positioned svg boxes extend scrollHeight past the measured ink. sos-flow handles both locally (1-pt ring in 85A's bottom, ring stage fits its svg box); other groups' bands may want the same check.
+  REQ Still open from Phase 1 (verifier low #7): an optional bottom-anchored mode for question-board heroes so the gap above the pill does not grow at 932.
+  FILES /Users/admin/Documents/Vici/src/components/urge/stages.tsx, /Users/admin/Documents/Vici/src/components/urge/hub.tsx, /Users/admin/Documents/Vici/src/components/urge/flow.tsx, /Users/admin/Documents/Vici/.overhaul/decisions/sos-flow.md, /Users/admin/Documents/Vici/.overhaul/recipes/sos-flow.json, /Users/admin/Documents/Vici/.overhaul/f-sosflow-stages.mjs, /Users/admin/Documents/Vici/.overhaul/f-sosflow-crop.mjs
+===== tail tsc True
+  F Enlisting Aegis: 0.092% | changed: nothing | sizes: 375x667 ok, 390x844 ok, 430x932 ok. Centred stack, nothing near a control (no control drawn).
+  F Where We’d Start: 0.012% | changed: nothing | sizes: 375 ok (HeroBoard lifts; also checked with other answers: long pills wrap to 2 rows, everything clears Continue); 390 ok; 430 ok (three pills on one row).
+  F Start Here: 0% | changed: nothing | sizes: 375 ok (lifted, evidence line clears Continue/Choose another; alt answers checked); 390 ok; 430 ok.
+  F Start Here Step 1: 0% | changed: nothing | sizes: 375 ok; 390 ok; 430 ok.
+  F Start Here Step 2: 0% | changed: nothing | sizes: 375 ok (also the Choose-another board 'When the house empties, / the door stays open.' checked); 390 ok; 430 ok.
+  F Your Plan: 0.001% | changed: The card stack moved from its own ScrollRegion onto the tail Band (lift into the ground under the nav first, then scroll the rest, D219). | sizes: 375 now lifts 62 and scrolls 22: all five cards readable, the last one whole after a 22 pt scroll (was: heading low, fifth card's text under Continue). 390 ok, 
+  F Starting Score: 1.801% | changed: At a full gauge (1,000, which every account opens at) the r6 marker is no longer drawn. At 0° it sat 2.5 right of and 4 under the last zero, so the figure read '1,000.'. Below full the marker is the f | sizes: 375 ok (lifted); 390 ok; 430 ok.
+  F Cost Next 30: 0.011% | changed: Fixed through the Band change (D219). | sizes: 375 now lifts 91 and scrolls 5: key and closing line sit above Next (was: no lift, both under Next behind a 96 pt scroll). 390 ok, 430 ok.
+  F Cost Next 365: 0% | changed: The 25-across grid's x's scale by (window−48)/345, so k = 1 at 393 (D219). Radii and y's are unchanged. | sizes: 375 ok (grid now inside the 24 gutters; it ran to 6 from the edge before). 390 ok. 430 ok (grid now spans the column; it stopped 61 short before).
+  F Cost By Age 80: 0.001% | changed: nothing | sizes: 375 ok, 390 ok, 430 ok: the field fills the window and continues the LCG beyond 393x852. Age 18 'About 6,800 days' also fits at 375.
+  F Line If Nothing Changes: 0% | changed: The chart's x's (axis, lead-in, line, drop, tooltip centre, marker) scale to the column. Strokes, type, y's and the 128 tooltip are unscaled (D219). | sizes: 375 ok (lifted, chart axis now ends at the gutter; it overran to 6 from the edge before). 390 ok. 430 ok (axis and curve now span the column; before, they stopp
+  F Line With the Plan: 0.001% | changed: Same chart scaling as Line If Nothing Changes. | sizes: 375 ok, 390 ok, 430 ok (column-wide).
+  F A Clean Day: 0% | changed: nothing | sizes: 375 ok, 390 ok, 430 ok.
+  F One Bad Day: 0% | changed: nothing | sizes: 375 ok (lifted; the ink line clears Continue). 390 ok, 430 ok.
+  F What You Want Back: 0% | changed: Fixed through the Band change (D219). | sizes: 375 now lifts 85 and scrolls 7: both closing lines read above Continue (was: 'Not a perfect streak…' cut in half under Continue). Alt picks (Sex or intimacy / F
+  F Letter Received: 0% | changed: nothing | sizes: 375 ok (HeroBoard lift), 390 ok, 430 ok.
+  F Letter Week XII: 0% | changed: The ScrollView now stops 96 off the bottom, under the primary and never below it, with end room 58+16 (D219). /letter?variant=week12 (letters group, same component) still diffs 0.00 % against Letter W | sizes: 375: the column scrolls inside the card and its end clears Continue. No line shows any more between Continue and Keep this letter (before, 'room, or used the SO
+  F The Vow: 0% | changed: The vow paragraph wraps 'pretty'. The frame states no text-wrap; at 393 it still breaks as drawn (0.00 %) (D219). | sizes: 375: the signature rises above Sign. The vow now ends on 'next day.' (before, 'day.' sat alone on line 5). 390 ok (4 lines). 430 ok (4 lines).
+  F Medallion Received: 0% | changed: nothing | sizes: 375 ok, 390 ok, 430 ok. The first 375 sweep PNG lacked the noise tile (a capture-time image-load race); the re-capture and the re-sweep have it.
+  CO PHASE2 lists no tail-specific carry-over item.
+  CO 'Everyone: Tabs go back through history (D340)': the tail lives inside /welcome and opens no tab. Its Back chevrons move within the onboarding STEPS (move(i,-1), which skips the conditional questions), and Back on Line With the Plan was exercised: it lands on Line If Nothing Changes. Nothing to chan
+  CO Related cross-group fact (auth-funnel's carry-over): tail no longer imports FUNNEL_GLYPHS (grep: src/ has no reader left; only the retired scripts/vicifull and scripts/uifinal1 generators and a comment in scripts/overhaul/gen-funnel.mjs mention it).
+  OPEN Starting Score stays at 1.80 % by D329: the app's 1,000 against the frame's sample 842. It is an orchestrator ruling, not a defect.
+  OPEN Cost By Age 80's Back chevron is #17160F on #111111, nearly invisible. It is reproduced from the frame (Q3) with a working target. If the orchestrator would rather draw it in ink, that is a one-line change (chevronColor in O3IfNothingChanges).
+  OPEN The vow's 'pretty' wrap and the letter's scroll margin apply on web. Native wraps greedily (D332): at 375 a native build may still end the vow on 'day.' alone. A fixed native break was not added because the copy's break depends on the width.
+  REQ size-sweep.mjs sometimes captures before the noise tile has decoded. On the first 375x667 run of this group, Medallion-Received.png had a flat #0D0D0D ground with 1 distinct value in a 100x100 sample. The current 375x667 folder shows the same for other groups' Breakwater-Silver.png and Lesson-Scroll-1/2/6/7/8/10/11/14.png. Waiting for document images to decode (or a short settle) before the screen
+  FILES /Users/admin/Documents/Vici/src/components/onboarding/tail.tsx, /Users/admin/Documents/Vici/src/components/onboarding/plan.tsx, /Users/admin/Documents/Vici/src/components/onboarding/handover.tsx, /Users/admin/Documents/Vici/.overhaul/decisions/tail.md, /Users/admin/Documents/Vici/.overhaul/recipes/tail.json
+===== lessons tsc True
+  F Lesson Scroll 1: 0% | changed: nothing | sizes: 375x667 fit, clean. 390x844 clean. 430x932 clean, art centred.
+  F Lesson Scroll 2: 0% | changed: nothing | sizes: 375 / 390 / 430 all clean, quote balanced on 2 lines
+  F Lesson Scroll 5: 0% | changed: nothing | sizes: 375x667: scroll mode by design (D313). At scroll 0 the last body line sits under the 150 fade. Scrolled to the end (Lesson-Scroll-5.end.png) the last line ends 
+  F Lesson Scroll 13: 0% | changed: nothing | sizes: 375: the Done-when card wraps to 3 lines ('…setup / is ready.') with text-wrap pretty, no single-word orphan, and the pill is clear. 390 / 430 clean.
+  CO lessons: verify the full sweep's failures. Outcome: the 393×852 sweep has none (0 of 1,273 pages over 0.5 %, worst 0.017 %, all hero anti-aliasing, one confirmed by zoom). Nothing to fix.
+  CO lessons: check the 375×667 size sweep for every page that enters scroll mode. Outcome: done for all 1,273 pages with a new scroll checker. All 98 scroll pages, including the 46 CHECK pages, start at the band top, run under the fade or pill at scroll 0 as D313 expects, and scroll clear: the last row 
+  CO Everyone, D340 tabs go back through history: the reader's ✕ (back(), else /today) lands correctly from Library, Today's task row, the All drawer and a cold deep link. Nothing to fix.
+  OPEN D319/D343: the old reader files stay on disk, unimported, because the session's permission policy refused the delete. They are src/components/lesson/{scroll,reader,pages,cover,coverL1,marks,scenes}.tsx and src/content/{lessonReader,coverScene,readerRoom}.ts. Deleting them still needs the user's appr
+  OPEN At 390×844, L16 F11 and L58 F12 open in scroll mode with their last option under the fade at scroll 0, because the mock build's band is 8 shorter than the canvas's. This follows D313's thresholds and the canvas's own L7 F11 answer, and both pages scroll clear. I noted it rather than add a tolerance 
+  OPEN Native line breaks (D312 BREAKS, 393 width only) cannot be verified on the web build; on other widths native wraps greedily (D332).
+  REQ DECISIONS merge: D317 is amended in .overhaul/decisions/lessons.md. An unknown lesson now shows the kit EmptyState 'Lesson not found' / 'The course has 84 lessons.', following the medallion routes' 'Medallion not found'.
+  REQ The lesson-sweep at sizes other than 393 only captures at scroll 0, so every scroll-mode page shows up as CHECK. .overhaul/scratch/lessons-scrollcheck.mjs adds the end-of-scroll check (last row clears the fade). If you want it in the shared tooling, fold that logic into scripts/overhaul/lesson-sweep.mjs; I did not edit the orchestrator's script.
+  FILES /Users/admin/Documents/Vici/src/app/lesson/day/[day].tsx, /Users/admin/Documents/Vici/.overhaul/decisions/lessons.md, /Users/admin/Documents/Vici/.overhaul/recipes/lessons.json, /Users/admin/Documents/Vici/.overhaul/scratch/lessons-scrollcheck.mjs, /Users/admin/Documents/Vici/.overhaul/scratch/lessons-func.mjs, /Users/admin/Documents/Vici/.overhaul/scratch/lessons-heroclip.mjs, /Users/admin/Documents/Vici/.overhaul/scratch/lessons-montage.mjs, /Users/admin/Documents/Vici/.overhaul/scratch/lessons-zoom.mjs

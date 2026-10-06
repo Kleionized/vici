@@ -5398,7 +5398,9 @@
     "status": "ok"
    }
   ],
-  "notes": []
+  "notes": [
+   "F8: tap from F7 did not advance (rail 41% ≠ 47%) — opened by link"
+  ]
  },
  "51": {
   "week": "Week-08-Boredom-and-Meaning",

@@ -166,6 +166,12 @@ for (const n of pick) {
       const got = await railPct();
       if (!ok || got !== want) { notes.push(`F${k}: tap from F${k - 1} did not advance (rail ${got}% ≠ ${want}%) — opened by link`); await open(k); }
     }
+    await page.evaluate(async () => {
+      // every image decoded (the noise tile is a background image backed by an <img>),
+      // then two frames so RN-web's onLoad re-render has painted it
+      await Promise.all([...document.images].map((i) => (i.complete ? (i.decode ? i.decode().catch(() => {}) : null) : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    });
     const buf = await page.screenshot();
     const slug = `L${n}-Frame-${k}`;
     if (canvas) {
@@ -176,17 +182,39 @@ for (const n of pick) {
       process.stderr.write(`L${n} F${k}: ${r.share}%${r.share > MAX ? '  FAIL' : ''}\n`);
     } else {
       // other sizes: find content that runs under the bottom control or off-screen
-      const info = await page.evaluate(() => {
+      const probe = () => {
         const vh = window.innerHeight;
         const ctl = [...document.querySelectorAll('[aria-label="Next"],[role="button"]')].map((e) => e.getBoundingClientRect()).filter((r) => r.top > vh * 0.75);
         const ctlTop = ctl.length ? Math.min(...ctl.map((r) => r.top)) : vh;
         const texts = [...document.querySelectorAll('div,span')].filter((e) => e.childNodes.length && [...e.childNodes].some((c) => c.nodeType === 3 && c.textContent.trim()));
         const under = texts.map((e) => ({ t: e.textContent.trim().slice(0, 40), r: e.getBoundingClientRect() })).filter((x) => x.r.bottom > ctlTop + 1 && x.r.top < vh && !/^(Next|Begin|Continue|Finish lesson|Done)$/.test(x.t));
         return { ctlTop, under: under.slice(0, 5).map((x) => `${x.t} @${Math.round(x.r.top)}-${Math.round(x.r.bottom)}`) };
-      });
+      };
+      const info = await page.evaluate(probe);
       fs.writeFileSync(path.join(OUT, 'strips', `${slug}.png`), buf);
-      rows.push({ k, under: info.under, status: info.under.length ? 'CHECK' : 'ok' });
-      if (info.under.length) fails++;
+      // Text under the control at rest is fine when the page scrolls it clear (the reader's scroll mode,
+      // with its fade): scroll the scroller on screen to its end and look again. Only what is still under
+      // the control there is a finding.
+      let end = info;
+      if (info.under.length) {
+        const scrolled = await page.evaluate(() => {
+          const vw = innerWidth, vh = innerHeight;
+          const vis = (el) => { const r = el.getBoundingClientRect(); return Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)); };
+          const all = [...document.querySelectorAll('*')].filter((el) => /(auto|scroll)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight + 1 && vis(el) > 0);
+          all.sort((a, b) => vis(b) - vis(a));
+          if (!all[0]) return false;
+          all[0].scrollTop = all[0].scrollHeight;
+          return true;
+        });
+        if (scrolled) {
+          await page.waitForTimeout(400);
+          end = await page.evaluate(probe);
+          if (end.under.length) await page.screenshot({ path: path.join(OUT, 'strips', `${slug}.end.png`) });
+        }
+      }
+      const status = !info.under.length ? 'ok' : end.under.length ? 'CHECK' : 'scrolls';
+      rows.push({ k, under: info.under, underAtEnd: end.under, status });
+      if (status === 'CHECK') fails++;
     }
     pagesDone++;
   }
@@ -199,8 +227,9 @@ const md = ['| Lesson | Week | pages | worst % | failing pages |', '|---|---|---
 for (const n of Object.keys(results).map(Number).sort((a, b) => a - b)) {
   const r = results[n];
   const worst = Math.max(0, ...r.rows.map((x) => x.share ?? 0));
-  const bad = r.rows.filter((x) => x.status !== 'ok').map((x) => `F${x.k}${x.share != null ? ` ${x.share}%` : ''}`);
+  const bad = r.rows.filter((x) => x.status !== 'ok').map((x) => `F${x.k}${x.share != null ? ` ${x.share}%` : x.status === 'scrolls' ? ' (scrolls clear)' : ' UNDER'}`);
   md.push(`| L${n} | ${r.week} | ${r.pages} | ${worst.toFixed(2)} | ${bad.join(', ')} |`);
 }
 fs.writeFileSync(path.join(OUT, 'report.md'), md.join('\n') + '\n');
-console.log(`${pagesDone} pages over ${pick.length} lessons — ${fails} ${canvas ? `over ${MAX}%` : 'with content under the control'}${errors.length ? `; ${errors.length} page errors (first: ${errors[0]})` : ''} -> ${OUT}/report.md`);
+const scrolls = Object.values(results).reduce((a, r) => a + r.rows.filter((x) => x.status === 'scrolls').length, 0);
+console.log(`${pagesDone} pages over ${pick.length} lessons — ${fails} ${canvas ? `over ${MAX}%` : `with content under the control at the end of its scroll (${scrolls} more scroll it clear)`}${errors.length ? `; ${errors.length} page errors (first: ${errors[0]})` : ''} -> ${OUT}/report.md`);

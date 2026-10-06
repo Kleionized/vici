@@ -64,7 +64,7 @@ export function SplashScene() {
  * and its label in the ghost line's 15/400 mute, low on the screen where the
  * old board put them.
  */
-export function WaterlineScene({ label = 'Finding the waterline...' }: { label?: string }) {
+export function WaterlineScene({ label = 'Finding the waterline…' }: { label?: string }) {
   const top = useMarkTop();
   return (
     <Screen>

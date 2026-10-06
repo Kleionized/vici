@@ -108,11 +108,14 @@ else if (flags.fonts) console.log('[fonts] ' + fontState.loaded.join(', '));
    `--scroll=end` goes to the bottom. Prints the scroller's full height. */
 if (flags.scroll != null) {
   const r = await page.evaluate((y) => {
+    // the scroller on screen: a pager mounts its neighbours' scrollers off-screen, at equal size
+    const vw = innerWidth, vh = innerHeight;
+    const vis = (el) => { const r = el.getBoundingClientRect(); return Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)); };
     const all = [...document.querySelectorAll('*')].filter((el) => {
       const cs = getComputedStyle(el);
-      return /(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1 && el.getBoundingClientRect().height > 100;
+      return /(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1 && el.getBoundingClientRect().height > 100 && vis(el) > 0;
     });
-    all.sort((a, b) => b.clientHeight * b.clientWidth - a.clientHeight * a.clientWidth);
+    all.sort((a, b) => vis(b) - vis(a));
     const el = all[0];
     if (!el) return { scroller: null };
     el.scrollTop = y === 'end' ? el.scrollHeight : Number(y);
@@ -128,6 +131,12 @@ if (flags.sig) {
   fs.writeFileSync('.overhaul/sig/' + String(flags.sig).replace(/[^A-Za-z0-9._-]/g, '_') + '.txt', rows);
   console.log(rows.split('\n').length + ' rows -> ' + flags.sig);
 }
+await page.evaluate(async () => {
+  // every image decoded (the noise tile is a background image backed by an <img>),
+  // then two frames so RN-web's onLoad re-render has painted it
+  await Promise.all([...document.images].map((i) => (i.complete ? (i.decode ? i.decode().catch(() => {}) : null) : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 4000); }))));
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+});
 if (out) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   await page.screenshot({ path: out });

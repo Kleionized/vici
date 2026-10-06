@@ -15,11 +15,11 @@
 
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { ScrollView, View, useWindowDimensions } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CourseRow, ROW_GAP, WeekBack } from '@/components/library/WeekPage';
-import { Hero, LaurelMark, LoadingView, MonoText, Screen } from '@/components/mono';
+import { CueScrollView, Hero, LaurelMark, LoadingView, MonoText, Screen } from '@/components/mono';
 import { HERO_BOUNDS, type HeroId } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
 import { mono } from '@/lib/theme';
@@ -167,8 +167,14 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
  */
 const heroTop = (id: HeroId) => 102 - 1.1 * (HERO_BOUNDS[id][1] - 190);
 
-/** The block one chapter takes, canvas 0 to the air under its rows (and the watch's closing line). */
-const BODY_H = 740;
+/**
+ * The block one chapter takes, canvas 0 to the air under its rows. 700 lets the
+ * next chapter's art enter the first screen by ~46 pt at 852 — a clear "more
+ * below" rather than the 6 pt sliver 740 left (D404). The watch keeps 740 for
+ * its closing line (content to 728).
+ */
+const BODY_H = 700;
+const BODY_H_WATCH = 740;
 /** The scroll starts under the status bar, so a block's canvas y is its content y + this. */
 const STATUS = 54;
 
@@ -181,7 +187,7 @@ function ChapterBody({ chapter, ctx, width, offset, onBack }: { chapter: Chapter
   const c = CHAPTERS[chapter];
   const y = (v: number) => v - offset;
   return (
-    <View style={{ height: BODY_H - offset }}>
+    <View style={{ height: (chapter === 'watch' ? BODY_H_WATCH : BODY_H) - offset }}>
       <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -offset, width }}>
         <Hero id={c.hero} top={heroTop(c.hero)} width={width} />
       </View>
@@ -196,7 +202,9 @@ function ChapterBody({ chapter, ctx, width, offset, onBack }: { chapter: Chapter
           <MonoText v="title" center accessibilityRole="header" style={{ alignSelf: 'stretch' }}>
             {c.title}
           </MonoText>
-          <MonoText v="pTight" center style={{ alignSelf: 'stretch' }}>
+          {/* the week blurbs all fit one line; the chapter lines take two, and
+              centred two-line copy balances rather than leaving "long run." alone */}
+          <MonoText v="pTight" center wrap="balance" style={{ alignSelf: 'stretch' }}>
             {c.line}
           </MonoText>
         </View>
@@ -267,12 +275,11 @@ export function JourneyChapter({ chapter, onBack }: { chapter: ChapterKey; onBac
 
   return (
     <Screen>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
+      <CueScrollView
         style={{ position: 'absolute', left: 0, right: 0, top: STATUS, bottom: 0 }}
         contentContainerStyle={{ paddingBottom: 24 + insets.bottom }}>
         <ChapterBody chapter={chapter} ctx={ctx} width={width} offset={STATUS} onBack={back} />
-      </ScrollView>
+      </CueScrollView>
     </Screen>
   );
 }
@@ -289,14 +296,13 @@ export function JourneyScroll({ onBack, bottomInset = 0 }: { onBack?: () => void
 
   return (
     <Screen>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
+      <CueScrollView
         style={{ position: 'absolute', left: 0, right: 0, top: STATUS, bottom: 0 }}
         contentContainerStyle={{ paddingBottom: bottomInset }}>
         {CHAPTER_ORDER.map((chapter, i) => (
           <ChapterBody key={chapter} chapter={chapter} ctx={ctx} width={width} offset={i ? 0 : STATUS} onBack={i ? undefined : onBack} />
         ))}
-      </ScrollView>
+      </CueScrollView>
     </Screen>
   );
 }

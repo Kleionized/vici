@@ -5,6 +5,7 @@ import { HeroBoard, MonoText, PledgeCard } from '@/components/mono';
 import { Gap, SosQuestion } from '@/components/urge/stages';
 import { useCreateEvent, useCurrentUser, useJournalEntries } from '@/lib/backend';
 import { setJSON } from '@/lib/storage';
+import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
  * The slip, in four boards — `34 · SOS — Slipped`, `36 · Relapse — Don’t Fail
@@ -23,7 +24,7 @@ export default function Relapse() {
   const user = useCurrentUser();
   const journal = useJournalEntries();
   // The standing pledge, read the way Today reads it.
-  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
+  const pledge = standingPledge(journal);
   const [index, setIndex] = useState(0);
   const logged = useRef(alreadyLogged === '1');
 
@@ -90,7 +91,7 @@ export default function Relapse() {
           <MonoText v="p">A slip doesn’t erase what you decided. Sign it again and keep going.</MonoText>
           <Gap h={6} />
           {/* with no pledge on record the card keeps the words it always fell back to */}
-          <PledgeCard pledge={pledge?.body ?? 'The mornings are mine again.'} name={user?.displayName?.split(' ')[0] || 'You'} signed />
+          <PledgeCard pledge={pledgeText(pledge) || 'The mornings are mine again.'} name={user?.displayName?.split(' ')[0] || 'You'} signed />
         </SosQuestion>
       );
     default:

@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState, type ReactNode } from 'react';
-import { Alert, Platform, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Alert, Platform, Text, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
 import {
@@ -19,6 +19,7 @@ import {
   Screen,
   ScrollRegion,
   Sheet,
+  Slack,
   Tap,
 } from '@/components/mono';
 import { numberWords, shortDate } from '@/lib/format';
@@ -225,19 +226,31 @@ export function PwPlanCard({
 /** The four promises, in the frame's order. The frame breaks none of them by hand. */
 export const PW_FEATURES = ['12-week plan', 'SOS help', 'Weekly insights', 'Progress tracking'] as const;
 
-/** `What you get` and the four 34 ink discs (row `gap 8`, columns `gap 8`), labels 12/700/16 `#B5B0A8`. */
+/** a feature's column at 393: (345 − 3·8) / 4 — where the frame's words break */
+const FEATURE_W = (345 - 24) / 4;
+
+/**
+ * `What you get` 49 under the plans (tightening on a short phone, D406) and the
+ * four 34 ink discs (row `gap 8`, columns `gap 8`), labels 12/700/16 `#B5B0A8`.
+ */
 export function PwFeatures({ title = 'What you get', labels = PW_FEATURES }: { title?: string; labels?: readonly string[] }) {
+  // A wider phone narrows each label to the 393 column, centred, so "Weekly
+  // insights" breaks with "Progress tracking" as the frame draws them instead of
+  // standing on one line beside it (D404, as Yearly Drop's perks); at 393 and
+  // below nothing is inset.
+  const { width } = useWindowDimensions();
+  const spare = (width - 48 - 24) / 4 - FEATURE_W;
+  const inset = spare > 0.5 ? spare / 2 : 0;
   return (
     <>
-      <MonoText v="caps" style={{ marginTop: 49 }}>
-        {title}
-      </MonoText>
+      <Slack h={49} />
+      <MonoText v="caps">{title}</MonoText>
       <View style={{ marginTop: 16, flexDirection: 'row', gap: 8 }}>
         {labels.map((f) => (
           <View key={f} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
             <CheckDisc size={34} />
             {/* no `text-wrap` in the frame: "Weekly insights" and "Progress tracking" wrap where the column runs out */}
-            <MonoText v="pill" wrap="wrap" center style={{ alignSelf: 'stretch', fontSize: 12, lineHeight: 16, color: mono.sub }}>
+            <MonoText v="pill" wrap="wrap" center style={{ alignSelf: 'stretch', marginHorizontal: inset, fontSize: 12, lineHeight: 16, color: mono.sub }}>
               {f}
             </MonoText>
           </View>
@@ -282,8 +295,11 @@ const PAYWALL_CONTROLS = 82 + 58;
 /**
  * `Paywall`'s board, in canvas coordinates: the ✕, the lockup, then the stack
  * from 130 in flow — title and sub (gap 14), the plan row at 318, "What you
- * get" at 520, the discs at 552 — which scrolls between the nav row and the
- * pill only on a phone too short to hold it (D320). `plans` is the card row.
+ * get" at 520, the discs at 552. On a phone too short to hold it, the three
+ * open gaps (above the title, the plans and "What you get") tighten first, so
+ * a 667 phone shows the whole board with its discs; only what that cannot
+ * cover scrolls between the nav row and the pill (D320, D406). `plans` is the
+ * card row.
  */
 export function PwBoard({
   closeLabel,
@@ -314,13 +330,15 @@ export function PwBoard({
     <>
       <PwNav label={closeLabel} onClose={onClose} />
       <PwBrand eyebrow={eyebrow} />
-      <ScrollRegion top={100} bottom={PAYWALL_CONTROLS} contentStyle={{ paddingTop: 30, paddingHorizontal: 24, paddingBottom: 24 }}>
+      <ScrollRegion top={100} bottom={PAYWALL_CONTROLS} contentStyle={{ paddingHorizontal: 24, paddingBottom: 24 }}>
+        <Slack h={30} min={16} />
         <View style={{ gap: 14 }}>
           <MonoText v="titleCover">{headline}</MonoText>
           <P>Break the cycle, rebuild your self-control, and become someone you can trust again.</P>
         </View>
         {/* 318 − (130 + 40 + 14 + 48) */}
-        <View accessibilityRole="radiogroup" style={{ marginTop: 86, flexDirection: 'row', flexWrap: 'wrap', gap: 12, rowGap: 24 }}>
+        <Slack h={86} />
+        <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12, rowGap: 24 }}>
           {plans}
         </View>
         <PwFeatures title={benefitsTitle} labels={benefits} />

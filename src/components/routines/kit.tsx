@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import { Platform, View, useWindowDimensions } from 'react-native';
 
-import { DayToggles, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, TimeWheel, useCanvasTop, type WheelTime } from '@/components/mono';
+import { DayToggles, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Slack, TimeWheel, useCanvasTop, type WheelTime } from '@/components/mono';
 import type { TimeOfDay } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
 
@@ -13,9 +13,11 @@ import { getJSON, setJSON } from '@/lib/storage';
  * frame's bottom 48. Only the question and which time it writes differ.
  *
  * The stack is the frame's own `stack(136, gap 18)` with its two 6-tall
- * spacers. On a phone where it would run under the pill it scrolls between
- * the nav row's foot and the pill (D320, D226); at 393 × 852 it fits and
- * nothing moves.
+ * spacers — 42 above each caps line. On a phone where it would run under the
+ * pill those two gaps and the 36 under the nav row tighten first (to 24, 24
+ * and 12), so a 667 phone shows the seven days whole; what that cannot cover
+ * scrolls between the nav row's foot and the pill (D320, D226, D406). At
+ * 393 × 852 it fits and nothing moves.
  */
 
 /**
@@ -67,15 +69,19 @@ export function CheckinTimeBoard({
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={onBack} />
-      <ScrollRegion top={top} bottom={CONTROLS} contentStyle={{ paddingTop: STACK_TOP - top, paddingHorizontal: 24, paddingBottom: 24 }}>
-        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ gap: 18 }}>
+      <ScrollRegion top={top} bottom={CONTROLS} contentStyle={{ paddingHorizontal: 24, paddingBottom: 24 }}>
+        <Slack h={STACK_TOP - top} min={Math.min(12, STACK_TOP - top)} />
+        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)}>
           <MonoText v="h1">{checkinQuestion(kind)}</MonoText>
-          <View style={{ height: 6 }} />
+          {/* 18 + the frame's 6 spacer + 18 */}
+          <Slack h={42} />
           <MonoText v="caps">Select time</MonoText>
+          <View style={{ height: 18 }} />
           {/* answered synchronously: the wheel rolls back to whatever `value` holds after a settle */}
           <TimeWheel value={toWheel(time)} onChange={(next) => onTime(fromWheel(next))} />
-          <View style={{ height: 6 }} />
+          <Slack h={42} />
           <MonoText v="caps">Select days</MonoText>
+          <View style={{ height: 18 }} />
           <DayToggles value={days} onChange={onDays} />
         </View>
       </ScrollRegion>

@@ -4,22 +4,7 @@ import { Platform, ScrollView, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Line, Path, Text as SvgText } from 'react-native-svg';
 
-import {
-  ArrowUp,
-  Card,
-  Check,
-  ChevronD,
-  LoadingView,
-  MonoText,
-  NavBar,
-  OptionList,
-  Pill,
-  Screen,
-  Sheet,
-  SHEET_TOP,
-  Tap,
-  useTabBarHeight,
-} from '@/components/mono';
+import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useTabBarHeight } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { RANKS, buildScore, monthLedger, scoreHistory, type LedgerLine, type ScoreHistory } from '@/lib/score';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
@@ -144,11 +129,13 @@ export default function Score() {
 
 /** One page of the pager: the band's own height, scrolling only when its content (canvas `bottom`) does not fit. */
 function Page({ W, H, bottom, children }: { W: number; H: number; bottom: number; children: ReactNode }) {
-  const need = py(bottom) + 24;
+  // scroll only when the content itself runs past the band — the 24 of foot room
+  // alone made the Ranks page rubber-band 3 pt on a 667 phone
+  const scroll = py(bottom) + 8 > H;
   return (
-    <ScrollView style={{ width: W, height: H }} scrollEnabled={need > H} showsVerticalScrollIndicator={false} contentContainerStyle={{ height: Math.max(H, need) }}>
+    <CueScrollView style={{ width: W, height: H }} scrollEnabled={scroll} contentContainerStyle={{ height: scroll ? py(bottom) + 24 : H }}>
       {children}
-    </ScrollView>
+    </CueScrollView>
   );
 }
 

@@ -38,8 +38,8 @@ export function dayForSlug(slug: string): number | null {
 /**
  * Every lesson in the `Lesson` shape, in curriculum order.
  *
- * `bodyMarkdown` is the lesson's one-line `summary` (the previous build's,
- * kept because no frame in this drop draws one — D396), the short prose the
+ * `bodyMarkdown` is the lesson's one-line `summary` — its own task sentence
+ * (D401), since no frame in this drop draws a summary — the short prose the
  * index holds and what a search matches on. The curriculum states no
  * reflection prompt, so that is left empty rather than filled with a prompt
  * nobody wrote.

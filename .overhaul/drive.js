@@ -9,9 +9,19 @@ window.__fire = (el) => {
     el.dispatchEvent(new (t.startsWith('pointer') ? PointerEvent : MouseEvent)(t, { bubbles: true, cancelable: true, pointerId: 1, button: 0 }));
 };
 /** Tap the first control whose trimmed text equals, then contains, `label`. */
+/* Covered stack screens stay mounted on web, so a label can match a control on a
+   screen underneath. Prefer controls that are actually on top at their centre. */
+window.__onTop = (el) => {
+  const r = el.getBoundingClientRect();
+  if (r.width === 0 || r.height === 0) return false;
+  const h = document.elementFromPoint(Math.min(innerWidth - 1, Math.max(0, r.left + r.width / 2)), Math.min(innerHeight - 1, Math.max(0, r.top + r.height / 2)));
+  return !!h && (el === h || el.contains(h) || h.contains(el));
+};
 window.tap = async (label, opts) => {
   const wait = (opts && opts.wait) ?? 260;
-  const all = window.__btns();
+  const btns = window.__btns();
+  const top = btns.filter((b) => window.__onTop(b));
+  const all = [...top, ...btns.filter((b) => !top.includes(b))];
   let el = all.find((b) => b.textContent.trim() === label);
   if (!el) el = all.find((b) => (b.getAttribute('aria-label') || '') === label);
   if (!el) el = all.find((b) => b.textContent.trim().includes(label));
@@ -50,7 +60,8 @@ window.typeIn = async (n, v) => {
 window.scrollBy = async (dy, sel) => {
   const node = sel ? document.querySelector(sel)
     : [...document.querySelectorAll('div')].find((d) => d.scrollHeight > d.clientHeight + 8 && getComputedStyle(d).overflowY !== 'visible');
-  if (!node) { window.scrollBy(0, dy); } else { node.scrollTop += dy; node.dispatchEvent(new Event('scroll', { bubbles: true })); }
+  // no scroller: scroll the document itself (calling window.scrollBy here would re-enter this override)
+  if (!node) { (document.scrollingElement || document.documentElement).scrollTop += dy; } else { node.scrollTop += dy; node.dispatchEvent(new Event('scroll', { bubbles: true })); }
   await window.__sleep(320);
 };
 'drive ready';
