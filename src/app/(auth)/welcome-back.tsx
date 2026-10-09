@@ -1,19 +1,14 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View } from 'react-native';
 
 import {
   AuthButton,
   AuthDoor,
   AuthField,
   AuthGhost,
-  AuthLaurel,
   AuthMessage,
-  AuthSub,
   AuthSurface,
-  AuthTitle,
 } from '@/components/auth/kit';
-import { NavBar, Screen, ScrollRegion } from '@/components/mono';
 import { useAuth } from '@/lib/auth';
 
 /**
@@ -176,66 +171,69 @@ export default function WelcomeBack() {
   }
 
   if (mode === 'door') {
-    // The address step. No frame draws it: the door's laurel (150) and centred
-    // title (284) over Name's field, with the pill straight under it so the
-    // keyboard — which opens with the board — never covers it.
+    // The address step: the typed boards' shell (D520), the pill straight under
+    // the field so the keyboard — which opens with the board — never covers it.
     return (
-      <Screen>
-        <NavBar left="back" right="empty" onBack={leave} />
-        <ScrollRegion top={100} contentStyle={{ paddingHorizontal: 24, paddingTop: 50, paddingBottom: 48 }}>
-          <AuthLaurel />
-          <View style={{ marginTop: 30, gap: 14 }}>
-            <AuthTitle center>Sign in to keep building toward the life you want</AuthTitle>
-            <AuthField
-              value={email}
-              onChangeText={setEmail}
-              onClear={() => {
-                setEmail('');
-                reset();
-              }}
-              onSubmitEditing={() => void sendCode()}
-              autoFocus
-              placeholder="yourname@email.com"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoComplete="email"
-              textContentType="emailAddress"
-              returnKeyType="done"
-            />
+      <AuthSurface
+        onBack={leave}
+        title="Sign in with email."
+        sub="We’ll send you a 6-digit code."
+        actions={
+          <>
             <AuthMessage error={error} notice={notice} />
-            <AuthButton label={loading ? 'Sending code…' : 'Let’s Go'} disabled={loading} onPress={() => void sendCode()} />
-            <AuthGhost label="Use password instead" onPress={usePasswordInstead} />
-          </View>
-        </ScrollRegion>
-      </Screen>
+            <AuthButton label={loading ? 'Sending code…' : 'Continue'} disabled={loading} onPress={() => void sendCode()} />
+            <AuthGhost label="Use a password instead" onPress={usePasswordInstead} />
+          </>
+        }>
+        <AuthField
+          value={email}
+          onChangeText={setEmail}
+          onClear={() => {
+            setEmail('');
+            reset();
+          }}
+          onSubmitEditing={() => void sendCode()}
+          autoFocus
+          placeholder="Email address"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoComplete="email"
+          textContentType="emailAddress"
+          returnKeyType="done"
+        />
+      </AuthSurface>
     );
   }
 
   if (mode === 'password') {
     return (
-      <AuthSurface onBack={back}>
-        <AuthTitle>Welcome back.</AuthTitle>
-        <AuthField label="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoComplete="email" />
+      <AuthSurface
+        onBack={back}
+        title="Welcome back."
+        actions={
+          <>
+            <AuthMessage error={error} notice={notice} />
+            <AuthButton label={loading ? 'Signing in…' : 'Sign in'} disabled={loading} onPress={() => (password ? void submitPassword() : setError('Enter your password.'))} />
+            <AuthGhost label="Forgot password?" onPress={() => void forgotPassword()} />
+            <AuthGhost
+              label="Email me a code instead"
+              onPress={() => {
+                setEmailStep(true);
+                void sendCode();
+              }}
+            />
+          </>
+        }>
+        <AuthField value={email} onChangeText={setEmail} placeholder="Email address" keyboardType="email-address" autoCapitalize="none" autoComplete="email" />
         <AuthField
-          label="Password"
           value={password}
           onChangeText={setPassword}
-          placeholder="Your password"
+          placeholder="Password"
           secureTextEntry
           autoCapitalize="none"
           autoComplete="current-password"
           returnKeyType="go"
           onSubmitEditing={() => password && void submitPassword()}
-        />
-        <AuthMessage error={error} notice={notice} />
-        <AuthButton label={loading ? 'Signing in…' : 'Sign in'} disabled={loading} onPress={() => (password ? void submitPassword() : setError('Enter your password.'))} />
-        <AuthGhost label="Forgot password?" onPress={() => void forgotPassword()} />
-        <AuthGhost
-          label="Email me a code instead"
-          onPress={() => {
-            setEmailStep(true);
-            void sendCode();
-          }}
         />
       </AuthSurface>
     );
@@ -243,15 +241,30 @@ export default function WelcomeBack() {
 
   if (mode === 'reset') {
     return (
-      <AuthSurface onBack={back}>
-        <AuthTitle>Reset your password.</AuthTitle>
-        <AuthSub>A code is on its way to {email.trim()}. Enter it with a new password.</AuthSub>
-        <AuthField label="Reset code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" />
+      <AuthSurface
+        onBack={back}
+        title="Reset your password."
+        sub={`Enter the code we sent to ${email.trim()}.`}
+        actions={
+          <>
+            <AuthMessage error={error} notice={notice} />
+            <AuthButton label={loading ? 'Resetting…' : 'Reset & sign in'} disabled={loading} onPress={() => void submitReset()} />
+            <AuthGhost
+              label="Resend code"
+              onPress={async () => {
+                reset();
+                const result = await startPasswordReset(email);
+                if (!result.ok) setError(result.error ?? 'Could not resend code.');
+                else setNotice('Code re-sent.');
+              }}
+            />
+          </>
+        }>
+        <AuthField value={code} onChangeText={setCode} placeholder="6-digit code" keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" />
         <AuthField
-          label="New password"
           value={newPassword}
           onChangeText={setNewPassword}
-          placeholder="At least 8 characters"
+          placeholder="New password (8 or more characters)"
           secureTextEntry
           autoCapitalize="none"
           autoComplete="new-password"
@@ -259,38 +272,32 @@ export default function WelcomeBack() {
           returnKeyType="go"
           onSubmitEditing={() => void submitReset()}
         />
-        <AuthMessage error={error} notice={notice} />
-        <AuthButton label={loading ? 'Resetting…' : 'Reset & sign in'} disabled={loading} onPress={() => void submitReset()} />
-        <AuthGhost
-          label="Resend code"
-          onPress={async () => {
-            reset();
-            const result = await startPasswordReset(email);
-            if (!result.ok) setError(result.error ?? 'Could not resend code.');
-            else setNotice('Code re-sent.');
-          }}
-        />
       </AuthSurface>
     );
   }
 
   return (
-    <AuthSurface onBack={back}>
-      <AuthTitle>Check your email.</AuthTitle>
-      <AuthSub>A code is on its way to {email.trim()}.</AuthSub>
-      <AuthField label="Verification code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
-      <AuthMessage error={error} notice={notice} />
-      <AuthButton label={loading ? 'Checking…' : 'Verify & continue'} disabled={loading} onPress={() => (code.trim() ? void submitCode() : setError('Enter the code we sent.'))} />
-      <AuthGhost
-        label="Resend code"
-        onPress={async () => {
-          reset();
-          const result = await resendSignInCode();
-          if (!result.ok) setError(result.error ?? 'Could not resend code.');
-          else setNotice('Code re-sent.');
-        }}
-      />
-      {codeFrom === 'door' ? <AuthGhost label="Use password instead" onPress={usePasswordInstead} /> : null}
+    <AuthSurface
+      onBack={back}
+      title="Check your email."
+      sub={`Enter the code we sent to ${email.trim()}.`}
+      actions={
+        <>
+          <AuthMessage error={error} notice={notice} />
+          <AuthButton label={loading ? 'Checking…' : 'Continue'} disabled={loading} onPress={() => (code.trim() ? void submitCode() : setError('Enter the code we sent.'))} />
+          <AuthGhost
+            label="Resend code"
+            onPress={async () => {
+              reset();
+              const result = await resendSignInCode();
+              if (!result.ok) setError(result.error ?? 'Could not resend code.');
+              else setNotice('Code re-sent.');
+            }}
+          />
+          {codeFrom === 'door' ? <AuthGhost label="Use a password instead" onPress={usePasswordInstead} /> : null}
+        </>
+      }>
+      <AuthField value={code} onChangeText={setCode} placeholder="6-digit code" keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
     </AuthSurface>
   );
 }

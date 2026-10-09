@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import {
   AuthBoard,
@@ -10,20 +10,18 @@ import {
   AuthLegal,
   AuthMessage,
   AuthPill,
-  AuthSub,
   AuthSurface,
-  AuthTitle,
 } from '@/components/auth/kit';
 import { Apple, CheckDisc, Google, MonoText, Tap } from '@/components/mono';
 import { useAuth } from '@/lib/auth';
-import { mono, sans } from '@/lib/theme';
 
 /**
  * Save your progress (the gate) and Create Account (the form).
  *
  * The gate comes first — three ways to keep the run: Apple, Google, or an
- * address. Only the third one asks for anything, and what it asks for is a
- * first name and an email; there is no password unless you go looking for one.
+ * address. Only the third one asks for anything, and all it asks for is an
+ * email (the name comes a few screens later, in onboarding's `03 · Name`);
+ * there is no password unless you go looking for one (owner, D520).
  * Without one, the account is made on an emailed 6-digit code (the verify
  * board), and Welcome Back signs it in the same way (deploy D410).
  *
@@ -45,7 +43,6 @@ export default function SignUp() {
   // same three choices a second time.
   const { step } = useLocalSearchParams<{ step?: string }>();
   const [mode, setMode] = useState<Mode>(step === 'form' ? 'form' : 'gate');
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [updates, setUpdates] = useState(false);
@@ -83,8 +80,8 @@ export default function SignUp() {
     reset();
     const options = { emailUpdates: updates };
     const result = usePassword
-      ? await signUpWithPassword(email, password, name.trim() || undefined, options)
-      : await signUpWithEmailCode(email, name.trim() || undefined, options);
+      ? await signUpWithPassword(email, password, undefined, options)
+      : await signUpWithEmailCode(email, undefined, options);
     setLoading(false);
     if (result.ok) return router.replace('/');
     if (result.needsVerification) return setMode('verify');
@@ -105,7 +102,7 @@ export default function SignUp() {
       <AuthBoard
         onBack={back}
         title="Save your progress."
-        subtitle="Your reflections, your log, your path — kept safe across devices."
+        subtitle="Keep your log and lessons safe across devices."
         controls={
           <>
             <AuthPill kind="ink" icon={<Apple />} label="Continue with Apple" onPress={() => void sso('oauth_apple')} disabled={loading} />
@@ -132,35 +129,63 @@ export default function SignUp() {
 
   if (mode === 'verify') {
     return (
-      <AuthSurface onBack={back}>
-        <AuthTitle>Check your email.</AuthTitle>
-        <AuthSub>A code is on its way to {email.trim()}.</AuthSub>
-        <AuthField label="Verification code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
-        <AuthMessage error={error} notice={notice} />
-        <AuthButton label={loading ? 'Checking…' : 'Verify & continue'} disabled={loading || !code.trim()} onPress={() => void submitCode()} />
-        <AuthGhost
-          label="Resend code"
-          onPress={async () => {
-            reset();
-            const result = await resendEmailCode();
-            if (!result.ok) setError(result.error ?? 'Could not resend code.');
-            else setNotice('Code re-sent.');
-          }}
-        />
+      <AuthSurface
+        onBack={back}
+        title="Check your email."
+        sub={`Enter the code we sent to ${email.trim()}.`}
+        actions={
+          <>
+            <AuthMessage error={error} notice={notice} />
+            <AuthButton label={loading ? 'Checking…' : 'Continue'} disabled={loading || !code.trim()} onPress={() => void submitCode()} />
+            <AuthGhost
+              label="Resend code"
+              onPress={async () => {
+                reset();
+                const result = await resendEmailCode();
+                if (!result.ok) setError(result.error ?? 'Could not resend code.');
+                else setNotice('Code re-sent.');
+              }}
+            />
+          </>
+        }>
+        <AuthField value={code} onChangeText={setCode} placeholder="6-digit code" keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
       </AuthSurface>
     );
   }
 
+  const toggleMethod = () => {
+    setUsePassword((on) => !on);
+    setPassword('');
+    reset();
+  };
+
   return (
-    <AuthSurface onBack={back}>
-      <AuthTitle>Start where you are.</AuthTitle>
-      <AuthField label="Your first name" value={name} onChangeText={setName} placeholder="Sam" autoCapitalize="words" autoComplete="given-name" textContentType="givenName" />
-      <AuthField label="Your email" value={email} onChangeText={setEmail} placeholder="yourname@email.com" keyboardType="email-address" autoCapitalize="none" autoComplete="email" textContentType="emailAddress" />
+    <AuthSurface
+      onBack={back}
+      title="Create your account."
+      sub={usePassword ? 'Choose a password of at least 8 characters.' : 'We’ll email you a 6-digit code. No password needed.'}
+      legal
+      actions={
+        <>
+          <AuthMessage error={error} notice={notice} />
+          {/* Solid ink whatever the fields hold — pressing it short asks for what's missing. */}
+          <AuthButton
+            label={loading ? 'Creating account…' : 'Continue'}
+            disabled={loading}
+            onPress={() => {
+              if (!email.trim()) return setError('Enter your email address.');
+              if (usePassword && password.length < 8) return setError('Passwords need at least 8 characters.');
+              void submit();
+            }}
+          />
+          <AuthGhost label={usePassword ? 'Use an email code instead' : 'Use a password instead'} onPress={toggleMethod} />
+        </>
+      }>
+      <AuthField value={email} onChangeText={setEmail} placeholder="Email address" keyboardType="email-address" autoCapitalize="none" autoComplete="email" textContentType="emailAddress" />
       {/* No password unless you ask for one: the account is made on an emailed code. */}
       {usePassword ? (
-        <AuthField label="Choose a password" value={password} onChangeText={setPassword} placeholder="At least 8 characters" secureTextEntry autoCapitalize="none" autoComplete="new-password" textContentType="newPassword" />
+        <AuthField value={password} onChangeText={setPassword} placeholder="Password" secureTextEntry autoCapitalize="none" autoComplete="new-password" textContentType="newPassword" />
       ) : null}
-
       {/* The kit's 26 disc (Enlisting Aegis's rows): ink with the `#111111`
           check when on, the card under the line ring when off. */}
       <Tap
@@ -171,45 +196,9 @@ export default function SignUp() {
         style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
         <CheckDisc size={26} state={updates ? 'done' : 'pending'} />
         <MonoText v="pTight" style={{ flexShrink: 1 }}>
-          I’d like VICI updates via email.
+          Send me VICI updates by email.
         </MonoText>
       </Tap>
-
-      {/* Goal confirmation's card: `#1E1E1E`, r18, padding 18 22, 15/23 sub,
-          the run that acts 700 ink. */}
-      <View style={{ borderRadius: 18, backgroundColor: mono.card, paddingVertical: 18, paddingHorizontal: 22, gap: 6 }}>
-        <Text maxFontSizeMultiplier={1.3} style={{ ...sans('400'), fontSize: 15, lineHeight: 23, color: mono.sub }}>
-          {usePassword
-            ? 'Your account keeps reflections, logs, and lessons safe across devices. Your password stays private.'
-            : 'No password needed to create an account! We’ll email you a 6-digit code now, and a new one each time you sign in.'}
-        </Text>
-        <Tap
-          onPress={() => {
-            setUsePassword((on) => !on);
-            setPassword('');
-            reset();
-          }}
-          hitSlop={{ top: 10, bottom: 14, left: 16, right: 16 }}
-          style={{ alignSelf: 'flex-start' }}>
-          <Text maxFontSizeMultiplier={1.3} style={{ ...sans('700'), fontSize: 15, lineHeight: 23, color: mono.ink }}>
-            {usePassword ? 'Use an email code instead' : 'Use password instead'}
-          </Text>
-        </Tap>
-      </View>
-
-      <AuthMessage error={error} notice={notice} />
-      {/* Solid ink whatever the fields hold — pressing it short asks for what's missing. */}
-      <AuthButton
-        label={loading ? 'Creating account…' : 'Create Account'}
-        disabled={loading}
-        onPress={() => {
-          if (!name.trim()) return setError('Tell us your first name.');
-          if (!email.trim()) return setError('Enter your email address.');
-          if (usePassword && password.length < 8) return setError('Passwords need at least 8 characters.');
-          void submit();
-        }}
-      />
-      <AuthLegal />
     </AuthSurface>
   );
 }

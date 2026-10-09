@@ -223,16 +223,17 @@ export type AuthDoorVariant = 'new' | 'returning';
 const DOOR = {
   new: {
     title: 'Welcome to VICI.',
-    subtitle: 'Sign in or create an account to keep your plan and progress.',
-    subtitleCanvas: 'Sign in or create an account to keep your plan\nand progress.',
+    // one short line (owner, D520): the three ways in below say the rest
+    subtitle: 'Create an account to save your progress.',
+    subtitleCanvas: 'Create an account to save your progress.',
     email: 'Continue with email',
     footer: 'Already have an account? ',
     footerLink: 'Sign in',
   },
   returning: {
     title: 'Welcome back.',
-    subtitle: 'Sign in to pick up where you left off.',
-    subtitleCanvas: 'Sign in to pick up where you left off.',
+    subtitle: 'Pick up where you left off.',
+    subtitleCanvas: 'Pick up where you left off.',
     email: 'Sign in with email',
     footer: 'New here? ',
     footerLink: 'Create an account',
@@ -294,18 +295,49 @@ export function AuthDoor({
 
 // ── the typed boards ─────────────────────────────────────────────────
 
+/** What the legal line anchored at the foot takes off the bottom edge. */
+const LEGAL_BOTTOM = 44;
+const LEGAL_SPACE = LEGAL_BOTTOM + 56;
+
 /**
- * The typed boards' shell, after `03 · Name`: the nav row's back chevron, and
- * under it a column from the stack's 136 (left/right 24, gap 14) that scrolls
- * when the keyboard or a short phone leaves it less room than it needs.
+ * The typed boards' shell, after `03 · Name`, spaced to read at a glance: the
+ * nav row's back chevron; the title at the stack's 136 with at most one short
+ * line under it; 40 of air; the fields (20 apart); 36 of air; then the actions
+ * (a refusal, the primary, its quiet links). The legal line, when the board
+ * needs one, sits on the bottom edge instead of crowding the button. The column
+ * scrolls when the keyboard or a short phone leaves it less room (owner, D520).
  */
-export function AuthSurface({ children, onBack }: { children: ReactNode; onBack?: () => void }) {
+export function AuthSurface({
+  title,
+  sub,
+  children,
+  actions,
+  legal,
+  onBack,
+}: {
+  title: string;
+  sub?: ReactNode;
+  children?: ReactNode;
+  actions: ReactNode;
+  legal?: boolean;
+  onBack?: () => void;
+}) {
   return (
     <Screen>
       <NavBar left={onBack ? 'back' : 'empty'} right="empty" onBack={onBack} />
-      <ScrollRegion top={NAV_BOTTOM} contentStyle={{ paddingHorizontal: 24, paddingTop: 136 - NAV_BOTTOM, paddingBottom: 48 }}>
-        <View style={{ gap: 14 }}>{children}</View>
+      <ScrollRegion top={NAV_BOTTOM} bottom={legal ? LEGAL_SPACE : 0} contentStyle={{ paddingHorizontal: 24, paddingTop: 136 - NAV_BOTTOM, paddingBottom: 32 }}>
+        <View style={{ gap: 10 }}>
+          <AuthTitle>{title}</AuthTitle>
+          {sub ? <AuthSub>{sub}</AuthSub> : null}
+        </View>
+        {children ? <View style={{ marginTop: 40, gap: 20 }}>{children}</View> : null}
+        <View style={{ marginTop: 36, gap: 8 }}>{actions}</View>
       </ScrollRegion>
+      {legal ? (
+        <View pointerEvents="box-none" style={{ position: 'absolute', left: 24, right: 24, bottom: LEGAL_BOTTOM }}>
+          <AuthLegal />
+        </View>
+      ) : null}
     </Screen>
   );
 }
@@ -433,12 +465,13 @@ export function AuthLegal() {
   return (
     <MonoText v="legal" center wrap="balance">
       By continuing, you agree to our{' '}
+      {/* no-break spaces keep each document's name on one line (native wraps greedily) */}
       <LegalLink kind="terms" underline>
-        terms of service
+        {'terms of service'}
       </LegalLink>{' '}
       and{' '}
       <LegalLink kind="privacy" underline>
-        privacy policy
+        {'privacy policy'}
       </LegalLink>
       .
     </MonoText>
