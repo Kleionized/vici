@@ -11,3 +11,15 @@ actions. Fields carry placeholders instead of labels. The legal line moves from 
 edge, with no-break spaces keeping "terms of service" and "privacy policy" whole. The welcome doors keep the
 frames' layout with one-line subtitles: "Create an account to save your progress." and "Pick up where you left
 off." The gate's line is "Keep your log and lessons safe across devices."
+
+## D521 — VICI's privacy policy ships in the app, and says what is encrypted
+The policy is written from what the code collects and lives in `src/content/privacyPolicy.json`. The app shows
+it at `/legal/privacy` (mono kit), and every "Privacy policy" / "Privacy" link (sign-up, the doors, the paywall,
+Data & privacy) opens it, or a hosted copy if `EXPO_PUBLIC_PRIVACY_URL` is set. `node
+scripts/legal/build-privacy-html.mjs [--email=…]` builds the same text as `legal/privacy-policy.html` to host for
+App Store Connect and Google Play. The encryption wording is what the providers state publicly: data travels over
+TLS and Convex stores it with 256-bit AES at rest; Clerk keeps only bcrypt hashes of passwords; sign-in tokens
+sit in the keychain; the data is not end-to-end encrypted. The same "encrypted in transit and at rest" line is
+the onboarding name step's sub and the Data & privacy paragraph. A release build no longer requires a hosted
+policy URL (the in-app copy satisfies the in-app requirement), but rejects one that isn't https.
+`EXPO_PUBLIC_PRIVACY_EMAIL` supplies the contact line; without it the policy points to the App Store support link.

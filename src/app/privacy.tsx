@@ -19,7 +19,7 @@ import {
 } from '@/components/mono';
 import { useAuth, type AccountCheck } from '@/lib/auth';
 import { clearDeviceState, useCurrentUser, useDeleteAccountData, useExportData, useUpdateSettings } from '@/lib/backend';
-import { hasLegal, openLegal } from '@/lib/legal';
+import { openLegal } from '@/lib/legal';
 import { mono, sans } from '@/lib/theme';
 
 /**
@@ -85,7 +85,6 @@ export default function Privacy() {
   // (and its sheet, which may still have an error to show) up from then on.
   if (user === undefined && !holding) return <LoadingView onBack={back} />;
   const pauseAnalytics = user?.settings.pauseAnalytics ?? false;
-  const privacyLinked = hasLegal('privacy');
 
   async function exportNow() {
     if (exporting) return;
@@ -194,23 +193,19 @@ export default function Privacy() {
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24, gap: 16 }}>
         <MonoText v="h1">Your data, your call.</MonoText>
         <MonoText v="p">
-          Your journal, urges and log are stored in your private account and sent over encrypted connections. We never sell your data.
+          Your journal, urges and log are stored in your private account, encrypted in transit and at rest. They aren’t end-to-end encrypted: our servers read them to run the app. We never sell your data.
         </MonoText>
         <View style={{ height: 2 }} />
 
         <RowGroup label="Your data">
           <Row label="Export my data" value={exporting ? 'Preparing…' : 'JSON'} onPress={() => void exportNow()} />
-          {privacyLinked ? (
-            <Row label="Privacy policy" onPress={() => void openLegal('privacy')} />
-          ) : (
-            <Row label="Privacy policy" value="Not linked yet" chevron={false} />
-          )}
+          <Row label="Privacy policy" onPress={() => void openLegal('privacy')} />
           <Row label="Terms of service" onPress={() => void openLegal('terms')} />
         </RowGroup>
 
-        {exportNote || !privacyLinked ? (
+        {exportNote ? (
           <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19 }}>
-            {exportNote ?? 'The privacy policy will be linked here before release.'}
+            {exportNote}
           </MonoText>
         ) : null}
 

@@ -123,8 +123,8 @@ export const RELEASE_CONFIG_PROBLEMS: string[] = (() => {
       problems.push(`The RevenueCat key for ${Platform.OS} should start with ${expected.join(' or ')}.`);
     }
   }
-  if (!PRIVACY_URL_SET) problems.push('EXPO_PUBLIC_PRIVACY_URL is not set, so there is no privacy policy to link.');
-  else if (!/^https:\/\//i.test(PRIVACY_URL_SET)) problems.push('EXPO_PUBLIC_PRIVACY_URL must be an https:// address.');
+  // the policy ships in the app (/legal/privacy, D521); a hosted copy is optional but must be https
+  if (PRIVACY_URL_SET && !/^https:\/\//i.test(PRIVACY_URL_SET)) problems.push('EXPO_PUBLIC_PRIVACY_URL must be an https:// address.');
   return problems;
 })();
 

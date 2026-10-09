@@ -1,0 +1,77 @@
+{
+  "title": "Privacy policy",
+  "effective": "9 October 2026",
+  "intro": "VICI is a 12-week self-help programme for changing your relationship with porn. What you record in it is personal, so this policy sets out what the app collects, why, who handles it for us, how it is protected and what you can do about it. VICI is not a medical or crisis service.",
+  "sections": [
+    {
+      "heading": "What you give us",
+      "paragraphs": ["When you create an account and use the app, we store:"],
+      "bullets": [
+        "Your account details: your email address, and your name if you give one. If you sign in with Apple or Google, we receive the name and email address they share with us.",
+        "What you record in VICI: your morning and night check-ins (mood, energy, feelings and what caused them), urges and slips (when they happened, how strong they were, what fed them, what helped and any note you add), your pledge, your vow and journal entries, your answers and notes in lessons, your progress through the programme and your settings.",
+        "Your subscription status. Payments are handled by the App Store or Google Play; we never see your card details."
+      ]
+    },
+    {
+      "heading": "What stays on your phone",
+      "paragraphs": [
+        "Some things are kept only on your device: your check-in reminder times and days, your SOS preferences, progress through the first-run questions and a few markers for letters and reports already shown. Sign-in tokens are kept in your phone's secure keychain.",
+        "Reminders are scheduled on your phone. VICI does not use push notifications. If you turn on App lock, Face ID or Touch ID is handled by your phone; VICI never receives your biometric data."
+      ]
+    },
+    {
+      "heading": "How we use it",
+      "paragraphs": [
+        "We use your data only to run VICI for you: to keep your log, work out your recovery rating and weekly reports, show your progress, schedule your reminders and keep your account and subscription working.",
+        "We do not sell your data, show ads, use advertising or analytics trackers, or share your data with anyone for their own purposes. If you choose to receive email updates, we may email you about VICI; you can stop them at any time."
+      ]
+    },
+    {
+      "heading": "Who handles it for us",
+      "paragraphs": ["We use a small number of service providers. Each processes your data only to provide its service to VICI:"],
+      "bullets": [
+        "Clerk: sign-in and account management.",
+        "Convex: the database and server that store and sync your data.",
+        "RevenueCat: subscriptions. It receives an account identifier and your purchase history and, while \"Share email with billing\" is on in Data & privacy, your name and email address.",
+        "Apple and Google: the Sign in with Apple and Google options, payments and app distribution, under their own privacy policies."
+      ]
+    },
+    {
+      "heading": "How your data is protected",
+      "paragraphs": [
+        "Your data is encrypted in transit and at rest. Everything travels between your phone and our providers over encrypted connections (TLS), and our database provider stores it encrypted with 256-bit AES. VICI never stores your password; if you set one, our sign-in provider keeps only a secure (bcrypt) hash of it.",
+        "Your data is not end-to-end encrypted. Our servers can read it in order to run the app, and access is limited to what running and supporting VICI requires. No system is perfectly secure, so protect your phone with a passcode, and consider turning on App lock."
+      ]
+    },
+    {
+      "heading": "Your choices",
+      "bullets": [
+        "Export: Settings, then Data & privacy, then Export my data gives you a copy of the data stored with your account.",
+        "Delete: Delete account in Data & privacy erases your account and everything stored with it from our database. A subscription bought through the App Store or Google Play must be cancelled there.",
+        "Email updates are off unless you choose them. \"Share email with billing\" can be turned off in Data & privacy.",
+        "Reminders, Face ID and notifications can be turned on or off at any time in Settings and in your phone's settings."
+      ],
+      "paragraphs": ["Depending on where you live, you may also have the right to access, correct or delete your data, to object to how it is used, or to complain to a data protection authority. Contact us to use these rights."]
+    },
+    {
+      "heading": "How long we keep it",
+      "paragraphs": ["We keep your data for as long as your account exists. When you delete your account, it is erased from our database straight away; copies in our providers' backups expire on their normal schedules. Purchase records held by Apple, Google and our subscription provider may be kept as long as the law requires."]
+    },
+    {
+      "heading": "Age",
+      "paragraphs": ["VICI is for adults aged 18 and over. We do not knowingly collect data from anyone younger. If you believe someone under 18 has created an account, contact us and we will delete it."]
+    },
+    {
+      "heading": "Where your data is processed",
+      "paragraphs": ["Our providers may store and process your data in the United States and other countries. Where the law requires it, transfers are covered by appropriate safeguards such as standard contractual clauses."]
+    },
+    {
+      "heading": "Changes to this policy",
+      "paragraphs": ["If we change this policy, we will update this page and its effective date, and tell you in the app about any significant change."]
+    },
+    {
+      "heading": "Contact",
+      "paragraphs": ["{contact}"]
+    }
+  ]
+}
