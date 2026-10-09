@@ -132,7 +132,7 @@ export default function Settings() {
           <Row label="Weekly report" value="After each week" onPress={() => router.push('/weekly-report?from=settings')} />
         </RowGroup>
 
-        <RowGroup label="Anchors">
+        <RowGroup label="Vow & letter">
           <Row label="Your vow" onPress={() => router.push('/vow')} />
           {/* sealed until Week XII — no door before then, and the app delivers it on the week's first launch (R2) */}
           {letterOpen(programmeDay(user)) ? (

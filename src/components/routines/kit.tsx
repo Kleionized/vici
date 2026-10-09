@@ -21,12 +21,12 @@ import type { CheckinKind, TimeOfDay } from '@/lib/routines';
 
 /**
  * The questions balance after "the" on the canvas (`text-wrap: balance`).
- * Native has no balancing pass and greedy would keep "morning"/"nightly" on
+ * Native has no balancing pass and greedy would keep "morning"/"night" on
  * the first line, so native carries the break the frame draws (D332); web
  * balances it itself.
  */
 export function checkinQuestion(kind: CheckinKind): string {
-  const word = kind === 'morning' ? 'morning' : 'nightly';
+  const word = kind === 'morning' ? 'morning' : 'night';
   return Platform.OS === 'web' ? `When should the ${word} check-in come?` : `When should the\n${word} check-in come?`;
 }
 

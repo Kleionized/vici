@@ -105,9 +105,9 @@ const O3_MAX_PICKS: Record<string, number> = { affects: 3 };
  */
 const O3_GOAL_CONFIRM: Record<string, [string, string]> = {
   'Stop completely': ['You want to stop.', 'That’s what we’ll work toward.'],
-  'Watch much less': ['You want porn to take up a lot less of your life.', 'That’s what we’ll work toward.'],
-  'Set a limit and stick to it': ['You want to set a limit and actually keep it.', 'That’s what we’ll work toward.'],
-  'I’m not sure yet': ['You don’t need to decide forever today.', 'We’ll start with getting the choice back.'],
+  'Watch much less': ['You want to watch much less.', 'That’s what we’ll work toward.'],
+  'Set a limit and stick to it': ['You want to set a limit and keep it.', 'That’s what we’ll work toward.'],
+  'I’m not sure yet': ['You don’t need to decide forever today.', 'First, get the choice back.'],
 };
 /** The card is drawn only for the one masturbation answer that earns it. */
 const O3_GOAL_CONFIRM_MAST = 'Keep it, just without porn';
@@ -123,8 +123,8 @@ const NATIVE_BREAKS: Record<string, string> = {
   gender: 'How do you describe\nyour gender?',
   freq: 'How often are you\nwatching porn right now?',
   duration: 'How long have you wanted\nto quit or cut down?',
-  relapseSpan: 'When you’ve tried to quit,\nhow long do you usually make\nit before watching again?',
-  firstPrinciple: 'An urge doesn’t stay at\nits worst for very long.',
+  relapseSpan: 'When you try to quit, how\nlong until you watch again?',
+  firstPrinciple: 'An urge doesn’t stay at\nits worst for long.',
   triggers: 'When do you usually\nend up watching?',
   emotions: 'What are you usually\nfeeling right before?',
   places: 'Where are you\nusually watching?',
@@ -144,7 +144,7 @@ function useTitle(step: FunnelStep, text: string): string {
  * The canvas writes the sample name "Sam" into the Start board's title. The
  * app knows the real one; the man told it three screens earlier. With no name
  * (the field left blank, or an Apple sign-in that shared none) the vocative is
- * dropped — "Let’s figure out…" — rather than greeting him as the sample (D472).
+ * dropped — "What usually leads…" — rather than greeting him as the sample (D472).
  */
 function withName(text: string, name?: string): string {
   const given = (name ?? '').trim();
@@ -461,9 +461,9 @@ export function O3AgeGate() {
       <NavBar left="back" centre={{ step: age?.dashes ?? 1, total: 8 }} right="empty" onBack={onBack} />
       <ScrollRegion top={NAV_BOTTOM} contentStyle={{ paddingHorizontal: 24, paddingTop: (age?.stack.top ?? 136) - NAV_BOTTOM, paddingBottom: 48 }}>
         <View style={{ gap: 14 }}>
-          <MonoText v="h1">This one is for over-18s.</MonoText>
+          <MonoText v="h1">VICI is for over-18s.</MonoText>
           <MonoText v="p">
-            Come back when you are. If porn is already getting in the way, someone you trust — a doctor, a counsellor, a parent — is a better first step than an app.
+            Come back when you are. If porn is already getting in the way, talk to someone you trust: a parent, a doctor or a counsellor.
           </MonoText>
         </View>
       </ScrollRegion>

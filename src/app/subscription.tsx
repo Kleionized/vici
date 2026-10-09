@@ -141,7 +141,7 @@ export default function Subscription() {
   // charge that is not coming, or one the store has not priced.
   const charges = premium && membership.willRenew && !lifetime && !granted && !!renews && !!priced;
   const line = unreachable
-    ? 'Couldn’t reach the store just now. Your plan will show here once it answers.'
+    ? 'Couldn’t reach the store. Your plan will show here when it answers.'
     : !premium
       ? 'Core tools included'
       : granted

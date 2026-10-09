@@ -56,11 +56,11 @@ const RAIL = 5;
  * reading by (`MOOD_WORDS`), and this question's own second lines. The canvas
  * draws the third rung.
  */
-const MOOD_LINES = ['Start slow', 'Not much in reserve', 'On level ground', 'Steady and clear', 'Ready for it'];
+const MOOD_LINES = ['Start slow', 'Not much in reserve', 'On level ground', 'Clear-headed', 'Ready for it'];
 const MOOD_READ: [string, string][] = MOOD_WORDS.map((w, i) => [w, MOOD_LINES[i]]);
 
 /** What the energy meter reads back (`ENERGY_WORDS`). The canvas draws the second bar. */
-const ENERGY_LINES = ['Ask little of yourself', 'Still warming up', 'Steady pace', 'Room to push', 'Use it'];
+const ENERGY_LINES = ['Do the basics', 'Still warming up', 'Steady pace', 'Room to push', 'Use it'];
 const ENERGY_READ: [string, string][] = ENERGY_WORDS.map((w, i) => [w, ENERGY_LINES[i]]);
 
 const ANSWERS = ['Yes', 'Not yet'] as const;
@@ -186,7 +186,7 @@ export default function Morning() {
         <>
           {/* The sentence is yesterday's lesson task — up to seven lines (L58). */}
           <StepStack gap={18} controls={CONTROLS.fab} hero={{ id: 'charger', top: 506 }}>
-            <MonoText v="h1">Did you complete this task?</MonoText>
+            <MonoText v="h1">Did you do this?</MonoText>
             <View style={{ height: 4 }} />
             <TaskCard label="Yesterday" sentence={yesterdayTask} />
             <View style={{ height: 4 }} />
@@ -259,7 +259,7 @@ export default function Morning() {
             {hasPledge ? (
               <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
             ) : (
-              <MonoText v="p">No pledge yet. Write one promise you can keep every day, in your own words.</MonoText>
+              <MonoText v="p">No pledge yet. Write one promise you can keep every day.</MonoText>
             )}
           </StepStack>
           {hasPledge ? (

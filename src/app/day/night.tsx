@@ -39,7 +39,7 @@ const RAIL = 6;
  * this question's own second lines. The canvas draws the middle rung. The
  * answer is stored as `nightMood`, apart from the morning's mood.
  */
-const MOOD_LINES = ['A hard one', 'It took something', 'Neither up nor down', 'More right than wrong', 'One to keep'];
+const MOOD_LINES = ['A hard one', 'It wore you down', 'Neither up nor down', 'More right than wrong', 'Do it again'];
 const MOOD_READ: [string, string][] = MOOD_WORDS.map((w, i) => [w, MOOD_LINES[i]]);
 
 export default function Night() {
@@ -190,10 +190,10 @@ export default function Night() {
               steps aside when the writing reaches it (D320). At 852 the region
               holds the frame's stack exactly as drawn. */}
           <StepStack gap={14} controls={CONTROLS.primary} hero={{ id: 'notebook', top: 506 }}>
-            <MonoText v="h1">Anything worth keeping?</MonoText>
+            <MonoText v="h1">Anything to write down?</MonoText>
             <MonoText v="caps">Optional</MonoText>
             <View style={{ height: 6 }} />
-            <TextField variant="bare" value={reflection} onChangeText={setReflection} placeholder="Sam called at the right moment…" accessibilityLabel="Anything worth keeping" />
+            <TextField variant="bare" value={reflection} onChangeText={setReflection} placeholder="Sam called at the right moment…" accessibilityLabel="Anything to write down" />
           </StepStack>
           <PrimaryButton label="Continue" onPress={next} />
         </>
@@ -225,7 +225,7 @@ export default function Night() {
         <>
           {/* The day's lesson title and task: up to two lines over four (L64). */}
           <StepStack gap={14} controls={CONTROLS.ghost} hero={{ id: 'charger', top: 458 }}>
-            <MonoText v="caps">Tonight’s action</MonoText>
+            <MonoText v="caps">Tomorrow’s action</MonoText>
             <MonoText v="h1">{lessonTitle}</MonoText>
             <MonoText v="p">{task}</MonoText>
           </StepStack>

@@ -109,7 +109,7 @@ function InkP({ children, center }: { children: ReactNode; center?: boolean }) {
 
 // The questionnaire doc words the three lines differently again ("Finding
 // where you usually get caught" …); the frame is what is visible, so it wins.
-const AEGIS_ROWS = ['Finding where you usually struggle', 'Looking at what tends to set it off', 'Choosing where to start'];
+const AEGIS_ROWS = ['Finding where you usually struggle', 'Looking at what sets it off', 'Choosing where to start'];
 /** How long the board holds before it hands over. The app's own timing. */
 const AEGIS_MS = 6800;
 
@@ -280,7 +280,7 @@ export function O3Next30({ times, next, back }: { times: number; next: () => voi
             <Stack top={199}>
               <MonoText v="h1">This is your next 30 days.</MonoText>
               <MonoText v="p">
-                If the rate you reported stayed the same, <Strong>{share}</Strong> could end with porn.
+                At the rate you reported, <Strong>{share}</Strong> could end with porn.
               </MonoText>
             </Stack>
             <View style={{ position: 'absolute', left: 24, right: 24, top: 343 - give, flexDirection: 'row', justifyContent: 'center' }}>
@@ -292,7 +292,7 @@ export function O3Next30({ times, next, back }: { times: number; next: () => voi
             </View>
             <View style={{ position: 'absolute', left: 24, right: 24, top: 653 - give }}>
               <MonoText v="pTight" color={mono.mute} center wrap="wrap">
-                The line can start changing with the next one.
+                It can change, starting today.
               </MonoText>
             </View>
           </>
@@ -473,7 +473,7 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
 const LINES = {
   nothing: {
     title: 'If nothing changes.',
-    body: 'Left alone, the pattern stays — and it can grow. An illustration, not a forecast.',
+    body: 'Left alone, the habit stays and can grow. This is not a forecast.',
     line: 'M86 150 C 170 128, 250 92, 330 58',
     y: 104,
     rate: 'Same, or more',
@@ -481,7 +481,7 @@ const LINES = {
   },
   plan: {
     title: 'With the plan.',
-    body: 'You only have to make the next decision different. Then the next one. Then come back tomorrow.',
+    body: 'Get the next decision right. Then the next one. Then come back tomorrow.',
     line: 'M86 150 C 140 138, 190 172, 240 190 C 272 200, 304 206, 330 208',
     y: 172,
     rate: 'Less often',
@@ -618,7 +618,7 @@ export function O3OneBadDay({ next, back }: { next: () => void; back?: () => voi
       titleSize={26}
       title="One bad day is one bad day."
       body="It doesn’t erase the work before it. Your lessons, logs, rating history and medallions stay."
-      extra={<InkP center>What matters is that you come back.</InkP>}
+      extra={<InkP center>Log it and come back.</InkP>}
       cta="Continue"
       onCta={next}
     />
@@ -657,8 +657,8 @@ export function O3WhatYouWantBack({ pills = [], next, back }: { pills?: string[]
             </View>
           ))}
           <View style={{ height: 10 }} />
-          <MonoText v="p">Not a perfect streak for its own sake.</MonoText>
-          <InkP>More of your time and attention going where you actually want them.</InkP>
+          <MonoText v="p">The streak is only a number.</MonoText>
+          <InkP>Get your time and attention back.</InkP>
         </Stack>
       </Band>
       <PrimaryButton label="Continue" onPress={next} />

@@ -197,7 +197,7 @@ function HubNow({
   if (passedSeconds != null) {
     return (
       <>
-        <DarkHead title="It passed." body="Logged as ridden out. Stay here as long as you need." />
+        <DarkHead title="It passed." body="Logged as ridden out." />
         <UrgeRing fraction={0} clock={hubClock(passedSeconds * 1000)} label="It passed" />
       </>
     );
@@ -205,7 +205,7 @@ function HubNow({
   const remaining = hubRemaining(elapsedMs);
   return (
     <>
-      <DarkHead title="Change where you are." body="Stand up. Move somewhere with light." />
+      <DarkHead title="Change where you are." body="Stand up. Go somewhere bright." />
       <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" />
       <View accessibilityRole="radiogroup" style={{ position: 'absolute', left: 0, right: 0, top: CHIPS_TOP - tuck, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
         {HUB_CHIPS.map((label, i) => (
@@ -251,7 +251,7 @@ function HubScore({ severity, stats, onBottom }: { severity?: number; stats: Hub
   const slipped = stats.days.filter((d) => d === 'slip').length;
   return (
     <>
-      <DarkHead title="You’re riding a wave." body={scoreLine(severity, stats.timed)} />
+      <DarkHead title="Urges pass." body={scoreLine(severity, stats.timed)} />
       <View onLayout={endsAt(276, onBottom)} style={{ position: 'absolute', left: 24, right: 24, top: 276 }}>
         <View style={{ borderRadius: 24, backgroundColor: mono.card, paddingVertical: 20, paddingHorizontal: 22, gap: 16 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>

@@ -83,8 +83,8 @@ const PLACES: { key: UrgePlace; label: string; d: string }[] = [
  * the hero is the card each frame draws.
  */
 const MOVES: { title: string; body: string; hero: 'bed' | 'openDoor' | 'charger' }[] = [
-  { title: 'Stand up.', body: 'Both feet on the floor. The wave loses its grip the moment the room changes.', hero: 'bed' },
-  { title: 'Leave the room.', body: 'Go somewhere with light, and somewhere you don’t usually watch.', hero: 'openDoor' },
+  { title: 'Stand up.', body: 'Both feet on the floor. Do it before you think about it.', hero: 'bed' },
+  { title: 'Leave the room.', body: 'Go somewhere bright, where you don’t usually watch.', hero: 'openDoor' },
   { title: 'Put the phone away.', body: 'Put it somewhere you cannot reach from where you’re sitting.', hero: 'charger' },
 ];
 const MOVE_NUMERAL = ['I', 'II', 'III'];
@@ -96,10 +96,10 @@ function IntroPage({ onClose, onNext }: { onClose: () => void; onNext: () => voi
     <HeroBoard
       nav={{ onClose }}
       hero="stopwatch"
-      caps="The interrupt"
+      caps="For any urge"
       title="The first 90 seconds."
       // the flow has three moves ("Move I of 3"); the frame's "Six" counted something it does not run (D464)
-      body="A universal interrupt for the moment the wave hits. Three small moves — decide nothing until it passes."
+      body="Three small moves. Decide nothing until the urge passes."
       cta="Start"
       onCta={onNext}
     />
@@ -237,7 +237,7 @@ function PickerPage({
 // ── 29B · 29C · 29D · the three moves ───────────────────────────────────────
 
 /**
- * "Try a different step" moves to the next move, the third wrapping to the
+ * "Try another move" moves to the next move, the third wrapping to the
  * first (D068); the pill is what leaves the sequence.
  */
 function MovePage({ index, onClose, onNext, onAnother }: { index: number; onClose: () => void; onNext: () => void; onAnother: () => void }) {
@@ -251,7 +251,7 @@ function MovePage({ index, onClose, onNext, onAnother }: { index: number; onClos
       body={move.body}
       cta="Continue"
       onCta={onNext}
-      ghost="Try a different step"
+      ghost="Try another move"
       onGhost={onAnother}
     />
   );
@@ -268,18 +268,18 @@ const REASSESS_BANDS = ['Gone', 'Noticeable', 'Still there', 'Strong', 'Peaking'
 
 /**
  * The frame's line is the way the urge went and the two reads, numbered 1–5:
- * "Coming down — from 4 to 2". The word follows the direction, never the
+ * "Coming down, from 4 to 2". The word follows the direction, never the
  * second read alone, so a rise cannot read "Coming down" (D254): down is
  * "Coming down" ("It passed" once it is gone — the old note for that read),
- * unmoved is "Holding steady — still at N" (the old middle note), up is
- * "Rising — from N to M" (app-authored, in the D-20 copy batch).
+ * unmoved is "Still at N" (once "Holding steady", the old middle note), up
+ * is "Rising, from N to M" (app-authored, in the D-20 copy batch).
  */
 function reassessLine(before: number | null, after: number): string | undefined {
   // a first read that was skipped has nothing to compare against
   if (before == null) return after === 0 ? 'It passed' : undefined;
-  if (after === before) return after === 0 ? 'It passed' : `Holding steady — still at ${after + 1}`;
+  if (after === before) return after === 0 ? 'It passed' : `Still at ${after + 1}`;
   const word = after > before ? 'Rising' : after === 0 ? 'It passed' : 'Coming down';
-  return `${word} — from ${before + 1} to ${after + 1}`;
+  return `${word}, from ${before + 1} to ${after + 1}`;
 }
 
 /**
@@ -342,7 +342,7 @@ function AfterwardPage({ argument, note, onNote, onClose, onNext }: { argument: 
     <SosQuestion onClose={onClose} hero={{ id: 'envelope', top: 506 }} gap={14} cta="Continue" onCta={onNext}>
       <MonoText v="h1">One more thing.</MonoText>
       <MonoText v="p">
-        {argument ? 'The relationship doesn’t need solving tonight. Write the one thing you need to say tomorrow.' : 'Write down one thing you want to remember from this.'}
+        {argument ? 'The argument can wait until tomorrow. Write the one thing you need to say.' : 'Write down one thing you want to remember from this.'}
       </MonoText>
       <Gap h={6} />
       <TextField
@@ -372,7 +372,7 @@ function DonePage({ seconds, onClose }: { seconds: number; onClose: () => void }
     <HeroBoard
       nav={{ onClose }}
       hero="lighthouse"
-      title="The wave passed."
+      title="The urge passed."
       body={lengthLine(seconds)}
       extra={
         <>
@@ -731,7 +731,7 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       if (overrideAt(at)) setOverride(undefined);
       set(v);
     };
-  /** "Try a different step" — the next move board, the third wrapping to the first. */
+  /** "Try another move" — the next move board, the third wrapping to the first. */
   const otherMove = () =>
     go((current) => {
       const first = FLOW.indexOf('stand');
@@ -804,7 +804,7 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       return (
         <PickerPage
           key="reason"
-          title="What’s feeding it right now?"
+          title="What set it off?"
           labels={TRIGGER_LABELS}
           picked={reasons}
           onPick={answer(setReasons, 'trigger-said')}
@@ -821,7 +821,7 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       return (
         <PickerPage
           key="feeling"
-          title="What’s underneath it?"
+          title="What are you feeling?"
           labels={FEELING_LABELS}
           picked={feelings}
           // a new answer starts its own board, not the old one shifted by earlier "Give me another"s

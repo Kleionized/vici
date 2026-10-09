@@ -188,7 +188,7 @@ function OverTime({ W, values, range, now, rating, change }: { W: number; values
   const months = range === 'months' ? [n.getMonth() - 2, n.getMonth() - 1, n.getMonth()] : [n.getMonth() - 11, n.getMonth() - 5, n.getMonth()];
   const month = (m: number, names: string[]) => names[((m % 12) + 12) % 12];
   const bold = sans('700').fontFamily;
-  const moved = change === 0 ? 'Level with yesterday' : `${change > 0 ? 'Up' : 'Down'} ${Math.abs(change)} since yesterday`;
+  const moved = change === 0 ? 'Same as yesterday' : `${change > 0 ? 'Up' : 'Down'} ${Math.abs(change)} since yesterday`;
   const covers = rating.lived ? `Covers ${dateRange(keyToDate(rating.windowStart), keyToDate(rating.windowEnd))}` : `Covers your last ${RATING_WINDOW} days`;
 
   return (
@@ -278,8 +278,8 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
   const lessons = rating.parts.find((p) => p.key === 'lessons');
   const weight = (key: string) => rating.parts.find((p) => p.key === key)?.max ?? 0;
   const how = lessons
-    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and lessons (${lessons.max}). A slip costs that day’s clean points. Logging it still counts as showing up, and a slip leaves your rating after a week.`
-    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}) and clean days (${weight('cleanDays')}); with the course finished, lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up, and a slip leaves your rating after a week.`;
+    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and lessons (${lessons.max}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`
+    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}) and clean days (${weight('cleanDays')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`;
   return (
     <>
       <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>

@@ -23,10 +23,10 @@ import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountSt
  */
 
 const PROMPTS = [
-  'Why are you choosing to abstain today?',
+  'Why stay clean today?',
   'What would today look like if it went well?',
   'What are you protecting by keeping today clean?',
-  'Who benefits from the version of you that shows up today?',
+  'Who is counting on you today?',
   'What did the last good evening have in it?',
 ];
 
@@ -98,9 +98,9 @@ export default function Affirmation() {
         {mode === 'custom' ? (
           <>
             <MonoText v="h1">Write your own prompt</MonoText>
-            <MonoText v="p">It’ll be waiting for you each morning.</MonoText>
+            <MonoText v="p">It comes back each morning.</MonoText>
             <View style={{ height: 8 }} />
-            <TextField variant="card" value={draft} onChangeText={setDraft} placeholder="What does tomorrow-me get if today stays clean?" accessibilityLabel="Your prompt" />
+            <TextField variant="card" value={draft} onChangeText={setDraft} placeholder="What do you get if today stays clean?" accessibilityLabel="Your prompt" />
           </>
         ) : (
           <>

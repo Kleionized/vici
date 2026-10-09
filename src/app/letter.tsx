@@ -109,7 +109,7 @@ export default function LetterScreen() {
           stackTop={451}
           titleSize={26}
           title="Sealed until Week XII."
-          body={`It opens on Day ${LETTER_OPENS_DAY} — ${left === 1 ? 'tomorrow' : `${left} days from now`}.`}
+          body={`It opens ${left === 1 ? 'tomorrow' : `in ${left} days`}, on Day ${LETTER_OPENS_DAY}.`}
           cta="Close"
           onCta={dismiss}
         />
@@ -122,7 +122,7 @@ export default function LetterScreen() {
         hero="envelope"
         stackTop={451}
         titleSize={26}
-        title="A letter arrived."
+        title="A letter came."
         body={WEEK_XII_FROM}
         cta="Open"
         onCta={() => setPhase('read')}
@@ -138,7 +138,7 @@ export default function LetterScreen() {
 
   if (phase === 'arrive') {
     // the programme week the post lands in, on the calendar count every screen uses
-    return <PostArrival caps={`Week ${roman(courseWeekForDay(programmeDay(user)))} post`} onRead={() => setPhase('read')} onLater={later} onClose={later} />;
+    return <PostArrival caps={`Week ${roman(courseWeekForDay(programmeDay(user)))}`} onRead={() => setPhase('read')} onLater={later} onClose={later} />;
   }
 
   return (

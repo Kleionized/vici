@@ -73,8 +73,8 @@ export default function WeeklyReport() {
         <TitleHead title="Weekly report" />
         <MonoText v="p" style={{ position: 'absolute', left: 24, right: 24, top: 164 }}>
           {report != null
-            ? 'Nothing was logged that week, so the report has nothing to draw on.'
-            : 'Your first week is still being written. Keep checking in; the report appears once a full week closes.'}
+            ? 'Nothing was logged that week.'
+            : 'Your first report comes after a full week. Keep checking in.'}
         </MonoText>
       </Screen>
     );

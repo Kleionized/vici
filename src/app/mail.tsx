@@ -54,13 +54,13 @@ export default function Mail() {
       const r = buildWeeklyReport(weekStart, checkins, events);
       const verdict =
         r.thisAvg == null
-          ? 'A quiet week'
+          ? 'No moods logged'
           : r.lastAvg == null
             ? 'Your first full week'
             : r.thisAvg - r.lastAvg >= 0.25
-              ? 'Steadier than the week before'
+              ? 'A better week'
               : r.lastAvg - r.thisAvg >= 0.25
-                ? 'A heavier week'
+                ? 'A harder week'
                 : 'A steady week';
       out.push({
         key: `report-${weekStart}`,
@@ -80,8 +80,8 @@ export default function Mail() {
       const standing = face ? kkStanding(face, ridden) : 0;
       out.push({
         key: 'post',
-        title: 'VICI Post · A medallion',
-        sub: `${face?.name ?? 'Vici'}, Tier ${roman(Math.max(1, standing))} · enclosure inside`,
+        title: 'A medallion from VICI',
+        sub: `${face?.name ?? 'Vici'}, Tier ${roman(Math.max(1, standing))}`,
         go: () => router.push('/medallion-post'),
       });
     }
@@ -91,7 +91,7 @@ export default function Mail() {
     out.push({
       key: 'letter',
       title: 'A letter from VICI',
-      sub: letter?.kept ? 'Resealed · don’t fail twice' : 'Sealed · waits until it’s needed',
+      sub: letter?.kept ? 'Saved to your journal' : 'Read it after a slip',
       go: () => router.push('/letter'),
     });
     return out;
@@ -111,8 +111,8 @@ export default function Mail() {
         {items.length === 0 ? (
           <EmptyState
             h1
-            title="Nothing’s arrived yet."
-            body="A report lands here at the end of each week, and letters arrive along the way."
+            title="Nothing here yet."
+            body="Weekly reports and letters from VICI come here."
             style={{ marginTop: 300 - ROWS_TOP, paddingVertical: 0 }}
           />
         ) : (

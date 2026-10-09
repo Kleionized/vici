@@ -128,7 +128,7 @@ export default function Vow() {
           </View>
           <MonoText v="p" color={mono.mute} center style={{ fontSize: 14, lineHeight: 21 }}>
             {vow
-              ? 'After a relapse you can re-sign the vow. It resets the promise, never the progress.'
+              ? 'After a slip, sign it again. The vow’s day count restarts. Your progress stays.'
               : 'You haven’t signed the vow yet. Sign it when you mean it.'}
           </MonoText>
         </View>
@@ -162,7 +162,7 @@ export default function Vow() {
         }>
         <MonoText v="h1SheetLg">{vow ? 'Re-sign the vow?' : 'Sign the vow?'}</MonoText>
         <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
-          {vow ? 'It resets the promise, never the progress.' : 'Your name goes under it, dated today.'}
+          {vow ? 'The vow’s day count restarts. Your progress stays.' : 'Your name goes under it, dated today.'}
         </MonoText>
       </Sheet>
     </Screen>

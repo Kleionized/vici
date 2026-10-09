@@ -70,9 +70,9 @@ function morningAfter(at: number, now: number, direct: boolean): { title: string
 
 /** The three alternates at the end of the questions, by how many slips today (98G, 98H, 98I). */
 const WARNINGS = [
-  { hero: 'dominoes2', title: 'Don’t let it become two.', body: 'One slip happened. You can still turn the rest of today around.' },
-  { hero: 'dominoes2', title: 'Stop here.', body: 'It happened again. The next hour can still be different.' },
-  { hero: 'charger', title: 'You can still stop here.', body: 'The day is not gone. The phone goes away for the rest of the evening — that’s the only job.', dark: true },
+  { hero: 'dominoes2', title: 'Don’t let it become two.', body: 'One slip happened. Keep the rest of today clean.' },
+  { hero: 'dominoes2', title: 'Stop here.', body: 'It happened again. Make the next hour different.' },
+  { hero: 'charger', title: 'You can still stop here.', body: 'Put the phone away for the rest of today. That’s the only job.', dark: true },
 ] as const;
 
 /** 98C's presets — now, four hours ago, a day ago. */
@@ -272,7 +272,7 @@ export default function Slip() {
             nav={{ onClose: close }}
             hero="dominoes"
             title="It happened."
-            body="The day isn’t over. Log what happened, then stop it here."
+            body="The day isn’t over. Log it, then stop here."
             cta="Log the slip"
             onCta={() => go('closeit')}
             ghost="Not now"
@@ -396,7 +396,7 @@ export default function Slip() {
               {unsaved ? 'Slip not saved.' : 'Slip logged.'}
             </H1>
             <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-              {unsaved ? 'It isn’t on your log. You stopped all the same.' : write.state === 'slow' ? WAITING_LINE : 'You stopped, and you logged it.'}
+              {unsaved ? 'It isn’t on your log. You still stopped.' : write.state === 'slow' ? WAITING_LINE : 'You stopped, and you logged it.'}
             </MonoText>
             <Gap h={6} />
             <SummaryCard rows={rows} />
@@ -419,7 +419,7 @@ export default function Slip() {
             {/* balance breaks it here on the web; native gets the same two lines from the \n (D332) */}
             <H1>{'Do you still want\nto keep watching?'}</H1>
             <MonoText v="pTight" color={mono.mute}>
-              Honest answer. It changes what comes next.
+              Your answer changes what comes next.
             </MonoText>
             <Gap h={6} />
             <OptionList options={WATCHING} value={watching} onChange={setWatching} />

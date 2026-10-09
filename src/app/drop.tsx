@@ -14,7 +14,7 @@ import { lhNormal, mono } from '@/lib/theme';
  * The enclosure that comes with the medallion post: the whole year for one
  * payment. The offer is a plain board — the title, the one price card (the
  * year, its saving, the monthly sum, three things it buys), the renewal terms
- * and `Unlock my year` over `Terms · Privacy · Restore`. Once it is claimed the
+ * and `Get the year` over `Terms · Privacy · Restore`. Once it is claimed the
  * year arrives as the platinum tier medal with its V, on the post's own hero
  * board.
  *
@@ -81,7 +81,7 @@ export default function Drop() {
         remindBeforeTrialEnds(outcome);
         setPhase('claimed');
       } else if (outcome.status === 'error' || outcome.status === 'unavailable') {
-        Alert.alert('The store could not complete that', outcome.message);
+        Alert.alert('Purchase failed', outcome.message);
       }
       setClaiming(false);
     })();
@@ -117,8 +117,8 @@ export default function Drop() {
         artTop={212}
         stackTop={432}
         caps="The year"
-        title="You received a drop."
-        body="One drop covers the year — twelve months of VICI. It renews yearly until you cancel."
+        title="Your year starts now."
+        body="You have 12 months of VICI. It renews each year until you cancel."
         cta="Continue"
         onCta={close}
         ghost="See the receipt"
@@ -137,7 +137,7 @@ export default function Drop() {
         stackTop={432}
         caps="The year"
         title="You’re already a member."
-        body={`${TIER_NAME} is active on this account, so there is nothing to claim.`}
+        body={`${TIER_NAME} is active on this account. There’s nothing to buy.`}
         cta="Continue"
         onCta={close}
         ghost="Manage subscription"
@@ -156,7 +156,7 @@ export default function Drop() {
       <Screen>
         <NavBar left="empty" right="close" onClose={close} />
         <View style={{ position: 'absolute', left: 0, right: 0, top: NAV_BOTTOM, bottom: CONTROLS, justifyContent: 'center' }}>
-          <EmptyState title="This offer isn’t available right now." body="The store didn’t return it. It may have ended, or the connection dropped. Nothing has been charged." />
+          <EmptyState title="This offer isn’t available right now." body="It may have ended, or the connection dropped. Nothing has been charged." />
         </View>
         <PrimaryButton label="Try again" bottom={96} onPress={() => void refresh()} />
         <GhostLink label="Not now" onPress={close} />
@@ -174,10 +174,10 @@ export default function Drop() {
           <View style={{ position: 'absolute', left: 24, right: 24, top: 0, alignItems: 'center', gap: 12 }}>
             {/* the frame breaks the title itself (`<br>`) */}
             <MonoText v="title" center style={{ alignSelf: 'stretch' }}>
-              {'One decision.\nA year of change.'}
+              {'One price.\nA full year.'}
             </MonoText>
             <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-              Unlock everything VICI has to offer for an entire year.
+              Everything in VICI for 12 months.
             </MonoText>
           </View>
           <PriceCard
@@ -195,7 +195,7 @@ export default function Drop() {
         </PwTerms>
       </ScrollRegion>
       <NavBar left="empty" right="close" onClose={close} />
-      <PrimaryButton label="Unlock my year" onPress={claim} disabled={claiming} bottom={96} />
+      <PrimaryButton label="Get the year" onPress={claim} disabled={claiming} bottom={96} />
       {/* the ghost's line, its three words each a link */}
       <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: 60, zIndex: 6 }}>
         <PwLegal v="ghost" text="Terms · Privacy · Restore" onRestore={restorePurchases} />

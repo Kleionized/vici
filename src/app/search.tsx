@@ -47,9 +47,9 @@ export default function Search() {
             value={q}
             onChangeText={setQ}
             autoFocus
-            placeholder="Search the twelve weeks"
+            placeholder="Search lessons"
             returnKeyType="search"
-            accessibilityLabel="Search the twelve weeks"
+            accessibilityLabel="Search lessons"
             style={{ flex: 1 }}
           />
           <Tap onPress={back} hitSlop={{ top: 10, bottom: 10, left: 8, right: 12 }} style={{ height: 40, justifyContent: 'center' }}>

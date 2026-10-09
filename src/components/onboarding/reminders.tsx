@@ -162,7 +162,7 @@ export function O3Reminders({ window: riskWindow, onAllow, skip }: { window: str
   return (
     <ReminderBoard
       title={`${riskWindow} is when you’re most likely to watch.`}
-      sub="Want VICI there before that time?"
+      sub="VICI can remind you before then."
       cta="Turn on reminders"
       onCta={() => {
         onAllow();
@@ -243,7 +243,7 @@ export function O3DayZero({ lesson, number, title, next, busy }: { lesson?: stri
           </MonoText>
         </View>
         <MonoText v="pTight" center style={{ alignSelf: 'stretch' }}>
-          Your first lesson is ready. Start with one thing today.
+          Your first lesson is ready. Read it today.
         </MonoText>
       </View>
       <PrimaryButton label="Begin" onPress={next} disabled={busy} />

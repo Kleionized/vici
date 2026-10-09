@@ -77,7 +77,7 @@ export function UnsavedBoard({ what, onRetry, onLater, onClose }: { what: string
       nav={{ onClose }}
       hero="clipboard"
       title="That didn’t save."
-      body={`Your ${what} wasn’t written to your account. Check your connection, then try again.`}
+      body={`Your ${what} isn’t on your log. Check your connection and try again.`}
       cta="Try again"
       onCta={onRetry}
       ghost="Not now"

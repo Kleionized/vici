@@ -114,7 +114,7 @@ export default function Dashboard() {
               [
                 [nCheckins, 'Check-ins'],
                 [urges, 'Urges logged'],
-                [kept, 'Days kept'],
+                [kept, 'Clean days'],
               ] as [number, string][]
             ).map(([v, label]) => (
               <View key={label} style={{ flex: 1, alignItems: 'center', gap: 6 }}>
@@ -147,7 +147,7 @@ export default function Dashboard() {
                 ))}
               </View>
             ) : (
-              <P color={mono.mute}>Log an urge and its trigger. The bars build from there.</P>
+              <P color={mono.mute}>Log an urge to see what sets it off.</P>
             )}
             <MonoText v="pill" color={mono.mute} style={{ fontSize: 12, lineHeight: 15 }}>
               From the {urges} urge{urges === 1 ? '' : 's'} you logged in this range
@@ -157,7 +157,7 @@ export default function Dashboard() {
           {/* quiet doors — mail + medallions (navigation, not analytics) */}
           <RowGroup>
             <Row label="Your mail" value="Weekly reports & letters" valueLines={1} onPress={() => router.push('/mail')} />
-            <Row label="Medallions" value="The campaign album" valueLines={1} onPress={() => router.push('/milestones')} />
+            <Row label="Medallions" value="Earned and to come" valueLines={1} onPress={() => router.push('/milestones')} />
           </RowGroup>
         </View>
       </ScrollView>

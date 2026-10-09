@@ -402,7 +402,7 @@ function Cover({ laurel }: { laurel?: boolean }) {
  * its line at 284 — and the pill at the frame's bottom 48.
  */
 function LockScreen({ name, failed, onUnlock }: { name: LockName; failed: boolean; onUnlock: () => void }) {
-  const line = failed ? 'That didn’t match. Try again.' : `Unlock with ${name} to carry on.`;
+  const line = failed ? 'That didn’t match. Try again.' : `Unlock with your ${name}.`;
   return (
     <Layer>
       <View style={StyleSheet.absoluteFill}>

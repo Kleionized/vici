@@ -74,7 +74,7 @@ export function useClerkAuth(): AuthValue {
   }
 
   async function startSignUp(email: string, password: string | null, name: string | undefined, options?: SignUpOptions): Promise<AuthStepResult> {
-    if (!signUpLoaded || !signUp) return { ok: false, error: 'Auth is still loading.' };
+    if (!signUpLoaded || !signUp) return { ok: false, error: 'Still loading. Try again.' };
     try {
       const res = await signUp.create({
         emailAddress: email.trim(),
@@ -90,7 +90,7 @@ export function useClerkAuth(): AuthValue {
       // supplied after the code, so stop before emailing one (deploy D410).
       const missing = (res.missingFields ?? []) as string[];
       if (!password && missing.includes('password')) {
-        return { ok: false, error: 'This sign-up needs a password. Tap “Use password instead” and choose one.' };
+        return { ok: false, error: 'This sign-up needs a password. Tap “Use a password instead” and choose one.' };
       }
       if (missing.length) {
         return { ok: false, error: `Sign-up needs details the app doesn’t ask for (${missing.join(', ')}). Check your Clerk configuration.` };
@@ -112,7 +112,7 @@ export function useClerkAuth(): AuthValue {
     mode: 'clerk',
 
     async signInWithPassword(email, password) {
-      if (!signInLoaded || !signIn) return { ok: false, error: 'Auth is still loading.' };
+      if (!signInLoaded || !signIn) return { ok: false, error: 'Still loading. Try again.' };
       try {
         const res = await signIn.create({ identifier: email.trim(), password });
         if (res.status === 'complete') {
@@ -137,7 +137,7 @@ export function useClerkAuth(): AuthValue {
     },
 
     async sendSignInCode(email) {
-      if (!signInLoaded || !signIn) return { ok: false, error: 'Auth is still loading.' };
+      if (!signInLoaded || !signIn) return { ok: false, error: 'Still loading. Try again.' };
       try {
         const res = await signIn.create({ identifier: email.trim() });
         const factor = emailCodeFactor(res.supportedFirstFactors as FactorLike[] | null);
@@ -165,7 +165,7 @@ export function useClerkAuth(): AuthValue {
         }
         if (res.status === 'needs_second_factor' && stage === 'first') {
           const next = await toSecondFactor();
-          return next.needsVerification ? { ok: false, error: 'One more code is on its way — enter that one.' } : next;
+          return next.needsVerification ? { ok: false, error: 'We sent another code. Enter that one.' } : next;
         }
         return { ok: false, error: 'That code didn’t complete sign-in. Try again.' };
       } catch (err) {
@@ -190,7 +190,7 @@ export function useClerkAuth(): AuthValue {
     },
 
     async startPasswordReset(email) {
-      if (!signInLoaded || !signIn) return { ok: false, error: 'Auth is still loading.' };
+      if (!signInLoaded || !signIn) return { ok: false, error: 'Still loading. Try again.' };
       try {
         // Creating the sign-in with this strategy emails the reset code.
         await signIn.create({ strategy: 'reset_password_email_code', identifier: email.trim() });
@@ -246,7 +246,7 @@ export function useClerkAuth(): AuthValue {
         // The instance still demands a password at sign-up (dashboard setting):
         // say so rather than leaving a verified address in limbo.
         if (res.missingFields?.includes('password')) {
-          return { ok: false, error: 'Your email is confirmed, but this sign-up also needs a password. Go back and choose “Use password instead”.' };
+          return { ok: false, error: 'Your email is confirmed, but this sign-up also needs a password. Go back and tap “Use a password instead”.' };
         }
         return { ok: false, error: 'That code didn’t complete sign-up. Try again.' };
       } catch (err) {

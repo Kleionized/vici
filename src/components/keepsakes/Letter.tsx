@@ -22,7 +22,7 @@ import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
  * programme's first date, seven days a week, twelve weeks at most.
  */
 export function postWeek(start: ProgrammeStart, now = Date.now()): string {
-  return `Week ${roman(courseWeekForDay(programmeDay(start, now)))} post`;
+  return `Week ${roman(courseWeekForDay(programmeDay(start, now)))}`;
 }
 
 /**
@@ -35,11 +35,11 @@ export function PostArrival({ caps, onRead, onLater, onClose }: { caps: string; 
       nav={{ left: 'empty', right: 'close', onClose }}
       hero="envelope"
       caps={caps}
-      title="The post is in."
-      body="A short letter from VICI — two minutes, worth keeping."
+      title="A letter came."
+      body="It takes a minute to read."
       cta="Read"
       onCta={onRead}
-      ghost="Tonight"
+      ghost="Read later"
       onGhost={onLater}
     />
   );

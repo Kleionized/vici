@@ -29,66 +29,61 @@ export type RDProtocol = { title: string; pages: [RDPage, RDPage, RDPage] };
 export const RD_KEYS = ['loneliness', 'anxiety', 'stress', 'boredom', 'latenight', 'homealone', 'argument'] as const;
 export type RDKey = (typeof RD_KEYS)[number];
 
-/**
- * The space before each em dash is a no-break space (` `), as Paywall's
- * trial line has it: the dash stays with the word before it instead of opening
- * the next line ("…can be seen ⏎ — or leave…" at 393).
- */
 export const RD_PROTOCOLS: Record<RDKey, RDProtocol> = {
   loneliness: {
     title: 'Loneliness',
     pages: [
-      { hero: 'lamp', h: 'Lonely tonight.', s: 'The pull isn’t about the screen. It’s about the empty room.' },
-      { hero: 'twoCups', h: 'It wants company.', s: 'The itch is for another person, not a screen\u00A0— the screen just answers fastest.' },
-      { hero: 'envelope', h: 'One text.', s: 'Reach outward, not inward.', act: 'Message one person\u00A0— not about this. A meme counts.' },
+      { hero: 'lamp', h: 'Lonely tonight.', s: 'An empty room makes the urge louder.' },
+      { hero: 'twoCups', h: 'You want company.', s: 'The screen is the fastest answer. It isn’t a person.' },
+      { hero: 'envelope', h: 'One text.', s: 'Talk to someone.', act: 'Message one person about anything. A meme counts.' },
     ],
   },
   anxiety: {
     title: 'Anxiety',
     pages: [
-      { hero: 'brain', h: 'Wound up, not turned on.', s: 'Anxiety and arousal share wiring\u00A0— the body confuses one for the other.' },
-      { hero: 'kettle', h: 'The valve refills itself.', s: 'The urge promises release, then hands the pressure back with interest.' },
-      { hero: 'match', h: 'Ten slow breaths.', s: 'Slow the body first; the mind follows.', act: 'Four counts in, six counts out\u00A0— ten times through.' },
+      { hero: 'brain', h: 'Wound up.', s: 'Anxiety can feel like arousal. The body mixes them up.' },
+      { hero: 'kettle', h: 'Relief doesn’t last.', s: 'The urge promises relief. Then the pressure comes back worse.' },
+      { hero: 'match', h: 'Ten slow breaths.', s: 'Slow the body. The mind follows.', act: 'Four counts in, six counts out. Ten times.' },
     ],
   },
   stress: {
     title: 'Stress',
     pages: [
-      { hero: 'books', h: 'Heavy day.', s: 'Stress narrows the mind to the nearest exit\u00A0— and it knows a fast one.' },
-      { hero: 'clipboard', h: 'The fast exit is a trapdoor.', s: 'Relief that costs tomorrow isn’t relief. The pile is still there after.' },
-      { hero: 'openDoor', h: 'Put the day down.', s: 'Ten minutes off duty, on purpose.', act: 'Step outside and walk one lap\u00A0— no phone in your pocket.' },
+      { hero: 'books', h: 'Heavy day.', s: 'Stress looks for the fastest way out.' },
+      { hero: 'clipboard', h: 'It solves nothing.', s: 'The relief is short. The pile is still there after.' },
+      { hero: 'openDoor', h: 'Put the day down.', s: 'Ten minutes off duty, on purpose.', act: 'Step outside and walk one lap. Leave the phone behind.' },
     ],
   },
   boredom: {
     title: 'Boredom',
     pages: [
-      { hero: 'hourglass', h: 'Nothing to do.', s: 'An empty hour is the oldest trigger there is.' },
-      { hero: 'plant', h: 'The itch is for anything.', s: 'Boredom doesn’t want the screen\u00A0— it wants motion, any motion.' },
-      { hero: 'sneaker', h: 'The second-easiest thing.', s: 'The easiest thing is the screen. Pick the next one.', act: 'Ten push-ups, one glass of water, one open window.' },
+      { hero: 'hourglass', h: 'Nothing to do.', s: 'An empty hour is when the urge comes.' },
+      { hero: 'plant', h: 'You need to move.', s: 'Boredom wants motion. The screen is only the easiest fix.' },
+      { hero: 'sneaker', h: 'Pick something else.', s: 'Skip the easiest thing. Do the next one.', act: 'Ten push-ups, one glass of water, one open window.' },
     ],
   },
   latenight: {
     title: 'Late night',
     pages: [
-      { hero: 'bed', h: 'Past your window.', s: 'After eleven, the odds tilt\u00A0— willpower goes to sleep before you do.' },
-      { hero: 'nightPhone', h: 'Nothing good is on.', s: 'The last hour awake is the weakest hour of the day.' },
-      { hero: 'charger', h: 'End it on purpose.', s: 'Close the day before it closes you.', act: 'Phone on the charger, outside the room. Go to bed bored.' },
+      { hero: 'bed', h: 'It’s late.', s: 'You’re tired, and your guard is down.' },
+      { hero: 'nightPhone', h: 'Nothing good is on.', s: 'Your last hour awake is your weakest.' },
+      { hero: 'charger', h: 'End it on purpose.', s: 'Decide when the day ends.', act: 'Phone on the charger, outside the room. Go to bed bored.' },
     ],
   },
   homealone: {
     title: 'Home alone',
     pages: [
-      { hero: 'nightMoon', h: 'Empty house.', s: 'Privacy is opportunity\u00A0— the brain clocks it before you do.' },
-      { hero: 'door', h: 'The door is a switch.', s: 'Alone drops the cost of a slip to zero. Knowing that is half the defense.' },
-      { hero: 'sunrise', h: 'Change the room.', s: 'Light and sightlines change the odds.', act: 'Open the curtains and work where you can be seen\u00A0— or leave for twenty minutes.' },
+      { hero: 'nightMoon', h: 'Empty house.', s: 'No one will see. Part of you has already noticed.' },
+      { hero: 'door', h: 'You would know.', s: 'Alone, a slip looks free. It isn’t.' },
+      { hero: 'sunrise', h: 'Change the room.', s: 'Make the room less private.', act: 'Open the curtains and work where you can be seen, or go out for twenty minutes.' },
     ],
   },
   argument: {
     title: 'An argument',
     pages: [
-      { hero: 'bubbles', h: 'Still burning.', s: 'Anger wants a win\u00A0— and a slip feels like one, briefly.' },
-      { hero: 'dominoes2', h: 'It offers control back.', s: 'The urge shows up right after the argument took your control away.' },
-      { hero: 'fountainPen', h: 'Write, don’t send.', s: 'Spend the charge somewhere it can’t cost you.', act: 'Write the reply you won’t send. Then put it down.' },
+      { hero: 'bubbles', h: 'Still burning.', s: 'Anger wants a win. For a moment, a slip feels like one.' },
+      { hero: 'dominoes2', h: 'You want control back.', s: 'The argument took it away. The urge offers it back.' },
+      { hero: 'fountainPen', h: 'Write, don’t send.', s: 'Put the anger where it can’t cost you.', act: 'Write the reply you won’t send. Then put it down.' },
     ],
   },
 };

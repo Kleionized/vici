@@ -13,14 +13,14 @@ import { mono } from '@/lib/theme';
  * line under it 15/24 at 452, the third page's move as a second line in ink,
  * and the three dots that keep the whole run visible from the first page. The
  * primary sits over a ghost (bottom 96 / 60): the first page's ghost bows out
- * of the run ("Not tonight"), the other two step back through it.
+ * of the run ("Not now"), the other two step back through it.
  *
  * A key nobody knows — the `All` drawer's `?key=lonely` among them — opens a
  * protocol rather than a blank page (`rdProtocolKey`).
  */
 
 const CTA = ['Walk through it', 'Next', 'Done'];
-const GHOST = ['Not tonight', 'Back', 'Back'];
+const GHOST = ['Not now', 'Back', 'Back'];
 
 export default function RoughProtocol() {
   const router = useRouter();

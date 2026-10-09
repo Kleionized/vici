@@ -102,10 +102,10 @@ export default function AppLock() {
         {/* 124 + 76 = 200; the column starts at 222 */}
         <View style={{ marginTop: 22, gap: 14 }}>
           <MonoText v="h1" center>
-            Only opens for you.
+            Keep VICI private.
           </MonoText>
           <MonoText v="p" center>
-            {`This work is personal. Keep VICI behind ${name} so it opens only for you.`}
+            {`Lock it with your ${name} so only you can open it.`}
           </MonoText>
           <View style={{ height: 4 }} />
           <RowGroup label="Lock">

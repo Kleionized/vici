@@ -28,12 +28,12 @@ export default function NotifPrimer() {
     <ReminderBoard
       nav={<NavBar left="empty" centre={{ step: 8, total: 9 }} right="close" onClose={close} />}
       title="Two reminders a day."
-      sub="At your check-in times. Nothing noisy, nothing shaming."
+      sub="At your check-in times."
       // the promise under the notes costs the space above them, so it clears the pill at 852
       notesGap={24}
       after={
         <MonoText v="p" center wrap="wrap" style={{ marginTop: 12, fontSize: 14, lineHeight: 20, color: mono.mute }}>
-          Discreet by default. Nothing names the habit.
+          They never name the habit.
         </MonoText>
       }
       cta="Turn on reminders"

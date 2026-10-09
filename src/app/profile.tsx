@@ -96,7 +96,7 @@ export default function Profile() {
           <Row label="Email" value={email ?? 'Offline account'} valueLines={1} chevron={false} />
         </RowGroup>
 
-        <RowGroup label="Journey">
+        <RowGroup label="Progress">
           <Row label="Started VICI" value={started} chevron={false} />
           <Row label="Current week" value={currentWeek} valueLines={1} chevron={false} />
           <Row label="Medallions" value={album ? `${album.earned} of ${album.total}` : undefined} onPress={() => router.push('/milestones')} />

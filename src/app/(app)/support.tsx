@@ -44,7 +44,7 @@ export default function Support() {
       <NavBar left="back" right="empty" onBack={back} />
 
       <ScrollRegion top={100} bottom={GHOST_RESERVE} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24, gap: 16 }}>
-        <MonoText v="h1">You’re not alone in this.</MonoText>
+        <MonoText v="h1">Get help.</MonoText>
         <MonoText v="p" color={mono.ink}>
           If you’re in danger right now, call your local emergency number.
         </MonoText>
@@ -54,7 +54,7 @@ export default function Support() {
           <Row label="Find a helpline near you" onPress={openHelplines} accessibilityLabel="Find a helpline near you. Opens findahelpline.com" />
         </RowGroup>
         <MonoText v="p" color={mono.mute} style={{ fontSize: 14, lineHeight: 20 }}>
-          findahelpline.com is a maintained international directory of free, confidential crisis lines and text services, searchable by country.
+          findahelpline.com lists crisis lines and text services by country.
         </MonoText>
 
         <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19, marginTop: 8 }}>

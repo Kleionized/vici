@@ -74,13 +74,13 @@ export default function UrgeOverview() {
   const end = params.week ? new Date(start).setDate(new Date(start).getDate() + 7) : now + 1;
   const urges = events.filter((e) => isUrge(e) && e.createdAt >= start && e.createdAt < end).sort((a, b) => b.createdAt - a.createdAt);
   const rode = urges.filter((e) => !isSlip(e)).length;
-  // the empty pages keep the old line, with the range said the way the pill says it —
+  // the empty pages say the range the way the pill says it —
   // but only when nothing was logged: urges logged without a strength, a feeling
   // or a place say that instead of denying the urges the page just counted (R3)
   const span = params.week ? 'this week' : `in the last ${RANGE_DAYS} days`;
-  const nothing = (what: string) => `Nothing logged ${span}, so there is no ${what} to read yet.`;
+  const nothing = `No urges logged ${span}.`;
   const unrecorded = (what: string) => `No ${what} recorded for ${urges.length === 1 ? 'this urge' : 'these urges'} yet.`;
-  const empty = (what: string, field: string) => (urges.length ? unrecorded(field) : nothing(what));
+  const empty = (field: string) => (urges.length ? unrecorded(field) : nothing);
 
   const strength = modeBand(urges);
   const triggers = tally(triggersOf(urges)).slice(0, 4);
@@ -108,7 +108,7 @@ export default function UrgeOverview() {
             )}
           </RuledRows>
         ) : (
-          <EmptyState body={nothing('urge')} style={{ position: 'absolute', left: 0, right: 0, top: y(372), paddingVertical: 0 }} />
+          <EmptyState body={nothing} style={{ position: 'absolute', left: 0, right: 0, top: y(372), paddingVertical: 0 }} />
         )}
       </PaneBody>
 
@@ -121,7 +121,7 @@ export default function UrgeOverview() {
             <DotRows top={y(524)} rows={triggers.map(([label, n]) => [triggerNoun(label), n])} />
           </>
         ) : (
-          <EmptyState body={empty('pattern', 'strength')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
+          <EmptyState body={empty('strength')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
         )}
       </PaneBody>
 
@@ -134,7 +134,7 @@ export default function UrgeOverview() {
         </PaneBody>
       ) : (
         <PaneBody height={y(500)}>
-          <EmptyState body={empty('mood pattern', 'feeling')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
+          <EmptyState body={empty('feeling')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
         </PaneBody>
       )}
 
@@ -150,7 +150,7 @@ export default function UrgeOverview() {
             )}
           </>
         ) : (
-          <EmptyState body={nothing('timing')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
+          <EmptyState body={nothing} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
         )}
       </PaneBody>
     </PagedRegister>

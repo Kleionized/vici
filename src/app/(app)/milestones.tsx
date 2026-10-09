@@ -123,8 +123,8 @@ function stateLine(f: LedgerFace): string {
   const { face } = f;
   if (f.earned) return face.steps.length ? kkTierLine(face, f.standing) : f.date != null ? shortDate(f.date) : face.blurb;
   if (face.steps.length) {
-    // a first rung of one reads in the singular (`0 of 1 wave`) — only Breakwater's
-    // waves and Rebound's mornings start at one, both plain -s plurals
+    // a first rung of one reads in the singular (`0 of 1 urge`) — only Breakwater's
+    // urges and Rebound's check-ins start at one, both plain -s plurals
     const noun = face.noun && face.steps[0] === 1 ? face.noun.replace(/s$/, '') : face.noun;
     return `${f.count} of ${face.steps[0]}${noun ? ` ${noun}` : ''}`;
   }

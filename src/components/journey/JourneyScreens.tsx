@@ -111,13 +111,13 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'landing',
     roman: 'I',
     title: 'The Landing',
-    line: 'Getting ashore — the vow, the first check-ins, the first wave faced.',
+    line: 'The first week. Sign the vow, check in, ride out your first urge.',
     hero: 'sunrise',
     rows: [
       { label: 'The vow', meta: () => 'Day 0', state: (c) => (c.vowed ? 'done' : 'locked') },
       // one string here, held or not — the glyph carries the truth
-      { label: 'Seven mornings', meta: () => 'Days 1–7 · held', state: (c) => (c.mornings >= 7 ? 'done' : 'locked') },
-      { label: 'First wave outlasted', meta: (c) => `×${c.waves}`, state: (c) => (c.waves > 0 ? 'done' : 'locked') },
+      { label: 'Seven mornings', meta: () => 'Days 1–7', state: (c) => (c.mornings >= 7 ? 'done' : 'locked') },
+      { label: 'First urge ridden out', meta: (c) => `×${c.waves}`, state: (c) => (c.waves > 0 ? 'done' : 'locked') },
     ],
   },
   // The Crossing looks outward rather than inward: standing mid-water, what you
@@ -126,10 +126,10 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'crossing',
     roman: 'II',
     title: 'The Crossing',
-    line: 'Open water — the first hard weeks. Hold the pledge, ride the waves, learn your triggers.',
+    line: 'The first hard weeks. Keep the pledge, ride out urges, learn your triggers.',
     hero: 'compass',
     rows: [
-      { label: 'The Landing', meta: () => 'Days 1–7 · held', state: standingIn('landing') },
+      { label: 'The Landing', meta: () => 'Days 1–7', state: standingIn('landing') },
       // "Day 13 of 30"; past day 30 the count sits on its ceiling
       { label: 'The Crossing', meta: (c) => `Day ${Math.min(30, c.day)} of 30`, state: standingIn('crossing') },
       { label: 'The Highlands', meta: () => 'Days 31–60', state: standingIn('highlands') },
@@ -139,7 +139,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'highlands',
     roman: 'III',
     title: 'The Highlands',
-    line: 'Thinner air, longer views — the habits hold under real stress.',
+    line: 'The habits meet real stress. Hold them.',
     hero: 'mountain',
     rows: [
       { label: 'The Long Climb', meta: () => 'Days 31–45', state: past(45) },
@@ -151,7 +151,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'watch',
     roman: 'IV',
     title: 'The Watch',
-    line: 'The habit is yours. Now you keep the light on for the long run.',
+    line: 'The habit is yours now. Keep it.',
     hero: 'lighthouse',
     rows: [
       { label: 'Home waters', meta: () => 'Days 61–75', state: past(75) },

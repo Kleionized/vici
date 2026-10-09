@@ -68,7 +68,7 @@ export default function MedallionPost() {
       close();
       await createJournalEntry({
         tag: 'Letter',
-        title: 'VICI Post · A medallion',
+        title: 'A medallion from VICI',
         body: `Dear ${name},\n\n${P1}\n\n${P2}\n\n— VICI`,
       }).catch(() => {});
     })();
@@ -79,7 +79,7 @@ export default function MedallionPost() {
   }
 
   return (
-    <LetterCard title="Enclosure from VICI" onClose={shelve} primary="Save to Journal" onPrimary={keep} ghost="Open the enclosure" onGhost={() => router.push('/drop')}>
+    <LetterCard title="From VICI" onClose={shelve} primary="Save to Journal" onPrimary={keep} ghost="See the yearly offer" onGhost={() => router.push('/drop')}>
       <Salutation>{`Dear ${name},`}</Salutation>
       <LetterP>{P1}</LetterP>
       <LetterP>{P2}</LetterP>

@@ -164,7 +164,7 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
             })}
           </RuledRows>
         ) : (
-          <EmptyState title="No urges logged yet" body="When a wave hits, logging it is what turns it into data." style={FLUSH} />
+          <EmptyState title="No urges logged yet" body="Log each urge. In time, you’ll see the pattern." style={FLUSH} />
         )}
       </Page>
     </Screen>
@@ -273,7 +273,7 @@ function Checkins({
         ) : (
           <>
             {door ? <RuledRows height={52}>{door}</RuledRows> : null}
-            <EmptyState title="No check-ins yet" body="Twenty seconds in the morning starts one." style={FLUSH} />
+            <EmptyState title="No check-ins yet" body="The first one takes two minutes." style={FLUSH} />
           </>
         )}
       </Page>
@@ -309,7 +309,7 @@ function Reports({
     return (
       <Screen>
         <Page top={236} head={head}>
-          <EmptyState title="No reports yet" body="The first one arrives once a full week has closed." style={[FLUSH, { paddingTop: 0 }]} />
+          <EmptyState title="No reports yet" body="The first one comes after a full week." style={[FLUSH, { paddingTop: 0 }]} />
         </Page>
       </Screen>
     );
@@ -322,14 +322,14 @@ function Reports({
         head={
           <>
             {head}
-            <BigStat value={String(latest.rating)} caption={`Recovery rating, ${signed(latest.delta)} this week`} />
+            <BigStat value={String(latest.rating)} caption={`Recovery rating, ${signed(latest.delta)} last week`} />
             {/* oldest first, so the line reads left to right the way the weeks ran — on the rating's fixed 0–100 */}
             <Spark values={[...weeks].reverse().map((w) => w.rating)} scale={RATING_SCALE} />
             <Tap
               onPress={() => onOpen(latest.weekStart)}
               style={{ position: 'absolute', left: 24, right: 24, top: 432, height: 52, borderRadius: 26, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
               <MonoText v="pill" style={{ ...sans('700'), fontSize: 15, lineHeight: lhNormal(15) }} color={mono.onInk}>
-                Open this week’s report
+                Open last week’s report
               </MonoText>
             </Tap>
           </>

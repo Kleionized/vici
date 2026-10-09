@@ -142,7 +142,7 @@ export default function JournalNew() {
                 <WhenChips options={tags} value={tag} onChange={setTag} style={{ flexWrap: 'nowrap' }} />
               </ScrollView>
               <View style={{ gap: 12 }}>
-                <TextField variant="sheet" value={title} onChangeText={setTitle} placeholder="A quiet win" accessibilityLabel="Title" />
+                <TextField variant="sheet" value={title} onChangeText={setTitle} placeholder="Title" accessibilityLabel="Title" />
                 <TextField
                   variant="note"
                   value={body}
@@ -178,7 +178,7 @@ export default function JournalNew() {
         }>
         <MonoText v="h1SheetLg">Delete this entry?</MonoText>
         <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
-          It’s removed from your account for good. This can’t be undone.
+          This can’t be undone.
         </MonoText>
       </Sheet>
     </Screen>

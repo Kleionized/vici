@@ -32,7 +32,7 @@ import { Band } from './tail';
  */
 export const WEEK_XII_FROM = 'From VICI, written as you at week twelve.';
 
-/** The envelope, "A letter arrived.", `Open` over `Save it for later`. */
+/** The envelope, "A letter came.", `Open` over `Save it for later`. */
 export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => void }) {
   return (
     <HeroBoard
@@ -41,7 +41,7 @@ export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => 
       stackTop={451}
       gap={18}
       titleSize={26}
-      title="A letter arrived."
+      title="A letter came."
       body={WEEK_XII_FROM}
       cta="Open"
       onCta={next}

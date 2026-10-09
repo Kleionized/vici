@@ -855,8 +855,8 @@ export function TapStage({ ctx, settings, onClose, onEnd, onDone, onSlip, onBack
       left={ctx === 'hub' ? 'back' : 'empty'}
       onBack={onBack}
       onClose={onClose}
-      title="Tap the numbers as they land."
-      body="Eyes on the count, not the wave"
+      title="Tap the numbers in order."
+      body="Eyes on the count."
       play={(area) => {
         const at = tapPlay(area);
         return {
@@ -957,7 +957,7 @@ export function OddStage({ ctx, settings, onClose, onEnd, onDone, onSlip, onBack
       onBack={onBack}
       onClose={onClose}
       title="Find the one that’s different."
-      body="Each round gets a little harder"
+      body="Tap it, then find the next."
       play={(area) => {
         const at = oddPlay(area);
         const size = 3 * at.tile + 2 * TILE_GAP;

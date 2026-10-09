@@ -29,7 +29,7 @@ export function MisconfiguredBuild(_props: { children?: ReactNode }) {
         <LaurelMark size={40} />
         <View style={{ marginTop: 28, gap: 14 }}>
           <H1>This build is misconfigured.</H1>
-          <P>It is a release build without the settings it needs, so it will not start rather than run on test or offline services. Nothing on this phone was changed.</P>
+          <P>This release build is missing settings it needs. It stops here instead of running on test or offline services. Nothing on this phone was changed.</P>
         </View>
         <View style={{ marginTop: 28, gap: 12 }}>
           <MonoText v="caps">What is missing</MonoText>

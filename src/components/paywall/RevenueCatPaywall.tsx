@@ -60,7 +60,7 @@ export function RevenueCatPaywall({
         onRestoreCompleted={({ customerInfo }) => {
           if (customerInfo.entitlements.active[ENTITLEMENT_ID]) finish(true);
         }}
-        onPurchaseError={({ error }) => Alert.alert('The store could not complete that', error.message)}
+        onPurchaseError={({ error }) => Alert.alert('Purchase failed', error.message)}
         onRestoreError={({ error }) => Alert.alert('Could not restore', error.message)}
         onDismiss={() => finish(false)}
       />

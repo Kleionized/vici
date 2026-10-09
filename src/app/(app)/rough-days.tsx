@@ -46,7 +46,7 @@ export default function RoughDays() {
       />
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 48, gap: 18 }}>
         <View style={{ gap: 10 }}>
-          <MonoText v="caps">The universal interrupt</MonoText>
+          <MonoText v="caps">For any urge</MonoText>
           <Tap
             onPress={() => router.push('/rough-first90')}
             style={{ borderRadius: 24, backgroundColor: mono.card, paddingVertical: 18, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
@@ -58,7 +58,7 @@ export default function RoughDays() {
                 The first 90 seconds
               </MonoText>
               <MonoText v="p" wrap="pretty" style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
-                Two quick questions, six moves that fit the answer.
+                Three moves for when an urge hits.
               </MonoText>
             </View>
             <ChevronR color={mono.mute} />

@@ -103,7 +103,7 @@ export default function Privacy() {
       await Share.share({ title: 'VICI data export', message: JSON.stringify(file, null, 2) });
       if (data.truncated.length) setExportNote(`Some of your history was too long for one export (${data.truncated.join(', ')}). Contact support for the rest.`);
     } catch {
-      setExportNote('Your data couldn’t be prepared for sharing. Try again.');
+      setExportNote('Couldn’t export your data. Try again.');
     } finally {
       setExporting(false);
     }
@@ -131,7 +131,7 @@ export default function Privacy() {
       await deleteData();
     } catch {
       setStep('confirm');
-      setDeleteError('Your data couldn’t be erased just now. Nothing was deleted — try again.');
+      setDeleteError('Couldn’t erase your data. Nothing was deleted. Try again.');
       return;
     }
     const res = await deleteAccount();
@@ -167,7 +167,7 @@ export default function Privacy() {
       if (step === 'check') {
         if (!secret.trim()) return setDeleteError(check === 'password' ? 'Enter your password.' : 'Enter the code from the email.');
         const res = await confirmAccountDeletion(secret);
-        if (!res.ok) return setDeleteError(res.error ?? 'That didn’t confirm it’s you. Try again.');
+        if (!res.ok) return setDeleteError(res.error ?? 'Couldn’t confirm it’s you. Try again.');
         await finish();
       }
     } finally {
@@ -180,7 +180,7 @@ export default function Privacy() {
     setDeleteError(null);
     const res = await prepareAccountDeletion();
     if (!res.ok) setDeleteError(res.error ?? 'Couldn’t send a new code.');
-    else setDeleteNotice('A new code is on its way.');
+    else setDeleteNotice('Code re-sent.');
   }
 
   const sheetTop = Math.min(SHEET_TOP.signOut, SHEET_COLUMN_FOOT - columnH);
@@ -191,7 +191,7 @@ export default function Privacy() {
       <NavBar left="back" centre={{ title: 'Data & privacy' }} right="empty" onBack={back} />
 
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24, gap: 16 }}>
-        <MonoText v="h1">Your data, your call.</MonoText>
+        <MonoText v="h1">How your data is kept.</MonoText>
         <MonoText v="p">
           Your journal, urges and log are stored in your private account, encrypted in transit and at rest. They aren’t end-to-end encrypted: our servers read them to run the app. We never sell your data.
         </MonoText>
@@ -273,8 +273,8 @@ export default function Privacy() {
             <>
               <MonoText v="h1SheetLg">Delete your account?</MonoText>
               <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
-                This erases your journal, urges, check-ins and lessons, and closes your account. It can’t be undone. A subscription isn’t cancelled by
-                this — cancel it in your store settings.
+                This erases your journal, urges, check-ins and lessons, and closes your account. It can’t be undone. A subscription keeps running
+                until you cancel it in your store settings.
               </MonoText>
             </>
           )}

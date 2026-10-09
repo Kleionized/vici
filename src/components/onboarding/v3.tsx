@@ -99,7 +99,7 @@ export function windowFor(a: Record<string, string | string[]>): [string, string
   const has = (...names: string[]) => names.some((n) => t.includes(n));
   if (has('Late at night', 'When I can’t sleep', 'Phone in bed', 'Can’t sleep', 'Late night')) return ['11:00 pm', 'before the tide rises', 'Late night'];
   if (has('When I’m stressed', 'After stress')) return ['6:00 pm', 'as the day lets go', 'After stress'];
-  if (has('When I’m bored', 'Bored in the day', 'Bored daytime')) return ['9:00 pm', 'when the evening goes slack', 'Boredom in the day'];
+  if (has('When I’m bored', 'Bored in the day', 'Bored daytime')) return ['9:00 pm', 'when the evening goes slack', 'Boredom'];
   if (has('After drinking')) return ['10:00 pm', 'before the evening turns', 'After drinking'];
   if (has('When I’m home alone', 'Home alone')) return ['8:00 pm', 'while the house is empty', 'Being home alone'];
   if (has('On weekends', 'Weekends')) return ['9:30 pm', 'before the quiet hours', 'The weekend'];

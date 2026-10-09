@@ -19,7 +19,7 @@ import { colors, mono } from '@/lib/theme';
  */
 
 /** The standalone check-in's five rungs (its own words; no frame draws this flow). */
-const MOODS = ['Heavy', 'Overcast', 'Mixed', 'Mostly clear', 'Clear'] as const;
+const MOODS = ['Rough', 'Low', 'Steady', 'Good', 'Great'] as const;
 
 /** Checkin Emotions' eight words, in the frame's order — the same eight whatever the mood. */
 export const EMOTIONS: readonly string[] = ['Calm', 'Tense', 'Tired', 'Hopeful', 'Flat', 'Proud', 'Lonely', 'Restless'];
@@ -50,11 +50,11 @@ export function normalizeReasons(reasons: readonly string[] | null | undefined):
  */
 const PART_COPY = {
   morning: {
-    head: "Where's your head at today?",
+    head: 'How are you feeling?',
     feel: 'What does today feel like so far?',
   },
   evening: {
-    head: 'How did today land?',
+    head: 'How was today?',
     feel: 'What did today feel like?',
   },
 } as const;
@@ -167,7 +167,7 @@ export interface CheckinFlowProps {
  */
 export function CheckinFlow({ head, feel, initialMood, initialEmotions, initialReasons, onDone, onExit }: CheckinFlowProps) {
   const [step, setStep] = useState(0);
-  // The fourth rung, 'Mostly clear', is where the flow has always opened.
+  // The fourth rung, 'Good', is where the flow has always opened.
   const [mood, setMood] = useState(initialMood != null ? moodRung(initialMood) : 3);
   const [emotions, setEmotions] = useState<string[]>(initialEmotions ?? []);
   const [reasons, setReasons] = useState<string[]>(() => normalizeReasons(initialReasons));

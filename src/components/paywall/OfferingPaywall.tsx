@@ -139,7 +139,7 @@ export function OfferingPaywall({
       return onDone(true);
     }
     if (outcome.status === 'cancelled' || outcome.status === 'restored') return;
-    Alert.alert('The store could not complete that', outcome.message);
+    Alert.alert('Purchase failed', outcome.message);
   }
 
   async function restore() {

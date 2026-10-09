@@ -76,7 +76,7 @@ export default function BackTap() {
           <Wave />
         </View>
         <MonoText v="p" center style={{ marginTop: 8 }}>
-          Open urge support in one move: double-tap the back of your iPhone, from anywhere. iOS runs a Shortcut that opens VICI straight to the urge tool.
+          Double-tap the back of your iPhone to open the urge tool from anywhere. It works through an iOS Shortcut.
         </MonoText>
         <View style={{ height: 4 }} />
 

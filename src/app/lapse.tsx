@@ -56,7 +56,7 @@ export default function Lapse() {
     return (
       <DoneBoard
         title="Slip logged."
-        body={write.state === 'slow' ? WAITING_LINE : 'Stopped and logged.'}
+        body={write.state === 'slow' ? WAITING_LINE : 'Carry on from here.'}
         rows={[
           // 90D reads the moment as a day part alone — `Last night` — and the
           // date where no word fits (format.ts `dayPartTime`)

@@ -237,7 +237,7 @@ export function evidenceLine(signal: string, when: string | undefined, where: st
     if (when) terms[0] = lead;
     else terms.unshift(lead);
   }
-  if (!terms.length) return 'It’s one small change, and it’s yours to make tonight.';
+  if (!terms.length) return 'It’s one small change. Make it tonight.';
   const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
   if (terms.length === 1) return `${cap(terms[0])} came up in your answers.`;
   const list = terms.length === 2 ? `${terms[0]} and ${terms[1]}` : `${terms[0]}, ${terms[1]} and ${terms[2]}`;
@@ -285,7 +285,7 @@ export function O3WhereWedStart({ name, triggers, next }: { name?: string; trigg
       stackTop={451}
       gap={16}
       titleSize={26}
-      title={who ? `${who}, this is where we’d start.` : 'This is where we’d start.'}
+      title={who ? `${who}, this is where to start.` : 'This is where to start.'}
       body={
         <>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginTop: 4 }}>
@@ -393,7 +393,7 @@ export function O3StartHereStep2({ change, next, back }: { change: FirstChange; 
 
 // ── 27 · Your Plan ───────────────────────────────────────────────────
 
-const PLAN_ROW_SUBS = ['When it usually happens', 'Where it usually happens', 'What tends to set it off', 'Your first change', 'When an urge hits'];
+const PLAN_ROW_SUBS = ['When it usually happens', 'Where it usually happens', 'What sets it off', 'Your first change', 'When an urge hits'];
 
 const G20 = { fill: 'none', stroke: mono.onInk, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
 
@@ -440,7 +440,7 @@ export function O3YourPlan({
 }) {
   // a row whose question went unanswered is left out, not filled with the
   // canvas's answer (D473); the glyph stays with its row
-  const rows = [when, where, starter ? starterFor(starter).row : undefined, change.row, 'SOS gets you out first']
+  const rows = [when, where, starter ? starterFor(starter).row : undefined, change.row, 'Open SOS']
     .map((title, i) => ({ title, i }))
     .filter((r): r is { title: string; i: number } => !!r.title);
   const [stackH, setStackH] = useState(PLAN_BOTTOM - PLAN_TOP);

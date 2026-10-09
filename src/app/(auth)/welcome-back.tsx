@@ -76,7 +76,7 @@ export default function WelcomeBack() {
 
   /** The address step's primary: email a sign-in code. */
   async function sendCode() {
-    if (!email.trim()) return setError('Enter your email address to carry on.');
+    if (!email.trim()) return setError('Enter your email address.');
     setLoading(true);
     reset();
     const res = await sendSignInCode(email);
@@ -107,7 +107,7 @@ export default function WelcomeBack() {
   }
 
   async function forgotPassword() {
-    if (!email.trim()) return setError('Enter your email first, and we’ll send a reset code.');
+    if (!email.trim()) return setError('Enter your email to get a reset code.');
     setLoading(true);
     reset();
     const res = await startPasswordReset(email);

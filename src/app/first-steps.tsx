@@ -40,9 +40,9 @@ export default function FirstSteps() {
       <ScrollRegion top={100} contentStyle={{ paddingTop: 36, paddingBottom: 48 }}>
         <View style={{ marginHorizontal: 24, gap: 8 }}>
           <MonoText v="h1" accessibilityRole="header">
-            Six gentle first steps
+            Start with these six
           </MonoText>
-          <MonoText v="p">No rush. These help VICI fit your life, and they open one at a time as you go.</MonoText>
+          <MonoText v="p">One opens each day.</MonoText>
         </View>
 
         {/* the lesson reader's progress rail: 3 tall, r2, the line under an ink fill */}

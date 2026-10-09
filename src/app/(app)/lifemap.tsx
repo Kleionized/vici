@@ -105,7 +105,7 @@ export default function LifeMapScreen() {
           <MonoText v="h1" accessibilityRole="header">
             Life Map
           </MonoText>
-          <MonoText v="p">Your anchor. The app brings this back to you when it helps.</MonoText>
+          <MonoText v="p">Why you’re doing this. VICI reminds you after a slip.</MonoText>
 
           <View style={{ marginTop: 18, gap: 8 }}>
             <MonoText v="caps">Why you’re here</MonoText>

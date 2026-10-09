@@ -321,7 +321,7 @@ function WeekStrip({ days }: { days: WeekDay[] }) {
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top: 136, flexDirection: 'row', justifyContent: 'space-between' }}>
       {days.map((d) => (
-        <View key={d.label} accessibilityLabel={`${d.label} ${d.date}${d.state === 'held' ? ', held' : ''}`} style={{ alignItems: 'center', gap: 12 }}>
+        <View key={d.label} accessibilityLabel={`${d.label} ${d.date}${d.state === 'held' ? ', clean' : ''}`} style={{ alignItems: 'center', gap: 12 }}>
           <MonoText
             v="caps"
             color={d.today ? mono.ink : mono.mute}

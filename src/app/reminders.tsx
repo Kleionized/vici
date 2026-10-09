@@ -31,7 +31,7 @@ export default function Reminders() {
     <ReminderBoard
       nav={<NavBar left="back" right="empty" onBack={back} />}
       title="Two reminders a day."
-      sub="At your check-in times. Nothing noisy, nothing shaming."
+      sub="At your check-in times. They never name the habit."
       cta="Turn on reminders"
       onCta={() => void turnOn()}
     />

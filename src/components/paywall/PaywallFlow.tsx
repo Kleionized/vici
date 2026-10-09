@@ -435,7 +435,7 @@ export function PwBoard({
         <Slack h={30} min={16} />
         <View style={{ gap: 14 }}>
           <MonoText v="titleCover">{headline}</MonoText>
-          <P>Break the cycle, rebuild your self-control, and become someone you can trust again.</P>
+          <P>Get your self-control back. Become someone you can trust again.</P>
         </View>
         {/* 318 − (130 + 40 + 14 + 48) */}
         <Slack h={86} />
@@ -594,13 +594,13 @@ function PwRescue({ onStart, onNo, closeLabel, money, remind }: { onStart: () =>
       <PwNav label={closeLabel} onClose={onNo} />
       {/* title at 257, rows at 367 — in flow, so a short phone scrolls instead of meeting the pill */}
       <ScrollRegion top={100} bottom={RESCUE_CONTROLS} contentStyle={{ paddingTop: 157, paddingHorizontal: 24, paddingBottom: 24 }}>
-        {/* the frame balances after the em dash; the break is written in so
+        {/* the frame balances after the first clause; the break is written in so
             native (which cannot balance) and every width break there too */}
-        <H1>{`Before you go —\n${numberWords(days)} ${days === 1 ? 'day' : 'days'} on us.`}</H1>
+        <H1>{`Before you go,\n${numberWords(days)} ${days === 1 ? 'day' : 'days'} free.`}</H1>
         <View style={{ marginTop: 44 }}>
-          <TimelineRow first>Today — everything unlocks</TimelineRow>
-          <TimelineRow>{remind ? `Day ${days - 1} — a reminder, before any charge` : `Until day ${days} — cancel in ${cancelPlace()}, nothing is charged`}</TimelineRow>
-          <TimelineRow last>{`Day ${days} — ${then} begins, unless you cancel`}</TimelineRow>
+          <TimelineRow first>Today: full access</TimelineRow>
+          <TimelineRow>{remind ? `Day ${days - 1}: a reminder before any charge` : `Until day ${days}: cancel in ${cancelPlace()} and pay nothing`}</TimelineRow>
+          <TimelineRow last>{`Day ${days}: ${then} starts unless you cancel`}</TimelineRow>
         </View>
         {/* the renewal terms and both documents, beside the purchase (B5, D452) */}
         {year ? <PwTerms style={{ marginTop: 28 }}>{renewalTerms({ priceString: year.price, cycle: year.cycle, intro: year.intro })}</PwTerms> : null}
@@ -659,41 +659,41 @@ function PwPaySheet({ open, plan, email, money, onCancel, onPay }: { open: boole
 /** The pill at 82 and the receipt line under it take 140 off the screen's bottom. */
 const CONFIRMED_CONTROLS = 82 + 58;
 
-/** `Jul 24` with a no-break space, so "Jul 24 —" stays whole on a wider phone. */
+/** `Jul 24` with a no-break space, so the date stays whole on a wider phone. */
 function chargeDay(d: Date): string {
   return shortDate(d).replace(' ', ' ');
 }
 
 /**
- * The sentence under "We're in", from what the store says this customer now
+ * The sentence under "You're in", from what the store says this customer now
  * has — the trial's real end, the plan actually bought or restored — rather
  * than from the card that happened to be selected (P6, D457).
  */
 function storeLine(m: Membership): string {
-  const lead = 'Let’s take the first ground.';
-  if (!m.isActive) return `${lead} The campaign is unlocked.`;
+  const lead = 'The work starts now.';
+  if (!m.isActive) return `${lead} You have full access.`;
   if (m.periodType === 'TRIAL' && m.expiresAt) {
     return m.willRenew
-      ? `${lead} Nothing is charged until ${chargeDay(m.expiresAt)} — cancelling is one tap in ${cancelPlace()}.`
+      ? `${lead} Nothing is charged until ${chargeDay(m.expiresAt)}. Cancel anytime in ${cancelPlace()}.`
       : `${lead} Your free days run until ${chargeDay(m.expiresAt)}.`;
   }
-  if (m.plan === 'lifetime' || !m.expiresAt) return `${lead} The whole campaign is yours, for good.`;
-  if (m.plan === 'monthly') return `${lead} The campaign is unlocked, month by month.`;
-  return `${lead} The whole campaign is yours until ${m.expiresAt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+  if (m.plan === 'lifetime' || !m.expiresAt) return `${lead} You have full access, for good.`;
+  if (m.plan === 'monthly') return `${lead} You have full access, month to month.`;
+  return `${lead} You have full access until ${m.expiresAt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
 }
 
 /** Offline: the canvas's sentence for the card bought, dated from today. */
 function drawnLine(plan: PlanKey, money: Money, now: Date): string {
-  const lead = 'Let’s take the first ground.';
+  const lead = 'The work starts now.';
   if (plan === 'trial') {
     const charge = chargeDay(new Date(now.getTime() + (money.trialDays ?? 0) * 86400000));
-    // no-break spaces keep "Jul 24 —" whole: a wider phone otherwise splits the date or opens a line on the dash
-    return `${lead} Nothing is charged until ${charge} — cancelling is one tap in Settings.`;
+    // a no-break space keeps the date whole: a wider phone otherwise splits it
+    return `${lead} Nothing is charged until ${charge}. Cancel anytime in Settings.`;
   }
-  if (plan === 'month') return `${lead} The campaign is unlocked, month by month.`;
+  if (plan === 'month') return `${lead} You have full access, month to month.`;
   const nextYear = new Date(now);
   nextYear.setFullYear(nextYear.getFullYear() + 1);
-  return `${lead} The whole campaign is yours until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+  return `${lead} You have full access until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
 }
 
 function PwConfirmed({ line, name, confirmLabel, onDone }: { line: string; name?: string; confirmLabel: string; onDone: () => void }) {
@@ -707,7 +707,7 @@ function PwConfirmed({ line, name, confirmLabel, onDone }: { line: string; name?
         </View>
         <View style={{ marginTop: 38, gap: 18, alignItems: 'center' }}>
           <H1 center style={{ alignSelf: 'stretch' }}>
-            {name ? `We’re in, ${name}.` : 'We’re in.'}
+            {name ? `You’re in, ${name}.` : 'You’re in.'}
           </H1>
           <P center style={{ alignSelf: 'stretch' }}>
             {line}
@@ -824,7 +824,7 @@ export function PaywallFlow({
       return;
     }
     if (outcome.status === 'cancelled' || outcome.status === 'restored') return;
-    Alert.alert('The store could not complete that', outcome.message);
+    Alert.alert('Purchase failed', outcome.message);
   }
 
   /** The paywall's Continue and the rescue's pill both start here. */

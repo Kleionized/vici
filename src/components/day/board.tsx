@@ -149,12 +149,12 @@ export function AddToRecord({ onPress }: { onPress: () => void }) {
     <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 470, flexDirection: 'row', justifyContent: 'center' }}>
       <Tap
         onPress={onPress}
-        label="Add to the record"
+        label="Log an urge"
         style={{ height: 44, borderRadius: 22, boxShadow: ring.outline, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 18 }}>
         <Text maxFontSizeMultiplier={1.3} style={{ ...sans('700'), fontSize: 18, lineHeight: 18, color: mono.ink }}>
           +
         </Text>
-        <MonoText v="rowLabel">Add to the record</MonoText>
+        <MonoText v="rowLabel">Log an urge</MonoText>
       </Tap>
     </View>
   );

@@ -39,7 +39,7 @@ export default function ReportReady() {
     ? `${weekLabel(shown)}: rating, days and urges.`
     : user === undefined
       ? '\u00A0'
-      : 'Rating, urges, and the pattern — two quiet minutes.';
+      : 'Your rating, days and urges.';
 
   const later = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   const open = () => router.replace(week ? `/weekly-report?week=${week}` : '/weekly-report');
