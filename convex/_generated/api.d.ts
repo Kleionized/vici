@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as account from "../account.js";
 import type * as checkins from "../checkins.js";
 import type * as dashboard from "../dashboard.js";
 import type * as events from "../events.js";
@@ -28,6 +29,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  account: typeof account;
   checkins: typeof checkins;
   dashboard: typeof dashboard;
   events: typeof events;
