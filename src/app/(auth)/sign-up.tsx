@@ -11,6 +11,7 @@ import {
   AuthMessage,
   AuthPill,
   AuthSurface,
+  codePrompt,
 } from '@/components/auth/kit';
 import { Apple, CheckDisc, Google, MonoText, Tap } from '@/components/mono';
 import { useAuth } from '@/lib/auth';
@@ -132,7 +133,7 @@ export default function SignUp() {
       <AuthSurface
         onBack={back}
         title="Check your email."
-        sub={`Enter the code we sent to ${email.trim()}.`}
+        sub={codePrompt(email)}
         actions={
           <>
             <AuthMessage error={error} notice={notice} />

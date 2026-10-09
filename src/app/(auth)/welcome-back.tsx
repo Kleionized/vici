@@ -8,6 +8,7 @@ import {
   AuthGhost,
   AuthMessage,
   AuthSurface,
+  codePrompt,
 } from '@/components/auth/kit';
 import { useAuth } from '@/lib/auth';
 
@@ -244,7 +245,7 @@ export default function WelcomeBack() {
       <AuthSurface
         onBack={back}
         title="Reset your password."
-        sub={`Enter the code we sent to ${email.trim()}.`}
+        sub={codePrompt(email)}
         actions={
           <>
             <AuthMessage error={error} notice={notice} />
@@ -280,7 +281,7 @@ export default function WelcomeBack() {
     <AuthSurface
       onBack={back}
       title="Check your email."
-      sub={`Enter the code we sent to ${email.trim()}.`}
+      sub={codePrompt(email)}
       actions={
         <>
           <AuthMessage error={error} notice={notice} />

@@ -37,6 +37,7 @@ import {
   TextField,
   useCanvasTop,
 } from '@/components/mono';
+import { IS_MOCK_AUTH } from '@/lib/config';
 import { hasLegal, openLegal, type LegalKind } from '@/lib/legal';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
@@ -294,6 +295,15 @@ export function AuthDoor({
 }
 
 // ── the typed boards ─────────────────────────────────────────────────
+
+/**
+ * The line under a code board's title. A test build (the offline mock) sends no
+ * email, so it says so and that any six digits will do, instead of pointing
+ * at an inbox that will stay empty.
+ */
+export function codePrompt(email: string): string {
+  return IS_MOCK_AUTH ? 'Test mode: no email is sent. Enter any 6 digits.' : `Enter the code we sent to ${email.trim()}.`;
+}
 
 /** What the legal line anchored at the foot takes off the bottom edge. */
 const LEGAL_BOTTOM = 44;
