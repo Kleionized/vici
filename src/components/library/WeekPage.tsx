@@ -1,9 +1,10 @@
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
 import { CheckDisc, ChevronL, ChevronR, CueScrollView, Hero, MonoText, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import type { Curriculum84Lesson, Curriculum84Week } from '@/content/curriculum84';
 import { useCurrentUser } from '@/lib/backend';
+import { courseWeekForDay, programmeDay, useToday, type ProgrammeStart } from '@/lib/day';
 import { mono } from '@/lib/theme';
 
 /**
@@ -69,24 +70,28 @@ export function rowStateFor(lessonDay: number, day: number): RowState {
   return 'upcoming';
 }
 
-/** Day one is the day they signed up, not the day after. */
-export function courseDay(createdAt: number | undefined, now: number): number {
-  return createdAt ? Math.max(1, Math.floor((now - createdAt) / 86_400_000) + 1) : 1;
+/**
+ * The course day: calendar days from the programme's first day, plus one
+ * (`programmeDay`, src/lib/day.ts). Takes the account (its programme start) or,
+ * from an older caller, a `createdAt` — either way counted on the calendar.
+ */
+export function courseDay(start: ProgrammeStart, now: number): number {
+  return programmeDay(start, now);
 }
 
 /**
- * The reader's course day, read against the moment the screen mounted, so a
- * re-render cannot move the current row under a finger.
+ * The reader's course day on the screen's clock (`useToday`): it holds still
+ * under a finger, and moves on with focus, the foreground and midnight.
  */
 export function useCourseDay(): number {
   const user = useCurrentUser();
-  const [now] = useState(() => Date.now());
-  return courseDay(user?.createdAt, now);
+  const now = useToday();
+  return programmeDay(user, now);
 }
 
 /** The week a day falls in — past day 84 the course stays on Week XII. */
 export function weekForDay(day: number): number {
-  return Math.min(12, Math.max(1, Math.ceil(day / 7)));
+  return courseWeekForDay(day);
 }
 
 /** A `?week=` param, or any stray value, as one of the twelve. */

@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 
 import { NavBar } from '@/components/mono';
 import { ReminderBoard } from '@/components/onboarding/reminders';
-import { useUpdateSettings } from '@/lib/backend';
+import { turnOnReminders } from '@/lib/reminders';
 
 /**
  * `/reminders` (Settings → All → Reminders) — no frame draws it. It shows the
@@ -11,15 +11,19 @@ import { useUpdateSettings } from '@/lib/backend';
  * it is a pushed page, and its own headline and line — no frame authors them
  * (D328). It has Back, so it keeps no "Not now"; the pill sits at the frame's
  * bottom 48.
+ *
+ * The pill turns on exactly the two reminders the notes show — the morning and
+ * night check-ins, at the saved times — asking the OS first; a phone that will
+ * no longer show the prompt is sent to system Settings (D422). The line said
+ * "Timed to your risky window", which nothing schedules; it now says when they
+ * come (D425).
  */
 export default function Reminders() {
   const router = useRouter();
-  const update = useUpdateSettings();
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
-  // The one pill turns on exactly the two nudges the notes promise.
-  const turnOn = () => {
-    void update({ morningCheckin: true, riskTimeSupport: true }).catch(() => {});
+  const turnOn = async () => {
+    await turnOnReminders({ openSettingsIfBlocked: true });
     back();
   };
 
@@ -27,9 +31,9 @@ export default function Reminders() {
     <ReminderBoard
       nav={<NavBar left="back" right="empty" onBack={back} />}
       title="Two reminders a day."
-      sub="Timed to your risky window. Nothing noisy, nothing shaming."
+      sub="At your check-in times. Nothing noisy, nothing shaming."
       cta="Turn on reminders"
-      onCta={turnOn}
+      onCta={() => void turnOn()}
     />
   );
 }

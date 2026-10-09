@@ -32,16 +32,11 @@ export type SlipCard = {
   body: string;
   cta: string;
   hero: HeroKey;
-  /**
-   * What 98E's fourth row reads back as `Change for next time`.
-   *
-   * The canvas states the row, its label and one value — `Phone charges outside
-   * the bedroom`, next to a slip fed by `Phone in bed, late night`, which is
-   * the Late night card's own instruction restated as a standing rule. No frame
-   * asks the question, so the other eighteen are written here to the same
-   * pattern: each card's move, in one line, in the log's voice.
+  /*
+   * There was a `change` here — 98E's "Change for next time" row, a card's move
+   * restated as if the user had made it. No board asks what will change, so
+   * the summary no longer claims one (P4, deploy WP5 D469).
    */
-  change: string;
 };
 
 /** The nav row's kicker over each family (the frames' only per-family string). */
@@ -51,26 +46,26 @@ export const SLIP_KICKER: Readonly<Record<SlipCard['kind'], string>> = {
 };
 
 export const SLIP_CARDS: readonly SlipCard[] = [
-  { id: 'feel-ashamed', change: 'No self-lecture — straight to the next thing', key: 'Ashamed', kind: 'feeling', hero: 'mirror', cta: 'Done', headline: 'Skip the self-lecture.', body: 'Don’t spend the next ten minutes punishing yourself. The useful part starts now: change what happens next.' },
-  { id: 'feel-bored', change: 'One thing chosen instead of the feed', key: 'Bored', kind: 'feeling', hero: 'stairs', cta: 'Done', headline: 'Pick the next thing.', body: 'The slip doesn’t get to decide the rest of your day. Choose one thing to do and get out of the feed.' },
-  { id: 'feel-lonely', change: 'Not alone with it tonight', key: 'Lonely', kind: 'feeling', hero: 'envelope', cta: 'Done', headline: 'Don’t stay cut off.', body: 'You don’t have to tell anyone what happened. Just don’t stay alone with it tonight.' },
-  { id: 'feel-stressed', change: 'A real break before the next hour', key: 'Stressed', kind: 'feeling', hero: 'kettle', cta: 'Done', headline: 'The problem can wait.', body: 'Ten minutes. Stop here, take a real break, and give yourself a clean next hour.' },
-  { id: 'feel-rejected', change: 'No messages until it has cooled down', key: 'Rejected', kind: 'feeling', hero: 'phoneTable', cta: 'Done', headline: 'Don’t go back yet.', body: 'No messages, no profiles, no replies. Cool down first — then decide.' },
-  { id: 'feel-tired', change: 'Phone away, the night made easier', key: 'Tired', kind: 'feeling', hero: 'bed', cta: 'Done', headline: 'Do less, not more.', body: 'Put the phone away and make the rest of the night easier.' },
-  { id: 'feel-turned-on', change: 'The cue goes, not the feeling', key: 'Turned on', kind: 'feeling', hero: 'campfire', cta: 'Done', headline: 'Stop feeding it.', body: 'Being turned on is not the problem. Cut the cue and let the rest of it pass.' },
-  { id: 'feel-not-sure', change: 'Stop at the first one, no story needed', key: 'Not sure', kind: 'feeling', hero: 'signpost', cta: 'Done', headline: 'No reason needed tonight.', body: 'You don’t need the story. Stop here and make the next slip harder.' },
+  { id: 'feel-ashamed', key: 'Ashamed', kind: 'feeling', hero: 'mirror', cta: 'Done', headline: 'Skip the self-lecture.', body: 'Don’t spend the next ten minutes punishing yourself. The useful part starts now: change what happens next.' },
+  { id: 'feel-bored', key: 'Bored', kind: 'feeling', hero: 'stairs', cta: 'Done', headline: 'Pick the next thing.', body: 'The slip doesn’t get to decide the rest of your day. Choose one thing to do and get out of the feed.' },
+  { id: 'feel-lonely', key: 'Lonely', kind: 'feeling', hero: 'envelope', cta: 'Done', headline: 'Don’t stay cut off.', body: 'You don’t have to tell anyone what happened. Just don’t stay alone with it tonight.' },
+  { id: 'feel-stressed', key: 'Stressed', kind: 'feeling', hero: 'kettle', cta: 'Done', headline: 'The problem can wait.', body: 'Ten minutes. Stop here, take a real break, and give yourself a clean next hour.' },
+  { id: 'feel-rejected', key: 'Rejected', kind: 'feeling', hero: 'phoneTable', cta: 'Done', headline: 'Don’t go back yet.', body: 'No messages, no profiles, no replies. Cool down first — then decide.' },
+  { id: 'feel-tired', key: 'Tired', kind: 'feeling', hero: 'bed', cta: 'Done', headline: 'Do less, not more.', body: 'Put the phone away and make the rest of the night easier.' },
+  { id: 'feel-turned-on', key: 'Turned on', kind: 'feeling', hero: 'campfire', cta: 'Done', headline: 'Stop feeding it.', body: 'Being turned on is not the problem. Cut the cue and let the rest of it pass.' },
+  { id: 'feel-not-sure', key: 'Not sure', kind: 'feeling', hero: 'signpost', cta: 'Done', headline: 'No reason needed tonight.', body: 'You don’t need the story. Stop here and make the next slip harder.' },
 
-  { id: 'trig-late-night', change: 'Phone charges outside the bedroom', key: 'Late night', kind: 'trigger', hero: 'charger', cta: 'Continue', headline: 'Move the phone.', body: 'Charge it outside the bedroom tonight.' },
-  { id: 'trig-scrolling', change: 'The feed stays closed for the night', key: 'Scrolling', kind: 'trigger', hero: 'feedOff', cta: 'Continue', headline: 'Get off the feed.', body: 'Close it for the rest of the night. Don’t replace it with another feed.' },
-  { id: 'trig-sexual-content', change: 'The account that got me there is closed', key: 'Sexual content', kind: 'trigger', hero: 'tab', cta: 'Continue', headline: 'Close everything.', body: 'Close the page, app, or account that got you there. Don’t look again.' },
-  { id: 'trig-boredom', change: 'The next hour gets a job', key: 'Boredom', kind: 'trigger', hero: 'stairs', cta: 'Done', headline: 'Give the next hour a job.', body: 'A short, hard set beats an open feed. Then pick one thing to actually do.' },
-  { id: 'trig-loneliness', change: 'One person messaged instead', key: 'Loneliness', kind: 'trigger', hero: 'twoCups', cta: 'Done', headline: 'Move toward people.', body: 'Message one person, or go where people are. No explanation required.' },
-  { id: 'trig-stress', change: 'One task named for later, then a break', key: 'Stress', kind: 'trigger', hero: 'kettle', cta: 'Done', headline: 'Contained break.', body: 'Step away from the problem properly. Name one task for later — just one.' },
-  { id: 'trig-argument', change: 'Ten minutes before I reply', key: 'Argument', kind: 'trigger', hero: 'bubbles', cta: 'Continue', headline: 'Don’t reply yet.', body: 'Stop rereading the messages. Leave it alone for ten minutes.' },
-  { id: 'trig-couldnt-sleep', change: 'Out of bed rather than on the phone', key: 'Couldn’t sleep', kind: 'trigger', hero: 'bed', cta: 'Continue', headline: 'Get out of bed for\na few minutes.', body: 'Stay off feeds. Go back when you are actually ready to sleep.' },
-  { id: 'trig-being-alone', change: 'Somewhere less private for ten minutes', key: 'Being alone', kind: 'trigger', hero: 'openDoor', cta: 'Continue', headline: 'Leave the room.', body: 'Move somewhere less private for the next ten minutes.' },
-  { id: 'trig-habit', change: 'Something different after a slip', key: 'Habit', kind: 'trigger', hero: 'signpost', cta: 'Continue', headline: 'Change what\nhappens next.', body: 'Do something different from what you normally do after a slip.' },
-  { id: 'trig-not-sure', change: 'Phone out of reach for ten minutes', key: 'Not sure', kind: 'trigger', hero: 'phoneTable', cta: 'Continue', headline: 'Put the phone away.', body: 'Move somewhere different and keep the phone out of reach for ten minutes.' },
+  { id: 'trig-late-night', key: 'Late night', kind: 'trigger', hero: 'charger', cta: 'Continue', headline: 'Move the phone.', body: 'Charge it outside the bedroom tonight.' },
+  { id: 'trig-scrolling', key: 'Scrolling', kind: 'trigger', hero: 'feedOff', cta: 'Continue', headline: 'Get off the feed.', body: 'Close it for the rest of the night. Don’t replace it with another feed.' },
+  { id: 'trig-sexual-content', key: 'Sexual content', kind: 'trigger', hero: 'tab', cta: 'Continue', headline: 'Close everything.', body: 'Close the page, app, or account that got you there. Don’t look again.' },
+  { id: 'trig-boredom', key: 'Boredom', kind: 'trigger', hero: 'stairs', cta: 'Done', headline: 'Give the next hour a job.', body: 'A short, hard set beats an open feed. Then pick one thing to actually do.' },
+  { id: 'trig-loneliness', key: 'Loneliness', kind: 'trigger', hero: 'twoCups', cta: 'Done', headline: 'Move toward people.', body: 'Message one person, or go where people are. No explanation required.' },
+  { id: 'trig-stress', key: 'Stress', kind: 'trigger', hero: 'kettle', cta: 'Done', headline: 'Contained break.', body: 'Step away from the problem properly. Name one task for later — just one.' },
+  { id: 'trig-argument', key: 'Argument', kind: 'trigger', hero: 'bubbles', cta: 'Continue', headline: 'Don’t reply yet.', body: 'Stop rereading the messages. Leave it alone for ten minutes.' },
+  { id: 'trig-couldnt-sleep', key: 'Couldn’t sleep', kind: 'trigger', hero: 'bed', cta: 'Continue', headline: 'Get out of bed for\na few minutes.', body: 'Stay off feeds. Go back when you are actually ready to sleep.' },
+  { id: 'trig-being-alone', key: 'Being alone', kind: 'trigger', hero: 'openDoor', cta: 'Continue', headline: 'Leave the room.', body: 'Move somewhere less private for the next ten minutes.' },
+  { id: 'trig-habit', key: 'Habit', kind: 'trigger', hero: 'signpost', cta: 'Continue', headline: 'Change what\nhappens next.', body: 'Do something different from what you normally do after a slip.' },
+  { id: 'trig-not-sure', key: 'Not sure', kind: 'trigger', hero: 'phoneTable', cta: 'Continue', headline: 'Put the phone away.', body: 'Move somewhere different and keep the phone out of reach for ten minutes.' },
 ] as const;
 
 /**

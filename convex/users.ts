@@ -3,6 +3,8 @@ import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import { getUserDoc, getUserIdOrNull, requireUserId } from './utils';
 
+const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
+
 /** Soft-fail read used at mount — returns null when signed out (CLAUDE-style). */
 export const getCurrentUser = query({
   args: {},
@@ -36,21 +38,33 @@ export const ensureUser = mutation({
   },
 });
 
+/**
+ * Onboarding is done. `programmeStartedAt` is the phone's local date
+ * (`YYYY-MM-DD`) — the server cannot know the user's calendar — and becomes
+ * Day 1 of the programme. A start already recorded is never moved: finishing
+ * the funnel a second time must not restart the course.
+ */
 export const completeOnboarding = mutation({
-  args: {},
-  handler: async (ctx) => {
+  args: { programmeStartedAt: v.optional(v.string()) },
+  handler: async (ctx, { programmeStartedAt }) => {
     const userId = await requireUserId(ctx);
     const user = await getUserDoc(ctx, userId);
-    await ctx.db.patch(user._id, { onboardingComplete: true });
+    const start = !user.programmeStartedAt && programmeStartedAt && DATE_KEY.test(programmeStartedAt) ? programmeStartedAt : undefined;
+    await ctx.db.patch(user._id, { onboardingComplete: true, ...(start ? { programmeStartedAt: start } : {}) });
   },
 });
 
+/**
+ * What the client may change about its own settings. `premium` is not here
+ * (B12): it is the entitlement, and the client cannot be the one to grant it.
+ * RevenueCat is the truth on the phone (`usePurchases`), and nothing on the
+ * server reads `settings.premium`.
+ */
 export const updateSettings = mutation({
   args: {
     showStreak: v.optional(v.boolean()),
     reminderTime: v.optional(v.string()),
     theme: v.optional(v.string()),
-    premium: v.optional(v.boolean()),
     yearlyDrop: v.optional(v.boolean()),
     morningCheckin: v.optional(v.boolean()),
     riskTimeSupport: v.optional(v.boolean()),

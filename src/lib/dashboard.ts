@@ -9,6 +9,7 @@
  */
 
 import { daysBetween, lastNDateKeys } from '@/lib/date';
+import { isCheckin, isSlip } from '@/lib/day';
 import type {
   DailyCheckin,
   DashboardData,
@@ -34,7 +35,8 @@ export function computeDashboard(input: DashboardInput): DashboardData {
   const { lessons, progress, reflections, events, checkins } = input;
   const now = input.now ?? Date.now();
 
-  const checkinByDate = new Map(checkins.map((c) => [c.date, c]));
+  // only rows with check-in content — a row holding just the day's action is not a check-in
+  const checkinByDate = new Map(checkins.filter(isCheckin).map((c) => [c.date, c]));
   const week = lastNDateKeys(7);
 
   const sleepTrend: IndicatorPoint[] = week.map((date) => ({
@@ -49,7 +51,7 @@ export function computeDashboard(input: DashboardInput): DashboardData {
   const weekCheckins = week.map((d) => checkinByDate.get(d)).filter(Boolean) as DailyCheckin[];
 
   const lapses = events
-    .filter((e) => e.type === 'lapse')
+    .filter(isSlip)
     .sort((a, b) => b.createdAt - a.createdAt);
   const lastLapseAt = lapses[0]?.createdAt ?? input.userCreatedAt;
 

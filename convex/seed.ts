@@ -1,4 +1,4 @@
-import { mutation } from './_generated/server';
+import { internalMutation } from './_generated/server';
 import { upsertLessons, type LessonInput } from './lessonUpsert';
 
 /**
@@ -64,7 +64,12 @@ const SEED_LESSONS: LessonInput[] = [
   },
 ];
 
-export const seedLessons = mutation({
+/**
+ * Internal (B12, D459): not part of the public API, so no client holding the
+ * deployment URL can write lessons. Run it from the dashboard (Functions →
+ * seed:seedLessons → Run) or `npx convex run seed:seedLessons`.
+ */
+export const seedLessons = internalMutation({
   args: {},
   handler: async (ctx) => {
     const upserted = await upsertLessons(ctx, SEED_LESSONS);

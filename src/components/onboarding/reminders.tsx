@@ -25,13 +25,17 @@ import {
   ScrollRegion,
   useCanvasTop,
 } from '@/components/mono';
+import { REMINDER_COPY, turnOnReminders } from '@/lib/reminders';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 // ── the notification card ────────────────────────────────────────────
-/** The two notes as they would land — the frame's words. */
+/**
+ * The two notes as they would land — the frame's words, which are the words
+ * the scheduled reminders carry (`REMINDER_COPY`, one source for both).
+ */
 export const REMINDER_NOTES = [
-  { title: 'Morning check-in', when: 'now', body: 'Twenty seconds — where’s your head at today?' },
-  { title: 'Late night ahead', when: 'You pick the time', body: 'The time you told us about. SOS is one tap away.' },
+  { title: REMINDER_COPY.morning.title, when: 'now', body: REMINDER_COPY.morning.body },
+  { title: REMINDER_COPY.night.title, when: 'You pick the time', body: REMINDER_COPY.night.body },
 ] as const;
 
 /**
@@ -145,6 +149,14 @@ export function ReminderBoard({
  * The onboarding step: the headline names the window the questionnaire gave
  * ("Late night is when you’re most likely to watch." — the frame's), and the
  * frame's nav row is empty: no Back, no Skip.
+ *
+ * `Turn on reminders` asks the OS and schedules the two check-ins at the saved
+ * times (the time boards after Day 0 replace them and reschedule on `Save
+ * time`), then carries on without waiting for the answer — the OS prompt sits
+ * over the next board. Done here rather than in `welcome.tsx`'s `onAllow`,
+ * which records the answer and moves the check-in that covers the window to
+ * just before it (D422, D425). `onAllow` runs first, so the schedule is made
+ * from the moved time.
  */
 export function O3Reminders({ window: riskWindow, onAllow, skip }: { window: string; onAllow: () => void; skip: () => void }) {
   return (
@@ -152,7 +164,10 @@ export function O3Reminders({ window: riskWindow, onAllow, skip }: { window: str
       title={`${riskWindow} is when you’re most likely to watch.`}
       sub="Want VICI there before that time?"
       cta="Turn on reminders"
-      onCta={onAllow}
+      onCta={() => {
+        onAllow();
+        void turnOnReminders();
+      }}
       ghost="Not now"
       onGhost={skip}
     />
@@ -184,7 +199,11 @@ const ART_FLOOR = 108;
  * dropped and the words rise alone. Nothing is shown until the lower stack has
  * been measured, so a short phone never draws one unlifted frame.
  */
-export function O3DayZero({ lesson, number, title, next }: { lesson?: string; number?: number; title?: string; next: () => void }) {
+/**
+ * `busy`: "Begin" is filing the end of onboarding — the button holds, dimmed,
+ * so a second tap cannot file it twice (D2, D498).
+ */
+export function O3DayZero({ lesson, number, title, next, busy }: { lesson?: string; number?: number; title?: string; next: () => void; busy?: boolean }) {
   const runs = lessonRuns(lesson, number, title);
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
@@ -227,7 +246,7 @@ export function O3DayZero({ lesson, number, title, next }: { lesson?: string; nu
           Your first lesson is ready. Start with one thing today.
         </MonoText>
       </View>
-      <PrimaryButton label="Begin" onPress={next} />
+      <PrimaryButton label="Begin" onPress={next} disabled={busy} />
     </Screen>
   );
 }

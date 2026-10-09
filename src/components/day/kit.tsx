@@ -1,5 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
+import type { HeroKey } from '@/content/heroes';
 import { mono } from '@/lib/theme';
 
 /**
@@ -20,29 +21,26 @@ export function RerollGlyph({ size, color = mono.mute }: { size: number; color?:
 }
 
 /**
- * One concrete thing to do, for a day the course has no lesson task for. The
- * night check-in sets tomorrow's action from the day's lesson (`lessonForDay`)
- * and falls back to `nightAction`; the morning asks after yesterday's row and
- * falls back to `dayAction`. Both are picked by day number, so a day always
- * asks the same thing twice — once tonight, once when the morning asks whether
- * it happened.
+ * One concrete thing to do, for a day the course has no lesson task for (past
+ * day 84). One list, picked by day number, for all three places that name the
+ * day's action: Today shows `dayStep(day)` when nobody named one, the night
+ * check-in names `dayStep(day)` as the next day's action, and the morning asks
+ * after `dayStep(day − 1)` when yesterday's row names none — so the morning
+ * asks about the sentence Today actually showed (L4). Each step carries the
+ * illustration Today draws over it; each fills the crop's width at 375–430
+ * (the open door's floor line stops short of the edges at 393, so "get
+ * outside" draws the park bench).
  */
-export const NIGHT_ACTIONS = [
-  'Put your phone somewhere hard to reach before you sleep.',
-  'Set out tomorrow’s clothes before the lights go off.',
-  'Leave the charger in another room tonight.',
-  'Read a page of something on paper before bed.',
-  'Decide now what time you are getting up.',
+export type DayStep = { caption: string; hero: HeroKey };
+
+export const DAY_STEPS: DayStep[] = [
+  // the first is the one Today Home II draws ("hard to reach" — the frame's words)
+  { caption: 'Put your phone somewhere hard to reach before you sleep.', hero: 'nightPhone' },
+  { caption: 'Drink a full glass of water before anything else.', hero: 'twoCups' },
+  { caption: 'Get outside for ten minutes, even if it is only around the block.', hero: 'bench' },
+  { caption: 'Write down what set it off, in the words you would say out loud.', hero: 'notebook' },
+  { caption: 'Make the bed now, so tonight you walk into a room that is ready.', hero: 'bed' },
 ];
 
-export const DAY_ACTIONS = [
-  'Write down each trigger the moment you notice it.',
-  'Take the first walk before you take the first scroll.',
-  'Eat one proper meal sitting down.',
-  'Tell one person one true thing about today.',
-  'Put the phone in another room for an hour.',
-];
-
-/** Day one is the first line; after that the list simply turns over. */
-export const nightAction = (day: number) => NIGHT_ACTIONS[Math.max(0, day - 1) % NIGHT_ACTIONS.length];
-export const dayAction = (day: number) => DAY_ACTIONS[Math.max(0, day - 1) % DAY_ACTIONS.length];
+/** Day one is the first step; after that the list simply turns over. */
+export const dayStep = (day: number): DayStep => DAY_STEPS[Math.max(0, day - 1) % DAY_STEPS.length];

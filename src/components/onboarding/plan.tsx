@@ -1,15 +1,16 @@
 /**
  * The plan sub-flow — `25 · This Is Where We’d Start` … `27 · Your Plan`.
  *
- * Five boards between `24 · Build plan` and `28 · Your VICI Rating`. In
+ * Five boards between `24 · Build plan` and `28 · Your recovery rating`. In
  * `Vici Overhaul` four of them are the kit's statement board — a nav row, a
  * hero at 190 (the `charger`, and the `door` on Step 2), a centred 26/33 stack
  * at 451 and the primary — so they are `HeroBoard`s, which also carries the
  * small-screen lift (D320). `Your Plan` is a stack of five icon cards.
  *
- * What the boards *say* is unchanged from the previous drop: the three signals,
- * the first change and its two steps, the evidence sentence and the five plan
- * rows are all still read off his answers (D053–D055, D093). Only the drawing
+ * What the boards *say* is unchanged from the previous drop: his signals (up
+ * to three, and only his — D473), the first change and its two steps, the
+ * evidence sentence and the plan rows are all still read off his answers
+ * (D053–D055, D093). Only the drawing
  * changed: the night card, the glyph discs, the dashed rule and the soft-blob
  * scenes are gone, and the signals are the kit's 44pt ink pills.
  */
@@ -168,20 +169,22 @@ const balanced = (s: string) => (Platform.OS === 'web' ? s : (NATIVE_BREAKS[s] ?
 const CHANGE_ORDER = ['While scrolling', 'When I can’t sleep', 'When I’m home alone', 'Late at night'];
 
 /**
- * The three signals `25` draws as pills, in his own picker's labels.
+ * The signals `25` draws as pills, in his own picker's labels: what he ticked
+ * on `11 · When`, up to three, and nothing else.
  *
  * Filtered on `11 · When`'s nine labels (`CHIP_LABEL`'s keys) — not on the
  * funnel's legacy glyph table, which this drop's glyph-less picker no longer
- * needs. A man who ticked one or two is topped up from the trio the canvas
- * draws, so the board always reads "these came up together" over three.
+ * needs. A man who ticked one or two used to be topped up from the trio the
+ * canvas draws, under "These came up together in your answers" — words he
+ * never chose. The board now draws only his (D473).
  */
-export function planSignals(triggers: string[]): [string, string, string] {
+export function planSignals(triggers: string[]): string[] {
   const seen: string[] = [];
-  for (const t of [...triggers, 'Late at night', 'When I’m home alone', 'While scrolling']) {
+  for (const t of triggers) {
     if (CHIP_LABEL[t] && !seen.includes(t)) seen.push(t);
     if (seen.length === 3) break;
   }
-  return seen as [string, string, string];
+  return seen;
 }
 
 /** The change a signal proposes — the canvas's own board wherever none is named. */
@@ -215,24 +218,39 @@ export function starterFor(starter: string) {
 /**
  * `26 · Start Here`'s sentence — "Late night, bed and scrolling came up
  * together in your answers." — his `11 · When`, `13 · Place` and `14 · What
- * starts it`. When `Choose another` proposes a signal the three terms do not
- * name, the signal takes the `when` slot, so the board never argues for a door
- * with evidence about a phone (D093).
+ * starts it`. When `Choose another` proposes one of his signals the three
+ * terms do not name, the signal takes the `when` slot, so the board never
+ * argues for a door with evidence about a phone (D093).
+ *
+ * Every term is an answer he gave (D473): an unanswered picker, or "Nothing
+ * obvious" on 14, leaves its term out rather than standing the canvas's own
+ * answer in, and the default change (`While scrolling`, offered when none of
+ * his signals has a board) never claims to be one of his answers.
  */
-export function evidenceLine(signal: string, when: string, where: string, starter: string) {
-  const terms = [whenShort(when), whereShort(where), starterFor(starter).phrase];
-  const lead = whenShort(signal);
-  if (!terms.some((t) => t.toLowerCase() === lead.toLowerCase())) terms[0] = lead;
-  return `${terms[0]}, ${terms[1]} and ${terms[2]} came up together in your answers.`;
+export function evidenceLine(signal: string, when: string | undefined, where: string | undefined, starter: string | undefined, picked: readonly string[] = []) {
+  const terms: string[] = [];
+  if (when) terms.push(whenShort(when));
+  if (where) terms.push(whereShort(where));
+  if (starter && starter !== 'Nothing obvious') terms.push(starterFor(starter).phrase);
+  const lead = picked.includes(signal) ? whenShort(signal) : null;
+  if (lead && !terms.some((t) => t.toLowerCase() === lead.toLowerCase())) {
+    if (when) terms[0] = lead;
+    else terms.unshift(lead);
+  }
+  if (!terms.length) return 'It’s one small change, and it’s yours to make tonight.';
+  const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+  if (terms.length === 1) return `${cap(terms[0])} came up in your answers.`;
+  const list = terms.length === 2 ? `${terms[0]} and ${terms[1]}` : `${terms[0]}, ${terms[1]} and ${terms[2]}`;
+  return `${cap(list)} came up together in your answers.`;
 }
 
 /**
  * The triple the four boards after `25` all share.
  *
  * `14 · What starts it` is looked up by its answer rather than by its key, so
- * a renamed step id cannot strand it. Where a picker went unanswered the
- * canvas's own answer stands in — every one of these words is on the face of a
- * board with no state for "he didn't say".
+ * a renamed step id cannot strand it. Each of the three is his answer or
+ * nothing (D473) — the pickers cannot be left empty on the real path, but a
+ * board never stands the canvas's sample answer in for his.
  */
 export function planReading(a: Record<string, string | string[]>, pick: number) {
   const triggers = (a.triggers as string[]) || [];
@@ -244,18 +262,19 @@ export function planReading(a: Record<string, string | string[]>, pick: number) 
     .find((v) => typeof v === 'string' && STARTER[v]) as string | undefined;
   const signal = candidates[pick % candidates.length];
   return {
-    when: triggers[0] ?? signals[0],
-    where: places[0] ?? 'In bed',
-    starter: starter ?? 'I start scrolling',
+    when: triggers[0] as string | undefined,
+    where: places[0] as string | undefined,
+    starter,
     // `Choose another` walks his own signals in `CHANGE_ORDER`, wrapping round.
     signal,
+    signals,
     change: firstChangeFor(signal),
   };
 }
 
 // ── 25 · This Is Where We’d Start ─────────────────────────────────────
 
-/** The charger, his name, his three signals as pills, and the line that says he does not have to change everything at once. */
+/** The charger, his name, his signals as pills, and the line that says he does not have to change everything at once. */
 export function O3WhereWedStart({ name, triggers, next }: { name?: string; triggers: string[]; next: () => void }) {
   const who = (name ?? '').trim();
   const signals = planSignals(triggers);
@@ -274,9 +293,12 @@ export function O3WhereWedStart({ name, triggers, next }: { name?: string; trigg
               <Pill key={s} kind="place" label={chipLabel(s)} />
             ))}
           </View>
-          <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            These came up together in your answers.
-          </MonoText>
+          {/* said only of what he picked: one signal is not "together" (D473) */}
+          {signals.length ? (
+            <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
+              {signals.length === 1 ? 'This came up in your answers.' : 'These came up together in your answers.'}
+            </MonoText>
+          ) : null}
           {/* one paragraph with an inline 700 ink run, as the frame writes it */}
           <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
             You don’t need to change everything at once.{' '}
@@ -298,6 +320,7 @@ export function O3WhereWedStart({ name, triggers, next }: { name?: string; trigg
 export function O3StartHere({
   change,
   signal,
+  signals = [],
   when,
   where,
   starter,
@@ -307,9 +330,11 @@ export function O3StartHere({
   change: FirstChange;
   /** The signal this board's proposal is built on — D054's `Choose another`. */
   signal: string;
-  when: string;
-  where: string;
-  starter: string;
+  /** his own `11 · When` signals, as `25` drew them */
+  signals?: readonly string[];
+  when?: string;
+  where?: string;
+  starter?: string;
   onAccept: () => void;
   onAnother: () => void;
 }) {
@@ -321,7 +346,7 @@ export function O3StartHere({
       gap={18}
       titleSize={26}
       title={balanced(change.heading)}
-      body={evidenceLine(signal, when, where, starter)}
+      body={evidenceLine(signal, when, where, starter, signals)}
       cta="Continue"
       onCta={onAccept}
       ghost="Choose another"
@@ -406,14 +431,18 @@ export function O3YourPlan({
   next,
   back,
 }: {
-  when: string;
-  where: string;
-  starter: string;
+  when?: string;
+  where?: string;
+  starter?: string;
   change: FirstChange;
   next: () => void;
   back?: () => void;
 }) {
-  const rows = [when, where, starterFor(starter).row, change.row, 'SOS gets you out first'];
+  // a row whose question went unanswered is left out, not filled with the
+  // canvas's answer (D473); the glyph stays with its row
+  const rows = [when, where, starter ? starterFor(starter).row : undefined, change.row, 'SOS gets you out first']
+    .map((title, i) => ({ title, i }))
+    .filter((r): r is { title: string; i: number } => !!r.title);
   const [stackH, setStackH] = useState(PLAN_BOTTOM - PLAN_TOP);
   return (
     <Screen>
@@ -422,7 +451,7 @@ export function O3YourPlan({
         <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: PLAN_TOP, gap: 14 }}>
           <MonoText v="h1">Your plan</MonoText>
           <View style={{ height: 6 }} />
-          {rows.map((title, i) => (
+          {rows.map(({ title, i }) => (
             <IconCard
               key={i}
               title={title}

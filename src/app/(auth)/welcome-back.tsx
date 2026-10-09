@@ -24,21 +24,29 @@ import { useAuth } from '@/lib/auth';
  * sends new arrivals back to the login board. It is drawn by the same
  * `AuthDoor`, which is why only those four strings live there.
  *
- * Everything past the door is this route's too: the address step, the password
- * step and the verification code. None has a frame; they keep their copy and
- * behaviour and take the overhaul's vocabulary — the address step the door's
- * laurel and centred title over Name's field, the other two Name's template
- * (see `src/components/auth/kit.tsx`).
+ * Everything past the door is this route's too: the address step, the emailed
+ * code, the password step and the password reset. None has a frame; they keep
+ * the overhaul's vocabulary — the address step the door's laurel and centred
+ * title over Name's field, the others Name's template (see
+ * `src/components/auth/kit.tsx`).
+ *
+ * The address step's "Let’s Go" emails a sign-in code — the road an account
+ * made without a password has to take, and the default for everyone (deploy
+ * D410). A password is the alternative a ghost link away, and the password
+ * board carries "Forgot password?" (Clerk's reset_password_email_code).
  */
 
-type Mode = 'door' | 'password' | 'verify';
+type Mode = 'door' | 'password' | 'verify' | 'reset';
 
 export default function WelcomeBack() {
   const router = useRouter();
-  const { signInWithPassword, signInWithSSO, verifySignInCode, resendSignInCode } = useAuth();
+  const { signInWithPassword, sendSignInCode, signInWithSSO, verifySignInCode, resendSignInCode, startPasswordReset, completePasswordReset } = useAuth();
   const [mode, setMode] = useState<Mode>('door');
+  /** The board a code was asked for from — where Back on the code board returns. */
+  const [codeFrom, setCodeFrom] = useState<'door' | 'password' | 'reset'>('door');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [code, setCode] = useState('');
   /**
    * The address step, opened from the door's email pill.
@@ -58,7 +66,9 @@ export default function WelcomeBack() {
   };
   const back = () => {
     reset();
-    if (mode === 'verify') return setMode('password');
+    setCode('');
+    if (mode === 'verify') return setMode(codeFrom);
+    if (mode === 'reset') return setMode('password');
     setMode('door');
   };
   /** Out of the address step and back to the door this route opened on. */
@@ -68,8 +78,20 @@ export default function WelcomeBack() {
     setEmailStep(false);
   };
 
-  const continueWithEmail = () => {
+  /** The address step's primary: email a sign-in code. */
+  async function sendCode() {
     if (!email.trim()) return setError('Enter your email address to carry on.');
+    setLoading(true);
+    reset();
+    const res = await sendSignInCode(email);
+    setLoading(false);
+    if (!res.ok) return setError(res.error ?? 'Could not send a code.');
+    setCode('');
+    setCodeFrom('door');
+    setMode('verify');
+  }
+
+  const usePasswordInstead = () => {
     reset();
     setMode('password');
   };
@@ -80,8 +102,40 @@ export default function WelcomeBack() {
     const res = await signInWithPassword(email, password);
     setLoading(false);
     if (res.ok) return router.replace('/');
-    if (res.needsVerification) return setMode('verify');
+    if (res.needsVerification) {
+      setCode('');
+      setCodeFrom('password');
+      return setMode('verify');
+    }
     setError(res.error ?? 'Could not sign in.');
+  }
+
+  async function forgotPassword() {
+    if (!email.trim()) return setError('Enter your email first, and we’ll send a reset code.');
+    setLoading(true);
+    reset();
+    const res = await startPasswordReset(email);
+    setLoading(false);
+    if (!res.ok) return setError(res.error ?? 'Could not send a reset code.');
+    setCode('');
+    setNewPassword('');
+    setMode('reset');
+  }
+
+  async function submitReset() {
+    if (!code.trim()) return setError('Enter the code we sent.');
+    if (newPassword.length < 8) return setError('Passwords need at least 8 characters.');
+    setLoading(true);
+    reset();
+    const res = await completePasswordReset(code, newPassword);
+    setLoading(false);
+    if (res.ok) return router.replace('/');
+    if (res.needsVerification) {
+      setCode('');
+      setCodeFrom('reset');
+      return setMode('verify');
+    }
+    setError(res.error ?? 'Could not reset the password.');
   }
 
   async function submitCode() {
@@ -139,7 +193,7 @@ export default function WelcomeBack() {
                 setEmail('');
                 reset();
               }}
-              onSubmitEditing={continueWithEmail}
+              onSubmitEditing={() => void sendCode()}
               autoFocus
               placeholder="yourname@email.com"
               keyboardType="email-address"
@@ -149,51 +203,94 @@ export default function WelcomeBack() {
               returnKeyType="done"
             />
             <AuthMessage error={error} notice={notice} />
-            <AuthButton label="Let’s Go" onPress={continueWithEmail} />
+            <AuthButton label={loading ? 'Sending code…' : 'Let’s Go'} disabled={loading} onPress={() => void sendCode()} />
+            <AuthGhost label="Use password instead" onPress={usePasswordInstead} />
           </View>
         </ScrollRegion>
       </Screen>
     );
   }
 
+  if (mode === 'password') {
+    return (
+      <AuthSurface onBack={back}>
+        <AuthTitle>Welcome back.</AuthTitle>
+        <AuthField label="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoComplete="email" />
+        <AuthField
+          label="Password"
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Your password"
+          secureTextEntry
+          autoCapitalize="none"
+          autoComplete="current-password"
+          returnKeyType="go"
+          onSubmitEditing={() => password && void submitPassword()}
+        />
+        <AuthMessage error={error} notice={notice} />
+        <AuthButton label={loading ? 'Signing in…' : 'Sign in'} disabled={loading} onPress={() => (password ? void submitPassword() : setError('Enter your password.'))} />
+        <AuthGhost label="Forgot password?" onPress={() => void forgotPassword()} />
+        <AuthGhost
+          label="Email me a code instead"
+          onPress={() => {
+            setEmailStep(true);
+            void sendCode();
+          }}
+        />
+      </AuthSurface>
+    );
+  }
+
+  if (mode === 'reset') {
+    return (
+      <AuthSurface onBack={back}>
+        <AuthTitle>Reset your password.</AuthTitle>
+        <AuthSub>A code is on its way to {email.trim()}. Enter it with a new password.</AuthSub>
+        <AuthField label="Reset code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" />
+        <AuthField
+          label="New password"
+          value={newPassword}
+          onChangeText={setNewPassword}
+          placeholder="At least 8 characters"
+          secureTextEntry
+          autoCapitalize="none"
+          autoComplete="new-password"
+          textContentType="newPassword"
+          returnKeyType="go"
+          onSubmitEditing={() => void submitReset()}
+        />
+        <AuthMessage error={error} notice={notice} />
+        <AuthButton label={loading ? 'Resetting…' : 'Reset & sign in'} disabled={loading} onPress={() => void submitReset()} />
+        <AuthGhost
+          label="Resend code"
+          onPress={async () => {
+            reset();
+            const result = await startPasswordReset(email);
+            if (!result.ok) setError(result.error ?? 'Could not resend code.');
+            else setNotice('Code re-sent.');
+          }}
+        />
+      </AuthSurface>
+    );
+  }
+
   return (
     <AuthSurface onBack={back}>
-      {mode === 'password' ? (
-        <>
-          <AuthTitle>Welcome back.</AuthTitle>
-          <AuthField label="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoComplete="email" />
-          <AuthField
-            label="Password"
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Your password"
-            secureTextEntry
-            autoCapitalize="none"
-            autoComplete="current-password"
-            returnKeyType="go"
-            onSubmitEditing={() => password && void submitPassword()}
-          />
-          <AuthMessage error={error} notice={notice} />
-          <AuthButton label={loading ? 'Signing in…' : 'Sign in'} disabled={loading} onPress={() => (password ? void submitPassword() : setError('Enter your password.'))} />
-        </>
-      ) : (
-        <>
-          <AuthTitle>Check your email.</AuthTitle>
-          <AuthSub>A code is on its way to {email.trim()}.</AuthSub>
-          <AuthField label="Verification code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
-          <AuthMessage error={error} notice={notice} />
-          <AuthButton label={loading ? 'Checking…' : 'Verify & continue'} disabled={loading} onPress={() => (code.trim() ? void submitCode() : setError('Enter the code we sent.'))} />
-          <AuthGhost
-            label="Resend code"
-            onPress={async () => {
-              reset();
-              const result = await resendSignInCode();
-              if (!result.ok) setError(result.error ?? 'Could not resend code.');
-              else setNotice('Code re-sent.');
-            }}
-          />
-        </>
-      )}
+      <AuthTitle>Check your email.</AuthTitle>
+      <AuthSub>A code is on its way to {email.trim()}.</AuthSub>
+      <AuthField label="Verification code" value={code} onChangeText={setCode} keyboardType="number-pad" autoCapitalize="none" autoComplete="one-time-code" textContentType="oneTimeCode" returnKeyType="go" onSubmitEditing={() => code && void submitCode()} />
+      <AuthMessage error={error} notice={notice} />
+      <AuthButton label={loading ? 'Checking…' : 'Verify & continue'} disabled={loading} onPress={() => (code.trim() ? void submitCode() : setError('Enter the code we sent.'))} />
+      <AuthGhost
+        label="Resend code"
+        onPress={async () => {
+          reset();
+          const result = await resendSignInCode();
+          if (!result.ok) setError(result.error ?? 'Could not resend code.');
+          else setNotice('Code re-sent.');
+        }}
+      />
+      {codeFrom === 'door' ? <AuthGhost label="Use password instead" onPress={usePasswordInstead} /> : null}
     </AuthSurface>
   );
 }

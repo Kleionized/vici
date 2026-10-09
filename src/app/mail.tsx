@@ -6,7 +6,7 @@ import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
 import { ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
-import { getJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, readAccountJSON } from '@/lib/accountState';
 import { mono } from '@/lib/theme';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
 
@@ -18,8 +18,8 @@ import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
  * 26/33 heading and its line.
  */
 
-const LETTER_KEY = 'tideline.letter.day3';
-const POST_DONE_KEY = 'tideline.post.backondeck.delivered';
+const LETTER_KEY = ACCOUNT_KEYS.letterKept;
+const POST_DONE_KEY = ACCOUNT_KEYS.postDelivered;
 
 const NAV_BOTTOM = 100;
 /** the title head's 32/38 at 108 (`TitleHead`), in flow here so it scrolls with the rows */
@@ -39,10 +39,10 @@ export default function Mail() {
   const [postDelivered, setPostDelivered] = useState(false);
 
   useEffect(() => {
-    void getJSON<{ kept?: boolean }>(LETTER_KEY).then(setLetter);
+    void readAccountJSON<{ kept?: boolean }>(LETTER_KEY).then(setLetter);
     // The key still spells the retired `Back on deck` face; it is load-bearing
     // storage on accounts that already have the post, so it keeps its name.
-    void getJSON<number>(POST_DONE_KEY).then((v) => setPostDelivered(!!v));
+    void readAccountJSON<number>(POST_DONE_KEY).then((v) => setPostDelivered(!!v));
   }, []);
 
   const items = useMemo<Item[]>(() => {
@@ -50,7 +50,7 @@ export default function Mail() {
     const out: Item[] = [];
 
     // weekly reports — newest first
-    for (const weekStart of completedWeekStarts(user.createdAt)) {
+    for (const weekStart of completedWeekStarts(user)) {
       const r = buildWeeklyReport(weekStart, checkins, events);
       const verdict =
         r.thisAvg == null
@@ -86,10 +86,11 @@ export default function Mail() {
       });
     }
 
-    // the sealed letter — written on day zero, resealed after each reading
+    // VICI's post-slip letter, resealed after each reading. It is VICI's, the
+    // same for everyone — not something he wrote on day zero (D476).
     out.push({
       key: 'letter',
-      title: 'A letter from day zero',
+      title: 'A letter from VICI',
       sub: letter?.kept ? 'Resealed · don’t fail twice' : 'Sealed · waits until it’s needed',
       go: () => router.push('/letter'),
     });

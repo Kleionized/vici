@@ -11,6 +11,7 @@ import { computeDashboard } from '@/lib/dashboard';
 import { todayKey } from '@/lib/date';
 import { useMockStore } from './mockStore';
 import type {
+  AccountDataExport,
   AppUser,
   DailyCheckin,
   DailyCheckinInput,
@@ -184,4 +185,27 @@ export function useCreateEvent() {
 export function useUpsertCheckin() {
   const { upsertCheckin } = useMockStore();
   return (input: DailyCheckinInput) => upsertCheckin(input);
+}
+
+// ---------- the account as a whole ----------
+
+/** "Export my data": the signed-in user's whole record, as Convex's `account:exportData` returns it. */
+export function useExportData() {
+  const { data } = useMockStore();
+  return async (): Promise<AccountDataExport> => ({
+    user: data?.user ?? null,
+    events: [...(data?.events ?? [])].sort((a, b) => a.createdAt - b.createdAt),
+    checkins: Object.values(data?.checkins ?? {}).sort((a, b) => (a.date < b.date ? -1 : 1)),
+    journalEntries: [...(data?.journalEntries ?? [])].sort((a, b) => a.createdAt - b.createdAt),
+    lessonProgress: Object.values(data?.progress ?? {}),
+    reflections: Object.values(data?.reflections ?? {}),
+    lifeMap: data?.lifeMap ?? null,
+    truncated: [],
+  });
+}
+
+/** Account deletion, first half: erase every row the account stored. The auth record goes next (`useAuth().deleteAccount`). */
+export function useDeleteAccountData() {
+  const { deleteAllData } = useMockStore();
+  return () => deleteAllData();
 }

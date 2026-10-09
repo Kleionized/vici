@@ -1,0 +1,93 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env
+.env*.local
+!.env.example
+
+# typescript
+*.tsbuildinfo
+
+example
+
+# generated native folders
+/ios
+/android
+.claude/
+.gstack/
+
+# UI Final run artifacts (generated split frames)
+.uifinal/
+
+# UI Final 1 run artifacts (generated split frames)
+.uifinal1/
+
+# ── EAS only (B8, D459) ───────────────────────────────────────────────
+# Everything below is tracked in git but is not part of the app: design
+# captures, exports, run artifacts and tooling. EAS reads this file INSTEAD of
+# .gitignore, which is why the lines above are a copy of it. Nothing in
+# src/, convex/, assets/ or app.json reads from these folders.
+
+# overhaul and audit run artifacts
+.overhaul/
+.vicifull/
+prior-runs/
+design-references/
+specs/
+
+# design-export folders at the repo root
+/Vici Overhaul/
+/tideline UI/
+/tideline UI 1/
+/tideline 2/
+/Latest Vici FULL/
+/UI Final/
+/UI Final 1/
+/lesson UI/
+/latest UI/
+
+# root image exports (the app's images live in assets/)
+/*.png
+/*.webp
+
+# agent and editor tooling
+.agents/
+.claude/
+.gstack/
+.vscode/
+
+# build output
+dist/
+
+# local backups of the generated native folder
+/ios.bak-*

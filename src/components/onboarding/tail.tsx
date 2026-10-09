@@ -1,5 +1,5 @@
 /**
- * The onboarding tail — `24 · Build plan` and `28 · Your VICI Rating` …
+ * The onboarding tail — `24 · Build plan` and `28 · Your recovery rating` …
  * `34 · What You Want Back`.
  *
  * `Vici Overhaul` redrew every one of these on the kit: the #0D0D0D ground and
@@ -24,9 +24,11 @@ import { useWindowDimensions, View } from 'react-native';
 import Svg, { Circle, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
-import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS, COST_30, COST_365 } from '@/content/onboardingTail';
+import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS } from '@/content/onboardingTail';
 import { groupDigits } from '@/lib/format';
 import { LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
+
+import { spreadDays } from './v3';
 
 /** A `<text>`'s 600/700 in the canvas's face: 600 resolves to Lato 700 (the canvas loads 400/700/900). */
 const BOLD = { fontFamily: LATO.bold, fontWeight: 'normal' } as const;
@@ -140,29 +142,22 @@ export function O3PuttingTogether({ next, hold }: { next: () => void; hold?: boo
   );
 }
 
-// ── 28 · Your VICI Rating (frame `Starting Score`) ───────────────────
+// ── 28 · Your recovery rating (frame `Starting Score`) ───────────────
 
-/** The gauge's ticks: 49 of them over the half circle, the scale 0 … 1,000. */
+/** The gauge's ticks: 49 of them over the half circle, the rating's scale 0 … 100. */
 const TICKS = 48;
-const GAUGE_MAX = 1000;
+const GAUGE_MAX = 100;
 const f1 = (v: number) => v.toFixed(1);
 
 /**
- * The tick gauge, drawn from the score. Tick `i` sits at 180° − 3.75°·i about
- * (150, 156); a tick at or under the score runs r 108 → 128 at 3.4, one above
- * it r 119 → 128 at 2. The marker is an r 6 dot at r 96 on the score's angle.
- * Endpoints are written to one decimal, as the frame writes them, so at 842 every
- * path is the frame's. The scale is the frame's 0 … 1,000; a rating above it
- * pins the gauge full (D329: the board shows the app's own rating).
- *
- * A full gauge draws no marker (D219). At 0° the dot lands 2.5 right of and 4
- * under the last glyph of a four-digit figure — "1,000." — and the app opens
- * every account at 1,000, so every man would read it. Every tick lit already
- * says where the rating sits; at 842 (and anywhere short of full) the marker is
- * the frame's.
+ * The tick gauge, drawn from a rating. Tick `i` sits at 180° − 3.75°·i about
+ * (150, 156); a tick at or under the rating runs r 108 → 128 at 3.4, one above
+ * it r 119 → 128 at 2. The marker is an r 6 dot at r 96 on the rating's angle.
+ * Endpoints are written to one decimal, as the frame writes them. The scale is
+ * the recovery rating's own 0 … 100 (D516); a full gauge draws no marker (D219).
  */
-function ScoreGauge({ score }: { score: number }) {
-  const share = Math.max(0, Math.min(score, GAUGE_MAX)) / GAUGE_MAX;
+function RatingGauge({ value }: { value: number }) {
+  const share = Math.max(0, Math.min(value, GAUGE_MAX)) / GAUGE_MAX;
   const ticks = Array.from({ length: TICKS + 1 }, (_, i) => {
     const a = ((180 - 3.75 * i) * Math.PI) / 180;
     const on = i / TICKS <= share;
@@ -179,22 +174,28 @@ function ScoreGauge({ score }: { score: number }) {
       ))}
       {share < 1 ? <Circle cx={f1(150 + 96 * Math.cos(m))} cy={f1(156 - 96 * Math.sin(m))} r={6} fill={mono.ink} /> : null}
       <SvgText x={150} y={146} fill={mono.ink} textAnchor="middle" fontSize={76} letterSpacing={-3} {...BOLD}>
-        {groupDigits(score)}
+        {groupDigits(value)}
       </SvgText>
       <SvgText x={150} y={176} fill={mono.mute} textAnchor="middle" fontSize={14} {...BOLD}>
-        of 1,000
+        of 100
       </SvgText>
       <SvgText x={22} y={192} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
         0
       </SvgText>
       <SvgText x={278} y={192} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
-        1,000
+        100
       </SvgText>
     </Svg>
   );
 }
 
-export function O3StartingPoint({ score, next, back }: { score: number; next: () => void; back?: () => void }) {
+/**
+ * The rating before it has anything to count (S2, D516): no invented starting
+ * figure. The gauge stands at 0 marked "Building", and the line says what the
+ * number will be — it starts with the first check-in and covers the last seven
+ * days. Today shows the same number from the first check-in on.
+ */
+export function O3StartingPoint({ next, back }: { next: () => void; back?: () => void }) {
   // the closing line wraps to three on a narrow phone; the band measures it
   const [lineH, setLineH] = useState(48);
   return (
@@ -203,18 +204,18 @@ export function O3StartingPoint({ score, next, back }: { score: number; next: ()
       <Band start={224} end={556 + lineH}>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 224 }}>
           <MonoText v="caps" center>
-            Your VICI rating
+            Your recovery rating
           </MonoText>
         </View>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 270, flexDirection: 'row', justifyContent: 'center' }}>
-          <ScoreGauge score={score} />
+          <RatingGauge value={0} />
         </View>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', justifyContent: 'center' }}>
-          <Pill kind="outline" label="Starting point" />
+          <Pill kind="outline" label="Building" />
         </View>
         <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
           <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            This is where you start. What you do from here matters more than the questionnaire.
+            It starts with your first check-in and covers your last 7 days: showing up, clean days and lessons.
           </MonoText>
         </View>
       </Band>
@@ -230,11 +231,14 @@ export function O3StartingPoint({ score, next, back }: { score: number; next: ()
  * are filled `#0D0D0D` stroked 1.6 and the others `#111111` stroked 1.8 — on
  * the ground they read alike, and the key's "Clean day" swatch (`#1E1E1E` in a
  * `#5A574F` ring) matches no cell. Reproduced as drawn (CRITIC §5, tail Q2).
+ * Which cells are relapse days is his reported rate spread over the month
+ * (`spreadDays`, D471) — the frame's own nine were its sample answer.
  */
-function MonthDots() {
+function MonthDots({ times }: { times: number }) {
+  const days = useMemo(() => spreadDays(30, times), [times]);
   return (
     <Svg width={334} height={244} viewBox="0 0 334 244">
-      {COST_30.map((relapse, i) => (
+      {days.map((relapse, i) => (
         <Circle
           key={i}
           cx={22 + 58 * (i % 6)}
@@ -260,7 +264,12 @@ function KeyItem({ fill, ringColor, label }: { fill: string; ringColor: string; 
   );
 }
 
+/**
+ * `times` is his `07 · Frequency` answer as days in thirty (D471), so the
+ * sentence's "the rate you reported" is now the rate he reported.
+ */
 export function O3Next30({ times, next, back }: { times: number; next: () => void; back?: () => void }) {
+  const share = times >= 30 ? 'every one of the next 30 days' : `about ${times} of the next 30 days`;
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
@@ -271,11 +280,11 @@ export function O3Next30({ times, next, back }: { times: number; next: () => voi
             <Stack top={199}>
               <MonoText v="h1">This is your next 30 days.</MonoText>
               <MonoText v="p">
-                If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
+                If the rate you reported stayed the same, <Strong>{share}</Strong> could end with porn.
               </MonoText>
             </Stack>
             <View style={{ position: 'absolute', left: 24, right: 24, top: 343 - give, flexDirection: 'row', justifyContent: 'center' }}>
-              <MonthDots />
+              <MonthDots times={times} />
             </View>
             <View style={{ position: 'absolute', left: 0, right: 0, top: 603 - give, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
               <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
@@ -318,12 +327,16 @@ function useColumn() {
 /** An absolute `M`/`C` path with every x scaled by `k` — the frame's own string at `k` = 1. */
 const scaleX = (d: string, k: number) => (k === 1 ? d : d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${f1(Number(x) * k)} ${y}`));
 
-/** 365 dots, 25 across at (7 + 13.8c, 7 + 13.8r): a relapse day r 4.4 ink, the rest r 2.4 at 0.28. */
-function YearDots() {
+/**
+ * 365 dots, 25 across at (7 + 13.8c, 7 + 13.8r): a relapse day r 4.4 ink, the
+ * rest r 2.4 at 0.28. `days` of them, spread over the year (D471).
+ */
+function YearDots({ days }: { days: number }) {
   const { w, k } = useColumn();
+  const marked = useMemo(() => spreadDays(365, days), [days]);
   return (
     <Svg width={w} height={208} viewBox={`0 0 ${w} 208`}>
-      {COST_365.map((relapse, i) => (
+      {marked.map((relapse, i) => (
         <Circle key={i} cx={(7 + (i % 25) * 13.8) * k} cy={7 + Math.floor(i / 25) * 13.8} r={relapse ? 4.4 : 2.4} fill={relapse ? mono.ink : 'rgba(242,240,236,0.28)'} />
       ))}
     </Svg>
@@ -339,6 +352,11 @@ function Figure({ children, color = mono.ink }: { children: string; color?: stri
   );
 }
 
+/**
+ * The year at his reported rate. The frame's line, "Where you’re predicted to
+ * relapse.", claimed a forecast the app cannot make; the line now says what the
+ * figure is — his own rate, carried over a year (D471).
+ */
 export function O3OneYear({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
   return (
     <Screen>
@@ -348,11 +366,11 @@ export function O3OneYear({ days, next, back }: { days: number; next: () => void
           <MonoText v="h1">One year from now.</MonoText>
         </Stack>
         <View style={{ position: 'absolute', left: 24, top: 284 }}>
-          <YearDots />
+          <YearDots days={days} />
         </View>
         <Stack top={530} gap={6}>
-          <Figure>{`About ${groupDigits(days)} days`}</Figure>
-          <MonoText v="p">Where you’re predicted to relapse.</MonoText>
+          <Figure>{days >= 365 ? 'All 365 days' : `About ${groupDigits(days)} days`}</Figure>
+          <MonoText v="p">At the rate you reported, if it held all year.</MonoText>
         </Stack>
       </Band>
       <PrimaryButton label="Next" onPress={next} />
@@ -445,14 +463,20 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
  * tooltip and the marker. Every value is the frame's literal — an illustration,
  * not a readout of his frequency (CRITIC §5, tail Q7) — and spans the column on
  * another width (`useColumn`: the x's scale, the tooltip keeps its 128).
+ *
+ * The frame's tooltips ("5× a week", "2× a week") and "Relapses get more
+ * frequent, not less" read as his own forecast and a research finding; they
+ * were neither. The caption now says the chart is an illustration, the
+ * tooltips name a direction rather than invent a number, and the copy claims
+ * only what is true of any habit left alone (D471).
  */
 const LINES = {
   nothing: {
     title: 'If nothing changes.',
-    body: 'The line keeps climbing. Relapses get more frequent, not less.',
+    body: 'Left alone, the pattern stays — and it can grow. An illustration, not a forecast.',
     line: 'M86 150 C 170 128, 250 92, 330 58',
     y: 104,
-    rate: '5× a week',
+    rate: 'Same, or more',
     cta: 'Next',
   },
   plan: {
@@ -460,7 +484,7 @@ const LINES = {
     body: 'You only have to make the next decision different. Then the next one. Then come back tomorrow.',
     line: 'M86 150 C 140 138, 190 172, 240 190 C 272 200, 304 206, 330 208',
     y: 172,
-    rate: '2× a week',
+    rate: 'Less often',
     cta: 'Continue',
   },
 } as const;
@@ -480,7 +504,7 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
         <View style={{ position: 'absolute', left: 24, top: 389 }}>
           <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
             <SvgText x={0} y={16} fill={mono.ink} fontSize={14} {...BOLD}>
-              Relapse frequency
+              Relapse frequency · an illustration
             </SvgText>
             <Path d={`M0 236H${w}`} stroke={mono.ink} strokeWidth={1.5} />
             <Path d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
@@ -603,25 +627,19 @@ export function O3OneBadDay({ next, back }: { next: () => void; back?: () => voi
 
 // ── 34 · What You Want Back ──────────────────────────────────────────
 
-/** The trio the frame draws — `17 · What it affects` as the canvas answers it. */
-export const WANT_BACK_DEFAULT = ['Focus', 'Sleep', 'Confidence'];
-
 /**
- * Three 64pt ink pills, his `17 · What it affects` answers read back in the
- * picker's order (CRITIC §5, tail Q5) — topped up from the frame's own trio
- * when he picked fewer than three, so the board always draws three.
+ * Up to three 64pt ink pills: his `17 · What it affects` answers read back in
+ * the picker's order (CRITIC §5, tail Q5). Only what he picked — the frame's
+ * trio (Focus, Sleep, Confidence) is its sample answer, and topping a shorter
+ * pick up from it put words in his mouth under "This is what you’re doing it
+ * for" (D473). Picking none (allowed after "Not really") draws no pills.
  */
 export function wantBackPills(affects: string[], order: readonly string[]): string[] {
-  const picked = [...affects].sort((x, y) => order.indexOf(x) - order.indexOf(y));
-  const out: string[] = [];
-  for (const p of [...picked, ...WANT_BACK_DEFAULT]) {
-    if (!out.includes(p)) out.push(p);
-    if (out.length === 3) break;
-  }
-  return out;
+  const picked = [...new Set(affects)].sort((x, y) => order.indexOf(x) - order.indexOf(y));
+  return picked.slice(0, 3);
 }
 
-export function O3WhatYouWantBack({ pills = WANT_BACK_DEFAULT, next, back }: { pills?: string[]; next: () => void; back?: () => void }) {
+export function O3WhatYouWantBack({ pills = [], next, back }: { pills?: string[]; next: () => void; back?: () => void }) {
   // the heading takes two lines on a narrow phone; the band measures the stack
   const [stackH, setStackH] = useState(445);
   return (
@@ -630,7 +648,7 @@ export function O3WhatYouWantBack({ pills = WANT_BACK_DEFAULT, next, back }: { p
       <Band start={193} end={193 + stackH}>
         <Stack top={193} onLayout={setStackH}>
           <MonoText v="h1">This is what you’re doing it for.</MonoText>
-          <View style={{ height: 10 }} />
+          {pills.length ? <View style={{ height: 10 }} /> : null}
           {pills.map((label) => (
             <View key={label} style={{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
               <MonoText v="gridLabel" color={mono.onInk} wrap="wrap" style={{ lineHeight: lhNormal(16) }}>

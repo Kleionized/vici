@@ -51,3 +51,6 @@ example
 
 # UI Final 1 run artifacts (generated split frames)
 .uifinal1/
+
+# local backups of the generated native folder
+/ios.bak-*

@@ -23,6 +23,8 @@ import { Card, HeroBoard, MonoText } from '@/components/mono';
 import { isSosBoardKey, SOS_RESPONSES, type SosBoardKey, type SosResponse } from '@/content/sosResponses';
 import { mono, sans } from '@/lib/theme';
 
+import { SupportPill } from './stages';
+
 /**
  * An answer the content does not know falls back to its branch's "I don’t
  * know" board — never a blank screen with no way out. The flow's maps already
@@ -67,12 +69,24 @@ function ChallengeCard({ label, text }: { label: string; text: string }) {
 }
 
 /**
+ * The boards that answer a heavier feeling — low, ashamed — carry a way to a
+ * person under their line (B2, D467): the kit's outline pill, in the stack,
+ * so it moves with it and never meets the controls.
+ */
+const SUPPORT_BOARDS: ReadonlySet<SosBoardKey> = new Set<SosBoardKey>(['SOS-Feel-Low', 'SOS-Feel-Ashamed']);
+
+/**
  * `95A–97J` and `31 · The Challenge` — the board the flow shows once it knows
- * the answer. ✕ closes the interrupt, the pill moves on (`Continue` and `Done`
- * do the same thing; the label is the frame's copy), and "Give me another"
+ * the answer. ✕ closes the interrupt, the pill moves on, and "Give me another"
  * steps the feeling rotation. The challenge's back chevron is drawn when the
  * flow hands a way back (`onBack`); without one the slot stays empty rather
  * than holding a control that does nothing.
+ *
+ * Every response board leads to another question, so its pill says
+ * "Continue": the frames' "Done" on sixteen of them told the user they were
+ * finished and then asked them more (F4, D464). The generated content keeps
+ * the frames' word; the board overrides it here, so a regeneration cannot
+ * bring it back.
  */
 export function ResponsePage({
   answer,
@@ -89,6 +103,7 @@ export function ResponsePage({
 }) {
   const board = boardFor(answer);
   const another = Boolean(board.another && onAnother);
+  const support = isSosBoardKey(answer) && SUPPORT_BOARDS.has(answer);
   return (
     <HeroBoard
       nav={{
@@ -105,8 +120,8 @@ export function ResponsePage({
       titleSize={board.titleSize}
       title={board.title}
       body={board.body}
-      extra={board.challenge ? <ChallengeCard label={board.challengeLabel ?? ''} text={board.challenge} /> : undefined}
-      cta={board.cta}
+      extra={board.challenge ? <ChallengeCard label={board.challengeLabel ?? ''} text={board.challenge} /> : support ? <SupportPill /> : undefined}
+      cta="Continue"
       onCta={onNext}
       ctaBottom={another ? board.ctaBottom : 48}
       ghost={another ? 'Give me another' : undefined}

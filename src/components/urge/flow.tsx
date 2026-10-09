@@ -31,9 +31,9 @@ import { isSosBoardKey, type SosBoardKey } from '@/content/sosResponses';
 import { URGE_FEELINGS, URGE_TRIGGERS } from '@/content/sosPickers';
 import { useCreateEvent } from '@/lib/backend';
 import { minutesWords } from '@/lib/format';
-import { getJSON, setJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
 import { lhNormal, mono, sans } from '@/lib/theme';
-import { clearUrgeSession, newUrgeSession, saveUrgeSession } from '@/lib/urgeSession';
+import { clearUrgeSession, openUrgeSession, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
 
 import { ResponsePage } from './boards';
 import {
@@ -41,12 +41,14 @@ import {
   DEFAULT_SOS_SETTINGS,
   Gap,
   OddStage,
+  readSosSettings,
   SOS_ORDER,
   SOS_SETTINGS_KEY,
   SosQuestion,
   SosSettingsSheet,
   SURF_SECONDS,
   TapStage,
+  useStepBack,
   WaveStage,
   type SosSettings,
 } from './stages';
@@ -96,7 +98,8 @@ function IntroPage({ onClose, onNext }: { onClose: () => void; onNext: () => voi
       hero="stopwatch"
       caps="The interrupt"
       title="The first 90 seconds."
-      body="A universal interrupt for the moment the wave hits. Six small moves — decide nothing until it passes."
+      // the flow has three moves ("Move I of 3"); the frame's "Six" counted something it does not run (D464)
+      body="A universal interrupt for the moment the wave hits. Three small moves — decide nothing until it passes."
       cta="Start"
       onCta={onNext}
     />
@@ -108,7 +111,12 @@ function IntroPage({ onClose, onNext }: { onClose: () => void; onNext: () => voi
 /** What each bar means, for screen readers and recipes (they tap by the word). */
 const BAND_LABELS = INTENSITY_BANDS.map((b) => b.label);
 
-function StrengthPage({ band, onBand, onBack, onClose, onNext }: { band: number; onBand: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+/**
+ * No bar is lit until the user picks one, and Continue waits for it; "Skip
+ * this step" moves on with no strength on record. The frame inks the fourth
+ * bar, and a skipped rating used to be filed as that "Intense" (F3, D463).
+ */
+function StrengthPage({ band, onBand, onBack, onClose, onNext }: { band: number | null; onBand: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
   return (
     <SosQuestion
       left="back"
@@ -120,12 +128,13 @@ function StrengthPage({ band, onBand, onBack, onClose, onNext }: { band: number;
       layer={
         <>
           <IntensityScale value={band} onChange={onBand} a11yLabels={BAND_LABELS} />
-          <ScaleReading word={INTENSITY_BANDS[band].label} line={INTENSITY_BANDS[band].note} />
+          {band != null ? <ScaleReading word={INTENSITY_BANDS[band].label} line={INTENSITY_BANDS[band].note} /> : null}
         </>
       }
       // the reading's line ends at 440 + 36 + 6 + 24
       layerBottom={506}
       cta="Continue"
+      ctaDisabled={band == null}
       onCta={onNext}
       ghost="Skip this step"
       onGhost={onNext}>
@@ -164,7 +173,8 @@ function PlaceRow({ label, d, on, onPress }: { label: string; d: string; on: boo
   );
 }
 
-function WherePage({ place, onPlace, onBack, onClose, onNext }: { place: UrgePlace; onPlace: (next: UrgePlace) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+/** No place is chosen for the user: Continue with none picked answers with the "somewhere else" board and files no place (D463). */
+function WherePage({ place, onPlace, onBack, onClose, onNext }: { place: UrgePlace | null; onPlace: (next: UrgePlace) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
   return (
     <SosQuestion left="back" onBack={onBack} onClose={onClose} dashes={3} hero={{ id: 'openDoor', top: 506, scale: 0.723 }} gap={18} cta="Continue" onCta={onNext}>
       <MonoText v="h1">Where are you right now?</MonoText>
@@ -264,13 +274,20 @@ const REASSESS_BANDS = ['Gone', 'Noticeable', 'Still there', 'Strong', 'Peaking'
  * unmoved is "Holding steady — still at N" (the old middle note), up is
  * "Rising — from N to M" (app-authored, in the D-20 copy batch).
  */
-function reassessLine(before: number, after: number): string {
+function reassessLine(before: number | null, after: number): string | undefined {
+  // a first read that was skipped has nothing to compare against
+  if (before == null) return after === 0 ? 'It passed' : undefined;
   if (after === before) return after === 0 ? 'It passed' : `Holding steady — still at ${after + 1}`;
   const word = after > before ? 'Rising' : after === 0 ? 'It passed' : 'Coming down';
   return `${word} — from ${before + 1} to ${after + 1}`;
 }
 
-function ReassessPage({ before, after, onAfter, onBack, onClose, onNext }: { before: number; after: number; onAfter: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+/**
+ * Nothing is lit until the user answers: an untouched board files no second
+ * read (it used to file "Noticeable", D463). Continue stays open — the board
+ * has no Skip, and moving on without an answer is the skip.
+ */
+function ReassessPage({ before, after, onAfter, onBack, onClose, onNext }: { before: number | null; after: number | null; onAfter: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
   return (
     <SosQuestion
       left="back"
@@ -282,7 +299,7 @@ function ReassessPage({ before, after, onAfter, onBack, onClose, onNext }: { bef
       layer={
         <>
           <IntensityScale value={after} onChange={onAfter} previous={before} a11yLabels={REASSESS_BANDS} />
-          <ScaleReading word={REASSESS_BANDS[after]} line={reassessLine(before, after)} />
+          {after != null ? <ScaleReading word={REASSESS_BANDS[after]} line={reassessLine(before, after)} /> : null}
         </>
       }
       layerBottom={506}
@@ -315,19 +332,25 @@ const NOTE_SCROLL = {
  * typed ("I need to say…" in ink with the caret after it, CRITIC C9): the
  * same words are the placeholder here, in the kit's `#9B968E`, and the
  * field grows with what is written, to `NOTE_MAX`.
+ *
+ * The frame's line is its sample scenario — an argument. It is only said to
+ * someone who named one; everyone else gets a line that assumes nothing
+ * (P4, D464). The pill says Continue: the stages follow (F4).
  */
-function AfterwardPage({ note, onNote, onClose, onNext }: { note: string; onNote: (next: string) => void; onClose: () => void; onNext: () => void }) {
+function AfterwardPage({ argument, note, onNote, onClose, onNext }: { argument: boolean; note: string; onNote: (next: string) => void; onClose: () => void; onNext: () => void }) {
   return (
-    <SosQuestion onClose={onClose} hero={{ id: 'envelope', top: 506 }} gap={14} cta="Done" onCta={onNext}>
+    <SosQuestion onClose={onClose} hero={{ id: 'envelope', top: 506 }} gap={14} cta="Continue" onCta={onNext}>
       <MonoText v="h1">One more thing.</MonoText>
-      <MonoText v="p">The relationship doesn’t need solving tonight. Write the one thing you need to say tomorrow.</MonoText>
+      <MonoText v="p">
+        {argument ? 'The relationship doesn’t need solving tonight. Write the one thing you need to say tomorrow.' : 'Write down one thing you want to remember from this.'}
+      </MonoText>
       <Gap h={6} />
       <TextField
         variant="note"
         value={note}
         onChangeText={onNote}
-        placeholder="I need to say…"
-        accessibilityLabel="What you need to say tomorrow"
+        placeholder={argument ? 'I need to say…' : 'One thing to remember…'}
+        accessibilityLabel={argument ? 'What you need to say tomorrow' : 'One thing to remember'}
         scrollEnabled
         inputStyle={NOTE_SCROLL}
       />
@@ -386,7 +409,8 @@ type FlowStep =
  * The interrupt, in the canvas's own order (D037): each picker is followed by
  * the board the bundle draws for its answer, and the three moves sit between
  * the place's answer and the trigger picker. The canvas then runs Afterward →
- * The wave passed; the `sos` stages between them are the app's (D252).
+ * The wave passed; the `sos` stages between them are the app's (D252) — and
+ * skipped when the second read was "Gone" (D464).
  */
 const FLOW: FlowStep[] = [
   'intro',
@@ -473,6 +497,34 @@ function stepForBoard(key: SosBoardKey): FlowStep {
   if (key.startsWith('SOS-Trig-')) return 'trigger-said';
   return 'feeling-said';
 }
+/**
+ * What fed it, as the trigger charts read it: every reason picked, in the
+ * picker's order, joined as the logs join theirs (`' · '`). "I don’t know" is
+ * an answer, not a trigger — it stays in `precedingState.reasons` and is left
+ * off the charts (F4, D464).
+ */
+const UNKNOWN_REASON = 'I don’t know';
+function triggerOf(reasons: readonly string[]): string | undefined {
+  const named = reasons.filter((r) => r !== UNKNOWN_REASON);
+  return named.length ? named.join(' · ') : undefined;
+}
+
+/**
+ * How the session ended, and the words "what got you through" files for it —
+ * the line 85D reads back. The stage the user ended on is what they were
+ * doing when it passed; a second read of "Gone" ends it before any stage, and
+ * a close past Reassess ends it with no stage at all, so neither claims one.
+ */
+type Ending = 'breathe' | 'tap' | 'odd' | 'wave' | 'clock' | 'gone' | 'closed';
+const HELPED: Record<Ending, string | undefined> = {
+  breathe: 'Breathing',
+  tap: 'Number tap',
+  odd: 'Odd one out',
+  wave: 'Waited out the timer',
+  clock: 'Waited out the timer',
+  gone: undefined,
+  closed: undefined,
+};
 
 /**
  * The First 90 Seconds, end to end. Behind `/urge` and `/rough-first90` both,
@@ -481,6 +533,14 @@ function stepForBoard(key: SosBoardKey): FlowStep {
  * `board` (mock builds only — `src/app/urge.tsx` passes it from `?board=`)
  * opens the flow on that response board, so the three boards no answer
  * reaches can be drawn and checked; everything after it runs as usual.
+ *
+ * The session (`src/lib/urgeSession.ts`, D461) is opened on mount and carries
+ * every answer as it is given, so an app killed mid-urge reopens on the board
+ * it stopped at — one reopen more on the same urge. Every way out ends it:
+ * the relief board, ✕, "I slipped".
+ *
+ * Only answers the user gave are written (D463): an unpicked strength, place
+ * or second read is left off the event, never filled with a default.
  */
 export function UrgeFlow({ board }: { board?: string } = {}) {
   const router = useRouter();
@@ -490,19 +550,14 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   /** The board `?board=` asked for — its step's answer until that step's picker is answered. */
   const [override, setOverride] = useState<SosBoardKey | undefined>(forced);
   const overrideAt = (at: FlowStep) => (override && stepForBoard(override) === at ? override : undefined);
-  const [band, setBand] = useState(3);
-  const [place, setPlace] = useState<UrgePlace>('private');
+  /** The first read, 0–4 — null until the user picks a bar. */
+  const [band, setBand] = useState<number | null>(null);
+  const [place, setPlace] = useState<UrgePlace | null>(null);
   /** Multi-select (D324): every pick, in the order made — read in canvas order. */
   const [reasons, setReasons] = useState<string[]>([]);
   const [feelings, setFeelings] = useState<string[]>([]);
-  /**
-   * The second read, once answered. Until then it is "Noticeable" (index 1, the
-   * frame's and the old default) — or the first read itself when that was
-   * fainter, so an untouched board never opens on "Rising" nor files a rise
-   * nobody reported (D254).
-   */
-  const [afterPick, setAfter] = useState<number | null>(null);
-  const after = afterPick ?? Math.min(1, band);
+  /** The second read, 0–4 on Reassess's own words — null until the user answers it. */
+  const [after, setAfter] = useState<number | null>(null);
   const [note, setNote] = useState('');
   /** How many times "Give me another" has been pressed on the feeling board. */
   const [roll, setRoll] = useState(0);
@@ -511,11 +566,16 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   /** The finished session's length, for the relief board's sentence. */
   const [lasted, setLasted] = useState(0);
-  const logged = useRef(false);
   // A lazy state initialiser, not `useRef(Date.now())`: the ref's initial value
   // is evaluated on every render, which makes the render impure.
   const [openedAt] = useState(() => Date.now());
-  const startedAt = useRef(openedAt);
+  /** The live session — null until storage has answered. */
+  const session = useRef<UrgeSession | null>(null);
+  const [sessionReady, setSessionReady] = useState(false);
+  /** The session is over — logged, closed or handed to the slip flow: nothing more is saved or written. */
+  const ended = useRef(false);
+  /** The user has moved: a stored session that answers late no longer jumps the flow. */
+  const moved = useRef(Boolean(forced));
   const step = FLOW[index];
 
   const reasonsOrdered = inCanvasOrder(TRIGGER_LABELS, reasons);
@@ -536,17 +596,53 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   const inSos = step === 'sos';
 
   useEffect(() => {
-    const session = newUrgeSession(bandToSeverity(band));
-    startedAt.current = session.startedAt;
-    void saveUrgeSession(session);
-    void getJSON<SosSettings>(SOS_SETTINGS_KEY).then((stored) => {
-      if (stored) setSettings({ ...DEFAULT_SOS_SETTINGS, ...stored });
+    let alive = true;
+    ended.current = false;
+    // The same urge, if one is live (the app was closed mid-urge): resumed on
+    // the board it stopped at, unless the user has already moved on.
+    void openUrgeSession('interrupt').then((s) => {
+      if (!alive || ended.current) return;
+      session.current = s;
+      const snap = s.flow;
+      const at = snap ? FLOW.indexOf(snap.step as FlowStep) : -1;
+      if (snap && !moved.current && at > 0 && FLOW[at] !== 'done') {
+        setBand(snap.band);
+        setPlace((PLACES.some((p) => p.key === snap.place) ? snap.place : null) as UrgePlace | null);
+        setReasons(snap.reasons);
+        setFeelings(snap.feelings);
+        setAfter(snap.after);
+        setNote(snap.note);
+        setIndex(at);
+      }
+      setSessionReady(true);
+    });
+    void readAccountJSON<Partial<SosSettings>>(SOS_SETTINGS_KEY).then((stored) => {
+      if (alive && stored) setSettings(readSosSettings(stored));
     });
     return () => {
-      void clearUrgeSession();
+      alive = false;
+      if (!ended.current) {
+        ended.current = true;
+        void clearUrgeSession();
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Every answer goes onto the session as it is given — what a reopen resumes.
+  useEffect(() => {
+    const s = session.current;
+    if (!sessionReady || !s || ended.current || step === 'done') return;
+    const next: UrgeSession = {
+      ...s,
+      severity: band != null ? bandToSeverity(band) : undefined,
+      flow: { step, band, place, reasons, feelings, after, note },
+    };
+    session.current = next;
+    void saveUrgeSession(next);
+  }, [sessionReady, step, band, place, reasons, feelings, after, note]);
+
+  /** `finish`, as the surf clock's tick sees it — the latest, not the one from when the clock started. */
+  const finishRef = useRef<(ending: Ending) => void>(() => {});
 
   useEffect(() => {
     if (!inSos) return;
@@ -554,21 +650,78 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     const tick = () => {
       const elapsed = (Date.now() - from) / 1000;
       const nextProgress = Math.min(1, elapsed / SURF_SECONDS);
+      const remaining = Math.max(0, Math.ceil(SURF_SECONDS - elapsed));
       surfProgressRef.current = nextProgress;
       setSurfProgress(nextProgress);
-      setSurfRemaining(Math.max(0, Math.ceil(SURF_SECONDS - elapsed)));
+      setSurfRemaining(remaining);
+      // The wave outlasts itself: at zero the session closes on the relief board.
+      if (remaining === 0) finishRef.current('clock');
     };
     tick();
     const clock = setInterval(tick, 250);
     return () => clearInterval(clock);
   }, [inSos]);
 
-  const close = () => {
+  /**
+   * Write the urge as ridden out, with only what the user gave, and end the
+   * session. The screen never waits for it (D465): the event settles in the
+   * background, and a refusal is reported in development rather than lost
+   * silently (FINDINGS F30). Returns the session's length, or 0 when it had
+   * already ended.
+   */
+  function logRide(ending: Ending): number {
+    if (ended.current) return 0;
+    ended.current = true;
+    const s = session.current;
+    const seconds = Math.max(1, Math.round((Date.now() - (s?.startedAt ?? openedAt)) / 1000));
+    const location = place ? PLACES.find((item) => item.key === place)?.label : undefined;
+    void createEvent({
+      type: 'urge_rode_out',
+      severity: band != null ? bandToSeverity(band) : undefined,
+      severityAfter: after != null ? bandToSeverity(after) : undefined,
+      // what 85C and 85D read back: how long the wave actually took
+      durationSeconds: seconds,
+      // what the trigger charts read (F4); the hub's chip, if this urge began there
+      trigger: triggerOf(reasonsOrdered) ?? s?.trigger,
+      whatHelped: HELPED[ending],
+      note: note.trim() || undefined,
+      reopens: s?.reopens ? s.reopens : undefined,
+      // the place, the feeling and every reason picked, as before (D251)
+      precedingState: { location, feeling, reasons: reasonsOrdered.length ? reasonsOrdered : undefined },
+    }).catch((error) => {
+      if (__DEV__) console.warn('urge_rode_out was not written', error);
+    });
+    void writeAccountJSON(ACCOUNT_KEYS.postPending, Date.now());
     void clearUrgeSession();
+    return seconds;
+  }
+
+  /** The relief board: the urge is logged and the screen moves on at once. */
+  function finish(ending: Ending) {
+    const seconds = logRide(ending);
+    if (!seconds) return;
+    setLasted(seconds);
+    setIndex(FLOW.indexOf('done'));
+  }
+
+  /**
+   * ✕. A user who has got past Reassess — or re-rated the urge, or written the
+   * note — has done the work, so closing logs what they gave (F4, D463);
+   * before that, closing just ends the session.
+   */
+  const close = () => {
+    if (!ended.current && (index > FLOW.indexOf('reassess') || after != null || note.trim() !== '')) logRide('closed');
+    if (!ended.current) {
+      ended.current = true;
+      void clearUrgeSession();
+    }
     if (router.canGoBack()) router.back();
     else router.replace('/(app)/today');
   };
-  const go = (to: (current: number) => number) => setIndex(to);
+  const go = (to: (current: number) => number) => {
+    moved.current = true;
+    setIndex(to);
+  };
   const next = () => go((current) => Math.min(FLOW.length - 1, current + 1));
   const back = () => go((current) => Math.max(0, current - 1));
   /** A picker answered: its branch's board is the answer's again, not `?board=`'s. */
@@ -585,40 +738,8 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       return first + ((current - first + 1) % MOVES.length);
     });
 
-  function finish() {
-    if (logged.current) return;
-    logged.current = true;
-    const seconds = Math.max(1, Math.round((Date.now() - startedAt.current) / 1000));
-    setLasted(seconds);
-    // Completion is a local interaction: the relief board never waits for the
-    // network; the event settles in the background.
-    setIndex(FLOW.indexOf('done'));
-    // The place, the feeling and what fed it go to `precedingState`, not to the
-    // event's own `trigger` (the trigger chart's vocabulary). Every reason
-    // picked is kept, in the picker's order; the feeling is the first picked,
-    // in the picker's order — the field holds one (D251).
-    void createEvent({
-      type: 'urge_rode_out',
-      severity: bandToSeverity(band),
-      severityAfter: bandToSeverity(after),
-      // what 85C and 85D read back: how long the wave actually took
-      durationSeconds: seconds,
-      note: note.trim() || undefined,
-      precedingState: {
-        location: PLACES.find((item) => item.key === place)?.label,
-        feeling,
-        reasons: reasonsOrdered.length ? reasonsOrdered : undefined,
-      },
-      /* A rejected mutation is how a missing `durationSeconds` argument once hid
-         (FINDINGS F30): the write must not block the screen, but it says what
-         it lost. */
-    }).catch((error) => {
-      if (__DEV__) console.warn('urge_rode_out was not written', error);
-    });
-    void setJSON('tideline.post.backondeck.pending', Date.now());
-  }
-
   function logSlip() {
+    ended.current = true;
     void clearUrgeSession();
     // Replace, not push, so the surf clock is unmounted rather than left
     // running beneath the slip flow. D147: `/slip`, the post-slip flow.
@@ -627,23 +748,36 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
 
   function saveSettings(nextSettings: SosSettings) {
     setSettings(nextSettings);
-    void setJSON(SOS_SETTINGS_KEY, nextSettings);
+    void writeAccountJSON(SOS_SETTINGS_KEY, nextSettings);
   }
 
   const advance = () => setSosStage((current) => Math.min(SOS_ORDER.length - 1, current + 1));
 
-  // The wave outlasts itself: at zero the session closes on the relief board.
+  /**
+   * Android's back: the board before this one, as the back chevrons do — the
+   * stage before this one inside the SOS — and out only from the first board
+   * or the last (F2, D462).
+   */
+  useStepBack(() => {
+    if (step === 'intro' || step === 'done') close();
+    else if (step === 'sos' && sosStage > 0) setSosStage((current) => current - 1);
+    else if (step === 'feeling-said') {
+      setRoll(0);
+      back();
+    } else back();
+  });
+
   useEffect(() => {
-    if (inSos && surfRemaining === 0) finish();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inSos, surfRemaining]);
+    finishRef.current = finish;
+  });
 
   const stage = SOS_ORDER[sosStage];
   const stageProps = {
     ctx: 'interrupt' as const,
     settings,
     onClose: close,
-    onEnd: finish,
+    // "Done" / "End early": what the user was doing when it passed is what got them through
+    onEnd: () => finish(stage),
     onDone: advance,
     onSlip: logSlip,
     dots: { count: SOS_ORDER.length, active: sosStage },
@@ -659,7 +793,7 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     case 'where':
       return <WherePage place={place} onPlace={answer(setPlace, 'place-said')} onBack={back} onClose={close} onNext={next} />;
     case 'place-said':
-      return <ResponsePage key="place" answer={overrideAt('place-said') ?? PLACE_BOARD[place]} onClose={close} onNext={next} onBack={back} />;
+      return <ResponsePage key="place" answer={overrideAt('place-said') ?? (place ? PLACE_BOARD[place] : 'SOS-Loc-Elsewhere')} onClose={close} onNext={next} onBack={back} />;
     case 'stand':
       return <MovePage index={0} onClose={close} onNext={next} onAnother={otherMove} />;
     case 'leave':
@@ -720,7 +854,17 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     case 'reassess':
       return <ReassessPage before={band} after={after} onAfter={setAfter} onBack={back} onClose={close} onNext={next} />;
     case 'afterward':
-      return <AfterwardPage note={note} onNote={setNote} onClose={close} onNext={next} />;
+      return (
+        <AfterwardPage
+          argument={reasonsOrdered.includes('An argument')}
+          note={note}
+          onNote={setNote}
+          onClose={close}
+          // a second read of "Gone" has nothing left to ride out: it ends here rather than
+          // sending the user through four exercises for an urge they said had passed (D464)
+          onNext={() => (after === 0 ? finish('gone') : next())}
+        />
+      );
     case 'sos':
       if (stage === 'breathe') return <BreatheStage {...stageProps} onSettings={() => setSettingsOpen(true)} />;
       if (stage === 'tap') return <TapStage {...stageProps} />;

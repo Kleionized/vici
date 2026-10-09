@@ -3,10 +3,42 @@
  * both of them, and the tests, reduce a package the same way.
  */
 
-import type { PurchasesOffering, PurchasesPackage } from 'react-native-purchases';
+import { Platform } from 'react-native';
+import type { PurchasesOffering, PurchasesPackage, PurchasesStoreProduct } from 'react-native-purchases';
 
 import { PLAN_KEYS, planForPackage, type PlanKey } from './catalogue';
 import type { Plan } from './types';
+
+/**
+ * Whether the customer may take a product's introductory offer. The adapter
+ * passes its answer from the store (D455); with none given, an offer the
+ * store lists is shown, which is only right where the store filters by
+ * eligibility itself.
+ */
+export type IntroEligible = (productId: string) => boolean;
+
+const ANY: IntroEligible = () => true;
+
+/**
+ * A length as copy counts it: "1 week", "3 days". `unitLabel` and
+ * `periodLabel` give a bare noun for one unit ("week"), which reads right after
+ * "/" or "a" but not as a length ("Week free", "$0.99 for month").
+ */
+export function counted(label: string): string {
+  return !label || /^\d/.test(label) ? label : `1 ${label}`;
+}
+
+/** A product's intro offer as a screen reads it, or null when there is none or the customer cannot take it. */
+function introOf(product: PurchasesStoreProduct, eligible: IntroEligible): Plan['intro'] {
+  const intro = product.introPrice;
+  if (!intro || !eligible(product.identifier)) return null;
+  return {
+    priceString: intro.priceString,
+    periodLabel: counted(unitLabel(intro.periodUnit, intro.periodNumberOfUnits) ?? periodLabel(intro.period) ?? ''),
+    isFree: intro.price === 0,
+    days: introDays(intro.periodUnit, intro.periodNumberOfUnits),
+  };
+}
 
 /** "/year" · "/month" · "/week" — and "" for a lifetime purchase. */
 export function cycleLabel(key: PlanKey, subscriptionPeriod: string | null | undefined): string {
@@ -42,34 +74,26 @@ export function unitLabel(periodUnit: string | null | undefined, units: number):
 }
 
 /** Reduce one RevenueCat package to a `Plan`, or null if it is not one of ours. */
-export function planFromPackage(pkg: PurchasesPackage): Plan | null {
+export function planFromPackage(pkg: PurchasesPackage, eligible: IntroEligible = ANY): Plan | null {
   const key = planForPackage(pkg);
   if (!key) return null;
   const product = pkg.product;
-  const intro = product.introPrice;
   return {
     key,
     pkg,
     priceString: product.priceString,
     pricePerMonthString: product.pricePerMonthString ?? null,
     cycle: cycleLabel(key, product.subscriptionPeriod),
-    intro: intro
-      ? {
-          priceString: intro.priceString,
-          periodLabel: unitLabel(intro.periodUnit, intro.periodNumberOfUnits) ?? periodLabel(intro.period) ?? '',
-          isFree: intro.price === 0,
-          days: introDays(intro.periodUnit, intro.periodNumberOfUnits),
-        }
-      : null,
+    intro: introOf(product, eligible),
   };
 }
 
 /** Every plan in an offering, in catalogue order, duplicates dropped. */
-export function plansFromOffering(offering: PurchasesOffering | null): Plan[] {
+export function plansFromOffering(offering: PurchasesOffering | null, eligible: IntroEligible = ANY): Plan[] {
   if (!offering) return [];
   const found = new Map<PlanKey, Plan>();
   for (const pkg of offering.availablePackages) {
-    const plan = planFromPackage(pkg);
+    const plan = planFromPackage(pkg, eligible);
     if (plan && !found.has(plan.key)) found.set(plan.key, plan);
   }
   return PLAN_KEYS.map((key) => found.get(key)).filter((p): p is Plan => !!p);
@@ -113,9 +137,8 @@ const TYPE_NAME: Record<string, string> = {
   WEEKLY: 'Weekly',
 };
 
-export function describePackage(pkg: PurchasesPackage): PackageView {
+export function describePackage(pkg: PurchasesPackage, eligible: IntroEligible = ANY): PackageView {
   const product = pkg.product;
-  const intro = product.introPrice;
   const isLifetime = pkg.packageType === 'LIFETIME' || !product.subscriptionPeriod;
   const period = periodLabel(product.subscriptionPeriod);
   return {
@@ -128,14 +151,7 @@ export function describePackage(pkg: PurchasesPackage): PackageView {
     cycle: isLifetime ? '' : period ? `/${period}` : '',
     pricePerMonthString: isLifetime ? null : (product.pricePerMonthString ?? null),
     pricePerMonth: isLifetime ? null : (product.pricePerMonth ?? null),
-    intro: intro
-      ? {
-          priceString: intro.priceString,
-          periodLabel: unitLabel(intro.periodUnit, intro.periodNumberOfUnits) ?? periodLabel(intro.period) ?? '',
-          isFree: intro.price === 0,
-          days: introDays(intro.periodUnit, intro.periodNumberOfUnits),
-        }
-      : null,
+    intro: isLifetime ? null : introOf(product, eligible),
     isLifetime,
   };
 }
@@ -145,8 +161,8 @@ export function describePackage(pkg: PurchasesPackage): PackageView {
  * order is a remote control over the paywall, so it is preserved rather than
  * sorted here.
  */
-export function viewsFromOffering(offering: PurchasesOffering | null): PackageView[] {
-  return (offering?.availablePackages ?? []).map(describePackage);
+export function viewsFromOffering(offering: PurchasesOffering | null, eligible: IntroEligible = ANY): PackageView[] {
+  return (offering?.availablePackages ?? []).map((pkg) => describePackage(pkg, eligible));
 }
 
 /**
@@ -157,4 +173,44 @@ export function bestValueId(views: PackageView[]): string | null {
   const priced = views.filter((v) => typeof v.pricePerMonth === 'number');
   if (priced.length < 2) return null;
   return priced.reduce((a, b) => ((b.pricePerMonth as number) < (a.pricePerMonth as number) ? b : a)).id;
+}
+
+// ── the renewal terms ────────────────────────────────────────────────
+/** Where a subscriber cancels on this platform, as the store calls it. */
+export function cancelPlace(): string {
+  return Platform.OS === 'android' ? 'Google Play' : 'Settings';
+}
+
+/**
+ * The one line under the plans that App Store 3.1.2 asks for: what the plan
+ * charges, that it renews, and where it stops (D452). Built from the store's
+ * own price, cycle and the customer's own intro offer, so it never states a
+ * figure the store sheet will not.
+ *
+ *   Renews automatically at $39.99/year until cancelled in Settings.
+ *   3 days free, then $39.99/year. Renews automatically until cancelled in Settings.
+ *   $0.99 for 1 month, then $39.99/year. Renews automatically until cancelled in Settings.
+ *   One payment. Nothing renews.
+ */
+export function renewalTerms(p: { priceString: string; cycle: string; isLifetime?: boolean; intro?: Plan['intro'] | null }): string {
+  if (p.isLifetime || !p.cycle) return 'One payment. Nothing renews.';
+  const place = cancelPlace();
+  const then = `${p.priceString}${p.cycle}`;
+  if (p.intro) {
+    // counted again here, as this is the legal line and takes any intro it is handed
+    const length = counted(p.intro.periodLabel);
+    const opener = p.intro.isFree
+      ? length
+        ? `${length} free`
+        : 'Free to start'
+      : length
+        ? `${p.intro.priceString} for ${length}`
+        : p.intro.priceString;
+    return `${capitalise(opener)}, then ${then}. Renews automatically until cancelled in ${place}.`;
+  }
+  return `Renews automatically at ${then} until cancelled in ${place}.`;
+}
+
+function capitalise(s: string): string {
+  return s ? s[0].toUpperCase() + s.slice(1) : s;
 }

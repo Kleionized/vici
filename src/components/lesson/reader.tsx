@@ -54,6 +54,14 @@ const SERIF = Platform.select({
 const wrapOf = (wrap?: string) => (Platform.OS === 'web' ? ({ textWrap: wrap ?? 'wrap' } as unknown as TextStyle) : null);
 
 /** A run of copy, at the ramp its frame states. */
+/**
+ * The course's copy names the app's number by its old name in one place (L83,
+ * "Did the recovery score change?"); the app calls it the recovery rating
+ * everywhere (D517). Rewritten at render time, as `LessonPages`' complete line
+ * is, so the generated reader stays as the bundle wrote it.
+ */
+const renamed = (s: string) => s.replace('the recovery score', 'the recovery rating');
+
 export function Run({ r, s }: { r: number; s: string }) {
   const ramp = READER_RAMPS[r];
   if (!ramp) return null;
@@ -75,7 +83,7 @@ export function Run({ r, s }: { r: number; s: string }) {
         // eyebrow and the helper, which state none at all.
         wrapOf(ramp.wrap),
       ]}>
-      {s}
+      {renamed(s)}
     </AppText>
   );
 }

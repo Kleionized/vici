@@ -324,7 +324,16 @@ function TaskEnd({ page }: { page: Extract<LessonPage, { k: 'taskEnd' }> }) {
   );
 }
 
-function Complete({ line }: { line: string }) {
+/**
+ * Thirty-two lessons' complete line says the answers are "saved to the log";
+ * no log shows them. They are kept with the lesson and shown again when it is
+ * reopened (L11), so the line says that — same place, same type.
+ */
+const SAVED_TO_LOG = 'Your answers are saved to the log.';
+const SAVED_WITH_LESSON = 'Your answers are kept with this lesson.';
+
+function Complete({ line: drawn }: { line: string }) {
+  const line = drawn.replace(SAVED_TO_LOG, SAVED_WITH_LESSON);
   return (
     <>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>

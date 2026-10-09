@@ -1,7 +1,8 @@
-import { useRouter } from 'expo-router';
+import { Redirect, useRouter } from 'expo-router';
 import { View } from 'react-native';
 
 import { MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
+import { FORCE_MOCK } from '@/lib/config';
 import { toDateKey } from '@/lib/date';
 import { latestCompletedWeek, mondayOf } from '@/lib/weeklyReport';
 import { useCurrentUser } from '@/lib/backend';
@@ -25,7 +26,20 @@ import { mono } from '@/lib/theme';
 
 type Entry = { title: string; detail?: string; to: string };
 
+/**
+ * The drawer exists for the preview and development builds only — the same
+ * rule as its long-press door (`DRAWER_DOOR`, TabBar.tsx). A release build
+ * still registers the route, so a `tideline://all` link would have opened it;
+ * there it goes to `/` instead (U2, D483).
+ */
+const DRAWER_OPEN = FORCE_MOCK || __DEV__;
+
 export default function All() {
+  if (!DRAWER_OPEN) return <Redirect href="/" />;
+  return <AllDrawer />;
+}
+
+function AllDrawer() {
   const router = useRouter();
   const user = useCurrentUser();
   const back = () => (router.canGoBack() ? router.back() : router.navigate('/(app)/today'));
@@ -69,12 +83,12 @@ export default function All() {
       'Looking back',
       [
         { title: 'The log', to: '/(app)/log' },
-        { title: 'Recovery score', to: '/score' },
+        { title: 'Recovery rating', to: '/score' },
         { title: 'Insights', detail: 'Mood, urges, triggers', to: '/(app)/dashboard' },
         { title: 'Urge overview', detail: 'The week, three ways', to: '/urge-overview' },
         { title: 'Weekly report', to: `/weekly-report?week=${week}` },
         { title: 'Report ready', detail: 'The arrival card', to: `/report-ready?week=${week}` },
-        { title: 'Past pledges', to: '/(app)/journal' },
+        { title: 'Journal', detail: 'Pledges, vows, reflections, letters', to: '/(app)/journal' },
         { title: 'Write a pledge', to: '/journal-new' },
         { title: 'Search', to: '/search' },
       ],
@@ -136,7 +150,7 @@ export default function All() {
     [
       'Before the app',
       [
-        { title: 'Cold open', detail: 'Splash · finding the waterline', to: '/' },
+        { title: 'Cold open', detail: 'Splash · opening VICI', to: '/' },
         { title: 'Sign in', to: '/(auth)/sign-in' },
         { title: 'Create account', to: '/(auth)/sign-up' },
         { title: 'Welcome back', detail: 'The returning door', to: '/(auth)/welcome-back' },

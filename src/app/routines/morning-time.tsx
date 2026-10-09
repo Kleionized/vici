@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 
 import { CheckinTimeBoard, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
+import { syncCheckinReminders } from '@/lib/reminders';
 import { useRoutines, useSaveRoutines, type TimeOfDay } from '@/lib/routines';
 
 /** `Morning Check-in Time` (19B). */
@@ -31,6 +32,8 @@ export default function MorningTime() {
   const next = async () => {
     await save({ morning: time });
     await saveCheckinDays('morning', days);
+    // the reminders follow the new time and days (a no-op while they are off)
+    void syncCheckinReminders();
     if (fromSettings) return back();
     router.push('/routines/night-time');
   };

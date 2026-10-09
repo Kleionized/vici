@@ -7,13 +7,21 @@
  */
 
 import { toDateKey } from '@/lib/date';
+import { addDays, calendarDaysBetween, dayMood, isCheckin, isSlip, isSurfed, keyToDate, MOOD_WORDS, programmeStartMs, shiftKey, type ProgrammeStart } from '@/lib/day';
 import { dateRange } from '@/lib/format';
-import { SCORE_BASE, SCORE_WEIGHTS } from '@/lib/score';
+import { ratingThrough, type RatingInput } from '@/lib/score';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
 
-const DAY = 86_400_000;
+/** The one mood word list (`src/lib/day.ts`), under the name this module always exported. */
+export const MOOD_NAME: readonly string[] = MOOD_WORDS;
 
-export const MOOD_NAME = ['Low', 'Down', 'Fine', 'Good', 'Radiant'];
+/**
+ * The programme's first week makes a report only if at least this many of its
+ * days were lived (a Monday–Thursday start). A later start waits for the
+ * first full week rather than delivering a "weekly" report built on an
+ * evening or two.
+ */
+export const FIRST_WEEK_MIN_DAYS = 4;
 
 /** The Monday (00:00 local) of the week containing `d`. */
 export function mondayOf(d: Date): Date {
@@ -24,18 +32,31 @@ export function mondayOf(d: Date): Date {
   return x;
 }
 
-/** Monday keys for every fully-completed week from account start to now, newest first. */
-export function completedWeekStarts(createdAt: number, now = Date.now()): string[] {
-  const firstMon = mondayOf(new Date(createdAt)).getTime();
-  const currentMon = mondayOf(new Date(now)).getTime();
+/**
+ * Monday keys for every completed week of the programme, newest first. Weeks
+ * step back by the calendar (`setDate`), so a clock change cannot turn a
+ * Monday into the Sunday before it. The week the programme began in counts
+ * only when it held `FIRST_WEEK_MIN_DAYS` programme days.
+ */
+export function completedWeekStarts(start: ProgrammeStart, now = Date.now()): string[] {
+  const first = programmeStartMs(start);
+  if (first == null) return [];
+  const firstMon = mondayOf(new Date(first));
+  const livedInFirst = 7 - calendarDaysBetween(firstMon, first);
+  if (livedInFirst < FIRST_WEEK_MIN_DAYS) firstMon.setDate(firstMon.getDate() + 7);
   const out: string[] = [];
-  for (let t = currentMon - 7 * DAY; t >= firstMon; t -= 7 * DAY) out.push(toDateKey(new Date(t)));
+  const cursor = mondayOf(new Date(now));
+  cursor.setDate(cursor.getDate() - 7);
+  while (cursor.getTime() >= firstMon.getTime()) {
+    out.push(toDateKey(cursor));
+    cursor.setDate(cursor.getDate() - 7);
+  }
   return out;
 }
 
-/** The most recent completed week's Monday key, or null if the account is < 1 week old. */
-export function latestCompletedWeek(createdAt: number, now = Date.now()): string | null {
-  return completedWeekStarts(createdAt, now)[0] ?? null;
+/** The most recent completed week's Monday key, or null before the first one closes. */
+export function latestCompletedWeek(start: ProgrammeStart, now = Date.now()): string | null {
+  return completedWeekStarts(start, now)[0] ?? null;
 }
 
 /**
@@ -44,10 +65,8 @@ export function latestCompletedWeek(createdAt: number, now = Date.now()): string
  * this one label.
  */
 export function weekLabel(weekStartKey: string): string {
-  const start = new Date(`${weekStartKey}T00:00:00`);
-  const end = new Date(start);
-  end.setDate(start.getDate() + 6);
-  return dateRange(start, end);
+  const start = keyToDate(weekStartKey);
+  return dateRange(start, addDays(start, 6));
 }
 
 export interface WeeklyReport {
@@ -67,21 +86,28 @@ export interface WeeklyReport {
   lateNightUrges: number;
 }
 
+/**
+ * A closed week, read off the log. The day's mood is the morning's reading,
+ * else the night's (`dayMood`); a check-in is a row with check-in content; a
+ * relapse is either kind of slip.
+ */
 export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[], events: TidelineEvent[]): WeeklyReport {
-  const startMs = new Date(`${weekStartKey}T00:00:00`).getTime();
-  const prevMs = startMs - 7 * DAY;
-  const keys = (base: number) => Array.from({ length: 7 }, (_, i) => toDateKey(new Date(base + i * DAY)));
-  const moodBy = new Map(checkins.filter((c) => c.mood != null).map((c) => [c.date, c.mood as number]));
-  const thisMoods = keys(startMs).map((k) => moodBy.get(k) ?? null);
-  const lastMoods = keys(prevMs).map((k) => moodBy.get(k) ?? null);
+  const start = keyToDate(weekStartKey);
+  const prev = addDays(start, -7);
+  const end = addDays(start, 7).getTime();
+  const keys = (base: Date) => Array.from({ length: 7 }, (_, i) => toDateKey(addDays(base, i)));
+  const rows = checkins.filter(isCheckin);
+  const moodBy = new Map(rows.filter((c) => dayMood(c) != null).map((c) => [c.date, dayMood(c) as number]));
+  const thisKeys = keys(start);
+  const thisMoods = thisKeys.map((k) => moodBy.get(k) ?? null);
+  const lastMoods = keys(prev).map((k) => moodBy.get(k) ?? null);
 
   const mean = (a: (number | null)[]) => {
     const v = a.filter((x): x is number => x != null);
     return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
   };
-  const inWeek = (t: number, base: number) => t >= base && t < base + 7 * DAY;
-  const evThis = events.filter((e) => inWeek(e.createdAt, startMs));
-  const evLast = events.filter((e) => inWeek(e.createdAt, prevMs));
+  const evThis = events.filter((e) => e.createdAt >= start.getTime() && e.createdAt < end);
+  const evLast = events.filter((e) => e.createdAt >= prev.getTime() && e.createdAt < start.getTime());
   const isUrge = (e: TidelineEvent) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on';
   const sevMean = (evs: TidelineEvent[]) => {
     const s = evs.filter(isUrge).map((e) => e.severity).filter((x): x is number => x != null);
@@ -95,6 +121,7 @@ export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[]
     }).length;
 
   const label = weekLabel(weekStartKey);
+  const week = new Set(thisKeys);
 
   return {
     weekStart: weekStartKey,
@@ -103,15 +130,33 @@ export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[]
     lastMoods,
     thisAvg: mean(thisMoods),
     lastAvg: mean(lastMoods),
-    checkins: thisMoods.filter((m) => m != null).length,
+    checkins: rows.filter((c) => week.has(c.date)).length,
     urges: evThis.filter(isUrge).length,
     urgesLast: evLast.filter(isUrge).length,
-    relapses: evThis.filter((e) => e.type === 'lapse').length,
-    relapsesLast: evLast.filter((e) => e.type === 'lapse').length,
+    relapses: evThis.filter(isSlip).length,
+    relapsesLast: evLast.filter(isSlip).length,
     avgSeverity: sevMean(evThis),
     avgSeverityLast: sevMean(evLast),
     lateNightUrges,
   };
+}
+
+/**
+ * Whether the launch gate delivers a closed week's report: the week holds
+ * something the user did — a check-in, an urge or slip logged, a lesson
+ * finished. The report screen draws the rating, the days and the urges for any
+ * lived week, so a week of urge logs with no mood is delivered too; a week
+ * with nothing in it is not announced.
+ */
+export function weekHasRecords(weekStartKey: string, checkins: DailyCheckin[], events: TidelineEvent[], lessons: readonly number[] = []): boolean {
+  const start = keyToDate(weekStartKey).getTime();
+  const end = addDays(start, 7).getTime();
+  const lastKey = toDateKey(addDays(start, 6));
+  return (
+    checkins.some((c) => isCheckin(c) && c.date >= weekStartKey && c.date <= lastKey) ||
+    events.some((e) => e.createdAt >= start && e.createdAt < end) ||
+    lessons.some((t) => t >= start && t < end)
+  );
 }
 
 /**
@@ -140,65 +185,50 @@ export function severityWord(s: number | null): string | null {
 // ── the Vici Overhaul register (logs group, additive) ───────────────────────
 
 /**
- * The score as it stood at a moment, on the weights Today's card uses — every
- * register that prints a week's score (the Log's Reports, the weekly report's
- * line) reads this one function, so "1,240 · +12 this week" is the same number
- * on both screens (D284). `lessons` are the completion times of finished lessons.
+ * The recovery rating as a day closed (`ratingThrough`, src/lib/score.ts):
+ * the seven days ending on `day`. Every register that prints a week's rating
+ * — the Log's Reports, the weekly report's line — reads this one function, so
+ * "86 · +12 this week" is the same number on both screens (D284, D515).
  */
-export function scoreAt(at: number, createdAt: number, checkins: DailyCheckin[], events: TidelineEvent[], lessons: number[]): number {
-  const days = Math.max(0, Math.floor((at - createdAt) / DAY) + 1);
-  const slips = events.filter((e) => e.type === 'lapse' && e.createdAt <= at).length;
-  const rode = events.filter((e) => e.type === 'urge_rode_out' && e.createdAt <= at).length;
-  const logged = checkins.filter((c) => new Date(`${c.date}T00:00:00`).getTime() <= at).length;
-  const done = lessons.filter((t) => t <= at).length;
-  return (
-    SCORE_BASE +
-    Math.max(0, days - slips) * SCORE_WEIGHTS.cleanDay +
-    logged * SCORE_WEIGHTS.checkin +
-    done * SCORE_WEIGHTS.lesson +
-    rode * SCORE_WEIGHTS.urgeRidden +
-    slips * SCORE_WEIGHTS.slip
-  );
+export function ratingAt(day: string | number, input: RatingInput): number {
+  return ratingThrough(input, day).value;
 }
 
-export interface WeekScore {
+export interface WeekRating {
   weekStart: string;
-  /** the score at the end of each of the seven days, Monday first */
+  /** the rating as each of the seven days closed, Monday first */
   days: number[];
-  /** the score the week closed on */
-  score: number;
+  /** the rating the week closed on (its Sunday) */
+  rating: number;
   /** what the week moved it by, against the Sunday before */
   delta: number;
 }
 
-/** A week's line and its total, read off `scoreAt` at each day's end. */
-export function weekScore(weekStartKey: string, createdAt: number, checkins: DailyCheckin[], events: TidelineEvent[], lessons: number[]): WeekScore {
-  const start = new Date(`${weekStartKey}T00:00:00`).getTime();
-  const base = scoreAt(start - 1, createdAt, checkins, events, lessons);
-  const days = Array.from({ length: 7 }, (_, i) => scoreAt(new Date(start).setDate(new Date(start).getDate() + i + 1) - 1, createdAt, checkins, events, lessons));
-  return { weekStart: weekStartKey, days, score: days[6], delta: Math.round(days[6] - base) };
+/** A week's line and its close, read off `ratingAt` at each day's end. */
+export function weekRating(weekStartKey: string, input: RatingInput): WeekRating {
+  const before = ratingAt(shiftKey(weekStartKey, -1), input);
+  const days = Array.from({ length: 7 }, (_, i) => ratingAt(shiftKey(weekStartKey, i), input));
+  return { weekStart: weekStartKey, days, rating: days[6], delta: days[6] - before };
 }
 
 /** How a day of a report week went (Weekly Report — Days). */
 export type DayStatus = 'clean' | 'ridden' | 'slip' | 'none';
 
-const isSlipEvent = (e: TidelineEvent) => e.type === 'lapse' || e.type === 'urge_acted_on';
-
 /**
  * The seven days of a week, Monday first: `slip` — a lapse or an urge that
  * ended in one; `ridden` — an urge ridden out and no slip; `clean` — neither;
- * `none` — a day before the account existed or after `now`.
+ * `none` — a day before the programme began or after `now`.
  */
-export function dayStatuses(weekStartKey: string, events: TidelineEvent[], createdAt: number, now = Date.now()): DayStatus[] {
-  const start = new Date(`${weekStartKey}T00:00:00`);
-  const firstDay = new Date(createdAt).setHours(0, 0, 0, 0);
+export function dayStatuses(weekStartKey: string, events: TidelineEvent[], start: ProgrammeStart, now = Date.now()): DayStatus[] {
+  const monday = keyToDate(weekStartKey);
+  const firstDay = programmeStartMs(start) ?? -Infinity;
   return Array.from({ length: 7 }, (_, i) => {
-    const from = new Date(start).setDate(start.getDate() + i);
-    const to = new Date(start).setDate(start.getDate() + i + 1);
+    const from = addDays(monday, i).getTime();
+    const to = addDays(monday, i + 1).getTime();
     if (to <= firstDay || from > now) return 'none';
     const day = events.filter((e) => e.createdAt >= from && e.createdAt < to);
-    if (day.some(isSlipEvent)) return 'slip';
-    if (day.some((e) => e.type === 'urge_rode_out')) return 'ridden';
+    if (day.some(isSlip)) return 'slip';
+    if (day.some(isSurfed)) return 'ridden';
     return 'clean';
   });
 }

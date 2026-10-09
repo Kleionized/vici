@@ -18,8 +18,9 @@ import {
 import { useAuth } from '@/lib/auth';
 import { CURRICULUM_LESSONS } from '@/lib/curriculum';
 import { todayKey } from '@/lib/date';
+import { isDateKey } from '@/lib/day';
 import { genId } from '@/lib/id';
-import { getJSON, setJSON } from '@/lib/storage';
+import { getJSON, removeKey, setJSON } from '@/lib/storage';
 import {
   DEFAULT_SETTINGS,
   type AppUser,
@@ -50,7 +51,7 @@ interface MockStoreValue {
   hydrated: boolean;
   lessons: Lesson[];
   data: UserData | null;
-  completeOnboarding(): Promise<void>;
+  completeOnboarding(opts?: { programmeStartedAt?: string }): Promise<void>;
   updateSettings(partial: Partial<UserSettings>): Promise<void>;
   updateProfile(displayName: string): Promise<void>;
   startLesson(slug: string): Promise<void>;
@@ -62,6 +63,8 @@ interface MockStoreValue {
   createJournalEntry(input: JournalEntryInput): Promise<JournalEntry>;
   updateJournalEntry(id: string, input: JournalEntryInput): Promise<void>;
   deleteJournalEntry(id: string): Promise<void>;
+  /** Account deletion: erase the signed-in user's whole record from the device. */
+  deleteAllData(): Promise<void>;
 }
 
 const MockStoreContext = createContext<MockStoreValue | null>(null);
@@ -132,11 +135,17 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     [userId],
   );
 
-  const completeOnboarding = useCallback(async () => {
-    const cur = dataRef.current;
-    if (!cur) return;
-    await apply({ ...cur, user: { ...cur.user, onboardingComplete: true } });
-  }, [apply]);
+  // As `users:completeOnboarding`: the phone's local date becomes Day 1, and a
+  // start already recorded is never moved.
+  const completeOnboarding = useCallback(
+    async (opts?: { programmeStartedAt?: string }) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      const start = !cur.user.programmeStartedAt && isDateKey(opts?.programmeStartedAt) ? opts?.programmeStartedAt : undefined;
+      await apply({ ...cur, user: { ...cur.user, onboardingComplete: true, ...(start ? { programmeStartedAt: start } : {}) } });
+    },
+    [apply],
+  );
 
   const updateSettings = useCallback(
     async (partial: Partial<UserSettings>) => {
@@ -292,6 +301,13 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     [apply],
   );
 
+  const deleteAllData = useCallback(async () => {
+    if (!userId) return;
+    dataRef.current = null;
+    setData(null);
+    await removeKey(dataKey(userId));
+  }, [userId]);
+
   const value: MockStoreValue = {
     hydrated,
     lessons: CURRICULUM_LESSONS,
@@ -308,6 +324,7 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     createJournalEntry,
     updateJournalEntry,
     deleteJournalEntry,
+    deleteAllData,
   };
 
   return <MockStoreContext.Provider value={value}>{children}</MockStoreContext.Provider>;

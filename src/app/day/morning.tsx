@@ -1,15 +1,16 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { View } from 'react-native';
 
-import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard, dayNumber } from '@/components/day/board';
-import { dayAction } from '@/components/day/kit';
+import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard } from '@/components/day/board';
+import { dayStep } from '@/components/day/kit';
 import { lessonForDay } from '@/content/curriculum84';
 import {
   EnergyBars,
   GhostLink,
   Grid2,
   Hero,
+  LoadingView,
   MonoText,
   NavBar,
   NextFab,
@@ -23,9 +24,10 @@ import {
   ToneScale,
 } from '@/components/mono';
 import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
-import { toDateKey, todayKey } from '@/lib/date';
-import { countOf, groupDigits, roman } from '@/lib/format';
-import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
+import { toDateKey } from '@/lib/date';
+import { ENERGY_WORDS, MOOD_WORDS, isSlip, isSurfed, keyToDate, programmeDay, shiftKey } from '@/lib/day';
+import { countOf, roman } from '@/lib/format';
+import { lessonCompletions, ratingThrough, type RatingInput } from '@/lib/score';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
@@ -49,23 +51,17 @@ const DONE = 6;
 /** Steps the dashes count: TASK … PLEDGE. */
 const RAIL = 5;
 
-/** What the mood discs read back. The canvas draws the third rung. */
-const MOOD_READ: [string, string][] = [
-  ['Rough', 'Start slow'],
-  ['Low', 'Not much in reserve'],
-  ['Steady', 'On level ground'],
-  ['Good', 'Steady and clear'],
-  ['Great', 'Ready for it'],
-];
+/**
+ * What the mood discs read back: the one mood word list every screen names a
+ * reading by (`MOOD_WORDS`), and this question's own second lines. The canvas
+ * draws the third rung.
+ */
+const MOOD_LINES = ['Start slow', 'Not much in reserve', 'On level ground', 'Steady and clear', 'Ready for it'];
+const MOOD_READ: [string, string][] = MOOD_WORDS.map((w, i) => [w, MOOD_LINES[i]]);
 
-/** What the energy meter reads back. The canvas draws the second bar. */
-const ENERGY_READ: [string, string][] = [
-  ['Empty', 'Ask little of yourself'],
-  ['Low', 'Still warming up'],
-  ['Enough', 'Steady pace'],
-  ['Good', 'Room to push'],
-  ['Full', 'Use it'],
-];
+/** What the energy meter reads back (`ENERGY_WORDS`). The canvas draws the second bar. */
+const ENERGY_LINES = ['Ask little of yourself', 'Still warming up', 'Steady pace', 'Room to push', 'Use it'];
+const ENERGY_READ: [string, string][] = ENERGY_WORDS.map((w, i) => [w, ENERGY_LINES[i]]);
 
 const ANSWERS = ['Yes', 'Not yet'] as const;
 type Answer = (typeof ANSWERS)[number];
@@ -90,25 +86,33 @@ export default function Morning() {
   const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
 
-  const day = dayNumber(user?.createdAt);
+  // The day is fixed when the check-in opens, so one finished after midnight
+  // still files where it began.
+  const [openedAt] = useState(() => Date.now());
+  const day = programmeDay(user, openedAt);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  // Yesterday's ledger, read out of the log rather than from a placeholder.
-  const midnight = new Date().setHours(0, 0, 0, 0);
-  const dawn = midnight - 86_400_000;
+  // Yesterday's ledger, read out of the log rather than from a placeholder —
+  // on the calendar, so a clock change cannot make "yesterday" Saturday.
+  const todayKey = toDateKey(new Date(openedAt));
+  const yesterdayKey = shiftKey(todayKey, -1);
+  const midnight = keyToDate(todayKey).getTime();
+  const dawn = keyToDate(yesterdayKey).getTime();
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
+  const yesterdayRow = (checkins ?? []).find((c) => c.date === yesterdayKey);
 
   // The action the flow asks after, read off yesterday's check-in row so it never
   // invents an action the user was never actually given. When the row names
   // none, yesterday's Today showed that day's lesson task (`cardSummary`, D339),
-  // so that is what the morning asks after; past the course, the generic list.
-  const yesterdayTask =
-    (checkins ?? []).find((c) => c.date === toDateKey(new Date(dawn)))?.dailyAction ??
-    lessonForDay(day - 1)?.task.cardSummary ??
-    dayAction(Math.max(1, day - 1));
+  // so that is what the morning asks after; past the course, the step Today
+  // showed (the one list Today and the night read too).
+  const yesterdayTask = yesterdayRow?.dailyAction ?? lessonForDay(day - 1)?.task.cardSummary ?? dayStep(Math.max(1, day - 1)).caption;
 
-  const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && yesterday(e.createdAt));
-  const lapses = (events ?? []).filter((e) => e.type === 'lapse' && yesterday(e.createdAt)).length;
+  const yesterdays = (events ?? []).filter((e) => yesterday(e.createdAt));
+  // surfed is ridden out; an urge acted on is a slip, never "surfed"
+  const surfed = yesterdays.filter(isSurfed).length;
+  const urgesLogged = yesterdays.some((e) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on');
+  const lapses = yesterdays.filter(isSlip).length;
   const signedPledge = (journal ?? []).find((entry) => entry.tag === 'Pledge' && yesterday(entry.createdAt));
   const finished = (lessons ?? []).find((lesson) => {
     const at = progress?.[lesson.slug]?.completedAt;
@@ -118,28 +122,42 @@ export default function Morning() {
   // The standing pledge — the latest `Pledge` entry, the words Today p3 prints.
   // A draft written in the sheet stands in until it is signed.
   const standing = standingPledge(journal);
-  const pledgeBody = draft ?? (pledgeText(standing) || 'The mornings are mine again.');
+  // With no pledge of the user's own yet, the step asks for one instead of
+  // putting the design's sample line in their mouth (P3).
+  const pledgeBody = draft ?? pledgeText(standing);
+  const hasPledge = pledgeBody.trim() !== '';
 
-  // The score row shows what yesterday alone put on the board, on the same
-  // weights the score itself is built from.
-  const score = buildScore(checkins ?? [], events ?? [], Object.values(progress ?? {}).filter((p) => p.status === 'completed').length, user?.createdAt);
-  const gained =
-    (lapses ? 0 : SCORE_WEIGHTS.cleanDay) +
-    ((checkins ?? []).some((c) => c.date === toDateKey(new Date(dawn))) ? SCORE_WEIGHTS.checkin : 0) +
-    (finished ? SCORE_WEIGHTS.lesson : 0) +
-    urges.filter((e) => e.type === 'urge_rode_out').length * SCORE_WEIGHTS.urgeRidden +
-    lapses * SCORE_WEIGHTS.slip;
+  // The rating row: the recovery rating as yesterday closed (the seven days
+  // ending yesterday — what Today shows until today is checked in) and what
+  // yesterday moved it by, against the day before (src/lib/score.ts, D514).
+  const ratingInput: RatingInput = { checkins: checkins ?? [], events: events ?? [], lessons: lessonCompletions(progress), start: user };
+  const rating = ratingThrough(ratingInput, yesterdayKey).value;
+  const moved = rating - ratingThrough(ratingInput, shiftKey(yesterdayKey, -1)).value;
 
-  async function finish() {
-    // The upsert merges, so only what this flow asked for is written.
-    await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1 }).catch(() => {});
-    // The answer about yesterday's action belongs to yesterday's row.
-    if (yesterdayDone !== undefined) {
-      await upsert({ date: toDateKey(new Date(dawn)), dailyActionDone: yesterdayDone }).catch(() => {});
-    }
+  /**
+   * Done (and the closing ✕) file the check-in once (D2, D499): a second tap
+   * while the writes are out does nothing. The screen closes at once and the
+   * writes settle behind it, in order — on a slow or absent connection Convex
+   * holds them until it is back, and Done no longer sits there looking dead.
+   */
+  const saving = useRef(false);
+  function finish() {
+    if (saving.current) return;
+    saving.current = true;
     // Re-signing files today's promise; a draft written in the sheet is what
-    // gets filed if one was written.
-    await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
+    // gets filed if one was written. Doing the check-in again the same day
+    // files nothing new when the same words are already signed for today.
+    const title = `Day ${day} pledge`;
+    const filed = (journal ?? []).some((e) => e.tag === 'Pledge' && e.title === title && e.body === pledgeBody && toDateKey(new Date(e.createdAt)) === todayKey);
+    void (async () => {
+      // The upsert merges, so only what this flow asked for is written.
+      await upsert({ date: todayKey, mood: mood + 1, energy: energy + 1 }).catch(() => {});
+      // The answer about yesterday's action belongs to yesterday's row.
+      if (yesterdayDone !== undefined) {
+        await upsert({ date: yesterdayKey, dailyActionDone: yesterdayDone }).catch(() => {});
+      }
+      if (!filed && signed && hasPledge) await createJournalEntry({ tag: 'Pledge', title, body: pledgeBody }).catch(() => {});
+    })();
     close();
   }
 
@@ -149,6 +167,8 @@ export default function Morning() {
   // account is a first day: while it loads `day` reads 1 for everyone, and a
   // quick Begin would skip yesterday's task for a user on day 13.
   const firstDay = user != null && day <= 1;
+  // the cover names the day, so it waits for the account rather than say "Day 1" to everyone
+  if (user === undefined) return <LoadingView spinner={false} onClose={close} />;
   if (step === COVER) return <CheckinCover part="morning" day={day} onBegin={() => setStep(firstDay ? FEELING : TASK)} onClose={close} />;
 
   const back = () => setStep((s) => (firstDay && s === FEELING ? COVER : s - 1));
@@ -185,13 +205,14 @@ export default function Morning() {
           </Stack>
           <RecordRows
             rows={[
-              // A day that put nothing on the board — or took some off — is not a
+              // A day that took the rating down — or left it at nothing — is not a
               // row the day earned, so it gets the kit's empty disc like the others (D237).
-              { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}`, done: gained > 0 },
-              { label: signedPledge ? 'Pledge kept' : 'No pledge signed', done: !!signedPledge },
+              { label: 'Recovery rating', value: `${rating} (${moved < 0 ? '−' : '+'}${Math.abs(moved)})`, done: moved >= 0 && rating > 0 },
+              // a pledge is kept only on a day without a slip; signed and slipped is "signed"
+              { label: signedPledge ? (lapses ? 'Pledge signed' : 'Pledge kept') : 'No pledge signed', done: !!signedPledge && lapses === 0 },
               {
-                label: urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
-                done: urges.length > 0,
+                label: surfed === 0 ? (urgesLogged ? 'No urges surfed' : 'No urges logged') : surfed === 1 ? 'One urge surfed' : `${surfed} urges surfed`,
+                done: surfed > 0,
               },
               { label: countOf(lapses, 'slip'), done: lapses === 0 },
               { label: finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday', done: !!finished },
@@ -235,10 +256,23 @@ export default function Morning() {
             {/* One step, two frames: the first press inks the line, the second
                 moves on. The line itself signs and un-signs — the old plate's
                 clear-× is not drawn, so the line keeps that function (OQ-M4). */}
-            <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+            {hasPledge ? (
+              <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+            ) : (
+              <MonoText v="p">No pledge yet. Write one promise you can keep every day, in your own words.</MonoText>
+            )}
           </StepStack>
-          <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
-          <GhostLink label="Change the pledge" onPress={openSheet} />
+          {hasPledge ? (
+            <>
+              <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
+              <GhostLink label="Change the pledge" onPress={openSheet} />
+            </>
+          ) : (
+            <>
+              <PrimaryButton label="Write your pledge" bottom={96} onPress={openSheet} />
+              <GhostLink label="Skip for today" onPress={next} />
+            </>
+          )}
         </>
       ) : null}
 
@@ -247,7 +281,7 @@ export default function Morning() {
           <DoneMark />
           <Stack top={458} gap={18} center>
             <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
-            <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{`Pledge re-signed on Day ${day}`}</MonoText>
+            <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{signed && hasPledge ? `Pledge re-signed on Day ${day}` : `Checked in on Day ${day}`}</MonoText>
           </Stack>
           <PrimaryButton label="Done" onPress={() => void finish()} />
         </>
@@ -275,7 +309,7 @@ export default function Morning() {
               onPress={() => {
                 // The sheet writes the words; the page behind it still has to be
                 // signed for today, which is what its own pill is for.
-                setDraft(sheetText.trim() || pledgeBody);
+                setDraft(sheetText.trim() || pledgeBody || null);
                 setSigned(false);
                 setSheet(false);
               }}

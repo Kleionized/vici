@@ -6,19 +6,20 @@ import Svg, { Circle, Line, Path, Text as SvgText } from 'react-native-svg';
 
 import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useTabBarHeight } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
-import { RANKS, buildScore, monthLedger, scoreHistory, type LedgerLine, type ScoreHistory } from '@/lib/score';
+import { calendarDaysBetween, keyToDate, useToday } from '@/lib/day';
+import { dateRange } from '@/lib/format';
+import { RATING_BANDS, RATING_WINDOW, computeRating, lessonCompletions, ratingChange, ratingHistory, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 /**
- * Score Detail · Moves · Ranks — one header, three ways of reading the number.
+ * Score Detail · Parts · Bands — one header, three ways of reading the
+ * recovery rating (D513).
  *
- * The header (back, the range pill, "Recovery score", the number and the rank
- * pill) never moves; under it a horizontal pager turns between the score over
- * time, what moved it this month and the ladder. None of the three frames
- * draws pager dots (today-day OQ-S3): a swipe is the way between them. The
- * old night header, light sheet, rank bar, value badge and insight cards are
- * gone. The tab bar is the navigator's, Journey lit (D326). D234 records the
- * readings of the undrawn states (the Year window, the chart's data, the top rank).
+ * The header (back, the range pill, "Recovery rating", the number and the
+ * band pill) never moves; under it a horizontal pager turns between the rating
+ * over time, the three parts it is made of and the four bands. None of the
+ * three frames draws pager dots (today-day OQ-S3): a swipe is the way between
+ * them. The tab bar is the navigator's, Journey lit (D326).
  *
  * Every y is the canvas's; a page's children subtract the pager's top.
  */
@@ -26,14 +27,13 @@ import { lhNormal, mono, ring, sans } from '@/lib/theme';
 const PAGER_TOP = 288;
 const py = (y: number) => y - PAGER_TOP;
 
-/** The rank's place on the ladder as the pill writes it — `Navigator II`. */
-const TIER = ['I', 'II', 'III', 'IV', 'V'];
-
 type Range = 'months' | 'year';
 const RANGE_LABEL: Record<Range, string> = { months: 'Months', year: 'Year' };
 
 const MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const MONTH_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+/** The parts page's content runs to here at 393 (the paragraph under the card is measured once laid out). */
+const PARTS_END = 744;
 
 export default function Score() {
   const router = useRouter();
@@ -46,21 +46,26 @@ export default function Score() {
   const progress = useLessonProgressMap();
   const [range, setRange] = useState<Range>('months');
   const [picking, setPicking] = useState(false);
-  // Read once: the day boundaries must not shift under a re-render.
-  const [now] = useState(() => Date.now());
+  const [partsEnd, setPartsEnd] = useState(PARTS_END);
+  // The screen's clock: still under a re-render, on to the new day with focus,
+  // the foreground and midnight (a tab stays mounted).
+  const now = useToday();
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  if (checkins === undefined || events === undefined || progress === undefined) return <LoadingView spinner={false} onBack={back} />;
+  if (user === undefined || checkins === undefined || events === undefined || progress === undefined) return <LoadingView spinner={false} onBack={back} />;
 
-  const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
-  const score = buildScore(checkins, events, lessonsDone, user?.createdAt);
-  const history = scoreHistory(checkins, events, progress, user?.createdAt ?? now, now, score.total);
-  const month = monthLedger(checkins, events, progress, now, history.values.length);
-  const tier = Math.max(1, RANKS.findIndex((r) => r.name === score.rank.name) + 1);
+  // the last seven days, on the calendar (src/lib/score.ts, src/lib/day.ts)
+  const input: RatingInput = { checkins, events, lessons: lessonCompletions(progress), start: user };
+  const rating = computeRating(input, now);
+  const change = ratingChange(input, now);
+  // "Months" is the three calendar months to today, "Year" the twelve (D333)
+  const n = new Date(now);
+  const from = new Date(n.getFullYear(), n.getMonth() - (range === 'months' ? 2 : 11), 1);
+  const history = ratingHistory(input, calendarDaysBetween(from, n) + 1, now);
 
   // The pages fill the band from the pager's top to the bar; a page whose
-  // content runs past that (Moves' card on a 667 phone) scrolls inside itself.
+  // content runs past that (the parts' paragraph on a 667 phone) scrolls inside itself.
   const pageH = winH - tabBar - (insets.top - 54) - PAGER_TOP;
 
   return (
@@ -83,28 +88,28 @@ export default function Score() {
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: 128 }}>
         <MonoText v="caps" center>
-          Recovery score
+          Recovery rating
         </MonoText>
       </View>
       <View style={{ position: 'absolute', left: 0, right: 0, top: 160 }}>
         <MonoText v="statValue" center style={{ fontSize: 60, lineHeight: 70, letterSpacing: -2.4 }}>
-          {score.total.toLocaleString('en-US')}
+          {String(rating.value)}
         </MonoText>
       </View>
       <View style={{ position: 'absolute', left: 0, right: 0, top: 248, flexDirection: 'row', justifyContent: 'center' }}>
-        <Pill kind="range" dot label={`${score.rank.name} ${TIER[tier - 1] ?? TIER[TIER.length - 1]}`} />
+        <Pill kind="range" dot label={rating.label} />
       </View>
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
         <ScrollView horizontal pagingEnabled decelerationRate="fast" showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
           <Page W={W} H={pageH} bottom={644}>
-            <OverTime W={W} history={history} range={range} now={now} />
+            <OverTime W={W} values={history} range={range} now={now} rating={rating} change={change} />
           </Page>
-          <Page W={W} H={pageH} bottom={647}>
-            <WhatMoved lines={month.lines} net={month.net} />
+          <Page W={W} H={pageH} bottom={partsEnd}>
+            <TheParts rating={rating} onEnd={(y) => setPartsEnd((e) => (Math.abs(e - y) < 0.5 ? e : y))} />
           </Page>
           <Page W={W} H={pageH} bottom={576}>
-            <TheRanks total={score.total} toGo={score.toGo} />
+            <TheBands rating={rating} />
           </Page>
         </ScrollView>
       </View>
@@ -130,7 +135,7 @@ export default function Score() {
 /** One page of the pager: the band's own height, scrolling only when its content (canvas `bottom`) does not fit. */
 function Page({ W, H, bottom, children }: { W: number; H: number; bottom: number; children: ReactNode }) {
   // scroll only when the content itself runs past the band — the 24 of foot room
-  // alone made the Ranks page rubber-band 3 pt on a 667 phone
+  // alone made the Bands page rubber-band 3 pt on a 667 phone
   const scroll = py(bottom) + 8 > H;
   return (
     <CueScrollView style={{ width: W, height: H }} scrollEnabled={scroll} contentContainerStyle={{ height: scroll ? py(bottom) + 24 : H }}>
@@ -141,36 +146,27 @@ function Page({ W, H, bottom, children }: { W: number; H: number; bottom: number
 
 /* ------------------------------------------------------------ Score Detail */
 
-/**
- * The score over the window (svg 393 × 230 at 324): a dashed rule at the
- * window's top value (y 60), the solid baseline at its floor (y 200), the two
- * values at x 369, the line (stroke 5, soft) from off the left edge to today at
- * x 372 and on past the right edge, a ring on today, and three month labels at
- * 40 / 196 / 352 — the current month in ink. Wider or narrower phones keep the
- * right-hand positions off the right edge.
- *
- * The frame's curve is drawn, not data (its ring at y 80 reads ≈ 1,343 on its
- * own axis against a header of 1,240 — OQ-S2); this is the account's own
- * history, sampled weekly (monthly for the year) and smoothed. "Months" is the
- * three calendar months to today, "Year" the twelve (D333); a day before the
- * account reads as its first day's score.
- */
-function OverTime({ W, history, range, now }: { W: number; history: ScoreHistory; range: Range; now: number }) {
-  const n = new Date(now);
-  const span = range === 'months' ? 3 : 12;
-  const from = new Date(n.getFullYear(), n.getMonth() - (span - 1), 1).getTime();
-  const first = history.dayAt(0);
-  const days = Math.max(1, Math.round((new Date(n.getFullYear(), n.getMonth(), n.getDate()).getTime() - from) / 86_400_000) + 1);
-  const values = Array.from({ length: days }, (_, i) => {
-    const k = Math.round((from + i * 86_400_000 - first) / 86_400_000);
-    return history.values[Math.max(0, Math.min(history.values.length - 1, k))];
-  });
+/** The chart's scale is the rating's own, fixed: 0 on the baseline (y 200), 100 on the dashed rule (y 60). */
+const yOf = (v: number) => 200 - (Math.max(0, Math.min(100, v)) / 100) * 140;
 
-  const lo = Math.min(...values);
-  const hi = Math.max(...values);
-  const bottom = Math.floor(lo / 100) * 100;
-  const top = bottom + ([100, 200, 400, 500, 1000, 2000, 4000, 5000].find((s) => bottom + s >= hi) ?? 10_000);
-  const yOf = (v: number) => 200 - ((v - bottom) / (top - bottom)) * 140;
+/**
+ * The rating over the window (svg 393 × 230 at 324): a dashed rule at 100
+ * (y 60), the solid baseline at 0 (y 200), the two values at x 369, the line
+ * (stroke 5, soft) from off the left edge to today at x 372 and on past the
+ * right edge, a ring on today, and three month labels at 40 / 196 / 352 — the
+ * current month in ink. Wider or narrower phones keep the right-hand positions
+ * off the right edge.
+ *
+ * `values` is the rating as of each day of the range, oldest first (a day
+ * before the programme reads 0), sampled weekly (monthly for the year) and
+ * smoothed. The scale never moves (D512): a change of four reads as four.
+ *
+ * Under it, what the number covers: the change since yesterday, and the seven
+ * days it is counted over.
+ */
+function OverTime({ W, values, range, now, rating, change }: { W: number; values: number[]; range: Range; now: number; rating: Rating; change: number }) {
+  const n = new Date(now);
+  const days = values.length;
 
   // today at x W − 21 (372 at 393); the window's first day just off the left edge
   const x0 = -5;
@@ -182,17 +178,18 @@ function OverTime({ W, history, range, now }: { W: number; history: ScoreHistory
   const pts = idx.map((i) => ({ x: x0 + (days === 1 ? 1 : i / (days - 1)) * (x1 - x0), y: yOf(values[i]) }));
   if (pts.length === 1) pts.unshift({ x: x0, y: pts[0].y });
   // the line runs on past today to the edge, a little way along today's slope
-  // (the frame's tail climbs 4 over its last 28)
+  // (the frame's tail climbs 4 over its last 28), never past the scale
   const a = pts[pts.length - 2];
   const b = pts[pts.length - 1];
   const rise = ((b.y - a.y) / Math.max(1, b.x - a.x)) * (W + 7 - b.x);
-  const tail = { x: W + 7, y: b.y + Math.max(-8, Math.min(8, rise)) };
+  const tail = { x: W + 7, y: Math.max(60, Math.min(200, b.y + Math.max(-8, Math.min(8, rise)))) };
   const line = smoothPath([...pts, tail]);
 
   const months = range === 'months' ? [n.getMonth() - 2, n.getMonth() - 1, n.getMonth()] : [n.getMonth() - 11, n.getMonth() - 5, n.getMonth()];
   const month = (m: number, names: string[]) => names[((m % 12) + 12) % 12];
-  const gain = values[values.length - 1] - values[0];
   const bold = sans('700').fontFamily;
+  const moved = change === 0 ? 'Level with yesterday' : `${change > 0 ? 'Up' : 'Down'} ${Math.abs(change)} since yesterday`;
+  const covers = rating.lived ? `Covers ${dateRange(keyToDate(rating.windowStart), keyToDate(rating.windowEnd))}` : `Covers your last ${RATING_WINDOW} days`;
 
   return (
     <>
@@ -201,10 +198,10 @@ function OverTime({ W, history, range, now }: { W: number; history: ScoreHistory
         <Path d={`M0 200H${W}`} stroke={mono.ink} strokeWidth={1.5} />
         {/* the frame asks for 600, which the canvas never loads: its browser drew 700 */}
         <SvgText x={W - 24} y={52} fill={mono.mute} textAnchor="end" fontSize={11} fontFamily={bold}>
-          {top.toLocaleString('en-US')}
+          100
         </SvgText>
         <SvgText x={W - 24} y={194} fill={mono.mute} textAnchor="end" fontSize={11} fontFamily={bold}>
-          {bottom.toLocaleString('en-US')}
+          0
         </SvgText>
         <Path d={line} fill="none" stroke={mono.ink} strokeWidth={5} strokeLinecap="round" />
         <Circle cx={x1} cy={b.y} r={7} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
@@ -217,16 +214,17 @@ function OverTime({ W, history, range, now }: { W: number; history: ScoreHistory
 
       <View style={{ position: 'absolute', left: 24, right: 24, top: py(600), flexDirection: 'row', alignItems: 'center', gap: 16 }}>
         <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <View style={gain < 0 ? { transform: [{ rotate: '180deg' }] } : null}>
+          {/* up, down, or on its side for a day that has not moved it */}
+          <View style={change < 0 ? { transform: [{ rotate: '180deg' }] } : change === 0 ? { transform: [{ rotate: '90deg' }] } : null}>
             <ArrowUp size={16} color={mono.onInk} />
           </View>
         </View>
         <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
           <MonoText v="gridLabel" wrap="wrap" style={{ fontSize: 18, lineHeight: lhNormal(18), letterSpacing: -0.2 }}>
-            {`${gain < 0 ? '−' : '+'}${Math.abs(gain).toLocaleString('en-US')} points ${range === 'months' ? 'this quarter' : 'this year'}`}
+            {moved}
           </MonoText>
           <MonoText v="p" wrap="wrap" style={{ lineHeight: lhNormal(15) }}>
-            {`${month(months[0], MONTH_LONG)} – ${month(months[2], MONTH_LONG)}`}
+            {covers}
           </MonoText>
         </View>
       </View>
@@ -267,103 +265,116 @@ function smoothPath(pts: { x: number; y: number }[]) {
   return path;
 }
 
-/* ----------------------------------------------------------- Score Moves */
+/* ----------------------------------------------------------- Score Parts */
 
 /**
- * What moved it this month (caps at 300, card `left 16 right 16 top 334`,
- * padding 16 20 18): one 44 row per line — label w112, a 12 bar whose fill is
- * the line's share of the largest (ink; a loss is an ink ring), the value w44
- * right-aligned with `+` / `−` — then the net under a rule.
+ * What the rating is made of (caps at 300, card `left 16 right 16 top 334`,
+ * padding 16 20 18): one 44 row per part — label w112, a 12 bar filled to the
+ * part's share of its own weight (ink), the part as `26/30` w56 right-aligned
+ * — then the rating under a rule, and one plain paragraph under the card on
+ * how it is counted (D513).
  */
-function WhatMoved({ lines, net }: { lines: LedgerLine[]; net: number }) {
-  const max = Math.max(1, ...lines.map((l) => Math.abs(l.points)));
-  const signed = (v: number) => `${v < 0 ? '−' : '+'}${Math.abs(v)}`;
+function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) => void }) {
+  const lessons = rating.parts.find((p) => p.key === 'lessons');
+  const weight = (key: string) => rating.parts.find((p) => p.key === key)?.max ?? 0;
+  const how = lessons
+    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and lessons (${lessons.max}). A slip costs that day’s clean points. Logging it still counts as showing up, and a slip leaves your rating after a week.`
+    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}) and clean days (${weight('cleanDays')}); with the course finished, lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up, and a slip leaves your rating after a week.`;
   return (
     <>
       <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>
         <MonoText v="caps" center>
-          What moved it this month
+          What makes it up
         </MonoText>
       </View>
-      <Card padding={[16, 20, 18]} style={{ position: 'absolute', left: 16, right: 16, top: py(334) }}>
-        {lines.map((l) => (
-          <View key={l.label} style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-            <MonoText v="rowLabel" wrap="wrap" color={l.slip ? mono.mute : mono.ink} style={{ width: 112 }}>
-              {l.label}
-            </MonoText>
-            <View style={{ flex: 1, height: 12 }}>
-              <View
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  height: 12,
-                  width: `${Math.round((Math.abs(l.points) / max) * 100)}%`,
-                  borderRadius: 6,
-                  backgroundColor: l.points < 0 ? undefined : mono.ink,
-                  boxShadow: l.points < 0 ? ring.insetInk : undefined,
-                }}
-              />
+      <View style={{ position: 'absolute', left: 16, right: 16, top: py(334), gap: 20 }} onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height + PAGER_TOP)}>
+        <Card padding={[16, 20, 18]}>
+          {rating.parts.map((p) => (
+            <View key={p.key} accessibilityLabel={`${p.label}, ${p.earned} of ${p.max}`} style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+              <MonoText v="rowLabel" wrap="wrap" style={{ width: 112 }}>
+                {p.label}
+              </MonoText>
+              <View style={{ flex: 1, height: 12, borderRadius: 6, boxShadow: ring.insetLine }}>
+                <View
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    height: 12,
+                    width: `${p.max ? Math.round((p.earned / p.max) * 100) : 0}%`,
+                    borderRadius: 6,
+                    backgroundColor: mono.ink,
+                  }}
+                />
+              </View>
+              <MonoText v="rowLabel" style={{ width: 56, textAlign: 'right' }}>
+                {`${p.earned}/${p.max}`}
+              </MonoText>
             </View>
-            <MonoText v="rowLabel" style={{ width: 44, textAlign: 'right' }}>
-              {signed(l.points)}
+          ))}
+          <View style={{ marginTop: 12, paddingTop: 14, borderTopWidth: 1, borderTopColor: mono.line, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+            <MonoText v="caps">Recovery rating</MonoText>
+            <MonoText v="h1" wrap="nowrap" style={{ lineHeight: lhNormal(26) }}>
+              {String(rating.value)}
             </MonoText>
           </View>
-        ))}
-        <View style={{ marginTop: 12, paddingTop: 14, borderTopWidth: 1, borderTopColor: mono.line, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <MonoText v="caps">Net this month</MonoText>
-          <MonoText v="h1" wrap="nowrap" style={{ lineHeight: lhNormal(26) }}>
-            {signed(net)}
-          </MonoText>
-        </View>
-      </Card>
+        </Card>
+        <MonoText v="p" style={{ marginHorizontal: 8 }}>
+          {how}
+        </MonoText>
+      </View>
     </>
   );
 }
 
-/* ----------------------------------------------------------- Score Ranks */
+/* ----------------------------------------------------------- Score Bands */
 
 /**
- * The ladder, highest first (caps at 300, card at 334, padding 22 22 20): a
- * 26 disc per rank on a rail — ranks above the score a ringed `#1E1E1E` disc on
- * a dashed `#5A574F` rail, the rank you hold an ink disc with a dot on a solid
- * ink rail, ranks below an ink disc with a check — then the name (900 where
- * you are) and the threshold; under yours, "You’re here." and what is left to
- * the next.
+ * The four bands, highest first (caps at 300, card at 334, padding 22 22 20):
+ * a 26 disc per band on a rail — bands above the rating a ringed `#1E1E1E`
+ * disc on a dashed `#5A574F` rail, the band it is in an ink disc with a dot on
+ * a solid ink rail, bands below an ink disc with a check — then the name (900
+ * where you are) and its range; under yours, "You’re here." and what is left
+ * to the next band (or, in the first week, how much of it has been lived).
  */
-function TheRanks({ total, toGo }: { total: number; toGo: number }) {
-  const ladder = [...RANKS].reverse();
+function TheBands({ rating }: { rating: Rating }) {
+  const ladder = [...RATING_BANDS].reverse();
+  const next = RATING_BANDS.find((b) => b.min > rating.value);
+  const here = rating.building
+    ? `You’re here. Building, ${rating.lived} of ${RATING_WINDOW} days`
+    : next
+      ? `You’re here. ${next.min - rating.value} to ${next.label}`
+      : 'You’re here.';
   return (
     <>
       <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>
         <MonoText v="caps" center>
-          The ranks
+          The bands
         </MonoText>
       </View>
       <Card padding={[22, 22, 20]} style={{ position: 'absolute', left: 16, right: 16, top: py(334) }}>
-        {ladder.map((rank, i) => {
-          const above = RANKS.find((r) => r.at > rank.at);
-          const state = total < rank.at ? 'todo' : above && total >= above.at ? 'done' : 'here';
+        {ladder.map((band, i) => {
+          const state = rating.value < band.min ? 'todo' : rating.band.key === band.key ? 'here' : 'done';
           const last = i === ladder.length - 1;
           return (
-            <View key={rank.name} style={{ flexDirection: 'row', gap: 18 }}>
+            <View key={band.key} style={{ flexDirection: 'row', gap: 18 }}>
               <View style={{ width: 26, alignItems: 'center' }}>
-                <RankDisc state={state} />
+                <BandDisc state={state} />
                 {last ? null : <Rail dashed={state === 'todo'} />}
               </View>
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: last ? 0 : 30 }}>
-                <View style={{ gap: 2 }}>
+              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, paddingBottom: last ? 0 : 30 }}>
+                <View style={{ flexShrink: 1, gap: 2 }}>
                   <MonoText v="gridLabel" color={state === 'todo' ? mono.mute : mono.ink} style={{ ...sans(state === 'here' ? '900' : '700'), fontSize: 18, lineHeight: lhNormal(18) }}>
-                    {rank.name}
+                    {band.label}
                   </MonoText>
                   {state === 'here' ? (
-                    <MonoText v="caps" color={mono.sub}>
-                      {toGo > 0 ? `You’re here. ${toGo.toLocaleString('en-US')} to go` : 'You’re here.'}
+                    <MonoText v="caps" wrap="wrap" color={mono.sub}>
+                      {here}
                     </MonoText>
                   ) : null}
                 </View>
                 <MonoText v="rowLabel" color={state === 'todo' ? mono.mute : mono.ink}>
-                  {rank.at.toLocaleString('en-US')}
+                  {`${band.min}–${band.max}`}
                 </MonoText>
               </View>
             </View>
@@ -374,7 +385,7 @@ function TheRanks({ total, toGo }: { total: number; toGo: number }) {
   );
 }
 
-function RankDisc({ state }: { state: 'todo' | 'here' | 'done' }) {
+function BandDisc({ state }: { state: 'todo' | 'here' | 'done' }) {
   return (
     <View
       style={{

@@ -22,11 +22,12 @@ import {
   Tap,
   useTabBarHeight,
 } from '@/components/mono';
+import { DAY_STEPS, dayStep, type DayStep } from '@/components/day/kit';
 import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/content/curriculum84';
-import type { HeroKey } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
-import { checkinPartNow } from '@/lib/routines';
-import { buildScore, lastDays, scoreDayKey, scoreHistory } from '@/lib/score';
+import { ENERGY_WORDS, MOOD_WORDS, courseComplete, dayStart, greetingFor, isNightClosed, isSlip, programmeDay, programmeStartMs, useToday } from '@/lib/day';
+import { toDateKey } from '@/lib/date';
+import { computeRating, lessonCompletions, ratingChange, ratingHistory, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 
@@ -36,7 +37,7 @@ import { pledgeText, standingPledge } from '@/lib/pledge';
  * The four frames share the header (greeting, day pill, profile door) and the
  * Sunday-first week strip, pixel for pixel; only the band between the strip
  * (199) and the tab bar (748) changes. That band is the three-page vertical
- * pager this screen always was, re-dealt: page one is the score and this
+ * pager this screen always was, re-dealt: page one is the rating and this
  * morning's readings, page two the day's task, its lesson and the urge door,
  * page three the pledge and tonight's urge door. Every y below is the canvas's;
  * a page's children subtract the pager's top (200).
@@ -58,8 +59,9 @@ const PAGE_ENDS = [494, 503, 518];
 /** The least ground kept between a page's content and the tab bar (the frames keep 30–54; Today II's gap between blocks is 20). */
 const BAR_GAP = 20;
 
-const MOOD_WORD = ['Heavy', 'Low', 'Fine', 'Good', 'Clear'];
-const ENERGY_WORD = ['Empty', 'Low', 'Steady', 'Good', 'Full'];
+/** The morning's answers in the words the check-in itself used (one list per scale, `src/lib/day.ts`). */
+const MOOD_WORD = MOOD_WORDS;
+const ENERGY_WORD = ENERGY_WORDS;
 /**
  * The check-in chip draws its tone a rung lighter than the check-in's own disc
  * (Today Home: mood 3, "Fine", `#BAB5AD`; Morning Feeling draws the same answer
@@ -68,24 +70,12 @@ const ENERGY_WORD = ['Empty', 'Low', 'Steady', 'Good', 'Full'];
  */
 const CHIP_TONE = [toneRamp[1], toneRamp[2], toneRamp[3], toneRamp[4], toneRamp[4]];
 
-type DayStep = { caption: string; hero: HeroKey };
-
-/**
+/*
  * The steps the task falls back on when nobody has named the day's action and
- * the course has no lesson for the day. The first is the one Today Home II
- * draws ("hard to reach" — the frame's words; the old card said "difficult to
- * access"); each now carries an illustration instead of its old drawn night.
- * Each is one whose art fills the crop's width at 375–430 (or has no floor to
- * fill it): the open door's floor line, cropped, stops 11 short of both edges
- * at 393, so "get outside" draws the park bench.
+ * the course has no lesson for the day are `DAY_STEPS` (`components/day/kit`):
+ * one list for Today, the night that names the next day's action and the
+ * morning that asks after it, so all three say the same sentence (L4).
  */
-const DAY_STEPS: DayStep[] = [
-  { caption: 'Put your phone somewhere hard to reach before you sleep.', hero: 'nightPhone' },
-  { caption: 'Drink a full glass of water before anything else.', hero: 'twoCups' },
-  { caption: 'Get outside for ten minutes, even if it is only around the block.', hero: 'bench' },
-  { caption: 'Write down what set it off, in the words you would say out loud.', hero: 'notebook' },
-  { caption: 'Make the bed now, so tonight you walk into a room that is ready.', hero: 'bed' },
-];
 
 /**
  * A named action keeps the register and the picture of whatever set it. The
@@ -113,13 +103,16 @@ export default function Today() {
   const insets = useSafeAreaInsets();
   const winH = useWindowDimensions().height;
   const tabBar = useTabBarHeight();
-  // Read once on mount: the day count and today's key must not shift under a
-  // re-render while the screen is open.
-  const [now] = useState(() => Date.now());
+  // "Now" holds still under re-renders, and moves on when the tab is focused,
+  // the app comes back to the foreground, or the clock passes midnight — an
+  // app left open overnight shows, and ticks, the new day (L5).
+  const now = useToday();
   const [ends, setEnds] = useState(PAGE_ENDS);
   const endAt = (i: number) => (y: number) => setEnds((e) => (Math.abs(e[i] - y) < 0.5 ? e : e.map((v, j) => (j === i ? y : v))));
 
-  if (progress === undefined || checkins === undefined || events === undefined) {
+  // The day and the lesson come from the account's programme start, so nothing
+  // is drawn until it has loaded — never a Day 1 / Lesson 1 for a day-20 user.
+  if (user === undefined || progress === undefined || checkins === undefined || events === undefined) {
     return <LoadingView spinner={false} />;
   }
 
@@ -132,13 +125,18 @@ export default function Today() {
   // and a taller page scrolls within itself before the next one (D230, D320).
   const viewport = winH - tabBar - (insets.top - 54) - PAGER_TOP;
 
-  const createdAt = user?.createdAt ?? now;
-  const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
-  const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
-  const score = buildScore(checkins, events, lessonsDone, user?.createdAt);
-  const series = lastDays(scoreHistory(checkins, events, progress, createdAt, now, score.total), 30);
+  // Day N: calendar days from the programme's first day (src/lib/day.ts)
+  const day = programmeDay(user, now);
+  // The recovery rating: the last seven days, from the same rows on either
+  // backend (src/lib/score.ts). The line is the rating as of each of the last
+  // thirty days, ending on the number beside it.
+  const input: RatingInput = { checkins, events, lessons: lessonCompletions(progress), start: user };
+  const rating = computeRating(input, now);
+  const change = ratingChange(input, now);
+  const series = ratingHistory(input, 30, now);
 
-  const todayKey = scoreDayKey(now);
+  const dayKey = (t: number) => toDateKey(new Date(t));
+  const todayKey = dayKey(now);
   const todayCheckin = checkins.find((c) => c.date === todayKey);
   const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
   const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : null;
@@ -147,17 +145,19 @@ export default function Today() {
   const name = user?.displayName?.trim().split(/\s+/)[0];
 
   // The week strip, Sunday first (Today Home draws `Su … Sa`; the Log's strip
-  // is Monday-first — CRITIC C16). A past day is held unless a slip landed on
-  // it or the account did not exist yet; today fills once the night check-in
-  // has filed it (Today Home III, D231).
-  const lapsed = new Set(events.filter((e) => e.type === 'lapse').map((e) => scoreDayKey(e.createdAt)));
-  const firstDay = new Date(createdAt).setHours(0, 0, 0, 0);
+  // is Monday-first — CRITIC C16). A past day is held unless a slip (either
+  // kind) landed on it or the programme had not begun; today fills once the
+  // night check-in has filed it (Today Home III, D231) — and never on a day
+  // with a slip in it. Only the night flow closes the day: the quick
+  // check-in's feelings, logged in the morning, don't fill today's disc.
+  const lapsed = new Set(events.filter(isSlip).map((e) => dayKey(e.createdAt)));
+  const firstDay = programmeStartMs(user) ?? dayStart(now);
   const n = new Date(now);
-  const closed = !!(todayCheckin?.emotions?.length || todayCheckin?.reasons?.length);
+  const closed = isNightClosed(todayCheckin) && !lapsed.has(todayKey);
   const week: WeekDay[] = WEEKDAY.map((label, i) => {
     const at = new Date(n.getFullYear(), n.getMonth(), n.getDate() - n.getDay() + i);
     const t = at.getTime();
-    const held = t >= firstDay && !lapsed.has(scoreDayKey(t));
+    const held = t >= firstDay && !lapsed.has(dayKey(t));
     const state: WeekDay['state'] = i < n.getDay() ? (held ? 'held' : 'open') : i === n.getDay() ? (closed ? 'held' : 'today') : 'open';
     return { label, date: at.getDate(), state, today: i === n.getDay() };
   });
@@ -167,11 +167,12 @@ export default function Today() {
   // Without one, the day's lesson sets it in the lesson's register (Today Home
   // Task); past the course, the day's own step (Today Home II's register).
   const dayLesson = lessonForDay(day);
+  const complete = courseComplete(day);
   const task: Task = todayCheckin?.dailyAction
     ? namedTask(todayCheckin.dailyAction)
     : dayLesson
       ? { caption: dayLesson.task.cardSummary, hero: dayLesson.hero, lesson: dayLesson }
-      : DAY_STEPS[(day - 1) % DAY_STEPS.length];
+      : dayStep(day);
   const taskDone = todayCheckin?.dailyActionDone ?? false;
   // The disc marks the sentence it sits beside. When nobody named the day's
   // action (no night check-in), that sentence is the lesson's or the day's
@@ -189,14 +190,14 @@ export default function Today() {
 
   // A page taller than the viewport rests at its top and at its foot. The foot
   // never leaves a sliver of a block under the strip: on a 667 phone the plain
-  // foot cut page one 7 pt above the score's baseline (its comma and the 2's
-  // tail hung under the discs) and pages two and three 37 pt above their art's
-  // floor (the phone's and the glass's stubs, the hills). Where the foot would
+  // foot cut page one 7 pt above the number's baseline (the old four-digit
+  // figure's comma hung under the discs) and pages two and three 37 pt above
+  // their art's floor (the phone's and the glass's stubs, the hills). Where the foot would
   // fall inside one of the blocks below, it rests at that block's end instead
   // — the block wholly scrolled away — and the page grows by the difference.
   const blocks: [number, number][][] = [
-    // "Recovery score"; the number, whose comma hangs below its 56 line box (to the chart's top,
-    // 334); the chart's ink, from its highest point's ring to its labels
+    // "Recovery rating" and its band; the number, kept whole to the chart's top (334);
+    // the chart's ink, from a 100's end ring to its labels
     [[py(240), py(256)], [py(268), py(334)], [py(334) + CHART_LOW - CHART_SPAN - 8.5, py(584)]],
     [[py(241.3), py(241.3) + heroCrop(task.hero, 241.3).height]],
     [[py(231.5), py(231.5) + heroCrop('nightMoon', 231.5).height]],
@@ -220,7 +221,8 @@ export default function Today() {
 
   return (
     <Screen>
-      <Header greeting={checkinPartNow(n) === 'morning' ? 'Good morning.' : 'Good evening.'} day={day} onProfile={() => router.push('/(app)/settings')} />
+      {/* the greeting keeps the clock's own hours (afternoon included), not the check-in switch's 18:30 */}
+      <Header greeting={greetingFor(n)} day={day} onProfile={() => router.push('/(app)/settings')} />
       <WeekStrip days={week} />
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
@@ -233,7 +235,8 @@ export default function Today() {
           style={{ flex: 1 }}>
           <View style={{ height: pageH[0] }}>
             <PageOne
-              score={score}
+              rating={rating}
+              change={change}
               series={series}
               mood={moodIdx}
               energy={energyIdx}
@@ -247,6 +250,7 @@ export default function Today() {
               task={task}
               done={taskDone}
               lesson={dayLesson}
+              complete={complete}
               opensTask={!!taskLesson}
               onTask={() => (taskLesson ? router.push(`/lesson/day/${taskLesson.day}?page=task`) : toggleTask())}
               onCheck={toggleTask}
@@ -357,7 +361,8 @@ function WeekStrip({ days }: { days: WeekDay[] }) {
 const py = (y: number) => y - PAGER_TOP;
 
 function PageOne({
-  score,
+  rating,
+  change,
   series,
   mood,
   energy,
@@ -365,7 +370,10 @@ function PageOne({
   onMorning,
   onEnd,
 }: {
-  score: ReturnType<typeof buildScore>;
+  rating: Rating;
+  /** today's rating less yesterday's as it closed */
+  change: number;
+  /** the rating as of each of the last thirty days, oldest first */
   series: number[];
   mood: number | null;
   energy: number | null;
@@ -378,18 +386,22 @@ function PageOne({
     <>
       {/* the number and its chart are one door into Score Detail (240 → 584) */}
       <Tap
-        label={`Recovery score ${score.total.toLocaleString('en-US')}`}
+        label={`Recovery rating ${rating.value}, ${rating.label}${change ? `, ${change > 0 ? 'up' : 'down'} ${Math.abs(change)} since yesterday` : ''}`}
         onPress={onScore}
         style={{ position: 'absolute', left: 24, right: 24, top: py(240), height: 344 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <View style={{ gap: 12 }}>
-            <MonoText v="caps">Recovery score</MonoText>
-            <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
-              {score.total.toLocaleString('en-US')}
-            </MonoText>
-          </View>
-          {/* today's own contribution; nothing is drawn on a day that has not moved it */}
-          {score.delta !== 0 ? <Pill kind="delta" label={String(Math.abs(score.delta))} down={score.delta < 0} style={{ marginBottom: 8 }} /> : null}
+        {/* the band (or, in the first week, how much of the window has been lived) on the caps line's right */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
+          <MonoText v="caps">Recovery rating</MonoText>
+          <MonoText v="caps" color={mono.ink}>
+            {rating.label}
+          </MonoText>
+        </View>
+        <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
+            {String(rating.value)}
+          </MonoText>
+          {/* the change since yesterday; nothing is drawn on a day that has not moved it */}
+          {change !== 0 ? <Pill kind="delta" label={String(Math.abs(change))} down={change < 0} style={{ marginBottom: 8 }} /> : null}
         </View>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 94 }}>
           <ThirtyDays series={series} />
@@ -425,25 +437,28 @@ function PageOne({
 }
 
 const round1 = (v: number) => Math.round(v * 10) / 10;
-/** Today Home's band: the lowest of the thirty days sits at 210.6, the highest 172.7 above it. */
+/** Today Home's band: a rating of 0 sits at 210.6, 100 sits 172.7 above it. */
 const CHART_LOW = 210.6;
 const CHART_SPAN = 172.7;
+/** The rating's scale, fixed: the line never stretches a small change to the band's full height (D512). */
+const CHART_MAX = 100;
+const chartY = (v: number) => round1(CHART_LOW - (Math.max(0, Math.min(CHART_MAX, v)) / CHART_MAX) * CHART_SPAN);
+/** The three dashed rules sit at 25, 50 and 75. */
+const CHART_RULES = [75, 50, 25].map(chartY);
 
 /**
  * The last thirty days (`left 24 top 334`, 345 × 250 at 393): three dashed
  * rules, the area under the line in a fading ink, the line (straight segments,
  * stroke 3) and an end ring on today. x steps `(W − 64) / 29` to one decimal —
- * the frame's own 11.3, 22.7 … 329 — and y maps the series' own range onto the
- * band, so the newest high lands where the frame's does (a flat or one-day
- * series lies on the band's floor — today-day OQ-T3).
+ * the frame's own 11.3, 22.7 … 329. y is the rating on a fixed 0–100 scale (0
+ * on the band's floor, 100 at its top), so a day's rise of four reads as four,
+ * and a week that held at 90 sits high rather than flat on the floor.
  */
 function ThirtyDays({ series }: { series: number[] }) {
   const id = useId().replace(/:/g, '');
   const W = useWindowDimensions().width - 48;
   const run = W - 16;
-  const lo = Math.min(...series);
-  const hi = Math.max(...series);
-  const pts = series.map((v, i) => [round1((i * run) / (series.length - 1)), round1(CHART_LOW - (hi === lo ? 0 : ((v - lo) / (hi - lo)) * CHART_SPAN))] as const);
+  const pts = series.map((v, i) => [round1((i * run) / Math.max(1, series.length - 1)), chartY(v)] as const);
   const line = pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ');
   const [ex, ey] = pts[pts.length - 1];
   const label = sans('700').fontFamily;
@@ -455,7 +470,7 @@ function ThirtyDays({ series }: { series: number[] }) {
           <Stop offset="1" stopColor={mono.ink} stopOpacity={0} />
         </LinearGradient>
       </Defs>
-      {[70, 130, 190].map((y) => (
+      {CHART_RULES.map((y) => (
         <Path key={y} d={`M0 ${y}H${W}`} stroke={mono.line} strokeWidth={1} strokeDasharray="2 5" />
       ))}
       <Path d={`${line} L${ex} 232 L0 232 Z`} fill={`url(#scoreFill${id})`} />
@@ -491,6 +506,7 @@ function PageTwo({
   task,
   done,
   lesson,
+  complete,
   opensTask,
   onTask,
   onCheck,
@@ -501,6 +517,8 @@ function PageTwo({
   task: Task;
   done: boolean;
   lesson: Curriculum84Lesson | undefined;
+  /** past day 84: the tile says the course is complete and opens the lessons to revisit */
+  complete: boolean;
   /** the sentence opens a task page (else it toggles the mark) */
   opensTask: boolean;
   onTask: () => void;
@@ -544,8 +562,14 @@ function PageTwo({
         </View>
 
         <View style={{ flexDirection: 'row', gap: 12 }}>
-          {/* the frames' "Lesson 5 / Naming your triggers" is a mock (D132); the tile carries the day's lesson, numbered as the course numbers it (1–84) */}
-          <Tile glyph={<BookGlyph />} caps={lesson ? `Lesson ${lesson.day}` : 'Week I'} title={lesson?.title ?? 'Start the first lesson'} onPress={onLesson} />
+          {/* the frames' "Lesson 5 / Naming your triggers" is a mock (D132); the tile carries the day's lesson, numbered as the course numbers it (1–84);
+              past day 84 the course is over, and the tile says so and opens every lesson to revisit (L4) */}
+          <Tile
+            glyph={<BookGlyph />}
+            caps={lesson ? `Lesson ${lesson.day}` : complete ? 'Course complete' : 'Week I'}
+            title={lesson?.title ?? (complete ? 'Revisit any lesson' : 'Start the first lesson')}
+            onPress={onLesson}
+          />
           <Tile glyph={<WavesGlyph />} caps="Ride it out" title="Urge surfing" onPress={onUrge} />
         </View>
       </View>
@@ -644,7 +668,7 @@ function PageThree({
   const rings = (
     <View style={{ flexDirection: 'row', gap: 10, marginTop: 6 }}>
       {ringBtn('M3 9h12M9 3v12', 'New pledge', onAdd)}
-      {ringBtn('M9 3l1.8 3.8 4.2.6-3 3 .7 4.2L9 12.6l-3.7 2 .7-4.2-3-3 4.2-.6z', 'Past pledges', onSaved)}
+      {ringBtn('M9 3l1.8 3.8 4.2.6-3 3 .7 4.2L9 12.6l-3.7 2 .7-4.2-3-3 4.2-.6z', 'Journal', onSaved)}
       {ringBtn('M9 11V3M6 6l3-3 3 3M4 11v3h10v-3', 'Share', onShare, !pledge)}
     </View>
   );

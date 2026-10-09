@@ -6,23 +6,30 @@
  * Shell (sos-flow §3.17): the kit's `dark` Screen (`#111111`, `noise-dark` @
  * 0.09), the nav's "Ride it out" and ✕, each pane's head at 160, the pager's
  * 6-pt dots at `bottom 180`, the white "Breathe" pill at `bottom 96` and "I
- * slipped" at 60. The panes page sideways; each scrolls on its own only when a
+ * slipped" at 60, and "Help" — the way to Find support — in the nav's left
+ * slot (D467). The panes page sideways; each scrolls on its own only when a
  * short phone cannot hold it above the dots (D320).
+ *
+ * The hub rides a real urge (deploy WP5, D460): its ring is the live
+ * session's clock and survives the app closing; riding it out — the three
+ * stages run to their end, the twenty minutes up, or leaving after the ring
+ * has run a minute — writes one `urge_rode_out`, with the chip as its trigger.
  */
 
-import { useRouter } from 'expo-router';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import { GhostLink, MonoText, NavBar, PagerDots, PledgeCard, PrimaryButton, Screen, Tap } from '@/components/mono';
-import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
-import { useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
+import { INTENSITY_BANDS } from '@/components/ui/IntensityBands';
+import { useCreateEvent, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
 import { lastNDateKeys, toDateKey } from '@/lib/date';
+import { isSlip, isSurfed, programmeStartKey } from '@/lib/day';
 import { clockTime, countOf, daysAgo, minutesWords, WEEKDAYS_SHORT } from '@/lib/format';
-import { getJSON, setJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
 import { mono, monoDark, ring, sans } from '@/lib/theme';
-import type { EventType, TidelineEvent } from '@/lib/types';
-import { loadUrgeSession, newUrgeSession, SAME_URGE_WINDOW_MS, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
+import type { TidelineEvent } from '@/lib/types';
+import { clearUrgeSession, newUrgeSession, openUrgeSession, SAME_URGE_WINDOW_MS, saveUrgeSession, slipLoggedSince, type UrgeSession } from '@/lib/urgeSession';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 
 import {
@@ -32,12 +39,15 @@ import {
   DarkHead,
   DEFAULT_SOS_SETTINGS,
   OddStage,
+  readSosSettings,
   SOS_ORDER,
   SOS_SETTINGS_KEY,
   SosSettingsSheet,
+  SupportDoor,
   TapStage,
   UrgeRing,
   useBandBottom,
+  useStepBack,
   type SosSettings,
 } from './stages';
 
@@ -56,6 +66,13 @@ function hubClock(remainingMs: number): string {
   return `${Math.floor(s / 60)}:${`${s % 60}`.padStart(2, '0')}`;
 }
 
+/**
+ * How long the ring must have run before closing the hub counts as riding
+ * the urge out (F1, D460). Under a minute the user has looked at the hub, not
+ * ridden anything: closing then just ends the session.
+ */
+const RIDE_MIN_MS = 60 * 1000;
+
 /** `Thu, 3:10 pm` — the frame's comma and its lower-case meridiem. */
 function hubWhen(ms: number): string {
   return `${WEEKDAYS_SHORT[new Date(ms).getDay()]}, ${clockTime(ms, { lower: true })}`;
@@ -65,29 +82,35 @@ interface HubUrge {
   at: number;
   seconds: number;
   severity?: number;
-  helped: string;
+  /** What got the user through, as stored — absent when nothing was recorded. */
+  helped?: string;
 }
+
+/** A day on 85B's grid: kept, slipped, or before the programme began (not the user's to have kept). */
+type HubDay = 'held' | 'slip' | 'before';
 
 interface HubStats {
   /** Every rode-out urge that carries a recorded length, newest first. */
   timed: HubUrge[];
   ridden: number;
-  /** The last 30 days, oldest first; `true` = no slip that day. */
-  days: boolean[];
+  /** The last 30 days, oldest first. */
+  days: HubDay[];
+  /** Whether the programme's first day is known yet — until it is, no day is counted. */
+  counted: boolean;
   slips: TidelineEvent[];
 }
 
-const HUB_SLIP: EventType[] = ['lapse', 'urge_acted_on'];
-
 /**
- * Everything the panes read, out of the event log. A slip is a `lapse` or an
- * `urge_acted_on` — the pair `today.tsx` marks a day with — and a day is clean
- * when neither landed in it.
+ * Everything the panes read, out of the event log. A slip is `isSlip` — a
+ * lapse or an urge acted on, the one rule every screen counts by — and a day
+ * is clean when neither landed in it. Days before the programme's first day
+ * (`src/lib/day.ts`) are nobody's to have kept: they are drawn faint and not
+ * counted (S4, D460).
  */
-function hubStats(events: TidelineEvent[] | undefined): HubStats {
+function hubStats(events: TidelineEvent[] | undefined, start: string | null): HubStats {
   const log = events ?? [];
-  const ridden = log.filter((e) => e.type === 'urge_rode_out');
-  const slips = log.filter((e) => HUB_SLIP.includes(e.type)).sort((a, b) => b.createdAt - a.createdAt);
+  const ridden = log.filter(isSurfed);
+  const slips = log.filter(isSlip).sort((a, b) => b.createdAt - a.createdAt);
   const timed: HubUrge[] = ridden
     .filter((e) => typeof e.durationSeconds === 'number' && e.durationSeconds > 0)
     .sort((a, b) => b.createdAt - a.createdAt)
@@ -95,12 +118,12 @@ function hubStats(events: TidelineEvent[] | undefined): HubStats {
       at: e.createdAt,
       seconds: e.durationSeconds as number,
       severity: e.severity,
-      // what every ridden-out urge has in common, in the frame's own words
-      helped: e.whatHelped ?? 'Waited out the timer',
+      // only what was recorded: a row with nothing stored says nothing (P4, D460)
+      helped: e.whatHelped?.trim() || undefined,
     }));
   const slipKeys = new Set(slips.map((e) => toDateKey(new Date(e.createdAt))));
-  const days = lastNDateKeys(30).map((k) => !slipKeys.has(k));
-  return { timed, ridden: ridden.length, days, slips };
+  const days = lastNDateKeys(30).map((k): HubDay => (start == null || k < start ? 'before' : slipKeys.has(k) ? 'slip' : 'held'));
+  return { timed, ridden: ridden.length, days, counted: start != null, slips };
 }
 
 const minutesOf = (seconds: number) => Math.max(1, Math.round(seconds / 60));
@@ -113,8 +136,9 @@ const endsAt = (top: number, onBottom?: OnBottom) => (onBottom ? (e: LayoutChang
 
 /**
  * The three chips the canvas draws under the ring, verbatim — the hub's own
- * words, not the pickers'; the one chosen is filed on the session as its
- * trigger. The frame draws none chosen, which is where the hub starts (CRITIC
+ * words, not the pickers'; the one chosen is kept on the session and filed
+ * as the urge's trigger when it is logged, where the trigger charts read it
+ * (F1). The frame draws none chosen, which is where the hub starts (CRITIC
  * §5); a chosen chip takes the white fill and `#111111` words (D258).
  */
 const HUB_CHIPS = ['Bored', 'Relationship', 'Work or school'];
@@ -146,11 +170,42 @@ function HubChip({ label, on, onPress }: { label: string; on: boolean; onPress: 
 const CHIPS_TOP = 546;
 const CHIPS_TUCK = CHIPS_TOP - (270 + 223 + 16);
 
-function HubNow({ elapsedMs, chip, onChip, tuck = 0 }: { elapsedMs: number; chip: number | null; onChip: (i: number) => void; tuck?: number }) {
+/**
+ * 85A. The frame's head — "Get out of bed." — is its sample moment, said to
+ * everyone at any hour in any place; the hub knows neither, so its head is
+ * the part that holds anywhere (P4, D460): change where you are, and the
+ * frame's own line under it.
+ *
+ * Once the urge is logged as ridden out (`passedSeconds`) the pane goes
+ * quiet: the ring empties, its clock shows how long the urge ran and the line
+ * under it says it passed, the head says it is logged, and the chips — filed
+ * with the event already — are put away (D460).
+ */
+function HubNow({
+  elapsedMs,
+  chip,
+  onChip,
+  passedSeconds,
+  tuck = 0,
+}: {
+  elapsedMs: number;
+  chip: number | null;
+  onChip: (i: number) => void;
+  passedSeconds: number | null;
+  tuck?: number;
+}) {
+  if (passedSeconds != null) {
+    return (
+      <>
+        <DarkHead title="It passed." body="Logged as ridden out. Stay here as long as you need." />
+        <UrgeRing fraction={0} clock={hubClock(passedSeconds * 1000)} label="It passed" />
+      </>
+    );
+  }
   const remaining = hubRemaining(elapsedMs);
   return (
     <>
-      <DarkHead title="Get out of bed." body="Stand up. Move somewhere with light." />
+      <DarkHead title="Change where you are." body="Stand up. Move somewhere with light." />
       <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" />
       <View accessibilityRole="radiogroup" style={{ position: 'absolute', left: 0, right: 0, top: CHIPS_TOP - tuck, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
         {HUB_CHIPS.map((label, i) => (
@@ -161,15 +216,24 @@ function HubNow({ elapsedMs, chip, onChip, tuck = 0 }: { elapsedMs: number; chip
   );
 }
 
-// ════════ 85B · Recovery score ═══════════════════════════════════════════════
+// ════════ 85B · Last 30 days (the frame's "Recovery score"; no number here) ═════
 
 /**
  * "This one is strong. None this strong has lasted past forty minutes." — the
  * live urge's band, in `INTENSITY_BANDS`' words, and the longest ridden-out
  * urge at that strength or stronger, in words. With nothing that strong on
  * record the second sentence is left out (D257).
+ *
+ * The first sentence is only said when the user rated this urge (the SOS asks;
+ * the hub does not). Unrated, the line is the record alone — "None has lasted
+ * past forty minutes." — or nothing (P4, D460).
  */
-function scoreLine(severity: number, timed: HubUrge[]): string {
+function scoreLine(severity: number | undefined, timed: HubUrge[]): string | undefined {
+  if (severity == null) {
+    if (!timed.length) return undefined;
+    const longest = minutesOf(Math.max(...timed.map((u) => u.seconds)));
+    return `None has lasted past ${minutesWords(longest, { capital: false })}.`;
+  }
   const band = Math.min(4, Math.max(0, Math.round((severity - 2) / 2)));
   const word = INTENSITY_BANDS[band].label.toLowerCase();
   const strong = timed.filter((u) => (u.severity ?? 0) >= severity);
@@ -179,9 +243,12 @@ function scoreLine(severity: number, timed: HubUrge[]): string {
   return `${first} None this ${word} has lasted past ${minutesWords(longest, { capital: false })}.`;
 }
 
-function HubScore({ severity, stats, onBottom }: { severity: number; stats: HubStats; onBottom?: OnBottom }) {
-  const clean = stats.days.filter(Boolean).length;
-  const slipped = stats.days.length - clean;
+/** A day before the programme: a faint ring, so the grid keeps its shape without claiming the day. */
+const BEFORE_RING = `0 0 0 1px ${monoDark.chipRing}`;
+
+function HubScore({ severity, stats, onBottom }: { severity?: number; stats: HubStats; onBottom?: OnBottom }) {
+  const clean = stats.days.filter((d) => d === 'held').length;
+  const slipped = stats.days.filter((d) => d === 'slip').length;
   return (
     <>
       <DarkHead title="You’re riding a wave." body={scoreLine(severity, stats.timed)} />
@@ -192,17 +259,23 @@ function HubScore({ severity, stats, onBottom }: { severity: number; stats: HubS
               Last 30 days
             </MonoText>
             <MonoText v="pill" color={monoDark.text}>
-              {`${clean} clean, ${countOf(slipped, 'slip')}`}
+              {stats.counted ? `${clean} clean, ${countOf(slipped, 'slip')}` : ''}
             </MonoText>
           </View>
           {/* three rows of ten `flex: 1` dots — where CSS's `repeat(10, 1fr)` puts them, at any width */}
           <View style={{ gap: 10 }}>
             {[0, 10, 20].map((row) => (
               <View key={row} style={{ flexDirection: 'row', gap: 10 }}>
-                {stats.days.slice(row, row + 10).map((held, i) => (
+                {stats.days.slice(row, row + 10).map((day, i) => (
                   <View
                     key={i}
-                    style={{ flex: 1, aspectRatio: 1, borderRadius: 999, backgroundColor: held ? monoDark.text : 'transparent', boxShadow: held ? undefined : ring.outlineDark }}
+                    style={{
+                      flex: 1,
+                      aspectRatio: 1,
+                      borderRadius: 999,
+                      backgroundColor: day === 'held' ? monoDark.text : 'transparent',
+                      boxShadow: day === 'held' ? undefined : day === 'slip' ? ring.outlineDark : BEFORE_RING,
+                    }}
                   />
                 ))}
               </View>
@@ -308,9 +381,11 @@ function HubSurfed({ stats, onBottom, onHead, tuck = 0 }: { stats: HubStats; onB
                   <View style={{ height: 6, borderRadius: 3, backgroundColor: monoDark.chipRing }}>
                     <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${Math.round((min / peak) * 100)}%`, borderRadius: 3, backgroundColor: monoDark.text }} />
                   </View>
-                  <MonoText v="pill" wrap="wrap" color={monoDark.body} style={sans('400')}>
-                    {row.helped}
-                  </MonoText>
+                  {row.helped ? (
+                    <MonoText v="pill" wrap="wrap" color={monoDark.body} style={sans('400')}>
+                      {row.helped}
+                    </MonoText>
+                  ) : null}
                 </View>
               );
             })}
@@ -333,12 +408,16 @@ function pledgeLine(signedAt: number, now: number, slips: TidelineEvent[]): stri
   return slips.some((e) => e.createdAt > signedAt) ? signed : `${signed} Kept every day since.`;
 }
 
-function HubPledge({ name, pledge, line, onBottom }: { name?: string; pledge: string; line?: string; onBottom?: OnBottom }) {
+/**
+ * With no pledge signed there is no card: the pane used to quote the
+ * designer's line as the user's own signed words (D460).
+ */
+function HubPledge({ name, pledge, line, onBottom }: { name?: string; pledge: string | null; line?: string; onBottom?: OnBottom }) {
   return (
     <>
       <DarkHead title="Your pledge." gap={20} />
       <View onLayout={endsAt(238, onBottom)} style={{ position: 'absolute', left: 24, right: 24, top: 238, gap: 12 }}>
-        <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} />
+        {pledge ? <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} /> : null}
         {line ? (
           <MonoText v="pTight" center wrap="pretty" color={monoDark.body} style={{ paddingTop: 6 }}>
             {line}
@@ -358,13 +437,17 @@ function HubPledge({ name, pledge, line, onBottom }: { name?: string; pledge: st
  * chips' box would clip.
  */
 const PANE_BOTTOM = [546 + 36 + 1, 431, 533, 612, 493];
+/** 85A's ring: its box at canvas 270, 240 tall — where the pane ends once its chips are put away. */
+const RING_TOP = 270;
+const RING_BOX = 240;
 /** The dots' row top (`bottom 180`, 6 tall) and 16 clear of it. */
 const PANE_CONTROLS = 180 + 6 + 16;
 
 /**
  * `85A–85F`. Five panes, one shell, and the two ways out the canvas draws: the
  * white "Breathe" pill (85F, then the tap and odd-one-out stages, then back to
- * the panes) and "I slipped" (the slip flow, D147).
+ * the panes) and "I slipped" (the slip flow, D147) — and the way to a person,
+ * "Help".
  *
  * On a phone too short for a pane above the dots (D258, D320) the panes first
  * rise — heads and all, by at most `BAND_LIFT`, all five by the same amount so
@@ -377,6 +460,7 @@ export function UrgeHub() {
   const events = useEvents();
   const user = useCurrentUser();
   const journal = useJournalEntries();
+  const createEvent = useCreateEvent();
   const { width } = useWindowDimensions();
   const [pane, setPane] = useState(0);
   /** A horizontal `ScrollView` gives its pages no height, so the pager's own is measured. */
@@ -393,29 +477,187 @@ export function UrgeHub() {
   /** 85D's head — one line (33) at every width the frames' copy has been checked at, until measured. */
   const [surfedHead, setSurfedHead] = useState(33);
   const bandBottom = useBandBottom(PANE_CONTROLS);
+  /** How long the urge ran, once it is logged as ridden out — 85A's quiet state. */
+  const [passed, setPassed] = useState<number | null>(null);
 
+  /**
+   * Where this urge stands, read by the clock, the close and the unmount
+   * alike: `live` while it runs; `logged` once ridden out; `slipped` while the
+   * slip flow is open over the hub; `left` when the hub has gone.
+   */
+  const ended = useRef<'live' | 'logged' | 'slipped' | 'left'>('live');
+  const sessionRef = useRef<UrgeSession | null>(null);
   useEffect(() => {
-    // The hub is opened during an urge, so it resumes the live session rather
-    // than starting one — the ring is that session's own clock.
-    void loadUrgeSession().then((stored) => setSession(stored ?? newUrgeSession(bandToSeverity(3))));
-    void getJSON<SosSettings>(SOS_SETTINGS_KEY).then((stored) => {
-      if (stored) setSettings({ ...DEFAULT_SOS_SETTINGS, ...stored });
+    sessionRef.current = session;
+  }, [session]);
+  /** Which `begin` is current; an earlier one's storage answer is dropped. 0 until the first. */
+  const run = useRef(0);
+  /** When "I slipped" opened the slip flow, and what the urge was then — what an unlogged return goes back to. */
+  const slipAt = useRef(0);
+  const slippedFrom = useRef<'live' | 'logged'>('live');
+
+  /**
+   * The urge this hub is riding: the live one if there is one (the ring picks
+   * up its own clock — F1, D460), else a new one, saved at once so closing the
+   * app does not restart the ring. One whose twenty minutes ran out while the
+   * app was closed is not resumed into an instant "It passed": a fresh one starts.
+   *
+   * The urge before it is let go first, so until storage answers the clock,
+   * the close and the ring have no urge to count: an old session must not be
+   * logged as waited out, or as ridden out on a close, in that gap (D460).
+   */
+  const begin = useCallback(() => {
+    const mine = ++run.current;
+    ended.current = 'live';
+    sessionRef.current = null;
+    setSession(null);
+    setPassed(null);
+    setChip(null);
+    setNow(Date.now());
+    // a hub left before storage answered must not leave the session it just saved behind
+    const gone = () => {
+      if (ended.current === 'left') void clearUrgeSession();
+      return ended.current !== 'live' || run.current !== mine;
+    };
+    void openUrgeSession('hub').then(async (stored) => {
+      if (gone()) return;
+      let s = stored;
+      if (Date.now() - s.startedAt >= SAME_URGE_WINDOW_MS) {
+        s = newUrgeSession('hub');
+        await saveUrgeSession(s);
+      }
+      if (gone()) return;
+      setSession(s);
+      const at = s.trigger ? HUB_CHIPS.indexOf(s.trigger) : -1;
+      setChip(at >= 0 ? at : null);
     });
   }, []);
 
+  /**
+   * On focus: the first time, the urge begins. Back from the slip flow, it
+   * depends on whether a slip was logged. If one was, the urge ended in it and
+   * a new one starts (98F's "I’m already watching again" means exactly that).
+   * If the flow was left without logging ("Not now", ✕, back), nothing ended:
+   * the same urge rides on, ring, chip and all, or 85A stays quiet if it had
+   * already passed. A ring that ran out while the slip flow was open is not
+   * logged as waited out, since the user said they slipped; a new one starts (D460).
+   */
+  useFocusEffect(
+    useCallback(() => {
+      if (run.current === 0) {
+        begin();
+        return;
+      }
+      if (ended.current !== 'slipped') return;
+      if (slipLoggedSince(slipAt.current)) {
+        begin();
+        return;
+      }
+      if (slippedFrom.current === 'logged') {
+        ended.current = 'logged';
+        return;
+      }
+      const held = sessionRef.current;
+      if (held && Date.now() - held.startedAt < SAME_URGE_WINDOW_MS) {
+        ended.current = 'live';
+        setNow(Date.now());
+      } else begin();
+    }, [begin]),
+  );
+
   useEffect(() => {
-    const clock = setInterval(() => setNow(Date.now()), 1000);
+    void readAccountJSON<Partial<SosSettings>>(SOS_SETTINGS_KEY).then((stored) => {
+      if (stored) setSettings(readSosSettings(stored));
+    });
+  }, []);
+
+  /**
+   * The urge, written as ridden out — once (F1, D460). The hub's chip is its
+   * trigger, the ring's run its length (never past the window), and "what got
+   * you through" only what the hub saw: the three stages run to their end, or
+   * the twenty minutes waited out. A strength is filed only if the user gave
+   * one (an SOS session the hub picked up). The screen never waits for the
+   * write (D465). Returns the length, or null when nothing was written.
+   */
+  const rideOut = useCallback(
+    (how: 'stages' | 'clock' | 'closed'): number | null => {
+      const s = sessionRef.current;
+      if (!s || ended.current !== 'live') return null;
+      ended.current = 'logged';
+      const seconds = Math.max(1, Math.min(SAME_URGE_WINDOW_MS / 1000, Math.round((Date.now() - s.startedAt) / 1000)));
+      void createEvent({
+        type: 'urge_rode_out',
+        severity: s.severity,
+        trigger: s.trigger,
+        durationSeconds: seconds,
+        whatHelped: how === 'stages' ? 'Breathing, number tap and odd one out' : how === 'clock' ? 'Waited out the timer' : undefined,
+        reopens: s.reopens ? s.reopens : undefined,
+      }).catch((error) => {
+        if (__DEV__) console.warn('urge_rode_out (hub) was not written', error);
+      });
+      void writeAccountJSON(ACCOUNT_KEYS.postPending, Date.now());
+      void clearUrgeSession();
+      return seconds;
+    },
+    [createEvent],
+  );
+
+  /**
+   * Leaving the hub — ✕, a swipe back, Android's back alike, so it runs as the
+   * hub unmounts: an urge the ring has run on for a minute or more was ridden
+   * out; a shorter look just ends the session, so it never silences the
+   * launch arrivals afterwards.
+   */
+  const rideOutRef = useRef(rideOut);
+  useEffect(() => {
+    rideOutRef.current = rideOut;
+  }, [rideOut]);
+  useEffect(
+    () => () => {
+      const s = sessionRef.current;
+      if (ended.current === 'live' && s && Date.now() - s.startedAt >= RIDE_MIN_MS) rideOutRef.current('closed');
+      // live, or handed to a slip flow that is going with the hub: nobody is riding it now
+      if (ended.current === 'live' || ended.current === 'slipped') void clearUrgeSession();
+      ended.current = 'left';
+    },
+    [],
+  );
+
+  // The ring's clock. At 0:00 the twenty minutes are up: the urge is logged as
+  // waited out and 85A goes quiet (D460).
+  useEffect(() => {
+    const clock = setInterval(() => {
+      const t = Date.now();
+      setNow(t);
+      const s = sessionRef.current;
+      if (s && ended.current === 'live' && hubRemaining(t - s.startedAt) <= 0) {
+        const seconds = rideOutRef.current('clock');
+        if (seconds != null) setPassed(seconds);
+      }
+    }, 1000);
     return () => clearInterval(clock);
   }, []);
 
-  const stats = hubStats(events);
+  const stats = hubStats(events, programmeStartKey(user));
   const pledge = standingPledge(journal);
   const elapsed = session ? Math.max(0, now - session.startedAt) : 0;
-  const severity = session?.peakSeverity ?? bandToSeverity(3);
   const first = user?.displayName?.split(' ')[0];
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
-  const slip = () => router.push('/slip');
+  /**
+   * "I slipped": the urge is held, not counted, while the slip flow is open.
+   * Its session stays saved, because only a logged slip ends it (the slip
+   * flow's save clears it); leaving that flow without logging comes back to
+   * the same urge (D460).
+   */
+  const slip = () => {
+    if (ended.current !== 'slipped') {
+      slippedFrom.current = ended.current === 'logged' ? 'logged' : 'live';
+      ended.current = 'slipped';
+    }
+    slipAt.current = Date.now();
+    router.push('/slip');
+  };
   const goToPane = (index: number) => {
     setPane(index);
     pager.current?.scrollTo({ x: index * width, animated: true });
@@ -424,7 +666,7 @@ export function UrgeHub() {
 
   function pickChip(index: number) {
     setChip(index);
-    if (session) {
+    if (session && ended.current === 'live') {
       const next = { ...session, trigger: HUB_CHIPS[index] };
       setSession(next);
       void saveUrgeSession(next);
@@ -433,31 +675,38 @@ export function UrgeHub() {
 
   function saveSettings(next: SosSettings) {
     setSettings(next);
-    void setJSON(SOS_SETTINGS_KEY, next);
+    void writeAccountJSON(SOS_SETTINGS_KEY, next);
   }
+
+  const endStages = () => {
+    setSos(false);
+    setSosStage(0);
+    setSettingsOpen(false);
+  };
+  // Android's back inside the stages returns to the panes, as the back chevron does (F2)
+  useStepBack(endStages, sos);
 
   if (sos) {
     const stage = SOS_ORDER[sosStage];
-    const end = () => {
-      setSos(false);
-      setSosStage(0);
-      setSettingsOpen(false);
-    };
     // The hub's own ring is the clock, so the fourth stage — the 90-second
-    // ring — has nothing to add here: finishing the third returns to the panes.
+    // ring — has nothing to add here: finishing the third returns to the
+    // panes, with the urge logged as ridden out (F1).
     const advance = () => {
       const next = sosStage + 1;
-      if (next >= SOS_ORDER.length || SOS_ORDER[next] === 'wave') end();
-      else setSosStage(next);
+      if (next >= SOS_ORDER.length || SOS_ORDER[next] === 'wave') {
+        const seconds = rideOut('stages');
+        if (seconds != null) setPassed(seconds);
+        endStages();
+      } else setSosStage(next);
     };
     const stageProps = {
       ctx: 'hub' as const,
       settings,
       onClose: close,
-      onEnd: end,
+      onEnd: endStages,
       onDone: advance,
       onSlip: slip,
-      onBack: end,
+      onBack: endStages,
       // the old hub drew the sheet over every stage, so a round ending under it does not close it
       overlay: <SosSettingsSheet open={settingsOpen} settings={settings} onChange={saveSettings} onDone={() => setSettingsOpen(false)} />,
     };
@@ -467,23 +716,25 @@ export function UrgeHub() {
     return <BreatheStage {...stageProps} onSettings={() => setSettingsOpen(true)} />;
   }
 
+  // 85A ends at the ring's box once the chips are put away
+  const bottomsNow = passed != null ? [RING_TOP + RING_BOX, ...bottoms.slice(1)] : bottoms;
   // what each pane lacks above the dots on this screen, and what it does about it: one lift for the
   // pager (a pane that fits rises with the others, so no head jumps mid-swipe), then each pane's own tuck
-  const deficit = bottoms.map((b) => Math.max(0, b - bandBottom));
+  const deficit = bottomsNow.map((b) => Math.max(0, b - bandBottom));
   const lift = Math.min(BAND_LIFT, Math.max(...deficit));
-  const tuck = [Math.min(CHIPS_TUCK, deficit[0] - lift), 0, 0, Math.min(cardTuckMax(surfedHead), deficit[3] - lift), 0].map((t) => Math.max(0, t));
+  const tuck = [passed != null ? 0 : Math.min(CHIPS_TUCK, deficit[0] - lift), 0, 0, Math.min(cardTuckMax(surfedHead), deficit[3] - lift), 0].map((t) => Math.max(0, t));
 
+  const pledgeWords = pledgeText(pledge);
   const panes: ReactNode[] = [
-    <HubNow key="now" elapsedMs={elapsed} chip={chip} onChip={pickChip} tuck={tuck[0]} />,
-    <HubScore key="score" severity={severity} stats={stats} onBottom={bottomOf(1)} />,
+    <HubNow key="now" elapsedMs={elapsed} chip={chip} onChip={pickChip} passedSeconds={passed} tuck={tuck[0]} />,
+    <HubScore key="score" severity={session?.severity} stats={stats} onBottom={bottomOf(1)} />,
     <HubProof key="proof" stats={stats} onBottom={bottomOf(2)} />,
     <HubSurfed key="surfed" stats={stats} onBottom={bottomOf(3)} onHead={(h) => setSurfedHead((current) => (current === h ? current : h))} tuck={tuck[3]} />,
     <HubPledge
       key="pledge"
-      // with no signed pledge the card keeps the words it always fell back to
-      pledge={pledgeText(pledge) || 'The mornings are mine again.'}
+      pledge={pledgeWords || null}
       name={first ?? 'You'}
-      line={pledge ? pledgeLine(pledge.createdAt, now, stats.slips) : undefined}
+      line={pledge ? pledgeLine(pledge.createdAt, now, stats.slips) : 'No pledge signed yet.'}
       onBottom={bottomOf(4)}
     />,
   ];
@@ -508,7 +759,7 @@ export function UrgeHub() {
           style={{ flex: 1 }}>
           {panes.map((node, i) => (
             <View key={i} style={{ width, height: pageHeight }}>
-              <CanvasBand controls={PANE_CONTROLS} height={bottoms[i] - tuck[i]} lift={lift}>
+              <CanvasBand controls={PANE_CONTROLS} height={bottomsNow[i] - tuck[i]} lift={lift}>
                 {node}
               </CanvasBand>
             </View>
@@ -516,6 +767,7 @@ export function UrgeHub() {
         </ScrollView>
       </View>
       <NavBar tone="dark" left="empty" centre={{ title: 'Ride it out' }} right="close" onClose={close} />
+      <SupportDoor />
       <PagerDots active={pane} onChange={goToPane} />
       <PrimaryButton label="Breathe" onPress={() => setSos(true)} bottom={96} tone="dark" />
       <GhostLink label="I slipped" onPress={slip} tone="dark" />

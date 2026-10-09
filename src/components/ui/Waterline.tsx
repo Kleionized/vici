@@ -62,9 +62,10 @@ export function SplashScene() {
  * bundle's one loading mark under it — the kit `Spinner` (Enlisting Aegis's
  * dotted ring and arc) at 44 in `#9B968E`, as `LoadingView` draws it (D386) —
  * and its label in the ghost line's 15/400 mute, low on the screen where the
- * old board put them.
+ * old board put them. The label was Tideline's "Finding the waterline…"; it
+ * says what boot is doing now (D493). The name stays, so the old imports hold.
  */
-export function WaterlineScene({ label = 'Finding the waterline…' }: { label?: string }) {
+export function WaterlineScene({ label = 'Opening VICI…' }: { label?: string }) {
   const top = useMarkTop();
   return (
     <Screen>

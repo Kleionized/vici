@@ -29,8 +29,8 @@ div | 0 | 100 | 393 | 646 | - | - | - | - | - | -
 div | 0 | 0 | 393 | 675 | - | - | - | - | - | -
 div | 24 | 199 | 345 | 99 | - | - | - | - | - | -
 div | 24 | 199 | 345 | 33 | - | - | - | - | 26px/700/-0.6px/33px/rgb(242, 240, 236) | This is your next 30 days.
-div | 24 | 250 | 345 | 48 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | If the rate you reported stayed the same, about could end with porn.
-span | 24 | 253 | 335.9 | 42 | - | - | - | - | 15px/700/normal/24px/rgb(242, 240, 236) | 9 of the next 30 days
+div | 24 | 250 | 345 | 48 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | If the rate you reported stayed the same, could end with porn.
+span | 24 | 253 | 345.6 | 42 | - | - | - | - | 15px/700/normal/24px/rgb(242, 240, 236) | about 13 of the next 30 days
 div | 24 | 343 | 345 | 244 | - | - | - | - | - | -
 svg | 29.5 | 343 | 334 | 244 | - | - | - | - | - | -
 circle | 37.5 | 351 | 28 | 28 | - | - | - | - | - | -

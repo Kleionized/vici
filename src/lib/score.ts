@@ -1,214 +1,257 @@
 /**
- * The recovery score.
+ * The recovery rating (deploy rating, D510–D519).
  *
- * Deliberately not a streak: it is a running total that a slip dents rather
- * than erases (invariant #2). Clean days do most of the work, the daily
- * practice adds up quietly, and a lapse costs about four days — enough to
- * matter, not enough to make coming back feel pointless.
+ * One number, 0–100, that answers "how have the last seven days gone?". It
+ * replaces the old running score entirely: nothing accrues, so a slip leaves
+ * the rating once its day has left the window, and a quiet week cannot be
+ * banked against a hard one. Three parts, on fixed weights:
+ *
+ * - **Showing up** — the window's days with a check-in (`isCheckin`) or a
+ *   logged slip (`isSlip`). Logging a slip counts as showing up, so honesty
+ *   never costs points.
+ * - **Clean days** — the window's days with a check-in and no slip. A day with
+ *   no check-in earns nothing here: there is no credit for silence.
+ * - **Lessons** — lessons finished inside the window over the lessons the
+ *   window scheduled (one per day on programme days 1–84), capped at all of
+ *   them. Past the course the rating is showing up and clean days alone.
+ *
+ * The window is seven calendar days (`src/lib/day.ts`, never 86,400,000 ms
+ * steps). It ends today once today has a check-in or a logged slip, and
+ * yesterday until then, so the rating never dips just because today has not
+ * been checked in yet. Days before the programme began are outside it, but the
+ * denominator stays seven, so a new account builds up over its first week.
+ *
+ * Everything is computed on the phone from the account's check-ins, events and
+ * lesson progress; both backends feed it the same rows and nothing is stored.
  */
 
-import type { DailyCheckin, TidelineEvent } from '@/lib/types';
+import { toDateKey } from '@/lib/date';
+import { COURSE_DAYS, calendarDaysBetween, isCheckin, isSlip, isDateKey, keyToDate, programmeStartKey, shiftKey, type ProgrammeStart } from '@/lib/day';
+import type { DailyCheckin, LessonProgress, TidelineEvent } from '@/lib/types';
 
-export const SCORE_BASE = 1_000;
+/** The days the rating covers. */
+export const RATING_WINDOW = 7;
 
-export const SCORE_WEIGHTS = {
-  cleanDay: 4,
-  checkin: 2,
-  lesson: 3,
-  urgeRidden: 2,
-  slip: -16,
+/** The scale every chart of the rating is drawn on — fixed, so a small change never fills the chart. */
+export const RATING_SCALE = [0, 100] as const;
+
+/**
+ * What each part is worth. While the window schedules a lesson the parts are
+ * 30 / 45 / 25; once it schedules none (after day 84) the lessons' share goes
+ * to the other two, 40 / 60.
+ */
+export const RATING_WEIGHTS = {
+  course: { showingUp: 30, cleanDays: 45, lessons: 25 },
+  afterCourse: { showingUp: 40, cleanDays: 60, lessons: 0 },
 } as const;
 
-export type ScoreLine = { label: string; points: number };
+/** The four bands a rating falls in, lowest first. `min` and `max` are inclusive. */
+export const RATING_BANDS = [
+  { key: 'starting', label: 'Starting', min: 0, max: 39 },
+  { key: 'steadying', label: 'Steadying', min: 40, max: 59 },
+  { key: 'holding', label: 'Holding', min: 60, max: 79 },
+  { key: 'strong', label: 'Strong', min: 80, max: 100 },
+] as const;
 
-export type Rank = { name: string; at: number };
+export type RatingBand = (typeof RATING_BANDS)[number];
 
-/** The ladder the score climbs. */
-export const RANKS: Rank[] = [
-  { name: 'Deckhand', at: 1_000 },
-  { name: 'Navigator', at: 1_150 },
-  { name: 'Helmsman', at: 1_300 },
-  { name: 'Captain', at: 1_500 },
-];
+export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons';
 
-export type ScoreBreakdown = {
-  total: number;
-  lines: ScoreLine[];
-  net: number;
-  rank: Rank;
-  next?: Rank;
-  toGo: number;
-  /** How far between this rank and the next, 0–1. */
-  progress: number;
-  /** What today has added so far — the ▲ beside the number on Today. */
-  delta: number;
+export type RatingPart = { key: RatingPartKey; label: string; earned: number; max: number };
+
+export type Rating = {
+  /** 0–100, whole */
+  value: number;
+  band: RatingBand;
+  /** the window does not yet hold seven programme days (the account's first week) */
+  building: boolean;
+  /** programme days inside the window, 0–7 */
+  lived: number;
+  /** what a screen prints beside the number: the band's word, or `Building · 3 of 7 days` */
+  label: string;
+  /** the parts in order; a part worth nothing (lessons after the course) is left out. `earned` adds up to `value`. */
+  parts: RatingPart[];
+  /** the window's first programme day (its first calendar day while it holds none), `YYYY-MM-DD` */
+  windowStart: string;
+  /** the window's last day, `YYYY-MM-DD` */
+  windowEnd: string;
 };
 
-/** Which rank a score sits in, and how far it is up the rung. */
-export function rankFor(total: number): { rank: Rank; next?: Rank; toGo: number; progress: number } {
-  let rank = RANKS[0];
-  for (const r of RANKS) if (total >= r.at) rank = r;
-  const next = RANKS.find((r) => r.at > total);
-  const toGo = next ? next.at - total : 0;
-  const span = next ? next.at - rank.at : 1;
-  return { rank, next, toGo, progress: next ? Math.max(0, Math.min(1, (total - rank.at) / span)) : 1 };
-}
-
-/**
- * Build the score from the log. `days` bounds the "what moved it" window;
- * the total itself is all-time.
- */
-export function buildScore(checkins: DailyCheckin[], events: TidelineEvent[], lessonsDone: number, createdAt?: number): ScoreBreakdown {
-  const dayCount = createdAt ? Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1) : 1;
-  const slips = events.filter((e) => e.type === 'lapse').length;
-  const ridden = events.filter((e) => e.type === 'urge_rode_out').length;
-  const cleanDays = Math.max(0, dayCount - slips);
-
-  const lines: ScoreLine[] = [
-    { label: 'Clean days', points: cleanDays * SCORE_WEIGHTS.cleanDay },
-    { label: 'Check-ins', points: checkins.length * SCORE_WEIGHTS.checkin },
-    { label: 'Lessons', points: lessonsDone * SCORE_WEIGHTS.lesson },
-    { label: 'Urges ridden', points: ridden * SCORE_WEIGHTS.urgeRidden },
-  ];
-  if (slips) lines.push({ label: slips === 1 ? 'Slip' : `${slips} slips`, points: slips * SCORE_WEIGHTS.slip });
-
-  const net = lines.reduce((sum, l) => sum + l.points, 0);
-  const total = SCORE_BASE + net;
-
-  // Today's own contribution, so the card can show what the day has earned.
-  const midnight = new Date().setHours(0, 0, 0, 0);
-  const todayKey = dateKey(new Date(midnight));
-  const since = (e: TidelineEvent) => e.createdAt >= midnight;
-  const delta =
-    (slips && events.some((e) => e.type === 'lapse' && since(e)) ? 0 : SCORE_WEIGHTS.cleanDay) +
-    (checkins.some((c) => c.date === todayKey) ? SCORE_WEIGHTS.checkin : 0) +
-    events.filter((e) => e.type === 'urge_rode_out' && since(e)).length * SCORE_WEIGHTS.urgeRidden +
-    events.filter((e) => e.type === 'lapse' && since(e)).length * SCORE_WEIGHTS.slip;
-
-  return { total, lines, net, delta, ...rankFor(total) };
-}
-
-function dateKey(d: Date) {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
-/* ------------------------------------------------------------ over time (D230) */
-
-const DAY = 86_400_000;
-/** "This month" for the score's ledger — a rolling window, not a calendar month. */
-export const LEDGER_WINDOW = 30;
-
-/** Local calendar key, `2025-07-18`. */
-export function scoreDayKey(t: number) {
-  return dateKey(new Date(t));
-}
-
-export type ScoreHistory = {
-  /** the score at the close of each day, the account's first day to today */
-  values: number[];
-  /** local midnight of day `i` */
-  dayAt: (i: number) => number;
+/** What the rating is computed from — the same rows on either backend. */
+export type RatingInput = {
+  checkins: readonly Pick<DailyCheckin, 'date' | 'mood' | 'energy' | 'emotions' | 'reasons' | 'nightMood'>[];
+  events: readonly Pick<TidelineEvent, 'type' | 'createdAt'>[];
+  /** when each finished lesson was finished (ms); a completion with no date is in no window */
+  lessons: readonly (number | null | undefined)[];
+  start: ProgrammeStart;
 };
 
-type ProgressRow = { status?: string; completedAt?: number } | undefined;
+const PART_LABEL: Record<RatingPartKey, string> = { showingUp: 'Showing up', cleanDays: 'Clean days', lessons: 'Lessons' };
 
 /**
- * Replay the score one day at a time, so a chart is the user's own history
- * rather than a drawn shape. Same weights as the total; the series is then
- * shifted so its last point lands exactly on the number beside it, because two
- * answers to "what is my score" would be worse than a rough line. (Was
- * `score.tsx`'s own; Today's thirty-day chart reads it too now.)
+ * The completion times of finished lessons, from the lesson-progress map both
+ * backends serve (`completedAt`, set when the lesson is finished). A row
+ * marked complete without a date is left out rather than guessed.
  */
-export function scoreHistory(
-  checkins: DailyCheckin[],
-  events: TidelineEvent[],
-  progress: Record<string, ProgressRow>,
-  createdAt: number,
-  now: number,
-  total: number,
-): ScoreHistory {
-  const start = new Date(createdAt).setHours(0, 0, 0, 0);
-  const days = Math.max(1, Math.floor((now - start) / DAY) + 1);
+export function lessonCompletions(progress: Record<string, Pick<LessonProgress, 'status' | 'completedAt'> | undefined> | null | undefined): number[] {
+  if (!progress) return [];
+  const out: number[] = [];
+  for (const p of Object.values(progress)) if (p?.status === 'completed' && typeof p.completedAt === 'number' && p.completedAt > 0) out.push(p.completedAt);
+  return out;
+}
 
-  const gained = new Map<string, number>();
-  const add = (key: string, pts: number) => gained.set(key, (gained.get(key) ?? 0) + pts);
-  const lapsed = new Set<string>();
-  for (const e of events) {
-    if (e.type === 'lapse') {
-      lapsed.add(scoreDayKey(e.createdAt));
-      add(scoreDayKey(e.createdAt), SCORE_WEIGHTS.slip);
-    }
-    if (e.type === 'urge_rode_out') add(scoreDayKey(e.createdAt), SCORE_WEIGHTS.urgeRidden);
+/** The band a value falls in. */
+export function bandFor(value: number): RatingBand {
+  let band: RatingBand = RATING_BANDS[0];
+  for (const b of RATING_BANDS) if (value >= b.min) band = b;
+  return band;
+}
+
+// ── the counting ─────────────────────────────────────────────────────────────
+
+type Index = {
+  start: string | null;
+  startDate: Date | null;
+  /** days with a check-in */
+  checked: Set<string>;
+  /** days with a slip of either kind — several on one day are one slip day */
+  slipped: Set<string>;
+  /** lessons finished, by the day they were finished */
+  lessons: Map<string, number>;
+};
+
+const keyOf = (t: number | Date) => toDateKey(t instanceof Date ? t : new Date(t));
+
+/**
+ * The rows, indexed by day — once per input: a screen builds one input per
+ * render and reads several numbers off it (Today: the rating, its change and
+ * thirty days of history; the Log: eight closes per report week). Kept only
+ * while the input still holds the same rows.
+ */
+const indexed = new WeakMap<RatingInput, { of: [unknown, unknown, unknown, unknown]; ix: Index }>();
+
+function indexOf(input: RatingInput): Index {
+  const of: [unknown, unknown, unknown, unknown] = [input.checkins, input.events, input.lessons, input.start];
+  const hit = indexed.get(input);
+  if (hit && hit.of.every((v, i) => v === of[i])) return hit.ix;
+  const ix = buildIndex(input);
+  indexed.set(input, { of, ix });
+  return ix;
+}
+
+function buildIndex(input: RatingInput): Index {
+  const start = programmeStartKey(input.start);
+  const checked = new Set<string>();
+  for (const c of input.checkins) if (isCheckin(c) && isDateKey(c.date)) checked.add(c.date);
+  const slipped = new Set<string>();
+  for (const e of input.events) if (isSlip(e) && Number.isFinite(e.createdAt)) slipped.add(keyOf(e.createdAt));
+  const lessons = new Map<string, number>();
+  for (const t of input.lessons) {
+    if (typeof t !== 'number' || !Number.isFinite(t) || t <= 0) continue;
+    const k = keyOf(t);
+    lessons.set(k, (lessons.get(k) ?? 0) + 1);
   }
-  for (const c of checkins) add(c.date, SCORE_WEIGHTS.checkin);
-  for (const p of Object.values(progress)) if (p?.status === 'completed' && p.completedAt) add(scoreDayKey(p.completedAt), SCORE_WEIGHTS.lesson);
+  return { start, startDate: start ? keyToDate(start) : null, checked, slipped, lessons };
+}
 
-  const dayAt = (i: number) => {
-    const d = new Date(start);
-    d.setDate(d.getDate() + i);
-    return d.getTime();
+/** Today's window ends today once today has a check-in or a logged slip; until then, yesterday. */
+function endFor(ix: Index, today: string): string {
+  return ix.checked.has(today) || ix.slipped.has(today) ? today : shiftKey(today, -1);
+}
+
+/**
+ * Round the parts so they add up to the rounded total (largest remainder): the
+ * rows under the number never sum to one more or one less than it.
+ */
+function roundParts(raw: number[], total: number): number[] {
+  const floors = raw.map((v) => Math.floor(v + 1e-9));
+  let left = total - floors.reduce((s, v) => s + v, 0);
+  const order = raw.map((v, i) => ({ i, frac: v - floors[i] })).sort((a, b) => b.frac - a.frac);
+  for (const { i, frac } of order) {
+    if (left <= 0) break;
+    if (frac <= 1e-9) continue;
+    floors[i] += 1;
+    left -= 1;
+  }
+  return floors;
+}
+
+/** The rating of the seven days ending on `end` (a date key). */
+function rate(ix: Index, end: string): Rating {
+  const keys = Array.from({ length: RATING_WINDOW }, (_, i) => shiftKey(end, i - (RATING_WINDOW - 1)));
+  const inside = ix.start == null ? keys : keys.filter((k) => k >= (ix.start as string));
+  const dayOf = (k: string) => (ix.startDate ? calendarDaysBetween(ix.startDate, keyToDate(k)) + 1 : null);
+  // A window day on programme days 1–84 schedules a lesson. A day before the
+  // start schedules one too, so lessons build up over the first week as the
+  // other two parts do (the denominator stays seven).
+  const scheduled = keys.filter((k) => {
+    const d = dayOf(k);
+    return d == null || d <= COURSE_DAYS;
+  }).length;
+
+  const showed = inside.filter((k) => ix.checked.has(k) || ix.slipped.has(k)).length;
+  const clean = inside.filter((k) => ix.checked.has(k) && !ix.slipped.has(k)).length;
+  const done = inside.reduce((n, k) => n + (ix.lessons.get(k) ?? 0), 0);
+
+  const w = scheduled ? RATING_WEIGHTS.course : RATING_WEIGHTS.afterCourse;
+  const raw = [(w.showingUp * showed) / RATING_WINDOW, (w.cleanDays * clean) / RATING_WINDOW, scheduled ? w.lessons * Math.min(1, done / scheduled) : 0];
+  const value = Math.max(0, Math.min(100, Math.round(raw[0] + raw[1] + raw[2] + 1e-9)));
+  const earned = roundParts(raw, value);
+  const parts: RatingPart[] = (['showingUp', 'cleanDays', 'lessons'] as const)
+    .map((key, i) => ({ key, label: PART_LABEL[key], earned: earned[i], max: w[key] as number }))
+    .filter((p) => p.max > 0);
+
+  const lived = ix.start == null ? RATING_WINDOW : inside.length;
+  const building = lived < RATING_WINDOW;
+  const band = bandFor(value);
+  return {
+    value,
+    band,
+    building,
+    lived,
+    label: building ? `Building · ${lived} of ${RATING_WINDOW} days` : band.label,
+    parts,
+    windowStart: inside[0] ?? keys[0],
+    windowEnd: end,
   };
+}
 
-  const values: number[] = [];
-  let running = SCORE_BASE;
-  for (let i = 0; i < days; i++) {
-    const key = scoreDayKey(dayAt(i));
-    running += (lapsed.has(key) ? 0 : SCORE_WEIGHTS.cleanDay) + (gained.get(key) ?? 0);
-    values.push(running);
-  }
+// ── the exports screens read ─────────────────────────────────────────────────
 
-  const drift = total - values[values.length - 1];
-  return { values: values.map((v) => v + drift), dayAt };
+/**
+ * The rating as of `asOf`: the seven days ending today if today has a
+ * check-in or a logged slip, else the seven ending yesterday.
+ */
+export function computeRating(input: RatingInput, asOf: number | Date = Date.now()): Rating {
+  const ix = indexOf(input);
+  return rate(ix, endFor(ix, keyOf(asOf)));
 }
 
 /**
- * The last `n` days of a history, oldest first. A younger account is padded at
- * the front with its first day's score — the line starts flat where the
- * account started rather than inventing a past (today-day OQ-T3).
+ * The rating as a day closed: the seven days ending on `day` (a date key or a
+ * moment in it). A closed day has nothing left to wait for, so it is in its
+ * own window whether it was checked in or not — this is what yesterday, a
+ * report week's Sunday and every past point of a chart read.
  */
-export function lastDays(history: ScoreHistory, n: number): number[] {
-  const v = history.values;
-  if (v.length >= n) return v.slice(v.length - n);
-  return [...Array.from({ length: n - v.length }, () => v[0]), ...v];
+export function ratingThrough(input: RatingInput, day: string | number | Date): Rating {
+  return rate(indexOf(input), typeof day === 'string' ? day : keyOf(day));
 }
-
-export type LedgerLine = ScoreLine & { slip?: boolean };
 
 /**
- * What moved the score over the rolling month, on the same weights as the
- * total. One slip names its day (`Slip on Jul 8`, Score Detail Moves); more
- * than one is counted (`3 slips`).
+ * The rating as of each of the last `days` days, oldest first: each past day
+ * as it closed (`ratingThrough`), today as it stands now (`computeRating`), so
+ * the line ends on the number beside it. A day before the programme reads 0.
  */
-export function monthLedger(
-  checkins: DailyCheckin[],
-  events: TidelineEvent[],
-  progress: Record<string, ProgressRow>,
-  now: number,
-  daysAlive: number,
-): { lines: LedgerLine[]; net: number; days: number } {
-  const since = now - LEDGER_WINDOW * DAY;
-  const slips = events.filter((e) => e.type === 'lapse' && e.createdAt >= since);
-  const ridden = events.filter((e) => e.type === 'urge_rode_out' && e.createdAt >= since).length;
-  const logged = checkins.filter((c) => new Date(`${c.date}T00:00:00`).getTime() >= since).length;
-  const lessons = Object.values(progress).filter((p) => p?.status === 'completed' && p.completedAt != null && p.completedAt >= since).length;
-  const days = Math.min(LEDGER_WINDOW, Math.max(1, daysAlive));
-
-  const lines: LedgerLine[] = [
-    { label: 'Clean days', points: Math.max(0, days - slips.length) * SCORE_WEIGHTS.cleanDay },
-    { label: 'Check-ins', points: logged * SCORE_WEIGHTS.checkin },
-    { label: 'Lessons', points: lessons * SCORE_WEIGHTS.lesson },
-    { label: 'Urges ridden', points: ridden * SCORE_WEIGHTS.urgeRidden },
-  ];
-  if (slips.length) {
-    const last = new Date(slips.reduce((a, b) => (a.createdAt > b.createdAt ? a : b)).createdAt);
-    lines.push({
-      label: slips.length === 1 ? `Slip on ${MONTHS[last.getMonth()]} ${last.getDate()}` : `${slips.length} slips`,
-      points: slips.length * SCORE_WEIGHTS.slip,
-      slip: true,
-    });
-  }
-
-  return { lines, net: lines.reduce((sum, l) => sum + l.points, 0), days };
+export function ratingHistory(input: RatingInput, days: number, asOf: number | Date = Date.now()): number[] {
+  const ix = indexOf(input);
+  const today = keyOf(asOf);
+  const n = Math.max(1, Math.floor(days));
+  return Array.from({ length: n }, (_, i) => (i === n - 1 ? rate(ix, endFor(ix, today)).value : rate(ix, shiftKey(today, i - (n - 1))).value));
 }
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** Today's rating less yesterday's as it closed — the ▲ / ▼ beside the number. */
+export function ratingChange(input: RatingInput, asOf: number | Date = Date.now()): number {
+  const ix = indexOf(input);
+  const today = keyOf(asOf);
+  return rate(ix, endFor(ix, today)).value - rate(ix, shiftKey(today, -1)).value;
+}

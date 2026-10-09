@@ -1,35 +1,36 @@
 import { useRouter } from 'expo-router';
-import { Linking, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { Linking } from 'react-native';
 
-import { GhostLink, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
-import { lhNormal, mono, sans } from '@/lib/theme';
+import { GhostLink, MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
+import { mono } from '@/lib/theme';
 
 /**
- * Crisis / professional-help route (invariant #5). Tideline is NOT medical
- * advice. Real, localised resources are loaded by the human later — everything
- * here is a clearly-marked placeholder. TODO(jerry): replace with vetted,
- * region-aware crisis + professional-help resources.
+ * Find support — the crisis and professional-help page (B2). VICI is a
+ * self-help tool, not medical advice or a crisis service, and the page says so.
  *
- * No frame draws it; it is set after `Data & privacy` (settings.md §12): the nav
- * row, the heading and its line, the resources as `#1E1E1E` r20 cards, the build
- * note in the footnote's 13/19, and the way back as the frames' ghost at
+ * The resource is one maintained international directory rather than a
+ * hand-kept list of numbers: findahelpline.com lists free, confidential crisis
+ * lines and text services by country and topic, and keeps them current, which
+ * a list baked into an app release cannot (D470). The emergency line is
+ * worded for every country rather than naming one number.
+ *
+ * No frame draws it; it is set after `Data & privacy` (settings.md §12): the
+ * nav row, the heading and its line, the resource as a settings row group,
+ * the notes in the footnote's mute, and the way back as the frames' ghost at
  * `bottom 48`. The column scrolls between the nav and the ghost (D320).
  */
-const PLACEHOLDER_RESOURCES = [
-  {
-    name: '[PLACEHOLDER] Crisis line',
-    detail: 'Add a real, region-appropriate 24/7 crisis number or text line here.',
-    url: undefined as string | undefined,
-  },
-  {
-    name: '[PLACEHOLDER] Find a therapist',
-    detail: 'Link to a vetted directory for professional support.',
-    url: undefined as string | undefined,
-  },
-];
+const HELPLINES_URL = 'https://findahelpline.com';
 
 /** the ghost's 18 line box at `bottom 48` */
 const GHOST_RESERVE = 48 + 18;
+
+/** In-app browser first (it keeps the user one tap from VICI); the system browser if that fails. */
+function openHelplines() {
+  WebBrowser.openBrowserAsync(HELPLINES_URL).catch(() => {
+    Linking.openURL(HELPLINES_URL).catch(() => {});
+  });
+}
 
 export default function Support() {
   const router = useRouter();
@@ -44,31 +45,20 @@ export default function Support() {
 
       <ScrollRegion top={100} bottom={GHOST_RESERVE} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24, gap: 16 }}>
         <MonoText v="h1">You’re not alone in this.</MonoText>
-        <MonoText v="p">
-          VICI is a self-help tool, not medical advice or a crisis service. If you’re in danger or thinking about harming yourself, please reach out to a real person now.
+        <MonoText v="p" color={mono.ink}>
+          If you’re in danger right now, call your local emergency number.
         </MonoText>
-        <View style={{ height: 2 }} />
+        <MonoText v="p">If you’re struggling and want to talk to someone, a helpline is free and confidential.</MonoText>
 
-        {PLACEHOLDER_RESOURCES.map((r) => (
-          <View key={r.name} style={{ borderRadius: 20, backgroundColor: mono.card, paddingVertical: 16, paddingHorizontal: 18, gap: 4 }}>
-            <MonoText v="rowLabel" wrap="pretty">
-              {r.name}
-            </MonoText>
-            <MonoText v="p" color={mono.mute} style={{ fontSize: 14, lineHeight: 20 }}>
-              {r.detail}
-            </MonoText>
-            {r.url ? (
-              <Tap onPress={() => Linking.openURL(r.url as string)} hitSlop={6} style={{ alignSelf: 'flex-start', marginTop: 4 }}>
-                <MonoText v="p" color={mono.ink} style={{ ...sans('700'), fontSize: 14, lineHeight: lhNormal(14) }}>
-                  Open →
-                </MonoText>
-              </Tap>
-            ) : null}
-          </View>
-        ))}
+        <RowGroup label="Talk to someone" style={{ marginTop: 4 }}>
+          <Row label="Find a helpline near you" onPress={openHelplines} accessibilityLabel="Find a helpline near you. Opens findahelpline.com" />
+        </RowGroup>
+        <MonoText v="p" color={mono.mute} style={{ fontSize: 14, lineHeight: 20 }}>
+          findahelpline.com is a maintained international directory of free, confidential crisis lines and text services, searchable by country.
+        </MonoText>
 
-        <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19 }}>
-          Note for the build: these are placeholders. Real crisis and professional-help resources must be added before this ships to anyone.
+        <MonoText v="p" color={mono.mute} style={{ fontSize: 13, lineHeight: 19, marginTop: 8 }}>
+          VICI is a self-help tool. It isn’t a crisis service or medical care, and it can’t respond to an emergency.
         </MonoText>
       </ScrollRegion>
 

@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 
 import { CheckinTimeBoard, saveCheckinDays, useCheckinDays } from '@/components/routines/kit';
+import { syncCheckinReminders } from '@/lib/reminders';
 import { useRoutines, useSaveRoutines, type TimeOfDay } from '@/lib/routines';
 
 /**
@@ -29,6 +30,8 @@ export default function NightTime() {
   const done = async () => {
     await save({ night: time });
     await saveCheckinDays('night', days);
+    // the reminders follow the new time and days (a no-op while they are off)
+    void syncCheckinReminders();
     /* Onboarding ends here, so that path replaces the stack with Today. The
        Settings path must not: 92B is a Settings sub-page and every one of its
        siblings returns to Settings, and a `replace` here threw the whole stack

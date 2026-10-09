@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { RerollGlyph } from '@/components/day/kit';
 import { GhostLink, MonoText, PrimaryButton, Screen, Sheet, SHEET_TOP, Tap, TextField } from '@/components/mono';
 import { useCreateJournalEntry } from '@/lib/backend';
-import { getJSON, setJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
 
 /**
  * 21C · 21C2 — the sentence journal, and the board where you write the prompt.
@@ -31,7 +31,7 @@ const PROMPTS = [
 ];
 
 /** Where a written-in prompt is kept so it comes back each morning. */
-const CUSTOM_PROMPT_KEY = 'tideline.affirmation.prompt';
+const CUSTOM_PROMPT_KEY = ACCOUNT_KEYS.affirmationPrompt;
 
 export default function Affirmation() {
   const router = useRouter();
@@ -45,7 +45,7 @@ export default function Affirmation() {
 
   // A prompt written once comes back — the board promises it will.
   useEffect(() => {
-    void getJSON<string>(CUSTOM_PROMPT_KEY).then((stored) => {
+    void readAccountJSON<string>(CUSTOM_PROMPT_KEY).then((stored) => {
       if (stored) setCustom(stored);
     });
   }, []);
@@ -64,7 +64,7 @@ export default function Affirmation() {
   const applyDraft = () => {
     const next = draft.trim();
     setCustom(next || null);
-    void (next ? setJSON(CUSTOM_PROMPT_KEY, next) : Promise.resolve());
+    void (next ? writeAccountJSON(CUSTOM_PROMPT_KEY, next) : Promise.resolve());
     setMode('journal');
   };
 

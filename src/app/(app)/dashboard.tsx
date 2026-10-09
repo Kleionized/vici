@@ -2,12 +2,12 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { ScrollView, useWindowDimensions, View } from 'react-native';
 
-import { tally, useLabelColumn } from '@/components/logflow';
+import { tally, triggersOf, useLabelColumn } from '@/components/logflow';
 import { AN_RANGES, HeatHeader, HeatLegend, HeatRow } from '@/components/insights/heat';
 import { Caps, LoadingView, MonoText, NavBar, P, Row, RowGroup, Screen, Segmented, TitleHead } from '@/components/mono';
-import { useCheckins, useEvents } from '@/lib/backend';
+import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { lastNDateKeys } from '@/lib/date';
-import { splitStored } from '@/lib/format';
+import { addDays, dayMood, isCheckin, isSlip, keyToDate, programmeStartKey, useToday } from '@/lib/day';
 import { mono } from '@/lib/theme';
 
 /**
@@ -29,34 +29,43 @@ export default function Dashboard() {
   const router = useRouter();
   const checkins = useCheckins();
   const events = useEvents();
+  const user = useCurrentUser();
   const [range, setRange] = useState(14);
-  const [openedAt] = useState(() => Date.now());
+  const openedAt = useToday();
   // the Library tab no longer lights for Insights, so the way back is Today
   const back = () => (router.canGoBack() ? router.back() : router.navigate('/(app)/today'));
 
   const data = useMemo(() => {
-    if (!checkins || !events) return null;
+    if (!checkins || !events || user === undefined) return null;
     const cfg = AN_RANGES.find((r) => r.days === range)!;
     const keys = lastNDateKeys(range); // oldest → today
-    const moodBy = new Map(checkins.filter((c) => c.mood != null).map((c) => [c.date, (c.mood as number) - 1]));
+    // the day's mood: the morning's reading, else the night's (src/lib/day.ts)
+    const moodBy = new Map(checkins.filter((c) => isCheckin(c) && dayMood(c) != null).map((c) => [c.date, (dayMood(c) as number) - 1]));
     const moods = keys.map((k) => (moodBy.has(k) ? Math.min(4, Math.max(0, moodBy.get(k)!)) : null));
     const weeks: (number | null)[][] = [];
     for (let i = 0; i < moods.length; i += 7) weeks.push(moods.slice(i, i + 7));
 
-    const cutoff = openedAt - range * 86400000;
-    const inRange = events.filter((e) => e.createdAt >= cutoff);
+    // The range never reaches back past the programme's first day: a new user
+    // is not shown weeks of "kept" days they never had (S4).
+    const firstKey = programmeStartKey(user);
+    const lived = keys.filter((k) => firstKey == null || k >= firstKey);
+    const cutoff = keyToDate(lived[0] ?? keys[keys.length - 1]).getTime();
+    const inRange = events.filter((e) => e.createdAt >= cutoff && e.createdAt < addDays(openedAt, 1).getTime());
     const isUrge = (t: string) => t === 'urge_rode_out' || t === 'urge_acted_on';
     const urges = inRange.filter((e) => isUrge(e.type)).length;
-    const lapses = new Set(inRange.filter((e) => e.type === 'lapse').map((e) => new Date(e.createdAt).toDateString())).size;
-    const kept = range - lapses;
+    // a slip is either kind, counted once per day
+    const slipDays = new Set(inRange.filter(isSlip).map((e) => new Date(e.createdAt).toDateString())).size;
+    const kept = Math.max(0, lived.length - slipDays);
     const nCheckins = moods.filter((v) => v != null).length;
 
-    // top triggers — the first one each logged urge names, as before
-    const triggers = tally(inRange.filter((e) => isUrge(e.type) && e.trigger).map((e) => splitStored(e.trigger)[0])).slice(0, 4);
+    // top triggers — the first one each logged urge names; an SOS urge from before
+    // trigger was written names it in precedingState.reasons (triggersOf reads both)
+    const triggers = tally(inRange.filter((e) => isUrge(e.type)).map((e) => triggersOf([e])[0]).filter((t): t is string => Boolean(t))).slice(0, 4);
     const tMax = Math.max(...triggers.map(([, n]) => n), 1);
 
     return { cfg, keys, weeks, urges, kept, nCheckins, triggers, tMax };
-  }, [checkins, events, openedAt, range]);
+    // `openedAt` (the screen's clock) moves the range on to the new day
+  }, [checkins, events, user, openedAt, range]);
 
   // the trigger names are the pickers' own (`Something online`), wider than the 96 column
   const { width } = useWindowDimensions();

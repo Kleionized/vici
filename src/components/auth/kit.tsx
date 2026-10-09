@@ -37,6 +37,7 @@ import {
   TextField,
   useCanvasTop,
 } from '@/components/mono';
+import { hasLegal, openLegal, type LegalKind } from '@/lib/legal';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 /** The frame's height: the doors are laid out for 852 and scroll on a shorter phone (D320). */
@@ -241,7 +242,9 @@ const DOOR = {
 /**
  * `02 · Login` and `02B · Welcome Back`. Every control the canvas marks
  * `cursor:pointer` is one: the three pills and the footer link. "Terms ·
- * Privacy" carries none and is drawn as the caption it is (D013/D021).
+ * Privacy" is drawn as the caption it is (D013/D021) — same style, no
+ * underline — but each word now opens its document (App Store 3.1.2/5.1.1;
+ * deploy D411).
  */
 export function AuthDoor({
   variant,
@@ -282,7 +285,7 @@ export function AuthDoor({
       footer={{ text: copy.footer, link: copy.footerLink, onPress: onFooter }}
       caption={
         <MonoText v="legal" center>
-          Terms · Privacy
+          <LegalLink kind="terms">Terms</LegalLink> · <LegalLink kind="privacy">Privacy</LegalLink>
         </MonoText>
       }
     />
@@ -408,12 +411,36 @@ export function AuthMessage({ error, notice }: { error: string | null; notice: s
   );
 }
 
+/**
+ * A run inside a legal caption that opens its document (`src/lib/legal.ts`).
+ * Until the privacy policy has a URL it stays plain words — no underline, no
+ * press — rather than a link that goes nowhere.
+ */
+function LegalLink({ kind, underline, children }: { kind: LegalKind; underline?: boolean; children: string }) {
+  if (!hasLegal(kind)) return <Text>{children}</Text>;
+  return (
+    <Text
+      accessibilityRole="link"
+      onPress={() => void openLegal(kind)}
+      style={underline ? { textDecorationLine: 'underline' } : null}>
+      {children}
+    </Text>
+  );
+}
+
 /** The small print under the last control, in Login's caption style (12/700, ls 0.4, mute), links underlined. */
 export function AuthLegal() {
-  const u = { textDecorationLine: 'underline' } as const;
   return (
     <MonoText v="legal" center wrap="balance">
-      By continuing, you agree to our <Text style={u}>terms of service</Text> and <Text style={u}>privacy policy</Text>.
+      By continuing, you agree to our{' '}
+      <LegalLink kind="terms" underline>
+        terms of service
+      </LegalLink>{' '}
+      and{' '}
+      <LegalLink kind="privacy" underline>
+        privacy policy
+      </LegalLink>
+      .
     </MonoText>
   );
 }

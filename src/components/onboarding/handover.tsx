@@ -1,8 +1,8 @@
 /**
  * The handover — `38 · A Letter Arrived` … `41 · Medallion Earned`.
  *
- * Where the funnel stops asking and starts giving things: the letter from the
- * man at week XII, the vow, the first medallion. The reminders and day zero
+ * Where the funnel stops asking and starts giving things: VICI's letter written
+ * as him at week XII, the vow, the first medallion. The reminders and day zero
  * (`O3Reminders`, `O3DayZero`) live in `reminders.tsx` (D390), so this file is
  * tail's alone.
  *
@@ -18,11 +18,19 @@ import { ScrollView, useWindowDimensions, View } from 'react-native';
 
 import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen, useCanvasTop } from '@/components/mono';
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
+import { VOW_TEXT } from '@/lib/pledge';
 import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
 
 import { Band } from './tail';
 
 // ── 38 · A Letter Arrived (frame `Letter Received`) ──────────────────
+
+/**
+ * The letter's one honest line (D476): the frame's "From you, twelve weeks from
+ * now." presented a letter VICI wrote — the same for everyone — as his own.
+ * Shared with `/letter?variant=week12`, which re-opens the same board.
+ */
+export const WEEK_XII_FROM = 'From VICI, written as you at week twelve.';
 
 /** The envelope, "A letter arrived.", `Open` over `Save it for later`. */
 export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => void }) {
@@ -34,7 +42,7 @@ export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => 
       gap={18}
       titleSize={26}
       title="A letter arrived."
-      body="From you, twelve weeks from now."
+      body={WEEK_XII_FROM}
       cta="Open"
       onCta={next}
       ghost="Save it for later"
@@ -98,8 +106,9 @@ export function O3LetterRead({
           contentInsetAdjustmentBehavior="never"
           style={{ marginBottom: LETTER_VIEW_BOTTOM }}
           contentContainerStyle={{ paddingTop: 34, paddingHorizontal: 28, paddingBottom: LETTER_END_PAD }}>
+          {/* VICI wrote it, in his voice at week XII — never "from" him (D476) */}
           <MonoText v="caps" wrap="wrap" style={{ marginBottom: 18 }}>
-            {who ? `Week XII, from ${who}` : 'Week XII, from you'}
+            From VICI · as you at week XII
           </MonoText>
           <MonoText v="h1" wrap="wrap" style={{ lineHeight: lhNormal(26), marginBottom: 18 }}>
             {/* a no-break space keeps the dash with the name however long it is */}
@@ -136,8 +145,10 @@ export function O3LetterRead({
 
 // ── 40 · The Vow ─────────────────────────────────────────────────────
 
-const VOW =
-  'I’m giving this twelve weeks. I don’t need to be perfect. When I want to watch, I’ll use the plan first. If I have a bad day, I’ll come back the next day.';
+/**
+ * The vow's words (`VOW_TEXT`, `src/lib/pledge.ts`). Signing files them as his
+ * `Vow` journal entry (D474), which `/vow` reads back with the day he signed.
+ */
 
 /** The signature block: the 47.5 ruled name, 10, the 16 line under it. */
 const SIG_H = 74;
@@ -171,7 +182,7 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
             {/* the frame states no text-wrap; `pretty` breaks it as drawn at 393 and keeps
                 a narrower phone from leaving "day." alone on the last line (D219) */}
             <MonoText v="p" wrap="pretty" color={mono.ink} style={{ fontSize: 21, lineHeight: 33, marginTop: 8 }}>
-              {VOW}
+              {VOW_TEXT}
             </MonoText>
           </View>
           <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }}>

@@ -166,9 +166,17 @@ export interface DailyCheckin {
   userId: string;
   date: string; // YYYY-MM-DD
   sleepHours?: number;
-  mood?: number; // 1–5 (pleasantness)
+  /** 1–5 (pleasantness) — the morning check-in's reading (and the quick check-in's). */
+  mood?: number;
   /** 1–5, as the morning check-in logs it. */
   energy?: number;
+  /**
+   * 1–5 — the night check-in's "How was today?". Its own field, so closing the
+   * day no longer overwrites the morning's mood (which Today shows under
+   * "This morning"). Rows from before it was added carry the night's answer
+   * in `mood`.
+   */
+  nightMood?: number;
   /** Apple-style mood logging: the feeling words + what's driving them. */
   emotions?: string[];
   reasons?: string[];
@@ -230,6 +238,12 @@ export interface AppUser {
   clerkUserId: string;
   displayName?: string;
   createdAt: number;
+  /**
+   * The local date (`YYYY-MM-DD`) onboarding finished on — Day 1 of the
+   * programme (`src/lib/day.ts`). Absent on accounts from before it was
+   * stored; they count from the local date of `createdAt`.
+   */
+  programmeStartedAt?: string;
   onboardingComplete: boolean;
   settings: UserSettings;
 }
@@ -262,6 +276,22 @@ export interface DashboardData {
 export const DEFAULT_SETTINGS: UserSettings = {
   showStreak: false,
 };
+
+/**
+ * "Export my data": everything the account stores, as both backends return
+ * it (`account:exportData` on Convex, the store's record on the mock). A
+ * table listed in `truncated` held more rows than one export carries.
+ */
+export interface AccountDataExport {
+  user: AppUser | null;
+  events: TidelineEvent[];
+  checkins: DailyCheckin[];
+  journalEntries: JournalEntry[];
+  lessonProgress: LessonProgress[];
+  reflections: Reflection[];
+  lifeMap: LifeMap | null;
+  truncated: string[];
+}
 
 // ── the interactive curriculum (generated from src/content/interactive) ──
 // Every lesson runs the same shape: teach pages, a multi-select "ask", a

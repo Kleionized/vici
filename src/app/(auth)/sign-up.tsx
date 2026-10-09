@@ -24,6 +24,11 @@ import { mono, sans } from '@/lib/theme';
  * The gate comes first — three ways to keep the run: Apple, Google, or an
  * address. Only the third one asks for anything, and what it asks for is a
  * first name and an email; there is no password unless you go looking for one.
+ * Without one, the account is made on an emailed 6-digit code (the verify
+ * board), and Welcome Back signs it in the same way (deploy D410).
+ *
+ * "VICI updates via email" starts unticked and its answer is stored with the
+ * account (Clerk `unsafeMetadata`; the mock's user record) — D413.
  *
  * Neither board has a frame in this drop (both were withdrawn two drops ago),
  * so they keep their copy and behaviour and take the closest frames' look:
@@ -34,7 +39,7 @@ type Mode = 'gate' | 'form' | 'verify';
 
 export default function SignUp() {
   const router = useRouter();
-  const { signUpWithPassword, signInWithSSO, verifyEmailCode, resendEmailCode } = useAuth();
+  const { signUpWithPassword, signUpWithEmailCode, signInWithSSO, verifyEmailCode, resendEmailCode } = useAuth();
   // `02 · Login` sends "Continue with email" straight to the form — the board
   // it comes from already offered Apple and Google, so the gate would be the
   // same three choices a second time.
@@ -43,7 +48,7 @@ export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [updates, setUpdates] = useState(true);
+  const [updates, setUpdates] = useState(false);
   const [usePassword, setUsePassword] = useState(false);
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -76,10 +81,10 @@ export default function SignUp() {
   async function submit() {
     setLoading(true);
     reset();
-    // A magic-link sign-up still needs a credential in the local mock
-    // store; the man never sees or types it.
-    const secret = usePassword ? password : `magic-${email.trim().toLowerCase()}`;
-    const result = await signUpWithPassword(email, secret, name.trim() || undefined);
+    const options = { emailUpdates: updates };
+    const result = usePassword
+      ? await signUpWithPassword(email, password, name.trim() || undefined, options)
+      : await signUpWithEmailCode(email, name.trim() || undefined, options);
     setLoading(false);
     if (result.ok) return router.replace('/');
     if (result.needsVerification) return setMode('verify');
@@ -151,7 +156,7 @@ export default function SignUp() {
       <AuthTitle>Start where you are.</AuthTitle>
       <AuthField label="Your first name" value={name} onChangeText={setName} placeholder="Sam" autoCapitalize="words" autoComplete="given-name" textContentType="givenName" />
       <AuthField label="Your email" value={email} onChangeText={setEmail} placeholder="yourname@email.com" keyboardType="email-address" autoCapitalize="none" autoComplete="email" textContentType="emailAddress" />
-      {/* The canvas signs you up on a magic link — no password unless you ask for one. */}
+      {/* No password unless you ask for one: the account is made on an emailed code. */}
       {usePassword ? (
         <AuthField label="Choose a password" value={password} onChangeText={setPassword} placeholder="At least 8 characters" secureTextEntry autoCapitalize="none" autoComplete="new-password" textContentType="newPassword" />
       ) : null}
@@ -176,7 +181,7 @@ export default function SignUp() {
         <Text maxFontSizeMultiplier={1.3} style={{ ...sans('400'), fontSize: 15, lineHeight: 23, color: mono.sub }}>
           {usePassword
             ? 'Your account keeps reflections, logs, and lessons safe across devices. Your password stays private.'
-            : "No password needed to create an account! To log in next time, we’ll send you an email with a magic link."}
+            : 'No password needed to create an account! We’ll email you a 6-digit code now, and a new one each time you sign in.'}
         </Text>
         <Tap
           onPress={() => {
@@ -187,7 +192,7 @@ export default function SignUp() {
           hitSlop={{ top: 10, bottom: 14, left: 16, right: 16 }}
           style={{ alignSelf: 'flex-start' }}>
           <Text maxFontSizeMultiplier={1.3} style={{ ...sans('700'), fontSize: 15, lineHeight: 23, color: mono.ink }}>
-            {usePassword ? 'Use a magic link instead' : 'Use password instead'}
+            {usePassword ? 'Use an email code instead' : 'Use password instead'}
           </Text>
         </Tap>
       </View>

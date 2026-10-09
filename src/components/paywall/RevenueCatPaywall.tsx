@@ -9,8 +9,10 @@
  *
  * The component renders a native view, so it does not exist in Expo Go or on
  * web; there `react-native-purchases-ui` substitutes its own preview paywall.
- * If the offering fails to load at all, the drawn paywall takes over rather
- * than leaving an empty screen between the customer and the purchase.
+ * If the offering fails to load at all, the drawn paywall takes over — which,
+ * against a store, says plans are unavailable rather than drawing sample
+ * prices. The dashboard paywall carries its own Terms, Privacy and renewal
+ * copy; they are set in the RevenueCat paywall editor, not here.
  */
 
 import RevenueCatUI from 'react-native-purchases-ui';
@@ -33,7 +35,7 @@ export function RevenueCatPaywall({
   embedded?: boolean;
   onDone: (purchased: boolean) => void;
 }) {
-  const { ready, offering, refresh } = usePurchases();
+  const { ready, error, offering, refresh } = usePurchases();
   // The paywall dismisses itself after a purchase, so `onDismiss` arrives on
   // both paths; the first outcome to land is the one the caller is told about.
   const settled = useRef(false);
@@ -45,7 +47,8 @@ export function RevenueCatPaywall({
   };
 
   // the ground the paywall opens on, so the wait is not a flash of another colour
-  if (!ready) return <Screen />;
+  if (!ready && !error) return <Screen />;
+  // no offering: the drawn paywall's "unavailable" board, never sample prices
   if (!offering) return <PaywallFlow name={name} confirmLabel={confirmLabel} embedded={embedded} onDone={onDone} />;
 
   return (

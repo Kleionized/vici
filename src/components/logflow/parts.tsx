@@ -451,23 +451,28 @@ function smoothPath(pts: { x: number; y: number }[]): string {
   return d;
 }
 
+/** A value on a fixed `[lo, hi]` scale as a 0–1 share, held to the scale. */
+const shareOf = (v: number, [lo, hi]: readonly [number, number]) => (hi > lo ? Math.max(0, Math.min(1, (v - lo) / (hi - lo))) : 0);
+
 /**
  * `left 0 right 0 top 352; centred`: a 220 × 56 line of the closed weeks'
- * scores, oldest to newest across x 4…216, lowest to highest across y 48…6,
+ * values, oldest to newest across x 4…216, lowest to highest across y 48…6,
  * ink 3 with a round cap, ending on a 5 ink dot. One week is a flat line at
- * the top.
+ * the top. With `scale` the y's are that fixed range (the recovery rating's
+ * 0–100, D515) instead of the values' own, so a small change stays small.
  */
-export function Spark({ values, top = 352 }: { values: number[]; top?: number }) {
+export function Spark({ values, top = 352, scale }: { values: number[]; top?: number; scale?: readonly [number, number] }) {
   if (!values.length) return null;
   const lo = Math.min(...values);
   const span = Math.max(...values) - lo;
+  const yOf = (v: number) => (scale ? 48 - 42 * shareOf(v, scale) : span ? 48 - (42 * (v - lo)) / span : 6);
   const pts =
     values.length === 1
       ? [
-          { x: 4, y: 6 },
-          { x: 216, y: 6 },
+          { x: 4, y: yOf(values[0]) },
+          { x: 216, y: yOf(values[0]) },
         ]
-      : values.map((v, i) => ({ x: 4 + (212 * i) / (values.length - 1), y: span ? 48 - (42 * (v - lo)) / span : 6 }));
+      : values.map((v, i) => ({ x: 4 + (212 * i) / (values.length - 1), y: yOf(v) }));
   const end = pts[pts.length - 1];
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, alignItems: 'center' }}>
@@ -479,28 +484,29 @@ export function Spark({ values, top = 352 }: { values: number[]; top?: number })
   );
 }
 
-// ── 91C · the week's score line ──────────────────────────────────────────────
+// ── 91C · the week's rating line ─────────────────────────────────────────────
 
 /** Monday first — the report reads its week forward. */
 const WEEK_LETTERS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'] as const;
 
 /**
- * `left 32 right 32 top 352`: the seven day-end scores as a polyline (ink 3,
+ * `left 32 right 32 top 352`: the seven day-end values as a polyline (ink 3,
  * round) through `x = 16 + 49.7·i` of a 330 × 140 box, lowest at y 108 and
- * highest at 20 (a flat week rides at 64). Days 1–6 are 4.5 ground discs with a
+ * highest at 20 (a flat week rides at 64). With `scale` the y's are that fixed
+ * range instead — the recovery rating's 0 at 108 and 100 at 20 (D515). Days 1–6 are 4.5 ground discs with a
  * 2.5 ink ring, the last a 6.5 ink dot; the day letters sit at y 136, 12 mute
  * (700), the last ink in Lato 900 — the frame's weights 600/800, which the
  * canvas's three Lato faces draw as 700/900. The frame stretches its 330 box
  * into the 329 column (`preserveAspectRatio: none`); here the x's are scaled
  * instead, so the dots stay round on a wider phone.
  */
-export function ScoreLine({ values, top = 352 }: { values: number[]; top?: number }) {
+export function ScoreLine({ values, top = 352, scale }: { values: number[]; top?: number; scale?: readonly [number, number] }) {
   const { width } = useWindowDimensions();
   const w = width - 64;
   const k = w / 330;
   const lo = Math.min(...values);
   const span = Math.max(...values) - lo;
-  const pts = values.map((v, i) => ({ x: (16 + 49.7 * i) * k, y: span ? 108 - (88 * (v - lo)) / span : 64 }));
+  const pts = values.map((v, i) => ({ x: (16 + 49.7 * i) * k, y: scale ? 108 - 88 * shareOf(v, scale) : span ? 108 - (88 * (v - lo)) / span : 64 }));
   const d = pts.map((p, i) => `${i ? 'L' : 'M'}${f1(p.x)} ${f1(p.y)}`).join(' ');
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 32, right: 32, top, height: 140 }}>

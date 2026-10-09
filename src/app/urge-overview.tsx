@@ -74,16 +74,21 @@ export default function UrgeOverview() {
   const end = params.week ? new Date(start).setDate(new Date(start).getDate() + 7) : now + 1;
   const urges = events.filter((e) => isUrge(e) && e.createdAt >= start && e.createdAt < end).sort((a, b) => b.createdAt - a.createdAt);
   const rode = urges.filter((e) => !isSlip(e)).length;
-  // the empty pages keep the old line, with the range said the way the pill says it
+  // the empty pages keep the old line, with the range said the way the pill says it —
+  // but only when nothing was logged: urges logged without a strength, a feeling
+  // or a place say that instead of denying the urges the page just counted (R3)
   const span = params.week ? 'this week' : `in the last ${RANGE_DAYS} days`;
   const nothing = (what: string) => `Nothing logged ${span}, so there is no ${what} to read yet.`;
+  const unrecorded = (what: string) => `No ${what} recorded for ${urges.length === 1 ? 'this urge' : 'these urges'} yet.`;
+  const empty = (what: string, field: string) => (urges.length ? unrecorded(field) : nothing(what));
 
   const strength = modeBand(urges);
   const triggers = tally(triggersOf(urges)).slice(0, 4);
   const moods = tally(feelingsOf(urges)).slice(0, 4);
   const hours = hourCounts(urges);
   const peak = peakWindow(hours);
-  const places = tally(urges.map((e) => e.precedingState?.location ?? e.note).filter((p): p is string => !!p)).slice(0, 3);
+  // a place is only what was picked as one — never the free-text note, which is private writing
+  const places = tally(urges.map((e) => e.precedingState?.location).filter((p): p is string => !!p)).slice(0, 3);
 
   return (
     <PagedRegister
@@ -116,7 +121,7 @@ export default function UrgeOverview() {
             <DotRows top={y(524)} rows={triggers.map(([label, n]) => [triggerNoun(label), n])} />
           </>
         ) : (
-          <EmptyState body={nothing('pattern')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
+          <EmptyState body={empty('pattern', 'strength')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
         )}
       </PaneBody>
 
@@ -129,7 +134,7 @@ export default function UrgeOverview() {
         </PaneBody>
       ) : (
         <PaneBody height={y(500)}>
-          <EmptyState body={nothing('mood pattern')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
+          <EmptyState body={empty('mood pattern', 'feeling')} style={{ position: 'absolute', left: 0, right: 0, top: y(236), paddingVertical: 0 }} />
         </PaneBody>
       )}
 
@@ -141,7 +146,7 @@ export default function UrgeOverview() {
             {places.length ? (
               <DotRows top={y(540)} rows={places} />
             ) : (
-              <EmptyState body={nothing('place')} style={{ position: 'absolute', left: 0, right: 0, top: y(540), paddingVertical: 0 }} />
+              <EmptyState body={unrecorded('place')} style={{ position: 'absolute', left: 0, right: 0, top: y(540), paddingVertical: 0 }} />
             )}
           </>
         ) : (

@@ -30,7 +30,7 @@ export default function FirstSteps() {
   // The first six days of week one, and the day the reader is on — the same
   // reckoning the week pages and the lessons browser use.
   const steps = CURRICULUM_84_DAYS.slice(0, 6);
-  const day = courseDay(user?.createdAt, now);
+  const day = courseDay(user, now);
   const done = steps.filter((lesson) => progress[lessonSlug(lesson.day)]?.status === 'completed').length;
 
   return (

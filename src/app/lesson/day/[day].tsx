@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { LessonPageView } from '@/components/lesson/LessonPages';
 import { LessonShell, type LessonBottom } from '@/components/lesson/LessonShell';
@@ -22,10 +22,20 @@ import { lessonSlug } from '@/lib/curriculum';
  * question's `Continue` saves the choice, and the reflect page's `Continue`
  * the note, as the lesson's reflection (merged — `reflections:save` replaces
  * the whole record); `Finish lesson` records completion once (re-stamping
- * `completedAt` would move Morning's "finished yesterday" and the score day).
+ * `completedAt` would move Morning's "finished yesterday" and the rating's day).
  * The day's task itself is still completed where it always was — Today's
  * check and Morning's question — as the complete page says.
  */
+
+/** What a reopened lesson starts from: the choice and the note saved with it (L11). */
+function savedAnswers(answers: Record<string, string | number> | undefined): { chosen: string[]; note: string } {
+  const q = answers?.q;
+  const note = answers?.note;
+  return {
+    chosen: q != null && q !== '' ? String(q).split(',').filter(Boolean) : [],
+    note: typeof note === 'string' ? note : '',
+  };
+}
 
 /** The page `?page=` names: `task` → the first task page; a number is 1-based; anything else → the cover. */
 function startIndex(pages: readonly LessonPage[], param: string | undefined) {
@@ -46,17 +56,36 @@ export default function LessonReader() {
   // different lesson reuses this component rather than remounting it, so a
   // bare `useState(0)` would drop the reader on whatever page — and with
   // whatever answers — the last lesson left behind.
-  const at = `${n}|${pageParam ?? ''}`;
-  const fresh = { at, index: startIndex(pages, pageParam), chosen: [] as string[], note: '' };
-  const [state, setState] = useState(fresh);
-  const cur = state.at === at ? state : fresh;
-  const set = (patch: Partial<typeof fresh>) => setState({ ...cur, ...patch });
-
   const progress = useLessonProgressMap();
   const detail = useLessonDetail(slug);
   const startLesson = useStartLesson();
   const completeLesson = useCompleteLesson();
   const saveReflection = useSaveReflection();
+
+  // A lesson reopened starts from what was saved with it — the choice and the
+  // note — rather than blank (L11). `seeded` marks the state as holding the
+  // saved answers once the record has loaded (`detail` is undefined while
+  // Convex loads), so a choice made before then is kept, not overwritten.
+  const at = `${n}|${pageParam ?? ''}`;
+  const saved = savedAnswers(detail?.reflection?.answers);
+  const fresh = { at, index: startIndex(pages, pageParam), chosen: saved.chosen, note: saved.note, seeded: detail !== undefined };
+  const [state, setState] = useState(fresh);
+  let cur = state.at === at ? state : fresh;
+  if (!cur.seeded && detail !== undefined) {
+    cur = { ...cur, chosen: cur.chosen.length ? cur.chosen : saved.chosen, note: cur.note || saved.note, seeded: true };
+    setState(cur);
+  }
+  const set = (patch: Partial<typeof fresh>) => setState({ ...cur, ...patch });
+
+  // `reflections:save` replaces the record, so a save merges what is already
+  // there; one made before the record has loaded waits for it.
+  const pending = useRef<Record<string, string | number> | null>(null);
+  useEffect(() => {
+    if (detail === undefined || !pending.current) return;
+    const answers = pending.current;
+    pending.current = null;
+    saveReflection(slug, { ...(detail?.reflection?.answers ?? {}), ...answers }).catch(() => {});
+  }, [detail, saveReflection, slug]);
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
@@ -74,8 +103,11 @@ export default function LessonReader() {
   const page = pages[index];
   const next = () => (index >= pages.length - 1 ? close() : set({ index: index + 1 }));
 
-  // `reflections:save` replaces the record, so every save carries what is already there
   const save = (answers: Record<string, string | number>) => {
+    if (detail === undefined) {
+      pending.current = { ...(pending.current ?? {}), ...answers };
+      return;
+    }
     const prev = detail && detail.reflection ? detail.reflection.answers : {};
     saveReflection(slug, { ...prev, ...answers }).catch(() => {});
   };
@@ -98,7 +130,8 @@ export default function LessonReader() {
         label: 'Continue',
         // the frame draws Continue live with nothing chosen, so it never waits for one
         onPress: () => {
-          if (cur.chosen.length) save({ q: cur.chosen.join(',') });
+          // a choice cleared on a reopened lesson is saved as cleared
+          if (cur.chosen.length || saved.chosen.length) save({ q: cur.chosen.join(',') });
           next();
         },
       };
@@ -112,7 +145,8 @@ export default function LessonReader() {
         label: 'Continue',
         onPress: () => {
           const note = cur.note.trim();
-          if (note) save({ ...(cur.chosen.length ? { q: cur.chosen.join(',') } : {}), note });
+          // a note emptied on a reopened lesson is saved as emptied
+          if (note || saved.note) save({ ...(cur.chosen.length ? { q: cur.chosen.join(',') } : {}), note });
           next();
         },
       };

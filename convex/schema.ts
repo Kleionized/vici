@@ -81,11 +81,16 @@ export default defineSchema({
     clerkUserId: v.string(),
     displayName: v.optional(v.string()),
     createdAt: v.number(),
+    // The local date (`YYYY-MM-DD`) onboarding finished on — Day 1 of the
+    // programme. Optional: accounts from before it count from `createdAt`.
+    programmeStartedAt: v.optional(v.string()),
     onboardingComplete: v.boolean(),
     settings: v.object({
       showStreak: v.boolean(),
       reminderTime: v.optional(v.string()),
       theme: v.optional(v.string()),
+      // Server-only: `users:updateSettings` no longer takes it from the
+      // client (B12). Kept declared for documents that already carry it.
       premium: v.optional(v.boolean()),
       // The yearly-drop enclosure was claimed — the year at the drop's price.
       yearlyDrop: v.optional(v.boolean()),
@@ -164,6 +169,8 @@ export default defineSchema({
     sleepHours: v.optional(v.number()),
     mood: v.optional(v.number()),
     energy: v.optional(v.number()),
+    // The night check-in's "How was today?", kept apart from the morning's mood.
+    nightMood: v.optional(v.number()),
     emotions: v.optional(v.array(v.string())),
     reasons: v.optional(v.array(v.string())),
     dailyAction: v.optional(v.string()),

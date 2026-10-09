@@ -8,10 +8,11 @@
  * human runs `npx convex dev`, these references resolve to the real functions.
  */
 
-import { useMutation, useQuery } from 'convex/react';
+import { useConvex, useMutation, useQuery } from 'convex/react';
 import { makeFunctionReference } from 'convex/server';
 
 import type {
+  AccountDataExport,
   AppUser,
   DailyCheckin,
   DailyCheckinInput,
@@ -66,6 +67,9 @@ const R = {
   checkinUpsert: mref('checkins:upsert'),
 
   dashboardGet: qref<DashboardData | null>('dashboard:get'),
+
+  exportData: qref<AccountDataExport>('account:exportData'),
+  deleteAccountData: mref<null>('account:deleteAccountData'),
 };
 
 const orUndef = <T,>(v: T | null | undefined): T | undefined => (v == null ? undefined : v);
@@ -117,8 +121,17 @@ export function useCurrentLesson(): CurrentLesson | null | undefined {
   return { lesson, progress: progress[lesson.slug] ?? null, index, total: SORTED_LESSONS.length };
 }
 
+/**
+ * "Loaded, none" is an empty map, as the mock always holds one — `lifemap:get`
+ * answers null for an account that never wrote a row, and turning that into
+ * `undefined` left Life Map on its loading screen for good (D4).
+ */
+const EMPTY_LIFE_MAP: LifeMap = { userId: '', values: [], updatedAt: 0 };
+
 export function useLifeMap(): LifeMap | undefined {
-  return orUndef(useQuery(R.lifeMapGet, {}));
+  const row = useQuery(R.lifeMapGet, {});
+  if (row === undefined) return undefined;
+  return row ?? EMPTY_LIFE_MAP;
 }
 
 export function useEvents(): TidelineEvent[] | undefined {
@@ -169,14 +182,24 @@ export function useEnsureUser() {
   return (displayName?: string) => fn({ displayName });
 }
 
+/** `programmeStartedAt`: the phone's local date onboarding finished on — Day 1 (`src/lib/day.ts`). */
 export function useCompleteOnboarding() {
   const fn = useMutation(R.completeOnboarding);
-  return () => fn({});
+  return (opts?: { programmeStartedAt?: string }) => fn({ programmeStartedAt: opts?.programmeStartedAt });
 }
 
+/**
+ * `premium` is the entitlement and the server no longer takes it from the
+ * client (B12), so it is never sent: a caller that still passes it is a no-op
+ * here rather than a rejected mutation, and the store stays the truth
+ * (`usePurchases`). Only the offline mock keeps it, for its stand-in purchase.
+ */
 export function useUpdateSettings() {
   const fn = useMutation(R.updateSettings);
-  return (partial: Partial<UserSettings>) => fn({ ...partial });
+  return (partial: Partial<UserSettings>) => {
+    const { premium: _premium, ...rest } = partial;
+    return fn({ ...rest });
+  };
 }
 
 export function useStartLesson() {
@@ -207,4 +230,22 @@ export function useCreateEvent() {
 export function useUpsertCheckin() {
   const fn = useMutation(R.checkinUpsert);
   return (input: DailyCheckinInput) => fn({ ...input });
+}
+
+// ---------- the account as a whole ----------
+
+/** "Export my data": a one-off read (not a subscription) of everything the account stores. */
+export function useExportData() {
+  const client = useConvex();
+  return () => client.query(R.exportData, {});
+}
+
+/**
+ * Account deletion, first half: erase every row the account stored (the
+ * server finishes long histories on its scheduler). The Clerk user goes next
+ * (`useAuth().deleteAccount`), while this session can still call Convex.
+ */
+export function useDeleteAccountData() {
+  const fn = useMutation(R.deleteAccountData);
+  return () => fn({});
 }

@@ -13,13 +13,21 @@ import { PURCHASES_MODE } from '@/lib/config';
 /** The single entitlement that unlocks the paid app. */
 export const ENTITLEMENT_ID = 'vici_unlimited';
 
+/**
+ * The paid tier's one name, wherever a screen or an alert names it (P6, D457):
+ * the paywall lockup's, and the entitlement's. Use the same in the store
+ * listing.
+ */
+export const TIER_NAME = 'VICI Unlimited';
+
 /** The offering shown by default — RevenueCat's "current" offering. */
 export const DEFAULT_OFFERING_ID = 'default';
 
 /**
- * The yearly-drop enclosure (canvas 174 · 175) sells the same year at a lower
- * price, so it is a second offering rather than a second product. Falls back to
- * the current offering when the dashboard has no such offering configured.
+ * The yearly-drop enclosure (canvas 174 · 175) sells the year at a lower
+ * price, as a second offering. It never falls back to the current offering:
+ * without a `drop` offering the enclosure says the offer is unavailable rather
+ * than selling the full-price year under the drop's words (B7, D456).
  */
 export const DROP_OFFERING_ID = 'drop';
 

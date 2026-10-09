@@ -5,7 +5,7 @@ import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff, postW
 import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
 import { useCreateJournalEntry, useCurrentUser, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
-import { setJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 
 /**
  * The medallion post — `90B · VICI Post — Arrival` → `39B · Post — Medallion
@@ -24,7 +24,18 @@ import { setJSON } from '@/lib/storage';
  * the face is the account's (D275).
  */
 
-const POST_DONE_KEY = 'tideline.post.backondeck.delivered';
+const POST_DONE_KEY = ACCOUNT_KEYS.postDelivered;
+
+/*
+ * The letter's words (D478). They state only what the post's own rule proves —
+ * an urge was logged and ridden out without a slip — and nothing it cannot:
+ * the frame's "Most men vanish for a week after a night like that" and "The
+ * return is the strongest predictor there is" were unsourced statistics, and
+ * "Last night … This morning" assumed a delivery time the launch gate does not
+ * keep (the post arrives on whatever launch follows the ride).
+ */
+const P1 = 'An urge came, and it passed without you giving in to it. You logged it, so it’s on your record now.';
+const P2 = 'That is the whole skill: letting one rise and end on its own. This one is for using it.';
 
 type Phase = 'arrive' | 'read';
 
@@ -46,33 +57,32 @@ export default function MedallionPost() {
   // the done flag goes down before leaving: a post opened cold leaves to Today,
   // whose launch gate would otherwise deliver it again
   const shelve = () => {
-    void setJSON(POST_DONE_KEY, Date.now()).then(close);
+    void writeAccountJSON(POST_DONE_KEY, Date.now()).then(close);
   };
 
+  // `Save to Journal` (the frame's `Save to Log`): the letter is kept as a
+  // Journal entry, and the Log never lists letters (D489)
   const keep = () => {
     void (async () => {
-      await setJSON(POST_DONE_KEY, Date.now());
+      await writeAccountJSON(POST_DONE_KEY, Date.now());
       close();
       await createJournalEntry({
         tag: 'Letter',
         title: 'VICI Post · A medallion',
-        body: `Dear ${name},\n\nLast night an urge rose, crested, and left without you. This morning you opened the app anyway — logged it, stayed. Most men vanish for a week after a night like that. You came back.\n\nThe return is the strongest predictor there is — stronger than any count. This one isn’t for resisting. It’s for coming back.\n\n— VICI`,
+        body: `Dear ${name},\n\n${P1}\n\n${P2}\n\n— VICI`,
       }).catch(() => {});
     })();
   };
 
   if (phase === 'arrive') {
-    return <PostArrival caps={postWeek(user?.createdAt)} onRead={() => setPhase('read')} onLater={shelve} onClose={shelve} />;
+    return <PostArrival caps={postWeek(user)} onRead={() => setPhase('read')} onLater={shelve} onClose={shelve} />;
   }
 
   return (
-    <LetterCard title="Enclosure from VICI" onClose={shelve} primary="Save to Log" onPrimary={keep} ghost="Open the enclosure" onGhost={() => router.push('/drop')}>
+    <LetterCard title="Enclosure from VICI" onClose={shelve} primary="Save to Journal" onPrimary={keep} ghost="Open the enclosure" onGhost={() => router.push('/drop')}>
       <Salutation>{`Dear ${name},`}</Salutation>
-      <LetterP>
-        Last night an urge rose, crested, and left without you. This morning you opened the app anyway — logged it, stayed. Most men vanish for a week after
-        a night like that. You came back.
-      </LetterP>
-      <LetterP>The return is the strongest predictor there is — stronger than any count. This one isn’t for resisting. It’s for coming back.</LetterP>
+      <LetterP>{P1}</LetterP>
+      <LetterP>{P2}</LetterP>
       <Signoff>— VICI</Signoff>
       <Enclosure scene={face.key} numeral={roman(standing)} title={`${face.name}, Tier ${roman(standing)}`} line={face.blurb} />
     </LetterCard>

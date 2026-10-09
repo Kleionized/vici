@@ -5,6 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { Chips, IconCircle, LoadingView, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Spinner, Tap, TextField } from '@/components/mono';
 import { useLifeMap, useUpdateLifeMap } from '@/lib/backend';
+import { ownWhy } from '@/lib/pledge';
 import { mono } from '@/lib/theme';
 
 const SUGGESTED = [
@@ -21,6 +22,17 @@ const SUGGESTED = [
   'Calm',
   'Courage',
 ];
+
+/**
+ * `12 · Beforehand`'s answers — what he feels before watching. Onboarding used
+ * to file the first three as his Life Map values ("Horny", "Bored", "Lonely"
+ * as what he values); it no longer does (D477), and an account that still
+ * carries them opens without them, so the next save drops them. A value he
+ * typed himself that happens to be one of these words is hidden too — the
+ * accepted cost, since onboarding wrote them onto every account that named a
+ * feeling and the stored rows cannot tell the two apart.
+ */
+const ONBOARDING_FEELINGS = new Set(['Horny', 'Bored', 'Lonely', 'Stressed', 'Low', 'Angry', 'Numb', 'Tired', 'Nothing in particular']);
 
 /** The nav row ends at 100; the page scrolls between it and the primary (D320). */
 const NAV_BOTTOM = 100;
@@ -50,14 +62,15 @@ export default function LifeMapScreen() {
 
   useEffect(() => {
     if (!lifeMap) return;
+    // the machine-assembled onboarding sentence is not his why (D477)
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate local editable drafts when backend data arrives.
-    setWhy(lifeMap.whyStatement ?? '');
+    setWhy(ownWhy(lifeMap.whyStatement));
     setOneYear(lifeMap.oneYearAnswer ?? '');
     // a value with no label (older or hand-seeded rows store bare strings) must
     // not reach the chips, whose keys are the labels
     const labels = (lifeMap.values as unknown[])
       .map((v) => (typeof v === 'string' ? v : (v as { label?: unknown } | null)?.label))
-      .filter((l): l is string => typeof l === 'string' && l.length > 0);
+      .filter((l): l is string => typeof l === 'string' && l.length > 0 && !ONBOARDING_FEELINGS.has(l));
     setSelected(labels);
     setAvailable((prev) => Array.from(new Set([...prev, ...labels])));
   }, [lifeMap]);

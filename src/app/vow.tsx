@@ -19,9 +19,10 @@ import {
   useCanvasTop,
 } from '@/components/mono';
 import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/backend';
+import { calendarDaysBetween } from '@/lib/day';
 import { shortDate } from '@/lib/format';
+import { pledgeText, VOW_TEXT } from '@/lib/pledge';
 import { mono } from '@/lib/theme';
-import { pledgeText } from '@/lib/pledge';
 
 /**
  * 92C · Your vow — the flag hero, then the vow read back in its card (the kit
@@ -40,10 +41,20 @@ import { pledgeText } from '@/lib/pledge';
  * phone never shows one frame of the unlifted layout.
  */
 
-/** The line the canvas draws when nothing has been signed yet. */
-const PLACEHOLDER = 'I’m done letting the wave decide. One evening at a time, I take the watch back.';
-
-const DAY = 86_400_000;
+/**
+ * What the page reads (D474). Only `Vow` entries: the onboarding's `40 · The
+ * Vow` files one when he signs, and `Re-sign` files another. It used to fall
+ * back to the newest `Pledge` — which every morning check-in re-creates — so
+ * the page showed that morning's pledge as the vow, "Signed" today, "Held for
+ * 0 days" every day; and with no entry at all, the canvas's sample line
+ * ("I’m done letting the wave decide…") as words he had signed, dated the day
+ * the account was made.
+ *
+ * With no vow, the card shows the vow VICI offers (the onboarding's, unsigned:
+ * no name under it), "Not signed yet", and the ghost signs it. "Held for" is
+ * whole calendar days since the newest signing: re-signing after a slip
+ * restarts it, as the page's own line says, and nothing else does.
+ */
 const STACK_TOP = 340;
 const HERO_TOP = 104;
 /** the ghost's 18 line box at `bottom 48` */
@@ -67,12 +78,12 @@ export default function Vow() {
 
   if (user === undefined || journal === undefined) return <LoadingView onBack={back} />;
 
-  // newest first: a re-signed vow is the one read back
-  const vow = journal.find((entry) => entry.tag === 'Vow') ?? journal.find((entry) => entry.tag === 'Pledge');
-  const text = pledgeText(vow) || PLACEHOLDER;
-  const signedAt = vow?.createdAt ?? user?.createdAt;
-  const held = signedAt ? Math.max(0, Math.floor((now - signedAt) / DAY)) : 0;
-  const name = user?.displayName?.split(' ')[0] || 'You';
+  // newest first: a re-signed vow is the one read back — never a daily pledge
+  const vow = journal.find((entry) => entry.tag === 'Vow' && pledgeText(entry) !== '');
+  const text = vow ? pledgeText(vow) : VOW_TEXT;
+  const signedAt = vow?.createdAt;
+  const held = signedAt !== undefined ? Math.max(0, calendarDaysBetween(signedAt, now)) : 0;
+  const name = user?.displayName?.trim().split(/\s+/)[0] || 'You';
 
   // the lift the short-screen rule asks for (0 at 852)
   const ghostTop = height - canvasTop - GHOST_RESERVE;
@@ -87,12 +98,12 @@ export default function Vow() {
 
   // "It resets the promise, never the progress": a new Vow entry with the same
   // words — the page reads the newest, so `Signed` becomes today and `Held for`
-  // starts again. Like any journal entry (a morning pledge included) it is
-  // listed in Past pledges and counts toward the album's Archive and Vidi;
-  // nothing is removed or rewritten (D294). Signed today already, there is
-  // nothing to restart, so a second tap writes no second entry.
-  const signedToday = signedAt !== undefined && new Date(signedAt).toDateString() === new Date().toDateString();
-  async function resign() {
+  // starts again. Like any journal entry it is listed in the Journal and counts
+  // toward the album's Archive and Vidi; nothing is removed or rewritten
+  // (D294). Signed today already, there is nothing to restart: the ghost's
+  // place says so as plain text, not a tap that silently writes nothing (D474, D487).
+  const signedToday = signedAt !== undefined && calendarDaysBetween(signedAt, now) === 0;
+  async function sign() {
     setResignOpen(false);
     if (signedToday) return;
     await createJournalEntry({ tag: 'Vow', title: 'Vow', body: text }).catch(() => {});
@@ -109,18 +120,32 @@ export default function Vow() {
 
       <ScrollRegion top={NAV_FOOT} bottom={GHOST_RESERVE} contentStyle={{ paddingTop: STACK_TOP - lift - NAV_FOOT, paddingHorizontal: 24, paddingBottom: 16 }}>
         <View onLayout={(e) => setStackH(Math.ceil(e.nativeEvent.layout.height))} style={[{ gap: 16 }, hidden]}>
-          <PledgeCard variant="quote" pledge={text} name={name} />
+          {/* the name goes under the vow only once he has signed it */}
+          <PledgeCard variant="quote" pledge={text} name={vow ? name : undefined} />
           <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
-            <Pill kind="status" filled label={`Held for ${held} ${held === 1 ? 'day' : 'days'}`} />
-            <Pill kind="status" label={signedAt ? `Signed ${shortDate(signedAt)}` : 'Not signed yet'} />
+            {vow ? <Pill kind="status" filled label={`Held for ${held} ${held === 1 ? 'day' : 'days'}`} /> : null}
+            <Pill kind="status" label={signedAt !== undefined ? `Signed ${shortDate(signedAt)}` : 'Not signed yet'} />
           </View>
           <MonoText v="p" color={mono.mute} center style={{ fontSize: 14, lineHeight: 21 }}>
-            After a relapse you can re-sign the vow. It resets the promise, never the progress.
+            {vow
+              ? 'After a relapse you can re-sign the vow. It resets the promise, never the progress.'
+              : 'You haven’t signed the vow yet. Sign it when you mean it.'}
           </MonoText>
         </View>
       </ScrollRegion>
 
-      <GhostLink label="Re-sign the vow" bottom={48} onPress={() => setResignOpen(true)} />
+      {signedToday ? (
+        // the ghost's own box and type, but not a control: a `GhostLink` is always
+        // a button, so screen readers announced "Signed today, button" for a tap
+        // that did nothing (D487)
+        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 48, zIndex: 6 }}>
+          <MonoText v="ghost" center color={mono.mute}>
+            Signed today
+          </MonoText>
+        </View>
+      ) : (
+        <GhostLink label={vow ? 'Re-sign the vow' : 'Sign the vow'} bottom={48} onPress={() => setResignOpen(true)} />
+      )}
 
       {/* No frame draws what re-signing looks like; the confirmation is the
           sign-out sheet's shell, worded from this page's own lines (D294). */}
@@ -131,13 +156,13 @@ export default function Vow() {
         onClose={() => setResignOpen(false)}
         footer={
           <>
-            <PrimaryButton label="Sign it again" bottom={96} sheet onPress={() => void resign()} />
+            <PrimaryButton label={vow ? 'Sign it again' : 'Sign it'} bottom={96} sheet onPress={() => void sign()} />
             <GhostLink label="Cancel" zIndex={42} onPress={() => setResignOpen(false)} />
           </>
         }>
-        <MonoText v="h1SheetLg">Re-sign the vow?</MonoText>
+        <MonoText v="h1SheetLg">{vow ? 'Re-sign the vow?' : 'Sign the vow?'}</MonoText>
         <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
-          It resets the promise, never the progress.
+          {vow ? 'It resets the promise, never the progress.' : 'Your name goes under it, dated today.'}
         </MonoText>
       </Sheet>
     </Screen>

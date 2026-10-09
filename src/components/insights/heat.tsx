@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 
 import { MonoText } from '@/components/mono';
+import { MOOD_WORDS } from '@/lib/day';
 import { mono, ring, toneRamp } from '@/lib/theme';
 
 /**
@@ -11,7 +12,8 @@ import { mono, ring, toneRamp } from '@/lib/theme';
  * with no check-in the hollow `#2E2E2E` ring, today ringed in line grey.
  */
 
-export const MOOD_NAME = ['Low', 'Down', 'Fine', 'Good', 'Radiant'];
+/** The one mood word list (`src/lib/day.ts`) — the words the check-ins answer in. */
+export const MOOD_NAME: readonly string[] = MOOD_WORDS;
 export const DOW = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 /** The range switch's spans and the disc each draws a day at. */
@@ -63,7 +65,7 @@ export function HeatRow({ week, d, todayIdx = -1 }: { week: (number | null)[]; d
   );
 }
 
-/** The ramp's five discs, "Low → Radiant", and the hollow "No check-in" — 12/700 mute. */
+/** The ramp's five discs, named by the check-ins' own ends ("Rough → Great"), and the hollow "No check-in" — 12/700 mute. */
 export function HeatLegend() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -74,7 +76,7 @@ export function HeatLegend() {
           ))}
         </View>
         <MonoText v="pill" style={{ fontSize: 12, lineHeight: 15 }} color={mono.mute}>
-          Low → Radiant
+          {`${MOOD_NAME[0]} → ${MOOD_NAME[MOOD_NAME.length - 1]}`}
         </MonoText>
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>

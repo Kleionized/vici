@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import { ChevronR, Hero, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { checkinPartNow } from '@/lib/routines';
 import { mono, ring, sans } from '@/lib/theme';
 
 /**
@@ -20,7 +21,7 @@ type Kind = { key: 'checkin' | 'urge' | 'lapse'; title: string; sub: string; rou
 const OPTIONS: Kind[] = [
   { key: 'checkin', title: 'Daily check-in', sub: 'Mood, energy, the pledge', route: '/checkin', glyph: 'M11 3v3M11 16v3M3 11h3M16 11h3M6 6l2 2M14 14l2 2M6 16l2-2M14 8l2-2' },
   { key: 'urge', title: 'An urge', sub: 'How strong, what fed it, what you did', route: '/urge-log', glyph: 'M3 15c3 0 4-6 8-6s5 6 8 6M3 18c3 0 4-3 8-3s5 3 8 3' },
-  { key: 'lapse', title: 'A lapse', sub: 'When, what fed it, what changes', route: '/lapse', glyph: 'M3 12c3 0 5-4 8-4s3 8 6 8 2-4 2-4' },
+  { key: 'lapse', title: 'A lapse', sub: 'When it happened, what fed it', route: '/lapse', glyph: 'M3 12c3 0 5-4 8-4s3 8 6 8 2-4 2-4' },
 ];
 
 /**
@@ -78,7 +79,7 @@ export default function LogChooser() {
           </View>
         </View>
       </ScrollRegion>
-      <PrimaryButton label="Continue" onPress={() => router.push(OPTIONS[picked].route as never)} />
+      <PrimaryButton label="Continue" onPress={() => router.push((OPTIONS[picked].key === 'checkin' ? `/day/${checkinPartNow()}` : OPTIONS[picked].route) as never)} />
     </Screen>
   );
 }

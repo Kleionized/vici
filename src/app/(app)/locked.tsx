@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import { CourseRow, ROW_GAP } from '@/components/library/WeekPage';
 import { Hero, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion } from '@/components/mono';
 import { CURRICULUM_84 } from '@/content/curriculum84';
+import { TIER_NAME } from '@/lib/purchases';
 
 /**
  * The locked curriculum (old canvas 106) — no frame in `Vici Overhaul` draws it
@@ -88,7 +89,7 @@ export default function Locked() {
         </View>
       </ScrollRegion>
 
-      <PrimaryButton label="Unlock VICI Plus" onPress={() => router.push('/paywall')} />
+      <PrimaryButton label={`Unlock ${TIER_NAME}`} onPress={() => router.push('/paywall')} />
     </Screen>
   );
 }

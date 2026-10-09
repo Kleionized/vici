@@ -14,7 +14,6 @@
  */
 
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -22,6 +21,7 @@ import { CourseRow, ROW_GAP, WeekBack } from '@/components/library/WeekPage';
 import { CueScrollView, Hero, LaurelMark, LoadingView, MonoText, Screen } from '@/components/mono';
 import { HERO_BOUNDS, type HeroId } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
+import { isMorningCheckin, programmeDay, useToday } from '@/lib/day';
 import { mono } from '@/lib/theme';
 
 export type ChapterKey = 'landing' | 'crossing' | 'highlands' | 'watch';
@@ -45,12 +45,14 @@ export function chapterForDay(day: number): ChapterKey {
   return 'watch';
 }
 
-/** Day 1 is the day you signed up, not the day after it. */
+/**
+ * Day 1 is the programme's first day (`programmeDay`, src/lib/day.ts) — the
+ * calendar count Today and the Library use, on the screen's clock.
+ */
 export function useJourneyDay(): number {
   const user = useCurrentUser();
-  // Read once: the count must not shift under a re-render while a screen is open.
-  const [now] = useState(() => Date.now());
-  return user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  const now = useToday();
+  return programmeDay(user, now);
 }
 
 /** The chapter the user stands on. Falls back to the first one until the record loads. */
@@ -253,7 +255,8 @@ function useChapterCtx(): Ctx | undefined {
   return {
     day,
     waves: events.filter((e) => e.type === 'urge_rode_out').length,
-    mornings: checkins.length,
+    // mornings answered: rows the morning check-in filled, not rows that only hold an action
+    mornings: checkins.filter(isMorningCheckin).length,
     vowed: journal.some((entry) => entry.tag === 'Pledge'),
   };
 }

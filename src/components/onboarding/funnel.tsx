@@ -142,12 +142,14 @@ function useTitle(step: FunnelStep, text: string): string {
 
 /**
  * The canvas writes the sample name "Sam" into the Start board's title. The
- * app knows the real one; the man told it three screens earlier.
+ * app knows the real one; the man told it three screens earlier. With no name
+ * (the field left blank, or an Apple sign-in that shared none) the vocative is
+ * dropped — "Let’s figure out…" — rather than greeting him as the sample (D472).
  */
 function withName(text: string, name?: string): string {
   const given = (name ?? '').trim();
-  if (!given) return text;
-  return text.replace(/^Sam\b/, given);
+  if (given) return text.replace(/^Sam\b/, given);
+  return text.replace(/^Sam,\s*(\S)/, (_, first: string) => first.toUpperCase());
 }
 
 /** `04 · Age` draws 24 chosen — the wheel's value before it is touched. */
@@ -183,15 +185,11 @@ export function O3FunnelStep({
     return () => clearTimeout(id);
   }, [picked, hasCta, next]);
 
-  // An untouched wheel still answers: the age it shows is the age stored, so
-  // the under-18 gate and the age-80 projection read "24" without a scroll.
+  // The wheel draws the frame's 24 before it is touched, but an untouched wheel
+  // answers nothing: an age gate must not hand an adult age to anyone who taps
+  // Continue, so Continue waits for a turn of the wheel (P8, D500).
   const age = parseInt(String(value ?? ''), 10);
   const ageOk = Number.isFinite(age) && age >= AGE_MIN && age <= AGE_MAX;
-  useEffect(() => {
-    if (step.kind === 'wheel' && !ageOk) onSet(String(AGE_DEFAULT));
-    // once, on arrival: the wheel reports every move itself
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const goal = step.id === 'goalConfirm' ? O3_GOAL_CONFIRM[String(answers?.goalPorn ?? '')] : undefined;
   const title = useTitle(step, withName(goal?.[0] ?? step.title, name));
@@ -279,7 +277,7 @@ export function O3FunnelStep({
           <View style={{ position: 'absolute', left: 24, right: 24, top: step.stack.top, gap: step.stack.gap }}>
             <MonoText v="h1">{title}</MonoText>
           </View>
-          <AgeWheel top={236} value={ageOk ? age : AGE_DEFAULT} onChange={(v) => onSet(String(v))} />
+          <AgeWheel top={236} value={ageOk ? age : AGE_DEFAULT} unset={!ageOk} onChange={(v) => onSet(String(v))} />
         </>
       ) : (
         <ScrollRegion
@@ -298,7 +296,7 @@ export function O3FunnelStep({
           </View>
         </ScrollRegion>
       )}
-      {step.cta ? <PrimaryButton label={step.cta} onPress={next} disabled={step.multi && chosen.length === 0 && !zeroOk} /> : null}
+      {step.cta ? <PrimaryButton label={step.cta} onPress={next} disabled={(step.multi && chosen.length === 0 && !zeroOk) || (step.kind === 'wheel' && !ageOk)} /> : null}
     </Screen>
   );
 }
@@ -351,8 +349,10 @@ const AGE_LOOK: Record<number, TextStyle> = {
 };
 const webNoSelect = Platform.OS === 'web' ? ({ userSelect: 'none', cursor: 'grab', touchAction: 'none' } as unknown as ViewStyle) : null;
 
-function AgeWheel({ top, value, onChange }: { top: number; value: number; onChange: (v: number) => void }) {
+function AgeWheel({ top, value, unset = false, onChange }: { top: number; value: number; unset?: boolean; onChange: (v: number) => void }) {
   const valueRef = useRef(value);
+  // nothing chosen yet: the age on show is only the frame's 24, so picking it must still count
+  const unsetRef = useRef(unset);
   const from = useRef(value);
   const dragging = useRef(false);
   /** when the last drag let go — the click a mouse drag ends in must not also step */
@@ -360,12 +360,14 @@ function AgeWheel({ top, value, onChange }: { top: number; value: number; onChan
   const report = useRef(onChange);
   useEffect(() => {
     valueRef.current = value;
+    unsetRef.current = unset;
     report.current = onChange;
   });
   const step = (v: number) => {
     const c = Math.max(AGE_MIN, Math.min(AGE_MAX, v));
-    if (c === valueRef.current) return;
+    if (c === valueRef.current && !unsetRef.current) return;
     valueRef.current = c;
+    unsetRef.current = false;
     report.current(c);
   };
   const stepRef = useRef(step);
@@ -404,7 +406,8 @@ function AgeWheel({ top, value, onChange }: { top: number; value: number; onChan
         {has ? String(v) : ' '}
       </Text>
     );
-    if (off === 0 || !has) return <View key={off}>{text}</View>;
+    // while nothing is chosen the middle row is a button too: tapping the age on show picks it (D500)
+    if (!has || (off === 0 && !unset)) return <View key={off}>{text}</View>;
     return (
       <Pressable
         key={off}

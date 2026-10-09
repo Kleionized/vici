@@ -40,6 +40,11 @@ div | 24 | 467 | 345 | 48 | - | - | - | - | - | -
 div | 24 | 467 | 22 | 48 | - | - | - | - | - | -
 div | 24 | 467 | 22 | 22 | rgb(30, 30, 30) | 11px | - | rgb(242, 240, 236) 0px 0px 0px 1.5px | - | -
 div | 62 | 467 | 307 | 48 | - | - | - | - | 16px/400/normal/24px/rgb(242, 240, 236) | Day 3 — $39.99/year begins, unless you cancel
+div | 24 | 543 | 345 | 32 | - | - | - | - | 12px/700/normal/16px/rgb(155, 150, 142) | 3 days free, then $39.99/year. Renews automatically until cancelled in Settings.
+div | 24 | 575 | 345 | 25 | - | - | - | - | - | -
+div | 24 | 585 | 345 | 15 | - | - | - | - | 12px/700/0.4px/15px/rgb(155, 150, 142) | Terms · Privacy
+div | 24 | 585 | 345 | 15 | - | - | - | - | 12px/700/0.4px/15px/rgba(0, 0, 0, 0) | · Privacy
+span | 24 | 585 | 34.6 | 15 | - | - | - | - | 12px/700/0.4px/15px/rgba(0, 0, 0, 0) | Terms
 button | 24 | 698 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
 div | 145.2 | 717.5 | 102.7 | 19 | - | - | - | - | 16px/700/0.1px/19px/rgb(17, 17, 17) | Start free trial
 button | 0 | 774 | 393 | 18 | - | - | - | - | - | -

@@ -5,9 +5,11 @@ import { KK_ALBUM, kkMetal, kkStanding } from '@/components/keepsakes/Medallion'
 import { ChipsStep, DoneBoard, FlowNav, OptionsStep, useWhen, WhenStep } from '@/components/logflow';
 import { Hero, MonoText, IntensityScale, PrimaryButton, ScaleReading, Screen } from '@/components/mono';
 import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
+import { UnsavedBoard, useBackgroundWrite, WAITING_LINE } from '@/components/urge/saving';
 import { useCreateEvent, useEvents } from '@/lib/backend';
+import { isSurfed } from '@/lib/day';
 import { capitalise, joinLower, numberWords } from '@/lib/format';
-import { setJSON } from '@/lib/storage';
+import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 import type { EventType } from '@/lib/types';
 
 /**
@@ -15,6 +17,14 @@ import type { EventType } from '@/lib/types';
  *
  * Every step is a board on the mono kit (`src/components/logflow`); the lapse
  * flow (`/lapse`) is the same steps one shorter.
+ *
+ * Nothing is answered for the user (F3, D463): no bar is lit and no outcome
+ * chosen until they pick one. The strength is optional — Continue with none
+ * picked files no strength; the outcome decides what the entry is (ridden out
+ * or a slip), so Continue waits for it.
+ *
+ * Logging never waits on the network (B10, D465): the logged board shows at
+ * once and the write runs behind it; a refused write gets its own board.
  */
 
 const OUTCOMES: { label: string; slip?: boolean; type: EventType }[] = [
@@ -47,43 +57,49 @@ export default function UrgeLog() {
   const events = useEvents();
   const when = useWhen();
   const [step, setStep] = useState(0);
-  // The scale has no empty state on the canvas; 91D inks the fourth bar, Intense.
-  const [intensity, setIntensity] = useState(3);
+  // The frame inks the fourth bar (91D); nothing is picked for the user here.
+  const [intensity, setIntensity] = useState<number | null>(null);
   const [triggers, setTriggers] = useState<string[]>([]);
-  const [outcome, setOutcome] = useState(0);
-  const [saving, setSaving] = useState(false);
+  const [outcome, setOutcome] = useState<number | null>(null);
   const [ridden, setRidden] = useState<number | null>(null);
+  const write = useBackgroundWrite('urge');
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
   const back = () => (step === 0 ? close() : setStep((current) => current - 1));
 
-  async function save() {
-    setSaving(true);
+  function save() {
+    if (outcome == null) return;
     const item = OUTCOMES[outcome];
     // counted before the write, so the line does not wait on the log to refresh
-    const before = (events ?? []).filter((e) => e.type === 'urge_rode_out').length;
-    await createEvent({
+    const before = (events ?? []).filter(isSurfed).length;
+    const input = {
       type: item.type,
-      severity: bandToSeverity(intensity),
+      severity: intensity != null ? bandToSeverity(intensity) : undefined,
       trigger: triggers.length ? triggers.join(' · ') : undefined,
       whatHelped: item.slip ? undefined : item.label,
       createdAt: when.at,
+    };
+    write.run(async () => {
+      await createEvent(input);
+      if (item.slip) await writeAccountJSON(ACCOUNT_KEYS.letterPending, Date.now());
+      else await writeAccountJSON(ACCOUNT_KEYS.postPending, Date.now());
     });
-    if (item.slip) await setJSON('tideline.letter.pending', Date.now());
-    else await setJSON('tideline.post.backondeck.pending', Date.now());
     setRidden(item.slip ? null : before + 1);
-    setSaving(false);
     setStep(4);
   }
 
-  if (step === 4) {
+  if (step === 4 && write.state === 'failed') {
+    return <UnsavedBoard what="urge" onRetry={write.retry} onLater={close} onClose={close} />;
+  }
+
+  if (step === 4 && outcome != null) {
     return (
       <DoneBoard
         title="Urge logged."
         // a slip rode nothing out, so it has no count to say (undrawn: logs Q7)
-        body={ridden != null ? riddenLine(ridden) : undefined}
+        body={write.state === 'slow' ? WAITING_LINE : ridden != null ? riddenLine(ridden) : undefined}
         rows={[
-          { label: 'Intensity', value: INTENSITY_BANDS[intensity].label },
+          { label: 'Intensity', value: intensity != null ? INTENSITY_BANDS[intensity].label : '—' },
           { label: 'Set off by', value: triggers.length ? joinLower(triggers) : '—' },
           { label: 'What I did', value: OUTCOMES[outcome].label },
         ]}
@@ -108,18 +124,25 @@ export default function UrgeLog() {
             How strong was the urge?
           </MonoText>
           <IntensityScale value={intensity} onChange={setIntensity} a11yLabels={INTENSITY_BANDS.map((b) => b.label)} />
-          <ScaleReading word={INTENSITY_BANDS[intensity].label} line={INTENSITY_BANDS[intensity].note} />
+          {intensity != null ? <ScaleReading word={INTENSITY_BANDS[intensity].label} line={INTENSITY_BANDS[intensity].note} /> : null}
         </>
       ) : null}
       {step === 1 ? <ChipsStep title="What set it off?" value={triggers} onChange={setTriggers} /> : null}
       {step === 2 ? (
-        <OptionsStep title="What did you do?" options={OUTCOMES.map((o) => o.label)} value={OUTCOMES[outcome].label} onChange={(label) => setOutcome(OUTCOMES.findIndex((o) => o.label === label))} />
+        <OptionsStep
+          title="What did you do?"
+          options={OUTCOMES.map((o) => o.label)}
+          // no key matches '' — nothing is lit until the user picks
+          value={outcome != null ? OUTCOMES[outcome].label : ''}
+          onChange={(label) => setOutcome(OUTCOMES.findIndex((o) => o.label === label))}
+        />
       ) : null}
       {step === 3 ? <WhenStep title="When was it?" when={when} /> : null}
 
-      {step === 0 || step === 2 ? <PrimaryButton label="Continue" onPress={() => setStep(step + 1)} /> : null}
+      {step === 0 ? <PrimaryButton label="Continue" onPress={() => setStep(1)} /> : null}
       {step === 1 ? <PrimaryButton label="Continue" disabled={triggers.length === 0} onPress={() => setStep(2)} /> : null}
-      {step === 3 ? <PrimaryButton label={saving ? 'Logging…' : 'Log the urge'} disabled={saving} onPress={() => void save()} /> : null}
+      {step === 2 ? <PrimaryButton label="Continue" disabled={outcome == null} onPress={() => setStep(3)} /> : null}
+      {step === 3 ? <PrimaryButton label="Log the urge" disabled={outcome == null} onPress={save} /> : null}
     </Screen>
   );
 }

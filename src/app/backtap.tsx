@@ -1,4 +1,5 @@
 import * as Clipboard from 'expo-clipboard';
+import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Linking, View } from 'react-native';
@@ -20,7 +21,18 @@ import { mono } from '@/lib/theme';
  * Between the nav and the pair the column scrolls (D320).
  */
 
-const DEEP_LINK = 'tideline://urge';
+/**
+ * The link the Shortcut opens: the app's own URL scheme (app.json `scheme`,
+ * read from the build's config so a renamed scheme follows on its own) and
+ * the SOS route. "Test it now" opens that same route, so the test is the
+ * shortcut (D468).
+ */
+function appScheme(): string {
+  const scheme = Constants.expoConfig?.scheme;
+  return (Array.isArray(scheme) ? scheme[0] : scheme) || 'tideline';
+}
+const URGE_ROUTE = '/urge';
+const DEEP_LINK = `${appScheme()}:/${URGE_ROUTE}`;
 
 const STEPS = [
   'Open the Shortcuts app and tap + to create a new shortcut.',
@@ -97,7 +109,7 @@ export default function BackTap() {
       </ScrollRegion>
 
       <PrimaryButton label="Open Shortcuts app" bottom={96} onPress={openShortcuts} />
-      <GhostLink label="Test it now" onPress={() => router.push('/urge-hub')} />
+      <GhostLink label="Test it now" onPress={() => router.push(URGE_ROUTE)} />
     </Screen>
   );
 }

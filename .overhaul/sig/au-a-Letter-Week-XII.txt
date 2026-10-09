@@ -26,7 +26,7 @@ path | 355 | 73 | 14 | 14 | - | - | - | - | - | -
 div | 24 | 112 | 345 | 740 | rgb(30, 30, 30) | 24px 24px 0px 0px | - | - | - | -
 div | 24 | 112 | 345 | 644 | - | - | - | - | - | -
 div | 24 | 112 | 345 | 618 | - | - | - | - | - | -
-div | 52 | 146 | 289 | 16 | - | - | - | - | 13px/700/normal/16px/rgb(155, 150, 142) | Week XII, from Sam
+div | 52 | 146 | 289 | 16 | - | - | - | - | 13px/700/normal/16px/rgb(155, 150, 142) | From VICI · as you at week XII
 div | 52 | 180 | 289 | 32 | - | - | - | - | 26px/700/-0.6px/32px/rgb(242, 240, 236) | Sam —
 div | 52 | 230 | 289 | 426 | - | - | - | - | - | -
 div | 52 | 230 | 289 | 120 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | I’m writing this at the end of week XII. I remember where you are right now — you want this to be the time it finally changes, and part of you is already wondering how long you’ll last.

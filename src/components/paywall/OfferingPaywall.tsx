@@ -3,9 +3,9 @@ import { Alert } from 'react-native';
 import type { PurchasesOffering } from 'react-native-purchases';
 
 import { LoadingView, Screen } from '@/components/mono';
-import { PW_FEATURES, PaywallFlow, PwBoard, PwPlanCard } from '@/components/paywall/PaywallFlow';
-import { usePurchases } from '@/lib/purchases';
-import { bestValueId, describePackage, type PackageView } from '@/lib/purchases/plans';
+import { PW_FEATURES, PaywallFlow, PwBoard, PwPlanCard, remindBeforeTrialEnds } from '@/components/paywall/PaywallFlow';
+import { TIER_NAME, usePurchases } from '@/lib/purchases';
+import { bestValueId, renewalTerms, type PackageView } from '@/lib/purchases/plans';
 import { offeringCopy } from '@/lib/purchases/metadata';
 
 /**
@@ -28,8 +28,11 @@ import { offeringCopy } from '@/lib/purchases/metadata';
  * that overhangs a card by 12 clears the card above it (D223). Every string
  * still has the canvas's own word behind it, so an offering with no metadata
  * renders the paywall as drawn. With no packages at all — offline, or an
- * offering that failed to load — it hands back to `PaywallFlow` rather than
- * showing an empty board.
+ * offering that failed to load — it hands back to `PaywallFlow`, which says
+ * plans are unavailable rather than showing an empty board or sample prices.
+ * Under the cards, the chosen package's renewal terms; in the footer, Terms,
+ * Privacy and Restore (B5, D452). An intro offer shows only where the
+ * customer can take it (P6, D455).
  */
 
 /**
@@ -112,7 +115,8 @@ export function OfferingPaywall({
     };
   }, [placement, offeringForPlacement]);
 
-  const views = useMemo(() => (placed ? placed.availablePackages.map(describePackage) : purchases.packages), [placed, purchases.packages]);
+  const { packagesIn } = purchases;
+  const views = useMemo(() => (placed ? packagesIn(placed) : purchases.packages), [placed, packagesIn, purchases.packages]);
   const copy = useMemo(() => (placed ? offeringCopy(placed) : purchases.copy), [placed, purchases.copy]);
   const best = useMemo(() => bestValueId(views), [views]);
 
@@ -121,8 +125,8 @@ export function OfferingPaywall({
   const selectedId = chosen ?? (copy.defaultPackage && views.some((v) => v.id === copy.defaultPackage) ? copy.defaultPackage : (best ?? views[0]?.id ?? null));
   const selected = views.find((v) => v.id === selectedId) ?? views[0] ?? null;
 
-  if (!purchases.ready) return <LoadingView onClose={() => onDone(false)} />;
-  // Nothing to sell here — the drawn paywall is a better answer than an empty board.
+  if (!purchases.ready && !purchases.error) return <LoadingView onClose={() => onDone(false)} />;
+  // Nothing to sell here — the drawn paywall's "unavailable" board is a better answer than an empty one.
   if (!views.length || !selected) return <PaywallFlow name={name} confirmLabel={confirmLabel} embedded={embedded} onDone={onDone} />;
 
   async function buy() {
@@ -130,7 +134,10 @@ export function OfferingPaywall({
     busy.current = true;
     const outcome = await purchases.purchasePackage(selected.pkg);
     busy.current = false;
-    if (outcome.status === 'purchased' || (outcome.status === 'restored' && outcome.entitled)) return onDone(true);
+    if (outcome.status === 'purchased' || (outcome.status === 'restored' && outcome.entitled)) {
+      remindBeforeTrialEnds(outcome);
+      return onDone(true);
+    }
     if (outcome.status === 'cancelled' || outcome.status === 'restored') return;
     Alert.alert('The store could not complete that', outcome.message);
   }
@@ -142,7 +149,7 @@ export function OfferingPaywall({
     busy.current = false;
     if (outcome.status === 'restored') {
       if (outcome.entitled) return onDone(true);
-      Alert.alert('Nothing to restore', 'This store account has no VICI Plus purchase on it.');
+      Alert.alert('Nothing to restore', `This store account has no ${TIER_NAME} purchase on it.`);
       return;
     }
     if (outcome.status === 'cancelled' || outcome.status === 'purchased') return;
@@ -165,6 +172,7 @@ export function OfferingPaywall({
         benefitsTitle={copy.benefitsTitle ?? undefined}
         benefits={labels}
         cta={copy.cta ?? undefined}
+        terms={renewalTerms({ priceString: selected.priceString, cycle: selected.cycle, isLifetime: selected.isLifetime, intro: selected.intro })}
         onCta={() => void buy()}
         footnote={copy.footnote ?? undefined}
         onRestore={() => void restore()}

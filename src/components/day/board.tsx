@@ -15,11 +15,11 @@ import { mono, ring, sans } from '@/lib/theme';
  * screens lay them out in canvas coordinates inside `Screen`.
  */
 
-/** Day one is the day you signed up, not the day after. */
-export function dayNumber(createdAt?: number): number {
-  if (!createdAt) return 1;
-  return Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1);
-}
+/*
+ * The day a check-in names is `programmeDay` (`src/lib/day.ts`): calendar days
+ * from the programme's first day, the same count Today's pill and the lesson
+ * use — not 24-hour blocks from the minute the account was made.
+ */
 
 /**
  * What the bottom controls take off the screen's bottom edge, for a hero

@@ -4,8 +4,9 @@
  *
  * `85F · Breathe` and the three stages no frame draws (number tap, odd one
  * out, the 90-second ring), their settings sheet, and the pieces `flow.tsx`,
- * `hub.tsx` and `src/app/relapse.tsx` all read: the question board, the dark
- * hub shell, the ring 85A draws, the SOS settings and the stage order. It is
+ * `hub.tsx` and `src/app/slip.tsx` read: the question board, the dark hub
+ * shell, the ring 85A draws, the SOS settings, the stage order, the Help door
+ * to Find support and the Android step-back (deploy WP5). It is
  * the bottom of the kit — it imports from neither sibling, so the three never
  * form a cycle (D390).
  *
@@ -15,8 +16,9 @@
  * stage; the other three are set on its shell (D252).
  */
 
-import { type ReactNode, useEffect, useRef, useState } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { BackHandler, View, useWindowDimensions } from 'react-native';
 import Reanimated, { Easing, cancelAnimation, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgGrad, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 
@@ -27,6 +29,7 @@ import {
   MonoText,
   NavBar,
   PagerDots,
+  Pill,
   PrimaryButton,
   Screen,
   ScrollRegion,
@@ -37,6 +40,7 @@ import {
   type NavLeft,
 } from '@/components/mono';
 import type { HeroKey } from '@/content/heroes';
+import { ACCOUNT_KEYS } from '@/lib/accountState';
 import { roman } from '@/lib/format';
 import { LATO, mono, monoDark, sans } from '@/lib/theme';
 
@@ -128,6 +132,7 @@ export function SosQuestion({
   layerBottom,
   cta,
   onCta,
+  ctaDisabled,
   ghost,
   onGhost,
 }: {
@@ -143,6 +148,8 @@ export function SosQuestion({
   layerBottom?: number;
   cta: string;
   onCta: () => void;
+  /** the kit's dimmed pill (D321) — a question with a "Skip" waits for an answer before Continue */
+  ctaDisabled?: boolean;
   ghost?: string;
   onGhost?: () => void;
 }) {
@@ -165,7 +172,7 @@ export function SosQuestion({
         {/* given its full height: native delivers no touch outside a parent's box */}
         {layer ? <View style={{ position: 'absolute', left: 0, right: 0, top: -BAND_TOP, height: layerBottom, pointerEvents: 'box-none' }}>{layer}</View> : null}
       </ScrollRegion>
-      <PrimaryButton label={cta} onPress={onCta} bottom={ghost ? 96 : 48} />
+      <PrimaryButton label={cta} onPress={onCta} disabled={ctaDisabled} bottom={ghost ? 96 : 48} />
       {ghost ? <GhostLink label={ghost} onPress={onGhost} /> : null}
     </Screen>
   );
@@ -247,19 +254,28 @@ export function UrgeRing({ fraction, clock, label, top = 270 }: { fraction: numb
 
 // ════════ SETTINGS ═══════════════════════════════════════════════════════════
 
-export type SosSound = 'ocean' | 'rain' | 'silent';
 export type SosLight = 'blue' | 'violet' | 'gold' | 'silver';
 export type SosBackground = 'night' | 'starfield' | 'dawn';
 
+/**
+ * The SOS's look. There was a `sound` (Ocean / Rain / Silent) too; the app
+ * plays no audio, so the choice did nothing and is gone (D466). A stored
+ * `sound` from before is ignored.
+ */
 export interface SosSettings {
-  sound: SosSound;
   /** Null until a light is picked — the breath disc is 85F's white until then. */
   light: SosLight | null;
   background: SosBackground;
 }
 
-export const SOS_SETTINGS_KEY = 'tideline.sos.settings';
-export const DEFAULT_SOS_SETTINGS: SosSettings = { sound: 'ocean', light: null, background: 'night' };
+/** Kept per account on this phone (D490). */
+export const SOS_SETTINGS_KEY = ACCOUNT_KEYS.sosSettings;
+export const DEFAULT_SOS_SETTINGS: SosSettings = { light: null, background: 'night' };
+
+/** What storage holds, read back as settings: only the keys this build knows, so a stored `sound` never rides along. */
+export function readSosSettings(stored: Partial<SosSettings> | null): SosSettings {
+  return { light: stored?.light ?? DEFAULT_SOS_SETTINGS.light, background: stored?.background ?? DEFAULT_SOS_SETTINGS.background };
+}
 
 /**
  * The orb lights the settings sheet offers. The defaults draw 85F exactly (a
@@ -377,26 +393,21 @@ function GearGlyph() {
 }
 
 /**
- * The SOS settings — sound, the breath disc's light, the ground — as the kit's
+ * The panel's top: 420 held three rows; the Sound row (its caps line 16, the
+ * 12 gap, the 44 control, the 12 gap and the next caps line's 6) is gone, so
+ * the panel starts 90 lower and the two rows left sit where they sat (D466).
+ */
+const SETTINGS_SHEET_TOP = 420 + 16 + 12 + 44 + 12 + 6;
+
+/**
+ * The SOS settings — the breath disc's light and the ground — as the kit's
  * sheet (the four sheet frames' panel, grabber and frame-level pill). No frame
- * draws it; its three choices and their storage are the app's (D256).
+ * draws it; its choices and their storage are the app's (D256, D466).
  */
 export function SosSettingsSheet({ open, settings, onChange, onDone }: { open: boolean; settings: SosSettings; onChange: (next: SosSettings) => void; onDone: () => void }) {
   return (
-    <Sheet open={open} top={420} onClose={onDone} footer={<PrimaryButton sheet label="Done" onPress={onDone} />}>
-      <MonoText v="caps">Sound</MonoText>
-      <Segmented
-        items={[
-          { key: 'ocean', label: 'Ocean' },
-          { key: 'rain', label: 'Rain' },
-          { key: 'silent', label: 'Silent' },
-        ]}
-        value={settings.sound}
-        onChange={(sound) => onChange({ ...settings, sound })}
-      />
-      <MonoText v="caps" style={{ marginTop: 6 }}>
-        Orb light
-      </MonoText>
+    <Sheet open={open} top={SETTINGS_SHEET_TOP} onClose={onDone} footer={<PrimaryButton sheet label="Done" onPress={onDone} />}>
+      <MonoText v="caps">Orb light</MonoText>
       <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', gap: 16, paddingHorizontal: 4 }}>
         {SOS_LIGHTS.map((item) => {
           const on = settings.light === item.key;
@@ -427,6 +438,71 @@ export function SosSettingsSheet({ open, settings, onChange, onDone }: { open: b
         onChange={(background) => onChange({ ...settings, background })}
       />
     </Sheet>
+  );
+}
+
+// ════════ THE WAY TO A PERSON, AND BACK ══════════════════════════════════════
+
+/**
+ * "Help" — the way from any dark SOS board to Find support (B2, D467). It
+ * sits in the nav row's left slot, set as the kit's own text slot (15/700 in
+ * the row's colour); where the slot holds the hub's back chevron it stands
+ * just inside it, as the gear stands inside the ✕. Support is pushed over the
+ * SOS, so its Back returns to the board the user left.
+ */
+export function SupportDoor({ beside = false }: { beside?: boolean }) {
+  const router = useRouter();
+  return (
+    <Tap
+      label="Find support"
+      onPress={() => router.push('/(app)/support')}
+      hitSlop={{ top: 4, bottom: 4, left: beside ? 4 : 12, right: 12 }}
+      style={{ position: 'absolute', left: 22 + (beside ? 36 + 6 : 0), top: 60, height: 40, justifyContent: 'center', zIndex: 6 }}>
+      <MonoText v="rowLabel" color={monoDark.text}>
+        Help
+      </MonoText>
+    </Tap>
+  );
+}
+
+/**
+ * "Talk to someone" — the same way to Find support, on a light board's stack
+ * (the SOS's low and ashamed boards, the slip flow's ashamed card): the kit's
+ * outline pill after the board's line, with the 2-point spacer the challenge
+ * card also sits on (D467).
+ */
+export function SupportPill() {
+  const router = useRouter();
+  return (
+    <>
+      <View style={{ height: 2 }} />
+      <Pill kind="outline" label="Talk to someone" accessibilityLabel="Find support" onPress={() => router.push('/(app)/support')} />
+    </>
+  );
+}
+
+/**
+ * Android's back inside a one-route flow (the interrupt, the slip flow, the
+ * hub's stages): the flow's own step back, never the whole route (F2, D462).
+ * It listens only while its screen is the one in front, so a screen pushed
+ * over the flow (Support, the vow) keeps its own back; an open sheet's handler
+ * is added later and so runs first. The swipe-back is turned off on those
+ * routes by their `Stack.Screen` options.
+ */
+export function useStepBack(onBack: () => void, enabled = true) {
+  const latest = useRef(onBack);
+  useEffect(() => {
+    latest.current = onBack;
+  });
+  useFocusEffect(
+    useCallback(() => {
+      if (!enabled) return undefined;
+      const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+        latest.current();
+        return true;
+      });
+      return () => sub.remove();
+    }, [enabled]),
   );
 }
 
@@ -506,6 +582,7 @@ function SosShell({
     <Screen variant="dark">
       {background !== 'night' ? <SosBackdrop background={background} /> : null}
       <NavBar tone="dark" left={left} centre={{ title: 'Ride it out' }} right="close" onBack={onBack} onClose={onClose} />
+      <SupportDoor beside={left === 'back'} />
       {onSettings ? (
         <Tap
           label="SOS settings"

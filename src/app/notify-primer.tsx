@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 
 import { MonoText, NavBar } from '@/components/mono';
 import { ReminderBoard } from '@/components/onboarding/reminders';
+import { turnOnReminders } from '@/lib/reminders';
 import { mono } from '@/lib/theme';
 
 /**
@@ -11,17 +12,23 @@ import { mono } from '@/lib/theme';
  * frame draws — the "10:41 PM" / "wave tool" pair this screen still carried
  * was retired from `/reminders` already (D099). Its own headline, line and
  * discretion promise stay (D328); the lock glyph before the promise goes (no
- * frame draws a lock, CRITIC C7). Both buttons close, as before.
+ * frame draws a lock, CRITIC C7). `Not now` closes; `Turn on reminders` asks
+ * the OS and schedules the two check-ins, then closes (D422). Its line said
+ * "Timed to your risky window", which nothing schedules (D425).
  */
 export default function NotifPrimer() {
   const router = useRouter();
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
+  const turnOn = async () => {
+    await turnOnReminders({ openSettingsIfBlocked: true });
+    close();
+  };
 
   return (
     <ReminderBoard
       nav={<NavBar left="empty" centre={{ step: 8, total: 9 }} right="close" onClose={close} />}
       title="Two reminders a day."
-      sub="Timed to your risky window. Nothing noisy, nothing shaming."
+      sub="At your check-in times. Nothing noisy, nothing shaming."
       // the promise under the notes costs the space above them, so it clears the pill at 852
       notesGap={24}
       after={
@@ -30,7 +37,7 @@ export default function NotifPrimer() {
         </MonoText>
       }
       cta="Turn on reminders"
-      onCta={close}
+      onCta={() => void turnOn()}
       ghost="Not now"
       onGhost={close}
     />

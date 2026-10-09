@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tideline",
+    "name": "VICI",
     "slug": "tideline",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,13 +8,12 @@
     "scheme": "tideline",
     "userInterfaceStyle": "dark",
     "ios": {
-      "bundleIdentifier": "com.tideline.vici",
-      "icon": "./assets/expo.icon"
+      "bundleIdentifier": "com.tideline.vici"
     },
     "android": {
       "package": "com.tideline.vici",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0D0D0D",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -37,7 +36,19 @@
           }
         }
       ],
-      "expo-secure-store"
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "VICI uses Face ID to keep the app locked, so it opens only for you."
+        }
+      ],
+      "expo-notifications",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "VICI uses Face ID to keep the app locked, so it opens only for you."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": false,

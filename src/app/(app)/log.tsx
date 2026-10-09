@@ -18,12 +18,16 @@ import {
   WeekStrip,
   type StripDay,
 } from '@/components/logflow';
-import { EmptyState, LoadingView, MonoText, RuledRow, RuledRows, Screen, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
+import { ChevronR, EmptyState, LoadingView, MonoText, RuledRow, RuledRows, Screen, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
-import { daysAgo, groupDigits } from '@/lib/format';
+import { toDateKey } from '@/lib/date';
+import { closingNightKey, isMorningCheckin, isNightClosed, livedCheckins, moodWord, nightBeforeProgramme, useToday, type ProgrammeUser } from '@/lib/day';
+import { daysAgo } from '@/lib/format';
+import { checkinPartNow } from '@/lib/routines';
 import { lhNormal, mono, sans } from '@/lib/theme';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
-import { completedWeekStarts, mondayOf, weekLabel, weekScore } from '@/lib/weeklyReport';
+import { RATING_SCALE, lessonCompletions } from '@/lib/score';
+import { completedWeekStarts, mondayOf, weekLabel, weekRating } from '@/lib/weeklyReport';
 
 /**
  * 91 / 91-2 / 91-3 · The log, in three registers — urges, check-ins and the
@@ -41,9 +45,6 @@ const TABS = [
   { key: 'reports' as const, label: 'Reports' },
 ];
 type LogTab = (typeof TABS)[number]['key'];
-
-/** What the morning check-in's mood dial reads back (`day/morning.tsx`), the word a check-in row ends on. */
-const MOOD_WORD = ['Rough', 'Low', 'Steady', 'Good', 'Great'];
 
 const dateKey = (ms: number) => {
   const d = new Date(ms);
@@ -94,9 +95,10 @@ export default function Log() {
   const checkins = useCheckins();
   const progress = useLessonProgressMap();
   const [tab, setTab] = useState<LogTab>('urges');
-  // Read once on mount: re-reading it every render would let the week's edge
-  // shift underneath the list while it is on screen.
-  const [now] = useState(() => Date.now());
+  // The screen's clock: still under a re-render, so the week's edge cannot
+  // shift beneath the list, and on to the new day with focus, the foreground
+  // and midnight (a tab stays mounted).
+  const now = useToday();
 
   if (events === undefined || checkins === undefined) return <LoadingView onBack={() => router.navigate('/log-chooser')} />;
 
@@ -105,14 +107,24 @@ export default function Log() {
   );
 
   if (tab === 'urges') return <Urges head={head} events={events} now={now} />;
-  if (tab === 'checkins') return <Checkins head={head} checkins={checkins} now={now} />;
+  if (tab === 'checkins') {
+    return (
+      <Checkins
+        head={head}
+        user={user}
+        checkins={checkins}
+        now={now}
+        onCheckin={(part) => router.push(part === 'morning' ? '/day/morning' : '/day/night')}
+      />
+    );
+  }
   return (
     <Reports
       head={head}
-      createdAt={user?.createdAt}
+      user={user}
       checkins={checkins}
       events={events}
-      lessons={progress === undefined ? undefined : Object.values(progress).filter((p) => p.status === 'completed').map((p) => p.completedAt ?? 0)}
+      lessons={progress === undefined ? undefined : lessonCompletions(progress)}
       now={now}
       onOpen={(week) => router.push(week ? `/weekly-report?week=${week}` : '/weekly-report')}
     />
@@ -161,7 +173,11 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
 
 /* --------------------------------------------------------------- 91-2 · check-ins */
 
-/** The run of days with a check-in, back from today — or from yesterday while today's is still to come. */
+/**
+ * The run of days with a check-in, back from today — or from yesterday while
+ * today's is still to come. `checkins` are the lived ones (`livedCheckins`):
+ * a row that only holds an action is not a check-in.
+ */
 function streak(checkins: DailyCheckin[], now: number): number {
   const days = new Set(checkins.map((c) => c.date));
   const cursor = new Date(now);
@@ -182,22 +198,59 @@ function streak(checkins: DailyCheckin[], now: number): number {
  */
 function readingWord(c: DailyCheckin): string | undefined {
   if (c.emotions?.length) return c.emotions[0];
-  if (c.mood != null) return MOOD_WORD[Math.max(1, Math.min(5, Math.round(c.mood))) - 1];
+  if (c.mood != null) return moodWord(c.mood);
+  if (c.nightMood != null) return moodWord(c.nightMood);
   return undefined;
 }
 
-function Checkins({ head, checkins, now }: { head: ReactNode; checkins: DailyCheckin[]; now: number }) {
+type Part = 'morning' | 'night';
+
+function Checkins({
+  head,
+  user,
+  checkins: all,
+  now,
+  onCheckin,
+}: {
+  head: ReactNode;
+  /** the account: its programme start bounds the night the door reads */
+  user?: ProgrammeUser | null;
+  checkins: DailyCheckin[];
+  now: number;
+  onCheckin: (part: Part) => void;
+}) {
+  // only real check-ins, and never a day still to come — the night files the
+  // next day's action on its row, which is not a check-in (L6)
+  const checkins = livedCheckins(all, now);
   const week = thisWeek(now);
   const byDate = new Map(checkins.map((c) => [c.date, c]));
   const strip: StripDay[] = week.days.map((day, i) => {
     const c = byDate.get(dateKey(day));
     // the circle's size is the day's energy (1–5), the reading the morning
     // check-in logs; a day logged without one reads its mood instead
-    const v = c?.energy ?? c?.mood;
+    const v = c?.energy ?? c?.mood ?? c?.nightMood;
     return { label: STRIP_LABELS[i], lit: i === week.today, mark: c ? <ReadingDay v={v ?? 3} /> : <EmptyDay /> };
   });
   const run = streak(checkins, now);
   const rows = [...checkins].sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  // The door to the check-in the clock says it is, while it is still to do.
+  // The night one has no other door but the launch prompt and a reminder (L9).
+  // It reads the same row the night flow writes (before 4:30, yesterday's),
+  // asks whether the night flow closed it (the quick check-in's feelings
+  // don't), and stays shut before the programme's first night.
+  const part: Part = checkinPartNow(new Date(now));
+  const dueKey = part === 'night' ? closingNightKey(user, now) : toDateKey(new Date(now));
+  const due = all.find((c) => c.date === dueKey);
+  const open = part === 'night' ? !nightBeforeProgramme(user, now) && !isNightClosed(due) : !isMorningCheckin(due);
+  const door = open ? (
+    <RuledRow label={part === 'night' ? 'Night check-in' : 'Morning check-in'} onPress={() => onCheckin(part)} accessibilityLabel={`Open the ${part} check-in`}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+        <MonoText v="rowValue">{part === 'night' ? 'Close the day' : 'Start the day'}</MonoText>
+        <ChevronR color={mono.art} />
+      </View>
+    </RuledRow>
+  ) : null;
   return (
     <Screen>
       <Page
@@ -212,12 +265,16 @@ function Checkins({ head, checkins, now }: { head: ReactNode; checkins: DailyChe
         }>
         {rows.length ? (
           <RuledRows height={52}>
+            {door}
             {rows.map((c) => (
               <RuledRow key={c.date} label={dayWord(keyToMs(c.date), now)} value={readingWord(c)} />
             ))}
           </RuledRows>
         ) : (
-          <EmptyState title="No check-ins yet" body="Twenty seconds in the morning starts one." style={FLUSH} />
+          <>
+            {door ? <RuledRows height={52}>{door}</RuledRows> : null}
+            <EmptyState title="No check-ins yet" body="Twenty seconds in the morning starts one." style={FLUSH} />
+          </>
         )}
       </Page>
     </Screen>
@@ -228,7 +285,7 @@ function Checkins({ head, checkins, now }: { head: ReactNode; checkins: DailyChe
 
 function Reports({
   head,
-  createdAt,
+  user,
   checkins,
   events,
   lessons,
@@ -236,16 +293,18 @@ function Reports({
   onOpen,
 }: {
   head: ReactNode;
-  createdAt?: number;
+  /** the account — its programme start is where the weeks begin */
+  user?: ProgrammeUser;
   checkins: DailyCheckin[];
   events: TidelineEvent[];
   lessons?: number[];
   now: number;
   onOpen: (week?: string) => void;
 }) {
-  if (createdAt == null || lessons === undefined) return <LoadingView bare />;
-  // newest first; each carries the score its week closed on and what it moved it by
-  const weeks = completedWeekStarts(createdAt, now).map((key) => weekScore(key, createdAt, checkins, events, lessons));
+  if (user == null || lessons === undefined) return <LoadingView bare />;
+  // newest first; each carries the recovery rating its week closed on and what it moved it by
+  const input = { checkins, events, lessons, start: user };
+  const weeks = completedWeekStarts(user, now).map((key) => weekRating(key, input));
   if (!weeks.length) {
     return (
       <Screen>
@@ -263,9 +322,9 @@ function Reports({
         head={
           <>
             {head}
-            <BigStat value={groupDigits(latest.score)} caption={`${signed(latest.delta)} this week`} />
-            {/* oldest first, so the line reads left to right the way the weeks ran */}
-            <Spark values={[...weeks].reverse().map((w) => w.score)} />
+            <BigStat value={String(latest.rating)} caption={`Recovery rating, ${signed(latest.delta)} this week`} />
+            {/* oldest first, so the line reads left to right the way the weeks ran — on the rating's fixed 0–100 */}
+            <Spark values={[...weeks].reverse().map((w) => w.rating)} scale={RATING_SCALE} />
             <Tap
               onPress={() => onOpen(latest.weekStart)}
               style={{ position: 'absolute', left: 24, right: 24, top: 432, height: 52, borderRadius: 26, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>

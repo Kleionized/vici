@@ -2,7 +2,21 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { HeroBoard } from '@/components/mono';
 import { useCurrentUser } from '@/lib/backend';
-import { latestCompletedWeek, weekLabel } from '@/lib/weeklyReport';
+import { toDateKey } from '@/lib/date';
+import { isDateKey, keyToDate } from '@/lib/day';
+import { latestCompletedWeek, mondayOf, weekLabel } from '@/lib/weeklyReport';
+
+/**
+ * `?week=` as the Monday of a real week that has begun, or null (U2, D484): a
+ * stale or hand-made link (`?week=x`, `2026-02-31`, a week not yet lived)
+ * falls back to the latest closed week instead of a broken or empty report.
+ */
+function weekParam(raw: unknown): string | null {
+  if (!isDateKey(raw)) return null;
+  const d = keyToDate(raw);
+  if (toDateKey(d) !== raw || d.getTime() > Date.now()) return null;
+  return toDateKey(mondayOf(d));
+}
 
 /**
  * 91C0 · Report ready. The report lands over Today once a week has closed and
@@ -13,17 +27,19 @@ import { latestCompletedWeek, weekLabel } from '@/lib/weeklyReport';
 export default function ReportReady() {
   const router = useRouter();
   const user = useCurrentUser();
-  const { week } = useLocalSearchParams<{ week?: string }>();
-  const shown = week || (user ? latestCompletedWeek(user.createdAt) : null);
+  const params = useLocalSearchParams<{ week?: string }>();
+  // only a real date key names a week — `?week=x` would print "undefined NaN"
+  const week = weekParam(params.week) ?? undefined;
+  const shown = week ?? (user ? latestCompletedWeek(user) : null);
   // The frame's line names the week. With no closed week to name, the app's own
   // line from before the redesign (D328). Without `?week=` the week is only
   // known once the account loads: hold the line's space blank until then rather
   // than flash the other line (`undefined` is also "signed out", so no spinner).
   const body = shown
-    ? `${weekLabel(shown)}: score, days and urges.`
+    ? `${weekLabel(shown)}: rating, days and urges.`
     : user === undefined
       ? '\u00A0'
-      : 'Score, urges, and the pattern — two quiet minutes.';
+      : 'Rating, urges, and the pattern — two quiet minutes.';
 
   const later = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   const open = () => router.replace(week ? `/weekly-report?week=${week}` : '/weekly-report');

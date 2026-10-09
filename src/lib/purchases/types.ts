@@ -21,8 +21,25 @@ export interface Plan {
   pricePerMonthString: string | null;
   /** "/year" · "/month" · "" for lifetime. */
   cycle: string;
-  /** An introductory offer attached to this plan, if the customer is eligible. */
+  /**
+   * An introductory offer attached to this plan — only where the customer is
+   * eligible for it. On iOS that is checked with the store
+   * (`checkTrialOrIntroductoryPriceEligibility`) and is null until the answer
+   * is ELIGIBLE; Google Play only offers what the customer can take (D455).
+   * `periodLabel` is the offer's length, always counted ("1 week", "3 days"),
+   * or '' where the store gave none.
+   */
   intro: { priceString: string; periodLabel: string; isFree: boolean; days: number | null } | null;
+}
+
+/** The product the active entitlement came from, priced by the store. */
+export interface ActiveProduct {
+  /** One of our three plans, where the identifier is one of ours. */
+  key: PlanKey | null;
+  /** The store's current price for this product — "$39.99". */
+  priceString: string;
+  /** ISO-8601 subscription period ("P1Y"), or null for a one-time purchase. */
+  period: string | null;
 }
 
 /** What the customer currently has. Derived from CustomerInfo, never stored. */
@@ -31,6 +48,8 @@ export interface Membership {
   isActive: boolean;
   /** Which plan unlocked it, where the product identifier is one of ours. */
   plan: PlanKey | null;
+  /** The store product identifier that unlocked it (Play: `id:basePlan`). */
+  productId: string | null;
   /** Renews at the end of the period. False for lifetime and for cancellations. */
   willRenew: boolean;
   /** Null for a lifetime purchase, and while nothing is active. */
@@ -64,6 +83,13 @@ export interface PurchasesApi {
 
   /** The current entitlement state. */
   membership: Membership;
+  /**
+   * True once the store has said what this customer holds: the SDK is on the
+   * signed-in person and their CustomerInfo has been read. While false,
+   * `membership` reads "nothing active" only because nothing is known yet, so
+   * a screen that states a plan shows a wait or a neutral line, never "Free".
+   */
+  membershipKnown: boolean;
   /** Convenience: `membership.isActive`. */
   isPremium: boolean;
   /** Every entitlement identifier currently active for this customer. */
@@ -83,6 +109,19 @@ export interface PurchasesApi {
   /** The offering's metadata, read as paywall copy. All fields optional. */
   copy: OfferingCopy;
   /**
+   * A plan from a named offering (`drop`), or null when that offering or plan
+   * does not exist. Never falls back to the current offering.
+   */
+  planIn(offeringId: string, key: PlanKey): Plan | null;
+  /** Any offering's packages reduced for display, intro offers only where eligible. */
+  packagesIn(offering: PurchasesOffering | null): PackageView[];
+  /**
+   * The product behind the active entitlement and its store price, once
+   * known — what Manage Subscription states. Null while nothing is active or
+   * the store has not said.
+   */
+  activeProduct: ActiveProduct | null;
+  /**
    * The offering a RevenueCat placement resolves to, for a paywall shown at a
    * named point in the app. Null when the placement has no offering — which
    * RevenueCat treats as "show nothing here".
@@ -91,7 +130,10 @@ export interface PurchasesApi {
 
   /** Re-fetch offerings and customer info. */
   refresh(): Promise<void>;
-  /** Buy a plan from the current offering (or from `offeringId`, when given). */
+  /**
+   * Buy a plan from the current offering, or from `offeringId` when given —
+   * `unavailable` if that offering does not exist (it never falls back).
+   */
   purchase(key: PlanKey, offeringId?: string): Promise<PurchaseOutcome>;
   /** Buy a specific package — used by the RevenueCat paywall's own callbacks. */
   purchasePackage(pkg: PurchasesPackage): Promise<PurchaseOutcome>;

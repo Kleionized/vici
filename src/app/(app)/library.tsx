@@ -6,6 +6,7 @@ import { WeekBack, WeekPage, clampWeek, courseDay, useRowsViewport, weekForDay }
 import { LoadingView, Screen } from '@/components/mono';
 import { CURRICULUM_84 } from '@/content/curriculum84';
 import { useCurrentUser } from '@/lib/backend';
+import { useToday } from '@/lib/day';
 
 /**
  * The Library tab — the twelve week pages (`Week I Reset` … `Week XII Leave It
@@ -23,8 +24,9 @@ export default function Library() {
   const params = useLocalSearchParams<{ week?: string }>();
   const { width } = useWindowDimensions();
   const user = useCurrentUser();
-  const [now] = useState(() => Date.now());
-  const day = courseDay(user?.createdAt, now);
+  // the screen's clock: it moves on with focus, the foreground and midnight (L5)
+  const now = useToday();
+  const day = courseDay(user, now);
   // a phone too short for the rows viewport scrolls each page whole, chevron and all
   const pinned = useRowsViewport() != null;
 
@@ -48,7 +50,7 @@ export default function Library() {
   }
   // The opening page, once the account is known: the current week.
   if (page == null && user) {
-    setPage(weekForDay(courseDay(user.createdAt, now)) - 1);
+    setPage(weekForDay(courseDay(user, now)) - 1);
     setJump((j) => j + 1);
   }
 

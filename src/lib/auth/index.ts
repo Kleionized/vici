@@ -13,7 +13,7 @@ import type { ReactNode } from 'react';
 import { AUTH_MODE } from '@/lib/config';
 import { MockAuthProvider, useMockAuth } from './mockAuth';
 
-export type { AuthValue } from './mockAuth';
+export type { AccountCheck, AuthResult, AuthStepResult, AuthValue, SignUpOptions } from './mockAuth';
 
 export const useAuth =
   AUTH_MODE === 'clerk'

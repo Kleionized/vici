@@ -1,15 +1,18 @@
 import { useMemo, useRef, useState, type ReactNode } from 'react';
-import { Alert, Platform, Text, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
+import { Alert, Platform, Text, View, useWindowDimensions, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
+import type { CustomerInfo } from 'react-native-purchases';
 
 import {
   Apple,
   Card,
   CheckDisc,
   CloseX,
+  EmptyState,
   GhostLink,
   H1,
   LaurelMark,
+  LoadingView,
   MonoText,
   NavBar,
   P,
@@ -24,7 +27,10 @@ import {
 } from '@/components/mono';
 import { numberWords, shortDate } from '@/lib/format';
 import { useAuth } from '@/lib/auth';
-import { usePurchases } from '@/lib/purchases';
+import { hasLegal, openLegal } from '@/lib/legal';
+import { ENTITLEMENT_ID, TIER_NAME, usePurchases, type Membership, type Plan, type PurchaseOutcome } from '@/lib/purchases';
+import { cancelPlace, renewalTerms } from '@/lib/purchases/plans';
+import { scheduleTrialReminder, useReminderState } from '@/lib/reminders';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 /**
@@ -32,22 +38,25 @@ import { lhNormal, mono, ring, sans } from '@/lib/theme';
  * (11C), in the flat dark system.
  *
  * Paywall — the laurel lockup, the promise, two plan cards side by side (the
- * chosen one in ink with a "Save 74%" tab on Yearly), four check discs under
- * "What you get", Continue, and "Terms · Restore". Rescue — walking away is
- * met ONCE by the free days, as a three-step timeline; declining that really
- * closes. Confirmed — the 132 check disc and the sentence that says when the
- * first charge lands.
+ * chosen one in ink with a "Save" tab on Yearly), the renewal terms under
+ * them, four check discs under "What you get", Continue, and
+ * "Terms · Privacy · Restore". Rescue — walking away is met ONCE by the free
+ * days, as a three-step timeline; declining that really closes. Confirmed —
+ * the 132 check disc and the sentence that says when the first charge lands.
  *
  * The Paywall frame draws no way out. The app keeps one (D323): the kit ✕ in
  * the nav's right slot — exactly where Rescue draws its own, so the ✕ does not
  * move between the two boards — and the top-right "Restore" it displaces lives
- * on in the footer's "Restore", which is now tappable.
+ * on in the footer's "Restore", which is tappable, as are "Terms" and
+ * "Privacy" (B5, D452).
  *
- * Every price, cycle and trial length is read from the offering rather than
- * drawn in — the canvas's $39.99 / $12.99 / three days are what the offline
- * catalogue serves, so the frame still renders exactly, while a real store
- * shows the customer their own currency and their own introductory offer. The
- * drawn pay sheet is likewise only reached offline: with RevenueCat configured
+ * Every price, cycle, saving and trial length comes from the store (B7, D456).
+ * The canvas's $39.99 / $12.99 / "Save 74%" / three days are what the offline
+ * catalogue serves, so the design preview still renders the frame; with
+ * RevenueCat configured nothing drawn stands in for a price — the board waits
+ * for the store, and says plans are unavailable if it never answers. The free
+ * days are offered only to a customer the store says can take them (P6, D455),
+ * and the drawn pay sheet is only reached offline: with RevenueCat configured
  * the store presents its own sheet and this one never opens.
  */
 
@@ -56,23 +65,31 @@ type PlanKey = 'year' | 'month' | 'trial';
 /** The catalogue plan a drawn card buys. The rescue offer sells the year too. */
 const CATALOGUE = { year: 'yearly', trial: 'yearly', month: 'monthly' } as const;
 
-/**
- * The prices this render draws, resolved from the offering with the canvas's
- * own numbers as the fallback.
- */
+/** What this render draws, from the store (or, offline, from the canvas). */
 interface Money {
-  yearPrice: string;
-  yearCycle: string;
-  yearPerMonth: string;
-  /** The tab on the yearly card — "Save 74%", or nothing if it saves nothing. */
-  yearSaving?: string;
-  monthPrice: string;
-  monthCycle: string;
-  /** Length of the yearly plan's introductory offer, in days. */
-  trialDays: number;
+  year: {
+    price: string;
+    cycle: string;
+    /** "$3.33" — the store's own per-month figure, where it gives one */
+    perMonth: string | null;
+    /** "Save 74%", or nothing if the year saves nothing */
+    saving?: string;
+    /** the year's introductory offer, only where this customer can take it */
+    intro: Plan['intro'];
+  } | null;
+  month: { price: string; cycle: string } | null;
+  /** Free days on the year for this customer — null when there are none to give. */
+  trialDays: number | null;
 }
 
-const DRAWN_MONEY: Money = { yearPrice: '$39.99', yearCycle: '/year', yearPerMonth: '$3.33', yearSaving: 'Save 74%', monthPrice: '$12.99', monthCycle: '/month', trialDays: 3 };
+const CANVAS_TRIAL: NonNullable<Plan['intro']> = { priceString: '$0.00', periodLabel: '3 days', isFree: true, days: 3 };
+
+/** The offline catalogue's numbers — the frame's own. Never used against a store. */
+const DRAWN_MONEY: Money = {
+  year: { price: '$39.99', cycle: '/year', perMonth: '$3.33', saving: 'Save 74%', intro: CANVAS_TRIAL },
+  month: { price: '$12.99', cycle: '/month' },
+  trialDays: 3,
+};
 
 /**
  * "Save 74%" (title case — the frame sets no `text-transform`) — the yearly
@@ -91,22 +108,45 @@ export function savingBadge(yearly: number | undefined, monthly: number | undefi
 function fmtDate(d: Date) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
+
+/** The drawn pay sheet's rows — offline only, so the canvas's numbers. */
 function checkoutFor(plan: PlanKey, m: Money) {
   const now = new Date();
-  const afterTrial = new Date(now.getTime() + m.trialDays * 86400000);
+  const days = m.trialDays ?? 0;
+  const afterTrial = new Date(now.getTime() + days * 86400000);
   const in1y = new Date(now);
   in1y.setFullYear(in1y.getFullYear() + 1);
   const in1m = new Date(now);
   in1m.setMonth(in1m.getMonth() + 1);
+  const yearPrice = m.year?.price ?? '';
+  const yearCycle = m.year?.cycle ?? '';
   if (plan === 'trial')
     return {
-      app: 'VICI Plus · Yearly',
-      trial: `${m.trialDays} days free, then ${m.yearPrice}${m.yearCycle}`,
+      app: `${TIER_NAME} · Yearly`,
+      trial: `${days} days free, then ${yearPrice}${yearCycle}`,
       due: '$0.00',
-      note: `${m.yearPrice} on ${fmtDate(afterTrial)} · cancel anytime`,
+      note: `${yearPrice} on ${fmtDate(afterTrial)} · cancel anytime`,
     };
-  if (plan === 'month') return { app: 'VICI Plus · Monthly', trial: null, due: m.monthPrice, note: `Renews ${fmtDate(in1m)} · cancel anytime` };
-  return { app: 'VICI Plus · Yearly', trial: null, due: m.yearPrice, note: `Renews ${fmtDate(in1y)} · cancel anytime` };
+  if (plan === 'month') return { app: `${TIER_NAME} · Monthly`, trial: null, due: m.month?.price ?? '', note: `Renews ${fmtDate(in1m)} · cancel anytime` };
+  return { app: `${TIER_NAME} · Yearly`, trial: null, due: yearPrice, note: `Renews ${fmtDate(in1y)} · cancel anytime` };
+}
+
+/** The store a receipt lives with, in its own name. */
+function storeName(): string {
+  return Platform.OS === 'ios' ? 'App Store' : Platform.OS === 'android' ? 'Google Play' : 'store';
+}
+
+/**
+ * A free trial just started: one reminder a day before it ends, asking for
+ * notification permission now (the rescue promised it). Nothing happens for a
+ * purchase that is not a trial, offline, or where notifications are refused.
+ */
+export function remindBeforeTrialEnds(outcome: PurchaseOutcome): void {
+  const info: CustomerInfo | null = outcome.status === 'purchased' ? outcome.customerInfo : null;
+  const entitlement = info?.entitlements.active[ENTITLEMENT_ID];
+  if (entitlement?.periodType === 'TRIAL' && entitlement.willRenew && entitlement.expirationDateMillis) {
+    void scheduleTrialReminder(entitlement.expirationDateMillis).catch(() => false);
+  }
 }
 
 // ── shared pieces (OfferingPaywall draws the same board from an offering) ──
@@ -134,7 +174,7 @@ export function PwNav({ label, onClose }: { label: string; onClose: () => void }
 }
 
 /** The lockup at `left 24 top 66`: the 28 laurel (white, stretched) and "VICI Unlimited" 14/700. */
-export function PwBrand({ eyebrow = 'VICI Unlimited' }: { eyebrow?: string }) {
+export function PwBrand({ eyebrow = TIER_NAME }: { eyebrow?: string }) {
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 24, top: 66, flexDirection: 'row', alignItems: 'center', gap: 10, zIndex: 5 }}>
       <LaurelMark size={28} />
@@ -260,32 +300,90 @@ export function PwFeatures({ title = 'What you get', labels = PW_FEATURES }: { t
   );
 }
 
+
+/** The words in a legal line that are controls. */
+const LEGAL_WORDS = /(Terms|Privacy|Restore)/;
+
+/** The paywall's own footer, used wherever a dashboard footnote would drop Terms or Privacy (D452). */
+export const LEGAL_FOOTER = 'Terms · Privacy · Restore';
+
 /**
- * "Terms · Restore", 12/700 ls 0.4 mute at `bottom 52`. "Restore" is the
- * control the top-right word used to be (D323); "Terms" has no destination in
- * the app and stays words. Any other footnote is drawn as text.
+ * A legal line — "Terms · Privacy · Restore" or any run carrying those words.
+ * "Terms" opens the Terms of Use, "Privacy" the privacy policy (each through
+ * `openLegal`, B5), "Restore" calls `onRestore`. It is drawn as one run, so
+ * the centred words never re-kern at a seam, and the same line again over it
+ * in transparent ink carries the pressable spans (transparent rather than
+ * opacity 0, which iOS drops from VoiceOver). A word with nowhere to go — the
+ * privacy policy before its URL is set, Restore with no handler — stays words.
  */
-export function PwFooter({ text = 'Terms · Restore', onRestore }: { text?: string; onRestore: () => void }) {
-  const at = text.lastIndexOf('Restore');
+export function PwLegal({
+  text = LEGAL_FOOTER,
+  onRestore,
+  v = 'legal',
+  style,
+}: {
+  text?: string;
+  onRestore?: () => void;
+  /** `legal` — the paywall's 12/700 footer; `ghost` — the 15/400 line a ghost link sits on */
+  v?: 'legal' | 'ghost';
+  style?: StyleProp<TextStyle>;
+}) {
+  const parts = text.split(LEGAL_WORDS);
+  const action = (word: string): (() => void) | undefined => {
+    if (word === 'Terms') return () => void openLegal('terms');
+    if (word === 'Privacy') return hasLegal('privacy') ? () => void openLegal('privacy') : undefined;
+    if (word === 'Restore') return onRestore;
+    return undefined;
+  };
+  const controls = parts.some((p) => LEGAL_WORDS.test(p) && action(p));
   return (
-    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52, zIndex: 6 }}>
-      {/* drawn as one run: splitting it into spans re-kerns the line at the
-          seam and moves the centred words by a fraction of a point */}
-      <MonoText v="legal" center accessibilityElementsHidden={at >= 0} importantForAccessibility={at >= 0 ? 'no-hide-descendants' : 'auto'} aria-hidden={at >= 0 || undefined}>
+    <View pointerEvents="box-none">
+      <MonoText v={v} center style={style} accessibilityElementsHidden={controls} importantForAccessibility={controls ? 'no-hide-descendants' : 'auto'} aria-hidden={controls || undefined}>
         {text}
       </MonoText>
-      {at < 0 ? null : (
-        // the same line again over it in transparent ink: its "Restore" span is the
-        // control (transparent rather than opacity 0, which iOS drops from VoiceOver)
-        <MonoText v="legal" center color="transparent" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
-          {text.slice(0, at)}
-          <Text onPress={onRestore} accessibilityRole="link" suppressHighlighting>
-            Restore
-          </Text>
-          {text.slice(at + 'Restore'.length)}
+      {controls ? (
+        <MonoText v={v} center color="transparent" style={[style, { position: 'absolute', left: 0, right: 0, top: 0 }]}>
+          {parts.map((part, i) => {
+            const onPress = LEGAL_WORDS.test(part) ? action(part) : undefined;
+            return onPress ? (
+              <Text key={i} onPress={onPress} accessibilityRole="link" suppressHighlighting>
+                {part}
+              </Text>
+            ) : (
+              part
+            );
+          })}
         </MonoText>
-      )}
+      ) : null}
     </View>
+  );
+}
+
+/**
+ * The footer at `bottom 52`, 12/700 ls 0.4 mute: "Terms · Privacy · Restore".
+ * "Restore" is the control the top-right word used to be (D323). A dashboard
+ * footnote is used only when it still names Terms and Privacy — a subscription
+ * screen without both is a rejection (App Store 3.1.2).
+ */
+export function PwFooter({ text, onRestore }: { text?: string; onRestore: () => void }) {
+  const line = text && /Terms/.test(text) && /Privacy/.test(text) ? text : LEGAL_FOOTER;
+  return (
+    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52, zIndex: 6 }}>
+      <PwLegal text={line} onRestore={onRestore} />
+    </View>
+  );
+}
+
+/**
+ * The renewal terms under the plans (B5, D452): one or two lines of the
+ * footer's mute, left on the cards' edge. Not in the frame — the store asks
+ * for it beside the purchase.
+ */
+export function PwTerms({ children, style }: { children: string; style?: StyleProp<TextStyle> }) {
+  return (
+    <MonoText v="legal" wrap="wrap" style={[{ marginTop: 16, letterSpacing: 0, lineHeight: 16 }, style]}>
+      {children}
+    </MonoText>
   );
 }
 
@@ -294,12 +392,12 @@ const PAYWALL_CONTROLS = 82 + 58;
 
 /**
  * `Paywall`'s board, in canvas coordinates: the ✕, the lockup, then the stack
- * from 130 in flow — title and sub (gap 14), the plan row at 318, "What you
- * get" at 520, the discs at 552. On a phone too short to hold it, the three
- * open gaps (above the title, the plans and "What you get") tighten first, so
- * a 667 phone shows the whole board with its discs; only what that cannot
- * cover scrolls between the nav row and the pill (D320, D406). `plans` is the
- * card row.
+ * from 130 in flow — title and sub (gap 14), the plan row at 318, the renewal
+ * terms, "What you get" at 520, the discs at 552. On a phone too short to hold
+ * it, the three open gaps (above the title, the plans and "What you get")
+ * tighten first, so a 667 phone shows the whole board with its discs; only
+ * what that cannot cover scrolls between the nav row and the pill (D320,
+ * D406). `plans` is the card row; `terms` the line under it.
  */
 export function PwBoard({
   closeLabel,
@@ -307,6 +405,7 @@ export function PwBoard({
   eyebrow,
   headline = 'Take your life back.',
   plans,
+  terms,
   benefitsTitle,
   benefits,
   cta = 'Continue',
@@ -319,6 +418,8 @@ export function PwBoard({
   eyebrow?: string;
   headline?: string;
   plans: ReactNode;
+  /** the auto-renewal line for the chosen plan */
+  terms?: string;
   benefitsTitle?: string;
   benefits?: readonly string[];
   cta?: string;
@@ -341,11 +442,37 @@ export function PwBoard({
         <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12, rowGap: 24 }}>
           {plans}
         </View>
+        {terms ? <PwTerms>{terms}</PwTerms> : null}
         <PwFeatures title={benefitsTitle} labels={benefits} />
       </ScrollRegion>
       <PrimaryButton label={cta} bottom={82} onPress={onCta} />
       <PwFooter text={footnote} onRestore={onRestore} />
     </>
+  );
+}
+
+/**
+ * No frame draws a store that did not answer. The paywall's own ground — the
+ * ✕, the lockup, the footer — around the kit's empty state, and "Try again"
+ * where Continue stands. Nothing drawn stands in for a price (B7, D456).
+ */
+export function PwUnavailable({ closeLabel, onClose, onRetry, onRestore }: { closeLabel: string; onClose: () => void; onRetry: () => Promise<void> | void; onRestore: () => void }) {
+  const [trying, setTrying] = useState(false);
+  const retry = () => {
+    if (trying) return;
+    setTrying(true);
+    void Promise.resolve(onRetry()).finally(() => setTrying(false));
+  };
+  return (
+    <Screen>
+      <PwNav label={closeLabel} onClose={onClose} />
+      <PwBrand />
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 100, bottom: PAYWALL_CONTROLS, justifyContent: 'center' }}>
+        <EmptyState title="Plans aren’t available right now." body="The store didn’t answer. Check your connection and try again. Nothing has been charged." />
+      </View>
+      <PrimaryButton label={trying ? 'Trying…' : 'Try again'} bottom={82} disabled={trying} onPress={retry} />
+      <PwFooter onRestore={onRestore} />
+    </Screen>
   );
 }
 
@@ -367,33 +494,47 @@ function PwMain({
   closeLabel: string;
   money: Money;
 }) {
+  const { year, month } = money;
+  // the line names what Continue buys — the year carries its free days, if any
+  const terms =
+    plan === 'month' && month
+      ? renewalTerms({ priceString: month.price, cycle: month.cycle })
+      : year
+        ? renewalTerms({ priceString: year.price, cycle: year.cycle, intro: year.intro })
+        : undefined;
   return (
     <PwBoard
       closeLabel={closeLabel}
       onClose={onClose}
       onCta={onPay}
       onRestore={onRestore}
+      eyebrow={TIER_NAME}
+      terms={terms}
       plans={
         <>
-          <PwPlanCard
-            on={plan === 'year'}
-            onPress={() => setPlan('year')}
-            name="Yearly"
-            tagline="Best value"
-            price={money.yearPrice}
-            cycle={money.yearCycle}
-            line={`${money.yearPerMonth} a month`}
-            badge={money.yearSaving}
-          />
-          <PwPlanCard
-            on={plan === 'month'}
-            onPress={() => setPlan('month')}
-            name="Monthly"
-            tagline="Cancel anytime"
-            price={money.monthPrice}
-            cycle={money.monthCycle}
-            line="Billed monthly"
-          />
+          {year ? (
+            <PwPlanCard
+              on={plan === 'year'}
+              onPress={() => setPlan('year')}
+              name="Yearly"
+              tagline="Best value"
+              price={year.price}
+              cycle={year.cycle}
+              line={year.perMonth ? `${year.perMonth} a month` : undefined}
+              badge={year.saving}
+            />
+          ) : null}
+          {month ? (
+            <PwPlanCard
+              on={plan === 'month'}
+              onPress={() => setPlan('month')}
+              name="Monthly"
+              tagline="Cancel anytime"
+              price={month.price}
+              cycle={month.cycle}
+              line="Billed monthly"
+            />
+          ) : null}
         </>
       }
     />
@@ -444,8 +585,10 @@ function TimelineRow({ first, last, children }: { first?: boolean; last?: boolea
 /** The pill at 96 over the ghost link takes 154 off the screen's bottom. */
 const RESCUE_CONTROLS = 96 + 58;
 
-function PwRescue({ onStart, onNo, closeLabel, money }: { onStart: () => void; onNo: () => void; closeLabel: string; money: Money }) {
-  const days = money.trialDays;
+function PwRescue({ onStart, onNo, closeLabel, money, remind }: { onStart: () => void; onNo: () => void; closeLabel: string; money: Money; remind: boolean }) {
+  const days = money.trialDays ?? 0;
+  const year = money.year;
+  const then = year ? `${year.price}${year.cycle}` : '';
   return (
     <>
       <PwNav label={closeLabel} onClose={onNo} />
@@ -453,12 +596,15 @@ function PwRescue({ onStart, onNo, closeLabel, money }: { onStart: () => void; o
       <ScrollRegion top={100} bottom={RESCUE_CONTROLS} contentStyle={{ paddingTop: 157, paddingHorizontal: 24, paddingBottom: 24 }}>
         {/* the frame balances after the em dash; the break is written in so
             native (which cannot balance) and every width break there too */}
-        <H1>{`Before you go —\n${numberWords(days)} days on us.`}</H1>
+        <H1>{`Before you go —\n${numberWords(days)} ${days === 1 ? 'day' : 'days'} on us.`}</H1>
         <View style={{ marginTop: 44 }}>
           <TimelineRow first>Today — everything unlocks</TimelineRow>
-          <TimelineRow>{`Day ${days - 1} — a reminder, before any charge`}</TimelineRow>
-          <TimelineRow last>{`Day ${days} — ${money.yearPrice}${money.yearCycle} begins, unless you cancel`}</TimelineRow>
+          <TimelineRow>{remind ? `Day ${days - 1} — a reminder, before any charge` : `Until day ${days} — cancel in ${cancelPlace()}, nothing is charged`}</TimelineRow>
+          <TimelineRow last>{`Day ${days} — ${then} begins, unless you cancel`}</TimelineRow>
         </View>
+        {/* the renewal terms and both documents, beside the purchase (B5, D452) */}
+        {year ? <PwTerms style={{ marginTop: 28 }}>{renewalTerms({ priceString: year.price, cycle: year.cycle, intro: year.intro })}</PwTerms> : null}
+        <PwLegal text="Terms · Privacy" style={{ marginTop: 10, textAlign: 'left' }} />
       </ScrollRegion>
       <PrimaryButton label="Start free trial" bottom={96} onPress={onStart} />
       <GhostLink label="No thanks" onPress={onNo} />
@@ -472,7 +618,7 @@ function PwRescue({ onStart, onNo, closeLabel, money }: { onStart: () => void; o
  * system purchase sheet. It is the kit sheet (`#171717` panel over the scrim)
  * rather than an imitation of Apple's light one — the system face and hues it
  * used are gone from the app (D224). Its rows, the sum and "Confirm with Side
- * Button" keep their words.
+ * Button" keep their words. A release build never draws it (D450).
  */
 function PwPaySheet({ open, plan, email, money, onCancel, onPay }: { open: boolean; plan: PlanKey; email: string; money: Money; onCancel: () => void; onPay: () => void }) {
   const C = checkoutFor(plan, money);
@@ -513,18 +659,44 @@ function PwPaySheet({ open, plan, email, money, onCancel, onPay }: { open: boole
 /** The pill at 82 and the receipt line under it take 140 off the screen's bottom. */
 const CONFIRMED_CONTROLS = 82 + 58;
 
-function PwConfirmed({ plan, name, email, money, confirmLabel, onDone }: { plan: PlanKey; name?: string; email: string; money: Money; confirmLabel: string; onDone: () => void }) {
-  const [now] = useState(() => new Date());
-  const charge = shortDate(new Date(now.getTime() + money.trialDays * 86400000)).replace(' ', '\u00A0');
+/** `Jul 24` with a no-break space, so "Jul 24 —" stays whole on a wider phone. */
+function chargeDay(d: Date): string {
+  return shortDate(d).replace(' ', ' ');
+}
+
+/**
+ * The sentence under "We're in", from what the store says this customer now
+ * has — the trial's real end, the plan actually bought or restored — rather
+ * than from the card that happened to be selected (P6, D457).
+ */
+function storeLine(m: Membership): string {
+  const lead = 'Let’s take the first ground.';
+  if (!m.isActive) return `${lead} The campaign is unlocked.`;
+  if (m.periodType === 'TRIAL' && m.expiresAt) {
+    return m.willRenew
+      ? `${lead} Nothing is charged until ${chargeDay(m.expiresAt)} — cancelling is one tap in ${cancelPlace()}.`
+      : `${lead} Your free days run until ${chargeDay(m.expiresAt)}.`;
+  }
+  if (m.plan === 'lifetime' || !m.expiresAt) return `${lead} The whole campaign is yours, for good.`;
+  if (m.plan === 'monthly') return `${lead} The campaign is unlocked, month by month.`;
+  return `${lead} The whole campaign is yours until ${m.expiresAt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+}
+
+/** Offline: the canvas's sentence for the card bought, dated from today. */
+function drawnLine(plan: PlanKey, money: Money, now: Date): string {
+  const lead = 'Let’s take the first ground.';
+  if (plan === 'trial') {
+    const charge = chargeDay(new Date(now.getTime() + (money.trialDays ?? 0) * 86400000));
+    // no-break spaces keep "Jul 24 —" whole: a wider phone otherwise splits the date or opens a line on the dash
+    return `${lead} Nothing is charged until ${charge} — cancelling is one tap in Settings.`;
+  }
+  if (plan === 'month') return `${lead} The campaign is unlocked, month by month.`;
   const nextYear = new Date(now);
   nextYear.setFullYear(nextYear.getFullYear() + 1);
-  const line =
-    plan === 'trial'
-      ? // no-break spaces keep "Jul 24 —" whole: a wider phone otherwise splits the date or opens a line on the dash
-        `Let’s take the first ground. Nothing is charged until ${charge}\u00A0— cancelling is one tap in Settings.`
-      : plan === 'month'
-        ? `Let’s take the first ground. The campaign is unlocked, month by month.`
-        : `Let’s take the first ground. The whole campaign is yours until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+  return `${lead} The whole campaign is yours until ${nextYear.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}.`;
+}
+
+function PwConfirmed({ line, name, confirmLabel, onDone }: { line: string; name?: string; confirmLabel: string; onDone: () => void }) {
   return (
     <>
       <NavBar left="empty" right="empty" />
@@ -544,8 +716,9 @@ function PwConfirmed({ plan, name, email, money, confirmLabel, onDone }: { plan:
       </ScrollRegion>
       <PrimaryButton label={confirmLabel} bottom={82} onPress={onDone} />
       <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52 }}>
+        {/* the app sends no receipt — the store keeps it (P6, D457) */}
         <MonoText v="legal" center wrap="wrap" style={{ letterSpacing: 0, paddingHorizontal: 24 }}>
-          {`Receipt sent to ${email}`}
+          {`Your receipt is in your ${storeName()} purchase history.`}
         </MonoText>
       </View>
     </>
@@ -584,39 +757,60 @@ export function PaywallFlow({
   const [sheet, setSheet] = useState(false);
   const [done, setDone] = useState(false);
   const [offered, setOffered] = useState(false);
+  const [doneAt, setDoneAt] = useState<Date | null>(null);
   const closeLabel = embedded ? 'Skip' : 'Close';
-  const receipt = email ?? 'your Apple ID';
+  const mock = purchases.mode === 'mock';
 
   const year = purchases.planFor('yearly');
   const month = purchases.planFor('monthly');
-  const money = useMemo<Money>(
-    () => ({
-      yearPrice: year?.priceString ?? DRAWN_MONEY.yearPrice,
-      yearCycle: year?.cycle || DRAWN_MONEY.yearCycle,
-      yearPerMonth: year?.pricePerMonthString ?? DRAWN_MONEY.yearPerMonth,
-      // The canvas's "Save 74%" is $39.99 against twelve months at $12.99, so
-      // it is arithmetic and not a slogan: against a real store it is worked
-      // out from that store's own two prices, and withheld where the year is
-      // not in fact cheaper.
-      yearSaving: savingBadge(year?.pkg?.product.price, month?.pkg?.product.price) ?? DRAWN_MONEY.yearSaving,
-      monthPrice: month?.priceString ?? DRAWN_MONEY.monthPrice,
-      monthCycle: month?.cycle || DRAWN_MONEY.monthCycle,
-      trialDays: year?.intro?.days ?? DRAWN_MONEY.trialDays,
-    }),
-    [year, month],
-  );
+  const money = useMemo<Money | null>(() => {
+    if (mock) return DRAWN_MONEY;
+    if (!year && !month) return null;
+    const freeDays = year?.intro?.isFree ? year.intro.days : null;
+    return {
+      year: year
+        ? {
+            price: year.priceString,
+            cycle: year.cycle,
+            perMonth: year.pricePerMonthString,
+            // worked out from this store's own two prices, and withheld where
+            // the year is not in fact cheaper — never the canvas's 74 (B7)
+            saving: savingBadge(year.pkg?.product.price, month?.pkg?.product.price),
+            intro: year.intro,
+          }
+        : null,
+      month: month ? { price: month.priceString, cycle: month.cycle } : null,
+      trialDays: freeDays && freeDays > 0 ? freeDays : null,
+    };
+  }, [mock, year, month]);
 
   /**
-   * The rescue page promises free days, so it only appears where free days
-   * exist: offline, where the canvas supplies them, and against a store whose
-   * yearly product carries an introductory offer. Without one, ✕ closes on the
-   * first press — the same path the canvas gives a second press.
+   * The rescue page promises free days, so it only appears where this
+   * customer has free days to take: offline, where the canvas supplies them,
+   * and where the store's yearly product carries a free introductory offer the
+   * customer is eligible for (on iOS, the store's own ELIGIBLE — P6). Without
+   * one, ✕ closes on the first press — the same path the canvas gives a
+   * second press.
    */
-  const hasTrial = purchases.mode === 'mock' || !!year?.intro?.isFree;
+  const hasTrial = !!money?.trialDays;
+  // The rescue's "a reminder, before any charge" is a promise the phone has to
+  // keep: made only where this build can send one, notifications are allowed
+  // or the OS will still ask for them, and the trial is long enough to fit it
+  // (the design preview keeps the frame's row). Someone who has blocked
+  // notifications gets the "cancel in Settings, nothing is charged" row.
+  const reminders = useReminderState();
+  const remind = mock || (reminders.available && (reminders.permission === 'granted' || reminders.canAskAgain) && (money?.trialDays ?? 0) >= 2);
+  // A card the store does not sell cannot be the chosen one.
+  const chosen: PlanKey = plan === 'year' && !money?.year ? 'month' : plan === 'month' && !money?.month ? 'year' : plan;
 
   // One store sheet at a time: a second press while the first is open would
   // queue a second purchase behind it.
   const busy = useRef(false);
+
+  const finish = () => {
+    setDoneAt(new Date());
+    setDone(true);
+  };
 
   async function buy(which: PlanKey) {
     if (busy.current) return;
@@ -625,7 +819,8 @@ export function PaywallFlow({
     busy.current = false;
     setSheet(false);
     if (outcome.status === 'purchased' || (outcome.status === 'restored' && outcome.entitled)) {
-      setDone(true);
+      remindBeforeTrialEnds(outcome);
+      finish();
       return;
     }
     if (outcome.status === 'cancelled' || outcome.status === 'restored') return;
@@ -637,7 +832,7 @@ export function PaywallFlow({
     setCheckout(which);
     // Offline there is no store, so the drawn sheet stands in for one; with
     // RevenueCat configured the store presents its own and this never opens.
-    if (purchases.mode === 'mock') {
+    if (mock) {
       setSheet(true);
       return;
     }
@@ -651,10 +846,11 @@ export function PaywallFlow({
     busy.current = false;
     if (outcome.status === 'restored') {
       if (outcome.entitled) {
-        setCheckout(plan);
-        setDone(true);
+        // the confirmation reads what came back, not the selected card (P6)
+        setCheckout(null);
+        finish();
       } else {
-        Alert.alert('Nothing to restore', 'This store account has no VICI Plus purchase on it.');
+        Alert.alert('Nothing to restore', `This store account has no ${TIER_NAME} purchase on it.`);
       }
       return;
     }
@@ -672,17 +868,26 @@ export function PaywallFlow({
     onDone(false);
   };
 
+  // With a store configured, nothing is drawn until it has answered — and if
+  // it never does, the board says so instead of showing sample prices (B7).
+  if (!done && !money) {
+    if (!purchases.ready && !purchases.error) return <LoadingView onClose={() => onDone(false)} />;
+    return <PwUnavailable closeLabel={closeLabel} onClose={() => onDone(false)} onRetry={() => purchases.refresh()} onRestore={() => void restore()} />;
+  }
+
+  const confirmedLine = mock ? drawnLine(checkout || chosen, DRAWN_MONEY, doneAt ?? new Date()) : storeLine(purchases.membership);
+
   return (
     <Screen>
       {done ? (
-        <PwConfirmed plan={checkout || plan} name={name} email={receipt} money={money} confirmLabel={confirmLabel} onDone={() => onDone(true)} />
-      ) : offer ? (
-        <PwRescue closeLabel={closeLabel} money={money} onStart={() => start('trial')} onNo={() => onDone(false)} />
-      ) : (
-        <PwMain plan={plan} setPlan={setPlan} closeLabel={closeLabel} money={money} onPay={() => start(plan)} onClose={decline} onRestore={() => void restore()} />
-      )}
-      {done ? null : (
-        <PwPaySheet open={sheet} plan={checkout || plan} email={receipt} money={money} onCancel={() => setSheet(false)} onPay={() => void buy(checkout || plan)} />
+        <PwConfirmed line={confirmedLine} name={name} confirmLabel={confirmLabel} onDone={() => onDone(true)} />
+      ) : offer && money ? (
+        <PwRescue closeLabel={closeLabel} money={money} remind={remind} onStart={() => start('trial')} onNo={() => onDone(false)} />
+      ) : money ? (
+        <PwMain plan={chosen} setPlan={setPlan} closeLabel={closeLabel} money={money} onPay={() => start(chosen)} onClose={decline} onRestore={() => void restore()} />
+      ) : null}
+      {done || !money || !mock ? null : (
+        <PwPaySheet open={sheet} plan={checkout || chosen} email={email ?? 'your Apple ID'} money={money} onCancel={() => setSheet(false)} onPay={() => void buy(checkout || chosen)} />
       )}
     </Screen>
   );

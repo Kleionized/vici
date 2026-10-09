@@ -64,11 +64,11 @@ export function Pill({
   label: string;
   /** `status`: the ink-filled one ("Held for 92 days") */
   filled?: boolean;
-  /** `range`: the 8×8 ink dot before the words (Score Detail "Navigator II") */
+  /** `range`: the 8×8 ink dot before the words (Score Detail's band, "Holding") */
   dot?: boolean;
   /** what sits before the words — the check-in chip's 30 disc (`CheckinDisc`); replaces streak's flame and delta's arrow, `null` for none */
   lead?: ReactNode;
-  /** `delta`: the score went down — the arrow points down (undrawn; the frames only show a rise) */
+  /** `delta`: the rating went down — the arrow points down (undrawn; the frames only show a rise) */
   down?: boolean;
   /** the canvas's `inline-flex` in a column: hug the words instead of stretching */
   inline?: boolean;

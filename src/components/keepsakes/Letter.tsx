@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen } from '@/components/mono';
+import { courseWeekForDay, programmeDay, type ProgrammeStart } from '@/lib/day';
 import { roman } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
@@ -14,16 +15,14 @@ import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
  * Medallion Letter`; CRITIC C8: Letter Arrival is the arrival for both posts).
  */
 
-const DAY = 86_400_000;
-
 /**
  * "Week XII post": the arrival names the programme week the post lands in
- * (CRITIC C8 / medallions Q7 — the frame's XII is its own sample). Day one is
- * the day of sign-up, seven days a week, twelve weeks at most.
+ * (CRITIC C8 / medallions Q7 — the frame's XII is its own sample), on the
+ * calendar count every screen uses (`src/lib/day.ts`): Day 1 is the
+ * programme's first date, seven days a week, twelve weeks at most.
  */
-export function postWeek(createdAt: number | undefined, now = Date.now()): string {
-  const day = createdAt ? Math.max(1, Math.floor((now - createdAt) / DAY) + 1) : 1;
-  return `Week ${roman(Math.min(12, Math.ceil(day / 7)))} post`;
+export function postWeek(start: ProgrammeStart, now = Date.now()): string {
+  return `Week ${roman(courseWeekForDay(programmeDay(start, now)))} post`;
 }
 
 /**

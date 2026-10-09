@@ -3,16 +3,25 @@ import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import { getUserIdOrNull, requireUserId } from './utils';
 
+/**
+ * At most one row a day, so this is years of history; the bound keeps the
+ * read inside a query's limits however long an account lives.
+ */
+const LIST_CAP = 2_000;
+
+const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
+
 export const list = query({
   args: {},
   handler: async (ctx) => {
     const userId = await getUserIdOrNull(ctx);
     if (!userId) return [];
-    const rows = await ctx.db
+    // newest first, by the day each row is for
+    return await ctx.db
       .query('dailyCheckins')
-      .withIndex('by_user', (q) => q.eq('userId', userId))
-      .collect();
-    return rows.sort((a, b) => (a.date < b.date ? 1 : -1));
+      .withIndex('by_user_date', (q) => q.eq('userId', userId))
+      .order('desc')
+      .take(LIST_CAP);
   },
 });
 
@@ -34,6 +43,7 @@ export const upsert = mutation({
     sleepHours: v.optional(v.number()),
     mood: v.optional(v.number()),
     energy: v.optional(v.number()),
+    nightMood: v.optional(v.number()),
     emotions: v.optional(v.array(v.string())),
     reasons: v.optional(v.array(v.string())),
     dailyAction: v.optional(v.string()),
@@ -45,6 +55,8 @@ export const upsert = mutation({
   },
   handler: async (ctx, args) => {
     const userId = await requireUserId(ctx);
+    // every reader keys a row by its local `YYYY-MM-DD`; anything else would be a row no screen can find
+    if (!DATE_KEY.test(args.date)) throw new Error('date must be YYYY-MM-DD');
     const existing = await ctx.db
       .query('dailyCheckins')
       .withIndex('by_user_date', (q) => q.eq('userId', userId).eq('date', args.date))

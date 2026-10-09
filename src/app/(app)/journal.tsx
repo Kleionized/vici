@@ -7,14 +7,18 @@ import { WEEKDAYS_SHORT, clockTime, shortDate } from '@/lib/format';
 import { mono, sans } from '@/lib/theme';
 
 /**
- * Past pledges — what Today III's ☆ opens onto (and the review drawer's
- * "Past pledges"). No frame draws it, so it takes the title-head pages' idiom
- * (Medallions, Your log): the back chevron at 60, the 32/700 title at 108, and
- * the entries as the frames' `#1E1E1E` r24 cards in the 24 gutter, the whole
- * page scrolling under the fixed nav (D320). Each card is the entry's day and
- * time beside its tag in the caps line, then the line itself in the task
- * sentence's 17/700 ink. A tap opens it in the editor, as before. An empty list
- * says so in its one existing line.
+ * Journal — what Today III's ☆ opens onto (and the review drawer's row). No
+ * frame draws it, so it takes the title-head pages' idiom (Medallions, Your
+ * log): the back chevron at 60, the 32/700 title at 108, and the entries as
+ * the frames' `#1E1E1E` r24 cards in the 24 gutter, the whole page scrolling
+ * under the fixed nav (D320). Each card is the entry's day and time beside its
+ * tag in the caps line, then the line itself in the task sentence's 17/700
+ * ink. A tap opens it in the editor — letters and vows read-only — where it
+ * can also be deleted. An empty list says so in its one existing line.
+ *
+ * It was titled "Past pledges" while listing every entry: pledges, vows,
+ * night reflections and VICI's letters. It is the only list of them, so it
+ * keeps them all under the name that fits (D481).
  */
 
 /** "Today · 8:12 AM" / "Mon, Jul 14 · 7:05 AM" for an entry timestamp. */
@@ -39,7 +43,7 @@ export default function Journal() {
       <NavBar left="back" onBack={back} />
       <View style={{ position: 'absolute', left: 0, right: 0, top: 100, bottom: 0 }}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 8, paddingHorizontal: 24, paddingBottom: 48 }}>
-          <MonoText v="titlePage">Past pledges</MonoText>
+          <MonoText v="titlePage">Journal</MonoText>
           {entries.length === 0 ? (
             <EmptyState body="Nothing here yet." align="left" style={{ paddingHorizontal: 0 }} />
           ) : (

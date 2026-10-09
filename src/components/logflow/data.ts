@@ -1,3 +1,4 @@
+import { isSlip } from '@/lib/day';
 import { clockTime, daysAgo, shortDate, splitStored, WEEKDAYS_LONG, WEEKDAYS_SHORT } from '@/lib/format';
 import type { TidelineEvent } from '@/lib/types';
 import { severityWord } from '@/lib/weeklyReport';
@@ -12,8 +13,8 @@ export const DAY_MS = 86_400_000;
 
 /** An urge, however it ended. */
 export const isUrge = (e: TidelineEvent) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on';
-/** A log entry that ended in a slip: a lapse, or an urge acted on. */
-export const isSlip = (e: TidelineEvent) => e.type === 'lapse' || e.type === 'urge_acted_on';
+/** A log entry that ended in a slip: a lapse, or an urge acted on — the one rule (`src/lib/day.ts`) every screen counts by. */
+export { isSlip };
 
 /**
  * A Log row's left side: `Fri, 9:05 pm` — the short weekday for the fortnight
@@ -65,8 +66,18 @@ export function tally(values: string[]): [string, number][] {
 const TRIGGER_NOUN: Record<string, string> = { Tired: 'Tiredness' };
 export const triggerNoun = (label: string) => TRIGGER_NOUN[label] ?? label;
 
-/** Every stored trigger of every urge, split back out of the `' · '` join. */
-export const triggersOf = (urges: TidelineEvent[]) => urges.flatMap((e) => splitStored(e.trigger));
+/**
+ * Every stored trigger of every urge, split back out of the `' · '` join.
+ *
+ * The SOS's "What’s feeding it" used to be kept only in
+ * `precedingState.reasons`, where no chart looked; it now writes `trigger`
+ * too (deploy WP5, D464). An urge from before that, with reasons and no
+ * trigger, is read from its reasons — less the "I don’t know" answer, which
+ * names no trigger — so the SOS urges already on record count as well.
+ */
+const NO_TRIGGER = 'I don’t know';
+export const triggersOf = (urges: TidelineEvent[]) =>
+  urges.flatMap((e) => (e.trigger ? splitStored(e.trigger) : (e.precedingState?.reasons ?? []).filter((r) => r !== NO_TRIGGER)));
 
 /**
  * The HALT booleans the schema carries, in words — counted only where an urge

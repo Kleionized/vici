@@ -1,14 +1,14 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { View } from 'react-native';
 
-import { AddToRecord, CONTROLS, CheckinCover, ClosedLine, RecordRows, Stack, StepStack, dayNumber } from '@/components/day/board';
-import { nightAction } from '@/components/day/kit';
+import { AddToRecord, CONTROLS, CheckinCover, ClosedLine, RecordRows, Stack, StepStack } from '@/components/day/board';
+import { dayStep } from '@/components/day/kit';
 import { EmotionsBoard, ReasonsBoard } from '@/components/MoodLogger';
-import { GhostLink, Hero, HeroBoard, MonoText, NavBar, NextFab, PrimaryButton, ScaleReading, Screen, TextField, ToneScale } from '@/components/mono';
+import { GhostLink, Hero, HeroBoard, LoadingView, MonoText, NavBar, NextFab, PrimaryButton, ScaleReading, Screen, TextField, ToneScale } from '@/components/mono';
 import { lessonForDay } from '@/content/curriculum84';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
-import { toDateKey, todayKey } from '@/lib/date';
+import { MOOD_WORDS, addDays, closingNightKey, isSlip, isSurfed, keyToDate, programmeDay, shiftKey } from '@/lib/day';
 import { countOf, roman } from '@/lib/format';
 
 /**
@@ -34,14 +34,13 @@ const CLOSED = 7;
 /** Steps the dashes count: MOOD … ACTION. */
 const RAIL = 6;
 
-/** What the tone discs read back. The canvas draws the middle rung. */
-const MOOD_READ: [string, string][] = [
-  ['Heavy', 'A hard one'],
-  ['Low', 'It took something'],
-  ['Mixed', 'Some of both'],
-  ['Good', 'More right than wrong'],
-  ['Bright', 'One to keep'],
-];
+/**
+ * What the tone discs read back: the one mood word list (`MOOD_WORDS`) and
+ * this question's own second lines. The canvas draws the middle rung. The
+ * answer is stored as `nightMood`, apart from the morning's mood.
+ */
+const MOOD_LINES = ['A hard one', 'It took something', 'Neither up nor down', 'More right than wrong', 'One to keep'];
+const MOOD_READ: [string, string][] = MOOD_WORDS.map((w, i) => [w, MOOD_LINES[i]]);
 
 export default function Night() {
   const router = useRouter();
@@ -60,44 +59,76 @@ export default function Night() {
   const [reflection, setReflection] = useState('');
   const [action, setAction] = useState(true);
 
-  const day = dayNumber(user?.createdAt);
+  // The night this check-in closes, fixed when it opens: before the morning
+  // check-in opens (4:30 at the default times) the small hours still belong to
+  // the evening before, so 00:40 closes yesterday — its record, its row, and
+  // the action for the day after it (L7). Never a day before the programme.
+  // The launch gate and the Log's door read the same key (`closingNightKey`).
+  const [openedAt] = useState(() => Date.now());
+  const night = closingNightKey(user, openedAt);
+  const day = programmeDay(user, keyToDate(night));
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  const midnight = new Date().setHours(0, 0, 0, 0);
-  const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && e.createdAt >= midnight);
-  const lapses = (events ?? []).filter((e) => e.type === 'lapse' && e.createdAt >= midnight).length;
-  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight);
+  // The night's record is its own calendar day, the day the rating, the week
+  // strip and the next morning's ledger file each event under. A night closed
+  // in the small hours doesn't also count them: they belong to the next day's
+  // record, so no event is counted on two nights.
+  const from = keyToDate(night).getTime();
+  const to = addDays(keyToDate(night), 1).getTime();
+  const inNight = (ms: number) => ms >= from && ms < to;
+  const tonight = (events ?? []).filter((e) => inNight(e.createdAt));
+  // surfed is ridden out; an urge acted on is a slip, never "surfed"
+  const surfed = tonight.filter(isSurfed).length;
+  const urgesLogged = tonight.some((e) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on');
+  const lapses = tonight.filter(isSlip).length;
+  const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge' && inNight(entry.createdAt));
   const finished = (lessons ?? []).find((lesson) => {
     const at = progress?.[lesson.slug]?.completedAt;
-    return at != null && at >= midnight;
+    return at != null && inNight(at);
   });
 
   // Tonight's action is the day's lesson task: the caps, the lesson's title and
   // its one-line task (Night Action Reminder draws lesson 1's). A day past the
-  // course falls back to the turning list, under the old "Tonight".
+  // course names the step Today showed that day — the one list Today and the
+  // morning read too (L4).
   const dayLesson = lessonForDay(day);
-  const task = dayLesson?.task.cardSummary ?? nightAction(day);
-  const lessonTitle = dayLesson?.task.cardTitle ?? 'Tonight';
+  const task = dayLesson?.task.cardSummary ?? dayStep(day).caption;
+  const lessonTitle = dayLesson?.task.cardTitle ?? 'After the course';
 
-  async function finish() {
-    // The upsert merges, so only what this flow asked for is written.
-    await upsert({
-      date: todayKey(),
-      mood: mood + 1,
-      emotions: emotions.length ? emotions : undefined,
-      reasons: reasons.length ? reasons : undefined,
-    }).catch(() => {});
-    if (reflection.trim()) {
-      await createJournalEntry({ tag: 'Reflection', title: `Day ${day}`, body: reflection.trim() }).catch(() => {});
-    }
-    // The action lands on the day it is for, not the day it was named: it is
-    // set tonight and answered for by tomorrow morning's check-in.
-    if (action) {
-      await upsert({ date: toDateKey(new Date(Date.now() + 86_400_000)), dailyAction: task }).catch(() => {});
-    }
+  /**
+   * Done (and the closing ✕) file the night once (D2, D499): a second tap
+   * while the writes are out does nothing. The screen closes at once and the
+   * writes settle behind it, in order, so a slow connection never leaves Done
+   * looking dead.
+   */
+  const saving = useRef(false);
+  function finish() {
+    if (saving.current) return;
+    saving.current = true;
+    const note = reflection.trim();
+    void (async () => {
+      // The upsert merges, so only what this flow asked for is written — the
+      // night's mood in its own field, so the morning's stays the morning's (L8).
+      await upsert({
+        date: night,
+        nightMood: mood + 1,
+        emotions: emotions.length ? emotions : undefined,
+        reasons: reasons.length ? reasons : undefined,
+      }).catch(() => {});
+      if (note) {
+        await createJournalEntry({ tag: 'Reflection', title: `Day ${day}`, body: note }).catch(() => {});
+      }
+      // The action lands on the day it is for, not the day it was named: it is
+      // set tonight and answered for by the next morning's check-in.
+      if (action) {
+        await upsert({ date: shiftKey(night, 1), dailyAction: task }).catch(() => {});
+      }
+    })();
     close();
   }
 
+  // the cover names the day, so it waits for the account rather than say "Day 1" to everyone
+  if (user === undefined) return <LoadingView spinner={false} onClose={close} />;
   if (step === COVER) return <CheckinCover part="night" day={day} onBegin={() => setStep(MOOD)} onClose={close} />;
 
   if (step === CLOSED) {
@@ -175,10 +206,11 @@ export default function Night() {
           </Stack>
           <RecordRows
             rows={[
-              { label: pledge ? 'Pledge kept' : 'No pledge signed today', done: !!pledge },
+              // a pledge is kept only on a day without a slip; signed and slipped is "signed"
+              { label: pledge ? (lapses ? 'Pledge signed today' : 'Pledge kept') : 'No pledge signed today', done: !!pledge && lapses === 0 },
               {
-                label: urges.length === 0 ? 'No urges today' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
-                done: urges.length > 0,
+                label: surfed === 0 ? (urgesLogged ? 'No urges surfed' : 'No urges today') : surfed === 1 ? 'One urge surfed' : `${surfed} urges surfed`,
+                done: surfed > 0,
               },
               { label: countOf(lapses, 'slip'), done: lapses === 0 },
               { label: finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson today', done: !!finished },

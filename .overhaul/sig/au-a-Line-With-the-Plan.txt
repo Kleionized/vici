@@ -32,14 +32,14 @@ div | 24 | 199 | 345 | 33 | - | - | - | - | 26px/700/-0.6px/33px/rgb(242, 240, 2
 div | 24 | 250 | 345 | 48 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | You only have to make the next decision different. Then the next one. Then come back tomorrow.
 div | 24 | 389 | 345 | 270 | - | - | - | - | - | -
 svg | 24 | 389 | 345 | 270 | - | - | - | - | - | -
-text | 24 | 391 | 115.6 | 17 | - | - | - | - | 14px/700/normal/normal/rgb(0, 0, 0) | Relapse frequency
+text | 24 | 391 | 211.8 | 17 | - | - | - | - | 14px/700/normal/normal/rgb(0, 0, 0) | Relapse frequency · an illustration
 path | 24 | 625 | 345 | 0 | - | - | - | - | - | -
 path | 24 | 539 | 86 | 22 | - | - | - | - | - | -
 path | 110 | 536.5 | 244 | 60.5 | - | - | - | - | - | -
 path | 232 | 561 | 0 | 64 | - | - | - | - | - | -
 rect | 168 | 503 | 128 | 40 | - | - | - | - | - | -
 text | 198.9 | 508 | 66.2 | 13 | - | - | - | - | 11px/700/1.2px/normal/rgb(0, 0, 0) | 3 MONTHS
-text | 200.6 | 521 | 62.7 | 17 | - | - | - | - | 14px/700/normal/normal/rgb(0, 0, 0) | 2× a week
+text | 200.4 | 521 | 63.1 | 17 | - | - | - | - | 14px/700/normal/normal/rgb(0, 0, 0) | Less often
 circle | 223 | 552 | 18 | 18 | - | - | - | - | - | -
 button | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
 div | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/19px/rgb(17, 17, 17) | Continue

@@ -253,6 +253,14 @@ export type KKFace = {
  * and `Album Earned II` hold the first ten, `Medallions Still To Earn` the last
  * two. Everything the album, the boards and the ladders read about a face
  * comes from here; the live counts are laid over it by `src/lib/album.ts`.
+ *
+ * A rung's line says only what reaching that rung proves (D478). The frames'
+ * lines that invented a record ("Seven check-ins, two waves ridden" on a face
+ * that counts recorded days), a finding ("the strongest predictor there is"),
+ * a comparison ("better than most people"), a mechanism ("Each one shortens
+ * the next") or a feature ("The patterns page", "The app knows your ordinary")
+ * were rewritten; the rest are the frames'. The ladders themselves are
+ * unchanged (Rebound's is the owner's call, S5).
  */
 export const KK_ALBUM: KKFace[] = [
   {
@@ -279,7 +287,7 @@ export const KK_ALBUM: KKFace[] = [
     unit: 'day',
     noun: 'days',
     stories: [
-      'Seven check-ins, two waves ridden, zero perfect days required.',
+      'Seven days with something on the record. No perfect days required.',
       'Around here, “trying something” turns into “how you live.”',
       'The long walk. By now the view is just… Tuesday.',
       'Six months witnessed, one day at a time. Vidi only asks that you stayed on it.',
@@ -295,9 +303,9 @@ export const KK_ALBUM: KKFace[] = [
     unit: 'count',
     noun: 'logs',
     stories: [
-      'Five ridden. Each one shortens the next.',
-      'Twenty-five behind you now — the pattern is unmistakable.',
-      'A hundred waves met and outlasted. This stopped being a fight you were unsure of a while ago.',
+      'Five ridden out. Five times you watched one end without giving in.',
+      'Twenty-five behind you now, every one of them on the record.',
+      'A hundred waves met and outlasted. You know how this one goes.',
       // `Detail Gold` rewrote this rung's line; the other four are unchanged
       'Two hundred and fifty. The sea keeps coming. You keep standing.',
       'A thousand. The sea hasn’t changed. You’re just not the one it moves anymore.',
@@ -315,7 +323,7 @@ export const KK_ALBUM: KKFace[] = [
       'The first wave broke against you, not over you.',
       'Five storms met at full height. The wall is real now.',
       'Ten overwhelming urges, none of them decisive.',
-      'Twenty-five. What used to flood you now only gets loud.',
+      'Twenty-five at full strength, and not one of them decided it.',
       'Fifty waves. The sea hasn’t changed. The wall did.',
     ],
   },
@@ -327,11 +335,11 @@ export const KK_ALBUM: KKFace[] = [
     unit: 'count',
     noun: 'mornings',
     stories: [
-      'You slipped. The next morning you were back before breakfast. No spiral, no vanishing week.',
+      'You slipped. The next day you were back and checked in. No vanishing week.',
       'Ten bounces now. Ten is past the point where luck explains it.',
-      'Twenty-five times down, twenty-five mornings back. The second number is the one that keeps up.',
+      'Twenty-five times down, twenty-five days back. The second number is the one that keeps up.',
       'Fifty. Falling has stopped meaning anything except that you get up.',
-      'A hundred mornings after. The bounce is the strongest predictor there is, and you’re the proof of it.',
+      'A hundred days after. Every one of them, you came back.',
     ],
   },
   {
@@ -344,9 +352,9 @@ export const KK_ALBUM: KKFace[] = [
     stories: [
       'Five logged. The point was never the outcome — it was writing it down at all.',
       'Twenty-five entries. The log is long enough now to argue with a bad memory.',
-      'Seventy-five. Every one of them is a night you looked at instead of away from.',
-      'Two hundred logs. There is nothing mysterious left about how an urge behaves.',
-      'Five hundred. The record is the reason you can see the weather coming.',
+      'Seventy-five. Every one of them is a moment you looked at instead of away from.',
+      'Two hundred logs. Enough to see how your urges come and go.',
+      'Five hundred. The record is long enough to show you your own weather.',
     ],
   },
   {
@@ -358,8 +366,8 @@ export const KK_ALBUM: KKFace[] = [
     noun: 'check-ins',
     stories: [
       'Five check-ins. Twenty seconds each, and already a line on the chart.',
-      'Twenty-five. Enough mornings to tell a mood from a pattern.',
-      'Seventy-five. The app knows your ordinary now, so the unusual shows up.',
+      'Twenty-five. Enough days to tell a mood from a pattern.',
+      'Seventy-five. Your ordinary is on the record now, so the unusual stands out.',
       'Two hundred. This is the record of a life, kept a day at a time.',
       'Five hundred check-ins. Turning up stopped being a decision a long way back.',
     ],
@@ -376,15 +384,17 @@ export const KK_ALBUM: KKFace[] = [
     key: 'lessons',
     name: 'Lessons',
     blurb: 'Lessons completed.',
-    steps: [5, 25, 50, 75, 110],
+    // the 84-lesson course: a week's worth, a quarter, half, three-quarters, all
+    // of it (the old ladder topped out at 110, a course that no longer exists)
+    steps: [7, 21, 42, 63, 84],
     unit: 'count',
     noun: 'lessons',
     stories: [
-      'Five lessons in. Early enough this still feels like homework. That won’t last.',
-      'A quarter of the curriculum, done. More scaffolding built than it feels like.',
-      'Halfway. The back half moves faster because the front half already changed how you think.',
+      'Seven lessons in, a week’s worth. Early enough this still feels like homework. That won’t last.',
+      'A quarter of the course, done. More scaffolding built than it feels like.',
+      'Halfway. The back half builds on everything the front half set down.',
       'Three-quarters through. What’s left is mostly deepening, not learning from scratch.',
-      'Every lesson, finished. The curriculum’s done its job. The rest is just living it.',
+      'All eighty-four lessons, finished. The course has done its job. The rest is just living it.',
     ],
   },
   {
@@ -395,9 +405,9 @@ export const KK_ALBUM: KKFace[] = [
     unit: 'count',
     noun: 'entries',
     stories: [
-      'Ten entries in. A dozen specific paragraphs beat a hundred vague ones.',
-      'Fifty pages of accounting. The patterns page runs on this ink.',
-      'A hundred entries. You know your own weather better than most people know their week.',
+      'Ten entries in. A few specific paragraphs beat a hundred vague ones.',
+      'Fifty entries. Read back, they show what a single day can’t.',
+      'A hundred entries. Your own weather, written down.',
       'Two hundred. The record’s long enough now to argue with your own memory, and win.',
       'A year of entries, one for almost every day. This is a diary of a life, not a habit tracker.',
     ],

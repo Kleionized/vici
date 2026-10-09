@@ -1,9 +1,8 @@
-import { useState, useSyncExternalStore } from 'react';
+import { useState } from 'react';
 import { Platform, View, useWindowDimensions } from 'react-native';
 
 import { DayToggles, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Slack, TimeWheel, useCanvasTop, type WheelTime } from '@/components/mono';
-import type { TimeOfDay } from '@/lib/routines';
-import { getJSON, setJSON } from '@/lib/storage';
+import type { CheckinKind, TimeOfDay } from '@/lib/routines';
 
 /**
  * `Morning Check-in Time` / `Nightly Check-in Time` (and `Settings Check-in
@@ -91,43 +90,7 @@ export function CheckinTimeBoard({
 }
 
 /**
- * Which days each check-in fires on. Local-only, like the times themselves —
- * nothing about a notification schedule needs to survive a reinstall on the
- * server, so it rides the same tiny listener store the times do.
+ * Which days each check-in fires on. The store moved to `@/lib/routines` (the
+ * reminder scheduler reads it there); the boards keep importing it from here.
  */
-
-export type CheckinKind = 'morning' | 'night';
-
-const EVERY_DAY = [0, 1, 2, 3, 4, 5, 6];
-const DAYS_KEY = 'tideline.routines.days.v1';
-
-let daysCache: Record<CheckinKind, number[]> = { morning: EVERY_DAY, night: EVERY_DAY };
-let daysLoaded = false;
-const dayListeners = new Set<() => void>();
-
-function subscribeDays(listener: () => void) {
-  dayListeners.add(listener);
-  if (!daysLoaded) {
-    daysLoaded = true;
-    void getJSON<Record<CheckinKind, number[]>>(DAYS_KEY).then((stored) => {
-      if (!stored) return;
-      daysCache = { morning: stored.morning ?? EVERY_DAY, night: stored.night ?? EVERY_DAY };
-      for (const l of dayListeners) l();
-    });
-  }
-  return () => {
-    dayListeners.delete(listener);
-  };
-}
-
-/** Read the saved days for one check-in. Returns every day until the store loads. */
-export function useCheckinDays(kind: CheckinKind): number[] {
-  const read = () => daysCache[kind];
-  return useSyncExternalStore(subscribeDays, read, read);
-}
-
-export async function saveCheckinDays(kind: CheckinKind, days: number[]): Promise<void> {
-  daysCache = { ...daysCache, [kind]: days };
-  for (const l of dayListeners) l();
-  await setJSON(DAYS_KEY, daysCache);
-}
+export { saveCheckinDays, useCheckinDays, type CheckinKind } from '@/lib/routines';

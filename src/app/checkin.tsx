@@ -1,8 +1,8 @@
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { CheckinFlow, checkinCopy, isMorningCheckin, type CheckinResult } from '@/components/MoodLogger';
-import { LoadingView } from '@/components/ui';
+import { LoadingView } from '@/components/mono';
 import { useCheckins, useTodayCheckin, useUpsertCheckin } from '@/lib/backend';
 import { todayKey } from '@/lib/date';
 
@@ -34,13 +34,19 @@ export default function CheckIn() {
   // day it was opened on rather than quietly moving under the user.
   const [openedOn] = useState(todayKey);
 
-  async function save(result: CheckinResult) {
+  // Saved once, and the screen closes without waiting on the write (D499).
+  const saving = useRef(false);
+  function save(result: CheckinResult) {
+    if (saving.current) return;
+    saving.current = true;
     // The upsert merges, so each write carries only what it actually knows.
-    await upsert({
+    void upsert({
       date: openedOn,
       mood: result.mood,
       emotions: result.emotions.length ? result.emotions : undefined,
       reasons: result.reasons.length ? result.reasons : undefined,
+    }).catch((error: unknown) => {
+      if (__DEV__) console.warn('checkin was not saved', error);
     });
     close();
   }
@@ -58,7 +64,7 @@ export default function CheckIn() {
       initialMood={today?.mood}
       initialEmotions={today?.emotions}
       initialReasons={today?.reasons}
-      onDone={(result) => void save(result)}
+      onDone={save}
       onExit={close}
     />
   );

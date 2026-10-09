@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
-import { SplashScene } from '@/components/ui';
+import { SplashScene } from '@/components/ui/Waterline';
 
 /**
  * 01 · Splash — the laurel and the wordmark on the ground, and then the door.

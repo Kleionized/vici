@@ -1,6 +1,6 @@
 import { v } from 'convex/values';
 
-import { mutation } from './_generated/server';
+import { internalMutation } from './_generated/server';
 import { upsertLessons } from './lessonUpsert';
 import { lessonFields } from './schema';
 
@@ -9,10 +9,13 @@ import { lessonFields } from './schema';
  * ~94-lesson curriculum: pass an array of objects matching the `lessons` schema
  * and they are upserted by slug. Intentionally generic — no curriculum here.
  *
- * Example (from a script or the dashboard):
- *   await convex.mutation(api.importLessons.importLessons, { lessons: [...] })
+ * Internal (B12, D459): it is not part of the public API, so no client
+ * holding the deployment URL can overwrite the lessons table. Run it from the
+ * dashboard (Functions → importLessons:importLessons → Run) or the CLI:
+ *   npx convex run importLessons:importLessons '{ "lessons": [ ... ] }'
+ * (add `--prod` for the production deployment).
  */
-export const importLessons = mutation({
+export const importLessons = internalMutation({
   args: { lessons: v.array(v.object(lessonFields)) },
   handler: async (ctx, { lessons }) => {
     const upserted = await upsertLessons(ctx, lessons);

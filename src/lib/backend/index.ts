@@ -39,6 +39,11 @@ export const useUpdateLifeMap = impl.useUpdateLifeMap;
 export const useCreateEvent = impl.useCreateEvent;
 export const useUpsertCheckin = impl.useUpsertCheckin;
 
+export const useExportData = impl.useExportData;
+export const useDeleteAccountData = impl.useDeleteAccountData;
+export { clearDeviceState } from './deviceState';
+export { retryBoot } from './bootRetry';
+
 export type { LessonDetail, CurrentLesson } from './mock';
 export { MockStoreProvider as BackendProvider } from './mockStore';
 export { BACKEND_MODE } from '@/lib/config';

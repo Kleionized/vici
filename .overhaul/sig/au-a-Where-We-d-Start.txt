@@ -40,18 +40,16 @@ rect | 135.5 | 307.4 | 57.2 | 15.4 | - | - | - | - | - | -
 rect | 282.9 | 272.2 | 33 | 46.2 | - | - | - | - | - | -
 path | 192.7 | 304.1 | 106.7 | 12.4 | - | - | - | - | - | -
 rect | 289.5 | 281 | 19.8 | 24.2 | - | - | - | - | - | -
-div | 24 | 451 | 345 | 253 | - | - | - | - | - | -
+div | 24 | 451 | 345 | 201 | - | - | - | - | - | -
 div | 24 | 451 | 345 | 33 | - | - | - | - | 26px/700/-0.6px/33px/rgb(242, 240, 236) | Sam, this is where we’d start.
-div | 24 | 504 | 345 | 96 | - | - | - | - | - | -
+div | 74.5 | 504 | 244 | 44 | - | - | - | - | - | -
 div | 74.5 | 504 | 119.6 | 44 | rgb(242, 240, 236) | 22px | - | - | - | -
 div | 92.5 | 517 | 83.6 | 18 | - | - | - | - | 15px/700/normal/18px/rgb(17, 17, 17) | Late at night
 div | 202.1 | 504 | 116.4 | 44 | rgb(242, 240, 236) | 22px | - | - | - | -
 div | 220.1 | 517 | 80.4 | 18 | - | - | - | - | 15px/700/normal/18px/rgb(17, 17, 17) | Home alone
-div | 135.3 | 556 | 122.5 | 44 | rgb(242, 240, 236) | 22px | - | - | - | -
-div | 153.3 | 569 | 86.5 | 18 | - | - | - | - | 15px/700/normal/18px/rgb(17, 17, 17) | Phone in bed
-div | 24 | 616 | 345 | 24 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | These came up together in your answers.
-div | 24 | 656 | 345 | 48 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | You don’t need to change everything at once.
-span | 165.8 | 659 | 197 | 42 | - | - | - | - | 15px/700/normal/24px/rgb(242, 240, 236) | Start with this.
+div | 24 | 564 | 345 | 24 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | These came up together in your answers.
+div | 24 | 604 | 345 | 48 | - | - | - | - | 15px/400/normal/24px/rgb(181, 176, 168) | You don’t need to change everything at once.
+span | 165.8 | 607 | 197 | 42 | - | - | - | - | 15px/700/normal/24px/rgb(242, 240, 236) | Start with this.
 button | 24 | 746 | 345 | 58 | rgb(242, 240, 236) | 29px | - | - | - | -
 div | 163 | 765.5 | 67 | 19 | - | - | - | - | 16px/700/0.1px/19px/rgb(17, 17, 17) | Continue
 div | 0 | 852 | 0 | 0 | - | - | - | - | - | -

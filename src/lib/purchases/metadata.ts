@@ -16,14 +16,16 @@
  *     "benefits_title": "What you get",
  *     "benefits": ["12-week\nplan", "SOS\nhelp", "Weekly\ninsights", "Progress\ntracking"],
  *     "cta": "Continue",
- *     "footnote": "Terms · Restore",
+ *     "footnote": "Terms · Privacy · Restore",
  *     "default_package": "$rc_annual",
  *     "badges": { "$rc_annual": "Best value" }
  *   }
  *
  * `benefits` relabels the four drawn discs and is read only when it carries
  * exactly four entries — the discs are artwork, so the dashboard can rename
- * them but cannot add a fifth.
+ * them but cannot add a fifth. `footnote` is used only while it still names
+ * both Terms and Privacy (each a link); otherwise the paywall keeps its own
+ * "Terms · Privacy · Restore" (D452).
  */
 
 import type { PurchasesOffering } from 'react-native-purchases';

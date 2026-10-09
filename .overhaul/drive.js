@@ -19,6 +19,16 @@ window.__onTop = (el) => {
 };
 window.tap = async (label, opts) => {
   const wait = (opts && opts.wait) ?? 260;
+  // `04 · Age` no longer answers itself (D500): Continue waits for a pick, so a
+  // walk that taps Continue there first picks the age on show, as a person would.
+  if (label === 'Continue' && window.__txt().includes('How old are you?')) {
+    const cont = window.__btns().find((b) => b.textContent.trim() === 'Continue');
+    const age = window.__btns().find((b) => (b.getAttribute('aria-label') || '') === '24');
+    if (cont && cont.getAttribute('aria-disabled') === 'true' && age) {
+      window.__fire(age);
+      await window.__sleep(200);
+    }
+  }
   const btns = window.__btns();
   const top = btns.filter((b) => window.__onTop(b));
   const all = [...top, ...btns.filter((b) => !top.includes(b))];

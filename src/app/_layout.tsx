@@ -5,7 +5,7 @@ import {
   Lato_900Black,
   useFonts,
 } from '@expo-google-fonts/lato';
-import { Stack } from 'expo-router';
+import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, type ReactNode } from 'react';
@@ -13,8 +13,12 @@ import { Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaInsetsContext, SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { AppLockGate } from '@/components/AppLockGate';
+import { ErrorScreen } from '@/components/ErrorScreen';
+import { useDeviceAccount } from '@/lib/accountState';
 import { FORCE_MOCK } from '@/lib/config';
 import { AppProviders } from '@/lib/providers';
+import { useReminderLifecycle } from '@/lib/reminders';
 import { colors } from '@/lib/theme';
 
 /**
@@ -50,6 +54,37 @@ function CanvasInsets({ children }: { children: ReactNode }) {
   return <SafeAreaInsetsContext.Provider value={short ? SHORT_INSETS : CANVAS_INSETS}>{children}</SafeAreaInsetsContext.Provider>;
 }
 
+/**
+ * A tapped reminder opens its check-in, and this phone's reminder schedule is
+ * kept in step with the saved times (`src/lib/reminders.ts`). Inside the
+ * providers: it waits for the account before it routes.
+ */
+function ReminderLifecycle() {
+  useReminderLifecycle();
+  return null;
+}
+
+/**
+ * Points this phone's per-account keys (`src/lib/accountState.ts`, D490) at
+ * the signed-in account, and clears an account's pending state when it signs
+ * out. First inside the providers, so its effect runs before any screen's and
+ * before the reminders read the check-in times.
+ */
+function DeviceAccount() {
+  useDeviceAccount();
+  return null;
+}
+
+/**
+ * A screen that throws while drawing shows the kit's "Something went wrong"
+ * board with Try again, rather than closing the app (B11, D495). This one
+ * catches anything above the `(app)` group's own — the providers included —
+ * so it uses nothing they provide.
+ */
+export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
+  return <ErrorScreen error={error} retry={() => void retry()} />;
+}
+
 // Hold the native splash until Lato is in: a first frame in the platform face
 // reflows every line when the real one lands.
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -72,6 +107,7 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <CanvasInsets>
           <AppProviders>
+            <DeviceAccount />
             {/* Light glyphs on the #0D0D0D ground — every frame in the drop is dark. */}
             <StatusBar style="light" />
             <Stack
@@ -93,6 +129,9 @@ export default function RootLayout() {
               {/* the lessons browser is somewhere you look a lesson up, then leave */}
               <Stack.Screen name="lessons-browser" />
             </Stack>
+            <ReminderLifecycle />
+            {/* after the navigator, so the lock and the privacy cover draw over every screen */}
+            <AppLockGate />
           </AppProviders>
         </CanvasInsets>
       </SafeAreaProvider>
