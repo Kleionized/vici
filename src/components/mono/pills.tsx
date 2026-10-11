@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { Platform, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
 import { lhNormal, mono, monoDark, ring, sans } from '@/lib/theme';
 
@@ -110,8 +110,14 @@ export function Pill({
       </Tap>
     );
   }
+  // a pill with words of its own for a screen reader is read as one thing (Today's flame: "3 days in a row", not a bare "3").
+  // The web build drops `accessible` and does not read a label on a plain div, so it takes a role there.
   return (
-    <View accessibilityLabel={accessibilityLabel} style={[box, style]}>
+    <View
+      accessible={accessibilityLabel != null}
+      role={Platform.OS === 'web' && accessibilityLabel != null ? 'img' : undefined}
+      accessibilityLabel={accessibilityLabel}
+      style={[box, style]}>
       {body}
     </View>
   );

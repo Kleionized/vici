@@ -26,7 +26,7 @@ import { daysAgo } from '@/lib/format';
 import { checkinPartNow } from '@/lib/routines';
 import { lhNormal, mono, sans } from '@/lib/theme';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
-import { RATING_SCALE, lessonCompletions } from '@/lib/score';
+import { RATING_SCALE, currentStreak, lessonCompletions } from '@/lib/score';
 import { completedWeekStarts, mondayOf, weekLabel, weekRating } from '@/lib/weeklyReport';
 
 /**
@@ -113,6 +113,7 @@ export default function Log() {
         head={head}
         user={user}
         checkins={checkins}
+        events={events}
         now={now}
         onCheckin={(part) => router.push(part === 'morning' ? '/day/morning' : '/day/night')}
       />
@@ -174,24 +175,6 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
 /* --------------------------------------------------------------- 91-2 · check-ins */
 
 /**
- * The run of days with a check-in, back from today — or from yesterday while
- * today's is still to come. `checkins` are the lived ones (`livedCheckins`):
- * a row that only holds an action is not a check-in.
- */
-function streak(checkins: DailyCheckin[], now: number): number {
-  const days = new Set(checkins.map((c) => c.date));
-  const cursor = new Date(now);
-  cursor.setHours(0, 0, 0, 0);
-  if (!days.has(dateKey(cursor.getTime()))) cursor.setDate(cursor.getDate() - 1);
-  let run = 0;
-  while (days.has(dateKey(cursor.getTime()))) {
-    run += 1;
-    cursor.setDate(cursor.getDate() - 1);
-  }
-  return run;
-}
-
-/**
  * How a day read: the first feeling the night check-in named (`Flat`, `Calm`),
  * else the morning's mood word (`Steady`, `Good`) — the two vocabularies the
  * frame's five rows mix (logs Q9).
@@ -209,13 +192,16 @@ function Checkins({
   head,
   user,
   checkins: all,
+  events,
   now,
   onCheckin,
 }: {
   head: ReactNode;
-  /** the account: its programme start bounds the night the door reads */
+  /** the account: its programme start bounds the night the door reads, and the streak */
   user?: ProgrammeUser | null;
   checkins: DailyCheckin[];
+  /** a slip ends the streak */
+  events: TidelineEvent[];
   now: number;
   onCheckin: (part: Part) => void;
 }) {
@@ -231,7 +217,10 @@ function Checkins({
     const v = c?.energy ?? c?.mood ?? c?.nightMood;
     return { label: STRIP_LABELS[i], lit: i === week.today, mark: c ? <ReadingDay v={v ?? 3} /> : <EmptyDay /> };
   });
-  const run = streak(checkins, now);
+  // The streak Today's flame shows (`currentStreak`, D532): check-in days in a
+  // row with no slip. It reads the rating's rows; lessons play no part in it.
+  // The evening the night check-in can still close does not end it (D537).
+  const run = currentStreak({ checkins: all, events, lessons: [], start: user }, now, closingNightKey(user, now));
   const rows = [...checkins].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   // The door to the check-in the clock says it is, while it is still to do.
@@ -259,7 +248,7 @@ function Checkins({
         head={
           <>
             {head}
-            <BigStat value={String(run)} caption={run === 1 ? 'Day in a row' : 'Days in a row'} />
+            <BigStat value={String(run)} caption={run === 1 ? 'Clean day in a row' : 'Clean days in a row'} />
             <WeekStrip days={strip} />
           </>
         }>

@@ -17,7 +17,7 @@ import { lhNormal, mono, ring, sans } from '@/lib/theme';
  *
  * The header (back, the range pill, "Recovery rating", the number and the
  * band pill) never moves; under it a horizontal pager turns between the rating
- * over time, the three parts it is made of and the four bands. None of the
+ * over time, the parts it is made of and the four bands. None of the
  * three frames draws pager dots (today-day OQ-S3): a swipe is the way between
  * them. The tab bar is the navigator's, Journey lit (D326).
  *
@@ -33,7 +33,7 @@ const RANGE_LABEL: Record<Range, string> = { months: 'Months', year: 'Year' };
 const MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** The parts page's content runs to here at 393 (the paragraph under the card is measured once laid out). */
-const PARTS_END = 744;
+const PARTS_END = 788;
 
 export default function Score() {
   const router = useRouter();
@@ -272,14 +272,14 @@ function smoothPath(pts: { x: number; y: number }[]) {
  * padding 16 20 18): one 44 row per part — label w112, a 12 bar filled to the
  * part's share of its own weight (ink), the part as `26/30` w56 right-aligned
  * — then the rating under a rule, and one plain paragraph under the card on
- * how it is counted (D513).
+ * how it is counted (D513). Four parts during the course, three after it (D540).
  */
 function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) => void }) {
   const lessons = rating.parts.find((p) => p.key === 'lessons');
   const weight = (key: string) => rating.parts.find((p) => p.key === key)?.max ?? 0;
   const how = lessons
-    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and lessons (${lessons.max}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`
-    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}) and clean days (${weight('cleanDays')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`;
+    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}), lessons (${lessons.max}) and the day’s task (${weight('task')}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`
+    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and the day’s task (${weight('task')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`;
   return (
     <>
       <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>

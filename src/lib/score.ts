@@ -4,7 +4,7 @@
  * One number, 0–100, that answers "how have the last seven days gone?". It
  * replaces the old running score entirely: nothing accrues, so a slip leaves
  * the rating once its day has left the window, and a quiet week cannot be
- * banked against a hard one. Three parts, on fixed weights:
+ * banked against a hard one. Four parts, on fixed weights:
  *
  * - **Showing up** — the window's days with a check-in (`isCheckin`) or a
  *   logged slip (`isSlip`). Logging a slip counts as showing up, so honesty
@@ -13,16 +13,28 @@
  *   no check-in earns nothing here: there is no credit for silence.
  * - **Lessons** — lessons finished inside the window over the lessons the
  *   window scheduled (one per day on programme days 1–84), capped at all of
- *   them. Past the course the rating is showing up and clean days alone.
+ *   them. Past the course there are no lessons and their share goes to the
+ *   other three.
+ * - **Task** — the window's days whose task was marked done (`dailyActionDone`
+ *   on the row of the day the task was for: ticked on Today, or answered
+ *   "Yes" the next morning).
  *
  * The window is seven calendar days (`src/lib/day.ts`, never 86,400,000 ms
  * steps). It ends today once today has a check-in or a logged slip, and
  * yesterday until then, so the rating never dips just because today has not
- * been checked in yet. Days before the programme began are outside it, but the
+ * been checked in yet. Lessons and the task wait the same way, each on its
+ * own: today is in their count only once today's lesson is finished or
+ * today's task is done, so a morning check-in never costs points for work the
+ * day still has time for. A day that has ended counts as it stands. Days
+ * before the programme began are outside the window, but the
  * denominator stays seven, so a new account builds up over its first week.
  *
  * Everything is computed on the phone from the account's check-ins, events and
  * lesson progress; both backends feed it the same rows and nothing is stored.
+ *
+ * The streak and each day's mark (deploy streak, D530–D538) read the same
+ * index, so a day that counts toward the streak is the rating's clean day: a
+ * check-in and no slip.
  */
 
 import { toDateKey } from '@/lib/date';
@@ -36,13 +48,13 @@ export const RATING_WINDOW = 7;
 export const RATING_SCALE = [0, 100] as const;
 
 /**
- * What each part is worth. While the window schedules a lesson the parts are
- * 30 / 45 / 25; once it schedules none (after day 84) the lessons' share goes
- * to the other two, 40 / 60.
+ * What each part is worth (the owner's split, D540). While the window
+ * schedules a lesson the parts are 20 / 45 / 20 / 15; once it schedules none
+ * (after day 84) the lessons' share goes to the other three, 25 / 55 / 20.
  */
 export const RATING_WEIGHTS = {
-  course: { showingUp: 30, cleanDays: 45, lessons: 25 },
-  afterCourse: { showingUp: 40, cleanDays: 60, lessons: 0 },
+  course: { showingUp: 20, cleanDays: 45, lessons: 20, task: 15 },
+  afterCourse: { showingUp: 25, cleanDays: 55, lessons: 0, task: 20 },
 } as const;
 
 /** The four bands a rating falls in, lowest first. `min` and `max` are inclusive. */
@@ -55,7 +67,7 @@ export const RATING_BANDS = [
 
 export type RatingBand = (typeof RATING_BANDS)[number];
 
-export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons';
+export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons' | 'task';
 
 export type RatingPart = { key: RatingPartKey; label: string; earned: number; max: number };
 
@@ -79,14 +91,15 @@ export type Rating = {
 
 /** What the rating is computed from — the same rows on either backend. */
 export type RatingInput = {
-  checkins: readonly Pick<DailyCheckin, 'date' | 'mood' | 'energy' | 'emotions' | 'reasons' | 'nightMood'>[];
+  checkins: readonly Pick<DailyCheckin, 'date' | 'mood' | 'energy' | 'emotions' | 'reasons' | 'nightMood' | 'dailyActionDone'>[];
   events: readonly Pick<TidelineEvent, 'type' | 'createdAt'>[];
   /** when each finished lesson was finished (ms); a completion with no date is in no window */
   lessons: readonly (number | null | undefined)[];
   start: ProgrammeStart;
 };
 
-const PART_LABEL: Record<RatingPartKey, string> = { showingUp: 'Showing up', cleanDays: 'Clean days', lessons: 'Lessons' };
+const PART_LABEL: Record<RatingPartKey, string> = { showingUp: 'Showing up', cleanDays: 'Clean days', lessons: 'Lessons', task: 'Task' };
+const PART_ORDER = ['showingUp', 'cleanDays', 'lessons', 'task'] as const;
 
 /**
  * The completion times of finished lessons, from the lesson-progress map both
@@ -118,6 +131,8 @@ type Index = {
   slipped: Set<string>;
   /** lessons finished, by the day they were finished */
   lessons: Map<string, number>;
+  /** days whose task was marked done — the row of the day the task was for, check-in or not */
+  tasked: Set<string>;
 };
 
 const keyOf = (t: number | Date) => toDateKey(t instanceof Date ? t : new Date(t));
@@ -142,7 +157,12 @@ function indexOf(input: RatingInput): Index {
 function buildIndex(input: RatingInput): Index {
   const start = programmeStartKey(input.start);
   const checked = new Set<string>();
-  for (const c of input.checkins) if (isCheckin(c) && isDateKey(c.date)) checked.add(c.date);
+  const tasked = new Set<string>();
+  for (const c of input.checkins) {
+    if (!isDateKey(c.date)) continue;
+    if (isCheckin(c)) checked.add(c.date);
+    if (c.dailyActionDone === true) tasked.add(c.date);
+  }
   const slipped = new Set<string>();
   for (const e of input.events) if (isSlip(e) && Number.isFinite(e.createdAt)) slipped.add(keyOf(e.createdAt));
   const lessons = new Map<string, number>();
@@ -151,7 +171,7 @@ function buildIndex(input: RatingInput): Index {
     const k = keyOf(t);
     lessons.set(k, (lessons.get(k) ?? 0) + 1);
   }
-  return { start, startDate: start ? keyToDate(start) : null, checked, slipped, lessons };
+  return { start, startDate: start ? keyToDate(start) : null, checked, slipped, lessons, tasked };
 }
 
 /** Today's window ends today once today has a check-in or a logged slip; until then, yesterday. */
@@ -176,30 +196,46 @@ function roundParts(raw: number[], total: number): number[] {
   return floors;
 }
 
-/** The rating of the seven days ending on `end` (a date key). */
-function rate(ix: Index, end: string): Rating {
+/** The seven days ending on `end`, and those of them inside the programme. */
+function windowOf(ix: Index, end: string): { keys: string[]; inside: string[] } {
   const keys = Array.from({ length: RATING_WINDOW }, (_, i) => shiftKey(end, i - (RATING_WINDOW - 1)));
-  const inside = ix.start == null ? keys : keys.filter((k) => k >= (ix.start as string));
+  return { keys, inside: ix.start == null ? keys : keys.filter((k) => k >= (ix.start as string)) };
+}
+
+/**
+ * The rating of the seven days ending on `end` (a date key). `lessonsEnd` and
+ * `taskEnd` are where those two parts' own seven days end: `end` for a day
+ * that has closed, and the day before while `end` is a today whose lesson or
+ * task is still to do (`live`).
+ */
+function rate(ix: Index, end: string, lessonsEnd: string = end, taskEnd: string = end): Rating {
+  const { keys, inside } = windowOf(ix, end);
+  const forLessons = lessonsEnd === end ? { keys, inside } : windowOf(ix, lessonsEnd);
+  const forTask = taskEnd === end ? { keys, inside } : windowOf(ix, taskEnd);
   const dayOf = (k: string) => (ix.startDate ? calendarDaysBetween(ix.startDate, keyToDate(k)) + 1 : null);
   // A window day on programme days 1–84 schedules a lesson. A day before the
   // start schedules one too, so lessons build up over the first week as the
-  // other two parts do (the denominator stays seven).
-  const scheduled = keys.filter((k) => {
+  // other parts do (the denominator stays seven).
+  const scheduled = forLessons.keys.filter((k) => {
     const d = dayOf(k);
     return d == null || d <= COURSE_DAYS;
   }).length;
 
   const showed = inside.filter((k) => ix.checked.has(k) || ix.slipped.has(k)).length;
   const clean = inside.filter((k) => ix.checked.has(k) && !ix.slipped.has(k)).length;
-  const done = inside.reduce((n, k) => n + (ix.lessons.get(k) ?? 0), 0);
+  const done = forLessons.inside.reduce((n, k) => n + (ix.lessons.get(k) ?? 0), 0);
+  const tasks = forTask.inside.filter((k) => ix.tasked.has(k)).length;
 
   const w = scheduled ? RATING_WEIGHTS.course : RATING_WEIGHTS.afterCourse;
-  const raw = [(w.showingUp * showed) / RATING_WINDOW, (w.cleanDays * clean) / RATING_WINDOW, scheduled ? w.lessons * Math.min(1, done / scheduled) : 0];
-  const value = Math.max(0, Math.min(100, Math.round(raw[0] + raw[1] + raw[2] + 1e-9)));
+  const raw = [
+    (w.showingUp * showed) / RATING_WINDOW,
+    (w.cleanDays * clean) / RATING_WINDOW,
+    scheduled ? w.lessons * Math.min(1, done / scheduled) : 0,
+    (w.task * tasks) / RATING_WINDOW,
+  ];
+  const value = Math.max(0, Math.min(100, Math.round(raw.reduce((sum, v) => sum + v, 0) + 1e-9)));
   const earned = roundParts(raw, value);
-  const parts: RatingPart[] = (['showingUp', 'cleanDays', 'lessons'] as const)
-    .map((key, i) => ({ key, label: PART_LABEL[key], earned: earned[i], max: w[key] as number }))
-    .filter((p) => p.max > 0);
+  const parts: RatingPart[] = PART_ORDER.map((key, i) => ({ key, label: PART_LABEL[key], earned: earned[i], max: w[key] as number })).filter((p) => p.max > 0);
 
   const lived = ix.start == null ? RATING_WINDOW : inside.length;
   const building = lived < RATING_WINDOW;
@@ -216,6 +252,19 @@ function rate(ix: Index, end: string): Rating {
   };
 }
 
+/**
+ * The rating as it stands on `today`: the window ends where `endFor` puts it,
+ * and today joins the lessons' and the task's count only once today's lesson
+ * is finished or today's task is done (D541). Until then those two read the
+ * seven days before, as the whole rating does before today's check-in.
+ */
+function live(ix: Index, today: string): Rating {
+  const end = endFor(ix, today);
+  if (end !== today) return rate(ix, end);
+  const before = shiftKey(today, -1);
+  return rate(ix, end, (ix.lessons.get(today) ?? 0) > 0 ? today : before, ix.tasked.has(today) ? today : before);
+}
+
 // ── the exports screens read ─────────────────────────────────────────────────
 
 /**
@@ -224,7 +273,7 @@ function rate(ix: Index, end: string): Rating {
  */
 export function computeRating(input: RatingInput, asOf: number | Date = Date.now()): Rating {
   const ix = indexOf(input);
-  return rate(ix, endFor(ix, keyOf(asOf)));
+  return live(ix, keyOf(asOf));
 }
 
 /**
@@ -246,12 +295,70 @@ export function ratingHistory(input: RatingInput, days: number, asOf: number | D
   const ix = indexOf(input);
   const today = keyOf(asOf);
   const n = Math.max(1, Math.floor(days));
-  return Array.from({ length: n }, (_, i) => (i === n - 1 ? rate(ix, endFor(ix, today)).value : rate(ix, shiftKey(today, i - (n - 1))).value));
+  return Array.from({ length: n }, (_, i) => (i === n - 1 ? live(ix, today).value : rate(ix, shiftKey(today, i - (n - 1))).value));
 }
 
 /** Today's rating less yesterday's as it closed — the ▲ / ▼ beside the number. */
 export function ratingChange(input: RatingInput, asOf: number | Date = Date.now()): number {
   const ix = indexOf(input);
   const today = keyOf(asOf);
-  return rate(ix, endFor(ix, today)).value - rate(ix, shiftKey(today, -1)).value;
+  return live(ix, today).value - rate(ix, shiftKey(today, -1)).value;
+}
+
+// ── the streak and a day's mark ──────────────────────────────────────────────
+
+/**
+ * How one day reads (D530). `done` — a check-in and no slip: the only day that
+ * counts. `slip` — a slip of either kind, checked in or not (a logged slip is
+ * not a check-in). `missed` — a past programme day with neither. `today` — a
+ * day still open, with neither yet: today, and the evening before while its
+ * night check-in can still close it (D537). `ahead` — a day to come. `before`
+ * — a day before the programme began, which never counts.
+ */
+export type DayMark = 'done' | 'slip' | 'missed' | 'today' | 'ahead' | 'before';
+
+/**
+ * The first day still open. Today, unless the screen says the evening before
+ * is still open (`closingNightKey`: the small hours, before the morning
+ * check-in opens). Only yesterday can be held open; any other key is ignored.
+ */
+const openFrom = (today: string, open?: string): string => (open != null && open === shiftKey(today, -1) ? open : today);
+
+function markOf(ix: Index, key: string, today: string, open: string = today): DayMark {
+  if (key > today) return 'ahead';
+  if (ix.start != null && key < ix.start) return 'before';
+  if (ix.slipped.has(key)) return 'slip';
+  if (ix.checked.has(key)) return 'done';
+  return key >= open ? 'today' : 'missed';
+}
+
+/**
+ * The mark of `day` (a date key) as of `asOf` — what Today's week strip draws.
+ * `open` is the evening the night check-in still closes, when the screen has one.
+ */
+export function dayMark(input: RatingInput, day: string, asOf: number | Date = Date.now(), open?: string): DayMark {
+  const today = keyOf(asOf);
+  return markOf(indexOf(input), day, today, openFrom(today, open));
+}
+
+/**
+ * The streak: the run of days that count (`done`) ending today, or ending
+ * yesterday while today has neither a check-in nor a slip — today does not
+ * break the run until the day is over. A slip today makes it 0 at once,
+ * checked in or not. A missed day or a slip day ends the run, and it never
+ * reaches back past the programme's first day; with no known start, only a
+ * day that does not count ends it. A day still open neither counts nor ends
+ * the run: today, and the evening `open` names (D537). Today's flame and the
+ * Log's "Clean days in a row" both read this.
+ */
+export function currentStreak(input: RatingInput, asOf: number | Date = Date.now(), open?: string): number {
+  const ix = indexOf(input);
+  const today = keyOf(asOf);
+  const from = openFrom(today, open);
+  let run = 0;
+  for (let day = today; ; day = shiftKey(day, -1)) {
+    const mark = markOf(ix, day, today, from);
+    if (mark === 'done') run += 1;
+    else if (mark !== 'today') return run;
+  }
 }

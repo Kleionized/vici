@@ -64,3 +64,22 @@ Both backends stamp `completedAt` when a lesson is finished, and the day reader 
 day it was first finished. Reading ahead is capped by `min(1, …)`. Trade-off: once today is checked in, today's scheduled lesson is in
 the window. A morning check-in made before the day's lesson can therefore read about −4 until the lesson is done, which is the spec
 as written. Excluding today's lesson until it is finished or the day closes would remove the dip.
+
+## D540 — The task is a fourth part, and the split is the owner's
+The owner asked for completing the day's task to count, and chose the split: showing up 20, clean days 45, lessons 20, task 15.
+After day 84 the lessons' share goes to the other three: 25, 55, 20. A slip costs what it did before (45 over seven days), so one
+slip in a full week still reads 94 and three read 81. A day earns the task part when its row has `dailyActionDone`: ticked on
+Today, or answered "Yes" in the next morning's check-in. The row is the day the task was for. A row that holds only the action is
+not a check-in (D432) but its task still counts. Nothing new is stored. This supersedes the weights in D510.
+
+## D541 — Today's lesson and task wait until they are done
+D519's trade-off is gone. Once today is checked in, today joins showing up and clean days as before. Today joins the lessons
+count only once a lesson is finished today, and the task count only once today's task is done. Until then each of those two reads
+the seven days before. A morning check-in on a full week therefore stays at 100 and does not read lower until the lesson and the
+task are done. A day that has ended counts as it stands (`ratingThrough`), so a lesson or task left undone shows the next day.
+`live()` in `src/lib/score.ts` carries this for `computeRating`, the last point of `ratingHistory` and `ratingChange`.
+
+## D542 — Where the fourth part shows
+Score Detail's "What makes it up" draws one row per part, so it now has four rows during the course and three after it. Its
+paragraph names the task and its weight. Onboarding's rating board lists "showing up, clean days, lessons and tasks". The case
+table (153 cases in seven time zones) is in the session scratch folder and is not shipped.

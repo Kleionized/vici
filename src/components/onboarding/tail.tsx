@@ -215,7 +215,7 @@ export function O3StartingPoint({ next, back }: { next: () => void; back?: () =>
         </View>
         <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
           <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            It starts with your first check-in and covers your last 7 days: showing up, clean days and lessons.
+            It starts with your first check-in and covers your last 7 days: showing up, clean days, lessons and tasks.
           </MonoText>
         </View>
       </Band>

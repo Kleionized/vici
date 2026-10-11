@@ -36,8 +36,8 @@ Today and the Library refresh when the app comes back. The course has an end sta
 come back when a lesson is reopened.
 
 The 1,000-point score is gone. In its place is a recovery rating out of 100 that covers only the last seven days, so
-a slip costs something but never buries anyone. Showing up is worth 30, clean days 45, lessons 25. After day 84 the
-weights become 40 and 60. The bands are Starting, Steadying, Holding and Strong. The first week shows "Building" and
+a slip costs something but never buries anyone. Showing up is worth 20, clean days 45, lessons 20 and the day's task
+15. After day 84 the weights become 25, 55 and 20 with no lessons part. The bands are Starting, Steadying, Holding and Strong. The first week shows "Building" and
 the number of days so far.
 
 The SOS and slip flows had smaller faults. The urge hub recorded nothing. A back swipe dropped you out mid-urge.
@@ -78,8 +78,6 @@ These need your accounts, so I can't do them.
 5. **The first medallion post.** It still announces a Vici tier the album says you haven't earned.
 6. **Drawer-only screens.** Life Map, Insights, Mail, Back Tap, First Steps, Journey and Locked weeks are reachable
    only from the developer drawer. Link the ones you want and delete the rest, along with 14 orphaned files.
-7. **One rating detail.** Once you check in, today's lesson enters the window. A morning check-in made before the
-   lesson can read about 4 points low until you finish it. I can exclude today's lesson until it's done if you prefer.
 
 ## What still needs checking
 

@@ -25,16 +25,16 @@ import {
 import { DAY_STEPS, dayStep, type DayStep } from '@/components/day/kit';
 import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/content/curriculum84';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
-import { ENERGY_WORDS, MOOD_WORDS, courseComplete, dayStart, greetingFor, isNightClosed, isSlip, programmeDay, programmeStartMs, useToday } from '@/lib/day';
+import { ENERGY_WORDS, MOOD_WORDS, closingNightKey, courseComplete, greetingFor, programmeDay, useToday } from '@/lib/day';
 import { toDateKey } from '@/lib/date';
-import { computeRating, lessonCompletions, ratingChange, ratingHistory, type Rating, type RatingInput } from '@/lib/score';
+import { computeRating, currentStreak, dayMark, lessonCompletions, ratingChange, ratingHistory, type DayMark, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
  * Today — Today Home, Today Home II / Today Home Task, Today Home III.
  *
- * The four frames share the header (greeting, day pill, profile door) and the
+ * The four frames share the header (greeting, streak pill, profile door) and the
  * Sunday-first week strip, pixel for pixel; only the band between the strip
  * (199) and the tab bar (748) changes. That band is the three-page vertical
  * pager this screen always was, re-dealt: page one is the rating and this
@@ -91,6 +91,8 @@ function namedTask(action: string): Task {
 }
 
 const WEEKDAY = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+/** The same days as a screen reader says them: "We" and "Su" are read as words (D535). */
+const WEEKDAY_SAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default function Today() {
   const router = useRouter();
@@ -134,9 +136,15 @@ export default function Today() {
   const rating = computeRating(input, now);
   const change = ratingChange(input, now);
   const series = ratingHistory(input, 30, now);
+  // The streak, off the same rows: check-in days in a row with no slip, ending
+  // today, or yesterday while today is still open. A slip today makes it 0
+  // (D530). The Log's "Clean days in a row" is the same number. Before the
+  // morning check-in opens, the evening before is still open: the night
+  // check-in can close it, so it neither counts nor ends the run yet (D537).
+  const openNight = closingNightKey(user, now);
+  const streak = currentStreak(input, now, openNight);
 
-  const dayKey = (t: number) => toDateKey(new Date(t));
-  const todayKey = dayKey(now);
+  const todayKey = toDateKey(new Date(now));
   const todayCheckin = checkins.find((c) => c.date === todayKey);
   const moodIdx = todayCheckin?.mood != null ? Math.max(0, Math.min(4, todayCheckin.mood - 1)) : null;
   const energyIdx = todayCheckin?.energy != null ? Math.max(0, Math.min(4, todayCheckin.energy - 1)) : null;
@@ -145,21 +153,16 @@ export default function Today() {
   const name = user?.displayName?.trim().split(/\s+/)[0];
 
   // The week strip, Sunday first (Today Home draws `Su … Sa`; the Log's strip
-  // is Monday-first — CRITIC C16). A past day is held unless a slip (either
-  // kind) landed on it or the programme had not begun; today fills once the
-  // night check-in has filed it (Today Home III, D231) — and never on a day
-  // with a slip in it. Only the night flow closes the day: the quick
-  // check-in's feelings, logged in the morning, don't fill today's disc.
-  const lapsed = new Set(events.filter(isSlip).map((e) => dayKey(e.createdAt)));
-  const firstDay = programmeStartMs(user) ?? dayStart(now);
+  // is Monday-first — CRITIC C16). Each day carries the mark the streak counts
+  // by (`dayMark`, D531): done is a check-in and no slip, a slip is a slip
+  // whether or not the day was checked in, and a past programme day with
+  // neither is missed. Today fills as soon as it counts — any real check-in,
+  // morning or night, and no slip — so its disc and the flame change together
+  // (D534; it used to wait for the night check-in, D231).
   const n = new Date(now);
-  const closed = isNightClosed(todayCheckin) && !lapsed.has(todayKey);
   const week: WeekDay[] = WEEKDAY.map((label, i) => {
     const at = new Date(n.getFullYear(), n.getMonth(), n.getDate() - n.getDay() + i);
-    const t = at.getTime();
-    const held = t >= firstDay && !lapsed.has(dayKey(t));
-    const state: WeekDay['state'] = i < n.getDay() ? (held ? 'held' : 'open') : i === n.getDay() ? (closed ? 'held' : 'today') : 'open';
-    return { label, date: at.getDate(), state, today: i === n.getDay() };
+    return { label, says: WEEKDAY_SAYS[i], date: at.getDate(), mark: dayMark(input, toDateKey(at), now, openNight), today: i === n.getDay() };
   });
 
   // The day's one action. The night check-in names it and files it under the
@@ -222,7 +225,7 @@ export default function Today() {
   return (
     <Screen>
       {/* the greeting keeps the clock's own hours (afternoon included), not the check-in switch's 18:30 */}
-      <Header greeting={greetingFor(n)} day={day} onProfile={() => router.push('/(app)/settings')} />
+      <Header greeting={greetingFor(n)} streak={streak} onProfile={() => router.push('/(app)/settings')} />
       <WeekStrip days={week} />
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
@@ -284,18 +287,20 @@ export default function Today() {
 /* ---------------------------------------------------------------- the header */
 
 /**
- * `left 24 right 24 top 64`: the greeting, then the day pill and the profile
- * door (gap 10). The pill counts the day (today-day OQ-T1: the frame's 41 is
- * the account's day number, and a streak stays opt-in — invariant #1), so the
- * old "Day 41" heading lives here now. The avatar is the frame's outline ring
- * and glyph; it opens Settings, as the old person glyph did.
+ * `left 24 right 24 top 64`: the greeting, then the streak pill and the profile
+ * door (gap 10). The flame counts the streak — check-in days in a row with no
+ * slip, 0 when there is none (`currentStreak`, D530). The owner decided it
+ * (D533): it replaces the day number the pill carried under today-day OQ-T1,
+ * and the streak is no longer opt-in. The programme day stays on page two,
+ * where the lesson tile reads "Lesson N" through day 84. The avatar is the
+ * frame's outline ring and glyph; it opens Settings, as the old person glyph did.
  */
-function Header({ greeting, day, onProfile }: { greeting: string; day: number; onProfile: () => void }) {
+function Header({ greeting, streak, onProfile }: { greeting: string; streak: number; onProfile: () => void }) {
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top: 64, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
       <MonoText v="greeting">{greeting}</MonoText>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Pill kind="streak" label={String(day)} accessibilityLabel={`Day ${day}`} />
+        <Pill kind="streak" label={String(streak)} accessibilityLabel={`${streak} ${streak === 1 ? 'day' : 'days'} in a row`} />
         <Tap
           label="Open settings"
           onPress={onProfile}
@@ -308,20 +313,31 @@ function Header({ greeting, day, onProfile }: { greeting: string; day: number; o
   );
 }
 
-type WeekDay = { label: string; date: number; state: 'held' | 'today' | 'open'; today: boolean };
+type WeekDay = { label: string; says: string; date: number; mark: DayMark; today: boolean };
+
+/** What a screen reader adds after the day (D535). A day still open and a day to come add nothing. */
+const MARK_SAYS: Partial<Record<DayMark, string>> = { done: ', checked in', slip: ', slip', missed: ', no check-in' };
 
 /**
  * `left 24 right 24 top 136`, seven 36-wide columns spread `space-between`: the
- * day (12px; today 700 ink) over a 36 disc, gap 12. Held — the ink disc with a
- * 14 check; today, still open — the ink ring and the date; anything else (a
- * day to come, a slip, a day before the account) — the line ring and a muted
- * date (D231).
+ * day (12px; today 700 ink) over a 36 disc, gap 12. A glyph says what happened
+ * and a number says the day is still to come (D531). Done — the ink disc with
+ * a 14 check; a slip — the ink ring and a cross; missed — the line ring and a
+ * muted dash; a day still open (today, or the evening the night check-in can
+ * still close, D537) — the ink ring and the date; a day to come or a day
+ * before the programme — the line ring and a muted date (D231).
  */
 function WeekStrip({ days }: { days: WeekDay[] }) {
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top: 136, flexDirection: 'row', justifyContent: 'space-between' }}>
       {days.map((d) => (
-        <View key={d.label} accessibilityLabel={`${d.label} ${d.date}${d.state === 'held' ? ', clean' : ''}`} style={{ alignItems: 'center', gap: 12 }}>
+        <View
+          key={d.label}
+          accessible
+          // the web build drops `accessible`, and a label on a plain div is not read: it needs a role there (native would add "image")
+          role={Platform.OS === 'web' ? 'img' : undefined}
+          accessibilityLabel={`${d.today ? 'Today, ' : ''}${d.says} ${d.date}${MARK_SAYS[d.mark] ?? ''}`}
+          style={{ alignItems: 'center', gap: 12 }}>
           <MonoText
             v="caps"
             color={d.today ? mono.ink : mono.mute}
@@ -332,7 +348,7 @@ function WeekStrip({ days }: { days: WeekDay[] }) {
             }}>
             {d.label}
           </MonoText>
-          {d.state === 'held' ? (
+          {d.mark === 'done' ? (
             <CheckDisc size={36} />
           ) : (
             <View
@@ -340,18 +356,35 @@ function WeekStrip({ days }: { days: WeekDay[] }) {
                 width: 36,
                 height: 36,
                 borderRadius: 18,
-                boxShadow: d.state === 'today' ? ring.outlineInk : ring.outline,
+                boxShadow: d.mark === 'slip' || d.mark === 'today' ? ring.outlineInk : ring.outline,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <MonoText v="pill" color={d.state === 'today' ? mono.ink : mono.mute} style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
-                {d.date}
-              </MonoText>
+              {d.mark === 'slip' || d.mark === 'missed' ? (
+                <DayGlyph mark={d.mark} />
+              ) : (
+                <MonoText v="pill" color={d.mark === 'today' ? mono.ink : mono.mute} style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
+                  {d.date}
+                </MonoText>
+              )}
             </View>
           )}
         </View>
       ))}
     </View>
+  );
+}
+
+/**
+ * The two marks a ring carries in place of its date, in a 12 box at stroke 2
+ * with round ends: a slip's cross in ink (the kit's ✕, drawn to fit) and a
+ * missed day's dash in the mute, 10 wide.
+ */
+function DayGlyph({ mark }: { mark: 'slip' | 'missed' }) {
+  return (
+    <Svg width={12} height={12} viewBox="0 0 12 12">
+      <Path d={mark === 'slip' ? 'M2 2l8 8M10 2l-8 8' : 'M2 6h8'} fill="none" stroke={mark === 'slip' ? mono.ink : mono.mute} strokeWidth={2} strokeLinecap="round" />
+    </Svg>
   );
 }
 

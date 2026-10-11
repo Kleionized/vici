@@ -189,8 +189,9 @@ export const isNightCheckin = (c: CheckinContent | null | undefined): boolean =>
 /**
  * Has the night flow closed this row? Only the night flow writes `nightMood`.
  * The quick check-in (`/checkin`) also writes feelings and reasons, at any hour,
- * so those fields cannot answer "is tonight done?" (the gate, the Log's door,
- * Today's disc). Counting still uses `isNightCheckin` and `isCheckin`.
+ * so those fields cannot answer "is tonight done?" (the gate, the Log's door).
+ * Counting still uses `isNightCheckin` and `isCheckin`; Today's disc is a
+ * count now, filled by any check-in on a day with no slip (D534).
  */
 export const isNightClosed = (c: Pick<DailyCheckin, 'nightMood'> | null | undefined): boolean => c?.nightMood != null;
 

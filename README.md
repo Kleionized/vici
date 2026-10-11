@@ -18,6 +18,8 @@ design are loaded later.
 1. **No zero-reset streak as the hero metric** — progress is lessons + leading
    indicators + values alignment. A "days since" number is optional and off by
    default.
+   Since changed by the owner: Today's flame is a streak that a slip resets to 0. The
+   hero number is still the rating. See `.overhaul/decisions/deploy-streak.md`, D533.
 2. **A lapse is data, not failure** — logged as a neutral event with the same calm
    UI as a win. No shame language, no red X, no broken-streak animation.
 3. **Lead with values** — the user's "why" and Life Map are first-class and resurfaced.

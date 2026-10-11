@@ -210,7 +210,10 @@ export interface JournalEntry {
 export type JournalEntryInput = { tag: string; title: string; body: string };
 
 export interface UserSettings {
-  /** Off by default — a streak is opt-in and secondary, never the hero (invariant #1). */
+  /**
+   * Off by default. It gates the dashboard's days since the last slip, a figure no screen draws.
+   * Today's flame is another count and is not opt-in (`currentStreak`, src/lib/score.ts, D533).
+   */
   showStreak: boolean;
   reminderTime?: string;
   theme?: string;

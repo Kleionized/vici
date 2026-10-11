@@ -10,6 +10,8 @@ around a few non-negotiable principles that explain a lot of the design:
 - **A lapse is neutral data, not a failure.** Nothing "resets to zero."
 - **Leading indicators are the hero** (sleep, mood, connection, structure) — not a
   streak counter. A "days since" number is opt-in and deliberately secondary.
+  (Since changed by the owner: Today's flame is a streak that a slip resets to 0. The
+  hero number is still the rating. See `.overhaul/decisions/deploy-streak.md`, D533.)
 - **Calm over shame.** Copy reframes setbacks as information and growth.
 - **Not medical advice.** A crisis/support route is always one tap away.
 
@@ -69,6 +71,8 @@ The daily landing pad. Contains:
   signal) and an avatar that opens Settings.
 - A time-aware lowercase greeting ("good morning/afternoon/evening.").
 - A **week strip** (Sun–Sat) with checkmarks on days you checked in, today highlighted.
+  (Now: the top row's pill is the streak, and the strip marks each day done, slip or
+  missed. See `.overhaul/decisions/deploy-streak.md`, D531 and D533.)
 - **Today's lesson** hero card — category badge, title, "Week · Category · min", and a
   smart CTA ("Start / Continue / Review lesson" depending on progress).
 - A **"Why you're here"** pull-quote card (the onboarding why statement) → taps to Life

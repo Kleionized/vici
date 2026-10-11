@@ -3,6 +3,8 @@
  * connection, structure, lessons, reflections) — never a streak counter
  * (invariant #1). The optional "days since last lapse" is computed only when the
  * user has explicitly opted in, and even then it is a neutral secondary stat.
+ * The invariant covers this dashboard figure only: Today's flame is a streak
+ * the owner decided on (`currentStreak`, src/lib/score.ts, deploy streak D533).
  *
  * Kept pure + dependency-free so the Convex server (`convex/dashboard.ts`) can
  * mirror the same logic.
