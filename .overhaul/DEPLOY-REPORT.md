@@ -37,8 +37,8 @@ come back when a lesson is reopened.
 
 The 1,000-point score is gone. In its place is a recovery rating out of 100 that covers only the last seven days, so
 a slip costs something but never buries anyone. Showing up is worth 20, clean days 45, lessons 20 and the day's task
-15. After day 84 the weights become 25, 55 and 20 with no lessons part. The bands are Starting, Steadying, Holding and Strong. The first week shows "Building" and
-the number of days so far.
+15. After day 84 the weights become 25, 55 and 20 with no lessons part. The bands are Starting, Steadying, Holding and Strong. The rating starts from a
+starting score worked out from how often the user said they watch, and the first week builds from there.
 
 The SOS and slip flows had smaller faults. The urge hub recorded nothing. A back swipe dropped you out mid-urge.
 Unanswered ratings were stored as "Intense". All of that is fixed, and both flows now link to a Support page that

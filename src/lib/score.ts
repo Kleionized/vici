@@ -26,7 +26,7 @@
  * own: today is in their count only once today's lesson is finished or
  * today's task is done, so a morning check-in never costs points for work the
  * day still has time for. A day that has ended counts as it stands. Days
- * before the programme began are outside the window, but the
+ * before the programme began count at the account's starting score (below), and the
  * denominator stays seven, so a new account builds up over its first week.
  *
  * Everything is computed on the phone from the account's check-ins, events and
@@ -67,6 +67,19 @@ export const RATING_BANDS = [
 
 export type RatingBand = (typeof RATING_BANDS)[number];
 
+/**
+ * Where an account's rating starts (D543): the clean-day points at the rate
+ * reported in onboarding, `per30` days with porn in thirty. Someone who
+ * watched daily starts at 0; about once a week (4 in 30) starts at 39. The
+ * other parts start at 0, as none of them existed before the app. Null (the
+ * question unanswered) starts at 0.
+ */
+export function startingRatingFor(per30: number | null | undefined): number {
+  if (typeof per30 !== 'number' || !Number.isFinite(per30)) return 0;
+  const cleanShare = Math.max(0, Math.min(30, 30 - per30)) / 30;
+  return Math.round(RATING_WEIGHTS.course.cleanDays * cleanShare);
+}
+
 export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons' | 'task';
 
 export type RatingPart = { key: RatingPartKey; label: string; earned: number; max: number };
@@ -79,6 +92,8 @@ export type Rating = {
   building: boolean;
   /** programme days inside the window, 0–7 */
   lived: number;
+  /** the account's starting score (0 when it has none), which the window's days before the programme count at */
+  starting: number;
   /** what a screen prints beside the number: the band's word, or `Building · 3 of 7 days` */
   label: string;
   /** the parts in order; a part worth nothing (lessons after the course) is left out. `earned` adds up to `value`. */
@@ -133,6 +148,8 @@ type Index = {
   lessons: Map<string, number>;
   /** days whose task was marked done — the row of the day the task was for, check-in or not */
   tasked: Set<string>;
+  /** the account's starting score, 0 to the clean days' weight */
+  starting: number;
 };
 
 const keyOf = (t: number | Date) => toDateKey(t instanceof Date ? t : new Date(t));
@@ -171,7 +188,9 @@ function buildIndex(input: RatingInput): Index {
     const k = keyOf(t);
     lessons.set(k, (lessons.get(k) ?? 0) + 1);
   }
-  return { start, startDate: start ? keyToDate(start) : null, checked, slipped, lessons, tasked };
+  const given = typeof input.start === 'object' && input.start ? input.start.startingRating : undefined;
+  const starting = typeof given === 'number' && Number.isFinite(given) ? Math.max(0, Math.min(RATING_WEIGHTS.course.cleanDays, given)) : 0;
+  return { start, startDate: start ? keyToDate(start) : null, checked, slipped, lessons, tasked, starting };
 }
 
 /** Today's window ends today once today has a check-in or a logged slip; until then, yesterday. */
@@ -222,7 +241,11 @@ function rate(ix: Index, end: string, lessonsEnd: string = end, taskEnd: string 
   }).length;
 
   const showed = inside.filter((k) => ix.checked.has(k) || ix.slipped.has(k)).length;
-  const clean = inside.filter((k) => ix.checked.has(k) && !ix.slipped.has(k)).length;
+  // A window day before the programme began counts as clean at the starting
+  // score's rate (D543): seven of them come to the starting score itself, and
+  // each lived day that replaces one moves the rating toward what was done.
+  const before = keys.length - inside.length;
+  const clean = inside.filter((k) => ix.checked.has(k) && !ix.slipped.has(k)).length + (before * ix.starting) / RATING_WEIGHTS.course.cleanDays;
   const done = forLessons.inside.reduce((n, k) => n + (ix.lessons.get(k) ?? 0), 0);
   const tasks = forTask.inside.filter((k) => ix.tasked.has(k)).length;
 
@@ -245,6 +268,7 @@ function rate(ix: Index, end: string, lessonsEnd: string = end, taskEnd: string 
     band,
     building,
     lived,
+    starting: ix.starting,
     label: building ? `Building · ${lived} of ${RATING_WINDOW} days` : band.label,
     parts,
     windowStart: inside[0] ?? keys[0],
@@ -289,7 +313,8 @@ export function ratingThrough(input: RatingInput, day: string | number | Date): 
 /**
  * The rating as of each of the last `days` days, oldest first: each past day
  * as it closed (`ratingThrough`), today as it stands now (`computeRating`), so
- * the line ends on the number beside it. A day before the programme reads 0.
+ * the line ends on the number beside it. A day before the programme reads
+ * the account's starting score (0 when it has none).
  */
 export function ratingHistory(input: RatingInput, days: number, asOf: number | Date = Date.now()): number[] {
   const ix = indexOf(input);

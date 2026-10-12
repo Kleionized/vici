@@ -280,6 +280,8 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
   const how = lessons
     ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}), lessons (${lessons.max}) and the day’s task (${weight('task')}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`
     : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and the day’s task (${weight('task')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`;
+  // the first week: the days before the programme are in the clean days' row at the starting score (D543)
+  const first = rating.building && rating.starting > 0 ? ` In your first week, the days before you started count at your starting score, ${rating.starting}.` : '';
   return (
     <>
       <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>
@@ -320,7 +322,7 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
           </View>
         </Card>
         <MonoText v="p" style={{ marginHorizontal: 8 }}>
-          {how}
+          {how + first}
         </MonoText>
       </View>
     </>

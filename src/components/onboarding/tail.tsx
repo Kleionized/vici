@@ -190,12 +190,13 @@ function RatingGauge({ value }: { value: number }) {
 }
 
 /**
- * The rating before it has anything to count (S2, D516): no invented starting
- * figure. The gauge stands at 0 marked "Building", and the line says what the
- * number will be — it starts with the first check-in and covers the last seven
- * days. Today shows the same number from the first check-in on.
+ * Where the rating starts (D543): his starting score, worked out from the rate
+ * he reported (`startingRatingFor`), on the gauge and marked "Starting score".
+ * Today starts from the same number. With the question unanswered (`value`
+ * null) there is nothing to work it out from: the gauge stands at 0 marked
+ * "Building", as before (S2, D516).
  */
-export function O3StartingPoint({ next, back }: { next: () => void; back?: () => void }) {
+export function O3StartingPoint({ value, next, back }: { value: number | null; next: () => void; back?: () => void }) {
   // the closing line wraps to three on a narrow phone; the band measures it
   const [lineH, setLineH] = useState(48);
   return (
@@ -208,14 +209,16 @@ export function O3StartingPoint({ next, back }: { next: () => void; back?: () =>
           </MonoText>
         </View>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 270, flexDirection: 'row', justifyContent: 'center' }}>
-          <RatingGauge value={0} />
+          <RatingGauge value={value ?? 0} />
         </View>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', justifyContent: 'center' }}>
-          <Pill kind="outline" label="Building" />
+          <Pill kind="outline" label={value == null ? 'Building' : 'Starting score'} />
         </View>
         <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
           <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            It starts with your first check-in and covers your last 7 days: showing up, clean days, lessons and tasks.
+            {value == null
+              ? 'It starts with your first check-in and covers your last 7 days: showing up, clean days, lessons and tasks.'
+              : 'This comes from how often you said you watch. From here it covers your last 7 days: showing up, clean days, lessons and tasks.'}
           </MonoText>
         </View>
       </Band>

@@ -31,6 +31,7 @@ import {
 } from '@/components/onboarding/handover';
 import { O3DayZero, O3Reminders } from '@/components/onboarding/reminders';
 import { buildWeekXiiLetter, daysPer30, daysPerYear, daysToAge80, windowFor } from '@/components/onboarding/v3';
+import { startingRatingFor } from '@/lib/score';
 import { GhostLink, LoadingView, MonoText, PrimaryButton, SHEET_TOP, Sheet } from '@/components/mono';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { lessonForDay } from '@/content/curriculum84';
@@ -351,7 +352,7 @@ export default function Onboarding() {
     // the sentence once assembled from two chip answers is not written, and
     // the feelings he has before watching are not his values.
     // Day 1 of the programme is today, on this phone's calendar (src/lib/day.ts)
-    const done = await completeOnboarding({ programmeStartedAt: todayKey() }).then(
+    const done = await completeOnboarding({ programmeStartedAt: todayKey(), startingRating: startingRatingFor(per30) }).then(
       () => true,
       () => false,
     );
@@ -452,7 +453,7 @@ export default function Onboarding() {
         return <O3YourPlan {...plan} next={next} back={back} />;
       case 'startingPoint':
         // D516: the rating starts with the first check-in, so the board shows no starting figure
-        return <O3StartingPoint next={next} back={back} />;
+        return <O3StartingPoint value={per30 == null ? null : startingRatingFor(per30)} next={next} back={back} />;
       case 'next30':
         return <O3Next30 times={next30} next={next} back={back} />;
       case 'oneYear':

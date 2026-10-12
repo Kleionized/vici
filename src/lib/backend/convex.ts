@@ -182,10 +182,10 @@ export function useEnsureUser() {
   return (displayName?: string) => fn({ displayName });
 }
 
-/** `programmeStartedAt`: the phone's local date onboarding finished on — Day 1 (`src/lib/day.ts`). */
+/** `programmeStartedAt`: the phone's local date onboarding finished on — Day 1 (`src/lib/day.ts`). `startingRating`: where the rating starts (`src/lib/score.ts`). */
 export function useCompleteOnboarding() {
   const fn = useMutation(R.completeOnboarding);
-  return (opts?: { programmeStartedAt?: string }) => fn({ programmeStartedAt: opts?.programmeStartedAt });
+  return (opts?: { programmeStartedAt?: string; startingRating?: number }) => fn({ programmeStartedAt: opts?.programmeStartedAt, startingRating: opts?.startingRating });
 }
 
 /**

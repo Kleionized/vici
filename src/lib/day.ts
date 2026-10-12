@@ -76,7 +76,7 @@ export function calendarDaysBetween(a: When, b: When): number {
 
 // ── the programme's start and day ────────────────────────────────────────────
 
-export type ProgrammeUser = Pick<AppUser, 'createdAt' | 'programmeStartedAt'>;
+export type ProgrammeUser = Pick<AppUser, 'createdAt' | 'programmeStartedAt' | 'startingRating'>;
 
 /**
  * Anything a screen has that says when the programme began: the account (its

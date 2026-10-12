@@ -42,15 +42,25 @@ export const ensureUser = mutation({
  * Onboarding is done. `programmeStartedAt` is the phone's local date
  * (`YYYY-MM-DD`) — the server cannot know the user's calendar — and becomes
  * Day 1 of the programme. A start already recorded is never moved: finishing
- * the funnel a second time must not restart the course.
+ * the funnel a second time must not restart the course. `startingRating` is
+ * where the recovery rating starts (0–45, from the rate reported in the
+ * funnel); it is kept the same way, once.
  */
 export const completeOnboarding = mutation({
-  args: { programmeStartedAt: v.optional(v.string()) },
-  handler: async (ctx, { programmeStartedAt }) => {
+  args: { programmeStartedAt: v.optional(v.string()), startingRating: v.optional(v.number()) },
+  handler: async (ctx, { programmeStartedAt, startingRating }) => {
     const userId = await requireUserId(ctx);
     const user = await getUserDoc(ctx, userId);
     const start = !user.programmeStartedAt && programmeStartedAt && DATE_KEY.test(programmeStartedAt) ? programmeStartedAt : undefined;
-    await ctx.db.patch(user._id, { onboardingComplete: true, ...(start ? { programmeStartedAt: start } : {}) });
+    const rating =
+      user.startingRating === undefined && typeof startingRating === 'number' && Number.isFinite(startingRating)
+        ? Math.max(0, Math.min(45, Math.round(startingRating)))
+        : undefined;
+    await ctx.db.patch(user._id, {
+      onboardingComplete: true,
+      ...(start ? { programmeStartedAt: start } : {}),
+      ...(rating !== undefined ? { startingRating: rating } : {}),
+    });
   },
 });
 

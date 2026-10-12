@@ -51,7 +51,7 @@ interface MockStoreValue {
   hydrated: boolean;
   lessons: Lesson[];
   data: UserData | null;
-  completeOnboarding(opts?: { programmeStartedAt?: string }): Promise<void>;
+  completeOnboarding(opts?: { programmeStartedAt?: string; startingRating?: number }): Promise<void>;
   updateSettings(partial: Partial<UserSettings>): Promise<void>;
   updateProfile(displayName: string): Promise<void>;
   startLesson(slug: string): Promise<void>;
@@ -138,11 +138,13 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
   // As `users:completeOnboarding`: the phone's local date becomes Day 1, and a
   // start already recorded is never moved.
   const completeOnboarding = useCallback(
-    async (opts?: { programmeStartedAt?: string }) => {
+    async (opts?: { programmeStartedAt?: string; startingRating?: number }) => {
       const cur = dataRef.current;
       if (!cur) return;
       const start = !cur.user.programmeStartedAt && isDateKey(opts?.programmeStartedAt) ? opts?.programmeStartedAt : undefined;
-      await apply({ ...cur, user: { ...cur.user, onboardingComplete: true, ...(start ? { programmeStartedAt: start } : {}) } });
+      const given = opts?.startingRating;
+      const rating = cur.user.startingRating === undefined && typeof given === 'number' && Number.isFinite(given) ? Math.max(0, Math.min(45, Math.round(given))) : undefined;
+      await apply({ ...cur, user: { ...cur.user, onboardingComplete: true, ...(start ? { programmeStartedAt: start } : {}), ...(rating !== undefined ? { startingRating: rating } : {}) } });
     },
     [apply],
   );

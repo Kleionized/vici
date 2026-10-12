@@ -84,6 +84,9 @@ export default defineSchema({
     // The local date (`YYYY-MM-DD`) onboarding finished on — Day 1 of the
     // programme. Optional: accounts from before it count from `createdAt`.
     programmeStartedAt: v.optional(v.string()),
+    // Where the recovery rating starts (0–45), from the rate reported in
+    // onboarding. Set once. Optional: older accounts start from 0.
+    startingRating: v.optional(v.number()),
     onboardingComplete: v.boolean(),
     settings: v.object({
       showStreak: v.boolean(),

@@ -83,3 +83,17 @@ task are done. A day that has ended counts as it stands (`ratingThrough`), so a 
 Score Detail's "What makes it up" draws one row per part, so it now has four rows during the course and three after it. Its
 paragraph names the task and its weight. Onboarding's rating board lists "showing up, clean days, lessons and tasks". The case
 table (153 cases in seven time zones) is in the session scratch folder and is not shipped.
+
+## D543 — The rating starts from the account's starting score
+The owner asked for the rating to be based on a starting score from onboarding. `startingRatingFor(per30)` is the clean-day
+points (45) at the rate reported in the funnel: 30 days in 30 starts at 0, 13 at 26, 4 at 39, 3 at 41, 1 at 44. The other parts
+start at 0, since none of them existed before the app. It is stored once on the account (`users.startingRating`, set by
+`completeOnboarding`, clamped 0–45 on the server) and never moved. Older accounts have none and start from 0 as before. This
+supersedes D516: onboarding's rating board now draws the starting score on the gauge under "Starting score", and keeps the
+"Building" board only when the frequency question went unanswered.
+
+In the rating, a window day before the programme began counts as clean at the starting score's rate. Seven such days come to the
+starting score itself, each lived day replaces one, and after seven days it has left the window. So an account that reported
+about once a week reads 39 on day 1, 48 after a full first day, 65 after three and 100 after seven. The baseline sits in the clean
+days' row, so the rows still add up to the number. Score Detail's paragraph says so during the first week. The 30-day line reads the
+starting score for the days before the start.

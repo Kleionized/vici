@@ -247,6 +247,12 @@ export interface AppUser {
    * stored; they count from the local date of `createdAt`.
    */
   programmeStartedAt?: string;
+  /**
+   * Where the recovery rating starts (0–45): the clean-day points at the rate
+   * he reported in onboarding (`startingRatingFor`, D543). Set once, when
+   * onboarding finishes. Absent on older accounts, which start from 0.
+   */
+  startingRating?: number;
   onboardingComplete: boolean;
   settings: UserSettings;
 }
