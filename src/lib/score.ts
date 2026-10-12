@@ -44,6 +44,13 @@ import type { DailyCheckin, LessonProgress, TidelineEvent } from '@/lib/types';
 /** The days the rating covers. */
 export const RATING_WINDOW = 7;
 
+/**
+ * The lowest the rating reads (the owner's baseline, D544): a week away from
+ * the app comes back to this, never to 0. What the parts did not earn of it is
+ * its own row, `baseline`.
+ */
+export const RATING_FLOOR = 25;
+
 /** The scale every chart of the rating is drawn on — fixed, so a small change never fills the chart. */
 export const RATING_SCALE = [0, 100] as const;
 
@@ -68,19 +75,20 @@ export const RATING_BANDS = [
 export type RatingBand = (typeof RATING_BANDS)[number];
 
 /**
- * Where an account's rating starts (D543): the clean-day points at the rate
- * reported in onboarding, `per30` days with porn in thirty. Someone who
- * watched daily starts at 0; about once a week (4 in 30) starts at 39. The
- * other parts start at 0, as none of them existed before the app. Null (the
- * question unanswered) starts at 0.
+ * Where an account's rating starts (D543, D544): between the floor and the
+ * clean days' weight, by the share of days that were clean at the rate
+ * reported in onboarding (`per30` days with porn in thirty). Someone who
+ * watched daily starts at the floor, 25; about once a week (4 in 30) starts at
+ * 42. The other parts start at 0, as none of them existed before the app. Null
+ * (the question unanswered) starts at the floor.
  */
 export function startingRatingFor(per30: number | null | undefined): number {
-  if (typeof per30 !== 'number' || !Number.isFinite(per30)) return 0;
+  if (typeof per30 !== 'number' || !Number.isFinite(per30)) return RATING_FLOOR;
   const cleanShare = Math.max(0, Math.min(30, 30 - per30)) / 30;
-  return Math.round(RATING_WEIGHTS.course.cleanDays * cleanShare);
+  return Math.round(RATING_FLOOR + (RATING_WEIGHTS.course.cleanDays - RATING_FLOOR) * cleanShare);
 }
 
-export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons' | 'task';
+export type RatingPartKey = 'showingUp' | 'cleanDays' | 'lessons' | 'task' | 'baseline';
 
 export type RatingPart = { key: RatingPartKey; label: string; earned: number; max: number };
 
@@ -96,7 +104,7 @@ export type Rating = {
   starting: number;
   /** what a screen prints beside the number: the band's word, or `Building · 3 of 7 days` */
   label: string;
-  /** the parts in order; a part worth nothing (lessons after the course) is left out. `earned` adds up to `value`. */
+  /** the parts in order; a part worth nothing (lessons after the course) is left out, and `baseline` is there only while the floor holds the number up. `earned` adds up to `value`. */
   parts: RatingPart[];
   /** the window's first programme day (its first calendar day while it holds none), `YYYY-MM-DD` */
   windowStart: string;
@@ -113,7 +121,7 @@ export type RatingInput = {
   start: ProgrammeStart;
 };
 
-const PART_LABEL: Record<RatingPartKey, string> = { showingUp: 'Showing up', cleanDays: 'Clean days', lessons: 'Lessons', task: 'Task' };
+const PART_LABEL: Record<RatingPartKey, string> = { showingUp: 'Showing up', cleanDays: 'Clean days', lessons: 'Lessons', task: 'Task', baseline: 'Baseline' };
 const PART_ORDER = ['showingUp', 'cleanDays', 'lessons', 'task'] as const;
 
 /**
@@ -256,9 +264,12 @@ function rate(ix: Index, end: string, lessonsEnd: string = end, taskEnd: string 
     scheduled ? w.lessons * Math.min(1, done / scheduled) : 0,
     (w.task * tasks) / RATING_WINDOW,
   ];
-  const value = Math.max(0, Math.min(100, Math.round(raw.reduce((sum, v) => sum + v, 0) + 1e-9)));
-  const earned = roundParts(raw, value);
+  const counted = Math.max(0, Math.min(100, Math.round(raw.reduce((sum, v) => sum + v, 0) + 1e-9)));
+  // The floor (D544): the number never reads below it, and the difference is a row of its own.
+  const value = Math.max(RATING_FLOOR, counted);
+  const earned = roundParts(raw, counted);
   const parts: RatingPart[] = PART_ORDER.map((key, i) => ({ key, label: PART_LABEL[key], earned: earned[i], max: w[key] as number })).filter((p) => p.max > 0);
+  if (value > counted) parts.push({ key: 'baseline', label: PART_LABEL.baseline, earned: value - counted, max: value - counted });
 
   const lived = ix.start == null ? RATING_WINDOW : inside.length;
   const building = lived < RATING_WINDOW;

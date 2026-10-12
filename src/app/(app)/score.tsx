@@ -8,7 +8,7 @@ import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, N
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { calendarDaysBetween, keyToDate, useToday } from '@/lib/day';
 import { dateRange } from '@/lib/format';
-import { RATING_BANDS, RATING_WINDOW, computeRating, lessonCompletions, ratingChange, ratingHistory, type Rating, type RatingInput } from '@/lib/score';
+import { RATING_FLOOR, RATING_BANDS, RATING_WINDOW, computeRating, lessonCompletions, ratingChange, ratingHistory, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 /**
@@ -278,8 +278,8 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
   const lessons = rating.parts.find((p) => p.key === 'lessons');
   const weight = (key: string) => rating.parts.find((p) => p.key === key)?.max ?? 0;
   const how = lessons
-    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}), lessons (${lessons.max}) and the day’s task (${weight('task')}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`
-    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and the day’s task (${weight('task')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out.`;
+    ? `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}), lessons (${lessons.max}) and the day’s task (${weight('task')}). A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out. Your rating never goes below ${RATING_FLOOR}.`
+    : `Your rating covers your last ${RATING_WINDOW} days: showing up (${weight('showingUp')}), clean days (${weight('cleanDays')}) and the day’s task (${weight('task')}). The course is done, so lessons no longer count. A slip costs that day’s clean points. Logging it still counts as showing up. A week later, the slip drops out. Your rating never goes below ${RATING_FLOOR}.`;
   // the first week: the days before the programme are in the clean days' row at the starting score (D543)
   const first = rating.building && rating.starting > 0 ? ` In your first week, the days before you started count at your starting score, ${rating.starting}.` : '';
   return (

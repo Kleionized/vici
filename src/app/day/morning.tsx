@@ -27,7 +27,7 @@ import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJourn
 import { toDateKey } from '@/lib/date';
 import { ENERGY_WORDS, MOOD_WORDS, isSlip, isSurfed, keyToDate, programmeDay, shiftKey } from '@/lib/day';
 import { countOf, roman } from '@/lib/format';
-import { lessonCompletions, ratingThrough, type RatingInput } from '@/lib/score';
+import { RATING_FLOOR, lessonCompletions, ratingThrough, type RatingInput } from '@/lib/score';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 
 /**
@@ -207,7 +207,7 @@ export default function Morning() {
             rows={[
               // A day that took the rating down — or left it at nothing — is not a
               // row the day earned, so it gets the kit's empty disc like the others (D237).
-              { label: 'Recovery rating', value: `${rating} (${moved < 0 ? '−' : '+'}${Math.abs(moved)})`, done: moved >= 0 && rating > 0 },
+              { label: 'Recovery rating', value: `${rating} (${moved < 0 ? '−' : '+'}${Math.abs(moved)})`, done: moved >= 0 && rating > RATING_FLOOR },
               // a pledge is kept only on a day without a slip; signed and slipped is "signed"
               { label: signedPledge ? (lapses ? 'Pledge signed' : 'Pledge kept') : 'No pledge signed', done: !!signedPledge && lapses === 0 },
               {

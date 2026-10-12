@@ -97,3 +97,14 @@ starting score itself, each lived day replaces one, and after seven days it has 
 about once a week reads 39 on day 1, 48 after a full first day, 65 after three and 100 after seven. The baseline sits in the clean
 days' row, so the rows still add up to the number. Score Detail's paragraph says so during the first week. The 30-day line reads the
 starting score for the days before the start.
+
+## D544 — The rating never reads below 25
+The owner asked that a week away from the app not go back to 0, with a baseline of about 25. `RATING_FLOOR` is 25: the number is
+the larger of the floor and what the parts counted. While the floor holds it up, the difference is a fifth row, "Baseline", so the
+rows still add up to the number. Above the floor nothing changes: a missed day costs what it did, and so does a slip. Score
+Detail's paragraph ends "Your rating never goes below 25." The morning's rating row fills its disc only above the floor.
+
+The starting score moves with it, so a first day's work shows. `startingRatingFor` now runs from the floor to the clean days'
+weight: 25 for daily, 36 for a few times a week, 42 for about once a week, 43 and 44 below that (it was 0, 26, 39, 41, 44 in D543).
+Had it stayed at 0, a daily watcher would have read 25 before day 1 and 25 after doing everything on it. Now that account reads
+25, then 36, then 57 on day 3 and 100 on day 7.
