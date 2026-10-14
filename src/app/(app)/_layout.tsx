@@ -9,6 +9,8 @@ import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { closingNightKey, isMorningCheckin, isNightClosed, letterOpen, nightBeforeProgramme, programmeDay } from '@/lib/day';
 import { toDateKey } from '@/lib/date';
+import { deliverLetter, readLetterBox } from '@/lib/letterBox';
+import { dueMilestone, relapseLetterFor, slipDays } from '@/lib/viciPost';
 import { checkinPartNow } from '@/lib/routines';
 import { mono } from '@/lib/theme';
 import { loadUrgeSession } from '@/lib/urgeSession';
@@ -72,8 +74,8 @@ export default function AppLayout() {
     return () => sub.remove();
   }, []);
 
-  // On launch (and on each return) — at most one arrival: the letter, the
-  // post, the week's report, the Week XII letter, then the check-in the clock
+  // On launch (and on each return) — at most one arrival: a letter (after a
+  // slip, or a milestone), the post, the week's report, the Week XII letter, then the check-in the clock
   // says it is, if it is not done. Waits for the logs to load: the report and
   // check-in gates read them.
   useEffect(() => {
@@ -92,11 +94,28 @@ export default function AppLayout() {
     (async () => {
       // Mid-urge reopens go back to the urge flow, never the mood prompt.
       if (await loadUrgeSession()) return;
-      // The letter — sealed on day zero, it arrives over Today the launch
-      // after a slip was logged, then reseals itself into the Log.
+      const now = Date.now();
+      const today = toDateKey(new Date(now));
+      // VICI's letters (D552). The morning after a slip, the letter for it:
+      // chosen from what the record says about the latest slip before today.
+      // A slip logged today waits for tomorrow, as the owner's letters say.
       const letterPending = await readAccountJSON<number>(LETTER_PENDING_KEY, me);
-      if (letterPending) {
-        router.push('/letter');
+      if (letterPending && toDateKey(new Date(letterPending)) < today) {
+        await writeAccountJSON(LETTER_PENDING_KEY, null, me);
+        const slipDay = [...slipDays(events)].filter((k) => k < today).sort().pop();
+        if (slipDay) {
+          const letter = relapseLetterFor(events, user, slipDay);
+          await deliverLetter(letter.id, now, [], me);
+          router.push({ pathname: '/letter', params: { id: letter.id, at: String(now) } });
+          return;
+        }
+      }
+      // A milestone letter, as a clean run reaches each mark (once each).
+      const box = await readLetterBox(me);
+      const due = dueMilestone(events, user, today, new Set(box.marks));
+      if (due) {
+        await deliverLetter(due.letter.id, now, due.spent, me);
+        router.push({ pathname: '/letter', params: { id: due.letter.id, at: String(now) } });
         return;
       }
       // Medallion post — the medallion arrives the launch after an urge was
@@ -109,7 +128,6 @@ export default function AppLayout() {
         router.push('/medallion-post');
         return;
       }
-      const now = Date.now();
       // End-of-week report — delivered once when a new week of the programme
       // has closed, and only when that week holds something the user did (a
       // check-in, an urge or slip logged, a lesson finished): the same weeks

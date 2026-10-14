@@ -3,9 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { View } from 'react-native';
 
 import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
+import { LETTER_BY_ID } from '@/content/viciLetters';
 import { ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
-import { roman } from '@/lib/format';
+import { roman, shortDate } from '@/lib/format';
+import { readLetterBox, type DeliveredLetter } from '@/lib/letterBox';
 import { ACCOUNT_KEYS, readAccountJSON } from '@/lib/accountState';
 import { mono } from '@/lib/theme';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
@@ -18,7 +20,6 @@ import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
  * 26/33 heading and its line.
  */
 
-const LETTER_KEY = ACCOUNT_KEYS.letterKept;
 const POST_DONE_KEY = ACCOUNT_KEYS.postDelivered;
 
 const NAV_BOTTOM = 100;
@@ -35,11 +36,11 @@ export default function Mail() {
   const user = useCurrentUser();
   const checkins = useCheckins();
   const events = useEvents();
-  const [letter, setLetter] = useState<{ kept?: boolean } | null>(null);
+  const [letters, setLetters] = useState<DeliveredLetter[]>([]);
   const [postDelivered, setPostDelivered] = useState(false);
 
   useEffect(() => {
-    void readAccountJSON<{ kept?: boolean }>(LETTER_KEY).then(setLetter);
+    void readLetterBox().then((box) => setLetters(box.letters));
     // The key still spells the retired `Back on deck` face; it is load-bearing
     // storage on accounts that already have the post, so it keeps its name.
     void readAccountJSON<number>(POST_DONE_KEY).then((v) => setPostDelivered(!!v));
@@ -86,16 +87,19 @@ export default function Mail() {
       });
     }
 
-    // VICI's post-slip letter, resealed after each reading. It is VICI's, the
-    // same for everyone — not something he wrote on day zero (D476).
-    out.push({
-      key: 'letter',
-      title: 'A letter from VICI',
-      sub: letter?.kept ? 'Saved to your journal' : 'Read it after a slip',
-      go: () => router.push('/letter'),
-    });
+    // VICI's letters, newest first — milestones and the mornings after a slip (D553)
+    for (const l of [...letters].reverse()) {
+      const letter = LETTER_BY_ID[l.id];
+      if (!letter) continue;
+      out.push({
+        key: `letter-${l.id}-${l.at}`,
+        title: letter.subject,
+        sub: `${shortDate(l.at)}${l.kept ? ' · Saved to your journal' : ''}`,
+        go: () => router.push({ pathname: '/letter', params: { id: l.id, at: String(l.at) } }),
+      });
+    }
     return out;
-  }, [user, checkins, events, letter, postDelivered, router]);
+  }, [user, checkins, events, letters, postDelivered, router]);
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/dashboard'));
 

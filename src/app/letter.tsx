@@ -1,65 +1,61 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { LetterCard, LetterP, PostArrival, Salutation, Signoff, Strong } from '@/components/keepsakes/Letter';
+import { LetterCard, LetterP, PostArrival, Salutation, Signoff } from '@/components/keepsakes/Letter';
 import { HeroBoard, LoadingView } from '@/components/mono';
 import { O3LetterRead, WEEK_XII_FROM } from '@/components/onboarding/handover';
+import { LETTER_BY_ID, type ViciLetter } from '@/content/viciLetters';
 import { WEEK_XII_LETTER } from '@/content/weekXiiLetter';
-import { useCreateJournalEntry, useCurrentUser, useLifeMap } from '@/lib/backend';
+import { useCreateJournalEntry, useCurrentUser } from '@/lib/backend';
 import { LETTER_OPENS_DAY, courseWeekForDay, letterOpen, programmeDay } from '@/lib/day';
 import { roman } from '@/lib/format';
-import { ownWhy } from '@/lib/pledge';
-import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
+import { keepLetter, readLetterBox } from '@/lib/letterBox';
+import { fillName, firstName, letterText, salutation } from '@/lib/viciPost';
+import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 
 /**
- * The post — `90B · VICI Post — Arrival` and `39 · The Letter — Read`, plus
- * `Letter Received` / `Letter Week XII` on the `week12` variant (the handover's
- * own two boards, re-opened from Settings and from All).
+ * VICI's letters — `90B · VICI Post — Arrival` and `39 · The Letter — Read`,
+ * plus `Letter Received` / `Letter Week XII` on the `week12` variant (the
+ * handover's own two boards, re-opened from Settings and from All).
  *
- * The arrival is the post's hero board (the envelope, "The post is in.", `Read`
- * over `Tonight`); the read is the letter on its card, kept with `Save to
- * Journal` (the frame's `Save to Log`: the Log never lists letters, the
- * Journal does — D489).
- * Both ways out — `Tonight`, `Close`, the ✕ — clear the pending flag, so the
- * letter arrives once, and stays readable from Mail.
+ * The post variant reads one of the owner's letters (`src/content/viciLetters.ts`):
+ * a milestone letter, or the letter for the morning after a slip. The launch
+ * gate picks it (`src/lib/viciPost.ts`) and opens `?id=M05&at=…`; Mail opens the
+ * same. Without an id it shows the latest letter delivered (D553).
+ *
+ * The arrival is the hero board (the envelope, "A letter came.", `Read` over
+ * `Read later`); the read is the letter on its card, kept with `Save to
+ * Journal` (D489). The letter stays readable from Mail either way.
  */
 
-const LETTER_KEY = ACCOUNT_KEYS.letterKept;
 const PENDING_KEY = ACCOUNT_KEYS.letterPending;
 
 type Variant = 'post' | 'week12';
 type Phase = 'arrive' | 'read';
 
-/** The reason, set as a sentence of its own: one full stop, never two. */
-const sentence = (why: string) => (/[.!?…]$/.test(why) ? why : `${why}.`);
-
-/*
- * The post's words (D476). It is VICI's letter, the same for everyone but the
- * name, so it is signed by VICI — not "the you who makes it out" — and it says
- * only what any account's record holds after a slip: what was logged before
- * it is still there. The reason he started is quoted only when he wrote one
- * himself (Life Map's "Why you're here", `ownWhy`); with none, the sentence is
- * left out rather than invented (D477). It no longer assumes the morning.
- */
-const P1 = 'If you’re reading this, it happened. Good — you opened the letter instead of disappearing. That’s the only door that matters right now.';
-const P2 = 'One slip is a wave, not the sea. Nothing before it is erased: every check-in, every lesson and every urge you waited out is still on your record.';
-const P2_WHY = 'So is the reason you started:';
-const P3 = 'The only slip that can end this is the one you answer with a second. So: water, daylight, one lesson. Don’t fail twice.';
-const P4 = 'Check in tonight. Steadier is enough.';
-
 export default function LetterScreen() {
   const router = useRouter();
-  const params = useLocalSearchParams<{ variant?: string }>();
+  const params = useLocalSearchParams<{ variant?: string; id?: string; at?: string }>();
   const user = useCurrentUser();
-  const lifeMap = useLifeMap();
   const createJournalEntry = useCreateJournalEntry();
   const [phase, setPhase] = useState<Phase>('arrive');
 
   const variant: Variant = params.variant === 'week12' ? 'week12' : 'post';
-  const first = user?.displayName?.trim().split(/\s+/)[0] || '';
-  const name = first || 'friend';
-  const own = ownWhy(lifeMap?.whyStatement);
-  const why = own ? sentence(own) : '';
+  const first = firstName(user?.displayName);
+
+  // The post's letter: the one named, else the latest delivered (null: none yet).
+  const named = params.id ? LETTER_BY_ID[params.id] : undefined;
+  const namedAt = Number(params.at);
+  const [latest, setLatest] = useState<{ letter: ViciLetter; at: number } | null | undefined>(undefined);
+  useEffect(() => {
+    if (variant !== 'post' || named) return;
+    void readLetterBox().then((box) => {
+      const last = box.letters[box.letters.length - 1];
+      const letter = last ? LETTER_BY_ID[last.id] : undefined;
+      setLatest(last && letter ? { letter, at: last.at } : null);
+    });
+  }, [variant, named]);
+  const post = useMemo(() => (named ? { letter: named, at: Number.isFinite(namedAt) ? namedAt : 0 } : latest), [named, namedAt, latest]);
 
   const dismiss = useCallback(() => {
     if (router.canGoBack()) router.back();
@@ -69,22 +65,17 @@ export default function LetterScreen() {
   // Save to Journal — the letter becomes a journal entry, once. The week-XII letter
   // was already written there the night it was sealed, so that variant only closes.
   const keep = useCallback(() => {
-    if (variant === 'week12') {
+    if (variant === 'week12' || !post) {
       dismiss();
       return;
     }
     void (async () => {
-      const prev = await readAccountJSON<{ kept?: boolean }>(LETTER_KEY);
-      await writeAccountJSON(LETTER_KEY, { kept: true, at: Date.now() });
       await writeAccountJSON(PENDING_KEY, null);
-      // only once the flag is down: a letter opened cold leaves to Today, whose
-      // launch gate would read a still-pending letter and push it straight back
       dismiss();
-      if (prev?.kept) return;
-      const body = `Dear ${name},\n\n${P1}\n\n${P2}${why ? ` ${P2_WHY} ${why}` : ''}\n\n${P3}\n\n${P4}\n\n— VICI`;
-      await createJournalEntry({ tag: 'Letter', title: 'Don’t fail twice', body }).catch(() => {});
+      if (!(await keepLetter(post.letter.id, post.at))) return;
+      await createJournalEntry({ tag: 'Letter', title: post.letter.subject, body: letterText(post.letter, first) }).catch(() => {});
     })();
-  }, [createJournalEntry, dismiss, name, variant, why]);
+  }, [createJournalEntry, dismiss, first, post, variant]);
 
   const later = useCallback(() => {
     void (async () => {
@@ -136,27 +127,35 @@ export default function LetterScreen() {
     );
   }
 
+  if (post === undefined) return <LoadingView spinner={false} onClose={dismiss} />;
+  if (post === null) {
+    return (
+      <HeroBoard
+        nav={{ left: 'empty', right: 'close', onClose: dismiss }}
+        hero="envelope"
+        stackTop={451}
+        titleSize={26}
+        title="No letters yet."
+        body="VICI writes after milestones, and the morning after a slip."
+        cta="Close"
+        onCta={dismiss}
+      />
+    );
+  }
+
   if (phase === 'arrive') {
     // the programme week the post lands in, on the calendar count every screen uses
     return <PostArrival caps={`Week ${roman(courseWeekForDay(programmeDay(user)))}`} onRead={() => setPhase('read')} onLater={later} onClose={later} />;
   }
 
+  const { letter } = post;
   return (
     <LetterCard title="From VICI" onClose={later} primary="Save to Journal" onPrimary={keep} ghost="Close" onGhost={later}>
-      <Salutation>{`Dear ${name},`}</Salutation>
-      <LetterP>{P1}</LetterP>
-      <LetterP>
-        {P2}
-        {why ? (
-          <>
-            {` ${P2_WHY} `}
-            <Strong>{why}</Strong>
-          </>
-        ) : null}
-      </LetterP>
-      <LetterP>{P3}</LetterP>
-      <LetterP>{P4}</LetterP>
-      <Signoff>— VICI</Signoff>
+      <Salutation>{salutation(letter.greeting, first)}</Salutation>
+      {letter.paragraphs.map((p, i) => (
+        <LetterP key={i}>{fillName(p, first)}</LetterP>
+      ))}
+      <Signoff>Vici</Signoff>
     </LetterCard>
   );
 }

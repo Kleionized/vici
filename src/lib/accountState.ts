@@ -45,6 +45,8 @@ export const ACCOUNT_KEYS = {
   letterPending: 'tideline.letter.pending',
   /** the post-slip letter has been kept in the Journal (Mail lists it) */
   letterKept: 'tideline.letter.day3',
+  /** VICI's letters delivered to this account and the milestone marks spent (`src/lib/viciPost.ts`, D552) */
+  lettersDelivered: 'tideline.letters.delivered.v1',
   /** an urge was ridden out: the medallion post arrives on the next launch */
   postPending: 'tideline.post.backondeck.pending',
   /** the medallion post has been delivered */

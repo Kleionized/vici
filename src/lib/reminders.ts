@@ -1,10 +1,14 @@
 /**
  * Reminders — the local notifications VICI schedules on this phone.
  *
- *   - the two check-ins: a weekly repeat for every day ticked under each
- *     check-in time, at the saved morning and night times, in the words the
- *     onboarding cards already promise (`REMINDER_COPY`). A tap opens that
- *     check-in.
+ *   - the two check-ins, on every day ticked under each check-in time, at the
+ *     saved morning and night times. A tap opens that check-in. The night's is
+ *     a weekly repeat in the words the onboarding card shows (`REMINDER_COPY`).
+ *     The morning's carries the owner's note for that morning
+ *     (`src/content/morningNotes.ts`): the programme day's, or a relapse note
+ *     the morning after a slip (`src/lib/viciPost.ts`, D550). Each morning is
+ *     its own dated notification, set four weeks ahead and set again at every
+ *     launch, return and change (a new slip, a new time).
  *   - the trial: one reminder a day before a free trial ends
  *     (`scheduleTrialReminder`, for the paywall).
  *
@@ -24,13 +28,18 @@
 
 import { useRouter, usePathname } from 'expo-router';
 import { requireOptionalNativeModule } from 'expo';
-import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import { AppState, Linking, Platform } from 'react-native';
 
 import { withSystemPrompt } from '@/components/AppLockGate';
 import { ACCOUNT_KEYS, accountAtLaunch, accountKey, writeAccountJSON } from '@/lib/accountState';
 import { useAuth } from '@/lib/auth';
-import { useCurrentUser } from '@/lib/backend';
+import { MORNING_NOTES } from '@/content/morningNotes';
+import { useCurrentUser, useEvents } from '@/lib/backend';
+import { toDateKey } from '@/lib/date';
+import { isSlip, programmeDay, type ProgrammeStart } from '@/lib/day';
+import { firstName, morningNoteFor } from '@/lib/viciPost';
+import type { TidelineEvent } from '@/lib/types';
 import { loadCheckinDays, loadRoutines, minutesOf, type CheckinKind, type TimeOfDay } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
 
@@ -45,7 +54,8 @@ type NotificationResponse = import('expo-notifications').NotificationResponse;
  * design: nothing names the habit, so no setting has to hide them.
  */
 export const REMINDER_COPY = {
-  morning: { title: 'Morning check-in', body: 'Twenty seconds — where’s your head at today?', url: '/day/morning' },
+  // the onboarding card shows the first morning's note; each morning carries its own (D550)
+  morning: { title: 'Morning check-in', body: MORNING_NOTES[0], url: '/day/morning' },
   night: { title: 'Late night ahead', body: 'The time you told us about. SOS is one tap away.', url: '/day/night' },
 } as const;
 
@@ -306,6 +316,42 @@ export function scheduleCheckinReminders(plan: CheckinPlan): Promise<boolean> {
   return serial(() => scheduleCheckinsNow(plan));
 }
 
+// ── the morning's words ──────────────────────────────────────────────
+
+/** What the morning notes are chosen from: the account's start, first name and record. */
+type MorningContext = { start: ProgrammeStart; name: string; events: readonly Pick<TidelineEvent, 'type' | 'createdAt' | 'trigger' | 'precedingState'>[] };
+
+let morningContext: MorningContext | null = null;
+
+/** How far ahead the mornings are set: four weeks, well inside iOS's 64 pending notifications. */
+const MORNINGS_AHEAD = 28;
+
+/**
+ * The dated morning reminders for the next four weeks: on each ticked day, at
+ * the morning time, with that morning's note. A time already past is skipped.
+ */
+function morningsAhead(N: NotificationsModule, time: TimeOfDay, days: number[], ctx: MorningContext): Promise<string>[] {
+  const { hour, minute } = clock(time);
+  const ticked = new Set(validDays(days));
+  const now = Date.now();
+  const base = new Date();
+  const jobs: Promise<string>[] = [];
+  for (let i = 0; i < MORNINGS_AHEAD; i++) {
+    const at = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i, hour, minute, 0, 0);
+    if (!ticked.has(at.getDay()) || at.getTime() <= now + 60_000) continue;
+    const key = toDateKey(at);
+    const body = morningNoteFor(key, programmeDay(ctx.start, at.getTime()), ctx.events, ctx.name);
+    jobs.push(
+      N.scheduleNotificationAsync({
+        identifier: `${CHECKIN_ID}morning.${key}`,
+        content: { title: REMINDER_COPY.morning.title, body, sound: 'default', data: { url: REMINDER_COPY.morning.url, kind: 'checkin', part: 'morning' } },
+        trigger: { type: N.SchedulableTriggerInputTypes.DATE, date: at.getTime(), channelId: CHANNEL_ID },
+      }),
+    );
+  }
+  return jobs;
+}
+
 async function scheduleCheckinsNow({ morning, night, days }: CheckinPlan): Promise<boolean> {
   const N = notifications();
   if (!N) return false;
@@ -318,7 +364,10 @@ async function scheduleCheckinsNow({ morning, night, days }: CheckinPlan): Promi
     const perKind: Record<CheckinKind, number[]> = Array.isArray(days) ? { morning: days, night: days } : days;
     const times: Record<CheckinKind, TimeOfDay> = { morning, night };
     const jobs: Promise<string>[] = [];
-    for (const kind of ['morning', 'night'] as const) {
+    // the mornings, dated, once the account and its record have loaded
+    const ctx = morningContext;
+    if (ctx) jobs.push(...morningsAhead(N, morning, perKind.morning, ctx));
+    for (const kind of ctx ? (['night'] as const) : (['morning', 'night'] as const)) {
       const { hour, minute } = clock(times[kind]);
       const copy = REMINDER_COPY[kind];
       for (const day of validDays(perKind[kind])) {
@@ -470,6 +519,7 @@ export function useReminderLifecycle(): void {
   const pathname = usePathname();
   const { isLoaded, isSignedIn, userId } = useAuth();
   const user = useCurrentUser();
+  const events = useEvents();
   const ready = isLoaded && isSignedIn && !!user?.onboardingComplete && pathname !== '/';
 
   const pending = useRef<string | null>(null);
@@ -547,6 +597,29 @@ export function useReminderLifecycle(): void {
       void cancelAllReminders();
     }
   }, [isLoaded, isSignedIn, userId]);
+  // The mornings' words follow the account: its start, its name, and its
+  // slips (a slip logged tonight changes tomorrow's note). Rescheduled only
+  // when one of those changes, not on every new urge or check-in.
+  const start = user?.programmeStartedAt ?? user?.createdAt;
+  const name = firstName(user?.displayName);
+  const slipStamp = (events ?? [])
+    .filter(isSlip)
+    .map((e) => e.createdAt)
+    .sort()
+    .join(',');
+  // only the slips choose a morning's words
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- the stamp stands for the slips
+  const slips = useMemo(() => (events ?? []).filter(isSlip), [slipStamp]);
+  const loaded = events !== undefined;
+  useEffect(() => {
+    if (!isSignedIn || start === undefined || !loaded) {
+      morningContext = null;
+      return;
+    }
+    morningContext = { start: user ?? start, name, events: slips };
+    if (signedIn.current) void syncCheckinReminders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `user` is read through `start`
+  }, [isSignedIn, start, name, slips, loaded]);
   useEffect(() => {
     if (!notifications()) return;
     const sub = AppState.addEventListener('change', (next) => {
