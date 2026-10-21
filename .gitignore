@@ -54,3 +54,6 @@ example
 
 # local backups of the generated native folder
 /ios.bak-*
+
+# Vici UI 2 run: screenshots and diff images
+pixel-diff/
