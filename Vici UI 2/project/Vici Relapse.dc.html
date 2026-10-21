@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { margin:0; background:#E8E4DD; background-image:linear-gradient(rgba(40,36,28,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(40,36,28,0.06) 1px, transparent 1px); background-size:28px 28px; }
+  a, a:hover { color:#111111; }
+  @keyframes vr-spin { to { transform: rotate(360deg); } }
+</style>
+<script src="sos-viz.js"></script>
+<script src="lesson-viz-v5.js"></script>
+</helmet>
+<div style="display:flex; flex-direction:column; gap:128px; padding:{{ pad }}; align-items:flex-start; width:max-content;">
+<sc-for list="{{ sections }}" as="sec" hint-placeholder-count="2">
+<div style="display:flex; flex-direction:column; gap:26px;">
+<div style="align-self:flex-start; background:#111111; color:#FFFFFF; font-family:'Lato',system-ui,sans-serif; font-size:13px; font-weight:900; letter-spacing:3px; padding:12px 20px; border-radius:100px; white-space:nowrap;">{{ sec.title }}</div>
+<div style="display:flex; gap:64px; align-items:flex-start; flex-wrap:wrap; max-width:1780px;">
+<sc-for list="{{ sec.frames }}" as="f" hint-placeholder-count="4">
+<div style="display:flex; flex-direction:column; gap:18px; flex-shrink:0;">
+<div style="align-self:flex-start; background:#FFFFFF; color:#5F5B55; font-family:'Lato',system-ui,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.4px; padding:8px 12px; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.08);">{{ f.label }}</div>
+<div data-screen-label="{{ f.screen }}" style="width:393px; height:{{ f.h }}px; position:relative; overflow:hidden; background:#0D0D0D; font-family:'Lato',-apple-system,system-ui,sans-serif; -webkit-font-smoothing:antialiased; flex-shrink:0; box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18);">
+<div style="position:absolute; inset:0; background-image:url('noise.png'); opacity:0.05; pointer-events:none;"></div>
+
+<div style="position:absolute; top:0; left:0; right:0; height:54px; display:flex; align-items:center; justify-content:space-between; padding:6px 32px 0 46px; box-sizing:border-box; z-index:20;"><span style="font-size:17px; font-weight:700; color:#F2F0EC; letter-spacing:-0.2px;">{{ f.time }}</span><div style="display:flex; align-items:center; gap:7px;"><svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill="#F2F0EC"></rect><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill="#F2F0EC"></rect><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill="#F2F0EC"></rect><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill="#F2F0EC"></rect></svg><svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill="#F2F0EC"></path><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill="#F2F0EC"></path><circle cx="8.5" cy="10.5" r="1.5" fill="#F2F0EC"></circle></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#F2F0EC" stroke-opacity="0.35" fill="none"></rect><rect x="2" y="2" width="20" height="9" rx="2" fill="#F2F0EC"></rect><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#F2F0EC" fill-opacity="0.4"></path></svg></div></div>
+
+<div style="position:absolute; left:0; right:0; top:58px; height:44px; display:flex; align-items:center; justify-content:space-between; padding:0 18px; box-sizing:border-box; z-index:5;">
+<div onClick="{{ f.back }}" style="width:44px; height:44px; display:flex; align-items:center; padding-left:4px; box-sizing:border-box; cursor:pointer; opacity:{{ f.backOp }};"><svg width="12" height="20" viewBox="0 0 12 20"><path d="M10 2L2 10l8 8" fill="none" stroke="#F2F0EC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<sc-if value="{{ f.showMarks }}"><div style="display:flex; gap:6px; align-items:center;"><sc-for list="{{ f.marks }}" as="m" hint-placeholder-count="3"><div style="width:24px; height:2px; border-radius:1px; background:{{ m.bg }};"></div></sc-for></div></sc-if>
+<div onClick="{{ f.close }}" style="width:44px; height:44px; display:flex; align-items:center; justify-content:flex-end; padding-right:4px; box-sizing:border-box; cursor:pointer; opacity:{{ f.closeOp }};"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 2l14 14M16 2L2 16" fill="none" stroke="#F2F0EC" stroke-width="2" stroke-linecap="round"></path></svg></div>
+</div>
+
+<div style="position:absolute; left:0; right:0; top:102px; bottom:0;">
+
+<sc-if value="{{ f.isWhen }}">
+<div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+<div style="flex:1 1 auto; min-height:0; overflow-y:auto; scrollbar-width:none; zoom:{{ f.zoom }}; display:flex; flex-direction:column; padding:34px 24px 16px; box-sizing:border-box;">
+<div style="flex-shrink:0; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">When did it happen?</div>
+<div style="flex-shrink:0; height:22px;"></div>
+<div style="flex-shrink:0; display:flex; flex-direction:column; gap:12px;"><sc-for list="{{ f.rows }}" as="r" hint-placeholder-count="5"><div onClick="{{ r.tap }}" style="min-height:60px; border-radius:18px; background:{{ r.bg }}; display:flex; align-items:center; gap:14px; padding:11px 18px 11px 20px; box-sizing:border-box; cursor:pointer;"><div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;"><span style="font-size:16px; font-weight:400; line-height:22px; color:{{ r.fg }};">{{ r.label }}</span><sc-if value="{{ r.hasSub }}"><span style="font-size:13px; font-weight:700; line-height:18px; color:{{ r.fg2 }};">{{ r.sub }}</span></sc-if></div><sc-if value="{{ r.on }}"><div style="width:10px; height:10px; border-radius:5px; background:#1E1E1E; flex-shrink:0;"></div></sc-if><sc-if value="{{ r.chev }}"><svg width="14" height="14" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M5 2l5 5-5 5" fill="none" stroke="#5A574F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></div></sc-for></div>
+<sc-if value="{{ f.showArt }}"><div style="flex:1 1 0; min-height:130px; display:flex; align-items:center; justify-content:center; padding:28px 0 4px; box-sizing:border-box;"><div style="width:100%; height:100%; max-height:220px;">{{ f.art }}</div></div></sc-if>
+</div>
+<div style="flex-shrink:0; zoom:{{ f.zoom }}; padding:0 24px 48px; box-sizing:border-box;">
+<div onClick="{{ f.cta }}" style="height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">Continue</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ f.isLed }}">
+<div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+<div style="flex:1 1 auto; min-height:0; overflow-y:auto; scrollbar-width:none; zoom:{{ f.zoom }}; display:flex; flex-direction:column; padding:34px 24px 20px; box-sizing:border-box;">
+<div style="flex-shrink:0; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">What led up to it?</div>
+<div style="flex-shrink:0; margin-top:8px; font-size:15px; font-weight:400; line-height:22px; color:#9B968E;">Select all that apply.</div>
+<div style="flex-shrink:0; height:20px;"></div>
+<div style="flex-shrink:0; display:flex; flex-wrap:wrap; gap:12px; opacity:{{ f.chipsOp }};"><sc-for list="{{ f.chips }}" as="c" hint-placeholder-count="11"><div onClick="{{ c.tap }}" style="min-height:48px; max-width:100%; flex-shrink:0; border-radius:24px; background:{{ c.bg }}; display:flex; align-items:center; gap:8px; padding:13px 20px; box-sizing:border-box; cursor:pointer;"><sc-if value="{{ c.on }}"><svg width="13" height="13" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M2 7.5l3.2 3L12 3.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if><span style="font-size:15px; font-weight:400; line-height:22px; color:{{ c.fg }};">{{ c.label }}</span></div></sc-for></div>
+</div>
+<div style="flex-shrink:0; zoom:{{ f.zoom }}; padding:0 24px 47px; box-sizing:border-box; display:flex; flex-direction:column;">
+<sc-if value="{{ f.saveErr }}"><div style="margin-bottom:16px; padding:0 2px; display:flex; gap:10px; align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 20 20" style="flex-shrink:0; margin-top:1px;"><circle cx="10" cy="10" r="8.2" fill="none" stroke="#F2F0EC" stroke-width="1.6"></circle><path d="M10 5.6v5.4" fill="none" stroke="#F2F0EC" stroke-width="1.8" stroke-linecap="round"></path><circle cx="10" cy="14.2" r="1.1" fill="#F2F0EC"></circle></svg><span style="flex:1; min-width:0; font-size:14px; font-weight:400; line-height:20px; color:#F2F0EC; text-wrap:pretty;">Couldn’t save this entry. Your answers are still here. Check your connection, then try again.</span></div></sc-if>
+<div onClick="{{ f.cta }}" style="height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer;">{{ f.spin }}<span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">{{ f.ctaText }}</span></div>
+<div onClick="{{ f.skip }}" style="margin-top:5px; height:44px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; opacity:{{ f.skipOp }};">Skip</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ f.isWatch }}">
+<div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+<div style="flex:1 1 auto; min-height:0; overflow-y:auto; scrollbar-width:none; zoom:{{ f.zoom }}; display:flex; flex-direction:column; padding:34px 24px 16px; box-sizing:border-box;">
+<div style="flex-shrink:0; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">Do you feel like watching again right now?</div>
+<div style="flex-shrink:0; height:22px;"></div>
+<div style="flex-shrink:0; display:flex; flex-direction:column; gap:12px;"><sc-for list="{{ f.rows }}" as="r" hint-placeholder-count="3"><div onClick="{{ r.tap }}" style="min-height:60px; border-radius:18px; background:{{ r.bg }}; display:flex; align-items:center; gap:14px; padding:11px 18px 11px 20px; box-sizing:border-box; cursor:pointer;"><span style="flex:1; min-width:0; font-size:16px; font-weight:400; line-height:22px; color:{{ r.fg }};">{{ r.label }}</span><sc-if value="{{ r.on }}"><div style="width:10px; height:10px; border-radius:5px; background:#1E1E1E; flex-shrink:0;"></div></sc-if></div></sc-for></div>
+<sc-if value="{{ f.showArt }}"><div style="flex:1 1 0; min-height:130px; display:flex; align-items:center; justify-content:center; padding:28px 0 4px; box-sizing:border-box;"><div style="width:100%; height:100%; max-height:220px;">{{ f.art }}</div></div></sc-if>
+</div>
+<div style="flex-shrink:0; zoom:{{ f.zoom }}; padding:0 24px 47px; box-sizing:border-box; display:flex; flex-direction:column;">
+<div onClick="{{ f.cta }}" style="height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">Continue</span></div>
+<div onClick="{{ f.skip }}" style="margin-top:5px; height:44px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer;">Skip</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ f.isEnc }}">
+<div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+<div style="flex:1 1 auto; min-height:0; overflow-y:auto; scrollbar-width:none; zoom:{{ f.zoom }}; display:flex; flex-direction:column; padding:8px 24px 24px; box-sizing:border-box;">
+<div style="flex-shrink:0; margin:auto 0; display:flex; flex-direction:column;">
+<div style="flex-shrink:0; height:{{ f.artH }}px; display:flex; align-items:center; justify-content:center;">{{ f.art }}</div>
+<div style="flex-shrink:0; margin-top:28px; display:flex; flex-direction:column; gap:14px;">
+<div style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:30px; color:#F2F0EC; text-wrap:pretty;">{{ f.lead }}</div>
+<sc-if value="{{ f.hasBody }}"><div style="font-size:16px; font-weight:400; line-height:25px; color:#B5B0A8; text-wrap:pretty;">{{ f.body }}</div></sc-if>
+</div>
+<sc-if value="{{ f.hasQuote }}"><div style="flex-shrink:0; margin-top:28px; padding-top:22px; border-top:1px solid #2E2E2E; display:flex; flex-direction:column; gap:8px;"><div style="font-size:17px; font-weight:700; line-height:25px; color:#F2F0EC; text-wrap:pretty;">{{ f.quote }}</div><div style="font-size:13px; font-weight:700; line-height:16px; letter-spacing:0.2px; color:#9B968E;">{{ f.author }}</div></div></sc-if>
+</div>
+</div>
+<div style="flex-shrink:0; zoom:{{ f.zoom }}; padding:0 24px 48px; box-sizing:border-box;">
+<div onClick="{{ f.cta }}" style="height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Done</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ f.isLog }}">
+<div style="position:absolute; inset:0; display:flex; flex-direction:column;">
+<div style="flex:1 1 auto; min-height:0; overflow-y:auto; scrollbar-width:none; zoom:{{ f.zoom }}; display:flex; flex-direction:column; padding:6px 24px 20px; box-sizing:border-box;">
+<div style="flex-shrink:0; font-size:32px; font-weight:700; letter-spacing:-0.6px; line-height:38px; color:#F2F0EC;">Your log</div>
+<div style="flex-shrink:0; margin-top:28px; font-size:13px; font-weight:700; line-height:18px; color:#9B968E;">Relapses</div>
+<div style="flex-shrink:0; margin-top:4px; display:flex; flex-direction:column;"><sc-for list="{{ f.logRows }}" as="e" hint-placeholder-count="2"><div onClick="{{ e.tap }}" style="min-height:72px; border-bottom:1px solid #2E2E2E; padding:14px 0; box-sizing:border-box; display:flex; align-items:center; gap:14px; cursor:pointer;"><div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;"><span style="font-size:15px; font-weight:700; line-height:21px; color:#F2F0EC;">{{ e.title }}</span><span style="font-size:14px; font-weight:400; line-height:20px; color:#9B968E; text-wrap:pretty;">{{ e.meta }}</span></div><svg width="14" height="14" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M5 2l5 5-5 5" fill="none" stroke="#5A574F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></sc-for></div>
+<sc-if value="{{ f.logEmpty }}"><div style="flex-shrink:0; margin-top:4px; font-size:15px; font-weight:400; line-height:22px; color:#9B968E;">Nothing logged yet.</div></sc-if>
+</div>
+<div style="flex-shrink:0; zoom:{{ f.zoom }}; padding:0 24px 48px; box-sizing:border-box;">
+<div onClick="{{ f.cta }}" style="height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Log a relapse</span></div>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ f.sheetOpen }}">
+<div onClick="{{ f.sheetCancel }}" style="position:absolute; inset:0; background:rgba(0,0,0,0.6); z-index:40;"></div>
+<div style="position:absolute; left:0; right:0; bottom:0; z-index:41; border-radius:28px 28px 0 0; background:#1E1E1E; zoom:{{ f.zoom }}; padding:10px 20px 40px; box-sizing:border-box; display:flex; flex-direction:column;">
+<div style="align-self:center; width:36px; height:5px; border-radius:3px; background:#3A3835;"></div>
+<div style="margin-top:6px; height:44px; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:8px;"><span onClick="{{ f.sheetCancel }}" style="justify-self:start; padding:10px 12px 10px 4px; font-size:16px; font-weight:400; color:#9B968E; cursor:pointer;">Cancel</span><span style="font-size:17px; font-weight:700; letter-spacing:-0.2px; color:#F2F0EC; white-space:nowrap;">Date and time</span><span onClick="{{ f.sheetUse }}" style="justify-self:end; padding:10px 4px 10px 12px; font-size:16px; font-weight:700; color:{{ f.useFg }}; cursor:pointer;">Done</span></div>
+<div style="margin-top:14px; height:40px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding-left:4px;"><span style="font-size:15px; font-weight:700; line-height:20px; color:#F2F0EC; white-space:nowrap;">{{ f.monthText }}</span><div style="display:flex;"><div onClick="{{ f.wPrev }}" style="width:44px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:{{ f.wPrevOp }};"><svg width="9" height="15" viewBox="0 0 10 16"><path d="M8 2L2 8l6 6" fill="none" stroke="#F2F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div onClick="{{ f.wNext }}" style="width:44px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:{{ f.wNextOp }};"><svg width="9" height="15" viewBox="0 0 10 16"><path d="M2 2l6 6-6 6" fill="none" stroke="#F2F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div>
+<div style="margin-top:8px; display:flex; justify-content:space-between;"><sc-for list="{{ f.days }}" as="dd" hint-placeholder-count="7"><div onClick="{{ dd.tap }}" style="width:44px; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:{{ dd.cur }};"><span style="font-size:12px; font-weight:700; line-height:16px; color:#77736C;">{{ dd.wd }}</span><div style="width:40px; height:40px; border-radius:20px; background:{{ dd.bg }}; box-shadow:{{ dd.ring }}; display:flex; align-items:center; justify-content:center;"><span style="font-size:16px; font-weight:{{ dd.fw }}; line-height:20px; color:{{ dd.fg }}; font-variant-numeric:tabular-nums;">{{ dd.n }}</span></div></div></sc-for></div>
+<div style="margin-top:20px; height:1px; background:#2E2E2E;"></div>
+<div onClick="{{ f.tToggle }}" style="margin-top:4px; min-height:62px; display:flex; align-items:center; justify-content:space-between; gap:12px; cursor:pointer;"><div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:16px; font-weight:400; line-height:22px; color:#F2F0EC;">Add a time</span><span style="font-size:13px; font-weight:700; line-height:18px; color:#9B968E;">Optional</span></div><div style="width:50px; height:30px; border-radius:15px; background:{{ f.swBg }}; position:relative; flex-shrink:0;"><div style="position:absolute; top:3px; left:{{ f.swX }}px; width:24px; height:24px; border-radius:12px; background:{{ f.swKnob }};"></div></div></div>
+<sc-if value="{{ f.tOn }}"><div style="position:relative; margin-top:6px; height:200px; display:flex; justify-content:center; overflow:hidden; user-select:none; -webkit-user-select:none;">
+<div style="position:absolute; left:0; right:0; top:80px; height:40px; border-radius:12px; background:#2E2E2E;"></div>
+<div onPointerDown="{{ f.wh.pd }}" onPointerMove="{{ f.wh.pm }}" onPointerUp="{{ f.wh.pu }}" onPointerCancel="{{ f.wh.pu }}" onWheel="{{ f.wh.wh }}" style="position:relative; width:64px; height:200px; cursor:ns-resize; touch-action:none;"><div style="position:absolute; inset:0; transform:translateY({{ f.wh.dy }}px); transition:{{ f.wh.tr }};"><sc-for list="{{ f.wh.items }}" as="it" hint-placeholder-count="7"><div style="position:absolute; left:0; right:0; top:{{ it.y }}px; height:40px; padding-right:10px; box-sizing:border-box; display:flex; align-items:center; justify-content:flex-end; font-size:{{ it.fs }}px; font-weight:{{ it.fw }}; color:{{ it.fg }}; font-variant-numeric:tabular-nums;">{{ it.t }}</div></sc-for></div></div>
+<div style="position:relative; width:12px; height:200px; display:flex; align-items:center; justify-content:center; padding-bottom:3px; box-sizing:border-box; font-size:22px; font-weight:700; color:#F2F0EC;">:</div>
+<div onPointerDown="{{ f.wm.pd }}" onPointerMove="{{ f.wm.pm }}" onPointerUp="{{ f.wm.pu }}" onPointerCancel="{{ f.wm.pu }}" onWheel="{{ f.wm.wh }}" style="position:relative; width:64px; height:200px; cursor:ns-resize; touch-action:none;"><div style="position:absolute; inset:0; transform:translateY({{ f.wm.dy }}px); transition:{{ f.wm.tr }};"><sc-for list="{{ f.wm.items }}" as="it" hint-placeholder-count="7"><div style="position:absolute; left:0; right:0; top:{{ it.y }}px; height:40px; padding-left:10px; box-sizing:border-box; display:flex; align-items:center; justify-content:flex-start; font-size:{{ it.fs }}px; font-weight:{{ it.fw }}; color:{{ it.fg }}; font-variant-numeric:tabular-nums;">{{ it.t }}</div></sc-for></div></div>
+<div onPointerDown="{{ f.wp.pd }}" onPointerMove="{{ f.wp.pm }}" onPointerUp="{{ f.wp.pu }}" onPointerCancel="{{ f.wp.pu }}" onWheel="{{ f.wp.wh }}" style="position:relative; width:64px; height:200px; margin-left:8px; cursor:ns-resize; touch-action:none;"><div style="position:absolute; inset:0; transform:translateY({{ f.wp.dy }}px); transition:{{ f.wp.tr }};"><sc-for list="{{ f.wp.items }}" as="it" hint-placeholder-count="2"><div style="position:absolute; left:0; right:0; top:{{ it.y }}px; height:40px; display:flex; align-items:center; justify-content:center; font-size:{{ it.fs }}px; font-weight:{{ it.fw }}; color:{{ it.fg }};">{{ it.t }}</div></sc-for></div></div>
+<div style="position:absolute; left:0; right:0; top:0; height:56px; background:linear-gradient(#1E1E1E, rgba(30,30,30,0)); pointer-events:none;"></div>
+<div style="position:absolute; left:0; right:0; bottom:0; height:56px; background:linear-gradient(rgba(30,30,30,0), #1E1E1E); pointer-events:none;"></div>
+</div></sc-if>
+<sc-if value="{{ f.tErr }}"><div style="margin-top:12px; padding:0 4px; display:flex; align-items:center; gap:10px;"><svg width="18" height="18" viewBox="0 0 20 20" style="flex-shrink:0;"><circle cx="10" cy="10" r="8.2" fill="none" stroke="#F2F0EC" stroke-width="1.6"></circle><path d="M10 5.6v5.4" fill="none" stroke="#F2F0EC" stroke-width="1.8" stroke-linecap="round"></path><circle cx="10" cy="14.2" r="1.1" fill="#F2F0EC"></circle></svg><span style="font-size:14px; font-weight:400; line-height:20px; color:#F2F0EC;">That time hasn’t happened yet.</span></div></sc-if>
+</div>
+</sc-if>
+
+<div style="position:absolute; left:127px; bottom:8px; width:139px; height:5px; border-radius:100px; background:#F2F0EC; z-index:30;"></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;clock&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Device time&quot;,&quot;8:10 am&quot;,&quot;3:00 pm&quot;,&quot;7:30 pm&quot;,&quot;12:20 am&quot;],&quot;default&quot;:&quot;Device time&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;goal&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Unknown&quot;,&quot;Trying to sleep&quot;,&quot;Not trying to sleep&quot;],&quot;default&quot;:&quot;Unknown&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;history&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;None&quot;,&quot;Practised before&quot;,&quot;Said they’ve tried to stop&quot;,&quot;Both&quot;],&quot;default&quot;:&quot;None&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;saving&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Works&quot;,&quot;Fails once&quot;,&quot;Always fails&quot;],&quot;default&quot;:&quot;Works&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;textSize&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Default&quot;,&quot;Large&quot;],&quot;default&quot;:&quot;Default&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Standard&quot;,&quot;Small&quot;],&quot;default&quot;:&quot;Standard&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;embedded&quot;:{&quot;editor&quot;:null,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const MSG = [
+  ['E001', 'general', [], 'You can use this app after you’ve watched, too. You don’t have to wait until things are going well. If you want help with the next few minutes, it’s here.'],
+  ['E002', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'The day’s not over. If you had plans for later, keep them if you can. You don’t need to spend the rest of the day going over what happened.'],
+  ['E003', 'general', [], 'You can be disappointed and still keep a plan you were looking forward to. What happened doesn’t mean you have to cancel everything else you wanted to do.'],
+  ['E004', 'general', [], 'If you’re feeling bad about watching, you don’t have to spend the rest of the day showing how sorry you are. It’s okay to do something you enjoy afterward.'],
+  ['E005', 'general', [], 'You wanted to change this for a reason. If that reason still matters to you, you can try again. You don’t have to find a new reason because you watched.'],
+  ['E006', 'general', [], 'You don’t need to promise that it’ll never happen again. For now, decide what you’re willing to do for the next few minutes.'],
+  ['E007', 'general', [], 'If you’ve been avoiding the app because you watched, you can use it now. You don’t have to explain yourself. There’s no long account to write.'],
+  ['E008', 'current urge', ['current_watch_again_yes_or_not_sure', 'content_confirmed_open'], 'It’s okay to stop watching halfway through. Starting a video doesn’t mean you have to finish it or search for another.'],
+  ['E009', 'general', [], 'If you catch yourself thinking you’ll never manage this, you don’t have to decide that now. Try something you’re willing to do and see how you get on.'],
+  ['E010', 'general', [], 'You might not feel confident about trying again. That’s okay. You can still want to stop, even when you’re not sure how things will go.'],
+  ['E011', 'general', ['log_saved'], 'You’ve recorded what happened. You don’t have to keep going over it until you feel worse. You can finish here and get back to whatever you need to do.'],
+  ['E012', 'general', ['current_watch_again_no', 'not_trying_to_sleep', 'not_urgent'], 'One per cent a day sounds tiny. In a compounding calculation, it becomes about 38 times the starting amount over a year. Recovery won’t follow that formula, but you can give a small change time to help.'],
+  ['E013', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'If you’ve spent longer watching than you wanted, it’s understandable to be annoyed. Try to leave some time for the things you actually wanted to do today.'],
+  ['E014', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'You can still get through tonight without watching again, even after what happened earlier. If that’s enough to aim for today, that’s okay.'],
+  ['E015', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'If an hour of today went badly, you can still enjoy the rest of it. You don’t have to stay unhappy all day because of that hour.'],
+  ['E016', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'If you were looking forward to dinner or seeing someone, keep those plans if you can. Watching earlier doesn’t mean you have to spend the evening at home feeling bad.'],
+  ['E017', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep'], 'You still have time for some of what you’d planned. It doesn’t need to be a big achievement. Even a decent meal or an ordinary evening is worth getting back to.'],
+  ['E018', 'time remaining', ['event_on_current_local_date', 'daytime_or_evening', 'not_trying_to_sleep', 'current_evening'], 'If you were looking forward to a quiet evening, you can still have one. You don’t have to spend it checking the app or going over what went wrong.'],
+  ['E019', 'prior practice', ['known_prior_course_or_task_practice'], 'If your streak has reset, it can be disappointing to see that number. Think about what helped on the days without watching. You can use that again.'],
+  ['E020', 'prior practice', ['known_prior_course_or_task_practice'], 'If something helped before, you can keep using it. Watching again doesn’t mean you have to find a completely different way of doing this.'],
+  ['E021', 'prior practice', ['known_prior_course_or_task_practice'], 'A relapse log shows the times you watched. If you had evenings without watching in between, they won’t be listed here. Remember those when you’re looking back through it, too.'],
+  ['E022', 'prior practice', ['known_prior_course_or_task_practice'], 'If you went six evenings without watching and watched on the seventh, that isn’t a week where you watched every night. Those six evenings count, too.'],
+  ['E023', 'prior practice', ['known_prior_course_or_task_practice'], 'You can say this went badly without saying the whole attempt was pointless. If something helped before, keep using it. You can start by changing what isn’t helping.'],
+  ['E024', 'prior practice', ['known_prior_course_or_task_practice'], 'If reading helped you on another evening, try it again if you want. You don’t have to give it up because you watched this time.'],
+  ['E025', 'another attempt', ['prior_attempt_self_reported'], 'If you’re fed up with being here again, you don’t have to make another big promise. You can try something smaller this time and see how it goes.'],
+  ['E026', 'another attempt', ['prior_attempt_self_reported'], 'You don’t have to change several things at once. Choose one thing you can manage today and give it a go. You can come back to the rest later.'],
+  ['E027', 'another attempt', ['prior_attempt_self_reported'], 'If you’re tired of making the same promise, you don’t have to make it again right now. You can finish this entry without having the next week worked out.'],
+  ['E028', 'another attempt', ['prior_attempt_self_reported'], 'You may have really meant it the last time you said you’d stop. Watching again doesn’t mean you were lying. You can still want this and need another try.'],
+  ['E029', 'another attempt', ['prior_attempt_self_reported'], 'Whatever made you want to change this, you can still care about it. You don’t have to come up with a new reason each time you try.'],
+  ['E030', 'another attempt', ['prior_attempt_self_reported'], 'It’s okay to have another go without saying, ‘This is definitely the last time.’ Try a change you’re willing to make and see whether it helps.'],
+  ['E031', 'current urge', ['current_watch_again_yes_or_not_sure'], 'You can stop after this, even if you still feel like watching. If you can spend a few minutes doing something else, give that a try before you decide to watch again.'],
+  ['E032', 'current urge', ['current_watch_again_yes_or_not_sure'], 'You don’t have to feel completely sure about stopping. If part of you still wants to watch, you can be honest about that here.'],
+  ['E033', 'current urge', ['current_watch_again_yes_or_not_sure'], 'If you’re thinking, ‘I’ve already done it, so what’s the point?’, you can still stop this from taking up more of your time. Try doing something else for a few minutes.'],
+  ['E034', 'current urge', ['current_watch_again_yes_or_not_sure', 'content_confirmed_open'], 'If you’ve already spent longer watching than you meant to, stopping now would still save you some time. You don’t have to keep going just because you’ve been there a while.'],
+  ['E035', 'current urge', ['current_watch_again_yes_or_not_sure'], 'A few minutes without watching might feel like very little right now. You can start with that. You don’t have to promise the whole week before you try.'],
+  ['E036', 'current urge', ['current_watch_again_yes_or_not_sure'], 'You might still feel like watching when you close the app. That doesn’t mean logging this was pointless or that you have to watch again.'],
+  ['E037', 'sleep', ['current_sleep_goal'], 'If you’re tired, you can go to bed. You don’t need to stay up until you feel better about what happened.'],
+  ['E038', 'sleep', ['current_sleep_goal', 'log_saved'], 'If you keep going over what happened when you’re trying to sleep, you can leave it for now. You’ve saved the entry. You can look at it again after you’ve rested.'],
+  ['E039', 'sleep', ['current_sleep_goal', 'log_saved'], 'If you’ve logged this and want to go back to bed, you can finish here. There’s nothing else you need to fill in before you leave.'],
+  ['E040', 'sleep', ['current_sleep_goal'], 'If you’re lying in bed going over it again, put the phone down for a while. You can come back to the entry later. It doesn’t need more work before you sleep.'],
+  ['E041', 'sleep', ['current_sleep_goal', 'log_saved'], 'You’ve logged what happened. If you’re ready to sleep, it’s fine to finish here. There isn’t any extra work you need to do before bed to make up for it.'],
+  ['E042', 'sleep', ['current_sleep_goal'], 'Getting some sleep doesn’t mean you’ve given up. You can keep trying when you’ve rested. For now, you can leave the app and get ready for bed.'],
+  ['E043', 'past event', ['event_on_an_earlier_local_date', 'log_saved'], 'You can record what happened on that earlier day and still get on with today. If you don’t feel like watching now, you don’t need to spend much longer here.'],
+  ['E044', 'past event', ['event_on_an_earlier_local_date', 'log_saved'], 'Thanks for coming back to log this. If you don’t remember every detail, that’s okay. The date and what you do remember are enough.'],
+  ['E045', 'past event', ['event_on_an_earlier_local_date', 'log_saved'], 'You’ve come back to record it, even though it happened earlier. You can be honest about it and then get on with your day. You don’t need to keep yourself here feeling bad.'],
+  ['E046', 'past event', ['event_on_an_earlier_local_date', 'log_saved'], 'If you’ve logged something from an earlier day, saving the entry is enough. If you don’t feel like watching now, you can finish here.'],
+  ['E047', 'past event', ['event_on_an_earlier_local_date', 'log_saved'], 'If you’ve put off logging this, you can stop worrying about when you should have done it. It’s recorded now. You don’t need a longer explanation because the entry is late.'],
+  ['E048', 'past event', ['event_on_an_earlier_local_date', 'log_saved', 'current_watch_again_no'], 'If you’ve logged it and don’t feel like watching again, you’re done. You can close the app and get back to your day.']
+];
+const QUOTES = [
+  ['Q01', 'First forget inspiration. Habit is more dependable.', 'Octavia E. Butler', ['another attempt', 'prior practice'], []],
+  ['Q02', 'Forever – is composed of Nows –', 'Emily Dickinson', ['time remaining', 'general'], []],
+  ['Q03', 'Whatever inspiration is, it’s born from a continuous “I don’t know.”', 'Wisława Szymborska', ['*'], ['reported_cause_not_sure']],
+  ['Q04', 'Let evening come.', 'Jane Kenyon', ['sleep'], ['current_sleep_goal', 'current_evening_or_night']]
+];
+const ART = { 'general': ['openDoor', 'plant', 'mugSink', 'curtains'], 'time remaining': ['curtains', 'plate', 'sandwich', 'outfit'], 'current urge': ['phoneTable', 'laptopShut', 'feedOff'], 'prior practice': ['bookStack', 'notebook', 'library'], 'another attempt': ['route', 'signpost'], 'sleep': ['bed', 'lamp', 'closedEye'], 'past event': ['letter', 'envelope', 'clipboard'] };
+const WHEN = [['now', 'Just now'], ['today', 'Earlier today'], ['yesterday', 'Yesterday'], ['custom', 'Choose a date and time'], ['unsure', 'I’m not sure']];
+const CAUSES = [['online', 'Something I saw online'], ['scroll', 'Scrolling'], ['bed', 'Phone in bed'], ['cantsleep', 'Couldn’t sleep'], ['bored', 'Bored'], ['stressed', 'Stressed'], ['argument', 'An argument'], ['alone', 'Being alone'], ['putoff', 'Putting something off'], ['routine', 'My usual routine'], ['notsure', 'Not sure']];
+const WATCH = [['yes', 'Yes'], ['no', 'No'], ['unsure', 'Not sure']];
+const MSG_BY = {}; MSG.forEach((m, i) => { MSG_BY[m[0]] = m; });
+const THEME_IX = {}; { const c = {}; MSG.forEach(m => { c[m[1]] = (c[m[1]] || 0); THEME_IX[m[0]] = c[m[1]]++; }); }
+const Q_BY = {}; QUOTES.forEach(q => { Q_BY[q[0]] = q; });
+const CAL_BOX = '74 81 244 138';
+
+class Component extends DCLogic {
+  state = { tick: 0, ready: false };
+
+  componentDidMount() {
+    this.F = {}; this.D = {}; this.cache = {}; this.artEls = {}; this._timers = [];
+    this.liveStore = this.newStore();
+    const go = () => { if (!window.SOS_VIZ || !window.LESSON_VIZ_V5) return false; this.build(); this.setState({ ready: true }); return true; };
+    if (!go()) this._poll = setInterval(() => { if (go()) clearInterval(this._poll); }, 60);
+  }
+  componentWillUnmount() { clearInterval(this._poll); this._timers.forEach(clearTimeout); }
+
+  newStore() { return { entries: {}, order: [], hist: [], qSeen: [], n: 0 }; }
+  hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  pad2(n) { return String(n).padStart(2, '0'); }
+  iso(d) { return d.getFullYear() + '-' + this.pad2(d.getMonth() + 1) + '-' + this.pad2(d.getDate()); }
+  todayISO(off) { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + (off || 0)); return this.iso(d); }
+  diffDays(iso) { const a = new Date(iso + 'T12:00:00'), b = new Date(this.todayISO() + 'T12:00:00'); return Math.round((a - b) / 86400000); }
+  dayLabel(iso) { const d = this.diffDays(iso); if (d === 0) return 'Today'; if (d === -1) return 'Yesterday'; return new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
+  fmtTime(min) { const h = Math.floor(min / 60), m = min % 60; return ((h % 12) || 12) + ':' + this.pad2(m) + (h < 12 ? ' am' : ' pm'); }
+
+  liveClock() { return ({ '8:10 am': '08:10', '3:00 pm': '15:00', '7:30 pm': '19:30', '12:20 am': '00:20' })[this.props.clock] || null; }
+  nowMin(f) { const s = f.id === 'live' ? this.liveClock() : f.clock; if (s) { const p = s.split(':'); return +p[0] * 60 + +p[1]; } const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+  ctx(f) {
+    if (f.id !== 'live') return Object.assign({ goal: 'unknown', practice: false, attempts: false }, f.ctxP || {}, { hour: Math.floor(this.nowMin(f) / 60) });
+    const g = this.props.goal, h = this.props.history || 'None';
+    return { hour: Math.floor(this.nowMin(f) / 60), goal: g === 'Trying to sleep' ? 'sleep' : g === 'Not trying to sleep' ? 'awake' : 'unknown', practice: h === 'Practised before' || h === 'Both', attempts: h === 'Said they’ve tried to stop' || h === 'Both' };
+  }
+  failMode(f) { if (f.id !== 'live') return f.fail || 'ok'; return ({ 'Fails once': 'once', 'Always fails': 'always' })[this.props.saving] || 'ok'; }
+
+  blankDraft() { return { when: null, cd: 0, ct: null, causes: [], skipped: false, watch: null }; }
+  fromDraft(f, skip) {
+    const d = f.draft, st = f.store, e = f.entryId && st.entries[f.entryId];
+    let dateISO = null, time = null;
+    if (e && e.when === d.when && d.when !== 'custom') { dateISO = e.dateISO; time = e.time; }
+    else if (d.when === 'now') { dateISO = this.todayISO(); time = this.nowMin(f); }
+    else if (d.when === 'today') dateISO = this.todayISO();
+    else if (d.when === 'yesterday') dateISO = this.todayISO(-1);
+    else if (d.when === 'custom') { dateISO = this.todayISO(d.cd); time = d.ct; }
+    return { when: d.when, dateISO, time, approx: d.when === 'now', causes: skip ? [] : d.causes.slice().sort(), skipped: !!skip };
+  }
+  dirty(f, skip) {
+    const e = f.entryId && f.store.entries[f.entryId]; if (!e) return true;
+    const n = this.fromDraft(f, skip);
+    return n.when !== e.when || n.dateISO !== e.dateISO || n.time !== e.time || n.skipped !== e.skipped || n.causes.join() !== e.causes.join();
+  }
+  commit(f, skip) {
+    const st = f.store; let e = f.entryId && st.entries[f.entryId];
+    if (!e) { st.n++; const id = f.id + '-' + st.n; e = { id, createdAt: Date.now(), watch: null, msgId: null, quoteId: null, quoteFor: null }; st.entries[id] = e; st.order.push(id); f.entryId = id; }
+    Object.assign(e, this.fromDraft(f, skip), { saved: true, savedAt: Date.now() });
+  }
+  draftFromEntry(e) { return { when: e.when, cd: e.when === 'custom' && e.dateISO ? this.diffDays(e.dateISO) : 0, ct: e.when === 'custom' ? e.time : null, causes: e.causes.slice(), skipped: e.skipped, watch: e.watch }; }
+
+  facts(e, c) {
+    const off = e.dateISO ? this.diffDays(e.dateISO) : null, h = c.hour;
+    return {
+      event_on_current_local_date: off === 0, event_on_an_earlier_local_date: off !== null && off < 0,
+      daytime_or_evening: h >= 5 && h < 22, current_evening: h >= 17 && h < 22, current_evening_or_night: h >= 17 || h < 5,
+      not_trying_to_sleep: c.goal === 'awake', current_sleep_goal: c.goal === 'sleep',
+      known_prior_course_or_task_practice: !!c.practice, prior_attempt_self_reported: !!c.attempts,
+      current_watch_again_yes_or_not_sure: e.watch === 'yes' || e.watch === 'unsure', current_watch_again_no: e.watch === 'no',
+      log_saved: !!e.saved, content_confirmed_open: false, not_urgent: false,
+      reported_cause_not_sure: (e.causes || []).indexOf('notsure') >= 0
+    };
+  }
+  assign(f) {
+    const e = f.store.entries[f.entryId]; if (!e) return;
+    const st = f.store, F = this.facts(e, this.ctx(f)), ok = m => m[2].every(r => F[r]);
+    if (f.forced) { e.msgId = f.forced.msg; e.quoteId = f.forced.quote || null; e.quoteFor = e.msgId; return; }
+    if (!(e.msgId && MSG_BY[e.msgId] && ok(MSG_BY[e.msgId]))) {
+      const el = MSG.filter(ok), H = st.hist, last = H.slice(-24).map(x => x.id), themes = H.slice(-2).map(x => x.theme);
+      let pool = el.filter(m => last.indexOf(m[0]) < 0 && themes.indexOf(m[1]) < 0);
+      if (!pool.length) pool = el.filter(m => last.indexOf(m[0]) < 0);
+      if (!pool.length) pool = el;
+      const stat = id => { let n = 0, at = 0; H.forEach(x => { if (x.id === id) { n++; at = x.at; } }); return [n, at]; };
+      pool = pool.map(m => { const s = stat(m[0]); return { m, n: s[0], at: s[1], sp: m[1] === 'general' ? 1 : 0, hs: this.hash(e.id + m[0]) }; })
+        .sort((a, b) => a.n - b.n || a.at - b.at || a.sp - b.sp || a.hs - b.hs);
+      const pick = pool[0] && pool[0].m; if (!pick) return;
+      e.msgId = pick[0]; st.hist.push({ id: pick[0], theme: pick[1], at: Date.now() + st.hist.length });
+    }
+    const m = MSG_BY[e.msgId];
+    if (e.quoteFor !== e.msgId) {
+      e.quoteFor = e.msgId; e.quoteId = null;
+      if (this.hash(e.id + ':q') % 4 === 0) {
+        const q = QUOTES.find(q => st.qSeen.indexOf(q[0]) < 0 && q[4].every(r => F[r]) && (q[3][0] === '*' || q[3].indexOf(m[1]) >= 0));
+        if (q) { e.quoteId = q[0]; st.qSeen.push(q[0]); }
+      }
+    } else if (e.quoteId && !Q_BY[e.quoteId][4].every(r => F[r])) e.quoteId = null;
+  }
+
+  artEl(key) {
+    if (!this.artEls[key]) {
+      const isCal = key === 'calendar';
+      const s = isCal ? window.LESSON_VIZ_V5.calendar : (window.SOS_VIZ[key] || '');
+      const bx = isCal ? CAL_BOX : ((window.SOS_VIZ_BOX && window.SOS_VIZ_BOX[key]) || '0 40 393 172');
+      this.artEls[key] = React.createElement('svg', { viewBox: bx, width: '100%', height: '100%', preserveAspectRatio: 'xMidYMid meet', style: { display: 'block', overflow: 'visible' }, dangerouslySetInnerHTML: { __html: s } });
+    }
+    return this.artEls[key];
+  }
+  spinner() {
+    if (!this._spin) this._spin = React.createElement('span', { style: { width: 16, height: 16, borderRadius: 8, border: '2px solid rgba(17,17,17,0.25)', borderTopColor: '#111111', boxSizing: 'border-box', display: 'inline-block', animation: 'vr-spin 0.8s linear infinite', flexShrink: 0 } });
+    return this._spin;
+  }
+  paras(t) { const s = t.split(/(?<=[.!?][’”]?)\s+(?=[A-Z‘“])/); return s.length > 1 ? [s[0], s.slice(1).join(' ')] : [t, '']; }
+
+  fresh(def) {
+    const p = def.preset || {}, prev = this.F[def.id];
+    const f = { id: def.id, page: p.page || 'when', draft: Object.assign(this.blankDraft(), JSON.parse(JSON.stringify(p.draft || {}))), sheet: p.sheet ? Object.assign({}, p.sheet) : null,
+      saving: !!p.saving, saveErr: !!p.saveErr, lastSkip: false, failedOnce: false, entryId: null, clock: p.clock || null, ctxP: p.ctx || null, fail: p.fail || 'ok',
+      forced: p.forced || null, big: !!p.big, small: !!p.small, v: prev ? prev.v + 1 : 0 };
+    f.store = def.id === 'live' ? this.liveStore : this.newStore();
+    if (def.id === 'live' && prev && prev.store === this.liveStore) f.page = 'log';
+    if (p.entries) p.entries.forEach(x => { const st = f.store; st.n++; const id = f.id + '-' + st.n; st.entries[id] = Object.assign({ id, createdAt: Date.now(), watch: null, msgId: null, quoteId: null, quoteFor: null, saved: true, causes: [], skipped: false, approx: false }, x); st.order.push(id); });
+    if (p.entry) {
+      const keepDraft = f.draft; const sk = !!p.entry.skipped;
+      f.draft = Object.assign(this.blankDraft(), { when: p.entry.when, cd: p.entry.cd || 0, ct: p.entry.ct === undefined ? null : p.entry.ct, causes: (p.entry.causes || []).slice() });
+      this.commit(f, sk);
+      const e = f.store.entries[f.entryId]; e.watch = p.entry.watch || null;
+      if (p.editDraft) f.draft = Object.assign(this.draftFromEntry(e), p.editDraft); else f.draft = Object.assign(this.draftFromEntry(e), { watch: keepDraft.watch });
+    }
+    if (f.page === 'enc') this.assign(f);
+    return f;
+  }
+
+  build() {
+    const S = (id, label, screen, preset) => { const d = { id, label, screen, preset }; this.D[id] = d; this.F[id] = this.fresh(d); return d; };
+    const done = { when: 'now', causes: ['scroll', 'bored'] };
+    this.secs = [
+      { title: 'RELAPSE — TRY THE FLOW', frames: [S('live', 'Relapse — Working flow', 'Relapse Live', {})] },
+      { title: 'RELAPSE — PAGES AND STATES', frames: [
+        S('r01', '01 · When — Nothing selected', 'Relapse When', { clock: '21:42' }),
+        S('r01b', '01B · When — Just now', 'Relapse When Selected', { clock: '21:42', draft: { when: 'now' } }),
+        S('r01c', '01C · When — Choose a date and time', 'Relapse When Date Sheet', { clock: '21:42', sheet: { d: -2, on: true, t: 1335 } }),
+        S('r01c2', '01C2 · When — Date only', 'Relapse When Date Only', { clock: '21:42', sheet: { d: -9, on: false, t: 1260 } }),
+        S('r01d', '01D · When — Time in the future', 'Relapse When Future Time', { clock: '21:42', sheet: { d: 0, on: true, t: 1350 } }),
+        S('r01e', '01E · When — Date chosen', 'Relapse When Date Chosen', { clock: '21:42', draft: { when: 'custom', cd: -2, ct: 1335 } }),
+        S('r02', '02 · What led up — Nothing selected', 'Relapse Led', { clock: '21:42', page: 'led', draft: { when: 'now' } }),
+        S('r02b', '02B · What led up — Selected', 'Relapse Led Selected', { clock: '21:42', page: 'led', draft: { when: 'now', causes: ['scroll', 'bed', 'bored'] } }),
+        S('r02c', '02C · What led up — Not sure', 'Relapse Led Not Sure', { clock: '21:42', page: 'led', draft: { when: 'now', causes: ['notsure'] } }),
+        S('r02d', '02D · What led up — Saving', 'Relapse Led Saving', { clock: '21:42', page: 'led', saving: true, draft: { when: 'now', causes: ['scroll', 'bored'] } }),
+        S('r02e', '02E · What led up — Couldn’t save', 'Relapse Led Save Failed', { clock: '21:42', page: 'led', saveErr: true, fail: 'once', draft: { when: 'now', causes: ['scroll', 'bored'] } }),
+        S('r02f', '02F · What led up — Editing a saved entry', 'Relapse Led Edit', { clock: '21:42', page: 'led', entry: done, draft: done, editDraft: { causes: ['scroll', 'bored', 'alone'] } }),
+        S('r03', '03 · Watching again — Nothing selected', 'Relapse Watch', { clock: '21:42', page: 'watch', entry: done, draft: done }),
+        S('r03b', '03B · Watching again — Not sure', 'Relapse Watch Selected', { clock: '21:42', page: 'watch', entry: done, draft: Object.assign({ watch: 'unsure' }, done) }),
+        S('r04', '04 · Encouragement — Wants to watch again', 'Relapse Encouragement', { clock: '15:10', ctx: { goal: 'awake' }, page: 'enc', entry: Object.assign({ watch: 'yes' }, done) }),
+        S('r04b', '04B · Encouragement — Earlier day', 'Relapse Encouragement Earlier', { clock: '10:20', page: 'enc', entry: { when: 'yesterday', causes: ['cantsleep'], watch: 'no' } }),
+        S('r04c', '04C · Encouragement — With quote', 'Relapse Encouragement Quote', { clock: '23:40', ctx: { goal: 'sleep' }, page: 'enc', entry: Object.assign({ watch: 'no' }, done), forced: { msg: 'E041', quote: 'Q04' } }),
+        S('r05', '05 · Back in the app', 'Relapse Log', { clock: '21:42', page: 'log', entries: [{ when: 'yesterday', dateISO: this.todayISO(-1), time: null, causes: ['cantsleep', 'bed'] }, { when: 'now', dateISO: this.todayISO(), time: 1302, approx: true, causes: ['scroll', 'bored'] }] })
+      ] },
+      { title: 'CHECKS — SMALL PHONE AND LARGER TEXT', frames: [
+                S('r01f', '01F · When — Small phone (667px tall)', 'Relapse When Small', { clock: '21:42', small: true, draft: { when: 'today' } }),
+                S('r02g', '02G · What led up — Larger text', 'Relapse Led Large Text', { clock: '21:42', page: 'led', big: true, draft: { when: 'now', causes: ['scroll'] } }),
+                S('r04d', '04D · Encouragement — Larger text', 'Relapse Encouragement Large Text', { clock: '21:42', big: true, page: 'enc', entry: Object.assign({ watch: 'yes' }, done), forced: { msg: 'E034', quote: null } }),
+                S('r04e', '04E · Encouragement — Small phone (667px tall)', 'Relapse Encouragement Small', { clock: '21:42', small: true, page: 'enc', entry: Object.assign({ watch: 'no' }, done), forced: { msg: 'E012', quote: null } })
+      ] }
+    ];
+    const ctxFor = m => { const r = m[2], c = {}; if (r.indexOf('not_trying_to_sleep') >= 0) c.goal = 'awake'; if (r.indexOf('current_sleep_goal') >= 0) c.goal = 'sleep'; if (r.indexOf('known_prior_course_or_task_practice') >= 0) c.practice = true; if (r.indexOf('prior_attempt_self_reported') >= 0) c.attempts = true; return c; };
+    const entryFor = m => { const r = m[2]; return { when: r.indexOf('event_on_an_earlier_local_date') >= 0 ? 'yesterday' : 'now', causes: ['scroll'], watch: r.indexOf('current_watch_again_no') >= 0 ? 'no' : r.indexOf('current_watch_again_yes_or_not_sure') >= 0 ? 'yes' : 'no' }; };
+    const clockFor = m => m[2].indexOf('current_evening') >= 0 ? '19:30' : m[1] === 'sleep' ? '23:40' : m[1] === 'time remaining' ? '15:10' : '21:42';
+    const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+    this.secs.push({ title: 'ENCOURAGEMENT — ALL 48 MESSAGES', frames: MSG.map(m => S('m' + m[0], m[0] + ' · ' + cap(m[1]), 'Relapse ' + m[0], { clock: clockFor(m), ctx: ctxFor(m), page: 'enc', entry: entryFor(m), forced: { msg: m[0], quote: null } })) });
+    const QP = [['Q01', 'E025'], ['Q02', 'E002'], ['Q03', 'E009'], ['Q04', 'E041']];
+    this.secs.push({ title: 'ENCOURAGEMENT — QUOTE ENDINGS', frames: QP.map(x => { const m = MSG_BY[x[1]]; return S('q' + x[0], x[0] + ' · ' + Q_BY[x[0]][2] + ' (with ' + x[1] + ')', 'Relapse ' + x[0], { clock: x[0] === 'Q04' ? '23:40' : clockFor(m), ctx: ctxFor(m), page: 'enc', entry: Object.assign(entryFor(m), x[0] === 'Q03' ? { causes: ['notsure'] } : {}), forced: { msg: x[1], quote: x[0] } }); }) });
+  }
+
+  act(id, fn) { return () => { const f = this.F[id]; if (!f) return; if (fn(f) === false) return; f.v++; this.setState({ tick: Date.now() }); }; }
+  later(id, ms, fn) { this._timers.push(setTimeout(() => { const f = this.F[id]; if (!f) return; fn(f); f.v++; this.setState({ tick: Date.now() }); }, ms)); }
+  save(id, skip) {
+    const f = this.F[id]; if (!f || f.saving) return false;
+    f.lastSkip = !!skip;
+    if (f.entryId && !this.dirty(f, skip)) { f.saveErr = false; f.page = 'watch'; return; }
+    f.saving = true; f.saveErr = false;
+    const mode = this.failMode(f), token = f;
+    this.later(id, 900, ff => { if (ff !== token) return; ff.saving = false; const fail = mode === 'always' || (mode === 'once' && !ff.failedOnce); if (fail) { ff.failedOnce = true; ff.saveErr = true; } else { this.commit(ff, ff.lastSkip); ff.page = 'watch'; } });
+  }
+  toEnc(f, watch) { const e = f.store.entries[f.entryId]; if (!e) return false; f.draft.watch = watch; e.watch = watch; this.assign(f); f.page = 'enc'; }
+  exit(f) { f.page = 'log'; f.sheet = null; f.saving = false; f.saveErr = false; f.entryId = null; f.draft = this.blankDraft(); f.failedOnce = false; }
+
+  vm(def) {
+    const id = def.id, f = this.F[id], d = f.draft, nm = this.nowMin(f);
+    const v = { label: def.label, screen: def.screen, time: (() => { const h = Math.floor(nm / 60); return ((h % 12) || 12) + ':' + this.pad2(nm % 60); })() };
+    v.h = f.small || (id === 'live' && this.props.screen === 'Small') ? 667 : 852;
+    const big = f.big || (id === 'live' && this.props.textSize === 'Large');
+    v.zoom = big ? 1.25 : 1;
+    const pg = f.page;
+    v.isWhen = pg === 'when'; v.isLed = pg === 'led'; v.isWatch = pg === 'watch'; v.isEnc = pg === 'enc'; v.isLog = pg === 'log';
+    v.showMarks = v.isWhen || v.isLed || v.isWatch;
+    const mk = { when: 1, led: 2, watch: 3 }[pg] || 0;
+    v.marks = [1, 2, 3].map(i => ({ bg: i <= mk ? '#F2F0EC' : '#2E2E2E' }));
+    v.backOp = v.isWhen || v.isLog ? 0 : 1; v.closeOp = v.isLog ? 0 : 1;
+    v.back = this.act(id, ff => { if (ff.saving) return false; ff.saveErr = false; if (ff.page === 'led') ff.page = 'when'; else if (ff.page === 'watch') { const e = ff.store.entries[ff.entryId]; ff.draft = Object.assign(this.draftFromEntry(e), { watch: ff.draft.watch }); ff.page = 'led'; } else if (ff.page === 'enc') ff.page = 'watch'; else return false; });
+    v.close = id === 'live' ? this.act(id, ff => { if (ff.page === 'log') return false; this.exit(ff); }) : () => { this.F[id] = this.fresh(def); this.setState({ tick: Date.now() }); };
+    v.showArt = !big && v.h > 700;
+    v.ctaOp = 1; v.spin = null; v.skipOp = 1;
+
+    if (v.isWhen) {
+      v.art = this.artEl('calendar');
+      v.rows = WHEN.map(w => {
+        const on = d.when === w[0], isC = w[0] === 'custom';
+        const sub = isC && on ? this.dayLabel(this.todayISO(d.cd)) + (d.ct !== null ? ' · ' + this.fmtTime(d.ct) : '') : '';
+        return { label: w[1], on, hasSub: !!sub, sub, chev: isC && !on, bg: on ? '#F2F0EC' : '#1E1E1E', fg: on ? '#111111' : '#F2F0EC', fg2: on ? 'rgba(17,17,17,0.6)' : '#9B968E',
+          tap: this.act(id, ff => { if (isC) { const c = ff.draft.when === 'custom'; ff.sheet = { d: c ? ff.draft.cd : 0, on: c && ff.draft.ct !== null, t: c && ff.draft.ct !== null ? ff.draft.ct : Math.floor(this.nowMin(ff) / 5) * 5 }; } else ff.draft.when = w[0]; }) };
+      });
+      v.ctaOp = d.when ? 1 : 0.35;
+      v.cta = this.act(id, ff => { if (!ff.draft.when) return false; ff.page = 'led'; });
+    }
+    if (v.isLed) {
+      const lock = f.saving;
+      v.chipsOp = lock ? 0.5 : 1;
+      v.chips = CAUSES.map(c => { const on = d.causes.indexOf(c[0]) >= 0; return { label: c[1], on, bg: on ? '#F2F0EC' : '#1E1E1E', fg: on ? '#111111' : '#F2F0EC',
+        tap: this.act(id, ff => { if (ff.saving) return false; const l = ff.draft.causes; if (c[0] === 'notsure') ff.draft.causes = l.indexOf('notsure') >= 0 ? [] : ['notsure']; else { const x = l.filter(k => k !== 'notsure'); ff.draft.causes = x.indexOf(c[0]) >= 0 ? x.filter(k => k !== c[0]) : x.concat([c[0]]); } }) }; });
+      const saved = !!f.entryId, dirty = this.dirty(f, false), has = d.causes.length > 0;
+      if (f.saving) { v.ctaText = 'Saving…'; v.spin = this.spinner(); v.skipOp = 0; }
+      else if (f.saveErr) v.ctaText = 'Retry';
+      else if (saved && !dirty) v.ctaText = 'Continue';
+      else v.ctaText = saved ? 'Save changes' : 'Save and continue';
+      v.ctaOp = f.saving || f.saveErr || (saved && !dirty) || has ? 1 : 0.35;
+      v.saveErr = f.saveErr;
+      v.cta = this.act(id, ff => { if (ff.saving) return false; if (ff.saveErr) return this.save(id, ff.lastSkip); const sv = !!ff.entryId; if (!ff.draft.causes.length && !(sv && !this.dirty(ff, false))) return false; return this.save(id, false); });
+      v.skip = this.act(id, ff => { if (ff.saving) return false; return this.save(id, true); });
+    }
+    if (v.isWatch) {
+      v.art = this.artEl('phoneTable');
+      v.rows = WATCH.map(w => { const on = d.watch === w[0]; return { label: w[1], on, bg: on ? '#F2F0EC' : '#1E1E1E', fg: on ? '#111111' : '#F2F0EC', tap: this.act(id, ff => { ff.draft.watch = ff.draft.watch === w[0] ? null : w[0]; }) }; });
+      v.ctaOp = d.watch ? 1 : 0.35;
+      v.cta = this.act(id, ff => { if (!ff.draft.watch) return false; return this.toEnc(ff, ff.draft.watch); });
+      v.skip = this.act(id, ff => this.toEnc(ff, null));
+    }
+    if (v.isEnc) {
+      const e = f.store.entries[f.entryId], m = e && MSG_BY[e.msgId];
+      const t = m ? m[3] : '', p = this.paras(t);
+      v.lead = p[0]; v.body = p[1]; v.hasBody = !!p[1];
+      const arts = m ? ART[m[1]] : ART.general; v.art = this.artEl(arts[(m ? THEME_IX[m[0]] : 0) % arts.length]);
+      v.artH = v.h < 700 || big ? 124 : 210;
+      const q = e && e.quoteId && Q_BY[e.quoteId]; v.hasQuote = !!q; v.quote = q ? q[1] : ''; v.author = q ? q[2] : '';
+      v.cta = this.act(id, ff => this.exit(ff));
+    }
+    if (v.isLog) {
+      const st = f.store;
+      v.logRows = st.order.slice().reverse().map(eid => { const e = st.entries[eid]; return { title: this.entryTitle(e), meta: this.entryMeta(e), tap: this.act(id, ff => { ff.entryId = eid; ff.draft = this.draftFromEntry(e); ff.failedOnce = false; ff.page = 'when'; }) }; });
+      v.logEmpty = !v.logRows.length;
+      v.cta = this.act(id, ff => { ff.entryId = null; ff.draft = this.blankDraft(); ff.failedOnce = false; ff.page = 'when'; });
+    }
+    v.ctaBg = v.ctaOp === 1 ? '#F2F0EC' : '#2E2E2E'; v.ctaFg = v.ctaOp === 1 ? '#111111' : '#77736C';
+
+    const sh = f.sheet; v.sheetOpen = !!sh && v.isWhen;
+    if (v.sheetOpen) {
+      const fut = sh.d === 0 && sh.on && sh.t > nm;
+      const base = new Date(this.todayISO() + 'T12:00:00'), at = o => { const x = new Date(base); x.setDate(x.getDate() + o); return x; };
+      const sd = at(sh.d), ws = sh.d - (sd.getDay() + 6) % 7;
+      v.monthText = sd.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      v.days = [0, 1, 2, 3, 4, 5, 6].map(i => {
+        const o = ws + i, ok = o <= 0 && o >= -60, on = o === sh.d, td = o === 0;
+        return { wd: 'MTWTFSS'[i], n: at(o).getDate(), bg: on ? '#F2F0EC' : 'transparent', fg: on ? '#111111' : ok ? '#F2F0EC' : '#4A4741', fw: on || td ? 700 : 400, ring: td && !on ? 'inset 0 0 0 1.5px #55524D' : 'none', cur: ok ? 'pointer' : 'default',
+          tap: this.act(id, ff => { if (!ok || ff.sheet.d === o) return false; ff.sheet.d = o; }) };
+      });
+      v.wPrevOp = ws - 1 >= -60 ? 1 : 0.3; v.wNextOp = ws + 7 <= 0 ? 1 : 0.3;
+      v.wPrev = this.act(id, ff => { if (ws - 1 < -60) return false; ff.sheet.d = Math.max(-60, ff.sheet.d - 7); });
+      v.wNext = this.act(id, ff => { if (ws + 7 > 0) return false; ff.sheet.d = Math.min(0, ff.sheet.d + 7); });
+      v.tOn = sh.on; v.swBg = sh.on ? '#F2F0EC' : '#3A3835'; v.swKnob = sh.on ? '#1E1E1E' : '#9B968E'; v.swX = sh.on ? 23 : 3;
+      v.tToggle = this.act(id, ff => { ff.sheet.on = !ff.sheet.on; });
+      v.wh = this.wheel(id, 'h'); v.wm = this.wheel(id, 'm'); v.wp = this.wheel(id, 'p');
+      v.tErr = fut; v.useFg = fut ? '#5A574F' : '#F2F0EC';
+      v.sheetUse = this.act(id, ff => { const s = ff.sheet; if (s.d === 0 && s.on && s.t > this.nowMin(ff)) return false; ff.draft.when = 'custom'; ff.draft.cd = s.d; ff.draft.ct = s.on ? s.t : null; ff.sheet = null; });
+      v.sheetCancel = this.act(id, ff => { ff.sheet = null; });
+    }
+    return v;
+  }
+  wStep(sh, k, n) {
+    if (!n) return false;
+    const H = Math.floor(sh.t / 60), M = sh.t % 60, pm = H >= 12, h12 = (H % 12) || 12;
+    if (k === 'h') { const nh = ((h12 - 1 + n) % 12 + 12) % 12 + 1; sh.t = ((nh % 12) + (pm ? 12 : 0)) * 60 + M; return true; }
+    if (k === 'm') { sh.t = H * 60 + ((Math.round(M / 5) + n) % 12 + 12) % 12 * 5; return true; }
+    if ((n > 0) === pm) return false;
+    sh.t = (sh.t + (n > 0 ? 720 : -720) + 1440) % 1440; return true;
+  }
+  wheel(id, k) {
+    const f = this.F[id], sh = f.sheet, H = Math.floor(sh.t / 60), M = sh.t % 60, pm = H >= 12, h12 = (H % 12) || 12;
+    const dr = sh.drag && sh.drag.k === k ? sh.drag : null, items = [];
+    for (let j = -3; j <= 3; j++) {
+      let t;
+      if (k === 'h') t = String(((h12 - 1 + j) % 12 + 12) % 12 + 1);
+      else if (k === 'm') t = this.pad2(((Math.round(M / 5) + j) % 12 + 12) % 12 * 5);
+      else { const i = (pm ? 1 : 0) + j; if (i < 0 || i > 1) continue; t = i ? 'pm' : 'am'; }
+      const a = Math.abs(j);
+      items.push({ t, y: 80 + j * 40, fs: a ? 20 : 24, fw: a ? 400 : 700, fg: ['#F2F0EC', '#9B968E', '#55524D', '#3A3835'][a] });
+    }
+    const bump = () => { f.v++; this.setState({ tick: Date.now() }); };
+    return {
+      items, dy: dr ? dr.dy : 0, tr: dr && dr.on ? 'none' : 'transform 0.2s ease-out',
+      pd: e => { const r = e.currentTarget.getBoundingClientRect(), s = r.height / 200 || 1; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {} sh.drag = { k, on: true, y0: e.clientY, s, base: 0, dy: 0, moved: false, tapJ: Math.round(((e.clientY - r.top) / s - 100) / 40) }; },
+      pm: e => {
+        const d = sh.drag; if (!d || !d.on || d.k !== k) return;
+        const tot = (e.clientY - d.y0) / d.s; if (Math.abs(tot) > 4) d.moved = true; if (!d.moved) return;
+        let dy = tot - d.base;
+        while (dy <= -20) { if (!this.wStep(sh, k, 1)) { dy = Math.max(dy, -16); break; } d.base -= 40; dy += 40; }
+        while (dy >= 20) { if (!this.wStep(sh, k, -1)) { dy = Math.min(dy, 16); break; } d.base += 40; dy -= 40; }
+        d.dy = dy; bump();
+      },
+      pu: () => { const d = sh.drag; if (!d || !d.on || d.k !== k) return; d.on = false; if (!d.moved) this.wStep(sh, k, d.tapJ); d.dy = 0; bump(); },
+      wh: e => { sh.wAcc = (sh.wAcc || 0) + e.deltaY; let ch = false; while (sh.wAcc >= 40) { sh.wAcc -= 40; ch = this.wStep(sh, k, 1) || ch; } while (sh.wAcc <= -40) { sh.wAcc += 40; ch = this.wStep(sh, k, -1) || ch; } if (ch) bump(); }
+    };
+  }
+  entryTitle(e) {
+    if (!e.dateISO) return 'Date not known';
+    const day = this.dayLabel(e.dateISO);
+    if (e.when === 'today' || e.when === 'yesterday') return e.when === 'today' && day === 'Today' ? 'Earlier today' : day;
+    return e.time !== null && e.time !== undefined ? day + ', ' + (e.approx ? 'about ' : '') + this.fmtTime(e.time) : day;
+  }
+  entryMeta(e) {
+    if (e.skipped || !e.causes.length) return 'What led up to it: not answered';
+    if (e.causes.indexOf('notsure') >= 0) return 'Not sure what led up to it';
+    return e.causes.map(k => (CAUSES.find(c => c[0] === k) || [k, k])[1]).join(', ');
+  }
+  cvm(def) {
+    const f = this.F[def.id];
+    const k = f.v + '|' + (def.id === 'live' ? [this.props.clock, this.props.goal, this.props.history, this.props.saving, this.props.textSize, this.props.screen].join('/') : '');
+    const c = this.cache[def.id];
+    if (c && c.k === k && c.f === f) return c.vm;
+    const vm = this.vm(def); this.cache[def.id] = { k, f, vm }; return vm;
+  }
+  renderVals() {
+    const pad = this.props.embedded ? '0' : '72px';
+    if (!this.state.ready || !this.secs) return { pad, sections: [] };
+    const q = (location.hash.match(/qa=([^&]+)/) || [])[1];
+    if (q) return { pad, sections: [{ title: 'QA', frames: q.split(',').filter(id => this.D[id]).map(id => this.cvm(this.D[id])) }] };
+    return { pad, sections: this.secs.map(s => ({ title: s.title, frames: s.frames.map(d => this.cvm(d)) })) };
+  }
+}
+</script>
+</body>
+</html>

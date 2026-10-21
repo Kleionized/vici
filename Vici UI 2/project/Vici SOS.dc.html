@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { margin:0; background:#E8E4DD; background-image:linear-gradient(rgba(40,36,28,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(40,36,28,0.06) 1px, transparent 1px); background-size:28px 28px; }
+  a, a:hover { color:#111111; }
+</style>
+<script src="sos-library.js"></script>
+<script src="sos-viz.js"></script>
+</helmet>
+<div style="display:flex; flex-direction:column; gap:128px; padding:{{ pad }}; align-items:flex-start; width:max-content;">
+<sc-for list="{{ sections }}" as="sec" hint-placeholder-count="2">
+<div style="display:flex; flex-direction:column; gap:26px;">
+<div style="align-self:flex-start; background:#111111; color:#FFFFFF; font-family:'Lato',system-ui,sans-serif; font-size:13px; font-weight:900; letter-spacing:3px; padding:12px 20px; border-radius:100px; white-space:nowrap;">{{ sec.title }}</div>
+<div style="display:flex; gap:64px; align-items:flex-start; flex-wrap:wrap; max-width:1780px;">
+<sc-for list="{{ sec.frames }}" as="f" hint-placeholder-count="4">
+<div style="display:flex; flex-direction:column; gap:18px; flex-shrink:0;">
+<div style="align-self:flex-start; background:#FFFFFF; color:#5F5B55; font-family:'Lato',system-ui,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.4px; padding:8px 12px; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.08);">{{ f.label }}</div>
+<div data-screen-label="{{ f.screen }}" style="width:393px; height:852px; position:relative; overflow:hidden; background:#0D0D0D; font-family:'Lato',-apple-system,system-ui,sans-serif; -webkit-font-smoothing:antialiased; flex-shrink:0; box-shadow:0 0 0 1px rgba(0,0,0,0.12), 0 16px 40px rgba(20,20,22,0.18);">
+<div style="position:absolute; inset:0; background-image:url('noise.png'); opacity:0.05; pointer-events:none;"></div>
+
+<sc-if value="{{ f.isFeel }}"><svg data-hero="thermometer" width="393" height="240" viewBox="0 0 393 240" style="position:absolute; left:0; top:434px; overflow:visible; transform:scale(0.8); transform-origin:196px 190px;"><g transform="translate(-28.1 -32.5) scale(1.146)"><rect x="84" y="188" width="224" height="7" rx="3.5" fill="#F2F0EC"></rect><rect x="96" y="195" width="6" height="14" rx="1.5" fill="#F2F0EC"></rect><rect x="290" y="195" width="6" height="14" rx="1.5" fill="#F2F0EC"></rect><rect x="176" y="176" width="41" height="12" rx="4" fill="#55524D"></rect><rect x="184" y="58" width="25" height="112" rx="12.5" fill="#F2F0EC"></rect><circle cx="196.5" cy="164" r="19" fill="#F2F0EC"></circle><rect x="192" y="70" width="9" height="94" rx="4.5" fill="#0D0D0D"></rect><rect x="192" y="112" width="9" height="52" rx="4.5" fill="#A8A39A"></rect><circle cx="196.5" cy="164" r="11.5" fill="#A8A39A"></circle><path d="M215 80 h9 M215 96 h6 M215 112 h9 M215 128 h6 M215 144 h9" fill="none" stroke="#F2F0EC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></sc-if>
+
+<div style="position:absolute; top:0; left:0; right:0; height:54px; display:flex; align-items:center; justify-content:space-between; padding:6px 32px 0 46px; box-sizing:border-box; z-index:20;"><span style="font-size:17px; font-weight:700; color:#F2F0EC; letter-spacing:-0.2px;">{{ f.time }}</span><div style="display:flex; align-items:center; gap:7px;"><svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill="#F2F0EC"></rect><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill="#F2F0EC"></rect><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill="#F2F0EC"></rect><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill="#F2F0EC"></rect></svg><svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill="#F2F0EC"></path><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill="#F2F0EC"></path><circle cx="8.5" cy="10.5" r="1.5" fill="#F2F0EC"></circle></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#F2F0EC" stroke-opacity="0.35" fill="none"></rect><rect x="2" y="2" width="20" height="9" rx="2" fill="#F2F0EC"></rect><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#F2F0EC" fill-opacity="0.4"></path></svg></div></div>
+
+<div style="position:absolute; left:0; right:0; top:58px; height:44px; display:flex; align-items:center; justify-content:space-between; padding:0 18px; box-sizing:border-box; z-index:5;">
+<div onClick="{{ f.back }}" style="width:44px; height:44px; display:flex; align-items:center; padding-left:4px; box-sizing:border-box; cursor:pointer; opacity:{{ f.backOp }};"><svg width="12" height="20" viewBox="0 0 12 20"><path d="M10 2L2 10l8 8" fill="none" stroke="#F2F0EC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<sc-if value="{{ f.showMini }}"><div style="display:flex; align-items:center; gap:6px; font-size:13px; font-weight:700; line-height:18px; color:#9B968E; white-space:nowrap; font-variant-numeric:tabular-nums;"><svg width="14" height="14" viewBox="0 0 16 16" style="flex-shrink:0;"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#9B968E" stroke-width="1.6"></circle><path d="M8 4.8V8l2.2 1.4" fill="none" stroke="#9B968E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{ f.mini }}</span></div></sc-if>
+<sc-if value="{{ f.showMarks }}"><div style="display:flex; gap:6px; align-items:center;"><sc-for list="{{ f.marks }}" as="m" hint-placeholder-count="4"><div style="width:24px; height:2px; border-radius:1px; background:{{ m.bg }};"></div></sc-for></div></sc-if>
+<div onClick="{{ f.close }}" style="width:44px; height:44px; display:flex; align-items:center; justify-content:flex-end; padding-right:4px; box-sizing:border-box; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 2l14 14M16 2L2 16" fill="none" stroke="#F2F0EC" stroke-width="2" stroke-linecap="round"></path></svg></div>
+</div>
+
+<sc-if value="{{ f.isRate }}">
+<div style="position:absolute; left:24px; right:24px; top:136px;"><div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">How strong is the urge right now?</div></div>
+<div style="position:absolute; left:24px; right:24px; top:240px; display:flex; flex-direction:column; gap:14px;">
+<div style="display:flex; align-items:flex-end; justify-content:center; gap:12px; height:174px;"><sc-for list="{{ f.scale }}" as="s" hint-placeholder-count="5"><div onClick="{{ s.tap }}" style="width:52px; height:{{ s.h }}px; border-radius:26px; background:{{ s.bg }}; box-shadow:{{ s.ring }}; display:flex; align-items:flex-end; justify-content:center; padding-bottom:12px; box-sizing:border-box; cursor:pointer;"><span style="font-size:18px; font-weight:400; line-height:22px; color:{{ s.fg }};">{{ s.n }}</span></div></sc-for></div>
+<div style="display:flex; justify-content:space-between; align-self:center; width:308px; font-size:13px; font-weight:700; line-height:18px; color:#9B968E;"><span style="white-space:nowrap;">Mild</span><span style="white-space:nowrap;">Very strong</span></div>
+</div>
+<div onClick="{{ f.rateNext }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">Continue</span></div>
+<div onClick="{{ f.gone }}" style="position:absolute; left:90px; right:90px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;"><svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0;"><circle cx="9" cy="9" r="7.6" fill="none" stroke="#9B968E" stroke-width="1.5"></circle><path d="M5.6 9.3l2.3 2.2L12.5 6.6" fill="none" stroke="#9B968E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>It’s gone</span></div>
+</sc-if>
+
+<sc-if value="{{ f.isLoc }}">
+<div style="position:absolute; left:24px; right:24px; top:136px; display:flex; flex-direction:column; gap:22px;">
+<div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">Where are you right now?</div>
+<div style="display:flex; flex-direction:column; gap:12px;"><sc-for list="{{ f.locs }}" as="r" hint-placeholder-count="5"><div onClick="{{ r.tap }}" style="height:60px; border-radius:18px; background:{{ r.bg }}; display:flex; align-items:center; gap:14px; padding:0 18px 0 16px; box-sizing:border-box; color:{{ r.fg }}; cursor:pointer;"><div style="width:34px; height:34px; border-radius:50%; box-shadow:0 0 0 1.5px {{ r.ring }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 20 20"><path d="{{ r.d }}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><span style="flex:1; font-size:16px; font-weight:400;">{{ r.label }}</span><sc-if value="{{ r.on }}"><div style="width:10px; height:10px; border-radius:5px; background:#1E1E1E;"></div></sc-if></div></sc-for></div>
+<sc-if value="{{ f.showBed }}"><div style="display:flex; flex-direction:column; gap:14px;"><div style="font-size:17px; font-weight:700; line-height:24px; color:#F2F0EC;">Are you trying to sleep?</div><div style="display:flex; flex-wrap:wrap; gap:10px;"><sc-for list="{{ f.beds }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.tap }}" style="min-height:48px; flex-shrink:0; border-radius:24px; background:{{ c.bg }}; display:flex; align-items:center; gap:8px; padding:12px 20px; box-sizing:border-box; cursor:pointer; white-space:nowrap;"><sc-if value="{{ c.on }}"><svg width="13" height="13" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M2 7.5l3.2 3L12 3.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if><span style="font-size:15px; font-weight:400; line-height:22px; color:{{ c.fg }};">{{ c.label }}</span></div></sc-for></div></div></sc-if>
+</div>
+<div onClick="{{ f.locNext }}" style="position:absolute; left:24px; right:24px; bottom:48px; height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">Continue</span></div>
+</sc-if>
+
+<sc-if value="{{ f.isChips }}">
+<div style="position:absolute; left:24px; right:24px; top:136px; bottom:174px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;">
+<div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance; flex-shrink:0;">{{ f.chipHeading }}</div>
+<sc-if value="{{ f.chipMulti }}"><div style="width:100%; font-size:15px; font-weight:400; line-height:22px; color:#9B968E;">Select all that apply.</div></sc-if>
+<div style="height:6px; flex-shrink:0;"></div>
+<div style="display:flex; flex-wrap:wrap; gap:12px;"><sc-for list="{{ f.chips }}" as="c" hint-placeholder-count="10"><div onClick="{{ c.tap }}" style="min-height:48px; max-width:100%; flex-shrink:0; border-radius:24px; background:{{ c.bg }}; display:flex; align-items:center; gap:8px; padding:13px 20px; box-sizing:border-box; cursor:pointer;"><sc-if value="{{ c.on }}"><svg width="13" height="13" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M2 7.5l3.2 3L12 3.5" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if><span style="font-size:15px; font-weight:400; line-height:22px; color:{{ c.fg }}; white-space:{{ c.ws }};">{{ c.label }}</span></div></sc-for></div>
+</div>
+<div onClick="{{ f.chipNext }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:{{ f.ctaBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:{{ f.ctaFg }};">Continue</span></div>
+<div onClick="{{ f.chipSkip }}" style="position:absolute; left:120px; right:120px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;">Skip</div>
+</sc-if>
+
+<sc-if value="{{ f.isSuggest }}">
+<div style="position:absolute; left:24px; right:24px; top:118px; height:176px; display:flex; align-items:center; justify-content:center;">{{ f.viz }}</div>
+<div style="position:absolute; left:24px; right:24px; top:326px; display:flex; flex-direction:column; gap:12px;">
+<div style="display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 16 16" style="flex-shrink:0;"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#9B968E" stroke-width="1.6"></circle><path d="M8 4.8V8l2.2 1.4" fill="none" stroke="#9B968E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:13px; font-weight:700; line-height:18px; color:#9B968E;">{{ f.dur }}</span></div>
+<div style="font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">{{ f.title }}</div>
+<div style="font-size:16px; font-weight:400; line-height:25px; color:#B5B0A8; text-wrap:pretty;">{{ f.steps }}</div>
+</div>
+<div onClick="{{ f.doTask }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Do this task</span></div>
+<div onClick="{{ f.another }}" style="position:absolute; left:90px; right:90px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;">Choose another</div>
+</sc-if>
+
+<sc-if value="{{ f.isDo }}">
+<div onPointerDown="{{ f.pd }}" onPointerMove="{{ f.pm }}" onPointerUp="{{ f.pu }}" onPointerLeave="{{ f.pu }}" onPointerCancel="{{ f.pu }}" style="position:absolute; left:0; right:0; top:102px; bottom:196px; touch-action:pan-y; user-select:none; -webkit-user-select:none; z-index:4;">
+<div style="display:flex; height:100%; width:max-content; transform:translateX({{ f.tx }}px); transition:{{ f.trans }};">
+<div style="position:relative; width:393px; height:100%; flex-shrink:0;"><div style="position:absolute; left:36px; right:36px; top:16px; display:flex; align-items:stretch;">
+<div style="flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; gap:2px;"><span style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:28px; color:#F2F0EC; font-variant-numeric:tabular-nums; white-space:nowrap;">{{ f.elText }}</span><span style="font-size:12px; font-weight:700; line-height:16px; color:#9B968E; white-space:nowrap;">Since the urge started</span></div>
+<div style="width:1px; background:#2E2E2E; flex-shrink:0;"></div>
+<div style="flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; gap:2px;"><span style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:28px; color:#F2F0EC; white-space:nowrap;">{{ f.lvlNum }}</span><span style="font-size:12px; font-weight:700; line-height:16px; color:#9B968E; white-space:nowrap;">Strength</span></div>
+</div>
+<div style="position:absolute; left:24px; right:24px; top:90px; height:176px; display:flex; align-items:center; justify-content:center;">{{ f.viz }}</div>
+<div style="position:absolute; left:32px; right:32px; top:298px; display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center;">
+<div style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:29px; color:#F2F0EC; text-wrap:balance;">{{ f.title }}</div>
+<div style="font-size:15px; font-weight:400; line-height:23px; color:#B5B0A8; text-wrap:pretty;">{{ f.steps }}</div>
+</div></div>
+<div style="position:relative; width:393px; height:100%; flex-shrink:0;">
+<div style="position:absolute; left:24px; right:24px; top:28px; display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center;"><div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">{{ f.brHead }}</div><div style="width:100%; font-size:15px; font-weight:400; line-height:24px; color:#B5B0A8; text-wrap:pretty;">{{ f.brSub }}</div></div>
+<div style="position:absolute; left:51px; top:126px; width:290px; height:290px;">
+<div style="position:absolute; left:5px; top:5px; width:280px; height:280px; border-radius:50%; box-shadow:inset 0 0 0 1.5px rgba(242,240,236,0.12);"></div>
+<div style="position:absolute; left:29px; top:29px; width:232px; height:232px; border-radius:50%; background:rgba(242,240,236,0.05);"></div>
+<div style="position:absolute; left:53px; top:53px; width:184px; height:184px; border-radius:50%; background:rgba(242,240,236,0.08);"></div>
+<div style="position:absolute; left:29px; top:29px; width:232px; height:232px; border-radius:50%; background:#F2F0EC; transform:scale({{ f.brS }}); transition:transform {{ f.brT }}s ease-in-out;"></div>
+</div>
+<div style="position:absolute; left:0; right:0; top:446px; display:flex; justify-content:center; gap:36px;"><sc-for list="{{ f.brPh }}" as="p" hint-placeholder-count="3"><div style="display:flex; flex-direction:column; align-items:center; gap:4px; min-width:56px;"><span style="font-size:15px; font-weight:700; color:{{ p.fg }};">{{ p.label }}</span><span style="font-size:13px; font-weight:400; color:{{ p.fg2 }};">{{ p.sec }}</span><div style="width:24px; height:3px; border-radius:2px; margin-top:6px; background:{{ p.bar }};"></div></div></sc-for></div>
+</div>
+<div style="position:relative; width:393px; height:100%; flex-shrink:0;">
+<div style="position:absolute; left:24px; right:24px; top:34px;"><div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC;">Your pledge</div></div>
+<div style="position:absolute; left:24px; right:24px; top:148px; display:flex; flex-direction:column; gap:56px;">
+<div style="font-size:34px; font-weight:700; letter-spacing:-0.8px; line-height:42px; color:#F2F0EC; text-wrap:balance;">The mornings are mine again.</div>
+<div style="display:flex; flex-direction:column; gap:10px;">
+<div style="font-size:26px; font-style:italic; font-weight:700; line-height:30px; color:#F2F0EC; padding-left:4px;">Jerry</div>
+<div style="height:1.5px; background:#3A3835;"></div>
+<div style="display:flex; justify-content:space-between; gap:12px; font-size:13px; font-weight:700; line-height:18px; color:#9B968E; white-space:nowrap;"><span>Signed</span><span>Today, 8:12 am</span></div>
+</div>
+</div>
+</div>
+<sc-if value="{{ f.hasHelped }}"><div style="position:relative; width:393px; height:100%; flex-shrink:0;">
+<div style="position:absolute; left:24px; right:24px; top:34px; display:flex; flex-direction:column; gap:8px;">
+<div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">What helped before</div>
+<div style="width:100%; font-size:15px; font-weight:400; line-height:22px; color:#9B968E; text-wrap:pretty;">These brought the urge down last time. Tap one to switch to it.</div>
+<div style="height:14px;"></div>
+<div style="display:flex; flex-direction:column; border-top:1px solid #2E2E2E;"><sc-for list="{{ f.helped }}" as="h" hint-placeholder-count="3"><div onClick="{{ h.tap }}" style="border-bottom:1px solid #2E2E2E; padding:16px 0; box-sizing:border-box; display:flex; align-items:center; gap:14px; cursor:pointer;"><div style="flex:1; display:flex; flex-direction:column; gap:3px; min-width:0;"><span style="font-size:15px; font-weight:700; line-height:21px; color:#F2F0EC; text-wrap:pretty;">{{ h.title }}</span><span style="font-size:13px; font-weight:400; line-height:18px; color:#9B968E;">{{ h.meta }}</span></div><svg width="14" height="14" viewBox="0 0 14 14" style="flex-shrink:0;"><path d="M5 2l5 5-5 5" fill="none" stroke="#5A574F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></sc-for></div>
+</div>
+</div></sc-if>
+</div>
+</div>
+<div style="position:absolute; left:0; right:0; bottom:166px; display:flex; justify-content:center; gap:4px; z-index:6;"><sc-for list="{{ f.dots }}" as="d" hint-placeholder-count="4"><div onClick="{{ d.tap }}" style="width:18px; height:18px; display:flex; align-items:center; justify-content:center; cursor:pointer;"><div style="width:6px; height:6px; border-radius:3px; background:{{ d.bg }};"></div></div></sc-for></div>
+<div onClick="{{ f.primary }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">I did it</span></div>
+<div onClick="{{ f.another }}" style="position:absolute; left:90px; right:90px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;">Choose another</div>
+</sc-if>
+
+<sc-if value="{{ f.isCheck }}">
+<div style="position:absolute; left:24px; right:24px; top:136px;"><div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">How strong is the urge now?</div></div>
+<div style="position:absolute; left:24px; right:24px; top:240px; display:flex; flex-direction:column; gap:14px;">
+<div style="display:flex; align-items:flex-end; justify-content:center; gap:12px; height:174px;"><sc-for list="{{ f.scale }}" as="s" hint-placeholder-count="5"><div onClick="{{ s.tap }}" style="width:52px; height:{{ s.h }}px; border-radius:26px; background:{{ s.bg }}; box-shadow:{{ s.ring }}; display:flex; align-items:flex-end; justify-content:center; padding-bottom:12px; box-sizing:border-box; cursor:pointer;"><span style="font-size:18px; font-weight:400; line-height:22px; color:{{ s.fg }};">{{ s.n }}</span></div></sc-for></div>
+<div style="display:flex; justify-content:space-between; align-self:center; width:308px; font-size:13px; font-weight:700; line-height:18px; color:#9B968E;"><span style="white-space:nowrap;">Mild</span><span style="white-space:nowrap;">Very strong</span></div>
+</div>
+<div onClick="{{ f.checkNext }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Continue</span></div>
+<div onClick="{{ f.gone }}" style="position:absolute; left:90px; right:90px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;"><svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0;"><circle cx="9" cy="9" r="7.6" fill="none" stroke="#9B968E" stroke-width="1.5"></circle><path d="M5.6 9.3l2.3 2.2L12.5 6.6" fill="none" stroke="#9B968E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>It’s gone</span></div>
+</sc-if>
+
+<sc-if value="{{ f.isMore }}">
+<div style="position:absolute; left:24px; right:24px; top:136px; display:flex; flex-direction:column; gap:10px;">
+<div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">Would you like another task?</div>
+<sc-if value="{{ f.hasMoreSub }}"><div style="width:100%; font-size:15px; font-weight:400; line-height:22px; color:#9B968E; text-wrap:pretty;">{{ f.moreSub }}</div></sc-if>
+</div>
+<div onClick="{{ f.another }}" style="position:absolute; left:24px; right:24px; bottom:96px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Show me another task</span></div>
+<div onClick="{{ f.finish }}" style="position:absolute; left:90px; right:90px; bottom:47px; height:44px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:15px; font-weight:400; color:#9B968E; cursor:pointer; z-index:6;">No, I’m done</div>
+</sc-if>
+
+<sc-if value="{{ f.isEnd }}">
+<div style="position:absolute; left:24px; right:24px; top:136px; display:flex; flex-direction:column;">
+<div style="width:100%; font-size:26px; font-weight:700; letter-spacing:-0.6px; line-height:33px; color:#F2F0EC; text-wrap:balance;">Done for now.</div>
+<div style="margin-top:28px; display:flex; flex-direction:column; border-top:1px solid #2E2E2E;"><sc-for list="{{ f.endRows }}" as="r" hint-placeholder-count="3"><div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding:16px 0; border-bottom:1px solid #2E2E2E;"><span style="font-size:15px; font-weight:400; line-height:22px; color:#9B968E; white-space:nowrap;">{{ r.k }}</span><span style="font-size:15px; font-weight:700; line-height:22px; color:#F2F0EC; text-align:right; text-wrap:pretty;">{{ r.v }}</span></div></sc-for></div>
+</div>
+<div onClick="{{ f.close }}" style="position:absolute; left:24px; right:24px; bottom:48px; height:58px; border-radius:29px; background:#F2F0EC; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:6;"><span style="font-size:16px; font-weight:700; letter-spacing:0.1px; white-space:nowrap; color:#111111;">Back to Today</span></div>
+</sc-if>
+
+<div style="position:absolute; left:127px; top:839px; width:139px; height:5px; border-radius:100px; background:#F2F0EC; z-index:30;"></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;clock&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Device time&quot;,&quot;8:10 am&quot;,&quot;3:00 pm&quot;,&quot;7:30 pm&quot;,&quot;12:20 am&quot;],&quot;default&quot;:&quot;Device time&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Working flow&quot;},&quot;embedded&quot;:{&quot;editor&quot;:null,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { tick: 0, ready: false };
+
+  componentDidMount() {
+    this.F = {}; this.D = {}; this.cache = {}; this.viz = { card: {}, page: {} };
+    const go = () => {
+      const L = window.SOS_LIB;
+      if (!L || !L.next || !window.SOS_VIZ) return false;
+      this.L = L; this.build(); this.setState({ ready: true }); return true;
+    };
+    if (!go()) this._poll = setInterval(() => { if (go()) clearInterval(this._poll); }, 60);
+    this._tick = setInterval(() => {
+      if (!this.L) return;
+      let any = false;
+      for (const id in this.F) { const f = this.F[id]; if (f.step === 'do') { f.v++; any = true; } }
+      if (any) this.setState({ tick: Date.now() });
+    }, 1000);
+    this._br = setInterval(() => {
+      if (!this.L) return;
+      let any = false;
+      for (const id in this.F) { const f = this.F[id]; if (f.step !== 'do' || f.hub !== 'breathe') continue; const k = this.brPhase(f).key; if (k !== f.brK) { f.brK = k; f.v++; any = true; } }
+      if (any) this.setState({ tick: Date.now() });
+    }, 150);
+    this._min = setInterval(() => { if (this.F && this.F.live) { this.F.live.v++; this.setState({ tick: Date.now() }); } }, 15000);
+  }
+  componentWillUnmount() { clearInterval(this._poll); clearInterval(this._tick); clearInterval(this._min); clearInterval(this._br); }
+
+  liveClock() { return ({ '8:10 am': '08:10', '3:00 pm': '15:00', '7:30 pm': '19:30', '12:20 am': '00:20' })[this.props.clock] || null; }
+  clockOf(f, id) { return f.clock || (id === 'live' ? this.liveClock() : null); }
+  hourOf(f, id) { const s = this.clockOf(f, id); return s ? parseInt(s, 10) : new Date().getHours(); }
+  timeText(f, id) {
+    const s = this.clockOf(f, id); let h, m;
+    if (s) { h = parseInt(s, 10); m = s.split(':')[1]; } else { const d = new Date(); h = d.getHours(); m = String(d.getMinutes()).padStart(2, '0'); }
+    return ((h % 12) || 12) + ':' + m;
+  }
+  since(f) { return Math.max(0, Math.floor((Date.now() - (f.t0 || Date.now())) / 1000)); }
+  fmt(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  brPhase(f) {
+    const t = (Date.now() - (f.br || 0)) / 1000;
+    if (t < 0) return { k: 'pre', key: 'pre' };
+    const c = t % 14, n = Math.floor(t / 14), k = c < 4 ? 'in' : c < 8 ? 'hold' : 'out';
+    return { k, key: k + n };
+  }
+  toHub(f, h) { f.hub = h; if (h === 'breathe') { f.br = Date.now() + 350; f.brK = null; } }
+  helpedList(f) { const L = this.L, H = [['E02', 'Thu, 3:10 pm', 4, 2], ['A01', 'Wed, 10:40 pm', 3, 3], ['L02', 'Tue, 11:48 pm', 3, 1], ['F02', 'Sun, 9:22 pm', 4, 2], ['K01', 'Fri, 1:15 pm', 3, 2]]; return H.filter(h => h[0] !== f.cur && h[3] < h[2] && L.byId[h[0]]).slice(0, 3); }
+  pages(f) { return ['task', 'breathe', 'reason'].concat(this.helpedList(f).length ? ['helped'] : []); }
+  ansKey(f) { return JSON.stringify([f.urge, f.loc, f.bed, f.trig.slice().sort(), f.feel.slice().sort(), f.task]); }
+
+  fresh(def) {
+    const p = JSON.parse(JSON.stringify(def.preset || {}));
+    const prev = this.F[def.id];
+    const f = Object.assign({ step: 'rate', urge: null, loc: null, bed: null, trig: [], feel: [], task: null, shortcut: false, no: [], shown: [], cur: null, after: null, ticks: [], run: null, seed: def.id === 'live' ? 1 + Math.floor(Math.random() * 997) : 7 }, p);
+    if (['suggest', 'do', 'check', 'more', 'end'].indexOf(f.step) >= 0) {
+      if (!f.cur && !p.noTask) f.cur = this.L.next(f, this.hourOf(f, def.id));
+      f.shown = [f.cur]; f.ansKey = f.shortcut ? 'shortcut' : this.ansKey(f);
+    }
+    const a = f.cur && this.L.byId[f.cur];
+    if (f.step === 'do' && a && a.count && !f.ticks.length) f.ticks = new Array(a.count).fill(0);
+    f.t0 = Date.now() - (p.since || 0) * 1000; f.endS = p.since || 0;
+    f.hub = p.hub || 'task';
+    if (f.hub === 'breathe') { f.br = Date.now() + 350; f.brK = null; }
+    f.v = prev ? prev.v + 1 : 0;
+    return f;
+  }
+
+  build() {
+    const L = this.L;
+    const S = (id, label, screen, preset) => { const d = { id, label, screen, preset }; this.D[id] = d; this.F[id] = this.fresh(d); return d; };
+    const ex1 = { clock: '00:20', urge: 5, loc: 'bed', bed: 'sleep', trig: ['phonebed'], feel: ['on', 'tired'] };
+    const day = { clock: '15:00', urge: 2, loc: 'private', trig: ['routine'], feel: ['bored'] };
+    const work = { clock: '14:00', urge: 4, loc: 'work', trig: ['doom'], feel: ['stressed'] };
+    this.secs = [
+      { title: 'URGE SOS — TRY THE FLOW', frames: [S('live', 'SOS — Working flow', 'SOS Live', {})] },
+      { title: 'URGE SOS — SCREENS', frames: [
+        S('s01', '01 · SOS — Rate the urge', 'SOS Rate', { step: 'rate' }),
+        S('s02', '02 · SOS — Where are you', 'SOS Location', { step: 'loc', urge: 3 }),
+        S('s02b', '02B · SOS — Where are you · In bed', 'SOS Location Bed', { step: 'loc', urge: 3, loc: 'bed' }),
+        S('s03', '03 · SOS — What’s feeding it', 'SOS Triggers', { step: 'trig', urge: 3, loc: 'private' }),
+        S('s03b', '03B · SOS — What you’re putting off', 'SOS Putting Off', { step: 'task', urge: 3, loc: 'private', trig: ['putoff'] }),
+        S('s04', '04 · SOS — What you’re feeling', 'SOS Feelings', { step: 'feel', urge: 3, loc: 'private' }),
+        S('s05', '05 · SOS — One task', 'SOS Task', Object.assign({ step: 'suggest' }, ex1)),
+        S('s05b', '05B · SOS — One task · Reading', 'SOS Task Reading', Object.assign({ step: 'suggest', cur: 'D06' }, day)),
+        S('s05d', '05D · SOS — One task · At work', 'SOS Task Work', Object.assign({ step: 'suggest' }, work)),
+        S('s06', '06 · Urge Hub — Main', 'Urge Hub Main', Object.assign({ step: 'do', cur: 'D10', since: 252 }, day)),
+        S('s06b', '06B · Urge Hub — Main · Late night', 'Urge Hub Main Night', Object.assign({ step: 'do', cur: 'D01', since: 518 }, ex1)),
+        S('s06d', '06C · Urge Hub — Breathe', 'Urge Hub Breathe', Object.assign({ step: 'do', cur: 'D10', hub: 'breathe', since: 340 }, day)),
+        S('s06e', '06D · Urge Hub — Your pledge', 'Urge Hub Pledge', Object.assign({ step: 'do', cur: 'D10', hub: 'reason', since: 340 }, day)),
+        S('s06f', '06E · Urge Hub — What helped before', 'Urge Hub Helped', Object.assign({ step: 'do', cur: 'D10', hub: 'helped', since: 340 }, day)),
+        S('s07', '07 · SOS — Check afterward', 'SOS Check', Object.assign({ step: 'check', cur: 'K01' }, work)),
+        S('s07b', '07B · SOS — Check · Lower', 'SOS Check Lower', Object.assign({ step: 'check', cur: 'K01', after: 2 }, work)),
+        S('s07c', '07C · SOS — Check · About the same', 'SOS Check Same', Object.assign({ step: 'check', cur: 'D10' }, day, { urge: 3, after: 3 })),
+        S('s07d', '07D · SOS — Another task?', 'SOS Another', Object.assign({ step: 'more', cur: 'D10' }, day, { urge: 3, after: 3 })),
+        S('s08', '08 · SOS — Finished', 'SOS Finished', Object.assign({ step: 'end', cur: 'K01', after: 2, since: 412 }, work)),
+        S('s08b', '08B · SOS — Finished · It’s gone', 'SOS Finished Gone', Object.assign({ step: 'end', after: 0, noTask: true }, day))
+      ] }
+    ];
+    const SITP = {
+      A: { clock: '15:10', urge: 3, loc: 'private', trig: ['doom'], feel: ['bored'] },
+      B: { clock: '00:20', urge: 4, loc: 'bed', bed: 'sleep', trig: ['phonebed'], feel: ['tired'] },
+      C: { clock: '08:10', urge: 3, loc: 'bed', bed: 'woke', trig: ['routine'], feel: ['bored'] },
+      D: { clock: '15:00', urge: 2, loc: 'private', trig: ['routine'], feel: ['bored'] },
+      E: { clock: '14:00', urge: 3, loc: 'private', trig: [], feel: ['stressed'] },
+      F: { clock: '18:30', urge: 3, loc: 'private', trig: ['alone'], feel: ['lonely'] },
+      G: { clock: '19:00', urge: 3, loc: 'private', trig: ['argument'], feel: ['angry'] },
+      H: { clock: '11:00', urge: 2, loc: 'private', trig: ['putoff'], feel: [] },
+      I: { clock: '21:30', urge: 2, loc: 'private', trig: [], feel: ['tired', 'hungry'] },
+      J: { clock: '16:30', urge: 4, loc: 'private', trig: ['thought'], feel: ['on'] },
+      K: { clock: '14:00', urge: 4, loc: 'work', trig: ['doom'], feel: ['stressed'] },
+      L: { clock: '17:30', urge: 3, loc: 'private', trig: [], feel: ['low', 'restless'] }
+    };
+    const OVR = { I05: { clock: '23:30', loc: 'bed', bed: 'sleep' }, I07: { clock: '13:00', loc: 'work' }, I08: { clock: '13:00', loc: 'work' } };
+    'ABCDEFGHIJKL'.split('').forEach(s => {
+      const sit = L.sits[s];
+      this.secs.push({ title: 'SOS ACTIONS — ' + s + ' · ' + sit.name.toUpperCase(), frames: L.acts.filter(a => a.sit === s).map(a => {
+        const p = Object.assign({}, SITP[s], OVR[a.id] || {}, { step: 'suggest', cur: a.id });
+        if (a.taskTypes) p.task = a.taskTypes[0] === '*' ? 'other' : a.taskTypes[0];
+        return S(a.id, a.id + ' · ' + a.title, 'SOS ' + a.id, p);
+      }) });
+    });
+  }
+
+  act(id, fn) { return () => { const f = this.F[id]; if (!f) return; if (fn(f) === false) return; f.v++; this.setState({ tick: Date.now() }); }; }
+  pick(f, id) { f.cur = this.L.next(f, this.hourOf(f, id)); f.shown.push(f.cur); f.ticks = []; f.after = null; f.step = 'suggest'; }
+  toSuggest(f, id) {
+    f.shortcut = false;
+    const k = this.ansKey(f);
+    if (k !== f.ansKey || !f.cur) { f.shown = []; f.cur = this.L.next(f, this.hourOf(f, id)); f.shown = [f.cur]; f.ansKey = k; }
+    f.step = 'suggest';
+  }
+  toggleIn(list, k) {
+    if (k === 'unknown') return list.indexOf('unknown') >= 0 ? [] : ['unknown'];
+    const l = list.filter(x => x !== 'unknown');
+    return l.indexOf(k) >= 0 ? l.filter(x => x !== k) : l.concat([k]);
+  }
+  back(f) {
+    const s = f.step;
+    if (s === 'do' && f.hub && f.hub !== 'task') { f.hub = 'task'; return; }
+    if (s === 'loc') f.step = 'rate';
+    else if (s === 'trig') f.step = 'loc';
+    else if (s === 'task') f.step = 'trig';
+    else if (s === 'feel') f.step = f.trig.indexOf('putoff') >= 0 ? 'task' : 'trig';
+    else if (s === 'suggest') { if (f.shortcut) { f.shortcut = false; f.ansKey = null; f.step = 'rate'; } else f.step = 'feel'; }
+    else if (s === 'do') { f.step = 'suggest'; f.ticks = []; }
+    else if (s === 'more') { f.step = 'check'; }
+    else if (s === 'check') { const a = this.L.byId[f.cur]; f.step = 'do'; f.hub = 'task'; f.ticks = a.count ? new Array(a.count).fill(0) : []; }
+    else return false;
+  }
+  vizEl(key, onCard) {
+    const c = onCard ? this.viz.card : this.viz.page;
+    if (!c[key]) {
+      let s = window.SOS_VIZ[key] || '';
+      if (onCard) s = s.split('#0D0D0D').join('#1E1E1E');
+      const bx = this.vizBox(key);
+      c[key] = React.createElement('svg', { viewBox: bx, width: '100%', height: '100%', preserveAspectRatio: 'xMidYMid meet', style: { display: 'block', overflow: 'visible' }, dangerouslySetInnerHTML: { __html: s } });
+    }
+    return c[key];
+  }
+  vizBox(key) {
+    return (window.SOS_VIZ_BOX && window.SOS_VIZ_BOX[key]) || '0 40 393 172';
+  }
+  chips(list, sel, onTap) {
+    return list.map(x => { const on = sel.indexOf(x[0]) >= 0; return { label: x[1], on, ws: x[1].length > 32 ? 'normal' : 'nowrap', bg: on ? '#F2F0EC' : '#1E1E1E', fg: on ? '#111111' : '#F2F0EC', tap: onTap(x[0]) }; });
+  }
+  scale(sel, start, onTap) {
+    const G = ['#383734', '#5E5C58', '#8A8781', '#BAB6AF', '#E6E3DD'];
+    return [1, 2, 3, 4, 5].map(n => {
+      const on = sel === n;
+      return { n, h: 84 + Math.round((n - 1) * 22.5), bg: on ? '#F2F0EC' : G[n - 1], ring: on ? '0 0 0 3px #0D0D0D, 0 0 0 4.5px #F2F0EC' : 'none', fg: on || n >= 3 ? '#111111' : '#F2F0EC', tap: onTap(n) };
+    });
+  }
+
+  vm(def) {
+    const id = def.id, f = this.F[id], L = this.L, a = f.cur ? L.byId[f.cur] : null, hour = this.hourOf(f, id);
+    const v = { label: def.label, screen: def.screen, time: this.timeText(f, id) };
+    const st = f.step;
+    v.isRate = st === 'rate'; v.isLoc = st === 'loc'; v.isChips = st === 'trig' || st === 'task' || st === 'feel'; v.isFeel = st === 'feel';
+    v.isSuggest = st === 'suggest'; v.isDo = st === 'do'; v.isCheck = st === 'check'; v.isMore = st === 'more'; v.isEnd = st === 'end';
+    v.back = this.act(id, ff => this.back(ff));
+    v.close = () => { this.F[id] = this.fresh(def); this.setState({ tick: Date.now() }); };
+    v.backOp = st === 'rate' || st === 'end' ? 0 : 1;
+    v.showMarks = ['rate', 'loc', 'trig', 'task', 'feel'].indexOf(st) >= 0;
+    const mk = { rate: 1, loc: 2, trig: 3, task: 3, feel: 4 }[st] || 0;
+    v.marks = [1, 2, 3, 4].map(i => ({ bg: i <= mk ? '#F2F0EC' : '#2E2E2E' }));
+    v.ctaOp = 1;
+    if (v.isRate) {
+      v.scale = this.scale(f.urge, null, n => this.act(id, ff => { ff.urge = ff.urge === n ? null : n; }));
+      v.ctaOp = f.urge ? 1 : 0.35;
+      v.rateNext = this.act(id, ff => { if (!ff.urge) return false; if (id === 'live') ff.t0 = Date.now(); ff.step = 'loc'; });
+      v.gone = this.act(id, ff => { ff.cur = null; ff.after = 0; ff.endS = this.since(ff); ff.step = 'end'; });
+      v.shortcut = this.act(id, ff => { ff.shortcut = true; ff.shown = []; ff.cur = L.next(ff, hour); ff.shown = [ff.cur]; ff.ansKey = 'shortcut'; ff.step = 'suggest'; });
+    }
+    if (v.isLoc) {
+      const D = { private: 'M4 17V8l6-5 6 5v9M8 17v-5h4v5', bed: 'M3 15V9h14v6M3 12h14M5 9V6h4v3', public: 'M6 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM14 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM2 16c0-2.5 1.8-4 4-4s4 1.5 4 4M10 16c0-2.5 1.8-4 4-4s4 1.5 4 4', work: 'M3 7h14v9H3zM7 7V4h6v3M3 11h14', out: 'M10 17s-5-4.5-5-8a5 5 0 0 1 10 0c0 3.5-5 8-5 8zM10 10.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' };
+      v.locs = L.LOC.map(x => { const on = f.loc === x[0]; return { label: x[1], d: D[x[0]], on, bg: on ? '#F2F0EC' : '#1E1E1E', fg: on ? '#111111' : '#F2F0EC', ring: on ? 'rgba(17,17,17,0.3)' : '#2E2E2E', tap: this.act(id, ff => { ff.loc = x[0]; if (x[0] !== 'bed') ff.bed = null; }) }; });
+      v.showBed = f.loc === 'bed';
+      v.showDoor = f.loc !== 'bed';
+      v.beds = this.chips(L.BED, f.bed ? [f.bed] : [], k => this.act(id, ff => { ff.bed = ff.bed === k ? null : k; }));
+      v.ctaOp = f.loc ? 1 : 0.35;
+      v.locNext = this.act(id, ff => { if (!ff.loc) return false; ff.step = 'trig'; });
+    }
+    if (v.isChips) {
+      if (st === 'trig') {
+        v.chipHeading = 'What’s feeding it right now?'; v.chipMulti = true;
+        v.chips = this.chips(L.TRIG, f.trig, k => this.act(id, ff => { ff.trig = this.toggleIn(ff.trig, k); if (ff.trig.indexOf('putoff') < 0) ff.task = null; }));
+        v.ctaOp = f.trig.length ? 1 : 0.35;
+        v.chipNext = this.act(id, ff => { if (!ff.trig.length) return false; ff.step = ff.trig.indexOf('putoff') >= 0 ? 'task' : 'feel'; });
+        v.chipSkip = this.act(id, ff => { ff.trig = []; ff.task = null; ff.step = 'feel'; });
+      } else if (st === 'task') {
+        v.chipHeading = 'What are you putting off?'; v.chipMulti = false;
+        v.chips = this.chips(L.TASK, f.task ? [f.task] : [], k => this.act(id, ff => { ff.task = ff.task === k ? null : k; }));
+        v.ctaOp = f.task ? 1 : 0.35;
+        v.chipNext = this.act(id, ff => { if (!ff.task) return false; ff.step = 'feel'; });
+        v.chipSkip = this.act(id, ff => { ff.task = null; ff.step = 'feel'; });
+      } else {
+        v.chipHeading = 'What are you feeling?'; v.chipMulti = true;
+        v.chips = this.chips(L.FEEL, f.feel, k => this.act(id, ff => { ff.feel = this.toggleIn(ff.feel, k); }));
+        v.ctaOp = f.feel.length ? 1 : 0.35;
+        v.chipNext = this.act(id, ff => { if (!ff.feel.length) return false; this.toSuggest(ff, id); });
+        v.chipSkip = this.act(id, ff => { ff.feel = []; this.toSuggest(ff, id); });
+      }
+    }
+    if (a && (v.isSuggest || v.isDo)) {
+      v.title = a.title; v.dur = a.dur + ' min'; v.steps = a.steps; v.viz = this.vizEl(a.viz, false);
+      v.another = this.act(id, ff => this.pick(ff, id));
+    }
+    if (v.isSuggest && a) {
+      v.heading = L.heading(f, a, hour);
+      v.doTask = this.act(id, ff => { ff.step = 'do'; ff.hub = 'task'; ff.ticks = a.count ? new Array(a.count).fill(0) : []; });
+    }
+    if (v.isDo && a) {
+      const pages = this.pages(f); let hub = f.hub || 'task'; if (pages.indexOf(hub) < 0) hub = 'task';
+      const el = this.since(f), lvl = f.urge || 0, pi = pages.indexOf(hub), sw = f.sw && f.sw.on ? f.sw : null;
+      v.hubTask = hub === 'task'; v.hubBreathe = hub === 'breathe'; v.hubReason = hub === 'reason'; v.hubHelped = hub === 'helped';
+      v.elText = this.fmt(el);
+      v.lvlText = lvl ? 'Strength ' + lvl + '/5' : 'Strength not rated';
+      v.lvlNum = lvl ? lvl + ' of 5' : 'Not rated';
+      v.showMini = !v.hubTask; v.mini = 'Urge · ' + this.fmt(el);
+      v.tx = -pi * 393 + (sw ? sw.dx : 0); v.trans = sw ? 'none' : 'transform 0.34s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      const go = i => { const ff = this.F[id]; const ps = this.pages(ff); i = Math.max(0, Math.min(ps.length - 1, i)); if (ps[i] !== (ff.hub || 'task')) this.toHub(ff, ps[i]); };
+      v.dots = pages.map((p, i) => ({ bg: i === pi ? '#F2F0EC' : '#3A3835', tap: this.act(id, () => go(i)) }));
+      v.pd = e => { const ff = this.F[id]; const r = e.currentTarget.getBoundingClientRect(); ff.sw = { x0: e.clientX, k: r.width / 393 || 1, dx: 0, on: true }; };
+      v.pm = e => { const ff = this.F[id], s = ff.sw; if (!s || !s.on) return; let dx = (e.clientX - s.x0) / s.k; const ps = this.pages(ff), i = ps.indexOf(ff.hub || 'task'); if ((i <= 0 && dx > 0) || (i >= ps.length - 1 && dx < 0)) dx *= 0.3; if (Math.abs(dx) < 4 && Math.abs(s.dx) < 4) return; s.dx = dx; ff.v++; this.setState({ tick: Date.now() }); };
+      v.pu = () => { const ff = this.F[id], s = ff.sw; if (!s || !s.on) return; s.on = false; const ps = this.pages(ff), i = ps.indexOf(ff.hub || 'task'); if (Math.abs(s.dx) > 8) ff.swAt = Date.now(); if (s.dx < -50) go(i + 1); else if (s.dx > 50) go(i - 1); s.dx = 0; ff.v++; this.setState({ tick: Date.now() }); };
+      v.helped = this.helpedList(f).map(h => ({ title: L.byId[h[0]].title, meta: h[1] + ' · Strength ' + h[2] + ' → ' + h[3], tap: this.act(id, ff => { if (ff.swAt && Date.now() - ff.swAt < 350) return false; ff.cur = h[0]; if (ff.shown.indexOf(h[0]) < 0) ff.shown.push(h[0]); ff.hub = 'task'; ff.ticks = []; }) }));
+      v.hasHelped = v.helped.length > 0;
+      {
+        const ph = v.hubBreathe ? this.brPhase(f).k : 'pre', k = ph === 'pre' ? 'in' : ph;
+        v.brHead = { in: 'Breathe in.', hold: 'Hold.', out: 'Breathe out.' }[k];
+        v.brSub = { in: 'Slowly, through your nose. Let your shoulders drop.', hold: 'Keep your shoulders loose.', out: 'Through your mouth, slower than you breathed in.' }[k];
+        v.brS = ph === 'in' || ph === 'hold' ? 1 : 0.6; v.brT = ph === 'in' ? 4 : ph === 'out' ? 6 : 0.3;
+        v.brPh = [['in', 'In', '4 sec'], ['hold', 'Hold', '4 sec'], ['out', 'Out', '6 sec']].map(x => { const on = x[0] === k; return { label: x[1], sec: x[2], fg: on ? '#F2F0EC' : 'rgba(242,240,236,0.4)', fg2: on ? '#B5B0A8' : 'rgba(242,240,236,0.3)', bar: on ? '#F2F0EC' : 'transparent' }; });
+      }
+      v.primary = this.act(id, ff => { ff.after = null; ff.hub = 'task'; ff.step = 'check'; });
+    }
+    if (v.isCheck) {
+      v.scale = this.scale(f.after, f.urge, n => this.act(id, ff => { ff.after = ff.after === n ? null : n; }));
+      v.checkNext = this.act(id, ff => { if (ff.after === 0) ff.after = null; ff.step = 'more'; });
+      v.gone = this.act(id, ff => { ff.after = 0; ff.endS = this.since(ff); ff.step = 'end'; });
+    }
+    if (v.isMore) {
+      v.finish = this.act(id, ff => { ff.endS = this.since(ff); ff.step = 'end'; });
+      const u = f.urge, af = f.after;
+      v.moreSub = u && af ? (af < u ? 'The urge has dropped from ' + u + ' to ' + af + '.' : af > u ? 'The urge has gone up from ' + u + ' to ' + af + '.' : 'The urge is still at ' + af + ' out of 5.') : '';
+      v.hasMoreSub = !!v.moreSub;
+      v.another = this.act(id, ff => this.pick(ff, id));
+    }
+    if (v.isEnd) {
+      const u = f.urge, af = f.after, s = f.endS || 0, rows = [];
+      const sv = u && af != null ? u + ' → ' + (af === 0 ? 'gone' : af) : af === 0 ? 'Gone' : u ? u + ' of 5' : '';
+      if (sv) rows.push({ k: 'Urge strength', v: sv });
+      if (a) { rows.push({ k: 'Time with the urge', v: s < 60 ? 'Under a minute' : Math.round(s / 60) + ' min' }); rows.push({ k: 'Task', v: a.title }); }
+      v.endRows = rows;
+    }
+    v.ctaBg = v.ctaOp === 1 ? '#F2F0EC' : '#2E2E2E';
+    v.ctaFg = v.ctaOp === 1 ? '#111111' : '#77736C';
+    return v;
+  }
+  cvm(def) {
+    const f = this.F[def.id];
+    const k = f.v + '|' + (def.id === 'live' ? (this.props.clock || '') : '');
+    const c = this.cache[def.id];
+    if (c && c.k === k && c.f === f) return c.vm;
+    const vm = this.vm(def);
+    this.cache[def.id] = { k, f, vm };
+    return vm;
+  }
+
+  renderVals() {
+    const pad = this.props.embedded ? '0' : '72px';
+    if (!this.state.ready || !this.secs) return { pad, sections: [] };
+    const q = (location.hash.match(/qa=([^&]+)/) || [])[1];
+    if (q) return { pad, sections: [{ title: 'QA', frames: q.split(',').filter(id => this.D[id]).map(id => this.cvm(this.D[id])) }] };
+    return { pad, sections: this.secs.map(s => ({ title: s.title, frames: s.frames.map(d => this.cvm(d)) })) };
+  }
+}
+</script>
+</body>
+</html>

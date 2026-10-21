@@ -1,0 +1,604 @@
+SOS Workflow
+Full Branching Logic for a Pornography-Urge Intervention Flow
+CORE PRODUCT PRINCIPLE
+The stronger the urge, the less thinking the user should have to do. High-intensity states get action first; reflection comes later.
+This document defines the decision logic, response modules, branch copy, combination rules, edge cases, and implementation model for a personalised SOS workflow.
+The goal is not to generate hundreds of hand-written combinations. The goal is to assemble a small number of high-quality modules in the right order, so each session feels specific to the user’s actual situation.
+IMPLEMENTATION BRIEF
+Implement this as the app’s SOS flow for someone who opens it during an active urge. Assume attention is limited and the user may be tired, alone, sexually triggered, or already close to acting. It should feel like a calm coach taking control of the next few minutes — not a survey, lecture, or therapy worksheet.
+Use the answers to change what the app asks the user to do, not just the wording. Intensity controls urgency; location controls what is safe and possible; feelings and triggers explain what the user is trying to regulate. At high intensity, change the body or environment first and reflect later.
+Repeated use should still feel fresh. Keep the essential safety move consistent when it matters, but rotate the follow-up challenge, avoid recently shown actions, and filter every suggestion for time, setting, privacy, and physical safety.
+Recommended response hierarchy:
+1) Interrupt the immediate behaviour
+2) Change the environment
+3) Regulate the underlying state
+4) Remove the trigger
+5) Address the real problem after the urge falls
+0. System at a Glance
+Stage
+Question / signal
+What it controls
+A
+Urge strength (1–5)
+How much friction, text, and choice the user can handle.
+B
+Immediate state bypass
+Already viewing / already slipped / safe to continue.
+C
+Location &amp; privacy
+What physical action is possible right now.
+D
+Feeling
+What need the urge is trying to regulate.
+E
+Immediate trigger
+What should be removed, blocked, closed, or avoided.
+F
+Underlying pressure
+What should be dealt with once the urge has fallen.
+G
+Reassessment
+Whether to end, repeat, or escalate the intervention.
+Recommended question order
+Intensity 4–5: strength → Location → Action → Feeling → Immediate trigger → Underlying pressure.Intensity 1–3: strength → Feeling → Immediate trigger → Location → Tailored intervention.The app may prefill or skip questions it already knows from the current SOS session.
+1. Design Rules
+Rules That Every Branch Should Obey
+Action before analysis at high intensity. A 5/5 user should never receive a paragraph before the first concrete action.
+One screen = one job. Do not mix “leave the room,” emotional interpretation, education, and journaling on a single emergency screen.
+Environment beats willpower. If the context is high-risk, change the context before asking the user to “resist.”
+Pornography is the target behaviour; sexual arousal itself is not framed as dangerous or shameful.
+Use specific verbs: stand up, close it, lock the phone, walk to the kitchen, message someone. Avoid generic “distract yourself” advice.
+Never punish honesty. If the user says they already opened porn or already slipped, the app becomes more useful, not more judgmental.
+The response should get shorter as urgency rises. Choice sets should narrow as urgency rises.
+Do not make the user solve the underlying life problem during the urge. First get the urge down; then offer a next step for the real problem.
+2. Input Model
+The Minimum Data Needed for Useful Branching
+Field
+Allowed values
+Purpose
+intensity
+1, 2, 3, 4, 5
+Sets intervention mode.
+immediate_state
+safe / already_opened / already_slipped
+Bypasses normal flow when necessary.
+location
+bed / bathroom / home_alone / private_room / work_school / public / other
+Chooses the mandatory first move and the eligible challenge pool.
+feeling
+sexual / bored / lonely / stressed / anxious / angry / sad / rejected / tired / restless / numb / shame / unknown
+Chooses regulation module.
+proximal_trigger
+sexual_content / social_scroll / fantasy_memory / late_night_phone / habit / insomnia / conflict / rejection / alone / other / unknown
+Chooses trigger-removal module.
+underlying_pressure
+relationship / family / school_work / money / self_image / loneliness / health_wellbeing / none / other / unknown
+Chooses post-urge follow-up.
+context_flags
+night / safe_to_leave / mobility_ok / discreet_required / cannot_move
+Filters unsafe or context-inappropriate challenges before rotation.
+recent_action_ids
+last 3–5 actions shown / completed
+Prevents the SOS from repeating the same challenge every session.
+Why split “trigger” into two fields?
+“Instagram” can explain why the urge started at 10:42 p.m.; “Relationship” can explain why the user was vulnerable in the first place. Those require different actions. The first is removed now. The second is addressed later.
+3. Intensity Branching
+The First and Most Important Switch
+Level
+Mode
+First response
+Question load
+1 — Faint
+Notice
+Acknowledge + tiny prevention step.
+Normal
+2 — Noticeable
+Redirect
+Remove easy trigger + choose a better next activity.
+Normal
+3 — Persistent
+Interrupt
+Change state or location now.
+Reduced
+4 — Intense
+Emergency
+Move first. Ask why afterwards.
+Minimal
+5 — Overwhelming
+Command
+One action per screen; confirmation after each.
+Almost none
+1/5 — FAINT — BARELY THERE
+Do not dramatise. Reinforce early noticing. If the user is in a high-risk location, still recommend a small environment change.
+Example copy
+“Good catch. This is easiest to change while it’s still small. Close whatever fed it, then get back to what you were doing.”
+2/5 — NOTICEABLE
+Use a short redirect. Ask feeling and trigger before giving a 5–10 minute alternative.
+Example copy
+“Don’t feed it. Remove the trigger now, then give your brain something else for ten minutes.”
+3/5 — PERSISTENT — HARD TO IGNORE
+Require a concrete interruption: stand, move, water, short walk, phone away. Then personalise.
+Example copy
+“Change the scene before you think about it. Stand up and move somewhere different.”
+4/5 — INTENSE — VERY STRONG
+Ask location immediately, then issue the best location action. Do not ask cause until action is confirmed.
+Example copy
+“Don’t stay where the urge is strongest. Tell me where you are.”
+5/5 — OVERWHELMING — CLOSE TO GIVING IN
+Use one action per screen. Remove access and isolation first. Make buttons completion statements, not vague “continue.”
+Example copy
+“Stand up.” → [I’m up] → “Leave the room.” → [I’ve left] → “Put the phone out of reach.”
+4. Critical Bypass States
+Handle These Before the Normal Questionnaire
+State
+Immediate branch
+Then
+Already opened
+“Close it now.” → Confirmation → Lock / put device down → Leave private context
+Resume at feeling + trigger once access is broken.
+Already slipped
+“Stop here. The rest of the night is not decided.” → Leave context → Reset device/environment
+Route to a separate post-slip flow; do not keep running urge-surfer copy.
+Cannot move
+Use a no-travel challenge: sit upright or stand if possible, turn the screen face-down, place the device as far out of reach as possible, and keep both hands off it until a five-minute timer ends.
+Never repeat an impossible movement instruction. Filter challenge candidates by mobility and context.
+5. Location Branches
+Turn “Where Are You?” Into Physical Risk Reduction
+Location
+Risk
+Mandatory first move
+Rotating challenge pool
+Bed
+High
+Get out of bed. Feet on the floor, stand, then leave the bedroom before any reflective content.
+After leaving, choose ONE eligible challenge: do one hard set of push-ups or air squats, stopping when form breaks; lie flat on the floor for five minutes with the phone out of reach and do not return to the bed until the timer ends; walk to the farthest safe point in the home and back twice; put the phone in another room and stay at the farthest safe indoor point for five minutes; if leaving home is explicitly safe, walk to the nearest open public place and remain there briefly.
+Bathroom / shower
+High
+Finish what is necessary and leave promptly. Do not run the rest of SOS inside the bathroom.
+Once out, rotate between: put the phone on a charger outside the bathroom for ten minutes; take a brisk lap of the home or building without the phone; hold a wall sit or complete a short squat set if physically appropriate; wash your face with cool water, then move to the farthest safe room; or keep the phone inaccessible and remain outside the bathroom until the reassessment timer ends.
+Home alone
+High
+Break isolation from the usual relapse spot: turn the lights on, move to a more exposed part of the home, and physically separate from the device.
+Rotate between: go to the farthest safe point from the relapse room and stay there for five minutes; complete a 100-step indoor walk without the phone; do one hard-but-safe bodyweight set; put the phone in another room and remain in a bright common area until reassessment; or, if leaving is explicitly safe, walk to a nearby open shop, lobby, or café and remain there briefly.
+Private room
+High
+Make the room less private immediately: stand, turn the lights on, open the door if appropriate, then move away from the bed or chair.
+Rotate between: leave the phone outside the room for ten minutes; walk two full laps of the home or floor without the phone; hold a plank or wall sit while form remains good; move to the farthest safe indoor point and stay there until reassessment; or sit or stand in a bright common area with the phone inaccessible for five minutes.
+Work / school
+Low
+Keep the protective context. Put the device away and do not move somewhere more private.
+Use discreet challenges only: walk one full corridor or floor without the phone; take one or two flights of stairs; refill water while leaving the phone behind; keep the phone zipped away for ten minutes while remaining in the shared space; or walk to the farthest visible public point on the floor and back before reopening any feed.
+Public space
+Low
+Stay public. Do not leave for a bathroom, bedroom, car, or secluded place while intensity is high.
+Rotate between: take a five-minute phone-free walk while staying in visible areas; change seats to a more exposed spot; walk to a visible landmark and back; keep the phone zipped away until the timer ends; or take one full lap of the venue without opening any feed.
+Other
+Unknown
+Ask only what matters: “Are you alone and private right now?” Then map to high-risk private or protective public logic.
+Do not create a bespoke geography branch. Reuse the eligible challenge pool from the mapped privacy state, then apply safety filters and anti-repeat rules.
+5A. Challenge Rotation &amp; Safety
+Variety should come from the action pool, not from adding minor location categories.
+Rule
+Implementation
+Why
+Mandatory move + variable challenge
+Some locations keep the same first move every time (bed → Get up; bathroom → Leave). After that, select one challenge from the eligible pool.
+Preserves the strongest behavioural rule without making repeat sessions feel identical.
+Safety filter before novelty
+Filter by leaving-home safety, time of day, mobility/health constraints, privacy/discretion, and whether movement is possible BEFORE random selection.
+Novelty never outranks safety.
+Anti-repeat window
+Do not show the exact same action from the previous 3 SOS sessions if another eligible option exists. Prefer a different action family from the previous session.
+The fifth SOS should not read like the first.
+Weighted rotation
+Among safe candidates, prefer actions the user has completed before and that were followed by a larger intensity drop, while retaining some novelty.
+Personalisation becomes evidence-based without becoming deterministic.
+Skip without penalty
+Every challenge has “give me another” or an equivalent skip. Skipped actions are down-ranked, not treated as failure.
+A challenge can be wrong for reasons the app cannot observe.
+No exhaustion requirement
+Exercise can feel demanding, but stop at pain, dizziness, or form breakdown. Do not require true muscular failure.
+Keeps “hard challenge” energy without unnecessary physical risk.
+Challenge Families
+Family
+Examples
+Best fit
+Distance
+Farthest safe point in the home; 100-step walk; one corridor/floor lap; safe public-place walk
+Bed, home alone, private room, public, work/school
+Physical
+Push-ups until form breaks; air squats; wall sit; stairs; short mobility circuit
+Bored, angry, restless; only when physically appropriate
+Device separation
+Phone in another room; zipped in bag; charger away from bed; ten-minute no-feed timer
+Late-night phone, social scroll, bed, private room
+Constraint / hold
+Five-minute floor hold away from the phone; remain at the farthest safe point until timer ends; stay in a bright common area with the device inaccessible
+Bed, home alone, private room, anxious, low-energy states
+No-checking
+Ten minutes without profile, message, or feed checking; phone locked while timer runs
+Rejection, conflict, sexual content, social media
+Low-energy
+Five-minute floor reset; phone exile; cool-water face reset; remain out of the relapse room until reassessment
+Tired, sad/low, late night
+6. Feeling Branches
+Match the Intervention to What the Urge Is Doing for the User
+Feeling
+Module
+Recommended action
+Core copy
+Sexually aroused / triggered
+Urge surfing + cue removal
+Five-minute no-feed challenge: remove the cue, keep your hands off the trigger behaviour, and walk, stand, or stay physically separated from the device until the timer ends.
+“You can be turned on without feeding it. Remove the cue, then prove you can let five minutes pass without adding more.”
+Bored
+Stimulation challenge
+Offer three active options: a short workout, a fast phone-free walk, stairs, or a 100-step movement challenge.
+“Your brain wants something to happen. Give it a challenge instead of a feed.”
+Lonely
+Connection challenge
+Send one low-friction message or voice note, or move to a populated place if safe. Give a concrete completion target.
+“Break the isolation. One message or one move toward people is enough for now.”
+Stressed / overwhelmed
+Pressure-release challenge
+Choose a contained state break: one brisk lap, a three-minute movement set, a cool shower, or a five-minute floor hold away from the phone; then name one next task.
+“Porn is offering an exit. Take a different exit for five minutes, then come back smaller.”
+Anxious
+Attention challenge
+Use a concrete movement or distance target: walk 100 steps without the phone, go to the farthest safe point and stay there until the timer ends, or complete a five-minute floor reset away from the device.
+“Give your attention one concrete target for the next few minutes.”
+Angry
+Discharge challenge
+Use hard-but-safe movement: push-ups until form breaks, fast stairs, a wall sit, or a brisk walk. Do not reply or scroll first.
+“Use the energy. Don’t let it choose the behaviour.”
+Sad / low
+Gentle activation challenge
+Pick one achievable state change: take a shower and change clothes, walk 100 steps without the phone, move to a bright common area for five minutes, or message one person.
+“Don’t fix your mood. Win the next five minutes.”
+Rejected
+No-checking challenge
+Set a ten-minute no-profile/no-message-refresh challenge; pair it with movement or contact with someone else.
+“Don’t check again. Give yourself ten minutes where rejection gets no more input.”
+Tired
+Low-energy protection challenge
+Put the phone away for 10–15 minutes, leave the relapse room, and use a low-effort floor or common-area hold. Avoid hard exercise late at night.
+“You’re low on control. Make the environment do the work.”
+Restless
+Movement challenge
+Use a fixed movement target: stairs, a brisk lap, squats, a mobility circuit, or a 100-step phone-free walk.
+“Your body wants an outlet. Give it a finish line.”
+Numb
+State-change challenge
+Use a safe state shift: cool water on the face, outside air if safe, music plus movement, or a fast phone-free walk.
+“You’re looking for intensity. Create a smaller state change you can control.”
+Ashamed / guilty
+Reset challenge
+No self-lecture. Complete one visible break from the relapse loop: close and lock the device, put it in another room, take a shower, or move to the farthest safe point for five minutes.
+“Skip the punishment. Build momentum with one concrete action.”
+Don’t know
+Default challenge
+Move first, then choose one eligible three-to-five-minute challenge from the location pool. No introspection is required.
+“You don’t need the reason yet. Change the scene and complete one challenge.”
+7. Immediate Trigger Branches
+Remove What Is Actively Feeding the Urge
+Trigger
+Objective
+Rule
+Sexual content
+Close/remove cue
+Close page/app; unfollow/hide if recurring; do not “test” yourself by looking again.
+Social media / scrolling
+Break feed loop
+Exit app; lock/block for 15–30 min; switch to intentional activity.
+Fantasy / memory
+Stop elaboration
+Do not argue with the thought; immediately start a concrete movement, distance, or device-separation challenge.
+Late-night phone use
+Change device access
+Charge phone outside bedroom / across room; switch to sleep routine.
+Habit / automatic
+Break sequence
+Identify the next habitual step and replace it: bed→Phone becomes bed→Book, bathroom→Phone becomes phone outside.
+Can’t sleep
+Sleep branch
+Leave bed briefly if needed; dim light; low-stimulation activity; no feeds.
+Argument / conflict
+Delay reaction
+Do not reread messages or doom-scroll; cool down before replying.
+Rejection
+Remove checking behaviour
+No profile checking, message refreshing, or sexualised substitute content.
+Being alone
+Break isolation pattern
+Move to a less private indoor area, message/call someone, or use a public-place option only when leaving is explicitly safe.
+Other / unknown
+Generic trigger break
+Close current feed, move location, put device out of reach for 10 minutes.
+8. Underlying Pressure Branches
+This Runs After the Urge Has Dropped, Not Before
+Pressure
+Goal
+Post-urge copy
+Relationship
+Contain, then address
+“You don’t need to solve the relationship tonight. Write the one thing you need to talk about tomorrow.”
+Family
+Create distance / support
+“Get through the urge first. Then decide whether you need space, a conversation, or someone else to talk to.”
+School / work
+Turn overwhelm into one next step
+“Name the next 15-minute task. Not the whole deadline.”
+Money
+Reduce uncertainty
+“Don’t solve finances in SOS mode. Note the exact money problem and schedule one concrete action.”
+Self-image
+Avoid comparison loop
+“Do not use porn to escape feeling bad about yourself. Step away from mirrors/feeds/comparisons and do one grounding action.”
+Loneliness
+Plan actual connection
+“Who can you speak to today or tomorrow? Put one contact point on the calendar.”
+Health / wellbeing
+Basic-care check
+“After the urge passes, check the basics: food, sleep, movement, stress, and whether you need support.”
+None / unknown
+No forced interpretation
+“You don’t need a deeper reason every time. Sometimes a cue + habit is enough.”
+9. Combination Engine
+How to Produce Specific Advice Without Hand-Writing Every Permutation
+Priority order
+INTENSITY → Immediate state → Location risk → Trigger removal → Feeling regulation → Underlying pressure → Reassessment
+Each answer contributes one module. The renderer selects at most one module from each layer, then trims modules based on intensity. This creates thousands of possible combinations while keeping the authored copy manageable.
+Intensity
+Modules shown now
+Modules delayed
+1
+Acknowledge + trigger + feeling + optional cause
+None
+2
+Trigger + feeling + next activity
+Cause can be after
+3
+Location/action + trigger + feeling
+Cause after first action
+4
+Location/action + trigger; then feeling
+Cause until intensity ≤3
+5
+One environment action at a time; access removal
+All interpretation until safe context
+function buildSOS(session):  if session.immediate_state == 'already_opened': return OPENED_BYPASS  if session.immediate_state == 'already_slipped': return POST_SLIP_BYPASS  mode = intensityMode(session.intensity)  candidates = challengePool(session.location, session.feeling, session.proximal_trigger)  candidates = filterUnsafe(candidates, session.context_flags)  candidates = filterInappropriate(candidates, session.location, mode)  candidates = suppressRecent(candidates, session.recent_action_ids, window=3)  challenge = weightedPick(candidates, completionRate, intensityDrop, novelty)  if mode == 'COMMAND': return nextSingleStep(challenge)  if mode == 'EMERGENCY': return [mandatoryLocationMove(session.location), challenge]  if mode == 'INTERRUPT': return [mandatoryLocationMove(session.location), challenge, shortFeelingCopy]  if mode == 'REDIRECT': return [removeTrigger, challenge, nextIntentionalActivity]  return [acknowledgeEarlyCatch, microTriggerAction, microChallenge]
+10. Conflict-Resolution Rules
+When Modules Disagree, Use These Rules
+Combination
+Override
+Tired + bored
+Prefer sleep/low stimulation over workout or exciting activity.
+Public + lonely
+Do not require a call; offer text/message or simply remain around people.
+Work/school + restless
+Use discreet movement: water refill, bathroom walk, stairs—not a workout.
+Bed + can’t sleep
+Leave bed briefly; do not recommend staying in bed to “urge surf” on the phone.
+5/5 + “Don’t know” feeling
+Do not ask the user to introspect. Use environment sequence.
+Sexual arousal + sexual content
+Cue removal first, urge surfing second.
+Rejected + relationship pressure
+Block checking loops now; relationship reflection later.
+Already opened + any cause
+Close/access break overrides all emotional modules.
+Home alone + leaving unsafe / late
+Never require going outside. Use farthest safe indoor point, lights on, device separation, and an indoor challenge.
+Multiple feelings
+Choose primary feeling; optionally show a second module only at intensity ≤2.
+Night + any “go outside” candidate
+Filter it out unless the user has explicitly indicated that leaving is safe. Default to an indoor distance/device/physical challenge.
+Physical challenge + injury / illness / mobility constraint
+Filter strenuous actions. Replace them with distance, device-separation, low-mobility, or seated hold challenges.
+Same action shown recently
+Suppress actions shown in the last 3 SOS sessions when another eligible action exists. Also avoid the same action family twice in a row.
+5/5 + Challenge pool
+Still give one command at a time. Variety changes WHICH command/challenge is selected, not the one-action-per-screen rule.
+Public/work + physical challenge
+Use only discreet variants. Never instruct conspicuous exercise.
+11. Screen-by-Screen Flow
+Recommended Actual SOS Experience
+Screen
+1–2 Intensity
+3 Intensity
+4 Intensity
+5 Intensity
+1
+Rate urge
+Rate urge
+Rate urge
+Rate urge
+2
+Feeling
+Location
+Location
+Location
+3
+Immediate trigger
+Action
+Action + confirm
+Single action + confirm
+4
+Location
+Feeling
+Trigger removal
+Next single action + confirm
+5
+Personal response
+Trigger
+Feeling
+Next single action + confirm
+6
+Reassess / finish
+Personal response
+Short regulation
+Reassess
+7
+—
+Reassess
+Reassess
+Feeling only if safer
+8
+—
+Cause follow-up
+Cause only if ≤3
+Cause only if ≤3
+Button copy rule
+At intensity 4–5, buttons should confirm behaviour: “I’m up”, “I’ve left”, “Phone is away”, “I’m with people”. Avoid a generic “continue” button during emergency actions.
+12. Response Templates by Intensity
+Reusable Copy Structure
+1/5 Template
+EARLY CATCH
+Good catch. This is still small.{Trigger_micro_action}{Feeling_micro_action}Then get back to your next intentional thing.
+2/5 Template
+REDIRECT
+Don’t feed it.{Trigger_action}{Feeling_action}For the next 10 minutes: {selected_alternative}.
+3/5 Template
+INTERRUPT
+Change the scene first.{Location_action}{Trigger_action}{Feeling_short_copy}
+4/5 Template
+EMERGENCY
+{Location_command}[Confirmation]{Trigger_access_command}[Confirmation]Now we can bring the urge down.
+5/5 Template
+COMMAND
+{Single_action}[Completion button]
+13. Worked Combinations
+Examples of What the Engine Should Actually Produce
+5/5 • Bed • Lonely • Rejection • Relationship
+Stand up.
+[I’m up]
+Leave the bedroom.
+[I’ve left]
+Put the phone somewhere you cannot reach it from where you sit.
+[Phone is away]
+Good. Rejection can make quick comfort look much more valuable than it normally would. Don’t check their profile or messages. Text someone else or go be around people for ten minutes.
+When the urge is lower: you can deal with the relationship. You do not need to solve it inside this urge.
+4/5 • Bathroom • Stressed • Social Scroll • School
+Finish what you need to do and leave the bathroom.
+[I’m out]
+Close the feed and lock it for 15 minutes.
+School stress is making escape look attractive. Take ten minutes away from the work without replacing it with porn.
+When you’re back under 3/5, choose the next 15-minute school task.
+3/5 • Home Alone • Bored • Habit • None
+Change the scene. Move away from the usual relapse spot.
+This looks more like an automatic boredom loop than a crisis. Break the sequence before it runs itself.
+Challenge: do one hard set of push-ups until your form starts to break, OR put the phone in the farthest room and stay at the farthest safe point for five minutes. If it is safe to leave, a short walk to a nearby public place is another eligible variant.
+2/5 • Public • Sexual Arousal • Sexual Content • None
+Close whatever fed the urge.
+You can be turned on without doing anything about it. Stay where you are and let the feeling fall without adding more material.
+Check again in five minutes.
+1/5 • Work • Anxious • Fantasy • Work
+You caught it early. Good.
+Don’t wrestle with the fantasy; put your attention on something concrete in front of you.
+Your brain may be looking for escape from work anxiety. Write the next tiny task, then do only that.
+5/5 • Already Opened • Any Feeling • Any Cause
+Close it now.
+[Closed]
+Lock the phone and stand up.
+[Done]
+Leave the private space.
+[I’ve moved]
+The urge can still be high. That’s okay. Access is broken. Now stay here while it comes down.
+14. Reassessment Loop
+The SOS Flow Should Not End Immediately After Advice
+New rating
+Next step
+0–1
+End SOS. Reinforce the successful action; optionally capture what helped.
+2
+Offer one final 5-minute plan, then end.
+3
+Repeat one regulation module + stay out of high-risk location.
+4
+Return to emergency environment/action mode. Do not continue reflective cause questions.
+5
+Return to command mode: access removal + public/shared location + one action per screen.
+Reassessment prompt
+“Where is it now?”  1  2  3  4  5Do not ask “did the technique work?” That makes a still-present urge feel like failure. The rating is simply new information.
+15. Learning From Prior SOS Sessions
+Personalisation Should Change Ranking, Not Invent Clinical Claims
+Learn which locations recur before slips (for example, bed + late night) and surface preventive advice earlier.
+Learn which interventions the user actually completes and which are skipped.
+Learn which alternatives reduce intensity most often for that user.
+If the same trigger repeats, suggest a permanent friction change after the SOS: app limit, phone charging location, unfollowing content, door-open rule, bedtime routine.
+Never tell the user “this is your real cause” from a few sessions. Phrase patterns probabilistically: “this seems to show up often when…”
+16. After-SOS Prevention Suggestions
+Only Show These Once the Immediate Urge Is Low
+Repeated pattern
+Suggested prevention
+Bed + late-night phone
+Charge phone outside bedroom; bedtime blocker; non-phone alarm.
+Bathroom + phone
+Make bathroom a phone-free zone.
+Social media trigger
+Unfollow / mute triggering accounts; feed time limit; temporary block during vulnerable hours.
+Home alone
+Pre-plan a safer high-friction setup: work in a less private room, phone outside relapse location, or use a public/shared option only when practical and safe.
+Boredom
+Keep a saved “10-minute alternatives” menu ranked by what worked before.
+Loneliness
+Schedule recurring social contact; one-tap “message someone” shortcut.
+School/work stress
+SOS ends with one tiny next task, not a full productivity plan.
+Insomnia
+Sleep routine and device separation; do not use exciting “distraction” tasks.
+17. Suggested Implementation Schema
+Challenge metadata should include: action_id, family, eligible_locations, min/max intensity, requires_leaving_home, night_safe, discreet, physical_load, mobility_required, device_required, duration, and fallback_action_id.
+A Compact Representation for App Code / Analytics
+type SOSSession = {  intensityStart: 1 | 2 | 3 | 4 | 5  immediateState: 'safe' | 'already_opened' | 'already_slipped'  location: Location  privacyRisk: 'low' | 'medium' | 'high'  contextFlags: { night: boolean, safeToLeave: boolean, mobilityOk: boolean, discreetRequired: boolean, cannotMove: boolean }  feelingPrimary: Feeling  feelingSecondary?: Feeling  proximalTrigger: Trigger  underlyingPressure?: Pressure  recentActionIds: ActionId[]  actionsShown: ActionId[]  actionsCompleted: ActionId[]  actionsSkipped: ActionId[]  intensityChecks: { at: timestamp, value: 0|1|2|3|4|5 }[]  outcome: 'resolved' | 'reduced' | 'exited' | 'slipped'}
+Store action IDs separately from display copy. That lets you A/B test wording without breaking outcome analytics, and lets the app learn that “leave bedroom” worked even if the copy changes.
+18. Authoring Requirements
+How Much Copy You Actually Need to Write
+Module set
+Approx. Count
+Notes
+Intensity openers
+5
+One per level.
+Location actions
+7 × 4–6
+Seven broad locations. Each has a mandatory first move plus a challenge pool; do not create minor geography branches.
+Feeling modules
+13
+Short action + explanation + low-intensity variant.
+Trigger modules
+10
+Primary action + permanent prevention suggestion.
+Pressure follow-ups
+8
+Only shown after intensity falls.
+Conflict overrides
+~15
+Includes night safety, mobility, discretion, recent-action suppression, and intensity constraints.
+Reassessment responses
+5
+Based on new rating.
+Bypass flows
+2–3
+Already opened, post-slip, cannot move.
+Result
+Roughly 90–130 carefully written modules/challenges can generate thousands of coherent personalised paths. Most additional authoring should go into varied challenge pools, not extra location categories.
+19. QA Checklist
+Before Shipping the SOS Decision Engine
+5/5 Never shows a long paragraph before a concrete action.
+No branch tells a user to stay in a high-risk private location when moving is practical.
+No branch shames sexual arousal or treats having a thought as a relapse.
+“Already opened” branch first breaks access.
+“Already slipped” branch does not imply the rest of the day is ruined.
+Tired users are not told to do stimulating activities late at night.
+Public/work branches are discreet, and strenuous or conspicuous challenges are filtered out.
+Leaving-home challenges are never required when safety is unknown, it is late, or the user marks leaving as unsafe.
+Underlying relationship/money/work advice is delayed until the urge is lower.
+Every action can be completed safely in the user’s stated context or has an indoor / low-mobility fallback.
+Reassessment can re-escalate the workflow if intensity increases.
+Analytics can distinguish shown actions from completed actions, and the selector can suppress recently repeated action IDs.
+20. Canonical Decision Tree
+Single Source of Truth
+START ├─ Rate intensity 1–5 ├─ Immediate state? │   ├─ Already opened → CLOSE → REMOVE ACCESS → MOVE → Reassess │   └─ Already slipped → STOP → MOVE → Post-slip reset │ ├─ Intensity 5 → LOCATION → One action → Confirm → Access break → Confirm → Reassess │                  └─ If ≤3 → Feeling → Trigger → Short regulation → Cause later │ ├─ Intensity 4 → LOCATION → Move → Trigger removal → Feeling → Reassess │                  └─ Cause only when ≤3 │ ├─ Intensity 3 → LOCATION → Interrupt → Trigger → Feeling → Reassess │ ├─ Intensity 2 → FEELING → Trigger → Location check → 10-min redirect → Reassess │ └─ Intensity 1 → FEELING → Trigger → Micro-action → Return to intended activityREASSESS ├─ 0–1 → Finish + reinforce ├─ 2   → One final plan ├─ 3   → Repeat regulation + stay safe └─ 4–5 → Escalate back to environment/action mode
+North-star test
+At every screen ask: “Given what we know right now, what is the smallest action most likely to make pornography harder to access or less attractive in the next 60 seconds?” If the screen does not help answer that, it probably does not belong in the emergency flow.

@@ -1,0 +1,342 @@
+VICI — Revised Onboarding Flow
+Login first, profile details early, plain questions, and a stronger finish that makes the value of changing feel real.
+What changed in this revision
+Login is back at the start. There is no second “save your progress” account screen near the paywall.
+First name and age come immediately after login. Gender follows as an optional profile field for future personalisation.
+Removed the “Start Today” readiness question and the “Daily Plan” preference question. Neither adds enough information to justify another screen.
+Removed the entire “How Much Support You Want” section. VICI should have a strong default daily experience rather than asking the user to design the product during onboarding.
+The curriculum map is back to three screens: Weeks I–IV, V–VIII, and IX–XII. This is purely for spacing and readability.
+Restored the Week XII letter after the curriculum map. It is a future-self note about continuing after hard nights or slips, not a promise that the next twelve weeks will be perfect.
+Questions still follow one rule: ask one concrete thing at a time, with answers that all respond to the same question.
+The flow below has 43 screens. The first half stays factual and low-pressure. The later screens become more motivating only after VICI has enough information to make that motivation specific to the user.
+Tone through the flow
+Keep the assessment plain. Do not try to motivate the user while asking factual questions. From the personalised results onward, let the emotional weight rise: show the cost of staying the same, then give the user a believable way forward. Use their own answers wherever possible. The paywall should feel like continuing a plan they already want, not like a scare tactic.
+Revised Flow
+01 — Splash
+Visual only — VICI laurel on black.
+02 — Login
+Welcome to VICI.
+Sign in or create an account to keep your plan and progress.
+Button — Continue with Apple
+Button — Continue with Google
+Button — Continue with email
+Link — Already have an account? Sign in
+Terms · Privacy
+Implementation note: This is the only account gate in onboarding. Returning users who have already completed onboarding should go straight to the product.
+03 — Name
+What should we call you?
+First name
+Button — Continue
+Implementation note: Prefill this from the account when available. Use the name only at a few high-value moments later in the flow.
+04 — Age
+How old are you?
+Age
+We use this for the long-term projection later on.
+Button — Continue
+05 — Gender
+How do you describe your gender?
+Male
+Female
+Non-binary
+Another identity
+Prefer not to say
+Button — Continue
+Implementation note: Optional profile data for possible future personalisation. It should not change the current plan until VICI actually has gender-specific behaviour or content.
+06 — Start
+[Name], let’s work out when this usually happens.
+It takes about two minutes. Then you’ll see what VICI would focus on first.
+Button — Start
+Section 1 — Where You Are Now
+07 — Frequency
+How often do you watch porn right now?
+Several times a day
+About once a day
+A few times a week
+About once a week
+A few times a month
+Less than once a month
+08 — Duration
+How long have you wanted to change your porn use?
+Less than a year
+1 to 3 years
+4 to 10 years
+More than 10 years
+I can’t remember a time when it wasn’t an issue
+09 — Control
+When you decide not to watch, how often do you still end up watching?
+Almost every time
+More often than not
+About half the time
+Not very often
+10 — First Principle
+Urges do not stay at full strength forever.
+The first job is to get through the few minutes when acting on one feels easiest.
+Button — Continue
+Section 2 — When It Happens
+11 — Risky Times
+When are you most likely to watch?
+Select all that apply
+Late at night
+Early in the morning
+When I’m bored during the day
+After a stressful day
+When I can’t sleep
+On weekends
+After drinking
+When I’m home alone
+When I’m in bed with my phone
+Button — Continue
+12 — Before the Urge
+How do you usually feel just before you start looking?
+Select all that apply
+Horny
+Bored
+Lonely
+Stressed or anxious
+Low or sad
+Angry
+Numb
+Tired
+Usually nothing in particular
+Button — Continue
+13 — Place
+Where are you usually when it happens?
+Select all that apply
+In bed
+In the bathroom
+At my desk
+In the living room
+Somewhere else at home
+Away from home
+Button — Continue
+14 — What Happens First
+What usually happens right before you start watching?
+Select all that apply
+I see something sexual online
+I start scrolling with no real purpose
+I get into bed with my phone
+I can’t fall asleep
+Something stressful happens
+I have an argument or feel rejected
+A sexual thought or fantasy gets stuck in my head
+There usually isn’t one clear thing
+Button — Continue
+15 — We Have Enough
+[Name], that’s enough to build your first plan.
+What you picked here will change what SOS tells you to do when an urge actually hits.
+Button — Continue
+Section 3 — What It Has Affected
+16 — Impact
+How much is porn getting in the way of your life right now?
+Hardly at all
+A little
+Quite a bit
+A lot
+17 — What It Affects
+What does it interfere with most?
+Choose up to three
+Time
+Focus
+Sleep
+Confidence
+Relationships
+Sex or intimacy
+Energy
+Self-control
+Peace of mind
+Button — Continue
+18 — Loneliness
+How often have you felt lonely lately?
+Rarely
+Sometimes
+Often
+Most days
+19 — Time Alone
+How often do you have long stretches of time alone with nothing planned?
+Most days
+A few days a week
+Occasionally
+Rarely
+Section 4 — What You Want
+20 — Porn Goal
+What do you want to do about porn?
+Stop using it
+Use it much less often
+Set a limit and stick to it
+I haven’t decided yet
+21 — Masturbation
+What do you want to do about masturbation?
+Stop for now
+Do it less often
+Keep masturbating, but without porn
+I haven’t decided yet
+22 — What You Have Tried
+What have you tried before?
+Select all that apply
+Blockers or filters
+Going cold turkey
+An accountability partner
+Deleting apps or accounts
+Therapy or counselling
+Replacing porn with other habits
+Nothing structured yet
+Button — Continue
+Implementation note: Only keep this question if the answer changes later advice or lessons. If VICI does not use it, remove the screen rather than collecting it for appearance’s sake.
+Plan Setup
+23 — Putting Your Plan Together
+Putting your plan together…
+Looking at when it usually happens
+Looking at what usually comes right before it
+Building your first week
+Personalised Results
+24 — Where You Get Caught
+[Name], this is where you seem to get caught most often.
+Late at night · Home alone · Phone in bed
+That’s the first situation VICI will help you change.
+Button — Continue
+Implementation note: Build this only from answers the user actually selected. Do not invent a motive, day, clock time, or location.
+25 — What Usually Comes Before It
+You said stress often shows up before you watch porn.
+So when that happens, SOS will first help you get out of the situation instead of asking you to sit there and reason with the urge.
+Button — Continue
+Implementation note: Only show this screen when there is a clear selected feeling or trigger. Otherwise skip it.
+26 — The Window to Protect
+The window to protect first
+Late at night · Weekends · Phone in bed
+Protect this window first, and a lot of the rest gets easier.
+Button — Continue
+Implementation note: Do not show an exact time range unless the onboarding actually collected one.
+27 — Your Starting Point
+YOUR RECOVERY SCORE
+412 / 3,000
+This is not a grade. It is just where you are starting, and it can move.
+Button — Continue
+Implementation note: Only show a score if the calculation is transparent and meaningful. Do not show a fabricated percentile.
+Projection
+28 — The Next 30 Days
+At the rate you reported, about 9 of the next 30 days could end the same way.
+[Calendar visual based on current frequency]
+Button — Next
+29 — One Year From Now
+Keep the same pace for a year and that becomes about 110 days.
+[Year visual]
+Button — Next
+30 — If Nothing Changes
+If you kept watching at this rate until age 80, that would be about 6,100 days with porn in them.
+That is a projection, not a prediction. It only stays true if nothing changes.
+Button — Continue
+Implementation note: Use “about” and label the number clearly as a projection. Never imply that this is what will actually happen.
+31 — Change the Line
+You do not have to fix the next year tonight.
+You only have to make the next decision different. Then do it again tomorrow. That is how the line changes.
+Button — Start changing it
+How VICI Works
+32 — One Bad Day Is One Bad Day
+One bad day does not erase the work you did before it.
+Your lessons, logs, medallions, and progress stay. You deal with the bad day and keep going.
+Button — Continue
+33 — What You Want Back
+The goal is not a long streak.
+You said porn is getting in the way of [Impact 1], [Impact 2], and [Impact 3]. These twelve weeks are about getting those parts of your life back.
+Button — See the twelve weeks
+Implementation note: Insert up to three items the user selected on “What It Affects.” If they selected fewer, use only those. Do not invent losses they did not report.
+34 — Your Twelve Weeks — I–IV
+Week I — Reset
+Week II — Changing Your Mindset
+Week III — In the Moment
+Week IV — Know Your Brain
+Button — Next
+35 — Your Twelve Weeks — V–VIII
+Week V — Why It Feels Worth It
+Week VI — Discipline
+Week VII — Relapse and Adversity
+Week VIII — Boredom and Meaning
+Button — Next
+36 — Your Twelve Weeks — IX–XII
+Week IX — Connection
+Week X — Yourself
+Week XI — Build a Life You Want
+Week XII — Leave It Behind
+By week XII, the aim is simple: porn takes up less of your time, attention, and headspace.
+Button — Continue
+37 — A Letter Arrived
+A letter arrived.
+From you, twelve weeks from now.
+Button — Open it
+Link — Save it for later
+38 — A Letter From Week XII
+[Name] -
+I'm writing this at the end of week XII.
+I remember where you are right now. You want this to be the time it finally changes, but part of you is already wondering how long you'll last. I was thinking the same thing.
+So here is the part I wish you knew: you do not need twelve perfect weeks. You need to stop turning one bad night into a reason to quit.
+There were nights when I wanted to watch badly. There were nights when I spent twenty minutes arguing with myself. Some days the only thing I did right was get through the evening. That still counted.
+And there were bad days. What changed was what happened after them. I stopped saying, 'I've ruined it now, so what is the point?' I came back the next morning. I logged what happened. I carried on.
+At the start, porn still felt like the quickest way to get relief when I was bored, stressed, lonely, tired, or just fed up. That did not disappear in a week. But every time I waited it out, left the room, put the phone down, or used the SOS instead, I learned something simple: the urge ends whether you obey it or not.
+After a while, that changes you. You stop being so scared of an urge because you have seen enough of them come and go. You stop treating every difficult night like an emergency. You start trusting yourself again.
+The biggest difference is not a streak. It is waking up without that same feeling that you gave another night away. It is having more time and attention for the things you said you wanted back. It is making a promise to yourself and, more often than before, actually keeping it.
+I am not going to tell you everything is fixed here. It is not. I still have bad days. I still get urges sometimes. The difference is that they are not running the whole show anymore.
+If you are reading this on day 0, do not try to get to week XII tonight. Get through tonight. Tomorrow, come back. If you have a bad day, come back anyway. If you slip, do not disappear for a week because you are embarrassed. Come back the next morning.
+That is how you make it out: you keep coming back long enough for things to change.
+You can do this. Not because it will suddenly become easy, but because hard nights end. Urges end. Bad days end. And none of them have to be the day you give up.
+Do not quit on yourself halfway through.
+I'll see you at week XII.
+- [Name], Week XII
+Button — Keep this letter
+Button — Continue
+Implementation note: Keep this as one scrollable letter screen. It is a future-self exercise, not a prediction. Personalise the name and, at most, one concrete detail such as the user’s main risk window or something they said porn is affecting. Do not rewrite the whole letter from their answers; that will make it feel generated.
+Commitment
+39 — The Vow
+THE VOW
+I’m giving this twelve weeks. I do not need to be perfect. When it gets hard, I’ll use the plan before I give in. If I have a bad day, I’ll come back the next day.
+• [Name]
+• Day 0
+Button — I sign it
+Link — Not now
+Implementation note: Adapt the final sentence for moderation goals. Do not force abstinence language onto someone who chose limits or is undecided.
+40 — Medallion Earned
+MEDALLION EARNED
+Veni
+Tier I
+You started.
+Button — Take it
+41 — Reminders
+[Name], you said late night is one of the times you are most likely to watch.
+Want VICI there before that window starts?
+Morning check-in
+Late-night reminder
+Button — Turn on reminders
+Button — Not now
+Implementation note: Use the user’s actual selected risk window. Ask for OS notification permission only after the user taps “Turn on reminders.”
+Paywall
+42 — Give It Twelve Weeks
+VICI PLUS
+You know when you are most likely to watch and what usually comes before it. If you want to give this a real twelve-week attempt, VICI Plus is the full plan.
+Yearly · $39.99/year · $3.33/month
+Monthly · $12.99/month
+The full twelve-week programme
+SOS whenever an urge hits
+Weekly reports based on what you log
+All your progress and medallions in one place
+Button — Start my free trial
+Link — Restore purchase
+Terms · Privacy
+Implementation note: The paywall should sell continuity and usefulness. Do not imply that recovery is impossible without paying, and do not add fake urgency, countdowns, or shame.
+Implementation note: Do not describe “progress that never resets” as paid-only if free users also keep progress.
+First Product Moment
+43 — Day 0
+Day 0
+Your first lesson is ready. Start with one thing today.
+[Today card]
+[SOS button visible]
+Button — Begin
+Writing Rules for the Final UI
+Ask one concrete thing per screen. If the answers describe different kinds of information, split the question or remove it.
+Keep answer sets parallel. A frequency question gets frequency answers; a “what happened first?” question gets events.
+Do not ask readiness questions such as “Are you ready to start?” The user has already chosen to go through onboarding.
+Do not ask the user to design VICI’s daily experience. Give them a clear default and let settings change it later.
+Prefer ordinary actions and situations over abstractions. “I get into bed with my phone” is better than “automatic pattern.”
+Use the user’s name at high-value moments only. Two or three uses across onboarding is enough.
+Personalisation must change something real: risk time changes reminders; location and trigger change SOS actions; goal changes the vow and relevant lesson framing.
+If there is no strong signal in the answers, say less. Do not manufacture a root cause or an exact risk window.
+Do not use exact times, percentages, or projections that the collected data cannot support.
+End onboarding decisively. The user should reach the paywall wanting to continue the plan, not merely wanting to escape the projection. After the paywall, the next screen is the real product.
