@@ -1,0 +1,51 @@
+# Email Login.dc.html · artboard 93 · 92H2 · Week VIII — Boredom and Meaning · ii (Week VIII Boredom and Meaning P2)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Week VIII”
+  div [22, 60, 12×40] 
+    svg [22, 70, 12×20] 
+  svg [-19.6, 104.19, 432.3×264] transform:matrix(1.1, 0, 0, 1.1, 0, 0)
+  div [24, 362, 345×66] 
+    div [24, 362, 345×36] font:700 30px/36px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Boredom and Meaning”
+    div [24, 406, 345×22] font:400 15px/22px normal color:rgb(181, 176, 168) align:center wrap:pretty “Empty hours, and what fills them well.”
+  div [16, 472, 361×190] 
+    div [16, 472, 361×190] 
+      div [16, 472, 361×58] bg:rgb(30, 30, 30) radius:18px
+        div [34, 492.5, 28×17] 
+          span [39.88, 492.5, 16.25×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “54”
+        span [78, 492, 251×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Try an hour away from one feed”
+        svg [345, 494, 14×14] 
+      div [16, 538, 361×58] bg:rgb(30, 30, 30) radius:18px
+        div [34, 558.5, 28×17] 
+          span [39.88, 558.5, 16.25×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “55”
+        span [78, 558, 251×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Prepare the first hour after waking”
+        svg [345, 560, 14×14] 
+      div [16, 604, 361×58] bg:rgb(30, 30, 30) radius:18px
+        div [34, 624.5, 28×17] 
+          span [39.88, 624.5, 16.25×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “56”
+        span [78, 624, 251×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Give time to something that matters”
+        svg [345, 626, 14×14] 
+  div [0, 748, 393×104] 
+    div [14, 762, 72×43] 
+      svg [37, 762, 26×26] 
+      span [35.03, 792, 29.94×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Today”
+    div [90.25, 762, 72×43] 
+      svg [113.25, 762, 26×26] 
+      span [117.25, 792, 17.98×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Log”
+    div [166.5, 756, 60×60] bg:rgb(242, 240, 236) radius:30px
+      span [184.33, 778, 24.34×16] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto “SOS”
+    div [230.75, 762, 72×43] 
+      svg [253.75, 762, 26×26] 
+      span [248.23, 792, 37.02×13] font:700 11.5px/normal normal color:rgb(242, 240, 236) wrap:auto “Library”
+    div [307, 762, 72×43] 
+      svg [330, 762, 26×26] 
+      span [322.66, 792, 40.69×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Journey”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

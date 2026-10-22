@@ -9,6 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 
+import { CLOCK } from './common.mjs';
+
 const DIR = '.overhaul';
 const OUT = 'pixel-diff/seeds';
 const filter = process.argv[2] ?? '';
@@ -25,7 +27,8 @@ for (const f of files) {
     removeItem: (k) => { delete bag[k]; },
     clear: () => { for (const k of Object.keys(bag)) delete bag[k]; },
   });
-  const clockOf = (src.match(/window\.__CLOCK\s*=\s*['"]([^'"]+)['"]/) ?? [])[1] ?? null;
+  // a seed that names no moment of its own is written at the renders' clock (D4), and says so
+  const clockOf = (src.match(/window\.__CLOCK\s*=\s*['"]([^'"]+)['"]/) ?? [])[1] ?? CLOCK.slice(0, 16);
   const RealDate = Date;
   const frozen = clockOf ? new RealDate(clockOf).getTime() : null;
   class FrozenDate extends RealDate {
@@ -45,4 +48,18 @@ for (const f of files) {
   const name = f.replace(/\.js$/, '');
   fs.writeFileSync(path.join(OUT, `${name}.json`), JSON.stringify({ clock: clockOf, kv }, null, 1));
   console.log(`${name}: ${Object.keys(kv).length} keys${clockOf ? `, clock ${clockOf}` : ''}`);
+}
+
+// Seeds whose pledge is the frames' sample sentence, written with that sentence
+// as the user's own (D37): the app never shows the sample itself as anyone's
+// pledge (D475), so these carry it with a zero-width space after it — drawn
+// the same, and not the sample to the app.
+const SAMPLE = 'The mornings are mine again.';
+for (const name of ['day-seed', 'vday-seed-d1', 'today-2000-seed']) {
+  const at = path.join(OUT, `${name}.json`);
+  if (!fs.existsSync(at)) continue;
+  const seed = JSON.parse(fs.readFileSync(at, 'utf8'));
+  for (const k of Object.keys(seed.kv)) seed.kv[k] = seed.kv[k].split(SAMPLE).join(`${SAMPLE}\u200B`);
+  fs.writeFileSync(path.join(OUT, `${name}-own.json`), JSON.stringify(seed, null, 1));
+  console.log(`${name}-own: the sample pledge as his own`);
 }

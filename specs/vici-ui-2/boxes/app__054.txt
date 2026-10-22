@@ -1,0 +1,66 @@
+# Email Login.dc.html · artboard 54 · 20B · Score Detail — What Moved It (Score Detail Moves)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    svg [22, 70, 12×20] 
+    div [259.09, 58, 111.91×44] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto bg:rgb(30, 30, 30) radius:22px “Months”
+      svg [339, 73, 14×14] 
+  div [0, 156, 393×70] font:700 60px/70px normal ls:-2.4px color:rgb(242, 240, 236) align:center wrap:auto “1,240”
+  div [0, 234, 393×18] font:400 14px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “Recovery score”
+  div [0, 266, 393×32] 
+    div [140.09, 266, 112.8×32] font:700 13px/normal normal color:rgb(242, 240, 236) wrap:auto bg:rgb(30, 30, 30) radius:16px “Navigator II”
+      div [154.09, 278, 8×8] bg:rgb(242, 240, 236) radius:4px
+  div [16, 334, 361×313] 
+    div [16, 334, 361×313] bg:rgb(30, 30, 30) radius:24px
+      div [36, 350, 321×44] 
+        span [36, 363, 112×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Clean days”
+        div [162, 366, 137×12] 
+          div [162, 366, 137×12] bg:rgb(242, 240, 236) radius:6px
+        span [313, 363, 44×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “+64”
+      div [36, 394, 321×44] 
+        span [36, 407, 112×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Check-ins”
+        div [162, 410, 137×12] 
+          div [162, 410, 38.36×12] bg:rgb(242, 240, 236) radius:6px
+        span [313, 407, 44×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “+18”
+      div [36, 438, 321×44] 
+        span [36, 451, 112×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Lessons”
+        div [162, 454, 137×12] 
+          div [162, 454, 26.02×12] bg:rgb(242, 240, 236) radius:6px
+        span [313, 451, 44×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “+12”
+      div [36, 482, 321×44] 
+        span [36, 495, 112×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Urges ridden”
+        div [162, 498, 137×12] 
+          div [162, 498, 17.8×12] bg:rgb(242, 240, 236) radius:6px
+        span [313, 495, 44×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “+8”
+      div [36, 526, 321×44] 
+        span [36, 539, 112×18] font:700 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Slip on Jul 8”
+        div [162, 542, 137×12] 
+          div [162, 542, 34.25×12] radius:6px shadow:rgb(242, 240, 236) 0px 0px 0px 1.5px inset
+        span [313, 539, 44×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “−16”
+      div [36, 582, 321×47] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+        span [36, 610.03, 86.61×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Net this month”
+        span [313.55, 597, 43.45×32] font:700 26px/normal normal ls:-0.6px color:rgb(242, 240, 236) wrap:auto “+86”
+  div [0, 748, 393×104] 
+    div [14, 762, 72×43] 
+      svg [37, 762, 26×26] 
+      span [35.03, 792, 29.94×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Today”
+    div [90.25, 762, 72×43] 
+      svg [113.25, 762, 26×26] 
+      span [117.25, 792, 17.98×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Log”
+    div [166.5, 756, 60×60] bg:rgb(242, 240, 236) radius:30px
+      span [184.33, 778, 24.34×16] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto “SOS”
+    div [230.75, 762, 72×43] 
+      svg [253.75, 762, 26×26] 
+      span [248.72, 792, 36.06×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Library”
+    div [307, 762, 72×43] 
+      svg [330, 762, 26×26] 
+      span [322.28, 792, 41.44×13] font:700 11.5px/normal normal color:rgb(242, 240, 236) wrap:auto “Journey”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

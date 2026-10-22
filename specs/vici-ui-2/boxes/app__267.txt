@@ -1,0 +1,88 @@
+# Email Login.dc.html · artboard 267 · 91-2 · Log — Check-ins (Log Check-ins)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+  div [24, 108, 345×38] 
+    div [24, 108, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Your log”
+  div [16, 164, 361×44] 
+    div [16, 164, 361×44] bg:rgb(30, 30, 30) radius:22px
+      div [20, 168, 117.67×36] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto radius:18px “Urges”
+      div [137.67, 168, 117.67×36] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:18px “Check-ins”
+      div [255.34, 168, 117.67×36] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto radius:18px “Reports”
+  div [24, 236, 345×99] 
+    div [161.58, 236, 69.84×67] font:700 64px/67px normal ls:-2.2px color:rgb(242, 240, 236) align:center wrap:auto “12”
+    div [152.89, 313, 87.2×22] font:400 15px/22px normal color:rgb(155, 150, 142) align:center wrap:auto “Days in a row”
+  div [32, 352, 329×59] 
+    div [32, 352, 329×59] 
+      div [32, 352, 36×59] 
+        div [35.2, 352, 29.59×36] 
+          div [35.2, 355.2, 29.59×29.59] bg:rgb(242, 240, 236) radius:50%
+        span [44.88, 398, 10.23×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “M”
+      div [80.83, 352, 36×59] 
+        div [86.23, 352, 25.19×36] 
+          div [86.23, 357.41, 25.19×25.19] bg:rgb(242, 240, 236) radius:50%
+        span [95.55, 398, 6.55×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “T”
+      div [129.66, 352, 36×59] 
+        div [132.86, 352, 29.59×36] 
+          div [132.86, 355.2, 29.59×29.59] bg:rgb(242, 240, 236) radius:50%
+        span [141.89, 398, 11.52×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “W”
+      div [178.48, 352, 36×59] 
+        div [181.69, 352, 29.59×36] 
+          div [181.69, 355.2, 29.59×29.59] bg:rgb(242, 240, 236) radius:50%
+        span [193.2, 398, 6.55×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “T”
+      div [227.31, 352, 36×59] 
+        div [232.72, 352, 25.19×36] 
+          div [232.72, 357.41, 25.19×25.19] bg:rgb(242, 240, 236) radius:50%
+        span [242.22, 398, 6.19×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “F”
+      div [276.14, 352, 36×59] 
+        div [279.34, 352, 29.59×36] 
+          div [279.34, 355.2, 29.59×29.59] bg:rgb(242, 240, 236) radius:50%
+        span [291.19, 398, 5.91×13] font:700 11px/normal normal color:rgb(90, 87, 79) wrap:auto “S”
+      div [324.97, 352, 36×59] 
+        div [328.17, 352, 29.59×36] 
+          div [328.17, 355.2, 29.59×29.59] bg:rgb(242, 240, 236) radius:50%
+        span [340.02, 398, 5.91×13] font:700 11px/normal normal color:rgb(242, 240, 236) wrap:auto “S”
+  div [24, 440, 345×264] 
+    div [24, 440, 345×264] 
+      div [24, 440, 345×264] 
+        div [24, 440, 345×52] 
+          span [26, 457, 40.06×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Today”
+          span [323.8, 457.5, 43.2×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Steady”
+        div [24, 492, 345×53] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [26, 510, 67.28×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Yesterday”
+          span [342.59, 510.5, 24.41×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Flat”
+        div [24, 545, 345×53] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [26, 563, 42.31×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Friday”
+          span [332.97, 563.5, 34.03×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Good”
+        div [24, 598, 345×53] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [26, 616, 62.81×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Thursday”
+          span [332.97, 616.5, 34.03×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Good”
+        div [24, 651, 345×53] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [26, 669, 79.2×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Wednesday”
+          span [334.69, 669.5, 32.31×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Calm”
+  div [0, 748, 393×104] 
+    div [14, 762, 72×43] 
+      svg [37, 762, 26×26] 
+      span [35.03, 792, 29.94×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Today”
+    div [90.25, 762, 72×43] 
+      svg [113.25, 762, 26×26] 
+      span [117.14, 792, 18.22×13] font:700 11.5px/normal normal color:rgb(242, 240, 236) wrap:auto “Log”
+    div [166.5, 756, 60×60] bg:rgb(242, 240, 236) radius:30px
+      span [184.33, 778, 24.34×16] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto “SOS”
+    div [230.75, 762, 72×43] 
+      svg [253.75, 762, 26×26] 
+      span [248.72, 792, 36.06×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Library”
+    div [307, 762, 72×43] 
+      svg [330, 762, 26×26] 
+      span [322.66, 792, 40.69×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Journey”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

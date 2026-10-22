@@ -1,0 +1,36 @@
+# Email Login.dc.html · artboard 276 · 91C5 · Weekly Report — Next week (Weekly Report Next)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  svg [-19.6, 171, 432.3×264] transform:matrix(1.1, 0, 0, 1.1, 0, 0)
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [104.5, 79, 184×2] 
+      div [104.5, 79, 32×2] bg:rgb(242, 240, 236) radius:1px
+      div [142.5, 79, 32×2] bg:rgb(242, 240, 236) radius:1px
+      div [180.5, 79, 32×2] bg:rgb(242, 240, 236) radius:1px
+      div [218.5, 79, 32×2] bg:rgb(242, 240, 236) radius:1px
+      div [256.5, 79, 32×2] bg:rgb(242, 240, 236) radius:1px
+    div [335, 60, 36×40] 
+      svg [353, 71, 18×18] 
+  div [24, 452, 345×105] 
+    div [24, 452, 345×37] font:700 30px/37px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Next up: In the Moment.”
+    div [24, 501, 345×24] font:400 15px/24px normal color:rgb(181, 176, 168) align:center wrap:pretty “Week 3 of the course opens on Monday.”
+    div [68.48, 539, 256.03×18] 
+      div [68.48, 539, 103.03×18] 
+        svg [68.48, 540, 16×16] 
+        span [90.48, 539, 81.03×18] font:400 14px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “Week 3 of 12”
+      div [189.52, 539, 135×18] 
+        svg [189.52, 540, 16×16] 
+        span [211.52, 539, 113×18] font:400 14px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “Score 1,240, up 12”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [176.94, 765.5, 39.11×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Done”
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

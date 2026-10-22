@@ -1,0 +1,24 @@
+# Email Login.dc.html · artboard 68 · 21D7 · Morning — Done (Morning 5 Done)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+    div [335, 60, 36×40] 
+      svg [353, 71, 18×18] 
+  div [0, 288, 393×132] 
+    div [130.5, 288, 132×132] bg:rgb(242, 240, 236) radius:66px
+      svg [168.5, 326, 56×56] 
+  div [24, 458, 345×67] 
+    div [24, 458, 345×33] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Day 13, underway.”
+    div [24, 509, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Pledge re-signed on Day 13”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [176.94, 765.5, 39.11×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Done”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

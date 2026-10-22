@@ -1,0 +1,53 @@
+# Email Login.dc.html · artboard 288 · 92B · Night check-in time (Settings Check-in Time)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [335, 60, 36×40] 
+  div [24, 136, 345×446] 
+    div [24, 136, 345×66] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “When should the nightly check-in come?”
+    div [24, 220, 345×6] 
+    div [24, 244, 345×220] 
+      div [64, 332, 265×44] bg:rgb(30, 30, 30) radius:14px
+      div [74.52, 244, 243.95×220] 
+        div [74.52, 244, 70×220] 
+          div [103.13, 244, 12.77×44] font:400 22px/normal normal color:rgb(46, 46, 46) wrap:auto “8”
+          div [103.13, 288, 12.77×44] font:400 22px/normal normal color:rgb(155, 150, 142) wrap:auto “9”
+          div [92.11, 332, 34.81×44] font:900 30px/normal normal color:rgb(242, 240, 236) wrap:auto “10”
+          div [96.75, 376, 25.53×44] font:400 22px/normal normal color:rgb(155, 150, 142) wrap:auto “11”
+          div [96.75, 420, 25.53×44] font:400 22px/normal normal color:rgb(46, 46, 46) wrap:auto “12”
+        div [156.52, 244, 7.95×220] font:700 30px/normal normal color:rgb(242, 240, 236) wrap:auto “:”
+        div [176.47, 244, 70×220] 
+          div [198.7, 244, 25.53×44] font:400 22px/normal normal color:rgb(46, 46, 46) wrap:auto “28”
+          div [198.7, 288, 25.53×44] font:400 22px/normal normal color:rgb(155, 150, 142) wrap:auto “29”
+          div [194.06, 332, 34.81×44] font:900 30px/normal normal color:rgb(242, 240, 236) wrap:auto “30”
+          div [198.7, 376, 25.53×44] font:400 22px/normal normal color:rgb(155, 150, 142) wrap:auto “31”
+          div [198.7, 420, 25.53×44] font:400 22px/normal normal color:rgb(46, 46, 46) wrap:auto “32”
+        div [258.47, 244, 60×220] 
+          div [288.47, 244, 0×44] 
+          div [270.86, 288, 35.2×44] font:400 22px/normal normal color:rgb(155, 150, 142) wrap:auto “AM”
+          div [264.81, 332, 47.31×44] font:900 30px/normal normal color:rgb(242, 240, 236) wrap:auto “PM”
+          div [288.47, 376, 0×44] 
+          div [288.47, 420, 0×44] 
+    div [24, 482, 345×6] 
+    div [24, 506, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Select days”
+    div [24, 540, 345×42] 
+      div [24, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “Su”
+      div [74.5, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “M”
+      div [125, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “Tu”
+      div [175.5, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “W”
+      div [226, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “Th”
+      div [276.5, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “F”
+      div [327, 540, 42×42] font:700 14px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:21px “Sa”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [161.47, 765.5, 70.05×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Save time”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

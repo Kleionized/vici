@@ -4,9 +4,8 @@ import Svg, { Line } from 'react-native-svg';
 
 import { lhNormal, mono, monoDark, sans, sansItalic } from '@/lib/theme';
 
-import { Quote } from './icons';
+import { Quote, QuoteMark } from './icons';
 import { Tap } from './Tap';
-import { MonoText } from './Text';
 
 const T = (s: TextStyle): TextStyle => s;
 
@@ -15,14 +14,14 @@ const T = (s: TextStyle): TextStyle => s;
  *
  * * `sign` — the signing card (Morning Resign Pledge / Pledge Signed, Slip
  *   Pledge, Relapse Resign): `r24 #1E1E1E padding 24 24 20`, column gap 22 —
- *   caps "Your pledge", the pledge 24/700/33/−0.4, and the signature line:
+ *   the 24 quote mark, the pledge 24/700/33/−0.4, and the signature line:
  *   `padding-top 12; height 44; padding-bottom 8; align-items:flex-end` over a
  *   1.5 rule. Unsigned, the rule is **dashed `#5A574F`** under "Sign here"
  *   15/400 mute; signed, it is **solid ink** under the name in Lato 700 italic
  *   28 (`sansItalic()`).
  * * `quote` — the read-back card (Your Vow Page light, Urge Hub Pledges dark):
  *   a centred quote mark, the pledge, the name in italic below (24 / 22).
- * * `plain` — no card (Today Home III): caps, then the pledge 22/700/31/−0.3
+ * * `plain` — no card (Today Home III): the quote mark, then the pledge 22/700/31/−0.3
  *   and the name in italic 16 mute, gap 10; `children` follow in the same
  *   column (the screen's own buttons).
  */
@@ -93,9 +92,10 @@ export function PledgeCard({
   if (variant === 'plain') {
     return (
       <View style={[{ gap: 10 }, style]}>
-        <MonoText v="caps" style={{ lineHeight: 16 }}>
-          {label}
-        </MonoText>
+        {/* the mark sits 2 left of the column and 7 over the pledge (Today Home III: 22, 408 → 439) */}
+        <View accessibilityLabel={label} style={{ marginLeft: -2, marginBottom: -3 }}>
+          <QuoteMark />
+        </View>
         <Text maxFontSizeMultiplier={1.3} style={T({ ...sans('700'), fontSize: 22, lineHeight: 31, letterSpacing: -0.3, color: mono.ink })}>
           {pledge}
         </Text>
@@ -114,7 +114,10 @@ export function PledgeCard({
   return (
     <View style={[{ borderRadius: 24, backgroundColor: mono.card, paddingTop: 24, paddingHorizontal: 24, paddingBottom: 20 }, style]}>
       <View style={{ gap: 22 }}>
-        <MonoText v="caps">{label}</MonoText>
+        {/* the mark sits in its line's box (27.3 at the card's 15/normal) */}
+        <View accessibilityLabel={label} style={{ height: 27.3 }}>
+          <QuoteMark />
+        </View>
         <Text maxFontSizeMultiplier={1.3} style={T({ ...sans('700'), fontSize: 24, lineHeight: 33, letterSpacing: -0.4, color: mono.ink })}>
           {pledge}
         </Text>

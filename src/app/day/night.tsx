@@ -5,16 +5,18 @@ import { View } from 'react-native';
 import { AddToRecord, CONTROLS, CheckinCover, ClosedLine, RecordRows, Stack, StepStack } from '@/components/day/board';
 import { dayStep } from '@/components/day/kit';
 import { EmotionsBoard, ReasonsBoard } from '@/components/MoodLogger';
-import { GhostLink, Hero, HeroBoard, LoadingView, MonoText, NavBar, NextFab, PrimaryButton, ScaleReading, Screen, TextField, ToneScale } from '@/components/mono';
+import { GhostLink, Hero, HeroBoard, LoadingView, MonoText, MoonGlyph, NavBar, NextFab, PrimaryButton, ScaleReading, Screen, TextField, ToneScale } from '@/components/mono';
 import { lessonForDay } from '@/content/curriculum84';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
 import { MOOD_WORDS, addDays, closingNightKey, isSlip, isSurfed, keyToDate, programmeDay, shiftKey } from '@/lib/day';
 import { countOf, roman } from '@/lib/format';
+import { mono } from '@/lib/theme';
 
 /**
  * The night check-in (today-day §4): a cover, then six steps on the eight
  * dashes — how today was, what it felt like, what caused it, anything worth
- * keeping, today's record read back, and tonight's action — and the close.
+ * keeping, today's record read back, and tonight's action — one thing he is
+ * proud of (`21E5C`, Vici UI 2: the dashes stay full), and the close.
  *
  * Every step now draws Back, the dashes and ✕ (the frames dropped the old
  * rail-less action aside and the two Back-less steps). The rail lights
@@ -29,7 +31,8 @@ const REASONS = 3;
 const REFLECTION = 4;
 const RECORD = 5;
 const ACTION = 6;
-const CLOSED = 7;
+const PROUD = 7;
+const CLOSED = 8;
 
 /** Steps the dashes count: MOOD … ACTION. */
 const RAIL = 6;
@@ -58,6 +61,7 @@ export default function Night() {
   const [reasons, setReasons] = useState<string[]>([]);
   const [reflection, setReflection] = useState('');
   const [action, setAction] = useState(true);
+  const [proud, setProud] = useState('');
 
   // The night this check-in closes, fixed when it opens: before the morning
   // check-in opens (4:30 at the default times) the small hours still belong to
@@ -118,6 +122,8 @@ export default function Night() {
       if (note) {
         await createJournalEntry({ tag: 'Reflection', title: `Day ${day}`, body: note }).catch(() => {});
       }
+      // what he was proud of, when it was written and saved
+      if (proud.trim()) await createJournalEntry({ tag: 'Proud of', title: `Day ${day}`, body: proud.trim() }).catch(() => {});
       // The action lands on the day it is for, not the day it was named: it is
       // set tonight and answered for by the next morning's check-in.
       if (action) {
@@ -152,7 +158,7 @@ export default function Night() {
   const next = () => setStep((s) => s + 1);
   const take = (keep: boolean) => {
     setAction(keep);
-    setStep(CLOSED);
+    setStep(PROUD);
   };
 
   return (
@@ -191,7 +197,9 @@ export default function Night() {
               holds the frame's stack exactly as drawn. */}
           <StepStack gap={14} controls={CONTROLS.primary} hero={{ id: 'notebook', top: 506 }}>
             <MonoText v="h1">Anything to write down?</MonoText>
-            <MonoText v="caps">Optional</MonoText>
+            <MonoText v="pTight" color={mono.mute}>
+              Optional
+            </MonoText>
             <View style={{ height: 6 }} />
             <TextField variant="bare" value={reflection} onChangeText={setReflection} placeholder="Sam called at the right moment…" accessibilityLabel="Anything to write down" />
           </StepStack>
@@ -225,7 +233,9 @@ export default function Night() {
         <>
           {/* The day's lesson title and task: up to two lines over four (L64). */}
           <StepStack gap={14} controls={CONTROLS.ghost} hero={{ id: 'charger', top: 458 }}>
-            <MonoText v="caps">Tomorrow’s action</MonoText>
+            <View accessibilityLabel="Tomorrow’s action" style={{ width: 48, height: 48, borderRadius: 24, backgroundColor: mono.card, alignItems: 'center', justifyContent: 'center' }}>
+              <MoonGlyph />
+            </View>
             <MonoText v="h1">{lessonTitle}</MonoText>
             <MonoText v="p">{task}</MonoText>
           </StepStack>
@@ -234,8 +244,29 @@ export default function Night() {
         </>
       ) : null}
 
+      {step === PROUD ? (
+        <>
+          <StepStack gap={8} controls={CONTROLS.ghost} hero={{ id: 'notebook', top: 458 }}>
+            <MonoText v="h1">One thing you’re proud of today.</MonoText>
+            <MonoText v="pTight" color={mono.mute}>
+              Small things count.
+            </MonoText>
+            <View style={{ height: 16 }} />
+            <TextField variant="journal" value={proud} onChangeText={setProud} accessibilityLabel="One thing you’re proud of today" />
+          </StepStack>
+          <PrimaryButton label="Save" bottom={96} onPress={next} />
+          <GhostLink
+            label="Skip"
+            onPress={() => {
+              setProud('');
+              next();
+            }}
+          />
+        </>
+      ) : null}
+
       {/* Back walks to the cover; the ✕ leaves without saving, as it always has. */}
-      <NavBar left="back" centre={{ step, total: RAIL }} right="close" onBack={() => setStep((s) => s - 1)} onClose={close} />
+      <NavBar left="back" centre={{ step: Math.min(step, RAIL), total: RAIL }} right="close" onBack={() => setStep((s) => s - 1)} onClose={close} />
     </Screen>
   );
 }

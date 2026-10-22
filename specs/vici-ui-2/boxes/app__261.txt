@@ -1,0 +1,59 @@
+# Email Login.dc.html · artboard 261 · 89C · Vici Detail — Bronze (Detail Bronze)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [335, 60, 36×40] 
+      svg [353, 71, 18×18] 
+  div [0, 170, 393×168] 
+    svg [112.5, 170, 168×168] 
+  div [24, 366, 345×126] 
+    div [24, 366, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Vici”
+    div [24, 412, 345×44] font:400 15px/22px normal color:rgb(181, 176, 168) align:center wrap:pretty “Urges met and outlasted — the conquering half of the campaign.”
+    div [196.5, 464, 0×4] 
+    div [165.38, 476, 62.25×16] font:700 13px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Tier II, ×25”
+  div [24, 508, 345×56] 
+    div [24, 508, 345×56] 
+      div [24, 508, 345×30] 
+        div [58.5, 522, 276×2] bg:rgb(46, 46, 46)
+        div [58.5, 522, 69×2] bg:rgb(242, 240, 236)
+        div [24, 508, 345×30] 
+          div [24, 508, 69×30] 
+            div [43.5, 508, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [43.5, 508, 30×30] 
+          div [93, 508, 69×30] 
+            div [112.5, 508, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [112.5, 508, 30×30] 
+          div [162, 508, 69×30] 
+            div [181.5, 508, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [181.5, 508, 30×30] opacity:0.32
+          div [231, 508, 69×30] 
+            div [250.5, 508, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [250.5, 508, 30×30] opacity:0.32
+          div [300, 508, 69×30] 
+            div [319.5, 508, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [319.5, 508, 30×30] opacity:0.32
+      div [24, 548, 345×16] 
+        div [24, 548, 69×16] 
+          span [41.39, 548, 34.22×16] font:700 13px/normal normal color:rgb(242, 240, 236) wrap:auto “Paper”
+        div [93, 548, 69×16] 
+          span [106.69, 548, 41.63×16] font:700 13px/normal normal color:rgb(242, 240, 236) wrap:auto “Bronze”
+        div [162, 548, 69×16] 
+          span [179.98, 548, 33.02×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Silver”
+        div [231, 548, 69×16] 
+          span [251.63, 548, 27.73×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Gold”
+        div [300, 548, 69×16] 
+          span [308.13, 548, 52.75×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Platinum”
+  div [44, 608, 305×56] font:400 18px/28px italic color:rgb(242, 240, 236) align:center wrap:pretty ““Twenty-five behind you now — the pattern is unmistakable.””
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [160.56, 765.5, 71.86×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Share this”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

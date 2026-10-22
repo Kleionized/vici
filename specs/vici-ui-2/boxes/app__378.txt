@@ -1,0 +1,48 @@
+# Email Login.dc.html · artboard 378 · 84 · Lesson — Frame 5 of 14 (Lesson Scroll 5)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.09) 0px 0px 0px 1px, rgba(20, 20, 22, 0.14) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.06
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [22, 60, 18×40] 
+    svg [22, 71, 18×18] 
+  div [0, 60, 393×40] 
+    div [0, 72, 393×16] font:700 13px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Lesson 1”
+  div [24, 108, 345×3] bg:rgb(46, 46, 46) radius:2px
+    div [24, 108, 124.19×3] bg:rgb(242, 240, 236) radius:2px
+  div [32, 140, 329×584] 
+    div [32, 178.5, 329×200] 
+      div [32, 178.5, 329×200] bg:rgb(30, 30, 30) radius:20px
+        div [52, 198.5, 289×16] font:700 13px/16px normal ls:0.2px color:rgb(155, 150, 142) wrap:balance “A familiar evening”
+        div [52, 228.5, 289×130] 
+          div [52, 228.5, 289×70] 
+            div [52, 228.5, 12×70] 
+              div [52, 233.5, 12×12] bg:rgb(242, 240, 236) radius:6px
+              div [57, 250.5, 2×48] bg:rgb(90, 87, 79)
+            div [78, 228.5, 263×70] 
+              div [78, 228.5, 263×22] font:400 15px/22px normal color:rgb(242, 240, 236) wrap:pretty “Get into bed to answer a message”
+              div [78, 258.5, 263×24] 
+                div [78, 258.5, 115.13×24] font:700 13px/16px normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:12px “Change this part”
+          div [52, 298.5, 289×38] 
+            div [52, 298.5, 12×38] 
+              div [52, 303.5, 12×12] radius:6px border:2px rgb(155, 150, 142) / 2px rgb(155, 150, 142)
+              div [57, 320.5, 2×16] bg:rgb(90, 87, 79)
+            div [78, 298.5, 263×38] 
+              div [78, 298.5, 263×22] font:400 15px/22px normal color:rgb(242, 240, 236) wrap:pretty “Check a feed”
+          div [52, 336.5, 289×22] 
+            div [52, 336.5, 12×22] 
+              div [52, 341.5, 12×12] radius:6px border:2px rgb(155, 150, 142) / 2px rgb(155, 150, 142)
+            div [78, 336.5, 263×22] 
+              div [78, 336.5, 263×22] font:400 15px/22px normal color:rgb(242, 240, 236) wrap:pretty “Twenty minutes later, searching”
+    div [32, 406.5, 329×16] font:700 13px/16px normal ls:0.2px color:rgb(155, 150, 142) wrap:balance “Part 2”
+    div [32, 434.5, 329×31] font:700 24px/31px normal ls:-0.4px color:rgb(242, 240, 236) wrap:balance “An earlier moment”
+    div [32, 493.5, 329×168] font:400 18px/28px normal color:rgb(181, 176, 168) wrap:pretty “Think of the evening that usually goes wrong. You get into bed to answer a message. Then you check a feed. Twenty minutes later, you’re searching for something you had decided to stop watching.”
+  div [0, 756, 393×44] 
+    div [174.5, 756, 44×44] radius:22px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      svg [189.5, 771, 14×14] 
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

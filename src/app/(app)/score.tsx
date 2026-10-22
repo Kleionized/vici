@@ -1,9 +1,10 @@
 import { useRouter } from 'expo-router';
-import { useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { Platform, ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Line, Path, Text as SvgText } from 'react-native-svg';
 
 import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
+import { HarnessPages } from '@/dev/HarnessPages';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { calendarDaysBetween, keyToDate, useToday } from '@/lib/day';
 import { dateRange } from '@/lib/format';
@@ -46,6 +47,7 @@ export default function Score() {
   const [range, setRange] = useState<Range>('months');
   const [picking, setPicking] = useState(false);
   const [partsEnd, setPartsEnd] = useState(PARTS_END);
+  const pager = useRef<ScrollView>(null);
   // The screen's clock: still under a re-render, on to the new day with focus,
   // the foreground and midnight (a tab stays mounted).
   const now = useToday();
@@ -85,22 +87,23 @@ export default function Score() {
         }}
       />
 
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 128 }}>
-        <MonoText v="caps" center>
-          Recovery rating
-        </MonoText>
-      </View>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 160 }}>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 156 }}>
         <MonoText v="statValue" center style={{ fontSize: 60, lineHeight: 70, letterSpacing: -2.4 }}>
           {String(rating.value)}
         </MonoText>
       </View>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 248, flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 234 }}>
+        <MonoText v="p" center wrap="nowrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
+          Recovery rating
+        </MonoText>
+      </View>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 266, flexDirection: 'row', justifyContent: 'center' }}>
         <Pill kind="range" dot label={rating.label} />
       </View>
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
-        <ScrollView horizontal pagingEnabled decelerationRate="fast" showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
+        <HarnessPages name="score" pager={pager} pages={[0, W, 2 * W]} horizontal />
+        <ScrollView ref={pager} horizontal pagingEnabled decelerationRate="fast" showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
           <Page W={W} H={pageH} bottom={644}>
             <OverTime W={W} values={history} range={range} now={now} rating={rating} change={change} />
           </Page>
@@ -267,7 +270,7 @@ function smoothPath(pts: { x: number; y: number }[]) {
 /* ----------------------------------------------------------- Score Parts */
 
 /**
- * What the rating is made of (caps at 300, card `left 16 right 16 top 334`,
+ * What the rating is made of (card `left 16 right 16 top 334`,
  * padding 16 20 18): one 44 row per part — label w112, a 12 bar filled to the
  * part's share of its own weight (ink), the part as `26/30` w56 right-aligned
  * — then the rating under a rule, and one plain paragraph under the card on
@@ -283,11 +286,6 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
   const first = rating.building && rating.starting > 0 ? ` In your first week, the days before you started count at your starting score, ${rating.starting}.` : '';
   return (
     <>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>
-        <MonoText v="caps" center>
-          What makes it up
-        </MonoText>
-      </View>
       <View style={{ position: 'absolute', left: 16, right: 16, top: py(334), gap: 20 }} onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height + PAGER_TOP)}>
         <Card padding={[16, 20, 18]}>
           {rating.parts.map((p) => (
@@ -331,7 +329,7 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
 /* ----------------------------------------------------------- Score Bands */
 
 /**
- * The four bands, highest first (caps at 300, card at 334, padding 22 22 20):
+ * The four bands, highest first (card at 334, padding 22 22 20):
  * a 26 disc per band on a rail — bands above the rating a ringed `#1E1E1E`
  * disc on a dashed `#5A574F` rail, the band it is in an ink disc with a dot on
  * a solid ink rail, bands below an ink disc with a check — then the name (900
@@ -348,11 +346,6 @@ function TheBands({ rating }: { rating: Rating }) {
       : 'You’re here.';
   return (
     <>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: py(300) }}>
-        <MonoText v="caps" center>
-          The bands
-        </MonoText>
-      </View>
       <Card padding={[22, 22, 20]} style={{ position: 'absolute', left: 16, right: 16, top: py(334) }}>
         {ladder.map((band, i) => {
           const state = rating.value < band.min ? 'todo' : rating.band.key === band.key ? 'here' : 'done';

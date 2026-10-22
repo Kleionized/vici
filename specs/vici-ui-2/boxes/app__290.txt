@@ -1,0 +1,82 @@
+# Email Login.dc.html · artboard 290 · 92D · Sign out sheet (Sheet Sign Out)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [172.84, 72, 47.31×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Settings”
+    div [335, 60, 36×40] 
+  div [24, 120, 345×649] 
+    div [24, 120, 345×190] 
+      div [24, 120, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Reminders”
+      div [24, 146, 345×164] bg:rgb(30, 30, 30) radius:20px
+        div [24, 146, 345×54] 
+          span [42, 164, 117.5×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Morning check-in”
+          div [273.27, 164.5, 77.73×17] 
+            span [273.27, 164.5, 53.73×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “8:00 AM”
+            svg [337, 166, 14×14] 
+        div [24, 200, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 219, 97.5×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Night check-in”
+          div [274.45, 219.5, 76.55×17] 
+            span [274.45, 219.5, 52.55×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “9:30 PM”
+            svg [337, 221, 14×14] 
+        div [24, 255, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 274, 97.75×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Weekly report”
+          div [242.41, 274.5, 108.59×17] 
+            span [242.41, 274.5, 84.59×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Every Sunday”
+            svg [337, 276, 14×14] 
+    div [24, 328, 345×135] 
+      div [24, 328, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Anchors”
+      div [24, 354, 345×109] bg:rgb(30, 30, 30) radius:20px
+        div [24, 354, 345×54] 
+          span [42, 372, 62.84×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Your vow”
+          div [337, 374, 14×14] 
+            svg [337, 374, 14×14] 
+        div [24, 408, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 427, 72.55×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Your letter”
+          div [225.56, 427.5, 125.44×17] 
+            span [225.56, 427.5, 101.44×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Opens Week XII”
+            svg [337, 429, 14×14] 
+    div [24, 481, 345×135] 
+      div [24, 481, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Privacy”
+      div [24, 507, 345×109] bg:rgb(30, 30, 30) radius:20px
+        div [24, 507, 345×54] 
+          span [42, 525, 58.53×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “App lock”
+          div [280.08, 525.5, 70.92×17] 
+            span [280.08, 525.5, 46.92×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Face ID”
+            svg [337, 527, 14×14] 
+        div [24, 561, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 580, 98.92×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Data & privacy”
+          div [337, 582, 14×14] 
+            svg [337, 582, 14×14] 
+    div [24, 634, 345×135] 
+      div [24, 634, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Account”
+      div [24, 660, 345×109] bg:rgb(30, 30, 30) radius:20px
+        div [24, 660, 345×54] 
+          span [42, 678, 74.14×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Edit profile”
+          div [337, 680, 14×14] 
+            svg [337, 680, 14×14] 
+        div [24, 714, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 733, 139.81×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Manage subscription”
+          div [287.16, 733.5, 63.84×17] 
+            span [287.16, 733.5, 39.84×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Yearly”
+            svg [337, 735, 14×14] 
+  div [0, 786, 393×18] font:400 15px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Sign out”
+  div [0, 0, 393×852] bg:rgba(0, 0, 0, 0.68)
+  div [0, 556, 393×296] bg:rgb(23, 23, 23) radius:28px 28px 0px 0px
+    div [176.5, 566, 40×4] bg:rgb(46, 46, 46) radius:2px
+    div [24, 600, 345×252] 
+      div [24, 600, 345×30] font:700 24px/30px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Sign out?”
+      div [24, 640, 345×46] font:400 15px/23px normal color:rgb(181, 176, 168) wrap:pretty “Your log, letters and medallions stay saved to sam@example.com.”
+  div [24, 698, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [167.61, 717.5, 57.78×19] font:700 16px/normal normal color:rgb(17, 17, 17) wrap:auto “Sign out”
+  div [0, 774, 393×18] font:400 15px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Stay signed in”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

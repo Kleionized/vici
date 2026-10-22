@@ -1,0 +1,78 @@
+# Email Login.dc.html · artboard 270 · 91B · Urge Overview — Scrolled (Urge Overview Scrolled)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [167.33, 72, 34.14×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Urges”
+    div [310.8, 60, 60.19×40] 
+      span [310.8, 72, 44.19×16] font:700 13px/normal normal color:rgb(242, 240, 236) wrap:auto “30 days”
+      svg [360.98, 75, 10×10] 
+  div [24, 120, 345×692] 
+    div [24, 120, 345×262] 
+      div [24, 120, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “What helped”
+      div [24, 146, 345×236] bg:rgb(30, 30, 30) radius:20px
+        div [24, 146, 345×68] 
+          div [34, 156, 64×48] 
+            svg [34, 156, 64×48] 
+          div [112, 159, 211×42] 
+            span [112, 159, 211×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Walk indoors for three minutes”
+            span [112, 183, 211×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “3 times · 4 → 2”
+          svg [337, 173, 14×14] 
+        div [24, 214, 345×84] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          div [34, 232.5, 64×48] 
+            svg [34, 232.5, 64×48] 
+          div [112, 225, 211×63] 
+            span [112, 225, 211×42] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Put the device down for three minutes”
+            span [112, 270, 211×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “2 times · 3 → 2”
+          svg [337, 249.5, 14×14] 
+        div [24, 298, 345×84] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          div [34, 316.5, 64×48] 
+            svg [34, 316.5, 64×48] 
+          div [112, 309, 211×63] 
+            span [112, 309, 211×42] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Sit in a different chair for three minutes”
+            span [112, 354, 211×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “Once · 3 → 1”
+          svg [337, 333.5, 14×14] 
+    div [24, 400, 345×232] 
+      div [24, 400, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Where”
+      div [24, 426, 345×206] bg:rgb(30, 30, 30) radius:20px
+        div [24, 426, 345×68] 
+          div [34, 436, 64×48] 
+            svg [34, 436, 64×48] 
+          div [112, 439, 239×42] 
+            span [112, 439, 239×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Bedroom”
+            span [112, 463, 239×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “5 of 9”
+        div [24, 494, 345×69] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          div [34, 505, 64×48] 
+            svg [34, 505, 64×48] 
+          div [112, 508, 239×42] 
+            span [112, 508, 239×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Desk”
+            span [112, 532, 239×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “3 of 9”
+        div [24, 563, 345×69] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          div [34, 574, 64×48] 
+            svg [34, 574, 64×48] 
+          div [112, 577, 239×42] 
+            span [112, 577, 239×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Bathroom”
+            span [112, 601, 239×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “1 of 9”
+    div [24, 650, 345×162] 
+      div [24, 650, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Slips”
+      div [24, 676, 345×136] bg:rgb(30, 30, 30) radius:20px
+        div [24, 676, 345×68] 
+          div [42, 689, 281×42] 
+            span [42, 689, 281×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Jul 19, 11:52 pm”
+            span [42, 713, 281×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “Late night, boredom · in bed”
+          svg [337, 703, 14×14] 
+        div [24, 744, 345×68] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          div [42, 757.5, 281×42] 
+            span [42, 757.5, 281×21] font:700 15px/21px normal color:rgb(242, 240, 236) wrap:pretty “Jul 13, 12:30 am”
+            span [42, 781.5, 281×18] font:400 13px/18px normal color:rgb(155, 150, 142) wrap:pretty “Stress · in bed”
+          svg [337, 771.5, 14×14] 
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

@@ -1,0 +1,28 @@
+# Email Login.dc.html · artboard 289 · 92C · Your vow (Your Vow Page)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [169.27, 72, 54.47×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Your vow”
+    div [335, 60, 36×40] 
+  svg [-19.6, 85, 432.3×264] transform:matrix(1.1, 0, 0, 1.1, 0, 0)
+  div [24, 340, 345×285.5] 
+    div [24, 340, 345×102] font:700 26px/34px normal ls:-0.6px color:rgb(242, 240, 236) wrap:pretty “I’m done letting the wave decide. One evening at a time, I take the watch back.”
+    div [24, 478, 345×69.5] 
+      div [24, 478, 345×30] font:700 26px/30px italic color:rgb(242, 240, 236) wrap:auto “Jerry”
+      div [24, 518, 345×1.5] bg:rgb(58, 56, 53)
+      div [24, 529.5, 345×18] 
+        span [24, 529.5, 80.97×18] font:700 13px/18px normal color:rgb(155, 150, 142) wrap:auto “Signed Apr 18”
+        span [274.81, 529.5, 94.19×18] font:700 13px/18px normal color:rgb(155, 150, 142) wrap:auto “Held for 92 days”
+    div [24, 583.5, 345×42] font:400 14px/21px normal color:rgb(155, 150, 142) wrap:pretty “After a relapse you can re-sign the vow. It resets the promise, never the progress.”
+  div [0, 786, 393×18] font:400 15px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Re-sign the vow”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

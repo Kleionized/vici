@@ -118,6 +118,64 @@ export function Quote({ color = mono.art }: IconProps) {
   );
 }
 
+/** The calendar page: the check-in covers' day, the task card's "Yesterday", 16. */
+export function CalendarGlyph({ color = mono.mute, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Rect x={3.5} y={5} width={17} height={15.5} rx={2.5} stroke={color} strokeWidth={1.8} {...R} />
+      <Path d="M3.5 10h17M8 3v4M16 3v4" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
+/** The clock face: the check-in covers' "2 min", 16. */
+export function ClockGlyph({ color = mono.mute, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.8} {...R} />
+      <Path d="M12 7v5l3.2 2" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
+/** The crescent moon: the night's action disc, 22. */
+export function MoonGlyph({ color = mono.ink, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
+/** The sun: Today's "This morning" caption, 16. */
+export function Sun({ color = mono.mute, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={4} stroke={color} strokeWidth={1.8} {...R} />
+      <Path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
+/** A tick in a ring: Today's "Today's task" caption, 16. */
+export function CheckCircle({ color = mono.mute, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.8} {...R} />
+      <Path d="M8 12.3l2.7 2.7L16 9.6" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
+/** The quotation mark that heads a pledge (Today Home III, the morning's pledge), 24. */
+export function QuoteMark({ color = mono.art, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 18.5c0-5 1.8-8.6 5.4-10.8l1.1 1.7c-2.1 1.5-3.2 3.3-3.4 5.3H10.5v3.8zM13.5 18.5c0-5 1.8-8.6 5.4-10.8l1.1 1.7c-2.1 1.5-3.2 3.3-3.4 5.3H20v3.8z" fill={color} />
+    </Svg>
+  );
+}
+
 /** The open book (a lesson): Day 0's lesson card at 20, Today's lesson labels at 16. */
 export function Book({ color = mono.ink, size = 20 }: IconProps) {
   return (

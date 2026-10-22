@@ -1,9 +1,9 @@
 import { useState, type ReactNode } from 'react';
 import { Text, View } from 'react-native';
 
-import { Card, CheckDisc, CheckRow, CheckRows, Hero, HeroBoard, heroArtTop, MonoText, ScrollRegion, Tap } from '@/components/mono';
+import { CalendarGlyph, Card, CheckDisc, CheckRow, CheckRows, ClockGlyph, Hero, HeroBoard, heroArtTop, MonoText, ScrollRegion, Tap } from '@/components/mono';
 import type { HeroKey } from '@/content/heroes';
-import { mono, ring, sans } from '@/lib/theme';
+import { mono, monoDark, ring, sans } from '@/lib/theme';
 
 /**
  * The morning and night check-ins on the overhaul's mono kit (today-day §3–§4).
@@ -59,15 +59,16 @@ export function StepStack({
   gap: number;
   /** what the step's bottom controls take off the screen edge (`CONTROLS`) */
   controls: number;
-  hero: { id: HeroKey; top: number; scale?: number };
+  /** the decorative art under the stack; the journal steps draw none */
+  hero?: { id: HeroKey; top: number; scale?: number };
   children?: ReactNode;
 }) {
   // Drawn until the stack is measured, so the frames' boards never flash without their art.
   const [height, setHeight] = useState(0);
-  const clear = height === 0 || 136 + height + 16 <= heroArtTop(hero.id, hero.top, hero.scale);
+  const clear = !!hero && (height === 0 || 136 + height + 16 <= heroArtTop(hero.id, hero.top, hero.scale));
   return (
     <>
-      {clear ? <Hero id={hero.id} top={hero.top} scale={hero.scale} controls={controls} /> : null}
+      {clear && hero ? <Hero id={hero.id} top={hero.top} scale={hero.scale} controls={controls} /> : null}
       {/* The band runs down to the controls' top and keeps its 16 as padding, so
           the last row of a stack that only just overflows (L58's seven lines over
           Yes / Not yet at 375 × 667) shows whole at rest instead of being cut by
@@ -83,8 +84,9 @@ export function StepStack({
 
 /**
  * The covers (Morning / Night Check-in Cover): close only, the hero at 190,
- * caps over the 34/40 title at 452, gap 12, and "Begin". The night one is the
- * dark `#111111` shell with the white pill.
+ * the 34/40 title at 452 over the day and the time it takes (16 glyphs, 14/400
+ * mute, gap 18), gap 12, and "Begin". The night one is the dark `#111111`
+ * shell with the white pill and the row in white at 0.55.
  */
 export function CheckinCover({ part, day, onBegin, onClose }: { part: 'morning' | 'night'; day: number; onBegin: () => void; onClose: () => void }) {
   const night = part === 'night';
@@ -94,8 +96,8 @@ export function CheckinCover({ part, day, onBegin, onClose }: { part: 'morning' 
       nav={{ left: 'empty', right: 'close', onClose }}
       hero={night ? 'nightMoon' : 'sunrise'}
       gap={12}
-      caps={`Day ${day}, about two minutes`}
       title={night ? 'Night check-in.' : 'Morning check-in.'}
+      extra={<CoverFacts day={day} color={night ? monoDark.caps : mono.mute} />}
       titleSize={34}
       cta="Begin"
       onCta={onBegin}
@@ -103,18 +105,41 @@ export function CheckinCover({ part, day, onBegin, onClose }: { part: 'morning' 
   );
 }
 
+/** The covers' row: the programme day and the time a check-in takes. */
+function CoverFacts({ day, color }: { day: number; color: string }) {
+  const fact = (glyph: ReactNode, words: string) => (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+      {glyph}
+      <MonoText v="p" wrap="nowrap" color={color} style={{ fontSize: 14, lineHeight: 18 }}>
+        {words}
+      </MonoText>
+    </View>
+  );
+  return (
+    <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 18 }}>
+      {fact(<CalendarGlyph color={color} />, `Day ${day}`)}
+      {fact(<ClockGlyph color={color} />, '2 min')}
+    </View>
+  );
+}
+
 /**
- * Morning Task Check's card: `r24 #1E1E1E padding 22`, column gap 8 — the
- * caps "Yesterday" and the task sentence 19/700/28 ink.
+ * Morning Task Check's card: `r24 #1E1E1E padding 22`, column gap 12 — the
+ * task sentence 19/700/28 ink over the day it was for (a 16 calendar, 14/400 mute).
  */
 export function TaskCard({ label, sentence }: { label: string; sentence: string }) {
   return (
     <Card padding={22}>
-      <View style={{ gap: 8 }}>
-        <MonoText v="caps">{label}</MonoText>
+      <View style={{ gap: 12 }}>
         <MonoText v="rowLabel" wrap="wrap" style={{ fontSize: 19, lineHeight: 28 }}>
           {sentence}
         </MonoText>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <CalendarGlyph />
+          <MonoText v="p" wrap="nowrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
+            {label}
+          </MonoText>
+        </View>
       </View>
     </Card>
   );

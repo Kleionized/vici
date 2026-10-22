@@ -1,0 +1,44 @@
+# Email Login.dc.html · artboard 259 · 88Q · Tiers — One-offs (Tiers One-offs)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+  div [24, 108, 345×38] 
+    div [24, 108, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Earned once”
+  div [24, 160, 345×22] 
+    div [24, 160, 345×22] font:400 15px/22px normal color:rgb(181, 176, 168) wrap:pretty “One tier. Kept for good.”
+  div [32, 240, 329×360] 
+    div [32, 240, 156.5×158] 
+      svg [68.25, 240, 84×84] 
+      div [52.27, 336, 115.95×62] 
+        span [52.27, 336, 115.95×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Veni”
+        span [52.27, 360, 115.95×18] font:400 13px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “Finished onboarding”
+        span [52.27, 383, 115.95×15] font:700 12px/normal normal color:rgb(181, 176, 168) align:center wrap:auto “Jun 9”
+    div [204.5, 240, 156.5×158] 
+      svg [240.75, 240, 84×84] 
+      div [233.78, 336, 97.94×62] 
+        span [233.78, 336, 97.94×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “First light”
+        span [233.78, 360, 97.94×18] font:400 13px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “The first check-in”
+        span [233.78, 383, 97.94×15] font:700 12px/normal normal color:rgb(181, 176, 168) align:center wrap:auto “Jun 9”
+    div [32, 442, 156.5×158] 
+      svg [68.25, 442, 84×84] 
+      div [65.83, 538, 88.84×62] 
+        span [65.83, 538, 88.84×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Black Box”
+        span [65.83, 562, 88.84×18] font:400 13px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “First slip logged”
+        span [65.83, 585, 88.84×15] font:700 12px/normal normal color:rgb(181, 176, 168) align:center wrap:auto “Jul 20”
+    div [204.5, 442, 156.5×158] 
+      svg [240.75, 442, 84×84] opacity:0.32
+      div [214.59, 538, 136.31×62] 
+        span [214.59, 538, 136.31×21] font:700 17px/normal normal ls:-0.2px color:rgb(155, 150, 142) align:center wrap:auto “Return”
+        span [214.59, 562, 136.31×18] font:400 13px/18px normal color:rgb(155, 150, 142) align:center wrap:auto “Back after 7+ days away”
+        span [214.59, 585, 136.31×15] font:700 12px/normal normal color:rgb(90, 87, 79) align:center wrap:auto “Not yet”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

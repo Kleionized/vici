@@ -5,7 +5,7 @@ Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline c
 
 Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
 
-Rows: 2182 · NOT_STARTED 1699 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 475 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
+Rows: 2182 · NOT_STARTED 1671 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 503 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
 
 | id | design file | artboard | app file | spec | harness | status | diff | verified | note |
 |---|---|---|---|---|---|---|---|---|---|
@@ -313,34 +313,34 @@ Rows: 2182 · NOT_STARTED 1699 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__047__11b-paywall-three-days-free | Email Login.dc.html | 11B · Paywall — Three Days Free | src/components/paywall/PaywallFlow.tsx | specs/vici-ui-2/onboarding.md | /paywall?stage=rescue · seed v-premium-seed | DIFF_CLEAN | 0.993 % | 2026-10-22 | way out, terms, store line kept (D31); copy (D28) |
 | app__048__11c-paywall-confirmed | Email Login.dc.html | 11C · Paywall — Confirmed | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /paywall?stage=confirmed · seed v-premium-seed | DIFF_CLEAN | 0.843 % | 2026-10-22 | way out, terms, store line kept (D31); copy (D28) |
 | app__049__15-manage-subscription | Email Login.dc.html | 15 · Manage Subscription | src/components/paywall/PaywallFlow.tsx | specs/vici-ui-2/onboarding.md | /subscription · seed f-pw-sub-dated · clock 2026-07-10T09:41:00 | DIFF_CLEAN | 0.066 % | 2026-10-22 | clock 10 Jul 2026 so the renewal date is the frame's |
-| app__050__19b-morning-check-in-time | Email Login.dc.html | 19B · Morning check-in time |  |  |  | NOT_STARTED |  |  |  |
-| app__051__19c-nightly-check-in-time | Email Login.dc.html | 19C · Nightly check-in time |  |  |  | NOT_STARTED |  |  |  |
-| app__052__21-today | Email Login.dc.html | 21 · Today |  |  |  | NOT_STARTED |  |  |  |
-| app__053__21b-score-detail | Email Login.dc.html | 21B · Score Detail |  |  |  | NOT_STARTED |  |  |  |
-| app__054__20b-score-detail-what-moved-it | Email Login.dc.html | 20B · Score Detail — What Moved It |  |  |  | NOT_STARTED |  |  |  |
-| app__055__20c-score-detail-ranks | Email Login.dc.html | 20C · Score Detail — Ranks |  |  |  | NOT_STARTED |  |  |  |
-| app__056__21-today-p2 | Email Login.dc.html | 21 · Today — p2 |  |  |  | NOT_STARTED |  |  |  |
-| app__057__21p2b-today-task-summary | Email Login.dc.html | 21p2B · Today — Task summary |  |  |  | NOT_STARTED |  |  |  |
-| app__058__21-today-p3 | Email Login.dc.html | 21 · Today — p3 |  |  |  | NOT_STARTED |  |  |  |
-| app__059__21d0-morning-check-in | Email Login.dc.html | 21D0 · Morning — Check-in |  |  |  | NOT_STARTED |  |  |  |
-| app__060__21d1-morning-yesterdays-task | Email Login.dc.html | 21D1 · Morning — Yesterday’s task |  |  |  | NOT_STARTED |  |  |  |
-| app__061__21d2-morning-yesterday | Email Login.dc.html | 21D2 · Morning — Yesterday |  |  |  | NOT_STARTED |  |  |  |
-| app__062__21d3-morning-feeling | Email Login.dc.html | 21D3 · Morning — Feeling |  |  |  | NOT_STARTED |  |  |  |
-| app__063__21d4-morning-energy | Email Login.dc.html | 21D4 · Morning — Energy |  |  |  | NOT_STARTED |  |  |  |
-| app__064__21d5-morning-re-sign-your-pledge | Email Login.dc.html | 21D5 · Morning — Re-sign your pledge |  |  |  | NOT_STARTED |  |  |  |
-| app__065__21d5b-morning-pledge-signed | Email Login.dc.html | 21D5B · Morning — Pledge signed |  |  |  | NOT_STARTED |  |  |  |
-| app__066__21d6-morning-change-the-pledge | Email Login.dc.html | 21D6 · Morning — Change the pledge |  |  |  | NOT_STARTED |  |  |  |
-| app__067__21d6b-morning-one-goal | Email Login.dc.html | 21D6B · Morning — One goal |  |  |  | NOT_STARTED |  |  |  |
-| app__068__21d7-morning-done | Email Login.dc.html | 21D7 · Morning — Done |  |  |  | NOT_STARTED |  |  |  |
-| app__069__21e0-night-check-in | Email Login.dc.html | 21E0 · Night — Check-in |  |  |  | NOT_STARTED |  |  |  |
-| app__070__21e1-night-how-was-today | Email Login.dc.html | 21E1 · Night — How was today |  |  |  | NOT_STARTED |  |  |  |
-| app__071__21e2-night-emotions | Email Login.dc.html | 21E2 · Night — Emotions |  |  |  | NOT_STARTED |  |  |  |
-| app__072__21e3-night-what-caused-it | Email Login.dc.html | 21E3 · Night — What caused it |  |  |  | NOT_STARTED |  |  |  |
-| app__073__21e4-night-reflection | Email Login.dc.html | 21E4 · Night — Reflection |  |  |  | NOT_STARTED |  |  |  |
-| app__074__21e5-night-record | Email Login.dc.html | 21E5 · Night — Record |  |  |  | NOT_STARTED |  |  |  |
-| app__075__21e5b-night-tonights-action | Email Login.dc.html | 21E5B · Night — Tonight’s action |  |  |  | NOT_STARTED |  |  |  |
-| app__076__21e5c-night-proud-of | Email Login.dc.html | 21E5C · Night — Proud of |  |  |  | NOT_STARTED |  |  |  |
-| app__077__21e6-night-closed | Email Login.dc.html | 21E6 · Night — Closed |  |  |  | NOT_STARTED |  |  |  |
+| app__050__19b-morning-check-in-time | Email Login.dc.html | 19B · Morning check-in time | src/components/routines/kit.tsx | specs/vici-ui-2/today-checkins.md | /routines/morning-time · seed v-premium-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| app__051__19c-nightly-check-in-time | Email Login.dc.html | 19C · Nightly check-in time | src/components/routines/kit.tsx | specs/vici-ui-2/today-checkins.md | /routines/night-time · seed v-premium-seed | DIFF_CLEAN | 0.349 % | 2026-10-22 |  |
+| app__052__21-today | Email Login.dc.html | 21 · Today | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-0900-seed | DIFF_CLEAN | 5.168 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
+| app__053__21b-score-detail | Email Login.dc.html | 21B · Score Detail | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 2.145 % | 2026-10-22 | app rating model (D30) |
+| app__054__20b-score-detail-what-moved-it | Email Login.dc.html | 20B · Score Detail — What Moved It | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 3.276 % | 2026-10-22 | app rating model (D30) |
+| app__055__20c-score-detail-ranks | Email Login.dc.html | 20C · Score Detail — Ranks | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 2.397 % | 2026-10-22 | app rating model (D30) |
+| app__056__21-today-p2 | Email Login.dc.html | 21 · Today — p2 | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-ii-seed | DIFF_CLEAN | 0.953 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
+| app__057__21p2b-today-task-summary | Email Login.dc.html | 21p2B · Today — Task summary | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-task-seed | DIFF_CLEAN | 1.004 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
+| app__058__21-today-p3 | Email Login.dc.html | 21 · Today — p3 | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-2000-seed-own | DIFF_CLEAN | 0.741 % | 2026-10-22 | fixture pledge (D37); rating data (D30) |
+| app__059__21d0-morning-check-in | Email Login.dc.html | 21D0 · Morning — Check-in | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| app__060__21d1-morning-yesterdays-task | Email Login.dc.html | 21D1 · Morning — Yesterday’s task | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed | DIFF_CLEAN | 0.346 % | 2026-10-22 | kept copy (D28); fixture pledge (D37) |
+| app__061__21d2-morning-yesterday | Email Login.dc.html | 21D2 · Morning — Yesterday | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 |  |
+| app__062__21d3-morning-feeling | Email Login.dc.html | 21D3 · Morning — Feeling | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| app__063__21d4-morning-energy | Email Login.dc.html | 21D4 · Morning — Energy | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| app__064__21d5-morning-re-sign-your-pledge | Email Login.dc.html | 21D5 · Morning — Re-sign your pledge | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.173 % | 2026-10-22 | kept copy (D28); fixture pledge (D37) |
+| app__065__21d5b-morning-pledge-signed | Email Login.dc.html | 21D5B · Morning — Pledge signed | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.127 % | 2026-10-22 | kept copy (D28); fixture pledge (D37) |
+| app__066__21d6-morning-change-the-pledge | Email Login.dc.html | 21D6 · Morning — Change the pledge | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.497 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__067__21d6b-morning-one-goal | Email Login.dc.html | 21D6B · Morning — One goal | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.264 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__068__21d7-morning-done | Email Login.dc.html | 21D7 · Morning — Done | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| app__069__21e0-night-check-in | Email Login.dc.html | 21E0 · Night — Check-in | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| app__070__21e1-night-how-was-today | Email Login.dc.html | 21E1 · Night — How was today | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.328 % | 2026-10-22 |  |
+| app__071__21e2-night-emotions | Email Login.dc.html | 21E2 · Night — Emotions | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.088 % | 2026-10-22 |  |
+| app__072__21e3-night-what-caused-it | Email Login.dc.html | 21E3 · Night — What caused it | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.132 % | 2026-10-22 |  |
+| app__073__21e4-night-reflection | Email Login.dc.html | 21E4 · Night — Reflection | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.641 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__074__21e5-night-record | Email Login.dc.html | 21E5 · Night — Record | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.355 % | 2026-10-22 |  |
+| app__075__21e5b-night-tonights-action | Email Login.dc.html | 21E5B · Night — Tonight’s action | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed vday-seed-d1-own | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| app__076__21e5c-night-proud-of | Email Login.dc.html | 21E5C · Night — Proud of | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.308 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__077__21e6-night-closed | Email Login.dc.html | 21E6 · Night — Closed | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
 | app__078__92a-week-i-reset-i | Email Login.dc.html | 92A · Week I — Reset · i |  |  |  | NOT_STARTED |  |  |  |
 | app__079__92a2-week-i-reset-ii | Email Login.dc.html | 92A2 · Week I — Reset · ii |  |  |  | NOT_STARTED |  |  |  |
 | app__080__92b-week-ii-changing-your-mindset-i | Email Login.dc.html | 92B · Week II — Changing Your Mindset · i |  |  |  | NOT_STARTED |  |  |  |

@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { Pressable, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
+import { useHarnessPress } from '@/dev/harnessRegistry';
+
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export interface PressScaleProps extends Omit<PressableProps, 'children' | 'style'> {
@@ -14,6 +16,8 @@ export interface PressScaleProps extends Omit<PressableProps, 'children' | 'styl
 /** Interruptible tactile press motion shared by primary controls. */
 export function PressScale({ children, disabled, static: isStatic = false, onPressIn, onPressOut, style, ...rest }: PressScaleProps) {
   const scale = useSharedValue(1);
+  // the capture harness presses controls by their label (development harness builds only)
+  useHarnessPress(rest.accessibilityLabel ?? undefined, children, rest.onPress ? () => rest.onPress?.(undefined as never) : undefined, disabled);
   const animatedStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
 
   return (

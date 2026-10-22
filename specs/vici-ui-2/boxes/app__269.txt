@@ -1,0 +1,44 @@
+# Email Login.dc.html · artboard 269 · 91A · Urge Overview (Urge Overview)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  svg [27.44, 122.6, 337.98×206.4] transform:matrix(0.86, 0, 0, 0.86, 0, 0)
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [167.33, 72, 34.14×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Urges”
+    div [310.8, 60, 60.19×40] 
+      span [310.8, 72, 44.19×16] font:700 13px/normal normal color:rgb(242, 240, 236) wrap:auto “30 days”
+      svg [360.98, 75, 10×10] 
+  div [24, 318, 345×97] 
+    div [24, 318, 345×37] font:700 30px/37px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Most come late at night.”
+    div [24, 367, 345×48] font:400 15px/24px normal color:rgb(181, 176, 168) align:center wrap:pretty “5 of your 9 urges in the last 30 days came between 11 pm and 1 am.”
+  div [24, 436, 345×229] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+    div [24, 437, 345×57] border:0px rgb(0, 0, 0) / 1px rgb(46, 46, 46)
+      span [24, 456, 63.84×18] font:400 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Usually in”
+      div [282.84, 456, 86.16×18] 
+        span [282.84, 456, 62.16×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “Bedroom”
+        svg [355, 458, 14×14] 
+    div [24, 494, 345×57] border:0px rgb(0, 0, 0) / 1px rgb(46, 46, 46)
+      span [24, 513, 61.52×18] font:400 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Set off by”
+      div [303.89, 513, 65.11×18] 
+        span [303.89, 513, 41.11×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “Stress”
+        svg [355, 515, 14×14] 
+    div [24, 551, 345×57] border:0px rgb(0, 0, 0) / 1px rgb(46, 46, 46)
+      span [24, 570, 83.23×18] font:400 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Helped most”
+      div [235.72, 570, 133.28×18] 
+        span [235.72, 570, 109.28×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “Walking indoors”
+        svg [355, 572, 14×14] 
+    div [24, 608, 345×57] border:0px rgb(0, 0, 0) / 1px rgb(46, 46, 46)
+      span [24, 627, 107.08×18] font:400 15px/normal normal color:rgb(155, 150, 142) wrap:auto “How they ended”
+      div [216.22, 627, 152.78×18] 
+        span [216.22, 627, 128.78×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:right wrap:auto “7 ridden out, 2 slips”
+        svg [355, 629, 14×14] 
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

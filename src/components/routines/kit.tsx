@@ -7,8 +7,8 @@ import type { CheckinKind, TimeOfDay } from '@/lib/routines';
 /**
  * `Morning Check-in Time` / `Nightly Check-in Time` (and `Settings Check-in
  * Time`, which the canvas draws byte-identical to the nightly one) are one
- * board: the back chevron, a left question at 136, "Select time" over the
- * kit wheel, "Select days" over the seven toggles, and "Save time" at the
+ * board: the back chevron, a left question at 136, the kit wheel at 244,
+ * "Select days" over the seven toggles, and "Save time" at the
  * frame's bottom 48. Only the question and which time it writes differ.
  *
  * The stack is the frame's own `stack(136, gap 18)` with its two 6-tall
@@ -74,8 +74,6 @@ export function CheckinTimeBoard({
           <MonoText v="h1">{checkinQuestion(kind)}</MonoText>
           {/* 18 + the frame's 6 spacer + 18 */}
           <Slack h={42} />
-          <MonoText v="caps">Select time</MonoText>
-          <View style={{ height: 18 }} />
           {/* answered synchronously: the wheel rolls back to whatever `value` holds after a settle */}
           <TimeWheel value={toWheel(time)} onChange={(next) => onTime(fromWheel(next))} />
           <Slack h={42} />

@@ -1,0 +1,69 @@
+# Email Login.dc.html · artboard 243 · 88 · Medallions (Medallions)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+  div [24, 108, 345×38] 
+    div [24, 108, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Medallions”
+  div [16, 164, 361×44] 
+    div [16, 164, 361×44] bg:rgb(30, 30, 30) radius:22px
+      div [20, 168, 176.5×36] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:18px “Earned”
+      div [196.5, 168, 176.5×36] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto radius:18px “Still to earn”
+  div [0, 238, 393×22] 
+    div [0, 238, 393×22] font:700 13px/22px normal color:rgb(155, 150, 142) align:center wrap:auto “10 of 12 earned”
+  div [24, 288, 345×254] 
+    div [24, 288, 109.66×109] 
+      svg [46.83, 288, 64×64] 
+      div [64.05, 362, 29.55×35] 
+        span [64.05, 362, 29.55×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Veni”
+        span [64.05, 382, 29.55×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Jun 9”
+    div [141.66, 288, 109.67×109] 
+      svg [164.48, 288, 64×64] 
+      div [165.53, 362, 61.91×35] 
+        span [165.53, 362, 61.91×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “First light”
+        span [165.53, 382, 61.91×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Jun 9”
+    div [259.33, 288, 109.67×109] 
+      svg [282.16, 288, 64×64] 
+      div [282.39, 362, 63.53×35] 
+        span [282.39, 362, 63.53×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Vidi”
+        span [282.39, 382, 63.53×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Tier I, Day 7”
+    div [24, 433, 109.66×109] 
+      svg [46.83, 433, 64×64] 
+      div [55.45, 507, 46.73×35] 
+        span [55.45, 507, 46.73×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Vici”
+        span [55.45, 527, 46.73×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Tier I, ×5”
+    div [141.66, 433, 109.67×109] 
+      svg [164.48, 433, 64×64] 
+      div [157.63, 507, 77.72×35] 
+        span [157.63, 507, 77.72×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Breakwater”
+        span [157.63, 527, 77.72×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Tier I, ×1”
+    div [259.33, 433, 109.67×109] 
+      svg [282.16, 433, 64×64] 
+      div [284.59, 507, 59.13×35] 
+        span [284.59, 507, 59.13×18] font:700 15px/normal normal ls:-0.2px color:rgb(242, 240, 236) align:center wrap:auto “Rebound”
+        span [284.59, 527, 59.13×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Tier I, ×1”
+  div [0, 748, 393×104] 
+    div [14, 762, 72×43] 
+      svg [37, 762, 26×26] 
+      span [35.03, 792, 29.94×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Today”
+    div [90.25, 762, 72×43] 
+      svg [113.25, 762, 26×26] 
+      span [117.25, 792, 17.98×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Log”
+    div [166.5, 756, 60×60] bg:rgb(242, 240, 236) radius:30px
+      span [184.33, 778, 24.34×16] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto “SOS”
+    div [230.75, 762, 72×43] 
+      svg [253.75, 762, 26×26] 
+      span [248.72, 792, 36.06×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Library”
+    div [307, 762, 72×43] 
+      svg [330, 762, 26×26] 
+      span [322.28, 792, 41.44×13] font:700 11.5px/normal normal color:rgb(242, 240, 236) wrap:auto “Journey”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

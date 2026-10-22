@@ -51,6 +51,50 @@ const ROUTES = {
   'Paywall Confirmed': { route: '/paywall?stage=confirmed', seed: 'v-premium-seed' },
 };
 
+// the app canvas's other boards: route, seed, and the steps that reach the frame's state (D35)
+const MORNING = ['tap:Begin', 'wait:700', 'tap:Yes', 'wait:300'];
+const M1 = [...MORNING, 'tap:Next', 'wait:700'];
+const M2 = [...M1, 'tap:Continue', 'wait:600'];
+const M3 = [...M2, 'tap:Continue', 'wait:600'];
+const M4 = [...M3, 'tap:Continue', 'wait:700'];
+const NIGHT = ['tap:Begin', 'wait:800'];
+const N1 = [...NIGHT, 'tap:Continue', 'wait:700', 'tap:Calm', 'wait:300'];
+const N2 = [...N1, 'tap:Next', 'wait:700'];
+const N3 = [...N2, 'tap:Loneliness', 'wait:300', 'tap:Next', 'wait:800'];
+const N4 = [...N3, 'tap:Continue', 'wait:900'];
+const SCREENS = {
+  'Morning Check-in Time': { route: '/routines/morning-time', seed: 'v-premium-seed' },
+  'Nightly Check-in Time': { route: '/routines/night-time', seed: 'v-premium-seed' },
+  'Today Home': { route: '/today', seed: 'today-0900-seed' },
+  'Today Home II': { route: '/today', seed: 'today-ii-seed', steps: ['wait:600', 'page:today:1'] },
+  'Today Home Task': { route: '/today', seed: 'today-task-seed', steps: ['wait:600', 'page:today:1'] },
+  'Today Home III': { route: '/today', seed: 'today-2000-seed-own', steps: ['wait:600', 'page:today:2'] },
+  'Score Detail': { route: '/score', seed: 'today-0900-seed' },
+  'Score Detail Moves': { route: '/score', seed: 'today-0900-seed', steps: ['wait:600', 'page:score:1'] },
+  'Score Detail Ranks': { route: '/score', seed: 'today-0900-seed', steps: ['wait:600', 'page:score:2'] },
+  'Morning Check-in Cover': { route: '/day/morning', seed: 'day-seed-own' },
+  'Morning Task Check': { route: '/day/morning', seed: 'day-seed-own', steps: MORNING },
+  'Morning 1 Yesterday': { route: '/day/morning', seed: 'day-seed-own', steps: M1 },
+  'Morning Feeling': { route: '/day/morning', seed: 'day-seed-own', steps: M2 },
+  'Morning Energy': { route: '/day/morning', seed: 'day-seed-own', steps: M3 },
+  'Morning Resign Pledge': { route: '/day/morning', seed: 'day-seed-own', steps: M4 },
+  'Morning Pledge Signed': { route: '/day/morning', seed: 'day-seed-own', steps: [...M4, 'tap:Sign for today', 'wait:800'] },
+  'Change Pledge Sheet': { route: '/day/morning', seed: 'day-seed-own', steps: [...M4, 'tap:Change the pledge', 'wait:900', 'type:Phone stays out of the bedroom'], blur: true },
+  'Morning Journal Goal': { route: '/day/morning', seed: 'day-seed-own', steps: [...M4, 'tap:Sign for today', 'wait:800', 'tap:Confirm', 'wait:900', 'type:Finish the essay draft before lunch.'], blur: true },
+  'Morning 5 Done': { route: '/day/morning', seed: 'day-seed-own', steps: [...M4, 'tap:Sign for today', 'wait:800', 'tap:Confirm', 'wait:900', 'tap:Skip', 'wait:900'] },
+  'Night Check-in Cover': { route: '/day/night', seed: 'day-seed-own' },
+  'Night 1 Mood': { route: '/day/night', seed: 'day-seed-own', steps: NIGHT },
+  'Checkin Emotions': { route: '/day/night', seed: 'day-seed-own', steps: [...NIGHT, 'tap:Continue', 'wait:700', 'tap:Calm', 'wait:300', 'tap:Tired', 'wait:400'] },
+  'Checkin Reasons': { route: '/day/night', seed: 'day-seed-own', steps: [...N2, 'tap:School / work', 'wait:300', 'tap:Loneliness', 'wait:400'] },
+  'Night 3 Reflection': { route: '/day/night', seed: 'day-seed-own', steps: [...N3, 'type:Sam called at the right moment…'], blur: true },
+  'Night 2 Record': { route: '/day/night', seed: 'day-seed-own', steps: N4 },
+  'Night Action Reminder': { route: '/day/night', seed: 'vday-seed-d1-own', steps: [...N4, 'tap:Continue', 'wait:900'] },
+  'Night Journal Proud': { route: '/day/night', seed: 'day-seed-own', steps: [...N4, 'tap:Continue', 'wait:900', 'tap:Done', 'wait:900', 'type:Went for a run instead of scrolling in bed.'], blur: true },
+  'Night 4 Closed': { route: '/day/night', seed: 'day-seed-own', steps: [...N4, 'tap:Continue', 'wait:900', 'tap:Done', 'wait:900', 'tap:Skip', 'wait:1000'] },
+};
+/** How long a capture waits: the board's own settle, plus its steps. */
+const waitFor = (steps = []) => 2500 + 900 + steps.reduce((a, st) => a + (st.startsWith('wait:') ? Number(st.slice(5)) : st.startsWith('tap:') ? 450 : 300), 0);
+
 export function targetOf(row) {
   const [file, n] = row.id.split('__');
   // the lesson readers: `L<day> Frame <k>` → the reader on that page
@@ -64,6 +108,10 @@ export function targetOf(row) {
     if (FUNNEL[row.screen]) return { route: `/welcome?step=${FUNNEL[row.screen]}`, seed: FUNNEL[row.screen] === 'name' ? 'tail-unnamed-seed' : 'f-funnel-user', blur: FUNNEL[row.screen] === 'name', globals: DRAWN[FUNNEL[row.screen]] ? { __ONB_ANSWERS: { [FUNNEL[row.screen]]: DRAWN[FUNNEL[row.screen]] } } : undefined, time: h12(), wait: 2500 };
     if (TAIL[row.screen]) return { route: `/welcome?step=${TAIL[row.screen]}`, seed: row.screen === 'The Vow' ? 'tail-vow-seed' : 'tail-session-seed', globals: { __ONB_ANSWERS: TAIL_MAN }, time: h12(), wait: 2500 };
     if (ROUTES[row.screen]) return { ...ROUTES[row.screen], time: h12(), wait: 2500 };
+  }
+  if (file === 'app' && SCREENS[row.screen]) {
+    const t = SCREENS[row.screen];
+    return { ...t, time: t.time ?? h12(), wait: t.wait ?? waitFor(t.steps) };
   }
   const rel = file === 'relapse' ? relapseSeq[i] : file === 'app' && i >= 294 && i <= 368 ? relapseSeq[i - 294] : null;
   if (rel) return rel.specOnly ? null : { screen: 'relapse', ...rel };

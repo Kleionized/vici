@@ -1,0 +1,24 @@
+# Email Login.dc.html · artboard 381 · 84 · Lesson — Frame 8 of 14 (Lesson Scroll 8)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.09) 0px 0px 0px 1px, rgba(20, 20, 22, 0.14) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.06
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [22, 60, 18×40] 
+    svg [22, 71, 18×18] 
+  div [0, 60, 393×40] 
+    div [0, 72, 393×16] font:700 13px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Lesson 1”
+  div [24, 108, 345×3] bg:rgb(46, 46, 46) radius:2px
+    div [24, 108, 196.64×3] bg:rgb(242, 240, 236) radius:2px
+  div [32, 140, 329×584] 
+    div [32, 311, 329×112] font:400 18px/28px normal color:rgb(181, 176, 168) wrap:pretty “Marcus Aurelius reminded himself to deal with the trouble in front of him instead of carrying every possible future trouble into it.”
+    div [32, 445, 329×84] font:400 18px/28px normal color:rgb(181, 176, 168) wrap:pretty “You can apply that idea tonight. You don’t have to settle the coming year before putting the phone down.”
+  div [0, 756, 393×44] 
+    div [174.5, 756, 44×44] radius:22px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      svg [189.5, 771, 14×14] 
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

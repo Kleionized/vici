@@ -13,10 +13,10 @@ export const UDID = '741DA6CE-82DA-4A8B-A1D8-12DD7558A0C5';
 const simctl = (...a) => execFileSync('xcrun', ['simctl', ...a], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function shoot({ screen, state, route, seed, clock, blur, globals, name, time = new Date(2026, 9, 21, 9, 41).toISOString(), wait = 1800, extra = {} }) {
+export async function shoot({ screen, state, route, seed, clock, blur, globals, steps, name, time = new Date(2026, 9, 21, 9, 41).toISOString(), wait = 1800, extra = {} }) {
   simctl('status_bar', UDID, 'override', '--time', time, '--batteryState', 'charged', '--batteryLevel', '100', '--cellularMode', 'active', '--cellularBars', '4', '--wifiBars', '3', '--dataNetwork', 'wifi');
   // the app polls the harness server for its next state (src/dev/HarnessDriver.tsx)
-  await fetch('http://localhost:8099/target', { method: 'POST', body: JSON.stringify({ screen, state, route, seed, clock, blur, globals, extra }) });
+  await fetch('http://localhost:8099/target', { method: 'POST', body: JSON.stringify({ screen, state, route, seed, clock, blur, globals, steps, extra }) });
   await sleep(wait);
   fs.mkdirSync('pixel-diff/app', { recursive: true });
   const out = `pixel-diff/app/${name}.png`;

@@ -1,10 +1,11 @@
 import { useState, type ReactNode, type Ref } from 'react';
 import { Platform, TextInput, View, type StyleProp, type TextInputProps, type TextStyle, type ViewStyle } from 'react-native';
 
+import { useHarnessField } from '@/dev/harnessRegistry';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 /**
- * The five typed inputs the bundle draws (design-system §7.27):
+ * The six typed inputs the bundle draws (design-system §7.27):
  *
  * | variant | frame | box | type |
  * | --- | --- | --- | --- |
@@ -13,6 +14,7 @@ import { lhNormal, mono, sans } from '@/lib/theme';
  * | `card`  | Change Pledge Sheet | min 100, r20, `#1E1E1E`, padding 20 22 | 20/700/29, grows |
  * | `note`  | SOS Afterward | min 150, r22, `#1E1E1E`, padding 22 24 | 20/400/30, grows |
  * | `bare`  | Night 3 Reflection | no box | 22/400/34, grows |
+ * | `journal` | Morning Journal Goal, Night Journal Proud | min 120, r20, `#1E1E1E`, padding 20 22 | 18/400/28, grows |
  *
  * Every one is a real `TextInput`: the value is ink, the placeholder `#9B968E`
  * (CRITIC C9), the caret the platform's in ink. The frames' drawn caret bars
@@ -28,7 +30,7 @@ import { lhNormal, mono, sans } from '@/lib/theme';
  * (the Life Map's 48 "+" disc). A caller's `onContentSizeChange` runs after
  * the field's own growth, never instead of it.
  */
-export type FieldVariant = 'name' | 'sheet' | 'card' | 'note' | 'bare';
+export type FieldVariant = 'name' | 'sheet' | 'card' | 'note' | 'bare' | 'journal';
 
 const TYPE: Record<FieldVariant, TextStyle> = {
   name: { ...sans('400'), fontSize: 17, lineHeight: lhNormal(17) },
@@ -36,6 +38,7 @@ const TYPE: Record<FieldVariant, TextStyle> = {
   card: { ...sans('700'), fontSize: 20, lineHeight: 29 },
   note: { ...sans('400'), fontSize: 20, lineHeight: 30 },
   bare: { ...sans('400'), fontSize: 22, lineHeight: 34 },
+  journal: { ...sans('400'), fontSize: 18, lineHeight: 28 },
 };
 
 const BOX: Record<FieldVariant, ViewStyle> = {
@@ -44,9 +47,10 @@ const BOX: Record<FieldVariant, ViewStyle> = {
   card: { minHeight: 100, borderRadius: 20, backgroundColor: mono.card, paddingVertical: 20, paddingHorizontal: 22 },
   note: { minHeight: 150, borderRadius: 22, backgroundColor: mono.card, paddingVertical: 22, paddingHorizontal: 24 },
   bare: {},
+  journal: { minHeight: 120, borderRadius: 20, backgroundColor: mono.card, paddingVertical: 20, paddingHorizontal: 22 },
 };
 
-const MULTILINE: Record<FieldVariant, boolean> = { name: false, sheet: false, card: true, note: true, bare: true };
+const MULTILINE: Record<FieldVariant, boolean> = { name: false, sheet: false, card: true, note: true, bare: true, journal: true };
 /** The one-line boxes are 60 tall; grown, they keep that line's place. */
 const ROW_H = 60;
 
@@ -84,6 +88,7 @@ export function TextField({
   ref?: Ref<TextInput>;
 }) {
   const [focused, setFocused] = useState(false);
+  useHarnessField(onChangeText);
   const multiline = multilineProp ?? MULTILINE[variant];
   const type = TYPE[variant];
   const lh = type.lineHeight as number;
@@ -126,7 +131,9 @@ export function TextField({
       style={[
         type,
         { color: mono.ink, padding: 0, margin: 0 },
-        multiline ? { height: contentH, textAlignVertical: 'top' } : { flex: 1, height: '100%' },
+        // native grows a multiline input with its text, set by typing or by code; web needs the measured height
+        multiline ? (Platform.OS === 'web' ? { height: contentH } : { minHeight: lh }) : { flex: 1, height: '100%' },
+        multiline ? { textAlignVertical: 'top' } : null,
         grownRow ? { flex: 1 } : null,
         webInput(caret),
         inputStyle,

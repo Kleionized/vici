@@ -1,0 +1,32 @@
+# Email Login.dc.html · artboard 371 · 39B · Post — Medallion Letter (Medallion Letter)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(18, 18, 18) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+    div [138.19, 72, 116.63×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Enclosure from VICI”
+    div [335, 60, 36×40] 
+      svg [353, 71, 18×18] 
+  div [16, 112, 361×590] bg:rgb(30, 30, 30) radius:26px
+    div [16, 112, 361×422] 
+      div [42, 140, 309×27] font:700 22px/normal normal ls:-0.3px color:rgb(242, 240, 236) wrap:auto “Dear Sam,”
+      div [42, 183, 309×125] font:400 15.5px/25px normal color:rgb(181, 176, 168) wrap:pretty “Last night an urge rose, crested, and left without you. This morning you opened the app anyway — logged it, stayed. Most men vanish for a week after a night like that. You came back.”
+      div [42, 324, 309×75] font:400 15.5px/25px normal color:rgb(181, 176, 168) wrap:pretty “The return is the strongest predictor there is — stronger than any count. This one isn’t for resisting. It’s for coming back.”
+      div [42, 415, 309×25] font:700 15.5px/25px normal color:rgb(242, 240, 236) wrap:auto “— VICI”
+      div [42, 462, 309×72] bg:rgb(13, 13, 13) radius:18px
+        svg [58, 476, 44×44] 
+        div [116, 480, 184.81×36] 
+          span [116, 480, 184.81×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Rebound, Tier I”
+          span [116, 500, 184.81×16] font:400 13px/normal normal color:rgb(155, 150, 142) wrap:auto “A check-in on the day after a slip.”
+    div [16, 632, 361×70] 
+  div [24, 698, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [155.8, 717.5, 81.41×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Save to Log”
+  div [0, 774, 393×18] font:400 15px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Open the enclosure”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

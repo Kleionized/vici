@@ -1,0 +1,22 @@
+# Email Login.dc.html · artboard 77 · 21E6 · Night — Closed (Night 4 Closed)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(17, 17, 17) shadow:rgba(0, 0, 0, 0.09) 0px 0px 0px 1px, rgba(20, 20, 22, 0.14) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.09
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(255, 255, 255) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+    div [335, 60, 36×40] 
+      svg [353, 71, 18×18] 
+  svg [-19.6, 171, 432.3×264] transform:matrix(1.1, 0, 0, 1.1, 0, 0)
+  div [24, 453, 345×77] 
+    div [24, 453, 345×40] font:700 34px/40px normal ls:-0.6px color:rgb(255, 255, 255) align:center wrap:balance “Day 13, closed.”
+    div [24, 505, 345×25] font:400 16px/25px normal color:rgba(255, 255, 255, 0.6) align:center wrap:pretty “See you in the morning.”
+  div [24, 746, 345×58] bg:rgb(255, 255, 255) radius:29px
+    span [176.94, 765.5, 39.11×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Done”
+  div [127, 839, 139×5] bg:rgb(255, 255, 255) radius:100px

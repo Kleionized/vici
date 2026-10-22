@@ -1,0 +1,63 @@
+# Email Login.dc.html · artboard 257 · 88O · Tiers — Archive (Tiers Archive)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+  div [0, 155, 393×168] 
+    svg [112.5, 155, 168×168] 
+  div [24, 351, 345×104] 
+    div [24, 351, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Archive”
+    div [24, 397, 345×22] font:400 15px/22px normal color:rgb(181, 176, 168) align:center wrap:pretty “Journal entries saved.”
+    div [196.5, 427, 0×4] 
+    div [138.89, 439, 115.22×16] font:700 13px/normal normal color:rgb(90, 87, 79) align:center wrap:auto “Not yet. First at ×10”
+  div [24, 493, 345×74] 
+    div [24, 493, 345×74] 
+      div [24, 493, 345×30] 
+        div [58.5, 507, 276×2] bg:rgb(46, 46, 46)
+        div [24, 493, 345×30] 
+          div [24, 493, 69×30] 
+            div [43.5, 493, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [43.5, 493, 30×30] 
+          div [93, 493, 69×30] 
+            div [112.5, 493, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [112.5, 493, 30×30] opacity:0.32
+          div [162, 493, 69×30] 
+            div [181.5, 493, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [181.5, 493, 30×30] opacity:0.32
+          div [231, 493, 69×30] 
+            div [250.5, 493, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [250.5, 493, 30×30] opacity:0.32
+          div [300, 493, 69×30] 
+            div [319.5, 493, 30×30] bg:rgb(13, 13, 13) radius:50%
+              svg [319.5, 493, 30×30] opacity:0.32
+      div [24, 533, 345×34] 
+        div [24, 533, 69×34] 
+          span [41.39, 533, 34.22×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Paper”
+          span [48.05, 552, 20.89×15] font:700 12px/normal normal color:rgb(90, 87, 79) wrap:auto “×10”
+        div [93, 533, 69×34] 
+          span [106.69, 533, 41.63×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Bronze”
+          span [117.05, 552, 20.89×15] font:700 12px/normal normal color:rgb(90, 87, 79) wrap:auto “×50”
+        div [162, 533, 69×34] 
+          span [179.98, 533, 33.02×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Silver”
+          span [182.58, 552, 27.84×15] font:700 12px/normal normal color:rgb(90, 87, 79) wrap:auto “×100”
+        div [231, 533, 69×34] 
+          span [251.63, 533, 27.73×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Gold”
+          span [251.58, 552, 27.84×15] font:700 12px/normal normal color:rgb(90, 87, 79) wrap:auto “×200”
+        div [300, 533, 69×34] 
+          span [308.13, 533, 52.75×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Platinum”
+          span [320.58, 552, 27.84×15] font:700 12px/normal normal color:rgb(90, 87, 79) wrap:auto “×365”
+  div [24, 603, 345×78] 
+    div [170.36, 603, 52.28×50] font:700 48px/50px normal ls:-1.7px color:rgb(242, 240, 236) align:center wrap:auto “×9”
+    div [144.27, 659, 104.47×22] font:400 15px/22px normal color:rgb(155, 150, 142) align:center wrap:auto “1 more to Paper”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [128.38, 765.5, 136.23×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Back to medallions”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

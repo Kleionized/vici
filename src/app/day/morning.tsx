@@ -29,11 +29,13 @@ import { ENERGY_WORDS, MOOD_WORDS, isSlip, isSurfed, keyToDate, programmeDay, sh
 import { countOf, roman } from '@/lib/format';
 import { RATING_FLOOR, lessonCompletions, ratingThrough, type RatingInput } from '@/lib/score';
 import { pledgeText, standingPledge } from '@/lib/pledge';
+import { mono } from '@/lib/theme';
 
 /**
  * The morning check-in (today-day §3): a cover, then five steps on the eight
  * dashes — whether yesterday's task happened, what yesterday came to, how the
- * day feels, what is in the tank, and the pledge re-signed — and the close.
+ * day feels, what is in the tank, and the pledge re-signed — one goal for the
+ * day (`21D6B`, Vici UI 2: the dashes stay full), and the close.
  *
  * The flow and what it writes are unchanged; every board is the overhaul's
  * mono kit at the frame's own canvas numbers. The rail's lit count is the
@@ -46,7 +48,8 @@ const LEDGER = 2;
 const FEELING = 3;
 const ENERGY = 4;
 const PLEDGE = 5;
-const DONE = 6;
+const GOAL = 6;
+const DONE = 7;
 
 /** Steps the dashes count: TASK … PLEDGE. */
 const RAIL = 5;
@@ -85,6 +88,7 @@ export default function Morning() {
   const [sheet, setSheet] = useState(false);
   const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
+  const [goal, setGoal] = useState('');
 
   // The day is fixed when the check-in opens, so one finished after midnight
   // still files where it began.
@@ -157,6 +161,8 @@ export default function Morning() {
         await upsert({ date: yesterdayKey, dailyActionDone: yesterdayDone }).catch(() => {});
       }
       if (!filed && signed && hasPledge) await createJournalEntry({ tag: 'Pledge', title, body: pledgeBody }).catch(() => {});
+      // the day's one goal, when one was written and saved
+      if (goal.trim()) await createJournalEntry({ tag: 'Goal', title: `Day ${day} goal`, body: goal.trim() }).catch(() => {});
     })();
     close();
   }
@@ -250,7 +256,7 @@ export default function Morning() {
       {step === PLEDGE ? (
         <>
           {/* The pledge is the user's own words, any length. */}
-          <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+          <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 450.3 }}>
             <MonoText v="h1">Re-sign your pledge.</MonoText>
             <View style={{ height: 6 }} />
             {/* One step, two frames: the first press inks the line, the second
@@ -276,6 +282,27 @@ export default function Morning() {
         </>
       ) : null}
 
+      {step === GOAL ? (
+        <>
+          <StepStack gap={8} controls={CONTROLS.ghost} hero={{ id: 'notebook', top: 458 }}>
+            <MonoText v="h1">Write one goal for today.</MonoText>
+            <MonoText v="pTight" color={mono.mute}>
+              Something small you can finish before tonight.
+            </MonoText>
+            <View style={{ height: 16 }} />
+            <TextField variant="journal" value={goal} onChangeText={setGoal} accessibilityLabel="One goal for today" />
+          </StepStack>
+          <PrimaryButton label="Save" bottom={96} onPress={next} />
+          <GhostLink
+            label="Skip"
+            onPress={() => {
+              setGoal('');
+              next();
+            }}
+          />
+        </>
+      ) : null}
+
       {step === DONE ? (
         <>
           <DoneMark />
@@ -291,7 +318,7 @@ export default function Morning() {
           board the day is already complete, so its ✕ files it like Done (D235). */}
       <NavBar
         left={step === DONE ? 'empty' : 'back'}
-        centre={step === DONE ? null : firstDay ? { step: step - LEDGER, total: RAIL - LEDGER } : { step, total: RAIL }}
+        centre={step === DONE ? null : firstDay ? { step: Math.min(step, RAIL) - LEDGER, total: RAIL - LEDGER } : { step: Math.min(step, RAIL), total: RAIL }}
         right="close"
         onBack={back}
         onClose={step === DONE ? () => void finish() : close}

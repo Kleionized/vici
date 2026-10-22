@@ -4,6 +4,7 @@ import { AppState, type AppStateStatus } from 'react-native';
 
 import { ErrorScreen } from '@/components/ErrorScreen';
 import { StoicTabBar } from '@/components/StoicTabBar';
+import { HARNESS } from '@/dev/harnessRegistry';
 import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
 import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
@@ -83,6 +84,8 @@ export default function AppLayout() {
     // bounced to a pending check-in the moment it opens defeats the one thing
     // it is for. Every other route keeps the arrival order below.
     if (pathname === '/all') return;
+    // the capture harness opens every arrival on its own route; none lands over another board (D35)
+    if (HARNESS) return;
     if (prompted.current || !user?.onboardingComplete) return;
     // Lesson progress too: a closed week whose only record is a finished
     // lesson must not be marked seen before the lessons have loaded.

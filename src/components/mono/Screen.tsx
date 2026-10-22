@@ -5,6 +5,7 @@ import { Platform, ScrollView, View, type ScrollViewProps, type StyleProp, type 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Grain } from '@/components/ui/Grain';
+import { useHarnessScroll } from '@/dev/harnessRegistry';
 import { layout, mono } from '@/lib/theme';
 
 const noise = require('../../../assets/images/noise.png');
@@ -98,6 +99,7 @@ export function CueScrollView({
 }) {
   const native = Platform.OS !== 'web';
   const own = useRef<ScrollView | null>(null);
+  useHarnessScroll(own);
   const box = useRef(0);
   const content = useRef(0);
   const [overflows, setOverflows] = useState(false);

@@ -1,0 +1,51 @@
+# Email Login.dc.html · artboard 244 · 88B · Medallions — Still to earn (Medallions Still To Earn)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+  div [24, 108, 345×38] 
+    div [24, 108, 345×38] font:700 32px/38px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Medallions”
+  div [16, 164, 361×44] 
+    div [16, 164, 361×44] bg:rgb(30, 30, 30) radius:22px
+      div [20, 168, 176.5×36] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto radius:18px “Earned”
+      div [196.5, 168, 176.5×36] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:18px “Still to earn”
+  div [0, 238, 393×22] 
+    div [0, 238, 393×22] font:700 13px/22px normal color:rgb(155, 150, 142) align:center wrap:auto “2 still to earn”
+  div [24, 288, 345×122] 
+    div [86.58, 288, 76.56×122] 
+      svg [92.86, 288, 64×64] 
+      div [86.58, 362, 76.56×35] 
+        span [86.58, 362, 76.56×18] font:700 15px/normal normal ls:-0.2px color:rgb(155, 150, 142) align:center wrap:auto “Archive”
+        span [86.58, 382, 76.56×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “9 of 10 entries”
+      div [96.86, 407, 56×3] bg:rgb(46, 46, 46) radius:2px
+        div [96.86, 407, 50.39×3] bg:rgb(242, 240, 236) radius:2px
+    div [211.14, 288, 95.28×122] 
+      svg [226.78, 288, 64×64] opacity:0.32
+      div [211.14, 362, 95.28×35] 
+        span [211.14, 362, 95.28×18] font:700 15px/normal normal ls:-0.2px color:rgb(155, 150, 142) align:center wrap:auto “Return”
+        span [211.14, 382, 95.28×15] font:700 12px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “After 7 days away”
+  div [0, 748, 393×104] 
+    div [14, 762, 72×43] 
+      svg [37, 762, 26×26] 
+      span [35.03, 792, 29.94×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Today”
+    div [90.25, 762, 72×43] 
+      svg [113.25, 762, 26×26] 
+      span [117.25, 792, 17.98×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Log”
+    div [166.5, 756, 60×60] bg:rgb(242, 240, 236) radius:30px
+      span [184.33, 778, 24.34×16] font:700 13px/normal normal color:rgb(17, 17, 17) wrap:auto “SOS”
+    div [230.75, 762, 72×43] 
+      svg [253.75, 762, 26×26] 
+      span [248.72, 792, 36.06×13] font:400 11.5px/normal normal color:rgb(155, 150, 142) wrap:auto “Library”
+    div [307, 762, 72×43] 
+      svg [330, 762, 26×26] 
+      span [322.28, 792, 41.44×13] font:700 11.5px/normal normal color:rgb(242, 240, 236) wrap:auto “Journey”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

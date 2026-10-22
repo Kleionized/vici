@@ -1,0 +1,29 @@
+# Email Login.dc.html · artboard 386 · 84 · Lesson — Frame 13 of 14 (Lesson Scroll 13)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.09) 0px 0px 0px 1px, rgba(20, 20, 22, 0.14) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.06
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [22, 60, 18×40] 
+    svg [22, 71, 18×18] 
+  div [0, 60, 393×40] 
+    div [0, 72, 393×16] font:700 13px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Lesson 1”
+  div [24, 108, 345×3] bg:rgb(46, 46, 46) radius:2px
+    div [24, 108, 320.84×3] bg:rgb(242, 240, 236) radius:2px
+  div [32, 140, 329×584] 
+    div [32, 247, 329×84] font:400 18px/28px normal color:rgb(181, 176, 168) wrap:pretty “Prepare tonight: set the alarm, put the phone out of reach from bed, and put other devices away.”
+    div [32, 353, 329×112] font:400 18px/28px normal color:rgb(181, 176, 168) wrap:pretty “Keep needed calls and accessibility available. If the device must stay close, close the content and choose a practical limit on browsing.”
+    div [32, 493, 329×100] bg:rgb(30, 30, 30) radius:20px
+      div [52, 511, 28×28] bg:rgb(242, 240, 236) radius:14px
+        svg [60, 519, 12×12] 
+      div [94, 511, 247×64] 
+        div [94, 511, 247×16] font:700 13px/16px normal ls:0.2px color:rgb(155, 150, 142) wrap:balance “Done when”
+        div [94, 531, 247×44] font:700 16px/22px normal color:rgb(242, 240, 236) wrap:pretty “Your starting notes are saved and tonight’s device setup is ready.”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [150.34, 765.5, 92.3×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Finish lesson”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

@@ -1,0 +1,68 @@
+# Email Login.dc.html · artboard 285 · 93B · Profile photo sheet (Sheet Profile Photo)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [164.36, 72, 64.27×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Edit profile”
+    div [334.98, 60, 36×40] 
+  div [24, 124, 345×537] 
+    div [24, 124, 345×125] 
+      div [148.5, 124, 96×96] font:700 38px/normal normal color:rgb(17, 17, 17) wrap:auto bg:rgb(242, 240, 236) radius:48px “S”
+      span [152.86, 232, 87.28×17] font:700 14px/normal normal color:rgb(242, 240, 236) wrap:auto “Change photo”
+    div [24, 267, 345×4] 
+    div [24, 289, 345×164] bg:rgb(30, 30, 30) radius:20px
+      div [24, 289, 345×54] 
+        span [42, 307, 39.84×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Name”
+        div [260.41, 307.5, 90.59×17] 
+          span [260.41, 307.5, 66.59×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Sam Reyes”
+          svg [337, 309, 14×14] 
+      div [24, 343, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+        span [42, 362, 68.66×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Username”
+        div [290.25, 362.5, 60.75×17] 
+          span [290.25, 362.5, 36.75×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “@sam”
+          svg [337, 364, 14×14] 
+      div [24, 398, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+        span [42, 417, 37.2×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Email”
+        div [207.73, 417.5, 143.27×17] 
+          span [207.73, 417.5, 119.27×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “sam@example.com”
+          svg [337, 419, 14×14] 
+    div [24, 471, 345×190] 
+      div [24, 471, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Journey”
+      div [24, 497, 345×164] bg:rgb(30, 30, 30) radius:20px
+        div [24, 497, 345×54] 
+          span [42, 515, 83.23×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Started VICI”
+          div [270.8, 515.5, 80.2×17] 
+            span [270.8, 515.5, 80.2×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “14 Mar 2026”
+        div [24, 551, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 570, 92.27×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Current week”
+          div [229.25, 570.5, 121.75×17] 
+            span [229.25, 570.5, 121.75×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “Week VI, Discipline”
+        div [24, 606, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 625, 74.19×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Medallions”
+          div [276.25, 625.5, 74.75×17] 
+            span [276.25, 625.5, 50.75×17] font:700 14px/normal normal color:rgb(155, 150, 142) wrap:auto “10 of 12”
+            svg [337, 627, 14×14] 
+  div [0, 0, 393×852] bg:rgba(0, 0, 0, 0.68)
+  div [0, 512, 393×340] bg:rgb(23, 23, 23) radius:28px 28px 0px 0px
+    div [176.5, 522, 40×4] bg:rgb(46, 46, 46) radius:2px
+    div [24, 556, 345×296] 
+      div [24, 556, 345×28] font:700 22px/28px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Profile photo”
+      div [24, 596, 345×2] 
+      div [24, 610, 345×164] bg:rgb(30, 30, 30) radius:20px
+        div [24, 610, 345×54] 
+          span [42, 628, 73.56×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Take photo”
+        div [24, 664, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 683, 133.13×18] font:700 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Choose from library”
+        div [24, 719, 345×55] border:1px rgb(46, 46, 46) / 0px rgb(0, 0, 0)
+          span [42, 738, 97.3×18] font:700 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Remove photo”
+  div [0, 778, 393×18] font:700 15px/normal normal color:rgb(155, 150, 142) align:center wrap:auto “Cancel”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

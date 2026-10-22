@@ -1,11 +1,12 @@
 import { useRouter } from 'expo-router';
-import { useId, useState, type ReactNode } from 'react';
+import { useId, useRef, useState, type ReactNode } from 'react';
 import { Platform, ScrollView, Share, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Path, Stop, Text as SvgText } from 'react-native-svg';
 
 import {
   Bolt,
   Card,
+  CheckCircle,
   CheckDisc,
   CheckinDisc,
   ChevronR,
@@ -17,12 +18,15 @@ import {
   Person,
   Pill,
   PledgeCard,
+  QuoteMark,
   Screen,
+  Sun,
   Tap,
   useCanvasTop,
   useTabBarHeight,
 } from '@/components/mono';
 import { DAY_STEPS, dayStep, type DayStep } from '@/components/day/kit';
+import { HarnessPages } from '@/dev/HarnessPages';
 import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/content/curriculum84';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
 import { ENERGY_WORDS, MOOD_WORDS, closingNightKey, courseComplete, greetingFor, programmeDay, useToday } from '@/lib/day';
@@ -110,6 +114,7 @@ export default function Today() {
   // app left open overnight shows, and ticks, the new day (L5).
   const now = useToday();
   const [ends, setEnds] = useState(PAGE_ENDS);
+  const pager = useRef<ScrollView>(null);
   const endAt = (i: number) => (y: number) => setEnds((e) => (Math.abs(e[i] - y) < 0.5 ? e : e.map((v, j) => (j === i ? y : v))));
 
   // The day and the lesson come from the account's programme start, so nothing
@@ -216,6 +221,7 @@ export default function Today() {
   // oversized page scroll within itself (`snapToOffsets` overrides `pagingEnabled`
   // on native).
   const offsets: number[] = [];
+  const pagesAt = pageH.map((_, i) => pageH.slice(0, i).reduce((a, h) => a + h, 0));
   pageH.reduce((top, h) => {
     offsets.push(top);
     if (h > viewport) offsets.push(top + h - viewport);
@@ -229,7 +235,9 @@ export default function Today() {
       <WeekStrip days={week} />
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: PAGER_TOP, bottom: 0 }}>
+        <HarnessPages name="today" pager={pager} pages={pagesAt} />
         <ScrollView
+          ref={pager}
           pagingEnabled={Platform.OS === 'web'}
           snapToOffsets={Platform.OS === 'web' ? undefined : offsets}
           decelerationRate="fast"
@@ -421,28 +429,29 @@ function PageOne({
       <Tap
         label={`Recovery rating ${rating.value}, ${rating.label}${change ? `, ${change > 0 ? 'up' : 'down'} ${Math.abs(change)} since yesterday` : ''}`}
         onPress={onScore}
-        style={{ position: 'absolute', left: 24, right: 24, top: py(240), height: 344 }}>
-        {/* the band (or, in the first week, how much of the window has been lived) on the caps line's right */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
-          <MonoText v="caps">Recovery rating</MonoText>
-          <MonoText v="caps" color={mono.ink}>
-            {rating.label}
-          </MonoText>
+        style={{ position: 'absolute', left: 24, right: 24, top: py(244), height: 340 }}>
+        {/* the number over its caption, the change since yesterday beside it; the band (or, in
+            the first week, how much of the window has been lived) rides the caption (D36) */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+          <View style={{ gap: 8, flexShrink: 1 }}>
+            <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
+              {String(rating.value)}
+            </MonoText>
+            <MonoText v="p" wrap="wrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
+              {`Recovery rating · ${rating.label}`}
+            </MonoText>
+          </View>
+          {/* nothing is drawn on a day that has not moved it */}
+          {change !== 0 ? <Pill kind="delta" label={String(Math.abs(change))} down={change < 0} style={{ marginTop: 13 }} /> : null}
         </View>
-        <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
-            {String(rating.value)}
-          </MonoText>
-          {/* the change since yesterday; nothing is drawn on a day that has not moved it */}
-          {change !== 0 ? <Pill kind="delta" label={String(Math.abs(change))} down={change < 0} style={{ marginBottom: 8 }} /> : null}
-        </View>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 94 }}>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 90 }}>
           <ThirtyDays series={series} />
         </View>
       </Tap>
 
-      <View style={{ position: 'absolute', left: 24, right: 24, top: py(622) }}>
-        <MonoText v="caps" style={{ lineHeight: 16 }}>
+      <View style={{ position: 'absolute', left: 24, right: 24, top: py(620), flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+        <Sun />
+        <MonoText v="p" wrap="nowrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
           This morning
         </MonoText>
       </View>
@@ -571,11 +580,7 @@ function PageTwo({
       <View onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: py(433) }}>
         <View style={{ minHeight: 553 - 433, paddingBottom: 20 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
-            <Tap label={opensTask ? 'Open today’s task' : undefined} onPress={onTask} style={{ flex: 1, minWidth: 0, gap: 6 }}>
-              {/* `pretty`, as the sentence under it: a long title wraps without leaving one word alone */}
-              <MonoText v="caps" wrap="pretty">
-                {task.lesson ? `Today’s task: ${task.lesson.title}` : 'Today’s task'}
-              </MonoText>
+            <Tap label={opensTask ? 'Open today’s task' : undefined} onPress={onTask} style={{ flex: 1, minWidth: 0, gap: 8 }}>
               <MonoText
                 v="p"
                 wrap="pretty"
@@ -587,6 +592,13 @@ function PageTwo({
                 }}>
                 {task.caption}
               </MonoText>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <CheckCircle />
+                {/* `pretty`: a long lesson title wraps without leaving one word alone */}
+                <MonoText v="p" wrap="pretty" color={mono.mute} style={{ fontSize: 14, lineHeight: 18, flexShrink: 1 }}>
+                  {task.lesson ? `Today’s task: ${task.lesson.title}` : 'Today’s task'}
+                </MonoText>
+              </View>
             </Tap>
             <Tap label="Today’s task done" accessibilityRole="checkbox" aria-checked={done} onPress={onCheck} hitSlop={8} style={{ flexShrink: 0 }}>
               {done ? <CheckDisc size={52} /> : <View style={{ width: 52, height: 52, borderRadius: 26, boxShadow: ring.outlineInk }} />}
@@ -614,12 +626,12 @@ function Tile({ glyph, caps, title, onPress }: { glyph: ReactNode; caps: string;
   return (
     <Card variant="tile" onPress={onPress} accessibilityLabel={`${caps}. ${title}`} style={{ flex: 1, minWidth: 0 }}>
       {glyph}
-      <View style={{ gap: 4 }}>
-        <MonoText v="caps" wrap="wrap" style={{ fontSize: 12, lineHeight: lhNormal(12) }}>
-          {caps}
-        </MonoText>
+      <View style={{ gap: 3 }}>
         <MonoText v="gridLabel" wrap="wrap" style={{ letterSpacing: -0.2, lineHeight: 20 }}>
           {title}
+        </MonoText>
+        <MonoText v="p" wrap="wrap" color={mono.mute} style={{ fontSize: 13, lineHeight: lhNormal(13) }}>
+          {caps}
         </MonoText>
       </View>
     </Card>
@@ -651,7 +663,7 @@ const ICON18 = { fill: 'none', stroke: mono.ink, strokeWidth: 1.6, strokeLinecap
 
 /**
  * Today Home III: nightMoon cropped at 231.5, the pledge (`PledgeCard
- * plain`) at 413 with its three 42 rings, and tonight's urge door at 595/623.
+ * plain`) under its quote mark at 408 with its three 42 rings, and tonight's urge door at 596.
  *
  * The rings have no drawn targets (today-day OQ-T5): + writes a new pledge
  * (the journal editor, tagged Pledge — the newest Pledge entry is the standing
@@ -709,20 +721,20 @@ function PageThree({
     <>
       <Hero mode="crop" id="nightMoon" top={py(231.5)} />
 
-      {/* a column, as on page two: a pledge that wraps pushes "Tonight" down
-          (≥ 24 under the rings); at 393 the block's band is the frame's 413 → 595 */}
-      <View onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: py(413) }}>
-        <View style={{ minHeight: 595 - 413, paddingBottom: 24 }}>
+      {/* a column, as on page two: a pledge that wraps pushes tonight's card down
+          (≥ 24 under the rings); at 393 the block's band is the frame's 408 → 596 */}
+      <View onLayout={(e) => onEnd(e.nativeEvent.layout.y + e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: py(408) }}>
+        <View style={{ minHeight: 596 - 408, paddingBottom: 24 }}>
           {pledge ? (
             <PledgeCard variant="plain" pledge={pledge} name={name}>
               {rings}
             </PledgeCard>
           ) : (
-            // PledgeCard's plain column (caps, line, gap 10) with the line as the way in
+            // PledgeCard's plain column (mark, line, gap 10) with the line as the way in
             <View style={{ gap: 10 }}>
-              <MonoText v="caps" style={{ lineHeight: 16 }}>
-                Your pledge
-              </MonoText>
+              <View accessibilityLabel="Your pledge" style={{ marginLeft: -2, marginBottom: -3 }}>
+                <QuoteMark />
+              </View>
               <Tap label="Write a pledge" onPress={onAdd} style={{ alignSelf: 'flex-start' }}>
                 <MonoText style={{ ...sans('700'), fontSize: 22, lineHeight: 31, letterSpacing: -0.3, color: mono.mute }}>Write a pledge</MonoText>
               </Tap>
@@ -731,10 +743,7 @@ function PageThree({
           )}
         </View>
 
-        <MonoText v="caps" style={{ lineHeight: 16 }}>
-          Tonight
-        </MonoText>
-        <Card padding={[18, 20]} onPress={onUrge} accessibilityLabel="Urge surfing" style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Card padding={[18, 20]} onPress={onUrge} accessibilityLabel="Urge surfing" style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
           <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Svg width={26} height={26} viewBox="0 0 26 26">
               <Circle cx={13} cy={15} r={8} fill="none" stroke={mono.onInk} strokeWidth={2.4} strokeLinecap="round" />
