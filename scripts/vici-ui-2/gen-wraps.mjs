@@ -6,16 +6,13 @@
 import { webkit } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
+import { openCanvas } from './common.mjs';
 import { serve } from './serve.mjs';
 
 const BUNDLE = path.resolve('Vici UI 2/project');
 const OUT = 'src/content/wraps.ts';
 const FILTER = process.argv[2] ?? '';
 const PORT = 4793;
-const LATO = 'node_modules/@expo-google-fonts/lato';
-const FACES = [['400', 'normal', '400Regular/Lato_400Regular.ttf'], ['700', 'normal', '700Bold/Lato_700Bold.ttf'], ['900', 'normal', '900Black/Lato_900Black.ttf'], ['700', 'italic', '700Bold_Italic/Lato_700Bold_Italic.ttf'], ['400', 'italic', '400Regular_Italic/Lato_400Regular_Italic.ttf']];
-const FONT_CSS = FACES.map(([w, s, f]) => `@font-face{font-family:'Lato';font-style:${s};font-weight:${w};src:url(/__font/${path.basename(f)}) format('truetype');}`).join('\n');
-
 const server = await serve(BUNDLE, PORT);
 const browser = await webkit.launch();
 const files = fs.readdirSync(BUNDLE).filter((f) => f.endsWith('.dc.html') && f.includes(FILTER)).sort();
@@ -24,32 +21,34 @@ let conflicts = 0;
 
 for (const f of files) {
   const page = await browser.newPage({ viewport: { width: 1800, height: 1200 } });
-  await page.clock.install({ time: new Date('2026-10-21T09:41:00') });
-  await page.clock.pauseAt(new Date('2026-10-21T09:41:00'));
-  await page.route('**/fonts.googleapis.com/**', (r) => r.fulfill({ status: 200, contentType: 'text/css', body: FONT_CSS }));
-  await page.route('**/fonts.gstatic.com/**', (r) => r.abort());
-  await page.route('**/__font/*', (r) => {
-    const face = FACES.find((x) => path.basename(x[2]) === path.basename(new URL(r.request().url()).pathname));
-    r.fulfill({ status: 200, contentType: 'font/ttf', body: fs.readFileSync(path.join(LATO, face[2])) });
-  });
-  await page.goto(`http://localhost:${PORT}/${encodeURIComponent(f)}`, { waitUntil: 'networkidle', timeout: 180000 });
-  await page.evaluate(() => document.fonts.ready);
-  await page.clock.runFor(2000);
-  await page.waitForTimeout(1500);
+  await openCanvas(page, `http://localhost:${PORT}/${encodeURIComponent(f)}`);
   const runs = await page.evaluate(() => {
     const out = [];
     for (const el of document.querySelectorAll('[data-screen-label] *')) {
       const cs = getComputedStyle(el);
       const mode = cs.textWrapStyle || cs.textWrap;
       if (!/balance|pretty/.test(mode)) continue;
-      // a leaf: text only (template-bound text sits between comment markers)
-      if (el.children.length !== 0) continue;
-      const nodes = [...el.childNodes].filter((n) => n.nodeType === 3);
-      if (!nodes.length) continue;
-      const text = nodes.map((n) => n.textContent).join('');
-      if (!text.trim()) continue;
-      // where in which text node the i-th character of `text` sits
-      const at = (i) => { for (const n of nodes) { if (i < n.textContent.length) return [n, i]; i -= n.textContent.length; } return null; };
+      // a run: a block whose only elements are inline (a leaf, or a paragraph
+      // with a 700 run in it); an inline element inside one is part of its
+      // parent's run, not a run of its own
+      if (cs.display.startsWith('inline') && !cs.display.includes('block')) continue;
+      const inner = [...el.querySelectorAll('*')];
+      if (inner.some((c) => { const d = getComputedStyle(c).display; return !d.startsWith('inline') || d.includes('block') || c.tagName === 'BR'; })) continue;
+      // every glyph of the run in reading order, with whitespace collapsed as
+      // the engine draws it (template-bound text sits between comment markers)
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const chars = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        for (let k = 0; k < n.textContent.length; k++) {
+          const ch = n.textContent[k];
+          if (/\s/.test(ch)) { if (chars.length && chars[chars.length - 1].ch !== ' ') chars.push({ ch: ' ', n, k }); }
+          else chars.push({ ch, n, k });
+        }
+      }
+      while (chars.length && chars[chars.length - 1].ch === ' ') chars.pop();
+      if (!chars.length) continue;
+      const text = chars.map((c) => c.ch).join('');
+      const at = (i) => (chars[i] ? [chars[i].n, chars[i].k] : null);
       // the line each word starts on, by its first glyph's top
       const lines = [];
       let lastTop = null;
@@ -79,7 +78,7 @@ for (const f of files) {
       const room = p.getBoundingClientRect().width - parseFloat(ps.paddingLeft) - parseFloat(ps.paddingRight) - parseFloat(ps.borderLeftWidth) - parseFloat(ps.borderRightWidth) - parseFloat(cs.marginLeft) - parseFloat(cs.marginRight);
       const own = el.getBoundingClientRect().width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
       const row = ps.display.includes('flex') && !ps.flexDirection.startsWith('column');
-      out.push({ size: parseFloat(cs.fontSize), text: text.trim(), w: Math.round((row ? own : room - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) * 100) / 100, lines });
+      out.push({ size: parseFloat(cs.fontSize), text, w: Math.round((row ? own : room - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) * 100) / 100, lines });
     }
     return out;
   });

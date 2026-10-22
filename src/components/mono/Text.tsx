@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { Platform, StyleSheet, Text, type NativeSyntheticEvent, type TextLayoutEventData, type TextProps, type TextStyle } from 'react-native';
+import { cloneElement, isValidElement, useState, type ReactNode } from 'react';
+import { Platform, StyleSheet, Text, type LayoutChangeEvent, type NativeSyntheticEvent, type TextLayoutEventData, type TextProps, type TextStyle } from 'react-native';
 
 import { type as T } from '@/lib/theme';
+import { hasWraps, linesAs } from '@/lib/wrap';
 
 import { latoRuns } from './fallback';
 
@@ -84,6 +85,51 @@ function lonelyLast(lines: TextLayoutEventData['lines']): boolean {
   return last.width + given <= widest - 1 && prev.width - given >= widest / 2;
 }
 
+/** The words a run of children draws — its strings and its nested runs' strings, in order. */
+function flatText(node: ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(flatText).join('');
+  if (isValidElement(node)) return flatText((node.props as { children?: ReactNode }).children);
+  return '';
+}
+
+/**
+ * The same children with the run's breaks put in: `target` is the run's words
+ * with a `\n` where each line ends — over a space, or after a hyphen.
+ */
+function rebreak(node: ReactNode, target: string, at: { i: number }): ReactNode {
+  if (typeof node === 'string' || typeof node === 'number') {
+    let out = '';
+    for (const ch of String(node)) {
+      if (target[at.i] === '\n') {
+        out += '\n';
+        at.i++;
+        if (ch === ' ') continue;
+      }
+      out += ch;
+      at.i++;
+    }
+    return out;
+  }
+  if (Array.isArray(node))
+    return node.map((c, k) => {
+      const r = rebreak(c, target, at);
+      return isValidElement(r) && r.key == null ? cloneElement(r, { key: k }) : r;
+    });
+  if (isValidElement(node)) {
+    const kids = (node.props as { children?: ReactNode }).children;
+    return kids === undefined ? node : cloneElement(node as React.ReactElement<{ children?: ReactNode }>, undefined, rebreak(kids, target, at));
+  }
+  return node;
+}
+
+/**
+ * One point of room on the side a broken run does not align to, so a line that
+ * fills the box to the last hundredth cannot push its last word down (D23).
+ */
+const SLACK = 1;
+const slackFor = (align: TextStyle['textAlign']): TextStyle => (align === 'center' ? { marginHorizontal: -SLACK / 2 } : align === 'right' ? { marginLeft: -SLACK } : { marginRight: -SLACK });
+
 export interface MonoTextProps extends TextProps {
   v?: TextVariant;
   color?: string;
@@ -106,11 +152,37 @@ export interface MonoTextProps extends TextProps {
  * drawn again with its last two words tied — `pretty`'s own orphan rule, the
  * one part of it greedy wrapping can be told (D407). Web is untouched.
  */
-export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMultiplier = 1.3, children, onTextLayout, ...rest }: MonoTextProps) {
+export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMultiplier = 1.3, children, onTextLayout, onLayout, ...rest }: MonoTextProps) {
   const w = wrap ?? DEFAULT_WRAP[v];
-  const settle = Platform.OS !== 'web' && (w === 'pretty' || w === 'balance') && typeof children === 'string';
-  // the copy the tie was decided for: a new string lays out afresh
+  const flat = StyleSheet.flatten([T[v], style]) as TextStyle;
+  // a run the frames drew broken (D13): laid out on the frame's own lines once its box is known
+  const words = Platform.OS !== 'web' && w !== 'nowrap' ? flatText(children) : '';
+  const known = !!words && hasWraps(words, flat.fontSize as number);
+  const [box, setBox] = useState<{ words: string; w: number } | null>(null);
+  // the copy the orphan tie was decided for: a new string lays out afresh
   const [tiedFor, setTiedFor] = useState<string | null>(null);
+  const lines = known && box?.words === words ? linesAs(words, flat.fontSize as number, box.w) : null;
+  const measure = known
+    ? (e: LayoutChangeEvent) => {
+        const width = e.nativeEvent.layout.width - (lines ? SLACK : 0);
+        if (!box || box.words !== words || Math.abs(box.w - width) >= 0.5) setBox({ words, w: width });
+        onLayout?.(e);
+      }
+    : onLayout;
+  if (lines) {
+    const align = center ? 'center' : flat.textAlign;
+    return (
+      <Text
+        maxFontSizeMultiplier={maxFontSizeMultiplier}
+        {...rest}
+        onLayout={measure}
+        onTextLayout={onTextLayout}
+        style={[T[v], center ? { textAlign: 'center' } : null, color ? { color } : null, style, slackFor(align)]}>
+        {typeof children === 'string' ? latoRuns(lines.join('\n'), flat) : rebreak(children, lines.join('\n'), { i: 0 })}
+      </Text>
+    );
+  }
+  const settle = Platform.OS !== 'web' && (w === 'pretty' || w === 'balance') && typeof children === 'string';
   const tied = settle && tiedFor === children ? tieLast(children as string) : null;
   const layout = settle
     ? (e: NativeSyntheticEvent<TextLayoutEventData>) => {
@@ -122,9 +194,10 @@ export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMulti
     <Text
       maxFontSizeMultiplier={maxFontSizeMultiplier}
       {...rest}
+      onLayout={measure}
       onTextLayout={layout}
       style={[T[v], wrapStyle(w), center ? { textAlign: 'center' } : null, color ? { color } : null, style]}>
-      {typeof (tied ?? children) === 'string' ? latoRuns((tied ?? children) as string, StyleSheet.flatten([T[v], style]) as TextStyle) : children}
+      {typeof (tied ?? children) === 'string' ? latoRuns((tied ?? children) as string, flat) : children}
     </Text>
   );
 }

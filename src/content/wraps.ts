@@ -165,6 +165,15 @@ export const WRAPS: Record<string, { w: number; lines: string[] }[]> = {
    ]
   }
  ],
+ "15|You don’t need to change everything at once. Start with this.": [
+  {
+   "w": 345,
+   "lines": [
+    "You don’t need to change everything at once.",
+    "Start with this."
+   ]
+  }
+ ],
  "26|Keep your phone out of bed tonight.": [
   {
    "w": 345,
@@ -198,6 +207,15 @@ export const WRAPS: Record<string, { w: number; lines: string[] }[]> = {
    "lines": [
     "This is where you start. What you do from",
     "here matters more than the questionnaire."
+   ]
+  }
+ ],
+ "15|If the rate you reported stayed the same, about 9 of the next 30 days could end with porn.": [
+  {
+   "w": 345,
+   "lines": [
+    "If the rate you reported stayed the same, about",
+    "9 of the next 30 days could end with porn."
    ]
   }
  ],
@@ -1116,12 +1134,15 @@ export const WRAPS: Record<string, { w: number; lines: string[] }[]> = {
    ]
   }
  ],
- "15.5|I want to be present for the people I love.": [
+ "15.5|One slip is a wave, not the sea. Nothing since day zero is erased — the days stood, the urges outlasted, the reason you started: I want to be present for the people I love. All still yours.": [
   {
    "w": 309,
    "lines": [
-    "I want to be present",
-    "for the people I love."
+    "One slip is a wave, not the sea. Nothing",
+    "since day zero is erased — the days",
+    "stood, the urges outlasted, the reason",
+    "you started: I want to be present",
+    "for the people I love. All still yours."
    ]
   }
  ],
