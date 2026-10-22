@@ -106,7 +106,7 @@ export function HarnessDriver() {
       if (t.steps?.length) {
         await run(t.steps);
         // a step may have focused a field (a sheet's name field): put that keyboard away too
-        if (t.blur) setTimeout(() => Keyboard.dismiss(), 500);
+        if (t.blur) for (const ms of [500, 1200]) setTimeout(() => Keyboard.dismiss(), ms);
       }
     };
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

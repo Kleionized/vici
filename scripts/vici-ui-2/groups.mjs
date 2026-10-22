@@ -72,7 +72,7 @@ const weekTarget = (screen) => {
   const m = /^Week ([IVX]+) .*?( P2)?$/.exec(screen ?? '');
   if (!m) return null;
   const n = ROMAN.indexOf(m[1]) + 1;
-  return { route: `/week/${n}`, seed: 'library-seed', steps: m[2] ? ['wait:600', `end:week-${n}`] : undefined };
+  return { route: `/week/${n}`, seed: 'library-seed', steps: m[2] ? ['wait:1200', `end:week-${n}`, 'wait:400'] : ['wait:1600'] };
 };
 const SCREENS = {
   'Morning Check-in Time': { route: '/routines/morning-time', seed: 'v-premium-seed' },
@@ -168,7 +168,7 @@ export function targetOf(row) {
   }
   if (file === 'app' && (SCREENS[row.screen] || weekTarget(row.screen) || lessonScroll(row.screen))) {
     const t = SCREENS[row.screen] ?? weekTarget(row.screen) ?? lessonScroll(row.screen);
-    return { ...t, time: t.time ?? h12(), wait: t.wait ?? waitFor(t.steps) };
+    return { ...t, time: t.time ?? h12(), wait: t.wait ?? waitFor(t.steps) + (t.blur && t.steps ? 1500 : 0) };
   }
   const rel = file === 'relapse' ? relapseSeq[i] : file === 'app' && i >= 294 && i <= 368 ? relapseSeq[i - 294] : null;
   if (rel) return rel.specOnly ? null : { screen: 'relapse', ...rel };

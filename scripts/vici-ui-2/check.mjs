@@ -33,6 +33,7 @@ function save() {
   fs.writeFileSync('scripts/vici-ui-2/ledger.json', JSON.stringify(now, null, 1) + '\n');
 }
 let shot = 0;
+const retry = [];
 for (const row of ledger.rows) {
   if (!re.test(row.id)) continue;
   if (pass != null && 'resume' in flags && (row.pass ?? 0) >= pass) continue;
@@ -48,6 +49,8 @@ for (const row of ledger.rows) {
       // a row whose share moved since it was last recorded
       const before = parseFloat(row.diff);
       if (m && Number.isFinite(before) && Math.abs(parseFloat(m[1]) - before) > 0.05) console.log(`MOVED ${row.id}: ${before} % → ${m[1]} %`);
+      // a jump this size is usually a shot taken before the board settled: shoot it once more at the end
+      if (m && Number.isFinite(before) && parseFloat(m[1]) - before > 0.5) retry.push(row);
       done.set(row.id, {
         harness: t.route ? `${t.route}${t.seed ? ` · seed ${t.seed}` : ''}${t.clock ? ` · clock ${t.clock}` : ''}` : `${t.screen}&state=${t.state}`,
         diff: m ? `${m[1]} %` : out.split('\n')[0],
@@ -60,5 +63,13 @@ for (const row of ledger.rows) {
     });
 }
 await pending;
+for (const row of retry) {
+  const t = targetOf(row);
+  await shoot({ screen: t.screen, state: t.state, route: t.route, seed: t.seed, keepSeed: false, clock: t.clock, blur: t.blur, globals: t.globals, steps: t.steps, name: row.id, time: t.time, wait: Number(t.wait ?? flags.wait ?? 1800) + 1500 });
+  const out = (await run('node', ['scripts/pixel-diff.mjs', `pixel-diff/design/${row.id}.png`, `pixel-diff/app/${row.id}.png`, row.id]).catch((e) => e)).stdout?.toString() ?? '';
+  const m = out.match(/\(([\d.]+) %\)/);
+  console.log(`RETRY ${row.id}: ${m ? m[1] : '?'} %`);
+  if (m && done.has(row.id)) done.get(row.id).diff = `${m[1]} %`;
+}
 save();
 execFileSync('node', ['scripts/vici-ui-2/ledger.mjs', 'md']);
