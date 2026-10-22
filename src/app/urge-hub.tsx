@@ -1,13 +1,10 @@
-import { UrgeHub } from '@/components/urge';
+import { Redirect } from 'expo-router';
 
 /**
- * `85A–85F · URGE HUB — RIDE IT OUT` — the five panes the canvas gives their
- * own section, and the breathing board their Breathe pill opens.
- *
- * It is not a step of the interrupt: `FLOW.txt` heads it as a section of its
- * own, and every pane carries the same ✕, pager, Breathe pill and "I slipped"
- * link rather than a Continue. Today's "Urge surfing" card is its door.
+ * The urge hub is the SOS's own hub in `Vici UI 2` (`06 · Urge Hub — Main`
+ * and its pages, inside `Vici SOS.dc.html`): it is reached by doing a task, not
+ * as a section of its own. An old link here opens the SOS.
  */
 export default function UrgeHubRoute() {
-  return <UrgeHub />;
+  return <Redirect href="/urge" />;
 }

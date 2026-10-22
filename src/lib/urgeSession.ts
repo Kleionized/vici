@@ -42,6 +42,8 @@ export interface UrgeFlowSnapshot {
   /** The second read (0–4), or null if they have not given it. */
   after: number | null;
   note: string;
+  /** The SOS's own state (`Vici UI 2`, src/components/urge/sos.tsx) — what a reopen resumes. */
+  sos?: unknown;
 }
 
 export interface UrgeSession {
