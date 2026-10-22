@@ -76,6 +76,26 @@ export const precedingState = v.object({
   reasons: v.optional(v.array(v.string())),
 });
 
+/**
+ * A relapse as the relapse flow records it (`Vici UI 2/project/Vici Relapse.dc.html`):
+ * which "When did it happen?" answer was given, the day and time it names (a
+ * time in minutes after midnight; none for "Earlier today", "Yesterday" or a
+ * date without one), whether that time is "about" (Just now), what led up to it
+ * (cause keys; `skipped` when the question was skipped), the answer to "Do you
+ * feel like watching again right now?", and the message and quote shown after.
+ */
+export const relapseRecord = v.object({
+  when: v.string(),
+  date: v.optional(v.string()),
+  time: v.optional(v.number()),
+  approx: v.optional(v.boolean()),
+  causes: v.array(v.string()),
+  skipped: v.optional(v.boolean()),
+  watch: v.optional(v.string()),
+  message: v.optional(v.string()),
+  quote: v.optional(v.string()),
+});
+
 export default defineSchema({
   users: defineTable({
     clerkUserId: v.string(),
@@ -162,6 +182,8 @@ export default defineSchema({
     reopens: v.optional(v.number()),
     /** How long the urge lasted, start to resolution — the urge hub reads it. */
     durationSeconds: v.optional(v.number()),
+    /** A relapse's own answers (lapse events from the relapse flow). */
+    relapse: v.optional(relapseRecord),
   })
     .index('by_user', ['userId'])
     .index('by_user_createdAt', ['userId', 'createdAt']),

@@ -25,6 +25,7 @@ import type {
   Reflection,
   TidelineEvent,
   TidelineEventInput,
+  TidelineEventPatch,
   UserSettings,
 } from '@/lib/types';
 import { CURRICULUM_LESSONS } from '@/lib/curriculum';
@@ -60,7 +61,8 @@ const R = {
   lifeMapUpdate: mref('lifemap:update'),
 
   eventsList: qref<TidelineEvent[]>('events:list'),
-  eventsCreate: mref('events:create'),
+  eventsCreate: mref<string>('events:create'),
+  eventsUpdate: mref('events:update'),
 
   checkinsList: qref<DailyCheckin[]>('checkins:list'),
   checkinForDate: qref<DailyCheckin | null>('checkins:getForDate'),
@@ -225,6 +227,12 @@ export function useUpdateLifeMap() {
 export function useCreateEvent() {
   const fn = useMutation(R.eventsCreate);
   return (input: TidelineEventInput) => fn({ ...input });
+}
+
+/** Change a saved relapse entry (`events:update`). */
+export function useUpdateEvent() {
+  const fn = useMutation(R.eventsUpdate);
+  return (id: string, patch: TidelineEventPatch) => fn({ id, ...patch });
 }
 
 export function useUpsertCheckin() {

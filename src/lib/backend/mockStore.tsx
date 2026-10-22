@@ -34,6 +34,7 @@ import {
   type Reflection,
   type TidelineEvent,
   type TidelineEventInput,
+  type TidelineEventPatch,
   type UserSettings,
 } from '@/lib/types';
 
@@ -58,7 +59,8 @@ interface MockStoreValue {
   completeLesson(slug: string, fitsMeRating?: number): Promise<void>;
   saveReflection(slug: string, answers: Record<string, string | number>): Promise<void>;
   updateLifeMap(partial: Partial<Omit<LifeMap, 'userId' | 'updatedAt'>>): Promise<void>;
-  createEvent(input: TidelineEventInput): Promise<void>;
+  createEvent(input: TidelineEventInput): Promise<string | undefined>;
+  updateEvent(id: string, patch: TidelineEventPatch): Promise<void>;
   upsertCheckin(input: DailyCheckinInput): Promise<void>;
   createJournalEntry(input: JournalEntryInput): Promise<JournalEntry>;
   updateJournalEntry(id: string, input: JournalEntryInput): Promise<void>;
@@ -229,6 +231,17 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
         createdAt: input.createdAt ?? Date.now(),
       };
       await apply({ ...cur, events: [...cur.events, event] });
+      return event._id;
+    },
+    [apply],
+  );
+
+  /** A saved relapse entry changed (the real `events:update`). */
+  const updateEvent = useCallback(
+    async (id: string, patch: TidelineEventPatch) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      await apply({ ...cur, events: cur.events.map((e) => (e._id === id ? { ...e, ...patch, createdAt: patch.createdAt ?? e.createdAt, relapse: patch.relapse ?? e.relapse } : e)) });
     },
     [apply],
   );
@@ -322,6 +335,7 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     saveReflection,
     updateLifeMap,
     createEvent,
+    updateEvent,
     upsertCheckin,
     createJournalEntry,
     updateJournalEntry,

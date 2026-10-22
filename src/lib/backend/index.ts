@@ -37,6 +37,7 @@ export const useCompleteLesson = impl.useCompleteLesson;
 export const useSaveReflection = impl.useSaveReflection;
 export const useUpdateLifeMap = impl.useUpdateLifeMap;
 export const useCreateEvent = impl.useCreateEvent;
+export const useUpdateEvent = impl.useUpdateEvent;
 export const useUpsertCheckin = impl.useUpsertCheckin;
 
 export const useExportData = impl.useExportData;

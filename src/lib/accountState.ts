@@ -71,6 +71,8 @@ export const ACCOUNT_KEYS = {
   affirmationPrompt: 'tideline.affirmation.prompt',
   /** onboarding's step and answers, so an app kill resumes the funnel (D2) */
   onboarding: 'tideline.onboarding.v1',
+  /** the relapse flow's messages and quotes shown on this phone, so they do not repeat */
+  relapseHistory: 'tideline.relapse.history.v1',
 } as const;
 
 export type AccountKey = (typeof ACCOUNT_KEYS)[keyof typeof ACCOUNT_KEYS];
@@ -91,6 +93,7 @@ const CLEARED_ON_SIGN_OUT: readonly AccountKey[] = [
   ACCOUNT_KEYS.urgeSession,
   ACCOUNT_KEYS.affirmationPrompt,
   ACCOUNT_KEYS.onboarding,
+  ACCOUNT_KEYS.relapseHistory,
 ];
 
 /** Keys earlier builds stored under no account (D492). */

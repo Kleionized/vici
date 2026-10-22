@@ -24,6 +24,7 @@ import type {
   Reflection,
   TidelineEvent,
   TidelineEventInput,
+  TidelineEventPatch,
   UserSettings,
 } from '@/lib/types';
 
@@ -180,6 +181,12 @@ export function useUpdateLifeMap() {
 export function useCreateEvent() {
   const { createEvent } = useMockStore();
   return (input: TidelineEventInput) => createEvent(input);
+}
+
+/** Change a saved relapse entry (`events:update`). */
+export function useUpdateEvent() {
+  const { updateEvent } = useMockStore();
+  return (id: string, patch: TidelineEventPatch) => updateEvent(id, patch);
 }
 
 export function useUpsertCheckin() {

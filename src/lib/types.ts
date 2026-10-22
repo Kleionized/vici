@@ -154,7 +154,25 @@ export interface TidelineEvent {
    * nothing else in the log records a length.
    */
   durationSeconds?: number;
+  /** A relapse's own answers, for lapse events from the relapse flow. */
+  relapse?: RelapseRecord;
 }
+
+/** A relapse's own answers (`convex/schema.ts` `relapseRecord`). */
+export interface RelapseRecord {
+  when: string;
+  date?: string;
+  time?: number;
+  approx?: boolean;
+  causes: string[];
+  skipped?: boolean;
+  watch?: string;
+  message?: string;
+  quote?: string;
+}
+
+/** What may change on a saved relapse entry. */
+export type TidelineEventPatch = Pick<TidelineEvent, 'createdAt' | 'trigger' | 'precedingState' | 'relapse'>;
 
 export type TidelineEventInput = Omit<TidelineEvent, '_id' | 'userId' | 'createdAt'> & {
   createdAt?: number;
