@@ -5,7 +5,7 @@ Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline c
 
 Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
 
-Rows: 2182 · NOT_STARTED 1273 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 595 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 306
+Rows: 2182 · NOT_STARTED 0 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 1868 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 306
 
 | id | design file | artboard | app file | spec | harness | status | diff | verified | note |
 |---|---|---|---|---|---|---|---|---|---|
@@ -918,1276 +918,1276 @@ Rows: 2182 · NOT_STARTED 1273 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | sos__138__l08-sort-five-things-in-your-bag | Vici SOS.dc.html | L08 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L08 | DIFF_CLEAN | 0.053 % | 2026-10-21 | noise only (D16), reviewed |
 | sos__139__l09-walk-to-a-familiar-corner-and-back | Vici SOS.dc.html | L09 · Walk to a familiar corner and back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L09 | DIFF_CLEAN | 0.045 % | 2026-10-21 | noise only (D16), reviewed |
 | sos__140__l10-name-the-feeling-and-pause-for-one-minute | Vici SOS.dc.html | L10 · Name the feeling and pause for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L10 | DIFF_CLEAN | 0.056 % | 2026-10-22 | noise only (D16), reviewed |
-| w01__000__lesson-1-1-of-14 | Week 01 Reset.dc.html | Lesson 1 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__001__lesson-1-2-of-14 | Week 01 Reset.dc.html | Lesson 1 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__002__lesson-1-3-of-14 | Week 01 Reset.dc.html | Lesson 1 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__003__lesson-1-4-of-14 | Week 01 Reset.dc.html | Lesson 1 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__004__lesson-1-5-of-14 | Week 01 Reset.dc.html | Lesson 1 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__005__lesson-1-6-of-14 | Week 01 Reset.dc.html | Lesson 1 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__006__lesson-1-7-of-14 | Week 01 Reset.dc.html | Lesson 1 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__007__lesson-1-8-of-14 | Week 01 Reset.dc.html | Lesson 1 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__008__lesson-1-9-of-14 | Week 01 Reset.dc.html | Lesson 1 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__009__lesson-1-10-of-14 | Week 01 Reset.dc.html | Lesson 1 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__010__lesson-1-11-of-14 | Week 01 Reset.dc.html | Lesson 1 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__011__lesson-1-12-of-14 | Week 01 Reset.dc.html | Lesson 1 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__012__lesson-1-13-of-14 | Week 01 Reset.dc.html | Lesson 1 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__013__lesson-1-14-of-14 | Week 01 Reset.dc.html | Lesson 1 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__014__lesson-2-1-of-16 | Week 01 Reset.dc.html | Lesson 2 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__015__lesson-2-2-of-16 | Week 01 Reset.dc.html | Lesson 2 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__016__lesson-2-3-of-16 | Week 01 Reset.dc.html | Lesson 2 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__017__lesson-2-4-of-16 | Week 01 Reset.dc.html | Lesson 2 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__018__lesson-2-5-of-16 | Week 01 Reset.dc.html | Lesson 2 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__019__lesson-2-6-of-16 | Week 01 Reset.dc.html | Lesson 2 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__020__lesson-2-7-of-16 | Week 01 Reset.dc.html | Lesson 2 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__021__lesson-2-8-of-16 | Week 01 Reset.dc.html | Lesson 2 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__022__lesson-2-9-of-16 | Week 01 Reset.dc.html | Lesson 2 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__023__lesson-2-10-of-16 | Week 01 Reset.dc.html | Lesson 2 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__024__lesson-2-11-of-16 | Week 01 Reset.dc.html | Lesson 2 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__025__lesson-2-12-of-16 | Week 01 Reset.dc.html | Lesson 2 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__026__lesson-2-13-of-16 | Week 01 Reset.dc.html | Lesson 2 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__027__lesson-2-14-of-16 | Week 01 Reset.dc.html | Lesson 2 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__028__lesson-2-15-of-16 | Week 01 Reset.dc.html | Lesson 2 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__029__lesson-2-16-of-16 | Week 01 Reset.dc.html | Lesson 2 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__030__lesson-3-1-of-15 | Week 01 Reset.dc.html | Lesson 3 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__031__lesson-3-2-of-15 | Week 01 Reset.dc.html | Lesson 3 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__032__lesson-3-3-of-15 | Week 01 Reset.dc.html | Lesson 3 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__033__lesson-3-4-of-15 | Week 01 Reset.dc.html | Lesson 3 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__034__lesson-3-5-of-15 | Week 01 Reset.dc.html | Lesson 3 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__035__lesson-3-6-of-15 | Week 01 Reset.dc.html | Lesson 3 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__036__lesson-3-7-of-15 | Week 01 Reset.dc.html | Lesson 3 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__037__lesson-3-8-of-15 | Week 01 Reset.dc.html | Lesson 3 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__038__lesson-3-9-of-15 | Week 01 Reset.dc.html | Lesson 3 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__039__lesson-3-10-of-15 | Week 01 Reset.dc.html | Lesson 3 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__040__lesson-3-11-of-15 | Week 01 Reset.dc.html | Lesson 3 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__041__lesson-3-12-of-15 | Week 01 Reset.dc.html | Lesson 3 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__042__lesson-3-13-of-15 | Week 01 Reset.dc.html | Lesson 3 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__043__lesson-3-14-of-15 | Week 01 Reset.dc.html | Lesson 3 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__044__lesson-3-15-of-15 | Week 01 Reset.dc.html | Lesson 3 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__045__lesson-4-1-of-15 | Week 01 Reset.dc.html | Lesson 4 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__046__lesson-4-2-of-15 | Week 01 Reset.dc.html | Lesson 4 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__047__lesson-4-3-of-15 | Week 01 Reset.dc.html | Lesson 4 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__048__lesson-4-4-of-15 | Week 01 Reset.dc.html | Lesson 4 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__049__lesson-4-5-of-15 | Week 01 Reset.dc.html | Lesson 4 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__050__lesson-4-6-of-15 | Week 01 Reset.dc.html | Lesson 4 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__051__lesson-4-7-of-15 | Week 01 Reset.dc.html | Lesson 4 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__052__lesson-4-8-of-15 | Week 01 Reset.dc.html | Lesson 4 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__053__lesson-4-9-of-15 | Week 01 Reset.dc.html | Lesson 4 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__054__lesson-4-10-of-15 | Week 01 Reset.dc.html | Lesson 4 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__055__lesson-4-11-of-15 | Week 01 Reset.dc.html | Lesson 4 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__056__lesson-4-12-of-15 | Week 01 Reset.dc.html | Lesson 4 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__057__lesson-4-13-of-15 | Week 01 Reset.dc.html | Lesson 4 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__058__lesson-4-14-of-15 | Week 01 Reset.dc.html | Lesson 4 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__059__lesson-4-15-of-15 | Week 01 Reset.dc.html | Lesson 4 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__060__lesson-5-1-of-15 | Week 01 Reset.dc.html | Lesson 5 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__061__lesson-5-2-of-15 | Week 01 Reset.dc.html | Lesson 5 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__062__lesson-5-3-of-15 | Week 01 Reset.dc.html | Lesson 5 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__063__lesson-5-4-of-15 | Week 01 Reset.dc.html | Lesson 5 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__064__lesson-5-5-of-15 | Week 01 Reset.dc.html | Lesson 5 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__065__lesson-5-6-of-15 | Week 01 Reset.dc.html | Lesson 5 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__066__lesson-5-7-of-15 | Week 01 Reset.dc.html | Lesson 5 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__067__lesson-5-8-of-15 | Week 01 Reset.dc.html | Lesson 5 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__068__lesson-5-9-of-15 | Week 01 Reset.dc.html | Lesson 5 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__069__lesson-5-10-of-15 | Week 01 Reset.dc.html | Lesson 5 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__070__lesson-5-11-of-15 | Week 01 Reset.dc.html | Lesson 5 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__071__lesson-5-12-of-15 | Week 01 Reset.dc.html | Lesson 5 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__072__lesson-5-13-of-15 | Week 01 Reset.dc.html | Lesson 5 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__073__lesson-5-14-of-15 | Week 01 Reset.dc.html | Lesson 5 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__074__lesson-5-15-of-15 | Week 01 Reset.dc.html | Lesson 5 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w01__075__lesson-6-1-of-14 | Week 01 Reset.dc.html | Lesson 6 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__076__lesson-6-2-of-14 | Week 01 Reset.dc.html | Lesson 6 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__077__lesson-6-3-of-14 | Week 01 Reset.dc.html | Lesson 6 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__078__lesson-6-4-of-14 | Week 01 Reset.dc.html | Lesson 6 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__079__lesson-6-5-of-14 | Week 01 Reset.dc.html | Lesson 6 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__080__lesson-6-6-of-14 | Week 01 Reset.dc.html | Lesson 6 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__081__lesson-6-7-of-14 | Week 01 Reset.dc.html | Lesson 6 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__082__lesson-6-8-of-14 | Week 01 Reset.dc.html | Lesson 6 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__083__lesson-6-9-of-14 | Week 01 Reset.dc.html | Lesson 6 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__084__lesson-6-10-of-14 | Week 01 Reset.dc.html | Lesson 6 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__085__lesson-6-11-of-14 | Week 01 Reset.dc.html | Lesson 6 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__086__lesson-6-12-of-14 | Week 01 Reset.dc.html | Lesson 6 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__087__lesson-6-13-of-14 | Week 01 Reset.dc.html | Lesson 6 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__088__lesson-6-14-of-14 | Week 01 Reset.dc.html | Lesson 6 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w01__089__lesson-7-1-of-16 | Week 01 Reset.dc.html | Lesson 7 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__090__lesson-7-2-of-16 | Week 01 Reset.dc.html | Lesson 7 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__091__lesson-7-3-of-16 | Week 01 Reset.dc.html | Lesson 7 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__092__lesson-7-4-of-16 | Week 01 Reset.dc.html | Lesson 7 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__093__lesson-7-5-of-16 | Week 01 Reset.dc.html | Lesson 7 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__094__lesson-7-6-of-16 | Week 01 Reset.dc.html | Lesson 7 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__095__lesson-7-7-of-16 | Week 01 Reset.dc.html | Lesson 7 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__096__lesson-7-8-of-16 | Week 01 Reset.dc.html | Lesson 7 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__097__lesson-7-9-of-16 | Week 01 Reset.dc.html | Lesson 7 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__098__lesson-7-10-of-16 | Week 01 Reset.dc.html | Lesson 7 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__099__lesson-7-11-of-16 | Week 01 Reset.dc.html | Lesson 7 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__100__lesson-7-12-of-16 | Week 01 Reset.dc.html | Lesson 7 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__101__lesson-7-13-of-16 | Week 01 Reset.dc.html | Lesson 7 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__102__lesson-7-14-of-16 | Week 01 Reset.dc.html | Lesson 7 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__103__lesson-7-15-of-16 | Week 01 Reset.dc.html | Lesson 7 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w01__104__lesson-7-16-of-16 | Week 01 Reset.dc.html | Lesson 7 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__000__lesson-8-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__001__lesson-8-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__002__lesson-8-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__003__lesson-8-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__004__lesson-8-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__005__lesson-8-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__006__lesson-8-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__007__lesson-8-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__008__lesson-8-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__009__lesson-8-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__010__lesson-8-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__011__lesson-8-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__012__lesson-8-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__013__lesson-8-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__014__lesson-9-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__015__lesson-9-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__016__lesson-9-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__017__lesson-9-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__018__lesson-9-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__019__lesson-9-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__020__lesson-9-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__021__lesson-9-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__022__lesson-9-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__023__lesson-9-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__024__lesson-9-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__025__lesson-9-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__026__lesson-9-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__027__lesson-9-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__028__lesson-9-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__029__lesson-10-1-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__030__lesson-10-2-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__031__lesson-10-3-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__032__lesson-10-4-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__033__lesson-10-5-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__034__lesson-10-6-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__035__lesson-10-7-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__036__lesson-10-8-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__037__lesson-10-9-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__038__lesson-10-10-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__039__lesson-10-11-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__040__lesson-10-12-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__041__lesson-10-13-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__042__lesson-10-14-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__043__lesson-10-15-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__044__lesson-10-16-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w02__045__lesson-11-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__046__lesson-11-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__047__lesson-11-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__048__lesson-11-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__049__lesson-11-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__050__lesson-11-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__051__lesson-11-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__052__lesson-11-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__053__lesson-11-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__054__lesson-11-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__055__lesson-11-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__056__lesson-11-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__057__lesson-11-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__058__lesson-11-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__059__lesson-12-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__060__lesson-12-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__061__lesson-12-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__062__lesson-12-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__063__lesson-12-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__064__lesson-12-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__065__lesson-12-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__066__lesson-12-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__067__lesson-12-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__068__lesson-12-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__069__lesson-12-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__070__lesson-12-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__071__lesson-12-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__072__lesson-12-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w02__073__lesson-13-1-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__074__lesson-13-2-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__075__lesson-13-3-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__076__lesson-13-4-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__077__lesson-13-5-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__078__lesson-13-6-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__079__lesson-13-7-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__080__lesson-13-8-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__081__lesson-13-9-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__082__lesson-13-10-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__083__lesson-13-11-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__084__lesson-13-12-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__085__lesson-13-13-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__086__lesson-13-14-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__087__lesson-13-15-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__088__lesson-13-16-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__089__lesson-13-17-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w02__090__lesson-14-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__091__lesson-14-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__092__lesson-14-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__093__lesson-14-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__094__lesson-14-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__095__lesson-14-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__096__lesson-14-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__097__lesson-14-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__098__lesson-14-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__099__lesson-14-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__100__lesson-14-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__101__lesson-14-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__102__lesson-14-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__103__lesson-14-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w02__104__lesson-14-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w03__000__lesson-15-1-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__001__lesson-15-2-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__002__lesson-15-3-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__003__lesson-15-4-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__004__lesson-15-5-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__005__lesson-15-6-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__006__lesson-15-7-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__007__lesson-15-8-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__008__lesson-15-9-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__009__lesson-15-10-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__010__lesson-15-11-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__011__lesson-15-12-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__012__lesson-15-13-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__013__lesson-15-14-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__014__lesson-16-1-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__015__lesson-16-2-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__016__lesson-16-3-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__017__lesson-16-4-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__018__lesson-16-5-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__019__lesson-16-6-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__020__lesson-16-7-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__021__lesson-16-8-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__022__lesson-16-9-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__023__lesson-16-10-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__024__lesson-16-11-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__025__lesson-16-12-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__026__lesson-16-13-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__027__lesson-16-14-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__028__lesson-16-15-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__029__lesson-16-16-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__030__lesson-17-1-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__031__lesson-17-2-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__032__lesson-17-3-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__033__lesson-17-4-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__034__lesson-17-5-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__035__lesson-17-6-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__036__lesson-17-7-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__037__lesson-17-8-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__038__lesson-17-9-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__039__lesson-17-10-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__040__lesson-17-11-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__041__lesson-17-12-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__042__lesson-17-13-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__043__lesson-17-14-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__044__lesson-18-1-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__045__lesson-18-2-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__046__lesson-18-3-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__047__lesson-18-4-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__048__lesson-18-5-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__049__lesson-18-6-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__050__lesson-18-7-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__051__lesson-18-8-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__052__lesson-18-9-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__053__lesson-18-10-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__054__lesson-18-11-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__055__lesson-18-12-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__056__lesson-18-13-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__057__lesson-18-14-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__058__lesson-18-15-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__059__lesson-18-16-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__060__lesson-19-1-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__061__lesson-19-2-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__062__lesson-19-3-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__063__lesson-19-4-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__064__lesson-19-5-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__065__lesson-19-6-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__066__lesson-19-7-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__067__lesson-19-8-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__068__lesson-19-9-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__069__lesson-19-10-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__070__lesson-19-11-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__071__lesson-19-12-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__072__lesson-19-13-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__073__lesson-19-14-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__074__lesson-19-15-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__075__lesson-19-16-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__076__lesson-20-1-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__077__lesson-20-2-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__078__lesson-20-3-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__079__lesson-20-4-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__080__lesson-20-5-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__081__lesson-20-6-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__082__lesson-20-7-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__083__lesson-20-8-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__084__lesson-20-9-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__085__lesson-20-10-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__086__lesson-20-11-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__087__lesson-20-12-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__088__lesson-20-13-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__089__lesson-20-14-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__090__lesson-20-15-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__091__lesson-20-16-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w03__092__lesson-21-1-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__093__lesson-21-2-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__094__lesson-21-3-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__095__lesson-21-4-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__096__lesson-21-5-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__097__lesson-21-6-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__098__lesson-21-7-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__099__lesson-21-8-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__100__lesson-21-9-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__101__lesson-21-10-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__102__lesson-21-11-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__103__lesson-21-12-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__104__lesson-21-13-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w03__105__lesson-21-14-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__000__lesson-22-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__001__lesson-22-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__002__lesson-22-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__003__lesson-22-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__004__lesson-22-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__005__lesson-22-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__006__lesson-22-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__007__lesson-22-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__008__lesson-22-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__009__lesson-22-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__010__lesson-22-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__011__lesson-22-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__012__lesson-22-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__013__lesson-22-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__014__lesson-22-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__015__lesson-22-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__016__lesson-23-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__017__lesson-23-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__018__lesson-23-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__019__lesson-23-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__020__lesson-23-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__021__lesson-23-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__022__lesson-23-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__023__lesson-23-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__024__lesson-23-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__025__lesson-23-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__026__lesson-23-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__027__lesson-23-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__028__lesson-23-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__029__lesson-23-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__030__lesson-24-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__031__lesson-24-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__032__lesson-24-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__033__lesson-24-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__034__lesson-24-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__035__lesson-24-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__036__lesson-24-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__037__lesson-24-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__038__lesson-24-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__039__lesson-24-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__040__lesson-24-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__041__lesson-24-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__042__lesson-24-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__043__lesson-24-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__044__lesson-25-1-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__045__lesson-25-2-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__046__lesson-25-3-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__047__lesson-25-4-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__048__lesson-25-5-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__049__lesson-25-6-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__050__lesson-25-7-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__051__lesson-25-8-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__052__lesson-25-9-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__053__lesson-25-10-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__054__lesson-25-11-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__055__lesson-25-12-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__056__lesson-25-13-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w04__057__lesson-26-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__058__lesson-26-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__059__lesson-26-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__060__lesson-26-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__061__lesson-26-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__062__lesson-26-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__063__lesson-26-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__064__lesson-26-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__065__lesson-26-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__066__lesson-26-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__067__lesson-26-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__068__lesson-26-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__069__lesson-26-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__070__lesson-26-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__071__lesson-26-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__072__lesson-26-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w04__073__lesson-27-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__074__lesson-27-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__075__lesson-27-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__076__lesson-27-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__077__lesson-27-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__078__lesson-27-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__079__lesson-27-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__080__lesson-27-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__081__lesson-27-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__082__lesson-27-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__083__lesson-27-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__084__lesson-27-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__085__lesson-27-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__086__lesson-27-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w04__087__lesson-28-1-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__088__lesson-28-2-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__089__lesson-28-3-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__090__lesson-28-4-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__091__lesson-28-5-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__092__lesson-28-6-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__093__lesson-28-7-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__094__lesson-28-8-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__095__lesson-28-9-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__096__lesson-28-10-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__097__lesson-28-11-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__098__lesson-28-12-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__099__lesson-28-13-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__100__lesson-28-14-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w04__101__lesson-28-15-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__000__lesson-29-1-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__001__lesson-29-2-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__002__lesson-29-3-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__003__lesson-29-4-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__004__lesson-29-5-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__005__lesson-29-6-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__006__lesson-29-7-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__007__lesson-29-8-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__008__lesson-29-9-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__009__lesson-29-10-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__010__lesson-29-11-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__011__lesson-29-12-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__012__lesson-29-13-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w05__013__lesson-30-1-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__014__lesson-30-2-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__015__lesson-30-3-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__016__lesson-30-4-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__017__lesson-30-5-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__018__lesson-30-6-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__019__lesson-30-7-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__020__lesson-30-8-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__021__lesson-30-9-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__022__lesson-30-10-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__023__lesson-30-11-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__024__lesson-30-12-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__025__lesson-30-13-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__026__lesson-30-14-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__027__lesson-30-15-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__028__lesson-30-16-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w05__029__lesson-31-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__030__lesson-31-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__031__lesson-31-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__032__lesson-31-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__033__lesson-31-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__034__lesson-31-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__035__lesson-31-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__036__lesson-31-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__037__lesson-31-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__038__lesson-31-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__039__lesson-31-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__040__lesson-31-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__041__lesson-31-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__042__lesson-31-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__043__lesson-31-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__044__lesson-32-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__045__lesson-32-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__046__lesson-32-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__047__lesson-32-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__048__lesson-32-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__049__lesson-32-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__050__lesson-32-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__051__lesson-32-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__052__lesson-32-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__053__lesson-32-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__054__lesson-32-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__055__lesson-32-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__056__lesson-32-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__057__lesson-32-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__058__lesson-32-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__059__lesson-33-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__060__lesson-33-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__061__lesson-33-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__062__lesson-33-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__063__lesson-33-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__064__lesson-33-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__065__lesson-33-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__066__lesson-33-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__067__lesson-33-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__068__lesson-33-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__069__lesson-33-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__070__lesson-33-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__071__lesson-33-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__072__lesson-33-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__073__lesson-33-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w05__074__lesson-34-1-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__075__lesson-34-2-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__076__lesson-34-3-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__077__lesson-34-4-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__078__lesson-34-5-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__079__lesson-34-6-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__080__lesson-34-7-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__081__lesson-34-8-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__082__lesson-34-9-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__083__lesson-34-10-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__084__lesson-34-11-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__085__lesson-34-12-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__086__lesson-34-13-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__087__lesson-34-14-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w05__088__lesson-35-1-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__089__lesson-35-2-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__090__lesson-35-3-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__091__lesson-35-4-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__092__lesson-35-5-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__093__lesson-35-6-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__094__lesson-35-7-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__095__lesson-35-8-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__096__lesson-35-9-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__097__lesson-35-10-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__098__lesson-35-11-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__099__lesson-35-12-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__100__lesson-35-13-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__101__lesson-35-14-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__102__lesson-35-15-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__103__lesson-35-16-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w05__104__lesson-35-17-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__000__lesson-36-1-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__001__lesson-36-2-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__002__lesson-36-3-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__003__lesson-36-4-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__004__lesson-36-5-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__005__lesson-36-6-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__006__lesson-36-7-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__007__lesson-36-8-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__008__lesson-36-9-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__009__lesson-36-10-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__010__lesson-36-11-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__011__lesson-36-12-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__012__lesson-36-13-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__013__lesson-36-14-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__014__lesson-36-15-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__015__lesson-36-16-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__016__lesson-36-17-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__017__lesson-37-1-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__018__lesson-37-2-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__019__lesson-37-3-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__020__lesson-37-4-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__021__lesson-37-5-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__022__lesson-37-6-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__023__lesson-37-7-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__024__lesson-37-8-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__025__lesson-37-9-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__026__lesson-37-10-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__027__lesson-37-11-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__028__lesson-37-12-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__029__lesson-37-13-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__030__lesson-37-14-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__031__lesson-37-15-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__032__lesson-38-1-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__033__lesson-38-2-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__034__lesson-38-3-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__035__lesson-38-4-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__036__lesson-38-5-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__037__lesson-38-6-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__038__lesson-38-7-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__039__lesson-38-8-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__040__lesson-38-9-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__041__lesson-38-10-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__042__lesson-38-11-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__043__lesson-38-12-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__044__lesson-38-13-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__045__lesson-38-14-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__046__lesson-38-15-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w06__047__lesson-39-1-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__048__lesson-39-2-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__049__lesson-39-3-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__050__lesson-39-4-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__051__lesson-39-5-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__052__lesson-39-6-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__053__lesson-39-7-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__054__lesson-39-8-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__055__lesson-39-9-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__056__lesson-39-10-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__057__lesson-39-11-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__058__lesson-39-12-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__059__lesson-39-13-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__060__lesson-39-14-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__061__lesson-39-15-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__062__lesson-39-16-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__063__lesson-39-17-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__064__lesson-40-1-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 1 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__065__lesson-40-2-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 2 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__066__lesson-40-3-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 3 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__067__lesson-40-4-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 4 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__068__lesson-40-5-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 5 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__069__lesson-40-6-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 6 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__070__lesson-40-7-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 7 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__071__lesson-40-8-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 8 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__072__lesson-40-9-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 9 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__073__lesson-40-10-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 10 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__074__lesson-40-11-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 11 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__075__lesson-40-12-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 12 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__076__lesson-40-13-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 13 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__077__lesson-40-14-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 14 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__078__lesson-40-15-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 15 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__079__lesson-40-16-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 16 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__080__lesson-40-17-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 17 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__081__lesson-40-18-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 18 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w06__082__lesson-41-1-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__083__lesson-41-2-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__084__lesson-41-3-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__085__lesson-41-4-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__086__lesson-41-5-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__087__lesson-41-6-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__088__lesson-41-7-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__089__lesson-41-8-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__090__lesson-41-9-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__091__lesson-41-10-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__092__lesson-41-11-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__093__lesson-41-12-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__094__lesson-41-13-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__095__lesson-41-14-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__096__lesson-41-15-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__097__lesson-41-16-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__098__lesson-41-17-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w06__099__lesson-42-1-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__100__lesson-42-2-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__101__lesson-42-3-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__102__lesson-42-4-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__103__lesson-42-5-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__104__lesson-42-6-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__105__lesson-42-7-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__106__lesson-42-8-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__107__lesson-42-9-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__108__lesson-42-10-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__109__lesson-42-11-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__110__lesson-42-12-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w06__111__lesson-42-13-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
-| w07__000__lesson-43-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__001__lesson-43-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__002__lesson-43-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__003__lesson-43-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__004__lesson-43-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__005__lesson-43-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__006__lesson-43-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__007__lesson-43-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__008__lesson-43-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__009__lesson-43-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__010__lesson-43-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__011__lesson-43-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__012__lesson-43-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__013__lesson-43-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__014__lesson-43-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__015__lesson-44-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__016__lesson-44-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__017__lesson-44-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__018__lesson-44-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__019__lesson-44-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__020__lesson-44-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__021__lesson-44-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__022__lesson-44-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__023__lesson-44-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__024__lesson-44-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__025__lesson-44-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__026__lesson-44-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__027__lesson-44-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__028__lesson-44-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__029__lesson-44-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__030__lesson-44-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__031__lesson-44-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__032__lesson-45-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__033__lesson-45-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__034__lesson-45-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__035__lesson-45-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__036__lesson-45-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__037__lesson-45-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__038__lesson-45-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__039__lesson-45-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__040__lesson-45-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__041__lesson-45-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__042__lesson-45-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__043__lesson-45-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__044__lesson-45-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__045__lesson-45-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__046__lesson-45-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__047__lesson-46-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__048__lesson-46-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__049__lesson-46-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__050__lesson-46-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__051__lesson-46-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__052__lesson-46-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__053__lesson-46-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__054__lesson-46-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__055__lesson-46-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__056__lesson-46-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__057__lesson-46-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__058__lesson-46-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__059__lesson-46-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__060__lesson-46-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__061__lesson-46-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__062__lesson-46-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__063__lesson-46-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w07__064__lesson-47-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__065__lesson-47-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__066__lesson-47-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__067__lesson-47-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__068__lesson-47-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__069__lesson-47-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__070__lesson-47-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__071__lesson-47-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__072__lesson-47-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__073__lesson-47-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__074__lesson-47-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__075__lesson-47-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__076__lesson-47-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__077__lesson-47-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__078__lesson-47-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__079__lesson-48-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__080__lesson-48-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__081__lesson-48-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__082__lesson-48-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__083__lesson-48-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__084__lesson-48-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__085__lesson-48-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__086__lesson-48-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__087__lesson-48-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__088__lesson-48-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__089__lesson-48-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__090__lesson-48-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__091__lesson-48-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__092__lesson-48-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__093__lesson-48-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w07__094__lesson-49-1-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__095__lesson-49-2-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__096__lesson-49-3-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__097__lesson-49-4-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__098__lesson-49-5-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__099__lesson-49-6-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__100__lesson-49-7-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__101__lesson-49-8-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__102__lesson-49-9-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__103__lesson-49-10-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__104__lesson-49-11-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__105__lesson-49-12-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__106__lesson-49-13-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w07__107__lesson-49-14-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__000__lesson-50-1-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__001__lesson-50-2-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__002__lesson-50-3-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__003__lesson-50-4-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__004__lesson-50-5-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__005__lesson-50-6-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__006__lesson-50-7-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__007__lesson-50-8-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__008__lesson-50-9-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__009__lesson-50-10-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__010__lesson-50-11-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__011__lesson-50-12-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__012__lesson-50-13-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__013__lesson-50-14-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__014__lesson-50-15-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__015__lesson-50-16-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__016__lesson-50-17-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w08__017__lesson-51-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__018__lesson-51-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__019__lesson-51-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__020__lesson-51-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__021__lesson-51-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__022__lesson-51-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__023__lesson-51-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__024__lesson-51-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__025__lesson-51-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__026__lesson-51-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__027__lesson-51-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__028__lesson-51-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__029__lesson-51-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__030__lesson-51-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__031__lesson-52-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__032__lesson-52-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__033__lesson-52-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__034__lesson-52-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__035__lesson-52-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__036__lesson-52-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__037__lesson-52-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__038__lesson-52-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__039__lesson-52-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__040__lesson-52-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__041__lesson-52-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__042__lesson-52-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__043__lesson-52-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__044__lesson-52-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__045__lesson-53-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__046__lesson-53-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__047__lesson-53-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__048__lesson-53-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__049__lesson-53-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__050__lesson-53-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__051__lesson-53-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__052__lesson-53-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__053__lesson-53-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__054__lesson-53-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__055__lesson-53-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__056__lesson-53-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__057__lesson-53-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__058__lesson-53-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__059__lesson-53-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__060__lesson-53-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__061__lesson-54-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__062__lesson-54-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__063__lesson-54-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__064__lesson-54-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__065__lesson-54-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__066__lesson-54-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__067__lesson-54-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__068__lesson-54-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__069__lesson-54-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__070__lesson-54-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__071__lesson-54-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__072__lesson-54-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__073__lesson-54-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__074__lesson-54-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__075__lesson-54-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__076__lesson-54-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w08__077__lesson-55-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__078__lesson-55-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__079__lesson-55-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__080__lesson-55-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__081__lesson-55-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__082__lesson-55-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__083__lesson-55-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__084__lesson-55-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__085__lesson-55-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__086__lesson-55-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__087__lesson-55-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__088__lesson-55-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__089__lesson-55-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__090__lesson-55-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w08__091__lesson-56-1-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__092__lesson-56-2-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__093__lesson-56-3-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__094__lesson-56-4-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__095__lesson-56-5-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__096__lesson-56-6-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__097__lesson-56-7-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__098__lesson-56-8-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__099__lesson-56-9-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__100__lesson-56-10-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__101__lesson-56-11-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__102__lesson-56-12-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__103__lesson-56-13-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__104__lesson-56-14-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w08__105__lesson-56-15-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__000__lesson-57-1-of-14 | Week 09 Connection.dc.html | Lesson 57 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__001__lesson-57-2-of-14 | Week 09 Connection.dc.html | Lesson 57 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__002__lesson-57-3-of-14 | Week 09 Connection.dc.html | Lesson 57 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__003__lesson-57-4-of-14 | Week 09 Connection.dc.html | Lesson 57 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__004__lesson-57-5-of-14 | Week 09 Connection.dc.html | Lesson 57 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__005__lesson-57-6-of-14 | Week 09 Connection.dc.html | Lesson 57 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__006__lesson-57-7-of-14 | Week 09 Connection.dc.html | Lesson 57 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__007__lesson-57-8-of-14 | Week 09 Connection.dc.html | Lesson 57 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__008__lesson-57-9-of-14 | Week 09 Connection.dc.html | Lesson 57 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__009__lesson-57-10-of-14 | Week 09 Connection.dc.html | Lesson 57 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__010__lesson-57-11-of-14 | Week 09 Connection.dc.html | Lesson 57 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__011__lesson-57-12-of-14 | Week 09 Connection.dc.html | Lesson 57 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__012__lesson-57-13-of-14 | Week 09 Connection.dc.html | Lesson 57 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__013__lesson-57-14-of-14 | Week 09 Connection.dc.html | Lesson 57 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__014__lesson-58-1-of-17 | Week 09 Connection.dc.html | Lesson 58 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__015__lesson-58-2-of-17 | Week 09 Connection.dc.html | Lesson 58 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__016__lesson-58-3-of-17 | Week 09 Connection.dc.html | Lesson 58 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__017__lesson-58-4-of-17 | Week 09 Connection.dc.html | Lesson 58 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__018__lesson-58-5-of-17 | Week 09 Connection.dc.html | Lesson 58 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__019__lesson-58-6-of-17 | Week 09 Connection.dc.html | Lesson 58 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__020__lesson-58-7-of-17 | Week 09 Connection.dc.html | Lesson 58 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__021__lesson-58-8-of-17 | Week 09 Connection.dc.html | Lesson 58 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__022__lesson-58-9-of-17 | Week 09 Connection.dc.html | Lesson 58 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__023__lesson-58-10-of-17 | Week 09 Connection.dc.html | Lesson 58 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__024__lesson-58-11-of-17 | Week 09 Connection.dc.html | Lesson 58 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__025__lesson-58-12-of-17 | Week 09 Connection.dc.html | Lesson 58 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__026__lesson-58-13-of-17 | Week 09 Connection.dc.html | Lesson 58 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__027__lesson-58-14-of-17 | Week 09 Connection.dc.html | Lesson 58 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__028__lesson-58-15-of-17 | Week 09 Connection.dc.html | Lesson 58 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__029__lesson-58-16-of-17 | Week 09 Connection.dc.html | Lesson 58 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__030__lesson-58-17-of-17 | Week 09 Connection.dc.html | Lesson 58 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w09__031__lesson-59-1-of-14 | Week 09 Connection.dc.html | Lesson 59 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__032__lesson-59-2-of-14 | Week 09 Connection.dc.html | Lesson 59 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__033__lesson-59-3-of-14 | Week 09 Connection.dc.html | Lesson 59 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__034__lesson-59-4-of-14 | Week 09 Connection.dc.html | Lesson 59 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__035__lesson-59-5-of-14 | Week 09 Connection.dc.html | Lesson 59 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__036__lesson-59-6-of-14 | Week 09 Connection.dc.html | Lesson 59 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__037__lesson-59-7-of-14 | Week 09 Connection.dc.html | Lesson 59 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__038__lesson-59-8-of-14 | Week 09 Connection.dc.html | Lesson 59 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__039__lesson-59-9-of-14 | Week 09 Connection.dc.html | Lesson 59 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__040__lesson-59-10-of-14 | Week 09 Connection.dc.html | Lesson 59 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__041__lesson-59-11-of-14 | Week 09 Connection.dc.html | Lesson 59 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__042__lesson-59-12-of-14 | Week 09 Connection.dc.html | Lesson 59 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__043__lesson-59-13-of-14 | Week 09 Connection.dc.html | Lesson 59 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__044__lesson-59-14-of-14 | Week 09 Connection.dc.html | Lesson 59 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__045__lesson-60-1-of-16 | Week 09 Connection.dc.html | Lesson 60 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__046__lesson-60-2-of-16 | Week 09 Connection.dc.html | Lesson 60 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__047__lesson-60-3-of-16 | Week 09 Connection.dc.html | Lesson 60 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__048__lesson-60-4-of-16 | Week 09 Connection.dc.html | Lesson 60 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__049__lesson-60-5-of-16 | Week 09 Connection.dc.html | Lesson 60 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__050__lesson-60-6-of-16 | Week 09 Connection.dc.html | Lesson 60 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__051__lesson-60-7-of-16 | Week 09 Connection.dc.html | Lesson 60 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__052__lesson-60-8-of-16 | Week 09 Connection.dc.html | Lesson 60 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__053__lesson-60-9-of-16 | Week 09 Connection.dc.html | Lesson 60 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__054__lesson-60-10-of-16 | Week 09 Connection.dc.html | Lesson 60 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__055__lesson-60-11-of-16 | Week 09 Connection.dc.html | Lesson 60 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__056__lesson-60-12-of-16 | Week 09 Connection.dc.html | Lesson 60 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__057__lesson-60-13-of-16 | Week 09 Connection.dc.html | Lesson 60 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__058__lesson-60-14-of-16 | Week 09 Connection.dc.html | Lesson 60 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__059__lesson-60-15-of-16 | Week 09 Connection.dc.html | Lesson 60 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__060__lesson-60-16-of-16 | Week 09 Connection.dc.html | Lesson 60 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w09__061__lesson-61-1-of-15 | Week 09 Connection.dc.html | Lesson 61 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__062__lesson-61-2-of-15 | Week 09 Connection.dc.html | Lesson 61 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__063__lesson-61-3-of-15 | Week 09 Connection.dc.html | Lesson 61 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__064__lesson-61-4-of-15 | Week 09 Connection.dc.html | Lesson 61 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__065__lesson-61-5-of-15 | Week 09 Connection.dc.html | Lesson 61 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__066__lesson-61-6-of-15 | Week 09 Connection.dc.html | Lesson 61 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__067__lesson-61-7-of-15 | Week 09 Connection.dc.html | Lesson 61 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__068__lesson-61-8-of-15 | Week 09 Connection.dc.html | Lesson 61 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__069__lesson-61-9-of-15 | Week 09 Connection.dc.html | Lesson 61 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__070__lesson-61-10-of-15 | Week 09 Connection.dc.html | Lesson 61 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__071__lesson-61-11-of-15 | Week 09 Connection.dc.html | Lesson 61 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__072__lesson-61-12-of-15 | Week 09 Connection.dc.html | Lesson 61 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__073__lesson-61-13-of-15 | Week 09 Connection.dc.html | Lesson 61 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__074__lesson-61-14-of-15 | Week 09 Connection.dc.html | Lesson 61 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__075__lesson-61-15-of-15 | Week 09 Connection.dc.html | Lesson 61 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__076__lesson-62-1-of-14 | Week 09 Connection.dc.html | Lesson 62 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__077__lesson-62-2-of-14 | Week 09 Connection.dc.html | Lesson 62 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__078__lesson-62-3-of-14 | Week 09 Connection.dc.html | Lesson 62 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__079__lesson-62-4-of-14 | Week 09 Connection.dc.html | Lesson 62 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__080__lesson-62-5-of-14 | Week 09 Connection.dc.html | Lesson 62 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__081__lesson-62-6-of-14 | Week 09 Connection.dc.html | Lesson 62 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__082__lesson-62-7-of-14 | Week 09 Connection.dc.html | Lesson 62 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__083__lesson-62-8-of-14 | Week 09 Connection.dc.html | Lesson 62 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__084__lesson-62-9-of-14 | Week 09 Connection.dc.html | Lesson 62 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__085__lesson-62-10-of-14 | Week 09 Connection.dc.html | Lesson 62 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__086__lesson-62-11-of-14 | Week 09 Connection.dc.html | Lesson 62 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__087__lesson-62-12-of-14 | Week 09 Connection.dc.html | Lesson 62 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__088__lesson-62-13-of-14 | Week 09 Connection.dc.html | Lesson 62 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__089__lesson-62-14-of-14 | Week 09 Connection.dc.html | Lesson 62 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w09__090__lesson-63-1-of-15 | Week 09 Connection.dc.html | Lesson 63 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__091__lesson-63-2-of-15 | Week 09 Connection.dc.html | Lesson 63 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__092__lesson-63-3-of-15 | Week 09 Connection.dc.html | Lesson 63 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__093__lesson-63-4-of-15 | Week 09 Connection.dc.html | Lesson 63 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__094__lesson-63-5-of-15 | Week 09 Connection.dc.html | Lesson 63 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__095__lesson-63-6-of-15 | Week 09 Connection.dc.html | Lesson 63 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__096__lesson-63-7-of-15 | Week 09 Connection.dc.html | Lesson 63 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__097__lesson-63-8-of-15 | Week 09 Connection.dc.html | Lesson 63 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__098__lesson-63-9-of-15 | Week 09 Connection.dc.html | Lesson 63 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__099__lesson-63-10-of-15 | Week 09 Connection.dc.html | Lesson 63 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__100__lesson-63-11-of-15 | Week 09 Connection.dc.html | Lesson 63 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__101__lesson-63-12-of-15 | Week 09 Connection.dc.html | Lesson 63 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__102__lesson-63-13-of-15 | Week 09 Connection.dc.html | Lesson 63 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__103__lesson-63-14-of-15 | Week 09 Connection.dc.html | Lesson 63 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w09__104__lesson-63-15-of-15 | Week 09 Connection.dc.html | Lesson 63 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__000__lesson-64-1-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__001__lesson-64-2-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__002__lesson-64-3-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__003__lesson-64-4-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__004__lesson-64-5-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__005__lesson-64-6-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__006__lesson-64-7-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__007__lesson-64-8-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__008__lesson-64-9-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__009__lesson-64-10-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__010__lesson-64-11-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__011__lesson-64-12-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__012__lesson-64-13-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__013__lesson-64-14-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__014__lesson-64-15-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__015__lesson-64-16-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__016__lesson-65-1-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__017__lesson-65-2-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__018__lesson-65-3-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__019__lesson-65-4-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__020__lesson-65-5-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__021__lesson-65-6-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__022__lesson-65-7-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__023__lesson-65-8-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__024__lesson-65-9-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__025__lesson-65-10-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__026__lesson-65-11-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__027__lesson-65-12-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__028__lesson-65-13-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__029__lesson-65-14-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__030__lesson-66-1-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__031__lesson-66-2-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__032__lesson-66-3-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__033__lesson-66-4-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__034__lesson-66-5-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__035__lesson-66-6-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__036__lesson-66-7-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__037__lesson-66-8-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__038__lesson-66-9-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__039__lesson-66-10-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__040__lesson-66-11-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__041__lesson-66-12-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__042__lesson-66-13-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__043__lesson-66-14-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__044__lesson-66-15-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__045__lesson-67-1-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__046__lesson-67-2-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__047__lesson-67-3-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__048__lesson-67-4-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__049__lesson-67-5-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__050__lesson-67-6-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__051__lesson-67-7-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__052__lesson-67-8-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__053__lesson-67-9-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__054__lesson-67-10-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__055__lesson-67-11-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__056__lesson-67-12-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__057__lesson-67-13-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__058__lesson-67-14-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w10__059__lesson-68-1-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__060__lesson-68-2-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__061__lesson-68-3-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__062__lesson-68-4-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__063__lesson-68-5-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__064__lesson-68-6-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__065__lesson-68-7-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__066__lesson-68-8-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__067__lesson-68-9-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__068__lesson-68-10-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__069__lesson-68-11-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__070__lesson-68-12-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__071__lesson-68-13-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__072__lesson-68-14-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__073__lesson-68-15-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__074__lesson-68-16-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w10__075__lesson-69-1-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__076__lesson-69-2-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__077__lesson-69-3-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__078__lesson-69-4-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__079__lesson-69-5-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__080__lesson-69-6-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__081__lesson-69-7-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__082__lesson-69-8-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__083__lesson-69-9-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__084__lesson-69-10-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__085__lesson-69-11-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__086__lesson-69-12-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__087__lesson-69-13-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__088__lesson-69-14-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__089__lesson-69-15-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__090__lesson-70-1-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__091__lesson-70-2-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__092__lesson-70-3-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__093__lesson-70-4-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__094__lesson-70-5-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__095__lesson-70-6-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__096__lesson-70-7-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__097__lesson-70-8-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__098__lesson-70-9-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__099__lesson-70-10-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__100__lesson-70-11-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__101__lesson-70-12-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__102__lesson-70-13-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__103__lesson-70-14-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w10__104__lesson-70-15-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__000__lesson-71-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__001__lesson-71-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__002__lesson-71-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__003__lesson-71-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__004__lesson-71-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__005__lesson-71-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__006__lesson-71-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__007__lesson-71-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__008__lesson-71-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__009__lesson-71-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__010__lesson-71-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__011__lesson-71-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__012__lesson-71-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__013__lesson-71-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__014__lesson-72-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__015__lesson-72-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__016__lesson-72-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__017__lesson-72-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__018__lesson-72-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__019__lesson-72-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__020__lesson-72-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__021__lesson-72-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__022__lesson-72-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__023__lesson-72-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__024__lesson-72-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__025__lesson-72-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__026__lesson-72-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__027__lesson-72-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__028__lesson-72-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__029__lesson-72-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__030__lesson-73-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__031__lesson-73-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__032__lesson-73-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__033__lesson-73-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__034__lesson-73-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__035__lesson-73-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__036__lesson-73-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__037__lesson-73-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__038__lesson-73-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__039__lesson-73-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__040__lesson-73-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__041__lesson-73-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__042__lesson-73-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__043__lesson-73-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__044__lesson-74-1-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__045__lesson-74-2-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__046__lesson-74-3-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__047__lesson-74-4-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__048__lesson-74-5-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__049__lesson-74-6-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__050__lesson-74-7-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__051__lesson-74-8-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__052__lesson-74-9-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__053__lesson-74-10-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__054__lesson-74-11-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__055__lesson-74-12-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__056__lesson-74-13-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__057__lesson-74-14-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__058__lesson-74-15-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w11__059__lesson-75-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__060__lesson-75-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__061__lesson-75-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__062__lesson-75-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__063__lesson-75-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__064__lesson-75-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__065__lesson-75-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__066__lesson-75-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__067__lesson-75-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__068__lesson-75-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__069__lesson-75-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__070__lesson-75-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__071__lesson-75-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__072__lesson-75-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__073__lesson-75-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__074__lesson-75-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w11__075__lesson-76-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__076__lesson-76-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__077__lesson-76-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__078__lesson-76-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__079__lesson-76-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__080__lesson-76-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__081__lesson-76-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__082__lesson-76-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__083__lesson-76-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__084__lesson-76-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__085__lesson-76-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__086__lesson-76-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__087__lesson-76-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__088__lesson-76-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__089__lesson-77-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__090__lesson-77-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__091__lesson-77-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__092__lesson-77-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__093__lesson-77-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__094__lesson-77-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__095__lesson-77-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__096__lesson-77-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__097__lesson-77-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__098__lesson-77-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__099__lesson-77-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__100__lesson-77-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__101__lesson-77-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w11__102__lesson-77-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__000__lesson-78-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__001__lesson-78-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__002__lesson-78-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__003__lesson-78-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__004__lesson-78-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__005__lesson-78-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__006__lesson-78-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__007__lesson-78-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__008__lesson-78-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__009__lesson-78-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__010__lesson-78-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__011__lesson-78-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__012__lesson-78-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__013__lesson-78-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__014__lesson-79-1-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__015__lesson-79-2-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__016__lesson-79-3-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__017__lesson-79-4-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__018__lesson-79-5-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__019__lesson-79-6-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__020__lesson-79-7-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__021__lesson-79-8-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__022__lesson-79-9-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__023__lesson-79-10-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__024__lesson-79-11-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__025__lesson-79-12-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__026__lesson-79-13-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__027__lesson-79-14-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__028__lesson-79-15-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__029__lesson-79-16-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
-| w12__030__lesson-80-1-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 1 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__031__lesson-80-2-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 2 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__032__lesson-80-3-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 3 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__033__lesson-80-4-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 4 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__034__lesson-80-5-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 5 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__035__lesson-80-6-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 6 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__036__lesson-80-7-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 7 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__037__lesson-80-8-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 8 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__038__lesson-80-9-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 9 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__039__lesson-80-10-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 10 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__040__lesson-80-11-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 11 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__041__lesson-80-12-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 12 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__042__lesson-80-13-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 13 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__043__lesson-80-14-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 14 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__044__lesson-80-15-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 15 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__045__lesson-80-16-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 16 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__046__lesson-80-17-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 17 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__047__lesson-80-18-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 18 of 18 |  |  |  | NOT_STARTED |  |  |  |
-| w12__048__lesson-81-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__049__lesson-81-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__050__lesson-81-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__051__lesson-81-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__052__lesson-81-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__053__lesson-81-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__054__lesson-81-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__055__lesson-81-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__056__lesson-81-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__057__lesson-81-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__058__lesson-81-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__059__lesson-81-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__060__lesson-81-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__061__lesson-81-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__062__lesson-81-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__063__lesson-81-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__064__lesson-81-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__065__lesson-82-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__066__lesson-82-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__067__lesson-82-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__068__lesson-82-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__069__lesson-82-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__070__lesson-82-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__071__lesson-82-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__072__lesson-82-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__073__lesson-82-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__074__lesson-82-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__075__lesson-82-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__076__lesson-82-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__077__lesson-82-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__078__lesson-82-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__079__lesson-82-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__080__lesson-82-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__081__lesson-82-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
-| w12__082__lesson-83-1-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__083__lesson-83-2-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__084__lesson-83-3-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__085__lesson-83-4-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__086__lesson-83-5-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__087__lesson-83-6-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__088__lesson-83-7-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__089__lesson-83-8-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__090__lesson-83-9-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__091__lesson-83-10-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__092__lesson-83-11-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__093__lesson-83-12-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__094__lesson-83-13-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__095__lesson-83-14-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__096__lesson-83-15-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
-| w12__097__lesson-84-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__098__lesson-84-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__099__lesson-84-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__100__lesson-84-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__101__lesson-84-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__102__lesson-84-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__103__lesson-84-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__104__lesson-84-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__105__lesson-84-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__106__lesson-84-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__107__lesson-84-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__108__lesson-84-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__109__lesson-84-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| w12__110__lesson-84-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__000__lesson-1-1-of-14 | Week 01 Reset.dc.html | Lesson 1 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=1 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__001__lesson-1-2-of-14 | Week 01 Reset.dc.html | Lesson 1 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w01__002__lesson-1-3-of-14 | Week 01 Reset.dc.html | Lesson 1 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=3 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w01__003__lesson-1-4-of-14 | Week 01 Reset.dc.html | Lesson 1 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__004__lesson-1-5-of-14 | Week 01 Reset.dc.html | Lesson 1 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=5 · seed library-seed | DIFF_CLEAN | 0.085 % | 2026-10-22 |  |
+| w01__005__lesson-1-6-of-14 | Week 01 Reset.dc.html | Lesson 1 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__006__lesson-1-7-of-14 | Week 01 Reset.dc.html | Lesson 1 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__007__lesson-1-8-of-14 | Week 01 Reset.dc.html | Lesson 1 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__008__lesson-1-9-of-14 | Week 01 Reset.dc.html | Lesson 1 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=9 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w01__009__lesson-1-10-of-14 | Week 01 Reset.dc.html | Lesson 1 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__010__lesson-1-11-of-14 | Week 01 Reset.dc.html | Lesson 1 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=11 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w01__011__lesson-1-12-of-14 | Week 01 Reset.dc.html | Lesson 1 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=12 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w01__012__lesson-1-13-of-14 | Week 01 Reset.dc.html | Lesson 1 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__013__lesson-1-14-of-14 | Week 01 Reset.dc.html | Lesson 1 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__014__lesson-2-1-of-16 | Week 01 Reset.dc.html | Lesson 2 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=1 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w01__015__lesson-2-2-of-16 | Week 01 Reset.dc.html | Lesson 2 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=2 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w01__016__lesson-2-3-of-16 | Week 01 Reset.dc.html | Lesson 2 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=3 · seed library-seed | DIFF_CLEAN | 0.069 % | 2026-10-22 |  |
+| w01__017__lesson-2-4-of-16 | Week 01 Reset.dc.html | Lesson 2 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=4 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w01__018__lesson-2-5-of-16 | Week 01 Reset.dc.html | Lesson 2 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__019__lesson-2-6-of-16 | Week 01 Reset.dc.html | Lesson 2 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=6 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w01__020__lesson-2-7-of-16 | Week 01 Reset.dc.html | Lesson 2 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=7 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w01__021__lesson-2-8-of-16 | Week 01 Reset.dc.html | Lesson 2 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__022__lesson-2-9-of-16 | Week 01 Reset.dc.html | Lesson 2 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=9 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w01__023__lesson-2-10-of-16 | Week 01 Reset.dc.html | Lesson 2 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__024__lesson-2-11-of-16 | Week 01 Reset.dc.html | Lesson 2 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=11 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w01__025__lesson-2-12-of-16 | Week 01 Reset.dc.html | Lesson 2 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=12 · seed library-seed | DIFF_CLEAN | 0.087 % | 2026-10-22 |  |
+| w01__026__lesson-2-13-of-16 | Week 01 Reset.dc.html | Lesson 2 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=13 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w01__027__lesson-2-14-of-16 | Week 01 Reset.dc.html | Lesson 2 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=14 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w01__028__lesson-2-15-of-16 | Week 01 Reset.dc.html | Lesson 2 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__029__lesson-2-16-of-16 | Week 01 Reset.dc.html | Lesson 2 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/2?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w01__030__lesson-3-1-of-15 | Week 01 Reset.dc.html | Lesson 3 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w01__031__lesson-3-2-of-15 | Week 01 Reset.dc.html | Lesson 3 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=2 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w01__032__lesson-3-3-of-15 | Week 01 Reset.dc.html | Lesson 3 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=3 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w01__033__lesson-3-4-of-15 | Week 01 Reset.dc.html | Lesson 3 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__034__lesson-3-5-of-15 | Week 01 Reset.dc.html | Lesson 3 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__035__lesson-3-6-of-15 | Week 01 Reset.dc.html | Lesson 3 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=6 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w01__036__lesson-3-7-of-15 | Week 01 Reset.dc.html | Lesson 3 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__037__lesson-3-8-of-15 | Week 01 Reset.dc.html | Lesson 3 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__038__lesson-3-9-of-15 | Week 01 Reset.dc.html | Lesson 3 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=9 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w01__039__lesson-3-10-of-15 | Week 01 Reset.dc.html | Lesson 3 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__040__lesson-3-11-of-15 | Week 01 Reset.dc.html | Lesson 3 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__041__lesson-3-12-of-15 | Week 01 Reset.dc.html | Lesson 3 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=12 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w01__042__lesson-3-13-of-15 | Week 01 Reset.dc.html | Lesson 3 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=13 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w01__043__lesson-3-14-of-15 | Week 01 Reset.dc.html | Lesson 3 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__044__lesson-3-15-of-15 | Week 01 Reset.dc.html | Lesson 3 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/3?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__045__lesson-4-1-of-15 | Week 01 Reset.dc.html | Lesson 4 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=1 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__046__lesson-4-2-of-15 | Week 01 Reset.dc.html | Lesson 4 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=2 · seed library-seed | DIFF_CLEAN | 0.036 % | 2026-10-22 |  |
+| w01__047__lesson-4-3-of-15 | Week 01 Reset.dc.html | Lesson 4 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=3 · seed library-seed | DIFF_CLEAN | 0.081 % | 2026-10-22 |  |
+| w01__048__lesson-4-4-of-15 | Week 01 Reset.dc.html | Lesson 4 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__049__lesson-4-5-of-15 | Week 01 Reset.dc.html | Lesson 4 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=5 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w01__050__lesson-4-6-of-15 | Week 01 Reset.dc.html | Lesson 4 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__051__lesson-4-7-of-15 | Week 01 Reset.dc.html | Lesson 4 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__052__lesson-4-8-of-15 | Week 01 Reset.dc.html | Lesson 4 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=8 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w01__053__lesson-4-9-of-15 | Week 01 Reset.dc.html | Lesson 4 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__054__lesson-4-10-of-15 | Week 01 Reset.dc.html | Lesson 4 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__055__lesson-4-11-of-15 | Week 01 Reset.dc.html | Lesson 4 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__056__lesson-4-12-of-15 | Week 01 Reset.dc.html | Lesson 4 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=12 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w01__057__lesson-4-13-of-15 | Week 01 Reset.dc.html | Lesson 4 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=13 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w01__058__lesson-4-14-of-15 | Week 01 Reset.dc.html | Lesson 4 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__059__lesson-4-15-of-15 | Week 01 Reset.dc.html | Lesson 4 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/4?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__060__lesson-5-1-of-15 | Week 01 Reset.dc.html | Lesson 5 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w01__061__lesson-5-2-of-15 | Week 01 Reset.dc.html | Lesson 5 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=2 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w01__062__lesson-5-3-of-15 | Week 01 Reset.dc.html | Lesson 5 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=3 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w01__063__lesson-5-4-of-15 | Week 01 Reset.dc.html | Lesson 5 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__064__lesson-5-5-of-15 | Week 01 Reset.dc.html | Lesson 5 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=5 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w01__065__lesson-5-6-of-15 | Week 01 Reset.dc.html | Lesson 5 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__066__lesson-5-7-of-15 | Week 01 Reset.dc.html | Lesson 5 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__067__lesson-5-8-of-15 | Week 01 Reset.dc.html | Lesson 5 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=8 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w01__068__lesson-5-9-of-15 | Week 01 Reset.dc.html | Lesson 5 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=9 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w01__069__lesson-5-10-of-15 | Week 01 Reset.dc.html | Lesson 5 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__070__lesson-5-11-of-15 | Week 01 Reset.dc.html | Lesson 5 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__071__lesson-5-12-of-15 | Week 01 Reset.dc.html | Lesson 5 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=12 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w01__072__lesson-5-13-of-15 | Week 01 Reset.dc.html | Lesson 5 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=13 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w01__073__lesson-5-14-of-15 | Week 01 Reset.dc.html | Lesson 5 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__074__lesson-5-15-of-15 | Week 01 Reset.dc.html | Lesson 5 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/5?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__075__lesson-6-1-of-14 | Week 01 Reset.dc.html | Lesson 6 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=1 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w01__076__lesson-6-2-of-14 | Week 01 Reset.dc.html | Lesson 6 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=2 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w01__077__lesson-6-3-of-14 | Week 01 Reset.dc.html | Lesson 6 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=3 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w01__078__lesson-6-4-of-14 | Week 01 Reset.dc.html | Lesson 6 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=4 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w01__079__lesson-6-5-of-14 | Week 01 Reset.dc.html | Lesson 6 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__080__lesson-6-6-of-14 | Week 01 Reset.dc.html | Lesson 6 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=6 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w01__081__lesson-6-7-of-14 | Week 01 Reset.dc.html | Lesson 6 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__082__lesson-6-8-of-14 | Week 01 Reset.dc.html | Lesson 6 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=8 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w01__083__lesson-6-9-of-14 | Week 01 Reset.dc.html | Lesson 6 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__084__lesson-6-10-of-14 | Week 01 Reset.dc.html | Lesson 6 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__085__lesson-6-11-of-14 | Week 01 Reset.dc.html | Lesson 6 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=11 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w01__086__lesson-6-12-of-14 | Week 01 Reset.dc.html | Lesson 6 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=12 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w01__087__lesson-6-13-of-14 | Week 01 Reset.dc.html | Lesson 6 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__088__lesson-6-14-of-14 | Week 01 Reset.dc.html | Lesson 6 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/6?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__089__lesson-7-1-of-16 | Week 01 Reset.dc.html | Lesson 7 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=1 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w01__090__lesson-7-2-of-16 | Week 01 Reset.dc.html | Lesson 7 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=2 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w01__091__lesson-7-3-of-16 | Week 01 Reset.dc.html | Lesson 7 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=3 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w01__092__lesson-7-4-of-16 | Week 01 Reset.dc.html | Lesson 7 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__093__lesson-7-5-of-16 | Week 01 Reset.dc.html | Lesson 7 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__094__lesson-7-6-of-16 | Week 01 Reset.dc.html | Lesson 7 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=6 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w01__095__lesson-7-7-of-16 | Week 01 Reset.dc.html | Lesson 7 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__096__lesson-7-8-of-16 | Week 01 Reset.dc.html | Lesson 7 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__097__lesson-7-9-of-16 | Week 01 Reset.dc.html | Lesson 7 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=9 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w01__098__lesson-7-10-of-16 | Week 01 Reset.dc.html | Lesson 7 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w01__099__lesson-7-11-of-16 | Week 01 Reset.dc.html | Lesson 7 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=11 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w01__100__lesson-7-12-of-16 | Week 01 Reset.dc.html | Lesson 7 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=12 · seed library-seed | DIFF_CLEAN | 0.098 % | 2026-10-22 |  |
+| w01__101__lesson-7-13-of-16 | Week 01 Reset.dc.html | Lesson 7 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=13 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w01__102__lesson-7-14-of-16 | Week 01 Reset.dc.html | Lesson 7 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=14 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w01__103__lesson-7-15-of-16 | Week 01 Reset.dc.html | Lesson 7 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w01__104__lesson-7-16-of-16 | Week 01 Reset.dc.html | Lesson 7 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/7?page=16 · seed library-seed | DIFF_CLEAN | 0.267 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w02__000__lesson-8-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=1 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w02__001__lesson-8-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=2 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w02__002__lesson-8-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w02__003__lesson-8-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=4 · seed library-seed | DIFF_CLEAN | 0.115 % | 2026-10-22 |  |
+| w02__004__lesson-8-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=5 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w02__005__lesson-8-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__006__lesson-8-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__007__lesson-8-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=8 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w02__008__lesson-8-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__009__lesson-8-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__010__lesson-8-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=11 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w02__011__lesson-8-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=12 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w02__012__lesson-8-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w02__013__lesson-8-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/8?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__014__lesson-9-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w02__015__lesson-9-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=2 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w02__016__lesson-9-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=3 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w02__017__lesson-9-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__018__lesson-9-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=5 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w02__019__lesson-9-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__020__lesson-9-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=7 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w02__021__lesson-9-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__022__lesson-9-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__023__lesson-9-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=10 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w02__024__lesson-9-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__025__lesson-9-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=12 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w02__026__lesson-9-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w02__027__lesson-9-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w02__028__lesson-9-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/9?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__029__lesson-10-1-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=1 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w02__030__lesson-10-2-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=2 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w02__031__lesson-10-3-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=3 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w02__032__lesson-10-4-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__033__lesson-10-5-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=5 · seed library-seed | DIFF_CLEAN | 0.103 % | 2026-10-22 |  |
+| w02__034__lesson-10-6-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=6 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w02__035__lesson-10-7-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__036__lesson-10-8-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__037__lesson-10-9-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=9 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w02__038__lesson-10-10-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__039__lesson-10-11-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=11 · seed library-seed | DIFF_CLEAN | 0.081 % | 2026-10-22 |  |
+| w02__040__lesson-10-12-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=12 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w02__041__lesson-10-13-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=13 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w02__042__lesson-10-14-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=14 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w02__043__lesson-10-15-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w02__044__lesson-10-16-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/10?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w02__045__lesson-11-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w02__046__lesson-11-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w02__047__lesson-11-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=3 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w02__048__lesson-11-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__049__lesson-11-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=5 · seed library-seed | DIFF_CLEAN | 0.085 % | 2026-10-22 |  |
+| w02__050__lesson-11-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__051__lesson-11-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=7 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w02__052__lesson-11-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=8 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w02__053__lesson-11-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__054__lesson-11-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__055__lesson-11-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=11 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w02__056__lesson-11-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=12 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w02__057__lesson-11-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w02__058__lesson-11-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/11?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__059__lesson-12-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=1 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w02__060__lesson-12-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=2 · seed library-seed | DIFF_CLEAN | 0.026 % | 2026-10-22 |  |
+| w02__061__lesson-12-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=3 · seed library-seed | DIFF_CLEAN | 0.095 % | 2026-10-22 |  |
+| w02__062__lesson-12-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__063__lesson-12-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=5 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w02__064__lesson-12-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=6 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w02__065__lesson-12-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__066__lesson-12-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__067__lesson-12-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=9 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w02__068__lesson-12-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__069__lesson-12-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=11 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w02__070__lesson-12-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=12 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w02__071__lesson-12-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w02__072__lesson-12-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/12?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__073__lesson-13-1-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=1 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w02__074__lesson-13-2-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=2 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w02__075__lesson-13-3-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=3 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w02__076__lesson-13-4-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__077__lesson-13-5-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__078__lesson-13-6-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=6 · seed library-seed | DIFF_CLEAN | 0.104 % | 2026-10-22 |  |
+| w02__079__lesson-13-7-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__080__lesson-13-8-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__081__lesson-13-9-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=9 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w02__082__lesson-13-10-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__083__lesson-13-11-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w02__084__lesson-13-12-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=12 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w02__085__lesson-13-13-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=13 · seed library-seed | DIFF_CLEAN | 0.122 % | 2026-10-22 |  |
+| w02__086__lesson-13-14-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=14 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w02__087__lesson-13-15-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=15 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w02__088__lesson-13-16-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w02__089__lesson-13-17-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/13?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w02__090__lesson-14-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__091__lesson-14-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=2 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w02__092__lesson-14-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=3 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w02__093__lesson-14-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__094__lesson-14-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__095__lesson-14-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__096__lesson-14-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=7 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w02__097__lesson-14-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__098__lesson-14-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__099__lesson-14-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=10 · seed library-seed | DIFF_CLEAN | 0.085 % | 2026-10-22 |  |
+| w02__100__lesson-14-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w02__101__lesson-14-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=12 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w02__102__lesson-14-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=13 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w02__103__lesson-14-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=14 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w02__104__lesson-14-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/14?page=15 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__000__lesson-15-1-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w03__001__lesson-15-2-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=2 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w03__002__lesson-15-3-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=3 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w03__003__lesson-15-4-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w03__004__lesson-15-5-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=5 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w03__005__lesson-15-6-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w03__006__lesson-15-7-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w03__007__lesson-15-8-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=8 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w03__008__lesson-15-9-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w03__009__lesson-15-10-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w03__010__lesson-15-11-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=11 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w03__011__lesson-15-12-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=12 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w03__012__lesson-15-13-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w03__013__lesson-15-14-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/15?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__014__lesson-16-1-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__015__lesson-16-2-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=2 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w03__016__lesson-16-3-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=3 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w03__017__lesson-16-4-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__018__lesson-16-5-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=5 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w03__019__lesson-16-6-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__020__lesson-16-7-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__021__lesson-16-8-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__022__lesson-16-9-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=9 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w03__023__lesson-16-10-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__024__lesson-16-11-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=11 · seed library-seed | DIFF_CLEAN | 0.095 % | 2026-10-22 |  |
+| w03__025__lesson-16-12-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=12 · seed library-seed | DIFF_CLEAN | 0.131 % | 2026-10-22 |  |
+| w03__026__lesson-16-13-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=13 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w03__027__lesson-16-14-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=14 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w03__028__lesson-16-15-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__029__lesson-16-16-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/16?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w03__030__lesson-17-1-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=1 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__031__lesson-17-2-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=2 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w03__032__lesson-17-3-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=3 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w03__033__lesson-17-4-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__034__lesson-17-5-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=5 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w03__035__lesson-17-6-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__036__lesson-17-7-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__037__lesson-17-8-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=8 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w03__038__lesson-17-9-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=9 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w03__039__lesson-17-10-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__040__lesson-17-11-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=11 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w03__041__lesson-17-12-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=12 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w03__042__lesson-17-13-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__043__lesson-17-14-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/17?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__044__lesson-18-1-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__045__lesson-18-2-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w03__046__lesson-18-3-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=3 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w03__047__lesson-18-4-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__048__lesson-18-5-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=5 · seed library-seed | DIFF_CLEAN | 0.096 % | 2026-10-22 |  |
+| w03__049__lesson-18-6-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__050__lesson-18-7-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__051__lesson-18-8-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=8 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w03__052__lesson-18-9-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__053__lesson-18-10-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__054__lesson-18-11-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=11 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w03__055__lesson-18-12-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=12 · seed library-seed | DIFF_CLEAN | 0.097 % | 2026-10-22 |  |
+| w03__056__lesson-18-13-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=13 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w03__057__lesson-18-14-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=14 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w03__058__lesson-18-15-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w03__059__lesson-18-16-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/18?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w03__060__lesson-19-1-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w03__061__lesson-19-2-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=2 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w03__062__lesson-19-3-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w03__063__lesson-19-4-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=4 · seed library-seed | DIFF_CLEAN | 0.194 % | 2026-10-22 |  |
+| w03__064__lesson-19-5-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__065__lesson-19-6-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__066__lesson-19-7-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=7 · seed library-seed | DIFF_CLEAN | 0.078 % | 2026-10-22 |  |
+| w03__067__lesson-19-8-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__068__lesson-19-9-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=9 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w03__069__lesson-19-10-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__070__lesson-19-11-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=11 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w03__071__lesson-19-12-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=12 · seed library-seed | DIFF_CLEAN | 0.088 % | 2026-10-22 |  |
+| w03__072__lesson-19-13-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=13 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w03__073__lesson-19-14-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=14 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w03__074__lesson-19-15-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__075__lesson-19-16-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/19?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w03__076__lesson-20-1-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w03__077__lesson-20-2-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=2 · seed library-seed | DIFF_CLEAN | 0.036 % | 2026-10-22 |  |
+| w03__078__lesson-20-3-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=3 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w03__079__lesson-20-4-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=4 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w03__080__lesson-20-5-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=5 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w03__081__lesson-20-6-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=6 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w03__082__lesson-20-7-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__083__lesson-20-8-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__084__lesson-20-9-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=9 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w03__085__lesson-20-10-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__086__lesson-20-11-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=11 · seed library-seed | DIFF_CLEAN | 0.078 % | 2026-10-22 |  |
+| w03__087__lesson-20-12-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=12 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w03__088__lesson-20-13-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=13 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w03__089__lesson-20-14-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=14 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w03__090__lesson-20-15-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__091__lesson-20-16-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/20?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w03__092__lesson-21-1-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w03__093__lesson-21-2-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=2 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w03__094__lesson-21-3-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=3 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w03__095__lesson-21-4-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__096__lesson-21-5-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__097__lesson-21-6-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=6 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w03__098__lesson-21-7-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__099__lesson-21-8-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=8 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w03__100__lesson-21-9-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__101__lesson-21-10-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w03__102__lesson-21-11-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=11 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w03__103__lesson-21-12-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=12 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w03__104__lesson-21-13-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w03__105__lesson-21-14-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/21?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__000__lesson-22-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=1 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w04__001__lesson-22-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=2 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w04__002__lesson-22-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=3 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w04__003__lesson-22-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__004__lesson-22-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__005__lesson-22-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=6 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w04__006__lesson-22-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=7 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w04__007__lesson-22-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=8 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w04__008__lesson-22-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__009__lesson-22-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__010__lesson-22-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=11 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w04__011__lesson-22-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=12 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w04__012__lesson-22-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=13 · seed library-seed | DIFF_CLEAN | 0.020 % | 2026-10-22 |  |
+| w04__013__lesson-22-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=14 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w04__014__lesson-22-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__015__lesson-22-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/22?page=16 · seed library-seed | DIFF_CLEAN | 0.269 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w04__016__lesson-23-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=1 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w04__017__lesson-23-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=2 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w04__018__lesson-23-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=3 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w04__019__lesson-23-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=4 · seed library-seed | DIFF_CLEAN | 0.065 % | 2026-10-22 |  |
+| w04__020__lesson-23-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=5 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w04__021__lesson-23-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=6 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w04__022__lesson-23-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__023__lesson-23-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=8 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w04__024__lesson-23-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__025__lesson-23-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__026__lesson-23-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=11 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w04__027__lesson-23-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=12 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w04__028__lesson-23-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__029__lesson-23-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/23?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__030__lesson-24-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=1 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__031__lesson-24-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=2 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w04__032__lesson-24-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=3 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w04__033__lesson-24-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__034__lesson-24-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=5 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w04__035__lesson-24-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__036__lesson-24-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__037__lesson-24-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=8 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w04__038__lesson-24-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__039__lesson-24-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__040__lesson-24-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=11 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w04__041__lesson-24-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=12 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w04__042__lesson-24-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__043__lesson-24-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/24?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__044__lesson-25-1-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 1 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=1 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w04__045__lesson-25-2-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 2 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=2 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w04__046__lesson-25-3-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 3 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=3 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w04__047__lesson-25-4-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 4 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=4 · seed library-seed | DIFF_CLEAN | 0.069 % | 2026-10-22 |  |
+| w04__048__lesson-25-5-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 5 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=5 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w04__049__lesson-25-6-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 6 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__050__lesson-25-7-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 7 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__051__lesson-25-8-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 8 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=8 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w04__052__lesson-25-9-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 9 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__053__lesson-25-10-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 10 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=10 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w04__054__lesson-25-11-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 11 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=11 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w04__055__lesson-25-12-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 12 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=12 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__056__lesson-25-13-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 13 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/25?page=13 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__057__lesson-26-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w04__058__lesson-26-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=2 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w04__059__lesson-26-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=3 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w04__060__lesson-26-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=4 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w04__061__lesson-26-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=5 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w04__062__lesson-26-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__063__lesson-26-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__064__lesson-26-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=8 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w04__065__lesson-26-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__066__lesson-26-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__067__lesson-26-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=11 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w04__068__lesson-26-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=12 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w04__069__lesson-26-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=13 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w04__070__lesson-26-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=14 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w04__071__lesson-26-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__072__lesson-26-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/26?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w04__073__lesson-27-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w04__074__lesson-27-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=2 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w04__075__lesson-27-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=3 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w04__076__lesson-27-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__077__lesson-27-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=5 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w04__078__lesson-27-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__079__lesson-27-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__080__lesson-27-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=8 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w04__081__lesson-27-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__082__lesson-27-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__083__lesson-27-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=11 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w04__084__lesson-27-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=12 · seed library-seed | DIFF_CLEAN | 0.020 % | 2026-10-22 |  |
+| w04__085__lesson-27-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__086__lesson-27-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/27?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__087__lesson-28-1-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__088__lesson-28-2-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=2 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w04__089__lesson-28-3-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=3 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w04__090__lesson-28-4-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__091__lesson-28-5-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=5 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w04__092__lesson-28-6-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=6 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w04__093__lesson-28-7-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__094__lesson-28-8-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=8 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w04__095__lesson-28-9-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w04__096__lesson-28-10-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=10 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w04__097__lesson-28-11-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=11 · seed library-seed | DIFF_CLEAN | 0.100 % | 2026-10-22 |  |
+| w04__098__lesson-28-12-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=12 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w04__099__lesson-28-13-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=13 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w04__100__lesson-28-14-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=14 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w04__101__lesson-28-15-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/28?page=15 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w05__000__lesson-29-1-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 1 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=1 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w05__001__lesson-29-2-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 2 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=2 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w05__002__lesson-29-3-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 3 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=3 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w05__003__lesson-29-4-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 4 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__004__lesson-29-5-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 5 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=5 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w05__005__lesson-29-6-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 6 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=6 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w05__006__lesson-29-7-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 7 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__007__lesson-29-8-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 8 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=8 · seed library-seed | DIFF_CLEAN | 0.020 % | 2026-10-22 |  |
+| w05__008__lesson-29-9-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 9 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__009__lesson-29-10-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 10 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=10 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w05__010__lesson-29-11-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 11 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=11 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w05__011__lesson-29-12-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 12 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=12 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w05__012__lesson-29-13-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 13 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/29?page=13 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__013__lesson-30-1-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w05__014__lesson-30-2-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=2 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w05__015__lesson-30-3-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=3 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w05__016__lesson-30-4-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__017__lesson-30-5-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=5 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w05__018__lesson-30-6-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__019__lesson-30-7-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__020__lesson-30-8-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=8 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w05__021__lesson-30-9-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__022__lesson-30-10-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__023__lesson-30-11-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=11 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w05__024__lesson-30-12-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=12 · seed library-seed | DIFF_CLEAN | 0.095 % | 2026-10-22 |  |
+| w05__025__lesson-30-13-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w05__026__lesson-30-14-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=14 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w05__027__lesson-30-15-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__028__lesson-30-16-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/30?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w05__029__lesson-31-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=1 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w05__030__lesson-31-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=2 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w05__031__lesson-31-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=3 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w05__032__lesson-31-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__033__lesson-31-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=5 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w05__034__lesson-31-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__035__lesson-31-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=7 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w05__036__lesson-31-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__037__lesson-31-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=9 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w05__038__lesson-31-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__039__lesson-31-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__040__lesson-31-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=12 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w05__041__lesson-31-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=13 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w05__042__lesson-31-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__043__lesson-31-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/31?page=15 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__044__lesson-32-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=1 · seed library-seed | DIFF_CLEAN | 0.006 % | 2026-10-22 |  |
+| w05__045__lesson-32-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=2 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w05__046__lesson-32-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=3 · seed library-seed | DIFF_CLEAN | 0.036 % | 2026-10-22 |  |
+| w05__047__lesson-32-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__048__lesson-32-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=5 · seed library-seed | DIFF_CLEAN | 0.080 % | 2026-10-22 |  |
+| w05__049__lesson-32-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__050__lesson-32-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=7 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w05__051__lesson-32-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=8 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w05__052__lesson-32-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__053__lesson-32-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=10 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w05__054__lesson-32-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__055__lesson-32-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=12 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w05__056__lesson-32-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=13 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w05__057__lesson-32-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=14 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w05__058__lesson-32-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/32?page=15 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w05__059__lesson-33-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w05__060__lesson-33-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=2 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w05__061__lesson-33-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=3 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w05__062__lesson-33-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=4 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w05__063__lesson-33-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__064__lesson-33-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=6 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w05__065__lesson-33-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=7 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w05__066__lesson-33-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__067__lesson-33-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__068__lesson-33-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=10 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w05__069__lesson-33-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__070__lesson-33-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=12 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w05__071__lesson-33-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=13 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w05__072__lesson-33-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__073__lesson-33-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/33?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__074__lesson-34-1-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=1 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__075__lesson-34-2-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=2 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w05__076__lesson-34-3-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=3 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w05__077__lesson-34-4-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__078__lesson-34-5-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__079__lesson-34-6-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=6 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w05__080__lesson-34-7-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=7 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w05__081__lesson-34-8-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=8 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w05__082__lesson-34-9-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__083__lesson-34-10-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__084__lesson-34-11-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=11 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w05__085__lesson-34-12-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=12 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w05__086__lesson-34-13-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__087__lesson-34-14-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/34?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__088__lesson-35-1-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w05__089__lesson-35-2-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w05__090__lesson-35-3-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=3 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w05__091__lesson-35-4-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__092__lesson-35-5-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=5 · seed library-seed | DIFF_CLEAN | 0.080 % | 2026-10-22 |  |
+| w05__093__lesson-35-6-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__094__lesson-35-7-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=7 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w05__095__lesson-35-8-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=8 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w05__096__lesson-35-9-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__097__lesson-35-10-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=10 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w05__098__lesson-35-11-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w05__099__lesson-35-12-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=12 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w05__100__lesson-35-13-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=13 · seed library-seed | DIFF_CLEAN | 0.111 % | 2026-10-22 |  |
+| w05__101__lesson-35-14-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=14 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w05__102__lesson-35-15-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=15 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w05__103__lesson-35-16-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w05__104__lesson-35-17-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/35?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w06__000__lesson-36-1-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w06__001__lesson-36-2-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=2 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w06__002__lesson-36-3-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=3 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w06__003__lesson-36-4-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__004__lesson-36-5-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=5 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w06__005__lesson-36-6-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=6 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w06__006__lesson-36-7-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__007__lesson-36-8-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__008__lesson-36-9-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=9 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w06__009__lesson-36-10-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=10 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w06__010__lesson-36-11-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__011__lesson-36-12-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=12 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w06__012__lesson-36-13-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=13 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w06__013__lesson-36-14-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=14 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w06__014__lesson-36-15-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=15 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w06__015__lesson-36-16-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w06__016__lesson-36-17-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/36?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w06__017__lesson-37-1-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__018__lesson-37-2-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=2 · seed library-seed | DIFF_CLEAN | 0.019 % | 2026-10-22 |  |
+| w06__019__lesson-37-3-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=3 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w06__020__lesson-37-4-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__021__lesson-37-5-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__022__lesson-37-6-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=6 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w06__023__lesson-37-7-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__024__lesson-37-8-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=8 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w06__025__lesson-37-9-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__026__lesson-37-10-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__027__lesson-37-11-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__028__lesson-37-12-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=12 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w06__029__lesson-37-13-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=13 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w06__030__lesson-37-14-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w06__031__lesson-37-15-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/37?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__032__lesson-38-1-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=1 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w06__033__lesson-38-2-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=2 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w06__034__lesson-38-3-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=3 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w06__035__lesson-38-4-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__036__lesson-38-5-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=5 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w06__037__lesson-38-6-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__038__lesson-38-7-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=7 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w06__039__lesson-38-8-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=8 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w06__040__lesson-38-9-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=9 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w06__041__lesson-38-10-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__042__lesson-38-11-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__043__lesson-38-12-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=12 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w06__044__lesson-38-13-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=13 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w06__045__lesson-38-14-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w06__046__lesson-38-15-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/38?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__047__lesson-39-1-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=1 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w06__048__lesson-39-2-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=2 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w06__049__lesson-39-3-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=3 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w06__050__lesson-39-4-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=4 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w06__051__lesson-39-5-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__052__lesson-39-6-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__053__lesson-39-7-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=7 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w06__054__lesson-39-8-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__055__lesson-39-9-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__056__lesson-39-10-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=10 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w06__057__lesson-39-11-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__058__lesson-39-12-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=12 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w06__059__lesson-39-13-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=13 · seed library-seed | DIFF_CLEAN | 0.097 % | 2026-10-22 |  |
+| w06__060__lesson-39-14-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=14 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w06__061__lesson-39-15-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=15 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w06__062__lesson-39-16-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w06__063__lesson-39-17-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/39?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w06__064__lesson-40-1-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 1 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w06__065__lesson-40-2-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 2 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=2 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w06__066__lesson-40-3-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 3 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=3 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w06__067__lesson-40-4-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 4 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=4 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w06__068__lesson-40-5-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 5 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__069__lesson-40-6-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 6 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=6 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w06__070__lesson-40-7-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 7 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__071__lesson-40-8-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 8 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__072__lesson-40-9-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 9 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__073__lesson-40-10-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 10 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=10 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w06__074__lesson-40-11-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 11 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__075__lesson-40-12-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 12 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=12 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w06__076__lesson-40-13-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 13 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=13 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w06__077__lesson-40-14-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 14 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=14 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w06__078__lesson-40-15-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 15 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=15 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w06__079__lesson-40-16-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 16 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=16 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w06__080__lesson-40-17-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 17 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=17 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w06__081__lesson-40-18-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 18 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/40?page=18 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w06__082__lesson-41-1-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w06__083__lesson-41-2-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=2 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w06__084__lesson-41-3-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=3 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w06__085__lesson-41-4-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=4 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w06__086__lesson-41-5-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__087__lesson-41-6-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=6 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w06__088__lesson-41-7-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__089__lesson-41-8-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=8 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w06__090__lesson-41-9-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=9 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w06__091__lesson-41-10-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__092__lesson-41-11-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__093__lesson-41-12-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=12 · seed library-seed | DIFF_CLEAN | 0.026 % | 2026-10-22 |  |
+| w06__094__lesson-41-13-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=13 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w06__095__lesson-41-14-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=14 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w06__096__lesson-41-15-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=15 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w06__097__lesson-41-16-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=16 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w06__098__lesson-41-17-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/41?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w06__099__lesson-42-1-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 1 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w06__100__lesson-42-2-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 2 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=2 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w06__101__lesson-42-3-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 3 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=3 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w06__102__lesson-42-4-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 4 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__103__lesson-42-5-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 5 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__104__lesson-42-6-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 6 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=6 · seed library-seed | DIFF_CLEAN | 0.109 % | 2026-10-22 |  |
+| w06__105__lesson-42-7-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 7 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__106__lesson-42-8-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 8 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=8 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w06__107__lesson-42-9-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 9 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w06__108__lesson-42-10-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 10 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=10 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w06__109__lesson-42-11-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 11 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=11 · seed library-seed | DIFF_CLEAN | 0.087 % | 2026-10-22 |  |
+| w06__110__lesson-42-12-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 12 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=12 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w06__111__lesson-42-13-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 13 of 13 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/42?page=13 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w07__000__lesson-43-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=1 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w07__001__lesson-43-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=2 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w07__002__lesson-43-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=3 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w07__003__lesson-43-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__004__lesson-43-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=5 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w07__005__lesson-43-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__006__lesson-43-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=7 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w07__007__lesson-43-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=8 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w07__008__lesson-43-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__009__lesson-43-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=10 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w07__010__lesson-43-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__011__lesson-43-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=12 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w07__012__lesson-43-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w07__013__lesson-43-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__014__lesson-43-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/43?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__015__lesson-44-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=1 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w07__016__lesson-44-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=2 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w07__017__lesson-44-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=3 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w07__018__lesson-44-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__019__lesson-44-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__020__lesson-44-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=6 · seed library-seed | DIFF_CLEAN | 0.073 % | 2026-10-22 |  |
+| w07__021__lesson-44-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__022__lesson-44-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__023__lesson-44-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=9 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w07__024__lesson-44-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=10 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w07__025__lesson-44-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__026__lesson-44-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=12 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w07__027__lesson-44-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=13 · seed library-seed | DIFF_CLEAN | 0.006 % | 2026-10-22 |  |
+| w07__028__lesson-44-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=14 · seed library-seed | DIFF_CLEAN | 0.073 % | 2026-10-22 |  |
+| w07__029__lesson-44-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=15 · seed library-seed | DIFF_CLEAN | 0.014 % | 2026-10-22 |  |
+| w07__030__lesson-44-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__031__lesson-44-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/44?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w07__032__lesson-45-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=1 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w07__033__lesson-45-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=2 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w07__034__lesson-45-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w07__035__lesson-45-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__036__lesson-45-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=5 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w07__037__lesson-45-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__038__lesson-45-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=7 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w07__039__lesson-45-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__040__lesson-45-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__041__lesson-45-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=10 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w07__042__lesson-45-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__043__lesson-45-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=12 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w07__044__lesson-45-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w07__045__lesson-45-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__046__lesson-45-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/45?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__047__lesson-46-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=1 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w07__048__lesson-46-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=2 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w07__049__lesson-46-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=3 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w07__050__lesson-46-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__051__lesson-46-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__052__lesson-46-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__053__lesson-46-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=7 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w07__054__lesson-46-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__055__lesson-46-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__056__lesson-46-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=10 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w07__057__lesson-46-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__058__lesson-46-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=12 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w07__059__lesson-46-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=13 · seed library-seed | DIFF_CLEAN | 0.093 % | 2026-10-22 |  |
+| w07__060__lesson-46-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=14 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w07__061__lesson-46-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=15 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w07__062__lesson-46-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__063__lesson-46-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/46?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w07__064__lesson-47-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=1 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w07__065__lesson-47-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=2 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w07__066__lesson-47-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=3 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w07__067__lesson-47-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__068__lesson-47-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__069__lesson-47-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=6 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w07__070__lesson-47-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__071__lesson-47-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__072__lesson-47-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=9 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w07__073__lesson-47-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=10 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w07__074__lesson-47-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__075__lesson-47-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=12 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w07__076__lesson-47-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=13 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w07__077__lesson-47-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__078__lesson-47-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/47?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__079__lesson-48-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w07__080__lesson-48-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=2 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w07__081__lesson-48-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=3 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w07__082__lesson-48-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__083__lesson-48-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__084__lesson-48-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=6 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w07__085__lesson-48-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__086__lesson-48-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__087__lesson-48-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=9 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w07__088__lesson-48-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=10 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w07__089__lesson-48-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__090__lesson-48-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=12 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w07__091__lesson-48-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=13 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w07__092__lesson-48-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__093__lesson-48-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/48?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__094__lesson-49-1-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w07__095__lesson-49-2-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=2 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w07__096__lesson-49-3-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=3 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w07__097__lesson-49-4-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=4 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w07__098__lesson-49-5-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__099__lesson-49-6-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=6 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w07__100__lesson-49-7-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__101__lesson-49-8-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__102__lesson-49-9-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=9 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w07__103__lesson-49-10-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w07__104__lesson-49-11-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=11 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w07__105__lesson-49-12-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=12 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w07__106__lesson-49-13-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w07__107__lesson-49-14-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/49?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__000__lesson-50-1-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w08__001__lesson-50-2-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=2 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w08__002__lesson-50-3-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=3 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w08__003__lesson-50-4-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__004__lesson-50-5-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=5 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w08__005__lesson-50-6-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__006__lesson-50-7-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=7 · seed library-seed | DIFF_CLEAN | 0.069 % | 2026-10-22 |  |
+| w08__007__lesson-50-8-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__008__lesson-50-9-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=9 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w08__009__lesson-50-10-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=10 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w08__010__lesson-50-11-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__011__lesson-50-12-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=12 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w08__012__lesson-50-13-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=13 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w08__013__lesson-50-14-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=14 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w08__014__lesson-50-15-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=15 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w08__015__lesson-50-16-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__016__lesson-50-17-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/50?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w08__017__lesson-51-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=1 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w08__018__lesson-51-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=2 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w08__019__lesson-51-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w08__020__lesson-51-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__021__lesson-51-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=5 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w08__022__lesson-51-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__023__lesson-51-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__024__lesson-51-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=8 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w08__025__lesson-51-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__026__lesson-51-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__027__lesson-51-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=11 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w08__028__lesson-51-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=12 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w08__029__lesson-51-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__030__lesson-51-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/51?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__031__lesson-52-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=1 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w08__032__lesson-52-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=2 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w08__033__lesson-52-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=3 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w08__034__lesson-52-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__035__lesson-52-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__036__lesson-52-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=6 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w08__037__lesson-52-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__038__lesson-52-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=8 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w08__039__lesson-52-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=9 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w08__040__lesson-52-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__041__lesson-52-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=11 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w08__042__lesson-52-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=12 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w08__043__lesson-52-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w08__044__lesson-52-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/52?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w08__045__lesson-53-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=1 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w08__046__lesson-53-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=2 · seed library-seed | DIFF_CLEAN | 0.028 % | 2026-10-22 |  |
+| w08__047__lesson-53-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=3 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w08__048__lesson-53-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=4 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w08__049__lesson-53-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__050__lesson-53-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__051__lesson-53-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=7 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w08__052__lesson-53-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__053__lesson-53-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=9 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w08__054__lesson-53-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__055__lesson-53-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=11 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w08__056__lesson-53-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=12 · seed library-seed | DIFF_CLEAN | 0.130 % | 2026-10-22 |  |
+| w08__057__lesson-53-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=13 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w08__058__lesson-53-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=14 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w08__059__lesson-53-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__060__lesson-53-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/53?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w08__061__lesson-54-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=1 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w08__062__lesson-54-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=2 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w08__063__lesson-54-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=3 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w08__064__lesson-54-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__065__lesson-54-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=5 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w08__066__lesson-54-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=6 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w08__067__lesson-54-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__068__lesson-54-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=8 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w08__069__lesson-54-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=9 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w08__070__lesson-54-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__071__lesson-54-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=11 · seed library-seed | DIFF_CLEAN | 0.026 % | 2026-10-22 |  |
+| w08__072__lesson-54-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=12 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w08__073__lesson-54-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=13 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w08__074__lesson-54-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=14 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w08__075__lesson-54-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__076__lesson-54-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/54?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w08__077__lesson-55-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=1 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w08__078__lesson-55-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=2 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w08__079__lesson-55-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=3 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w08__080__lesson-55-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__081__lesson-55-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__082__lesson-55-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=6 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w08__083__lesson-55-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__084__lesson-55-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=8 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w08__085__lesson-55-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=9 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w08__086__lesson-55-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__087__lesson-55-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=11 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w08__088__lesson-55-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=12 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w08__089__lesson-55-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__090__lesson-55-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/55?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__091__lesson-56-1-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=1 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w08__092__lesson-56-2-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w08__093__lesson-56-3-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=3 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w08__094__lesson-56-4-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__095__lesson-56-5-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=5 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w08__096__lesson-56-6-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=6 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w08__097__lesson-56-7-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__098__lesson-56-8-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__099__lesson-56-9-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=9 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w08__100__lesson-56-10-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__101__lesson-56-11-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w08__102__lesson-56-12-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=12 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w08__103__lesson-56-13-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=13 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w08__104__lesson-56-14-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w08__105__lesson-56-15-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/56?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__000__lesson-57-1-of-14 | Week 09 Connection.dc.html | Lesson 57 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=1 · seed library-seed | DIFF_CLEAN | 0.014 % | 2026-10-22 |  |
+| w09__001__lesson-57-2-of-14 | Week 09 Connection.dc.html | Lesson 57 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=2 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w09__002__lesson-57-3-of-14 | Week 09 Connection.dc.html | Lesson 57 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=3 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w09__003__lesson-57-4-of-14 | Week 09 Connection.dc.html | Lesson 57 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__004__lesson-57-5-of-14 | Week 09 Connection.dc.html | Lesson 57 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=5 · seed library-seed | DIFF_CLEAN | 0.073 % | 2026-10-22 |  |
+| w09__005__lesson-57-6-of-14 | Week 09 Connection.dc.html | Lesson 57 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__006__lesson-57-7-of-14 | Week 09 Connection.dc.html | Lesson 57 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__007__lesson-57-8-of-14 | Week 09 Connection.dc.html | Lesson 57 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=8 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w09__008__lesson-57-9-of-14 | Week 09 Connection.dc.html | Lesson 57 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=9 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w09__009__lesson-57-10-of-14 | Week 09 Connection.dc.html | Lesson 57 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__010__lesson-57-11-of-14 | Week 09 Connection.dc.html | Lesson 57 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=11 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w09__011__lesson-57-12-of-14 | Week 09 Connection.dc.html | Lesson 57 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=12 · seed library-seed | DIFF_CLEAN | 0.014 % | 2026-10-22 |  |
+| w09__012__lesson-57-13-of-14 | Week 09 Connection.dc.html | Lesson 57 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w09__013__lesson-57-14-of-14 | Week 09 Connection.dc.html | Lesson 57 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/57?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__014__lesson-58-1-of-17 | Week 09 Connection.dc.html | Lesson 58 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=1 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w09__015__lesson-58-2-of-17 | Week 09 Connection.dc.html | Lesson 58 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=2 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w09__016__lesson-58-3-of-17 | Week 09 Connection.dc.html | Lesson 58 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=3 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w09__017__lesson-58-4-of-17 | Week 09 Connection.dc.html | Lesson 58 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__018__lesson-58-5-of-17 | Week 09 Connection.dc.html | Lesson 58 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=5 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w09__019__lesson-58-6-of-17 | Week 09 Connection.dc.html | Lesson 58 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__020__lesson-58-7-of-17 | Week 09 Connection.dc.html | Lesson 58 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__021__lesson-58-8-of-17 | Week 09 Connection.dc.html | Lesson 58 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__022__lesson-58-9-of-17 | Week 09 Connection.dc.html | Lesson 58 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=9 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w09__023__lesson-58-10-of-17 | Week 09 Connection.dc.html | Lesson 58 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=10 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w09__024__lesson-58-11-of-17 | Week 09 Connection.dc.html | Lesson 58 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__025__lesson-58-12-of-17 | Week 09 Connection.dc.html | Lesson 58 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=12 · seed library-seed | DIFF_CLEAN | 0.090 % | 2026-10-22 |  |
+| w09__026__lesson-58-13-of-17 | Week 09 Connection.dc.html | Lesson 58 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=13 · seed library-seed | DIFF_CLEAN | 0.091 % | 2026-10-22 |  |
+| w09__027__lesson-58-14-of-17 | Week 09 Connection.dc.html | Lesson 58 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=14 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w09__028__lesson-58-15-of-17 | Week 09 Connection.dc.html | Lesson 58 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=15 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w09__029__lesson-58-16-of-17 | Week 09 Connection.dc.html | Lesson 58 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=16 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w09__030__lesson-58-17-of-17 | Week 09 Connection.dc.html | Lesson 58 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/58?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w09__031__lesson-59-1-of-14 | Week 09 Connection.dc.html | Lesson 59 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=1 · seed library-seed | DIFF_CLEAN | 0.007 % | 2026-10-22 |  |
+| w09__032__lesson-59-2-of-14 | Week 09 Connection.dc.html | Lesson 59 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=2 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w09__033__lesson-59-3-of-14 | Week 09 Connection.dc.html | Lesson 59 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=3 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w09__034__lesson-59-4-of-14 | Week 09 Connection.dc.html | Lesson 59 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__035__lesson-59-5-of-14 | Week 09 Connection.dc.html | Lesson 59 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__036__lesson-59-6-of-14 | Week 09 Connection.dc.html | Lesson 59 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=6 · seed library-seed | DIFF_CLEAN | 0.065 % | 2026-10-22 |  |
+| w09__037__lesson-59-7-of-14 | Week 09 Connection.dc.html | Lesson 59 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__038__lesson-59-8-of-14 | Week 09 Connection.dc.html | Lesson 59 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=8 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w09__039__lesson-59-9-of-14 | Week 09 Connection.dc.html | Lesson 59 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__040__lesson-59-10-of-14 | Week 09 Connection.dc.html | Lesson 59 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__041__lesson-59-11-of-14 | Week 09 Connection.dc.html | Lesson 59 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=11 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w09__042__lesson-59-12-of-14 | Week 09 Connection.dc.html | Lesson 59 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=12 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w09__043__lesson-59-13-of-14 | Week 09 Connection.dc.html | Lesson 59 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w09__044__lesson-59-14-of-14 | Week 09 Connection.dc.html | Lesson 59 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/59?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__045__lesson-60-1-of-16 | Week 09 Connection.dc.html | Lesson 60 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=1 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w09__046__lesson-60-2-of-16 | Week 09 Connection.dc.html | Lesson 60 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=2 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w09__047__lesson-60-3-of-16 | Week 09 Connection.dc.html | Lesson 60 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=3 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w09__048__lesson-60-4-of-16 | Week 09 Connection.dc.html | Lesson 60 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=4 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w09__049__lesson-60-5-of-16 | Week 09 Connection.dc.html | Lesson 60 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=5 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w09__050__lesson-60-6-of-16 | Week 09 Connection.dc.html | Lesson 60 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__051__lesson-60-7-of-16 | Week 09 Connection.dc.html | Lesson 60 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=7 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w09__052__lesson-60-8-of-16 | Week 09 Connection.dc.html | Lesson 60 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__053__lesson-60-9-of-16 | Week 09 Connection.dc.html | Lesson 60 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=9 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w09__054__lesson-60-10-of-16 | Week 09 Connection.dc.html | Lesson 60 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__055__lesson-60-11-of-16 | Week 09 Connection.dc.html | Lesson 60 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=11 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w09__056__lesson-60-12-of-16 | Week 09 Connection.dc.html | Lesson 60 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=12 · seed library-seed | DIFF_CLEAN | 0.097 % | 2026-10-22 |  |
+| w09__057__lesson-60-13-of-16 | Week 09 Connection.dc.html | Lesson 60 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=13 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w09__058__lesson-60-14-of-16 | Week 09 Connection.dc.html | Lesson 60 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=14 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w09__059__lesson-60-15-of-16 | Week 09 Connection.dc.html | Lesson 60 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w09__060__lesson-60-16-of-16 | Week 09 Connection.dc.html | Lesson 60 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/60?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w09__061__lesson-61-1-of-15 | Week 09 Connection.dc.html | Lesson 61 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=1 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w09__062__lesson-61-2-of-15 | Week 09 Connection.dc.html | Lesson 61 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=2 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w09__063__lesson-61-3-of-15 | Week 09 Connection.dc.html | Lesson 61 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=3 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w09__064__lesson-61-4-of-15 | Week 09 Connection.dc.html | Lesson 61 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__065__lesson-61-5-of-15 | Week 09 Connection.dc.html | Lesson 61 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__066__lesson-61-6-of-15 | Week 09 Connection.dc.html | Lesson 61 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=6 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w09__067__lesson-61-7-of-15 | Week 09 Connection.dc.html | Lesson 61 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__068__lesson-61-8-of-15 | Week 09 Connection.dc.html | Lesson 61 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__069__lesson-61-9-of-15 | Week 09 Connection.dc.html | Lesson 61 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=9 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w09__070__lesson-61-10-of-15 | Week 09 Connection.dc.html | Lesson 61 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__071__lesson-61-11-of-15 | Week 09 Connection.dc.html | Lesson 61 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__072__lesson-61-12-of-15 | Week 09 Connection.dc.html | Lesson 61 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=12 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w09__073__lesson-61-13-of-15 | Week 09 Connection.dc.html | Lesson 61 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w09__074__lesson-61-14-of-15 | Week 09 Connection.dc.html | Lesson 61 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=14 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w09__075__lesson-61-15-of-15 | Week 09 Connection.dc.html | Lesson 61 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/61?page=15 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__076__lesson-62-1-of-14 | Week 09 Connection.dc.html | Lesson 62 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=1 · seed library-seed | DIFF_CLEAN | 0.026 % | 2026-10-22 |  |
+| w09__077__lesson-62-2-of-14 | Week 09 Connection.dc.html | Lesson 62 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=2 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w09__078__lesson-62-3-of-14 | Week 09 Connection.dc.html | Lesson 62 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=3 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w09__079__lesson-62-4-of-14 | Week 09 Connection.dc.html | Lesson 62 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__080__lesson-62-5-of-14 | Week 09 Connection.dc.html | Lesson 62 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=5 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w09__081__lesson-62-6-of-14 | Week 09 Connection.dc.html | Lesson 62 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=6 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__082__lesson-62-7-of-14 | Week 09 Connection.dc.html | Lesson 62 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=7 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w09__083__lesson-62-8-of-14 | Week 09 Connection.dc.html | Lesson 62 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__084__lesson-62-9-of-14 | Week 09 Connection.dc.html | Lesson 62 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=9 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w09__085__lesson-62-10-of-14 | Week 09 Connection.dc.html | Lesson 62 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__086__lesson-62-11-of-14 | Week 09 Connection.dc.html | Lesson 62 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=11 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w09__087__lesson-62-12-of-14 | Week 09 Connection.dc.html | Lesson 62 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=12 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w09__088__lesson-62-13-of-14 | Week 09 Connection.dc.html | Lesson 62 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=13 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w09__089__lesson-62-14-of-14 | Week 09 Connection.dc.html | Lesson 62 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/62?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w09__090__lesson-63-1-of-15 | Week 09 Connection.dc.html | Lesson 63 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=1 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w09__091__lesson-63-2-of-15 | Week 09 Connection.dc.html | Lesson 63 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=2 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w09__092__lesson-63-3-of-15 | Week 09 Connection.dc.html | Lesson 63 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=3 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w09__093__lesson-63-4-of-15 | Week 09 Connection.dc.html | Lesson 63 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=4 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w09__094__lesson-63-5-of-15 | Week 09 Connection.dc.html | Lesson 63 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__095__lesson-63-6-of-15 | Week 09 Connection.dc.html | Lesson 63 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=6 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w09__096__lesson-63-7-of-15 | Week 09 Connection.dc.html | Lesson 63 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__097__lesson-63-8-of-15 | Week 09 Connection.dc.html | Lesson 63 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=8 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w09__098__lesson-63-9-of-15 | Week 09 Connection.dc.html | Lesson 63 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__099__lesson-63-10-of-15 | Week 09 Connection.dc.html | Lesson 63 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=10 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w09__100__lesson-63-11-of-15 | Week 09 Connection.dc.html | Lesson 63 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w09__101__lesson-63-12-of-15 | Week 09 Connection.dc.html | Lesson 63 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=12 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w09__102__lesson-63-13-of-15 | Week 09 Connection.dc.html | Lesson 63 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=13 · seed library-seed | DIFF_CLEAN | 0.013 % | 2026-10-22 |  |
+| w09__103__lesson-63-14-of-15 | Week 09 Connection.dc.html | Lesson 63 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w09__104__lesson-63-15-of-15 | Week 09 Connection.dc.html | Lesson 63 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/63?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__000__lesson-64-1-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w10__001__lesson-64-2-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=2 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w10__002__lesson-64-3-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=3 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w10__003__lesson-64-4-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=4 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w10__004__lesson-64-5-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__005__lesson-64-6-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__006__lesson-64-7-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=7 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w10__007__lesson-64-8-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__008__lesson-64-9-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__009__lesson-64-10-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__010__lesson-64-11-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=11 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w10__011__lesson-64-12-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=12 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__012__lesson-64-13-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=13 · seed library-seed | DIFF_CLEAN | 0.036 % | 2026-10-22 |  |
+| w10__013__lesson-64-14-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=14 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w10__014__lesson-64-15-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__015__lesson-64-16-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/64?page=16 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__016__lesson-65-1-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w10__017__lesson-65-2-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=2 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w10__018__lesson-65-3-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=3 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w10__019__lesson-65-4-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=4 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w10__020__lesson-65-5-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__021__lesson-65-6-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=6 · seed library-seed | DIFF_CLEAN | 0.075 % | 2026-10-22 |  |
+| w10__022__lesson-65-7-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__023__lesson-65-8-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=8 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w10__024__lesson-65-9-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=9 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w10__025__lesson-65-10-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__026__lesson-65-11-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=11 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w10__027__lesson-65-12-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=12 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w10__028__lesson-65-13-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__029__lesson-65-14-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/65?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__030__lesson-66-1-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=1 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w10__031__lesson-66-2-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=2 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w10__032__lesson-66-3-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=3 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w10__033__lesson-66-4-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__034__lesson-66-5-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=5 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w10__035__lesson-66-6-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__036__lesson-66-7-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__037__lesson-66-8-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=8 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w10__038__lesson-66-9-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=9 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w10__039__lesson-66-10-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=10 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w10__040__lesson-66-11-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__041__lesson-66-12-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=12 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w10__042__lesson-66-13-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=13 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w10__043__lesson-66-14-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__044__lesson-66-15-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/66?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__045__lesson-67-1-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=1 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w10__046__lesson-67-2-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=2 · seed library-seed | DIFF_CLEAN | 0.009 % | 2026-10-22 |  |
+| w10__047__lesson-67-3-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=3 · seed library-seed | DIFF_CLEAN | 0.055 % | 2026-10-22 |  |
+| w10__048__lesson-67-4-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=4 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w10__049__lesson-67-5-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__050__lesson-67-6-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=6 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w10__051__lesson-67-7-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__052__lesson-67-8-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__053__lesson-67-9-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=9 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w10__054__lesson-67-10-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__055__lesson-67-11-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=11 · seed library-seed | DIFF_CLEAN | 0.078 % | 2026-10-22 |  |
+| w10__056__lesson-67-12-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=12 · seed library-seed | DIFF_CLEAN | 0.063 % | 2026-10-22 |  |
+| w10__057__lesson-67-13-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__058__lesson-67-14-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/67?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__059__lesson-68-1-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w10__060__lesson-68-2-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=2 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w10__061__lesson-68-3-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=3 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w10__062__lesson-68-4-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__063__lesson-68-5-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=5 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w10__064__lesson-68-6-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__065__lesson-68-7-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=7 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w10__066__lesson-68-8-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=8 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w10__067__lesson-68-9-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__068__lesson-68-10-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__069__lesson-68-11-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=11 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w10__070__lesson-68-12-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=12 · seed library-seed | DIFF_CLEAN | 0.093 % | 2026-10-22 |  |
+| w10__071__lesson-68-13-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=13 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w10__072__lesson-68-14-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=14 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w10__073__lesson-68-15-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__074__lesson-68-16-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/68?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w10__075__lesson-69-1-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w10__076__lesson-69-2-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w10__077__lesson-69-3-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w10__078__lesson-69-4-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__079__lesson-69-5-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__080__lesson-69-6-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=6 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w10__081__lesson-69-7-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=7 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w10__082__lesson-69-8-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__083__lesson-69-9-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=9 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w10__084__lesson-69-10-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__085__lesson-69-11-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__086__lesson-69-12-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=12 · seed library-seed | DIFF_CLEAN | 0.029 % | 2026-10-22 |  |
+| w10__087__lesson-69-13-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=13 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w10__088__lesson-69-14-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__089__lesson-69-15-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/69?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__090__lesson-70-1-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=1 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__091__lesson-70-2-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=2 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w10__092__lesson-70-3-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=3 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w10__093__lesson-70-4-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__094__lesson-70-5-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__095__lesson-70-6-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=6 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w10__096__lesson-70-7-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__097__lesson-70-8-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__098__lesson-70-9-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=9 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w10__099__lesson-70-10-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__100__lesson-70-11-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w10__101__lesson-70-12-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=12 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w10__102__lesson-70-13-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=13 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w10__103__lesson-70-14-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w10__104__lesson-70-15-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/70?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__000__lesson-71-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=1 · seed library-seed | DIFF_CLEAN | 0.018 % | 2026-10-22 |  |
+| w11__001__lesson-71-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=2 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w11__002__lesson-71-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=3 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w11__003__lesson-71-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=4 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w11__004__lesson-71-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__005__lesson-71-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=6 · seed library-seed | DIFF_CLEAN | 0.058 % | 2026-10-22 |  |
+| w11__006__lesson-71-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__007__lesson-71-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=8 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w11__008__lesson-71-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=9 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w11__009__lesson-71-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__010__lesson-71-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=11 · seed library-seed | DIFF_CLEAN | 0.037 % | 2026-10-22 |  |
+| w11__011__lesson-71-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=12 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| w11__012__lesson-71-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__013__lesson-71-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/71?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__014__lesson-72-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w11__015__lesson-72-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=2 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w11__016__lesson-72-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=3 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w11__017__lesson-72-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__018__lesson-72-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=5 · seed library-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
+| w11__019__lesson-72-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=6 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w11__020__lesson-72-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__021__lesson-72-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__022__lesson-72-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=9 · seed library-seed | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
+| w11__023__lesson-72-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w11__024__lesson-72-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=11 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w11__025__lesson-72-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=12 · seed library-seed | DIFF_CLEAN | 0.042 % | 2026-10-22 |  |
+| w11__026__lesson-72-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=13 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w11__027__lesson-72-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=14 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w11__028__lesson-72-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=15 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w11__029__lesson-72-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/72?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w11__030__lesson-73-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=1 · seed library-seed | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
+| w11__031__lesson-73-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=2 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w11__032__lesson-73-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=3 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w11__033__lesson-73-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__034__lesson-73-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=5 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w11__035__lesson-73-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__036__lesson-73-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__037__lesson-73-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=8 · seed library-seed | DIFF_CLEAN | 0.056 % | 2026-10-22 |  |
+| w11__038__lesson-73-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=9 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w11__039__lesson-73-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__040__lesson-73-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=11 · seed library-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
+| w11__041__lesson-73-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=12 · seed library-seed | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| w11__042__lesson-73-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__043__lesson-73-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/73?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__044__lesson-74-1-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=1 · seed library-seed | DIFF_CLEAN | 0.021 % | 2026-10-22 |  |
+| w11__045__lesson-74-2-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=2 · seed library-seed | DIFF_CLEAN | 0.028 % | 2026-10-22 |  |
+| w11__046__lesson-74-3-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=3 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w11__047__lesson-74-4-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__048__lesson-74-5-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=5 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w11__049__lesson-74-6-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=6 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w11__050__lesson-74-7-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__051__lesson-74-8-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=8 · seed library-seed | DIFF_CLEAN | 0.031 % | 2026-10-22 |  |
+| w11__052__lesson-74-9-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__053__lesson-74-10-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=10 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w11__054__lesson-74-11-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__055__lesson-74-12-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=12 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w11__056__lesson-74-13-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=13 · seed library-seed | DIFF_CLEAN | 0.014 % | 2026-10-22 |  |
+| w11__057__lesson-74-14-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__058__lesson-74-15-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/74?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__059__lesson-75-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=1 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__060__lesson-75-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=2 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w11__061__lesson-75-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=3 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w11__062__lesson-75-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__063__lesson-75-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__064__lesson-75-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=6 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w11__065__lesson-75-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__066__lesson-75-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=8 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| w11__067__lesson-75-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__068__lesson-75-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__069__lesson-75-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=11 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w11__070__lesson-75-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=12 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w11__071__lesson-75-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=13 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w11__072__lesson-75-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=14 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w11__073__lesson-75-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__074__lesson-75-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/75?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w11__075__lesson-76-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=1 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w11__076__lesson-76-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=2 · seed library-seed | DIFF_CLEAN | 0.065 % | 2026-10-22 |  |
+| w11__077__lesson-76-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=3 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w11__078__lesson-76-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__079__lesson-76-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__080__lesson-76-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=6 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w11__081__lesson-76-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=7 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w11__082__lesson-76-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__083__lesson-76-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=9 · seed library-seed | DIFF_CLEAN | 0.044 % | 2026-10-22 |  |
+| w11__084__lesson-76-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__085__lesson-76-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=11 · seed library-seed | DIFF_CLEAN | 0.033 % | 2026-10-22 |  |
+| w11__086__lesson-76-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=12 · seed library-seed | DIFF_CLEAN | 0.065 % | 2026-10-22 |  |
+| w11__087__lesson-76-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__088__lesson-76-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/76?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__089__lesson-77-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=1 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w11__090__lesson-77-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=2 · seed library-seed | DIFF_CLEAN | 0.036 % | 2026-10-22 |  |
+| w11__091__lesson-77-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=3 · seed library-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| w11__092__lesson-77-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__093__lesson-77-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=5 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w11__094__lesson-77-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__095__lesson-77-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__096__lesson-77-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=8 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w11__097__lesson-77-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=9 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w11__098__lesson-77-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w11__099__lesson-77-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=11 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w11__100__lesson-77-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=12 · seed library-seed | DIFF_CLEAN | 0.068 % | 2026-10-22 |  |
+| w11__101__lesson-77-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w11__102__lesson-77-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/77?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__000__lesson-78-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=1 · seed library-seed | DIFF_CLEAN | 0.026 % | 2026-10-22 |  |
+| w12__001__lesson-78-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w12__002__lesson-78-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=3 · seed library-seed | DIFF_CLEAN | 0.048 % | 2026-10-22 |  |
+| w12__003__lesson-78-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=4 · seed library-seed | DIFF_CLEAN | 0.057 % | 2026-10-22 |  |
+| w12__004__lesson-78-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__005__lesson-78-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=6 · seed library-seed | DIFF_CLEAN | 0.074 % | 2026-10-22 |  |
+| w12__006__lesson-78-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__007__lesson-78-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=8 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w12__008__lesson-78-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=9 · seed library-seed | DIFF_CLEAN | 0.072 % | 2026-10-22 |  |
+| w12__009__lesson-78-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__010__lesson-78-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=11 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w12__011__lesson-78-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=12 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w12__012__lesson-78-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w12__013__lesson-78-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/78?page=14 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__014__lesson-79-1-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 1 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=1 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w12__015__lesson-79-2-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 2 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=2 · seed library-seed | DIFF_CLEAN | 0.059 % | 2026-10-22 |  |
+| w12__016__lesson-79-3-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 3 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=3 · seed library-seed | DIFF_CLEAN | 0.045 % | 2026-10-22 |  |
+| w12__017__lesson-79-4-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 4 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__018__lesson-79-5-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 5 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=5 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w12__019__lesson-79-6-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 6 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__020__lesson-79-7-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 7 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=7 · seed library-seed | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
+| w12__021__lesson-79-8-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 8 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__022__lesson-79-9-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 9 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=9 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w12__023__lesson-79-10-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 10 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__024__lesson-79-11-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 11 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=11 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w12__025__lesson-79-12-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 12 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=12 · seed library-seed | DIFF_CLEAN | 0.124 % | 2026-10-22 |  |
+| w12__026__lesson-79-13-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 13 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=13 · seed library-seed | DIFF_CLEAN | 0.030 % | 2026-10-22 |  |
+| w12__027__lesson-79-14-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 14 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=14 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w12__028__lesson-79-15-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 15 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=15 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w12__029__lesson-79-16-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 16 of 16 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/79?page=16 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w12__030__lesson-80-1-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 1 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=1 · seed library-seed | DIFF_CLEAN | 0.023 % | 2026-10-22 |  |
+| w12__031__lesson-80-2-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 2 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=2 · seed library-seed | DIFF_CLEAN | 0.019 % | 2026-10-22 |  |
+| w12__032__lesson-80-3-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 3 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=3 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w12__033__lesson-80-4-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 4 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=4 · seed library-seed | DIFF_CLEAN | 0.064 % | 2026-10-22 |  |
+| w12__034__lesson-80-5-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 5 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=5 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__035__lesson-80-6-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 6 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=6 · seed library-seed | DIFF_CLEAN | 0.076 % | 2026-10-22 |  |
+| w12__036__lesson-80-7-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 7 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__037__lesson-80-8-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 8 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=8 · seed library-seed | DIFF_CLEAN | 0.035 % | 2026-10-22 |  |
+| w12__038__lesson-80-9-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 9 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__039__lesson-80-10-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 10 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__040__lesson-80-11-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 11 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=11 · seed library-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| w12__041__lesson-80-12-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 12 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=12 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__042__lesson-80-13-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 13 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=13 · seed library-seed | DIFF_CLEAN | 0.079 % | 2026-10-22 |  |
+| w12__043__lesson-80-14-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 14 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=14 · seed library-seed | DIFF_CLEAN | 0.006 % | 2026-10-22 |  |
+| w12__044__lesson-80-15-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 15 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=15 · seed library-seed | DIFF_CLEAN | 0.014 % | 2026-10-22 |  |
+| w12__045__lesson-80-16-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 16 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=16 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w12__046__lesson-80-17-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 17 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=17 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w12__047__lesson-80-18-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 18 of 18 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/80?page=18 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w12__048__lesson-81-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=1 · seed library-seed | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
+| w12__049__lesson-81-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=2 · seed library-seed | DIFF_CLEAN | 0.039 % | 2026-10-22 |  |
+| w12__050__lesson-81-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=3 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w12__051__lesson-81-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=4 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w12__052__lesson-81-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__053__lesson-81-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=6 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| w12__054__lesson-81-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__055__lesson-81-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=8 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__056__lesson-81-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=9 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w12__057__lesson-81-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__058__lesson-81-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__059__lesson-81-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=12 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w12__060__lesson-81-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=13 · seed library-seed | DIFF_CLEAN | 0.128 % | 2026-10-22 |  |
+| w12__061__lesson-81-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=14 · seed library-seed | DIFF_CLEAN | 0.041 % | 2026-10-22 |  |
+| w12__062__lesson-81-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=15 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w12__063__lesson-81-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=16 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w12__064__lesson-81-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/81?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w12__065__lesson-82-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 1 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=1 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__066__lesson-82-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 2 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=2 · seed library-seed | DIFF_CLEAN | 0.017 % | 2026-10-22 |  |
+| w12__067__lesson-82-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 3 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=3 · seed library-seed | DIFF_CLEAN | 0.061 % | 2026-10-22 |  |
+| w12__068__lesson-82-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 4 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=4 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__069__lesson-82-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 5 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=5 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__070__lesson-82-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 6 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=6 · seed library-seed | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
+| w12__071__lesson-82-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 7 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=7 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__072__lesson-82-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 8 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=8 · seed library-seed | DIFF_CLEAN | 0.015 % | 2026-10-22 |  |
+| w12__073__lesson-82-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 9 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__074__lesson-82-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 10 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=10 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__075__lesson-82-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 11 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=11 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| w12__076__lesson-82-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 12 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=12 · seed library-seed | DIFF_CLEAN | 0.032 % | 2026-10-22 |  |
+| w12__077__lesson-82-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 13 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=13 · seed library-seed | DIFF_CLEAN | 0.040 % | 2026-10-22 |  |
+| w12__078__lesson-82-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 14 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=14 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w12__079__lesson-82-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 15 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=15 · seed library-seed | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| w12__080__lesson-82-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 16 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=16 · seed library-seed | DIFF_CLEAN | 0.005 % | 2026-10-22 |  |
+| w12__081__lesson-82-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 17 of 17 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/82?page=17 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
+| w12__082__lesson-83-1-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 1 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=1 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| w12__083__lesson-83-2-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 2 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=2 · seed library-seed | DIFF_CLEAN | 0.043 % | 2026-10-22 |  |
+| w12__084__lesson-83-3-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 3 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=3 · seed library-seed | DIFF_CLEAN | 0.051 % | 2026-10-22 |  |
+| w12__085__lesson-83-4-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 4 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=4 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w12__086__lesson-83-5-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 5 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=5 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w12__087__lesson-83-6-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 6 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__088__lesson-83-7-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 7 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=7 · seed library-seed | DIFF_CLEAN | 0.062 % | 2026-10-22 |  |
+| w12__089__lesson-83-8-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 8 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=8 · seed library-seed | DIFF_CLEAN | 0.008 % | 2026-10-22 |  |
+| w12__090__lesson-83-9-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 9 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=9 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__091__lesson-83-10-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 10 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__092__lesson-83-11-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 11 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=11 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__093__lesson-83-12-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 12 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=12 · seed library-seed | DIFF_CLEAN | 0.038 % | 2026-10-22 |  |
+| w12__094__lesson-83-13-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 13 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=13 · seed library-seed | DIFF_CLEAN | 0.066 % | 2026-10-22 |  |
+| w12__095__lesson-83-14-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 14 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=14 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w12__096__lesson-83-15-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 15 of 15 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/83?page=15 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__097__lesson-84-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 1 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=1 · seed library-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| w12__098__lesson-84-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 2 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=2 · seed library-seed | DIFF_CLEAN | 0.028 % | 2026-10-22 |  |
+| w12__099__lesson-84-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 3 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=3 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w12__100__lesson-84-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 4 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__101__lesson-84-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 5 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=5 · seed library-seed | DIFF_CLEAN | 0.067 % | 2026-10-22 |  |
+| w12__102__lesson-84-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 6 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=6 · seed library-seed | DIFF_CLEAN | 0.054 % | 2026-10-22 |  |
+| w12__103__lesson-84-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 7 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=7 · seed library-seed | DIFF_CLEAN | 0.073 % | 2026-10-22 |  |
+| w12__104__lesson-84-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 8 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| w12__105__lesson-84-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 9 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=9 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| w12__106__lesson-84-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 10 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=10 · seed library-seed | DIFF_CLEAN | 0.101 % | 2026-10-22 |  |
+| w12__107__lesson-84-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 11 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=11 · seed library-seed | DIFF_CLEAN | 0.050 % | 2026-10-22 |  |
+| w12__108__lesson-84-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 12 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=12 · seed library-seed | DIFF_CLEAN | 0.083 % | 2026-10-22 |  |
+| w12__109__lesson-84-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 13 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=13 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| w12__110__lesson-84-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 14 of 14 | src/components/lesson/LessonPages.tsx | specs/vici-ui-2/lessons.md | /lesson/day/84?page=14 · seed library-seed | DIFF_CLEAN | 0.268 % | 2026-10-22 | kept copy: "Your answers are kept with this lesson." (owner, 9487e33d) |
