@@ -36,8 +36,8 @@ export const TAB_ITEMS: readonly TabItem[] = [
   { key: 'journey', label: 'Journey', route: '/(app)/milestones', Icon: TabJourney },
 ];
 
-/** The SOS disc opens the interrupt, pushed (CRITIC C12) — never a page sheet. */
-export const SOS_ROUTE = '/urge';
+/** The SOS disc opens the chooser (`97 · SOS — Urge or Relapse`, Vici UI 2), pushed — never a page sheet. */
+export const SOS_ROUTE = '/sos';
 
 /**
  * The tab each `(app)` route lights, keyed by route name — the routes whose
