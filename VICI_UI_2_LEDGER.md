@@ -1,0 +1,2193 @@
+# Vici UI 2 — ledger
+
+Design folder: `/Users/admin/Documents/Vici/Vici UI 2` (quote it in every shell command).
+Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline commit `a28abcc4`.
+
+Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
+
+Rows: 2182 · NOT_STARTED 1965 · SPEC_EXTRACTED 0 · IMPLEMENTED 4 · DIFF_CLEAN 213 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
+
+| id | design file | artboard | app file | spec | harness | status | diff | verified | note |
+|---|---|---|---|---|---|---|---|---|---|
+| app-before__000__01-splash | Email Login (before label pass).dc.html | 01 · Splash |  |  |  | NOT_STARTED |  |  |  |
+| app-before__001__02-login | Email Login (before label pass).dc.html | 02 · Login |  |  |  | NOT_STARTED |  |  |  |
+| app-before__002__02b-welcome-back | Email Login (before label pass).dc.html | 02B · Welcome back |  |  |  | NOT_STARTED |  |  |  |
+| app-before__003__03-name | Email Login (before label pass).dc.html | 03 · Name |  |  |  | NOT_STARTED |  |  |  |
+| app-before__004__04-age | Email Login (before label pass).dc.html | 04 · Age |  |  |  | NOT_STARTED |  |  |  |
+| app-before__005__05-gender | Email Login (before label pass).dc.html | 05 · Gender |  |  |  | NOT_STARTED |  |  |  |
+| app-before__006__06-start | Email Login (before label pass).dc.html | 06 · Start |  |  |  | NOT_STARTED |  |  |  |
+| app-before__007__07-frequency | Email Login (before label pass).dc.html | 07 · Frequency |  |  |  | NOT_STARTED |  |  |  |
+| app-before__008__08-how-long | Email Login (before label pass).dc.html | 08 · How long |  |  |  | NOT_STARTED |  |  |  |
+| app-before__009__09a-previous-quit-attempts | Email Login (before label pass).dc.html | 09A · Previous quit attempts |  |  |  | NOT_STARTED |  |  |  |
+| app-before__010__09b-relapse | Email Login (before label pass).dc.html | 09B · Relapse |  |  |  | NOT_STARTED |  |  |  |
+| app-before__011__10-first-principle | Email Login (before label pass).dc.html | 10 · First principle |  |  |  | NOT_STARTED |  |  |  |
+| app-before__012__11-when | Email Login (before label pass).dc.html | 11 · When |  |  |  | NOT_STARTED |  |  |  |
+| app-before__013__12-beforehand | Email Login (before label pass).dc.html | 12 · Beforehand |  |  |  | NOT_STARTED |  |  |  |
+| app-before__014__13-place | Email Login (before label pass).dc.html | 13 · Place |  |  |  | NOT_STARTED |  |  |  |
+| app-before__015__14-what-starts-it | Email Login (before label pass).dc.html | 14 · What starts it |  |  |  | NOT_STARTED |  |  |  |
+| app-before__016__15-transition | Email Login (before label pass).dc.html | 15 · Transition |  |  |  | NOT_STARTED |  |  |  |
+| app-before__017__16-impact | Email Login (before label pass).dc.html | 16 · Impact |  |  |  | NOT_STARTED |  |  |  |
+| app-before__018__17-what-it-affects | Email Login (before label pass).dc.html | 17 · What it affects |  |  |  | NOT_STARTED |  |  |  |
+| app-before__019__18-loneliness | Email Login (before label pass).dc.html | 18 · Loneliness |  |  |  | NOT_STARTED |  |  |  |
+| app-before__020__19-time-alone | Email Login (before label pass).dc.html | 19 · Time alone |  |  |  | NOT_STARTED |  |  |  |
+| app-before__021__20-goal | Email Login (before label pass).dc.html | 20 · Goal |  |  |  | NOT_STARTED |  |  |  |
+| app-before__022__21-masturbation-goal | Email Login (before label pass).dc.html | 21 · Masturbation goal |  |  |  | NOT_STARTED |  |  |  |
+| app-before__023__22-what-youve-tried | Email Login (before label pass).dc.html | 22 · What you’ve tried |  |  |  | NOT_STARTED |  |  |  |
+| app-before__024__23-goal-confirmation | Email Login (before label pass).dc.html | 23 · Goal confirmation |  |  |  | NOT_STARTED |  |  |  |
+| app-before__025__24-build-plan | Email Login (before label pass).dc.html | 24 · Build plan |  |  |  | NOT_STARTED |  |  |  |
+| app-before__026__25-this-is-where-wed-start | Email Login (before label pass).dc.html | 25 · This Is Where We’d Start |  |  |  | NOT_STARTED |  |  |  |
+| app-before__027__26-start-here | Email Login (before label pass).dc.html | 26 · Start Here |  |  |  | NOT_STARTED |  |  |  |
+| app-before__028__26a-start-here-step-1 | Email Login (before label pass).dc.html | 26A · Start Here — Step 1 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__029__26a2-start-here-step-2 | Email Login (before label pass).dc.html | 26A2 · Start Here — Step 2 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__030__27-your-plan | Email Login (before label pass).dc.html | 27 · Your Plan |  |  |  | NOT_STARTED |  |  |  |
+| app-before__031__28-your-vici-rating | Email Login (before label pass).dc.html | 28 · Your VICI Rating |  |  |  | NOT_STARTED |  |  |  |
+| app-before__032__29-the-next-30-days | Email Login (before label pass).dc.html | 29 · The Next 30 Days |  |  |  | NOT_STARTED |  |  |  |
+| app-before__033__30-one-year-from-now | Email Login (before label pass).dc.html | 30 · One Year From Now |  |  |  | NOT_STARTED |  |  |  |
+| app-before__034__31-if-nothing-changes | Email Login (before label pass).dc.html | 31 · If Nothing Changes |  |  |  | NOT_STARTED |  |  |  |
+| app-before__035__32-if-nothing-changes | Email Login (before label pass).dc.html | 32 · If Nothing Changes |  |  |  | NOT_STARTED |  |  |  |
+| app-before__036__32a-with-the-plan | Email Login (before label pass).dc.html | 32A · With the Plan |  |  |  | NOT_STARTED |  |  |  |
+| app-before__037__32b-a-clean-day | Email Login (before label pass).dc.html | 32B · A Clean Day |  |  |  | NOT_STARTED |  |  |  |
+| app-before__038__33-one-bad-day | Email Login (before label pass).dc.html | 33 · One Bad Day |  |  |  | NOT_STARTED |  |  |  |
+| app-before__039__34-what-you-want-back | Email Login (before label pass).dc.html | 34 · What You Want Back |  |  |  | NOT_STARTED |  |  |  |
+| app-before__040__38-a-letter-arrived | Email Login (before label pass).dc.html | 38 · A Letter Arrived |  |  |  | NOT_STARTED |  |  |  |
+| app-before__041__39-a-letter-from-week-xii | Email Login (before label pass).dc.html | 39 · A Letter From Week XII |  |  |  | NOT_STARTED |  |  |  |
+| app-before__042__40-the-vow | Email Login (before label pass).dc.html | 40 · The Vow |  |  |  | NOT_STARTED |  |  |  |
+| app-before__043__41-medallion-earned | Email Login (before label pass).dc.html | 41 · Medallion Earned |  |  |  | NOT_STARTED |  |  |  |
+| app-before__044__42-reminders | Email Login (before label pass).dc.html | 42 · Reminders |  |  |  | NOT_STARTED |  |  |  |
+| app-before__045__43-paywall | Email Login (before label pass).dc.html | 43 · Paywall |  |  |  | NOT_STARTED |  |  |  |
+| app-before__046__44-day-0 | Email Login (before label pass).dc.html | 44 · Day 0 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__047__11b-paywall-three-days-free | Email Login (before label pass).dc.html | 11B · Paywall — Three Days Free |  |  |  | NOT_STARTED |  |  |  |
+| app-before__048__11c-paywall-confirmed | Email Login (before label pass).dc.html | 11C · Paywall — Confirmed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__049__15-manage-subscription | Email Login (before label pass).dc.html | 15 · Manage Subscription |  |  |  | NOT_STARTED |  |  |  |
+| app-before__050__19b-morning-check-in-time | Email Login (before label pass).dc.html | 19B · Morning check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app-before__051__19c-nightly-check-in-time | Email Login (before label pass).dc.html | 19C · Nightly check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app-before__052__21-today | Email Login (before label pass).dc.html | 21 · Today |  |  |  | NOT_STARTED |  |  |  |
+| app-before__053__21b-score-detail | Email Login (before label pass).dc.html | 21B · Score Detail |  |  |  | NOT_STARTED |  |  |  |
+| app-before__054__20b-score-detail-what-moved-it | Email Login (before label pass).dc.html | 20B · Score Detail — What Moved It |  |  |  | NOT_STARTED |  |  |  |
+| app-before__055__20c-score-detail-ranks | Email Login (before label pass).dc.html | 20C · Score Detail — Ranks |  |  |  | NOT_STARTED |  |  |  |
+| app-before__056__21-today-p2 | Email Login (before label pass).dc.html | 21 · Today — p2 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__057__21p2b-today-task-summary | Email Login (before label pass).dc.html | 21p2B · Today — Task summary |  |  |  | NOT_STARTED |  |  |  |
+| app-before__058__21-today-p3 | Email Login (before label pass).dc.html | 21 · Today — p3 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__059__21d0-morning-check-in | Email Login (before label pass).dc.html | 21D0 · Morning — Check-in |  |  |  | NOT_STARTED |  |  |  |
+| app-before__060__21d1-morning-yesterdays-task | Email Login (before label pass).dc.html | 21D1 · Morning — Yesterday’s task |  |  |  | NOT_STARTED |  |  |  |
+| app-before__061__21d2-morning-yesterday | Email Login (before label pass).dc.html | 21D2 · Morning — Yesterday |  |  |  | NOT_STARTED |  |  |  |
+| app-before__062__21d3-morning-feeling | Email Login (before label pass).dc.html | 21D3 · Morning — Feeling |  |  |  | NOT_STARTED |  |  |  |
+| app-before__063__21d4-morning-energy | Email Login (before label pass).dc.html | 21D4 · Morning — Energy |  |  |  | NOT_STARTED |  |  |  |
+| app-before__064__21d5-morning-re-sign-your-pledge | Email Login (before label pass).dc.html | 21D5 · Morning — Re-sign your pledge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__065__21d5b-morning-pledge-signed | Email Login (before label pass).dc.html | 21D5B · Morning — Pledge signed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__066__21d6-morning-change-the-pledge | Email Login (before label pass).dc.html | 21D6 · Morning — Change the pledge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__067__21d7-morning-done | Email Login (before label pass).dc.html | 21D7 · Morning — Done |  |  |  | NOT_STARTED |  |  |  |
+| app-before__068__21e0-night-check-in | Email Login (before label pass).dc.html | 21E0 · Night — Check-in |  |  |  | NOT_STARTED |  |  |  |
+| app-before__069__21e1-night-how-was-today | Email Login (before label pass).dc.html | 21E1 · Night — How was today |  |  |  | NOT_STARTED |  |  |  |
+| app-before__070__21e2-night-emotions | Email Login (before label pass).dc.html | 21E2 · Night — Emotions |  |  |  | NOT_STARTED |  |  |  |
+| app-before__071__21e3-night-what-caused-it | Email Login (before label pass).dc.html | 21E3 · Night — What caused it |  |  |  | NOT_STARTED |  |  |  |
+| app-before__072__21e4-night-reflection | Email Login (before label pass).dc.html | 21E4 · Night — Reflection |  |  |  | NOT_STARTED |  |  |  |
+| app-before__073__21e5-night-record | Email Login (before label pass).dc.html | 21E5 · Night — Record |  |  |  | NOT_STARTED |  |  |  |
+| app-before__074__21e5b-night-tonights-action | Email Login (before label pass).dc.html | 21E5B · Night — Tonight’s action |  |  |  | NOT_STARTED |  |  |  |
+| app-before__075__21e6-night-closed | Email Login (before label pass).dc.html | 21E6 · Night — Closed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__076__92a-week-i-reset-i | Email Login (before label pass).dc.html | 92A · Week I — Reset · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__077__92a2-week-i-reset-ii | Email Login (before label pass).dc.html | 92A2 · Week I — Reset · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__078__92b-week-ii-changing-your-mindset-i | Email Login (before label pass).dc.html | 92B · Week II — Changing Your Mindset · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__079__92b2-week-ii-changing-your-mindset-ii | Email Login (before label pass).dc.html | 92B2 · Week II — Changing Your Mindset · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__080__92c-week-iii-in-the-moment-i | Email Login (before label pass).dc.html | 92C · Week III — In the Moment · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__081__92c2-week-iii-in-the-moment-ii | Email Login (before label pass).dc.html | 92C2 · Week III — In the Moment · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__082__92d-week-iv-know-your-brain-i | Email Login (before label pass).dc.html | 92D · Week IV — Know Your Brain · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__083__92d2-week-iv-know-your-brain-ii | Email Login (before label pass).dc.html | 92D2 · Week IV — Know Your Brain · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__084__92e-week-v-why-it-feels-worth-it-i | Email Login (before label pass).dc.html | 92E · Week V — Why It Feels Worth It · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__085__92e2-week-v-why-it-feels-worth-it-ii | Email Login (before label pass).dc.html | 92E2 · Week V — Why It Feels Worth It · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__086__92f-week-vi-discipline-i | Email Login (before label pass).dc.html | 92F · Week VI — Discipline · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__087__92f2-week-vi-discipline-ii | Email Login (before label pass).dc.html | 92F2 · Week VI — Discipline · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__088__92g-week-vii-relapse-and-adversity-i | Email Login (before label pass).dc.html | 92G · Week VII — Relapse and Adversity · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__089__92g2-week-vii-relapse-and-adversity-ii | Email Login (before label pass).dc.html | 92G2 · Week VII — Relapse and Adversity · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__090__92h-week-viii-boredom-and-meaning-i | Email Login (before label pass).dc.html | 92H · Week VIII — Boredom and Meaning · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__091__92h2-week-viii-boredom-and-meaning-ii | Email Login (before label pass).dc.html | 92H2 · Week VIII — Boredom and Meaning · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__092__92i-week-ix-connection-i | Email Login (before label pass).dc.html | 92I · Week IX — Connection · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__093__92i2-week-ix-connection-ii | Email Login (before label pass).dc.html | 92I2 · Week IX — Connection · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__094__92j-week-x-yourself-i | Email Login (before label pass).dc.html | 92J · Week X — Yourself · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__095__92j2-week-x-yourself-ii | Email Login (before label pass).dc.html | 92J2 · Week X — Yourself · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__096__92k-week-xi-build-a-life-you-want-i | Email Login (before label pass).dc.html | 92K · Week XI — Build a Life You Want · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__097__92k2-week-xi-build-a-life-you-want-ii | Email Login (before label pass).dc.html | 92K2 · Week XI — Build a Life You Want · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__098__92l-week-xii-leave-it-behind-i | Email Login (before label pass).dc.html | 92L · Week XII — Leave It Behind · i |  |  |  | NOT_STARTED |  |  |  |
+| app-before__099__92l2-week-xii-leave-it-behind-ii | Email Login (before label pass).dc.html | 92L2 · Week XII — Leave It Behind · ii |  |  |  | NOT_STARTED |  |  |  |
+| app-before__100__28-sos-first-90-seconds | Email Login (before label pass).dc.html | 28 · SOS — First 90 Seconds |  |  |  | NOT_STARTED |  |  |  |
+| app-before__101__28b-sos-how-strong | Email Login (before label pass).dc.html | 28B · SOS — How Strong |  |  |  | NOT_STARTED |  |  |  |
+| app-before__102__29-sos-where-are-you | Email Login (before label pass).dc.html | 29 · SOS — Where Are You |  |  |  | NOT_STARTED |  |  |  |
+| app-before__103__29b-sos-command-i-out-of-bed | Email Login (before label pass).dc.html | 29B · SOS — Command I · Out of Bed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__104__29c-sos-command-ii-leave-the-room | Email Login (before label pass).dc.html | 29C · SOS — Command II · Leave the Room |  |  |  | NOT_STARTED |  |  |  |
+| app-before__105__29d-sos-command-iii-phone-away | Email Login (before label pass).dc.html | 29D · SOS — Command III · Phone Away |  |  |  | NOT_STARTED |  |  |  |
+| app-before__106__30-sos-remove-the-trigger | Email Login (before label pass).dc.html | 30 · SOS — Remove the Trigger |  |  |  | NOT_STARTED |  |  |  |
+| app-before__107__30b-sos-name-the-feeling | Email Login (before label pass).dc.html | 30B · SOS — Name the Feeling |  |  |  | NOT_STARTED |  |  |  |
+| app-before__108__31-sos-the-challenge | Email Login (before label pass).dc.html | 31 · SOS — The Challenge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__109__32-sos-where-is-it-now | Email Login (before label pass).dc.html | 32 · SOS — Where Is It Now |  |  |  | NOT_STARTED |  |  |  |
+| app-before__110__32b-sos-afterward | Email Login (before label pass).dc.html | 32B · SOS — Afterward |  |  |  | NOT_STARTED |  |  |  |
+| app-before__111__33-sos-the-wave-passed | Email Login (before label pass).dc.html | 33 · SOS — The Wave Passed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__112__34-sos-slipped | Email Login (before label pass).dc.html | 34 · SOS — Slipped |  |  |  | NOT_STARTED |  |  |  |
+| app-before__113__36-relapse-dont-fail-twice | Email Login (before label pass).dc.html | 36 · Relapse — Don't Fail Twice |  |  |  | NOT_STARTED |  |  |  |
+| app-before__114__36b-relapse-re-sign-the-pledge | Email Login (before label pass).dc.html | 36B · Relapse — Re-sign the Pledge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__115__37-relapse-begin-again | Email Login (before label pass).dc.html | 37 · Relapse — Begin Again |  |  |  | NOT_STARTED |  |  |  |
+| app-before__116__85a-urge-hub-right-now | Email Login (before label pass).dc.html | 85A · Urge Hub — Right now |  |  |  | NOT_STARTED |  |  |  |
+| app-before__117__85b-urge-hub-recovery-score | Email Login (before label pass).dc.html | 85B · Urge Hub — Recovery score |  |  |  | NOT_STARTED |  |  |  |
+| app-before__118__85c-urge-hub-your-proof | Email Login (before label pass).dc.html | 85C · Urge Hub — Your proof |  |  |  | NOT_STARTED |  |  |  |
+| app-before__119__85d-urge-hub-surfed-before | Email Login (before label pass).dc.html | 85D · Urge Hub — Surfed before |  |  |  | NOT_STARTED |  |  |  |
+| app-before__120__85e-urge-hub-your-pledge | Email Login (before label pass).dc.html | 85E · Urge Hub — Your pledge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__121__85f-urge-hub-breathe | Email Login (before label pass).dc.html | 85F · Urge Hub — Breathe |  |  |  | NOT_STARTED |  |  |  |
+| app-before__122__95a-sos-location-bed | Email Login (before label pass).dc.html | 95A · SOS — Location · Bed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__123__95b-sos-location-bathroom | Email Login (before label pass).dc.html | 95B · SOS — Location · Bathroom |  |  |  | NOT_STARTED |  |  |  |
+| app-before__124__95c-sos-location-home-alone | Email Login (before label pass).dc.html | 95C · SOS — Location · Home alone |  |  |  | NOT_STARTED |  |  |  |
+| app-before__125__95d-sos-location-private-room | Email Login (before label pass).dc.html | 95D · SOS — Location · Private room |  |  |  | NOT_STARTED |  |  |  |
+| app-before__126__95e-sos-location-work-or-school | Email Login (before label pass).dc.html | 95E · SOS — Location · Work or school |  |  |  | NOT_STARTED |  |  |  |
+| app-before__127__95f-sos-location-public | Email Login (before label pass).dc.html | 95F · SOS — Location · Public |  |  |  | NOT_STARTED |  |  |  |
+| app-before__128__95g-sos-location-somewhere-else | Email Login (before label pass).dc.html | 95G · SOS — Location · Somewhere else |  |  |  | NOT_STARTED |  |  |  |
+| app-before__129__96a-sos-feeling-turned-on | Email Login (before label pass).dc.html | 96A · SOS — Feeling · Turned on |  |  |  | NOT_STARTED |  |  |  |
+| app-before__130__96b-sos-feeling-bored | Email Login (before label pass).dc.html | 96B · SOS — Feeling · Bored |  |  |  | NOT_STARTED |  |  |  |
+| app-before__131__96c-sos-feeling-lonely | Email Login (before label pass).dc.html | 96C · SOS — Feeling · Lonely |  |  |  | NOT_STARTED |  |  |  |
+| app-before__132__96d-sos-feeling-stressed | Email Login (before label pass).dc.html | 96D · SOS — Feeling · Stressed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__133__96e-sos-feeling-anxious | Email Login (before label pass).dc.html | 96E · SOS — Feeling · Anxious |  |  |  | NOT_STARTED |  |  |  |
+| app-before__134__96f-sos-feeling-angry | Email Login (before label pass).dc.html | 96F · SOS — Feeling · Angry |  |  |  | NOT_STARTED |  |  |  |
+| app-before__135__96g-sos-feeling-low | Email Login (before label pass).dc.html | 96G · SOS — Feeling · Low |  |  |  | NOT_STARTED |  |  |  |
+| app-before__136__96h-sos-feeling-rejected | Email Login (before label pass).dc.html | 96H · SOS — Feeling · Rejected |  |  |  | NOT_STARTED |  |  |  |
+| app-before__137__96i-sos-feeling-tired | Email Login (before label pass).dc.html | 96I · SOS — Feeling · Tired |  |  |  | NOT_STARTED |  |  |  |
+| app-before__138__96j-sos-feeling-restless | Email Login (before label pass).dc.html | 96J · SOS — Feeling · Restless |  |  |  | NOT_STARTED |  |  |  |
+| app-before__139__96k-sos-feeling-numb | Email Login (before label pass).dc.html | 96K · SOS — Feeling · Numb |  |  |  | NOT_STARTED |  |  |  |
+| app-before__140__96l-sos-feeling-ashamed | Email Login (before label pass).dc.html | 96L · SOS — Feeling · Ashamed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__141__96m-sos-feeling-dont-know | Email Login (before label pass).dc.html | 96M · SOS — Feeling · Don’t know |  |  |  | NOT_STARTED |  |  |  |
+| app-before__142__97a-sos-trigger-something-you-saw | Email Login (before label pass).dc.html | 97A · SOS — Trigger · Something you saw |  |  |  | NOT_STARTED |  |  |  |
+| app-before__143__97b-sos-trigger-doomscrolling | Email Login (before label pass).dc.html | 97B · SOS — Trigger · Doomscrolling |  |  |  | NOT_STARTED |  |  |  |
+| app-before__144__97c-sos-trigger-a-stuck-fantasy | Email Login (before label pass).dc.html | 97C · SOS — Trigger · A stuck fantasy |  |  |  | NOT_STARTED |  |  |  |
+| app-before__145__97d-sos-trigger-late-night-phone | Email Login (before label pass).dc.html | 97D · SOS — Trigger · Late-night phone |  |  |  | NOT_STARTED |  |  |  |
+| app-before__146__97e-sos-trigger-habit | Email Login (before label pass).dc.html | 97E · SOS — Trigger · Habit |  |  |  | NOT_STARTED |  |  |  |
+| app-before__147__97f-sos-trigger-cant-sleep | Email Login (before label pass).dc.html | 97F · SOS — Trigger · Can’t sleep |  |  |  | NOT_STARTED |  |  |  |
+| app-before__148__97g-sos-trigger-an-argument | Email Login (before label pass).dc.html | 97G · SOS — Trigger · An argument |  |  |  | NOT_STARTED |  |  |  |
+| app-before__149__97h-sos-trigger-rejection | Email Login (before label pass).dc.html | 97H · SOS — Trigger · Rejection |  |  |  | NOT_STARTED |  |  |  |
+| app-before__150__97i-sos-trigger-being-alone | Email Login (before label pass).dc.html | 97I · SOS — Trigger · Being alone |  |  |  | NOT_STARTED |  |  |  |
+| app-before__151__97j-sos-trigger-not-sure | Email Login (before label pass).dc.html | 97J · SOS — Trigger · Not sure |  |  |  | NOT_STARTED |  |  |  |
+| app-before__152__88-medallions | Email Login (before label pass).dc.html | 88 · Medallions |  |  |  | NOT_STARTED |  |  |  |
+| app-before__153__88b-medallions-still-to-earn | Email Login (before label pass).dc.html | 88B · Medallions — Still to earn |  |  |  | NOT_STARTED |  |  |  |
+| app-before__154__88c-medallions-earned-ii | Email Login (before label pass).dc.html | 88C · Medallions — Earned II |  |  |  | NOT_STARTED |  |  |  |
+| app-before__155__88d-breakwater-paper | Email Login (before label pass).dc.html | 88D · Breakwater — Paper |  |  |  | NOT_STARTED |  |  |  |
+| app-before__156__88e-breakwater-bronze | Email Login (before label pass).dc.html | 88E · Breakwater — Bronze |  |  |  | NOT_STARTED |  |  |  |
+| app-before__157__88f-breakwater-silver | Email Login (before label pass).dc.html | 88F · Breakwater — Silver |  |  |  | NOT_STARTED |  |  |  |
+| app-before__158__88g-breakwater-gold | Email Login (before label pass).dc.html | 88G · Breakwater — Gold |  |  |  | NOT_STARTED |  |  |  |
+| app-before__159__88h-breakwater-platinum | Email Login (before label pass).dc.html | 88H · Breakwater — Platinum |  |  |  | NOT_STARTED |  |  |  |
+| app-before__160__88i-tiers-vidi | Email Login (before label pass).dc.html | 88I · Tiers — Vidi |  |  |  | NOT_STARTED |  |  |  |
+| app-before__161__88j-tiers-vici | Email Login (before label pass).dc.html | 88J · Tiers — Vici |  |  |  | NOT_STARTED |  |  |  |
+| app-before__162__88k-tiers-rebound | Email Login (before label pass).dc.html | 88K · Tiers — Rebound |  |  |  | NOT_STARTED |  |  |  |
+| app-before__163__88l-tiers-breakwater | Email Login (before label pass).dc.html | 88L · Tiers — Breakwater |  |  |  | NOT_STARTED |  |  |  |
+| app-before__164__88m-tiers-logbook | Email Login (before label pass).dc.html | 88M · Tiers — Logbook |  |  |  | NOT_STARTED |  |  |  |
+| app-before__165__88n-tiers-pulse | Email Login (before label pass).dc.html | 88N · Tiers — Pulse |  |  |  | NOT_STARTED |  |  |  |
+| app-before__166__88o-tiers-archive | Email Login (before label pass).dc.html | 88O · Tiers — Archive |  |  |  | NOT_STARTED |  |  |  |
+| app-before__167__88p-tiers-lessons | Email Login (before label pass).dc.html | 88P · Tiers — Lessons |  |  |  | NOT_STARTED |  |  |  |
+| app-before__168__88q-tiers-one-offs | Email Login (before label pass).dc.html | 88Q · Tiers — One-offs |  |  |  | NOT_STARTED |  |  |  |
+| app-before__169__89a-vici-detail-paper | Email Login (before label pass).dc.html | 89A · Vici Detail — Paper |  |  |  | NOT_STARTED |  |  |  |
+| app-before__170__89c-vici-detail-bronze | Email Login (before label pass).dc.html | 89C · Vici Detail — Bronze |  |  |  | NOT_STARTED |  |  |  |
+| app-before__171__89d-vici-detail-silver | Email Login (before label pass).dc.html | 89D · Vici Detail — Silver |  |  |  | NOT_STARTED |  |  |  |
+| app-before__172__89e-vici-detail-gold | Email Login (before label pass).dc.html | 89E · Vici Detail — Gold |  |  |  | NOT_STARTED |  |  |  |
+| app-before__173__89f-vici-detail-platinum | Email Login (before label pass).dc.html | 89F · Vici Detail — Platinum |  |  |  | NOT_STARTED |  |  |  |
+| app-before__174__90-log-chooser | Email Login (before label pass).dc.html | 90 · Log — Chooser |  |  |  | NOT_STARTED |  |  |  |
+| app-before__175__90b-lapse-when | Email Login (before label pass).dc.html | 90B · Lapse — When |  |  |  | NOT_STARTED |  |  |  |
+| app-before__176__90c-lapse-what-fed-it | Email Login (before label pass).dc.html | 90C · Lapse — What fed it |  |  |  | NOT_STARTED |  |  |  |
+| app-before__177__90d-lapse-logged | Email Login (before label pass).dc.html | 90D · Lapse — Logged |  |  |  | NOT_STARTED |  |  |  |
+| app-before__178__91-log-urges | Email Login (before label pass).dc.html | 91 · Log — Urges |  |  |  | NOT_STARTED |  |  |  |
+| app-before__179__91-2-log-check-ins | Email Login (before label pass).dc.html | 91-2 · Log — Check-ins |  |  |  | NOT_STARTED |  |  |  |
+| app-before__180__91-3-log-reports | Email Login (before label pass).dc.html | 91-3 · Log — Reports |  |  |  | NOT_STARTED |  |  |  |
+| app-before__181__91a-urge-overview-summary | Email Login (before label pass).dc.html | 91A · Urge Overview — Summary |  |  |  | NOT_STARTED |  |  |  |
+| app-before__182__91b-urge-overview-strength | Email Login (before label pass).dc.html | 91B · Urge Overview — Strength |  |  |  | NOT_STARTED |  |  |  |
+| app-before__183__91c-urge-overview-mood | Email Login (before label pass).dc.html | 91C · Urge Overview — Mood |  |  |  | NOT_STARTED |  |  |  |
+| app-before__184__91d-urge-overview-when-where | Email Login (before label pass).dc.html | 91D · Urge Overview — When & Where |  |  |  | NOT_STARTED |  |  |  |
+| app-before__185__91c0-report-ready | Email Login (before label pass).dc.html | 91C0 · Report Ready |  |  |  | NOT_STARTED |  |  |  |
+| app-before__186__91c-weekly-report-score | Email Login (before label pass).dc.html | 91C · Weekly Report — Score |  |  |  | NOT_STARTED |  |  |  |
+| app-before__187__91c2-weekly-report-days | Email Login (before label pass).dc.html | 91C2 · Weekly Report — Days |  |  |  | NOT_STARTED |  |  |  |
+| app-before__188__91c3-weekly-report-urges | Email Login (before label pass).dc.html | 91C3 · Weekly Report — Urges |  |  |  | NOT_STARTED |  |  |  |
+| app-before__189__91d-urge-log-intensity | Email Login (before label pass).dc.html | 91D · Urge Log — Intensity |  |  |  | NOT_STARTED |  |  |  |
+| app-before__190__91e-urge-log-triggers | Email Login (before label pass).dc.html | 91E · Urge Log — Triggers |  |  |  | NOT_STARTED |  |  |  |
+| app-before__191__91f-urge-log-outcome | Email Login (before label pass).dc.html | 91F · Urge Log — Outcome |  |  |  | NOT_STARTED |  |  |  |
+| app-before__192__91g-urge-log-when | Email Login (before label pass).dc.html | 91G · Urge Log — When |  |  |  | NOT_STARTED |  |  |  |
+| app-before__193__91h-urge-log-logged | Email Login (before label pass).dc.html | 91H · Urge Log — Logged |  |  |  | NOT_STARTED |  |  |  |
+| app-before__194__92-settings | Email Login (before label pass).dc.html | 92 · Settings |  |  |  | NOT_STARTED |  |  |  |
+| app-before__195__93-edit-profile | Email Login (before label pass).dc.html | 93 · Edit Profile |  |  |  | NOT_STARTED |  |  |  |
+| app-before__196__93b-profile-photo-sheet | Email Login (before label pass).dc.html | 93B · Profile photo sheet |  |  |  | NOT_STARTED |  |  |  |
+| app-before__197__93c-edit-name-sheet | Email Login (before label pass).dc.html | 93C · Edit name sheet |  |  |  | NOT_STARTED |  |  |  |
+| app-before__198__93d-weekly-report | Email Login (before label pass).dc.html | 93D · Weekly report |  |  |  | NOT_STARTED |  |  |  |
+| app-before__199__92b-night-check-in-time | Email Login (before label pass).dc.html | 92B · Night check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app-before__200__92c-your-vow | Email Login (before label pass).dc.html | 92C · Your vow |  |  |  | NOT_STARTED |  |  |  |
+| app-before__201__92d-sign-out-sheet | Email Login (before label pass).dc.html | 92D · Sign out sheet |  |  |  | NOT_STARTED |  |  |  |
+| app-before__202__94-data-privacy | Email Login (before label pass).dc.html | 94 · Data & Privacy |  |  |  | NOT_STARTED |  |  |  |
+| app-before__203__95-app-lock | Email Login (before label pass).dc.html | 95 · App Lock |  |  |  | NOT_STARTED |  |  |  |
+| app-before__204__98a-slip-it-happened | Email Login (before label pass).dc.html | 98A · Slip — It Happened |  |  |  | NOT_STARTED |  |  |  |
+| app-before__205__98b-slip-close-it-now | Email Login (before label pass).dc.html | 98B · Slip — Close It Now |  |  |  | NOT_STARTED |  |  |  |
+| app-before__206__98c-slip-when | Email Login (before label pass).dc.html | 98C · Slip — When |  |  |  | NOT_STARTED |  |  |  |
+| app-before__207__98d-slip-what-fed-it | Email Login (before label pass).dc.html | 98D · Slip — What Fed It |  |  |  | NOT_STARTED |  |  |  |
+| app-before__208__98e-slip-logged | Email Login (before label pass).dc.html | 98E · Slip — Logged |  |  |  | NOT_STARTED |  |  |  |
+| app-before__209__98f-slip-current-urge | Email Login (before label pass).dc.html | 98F · Slip — Current Urge |  |  |  | NOT_STARTED |  |  |  |
+| app-before__210__98g-slip-dont-fail-twice | Email Login (before label pass).dc.html | 98G · Slip — Don’t Fail Twice |  |  |  | NOT_STARTED |  |  |  |
+| app-before__211__98h-slip-stop-here | Email Login (before label pass).dc.html | 98H · Slip — Stop Here |  |  |  | NOT_STARTED |  |  |  |
+| app-before__212__98i-slip-third-slip | Email Login (before label pass).dc.html | 98I · Slip — Third Slip |  |  |  | NOT_STARTED |  |  |  |
+| app-before__213__98j-slip-the-pledge-still-stands | Email Login (before label pass).dc.html | 98J · Slip — The Pledge Still Stands |  |  |  | NOT_STARTED |  |  |  |
+| app-before__214__98k-slip-begin-again | Email Login (before label pass).dc.html | 98K · Slip — Begin Again |  |  |  | NOT_STARTED |  |  |  |
+| app-before__215__98l-slip-morning-after | Email Login (before label pass).dc.html | 98L · Slip — Morning After |  |  |  | NOT_STARTED |  |  |  |
+| app-before__216__99a-slip-feeling-ashamed | Email Login (before label pass).dc.html | 99A · Slip Feeling — Ashamed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__217__99b-slip-feeling-bored | Email Login (before label pass).dc.html | 99B · Slip Feeling — Bored |  |  |  | NOT_STARTED |  |  |  |
+| app-before__218__99c-slip-feeling-lonely | Email Login (before label pass).dc.html | 99C · Slip Feeling — Lonely |  |  |  | NOT_STARTED |  |  |  |
+| app-before__219__99d-slip-feeling-stressed | Email Login (before label pass).dc.html | 99D · Slip Feeling — Stressed |  |  |  | NOT_STARTED |  |  |  |
+| app-before__220__99e-slip-feeling-rejected | Email Login (before label pass).dc.html | 99E · Slip Feeling — Rejected |  |  |  | NOT_STARTED |  |  |  |
+| app-before__221__99f-slip-feeling-tired | Email Login (before label pass).dc.html | 99F · Slip Feeling — Tired |  |  |  | NOT_STARTED |  |  |  |
+| app-before__222__99g-slip-feeling-turned-on | Email Login (before label pass).dc.html | 99G · Slip Feeling — Turned on |  |  |  | NOT_STARTED |  |  |  |
+| app-before__223__99h-slip-feeling-not-sure | Email Login (before label pass).dc.html | 99H · Slip Feeling — Not sure |  |  |  | NOT_STARTED |  |  |  |
+| app-before__224__100a-slip-trigger-late-night | Email Login (before label pass).dc.html | 100A · Slip Trigger — Late night |  |  |  | NOT_STARTED |  |  |  |
+| app-before__225__100b-slip-trigger-scrolling | Email Login (before label pass).dc.html | 100B · Slip Trigger — Scrolling |  |  |  | NOT_STARTED |  |  |  |
+| app-before__226__100c-slip-trigger-sexual-content | Email Login (before label pass).dc.html | 100C · Slip Trigger — Sexual content |  |  |  | NOT_STARTED |  |  |  |
+| app-before__227__100d-slip-trigger-boredom | Email Login (before label pass).dc.html | 100D · Slip Trigger — Boredom |  |  |  | NOT_STARTED |  |  |  |
+| app-before__228__100e-slip-trigger-loneliness | Email Login (before label pass).dc.html | 100E · Slip Trigger — Loneliness |  |  |  | NOT_STARTED |  |  |  |
+| app-before__229__100f-slip-trigger-stress | Email Login (before label pass).dc.html | 100F · Slip Trigger — Stress |  |  |  | NOT_STARTED |  |  |  |
+| app-before__230__100g-slip-trigger-argument | Email Login (before label pass).dc.html | 100G · Slip Trigger — Argument |  |  |  | NOT_STARTED |  |  |  |
+| app-before__231__100h-slip-trigger-couldnt-sleep | Email Login (before label pass).dc.html | 100H · Slip Trigger — Couldn’t sleep |  |  |  | NOT_STARTED |  |  |  |
+| app-before__232__100i-slip-trigger-being-alone | Email Login (before label pass).dc.html | 100I · Slip Trigger — Being alone |  |  |  | NOT_STARTED |  |  |  |
+| app-before__233__100j-slip-trigger-habit | Email Login (before label pass).dc.html | 100J · Slip Trigger — Habit |  |  |  | NOT_STARTED |  |  |  |
+| app-before__234__100k-slip-trigger-not-sure | Email Login (before label pass).dc.html | 100K · Slip Trigger — Not sure |  |  |  | NOT_STARTED |  |  |  |
+| app-before__235__90b-vici-post-arrival | Email Login (before label pass).dc.html | 90B · VICI Post — Arrival |  |  |  | NOT_STARTED |  |  |  |
+| app-before__236__39-the-letter-read | Email Login (before label pass).dc.html | 39 · The Letter — Read |  |  |  | NOT_STARTED |  |  |  |
+| app-before__237__39b-post-medallion-letter | Email Login (before label pass).dc.html | 39B · Post — Medallion Letter |  |  |  | NOT_STARTED |  |  |  |
+| app-before__238__39c-post-the-yearly-drop | Email Login (before label pass).dc.html | 39C · Post — The Yearly Drop |  |  |  | NOT_STARTED |  |  |  |
+| app-before__239__39d-you-received-a-drop | Email Login (before label pass).dc.html | 39D · You Received a Drop |  |  |  | NOT_STARTED |  |  |  |
+| app-before__240__84-lesson-frame-1-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__241__84-lesson-frame-2-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__242__84-lesson-frame-3-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__243__84-lesson-frame-4-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__244__84-lesson-frame-5-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__245__84-lesson-frame-6-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__246__84-lesson-frame-7-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__247__84-lesson-frame-8-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__248__84-lesson-frame-9-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__249__84-lesson-frame-10-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__250__84-lesson-frame-11-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__251__84-lesson-frame-12-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__252__84-lesson-frame-13-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app-before__253__84-lesson-frame-14-of-14 | Email Login (before label pass).dc.html | 84 · Lesson — Frame 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__000__01-splash | Email Login.dc.html | 01 · Splash |  |  |  | NOT_STARTED |  |  |  |
+| app__001__02-login | Email Login.dc.html | 02 · Login |  |  |  | NOT_STARTED |  |  |  |
+| app__002__02b-welcome-back | Email Login.dc.html | 02B · Welcome back |  |  |  | NOT_STARTED |  |  |  |
+| app__003__03-name | Email Login.dc.html | 03 · Name |  |  |  | NOT_STARTED |  |  |  |
+| app__004__04-age | Email Login.dc.html | 04 · Age |  |  |  | NOT_STARTED |  |  |  |
+| app__005__05-gender | Email Login.dc.html | 05 · Gender |  |  |  | NOT_STARTED |  |  |  |
+| app__006__06-start | Email Login.dc.html | 06 · Start |  |  |  | NOT_STARTED |  |  |  |
+| app__007__07-frequency | Email Login.dc.html | 07 · Frequency |  |  |  | NOT_STARTED |  |  |  |
+| app__008__08-how-long | Email Login.dc.html | 08 · How long |  |  |  | NOT_STARTED |  |  |  |
+| app__009__09a-previous-quit-attempts | Email Login.dc.html | 09A · Previous quit attempts |  |  |  | NOT_STARTED |  |  |  |
+| app__010__09b-relapse | Email Login.dc.html | 09B · Relapse |  |  |  | NOT_STARTED |  |  |  |
+| app__011__10-first-principle | Email Login.dc.html | 10 · First principle |  |  |  | NOT_STARTED |  |  |  |
+| app__012__11-when | Email Login.dc.html | 11 · When |  |  |  | NOT_STARTED |  |  |  |
+| app__013__12-beforehand | Email Login.dc.html | 12 · Beforehand |  |  |  | NOT_STARTED |  |  |  |
+| app__014__13-place | Email Login.dc.html | 13 · Place |  |  |  | NOT_STARTED |  |  |  |
+| app__015__14-what-starts-it | Email Login.dc.html | 14 · What starts it |  |  |  | NOT_STARTED |  |  |  |
+| app__016__15-transition | Email Login.dc.html | 15 · Transition |  |  |  | NOT_STARTED |  |  |  |
+| app__017__16-impact | Email Login.dc.html | 16 · Impact |  |  |  | NOT_STARTED |  |  |  |
+| app__018__17-what-it-affects | Email Login.dc.html | 17 · What it affects |  |  |  | NOT_STARTED |  |  |  |
+| app__019__18-loneliness | Email Login.dc.html | 18 · Loneliness |  |  |  | NOT_STARTED |  |  |  |
+| app__020__19-time-alone | Email Login.dc.html | 19 · Time alone |  |  |  | NOT_STARTED |  |  |  |
+| app__021__20-goal | Email Login.dc.html | 20 · Goal |  |  |  | NOT_STARTED |  |  |  |
+| app__022__21-masturbation-goal | Email Login.dc.html | 21 · Masturbation goal |  |  |  | NOT_STARTED |  |  |  |
+| app__023__22-what-youve-tried | Email Login.dc.html | 22 · What you’ve tried |  |  |  | NOT_STARTED |  |  |  |
+| app__024__23-goal-confirmation | Email Login.dc.html | 23 · Goal confirmation |  |  |  | NOT_STARTED |  |  |  |
+| app__025__24-build-plan | Email Login.dc.html | 24 · Build plan |  |  |  | NOT_STARTED |  |  |  |
+| app__026__25-this-is-where-wed-start | Email Login.dc.html | 25 · This Is Where We’d Start |  |  |  | NOT_STARTED |  |  |  |
+| app__027__26-start-here | Email Login.dc.html | 26 · Start Here |  |  |  | NOT_STARTED |  |  |  |
+| app__028__26a-start-here-step-1 | Email Login.dc.html | 26A · Start Here — Step 1 |  |  |  | NOT_STARTED |  |  |  |
+| app__029__26a2-start-here-step-2 | Email Login.dc.html | 26A2 · Start Here — Step 2 |  |  |  | NOT_STARTED |  |  |  |
+| app__030__27-your-plan | Email Login.dc.html | 27 · Your Plan |  |  |  | NOT_STARTED |  |  |  |
+| app__031__28-your-vici-rating | Email Login.dc.html | 28 · Your VICI Rating |  |  |  | NOT_STARTED |  |  |  |
+| app__032__29-the-next-30-days | Email Login.dc.html | 29 · The Next 30 Days |  |  |  | NOT_STARTED |  |  |  |
+| app__033__30-one-year-from-now | Email Login.dc.html | 30 · One Year From Now |  |  |  | NOT_STARTED |  |  |  |
+| app__034__31-if-nothing-changes | Email Login.dc.html | 31 · If Nothing Changes |  |  |  | NOT_STARTED |  |  |  |
+| app__035__32-if-nothing-changes | Email Login.dc.html | 32 · If Nothing Changes |  |  |  | NOT_STARTED |  |  |  |
+| app__036__32a-with-the-plan | Email Login.dc.html | 32A · With the Plan |  |  |  | NOT_STARTED |  |  |  |
+| app__037__32b-a-clean-day | Email Login.dc.html | 32B · A Clean Day |  |  |  | NOT_STARTED |  |  |  |
+| app__038__33-one-bad-day | Email Login.dc.html | 33 · One Bad Day |  |  |  | NOT_STARTED |  |  |  |
+| app__039__34-what-you-want-back | Email Login.dc.html | 34 · What You Want Back |  |  |  | NOT_STARTED |  |  |  |
+| app__040__38-a-letter-arrived | Email Login.dc.html | 38 · A Letter Arrived |  |  |  | NOT_STARTED |  |  |  |
+| app__041__39-a-letter-from-week-xii | Email Login.dc.html | 39 · A Letter From Week XII |  |  |  | NOT_STARTED |  |  |  |
+| app__042__40-the-vow | Email Login.dc.html | 40 · The Vow |  |  |  | NOT_STARTED |  |  |  |
+| app__043__41-medallion-earned | Email Login.dc.html | 41 · Medallion Earned |  |  |  | NOT_STARTED |  |  |  |
+| app__044__42-reminders | Email Login.dc.html | 42 · Reminders |  |  |  | NOT_STARTED |  |  |  |
+| app__045__43-paywall | Email Login.dc.html | 43 · Paywall |  |  |  | NOT_STARTED |  |  |  |
+| app__046__44-day-0 | Email Login.dc.html | 44 · Day 0 |  |  |  | NOT_STARTED |  |  |  |
+| app__047__11b-paywall-three-days-free | Email Login.dc.html | 11B · Paywall — Three Days Free |  |  |  | NOT_STARTED |  |  |  |
+| app__048__11c-paywall-confirmed | Email Login.dc.html | 11C · Paywall — Confirmed |  |  |  | NOT_STARTED |  |  |  |
+| app__049__15-manage-subscription | Email Login.dc.html | 15 · Manage Subscription |  |  |  | NOT_STARTED |  |  |  |
+| app__050__19b-morning-check-in-time | Email Login.dc.html | 19B · Morning check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app__051__19c-nightly-check-in-time | Email Login.dc.html | 19C · Nightly check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app__052__21-today | Email Login.dc.html | 21 · Today |  |  |  | NOT_STARTED |  |  |  |
+| app__053__21b-score-detail | Email Login.dc.html | 21B · Score Detail |  |  |  | NOT_STARTED |  |  |  |
+| app__054__20b-score-detail-what-moved-it | Email Login.dc.html | 20B · Score Detail — What Moved It |  |  |  | NOT_STARTED |  |  |  |
+| app__055__20c-score-detail-ranks | Email Login.dc.html | 20C · Score Detail — Ranks |  |  |  | NOT_STARTED |  |  |  |
+| app__056__21-today-p2 | Email Login.dc.html | 21 · Today — p2 |  |  |  | NOT_STARTED |  |  |  |
+| app__057__21p2b-today-task-summary | Email Login.dc.html | 21p2B · Today — Task summary |  |  |  | NOT_STARTED |  |  |  |
+| app__058__21-today-p3 | Email Login.dc.html | 21 · Today — p3 |  |  |  | NOT_STARTED |  |  |  |
+| app__059__21d0-morning-check-in | Email Login.dc.html | 21D0 · Morning — Check-in |  |  |  | NOT_STARTED |  |  |  |
+| app__060__21d1-morning-yesterdays-task | Email Login.dc.html | 21D1 · Morning — Yesterday’s task |  |  |  | NOT_STARTED |  |  |  |
+| app__061__21d2-morning-yesterday | Email Login.dc.html | 21D2 · Morning — Yesterday |  |  |  | NOT_STARTED |  |  |  |
+| app__062__21d3-morning-feeling | Email Login.dc.html | 21D3 · Morning — Feeling |  |  |  | NOT_STARTED |  |  |  |
+| app__063__21d4-morning-energy | Email Login.dc.html | 21D4 · Morning — Energy |  |  |  | NOT_STARTED |  |  |  |
+| app__064__21d5-morning-re-sign-your-pledge | Email Login.dc.html | 21D5 · Morning — Re-sign your pledge |  |  |  | NOT_STARTED |  |  |  |
+| app__065__21d5b-morning-pledge-signed | Email Login.dc.html | 21D5B · Morning — Pledge signed |  |  |  | NOT_STARTED |  |  |  |
+| app__066__21d6-morning-change-the-pledge | Email Login.dc.html | 21D6 · Morning — Change the pledge |  |  |  | NOT_STARTED |  |  |  |
+| app__067__21d6b-morning-one-goal | Email Login.dc.html | 21D6B · Morning — One goal |  |  |  | NOT_STARTED |  |  |  |
+| app__068__21d7-morning-done | Email Login.dc.html | 21D7 · Morning — Done |  |  |  | NOT_STARTED |  |  |  |
+| app__069__21e0-night-check-in | Email Login.dc.html | 21E0 · Night — Check-in |  |  |  | NOT_STARTED |  |  |  |
+| app__070__21e1-night-how-was-today | Email Login.dc.html | 21E1 · Night — How was today |  |  |  | NOT_STARTED |  |  |  |
+| app__071__21e2-night-emotions | Email Login.dc.html | 21E2 · Night — Emotions |  |  |  | NOT_STARTED |  |  |  |
+| app__072__21e3-night-what-caused-it | Email Login.dc.html | 21E3 · Night — What caused it |  |  |  | NOT_STARTED |  |  |  |
+| app__073__21e4-night-reflection | Email Login.dc.html | 21E4 · Night — Reflection |  |  |  | NOT_STARTED |  |  |  |
+| app__074__21e5-night-record | Email Login.dc.html | 21E5 · Night — Record |  |  |  | NOT_STARTED |  |  |  |
+| app__075__21e5b-night-tonights-action | Email Login.dc.html | 21E5B · Night — Tonight’s action |  |  |  | NOT_STARTED |  |  |  |
+| app__076__21e5c-night-proud-of | Email Login.dc.html | 21E5C · Night — Proud of |  |  |  | NOT_STARTED |  |  |  |
+| app__077__21e6-night-closed | Email Login.dc.html | 21E6 · Night — Closed |  |  |  | NOT_STARTED |  |  |  |
+| app__078__92a-week-i-reset-i | Email Login.dc.html | 92A · Week I — Reset · i |  |  |  | NOT_STARTED |  |  |  |
+| app__079__92a2-week-i-reset-ii | Email Login.dc.html | 92A2 · Week I — Reset · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__080__92b-week-ii-changing-your-mindset-i | Email Login.dc.html | 92B · Week II — Changing Your Mindset · i |  |  |  | NOT_STARTED |  |  |  |
+| app__081__92b2-week-ii-changing-your-mindset-ii | Email Login.dc.html | 92B2 · Week II — Changing Your Mindset · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__082__92c-week-iii-in-the-moment-i | Email Login.dc.html | 92C · Week III — In the Moment · i |  |  |  | NOT_STARTED |  |  |  |
+| app__083__92c2-week-iii-in-the-moment-ii | Email Login.dc.html | 92C2 · Week III — In the Moment · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__084__92d-week-iv-know-your-brain-i | Email Login.dc.html | 92D · Week IV — Know Your Brain · i |  |  |  | NOT_STARTED |  |  |  |
+| app__085__92d2-week-iv-know-your-brain-ii | Email Login.dc.html | 92D2 · Week IV — Know Your Brain · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__086__92e-week-v-why-it-feels-worth-it-i | Email Login.dc.html | 92E · Week V — Why It Feels Worth It · i |  |  |  | NOT_STARTED |  |  |  |
+| app__087__92e2-week-v-why-it-feels-worth-it-ii | Email Login.dc.html | 92E2 · Week V — Why It Feels Worth It · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__088__92f-week-vi-discipline-i | Email Login.dc.html | 92F · Week VI — Discipline · i |  |  |  | NOT_STARTED |  |  |  |
+| app__089__92f2-week-vi-discipline-ii | Email Login.dc.html | 92F2 · Week VI — Discipline · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__090__92g-week-vii-relapse-and-adversity-i | Email Login.dc.html | 92G · Week VII — Relapse and Adversity · i |  |  |  | NOT_STARTED |  |  |  |
+| app__091__92g2-week-vii-relapse-and-adversity-ii | Email Login.dc.html | 92G2 · Week VII — Relapse and Adversity · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__092__92h-week-viii-boredom-and-meaning-i | Email Login.dc.html | 92H · Week VIII — Boredom and Meaning · i |  |  |  | NOT_STARTED |  |  |  |
+| app__093__92h2-week-viii-boredom-and-meaning-ii | Email Login.dc.html | 92H2 · Week VIII — Boredom and Meaning · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__094__92i-week-ix-connection-i | Email Login.dc.html | 92I · Week IX — Connection · i |  |  |  | NOT_STARTED |  |  |  |
+| app__095__92i2-week-ix-connection-ii | Email Login.dc.html | 92I2 · Week IX — Connection · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__096__92j-week-x-yourself-i | Email Login.dc.html | 92J · Week X — Yourself · i |  |  |  | NOT_STARTED |  |  |  |
+| app__097__92j2-week-x-yourself-ii | Email Login.dc.html | 92J2 · Week X — Yourself · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__098__92k-week-xi-build-a-life-you-want-i | Email Login.dc.html | 92K · Week XI — Build a Life You Want · i |  |  |  | NOT_STARTED |  |  |  |
+| app__099__92k2-week-xi-build-a-life-you-want-ii | Email Login.dc.html | 92K2 · Week XI — Build a Life You Want · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__100__92l-week-xii-leave-it-behind-i | Email Login.dc.html | 92L · Week XII — Leave It Behind · i |  |  |  | NOT_STARTED |  |  |  |
+| app__101__92l2-week-xii-leave-it-behind-ii | Email Login.dc.html | 92L2 · Week XII — Leave It Behind · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__102__sos-working-flow | Email Login.dc.html | SOS — Working flow | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__103__01-sos-rate-the-urge | Email Login.dc.html | 01 · SOS — Rate the urge | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__104__02-sos-where-are-you | Email Login.dc.html | 02 · SOS — Where are you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__105__02b-sos-where-are-you-in-bed | Email Login.dc.html | 02B · SOS — Where are you · In bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__106__03-sos-whats-feeding-it | Email Login.dc.html | 03 · SOS — What’s feeding it | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__107__03b-sos-what-youre-putting-off | Email Login.dc.html | 03B · SOS — What you’re putting off | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__108__04-sos-what-youre-feeling | Email Login.dc.html | 04 · SOS — What you’re feeling | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__109__05-sos-one-task | Email Login.dc.html | 05 · SOS — One task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__110__05b-sos-one-task-reading | Email Login.dc.html | 05B · SOS — One task · Reading | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__111__05d-sos-one-task-at-work | Email Login.dc.html | 05D · SOS — One task · At work | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__112__06-urge-hub-main | Email Login.dc.html | 06 · Urge Hub — Main | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__113__06b-urge-hub-main-late-night | Email Login.dc.html | 06B · Urge Hub — Main · Late night | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__114__06c-urge-hub-breathe | Email Login.dc.html | 06C · Urge Hub — Breathe | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__115__06d-urge-hub-your-pledge | Email Login.dc.html | 06D · Urge Hub — Your pledge | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__116__06e-urge-hub-what-helped-before | Email Login.dc.html | 06E · Urge Hub — What helped before | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__117__07-sos-check-afterward | Email Login.dc.html | 07 · SOS — Check afterward | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__118__07b-sos-check-lower | Email Login.dc.html | 07B · SOS — Check · Lower | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__119__07c-sos-check-about-the-same | Email Login.dc.html | 07C · SOS — Check · About the same | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__120__07d-sos-another-task | Email Login.dc.html | 07D · SOS — Another task? | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__121__08-sos-finished | Email Login.dc.html | 08 · SOS — Finished | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__122__08b-sos-finished-its-gone | Email Login.dc.html | 08B · SOS — Finished · It’s gone | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__123__a01-put-the-device-down-for-three-minutes | Email Login.dc.html | A01 · Put the device down for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__124__a02-shut-the-laptop-and-leave-the-chair | Email Login.dc.html | A02 · Shut the laptop and leave the chair | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__125__a03-walk-indoors-for-five-minutes | Email Login.dc.html | A03 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__126__a04-wash-one-mug | Email Login.dc.html | A04 · Wash one mug | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__127__a05-read-two-pages | Email Login.dc.html | A05 · Read two pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__128__a06-sit-with-someone-at-home | Email Login.dc.html | A06 · Sit with someone at home | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__129__a07-stay-seated-and-look-around | Email Login.dc.html | A07 · Stay seated and look around | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__130__a08-fold-three-clean-items | Email Login.dc.html | A08 · Fold three clean items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__131__a09-put-the-phone-inside-your-bag-for-three-minutes | Email Login.dc.html | A09 · Put the phone inside your bag for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__132__a10-put-three-things-ready-by-the-door | Email Login.dc.html | A10 · Put three things ready by the door | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__133__b01-move-the-phone-away-from-the-pillow | Email Login.dc.html | B01 · Move the phone away from the pillow | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__134__b02-read-two-pages-in-dim-light | Email Login.dc.html | B02 · Read two pages in dim light | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__135__b03-wash-your-face-and-return-to-bed | Email Login.dc.html | B03 · Wash your face and return to bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__136__b04-take-a-few-sips-at-the-kitchen-table | Email Login.dc.html | B04 · Take a few sips at the kitchen table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__137__b05-straighten-the-pillow-and-cover | Email Login.dc.html | B05 · Straighten the pillow and cover | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__138__b06-fold-three-items-quietly | Email Login.dc.html | B06 · Fold three items quietly | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__139__b07-sit-in-a-different-chair-briefly | Email Login.dc.html | B07 · Sit in a different chair briefly | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__140__b08-put-out-clothes-for-when-you-get-up | Email Login.dc.html | B08 · Put out clothes for when you get up | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__141__b09-rest-for-one-minute-with-the-screen-down | Email Login.dc.html | B09 · Rest for one minute with the screen down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__142__b10-close-your-eyes-for-three-minutes | Email Login.dc.html | B10 · Close your eyes for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__143__c01-get-dressed-before-opening-anything-else | Email Login.dc.html | C01 · Get dressed before opening anything else | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__144__c02-brush-your-teeth-without-the-phone | Email Login.dc.html | C02 · Brush your teeth without the phone | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__145__c03-eat-breakfast-at-the-table | Email Login.dc.html | C03 · Eat breakfast at the table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__146__c04-make-the-bed | Email Login.dc.html | C04 · Make the bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__147__c05-pack-three-things-for-the-day | Email Login.dc.html | C05 · Pack three things for the day | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__148__c06-walk-a-short-familiar-route | Email Login.dc.html | C06 · Walk a short familiar route | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__149__c07-buy-one-breakfast-item | Email Login.dc.html | C07 · Buy one breakfast item | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__150__c08-open-the-curtains-and-sit-for-a-minute | Email Login.dc.html | C08 · Open the curtains and sit for a minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__151__c09-get-the-first-work-item-ready | Email Login.dc.html | C09 · Get the first work item ready | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__152__c10-leave-the-bed-for-a-seated-activity | Email Login.dc.html | C10 · Leave the bed for a seated activity | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__153__d01-buy-one-useful-item | Email Login.dc.html | D01 · Buy one useful item | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__154__d02-walk-for-five-minutes-and-come-back | Email Login.dc.html | D02 · Walk for five minutes and come back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__155__d03-clear-one-small-surface | Email Login.dc.html | D03 · Clear one small surface | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__156__d04-wash-five-dishes | Email Login.dc.html | D04 · Wash five dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__157__d05-do-one-page-of-a-paper-puzzle | Email Login.dc.html | D05 · Do one page of a paper puzzle | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__158__d06-read-three-pages | Email Login.dc.html | D06 · Read three pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__159__d07-fold-five-clothes | Email Login.dc.html | D07 · Fold five clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__160__d08-water-one-houseplant | Email Login.dc.html | D08 · Water one houseplant | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__161__d09-make-one-small-snack | Email Login.dc.html | D09 · Make one small snack | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__162__d10-draw-one-object-near-you | Email Login.dc.html | D10 · Draw one object near you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__163__e01-rinse-one-mug-and-fill-it-with-water | Email Login.dc.html | E01 · Rinse one mug and fill it with water | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__164__e02-walk-indoors-for-three-minutes | Email Login.dc.html | E02 · Walk indoors for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__165__e03-look-at-one-ordinary-object | Email Login.dc.html | E03 · Look at one ordinary object | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__166__e04-wash-your-face | Email Login.dc.html | E04 · Wash your face | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__167__e05-sit-beside-someone-for-five-minutes | Email Login.dc.html | E05 · Sit beside someone for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__168__e06-spend-five-minutes-outside-on-a-known-route | Email Login.dc.html | E06 · Spend five minutes outside on a known route | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__169__e07-sort-five-loose-items | Email Login.dc.html | E07 · Sort five loose items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__170__e08-fold-three-towels-or-clothes | Email Login.dc.html | E08 · Fold three towels or clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__171__e09-notice-the-worry-and-sit-for-two-minutes | Email Login.dc.html | E09 · Notice the worry and sit for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__172__e10-open-the-first-task-and-do-one-small-part | Email Login.dc.html | E10 · Open the first task and do one small part | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__173__f01-start-a-short-conversation-with-someone-there | Email Login.dc.html | F01 · Start a short conversation with someone there | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__174__f02-sit-with-an-awake-person-at-home | Email Login.dc.html | F02 · Sit with an awake person at home | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__175__f03-take-a-five-minute-walk-with-someone-there | Email Login.dc.html | F03 · Take a five-minute walk with someone there | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__176__f04-read-for-five-minutes-at-the-nearby-library | Email Login.dc.html | F04 · Read for five minutes at the nearby library | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__177__f05-make-a-brief-errand-to-a-familiar-shop | Email Login.dc.html | F05 · Make a brief errand to a familiar shop | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__178__f06-wash-and-dry-three-cups-together | Email Login.dc.html | F06 · Wash and dry three cups together | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__179__f07-sit-on-a-familiar-public-bench-for-five-minutes | Email Login.dc.html | F07 · Sit on a familiar public bench for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__180__f08-deal-a-hand-of-solitaire-with-real-cards | Email Login.dc.html | F08 · Deal a hand of solitaire with real cards | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__181__f09-read-in-an-appropriate-shared-place | Email Login.dc.html | F09 · Read in an appropriate shared place | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__182__f10-read-two-pages-in-another-room | Email Login.dc.html | F10 · Read two pages in another room | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__183__g01-leave-the-message-thread-closed | Email Login.dc.html | G01 · Leave the message thread closed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__184__g02-walk-indoors-for-five-minutes | Email Login.dc.html | G02 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__185__g03-wash-three-dishes | Email Login.dc.html | G03 · Wash three dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__186__g04-wash-your-hands-and-sit-down | Email Login.dc.html | G04 · Wash your hands and sit down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__187__g05-take-a-short-walk-without-replying | Email Login.dc.html | G05 · Take a short walk without replying | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__188__g06-ask-someone-there-to-talk-about-something-else | Email Login.dc.html | G06 · Ask someone there to talk about something else | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__189__g07-put-five-things-back-in-place | Email Login.dc.html | G07 · Put five things back in place | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__190__g08-read-two-pages-of-a-familiar-book | Email Login.dc.html | G08 · Read two pages of a familiar book | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__191__g09-fold-three-towels | Email Login.dc.html | G09 · Fold three towels | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__192__g10-name-what-happened-and-pause | Email Login.dc.html | G10 · Name what happened and pause | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__193__h01-open-the-document-and-work-for-two-minutes | Email Login.dc.html | H01 · Open the document and work for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__194__h02-read-the-first-question | Email Login.dc.html | H02 · Read the first question | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__195__h03-wash-the-first-three-dishes | Email Login.dc.html | H03 · Wash the first three dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__196__h04-put-the-first-five-items-away | Email Login.dc.html | H04 · Put the first five items away | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__197__h05-open-the-bill-or-letter | Email Login.dc.html | H05 · Open the bill or letter | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__198__h06-set-out-one-tool-or-material | Email Login.dc.html | H06 · Set out one tool or material | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__199__h07-make-a-two-minute-start-on-the-email | Email Login.dc.html | H07 · Make a two-minute start on the email | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__200__h08-work-beside-someone-for-five-minutes | Email Login.dc.html | H08 · Work beside someone for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__201__h09-put-one-load-into-the-washing-machine | Email Login.dc.html | H09 · Put one load into the washing machine | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__202__h10-read-one-page-needed-for-the-task | Email Login.dc.html | H10 · Read one page needed for the task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__203__i01-eat-one-ready-to-eat-snack | Email Login.dc.html | I01 · Eat one ready-to-eat snack | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__204__i02-make-one-sandwich-and-eat-it-at-the-table | Email Login.dc.html | I02 · Make one sandwich and eat it at the table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__205__i03-pour-water-and-sit-for-three-minutes | Email Login.dc.html | I03 · Pour water and sit for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__206__i04-rest-in-a-chair-for-five-minutes | Email Login.dc.html | I04 · Rest in a chair for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__207__i05-change-into-your-sleep-clothes | Email Login.dc.html | I05 · Change into your sleep clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__208__i06-put-out-clothes-for-when-you-next-get-up | Email Login.dc.html | I06 · Put out clothes for when you next get up | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__209__i07-ask-for-a-short-break | Email Login.dc.html | I07 · Ask for a short break | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__210__i08-eat-in-the-staffroom-or-kitchen | Email Login.dc.html | I08 · Eat in the staffroom or kitchen | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__211__i09-put-out-a-bowl-and-spoon-for-breakfast | Email Login.dc.html | I09 · Put out a bowl and spoon for breakfast | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__212__i10-rest-for-two-minutes-with-the-screen-down | Email Login.dc.html | I10 · Rest for two minutes with the screen down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__213__j01-put-the-phone-down-for-three-minutes | Email Login.dc.html | J01 · Put the phone down for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__214__j02-look-around-for-one-minute | Email Login.dc.html | J02 · Look around for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__215__j03-read-two-physical-pages | Email Login.dc.html | J03 · Read two physical pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__216__j04-walk-indoors-for-five-minutes | Email Login.dc.html | J04 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__217__j05-wash-one-mug | Email Login.dc.html | J05 · Wash one mug | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__218__j06-fold-three-clothes | Email Login.dc.html | J06 · Fold three clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__219__j07-return-to-your-task-for-two-minutes | Email Login.dc.html | J07 · Return to your task for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__220__j08-draw-the-outline-of-one-object | Email Login.dc.html | J08 · Draw the outline of one object | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__221__j09-sit-in-a-different-safe-spot | Email Login.dc.html | J09 · Sit in a different safe spot | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__222__j10-take-a-familiar-five-minute-walk | Email Login.dc.html | J10 · Take a familiar five-minute walk | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__223__k01-put-the-phone-away-for-two-minutes | Email Login.dc.html | K01 · Put the phone away for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__224__k02-return-from-the-bathroom | Email Login.dc.html | K02 · Return from the bathroom | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__225__k03-refill-your-water-bottle | Email Login.dc.html | K03 · Refill your water bottle | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__226__k04-read-one-printed-page | Email Login.dc.html | K04 · Read one printed page | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__227__k05-start-two-minutes-of-the-next-work-task | Email Login.dc.html | K05 · Start two minutes of the next work task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__228__k06-look-at-three-things-near-you | Email Login.dc.html | K06 · Look at three things near you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__229__k07-sort-five-things-in-your-bag | Email Login.dc.html | K07 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__230__k08-take-one-permitted-corridor-break | Email Login.dc.html | K08 · Take one permitted corridor break | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__231__k09-pack-away-one-item-you-have-finished-using | Email Login.dc.html | K09 · Pack away one item you have finished using | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__232__k10-ask-a-colleague-about-one-ordinary-thing | Email Login.dc.html | K10 · Ask a colleague about one ordinary thing | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__233__l01-put-the-phone-down-for-two-minutes | Email Login.dc.html | L01 · Put the phone down for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__234__l02-sit-in-a-different-chair-for-three-minutes | Email Login.dc.html | L02 · Sit in a different chair for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__235__l03-read-two-pages-of-a-familiar-book | Email Login.dc.html | L03 · Read two pages of a familiar book | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__236__l04-wash-one-plate | Email Login.dc.html | L04 · Wash one plate | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__237__l05-fold-three-clean-items | Email Login.dc.html | L05 · Fold three clean items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__238__l06-walk-indoors-for-three-minutes | Email Login.dc.html | L06 · Walk indoors for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__239__l07-eat-the-snack-you-already-have | Email Login.dc.html | L07 · Eat the snack you already have | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__240__l08-sort-five-things-in-your-bag | Email Login.dc.html | L08 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__241__l09-walk-to-a-familiar-corner-and-back | Email Login.dc.html | L09 · Walk to a familiar corner and back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__242__l10-name-the-feeling-and-pause-for-one-minute | Email Login.dc.html | L10 · Name the feeling and pause for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md |  | NOT_STARTED |  |  |  |
+| app__243__88-medallions | Email Login.dc.html | 88 · Medallions |  |  |  | NOT_STARTED |  |  |  |
+| app__244__88b-medallions-still-to-earn | Email Login.dc.html | 88B · Medallions — Still to earn |  |  |  | NOT_STARTED |  |  |  |
+| app__245__88c-medallions-earned-ii | Email Login.dc.html | 88C · Medallions — Earned II |  |  |  | NOT_STARTED |  |  |  |
+| app__246__88d-breakwater-paper | Email Login.dc.html | 88D · Breakwater — Paper |  |  |  | NOT_STARTED |  |  |  |
+| app__247__88e-breakwater-bronze | Email Login.dc.html | 88E · Breakwater — Bronze |  |  |  | NOT_STARTED |  |  |  |
+| app__248__88f-breakwater-silver | Email Login.dc.html | 88F · Breakwater — Silver |  |  |  | NOT_STARTED |  |  |  |
+| app__249__88g-breakwater-gold | Email Login.dc.html | 88G · Breakwater — Gold |  |  |  | NOT_STARTED |  |  |  |
+| app__250__88h-breakwater-platinum | Email Login.dc.html | 88H · Breakwater — Platinum |  |  |  | NOT_STARTED |  |  |  |
+| app__251__88i-tiers-vidi | Email Login.dc.html | 88I · Tiers — Vidi |  |  |  | NOT_STARTED |  |  |  |
+| app__252__88j-tiers-vici | Email Login.dc.html | 88J · Tiers — Vici |  |  |  | NOT_STARTED |  |  |  |
+| app__253__88k-tiers-rebound | Email Login.dc.html | 88K · Tiers — Rebound |  |  |  | NOT_STARTED |  |  |  |
+| app__254__88l-tiers-breakwater | Email Login.dc.html | 88L · Tiers — Breakwater |  |  |  | NOT_STARTED |  |  |  |
+| app__255__88m-tiers-logbook | Email Login.dc.html | 88M · Tiers — Logbook |  |  |  | NOT_STARTED |  |  |  |
+| app__256__88n-tiers-pulse | Email Login.dc.html | 88N · Tiers — Pulse |  |  |  | NOT_STARTED |  |  |  |
+| app__257__88o-tiers-archive | Email Login.dc.html | 88O · Tiers — Archive |  |  |  | NOT_STARTED |  |  |  |
+| app__258__88p-tiers-lessons | Email Login.dc.html | 88P · Tiers — Lessons |  |  |  | NOT_STARTED |  |  |  |
+| app__259__88q-tiers-one-offs | Email Login.dc.html | 88Q · Tiers — One-offs |  |  |  | NOT_STARTED |  |  |  |
+| app__260__89a-vici-detail-paper | Email Login.dc.html | 89A · Vici Detail — Paper |  |  |  | NOT_STARTED |  |  |  |
+| app__261__89c-vici-detail-bronze | Email Login.dc.html | 89C · Vici Detail — Bronze |  |  |  | NOT_STARTED |  |  |  |
+| app__262__89d-vici-detail-silver | Email Login.dc.html | 89D · Vici Detail — Silver |  |  |  | NOT_STARTED |  |  |  |
+| app__263__89e-vici-detail-gold | Email Login.dc.html | 89E · Vici Detail — Gold |  |  |  | NOT_STARTED |  |  |  |
+| app__264__89f-vici-detail-platinum | Email Login.dc.html | 89F · Vici Detail — Platinum |  |  |  | NOT_STARTED |  |  |  |
+| app__265__90-log-chooser | Email Login.dc.html | 90 · Log — Chooser |  |  |  | NOT_STARTED |  |  |  |
+| app__266__91-log-urges | Email Login.dc.html | 91 · Log — Urges |  |  |  | NOT_STARTED |  |  |  |
+| app__267__91-2-log-check-ins | Email Login.dc.html | 91-2 · Log — Check-ins |  |  |  | NOT_STARTED |  |  |  |
+| app__268__91-3-log-reports | Email Login.dc.html | 91-3 · Log — Reports |  |  |  | NOT_STARTED |  |  |  |
+| app__269__91a-urge-overview | Email Login.dc.html | 91A · Urge Overview |  |  |  | NOT_STARTED |  |  |  |
+| app__270__91b-urge-overview-scrolled | Email Login.dc.html | 91B · Urge Overview — Scrolled |  |  |  | NOT_STARTED |  |  |  |
+| app__271__91c0-report-ready | Email Login.dc.html | 91C0 · Report Ready |  |  |  | NOT_STARTED |  |  |  |
+| app__272__91c-weekly-report-days | Email Login.dc.html | 91C · Weekly Report — Days |  |  |  | NOT_STARTED |  |  |  |
+| app__273__91c2-weekly-report-urges | Email Login.dc.html | 91C2 · Weekly Report — Urges |  |  |  | NOT_STARTED |  |  |  |
+| app__274__91c3-weekly-report-what-helped | Email Login.dc.html | 91C3 · Weekly Report — What helped |  |  |  | NOT_STARTED |  |  |  |
+| app__275__91c4-weekly-report-journal | Email Login.dc.html | 91C4 · Weekly Report — Journal |  |  |  | NOT_STARTED |  |  |  |
+| app__276__91c5-weekly-report-next-week | Email Login.dc.html | 91C5 · Weekly Report — Next week |  |  |  | NOT_STARTED |  |  |  |
+| app__277__91c6-weekly-report-week-with-a-slip | Email Login.dc.html | 91C6 · Weekly Report — Week with a slip |  |  |  | NOT_STARTED |  |  |  |
+| app__278__91d-urge-log-intensity | Email Login.dc.html | 91D · Urge Log — Intensity |  |  |  | NOT_STARTED |  |  |  |
+| app__279__91e-urge-log-triggers | Email Login.dc.html | 91E · Urge Log — Triggers |  |  |  | NOT_STARTED |  |  |  |
+| app__280__91f-urge-log-outcome | Email Login.dc.html | 91F · Urge Log — Outcome |  |  |  | NOT_STARTED |  |  |  |
+| app__281__91g-urge-log-when | Email Login.dc.html | 91G · Urge Log — When |  |  |  | NOT_STARTED |  |  |  |
+| app__282__91h-urge-log-logged | Email Login.dc.html | 91H · Urge Log — Logged |  |  |  | NOT_STARTED |  |  |  |
+| app__283__92-settings | Email Login.dc.html | 92 · Settings |  |  |  | NOT_STARTED |  |  |  |
+| app__284__93-edit-profile | Email Login.dc.html | 93 · Edit Profile |  |  |  | NOT_STARTED |  |  |  |
+| app__285__93b-profile-photo-sheet | Email Login.dc.html | 93B · Profile photo sheet |  |  |  | NOT_STARTED |  |  |  |
+| app__286__93c-edit-name-sheet | Email Login.dc.html | 93C · Edit name sheet |  |  |  | NOT_STARTED |  |  |  |
+| app__287__93d-weekly-report | Email Login.dc.html | 93D · Weekly report |  |  |  | NOT_STARTED |  |  |  |
+| app__288__92b-night-check-in-time | Email Login.dc.html | 92B · Night check-in time |  |  |  | NOT_STARTED |  |  |  |
+| app__289__92c-your-vow | Email Login.dc.html | 92C · Your vow |  |  |  | NOT_STARTED |  |  |  |
+| app__290__92d-sign-out-sheet | Email Login.dc.html | 92D · Sign out sheet |  |  |  | NOT_STARTED |  |  |  |
+| app__291__94-data-privacy | Email Login.dc.html | 94 · Data & Privacy |  |  |  | NOT_STARTED |  |  |  |
+| app__292__95-app-lock | Email Login.dc.html | 95 · App Lock |  |  |  | NOT_STARTED |  |  |  |
+| app__293__97-sos-urge-or-relapse | Email Login.dc.html | 97 · SOS — Urge or Relapse | src/app/sos.tsx | specs/vici-ui-2/sos-chooser.md | chooser&state=main | DIFF_CLEAN | 0.003 % | 2026-10-21 | noise only (D16), reviewed |
+| app__294__relapse-working-flow | Email Login.dc.html | Relapse — Working flow | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__295__01-when-nothing-selected | Email Login.dc.html | 01 · When — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__296__01b-when-just-now | Email Login.dc.html | 01B · When — Just now | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__297__01c-when-choose-a-date-and-time | Email Login.dc.html | 01C · When — Choose a date and time | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__298__01c2-when-date-only | Email Login.dc.html | 01C2 · When — Date only | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__299__01d-when-time-in-the-future | Email Login.dc.html | 01D · When — Time in the future | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__300__01e-when-date-chosen | Email Login.dc.html | 01E · When — Date chosen | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__301__02-what-led-up-nothing-selected | Email Login.dc.html | 02 · What led up — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__302__02b-what-led-up-selected | Email Login.dc.html | 02B · What led up — Selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__303__02c-what-led-up-not-sure | Email Login.dc.html | 02C · What led up — Not sure | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__304__02d-what-led-up-saving | Email Login.dc.html | 02D · What led up — Saving | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__305__02e-what-led-up-couldnt-save | Email Login.dc.html | 02E · What led up — Couldn’t save | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__306__02f-what-led-up-editing-a-saved-entry | Email Login.dc.html | 02F · What led up — Editing a saved entry | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__307__03-watching-again-nothing-selected | Email Login.dc.html | 03 · Watching again — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__308__03b-watching-again-not-sure | Email Login.dc.html | 03B · Watching again — Not sure | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__309__04-encouragement-wants-to-watch-again | Email Login.dc.html | 04 · Encouragement — Wants to watch again | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__310__04b-encouragement-earlier-day | Email Login.dc.html | 04B · Encouragement — Earlier day | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__311__04c-encouragement-with-quote | Email Login.dc.html | 04C · Encouragement — With quote | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__312__05-back-in-the-app | Email Login.dc.html | 05 · Back in the app | src/app/relapses.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__313__01f-when-small-phone-667px-tall | Email Login.dc.html | 01F · When — Small phone (667px tall) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| app__314__02g-what-led-up-larger-text | Email Login.dc.html | 02G · What led up — Larger text | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| app__315__04d-encouragement-larger-text | Email Login.dc.html | 04D · Encouragement — Larger text | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| app__316__04e-encouragement-small-phone-667px-tall | Email Login.dc.html | 04E · Encouragement — Small phone (667px tall) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| app__317__e001-general | Email Login.dc.html | E001 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__318__e002-time-remaining | Email Login.dc.html | E002 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__319__e003-general | Email Login.dc.html | E003 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__320__e004-general | Email Login.dc.html | E004 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__321__e005-general | Email Login.dc.html | E005 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__322__e006-general | Email Login.dc.html | E006 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__323__e007-general | Email Login.dc.html | E007 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__324__e008-current-urge | Email Login.dc.html | E008 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__325__e009-general | Email Login.dc.html | E009 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__326__e010-general | Email Login.dc.html | E010 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__327__e011-general | Email Login.dc.html | E011 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__328__e012-general | Email Login.dc.html | E012 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__329__e013-time-remaining | Email Login.dc.html | E013 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__330__e014-time-remaining | Email Login.dc.html | E014 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__331__e015-time-remaining | Email Login.dc.html | E015 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__332__e016-time-remaining | Email Login.dc.html | E016 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__333__e017-time-remaining | Email Login.dc.html | E017 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__334__e018-time-remaining | Email Login.dc.html | E018 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__335__e019-prior-practice | Email Login.dc.html | E019 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__336__e020-prior-practice | Email Login.dc.html | E020 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__337__e021-prior-practice | Email Login.dc.html | E021 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__338__e022-prior-practice | Email Login.dc.html | E022 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__339__e023-prior-practice | Email Login.dc.html | E023 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__340__e024-prior-practice | Email Login.dc.html | E024 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__341__e025-another-attempt | Email Login.dc.html | E025 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__342__e026-another-attempt | Email Login.dc.html | E026 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__343__e027-another-attempt | Email Login.dc.html | E027 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__344__e028-another-attempt | Email Login.dc.html | E028 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__345__e029-another-attempt | Email Login.dc.html | E029 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__346__e030-another-attempt | Email Login.dc.html | E030 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__347__e031-current-urge | Email Login.dc.html | E031 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__348__e032-current-urge | Email Login.dc.html | E032 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__349__e033-current-urge | Email Login.dc.html | E033 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__350__e034-current-urge | Email Login.dc.html | E034 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__351__e035-current-urge | Email Login.dc.html | E035 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__352__e036-current-urge | Email Login.dc.html | E036 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__353__e037-sleep | Email Login.dc.html | E037 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__354__e038-sleep | Email Login.dc.html | E038 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__355__e039-sleep | Email Login.dc.html | E039 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__356__e040-sleep | Email Login.dc.html | E040 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__357__e041-sleep | Email Login.dc.html | E041 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__358__e042-sleep | Email Login.dc.html | E042 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__359__e043-past-event | Email Login.dc.html | E043 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__360__e044-past-event | Email Login.dc.html | E044 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__361__e045-past-event | Email Login.dc.html | E045 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__362__e046-past-event | Email Login.dc.html | E046 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__363__e047-past-event | Email Login.dc.html | E047 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__364__e048-past-event | Email Login.dc.html | E048 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__365__q01-octavia-e-butler-with-e025 | Email Login.dc.html | Q01 · Octavia E. Butler (with E025) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__366__q02-emily-dickinson-with-e002 | Email Login.dc.html | Q02 · Emily Dickinson (with E002) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__367__q03-wis-awa-szymborska-with-e009 | Email Login.dc.html | Q03 · Wisława Szymborska (with E009) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__368__q04-jane-kenyon-with-e041 | Email Login.dc.html | Q04 · Jane Kenyon (with E041) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | NOT_STARTED |  |  |  |
+| app__369__90b-vici-post-arrival | Email Login.dc.html | 90B · VICI Post — Arrival |  |  |  | NOT_STARTED |  |  |  |
+| app__370__39-the-letter-read | Email Login.dc.html | 39 · The Letter — Read |  |  |  | NOT_STARTED |  |  |  |
+| app__371__39b-post-medallion-letter | Email Login.dc.html | 39B · Post — Medallion Letter |  |  |  | NOT_STARTED |  |  |  |
+| app__372__39c-post-the-yearly-drop | Email Login.dc.html | 39C · Post — The Yearly Drop |  |  |  | NOT_STARTED |  |  |  |
+| app__373__39d-you-received-a-drop | Email Login.dc.html | 39D · You Received a Drop |  |  |  | NOT_STARTED |  |  |  |
+| app__374__84-lesson-frame-1-of-14 | Email Login.dc.html | 84 · Lesson — Frame 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__375__84-lesson-frame-2-of-14 | Email Login.dc.html | 84 · Lesson — Frame 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__376__84-lesson-frame-3-of-14 | Email Login.dc.html | 84 · Lesson — Frame 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__377__84-lesson-frame-4-of-14 | Email Login.dc.html | 84 · Lesson — Frame 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__378__84-lesson-frame-5-of-14 | Email Login.dc.html | 84 · Lesson — Frame 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__379__84-lesson-frame-6-of-14 | Email Login.dc.html | 84 · Lesson — Frame 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__380__84-lesson-frame-7-of-14 | Email Login.dc.html | 84 · Lesson — Frame 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__381__84-lesson-frame-8-of-14 | Email Login.dc.html | 84 · Lesson — Frame 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__382__84-lesson-frame-9-of-14 | Email Login.dc.html | 84 · Lesson — Frame 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__383__84-lesson-frame-10-of-14 | Email Login.dc.html | 84 · Lesson — Frame 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__384__84-lesson-frame-11-of-14 | Email Login.dc.html | 84 · Lesson — Frame 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__385__84-lesson-frame-12-of-14 | Email Login.dc.html | 84 · Lesson — Frame 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__386__84-lesson-frame-13-of-14 | Email Login.dc.html | 84 · Lesson — Frame 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__387__84-lesson-frame-14-of-14 | Email Login.dc.html | 84 · Lesson — Frame 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| illus__000__phone-parked-for-the-night | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
+| illus__001__phone-parked-for-the-nightnightphone-9-usesno-window-a-small | Lesson Illustrations v4.dc.html | Phone parked for the nightnightPhone · 9 usesNo window: a small moon and stars sit well clear of the phone and glassGlass drawn at true size next to the phoneHome button dropped; the phone stands in a dockBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__002__bed-at-nightbed-15-usesno-window-a-small-moon-and-stars-sit- | Lesson Illustrations v4.dc.html | Bed at nightbed · 15 usesNo window: a small moon and stars sit above the bedHeavy ellipse under the bed replaced by the shared floor linePillow separated from the headboard by a clean gapBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__003__phone-on-chargecharger-12-usescable-runs-to-a-plug-in-the-wa | Lesson Illustrations v4.dc.html | Phone on chargecharger · 12 usesCable runs to a plug in the wall, so it reads as chargingFloating moon and stars removedDock and phone separated instead of fusedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__004__moon-over-a-lone-housenightmoon-7-usespure-fff-replaced-with | Lesson Illustrations v4.dc.html | Moon over a lone housenightMoon · 7 usesPure #FFF replaced with the palette whiteA true crescent: no black disc painted over the skyHouse simplified, with no windowBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__005__phone-face-downphonetable-11-usesredrawn-from-above-a-face-d | Lesson Illustrations v4.dc.html | Phone face-downphoneTable · 11 usesRedrawn from above: a face-down phone with its camera showing, and a mugThe old side view read as a sofa or a speakerBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__006__desk-lamplamp-6-useslight-cone-narrowed-so-it-lands-on-the-t | Lesson Illustrations v4.dc.html | Desk lamplamp · 6 usesLight cone narrowed so it lands on the tableMug turned outward and left in shadowBook moved fully out of the beamBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__007__closed-door | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
+| illus__008__closed-doordoor-9-usesframe-drawn-as-its-own-casingchart-pic | Lesson Illustrations v4.dc.html | Closed doordoor · 9 usesFrame drawn as its own casingChart picture removed from the wallMat and plant re-spacedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__009__open-dooropendoor-10-usesdoor-leaf-now-visible-swung-open-on | Lesson Illustrations v4.dc.html | Open dooropenDoor · 10 usesDoor leaf now visible, swung open on its hingeDoorway full of light, falling across the floorStray wall picture removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__010__showershower-5-useswater-drawn-as-even-falling-streamsfloati | Lesson Illustrations v4.dc.html | Showershower · 5 usesWater drawn as even falling streamsFloating drain ring removedTile grid kept to the wallBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__011__stairsstairs-5-usesupload-style-arrow-removedfirst-step-lit- | Lesson Illustrations v4.dc.html | Stairsstairs · 5 usesUpload-style arrow removedFirst step lit and the rest in shadow, because the lesson is about the first stepHandrail runs parallel to the stairsBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__012__sunrise | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
+| illus__013__sunrisesunrise-25-usessun-rises-behind-the-hills-instead-of- | Lesson Illustrations v4.dc.html | Sunrisesunrise · 25 usesSun rises behind the hills instead of sitting in front of themFive evenly spaced raysStripes removed from the sunBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__014__park-benchbench-16-usesfar-hills-dropped-a-tone-so-the-tree- | Lesson Illustrations v4.dc.html | Park benchbench · 16 usesFar hills dropped a tone so the tree no longer merges into themGrey glow disc behind the lamp removedBench centred; tree given roomBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__015__signpostsignpost-18-usessign-corners-softened-to-match-the-s | Lesson Illustrations v4.dc.html | Signpostsignpost · 18 usesSign corners softened to match the setPebbles that read as bumps removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__016__sneakersneaker-11-usesshoe-redrawn-as-a-clean-side-profilehe | Lesson Illustrations v4.dc.html | Sneakersneaker · 11 usesShoe redrawn as a clean side profileHeel lifted mid-step so it reads as movingBusy tread dashes replaced by one midsole lineBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__017__flagflag-14-usesstray-squiggle-removed-from-the-flagbefore | Lesson Illustrations v4.dc.html | Flagflag · 14 usesStray squiggle removed from the flagBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__018__flag-at-half-masthalfmast-8-usesmatches-the-flag-exactly-low | Lesson Illustrations v4.dc.html | Flag at half-masthalfMast · 8 usesMatches the flag exactly, lowered to half heightBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__019__mountainmountain-8-usespath-now-reaches-the-summitsummit-fla | Lesson Illustrations v4.dc.html | Mountainmountain · 8 usesPath now reaches the summitSummit flag filled like the other flagsMoon kept clear of the peakBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__020__lighthouselighthouse-17-usesmoon-moved-out-of-the-beamwaves- | Lesson Illustrations v4.dc.html | Lighthouselighthouse · 17 usesMoon moved out of the beamWaves drawn as waves rather than dashesStars cleared out of the beamsBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__021__campfirecampfire-4-usesstool-replaced-by-two-log-seats-one-e | Lesson Illustrations v4.dc.html | Campfirecampfire · 4 usesStool replaced by two log seats, one each sideFlame separated from the logsLeft side declutteredBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__022__balloonballoon-2-useshighlight-drawn-as-a-glint-not-a-holest | Lesson Illustrations v4.dc.html | Balloonballoon · 2 usesHighlight drawn as a glint, not a holeStars removed from a daytime skyBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__023__open-notebook | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
+| illus__024__open-notebooknotebook-8-usespencil-that-disappeared-white-on | Lesson Illustrations v4.dc.html | Open notebooknotebook · 8 usesPencil that disappeared white-on-white removedPages curve into the spine, with the cover showing at the edgesRibbon lies across the page instead of sticking upBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__025__stack-of-booksbooks-4-usesribbon-hangs-from-the-pages-rather | Lesson Illustrations v4.dc.html | Stack of booksbooks · 4 usesRibbon hangs from the pages rather than standing up off the coverBooks separated by thin cutsSide props removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__026__cakecake-4-usesoverlapping-grey-glows-removedfrosting-edge-r | Lesson Illustrations v4.dc.html | Cakecake · 4 usesOverlapping grey glows removedFrosting edge replaces the dotsPlate separated from the cakeBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__027__kettlekettle-10-usesunexplained-grey-slab-under-the-table-re | Lesson Illustrations v4.dc.html | Kettlekettle · 10 usesUnexplained grey slab under the table removedBase separated from the tableSteam rises from the spout as two short, offset wispsBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__028__plantplant-10-usespot-now-tapers-toward-its-baserim-defined- | Lesson Illustrations v4.dc.html | Plantplant · 10 usesPot now tapers toward its baseRim defined by a cutLeaf veins kept inside the leavesBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__029__hourglasshourglass-11-usesbase-plate-separated-from-the-tabl | Lesson Illustrations v4.dc.html | Hourglasshourglass · 11 usesBase plate separated from the tableBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__030__balance-scalescale-13-usespans-hang-from-v-strings-like-a-re | Lesson Illustrations v4.dc.html | Balance scalescale · 13 usesPans hang from V-strings like a real balanceWeight and leaf no longer fuse with the pansBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__031__dominoesdominoes-6-usesdominoes-grow-in-size-a-small-thing-s | Lesson Illustrations v4.dc.html | Dominoesdominoes · 6 usesDominoes grow in size: a small thing setting off bigger onesUnexplained grey blocks removedNothing overhangs the tableBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__032__first-domino-tippingdominoes2-4-usesfirst-domino-leans-at-th | Lesson Illustrations v4.dc.html | First domino tippingdominoes2 · 4 usesFirst domino leans at the exact angle where it meets the nextArrow shows which way it fallsBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__033__envelopeenvelope-10-usesno-longer-standing-upright-on-a-tabl | Lesson Illustrations v4.dc.html | Envelopeenvelope · 10 usesNo longer standing upright on a table; floats over a soft shadowBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__034__open-letterenvelopeopen-6-usesletter-is-light-paper-rather-t | Lesson Illustrations v4.dc.html | Open letterenvelopeOpen · 6 usesLetter is light paper rather than a dark slabFlap shows behind the letter, with no detached triangleFloats over a soft shadowBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__035__clipboardclipboard-2-usespencil-rests-on-the-table-instead-o | Lesson Illustrations v4.dc.html | Clipboardclipboard · 2 usesPencil rests on the table instead of passing through itStray cup removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__036__feed-lockedfeedoff-8-useslock-sits-on-the-phone-so-it-reads- | Lesson Illustrations v4.dc.html | Feed lockedfeedOff · 8 usesLock sits on the phone, so it reads as lockedMoon, stars and cup removedFeed cards faded outBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__037__lit-matchmatch-3-usesa-symbol-rather-than-a-match-balancing- | Lesson Illustrations v4.dc.html | Lit matchmatch · 3 usesA symbol, rather than a match balancing on end on a tableGrey halo replaced by a few sparksBox and burnt match removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__038__pencil | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
+| illus__039__pencilpencil-4-usespaper-angled-slightly-ruled-lines-aligned | Lesson Illustrations v4.dc.html | Pencilpencil · 4 usesPaper angled slightly; ruled lines alignedGraphite tip reads darkBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__040__fountain-penfountainpen-5-usesink-bottle-drawn-in-a-differen | Lesson Illustrations v4.dc.html | Fountain penfountainPen · 5 usesInk bottle drawn in a different perspective removedNib slit and breather hole cleaned upBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__041__wall-calendarcalendar-19-usesrandom-sticky-notes-removedpast | Lesson Illustrations v4.dc.html | Wall calendarcalendar · 19 usesRandom sticky notes removedPast days filled, today ringed, future days dimMonth label added to the headerBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__042__compass-and-mapcompass-16-usesmap-trimmed-so-the-compass-lea | Lesson Illustrations v4.dc.html | Compass and mapcompass · 16 usesMap trimmed so the compass leadsRoute passes under the compass and comes out the other sideSouth needle lifted to mid-greyBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__043__id-badgeidcard-3-usestangled-lanyard-redrawn-as-one-clean-st | Lesson Illustrations v4.dc.html | ID badgeidCard · 3 usesTangled lanyard redrawn as one clean strapBarcode removedClip slot added to the badgeBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__044__stopwatchstopwatch-6-useselapsed-time-shown-as-a-dim-wedge-w | Lesson Illustrations v4.dc.html | Stopwatchstopwatch · 6 usesElapsed time shown as a dim wedge with a real handLighter shadowBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__045__thermometerthermometer-7-usesmercury-now-connects-to-the-bul | Lesson Illustrations v4.dc.html | Thermometerthermometer · 7 usesMercury now connects to the bulb (the old one had a gap)Grey backing panel and stray stars removedUp and down marks show rising and fallingBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__046__speech-bubblesbubbles-6-usessmaller-and-simpler-two-bubbles- | Lesson Illustrations v4.dc.html | Speech bubblesbubbles · 6 usesSmaller and simpler: two bubbles, no typing indicator, so they never crowd the textTails and corner radii made consistentBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__047__brainbrain-9-usessmooth-two-hemisphere-outline-instead-of-ov | Lesson Illustrations v4.dc.html | Brainbrain · 9 usesSmooth two-hemisphere outline instead of overlapping circlesEvery trace now connects to the brainStray stem removedBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__048__batterybattery-6-usesstars-removedsocket-and-cable-removed-j | Lesson Illustrations v4.dc.html | Batterybattery · 6 usesStars removedSocket and cable removed: just the battery, centredBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__049__bellbell-3-useshighlight-added-to-the-domeclapper-separated- | Lesson Illustrations v4.dc.html | Bellbell · 3 usesHighlight added to the domeClapper separated from the rimBefore |  |  |  | NOT_STARTED |  |  |  |
+| illus__050__browser-tabstab-10-usesthe-x-sits-on-a-browser-tab-with-the- | Lesson Illustrations v4.dc.html | Browser tabstab · 10 usesThe X sits on a browser tab, with the cursor closing itA row of tabs shows the pull of the next oneBefore |  |  |  | NOT_STARTED |  |  |  |
+| relapse__000__relapse-working-flow | Vici Relapse.dc.html | Relapse — Working flow | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=live | DIFF_CLEAN | 0.000 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__001__01-when-nothing-selected | Vici Relapse.dc.html | 01 · When — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01 | DIFF_CLEAN | 0.000 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__002__01b-when-just-now | Vici Relapse.dc.html | 01B · When — Just now | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01b | DIFF_CLEAN | 0.000 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__003__01c-when-choose-a-date-and-time | Vici Relapse.dc.html | 01C · When — Choose a date and time | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01c | DIFF_CLEAN | 0.018 % | 2026-10-22 | noise only (D16), reviewed |
+| relapse__004__01c2-when-date-only | Vici Relapse.dc.html | 01C2 · When — Date only | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01c2 | DIFF_CLEAN | 0.004 % | 2026-10-22 | noise only (D16), reviewed |
+| relapse__005__01d-when-time-in-the-future | Vici Relapse.dc.html | 01D · When — Time in the future | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01d | DIFF_CLEAN | 0.028 % | 2026-10-22 | noise only (D16), reviewed |
+| relapse__006__01e-when-date-chosen | Vici Relapse.dc.html | 01E · When — Date chosen | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01e | DIFF_CLEAN | 0.003 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__007__02-what-led-up-nothing-selected | Vici Relapse.dc.html | 02 · What led up — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02 | DIFF_CLEAN | 0.082 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__008__02b-what-led-up-selected | Vici Relapse.dc.html | 02B · What led up — Selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02b | DIFF_CLEAN | 0.067 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__009__02c-what-led-up-not-sure | Vici Relapse.dc.html | 02C · What led up — Not sure | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02c | DIFF_CLEAN | 0.083 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__010__02d-what-led-up-saving | Vici Relapse.dc.html | 02D · What led up — Saving | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02d | DIFF_CLEAN | 0.184 % | 2026-10-21 | remaining diff: the spinner, caught mid-turn (motion; 0.8 s linear checked in code) |
+| relapse__011__02e-what-led-up-couldnt-save | Vici Relapse.dc.html | 02E · What led up — Couldn’t save | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02e | DIFF_CLEAN | 0.137 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__012__02f-what-led-up-editing-a-saved-entry | Vici Relapse.dc.html | 02F · What led up — Editing a saved entry | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r02f | DIFF_CLEAN | 0.067 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__013__03-watching-again-nothing-selected | Vici Relapse.dc.html | 03 · Watching again — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r03 | DIFF_CLEAN | 0.007 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__014__03b-watching-again-not-sure | Vici Relapse.dc.html | 03B · Watching again — Not sure | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r03b | DIFF_CLEAN | 0.007 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__015__04-encouragement-wants-to-watch-again | Vici Relapse.dc.html | 04 · Encouragement — Wants to watch again | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r04 | DIFF_CLEAN | 0.048 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__016__04b-encouragement-earlier-day | Vici Relapse.dc.html | 04B · Encouragement — Earlier day | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r04b | DIFF_CLEAN | 0.052 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__017__04c-encouragement-with-quote | Vici Relapse.dc.html | 04C · Encouragement — With quote | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r04c | DIFF_CLEAN | 0.130 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__018__05-back-in-the-app | Vici Relapse.dc.html | 05 · Back in the app | src/app/relapses.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r05 | DIFF_CLEAN | 0.038 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__019__01f-when-small-phone-667px-tall | Vici Relapse.dc.html | 01F · When — Small phone (667px tall) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | IMPLEMENTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| relapse__020__02g-what-led-up-larger-text | Vici Relapse.dc.html | 02G · What led up — Larger text | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | IMPLEMENTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| relapse__021__04d-encouragement-larger-text | Vici Relapse.dc.html | 04D · Encouragement — Larger text | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | IMPLEMENTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| relapse__022__04e-encouragement-small-phone-667px-tall | Vici Relapse.dc.html | 04E · Encouragement — Small phone (667px tall) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md |  | IMPLEMENTED |  |  | verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22) |
+| relapse__023__e001-general | Vici Relapse.dc.html | E001 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE001 | DIFF_CLEAN | 0.112 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__024__e002-time-remaining | Vici Relapse.dc.html | E002 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE002 | DIFF_CLEAN | 0.102 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__025__e003-general | Vici Relapse.dc.html | E003 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE003 | DIFF_CLEAN | 0.060 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__026__e004-general | Vici Relapse.dc.html | E004 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE004 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__027__e005-general | Vici Relapse.dc.html | E005 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE005 | DIFF_CLEAN | 0.114 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__028__e006-general | Vici Relapse.dc.html | E006 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE006 | DIFF_CLEAN | 0.046 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__029__e007-general | Vici Relapse.dc.html | E007 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE007 | DIFF_CLEAN | 0.046 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__030__e008-current-urge | Vici Relapse.dc.html | E008 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE008 | DIFF_CLEAN | 0.051 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__031__e009-general | Vici Relapse.dc.html | E009 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE009 | DIFF_CLEAN | 0.039 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__032__e010-general | Vici Relapse.dc.html | E010 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE010 | DIFF_CLEAN | 0.062 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__033__e011-general | Vici Relapse.dc.html | E011 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE011 | DIFF_CLEAN | 0.111 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__034__e012-general | Vici Relapse.dc.html | E012 · General | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE012 | DIFF_CLEAN | 0.119 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__035__e013-time-remaining | Vici Relapse.dc.html | E013 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE013 | DIFF_CLEAN | 0.048 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__036__e014-time-remaining | Vici Relapse.dc.html | E014 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE014 | DIFF_CLEAN | 0.118 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__037__e015-time-remaining | Vici Relapse.dc.html | E015 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE015 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__038__e016-time-remaining | Vici Relapse.dc.html | E016 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE016 | DIFF_CLEAN | 0.063 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__039__e017-time-remaining | Vici Relapse.dc.html | E017 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE017 | DIFF_CLEAN | 0.126 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__040__e018-time-remaining | Vici Relapse.dc.html | E018 · Time remaining | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE018 | DIFF_CLEAN | 0.055 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__041__e019-prior-practice | Vici Relapse.dc.html | E019 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE019 | DIFF_CLEAN | 0.055 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__042__e020-prior-practice | Vici Relapse.dc.html | E020 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE020 | DIFF_CLEAN | 0.063 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__043__e021-prior-practice | Vici Relapse.dc.html | E021 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE021 | DIFF_CLEAN | 0.135 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__044__e022-prior-practice | Vici Relapse.dc.html | E022 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE022 | DIFF_CLEAN | 0.129 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__045__e023-prior-practice | Vici Relapse.dc.html | E023 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE023 | DIFF_CLEAN | 0.065 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__046__e024-prior-practice | Vici Relapse.dc.html | E024 · Prior practice | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE024 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__047__e025-another-attempt | Vici Relapse.dc.html | E025 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE025 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__048__e026-another-attempt | Vici Relapse.dc.html | E026 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE026 | DIFF_CLEAN | 0.073 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__049__e027-another-attempt | Vici Relapse.dc.html | E027 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE027 | DIFF_CLEAN | 0.042 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__050__e028-another-attempt | Vici Relapse.dc.html | E028 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE028 | DIFF_CLEAN | 0.064 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__051__e029-another-attempt | Vici Relapse.dc.html | E029 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE029 | DIFF_CLEAN | 0.044 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__052__e030-another-attempt | Vici Relapse.dc.html | E030 · Another attempt | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE030 | DIFF_CLEAN | 0.054 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__053__e031-current-urge | Vici Relapse.dc.html | E031 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE031 | DIFF_CLEAN | 0.128 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__054__e032-current-urge | Vici Relapse.dc.html | E032 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE032 | DIFF_CLEAN | 0.048 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__055__e033-current-urge | Vici Relapse.dc.html | E033 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE033 | DIFF_CLEAN | 0.132 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__056__e034-current-urge | Vici Relapse.dc.html | E034 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE034 | DIFF_CLEAN | 0.054 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__057__e035-current-urge | Vici Relapse.dc.html | E035 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE035 | DIFF_CLEAN | 0.055 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__058__e036-current-urge | Vici Relapse.dc.html | E036 · Current urge | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE036 | DIFF_CLEAN | 0.058 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__059__e037-sleep | Vici Relapse.dc.html | E037 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE037 | DIFF_CLEAN | 0.050 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__060__e038-sleep | Vici Relapse.dc.html | E038 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE038 | DIFF_CLEAN | 0.050 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__061__e039-sleep | Vici Relapse.dc.html | E039 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE039 | DIFF_CLEAN | 0.047 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__062__e040-sleep | Vici Relapse.dc.html | E040 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE040 | DIFF_CLEAN | 0.061 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__063__e041-sleep | Vici Relapse.dc.html | E041 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE041 | DIFF_CLEAN | 0.030 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__064__e042-sleep | Vici Relapse.dc.html | E042 · Sleep | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE042 | DIFF_CLEAN | 0.073 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__065__e043-past-event | Vici Relapse.dc.html | E043 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE043 | DIFF_CLEAN | 0.053 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__066__e044-past-event | Vici Relapse.dc.html | E044 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE044 | DIFF_CLEAN | 0.073 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__067__e045-past-event | Vici Relapse.dc.html | E045 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE045 | DIFF_CLEAN | 0.058 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__068__e046-past-event | Vici Relapse.dc.html | E046 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE046 | DIFF_CLEAN | 0.037 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__069__e047-past-event | Vici Relapse.dc.html | E047 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE047 | DIFF_CLEAN | 0.061 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__070__e048-past-event | Vici Relapse.dc.html | E048 · Past event | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=mE048 | DIFF_CLEAN | 0.062 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__071__q01-octavia-e-butler-with-e025 | Vici Relapse.dc.html | Q01 · Octavia E. Butler (with E025) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ01 | DIFF_CLEAN | 0.121 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__072__q02-emily-dickinson-with-e002 | Vici Relapse.dc.html | Q02 · Emily Dickinson (with E002) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ02 | DIFF_CLEAN | 0.046 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__073__q03-wis-awa-szymborska-with-e009 | Vici Relapse.dc.html | Q03 · Wisława Szymborska (with E009) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ03 | DIFF_CLEAN | 0.128 % | 2026-10-21 | noise only (D16), reviewed |
+| relapse__074__q04-jane-kenyon-with-e041 | Vici Relapse.dc.html | Q04 · Jane Kenyon (with E041) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ04 | DIFF_CLEAN | 0.049 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__000__sos-working-flow | Vici SOS.dc.html | SOS — Working flow | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=live | DIFF_CLEAN | 0.024 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__001__01-sos-rate-the-urge | Vici SOS.dc.html | 01 · SOS — Rate the urge | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s01 | DIFF_CLEAN | 0.024 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__002__02-sos-where-are-you | Vici SOS.dc.html | 02 · SOS — Where are you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s02 | DIFF_CLEAN | 0.000 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__003__02b-sos-where-are-you-in-bed | Vici SOS.dc.html | 02B · SOS — Where are you · In bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s02b | DIFF_CLEAN | 0.011 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__004__03-sos-whats-feeding-it | Vici SOS.dc.html | 03 · SOS — What’s feeding it | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s03 | DIFF_CLEAN | 0.064 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__005__03b-sos-what-youre-putting-off | Vici SOS.dc.html | 03B · SOS — What you’re putting off | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s03b | DIFF_CLEAN | 0.029 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__006__04-sos-what-youre-feeling | Vici SOS.dc.html | 04 · SOS — What you’re feeling | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s04 | DIFF_CLEAN | 0.059 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__007__05-sos-one-task | Vici SOS.dc.html | 05 · SOS — One task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s05 | DIFF_CLEAN | 0.156 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__008__05b-sos-one-task-reading | Vici SOS.dc.html | 05B · SOS — One task · Reading | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s05b | DIFF_CLEAN | 0.121 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__009__05d-sos-one-task-at-work | Vici SOS.dc.html | 05D · SOS — One task · At work | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s05d | DIFF_CLEAN | 0.141 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__010__06-urge-hub-main | Vici SOS.dc.html | 06 · Urge Hub — Main | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s06 | DIFF_CLEAN | 0.136 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__011__06b-urge-hub-main-late-night | Vici SOS.dc.html | 06B · Urge Hub — Main · Late night | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s06b | DIFF_CLEAN | 0.160 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__012__06c-urge-hub-breathe | Vici SOS.dc.html | 06C · Urge Hub — Breathe | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s06d | DIFF_CLEAN | 0.099 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__013__06d-urge-hub-your-pledge | Vici SOS.dc.html | 06D · Urge Hub — Your pledge | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s06e | DIFF_CLEAN | 0.094 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__014__06e-urge-hub-what-helped-before | Vici SOS.dc.html | 06E · Urge Hub — What helped before | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s06f | DIFF_CLEAN | 0.125 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__015__07-sos-check-afterward | Vici SOS.dc.html | 07 · SOS — Check afterward | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s07 | DIFF_CLEAN | 0.024 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__016__07b-sos-check-lower | Vici SOS.dc.html | 07B · SOS — Check · Lower | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s07b | DIFF_CLEAN | 0.041 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__017__07c-sos-check-about-the-same | Vici SOS.dc.html | 07C · SOS — Check · About the same | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s07c | DIFF_CLEAN | 0.044 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__018__07d-sos-another-task | Vici SOS.dc.html | 07D · SOS — Another task? | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s07d | DIFF_CLEAN | 0.033 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__019__08-sos-finished | Vici SOS.dc.html | 08 · SOS — Finished | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s08 | DIFF_CLEAN | 0.048 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__020__08b-sos-finished-its-gone | Vici SOS.dc.html | 08B · SOS — Finished · It’s gone | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s08b | DIFF_CLEAN | 0.011 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__021__a01-put-the-device-down-for-three-minutes | Vici SOS.dc.html | A01 · Put the device down for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A01 | DIFF_CLEAN | 0.141 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__022__a02-shut-the-laptop-and-leave-the-chair | Vici SOS.dc.html | A02 · Shut the laptop and leave the chair | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A02 | DIFF_CLEAN | 0.109 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__023__a03-walk-indoors-for-five-minutes | Vici SOS.dc.html | A03 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A03 | DIFF_CLEAN | 0.136 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__024__a04-wash-one-mug | Vici SOS.dc.html | A04 · Wash one mug | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A04 | DIFF_CLEAN | 0.102 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__025__a05-read-two-pages | Vici SOS.dc.html | A05 · Read two pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A05 | DIFF_CLEAN | 0.107 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__026__a06-sit-with-someone-at-home | Vici SOS.dc.html | A06 · Sit with someone at home | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A06 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__027__a07-stay-seated-and-look-around | Vici SOS.dc.html | A07 · Stay seated and look around | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A07 | DIFF_CLEAN | 0.135 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__028__a08-fold-three-clean-items | Vici SOS.dc.html | A08 · Fold three clean items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A08 | DIFF_CLEAN | 0.122 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__029__a09-put-the-phone-inside-your-bag-for-three-minutes | Vici SOS.dc.html | A09 · Put the phone inside your bag for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A09 | DIFF_CLEAN | 0.119 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__030__a10-put-three-things-ready-by-the-door | Vici SOS.dc.html | A10 · Put three things ready by the door | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=A10 | DIFF_CLEAN | 0.151 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__031__b01-move-the-phone-away-from-the-pillow | Vici SOS.dc.html | B01 · Move the phone away from the pillow | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B01 | DIFF_CLEAN | 0.156 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__032__b02-read-two-pages-in-dim-light | Vici SOS.dc.html | B02 · Read two pages in dim light | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B02 | DIFF_CLEAN | 0.133 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__033__b03-wash-your-face-and-return-to-bed | Vici SOS.dc.html | B03 · Wash your face and return to bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B03 | DIFF_CLEAN | 0.104 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__034__b04-take-a-few-sips-at-the-kitchen-table | Vici SOS.dc.html | B04 · Take a few sips at the kitchen table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B04 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__035__b05-straighten-the-pillow-and-cover | Vici SOS.dc.html | B05 · Straighten the pillow and cover | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B05 | DIFF_CLEAN | 0.132 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__036__b06-fold-three-items-quietly | Vici SOS.dc.html | B06 · Fold three items quietly | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B06 | DIFF_CLEAN | 0.120 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__037__b07-sit-in-a-different-chair-briefly | Vici SOS.dc.html | B07 · Sit in a different chair briefly | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B07 | DIFF_CLEAN | 0.115 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__038__b08-put-out-clothes-for-when-you-get-up | Vici SOS.dc.html | B08 · Put out clothes for when you get up | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B08 | DIFF_CLEAN | 0.121 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__039__b09-rest-for-one-minute-with-the-screen-down | Vici SOS.dc.html | B09 · Rest for one minute with the screen down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B09 | DIFF_CLEAN | 0.161 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__040__b10-close-your-eyes-for-three-minutes | Vici SOS.dc.html | B10 · Close your eyes for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=B10 | DIFF_CLEAN | 0.133 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__041__c01-get-dressed-before-opening-anything-else | Vici SOS.dc.html | C01 · Get dressed before opening anything else | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C01 | DIFF_CLEAN | 0.127 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__042__c02-brush-your-teeth-without-the-phone | Vici SOS.dc.html | C02 · Brush your teeth without the phone | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C02 | DIFF_CLEAN | 0.121 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__043__c03-eat-breakfast-at-the-table | Vici SOS.dc.html | C03 · Eat breakfast at the table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C03 | DIFF_CLEAN | 0.114 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__044__c04-make-the-bed | Vici SOS.dc.html | C04 · Make the bed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C04 | DIFF_CLEAN | 0.134 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__045__c05-pack-three-things-for-the-day | Vici SOS.dc.html | C05 · Pack three things for the day | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C05 | DIFF_CLEAN | 0.124 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__046__c06-walk-a-short-familiar-route | Vici SOS.dc.html | C06 · Walk a short familiar route | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C06 | DIFF_CLEAN | 0.124 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__047__c07-buy-one-breakfast-item | Vici SOS.dc.html | C07 · Buy one breakfast item | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C07 | DIFF_CLEAN | 0.180 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__048__c08-open-the-curtains-and-sit-for-a-minute | Vici SOS.dc.html | C08 · Open the curtains and sit for a minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C08 | DIFF_CLEAN | 0.105 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__049__c09-get-the-first-work-item-ready | Vici SOS.dc.html | C09 · Get the first work item ready | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C09 | DIFF_CLEAN | 0.137 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__050__c10-leave-the-bed-for-a-seated-activity | Vici SOS.dc.html | C10 · Leave the bed for a seated activity | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=C10 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__051__d01-buy-one-useful-item | Vici SOS.dc.html | D01 · Buy one useful item | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D01 | DIFF_CLEAN | 0.188 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__052__d02-walk-for-five-minutes-and-come-back | Vici SOS.dc.html | D02 · Walk for five minutes and come back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D02 | DIFF_CLEAN | 0.149 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__053__d03-clear-one-small-surface | Vici SOS.dc.html | D03 · Clear one small surface | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D03 | DIFF_CLEAN | 0.131 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__054__d04-wash-five-dishes | Vici SOS.dc.html | D04 · Wash five dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D04 | DIFF_CLEAN | 0.121 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__055__d05-do-one-page-of-a-paper-puzzle | Vici SOS.dc.html | D05 · Do one page of a paper puzzle | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D05 | DIFF_CLEAN | 0.101 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__056__d06-read-three-pages | Vici SOS.dc.html | D06 · Read three pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D06 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__057__d07-fold-five-clothes | Vici SOS.dc.html | D07 · Fold five clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D07 | DIFF_CLEAN | 0.097 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__058__d08-water-one-houseplant | Vici SOS.dc.html | D08 · Water one houseplant | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D08 | DIFF_CLEAN | 0.149 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__059__d09-make-one-small-snack | Vici SOS.dc.html | D09 · Make one small snack | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D09 | DIFF_CLEAN | 0.114 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__060__d10-draw-one-object-near-you | Vici SOS.dc.html | D10 · Draw one object near you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=D10 | DIFF_CLEAN | 0.118 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__061__e01-rinse-one-mug-and-fill-it-with-water | Vici SOS.dc.html | E01 · Rinse one mug and fill it with water | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E01 | DIFF_CLEAN | 0.116 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__062__e02-walk-indoors-for-three-minutes | Vici SOS.dc.html | E02 · Walk indoors for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E02 | DIFF_CLEAN | 0.100 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__063__e03-look-at-one-ordinary-object | Vici SOS.dc.html | E03 · Look at one ordinary object | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E03 | DIFF_CLEAN | 0.135 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__064__e04-wash-your-face | Vici SOS.dc.html | E04 · Wash your face | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E04 | DIFF_CLEAN | 0.132 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__065__e05-sit-beside-someone-for-five-minutes | Vici SOS.dc.html | E05 · Sit beside someone for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E05 | DIFF_CLEAN | 0.171 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__066__e06-spend-five-minutes-outside-on-a-known-route | Vici SOS.dc.html | E06 · Spend five minutes outside on a known route | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E06 | DIFF_CLEAN | 0.119 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__067__e07-sort-five-loose-items | Vici SOS.dc.html | E07 · Sort five loose items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E07 | DIFF_CLEAN | 0.113 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__068__e08-fold-three-towels-or-clothes | Vici SOS.dc.html | E08 · Fold three towels or clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E08 | DIFF_CLEAN | 0.122 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__069__e09-notice-the-worry-and-sit-for-two-minutes | Vici SOS.dc.html | E09 · Notice the worry and sit for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E09 | DIFF_CLEAN | 0.145 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__070__e10-open-the-first-task-and-do-one-small-part | Vici SOS.dc.html | E10 · Open the first task and do one small part | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=E10 | DIFF_CLEAN | 0.155 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__071__f01-start-a-short-conversation-with-someone-there | Vici SOS.dc.html | F01 · Start a short conversation with someone there | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F01 | DIFF_CLEAN | 0.158 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__072__f02-sit-with-an-awake-person-at-home | Vici SOS.dc.html | F02 · Sit with an awake person at home | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F02 | DIFF_CLEAN | 0.108 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__073__f03-take-a-five-minute-walk-with-someone-there | Vici SOS.dc.html | F03 · Take a five-minute walk with someone there | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F03 | DIFF_CLEAN | 0.181 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__074__f04-read-for-five-minutes-at-the-nearby-library | Vici SOS.dc.html | F04 · Read for five minutes at the nearby library | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F04 | DIFF_CLEAN | 0.175 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__075__f05-make-a-brief-errand-to-a-familiar-shop | Vici SOS.dc.html | F05 · Make a brief errand to a familiar shop | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F05 | DIFF_CLEAN | 0.165 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__076__f06-wash-and-dry-three-cups-together | Vici SOS.dc.html | F06 · Wash and dry three cups together | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F06 | DIFF_CLEAN | 0.125 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__077__f07-sit-on-a-familiar-public-bench-for-five-minutes | Vici SOS.dc.html | F07 · Sit on a familiar public bench for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F07 | DIFF_CLEAN | 0.186 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__078__f08-deal-a-hand-of-solitaire-with-real-cards | Vici SOS.dc.html | F08 · Deal a hand of solitaire with real cards | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F08 | DIFF_CLEAN | 0.134 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__079__f09-read-in-an-appropriate-shared-place | Vici SOS.dc.html | F09 · Read in an appropriate shared place | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F09 | DIFF_CLEAN | 0.140 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__080__f10-read-two-pages-in-another-room | Vici SOS.dc.html | F10 · Read two pages in another room | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=F10 | DIFF_CLEAN | 0.133 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__081__g01-leave-the-message-thread-closed | Vici SOS.dc.html | G01 · Leave the message thread closed | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G01 | DIFF_CLEAN | 0.141 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__082__g02-walk-indoors-for-five-minutes | Vici SOS.dc.html | G02 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G02 | DIFF_CLEAN | 0.140 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__083__g03-wash-three-dishes | Vici SOS.dc.html | G03 · Wash three dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G03 | DIFF_CLEAN | 0.113 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__084__g04-wash-your-hands-and-sit-down | Vici SOS.dc.html | G04 · Wash your hands and sit down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G04 | DIFF_CLEAN | 0.104 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__085__g05-take-a-short-walk-without-replying | Vici SOS.dc.html | G05 · Take a short walk without replying | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G05 | DIFF_CLEAN | 0.119 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__086__g06-ask-someone-there-to-talk-about-something-else | Vici SOS.dc.html | G06 · Ask someone there to talk about something else | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G06 | DIFF_CLEAN | 0.186 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__087__g07-put-five-things-back-in-place | Vici SOS.dc.html | G07 · Put five things back in place | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G07 | DIFF_CLEAN | 0.115 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__088__g08-read-two-pages-of-a-familiar-book | Vici SOS.dc.html | G08 · Read two pages of a familiar book | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G08 | DIFF_CLEAN | 0.118 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__089__g09-fold-three-towels | Vici SOS.dc.html | G09 · Fold three towels | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G09 | DIFF_CLEAN | 0.105 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__090__g10-name-what-happened-and-pause | Vici SOS.dc.html | G10 · Name what happened and pause | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=G10 | DIFF_CLEAN | 0.138 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__091__h01-open-the-document-and-work-for-two-minutes | Vici SOS.dc.html | H01 · Open the document and work for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H01 | DIFF_CLEAN | 0.134 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__092__h02-read-the-first-question | Vici SOS.dc.html | H02 · Read the first question | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H02 | DIFF_CLEAN | 0.142 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__093__h03-wash-the-first-three-dishes | Vici SOS.dc.html | H03 · Wash the first three dishes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H03 | DIFF_CLEAN | 0.108 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__094__h04-put-the-first-five-items-away | Vici SOS.dc.html | H04 · Put the first five items away | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H04 | DIFF_CLEAN | 0.142 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__095__h05-open-the-bill-or-letter | Vici SOS.dc.html | H05 · Open the bill or letter | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H05 | DIFF_CLEAN | 0.159 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__096__h06-set-out-one-tool-or-material | Vici SOS.dc.html | H06 · Set out one tool or material | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H06 | DIFF_CLEAN | 0.135 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__097__h07-make-a-two-minute-start-on-the-email | Vici SOS.dc.html | H07 · Make a two-minute start on the email | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H07 | DIFF_CLEAN | 0.126 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__098__h08-work-beside-someone-for-five-minutes | Vici SOS.dc.html | H08 · Work beside someone for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H08 | DIFF_CLEAN | 0.135 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__099__h09-put-one-load-into-the-washing-machine | Vici SOS.dc.html | H09 · Put one load into the washing machine | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H09 | DIFF_CLEAN | 0.142 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__100__h10-read-one-page-needed-for-the-task | Vici SOS.dc.html | H10 · Read one page needed for the task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=H10 | DIFF_CLEAN | 0.116 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__101__i01-eat-one-ready-to-eat-snack | Vici SOS.dc.html | I01 · Eat one ready-to-eat snack | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I01 | DIFF_CLEAN | 0.134 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__102__i02-make-one-sandwich-and-eat-it-at-the-table | Vici SOS.dc.html | I02 · Make one sandwich and eat it at the table | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I02 | DIFF_CLEAN | 0.144 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__103__i03-pour-water-and-sit-for-three-minutes | Vici SOS.dc.html | I03 · Pour water and sit for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I03 | DIFF_CLEAN | 0.106 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__104__i04-rest-in-a-chair-for-five-minutes | Vici SOS.dc.html | I04 · Rest in a chair for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I04 | DIFF_CLEAN | 0.155 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__105__i05-change-into-your-sleep-clothes | Vici SOS.dc.html | I05 · Change into your sleep clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I05 | DIFF_CLEAN | 0.152 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__106__i06-put-out-clothes-for-when-you-next-get-up | Vici SOS.dc.html | I06 · Put out clothes for when you next get up | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I06 | DIFF_CLEAN | 0.112 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__107__i07-ask-for-a-short-break | Vici SOS.dc.html | I07 · Ask for a short break | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I07 | DIFF_CLEAN | 0.150 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__108__i08-eat-in-the-staffroom-or-kitchen | Vici SOS.dc.html | I08 · Eat in the staffroom or kitchen | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I08 | DIFF_CLEAN | 0.123 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__109__i09-put-out-a-bowl-and-spoon-for-breakfast | Vici SOS.dc.html | I09 · Put out a bowl and spoon for breakfast | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I09 | DIFF_CLEAN | 0.033 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__110__i10-rest-for-two-minutes-with-the-screen-down | Vici SOS.dc.html | I10 · Rest for two minutes with the screen down | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=I10 | DIFF_CLEAN | 0.031 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__111__j01-put-the-phone-down-for-three-minutes | Vici SOS.dc.html | J01 · Put the phone down for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J01 | DIFF_CLEAN | 0.046 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__112__j02-look-around-for-one-minute | Vici SOS.dc.html | J02 · Look around for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J02 | DIFF_CLEAN | 0.035 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__113__j03-read-two-physical-pages | Vici SOS.dc.html | J03 · Read two physical pages | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J03 | DIFF_CLEAN | 0.038 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__114__j04-walk-indoors-for-five-minutes | Vici SOS.dc.html | J04 · Walk indoors for five minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J04 | DIFF_CLEAN | 0.052 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__115__j05-wash-one-mug | Vici SOS.dc.html | J05 · Wash one mug | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J05 | DIFF_CLEAN | 0.027 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__116__j06-fold-three-clothes | Vici SOS.dc.html | J06 · Fold three clothes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J06 | DIFF_CLEAN | 0.031 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__117__j07-return-to-your-task-for-two-minutes | Vici SOS.dc.html | J07 · Return to your task for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J07 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__118__j08-draw-the-outline-of-one-object | Vici SOS.dc.html | J08 · Draw the outline of one object | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J08 | DIFF_CLEAN | 0.040 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__119__j09-sit-in-a-different-safe-spot | Vici SOS.dc.html | J09 · Sit in a different safe spot | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J09 | DIFF_CLEAN | 0.040 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__120__j10-take-a-familiar-five-minute-walk | Vici SOS.dc.html | J10 · Take a familiar five-minute walk | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=J10 | DIFF_CLEAN | 0.049 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__121__k01-put-the-phone-away-for-two-minutes | Vici SOS.dc.html | K01 · Put the phone away for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K01 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__122__k02-return-from-the-bathroom | Vici SOS.dc.html | K02 · Return from the bathroom | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K02 | DIFF_CLEAN | 0.037 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__123__k03-refill-your-water-bottle | Vici SOS.dc.html | K03 · Refill your water bottle | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K03 | DIFF_CLEAN | 0.047 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__124__k04-read-one-printed-page | Vici SOS.dc.html | K04 · Read one printed page | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K04 | DIFF_CLEAN | 0.036 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__125__k05-start-two-minutes-of-the-next-work-task | Vici SOS.dc.html | K05 · Start two minutes of the next work task | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K05 | DIFF_CLEAN | 0.050 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__126__k06-look-at-three-things-near-you | Vici SOS.dc.html | K06 · Look at three things near you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K06 | DIFF_CLEAN | 0.040 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__127__k07-sort-five-things-in-your-bag | Vici SOS.dc.html | K07 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K07 | DIFF_CLEAN | 0.053 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__128__k08-take-one-permitted-corridor-break | Vici SOS.dc.html | K08 · Take one permitted corridor break | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K08 | DIFF_CLEAN | 0.049 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__129__k09-pack-away-one-item-you-have-finished-using | Vici SOS.dc.html | K09 · Pack away one item you have finished using | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K09 | DIFF_CLEAN | 0.062 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__130__k10-ask-a-colleague-about-one-ordinary-thing | Vici SOS.dc.html | K10 · Ask a colleague about one ordinary thing | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=K10 | DIFF_CLEAN | 0.053 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__131__l01-put-the-phone-down-for-two-minutes | Vici SOS.dc.html | L01 · Put the phone down for two minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L01 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__132__l02-sit-in-a-different-chair-for-three-minutes | Vici SOS.dc.html | L02 · Sit in a different chair for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L02 | DIFF_CLEAN | 0.051 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__133__l03-read-two-pages-of-a-familiar-book | Vici SOS.dc.html | L03 · Read two pages of a familiar book | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L03 | DIFF_CLEAN | 0.047 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__134__l04-wash-one-plate | Vici SOS.dc.html | L04 · Wash one plate | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L04 | DIFF_CLEAN | 0.028 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__135__l05-fold-three-clean-items | Vici SOS.dc.html | L05 · Fold three clean items | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L05 | DIFF_CLEAN | 0.035 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__136__l06-walk-indoors-for-three-minutes | Vici SOS.dc.html | L06 · Walk indoors for three minutes | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L06 | DIFF_CLEAN | 0.043 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__137__l07-eat-the-snack-you-already-have | Vici SOS.dc.html | L07 · Eat the snack you already have | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L07 | DIFF_CLEAN | 0.045 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__138__l08-sort-five-things-in-your-bag | Vici SOS.dc.html | L08 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L08 | DIFF_CLEAN | 0.053 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__139__l09-walk-to-a-familiar-corner-and-back | Vici SOS.dc.html | L09 · Walk to a familiar corner and back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L09 | DIFF_CLEAN | 0.045 % | 2026-10-21 | noise only (D16), reviewed |
+| sos__140__l10-name-the-feeling-and-pause-for-one-minute | Vici SOS.dc.html | L10 · Name the feeling and pause for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L10 | DIFF_CLEAN | 0.056 % | 2026-10-21 | noise only (D16), reviewed |
+| w01__000__lesson-1-1-of-14 | Week 01 Reset.dc.html | Lesson 1 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__001__lesson-1-2-of-14 | Week 01 Reset.dc.html | Lesson 1 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__002__lesson-1-3-of-14 | Week 01 Reset.dc.html | Lesson 1 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__003__lesson-1-4-of-14 | Week 01 Reset.dc.html | Lesson 1 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__004__lesson-1-5-of-14 | Week 01 Reset.dc.html | Lesson 1 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__005__lesson-1-6-of-14 | Week 01 Reset.dc.html | Lesson 1 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__006__lesson-1-7-of-14 | Week 01 Reset.dc.html | Lesson 1 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__007__lesson-1-8-of-14 | Week 01 Reset.dc.html | Lesson 1 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__008__lesson-1-9-of-14 | Week 01 Reset.dc.html | Lesson 1 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__009__lesson-1-10-of-14 | Week 01 Reset.dc.html | Lesson 1 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__010__lesson-1-11-of-14 | Week 01 Reset.dc.html | Lesson 1 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__011__lesson-1-12-of-14 | Week 01 Reset.dc.html | Lesson 1 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__012__lesson-1-13-of-14 | Week 01 Reset.dc.html | Lesson 1 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__013__lesson-1-14-of-14 | Week 01 Reset.dc.html | Lesson 1 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__014__lesson-2-1-of-16 | Week 01 Reset.dc.html | Lesson 2 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__015__lesson-2-2-of-16 | Week 01 Reset.dc.html | Lesson 2 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__016__lesson-2-3-of-16 | Week 01 Reset.dc.html | Lesson 2 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__017__lesson-2-4-of-16 | Week 01 Reset.dc.html | Lesson 2 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__018__lesson-2-5-of-16 | Week 01 Reset.dc.html | Lesson 2 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__019__lesson-2-6-of-16 | Week 01 Reset.dc.html | Lesson 2 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__020__lesson-2-7-of-16 | Week 01 Reset.dc.html | Lesson 2 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__021__lesson-2-8-of-16 | Week 01 Reset.dc.html | Lesson 2 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__022__lesson-2-9-of-16 | Week 01 Reset.dc.html | Lesson 2 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__023__lesson-2-10-of-16 | Week 01 Reset.dc.html | Lesson 2 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__024__lesson-2-11-of-16 | Week 01 Reset.dc.html | Lesson 2 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__025__lesson-2-12-of-16 | Week 01 Reset.dc.html | Lesson 2 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__026__lesson-2-13-of-16 | Week 01 Reset.dc.html | Lesson 2 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__027__lesson-2-14-of-16 | Week 01 Reset.dc.html | Lesson 2 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__028__lesson-2-15-of-16 | Week 01 Reset.dc.html | Lesson 2 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__029__lesson-2-16-of-16 | Week 01 Reset.dc.html | Lesson 2 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__030__lesson-3-1-of-15 | Week 01 Reset.dc.html | Lesson 3 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__031__lesson-3-2-of-15 | Week 01 Reset.dc.html | Lesson 3 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__032__lesson-3-3-of-15 | Week 01 Reset.dc.html | Lesson 3 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__033__lesson-3-4-of-15 | Week 01 Reset.dc.html | Lesson 3 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__034__lesson-3-5-of-15 | Week 01 Reset.dc.html | Lesson 3 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__035__lesson-3-6-of-15 | Week 01 Reset.dc.html | Lesson 3 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__036__lesson-3-7-of-15 | Week 01 Reset.dc.html | Lesson 3 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__037__lesson-3-8-of-15 | Week 01 Reset.dc.html | Lesson 3 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__038__lesson-3-9-of-15 | Week 01 Reset.dc.html | Lesson 3 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__039__lesson-3-10-of-15 | Week 01 Reset.dc.html | Lesson 3 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__040__lesson-3-11-of-15 | Week 01 Reset.dc.html | Lesson 3 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__041__lesson-3-12-of-15 | Week 01 Reset.dc.html | Lesson 3 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__042__lesson-3-13-of-15 | Week 01 Reset.dc.html | Lesson 3 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__043__lesson-3-14-of-15 | Week 01 Reset.dc.html | Lesson 3 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__044__lesson-3-15-of-15 | Week 01 Reset.dc.html | Lesson 3 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__045__lesson-4-1-of-15 | Week 01 Reset.dc.html | Lesson 4 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__046__lesson-4-2-of-15 | Week 01 Reset.dc.html | Lesson 4 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__047__lesson-4-3-of-15 | Week 01 Reset.dc.html | Lesson 4 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__048__lesson-4-4-of-15 | Week 01 Reset.dc.html | Lesson 4 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__049__lesson-4-5-of-15 | Week 01 Reset.dc.html | Lesson 4 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__050__lesson-4-6-of-15 | Week 01 Reset.dc.html | Lesson 4 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__051__lesson-4-7-of-15 | Week 01 Reset.dc.html | Lesson 4 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__052__lesson-4-8-of-15 | Week 01 Reset.dc.html | Lesson 4 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__053__lesson-4-9-of-15 | Week 01 Reset.dc.html | Lesson 4 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__054__lesson-4-10-of-15 | Week 01 Reset.dc.html | Lesson 4 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__055__lesson-4-11-of-15 | Week 01 Reset.dc.html | Lesson 4 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__056__lesson-4-12-of-15 | Week 01 Reset.dc.html | Lesson 4 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__057__lesson-4-13-of-15 | Week 01 Reset.dc.html | Lesson 4 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__058__lesson-4-14-of-15 | Week 01 Reset.dc.html | Lesson 4 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__059__lesson-4-15-of-15 | Week 01 Reset.dc.html | Lesson 4 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__060__lesson-5-1-of-15 | Week 01 Reset.dc.html | Lesson 5 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__061__lesson-5-2-of-15 | Week 01 Reset.dc.html | Lesson 5 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__062__lesson-5-3-of-15 | Week 01 Reset.dc.html | Lesson 5 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__063__lesson-5-4-of-15 | Week 01 Reset.dc.html | Lesson 5 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__064__lesson-5-5-of-15 | Week 01 Reset.dc.html | Lesson 5 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__065__lesson-5-6-of-15 | Week 01 Reset.dc.html | Lesson 5 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__066__lesson-5-7-of-15 | Week 01 Reset.dc.html | Lesson 5 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__067__lesson-5-8-of-15 | Week 01 Reset.dc.html | Lesson 5 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__068__lesson-5-9-of-15 | Week 01 Reset.dc.html | Lesson 5 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__069__lesson-5-10-of-15 | Week 01 Reset.dc.html | Lesson 5 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__070__lesson-5-11-of-15 | Week 01 Reset.dc.html | Lesson 5 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__071__lesson-5-12-of-15 | Week 01 Reset.dc.html | Lesson 5 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__072__lesson-5-13-of-15 | Week 01 Reset.dc.html | Lesson 5 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__073__lesson-5-14-of-15 | Week 01 Reset.dc.html | Lesson 5 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__074__lesson-5-15-of-15 | Week 01 Reset.dc.html | Lesson 5 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w01__075__lesson-6-1-of-14 | Week 01 Reset.dc.html | Lesson 6 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__076__lesson-6-2-of-14 | Week 01 Reset.dc.html | Lesson 6 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__077__lesson-6-3-of-14 | Week 01 Reset.dc.html | Lesson 6 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__078__lesson-6-4-of-14 | Week 01 Reset.dc.html | Lesson 6 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__079__lesson-6-5-of-14 | Week 01 Reset.dc.html | Lesson 6 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__080__lesson-6-6-of-14 | Week 01 Reset.dc.html | Lesson 6 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__081__lesson-6-7-of-14 | Week 01 Reset.dc.html | Lesson 6 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__082__lesson-6-8-of-14 | Week 01 Reset.dc.html | Lesson 6 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__083__lesson-6-9-of-14 | Week 01 Reset.dc.html | Lesson 6 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__084__lesson-6-10-of-14 | Week 01 Reset.dc.html | Lesson 6 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__085__lesson-6-11-of-14 | Week 01 Reset.dc.html | Lesson 6 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__086__lesson-6-12-of-14 | Week 01 Reset.dc.html | Lesson 6 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__087__lesson-6-13-of-14 | Week 01 Reset.dc.html | Lesson 6 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__088__lesson-6-14-of-14 | Week 01 Reset.dc.html | Lesson 6 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w01__089__lesson-7-1-of-16 | Week 01 Reset.dc.html | Lesson 7 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__090__lesson-7-2-of-16 | Week 01 Reset.dc.html | Lesson 7 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__091__lesson-7-3-of-16 | Week 01 Reset.dc.html | Lesson 7 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__092__lesson-7-4-of-16 | Week 01 Reset.dc.html | Lesson 7 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__093__lesson-7-5-of-16 | Week 01 Reset.dc.html | Lesson 7 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__094__lesson-7-6-of-16 | Week 01 Reset.dc.html | Lesson 7 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__095__lesson-7-7-of-16 | Week 01 Reset.dc.html | Lesson 7 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__096__lesson-7-8-of-16 | Week 01 Reset.dc.html | Lesson 7 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__097__lesson-7-9-of-16 | Week 01 Reset.dc.html | Lesson 7 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__098__lesson-7-10-of-16 | Week 01 Reset.dc.html | Lesson 7 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__099__lesson-7-11-of-16 | Week 01 Reset.dc.html | Lesson 7 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__100__lesson-7-12-of-16 | Week 01 Reset.dc.html | Lesson 7 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__101__lesson-7-13-of-16 | Week 01 Reset.dc.html | Lesson 7 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__102__lesson-7-14-of-16 | Week 01 Reset.dc.html | Lesson 7 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__103__lesson-7-15-of-16 | Week 01 Reset.dc.html | Lesson 7 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w01__104__lesson-7-16-of-16 | Week 01 Reset.dc.html | Lesson 7 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__000__lesson-8-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__001__lesson-8-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__002__lesson-8-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__003__lesson-8-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__004__lesson-8-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__005__lesson-8-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__006__lesson-8-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__007__lesson-8-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__008__lesson-8-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__009__lesson-8-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__010__lesson-8-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__011__lesson-8-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__012__lesson-8-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__013__lesson-8-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 8 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__014__lesson-9-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__015__lesson-9-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__016__lesson-9-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__017__lesson-9-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__018__lesson-9-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__019__lesson-9-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__020__lesson-9-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__021__lesson-9-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__022__lesson-9-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__023__lesson-9-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__024__lesson-9-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__025__lesson-9-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__026__lesson-9-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__027__lesson-9-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__028__lesson-9-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 9 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__029__lesson-10-1-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__030__lesson-10-2-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__031__lesson-10-3-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__032__lesson-10-4-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__033__lesson-10-5-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__034__lesson-10-6-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__035__lesson-10-7-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__036__lesson-10-8-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__037__lesson-10-9-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__038__lesson-10-10-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__039__lesson-10-11-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__040__lesson-10-12-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__041__lesson-10-13-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__042__lesson-10-14-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__043__lesson-10-15-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__044__lesson-10-16-of-16 | Week 02 Changing Your Mindset.dc.html | Lesson 10 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w02__045__lesson-11-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__046__lesson-11-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__047__lesson-11-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__048__lesson-11-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__049__lesson-11-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__050__lesson-11-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__051__lesson-11-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__052__lesson-11-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__053__lesson-11-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__054__lesson-11-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__055__lesson-11-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__056__lesson-11-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__057__lesson-11-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__058__lesson-11-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 11 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__059__lesson-12-1-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__060__lesson-12-2-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__061__lesson-12-3-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__062__lesson-12-4-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__063__lesson-12-5-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__064__lesson-12-6-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__065__lesson-12-7-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__066__lesson-12-8-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__067__lesson-12-9-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__068__lesson-12-10-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__069__lesson-12-11-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__070__lesson-12-12-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__071__lesson-12-13-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__072__lesson-12-14-of-14 | Week 02 Changing Your Mindset.dc.html | Lesson 12 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w02__073__lesson-13-1-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__074__lesson-13-2-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__075__lesson-13-3-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__076__lesson-13-4-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__077__lesson-13-5-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__078__lesson-13-6-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__079__lesson-13-7-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__080__lesson-13-8-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__081__lesson-13-9-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__082__lesson-13-10-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__083__lesson-13-11-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__084__lesson-13-12-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__085__lesson-13-13-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__086__lesson-13-14-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__087__lesson-13-15-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__088__lesson-13-16-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__089__lesson-13-17-of-17 | Week 02 Changing Your Mindset.dc.html | Lesson 13 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w02__090__lesson-14-1-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__091__lesson-14-2-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__092__lesson-14-3-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__093__lesson-14-4-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__094__lesson-14-5-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__095__lesson-14-6-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__096__lesson-14-7-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__097__lesson-14-8-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__098__lesson-14-9-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__099__lesson-14-10-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__100__lesson-14-11-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__101__lesson-14-12-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__102__lesson-14-13-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__103__lesson-14-14-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w02__104__lesson-14-15-of-15 | Week 02 Changing Your Mindset.dc.html | Lesson 14 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w03__000__lesson-15-1-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__001__lesson-15-2-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__002__lesson-15-3-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__003__lesson-15-4-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__004__lesson-15-5-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__005__lesson-15-6-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__006__lesson-15-7-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__007__lesson-15-8-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__008__lesson-15-9-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__009__lesson-15-10-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__010__lesson-15-11-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__011__lesson-15-12-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__012__lesson-15-13-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__013__lesson-15-14-of-14 | Week 03 In the Moment.dc.html | Lesson 15 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__014__lesson-16-1-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__015__lesson-16-2-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__016__lesson-16-3-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__017__lesson-16-4-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__018__lesson-16-5-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__019__lesson-16-6-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__020__lesson-16-7-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__021__lesson-16-8-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__022__lesson-16-9-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__023__lesson-16-10-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__024__lesson-16-11-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__025__lesson-16-12-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__026__lesson-16-13-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__027__lesson-16-14-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__028__lesson-16-15-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__029__lesson-16-16-of-16 | Week 03 In the Moment.dc.html | Lesson 16 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__030__lesson-17-1-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__031__lesson-17-2-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__032__lesson-17-3-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__033__lesson-17-4-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__034__lesson-17-5-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__035__lesson-17-6-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__036__lesson-17-7-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__037__lesson-17-8-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__038__lesson-17-9-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__039__lesson-17-10-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__040__lesson-17-11-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__041__lesson-17-12-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__042__lesson-17-13-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__043__lesson-17-14-of-14 | Week 03 In the Moment.dc.html | Lesson 17 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__044__lesson-18-1-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__045__lesson-18-2-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__046__lesson-18-3-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__047__lesson-18-4-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__048__lesson-18-5-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__049__lesson-18-6-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__050__lesson-18-7-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__051__lesson-18-8-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__052__lesson-18-9-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__053__lesson-18-10-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__054__lesson-18-11-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__055__lesson-18-12-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__056__lesson-18-13-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__057__lesson-18-14-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__058__lesson-18-15-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__059__lesson-18-16-of-16 | Week 03 In the Moment.dc.html | Lesson 18 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__060__lesson-19-1-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__061__lesson-19-2-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__062__lesson-19-3-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__063__lesson-19-4-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__064__lesson-19-5-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__065__lesson-19-6-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__066__lesson-19-7-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__067__lesson-19-8-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__068__lesson-19-9-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__069__lesson-19-10-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__070__lesson-19-11-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__071__lesson-19-12-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__072__lesson-19-13-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__073__lesson-19-14-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__074__lesson-19-15-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__075__lesson-19-16-of-16 | Week 03 In the Moment.dc.html | Lesson 19 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__076__lesson-20-1-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__077__lesson-20-2-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__078__lesson-20-3-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__079__lesson-20-4-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__080__lesson-20-5-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__081__lesson-20-6-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__082__lesson-20-7-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__083__lesson-20-8-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__084__lesson-20-9-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__085__lesson-20-10-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__086__lesson-20-11-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__087__lesson-20-12-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__088__lesson-20-13-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__089__lesson-20-14-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__090__lesson-20-15-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__091__lesson-20-16-of-16 | Week 03 In the Moment.dc.html | Lesson 20 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w03__092__lesson-21-1-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__093__lesson-21-2-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__094__lesson-21-3-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__095__lesson-21-4-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__096__lesson-21-5-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__097__lesson-21-6-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__098__lesson-21-7-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__099__lesson-21-8-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__100__lesson-21-9-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__101__lesson-21-10-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__102__lesson-21-11-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__103__lesson-21-12-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__104__lesson-21-13-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w03__105__lesson-21-14-of-14 | Week 03 In the Moment.dc.html | Lesson 21 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__000__lesson-22-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__001__lesson-22-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__002__lesson-22-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__003__lesson-22-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__004__lesson-22-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__005__lesson-22-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__006__lesson-22-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__007__lesson-22-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__008__lesson-22-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__009__lesson-22-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__010__lesson-22-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__011__lesson-22-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__012__lesson-22-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__013__lesson-22-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__014__lesson-22-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__015__lesson-22-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 22 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__016__lesson-23-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__017__lesson-23-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__018__lesson-23-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__019__lesson-23-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__020__lesson-23-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__021__lesson-23-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__022__lesson-23-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__023__lesson-23-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__024__lesson-23-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__025__lesson-23-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__026__lesson-23-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__027__lesson-23-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__028__lesson-23-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__029__lesson-23-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 23 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__030__lesson-24-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__031__lesson-24-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__032__lesson-24-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__033__lesson-24-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__034__lesson-24-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__035__lesson-24-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__036__lesson-24-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__037__lesson-24-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__038__lesson-24-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__039__lesson-24-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__040__lesson-24-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__041__lesson-24-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__042__lesson-24-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__043__lesson-24-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 24 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__044__lesson-25-1-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__045__lesson-25-2-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__046__lesson-25-3-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__047__lesson-25-4-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__048__lesson-25-5-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__049__lesson-25-6-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__050__lesson-25-7-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__051__lesson-25-8-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__052__lesson-25-9-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__053__lesson-25-10-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__054__lesson-25-11-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__055__lesson-25-12-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__056__lesson-25-13-of-13 | Week 04 Know Your Brain.dc.html | Lesson 25 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w04__057__lesson-26-1-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__058__lesson-26-2-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__059__lesson-26-3-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__060__lesson-26-4-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__061__lesson-26-5-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__062__lesson-26-6-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__063__lesson-26-7-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__064__lesson-26-8-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__065__lesson-26-9-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__066__lesson-26-10-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__067__lesson-26-11-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__068__lesson-26-12-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__069__lesson-26-13-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__070__lesson-26-14-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__071__lesson-26-15-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__072__lesson-26-16-of-16 | Week 04 Know Your Brain.dc.html | Lesson 26 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w04__073__lesson-27-1-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__074__lesson-27-2-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__075__lesson-27-3-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__076__lesson-27-4-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__077__lesson-27-5-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__078__lesson-27-6-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__079__lesson-27-7-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__080__lesson-27-8-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__081__lesson-27-9-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__082__lesson-27-10-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__083__lesson-27-11-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__084__lesson-27-12-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__085__lesson-27-13-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__086__lesson-27-14-of-14 | Week 04 Know Your Brain.dc.html | Lesson 27 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w04__087__lesson-28-1-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__088__lesson-28-2-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__089__lesson-28-3-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__090__lesson-28-4-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__091__lesson-28-5-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__092__lesson-28-6-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__093__lesson-28-7-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__094__lesson-28-8-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__095__lesson-28-9-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__096__lesson-28-10-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__097__lesson-28-11-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__098__lesson-28-12-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__099__lesson-28-13-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__100__lesson-28-14-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w04__101__lesson-28-15-of-15 | Week 04 Know Your Brain.dc.html | Lesson 28 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__000__lesson-29-1-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__001__lesson-29-2-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__002__lesson-29-3-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__003__lesson-29-4-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__004__lesson-29-5-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__005__lesson-29-6-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__006__lesson-29-7-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__007__lesson-29-8-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__008__lesson-29-9-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__009__lesson-29-10-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__010__lesson-29-11-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__011__lesson-29-12-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__012__lesson-29-13-of-13 | Week 05 Why It Feels Worth It.dc.html | Lesson 29 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w05__013__lesson-30-1-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__014__lesson-30-2-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__015__lesson-30-3-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__016__lesson-30-4-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__017__lesson-30-5-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__018__lesson-30-6-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__019__lesson-30-7-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__020__lesson-30-8-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__021__lesson-30-9-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__022__lesson-30-10-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__023__lesson-30-11-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__024__lesson-30-12-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__025__lesson-30-13-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__026__lesson-30-14-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__027__lesson-30-15-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__028__lesson-30-16-of-16 | Week 05 Why It Feels Worth It.dc.html | Lesson 30 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w05__029__lesson-31-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__030__lesson-31-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__031__lesson-31-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__032__lesson-31-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__033__lesson-31-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__034__lesson-31-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__035__lesson-31-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__036__lesson-31-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__037__lesson-31-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__038__lesson-31-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__039__lesson-31-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__040__lesson-31-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__041__lesson-31-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__042__lesson-31-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__043__lesson-31-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 31 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__044__lesson-32-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__045__lesson-32-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__046__lesson-32-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__047__lesson-32-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__048__lesson-32-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__049__lesson-32-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__050__lesson-32-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__051__lesson-32-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__052__lesson-32-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__053__lesson-32-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__054__lesson-32-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__055__lesson-32-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__056__lesson-32-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__057__lesson-32-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__058__lesson-32-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 32 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__059__lesson-33-1-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__060__lesson-33-2-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__061__lesson-33-3-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__062__lesson-33-4-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__063__lesson-33-5-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__064__lesson-33-6-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__065__lesson-33-7-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__066__lesson-33-8-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__067__lesson-33-9-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__068__lesson-33-10-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__069__lesson-33-11-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__070__lesson-33-12-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__071__lesson-33-13-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__072__lesson-33-14-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__073__lesson-33-15-of-15 | Week 05 Why It Feels Worth It.dc.html | Lesson 33 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w05__074__lesson-34-1-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__075__lesson-34-2-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__076__lesson-34-3-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__077__lesson-34-4-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__078__lesson-34-5-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__079__lesson-34-6-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__080__lesson-34-7-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__081__lesson-34-8-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__082__lesson-34-9-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__083__lesson-34-10-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__084__lesson-34-11-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__085__lesson-34-12-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__086__lesson-34-13-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__087__lesson-34-14-of-14 | Week 05 Why It Feels Worth It.dc.html | Lesson 34 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w05__088__lesson-35-1-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__089__lesson-35-2-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__090__lesson-35-3-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__091__lesson-35-4-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__092__lesson-35-5-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__093__lesson-35-6-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__094__lesson-35-7-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__095__lesson-35-8-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__096__lesson-35-9-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__097__lesson-35-10-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__098__lesson-35-11-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__099__lesson-35-12-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__100__lesson-35-13-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__101__lesson-35-14-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__102__lesson-35-15-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__103__lesson-35-16-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w05__104__lesson-35-17-of-17 | Week 05 Why It Feels Worth It.dc.html | Lesson 35 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__000__lesson-36-1-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__001__lesson-36-2-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__002__lesson-36-3-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__003__lesson-36-4-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__004__lesson-36-5-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__005__lesson-36-6-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__006__lesson-36-7-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__007__lesson-36-8-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__008__lesson-36-9-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__009__lesson-36-10-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__010__lesson-36-11-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__011__lesson-36-12-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__012__lesson-36-13-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__013__lesson-36-14-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__014__lesson-36-15-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__015__lesson-36-16-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__016__lesson-36-17-of-17 | Week 06 Discipline.dc.html | Lesson 36 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__017__lesson-37-1-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__018__lesson-37-2-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__019__lesson-37-3-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__020__lesson-37-4-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__021__lesson-37-5-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__022__lesson-37-6-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__023__lesson-37-7-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__024__lesson-37-8-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__025__lesson-37-9-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__026__lesson-37-10-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__027__lesson-37-11-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__028__lesson-37-12-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__029__lesson-37-13-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__030__lesson-37-14-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__031__lesson-37-15-of-15 | Week 06 Discipline.dc.html | Lesson 37 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__032__lesson-38-1-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__033__lesson-38-2-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__034__lesson-38-3-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__035__lesson-38-4-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__036__lesson-38-5-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__037__lesson-38-6-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__038__lesson-38-7-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__039__lesson-38-8-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__040__lesson-38-9-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__041__lesson-38-10-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__042__lesson-38-11-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__043__lesson-38-12-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__044__lesson-38-13-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__045__lesson-38-14-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__046__lesson-38-15-of-15 | Week 06 Discipline.dc.html | Lesson 38 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w06__047__lesson-39-1-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__048__lesson-39-2-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__049__lesson-39-3-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__050__lesson-39-4-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__051__lesson-39-5-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__052__lesson-39-6-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__053__lesson-39-7-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__054__lesson-39-8-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__055__lesson-39-9-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__056__lesson-39-10-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__057__lesson-39-11-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__058__lesson-39-12-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__059__lesson-39-13-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__060__lesson-39-14-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__061__lesson-39-15-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__062__lesson-39-16-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__063__lesson-39-17-of-17 | Week 06 Discipline.dc.html | Lesson 39 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__064__lesson-40-1-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 1 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__065__lesson-40-2-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 2 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__066__lesson-40-3-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 3 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__067__lesson-40-4-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 4 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__068__lesson-40-5-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 5 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__069__lesson-40-6-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 6 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__070__lesson-40-7-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 7 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__071__lesson-40-8-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 8 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__072__lesson-40-9-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 9 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__073__lesson-40-10-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 10 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__074__lesson-40-11-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 11 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__075__lesson-40-12-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 12 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__076__lesson-40-13-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 13 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__077__lesson-40-14-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 14 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__078__lesson-40-15-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 15 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__079__lesson-40-16-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 16 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__080__lesson-40-17-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 17 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__081__lesson-40-18-of-18 | Week 06 Discipline.dc.html | Lesson 40 · 18 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w06__082__lesson-41-1-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__083__lesson-41-2-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__084__lesson-41-3-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__085__lesson-41-4-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__086__lesson-41-5-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__087__lesson-41-6-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__088__lesson-41-7-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__089__lesson-41-8-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__090__lesson-41-9-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__091__lesson-41-10-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__092__lesson-41-11-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__093__lesson-41-12-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__094__lesson-41-13-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__095__lesson-41-14-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__096__lesson-41-15-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__097__lesson-41-16-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__098__lesson-41-17-of-17 | Week 06 Discipline.dc.html | Lesson 41 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w06__099__lesson-42-1-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 1 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__100__lesson-42-2-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 2 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__101__lesson-42-3-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 3 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__102__lesson-42-4-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 4 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__103__lesson-42-5-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 5 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__104__lesson-42-6-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 6 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__105__lesson-42-7-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 7 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__106__lesson-42-8-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 8 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__107__lesson-42-9-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 9 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__108__lesson-42-10-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 10 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__109__lesson-42-11-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 11 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__110__lesson-42-12-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 12 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w06__111__lesson-42-13-of-13 | Week 06 Discipline.dc.html | Lesson 42 · 13 of 13 |  |  |  | NOT_STARTED |  |  |  |
+| w07__000__lesson-43-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__001__lesson-43-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__002__lesson-43-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__003__lesson-43-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__004__lesson-43-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__005__lesson-43-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__006__lesson-43-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__007__lesson-43-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__008__lesson-43-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__009__lesson-43-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__010__lesson-43-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__011__lesson-43-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__012__lesson-43-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__013__lesson-43-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__014__lesson-43-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 43 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__015__lesson-44-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__016__lesson-44-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__017__lesson-44-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__018__lesson-44-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__019__lesson-44-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__020__lesson-44-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__021__lesson-44-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__022__lesson-44-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__023__lesson-44-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__024__lesson-44-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__025__lesson-44-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__026__lesson-44-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__027__lesson-44-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__028__lesson-44-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__029__lesson-44-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__030__lesson-44-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__031__lesson-44-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 44 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__032__lesson-45-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__033__lesson-45-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__034__lesson-45-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__035__lesson-45-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__036__lesson-45-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__037__lesson-45-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__038__lesson-45-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__039__lesson-45-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__040__lesson-45-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__041__lesson-45-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__042__lesson-45-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__043__lesson-45-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__044__lesson-45-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__045__lesson-45-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__046__lesson-45-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 45 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__047__lesson-46-1-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__048__lesson-46-2-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__049__lesson-46-3-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__050__lesson-46-4-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__051__lesson-46-5-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__052__lesson-46-6-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__053__lesson-46-7-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__054__lesson-46-8-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__055__lesson-46-9-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__056__lesson-46-10-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__057__lesson-46-11-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__058__lesson-46-12-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__059__lesson-46-13-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__060__lesson-46-14-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__061__lesson-46-15-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__062__lesson-46-16-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__063__lesson-46-17-of-17 | Week 07 Relapse and Adversity.dc.html | Lesson 46 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w07__064__lesson-47-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__065__lesson-47-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__066__lesson-47-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__067__lesson-47-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__068__lesson-47-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__069__lesson-47-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__070__lesson-47-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__071__lesson-47-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__072__lesson-47-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__073__lesson-47-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__074__lesson-47-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__075__lesson-47-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__076__lesson-47-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__077__lesson-47-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__078__lesson-47-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 47 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__079__lesson-48-1-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__080__lesson-48-2-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__081__lesson-48-3-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__082__lesson-48-4-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__083__lesson-48-5-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__084__lesson-48-6-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__085__lesson-48-7-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__086__lesson-48-8-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__087__lesson-48-9-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__088__lesson-48-10-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__089__lesson-48-11-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__090__lesson-48-12-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__091__lesson-48-13-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__092__lesson-48-14-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__093__lesson-48-15-of-15 | Week 07 Relapse and Adversity.dc.html | Lesson 48 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w07__094__lesson-49-1-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__095__lesson-49-2-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__096__lesson-49-3-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__097__lesson-49-4-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__098__lesson-49-5-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__099__lesson-49-6-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__100__lesson-49-7-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__101__lesson-49-8-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__102__lesson-49-9-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__103__lesson-49-10-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__104__lesson-49-11-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__105__lesson-49-12-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__106__lesson-49-13-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w07__107__lesson-49-14-of-14 | Week 07 Relapse and Adversity.dc.html | Lesson 49 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__000__lesson-50-1-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__001__lesson-50-2-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__002__lesson-50-3-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__003__lesson-50-4-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__004__lesson-50-5-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__005__lesson-50-6-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__006__lesson-50-7-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__007__lesson-50-8-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__008__lesson-50-9-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__009__lesson-50-10-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__010__lesson-50-11-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__011__lesson-50-12-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__012__lesson-50-13-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__013__lesson-50-14-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__014__lesson-50-15-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__015__lesson-50-16-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__016__lesson-50-17-of-17 | Week 08 Boredom and Meaning.dc.html | Lesson 50 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w08__017__lesson-51-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__018__lesson-51-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__019__lesson-51-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__020__lesson-51-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__021__lesson-51-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__022__lesson-51-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__023__lesson-51-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__024__lesson-51-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__025__lesson-51-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__026__lesson-51-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__027__lesson-51-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__028__lesson-51-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__029__lesson-51-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__030__lesson-51-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 51 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__031__lesson-52-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__032__lesson-52-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__033__lesson-52-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__034__lesson-52-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__035__lesson-52-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__036__lesson-52-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__037__lesson-52-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__038__lesson-52-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__039__lesson-52-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__040__lesson-52-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__041__lesson-52-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__042__lesson-52-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__043__lesson-52-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__044__lesson-52-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 52 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__045__lesson-53-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__046__lesson-53-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__047__lesson-53-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__048__lesson-53-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__049__lesson-53-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__050__lesson-53-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__051__lesson-53-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__052__lesson-53-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__053__lesson-53-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__054__lesson-53-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__055__lesson-53-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__056__lesson-53-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__057__lesson-53-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__058__lesson-53-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__059__lesson-53-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__060__lesson-53-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 53 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__061__lesson-54-1-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__062__lesson-54-2-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__063__lesson-54-3-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__064__lesson-54-4-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__065__lesson-54-5-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__066__lesson-54-6-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__067__lesson-54-7-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__068__lesson-54-8-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__069__lesson-54-9-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__070__lesson-54-10-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__071__lesson-54-11-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__072__lesson-54-12-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__073__lesson-54-13-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__074__lesson-54-14-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__075__lesson-54-15-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__076__lesson-54-16-of-16 | Week 08 Boredom and Meaning.dc.html | Lesson 54 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w08__077__lesson-55-1-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__078__lesson-55-2-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__079__lesson-55-3-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__080__lesson-55-4-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__081__lesson-55-5-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__082__lesson-55-6-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__083__lesson-55-7-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__084__lesson-55-8-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__085__lesson-55-9-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__086__lesson-55-10-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__087__lesson-55-11-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__088__lesson-55-12-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__089__lesson-55-13-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__090__lesson-55-14-of-14 | Week 08 Boredom and Meaning.dc.html | Lesson 55 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w08__091__lesson-56-1-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__092__lesson-56-2-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__093__lesson-56-3-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__094__lesson-56-4-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__095__lesson-56-5-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__096__lesson-56-6-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__097__lesson-56-7-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__098__lesson-56-8-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__099__lesson-56-9-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__100__lesson-56-10-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__101__lesson-56-11-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__102__lesson-56-12-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__103__lesson-56-13-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__104__lesson-56-14-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w08__105__lesson-56-15-of-15 | Week 08 Boredom and Meaning.dc.html | Lesson 56 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__000__lesson-57-1-of-14 | Week 09 Connection.dc.html | Lesson 57 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__001__lesson-57-2-of-14 | Week 09 Connection.dc.html | Lesson 57 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__002__lesson-57-3-of-14 | Week 09 Connection.dc.html | Lesson 57 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__003__lesson-57-4-of-14 | Week 09 Connection.dc.html | Lesson 57 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__004__lesson-57-5-of-14 | Week 09 Connection.dc.html | Lesson 57 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__005__lesson-57-6-of-14 | Week 09 Connection.dc.html | Lesson 57 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__006__lesson-57-7-of-14 | Week 09 Connection.dc.html | Lesson 57 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__007__lesson-57-8-of-14 | Week 09 Connection.dc.html | Lesson 57 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__008__lesson-57-9-of-14 | Week 09 Connection.dc.html | Lesson 57 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__009__lesson-57-10-of-14 | Week 09 Connection.dc.html | Lesson 57 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__010__lesson-57-11-of-14 | Week 09 Connection.dc.html | Lesson 57 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__011__lesson-57-12-of-14 | Week 09 Connection.dc.html | Lesson 57 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__012__lesson-57-13-of-14 | Week 09 Connection.dc.html | Lesson 57 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__013__lesson-57-14-of-14 | Week 09 Connection.dc.html | Lesson 57 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__014__lesson-58-1-of-17 | Week 09 Connection.dc.html | Lesson 58 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__015__lesson-58-2-of-17 | Week 09 Connection.dc.html | Lesson 58 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__016__lesson-58-3-of-17 | Week 09 Connection.dc.html | Lesson 58 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__017__lesson-58-4-of-17 | Week 09 Connection.dc.html | Lesson 58 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__018__lesson-58-5-of-17 | Week 09 Connection.dc.html | Lesson 58 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__019__lesson-58-6-of-17 | Week 09 Connection.dc.html | Lesson 58 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__020__lesson-58-7-of-17 | Week 09 Connection.dc.html | Lesson 58 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__021__lesson-58-8-of-17 | Week 09 Connection.dc.html | Lesson 58 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__022__lesson-58-9-of-17 | Week 09 Connection.dc.html | Lesson 58 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__023__lesson-58-10-of-17 | Week 09 Connection.dc.html | Lesson 58 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__024__lesson-58-11-of-17 | Week 09 Connection.dc.html | Lesson 58 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__025__lesson-58-12-of-17 | Week 09 Connection.dc.html | Lesson 58 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__026__lesson-58-13-of-17 | Week 09 Connection.dc.html | Lesson 58 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__027__lesson-58-14-of-17 | Week 09 Connection.dc.html | Lesson 58 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__028__lesson-58-15-of-17 | Week 09 Connection.dc.html | Lesson 58 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__029__lesson-58-16-of-17 | Week 09 Connection.dc.html | Lesson 58 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__030__lesson-58-17-of-17 | Week 09 Connection.dc.html | Lesson 58 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w09__031__lesson-59-1-of-14 | Week 09 Connection.dc.html | Lesson 59 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__032__lesson-59-2-of-14 | Week 09 Connection.dc.html | Lesson 59 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__033__lesson-59-3-of-14 | Week 09 Connection.dc.html | Lesson 59 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__034__lesson-59-4-of-14 | Week 09 Connection.dc.html | Lesson 59 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__035__lesson-59-5-of-14 | Week 09 Connection.dc.html | Lesson 59 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__036__lesson-59-6-of-14 | Week 09 Connection.dc.html | Lesson 59 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__037__lesson-59-7-of-14 | Week 09 Connection.dc.html | Lesson 59 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__038__lesson-59-8-of-14 | Week 09 Connection.dc.html | Lesson 59 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__039__lesson-59-9-of-14 | Week 09 Connection.dc.html | Lesson 59 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__040__lesson-59-10-of-14 | Week 09 Connection.dc.html | Lesson 59 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__041__lesson-59-11-of-14 | Week 09 Connection.dc.html | Lesson 59 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__042__lesson-59-12-of-14 | Week 09 Connection.dc.html | Lesson 59 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__043__lesson-59-13-of-14 | Week 09 Connection.dc.html | Lesson 59 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__044__lesson-59-14-of-14 | Week 09 Connection.dc.html | Lesson 59 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__045__lesson-60-1-of-16 | Week 09 Connection.dc.html | Lesson 60 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__046__lesson-60-2-of-16 | Week 09 Connection.dc.html | Lesson 60 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__047__lesson-60-3-of-16 | Week 09 Connection.dc.html | Lesson 60 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__048__lesson-60-4-of-16 | Week 09 Connection.dc.html | Lesson 60 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__049__lesson-60-5-of-16 | Week 09 Connection.dc.html | Lesson 60 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__050__lesson-60-6-of-16 | Week 09 Connection.dc.html | Lesson 60 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__051__lesson-60-7-of-16 | Week 09 Connection.dc.html | Lesson 60 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__052__lesson-60-8-of-16 | Week 09 Connection.dc.html | Lesson 60 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__053__lesson-60-9-of-16 | Week 09 Connection.dc.html | Lesson 60 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__054__lesson-60-10-of-16 | Week 09 Connection.dc.html | Lesson 60 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__055__lesson-60-11-of-16 | Week 09 Connection.dc.html | Lesson 60 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__056__lesson-60-12-of-16 | Week 09 Connection.dc.html | Lesson 60 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__057__lesson-60-13-of-16 | Week 09 Connection.dc.html | Lesson 60 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__058__lesson-60-14-of-16 | Week 09 Connection.dc.html | Lesson 60 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__059__lesson-60-15-of-16 | Week 09 Connection.dc.html | Lesson 60 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__060__lesson-60-16-of-16 | Week 09 Connection.dc.html | Lesson 60 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w09__061__lesson-61-1-of-15 | Week 09 Connection.dc.html | Lesson 61 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__062__lesson-61-2-of-15 | Week 09 Connection.dc.html | Lesson 61 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__063__lesson-61-3-of-15 | Week 09 Connection.dc.html | Lesson 61 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__064__lesson-61-4-of-15 | Week 09 Connection.dc.html | Lesson 61 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__065__lesson-61-5-of-15 | Week 09 Connection.dc.html | Lesson 61 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__066__lesson-61-6-of-15 | Week 09 Connection.dc.html | Lesson 61 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__067__lesson-61-7-of-15 | Week 09 Connection.dc.html | Lesson 61 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__068__lesson-61-8-of-15 | Week 09 Connection.dc.html | Lesson 61 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__069__lesson-61-9-of-15 | Week 09 Connection.dc.html | Lesson 61 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__070__lesson-61-10-of-15 | Week 09 Connection.dc.html | Lesson 61 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__071__lesson-61-11-of-15 | Week 09 Connection.dc.html | Lesson 61 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__072__lesson-61-12-of-15 | Week 09 Connection.dc.html | Lesson 61 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__073__lesson-61-13-of-15 | Week 09 Connection.dc.html | Lesson 61 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__074__lesson-61-14-of-15 | Week 09 Connection.dc.html | Lesson 61 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__075__lesson-61-15-of-15 | Week 09 Connection.dc.html | Lesson 61 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__076__lesson-62-1-of-14 | Week 09 Connection.dc.html | Lesson 62 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__077__lesson-62-2-of-14 | Week 09 Connection.dc.html | Lesson 62 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__078__lesson-62-3-of-14 | Week 09 Connection.dc.html | Lesson 62 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__079__lesson-62-4-of-14 | Week 09 Connection.dc.html | Lesson 62 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__080__lesson-62-5-of-14 | Week 09 Connection.dc.html | Lesson 62 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__081__lesson-62-6-of-14 | Week 09 Connection.dc.html | Lesson 62 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__082__lesson-62-7-of-14 | Week 09 Connection.dc.html | Lesson 62 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__083__lesson-62-8-of-14 | Week 09 Connection.dc.html | Lesson 62 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__084__lesson-62-9-of-14 | Week 09 Connection.dc.html | Lesson 62 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__085__lesson-62-10-of-14 | Week 09 Connection.dc.html | Lesson 62 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__086__lesson-62-11-of-14 | Week 09 Connection.dc.html | Lesson 62 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__087__lesson-62-12-of-14 | Week 09 Connection.dc.html | Lesson 62 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__088__lesson-62-13-of-14 | Week 09 Connection.dc.html | Lesson 62 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__089__lesson-62-14-of-14 | Week 09 Connection.dc.html | Lesson 62 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w09__090__lesson-63-1-of-15 | Week 09 Connection.dc.html | Lesson 63 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__091__lesson-63-2-of-15 | Week 09 Connection.dc.html | Lesson 63 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__092__lesson-63-3-of-15 | Week 09 Connection.dc.html | Lesson 63 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__093__lesson-63-4-of-15 | Week 09 Connection.dc.html | Lesson 63 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__094__lesson-63-5-of-15 | Week 09 Connection.dc.html | Lesson 63 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__095__lesson-63-6-of-15 | Week 09 Connection.dc.html | Lesson 63 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__096__lesson-63-7-of-15 | Week 09 Connection.dc.html | Lesson 63 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__097__lesson-63-8-of-15 | Week 09 Connection.dc.html | Lesson 63 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__098__lesson-63-9-of-15 | Week 09 Connection.dc.html | Lesson 63 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__099__lesson-63-10-of-15 | Week 09 Connection.dc.html | Lesson 63 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__100__lesson-63-11-of-15 | Week 09 Connection.dc.html | Lesson 63 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__101__lesson-63-12-of-15 | Week 09 Connection.dc.html | Lesson 63 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__102__lesson-63-13-of-15 | Week 09 Connection.dc.html | Lesson 63 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__103__lesson-63-14-of-15 | Week 09 Connection.dc.html | Lesson 63 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w09__104__lesson-63-15-of-15 | Week 09 Connection.dc.html | Lesson 63 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__000__lesson-64-1-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__001__lesson-64-2-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__002__lesson-64-3-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__003__lesson-64-4-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__004__lesson-64-5-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__005__lesson-64-6-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__006__lesson-64-7-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__007__lesson-64-8-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__008__lesson-64-9-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__009__lesson-64-10-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__010__lesson-64-11-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__011__lesson-64-12-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__012__lesson-64-13-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__013__lesson-64-14-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__014__lesson-64-15-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__015__lesson-64-16-of-16 | Week 10 Yourself.dc.html | Lesson 64 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__016__lesson-65-1-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__017__lesson-65-2-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__018__lesson-65-3-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__019__lesson-65-4-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__020__lesson-65-5-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__021__lesson-65-6-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__022__lesson-65-7-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__023__lesson-65-8-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__024__lesson-65-9-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__025__lesson-65-10-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__026__lesson-65-11-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__027__lesson-65-12-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__028__lesson-65-13-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__029__lesson-65-14-of-14 | Week 10 Yourself.dc.html | Lesson 65 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__030__lesson-66-1-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__031__lesson-66-2-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__032__lesson-66-3-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__033__lesson-66-4-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__034__lesson-66-5-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__035__lesson-66-6-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__036__lesson-66-7-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__037__lesson-66-8-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__038__lesson-66-9-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__039__lesson-66-10-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__040__lesson-66-11-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__041__lesson-66-12-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__042__lesson-66-13-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__043__lesson-66-14-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__044__lesson-66-15-of-15 | Week 10 Yourself.dc.html | Lesson 66 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__045__lesson-67-1-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__046__lesson-67-2-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__047__lesson-67-3-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__048__lesson-67-4-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__049__lesson-67-5-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__050__lesson-67-6-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__051__lesson-67-7-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__052__lesson-67-8-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__053__lesson-67-9-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__054__lesson-67-10-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__055__lesson-67-11-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__056__lesson-67-12-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__057__lesson-67-13-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__058__lesson-67-14-of-14 | Week 10 Yourself.dc.html | Lesson 67 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w10__059__lesson-68-1-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__060__lesson-68-2-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__061__lesson-68-3-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__062__lesson-68-4-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__063__lesson-68-5-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__064__lesson-68-6-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__065__lesson-68-7-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__066__lesson-68-8-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__067__lesson-68-9-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__068__lesson-68-10-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__069__lesson-68-11-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__070__lesson-68-12-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__071__lesson-68-13-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__072__lesson-68-14-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__073__lesson-68-15-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__074__lesson-68-16-of-16 | Week 10 Yourself.dc.html | Lesson 68 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w10__075__lesson-69-1-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__076__lesson-69-2-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__077__lesson-69-3-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__078__lesson-69-4-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__079__lesson-69-5-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__080__lesson-69-6-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__081__lesson-69-7-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__082__lesson-69-8-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__083__lesson-69-9-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__084__lesson-69-10-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__085__lesson-69-11-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__086__lesson-69-12-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__087__lesson-69-13-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__088__lesson-69-14-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__089__lesson-69-15-of-15 | Week 10 Yourself.dc.html | Lesson 69 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__090__lesson-70-1-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__091__lesson-70-2-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__092__lesson-70-3-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__093__lesson-70-4-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__094__lesson-70-5-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__095__lesson-70-6-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__096__lesson-70-7-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__097__lesson-70-8-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__098__lesson-70-9-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__099__lesson-70-10-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__100__lesson-70-11-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__101__lesson-70-12-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__102__lesson-70-13-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__103__lesson-70-14-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w10__104__lesson-70-15-of-15 | Week 10 Yourself.dc.html | Lesson 70 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__000__lesson-71-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__001__lesson-71-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__002__lesson-71-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__003__lesson-71-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__004__lesson-71-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__005__lesson-71-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__006__lesson-71-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__007__lesson-71-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__008__lesson-71-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__009__lesson-71-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__010__lesson-71-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__011__lesson-71-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__012__lesson-71-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__013__lesson-71-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 71 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__014__lesson-72-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__015__lesson-72-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__016__lesson-72-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__017__lesson-72-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__018__lesson-72-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__019__lesson-72-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__020__lesson-72-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__021__lesson-72-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__022__lesson-72-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__023__lesson-72-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__024__lesson-72-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__025__lesson-72-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__026__lesson-72-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__027__lesson-72-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__028__lesson-72-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__029__lesson-72-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 72 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__030__lesson-73-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__031__lesson-73-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__032__lesson-73-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__033__lesson-73-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__034__lesson-73-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__035__lesson-73-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__036__lesson-73-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__037__lesson-73-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__038__lesson-73-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__039__lesson-73-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__040__lesson-73-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__041__lesson-73-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__042__lesson-73-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__043__lesson-73-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 73 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__044__lesson-74-1-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__045__lesson-74-2-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__046__lesson-74-3-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__047__lesson-74-4-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__048__lesson-74-5-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__049__lesson-74-6-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__050__lesson-74-7-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__051__lesson-74-8-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__052__lesson-74-9-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__053__lesson-74-10-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__054__lesson-74-11-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__055__lesson-74-12-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__056__lesson-74-13-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__057__lesson-74-14-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__058__lesson-74-15-of-15 | Week 11 Build a Life You Want.dc.html | Lesson 74 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w11__059__lesson-75-1-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__060__lesson-75-2-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__061__lesson-75-3-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__062__lesson-75-4-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__063__lesson-75-5-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__064__lesson-75-6-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__065__lesson-75-7-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__066__lesson-75-8-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__067__lesson-75-9-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__068__lesson-75-10-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__069__lesson-75-11-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__070__lesson-75-12-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__071__lesson-75-13-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__072__lesson-75-14-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__073__lesson-75-15-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__074__lesson-75-16-of-16 | Week 11 Build a Life You Want.dc.html | Lesson 75 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w11__075__lesson-76-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__076__lesson-76-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__077__lesson-76-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__078__lesson-76-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__079__lesson-76-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__080__lesson-76-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__081__lesson-76-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__082__lesson-76-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__083__lesson-76-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__084__lesson-76-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__085__lesson-76-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__086__lesson-76-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__087__lesson-76-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__088__lesson-76-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 76 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__089__lesson-77-1-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__090__lesson-77-2-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__091__lesson-77-3-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__092__lesson-77-4-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__093__lesson-77-5-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__094__lesson-77-6-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__095__lesson-77-7-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__096__lesson-77-8-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__097__lesson-77-9-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__098__lesson-77-10-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__099__lesson-77-11-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__100__lesson-77-12-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__101__lesson-77-13-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w11__102__lesson-77-14-of-14 | Week 11 Build a Life You Want.dc.html | Lesson 77 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__000__lesson-78-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__001__lesson-78-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__002__lesson-78-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__003__lesson-78-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__004__lesson-78-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__005__lesson-78-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__006__lesson-78-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__007__lesson-78-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__008__lesson-78-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__009__lesson-78-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__010__lesson-78-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__011__lesson-78-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__012__lesson-78-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__013__lesson-78-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 78 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__014__lesson-79-1-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 1 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__015__lesson-79-2-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 2 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__016__lesson-79-3-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 3 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__017__lesson-79-4-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 4 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__018__lesson-79-5-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 5 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__019__lesson-79-6-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 6 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__020__lesson-79-7-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 7 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__021__lesson-79-8-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 8 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__022__lesson-79-9-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 9 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__023__lesson-79-10-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 10 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__024__lesson-79-11-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 11 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__025__lesson-79-12-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 12 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__026__lesson-79-13-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 13 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__027__lesson-79-14-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 14 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__028__lesson-79-15-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 15 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__029__lesson-79-16-of-16 | Week 12 Leave It Behind.dc.html | Lesson 79 · 16 of 16 |  |  |  | NOT_STARTED |  |  |  |
+| w12__030__lesson-80-1-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 1 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__031__lesson-80-2-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 2 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__032__lesson-80-3-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 3 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__033__lesson-80-4-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 4 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__034__lesson-80-5-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 5 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__035__lesson-80-6-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 6 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__036__lesson-80-7-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 7 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__037__lesson-80-8-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 8 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__038__lesson-80-9-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 9 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__039__lesson-80-10-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 10 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__040__lesson-80-11-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 11 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__041__lesson-80-12-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 12 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__042__lesson-80-13-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 13 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__043__lesson-80-14-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 14 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__044__lesson-80-15-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 15 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__045__lesson-80-16-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 16 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__046__lesson-80-17-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 17 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__047__lesson-80-18-of-18 | Week 12 Leave It Behind.dc.html | Lesson 80 · 18 of 18 |  |  |  | NOT_STARTED |  |  |  |
+| w12__048__lesson-81-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__049__lesson-81-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__050__lesson-81-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__051__lesson-81-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__052__lesson-81-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__053__lesson-81-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__054__lesson-81-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__055__lesson-81-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__056__lesson-81-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__057__lesson-81-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__058__lesson-81-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__059__lesson-81-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__060__lesson-81-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__061__lesson-81-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__062__lesson-81-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__063__lesson-81-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__064__lesson-81-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 81 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__065__lesson-82-1-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 1 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__066__lesson-82-2-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 2 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__067__lesson-82-3-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 3 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__068__lesson-82-4-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 4 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__069__lesson-82-5-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 5 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__070__lesson-82-6-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 6 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__071__lesson-82-7-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 7 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__072__lesson-82-8-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 8 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__073__lesson-82-9-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 9 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__074__lesson-82-10-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 10 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__075__lesson-82-11-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 11 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__076__lesson-82-12-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 12 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__077__lesson-82-13-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 13 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__078__lesson-82-14-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 14 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__079__lesson-82-15-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 15 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__080__lesson-82-16-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 16 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__081__lesson-82-17-of-17 | Week 12 Leave It Behind.dc.html | Lesson 82 · 17 of 17 |  |  |  | NOT_STARTED |  |  |  |
+| w12__082__lesson-83-1-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 1 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__083__lesson-83-2-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 2 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__084__lesson-83-3-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 3 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__085__lesson-83-4-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 4 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__086__lesson-83-5-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 5 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__087__lesson-83-6-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 6 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__088__lesson-83-7-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 7 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__089__lesson-83-8-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 8 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__090__lesson-83-9-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 9 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__091__lesson-83-10-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 10 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__092__lesson-83-11-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 11 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__093__lesson-83-12-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 12 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__094__lesson-83-13-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 13 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__095__lesson-83-14-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 14 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__096__lesson-83-15-of-15 | Week 12 Leave It Behind.dc.html | Lesson 83 · 15 of 15 |  |  |  | NOT_STARTED |  |  |  |
+| w12__097__lesson-84-1-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__098__lesson-84-2-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__099__lesson-84-3-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__100__lesson-84-4-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__101__lesson-84-5-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__102__lesson-84-6-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__103__lesson-84-7-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__104__lesson-84-8-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__105__lesson-84-9-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__106__lesson-84-10-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__107__lesson-84-11-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__108__lesson-84-12-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__109__lesson-84-13-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| w12__110__lesson-84-14-of-14 | Week 12 Leave It Behind.dc.html | Lesson 84 · 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
