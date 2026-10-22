@@ -5,7 +5,7 @@ Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline c
 
 Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
 
-Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 527 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
+Rows: 2182 · NOT_STARTED 1601 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 572 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 1
 
 | id | design file | artboard | app file | spec | harness | status | diff | verified | note |
 |---|---|---|---|---|---|---|---|---|---|
@@ -296,8 +296,8 @@ Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__030__27-your-plan | Email Login.dc.html | 27 · Your Plan | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=your-plan · seed tail-session-seed | DIFF_CLEAN | 0.228 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__031__28-your-vici-rating | Email Login.dc.html | 28 · Your VICI Rating | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=starting-point · seed tail-session-seed | DIFF_CLEAN | 1.924 % | 2026-10-22 | app rating 0-100 (D30) |
 | app__032__29-the-next-30-days | Email Login.dc.html | 29 · The Next 30 Days | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=next30 · seed tail-session-seed | DIFF_CLEAN | 0.747 % | 2026-10-22 | app rate arithmetic and copy (D30, D28) |
-| app__033__30-one-year-from-now | Email Login.dc.html | 30 · One Year From Now | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=one-year · seed tail-session-seed | DIFF_CLEAN | 2.813 % | 2026-10-22 | app rate arithmetic and copy (D30, D28) |
-| app__034__31-if-nothing-changes | Email Login.dc.html | 31 · If Nothing Changes | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=age80 · seed tail-session-seed | DIFF_CLEAN | 0.146 % | 2026-10-22 |  |
+| app__033__30-one-year-from-now | Email Login.dc.html | 30 · One Year From Now | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=one-year · seed tail-session-seed | DIFF_CLEAN | 2.815 % | 2026-10-22 | app rate arithmetic and copy (D30, D28) |
+| app__034__31-if-nothing-changes | Email Login.dc.html | 31 · If Nothing Changes | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=age80 · seed tail-session-seed | DIFF_CLEAN | 0.147 % | 2026-10-22 |  |
 | app__035__32-if-nothing-changes | Email Login.dc.html | 32 · If Nothing Changes | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=line-nothing · seed tail-session-seed | DIFF_CLEAN | 0.507 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__036__32a-with-the-plan | Email Login.dc.html | 32A · With the Plan | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=line-plan · seed tail-session-seed | DIFF_CLEAN | 0.604 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__037__32b-a-clean-day | Email Login.dc.html | 32B · A Clean Day | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=clean-day · seed tail-session-seed | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
@@ -315,8 +315,8 @@ Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__049__15-manage-subscription | Email Login.dc.html | 15 · Manage Subscription | src/components/paywall/PaywallFlow.tsx | specs/vici-ui-2/onboarding.md | /subscription · seed f-pw-sub-dated · clock 2026-07-10T09:41:00 | DIFF_CLEAN | 0.066 % | 2026-10-22 | clock 10 Jul 2026 so the renewal date is the frame's |
 | app__050__19b-morning-check-in-time | Email Login.dc.html | 19B · Morning check-in time | src/components/routines/kit.tsx | specs/vici-ui-2/today-checkins.md | /routines/morning-time · seed v-premium-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
 | app__051__19c-nightly-check-in-time | Email Login.dc.html | 19C · Nightly check-in time | src/components/routines/kit.tsx | specs/vici-ui-2/today-checkins.md | /routines/night-time · seed v-premium-seed | DIFF_CLEAN | 0.349 % | 2026-10-22 |  |
-| app__052__21-today | Email Login.dc.html | 21 · Today | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-0900-seed | DIFF_CLEAN | 5.168 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
-| app__053__21b-score-detail | Email Login.dc.html | 21B · Score Detail | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 2.145 % | 2026-10-22 | app rating model (D30) |
+| app__052__21-today | Email Login.dc.html | 21 · Today | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-0900-seed | DIFF_CLEAN | 5.063 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
+| app__053__21b-score-detail | Email Login.dc.html | 21B · Score Detail | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 2.122 % | 2026-10-22 | app rating model (D30) |
 | app__054__20b-score-detail-what-moved-it | Email Login.dc.html | 20B · Score Detail — What Moved It | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 3.276 % | 2026-10-22 | app rating model (D30) |
 | app__055__20c-score-detail-ranks | Email Login.dc.html | 20C · Score Detail — Ranks | src/app/(app)/score.tsx | specs/vici-ui-2/today-checkins.md | /score · seed today-0900-seed | DIFF_CLEAN | 2.397 % | 2026-10-22 | app rating model (D30) |
 | app__056__21-today-p2 | Email Login.dc.html | 21 · Today — p2 | src/app/(app)/today.tsx | specs/vici-ui-2/today-checkins.md | /today · seed today-ii-seed | DIFF_CLEAN | 0.953 % | 2026-10-22 | layout per frame; rating, streak, lesson number are app data (D30, D36) |
@@ -506,56 +506,56 @@ Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__240__l08-sort-five-things-in-your-bag | Email Login.dc.html | L08 · Sort five things in your bag | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L08 | DIFF_CLEAN | 0.135 % | 2026-10-22 |  |
 | app__241__l09-walk-to-a-familiar-corner-and-back | Email Login.dc.html | L09 · Walk to a familiar corner and back | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L09 | DIFF_CLEAN | 0.160 % | 2026-10-22 |  |
 | app__242__l10-name-the-feeling-and-pause-for-one-minute | Email Login.dc.html | L10 · Name the feeling and pause for one minute | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=L10 | DIFF_CLEAN | 0.127 % | 2026-10-22 |  |
-| app__243__88-medallions | Email Login.dc.html | 88 · Medallions |  |  |  | NOT_STARTED |  |  |  |
-| app__244__88b-medallions-still-to-earn | Email Login.dc.html | 88B · Medallions — Still to earn |  |  |  | NOT_STARTED |  |  |  |
-| app__245__88c-medallions-earned-ii | Email Login.dc.html | 88C · Medallions — Earned II |  |  |  | NOT_STARTED |  |  |  |
-| app__246__88d-breakwater-paper | Email Login.dc.html | 88D · Breakwater — Paper |  |  |  | NOT_STARTED |  |  |  |
-| app__247__88e-breakwater-bronze | Email Login.dc.html | 88E · Breakwater — Bronze |  |  |  | NOT_STARTED |  |  |  |
-| app__248__88f-breakwater-silver | Email Login.dc.html | 88F · Breakwater — Silver |  |  |  | NOT_STARTED |  |  |  |
-| app__249__88g-breakwater-gold | Email Login.dc.html | 88G · Breakwater — Gold |  |  |  | NOT_STARTED |  |  |  |
-| app__250__88h-breakwater-platinum | Email Login.dc.html | 88H · Breakwater — Platinum |  |  |  | NOT_STARTED |  |  |  |
-| app__251__88i-tiers-vidi | Email Login.dc.html | 88I · Tiers — Vidi |  |  |  | NOT_STARTED |  |  |  |
-| app__252__88j-tiers-vici | Email Login.dc.html | 88J · Tiers — Vici |  |  |  | NOT_STARTED |  |  |  |
-| app__253__88k-tiers-rebound | Email Login.dc.html | 88K · Tiers — Rebound |  |  |  | NOT_STARTED |  |  |  |
-| app__254__88l-tiers-breakwater | Email Login.dc.html | 88L · Tiers — Breakwater |  |  |  | NOT_STARTED |  |  |  |
-| app__255__88m-tiers-logbook | Email Login.dc.html | 88M · Tiers — Logbook |  |  |  | NOT_STARTED |  |  |  |
-| app__256__88n-tiers-pulse | Email Login.dc.html | 88N · Tiers — Pulse |  |  |  | NOT_STARTED |  |  |  |
-| app__257__88o-tiers-archive | Email Login.dc.html | 88O · Tiers — Archive |  |  |  | NOT_STARTED |  |  |  |
-| app__258__88p-tiers-lessons | Email Login.dc.html | 88P · Tiers — Lessons |  |  |  | NOT_STARTED |  |  |  |
-| app__259__88q-tiers-one-offs | Email Login.dc.html | 88Q · Tiers — One-offs |  |  |  | NOT_STARTED |  |  |  |
-| app__260__89a-vici-detail-paper | Email Login.dc.html | 89A · Vici Detail — Paper |  |  |  | NOT_STARTED |  |  |  |
-| app__261__89c-vici-detail-bronze | Email Login.dc.html | 89C · Vici Detail — Bronze |  |  |  | NOT_STARTED |  |  |  |
-| app__262__89d-vici-detail-silver | Email Login.dc.html | 89D · Vici Detail — Silver |  |  |  | NOT_STARTED |  |  |  |
-| app__263__89e-vici-detail-gold | Email Login.dc.html | 89E · Vici Detail — Gold |  |  |  | NOT_STARTED |  |  |  |
-| app__264__89f-vici-detail-platinum | Email Login.dc.html | 89F · Vici Detail — Platinum |  |  |  | NOT_STARTED |  |  |  |
-| app__265__90-log-chooser | Email Login.dc.html | 90 · Log — Chooser |  |  |  | NOT_STARTED |  |  |  |
-| app__266__91-log-urges | Email Login.dc.html | 91 · Log — Urges |  |  |  | NOT_STARTED |  |  |  |
-| app__267__91-2-log-check-ins | Email Login.dc.html | 91-2 · Log — Check-ins |  |  |  | NOT_STARTED |  |  |  |
-| app__268__91-3-log-reports | Email Login.dc.html | 91-3 · Log — Reports |  |  |  | NOT_STARTED |  |  |  |
-| app__269__91a-urge-overview | Email Login.dc.html | 91A · Urge Overview |  |  |  | NOT_STARTED |  |  |  |
-| app__270__91b-urge-overview-scrolled | Email Login.dc.html | 91B · Urge Overview — Scrolled |  |  |  | NOT_STARTED |  |  |  |
-| app__271__91c0-report-ready | Email Login.dc.html | 91C0 · Report Ready |  |  |  | NOT_STARTED |  |  |  |
-| app__272__91c-weekly-report-days | Email Login.dc.html | 91C · Weekly Report — Days |  |  |  | NOT_STARTED |  |  |  |
-| app__273__91c2-weekly-report-urges | Email Login.dc.html | 91C2 · Weekly Report — Urges |  |  |  | NOT_STARTED |  |  |  |
-| app__274__91c3-weekly-report-what-helped | Email Login.dc.html | 91C3 · Weekly Report — What helped |  |  |  | NOT_STARTED |  |  |  |
-| app__275__91c4-weekly-report-journal | Email Login.dc.html | 91C4 · Weekly Report — Journal |  |  |  | NOT_STARTED |  |  |  |
-| app__276__91c5-weekly-report-next-week | Email Login.dc.html | 91C5 · Weekly Report — Next week |  |  |  | NOT_STARTED |  |  |  |
-| app__277__91c6-weekly-report-week-with-a-slip | Email Login.dc.html | 91C6 · Weekly Report — Week with a slip |  |  |  | NOT_STARTED |  |  |  |
-| app__278__91d-urge-log-intensity | Email Login.dc.html | 91D · Urge Log — Intensity |  |  |  | NOT_STARTED |  |  |  |
-| app__279__91e-urge-log-triggers | Email Login.dc.html | 91E · Urge Log — Triggers |  |  |  | NOT_STARTED |  |  |  |
-| app__280__91f-urge-log-outcome | Email Login.dc.html | 91F · Urge Log — Outcome |  |  |  | NOT_STARTED |  |  |  |
-| app__281__91g-urge-log-when | Email Login.dc.html | 91G · Urge Log — When |  |  |  | NOT_STARTED |  |  |  |
-| app__282__91h-urge-log-logged | Email Login.dc.html | 91H · Urge Log — Logged |  |  |  | NOT_STARTED |  |  |  |
-| app__283__92-settings | Email Login.dc.html | 92 · Settings |  |  |  | NOT_STARTED |  |  |  |
-| app__284__93-edit-profile | Email Login.dc.html | 93 · Edit Profile |  |  |  | NOT_STARTED |  |  |  |
-| app__285__93b-profile-photo-sheet | Email Login.dc.html | 93B · Profile photo sheet |  |  |  | NOT_STARTED |  |  |  |
-| app__286__93c-edit-name-sheet | Email Login.dc.html | 93C · Edit name sheet |  |  |  | NOT_STARTED |  |  |  |
-| app__287__93d-weekly-report | Email Login.dc.html | 93D · Weekly report |  |  |  | NOT_STARTED |  |  |  |
-| app__288__92b-night-check-in-time | Email Login.dc.html | 92B · Night check-in time |  |  |  | NOT_STARTED |  |  |  |
-| app__289__92c-your-vow | Email Login.dc.html | 92C · Your vow |  |  |  | NOT_STARTED |  |  |  |
-| app__290__92d-sign-out-sheet | Email Login.dc.html | 92D · Sign out sheet |  |  |  | NOT_STARTED |  |  |  |
-| app__291__94-data-privacy | Email Login.dc.html | 94 · Data & Privacy |  |  |  | NOT_STARTED |  |  |  |
-| app__292__95-app-lock | Email Login.dc.html | 95 · App Lock |  |  |  | NOT_STARTED |  |  |  |
+| app__243__88-medallions | Email Login.dc.html | 88 · Medallions | src/app/(app)/milestones.tsx | specs/vici-ui-2/log-medallions-settings.md | /milestones · seed medallions-seed | DIFF_CLEAN | 0.160 % | 2026-10-22 |  |
+| app__244__88b-medallions-still-to-earn | Email Login.dc.html | 88B · Medallions — Still to earn | src/app/(app)/milestones.tsx | specs/vici-ui-2/log-medallions-settings.md | /milestones · seed medallions-seed | DIFF_CLEAN | 0.122 % | 2026-10-22 |  |
+| app__245__88c-medallions-earned-ii | Email Login.dc.html | 88C · Medallions — Earned II | src/app/(app)/milestones.tsx | specs/vici-ui-2/log-medallions-settings.md | /milestones · seed medallions-seed | DIFF_CLEAN | 0.151 % | 2026-10-22 |  |
+| app__246__88d-breakwater-paper | Email Login.dc.html | 88D · Breakwater — Paper | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/breakwater?tier=paper · seed medallions-seed | DIFF_CLEAN | 0.487 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__247__88e-breakwater-bronze | Email Login.dc.html | 88E · Breakwater — Bronze | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/breakwater?tier=bronze · seed medallions-seed | DIFF_CLEAN | 0.512 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__248__88f-breakwater-silver | Email Login.dc.html | 88F · Breakwater — Silver | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/breakwater?tier=silver · seed medallions-seed | DIFF_CLEAN | 0.437 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__249__88g-breakwater-gold | Email Login.dc.html | 88G · Breakwater — Gold | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/breakwater?tier=gold · seed medallions-seed | DIFF_CLEAN | 0.593 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__250__88h-breakwater-platinum | Email Login.dc.html | 88H · Breakwater — Platinum | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/breakwater?tier=platinum · seed medallions-seed | DIFF_CLEAN | 4.915 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__251__88i-tiers-vidi | Email Login.dc.html | 88I · Tiers — Vidi | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/vidi · seed medallions-vidi-seed | DIFF_CLEAN | 0.696 % | 2026-10-22 |  |
+| app__252__88j-tiers-vici | Email Login.dc.html | 88J · Tiers — Vici | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/vici · seed medallions-seed | DIFF_CLEAN | 0.098 % | 2026-10-22 |  |
+| app__253__88k-tiers-rebound | Email Login.dc.html | 88K · Tiers — Rebound | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/rebound · seed medallions-seed | DIFF_CLEAN | 0.087 % | 2026-10-22 |  |
+| app__254__88l-tiers-breakwater | Email Login.dc.html | 88L · Tiers — Breakwater | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/breakwater · seed medallions-seed | DIFF_CLEAN | 0.272 % | 2026-10-22 |  |
+| app__255__88m-tiers-logbook | Email Login.dc.html | 88M · Tiers — Logbook | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/logbook · seed medallions-seed | DIFF_CLEAN | 0.107 % | 2026-10-22 |  |
+| app__256__88n-tiers-pulse | Email Login.dc.html | 88N · Tiers — Pulse | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/pulse · seed medallions-seed | DIFF_CLEAN | 0.290 % | 2026-10-22 |  |
+| app__257__88o-tiers-archive | Email Login.dc.html | 88O · Tiers — Archive | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/archive · seed medallions-seed | DIFF_CLEAN | 0.247 % | 2026-10-22 |  |
+| app__258__88p-tiers-lessons | Email Login.dc.html | 88P · Tiers — Lessons | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/lessons · seed medallions-seed | DIFF_CLEAN | 0.433 % | 2026-10-22 |  |
+| app__259__88q-tiers-one-offs | Email Login.dc.html | 88Q · Tiers — One-offs | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/tiers/once · seed medallions-seed | DIFF_CLEAN | 0.290 % | 2026-10-22 |  |
+| app__260__89a-vici-detail-paper | Email Login.dc.html | 89A · Vici Detail — Paper | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/vici?tier=none · seed medallions-seed | DIFF_CLEAN | 3.565 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__261__89c-vici-detail-bronze | Email Login.dc.html | 89C · Vici Detail — Bronze | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/vici?tier=bronze · seed medallions-seed | DIFF_CLEAN | 0.934 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__262__89d-vici-detail-silver | Email Login.dc.html | 89D · Vici Detail — Silver | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/vici?tier=silver · seed medallions-seed | DIFF_CLEAN | 4.774 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__263__89e-vici-detail-gold | Email Login.dc.html | 89E · Vici Detail — Gold | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/vici?tier=gold · seed medallions-seed | DIFF_CLEAN | 1.024 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__264__89f-vici-detail-platinum | Email Login.dc.html | 89F · Vici Detail — Platinum | src/app/medallions | specs/vici-ui-2/log-medallions-settings.md | /medallions/vici?tier=platinum · seed medallions-seed | DIFF_CLEAN | 5.823 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
+| app__265__90-log-chooser | Email Login.dc.html | 90 · Log — Chooser | src/app/log-chooser.tsx | specs/vici-ui-2/log-medallions-settings.md | /log-chooser · seed logs-seed | DIFF_CLEAN | 0.191 % | 2026-10-22 |  |
+| app__266__91-log-urges | Email Login.dc.html | 91 · Log — Urges | src/app/(app)/log.tsx | specs/vici-ui-2/log-medallions-settings.md | /log · seed logs-week-sun-seed | DIFF_CLEAN | 0.281 % | 2026-10-22 | app data (streak, rating) (D30) |
+| app__267__91-2-log-check-ins | Email Login.dc.html | 91-2 · Log — Check-ins | src/app/(app)/log.tsx | specs/vici-ui-2/log-medallions-settings.md | /log · seed logs-week-sun-seed | DIFF_CLEAN | 1.056 % | 2026-10-22 | app data (streak, rating) (D30) |
+| app__268__91-3-log-reports | Email Login.dc.html | 91-3 · Log — Reports | src/app/(app)/log.tsx | specs/vici-ui-2/log-medallions-settings.md | /log · seed logs-reports-seed | DIFF_CLEAN | 1.482 % | 2026-10-22 | app data (streak, rating) (D30) |
+| app__269__91a-urge-overview | Email Login.dc.html | 91A · Urge Overview |  | specs/vici-ui-2/log-medallions-settings.md | /urge-overview · seed logs-overview-seed | DIFF_CLEAN | 7.905 % | 2026-10-22 |  |
+| app__270__91b-urge-overview-scrolled | Email Login.dc.html | 91B · Urge Overview — Scrolled |  |  | /urge-overview · seed logs-overview-seed | NOT_STARTED | 4.665 % | 2026-10-22 |  |
+| app__271__91c0-report-ready | Email Login.dc.html | 91C0 · Report Ready |  |  | /report-ready?week=2025-07-14 · seed logs-wr-urges-seed | NOT_STARTED | 0.195 % | 2026-10-22 |  |
+| app__272__91c-weekly-report-days | Email Login.dc.html | 91C · Weekly Report — Days |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-days-seed | NOT_STARTED | 13.540 % | 2026-10-22 |  |
+| app__273__91c2-weekly-report-urges | Email Login.dc.html | 91C2 · Weekly Report — Urges |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-urges-seed | NOT_STARTED | 11.768 % | 2026-10-22 |  |
+| app__274__91c3-weekly-report-what-helped | Email Login.dc.html | 91C3 · Weekly Report — What helped |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-urges-seed | NOT_STARTED | 15.085 % | 2026-10-22 |  |
+| app__275__91c4-weekly-report-journal | Email Login.dc.html | 91C4 · Weekly Report — Journal |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-urges-seed | NOT_STARTED | 14.261 % | 2026-10-22 |  |
+| app__276__91c5-weekly-report-next-week | Email Login.dc.html | 91C5 · Weekly Report — Next week |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-urges-seed | NOT_STARTED | 10.280 % | 2026-10-22 |  |
+| app__277__91c6-weekly-report-week-with-a-slip | Email Login.dc.html | 91C6 · Weekly Report — Week with a slip |  |  | /weekly-report?week=2025-07-14 · seed logs-wr-days-seed | NOT_STARTED | 13.410 % | 2026-10-22 |  |
+| app__278__91d-urge-log-intensity | Email Login.dc.html | 91D · Urge Log — Intensity | src/app/urge-log.tsx | specs/vici-ui-2/log-medallions-settings.md | /urge-log · seed logs-flow-seed | DIFF_CLEAN | 0.047 % | 2026-10-22 |  |
+| app__279__91e-urge-log-triggers | Email Login.dc.html | 91E · Urge Log — Triggers | src/app/urge-log.tsx | specs/vici-ui-2/log-medallions-settings.md | /urge-log · seed logs-flow-seed | DIFF_CLEAN | 0.052 % | 2026-10-22 |  |
+| app__280__91f-urge-log-outcome | Email Login.dc.html | 91F · Urge Log — Outcome | src/app/urge-log.tsx | specs/vici-ui-2/log-medallions-settings.md | /urge-log · seed logs-flow-seed | DIFF_CLEAN | 0.027 % | 2026-10-22 |  |
+| app__281__91g-urge-log-when | Email Login.dc.html | 91G · Urge Log — When | src/app/urge-log.tsx | specs/vici-ui-2/log-medallions-settings.md | /urge-log · seed logs-flow-seed | DIFF_CLEAN | 0.073 % | 2026-10-22 |  |
+| app__282__91h-urge-log-logged | Email Login.dc.html | 91H · Urge Log — Logged | src/app/urge-log.tsx | specs/vici-ui-2/log-medallions-settings.md | /urge-log · seed logs-flow-seed | DIFF_CLEAN | 0.077 % | 2026-10-22 |  |
+| app__283__92-settings | Email Login.dc.html | 92 · Settings | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /settings · seed settings-seed | DIFF_CLEAN | 2.495 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
+| app__284__93-edit-profile | Email Login.dc.html | 93 · Edit Profile | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /profile · seed settings-profile-seed | DIFF_CLEAN | 1.840 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
+| app__285__93b-profile-photo-sheet | Email Login.dc.html | 93B · Profile photo sheet | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /profile · seed settings-profile-seed | SUPERSEDED | 3.910 % | 2026-10-22 | owner removed the photo feature: no photo pipeline (D480, 9487e33d) |
+| app__286__93c-edit-name-sheet | Email Login.dc.html | 93C · Edit name sheet | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /profile · seed settings-profile-seed | DIFF_CLEAN | 0.555 % | 2026-10-22 |  |
+| app__287__93d-weekly-report | Email Login.dc.html | 93D · Weekly report | src/app/settings |  | /weekly-report?week=2025-07-14&from=settings · seed logs-wr-days-seed | NOT_STARTED | 1.602 % | 2026-10-22 |  |
+| app__288__92b-night-check-in-time | Email Login.dc.html | 92B · Night check-in time | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /routines/night-time?from=settings · seed v-premium-seed | DIFF_CLEAN | 0.364 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
+| app__289__92c-your-vow | Email Login.dc.html | 92C · Your vow | src/app/vow.tsx | specs/vici-ui-2/log-medallions-settings.md | /vow · seed settings-vow-dated-seed | DIFF_CLEAN | 0.446 % | 2026-10-22 | kept copy (D28) |
+| app__290__92d-sign-out-sheet | Email Login.dc.html | 92D · Sign out sheet | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /settings · seed settings-seed | DIFF_CLEAN | 1.341 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
+| app__291__94-data-privacy | Email Login.dc.html | 94 · Data & Privacy | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /privacy · seed settings-seed | DIFF_CLEAN | 3.513 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
+| app__292__95-app-lock | Email Login.dc.html | 95 · App Lock | src/app/settings | specs/vici-ui-2/log-medallions-settings.md | /applock · seed settings-seed | DIFF_CLEAN | 3.550 % | 2026-10-22 | kept owner changes: reminders toggle, no username, privacy copy, app lock line (D28) |
 | app__293__97-sos-urge-or-relapse | Email Login.dc.html | 97 · SOS — Urge or Relapse | src/app/sos.tsx | specs/vici-ui-2/sos-chooser.md | chooser&state=main | DIFF_CLEAN | 0.003 % | 2026-10-21 | noise only (D16), reviewed |
 | app__294__relapse-working-flow | Email Login.dc.html | Relapse — Working flow | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=live | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
 | app__295__01-when-nothing-selected | Email Login.dc.html | 01 · When — Nothing selected | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=r01 | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
@@ -632,11 +632,11 @@ Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__366__q02-emily-dickinson-with-e002 | Email Login.dc.html | Q02 · Emily Dickinson (with E002) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ02 | DIFF_CLEAN | 0.046 % | 2026-10-22 |  |
 | app__367__q03-wis-awa-szymborska-with-e009 | Email Login.dc.html | Q03 · Wisława Szymborska (with E009) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ03 | DIFF_CLEAN | 0.128 % | 2026-10-22 |  |
 | app__368__q04-jane-kenyon-with-e041 | Email Login.dc.html | Q04 · Jane Kenyon (with E041) | src/app/slip.tsx · src/components/slip/relapse.tsx | specs/vici-ui-2/relapse.md | relapse&state=qQ04 | DIFF_CLEAN | 0.049 % | 2026-10-22 |  |
-| app__369__90b-vici-post-arrival | Email Login.dc.html | 90B · VICI Post — Arrival |  |  |  | NOT_STARTED |  |  |  |
-| app__370__39-the-letter-read | Email Login.dc.html | 39 · The Letter — Read |  |  |  | NOT_STARTED |  |  |  |
-| app__371__39b-post-medallion-letter | Email Login.dc.html | 39B · Post — Medallion Letter |  |  |  | NOT_STARTED |  |  |  |
-| app__372__39c-post-the-yearly-drop | Email Login.dc.html | 39C · Post — The Yearly Drop |  |  |  | NOT_STARTED |  |  |  |
-| app__373__39d-you-received-a-drop | Email Login.dc.html | 39D · You Received a Drop |  |  |  | NOT_STARTED |  |  |  |
+| app__369__90b-vici-post-arrival | Email Login.dc.html | 90B · VICI Post — Arrival | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /letter?id=R01&at=1792572060000 · seed ml-letters-seed | DIFF_CLEAN | 0.669 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
+| app__370__39-the-letter-read | Email Login.dc.html | 39 · The Letter — Read | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /letter?id=R01&at=1792572060000 · seed ml-letters-seed | DIFF_CLEAN | 3.232 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
+| app__371__39b-post-medallion-letter | Email Login.dc.html | 39B · Post — Medallion Letter | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /medallion-post · seed ml-letters-seed | DIFF_CLEAN | 2.878 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
+| app__372__39c-post-the-yearly-drop | Email Login.dc.html | 39C · Post — The Yearly Drop | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /drop · seed ml-letters-seed | DIFF_CLEAN | 1.939 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
+| app__373__39d-you-received-a-drop | Email Login.dc.html | 39D · You Received a Drop | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /drop · seed ml-letters-seed | DIFF_CLEAN | 0.868 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
 | app__374__84-lesson-frame-1-of-14 | Email Login.dc.html | 84 · Lesson — Frame 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
 | app__375__84-lesson-frame-2-of-14 | Email Login.dc.html | 84 · Lesson — Frame 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
 | app__376__84-lesson-frame-3-of-14 | Email Login.dc.html | 84 · Lesson — Frame 3 of 14 |  |  |  | NOT_STARTED |  |  |  |

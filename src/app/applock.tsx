@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
-import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { ASK_AFTER, authenticate, lockAvailable, releaseLock, saveLockConfig, useLockConfig, useLockName, type LockConfig } from '@/components/AppLockGate';
 import { Check, GhostLink, LoadingView, MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion, SHEET_TOP, Sheet } from '@/components/mono';
@@ -10,9 +9,8 @@ import type { UserSettings } from '@/lib/types';
 import { mono } from '@/lib/theme';
 
 /**
- * 95 · App lock — the padlock on a 76 ink disc at canvas 124, then a `gap 14`
- * column from 222: the heading and its line centred, the Lock and Privacy
- * groups, and the footnote. The column scrolls between the nav and the
+ * 95 · App lock — a `gap 14` column from 120: the heading and its line, the
+ * Lock and Privacy groups, and the footnote. The column scrolls between the nav and the
  * screen's foot if it has to (D320).
  *
  * The three switches write `appLockFaceId` (default off), `appLockOnLeave`
@@ -88,25 +86,11 @@ export default function AppLock() {
     <Screen>
       <NavBar left="back" centre={{ title: 'App lock' }} right="empty" onBack={back} />
 
-      <ScrollRegion top={100} contentStyle={{ paddingTop: 24, paddingHorizontal: 24, paddingBottom: 24 }}>
-        {/* the frame's disc keeps the kit's palette inverted: a `#111111` padlock
-            with an ink keyhole on the ink disc */}
-        <View style={{ alignSelf: 'center', width: 76, height: 76, borderRadius: 38, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
-          <Svg width={30} height={30} viewBox="0 0 30 30">
-            <Rect width={18} height={13} x={6} y={13} rx={3.5} fill={mono.onInk} />
-            <Path d="M10 13V9.5a5 5 0 0 1 10 0V13" fill="none" stroke={mono.onInk} strokeWidth={2.6} />
-            <Circle cx={15} cy={19.5} r={2} fill={mono.ink} />
-          </Svg>
-        </View>
-
-        {/* 124 + 76 = 200; the column starts at 222 */}
-        <View style={{ marginTop: 22, gap: 14 }}>
-          <MonoText v="h1" center>
-            Keep VICI private.
-          </MonoText>
-          <MonoText v="p" center>
-            {`Lock it with your ${name} so only you can open it.`}
-          </MonoText>
+      <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24 }}>
+        {/* the column from 120 (Vici UI 2 drops the padlock disc and sets the heading left) */}
+        <View style={{ gap: 14 }}>
+          <MonoText v="h1">Keep VICI private.</MonoText>
+          <MonoText v="p">{`Lock it with your ${name} so only you can open it.`}</MonoText>
           <View style={{ height: 4 }} />
           <RowGroup label="Lock">
             <Row label={`Require ${name}`} toggle={{ value: lockOn, onChange: (next) => void setRequire(next) }} />

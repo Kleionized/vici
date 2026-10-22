@@ -1,7 +1,7 @@
 import { cloneElement, isValidElement, useState, type ReactNode } from 'react';
 import { Platform, StyleSheet, Text, type LayoutChangeEvent, type NativeSyntheticEvent, type TextLayoutEventData, type TextProps, type TextStyle } from 'react-native';
 
-import { type as T } from '@/lib/theme';
+import { halfLeading, type as T } from '@/lib/theme';
 import { hasWraps, linesAs } from '@/lib/wrap';
 
 import { latoRuns } from './fallback';
@@ -155,6 +155,8 @@ export interface MonoTextProps extends TextProps {
 export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMultiplier = 1.3, children, onTextLayout, onLayout, ...rest }: MonoTextProps) {
   const w = wrap ?? DEFAULT_WRAP[v];
   const flat = StyleSheet.flatten([T[v], style]) as TextStyle;
+  // a line set tighter than Lato's natural height: its glyphs where WebKit centres them (D40)
+  const lead = Platform.OS === 'ios' ? halfLeading(flat.fontSize, flat.lineHeight) : null;
   // a run the frames drew broken (D13): laid out on the frame's own lines once its box is known
   const words = Platform.OS !== 'web' && w !== 'nowrap' ? flatText(children) : '';
   const known = !!words && hasWraps(words, flat.fontSize as number);
@@ -177,7 +179,7 @@ export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMulti
         {...rest}
         onLayout={measure}
         onTextLayout={onTextLayout}
-        style={[T[v], center ? { textAlign: 'center' } : null, color ? { color } : null, style, slackFor(align)]}>
+        style={[T[v], center ? { textAlign: 'center' } : null, color ? { color } : null, style, slackFor(align), lead]}>
         {typeof children === 'string' ? latoRuns(lines.join('\n'), flat) : rebreak(children, lines.join('\n'), { i: 0 })}
       </Text>
     );
@@ -196,7 +198,7 @@ export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMulti
       {...rest}
       onLayout={measure}
       onTextLayout={layout}
-      style={[T[v], wrapStyle(w), center ? { textAlign: 'center' } : null, color ? { color } : null, style]}>
+      style={[T[v], wrapStyle(w), center ? { textAlign: 'center' } : null, color ? { color } : null, style, lead]}>
       {typeof (tied ?? children) === 'string' ? latoRuns((tied ?? children) as string, flat) : children}
     </Text>
   );

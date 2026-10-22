@@ -115,7 +115,8 @@ export default function UrgeLog() {
           painted first, under both; a phone too short for it drops it (D320) */}
       {step === 0 ? <Hero id="thermometer" top={506} scale={1.062} controls={106} /> : null}
       {step === 1 ? <Hero id="match" top={506} controls={106} /> : null}
-      {step === 2 ? <Hero id="clipboard" top={506} scale={0.989} controls={106} /> : null}
+      {step === 2 ? <Hero id="clipboard" top={521.9} scale={1} controls={106} /> : null}
+      {step === 3 ? <Hero id="calendar2" top={521.9} scale={1} controls={106} /> : null}
       <FlowNav step={step + 1} total={4} onBack={back} onClose={close} />
 
       {step === 0 ? (

@@ -1,5 +1,6 @@
-import { Text, type TextProps, type TextStyle } from 'react-native';
+import { Platform, Text, type TextProps, type TextStyle } from 'react-native';
 
+import { halfLeading } from '@/lib/theme';
 import { wrapAs } from '@/lib/wrap';
 
 import { latoRuns } from './fallback';
@@ -22,7 +23,7 @@ export function WrapText({ style, w, children, align = 'left', ...rest }: Omit<T
   const broken = text !== children;
   const slack: TextStyle | null = !broken ? null : align === 'center' ? { marginHorizontal: -SLACK / 2 } : align === 'right' ? { marginLeft: -SLACK } : { marginRight: -SLACK };
   return (
-    <Text maxFontSizeMultiplier={1.3} {...rest} style={[style, align !== 'left' ? { textAlign: align } : null, slack]}>
+    <Text maxFontSizeMultiplier={1.3} {...rest} style={[style, align !== 'left' ? { textAlign: align } : null, slack, Platform.OS === 'ios' ? halfLeading(style.fontSize, style.lineHeight as number | undefined) : null]}>
       {latoRuns(text, style)}
     </Text>
   );

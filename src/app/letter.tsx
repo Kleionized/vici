@@ -7,8 +7,7 @@ import { O3LetterRead, WEEK_XII_FROM } from '@/components/onboarding/handover';
 import { LETTER_BY_ID, type ViciLetter } from '@/content/viciLetters';
 import { WEEK_XII_LETTER } from '@/content/weekXiiLetter';
 import { useCreateJournalEntry, useCurrentUser } from '@/lib/backend';
-import { LETTER_OPENS_DAY, courseWeekForDay, letterOpen, programmeDay } from '@/lib/day';
-import { roman } from '@/lib/format';
+import { LETTER_OPENS_DAY, letterOpen, programmeDay } from '@/lib/day';
 import { keepLetter, readLetterBox } from '@/lib/letterBox';
 import { fillName, firstName, letterText, salutation } from '@/lib/viciPost';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
@@ -145,7 +144,7 @@ export default function LetterScreen() {
 
   if (phase === 'arrive') {
     // the programme week the post lands in, on the calendar count every screen uses
-    return <PostArrival caps={`Week ${roman(courseWeekForDay(programmeDay(user)))}`} onRead={() => setPhase('read')} onLater={later} onClose={later} />;
+    return <PostArrival onRead={() => setPhase('read')} onLater={later} onClose={later} />;
   }
 
   const { letter } = post;

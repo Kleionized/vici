@@ -9,8 +9,6 @@ import {
   LoadingView,
   MonoText,
   NavBar,
-  Pill,
-  PledgeCard,
   PrimaryButton,
   Screen,
   ScrollRegion,
@@ -22,13 +20,13 @@ import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/
 import { calendarDaysBetween } from '@/lib/day';
 import { shortDate } from '@/lib/format';
 import { pledgeText, VOW_TEXT } from '@/lib/pledge';
-import { mono } from '@/lib/theme';
+import { mono, sansItalic } from '@/lib/theme';
 
 /**
- * 92C · Your vow — the flag hero, then the vow read back in its card (the kit
- * `PledgeCard`, quote setting: the line in Lato 700, the first name in 700
- * italic), how long it has held and when it was signed, and the line about
- * re-signing — which the ghost at `bottom 48` now does (D294).
+ * 92C · Your vow — the flag hero, then from 340 at gap 36: the vow read back
+ * (26/700/34), his first name in 700 italic over a 1.5 rule with when it was
+ * signed and how long it has held under it (13/700 mute), and the line about
+ * re-signing — which the ghost at `bottom 48` does (D294).
  *
  * Short phones (D320, as `HeroBoard` does it): when the stack would come within
  * 16 of the ghost, the flag and the stack rise together; past the flag's room
@@ -119,14 +117,26 @@ export default function Vow() {
       )}
 
       <ScrollRegion top={NAV_FOOT} bottom={GHOST_RESERVE} contentStyle={{ paddingTop: STACK_TOP - lift - NAV_FOOT, paddingHorizontal: 24, paddingBottom: 16 }}>
-        <View onLayout={(e) => setStackH(Math.ceil(e.nativeEvent.layout.height))} style={[{ gap: 16 }, hidden]}>
-          {/* the name goes under the vow only once he has signed it */}
-          <PledgeCard variant="quote" pledge={text} name={vow ? name : undefined} />
-          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
-            {vow ? <Pill kind="status" filled label={`Held for ${held} ${held === 1 ? 'day' : 'days'}`} /> : null}
-            <Pill kind="status" label={signedAt !== undefined ? `Signed ${shortDate(signedAt)}` : 'Not signed yet'} />
+        <View onLayout={(e) => setStackH(Math.ceil(e.nativeEvent.layout.height))} style={[{ gap: 36 }, hidden]}>
+          <MonoText v="h1" wrap="pretty" style={{ lineHeight: 34 }}>
+            {text}
+          </MonoText>
+          {/* the name goes over the rule only once he has signed it */}
+          <View style={{ gap: 10 }}>
+            {vow ? (
+              <MonoText v="h1" wrap="nowrap" style={{ ...sansItalic(), lineHeight: 30, letterSpacing: undefined, paddingLeft: 4 }}>
+                {name}
+              </MonoText>
+            ) : null}
+            <View style={{ height: 1.5, backgroundColor: mono.signRule }} />
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
+              <MonoText v="caps" style={{ lineHeight: 18 }}>
+                {signedAt !== undefined ? `Signed ${shortDate(signedAt)}` : 'Not signed yet'}
+              </MonoText>
+              {vow ? <MonoText v="caps" style={{ lineHeight: 18 }}>{`Held for ${held} ${held === 1 ? 'day' : 'days'}`}</MonoText> : null}
+            </View>
           </View>
-          <MonoText v="p" color={mono.mute} center style={{ fontSize: 14, lineHeight: 21 }}>
+          <MonoText v="p" color={mono.mute} style={{ fontSize: 14, lineHeight: 21 }}>
             {vow
               ? 'After a slip, sign it again. The vow’s day count restarts. Your progress stays.'
               : 'You haven’t signed the vow yet. Sign it when you mean it.'}

@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff, postWeek } from '@/components/keepsakes/Letter';
+import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff } from '@/components/keepsakes/Letter';
 import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
 import { useCreateJournalEntry, useCurrentUser, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
@@ -75,7 +75,7 @@ export default function MedallionPost() {
   };
 
   if (phase === 'arrive') {
-    return <PostArrival caps={postWeek(user)} onRead={() => setPhase('read')} onLater={shelve} onClose={shelve} />;
+    return <PostArrival onRead={() => setPhase('read')} onLater={shelve} onClose={shelve} />;
   }
 
   return (

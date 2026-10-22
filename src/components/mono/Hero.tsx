@@ -212,7 +212,9 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
   const s = props.scale ?? HERO_SCALE[id];
   // the screen's bottom edge in canvas y is `height − canvasTop` (Screen's children box)
   // whole points: the art's bottom is a fraction (716.034) and a 0.03 pt overrun must not drop it
-  const shortfall = props.controls != null ? Math.round(heroArtBottom(id, props.top, s)) + 16 - (win.height - canvasTop - props.controls) : 0;
+  // judged by the art as painted (`HERO_PAINT_Y`): a redrawn card can end well above its designer bounds
+  const paintBottom = Math.round(props.top) + 190 + s * (HERO_PAINT_Y[id][1] - 190);
+  const shortfall = props.controls != null ? Math.round(paintBottom) + 16 - (win.height - canvasTop - props.controls) : 0;
   // A small shortfall (a phone a few points shorter than the frame) raises the art
   // instead of losing it — every such board keeps ≥ 30 clear above its art at 852
   // (D349). A larger one drops it (D320 rule 1).

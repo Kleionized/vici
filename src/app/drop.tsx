@@ -115,8 +115,7 @@ export default function Drop() {
         nav={{ left: 'empty', right: 'close', onClose: close }}
         art={medal}
         artTop={212}
-        stackTop={432}
-        caps="The year"
+        stackTop={466}
         title="Your year starts now."
         body="You have 12 months of VICI. It renews each year until you cancel."
         cta="Continue"
@@ -134,8 +133,7 @@ export default function Drop() {
         nav={{ left: 'empty', right: 'close', onClose: close }}
         art={medal}
         artTop={212}
-        stackTop={432}
-        caps="The year"
+        stackTop={466}
         title="You’re already a member."
         body={`${TIER_NAME} is active on this account. There’s nothing to buy.`}
         cta="Continue"

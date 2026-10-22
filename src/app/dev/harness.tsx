@@ -3,7 +3,7 @@ import { Redirect, Stack, useLocalSearchParams } from 'expo-router';
 import SosChooser from '@/app/sos';
 import { RelapseFlow, RelapseLog } from '@/components/slip/relapse';
 import { SosFlow } from '@/components/urge/sos';
-import { TextLab } from '@/dev/TextLab';
+import { TextLab, VLab } from '@/dev/TextLab';
 import { RELAPSE_PRESETS, relapseInitial, relapseLogEntries, relapseNow } from '@/dev/relapseFixtures';
 import { HARNESS_BUILT, HARNESS_NOW, SOS_PRESETS, sosFixture } from '@/dev/sosFixtures';
 
@@ -24,6 +24,7 @@ export default function Harness() {
   let body = null;
   if (view === 'chooser') body = <SosChooser />;
   if (view === 'textlab') body = <TextLab />;
+  if (view === 'vlab') body = <VLab />;
   if (view === 'relapse') {
     const p = RELAPSE_PRESETS[state ?? 'r01'];
     if (p?.page === 'log') body = <RelapseLog key={n} entries={relapseLogEntries(p)} now={relapseNow(p)} onOpen={() => {}} onNew={() => {}} />;

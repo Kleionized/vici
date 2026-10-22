@@ -4,6 +4,7 @@ import { ScrollView, View, useWindowDimensions } from 'react-native';
 
 import { FaceCoin, kkMetal, kkTierLine } from '@/components/keepsakes/Medallion';
 import { LoadingView, MonoText, NavBar, Screen, Segmented, Tap, TitleHead } from '@/components/mono';
+import { HarnessPages } from '@/dev/HarnessPages';
 import { useMedallionLedger, type LedgerFace } from '@/lib/album';
 import { roman, shortDate } from '@/lib/format';
 import { mono } from '@/lib/theme';
@@ -88,7 +89,9 @@ export default function Milestones() {
           ))}
         </View>
       ) : (
-        <ScrollView
+        <>
+          <HarnessPages name="album" pager={pager} pages={pages.map((_, p) => p * width)} horizontal />
+          <ScrollView
           ref={pager}
           horizontal
           pagingEnabled
@@ -107,7 +110,8 @@ export default function Milestones() {
               ))}
             </View>
           ))}
-        </ScrollView>
+          </ScrollView>
+        </>
       )}
     </Screen>
   );

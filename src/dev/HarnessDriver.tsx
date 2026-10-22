@@ -93,7 +93,11 @@ export function HarnessDriver() {
       }
       else router.replace({ pathname: '/dev/harness', params: { view: t.screen, state: t.state, n: String(t.n), ...(t.extra ?? {}) } } as never);
       if (t.blur) setTimeout(() => Keyboard.dismiss(), 1200);
-      if (t.steps?.length) await run(t.steps);
+      if (t.steps?.length) {
+        await run(t.steps);
+        // a step may have focused a field (a sheet's name field): put that keyboard away too
+        if (t.blur) setTimeout(() => Keyboard.dismiss(), 500);
+      }
     };
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
     /** Work a target's steps; a control that has not mounted yet is waited for (up to 4 s). */

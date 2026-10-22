@@ -26,6 +26,8 @@ export const mono = {
   line: '#2E2E2E',
   /** quote marks, future days, illustration mid-tones */
   art: '#5A574F',
+  /** the signature rule on Your vow (Vici UI 2) */
+  signRule: '#3A3835',
   /** text, icons, and the fill of the primary pill / selected option */
   ink: '#F2F0EC',
   /** secondary paragraph text */
@@ -470,3 +472,22 @@ export const theme = {
 
 export type Theme = typeof theme;
 export default theme;
+
+/**
+ * CSS's half-leading for a line set tighter than the face's natural height.
+ *
+ * WebKit centres a run's glyphs in its line box, so a 48px Lato run on a 50px
+ * line sits (57.6 − 50) / 2 = 3.8 above where a natural line would put it.
+ * React Native on iOS centres only when the line is taller than the font's own
+ * (`RCTApplyBaselineOffset`); on a tighter line the glyphs land that half
+ * deficit higher than the frame draws them (text lab, D40). This returns the
+ * style that puts them back: the run moves down by the half deficit and gives
+ * the same back below, so the box it takes in layout is unchanged. Lato's
+ * natural line is 1.2 × its size (hhea ascender 1974 + descender 426 over 2000).
+ */
+export function halfLeading(fontSize: number | undefined, lineHeight: number | undefined): { paddingTop: number; marginBottom: number } | null {
+  if (!fontSize || !lineHeight) return null;
+  const deficit = fontSize * 1.2 - lineHeight;
+  if (deficit <= 0.01) return null;
+  return { paddingTop: deficit / 2, marginBottom: -deficit / 2 };
+}

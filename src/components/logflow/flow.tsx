@@ -2,9 +2,8 @@ import { useState, type ReactNode } from 'react';
 import { View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import {
-  CheckDisc,
+  ChevronR,
   Chips,
-  DateRow,
   MonoText,
   NavBar,
   OptionList,
@@ -12,7 +11,7 @@ import {
   Screen,
   ScrollRegion,
   Sheet,
-  SummaryCard,
+  Tap,
   TimeWheel,
   useCanvasTop,
   WhenChips,
@@ -20,8 +19,8 @@ import {
   wheelToMinutes,
   type WheelTime,
 } from '@/components/mono';
-import { dayPartDate } from '@/lib/format';
-import { mono } from '@/lib/theme';
+import { clockTime, dayPartDate } from '@/lib/format';
+import { lhNormal, mono } from '@/lib/theme';
 
 /**
  * The log flows' shared steps — Lapse (90B–90D), Urge Log (91D–91H) — on the
@@ -149,13 +148,37 @@ function StepBand({ top = 136, gap, children }: { top?: number; gap: number; chi
 }
 
 /**
- * 90B / 91G · When — `stack(136, gap 14)`: the question, the three chips, "Or
- * choose a time", the wheel (always open — the frames draw it inline) and the
- * date row. The wheel sets the time on the moment's own day; "Change" opens the
- * last seven days, which is where the old wheel's day column went.
+ * A row of the when step's ruled pair (91G): `min-height 56` and the rule under it,
+ * the name 16/400 ink, the value 15/700 mute and a 14 chevron (`#5A574F`).
+ */
+function PickRow({ label, value, onPress }: { label: string; value: string; onPress: () => void }) {
+  return (
+    <Tap label={`${label}, ${value}`} onPress={onPress} style={{ minHeight: 57, borderBottomWidth: 1, borderBottomColor: mono.line, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+      <MonoText v="p" wrap="nowrap" color={mono.ink} style={{ fontSize: 16, lineHeight: lhNormal(16) }}>
+        {label}
+      </MonoText>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, minWidth: 0 }}>
+        <MonoText v="rowValue" color={mono.mute} style={{ fontSize: 15, lineHeight: lhNormal(15) }}>
+          {value}
+        </MonoText>
+        <ChevronR color={mono.art} />
+      </View>
+    </Tap>
+  );
+}
+
+/** The wheel sheet's height: the 220 wheel between the sheet's own 44 top and the 48 the frames keep off the edge. */
+const WHEEL_SHEET_TOP = 852 - 44 - 220 - 48;
+
+/**
+ * 90B / 91G · When — `stack(136, gap 14)`: the question, the three chips, an 8
+ * spacer and two ruled rows, Date and Time, each opening its picker in a sheet
+ * (the last seven days; the kit wheel, on the moment's own day). No frame draws
+ * the two sheets; they hold only the pickers the step drew inline before.
  */
 export function WhenStep({ title, when }: { title: string; when: When }) {
   const [days, setDays] = useState(false);
+  const [time, setTime] = useState(false);
   const options = Array.from({ length: DAYS_BACK }, (_, back) => {
     const at = Math.min(daysBefore(when.now, back, when.at), when.now);
     return { key: String(back), at, label: dayPartDate(at, when.now) };
@@ -171,13 +194,11 @@ export function WhenStep({ title, when }: { title: string; when: When }) {
           value={when.chip == null ? null : WHEN_CHIPS[when.chip].label}
           onChange={(label) => when.pickChip(WHEN_CHIPS.findIndex((c) => c.label === label))}
         />
-        <View style={{ height: 6 }} />
-        <MonoText v="caps">Or choose a time</MonoText>
-        <TimeWheel
-          value={wheelFromMinutes(new Date(when.at).getHours() * 60 + new Date(when.at).getMinutes())}
-          onChange={(next) => when.setAt(onDay(when.at, next))}
-        />
-        <DateRow label={dayPartDate(when.at, when.now)} onPress={() => setDays(true)} />
+        <View style={{ height: 8 }} />
+        <View style={{ borderTopWidth: 1, borderTopColor: mono.line }}>
+          <PickRow label="Date" value={dayPartDate(when.at, when.now)} onPress={() => setDays(true)} />
+          <PickRow label="Time" value={clockTime(when.at, { lower: true })} onPress={() => setTime(true)} />
+        </View>
       </StepBand>
       <Sheet open={days} top={852 - 44 - DAYS_BACK * 58 - (DAYS_BACK - 1) * 12 - 48} onClose={() => setDays(false)}>
         <OptionList
@@ -188,6 +209,12 @@ export function WhenStep({ title, when }: { title: string; when: When }) {
             if (o) when.setAt(o.at);
             setDays(false);
           }}
+        />
+      </Sheet>
+      <Sheet open={time} top={WHEEL_SHEET_TOP} onClose={() => setTime(false)}>
+        <TimeWheel
+          value={wheelFromMinutes(new Date(when.at).getHours() * 60 + new Date(when.at).getMinutes())}
+          onChange={(next) => when.setAt(onDay(when.at, next))}
         />
       </Sheet>
     </>
@@ -249,11 +276,11 @@ export function OptionsStep<K extends string>({
 }
 
 /**
- * 90D / 91H · Logged — close-only nav; the 84 ink disc with its 36 check at
- * 200; `stack(308, centred, gap 12)` of the title, the line under it, a 6
- * spacer and the shrink-to-fit summary card (CRITIC C10); the primary closes.
- * On a short phone the disc and the stack rise into the room under the nav
- * (never past 108), and scroll between the nav and the pill past that.
+ * 90D / 91H · Logged — close-only nav; the title at 136, the line under it (10,
+ * 15/24) and, 28 under that, the summary as ruled rows: the name 15/400 mute,
+ * the value 15/700 ink at the right, `padding 16 0`, a rule under each and one
+ * over the first. The primary closes. On a short phone the stack scrolls
+ * between the nav and the pill (D320).
  */
 export function DoneBoard({
   title,
@@ -268,30 +295,29 @@ export function DoneBoard({
   cta: string;
   onClose: () => void;
 }) {
-  const { lift, onLayout } = useLift(200);
   return (
     <Screen>
       <NavBar left="empty" right="close" onClose={onClose} />
-      <ScrollRegion top={NAV_BOTTOM} bottom={CONTROLS} contentStyle={{ paddingTop: 200 - lift - NAV_BOTTOM, paddingHorizontal: 24, paddingBottom: 16 }}>
-        <View onLayout={onLayout}>
-          <View style={{ alignItems: 'center' }}>
-            <CheckDisc size={84} />
-          </View>
-          <View style={{ height: 308 - 284 }} />
-          <View style={{ gap: 12, alignItems: 'center' }}>
-            <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>
-              {title}
-            </MonoText>
-            {body ? (
-              <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-                {body}
+      <StepBand gap={0}>
+        <MonoText v="h1">{title}</MonoText>
+        {body ? (
+          <MonoText v="p" style={{ marginTop: 10 }}>
+            {body}
+          </MonoText>
+        ) : null}
+        <View style={{ marginTop: 28, borderTopWidth: 1, borderTopColor: mono.line }}>
+          {rows.map((r) => (
+            <View key={r.label} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: mono.line }}>
+              <MonoText v="p" wrap="nowrap" color={mono.mute} style={{ lineHeight: 22 }}>
+                {r.label}
               </MonoText>
-            ) : null}
-            <View style={{ height: 6 }} />
-            <SummaryCard rows={rows} />
-          </View>
+              <MonoText v="rowLabel" wrap="wrap" style={{ lineHeight: 22, textAlign: 'right', flexShrink: 1 }}>
+                {r.value}
+              </MonoText>
+            </View>
+          ))}
         </View>
-      </ScrollRegion>
+      </StepBand>
       <PrimaryButton label={cta} onPress={onClose} />
     </Screen>
   );

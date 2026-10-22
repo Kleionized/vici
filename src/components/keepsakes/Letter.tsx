@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen } from '@/components/mono';
-import { courseWeekForDay, programmeDay, type ProgrammeStart } from '@/lib/day';
-import { roman } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
@@ -16,25 +14,16 @@ import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
  */
 
 /**
- * "Week XII post": the arrival names the programme week the post lands in
- * (CRITIC C8 / medallions Q7 — the frame's XII is its own sample), on the
- * calendar count every screen uses (`src/lib/day.ts`): Day 1 is the
- * programme's first date, seven days a week, twelve weeks at most.
+ * `90B · VICI Post — Arrival`: the envelope hero at 200 (×1.1), the stack at
+ * 486 — "The post is in.", the line under it — `Read` over `Tonight`, and the ✕.
  */
-export function postWeek(start: ProgrammeStart, now = Date.now()): string {
-  return `Week ${roman(courseWeekForDay(programmeDay(start, now)))}`;
-}
-
-/**
- * `90B · VICI Post — Arrival`: the envelope hero at 190 (×1.1), caps, "The post
- * is in.", the line under it, `Read` over `Tonight`, and the ✕.
- */
-export function PostArrival({ caps, onRead, onLater, onClose }: { caps: string; onRead: () => void; onLater: () => void; onClose: () => void }) {
+export function PostArrival({ onRead, onLater, onClose }: { onRead: () => void; onLater: () => void; onClose: () => void }) {
   return (
     <HeroBoard
       nav={{ left: 'empty', right: 'close', onClose }}
       hero="envelope"
-      caps={caps}
+      heroTop={200}
+      stackTop={486}
       title="A letter came."
       body="It takes a minute to read."
       cta="Read"

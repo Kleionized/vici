@@ -14,6 +14,31 @@ export const TEXT_LAB = [
   'you feel worse. You can finish here and',
 ];
 
+/** Size / line-height pairs the frames set tighter than (or near) Lato's natural 1.2 — for where the glyphs sit vertically. */
+export const V_LAB: readonly [number, number][] = [
+  [48, 50],
+  [56, 56],
+  [44, 52],
+  [40, 46],
+  [60, 70],
+  [34, 40],
+  [26, 33],
+  [32, 38],
+];
+
+/** Each pair in a box at x 24, y 80 + 90·i, white Lato 700 "×23 Hg" — screenshot it against `textlab.mjs --v`. */
+export function VLab() {
+  return (
+    <View style={{ flex: 1, backgroundColor: '#000' }}>
+      {V_LAB.map(([size, lh], i) => (
+        <View key={i} style={{ position: 'absolute', left: 24, top: 80 + 90 * i }}>
+          <Text style={{ ...sans('700'), fontSize: size, lineHeight: lh, color: '#FFF' }}>×23 Hg</Text>
+        </View>
+      ))}
+    </View>
+  );
+}
+
 export function TextLab() {
   return (
     <View style={{ flex: 1, paddingTop: 100, backgroundColor: '#0D0D0D' }}>
