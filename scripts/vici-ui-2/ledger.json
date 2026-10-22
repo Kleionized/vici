@@ -3614,7 +3614,7 @@
    "app": "src/app/(onboarding)/welcome.tsx",
    "harness": "/welcome?step=name · seed tail-unnamed-seed",
    "status": "DIFF_CLEAN",
-   "diff": "0.561 %",
+   "diff": "0.560 %",
    "date": "2026-10-22",
    "note": "kept copy (D28); caret only, keyboard put away (D29)",
    "verified": "2026-10-22",
@@ -11654,7 +11654,7 @@
    "harness": "sos&state=s02b",
    "status": "DIFF_CLEAN",
    "diff": "0.011 %",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "note": "noise only (D16), reviewed",
    "spec": "specs/vici-ui-2/sos.md"
   },
@@ -11669,7 +11669,7 @@
    "harness": "sos&state=s03",
    "status": "DIFF_CLEAN",
    "diff": "0.064 %",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "note": "noise only (D16), reviewed",
    "spec": "specs/vici-ui-2/sos.md"
   },
