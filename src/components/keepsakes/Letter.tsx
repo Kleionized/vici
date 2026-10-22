@@ -1,9 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import type { ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
 import { ScrollView, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
-import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen } from '@/components/mono';
-import { lhNormal, mono, sans } from '@/lib/theme';
+import { Check, EASE_OUT, GhostLink, HeroBoard, LaurelMark, MonoText, MS, NavBar, popStyle, PrimaryButton, riseStyle, Screen, useMotion } from '@/components/mono';
+import { Grain } from '@/components/ui/Grain';
+import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
 
@@ -34,72 +36,151 @@ export function PostArrival({ onRead, onLater, onClose }: { onRead: () => void; 
   );
 }
 
-/** the card's bottom fade */
-const FADE = 70;
+/** The paper (D61): a warm sheet, ink on it, a faint grain. */
+export const PAPER = { sheet: '#ECE7DD', ink: '#1A1815', body: '#3A3732', mute: '#7D776D' } as const;
+const NOISE = require('../../../assets/images/noise-dark.png');
+/** where a letter's sheet ends: 20 above the primary (96 + 58) */
+export const PAPER_FOOT = 96 + 58 + 20;
+/** the fade at the sheet's foot, so a long letter runs under it */
+const FADE = 44;
+
+/** When each part of the letter arrives as it opens (ms): the sheet, its folds easing out, the words, the seal. */
+const OPEN = { sheet: 60, folds: 520, words: 480, step: 110 } as const;
+
+const SHEET_IN = {
+  from: { opacity: 0, transform: [{ translateY: 110 }, { rotate: '-2.5deg' }, { scale: 0.96 }] },
+  to: { opacity: 1, transform: [{ translateY: 0 }, { rotate: '0deg' }, { scale: 1 }] },
+};
+const FOLDS_EASE = { from: { opacity: 1 }, to: { opacity: 0.6 } };
+
+/** One of the two folds: a wide, faint valley of shade across the sheet at `at` (a share of its height) — shading, never a line. */
+function Fold({ at, motion }: { at: string; motion: boolean }) {
+  return (
+    <Animated.View
+      pointerEvents="none"
+      style={[
+        { position: 'absolute', left: 0, right: 0, top: at as `${number}%`, height: 90, marginTop: -45 },
+        motion ? ({ animationName: FOLDS_EASE, animationDuration: 900, animationDelay: OPEN.folds, animationFillMode: 'both', animationTimingFunction: EASE_OUT } as object) : { opacity: 0.6 },
+      ]}>
+      <LinearGradient colors={['rgba(60,45,25,0)', 'rgba(60,45,25,0.07)', 'rgba(255,255,255,0.16)', 'rgba(255,255,255,0)']} locations={[0, 0.5, 0.56, 1]} style={{ flex: 1 }} />
+    </Animated.View>
+  );
+}
 
 /**
- * The letter read (`39`, `39B`): the `#121212` frame, the nav's title, and the
- * letter on a `#1E1E1E` card (`left 16 right 16 top 112 bottom 150 r26`) whose
- * column (`padding 28 26 0, gap 16`) runs under a 70 fade to `#111111`; the
- * primary at bottom 96 over the ghost at 60.
- *
- * The frame's card clips (`overflow: hidden`) and its copy ends 105 above the
- * fade; on a shorter phone the same copy would be cut, so the column scrolls
- * inside the card, with room at its end to clear the fade. At 852 it fits and
- * nothing moves.
+ * The letter as a letter (D61): a sheet of paper rather than a card — warm,
+ * with a grain, small corners and a shadow under it; the letterhead (the
+ * laurel and VICI, the date); the two folds it was sent in, as soft shading;
+ * and the words in ink. It opens by sliding up out of its envelope as it
+ * straightens, its folds easing out, then the words arrive in turn and the
+ * seal last. The sheet scrolls on a phone too short for the letter.
+ */
+export function LetterPaper({
+  top,
+  bottom,
+  inset = 16,
+  date,
+  children,
+}: {
+  top: number;
+  bottom: number;
+  inset?: number;
+  /** the day it came, under the letterhead */
+  date?: string;
+  children: ReactNode;
+}) {
+  const motion = useMotion();
+  const parts = Children.toArray(children);
+  return (
+    <Animated.View
+      style={[
+        { position: 'absolute', left: inset, right: inset, top, bottom, borderRadius: 5, backgroundColor: PAPER.sheet, boxShadow: '0 22px 44px rgba(0,0,0,0.5)' },
+        motion ? ({ animationName: SHEET_IN, animationDuration: 760, animationDelay: OPEN.sheet, animationFillMode: 'backwards', animationTimingFunction: EASE_OUT } as object) : null,
+      ]}>
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderRadius: 5, overflow: 'hidden' }}>
+        <Grain source={NOISE} opacity={0.12} />
+        <Fold at="33.3%" motion={motion} />
+        <Fold at="66.6%" motion={motion} />
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 22, paddingHorizontal: 26, paddingBottom: FADE + 8 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 26 }}>
+            <LaurelMark size={24} style={{ tintColor: PAPER.ink }} />
+            <MonoText v="caps" color={PAPER.ink} style={{ letterSpacing: 2.4, fontSize: 12 }}>
+              VICI
+            </MonoText>
+            <View style={{ flex: 1 }} />
+            {date ? (
+              <MonoText v="caps" color={PAPER.mute} style={{ fontSize: 12 }}>
+                {date}
+              </MonoText>
+            ) : null}
+          </View>
+          <View style={{ gap: 16 }}>
+            {parts.map((part, i) => (
+              <Animated.View key={i} style={riseStyle(motion, { delay: OPEN.words + i * OPEN.step, distance: 8, duration: MS.slow })}>
+                {part}
+              </Animated.View>
+            ))}
+          </View>
+        </ScrollView>
+        <LinearGradient pointerEvents="none" colors={['rgba(236,231,221,0)', PAPER.sheet]} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: FADE }} />
+      </View>
+    </Animated.View>
+  );
+}
+
+/**
+ * The letter read (`39`, `39B`): the frame, the nav's title, the letter on its
+ * paper (`left 16 right 16 top 112`, its foot 20 above the primary), the
+ * primary at bottom 96 over the ghost at 60. `primaryDone` puts a tick on the
+ * primary.
  */
 export function LetterCard({
   title,
   onClose,
   primary,
   onPrimary,
+  primaryDone,
   ghost,
   onGhost,
+  date,
   children,
 }: {
   title: string;
   onClose: () => void;
   primary: string;
   onPrimary: () => void;
+  /** the primary has done its work (a letter saved): it carries a tick */
+  primaryDone?: boolean;
   ghost: string;
   onGhost: () => void;
+  date?: string;
   children: ReactNode;
 }) {
   return (
     <Screen variant="letter">
       <NavBar left="empty" centre={{ title }} right="close" onClose={onClose} />
-      <View style={{ position: 'absolute', left: 16, right: 16, top: 112, bottom: 150, borderRadius: 26, backgroundColor: mono.card, overflow: 'hidden' }}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 28, paddingHorizontal: 26, paddingBottom: FADE, gap: 16 }}>
-          {children}
-        </ScrollView>
-        {/* CSS fades from `rgba(30,30,30,0)`, interpolated premultiplied — the
-            colour of a transparent stop never shows — so the ramp is the end
-            colour's own alpha (D048) */}
-        <LinearGradient
-          pointerEvents="none"
-          colors={['rgba(17,17,17,0)', mono.groundDark]}
-          style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: FADE }}
-        />
-      </View>
-      <PrimaryButton label={primary} onPress={onPrimary} bottom={96} />
+      <LetterPaper top={112} bottom={PAPER_FOOT} date={date}>
+        {children}
+      </LetterPaper>
+      <PrimaryButton label={primary} onPress={onPrimary} bottom={96} icon={primaryDone ? <Check size={14} color={mono.onInk} /> : undefined} />
       <GhostLink label={ghost} onPress={onGhost} />
     </Screen>
   );
 }
 
-/** "Dear Sam," — 22/700, −0.3, line-height normal. */
+/** "Dear Sam," — 22/700, −0.3, in ink. */
 export function Salutation({ children }: { children: ReactNode }) {
   return (
-    <MonoText v="h1Sheet" wrap="wrap" style={{ lineHeight: lhNormal(22), letterSpacing: -0.3 }}>
+    <MonoText v="h1Sheet" wrap="wrap" color={PAPER.ink} style={{ lineHeight: lhNormal(22), letterSpacing: -0.3 }}>
       {children}
     </MonoText>
   );
 }
 
-/** A paragraph: 15.5/25 `#B5B0A8`, pretty. `children` may carry a `Strong` run. */
+/** A paragraph: 15.5/25, pretty, in the paper's body ink. `children` may carry a `Strong` run. */
 export function LetterP({ children }: { children: ReactNode }) {
   return (
-    <MonoText v="p" wrap="pretty" style={{ fontSize: 15.5, lineHeight: 25 }}>
+    <MonoText v="p" wrap="pretty" color={PAPER.body} style={{ fontSize: 15.5, lineHeight: 25 }}>
       {children}
     </MonoText>
   );
@@ -107,15 +188,27 @@ export function LetterP({ children }: { children: ReactNode }) {
 
 /** The 700 ink run inside a paragraph (the reason, in his own words). */
 export function Strong({ children }: { children: ReactNode }) {
-  return <MonoText style={{ ...sans('700'), fontSize: 15.5, lineHeight: 25, color: mono.ink }}>{children}</MonoText>;
+  return <MonoText style={{ ...sans('700'), fontSize: 15.5, lineHeight: 25, color: PAPER.ink }}>{children}</MonoText>;
 }
 
-/** The sign-off: 15.5/25 ink 700. */
+/** The sign-off: the name in italic, as signed, and VICI's seal beside it, landing last. */
 export function Signoff({ children }: { children: ReactNode }) {
+  const motion = useMotion();
   return (
-    <MonoText v="p" style={{ ...sans('700'), fontSize: 15.5, lineHeight: 25, color: mono.ink }}>
-      {children}
-    </MonoText>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 6 }}>
+      <MonoText v="p" color={PAPER.ink} style={{ ...sansItalic(), fontSize: 24, lineHeight: 30 }}>
+        {children}
+      </MonoText>
+      <Animated.View
+        style={[
+          { width: 34, height: 34, borderRadius: 17, backgroundColor: PAPER.ink, alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.25)' },
+          popStyle(motion, { delay: 1100, duration: MS.slow + 120 }),
+        ]}>
+        <MonoText v="caps" color={PAPER.sheet} style={{ fontSize: 14, letterSpacing: 0 }}>
+          V
+        </MonoText>
+      </Animated.View>
+    </View>
   );
 }
 
@@ -126,14 +219,14 @@ export function Signoff({ children }: { children: ReactNode }) {
  */
 export function Enclosure({ scene, numeral, title, line }: { scene: KeepsakeSceneKey; numeral?: string; title: string; line: string }) {
   return (
-    <View style={{ marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, borderRadius: 18, backgroundColor: mono.ground }}>
+    <View style={{ marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, borderRadius: 14, backgroundColor: 'rgba(26,24,21,0.07)' }}>
       <FaceCoin scene={scene} size={44} numeral={numeral} />
       {/* the column is as wide as its longer line (the frame's 184.8), not the card's remainder */}
       <View style={{ flexShrink: 1, gap: 2 }}>
-        <MonoText v="rowLabel" wrap="wrap">
+        <MonoText v="rowLabel" wrap="wrap" color={PAPER.ink}>
           {title}
         </MonoText>
-        <MonoText v="pTight" wrap="wrap" color={mono.mute} style={{ fontSize: 13, lineHeight: lhNormal(13) }}>
+        <MonoText v="pTight" wrap="wrap" color={PAPER.mute} style={{ fontSize: 13, lineHeight: lhNormal(13) }}>
           {line}
         </MonoText>
       </View>

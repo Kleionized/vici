@@ -6,11 +6,13 @@ import { HeroBoard, LoadingView } from '@/components/mono';
 import { O3LetterRead, WEEK_XII_FROM } from '@/components/onboarding/handover';
 import { LETTER_BY_ID, type ViciLetter } from '@/content/viciLetters';
 import { WEEK_XII_LETTER } from '@/content/weekXiiLetter';
-import { useCreateJournalEntry, useCurrentUser } from '@/lib/backend';
+import { useCurrentUser } from '@/lib/backend';
 import { LETTER_OPENS_DAY, letterOpen, programmeDay } from '@/lib/day';
-import { keepLetter, readLetterBox } from '@/lib/letterBox';
+import { readLetterBox } from '@/lib/letterBox';
+import { useKeepLetter } from '@/lib/useKeepLetter';
 import { fillName, firstName, letterText, salutation } from '@/lib/viciPost';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
+import { shortDate } from '@/lib/format';
 
 /**
  * VICI's letters — `90B · VICI Post — Arrival` and `39 · The Letter — Read`,
@@ -36,7 +38,6 @@ export default function LetterScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ variant?: string; id?: string; at?: string }>();
   const user = useCurrentUser();
-  const createJournalEntry = useCreateJournalEntry();
   const [phase, setPhase] = useState<Phase>('arrive');
 
   const variant: Variant = params.variant === 'week12' ? 'week12' : 'post';
@@ -61,20 +62,18 @@ export default function LetterScreen() {
     else router.replace('/(app)/today');
   }, [router]);
 
-  // Save to Journal — the letter becomes a journal entry, once. The week-XII letter
-  // was already written there the night it was sealed, so that variant only closes.
+  // Save to Journal — the letter becomes a journal entry, once, and the board
+  // stays open to show it (D61). The week-XII letter was already written there
+  // the night it was sealed, so it has no save of its own.
+  const keeper = useKeepLetter({
+    title: post?.letter.subject ?? '',
+    body: post ? letterText(post.letter, first) : '',
+    box: post && post.at > 0 ? { id: post.letter.id, at: post.at } : undefined,
+  });
   const keep = useCallback(() => {
-    if (variant === 'week12' || !post) {
-      dismiss();
-      return;
-    }
-    void (async () => {
-      await writeAccountJSON(PENDING_KEY, null);
-      dismiss();
-      if (!(await keepLetter(post.letter.id, post.at))) return;
-      await createJournalEntry({ tag: 'Letter', title: post.letter.subject, body: letterText(post.letter, first) }).catch(() => {});
-    })();
-  }, [createJournalEntry, dismiss, first, post, variant]);
+    void writeAccountJSON(PENDING_KEY, null);
+    keeper.press();
+  }, [keeper]);
 
   const later = useCallback(() => {
     void (async () => {
@@ -149,7 +148,15 @@ export default function LetterScreen() {
 
   const { letter } = post;
   return (
-    <LetterCard title="From VICI" onClose={later} primary="Save to Journal" onPrimary={keep} ghost="Close" onGhost={later}>
+    <LetterCard
+      title="From VICI"
+      onClose={later}
+      primary={keeper.label}
+      onPrimary={keep}
+      primaryDone={keeper.saved}
+      ghost="Close"
+      onGhost={later}
+      date={post.at > 0 ? shortDate(post.at) : undefined}>
       <Salutation>{salutation(letter.greeting, first)}</Salutation>
       {letter.paragraphs.map((p, i) => (
         <LetterP key={i}>{fillName(p, first)}</LetterP>

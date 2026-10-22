@@ -3,9 +3,10 @@ import { useState } from 'react';
 
 import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff } from '@/components/keepsakes/Letter';
 import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
-import { useCreateJournalEntry, useCurrentUser, useEvents } from '@/lib/backend';
+import { useCurrentUser, useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
+import { useKeepLetter } from '@/lib/useKeepLetter';
 
 /**
  * The medallion post — `90B · VICI Post — Arrival` → `39B · Post — Medallion
@@ -43,7 +44,6 @@ export default function MedallionPost() {
   const router = useRouter();
   const user = useCurrentUser();
   const events = useEvents();
-  const createJournalEntry = useCreateJournalEntry();
   const [phase, setPhase] = useState<Phase>('arrive');
   const name = (user?.displayName || '').trim().split(/\s+/)[0] || 'friend';
 
@@ -61,17 +61,12 @@ export default function MedallionPost() {
   };
 
   // `Save to Journal` (the frame's `Save to Log`): the letter is kept as a
-  // Journal entry, and the Log never lists letters (D489)
+  // Journal entry, and the Log never lists letters (D489); the board stays
+  // open to show it saved (D61)
+  const keeper = useKeepLetter({ title: 'A medallion from VICI', body: `Dear ${name},\n\n${P1}\n\n${P2}\n\n— VICI` });
   const keep = () => {
-    void (async () => {
-      await writeAccountJSON(POST_DONE_KEY, Date.now());
-      close();
-      await createJournalEntry({
-        tag: 'Letter',
-        title: 'A medallion from VICI',
-        body: `Dear ${name},\n\n${P1}\n\n${P2}\n\n— VICI`,
-      }).catch(() => {});
-    })();
+    void writeAccountJSON(POST_DONE_KEY, Date.now());
+    keeper.press();
   };
 
   if (phase === 'arrive') {
@@ -79,7 +74,7 @@ export default function MedallionPost() {
   }
 
   return (
-    <LetterCard title="From VICI" onClose={shelve} primary="Save to Journal" onPrimary={keep} ghost="See the yearly offer" onGhost={() => router.push('/drop')}>
+    <LetterCard title="From VICI" onClose={shelve} primary={keeper.label} onPrimary={keep} primaryDone={keeper.saved} ghost="See the yearly offer" onGhost={() => router.push('/drop')}>
       <Salutation>{`Dear ${name},`}</Salutation>
       <LetterP>{P1}</LetterP>
       <LetterP>{P2}</LetterP>

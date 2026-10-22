@@ -12,15 +12,16 @@
  * is a `#1E1E1E` card under a fade with its buttons over it; the vow is a
  * left-aligned stack and a ruled signature.
  */
-import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-import { ScrollView, useWindowDimensions, View } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 
 import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen, useCanvasTop } from '@/components/mono';
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
 import { VOW_TEXT } from '@/lib/pledge';
-import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
+import { lhNormal, mono, sansItalic } from '@/lib/theme';
 import { useSuccessHaptic } from '@/lib/haptics';
+
+import { LetterP, LetterPaper, PAPER, PAPER_FOOT, Strong } from '@/components/keepsakes/Letter';
 
 import { Band } from './tail';
 
@@ -55,14 +56,6 @@ export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => 
 
 // ── 39 · A Letter From Week XII (frame `Letter Week XII`) ────────────
 
-/**
- * The column scrolls in the card down to the primary's bottom edge (96) — under
- * the primary, never below it, so on a short phone no line shows through the
- * fade between `Continue` and `Keep this letter` (D219). Its end room lets the
- * last line rise 16 clear of the primary's top (58 + 16).
- */
-const LETTER_VIEW_BOTTOM = 96;
-const LETTER_END_PAD = 58 + 16;
 
 /** A paragraph as runs: the frame's own when the words are the letter's, else the plain string. */
 function runsOf(p: string): LetterRun[] {
@@ -101,40 +94,18 @@ export function O3LetterRead({
   return (
     <Screen>
       <NavBar left="empty" right="close" onClose={onClose ?? next} />
-      <View style={{ position: 'absolute', left: 24, right: 24, top: 112, bottom: 0, borderTopLeftRadius: 24, borderTopRightRadius: 24, backgroundColor: mono.card, overflow: 'hidden' }}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          alwaysBounceVertical={false}
-          contentInsetAdjustmentBehavior="never"
-          style={{ marginBottom: LETTER_VIEW_BOTTOM }}
-          contentContainerStyle={{ paddingTop: 34, paddingHorizontal: 28, paddingBottom: LETTER_END_PAD }}>
-          <MonoText v="h1" wrap="wrap" style={{ lineHeight: lhNormal(26), marginBottom: 18 }}>
-            {/* a no-break space keeps the dash with the name however long it is */}
-            {who ? `${who}\u00A0—` : 'Friend\u00A0—'}
-          </MonoText>
-          <View style={{ gap: 14 }}>
-            {paragraphs.map((p, i) => (
-              <MonoText key={i} v="p" wrap="wrap">
-                {runsOf(p).map((r, k) =>
-                  r.bold ? (
-                    <MonoText key={k} v="p" style={{ ...sans('700'), color: mono.ink }}>
-                      {r.text}
-                    </MonoText>
-                  ) : (
-                    r.text
-                  ),
-                )}
-              </MonoText>
-            ))}
-          </View>
-        </ScrollView>
-      </View>
-      <LinearGradient
-        pointerEvents="none"
-        colors={['rgba(30,30,30,0)', mono.card, mono.card]}
-        locations={[0, 0.6, 1]}
-        style={{ position: 'absolute', left: 24, right: 24, bottom: 0, height: 190 }}
-      />
+      {/* on the letter's paper, opening as every letter does (D61) */}
+      <LetterPaper top={112} bottom={PAPER_FOOT}>
+        <MonoText v="h1" wrap="wrap" color={PAPER.ink} style={{ lineHeight: lhNormal(26) }}>
+          {/* a no-break space keeps the dash with the name however long it is */}
+          {who ? `${who}\u00A0—` : 'Friend\u00A0—'}
+        </MonoText>
+        {paragraphs.map((p, i) => (
+          <LetterP key={i}>
+            {runsOf(p).map((r, k) => (r.bold ? <Strong key={k}>{r.text}</Strong> : r.text))}
+          </LetterP>
+        ))}
+      </LetterPaper>
       <PrimaryButton label="Continue" onPress={next} bottom={96} />
       <GhostLink label="Keep this letter" onPress={onKeep} />
     </Screen>
