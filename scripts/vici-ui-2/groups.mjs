@@ -29,6 +29,12 @@ const relapseSeq = [
 
 // onboarding: the funnel's steps by their canvas label, the plan and the tail by step id
 const FUNNEL = Object.fromEntries([...fs.readFileSync('src/content/onboardingFunnel.ts', 'utf8').matchAll(/"id":"([a-zA-Z0-9]+)","label":"([^"]*)"/g)].map((m) => [m[2], m[1]]));
+// what each question's frame draws chosen (the generator's `drawnSelected`), as that board's answer
+const DRAWN = Object.fromEntries([...fs.readFileSync('src/content/onboardingFunnel.ts', 'utf8').matchAll(/^\s*(\{"id":.*\}),?\s*$/gm)].map((m) => JSON.parse(m[1]))
+  .filter((r) => (r.kind === 'list' || r.kind === 'chips') && r.drawnSelected?.length)
+  .map((r) => [r.id, r.multi ? r.drawnSelected.map((i) => r.options[i]) : r.options[r.drawnSelected[0]]]));
+// the man the tail frames draw: `25 · Where We’d Start` pills his three triggers
+const TAIL_MAN = { triggers: ['Late at night', 'When I’m home alone', 'While scrolling'] };
 const TAIL = {
   'Enlisting Aegis': 'plan-together&hold=1', 'Where We’d Start': 'whered-start', 'Start Here': 'start-here', 'Start Here Step 1': 'start-here-1', 'Start Here Step 2': 'start-here-2',
   'Your Plan': 'your-plan', 'Starting Score': 'starting-point', 'Cost Next 30': 'next30', 'Cost Next 365': 'one-year', 'Cost By Age 80': 'age80',
@@ -36,11 +42,13 @@ const TAIL = {
   'Letter Received': 'letter-arrived', 'Letter Week XII': 'letter-read', 'The Vow': 'vow', 'Medallion Received': 'medallion', 'Reminders Setup': 'reminders', 'Day Zero': 'day-zero',
 };
 const ROUTES = {
-  Splash: { route: '/splash', seed: '-' },
+  Splash: { route: '/splash?hold=1', seed: '-' },
   Login: { route: '/sign-in', seed: '-' },
   'Welcome Back': { route: '/welcome-back', seed: '-' },
   Paywall: { route: '/paywall', seed: 'v-premium-seed' },
-  'Manage Subscription': { route: '/subscription', seed: 'f-pw-sub-dated' },
+  'Manage Subscription': { route: '/subscription', seed: 'f-pw-sub-dated', clock: '2026-07-10T09:41:00' },
+  'Paywall Rescue': { route: '/paywall?stage=rescue', seed: 'v-premium-seed' },
+  'Paywall Confirmed': { route: '/paywall?stage=confirmed', seed: 'v-premium-seed' },
 };
 
 export function targetOf(row) {
@@ -53,8 +61,8 @@ export function targetOf(row) {
   if (file === 'app' && i >= 102 && i <= 242) return { screen: 'sos', ...sosSeq[i - 102] };
   if (file === 'app' && i === 293) return { screen: 'chooser', state: 'main', time: h12() };
   if (file === 'app' && i <= 49) {
-    if (FUNNEL[row.screen]) return { route: `/welcome?step=${FUNNEL[row.screen]}`, seed: 'f-funnel-user', time: h12(), wait: 2500 };
-    if (TAIL[row.screen]) return { route: `/welcome?step=${TAIL[row.screen]}`, seed: row.screen === 'The Vow' ? 'tail-vow-seed' : 'tail-session-seed', time: h12(), wait: 2500 };
+    if (FUNNEL[row.screen]) return { route: `/welcome?step=${FUNNEL[row.screen]}`, seed: FUNNEL[row.screen] === 'name' ? 'tail-unnamed-seed' : 'f-funnel-user', blur: FUNNEL[row.screen] === 'name', globals: DRAWN[FUNNEL[row.screen]] ? { __ONB_ANSWERS: { [FUNNEL[row.screen]]: DRAWN[FUNNEL[row.screen]] } } : undefined, time: h12(), wait: 2500 };
+    if (TAIL[row.screen]) return { route: `/welcome?step=${TAIL[row.screen]}`, seed: row.screen === 'The Vow' ? 'tail-vow-seed' : 'tail-session-seed', globals: { __ONB_ANSWERS: TAIL_MAN }, time: h12(), wait: 2500 };
     if (ROUTES[row.screen]) return { ...ROUTES[row.screen], time: h12(), wait: 2500 };
   }
   const rel = file === 'relapse' ? relapseSeq[i] : file === 'app' && i >= 294 && i <= 368 ? relapseSeq[i - 294] : null;

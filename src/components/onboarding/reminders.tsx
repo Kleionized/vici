@@ -11,7 +11,7 @@ import { useState, type ReactNode } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
 import {
-  Caps,
+  Book,
   GhostLink,
   H1,
   Hero,
@@ -91,8 +91,8 @@ export function ReminderNotes() {
 const BAND_TOP = 100;
 
 /**
- * `Reminders Setup`'s board — the bell at 90, the headline and its line at
- * 320, the two notes at 470, the pill (at 96 over a ghost link, else 48) — for
+ * `Reminders Setup`'s board — the bell at 74.7 (scale 1.034), the headline and
+ * its line at 311, the two notes at 461, the pill (at 96 over a ghost link, else 48) — for
  * the onboarding step and for the two routes no frame draws that show the same
  * notes (`/reminders`, `/notify-primer`), each with its own nav row and words.
  *
@@ -128,12 +128,12 @@ export function ReminderBoard({
       {nav ?? <NavBar left="empty" right="empty" />}
       <ScrollRegion top={BAND_TOP} bottom={ctaBottom + 58} contentStyle={{ paddingHorizontal: 24, paddingBottom: 24 }}>
         {/* the hero is drawn in the band's own coordinates, so it scrolls with the words */}
-        <Hero id="bell" top={90 - BAND_TOP} />
-        <View style={{ marginTop: 320 - BAND_TOP, gap: 18 }}>
+        <Hero id="bell" top={74.7 - BAND_TOP} scale={1.034} />
+        <View style={{ marginTop: 311 - BAND_TOP, gap: 18 }}>
           <H1>{title}</H1>
           <P>{sub}</P>
         </View>
-        {/* 470 − (320 + 66 + 18 + 24) */}
+        {/* 461 − (311 + 66 + 18 + 24) */}
         <View style={{ marginTop: notesGap }}>
           <ReminderNotes />
         </View>
@@ -191,8 +191,9 @@ const SUNRISE_TOP = 126;
 const ART_FLOOR = 108;
 
 /**
- * The sunrise at 126, "Today" over a 44pt "Day 0" at 382, the lesson card and
- * the sentence under it at 504, "Begin" at the frame's bottom 48.
+ * The sunrise at 126, a 44pt "Day 0" at 406, the lesson card (the book in a 44
+ * disc beside the lesson's title over its number) and the sentence under it at
+ * 504, "Begin" at the frame's bottom 48.
  *
  * On a phone too short for it the hero and both stacks rise together by the
  * deficit (D320 rule 2), never past the art's top at 108; past that the art is
@@ -214,7 +215,7 @@ export function O3DayZero({ lesson, number, title, next, busy }: { lesson?: stri
   const deficit = measured ? Math.ceil(504 + lowH + 16 - controlsTop) : 0;
   const room = Math.floor(heroArtTop('sunrise', SUNRISE_TOP) - ART_FLOOR);
   const dropArt = deficit > room;
-  const lift = deficit <= 0 ? 0 : dropArt ? Math.min(deficit, 382 - ART_FLOOR) : deficit;
+  const lift = deficit <= 0 ? 0 : dropArt ? Math.min(deficit, 406 - ART_FLOOR) : deficit;
   const hidden = measured ? null : { opacity: 0 };
 
   return (
@@ -225,10 +226,7 @@ export function O3DayZero({ lesson, number, title, next, busy }: { lesson?: stri
           <Hero id="sunrise" top={SUNRISE_TOP - lift} />
         </View>
       )}
-      <View style={[{ position: 'absolute', left: 24, right: 24, top: 382 - lift, gap: 8, alignItems: 'center' }, hidden]}>
-        <Caps center style={{ alignSelf: 'stretch' }}>
-          Today
-        </Caps>
+      <View style={[{ position: 'absolute', left: 24, right: 24, top: 406 - lift, alignItems: 'center' }, hidden]}>
         <H1 center style={{ alignSelf: 'stretch', fontSize: 44, lineHeight: 50 }}>
           Day 0
         </H1>
@@ -236,11 +234,18 @@ export function O3DayZero({ lesson, number, title, next, busy }: { lesson?: stri
       <View
         onLayout={(e) => setLowH(e.nativeEvent.layout.height)}
         style={[{ position: 'absolute', left: 24, right: 24, top: 504 - lift, gap: 18, alignItems: 'center' }, hidden]}>
-        <View style={{ borderRadius: 20, backgroundColor: mono.card, paddingVertical: 18, paddingHorizontal: 20, gap: 4, maxWidth: '100%' }}>
-          <Caps>{runs.kicker}</Caps>
-          <MonoText v="rowLabel" wrap="wrap" style={{ ...sans('700'), fontSize: 19, lineHeight: lhNormal(19) }}>
-            {runs.title}
-          </MonoText>
+        <View style={{ borderRadius: 20, backgroundColor: mono.card, paddingTop: 16, paddingBottom: 16, paddingLeft: 16, paddingRight: 22, flexDirection: 'row', alignItems: 'center', gap: 14, maxWidth: '100%' }}>
+          <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: mono.line, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Book />
+          </View>
+          <View style={{ gap: 2, flexShrink: 1 }}>
+            <MonoText v="rowLabel" wrap="wrap" style={{ ...sans('700'), fontSize: 18, lineHeight: lhNormal(18) }}>
+              {runs.title}
+            </MonoText>
+            <MonoText v="rowLabel" wrap="wrap" color={mono.mute} style={{ ...sans('400'), fontSize: 14, lineHeight: lhNormal(14) }}>
+              {runs.kicker}
+            </MonoText>
+          </View>
         </View>
         <MonoText v="pTight" center style={{ alignSelf: 'stretch' }}>
           Your first lesson is ready. Read it today.

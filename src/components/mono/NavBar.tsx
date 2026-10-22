@@ -27,8 +27,21 @@ export function NavDashes({ step, total, tone = 'light' }: { step: number; total
   );
 }
 
+/** A short run of 22 × 4 pips (`Start Here` Step 1 / Step 2): the first `step` of `total` inked. */
+export function NavPips({ step, total, tone = 'light' }: { step: number; total: number; tone?: 'light' | 'dark' }) {
+  const onC = tone === 'dark' ? monoDark.text : mono.ink;
+  const offC = tone === 'dark' ? 'rgba(255,255,255,0.2)' : mono.line;
+  return (
+    <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
+      {Array.from({ length: total }, (_, i) => (
+        <View key={i} style={{ width: 22, height: 4, borderRadius: 2, backgroundColor: i < step ? onC : offC }} />
+      ))}
+    </View>
+  );
+}
+
 export type NavLeft = 'back' | 'none' | 'empty';
-export type NavCentre = { title: string } | { step: number; total: number } | null;
+export type NavCentre = { title: string } | { step: number; total: number } | { pip: number; of: number } | null;
 export type NavRight =
   | 'close'
   | 'share'
@@ -94,6 +107,8 @@ export function NavBar({
     centreEl = <MonoText v="navTitle" color={tone === 'dark' ? monoDark.caps : mono.mute}>{centre.title}</MonoText>;
   } else if (centre && 'step' in centre) {
     centreEl = <NavDashes step={centre.step} total={centre.total} tone={tone} />;
+  } else if (centre && 'pip' in centre) {
+    centreEl = <NavPips step={centre.pip} total={centre.of} tone={tone} />;
   }
 
   let rightEl: ReactNode = <View style={{ width: slotW, height: 40 }} />;

@@ -118,6 +118,15 @@ export function Quote({ color = mono.art }: IconProps) {
   );
 }
 
+/** The open book (a lesson): Day 0's lesson card at 20, Today's lesson labels at 16. */
+export function Book({ color = mono.ink, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M12 6.5C10 5 7 4.5 3 4.5v14c4 0 7 .5 9 2 2-1.5 5-2 9-2v-14c-4 0-7 .5-9 2zM12 6.5v14" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
 export function Pencil({ color = mono.mute }: IconProps) {
   return (
     <Svg width={16} height={16} viewBox="0 0 16 16">

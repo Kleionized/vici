@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
 import { SplashScene } from '@/components/ui/Waterline';
@@ -14,11 +14,15 @@ import { SplashScene } from '@/components/ui/Waterline';
  */
 export default function Splash() {
   const router = useRouter();
+  // `hold` (development builds only) keeps the board up for a capture
+  const params = useLocalSearchParams<{ hold?: string }>();
+  const hold = __DEV__ && params.hold === '1';
 
   useEffect(() => {
+    if (hold) return;
     const onward = setTimeout(() => router.replace('/(auth)/sign-in'), 900);
     return () => clearTimeout(onward);
-  }, [router]);
+  }, [router, hold]);
 
   return <SplashScene />;
 }

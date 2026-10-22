@@ -1330,3 +1330,17 @@ Changed from the previous bundle:
 | svg | 335, 650, 14 × 14 |  |
 | div | 24, 687, 345 × 61 | border:1px #2E2E2E / 0px #000000 |
 | svg | 335, 711, 14 × 14 |  |
+
+## Kept differences (not layout)
+
+- Copy the owner rewrote on 10 Oct and the bundle left unchanged stays the owner's (D28): Login and Welcome back subtitles, Name, Start, 09B, First principle, Transition, Goal confirmation, Build plan rows, Where we'd start, Your plan rows, the line boards, One bad day, What you want back, A letter arrived, Reminders, Day 0's closing line.
+- Rating and rates are the app's (D30). Paywall way out, renewal terms, legal footer and confirmation line (D31).
+- The Name field's caret: the harness puts the keyboard away (D29).
+
+## Changes taken from the new bundle (D34)
+
+- 25 · Where we'd start: hero T 129, stack 390. 26 · Start here: hero T 166, stack 427. 26A/26A2: two 22 × 4 r2 pips, gap 6, ink / `#2E2E2E`.
+- 29 · Next 30 days: stack 178, grid 322, key 582, line 632. 31 · If nothing changes: band 273–573 fading in by 30 % and out from 70 %, white chevron, figure + "By age 80, if nothing changes." centred at 379, gap 10.
+- 32 / 32A: chart at 355. 33 · One bad day: strip 287, stack 409. 38 · A letter arrived: hero T 181, stack 442. 39: no eyebrow.
+- 40 · The vow: stack 184, no eyebrow, "Signed on Day 0, Jun 9" 14/400 mute. 41 · Medallion: stack 480, "Veni." / "Your first medallion. You started.".
+- 42 · Reminders: bell T 74.7 at scale 1.034, stack 311, notes 461. 44 · Day 0: "Day 0" at 406, card r20 `#1E1E1E` padding 16 22 16 16, row gap 14: 44 disc `#2E2E2E` with the 20 book (stroke 1.8), column gap 2: title 18/700 ink, "Lesson 1" 14/400 mute.

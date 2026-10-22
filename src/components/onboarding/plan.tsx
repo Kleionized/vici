@@ -282,7 +282,8 @@ export function O3WhereWedStart({ name, triggers, next }: { name?: string; trigg
     <HeroBoard
       nav={{ left: 'empty', right: 'empty' }}
       hero="charger"
-      stackTop={451}
+      heroTop={129}
+      stackTop={390}
       gap={16}
       titleSize={26}
       title={who ? `${who}, this is where to start.` : 'This is where to start.'}
@@ -342,7 +343,8 @@ export function O3StartHere({
     <HeroBoard
       nav={{ left: 'empty', right: 'empty' }}
       hero="charger"
-      stackTop={451}
+      heroTop={166}
+      stackTop={427}
       gap={18}
       titleSize={26}
       title={balanced(change.heading)}
@@ -357,11 +359,11 @@ export function O3StartHere({
 
 // ── 26A · Step 1 / 26A2 · Step 2 ─────────────────────────────────────
 
-/** The charger again, "Step 1 of 2" in the nav. */
+/** The charger again, the first of two pips in the nav. */
 export function O3StartHereStep1({ change, next, back }: { change: FirstChange; next: () => void; back?: () => void }) {
   return (
     <HeroBoard
-      nav={{ left: 'back', centre: { title: 'Step 1 of 2' }, right: 'empty', onBack: back }}
+      nav={{ left: 'back', centre: { pip: 1, of: 2 }, right: 'empty', onBack: back }}
       hero="charger"
       stackTop={451}
       gap={16}
@@ -378,7 +380,7 @@ export function O3StartHereStep1({ change, next, back }: { change: FirstChange; 
 export function O3StartHereStep2({ change, next, back }: { change: FirstChange; next: () => void; back?: () => void }) {
   return (
     <HeroBoard
-      nav={{ left: 'back', centre: { title: 'Step 2 of 2' }, right: 'empty', onBack: back }}
+      nav={{ left: 'back', centre: { pip: 2, of: 2 }, right: 'empty', onBack: back }}
       hero="door"
       stackTop={451}
       gap={16}

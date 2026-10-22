@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { useCurrentUser } from '@/lib/backend';
@@ -25,7 +25,10 @@ const Board =
 export default function Paywall() {
   const router = useRouter();
   const user = useCurrentUser();
+  // `?stage=rescue|confirmed` (development builds only) opens the drawn paywall on that board
+  const { stage } = useLocalSearchParams<{ stage?: 'rescue' | 'confirmed' }>();
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   // every board draws its own mono `Screen`, light status glyphs included
+  if (__DEV__ && stage) return <PaywallFlow name={user?.displayName?.trim().split(/\s+/)[0]} stage={stage} onDone={close} />;
   return <Board name={user?.displayName?.trim().split(/\s+/)[0]} onDone={close} />;
 }

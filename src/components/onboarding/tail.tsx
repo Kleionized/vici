@@ -277,23 +277,23 @@ export function O3Next30({ times, next, back }: { times: number; next: () => voi
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
       {/* the ~54 between the paragraph and the first row of days may close to 30 (D406) */}
-      <Band start={199} end={675} squeeze={24}>
+      <Band start={178} end={654} squeeze={24}>
         {(give) => (
           <>
-            <Stack top={199}>
+            <Stack top={178}>
               <MonoText v="h1">This is your next 30 days.</MonoText>
               <MonoText v="p">
                 At the rate you reported, <Strong>{share}</Strong> could end with porn.
               </MonoText>
             </Stack>
-            <View style={{ position: 'absolute', left: 24, right: 24, top: 343 - give, flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 322 - give, flexDirection: 'row', justifyContent: 'center' }}>
               <MonthDots times={times} />
             </View>
-            <View style={{ position: 'absolute', left: 0, right: 0, top: 603 - give, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: 582 - give, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
               <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
               <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
             </View>
-            <View style={{ position: 'absolute', left: 24, right: 24, top: 653 - give }}>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 632 - give }}>
               <MonoText v="pTight" color={mono.mute} center wrap="wrap">
                 It can change, starting today.
               </MonoText>
@@ -419,11 +419,9 @@ function AgeField({ width, height }: { width: number; height: number }) {
 }
 
 /**
- * The kit's dark frame (`#111111`, noise-dark at 0.09). The field, then a veil
- * from 96 to 326 (`#111111` solid to 62 %, clear by 100 %) behind the caps, the
- * figure and the line. The Back chevron is stroked `#17160F` — the old light
- * kit's ink, near-invisible on `#111111` — reproduced, with its 36×40 target
- * intact (CRITIC §5, tail Q3).
+ * The kit's dark frame (`#111111`, noise-dark at 0.09). The field, then a band
+ * from 273 to 573 that fades in to `#111111` by 30 % and out again from 70 %,
+ * behind the figure and its line, centred at 379.
  */
 export function O3IfNothingChanges({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
   const win = useWindowDimensions();
@@ -435,22 +433,15 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
       </View>
       <LinearGradient
         pointerEvents="none"
-        colors={[mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
-        locations={[0, 0.62, 1]}
-        style={{ position: 'absolute', left: 0, right: 0, top: 96, height: 230 }}
+        colors={['rgba(17,17,17,0)', mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
+        locations={[0, 0.3, 0.7, 1]}
+        style={{ position: 'absolute', left: 0, right: 0, top: 273, height: 300 }}
       />
-      <NavBar left="back" right="empty" tone="dark" chevronColor="#17160F" onBack={back} />
-      <View style={{ position: 'absolute', left: 24, top: 126, zIndex: 2 }}>
-        <MonoText v="caps" color={monoDark.caps}>
-          By age 80
-        </MonoText>
-      </View>
-      <View style={{ position: 'absolute', left: 24, top: 160, zIndex: 2 }}>
+      <NavBar left="back" right="empty" tone="dark" onBack={back} />
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 379, zIndex: 2, gap: 10, alignItems: 'center' }}>
         <Figure color={monoDark.text}>{`About ${groupDigits(days)} days`}</Figure>
-      </View>
-      <View style={{ position: 'absolute', left: 24, top: 222, zIndex: 2 }}>
-        <MonoText v="p" wrap="wrap" color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
-          If nothing changes.
+        <MonoText v="p" wrap="wrap" center color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
+          By age 80, if nothing changes.
         </MonoText>
       </View>
       <PrimaryButton label="Next" onPress={next} tone="dark" />
@@ -461,7 +452,7 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
 // ── 32 · If Nothing Changes / 32A · With the Plan ────────────────────
 
 /**
- * The two line boards share one chart (345 × 270 at 24, 389): the caption, the
+ * The two line boards share one chart (345 × 270 at 24, 355): the caption, the
  * axis, the lead-in, then the board's own line, the dashed drop at x 208, the
  * tooltip and the marker. Every value is the frame's literal — an illustration,
  * not a readout of his frequency (CRITIC §5, tail Q7) — and spans the column on
@@ -499,12 +490,12 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
-      <Band start={199} end={659}>
+      <Band start={199} end={625}>
         <Stack top={199}>
           <MonoText v="h1">{L.title}</MonoText>
           <MonoText v="p">{L.body}</MonoText>
         </Stack>
-        <View style={{ position: 'absolute', left: 24, top: 389 }}>
+        <View style={{ position: 'absolute', left: 24, top: 355 }}>
           <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
             <SvgText x={0} y={16} fill={mono.ink} fontSize={14} {...BOLD}>
               Relapse frequency · an illustration
@@ -588,7 +579,7 @@ const BAD_DAY = 3;
 /** Seven 36 × 56 cells at cx 22 + 48i: six ink with a ground check, Thursday ground in an ink ring with a dot. */
 function WeekStrip() {
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: 329, flexDirection: 'row', justifyContent: 'center' }}>
+    <View style={{ position: 'absolute', left: 0, right: 0, top: 287, flexDirection: 'row', justifyContent: 'center' }}>
       <Svg width={344} height={86} viewBox="0 0 344 86">
         {WEEK.map((d, i) => {
           const cx = 22 + 48 * i;
@@ -615,8 +606,8 @@ export function O3OneBadDay({ next, back }: { next: () => void; back?: () => voi
     <HeroBoard
       nav={{ left: 'back', right: 'empty', onBack: back }}
       art={<WeekStrip />}
-      artTop={329}
-      stackTop={451}
+      artTop={287}
+      stackTop={409}
       gap={16}
       titleSize={26}
       title="One bad day is one bad day."

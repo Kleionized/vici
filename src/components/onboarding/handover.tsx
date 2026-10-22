@@ -38,7 +38,8 @@ export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => 
     <HeroBoard
       nav={{ left: 'empty', right: 'empty' }}
       hero="envelope"
-      stackTop={451}
+      heroTop={181}
+      stackTop={442}
       gap={18}
       titleSize={26}
       title="A letter came."
@@ -69,7 +70,7 @@ function runsOf(p: string): LetterRun[] {
 
 /**
  * The letter on a card (`left 24 right 24 top 112 bottom 0`, r 24 24 0 0,
- * `#1E1E1E`, padding 34 28 0, clipped): the eyebrow, the salutation, four
+ * `#1E1E1E`, padding 34 28 0, clipped): the salutation, four
  * paragraphs at gap 14 (one run in 700 ink), and a 190 fade to the card's own
  * colour under `Continue` (bottom 96) and `Keep this letter` (bottom 60).
  *
@@ -106,10 +107,6 @@ export function O3LetterRead({
           contentInsetAdjustmentBehavior="never"
           style={{ marginBottom: LETTER_VIEW_BOTTOM }}
           contentContainerStyle={{ paddingTop: 34, paddingHorizontal: 28, paddingBottom: LETTER_END_PAD }}>
-          {/* VICI wrote it, in his voice at week XII — never "from" him (D476) */}
-          <MonoText v="caps" wrap="wrap" style={{ marginBottom: 18 }}>
-            From VICI · as you at week XII
-          </MonoText>
           <MonoText v="h1" wrap="wrap" style={{ lineHeight: lhNormal(26), marginBottom: 18 }}>
             {/* a no-break space keeps the dash with the name however long it is */}
             {who ? `${who}\u00A0—` : 'Friend\u00A0—'}
@@ -156,9 +153,9 @@ const SIG_H = 74;
 const VOW_CONTROLS = 96 + 58;
 
 /**
- * "Day 0, Jun 9" over "The vow." (40/46), the vow itself (21/33 ink), and his
- * name in Lato 700 italic on a 1.5 ink rule, "Signed on day 0" under it. `Sign`
- * over `Not now`; the ✕ is `Not now`.
+ * "The vow." (40/46) at 184, the vow itself (21/33 ink), and his name in Lato
+ * 700 italic on a 1.5 ink rule, "Signed on Day 0, Jun 9" (14/400 mute) under
+ * it. `Sign` over `Not now`; the ✕ is `Not now`.
  *
  * The signature hangs at 530. On a shorter phone it first rises into the ground
  * between the vow and itself (keeping 24 under the vow), so it never sits under
@@ -168,14 +165,13 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
   const who = name.trim() || 'Friend';
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
-  const [stackH, setStackH] = useState(238);
-  const sigTop = Math.max(150 + stackH + 24, Math.min(530, winH - canvasTop - VOW_CONTROLS - 16 - SIG_H));
+  const [stackH, setStackH] = useState(204);
+  const sigTop = Math.max(184 + stackH + 24, Math.min(530, winH - canvasTop - VOW_CONTROLS - 16 - SIG_H));
   return (
     <Screen>
       <NavBar left="empty" right="close" onClose={skip} />
-      <Band start={150} end={sigTop + SIG_H} bottom={VOW_CONTROLS}>
-        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 150, gap: 18 }}>
-            <MonoText v="caps">{date}</MonoText>
+      <Band start={184} end={sigTop + SIG_H} bottom={VOW_CONTROLS}>
+        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 184, gap: 18 }}>
             <MonoText v="h1" style={{ fontSize: 40, lineHeight: 46 }}>
               The vow.
             </MonoText>
@@ -192,8 +188,8 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
               style={{ ...sansItalic(), fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.ink }}>
               {who}
             </MonoText>
-            <MonoText v="caps" wrap="wrap" style={{ marginTop: 10, letterSpacing: 0.5 }}>
-              Signed on day 0
+            <MonoText v="p" wrap="wrap" color={mono.mute} style={{ marginTop: 10, fontSize: 14, lineHeight: lhNormal(14) }}>
+              {`Signed on ${date}`}
             </MonoText>
           </View>
       </Band>
@@ -205,15 +201,14 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
 
 // ── 41 · Medallion Earned (frame `Medallion Received`) ───────────────
 
-/** The medal at 190 (scale 1), "Veni" over "Your first medallion." and "You started.", `Continue`. */
-export function O3MedallionEarned({ eyebrow, title, body, next }: { eyebrow: string; title: string; body: string; next: () => void }) {
+/** The medal at 190 (scale 1), "Veni." over "Your first medallion. You started.", `Continue`. */
+export function O3MedallionEarned({ title, body, next }: { title: string; body: string; next: () => void }) {
   return (
     <HeroBoard
       nav={{ left: 'empty', right: 'empty' }}
       hero="medal"
-      stackTop={452}
+      stackTop={480}
       gap={12}
-      caps={eyebrow}
       titleSize={26}
       title={title}
       body={body}

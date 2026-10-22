@@ -493,7 +493,7 @@ export default function Onboarding() {
           />
         );
       case 'medallion':
-        return <O3MedallionEarned eyebrow="Veni" title="Your first medallion." body="You started." next={next} />;
+        return <O3MedallionEarned title="Veni." body="Your first medallion. You started." next={next} />;
       case 'reminders':
         return (
           <O3Reminders

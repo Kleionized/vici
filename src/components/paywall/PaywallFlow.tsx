@@ -733,6 +733,7 @@ export function PaywallFlow({
   load: _load,
   confirmLabel = 'Begin',
   embedded = false,
+  stage,
   onDone,
 }: {
   /** First name from the intake — personalizes the confirmed page. */
@@ -746,18 +747,21 @@ export function PaywallFlow({
   confirmLabel?: string;
   /** Inside the onboarding shell: the ✕ skips the funnel rather than closing. */
   embedded?: boolean;
+  /** Development builds only: open on the rescue, or on the confirmation of a yearly start (a capture's state). */
+  stage?: 'rescue' | 'confirmed';
   /** Called when the funnel ends — purchased true/false. */
   onDone: (purchased: boolean) => void;
 }) {
   const purchases = usePurchases();
   const { email } = useAuth();
+  const at = __DEV__ ? stage : undefined;
   const [plan, setPlan] = useState<PlanKey>('year');
-  const [checkout, setCheckout] = useState<PlanKey | null>(null);
-  const [offer, setOffer] = useState(false);
+  const [checkout, setCheckout] = useState<PlanKey | null>(at === 'confirmed' ? 'year' : null);
+  const [offer, setOffer] = useState(at === 'rescue');
   const [sheet, setSheet] = useState(false);
-  const [done, setDone] = useState(false);
-  const [offered, setOffered] = useState(false);
-  const [doneAt, setDoneAt] = useState<Date | null>(null);
+  const [done, setDone] = useState(at === 'confirmed');
+  const [offered, setOffered] = useState(at === 'rescue');
+  const [doneAt, setDoneAt] = useState<Date | null>(() => (at === 'confirmed' ? new Date() : null));
   const closeLabel = embedded ? 'Skip' : 'Close';
   const mock = purchases.mode === 'mock';
 

@@ -20,7 +20,7 @@ for (const row of ledger.rows) {
   if (!re.test(row.id)) continue;
   const t = targetOf(row);
   if (!t) { console.log(row.id, 'no harness target'); continue; }
-  await shoot({ screen: t.screen, state: t.state, route: t.route, seed: t.seed, clock: t.clock, name: row.id, time: t.time, wait: Number(t.wait ?? flags.wait ?? 1800) });
+  await shoot({ screen: t.screen, state: t.state, route: t.route, seed: t.seed, clock: t.clock, blur: t.blur, globals: t.globals, name: row.id, time: t.time, wait: Number(t.wait ?? flags.wait ?? 1800) });
   let out;
   try {
     out = execFileSync('node', ['scripts/pixel-diff.mjs', `pixel-diff/design/${row.id}.png`, `pixel-diff/app/${row.id}.png`, row.id]).toString();

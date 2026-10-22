@@ -122,7 +122,7 @@ const readUsers = async () => (await getJSON<UserBook>(USERS_KEY)) ?? {};
  * stored account in without the sign-in boards. Set only in a development
  * build; null otherwise.
  */
-export const harnessAuth: { signIn: ((uid: string) => Promise<void>) | null } = { signIn: null };
+export const harnessAuth: { signIn: ((uid: string) => Promise<void>) | null; signOut: (() => Promise<void>) | null } = { signIn: null, signOut: null };
 
 export function MockAuthProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -301,10 +301,12 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!__DEV__) return;
     harnessAuth.signIn = startSession;
+    harnessAuth.signOut = signOut;
     return () => {
       harnessAuth.signIn = null;
+      harnessAuth.signOut = null;
     };
-  }, [startSession]);
+  }, [startSession, signOut]);
 
   const value = useMemo<AuthValue>(
     () => ({

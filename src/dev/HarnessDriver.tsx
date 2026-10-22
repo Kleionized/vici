@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { usePathname, useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
+import { Keyboard, LogBox } from 'react-native';
 
 import { harnessAuth } from '@/lib/auth/mockAuth';
 import { secureSet } from '@/lib/storage';
@@ -18,10 +19,14 @@ type Target = {
   extra?: Record<string, string>;
   /** … or an app route, opened as a user would reach it */
   route?: string;
-  /** a stored account to sign in first (pixel-diff/seeds/<seed>.json) */
+  /** a stored account to sign in first (pixel-diff/seeds/<seed>.json); `-` signs out */
   seed?: string;
   /** the moment `Date` stands at, `YYYY-MM-DDTHH:MM[:SS]` local */
   clock?: string;
+  /** globals the screens' mock hooks read, e.g. `__ONB_ANSWERS` (welcome.tsx) */
+  globals?: Record<string, unknown>;
+  /** put the keyboard away once the board is up: iOS draws it, the frames do not (D29) */
+  blur?: boolean;
 };
 
 /**
@@ -48,6 +53,8 @@ function rekey(kv: Record<string, string>, n: number): { kv: [string, string][];
  */
 export function HarnessDriver() {
   const router = useRouter();
+  // a warning toast would sit over the frame being captured; warnings still reach Metro's log
+  useEffect(() => LogBox.ignoreAllLogs(true), []);
   const pathname = usePathname();
   const at = useRef(pathname);
   useEffect(() => {
@@ -58,7 +65,11 @@ export function HarnessDriver() {
   useEffect(() => {
     const open = async (t: Target) => {
       setHarnessClock(t.clock ? new Date(t.clock).getTime() : null);
-      if (t.seed) {
+      const g = globalThis as Record<string, unknown>;
+      delete g.__ONB_ANSWERS;
+      Object.assign(g, t.globals ?? {});
+      if (t.seed === '-') await harnessAuth.signOut?.();
+      else if (t.seed) {
         const seed = (await (await fetch(`${SERVER}/seed/${encodeURIComponent(t.seed)}`)).json()) as { kv: Record<string, string> };
         const { kv, uid } = rekey(seed.kv, t.n);
         await AsyncStorage.multiSet(kv.filter(([k]) => k !== SESSION_KEY));
@@ -69,6 +80,7 @@ export function HarnessDriver() {
       }
       if (t.route) router.replace(t.route as never);
       else router.replace({ pathname: '/dev/harness', params: { view: t.screen, state: t.state, n: String(t.n), ...(t.extra ?? {}) } } as never);
+      if (t.blur) setTimeout(() => Keyboard.dismiss(), 1200);
     };
     const id = setInterval(() => {
       if (busy.current) return;
