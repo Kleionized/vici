@@ -117,6 +117,13 @@ type Pending =
 type UserBook = Record<string, MockUserRecord>;
 const readUsers = async () => (await getJSON<UserBook>(USERS_KEY)) ?? {};
 
+/**
+ * The dev harness's door (Vici UI 2 run, `src/dev/HarnessDriver.tsx`): sign a
+ * stored account in without the sign-in boards. Set only in a development
+ * build; null otherwise.
+ */
+export const harnessAuth: { signIn: ((uid: string) => Promise<void>) | null } = { signIn: null };
+
 export function MockAuthProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
@@ -290,6 +297,14 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
     await secureDelete(SESSION_KEY);
     await hydrateFromUserId(null);
   }, [hydrateFromUserId]);
+
+  useEffect(() => {
+    if (!__DEV__) return;
+    harnessAuth.signIn = startSession;
+    return () => {
+      harnessAuth.signIn = null;
+    };
+  }, [startSession]);
 
   const value = useMemo<AuthValue>(
     () => ({

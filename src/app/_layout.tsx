@@ -20,6 +20,7 @@ import { FORCE_MOCK } from '@/lib/config';
 import { AppProviders } from '@/lib/providers';
 import { useReminderLifecycle } from '@/lib/reminders';
 import { colors } from '@/lib/theme';
+import { HarnessDriver } from '@/dev/HarnessDriver';
 
 /**
  * The design canvas is a 393 × 852 iPhone frame whose top 54 is the status bar
@@ -130,6 +131,7 @@ export default function RootLayout() {
               <Stack.Screen name="lessons-browser" />
             </Stack>
             <ReminderLifecycle />
+            {__DEV__ && process.env.EXPO_PUBLIC_HARNESS === '1' ? <HarnessDriver /> : null}
             {/* after the navigator, so the lock and the privacy cover draw over every screen */}
             <AppLockGate />
           </AppProviders>
