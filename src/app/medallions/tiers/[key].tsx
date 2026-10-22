@@ -116,7 +116,7 @@ function OneOffs({ ledger, onBack }: { ledger: NonNullable<ReturnType<typeof use
                         <MonoText v="pTight" wrap="nowrap" center color={mono.mute} style={{ fontSize: 13, lineHeight: 18 }}>
                           {face.blurb}
                         </MonoText>
-                        <MonoText v="legal" wrap="nowrap" center color={entry.earned ? mono.sub : mono.art} style={{ marginTop: 2, letterSpacing: 0 }}>
+                        <MonoText v="legal" wrap="nowrap" center color={entry.earned ? mono.sub : mono.art} style={{ marginTop: 2, letterSpacing: undefined }}>
                           {when}
                         </MonoText>
                       </View>

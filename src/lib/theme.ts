@@ -61,6 +61,14 @@ export const monoDark = {
   faint: 'rgba(255,255,255,0.3)',
 } as const;
 
+/**
+ * `Vici UI 2` · the SOS (`Vici SOS.dc.html`): the five strength bars, low →
+ * high (`scale()`'s `G`), and the Continue pill before an answer is given —
+ * a `#2E2E2E` fill with `#77736C` words, not a dimmed ink pill.
+ */
+export const urgeRamp = ['#383734', '#5E5C58', '#8A8781', '#BAB6AF', '#E6E3DD'] as const;
+export const ctaOff = { fill: '#2E2E2E', text: '#77736C' } as const;
+
 /** Mood / feeling discs, low → high (Morning Feeling, Night 1 Mood). */
 export const toneRamp = ['#34322F', '#5A5751', '#8A857D', '#BAB5AD', '#F2F0EC'] as const;
 
@@ -301,12 +309,23 @@ export function lhNormal(size: number): number {
   return Math.round(size * 0.987) + Math.round(size * 0.213);
 }
 
+/**
+ * Letter spacing as React Native should be given it. On iOS any `letterSpacing`
+ * becomes the attributed string's `NSKern`, and an `NSKern` of 0 turns the
+ * font's kerning **off**: "You don’t have to keep going over it until" in
+ * Lato 16 lays out 283.264 wide instead of the 280.048 WebKit draws (measured,
+ * Vici UI 2 D25). So no tracking is no `letterSpacing` at all; a style that
+ * must cancel a variant's tracking sets `NO_TRACKING`.
+ */
+export const tracking = (ls: number): TextStyle => (ls ? { letterSpacing: ls } : {});
+export const NO_TRACKING: TextStyle = { letterSpacing: undefined };
+
 type TypeSpec = { size: number; w: '400' | '700' | '900'; lh?: number; ls?: number; color: string };
 const spec = ({ size, w, lh, ls = 0, color }: TypeSpec): TextStyle => ({
   ...sans(w),
   fontSize: size,
   lineHeight: lh ?? lhNormal(size),
-  letterSpacing: ls,
+  ...tracking(ls),
   color,
 });
 

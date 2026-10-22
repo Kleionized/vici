@@ -380,7 +380,7 @@ function Paywall() {
         </MonoText>
         <MonoText v="pill" style={{ marginTop: 22, fontSize: 26, lineHeight: lhNormal(26), letterSpacing: -0.8, color: fg }}>
           {price}
-          <MonoText v="pill" style={{ fontSize: 13, letterSpacing: 0, color: soft }}>
+          <MonoText v="pill" style={{ fontSize: 13, letterSpacing: undefined, color: soft }}>
             {per}
           </MonoText>
         </MonoText>

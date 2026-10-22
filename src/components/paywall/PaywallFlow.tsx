@@ -250,7 +250,7 @@ export function PwPlanCard({
       {/* one line box: the cycle is an inline span on the price's baseline */}
       <MonoText v="pill" wrap="wrap" style={{ marginTop: 22, fontSize: 26, lineHeight: lhNormal(26), letterSpacing: -0.8, color: fg }}>
         {price}
-        <MonoText v="pill" style={{ fontSize: 13, letterSpacing: 0, color: soft }}>
+        <MonoText v="pill" style={{ fontSize: 13, letterSpacing: undefined, color: soft }}>
           {cycle}
         </MonoText>
       </MonoText>
@@ -381,7 +381,7 @@ export function PwFooter({ text, onRestore }: { text?: string; onRestore: () => 
  */
 export function PwTerms({ children, style }: { children: string; style?: StyleProp<TextStyle> }) {
   return (
-    <MonoText v="legal" wrap="wrap" style={[{ marginTop: 16, letterSpacing: 0, lineHeight: 16 }, style]}>
+    <MonoText v="legal" wrap="wrap" style={[{ marginTop: 16, letterSpacing: undefined, lineHeight: 16 }, style]}>
       {children}
     </MonoText>
   );
@@ -717,7 +717,7 @@ function PwConfirmed({ line, name, confirmLabel, onDone }: { line: string; name?
       <PrimaryButton label={confirmLabel} bottom={82} onPress={onDone} />
       <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52 }}>
         {/* the app sends no receipt — the store keeps it (P6, D457) */}
-        <MonoText v="legal" center wrap="wrap" style={{ letterSpacing: 0, paddingHorizontal: 24 }}>
+        <MonoText v="legal" center wrap="wrap" style={{ letterSpacing: undefined, paddingHorizontal: 24 }}>
           {`Your receipt is in your ${storeName()} purchase history.`}
         </MonoText>
       </View>

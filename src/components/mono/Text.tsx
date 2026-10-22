@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Platform, Text, type NativeSyntheticEvent, type TextLayoutEventData, type TextProps, type TextStyle } from 'react-native';
+import { Platform, StyleSheet, Text, type NativeSyntheticEvent, type TextLayoutEventData, type TextProps, type TextStyle } from 'react-native';
 
 import { type as T } from '@/lib/theme';
+
+import { latoRuns } from './fallback';
 
 export type TextVariant = keyof typeof T;
 /** CSS `text-wrap` / `white-space` as the frame states it, per run. */
@@ -122,7 +124,7 @@ export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMulti
       {...rest}
       onTextLayout={layout}
       style={[T[v], wrapStyle(w), center ? { textAlign: 'center' } : null, color ? { color } : null, style]}>
-      {tied ?? children}
+      {typeof (tied ?? children) === 'string' ? latoRuns((tied ?? children) as string, StyleSheet.flatten([T[v], style]) as TextStyle) : children}
     </Text>
   );
 }

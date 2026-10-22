@@ -30,11 +30,19 @@ const GroundContext = createContext<string>(mono.ground);
 /**
  * Converts a canvas y into the app's: the canvas's first 54 are the status bar
  * the app never draws (D009), so its y is measured from the safe-area top.
+ *
+ * On a Dynamic Island phone the safe area starts 5 below the 54 the frame
+ * draws: iPhone 16, the frame's own 393 × 852, reports a top inset of 59, and
+ * there the frame's y is the screen's y (Vici UI 2, D15). Phones with a
+ * shorter inset keep the frame's 54.
  */
 export function useCanvasTop() {
   const insets = useSafeAreaInsets();
-  return insets.top - layout.statusBar;
+  return insets.top >= ISLAND_INSET ? insets.top - ISLAND_INSET : insets.top - layout.statusBar;
 }
+
+/** The safe-area top of the frame's own phone (iPhone 16, 393 × 852). */
+const ISLAND_INSET = 59;
 
 /**
  * A frame. The ground and the noise fill the window — the noise tiles from the

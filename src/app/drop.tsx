@@ -255,7 +255,7 @@ function PriceCard({ top, price, cycle, struck, saving, perMonth }: { top: numbe
             <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
               <Check size={13} />
             </View>
-            <MonoText v="legal" wrap="wrap" center color={mono.sub} style={{ letterSpacing: 0, lineHeight: 17, alignSelf: 'stretch', marginHorizontal: perkInset }}>
+            <MonoText v="legal" wrap="wrap" center color={mono.sub} style={{ letterSpacing: undefined, lineHeight: 17, alignSelf: 'stretch', marginHorizontal: perkInset }}>
               {perk}
             </MonoText>
           </View>

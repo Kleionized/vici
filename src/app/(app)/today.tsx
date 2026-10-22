@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useId, useState, type ReactNode } from 'react';
 import { Platform, ScrollView, Share, View, useWindowDimensions } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, LinearGradient, Path, Stop, Text as SvgText } from 'react-native-svg';
 
 import {
@@ -20,6 +19,7 @@ import {
   PledgeCard,
   Screen,
   Tap,
+  useCanvasTop,
   useTabBarHeight,
 } from '@/components/mono';
 import { DAY_STEPS, dayStep, type DayStep } from '@/components/day/kit';
@@ -102,7 +102,7 @@ export default function Today() {
   const events = useEvents();
   const journal = useJournalEntries();
   const upsertCheckin = useUpsertCheckin();
-  const insets = useSafeAreaInsets();
+  const canvasTop = useCanvasTop();
   const winH = useWindowDimensions().height;
   const tabBar = useTabBarHeight();
   // "Now" holds still under re-renders, and moves on when the tab is focused,
@@ -125,7 +125,7 @@ export default function Today() {
   // 748) and grows past it only when its own content needs more (a 667 phone, a
   // pledge that wraps to three lines), so the pager always snaps page to page
   // and a taller page scrolls within itself before the next one (D230, D320).
-  const viewport = winH - tabBar - (insets.top - 54) - PAGER_TOP;
+  const viewport = winH - tabBar - canvasTop - PAGER_TOP;
 
   // Day N: calendar days from the programme's first day (src/lib/day.ts)
   const day = programmeDay(user, now);

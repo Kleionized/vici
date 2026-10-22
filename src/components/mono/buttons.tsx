@@ -65,7 +65,7 @@ export function PrimaryButton({
         style,
       ]}>
       {icon}
-      <MonoText v="primaryLabel" style={sheet ? { letterSpacing: 0 } : null}>
+      <MonoText v="primaryLabel" style={sheet ? { letterSpacing: undefined } : null}>
         {label}
       </MonoText>
     </Tap>

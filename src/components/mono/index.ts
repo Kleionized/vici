@@ -28,3 +28,6 @@ export * from './MedalTier';
 export * from './TabBar';
 export * from './scales';
 export * from './Feedback';
+export { WrapText } from './WrapText';
+export { latoRuns } from './fallback';
+export { VizArt } from './VizArt';

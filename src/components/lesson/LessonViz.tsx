@@ -116,7 +116,7 @@ function Pairs({ v }: { v: Extract<LessonViz, { type: 'pairs' }> }) {
             {v.variant === 'letters' ? (
               <>
                 {/* 24/31 700, no tracking (the frame states none) */}
-                <MonoText v="lessonHeading" wrap="wrap" style={{ letterSpacing: 0 }}>
+                <MonoText v="lessonHeading" wrap="wrap" style={{ letterSpacing: undefined }}>
                   {row[0]}
                 </MonoText>
                 <MonoText v="lessonCaps" wrap="nowrap" style={{ marginTop: 2 }}>

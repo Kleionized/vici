@@ -1,10 +1,9 @@
 import { useRouter } from 'expo-router';
 import { useState, type ReactNode } from 'react';
 import { Platform, ScrollView, View, useWindowDimensions } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Line, Path, Text as SvgText } from 'react-native-svg';
 
-import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useTabBarHeight } from '@/components/mono';
+import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { calendarDaysBetween, keyToDate, useToday } from '@/lib/day';
 import { dateRange } from '@/lib/format';
@@ -37,7 +36,7 @@ const PARTS_END = 788;
 
 export default function Score() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
+  const canvasTop = useCanvasTop();
   const { width: W, height: winH } = useWindowDimensions();
   const tabBar = useTabBarHeight();
   const user = useCurrentUser();
@@ -66,7 +65,7 @@ export default function Score() {
 
   // The pages fill the band from the pager's top to the bar; a page whose
   // content runs past that (the parts' paragraph on a 667 phone) scrolls inside itself.
-  const pageH = winH - tabBar - (insets.top - 54) - PAGER_TOP;
+  const pageH = winH - tabBar - canvasTop - PAGER_TOP;
 
   return (
     <Screen>

@@ -149,7 +149,7 @@ function FaceCell({ entry, grid, onPress }: { entry: LedgerFace; grid?: boolean;
         <MonoText v="rowLabel" center color={entry.earned ? mono.ink : mono.mute} style={{ letterSpacing: -0.2 }}>
           {face.name}
         </MonoText>
-        <MonoText v="legal" center wrap="nowrap" style={{ letterSpacing: 0 }}>
+        <MonoText v="legal" center wrap="nowrap" style={{ letterSpacing: undefined }}>
           {line}
         </MonoText>
       </View>

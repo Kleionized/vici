@@ -67,7 +67,7 @@ const VARIANTS: Record<Variant, TextStyle> = {
   soft: {
     fontSize: fontSize.sm,
     lineHeight: Math.round(fontSize.sm * 1.48),
-    letterSpacing: 0,
+    letterSpacing: undefined,
     color: colors.textSoft,
   },
   // The canvas caps pattern: semibold, wide tracking, uppercase, muted ink.
