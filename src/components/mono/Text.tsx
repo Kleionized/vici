@@ -156,7 +156,12 @@ export function MonoText({ v = 'p', color, center, wrap, style, maxFontSizeMulti
   const w = wrap ?? DEFAULT_WRAP[v];
   const flat = StyleSheet.flatten([T[v], style]) as TextStyle;
   // a line set tighter than Lato's natural height: its glyphs where WebKit centres them (D40)
-  const lead = Platform.OS === 'ios' ? halfLeading(flat.fontSize, flat.lineHeight) : null;
+  // it adds to a padding or margin the caller set rather than replacing it
+  const half = Platform.OS === 'ios' ? halfLeading(flat.fontSize, flat.lineHeight) : null;
+  const lead = half && {
+    paddingTop: half.paddingTop + (typeof flat.paddingTop === 'number' ? flat.paddingTop : 0),
+    marginBottom: half.marginBottom + (typeof flat.marginBottom === 'number' ? flat.marginBottom : 0),
+  };
   // a run the frames drew broken (D13): laid out on the frame's own lines once its box is known
   const words = Platform.OS !== 'web' && w !== 'nowrap' ? flatText(children) : '';
   const known = !!words && hasWraps(words, flat.fontSize as number);

@@ -89,11 +89,16 @@ function RowBox({
  * (13/700 mute nowrap), `gap 10`, then the card — `r20 #1E1E1E overflow
  * hidden`. Groups stack `gap 18` in their screen's column. The sheets' groups
  * have no label.
+ *
+ * Once each row became its own box (D51) the rows sat 6 apart, and a label 10
+ * over its rows and 18 under the group above read as part of that group. A
+ * label now opens its group: `LABEL_ABOVE` more room over it, 12 under it (D63).
  */
+export const LABEL_ABOVE = 12;
 export function RowGroup({
   label,
   children,
-  gap = 10,
+  gap = 12,
   radius = 20,
   style,
 }: {
@@ -106,7 +111,7 @@ export function RowGroup({
   const card = <View style={{ gap: ROW_GAP }}><Boxed radius={Math.min(radius, BOX_RADIUS)}>{children}</Boxed></View>;
   if (!label) return style ? <View style={style}>{card}</View> : card;
   return (
-    <View style={[{ gap }, style]}>
+    <View style={[{ gap, marginTop: LABEL_ABOVE }, style]}>
       <MonoText v="caps">{label}</MonoText>
       {card}
     </View>

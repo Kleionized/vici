@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { Alert, Platform, View } from 'react-native';
 
-import { Card, GhostLink, ListRow, ListRows, LoadingView, MonoText, NavBar, Pill, Screen, ScrollRegion } from '@/components/mono';
+import { Card, GhostLink, LABEL_ABOVE, ListRow, ListRows, LoadingView, MonoText, NavBar, Pill, Screen, ScrollRegion } from '@/components/mono';
 import { dayMonthYear } from '@/lib/format';
 import { TIER_NAME, usePurchases } from '@/lib/purchases';
 import { periodLabel } from '@/lib/purchases/plans';
@@ -194,19 +194,22 @@ export default function Subscription() {
             </View>
           ) : null}
         </Card>
-        <View style={{ height: 10 }} />
-        <MonoText v="caps">Plan</MonoText>
-        <ListRows>
-          <ListRow label="Change plan" value={premium ? planName : unreachable ? undefined : 'Free'} onPress={() => router.push('/paywall')} />
-          <ListRow label="Redeem a code" onPress={redeem} />
-          <ListRow label="Restore purchases" onPress={restorePurchases} />
-        </ListRows>
-        <View style={{ height: 10 }} />
-        <MonoText v="caps">Billing</MonoText>
-        <ListRows>
-          <ListRow label="Payment method" value={(premium && STORE_NAME[membership.store ?? '']) || PLATFORM_STORE} onPress={support} />
-          <ListRow label="Receipts & invoices" onPress={support} />
-        </ListRows>
+        {/* a label opens its group, as the settings groups' do (D63) */}
+        <View style={{ gap: 12, marginTop: LABEL_ABOVE }}>
+          <MonoText v="caps">Plan</MonoText>
+          <ListRows>
+            <ListRow label="Change plan" value={premium ? planName : unreachable ? undefined : 'Free'} onPress={() => router.push('/paywall')} />
+            <ListRow label="Redeem a code" onPress={redeem} />
+            <ListRow label="Restore purchases" onPress={restorePurchases} />
+          </ListRows>
+        </View>
+        <View style={{ gap: 12, marginTop: LABEL_ABOVE }}>
+          <MonoText v="caps">Billing</MonoText>
+          <ListRows>
+            <ListRow label="Payment method" value={(premium && STORE_NAME[membership.store ?? '']) || PLATFORM_STORE} onPress={support} />
+            <ListRow label="Receipts & invoices" onPress={support} />
+          </ListRows>
+        </View>
       </ScrollRegion>
       {cancellable ? <GhostLink label="Cancel subscription" bottom={56} onPress={support} /> : null}
     </Screen>
