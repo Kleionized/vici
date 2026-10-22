@@ -304,3 +304,6 @@ export function Sheet({
     </Modal>
   );
 }
+
+/** A sheet keeps its own motion; it is not part of the board arriving (`Screen`, D58). */
+(Sheet as { motionStill?: boolean }).motionStill = true;

@@ -13,6 +13,7 @@ export { NavBar, NavDashes, TitleHead, type NavCentre, type NavLeft, type NavRig
 export { PrimaryButton, GhostLink, NextFab, IconCircle, RingNext, DISABLED_OPACITY } from './buttons';
 export * from './icons';
 export * from './glyphs';
+export * from './motion';
 // Phase 0 parts (one owner each — .overhaul/PHASE0.md)
 export * from './choices';
 export * from './rows';

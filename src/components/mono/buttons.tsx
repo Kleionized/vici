@@ -7,6 +7,8 @@ import { ChevronR, FabChevron } from './icons';
 import { Tap } from './Tap';
 import { MonoText } from './Text';
 
+import { fadeStyle, MS, settleStyle, useMotion } from './motion';
+
 /**
  * No frame draws a disabled primary. The kit dims the same pill rather than
  * inventing a colour — the opacity the auth boards already used (D321).
@@ -47,6 +49,8 @@ export function PrimaryButton({
   const box: ViewStyle = inline
     ? { height: 58 }
     : { position: 'absolute', left: inset, right: inset, bottom, height: 58, zIndex: sheet ? 42 : 6 };
+  // the pill arrives last on its board (D58); it fades, since its press scale owns the transform
+  const on = useMotion();
   return (
     <Tap
       onPress={onPress}
@@ -62,6 +66,8 @@ export function PrimaryButton({
           gap: icon ? 10 : 0,
           opacity: disabled ? DISABLED_OPACITY : 1,
         },
+        settleStyle(on, ['backgroundColor', 'opacity']),
+        inline ? null : fadeStyle(on, { delay: 220, duration: MS.slow }),
         style,
       ]}>
       {icon}
@@ -92,8 +98,9 @@ export function GhostLink({
   bold?: boolean;
   zIndex?: number;
 }) {
+  const on = useMotion();
   return (
-    <Tap onPress={onPress} hitSlop={{ top: 12, bottom: 12 }} style={{ position: 'absolute', left: 0, right: 0, bottom, zIndex }}>
+    <Tap onPress={onPress} hitSlop={{ top: 12, bottom: 12 }} style={[{ position: 'absolute', left: 0, right: 0, bottom, zIndex }, fadeStyle(on, { delay: 300, duration: MS.slow })]}>
       <MonoText v="ghost" center color={tone === 'dark' ? monoDark.ghost : mono.mute} style={bold ? { fontFamily: 'Lato_700Bold' } : null}>
         {label}
       </MonoText>

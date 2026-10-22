@@ -51,6 +51,7 @@ const ShellCtx = createContext<{ onBack?: () => void }>({});
 export function O3Shell({
   onBack,
   children,
+  motionKey,
 }: {
   /** @deprecated the old progress rule's fill — every frame states its own dashes */
   progress?: number;
@@ -66,13 +67,15 @@ export function O3Shell({
   /** @deprecated every overhaul frame puts the nav row at 60 */
   backTop?: number;
   children: ReactNode;
+  /** the step on show: a new one arrives as a new board (D58) */
+  motionKey?: string | number;
 }) {
   const ctx = useMemo(() => ({ onBack: onBack ?? undefined }), [onBack]);
   if (isValidElement(children) && (children.type === O3FunnelStep || children.type === O3AgeGate)) {
     return <ShellCtx.Provider value={ctx}>{children}</ShellCtx.Provider>;
   }
   return (
-    <Screen>
+    <Screen motionKey={motionKey}>
       {onBack ? <NavBar left="back" right="empty" onBack={onBack} /> : null}
       <View style={{ position: 'absolute', left: 0, right: 0, top: 54, bottom: 0, paddingHorizontal: 24, paddingTop: 76, paddingBottom: 32 }}>{children}</View>
     </Screen>
@@ -267,7 +270,7 @@ export function O3FunnelStep({
   }
 
   return (
-    <Screen>
+    <Screen motionKey={step.id}>
       {/* first, as the frames paint it: the answers never sit over it at 852,
           and on a phone too short to clear the controls it is left out (D320) */}
       {step.hero ? <Hero id={step.hero.id} top={step.hero.top} scale={step.hero.scale} controls={controls} /> : null}

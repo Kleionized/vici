@@ -110,7 +110,7 @@ export default function UrgeLog() {
   }
 
   return (
-    <Screen>
+    <Screen motionKey={step}>
       {/* each question's illustration sits between the stack and the pill and is
           painted first, under both; a phone too short for it drops it (D320) */}
       {step === 0 ? <Hero id="thermometer" top={506} scale={1.062} controls={106} /> : null}

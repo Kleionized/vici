@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
 import { Platform, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { lhNormal, mono, monoDark, ring, sans } from '@/lib/theme';
 
 import { ArrowUp, Check, Flame } from './icons';
 import { Tap } from './Tap';
 import { MonoText } from './Text';
+import { fadeStyle, MS, popStyle, settleStyle, useMotion } from './motion';
 
 /** A pill's run: 700 at `size`, `line-height: normal` (the span is a flex item, so its own font sizes the box). */
 const run = (size: number, color: string, extra?: TextStyle): TextStyle => ({ ...sans('700'), fontSize: size, lineHeight: lhNormal(size), color, ...extra });
@@ -165,25 +167,33 @@ export function CheckDisc({
   size = 22,
   state = 'done',
   glyph,
+  delay = 0,
   style,
 }: {
   size?: number;
   state?: 'done' | 'inverse' | 'pending' | 'current' | 'empty';
   glyph?: number;
+  /** when its landing starts, after the board opens (D58) */
+  delay?: number;
   style?: StyleProp<ViewStyle>;
 }) {
   const g = glyph ?? (state === 'inverse' && size === 22 ? 12 : (GLYPH[size] ?? Math.round(size * 0.45)));
   const bg = state === 'done' ? mono.ink : state === 'empty' ? undefined : mono.card;
   const shadow = state === 'pending' || state === 'empty' ? ring.outline : state === 'current' ? ring.outlineInk : undefined;
+  const motion = useMotion();
+  // a done disc lands — from 60 % with a small overshoot; the others simply arrive (D58)
+  const arrive = state === 'done' || state === 'inverse' ? popStyle(motion, { delay, duration: size >= 60 ? MS.slow + 140 : MS.slow }) : fadeStyle(motion, { delay });
   return (
-    <View
+    <Animated.View
       style={[
         { width: size, height: size, borderRadius: size / 2, backgroundColor: bg, boxShadow: shadow, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+        settleStyle(motion),
+        arrive,
         style,
       ]}>
       {state === 'done' ? <Check size={g} /> : null}
       {state === 'inverse' ? <Check size={g} color={mono.ink} /> : null}
       {state === 'current' ? <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: mono.ink }} /> : null}
-    </View>
+    </Animated.View>
   );
 }

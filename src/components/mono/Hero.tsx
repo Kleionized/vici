@@ -1,5 +1,6 @@
 import { memo, useState, type ReactNode } from 'react';
 import { useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 import Svg, { Circle, Ellipse, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_PAINT_Y, HERO_SCALE, HEROES, heroId, type HeroId, type HeroKey, type HeroNode } from '@/content/heroes';
@@ -8,6 +9,7 @@ import { mono, monoDark } from '@/lib/theme';
 import { GhostLink, PrimaryButton } from './buttons';
 import { NavBar, type NavCentre, type NavLeft, type NavRight } from './NavBar';
 import { Screen, ScrollRegion, useCanvasTop } from './Screen';
+import { MS, riseStyle, useMotion } from './motion';
 import { MonoText } from './Text';
 
 /**
@@ -84,18 +86,20 @@ function Placed({ id, ox, oy, k, width }: { id: HeroKey; ox: number; oy: number;
   const [t, b] = extent(heroId(id));
   const top = Math.floor(oy + k * t - BLEED);
   const height = Math.ceil(oy + k * b + BLEED) - top;
+  const on = useMotion();
   return (
-    <View
+    // the drawing arrives a beat after its board, rising 12 as it grows from 97 % (D58)
+    <Animated.View
       pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
-      style={{ position: 'absolute', left: 0, top, width, height }}>
+      style={[{ position: 'absolute', left: 0, top, width, height }, riseStyle(on, { delay: 80, duration: MS.slow + 120, distance: 12, scale: 0.97 })]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ position: 'absolute', left: 0, top: 0 }}>
         <G transform={`translate(${fmt(ox)} ${fmt(oy - top)}) scale(${fmt(k)})`}>
           <HeroArt id={id} />
         </G>
       </Svg>
-    </View>
+    </Animated.View>
   );
 }
 

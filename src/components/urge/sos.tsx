@@ -196,6 +196,9 @@ function Nav({ backHidden, onBack, onClose, centre }: { backHidden?: boolean; on
   );
 }
 
+/** the flow's nav row stays put while each page arrives under it (`Screen`, D58) */
+(Nav as { motionStill?: boolean }).motionStill = true;
+
 /** The four 24 × 2 marks: ink up to the step, `#2E2E2E` after it. */
 function Marks({ on }: { on: number }) {
   return (
@@ -870,7 +873,7 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
   }
 
   return (
-    <Screen>
+    <Screen motionKey={st}>
       <Nav backHidden={st === 'rate' || st === 'end'} onBack={back} onClose={close} centre={centre} />
       {body}
     </Screen>

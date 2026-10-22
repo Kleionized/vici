@@ -181,7 +181,10 @@ export default function LessonReader() {
       bottom={bottom}
       // the question's rows and the note field own their touches; every other page turns on a tap anywhere
       tapAnywhere={page.k !== 'question' && page.k !== 'reflect'}
-      onClose={close}>
+      onClose={close}
+      // swiping turns pages both ways; the closing page's "next" leaves the lesson, so it is not a swipe
+      onPrev={index > 0 ? () => set({ index: index - 1 }) : undefined}
+      onSwipeNext={page.k === 'complete' ? undefined : bottom.onPress}>
       <LessonPageView lesson={lesson} page={page} chosen={cur.chosen} onChoose={choose} note={cur.note} onNote={(note) => set({ note })} />
     </LessonShell>
   );

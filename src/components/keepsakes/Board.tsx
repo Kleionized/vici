@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
-import { MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap, TierLadder, type Tier } from '@/components/mono';
+import { CountUpText, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap, TierLadder, type Tier } from '@/components/mono';
 import { mono, sansItalic } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
@@ -170,9 +170,14 @@ export function MedalBoard({
           ) : null}
           {below.kind === 'quote' ? null : (
             <View style={{ position: 'absolute', left: 24, right: 24, top: y(belowTop), alignItems: 'center', gap: 6 }}>
-              <MonoText v="titlePage" wrap="nowrap" style={{ fontSize: 48, lineHeight: 50, letterSpacing: -1.7 }}>
-                {below.count}
-              </MonoText>
+              {/* the count counts up to itself (D58): "×23", "Day 13" */}
+              <CountUpText
+                v="titlePage"
+                wrap="nowrap"
+                value={Number(below.count.replace(/[^\d]/g, '')) || 0}
+                format={(n) => below.count.replace(/[\d,]+/, n.toLocaleString('en-US'))}
+                style={{ fontSize: 48, lineHeight: 50, letterSpacing: -1.7 }}
+              />
               {below.next ? (
                 <MonoText v="pTight" wrap="nowrap" center color={mono.mute}>
                   {below.next}

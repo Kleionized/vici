@@ -3,7 +3,7 @@ import { useRef, useState, type ReactNode } from 'react';
 import { Platform, ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Line, Path, Text as SvgText } from 'react-native-svg';
 
-import { ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
+import { CountUpText, DrawPath, ArrowUp, Card, Check, ChevronD, CueScrollView, LoadingView, MonoText, NavBar, OptionList, Pill, Screen, Sheet, SHEET_TOP, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import { HarnessPages } from '@/dev/HarnessPages';
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { calendarDaysBetween, keyToDate, useToday } from '@/lib/day';
@@ -88,9 +88,7 @@ export default function Score() {
       />
 
       <View style={{ position: 'absolute', left: 0, right: 0, top: 156 }}>
-        <MonoText v="statValue" center style={{ fontSize: 60, lineHeight: 70, letterSpacing: -2.4 }}>
-          {String(rating.value)}
-        </MonoText>
+        <CountUpText v="statValue" center value={rating.value} style={{ fontSize: 60, lineHeight: 70, letterSpacing: -2.4 }} />
       </View>
       <View style={{ position: 'absolute', left: 0, right: 0, top: 234 }}>
         <MonoText v="p" center wrap="nowrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
@@ -205,7 +203,7 @@ function OverTime({ W, values, range, now, rating, change }: { W: number; values
         <SvgText x={W - 24} y={194} fill={mono.mute} textAnchor="end" fontSize={11} fontFamily={bold}>
           0
         </SvgText>
-        <Path d={line} fill="none" stroke={mono.ink} strokeWidth={5} strokeLinecap="round" />
+        <DrawPath length={W * 1.8} delay={250} duration={1100} d={line} fill="none" stroke={mono.ink} strokeWidth={5} strokeLinecap="round" />
         <Circle cx={x1} cy={b.y} r={7} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
         {months.map((m, i) => (
           <SvgText key={i} x={[40, W / 2 - 0.5, W - 41][i]} y={226} fill={i === 2 ? mono.ink : mono.mute} textAnchor="middle" fontSize={13} fontFamily={bold}>
@@ -313,9 +311,7 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
           ))}
           <View style={{ marginTop: 14, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
             <MonoText v="caps">Recovery rating</MonoText>
-            <MonoText v="h1" wrap="nowrap" style={{ lineHeight: lhNormal(26) }}>
-              {String(rating.value)}
-            </MonoText>
+            <CountUpText v="h1" wrap="nowrap" value={rating.value} style={{ lineHeight: lhNormal(26) }} />
           </View>
         </Card>
         <MonoText v="p" style={{ marginHorizontal: 8 }}>

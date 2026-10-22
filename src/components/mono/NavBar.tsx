@@ -188,3 +188,6 @@ export function TitleHead({ title, center, top = 108 }: { title: string; center?
     </View>
   );
 }
+
+/** The nav row stays put while a board arrives under it (`Screen`, D58). */
+(NavBar as { motionStill?: boolean }).motionStill = true;

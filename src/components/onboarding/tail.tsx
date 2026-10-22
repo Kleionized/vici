@@ -21,9 +21,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useWindowDimensions, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import Svg, { Circle, Path, Rect, Text as SvgText } from 'react-native-svg';
 
-import { HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
+import { DrawPath, fadeStyle, MS, popStyle, riseStyle, useCountUp, useMotion, HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
 import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS } from '@/content/onboardingTail';
 import { groupDigits } from '@/lib/format';
 import { alpha, LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
@@ -156,7 +157,9 @@ const f1 = (v: number) => v.toFixed(1);
  * Endpoints are written to one decimal, as the frame writes them. The scale is
  * the recovery rating's own 0 … 100 (D516); a full gauge draws no marker (D219).
  */
-function RatingGauge({ value }: { value: number }) {
+function RatingGauge({ value: target }: { value: number }) {
+  // the number counts up and the ticks light up to it (D58)
+  const value = useCountUp(target, { delay: 250, duration: 1100 });
   const share = Math.max(0, Math.min(value, GAUGE_MAX)) / GAUGE_MAX;
   const ticks = Array.from({ length: TICKS + 1 }, (_, i) => {
     const a = ((180 - 3.75 * i) * Math.PI) / 180;
@@ -239,20 +242,35 @@ export function O3StartingPoint({ value, next, back }: { value: number | null; n
  */
 function MonthDots({ times }: { times: number }) {
   const days = useMemo(() => spreadDays(30, times), [times]);
+  const motion = useMotion();
+  // each day lands in turn, row by row, over about a second (D58); a ring of
+  // width w centred on r 14 is a (28 + w) box with a w border
   return (
-    <Svg width={334} height={244} viewBox="0 0 334 244">
-      {days.map((relapse, i) => (
-        <Circle
-          key={i}
-          cx={22 + 58 * (i % 6)}
-          cy={22 + 50 * Math.floor(i / 6)}
-          r={14}
-          fill={relapse ? mono.ground : mono.onInk}
-          stroke={mono.ink}
-          strokeWidth={relapse ? 1.6 : 1.8}
-        />
-      ))}
-    </Svg>
+    <View style={{ width: 334, height: 244 }}>
+      {days.map((relapse, i) => {
+        const w = relapse ? 1.6 : 1.8;
+        const size = 28 + w;
+        return (
+          <Animated.View
+            key={i}
+            style={[
+              {
+                position: 'absolute',
+                left: 22 + 58 * (i % 6) - size / 2,
+                top: 22 + 50 * Math.floor(i / 6) - size / 2,
+                width: size,
+                height: size,
+                borderRadius: size / 2,
+                borderWidth: w,
+                borderColor: mono.ink,
+                backgroundColor: relapse ? mono.ground : mono.onInk,
+              },
+              popStyle(motion, { delay: 300 + i * 32 }),
+            ]}
+          />
+        );
+      })}
+    </View>
   );
 }
 
@@ -337,12 +355,21 @@ const scaleX = (d: string, k: number) => (k === 1 ? d : d.replace(/(-?\d+(?:\.\d
 function YearDots({ days }: { days: number }) {
   const { w, k } = useColumn();
   const marked = useMemo(() => spreadDays(365, days), [days]);
+  const motion = useMotion();
+  // the year fills in row by row; each row is its own strip (D58)
+  const rows = Array.from({ length: Math.ceil(365 / 25) }, (_, r) => marked.slice(r * 25, r * 25 + 25));
   return (
-    <Svg width={w} height={208} viewBox={`0 0 ${w} 208`}>
-      {marked.map((relapse, i) => (
-        <Circle key={i} cx={(7 + (i % 25) * 13.8) * k} cy={7 + Math.floor(i / 25) * 13.8} r={relapse ? 4.4 : 2.4} fill={relapse ? mono.ink : 'rgba(242,240,236,0.28)'} />
+    <View style={{ width: w, height: 208 }}>
+      {rows.map((row, r) => (
+        <Animated.View key={r} style={[{ position: 'absolute', left: 0, top: r * 13.8, width: w, height: 14 }, riseStyle(motion, { delay: 300 + r * 70, distance: 4 })]}>
+          <Svg width={w} height={14} viewBox={`0 0 ${w} 14`}>
+            {row.map((relapse, i) => (
+              <Circle key={i} cx={(7 + i * 13.8) * k} cy={7} r={relapse ? 4.4 : 2.4} fill={relapse ? mono.ink : 'rgba(242,240,236,0.28)'} />
+            ))}
+          </Svg>
+        </Animated.View>
       ))}
-    </Svg>
+    </View>
   );
 }
 
@@ -361,6 +388,8 @@ function Figure({ children, color = mono.ink }: { children: string; color?: stri
  * figure is — his own rate, carried over a year (D471).
  */
 export function O3OneYear({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
+  // the figure counts up while the year fills in (D58)
+  const shown = useCountUp(days, { delay: 400, duration: 1200 });
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
@@ -372,7 +401,7 @@ export function O3OneYear({ days, next, back }: { days: number; next: () => void
           <YearDots days={days} />
         </View>
         <Stack top={530} gap={6}>
-          <Figure>{days >= 365 ? 'All 365 days' : `About ${groupDigits(days)} days`}</Figure>
+          <Figure>{days >= 365 ? `All ${shown} days` : `About ${groupDigits(shown)} days`}</Figure>
           <MonoText v="p">At the rate you reported, if it held all year.</MonoText>
         </Stack>
       </Band>
@@ -391,14 +420,18 @@ export function O3OneYear({ days, next, back }: { days: number; next: () => void
  * dot for dot. Anchored at the window's (0, 0), as the canvas's is at the
  * frame's — it runs under the status bar.
  */
+/** rows of the field drawn together as one band when it fills in */
+const AGE_BAND = 4;
+
 function AgeField({ width, height }: { width: number; height: number }) {
-  const [bright, dim] = useMemo(() => {
+  const bands = useMemo(() => {
     const cols = Math.max(AGE_80_COLS, Math.ceil((width - 3) / 12));
     const rows = Math.max(AGE_80_ROWS, Math.ceil((height - 3) / 12));
     let seed = AGE_80_NEXT_SEED;
-    const a: string[] = [];
-    const b: string[] = [];
-    for (let r = 0; r < rows; r++)
+    const out: { bright: string[]; dim: string[] }[] = [];
+    for (let r = 0; r < rows; r++) {
+      const band = Math.floor(r / AGE_BAND);
+      out[band] ??= { bright: [], dim: [] };
       for (let c = 0; c < cols; c++) {
         let on: boolean;
         if (r < AGE_80_ROWS && c < AGE_80_COLS) on = AGE_80_FIELD[r * AGE_80_COLS + c];
@@ -406,15 +439,24 @@ function AgeField({ width, height }: { width: number; height: number }) {
           seed = (seed * 9301 + 49297) % 233280;
           on = seed / 233280 < 0.3;
         }
-        (on ? a : b).push(dot(6 + c * 12, 6 + r * 12, on ? 2.6 : 1.6));
+        (on ? out[band].bright : out[band].dim).push(dot(6 + c * 12, 6 + (r % AGE_BAND) * 12, on ? 2.6 : 1.6));
       }
-    return [a.join(''), b.join('')];
+    }
+    return out.map((b) => ({ bright: b.bright.join(''), dim: b.dim.join('') }));
   }, [width, height]);
+  const motion = useMotion();
+  // the field fills in from the top, a band of rows at a time (D58)
   return (
-    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ position: 'absolute', left: 0, top: 0 }}>
-      <Path d={dim} fill="rgba(255,255,255,0.22)" />
-      <Path d={bright} fill={monoDark.dotOn} />
-    </Svg>
+    <View style={{ position: 'absolute', left: 0, top: 0, width, height }}>
+      {bands.map((b, i) => (
+        <Animated.View key={i} style={[{ position: 'absolute', left: 0, top: i * AGE_BAND * 12, width, height: AGE_BAND * 12 }, fadeStyle(motion, { delay: 100 + i * 45, duration: MS.slow })]}>
+          <Svg width={width} height={AGE_BAND * 12} viewBox={`0 0 ${width} ${AGE_BAND * 12}`}>
+            <Path d={b.dim} fill="rgba(255,255,255,0.22)" />
+            <Path d={b.bright} fill={monoDark.dotOn} />
+          </Svg>
+        </Animated.View>
+      ))}
+    </View>
   );
 }
 
@@ -426,6 +468,7 @@ function AgeField({ width, height }: { width: number; height: number }) {
 export function O3IfNothingChanges({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
   const win = useWindowDimensions();
   const canvasTop = useCanvasTop();
+  const shown = useCountUp(days, { delay: 500, duration: 1400 });
   return (
     <Screen variant="dark">
       <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
@@ -439,7 +482,7 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
       />
       <NavBar left="back" right="empty" tone="dark" onBack={back} />
       <View style={{ position: 'absolute', left: 24, right: 24, top: 379, zIndex: 2, gap: 10, alignItems: 'center' }}>
-        <Figure color={monoDark.text}>{`About ${groupDigits(days)} days`}</Figure>
+        <Figure color={monoDark.text}>{`About ${groupDigits(shown)} days`}</Figure>
         <MonoText v="p" wrap="wrap" center color={alpha.white(0.75)} style={{ fontSize: 17, lineHeight: 26 }}>
           By age 80, if nothing changes.
         </MonoText>
@@ -487,6 +530,7 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
   const L = LINES[mode];
   const { w, k } = useColumn();
   const x = 208 * k;
+  const motionOn = useMotion();
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
@@ -501,8 +545,14 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
               Relapse frequency · an illustration
             </SvgText>
             <Path d={`M0 236H${w}`} stroke={mono.ink} strokeWidth={1.5} />
-            <Path d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
-            <Path d={scaleX(L.line, k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+            {/* the lead-in, then the board's own line, draw from the left (D58) */}
+            <DrawPath length={140 * k} delay={300} duration={450} d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+            <DrawPath length={340 * k} delay={720} duration={1000} d={scaleX(L.line, k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+          </Svg>
+        </View>
+        {/* the reading at three months arrives once the line has passed it */}
+        <Animated.View pointerEvents="none" style={[{ position: 'absolute', left: 24, top: 355 }, riseStyle(motionOn, { delay: 1350, distance: 6 })]}>
+          <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
             <Path d={`M${x} ${L.y}V236`} stroke={mono.ink} strokeWidth={1.5} strokeDasharray="3 5" />
             <Rect x={x - 64} y={L.y - 58} width={128} height={40} rx={10} fill={mono.ink} />
             <SvgText x={x} y={L.y - 42} fill="#6B675F" textAnchor="middle" fontSize={11} letterSpacing={1.2} {...BOLD}>
@@ -513,7 +563,7 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
             </SvgText>
             <Circle cx={x} cy={L.y} r={9} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
           </Svg>
-        </View>
+        </Animated.View>
       </Band>
       <PrimaryButton label={L.cta} onPress={next} />
     </Screen>
@@ -532,8 +582,10 @@ export function O3LineWithThePlan(p: { next: () => void; back?: () => void }) {
 
 /** The calendar page: 393 × 240 at 175, no transform — drawn in the frame's own user space. */
 function CleanDayArt() {
+  const motion = useMotion();
+  // the page lands (D58)
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: 175, height: 240, alignItems: 'center' }}>
+    <Animated.View style={[{ position: 'absolute', left: 0, right: 0, top: 175, height: 240, alignItems: 'center' }, riseStyle(motion, { delay: 120, duration: MS.slow + 160, distance: 14, scale: 0.88 })]}>
       <Svg width={393} height={240} viewBox="0 0 393 240">
         <Rect x={126} y={40} width={140} height={150} rx={16} fill={mono.ink} />
         <Rect x={134} y={82} width={124} height={100} rx={8} fill={mono.ground} />
@@ -549,7 +601,7 @@ function CleanDayArt() {
         </SvgText>
         <Path d="M170 66h52" stroke={mono.ground} strokeWidth={3} strokeLinecap="round" />
       </Svg>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -578,25 +630,31 @@ const BAD_DAY = 3;
 
 /** Seven 36 × 56 cells at cx 22 + 48i: six ink with a ground check, Thursday ground in an ink ring with a dot. */
 function WeekStrip() {
+  const motion = useMotion();
+  // the days land one after another; each cell is its own 48 slice of the strip (D58)
   return (
     <View style={{ position: 'absolute', left: 0, right: 0, top: 287, flexDirection: 'row', justifyContent: 'center' }}>
-      <Svg width={344} height={86} viewBox="0 0 344 86">
+      <View style={{ width: 344, height: 86 }}>
         {WEEK.map((d, i) => {
           const cx = 22 + 48 * i;
           const bad = i === BAD_DAY;
-          return [
-            <SvgText key={`l${i}`} x={cx} y={12} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
-              {d}
-            </SvgText>,
-            <Rect key={`c${i}`} x={cx - 18} y={22} width={36} height={56} rx={12} fill={bad ? mono.ground : mono.ink} stroke={mono.ink} strokeWidth={bad ? 2.5 : 0} />,
-            bad ? (
-              <Circle key={`d${i}`} cx={cx} cy={50} r={4} fill={mono.ink} />
-            ) : (
-              <Path key={`k${i}`} d={`M${cx - 8} 51 l5 5 l11 -12`} fill="none" stroke={mono.ground} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-            ),
-          ];
+          return (
+            <Animated.View key={i} style={[{ position: 'absolute', left: cx - 24, top: 0, width: 48, height: 86 }, popStyle(motion, { delay: 200 + i * 80 + (bad ? 160 : 0) })]}>
+              <Svg width={48} height={86} viewBox={`${cx - 24} 0 48 86`}>
+                <SvgText x={cx} y={12} fill={mono.mute} textAnchor="middle" fontSize={12} {...BOLD}>
+                  {d}
+                </SvgText>
+                <Rect x={cx - 18} y={22} width={36} height={56} rx={12} fill={bad ? mono.ground : mono.ink} stroke={mono.ink} strokeWidth={bad ? 2.5 : 0} />
+                {bad ? (
+                  <Circle cx={cx} cy={50} r={4} fill={mono.ink} />
+                ) : (
+                  <Path d={`M${cx - 8} 51 l5 5 l11 -12`} fill="none" stroke={mono.ground} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+                )}
+              </Svg>
+            </Animated.View>
+          );
         })}
-      </Svg>
+      </View>
     </View>
   );
 }
@@ -636,6 +694,7 @@ export function wantBackPills(affects: string[], order: readonly string[]): stri
 export function O3WhatYouWantBack({ pills = [], next, back }: { pills?: string[]; next: () => void; back?: () => void }) {
   // the heading takes two lines on a narrow phone; the band measures the stack
   const [stackH, setStackH] = useState(445);
+  const motionOn = useMotion();
   return (
     <Screen>
       <NavBar left="back" right="empty" onBack={back} />
@@ -643,12 +702,14 @@ export function O3WhatYouWantBack({ pills = [], next, back }: { pills?: string[]
         <Stack top={193} onLayout={setStackH}>
           <MonoText v="h1">This is what you’re doing it for.</MonoText>
           {pills.length ? <View style={{ height: 10 }} /> : null}
-          {pills.map((label) => (
-            <View key={label} style={{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+          {pills.map((label, i) => (
+            <Animated.View
+              key={label}
+              style={[{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }, riseStyle(motionOn, { delay: 250 + i * 120, distance: 12 })]}>
               <MonoText v="gridLabel" color={mono.onInk} wrap="wrap" style={{ lineHeight: lhNormal(16) }}>
                 {label}
               </MonoText>
-            </View>
+            </Animated.View>
           ))}
           <View style={{ height: 10 }} />
           <MonoText v="p">The streak is only a number.</MonoText>

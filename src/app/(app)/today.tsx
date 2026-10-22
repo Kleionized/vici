@@ -3,7 +3,7 @@ import { useId, useRef, useState, type ReactNode } from 'react';
 import { Platform, ScrollView, Share, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Path, Stop, Text as SvgText } from 'react-native-svg';
 
-import {
+import { CountUpText, DrawPath,
   Bolt,
   Card,
   CheckCircle,
@@ -435,9 +435,7 @@ function PageOne({
             the first week, how much of the window has been lived) rides the caption (D36) */}
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
           <View style={{ gap: 8, flexShrink: 1 }}>
-            <MonoText v="statValue" style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }}>
-              {String(rating.value)}
-            </MonoText>
+            <CountUpText v="statValue" value={rating.value} style={{ fontSize: 56, lineHeight: 56, letterSpacing: -0.5 }} />
             <MonoText v="p" wrap="wrap" color={mono.mute} style={{ fontSize: 14, lineHeight: 18 }}>
               {`Recovery rating · ${rating.label}`}
             </MonoText>
@@ -517,7 +515,8 @@ function ThirtyDays({ series }: { series: number[] }) {
         <Path key={y} d={`M0 ${y}H${W}`} stroke={mono.line} strokeWidth={1} strokeDasharray="2 5" />
       ))}
       <Path d={`${line} L${ex} 232 L0 232 Z`} fill={`url(#scoreFill${id})`} />
-      <Path d={line} fill="none" stroke={mono.ink} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+      {/* the line draws in from 30 days ago (D58) */}
+      <DrawPath length={W * 1.6} delay={250} duration={1100} d={line} fill="none" stroke={mono.ink} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
       <Circle cx={ex} cy={ey} r={7} fill={mono.ground} stroke={mono.ink} strokeWidth={3} />
       {/* the frame asks for 600, which the canvas never loads: its browser drew 700 */}
       <SvgText x={0} y={246} fill={mono.mute} fontSize={12} fontFamily={label}>

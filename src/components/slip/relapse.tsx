@@ -265,6 +265,9 @@ function Nav({ marks, backHidden, closeHidden, onBack, onClose }: { marks: numbe
   );
 }
 
+/** the flow's nav row stays put while each page arrives under it (`Screen`, D58) */
+(Nav as { motionStill?: boolean }).motionStill = true;
+
 function Cta({ label, off, onPress, spin }: { label: string; off?: boolean; onPress: () => void; spin?: boolean }) {
   return (
     <Tap onPress={onPress} aria-disabled={off ? true : undefined} style={{ height: 58, borderRadius: 29, backgroundColor: off ? ctaOff.fill : ink, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
@@ -839,7 +842,7 @@ export function RelapseFlow({
   }
 
   return (
-    <Screen>
+    <Screen motionKey={page}>
       <Nav marks={marks} backHidden={page === 'when'} onBack={back} onClose={onClose} />
       <View style={{ position: 'absolute', left: 0, right: 0, top: 102, bottom: 0 }}>{body}</View>
       {/* the sheet and its scrim cover the whole frame, the nav row included */}

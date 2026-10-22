@@ -7,6 +7,7 @@ import { lhNormal, mono, sans } from '@/lib/theme';
 import { ChevronR } from './icons';
 import { CheckDisc } from './pills';
 import { Tap } from './Tap';
+import { riseStyle, STAGGER, useMotion } from './motion';
 import { MonoText } from './Text';
 
 /**
@@ -41,12 +42,15 @@ export const ROW_GAP = 6;
 /** a boxed row's corners */
 const BOX_RADIUS = 16;
 
-/** Each row in its own card, `ROW_GAP` apart. */
-function boxed(children: ReactNode, radius: number, extra?: Record<string, unknown>, inset = 0) {
-  return ruled(children, extra).map((el) => (
-    <View key={el.key} style={{ borderRadius: radius, backgroundColor: mono.card, overflow: 'hidden', paddingHorizontal: inset }}>
+/** Each row in its own card, `ROW_GAP` apart, arriving one after another (D58). */
+function Boxed({ children, radius, extra, inset = 0 }: { children: ReactNode; radius: number; extra?: Record<string, unknown>; inset?: number }) {
+  const motion = useMotion();
+  return ruled(children, extra).map((el, i) => (
+    <Animated.View
+      key={el.key}
+      style={[{ borderRadius: radius, backgroundColor: mono.card, overflow: 'hidden', paddingHorizontal: inset }, riseStyle(motion, { delay: 40 + i * STAGGER, distance: 8 })]}>
       {el}
-    </View>
+    </Animated.View>
   ));
 }
 
@@ -98,7 +102,7 @@ export function RowGroup({
   radius?: number;
   style?: StyleProp<ViewStyle>;
 }) {
-  const card = <View style={{ gap: ROW_GAP }}>{boxed(children, Math.min(radius, BOX_RADIUS))}</View>;
+  const card = <View style={{ gap: ROW_GAP }}><Boxed radius={Math.min(radius, BOX_RADIUS)}>{children}</Boxed></View>;
   if (!label) return style ? <View style={style}>{card}</View> : card;
   return (
     <View style={[{ gap }, style]}>
@@ -226,7 +230,7 @@ export function Toggle({
 
 /** The kit's `listRows` card (`r22 #1E1E1E overflow hidden`) — drawn only on Manage Subscription. */
 export function ListRows({ children, style }: { children?: ReactNode; style?: StyleProp<ViewStyle> }) {
-  return <View style={[{ gap: ROW_GAP }, style]}>{boxed(children, BOX_RADIUS)}</View>;
+  return <View style={[{ gap: ROW_GAP }, style]}><Boxed radius={BOX_RADIUS}>{children}</Boxed></View>;
 }
 
 /** `height 60, padding 0 20, gap 12`: label 16/400 ink, value 16/700 ink, a `#9B968E` chevron. */
@@ -280,7 +284,7 @@ export function ListRow({
  * overview's dot rows).
  */
 export function RuledRows({ children, height, style }: { children?: ReactNode; height?: number; style?: StyleProp<ViewStyle> }) {
-  return <View style={[{ gap: ROW_GAP }, style]}>{boxed(children, BOX_RADIUS, height != null ? { height } : undefined, 14)}</View>;
+  return <View style={[{ gap: ROW_GAP }, style]}><Boxed radius={BOX_RADIUS} extra={height != null ? { height } : undefined} inset={14}>{children}</Boxed></View>;
 }
 
 /**
@@ -398,7 +402,17 @@ export function DetailRow({ label, value, divider }: { label: string; value: str
 
 /** A column of `CheckRow`s, ruled — Morning 1 Yesterday, Night 2 Record. */
 export function CheckRows({ children, style }: { children?: ReactNode; style?: StyleProp<ViewStyle> }) {
-  return <View style={style}>{ruled(children)}</View>;
+  const motion = useMotion();
+  // each row rises in after the one before it, its disc landing as it does (D58)
+  return (
+    <View style={style}>
+      {ruled(children).map((el, i) => (
+        <Animated.View key={el.key} style={riseStyle(motion, { delay: 120 + i * (STAGGER + 25), distance: 8 })}>
+          {el}
+        </Animated.View>
+      ))}
+    </View>
+  );
 }
 
 /**

@@ -110,7 +110,7 @@ export function WeeklyStory({
   const last = page === pages.length - 1;
   const cta = <PrimaryButton label={last ? 'Done' : 'Continue'} bottom={p.kind === 'journal' && p.count > 1 ? 96 : 48} onPress={last ? onClose : onNext} />;
   return (
-    <Screen>
+    <Screen motionKey={page}>
       {p.kind === 'days' ? (
         <>
           <Hero id="sunrise" top={200} />

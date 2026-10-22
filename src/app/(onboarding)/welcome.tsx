@@ -533,7 +533,9 @@ export default function Onboarding() {
 
   return (
     <>
-      <O3Shell onBack={i === 0 ? backToDoor : back}>{body}</O3Shell>
+      <O3Shell onBack={i === 0 ? backToDoor : back} motionKey={step.id}>
+        {body}
+      </O3Shell>
       {/* U4 (D479): the way out of the questionnaire for a signed-in account —
           the sign-out sheet's shell, in a modal so it covers the step's own frame */}
       <Sheet

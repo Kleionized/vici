@@ -1,10 +1,12 @@
 import { View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 
 import { Check } from './icons';
 import { Tap } from './Tap';
 import { MonoText } from './Text';
+import { fadeStyle, MS, popStyle, settleStyle, STAGGER, useMotion } from './motion';
 
 /**
  * The old light kit's lift, `0 1px 2px rgba(0,0,0,0.04)`. The V3 onboarding
@@ -98,6 +100,7 @@ export function Option({
   multi,
   disabled,
   accessibilityLabel,
+  index = 0,
   style,
 }: {
   label: string;
@@ -107,8 +110,11 @@ export function Option({
   multi?: boolean;
   disabled?: boolean;
   accessibilityLabel?: string;
+  /** its place in its list: the rows arrive one after another (D58) */
+  index?: number;
   style?: StyleProp<ViewStyle>;
 }) {
+  const motion = useMotion();
   return (
     <Tap
       onPress={onPress}
@@ -118,6 +124,8 @@ export function Option({
       aria-disabled={!!disabled}
       label={accessibilityLabel}
       style={[
+        settleStyle(motion),
+        fadeStyle(motion, { delay: 60 + index * STAGGER }),
         {
           height: 58,
           borderRadius: 18,
@@ -153,9 +161,10 @@ export function OptionList<K extends string>({
   const s = useSelect(select as SelectProps<K>, items);
   return (
     <View style={[{ gap }, style]}>
-      {items.map((it) => (
+      {items.map((it, i) => (
         <Option
           key={it.key}
+          index={i}
           label={it.label}
           on={s.isOn(it.key)}
           onPress={() => s.press(it.key)}
@@ -186,11 +195,12 @@ export function Grid2<K extends string>({
   const s = useSelect(select as SelectProps<K>, items);
   const rows: Norm<K>[][] = [];
   for (let i = 0; i < items.length; i += 2) rows.push(items.slice(i, i + 2));
+  const motion = useMotion();
   return (
     <View style={[{ gap }, style]}>
-      {rows.map((pair) => (
+      {rows.map((pair, r) => (
         <View key={pair[0].key} style={{ flexDirection: 'row', gap }}>
-          {pair.map((it) => {
+          {pair.map((it, c) => {
             const on = s.isOn(it.key);
             return (
               <Tap
@@ -201,15 +211,19 @@ export function Grid2<K extends string>({
                 aria-checked={on}
                 aria-disabled={it.disabled}
                 label={it.accessibilityLabel}
-                style={{
-                  flex: 1,
-                  height: 62,
-                  borderRadius: 20,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: on ? mono.ink : mono.card,
-                  boxShadow: on ? undefined : ring.outline,
-                }}>
+                style={[
+                  settleStyle(motion),
+                  fadeStyle(motion, { delay: 60 + (r * 2 + c) * STAGGER }),
+                  {
+                    flex: 1,
+                    height: 62,
+                    borderRadius: 20,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: on ? mono.ink : mono.card,
+                    boxShadow: on ? undefined : ring.outline,
+                  },
+                ]}>
                 <MonoText v="gridLabel" color={on ? mono.onInk : mono.ink}>
                   {it.label}
                 </MonoText>
@@ -241,6 +255,7 @@ export function Chip({
   multi = true,
   disabled,
   accessibilityLabel,
+  index = 0,
   style,
 }: {
   label: string;
@@ -250,8 +265,11 @@ export function Chip({
   multi?: boolean;
   disabled?: boolean;
   accessibilityLabel?: string;
+  /** its place in its row of chips: they arrive one after another (D58) */
+  index?: number;
   style?: StyleProp<ViewStyle>;
 }) {
+  const motion = useMotion();
   return (
     <Tap
       onPress={onPress}
@@ -261,6 +279,8 @@ export function Chip({
       aria-disabled={!!disabled}
       label={accessibilityLabel}
       style={[
+        settleStyle(motion, ['backgroundColor', 'paddingLeft', 'paddingRight']),
+        fadeStyle(motion, { delay: 60 + index * (STAGGER - 15) }),
         {
           height: 48,
           borderRadius: 24,
@@ -273,7 +293,11 @@ export function Chip({
         },
         style,
       ]}>
-      {on ? <Check size={13} /> : null}
+      {on ? (
+        <Animated.View style={popStyle(motion, { duration: MS.standard })}>
+          <Check size={13} />
+        </Animated.View>
+      ) : null}
       <MonoText v="optionLabel" color={on ? mono.onInk : mono.ink}>
         {label}
       </MonoText>
@@ -297,9 +321,10 @@ export function Chips<K extends string>({
   const s = useSelect(select as SelectProps<K>, items);
   return (
     <View style={[{ flexDirection: 'row', flexWrap: 'wrap', gap }, style]}>
-      {items.map((it) => (
+      {items.map((it, i) => (
         <Chip
           key={it.key}
+          index={i}
           label={it.label}
           on={s.isOn(it.key)}
           onPress={() => s.press(it.key)}

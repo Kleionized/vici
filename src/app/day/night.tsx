@@ -162,7 +162,7 @@ export default function Night() {
   };
 
   return (
-    <Screen>
+    <Screen motionKey={step}>
       {step === MOOD ? (
         <>
           <Hero id="bed" top={506} scale={1.075} controls={CONTROLS.primary} />

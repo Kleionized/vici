@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Keyboard, Platform, ScrollView, useWindowDimensions, View } from 'react-native';
-import Animated, { Easing, FadeIn, LinearTransition, useReducedMotion } from 'react-native-reanimated';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import Animated, { Easing, FadeIn, FadeInLeft, FadeInRight, LinearTransition, runOnJS, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
 import { CloseX, MonoText, PrimaryButton, RingNext, Screen, Tap, useCanvasTop } from '@/components/mono';
@@ -93,6 +94,8 @@ export function LessonShell({
   bottom,
   tapAnywhere,
   onClose,
+  onPrev,
+  onSwipeNext,
   children,
 }: {
   /** the global lesson number, 1–84 */
@@ -105,9 +108,39 @@ export function LessonShell({
   /** the band itself turns the page (reading pages); false where the stack holds controls */
   tapAnywhere: boolean;
   onClose: () => void;
+  /** the page before, for a swipe to the right; none on the first page */
+  onPrev?: () => void;
+  /** the page after, for a swipe to the left; none where moving on is not a page turn */
+  onSwipeNext?: () => void;
   children?: ReactNode;
 }) {
   const reduced = useReducedMotion();
+  // which way the last turn went, so the new page comes in from that side (D58)
+  const [seen, setSeen] = useState(index);
+  const [forward, setForward] = useState(true);
+  if (seen !== index) {
+    setForward(index > seen);
+    setSeen(index);
+  }
+  // a horizontal drag carries the page with the finger; past 70 or a flick it turns (D58)
+  const drag = useSharedValue(0);
+  const turn = (dir: 1 | -1) => (dir === 1 ? onSwipeNext?.() : onPrev?.());
+  const swipe = Gesture.Pan()
+    .activeOffsetX([-14, 14])
+    .failOffsetY([-12, 12])
+    .onUpdate((e) => {
+      const blocked = (e.translationX < 0 && !onSwipeNext) || (e.translationX > 0 && !onPrev);
+      drag.value = blocked ? e.translationX * 0.15 : e.translationX * 0.6;
+    })
+    .onEnd((e) => {
+      const dir = e.translationX < -70 || e.velocityX < -600 ? 1 : e.translationX > 70 || e.velocityX > 600 ? -1 : 0;
+      const can = dir === 1 ? !!onSwipeNext : dir === -1 ? !!onPrev : false;
+      if (can) {
+        drag.value = 0;
+        runOnJS(turn)(dir as 1 | -1);
+      } else drag.value = withTiming(0, { duration: 220, easing: Easing.out(Easing.cubic) });
+    });
+  const carried = useAnimatedStyle(() => ({ transform: [{ translateX: drag.value }], opacity: 1 - Math.min(0.35, Math.abs(drag.value) / 500) }));
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
   const keyboard = useKeyboardHeight();
@@ -128,7 +161,13 @@ export function LessonShell({
   const stack = (
     <Animated.View
       key={index}
-      entering={reduced ? undefined : FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))}
+      entering={
+        reduced
+          ? undefined
+          : index === 0 && forward
+            ? FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))
+            : (forward ? FadeInRight : FadeInLeft).duration(300).easing(Easing.bezier(0.2, 0.8, 0.2, 1))
+      }
       onLayout={(e) => setMeasured({ index, h: e.nativeEvent.layout.height })}
       // a reading page's copy never takes the touch: the band behind it does
       pointerEvents={tapAnywhere ? 'none' : 'box-none'}
@@ -154,39 +193,43 @@ export function LessonShell({
 
   return (
     <Screen variant="lesson">
-      <ScrollView
-        key={index}
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: BAND_TOP,
-          bottom: mode === 'scroll' ? 0 : BAND_BOTTOM,
-          transform: kbLift ? [{ translateY: -kbLift }] : undefined,
-        }}
-        contentContainerStyle={contentStyle}
-        scrollEnabled={mode === 'scroll'}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled">
-        {tapAnywhere && bottom ? (
-          <PressScale
-            onPress={bottom.onPress}
-            accessibilityRole="button"
-            accessibilityLabel="Next"
-            static
-            // the press target fills the band, so a tap on the empty part of a short page turns it too
+      <GestureDetector gesture={swipe}>
+        <Animated.View style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, reduced ? null : carried]}>
+          <ScrollView
+            key={index}
             style={{
-              flexGrow: 1,
-              alignSelf: 'stretch',
-              minHeight: 0,
-              justifyContent: mode === 'scroll' ? 'flex-start' : 'center',
-            }}>
-            {stack}
-          </PressScale>
-        ) : (
-          stack
-        )}
-      </ScrollView>
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: BAND_TOP,
+              bottom: mode === 'scroll' ? 0 : BAND_BOTTOM,
+              transform: kbLift ? [{ translateY: -kbLift }] : undefined,
+            }}
+            contentContainerStyle={contentStyle}
+            scrollEnabled={mode === 'scroll'}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled">
+            {tapAnywhere && bottom ? (
+              <PressScale
+                onPress={bottom.onPress}
+                accessibilityRole="button"
+                accessibilityLabel="Next"
+                static
+                // the press target fills the band, so a tap on the empty part of a short page turns it too
+                style={{
+                  flexGrow: 1,
+                  alignSelf: 'stretch',
+                  minHeight: 0,
+                  justifyContent: mode === 'scroll' ? 'flex-start' : 'center',
+                }}>
+                {stack}
+              </PressScale>
+            ) : (
+              stack
+            )}
+          </ScrollView>
+        </Animated.View>
+      </GestureDetector>
 
       {mode === 'scroll' ? <Fade /> : null}
 

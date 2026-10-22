@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
-import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
+import { Children, createContext, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
 import { Platform, ScrollView, View, type ScrollViewProps, type StyleProp, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Grain } from '@/components/ui/Grain';
 import { HARNESS, useHarnessScroll } from '@/dev/harnessRegistry';
 import { layout, mono } from '@/lib/theme';
+
+import { MS, riseStyle, useMotion } from './motion';
 
 const noise = require('../../../assets/images/noise.png');
 const noiseDark = require('../../../assets/images/noise-dark.png');
@@ -58,21 +61,40 @@ export function Screen({
   children,
   style,
   status = true,
+  motionKey,
 }: {
   variant?: ScreenVariant;
   children?: ReactNode;
   style?: StyleProp<ViewStyle>;
   /** render the light StatusBar (every frame draws light glyphs) */
   status?: boolean;
+  /**
+   * The board's contents arrive together — a fade as they rise 10 (D58) — when
+   * the screen opens and again whenever this changes (a flow's step). The nav
+   * row and any sheet stay put: they are rendered outside the arriving layer.
+   */
+  motionKey?: string | number;
 }) {
   const v = SCREEN_VARIANTS[variant];
   const canvasTop = useCanvasTop();
+  const on = useMotion();
+  const still: ReactNode[] = [];
+  const moving: ReactNode[] = [];
+  Children.forEach(children, (c) => {
+    if (isValidElement(c) && (c.type as { motionStill?: boolean }).motionStill) still.push(c);
+    else moving.push(c);
+  });
   return (
     <View style={[{ flex: 1, backgroundColor: v.ground }, style]}>
       {status ? <StatusBar style="light" /> : null}
       <Grain source={v.noise} opacity={v.opacity} />
       <GroundContext.Provider value={v.ground}>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: canvasTop, bottom: 0 }}>{children}</View>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: canvasTop, bottom: 0 }}>
+          <Animated.View key={motionKey} pointerEvents="box-none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, riseStyle(on, { duration: MS.slow, distance: 10 })]}>
+            {moving}
+          </Animated.View>
+          {still}
+        </View>
       </GroundContext.Provider>
     </View>
   );

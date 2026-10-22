@@ -187,7 +187,7 @@ export default function Morning() {
   };
 
   return (
-    <Screen>
+    <Screen motionKey={step}>
       {step === TASK ? (
         <>
           {/* The sentence is yesterday's lesson task — up to seven lines (L58). */}
