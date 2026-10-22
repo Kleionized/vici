@@ -6,31 +6,16 @@
 import { webkit } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileKey, CLOCK, SETTLE_MS } from './render-designs.mjs';
+import { fileKey, openCanvas } from './common.mjs';
 import { serve } from './serve.mjs';
 
 const [file, ...idx] = process.argv.slice(2);
 const BUNDLE = path.resolve('Vici UI 2/project');
 const PORT = 4794;
-const LATO = 'node_modules/@expo-google-fonts/lato';
-const FACES = [['400', 'normal', '400Regular/Lato_400Regular.ttf'], ['700', 'normal', '700Bold/Lato_700Bold.ttf'], ['900', 'normal', '900Black/Lato_900Black.ttf'], ['700', 'italic', '700Bold_Italic/Lato_700Bold_Italic.ttf'], ['400', 'italic', '400Regular_Italic/Lato_400Regular_Italic.ttf']];
-const FONT_CSS = FACES.map(([w, s, f]) => `@font-face{font-family:'Lato';font-style:${s};font-weight:${w};src:url(/__font/${path.basename(f)}) format('truetype');}`).join('\n');
-
 const server = await serve(BUNDLE, PORT);
 const browser = await webkit.launch();
 const page = await browser.newPage({ viewport: { width: 1800, height: 1200 } });
-await page.clock.install({ time: new Date(CLOCK) });
-await page.clock.pauseAt(new Date(CLOCK));
-await page.route('**/fonts.googleapis.com/**', (r) => r.fulfill({ status: 200, contentType: 'text/css', body: FONT_CSS }));
-await page.route('**/fonts.gstatic.com/**', (r) => r.abort());
-await page.route('**/__font/*', (r) => {
-  const face = FACES.find((x) => path.basename(x[2]) === path.basename(new URL(r.request().url()).pathname));
-  r.fulfill({ status: 200, contentType: 'font/ttf', body: fs.readFileSync(path.join(LATO, face[2])) });
-});
-await page.goto(`http://localhost:${PORT}/${encodeURIComponent(file)}`, { waitUntil: 'networkidle', timeout: 180000 });
-await page.evaluate(() => document.fonts.ready);
-await page.clock.runFor(SETTLE_MS);
-await page.waitForTimeout(1500);
+await openCanvas(page, `http://localhost:${PORT}/${encodeURIComponent(file)}`);
 fs.mkdirSync('specs/vici-ui-2/boxes', { recursive: true });
 for (const i of idx) {
   const lines = await page.evaluate((i) => {

@@ -1,0 +1,24 @@
+# Email Login.dc.html · artboard 34 · 31 · If Nothing Changes (Cost By Age 80)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(17, 17, 17) shadow:rgba(0, 0, 0, 0.09) 0px 0px 0px 1px, rgba(20, 20, 22, 0.14) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.09
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(255, 255, 255) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [335, 60, 36×40] 
+  div [0, 0, 393×852] 
+    svg [0, 0, 393×852] 
+    div [0, 273, 393×300] 
+  div [24, 379, 345×88] 
+    div [37.31, 379, 318.38×52] font:700 44px/52px normal ls:-1.5px color:rgb(255, 255, 255) align:center wrap:auto “About 6,100 days”
+    div [88.02, 441, 216.97×26] font:400 17px/26px normal color:rgba(255, 255, 255, 0.75) align:center wrap:auto “By age 80, if nothing changes.”
+  div [24, 746, 345×58] bg:rgb(255, 255, 255) radius:29px
+    span [178.8, 765.5, 35.41×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Next”
+  div [127, 839, 139×5] bg:rgb(255, 255, 255) radius:100px

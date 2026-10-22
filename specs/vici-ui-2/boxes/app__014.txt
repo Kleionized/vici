@@ -1,0 +1,46 @@
+# Email Login.dc.html · artboard 14 · 13 · Place (V3 Q7)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  svg [-17.44, 489.09, 427.98×261.36] transform:matrix(1.089, 0, 0, 1.089, 0, 0)
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [79.5, 79, 234×2] 
+      div [79.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [109.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [139.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [169.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [199.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [229.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [259.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [289.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+    div [335, 60, 36×40] 
+  div [24, 136, 345×368] 
+    div [24, 136, 345×66] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Where are you usually watching?”
+    div [24, 216, 345×22] font:400 15px/22px normal color:rgb(155, 150, 142) wrap:pretty “Select all that apply”
+    div [24, 252, 345×10] 
+    div [24, 276, 345×228] 
+      div [24, 276, 101.48×48] bg:rgb(242, 240, 236) radius:24px
+        svg [44, 293.5, 13×13] 
+        span [65, 291, 40.48×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “In bed”
+      div [137.48, 276, 145.5×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [157.48, 291, 105.5×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “In the bathroom”
+      div [24, 336, 111.97×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 351, 71.97×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “At my desk”
+      div [147.97, 336, 153.67×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [167.97, 351, 113.67×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “In the living room”
+      div [24, 396, 202.88×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 411, 162.88×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Somewhere else at home”
+      div [24, 456, 132.25×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 471, 92.25×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Outside home”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [163, 765.5, 67×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Continue”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

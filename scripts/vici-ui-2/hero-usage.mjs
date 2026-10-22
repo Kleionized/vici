@@ -4,7 +4,7 @@
 import { webkit } from 'playwright-core';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import { fileKey, CLOCK, SETTLE_MS } from './render-designs.mjs';
+import { fileKey, CLOCK, SETTLE_MS } from './common.mjs';
 import { serve } from './serve.mjs';
 
 const root = 'Vici UI 2/project';

@@ -1,0 +1,54 @@
+# Email Login.dc.html · artboard 12 · 11 · When (V3 Q5)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [79.5, 79, 234×2] 
+      div [79.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [109.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [139.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [169.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [199.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [229.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [259.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [289.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+    div [335, 60, 36×40] 
+  div [24, 140, 345×488] 
+    div [24, 140, 345×66] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “When do you usually end up watching?”
+    div [24, 220, 345×22] font:400 15px/22px normal color:rgb(155, 150, 142) wrap:pretty “Select all that apply”
+    div [24, 256, 345×10] 
+    div [24, 280, 345×348] 
+      div [24, 280, 142.55×48] bg:rgb(242, 240, 236) radius:24px
+        svg [44, 297.5, 13×13] 
+        span [65, 295, 81.55×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “Late at night”
+      div [178.55, 280, 135.42×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [198.55, 295, 95.42×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “In the morning”
+      div [24, 340, 144.73×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 355, 104.73×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “When I’m bored”
+      div [180.73, 340, 161×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [200.73, 355, 121×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “When I’m stressed”
+      div [24, 400, 179.66×48] bg:rgb(242, 240, 236) radius:24px
+        svg [44, 417.5, 13×13] 
+        span [65, 415, 118.66×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “When I can’t sleep”
+      div [215.66, 400, 128.92×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [235.66, 415, 88.92×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “On weekends”
+      div [24, 460, 131.97×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 475, 91.97×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “After drinking”
+      div [24, 520, 202.45×48] bg:rgb(242, 240, 236) radius:24px
+        svg [44, 537.5, 13×13] 
+        span [65, 535, 141.45×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “When I’m home alone”
+      div [24, 580, 158.5×48] bg:rgb(242, 240, 236) radius:24px
+        svg [44, 597.5, 13×13] 
+        span [65, 595, 97.5×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “While scrolling”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [163, 765.5, 67×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Continue”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

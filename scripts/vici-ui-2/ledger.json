@@ -4968,7 +4968,8 @@
    "status": "NOT_STARTED",
    "diff": "",
    "date": "",
-   "note": ""
+   "note": "",
+   "verified": ""
   },
   {
    "id": "app__101__92l2-week-xii-leave-it-behind-ii",
@@ -4982,7 +4983,8 @@
    "status": "NOT_STARTED",
    "diff": "",
    "date": "",
-   "note": ""
+   "note": "",
+   "verified": ""
   },
   {
    "id": "app__102__sos-working-flow",
@@ -4992,12 +4994,13 @@
    "screen": "SOS Live",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=live",
+   "status": "DIFF_CLEAN",
+   "diff": "0.025 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__103__01-sos-rate-the-urge",
@@ -5007,12 +5010,13 @@
    "screen": "SOS Rate",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.025 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__104__02-sos-where-are-you",
@@ -5022,12 +5026,13 @@
    "screen": "SOS Location",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.016 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__105__02b-sos-where-are-you-in-bed",
@@ -5037,12 +5042,13 @@
    "screen": "SOS Location Bed",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s02b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.028 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__106__03-sos-whats-feeding-it",
@@ -5052,12 +5058,13 @@
    "screen": "SOS Triggers",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.065 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__107__03b-sos-what-youre-putting-off",
@@ -5067,12 +5074,13 @@
    "screen": "SOS Putting Off",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s03b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.030 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__108__04-sos-what-youre-feeling",
@@ -5082,12 +5090,13 @@
    "screen": "SOS Feelings",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.060 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__109__05-sos-one-task",
@@ -5097,12 +5106,13 @@
    "screen": "SOS Task",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.158 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__110__05b-sos-one-task-reading",
@@ -5112,12 +5122,13 @@
    "screen": "SOS Task Reading",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s05b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.123 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__111__05d-sos-one-task-at-work",
@@ -5127,12 +5138,13 @@
    "screen": "SOS Task Work",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s05d",
+   "status": "DIFF_CLEAN",
+   "diff": "0.143 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__112__06-urge-hub-main",
@@ -5142,12 +5154,13 @@
    "screen": "Urge Hub Main",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.157 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__113__06b-urge-hub-main-late-night",
@@ -5157,12 +5170,13 @@
    "screen": "Urge Hub Main Night",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s06b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.197 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__114__06c-urge-hub-breathe",
@@ -5172,12 +5186,13 @@
    "screen": "Urge Hub Breathe",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s06d",
+   "status": "DIFF_CLEAN",
+   "diff": "0.104 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__115__06d-urge-hub-your-pledge",
@@ -5187,12 +5202,13 @@
    "screen": "Urge Hub Pledge",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s06e",
+   "status": "DIFF_CLEAN",
+   "diff": "0.098 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__116__06e-urge-hub-what-helped-before",
@@ -5202,12 +5218,13 @@
    "screen": "Urge Hub Helped",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s06f",
+   "status": "DIFF_CLEAN",
+   "diff": "0.130 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__117__07-sos-check-afterward",
@@ -5217,12 +5234,13 @@
    "screen": "SOS Check",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.025 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__118__07b-sos-check-lower",
@@ -5232,12 +5250,13 @@
    "screen": "SOS Check Lower",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s07b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.042 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__119__07c-sos-check-about-the-same",
@@ -5247,12 +5266,13 @@
    "screen": "SOS Check Same",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s07c",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__120__07d-sos-another-task",
@@ -5262,12 +5282,13 @@
    "screen": "SOS Another",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s07d",
+   "status": "DIFF_CLEAN",
+   "diff": "0.037 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__121__08-sos-finished",
@@ -5277,12 +5298,13 @@
    "screen": "SOS Finished",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__122__08b-sos-finished-its-gone",
@@ -5292,12 +5314,13 @@
    "screen": "SOS Finished Gone",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=s08b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.013 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__123__a01-put-the-device-down-for-three-minutes",
@@ -5307,12 +5330,13 @@
    "screen": "SOS A01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.143 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__124__a02-shut-the-laptop-and-leave-the-chair",
@@ -5322,12 +5346,13 @@
    "screen": "SOS A02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.111 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__125__a03-walk-indoors-for-five-minutes",
@@ -5337,12 +5362,13 @@
    "screen": "SOS A03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.138 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__126__a04-wash-one-mug",
@@ -5352,12 +5378,13 @@
    "screen": "SOS A04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.104 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__127__a05-read-two-pages",
@@ -5367,12 +5394,13 @@
    "screen": "SOS A05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.030 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__128__a06-sit-with-someone-at-home",
@@ -5382,12 +5410,13 @@
    "screen": "SOS A06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.036 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__129__a07-stay-seated-and-look-around",
@@ -5397,12 +5426,13 @@
    "screen": "SOS A07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.041 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__130__a08-fold-three-clean-items",
@@ -5412,12 +5442,13 @@
    "screen": "SOS A08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.035 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__131__a09-put-the-phone-inside-your-bag-for-three-minutes",
@@ -5427,12 +5458,13 @@
    "screen": "SOS A09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.060 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__132__a10-put-three-things-ready-by-the-door",
@@ -5442,12 +5474,13 @@
    "screen": "SOS A10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=A10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__133__b01-move-the-phone-away-from-the-pillow",
@@ -5457,12 +5490,13 @@
    "screen": "SOS B01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.046 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__134__b02-read-two-pages-in-dim-light",
@@ -5472,12 +5506,13 @@
    "screen": "SOS B02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__135__b03-wash-your-face-and-return-to-bed",
@@ -5487,12 +5522,13 @@
    "screen": "SOS B03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__136__b04-take-a-few-sips-at-the-kitchen-table",
@@ -5502,12 +5538,13 @@
    "screen": "SOS B04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.051 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__137__b05-straighten-the-pillow-and-cover",
@@ -5517,12 +5554,13 @@
    "screen": "SOS B05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__138__b06-fold-three-items-quietly",
@@ -5532,12 +5570,13 @@
    "screen": "SOS B06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.036 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__139__b07-sit-in-a-different-chair-briefly",
@@ -5547,12 +5586,13 @@
    "screen": "SOS B07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__140__b08-put-out-clothes-for-when-you-get-up",
@@ -5562,12 +5602,13 @@
    "screen": "SOS B08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__141__b09-rest-for-one-minute-with-the-screen-down",
@@ -5577,12 +5618,13 @@
    "screen": "SOS B09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__142__b10-close-your-eyes-for-three-minutes",
@@ -5592,12 +5634,13 @@
    "screen": "SOS B10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=B10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__143__c01-get-dressed-before-opening-anything-else",
@@ -5607,12 +5650,13 @@
    "screen": "SOS C01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__144__c02-brush-your-teeth-without-the-phone",
@@ -5622,12 +5666,13 @@
    "screen": "SOS C02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__145__c03-eat-breakfast-at-the-table",
@@ -5637,12 +5682,13 @@
    "screen": "SOS C03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__146__c04-make-the-bed",
@@ -5652,12 +5698,13 @@
    "screen": "SOS C04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.026 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__147__c05-pack-three-things-for-the-day",
@@ -5667,12 +5714,13 @@
    "screen": "SOS C05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.042 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__148__c06-walk-a-short-familiar-route",
@@ -5682,12 +5730,13 @@
    "screen": "SOS C06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__149__c07-buy-one-breakfast-item",
@@ -5697,12 +5746,13 @@
    "screen": "SOS C07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__150__c08-open-the-curtains-and-sit-for-a-minute",
@@ -5712,12 +5762,13 @@
    "screen": "SOS C08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__151__c09-get-the-first-work-item-ready",
@@ -5727,12 +5778,13 @@
    "screen": "SOS C09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__152__c10-leave-the-bed-for-a-seated-activity",
@@ -5742,12 +5794,13 @@
    "screen": "SOS C10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=C10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__153__d01-buy-one-useful-item",
@@ -5757,12 +5810,13 @@
    "screen": "SOS D01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.031 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__154__d02-walk-for-five-minutes-and-come-back",
@@ -5772,12 +5826,13 @@
    "screen": "SOS D02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.054 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__155__d03-clear-one-small-surface",
@@ -5787,12 +5842,13 @@
    "screen": "SOS D03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.036 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__156__d04-wash-five-dishes",
@@ -5802,12 +5858,13 @@
    "screen": "SOS D04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.037 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__157__d05-do-one-page-of-a-paper-puzzle",
@@ -5817,12 +5874,13 @@
    "screen": "SOS D05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.042 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__158__d06-read-three-pages",
@@ -5832,12 +5890,13 @@
    "screen": "SOS D06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.033 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__159__d07-fold-five-clothes",
@@ -5847,12 +5906,13 @@
    "screen": "SOS D07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.036 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__160__d08-water-one-houseplant",
@@ -5862,12 +5922,13 @@
    "screen": "SOS D08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.035 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__161__d09-make-one-small-snack",
@@ -5877,12 +5938,13 @@
    "screen": "SOS D09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.035 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__162__d10-draw-one-object-near-you",
@@ -5892,12 +5954,13 @@
    "screen": "SOS D10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=D10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.035 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__163__e01-rinse-one-mug-and-fill-it-with-water",
@@ -5907,12 +5970,13 @@
    "screen": "SOS E01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.052 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__164__e02-walk-indoors-for-three-minutes",
@@ -5922,12 +5986,13 @@
    "screen": "SOS E02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__165__e03-look-at-one-ordinary-object",
@@ -5937,12 +6002,13 @@
    "screen": "SOS E03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__166__e04-wash-your-face",
@@ -5952,12 +6018,13 @@
    "screen": "SOS E04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.028 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__167__e05-sit-beside-someone-for-five-minutes",
@@ -5967,12 +6034,13 @@
    "screen": "SOS E05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.059 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__168__e06-spend-five-minutes-outside-on-a-known-route",
@@ -5982,12 +6050,13 @@
    "screen": "SOS E06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__169__e07-sort-five-loose-items",
@@ -5997,12 +6066,13 @@
    "screen": "SOS E07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.041 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__170__e08-fold-three-towels-or-clothes",
@@ -6012,12 +6082,13 @@
    "screen": "SOS E08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.039 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__171__e09-notice-the-worry-and-sit-for-two-minutes",
@@ -6027,12 +6098,13 @@
    "screen": "SOS E09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.048 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__172__e10-open-the-first-task-and-do-one-small-part",
@@ -6042,12 +6114,13 @@
    "screen": "SOS E10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=E10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.062 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__173__f01-start-a-short-conversation-with-someone-there",
@@ -6057,12 +6130,13 @@
    "screen": "SOS F01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__174__f02-sit-with-an-awake-person-at-home",
@@ -6072,12 +6146,13 @@
    "screen": "SOS F02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__175__f03-take-a-five-minute-walk-with-someone-there",
@@ -6087,12 +6162,13 @@
    "screen": "SOS F03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.068 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__176__f04-read-for-five-minutes-at-the-nearby-library",
@@ -6102,12 +6178,13 @@
    "screen": "SOS F04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.064 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__177__f05-make-a-brief-errand-to-a-familiar-shop",
@@ -6117,12 +6194,13 @@
    "screen": "SOS F05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.051 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__178__f06-wash-and-dry-three-cups-together",
@@ -6132,12 +6210,13 @@
    "screen": "SOS F06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__179__f07-sit-on-a-familiar-public-bench-for-five-minutes",
@@ -6147,12 +6226,13 @@
    "screen": "SOS F07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.064 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__180__f08-deal-a-hand-of-solitaire-with-real-cards",
@@ -6162,12 +6242,13 @@
    "screen": "SOS F08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.051 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__181__f09-read-in-an-appropriate-shared-place",
@@ -6177,12 +6258,13 @@
    "screen": "SOS F09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.051 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__182__f10-read-two-pages-in-another-room",
@@ -6192,12 +6274,13 @@
    "screen": "SOS F10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=F10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__183__g01-leave-the-message-thread-closed",
@@ -6207,12 +6290,13 @@
    "screen": "SOS G01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__184__g02-walk-indoors-for-five-minutes",
@@ -6222,12 +6306,13 @@
    "screen": "SOS G02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.052 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__185__g03-wash-three-dishes",
@@ -6237,12 +6322,13 @@
    "screen": "SOS G03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.034 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__186__g04-wash-your-hands-and-sit-down",
@@ -6252,12 +6338,13 @@
    "screen": "SOS G04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.039 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__187__g05-take-a-short-walk-without-replying",
@@ -6267,12 +6354,13 @@
    "screen": "SOS G05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__188__g06-ask-someone-there-to-talk-about-something-else",
@@ -6282,12 +6370,13 @@
    "screen": "SOS G06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.067 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__189__g07-put-five-things-back-in-place",
@@ -6297,12 +6386,13 @@
    "screen": "SOS G07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.048 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__190__g08-read-two-pages-of-a-familiar-book",
@@ -6312,12 +6402,13 @@
    "screen": "SOS G08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__191__g09-fold-three-towels",
@@ -6327,12 +6418,13 @@
    "screen": "SOS G09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.028 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__192__g10-name-what-happened-and-pause",
@@ -6342,12 +6434,13 @@
    "screen": "SOS G10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=G10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__193__h01-open-the-document-and-work-for-two-minutes",
@@ -6357,12 +6450,13 @@
    "screen": "SOS H01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.054 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__194__h02-read-the-first-question",
@@ -6372,12 +6466,13 @@
    "screen": "SOS H02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__195__h03-wash-the-first-three-dishes",
@@ -6387,12 +6482,13 @@
    "screen": "SOS H03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__196__h04-put-the-first-five-items-away",
@@ -6402,12 +6498,13 @@
    "screen": "SOS H04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.060 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__197__h05-open-the-bill-or-letter",
@@ -6417,12 +6514,13 @@
    "screen": "SOS H05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.034 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__198__h06-set-out-one-tool-or-material",
@@ -6432,12 +6530,13 @@
    "screen": "SOS H06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.039 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__199__h07-make-a-two-minute-start-on-the-email",
@@ -6447,12 +6546,13 @@
    "screen": "SOS H07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.048 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__200__h08-work-beside-someone-for-five-minutes",
@@ -6462,12 +6562,13 @@
    "screen": "SOS H08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.060 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__201__h09-put-one-load-into-the-washing-machine",
@@ -6477,12 +6578,13 @@
    "screen": "SOS H09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__202__h10-read-one-page-needed-for-the-task",
@@ -6492,12 +6594,13 @@
    "screen": "SOS H10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=H10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__203__i01-eat-one-ready-to-eat-snack",
@@ -6507,12 +6610,13 @@
    "screen": "SOS I01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__204__i02-make-one-sandwich-and-eat-it-at-the-table",
@@ -6522,12 +6626,13 @@
    "screen": "SOS I02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.056 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__205__i03-pour-water-and-sit-for-three-minutes",
@@ -6537,12 +6642,13 @@
    "screen": "SOS I03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.046 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__206__i04-rest-in-a-chair-for-five-minutes",
@@ -6552,12 +6658,13 @@
    "screen": "SOS I04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.052 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__207__i05-change-into-your-sleep-clothes",
@@ -6567,12 +6674,13 @@
    "screen": "SOS I05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__208__i06-put-out-clothes-for-when-you-next-get-up",
@@ -6582,12 +6690,13 @@
    "screen": "SOS I06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__209__i07-ask-for-a-short-break",
@@ -6597,12 +6706,13 @@
    "screen": "SOS I07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.032 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__210__i08-eat-in-the-staffroom-or-kitchen",
@@ -6612,12 +6722,13 @@
    "screen": "SOS I08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__211__i09-put-out-a-bowl-and-spoon-for-breakfast",
@@ -6627,12 +6738,13 @@
    "screen": "SOS I09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__212__i10-rest-for-two-minutes-with-the-screen-down",
@@ -6642,12 +6754,13 @@
    "screen": "SOS I10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=I10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.054 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__213__j01-put-the-phone-down-for-three-minutes",
@@ -6657,12 +6770,13 @@
    "screen": "SOS J01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.046 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__214__j02-look-around-for-one-minute",
@@ -6672,12 +6786,13 @@
    "screen": "SOS J02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.035 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__215__j03-read-two-physical-pages",
@@ -6687,12 +6802,13 @@
    "screen": "SOS J03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__216__j04-walk-indoors-for-five-minutes",
@@ -6702,12 +6818,13 @@
    "screen": "SOS J04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.052 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__217__j05-wash-one-mug",
@@ -6717,12 +6834,13 @@
    "screen": "SOS J05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.027 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__218__j06-fold-three-clothes",
@@ -6732,12 +6850,13 @@
    "screen": "SOS J06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.031 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__219__j07-return-to-your-task-for-two-minutes",
@@ -6747,12 +6866,13 @@
    "screen": "SOS J07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__220__j08-draw-the-outline-of-one-object",
@@ -6762,12 +6882,13 @@
    "screen": "SOS J08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__221__j09-sit-in-a-different-safe-spot",
@@ -6777,12 +6898,13 @@
    "screen": "SOS J09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__222__j10-take-a-familiar-five-minute-walk",
@@ -6792,12 +6914,13 @@
    "screen": "SOS J10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=J10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__223__k01-put-the-phone-away-for-two-minutes",
@@ -6807,12 +6930,13 @@
    "screen": "SOS K01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__224__k02-return-from-the-bathroom",
@@ -6822,12 +6946,13 @@
    "screen": "SOS K02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.037 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__225__k03-refill-your-water-bottle",
@@ -6837,12 +6962,13 @@
    "screen": "SOS K03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__226__k04-read-one-printed-page",
@@ -6852,12 +6978,13 @@
    "screen": "SOS K04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.036 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__227__k05-start-two-minutes-of-the-next-work-task",
@@ -6867,12 +6994,13 @@
    "screen": "SOS K05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__228__k06-look-at-three-things-near-you",
@@ -6882,12 +7010,13 @@
    "screen": "SOS K06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__229__k07-sort-five-things-in-your-bag",
@@ -6897,12 +7026,13 @@
    "screen": "SOS K07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__230__k08-take-one-permitted-corridor-break",
@@ -6912,12 +7042,13 @@
    "screen": "SOS K08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__231__k09-pack-away-one-item-you-have-finished-using",
@@ -6927,12 +7058,13 @@
    "screen": "SOS K09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.062 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__232__k10-ask-a-colleague-about-one-ordinary-thing",
@@ -6942,12 +7074,13 @@
    "screen": "SOS K10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=K10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__233__l01-put-the-phone-down-for-two-minutes",
@@ -6957,12 +7090,13 @@
    "screen": "SOS L01",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.056 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__234__l02-sit-in-a-different-chair-for-three-minutes",
@@ -6972,12 +7106,13 @@
    "screen": "SOS L02",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.064 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__235__l03-read-two-pages-of-a-familiar-book",
@@ -6987,12 +7122,13 @@
    "screen": "SOS L03",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.060 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__236__l04-wash-one-plate",
@@ -7002,12 +7138,13 @@
    "screen": "SOS L04",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.041 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__237__l05-fold-three-clean-items",
@@ -7017,12 +7154,13 @@
    "screen": "SOS L05",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.122 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__238__l06-walk-indoors-for-three-minutes",
@@ -7032,12 +7170,13 @@
    "screen": "SOS L06",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L06",
+   "status": "DIFF_CLEAN",
+   "diff": "0.135 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__239__l07-eat-the-snack-you-already-have",
@@ -7047,12 +7186,13 @@
    "screen": "SOS L07",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L07",
+   "status": "DIFF_CLEAN",
+   "diff": "0.133 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__240__l08-sort-five-things-in-your-bag",
@@ -7062,12 +7202,13 @@
    "screen": "SOS L08",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L08",
+   "status": "DIFF_CLEAN",
+   "diff": "0.135 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__241__l09-walk-to-a-familiar-corner-and-back",
@@ -7077,12 +7218,13 @@
    "screen": "SOS L09",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L09",
+   "status": "DIFF_CLEAN",
+   "diff": "0.160 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__242__l10-name-the-feeling-and-pause-for-one-minute",
@@ -7092,12 +7234,13 @@
    "screen": "SOS L10",
    "size": "393x852",
    "app": "src/components/urge/sos.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "sos&state=L10",
+   "status": "DIFF_CLEAN",
+   "diff": "0.127 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/sos.md"
+   "spec": "specs/vici-ui-2/sos.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__243__88-medallions",
@@ -7822,12 +7965,13 @@
    "screen": "Relapse Live",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=live",
+   "status": "DIFF_CLEAN",
+   "diff": "0.016 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__295__01-when-nothing-selected",
@@ -7837,12 +7981,13 @@
    "screen": "Relapse When",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.016 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__296__01b-when-just-now",
@@ -7852,12 +7997,13 @@
    "screen": "Relapse When Selected",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.016 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__297__01c-when-choose-a-date-and-time",
@@ -7867,12 +8013,13 @@
    "screen": "Relapse When Date Sheet",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01c",
+   "status": "DIFF_CLEAN",
+   "diff": "0.033 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__298__01c2-when-date-only",
@@ -7882,12 +8029,13 @@
    "screen": "Relapse When Date Only",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01c2",
+   "status": "DIFF_CLEAN",
+   "diff": "0.023 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__299__01d-when-time-in-the-future",
@@ -7897,12 +8045,13 @@
    "screen": "Relapse When Future Time",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01d",
+   "status": "DIFF_CLEAN",
+   "diff": "0.032 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__300__01e-when-date-chosen",
@@ -7912,12 +8061,13 @@
    "screen": "Relapse When Date Chosen",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r01e",
+   "status": "DIFF_CLEAN",
+   "diff": "0.019 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__301__02-what-led-up-nothing-selected",
@@ -7927,12 +8077,13 @@
    "screen": "Relapse Led",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.087 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__302__02b-what-led-up-selected",
@@ -7942,12 +8093,13 @@
    "screen": "Relapse Led Selected",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.071 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__303__02c-what-led-up-not-sure",
@@ -7957,12 +8109,13 @@
    "screen": "Relapse Led Not Sure",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02c",
+   "status": "DIFF_CLEAN",
+   "diff": "0.087 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__304__02d-what-led-up-saving",
@@ -7972,12 +8125,13 @@
    "screen": "Relapse Led Saving",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02d",
+   "status": "DIFF_CLEAN",
+   "diff": "0.188 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__305__02e-what-led-up-couldnt-save",
@@ -7987,12 +8141,13 @@
    "screen": "Relapse Led Save Failed",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02e",
+   "status": "DIFF_CLEAN",
+   "diff": "0.067 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__306__02f-what-led-up-editing-a-saved-entry",
@@ -8002,12 +8157,13 @@
    "screen": "Relapse Led Edit",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r02f",
+   "status": "DIFF_CLEAN",
+   "diff": "0.068 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__307__03-watching-again-nothing-selected",
@@ -8017,12 +8173,13 @@
    "screen": "Relapse Watch",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.011 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__308__03b-watching-again-not-sure",
@@ -8032,12 +8189,13 @@
    "screen": "Relapse Watch Selected",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r03b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.011 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__309__04-encouragement-wants-to-watch-again",
@@ -8047,12 +8205,13 @@
    "screen": "Relapse Encouragement",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__310__04b-encouragement-earlier-day",
@@ -8062,12 +8221,13 @@
    "screen": "Relapse Encouragement Earlier",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r04b",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__311__04c-encouragement-with-quote",
@@ -8077,12 +8237,13 @@
    "screen": "Relapse Encouragement Quote",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r04c",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__312__05-back-in-the-app",
@@ -8092,12 +8253,13 @@
    "screen": "Relapse Log",
    "size": "393x852",
    "app": "src/app/relapses.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=r05",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__313__01f-when-small-phone-667px-tall",
@@ -8108,10 +8270,10 @@
    "size": "393x667",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
    "harness": "",
-   "status": "NOT_STARTED",
+   "status": "IMPLEMENTED",
    "diff": "",
    "date": "",
-   "note": "verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22)",
+   "note": "spec-only: small phone / larger text (D22)",
    "spec": "specs/vici-ui-2/relapse.md"
   },
   {
@@ -8123,10 +8285,10 @@
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
    "harness": "",
-   "status": "NOT_STARTED",
+   "status": "IMPLEMENTED",
    "diff": "",
    "date": "",
-   "note": "verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22)",
+   "note": "spec-only: small phone / larger text (D22)",
    "spec": "specs/vici-ui-2/relapse.md"
   },
   {
@@ -8138,10 +8300,10 @@
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
    "harness": "",
-   "status": "NOT_STARTED",
+   "status": "IMPLEMENTED",
    "diff": "",
    "date": "",
-   "note": "verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22)",
+   "note": "spec-only: small phone / larger text (D22)",
    "spec": "specs/vici-ui-2/relapse.md"
   },
   {
@@ -8153,10 +8315,10 @@
    "size": "393x667",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
    "harness": "",
-   "status": "NOT_STARTED",
+   "status": "IMPLEMENTED",
    "diff": "",
    "date": "",
-   "note": "verified by spec only: 393×667 / zoom 1.25 has no simulator counterpart (D22)",
+   "note": "spec-only: small phone / larger text (D22)",
    "spec": "specs/vici-ui-2/relapse.md"
   },
   {
@@ -8167,12 +8329,13 @@
    "screen": "Relapse E001",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE001",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__318__e002-time-remaining",
@@ -8182,12 +8345,13 @@
    "screen": "Relapse E002",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE002",
+   "status": "DIFF_CLEAN",
+   "diff": "0.017 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__319__e003-general",
@@ -8197,12 +8361,13 @@
    "screen": "Relapse E003",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE003",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__320__e004-general",
@@ -8212,12 +8377,13 @@
    "screen": "Relapse E004",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE004",
+   "status": "DIFF_CLEAN",
+   "diff": "0.093 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__321__e005-general",
@@ -8227,12 +8393,13 @@
    "screen": "Relapse E005",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE005",
+   "status": "DIFF_CLEAN",
+   "diff": "0.038 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__322__e006-general",
@@ -8242,12 +8409,13 @@
    "screen": "Relapse E006",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE006",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__323__e007-general",
@@ -8257,12 +8425,13 @@
    "screen": "Relapse E007",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE007",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__324__e008-current-urge",
@@ -8272,12 +8441,13 @@
    "screen": "Relapse E008",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE008",
+   "status": "DIFF_CLEAN",
+   "diff": "0.052 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__325__e009-general",
@@ -8287,12 +8457,13 @@
    "screen": "Relapse E009",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE009",
+   "status": "DIFF_CLEAN",
+   "diff": "0.040 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__326__e010-general",
@@ -8302,12 +8473,13 @@
    "screen": "Relapse E010",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE010",
+   "status": "DIFF_CLEAN",
+   "diff": "0.063 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__327__e011-general",
@@ -8317,12 +8489,13 @@
    "screen": "Relapse E011",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE011",
+   "status": "DIFF_CLEAN",
+   "diff": "0.030 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__328__e012-general",
@@ -8332,12 +8505,13 @@
    "screen": "Relapse E012",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE012",
+   "status": "DIFF_CLEAN",
+   "diff": "0.120 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__329__e013-time-remaining",
@@ -8347,12 +8521,13 @@
    "screen": "Relapse E013",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE013",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__330__e014-time-remaining",
@@ -8362,12 +8537,13 @@
    "screen": "Relapse E014",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE014",
+   "status": "DIFF_CLEAN",
+   "diff": "0.088 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__331__e015-time-remaining",
@@ -8377,12 +8553,13 @@
    "screen": "Relapse E015",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE015",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__332__e016-time-remaining",
@@ -8392,12 +8569,13 @@
    "screen": "Relapse E016",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE016",
+   "status": "DIFF_CLEAN",
+   "diff": "0.064 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__333__e017-time-remaining",
@@ -8407,12 +8585,13 @@
    "screen": "Relapse E017",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE017",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__334__e018-time-remaining",
@@ -8422,12 +8601,13 @@
    "screen": "Relapse E018",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE018",
+   "status": "DIFF_CLEAN",
+   "diff": "0.056 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__335__e019-prior-practice",
@@ -8437,12 +8617,13 @@
    "screen": "Relapse E019",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE019",
+   "status": "DIFF_CLEAN",
+   "diff": "0.056 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__336__e020-prior-practice",
@@ -8452,12 +8633,13 @@
    "screen": "Relapse E020",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE020",
+   "status": "DIFF_CLEAN",
+   "diff": "0.064 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__337__e021-prior-practice",
@@ -8467,12 +8649,13 @@
    "screen": "Relapse E021",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE021",
+   "status": "DIFF_CLEAN",
+   "diff": "0.041 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__338__e022-prior-practice",
@@ -8482,12 +8665,13 @@
    "screen": "Relapse E022",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE022",
+   "status": "DIFF_CLEAN",
+   "diff": "0.107 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__339__e023-prior-practice",
@@ -8497,12 +8681,13 @@
    "screen": "Relapse E023",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE023",
+   "status": "DIFF_CLEAN",
+   "diff": "0.066 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__340__e024-prior-practice",
@@ -8512,12 +8697,13 @@
    "screen": "Relapse E024",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE024",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__341__e025-another-attempt",
@@ -8527,12 +8713,13 @@
    "screen": "Relapse E025",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE025",
+   "status": "DIFF_CLEAN",
+   "diff": "0.044 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__342__e026-another-attempt",
@@ -8542,12 +8729,13 @@
    "screen": "Relapse E026",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE026",
+   "status": "DIFF_CLEAN",
+   "diff": "0.074 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__343__e027-another-attempt",
@@ -8557,12 +8745,13 @@
    "screen": "Relapse E027",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE027",
+   "status": "DIFF_CLEAN",
+   "diff": "0.043 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__344__e028-another-attempt",
@@ -8572,12 +8761,13 @@
    "screen": "Relapse E028",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE028",
+   "status": "DIFF_CLEAN",
+   "diff": "0.065 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__345__e029-another-attempt",
@@ -8587,12 +8777,13 @@
    "screen": "Relapse E029",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE029",
+   "status": "DIFF_CLEAN",
+   "diff": "0.045 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__346__e030-another-attempt",
@@ -8602,12 +8793,13 @@
    "screen": "Relapse E030",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE030",
+   "status": "DIFF_CLEAN",
+   "diff": "0.055 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__347__e031-current-urge",
@@ -8617,12 +8809,13 @@
    "screen": "Relapse E031",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE031",
+   "status": "DIFF_CLEAN",
+   "diff": "0.054 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__348__e032-current-urge",
@@ -8632,12 +8825,13 @@
    "screen": "Relapse E032",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE032",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__349__e033-current-urge",
@@ -8647,12 +8841,13 @@
    "screen": "Relapse E033",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE033",
+   "status": "DIFF_CLEAN",
+   "diff": "0.101 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__350__e034-current-urge",
@@ -8662,12 +8857,13 @@
    "screen": "Relapse E034",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE034",
+   "status": "DIFF_CLEAN",
+   "diff": "0.055 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__351__e035-current-urge",
@@ -8677,12 +8873,13 @@
    "screen": "Relapse E035",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE035",
+   "status": "DIFF_CLEAN",
+   "diff": "0.056 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__352__e036-current-urge",
@@ -8692,12 +8889,13 @@
    "screen": "Relapse E036",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE036",
+   "status": "DIFF_CLEAN",
+   "diff": "0.059 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__353__e037-sleep",
@@ -8707,12 +8905,13 @@
    "screen": "Relapse E037",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE037",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__354__e038-sleep",
@@ -8722,12 +8921,13 @@
    "screen": "Relapse E038",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE038",
+   "status": "DIFF_CLEAN",
+   "diff": "0.050 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__355__e039-sleep",
@@ -8737,12 +8937,13 @@
    "screen": "Relapse E039",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE039",
+   "status": "DIFF_CLEAN",
+   "diff": "0.047 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__356__e040-sleep",
@@ -8752,12 +8953,13 @@
    "screen": "Relapse E040",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE040",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__357__e041-sleep",
@@ -8767,12 +8969,13 @@
    "screen": "Relapse E041",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE041",
+   "status": "DIFF_CLEAN",
+   "diff": "0.030 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__358__e042-sleep",
@@ -8782,12 +8985,13 @@
    "screen": "Relapse E042",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE042",
+   "status": "DIFF_CLEAN",
+   "diff": "0.073 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__359__e043-past-event",
@@ -8797,12 +9001,13 @@
    "screen": "Relapse E043",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE043",
+   "status": "DIFF_CLEAN",
+   "diff": "0.053 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__360__e044-past-event",
@@ -8812,12 +9017,13 @@
    "screen": "Relapse E044",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE044",
+   "status": "DIFF_CLEAN",
+   "diff": "0.073 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__361__e045-past-event",
@@ -8827,12 +9033,13 @@
    "screen": "Relapse E045",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE045",
+   "status": "DIFF_CLEAN",
+   "diff": "0.058 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__362__e046-past-event",
@@ -8842,12 +9049,13 @@
    "screen": "Relapse E046",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE046",
+   "status": "DIFF_CLEAN",
+   "diff": "0.037 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__363__e047-past-event",
@@ -8857,12 +9065,13 @@
    "screen": "Relapse E047",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE047",
+   "status": "DIFF_CLEAN",
+   "diff": "0.061 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__364__e048-past-event",
@@ -8872,12 +9081,13 @@
    "screen": "Relapse E048",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=mE048",
+   "status": "DIFF_CLEAN",
+   "diff": "0.062 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__365__q01-octavia-e-butler-with-e025",
@@ -8887,12 +9097,13 @@
    "screen": "Relapse Q01",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=qQ01",
+   "status": "DIFF_CLEAN",
+   "diff": "0.121 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__366__q02-emily-dickinson-with-e002",
@@ -8902,12 +9113,13 @@
    "screen": "Relapse Q02",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=qQ02",
+   "status": "DIFF_CLEAN",
+   "diff": "0.046 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__367__q03-wis-awa-szymborska-with-e009",
@@ -8917,12 +9129,13 @@
    "screen": "Relapse Q03",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=qQ03",
+   "status": "DIFF_CLEAN",
+   "diff": "0.128 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__368__q04-jane-kenyon-with-e041",
@@ -8932,12 +9145,13 @@
    "screen": "Relapse Q04",
    "size": "393x852",
    "app": "src/app/slip.tsx · src/components/slip/relapse.tsx",
-   "harness": "",
-   "status": "NOT_STARTED",
-   "diff": "",
-   "date": "",
+   "harness": "relapse&state=qQ04",
+   "status": "DIFF_CLEAN",
+   "diff": "0.049 %",
+   "date": "2026-10-22",
    "note": "",
-   "spec": "specs/vici-ui-2/relapse.md"
+   "spec": "specs/vici-ui-2/relapse.md",
+   "verified": "2026-10-22"
   },
   {
    "id": "app__369__90b-vici-post-arrival",

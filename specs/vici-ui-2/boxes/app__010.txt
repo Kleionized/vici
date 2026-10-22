@@ -1,0 +1,40 @@
+# Email Login.dc.html · artboard 10 · 09B · Relapse (V3 Q3b)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  svg [47.04, 627.6, 298.68×182.4] transform:matrix(0.76, 0, 0, 0.76, 0, 0)
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [79.5, 79, 234×2] 
+      div [79.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [109.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [139.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [169.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [199.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [229.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [259.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [289.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+    div [335, 60, 36×40] 
+  div [24, 136, 345×483] 
+    div [24, 136, 345×99] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “When you’ve tried to quit, how long do you usually make it before watching again?”
+    div [24, 249, 345×18] 
+    div [24, 281, 345×338] 
+      div [24, 281, 345×58] bg:rgb(30, 30, 30) radius:18px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [46, 301, 97.92×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Less than a day”
+      div [24, 351, 345×58] bg:rgb(242, 240, 236) radius:18px
+        span [46, 371, 70.34×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “A few days”
+      div [24, 421, 345×58] bg:rgb(30, 30, 30) radius:18px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [46, 441, 89.33×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “About a week”
+      div [24, 491, 345×58] bg:rgb(30, 30, 30) radius:18px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [46, 511, 81.98×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “A few weeks”
+      div [24, 561, 345×58] bg:rgb(30, 30, 30) radius:18px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [46, 581, 118.3×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “A month or longer”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

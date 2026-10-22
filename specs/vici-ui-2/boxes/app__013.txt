@@ -1,0 +1,54 @@
+# Email Login.dc.html · artboard 13 · 12 · Beforehand (V3 Q6)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  svg [-14.7, 491.44, 422.48×258] transform:matrix(1.075, 0, 0, 1.075, 0, 0)
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+      svg [22, 70, 12×20] 
+    div [79.5, 79, 234×2] 
+      div [79.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [109.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [139.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [169.5, 79, 24×2] bg:rgb(242, 240, 236) radius:1px
+      div [199.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [229.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [259.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+      div [289.5, 79, 24×2] bg:rgb(46, 46, 46) radius:1px
+    div [335, 60, 36×40] 
+  div [24, 136, 345×368] 
+    div [24, 136, 345×66] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “What are you usually feeling right before?”
+    div [24, 216, 345×22] font:400 15px/22px normal color:rgb(155, 150, 142) wrap:pretty “Select all that apply”
+    div [24, 252, 345×10] 
+    div [24, 276, 345×228] 
+      div [24, 276, 81.52×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 291, 41.52×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Horny”
+      div [117.52, 276, 101.34×48] bg:rgb(242, 240, 236) radius:24px
+        svg [137.52, 293.5, 13×13] 
+        span [158.52, 291, 40.34×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “Bored”
+      div [230.86, 276, 104.5×48] bg:rgb(242, 240, 236) radius:24px
+        svg [250.86, 293.5, 13×13] 
+        span [271.86, 291, 43.5×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “Lonely”
+      div [24, 336, 96.72×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 351, 56.72×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Stressed”
+      div [132.72, 336, 67.28×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [152.72, 351, 27.28×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Low”
+      div [212, 336, 79.94×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [232, 351, 39.94×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Angry”
+      div [24, 396, 80.39×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 411, 40.39×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Numb”
+      div [116.39, 396, 95.98×48] bg:rgb(242, 240, 236) radius:24px
+        svg [136.39, 413.5, 13×13] 
+        span [157.39, 411, 34.98×18] font:400 15px/normal normal color:rgb(17, 17, 17) wrap:auto “Tired”
+      div [24, 456, 175.64×48] bg:rgb(30, 30, 30) radius:24px shadow:rgba(0, 0, 0, 0.04) 0px 1px 2px 0px
+        span [44, 471, 135.64×18] font:400 15px/normal normal color:rgb(242, 240, 236) wrap:auto “Nothing in particular”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [163, 765.5, 67×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Continue”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

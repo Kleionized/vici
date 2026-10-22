@@ -1,0 +1,60 @@
+# Email Login.dc.html · artboard 45 · 43 · Paywall (Paywall)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [316.13, 70, 52.88×18] font:700 15px/normal normal color:rgb(155, 150, 142) wrap:auto “Restore”
+  div [24, 66, 131.03×28] 
+    img [24, 66, 28×28] 
+    span [62, 71.5, 93.03×17] font:700 14px/normal normal color:rgb(242, 240, 236) wrap:auto “VICI Unlimited”
+  div [24, 130, 345×102] 
+    div [24, 130, 345×40] font:700 34px/40px normal ls:-0.6px color:rgb(242, 240, 236) wrap:balance “Take your life back.”
+    div [24, 184, 345×48] font:400 15px/24px normal color:rgb(181, 176, 168) wrap:pretty “Break the cycle, rebuild your self-control, and become someone you can trust again.”
+  div [24, 318, 345×153] 
+    div [24, 318, 166.5×153] bg:rgb(242, 240, 236) radius:22px
+      div [42, 306, 74.75×24] font:700 11px/normal normal ls:1px color:rgb(242, 240, 236) wrap:auto bg:rgb(30, 30, 30) radius:12px shadow:rgb(242, 240, 236) 0px 0px 0px 1.5px “Save 74%”
+      div [42, 338, 130.5×22] 
+        span [42, 338, 51.23×22] font:700 18px/normal normal color:rgb(17, 17, 17) wrap:auto “Yearly”
+        div [150.5, 338, 22×22] bg:rgb(30, 30, 30) radius:11px
+          svg [155.5, 343, 12×12] 
+      div [42, 366, 130.5×15] font:700 12px/normal normal color:rgba(17, 17, 17, 0.6) wrap:auto “Best value”
+      div [42, 403, 130.5×32] font:700 26px/normal normal ls:-0.8px color:rgb(17, 17, 17) wrap:auto “$39.99”
+        span [118.45, 416.23, 30.43×15.6] font:700 13px/normal normal color:rgba(17, 17, 17, 0.6) wrap:auto “/year”
+      div [42, 437, 130.5×16] font:700 13px/normal normal color:rgba(17, 17, 17, 0.7) wrap:auto “$3.33 a month”
+    div [202.5, 318, 166.5×153] bg:rgb(30, 30, 30) radius:22px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      div [220.5, 338, 130.5×22] 
+        span [220.5, 338, 68.89×22] font:700 18px/normal normal color:rgb(242, 240, 236) wrap:auto “Monthly”
+        div [329, 338, 22×22] radius:11px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      div [220.5, 366, 130.5×15] font:700 12px/normal normal color:rgb(155, 150, 142) wrap:auto “Cancel anytime”
+      div [220.5, 403, 130.5×32] font:700 26px/normal normal ls:-0.8px color:rgb(242, 240, 236) wrap:auto “$12.99”
+        span [296.95, 416.23, 42.54×15.6] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “/month”
+      div [220.5, 437, 130.5×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “Billed monthly”
+  div [24, 520, 345×16] 
+    div [24, 520, 345×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “What you get”
+  div [24, 552, 345×74] 
+    div [24, 552, 80.25×74] 
+      div [47.13, 552, 34×34] bg:rgb(242, 240, 236) radius:17px
+        svg [57.13, 562, 14×14] 
+      span [27.81, 594, 72.63×16] font:700 12px/16px normal color:rgb(181, 176, 168) align:center wrap:auto “12-week plan”
+    div [112.25, 552, 80.25×74] 
+      div [135.38, 552, 34×34] bg:rgb(242, 240, 236) radius:17px
+        svg [145.38, 562, 14×14] 
+      span [128.34, 594, 48.06×16] font:700 12px/16px normal color:rgb(181, 176, 168) align:center wrap:auto “SOS help”
+    div [200.5, 552, 80.25×74] 
+      div [223.63, 552, 34×34] bg:rgb(242, 240, 236) radius:17px
+        svg [233.63, 562, 14×14] 
+      span [200.5, 594, 80.25×32] font:700 12px/16px normal color:rgb(181, 176, 168) align:center wrap:auto “Weekly insights”
+    div [288.75, 552, 80.25×74] 
+      div [311.88, 552, 34×34] bg:rgb(242, 240, 236) radius:17px
+        svg [321.88, 562, 14×14] 
+      span [288.75, 594, 80.25×32] font:700 12px/16px normal color:rgb(181, 176, 168) align:center wrap:auto “Progress tracking”
+  div [24, 712, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [163, 731.5, 67×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Continue”
+  div [0, 785, 393×15] font:700 12px/normal normal ls:0.4px color:rgb(155, 150, 142) align:center wrap:auto “Terms · Restore”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

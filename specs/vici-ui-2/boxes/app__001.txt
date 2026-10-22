@@ -1,0 +1,32 @@
+# Email Login.dc.html · artboard 1 · 02 · Login (Login)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  img [144.5, 150, 104×104] 
+  div [24, 284, 345×93] 
+    div [24, 284, 345×33] font:700 26px/33px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Welcome to VICI.”
+    div [24, 329, 345×48] font:400 15px/24px normal color:rgb(181, 176, 168) align:center wrap:pretty “Sign in or create an account to keep your plan and progress.”
+  div [24, 436, 345×236] 
+    div [24, 436, 345×58] bg:rgb(242, 240, 236) radius:29px
+      svg [105.41, 455.5, 16×19] 
+      span [131.41, 454.5, 156.19×21] font:700 17px/normal normal color:rgb(17, 17, 17) wrap:auto “Continue with Apple”
+    div [24, 508, 345×58] bg:rgb(30, 30, 30) radius:29px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      svg [99.34, 527.5, 19×19] 
+      span [128.34, 526.5, 165.31×21] font:700 17px/normal normal color:rgb(242, 240, 236) wrap:auto “Continue with Google”
+    div [24, 580, 345×20] 
+      div [24, 589.5, 154.16×1] bg:rgb(46, 46, 46)
+      span [190.16, 582, 12.7×16] font:700 13px/normal normal color:rgb(155, 150, 142) wrap:auto “or”
+      div [214.86, 589.5, 154.16×1] bg:rgb(46, 46, 46)
+    div [24, 614, 345×58] bg:rgb(30, 30, 30) radius:29px shadow:rgb(46, 46, 46) 0px 0px 0px 1.5px
+      span [120.14, 632.5, 152.7×21] font:700 17px/normal normal color:rgb(242, 240, 236) wrap:auto “Continue with email”
+  div [0, 726, 393×18] font:400 15px/normal normal color:rgb(181, 176, 168) align:center wrap:auto “Already have an account?”
+    span [258.75, 726, 43.89×18] font:700 15px/normal normal color:rgb(242, 240, 236) align:center wrap:auto “Sign in”
+  div [0, 773, 393×15] font:700 12px/normal normal ls:0.4px color:rgb(155, 150, 142) align:center wrap:auto “Terms · Privacy”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px

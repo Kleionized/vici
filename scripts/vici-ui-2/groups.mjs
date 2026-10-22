@@ -27,6 +27,22 @@ const relapseSeq = [
   .concat(MSG.map((m) => ({ state: `m${m[0]}`, time: h12(relClock(m)) })))
   .concat([['Q01', 'E025'], ['Q02', 'E002'], ['Q03', 'E009'], ['Q04', 'E041']].map(([q, e]) => ({ state: `q${q}`, time: h12(q === 'Q04' ? '23:40' : relClock(MSG.find((m) => m[0] === e))) })));
 
+// onboarding: the funnel's steps by their canvas label, the plan and the tail by step id
+const FUNNEL = Object.fromEntries([...fs.readFileSync('src/content/onboardingFunnel.ts', 'utf8').matchAll(/"id":"([a-zA-Z0-9]+)","label":"([^"]*)"/g)].map((m) => [m[2], m[1]]));
+const TAIL = {
+  'Enlisting Aegis': 'plan-together&hold=1', 'Where We’d Start': 'whered-start', 'Start Here': 'start-here', 'Start Here Step 1': 'start-here-1', 'Start Here Step 2': 'start-here-2',
+  'Your Plan': 'your-plan', 'Starting Score': 'starting-point', 'Cost Next 30': 'next30', 'Cost Next 365': 'one-year', 'Cost By Age 80': 'age80',
+  'Line If Nothing Changes': 'line-nothing', 'Line With the Plan': 'line-plan', 'A Clean Day': 'clean-day', 'One Bad Day': 'one-bad-day', 'What You Want Back': 'want-back',
+  'Letter Received': 'letter-arrived', 'Letter Week XII': 'letter-read', 'The Vow': 'vow', 'Medallion Received': 'medallion', 'Reminders Setup': 'reminders', 'Day Zero': 'day-zero',
+};
+const ROUTES = {
+  Splash: { route: '/splash', seed: '-' },
+  Login: { route: '/sign-in', seed: '-' },
+  'Welcome Back': { route: '/welcome-back', seed: '-' },
+  Paywall: { route: '/paywall', seed: 'v-premium-seed' },
+  'Manage Subscription': { route: '/subscription', seed: 'f-pw-sub-dated' },
+};
+
 export function targetOf(row) {
   const [file, n] = row.id.split('__');
   // the lesson readers: `L<day> Frame <k>` → the reader on that page
@@ -36,6 +52,11 @@ export function targetOf(row) {
   if (file === 'sos') return { screen: 'sos', ...sosSeq[i] };
   if (file === 'app' && i >= 102 && i <= 242) return { screen: 'sos', ...sosSeq[i - 102] };
   if (file === 'app' && i === 293) return { screen: 'chooser', state: 'main', time: h12() };
+  if (file === 'app' && i <= 49) {
+    if (FUNNEL[row.screen]) return { route: `/welcome?step=${FUNNEL[row.screen]}`, seed: 'f-funnel-user', time: h12(), wait: 2500 };
+    if (TAIL[row.screen]) return { route: `/welcome?step=${TAIL[row.screen]}`, seed: row.screen === 'The Vow' ? 'tail-vow-seed' : 'tail-session-seed', time: h12(), wait: 2500 };
+    if (ROUTES[row.screen]) return { ...ROUTES[row.screen], time: h12(), wait: 2500 };
+  }
   const rel = file === 'relapse' ? relapseSeq[i] : file === 'app' && i >= 294 && i <= 368 ? relapseSeq[i - 294] : null;
   if (rel) return rel.specOnly ? null : { screen: 'relapse', ...rel };
   return null;

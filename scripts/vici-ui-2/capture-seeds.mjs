@@ -14,7 +14,7 @@ const OUT = 'pixel-diff/seeds';
 const filter = process.argv[2] ?? '';
 fs.mkdirSync(OUT, { recursive: true });
 
-const files = fs.readdirSync(DIR).filter((f) => /seed.*\.js$/.test(f) && f.includes(filter));
+const files = fs.readdirSync(DIR).filter((f) => (/seed.*\.js$/.test(f) || ['f-funnel-user.js', 'f-pw-sub-dated.js'].includes(f)) && f.includes(filter));
 for (const f of files) {
   const src = fs.readFileSync(path.join(DIR, f), 'utf8');
   const kv = {};

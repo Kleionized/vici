@@ -15,18 +15,18 @@ const BUNDLE = path.resolve(process.argv[2] ?? 'Vici UI 2/project');
 const OUT = path.resolve(process.argv[3] ?? 'pixel-diff/design');
 const FILTER = process.argv[4] ?? '';
 const PORT = 4792;
-export const CLOCK = '2026-10-21T09:41:00';
-export const SETTLE_MS = 2000;
 
-export const FILE_KEYS = {
+
+import { CLOCK, SETTLE_MS, FILE_KEYS as KEYS } from './common.mjs';
+const FILE_KEYS = {
   'Email Login.dc.html': 'app',
   'Email Login (before label pass).dc.html': 'app-before',
   'Vici SOS.dc.html': 'sos',
   'Vici Relapse.dc.html': 'relapse',
   'Lesson Illustrations v4.dc.html': 'illus',
 };
-export const fileKey = f => FILE_KEYS[f] ?? (f.match(/^Week (\d\d)/) ? 'w' + f.match(/^Week (\d\d)/)[1] : f.replace(/\W+/g, '-'));
-export const slug = s => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+const fileKey = f => FILE_KEYS[f] ?? (f.match(/^Week (\d\d)/) ? 'w' + f.match(/^Week (\d\d)/)[1] : f.replace(/\W+/g, '-'));
+const slug = s => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
 const LATO = 'node_modules/@expo-google-fonts/lato';
 const FACES = [['400', 'normal', '400Regular/Lato_400Regular.ttf'], ['700', 'normal', '700Bold/Lato_700Bold.ttf'], ['900', 'normal', '900Black/Lato_900Black.ttf'], ['700', 'italic', '700Bold_Italic/Lato_700Bold_Italic.ttf'], ['400', 'italic', '400Regular_Italic/Lato_400Regular_Italic.ttf']];

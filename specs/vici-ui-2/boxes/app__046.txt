@@ -1,0 +1,28 @@
+# Email Login.dc.html · artboard 46 · 44 · Day 0 (Day Zero)
+# [x, y, w×h] in points from the artboard's top-left; computed styles.
+
+div [0, 0, 393×852] bg:rgb(13, 13, 13) shadow:rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(20, 20, 22, 0.18) 0px 16px 40px 0px
+  div [0, 0, 393×852] opacity:0.05
+  div [0, 0, 393×54] 
+    span [46, 19.5, 33.3×21] font:700 17px/normal normal ls:-0.2px color:rgb(242, 240, 236) wrap:auto “9:41”
+    div [284, 23.5, 77×13] 
+      svg [284, 24, 19×12] 
+      svg [310, 24, 17×12] 
+      svg [334, 23.5, 27×13] 
+  div [0, 60, 393×40] 
+    div [22, 60, 36×40] 
+    div [335, 60, 36×40] 
+  svg [-19.6, 107, 432.3×264] transform:matrix(1.1, 0, 0, 1.1, 0, 0)
+  div [24, 406, 345×50] 
+    div [24, 406, 345×50] font:700 44px/50px normal ls:-0.6px color:rgb(242, 240, 236) align:center wrap:balance “Day 0”
+  div [24, 504, 345×116] 
+    div [71.27, 504, 250.47×76] bg:rgb(30, 30, 30) radius:20px
+      div [87.27, 520, 44×44] bg:rgb(46, 46, 46) radius:22px
+        svg [99.27, 532, 20×20] 
+      div [145.27, 521.5, 154.47×41] 
+        span [145.27, 521.5, 154.47×22] font:700 18px/normal normal color:rgb(242, 240, 236) align:left wrap:auto “Prepare for tonight”
+        span [145.27, 545.5, 154.47×17] font:400 14px/normal normal color:rgb(155, 150, 142) align:left wrap:auto “Lesson 1”
+    div [24, 598, 345×22] font:400 15px/22px normal color:rgb(181, 176, 168) align:center wrap:pretty “Your first lesson is ready. Start with one thing today.”
+  div [24, 746, 345×58] bg:rgb(242, 240, 236) radius:29px
+    span [175.89, 765.5, 41.2×19] font:700 16px/normal normal ls:0.1px color:rgb(17, 17, 17) wrap:auto “Begin”
+  div [127, 839, 139×5] bg:rgb(242, 240, 236) radius:100px
