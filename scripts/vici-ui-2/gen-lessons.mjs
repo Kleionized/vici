@@ -525,17 +525,7 @@ for (const L of model) {
   for (const p of L.pages) src += `      ${lit(p)},\n`;
   src += `    ],\n  },\n`;
 }
-src += `};
-
-/**
- * Chrome's own breaks for runs whose \`text-wrap: balance | pretty\` lines differ
- * from greedy wrapping at the canvas width, keyed \`<ramp>|<text>\`. Native only,
- * and only at the width they were measured at (D332, D312); lesson body is left
- * to wrap greedily.
- */
-export const BREAKS: Record<string, readonly string[]> = {
-`;
-for (const [k, lines] of Object.entries(BREAKS).sort(([a], [b]) => (a < b ? -1 : 1))) src += `  ${JSON.stringify(k)}: ${JSON.stringify(lines)},\n`;
+// the lines each run is drawn on come from WebKit's renders of the frames (src/content/wraps.ts, D45)
 src += `};
 
 /** The illustrations the readers use (${ids.length}). */

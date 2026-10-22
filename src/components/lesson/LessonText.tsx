@@ -1,8 +1,7 @@
-import { Platform, useWindowDimensions, type TextStyle } from 'react-native';
+import type { TextStyle } from 'react-native';
 
 import { MonoText, type TextVariant, type Wrap } from '@/components/mono';
 import type { MonoTextProps } from '@/components/mono/Text';
-import { BREAKS } from '@/content/lessons';
 import { mono, sans } from '@/lib/theme';
 
 /**
@@ -57,30 +56,20 @@ const RAMPS: Record<Ramp, { v: TextVariant; wrap: Wrap; style?: TextStyle }> = {
   vcap: { v: 'pTight', wrap: 'pretty' },
 };
 
-/** The canvas width the frames' line breaks were measured at. */
-const CANVAS_W = 393;
-
 /**
  * One run of lesson copy in its frame's ramp.
  *
- * Web reproduces the frame's breaks with CSS `text-wrap`. Native has none, so
- * where Chrome's balanced / pretty lines differ from greedy wrapping the run
- * carries the frame's own breaks (`BREAKS`, generated) — but only on a
- * 393-wide screen at font scale 1, the one width they were measured at, and
- * never for lesson body, which wraps greedily (D332, D312). Anywhere else the
- * copy wraps as the platform wraps it.
+ * Web reproduces the frame's breaks with CSS `text-wrap`. On native the run
+ * goes to `MonoText` whole, which lays it out on the lines WebKit drew it on
+ * in `Vici UI 2` wherever the frame broke it (the shared table, D32, D45) —
+ * at the width it was drawn at and font scale 1; anywhere else the copy wraps
+ * as the platform wraps it.
  */
 export function LT({ r, children, wrap, color, style, ...rest }: Omit<MonoTextProps, 'v' | 'children'> & { r: Ramp; children: string }) {
-  const { width, fontScale } = useWindowDimensions();
   const ramp = RAMPS[r];
-  let copy = children;
-  if (Platform.OS !== 'web' && width === CANVAS_W && fontScale === 1) {
-    const lines = BREAKS[`${r}|${children}`];
-    if (lines) copy = lines.join('\n');
-  }
   return (
     <MonoText v={ramp.v} wrap={wrap ?? ramp.wrap} style={[ramp.style, color ? { color } : null, style]} {...rest}>
-      {copy}
+      {children}
     </MonoText>
   );
 }
