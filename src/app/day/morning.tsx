@@ -315,14 +315,17 @@ export default function Morning() {
       ) : null}
 
       {/* Back walks to the cover; the ✕ leaves without saving. On the closing
-          board the day is already complete, so its ✕ files it like Done (D235). */}
-      <NavBar
-        left={step === DONE ? 'empty' : 'back'}
-        centre={step === DONE ? null : firstDay ? { step: Math.min(step, RAIL) - LEDGER, total: RAIL - LEDGER } : { step: Math.min(step, RAIL), total: RAIL }}
-        right="close"
-        onBack={back}
-        onClose={step === DONE ? () => void finish() : close}
-      />
+          board the day is already complete, so its ✕ files it like Done (D235).
+          21D6 draws nothing behind the pledge sheet's scrim, so the row gives way while it is up (D48). */}
+      {sheet ? null : (
+        <NavBar
+          left={step === DONE ? 'empty' : 'back'}
+          centre={step === DONE ? null : firstDay ? { step: Math.min(step, RAIL) - LEDGER, total: RAIL - LEDGER } : { step: Math.min(step, RAIL), total: RAIL }}
+          right="close"
+          onBack={back}
+          onClose={step === DONE ? () => void finish() : close}
+        />
+      )}
 
       <Sheet
         open={sheet}

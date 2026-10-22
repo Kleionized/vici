@@ -4568,13 +4568,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.034 %",
    "date": "2026-10-22",
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__060__21d1-morning-yesterdays-task",
@@ -4585,13 +4585,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.345 %",
    "date": "2026-10-22",
    "note": "kept copy (D28); fixture pledge (D37)",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__061__21d2-morning-yesterday",
@@ -4602,13 +4602,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.211 %",
    "date": "2026-10-22",
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__062__21d3-morning-feeling",
@@ -4619,13 +4619,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.013 %",
    "date": "2026-10-22",
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__063__21d4-morning-energy",
@@ -4636,13 +4636,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.013 %",
    "date": "2026-10-22",
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__064__21d5-morning-re-sign-your-pledge",
@@ -4653,13 +4653,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.157 %",
    "date": "2026-10-22",
    "note": "kept copy (D28); fixture pledge (D37)",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__065__21d5b-morning-pledge-signed",
@@ -4670,13 +4670,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.119 %",
    "date": "2026-10-22",
    "note": "kept copy (D28); fixture pledge (D37)",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__066__21d6-morning-change-the-pledge",
@@ -4687,13 +4687,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
-   "diff": "0.471 %",
+   "status": "PASS_1",
+   "diff": "0.330 %",
    "date": "2026-10-22",
    "note": "typed line in a native field (D39); copy (D28) on 73",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__067__21d6b-morning-one-goal",
@@ -4704,13 +4704,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.257 %",
    "date": "2026-10-22",
    "note": "typed line in a native field (D39); copy (D28) on 73",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__068__21d7-morning-done",
@@ -4721,13 +4721,13 @@
    "size": "393x852",
    "app": "src/app/day/morning.tsx",
    "harness": "/day/morning · seed day-seed-own",
-   "status": "PASS_2",
+   "status": "PASS_1",
    "diff": "0.017 %",
    "date": "2026-10-22",
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__069__21e0-night-check-in",
@@ -4744,7 +4744,7 @@
    "note": "",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
-   "pass": 2
+   "pass": 1
   },
   {
    "id": "app__070__21e1-night-how-was-today",
