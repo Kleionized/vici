@@ -26,6 +26,8 @@ type Target = {
   clock?: string;
   /** globals the screens' mock hooks read, e.g. `__ONB_ANSWERS` (welcome.tsx) */
   globals?: Record<string, unknown>;
+  /** the account is the one the last target applied, and nothing on screen changes it: keep it */
+  keepSeed?: boolean;
   /** after the board is up: `tap:<label>`, `wait:<ms>`, `scroll:<y>|end`, `end:<name>`, `page:<pager>:<n>`, `type:<text>`, in order (D35) */
   steps?: string[];
   /** put the keyboard away once the board is up: iOS draws it, the frames do not (D29) */
@@ -64,6 +66,8 @@ export function HarnessDriver() {
     at.current = pathname;
   }, [pathname]);
   const last = useRef<number | null>(null);
+  /** the seed the last target wrote, for a target that keeps it */
+  const applied = useRef<{ seed: string; clock: string | null } | null>(null);
   const busy = useRef(false);
   useEffect(() => {
     const open = async (t: Target) => {
@@ -71,11 +75,16 @@ export function HarnessDriver() {
       const g = globalThis as Record<string, unknown>;
       delete g.__ONB_ANSWERS;
       Object.assign(g, t.globals ?? {});
-      if (t.seed === '-') await harnessAuth.signOut?.();
+      if (t.seed === '-') {
+        applied.current = null;
+        await harnessAuth.signOut?.();
+      }
+      else if (t.seed && t.keepSeed && t.seed === applied.current?.seed) clock = clock ?? applied.current.clock;
       else if (t.seed) {
         const seed = (await (await fetch(`${SERVER}/seed/${encodeURIComponent(t.seed)}`)).json()) as { kv: Record<string, string>; clock?: string | null };
         // the moment the seed's dates were written for, unless the target names its own
         clock = clock ?? seed.clock ?? null;
+        applied.current = { seed: t.seed, clock: seed.clock ?? null };
         const { kv, uid } = rekey(seed.kv, t.n);
         await AsyncStorage.multiSet(kv.filter(([k]) => k !== SESSION_KEY));
         if (uid) {

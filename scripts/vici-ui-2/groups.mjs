@@ -156,7 +156,7 @@ export function targetOf(row) {
   const [file, n] = row.id.split('__');
   // the lesson readers: `L<day> Frame <k>` → the reader on that page
   const lesson = /^L(\d+) Frame (\d+)$/.exec(row.screen ?? '');
-  if (/^w\d\d$/.test(file) && lesson) return { route: `/lesson/day/${lesson[1]}?page=${lesson[2]}`, seed: 'library-seed', time: h12() };
+  if (/^w\d\d$/.test(file) && lesson) return { route: `/lesson/day/${lesson[1]}?page=${lesson[2]}`, seed: 'library-seed', keepSeed: true, time: h12(), wait: 2000 };
   const i = Number(n);
   if (file === 'sos') return { screen: 'sos', ...sosSeq[i] };
   if (file === 'app' && i >= 102 && i <= 242) return { screen: 'sos', ...sosSeq[i - 102] };
