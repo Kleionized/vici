@@ -16,7 +16,16 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 export async function shoot({ screen, state, route, seed, keepSeed, clock, blur, globals, steps, name, time = new Date(2026, 9, 21, 9, 41).toISOString(), wait = 1800, extra = {} }) {
   simctl('status_bar', UDID, 'override', '--time', time, '--batteryState', 'charged', '--batteryLevel', '100', '--cellularMode', 'active', '--cellularBars', '4', '--wifiBars', '3', '--dataNetwork', 'wifi');
   // the app polls the harness server for its next state (src/dev/HarnessDriver.tsx)
-  await fetch('http://localhost:8099/target', { method: 'POST', body: JSON.stringify({ screen, state, route, seed, keepSeed, clock, blur, globals, steps, extra }) });
+  // a kept-alive socket the server has already closed resets the first request after a long pause: send it again
+  for (let i = 0; ; i++) {
+    try {
+      await fetch('http://localhost:8099/target', { method: 'POST', body: JSON.stringify({ screen, state, route, seed, keepSeed, clock, blur, globals, steps, extra }) });
+      break;
+    } catch (e) {
+      if (i >= 3) throw e;
+      await sleep(500);
+    }
+  }
   await sleep(wait);
   fs.mkdirSync('pixel-diff/app', { recursive: true });
   const out = `pixel-diff/app/${name}.png`;
