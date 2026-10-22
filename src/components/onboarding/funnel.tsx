@@ -107,7 +107,7 @@ const O3_GOAL_CONFIRM: Record<string, [string, string]> = {
   'Stop completely': ['You want to stop.', 'That’s what we’ll work toward.'],
   'Watch much less': ['You want to watch much less.', 'That’s what we’ll work toward.'],
   'Set a limit and stick to it': ['You want to set a limit and keep it.', 'That’s what we’ll work toward.'],
-  'I’m not sure yet': ['You don’t need to decide forever today.', 'First, get the choice back.'],
+  'I’m not sure yet': ['You don’t have to decide for good today.', 'Start by making it your choice again.'],
 };
 /** The card is drawn only for the one masturbation answer that earns it. */
 const O3_GOAL_CONFIRM_MAST = 'Keep it, just without porn';
@@ -419,7 +419,6 @@ function AgeWheel({ top, value, unset = false, onChange }: { top: number; value:
       </Pressable>
     );
   };
-  const rule = (k: string) => <View key={k} style={{ width: 200, height: 1.5, backgroundColor: mono.ink }} />;
 
   return (
     <GestureDetector gesture={pan}>
@@ -433,9 +432,8 @@ function AgeWheel({ top, value, unset = false, onChange }: { top: number; value:
         style={[{ position: 'absolute', left: 0, right: 0, top, alignItems: 'center' }, webNoSelect]}>
         {row(-2)}
         {row(-1)}
-        {rule('a')}
-        {row(0)}
-        {rule('b')}
+        {/* the chosen age on a filled band, no rules above and below it (D51); the band keeps the rules' 3 */}
+        <View style={{ width: 200, paddingVertical: 1.5, borderRadius: 14, backgroundColor: mono.card, alignItems: 'center' }}>{row(0)}</View>
         {row(1)}
         {row(2)}
       </View>

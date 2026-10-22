@@ -18,7 +18,7 @@ import { mono, sans } from '@/lib/theme';
  */
 const CARDS = [
   { key: 'urge', title: 'An urge', line: 'It’s here and you haven’t acted on it', route: '/urge' },
-  { key: 'relapse', title: 'A relapse', line: 'It already happened. Stop it here.', route: '/slip' },
+  { key: 'relapse', title: 'A relapse', line: 'It already happened', route: '/slip' },
 ] as const;
 
 export default function SosChooser() {

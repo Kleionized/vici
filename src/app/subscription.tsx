@@ -184,7 +184,7 @@ export default function Subscription() {
             {unreachable ? null : <Pill kind="badge" label={premium ? 'Active' : 'Free'} />}
           </View>
           {charges ? (
-            <View style={{ marginTop: 20, paddingTop: 16, borderTopWidth: 1, borderTopColor: mono.line, flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
+            <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
               <MonoText v="p" color={mono.mute} style={{ lineHeight: lhNormal(15) }}>
                 Next charge
               </MonoText>

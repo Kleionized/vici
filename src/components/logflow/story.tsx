@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { View } from 'react-native';
 
-import { CalendarGlyph, Check, GhostLink, Hero, MonoText, NavBar, PrimaryButton, QuoteMark, Screen, TrendGlyph, VizArt } from '@/components/mono';
+import { ROW_GAP, CalendarGlyph, Check, GhostLink, Hero, MonoText, NavBar, PrimaryButton, QuoteMark, Screen, TrendGlyph, VizArt } from '@/components/mono';
 import { SOS_VIZ } from '@/content/sosViz';
 import type { DayStatus } from '@/lib/weeklyReport';
 import type { StoryPage } from '@/lib/weeklyStory';
@@ -62,8 +62,8 @@ function Row({ title, note, end, viz, first }: { title: string; note: string; en
         flexDirection: 'row',
         alignItems: 'center',
         gap: 14,
-        borderTopWidth: first ? 0 : 1,
-        borderTopColor: mono.line,
+        borderRadius: 16,
+        backgroundColor: mono.card,
       }}>
       {viz && SOS_VIZ[viz] ? (
         <View style={{ width: 64, height: 48 }}>
@@ -88,6 +88,8 @@ function Row({ title, note, end, viz, first }: { title: string; note: string; en
 }
 
 const Card = ({ children, radius = 20 }: { children: ReactNode; radius?: number }) => <View style={{ borderRadius: radius, backgroundColor: mono.card, overflow: 'hidden' }}>{children}</View>;
+/** a list of rows, each its own box (D51) */
+const Boxes = ({ children }: { children: ReactNode }) => <View style={{ gap: ROW_GAP }}>{children}</View>;
 
 export function WeeklyStory({
   pages,
@@ -130,11 +132,11 @@ export function WeeklyStory({
           <Stack top={136} gap={8}>
             <MonoText v="h1">{p.title}</MonoText>
             <View style={{ height: 16 }} />
-            <Card>
+            <Boxes>
               {p.rows.map((r, i) => (
                 <Row key={r.key} first={i === 0} title={r.when} note={r.note} end={r.end} />
               ))}
-            </Card>
+            </Boxes>
           </Stack>
         </>
       ) : null}
@@ -155,9 +157,7 @@ export function WeeklyStory({
             </MonoText>
             {p.other ? (
               <View style={{ alignSelf: 'stretch', marginTop: 14 }}>
-                <Card>
-                  <Row first title={p.other.title} note={p.other.note} viz={p.other.viz} />
-                </Card>
+                <Row first title={p.other.title} note={p.other.note} viz={p.other.viz} />
               </View>
             ) : null}
           </Stack>

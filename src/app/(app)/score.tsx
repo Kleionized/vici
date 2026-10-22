@@ -311,7 +311,7 @@ function TheParts({ rating, onEnd }: { rating: Rating; onEnd: (canvasY: number) 
               </MonoText>
             </View>
           ))}
-          <View style={{ marginTop: 12, paddingTop: 14, borderTopWidth: 1, borderTopColor: mono.line, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+          <View style={{ marginTop: 14, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
             <MonoText v="caps">Recovery rating</MonoText>
             <MonoText v="h1" wrap="nowrap" style={{ lineHeight: lhNormal(26) }}>
               {String(rating.value)}

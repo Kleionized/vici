@@ -3,7 +3,7 @@ import { useRef, useState, type ReactNode } from 'react';
 import { ScrollView, View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import { bandOf, clockHour, DAY_MS, hourCounts, isSlip, isUrge, peakWindow, tally, triggerNoun, triggersOf } from '@/components/logflow';
-import { ChevronD, ChevronR, EmptyState, Hero, LoadingView, MonoText, NavBar, Screen, Tap, useCanvasTop, VizArt } from '@/components/mono';
+import { ROW_GAP, ChevronD, ChevronR, EmptyState, Hero, LoadingView, MonoText, NavBar, Screen, Tap, useCanvasTop, VizArt } from '@/components/mono';
 import { OVERVIEW_ART_VIEWBOX, OVERVIEW_PLACE_ART } from '@/content/overviewArt';
 import { SOS_ACTIONS } from '@/content/sosLibrary.data';
 import { SOS_VIZ } from '@/content/sosViz';
@@ -56,7 +56,7 @@ const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
 /** A ruled fact on the first part (`min-height 57`, rule under it): the name 15/400 mute, the value 15/700 ink and a chevron. */
 function Fact({ label, value, onPress }: { label: string; value: string; onPress?: () => void }) {
   return (
-    <Tap label={`${label}, ${value}`} onPress={onPress} disabled={!onPress} style={{ height: 57, borderBottomWidth: 1, borderBottomColor: mono.line, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+    <Tap label={`${label}, ${value}`} onPress={onPress} disabled={!onPress} style={{ height: 52, paddingHorizontal: 16, borderRadius: 16, backgroundColor: mono.card, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
       <MonoText v="p" wrap="nowrap" color={mono.mute} style={{ lineHeight: lhNormal(15) }}>
         {label}
       </MonoText>
@@ -75,7 +75,7 @@ function Section({ title, onLayout, children }: { title: string; onLayout?: (e: 
   return (
     <View onLayout={onLayout} style={{ gap: 10 }}>
       <MonoText v="caps">{title}</MonoText>
-      <View style={{ borderRadius: 20, backgroundColor: mono.card, overflow: 'hidden' }}>{children}</View>
+      <View style={{ gap: ROW_GAP }}>{children}</View>
     </View>
   );
 }
@@ -105,15 +105,15 @@ function CardRow({ art, title, note, first, onPress, chevron }: { art?: string |
     </>
   );
   const style = {
-    minHeight: first ? 68 : 69,
+    minHeight: 68,
     paddingVertical: 10,
     paddingLeft: art ? 10 : 18,
     paddingRight: 18,
     flexDirection: 'row' as const,
     alignItems: 'center' as const,
     gap: 14,
-    borderTopWidth: first ? 0 : 1,
-    borderTopColor: mono.line,
+    borderRadius: 16,
+    backgroundColor: mono.card,
   };
   return onPress ? (
     <Tap label={`${title}, ${note}`} onPress={onPress} style={style}>
@@ -223,7 +223,7 @@ export default function UrgeOverview() {
                     </MonoText>
                   </View>
                 ) : null}
-                <View style={{ borderTopWidth: 1, borderTopColor: mono.line }}>
+                <View style={{ gap: ROW_GAP }}>
                   {places.length ? <Fact label="Usually in" value={places[0][0]} onPress={anchors.where != null ? () => scrollToList('where') : undefined} /> : null}
                   {triggers.length ? <Fact label="Set off by" value={triggerNoun(triggers[0][0])} onPress={anchors.slips != null ? () => scrollToList('slips') : undefined} /> : null}
                   {helped.length ? <Fact label="Helped most" value={helped[0][0]} onPress={anchors.helped != null ? () => scrollToList('helped') : undefined} /> : null}

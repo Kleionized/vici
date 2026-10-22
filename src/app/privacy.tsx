@@ -193,7 +193,7 @@ export default function Privacy() {
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 24, gap: 16 }}>
         <MonoText v="h1">How your data is kept.</MonoText>
         <MonoText v="p">
-          Your journal, urges and log are stored in your private account, encrypted in transit and at rest. They aren’t end-to-end encrypted: our servers read them to run the app. We never sell your data.
+          Your journal, urges and log are kept in your account. They’re encrypted when sent and when stored, but not end to end, so our servers can read them to run the app. We never sell your data.
         </MonoText>
         <View style={{ height: 2 }} />
 

@@ -116,7 +116,7 @@ export default function Drop() {
         art={medal}
         artTop={212}
         stackTop={466}
-        title="Your year starts now."
+        title="Purchase complete."
         body="You have 12 months of VICI. It renews each year until you cancel."
         cta="Continue"
         onCta={close}
@@ -172,7 +172,7 @@ export default function Drop() {
           <View style={{ position: 'absolute', left: 24, right: 24, top: 0, alignItems: 'center', gap: 12 }}>
             {/* the frame breaks the title itself (`<br>`) */}
             <MonoText v="title" center style={{ alignSelf: 'stretch' }}>
-              {'One price.\nA full year.'}
+              {'A full year\nof VICI.'}
             </MonoText>
             <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
               Everything in VICI for 12 months.
@@ -247,7 +247,7 @@ function PriceCard({ top, price, cycle, struck, saving, perMonth }: { top: numbe
           {`That’s ${perMonth} a month.`}
         </MonoText>
       ) : null}
-      <View style={{ flexDirection: 'row', gap: 10, paddingTop: 16, borderTopWidth: 1, borderTopColor: mono.line }}>
+      <View style={{ flexDirection: 'row', gap: 10, paddingTop: 16 }}>
         {['Full 12-week programme', 'SOS support anytime', 'Track your progress'].map((perk) => (
           <View key={perk} style={{ flex: 1, alignItems: 'center', gap: 8 }}>
             <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>

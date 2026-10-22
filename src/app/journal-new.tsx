@@ -147,7 +147,7 @@ export default function JournalNew() {
                   variant="note"
                   value={body}
                   onChangeText={setBody}
-                  placeholder="Write freely. It stays in your account."
+                  placeholder="Write whatever you want. It’s saved to your account."
                   autoFocus={!id}
                   accessibilityLabel="Entry"
                 />

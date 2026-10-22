@@ -39,7 +39,7 @@ export const DAY_STEPS: DayStep[] = [
   { caption: 'Drink a full glass of water before anything else.', hero: 'twoCups' },
   { caption: 'Get outside for ten minutes, even if it is only around the block.', hero: 'bench' },
   { caption: 'Write down what set it off, in the words you would say out loud.', hero: 'notebook' },
-  { caption: 'Make the bed now, so tonight you walk into a room that is ready.', hero: 'bed' },
+  { caption: 'Make the bed now so it’s ready tonight.', hero: 'bed' },
 ];
 
 /** Day one is the first step; after that the list simply turns over. */

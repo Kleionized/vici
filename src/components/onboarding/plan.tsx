@@ -115,7 +115,7 @@ const FIRST_CHANGES: Record<string, FirstChange> = {
     row: 'Phone out of bed',
     steps: [
       { title: 'Charge it away from the bed.', note: 'Tonight, before you lie down.' },
-      { title: 'Can’t sleep? Get out of bed before you start scrolling.', note: 'One change tonight. Build from there.' },
+      { title: 'Can’t sleep? Get out of bed before you start scrolling.', note: 'Start with this one change tonight.' },
     ],
   },
   'Late at night': {
@@ -123,7 +123,7 @@ const FIRST_CHANGES: Record<string, FirstChange> = {
     row: 'A stop time',
     steps: [
       { title: 'Set the hour before you need it.', note: 'Tonight, while it is still early.' },
-      { title: 'When it comes round, put the phone down and go to bed.', note: 'One change tonight. Build from there.' },
+      { title: 'When that time comes, put the phone down and go to bed.', note: 'Start with this one change tonight.' },
     ],
   },
   'When I can’t sleep': {
@@ -131,15 +131,15 @@ const FIRST_CHANGES: Record<string, FirstChange> = {
     row: 'Out of the room',
     steps: [
       { title: 'Decide now where you will go.', note: 'Tonight, before you lie down.' },
-      { title: 'Twenty minutes awake and you get up, without the phone.', note: 'One change tonight. Build from there.' },
+      { title: 'If you’re awake for twenty minutes, get up and leave the phone.', note: 'Start with this one change tonight.' },
     ],
   },
   'When I’m home alone': {
     heading: 'Keep one door open tonight.',
-    row: 'A door left open',
+    row: 'An open door',
     steps: [
-      { title: 'Pick the room you will not close.', note: 'Tonight, before the house goes quiet.' },
-      { title: 'When the house empties, the door stays open.', note: 'One change tonight. Build from there.' },
+      { title: 'Choose a room where the door stays open.', note: 'Tonight, before everyone goes to bed.' },
+      { title: 'When you’re home alone, leave that door open.', note: 'Start with this one change tonight.' },
     ],
   },
 };
@@ -155,8 +155,8 @@ const DEFAULT_CHANGE = 'While scrolling';
 const NATIVE_BREAKS: Record<string, string> = {
   'Keep your phone out of bed tonight.': 'Keep your phone\nout of bed tonight.',
   'Leave the room instead of lying there.': 'Leave the room\ninstead of lying there.',
-  'Pick the room you will not close.': 'Pick the room\nyou will not close.',
-  'When the house empties, the door stays open.': 'When the house empties,\nthe door stays open.',
+  'Choose a room where the door stays open.': 'Choose a room where\nthe door stays open.',
+  'When you’re home alone, leave that door open.': 'When you’re home alone,\nleave that door open.',
 };
 const balanced = (s: string) => (Platform.OS === 'web' ? s : (NATIVE_BREAKS[s] ?? s));
 

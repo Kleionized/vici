@@ -139,7 +139,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'highlands',
     roman: 'III',
     title: 'The Highlands',
-    line: 'The habits meet real stress. Hold them.',
+    line: 'Keep the habits going under real stress.',
     hero: 'mountain',
     rows: [
       { label: 'The Long Climb', meta: () => 'Days 31–45', state: past(45) },
@@ -151,7 +151,7 @@ export const CHAPTERS: Record<ChapterKey, Chapter> = {
     key: 'watch',
     roman: 'IV',
     title: 'The Watch',
-    line: 'The habit is yours now. Keep it.',
+    line: 'Keep the habits going on your own.',
     hero: 'lighthouse',
     rows: [
       { label: 'Home waters', meta: () => 'Days 61–75', state: past(75) },

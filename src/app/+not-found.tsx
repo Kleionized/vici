@@ -32,7 +32,7 @@ export default function NotFound() {
       stackTop={451}
       titleSize={26}
       title="This page doesn’t exist."
-      body="The link may be old or mistyped. Everything in VICI is still where you left it."
+      body="The link may be old or mistyped."
       cta="Back to Today"
       onCta={() => router.replace('/')}
     />

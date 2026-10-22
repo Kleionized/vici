@@ -226,8 +226,13 @@ export function Grid2<K extends string>({
 /**
  * One wrapping chip (design-system §7.12): `height 48, r24, padding 0 20, gap
  * 8`, label 15/400 nowrap. On adds a 13 check before the label — the label's
- * weight does not change.
+ * weight does not change. The check's room (13 + the 8 gap) is held as padding
+ * while the chip is off, so choosing one never widens it and never sends it, or
+ * the chips after it, to a new line (D53).
  */
+export const CHIP_PAD = 20;
+/** the check and its gap, held as padding while a chip is off */
+export const CHIP_CHECK_ROOM = 13 + 8;
 export function Chip({
   label,
   on,
@@ -259,7 +264,7 @@ export function Chip({
         {
           height: 48,
           borderRadius: 24,
-          paddingHorizontal: 20,
+          paddingHorizontal: on ? CHIP_PAD : CHIP_PAD + CHIP_CHECK_ROOM / 2,
           gap: 8,
           flexDirection: 'row',
           alignItems: 'center',

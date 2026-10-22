@@ -12,7 +12,7 @@
  *
  *   {
  *     "eyebrow": "UNLIMITED",
- *     "headline": "Take your life back.",
+ *     "headline": "Get your control back.",
  *     "benefits_title": "What you get",
  *     "benefits": ["12-week\nplan", "SOS\nhelp", "Weekly\ninsights", "Progress\ntracking"],
  *     "cta": "Continue",

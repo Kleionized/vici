@@ -165,7 +165,7 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
             })}
           </RuledRows>
         ) : (
-          <EmptyState title="No urges logged yet" body="Log each urge. In time, you’ll see the pattern." style={FLUSH} />
+          <EmptyState title="No urges logged yet" body="Log each urge to see when they come." style={FLUSH} />
         )}
       </Page>
     </Screen>

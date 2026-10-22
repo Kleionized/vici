@@ -86,7 +86,6 @@ export default function BackTap() {
               key={i}
               style={[
                 { flexDirection: 'row', gap: 14, paddingVertical: 16, paddingHorizontal: 18 },
-                i > 0 ? { borderTopWidth: 1, borderTopColor: mono.line } : null,
               ]}>
               <MonoText v="rowLabel" color={mono.mute} style={{ width: 12, lineHeight: 22 }}>
                 {i + 1}

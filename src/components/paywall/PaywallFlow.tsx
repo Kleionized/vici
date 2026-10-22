@@ -403,7 +403,7 @@ export function PwBoard({
   closeLabel,
   onClose,
   eyebrow,
-  headline = 'Take your life back.',
+  headline = 'Get your control back.',
   plans,
   terms,
   benefitsTitle,
@@ -435,7 +435,7 @@ export function PwBoard({
         <Slack h={30} min={16} />
         <View style={{ gap: 14 }}>
           <MonoText v="titleCover">{headline}</MonoText>
-          <P>Get your self-control back. Become someone you can trust again.</P>
+          <P>Follow the full 12-week plan and use SOS whenever you need it.</P>
         </View>
         {/* 318 − (130 + 40 + 14 + 48) */}
         <Slack h={86} />
@@ -670,7 +670,7 @@ function chargeDay(d: Date): string {
  * than from the card that happened to be selected (P6, D457).
  */
 function storeLine(m: Membership): string {
-  const lead = 'The work starts now.';
+  const lead = 'You’re all set.';
   if (!m.isActive) return `${lead} You have full access.`;
   if (m.periodType === 'TRIAL' && m.expiresAt) {
     return m.willRenew
@@ -684,7 +684,7 @@ function storeLine(m: Membership): string {
 
 /** Offline: the canvas's sentence for the card bought, dated from today. */
 function drawnLine(plan: PlanKey, money: Money, now: Date): string {
-  const lead = 'The work starts now.';
+  const lead = 'You’re all set.';
   if (plan === 'trial') {
     const charge = chargeDay(new Date(now.getTime() + (money.trialDays ?? 0) * 86400000));
     // a no-break space keeps the date whole: a wider phone otherwise splits it

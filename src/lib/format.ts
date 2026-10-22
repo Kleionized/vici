@@ -117,7 +117,7 @@ export function capitalise(s: string): string {
 }
 
 /** First letter down, unless the word is `I` or an initialism (`TV`, `ADHD`). */
-function lowerFirst(s: string): string {
+export function lowerFirst(s: string): string {
   if (!s) return s;
   if (/^I\b/.test(s) || /^[A-Z]{2}/.test(s)) return s;
   return s[0].toLowerCase() + s.slice(1);

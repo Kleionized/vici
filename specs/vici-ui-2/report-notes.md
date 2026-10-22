@@ -39,6 +39,16 @@ The bundle-to-bundle markup diff called these unchanged (or hero-only); the pixe
 - **Furniture across screens.** The nav row (54–102) and the foot (740–818: the pill, the ghost, the tab bar) were diffed band by band across every board (`scripts/vici-ui-2/band-scan.py`). Sixteen boards pass 1 % in a band; each was read. Fifteen are copy or data their notes name (the streak pill's number, the letter's "From VICI", the slip week's two report pages); one was a difference: `21D6 · Change the pledge` draws nothing behind its sheet, and the app showed the check-in's nav row through the scrim — it now gives way while the sheet is up (D48), and the morning boards went back through the passes.
 - **Motion, against the specs.** The SOS breath (in 4 s, hold 4 s, out 6 s from 350 ms, CSS ease-in-out; 0.6 over 0.3 s before the first breath), the SOS pages (340 ms, `cubic-bezier(0.2, 0.8, 0.2, 1)`), the relapse spinner (one turn in 0.8 s, linear) and the relapse wheel's settle (0.2 s ease-out) are the values in code (`src/components/urge/sos.tsx`, `src/components/slip/relapse.tsx`).
 
+## After the three passes: what the owner changed
+
+Once every row read DONE, the owner reviewed the app and asked for changes that move it away from the frames on purpose. Each is a decision, and the boards it touches differ from their frames in that respect only; the ledger's final diffs are the shots taken after these changes.
+
+- **Plain-English copy (D49).** Every user-facing line outside the owner's lessons, notifications and letter bodies was read against `STYLE.md`; 92 lines and 37 SOS task lines were rewritten. The full before-and-after list is `.overhaul/voice/changes-de-ai.md`.
+- **Real Stoic quotes on the medallions (D50),** each with its source under it, checked word for word against public-domain translations.
+- **No divider lines (D51).** Lists are separate rounded boxes; one-card lists and check-row records simply lose the rules; the age wheel's rules became a filled band.
+- **Logs close like check-ins (D52):** Urge Log Done and SOS's "Done for now." show the check disc, the title and the answers as check rows.
+- **Chips keep their width when chosen (D53).**
+
 ## Where the platform cannot match the design exactly
 
 | where | design | app | gap |

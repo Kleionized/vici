@@ -1,7 +1,11 @@
 import { useState, type ReactNode } from 'react';
 import { View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
+import { DoneMark } from '@/components/day/board';
 import {
+  ROW_GAP,
+  CheckRow,
+  CheckRows,
   ChevronR,
   Chips,
   MonoText,
@@ -153,7 +157,7 @@ function StepBand({ top = 136, gap, children }: { top?: number; gap: number; chi
  */
 function PickRow({ label, value, onPress }: { label: string; value: string; onPress: () => void }) {
   return (
-    <Tap label={`${label}, ${value}`} onPress={onPress} style={{ minHeight: 57, borderBottomWidth: 1, borderBottomColor: mono.line, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+    <Tap label={`${label}, ${value}`} onPress={onPress} style={{ minHeight: 56, paddingHorizontal: 16, borderRadius: 16, backgroundColor: mono.card, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
       <MonoText v="p" wrap="nowrap" color={mono.ink} style={{ fontSize: 16, lineHeight: lhNormal(16) }}>
         {label}
       </MonoText>
@@ -195,7 +199,7 @@ export function WhenStep({ title, when }: { title: string; when: When }) {
           onChange={(label) => when.pickChip(WHEN_CHIPS.findIndex((c) => c.label === label))}
         />
         <View style={{ height: 8 }} />
-        <View style={{ borderTopWidth: 1, borderTopColor: mono.line }}>
+        <View style={{ gap: ROW_GAP }}>
           <PickRow label="Date" value={dayPartDate(when.at, when.now)} onPress={() => setDays(true)} />
           <PickRow label="Time" value={clockTime(when.at, { lower: true })} onPress={() => setTime(true)} />
         </View>
@@ -276,11 +280,10 @@ export function OptionsStep<K extends string>({
 }
 
 /**
- * 90D / 91H · Logged — close-only nav; the title at 136, the line under it (10,
- * 15/24) and, 28 under that, the summary as ruled rows: the name 15/400 mute,
- * the value 15/700 ink at the right, `padding 16 0`, a rule under each and one
- * over the first. The primary closes. On a short phone the stack scrolls
- * between the nav and the pill (D320).
+ * A log's closing board, as the check-ins close (Morning 5 Done): the 132 check
+ * disc, the title centred under it with its line, then what was logged as
+ * check rows — no ruled table (D52). The disc hangs at 168, not the check-in's
+ * 288, so three rows fit above the pill.
  */
 export function DoneBoard({
   title,
@@ -291,34 +294,33 @@ export function DoneBoard({
 }: {
   title: string;
   body?: string;
-  rows: { label: string; value: string }[];
+  rows: { label: string; value?: string }[];
   cta: string;
   onClose: () => void;
 }) {
   return (
     <Screen>
       <NavBar left="empty" right="close" onClose={onClose} />
-      <StepBand gap={0}>
-        <MonoText v="h1">{title}</MonoText>
+      <DoneMark top={DONE_MARK_TOP} />
+      <View style={{ position: 'absolute', left: 24, right: 24, top: DONE_MARK_TOP + 132 + 30, alignItems: 'center' }}>
+        <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>
+          {title}
+        </MonoText>
         {body ? (
-          <MonoText v="p" style={{ marginTop: 10 }}>
+          <MonoText v="p" center wrap="pretty" color={mono.sub} style={{ alignSelf: 'stretch', marginTop: 10 }}>
             {body}
           </MonoText>
         ) : null}
-        <View style={{ marginTop: 28, borderTopWidth: 1, borderTopColor: mono.line }}>
+        <CheckRows style={{ alignSelf: 'stretch', marginTop: 24 }}>
           {rows.map((r) => (
-            <View key={r.label} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: mono.line }}>
-              <MonoText v="p" wrap="nowrap" color={mono.mute} style={{ lineHeight: 22 }}>
-                {r.label}
-              </MonoText>
-              <MonoText v="rowLabel" wrap="wrap" style={{ lineHeight: 22, textAlign: 'right', flexShrink: 1 }}>
-                {r.value}
-              </MonoText>
-            </View>
+            <CheckRow key={r.label} label={r.label} value={r.value} />
           ))}
-        </View>
-      </StepBand>
+        </CheckRows>
+      </View>
       <PrimaryButton label={cta} onPress={onClose} />
     </Screen>
   );
 }
+
+/** where a log's closing board hangs its check disc */
+export const DONE_MARK_TOP = 168;

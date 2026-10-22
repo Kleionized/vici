@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
 import { LETTER_BY_ID } from '@/content/viciLetters';
-import { ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { ROW_GAP, ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
 import { roman, shortDate } from '@/lib/format';
 import { readLetterBox, type DeliveredLetter } from '@/lib/letterBox';
@@ -126,9 +126,8 @@ export default function Mail() {
               onPress={it.go}
               label={`${it.title}. ${it.sub}`}
               style={[
-                { height: i ? ROW_H + 1 : ROW_H, paddingHorizontal: 2, flexDirection: 'row', alignItems: 'center', gap: 14 },
-                // a ruled list: the rule is the row's own top border, as `Log — Reports` draws it
-                i ? { borderTopWidth: 1, borderTopColor: mono.line } : null,
+                // each row its own box (D51)
+                { height: ROW_H, marginTop: i ? ROW_GAP : 0, paddingHorizontal: 16, borderRadius: 16, backgroundColor: mono.card, flexDirection: 'row', alignItems: 'center', gap: 14 },
               ]}>
               <View style={{ flex: 1, gap: 2 }}>
                 <MonoText v="rowLabel">

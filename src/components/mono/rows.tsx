@@ -10,14 +10,12 @@ import { Tap } from './Tap';
 import { MonoText } from './Text';
 
 /**
- * Every ruled list in the frames draws `border-top: 1px solid #2E2E2E` on rows
- * 2+ and on no first row. The canvas's rows are content-box, so a ruled row is
- * one point taller than its `height` (a 54 settings row measures 55, a 52 log
- * row 53); RN boxes are border-box, so each kit row adds the point itself when
- * it carries the rule. The list hands `divider` to every row but the first —
- * a row passed in explicitly with `divider` keeps its own value. Fragments are
- * opened first (`{premium && (<><Row/><Row/></>)}` is ordinary settings code),
- * so the rows inside one are ruled like their siblings.
+ * The frames rule their lists with a `#2E2E2E` line between rows. The owner
+ * dropped those lines (D51): a list is a column of separate boxes, `ROW_GAP`
+ * apart, or — inside one card, or where a check disc already marks each row —
+ * rows that space themselves. Fragments are opened first
+ * (`{premium && (<><Row/><Row/></>)}` is ordinary settings code), so the rows
+ * inside one are boxed like their siblings.
  */
 type RowEl = ReactElement<Record<string, unknown>>;
 
@@ -31,14 +29,28 @@ function rowsOf(children: ReactNode, prefix = ''): { el: RowEl; key: Key }[] {
 }
 
 function ruled(children: ReactNode, extra?: Record<string, unknown>) {
-  return rowsOf(children).map(({ el, key }, i) => {
-    const add: Record<string, unknown> = { key, divider: el.props.divider ?? i > 0 };
+  return rowsOf(children).map(({ el, key }) => {
+    const add: Record<string, unknown> = { key, divider: false };
     if (extra) for (const k of Object.keys(extra)) if (el.props[k] === undefined) add[k] = extra[k];
     return cloneElement(el, add);
   });
 }
 
-const RULE: ViewStyle = { borderTopWidth: 1, borderTopColor: mono.line };
+/** the space between two boxed rows */
+export const ROW_GAP = 6;
+/** a boxed row's corners */
+const BOX_RADIUS = 16;
+
+/** Each row in its own card, `ROW_GAP` apart. */
+function boxed(children: ReactNode, radius: number, extra?: Record<string, unknown>, inset = 0) {
+  return ruled(children, extra).map((el) => (
+    <View key={el.key} style={{ borderRadius: radius, backgroundColor: mono.card, overflow: 'hidden', paddingHorizontal: inset }}>
+      {el}
+    </View>
+  ));
+}
+
+const RULE: ViewStyle = {};
 const t = (size: number, w: '400' | '700', color: string, lh = lhNormal(size)): TextStyle => ({ ...sans(w), fontSize: size, lineHeight: lh, color });
 
 /** A row is a control only when it does something; a display row is a plain box (no button role, no press scale). */
@@ -86,7 +98,7 @@ export function RowGroup({
   radius?: number;
   style?: StyleProp<ViewStyle>;
 }) {
-  const card = <View style={{ borderRadius: radius, backgroundColor: mono.card, overflow: 'hidden' }}>{ruled(children)}</View>;
+  const card = <View style={{ gap: ROW_GAP }}>{boxed(children, Math.min(radius, BOX_RADIUS))}</View>;
   if (!label) return style ? <View style={style}>{card}</View> : card;
   return (
     <View style={[{ gap }, style]}>
@@ -214,7 +226,7 @@ export function Toggle({
 
 /** The kit's `listRows` card (`r22 #1E1E1E overflow hidden`) — drawn only on Manage Subscription. */
 export function ListRows({ children, style }: { children?: ReactNode; style?: StyleProp<ViewStyle> }) {
-  return <View style={[{ borderRadius: 22, backgroundColor: mono.card, overflow: 'hidden' }, style]}>{ruled(children)}</View>;
+  return <View style={[{ gap: ROW_GAP }, style]}>{boxed(children, BOX_RADIUS)}</View>;
 }
 
 /** `height 60, padding 0 20, gap 12`: label 16/400 ink, value 16/700 ink, a `#9B968E` chevron. */
@@ -268,7 +280,7 @@ export function ListRow({
  * overview's dot rows).
  */
 export function RuledRows({ children, height, style }: { children?: ReactNode; height?: number; style?: StyleProp<ViewStyle> }) {
-  return <View style={style}>{ruled(children, height != null ? { height } : undefined)}</View>;
+  return <View style={[{ gap: ROW_GAP }, style]}>{boxed(children, BOX_RADIUS, height != null ? { height } : undefined, 14)}</View>;
 }
 
 /**

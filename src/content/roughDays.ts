@@ -33,57 +33,57 @@ export const RD_PROTOCOLS: Record<RDKey, RDProtocol> = {
   loneliness: {
     title: 'Loneliness',
     pages: [
-      { hero: 'lamp', h: 'Lonely tonight.', s: 'An empty room makes the urge louder.' },
-      { hero: 'twoCups', h: 'You want company.', s: 'The screen is the fastest answer. It isn’t a person.' },
+      { hero: 'lamp', h: 'Lonely tonight.', s: 'Urges are stronger when you’re alone.' },
+      { hero: 'twoCups', h: 'You want company.', s: 'Porn is the quickest fix, but it isn’t company.' },
       { hero: 'envelope', h: 'One text.', s: 'Talk to someone.', act: 'Message one person about anything. A meme counts.' },
     ],
   },
   anxiety: {
     title: 'Anxiety',
     pages: [
-      { hero: 'brain', h: 'Wound up.', s: 'Anxiety can feel like arousal. The body mixes them up.' },
-      { hero: 'kettle', h: 'Relief doesn’t last.', s: 'The urge promises relief. Then the pressure comes back worse.' },
-      { hero: 'match', h: 'Ten slow breaths.', s: 'Slow the body. The mind follows.', act: 'Four counts in, six counts out. Ten times.' },
+      { hero: 'brain', h: 'Wound up.', s: 'Anxiety can feel a lot like arousal.' },
+      { hero: 'kettle', h: 'Relief doesn’t last.', s: 'Watching feels like relief, but the stress comes back worse.' },
+      { hero: 'match', h: 'Ten slow breaths.', s: 'Slow breathing calms you down.', act: 'Four counts in, six counts out. Ten times.' },
     ],
   },
   stress: {
     title: 'Stress',
     pages: [
-      { hero: 'books', h: 'Heavy day.', s: 'Stress looks for the fastest way out.' },
-      { hero: 'clipboard', h: 'It solves nothing.', s: 'The relief is short. The pile is still there after.' },
-      { hero: 'openDoor', h: 'Put the day down.', s: 'Ten minutes off duty, on purpose.', act: 'Step outside and walk one lap. Leave the phone behind.' },
+      { hero: 'books', h: 'Heavy day.', s: 'Stress makes you want a quick escape.' },
+      { hero: 'clipboard', h: 'It solves nothing.', s: 'The relief is short, and the work is still there after.' },
+      { hero: 'openDoor', h: 'Take a break.', s: 'Ten minutes away from everything.', act: 'Step outside and walk one lap. Leave the phone behind.' },
     ],
   },
   boredom: {
     title: 'Boredom',
     pages: [
-      { hero: 'hourglass', h: 'Nothing to do.', s: 'An empty hour is when the urge comes.' },
-      { hero: 'plant', h: 'You need to move.', s: 'Boredom wants motion. The screen is only the easiest fix.' },
-      { hero: 'sneaker', h: 'Pick something else.', s: 'Skip the easiest thing. Do the next one.', act: 'Ten push-ups, one glass of water, one open window.' },
+      { hero: 'hourglass', h: 'Nothing to do.', s: 'Urges often come when you have nothing to do.' },
+      { hero: 'plant', h: 'You need to move.', s: 'Doing something helps. The screen is just the easiest option.' },
+      { hero: 'sneaker', h: 'Pick something else.', s: 'Do something other than the easiest thing.', act: 'Ten push-ups, one glass of water, one open window.' },
     ],
   },
   latenight: {
     title: 'Late night',
     pages: [
       { hero: 'bed', h: 'It’s late.', s: 'You’re tired, and your guard is down.' },
-      { hero: 'nightPhone', h: 'Nothing good is on.', s: 'Your last hour awake is your weakest.' },
-      { hero: 'charger', h: 'End it on purpose.', s: 'Decide when the day ends.', act: 'Phone on the charger, outside the room. Go to bed bored.' },
+      { hero: 'nightPhone', h: 'It gets harder late.', s: 'Urges are hardest to resist just before bed.' },
+      { hero: 'charger', h: 'Go to bed.', s: 'Decide when the day ends.', act: 'Phone on the charger, outside the room. Go to bed bored.' },
     ],
   },
   homealone: {
     title: 'Home alone',
     pages: [
-      { hero: 'nightMoon', h: 'Empty house.', s: 'No one will see. Part of you has already noticed.' },
-      { hero: 'door', h: 'You would know.', s: 'Alone, a slip looks free. It isn’t.' },
+      { hero: 'nightMoon', h: 'Empty house.', s: 'Being alone makes it feel easier to watch.' },
+      { hero: 'door', h: 'It still counts.', s: 'A slip when you’re alone still costs you.' },
       { hero: 'sunrise', h: 'Change the room.', s: 'Make the room less private.', act: 'Open the curtains and work where you can be seen, or go out for twenty minutes.' },
     ],
   },
   argument: {
     title: 'An argument',
     pages: [
-      { hero: 'bubbles', h: 'Still burning.', s: 'Anger wants a win. For a moment, a slip feels like one.' },
-      { hero: 'dominoes2', h: 'You want control back.', s: 'The argument took it away. The urge offers it back.' },
-      { hero: 'fountainPen', h: 'Write, don’t send.', s: 'Put the anger where it can’t cost you.', act: 'Write the reply you won’t send. Then put it down.' },
+      { hero: 'bubbles', h: 'Still angry.', s: 'When you’re angry, watching can feel like getting something back.' },
+      { hero: 'dominoes2', h: 'You want control back.', s: 'After an argument, you may want to feel in control again.' },
+      { hero: 'fountainPen', h: 'Write, don’t send.', s: 'Get the anger out without sending anything.', act: 'Write the reply you won’t send. Then put it down.' },
     ],
   },
 };

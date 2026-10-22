@@ -16,7 +16,9 @@ import { Animated, Easing, ScrollView, Text, View, type TextStyle } from 'react-
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Svg, { Circle, Path, SvgXml } from 'react-native-svg';
 
-import { latoRuns, Screen, Tap, VizArt, WrapText } from '@/components/mono';
+import { DoneMark } from '@/components/day/board';
+import { DONE_MARK_TOP } from '@/components/logflow';
+import { CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, CheckRow, CheckRows, latoRuns, Screen, Tap, VizArt, WrapText } from '@/components/mono';
 import { bandToSeverity } from '@/components/ui/IntensityBands';
 import {
   nextSosAction,
@@ -149,8 +151,6 @@ const S = {
   sign: { ...sansItalic(), fontSize: 26, lineHeight: 30, color: ink } as TextStyle,
   rowT: t('700', 15, 21, ink),
   rowM: t('400', 13, 18, mono.mute),
-  endK: t('400', 15, 22, mono.mute),
-  endV: t('700', 15, 22, ink),
   mini: t('700', 13, 18, mono.mute),
 };
 
@@ -289,7 +289,7 @@ function Chip({ label, on, padV, onPress }: { label: string; on: boolean; padV: 
       accessibilityRole="checkbox"
       aria-checked={on}
       onPress={onPress}
-      style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: padV, paddingHorizontal: 20 }}>
+      style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: padV, paddingHorizontal: on ? CHIP_PAD : CHIP_PAD + CHIP_CHECK_ROOM / 2 }}>
       {on ? <Check /> : null}
       <Text maxFontSizeMultiplier={1.3} style={[S.chip, { color: on ? mono.onInk : ink, flexShrink: 1 }]}>
         {label}
@@ -400,9 +400,9 @@ function HelpedPage({ rows, onPick }: { rows: Helped[]; onPick: (id: string) => 
         <W s={S.h1} w={345}>What helped before</W>
         <W s={S.sub} w={345}>These brought the urge down last time. Tap one to switch to it.</W>
         <View style={{ height: 14 }} />
-        <View style={{ borderTopWidth: 1, borderTopColor: mono.line }}>
+        <View style={{ gap: ROW_GAP }}>
           {rows.map((h) => (
-            <Tap key={h.id} onPress={() => onPick(h.id)} style={{ borderBottomWidth: 1, borderBottomColor: mono.line, paddingVertical: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Tap key={h.id} onPress={() => onPick(h.id)} style={{ borderRadius: 16, backgroundColor: mono.card, paddingHorizontal: 16, paddingVertical: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
               <View style={{ flex: 1, gap: 3, minWidth: 0 }}>
                 <W s={S.rowT} w={317}>{h.title}</W>
                 <Text maxFontSizeMultiplier={1.3} style={S.rowM}>{latoRuns(h.meta, S.rowM)}</Text>
@@ -804,7 +804,7 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
                 <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={[S.statV, { fontVariant: ['tabular-nums'] }]}>{fmt(since())}</Text>
                 <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.statK}>Since the urge started</Text>
               </View>
-              <View style={{ width: 1, backgroundColor: mono.line, flexShrink: 0 }} />
+              <View style={{ width: 16, flexShrink: 0 }} />
               <View style={{ flex: 1, minWidth: 0, alignItems: 'center', gap: 2 }}>
                 <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.statV}>{f.urge ? `${f.urge} of 5` : 'Not rated'}</Text>
                 <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.statK}>Strength</Text>
@@ -860,22 +860,19 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
     if (sv) rows.push({ k: 'Urge strength', v: sv });
     if (a) {
       rows.push({ k: 'Time with the urge', v: f.endS < 60 ? 'Under a minute' : `${Math.round(f.endS / 60)} min` });
-      rows.push({ k: 'Task', v: a.title });
+      rows.push({ k: a.title, v: '' });
     }
     body = (
       <>
-        <View style={{ position: 'absolute', left: 24, right: 24, top: 136 }}>
-          <W s={S.h1} w={345}>Done for now.</W>
-          <View style={{ marginTop: 28, borderTopWidth: 1, borderTopColor: mono.line }}>
+        {/* closed as a log closes (DoneBoard, D52): the check disc, the title under it, then the session as check rows */}
+        <DoneMark top={DONE_MARK_TOP} />
+        <View style={{ position: 'absolute', left: 24, right: 24, top: DONE_MARK_TOP + 132 + 30, alignItems: 'center' }}>
+          <W s={S.h1} w={345} center>Done for now.</W>
+          <CheckRows style={{ alignSelf: 'stretch', marginTop: 24 }}>
             {rows.map((r) => (
-              <View key={r.k} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 20, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: mono.line }}>
-                <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.endK}>{r.k}</Text>
-                <View style={{ flexShrink: 1 }}>
-                  <Text maxFontSizeMultiplier={1.3} style={[S.endV, { textAlign: 'right' }]}>{latoRuns(r.v, S.endV)}</Text>
-                </View>
-              </View>
+              <CheckRow key={r.k} label={r.k} value={r.v} />
             ))}
-          </View>
+          </CheckRows>
         </View>
         <Cta label="Back to Today" bottom={48} onPress={close} />
       </>

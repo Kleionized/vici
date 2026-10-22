@@ -26,7 +26,7 @@ import { roman, shortDate } from '@/lib/format';
  * `First at ×1` and its quote, "Nine minutes…", were that ladder's first rung
  * and the line `Detail Bronze` carried at it. Vici's first rung is now ×5
  * (`Tiers Vici`, the album's own data), so an unearned board computes both —
- * `First at ×5` and the first rung's own line, `stories[0]` — as D057 did
+ * `First at ×5` and the face's quote — as D057 did
  * (CRITIC §1.4, D274). The other four `Detail` boards agree with the ladder
  * word for word.
  */
@@ -69,8 +69,8 @@ export default function MedallionDetail() {
         : 'Earned once'
       : 'Not yet';
 
-  // the rung's own line; with nothing behind it, the line that waits at the first rung
-  const quote = `“${face.stories[Math.max(1, Math.min(face.stories.length, standing)) - 1]}”`;
+  // the face's Stoic line, the same at every rung (D50)
+  const quote = `“${face.quote.text}”`;
 
   const share = () => {
     void Share.share({ message: `${face.name} · ${caps}` }).catch(() => {});
@@ -89,7 +89,7 @@ export default function MedallionDetail() {
       capsLabel={`${caps}. Every one-off`}
       ladder={tiered ? { reached: (standing - 1) as -1 | Tier } : undefined}
       onLadder={() => router.push(`/medallions/tiers/${face.key}`)}
-      below={{ kind: 'quote', text: quote, nudge: standing === 5 ? 1 : 0 }}
+      below={{ kind: 'quote', text: quote, by: face.quote.by, nudge: standing === 5 ? 1 : 0 }}
       cta={earned ? 'Share this' : 'Back to medallions'}
       onCta={earned ? share : back}
       onBack={back}

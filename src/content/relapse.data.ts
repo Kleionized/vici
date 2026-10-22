@@ -28,7 +28,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
     "E004",
     "general",
     [],
-    "If you’re feeling bad about watching, you don’t have to spend the rest of the day showing how sorry you are. It’s okay to do something you enjoy afterward."
+    "If you’re feeling bad about watching, you don’t have to spend the rest of the day showing how sorry you are. You can do something you enjoy afterward."
   ],
   [
     "E005",
@@ -55,7 +55,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
       "current_watch_again_yes_or_not_sure",
       "content_confirmed_open"
     ],
-    "It’s okay to stop watching halfway through. Starting a video doesn’t mean you have to finish it or search for another."
+    "You can stop watching halfway through. Starting a video doesn’t mean you have to finish it or search for another."
   ],
   [
     "E009",
@@ -67,7 +67,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
     "E010",
     "general",
     [],
-    "You might not feel confident about trying again. That’s okay. You can still want to stop, even when you’re not sure how things will go."
+    "You might not feel confident about trying again. You can still want to stop, even when you’re not sure how things will go."
   ],
   [
     "E011",
@@ -85,7 +85,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
       "not_trying_to_sleep",
       "not_urgent"
     ],
-    "One per cent a day sounds tiny. In a compounding calculation, it becomes about 38 times the starting amount over a year. Recovery won’t follow that formula, but you can give a small change time to help."
+    "A small change made every day adds up. Give it time to help."
   ],
   [
     "E013",
@@ -95,7 +95,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
       "daytime_or_evening",
       "not_trying_to_sleep"
     ],
-    "If you’ve spent longer watching than you wanted, it’s understandable to be annoyed. Try to leave some time for the things you actually wanted to do today."
+    "If you’ve spent longer watching than you wanted, you may be annoyed. Try to leave some time for the things you wanted to do today."
   ],
   [
     "E014",
@@ -105,7 +105,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
       "daytime_or_evening",
       "not_trying_to_sleep"
     ],
-    "You can still get through tonight without watching again, even after what happened earlier. If that’s enough to aim for today, that’s okay."
+    "You can still get through tonight without watching again, even after what happened earlier. That’s enough to aim for today."
   ],
   [
     "E015",
@@ -226,7 +226,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
     [
       "prior_attempt_self_reported"
     ],
-    "You may have really meant it the last time you said you’d stop. Watching again doesn’t mean you were lying. You can still want this and need another try."
+    "You may have meant it the last time you said you’d stop. Watching again doesn’t mean you were lying. You can still want this and need another try."
   ],
   [
     "E029",
@@ -242,7 +242,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
     [
       "prior_attempt_self_reported"
     ],
-    "It’s okay to have another go without saying, ‘This is definitely the last time.’ Try a change you’re willing to make and see whether it helps."
+    "You can have another go without saying, ‘This is definitely the last time.’ Try a change you’re willing to make and see whether it helps."
   ],
   [
     "E031",
@@ -360,7 +360,7 @@ export const RELAPSE_MESSAGES: [string, string, string[], string][] = [
       "event_on_an_earlier_local_date",
       "log_saved"
     ],
-    "Thanks for coming back to log this. If you don’t remember every detail, that’s okay. The date and what you do remember are enough."
+    "Thanks for coming back to log this. You don’t need every detail. The date and what you remember are enough."
   ],
   [
     "E045",

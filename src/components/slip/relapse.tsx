@@ -14,7 +14,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Svg, { Circle, Path } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { Screen, Tap, VizArt, WrapText } from '@/components/mono';
+import { CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, Screen, Tap, VizArt, WrapText } from '@/components/mono';
 import { RELAPSE_ART, RELAPSE_CALENDAR, RELAPSE_CAUSES, RELAPSE_MESSAGES, RELAPSE_QUOTES, RELAPSE_WATCH, RELAPSE_WHEN } from '@/content/relapse.data';
 import { SOS_VIZ, SOS_VIZ_BOX } from '@/content/sosViz';
 import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
@@ -518,7 +518,7 @@ function DateSheet({ sh, now, onChange, onCancel, onUse }: { sh: SheetState; now
             );
           })}
         </View>
-        <View style={{ marginTop: 20, height: 1, backgroundColor: mono.line }} />
+        <View style={{ height: 20 }} />
         <Pressable onPress={() => onChange({ ...sh, on: !sh.on })} accessibilityRole="switch" aria-checked={sh.on} style={{ marginTop: 4, minHeight: 62, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <View style={{ gap: 2 }}>
             <Text maxFontSizeMultiplier={1.3} style={S.row}>Add a time</Text>
@@ -754,7 +754,7 @@ export function RelapseFlow({
                       return { ...d, causes: x.includes(k) ? x.filter((c) => c !== k) : [...x, k] };
                     })
                   }
-                  style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 13, paddingHorizontal: 20 }}>
+                  style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 13, paddingHorizontal: on ? CHIP_PAD : CHIP_PAD + CHIP_CHECK_ROOM / 2 }}>
                   {on ? (
                     <Svg width={13} height={13} viewBox="0 0 14 14">
                       <Path d="M2 7.5l3.2 3L12 3.5" fill="none" stroke={mono.onInk} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
@@ -828,7 +828,7 @@ export function RelapseFlow({
               {rest ? <W s={S.body} w={345}>{rest}</W> : null}
             </View>
             {q ? (
-              <View style={{ marginTop: 28, paddingTop: 22, borderTopWidth: 1, borderTopColor: mono.line, gap: 8 }}>
+              <View style={{ marginTop: 36, gap: 8 }}>
                 <W s={S.quote} w={345}>{q[1]}</W>
                 <Text maxFontSizeMultiplier={1.3} style={S.author}>{q[2]}</Text>
               </View>
@@ -872,11 +872,11 @@ export function RelapseLog({ entries, now, onOpen, onNew }: { entries: TidelineE
         <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 6, paddingHorizontal: 24, paddingBottom: 20 }} showsVerticalScrollIndicator={false}>
           <Text maxFontSizeMultiplier={1.3} style={S.logTitle}>Your log</Text>
           <Text maxFontSizeMultiplier={1.3} style={[S.logCaps, { marginTop: 28 }]}>Relapses</Text>
-          <View style={{ marginTop: 4 }}>
+          <View style={{ marginTop: 12, gap: ROW_GAP }}>
             {entries.map((e) => {
               const r = recordOf(e);
               return (
-                <Tap key={e._id} onPress={() => onOpen(e)} style={{ minHeight: 72, borderBottomWidth: 1, borderBottomColor: mono.line, paddingVertical: 14, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Tap key={e._id} onPress={() => onOpen(e)} style={{ minHeight: 72, borderRadius: 16, backgroundColor: mono.card, paddingHorizontal: 16, paddingVertical: 14, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
                   <View style={{ flex: 1, minWidth: 0, gap: 3 }}>
                     <Text maxFontSizeMultiplier={1.3} style={S.logRowT}>{entryTitle(r, now)}</Text>
                     <W s={S.logRowM} w={317}>{entryMeta(r)}</W>

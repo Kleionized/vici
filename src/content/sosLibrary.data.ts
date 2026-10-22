@@ -258,7 +258,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "1–2",
     "min": 1,
     "max": 2,
-    "done": "The phone is away from the pillow and you have returned to bed.",
+    "done": "The phone is away from the pillow and you’re back in bed.",
     "viz": "charger",
     "fam": "phone",
     "t": {
@@ -292,7 +292,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "B03",
     "sit": "B",
     "title": "Wash your face and return to bed",
-    "steps": "Leave the phone behind. Wash your face with ordinary comfortable-temperature water, dry it, and return to bed.",
+    "steps": "Leave the phone behind. Wash your face, dry it, and go back to bed.",
     "dur": "2",
     "min": 2,
     "max": 2,
@@ -490,7 +490,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5–10",
     "min": 5,
     "max": 10,
-    "done": "You prepared and ate breakfast away from the feed.",
+    "done": "You ate breakfast away from the phone.",
     "viz": "bowl",
     "fam": "food",
     "t": {
@@ -522,7 +522,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "C05",
     "sit": "C",
     "title": "Pack three things for the day",
-    "steps": "Put your keys, wallet or travel card, and any item you need for work or study into your bag. Use your own equivalents; stop after the bag is ready.",
+    "steps": "Put your keys, wallet or travel card, and any item you need for work or study into your bag. Stop once the bag is ready.",
     "dur": "3",
     "min": 3,
     "max": 3,
@@ -546,7 +546,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5–8",
     "min": 5,
     "max": 8,
-    "done": "You completed the short route and returned.",
+    "done": "You walked the route and came back.",
     "viz": "signpost",
     "fam": "walkOut",
     "t": {
@@ -564,7 +564,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "10–15",
     "min": 10,
     "max": 15,
-    "done": "You returned with one chosen item.",
+    "done": "You came back with one item.",
     "viz": "shop",
     "fam": "shop",
     "t": {
@@ -579,7 +579,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "C08",
     "sit": "C",
     "title": "Open the curtains and sit for a minute",
-    "steps": "If daylight is available and privacy allows, put the phone down, open the curtains and sit facing the room for one minute.",
+    "steps": "If it’s light out, put the phone down, open the curtains and sit facing the room for one minute.",
     "dur": "1–2",
     "min": 1,
     "max": 2,
@@ -642,7 +642,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "10–15",
     "min": 10,
     "max": 15,
-    "done": "You returned with one chosen item.",
+    "done": "You came back with one item.",
     "viz": "shop",
     "fam": "shop",
     "t": {
@@ -679,7 +679,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "One chosen surface is clear.",
+    "done": "One surface is clear.",
     "viz": "surface",
     "fam": "tidy",
     "t": {
@@ -795,7 +795,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5–10",
     "min": 5,
     "max": 10,
-    "done": "You made and ate one snack away from the feed.",
+    "done": "You ate a snack away from the phone.",
     "viz": "sandwich",
     "fam": "food",
     "t": {
@@ -880,7 +880,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "E04",
     "sit": "E",
     "title": "Wash your face",
-    "steps": "Leave the phone down. Wash your face with comfortable-temperature water and pat it dry. Return to a chair with the phone still down for one minute.",
+    "steps": "Leave the phone down. Wash your face and pat it dry. Return to a chair with the phone still down for one minute.",
     "dur": "2–3",
     "min": 2,
     "max": 3,
@@ -901,7 +901,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You spent five minutes beside someone who agreed to have company.",
+    "done": "You sat with someone for five minutes.",
     "viz": "company",
     "fam": "company",
     "t": {
@@ -919,7 +919,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You completed the short route.",
+    "done": "You walked the route and came back.",
     "viz": "signpost",
     "fam": "walkOut",
     "t": {
@@ -1011,7 +1011,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "You asked one question and stayed for the conversation if they wanted to talk.",
+    "done": "You asked one question and talked if they wanted to.",
     "viz": "bubbles",
     "fam": "talk",
     "t": {
@@ -1028,7 +1028,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You spent five minutes in agreed company.",
+    "done": "You spent five minutes with someone.",
     "viz": "company",
     "fam": "company",
     "t": {
@@ -1047,7 +1047,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You completed the short walk together and returned.",
+    "done": "You walked together and came back.",
     "viz": "route",
     "fam": "walkOut",
     "t": {
@@ -1086,7 +1086,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "10–15",
     "min": 10,
     "max": 15,
-    "done": "You completed the errand and returned.",
+    "done": "You did the errand and came back.",
     "viz": "shop",
     "fam": "shop",
     "t": {
@@ -1127,7 +1127,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "10–15",
     "min": 10,
     "max": 15,
-    "done": "You spent five minutes in the public seating area and returned.",
+    "done": "You sat outside for five minutes and came back.",
     "viz": "bench",
     "fam": "bench",
     "t": {
@@ -1281,7 +1281,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You completed the route with the conversation closed.",
+    "done": "You walked the route without replying.",
     "viz": "route",
     "fam": "walkOut",
     "t": {
@@ -1300,7 +1300,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "You spent a few minutes in an agreed conversation about something else.",
+    "done": "You talked about something else for a few minutes.",
     "viz": "bubbles",
     "fam": "talk",
     "t": {
@@ -1336,7 +1336,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "You read two physical pages.",
+    "done": "You read two pages.",
     "viz": "bookStack",
     "fam": "read",
     "t": {
@@ -1375,7 +1375,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "2",
     "min": 2,
     "max": 2,
-    "done": "You named the event and paused for two minutes.",
+    "done": "You named what happened and sat for two minutes.",
     "viz": "thought",
     "fam": "name",
     "t": {
@@ -1413,7 +1413,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "2",
     "min": 2,
     "max": 2,
-    "done": "You identified the first question to attempt.",
+    "done": "You found the first question to work on.",
     "viz": "clipboard",
     "fam": "task",
     "t": {
@@ -1542,7 +1542,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You spent five minutes on the task with agreed company.",
+    "done": "You worked on the task for five minutes with someone nearby.",
     "viz": "twoSeats",
     "fam": "task",
     "t": {
@@ -1565,7 +1565,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "One normal load has started.",
+    "done": "One load is in the wash.",
     "viz": "washer",
     "fam": "laundry",
     "t": {
@@ -1608,7 +1608,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "You ate one suitable snack without browsing.",
+    "done": "You ate a snack without browsing.",
     "viz": "snack",
     "fam": "food",
     "t": {
@@ -1643,7 +1643,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3",
     "min": 3,
     "max": 3,
-    "done": "You had three seated minutes and water available.",
+    "done": "You sat for three minutes with a glass of water.",
     "viz": "waterGlass",
     "fam": "water",
     "t": {
@@ -1715,7 +1715,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You took a permitted break; essential duties remained covered.",
+    "done": "You took a five-minute break.",
     "viz": "askBreak",
     "fam": "rest",
     "t": {
@@ -1733,7 +1733,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5–10",
     "min": 5,
     "max": 10,
-    "done": "You spent five minutes eating in the chosen place.",
+    "done": "You ate for five minutes away from the phone.",
     "viz": "plate",
     "fam": "food",
     "t": {
@@ -1896,7 +1896,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "2",
     "min": 2,
     "max": 2,
-    "done": "You spent two minutes on the intended activity.",
+    "done": "You spent two minutes on what you meant to do.",
     "viz": "desk",
     "fam": "task",
     "t": {
@@ -1949,7 +1949,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You completed the short route.",
+    "done": "You walked the route and came back.",
     "viz": "route",
     "fam": "walkOut",
     "t": {
@@ -1980,11 +1980,11 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "K02",
     "sit": "K",
     "title": "Return from the bathroom",
-    "steps": "If you are lingering in a bathroom with the phone, lock it, finish what you came in to do, wash your hands and return to the appropriate shared area.",
+    "steps": "If you are lingering in a bathroom with the phone, lock it, finish what you came in to do, wash your hands and leave.",
     "dur": "2–3",
     "min": 2,
     "max": 3,
-    "done": "You left the bathroom and returned to the shared area.",
+    "done": "You left the bathroom.",
     "viz": "door",
     "fam": "bathroom",
     "t": {
@@ -2037,7 +2037,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "2",
     "min": 2,
     "max": 2,
-    "done": "You worked on the required step for two minutes.",
+    "done": "You worked on the next step for two minutes.",
     "viz": "tab",
     "fam": "task",
     "t": {
@@ -2091,7 +2091,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3",
     "min": 3,
     "max": 3,
-    "done": "You completed the permitted short break.",
+    "done": "You took a short break.",
     "viz": "indoorWalk",
     "fam": "walkIn",
     "t": {
@@ -2122,11 +2122,11 @@ export const SOS_ACTIONS: SosAction[] = [
     "id": "K10",
     "sit": "K",
     "title": "Ask a colleague about one ordinary thing",
-    "steps": "During an appropriate break, ask a willing colleague or classmate one normal question about the shared task or break plans. Keep the conversation brief; you do not need to disclose the urge.",
+    "steps": "On a break, ask a colleague or classmate one ordinary question about the work or their plans. Keep it short. You don’t need to mention the urge.",
     "dur": "2–3",
     "min": 2,
     "max": 3,
-    "done": "You made one appropriate attempt at conversation; their response is not required.",
+    "done": "You asked one question. How they answered doesn’t matter.",
     "viz": "bubbles",
     "fam": "talk",
     "t": {
@@ -2252,7 +2252,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "3–5",
     "min": 3,
     "max": 5,
-    "done": "You ate a suitable snack with the phone down.",
+    "done": "You ate a snack with the phone down.",
     "viz": "snack",
     "fam": "food",
     "t": {
@@ -2288,7 +2288,7 @@ export const SOS_ACTIONS: SosAction[] = [
     "dur": "5",
     "min": 5,
     "max": 5,
-    "done": "You walked to the familiar point and returned.",
+    "done": "You walked there and back.",
     "viz": "route",
     "fam": "walkOut",
     "t": {

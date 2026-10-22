@@ -185,10 +185,10 @@ export function AddToRecord({ onPress }: { onPress: () => void }) {
   );
 }
 
-/** Morning 5 Done's mark: the 132 ink disc with its 56 check, centred at canvas 288. */
-export function DoneMark() {
+/** Morning 5 Done's mark: the 132 ink disc with its 56 check, its top at canvas 288 (a board with rows under its title hangs it higher). */
+export function DoneMark({ top = 288 }: { top?: number }) {
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 288, flexDirection: 'row', justifyContent: 'center' }}>
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, flexDirection: 'row', justifyContent: 'center' }}>
       <CheckDisc size={132} />
     </View>
   );

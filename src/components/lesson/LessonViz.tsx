@@ -109,7 +109,6 @@ function Pairs({ v }: { v: Extract<LessonViz, { type: 'pairs' }> }) {
           key={i}
           style={[
             { flexDirection: 'row', gap: 16, paddingVertical: 14 },
-            i > 0 || v.head ? { borderTopWidth: 1, borderTopColor: mono.line } : null,
             v.variant === 'letters' ? { alignItems: 'center' } : null,
           ]}>
           <View style={{ width: wl, flexShrink: 0 }}>

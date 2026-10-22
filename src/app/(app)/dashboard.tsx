@@ -135,7 +135,7 @@ export default function Dashboard() {
                 {triggers.map(([label, n], i) => (
                   <View
                     key={label}
-                    style={{ height: i ? 47 : 46, flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 2, borderTopWidth: i ? 1 : 0, borderTopColor: mono.line }}>
+                    style={{ height: 46, flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 2 }}>
                     <MonoText v="rowLabel" numberOfLines={1} style={{ width: labels.column }}>
                       {label}
                     </MonoText>

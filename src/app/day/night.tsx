@@ -249,7 +249,7 @@ export default function Night() {
           <StepStack gap={8} controls={CONTROLS.ghost} hero={{ id: 'notebook', top: 458 }}>
             <MonoText v="h1">One thing you’re proud of today.</MonoText>
             <MonoText v="pTight" color={mono.mute}>
-              Small things count.
+              It can be something small.
             </MonoText>
             <View style={{ height: 16 }} />
             <TextField variant="journal" value={proud} onChangeText={setProud} accessibilityLabel="One thing you’re proud of today" />

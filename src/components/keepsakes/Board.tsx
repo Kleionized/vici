@@ -34,13 +34,16 @@ const NAV_BOTTOM = 100;
 /** the primary at bottom 48 and its 58 */
 const CONTROLS = 106;
 const QUOTE_LH = 28;
+/** the quote's source under it: 13/700 caps, mute, 10 below the last line */
+const BY_GAP = 10;
+const BY_LH = 16;
 /** the quote's `left 44 right 44` at 393: the measure every frame breaks its lines in */
 const QUOTE_INSET = 44;
 const QUOTE_W = 393 - 2 * QUOTE_INSET;
 /** what the block keeps clear above the pill when it scrolls (D320) */
 const CLEAR = 24;
 
-export type BoardBelow = { kind: 'quote'; text: string; nudge?: number } | { kind: 'count'; count: string; next?: string };
+export type BoardBelow = { kind: 'quote'; text: string; by?: string; nudge?: number } | { kind: 'count'; count: string; next?: string };
 
 export function MedalBoard({
   scene,
@@ -99,7 +102,7 @@ export function MedalBoard({
   // nothing is shown rather than one frame at the wrong height
   const hidden = quote && lines === 0 ? { opacity: 0 } : null;
   const belowTop = T + (quote ? (ladder ? 438 : 338) : 448);
-  const belowBottom = belowTop + (quote ? Math.max(1, lines) * QUOTE_LH : 78);
+  const belowBottom = belowTop + (quote ? Math.max(1, lines) * QUOTE_LH + (below.by ? BY_GAP + BY_LH : 0) : 78);
   const y = (canvas: number) => canvas - NAV_BOTTOM;
 
   const capsText = (
@@ -156,7 +159,16 @@ export function MedalBoard({
               style={{ position: 'absolute', left: quoteInset, right: quoteInset, top: y(belowTop), textAlign: 'center', ...sansItalic(), fontSize: 18, lineHeight: QUOTE_LH, color: mono.ink }}>
               {below.text}
             </MonoText>
-          ) : (
+          ) : null}
+          {below.kind === 'quote' && below.by ? (
+            <MonoText
+              v="caps"
+              center
+              style={{ position: 'absolute', left: quoteInset, right: quoteInset, top: y(belowTop + Math.max(1, lines) * QUOTE_LH + BY_GAP), lineHeight: BY_LH }}>
+              {below.by}
+            </MonoText>
+          ) : null}
+          {below.kind === 'quote' ? null : (
             <View style={{ position: 'absolute', left: 24, right: 24, top: y(belowTop), alignItems: 'center', gap: 6 }}>
               <MonoText v="titlePage" wrap="nowrap" style={{ fontSize: 48, lineHeight: 50, letterSpacing: -1.7 }}>
                 {below.count}

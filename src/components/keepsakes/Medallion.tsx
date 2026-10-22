@@ -244,8 +244,8 @@ export type KKFace = {
   unit: 'day' | 'count' | null;
   /** what the rungs are counted in, for the unearned album cell's "9 of 10 entries" */
   noun?: string;
-  /** the line the medallion carries at each rung it reaches */
-  stories: string[];
+  /** the Stoic line the medallion carries, with its source (a public-domain translation, D50) */
+  quote: { text: string; by: string };
 };
 
 /**
@@ -269,7 +269,7 @@ export const KK_ALBUM: KKFace[] = [
     blurb: 'Finished setup',
     steps: [],
     unit: null,
-    stories: ['You started. Everything else comes after that.'],
+    quote: { text: 'Begin at once to live, and count each separate day as a separate life.', by: 'Seneca, Letters 101' },
   },
   {
     key: 'firstlight',
@@ -277,7 +277,7 @@ export const KK_ALBUM: KKFace[] = [
     blurb: 'The first check-in',
     steps: [],
     unit: null,
-    stories: ['One check-in on an ordinary day. Now do it again.'],
+    quote: { text: 'Hold every hour in your grasp.', by: 'Seneca, Letters 1' },
   },
   {
     key: 'vidi',
@@ -286,13 +286,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [7, 30, 90, 180, 365],
     unit: 'day',
     noun: 'days',
-    stories: [
-      'Seven days with something on the record. No perfect days required.',
-      'Thirty days on the record. This is how you live now.',
-      'Ninety days. By now this is what you do.',
-      'A hundred and eighty days on the record. You stayed with it.',
-      'A full year on the record. Keep showing up.',
-    ],
+    quote: { text: 'Nothing great is produced suddenly, since not even the grape or the fig is.', by: 'Epictetus, Discourses 1.15' },
   },
   {
     key: 'vici',
@@ -302,14 +296,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [5, 25, 100, 250, 1000],
     unit: 'count',
     noun: 'logs',
-    stories: [
-      'Five ridden out. Five times you watched one end without giving in.',
-      'Twenty-five behind you now, every one of them on the record.',
-      'A hundred ridden out. You know how this goes now.',
-      // `Detail Gold` rewrote this rung's line; the other four are unchanged
-      'Two hundred and fifty. They still come. You still hold.',
-      'A thousand ridden out. Keep going.',
-    ],
+    quote: { text: 'Every habit and faculty is maintained and increased by the corresponding actions.', by: 'Epictetus, Discourses 2.18' },
   },
   {
     key: 'breakwater',
@@ -319,13 +306,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [1, 5, 10, 25, 50],
     unit: 'count',
     noun: 'urges',
-    stories: [
-      'One overwhelming urge. It passed. You held.',
-      'Five overwhelming urges. None of them won.',
-      'Ten overwhelming urges. Each one passed.',
-      'Twenty-five overwhelming urges. You held every time.',
-      'Fifty overwhelming urges, ridden out.',
-    ],
+    quote: { text: 'Be like the promontory against which the waves continually break, but it stands firm and tames the fury of the water around it.', by: 'Marcus Aurelius, Meditations 4.49' },
   },
   {
     key: 'rebound',
@@ -334,13 +315,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [1, 10, 25, 50, 100],
     unit: 'count',
     noun: 'check-ins',
-    stories: [
-      'You slipped. The next day you checked in anyway.',
-      'Ten times, you came back the next day. That is not luck.',
-      'Twenty-five times down. Twenty-five times back the next day.',
-      'Fifty. You fall, and the next day you get up.',
-      'A hundred. Every time, you came back the next day.',
-    ],
+    quote: { text: 'When thou hast failed, return back again.', by: 'Marcus Aurelius, Meditations 5.9' },
   },
   {
     key: 'logbook',
@@ -349,13 +324,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [5, 25, 75, 200, 500],
     unit: 'count',
     noun: 'logs',
-    stories: [
-      'Five logged. You wrote each one down.',
-      'Twenty-five logs. Write it down every time.',
-      'Seventy-five times, you looked at the urge and wrote it down.',
-      'Two hundred logs. Enough to see how your urges come and go.',
-      'Five hundred logged, whatever the outcome.',
-    ],
+    quote: { text: 'Look within. Within is the fountain of good, and it will ever bubble up, if thou wilt ever dig.', by: 'Marcus Aurelius, Meditations 7.59' },
   },
   {
     key: 'pulse',
@@ -364,13 +333,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [5, 25, 75, 200, 500],
     unit: 'count',
     noun: 'check-ins',
-    stories: [
-      'Five check-ins. Already a line on the chart.',
-      'Twenty-five. Enough days to tell a mood from a pattern.',
-      'Seventy-five. Now a bad day stands out.',
-      'Two hundred. A record kept one day at a time.',
-      'Five hundred check-ins. Showing up is a habit now.',
-    ],
+    quote: { text: 'Lay hold of today’s task, and you will not need to depend so much upon tomorrow’s.', by: 'Seneca, Letters 1' },
   },
   {
     key: 'blackbox',
@@ -378,7 +341,7 @@ export const KK_ALBUM: KKFace[] = [
     blurb: 'First slip logged',
     steps: [],
     unit: null,
-    stories: ['You logged the slip instead of hiding it. Start from there.'],
+    quote: { text: 'The knowledge of sin is the beginning of salvation.', by: 'Seneca, Letters 28' },
   },
   {
     key: 'lessons',
@@ -389,13 +352,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [7, 21, 42, 63, 84],
     unit: 'count',
     noun: 'lessons',
-    stories: [
-      'Seven lessons, a week’s worth. Keep going.',
-      'Twenty-one lessons. A quarter of the course.',
-      'Halfway. The second half builds on the first.',
-      'Three-quarters through. Finish what you started.',
-      'All eighty-four lessons, done. Now live them.',
-    ],
+    quote: { text: 'No longer talk at all about the kind of man that a good man ought to be, but be such.', by: 'Marcus Aurelius, Meditations 10.16' },
   },
   {
     key: 'archive',
@@ -404,13 +361,7 @@ export const KK_ALBUM: KKFace[] = [
     steps: [10, 50, 100, 200, 365],
     unit: 'count',
     noun: 'entries',
-    stories: [
-      'Ten entries. Keep them specific.',
-      'Fifty entries. Read them back.',
-      'A hundred entries, in your own words.',
-      'Two hundred entries. Reread the first ones.',
-      'Three hundred and sixty-five entries. Keep writing.',
-    ],
+    quote: { text: 'I shall keep watching myself continually, and—a most useful habit—shall review each day.', by: 'Seneca, Letters 83' },
   },
   {
     key: 'return',
@@ -421,7 +372,7 @@ export const KK_ALBUM: KKFace[] = [
     ahead: 'After 7 days away',
     steps: [],
     unit: null,
-    stories: ['A week away, and you came back. Nobody made you.'],
+    quote: { text: 'While we are postponing, life speeds by.', by: 'Seneca, Letters 1' },
   },
 ];
 

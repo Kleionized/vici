@@ -113,9 +113,9 @@ export function AuthPill({
 export function AuthOr() {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 2 }}>
-      <View style={{ flex: 1, height: 1, backgroundColor: mono.line }} />
+      <View style={{ flex: 1 }} />
       <MonoText v="caps">or</MonoText>
-      <View style={{ flex: 1, height: 1, backgroundColor: mono.line }} />
+      <View style={{ flex: 1 }} />
     </View>
   );
 }

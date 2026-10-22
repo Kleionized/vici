@@ -8,7 +8,7 @@ import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands'
 import { UnsavedBoard, useBackgroundWrite, WAITING_LINE } from '@/components/urge/saving';
 import { useCreateEvent, useEvents } from '@/lib/backend';
 import { isSurfed } from '@/lib/day';
-import { capitalise, joinLower, numberWords } from '@/lib/format';
+import { capitalise, joinLower, lowerFirst, numberWords } from '@/lib/format';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 import type { EventType } from '@/lib/types';
 
@@ -99,9 +99,9 @@ export default function UrgeLog() {
         // a slip rode nothing out, so it has no count to say (undrawn: logs Q7)
         body={write.state === 'slow' ? WAITING_LINE : ridden != null ? riddenLine(ridden) : undefined}
         rows={[
-          { label: 'Intensity', value: intensity != null ? INTENSITY_BANDS[intensity].label : '—' },
-          { label: 'Set off by', value: triggers.length ? joinLower(triggers) : '—' },
-          { label: 'What I did', value: OUTCOMES[outcome].label },
+          ...(intensity != null ? [{ label: `${INTENSITY_BANDS[intensity].label} urge` }] : []),
+          ...(triggers.length ? [{ label: `Set off by ${lowerFirst(joinLower(triggers))}` }] : []),
+          { label: OUTCOMES[outcome].label },
         ]}
         cta="Done"
         onClose={close}
