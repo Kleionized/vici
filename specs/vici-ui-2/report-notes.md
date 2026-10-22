@@ -31,6 +31,11 @@ The bundle-to-bundle markup diff called these unchanged (or hero-only); the pixe
 - Settings: the owner's added rows make the column scroll at 852, and the scroll band drew its rows past its foot, under "Sign out" — the band now clips once its content is taller than it (D47).
 - Week IV and lesson 72's page 14 first read 7.7 % and 3.3 %: shot before the page had settled; with the settle the harness now waits for, 0.105 % and 0.052 % (the rig, not the app).
 
+## Pass 3: what was checked again
+
+- **Every drawing at its own size.** Each row's diff mask was scanned in 100 × 100 pt windows (`scripts/vici-ui-2/window-scan.py`), so a drawing, chart or card that is wrong inside a board that is mostly right shows however small a share of the frame it is. No lesson, SOS or relapse board has a window at 4 % or more. The 62 app boards that do were each cropped and read: every window is copy or data the row's note names; on the medallion details the whole block sits 13 or 26 lower because the boards centre on the quote's length (`T = 196 − 13 · lines`) and the owner's quotes are one or two lines shorter than the frames' — the drawings themselves match.
+- **The real app, by tapping.** `scripts/vici-ui-2/flows.mjs` reaches 16 boards the way a user does — the tab bar (Today, SOS, Log, Library, Journey), Today's rating into Score, Settings into App lock, Data & privacy, Edit profile and Your vow, the morning check-in from Today, Reports in the log, a medallion from the album — and diffs each arrival against its frame. Every arrival equals its harness shot to the thousandth of a percent: the boards sit the same inside the real navigators and tab bar.
+
 ## Where the platform cannot match the design exactly
 
 | where | design | app | gap |

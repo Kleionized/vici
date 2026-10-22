@@ -4146,7 +4146,7 @@
    "status": "PASS_2",
    "diff": "0.147 %",
    "date": "2026-10-22",
-   "note": "",
+   "note": "app rate arithmetic (D30): the age-80 figure is the app's from the answers",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/onboarding.md",
    "pass": 2
@@ -4826,7 +4826,7 @@
    "status": "PASS_2",
    "diff": "0.276 %",
    "date": "2026-10-22",
-   "note": "",
+   "note": "kept copy: owner 10 Oct \"Log an urge\" (D28)",
    "verified": "2026-10-22",
    "spec": "specs/vici-ui-2/today-checkins.md",
    "pass": 2
