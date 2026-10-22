@@ -79,24 +79,48 @@ export function cleanRun(slips: Set<string>, start: string | null, through: stri
   return { days, from, afterSlip };
 }
 
-/** What the slips on one day were put down to, in the words of every slip path (98D, the logs, the SOS). */
-type Situation = 'tired' | 'stress' | 'lonely' | 'bored' | 'scrolling' | 'latePhone' | 'noCause';
+/**
+ * What the slips on one day were put down to, in the words of every slip path:
+ * the relapse flow's "What led up to it?" (`RELAPSE_CAUSES`), the urge log's
+ * triggers, and the SOS's feelings and "What's feeding it?". Each maps to the
+ * situation whose letter the owner's document matches it with (D60); a word
+ * that matches none — "Putting something off", "My usual routine" — leaves the
+ * general letters to choose.
+ */
+type Situation = 'tired' | 'stress' | 'frustration' | 'lonely' | 'bored' | 'scrolling' | 'latePhone' | 'noCause';
 
 const SITUATION: Readonly<Record<string, Situation>> = {
+  // tiredness (R07)
   Tired: 'tired',
   Tiredness: 'tired',
+  'Couldn’t sleep': 'tired',
+  'Can’t sleep': 'tired',
+  // stress (R08)
   Stressed: 'stress',
   Stress: 'stress',
   'Stressed or anxious': 'stress',
-  Argument: 'stress',
+  // anger or frustration (R05)
+  Argument: 'frustration',
+  'An argument': 'frustration',
+  Angry: 'frustration',
+  // loneliness (R09)
   Lonely: 'lonely',
+  'Being alone': 'lonely',
+  // boredom (R10)
   Bored: 'bored',
   Boredom: 'bored',
+  // scrolling as the lead-in (R11)
+  Scrolling: 'scrolling',
+  Doomscrolling: 'scrolling',
+  'Something I saw online': 'scrolling',
+  'Something online': 'scrolling',
   'Sexual content': 'scrolling',
   Social: 'scrolling',
+  // late phone use (R12)
   'Phone in bed': 'latePhone',
   Phone: 'latePhone',
   'Late night': 'latePhone',
+  // no clear lead-in (R17)
   'Not sure': 'noCause',
   'I don’t know': 'noCause',
 };
@@ -164,6 +188,7 @@ const GENERAL_RELAPSE = ['R01', 'R22', 'R23', 'R24', 'R25'];
 const BY_SITUATION: Readonly<Record<Situation, string>> = {
   tired: 'R07',
   stress: 'R08',
+  frustration: 'R05',
   lonely: 'R09',
   bored: 'R10',
   scrolling: 'R11',
@@ -176,7 +201,7 @@ const ESTABLISHED = 7;
 /**
  * The letter for the morning after a slip on `slipDay`, by what the record
  * says: the first slip ever (R02), repeated slips (R06), what the user said
- * fed it (R07–R12, R17), a streak of a week or more ended (R03), else the next
+ * fed it (R05, R07–R12, R17), a streak of a week or more ended (R03), else the next
  * general letter. Situations the app never asks about (shame, giving up,
  * wanting more help…) are not guessed: those letters wait for questions that
  * record them.
