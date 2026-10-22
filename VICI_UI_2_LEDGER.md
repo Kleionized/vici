@@ -5,7 +5,7 @@ Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline c
 
 Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
 
-Rows: 2182 · NOT_STARTED 1592 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 581 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 1
+Rows: 2182 · NOT_STARTED 1578 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 595 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 1
 
 | id | design file | artboard | app file | spec | harness | status | diff | verified | note |
 |---|---|---|---|---|---|---|---|---|---|
@@ -637,20 +637,20 @@ Rows: 2182 · NOT_STARTED 1592 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__371__39b-post-medallion-letter | Email Login.dc.html | 39B · Post — Medallion Letter | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /medallion-post · seed ml-letters-seed | DIFF_CLEAN | 2.878 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
 | app__372__39c-post-the-yearly-drop | Email Login.dc.html | 39C · Post — The Yearly Drop | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /drop · seed ml-letters-seed | DIFF_CLEAN | 1.939 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
 | app__373__39d-you-received-a-drop | Email Login.dc.html | 39D · You Received a Drop | src/app/letter.tsx | specs/vici-ui-2/log-medallions-settings.md | /drop · seed ml-letters-seed | DIFF_CLEAN | 0.868 % | 2026-10-22 | owner letters and drop copy (D28, D552) |
-| app__374__84-lesson-frame-1-of-14 | Email Login.dc.html | 84 · Lesson — Frame 1 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__375__84-lesson-frame-2-of-14 | Email Login.dc.html | 84 · Lesson — Frame 2 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__376__84-lesson-frame-3-of-14 | Email Login.dc.html | 84 · Lesson — Frame 3 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__377__84-lesson-frame-4-of-14 | Email Login.dc.html | 84 · Lesson — Frame 4 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__378__84-lesson-frame-5-of-14 | Email Login.dc.html | 84 · Lesson — Frame 5 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__379__84-lesson-frame-6-of-14 | Email Login.dc.html | 84 · Lesson — Frame 6 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__380__84-lesson-frame-7-of-14 | Email Login.dc.html | 84 · Lesson — Frame 7 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__381__84-lesson-frame-8-of-14 | Email Login.dc.html | 84 · Lesson — Frame 8 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__382__84-lesson-frame-9-of-14 | Email Login.dc.html | 84 · Lesson — Frame 9 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__383__84-lesson-frame-10-of-14 | Email Login.dc.html | 84 · Lesson — Frame 10 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__384__84-lesson-frame-11-of-14 | Email Login.dc.html | 84 · Lesson — Frame 11 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__385__84-lesson-frame-12-of-14 | Email Login.dc.html | 84 · Lesson — Frame 12 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__386__84-lesson-frame-13-of-14 | Email Login.dc.html | 84 · Lesson — Frame 13 of 14 |  |  |  | NOT_STARTED |  |  |  |
-| app__387__84-lesson-frame-14-of-14 | Email Login.dc.html | 84 · Lesson — Frame 14 of 14 |  |  |  | NOT_STARTED |  |  |  |
+| app__374__84-lesson-frame-1-of-14 | Email Login.dc.html | 84 · Lesson — Frame 1 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=1 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| app__375__84-lesson-frame-2-of-14 | Email Login.dc.html | 84 · Lesson — Frame 2 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=2 · seed library-seed | DIFF_CLEAN | 0.034 % | 2026-10-22 |  |
+| app__376__84-lesson-frame-3-of-14 | Email Login.dc.html | 84 · Lesson — Frame 3 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=3 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| app__377__84-lesson-frame-4-of-14 | Email Login.dc.html | 84 · Lesson — Frame 4 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=4 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| app__378__84-lesson-frame-5-of-14 | Email Login.dc.html | 84 · Lesson — Frame 5 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=5 · seed library-seed | DIFF_CLEAN | 0.010 % | 2026-10-22 |  |
+| app__379__84-lesson-frame-6-of-14 | Email Login.dc.html | 84 · Lesson — Frame 6 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=6 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| app__380__84-lesson-frame-7-of-14 | Email Login.dc.html | 84 · Lesson — Frame 7 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=7 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| app__381__84-lesson-frame-8-of-14 | Email Login.dc.html | 84 · Lesson — Frame 8 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=8 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| app__382__84-lesson-frame-9-of-14 | Email Login.dc.html | 84 · Lesson — Frame 9 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=9 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
+| app__383__84-lesson-frame-10-of-14 | Email Login.dc.html | 84 · Lesson — Frame 10 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=10 · seed library-seed | DIFF_CLEAN | 0.002 % | 2026-10-22 |  |
+| app__384__84-lesson-frame-11-of-14 | Email Login.dc.html | 84 · Lesson — Frame 11 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=11 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| app__385__84-lesson-frame-12-of-14 | Email Login.dc.html | 84 · Lesson — Frame 12 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=12 · seed library-seed | DIFF_CLEAN | 0.004 % | 2026-10-22 |  |
+| app__386__84-lesson-frame-13-of-14 | Email Login.dc.html | 84 · Lesson — Frame 13 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=13 · seed library-seed | DIFF_CLEAN | 0.012 % | 2026-10-22 |  |
+| app__387__84-lesson-frame-14-of-14 | Email Login.dc.html | 84 · Lesson — Frame 14 of 14 | src/components/lesson/reader.tsx | specs/vici-ui-2/lessons.md | /lesson/day/1?page=14 · seed library-seed | DIFF_CLEAN | 0.003 % | 2026-10-22 |  |
 | illus__000__phone-parked-for-the-night | Lesson Illustrations v4.dc.html |  |  |  |  | NOT_STARTED |  |  |  |
 | illus__001__phone-parked-for-the-nightnightphone-9-usesno-window-a-small | Lesson Illustrations v4.dc.html | Phone parked for the nightnightPhone · 9 usesNo window: a small moon and stars sit well clear of the phone and glassGlass drawn at true size next to the phoneHome button dropped; the phone stands in a dockBefore |  |  |  | NOT_STARTED |  |  |  |
 | illus__002__bed-at-nightbed-15-usesno-window-a-small-moon-and-stars-sit- | Lesson Illustrations v4.dc.html | Bed at nightbed · 15 usesNo window: a small moon and stars sit above the bedHeavy ellipse under the bed replaced by the shared floor linePillow separated from the headboard by a clean gapBefore |  |  |  | NOT_STARTED |  |  |  |
