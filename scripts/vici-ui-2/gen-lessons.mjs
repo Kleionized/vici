@@ -168,7 +168,7 @@ function atom(n, label, runs) {
   if (d.position === 'relative' && d.width === '393px') {
     const svg = n.kids.find((x) => x.tag === 'svg');
     // the box the frame states for this page — it differs from page to page (a compact 117 on long pages)
-    return { k: 'hero', id: svg?.attrs['data-hero'], mt: d['margin-top'] ?? '0', box: { h: parseFloat(d.height), top: parseFloat(svg?.decls?.top) } };
+    return { k: 'hero', id: svg?.attrs['data-hero'], mt: d['margin-top'] ?? '0', box: { h: parseFloat(d.height), top: parseFloat(svg?.decls?.top), s: parseFloat((/scale\(([\d.]+)\)/.exec(svg?.decls?.transform ?? '') ?? [])[1] ?? '1') } };
   }
   if (find(n, (x) => x.attrs?.viewBox === '0 0 28 22')) return { k: 'quoteGlyph', mt: d['margin-top'] ?? '0' };
   if (find(n, (x) => x.decls?.width === '96px' && x.decls?.height === '96px')) return { k: 'checkCircle', mt: d['margin-top'] ?? '0' };
@@ -467,8 +467,8 @@ let src = `/**
  */
 import type { HeroId } from './heroes';
 
-/** A page's hero box as its frame states it: a \`393 × h\` box with the svg at \`top\`. */
-export type HeroBoxGeom = { h: number; top: number };
+/** A page's hero box as its frame states it: a \`393 × h\` box with the svg at \`top\`, scaled by \`s\`. */
+export type HeroBoxGeom = { h: number; top: number; s: number };
 
 export type LessonViz =
   | { type: 'chain'; cap?: string; steps: string[]; mark?: number; tag?: string }
