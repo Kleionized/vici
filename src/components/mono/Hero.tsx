@@ -2,7 +2,7 @@ import { memo, useState, type ReactNode } from 'react';
 import { useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
-import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_SCALE, HEROES, heroId, type HeroKey, type HeroNode } from '@/content/heroes';
+import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_PAINT_Y, HERO_SCALE, HEROES, heroId, type HeroId, type HeroKey, type HeroNode } from '@/content/heroes';
 import { mono, monoDark } from '@/lib/theme';
 
 import { GhostLink, PrimaryButton } from './buttons';
@@ -70,8 +70,18 @@ export const HeroArt = memo(function HeroArt({ id }: { id: HeroKey }) {
  * into the art's transform, so the art lands at the frame's fractional
  * positions however the box itself is rounded.
  */
+/**
+ * The art's vertical extent in user units: the designer's bounds, widened to
+ * the measured paint where the redrawn art runs past them (Vici UI 2, D24).
+ */
+function extent(id: HeroId): [number, number] {
+  const [t, b] = HERO_BOUNDS[id];
+  const [pt, pb] = HERO_PAINT_Y[id];
+  return [Math.min(t, pt), Math.max(b, pb)];
+}
+
 function Placed({ id, ox, oy, k, width }: { id: HeroKey; ox: number; oy: number; k: number; width: number }) {
-  const [t, b] = HERO_BOUNDS[heroId(id)];
+  const [t, b] = extent(heroId(id));
   const top = Math.floor(oy + k * t - BLEED);
   const height = Math.ceil(oy + k * b + BLEED) - top;
   return (
@@ -226,14 +236,14 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
 export function heroArtTop(key: HeroKey, top: number, scale?: number) {
   const id = heroId(key);
   const s = scale ?? HERO_SCALE[id];
-  return Math.round(top) + 190 + s * (HERO_BOUNDS[id][0] - 190);
+  return Math.round(top) + 190 + s * (extent(id)[0] - 190);
 }
 
 /** Canvas y of the hero's art bottom (its bounds) when drawn in CSS mode. */
 export function heroArtBottom(key: HeroKey, top: number, scale?: number) {
   const id = heroId(key);
   const s = scale ?? HERO_SCALE[id];
-  return Math.round(top) + 190 + s * (HERO_BOUNDS[id][1] - 190);
+  return Math.round(top) + 190 + s * (extent(id)[1] - 190);
 }
 
 const TITLE_VARIANT = { 26: 'h1', 30: 'title', 34: 'titleCover' } as const;

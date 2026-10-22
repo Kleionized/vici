@@ -20,6 +20,7 @@ export type CurriculumHeroId =
   | "bench"
   | "books"
   | "brain"
+  | "bubbles"
   | "cake"
   | "calendar"
   | "chartUp"
@@ -42,16 +43,14 @@ export type CurriculumHeroId =
   | "notebook"
   | "phoneTable"
   | "plant"
+  | "route"
   | "scale"
   | "shower"
   | "signpost"
-  | "sneaker"
   | "stopwatch"
   | "sunrise"
   | "tab"
   | "thermometer"
-  | "thunderCloud"
-  | "twoCups"
   | "umbrella";
 
 /**
@@ -204,7 +203,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 6,
         week: 1,
         title: "Make time for contact",
-        hero: "twoCups",
+        hero: "calendar",
         summary: "Call someone, send a specific invitation, or spend time in a conversation or shared activity.",
         task: {
           day: 6,
@@ -411,7 +410,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 17,
         week: 3,
         title: "Close the screen and move",
-        hero: "sneaker",
+        hero: "route",
         summary: "Start where you usually browse.",
         task: {
           day: 17,
@@ -560,7 +559,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 25,
         week: 4,
         title: "Respond to anger and loneliness",
-        hero: "thunderCloud",
+        hero: "thermometer",
         summary: "For a known example of anger or loneliness, write what happened and one immediate response.",
         task: {
           day: 25,
@@ -784,7 +783,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 37,
         week: 6,
         title: "Practise the response",
-        hero: "sneaker",
+        hero: "route",
         summary: "Practise one response from the place where you usually begin browsing.",
         task: {
           day: 37,
@@ -835,7 +834,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 40,
         week: 6,
         title: "Let a thought remain while you act",
-        hero: "thunderCloud",
+        hero: "hourglass",
         summary: "When an ordinary distracting thought appears, name it briefly and return to the task.",
         task: {
           day: 40,
@@ -947,7 +946,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 46,
         week: 7,
         title: "Get support during a difficult period",
-        hero: "thunderCloud",
+        hero: "lighthouse",
         summary: "If a difficult period is affecting the plan, choose one temporary adjustment and one support option.",
         task: {
           day: 46,
@@ -1149,13 +1148,13 @@ export const CURRICULUM_84: Curriculum84Week[] = [
     roman: "IX",
     name: "Connection",
     blurb: "The people side of recovery.",
-    hero: "twoCups",
+    hero: "bubbles",
     lessons: [
       {
         day: 57,
         week: 9,
         title: "Arrange a shared activity",
-        hero: "twoCups",
+        hero: "calendar",
         summary: "Suggest an activity, day, and approximate time to someone you trust or enjoy.",
         task: {
           day: 57,
@@ -1206,7 +1205,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 60,
         week: 9,
         title: "Separate desire from wanting company",
-        hero: "twoCups",
+        hero: "mirror",
         summary: "Review the Day 53 screen rule: did you follow it, did it help, and what should stay or change?",
         task: {
           day: 60,
@@ -1223,7 +1222,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 61,
         week: 9,
         title: "Follow up on a connection",
-        hero: "twoCups",
+        hero: "envelope",
         summary: "Make one reasonable follow-up with a person or group you know.",
         task: {
           day: 61,
@@ -1240,7 +1239,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 62,
         week: 9,
         title: "Set a safe limit on harmful contact",
-        hero: "thunderCloud",
+        hero: "door",
         summary: "If an interaction repeatedly causes harm or ignores your limit, choose one safe change: mute a channel, limit your availability, decline an invitation, or seek support before acting.",
         task: {
           day: 62,
@@ -1257,7 +1256,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
         day: 63,
         week: 9,
         title: "Give a relationship attention",
-        hero: "twoCups",
+        hero: "bubbles",
         summary: "Review the four Day 35 activity opportunities.",
         task: {
           day: 63,
