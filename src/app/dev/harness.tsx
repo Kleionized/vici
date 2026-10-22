@@ -1,58 +1,18 @@
-import { Redirect, Stack, useLocalSearchParams } from 'expo-router';
-
-import SosChooser from '@/app/sos';
-import { RelapseFlow, RelapseLog } from '@/components/slip/relapse';
-import { SosFlow } from '@/components/urge/sos';
-import { TextLab, VLab } from '@/dev/TextLab';
-import { RELAPSE_PRESETS, relapseInitial, relapseLogEntries, relapseNow } from '@/dev/relapseFixtures';
-import { HARNESS_BUILT, HARNESS_NOW, SOS_PRESETS, sosFixture } from '@/dev/sosFixtures';
+import { Redirect } from 'expo-router';
 
 /**
- * The dev screen harness (Vici UI 2 run): any screen in any state, opened by
- * deep link, with the design's own fixture data and a stopped clock, so a
- * screenshot shows the settled frame the canvas draws.
+ * `/dev/harness` — the Vici UI 2 run's screen harness (`src/dev/HarnessScreen.tsx`).
  *
- *   xcrun simctl openurl booted "tideline://dev/harness?view=sos&state=s06"
- *
- * Development builds only: a release build redirects to the app's start, and
- * nothing in the app links here.
+ * Development builds only. The screen is required behind `__DEV__`, which a
+ * release build folds to `false`, so neither it nor its fixtures are in a
+ * release bundle; there the route redirects to the app's start, and nothing in
+ * the app links here.
  */
+const HarnessScreen: (() => React.JSX.Element) | null = __DEV__
+  ? // eslint-disable-next-line @typescript-eslint/no-require-imports -- kept out of release bundles
+    (require('@/dev/HarnessScreen') as typeof import('@/dev/HarnessScreen')).HarnessScreen
+  : null;
+
 export default function Harness() {
-  // `view`, not `screen`: React Navigation reserves `screen` for nested navigators
-  const { view, state, n } = useLocalSearchParams<{ view?: string; state?: string; n?: string }>();
-  if (!__DEV__) return <Redirect href="/" />;
-  let body = null;
-  if (view === 'chooser') body = <SosChooser />;
-  if (view === 'textlab') body = <TextLab />;
-  if (view === 'vlab') body = <VLab />;
-  if (view === 'relapse') {
-    const p = RELAPSE_PRESETS[state ?? 'r01'];
-    if (p?.page === 'log') body = <RelapseLog key={n} entries={relapseLogEntries(p)} now={relapseNow(p)} onOpen={() => {}} onNew={() => {}} />;
-    else if (p) {
-      const { now, ctx, initial } = relapseInitial(state ?? 'r01', p);
-      body = (
-        <RelapseFlow
-          key={`${state}-${n ?? ''}`}
-          now={now}
-          ctx={ctx}
-          initial={{ ...initial, forced: p.forced }}
-          history={{ hist: [], qSeen: [] }}
-          onHistory={() => {}}
-          store={{ create: async () => `${state}-1`, update: async () => {} }}
-          onExit={() => {}}
-          onClose={() => {}}
-        />
-      );
-    }
-  }
-  if (view === 'sos') {
-    const preset = SOS_PRESETS[state ?? 's01'];
-    if (preset) body = <SosFlow key={`${state}-${n ?? ''}`} preset={preset} frozenNow={HARNESS_NOW} builtAt={HARNESS_BUILT} fixture={sosFixture(preset.cur)} />;
-  }
-  return (
-    <>
-      <Stack.Screen options={{ animation: 'none', gestureEnabled: false }} />
-      {body}
-    </>
-  );
+  return HarnessScreen ? <HarnessScreen /> : <Redirect href="/" />;
 }

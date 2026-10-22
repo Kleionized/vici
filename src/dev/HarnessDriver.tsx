@@ -101,7 +101,8 @@ export function HarnessDriver() {
         router.replace(t.route as never);
       }
       else router.replace({ pathname: '/dev/harness', params: { view: t.screen, state: t.state, n: String(t.n), ...(t.extra ?? {}) } } as never);
-      if (t.blur) setTimeout(() => Keyboard.dismiss(), 1200);
+      // twice: a board that mounts slowly (the first after a reload) focuses its field late
+      if (t.blur) for (const ms of [1200, 2000]) setTimeout(() => Keyboard.dismiss(), ms);
       if (t.steps?.length) {
         await run(t.steps);
         // a step may have focused a field (a sheet's name field): put that keyboard away too

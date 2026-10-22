@@ -20,7 +20,15 @@ import { FORCE_MOCK } from '@/lib/config';
 import { AppProviders } from '@/lib/providers';
 import { useReminderLifecycle } from '@/lib/reminders';
 import { colors } from '@/lib/theme';
-import { HarnessDriver } from '@/dev/HarnessDriver';
+
+/**
+ * The Vici UI 2 capture harness's driver, in a development build started with
+ * `EXPO_PUBLIC_HARNESS=1` only: both are inlined at build time, so a release
+ * bundle folds this to `null` and does not contain the driver.
+ */
+const HarnessDriver: (() => null) | null =
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- kept out of release bundles
+  __DEV__ && process.env.EXPO_PUBLIC_HARNESS === '1' ? (require('@/dev/HarnessDriver') as typeof import('@/dev/HarnessDriver')).HarnessDriver : null;
 
 /**
  * The design canvas is a 393 × 852 iPhone frame whose top 54 is the status bar
@@ -131,7 +139,7 @@ export default function RootLayout() {
               <Stack.Screen name="lessons-browser" />
             </Stack>
             <ReminderLifecycle />
-            {__DEV__ && process.env.EXPO_PUBLIC_HARNESS === '1' ? <HarnessDriver /> : null}
+            {HarnessDriver ? <HarnessDriver /> : null}
             {/* after the navigator, so the lock and the privacy cover draw over every screen */}
             <AppLockGate />
           </AppProviders>
