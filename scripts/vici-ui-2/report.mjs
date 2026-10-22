@@ -22,6 +22,17 @@ const pctOf = (row) => {
 };
 const sideOf = (row) => (fs.existsSync(`pixel-diff/out/${row.id}.side.png`) ? `pixel-diff/out/${row.id}.side.png` : '—');
 
+/** Each row's "Changed from the previous bundle" bullets, from the specs that list them per artboard. */
+const changes = new Map();
+for (const f of fs.readdirSync('specs/vici-ui-2').filter((x) => x.endsWith('.md'))) {
+  const text = fs.readFileSync(`specs/vici-ui-2/${f}`, 'utf8');
+  for (const sec of text.split(/^## /m).slice(1)) {
+    const id = /^(\S+__\d+)/.exec(sec)?.[1];
+    const m = /Changed from the previous bundle:\n\n((?:- .*\n)+)/.exec(sec);
+    if (id && m) changes.set(id, { spec: `specs/vici-ui-2/${f}`, lines: m[1].trim().split('\n') });
+  }
+}
+
 const byStatus = {};
 for (const r of ledger.rows) byStatus[r.status] = (byStatus[r.status] ?? 0) + 1;
 
@@ -52,6 +63,16 @@ const out = [
   '',
   ...table,
   '',
+  '## Every change, screen by screen',
+  '',
+  'What `Vici UI 2` changed on each artboard against the previous bundle, as the specs record it (`scripts/vici-ui-2/change-kinds.py`, `markup-diff.py`), with what the app keeps of its own (the row\'s note). The SOS, Relapse and lesson canvases are specified flow by flow, not artboard by artboard: their changes are in `specs/vici-ui-2/sos.md`, `sos-chooser.md`, `relapse.md` and `lessons.md`, summarised above.',
+  '',
+  ...ledger.rows
+    .filter((r) => r.status !== 'SUPERSEDED' && (changes.has(r.id.replace(/^(\S+__\d+).*/, '$1')) || r.note))
+    .flatMap((r) => {
+      const c = changes.get(r.id.replace(/^(\S+__\d+).*/, '$1'));
+      return [`**\`${r.id}\`** · ${esc(r.label ?? r.screen)}${c ? ` (${c.spec})` : ''}`, '', ...(c ? c.lines : []), ...(r.note ? [`- app keeps: ${r.note}`] : []), ''];
+    }),
   '## Every decision, with its reasoning',
   '',
   decisions.replace(/^# .*\n/, '').trim(),

@@ -55,6 +55,8 @@ The bundle-to-bundle markup diff called these unchanged (or hero-only); the pixe
 
 ## Not implemented
 
+- **Before a release build can save relapses:** the backend's new `events:update` and the `relapse` record (D20) are in `convex/` but have not been deployed from this run — run `npx convex deploy`.
+
 - `93B · Profile photo sheet` (app__285): the owner removed photos (no photo pipeline, D480, commit 9487e33d); the frame's sheet has nothing to act on.
 - `91A`'s "30 days ⌄" range picker: the frame draws no options (D42).
 
