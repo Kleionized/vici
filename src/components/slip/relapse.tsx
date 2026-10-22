@@ -11,10 +11,10 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Animated, Easing, Pressable, ScrollView, Text, useWindowDimensions, View, type TextStyle } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Svg, { Circle, Path } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, Screen, Tap, VizArt, WrapText } from '@/components/mono';
+import { Glyph, CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, Screen, Tap, VizArt, WrapText } from '@/components/mono';
 import { RELAPSE_ART, RELAPSE_CALENDAR, RELAPSE_CAUSES, RELAPSE_MESSAGES, RELAPSE_QUOTES, RELAPSE_WATCH, RELAPSE_WHEN } from '@/content/relapse.data';
 import { SOS_VIZ, SOS_VIZ_BOX } from '@/content/sosViz';
 import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
@@ -298,11 +298,7 @@ function Ghost({ label, onPress, hidden }: { label: string; onPress: () => void;
 
 function ErrGlyph() {
   return (
-    <Svg width={18} height={18} viewBox="0 0 20 20">
-      <Circle cx={10} cy={10} r={8.2} fill="none" stroke={ink} strokeWidth={1.6} />
-      <Path d="M10 5.6v5.4" fill="none" stroke={ink} strokeWidth={1.8} strokeLinecap="round" />
-      <Circle cx={10} cy={14.2} r={1.1} fill={ink} />
-    </Svg>
+    <Glyph name="alert" size={18} color={ink} />
   );
 }
 

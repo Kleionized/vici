@@ -48,6 +48,7 @@ Once every row read DONE, the owner reviewed the app and asked for changes that 
 - **No divider lines (D51).** Lists are separate rounded boxes; one-card lists and check-row records simply lose the rules; the age wheel's rules became a filled band.
 - **Logs close like check-ins (D52):** Urge Log Done and SOS's "Done for now." show the check disc, the title and the answers as check rows.
 - **Chips keep their width when chosen (D53).**
+- **One solid icon style (D55),** the open book without its table (D56), and the lesson drawings at 0.8 of their size (D57).
 - **Counts in plain sentences (D54):** "You've ridden out 23 urges so far. 2 more and you reach Bronze." instead of "Twenty-three ridden out. Two to Bronze.", and the same for the weekly report, Report Ready, the check-in done titles and the medallion tiers.
 
 ## Where the platform cannot match the design exactly

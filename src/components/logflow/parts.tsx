@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { View, useWindowDimensions, type TextStyle } from 'react-native';
 import Svg, { Circle, Path, Text as SvgText } from 'react-native-svg';
 
-import { Check, MonoText, NavBar, Pill, Segmented, TitleHead, type SegmentItem, type TextVariant } from '@/components/mono';
+import { Glyph, Check, MonoText, NavBar, Pill, Segmented, TitleHead, type SegmentItem, type TextVariant } from '@/components/mono';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
 import type { DayStatus } from '@/lib/weeklyReport';
 
@@ -292,9 +292,7 @@ export type { DayStatus };
 /** The wave a ridden-out day carries (16, stroke 2, round). */
 function Wave() {
   return (
-    <Svg width={16} height={16} viewBox="0 0 16 16">
-      <Path d="M2 9c2.5 0 3-4 5-4s3 4 5 4 2-2 2-2" fill="none" stroke={mono.ink} strokeWidth={2} strokeLinecap="round" />
-    </Svg>
+    <Glyph name="wave" size={16} color={mono.ink} />
   );
 }
 

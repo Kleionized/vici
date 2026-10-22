@@ -311,7 +311,7 @@ export const HERO_PAINT_X: Record<HeroId, readonly [number, number]> = {
   mountain: [-40, 433],
   nightMoon: [-40, 433],
   nightPhone: [96, 297],
-  notebook: [58, 334],
+  notebook: [85, 307],
   openDoor: [109, 323],
   pencil: [68, 325],
   phoneTable: [47, 345],
@@ -374,7 +374,7 @@ export const HERO_PAINT_Y: Record<HeroId, readonly [number, number]> = {
   mountain: [37.5, 192.3],
   nightMoon: [39.5, 210.5],
   nightPhone: [51.2, 209.5],
-  notebook: [72.7, 192.5],
+  notebook: [72.7, 171.5],
   openDoor: [-0.3, 192.5],
   pencil: [57, 212],
   phoneTable: [30.2, 189.8],
@@ -1278,9 +1278,6 @@ export const HEROES: Record<HeroId, readonly HeroNode[]> = {
   ],
   notebook: [
     { t: 'g', p: { transform: 'translate(-20.8 -39.2) scale(1.106)' }, c: [
-      { t: 'rect', p: { x: '72', y: '188', width: '248', height: '7', rx: '3.5', fill: '#F2F0EC' } },
-      { t: 'rect', p: { x: '84', y: '195', width: '6', height: '14', rx: '1.5', fill: '#F2F0EC' } },
-      { t: 'rect', p: { x: '302', y: '195', width: '6', height: '14', rx: '1.5', fill: '#F2F0EC' } },
       { t: 'path', p: { d: 'M96 110 Q148 100 196 114 Q244 100 296 110 V186 Q246 178 196 190 Q146 178 96 186 Z', fill: '#55524D' } },
       { t: 'path', p: { d: 'M102 106 Q150 96 194 110 V186 Q150 174 102 182 Z', fill: '#F2F0EC' } },
       { t: 'path', p: { d: 'M290 106 Q242 96 198 110 V186 Q242 174 290 182 Z', fill: '#F2F0EC' } },

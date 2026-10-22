@@ -1,11 +1,10 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 
-import { ChevronR, Hero, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { ChevronR, Glyph, Hero, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap, type GlyphName } from '@/components/mono';
 import { checkinPartNow } from '@/lib/routines';
-import { mono, ring, sans } from '@/lib/theme';
+import { alpha, mono, sans } from '@/lib/theme';
 
 /**
  * 90 · Log — Chooser. What is being logged: the day's check-in, an urge, or a
@@ -16,17 +15,17 @@ import { mono, ring, sans } from '@/lib/theme';
  * default (CRITIC §5, logs Q1).
  */
 
-type Kind = { key: 'checkin' | 'urge' | 'lapse'; title: string; sub: string; route: string; glyph: string };
+type Kind = { key: 'checkin' | 'urge' | 'lapse'; title: string; sub: string; route: string; glyph: GlyphName };
 
 const OPTIONS: Kind[] = [
-  { key: 'checkin', title: 'Daily check-in', sub: 'How today is going', route: '/checkin', glyph: 'M11 3v3M11 16v3M3 11h3M16 11h3M6 6l2 2M14 14l2 2M6 16l2-2M14 8l2-2' },
-  { key: 'urge', title: 'An urge', sub: 'How strong, what fed it, what you did', route: '/urge-log', glyph: 'M3 15c3 0 4-6 8-6s5 6 8 6M3 18c3 0 4-3 8-3s5 3 8 3' },
-  { key: 'lapse', title: 'A relapse', sub: 'When it happened and what led up to it', route: '/slip', glyph: 'M3 12c3 0 5-4 8-4s3 8 6 8 2-4 2-4' },
+  { key: 'checkin', title: 'Daily check-in', sub: 'How today is going', route: '/checkin', glyph: 'sun' },
+  { key: 'urge', title: 'An urge', sub: 'How strong, what fed it, what you did', route: '/urge-log', glyph: 'waves' },
+  { key: 'lapse', title: 'A relapse', sub: 'When it happened and what led up to it', route: '/slip', glyph: 'again' },
 ];
 
 /**
- * One 84 row (`r22, padding 0 20, gap 16`): a 44 ring (outside 1.5 — line, or
- * `#111111` at 0.3 on the ink row) holding the 22 glyph, the 17/700 title over
+ * One 84 row (`r22, padding 0 20, gap 16`): a 44 disc (`#2E2E2E`, or black at
+ * 0.08 on the ink row) holding the 22 solid glyph, the 17/700 title over
  * the 13/400 line (gap 3), and a `#5A574F` chevron — or, chosen, the ink fill
  * with a 10 `#1E1E1E` dot.
  */
@@ -39,10 +38,9 @@ function KindRow({ kind, on, onPress }: { kind: Kind; on: boolean; onPress: () =
       aria-checked={on}
       label={kind.title}
       style={{ height: 84, borderRadius: 22, paddingHorizontal: 20, gap: 16, flexDirection: 'row', alignItems: 'center', backgroundColor: on ? mono.ink : mono.card }}>
-      <View style={{ width: 44, height: 44, borderRadius: 22, boxShadow: on ? ring.outlineOnInk : ring.outline, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-        <Svg width={22} height={22} viewBox="0 0 22 22">
-          <Path d={kind.glyph} fill="none" stroke={fg} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
+      {/* a filled disc holding the solid glyph (D55), not an outlined ring */}
+      <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: on ? alpha.black(0.08) : mono.line, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <Glyph name={kind.glyph} size={22} color={fg} />
       </View>
       <View style={{ flex: 1, gap: 3 }}>
         <MonoText v="rowLabel" wrap="wrap" style={{ fontSize: 17, lineHeight: 21 }} color={fg}>

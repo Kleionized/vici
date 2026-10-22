@@ -1,10 +1,14 @@
-import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 import { mono } from '@/lib/theme';
 
+import { Glyph } from './glyphs';
+
 /**
  * Every inline glyph the bundle draws (design-system §6), at the frame's own
- * size and viewBox. Strokes are in viewBox units, so a glyph drawn larger
+ * size. The pictograms are the solid set in `glyphs.tsx` (D55); the marks
+ * below — chevrons, close, check, share, arrows — stay stroked, and these
+ * notes are about them. Strokes are in viewBox units, so a glyph drawn larger
  * thickens with it — as the canvas's does. Colours default to the context the
  * frames use most; pass `color` wherever a frame differs.
  */
@@ -78,12 +82,7 @@ export function Flame({ color = mono.ink }: IconProps) {
 }
 
 export function Person({ color = mono.ink, size = 22 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 22 22">
-      <Circle cx={11} cy={8} r={4} fill="none" stroke={color} strokeWidth={1.8} />
-      <Path d="M3.5 19a7.5 7.5 0 0 1 15 0" fill="none" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
-    </Svg>
-  );
+  return <Glyph name="person" size={size} color={color} />;
 }
 
 export function Bolt({ color = mono.ink, size = 14 }: IconProps) {
@@ -120,60 +119,32 @@ export function Quote({ color = mono.art }: IconProps) {
 
 /** The calendar page: the check-in covers' day, the task card's "Yesterday", 16. */
 export function CalendarGlyph({ color = mono.mute, size = 16 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Rect x={3.5} y={5} width={17} height={15.5} rx={2.5} stroke={color} strokeWidth={1.8} {...R} />
-      <Path d="M3.5 10h17M8 3v4M16 3v4" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="calendar" size={size} color={color} />;
 }
 
 /** The clock face: the check-in covers' "2 min", 16. */
 export function ClockGlyph({ color = mono.mute, size = 16 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.8} {...R} />
-      <Path d="M12 7v5l3.2 2" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="clock" size={size} color={color} />;
 }
 
 /** The crescent moon: the night's action disc, 22. */
 export function MoonGlyph({ color = mono.ink, size = 22 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="moon" size={size} color={color} />;
 }
 
 /** A line going up: the weekly report's rating, 16. */
 export function TrendGlyph({ color = mono.mute, size = 16 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M4 16l5.5-5.5 4 4L20 8M14.5 8H20v5.5" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="bars" size={size} color={color} />;
 }
 
 /** The sun: Today's "This morning" caption, 16. */
 export function Sun({ color = mono.mute, size = 16 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Circle cx={12} cy={12} r={4} stroke={color} strokeWidth={1.8} {...R} />
-      <Path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="sun" size={size} color={color} />;
 }
 
 /** A tick in a ring: Today's "Today's task" caption, 16. */
 export function CheckCircle({ color = mono.mute, size = 16 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Circle cx={12} cy={12} r={9} stroke={color} strokeWidth={1.8} {...R} />
-      <Path d="M8 12.3l2.7 2.7L16 9.6" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="checkCircle" size={size} color={color} />;
 }
 
 /** The quotation mark that heads a pledge (Today Home III, the morning's pledge), 24. */
@@ -187,19 +158,11 @@ export function QuoteMark({ color = mono.art, size = 24 }: IconProps) {
 
 /** The open book (a lesson): Day 0's lesson card at 20, Today's lesson labels at 16. */
 export function Book({ color = mono.ink, size = 20 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M12 6.5C10 5 7 4.5 3 4.5v14c4 0 7 .5 9 2 2-1.5 5-2 9-2v-14c-4 0-7 .5-9 2zM12 6.5v14" stroke={color} strokeWidth={1.8} {...R} />
-    </Svg>
-  );
+  return <Glyph name="book" size={size} color={color} />;
 }
 
 export function Pencil({ color = mono.mute }: IconProps) {
-  return (
-    <Svg width={16} height={16} viewBox="0 0 16 16">
-      <Path d="M3 13l1-3.5L10.5 3l2.5 2.5L6.5 12z" fill="none" stroke={color} strokeWidth={1.6} strokeLinejoin="round" />
-    </Svg>
-  );
+  return <Glyph name="pencil" size={16} color={color} />;
 }
 
 export function Apple({ color = mono.onInk }: IconProps) {
@@ -227,37 +190,17 @@ export function Google() {
 // ── tab bar (26×26, stroke 1.8, fill none) ──
 
 export function TabToday({ color }: { color: string }) {
-  return (
-    <Svg width={26} height={26} viewBox="0 0 26 26">
-      <Path d="M4 12.5L13 4l9 8.5V21a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 4 21z" fill="none" stroke={color} strokeWidth={1.8} strokeLinejoin="round" />
-    </Svg>
-  );
+  return <Glyph name="house" size={26} color={color} />;
 }
 
 export function TabLog({ color }: { color: string }) {
-  return (
-    <Svg width={26} height={26} viewBox="0 0 26 26">
-      <Rect x={5} y={3.5} width={16} height={19} rx={3} fill="none" stroke={color} strokeWidth={1.8} />
-      <Path d="M9 9h8M9 13h8M9 17h5" stroke={color} strokeWidth={1.8} strokeLinecap="round" />
-    </Svg>
-  );
+  return <Glyph name="doc" size={26} color={color} />;
 }
 
 export function TabLibrary({ color }: { color: string }) {
-  return (
-    <Svg width={26} height={26} viewBox="0 0 26 26">
-      <Path d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15" fill="none" stroke={color} strokeWidth={1.8} strokeLinejoin="round" />
-    </Svg>
-  );
+  return <Glyph name="book" size={26} color={color} />;
 }
 
 export function TabJourney({ color }: { color: string }) {
-  return (
-    <Svg width={26} height={26} viewBox="0 0 26 26">
-      <G fill="none" stroke={color} strokeWidth={1.8}>
-        <Circle cx={13} cy={10} r={6.5} />
-        <Path d="M9 15.5L7 23l6-3 6 3-2-7.5" strokeLinejoin="round" />
-      </G>
-    </Svg>
-  );
+  return <Glyph name="medal" size={26} color={color} />;
 }

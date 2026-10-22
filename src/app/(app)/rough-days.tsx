@@ -1,8 +1,7 @@
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
 
-import { ChevronR, MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { Glyph, ChevronR, MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { RD_KEYS, RD_PROTOCOLS } from '@/content/roughDays';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
@@ -27,10 +26,7 @@ import { lhNormal, mono, sans } from '@/lib/theme';
 
 function Stopwatch() {
   return (
-    <Svg width={26} height={26} viewBox="0 0 26 26">
-      <Circle cx={13} cy={15} r={8} fill="none" stroke="#111111" strokeWidth={2.4} />
-      <Path d="M13 15V10M13 3h0M10 3h6M13 3v4" stroke="#111111" strokeWidth={2.4} strokeLinecap="round" />
-    </Svg>
+    <Glyph name="stopwatch" size={26} color="#111111" />
   );
 }
 

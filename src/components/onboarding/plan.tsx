@@ -14,11 +14,10 @@
  * changed: the night card, the glyph discs, the dashed rule and the soft-blob
  * scenes are gone, and the signals are the kit's 44pt ink pills.
  */
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import { Platform, View } from 'react-native';
-import Svg, { G, Path, Rect } from 'react-native-svg';
 
-import { HeroBoard, IconCard, MonoText, NavBar, Pill, PrimaryButton, Screen } from '@/components/mono';
+import { Glyph, type GlyphName, HeroBoard, IconCard, MonoText, NavBar, Pill, PrimaryButton, Screen } from '@/components/mono';
 import { mono, sans } from '@/lib/theme';
 
 import { Band } from './tail';
@@ -397,23 +396,11 @@ export function O3StartHereStep2({ change, next, back }: { change: FirstChange; 
 
 const PLAN_ROW_SUBS = ['When it usually happens', 'Where it usually happens', 'What sets it off', 'Your first change', 'When an urge hits'];
 
-const G20 = { fill: 'none', stroke: mono.onInk, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
-
 /**
- * The five 20pt glyphs, the frame's own paths. They belong to the *row*, not
+ * The five 20pt glyphs, from the solid set (D55). They belong to the *row*, not
  * to the answer (D055): the words vary with his answers, the drawing does not.
- * Row 5 is a bolt in this drop (it was a crosshair).
  */
-const PLAN_ICONS: ReactNode[] = [
-  <Path key="moon" d="M14 3a8 8 0 1 0 3 12.5A7 7 0 0 1 14 3z" fill={mono.onInk} />,
-  <Path key="bed" d="M3 6v9M3 12h14v3M17 12v-3a2 2 0 0 0-2-2H8v4" {...G20} />,
-  <G key="phone">
-    <Rect width={10} height={15} x={5} y={2.5} rx={2.5} fill="none" stroke={mono.onInk} strokeWidth={2} />
-    <Path d="M10 7v6M8 11l2 2 2-2" {...G20} strokeWidth={1.8} />
-  </G>,
-  <Path key="plug" d="M7 3v4M13 3v4M5 7h10v3a5 5 0 0 1-10 0z M10 15v3" {...G20} />,
-  <Path key="bolt" d="M11 2L4 11h6l-1 7 7-9h-6z" fill={mono.onInk} />,
-];
+const PLAN_ICONS: GlyphName[] = ['moon', 'bed', 'phone', 'plug', 'bolt'];
 
 /** The stack's top and the last card's bottom on the canvas (cards 237 … 589 + 74). */
 const PLAN_TOP = 170;
@@ -459,9 +446,7 @@ export function O3YourPlan({
               title={title}
               sub={PLAN_ROW_SUBS[i]}
               icon={
-                <Svg width={20} height={20} viewBox="0 0 20 20">
-                  {PLAN_ICONS[i]}
-                </Svg>
+                <Glyph name={PLAN_ICONS[i]} size={20} color={mono.onInk} />
               }
             />
           ))}

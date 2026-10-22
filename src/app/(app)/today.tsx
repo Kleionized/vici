@@ -11,6 +11,7 @@ import {
   CheckinDisc,
   ChevronR,
   DISABLED_OPACITY,
+  Glyph,
   Hero,
   heroCrop,
   LoadingView,
@@ -638,23 +639,13 @@ function Tile({ glyph, caps, title, onPress }: { glyph: ReactNode; caps: string;
   );
 }
 
-const GLYPH28 = { fill: 'none', stroke: mono.ink, strokeWidth: 1.8 } as const;
-
-/** The tile's book — the Library tab's glyph, drawn at 28. */
+/** The tiles' solid glyphs at 28 (D55). */
 function BookGlyph() {
-  return (
-    <Svg width={28} height={28} viewBox="0 0 26 26">
-      <Path d="M13 6.5C11 5 8 4.5 4 4.5v15c4 0 7 .5 9 2 2-1.5 5-2 9-2v-15c-4 0-7 .5-9 2z M13 6.5v15" {...GLYPH28} strokeLinejoin="round" />
-    </Svg>
-  );
+  return <Glyph name="book" size={28} color={mono.ink} />;
 }
 
 function WavesGlyph() {
-  return (
-    <Svg width={28} height={28} viewBox="0 0 26 26">
-      <Path d="M3 15c3 0 3-4 6-4s3 4 6 4 3-4 6-4M3 20c3 0 3-4 6-4s3 4 6 4 3-4 6-4" {...GLYPH28} strokeLinecap="round" />
-    </Svg>
-  );
+  return <Glyph name="waves" size={28} color={mono.ink} />;
 }
 
 /* ---------------------------------------------------------------- page three */
@@ -690,7 +681,7 @@ function PageThree({
   onUrge: () => void;
   onEnd: (y: number) => void;
 }) {
-  const ringBtn = (d: string, label: string, onPress: () => void, disabled?: boolean) => (
+  const ringBtn = (d: string | ReactNode, label: string, onPress: () => void, disabled?: boolean) => (
     <Tap
       key={label}
       label={label}
@@ -705,15 +696,19 @@ function PageThree({
         justifyContent: 'center',
         opacity: disabled ? DISABLED_OPACITY : 1,
       }}>
-      <Svg width={18} height={18} viewBox="0 0 18 18">
-        <Path d={d} {...ICON18} />
-      </Svg>
+      {typeof d === 'string' ? (
+        <Svg width={18} height={18} viewBox="0 0 18 18">
+          <Path d={d} {...ICON18} />
+        </Svg>
+      ) : (
+        d
+      )}
     </Tap>
   );
   const rings = (
     <View style={{ flexDirection: 'row', gap: 10, marginTop: 6 }}>
       {ringBtn('M3 9h12M9 3v12', 'New pledge', onAdd)}
-      {ringBtn('M9 3l1.8 3.8 4.2.6-3 3 .7 4.2L9 12.6l-3.7 2 .7-4.2-3-3 4.2-.6z', 'Journal', onSaved)}
+      {ringBtn(<Glyph name="star" size={18} color={mono.ink} />, 'Journal', onSaved)}
       {ringBtn('M9 11V3M6 6l3-3 3 3M4 11v3h10v-3', 'Share', onShare, !pledge)}
     </View>
   );
@@ -745,10 +740,7 @@ function PageThree({
 
         <Card padding={[18, 20]} onPress={onUrge} accessibilityLabel="Urge surfing" style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
           <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <Svg width={26} height={26} viewBox="0 0 26 26">
-              <Circle cx={13} cy={15} r={8} fill="none" stroke={mono.onInk} strokeWidth={2.4} strokeLinecap="round" />
-              <Path d="M13 15V10M13 3h0M10 3h6M13 3v4" fill="none" stroke={mono.onInk} strokeWidth={2.4} strokeLinecap="round" />
-            </Svg>
+            <Glyph name="stopwatch" size={26} color={mono.onInk} />
           </View>
           <View style={{ flex: 1, minWidth: 0, gap: 3 }}>
             <MonoText v="gridLabel" wrap="wrap" style={{ fontSize: 18, lineHeight: lhNormal(18) }}>

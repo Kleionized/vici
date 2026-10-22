@@ -14,11 +14,11 @@ import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Animated, Easing, ScrollView, Text, View, type TextStyle } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Svg, { Circle, Path, SvgXml } from 'react-native-svg';
+import Svg, { Path, SvgXml } from 'react-native-svg';
 
 import { DoneMark } from '@/components/day/board';
 import { DONE_MARK_TOP } from '@/components/logflow';
-import { CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, CheckRow, CheckRows, latoRuns, Screen, Tap, VizArt, WrapText } from '@/components/mono';
+import { Glyph, type GlyphName, CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, CheckRow, CheckRows, latoRuns, Screen, Tap, VizArt, WrapText } from '@/components/mono';
 import { bandToSeverity } from '@/components/ui/IntensityBands';
 import {
   nextSosAction,
@@ -166,12 +166,7 @@ function W({ s, w, children, center, right }: { s: TextStyle; w: number | null; 
 // ── the pieces every board shares ───────────────────────────────────────────
 
 function ClockGlyph({ size = 14 }: { size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 16 16">
-      <Circle cx={8} cy={8} r={6.2} fill="none" stroke={mono.mute} strokeWidth={1.6} />
-      <Path d="M8 4.8V8l2.2 1.4" fill="none" stroke={mono.mute} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
-    </Svg>
-  );
+  return <Glyph name="clock" size={size} color={mono.mute} />;
 }
 
 function Check({ size = 13 }: { size?: number }) {
@@ -231,10 +226,7 @@ function Ghost({ label, inset = 90, icon, onPress }: { label: string; inset?: nu
   return (
     <Tap onPress={onPress} style={{ position: 'absolute', left: inset, right: inset, bottom: 47, height: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, zIndex: 6 }}>
       {icon ? (
-        <Svg width={18} height={18} viewBox="0 0 18 18">
-          <Circle cx={9} cy={9} r={7.6} fill="none" stroke={mono.mute} strokeWidth={1.5} />
-          <Path d="M5.6 9.3l2.3 2.2L12.5 6.6" fill="none" stroke={mono.mute} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
-        </Svg>
+        <Glyph name="checkCircle" size={18} color={mono.mute} />
       ) : null}
       <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.ghost}>
         {label}
@@ -703,10 +695,8 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
                   aria-checked={on}
                   onPress={() => set({ loc: k, bed: k === 'bed' ? f.bed : null })}
                   style={{ height: 60, borderRadius: 18, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 14, paddingLeft: 16, paddingRight: 18 }}>
-                  <View style={{ width: 34, height: 34, borderRadius: 17, flexShrink: 0, alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 1.5px ${on ? mono.onInkRing : mono.line}` }}>
-                    <Svg width={20} height={20} viewBox="0 0 20 20">
-                      <Path d={PLACE_GLYPH[k]} fill="none" stroke={fg} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
-                    </Svg>
+                  <View style={{ width: 34, height: 34, borderRadius: 17, flexShrink: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? alpha.black(0.08) : mono.line }}>
+                    <Glyph name={PLACE_GLYPH[k]} size={20} color={fg} />
                   </View>
                   <Text maxFontSizeMultiplier={1.3} style={[S.locLabel, { flex: 1, color: fg }]}>{l}</Text>
                   {on ? <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: mono.card }} /> : null}
@@ -888,10 +878,4 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
 }
 
 /** The five places' glyphs (20-box, `currentColor` 1.8, round caps and joins). */
-const PLACE_GLYPH: Record<string, string> = {
-  private: 'M4 17V8l6-5 6 5v9M8 17v-5h4v5',
-  bed: 'M3 15V9h14v6M3 12h14M5 9V6h4v3',
-  public: 'M6 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM14 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM2 16c0-2.5 1.8-4 4-4s4 1.5 4 4M10 16c0-2.5 1.8-4 4-4s4 1.5 4 4',
-  work: 'M3 7h14v9H3zM7 7V4h6v3M3 11h14',
-  out: 'M10 17s-5-4.5-5-8a5 5 0 0 1 10 0c0 3.5-5 8-5 8zM10 10.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z',
-};
+const PLACE_GLYPH: Record<string, GlyphName> = { private: 'house', bed: 'bed', public: 'people', work: 'briefcase', out: 'pin' };

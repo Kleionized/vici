@@ -12,6 +12,7 @@ export { MonoText, H1, Title, P, Caps, type MonoTextProps, type TextVariant, typ
 export { NavBar, NavDashes, TitleHead, type NavCentre, type NavLeft, type NavRight } from './NavBar';
 export { PrimaryButton, GhostLink, NextFab, IconCircle, RingNext, DISABLED_OPACITY } from './buttons';
 export * from './icons';
+export * from './glyphs';
 // Phase 0 parts (one owner each — .overhaul/PHASE0.md)
 export * from './choices';
 export * from './rows';

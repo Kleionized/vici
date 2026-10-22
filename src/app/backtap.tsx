@@ -3,9 +3,8 @@ import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Linking, View } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 
-import { GhostLink, MonoText, NavBar, PrimaryButton, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
+import { Glyph, GhostLink, MonoText, NavBar, PrimaryButton, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
 import { mono } from '@/lib/theme';
 
 /**
@@ -49,9 +48,7 @@ const CONTROLS = 96 + 58;
 
 function Wave() {
   return (
-    <Svg width={30} height={30} viewBox="0 0 24 24">
-      <Path d="M2 9c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6-1.5M2 15c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6-1.5" fill="none" stroke={mono.onInk} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-    </Svg>
+    <Glyph name="waves" size={30} color={mono.onInk} />
   );
 }
 

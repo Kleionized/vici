@@ -155,6 +155,22 @@ for (const [id, variants] of byId) {
 for (const e of extra) heroes.push({ ...e, scale: heroes.find((h) => h.id === e.base)?.scale ?? 1.1 });
 if (exceptions.length) console.log('frames drawing an id their own way:\n  ' + exceptions.join('\n  '));
 heroes.sort((a, b) => a.id.localeCompare(b.id));
+/**
+ * Drawings drawn without their shelf (D56): the owner found a table under the
+ * open book needless. The board and its two legs are dropped, each by its exact
+ * rect, before the drawing is measured; a rect that no longer matches stops the
+ * run. Its bounds stay the designer's, so the book sits where it did.
+ */
+const NO_SHELF = { notebook: ['x="72" y="188" width="248"', 'x="84" y="195" width="6"', 'x="302" y="195" width="6"'] };
+for (const [id, rects] of Object.entries(NO_SHELF)) {
+  const h = heroes.find((x) => x.id === id);
+  if (!h) fail(`${id}: no such drawing`);
+  for (const r of rects) {
+    const re = new RegExp(`<rect ${r}[^>]*>(</rect>)?`);
+    if (!re.test(h.inner)) fail(`${id}: no shelf rect ${r}`);
+    h.inner = h.inner.replace(re, '');
+  }
+}
 for (const h of heroes) {
   if (h.base && BOUNDS[h.base] && !BOUNDS[h.id]) BOUNDS[h.id] = BOUNDS[h.base];
   h.nodes = tree(h.inner).flatMap(toNodes);

@@ -173,6 +173,12 @@ type HeroBoxProps = {
   bleed?: number;
   /** the box the page states (`393 × h`, the svg at `top`, scaled by `s`); the drawing's usual box when absent */
   box?: { h: number; top: number; s?: number };
+  /**
+   * draw the art smaller by this factor (D57): its painted top stays where it
+   * was, it narrows about the centre, and the box gives up the height the art
+   * gave up, so the words under it move up instead of a gap opening
+   */
+  shrink?: number;
   width?: number;
   style?: StyleProp<ViewStyle>;
 };
@@ -201,8 +207,15 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
   }
   const id = heroId(props.id);
   if (props.mode === 'box') {
-    const { h, top } = props.box ?? HERO_BOX[id];
-    const s = props.box?.s ?? HERO_SCALE[id];
+    const box = props.box ?? HERO_BOX[id];
+    const s0 = props.box?.s ?? HERO_SCALE[id];
+    const k = props.shrink ?? 1;
+    const [p0, p1] = HERO_PAINT_Y[id];
+    // where the art paints at its own scale, and the box top that keeps that painted top at the smaller one
+    const y0 = box.top + 190 + s0 * (p0 - 190);
+    const s = s0 * k;
+    const top = y0 - 190 - s * (p0 - 190);
+    const h = Math.round(box.h - s0 * (p1 - p0) * (1 - k));
     const { ox, oy } = cssOrigin(top, s, width);
     const bleed = props.bleed ?? 32;
     return (

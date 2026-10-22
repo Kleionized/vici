@@ -7,6 +7,9 @@ import { lhNormal, mono, ring, sans } from '@/lib/theme';
 import { LT } from './LessonText';
 import { LessonVizCard } from './LessonViz';
 
+/** the lesson drawings at four fifths of the frames' size (D57) */
+const LESSON_ART = 0.8;
+
 /**
  * One renderer per page kind (lessons.md §3.4–3.12). Every vertical gap is the
  * frame's stated `margin-top` (§3.3) — the band has no flex gap — and the
@@ -18,7 +21,7 @@ import { LessonVizCard } from './LessonViz';
 function Cover({ lesson }: { lesson: LessonContent }) {
   return (
     <>
-      <Hero mode="box" id={lesson.hero} box={lesson.heroBox} />
+      <Hero mode="box" shrink={LESSON_ART} id={lesson.hero} box={lesson.heroBox} />
       <LT r="label" center style={{ marginTop: 36 }}>{`Lesson ${lesson.n}`}</LT>
       <LT r="display" center style={{ marginTop: 12 }}>
         {lesson.title}
@@ -60,7 +63,7 @@ function Read({ page }: { page: Extract<LessonPage, { k: 'read' }> }) {
   const lead = page.hero ? 36 : page.viz ? 28 : 0;
   return (
     <>
-      {page.hero ? <Hero mode="box" id={page.hero} box={page.box} /> : page.viz ? <LessonVizCard viz={page.viz} /> : null}
+      {page.hero ? <Hero mode="box" shrink={LESSON_ART} id={page.hero} box={page.box} /> : page.viz ? <LessonVizCard viz={page.viz} /> : null}
       {page.part ? (
         <>
           <LT r="label" style={{ marginTop: lead }}>{`Part ${page.part}`}</LT>
@@ -282,7 +285,7 @@ function Reflect({ page, note, onNote }: { page: Extract<LessonPage, { k: 'refle
 function Task({ page, title }: { page: Extract<LessonPage, { k: 'task' }>; title: string }) {
   return (
     <>
-      {page.hero ? <Hero mode="box" id={page.hero} box={page.box} /> : null}
+      {page.hero ? <Hero mode="box" shrink={LESSON_ART} id={page.hero} box={page.box} /> : null}
       <LT r="label" style={{ marginTop: page.hero ? 36 : 0 }}>
         Today’s task
       </LT>

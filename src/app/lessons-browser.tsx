@@ -1,9 +1,8 @@
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
-import Svg, { Circle, Path } from 'react-native-svg';
 
 import { LessonRow, ROW_GAP, useCourseDay } from '@/components/library/WeekPage';
-import { MonoText, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { Glyph, MonoText, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { CURRICULUM_84 } from '@/content/curriculum84';
 import { mono } from '@/lib/theme';
 
@@ -68,12 +67,7 @@ export default function LessonsBrowser() {
   );
 }
 
-/** A search glyph in the kit's line weight — no frame draws one. */
+/** A search glyph from the solid set (D55) — no frame draws one. */
 function SearchGlyph() {
-  return (
-    <Svg width={18} height={18} viewBox="0 0 18 18">
-      <Circle cx={7.75} cy={7.75} r={5.75} fill="none" stroke={mono.ink} strokeWidth={2} />
-      <Path d="M12.2 12.2L16 16" stroke={mono.ink} strokeWidth={2} strokeLinecap="round" />
-    </Svg>
-  );
+  return <Glyph name="search" size={18} color={mono.ink} />;
 }
