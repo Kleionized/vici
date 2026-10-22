@@ -64,7 +64,8 @@ export function useHarnessScroll(ref: RefObject<ScrollView | null>, pages?: Page
 
 /** Press the most recently mounted control with this label; false if there is none. */
 export function harnessPress(label: string): boolean {
-  const list = presses.get(label);
+  // a control whose label carries live data ("Recovery rating 83, …") is pressed by its label's start
+  const list = presses.get(label)?.length ? presses.get(label) : [...presses.entries()].filter(([k]) => k.startsWith(label)).flatMap(([, v]) => v).sort((a, b) => a.id - b.id);
   const last = list?.[list.length - 1];
   if (!last) return false;
   last.fn();

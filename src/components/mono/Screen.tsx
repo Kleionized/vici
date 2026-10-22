@@ -218,9 +218,14 @@ export function ScrollRegion({
   const ratioRef = useRef(0);
   const box = useRef(0);
   const content = useRef({ h: 0, at: 0 });
+  /* Native draws past the band's edges (rings at the content edge stay whole)
+     only while the content fits; a column taller than its band is clipped to
+     it, or its rows run under the controls past the band (Settings' Sign out). */
+  const [overflows, setOverflows] = useState(false);
   const fit = useCallback(() => {
     const total = slackRef.current;
     const { h, at } = content.current;
+    setOverflows(box.current > 0 && h > box.current + 0.5);
     if (total <= 0 || box.current <= 0 || h <= 0) return setRatio(0);
     const next = Math.min(1, Math.max(0, (h + total * at - box.current) / total));
     setRatio((r) => (Math.abs(next - r) * total < 0.5 ? r : next));
@@ -267,7 +272,7 @@ export function ScrollRegion({
         }}
         // Native keeps rings at the content edge visible; on web `overflow` is what
         // makes the box scroll at all (RN-web's overflowY:auto), so it stays.
-        style={Platform.OS === 'web' ? { flex: 1 } : { flex: 1, overflow: 'visible' }}
+        style={Platform.OS === 'web' ? { flex: 1 } : { flex: 1, overflow: overflows ? 'hidden' : 'visible' }}
         contentContainerStyle={[{ flexGrow: slack > 0 ? 0 : 1 }, contentStyle]}>
         <SqueezeContext.Provider value={squeeze}>{children}</SqueezeContext.Provider>
       </CueScrollView>

@@ -28,6 +28,8 @@ The bundle-to-bundle markup diff called these unchanged (or hero-only); the pixe
 - Medallion tier pages: every large figure ("×23", "Day 13") sat ~1 pt high — the half-leading (D40).
 - Morning pledge boards: the quote mark sits in a 27.3 line box, not 24.
 - Urge log, When: a ruled row is 56 plus its rule (57), not 56 including it.
+- Settings: the owner's added rows make the column scroll at 852, and the scroll band drew its rows past its foot, under "Sign out" — the band now clips once its content is taller than it (D47).
+- Week IV and lesson 72's page 14 first read 7.7 % and 3.3 %: shot before the page had settled; with the settle the harness now waits for, 0.105 % and 0.052 % (the rig, not the app).
 
 ## Where the platform cannot match the design exactly
 
@@ -52,5 +54,5 @@ The bundle-to-bundle markup diff called these unchanged (or hero-only); the pixe
 
 - Start Metro with `EXPO_PUBLIC_FORCE_MOCK=1 EXPO_PUBLIC_HARNESS=1 npx expo start --dev-client` and run the development build in the simulator.
 - Start the target server: `node scripts/vici-ui-2/harness-server.mjs` (port 8099). The app polls it (`src/dev/HarnessDriver.tsx`).
-- Capture and diff ledger rows: `node scripts/vici-ui-2/check.mjs '<row regex>'`; one board: `node scripts/vici-ui-2/shoot-app.mjs <view> <state>:<name>`. Views on `/dev/harness?view=`: `sos`, `relapse`, `chooser`, `textlab`, `vlab`. Routes are opened with a seeded account (`pixel-diff/seeds/`, `scripts/vici-ui-2/capture-seeds.mjs`), a stopped clock and the target's steps (D35).
+- Capture and diff ledger rows: `node scripts/vici-ui-2/check.mjs '<row regex>'`; one board: `node scripts/vici-ui-2/shoot-app.mjs <view> <state>:<name>`. Views on `/dev/harness?view=`: `sos`, `relapse`, `chooser`, `textlab`, `vlab`. Routes are opened with a seeded account (`pixel-diff/seeds/`, `scripts/vici-ui-2/capture-seeds.mjs`), a stopped clock and the target's steps (D35). Under the harness a scroll view does not flash its indicator on mount (the frames draw the settled board) and arrival modals (a letter, a medallion) are held back; neither changes a build without `EXPO_PUBLIC_HARNESS=1`.
 - Excluded from production: the harness screen (`src/dev/HarnessScreen.tsx`, its fixtures, the text labs) and the driver (`src/dev/HarnessDriver.tsx`, which polls `localhost:8099`) are required only behind `__DEV__` (and, for the driver, `EXPO_PUBLIC_HARNESS === '1'`), which a release build folds to `false`, so neither is in a release bundle — checked by exporting the iOS release bundle and searching it: no `localhost:8099`, `HarnessScreen`, `VLab`, `textlab`, `sosFixture` or `RELAPSE_PRESETS`. In a release build `/dev/harness` redirects to `/`. The press / scroll / field registry (`src/dev/harnessRegistry.ts`) stays in the bundle as no-ops (`HARNESS` is `false`); `/splash?hold=1` and `/paywall?stage=` are read only under `__DEV__`, and `/welcome?step=` only in a mock build (`EXPO_PUBLIC_FORCE_MOCK=1`).

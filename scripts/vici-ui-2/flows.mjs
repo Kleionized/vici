@@ -18,9 +18,16 @@ const h12 = (c = '09:41') => new Date(2026, 9, 21, Number(c.split(':')[0]), Numb
 const FLOWS = [
   ['tabs', '/today', 'today-0900-seed', [
     ['today', [], 'app__052__21-today'],
-    ['log', ['tap:Log', 'wait:900'], 'app__266__91-log-urges'],
-    ['library', ['tap:Library', 'wait:900'], null],
-    ['sos', ['tap:SOS', 'wait:900'], 'app__293__97-sos-urge-or-relapse'],
+    ['sos', ['tap:SOS', 'wait:1200'], 'app__293__97-sos-urge-or-relapse'],
+  ]],
+  ['log-tab', '/today', 'logs-seed', [
+    ['chooser', ['tap:Log', 'wait:1200'], 'app__265__90-log-chooser'],
+  ]],
+  ['journey-tab', '/today', 'medallions-seed', [
+    ['medallions', ['tap:Journey', 'wait:1200'], 'app__243__88-medallions'],
+  ]],
+  ['library-tab', '/today', 'library-seed', [
+    ['week', ['tap:Library', 'wait:1600'], null],
   ]],
   ['score', '/today', 'today-0900-seed', [
     ['score', ['tap:Recovery rating', 'wait:1200'], 'app__053__21b-score-detail'],
@@ -28,17 +35,23 @@ const FLOWS = [
   ['settings', '/today', 'settings-seed', [
     ['settings', ['tap:Open settings', 'wait:1200'], 'app__283__92-settings'],
     ['app-lock', ['tap:Open settings', 'wait:1200', 'tap:App lock', 'wait:1200'], 'app__292__95-app-lock'],
+    ['privacy', ['tap:Open settings', 'wait:1200', 'tap:Data & privacy', 'wait:1200'], 'app__291__94-data-privacy'],
+  ]],
+  ['profile', '/today', 'settings-profile-seed', [
+    ['profile', ['tap:Open settings', 'wait:1200', 'tap:Edit profile', 'wait:1200'], 'app__284__93-edit-profile'],
+  ]],
+  ['vow', '/today', 'settings-vow-dated-seed', [
     ['vow', ['tap:Open settings', 'wait:1200', 'tap:Your vow', 'wait:1200'], 'app__289__92c-your-vow'],
   ]],
   ['morning', '/today', 'day-seed-own', [
     ['cover', ['tap:Morning check-in', 'wait:1200'], 'app__059__21d0-morning-check-in'],
-    ['task', ['tap:Morning check-in', 'wait:1200', 'tap:Begin', 'wait:800'], 'app__060__21d1-morning-yesterdays-task'],
+    ['task', ['tap:Morning check-in', 'wait:1200', 'tap:Begin', 'wait:900'], 'app__060__21d1-morning-yesterdays-task'],
   ]],
   ['log', '/log', 'logs-reports-seed', [
-    ['reports', ['tap:Reports', 'wait:800'], 'app__268__91-3-log-reports'],
+    ['reports', ['tap:Reports', 'wait:900'], 'app__268__91-3-log-reports'],
   ]],
-  ['urge', '/sos', 'sos-seed', [
-    ['chooser', [], 'app__293__97-sos-urge-or-relapse'],
+  ['medallion', '/milestones', 'medallions-seed', [
+    ['tiers', ['tap:Breakwater', 'wait:1200'], null],
   ]],
 ];
 
