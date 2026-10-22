@@ -5,7 +5,7 @@ import { Platform, ScrollView, View, type ScrollViewProps, type StyleProp, type 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Grain } from '@/components/ui/Grain';
-import { useHarnessScroll } from '@/dev/harnessRegistry';
+import { HARNESS, useHarnessScroll } from '@/dev/harnessRegistry';
 import { layout, mono } from '@/lib/theme';
 
 const noise = require('../../../assets/images/noise.png');
@@ -113,7 +113,8 @@ export function CueScrollView({
     report();
   };
   useEffect(() => {
-    if (!native || !overflows) return;
+    // the capture harness shoots the settled board, after the cue would have faded (D35)
+    if (!native || !overflows || HARNESS) return;
     const t = setTimeout(() => own.current?.flashScrollIndicators(), 500);
     return () => clearTimeout(t);
   }, [native, overflows]);
