@@ -4,6 +4,7 @@
 import { RELAPSE_CAUSES } from '@/content/relapse.data';
 import { LETTER_BY_ID, MILESTONE_LETTERS, RELAPSE_LETTERS } from '@/content/viciLetters';
 import { MORNING_NOTES, RELAPSE_NOTES } from '@/content/morningNotes';
+import type { TidelineEvent } from '@/lib/types';
 import { dueMilestone, fillName, letterText, morningNoteFor, morningNoteForDay, relapseLetterFor } from '@/lib/viciPost';
 
 let failed = 0;
@@ -37,7 +38,7 @@ ok('a letter reads "Hi Sam," with a name and "Hi," without', letterText(LETTER_B
 const START = { programmeStartedAt: '2026-01-05' } as never;
 const at = (y: number, m: number, d: number, h = 22) => new Date(y, m, d, h).getTime();
 const key = (y: number, m: number, d: number) => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-type Ev = { type: string; createdAt: number; trigger?: string; precedingState?: { reasons?: string[] } };
+type Ev = Pick<TidelineEvent, 'type' | 'createdAt' | 'trigger'>;
 const slip = (y: number, m: number, d: number, trigger?: string): Ev => ({ type: 'lapse', createdAt: at(y, m, d), trigger });
 
 // ── the morning notification
