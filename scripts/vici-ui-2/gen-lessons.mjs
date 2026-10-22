@@ -167,7 +167,8 @@ function atom(n, label, runs) {
   if (n.tag === '#text') return die(`${label}: bare text in the band`), { k: 'bad' };
   if (d.position === 'relative' && d.width === '393px') {
     const svg = n.kids.find((x) => x.tag === 'svg');
-    return { k: 'hero', id: svg?.attrs['data-hero'], mt: d['margin-top'] ?? '0' };
+    // the box the frame states for this page — it differs from page to page (a compact 117 on long pages)
+    return { k: 'hero', id: svg?.attrs['data-hero'], mt: d['margin-top'] ?? '0', box: { h: parseFloat(d.height), top: parseFloat(svg?.decls?.top) } };
   }
   if (find(n, (x) => x.attrs?.viewBox === '0 0 28 22')) return { k: 'quoteGlyph', mt: d['margin-top'] ?? '0' };
   if (find(n, (x) => x.decls?.width === '96px' && x.decls?.height === '96px')) return { k: 'checkCircle', mt: d['margin-top'] ?? '0' };
@@ -289,6 +290,7 @@ for (const L of lessonsOnDisk()) {
     if (F.k === 1) {
       lesson.title = one('display').t;
       lesson.hero = hero;
+      lesson.heroBox = one('hero').box;
       if (ks.join(' ') !== 'hero label display') die(`${F.label}: cover ${ks.join(' ')}`);
       if (one('label').t !== `Lesson ${L.n}`) die(`${F.label}: cover label`);
       expectBottom('Begin');
@@ -340,7 +342,7 @@ for (const L of lessonsOnDisk()) {
       if (one('title').t !== lesson.title) die(`${F.label}: task title is not the lesson title`);
       if (hero && hero !== lesson.hero) die(`${F.label}: task hero ${hero} is not the cover's`);
       expectBottom('next');
-      page = { k: 'task', hero, body: bodies };
+      page = { k: 'task', hero, box: hero ? one('hero').box : undefined, body: bodies };
     } else if (has('done')) {
       if (!/^body( body)* done$/.test(ks.join(' '))) die(`${F.label}: task end ${ks.join(' ')}`);
       expectBottom('Finish lesson');
@@ -351,7 +353,7 @@ for (const L of lessonsOnDisk()) {
       if (!/^(hero |viz )?(label title )?body( body)*$/.test(ks.join(' '))) die(`${F.label}: reading ${ks.join(' ')}`);
       expectBottom('next');
       expectCentred(false);
-      page = { k: 'read', part: lab ? +lab.t.slice(5) : undefined, title: lab ? one('title').t : undefined, hero, viz, body: bodies };
+      page = { k: 'read', part: lab ? +lab.t.slice(5) : undefined, title: lab ? one('title').t : undefined, hero, box: hero ? one('hero').box : undefined, viz, body: bodies };
     }
     lesson.pages.push(page);
   }
@@ -465,6 +467,9 @@ let src = `/**
  */
 import type { HeroId } from './heroes';
 
+/** A page's hero box as its frame states it: a \`393 × h\` box with the svg at \`top\`. */
+export type HeroBoxGeom = { h: number; top: number };
+
 export type LessonViz =
   | { type: 'chain'; cap?: string; steps: string[]; mark?: number; tag?: string }
   | { type: 'compare'; items: { l: string; v?: string; t: string }[]; hi?: number }
@@ -489,7 +494,7 @@ export type LessonPage =
   /** the opening (frame 2) and closing (before the task) quotes */
   | { k: 'quote'; text: string; by: string }
   /** a reading page: \`part\` + \`title\` open a Part; a hero or a visualisation may lead */
-  | { k: 'read'; part?: number; title?: string; hero?: HeroId; viz?: LessonViz; body: string[] }
+  | { k: 'read'; part?: number; title?: string; hero?: HeroId; box?: HeroBoxGeom; viz?: LessonViz; body: string[] }
   /** \`exclusive\`: the letters that clear the others ("Choose F alone if it fits.") */
   | { k: 'question'; prompt: string; instr: string; multi: boolean; exclusive?: string[]; options: LessonOption[]; density: OptionDensity }
   /** the designated best answer(s) — not the reader's choice */
@@ -497,7 +502,7 @@ export type LessonPage =
   /** "After choosing" + lead + one piece + the note field */
   | { k: 'reflect'; lead: string; body: string[] }
   /** \`Today’s task\` + the lesson title (+ the cover's hero when it fits) */
-  | { k: 'task'; hero?: HeroId; body: string[] }
+  | { k: 'task'; hero?: HeroId; box?: HeroBoxGeom; body: string[] }
   /** the rest of the practice + the Done-when card · Finish lesson */
   | { k: 'taskEnd'; body: string[]; done: string }
   | { k: 'complete'; line: string };
@@ -508,13 +513,15 @@ export interface LessonContent {
   title: string;
   /** the cover's illustration */
   hero: HeroId;
+  /** the box the cover draws it in */
+  heroBox: HeroBoxGeom;
   pages: LessonPage[];
 }
 
 export const LESSONS: Record<number, LessonContent> = {
 `;
 for (const L of model) {
-  src += `  ${L.n}: {\n    n: ${L.n},\n    week: ${L.week},\n    title: ${JSON.stringify(L.title)},\n    hero: ${JSON.stringify(L.hero)},\n    pages: [\n`;
+  src += `  ${L.n}: {\n    n: ${L.n},\n    week: ${L.week},\n    title: ${JSON.stringify(L.title)},\n    hero: ${JSON.stringify(L.hero)},\n    heroBox: ${JSON.stringify(L.heroBox)},\n    pages: [\n`;
   for (const p of L.pages) src += `      ${lit(p)},\n`;
   src += `    ],\n  },\n`;
 }

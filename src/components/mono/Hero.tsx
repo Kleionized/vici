@@ -171,6 +171,8 @@ type HeroBoxProps = {
   id: HeroKey;
   /** the content gutter the box bleeds through (`margin: 0 −32px`) */
   bleed?: number;
+  /** the box the page states (`393 × h`, the svg at `top`); the drawing's usual box when absent */
+  box?: { h: number; top: number };
   width?: number;
   style?: StyleProp<ViewStyle>;
 };
@@ -199,7 +201,7 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
   }
   const id = heroId(props.id);
   if (props.mode === 'box') {
-    const { h, top } = HERO_BOX[id];
+    const { h, top } = props.box ?? HERO_BOX[id];
     const s = HERO_SCALE[id];
     const { ox, oy } = cssOrigin(top, s, width);
     const bleed = props.bleed ?? 32;
