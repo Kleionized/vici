@@ -62,6 +62,14 @@ const N1 = [...NIGHT, 'tap:Continue', 'wait:700', 'tap:Calm', 'wait:300'];
 const N2 = [...N1, 'tap:Next', 'wait:700'];
 const N3 = [...N2, 'tap:Loneliness', 'wait:300', 'tap:Next', 'wait:800'];
 const N4 = [...N3, 'tap:Continue', 'wait:900'];
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+/** `Week <roman> <title>` and its `P2` (the rows scrolled to their end). */
+const weekTarget = (screen) => {
+  const m = /^Week ([IVX]+) .*?( P2)?$/.exec(screen ?? '');
+  if (!m) return null;
+  const n = ROMAN.indexOf(m[1]) + 1;
+  return { route: `/week/${n}`, seed: 'library-seed', steps: m[2] ? ['wait:600', `end:week-${n}`] : undefined };
+};
 const SCREENS = {
   'Morning Check-in Time': { route: '/routines/morning-time', seed: 'v-premium-seed' },
   'Nightly Check-in Time': { route: '/routines/night-time', seed: 'v-premium-seed' },
@@ -109,8 +117,8 @@ export function targetOf(row) {
     if (TAIL[row.screen]) return { route: `/welcome?step=${TAIL[row.screen]}`, seed: row.screen === 'The Vow' ? 'tail-vow-seed' : 'tail-session-seed', globals: { __ONB_ANSWERS: TAIL_MAN }, time: h12(), wait: 2500 };
     if (ROUTES[row.screen]) return { ...ROUTES[row.screen], time: h12(), wait: 2500 };
   }
-  if (file === 'app' && SCREENS[row.screen]) {
-    const t = SCREENS[row.screen];
+  if (file === 'app' && (SCREENS[row.screen] || weekTarget(row.screen))) {
+    const t = SCREENS[row.screen] ?? weekTarget(row.screen);
     return { ...t, time: t.time ?? h12(), wait: t.wait ?? waitFor(t.steps) };
   }
   const rel = file === 'relapse' ? relapseSeq[i] : file === 'app' && i >= 294 && i <= 368 ? relapseSeq[i - 294] : null;

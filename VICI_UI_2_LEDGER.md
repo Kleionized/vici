@@ -5,7 +5,7 @@ Starting branch: `vici-overhaul-final` · work branch: `vici-ui-2` · baseline c
 
 Generated from `scripts/vici-ui-2/ledger.json` by `node scripts/vici-ui-2/ledger.mjs md`. Edit the JSON (or use `set`), never this table.
 
-Rows: 2182 · NOT_STARTED 1671 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 503 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
+Rows: 2182 · NOT_STARTED 1647 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEAN 527 · PASS_1 0 · PASS_2 0 · PASS_3 0 · DONE 0 · SUPERSEDED 0
 
 | id | design file | artboard | app file | spec | harness | status | diff | verified | note |
 |---|---|---|---|---|---|---|---|---|---|
@@ -288,7 +288,7 @@ Rows: 2182 · NOT_STARTED 1671 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__022__21-masturbation-goal | Email Login.dc.html | 21 · Masturbation goal | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=goalMast · seed f-funnel-user | DIFF_CLEAN | 0.011 % | 2026-10-22 |  |
 | app__023__22-what-youve-tried | Email Login.dc.html | 22 · What you’ve tried | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=tried · seed f-funnel-user | DIFF_CLEAN | 0.053 % | 2026-10-22 |  |
 | app__024__23-goal-confirmation | Email Login.dc.html | 23 · Goal confirmation | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=goalConfirm · seed f-funnel-user | DIFF_CLEAN | 0.224 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
-| app__025__24-build-plan | Email Login.dc.html | 24 · Build plan | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=plan-together&hold=1 · seed tail-session-seed | DIFF_CLEAN | 0.228 % | 2026-10-22 | kept copy (D28); spinner phase |
+| app__025__24-build-plan | Email Login.dc.html | 24 · Build plan | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=plan-together&hold=1 · seed tail-session-seed | DIFF_CLEAN | 0.289 % | 2026-10-22 | kept copy (D28); spinner phase |
 | app__026__25-this-is-where-wed-start | Email Login.dc.html | 25 · This Is Where We’d Start | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=whered-start · seed tail-session-seed | DIFF_CLEAN | 0.620 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__027__26-start-here | Email Login.dc.html | 26 · Start Here | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=start-here · seed tail-session-seed | DIFF_CLEAN | 0.088 % | 2026-10-22 |  |
 | app__028__26a-start-here-step-1 | Email Login.dc.html | 26A · Start Here — Step 1 | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=start-here-1 · seed tail-session-seed | DIFF_CLEAN | 0.019 % | 2026-10-22 |  |
@@ -305,7 +305,7 @@ Rows: 2182 · NOT_STARTED 1671 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__039__34-what-you-want-back | Email Login.dc.html | 34 · What You Want Back | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=want-back · seed tail-session-seed | DIFF_CLEAN | 0.549 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__040__38-a-letter-arrived | Email Login.dc.html | 38 · A Letter Arrived | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=letter-arrived · seed tail-session-seed | DIFF_CLEAN | 0.495 % | 2026-10-22 | kept copy: owner 10 Oct (D28) |
 | app__041__39-a-letter-from-week-xii | Email Login.dc.html | 39 · A Letter From Week XII | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=letter-read · seed tail-session-seed | DIFF_CLEAN | 0.116 % | 2026-10-22 |  |
-| app__042__40-the-vow | Email Login.dc.html | 40 · The Vow | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=vow · seed tail-vow-seed | DIFF_CLEAN | 0.092 % | 2026-10-22 |  |
+| app__042__40-the-vow | Email Login.dc.html | 40 · The Vow | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=vow · seed tail-vow-seed | DIFF_CLEAN | 0.065 % | 2026-10-22 |  |
 | app__043__41-medallion-earned | Email Login.dc.html | 41 · Medallion Earned | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=medallion · seed tail-session-seed | DIFF_CLEAN | 0.022 % | 2026-10-22 |  |
 | app__044__42-reminders | Email Login.dc.html | 42 · Reminders | src/app/(onboarding)/welcome.tsx | specs/vici-ui-2/onboarding.md | /welcome?step=reminders · seed tail-session-seed | DIFF_CLEAN | 1.196 % | 2026-10-22 | kept copy (D28); note bodies are REMINDER_NOTES |
 | app__045__43-paywall | Email Login.dc.html | 43 · Paywall | src/components/paywall/PaywallFlow.tsx | specs/vici-ui-2/onboarding.md | /paywall · seed v-premium-seed | DIFF_CLEAN | 3.028 % | 2026-10-22 | way out, terms, store line kept (D31); copy (D28) |
@@ -333,38 +333,38 @@ Rows: 2182 · NOT_STARTED 1671 · SPEC_EXTRACTED 0 · IMPLEMENTED 8 · DIFF_CLEA
 | app__067__21d6b-morning-one-goal | Email Login.dc.html | 21D6B · Morning — One goal | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.264 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
 | app__068__21d7-morning-done | Email Login.dc.html | 21D7 · Morning — Done | src/app/day/morning.tsx | specs/vici-ui-2/today-checkins.md | /day/morning · seed day-seed-own | DIFF_CLEAN | 0.024 % | 2026-10-22 |  |
 | app__069__21e0-night-check-in | Email Login.dc.html | 21E0 · Night — Check-in | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
-| app__070__21e1-night-how-was-today | Email Login.dc.html | 21E1 · Night — How was today | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.328 % | 2026-10-22 |  |
-| app__071__21e2-night-emotions | Email Login.dc.html | 21E2 · Night — Emotions | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.088 % | 2026-10-22 |  |
-| app__072__21e3-night-what-caused-it | Email Login.dc.html | 21E3 · Night — What caused it | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.132 % | 2026-10-22 |  |
-| app__073__21e4-night-reflection | Email Login.dc.html | 21E4 · Night — Reflection | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.641 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
-| app__074__21e5-night-record | Email Login.dc.html | 21E5 · Night — Record | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.355 % | 2026-10-22 |  |
-| app__075__21e5b-night-tonights-action | Email Login.dc.html | 21E5B · Night — Tonight’s action | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed vday-seed-d1-own | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
-| app__076__21e5c-night-proud-of | Email Login.dc.html | 21E5C · Night — Proud of | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.308 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
-| app__077__21e6-night-closed | Email Login.dc.html | 21E6 · Night — Closed | src/app/day/night.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
-| app__078__92a-week-i-reset-i | Email Login.dc.html | 92A · Week I — Reset · i |  |  |  | NOT_STARTED |  |  |  |
-| app__079__92a2-week-i-reset-ii | Email Login.dc.html | 92A2 · Week I — Reset · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__080__92b-week-ii-changing-your-mindset-i | Email Login.dc.html | 92B · Week II — Changing Your Mindset · i |  |  |  | NOT_STARTED |  |  |  |
-| app__081__92b2-week-ii-changing-your-mindset-ii | Email Login.dc.html | 92B2 · Week II — Changing Your Mindset · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__082__92c-week-iii-in-the-moment-i | Email Login.dc.html | 92C · Week III — In the Moment · i |  |  |  | NOT_STARTED |  |  |  |
-| app__083__92c2-week-iii-in-the-moment-ii | Email Login.dc.html | 92C2 · Week III — In the Moment · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__084__92d-week-iv-know-your-brain-i | Email Login.dc.html | 92D · Week IV — Know Your Brain · i |  |  |  | NOT_STARTED |  |  |  |
-| app__085__92d2-week-iv-know-your-brain-ii | Email Login.dc.html | 92D2 · Week IV — Know Your Brain · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__086__92e-week-v-why-it-feels-worth-it-i | Email Login.dc.html | 92E · Week V — Why It Feels Worth It · i |  |  |  | NOT_STARTED |  |  |  |
-| app__087__92e2-week-v-why-it-feels-worth-it-ii | Email Login.dc.html | 92E2 · Week V — Why It Feels Worth It · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__088__92f-week-vi-discipline-i | Email Login.dc.html | 92F · Week VI — Discipline · i |  |  |  | NOT_STARTED |  |  |  |
-| app__089__92f2-week-vi-discipline-ii | Email Login.dc.html | 92F2 · Week VI — Discipline · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__090__92g-week-vii-relapse-and-adversity-i | Email Login.dc.html | 92G · Week VII — Relapse and Adversity · i |  |  |  | NOT_STARTED |  |  |  |
-| app__091__92g2-week-vii-relapse-and-adversity-ii | Email Login.dc.html | 92G2 · Week VII — Relapse and Adversity · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__092__92h-week-viii-boredom-and-meaning-i | Email Login.dc.html | 92H · Week VIII — Boredom and Meaning · i |  |  |  | NOT_STARTED |  |  |  |
-| app__093__92h2-week-viii-boredom-and-meaning-ii | Email Login.dc.html | 92H2 · Week VIII — Boredom and Meaning · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__094__92i-week-ix-connection-i | Email Login.dc.html | 92I · Week IX — Connection · i |  |  |  | NOT_STARTED |  |  |  |
-| app__095__92i2-week-ix-connection-ii | Email Login.dc.html | 92I2 · Week IX — Connection · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__096__92j-week-x-yourself-i | Email Login.dc.html | 92J · Week X — Yourself · i |  |  |  | NOT_STARTED |  |  |  |
-| app__097__92j2-week-x-yourself-ii | Email Login.dc.html | 92J2 · Week X — Yourself · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__098__92k-week-xi-build-a-life-you-want-i | Email Login.dc.html | 92K · Week XI — Build a Life You Want · i |  |  |  | NOT_STARTED |  |  |  |
-| app__099__92k2-week-xi-build-a-life-you-want-ii | Email Login.dc.html | 92K2 · Week XI — Build a Life You Want · ii |  |  |  | NOT_STARTED |  |  |  |
-| app__100__92l-week-xii-leave-it-behind-i | Email Login.dc.html | 92L · Week XII — Leave It Behind · i |  |  |  | NOT_STARTED |  |  |  |
-| app__101__92l2-week-xii-leave-it-behind-ii | Email Login.dc.html | 92L2 · Week XII — Leave It Behind · ii |  |  |  | NOT_STARTED |  |  |  |
+| app__070__21e1-night-how-was-today | Email Login.dc.html | 21E1 · Night — How was today | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.328 % | 2026-10-22 |  |
+| app__071__21e2-night-emotions | Email Login.dc.html | 21E2 · Night — Emotions | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.088 % | 2026-10-22 |  |
+| app__072__21e3-night-what-caused-it | Email Login.dc.html | 21E3 · Night — What caused it | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.132 % | 2026-10-22 |  |
+| app__073__21e4-night-reflection | Email Login.dc.html | 21E4 · Night — Reflection | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.641 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__074__21e5-night-record | Email Login.dc.html | 21E5 · Night — Record | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.355 % | 2026-10-22 |  |
+| app__075__21e5b-night-tonights-action | Email Login.dc.html | 21E5B · Night — Tonight’s action | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed vday-seed-d1-own | DIFF_CLEAN | 0.060 % | 2026-10-22 |  |
+| app__076__21e5c-night-proud-of | Email Login.dc.html | 21E5C · Night — Proud of | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.308 % | 2026-10-22 | typed line in a native field (D39); copy (D28) on 73 |
+| app__077__21e6-night-closed | Email Login.dc.html | 21E6 · Night — Closed | src/components/library/WeekPage.tsx | specs/vici-ui-2/today-checkins.md | /day/night · seed day-seed-own | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |
+| app__078__92a-week-i-reset-i | Email Login.dc.html | 92A · Week I — Reset · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/1 · seed library-seed | DIFF_CLEAN | 0.118 % | 2026-10-22 |  |
+| app__079__92a2-week-i-reset-ii | Email Login.dc.html | 92A2 · Week I — Reset · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/1 · seed library-seed | DIFF_CLEAN | 0.117 % | 2026-10-22 |  |
+| app__080__92b-week-ii-changing-your-mindset-i | Email Login.dc.html | 92B · Week II — Changing Your Mindset · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/2 · seed library-seed | DIFF_CLEAN | 0.130 % | 2026-10-22 |  |
+| app__081__92b2-week-ii-changing-your-mindset-ii | Email Login.dc.html | 92B2 · Week II — Changing Your Mindset · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/2 · seed library-seed | DIFF_CLEAN | 0.126 % | 2026-10-22 |  |
+| app__082__92c-week-iii-in-the-moment-i | Email Login.dc.html | 92C · Week III — In the Moment · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/3 · seed library-seed | DIFF_CLEAN | 0.186 % | 2026-10-22 |  |
+| app__083__92c2-week-iii-in-the-moment-ii | Email Login.dc.html | 92C2 · Week III — In the Moment · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/3 · seed library-seed | DIFF_CLEAN | 0.189 % | 2026-10-22 |  |
+| app__084__92d-week-iv-know-your-brain-i | Email Login.dc.html | 92D · Week IV — Know Your Brain · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/4 · seed library-seed | DIFF_CLEAN | 0.124 % | 2026-10-22 |  |
+| app__085__92d2-week-iv-know-your-brain-ii | Email Login.dc.html | 92D2 · Week IV — Know Your Brain · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/4 · seed library-seed | DIFF_CLEAN | 0.123 % | 2026-10-22 |  |
+| app__086__92e-week-v-why-it-feels-worth-it-i | Email Login.dc.html | 92E · Week V — Why It Feels Worth It · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/5 · seed library-seed | DIFF_CLEAN | 0.083 % | 2026-10-22 |  |
+| app__087__92e2-week-v-why-it-feels-worth-it-ii | Email Login.dc.html | 92E2 · Week V — Why It Feels Worth It · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/5 · seed library-seed | DIFF_CLEAN | 0.083 % | 2026-10-22 |  |
+| app__088__92f-week-vi-discipline-i | Email Login.dc.html | 92F · Week VI — Discipline · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/6 · seed library-seed | DIFF_CLEAN | 0.087 % | 2026-10-22 |  |
+| app__089__92f2-week-vi-discipline-ii | Email Login.dc.html | 92F2 · Week VI — Discipline · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/6 · seed library-seed | DIFF_CLEAN | 0.083 % | 2026-10-22 |  |
+| app__090__92g-week-vii-relapse-and-adversity-i | Email Login.dc.html | 92G · Week VII — Relapse and Adversity · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/7 · seed library-seed | DIFF_CLEAN | 0.071 % | 2026-10-22 |  |
+| app__091__92g2-week-vii-relapse-and-adversity-ii | Email Login.dc.html | 92G2 · Week VII — Relapse and Adversity · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/7 · seed library-seed | DIFF_CLEAN | 0.070 % | 2026-10-22 |  |
+| app__092__92h-week-viii-boredom-and-meaning-i | Email Login.dc.html | 92H · Week VIII — Boredom and Meaning · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/8 · seed library-seed | DIFF_CLEAN | 0.125 % | 2026-10-22 |  |
+| app__093__92h2-week-viii-boredom-and-meaning-ii | Email Login.dc.html | 92H2 · Week VIII — Boredom and Meaning · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/8 · seed library-seed | DIFF_CLEAN | 0.120 % | 2026-10-22 |  |
+| app__094__92i-week-ix-connection-i | Email Login.dc.html | 92I · Week IX — Connection · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/9 · seed library-seed | DIFF_CLEAN | 0.099 % | 2026-10-22 |  |
+| app__095__92i2-week-ix-connection-ii | Email Login.dc.html | 92I2 · Week IX — Connection · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/9 · seed library-seed | DIFF_CLEAN | 0.096 % | 2026-10-22 |  |
+| app__096__92j-week-x-yourself-i | Email Login.dc.html | 92J · Week X — Yourself · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/10 · seed library-seed | DIFF_CLEAN | 0.124 % | 2026-10-22 |  |
+| app__097__92j2-week-x-yourself-ii | Email Login.dc.html | 92J2 · Week X — Yourself · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/10 · seed library-seed | DIFF_CLEAN | 0.119 % | 2026-10-22 |  |
+| app__098__92k-week-xi-build-a-life-you-want-i | Email Login.dc.html | 92K · Week XI — Build a Life You Want · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/11 · seed library-seed | DIFF_CLEAN | 0.124 % | 2026-10-22 |  |
+| app__099__92k2-week-xi-build-a-life-you-want-ii | Email Login.dc.html | 92K2 · Week XI — Build a Life You Want · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/11 · seed library-seed | DIFF_CLEAN | 0.124 % | 2026-10-22 |  |
+| app__100__92l-week-xii-leave-it-behind-i | Email Login.dc.html | 92L · Week XII — Leave It Behind · i | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/12 · seed library-seed | DIFF_CLEAN | 0.087 % | 2026-10-22 |  |
+| app__101__92l2-week-xii-leave-it-behind-ii | Email Login.dc.html | 92L2 · Week XII — Leave It Behind · ii | src/components/library/WeekPage.tsx | specs/vici-ui-2/library-weeks.md | /week/12 · seed library-seed | DIFF_CLEAN | 0.084 % | 2026-10-22 |  |
 | app__102__sos-working-flow | Email Login.dc.html | SOS — Working flow | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=live | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
 | app__103__01-sos-rate-the-urge | Email Login.dc.html | 01 · SOS — Rate the urge | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s01 | DIFF_CLEAN | 0.025 % | 2026-10-22 |  |
 | app__104__02-sos-where-are-you | Email Login.dc.html | 02 · SOS — Where are you | src/components/urge/sos.tsx | specs/vici-ui-2/sos.md | sos&state=s02 | DIFF_CLEAN | 0.016 % | 2026-10-22 |  |

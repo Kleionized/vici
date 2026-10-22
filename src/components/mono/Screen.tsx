@@ -87,6 +87,7 @@ export function Screen({
  */
 export function CueScrollView({
   ref,
+  harnessName,
   onLayout,
   onContentSizeChange,
   onMore,
@@ -96,10 +97,12 @@ export function CueScrollView({
   ref?: Ref<ScrollView>;
   /** called with whether content lies below the visible band (false once scrolled to the end) */
   onMore?: (more: boolean) => void;
+  /** what the capture harness calls this view (D35) */
+  harnessName?: string;
 }) {
   const native = Platform.OS !== 'web';
   const own = useRef<ScrollView | null>(null);
-  useHarnessScroll(own);
+  useHarnessScroll(own, harnessName ? { name: harnessName } : undefined);
   const box = useRef(0);
   const content = useRef(0);
   const [overflows, setOverflows] = useState(false);

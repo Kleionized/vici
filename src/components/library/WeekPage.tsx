@@ -24,26 +24,25 @@ import { mono } from '@/lib/theme';
  */
 
 /**
- * The svg `top` each week page states. They are not arbitrary — every week
- * stands its art on canvas 292 (`T = 102 − 1.1·(bounds bottom − 190)`, all twelve
- * to 0.05pt) — but the frames write these, so these are what is drawn.
+ * The svg `top` each week page states (`Vici UI 2`, redrawn heroes); the
+ * frames write these, so these are what is drawn.
  */
 export const WEEK_HERO_TOP: Readonly<Record<number, number>> = {
-  1: 80,
-  2: 98.9,
-  3: 63.9,
-  4: 114.4,
+  1: 102.6,
+  2: 125.6,
+  3: 125.6,
+  4: 126.6,
   5: 80,
   6: 98.9,
   7: 98.9,
-  8: 80,
-  9: 80,
-  10: 80,
-  11: 98.9,
-  12: 88.8,
+  8: 123.2,
+  9: 123.2,
+  10: 124.5,
+  11: 124.5,
+  12: 120.6,
 };
 
-export const HEADER_TOP = 338;
+export const HEADER_TOP = 362;
 export const ROWS_TOP = 472;
 export const ROW_H = 58;
 export const ROW_GAP = 8;
@@ -243,9 +242,7 @@ export function LessonRows({ week, day, onLesson }: { week: Curriculum84Week; da
 export function WeekHeader({ week, top = HEADER_TOP }: { week: Curriculum84Week; top?: number }) {
   return (
     <View style={{ position: 'absolute', left: 24, right: 24, top, gap: 8, alignItems: 'center' }}>
-      <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>
-        {`Week ${week.roman}`}
-      </MonoText>
+      {/* the week's numeral is the nav row's title (Vici UI 2) */}
       <MonoText v="title" center accessibilityRole="header" style={{ alignSelf: 'stretch' }}>
         {week.name}
       </MonoText>
@@ -295,6 +292,15 @@ export function WeekBack({ onPress, top = 60 }: { onPress: () => void; top?: num
   );
 }
 
+/** The week's numeral in the nav row, centred on the page (15/700 ink); it turns with the page. */
+export function WeekTitle({ week, top = 60 }: { week: Curriculum84Week; top?: number }) {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+      <MonoText v="rowLabel" wrap="nowrap" accessibilityRole="header" style={{ fontSize: 15 }}>{`Week ${week.roman}`}</MonoText>
+    </View>
+  );
+}
+
 /**
  * One week page, everything above the bar but the chevron, which the pager
  * holds still over all twelve. `width` is the page's (the pager's) — the hero
@@ -323,8 +329,10 @@ export function WeekPage({
     return (
       <View style={{ width, height: '100%' }}>
         {hero}
+        <WeekTitle week={week} />
         <WeekHeader week={week} />
         <CueScrollView
+          harnessName={`week-${week.n}`}
           style={{ position: 'absolute', left: 0, right: 0, top: ROWS_TOP, height: view }}
           // the last scroll position is P2 — row 5 on the viewport's top edge —
           // whatever the viewport's height
@@ -345,6 +353,7 @@ export function WeekPage({
           <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -top, width }}>
             {hero}
           </View>
+          <WeekTitle week={week} top={60 - top} />
           <WeekHeader week={week} top={HEADER_TOP - top} />
           <View style={{ position: 'absolute', left: 16, right: 16, top: ROWS_TOP - top }}>{rows}</View>
           <WeekBack onPress={onBack} top={60 - top} />

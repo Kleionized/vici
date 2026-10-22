@@ -80,6 +80,14 @@ export function harnessScroll(y: number | 'end'): boolean {
   return true;
 }
 
+/** Scroll the scroll view called `name` to its end. */
+export function harnessEnd(name: string): boolean {
+  const entry = [...scrolls].reverse().find((e) => e.opts.current?.name === name);
+  if (!entry?.ref.current) return false;
+  entry.ref.current.scrollToEnd({ animated: false });
+  return true;
+}
+
 /** Turn the pager called `name` to page `n`. */
 export function harnessPage(name: string, n: number): boolean {
   const last = [...scrolls].reverse().find((e) => e.opts.current?.pages && e.opts.current.name === name);

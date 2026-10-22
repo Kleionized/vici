@@ -7,7 +7,7 @@ import { harnessAuth } from '@/lib/auth/mockAuth';
 import { secureSet } from '@/lib/storage';
 
 import { setHarnessClock } from './clock';
-import { harnessLabels, harnessPage, harnessPress, harnessScroll, harnessType } from './harnessRegistry';
+import { harnessEnd, harnessLabels, harnessPage, harnessPress, harnessScroll, harnessType } from './harnessRegistry';
 
 const SERVER = 'http://localhost:8099';
 const SESSION_KEY = 'tideline.session.userId';
@@ -26,7 +26,7 @@ type Target = {
   clock?: string;
   /** globals the screens' mock hooks read, e.g. `__ONB_ANSWERS` (welcome.tsx) */
   globals?: Record<string, unknown>;
-  /** after the board is up: `tap:<label>`, `wait:<ms>`, `scroll:<y>|end`, `page:<pager>:<n>`, `type:<text>`, in order (D35) */
+  /** after the board is up: `tap:<label>`, `wait:<ms>`, `scroll:<y>|end`, `end:<name>`, `page:<pager>:<n>`, `type:<text>`, in order (D35) */
   steps?: string[];
   /** put the keyboard away once the board is up: iOS draws it, the frames do not (D29) */
   blur?: boolean;
@@ -105,6 +105,10 @@ export function HarnessDriver() {
         if (op === 'wait') await sleep(Number(v));
         else if (op === 'scroll') {
           for (let i = 0; i < 20 && !harnessScroll(v === 'end' ? 'end' : Number(v)); i++) await sleep(200);
+        } else if (op === 'end') {
+          let done = false;
+          for (let i = 0; i < 20 && !(done = harnessEnd(v)); i++) await sleep(200);
+          if (!done) console.log(`[harness] no scroll view "${v}"`);
         } else if (op === 'type') {
           for (let i = 0; i < 20 && !harnessType(v); i++) await sleep(200);
           await sleep(300);
