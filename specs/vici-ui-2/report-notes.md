@@ -49,6 +49,7 @@ Once every row read DONE, the owner reviewed the app and asked for changes that 
 - **Logs close like check-ins (D52):** Urge Log Done and SOS's "Done for now." show the check disc, the title and the answers as check rows.
 - **Chips keep their width when chosen (D53).**
 - **Motion throughout (D58):** boards arrive in order, onboarding's visuals build up (the 30 days, the year, the gauge, the curves), checks land, numbers count up, lessons swipe both ways. Off under Reduce Motion and in the capture harness.
+- **Dark letters; medallions without letters (D62):** the letter keeps its letterhead and opening on the dark ground; a new medallion arrives on its own board, and only the owner's letters are letters.
 - **Letters as letters (D61):** the letter is a sheet of paper that slides out of its envelope and unfolds; "Save to Journal" saves, shows it, and then opens the Journal.
 - **Notes and letters (D60):** both owner documents match the app byte for byte; a relapse's reported causes now reach their own letters (anger R05, loneliness R09, scrolling R11, tiredness R07), checked by `scripts/content/check-post.mjs`.
 - **Haptics (D59):** a light tap on choices, a success on completing, a tick on lesson page turns.

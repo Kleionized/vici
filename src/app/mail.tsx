@@ -2,13 +2,11 @@ import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
 import { View } from 'react-native';
 
-import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
 import { LETTER_BY_ID } from '@/content/viciLetters';
 import { ROW_GAP, ChevronR, EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
-import { roman, shortDate } from '@/lib/format';
+import { shortDate } from '@/lib/format';
 import { readLetterBox, type DeliveredLetter } from '@/lib/letterBox';
-import { ACCOUNT_KEYS, readAccountJSON } from '@/lib/accountState';
 import { mono } from '@/lib/theme';
 import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
 
@@ -20,7 +18,6 @@ import { buildWeeklyReport, completedWeekStarts } from '@/lib/weeklyReport';
  * 26/33 heading and its line.
  */
 
-const POST_DONE_KEY = ACCOUNT_KEYS.postDelivered;
 
 const NAV_BOTTOM = 100;
 /** the title head's 32/38 at 108 (`TitleHead`), in flow here so it scrolls with the rows */
@@ -37,13 +34,9 @@ export default function Mail() {
   const checkins = useCheckins();
   const events = useEvents();
   const [letters, setLetters] = useState<DeliveredLetter[]>([]);
-  const [postDelivered, setPostDelivered] = useState(false);
 
   useEffect(() => {
     void readLetterBox().then((box) => setLetters(box.letters));
-    // The key still spells the retired `Back on deck` face; it is load-bearing
-    // storage on accounts that already have the post, so it keeps its name.
-    void readAccountJSON<number>(POST_DONE_KEY).then((v) => setPostDelivered(!!v));
   }, []);
 
   const items = useMemo<Item[]>(() => {
@@ -71,22 +64,6 @@ export default function Mail() {
       });
     }
 
-    // Post from VICI — the medallion letter (and its enclosure), re-readable.
-    // The row names the face and the rung the post itself encloses, which
-    // `/medallion-post` reads from the ridden-out count — in the enclosure
-    // card's own words (`Vici, Tier I`, 39B's casing).
-    if (postDelivered) {
-      const face = kkFace('vici');
-      const ridden = events.filter((e) => e.type === 'urge_rode_out').length;
-      const standing = face ? kkStanding(face, ridden) : 0;
-      out.push({
-        key: 'post',
-        title: 'A medallion from VICI',
-        sub: `${face?.name ?? 'Vici'}, Tier ${roman(Math.max(1, standing))}`,
-        go: () => router.push('/medallion-post'),
-      });
-    }
-
     // VICI's letters, newest first — milestones and the mornings after a slip (D553)
     for (const l of [...letters].reverse()) {
       const letter = LETTER_BY_ID[l.id];
@@ -99,7 +76,7 @@ export default function Mail() {
       });
     }
     return out;
-  }, [user, checkins, events, letters, postDelivered, router]);
+  }, [user, checkins, events, letters, router]);
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/dashboard'));
 

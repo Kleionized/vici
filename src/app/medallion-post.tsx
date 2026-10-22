@@ -1,85 +1,72 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
-import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff } from '@/components/keepsakes/Letter';
-import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
-import { useCurrentUser, useEvents } from '@/lib/backend';
+import { FaceCoin, kkFace, kkStanding } from '@/components/keepsakes/Medallion';
+import { GhostLink, MonoText, MS, NavBar, popStyle, PrimaryButton, Screen, useMotion } from '@/components/mono';
+import { useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
-import { useKeepLetter } from '@/lib/useKeepLetter';
+import { useSuccessHaptic } from '@/lib/haptics';
+import { mono, sansItalic } from '@/lib/theme';
 
 /**
- * The medallion post — `90B · VICI Post — Arrival` → `39B · Post — Medallion
- * Letter` → (the enclosure) `/drop`.
+ * A new medallion (D62). It arrives the launch after an urge was logged and
+ * ridden out without a slip — exactly `Vici`'s rule — so the face is Vici at
+ * the rung that count has cleared. A medallion comes on its own, never with a
+ * letter: the coin lands, its name and tier, what earns it, and its Stoic line
+ * (D50). The owner's letter for the first urge handled (M23, "You got through
+ * it") arrives as the letters do (`src/lib/viciPost.ts`).
  *
- * It arrives like every post (CRITIC C8: Letter Arrival is the arrival for both
- * posts), then reads as a letter with the medallion enclosed under the
- * sign-off. Leaving it — the ✕ or `Tonight` on the arrival, the ✕ on the
- * letter — shelves it, as the arrival's corner X always did: the post is done
- * and stays re-readable from Mail.
- *
- * The enclosure is the face this post's own rule earns. The post fires when an
- * urge was logged and did not end in a slip — exactly `Vici`'s rule — so it
- * encloses Vici at the rung that count has cleared. The frame encloses
- * `Rebound, Tier I` (its sample account); the card's layout is the frame's,
- * the face is the account's (D275).
+ * Leaving — Done, the ✕, or going to the medallions — marks it seen, so the
+ * launch gate never brings it again.
  */
 
 const POST_DONE_KEY = ACCOUNT_KEYS.postDelivered;
 
-/*
- * The letter's words (D478). They state only what the post's own rule proves —
- * an urge was logged and ridden out without a slip — and nothing it cannot:
- * the frame's "Most men vanish for a week after a night like that" and "The
- * return is the strongest predictor there is" were unsourced statistics, and
- * "Last night … This morning" assumed a delivery time the launch gate does not
- * keep (the post arrives on whatever launch follows the ride).
- */
-const P1 = 'An urge came, and it passed without you giving in to it. You logged it, so it’s on your record now.';
-const P2 = 'That is the whole skill: letting one rise and end on its own. This one is for using it.';
-
-type Phase = 'arrive' | 'read';
-
 export default function MedallionPost() {
   const router = useRouter();
-  const user = useCurrentUser();
   const events = useEvents();
-  const [phase, setPhase] = useState<Phase>('arrive');
-  const name = (user?.displayName || '').trim().split(/\s+/)[0] || 'friend';
+  const motion = useMotion();
+  // a medallion earned: the completion's touch, as the coin lands (D59)
+  useSuccessHaptic();
 
   const face = kkFace('vici')!;
   const ridden = (events ?? []).filter((e) => e.type === 'urge_rode_out').length;
   const standing = Math.max(1, kkStanding(face, ridden));
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
-
-  /** Leaving it — the medallion is yours either way; the post is done. */
   // the done flag goes down before leaving: a post opened cold leaves to Today,
   // whose launch gate would otherwise deliver it again
-  const shelve = () => {
-    void writeAccountJSON(POST_DONE_KEY, Date.now()).then(close);
-  };
-
-  // `Save to Journal` (the frame's `Save to Log`): the letter is kept as a
-  // Journal entry, and the Log never lists letters (D489); the board stays
-  // open to show it saved (D61)
-  const keeper = useKeepLetter({ title: 'A medallion from VICI', body: `Dear ${name},\n\n${P1}\n\n${P2}\n\n— VICI` });
-  const keep = () => {
-    void writeAccountJSON(POST_DONE_KEY, Date.now());
-    keeper.press();
-  };
-
-  if (phase === 'arrive') {
-    return <PostArrival onRead={() => setPhase('read')} onLater={shelve} onClose={shelve} />;
-  }
+  const seen = () => writeAccountJSON(POST_DONE_KEY, Date.now());
+  const done = () => void seen().then(close);
+  const toMedallions = () => void seen().then(() => router.replace('/(app)/milestones'));
 
   return (
-    <LetterCard title="From VICI" onClose={shelve} primary={keeper.label} onPrimary={keep} primaryDone={keeper.saved} ghost="See the yearly offer" onGhost={() => router.push('/drop')}>
-      <Salutation>{`Dear ${name},`}</Salutation>
-      <LetterP>{P1}</LetterP>
-      <LetterP>{P2}</LetterP>
-      <Signoff>— VICI</Signoff>
-      <Enclosure scene={face.key} numeral={roman(standing)} title={`${face.name}, Tier ${roman(standing)}`} line={face.blurb} />
-    </LetterCard>
+    <Screen>
+      <NavBar left="empty" right="close" onClose={done} />
+      <View style={{ position: 'absolute', left: 24, right: 24, top: 150, alignItems: 'center' }}>
+        <Animated.View style={popStyle(motion, { delay: 120, duration: MS.slow + 220 })}>
+          <FaceCoin scene={face.key} size={168} numeral={roman(standing)} />
+        </Animated.View>
+        <MonoText v="caps" center style={{ marginTop: 32 }}>
+          New medallion
+        </MonoText>
+        <MonoText v="h1" center style={{ alignSelf: 'stretch', marginTop: 10 }}>
+          {`${face.name}, Tier ${roman(standing)}`}
+        </MonoText>
+        <MonoText v="p" center wrap="pretty" style={{ alignSelf: 'stretch', marginTop: 8 }}>
+          {face.long ?? face.blurb}
+        </MonoText>
+        <MonoText v="p" center wrap="pretty" color={mono.ink} style={{ ...sansItalic(), fontSize: 18, lineHeight: 28, alignSelf: 'stretch', marginTop: 34 }}>
+          {`“${face.quote.text}”`}
+        </MonoText>
+        <MonoText v="caps" center style={{ marginTop: 10 }}>
+          {face.quote.by}
+        </MonoText>
+      </View>
+      <PrimaryButton label="Done" onPress={done} bottom={96} />
+      <GhostLink label="See all medallions" onPress={toMedallions} />
+    </Screen>
   );
 }

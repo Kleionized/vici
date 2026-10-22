@@ -7,7 +7,6 @@ import { Check, EASE_OUT, GhostLink, HeroBoard, LaurelMark, MonoText, MS, NavBar
 import { Grain } from '@/components/ui/Grain';
 import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
 
-import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
 
 /**
  * The post — every piece of it arrives the same way and is read the same way
@@ -36,9 +35,9 @@ export function PostArrival({ onRead, onLater, onClose }: { onRead: () => void; 
   );
 }
 
-/** The paper (D61): a warm sheet, ink on it, a faint grain. */
-export const PAPER = { sheet: '#ECE7DD', ink: '#1A1815', body: '#3A3732', mute: '#7D776D' } as const;
-const NOISE = require('../../../assets/images/noise-dark.png');
+/** The paper (D61, dark since D62): the app's card for the sheet, its ink and sub ink on it, a faint grain. */
+export const PAPER = { sheet: mono.card, ink: mono.ink, body: mono.sub, mute: mono.mute } as const;
+const NOISE = require('../../../assets/images/noise.png');
 /** where a letter's sheet ends: 20 above the primary (96 + 58) */
 export const PAPER_FOOT = 96 + 58 + 20;
 /** the fade at the sheet's foot, so a long letter runs under it */
@@ -62,14 +61,14 @@ function Fold({ at, motion }: { at: string; motion: boolean }) {
         { position: 'absolute', left: 0, right: 0, top: at as `${number}%`, height: 90, marginTop: -45 },
         motion ? ({ animationName: FOLDS_EASE, animationDuration: 900, animationDelay: OPEN.folds, animationFillMode: 'both', animationTimingFunction: EASE_OUT } as object) : { opacity: 0.6 },
       ]}>
-      <LinearGradient colors={['rgba(60,45,25,0)', 'rgba(60,45,25,0.07)', 'rgba(255,255,255,0.16)', 'rgba(255,255,255,0)']} locations={[0, 0.5, 0.56, 1]} style={{ flex: 1 }} />
+      <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.28)', 'rgba(255,255,255,0.045)', 'rgba(255,255,255,0)']} locations={[0, 0.5, 0.56, 1]} style={{ flex: 1 }} />
     </Animated.View>
   );
 }
 
 /**
- * The letter as a letter (D61): a sheet of paper rather than a card — warm,
- * with a grain, small corners and a shadow under it; the letterhead (the
+ * The letter as a letter (D61): a sheet rather than a card — dark, as the app
+ * is (D62), with a grain, small corners and a shadow under it; the letterhead (the
  * laurel and VICI, the date); the two folds it was sent in, as soft shading;
  * and the words in ink. It opens by sliding up out of its envelope as it
  * straightens, its folds easing out, then the words arrive in turn and the
@@ -94,11 +93,11 @@ export function LetterPaper({
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: inset, right: inset, top, bottom, borderRadius: 5, backgroundColor: PAPER.sheet, boxShadow: '0 22px 44px rgba(0,0,0,0.5)' },
+        { position: 'absolute', left: inset, right: inset, top, bottom, borderRadius: 5, backgroundColor: PAPER.sheet, boxShadow: '0 22px 44px rgba(0,0,0,0.7)' },
         motion ? ({ animationName: SHEET_IN, animationDuration: 760, animationDelay: OPEN.sheet, animationFillMode: 'backwards', animationTimingFunction: EASE_OUT } as object) : null,
       ]}>
       <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderRadius: 5, overflow: 'hidden' }}>
-        <Grain source={NOISE} opacity={0.12} />
+        <Grain source={NOISE} opacity={0.06} />
         <Fold at="33.3%" motion={motion} />
         <Fold at="66.6%" motion={motion} />
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 22, paddingHorizontal: 26, paddingBottom: FADE + 8 }}>
@@ -122,7 +121,7 @@ export function LetterPaper({
             ))}
           </View>
         </ScrollView>
-        <LinearGradient pointerEvents="none" colors={['rgba(236,231,221,0)', PAPER.sheet]} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: FADE }} />
+        <LinearGradient pointerEvents="none" colors={['rgba(30,30,30,0)', PAPER.sheet]} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: FADE }} />
       </View>
     </Animated.View>
   );
@@ -201,35 +200,13 @@ export function Signoff({ children }: { children: ReactNode }) {
       </MonoText>
       <Animated.View
         style={[
-          { width: 34, height: 34, borderRadius: 17, backgroundColor: PAPER.ink, alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.25)' },
+          { width: 34, height: 34, borderRadius: 17, backgroundColor: PAPER.ink, alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 6px rgba(0,0,0,0.5)' },
           popStyle(motion, { delay: 1100, duration: MS.slow + 120 }),
         ]}>
-        <MonoText v="caps" color={PAPER.sheet} style={{ fontSize: 14, letterSpacing: 0 }}>
+        <MonoText v="caps" color={mono.onInk} style={{ fontSize: 14, letterSpacing: 0 }}>
           V
         </MonoText>
       </Animated.View>
-    </View>
-  );
-}
-
-/**
- * 39B's enclosure: `margin-top 6 · row center gap 14 · padding 14 16 · r18 ·
- * #0D0D0D` — the 44 coin, then the face and its rung (15/700) over what earns
- * it (13/400 mute), `gap 2`.
- */
-export function Enclosure({ scene, numeral, title, line }: { scene: KeepsakeSceneKey; numeral?: string; title: string; line: string }) {
-  return (
-    <View style={{ marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, borderRadius: 14, backgroundColor: 'rgba(26,24,21,0.07)' }}>
-      <FaceCoin scene={scene} size={44} numeral={numeral} />
-      {/* the column is as wide as its longer line (the frame's 184.8), not the card's remainder */}
-      <View style={{ flexShrink: 1, gap: 2 }}>
-        <MonoText v="rowLabel" wrap="wrap" color={PAPER.ink}>
-          {title}
-        </MonoText>
-        <MonoText v="pTight" wrap="wrap" color={PAPER.mute} style={{ fontSize: 13, lineHeight: lhNormal(13) }}>
-          {line}
-        </MonoText>
-      </View>
     </View>
   );
 }
