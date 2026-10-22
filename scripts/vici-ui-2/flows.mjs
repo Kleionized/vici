@@ -27,7 +27,7 @@ const FLOWS = [
     ['medallions', ['tap:Journey', 'wait:1200'], 'app__243__88-medallions'],
   ]],
   ['library-tab', '/today', 'library-seed', [
-    ['week', ['tap:Library', 'wait:1600'], null],
+    ['week', ['tap:Library', 'wait:1600'], 'app__088__92f-week-vi-discipline-i'],
   ]],
   ['score', '/today', 'today-0900-seed', [
     ['score', ['tap:Recovery rating', 'wait:1200'], 'app__053__21b-score-detail'],
@@ -45,13 +45,13 @@ const FLOWS = [
   ]],
   ['morning', '/today', 'day-seed-own', [
     ['cover', ['tap:Morning check-in', 'wait:1200'], 'app__059__21d0-morning-check-in'],
-    ['task', ['tap:Morning check-in', 'wait:1200', 'tap:Begin', 'wait:900'], 'app__060__21d1-morning-yesterdays-task'],
+    ['task', ['tap:Morning check-in', 'wait:1200', 'tap:Begin', 'wait:900', 'tap:Yes', 'wait:400'], 'app__060__21d1-morning-yesterdays-task'],
   ]],
   ['log', '/log', 'logs-reports-seed', [
     ['reports', ['tap:Reports', 'wait:900'], 'app__268__91-3-log-reports'],
   ]],
   ['medallion', '/milestones', 'medallions-seed', [
-    ['tiers', ['tap:Breakwater', 'wait:1200'], null],
+    ['breakwater', ['tap:Breakwater', 'wait:1200'], 'app__246__88d-breakwater-paper'],
   ]],
 ];
 

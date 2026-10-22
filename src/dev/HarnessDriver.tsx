@@ -93,6 +93,8 @@ export function HarnessDriver() {
         }
       }
       setHarnessClock(clock ? new Date(clock).getTime() : null);
+      // screens a previous target pushed (a flow taps through Settings into Your vow) come off first
+      if (router.canDismiss()) router.dismissAll();
       // through an empty harness view first, so a route the app is already on mounts afresh
       // (`/day/morning` → `/day/night` would otherwise keep the morning's state)
       if (t.route) {
