@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 
-import { mono, monoDark } from '@/lib/theme';
+import { alpha, mono, monoDark } from '@/lib/theme';
 
 import { ChevronL, CloseX, Share } from './icons';
 import { Tap } from './Tap';
@@ -17,7 +17,7 @@ const SLOP = { top: 4, bottom: 4, left: 12, right: 12 };
 export function NavDashes({ step, total, tone = 'light' }: { step: number; total: number; tone?: 'light' | 'dark' }) {
   const on = Math.max(1, Math.round((step / total) * 8));
   const onC = tone === 'dark' ? monoDark.text : mono.ink;
-  const offC = tone === 'dark' ? 'rgba(255,255,255,0.2)' : mono.line;
+  const offC = tone === 'dark' ? alpha.white(0.2) : mono.line;
   return (
     <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
       {Array.from({ length: 8 }, (_, i) => (
@@ -30,7 +30,7 @@ export function NavDashes({ step, total, tone = 'light' }: { step: number; total
 /** The weekly report's dashes: one 32 × 2 per page, gap 6, the first `step` inked. */
 export function NavBars({ step, total, tone = 'light' }: { step: number; total: number; tone?: 'light' | 'dark' }) {
   const onC = tone === 'dark' ? monoDark.text : mono.ink;
-  const offC = tone === 'dark' ? 'rgba(255,255,255,0.2)' : mono.line;
+  const offC = tone === 'dark' ? alpha.white(0.2) : mono.line;
   return (
     <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
       {Array.from({ length: total }, (_, i) => (
@@ -43,7 +43,7 @@ export function NavBars({ step, total, tone = 'light' }: { step: number; total: 
 /** A short run of 22 × 4 pips (`Start Here` Step 1 / Step 2): the first `step` of `total` inked. */
 export function NavPips({ step, total, tone = 'light' }: { step: number; total: number; tone?: 'light' | 'dark' }) {
   const onC = tone === 'dark' ? monoDark.text : mono.ink;
-  const offC = tone === 'dark' ? 'rgba(255,255,255,0.2)' : mono.line;
+  const offC = tone === 'dark' ? alpha.white(0.2) : mono.line;
   return (
     <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
       {Array.from({ length: total }, (_, i) => (

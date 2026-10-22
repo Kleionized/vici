@@ -491,3 +491,15 @@ export function halfLeading(fontSize: number | undefined, lineHeight: number | u
   if (deficit <= 0.01) return null;
   return { paddingTop: deficit / 2, marginBottom: -deficit / 2 };
 }
+
+/** A palette colour at an opacity: the frames' `rgba()` washes and fades, named by what they are made of. */
+export const alpha = {
+  /** `#F2F0EC` */
+  ink: (a: number) => `rgba(242,240,236,${a})`,
+  /** `#111111` */
+  onInk: (a: number) => `rgba(17,17,17,${a})`,
+  /** `#1E1E1E` */
+  card: (a: number) => `rgba(30,30,30,${a})`,
+  white: (a: number) => `rgba(255,255,255,${a})`,
+  black: (a: number) => `rgba(0,0,0,${a})`,
+} as const;

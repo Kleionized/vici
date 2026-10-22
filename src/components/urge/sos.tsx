@@ -33,7 +33,7 @@ import { useCreateEvent, useCurrentUser, useEvents, useJournalEntries } from '@/
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 import { clockTime, daysAgo, shortDate, WEEKDAYS_SHORT } from '@/lib/format';
 import { pledgeText, standingPledge } from '@/lib/pledge';
-import { ctaOff, illus, mono, sans, sansItalic, tracking, urgeRamp } from '@/lib/theme';
+import { alpha, ctaOff, illus, mono, sans, sansItalic, tracking, urgeRamp } from '@/lib/theme';
 import type { TidelineEvent } from '@/lib/types';
 import { clearUrgeSession, openUrgeSession, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
 
@@ -343,9 +343,9 @@ function BreathePage({ br, now, active }: { br: number; now: number; active: boo
         <W s={S.brSub} w={345} center>{BREATH[k].sub}</W>
       </View>
       <View style={{ position: 'absolute', left: 51, top: 126, width: 290, height: 290 }}>
-        <View style={{ position: 'absolute', left: 5, top: 5, width: 280, height: 280, borderRadius: 140, boxShadow: 'inset 0 0 0 1.5px rgba(242,240,236,0.12)' }} />
-        <View style={{ position: 'absolute', left: 29, top: 29, width: 232, height: 232, borderRadius: 116, backgroundColor: 'rgba(242,240,236,0.05)' }} />
-        <View style={{ position: 'absolute', left: 53, top: 53, width: 184, height: 184, borderRadius: 92, backgroundColor: 'rgba(242,240,236,0.08)' }} />
+        <View style={{ position: 'absolute', left: 5, top: 5, width: 280, height: 280, borderRadius: 140, boxShadow: `inset 0 0 0 1.5px ${alpha.ink(0.12)}` }} />
+        <View style={{ position: 'absolute', left: 29, top: 29, width: 232, height: 232, borderRadius: 116, backgroundColor: alpha.ink(0.05) }} />
+        <View style={{ position: 'absolute', left: 53, top: 53, width: 184, height: 184, borderRadius: 92, backgroundColor: alpha.ink(0.08) }} />
         <Animated.View style={{ position: 'absolute', left: 29, top: 29, width: 232, height: 232, borderRadius: 116, backgroundColor: ink, transform: [{ scale }] }} />
       </View>
       <View style={{ position: 'absolute', left: 0, right: 0, top: 446, flexDirection: 'row', justifyContent: 'center', gap: 36 }}>
@@ -359,8 +359,8 @@ function BreathePage({ br, now, active }: { br: number; now: number; active: boo
           const on = key === k;
           return (
             <View key={key} style={{ alignItems: 'center', gap: 4, minWidth: 56 }}>
-              <Text maxFontSizeMultiplier={1.3} style={[S.phase, { color: on ? ink : 'rgba(242,240,236,0.4)' }]}>{label}</Text>
-              <Text maxFontSizeMultiplier={1.3} style={[S.phaseSec, { color: on ? mono.sub : 'rgba(242,240,236,0.3)' }]}>{sec}</Text>
+              <Text maxFontSizeMultiplier={1.3} style={[S.phase, { color: on ? ink : alpha.ink(0.4) }]}>{label}</Text>
+              <Text maxFontSizeMultiplier={1.3} style={[S.phaseSec, { color: on ? mono.sub : alpha.ink(0.3) }]}>{sec}</Text>
               <View style={{ width: 24, height: 3, borderRadius: 2, marginTop: 6, backgroundColor: on ? ink : 'transparent' }} />
             </View>
           );

@@ -26,7 +26,7 @@ import Svg, { Circle, Path, Rect, Text as SvgText } from 'react-native-svg';
 import { HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
 import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS } from '@/content/onboardingTail';
 import { groupDigits } from '@/lib/format';
-import { LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
+import { alpha, LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
 
 import { spreadDays } from './v3';
 
@@ -433,14 +433,14 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
       </View>
       <LinearGradient
         pointerEvents="none"
-        colors={['rgba(17,17,17,0)', mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
+        colors={[alpha.onInk(0), mono.groundDark, mono.groundDark, alpha.onInk(0)]}
         locations={[0, 0.3, 0.7, 1]}
         style={{ position: 'absolute', left: 0, right: 0, top: 273, height: 300 }}
       />
       <NavBar left="back" right="empty" tone="dark" onBack={back} />
       <View style={{ position: 'absolute', left: 24, right: 24, top: 379, zIndex: 2, gap: 10, alignItems: 'center' }}>
         <Figure color={monoDark.text}>{`About ${groupDigits(days)} days`}</Figure>
-        <MonoText v="p" wrap="wrap" center color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
+        <MonoText v="p" wrap="wrap" center color={alpha.white(0.75)} style={{ fontSize: 17, lineHeight: 26 }}>
           By age 80, if nothing changes.
         </MonoText>
       </View>

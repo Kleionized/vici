@@ -79,23 +79,6 @@ const NO_TRIGGER = 'I don’t know';
 export const triggersOf = (urges: TidelineEvent[]) =>
   urges.flatMap((e) => (e.trigger ? splitStored(e.trigger) : (e.precedingState?.reasons ?? []).filter((r) => r !== NO_TRIGGER)));
 
-/**
- * The HALT booleans the schema carries, in words — counted only where an urge
- * named no feeling (the feeling picker is where a feeling is named now).
- */
-const STATE_WORD: Record<string, string> = { hungry: 'Hungry', tired: 'Tired', lonely: 'Lonely', bored: 'Bored' };
-
-/** What each urge felt like before it: its named feeling, else its HALT flags. */
-export function feelingsOf(urges: TidelineEvent[]): string[] {
-  return urges.flatMap((e) => {
-    const named = e.precedingState?.feeling;
-    if (named) return [named];
-    return Object.entries(e.precedingState ?? {})
-      .filter(([key, on]) => on === true && key in STATE_WORD)
-      .map(([key]) => STATE_WORD[key]);
-  });
-}
-
 /** Urges per clock hour, 0–23. */
 export function hourCounts(urges: TidelineEvent[]): number[] {
   const out = Array.from({ length: 24 }, () => 0);

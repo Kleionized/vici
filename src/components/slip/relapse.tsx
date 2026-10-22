@@ -18,7 +18,7 @@ import { Screen, Tap, VizArt, WrapText } from '@/components/mono';
 import { RELAPSE_ART, RELAPSE_CALENDAR, RELAPSE_CAUSES, RELAPSE_MESSAGES, RELAPSE_QUOTES, RELAPSE_WATCH, RELAPSE_WHEN } from '@/content/relapse.data';
 import { SOS_VIZ, SOS_VIZ_BOX } from '@/content/sosViz';
 import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
-import { ctaOff, illus, mono, sans, tracking } from '@/lib/theme';
+import { alpha, ctaOff, illus, mono, sans, tracking } from '@/lib/theme';
 import type { RelapseRecord, TidelineEvent } from '@/lib/types';
 
 // ── the canvas's helpers ────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ function Spinner() {
     return () => a.stop();
   }, [turn]);
   const rotate = turn.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
-  return <Animated.View style={{ width: 16, height: 16, borderRadius: 8, borderWidth: 2, borderColor: 'rgba(17,17,17,0.25)', borderTopColor: mono.onInk, transform: [{ rotate }] }} />;
+  return <Animated.View style={{ width: 16, height: 16, borderRadius: 8, borderWidth: 2, borderColor: alpha.onInk(0.25), borderTopColor: mono.onInk, transform: [{ rotate }] }} />;
 }
 
 function Ghost({ label, onPress, hidden }: { label: string; onPress: () => void; hidden?: boolean }) {
@@ -471,7 +471,7 @@ function DateSheet({ sh, now, onChange, onCancel, onUse }: { sh: SheetState; now
   const ws = sh.d - ((sd.getDay() + 6) % 7);
   return (
     <>
-      <Pressable onPress={onCancel} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 40 }} />
+      <Pressable onPress={onCancel} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: alpha.black(0.6), zIndex: 40 }} />
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 41, borderTopLeftRadius: 28, borderTopRightRadius: 28, backgroundColor: mono.card, paddingTop: 10, paddingHorizontal: 20, paddingBottom: 40 }}>
         <View style={{ alignSelf: 'center', width: 36, height: 5, borderRadius: 3, backgroundColor: illus.dim2 }} />
         <View style={{ marginTop: 6, height: 44, flexDirection: 'row', alignItems: 'center' }}>
@@ -537,8 +537,8 @@ function DateSheet({ sh, now, onChange, onCancel, onUse }: { sh: SheetState; now
             </View>
             <Wheel k="m" sh={sh} onChange={onChange} align="left" />
             <Wheel k="p" sh={sh} onChange={onChange} align="center" />
-            <LinearGradient pointerEvents="none" colors={[mono.card, 'rgba(30,30,30,0)']} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 56 }} />
-            <LinearGradient pointerEvents="none" colors={['rgba(30,30,30,0)', mono.card]} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 56 }} />
+            <LinearGradient pointerEvents="none" colors={[mono.card, alpha.card(0)]} style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 56 }} />
+            <LinearGradient pointerEvents="none" colors={[alpha.card(0), mono.card]} style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 56 }} />
           </View>
         ) : null}
         {fut ? (
