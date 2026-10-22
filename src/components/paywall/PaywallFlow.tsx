@@ -25,7 +25,7 @@ import {
   Slack,
   Tap,
 } from '@/components/mono';
-import { numberWords, shortDate } from '@/lib/format';
+import { shortDate } from '@/lib/format';
 import { useAuth } from '@/lib/auth';
 import { hasLegal, openLegal } from '@/lib/legal';
 import { ENTITLEMENT_ID, TIER_NAME, usePurchases, type Membership, type Plan, type PurchaseOutcome } from '@/lib/purchases';
@@ -596,7 +596,7 @@ function PwRescue({ onStart, onNo, closeLabel, money, remind }: { onStart: () =>
       <ScrollRegion top={100} bottom={RESCUE_CONTROLS} contentStyle={{ paddingTop: 157, paddingHorizontal: 24, paddingBottom: 24 }}>
         {/* the frame balances after the first clause; the break is written in so
             native (which cannot balance) and every width break there too */}
-        <H1>{`Before you go,\n${numberWords(days)} ${days === 1 ? 'day' : 'days'} free.`}</H1>
+        <H1>{`Before you go,\ntry ${days} ${days === 1 ? 'day' : 'days'} free.`}</H1>
         <View style={{ marginTop: 44 }}>
           <TimelineRow first>Today: full access</TimelineRow>
           <TimelineRow>{remind ? `Day ${days - 1}: a reminder before any charge` : `Until day ${days}: cancel in ${cancelPlace()} and pay nothing`}</TimelineRow>

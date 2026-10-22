@@ -146,7 +146,7 @@ export default function Night() {
         hero="nightMoon"
         stackTop={453}
         gap={12}
-        title={`Day ${day}, closed.`}
+        title={`Day ${day} is done.`}
         titleSize={34}
         body={<ClosedLine>See you in the morning.</ClosedLine>}
         cta="Done"

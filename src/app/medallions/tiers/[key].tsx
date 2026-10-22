@@ -62,7 +62,7 @@ export default function MedallionTiers() {
   // at the top there is no next rung and the frames draw no line for it (Q6)
   const left = standing < f.steps.length ? f.steps[standing] - count : null;
   const next =
-    left == null ? undefined : `${left.toLocaleString('en-US')} ${day ? (left === 1 ? 'day' : 'days') : 'more'} to ${TIER_NAMES[standing]}`;
+    left == null ? undefined : `${left.toLocaleString('en-US')} more ${day ? (left === 1 ? 'day ' : 'days ') : ''}until ${TIER_NAMES[standing]}`;
 
   return (
     <MedalBoard

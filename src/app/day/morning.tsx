@@ -307,7 +307,7 @@ export default function Morning() {
         <>
           <DoneMark />
           <Stack top={458} gap={18} center>
-            <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
+            <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day} has started.`}</MonoText>
             <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{signed && hasPledge ? `Pledge re-signed on Day ${day}` : `Checked in on Day ${day}`}</MonoText>
           </Stack>
           <PrimaryButton label="Done" onPress={() => void finish()} />

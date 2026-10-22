@@ -15,7 +15,7 @@ import { CURRICULUM_84 } from '@/content/curriculum84';
 import { SOS_ACTIONS } from '@/content/sosLibrary.data';
 import { INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { addDays, courseWeekForDay, isSlip, isSurfed, keyToDate, programmeDay, shiftKey, type ProgrammeStart } from '@/lib/day';
-import { clockTime, numberWords, splitStored } from '@/lib/format';
+import { clockTime, splitStored } from '@/lib/format';
 import type { JournalEntry, TidelineEvent } from '@/lib/types';
 import { completedWeekStarts, dayStatuses, weekLabel, type DayStatus } from '@/lib/weeklyReport';
 
@@ -32,10 +32,8 @@ const TASK_VIZ: Record<string, string> = Object.fromEntries(SOS_ACTIONS.map((a) 
 /** The journal tags a week's line can come from, the night's own first. */
 const JOURNAL_ORDER = ['Proud of', 'Reflection', 'Goal'];
 
-const Words = (n: number) => numberWords(n, { capital: true });
-const words = (n: number) => numberWords(n);
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
-const times = (n: number) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${words(n)} times`);
+const times = (n: number) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`);
 /** The urge's strength on the 1–5 scale the cards print. */
 const scale = (severity: number) => Math.max(1, Math.min(5, Math.round((severity - 2) / 2) + 1));
 const cleanDay = (s: DayStatus) => s === 'clean' || s === 'ridden';
@@ -69,26 +67,26 @@ export function weeklyStory({ weekStart, events, journal, start, rating, now = D
       const d = dayStatuses(w, [...events], start, now);
       return d.every((s) => s !== 'none') && d.every(cleanDay);
     });
-    if (first) line += ' Your first full week without a slip.';
+    if (first) line += ' This was your first full week without a slip.';
   } else if (slips.length === 1) {
     const at = new Date(slips[0].createdAt);
-    line += ` One slip, ${WEEKDAY[at.getDay()]} at ${clockTime(at, { lower: true })}.`;
+    line += ` You slipped once, on ${WEEKDAY[at.getDay()]} at ${clockTime(at, { lower: true })}.`;
     const when = slips[0].relapse?.when;
     if (when === 'now' || when === 'today') line += ' You logged it the same night.';
   } else if (slips.length > 1) {
-    line += ` ${Words(slips.length)} slips.`;
+    line += ` You slipped ${slips.length} times.`;
   }
-  if (lived) pages.push({ kind: 'days', title: `${clean ? Words(clean) : 'No'} clean ${clean === 1 ? 'day' : 'days'}.`, line, days });
+  if (lived) pages.push({ kind: 'days', title: `${clean ? clean : 'No'} clean ${clean === 1 ? 'day' : 'days'} this week.`, line, days });
 
   // 91C2 · the urges, in the order they came
   const urges = events.filter((e) => (e.type === 'urge_rode_out' || e.type === 'urge_acted_on') && inWeek(e.createdAt)).sort((a, b) => a.createdAt - b.createdAt);
   if (urges.length) {
     const ridden = urges.filter(isSurfed).length;
     const n = urges.length;
-    const rode = ridden === n ? (n === 1 ? ' You rode it out.' : ` You rode out all ${words(n)}.`) : ridden ? ` You rode out ${words(ridden)}.` : '';
+    const rode = ridden === n ? (n === 1 ? ' and rode it out' : ' and rode out all of them') : ridden ? ` and rode out ${ridden}` : '';
     pages.push({
       kind: 'urges',
-      title: `${Words(n)} ${n === 1 ? 'urge' : 'urges'}.${rode}`,
+      title: `You had ${n} ${n === 1 ? 'urge' : 'urges'} this week${rode}.`,
       rows: urges.map((e) => {
         const at = new Date(e.createdAt);
         const fed = e.trigger ? splitStored(e.trigger).map(lowerFirst) : [];
@@ -143,4 +141,4 @@ export function weeklyStory({ weekStart, events, journal, start, rating, now = D
 }
 
 /** Report Ready's line: the week, and how many pages it has. */
-export const pagesLine = (weekStart: string, pages: number) => `${weekLabel(weekStart)}. ${Words(pages)} short ${pages === 1 ? 'page' : 'pages'}.`;
+export const pagesLine = (weekStart: string, pages: number) => `Your report for ${weekLabel(weekStart)} has ${pages} short ${pages === 1 ? 'page' : 'pages'}.`;

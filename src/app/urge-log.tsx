@@ -8,7 +8,7 @@ import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands'
 import { UnsavedBoard, useBackgroundWrite, WAITING_LINE } from '@/components/urge/saving';
 import { useCreateEvent, useEvents } from '@/lib/backend';
 import { isSurfed } from '@/lib/day';
-import { capitalise, joinLower, lowerFirst, numberWords } from '@/lib/format';
+import { capitalise, groupDigits, joinLower, lowerFirst } from '@/lib/format';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 import type { EventType } from '@/lib/types';
 
@@ -38,17 +38,17 @@ const OUTCOMES: { label: string; slip?: boolean; type: EventType }[] = [
 const VICI = KK_ALBUM.find((face) => face.key === 'vici')!;
 
 /**
- * 91H's line: `Twenty-three ridden out. Two to Bronze.` — the urges ridden out
+ * The done board's line, in plain words and digits (D54): the urges ridden out
  * so far (the Vici medallion's count, this one included) and how many more to
- * its next tier. Past the last rung there is no next tier, so only the count
- * is said.
+ * its next tier — "You've ridden out 23 urges so far. 2 more and you reach
+ * Bronze." Past the last rung there is no next tier, so only the count is said.
  */
 function riddenLine(count: number): string {
   const standing = kkStanding(VICI, count);
   const next = VICI.steps[standing];
-  const head = `${numberWords(count, { capital: true })} ridden out.`;
+  const head = `You’ve ridden out ${groupDigits(count)} ${count === 1 ? 'urge' : 'urges'} so far.`;
   if (next == null) return head;
-  return `${head} ${numberWords(next - count, { capital: true })} to ${capitalise(kkMetal(VICI, standing + 1))}.`;
+  return `${head} ${groupDigits(next - count)} more and you reach ${capitalise(kkMetal(VICI, standing + 1))}.`;
 }
 
 export default function UrgeLog() {
