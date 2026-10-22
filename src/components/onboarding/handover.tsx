@@ -20,6 +20,7 @@ import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen, useCanva
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
 import { VOW_TEXT } from '@/lib/pledge';
 import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
+import { useSuccessHaptic } from '@/lib/haptics';
 
 import { Band } from './tail';
 
@@ -203,6 +204,8 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
 
 /** The medal at 190 (scale 1), "Veni." over "Your first medallion. You started.", `Continue`. */
 export function O3MedallionEarned({ title, body, next }: { title: string; body: string; next: () => void }) {
+  // the first medallion: the completion's touch (D59)
+  useSuccessHaptic();
   return (
     <HeroBoard
       nav={{ left: 'empty', right: 'empty' }}

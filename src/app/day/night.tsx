@@ -11,6 +11,7 @@ import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, us
 import { MOOD_WORDS, addDays, closingNightKey, isSlip, isSurfed, keyToDate, programmeDay, shiftKey } from '@/lib/day';
 import { countOf, roman } from '@/lib/format';
 import { mono } from '@/lib/theme';
+import { useSuccessHaptic } from '@/lib/haptics';
 
 /**
  * The night check-in (today-day §4): a cover, then six steps on the eight
@@ -56,6 +57,8 @@ export default function Night() {
   const createJournalEntry = useCreateJournalEntry();
 
   const [step, setStep] = useState(COVER);
+  // the day closed: the completion's touch (D59)
+  useSuccessHaptic(step === CLOSED);
   const [mood, setMood] = useState(2);
   const [emotions, setEmotions] = useState<string[]>([]);
   const [reasons, setReasons] = useState<string[]>([]);

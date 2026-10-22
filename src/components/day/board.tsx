@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { CalendarGlyph, Card, CheckDisc, CheckRow, CheckRows, ClockGlyph, Hero, HeroBoard, heroArtTop, MonoText, ScrollRegion, Tap } from '@/components/mono';
 import type { HeroKey } from '@/content/heroes';
 import { mono, monoDark, ring, sans } from '@/lib/theme';
+import { useSuccessHaptic } from '@/lib/haptics';
 
 /**
  * The morning and night check-ins on the overhaul's mono kit (today-day §3–§4).
@@ -187,6 +188,8 @@ export function AddToRecord({ onPress }: { onPress: () => void }) {
 
 /** Morning 5 Done's mark: the 132 ink disc with its 56 check, its top at canvas 288 (a board with rows under its title hangs it higher). */
 export function DoneMark({ top = 288 }: { top?: number }) {
+  // the completion's touch, as the mark lands (D59)
+  useSuccessHaptic();
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, flexDirection: 'row', justifyContent: 'center' }}>
       <CheckDisc size={132} />

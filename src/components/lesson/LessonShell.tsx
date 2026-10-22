@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Keyboard, Platform, ScrollView, useWindowDimensions, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { Easing, FadeIn, FadeInLeft, FadeInRight, LinearTransition, runOnJS, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -7,6 +7,7 @@ import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { CloseX, MonoText, PrimaryButton, RingNext, Screen, Tap, useCanvasTop } from '@/components/mono';
 import { PressScale } from '@/components/ui/press-scale';
 import { mono } from '@/lib/theme';
+import { haptic } from '@/lib/haptics';
 
 /**
  * The reader's chrome — byte-identical on all 1,273 Week frames
@@ -122,6 +123,12 @@ export function LessonShell({
     setForward(index > seen);
     setSeen(index);
   }
+  // each page turn ticks, by swipe or by Next (D59); the lesson opening does not
+  const opened = useRef(false);
+  useEffect(() => {
+    if (opened.current) haptic.tick();
+    opened.current = true;
+  }, [index]);
   // a horizontal drag carries the page with the finger; past 70 or a flick it turns (D58)
   const drag = useSharedValue(0);
   const turn = (dir: 1 | -1) => (dir === 1 ? onSwipeNext?.() : onPrev?.());

@@ -38,6 +38,7 @@ import { pledgeText, standingPledge } from '@/lib/pledge';
 import { alpha, ctaOff, illus, mono, sans, sansItalic, tracking, urgeRamp } from '@/lib/theme';
 import type { TidelineEvent } from '@/lib/types';
 import { clearUrgeSession, openUrgeSession, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
+import { haptic } from '@/lib/haptics';
 
 // ── the flow's state (the canvas's `f`) ─────────────────────────────────────
 
@@ -251,7 +252,10 @@ function Scale({ value, onTap }: { value: number | null; onTap: (n: number) => v
               label={`${n} of 5`}
               accessibilityRole="radio"
               aria-checked={on}
-              onPress={() => onTap(n)}
+              onPress={() => {
+                haptic.choice();
+                onTap(n);
+              }}
               style={{
                 width: 52,
                 height: 84 + Math.round((n - 1) * 22.5),
@@ -283,7 +287,10 @@ function Chip({ label, on, padV, onPress }: { label: string; on: boolean; padV: 
     <Tap
       accessibilityRole="checkbox"
       aria-checked={on}
-      onPress={onPress}
+      onPress={() => {
+        haptic.choice();
+        onPress();
+      }}
       style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: padV, paddingHorizontal: on ? CHIP_PAD : CHIP_PAD + CHIP_CHECK_ROOM / 2 }}>
       {on ? <Check /> : null}
       <Text maxFontSizeMultiplier={1.3} style={[S.chip, { color: on ? mono.onInk : ink, flexShrink: 1 }]}>
@@ -696,7 +703,10 @@ export function SosFlow({ preset, frozenNow, builtAt, fixture }: {
                   label={l}
                   accessibilityRole="radio"
                   aria-checked={on}
-                  onPress={() => set({ loc: k, bed: k === 'bed' ? f.bed : null })}
+                  onPress={() => {
+                    haptic.choice();
+                    set({ loc: k, bed: k === 'bed' ? f.bed : null });
+                  }}
                   style={{ height: 60, borderRadius: 18, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 14, paddingLeft: 16, paddingRight: 18 }}>
                   <View style={{ width: 34, height: 34, borderRadius: 17, flexShrink: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? alpha.black(0.08) : mono.line }}>
                     <Glyph name={PLACE_GLYPH[k]} size={20} color={fg} />

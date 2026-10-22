@@ -2,6 +2,7 @@ import { View, type StyleProp, type TextStyle, type ViewStyle } from 'react-nati
 import Animated from 'react-native-reanimated';
 
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
+import { haptic } from '@/lib/haptics';
 
 import { Check } from './icons';
 import { Tap } from './Tap';
@@ -75,12 +76,16 @@ function useSelect<K extends string>(props: SelectProps<K>, items: Norm<K>[]) {
   const exclusive = [...(props.exclusive ?? []), ...items.filter((i) => i.exclusive).map((i) => i.key)];
   const isOn = (k: K) => (props.multi ? props.value.includes(k) : props.value === k);
   const press = (k: K) => {
-    if (!props.multi) return props.onChange(k);
+    if (!props.multi) {
+      haptic.choice();
+      return props.onChange(k);
+    }
     const prev = props.value;
     const next = toggleChoice(prev, k, { exclusive, max: props.max });
     // a pick refused at `max` changes nothing, and — as in the funnel's own
     // `pick` — reports nothing: no save, no haptic, no analytics for a no-op
     if (next.length === prev.length && next.every((x, i) => x === prev[i])) return;
+    haptic.choice();
     props.onChange(next);
   };
   return { isOn, press, multi: !!props.multi };
@@ -371,7 +376,10 @@ export function WhenChips<K extends string>({
         return (
           <Tap
             key={it.key}
-            onPress={() => onChange(it.key)}
+            onPress={() => {
+              haptic.choice();
+              onChange(it.key);
+            }}
             disabled={it.disabled}
             accessibilityRole="radio"
             aria-checked={on}
@@ -459,7 +467,10 @@ export function Segmented<K extends string>({
         return (
           <Tap
             key={it.key}
-            onPress={() => onChange(it.key, i)}
+            onPress={() => {
+              haptic.choice();
+              onChange(it.key, i);
+            }}
             accessibilityRole="tab"
             aria-selected={on}
             label={'accessibilityLabel' in it ? it.accessibilityLabel : undefined}

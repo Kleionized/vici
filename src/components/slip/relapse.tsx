@@ -20,6 +20,7 @@ import { SOS_VIZ, SOS_VIZ_BOX } from '@/content/sosViz';
 import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountState';
 import { alpha, ctaOff, illus, mono, sans, tracking } from '@/lib/theme';
 import type { RelapseRecord, TidelineEvent } from '@/lib/types';
+import { haptic } from '@/lib/haptics';
 
 // ── the canvas's helpers ────────────────────────────────────────────────────
 
@@ -311,7 +312,10 @@ function Row({ label, sub, on, chev, onPress }: { label: string; sub?: string; o
     <Tap
       accessibilityRole="radio"
       aria-checked={on}
-      onPress={onPress}
+      onPress={() => {
+        haptic.choice();
+        onPress();
+      }}
       style={{ minHeight: 60, borderRadius: 18, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 14, paddingTop: 11, paddingBottom: 11, paddingLeft: 20, paddingRight: 18 }}>
       <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
         <Text maxFontSizeMultiplier={1.3} style={[S.row, { color: on ? mono.onInk : ink }]}>{label}</Text>
@@ -746,13 +750,14 @@ export function RelapseFlow({
                   accessibilityRole="checkbox"
                   aria-checked={on}
                   disabled={saving}
-                  onPress={() =>
+                  onPress={() => {
+                    haptic.choice();
                     setDraft((d) => {
                       if (k === 'notsure') return { ...d, causes: d.causes.includes('notsure') ? [] : ['notsure'] };
                       const x = d.causes.filter((c) => c !== 'notsure');
                       return { ...d, causes: x.includes(k) ? x.filter((c) => c !== k) : [...x, k] };
-                    })
-                  }
+                    });
+                  }}
                   style={{ minHeight: 48, maxWidth: '100%', flexShrink: 0, borderRadius: 24, backgroundColor: on ? ink : mono.card, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 13, paddingHorizontal: on ? CHIP_PAD : CHIP_PAD + CHIP_CHECK_ROOM / 2 }}>
                   {on ? (
                     <Svg width={13} height={13} viewBox="0 0 14 14">

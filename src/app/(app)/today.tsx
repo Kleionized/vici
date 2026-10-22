@@ -35,6 +35,7 @@ import { toDateKey } from '@/lib/date';
 import { computeRating, currentStreak, dayMark, lessonCompletions, ratingChange, ratingHistory, type DayMark, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
 import { pledgeText, standingPledge } from '@/lib/pledge';
+import { haptic } from '@/lib/haptics';
 
 /**
  * Today — Today Home, Today Home II / Today Home Task, Today Home III.
@@ -189,8 +190,12 @@ export default function Today() {
   // did — or tomorrow's morning would ask after a fallback the person never
   // saw. Either register, one write; the register and the page it opens are
   // unchanged, since a lesson's own sentence keeps its lesson (D232).
-  const toggleTask = () =>
+  const toggleTask = () => {
+    // ticking the day's task done is a completion; unticking it is only a choice (D59)
+    if (taskDone) haptic.choice();
+    else haptic.success();
     void upsertCheckin({ date: todayKey, dailyActionDone: !taskDone, ...(todayCheckin?.dailyAction ? {} : { dailyAction: task.caption }) });
+  };
   // The sentence opens a task page whenever the course has one to open: the
   // lesson that set the task, else the day's own lesson — as the old card opened
   // `/task/<day>` for any task on a lesson day (D324). Only past the course,

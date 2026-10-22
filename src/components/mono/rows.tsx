@@ -3,6 +3,7 @@ import { Platform, Text, View, type StyleProp, type TextStyle, type ViewStyle } 
 import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { lhNormal, mono, sans } from '@/lib/theme';
+import { haptic } from '@/lib/haptics';
 
 import { ChevronR } from './icons';
 import { CheckDisc } from './pills';
@@ -149,7 +150,12 @@ export function Row({
   accessibilityLabel?: string;
 }) {
   const showChevron = chevron ?? !toggle;
-  const press = toggle ? () => toggle.onChange(!toggle.value) : onPress;
+  const press = toggle
+    ? () => {
+        haptic.choice();
+        toggle.onChange(!toggle.value);
+      }
+    : onPress;
   const shrink = valueLines != null;
   return (
     <RowBox
@@ -214,7 +220,10 @@ export function Toggle({
   if (!onChange) return body;
   return (
     <Tap
-      onPress={() => onChange(!value)}
+      onPress={() => {
+        haptic.choice();
+        onChange(!value);
+      }}
       disabled={disabled}
       accessibilityRole="switch"
       aria-checked={value}

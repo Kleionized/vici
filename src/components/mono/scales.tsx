@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { mono, monoDark, ring, toneRamp } from '@/lib/theme';
+import { haptic } from '@/lib/haptics';
 
 import { Tap } from './Tap';
 import { MonoText } from './Text';
@@ -75,7 +76,10 @@ export function PagerDots({
       {Array.from({ length: count }, (_, i) => {
         const dot: ViewStyle = { width: 6, height: 6, borderRadius: 3, backgroundColor: i === active ? on : off };
         return onChange ? (
-          <Tap key={i} onPress={() => onChange(i)} label={label(i)} aria-selected={i === active} hitSlop={DOT_SLOP} style={dot} />
+          <Tap key={i} onPress={() => {
+            haptic.choice();
+            onChange(i);
+          }} label={label(i)} aria-selected={i === active} hitSlop={DOT_SLOP} style={dot} />
         ) : (
           <View key={i} style={dot} />
         );
@@ -118,7 +122,10 @@ export function ToneScale({
         return (
           <Tap
             key={i}
-            onPress={() => onChange?.(i)}
+            onPress={() => {
+            haptic.choice();
+            onChange?.(i);
+          }}
             accessibilityRole="radio"
             aria-checked={on}
             label={labels?.[i] ?? `${i + 1} of 5`}
@@ -188,7 +195,10 @@ export function IntensityScale({
             return (
               <Tap
                 key={i}
-                onPress={() => onChange?.(i)}
+                onPress={() => {
+            haptic.choice();
+            onChange?.(i);
+          }}
                 accessibilityRole="radio"
                 aria-checked={on}
                 label={a11yLabels?.[i] ?? labels[i]}
@@ -204,7 +214,10 @@ export function IntensityScale({
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 14 }}>
           {FIVE.map((i) => (
-            <Tap key={i} onPress={() => onChange?.(i)} accessible={false} style={{ width: BAR_W }}>
+            <Tap key={i} onPress={() => {
+            haptic.choice();
+            onChange?.(i);
+          }} accessible={false} style={{ width: BAR_W }}>
               <MonoText v="pill" center color={i === value ? mono.ink : mono.art}>
                 {labels[i]}
               </MonoText>
@@ -248,7 +261,10 @@ export function EnergyBars({
           return (
             <Tap
               key={i}
-              onPress={() => onChange?.(i)}
+              onPress={() => {
+            haptic.choice();
+            onChange?.(i);
+          }}
               accessibilityRole="radio"
               aria-checked={i === value}
               label={labels?.[i] ?? `${i + 1} of 5`}
