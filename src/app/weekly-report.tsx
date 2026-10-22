@@ -3,20 +3,22 @@ import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 
 import { BigStat, DayCells, entryRead, isUrge, LastWeek, PagedRegister, PANE_TOP, PaneBody, ScoreLine, signed } from '@/components/logflow';
+import { WeeklyStory } from '@/components/logflow/story';
 import { EmptyState, LoadingView, MonoText, NavBar, RuledRow, RuledRows, Screen, TitleHead } from '@/components/mono';
-import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
+import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap } from '@/lib/backend';
 import { toDateKey } from '@/lib/date';
 import { addDays, isDateKey, keyToDate, shiftKey } from '@/lib/day';
 import { clockTime, WEEKDAYS_SHORT } from '@/lib/format';
 import { RATING_SCALE, lessonCompletions } from '@/lib/score';
 import { buildWeeklyReport, dayStatuses, latestCompletedWeek, mondayOf, weekRating } from '@/lib/weeklyReport';
+import { weeklyStory } from '@/lib/weeklyStory';
 
 /**
- * 91C / 91C2 / 91C3 · Weekly report — three readings of a closed week behind
- * one standing head: where the recovery rating went, which days held, and the
- * urges.
- * `Settings Weekly Report` (93D) is this same board opened from Settings
- * (`?from=settings`); the frame no longer names where it came from.
+ * The weekly report. Opened from Report Ready (and the Log), it is the week
+ * told in short pages (91C … 91C6, `WeeklyStory`). Opened from Settings
+ * (`?from=settings`, 93D) it is the register `Vici UI 2` still draws there:
+ * three readings of the closed week behind one standing head — where the
+ * recovery rating went, which days held, and the urges.
  */
 
 const PAGES = ['Rating', 'Days', 'Urges'] as const;
@@ -36,6 +38,54 @@ function weekParam(raw: unknown): string | null {
 const y = (canvasY: number) => canvasY - PANE_TOP;
 
 export default function WeeklyReport() {
+  const { from } = useLocalSearchParams<{ from?: string }>();
+  return from === 'settings' ? <WeeklyRegister /> : <WeeklyStoryRoute />;
+}
+
+/** 91C … 91C6 · the week's short pages. */
+function WeeklyStoryRoute() {
+  const router = useRouter();
+  const { week } = useLocalSearchParams<{ week?: string }>();
+  const user = useCurrentUser();
+  const checkins = useCheckins();
+  const events = useEvents();
+  const journal = useJournalEntries();
+  const progress = useLessonProgressMap();
+  const [page, setPage] = useState(0);
+  const [now] = useState(() => Date.now());
+  const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/dashboard'));
+
+  if (checkins === undefined || events === undefined || user === undefined || progress === undefined || journal === undefined) return <LoadingView onBack={close} />;
+  const weekStart = weekParam(week) ?? (user ? latestCompletedWeek(user, now) : null);
+  const start = user ?? now;
+  const rating = weekStart ? weekRating(weekStart, { checkins, events, lessons: lessonCompletions(progress), start }) : null;
+  const pages = weekStart && rating ? weeklyStory({ weekStart, events, journal, start, rating: { value: rating.rating, delta: rating.delta }, now }) : [];
+  if (!pages.length) {
+    return (
+      <Screen>
+        <NavBar left="back" onBack={close} />
+        <TitleHead title="Weekly report" />
+        <MonoText v="p" style={{ position: 'absolute', left: 24, right: 24, top: 164 }}>
+          {weekStart ? 'Nothing was logged that week.' : 'Your first report comes after a full week. Keep checking in.'}
+        </MonoText>
+      </Screen>
+    );
+  }
+  const at = Math.min(page, pages.length - 1);
+  return (
+    <WeeklyStory
+      pages={pages}
+      page={at}
+      onBack={() => setPage(Math.max(0, at - 1))}
+      onNext={() => setPage(at + 1)}
+      onClose={close}
+      onJournal={() => router.push('/(app)/journal')}
+    />
+  );
+}
+
+/** 93D · the register Settings opens. */
+function WeeklyRegister() {
   const router = useRouter();
   const { week } = useLocalSearchParams<{ week?: string; from?: string }>();
   const user = useCurrentUser();

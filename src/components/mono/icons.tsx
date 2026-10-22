@@ -147,6 +147,15 @@ export function MoonGlyph({ color = mono.ink, size = 22 }: IconProps) {
   );
 }
 
+/** A line going up: the weekly report's rating, 16. */
+export function TrendGlyph({ color = mono.mute, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 16l5.5-5.5 4 4L20 8M14.5 8H20v5.5" stroke={color} strokeWidth={1.8} {...R} />
+    </Svg>
+  );
+}
+
 /** The sun: Today's "This morning" caption, 16. */
 export function Sun({ color = mono.mute, size = 16 }: IconProps) {
   return (

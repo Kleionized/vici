@@ -1,10 +1,12 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { HeroBoard } from '@/components/mono';
-import { useCurrentUser } from '@/lib/backend';
+import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap } from '@/lib/backend';
 import { toDateKey } from '@/lib/date';
 import { isDateKey, keyToDate } from '@/lib/day';
-import { latestCompletedWeek, mondayOf, weekLabel } from '@/lib/weeklyReport';
+import { lessonCompletions } from '@/lib/score';
+import { latestCompletedWeek, mondayOf, weekRating } from '@/lib/weeklyReport';
+import { pagesLine, weeklyStory } from '@/lib/weeklyStory';
 
 /**
  * `?week=` as the Monday of a real week that has begun, or null (U2, D484): a
@@ -27,6 +29,10 @@ function weekParam(raw: unknown): string | null {
 export default function ReportReady() {
   const router = useRouter();
   const user = useCurrentUser();
+  const checkins = useCheckins();
+  const events = useEvents();
+  const journal = useJournalEntries();
+  const progress = useLessonProgressMap();
   const params = useLocalSearchParams<{ week?: string }>();
   // only a real date key names a week — `?week=x` would print "undefined NaN"
   const week = weekParam(params.week) ?? undefined;
@@ -35,11 +41,13 @@ export default function ReportReady() {
   // line from before the redesign (D328). Without `?week=` the week is only
   // known once the account loads: hold the line's space blank until then rather
   // than flash the other line (`undefined` is also "signed out", so no spinner).
-  const body = shown
-    ? `${weekLabel(shown)}: rating, days and urges.`
-    : user === undefined
-      ? '\u00A0'
-      : 'Your rating, days and urges.';
+  // the week and how many short pages it has (Vici UI 2) — the line waits for the log that counts them
+  const loaded = checkins !== undefined && events !== undefined && journal !== undefined && progress !== undefined && user !== undefined;
+  const pages =
+    shown && loaded && user
+      ? weeklyStory({ weekStart: shown, events, journal, start: user, rating: ((r) => ({ value: r.rating, delta: r.delta }))(weekRating(shown, { checkins, events, lessons: lessonCompletions(progress), start: user })) }).length
+      : 0;
+  const body = shown && pages ? pagesLine(shown, pages) : !loaded ? '\u00A0' : 'Your rating, days and urges.';
 
   const later = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   const open = () => router.replace(week ? `/weekly-report?week=${week}` : '/weekly-report');
