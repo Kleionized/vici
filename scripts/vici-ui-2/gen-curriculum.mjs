@@ -46,6 +46,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { tokens } from '../overhaul/decl.mjs';
 
+// Week blurbs the owner rewrote in plain words (D66); the frames still draw the old ones.
+const BLURB_EDITS = { IV: 'How the habit starts, and where to step in.', V: 'What it gives you, and what it costs.' };
+
 const OUT = (process.env.OUT ?? 'src/content/curriculum84.ts');
 const FINAL = (process.env.FINAL ?? '.vici-ui-2/final') + '';
 const EL = `${FINAL}/Email-Login`;
@@ -164,7 +167,7 @@ for (const [file, m] of weekFiles) {
   if (roman !== m[1]) throw new Error(`${file}: caps "${text(caps)}"`);
   const n = ROMAN.indexOf(roman) + 1;
   const rows = findAll(root, (c) => c.tag === 'span' && c.style.flex === '1' && c.style['font-size'] === '15px').map(text);
-  const page = { n, roman, name: text(h1), blurb: text(p), hero: hero(heroOf(root), file), rows };
+  const page = { n, roman, name: text(h1), blurb: BLURB_EDITS[roman] ?? text(p), hero: hero(heroOf(root), file), rows };
   const w = weeks.get(n);
   if (!w) weeks.set(n, { ...page, rows: [...rows] });
   else {

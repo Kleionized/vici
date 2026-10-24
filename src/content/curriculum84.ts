@@ -501,7 +501,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
     n: 4,
     roman: "IV",
     name: "Know Your Brain",
-    blurb: "The machinery behind the pull.",
+    blurb: "How the habit starts, and where to step in.",
     hero: "brain",
     lessons: [
       {
@@ -630,7 +630,7 @@ export const CURRICULUM_84: Curriculum84Week[] = [
     n: 5,
     roman: "V",
     name: "Why It Feels Worth It",
-    blurb: "The honest math of what it gives and takes.",
+    blurb: "What it gives you, and what it costs.",
     hero: "scale",
     lessons: [
       {
