@@ -32,7 +32,7 @@ import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/con
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
 import { ENERGY_WORDS, MOOD_WORDS, closingNightKey, courseComplete, greetingFor, programmeDay, useToday } from '@/lib/day';
 import { toDateKey } from '@/lib/date';
-import { computeRating, currentStreak, dayMark, lessonCompletions, ratingChange, ratingHistory, type DayMark, type Rating, type RatingInput } from '@/lib/score';
+import { computeRating, dayMark, daysOnVici, lessonCompletions, ratingChange, ratingHistory, type DayMark, type Rating, type RatingInput } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
 import { pledgeText, standingPledge } from '@/lib/pledge';
 import { haptic } from '@/lib/haptics';
@@ -143,13 +143,12 @@ export default function Today() {
   const rating = computeRating(input, now);
   const change = ratingChange(input, now);
   const series = ratingHistory(input, 30, now);
-  // The streak, off the same rows: check-in days in a row with no slip, ending
-  // today, or yesterday while today is still open. A slip today makes it 0
-  // (D530). The Log's "Clean days in a row" is the same number. Before the
+  // The flame: days in a row on VICI (D64). Any day he showed up counts, a
+  // logged slip included, so a slip never sends it to zero. Before the
   // morning check-in opens, the evening before is still open: the night
   // check-in can close it, so it neither counts nor ends the run yet (D537).
   const openNight = closingNightKey(user, now);
-  const streak = currentStreak(input, now, openNight);
+  const streak = daysOnVici(input, now, openNight);
 
   const todayKey = toDateKey(new Date(now));
   const todayCheckin = checkins.find((c) => c.date === todayKey);
@@ -302,10 +301,10 @@ export default function Today() {
 
 /**
  * `left 24 right 24 top 64`: the greeting, then the streak pill and the profile
- * door (gap 10). The flame counts the streak — check-in days in a row with no
- * slip, 0 when there is none (`currentStreak`, D530). The owner decided it
- * (D533): it replaces the day number the pill carried under today-day OQ-T1,
- * and the streak is no longer opt-in. The programme day stays on page two,
+ * door (gap 10). The flame counts days in a row on VICI (`daysOnVici`, D64):
+ * a slip logged is a day he showed up, so it never resets the flame. The owner
+ * decided on a flame (D533): it replaces the day number the pill carried under
+ * today-day OQ-T1, and it is not opt-in. The programme day stays on page two,
  * where the lesson tile reads "Lesson N" through day 84. The avatar is the
  * frame's outline ring and glyph; it opens Settings, as the old person glyph did.
  */
@@ -314,7 +313,7 @@ function Header({ greeting, streak, onProfile }: { greeting: string; streak: num
     <View style={{ position: 'absolute', left: 24, right: 24, top: 64, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
       <MonoText v="greeting">{greeting}</MonoText>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Pill kind="streak" label={String(streak)} accessibilityLabel={`${streak} ${streak === 1 ? 'day' : 'days'} in a row`} />
+        <Pill kind="streak" label={String(streak)} accessibilityLabel={`${streak} ${streak === 1 ? 'day' : 'days'} in a row on VICI`} />
         <Tap
           label="Open settings"
           onPress={onProfile}

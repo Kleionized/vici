@@ -398,3 +398,40 @@ export function currentStreak(input: RatingInput, asOf: number | Date = Date.now
     else if (mark !== 'today') return run;
   }
 }
+
+/**
+ * Days in a row on VICI (D64): Today's flame. A day counts when he showed up
+ * at all, by a check-in, a lesson finished, the day's task done or a slip
+ * logged. Logging a slip is showing up, so a slip never breaks it; only a day
+ * with none of those does. A day still open neither counts nor ends the run
+ * (today, and the evening `open` names), and it never reaches back past the
+ * programme's first day. The evidence behind this is in `.overhaul/SCIENCE.md`:
+ * a counter that drops to zero after a slip is where people give up
+ * (Silverman & Barasch 2023).
+ */
+export function daysOnVici(input: RatingInput, asOf: number | Date = Date.now(), open?: string): number {
+  const ix = indexOf(input);
+  const today = keyOf(asOf);
+  const from = openFrom(today, open);
+  const showedUp = (k: string) => ix.checked.has(k) || ix.slipped.has(k) || ix.tasked.has(k) || (ix.lessons.get(k) ?? 0) > 0;
+  let run = 0;
+  for (let day = today; ; day = shiftKey(day, -1)) {
+    if (ix.start != null && day < ix.start) return run;
+    if (showedUp(day)) run += 1;
+    else if (day < from) return run;
+  }
+}
+
+/**
+ * Clean days in the last `days` (D64): the Log's big number. A day counts as
+ * the streak's did (`done`: a check-in and no slip), but a slip takes one day
+ * out of the window instead of sending the count back to zero.
+ */
+export function cleanDaysIn(input: RatingInput, days: number, asOf: number | Date = Date.now(), open?: string): number {
+  const ix = indexOf(input);
+  const today = keyOf(asOf);
+  const from = openFrom(today, open);
+  let n = 0;
+  for (let i = 0; i < days; i++) if (markOf(ix, shiftKey(today, -i), today, from) === 'done') n += 1;
+  return n;
+}

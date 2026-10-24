@@ -39,6 +39,7 @@ export function HarnessScreen() {
           onHistory={() => {}}
           store={{ create: async () => `${state}-1`, update: async () => {} }}
           onExit={() => {}}
+          onRepair={() => {}}
           onClose={() => {}}
         />
       );

@@ -156,6 +156,8 @@ export default function Settings() {
         {/* the door to crisis lines and professional help (D428) */}
         <RowGroup label="Support">
           <Row label="Find support" onPress={() => router.push('/(app)/support')} />
+          {/* what VICI is built on, and what it won't claim (D64) */}
+          <Row label="The science" onPress={() => router.push('/science')} />
         </RowGroup>
       </ScrollRegion>
 

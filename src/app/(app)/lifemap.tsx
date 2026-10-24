@@ -4,24 +4,12 @@ import { View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import { Chips, IconCircle, LoadingView, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Spinner, Tap, TextField } from '@/components/mono';
+import { VALUE_WORDS } from '@/content/values';
 import { useLifeMap, useUpdateLifeMap } from '@/lib/backend';
 import { ownWhy } from '@/lib/pledge';
 import { mono } from '@/lib/theme';
 
-const SUGGESTED = [
-  'Connection',
-  'Health',
-  'Honesty',
-  'Growth',
-  'Creativity',
-  'Presence',
-  'Discipline',
-  'Adventure',
-  'Family',
-  'Contribution',
-  'Calm',
-  'Courage',
-];
+const SUGGESTED = VALUE_WORDS;
 
 /**
  * `12 · Beforehand`'s answers — what he feels before watching. Onboarding used

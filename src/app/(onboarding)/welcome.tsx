@@ -30,18 +30,20 @@ import {
   O3TheVow,
 } from '@/components/onboarding/handover';
 import { O3DayZero, O3Reminders } from '@/components/onboarding/reminders';
+import { O3Research, O3SlipDemo, O3UrgeSurf, O3Values } from '@/components/onboarding/science';
 import { buildWeekXiiLetter, daysPer30, daysPerYear, daysToAge80, windowFor } from '@/components/onboarding/v3';
 import { startingRatingFor } from '@/lib/score';
 import { GhostLink, LoadingView, MonoText, PrimaryButton, SHEET_TOP, Sheet } from '@/components/mono';
 import { PaywallFlow } from '@/components/paywall/PaywallFlow';
 import { lessonForDay } from '@/content/curriculum84';
-import { FUNNEL_STEPS } from '@/content/onboardingFunnel';
+import { FUNNEL_STEPS as DRAWN_STEPS, type FunnelStep } from '@/content/onboardingFunnel';
+import { CONCERN_STEP, VALUES_CONCERN } from '@/content/science';
 import { ACCOUNT_KEYS, readAccountJSON, removeAccountKey, writeAccountJSON } from '@/lib/accountState';
 import { FORCE_MOCK } from '@/lib/config';
 import { shortDate } from '@/lib/format';
 import { VOW_TEXT } from '@/lib/pledge';
 import { useAuth } from '@/lib/auth';
-import { useCompleteOnboarding, useCreateJournalEntry, useUpdateProfile } from '@/lib/backend';
+import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
 import { todayKey } from '@/lib/date';
 import { usePurchases } from '@/lib/purchases';
 import { cancelAllReminders } from '@/lib/reminders';
@@ -65,6 +67,15 @@ import { mono } from '@/lib/theme';
  */
 
 type Answers = Record<string, string | string[]>;
+
+/**
+ * The questionnaire: the drawn steps, with the science thread's one question
+ * (`17A · What bothers you`, D64) after `17 · What it affects`.
+ */
+const FUNNEL_STEPS: FunnelStep[] = (() => {
+  const at = DRAWN_STEPS.findIndex((f) => f.id === 'affects') + 1;
+  return [...DRAWN_STEPS.slice(0, at), CONCERN_STEP, ...DRAWN_STEPS.slice(at)];
+})();
 
 /**
  * Where he is in the funnel, kept on the phone under his account as he goes
@@ -96,6 +107,10 @@ type Step =
         | 'cleanDay'
         | 'oneBadDay'
         | 'wantBack'
+        | 'slipDemo'
+        | 'urgeSurf'
+        | 'values'
+        | 'research'
         | 'letterArrived'
         | 'letterRead'
         | 'vow'
@@ -129,7 +144,11 @@ const STEPS: Step[] = [
   { id: 'line-plan', kind: 'linePlan' }, //           32A · With the Plan (Line With the Plan)
   { id: 'clean-day', kind: 'cleanDay' }, //           32B · A Clean Day
   { id: 'one-bad-day', kind: 'oneBadDay' }, //        33 · One Bad Day
+  { id: 'slip-demo', kind: 'slipDemo' }, //           33A · What one slip does (D64)
+  { id: 'urge-surf', kind: 'urgeSurf' }, //           33B · Ride it out (D64)
   { id: 'want-back', kind: 'wantBack' }, //           34 · What You Want Back
+  { id: 'values', kind: 'values' }, //                34A · What matters to you (D64)
+  { id: 'research', kind: 'research' }, //            34B · Built on research (D64)
   { id: 'letter-arrived', kind: 'letterArrived' }, // 38 · A Letter Arrived (Letter Received)
   { id: 'letter-read', kind: 'letterRead' }, //       39 · A Letter From Week XII
   { id: 'vow', kind: 'vow' }, //                      40 · The Vow
@@ -143,7 +162,7 @@ const STEPS: Step[] = [
 const WHOLE_FRAME = new Set([
   'plan-together', 'whered-start', 'start-here', 'start-here-1', 'start-here-2', 'your-plan',
   'starting-point', 'next30', 'one-year', 'age80', 'line-nothing', 'line-plan',
-  'clean-day', 'one-bad-day', 'want-back',
+  'clean-day', 'one-bad-day', 'slip-demo', 'urge-surf', 'want-back', 'values', 'research',
   'letter-arrived', 'letter-read', 'vow', 'medallion', 'reminders', 'day-zero',
 ]);
 
@@ -175,6 +194,8 @@ const SAMPLE_ANSWERS: Answers = {
   goalPorn: 'Stop completely',
   goalMast: 'Keep it, just without porn',
   tried: ['Blocking sites or apps'],
+  concern: 'I can’t control it',
+  values: ['Honesty', 'Health', 'Discipline'],
 };
 const stepIndex = (id: string | undefined) => (id ? STEPS.findIndex((s) => s.id === id) : -1);
 const sampleOverride = (): Answers | null => (globalThis as { __ONB_ANSWERS?: Answers }).__ONB_ANSWERS ?? null;
@@ -216,6 +237,7 @@ export default function Onboarding() {
   const completeOnboarding = useCompleteOnboarding();
   const updateProfile = useUpdateProfile();
   const createJournalEntry = useCreateJournalEntry();
+  const updateLifeMap = useUpdateLifeMap();
   const params = useLocalSearchParams<{ step?: string; hold?: string }>();
   // D216: a mock build can open on any board (`?step=`) with the canvas's own answers
   const jump = FORCE_MOCK ? stepIndex(params.step) : -1;
@@ -348,9 +370,11 @@ export default function Onboarding() {
     // `40 · The Vow`, if he signed it: the words he signed, dated today, which
     // `/vow` reads back (D474). "Not now" files nothing.
     if (a.vow === 'signed') await fileOnce('vow', () => createJournalEntry({ tag: 'Vow', title: 'Vow', body: VOW_TEXT }));
-    // Nothing goes to the Life Map (D477): the questionnaire asks no "why", so
-    // the sentence once assembled from two chip answers is not written, and
-    // the feelings he has before watching are not his values.
+    // The values he picked on `34A` are his Life Map's values (D64), first
+    // picked most important. Nothing else goes there (D477): the questionnaire
+    // asks no "why", and the feelings he has before watching are not values.
+    const values = Array.isArray(a.values) ? a.values : [];
+    if (values.length) await fileOnce('values', () => updateLifeMap({ values: values.map((label, n) => ({ label, importance: Math.max(1, 5 - n) })) }));
     // Day 1 of the programme is today, on this phone's calendar (src/lib/day.ts)
     const done = await completeOnboarding({ programmeStartedAt: todayKey(), startingRating: startingRatingFor(per30) }).then(
       () => true,
@@ -472,6 +496,14 @@ export default function Onboarding() {
         return <O3OneBadDay next={next} back={back} />;
       case 'wantBack':
         return <O3WhatYouWantBack pills={wantBackPills((a.affects as string[]) || [], affectsOrder)} next={next} back={back} />;
+      case 'slipDemo':
+        return <O3SlipDemo next={next} back={back} />;
+      case 'urgeSurf':
+        return <O3UrgeSurf next={next} back={back} />;
+      case 'values':
+        return <O3Values value={(a.values as string[]) || []} onChange={(v) => set('values', v)} next={next} back={back} />;
+      case 'research':
+        return <O3Research valuesFirst={VALUES_CONCERN.has(String(a.concern ?? ''))} next={next} back={back} />;
       case 'letterArrived':
         return <O3LetterArrived next={next} skip={skipLetter} />;
       case 'letterRead':
@@ -482,6 +514,7 @@ export default function Onboarding() {
           <O3TheVow
             name={who}
             date={vowDate}
+            values={(a.values as string[]) || []}
             onSign={() => {
               set('vow', 'signed');
               next();

@@ -26,7 +26,7 @@ import { daysAgo } from '@/lib/format';
 import { checkinPartNow } from '@/lib/routines';
 import { lhNormal, mono, sans } from '@/lib/theme';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
-import { RATING_SCALE, currentStreak, lessonCompletions } from '@/lib/score';
+import { RATING_SCALE, cleanDaysIn, lessonCompletions } from '@/lib/score';
 import { completedWeekStarts, mondayOf, weekLabel, weekRating } from '@/lib/weeklyReport';
 
 /**
@@ -217,10 +217,10 @@ function Checkins({
     const v = c?.energy ?? c?.mood ?? c?.nightMood;
     return { label: STRIP_LABELS[i], lit: i === week.today, mark: c ? <ReadingDay v={v ?? 3} /> : <EmptyDay /> };
   });
-  // The streak Today's flame shows (`currentStreak`, D532): check-in days in a
-  // row with no slip. It reads the rating's rows; lessons play no part in it.
-  // The evening the night check-in can still close does not end it (D537).
-  const run = currentStreak({ checkins: all, events, lessons: [], start: user }, now, closingNightKey(user, now));
+  // Clean days in the last 30 (D64): a slip takes one day out of the count
+  // instead of sending it to zero. The evening the night check-in can still
+  // close is not counted against him yet (D537).
+  const run = cleanDaysIn({ checkins: all, events, lessons: [], start: user }, 30, now, closingNightKey(user, now));
   const rows = [...checkins].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   // The door to the check-in the clock says it is, while it is still to do.
@@ -248,7 +248,7 @@ function Checkins({
         head={
           <>
             {head}
-            <BigStat value={String(run)} caption={run === 1 ? 'Clean day in a row' : 'Clean days in a row'} />
+            <BigStat value={String(run)} caption={run === 1 ? 'Clean day in the last 30' : 'Clean days in the last 30'} />
             <WeekStrip days={strip} />
           </>
         }>

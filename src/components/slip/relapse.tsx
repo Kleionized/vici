@@ -21,6 +21,7 @@ import { ACCOUNT_KEYS, readAccountJSON, writeAccountJSON } from '@/lib/accountSt
 import { alpha, ctaOff, illus, mono, sans, tracking } from '@/lib/theme';
 import type { RelapseRecord, TidelineEvent } from '@/lib/types';
 import { haptic } from '@/lib/haptics';
+import { RATING_WINDOW } from '@/lib/score';
 
 // ── the canvas's helpers ────────────────────────────────────────────────────
 
@@ -591,6 +592,7 @@ export function RelapseFlow({
   onHistory,
   initial,
   onExit,
+  onRepair,
   onClose,
 }: {
   now: number;
@@ -602,6 +604,8 @@ export function RelapseFlow({
   initial?: { page?: RelapsePage; draft?: Partial<RelapseDraft>; sheet?: SheetState | null; saved?: SavedEntry | null; saving?: boolean; saveErr?: boolean; forced?: { msg: string; quote?: string | null } };
   /** Done on the message: on to the relapse log */
   onExit: () => void;
+  /** "Make up for it" on the message: to Today, where the lesson and the check-in are (D64) */
+  onRepair?: () => void;
   /** ✕ */
   onClose: () => void;
 }) {
@@ -837,10 +841,27 @@ export function RelapseFlow({
                 <Text maxFontSizeMultiplier={1.3} style={S.author}>{q[2]}</Text>
               </View>
             ) : null}
+            {/* the way back, framed as making up for it (D64): people who could
+                make up a miss tried again more than those given a second chance */}
+            {onRepair ? (
+              <View style={{ marginTop: 32, borderRadius: 16, backgroundColor: mono.card, padding: 18, gap: 6 }}>
+                <Text maxFontSizeMultiplier={1.3} style={S.row}>Your record stays.</Text>
+                <Text maxFontSizeMultiplier={1.3} style={S.sub}>
+                  {`Make up for it with today’s lesson or tonight’s check-in. Both lift your rating. This slip leaves your rating after ${RATING_WINDOW} days.`}
+                </Text>
+              </View>
+            ) : null}
           </View>
         </ScrollView>
-        <View style={{ paddingHorizontal: 24, paddingBottom: 48 }}>
-          <Cta label="Done" onPress={onExit} />
+        <View style={{ paddingHorizontal: 24, paddingBottom: onRepair ? 24 : 48 }}>
+          {onRepair ? (
+            <>
+              <Cta label="Make up for it" onPress={onRepair} />
+              <Ghost label="Done" onPress={onExit} />
+            </>
+          ) : (
+            <Cta label="Done" onPress={onExit} />
+          )}
         </View>
       </View>
     );

@@ -14,8 +14,9 @@
  */
 import { useState } from 'react';
 import { useWindowDimensions, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
-import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen, useCanvasTop } from '@/components/mono';
+import { GhostLink, HeroBoard, HoldButton, MonoText, NavBar, PrimaryButton, riseStyle, Screen, useCanvasTop, useMotion } from '@/components/mono';
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
 import { VOW_TEXT } from '@/lib/pledge';
 import { lhNormal, mono, sansItalic } from '@/lib/theme';
@@ -121,7 +122,7 @@ export function O3LetterRead({
 
 /** The signature block: the 47.5 ruled name, 10, the 16 line under it. */
 const SIG_H = 74;
-/** The controls' reach off the bottom edge: `Sign` at 96 + 58. */
+/** The controls' reach off the bottom edge: the hold at 96 + 58. */
 const VOW_CONTROLS = 96 + 58;
 
 /**
@@ -132,12 +133,22 @@ const VOW_CONTROLS = 96 + 58;
  * The signature hangs at 530. On a shorter phone it first rises into the ground
  * between the vow and itself (keeping 24 under the vow), so it never sits under
  * `Sign`; only if that is not enough does the band lift or scroll (D320).
+ *
+ * Signing is a hold (D64): "Hold to commit" fills over three seconds with
+ * touches that grow as it fills, and his name inks in along the rule as it
+ * does. Let go early and both drain back. His three values (34A) sit under
+ * the vow: what he is committing for.
  */
-export function O3TheVow({ name, date, onSign, skip }: { name: string; date: string; onSign: () => void; skip: () => void }) {
+export function O3TheVow({ name, date, values = [], onSign, skip }: { name: string; date: string; values?: string[]; onSign: () => void; skip: () => void }) {
   const who = name.trim() || 'Friend';
+  const motion = useMotion();
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
   const [stackH, setStackH] = useState(204);
+  const [signed, setSigned] = useState(false);
+  const [sigW, setSigW] = useState(0);
+  const fill = useSharedValue(0);
+  const inked = useAnimatedStyle(() => ({ width: fill.value * sigW }));
   const sigTop = Math.max(184 + stackH + 24, Math.min(530, winH - canvasTop - VOW_CONTROLS - 16 - SIG_H));
   return (
     <Screen>
@@ -152,20 +163,49 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
             <MonoText v="p" wrap="pretty" color={mono.ink} style={{ fontSize: 21, lineHeight: 33, marginTop: 8 }}>
               {VOW_TEXT}
             </MonoText>
+            {values.length ? (
+              <Animated.View style={[{ gap: 6 }, riseStyle(motion, { delay: 200 })]}>
+                <MonoText v="caps">For</MonoText>
+                <MonoText v="gridLabel">{values.join(' · ')}</MonoText>
+              </Animated.View>
+            ) : null}
           </View>
-          <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }}>
+          <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }} onLayout={(e) => setSigW(e.nativeEvent.layout.width)}>
+            {/* the name faint on the rule, and inked over it as far as the hold has filled */}
             <MonoText
               v="h1"
               wrap="wrap"
-              style={{ ...sansItalic(), fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.ink }}>
+              color={mono.art}
+              style={{ ...sansItalic(), fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.signRule }}>
               {who}
             </MonoText>
+            <Animated.View style={[{ position: 'absolute', left: 0, top: 0, overflow: 'hidden' }, inked]}>
+              <MonoText
+                v="h1"
+                wrap="nowrap"
+                numberOfLines={1}
+                style={{ ...sansItalic(), width: sigW, fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.ink }}>
+                {who}
+              </MonoText>
+            </Animated.View>
             <MonoText v="p" wrap="wrap" color={mono.mute} style={{ marginTop: 10, fontSize: 14, lineHeight: lhNormal(14) }}>
-              {`Signed on ${date}`}
+              {signed ? `Signed on ${date}` : 'Hold the button to sign.'}
             </MonoText>
           </View>
       </Band>
-      <PrimaryButton label="Sign" onPress={onSign} bottom={96} />
+      <HoldButton
+        label="Hold to commit"
+        holdingLabel="Keep holding"
+        doneLabel="Signed"
+        bottom={96}
+        progress={fill}
+        done={signed}
+        onComplete={() => {
+          setSigned(true);
+          // the signed board stays a moment, then the funnel moves on
+          setTimeout(onSign, 900);
+        }}
+      />
       <GhostLink label="Not now" onPress={skip} />
     </Screen>
   );

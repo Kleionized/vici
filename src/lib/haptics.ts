@@ -32,3 +32,24 @@ export function useSuccessHaptic(when = true) {
     if (when) haptic.success();
   }, [when]);
 }
+
+/**
+ * The hold boards' touches (D64): a press that grows as a hold fills, and the
+ * heavy drop a streak counter makes when it falls to zero.
+ */
+export const holdHaptic = {
+  /** 0 to 1: light, then medium, then heavy as the hold fills */
+  step(progress: number) {
+    if (!PHONE) return;
+    const s = progress < 0.4 ? Haptics.ImpactFeedbackStyle.Light : progress < 0.8 ? Haptics.ImpactFeedbackStyle.Medium : Haptics.ImpactFeedbackStyle.Heavy;
+    quiet(Haptics.impactAsync(s));
+  },
+  /** a hold let go before it filled */
+  release() {
+    if (PHONE) quiet(Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft));
+  },
+  /** the counter hitting zero */
+  thud() {
+    if (PHONE) quiet(Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error));
+  },
+};

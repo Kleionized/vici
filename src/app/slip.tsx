@@ -77,6 +77,7 @@ export default function Slip() {
           },
         }}
         onExit={() => router.replace('/relapses')}
+        onRepair={() => router.replace('/(app)/today')}
         onClose={close}
       />
     </>
