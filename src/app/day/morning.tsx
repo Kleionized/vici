@@ -29,6 +29,7 @@ import { ENERGY_WORDS, MOOD_WORDS, isSlip, isSurfed, keyToDate, programmeDay, sh
 import { countOf, roman } from '@/lib/format';
 import { RATING_FLOOR, lessonCompletions, ratingThrough, type RatingInput } from '@/lib/score';
 import { pledgeText, standingPledge } from '@/lib/pledge';
+import { saveSignature, type Signature } from '@/lib/signature';
 import { mono } from '@/lib/theme';
 
 /**
@@ -85,6 +86,7 @@ export default function Morning() {
   const [mood, setMood] = useState(2);
   const [energy, setEnergy] = useState(1);
   const [signed, setSigned] = useState(false);
+  const [drawn, setDrawn] = useState<Signature | null>(null);
   const [sheet, setSheet] = useState(false);
   const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
@@ -259,18 +261,27 @@ export default function Morning() {
           <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 450.3 }}>
             <MonoText v="h1">Re-sign your pledge.</MonoText>
             <View style={{ height: 6 }} />
-            {/* One step, two frames: the first press inks the line, the second
-                moves on. The line itself signs and un-signs — the old plate's
-                clear-× is not drawn, so the line keeps that function (OQ-M4). */}
+            {/* One step, two frames: he signs on the line with a finger (D68),
+                then Confirm moves on. "Clear" on the pad un-signs it. */}
             {hasPledge ? (
-              <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+              <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onDraw={(sig) => { setDrawn(sig); setSigned(!!sig); }} />
             ) : (
               <MonoText v="p">No pledge yet. Write one promise you can keep every day.</MonoText>
             )}
           </StepStack>
           {hasPledge ? (
             <>
-              <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
+              {/* he signs it with a finger (D68); the signature is kept when he confirms */}
+              <PrimaryButton
+                label={signed ? 'Confirm' : 'Sign for today'}
+                bottom={96}
+                disabled={!signed}
+                onPress={() => {
+                  if (!signed) return;
+                  if (drawn) void saveSignature(drawn);
+                  next();
+                }}
+              />
               <GhostLink label="Change the pledge" onPress={openSheet} />
             </>
           ) : (

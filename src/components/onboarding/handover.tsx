@@ -14,13 +14,14 @@
  */
 import { useState } from 'react';
 import { useWindowDimensions, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
-import { GhostLink, HeroBoard, HoldButton, MonoText, NavBar, PrimaryButton, riseStyle, Screen, useCanvasTop, useMotion } from '@/components/mono';
+import { GhostLink, HeroBoard, HoldButton, MonoText, NavBar, PrimaryButton, riseStyle, Screen, SignaturePad, useCanvasTop, useMotion } from '@/components/mono';
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
 import { VOW_TEXT } from '@/lib/pledge';
-import { lhNormal, mono, sansItalic } from '@/lib/theme';
+import { lhNormal, mono } from '@/lib/theme';
 import { useSuccessHaptic } from '@/lib/haptics';
+import { saveSignature, type Signature } from '@/lib/signature';
 
 import { LetterP, LetterPaper, PAPER, PAPER_FOOT, Strong } from '@/components/keepsakes/Letter';
 
@@ -120,8 +121,10 @@ export function O3LetterRead({
  * `Vow` journal entry (D474), which `/vow` reads back with the day he signed.
  */
 
-/** The signature block: the 47.5 ruled name, 10, the 16 line under it. */
-const SIG_H = 74;
+/** The signature pad (D68): room for a hand-drawn name over the rule. */
+const SIG_PAD = 88;
+/** The signature block: the pad, 10, the 16 line under it. */
+const SIG_H = SIG_PAD + 10 + 18;
 /** The controls' reach off the bottom edge: the hold at 96 + 58. */
 const VOW_CONTROLS = 96 + 58;
 
@@ -134,10 +137,11 @@ const VOW_CONTROLS = 96 + 58;
  * between the vow and itself (keeping 24 under the vow), so it never sits under
  * `Sign`; only if that is not enough does the band lift or scroll (D320).
  *
- * Signing is a hold (D64): "Hold to commit" fills over three seconds with
- * touches that grow as it fills, and his name inks in along the rule as it
- * does. Let go early and both drain back. His three values (34A) sit under
- * the vow: what he is committing for.
+ * He signs it with a finger (D68), then commits by holding (D64): "Hold to
+ * commit" wakes once there is a signature and fills over three seconds with
+ * touches that grow as it fills. Let go early and it drains back. The
+ * signature is kept (`saveSignature`) and stands in for his name on the vow
+ * and the urge hub's pledge. His three values (34A) sit under the vow.
  */
 export function O3TheVow({ name, date, values = [], onSign, skip }: { name: string; date: string; values?: string[]; onSign: () => void; skip: () => void }) {
   const who = name.trim() || 'Friend';
@@ -146,9 +150,7 @@ export function O3TheVow({ name, date, values = [], onSign, skip }: { name: stri
   const canvasTop = useCanvasTop();
   const [stackH, setStackH] = useState(204);
   const [signed, setSigned] = useState(false);
-  const [sigW, setSigW] = useState(0);
-  const fill = useSharedValue(0);
-  const inked = useAnimatedStyle(() => ({ width: fill.value * sigW }));
+  const [drawn, setDrawn] = useState<Signature | null>(null);
   const sigTop = Math.max(184 + stackH + 24, Math.min(530, winH - canvasTop - VOW_CONTROLS - 16 - SIG_H));
   return (
     <Screen>
@@ -170,27 +172,12 @@ export function O3TheVow({ name, date, values = [], onSign, skip }: { name: stri
               </Animated.View>
             ) : null}
           </View>
-          <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }} onLayout={(e) => setSigW(e.nativeEvent.layout.width)}>
-            {/* the name faint on the rule, and inked over it as far as the hold has filled */}
-            <MonoText
-              v="h1"
-              wrap="wrap"
-              color={mono.art}
-              style={{ ...sansItalic(), fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.signRule }}>
-              {who}
-            </MonoText>
-            <Animated.View style={[{ position: 'absolute', left: 0, top: 0, overflow: 'hidden' }, inked]}>
-              <MonoText
-                v="h1"
-                wrap="nowrap"
-                numberOfLines={1}
-                style={{ ...sansItalic(), width: sigW, fontSize: 30, lineHeight: lhNormal(30), letterSpacing: -0.5, paddingBottom: 10, borderBottomWidth: 1.5, borderBottomColor: mono.ink }}>
-                {who}
-              </MonoText>
-            </Animated.View>
-            <Animated.View key={signed ? 'signed' : 'unsigned'} style={riseStyle(motion && signed, { distance: 6 })}>
+          <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }}>
+            {/* he signs it himself, with a finger (D68) */}
+            <SignaturePad height={SIG_PAD} placeholder={`Sign here, ${who}`} onChange={(sig) => !signed && setDrawn(sig)} />
+            <Animated.View key={signed ? 'signed' : drawn ? 'drawn' : 'blank'} style={riseStyle(motion, { distance: 6 })}>
               <MonoText v="p" wrap="wrap" color={signed ? mono.ink : mono.mute} style={{ marginTop: 10, fontSize: 14, lineHeight: lhNormal(14) }}>
-                {signed ? `Signed on ${date}` : 'Hold the button to sign.'}
+                {signed ? `Signed on ${date}` : drawn ? 'Now hold the button to commit.' : 'Sign with your finger.'}
               </MonoText>
             </Animated.View>
           </View>
@@ -200,10 +187,11 @@ export function O3TheVow({ name, date, values = [], onSign, skip }: { name: stri
         holdingLabel="Keep holding"
         doneLabel="Signed"
         bottom={96}
-        progress={fill}
         done={signed}
+        disabled={!drawn}
         onComplete={() => {
           setSigned(true);
+          if (drawn) void saveSignature(drawn);
           // the signed board stays a moment, then the funnel moves on
           setTimeout(onSign, 900);
         }}

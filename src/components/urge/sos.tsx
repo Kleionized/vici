@@ -18,7 +18,7 @@ import Svg, { Path, SvgXml } from 'react-native-svg';
 
 import { DoneMark } from '@/components/day/board';
 import { DONE_MARK_TOP } from '@/components/logflow';
-import { Glyph, type GlyphName, CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, CheckRow, CheckRows, latoRuns, Screen, Tap, VizArt, WrapText } from '@/components/mono';
+import { Glyph, type GlyphName, CHIP_CHECK_ROOM, CHIP_PAD, ROW_GAP, CheckRow, CheckRows, latoRuns, Screen, SignatureMark, Tap, VizArt, WrapText } from '@/components/mono';
 import { bandToSeverity } from '@/components/ui/IntensityBands';
 import {
   nextSosAction,
@@ -35,6 +35,7 @@ import { useCreateEvent, useCurrentUser, useEvents, useJournalEntries } from '@/
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
 import { clockTime, daysAgo, shortDate, WEEKDAYS_SHORT } from '@/lib/format';
 import { pledgeText, standingPledge } from '@/lib/pledge';
+import { useSignature } from '@/lib/signature';
 import { alpha, ctaOff, illus, mono, sans, sansItalic, tracking, urgeRamp } from '@/lib/theme';
 import type { TidelineEvent } from '@/lib/types';
 import { clearUrgeSession, openUrgeSession, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
@@ -373,6 +374,8 @@ function BreathePage({ br, now, active }: { br: number; now: number; active: boo
 }
 
 function PledgePage({ words, name, signed }: { words: string; name: string; signed: string }) {
+  // the signature he drew, in place of his name (D68)
+  const sig = useSignature();
   return (
     <View style={{ width: 393, height: '100%' }}>
       <View style={{ position: 'absolute', left: 24, right: 24, top: 34 }}>
@@ -381,7 +384,7 @@ function PledgePage({ words, name, signed }: { words: string; name: string; sign
       <View style={{ position: 'absolute', left: 24, right: 24, top: 148, gap: 56 }}>
         <W s={S.pledge} w={345}>{words}</W>
         <View style={{ gap: 10 }}>
-          <Text maxFontSizeMultiplier={1.3} style={[S.sign, { paddingLeft: 4 }]}>{name}</Text>
+          {sig ? <SignatureMark sig={sig} height={48} /> : <Text maxFontSizeMultiplier={1.3} style={[S.sign, { paddingLeft: 4 }]}>{name}</Text>}
           <View style={{ height: 1.5, backgroundColor: illus.dim2 }} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
             <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={S.ends}>Signed</Text>

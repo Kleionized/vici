@@ -26,6 +26,7 @@ export * from './PledgeCard';
 export * from './Progress';
 export * from './Hero';
 export * from './HoldButton';
+export * from './Signature';
 export * from './LaurelMark';
 export * from './MedalTier';
 export * from './TabBar';

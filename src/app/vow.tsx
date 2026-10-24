@@ -14,12 +14,15 @@ import {
   ScrollRegion,
   SHEET_TOP,
   Sheet,
+  SignatureMark,
+  SignaturePad,
   useCanvasTop,
 } from '@/components/mono';
 import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/backend';
 import { calendarDaysBetween } from '@/lib/day';
 import { shortDate } from '@/lib/format';
 import { pledgeText, VOW_TEXT } from '@/lib/pledge';
+import { saveSignature, useSignature, type Signature } from '@/lib/signature';
 import { mono, sansItalic } from '@/lib/theme';
 
 /**
@@ -60,6 +63,9 @@ const GHOST_RESERVE = 48 + 18;
 /** where the scroll region starts: the nav row's foot */
 const NAV_FOOT = 100;
 
+/** What the sheet rises by to hold the signature pad (D68): the pad, its gap. */
+const SHEET_PAD = 96;
+
 export default function Vow() {
   const router = useRouter();
   const user = useCurrentUser();
@@ -71,6 +77,9 @@ export default function Vow() {
   const [now] = useState(() => Date.now());
   const [stackH, setStackH] = useState(0);
   const [resignOpen, setResignOpen] = useState(false);
+  // the signature he draws in the sheet (D68), and the one he drew last
+  const [drawn, setDrawn] = useState<Signature | null>(null);
+  const kept = useSignature();
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
 
@@ -102,7 +111,9 @@ export default function Vow() {
   // place says so as plain text, not a tap that silently writes nothing (D474, D487).
   const signedToday = signedAt !== undefined && calendarDaysBetween(signedAt, now) === 0;
   async function sign() {
+    if (!drawn) return;
     setResignOpen(false);
+    void saveSignature(drawn);
     if (signedToday) return;
     await createJournalEntry({ tag: 'Vow', title: 'Vow', body: text }).catch(() => {});
   }
@@ -124,9 +135,13 @@ export default function Vow() {
           {/* the name goes over the rule only once he has signed it */}
           <View style={{ gap: 10 }}>
             {vow ? (
-              <MonoText v="h1" wrap="nowrap" style={{ ...sansItalic(), lineHeight: 30, letterSpacing: undefined, paddingLeft: 4 }}>
-                {name}
-              </MonoText>
+              kept ? (
+                <SignatureMark sig={kept} height={56} />
+              ) : (
+                <MonoText v="h1" wrap="nowrap" style={{ ...sansItalic(), lineHeight: 30, letterSpacing: undefined, paddingLeft: 4 }}>
+                  {name}
+                </MonoText>
+              )
             ) : null}
             <View style={{ height: 1.5, backgroundColor: mono.signRule }} />
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
@@ -154,19 +169,26 @@ export default function Vow() {
           </MonoText>
         </View>
       ) : (
-        <GhostLink label={vow ? 'Re-sign the vow' : 'Sign the vow'} bottom={48} onPress={() => setResignOpen(true)} />
+        <GhostLink
+          label={vow ? 'Re-sign the vow' : 'Sign the vow'}
+          bottom={48}
+          onPress={() => {
+            setDrawn(null);
+            setResignOpen(true);
+          }}
+        />
       )}
 
       {/* No frame draws what re-signing looks like; the confirmation is the
           sign-out sheet's shell, worded from this page's own lines (D294). */}
       <Sheet
         open={resignOpen}
-        top={SHEET_TOP.signOut}
+        top={SHEET_TOP.signOut - SHEET_PAD}
         gap={10}
         onClose={() => setResignOpen(false)}
         footer={
           <>
-            <PrimaryButton label={vow ? 'Sign it again' : 'Sign it'} bottom={96} sheet onPress={() => void sign()} />
+            <PrimaryButton label={vow ? 'Sign it again' : 'Sign it'} bottom={96} sheet disabled={!drawn} onPress={() => void sign()} />
             <GhostLink label="Cancel" zIndex={42} onPress={() => setResignOpen(false)} />
           </>
         }>
@@ -174,6 +196,8 @@ export default function Vow() {
         <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
           {vow ? 'The vow’s day count restarts. Your progress stays.' : 'Your name goes under it, dated today.'}
         </MonoText>
+        {/* he signs it with a finger (D68) */}
+        {resignOpen ? <SignaturePad height={80} onChange={setDrawn} style={{ marginTop: 8 }} /> : null}
       </Sheet>
     </Screen>
   );

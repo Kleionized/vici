@@ -6,6 +6,8 @@ import { lhNormal, mono, monoDark, sans, sansItalic } from '@/lib/theme';
 
 import { Quote, QuoteMark } from './icons';
 import { Tap } from './Tap';
+import type { Signature } from '@/lib/signature';
+import { SignaturePad } from './Signature';
 
 const T = (s: TextStyle): TextStyle => s;
 
@@ -34,6 +36,7 @@ export function PledgeCard({
   placeholder = 'Sign here',
   tone = 'light',
   onPressLine,
+  onDraw,
   children,
   style,
 }: {
@@ -48,6 +51,8 @@ export function PledgeCard({
   tone?: 'light' | 'dark';
   /** make the signature line itself a control (e.g. sign on tap) */
   onPressLine?: () => void;
+  /** `sign` only: he signs with a finger on the line instead (D68); the signature, or null once cleared */
+  onDraw?: (sig: Signature | null) => void;
   children?: ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
@@ -121,7 +126,9 @@ export function PledgeCard({
         <Text maxFontSizeMultiplier={1.3} style={T({ ...sans('700'), fontSize: 24, lineHeight: 33, letterSpacing: -0.4, color: mono.ink })}>
           {pledge}
         </Text>
-        {onPressLine ? (
+        {onDraw ? (
+          <SignaturePad height={72} placeholder={placeholder} onChange={onDraw} />
+        ) : onPressLine ? (
           <Tap label={done ? `Signed by ${name}` : placeholder} onPress={onPressLine}>
             {line}
           </Tap>

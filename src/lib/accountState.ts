@@ -73,6 +73,8 @@ export const ACCOUNT_KEYS = {
   onboarding: 'tideline.onboarding.v1',
   /** the relapse flow's messages and quotes shown on this phone, so they do not repeat */
   relapseHistory: 'tideline.relapse.history.v1',
+  /** the signature he last drew, on the vow or a pledge (`src/lib/signature.ts`, D68) */
+  signature: 'tideline.signature.v1',
 } as const;
 
 export type AccountKey = (typeof ACCOUNT_KEYS)[keyof typeof ACCOUNT_KEYS];

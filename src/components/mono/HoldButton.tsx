@@ -6,6 +6,7 @@ import { haptic, holdHaptic } from '@/lib/haptics';
 import { useMotion } from './motion';
 import { mono } from '@/lib/theme';
 
+import { DISABLED_OPACITY } from './buttons';
 import { MonoText } from './Text';
 
 /**
@@ -24,6 +25,7 @@ export function HoldButton({
   doneLabel,
   duration = 3000,
   done = false,
+  disabled = false,
   onComplete,
   onHold,
   progress,
@@ -40,6 +42,8 @@ export function HoldButton({
   duration?: number;
   /** filled already (a board returned to after the hold) */
   done?: boolean;
+  /** not yet holdable (the vow before it is signed): drawn faint, presses ignored */
+  disabled?: boolean;
   onComplete: () => void;
   /** the finger going down (true) and coming up (false) */
   onHold?: (down: boolean) => void;
@@ -85,7 +89,7 @@ export function HoldButton({
   };
 
   const pressIn = () => {
-    if (filled) return;
+    if (filled || disabled) return;
     setHolding(true);
     onHold?.(true);
     from.current = fill.get();
@@ -98,7 +102,7 @@ export function HoldButton({
     );
   };
   const pressOut = () => {
-    if (filled) return;
+    if (filled || disabled) return;
     stopTicks();
     setHolding(false);
     onHold?.(false);
@@ -119,16 +123,16 @@ export function HoldButton({
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint="Press and hold"
-      accessibilityState={{ checked: filled }}
+      accessibilityState={{ checked: filled, disabled }}
       accessibilityActions={[{ name: 'activate' }]}
       onAccessibilityAction={(e) => {
-        if (e.nativeEvent.actionName === 'activate' && !filled) {
+        if (e.nativeEvent.actionName === 'activate' && !filled && !disabled) {
           fill.set(1);
           complete();
         }
       }}
       onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
-      style={[box, { borderRadius: 29, backgroundColor: mono.card, borderWidth: 1.5, borderColor: mono.ink, overflow: 'hidden' }, style]}>
+      style={[box, { borderRadius: 29, backgroundColor: mono.card, borderWidth: 1.5, borderColor: mono.ink, overflow: 'hidden', opacity: disabled ? DISABLED_OPACITY : 1 }, style]}>
       {/* the label in ink on the card, and again in dark on the fill, clipped to it */}
       <View style={{ ...ABS, alignItems: 'center', justifyContent: 'center' }}>
         <MonoText v="primaryLabel" color={mono.ink}>
