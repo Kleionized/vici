@@ -38,18 +38,26 @@ export const CONCERN_STEP: FunnelStep = {
 /** The answers that say his values are part of it. */
 export const VALUES_CONCERN = new Set(['It goes against what I believe', 'Both']);
 
-/** A study, as a card: where it ran, what it found, and its limit. */
+/** What a card draws instead of a paragraph (D67): two bars, one figure, or two outcomes side by side. */
+export type StudyChart =
+  | { kind: 'bars'; unit: string; bars: { label: string; value: number }[] }
+  | { kind: 'figure'; value: string; label: string }
+  | { kind: 'pair'; items: { value: string; label: string }[] };
+
+/** A study, as a card: where it ran, what it found, in a chart, and its limit. */
 export type Study = {
   id: string;
   /** journal · year, the card's caps line */
   source: string;
   /** the finding as a flat statement */
   title: string;
-  /** who and what was found, in one or two sentences */
-  body: string;
+  /** who, in a few words */
+  sample: string;
+  chart: StudyChart;
   /** the limit, said plainly */
   limit: string;
   authors: string;
+  year: number;
   /** where the researchers were when they ran it */
   institutions: string[];
   url: string;
@@ -60,9 +68,11 @@ export const STUDIES: Study[] = [
     id: 'bricker2020',
     source: 'JAMA Internal Medicine · 2020',
     title: 'Accepting urges worked better.',
-    body: '2,415 smokers, followed for a year. An ACT app that taught them to accept urges beat one that taught them to avoid urges: 28% had quit, against 21%.',
-    limit: 'Smoking, not porn. Quitting was self-reported.',
+    sample: '2,415 smokers · 1 year',
+    chart: { kind: 'bars', unit: '% quit', bars: [{ label: 'Accept urges', value: 28 }, { label: 'Avoid urges', value: 21 }] },
+    limit: 'Smoking, not porn.',
     authors: 'Bricker et al.',
+    year: 2020,
     institutions: ['Fred Hutch'],
     url: 'https://doi.org/10.1001/jamainternmed.2020.4055',
   },
@@ -70,9 +80,11 @@ export const STUDIES: Study[] = [
     id: 'silverman2023',
     source: 'Journal of Consumer Research · 2023',
     title: 'A broken streak stops people.',
-    body: 'Seven studies. After breaking a streak themselves, 29 in 100 kept going, against 53 with the streak intact. A way to repair it brought most of them back.',
-    limit: 'Habits like exercise and language practice, not addiction.',
+    sample: '7 studies',
+    chart: { kind: 'bars', unit: 'in 100 kept going', bars: [{ label: 'Streak kept', value: 53 }, { label: 'Broke it themselves', value: 29 }] },
+    limit: 'Habits, not addiction.',
     authors: 'Silverman & Barasch',
+    year: 2023,
     institutions: ['University of Delaware', 'University of Colorado Boulder'],
     url: 'https://doi.org/10.1093/jcr/ucac029',
   },
@@ -80,9 +92,11 @@ export const STUDIES: Study[] = [
     id: 'kirchner2012',
     source: 'Journal of Abnormal Psychology · 2012',
     title: 'Lost confidence brings the next slip sooner.',
-    body: '203 smokers logged 1,001 slips. When confidence dropped after a slip, the next one came sooner. Guilt made no difference.',
+    sample: '203 smokers · 1,001 slips',
+    chart: { kind: 'pair', items: [{ value: 'Sooner', label: 'next slip, after confidence dropped' }, { value: 'No change', label: 'after guilt' }] },
     limit: 'Smoking, not porn.',
     authors: 'Kirchner, Shiffman & Wileyto',
+    year: 2012,
     institutions: ['Johns Hopkins', 'University of Pittsburgh', 'University of Pennsylvania'],
     url: 'https://doi.org/10.1037/a0024451',
   },
@@ -90,9 +104,11 @@ export const STUDIES: Study[] = [
     id: 'bowen2014',
     source: 'JAMA Psychiatry · 2014',
     title: 'Fewer days of use after a slip.',
-    body: '286 adults after treatment. A year on, those who learned mindfulness-based relapse prevention and used again did so on 31% fewer days than those on standard relapse prevention.',
-    limit: 'One trial, at one centre. Drugs and alcohol, not porn.',
+    sample: '286 adults · 1 year',
+    chart: { kind: 'figure', value: '31%', label: 'fewer days of use with mindfulness' },
+    limit: 'Drugs and alcohol, not porn.',
     authors: 'Bowen et al.',
+    year: 2014,
     institutions: ['University of Washington'],
     url: 'https://doi.org/10.1001/jamapsychiatry.2013.4546',
   },
@@ -100,9 +116,11 @@ export const STUDIES: Study[] = [
     id: 'crosby2016',
     source: 'Behavior Therapy · 2016',
     title: 'ACT has been tested on porn.',
-    body: '28 men, 12 sessions of ACT. Viewing fell 93%, against 21% for the men still waiting to start.',
-    limit: 'A small trial. Almost all the men were religious.',
+    sample: '28 men · 12 sessions',
+    chart: { kind: 'bars', unit: '% less viewing', bars: [{ label: 'With ACT', value: 93 }, { label: 'Waiting to start', value: 21 }] },
+    limit: 'A small trial.',
     authors: 'Crosby & Twohig',
+    year: 2016,
     institutions: ['Utah State University'],
     url: 'https://pubmed.ncbi.nlm.nih.gov/27157029/',
   },
@@ -113,16 +131,18 @@ export const URGE_STUDY: Study = {
   id: 'bowen2009',
   source: 'Psychology of Addictive Behaviors · 2009',
   title: 'Urges pass without action.',
-  body: '123 smokers. Those taught to watch an urge rise and fall smoked less over the next week. Their urges were just as strong.',
-  limit: 'Students, followed for one week.',
+  sample: '123 smokers · 1 week',
+  chart: { kind: 'figure', value: 'Less', label: 'smoking, with urges just as strong' },
+  limit: 'Students, for one week.',
   authors: 'Bowen & Marlatt',
+  year: 2009,
   institutions: ['University of Washington'],
   url: 'https://doi.org/10.1037/a0017127',
 };
 
 /** The streak study's two numbers, for the slip board's bars. */
 export const STREAK_BARS = [
-  { label: 'Streak intact', value: 53 },
+  { label: 'Streak kept', value: 53 },
   { label: 'Broke it themselves', value: 29 },
 ] as const;
 
@@ -130,7 +150,7 @@ export const STREAK_BARS = [
 export const INSTITUTIONS: string[] = [...new Set([...STUDIES, URGE_STUDY].flatMap((s) => s.institutions))];
 
 /** Under the institutions, wherever they are shown. */
-export const NOT_AFFILIATED = 'VICI isn’t affiliated with these universities. Their researchers ran the studies VICI draws on.';
+export const NOT_AFFILIATED = 'VICI isn’t affiliated with these universities.';
 
 /** What VICI won't say, on the last research card and in Settings › The science. */
 export const NO_CLAIMS = {
@@ -144,7 +164,7 @@ export const NO_CLAIMS = {
 
 /** The method in three lines, for Settings › The science. */
 export const METHOD = [
-  { title: 'Notice the urge.', body: 'Name it when it starts. You don’t have to push it away.' },
-  { title: 'Let it pass.', body: 'An urge rises, peaks and falls whether or not you act on it.' },
-  { title: 'Act on what you value.', body: 'Pick what you do next by what you value.' },
-];
+  { icon: 'search', title: 'Notice the urge.' },
+  { icon: 'wave', title: 'Let it pass.' },
+  { icon: 'flag', title: 'Act on what you value.' },
+] as const;

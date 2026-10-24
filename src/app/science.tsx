@@ -1,17 +1,16 @@
 import { useRouter } from 'expo-router';
-import { Linking, View } from 'react-native';
+import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { Institutions } from '@/components/onboarding/science';
-import { MonoText, NavBar, riseStyle, Screen, ScrollRegion, STAGGER, Tap, useMotion } from '@/components/mono';
-import { METHOD, NO_CLAIMS, NOT_AFFILIATED, STUDIES, URGE_STUDY } from '@/content/science';
+import { Seal, StudyCard } from '@/components/onboarding/science';
+import { Glyph, MonoText, NavBar, riseStyle, Screen, ScrollRegion, STAGGER, useMotion } from '@/components/mono';
+import { INSTITUTIONS, METHOD, NO_CLAIMS, NOT_AFFILIATED, STUDIES, URGE_STUDY } from '@/content/science';
 import { mono } from '@/lib/theme';
 
 /**
- * Settings › The science (D64): the method in three lines, where the studies
- * ran, each study with its finding, its limit and the paper, and what VICI
- * won't claim. The same sources as onboarding's research board
- * (`src/content/science.ts`).
+ * Settings › The science (D64, D67): the method as three pictograms, the
+ * universities as seals, each study as its chart, and what VICI won't claim.
+ * The same parts as onboarding's research board (`src/components/onboarding/science.tsx`).
  */
 export default function Science() {
   const router = useRouter();
@@ -21,52 +20,45 @@ export default function Science() {
     <Screen>
       <NavBar left="back" centre={{ title: 'The science' }} right="empty" onBack={back} />
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 40, gap: 16 }}>
-        <MonoText v="h1">How VICI works.</MonoText>
-        <MonoText v="p">VICI is built on acceptance and commitment therapy (ACT) and relapse prevention, methods tested in clinical trials. It keeps your record when you slip.</MonoText>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Glyph name="flask" size={28} color={mono.ink} />
+          <MonoText v="h1">How VICI works.</MonoText>
+        </View>
+        <MonoText v="p">Built on ACT and relapse prevention, tested in clinical trials.</MonoText>
 
-        <View style={{ gap: 6, marginTop: 8 }}>
+        <View style={{ flexDirection: 'row', gap: 8, marginTop: 4 }}>
           {METHOD.map((m, i) => (
-            <Animated.View key={m.title} style={[{ borderRadius: 16, backgroundColor: mono.card, padding: 16, flexDirection: 'row', gap: 14 }, riseStyle(motion, { delay: 120 + i * STAGGER * 2 })]}>
-              <MonoText v="rowValue" style={{ width: 14 }}>
-                {String(i + 1)}
+            <Animated.View
+              key={m.title}
+              style={[{ flex: 1, height: 116, borderRadius: 18, backgroundColor: mono.card, padding: 14, justifyContent: 'space-between' }, riseStyle(motion, { delay: 120 + i * STAGGER * 2 })]}>
+              <Glyph name={m.icon} size={26} color={mono.ink} />
+              <MonoText v="rowLabel" wrap="wrap" style={{ fontSize: 14, lineHeight: 19 }}>
+                {m.title}
               </MonoText>
-              <View style={{ flex: 1, gap: 2 }}>
-                <MonoText v="rowLabel">{m.title}</MonoText>
-                <MonoText v="p" style={{ fontSize: 14, lineHeight: 21 }}>
-                  {m.body}
-                </MonoText>
-              </View>
             </Animated.View>
           ))}
         </View>
 
-        <View style={{ gap: 12, marginTop: 12 }}>
+        <View style={{ gap: 14, marginTop: 16 }}>
           <MonoText v="caps">Where the studies ran</MonoText>
-          <Institutions />
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: 18, columnGap: 10 }}>
+            {INSTITUTIONS.map((name) => (
+              <Seal key={name} name={name} width={108} />
+            ))}
+          </View>
           <MonoText v="p" color={mono.mute} style={{ fontSize: 12, lineHeight: 18 }}>
             {NOT_AFFILIATED}
           </MonoText>
         </View>
 
-        <View style={{ gap: 12, marginTop: 12 }}>
+        <View style={{ gap: 12, marginTop: 16 }}>
           <MonoText v="caps">The studies</MonoText>
-          <View style={{ gap: 6 }}>
-            {[...STUDIES, URGE_STUDY].map((s) => (
-              <Tap key={s.id} onPress={() => void Linking.openURL(s.url).catch(() => {})} label={`${s.title} Open the paper.`} style={{ borderRadius: 16, backgroundColor: mono.card, padding: 16, gap: 6 }}>
-                <MonoText v="caps">{s.source}</MonoText>
-                <MonoText v="rowLabel">{s.title}</MonoText>
-                <MonoText v="p" style={{ fontSize: 14, lineHeight: 21 }}>
-                  {s.body}
-                </MonoText>
-                <MonoText v="p" color={mono.mute} style={{ fontSize: 12, lineHeight: 18 }}>
-                  {`${s.authors}, ${s.institutions.join(', ')}. ${s.limit}`}
-                </MonoText>
-              </Tap>
-            ))}
-          </View>
+          {[...STUDIES, URGE_STUDY].map((s) => (
+            <StudyCard key={s.id} s={s} />
+          ))}
         </View>
 
-        <View style={{ gap: 12, marginTop: 12 }}>
+        <View style={{ gap: 12, marginTop: 16 }}>
           <MonoText v="caps">What we don’t claim</MonoText>
           <View style={{ borderRadius: 16, borderWidth: 1.5, borderColor: mono.line, padding: 16, gap: 8 }}>
             {NO_CLAIMS.lines.map((l) => (

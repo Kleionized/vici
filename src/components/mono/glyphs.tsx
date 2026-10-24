@@ -122,6 +122,13 @@ export const GLYPHS = {
   star: [{ d: star }],
   bolt: [{ d: 'M13.6 2L4.6 13.4h6.1L9.4 22l10-12.3h-6.3z' }],
   alert: [{ d: circle(12, 12, 9.5) + rrect(10.9, 6.4, 2.2, 7.4, 1.1) + circle(12, 16.7, 1.35), even: true }],
+  // the science thread (D67): a hall for where research is done, a flask, and the values' own
+  hall: [{ d: 'M12 2.3L2.5 7.4v2.1h19V7.4z' + rrect(4.1, 10.8, 2.6, 7.4, 0.6) + rrect(8.4, 10.8, 2.6, 7.4, 0.6) + rrect(13, 10.8, 2.6, 7.4, 0.6) + rrect(17.3, 10.8, 2.6, 7.4, 0.6) + rrect(2.5, 19.2, 19, 2.4, 0.7) }],
+  flask: [{ d: 'M8.6 2.5h6.8v2.2h-1.2v4.9l5.7 9.6a1.7 1.7 0 0 1-1.5 2.5H5.6a1.7 1.7 0 0 1-1.5-2.5l5.7-9.6V4.7H8.6z' }],
+  heart: [{ d: 'M12 21.2s-8.7-5.4-8.7-11.5A4.9 4.9 0 0 1 12 6.8a4.9 4.9 0 0 1 8.7 2.9c0 6.1-8.7 11.5-8.7 11.5z' }],
+  leaf: [{ d: 'M20.6 3.4C10.8 3.4 4.2 8.4 4.2 15c0 1.6.4 3 1.1 4.1L3 21.4l1.4 1.4 2.3-2.3c1.1.6 2.4 1 3.8 1 6.6 0 10.1-6.2 10.1-18.1z' }],
+  shield: [{ d: 'M12 2.3l8.3 3.1v6.4c0 5.1-3.5 8.9-8.3 10.6-4.8-1.7-8.3-5.5-8.3-10.6V5.4z' }],
+  flag: [{ d: rrect(4.2, 2.5, 2.2, 19, 1.1) + 'M7.4 3.6h12.1l-2.6 4.4 2.6 4.4H7.4z' }],
 } satisfies Record<string, Part[]>;
 
 export type GlyphName = keyof typeof GLYPHS;

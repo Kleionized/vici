@@ -17,6 +17,17 @@ import { MonoText } from './Text';
  */
 export const MS = { quick: 160, standard: 260, slow: 380 } as const;
 
+/**
+ * How much slower than `MS` everything arrives (D67): the owner found D58's
+ * motion too quick. Every arrival, fade, pop, count and drawn line runs at
+ * this pace, its delays with it, so the order holds and only the tempo
+ * changes. Taps, drags, toggles and sheets are not paced: what answers a
+ * finger stays quick.
+ */
+export const PACE = 1.7;
+/** A duration or delay at the app's pace. */
+export const paced = (ms: number) => Math.round(ms * PACE);
+
 /** ease-out for arriving (`cubic-bezier(0.2, 0.8, 0.2, 1)`, the pager's curve) */
 export const EASE_OUT = cubicBezier(0.2, 0.8, 0.2, 1);
 /** a small overshoot for a check landing */
@@ -48,8 +59,8 @@ export function riseStyle(on: boolean, { delay = 0, duration = MS.standard, dist
   if (!on) return {};
   return {
     animationName: riseFrom(distance, scale),
-    animationDuration: duration,
-    animationDelay: delay,
+    animationDuration: paced(duration),
+    animationDelay: paced(delay),
     animationTimingFunction: EASE_OUT,
     animationFillMode: 'backwards',
   } as ViewStyle;
@@ -58,13 +69,13 @@ export function riseStyle(on: boolean, { delay = 0, duration = MS.standard, dist
 /** A plain fade — for pressables, whose press scale owns `transform`. */
 export function fadeStyle(on: boolean, { delay = 0, duration = MS.standard }: Arrive = {}): ViewStyle {
   if (!on) return {};
-  return { animationName: FADE, animationDuration: duration, animationDelay: delay, animationTimingFunction: EASE_OUT, animationFillMode: 'backwards' } as ViewStyle;
+  return { animationName: FADE, animationDuration: paced(duration), animationDelay: paced(delay), animationTimingFunction: EASE_OUT, animationFillMode: 'backwards' } as ViewStyle;
 }
 
 /** A check or a disc landing: from 60 % with a small overshoot. */
 export function popStyle(on: boolean, { delay = 0, duration = MS.slow }: Arrive = {}): ViewStyle {
   if (!on) return {};
-  return { animationName: POP, animationDuration: duration, animationDelay: delay, animationTimingFunction: EASE_POP, animationFillMode: 'backwards' } as ViewStyle;
+  return { animationName: POP, animationDuration: paced(duration), animationDelay: paced(delay), animationTimingFunction: EASE_POP, animationFillMode: 'backwards' } as ViewStyle;
 }
 
 /** A colour (or opacity) that eases to its new value instead of switching — a chosen chip, a filled option. */
@@ -113,7 +124,7 @@ export function useCountUp(target: number, { delay = 150, duration = 900 }: Arri
     const from = 0;
     const tick = (t: number) => {
       if (!start) start = t;
-      const k = Math.min(1, Math.max(0, (t - start - delay) / duration));
+      const k = Math.min(1, Math.max(0, (t - start - paced(delay)) / paced(duration)));
       const eased = 1 - Math.pow(1 - k, 3);
       setShown(Math.round(from + (target - from) * eased));
       if (k < 1) raf = requestAnimationFrame(tick);
@@ -135,7 +146,7 @@ export function DrawPath({ length, delay = 0, duration = 900, ...props }: Compon
   const on = useMotion();
   const left = useSharedValue(on ? 1 : 0);
   useEffect(() => {
-    if (on) left.value = withDelay(delay, withTiming(0, { duration, easing: Easing.bezier(0.2, 0.8, 0.2, 1) }));
+    if (on) left.value = withDelay(paced(delay), withTiming(0, { duration: paced(duration), easing: Easing.bezier(0.2, 0.8, 0.2, 1) }));
   }, [on, left, delay, duration]);
   const animated = useAnimatedProps(() => ({ strokeDashoffset: left.value * length }));
   if (!on) return <Path {...props} />;

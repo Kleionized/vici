@@ -8,7 +8,7 @@ import { haptic } from '@/lib/haptics';
 import { Check } from './icons';
 import { Tap } from './Tap';
 import { MonoText } from './Text';
-import { EASE_OUT, fadeStyle, MS, popStyle, settleStyle, STAGGER, useMotion } from './motion';
+import { EASE_OUT, fadeStyle, MS, paced, popStyle, settleStyle, STAGGER, useMotion } from './motion';
 
 /**
  * The old light kit's lift, `0 1px 2px rgba(0,0,0,0.04)`. The V3 onboarding
@@ -486,7 +486,7 @@ export function Segmented<K extends string>({
           pointerEvents="none"
           style={[
             { position: 'absolute', left: 4, top: 4, width: seg, height: 36, borderRadius: 18, backgroundColor: mono.ink, transform: [{ translateX: shown * seg }] },
-            motion ? ({ transitionProperty: 'transform', transitionDuration: MS.standard, transitionTimingFunction: EASE_OUT } as object) : null,
+            motion ? ({ transitionProperty: 'transform', transitionDuration: paced(200), transitionTimingFunction: EASE_OUT } as object) : null,
           ]}
         />
       ) : null}

@@ -4,7 +4,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { Easing, FadeIn, FadeInLeft, FadeInRight, LinearTransition, runOnJS, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
-import { CloseX, MonoText, PrimaryButton, RingNext, Screen, Tap, useCanvasTop } from '@/components/mono';
+import { CloseX, MonoText, paced, PrimaryButton, RingNext, Screen, Tap, useCanvasTop } from '@/components/mono';
 import { PressScale } from '@/components/ui/press-scale';
 import { mono } from '@/lib/theme';
 import { haptic } from '@/lib/haptics';
@@ -172,8 +172,8 @@ export function LessonShell({
         reduced
           ? undefined
           : index === 0 && forward
-            ? FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))
-            : (forward ? FadeInRight : FadeInLeft).duration(300).easing(Easing.bezier(0.2, 0.8, 0.2, 1))
+            ? FadeIn.duration(paced(220)).easing(Easing.bezier(0.2, 0, 0, 1))
+            : (forward ? FadeInRight : FadeInLeft).duration(paced(300)).easing(Easing.bezier(0.2, 0.8, 0.2, 1))
       }
       onLayout={(e) => setMeasured({ index, h: e.nativeEvent.layout.height })}
       // a reading page's copy never takes the touch: the band behind it does
@@ -290,7 +290,7 @@ export function LessonShell({
             backgroundColor: mono.line,
           }}>
           <Animated.View
-            layout={reduced ? undefined : LinearTransition.duration(320).easing(Easing.bezier(0.2, 0, 0, 1))}
+            layout={reduced ? undefined : LinearTransition.duration(paced(320)).easing(Easing.bezier(0.2, 0, 0, 1))}
             style={{
               width: `${pct}%`,
               height: 3,

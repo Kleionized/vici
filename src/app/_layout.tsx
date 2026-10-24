@@ -128,7 +128,8 @@ export default function RootLayout() {
                 // and by presentation, which made the app feel assembled rather
                 // than designed.
                 animation: 'slide_from_right',
-                animationDuration: 260,
+                // D67: a touch slower, with the rest of the motion
+                animationDuration: 340,
                 gestureEnabled: true,
               }}>
               {/* the day-3 letter is delivered over Today — fade it in like an overlay */}
