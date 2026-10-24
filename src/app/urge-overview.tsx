@@ -70,10 +70,10 @@ function Fact({ label, value, onPress }: { label: string; value: string; onPress
   );
 }
 
-/** A card of rows under its caps (gap 10); rows after the first ruled above. */
+/** A card of rows under its caps (gap 12); a label opens its group, 30 under the one above (D63, D65). */
 function Section({ title, onLayout, children }: { title: string; onLayout?: (e: LayoutChangeEvent) => void; children: ReactNode }) {
   return (
-    <View onLayout={onLayout} style={{ gap: 10 }}>
+    <View onLayout={onLayout} style={{ gap: 12 }}>
       <MonoText v="caps">{title}</MonoText>
       <View style={{ gap: ROW_GAP }}>{children}</View>
     </View>
@@ -231,7 +231,7 @@ export default function UrgeOverview() {
                 </View>
               </View>
             </View>
-            <View style={{ paddingTop: LISTS_TOP - NAV_FOOT, paddingHorizontal: 24, paddingBottom: 40, gap: 18 }}>
+            <View style={{ paddingTop: LISTS_TOP - NAV_FOOT, paddingHorizontal: 24, paddingBottom: 40, gap: 30 }}>
               {helpedRows.length ? (
                 <Section title="What helped" onLayout={mark('helped')}>
                   {helpedRows.map((r, i) => (

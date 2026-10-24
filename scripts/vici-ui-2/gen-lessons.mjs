@@ -414,7 +414,7 @@ for (const M of model) {
     if (!eq([...t.body, ...te.body], v.practice)) die(`${tag}: practice differs`);
     if (te.done !== v.doneWhen) die(`${tag}: Done when differs`);
   }
-  const line = v.question ? 'Your answers are saved to the log. One thing left today — the task.' : 'One thing left today — the task.';
+  const line = v.question ? 'Your answers are saved to the log. One thing left today: the task.' : 'One thing left today: the task.';
   if (M.pages[M.pages.length - 1].line !== line) die(`${tag}: complete line`);
 }
 

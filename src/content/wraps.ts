@@ -4949,12 +4949,12 @@ export const WRAPS: Record<string, { w: number; lines: string[] }[]> = {
    ]
   }
  ],
- "18|Your answers are saved to the log. One thing left today — the task.": [
+ "18|Your answers are saved to the log. One thing left today: the task.": [
   {
    "w": 329,
    "lines": [
     "Your answers are saved to the log.",
-    "One thing left today — the task."
+    "One thing left today: the task."
    ]
   }
  ],

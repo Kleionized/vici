@@ -84,7 +84,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Well begun is half done.","by":"Aristotle"},
       {"k":"task","body":["Start one private note called My recovery plan.","Write your porn boundary and what you know about your starting point: when you usually watch, roughly how often or for how long, what it interrupts, and what you do after an urge or slip. Write “unknown” where needed."]},
       {"k":"taskEnd","body":["Prepare tonight: set the alarm, put the phone out of reach from bed, and put other devices away.","Keep needed calls and accessibility available. If the device must stay close, close the content and choose a practical limit on browsing."],"done":"Your starting notes are saved and tonight’s device setup is ready."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   2: {
@@ -109,7 +109,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"First say to yourself what you would be; and then do what you have to do.","by":"Epictetus"},
       {"k":"task","hero":"sunrise","box":{"h":115,"top":-79,"s":1.1},"body":["Spend up to twenty minutes making one change where you usually watch. Clear your own space, remove saved porn or bookmarks without reopening the content, or leave an account used to find it."]},
       {"k":"taskEnd","body":["If there’s nothing relevant to remove, check yesterday’s device setup and fix any inconvenience. Write the useful change under Access in your plan."],"done":"You’ve made one useful change, or confirmed that the existing setup works. Stop there rather than browse for more things to delete."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   3: {
@@ -133,7 +133,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"All truly great thoughts are conceived while walking.","by":"Friedrich Nietzsche"},
       {"k":"task","hero":"bench","box":{"h":160,"top":-34,"s":1.1},"body":["Name an exact place you can go when browsing starts: the kitchen table, a shared room, or a safe walk around the block. Try it for ten to twenty minutes today, after closing any triggering content."]},
       {"k":"taskEnd","body":["If movement is limited, change your seat or put the device away and bring another activity within reach. Keep a phone when needed for safety or access. Save the place and first step under First response."],"done":"You’ve tried the change and saved the steps. If you can’t try it today, prepare an accessible option and choose when to try it."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   4: {
@@ -157,7 +157,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Sleep that knits up the ravelled sleave of care.","by":"William Shakespeare"},
       {"k":"task","hero":"bed","box":{"h":162,"top":-32,"s":1.1},"body":["Plan the next sleep period. Choose a realistic wake time, when browsing ends, where the device goes, and a quiet activity before bed. Allow enough sleep for your circumstances."]},
       {"k":"taskEnd","body":["If you can’t sleep, avoid restarting the feed in bed. Save the steps under Night routine and set a Day 7 reminder to check what happened."],"done":"The sleep plan and device setup are ready. Falling asleep on command isn’t part of the task."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   5: {
@@ -181,7 +181,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"No man is free who is not master of himself.","by":"Epictetus"},
       {"k":"task","hero":"books","box":{"h":120,"top":-92,"s":1.1},"body":["Choose an activity for the hour when you usually want porn. Match it to what you need: rest, interest, company, movement, or a break."]},
       {"k":"taskEnd","body":["Prepare the materials and try it for fifteen to twenty minutes. Write whether it was easy to start and whether it helped you stop the usual browsing. Save it under Alternatives, with one adjustment if needed."],"done":"You’ve tried the activity and recorded what happened. An unhelpful result is worth recording too."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   6: {
@@ -204,7 +204,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"What brings no benefit to the hive brings none to the bee.","by":"Marcus Aurelius"},
       {"k":"task","hero":"calendar","box":{"h":117,"top":-75,"s":1.1},"body":["Call someone, send a specific invitation, or spend time in a conversation or shared activity. Choose contact that’s safe and appropriate.","If no personal contact is available, check how to join a regular group or access a suitable service."]},
       {"k":"taskEnd","body":["Save one option under Support. After an unanswered invitation, leave room for a reply and continue another activity."],"done":"You’ve taken a contact step or checked a group or service you can access. You don’t need a reply to finish."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   7: {
@@ -229,7 +229,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The impediment to action advances action. What stands in the way becomes the way.","by":"Marcus Aurelius"},
       {"k":"task","hero":"cake","box":{"h":204,"top":-8,"s":1.1},"body":["Read your plan for five minutes. Name one change you used and what happened. Check the sleep plan from Day 4 and the activity from Day 5. Keep what helped or change one awkward detail."]},
       {"k":"taskEnd","body":["If nothing helped clearly, record the obstacle and choose one change for next week. Then do something you enjoy within your means."],"done":"You’ve recorded the review and taken time for enjoyment. A slip during the week doesn’t cancel that time."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   8: {
@@ -252,7 +252,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Measure what is measurable, and make measurable what is not so.","by":"Galileo Galilei"},
       {"k":"task","hero":"calendar","box":{"h":172,"top":-20,"s":1.1},"body":["Choose one measure besides a streak: time spent watching, nights with the phone out of bed, or whether you used your response to an urge."]},
       {"k":"taskEnd","body":["Record what you know about the last seven days, with unknown for gaps. Then repeat one useful action today, or try a small version if you’re still finding what helps."],"done":"The measure and starting information are saved, and you’ve tried one action."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   9: {
@@ -276,7 +276,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"A gem cannot be polished without friction, nor a man perfected without trials.","by":"Seneca"},
       {"k":"task","hero":"sunrise","box":{"h":115,"top":-79,"s":1.1},"body":["Add After a slip to your plan. Using a recent example if available, note what you did in the first thirty minutes.","Then write the steps you want to use: close the content, put the device in a named place, and begin the next necessary activity."]},
       {"k":"taskEnd","body":["Choose the activity for the likely hour, such as food, work, or bed. If you haven’t slipped, prepare the steps for a possible episode without creating one."],"done":"The plan names the first action, device location, and what you’ll do next."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   10: {
@@ -301,7 +301,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Better a diamond with a flaw than a pebble without.","by":"Confucius"},
       {"k":"task","hero":"scale","box":{"h":150,"top":-62,"s":1.1},"body":["Try the after-slip steps once without an urge. Close a harmless tab, put the device where you planned, and move to the named room or activity."]},
       {"k":"taskEnd","body":["Check whether it fits the hour when you usually watch. Fix one obstacle, such as an unavailable room or an unsafe late-night walk. Use an accessible option if moving isn’t possible."],"done":"You’ve tried the steps and corrected an obstacle if needed. No sexual content or induced urge is needed."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   11: {
@@ -324,7 +324,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing endures but change.","by":"Heraclitus"},
       {"k":"task","hero":"chartUp","box":{"h":160,"top":-35,"s":1.1},"body":["Compare the past seven days with Day 1: time or disruption from porn, responses to urges or slips, and one daily routine. Include unchanged or unknown where accurate."]},
       {"k":"taskEnd","body":["Choose one change for the next seven days. Prepare it today and save a Day 18 review reminder. Write what you want to learn from trying it."],"done":"The comparison is written, the change is ready, and the review reminder is saved."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   12: {
@@ -347,7 +347,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"How long are you going to wait before you demand the best for yourself?","by":"Epictetus"},
       {"k":"task","hero":"idCard","box":{"h":191,"top":-1,"s":1.1},"body":["Choose one behaviour to repeat for a week. You can keep the Day 11 change. Write the cue and action, such as putting the phone away after brushing your teeth."]},
       {"k":"taskEnd","body":["Prepare what it needs and try it when the cue occurs. If it hasn’t occurred, name the first expected chance. Record missed attempts honestly and set a Day 19 review."],"done":"The behaviour, first chance, setup, and review are clear."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   13: {
@@ -373,7 +373,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"No man is free who is not master of himself.","by":"Epictetus"},
       {"k":"task","hero":"compass","box":{"h":189,"top":-35,"s":1.1},"body":["Write one sentence under Goal explaining why you want to change porn use. Name a real effect or a value you choose to follow, without an insult about yourself."]},
       {"k":"taskEnd","body":["Take one related action today: protect sleep, keep an agreement, give someone attention, or make time for a chosen faith or community activity. Make an arrangement if the action needs one."],"done":"Your reason is clear and you’ve taken a step that follows it."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   14: {
@@ -397,7 +397,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"It’s not what happens to you, but how you react to it that matters.","by":"Epictetus"},
       {"k":"task","hero":"signpost","box":{"h":168,"top":-26,"s":1.1},"body":["Add three short answers under Continuing: when you’ll resume after a missed day, how you’ll use the after-slip steps, and which helpful behaviour you’ll keep when motivation is low."]},
       {"k":"taskEnd","body":["Include who or which service you’ll contact if the course isn’t helping or daily life is getting worse. Adjust the pace when needed rather than make missed lessons a debt."],"done":"Each situation has a specific next action in the plan."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   15: {
@@ -420,7 +420,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"You have power over your mind, not outside events. Realize this, and you will find strength.","by":"Marcus Aurelius"},
       {"k":"task","hero":"stopwatch","box":{"h":175,"top":-34,"s":1.1},"body":["Write your earliest recognisable sign of an urge and a first action under Early signs and First response. Then put the phone out of reach for five minutes without seeking a trigger."]},
       {"k":"taskEnd","body":["At the start and end, notice the wish to check it. You can rate it from zero to ten. Record whether it changed, stayed the same, or wasn’t there. No thought or sensation has to appear."],"done":"The cue and response are saved, and the short observation is recorded. Zero throughout is a valid result."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   16: {
@@ -445,7 +445,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Know thyself.","by":"Inscription at the Temple of Apollo at Delphi"},
       {"k":"task","hero":"thermometer","box":{"h":180,"top":-30,"s":1.1},"body":["For a recent urge, note the time and place, what you were doing beforehand, how you felt physically, and your mood or any task you were avoiding. Unknown or nothing obvious is fine."]},
       {"k":"taskEnd","body":["Choose one action for a need you can identify and try it if that need is present. If no example comes to mind, save the questions for the next urge that happens naturally."],"done":"The facts and next action are saved, or the questions are ready for later."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   17: {
@@ -468,7 +468,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Action is the antidote to despair.","by":"Joan Baez"},
       {"k":"task","hero":"route","box":{"h":120,"top":-74,"s":1.1},"body":["Start where you usually browse. Close a harmless tab, put the device away, and move to the place or activity in your First response. Fix anything that makes beginning awkward."]},
       {"k":"taskEnd","body":["At the next naturally occurring urge, try the steps and record what happened. If none occurs today, leave them ready."],"done":"You’ve practised the movement and saved any adjustment. The result during an urge can be recorded later."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   18: {
@@ -493,7 +493,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The happiness of your life depends upon the quality of your thoughts.","by":"Marcus Aurelius"},
       {"k":"task","hero":"signpost","box":{"h":168,"top":-26,"s":1.1},"body":["Review the Day 11 change: did you try it, what happened, and will you keep or change it? If the situation didn’t happen, move the check to after it does.","Prepare an activity you can begin quickly, one that can hold your attention longer, and a contact or shared-place option."]},
       {"k":"taskEnd","body":["Use things you like or need. Get the materials or details ready and try the quickest option once."],"done":"The review is recorded or rescheduled, the options are ready, and you’ve tried the quick one."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   19: {
@@ -518,7 +518,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Before you heal someone, ask him if he’s willing to give up the things that made him sick.","by":"Often attributed to Hippocrates"},
       {"k":"task","hero":"kettle","box":{"h":142,"top":-70,"s":1.1},"body":["Review the Day 12 behaviour: attempts, obstacles, and what to keep or change. If you haven’t had a chance to try it, keep the review for afterwards."]},
       {"k":"taskEnd","body":["Check hunger, anger, loneliness, and tiredness now. Mark present, absent, or unsure. Take a fitting action if one needs attention. If none fits, record that instead of forcing an explanation."],"done":"The review and check are recorded, with an action taken where needed."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   20: {
@@ -543,7 +543,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The nearer a man comes to a calm mind, the closer he is to strength.","by":"Marcus Aurelius"},
       {"k":"task","body":["Close triggering content. For two to five minutes, notice a mild urge that has appeared naturally, or practise without one.","Notice thoughts or sensations if present, breathe normally, and return attention when it wanders."]},
       {"k":"taskEnd","body":["Finish by beginning the next action you chose. Record the feeling and what you did separately.","Use paper or memory if the phone is away. Stop and choose another response if the exercise is uncomfortable or unhelpful."],"done":"You’ve tried the steps and recorded the result, or stopped and chosen another response. An urge isn’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   21: {
@@ -566,7 +566,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The first and best victory is to conquer self.","by":"Plato"},
       {"k":"task","body":["Write your choice about masturbation separately from the porn boundary. Keep a choice that fits your values and experience.","If masturbation repeatedly leads to searching, consider keeping devices away or a temporary pause."]},
       {"k":"taskEnd","body":["If unsure, keep porn out of it and observe only if masturbation happens. Prepare any device change and set a Day 35 review. Add qualified support if sexual behaviour remains difficult to control."],"done":"The choice, setup, and review date are saved. No sexual activity is required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   22: {
@@ -591,7 +591,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"We are what we repeatedly do.","by":"Will Durant, summarising Aristotle"},
       {"k":"task","hero":"brain","box":{"h":155,"top":-23,"s":1.1},"body":["Choose one account, feed, time, or device location that starts the habit. Change what you can without reopening porn. If access is already reduced, check whether the setup held and fix one inconvenience."]},
       {"k":"taskEnd","body":["Save the cue and first action under Early signs. Set a Day 28 check."],"done":"You’ve addressed a remaining cue or confirmed what works, and saved the review."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   23: {
@@ -614,7 +614,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Forethought we may have, undoubtedly, but not foresight.","by":"Napoleon Bonaparte"},
       {"k":"task","hero":"brain","box":{"h":155,"top":-23,"s":1.1},"body":["Make one decision ahead of the difficult hour. Write the cue and first action: where the phone goes or what you’ll begin after a named event."]},
       {"k":"taskEnd","body":["Prepare the charger, materials, or short instructions. Try the beginning with harmless content. If an app or device is unavailable, prepare a paper or accessible alternative."],"done":"The cue is clear, the materials are ready, and you’ve tried the beginning or prepared the needed alternative."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   24: {
@@ -637,7 +637,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Take care of the body with steadfast fidelity.","by":"Thomas Jefferson"},
       {"k":"task","hero":"kettle","box":{"h":142,"top":-70,"s":1.1},"body":["Look at two or three difficult moments if you have examples. Was hunger or tiredness present? If so, try one practical change: an easy meal, eating earlier, or ending browsing in time for rest."]},
       {"k":"taskEnd","body":["If neither fits or you don’t know, keep normal care and note what to check next time. Save a Day 28 reminder."],"done":"You’ve tried a fitting change or saved an observation for later, with a review date."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   25: {
@@ -659,7 +659,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"We suffer more often in imagination than in reality.","by":"Seneca"},
       {"k":"task","body":["For a known example of anger or loneliness, write what happened and one immediate response.","For anger, that might be stepping away safely or delaying a message. For loneliness, try appropriate contact or check a regular shared activity."]},
       {"k":"taskEnd","body":["Add a later step on the actual problem if needed. If neither feeling fits, leave the exercise aside or work with another feeling you’ve noticed."],"done":"One fitting response is prepared or tried, or you’ve recorded that the topic doesn’t apply."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   26: {
@@ -684,7 +684,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"To be everywhere is to be nowhere.","by":"Seneca"},
       {"k":"task","hero":"tab","box":{"h":168,"top":-32,"s":1.1},"body":["Give one harmless chapter, task, piece of music, or hobby ten minutes without unrelated feeds. Make a tally when you want to switch, then return if continuing still makes sense."]},
       {"k":"taskEnd","body":["Record the tally and one observation. Add a short reminder for the next browsing urge: notice the wish for another option, close the content, and begin your first response."],"done":"The short practice and reminder are recorded. A tally of zero is fine."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   27: {
@@ -707,7 +707,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing is permanent except change.","by":"Heraclitus, commonly paraphrased"},
       {"k":"task","hero":"shower","box":{"h":180,"top":-18,"s":1.1},"body":["Try three minutes of gentle movement, comfortable breathing, or a change of room. Stay within your physical limits and breathe normally if a set rhythm feels uncomfortable."]},
       {"k":"taskEnd","body":["Describe tension or restlessness before and after, in words or from zero to ten. Record whether you’d use the option again. Stop if it’s uncomfortable."],"done":"You’ve tried one option and recorded what happened. The feeling doesn’t have to decrease."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   28: {
@@ -731,7 +731,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"First we make our habits, then our habits make us.","by":"Often attributed to John Dryden"},
       {"k":"task","hero":"dominoes","box":{"h":120,"top":-92,"s":1.1},"body":["Review the cue change from Day 22 and care adjustment from Day 24. What did you try, and what happened? If you haven’t used either, check the setup and keep the review for after use."]},
       {"k":"taskEnd","body":["Name the earliest step you can recognise in the browsing habit. Keep a response that helped, or change one step if it didn’t. Practise the beginning without seeking a trigger."],"done":"The two reviews are recorded or kept for later, and the early response is confirmed or changed."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   29: {
@@ -753,7 +753,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Men are disturbed not by things, but by the views which they take of things.","by":"Epictetus"},
       {"k":"task","hero":"scale","box":{"h":150,"top":-62,"s":1.1},"body":["Write an immediate benefit and a real cost of one recent or typical episode. Unknown is acceptable. Save them for Day 32."]},
       {"k":"taskEnd","body":["Choose one likely difficult period in the next three days. Plan the place, activity, and device rule, with an accessible backup if plans change. Set a check after the period, by Day 32 where possible."],"done":"The notes, planned period, and review are saved. You’ll judge what helped after trying it."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   30: {
@@ -778,7 +778,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The bait hides the hook.","by":"Old proverb"},
       {"k":"task","hero":"tab","box":{"h":168,"top":-32,"s":1.1},"body":["Name what you wanted from a recent urge and try a fitting response: rest, an interesting activity, appropriate contact, or a first step on a task."]},
       {"k":"taskEnd","body":["For sexual desire, check or prepare the Day 21 boundary instead; sex or masturbation isn’t required. Record whether the response fit. If you don’t know the need, save a question for the next urge."],"done":"You’ve tried a response, prepared the sexual boundary, or saved an observation for later."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   31: {
@@ -802,7 +802,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The unexamined life is not worth living.","by":"Socrates"},
       {"k":"task","hero":"envelopeOpen","box":{"h":172,"top":-42,"s":1.1},"body":["Ask whether an urge happened while you were avoiding something specific. If so, spend up to fifteen minutes on the smallest safe step, or request support if that needs to come first. Save a Day 47 follow-up."]},
       {"k":"taskEnd","body":["If no avoided problem fits, use the Day 30 response or save a question for a future urge. Don’t search for a hidden issue to satisfy the exercise."],"done":"You’ve taken a first step or requested help, or prepared an alternative that fits."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   32: {
@@ -826,7 +826,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Begin to live at once, and count each separate day as a separate life.","by":"Seneca"},
       {"k":"task","hero":"clock","box":{"h":176,"top":-36,"s":1.1},"body":["Review the period planned on Day 29: did it happen, did you follow the plan, and what needs changing? Keep the check for afterwards if the period is still ahead."]},
       {"k":"taskEnd","body":["Read the benefit and cost you recorded. Choose one practical cost to address or prevent today. If the concern is mainly a values conflict, name it honestly and take a related action instead."],"done":"The review is recorded or rescheduled, and one fitting repair or preparation is made."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   33: {
@@ -850,7 +850,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Great things are not done by impulse, but by a series of small things brought together.","by":"Vincent van Gogh"},
       {"k":"task","hero":"calendar","box":{"h":172,"top":-20,"s":1.1},"body":["Choose an activity or commitment that viewing has displaced, if any. Give it a realistic block this week and begin a small part today, or make the needed invitation or booking."]},
       {"k":"taskEnd","body":["If your main reason is a personal value rather than lost time, choose an action that follows it. Save what you chose and why. You don’t need a new improvement project."],"done":"You’ve begun a related action or made the arrangement and prepared what you can."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   34: {
@@ -873,7 +873,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Victorious warriors win first and then go to war.","by":"Sun Tzu"},
       {"k":"task","hero":"scale","box":{"h":150,"top":-62,"s":1.1},"body":["Choose the actual beginning of a recent difficult evening. Change one part you control and try the steps without opening porn."]},
       {"k":"taskEnd","body":["If the setup already helped, keep it and name what made it practical. If no example is clear, prepare one observation for the next urge. Use the saved response when the situation occurs."],"done":"You’ve tried a change, confirmed a helpful setup, or prepared an observation. You don’t need another deletion when nothing remains."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   35: {
@@ -899,7 +899,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"It is not length of life, but depth of life.","by":"Ralph Waldo Emerson"},
       {"k":"task","hero":"scale","box":{"h":150,"top":-62,"s":1.1},"body":["Review the choice from Day 21. Keep or adjust it from your experience; record unknown if you haven’t had a chance to assess it. Get help if ongoing control problems need it."]},
       {"k":"taskEnd","body":["Choose one weekly activity and schedule four chances to do it. Prepare materials or make the first invitation or booking.","Set checks after the sessions. We’ll return on Days 42, 49, 56, and 63; keep later sessions’ checks for after they happen."],"done":"The boundary is reviewed, and the activity has dates, a first step, and review reminders."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   36: {
@@ -925,7 +925,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The art of being wise is the art of knowing what to overlook.","by":"William James"},
       {"k":"task","hero":"battery","box":{"h":114,"top":-92,"s":1.1},"body":["Read your plan for a tired evening. Make one action simpler: an easy meal, a shorter activity, or a response you can begin indoors."]},
       {"k":"taskEnd","body":["Prepare what it needs and try its first step without an urge. Save the smaller version under Bad day minimum. It should protect necessary care and fit the hour when you’ll use it."],"done":"The smaller response is ready and you’ve tried its beginning."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   37: {
@@ -949,7 +949,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Excellence is an art won by training and habituation.","by":"Will Durant, summarising Aristotle"},
       {"k":"task","hero":"route","box":{"h":120,"top":-74,"s":1.1},"body":["Practise one response from the place where you usually begin browsing. Close a harmless tab, put the device away, and begin the next action. If you choose an urge exercise, practise its steps and ending too."]},
       {"k":"taskEnd","body":["Fix one awkward detail. Leave the steps ready for the next naturally occurring urge, and record that result later."],"done":"You’ve practised the response and saved an adjustment if needed. No urge or triggering material is required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   38: {
@@ -973,7 +973,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing is so fatiguing as the eternal hanging on of an uncompleted task.","by":"William James"},
       {"k":"task","hero":"halfMast","box":{"h":165,"top":-29,"s":1.1},"body":["Choose one rule you follow and write what it protects. If it’s useful, keep it and use or practise it once today."]},
       {"k":"taskEnd","body":["If an optional rule mainly punishes you or has no clear purpose, change or remove that demand. Keep needed care. Discuss professional treatment changes with the relevant clinician."],"done":"You’ve kept or changed the rule for a clear reason and taken the fitting action."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   39: {
@@ -999,7 +999,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Divide each difficulty into as many parts as is feasible and necessary to resolve it.","by":"René Descartes"},
       {"k":"task","hero":"compass","box":{"h":189,"top":-35,"s":1.1},"body":["Choose the part that gets in the way: noticing, remembering, beginning, stopping, continuing while tempted, or returning after interruption."]},
       {"k":"taskEnd","body":["Try one small change for that part. Add a visible cue, shorten the beginning, prepare the next activity, or practise returning to it. Use harmless content and record what made the step easier or harder."],"done":"You’ve practised the useful part and recorded one result. If nothing needs changing, confirm what works."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   40: {
@@ -1026,7 +1026,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Men are disturbed not by things, but by the views which they take of things.","by":"Epictetus"},
       {"k":"task","hero":"hourglass","box":{"h":173,"top":-45,"s":1.1},"body":["When an ordinary distracting thought appears, name it briefly and return to the task. You can use “There’s that thought again,” or your own words."]},
       {"k":"taskEnd","body":["For a naturally occurring porn urge, close the content and begin the saved response without waiting for the thought to disappear. If no thought appears, read the steps once and leave them ready."],"done":"You’ve tried the response or prepared it for later. Don’t summon sexual thoughts for practice."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   41: {
@@ -1052,7 +1052,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Waste no more time arguing what a good man should be. Be one.","by":"Marcus Aurelius"},
       {"k":"task","hero":"signpost","box":{"h":168,"top":-26,"s":1.1},"body":["Write one cue and action for a decision you keep postponing. Reuse an existing commitment if it fits. Name when it begins and prepare the materials."]},
       {"k":"taskEnd","body":["Try the first step today. If the cue hasn’t happened, practise with harmless content and name the next expected chance. Note one obstacle and adjust it if needed."],"done":"The plan has a clear cue, ready materials, and a tried beginning."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   42: {
@@ -1074,7 +1074,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Do what you can, with what you have, where you are.","by":"Theodore Roosevelt"},
       {"k":"task","body":["Review the latest Day 35 session if it has happened. Record attendance, how it fit, and any change. If still ahead, keep its check for afterwards.","Under Bad day minimum, keep two or three necessary actions for a difficult day. Include the simplest response to porn and care you need."]},
       {"k":"taskEnd","body":["Try one part or check it’s ready. Shorten optional tasks rather than make them a debt."],"done":"The activity review is recorded or rescheduled, and the smaller day is ready."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   43: {
@@ -1098,7 +1098,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"While there’s life, there’s hope.","by":"Cicero"},
       {"k":"task","hero":"halfMast","box":{"h":165,"top":-29,"s":1.1},"body":["Review a recent slip or close call, if available. Close the content first. Later, write what happened before it, the first sign you noticed, and the obstacle to using your response."]},
       {"k":"taskEnd","body":["Make one practical change or take a support step. If no example exists, check that your current after-slip steps still fit. Don’t create a mistake for the review."],"done":"The review leads to a change, a confirmed plan, or a request for help."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   44: {
@@ -1124,7 +1124,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Failure is instructive. The person who really thinks learns quite as much from his failures as from his successes.","by":"John Dewey"},
       {"k":"task","hero":"notebook","box":{"h":121,"top":-91,"s":1.1},"body":["Describe a recent mistake factually, without an insult. Take one normal act of care and a proportionate repair if needed. That might be food and an appropriate apology, or sleep and a rescheduled task."]},
       {"k":"taskEnd","body":["If there hasn’t been a mistake, keep ordinary care and prepare the steps for later. You don’t need to invent guilt or a confession."],"done":"You’ve taken care of a need and addressed a real consequence where there is one."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   45: {
@@ -1148,7 +1148,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Be tolerant with others and strict with yourself.","by":"Marcus Aurelius"},
       {"k":"task","hero":"mirror","box":{"h":169,"top":-43,"s":1.1},"body":["Adapt one commitment to today’s circumstances. Shorten an activity, use the easier meal, or postpone an optional lesson while keeping necessary care and the porn response."]},
       {"k":"taskEnd","body":["Use the Bad day minimum if it fits. If the day is going well, confirm the version you’d use when needed and keep today’s helpful routine."],"done":"You’ve followed a fitting version of the day or prepared it for a future difficulty."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   46: {
@@ -1174,7 +1174,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Although the world is full of suffering, it is full also of the overcoming of it.","by":"Helen Keller"},
       {"k":"task","hero":"lighthouse","box":{"h":173,"top":-49,"s":1},"body":["If a difficult period is affecting the plan, choose one temporary adjustment and one support option.","Check how to access the help and make the enquiry if it’s needed now. Set a realistic date to review the adjustment."]},
       {"k":"taskEnd","body":["If no difficult period fits, confirm the existing support details and leave the routine alone."],"done":"The fitting adjustment and support step are made, or the existing support is confirmed. A reply isn’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   47: {
@@ -1198,7 +1198,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The oak fought the wind and was broken, the willow bent when it must and survived.","by":"Robert Jordan"},
       {"k":"task","hero":"mountain","box":{"h":173,"top":-21,"s":1.1},"body":["Return to the Day 31 first step. If it hasn’t happened, make it smaller or request the information or help you need. Spend up to fifteen minutes on the safe step now."]},
       {"k":"taskEnd","body":["If the issue is resolved, choose another small waiting task only if one exists. If none fits, keep a valued activity. Get support before action when safety or severe distress is involved."],"done":"You’ve taken a fitting action or made the support request. Confrontation or painful reflection isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   48: {
@@ -1222,7 +1222,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing diminishes anxiety faster than action.","by":"Walter Anderson"},
       {"k":"task","hero":"door","box":{"h":165,"top":-39,"s":1.1},"body":["Look at the hour and choose the next necessary activity: food, work, class, washing, or bed. After a slip, close the content and follow your saved steps first."]},
       {"k":"taskEnd","body":["Begin a manageable part. If the day is going well, keep a useful existing commitment instead. Don’t add punishment to compensate for lost time."],"done":"You’ve returned to one activity that fits the hour."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   49: {
@@ -1245,7 +1245,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The beginning is always today.","by":"Mary Shelley"},
       {"k":"task","body":["Review the latest Day 35 session if it’s happened; keep the check for afterwards if not.","Confirm your support details. If control or daily life is seriously affected, check a qualified professional’s availability or request an appointment."]},
       {"k":"taskEnd","body":["If another area needs advice, make the fitting enquiry. You can use a service when no safe personal contact is available."],"done":"The activity review is recorded or rescheduled, and support details are checked or a needed request is made."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   50: {
@@ -1271,7 +1271,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Boredom is the root of all evil, the despairing refusal to be oneself.","by":"Søren Kierkegaard"},
       {"k":"task","hero":"clock","box":{"h":176,"top":-36,"s":1.1},"body":["Try ten to fifteen minutes of one activity without unrelated switching. Choose reading, a hobby, work, movement, or rest according to what you need. Devices are fine when they serve the activity."]},
       {"k":"taskEnd","body":["Record whether it became easier to enter, stayed dull, or didn’t fit. Choose one adjustment if useful."],"done":"You’ve tried the activity and noted what happened. Enjoyment isn’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   51: {
@@ -1294,7 +1294,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"All of humanity’s problems stem from man’s inability to sit quietly in a room alone.","by":"Blaise Pascal, commonly paraphrased"},
       {"k":"task","body":["If a feed or unplanned gap often leads to porn, write a specific stopping rule or alternative. Keep it under Access or First response.","During a normal gap today, begin the alternative before opening the usual feed and try it for ten minutes."]},
       {"k":"taskEnd","body":["If the pattern doesn’t fit, leave normal screen use alone and note the actual problem to work on instead."],"done":"You’ve tried a fitting change or recorded that this pattern doesn’t apply. No risky browsing is needed."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   52: {
@@ -1317,7 +1317,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Patience is bitter, but its fruit is sweet.","by":"Often attributed to Aristotle"},
       {"k":"task","hero":"bench","box":{"h":160,"top":-34,"s":1.1},"body":["Give one activity fifteen minutes without unrelated switching. Choose what fits: reading, a hobby, a task, gentle movement, or rest. Keep needed devices in use and unrelated feeds closed."]},
       {"k":"taskEnd","body":["At the end, record whether it became easier to enter, stayed dull, or wasn’t right for the moment. Then begin the next part of the day."],"done":"You’ve tried the activity and recorded its fit. It needn’t be enjoyable or screen-free."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   53: {
@@ -1342,7 +1342,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The price of anything is the amount of life you exchange for it.","by":"Henry David Thoreau"},
       {"k":"task","hero":"phoneTable","box":{"h":171,"top":-45,"s":1.1},"body":["Choose one screen rule for the problem you’ve observed. Name the use, time, or place it covers, while preserving necessary calls, alarms, work, care, and accessibility."]},
       {"k":"taskEnd","body":["Prepare the setup and follow the rule when the situation happens. Otherwise name the first expected chance. Reuse an existing helpful rule if it fits, and set a Day 60 review."],"done":"The rule and setup are ready, with first use completed or planned and the review saved."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   54: {
@@ -1367,7 +1367,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Simplicity is the ultimate sophistication.","by":"Commonly attributed to Leonardo da Vinci"},
       {"k":"task","hero":"feedOff","box":{"h":178,"top":-34,"s":1.1},"body":["Set aside one troublesome automatic feed or browsing habit for an hour. Keep essential functions and your porn boundary in place."]},
       {"k":"taskEnd","body":["Notice when you reach for the habit and what you wanted then. At the end, decide whether a small lasting rule would help. If no such habit is causing trouble, review an existing useful rule instead."],"done":"The hour and observation are complete, or you’ve reviewed the rule that fits your situation."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   55: {
@@ -1390,7 +1390,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The secret of your future is hidden in your daily routine.","by":"Often attributed to Mike Murdock"},
       {"k":"task","hero":"sunrise","box":{"h":115,"top":-79,"s":1.1},"body":["If the hour after waking is difficult, choose its first activity and prepare the materials. Set an alarm that allows enough rest. Keep needed phone functions and decide when unrelated feeds can begin."]},
       {"k":"taskEnd","body":["If the waking routine already works, confirm it. Save a short check for after the next waking period; we’ll revisit it on Day 56 if it has happened."],"done":"The first activity and check are ready, or you’ve confirmed the routine that’s helping."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   56: {
@@ -1414,7 +1414,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Life can only be understood backwards; but it must be lived forwards.","by":"Søren Kierkegaard"},
       {"k":"task","hero":"compass","box":{"h":189,"top":-35,"s":1.1},"body":["Review the latest Day 35 session and yesterday’s waking plan if they have happened. Record what you tried and any adjustment. Keep future checks for afterwards."]},
       {"k":"taskEnd","body":["Name one person, responsibility, or activity that matters to you and give it fifteen to thirty minutes, or make the needed invitation or booking. You can reuse an existing activity."],"done":"The reviews are recorded or rescheduled, and you’ve taken the chosen action or made its arrangement."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   57: {
@@ -1437,7 +1437,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The greatest thing in the world is to know how to belong to oneself.","by":"Michel de Montaigne"},
       {"k":"task","hero":"calendar","box":{"h":117,"top":-75,"s":1.1},"body":["Suggest an activity, day, and approximate time to someone you trust or enjoy. If no safe personal contact is available, check how to attend a regular group or access an appropriate service."]},
       {"k":"taskEnd","body":["If social life is already working, keep a shared activity. Save details under Support or Weekly life only if they’ll help later."],"done":"The invitation or enquiry is made, or you’ve kept the shared activity. A reply isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   58: {
@@ -1463,7 +1463,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Friendship is unnecessary, like philosophy, like art. It has no survival value; rather it is one of those things which give value to survival.","by":"C. S. Lewis"},
       {"k":"task","hero":"bench","box":{"h":160,"top":-34,"s":1.1},"body":["Choose the step that fits: more everyday contact through a shared activity, a one-to-one conversation with a safe person, or support from someone available when you’re missing a particular person."]},
       {"k":"taskEnd","body":["Make an invitation, attend, or check a group or service. If you aren’t lonely, give a valued relationship some attention. Respect other people’s limits."],"done":"You’ve taken the chosen step. A reply or immediate change in loneliness isn’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   59: {
@@ -1486,7 +1486,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Whosoever is delighted in solitude is either a wild beast or a god.","by":"Aristotle"},
       {"k":"task","hero":"bench","box":{"h":160,"top":-34,"s":1.1},"body":["Choose ten to twenty minutes for an activity alone, or a personal activity in a shared place. Decide what you’ll do and what follows it. Use necessary devices with unrelated feeds closed."]},
       {"k":"taskEnd","body":["Try it and note whether it was restful, difficult, or unhelpful. Make one adjustment if needed. Stop and choose contact or support if it becomes too distressing."],"done":"You’ve tried a fitting activity and recorded the result, or stopped and chosen support."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   60: {
@@ -1511,7 +1511,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The hunger for love is much more difficult to remove than the hunger for bread.","by":"Mother Teresa"},
       {"k":"task","hero":"mirror","box":{"h":117,"top":-96,"s":1.1},"body":["Review the Day 53 screen rule: did you follow it, did it help, and what should stay or change? Keep the check for after use if you haven’t tried it."]},
       {"k":"taskEnd","body":["Then take a fitting step: focused time with a willing person, an invitation, a regular contact option, or checking the Day 21 sexual boundary. If no need is present, maintain something useful."],"done":"The rule is reviewed or rescheduled, and the chosen step is taken. Sex, disclosure, and another person’s reply aren’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   61: {
@@ -1535,7 +1535,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Friendship is a sheltering tree.","by":"Samuel Taylor Coleridge"},
       {"k":"task","hero":"envelope","box":{"h":117,"top":-97,"s":1.1},"body":["Make one reasonable follow-up with a person or group you know. Suggest an activity, ask about the next session, register, or attend again."]},
       {"k":"taskEnd","body":["If someone has declined or contact is one-sided, leave them space and choose another option. Check timing, cost, and access where needed."],"done":"You’ve followed up or attended. Respecting a clear boundary and finding another suitable option also counts."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   62: {
@@ -1558,7 +1558,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Show me your friends, and I’ll show you your future.","by":"Proverb"},
       {"k":"task","hero":"door","box":{"h":173,"top":-39,"s":1.1},"body":["If an interaction repeatedly causes harm or ignores your limit, choose one safe change: mute a channel, limit your availability, decline an invitation, or seek support before acting."]},
       {"k":"taskEnd","body":["Save your own action if you’ll need to remember it. If no harmful interaction fits, keep or arrange time with someone you value, or check a support setting when contact isn’t available."],"done":"You’ve made a safe change, taken a support step, or maintained a healthy connection. Confrontation isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   63: {
@@ -1582,7 +1582,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The better part of one’s life consists of his friendships.","by":"Abraham Lincoln"},
       {"k":"task","hero":"bubbles","box":{"h":117,"top":-71,"s":1.1},"body":["Review the four Day 35 activity opportunities. Record what happened and whether to continue. Keep checks for any future sessions after they occur.","Then do one useful thing for a relationship: listen, help, keep a plan, attempt a call, or make an appropriate apology or invitation."]},
       {"k":"taskEnd","body":["If no safe relationship is available, take a step towards a group or service."],"done":"The activity review is recorded or kept for later, and you’ve taken one relationship or support step."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   64: {
@@ -1607,7 +1607,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"It is never too late to be what you might have been.","by":"George Eliot, often attributed"},
       {"k":"task","body":["This exercise is optional. You can name one present-day reaction and prepare a safe response, such as noticing the room, leaving an unsafe setting, or saving a qualified support contact.","Try gentle grounding only if comfortable."]},
       {"k":"taskEnd","body":["You can also mark the topic as not relevant or skip without giving a reason. If reflection becomes upsetting, stop and choose care or support. No account of a past event is required."],"done":"A present-day response is prepared, or you’ve chosen to skip, stop, or mark the topic not relevant."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   65: {
@@ -1630,7 +1630,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The first step toward getting somewhere is to decide that you are not going to stay where you are.","by":"J. P. Morgan, attributed"},
       {"k":"task","hero":"plant","box":{"h":191,"top":-21,"s":1.1},"body":["Choose one setting that repeatedly makes difficult evenings harder, if any. Change a feature you safely control: timing, device use, work location, or contact with a harmful channel."]},
       {"k":"taskEnd","body":["If changing it is unsafe or complicated, request support first. If nothing fits, keep what’s helping and record that no change is needed."],"done":"You’ve made a safe adjustment or support step, or confirmed no change is needed. Leaving a home, job, or relationship isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   66: {
@@ -1654,7 +1654,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The greatest discovery of my generation is that a human being can alter his life by altering his attitudes.","by":"William James, commonly attributed"},
       {"k":"task","hero":"mirror","box":{"h":169,"top":-43,"s":1.1},"body":["Choose a recent harsh judgement if available. Write the event, actual consequence, and next action without the insult or unsupported claim about yourself."]},
       {"k":"taskEnd","body":["Save the brief response for Day 68. Include a repair or support step if needed. If no harsh judgement fits, describe an everyday difficulty factually or mark the task unnecessary."],"done":"You’ve written the factual response or recorded that the pattern doesn’t apply. No new mistake is needed."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   67: {
@@ -1677,7 +1677,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing is more deceitful than the appearance of humility. It is often only carelessness of opinion, and sometimes an indirect boast.","by":"Jane Austen"},
       {"k":"task","hero":"mirror","box":{"h":169,"top":-43,"s":1.1},"body":["Use the Day 66 example if it fits. Bring a broad judgement back to the facts and take one action it has been preventing: food, washing, a commitment, appropriate contact, or professional support."]},
       {"k":"taskEnd","body":["If no such judgement fits, keep normal care and leave the analysis aside. Disclosure is optional and should be appropriate to the person and situation."],"done":"You’ve taken the fitting action or requested support."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   68: {
@@ -1702,7 +1702,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"If you want others to be happy, practice compassion. If you want to be happy, practice compassion.","by":"Dalai Lama"},
       {"k":"task","hero":"plant","box":{"h":191,"top":-21,"s":1.1},"body":["Review a real use of the Day 66 response if there has been one. Record what happened next and change one detail if needed."]},
       {"k":"taskEnd","body":["If you haven’t needed it, read it once and name when you’d use it. If self-criticism doesn’t fit, check the after-slip steps instead. Keep this brief and stop if reflection becomes upsetting."],"done":"You’ve reviewed actual use or practised a suitable response without creating a mistake."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   69: {
@@ -1726,7 +1726,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Well done is better than well said.","by":"Benjamin Franklin"},
       {"k":"task","hero":"compass","box":{"h":189,"top":-35,"s":1.1},"body":["Choose one useful, modest action and give it a time or cue. Prepare the materials and attempt it. An existing commitment is fine."]},
       {"k":"taskEnd","body":["Record completed, changed, or missed, with a practical reason if needed. If missed, choose the next realistic chance without adding punishment or restarting the course."],"done":"You’ve made the attempt and recorded the result, including an appropriate adjustment."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   70: {
@@ -1750,7 +1750,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Become who you are.","by":"Friedrich Nietzsche"},
       {"k":"task","hero":"chartUp","box":{"h":160,"top":-35,"s":1.1},"body":["Review your plan. Keep something that helps, simplify something awkward if needed, and stop an optional demand only if it has no useful purpose."]},
       {"k":"taskEnd","body":["If every part fits, retain it. Discuss changes to professional treatment with the clinician; don’t treat it as an optional course demand. Leave a plan you can explain and use on a busy evening."],"done":"The plan is reviewed and manageable. Another improvement project isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   71: {
@@ -1773,7 +1773,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"To know oneself is the beginning of wisdom.","by":"Aristotle, traditionally attributed"},
       {"k":"task","hero":"mirror","box":{"h":169,"top":-43,"s":1.1},"body":["Read two or three useful entries. Identify one repeated difficulty and one response that helped if the record supports them. Use that information for the coming week."]},
       {"k":"taskEnd","body":["If the record is thin, choose one brief observation to collect instead. Keep the existing setup when it fits, and take a support step if the record shows the current help isn’t enough."],"done":"The week reflects actual information or a focused plan to gather it."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   72: {
@@ -1798,7 +1798,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The willing are led by fate, the reluctant dragged.","by":"Cleanthes, preserved by Seneca"},
       {"k":"task","hero":"umbrella","box":{"h":196,"top":-11,"s":1.1},"body":["If helpful, choose an everyday past event and distinguish what has happened from what you can do now. Take a proportionate repair or present-day action."]},
       {"k":"taskEnd","body":["If no repair fits, choose a valued activity. If reflection is upsetting or unhelpful, skip and choose care or support. Gratitude, forgiveness, and retelling a painful event aren’t required."],"done":"You’ve taken a fitting action or chosen to skip the reflection."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   73: {
@@ -1821,7 +1821,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"It is not death that a man should fear, but he should fear never beginning to live.","by":"Marcus Aurelius"},
       {"k":"task","hero":"hourglass","box":{"h":167,"top":-45,"s":1.1},"body":["Choose a person, activity, or responsibility you want to give more time to. Reserve a realistic block in the next seven days and begin a small part today, or make the needed invitation or booking."]},
       {"k":"taskEnd","body":["Set a review after the block: did it happen, did it fit, and will you repeat it? Save it for Day 84 if due then, or for after the actual session."],"done":"The time and review are scheduled and a first step is taken. Mortality reflection is optional."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   74: {
@@ -1845,7 +1845,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"While we are postponing, life speeds by.","by":"Seneca"},
       {"k":"task","hero":"sunrise","box":{"h":115,"top":-79,"s":1.1},"body":["Begin ten to twenty minutes of something you want more of, using the Day 73 choice if it fits. If another person or booking is needed, make the arrangement and prepare what you can."]},
       {"k":"taskEnd","body":["If no postponed activity fits, keep an enjoyable commitment or deliberately rest. The task doesn’t require productivity or a reply."],"done":"You’ve begun, made the needed arrangement, or kept a fitting commitment."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   75: {
@@ -1870,7 +1870,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Give me six hours to chop down a tree and I will spend the first four sharpening the axe.","by":"Abraham Lincoln, commonly attributed"},
       {"k":"task","hero":"calendar","box":{"h":172,"top":-20,"s":1.1},"body":["Choose one aim for ninety days and a realistic weekly action. Schedule four chances, then begin a small part or make the needed arrangement today."]},
       {"k":"taskEnd","body":["Set reviews after two weeks and at thirty, sixty, and ninety days. Write a smaller version for difficult weeks and how you’ll resume after interruption. You can reuse an existing activity."],"done":"The aim, dates, reviews, smaller version, and first step are saved or completed."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   76: {
@@ -1893,7 +1893,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Nothing can bring you peace but yourself.","by":"Ralph Waldo Emerson"},
       {"k":"task","body":["Set aside one distracting feed, notification source, or other input for twenty to thirty minutes when you’d normally use it.","Keep essential functions and commitments available. Choose what gets your attention instead."]},
       {"k":"taskEnd","body":["Record whether the limit helped and whether to repeat it. If no input fits, give an enjoyable activity the time without unrelated switching."],"done":"You’ve tried the limit or chosen activity and recorded the result. Silence or feeling calmer isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   77: {
@@ -1916,7 +1916,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The best way to predict your future is to create it.","by":"Often attributed to Peter Drucker"},
       {"k":"task","hero":"envelope","box":{"h":129,"top":-85,"s":1.1},"body":["Name one recurring activity you’d like in life a year from now. Schedule four chances, or confirm dates already made on Day 35 or 75. Make the first invitation, booking, or preparation."]},
       {"k":"taskEnd","body":["Set a review after the first session and another after four weeks. Add the first to Day 84 if it’s happened by then; otherwise keep the later reminder."],"done":"The activity has dates, a first step, and both review reminders."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   78: {
@@ -1939,7 +1939,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"How long are you going to wait before you demand the best for yourself?","by":"Epictetus, adapted"},
       {"k":"task","hero":"lighthouse","box":{"h":221,"top":-8,"s":1.1},"body":["Keep or rewrite the reason from Day 13 under Goal. Choose one behaviour that has helped to keep for ninety days and save a review date. You can reuse a date from Day 75."]},
       {"k":"taskEnd","body":["Use the behaviour today when its cue occurs. Otherwise practise the first step and keep the setup ready. Don’t create a risky test."],"done":"The reason and review are saved, and the behaviour is used or its first step practised."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   79: {
@@ -1964,7 +1964,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The years teach much which the days never know.","by":"Ralph Waldo Emerson"},
       {"k":"task","hero":"calendar","box":{"h":172,"top":-20,"s":1.1},"body":["Compare your actual starting notes with now: time or disruption from viewing, responses to urges and slips, and one routine or activity. If recalling the start, say so."]},
       {"k":"taskEnd","body":["Include unchanged, worse, and unknown honestly. Choose one decision: keep a helpful change, adjust a weak one, or seek more support. Take its first step."],"done":"The comparison and next decision are recorded, with a fitting first action."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   80: {
@@ -1991,7 +1991,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Habit is a second nature.","by":"Michel de Montaigne"},
       {"k":"task","hero":"brain","box":{"h":155,"top":-23,"s":1.1},"body":["Choose a response that helped and a likely changed situation, such as travel, a shared room, or no phone. Prepare an accessible first step and practise the response once without an urge."]},
       {"k":"taskEnd","body":["If you choose an urge exercise, practise its steps and ending. If no response has helped, check a more suitable support option and enquire if help is needed now."],"done":"You’ve checked the response in a changed situation or prepared and used the needed support option."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   81: {
@@ -2017,7 +2017,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"The greatest victory is that which requires no battle.","by":"Sun Tzu, commonly attributed"},
       {"k":"task","hero":"flag","box":{"h":165,"top":-29,"s":1.1},"body":["Choose up to three changes that helped and use them in today’s routine: device placement, a response, an activity, a sleep rule, or support."]},
       {"k":"taskEnd","body":["If a cue doesn’t occur, practise the first step rather than create a test. If nothing helped clearly, record what’s missing and take a step towards other support."],"done":"You’ve used or practised the chosen changes, or taken a support step. Preparation alone isn’t the whole task."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   82: {
@@ -2043,7 +2043,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Our greatest glory is not in never falling, but in rising every time we fall.","by":"Commonly attributed to Confucius"},
       {"k":"task","hero":"books","box":{"h":120,"top":-92,"s":1.1},"body":["Confirm a first support contact or service and a backup. Check details, access conditions, and how to begin the request. Both options can be services if personal contacts aren’t available."]},
       {"k":"taskEnd","body":["Draft a short opening message if helpful. If support is needed now, send the enquiry or make the call. Use the backup when the first option is unavailable."],"done":"Support details are checked and any needed first request is made. Personal disclosure or a reply isn’t required."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
   83: {
@@ -2067,7 +2067,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"There are years that ask questions and years that answer.","by":"Zora Neale Hurston"},
       {"k":"task","hero":"envelopeOpen","box":{"h":172,"top":-42,"s":1.1},"body":["Read an early entry beside a recent one. Note an honest observation, including no clear change where accurate.","Remove remaining access to porn only if relevant and possible without reopening it."]},
       {"k":"taskEnd","body":["Otherwise spend fifteen to twenty minutes on a person or activity you value. If the record shows a serious continuing problem, use the support details now."],"done":"The record is reviewed and one fitting action is taken. A positive ending or another deletion isn’t required."},
-      {"k":"complete","line":"One thing left today — the task."},
+      {"k":"complete","line":"One thing left today: the task."},
     ],
   },
   84: {
@@ -2090,7 +2090,7 @@ export const LESSONS: Record<number, LessonContent> = {
       {"k":"quote","text":"Dwell on the beauty of life. Watch the stars, and see yourself running with them.","by":"Marcus Aurelius"},
       {"k":"task","hero":"sunrise","box":{"h":115,"top":-79,"s":1.1},"body":["Save a short plan with your goal, early signs, first response, after-slip steps, smaller day, support details, and next review. Keep it accessible, with a backup if needed.","Review the Day 73 block and first Day 77 session if they’ve happened; otherwise keep their reminders."]},
       {"k":"taskEnd","body":["Set a check in two weeks and retain the thirty-, sixty-, and ninety-day reviews. If control or daily life is worsening, request help now."],"done":"The short plan is saved, due reviews are completed or kept for later, and any needed support request is made."},
-      {"k":"complete","line":"Your answers are saved to the log. One thing left today — the task."},
+      {"k":"complete","line":"Your answers are saved to the log. One thing left today: the task."},
     ],
   },
 };

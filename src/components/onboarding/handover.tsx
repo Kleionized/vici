@@ -188,9 +188,11 @@ export function O3TheVow({ name, date, values = [], onSign, skip }: { name: stri
                 {who}
               </MonoText>
             </Animated.View>
-            <MonoText v="p" wrap="wrap" color={mono.mute} style={{ marginTop: 10, fontSize: 14, lineHeight: lhNormal(14) }}>
-              {signed ? `Signed on ${date}` : 'Hold the button to sign.'}
-            </MonoText>
+            <Animated.View key={signed ? 'signed' : 'unsigned'} style={riseStyle(motion && signed, { distance: 6 })}>
+              <MonoText v="p" wrap="wrap" color={signed ? mono.ink : mono.mute} style={{ marginTop: 10, fontSize: 14, lineHeight: lhNormal(14) }}>
+                {signed ? `Signed on ${date}` : 'Hold the button to sign.'}
+              </MonoText>
+            </Animated.View>
           </View>
       </Band>
       <HoldButton

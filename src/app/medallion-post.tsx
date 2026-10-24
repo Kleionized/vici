@@ -1,9 +1,8 @@
 import { useRouter } from 'expo-router';
-import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { FaceCoin, kkFace, kkStanding } from '@/components/keepsakes/Medallion';
-import { GhostLink, MonoText, MS, NavBar, popStyle, PrimaryButton, Screen, useMotion } from '@/components/mono';
+import { GhostLink, MonoText, MS, NavBar, popStyle, PrimaryButton, Screen, ScrollRegion, useMotion } from '@/components/mono';
 import { useEvents } from '@/lib/backend';
 import { roman } from '@/lib/format';
 import { ACCOUNT_KEYS, writeAccountJSON } from '@/lib/accountState';
@@ -45,7 +44,8 @@ export default function MedallionPost() {
   return (
     <Screen>
       <NavBar left="empty" right="close" onClose={done} />
-      <View style={{ position: 'absolute', left: 24, right: 24, top: 150, alignItems: 'center' }}>
+      {/* the coin and its words scroll between the ✕ and the buttons when they run long (D65) */}
+      <ScrollRegion top={100} bottom={96 + 58 + 12} alwaysBounceVertical={false} contentStyle={{ paddingTop: 50, paddingHorizontal: 24, paddingBottom: 16, alignItems: 'center' }}>
         <Animated.View style={popStyle(motion, { delay: 120, duration: MS.slow + 220 })}>
           <FaceCoin scene={face.key} size={168} numeral={roman(standing)} />
         </Animated.View>
@@ -64,7 +64,7 @@ export default function MedallionPost() {
         <MonoText v="caps" center style={{ marginTop: 10 }}>
           {face.quote.by}
         </MonoText>
-      </View>
+      </ScrollRegion>
       <PrimaryButton label="Done" onPress={done} bottom={96} />
       <GhostLink label="See all medallions" onPress={toMedallions} />
     </Screen>

@@ -12,7 +12,7 @@
  * at 48), and the band scrolls on a short phone (`Band`, D320).
  */
 import { Linking, ScrollView, useWindowDimensions, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Animated, { runOnJS, useAnimatedReaction, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
@@ -48,6 +48,26 @@ function SourceLine({ children }: { children: string }) {
 
 const open = (url: string) => void Linking.openURL(url).catch(() => {});
 
+/** A number that runs from `from` to `target` instead of jumping there (the counter falling to zero). */
+function useRunTo(target: number, from: number, duration = 520): number {
+  const motion = useMotion();
+  const [shown, setShown] = useState(target);
+  useEffect(() => {
+    if (!motion) return;
+    let raf = 0;
+    let start = 0;
+    const step = (t: number) => {
+      if (!start) start = t;
+      const k = Math.min(1, (t - start) / duration);
+      setShown(Math.round(from + (target - from) * (1 - Math.pow(1 - k, 2))));
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [motion, target, from, duration]);
+  return motion ? shown : target;
+}
+
 // ── 33A · What one slip does ─────────────────────────────────────────
 
 const SHAKE = {
@@ -62,11 +82,12 @@ const SHAKE = {
 /** One side of the demo: a 166 card with its caps label, the big figure and a caption. */
 function DemoCard({ label, figure, caption, dim, shake }: { label: string; figure: string; caption: string; dim?: boolean; shake?: boolean }) {
   const motion = useMotion();
+  // the figure lands (and shakes) once, when it settles; the count running down is not re-keyed
   return (
     <View style={{ flex: 1, height: 150, borderRadius: 16, backgroundColor: mono.card, padding: 16, justifyContent: 'space-between' }}>
       <MonoText v="caps">{label}</MonoText>
       <Animated.View
-        key={figure}
+        key={shake ? 'down' : 'up'}
         style={
           motion && shake
             ? ({ animationName: SHAKE, animationDuration: 420 } as object)
@@ -124,6 +145,12 @@ export function O3SlipDemo({ next, back }: { next: () => void; back?: () => void
   const motion = useMotion();
   const [slipped, setSlipped] = useState(false);
   const [h, setH] = useState(560);
+  // the streak app's count runs down to zero; the shake and the thud come as it lands
+  const day = useRunTo(slipped ? 0 : 23, slipped ? 23 : 0);
+  const landed = slipped && day === 0;
+  useEffect(() => {
+    if (landed) holdHaptic.thud();
+  }, [landed]);
   const slip = () => {
     if (slipped) {
       setSlipped(false);
@@ -131,7 +158,7 @@ export function O3SlipDemo({ next, back }: { next: () => void; back?: () => void
       return;
     }
     setSlipped(true);
-    holdHaptic.thud();
+    haptic.choice();
   };
   return (
     <Screen>
@@ -140,8 +167,8 @@ export function O3SlipDemo({ next, back }: { next: () => void; back?: () => void
         <View onLayout={(e) => setH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: HEAD_TOP, gap: 20 }}>
           <Head title="What one slip does." body="Most quit apps count days and send you back to zero. Log a slip and see both." />
           <View style={{ flexDirection: 'row', gap: 12 }}>
-            <DemoCard label="A streak app" figure={slipped ? 'Day 0' : 'Day 23'} caption={slipped ? 'Back to the start.' : 'Days in a row.'} dim={slipped} shake={slipped} />
-            <DemoCard label="VICI" figure="23" caption={slipped ? 'Clean days kept. 1 slip logged.' : 'Clean days.'} />
+            <DemoCard label="A streak app" figure={`Day ${day}`} caption={landed ? 'Back to the start.' : 'Days in a row.'} dim={landed} shake={landed} />
+            <DemoCard label="VICI" figure="23" caption={slipped ? 'Clean days kept. 1\u00A0slip\u00A0logged.' : 'Clean days.'} />
           </View>
           <Tap
             onPress={slip}
@@ -152,7 +179,7 @@ export function O3SlipDemo({ next, back }: { next: () => void; back?: () => void
           {slipped ? (
             <Animated.View style={[{ gap: 12 }, riseStyle(motion, { delay: 120 })]}>
               <StreakBars />
-              <SourceLine>Silverman & Barasch, Journal of Consumer Research, 2023. Habit studies, not addiction studies.</SourceLine>
+              <SourceLine>Silverman & Barasch, Journal of Consumer Research, 2023. These were habit studies. None was about addiction.</SourceLine>
               <MonoText v="p" color={mono.ink} style={{ fontSize: 16, lineHeight: 25 }}>
                 VICI keeps your record. A slip is one day in it.
               </MonoText>
@@ -213,7 +240,11 @@ export function O3UrgeSurf({ next, back }: { next: () => void; back?: () => void
     },
   );
   const travelled = useAnimatedStyle(() => ({ width: fill.value * w }));
-  const rider = useAnimatedStyle(() => ({ transform: [{ translateX: fill.value * w - 9 }, { translateY: waveY(fill.value) - 9 }] }));
+  // the rider grows with the urge: 18 at rest, 30 at the peak
+  const rider = useAnimatedStyle(() => {
+    const r = 9 + 6 * urgeAt(fill.value);
+    return { width: r * 2, height: r * 2, borderRadius: r, transform: [{ translateX: fill.value * w - r }, { translateY: waveY(fill.value) - r }] };
+  });
 
   return (
     <Screen>

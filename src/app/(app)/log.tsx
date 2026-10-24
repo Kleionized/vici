@@ -106,29 +106,32 @@ export default function Log() {
     <RegisterHead title="Your log" onBack={() => router.navigate('/log-chooser')} items={TABS} value={tab} onChange={(key) => setTab(key)} />
   );
 
-  if (tab === 'urges') return <Urges head={head} events={events} now={now} />;
-  if (tab === 'checkins') {
-    return (
-      <Checkins
-        head={head}
-        user={user}
-        checkins={checkins}
-        events={events}
-        now={now}
-        onCheckin={(part) => router.push(part === 'morning' ? '/day/morning' : '/day/night')}
-      />
-    );
-  }
+  // one Screen for the three tabs, so switching keeps the head still and the pill slides (D65)
   return (
-    <Reports
-      head={head}
-      user={user}
-      checkins={checkins}
-      events={events}
-      lessons={progress === undefined ? undefined : lessonCompletions(progress)}
-      now={now}
-      onOpen={(week) => router.push(week ? `/weekly-report?week=${week}` : '/weekly-report')}
-    />
+    <Screen>
+      {tab === 'urges' ? (
+        <Urges head={head} events={events} now={now} />
+      ) : tab === 'checkins' ? (
+        <Checkins
+          head={head}
+          user={user}
+          checkins={checkins}
+          events={events}
+          now={now}
+          onCheckin={(part) => router.push(part === 'morning' ? '/day/morning' : '/day/night')}
+        />
+      ) : (
+        <Reports
+          head={head}
+          user={user}
+          checkins={checkins}
+          events={events}
+          lessons={progress === undefined ? undefined : lessonCompletions(progress)}
+          now={now}
+          onOpen={(week) => router.push(week ? `/weekly-report?week=${week}` : '/weekly-report')}
+        />
+      )}
+    </Screen>
   );
 }
 
@@ -146,7 +149,7 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
   // every entry the log holds, a lapse included — it reads `Slipped`, never in red
   const rows = events.filter((e) => isUrge(e) || e.type === 'lapse').sort((a, b) => b.createdAt - a.createdAt);
   return (
-    <Screen>
+    <>
       <Page
         top={440}
         ruled
@@ -168,7 +171,7 @@ function Urges({ head, events, now }: { head: ReactNode; events: TidelineEvent[]
           <EmptyState title="No urges logged yet" body="Log each urge to see when they come." style={FLUSH} />
         )}
       </Page>
-    </Screen>
+    </>
   );
 }
 
@@ -241,7 +244,7 @@ function Checkins({
     </RuledRow>
   ) : null;
   return (
-    <Screen>
+    <>
       <Page
         top={440}
         ruled
@@ -266,7 +269,7 @@ function Checkins({
           </>
         )}
       </Page>
-    </Screen>
+    </>
   );
 }
 
@@ -296,16 +299,16 @@ function Reports({
   const weeks = completedWeekStarts(user, now).map((key) => weekRating(key, input));
   if (!weeks.length) {
     return (
-      <Screen>
+      <>
         <Page top={236} head={head}>
           <EmptyState title="No reports yet" body="The first one comes after a full week." style={[FLUSH, { paddingTop: 0 }]} />
         </Page>
-      </Screen>
+      </>
     );
   }
   const [latest, ...earlier] = weeks;
   return (
-    <Screen>
+    <>
       <Page
         top={518}
         head={
@@ -329,7 +332,7 @@ function Reports({
           ))}
         </RuledRows>
       </Page>
-    </Screen>
+    </>
   );
 }
 

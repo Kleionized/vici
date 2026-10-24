@@ -828,8 +828,9 @@ export function RelapseFlow({
       <View style={{ flex: 1 }}>
         <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1, paddingTop: 8, paddingHorizontal: 24, paddingBottom: 24 }} showsVerticalScrollIndicator={false}>
           <View style={{ marginVertical: 'auto' }}>
-            <View style={{ height: roomy ? 210 : 124, alignItems: 'center', justifyContent: 'center' }}>
-              <Art k={artFor(r?.message)} w={345} h={roomy ? 210 : 124} />
+            {/* with the make-up card under the message the drawing gives up 42, so a quoted message still fits (D65) */}
+            <View style={{ height: roomy ? (onRepair ? 168 : 210) : 124, alignItems: 'center', justifyContent: 'center' }}>
+              <Art k={artFor(r?.message)} w={345} h={roomy ? (onRepair ? 168 : 210) : 124} />
             </View>
             <View style={{ marginTop: 28, gap: 14 }}>
               <W s={S.lead} w={345}>{lead}</W>
@@ -844,10 +845,10 @@ export function RelapseFlow({
             {/* the way back, framed as making up for it (D64): people who could
                 make up a miss tried again more than those given a second chance */}
             {onRepair ? (
-              <View style={{ marginTop: 32, borderRadius: 16, backgroundColor: mono.card, padding: 18, gap: 6 }}>
+              <View style={{ marginTop: 28, borderRadius: 16, backgroundColor: mono.card, paddingVertical: 14, paddingHorizontal: 16, gap: 4 }}>
                 <Text maxFontSizeMultiplier={1.3} style={S.row}>Your record stays.</Text>
                 <Text maxFontSizeMultiplier={1.3} style={S.sub}>
-                  {`Make up for it with today’s lesson or tonight’s check-in. Both lift your rating. This slip leaves your rating after ${RATING_WINDOW} days.`}
+                  {`Today’s lesson or tonight’s check-in lifts your rating. This slip leaves it after ${RATING_WINDOW} days.`}
                 </Text>
               </View>
             ) : null}

@@ -79,8 +79,8 @@ export const STUDIES: Study[] = [
   {
     id: 'kirchner2012',
     source: 'Journal of Abnormal Psychology · 2012',
-    title: 'Confidence counts more than guilt.',
-    body: '203 smokers logged 1,001 slips. When confidence dropped after a slip, the next slip came sooner. Guilt made no difference.',
+    title: 'Lost confidence brings the next slip sooner.',
+    body: '203 smokers logged 1,001 slips. When confidence dropped after a slip, the next one came sooner. Guilt made no difference.',
     limit: 'Smoking, not porn.',
     authors: 'Kirchner, Shiffman & Wileyto',
     institutions: ['Johns Hopkins', 'University of Pittsburgh', 'University of Pennsylvania'],
@@ -89,7 +89,7 @@ export const STUDIES: Study[] = [
   {
     id: 'bowen2014',
     source: 'JAMA Psychiatry · 2014',
-    title: 'What you do after a slip counts.',
+    title: 'Fewer days of use after a slip.',
     body: '286 adults after treatment. A year on, those who learned mindfulness-based relapse prevention and used again did so on 31% fewer days than those on standard relapse prevention.',
     limit: 'One trial, at one centre. Drugs and alcohol, not porn.',
     authors: 'Bowen et al.',
@@ -146,5 +146,5 @@ export const NO_CLAIMS = {
 export const METHOD = [
   { title: 'Notice the urge.', body: 'Name it when it starts. You don’t have to push it away.' },
   { title: 'Let it pass.', body: 'An urge rises, peaks and falls whether or not you act on it.' },
-  { title: 'Act on what you value.', body: 'Choose the next thing by what matters to you.' },
+  { title: 'Act on what you value.', body: 'Pick what you do next by what you value.' },
 ];

@@ -41,7 +41,7 @@ export default function RoughDays() {
         onBack={() => (router.canGoBack() ? router.back() : router.navigate('/(app)/all'))}
       />
       <ScrollRegion top={100} contentStyle={{ paddingTop: 20, paddingHorizontal: 24, paddingBottom: 48, gap: 18 }}>
-        <View style={{ gap: 10 }}>
+        <View style={{ gap: 12 }}>
           <MonoText v="caps">For any urge</MonoText>
           <Tap
             onPress={() => router.push('/rough-first90')}

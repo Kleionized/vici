@@ -3,6 +3,7 @@ import { Pressable, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
 
 import { haptic, holdHaptic } from '@/lib/haptics';
+import { useMotion } from './motion';
 import { mono } from '@/lib/theme';
 
 import { MonoText } from './Text';
@@ -49,6 +50,7 @@ export function HoldButton({
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }) {
+  const motion = useMotion();
   const own = useSharedValue(done ? 1 : 0);
   const fill = progress ?? own;
   const [holding, setHolding] = useState(false);
@@ -139,6 +141,16 @@ export function HoldButton({
         </View>
       </Animated.View>
       {children}
+      {/* filled: one ring goes out from the pill and fades */}
+      {motion && filled && !done ? (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            { ...ABS, borderRadius: 29, borderWidth: 2, borderColor: mono.onInk },
+            { animationName: { from: { opacity: 0.5, transform: [{ scale: 0.96 }] }, to: { opacity: 0, transform: [{ scale: 1.04 }] } }, animationDuration: 520, animationFillMode: 'forwards' } as object,
+          ]}
+        />
+      ) : null}
     </Pressable>
   );
 }

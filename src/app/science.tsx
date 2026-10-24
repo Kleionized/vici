@@ -1,8 +1,9 @@
 import { useRouter } from 'expo-router';
 import { Linking, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { Institutions } from '@/components/onboarding/science';
-import { MonoText, NavBar, Screen, ScrollRegion, Tap } from '@/components/mono';
+import { MonoText, NavBar, riseStyle, Screen, ScrollRegion, STAGGER, Tap, useMotion } from '@/components/mono';
 import { METHOD, NO_CLAIMS, NOT_AFFILIATED, STUDIES, URGE_STUDY } from '@/content/science';
 import { mono } from '@/lib/theme';
 
@@ -14,6 +15,7 @@ import { mono } from '@/lib/theme';
  */
 export default function Science() {
   const router = useRouter();
+  const motion = useMotion();
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/settings'));
   return (
     <Screen>
@@ -24,7 +26,7 @@ export default function Science() {
 
         <View style={{ gap: 6, marginTop: 8 }}>
           {METHOD.map((m, i) => (
-            <View key={m.title} style={{ borderRadius: 16, backgroundColor: mono.card, padding: 16, flexDirection: 'row', gap: 14 }}>
+            <Animated.View key={m.title} style={[{ borderRadius: 16, backgroundColor: mono.card, padding: 16, flexDirection: 'row', gap: 14 }, riseStyle(motion, { delay: 120 + i * STAGGER * 2 })]}>
               <MonoText v="rowValue" style={{ width: 14 }}>
                 {String(i + 1)}
               </MonoText>
@@ -34,7 +36,7 @@ export default function Science() {
                   {m.body}
                 </MonoText>
               </View>
-            </View>
+            </Animated.View>
           ))}
         </View>
 

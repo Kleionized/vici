@@ -68,7 +68,7 @@ function AllDrawer() {
       'In the moment',
       [
         { title: 'Urge SOS', detail: 'Breathe · tap · odd one out', to: '/urge' },
-        { title: 'Urge hub', detail: 'Ride it out — five panes', to: '/urge-hub' },
+        { title: 'Urge hub', detail: 'Ride it out, five panes', to: '/urge-hub' },
         { title: 'The first 90 seconds', to: '/rough-first90' },
         { title: 'Rough days', detail: 'Seven moods, three moves each', to: '/(app)/rough-days' },
         { title: 'A rough-day protocol', to: '/rough-protocol?key=loneliness' },

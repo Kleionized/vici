@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -7,7 +8,7 @@ import { haptic } from '@/lib/haptics';
 import { Check } from './icons';
 import { Tap } from './Tap';
 import { MonoText } from './Text';
-import { fadeStyle, MS, popStyle, settleStyle, STAGGER, useMotion } from './motion';
+import { EASE_OUT, fadeStyle, MS, popStyle, settleStyle, STAGGER, useMotion } from './motion';
 
 /**
  * The old light kit's lift, `0 1px 2px rgba(0,0,0,0.04)`. The V3 onboarding
@@ -446,6 +447,9 @@ export type SegmentItem<K extends string = string> = K | { key: K; label?: strin
  * the rest transparent with a mute label. Exactly one is selected. The canvas
  * puts it at `left 16 right 16 top 164`; position it with `style`.
  */
+/** The tab each switcher last showed and its track's width, by its keys (see `Segmented`). */
+const LIT = new Map<string, { at: number; track: number }>();
+
 export function Segmented<K extends string>({
   items,
   value,
@@ -457,13 +461,37 @@ export function Segmented<K extends string>({
   onChange: (key: K, index: number) => void;
   style?: StyleProp<ViewStyle>;
 }) {
+  const motion = useMotion();
+  // the ink pill slides to the chosen tab (D65); until the track is measured each tab draws its own
+  const norm = items.map((raw) => (typeof raw === 'string' ? { key: raw, label: raw as string } : { ...raw, label: raw.label ?? raw.key }));
+  const at = Math.max(0, norm.findIndex((it) => it.key === value));
+  // a switcher remounted by its tab (a register whose pages are separate boards) opens on the
+  // tab that was lit and slides from there
+  const sig = norm.map((it) => it.key).join('|');
+  const [track, setTrack] = useState(() => LIT.get(sig)?.track ?? 0);
+  const [shown, setShown] = useState(() => LIT.get(sig)?.at ?? at);
+  useEffect(() => {
+    LIT.set(sig, { at, track });
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the second frame, so the pill moves from where it was
+    setShown(at);
+  }, [sig, at, track]);
+  const seg = track / Math.max(1, norm.length);
   return (
     <View
       accessibilityRole="tablist"
+      onLayout={(e) => setTrack(e.nativeEvent.layout.width - 8)}
       style={[{ height: 44, borderRadius: 22, backgroundColor: mono.card, padding: 4, flexDirection: 'row' }, style]}>
-      {items.map((raw, i) => {
-        const it = typeof raw === 'string' ? { key: raw, label: raw as string } : { ...raw, label: raw.label ?? raw.key };
-        const on = it.key === value;
+      {track > 0 ? (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            { position: 'absolute', left: 4, top: 4, width: seg, height: 36, borderRadius: 18, backgroundColor: mono.ink, transform: [{ translateX: shown * seg }] },
+            motion ? ({ transitionProperty: 'transform', transitionDuration: MS.standard, transitionTimingFunction: EASE_OUT } as object) : null,
+          ]}
+        />
+      ) : null}
+      {norm.map((it, i) => {
+        const on = i === at;
         return (
           <Tap
             key={it.key}
@@ -473,8 +501,8 @@ export function Segmented<K extends string>({
             }}
             accessibilityRole="tab"
             aria-selected={on}
-            label={'accessibilityLabel' in it ? it.accessibilityLabel : undefined}
-            style={{ flex: 1, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? mono.ink : 'transparent' }}>
+            label={'accessibilityLabel' in it ? (it as { accessibilityLabel?: string }).accessibilityLabel : undefined}
+            style={{ flex: 1, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: on && track === 0 ? mono.ink : 'transparent' }}>
             <MonoText v="pill" color={on ? mono.onInk : mono.mute}>
               {it.label}
             </MonoText>
