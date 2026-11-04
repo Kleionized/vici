@@ -20,7 +20,7 @@
  */
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { AccessibilityInfo, Text, View, type GestureResponderEvent, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, {
   Easing,
   FadeIn,
@@ -99,10 +99,25 @@ export function useReduceMotion(): boolean {
 /** Lines already typed once this session — going Back to a step shows it whole. */
 const typed = new Set<string>();
 
+/** Whether a line (by its `onceKey`, which defaults to the text) has already been typed whole this session. */
+export function wasTyped(key: string): boolean {
+  return typed.has(key);
+}
+
 /** ms per character, and the extra pause after each kind of mark. */
 const PACE = { char: 24, comma: 150, stop: 300, dash: 180, line: 160 } as const;
 
-function pauseAfter(ch: string): number {
+/**
+ * The `speed` that types `text` in about `ms` (never slower than speaking pace,
+ * never more than 3× it) — so a long question takes the same beat as a short one.
+ */
+export function paceFor(text: string, ms = 600): number {
+  return Math.max(1, Math.min(3, (text.length * PACE.char) / ms));
+}
+
+function pauseAfter(ch: string, following?: string): number {
+  // a mark inside a word or a figure ("6,100", "1.5", "e.g.") is not a pause
+  if (following != null && following !== '' && !/\s/.test(following) && ch !== '—' && ch !== '–') return 0;
   if (ch === ',' || ch === ';' || ch === ':') return PACE.comma;
   if (ch === '.' || ch === '?' || ch === '!' || ch === '…') return PACE.stop;
   if (ch === '—' || ch === '–') return PACE.dash;
@@ -162,10 +177,13 @@ export function TypeOut({ text, delay = 220, speed = 1, instant, onceKey, onDone
       let next = Math.min(text.length, i + step);
       if (next < text.length && /[\uD800-\uDBFF]/.test(text[next - 1])) next += 1;
       const ch = text[next - 1];
+      const took = next - i;
       i = next;
-      setN(next);
+      // never below what a tap has already shown
+      setN((p) => Math.max(p, next));
       if (next >= text.length) return;
-      timer = setTimeout(tick, PACE.char / Math.max(0.25, speed) + pauseAfter(ch) / Math.max(1, speed / 1.5));
+      // `took` characters at `speed` × speaking pace (the step is already part of the speed)
+      timer = setTimeout(tick, (PACE.char * took) / Math.max(0.25, speed) + pauseAfter(ch, text[next]) / Math.max(1, speed / 1.5));
     };
     timer = setTimeout(tick, delay);
     return () => clearTimeout(timer);
@@ -207,14 +225,40 @@ const BeatCtx = createContext<BeatValue>({ ready: true, markReady: () => {}, ski
  *     <BeatReveal><Answers /></BeatReveal>
  *   </TypeBeat>
  */
-export function TypeBeat({ id, children, instant }: { id: string; children: ReactNode; instant?: boolean }) {
+export function TypeBeat({
+  id,
+  children,
+  instant,
+  tapToFinish,
+}: {
+  id: string;
+  children: ReactNode;
+  instant?: boolean;
+  /**
+   * Wrap the beat in a full-size view where a touch anywhere (the ground, a
+   * not-yet-revealed answer, the line itself) finishes the line — it only
+   * watches the touch, so a Back or a scroll still does what it does.
+   */
+  tapToFinish?: boolean;
+}) {
   const [readyFor, setReadyFor] = useState<string | null>(instant ? id : null);
   const [skipped, setSkipped] = useState(0);
+  const ready = !!instant || readyFor === id;
   const value = useMemo<BeatValue>(
-    () => ({ ready: !!instant || readyFor === id, markReady: () => setReadyFor(id), skip: () => setSkipped((s) => s + 1), skipped }),
-    [id, readyFor, instant, skipped],
+    () => ({ ready, markReady: () => setReadyFor(id), skip: () => setSkipped((s) => s + 1), skipped }),
+    [id, ready, skipped],
   );
-  return <BeatCtx.Provider value={value}>{children}</BeatCtx.Provider>;
+  const provided = <BeatCtx.Provider value={value}>{children}</BeatCtx.Provider>;
+  if (!tapToFinish) return provided;
+  const watch = (_e: GestureResponderEvent) => {
+    if (!ready) setSkipped((s) => s + 1);
+    return false;
+  };
+  return (
+    <View style={{ flex: 1 }} onStartShouldSetResponderCapture={watch}>
+      {provided}
+    </View>
+  );
 }
 
 export function useBeat(): BeatValue {
@@ -270,7 +314,8 @@ export function Reveal({
   }, [visible, delay, duration, reduced, p]);
   const anim = useAnimatedStyle(() => ({ opacity: p.value, transform: [{ translateY: (1 - p.value) * lift }] }));
   return (
-    <Animated.View pointerEvents={visible ? 'auto' : 'none'} style={[style, anim]}>
+    // `box-none` once shown: a reveal laid over the frame (the bottom controls' layer) never eats a touch meant for what is under it
+    <Animated.View style={[style, { pointerEvents: visible ? 'box-none' : 'none' }, anim]}>
       {children}
     </Animated.View>
   );

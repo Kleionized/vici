@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { KK_ALBUM, kkMetal, kkStanding } from '@/components/keepsakes/Medallion';
 import { ChipsStep, DoneBoard, FlowNav, OptionsStep, useWhen, WhenStep } from '@/components/logflow';
@@ -7,6 +7,7 @@ import { Hero, MonoText, IntensityScale, PrimaryButton, ScaleReading, Screen } f
 import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { useCreateEvent, useEvents } from '@/lib/backend';
 import { capitalise, joinLower, numberWords } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 import { setJSON } from '@/lib/storage';
 import type { EventType } from '@/lib/types';
 
@@ -53,24 +54,39 @@ export default function UrgeLog() {
   const [outcome, setOutcome] = useState(0);
   const [saving, setSaving] = useState(false);
   const [ridden, setRidden] = useState<number | null>(null);
+  /** The re-entry guard: a second tap lands before the disabled pill has rendered. */
+  const busy = useRef(false);
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
   const back = () => (step === 0 ? close() : setStep((current) => current - 1));
 
   async function save() {
+    if (busy.current) return;
+    busy.current = true;
     setSaving(true);
     const item = OUTCOMES[outcome];
     // counted before the write, so the line does not wait on the log to refresh
     const before = (events ?? []).filter((e) => e.type === 'urge_rode_out').length;
-    await createEvent({
-      type: item.type,
-      severity: bandToSeverity(intensity),
-      trigger: triggers.length ? triggers.join(' · ') : undefined,
-      whatHelped: item.slip ? undefined : item.label,
-      createdAt: when.at,
-    });
+    try {
+      await createEvent({
+        type: item.type,
+        severity: bandToSeverity(intensity),
+        trigger: triggers.length ? triggers.join(' · ') : undefined,
+        whatHelped: item.slip ? undefined : item.label,
+        // never later than now (`useWhen` holds the wheel there; this holds the write)
+        createdAt: Math.min(when.at, Date.now()),
+      });
+    } catch (error) {
+      // nothing was written: the pill comes back so it can be tried again, rather than sticking on "Logging…"
+      if (__DEV__) console.warn('urge was not written', error);
+      busy.current = false;
+      setSaving(false);
+      return;
+    }
     if (item.slip) await setJSON('tideline.letter.pending', Date.now());
     else await setJSON('tideline.post.backondeck.pending', Date.now());
+    // a ridden-out urge is a thing finished; a slip is only logged (no warning, no fanfare — invariant #2)
+    if (!item.slip) haptic('success');
     setRidden(item.slip ? null : before + 1);
     setSaving(false);
     setStep(4);

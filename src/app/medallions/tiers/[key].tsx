@@ -1,9 +1,10 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState, type ReactElement } from 'react';
 import { View } from 'react-native';
 
-import { MedalBoard } from '@/components/keepsakes/Board';
+import { Arrive, MedalBoard } from '@/components/keepsakes/Board';
 import { FaceCoin, KK_ALBUM, kkFace, kkFirstAt, kkRung, kkTierLine } from '@/components/keepsakes/Medallion';
-import { EmptyState, LoadingView, MonoText, NavBar, Screen, ScrollRegion, TIER_NAMES, TitleHead, ladderStanding } from '@/components/mono';
+import { EmptyState, FadeInView, LoadingView, MonoText, NavBar, Screen, ScrollRegion, TIER_NAMES, TitleHead, ladderStanding } from '@/components/mono';
 import { useMedallionLedger } from '@/lib/album';
 import { roman, shortDate } from '@/lib/format';
 import { mono } from '@/lib/theme';
@@ -20,7 +21,11 @@ import { mono } from '@/lib/theme';
  * The four faces that mint once share `Earned once` (88Q, `?key=once`): a 2×2
  * grid of 84 coins with the requirement and the day each minted, or "Not yet".
  *
- * Every number is the account's own (`src/lib/album.ts`).
+ * Every number is the account's own (`src/lib/album.ts`). The page is opened
+ * from a board whose coin was just struck, so the ladder's coin is drawn
+ * still; its track runs its fill out instead. Until the ledger is in the page
+ * is the bare ground and its back chevron (no spinner inside 300 ms); if it
+ * had to wait, the page then fades in rather than cutting in.
  */
 
 /** The album's four one-off faces, in the order 88Q lists them. */
@@ -32,6 +37,8 @@ export default function MedallionTiers() {
   const router = useRouter();
   const params = useLocalSearchParams<{ key?: string }>();
   const ledger = useMedallionLedger();
+  // whether the page had to wait for its numbers — then it fades in when they land
+  const [waited] = useState(() => ledger === undefined);
   const once = params.key === 'once';
   const face = once ? undefined : kkFace(params.key ?? '');
 
@@ -52,7 +59,9 @@ export default function MedallionTiers() {
 
   if (!ledger) return <LoadingView onBack={back} />;
 
-  if (once) return <OneOffs ledger={ledger} onBack={back} />;
+  const arrive = (page: ReactElement) => (waited ? <FadeInView style={{ flex: 1 }}>{page}</FadeInView> : page);
+
+  if (once) return arrive(<OneOffs ledger={ledger} onBack={back} />);
 
   const f = face!;
   const { count, standing } = ledger.byKey[f.key];
@@ -64,10 +73,11 @@ export default function MedallionTiers() {
   const next =
     left == null ? undefined : `${left.toLocaleString('en-US')} ${day ? (left === 1 ? 'day' : 'days') : 'more'} to ${TIER_NAMES[standing]}`;
 
-  return (
+  return arrive(
     <MedalBoard
       scene={f.key}
       earned={standing > 0}
+      strike={false}
       numeral={standing > 0 ? roman(standing) : undefined}
       title={f.name}
       body={f.blurb}
@@ -78,7 +88,7 @@ export default function MedallionTiers() {
       cta="Back to medallions"
       onCta={album}
       onBack={back}
-    />
+    />,
   );
 }
 
@@ -103,24 +113,26 @@ function OneOffs({ ledger, onBack }: { ledger: NonNullable<ReturnType<typeof use
           <View style={{ position: 'absolute', left: 32, right: 32, top: 240 - NAV_BOTTOM, gap: 44 }}>
             {rows.map((row, r) => (
               <View key={r} style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
-                {row.map((face) => {
+                {row.map((face, c) => {
                   const entry = ledger.byKey[face.key];
                   const when = entry.earned && entry.date != null ? shortDate(entry.date) : 'Not yet';
                   return (
-                    <View key={face.key} accessible accessibilityLabel={`${face.name}. ${face.blurb}. ${when}`} style={{ flex: 1, alignItems: 'center', gap: 12 }}>
-                      <FaceCoin scene={face.key} size={84} earned={entry.earned} />
-                      <View style={{ gap: 3 }}>
-                        <MonoText v="rowLabel" center color={entry.earned ? mono.ink : mono.mute} style={{ fontSize: 17, lineHeight: 21, letterSpacing: -0.2 }}>
-                          {face.name}
-                        </MonoText>
-                        <MonoText v="pTight" wrap="nowrap" center color={mono.mute} style={{ fontSize: 13, lineHeight: 18 }}>
-                          {face.blurb}
-                        </MonoText>
-                        <MonoText v="legal" wrap="nowrap" center color={entry.earned ? mono.sub : mono.art} style={{ marginTop: 2, letterSpacing: 0 }}>
-                          {when}
-                        </MonoText>
+                    <Arrive key={face.key} index={r * 2 + c} style={{ flex: 1 }}>
+                      <View accessible accessibilityLabel={`${face.name}. ${face.blurb}. ${when}`} style={{ alignItems: 'center', gap: 12 }}>
+                        <FaceCoin scene={face.key} size={84} earned={entry.earned} />
+                        <View style={{ gap: 3 }}>
+                          <MonoText v="rowLabel" center color={entry.earned ? mono.ink : mono.mute} style={{ fontSize: 17, lineHeight: 21, letterSpacing: -0.2 }}>
+                            {face.name}
+                          </MonoText>
+                          <MonoText v="pTight" wrap="nowrap" center color={mono.mute} style={{ fontSize: 13, lineHeight: 18 }}>
+                            {face.blurb}
+                          </MonoText>
+                          <MonoText v="legal" wrap="nowrap" center color={entry.earned ? mono.sub : mono.art} style={{ marginTop: 2, letterSpacing: 0 }}>
+                            {when}
+                          </MonoText>
+                        </View>
                       </View>
-                    </View>
+                    </Arrive>
                   );
                 })}
               </View>

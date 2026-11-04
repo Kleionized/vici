@@ -13,10 +13,10 @@
  * left-aligned stack and a ruled signature.
  */
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
-import { ScrollView, useWindowDimensions, View } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 
-import { GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Screen, useCanvasTop } from '@/components/mono';
+import { BeatLine, GhostLink, HeroBoard, MonoText, NavBar, PrimaryButton, Reveal, Screen, TypeBeat, useBeat, useCanvasTop, wasTyped } from '@/components/mono';
 import { WEEK_XII_RUNS, type LetterRun } from '@/content/weekXiiLetter';
 import { lhNormal, mono, sans, sansItalic } from '@/lib/theme';
 
@@ -39,6 +39,7 @@ export function O3LetterArrived({ next, skip }: { next: () => void; skip: () => 
       onCta={next}
       ghost="Save it for later"
       onGhost={skip}
+      typeTitle
     />
   );
 }
@@ -74,21 +75,77 @@ function runsOf(p: string): LetterRun[] {
  * that is the letter's own picks its bold run back up from `WEEK_XII_RUNS`.
  * The ✕ does what it did (`next`) unless `onClose` says otherwise.
  */
+/** The pause before each paragraph after the first, as a voice reading would take it: a breath, then a little longer after a long one. */
+function readingDelays(paragraphs: string[]): number[] {
+  let t = 0;
+  return paragraphs.map((p, i) => {
+    if (i > 0) t += Math.min(1100, 520 + paragraphs[i - 1].length * 3);
+    return t;
+  });
+}
+
+/**
+ * One paragraph of the letter. `reading`: it fades up in its turn after the
+ * salutation has been said — or at once, after a touch.
+ */
+function LetterParagraph({ reading, delay, children }: { reading?: boolean; delay: number; children: ReactNode }) {
+  if (!reading) return <>{children}</>;
+  return (
+    <Reveal delay={delay} duration={520} lift={6}>
+      {children}
+    </Reveal>
+  );
+}
+
+/** A touch anywhere on the letter finishes the salutation and brings the rest of the letter at once. It only watches. */
+function LetterTouch({ onTouch, children }: { onTouch: () => void; children: ReactNode }) {
+  const beat = useBeat();
+  return (
+    <View
+      style={{ flex: 1 }}
+      onStartShouldSetResponderCapture={() => {
+        if (!beat.ready) beat.skip();
+        onTouch();
+        return false;
+      }}>
+      {children}
+    </View>
+  );
+}
+
 export function O3LetterRead({
   name,
   paragraphs,
   onKeep,
   next,
   onClose,
+  reading,
 }: {
   name: string;
   paragraphs: string[];
   onKeep: () => void;
   next: () => void;
   onClose?: () => void;
+  /**
+   * Read it to him (the onboarding step): the salutation is said, then the
+   * paragraphs arrive one at a time, like a voice reading — a touch anywhere
+   * brings the rest at once. Off, the letter is simply there (`/letter`).
+   */
+  reading?: boolean;
 }) {
   const who = name.trim();
-  return (
+  const salutation = who ? `${who} —` : 'Friend —';
+  // a letter already read this session (a Back from the vow) is simply there
+  const [all, setAll] = useState(() => wasTyped(salutation));
+  const delays = all ? paragraphs.map(() => 0) : readingDelays(paragraphs);
+  const salutationStyle = { lineHeight: lhNormal(26), marginBottom: 18 };
+  const buttons = (
+    <>
+      <PrimaryButton label="Continue" onPress={next} bottom={96} />
+      <GhostLink label="Keep this letter" onPress={onKeep} />
+    </>
+  );
+  const board = (
     <Screen>
       <NavBar left="empty" right="close" onClose={onClose ?? next} />
       <View style={{ position: 'absolute', left: 24, right: 24, top: 112, bottom: 0, borderTopLeftRadius: 24, borderTopRightRadius: 24, backgroundColor: mono.card, overflow: 'hidden' }}>
@@ -101,22 +158,28 @@ export function O3LetterRead({
           <MonoText v="caps" wrap="wrap" style={{ marginBottom: 18 }}>
             {who ? `Week XII, from ${who}` : 'Week XII, from you'}
           </MonoText>
-          <MonoText v="h1" wrap="wrap" style={{ lineHeight: lhNormal(26), marginBottom: 18 }}>
-            {who ? `${who} —` : 'Friend —'}
-          </MonoText>
+          {reading ? (
+            <BeatLine v="h1" wrap="wrap" style={salutationStyle} text={salutation} speed={0.6} delay={260} />
+          ) : (
+            <MonoText v="h1" wrap="wrap" style={salutationStyle}>
+              {salutation}
+            </MonoText>
+          )}
           <View style={{ gap: 14 }}>
             {paragraphs.map((p, i) => (
-              <MonoText key={i} v="p" wrap="wrap">
-                {runsOf(p).map((r, k) =>
-                  r.bold ? (
-                    <MonoText key={k} v="p" style={{ ...sans('700'), color: mono.ink }}>
-                      {r.text}
-                    </MonoText>
-                  ) : (
-                    r.text
-                  ),
-                )}
-              </MonoText>
+              <LetterParagraph key={i} reading={reading} delay={delays[i]}>
+                <MonoText v="p" wrap="wrap">
+                  {runsOf(p).map((r, k) =>
+                    r.bold ? (
+                      <MonoText key={k} v="p" style={{ ...sans('700'), color: mono.ink }}>
+                        {r.text}
+                      </MonoText>
+                    ) : (
+                      r.text
+                    ),
+                  )}
+                </MonoText>
+              </LetterParagraph>
             ))}
           </View>
         </ScrollView>
@@ -127,9 +190,20 @@ export function O3LetterRead({
         locations={[0, 0.6, 1]}
         style={{ position: 'absolute', left: 24, right: 24, bottom: 0, height: 190 }}
       />
-      <PrimaryButton label="Continue" onPress={next} bottom={96} />
-      <GhostLink label="Keep this letter" onPress={onKeep} />
+      {reading ? (
+        <Reveal delay={all ? 0 : 420} style={StyleSheet.absoluteFill}>
+          {buttons}
+        </Reveal>
+      ) : (
+        buttons
+      )}
     </Screen>
+  );
+  if (!reading) return board;
+  return (
+    <TypeBeat id="letter" instant={wasTyped(salutation)}>
+      <LetterTouch onTouch={() => setAll(true)}>{board}</LetterTouch>
+    </TypeBeat>
   );
 }
 
@@ -158,22 +232,24 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
   const canvasTop = useCanvasTop();
   const [stackH, setStackH] = useState(238);
   const sigTop = Math.max(150 + stackH + 24, Math.min(530, winH - canvasTop - VOW_CONTROLS - 16 - SIG_H));
+  // "The vow." is said; the vow itself, then his signature, then `Sign` follow it
   return (
-    <Screen>
-      <NavBar left="empty" right="close" onClose={skip} />
-      <Band start={150} end={sigTop + SIG_H} bottom={VOW_CONTROLS}>
-        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 150, gap: 18 }}>
+    <TypeBeat id="vow" instant={wasTyped('The vow.')} tapToFinish>
+      <Screen>
+        <NavBar left="empty" right="close" onClose={skip} />
+        <Band start={150} end={sigTop + SIG_H} bottom={VOW_CONTROLS}>
+          <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 150, gap: 18 }}>
             <MonoText v="caps">{date}</MonoText>
-            <MonoText v="h1" style={{ fontSize: 40, lineHeight: 46 }}>
-              The vow.
-            </MonoText>
+            <BeatLine v="h1" style={{ fontSize: 40, lineHeight: 46 }} text="The vow." speed={0.7} />
             {/* the frame states no text-wrap; `pretty` breaks it as drawn at 393 and keeps
                 a narrower phone from leaving "day." alone on the last line (D219) */}
-            <MonoText v="p" wrap="pretty" color={mono.ink} style={{ fontSize: 21, lineHeight: 33, marginTop: 8 }}>
-              {VOW}
-            </MonoText>
+            <Reveal duration={480}>
+              <MonoText v="p" wrap="pretty" color={mono.ink} style={{ fontSize: 21, lineHeight: 33, marginTop: 8 }}>
+                {VOW}
+              </MonoText>
+            </Reveal>
           </View>
-          <View style={{ position: 'absolute', left: 24, right: 24, top: sigTop }}>
+          <Reveal delay={260} style={{ position: 'absolute', left: 24, right: 24, top: sigTop }}>
             <MonoText
               v="h1"
               wrap="wrap"
@@ -183,11 +259,14 @@ export function O3TheVow({ name, date, onSign, skip }: { name: string; date: str
             <MonoText v="caps" wrap="wrap" style={{ marginTop: 10, letterSpacing: 0.5 }}>
               Signed on day 0
             </MonoText>
-          </View>
-      </Band>
-      <PrimaryButton label="Sign" onPress={onSign} bottom={96} />
-      <GhostLink label="Not now" onPress={skip} />
-    </Screen>
+          </Reveal>
+        </Band>
+        <Reveal delay={380} style={StyleSheet.absoluteFill}>
+          <PrimaryButton label="Sign" onPress={onSign} bottom={96} />
+          <GhostLink label="Not now" onPress={skip} />
+        </Reveal>
+      </Screen>
+    </TypeBeat>
   );
 }
 
@@ -207,6 +286,7 @@ export function O3MedallionEarned({ eyebrow, title, body, next }: { eyebrow: str
       body={body}
       cta="Continue"
       onCta={next}
+      typeTitle
     />
   );
 }

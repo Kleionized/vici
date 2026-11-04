@@ -4,8 +4,8 @@
  *
  *   `flow.tsx`    the First 90 Seconds — the interrupt's boards and `UrgeFlow`  (sos-flow)
  *   `hub.tsx`     85A–85F — `UrgeHub`                                           (sos-flow)
- *   `stages.tsx`  the SOS stages, their settings, and the boards flow, hub and
- *                 `/relapse` share                                              (sos-flow)
+ *   `stages.tsx`  the SOS stages, their settings, and the boards flow and hub
+ *                 share                                                         (sos-flow)
  *   `boards.tsx`  the response boards — `ResponsePage`                          (sos-boards)
  *
  * The old paper kit's thirty exports (D392) were imported by nothing outside

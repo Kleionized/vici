@@ -1,9 +1,10 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { ChipsStep, DoneBoard, FlowNav, useWhen, WhenStep } from '@/components/logflow';
 import { Hero, PrimaryButton, Screen } from '@/components/mono';
 import { useCheckins, useCreateEvent } from '@/lib/backend';
+import { todayKey } from '@/lib/date';
 import { dayPartTime, joinLower } from '@/lib/format';
 import { setJSON } from '@/lib/storage';
 
@@ -16,12 +17,6 @@ import { setJSON } from '@/lib/storage';
  * them and keeps only the ✕, as 90D draws it.
  */
 
-/** Today's local date key, the one the day's action is filed under. */
-function todayKeyLocal(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
 export default function Lapse() {
   const router = useRouter();
   const createEvent = useCreateEvent();
@@ -30,16 +25,30 @@ export default function Lapse() {
   const [step, setStep] = useState(0);
   const [triggers, setTriggers] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
-  const changed = (checkins ?? []).find((c) => c.date === todayKeyLocal())?.dailyAction;
+  /** The re-entry guard: a second tap lands before the disabled pill has rendered. */
+  const busy = useRef(false);
+  // the day's action, filed under the flow's own clock's date (the one the summary reads against)
+  const changed = (checkins ?? []).find((c) => c.date === todayKey(when.now))?.dailyAction;
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
   const back = () => (step === 0 ? close() : setStep((current) => current - 1));
 
   async function save() {
+    if (busy.current) return;
+    busy.current = true;
     setSaving(true);
-    // A lapse is one neutral event: when it landed and what fed it. Nothing
-    // else is invented for it — the log reads it back with the same words.
-    await createEvent({ type: 'lapse', trigger: triggers.length ? triggers.join(' · ') : undefined, createdAt: when.at });
+    try {
+      // A lapse is one neutral event: when it landed and what fed it. Nothing
+      // else is invented for it — the log reads it back with the same words.
+      // `when.at` is never later than the flow's clock (`useWhen` holds it there).
+      await createEvent({ type: 'lapse', trigger: triggers.length ? triggers.join(' · ') : undefined, createdAt: Math.min(when.at, Date.now()) });
+    } catch (error) {
+      // nothing was written: the pill comes back so it can be tried again, rather than sticking on "Logging…"
+      if (__DEV__) console.warn('lapse was not written', error);
+      busy.current = false;
+      setSaving(false);
+      return;
+    }
     // The sealed letter arrives over Today the launch after a slip is logged.
     await setJSON('tideline.letter.pending', Date.now());
     setSaving(false);

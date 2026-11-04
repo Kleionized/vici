@@ -1,11 +1,12 @@
 import { memo, useState, type ReactNode } from 'react';
-import { useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
+import { StyleSheet, useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_SCALE, HEROES, heroId, type HeroKey, type HeroNode } from '@/content/heroes';
 import { mono, monoDark } from '@/lib/theme';
 
 import { GhostLink, PrimaryButton } from './buttons';
+import { BeatLine, paceFor, Reveal, TypeBeat, wasTyped } from './motion';
 import { NavBar, type NavCentre, type NavLeft, type NavRight } from './NavBar';
 import { Screen, ScrollRegion, useCanvasTop } from './Screen';
 import { MonoText } from './Text';
@@ -243,6 +244,13 @@ const TITLE_VARIANT = { 26: 'h1', 30: 'title', 34: 'titleCover' } as const;
  * been measured the art and the stack are not shown, so a short screen does
  * not draw one unlifted frame and jump. At 393 × 852 every board is exactly
  * the frame.
+ *
+ * `typeTitle` (off by default — the SOS and slip boards stay instant) makes the
+ * board *say* its title: the art and the caps are there with the frame, the
+ * title types itself out (its space already laid out, so nothing moves), and
+ * the body, the extra, the primary and the ghost link fade up into their places
+ * once it has finished. A touch anywhere finishes it; a title already said this
+ * session (a Back) is shown whole.
  */
 export function HeroBoard({
   tone = 'light',
@@ -265,6 +273,7 @@ export function HeroBoard({
   ctaBottom,
   ghost,
   onGhost,
+  typeTitle,
   children,
 }: {
   tone?: 'light' | 'dark';
@@ -292,6 +301,8 @@ export function HeroBoard({
   ctaBottom?: number;
   ghost?: string;
   onGhost?: () => void;
+  /** type the title out and reveal the rest after it (opt-in; see above) */
+  typeTitle?: boolean;
   children?: ReactNode;
 }) {
   const dark = tone === 'dark';
@@ -317,6 +328,19 @@ export function HeroBoard({
     }
   }
   const hidden = measured ? null : { opacity: 0 };
+  /**
+   * What follows a typed title, held in its place until the title is said. The
+   * wrapper is a column with the stack's own gap and centring, so a body given
+   * as several nodes lays out exactly as it would directly in the stack.
+   */
+  const gated = (node: ReactNode, delay: number) =>
+    !typeTitle || node == null || node === false ? (
+      node
+    ) : (
+      <Reveal delay={delay} style={{ alignSelf: 'stretch', alignItems: 'center', gap }}>
+        {node}
+      </Reveal>
+    );
 
   const stack = (
     <View
@@ -327,21 +351,28 @@ export function HeroBoard({
           {caps}
         </MonoText>
       ) : null}
-      <MonoText v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }}>
-        {title}
-      </MonoText>
-      {typeof body === 'string' ? (
-        <MonoText v="p" center color={dark ? monoDark.body : mono.sub} style={{ alignSelf: 'stretch' }}>
-          {body}
-        </MonoText>
+      {typeTitle ? (
+        <BeatLine v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }} text={title} speed={paceFor(title)} />
       ) : (
-        body
+        <MonoText v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }}>
+          {title}
+        </MonoText>
       )}
-      {extra}
+      {gated(
+        typeof body === 'string' ? (
+          <MonoText v="p" center color={dark ? monoDark.body : mono.sub} style={{ alignSelf: 'stretch' }}>
+            {body}
+          </MonoText>
+        ) : (
+          body
+        ),
+        0,
+      )}
+      {gated(extra, 90)}
     </View>
   );
 
-  return (
+  const board = (
     <Screen variant={dark ? 'dark' : 'app'}>
       <NavBar
         tone={tone}
@@ -368,9 +399,24 @@ export function HeroBoard({
       ) : (
         stack
       )}
-      <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
-      {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+      {typeTitle ? (
+        <Reveal delay={140} style={StyleSheet.absoluteFill}>
+          <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
+          {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+        </Reveal>
+      ) : (
+        <>
+          <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
+          {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+        </>
+      )}
       {children}
     </Screen>
+  );
+  if (!typeTitle) return board;
+  return (
+    <TypeBeat id="board" instant={wasTyped(title)} tapToFinish>
+      {board}
+    </TypeBeat>
   );
 }

@@ -59,10 +59,9 @@ export default function All() {
         { title: 'Rough days', detail: 'Seven moods, three moves each', to: '/(app)/rough-days' },
         { title: 'A rough-day protocol', to: '/rough-protocol?key=loneliness' },
         { title: 'Log an urge', to: '/urge-log' },
-        { title: 'Log a lapse', to: '/lapse' },
+        { title: 'Log a lapse', detail: 'Quick log — when, and what fed it', to: '/lapse' },
         { title: 'Log chooser', detail: 'The three cards, outside the tab bar', to: '/log-chooser' },
-        { title: 'After a slip', to: '/relapse' },
-        { title: 'Post-slip flow', detail: 'It happened → begin again', to: '/slip' },
+        { title: 'After a slip', detail: 'It happened → begin again', to: '/slip' },
       ],
     ],
     [

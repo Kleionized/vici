@@ -11,13 +11,13 @@
  */
 
 import { useRouter } from 'expo-router';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import { GhostLink, MonoText, NavBar, PagerDots, PledgeCard, PrimaryButton, Screen, Tap } from '@/components/mono';
 import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
-import { lastNDateKeys, toDateKey } from '@/lib/date';
+import { lastNDateKeys, startOfDay, toDateKey } from '@/lib/date';
 import { clockTime, countOf, daysAgo, minutesWords, WEEKDAYS_SHORT } from '@/lib/format';
 import { getJSON, setJSON } from '@/lib/storage';
 import { mono, monoDark, ring, sans } from '@/lib/theme';
@@ -83,7 +83,7 @@ const HUB_SLIP: EventType[] = ['lapse', 'urge_acted_on'];
  * `urge_acted_on` — the pair `today.tsx` marks a day with — and a day is clean
  * when neither landed in it.
  */
-function hubStats(events: TidelineEvent[] | undefined): HubStats {
+function hubStats(events: TidelineEvent[] | undefined, now: number): HubStats {
   const log = events ?? [];
   const ridden = log.filter((e) => e.type === 'urge_rode_out');
   const slips = log.filter((e) => HUB_SLIP.includes(e.type)).sort((a, b) => b.createdAt - a.createdAt);
@@ -98,7 +98,8 @@ function hubStats(events: TidelineEvent[] | undefined): HubStats {
       helped: e.whatHelped ?? 'Waited out the timer',
     }));
   const slipKeys = new Set(slips.map((e) => toDateKey(new Date(e.createdAt))));
-  const days = lastNDateKeys(30).map((k) => !slipKeys.has(k));
+  // the thirty calendar days ending on the hub's own clock (which turns at midnight and on resume)
+  const days = lastNDateKeys(30, now).map((k) => !slipKeys.has(k));
   return { timed, ridden: ridden.length, days, slips };
 }
 
@@ -150,7 +151,7 @@ function HubNow({ elapsedMs, chip, onChip, tuck = 0 }: { elapsedMs: number; chip
   return (
     <>
       <DarkHead title="Get out of bed." body="Stand up. Move somewhere with light." />
-      <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" />
+      <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" glideMs={1000} />
       <View accessibilityRole="radiogroup" style={{ position: 'absolute', left: 0, right: 0, top: CHIPS_TOP - tuck, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
         {HUB_CHIPS.map((label, i) => (
           <HubChip key={label} label={label} on={chip === i} onPress={() => onChip(i)} />
@@ -407,7 +408,9 @@ export function UrgeHub() {
     return () => clearInterval(clock);
   }, []);
 
-  const stats = hubStats(events);
+  // read against the day, not the second: the clock ticks every second for the ring
+  const today = startOfDay(now);
+  const stats = useMemo(() => hubStats(events, today), [events, today]);
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
   const elapsed = session ? Math.max(0, now - session.startedAt) : 0;
   const severity = session?.peakSeverity ?? bandToSeverity(3);

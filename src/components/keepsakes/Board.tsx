@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
+import Animated, { FadeInDown, useReducedMotion } from 'react-native-reanimated';
 
-import { MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap, TierLadder, type Tier } from '@/components/mono';
+import { EASE_OUT, MonoText, NavBar, PrimaryButton, Screen, ScrollRegion, Tap, TierLadder, type Tier } from '@/components/mono';
 import { mono, sansItalic } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
@@ -39,12 +40,22 @@ const QUOTE_INSET = 44;
 const QUOTE_W = 393 - 2 * QUOTE_INSET;
 /** what the block keeps clear above the pill when it scrolls (D320) */
 const CLEAR = 24;
+/**
+ * The coin is struck once the page has slid in (the stack's 260 push), not
+ * while it is still moving; the track then runs its fill out once the coin
+ * has landed (`STRIKE.land`), or straight after the slide when nothing strikes.
+ */
+const STRIKE_DELAY = 220;
+const FILL_AFTER_STRIKE = STRIKE_DELAY + 380;
+const FILL_PLAIN = 260;
+const STRIKE_OPTS = { delay: STRIKE_DELAY };
 
 export type BoardBelow = { kind: 'quote'; text: string; nudge?: number } | { kind: 'count'; count: string; next?: string };
 
 export function MedalBoard({
   scene,
   earned,
+  strike = earned,
   numeral,
   title,
   body,
@@ -62,6 +73,8 @@ export function MedalBoard({
 }: {
   scene: KeepsakeSceneKey;
   earned: boolean;
+  /** strike the coin as the page arrives (default: when earned; an unearned coin never strikes) */
+  strike?: boolean;
   numeral?: string;
   title: string;
   body: string;
@@ -101,6 +114,7 @@ export function MedalBoard({
   const belowTop = T + (quote ? (ladder ? 438 : 338) : 448);
   const belowBottom = belowTop + (quote ? Math.max(1, lines) * QUOTE_LH : 78);
   const y = (canvas: number) => canvas - NAV_BOTTOM;
+  const grow = strike && earned ? FILL_AFTER_STRIKE : FILL_PLAIN;
 
   const capsText = (
     <MonoText v="caps" center color={capsMuted ? mono.art : mono.mute}>
@@ -114,7 +128,7 @@ export function MedalBoard({
       <ScrollRegion top={NAV_BOTTOM} bottom={CONTROLS}>
         <View style={[{ height: belowBottom + CLEAR - NAV_BOTTOM }, hidden]}>
           <View style={{ position: 'absolute', left: 0, right: 0, top: y(T), alignItems: 'center' }}>
-            <FaceCoin scene={scene} size={168} earned={earned} numeral={numeral} />
+            <FaceCoin scene={scene} size={168} earned={earned} numeral={numeral} strike={strike && earned ? STRIKE_OPTS : false} />
           </View>
 
           <View style={{ position: 'absolute', left: 24, right: 24, top: y(T + 196), alignItems: 'center', gap: 8 }}>
@@ -137,13 +151,14 @@ export function MedalBoard({
           {ladder ? (
             onLadder ? (
               <Tap onPress={onLadder} label="See every tier" style={{ position: 'absolute', left: 24, right: 24, top: y(T + 338) }}>
-                <TierLadder reached={ladder.reached} progress={ladder.progress} thresholds={ladder.thresholds} />
+                <TierLadder reached={ladder.reached} progress={ladder.progress} thresholds={ladder.thresholds} grow={grow} />
               </Tap>
             ) : (
               <TierLadder
                 reached={ladder.reached}
                 progress={ladder.progress}
                 thresholds={ladder.thresholds}
+                grow={grow}
                 style={{ position: 'absolute', left: 24, right: 24, top: y(T + 338) }}
               />
             )
@@ -172,5 +187,35 @@ export function MedalBoard({
       </ScrollRegion>
       <PrimaryButton label={cta} onPress={onCta} />
     </Screen>
+  );
+}
+
+// ── a grid of coins arriving ─────────────────────────────────────────
+
+/** 28 ms between neighbours, the last start held at 168 so the whole set is in by ~400 ms. */
+const ARRIVE = { step: 28, cap: 168, duration: 240, lift: 8 } as const;
+
+/**
+ * One cell of a grid of coins (the album, `Earned once`) arriving: a short
+ * fade-up, staggered by `index`. It is a transform and an opacity on a view
+ * that already holds its place, so nothing around it moves; it plays once, on
+ * mount, and not at all under Reduce Motion. Unearned coins arrive the same
+ * way — they only never shine.
+ */
+export function Arrive({ index, children, style }: { index: number; children: ReactNode; style?: StyleProp<ViewStyle> }) {
+  const reduced = useReducedMotion();
+  // built once for the mount, so a re-render never hands the view a new entrance
+  const [entering] = useState(() =>
+    reduced
+      ? undefined
+      : FadeInDown.duration(ARRIVE.duration)
+          .delay(Math.min(Math.max(0, index) * ARRIVE.step, ARRIVE.cap))
+          .easing(EASE_OUT)
+          .withInitialValues({ opacity: 0, transform: [{ translateY: ARRIVE.lift }] }),
+  );
+  return (
+    <Animated.View entering={entering} style={style}>
+      {children}
+    </Animated.View>
   );
 }

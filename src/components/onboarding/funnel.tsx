@@ -23,11 +23,28 @@
  * the funnel screens draw their own frame and take only `onBack` from it.
  */
 
-import { createContext, isValidElement, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Platform, Pressable, Text, useWindowDimensions, View, type TextStyle, type ViewStyle } from 'react-native';
+import { createContext, isValidElement, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View, type TextStyle, type ViewStyle } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
-import { Chips, Hero, HeroBoard, MonoText, NavBar, OptionList, PrimaryButton, Screen, ScrollRegion, TextField } from '@/components/mono';
+import {
+  BeatLine,
+  Chips,
+  Hero,
+  HeroBoard,
+  MonoText,
+  NavBar,
+  OptionList,
+  paceFor,
+  PrimaryButton,
+  Reveal,
+  Screen,
+  ScrollRegion,
+  TextField,
+  TypeBeat,
+  useBeat,
+  wasTyped,
+} from '@/components/mono';
 import { FUNNEL_STEPS, type FunnelRun, type FunnelStep } from '@/content/onboardingFunnel';
 import { mono, sans } from '@/lib/theme';
 import { haptic } from '@/lib/haptics';
@@ -41,6 +58,18 @@ const NAV_BOTTOM = 100;
 const PRIMARY_RESERVE = 106;
 
 const ShellCtx = createContext<{ onBack?: () => void }>({});
+
+/**
+ * The hand-off out of onboarding. `(onboarding)/_layout.tsx` sends a finished
+ * account to Today the moment `onboardingComplete` flips; while `/welcome` is
+ * finishing (writing the letter, completing, then opening the first check-in
+ * board itself) that redirect would race its own navigation and flash Today.
+ * The layout provides this, and holds its redirect while `finishing` is set.
+ */
+export const OnboardingHandoffCtx = createContext<{ finishing: boolean; setFinishing: (on: boolean) => void }>({
+  finishing: false,
+  setFinishing: () => {},
+});
 
 /**
  * The shell every `/welcome` step stands in. The questionnaire's screens (and
@@ -176,13 +205,28 @@ export function O3FunnelStep({
   const [picked, setPicked] = useState<string | null>(null);
   const hasCta = step.cta != null;
 
+  // `next` is a new function on every render of the flow; the step keeps the
+  // latest in a ref, so a re-render never restarts the turn-over below, and it
+  // turns over once — a double tap, or a pick landing as the primary is
+  // pressed, cannot advance two steps.
+  const nextRef = useRef(next);
+  useEffect(() => {
+    nextRef.current = next;
+  });
+  const advanced = useRef(false);
+  const go = useCallback(() => {
+    if (advanced.current) return;
+    advanced.current = true;
+    nextRef.current();
+  }, []);
+
   // A screen the canvas gives no primary turns itself over — one beat, so the
   // ink fill reads as the answer before the next question arrives.
   useEffect(() => {
     if (!picked || hasCta) return;
-    const id = setTimeout(next, 260);
+    const id = setTimeout(go, 260);
     return () => clearTimeout(id);
-  }, [picked, hasCta, next]);
+  }, [picked, hasCta, go]);
 
   // An untouched wheel still answers: the age it shows is the age stored, so
   // the under-18 gate and the age-80 projection read "24" without a scroll.
@@ -214,7 +258,8 @@ export function O3FunnelStep({
         body={body ? withName(body, name) : undefined}
         extra={card ? <FunnelCard runs={card} /> : undefined}
         cta={step.cta ?? 'Continue'}
-        onCta={next}
+        onCta={go}
+        typeTitle
       />
     );
   }
@@ -228,21 +273,7 @@ export function O3FunnelStep({
 
   let answersEl: ReactNode = null;
   if (step.kind === 'text') {
-    answersEl = (
-      <TextField
-        variant="name"
-        value={typeof value === 'string' ? value : ''}
-        onChangeText={onSet}
-        placeholder={step.placeholder}
-        autoCapitalize="words"
-        autoComplete="given-name"
-        textContentType="givenName"
-        maxLength={40}
-        autoFocus
-        returnKeyType="next"
-        onSubmitEditing={next}
-      />
-    );
+    answersEl = <NameField value={typeof value === 'string' ? value : ''} onChangeText={onSet} placeholder={step.placeholder} onSubmit={go} />;
   } else if (step.kind === 'list') {
     answersEl = (
       <OptionList
@@ -250,6 +281,8 @@ export function O3FunnelStep({
         options={step.options}
         value={picked ?? (typeof value === 'string' ? value : null)}
         onChange={(k) => {
+          // once the step has turned over, a late tap on the leaving board changes nothing
+          if (advanced.current) return;
           onSet(k);
           setPicked(k);
         }}
@@ -269,38 +302,78 @@ export function O3FunnelStep({
     );
   }
 
+  // The question is *asked*: the title types itself out (its lines already laid
+  // out, so nothing below it moves), then the helper line, the answers and the
+  // primary fade up into the places they were holding. A touch anywhere finishes
+  // it; a question already asked this session (a Back) is shown whole.
+  const titleEl = <BeatLine v="h1" text={title} speed={paceFor(title)} />;
   return (
-    <Screen>
-      {/* first, as the frames paint it: the answers never sit over it at 852,
-          and on a phone too short to clear the controls it is left out (D320) */}
-      {step.hero ? <Hero id={step.hero.id} top={step.hero.top} scale={step.hero.scale} controls={controls} /> : null}
-      <NavBar {...nav} />
-      {step.kind === 'wheel' ? (
-        <>
-          <View style={{ position: 'absolute', left: 24, right: 24, top: step.stack.top, gap: step.stack.gap }}>
-            <MonoText v="h1">{title}</MonoText>
-          </View>
-          <AgeWheel top={236} value={ageOk ? age : AGE_DEFAULT} onChange={(v) => onSet(String(v))} />
-        </>
-      ) : (
-        <ScrollRegion
-          top={NAV_BOTTOM}
-          bottom={controls}
-          contentStyle={{ paddingHorizontal: 24, paddingTop: step.stack.top - NAV_BOTTOM, paddingBottom: hasCta ? 24 : 48 }}>
-          <View style={{ gap: step.stack.gap }}>
-            <MonoText v="h1">{title}</MonoText>
-            {step.sub ? (
-              <MonoText v="pTight" color={mono.mute}>
-                {step.sub}
-              </MonoText>
-            ) : null}
-            {step.spacer ? <View style={{ height: step.spacer }} /> : null}
-            {answersEl}
-          </View>
-        </ScrollRegion>
-      )}
-      {step.cta ? <PrimaryButton label={step.cta} onPress={next} disabled={step.multi && chosen.length === 0 && !zeroOk} /> : null}
-    </Screen>
+    <TypeBeat id={step.id} instant={wasTyped(title)} tapToFinish>
+      <Screen>
+        {/* first, as the frames paint it: the answers never sit over it at 852,
+            and on a phone too short to clear the controls it is left out (D320) */}
+        {step.hero ? <Hero id={step.hero.id} top={step.hero.top} scale={step.hero.scale} controls={controls} /> : null}
+        <NavBar {...nav} />
+        {step.kind === 'wheel' ? (
+          <>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: step.stack.top, gap: step.stack.gap }}>{titleEl}</View>
+            <Reveal delay={60} style={StyleSheet.absoluteFill}>
+              <AgeWheel top={236} value={ageOk ? age : AGE_DEFAULT} onChange={(v) => onSet(String(v))} />
+            </Reveal>
+          </>
+        ) : (
+          <ScrollRegion
+            top={NAV_BOTTOM}
+            bottom={controls}
+            contentStyle={{ paddingHorizontal: 24, paddingTop: step.stack.top - NAV_BOTTOM, paddingBottom: hasCta ? 24 : 48 }}>
+            <View style={{ gap: step.stack.gap }}>
+              {titleEl}
+              {step.sub ? (
+                <Reveal>
+                  <MonoText v="pTight" color={mono.mute}>
+                    {step.sub}
+                  </MonoText>
+                </Reveal>
+              ) : null}
+              {step.spacer ? <View style={{ height: step.spacer }} /> : null}
+              {answersEl ? <Reveal delay={60}>{answersEl}</Reveal> : null}
+            </View>
+          </ScrollRegion>
+        )}
+        {step.cta ? (
+          <Reveal delay={140} style={StyleSheet.absoluteFill}>
+            <PrimaryButton label={step.cta} onPress={go} disabled={step.multi && chosen.length === 0 && !zeroOk} />
+          </Reveal>
+        ) : null}
+      </Screen>
+    </TypeBeat>
+  );
+}
+
+/**
+ * `03 · Name`'s field. It takes focus once the question has been asked — not
+ * on mount, where the keyboard would rise under a title still typing itself.
+ */
+function NameField({ value, onChangeText, placeholder, onSubmit }: { value: string; onChangeText: (v: string) => void; placeholder?: string; onSubmit: () => void }) {
+  const { ready } = useBeat();
+  const ref = useRef<TextInput>(null);
+  useEffect(() => {
+    if (ready) ref.current?.focus();
+  }, [ready]);
+  return (
+    <TextField
+      ref={ref}
+      variant="name"
+      value={value}
+      onChangeText={onChangeText}
+      placeholder={placeholder}
+      autoCapitalize="words"
+      autoComplete="given-name"
+      textContentType="givenName"
+      maxLength={40}
+      returnKeyType="next"
+      onSubmitEditing={onSubmit}
+    />
   );
 }
 

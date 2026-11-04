@@ -58,22 +58,27 @@ export default function MedallionDetail() {
 
   // A one-off carries the day it minted where a tiered face carries its rung;
   // the board does not wait for the ledger to draw, it only borrows the date.
+  // Until the ledger is in, that line holds its place blank — it used to read
+  // "Earned once" for a beat and then turn into the date.
   const minted = ledger?.byKey[face.key]?.date;
   const caps = tiered
     ? earned
       ? kkTierLine(face, standing)
       : kkFirstAt(face)
     : earned
-      ? minted != null
-        ? shortDate(minted)
-        : 'Earned once'
+      ? !ledger
+        ? '\u00A0'
+        : minted != null
+          ? shortDate(minted)
+          : 'Earned once'
       : 'Not yet';
 
   // the rung's own line; with nothing behind it, the line that waits at the first rung
   const quote = `“${face.stories[Math.max(1, Math.min(face.stories.length, standing)) - 1]}”`;
 
+  const said = caps.trim() || 'Earned once';
   const share = () => {
-    void Share.share({ message: `${face.name} · ${caps}` }).catch(() => {});
+    void Share.share({ message: `${face.name} · ${said}` }).catch(() => {});
   };
 
   return (
@@ -86,7 +91,7 @@ export default function MedallionDetail() {
       caps={caps}
       capsMuted={!earned}
       onCaps={tiered ? undefined : () => router.push('/medallions/tiers/once')}
-      capsLabel={`${caps}. Every one-off`}
+      capsLabel={`${said}. Every one-off`}
       ladder={tiered ? { reached: (standing - 1) as -1 | Tier } : undefined}
       onLadder={() => router.push(`/medallions/tiers/${face.key}`)}
       below={{ kind: 'quote', text: quote, nudge: standing === 5 ? 1 : 0 }}

@@ -8,9 +8,10 @@
  */
 
 import { useState, type ReactNode } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import {
+  BeatLine,
   Caps,
   GhostLink,
   H1,
@@ -20,11 +21,17 @@ import {
   MonoText,
   NavBar,
   P,
+  paceFor,
   PrimaryButton,
+  Reveal,
   Screen,
   ScrollRegion,
+  TypeBeat,
+  useBeat,
   useCanvasTop,
+  wasTyped,
 } from '@/components/mono';
+import { haptic } from '@/lib/haptics';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 // ── the notification card ────────────────────────────────────────────
@@ -95,6 +102,10 @@ const BAND_TOP = 100;
  * Everything between the nav row and the pill sits in flow in a band that
  * scrolls only on a phone too short to hold it (D320); at 393 × 852 it is the
  * frame. `after` follows the notes (the primer's discretion line).
+ *
+ * `typeTitle` (the onboarding step; off for the two routes) says the headline —
+ * it types itself out in its laid-out space — and the line, the notes and the
+ * buttons fade up after it.
  */
 export function ReminderBoard({
   nav,
@@ -106,6 +117,7 @@ export function ReminderBoard({
   ghost,
   onGhost,
   notesGap = 42,
+  typeTitle,
 }: {
   nav?: ReactNode;
   title: string;
@@ -117,27 +129,50 @@ export function ReminderBoard({
   onCta: () => void;
   ghost?: string;
   onGhost?: () => void;
+  /** say the headline and reveal the rest after it (opt-in) */
+  typeTitle?: boolean;
 }) {
   const ctaBottom = ghost ? 96 : 48;
-  return (
+  const gate = (node: ReactNode, delay: number) => (typeTitle ? <Reveal delay={delay}>{node}</Reveal> : node);
+  const controls = (
+    <>
+      <PrimaryButton label={cta} bottom={ctaBottom} onPress={onCta} />
+      {ghost ? <GhostLink label={ghost} onPress={onGhost} /> : null}
+    </>
+  );
+  const board = (
     <Screen>
       {nav ?? <NavBar left="empty" right="empty" />}
       <ScrollRegion top={BAND_TOP} bottom={ctaBottom + 58} contentStyle={{ paddingHorizontal: 24, paddingBottom: 24 }}>
         {/* the hero is drawn in the band's own coordinates, so it scrolls with the words */}
         <Hero id="bell" top={90 - BAND_TOP} />
         <View style={{ marginTop: 320 - BAND_TOP, gap: 18 }}>
-          <H1>{title}</H1>
-          <P>{sub}</P>
+          {typeTitle ? <BeatLine v="h1" text={title} speed={paceFor(title)} /> : <H1>{title}</H1>}
+          {gate(<P>{sub}</P>, 0)}
         </View>
         {/* 470 − (320 + 66 + 18 + 24) */}
-        <View style={{ marginTop: notesGap }}>
-          <ReminderNotes />
-        </View>
-        {after}
+        {gate(
+          <View style={{ marginTop: notesGap }}>
+            <ReminderNotes />
+          </View>,
+          90,
+        )}
+        {after ? gate(after, 150) : null}
       </ScrollRegion>
-      <PrimaryButton label={cta} bottom={ctaBottom} onPress={onCta} />
-      {ghost ? <GhostLink label={ghost} onPress={onGhost} /> : null}
+      {typeTitle ? (
+        <Reveal delay={180} style={StyleSheet.absoluteFill}>
+          {controls}
+        </Reveal>
+      ) : (
+        controls
+      )}
     </Screen>
+  );
+  if (!typeTitle) return board;
+  return (
+    <TypeBeat id="reminders" instant={wasTyped(title)} tapToFinish>
+      {board}
+    </TypeBeat>
   );
 }
 
@@ -155,6 +190,7 @@ export function O3Reminders({ window: riskWindow, onAllow, skip }: { window: str
       onCta={onAllow}
       ghost="Not now"
       onGhost={skip}
+      typeTitle
     />
   );
 }
@@ -198,36 +234,62 @@ export function O3DayZero({ lesson, number, title, next }: { lesson?: string; nu
   const lift = deficit <= 0 ? 0 : dropArt ? Math.min(deficit, 382 - ART_FLOOR) : deficit;
   const hidden = measured ? null : { opacity: 0 };
 
+  // "Day 0" is said — slowly, it is two words that matter — and the lesson card,
+  // its line and `Begin` follow it
   return (
-    <Screen>
-      <NavBar left="empty" right="empty" />
-      {dropArt ? null : (
-        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
-          <Hero id="sunrise" top={SUNRISE_TOP - lift} />
+    <TypeBeat id="day-zero" instant={wasTyped('Day 0')} tapToFinish>
+      <Screen>
+        <NavBar left="empty" right="empty" />
+        {dropArt ? null : (
+          <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+            <Hero id="sunrise" top={SUNRISE_TOP - lift} />
+          </View>
+        )}
+        <View style={[{ position: 'absolute', left: 24, right: 24, top: 382 - lift, gap: 8, alignItems: 'center' }, hidden]}>
+          <Caps center style={{ alignSelf: 'stretch' }}>
+            Today
+          </Caps>
+          <DayZeroLine />
         </View>
-      )}
-      <View style={[{ position: 'absolute', left: 24, right: 24, top: 382 - lift, gap: 8, alignItems: 'center' }, hidden]}>
-        <Caps center style={{ alignSelf: 'stretch' }}>
-          Today
-        </Caps>
-        <H1 center style={{ alignSelf: 'stretch', fontSize: 44, lineHeight: 50 }}>
-          Day 0
-        </H1>
-      </View>
-      <View
-        onLayout={(e) => setLowH(e.nativeEvent.layout.height)}
-        style={[{ position: 'absolute', left: 24, right: 24, top: 504 - lift, gap: 18, alignItems: 'center' }, hidden]}>
-        <View style={{ borderRadius: 20, backgroundColor: mono.card, paddingVertical: 18, paddingHorizontal: 20, gap: 4, maxWidth: '100%' }}>
-          <Caps>{runs.kicker}</Caps>
-          <MonoText v="rowLabel" wrap="wrap" style={{ ...sans('700'), fontSize: 19, lineHeight: lhNormal(19) }}>
-            {runs.title}
-          </MonoText>
+        <View
+          onLayout={(e) => setLowH(e.nativeEvent.layout.height)}
+          style={[{ position: 'absolute', left: 24, right: 24, top: 504 - lift, gap: 18, alignItems: 'center' }, hidden]}>
+          <Reveal style={{ maxWidth: '100%' }}>
+            <View style={{ borderRadius: 20, backgroundColor: mono.card, paddingVertical: 18, paddingHorizontal: 20, gap: 4, maxWidth: '100%' }}>
+              <Caps>{runs.kicker}</Caps>
+              <MonoText v="rowLabel" wrap="wrap" style={{ ...sans('700'), fontSize: 19, lineHeight: lhNormal(19) }}>
+                {runs.title}
+              </MonoText>
+            </View>
+          </Reveal>
+          <Reveal delay={110} style={{ alignSelf: 'stretch' }}>
+            <MonoText v="pTight" center style={{ alignSelf: 'stretch' }}>
+              Your first lesson is ready. Start with one thing today.
+            </MonoText>
+          </Reveal>
         </View>
-        <MonoText v="pTight" center style={{ alignSelf: 'stretch' }}>
-          Your first lesson is ready. Start with one thing today.
-        </MonoText>
-      </View>
-      <PrimaryButton label="Begin" onPress={next} />
-    </Screen>
+        <Reveal delay={200} style={StyleSheet.absoluteFill}>
+          <PrimaryButton label="Begin" onPress={next} />
+        </Reveal>
+      </Screen>
+    </TypeBeat>
+  );
+}
+
+/** "Day 0", said — and felt: the one success haptic of the arrival, as it lands. */
+function DayZeroLine() {
+  const beat = useBeat();
+  return (
+    <BeatLine
+      v="h1"
+      center
+      style={{ alignSelf: 'stretch', fontSize: 44, lineHeight: 50 }}
+      text="Day 0"
+      speed={0.45}
+      delay={320}
+      onDone={() => {
+        if (!beat.ready) haptic('success');
+      }}
+    />
   );
 }

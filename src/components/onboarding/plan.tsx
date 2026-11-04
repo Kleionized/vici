@@ -14,10 +14,10 @@
  * scenes are gone, and the signals are the kit's 44pt ink pills.
  */
 import { useState, type ReactNode } from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { G, Path, Rect } from 'react-native-svg';
 
-import { HeroBoard, IconCard, MonoText, NavBar, Pill, PrimaryButton, Screen } from '@/components/mono';
+import { BeatLine, HeroBoard, IconCard, MonoText, NavBar, Pill, PrimaryButton, Reveal, Screen, TypeBeat, wasTyped } from '@/components/mono';
 import { mono, sans } from '@/lib/theme';
 
 import { Band } from './tail';
@@ -288,6 +288,7 @@ export function O3WhereWedStart({ name, triggers, next }: { name?: string; trigg
       }
       cta="Continue"
       onCta={next}
+      typeTitle
     />
   );
 }
@@ -326,6 +327,7 @@ export function O3StartHere({
       onCta={onAccept}
       ghost="Choose another"
       onGhost={onAnother}
+      typeTitle
     />
   );
 }
@@ -345,6 +347,7 @@ export function O3StartHereStep1({ change, next, back }: { change: FirstChange; 
       body={change.steps[0].note}
       cta="Next"
       onCta={next}
+      typeTitle
     />
   );
 }
@@ -362,6 +365,7 @@ export function O3StartHereStep2({ change, next, back }: { change: FirstChange; 
       body={change.steps[1].note}
       cta="Continue"
       onCta={next}
+      typeTitle
     />
   );
 }
@@ -415,28 +419,34 @@ export function O3YourPlan({
 }) {
   const rows = [when, where, starterFor(starter).row, change.row, 'SOS gets you out first'];
   const [stackH, setStackH] = useState(PLAN_BOTTOM - PLAN_TOP);
+  // "Your plan" is said, then its five cards are laid down one after another
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={PLAN_TOP} end={PLAN_TOP + stackH}>
-        <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: PLAN_TOP, gap: 14 }}>
-          <MonoText v="h1">Your plan</MonoText>
-          <View style={{ height: 6 }} />
-          {rows.map((title, i) => (
-            <IconCard
-              key={i}
-              title={title}
-              sub={PLAN_ROW_SUBS[i]}
-              icon={
-                <Svg width={20} height={20} viewBox="0 0 20 20">
-                  {PLAN_ICONS[i]}
-                </Svg>
-              }
-            />
-          ))}
-        </View>
-      </Band>
-      <PrimaryButton label="Continue" onPress={next} />
-    </Screen>
+    <TypeBeat id="your-plan" instant={wasTyped('Your plan')} tapToFinish>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={PLAN_TOP} end={PLAN_TOP + stackH}>
+          <View onLayout={(e) => setStackH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: PLAN_TOP, gap: 14 }}>
+            <BeatLine v="h1" text="Your plan" speed={0.8} />
+            <View style={{ height: 6 }} />
+            {rows.map((title, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <IconCard
+                  title={title}
+                  sub={PLAN_ROW_SUBS[i]}
+                  icon={
+                    <Svg width={20} height={20} viewBox="0 0 20 20">
+                      {PLAN_ICONS[i]}
+                    </Svg>
+                  }
+                />
+              </Reveal>
+            ))}
+          </View>
+        </Band>
+        <Reveal delay={rows.length * 70} style={StyleSheet.absoluteFill}>
+          <PrimaryButton label="Continue" onPress={next} />
+        </Reveal>
+      </Screen>
+    </TypeBeat>
   );
 }

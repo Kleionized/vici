@@ -10,30 +10,38 @@
  * coordinates throughout (the kit's `Screen`).
  */
 
-import { useRouter } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
-import { Platform, View, type TextStyle } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { AppState, BackHandler, Platform, View, type TextStyle } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import {
   CheckinDisc,
   Chips,
+  GhostLink,
   HeroBoard,
   IntensityScale,
   MonoText,
+  OptionList,
   Pill,
+  PrimaryButton,
   ScaleReading,
+  Screen,
+  Sheet,
+  StepFade,
   Tap,
   TextField,
+  type StepDirection,
 } from '@/components/mono';
 import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { isSosBoardKey, type SosBoardKey } from '@/content/sosResponses';
 import { URGE_FEELINGS, URGE_TRIGGERS } from '@/content/sosPickers';
 import { useCreateEvent } from '@/lib/backend';
 import { minutesWords } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 import { getJSON, setJSON } from '@/lib/storage';
 import { lhNormal, mono, sans } from '@/lib/theme';
-import { clearUrgeSession, newUrgeSession, saveUrgeSession } from '@/lib/urgeSession';
+import { clearUrgeSession, loadUrgeSession, newUrgeSession, saveUrgeSession, type UrgeSession } from '@/lib/urgeSession';
 
 import { ResponsePage } from './boards';
 import {
@@ -46,6 +54,7 @@ import {
   SosQuestion,
   SosSettingsSheet,
   SURF_SECONDS,
+  SURF_TICK_MS,
   TapStage,
   WaveStage,
   type SosSettings,
@@ -486,6 +495,8 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   const createEvent = useCreateEvent();
   const forced = board && isSosBoardKey(board) ? board : undefined;
   const [index, setIndex] = useState(() => (forced ? FLOW.indexOf(stepForBoard(forced)) : 0));
+  /** Which way the last hand-over went, for the step's cross-fade. */
+  const [dir, setDir] = useState<StepDirection>('forward');
   /** The board `?board=` asked for — its step's answer until that step's picker is answered. */
   const [override, setOverride] = useState<SosBoardKey | undefined>(forced);
   const overrideAt = (at: FlowStep) => (override && stepForBoard(override) === at ? override : undefined);
@@ -508,13 +519,27 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   const [sosStage, setSosStage] = useState(0);
   const [settings, setSettings] = useState<SosSettings>(DEFAULT_SOS_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  /** The ✕ (or Android back) asked whether to leave mid-urge. */
+  const [leaving, setLeaving] = useState(false);
   /** The finished session's length, for the relief board's sentence. */
   const [lasted, setLasted] = useState(0);
+  /**
+   * The live session — loaded (and resumed, inside the same-urge window) or
+   * started on mount. Null while the store is read: the screen holds its
+   * ground rather than flashing the intro and then jumping to the resumed step.
+   */
+  const [session, setSession] = useState<UrgeSession | null>(null);
+  /** The highest rating the session held before this sitting (0 for a new one). */
+  const [basePeak, setBasePeak] = useState(0);
+  /** The event has been written — `finish` runs once. */
   const logged = useRef(false);
+  /** The session is over (resolved or left): nothing may write it back. */
+  const ended = useRef(false);
+  /** The last snapshot written, so a backgrounding app can store the surf clock's latest. */
+  const pending = useRef<UrgeSession | null>(null);
   // A lazy state initialiser, not `useRef(Date.now())`: the ref's initial value
   // is evaluated on every render, which makes the render impure.
   const [openedAt] = useState(() => Date.now());
-  const startedAt = useRef(openedAt);
   const step = FLOW[index];
 
   const reasonsOrdered = inCanvasOrder(TRIGGER_LABELS, reasons);
@@ -532,19 +557,76 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   const [surfProgress, setSurfProgress] = useState(0);
   const [surfRemaining, setSurfRemaining] = useState(SURF_SECONDS);
   const surfProgressRef = useRef(0);
-  const inSos = step === 'sos';
+  const inSos = step === 'sos' && session != null;
 
+  // Load (or start) the session. Inside the same-urge window the stored one is
+  // resumed where it was left — its board, its answers, its `startedAt` — and
+  // counted as a reopen; the mock build's `?board=` always starts afresh.
   useEffect(() => {
-    const session = newUrgeSession(bandToSeverity(band));
-    startedAt.current = session.startedAt;
-    void saveUrgeSession(session);
+    let live = true;
+    void (async () => {
+      const stored = forced ? null : await loadUrgeSession();
+      if (!live) return;
+      if (stored) {
+        const snap = stored.flow;
+        const at = snap ? FLOW.indexOf(snap.step as FlowStep) : -1;
+        if (snap && at >= 0 && FLOW[at] !== 'done') {
+          setIndex(at);
+          setDir('none');
+          setBand(clampIndex(snap.band, INTENSITY_BANDS.length));
+          if (PLACES.some((p) => p.key === snap.place)) setPlace(snap.place as UrgePlace);
+          setReasons(snap.reasons.filter((r) => TRIGGER_LABELS.includes(r)));
+          setFeelings(snap.feelings.filter((f) => FEELING_LABELS.includes(f)));
+          setAfter(snap.after == null ? null : clampIndex(snap.after, REASSESS_BANDS.length));
+          setNote(snap.note);
+          setRoll(Math.max(0, snap.roll | 0));
+          setSosStage(clampIndex(snap.sosStage, SOS_ORDER.length));
+          const p = Math.min(1, Math.max(0, snap.surfProgress || 0));
+          surfProgressRef.current = p;
+          setSurfProgress(p);
+          setSurfRemaining(Math.max(0, Math.ceil(SURF_SECONDS * (1 - p))));
+        }
+        setBasePeak(stored.peakSeverity);
+        setSession({ ...stored, reopens: stored.reopens + 1 });
+      } else {
+        setSession(newUrgeSession(bandToSeverity(3)));
+      }
+    })();
     void getJSON<SosSettings>(SOS_SETTINGS_KEY).then((stored) => {
-      if (stored) setSettings({ ...DEFAULT_SOS_SETTINGS, ...stored });
+      if (live && stored) setSettings({ ...DEFAULT_SOS_SETTINGS, ...stored });
     });
     return () => {
-      void clearUrgeSession();
+      live = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Every change goes onto the session, so closing the phone loses nothing. The
+  // surf clock is stored in five-second steps (and in full when the app is
+  // backgrounded) rather than four times a second.
+  const surfBucket = Math.floor((surfProgress * SURF_SECONDS) / 5);
+  useEffect(() => {
+    if (!session || ended.current) return;
+    const severity = bandToSeverity(band);
+    const next: UrgeSession = {
+      ...session,
+      severity,
+      peakSeverity: Math.max(basePeak, severity),
+      phase: FLOW[index] === 'phone' ? 'away' : 'active',
+      trigger: session.trigger ?? inCanvasOrder(TRIGGER_LABELS, reasons)[0],
+      flow: { step: FLOW[index], band, place, reasons, feelings, after: afterPick, note, roll, sosStage, surfProgress: surfProgressRef.current },
+    };
+    pending.current = next;
+    void saveUrgeSession(next);
+  }, [session, basePeak, index, band, place, reasons, feelings, afterPick, note, roll, sosStage, surfBucket]);
+
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (state) => {
+      const last = pending.current;
+      if (state === 'active' || !last || !last.flow || ended.current) return;
+      void saveUrgeSession({ ...last, flow: { ...last.flow, surfProgress: surfProgressRef.current } });
+    });
+    return () => sub.remove();
   }, []);
 
   useEffect(() => {
@@ -558,18 +640,33 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       setSurfRemaining(Math.max(0, Math.ceil(SURF_SECONDS - elapsed)));
     };
     tick();
-    const clock = setInterval(tick, 250);
+    const clock = setInterval(tick, SURF_TICK_MS);
     return () => clearInterval(clock);
   }, [inSos]);
 
-  const close = () => {
+  /** Leave the interrupt on purpose: the session is done with. */
+  const exit = () => {
+    ended.current = true;
+    setLeaving(false);
     void clearUrgeSession();
     if (router.canGoBack()) router.back();
     else router.replace('/(app)/today');
   };
-  const go = (to: (current: number) => number) => setIndex(to);
-  const next = () => go((current) => Math.min(FLOW.length - 1, current + 1));
-  const back = () => go((current) => Math.max(0, current - 1));
+  /**
+   * The ✕. Before the strength is rated there is nothing to keep; after it,
+   * leaving asks first — the urge can still be logged as ridden out, or as a
+   * slip — so an urge is never silently dropped. The relief board has logged it.
+   */
+  const close = () => {
+    if (step === 'done' || logged.current || index <= FLOW.indexOf('strength')) exit();
+    else setLeaving(true);
+  };
+  const goTo = (to: number, way: StepDirection) => {
+    setDir(way);
+    setIndex(Math.max(0, Math.min(FLOW.length - 1, to)));
+  };
+  const next = () => goTo(index + 1, 'forward');
+  const back = () => goTo(index - 1, 'back');
   /** A picker answered: its branch's board is the answer's again, not `?board=`'s. */
   const answer =
     <T,>(set: (v: T) => void, at: FlowStep) =>
@@ -578,46 +675,59 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       set(v);
     };
   /** "Try a different step" — the next move board, the third wrapping to the first. */
-  const otherMove = () =>
-    go((current) => {
-      const first = FLOW.indexOf('stand');
-      return first + ((current - first + 1) % MOVES.length);
-    });
+  const otherMove = () => {
+    const first = FLOW.indexOf('stand');
+    goTo(first + ((index - first + 1) % MOVES.length), 'forward');
+  };
 
   function finish() {
     if (logged.current) return;
     logged.current = true;
-    const seconds = Math.max(1, Math.round((Date.now() - startedAt.current) / 1000));
+    ended.current = true;
+    const startedAt = session?.startedAt ?? openedAt;
+    const seconds = Math.max(1, Math.round((Date.now() - startedAt) / 1000));
+    // a second read that was never taken is not filed (closing early from the ✕)
+    const reassessed = afterPick != null || index > FLOW.indexOf('reassess');
     setLasted(seconds);
+    setLeaving(false);
+    setSettingsOpen(false);
     // Completion is a local interaction: the relief board never waits for the
     // network; the event settles in the background.
-    setIndex(FLOW.indexOf('done'));
+    goTo(FLOW.indexOf('done'), 'forward');
+    haptic('success');
     // The place, the feeling and what fed it go to `precedingState`, not to the
     // event's own `trigger` (the trigger chart's vocabulary). Every reason
     // picked is kept, in the picker's order; the feeling is the first picked,
     // in the picker's order — the field holds one (D251).
-    void createEvent({
-      type: 'urge_rode_out',
+    const event = {
+      type: 'urge_rode_out' as const,
       severity: bandToSeverity(band),
-      severityAfter: bandToSeverity(after),
-      // what 85C and 85D read back: how long the wave actually took
+      severityAfter: reassessed ? bandToSeverity(after) : undefined,
+      // what 85C and 85D read back: how long the wave actually took, across reopens
       durationSeconds: seconds,
+      reopens: session?.reopens ?? 0,
       note: note.trim() || undefined,
       precedingState: {
-        location: PLACES.find((item) => item.key === place)?.label,
+        location: index > FLOW.indexOf('where') ? PLACES.find((item) => item.key === place)?.label : undefined,
         feeling,
         reasons: reasonsOrdered.length ? reasonsOrdered : undefined,
       },
-      /* A rejected mutation is how a missing `durationSeconds` argument once hid
-         (FINDINGS F30): the write must not block the screen, but it says what
-         it lost. */
-    }).catch((error) => {
-      if (__DEV__) console.warn('urge_rode_out was not written', error);
-    });
+    };
+    /* A rejected mutation is how a missing `durationSeconds` argument once hid
+       (FINDINGS F30): the write must not block the screen — even one that
+       throws before it returns a promise — but it says what it lost. */
+    void Promise.resolve()
+      .then(() => createEvent(event))
+      .catch((error) => {
+        if (__DEV__) console.warn('urge_rode_out was not written', error);
+      });
     void setJSON('tideline.post.backondeck.pending', Date.now());
+    void clearUrgeSession();
   }
 
   function logSlip() {
+    ended.current = true;
+    setLeaving(false);
     void clearUrgeSession();
     // Replace, not push, so the surf clock is unmounted rather than left
     // running beneath the slip flow. D147: `/slip`, the post-slip flow.
@@ -629,13 +739,42 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     void setJSON(SOS_SETTINGS_KEY, nextSettings);
   }
 
-  const advance = () => setSosStage((current) => Math.min(SOS_ORDER.length - 1, current + 1));
+  const advance = () => {
+    setDir('forward');
+    setSosStage((current) => Math.min(SOS_ORDER.length - 1, current + 1));
+  };
 
   // The wave outlasts itself: at zero the session closes on the relief board.
   useEffect(() => {
     if (inSos && surfRemaining === 0) finish();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inSos, surfRemaining]);
+
+  // Android's back steps back through the flow; on the first step (and on the
+  // relief board) it is the ✕. An open sheet takes it first (the kit's Sheet).
+  const onHardwareBack = useRef<() => void>(() => {});
+  useEffect(() => {
+    onHardwareBack.current = () => {
+      if (leaving) setLeaving(false);
+      else if (step === 'done' || index === 0) close();
+      else if (step === 'sos' && sosStage > 0) {
+        setDir('back');
+        setSosStage(sosStage - 1);
+      } else back();
+    };
+  });
+  useEffect(() => {
+    if (Platform.OS !== 'android') return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      onHardwareBack.current();
+      return true;
+    });
+    return () => sub.remove();
+  }, []);
+
+  // Until the session is read, the ground alone — the intro never flashes up
+  // before a resumed board replaces it.
+  if (!session) return <Screen />;
 
   const stage = SOS_ORDER[sosStage];
   const stageProps = {
@@ -650,25 +789,32 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     overlay: <SosSettingsSheet open={settingsOpen} settings={settings} onChange={saveSettings} onDone={() => setSettingsOpen(false)} />,
   };
 
+  let page: ReactNode;
   switch (step) {
     case 'intro':
-      return <IntroPage onClose={close} onNext={next} />;
+      page = <IntroPage onClose={close} onNext={next} />;
+      break;
     case 'strength':
-      return <StrengthPage band={band} onBand={setBand} onBack={back} onClose={close} onNext={next} />;
+      page = <StrengthPage band={band} onBand={setBand} onBack={back} onClose={close} onNext={next} />;
+      break;
     case 'where':
-      return <WherePage place={place} onPlace={answer(setPlace, 'place-said')} onBack={back} onClose={close} onNext={next} />;
+      page = <WherePage place={place} onPlace={answer(setPlace, 'place-said')} onBack={back} onClose={close} onNext={next} />;
+      break;
     case 'place-said':
-      return <ResponsePage key="place" answer={overrideAt('place-said') ?? PLACE_BOARD[place]} onClose={close} onNext={next} onBack={back} />;
+      page = <ResponsePage answer={overrideAt('place-said') ?? PLACE_BOARD[place]} onClose={close} onNext={next} onBack={back} />;
+      break;
     case 'stand':
-      return <MovePage index={0} onClose={close} onNext={next} onAnother={otherMove} />;
+      page = <MovePage index={0} onClose={close} onNext={next} onAnother={otherMove} />;
+      break;
     case 'leave':
-      return <MovePage index={1} onClose={close} onNext={next} onAnother={otherMove} />;
+      page = <MovePage index={1} onClose={close} onNext={next} onAnother={otherMove} />;
+      break;
     case 'phone':
-      return <MovePage index={2} onClose={close} onNext={next} onAnother={otherMove} />;
+      page = <MovePage index={2} onClose={close} onNext={next} onAnother={otherMove} />;
+      break;
     case 'reason':
-      return (
+      page = (
         <PickerPage
-          key="reason"
           title="What’s feeding it right now?"
           labels={TRIGGER_LABELS}
           picked={reasons}
@@ -680,12 +826,13 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
           onNext={next}
         />
       );
+      break;
     case 'trigger-said':
-      return <ResponsePage key="trigger" answer={overrideAt('trigger-said') ?? TRIGGER_BOARD[trigger ?? ''] ?? 'SOS-Trig-Unknown'} onClose={close} onNext={next} onBack={back} />;
+      page = <ResponsePage answer={overrideAt('trigger-said') ?? TRIGGER_BOARD[trigger ?? ''] ?? 'SOS-Trig-Unknown'} onClose={close} onNext={next} onBack={back} />;
+      break;
     case 'feeling':
-      return (
+      page = (
         <PickerPage
-          key="feeling"
           title="What’s underneath it?"
           labels={FEELING_LABELS}
           picked={feelings}
@@ -697,27 +844,105 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
           onNext={next}
         />
       );
+      break;
     case 'feeling-said':
-      return (
+      page = (
         <ResponsePage
-          key={`feeling-${suggestion}`}
           answer={suggestion}
           onClose={close}
           onNext={next}
           onBack={back}
-          onAnother={() => setRoll((current) => current + 1)}
+          onAnother={() => {
+            setDir('forward');
+            setRoll((current) => current + 1);
+          }}
         />
       );
+      break;
     case 'reassess':
-      return <ReassessPage before={band} after={after} onAfter={setAfter} onBack={back} onClose={close} onNext={next} />;
+      page = <ReassessPage before={band} after={after} onAfter={setAfter} onBack={back} onClose={close} onNext={next} />;
+      break;
     case 'afterward':
-      return <AfterwardPage note={note} onNote={setNote} onClose={close} onNext={next} />;
+      page = <AfterwardPage note={note} onNote={setNote} onClose={close} onNext={next} />;
+      break;
     case 'sos':
-      if (stage === 'breathe') return <BreatheStage {...stageProps} onSettings={() => setSettingsOpen(true)} />;
-      if (stage === 'tap') return <TapStage {...stageProps} />;
-      if (stage === 'odd') return <OddStage {...stageProps} />;
-      return <WaveStage {...stageProps} progress={surfProgress} remaining={surfRemaining} />;
+      if (stage === 'breathe') page = <BreatheStage {...stageProps} onSettings={() => setSettingsOpen(true)} />;
+      else if (stage === 'tap') page = <TapStage {...stageProps} />;
+      else if (stage === 'odd') page = <OddStage {...stageProps} />;
+      else page = <WaveStage {...stageProps} progress={surfProgress} remaining={surfRemaining} />;
+      break;
     case 'done':
-      return <DonePage seconds={lasted} onClose={close} />;
+      page = <DonePage seconds={lasted} onClose={exit} />;
+      break;
   }
+
+  // each board its own key: the SOS stages one apiece, and each "Give me another" a new board
+  const stepKey = step === 'sos' ? `sos-${stage}` : step === 'feeling-said' ? `feeling-said-${suggestion}` : step;
+  // a swipe back is the ✕ without its question, so it is only offered while there is nothing to lose
+  const swipeable = index <= FLOW.indexOf('strength') || step === 'done';
+  const screenOptions = swipeable ? SWIPE_ON : SWIPE_OFF;
+
+  return (
+    <View style={{ flex: 1, backgroundColor: step === 'sos' ? mono.groundDark : mono.ground }}>
+      <Stack.Screen options={screenOptions} />
+      <StepFade stepKey={stepKey} direction={dir}>
+        {page}
+      </StepFade>
+      <LeaveSheet
+        open={leaving}
+        onStay={() => setLeaving(false)}
+        onPassed={finish}
+        onSlipped={logSlip}
+        onLeave={exit}
+      />
+    </View>
+  );
 }
+
+const SWIPE_ON = { gestureEnabled: true } as const;
+const SWIPE_OFF = { gestureEnabled: false } as const;
+
+const clampIndex = (v: number, length: number) => Math.min(length - 1, Math.max(0, Math.round(Number(v) || 0)));
+
+// ── leaving mid-urge ────────────────────────────────────────────────────────
+
+/** The two ways out that still put the urge on the record, as rows. */
+const LEAVE_OPTIONS = ['It passed — log it', 'I slipped'] as const;
+
+/**
+ * What the ✕ asks once there is an urge to keep: carry on (the pill, and the
+ * scrim or Android back), log it as ridden out with what the flow knows so
+ * far, go to the slip flow, or leave it unrecorded. No frame draws it; it is
+ * the kit's sheet on the sign-out sheet's shell, in the flow's own calm words.
+ */
+function LeaveSheet({ open, onStay, onPassed, onSlipped, onLeave }: { open: boolean; onStay: () => void; onPassed: () => void; onSlipped: () => void; onLeave: () => void }) {
+  return (
+    <Sheet
+      modal
+      open={open}
+      top={LEAVE_SHEET_TOP}
+      gap={10}
+      onClose={onStay}
+      scrimLabel="Keep going"
+      footer={
+        <>
+          <PrimaryButton label="Keep going" bottom={96} sheet onPress={onStay} />
+          <GhostLink label="Leave without logging" zIndex={42} onPress={onLeave} />
+        </>
+      }>
+      <MonoText v="h1SheetLg">Leaving the interrupt?</MonoText>
+      <MonoText v="p" color={mono.sub} style={{ lineHeight: 23 }}>
+        Nothing is lost by staying. If the wave has passed, it can go on the record as ridden out.
+      </MonoText>
+      <Gap h={4} />
+      <OptionList options={LEAVE_OPTIONS} value={null} onChange={(choice) => (choice === 'I slipped' ? onSlipped() : onPassed())} />
+    </Sheet>
+  );
+}
+
+/**
+ * The sheet's panel top at 852: its column (44 in) holds the 30 title, the
+ * two-line 23 body and the two 58 rows with their gaps, and ends 16 above the
+ * pill's top (852 − 96 − 58).
+ */
+const LEAVE_SHEET_TOP = 852 - 96 - 58 - 16 - (30 + 10 + 46 + 10 + 4 + 10 + 2 * 58 + 12) - 44;

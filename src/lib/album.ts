@@ -1,7 +1,7 @@
 import { KK_ALBUM, kkStanding, type KKFace, type KeepsakeSceneKey } from '@/components/keepsakes/Medallion';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap } from '@/lib/backend';
 import type { AppUser, DailyCheckin, JournalEntry, LessonProgress, TidelineEvent } from '@/lib/types';
-import { addDays } from '@/lib/date';
+import { addDays, calendarDaysBetween, fromDateKey, startOfDay, useNow } from '@/lib/date';
 
 /**
  * The medallion ledger: what every face counts, live, and where it stands.
@@ -30,69 +30,87 @@ export type MedallionLedger = {
   total: number;
 };
 
-const DAY = 86_400_000;
+/** A slip, however it was logged: the slip flow files a `lapse`, the urge log an `urge_acted_on` (`isSlip`). */
+const isSlip = (type: TidelineEvent['type']) => type === 'lapse' || type === 'urge_acted_on';
 
-/** `YYYY-MM-DD` as local midnight — `new Date(iso)` reads it as UTC and slips a day west of Greenwich. */
-const dayStart = (iso: string) => {
-  const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y || 1970, (m || 1) - 1, d || 1).getTime();
-};
+/**
+ * Whether a check-in row records a check-in. A row is written by several hands
+ * (`convex/checkins.ts`): the morning and night check-ins set a mood, but the
+ * night check-in also files tomorrow's action on tomorrow's row, and Today
+ * ticks the action off on today's — a row holding only `dailyAction` /
+ * `dailyActionDone` is a plan or a tick, not a check-in, and the row for
+ * tomorrow exists before tomorrow does.
+ */
+const checkedIn = (c: Pick<DailyCheckin, 'mood' | 'energy' | 'sleepHours'>) => c.mood != null || c.energy != null || c.sleepHours != null;
 
-/** A timestamp as its own local calendar day, so two records on one evening count once. */
-const dayKey = (ms: number) => {
-  const d = new Date(ms);
-  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
-};
+/** Return's "7+ days away", in calendar days between two days with something on them. */
+const AWAY_DAYS = 7;
 
 type LedgerInput = {
   user: Pick<AppUser, 'createdAt' | 'onboardingComplete'> | null | undefined;
   events: readonly Pick<TidelineEvent, 'type' | 'createdAt' | 'severity'>[];
-  checkins: readonly Pick<DailyCheckin, 'date'>[];
+  checkins: readonly Pick<DailyCheckin, 'date' | 'mood' | 'energy' | 'sleepHours'>[];
   journal: readonly Pick<JournalEntry, 'createdAt'>[];
   progress: Record<string, Pick<LessonProgress, 'status'> | null | undefined>;
+  /** the clock, for the one rule that has to know which days have happened yet */
+  now?: number;
 };
 
 /** The counting itself — pure, so it can be checked without a store. */
-export function buildLedger({ user, events, checkins, journal, progress }: LedgerInput): MedallionLedger {
+export function buildLedger({ user, events, checkins, journal, progress, now = Date.now() }: LedgerInput): MedallionLedger {
   const rode = events.filter((e) => e.type === 'urge_rode_out');
   const actedOn = events.filter((e) => e.type === 'urge_acted_on');
-  // Breakwater is the top intensity band (9–10) ridden out
+  // Breakwater is the top intensity band ("Overwhelming", stored as 10; "Intense" is 8) ridden out
   const storms = rode.filter((e) => (e.severity ?? 0) >= 9);
-  const lapses = events.filter((e) => e.type === 'lapse');
+  const slips = events.filter((e) => isSlip(e.type));
   const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
+
+  // Every day is keyed by its own local midnight, so two records on one
+  // evening are one day. A check-in row is filed under a calendar date; a row
+  // dated after today (tomorrow's action) is not a day that has happened.
+  const today = startOfDay(now);
+  const checkinDays = new Set<number>();
+  for (const c of checkins) {
+    if (!checkedIn(c)) continue;
+    const day = fromDateKey(c.date).getTime();
+    if (day <= today) checkinDays.add(day);
+  }
 
   // Vidi counts days the app was opened and something was written down — not
   // days since sign-up — so every kind of record folds into one set of dates.
-  const recorded = new Set<number>();
-  for (const c of checkins) recorded.add(dayKey(dayStart(c.date)));
-  for (const e of events) recorded.add(dayKey(e.createdAt));
-  for (const j of journal) recorded.add(dayKey(j.createdAt));
+  const recorded = new Set<number>(checkinDays);
+  for (const e of events) recorded.add(startOfDay(e.createdAt));
+  for (const j of journal) recorded.add(startOfDay(j.createdAt));
 
-  // Rebound is the morning after: a check-in on the day following a slip.
-  const checkinDays = new Set(checkins.map((c) => dayKey(dayStart(c.date))));
+  // Rebound is the morning after: a check-in on the calendar day following a
+  // slip — either kind of slip — counted once per morning, however many slips
+  // that night held.
   const rebounds = new Set<number>();
-  for (const l of lapses) {
-    const next = dayKey(addDays(l.createdAt, 1));
+  for (const l of slips) {
+    const next = addDays(startOfDay(l.createdAt), 1);
     if (checkinDays.has(next)) rebounds.add(next);
   }
 
-  // Return is a check-in that lands after a week of silence — the gap is
-  // measured against the previous check-in, so the first one can never earn it.
-  const stamps = checkins.map((c) => dayStart(c.date)).sort((a, b) => a - b);
-  const returned = stamps.find((ms, i) => i > 0 && ms - stamps[i - 1] >= 7 * DAY);
-  const firstCheckin = stamps.length ? stamps[0] : undefined;
-  const firstSlipLogged = actedOn.length ? Math.min(...actedOn.map((e) => e.createdAt)) : undefined;
+  // Return is coming back after a week with nothing on it: the first day with
+  // a record that lands 7+ calendar days after the one before it (the very
+  // first day can never earn it). Counted by the calendar, not by 24-hour
+  // blocks, so a week that crosses a clock change still reads as a week.
+  const days = [...recorded].sort((a, b) => a - b);
+  const returned = days.find((ms, i) => i > 0 && calendarDaysBetween(days[i - 1], ms) >= AWAY_DAYS);
+  const pulse = checkinDays.size;
+  const firstCheckin = pulse ? Math.min(...checkinDays) : undefined;
+  const firstSlipLogged = slips.length ? Math.min(...slips.map((e) => e.createdAt)) : undefined;
 
   // What each face counts, and — for the four that mint once — whether it has.
   const COUNT: Record<KeepsakeSceneKey, number> = {
     veni: user?.onboardingComplete ? 1 : 0,
-    firstlight: checkins.length ? 1 : 0,
+    firstlight: pulse ? 1 : 0,
     vidi: recorded.size,
     vici: rode.length,
     breakwater: storms.length,
     rebound: rebounds.size,
     logbook: rode.length + actedOn.length,
-    pulse: checkins.length,
+    pulse,
     blackbox: firstSlipLogged != null ? 1 : 0,
     lessons: lessonsDone,
     archive: journal.length,
@@ -121,8 +139,10 @@ export function useMedallionLedger(): MedallionLedger | undefined {
   const user = useCurrentUser();
   const journal = useJournalEntries();
   const progress = useLessonProgressMap();
+  // "now" held steady while the screen is open, moved on when the day turns
+  const now = useNow();
   if (events === undefined || checkins === undefined || user === undefined || journal === undefined || progress === undefined) return undefined;
-  return buildLedger({ user, events, checkins, journal, progress });
+  return buildLedger({ user, events, checkins, journal, progress, now });
 }
 
 /** Edit Profile's "Medallions · 10 of 12": how many faces are earned, of how many. */
