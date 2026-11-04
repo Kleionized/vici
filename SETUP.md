@@ -123,3 +123,54 @@ product identifiers, both paywalls, Customer Center and the testing notes.
 - Real lesson content (the 3 seeds are placeholders).
 - A verification-code screen if Clerk email verification stays enabled.
 - Real reminder notifications (the reminder time is stored but not scheduled).
+
+## 4. Encryption at rest
+
+Sensitive fields (journal entries, urge and slip notes, check-in words,
+reflections, the life map, the display name) are sealed with AES-256-GCM on the
+Convex side before they are written. The key lives only in the deployment's
+environment:
+
+```bash
+# 32 random bytes, base64 — generate once per deployment and keep a copy somewhere safe
+npx convex env set DATA_ENCRYPTION_KEY "$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")"
+```
+
+Then seal any rows written before the key existed (idempotent; safe to re-run):
+
+```bash
+npx convex run migrations:encryptExisting '{}'
+```
+
+- **Losing the key loses the data.** There is no recovery without it.
+- **Rotating:** move the current value to `DATA_ENCRYPTION_KEY_PREVIOUS`, set a
+  new `DATA_ENCRYPTION_KEY`, then run the migration again — rows are re-sealed
+  as they are next written; old ones still open with the previous key.
+- Without the key, the backend stores plaintext and logs a warning, so a fresh
+  dev deployment still works.
+
+On the device, everything the app keeps in AsyncStorage is sealed with a
+per-install AES key held in the Keychain / Keystore (`src/lib/storage.ts`).
+
+`npm test` runs the backend's tests (auth isolation, sealing, migration,
+validation, account deletion) with `convex-test`.
+
+## 5. Reminders and widgets (need a development build)
+
+Both use native modules, so they do nothing in Expo Go or on the web:
+
+```bash
+npx expo prebuild --clean
+npx expo run:ios
+```
+
+- **Reminders** (`expo-notifications`) are scheduled locally — nothing about
+  when someone is at risk leaves the phone. Turned on from the onboarding
+  reminder step or Settings → Notifications.
+- **Widgets** (`expo-widgets`, iOS only): a *Today* widget (small, medium and
+  three lock-screen sizes) and an *SOS* widget. The config plugin in
+  `app.json` creates the widget extension and the App Group
+  `group.com.tideline.vici`; with EAS, the App Group and the extension's
+  bundle id (`com.tideline.vici.ExpoWidgetsTarget`) are registered for you.
+  With "Hide sensitive previews" on (the default) widgets never show the
+  pledge or the day's task, only the day count and the score.
