@@ -57,6 +57,7 @@ export default function Settings() {
   const done = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   if (user === undefined) return <LoadingView onBack={done} />;
+  const remindersOn = !!(user?.settings.morningCheckin || user?.settings.eveningWindDown || user?.settings.riskTimeSupport);
 
   // Settings draws only `Yearly`; a free account has no plan to name, so the
   // row keeps its chevron and says nothing (D292).
@@ -78,6 +79,7 @@ export default function Settings() {
           {/* both rows carry `?from=settings`: the board is shared with onboarding,
               and the parameter is what makes its `Save time` come back here instead
               of running on into the onboarding night board and out onto Today */}
+          <Row label="Notifications" value={remindersOn ? 'On' : 'Off'} onPress={() => router.push('/reminders')} />
           <Row label="Morning check-in" value={formatTime(routines.morning)} onPress={() => router.push('/routines/morning-time?from=settings')} />
           <Row label="Night check-in" value={formatTime(routines.night)} onPress={() => router.push('/routines/night-time?from=settings')} />
           <Row label="Weekly report" value="Every Sunday" onPress={() => router.push('/weekly-report?from=settings')} />

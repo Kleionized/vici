@@ -7,6 +7,7 @@ import { EmptyState, toggleChoice } from '@/components/mono';
 import { LESSONS, type LessonPage } from '@/content/lessons';
 import { useCompleteLesson, useLessonDetail, useLessonProgressMap, useSaveReflection, useStartLesson } from '@/lib/backend';
 import { lessonSlug } from '@/lib/curriculum';
+import { haptic } from '@/lib/haptics';
 
 /**
  * The lesson reader — all 84 lessons of `Vici Overhaul`, one page per Week
@@ -122,7 +123,10 @@ export default function LessonReader() {
         kind: 'pill',
         label: 'Finish lesson',
         onPress: () => {
-          if (progress?.[slug]?.status !== 'completed') completeLesson(slug).catch(() => {});
+          if (progress?.[slug]?.status !== 'completed') {
+            haptic('success');
+            completeLesson(slug).catch(() => {});
+          }
           next();
         },
       };

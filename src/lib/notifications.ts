@@ -311,3 +311,16 @@ export function onReminderTap(handler: (route: string) => void): () => void {
   });
   return () => sub.remove();
 }
+
+// ── turning them on ──────────────────────────────────────────────────
+
+/**
+ * The one way the app switches reminders on: ask the OS (once), and report
+ * what came back. The caller saves the settings either way — the person said
+ * yes, and if the OS permission arrives later (from Settings) the reminders
+ * start without asking again.
+ */
+export async function enableReminders(): Promise<'granted' | 'denied' | 'unsupported'> {
+  if (!SUPPORTED) return 'unsupported';
+  return (await requestReminderPermission()) ? 'granted' : 'denied';
+}
