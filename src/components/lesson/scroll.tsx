@@ -333,7 +333,7 @@ export function LessonScroll({
       <Grain source={noiseDark} opacity={0.07} />
 
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']} pointerEvents="box-none">
-        <View style={{ flex: 1 }} pointerEvents="box-none">
+        <View style={{ pointerEvents: 'box-none', flex: 1 }}>
           <PressScale
             onPress={onClose}
             accessibilityRole="button"
@@ -396,8 +396,7 @@ export function LessonScroll({
                 // swapping under the reader mid-sentence.
                 key={index}
                 entering={reduced ? undefined : FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))}
-                pointerEvents={interactive ? 'box-none' : 'none'}
-                style={{ alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', gap }}>
+                style={{ pointerEvents: interactive ? 'box-none' : 'none', alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', gap }}>
                 {children}
               </Animated.View>
             </PressScale>
@@ -407,7 +406,7 @@ export function LessonScroll({
 
           {/* 42 from the 852 board's own foot, which draws no home indicator */}
           {chevron ? (
-            <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 42 - insets.bottom, alignItems: 'center', zIndex: 5 }}>
+            <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, bottom: 42 - insets.bottom, alignItems: 'center', zIndex: 5 }}>
               <Svg width={22} height={12} viewBox="0 0 22 12" fill="none">
                 <Path d="M2 2l9 8 9-8" stroke="#B0AEA8" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
               </Svg>

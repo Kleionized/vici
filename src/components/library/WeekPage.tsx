@@ -347,7 +347,7 @@ export function WeekPage({
     <View style={{ width, height: '100%' }}>
       <ScrollView showsVerticalScrollIndicator={false} style={{ position: 'absolute', left: 0, right: 0, top, bottom: 0 }}>
         <View style={{ height: ROWS_TOP - top + 7 * ROW_H + 6 * ROW_GAP + 24 }}>
-          <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -top, width }}>
+          <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -top, width }}>
             {hero}
           </View>
           <WeekHeader week={week} top={HEADER_TOP - top} />

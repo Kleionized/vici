@@ -135,7 +135,7 @@ export function PwNav({ label, onClose }: { label: string; onClose: () => void }
 /** The lockup at `left 24 top 66`: the 28 laurel (white, stretched) and "VICI Unlimited" 14/700. */
 export function PwBrand({ eyebrow = 'VICI Unlimited' }: { eyebrow?: string }) {
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 24, top: 66, flexDirection: 'row', alignItems: 'center', gap: 10, zIndex: 5 }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 24, top: 66, flexDirection: 'row', alignItems: 'center', gap: 10, zIndex: 5 }}>
       <LaurelMark size={28} />
       <MonoText v="pill" wrap="nowrap" style={{ fontSize: 14, lineHeight: lhNormal(14) }}>
         {eyebrow}
@@ -255,7 +255,7 @@ export function PwFeatures({ title = 'What you get', labels = PW_FEATURES }: { t
 export function PwFooter({ text = 'Terms · Restore', onRestore }: { text?: string; onRestore: () => void }) {
   const at = text.lastIndexOf('Restore');
   return (
-    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52, zIndex: 6 }}>
+    <View style={{ pointerEvents: 'box-none', position: 'absolute', left: 0, right: 0, bottom: 52, zIndex: 6 }}>
       {/* drawn as one run: splitting it into spans re-kerns the line at the
           seam and moves the centred words by a fraction of a point */}
       <MonoText v="legal" center accessibilityElementsHidden={at >= 0} importantForAccessibility={at >= 0 ? 'no-hide-descendants' : 'auto'} aria-hidden={at >= 0 || undefined}>
@@ -525,7 +525,7 @@ function PwConfirmed({ plan, name, email, money, confirmLabel, onDone }: { plan:
         </View>
       </ScrollRegion>
       <PrimaryButton label={confirmLabel} bottom={82} onPress={onDone} />
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 52 }}>
+      <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, bottom: 52 }}>
         <MonoText v="legal" center wrap="wrap" style={{ letterSpacing: 0, paddingHorizontal: 24 }}>
           {`Receipt sent to ${email}`}
         </MonoText>

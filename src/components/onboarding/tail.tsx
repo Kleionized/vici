@@ -474,7 +474,7 @@ export function O3IfNothingChanges({ days, next, back }: { days: number; next: (
   return (
     <Beat line={figure}>
       <Screen variant="dark">
-        <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
+        <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
           <AgeField width={win.width} height={win.height} />
         </View>
         <LinearGradient

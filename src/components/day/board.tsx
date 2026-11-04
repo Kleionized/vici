@@ -142,7 +142,7 @@ export function RecordRows({ rows }: { rows: RecordRow[] }) {
  */
 export function AddToRecord({ onPress }: { onPress: () => void }) {
   return (
-    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 470, flexDirection: 'row', justifyContent: 'center' }}>
+    <View style={{ pointerEvents: 'box-none', position: 'absolute', left: 0, right: 0, top: 470, flexDirection: 'row', justifyContent: 'center' }}>
       <Tap
         onPress={onPress}
         label="Add to the record"
@@ -159,7 +159,7 @@ export function AddToRecord({ onPress }: { onPress: () => void }) {
 /** Morning 5 Done's mark: the 132 ink disc with its 56 check, centred at canvas 288. */
 export function DoneMark() {
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 288, flexDirection: 'row', justifyContent: 'center' }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, top: 288, flexDirection: 'row', justifyContent: 'center' }}>
       <CheckDisc size={132} />
     </View>
   );

@@ -182,7 +182,7 @@ function ChapterBody({ chapter, ctx, width, offset, onBack }: { chapter: Chapter
   const y = (v: number) => v - offset;
   return (
     <View style={{ height: BODY_H - offset }}>
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -offset, width }}>
+      <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -offset, width }}>
         <Hero id={c.hero} top={heroTop(c.hero)} width={width} />
       </View>
 

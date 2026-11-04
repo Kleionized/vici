@@ -112,7 +112,7 @@ export function Part({ part }: { part: ReaderPart }) {
       return <Mark name={part.name} boxHeight={part.boxHeight} scale={part.scale} />;
     case 'cascade':
       return (
-        <View pointerEvents="none" style={{ alignItems: 'center', gap: part.gap }}>
+        <View style={{ pointerEvents: 'none', alignItems: 'center', gap: part.gap }}>
           {part.lines.map((line, i) => (
             <AppText
               key={i}
@@ -134,7 +134,7 @@ export function Part({ part }: { part: ReaderPart }) {
       );
     case 'attribution':
       return (
-        <View pointerEvents="none" style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: part.gap }}>
+        <View style={{ pointerEvents: 'none', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: part.gap }}>
           {/* The longest attribution in the corpus — Kierkegaard's, on `L50
               Frame 02` — is 5pt wider than the column, and the browser takes
               that back off the two rules rather than off the caps. Yoga shrinks
@@ -156,9 +156,7 @@ export function Part({ part }: { part: ReaderPart }) {
         <View
           // Nothing on a reading page is a control: the whole board is the way
           // on, so a filled plate must not swallow the tap that turns the page.
-          pointerEvents="none"
-          style={{
-            alignSelf: 'stretch',
+          style={{ pointerEvents: 'none', alignSelf: 'stretch',
             borderRadius: part.radius,
             borderCurve: 'continuous',
             backgroundColor: part.background,

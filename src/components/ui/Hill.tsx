@@ -42,7 +42,7 @@ export function Hill({
   const ry = (rise / height) * 100;
   const d = `M0,${ry} A50,${ry} 0 0 1 100,${ry} L100,100 L0,100 Z`;
   return (
-    <View pointerEvents="none" style={[{ height, overflow: 'hidden' }, style]}>
+    <View style={[{ pointerEvents: 'none' }, { height, overflow: 'hidden' }, style]}>
       <Svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
         {fade ? (
           <>

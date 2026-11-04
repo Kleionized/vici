@@ -76,10 +76,9 @@ function Placed({ id, ox, oy, k, width }: { id: HeroKey; ox: number; oy: number;
   const height = Math.ceil(oy + k * b + BLEED) - top;
   return (
     <View
-      pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
-      style={{ position: 'absolute', left: 0, top, width, height }}>
+      style={{ pointerEvents: 'none', position: 'absolute', left: 0, top, width, height }}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ position: 'absolute', left: 0, top: 0 }}>
         <G transform={`translate(${fmt(ox)} ${fmt(oy - top)}) scale(${fmt(k)})`}>
           <HeroArt id={id} />
@@ -194,7 +193,7 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
     const { ox, oy } = cssOrigin(top, s, width);
     const bleed = props.bleed ?? 32;
     return (
-      <View pointerEvents="none" style={[{ width, height: h, marginHorizontal: -bleed, flexShrink: 0 }, props.style]}>
+      <View style={[{ pointerEvents: 'none' }, { width, height: h, marginHorizontal: -bleed, flexShrink: 0 }, props.style]}>
         <Placed id={id} ox={ox} oy={oy} k={s} width={width} />
       </View>
     );
@@ -386,7 +385,7 @@ export function HeroBoard({
         onClose={nav?.onClose}
       />
       {hero && !dropArt ? (
-        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+        <View style={[{ pointerEvents: 'none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
           {heroStrike ? (
             <HeroStrike originY={heroTop - lift + 120}>
               <Hero id={hero} top={heroTop - lift} scale={heroScale} />
@@ -397,7 +396,7 @@ export function HeroBoard({
         </View>
       ) : null}
       {art && !dropArt ? (
-        <View pointerEvents="box-none" style={[{ position: 'absolute', left: 0, right: 0, top: -lift, bottom: lift }, hidden]}>
+        <View style={[{ pointerEvents: 'box-none' }, { position: 'absolute', left: 0, right: 0, top: -lift, bottom: lift }, hidden]}>
           {art}
         </View>
       ) : null}

@@ -241,7 +241,7 @@ export function O3DayZero({ lesson, number, title, next }: { lesson?: string; nu
       <Screen>
         <NavBar left="empty" right="empty" />
         {dropArt ? null : (
-          <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+          <View style={[{ pointerEvents: 'none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
             <Hero id="sunrise" top={SUNRISE_TOP - lift} />
           </View>
         )}

@@ -101,7 +101,7 @@ export default function Vow() {
     <Screen>
       <NavBar left="back" centre={{ title: 'Your vow' }} right="empty" onBack={back} />
       {dropArt ? null : (
-        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+        <View style={[{ pointerEvents: 'none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
           <Hero id="flag" top={HERO_TOP - lift} />
         </View>
       )}

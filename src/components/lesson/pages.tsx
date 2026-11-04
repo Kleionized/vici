@@ -507,7 +507,7 @@ export function PageCollect({
   return (
     <View style={{ flex: 1 }}>
       {/* the warm floor the canvas bleeds off the bottom of the frame */}
-      <View style={{ position: 'absolute', left: '50%', bottom: -300, marginLeft: -280, width: 560, height: 560 }} pointerEvents="none">
+      <View style={{ pointerEvents: 'none', position: 'absolute', left: '50%', bottom: -300, marginLeft: -280, width: 560, height: 560 }}>
         <Svg width={560} height={560} viewBox="0 0 560 560">
           <Defs>
             <RadialGradient id="signs-floor" cx="50%" cy="50%" r="50%">
