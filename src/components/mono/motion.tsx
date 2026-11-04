@@ -20,7 +20,7 @@
  */
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, Text, View, type GestureResponderEvent, type StyleProp, type ViewStyle } from 'react-native';
+import { AccessibilityInfo, Platform, StyleSheet, Text, View, type GestureResponderEvent, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, {
   Easing,
   FadeIn,
@@ -38,6 +38,21 @@ import Animated, {
 import { haptic } from '@/lib/haptics';
 
 import { MonoText, type MonoTextProps } from './Text';
+
+/**
+ * Pointer-event styles, compiled. On the web `box-none` only means "let
+ * touches through to my children" as a compiled style: react-native-web turns
+ * an inline `pointerEvents: 'box-none'` into plain `none`, which the children
+ * inherit, so every button inside the layer goes dead.
+ */
+export const PE = StyleSheet.create({
+  boxNone: { pointerEvents: 'box-none' },
+  none: { pointerEvents: 'none' },
+  auto: { pointerEvents: 'auto' },
+});
+
+const PASS_THROUGH = [StyleSheet.absoluteFill, PE.boxNone];
+const WEB_NONE = { pointerEvents: 'none' } as const;
 
 /** The house curve: quick out of the gate, a long soft landing. */
 export const EASE_OUT = Easing.bezier(0.22, 1, 0.36, 1);
@@ -316,9 +331,34 @@ export function Reveal({
     else p.value = visible ? withDelay(delay, withTiming(1, { duration, easing: EASE_OUT })) : 0;
   }, [visible, delay, duration, reduced, p]);
   const anim = useAnimatedStyle(() => ({ opacity: p.value, transform: [{ translateY: (1 - p.value) * lift }] }));
+  if (Platform.OS === 'web') {
+    // On the web Reanimated writes `pointer-events` inline, where `box-none`
+    // can only be `none` — and that is inherited, so the button inside a
+    // full-frame reveal layer could not be pressed at all. A plain view keeps
+    // RN-web's class-based `box-none`, and a CSS transition does the fade.
+    const webMotion = {
+      opacity: visible ? 1 : 0,
+      transform: [{ translateY: visible ? 0 : lift }],
+      transitionProperty: 'opacity, transform',
+      transitionDuration: reduced ? '0ms' : `${duration}ms`,
+      transitionDelay: visible && !reduced ? `${delay}ms` : '0ms',
+      transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    } as unknown as ViewStyle;
+    // A full-frame layer (the bottom controls') must let touches through to
+    // whatever is under it but still to its own buttons: its inner pass-through
+    // view is built from compiled styles only, which is the one form in which
+    // react-native-web keeps `box-none`'s "children still receive touches".
+    const flat = StyleSheet.flatten(style) ?? {};
+    const fullFrame = flat.position === 'absolute' && flat.top === 0 && flat.bottom === 0 && flat.left === 0 && flat.right === 0;
+    return (
+      <View style={[style, webMotion, visible && !fullFrame ? null : WEB_NONE]}>
+        {fullFrame && visible ? <View style={PASS_THROUGH}>{children}</View> : children}
+      </View>
+    );
+  }
   return (
     // `box-none` once shown: a reveal laid over the frame (the bottom controls' layer) never eats a touch meant for what is under it
-    <Animated.View style={[style, { pointerEvents: visible ? 'box-none' : 'none' }, anim]}>
+    <Animated.View pointerEvents={visible ? 'box-none' : 'none'} style={[style, anim]}>
       {children}
     </Animated.View>
   );

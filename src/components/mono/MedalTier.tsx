@@ -141,7 +141,7 @@ export function MedalStrike({ strike, size, face = size, children, style }: { st
   const inset = (size - face) / 2;
   const bandW = face * SHEEN_W;
   return (
-    <Animated.View style={[{ width: size, height: size, pointerEvents: 'none' }, style, shell]}>
+    <Animated.View pointerEvents="none" style={[{ width: size, height: size }, style, shell]}>
       {children}
       {strike.live ? (
         <View style={{ position: 'absolute', left: inset, top: inset, width: face, height: face, borderRadius: face / 2, overflow: 'hidden', pointerEvents: 'none' }}>

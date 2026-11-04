@@ -290,7 +290,7 @@ export function Sheet({
       {footer ? (
         // the prop, not the style: Reanimated's web view flattens its style inline,
         // which drops the registered box-none (one deprecation notice on web)
-        <Animated.View style={[{ pointerEvents: 'box-none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, zIndex: 42 }, footerStyle]}>
+        <Animated.View pointerEvents="box-none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, zIndex: 42 }, footerStyle]}>
           {footer}
         </Animated.View>
       ) : null}
