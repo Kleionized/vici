@@ -122,9 +122,8 @@ product identifiers, both paywalls, Customer Center and the testing notes.
 - The visual design pass (see DESIGN_NOTES.md) — the app is intentionally unstyled.
 - Real lesson content (the 3 seeds are placeholders).
 - A verification-code screen if Clerk email verification stays enabled.
-- Real reminder notifications (the reminder time is stored but not scheduled).
 
-## 4. Encryption at rest
+## 6. Encryption at rest
 
 Sensitive fields (journal entries, urge and slip notes, check-in words,
 reflections, the life map, the display name) are sealed with AES-256-GCM on the
@@ -155,7 +154,7 @@ per-install AES key held in the Keychain / Keystore (`src/lib/storage.ts`).
 `npm test` runs the backend's tests (auth isolation, sealing, migration,
 validation, account deletion) with `convex-test`.
 
-## 5. Reminders and widgets (need a development build)
+## 7. Reminders and widgets (need a development build)
 
 Both use native modules, so they do nothing in Expo Go or on the web:
 
