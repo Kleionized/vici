@@ -58,6 +58,14 @@ export function CheckinTimeBoard({
   const { height: winH } = useWindowDimensions();
   const canvasTop = useCanvasTop();
   const [stackH, setStackH] = useState(0);
+  // The board arrives under a finger that may still be mid double-tap on the
+  // previous board's pill, which sits in the same place: a press in the first
+  // moments after mount is taken as that tap, not as "Save time".
+  const [mountedAt] = useState(() => Date.now());
+  const save = () => {
+    if (Date.now() - mountedAt < 450) return;
+    onSave();
+  };
   // Where the stack fits (393 × 852 and up) the band starts at the question, as it
   // always has. Where it scrolls, it starts at the nav row's foot with the 36 as
   // padding — every row stays put, but the question scrolls up to the chevron's
@@ -79,7 +87,7 @@ export function CheckinTimeBoard({
           <DayToggles value={days} onChange={onDays} />
         </View>
       </ScrollRegion>
-      <PrimaryButton label="Save time" onPress={onSave} />
+      <PrimaryButton label="Save time" onPress={save} />
     </Screen>
   );
 }
