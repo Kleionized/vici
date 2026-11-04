@@ -37,7 +37,45 @@
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "color": "#0D0D0D",
+          "mode": "production"
+        }
+      ],
+      [
+        "expo-widgets",
+        {
+          "groupIdentifier": "group.com.tideline.vici",
+          "widgets": [
+            {
+              "name": "TodayWidget",
+              "displayName": "Today",
+              "description": "Your day, your score and the next check-in.",
+              "supportedFamilies": [
+                "systemSmall",
+                "systemMedium",
+                "accessoryCircular",
+                "accessoryRectangular",
+                "accessoryInline"
+              ],
+              "contentMarginsDisabled": false
+            },
+            {
+              "name": "SosWidget",
+              "displayName": "SOS",
+              "description": "One tap into the first ninety seconds.",
+              "supportedFamilies": [
+                "systemSmall",
+                "accessoryCircular"
+              ],
+              "contentMarginsDisabled": false
+            }
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": false,

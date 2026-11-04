@@ -1,76 +1,74 @@
+import { v } from 'convex/values';
+
 import { query } from './_generated/server';
-import { getUserIdOrNull } from './utils';
+import { openEvent } from './model';
+import { findUserDoc, getUserIdOrNull, MAX_ROWS } from './utils';
 
 /**
  * Server-side dashboard aggregation — mirrors `src/lib/dashboard.ts`. Leading
  * indicators are the hero; the optional "days since last lapse" is computed only
  * when the user opted in (invariant #1).
+ *
+ * The server runs in UTC, so it cannot know which calendar day it is for the
+ * person asking: the client sends its own `today` (`YYYY-MM-DD`, local) and the
+ * week is counted back from that. Without it the week was the server's — a
+ * check-in made at 9pm in California landed on "tomorrow".
  */
 
-function toDateKey(d: Date): string {
-  const y = d.getFullYear();
-  const m = `${d.getMonth() + 1}`.padStart(2, '0');
-  const day = `${d.getDate()}`.padStart(2, '0');
-  return `${y}-${m}-${day}`;
+const DAY = 86_400_000;
+
+/** `YYYY-MM-DD` plus `n` days, by the calendar (UTC arithmetic on a date-only value is exact). */
+function shiftKey(key: string, n: number): string {
+  const [y, m, d] = key.split('-').map(Number);
+  const t = new Date(Date.UTC(y, m - 1, d) + n * DAY);
+  return `${t.getUTCFullYear()}-${String(t.getUTCMonth() + 1).padStart(2, '0')}-${String(t.getUTCDate()).padStart(2, '0')}`;
 }
 
-function lastNDateKeys(n: number, now: number): string[] {
-  const out: string[] = [];
-  const base = new Date(now);
-  for (let i = n - 1; i >= 0; i -= 1) {
-    const d = new Date(base);
-    d.setDate(base.getDate() - i);
-    out.push(toDateKey(d));
-  }
-  return out;
+function utcKey(ms: number): string {
+  const t = new Date(ms);
+  return `${t.getUTCFullYear()}-${String(t.getUTCMonth() + 1).padStart(2, '0')}-${String(t.getUTCDate()).padStart(2, '0')}`;
 }
 
 export const get = query({
-  args: {},
-  handler: async (ctx) => {
+  args: { today: v.optional(v.string()), lessonsTotal: v.optional(v.number()) },
+  handler: async (ctx, args) => {
     const now = Date.now();
     const userId = await getUserIdOrNull(ctx);
+    if (!userId) return null;
+    const today = args.today && /^\d{4}-\d{2}-\d{2}$/.test(args.today) ? args.today : utcKey(now);
 
-    const lessons = await ctx.db.query('lessons').collect();
-    if (!userId) {
-      return null;
-    }
-
-    const user = await ctx.db
-      .query('users')
-      .withIndex('by_clerkUserId', (q) => q.eq('clerkUserId', userId))
-      .unique();
+    const user = await findUserDoc(ctx, userId);
     const showStreak = user?.settings.showStreak ?? false;
     const userCreatedAt = user?.createdAt ?? now;
 
     const progress = await ctx.db
       .query('lessonProgress')
       .withIndex('by_user', (q) => q.eq('userId', userId))
-      .collect();
+      .take(MAX_ROWS.progress);
     const reflections = await ctx.db
       .query('reflections')
       .withIndex('by_user', (q) => q.eq('userId', userId))
-      .collect();
+      .take(MAX_ROWS.reflections);
     const events = await ctx.db
       .query('events')
-      .withIndex('by_user', (q) => q.eq('userId', userId))
-      .collect();
+      .withIndex('by_user_createdAt', (q) => q.eq('userId', userId))
+      .order('desc')
+      .take(MAX_ROWS.events);
+    const week = Array.from({ length: 7 }, (_, i) => shiftKey(today, i - 6));
     const checkins = await ctx.db
       .query('dailyCheckins')
-      .withIndex('by_user', (q) => q.eq('userId', userId))
-      .collect();
+      .withIndex('by_user_date', (q) => q.eq('userId', userId).gte('date', week[0]).lte('date', week[6]))
+      .take(14);
 
     const checkinByDate = new Map(checkins.map((c) => [c.date, c]));
-    const week = lastNDateKeys(7, now);
-    const weekCheckins = week.map((d) => checkinByDate.get(d)).filter(Boolean) as typeof checkins;
+    const weekCheckins = week.map((d) => checkinByDate.get(d)).filter((c): c is NonNullable<typeof c> => c != null);
 
-    const lapses = events.filter((e) => e.type === 'lapse').sort((a, b) => b.createdAt - a.createdAt);
-    const lastLapseAt = lapses[0]?.createdAt ?? userCreatedAt;
-    const daysSince = Math.max(0, Math.floor((now - lastLapseAt) / (24 * 60 * 60 * 1000)));
+    const lastLapseAt = events.find((e) => e.type === 'lapse')?.createdAt ?? userCreatedAt;
+    const daysSince = Math.max(0, Math.floor((now - lastLapseAt) / DAY));
 
     return {
       lessonsCompleted: progress.filter((p) => p.status === 'completed').length,
-      lessonsTotal: lessons.length,
+      lessonsTotal: args.lessonsTotal ?? 84,
       sleepTrend: week.map((date) => ({ date, value: checkinByDate.get(date)?.sleepHours ?? null })),
       moodTrend: week.map((date) => ({ date, value: checkinByDate.get(date)?.mood ?? null })),
       movedBodyDays: weekCheckins.filter((c) => c.movedBody).length,
@@ -79,7 +77,7 @@ export const get = query({
       checkinDays: weekCheckins.length,
       reflectionsCount: reflections.length,
       fitsMeCount: progress.filter((p) => p.fitsMeRating != null).length,
-      recentEvents: [...events].sort((a, b) => b.createdAt - a.createdAt).slice(0, 8),
+      recentEvents: await Promise.all(events.slice(0, 8).map(openEvent)),
       optionalDaysSinceLapse: showStreak ? daysSince : null,
     };
   },

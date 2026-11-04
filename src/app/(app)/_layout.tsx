@@ -4,7 +4,9 @@ import { useEffect, useRef } from 'react';
 import { StoicTabBar } from '@/components/StoicTabBar';
 import { useAuth } from '@/lib/auth';
 import { useCheckins, useCurrentUser, useEvents } from '@/lib/backend';
-import { checkinPartNow } from '@/lib/routines';
+import { consumeLaunchReminder } from '@/lib/notifications';
+import { toDateKey } from '@/lib/date';
+import { checkinPartNow, nightDayStart } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
 import { mono } from '@/lib/theme';
 import { loadUrgeSession } from '@/lib/urgeSession';
@@ -38,8 +40,18 @@ export default function AppLayout() {
     if (checkins === undefined || events === undefined) return;
     prompted.current = true;
     (async () => {
-      // Mid-urge reopens go back to the urge flow, never the mood prompt.
-      if (await loadUrgeSession()) return;
+      // A tapped reminder that opened the app goes where it asked to, first.
+      const tapped = await consumeLaunchReminder();
+      if (tapped) {
+        router.push(tapped as never);
+        return;
+      }
+      // Mid-urge reopens go back to the urge flow (which resumes the same
+      // session), never the mood prompt.
+      if (await loadUrgeSession()) {
+        router.push('/urge');
+        return;
+      }
       // The letter — sealed on day zero, it arrives over Today the launch
       // after a slip was logged, then reseals itself into the Log.
       const letterPending = await getJSON<number>(LETTER_PENDING_KEY);
@@ -72,10 +84,17 @@ export default function AppLayout() {
           }
         }
       }
+      // The check-in the clock says it is — unless it is already done: nobody
+      // should be walked back into a check-in they filed an hour ago.
+      const part = checkinPartNow();
+      const dayKey = toDateKey(new Date(part === 'night' ? nightDayStart() : Date.now()));
+      const row = checkins?.find((c) => c.date === dayKey);
+      const done = part === 'morning' ? row?.energy != null : !!(row?.emotions?.length || row?.reasons?.length);
+      if (done) return;
       const last = await getJSON<number>(CHECKIN_PROMPT_KEY);
       if (!last || Date.now() - last > HOUR) {
         await setJSON(CHECKIN_PROMPT_KEY, Date.now());
-        router.push(checkinPartNow() === 'morning' ? '/day/morning' : '/day/night');
+        router.push(part === 'morning' ? '/day/morning' : '/day/night');
       }
     })();
   }, [user?.onboardingComplete, user?.createdAt, checkins, events, router, pathname]);

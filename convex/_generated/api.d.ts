@@ -9,6 +9,7 @@
  */
 
 import type * as checkins from "../checkins.js";
+import type * as crypto from "../crypto.js";
 import type * as dashboard from "../dashboard.js";
 import type * as events from "../events.js";
 import type * as importLessons from "../importLessons.js";
@@ -16,6 +17,8 @@ import type * as journal from "../journal.js";
 import type * as lessonUpsert from "../lessonUpsert.js";
 import type * as lessons from "../lessons.js";
 import type * as lifemap from "../lifemap.js";
+import type * as migrations from "../migrations.js";
+import type * as model from "../model.js";
 import type * as reflections from "../reflections.js";
 import type * as seed from "../seed.js";
 import type * as users from "../users.js";
@@ -29,6 +32,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   checkins: typeof checkins;
+  crypto: typeof crypto;
   dashboard: typeof dashboard;
   events: typeof events;
   importLessons: typeof importLessons;
@@ -36,6 +40,8 @@ declare const fullApi: ApiFromModules<{
   lessonUpsert: typeof lessonUpsert;
   lessons: typeof lessons;
   lifemap: typeof lifemap;
+  migrations: typeof migrations;
+  model: typeof model;
   reflections: typeof reflections;
   seed: typeof seed;
   users: typeof users;

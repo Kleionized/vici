@@ -1,6 +1,7 @@
 import { v } from 'convex/values';
 
 import { mutation, query } from './_generated/server';
+import { checkRange, checkText, LIMITS, openLifeMap, sealLifeMapText } from './model';
 import { getUserIdOrNull, requireUserId } from './utils';
 
 export const get = query({
@@ -8,10 +9,11 @@ export const get = query({
   handler: async (ctx) => {
     const userId = await getUserIdOrNull(ctx);
     if (!userId) return null;
-    return await ctx.db
+    const row = await ctx.db
       .query('lifeMap')
       .withIndex('by_user', (q) => q.eq('userId', userId))
-      .unique();
+      .first();
+    return row ? await openLifeMap(row) : null;
   },
 });
 
@@ -23,24 +25,32 @@ export const update = mutation({
   },
   handler: async (ctx, args) => {
     const userId = await requireUserId(ctx);
+    checkText(args.whyStatement, LIMITS.note, 'whyStatement');
+    checkText(args.oneYearAnswer, LIMITS.note, 'oneYearAnswer');
+    if (args.values && args.values.length > LIMITS.values) throw new Error(`Too many values (max ${LIMITS.values})`);
+    for (const value of args.values ?? []) {
+      checkText(value.label, LIMITS.shortText, 'value label');
+      checkRange(value.importance, 0, 10, 'importance');
+    }
     const now = Date.now();
+    const sealed = await sealLifeMapText(userId, args);
     const existing = await ctx.db
       .query('lifeMap')
       .withIndex('by_user', (q) => q.eq('userId', userId))
-      .unique();
+      .first();
     if (existing) {
       await ctx.db.patch(existing._id, {
-        whyStatement: args.whyStatement ?? existing.whyStatement,
-        oneYearAnswer: args.oneYearAnswer ?? existing.oneYearAnswer,
-        values: args.values ?? existing.values,
+        whyStatement: sealed.whyStatement ?? existing.whyStatement,
+        oneYearAnswer: sealed.oneYearAnswer ?? existing.oneYearAnswer,
+        values: sealed.values ?? existing.values,
         updatedAt: now,
       });
     } else {
       await ctx.db.insert('lifeMap', {
         userId,
-        whyStatement: args.whyStatement,
-        oneYearAnswer: args.oneYearAnswer,
-        values: args.values ?? [],
+        whyStatement: sealed.whyStatement,
+        oneYearAnswer: sealed.oneYearAnswer,
+        values: sealed.values ?? [],
         updatedAt: now,
       });
     }

@@ -9,6 +9,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
+import * as Crypto from 'expo-crypto';
+
 import { genId } from '@/lib/id';
 import { getJSON, secureDelete, secureGet, secureSet, setJSON } from '@/lib/storage';
 
@@ -18,8 +20,29 @@ const USERS_KEY = 'tideline.mock.users';
 interface MockUserRecord {
   userId: string;
   email: string;
-  password: string;
+  /** Legacy: early builds stored the password itself. Rehashed on the next sign-in. */
+  password?: string;
+  /** salted SHA-256 of the password (hex), and its salt */
+  passwordHash?: string;
+  salt?: string;
   displayName?: string;
+}
+
+/** Never keep a password, even in the dev-only mock: keep a salted digest of it. */
+async function hashPassword(password: string, salt: string): Promise<string> {
+  return Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, `tideline.mock:${salt}:${password}`);
+}
+
+function newSalt(): string {
+  return Array.from(Crypto.getRandomBytes(16), (b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+/** Constant-time-ish string compare, so a timing difference does not leak a prefix. */
+function sameString(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
 }
 
 export type SSOStrategy = 'oauth_apple' | 'oauth_google';
@@ -53,6 +76,11 @@ export interface AuthValue {
   /** Re-send the email verification code (Clerk). No-op for mock. */
   resendEmailCode(): Promise<{ ok: boolean; error?: string }>;
   signOut(): Promise<void>;
+  /**
+   * Delete the sign-in itself (Clerk user / the local record) and sign out.
+   * The caller erases the account's data on the backend first.
+   */
+  deleteAccount(): Promise<{ ok: boolean; error?: string }>;
 }
 
 const MockAuthContext = createContext<AuthValue | null>(null);
@@ -91,10 +119,12 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       if (!normalized || !password) return { ok: false, error: 'Email and password required.' };
       const users = (await getJSON<Record<string, MockUserRecord>>(USERS_KEY)) ?? {};
       if (users[normalized]) return { ok: false, error: 'An account with that email already exists.' };
+      const salt = newSalt();
       const record: MockUserRecord = {
         userId: genId('mockuser'),
         email: normalized,
-        password,
+        salt,
+        passwordHash: await hashPassword(password, salt),
         displayName: name?.trim() || normalized.split('@')[0],
       };
       users[normalized] = record;
@@ -111,8 +141,19 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       const normalized = rawEmail.trim().toLowerCase();
       const users = (await getJSON<Record<string, MockUserRecord>>(USERS_KEY)) ?? {};
       const record = users[normalized];
-      if (!record || record.password !== password) {
+      const matches = record
+        ? record.passwordHash && record.salt
+          ? sameString(await hashPassword(password, record.salt), record.passwordHash)
+          : record.password !== undefined && sameString(record.password, password)
+        : false;
+      if (!record || !matches) {
         return { ok: false, error: 'Incorrect email or password.' };
+      }
+      if (record.password !== undefined) {
+        // an early build's plaintext record: replace it with a digest now that we have the password
+        const salt = newSalt();
+        users[normalized] = { userId: record.userId, email: record.email, displayName: record.displayName, salt, passwordHash: await hashPassword(password, salt) };
+        await setJSON(USERS_KEY, users);
       }
       await secureSet(SESSION_KEY, record.userId);
       await hydrateFromUserId(record.userId);
@@ -125,6 +166,16 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
     await secureDelete(SESSION_KEY);
     await hydrateFromUserId(null);
   }, [hydrateFromUserId]);
+
+  const deleteAccount = useCallback<AuthValue['deleteAccount']>(async () => {
+    if (!userId) return { ok: false, error: 'Not signed in.' };
+    const users = (await getJSON<Record<string, MockUserRecord>>(USERS_KEY)) ?? {};
+    for (const [key, record] of Object.entries(users)) if (record.userId === userId) delete users[key];
+    await setJSON(USERS_KEY, users);
+    await secureDelete(SESSION_KEY);
+    await hydrateFromUserId(null);
+    return { ok: true };
+  }, [userId, hydrateFromUserId]);
 
   const value = useMemo<AuthValue>(
     () => ({
@@ -143,8 +194,9 @@ export function MockAuthProvider({ children }: { children: ReactNode }) {
       verifyEmailCode: async () => ({ ok: true }),
       resendEmailCode: async () => ({ ok: true }),
       signOut,
+      deleteAccount,
     }),
-    [isLoaded, userId, displayName, email, signInWithPassword, signUpWithPassword, signOut],
+    [isLoaded, userId, displayName, email, signInWithPassword, signUpWithPassword, signOut, deleteAccount],
   );
 
   return <MockAuthContext.Provider value={value}>{children}</MockAuthContext.Provider>;

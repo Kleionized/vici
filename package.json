@@ -9,7 +9,7 @@
     "@expo-google-fonts/hanken-grotesk": "^0.4.3",
     "@expo-google-fonts/lato": "^0.4.1",
     "@expo-google-fonts/newsreader": "^0.4.1",
-    "@expo/ui": "~56.0.15",
+    "@expo/ui": "~56.0.26",
     "@react-native-async-storage/async-storage": "2.2.0",
     "convex": "^1.40.0",
     "expo": "~56.0.8",
@@ -48,12 +48,15 @@
     "react-native-worklets": "0.8.3"
   },
   "devDependencies": {
+    "@edge-runtime/vm": "^5.0.0",
     "@types/node": "^25.9.1",
     "@types/react": "~19.2.2",
+    "convex-test": "^0.0.67",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~56.0.4",
     "playwright-core": "^1.62.1",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
   },
   "scripts": {
     "start": "expo start",
@@ -61,7 +64,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p convex"
   },
   "private": true
 }
