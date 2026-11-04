@@ -287,6 +287,7 @@ export function O3MedallionEarned({ eyebrow, title, body, next }: { eyebrow: str
       cta="Continue"
       onCta={next}
       typeTitle
+      heroStrike
     />
   );
 }

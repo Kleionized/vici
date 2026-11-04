@@ -41,7 +41,9 @@ import { FORCE_MOCK } from '@/lib/config';
 import { shortDate } from '@/lib/format';
 import { SCORE_BASE } from '@/lib/score';
 import { useAuth } from '@/lib/auth';
-import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
+import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile, useUpdateSettings } from '@/lib/backend';
+import { enableReminders } from '@/lib/notifications';
+import { parseClock, saveRoutines } from '@/lib/routines';
 import { haptic } from '@/lib/haptics';
 import { getJSON, removeKey, setJSON } from '@/lib/storage';
 import { mono } from '@/lib/theme';
@@ -209,6 +211,7 @@ export default function Onboarding() {
   const completeOnboarding = useCompleteOnboarding();
   const updateProfile = useUpdateProfile();
   const updateLifeMap = useUpdateLifeMap();
+  const updateSettings = useUpdateSettings();
   const createJournalEntry = useCreateJournalEntry();
   const params = useLocalSearchParams<{ step?: string; hold?: string }>();
   // D216: a mock build can open on any board (`?step=`) with the canvas's own answers
@@ -428,6 +431,12 @@ export default function Onboarding() {
             window={riskWindow}
             onAllow={() => {
               set('reminder', 'yes');
+              // the heads-up lands half an hour before the window the answers named
+              const opens = parseClock(windowFor(a)[0]);
+              if (opens) void saveRoutines({ risk: opens });
+              void updateSettings({ morningCheckin: true, eveningWindDown: true, riskTimeSupport: true, weeklyReflection: true }).catch(() => {});
+              // the OS prompt runs over the next board; its answer never blocks the flow
+              void enableReminders();
               next();
             }}
             skip={next}

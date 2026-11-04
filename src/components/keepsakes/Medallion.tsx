@@ -178,10 +178,9 @@ export const FaceCoin = memo(function FaceCoin({ scene, size = 64, earned = true
   const tiered = (kkFace(scene)?.steps.length ?? 0) > 0;
   return (
     <View
-      pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
-      style={[{ width: size, height: size, opacity: !earned && !tiered ? FADED : 1 }, style]}>
+      style={[{ width: size, height: size, opacity: !earned && !tiered ? FADED : 1, pointerEvents: 'none' }, style]}>
       <CoinArt scene={scene} size={size} earned={earned} numeral={numeral} />
     </View>
   );
@@ -221,7 +220,7 @@ function StruckFaceCoin({
 }) {
   const strike = useMedalStrike({ play: true, ...options, id: options.id ?? `${scene}:${numeral ?? 'once'}` });
   return (
-    <View pointerEvents="none" accessible={false} importantForAccessibility="no-hide-descendants" style={[{ width: size, height: size }, style]}>
+    <View accessible={false} importantForAccessibility="no-hide-descendants" style={[{ width: size, height: size, pointerEvents: 'none' }, style]}>
       {/* the light is clipped to the coin's own disc: r 30 of the 64 */}
       <MedalStrike strike={strike} size={size} face={(size * 60) / 64}>
         <CoinArt scene={scene} size={size} earned numeral={numeral} ring={strike.live ? strike.ring : undefined} glyph={strike.live ? strike.glyph : undefined} />

@@ -6,7 +6,7 @@ import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_SCALE, HEROES, heroId, type H
 import { mono, monoDark } from '@/lib/theme';
 
 import { GhostLink, PrimaryButton } from './buttons';
-import { BeatLine, paceFor, Reveal, TypeBeat, wasTyped } from './motion';
+import { BeatLine, HeroStrike, paceFor, Reveal, TypeBeat, wasTyped } from './motion';
 import { NavBar, type NavCentre, type NavLeft, type NavRight } from './NavBar';
 import { Screen, ScrollRegion, useCanvasTop } from './Screen';
 import { MonoText } from './Text';
@@ -274,6 +274,7 @@ export function HeroBoard({
   ghost,
   onGhost,
   typeTitle,
+  heroStrike,
   children,
 }: {
   tone?: 'light' | 'dark';
@@ -303,6 +304,8 @@ export function HeroBoard({
   onGhost?: () => void;
   /** type the title out and reveal the rest after it (opt-in; see above) */
   typeTitle?: boolean;
+  /** the hero arrives struck — a soft scale-in and fade with one success haptic as it lands (a medal earned) */
+  heroStrike?: boolean;
   children?: ReactNode;
 }) {
   const dark = tone === 'dark';
@@ -384,7 +387,13 @@ export function HeroBoard({
       />
       {hero && !dropArt ? (
         <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
-          <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+          {heroStrike ? (
+            <HeroStrike originY={heroTop - lift + 120}>
+              <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+            </HeroStrike>
+          ) : (
+            <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+          )}
         </View>
       ) : null}
       {art && !dropArt ? (

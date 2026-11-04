@@ -31,8 +31,11 @@ import Animated, {
   useReducedMotion,
   useSharedValue,
   withDelay,
+  withSpring,
   withTiming,
 } from 'react-native-reanimated';
+
+import { haptic } from '@/lib/haptics';
 
 import { MonoText, type MonoTextProps } from './Text';
 
@@ -339,4 +342,28 @@ export function FadeInView({ children, style, duration = DUR.step, delay = 0 }: 
 /** Announce something to VoiceOver/TalkBack (a typed line's screen reader twin, a step change). */
 export function announce(message: string): void {
   AccessibilityInfo.announceForAccessibility?.(message);
+}
+
+// ── a hero that arrives struck ───────────────────────────────────────
+
+/**
+ * Full-frame art (a hero) that lands like a medal being struck: it fades in
+ * and grows from 0.88 on a soft spring about `originY` (canvas y of the art's
+ * centre), with one success haptic as it settles. Reduce Motion shows it at
+ * rest; the haptic still marks the moment.
+ */
+export function HeroStrike({ originY, delay = 160, children }: { originY: number; delay?: number; children: ReactNode }) {
+  const reduced = useReducedMotion();
+  const p = useSharedValue(reduced ? 1 : 0);
+  const s = useSharedValue(reduced ? 1 : 0.88);
+  useEffect(() => {
+    if (!reduced) {
+      p.value = withDelay(delay, withTiming(1, { duration: 260, easing: EASE_OUT }));
+      s.value = withDelay(delay, withSpring(1, { dampingRatio: 0.8, duration: 700 }));
+    }
+    const t = setTimeout(() => haptic('success'), reduced ? 0 : delay + 300);
+    return () => clearTimeout(t);
+  }, [reduced, delay, p, s]);
+  const anim = useAnimatedStyle(() => ({ opacity: p.value, transform: [{ scale: s.value }] }));
+  return <Animated.View style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, transformOrigin: ['50%', originY, 0] }, anim]}>{children}</Animated.View>;
 }

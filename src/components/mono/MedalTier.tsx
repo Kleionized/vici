@@ -141,10 +141,10 @@ export function MedalStrike({ strike, size, face = size, children, style }: { st
   const inset = (size - face) / 2;
   const bandW = face * SHEEN_W;
   return (
-    <Animated.View pointerEvents="none" style={[{ width: size, height: size }, style, shell]}>
+    <Animated.View style={[{ width: size, height: size, pointerEvents: 'none' }, style, shell]}>
       {children}
       {strike.live ? (
-        <View pointerEvents="none" style={{ position: 'absolute', left: inset, top: inset, width: face, height: face, borderRadius: face / 2, overflow: 'hidden' }}>
+        <View style={{ position: 'absolute', left: inset, top: inset, width: face, height: face, borderRadius: face / 2, overflow: 'hidden', pointerEvents: 'none' }}>
           <Animated.View style={[{ position: 'absolute', left: (face - bandW) / 2, top: -face * 0.3, width: bandW, height: face * 1.6 }, band]}>
             <LinearGradient colors={SHEEN} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={{ flex: 1 }} />
           </Animated.View>
