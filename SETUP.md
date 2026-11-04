@@ -88,8 +88,8 @@ npx expo start        # both env keys present → real Convex + Clerk
 npx convex run importLessons:importLessons '{ "lessons": [ { "slug": "...", "title": "...", "week": 1, "dayInWeek": 1, "orderIndex": 0, "category": "motivation", "bodyMarkdown": "...", "reflectionPrompt": "...", "reflectionFields": [], "approachTags": [], "sensitive": false } ] }'
 ```
 
-or call `api.importLessons.importLessons` from a Node script with the full ~94-lesson
-array.
+It is an internal function (it used to be public, with no auth check): run it with
+`npx convex run` or from the dashboard, not from a client.
 
 ## 4. Payments
 
