@@ -24,6 +24,7 @@ import { daysAgo, groupDigits } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
 import { completedWeekStarts, mondayOf, weekLabel, weekScore } from '@/lib/weeklyReport';
+import { useNow } from '@/lib/date';
 
 /**
  * 91 / 91-2 / 91-3 · The log, in three registers — urges, check-ins and the
@@ -96,7 +97,7 @@ export default function Log() {
   const [tab, setTab] = useState<LogTab>('urges');
   // Read once on mount: re-reading it every render would let the week's edge
   // shift underneath the list while it is on screen.
-  const [now] = useState(() => Date.now());
+  const now = useNow();
 
   if (events === undefined || checkins === undefined) return <LoadingView onBack={() => router.navigate('/log-chooser')} />;
 

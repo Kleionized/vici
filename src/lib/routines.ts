@@ -53,6 +53,22 @@ export function checkinPartNow(now: Date = new Date()): 'morning' | 'night' {
   return minutes >= MORNING_OPENS_AT && minutes < NIGHT_OPENS_AT ? 'morning' : 'night';
 }
 
+/**
+ * The calendar day a night check-in closes. The night belongs to the day it
+ * ends: a check-in at 00:40 is still last night's (the small hours belong to
+ * the night that has not been closed yet — see `checkinPartNow`), so it files
+ * yesterday's mood and names *today's* action, not tomorrow's. Without this a
+ * check-in after midnight wrote its mood onto the new day and its action two
+ * days out, and the morning check-in asked after an action nobody was given.
+ */
+export function nightDayStart(now: number = Date.now()): number {
+  const d = new Date(now);
+  const minutes = d.getHours() * 60 + d.getMinutes();
+  d.setHours(0, 0, 0, 0);
+  if (minutes < MORNING_OPENS_AT) d.setDate(d.getDate() - 1);
+  return d.getTime();
+}
+
 const KEY = 'tideline.routines.v2';
 
 let cache: Routines = DEFAULT_ROUTINES;

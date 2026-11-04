@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { View } from 'react-native';
 
 import { AddToRecord, CONTROLS, CheckinCover, ClosedLine, RecordRows, Stack, StepStack, dayNumber } from '@/components/day/board';
@@ -8,7 +8,8 @@ import { EmotionsBoard, ReasonsBoard } from '@/components/MoodLogger';
 import { GhostLink, Hero, HeroBoard, MonoText, NavBar, NextFab, PrimaryButton, ScaleReading, Screen, TextField, ToneScale } from '@/components/mono';
 import { lessonForDay } from '@/content/curriculum84';
 import { useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
-import { toDateKey, todayKey } from '@/lib/date';
+import { addDays, toDateKey, useNow } from '@/lib/date';
+import { nightDayStart } from '@/lib/routines';
 import { countOf, roman } from '@/lib/format';
 
 /**
@@ -54,16 +55,21 @@ export default function Night() {
   const createJournalEntry = useCreateJournalEntry();
 
   const [step, setStep] = useState(COVER);
+  const saving = useRef(false);
   const [mood, setMood] = useState(2);
   const [emotions, setEmotions] = useState<string[]>([]);
   const [reasons, setReasons] = useState<string[]>([]);
   const [reflection, setReflection] = useState('');
   const [action, setAction] = useState(true);
 
-  const day = dayNumber(user?.createdAt);
+  const now = useNow();
+  // the day this night closes — the one before the calendar's in the small hours
+  const nightStart = nightDayStart(now);
+  const nightKey = toDateKey(new Date(nightStart));
+  const day = dayNumber(user?.createdAt, nightStart);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
-  const midnight = new Date().setHours(0, 0, 0, 0);
+  const midnight = nightStart;
   const urges = (events ?? []).filter((e) => e.type.startsWith('urge') && e.createdAt >= midnight);
   const lapses = (events ?? []).filter((e) => e.type === 'lapse' && e.createdAt >= midnight).length;
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight);
@@ -80,9 +86,12 @@ export default function Night() {
   const lessonTitle = dayLesson?.task.cardTitle ?? 'Tonight';
 
   async function finish() {
+    // Done and the closing board's ✕ both file the day; a double tap must not file it twice.
+    if (saving.current) return;
+    saving.current = true;
     // The upsert merges, so only what this flow asked for is written.
     await upsert({
-      date: todayKey(),
+      date: nightKey,
       mood: mood + 1,
       emotions: emotions.length ? emotions : undefined,
       reasons: reasons.length ? reasons : undefined,
@@ -93,7 +102,7 @@ export default function Night() {
     // The action lands on the day it is for, not the day it was named: it is
     // set tonight and answered for by tomorrow morning's check-in.
     if (action) {
-      await upsert({ date: toDateKey(new Date(Date.now() + 86_400_000)), dailyAction: task }).catch(() => {});
+      await upsert({ date: toDateKey(new Date(addDays(nightStart, 1))), dailyAction: task }).catch(() => {});
     }
     close();
   }

@@ -1,6 +1,7 @@
 import { KK_ALBUM, kkStanding, type KKFace, type KeepsakeSceneKey } from '@/components/keepsakes/Medallion';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap } from '@/lib/backend';
 import type { AppUser, DailyCheckin, JournalEntry, LessonProgress, TidelineEvent } from '@/lib/types';
+import { addDays } from '@/lib/date';
 
 /**
  * The medallion ledger: what every face counts, live, and where it stands.
@@ -71,7 +72,7 @@ export function buildLedger({ user, events, checkins, journal, progress }: Ledge
   const checkinDays = new Set(checkins.map((c) => dayKey(dayStart(c.date))));
   const rebounds = new Set<number>();
   for (const l of lapses) {
-    const next = dayKey(l.createdAt + DAY);
+    const next = dayKey(addDays(l.createdAt, 1));
     if (checkinDays.has(next)) rebounds.add(next);
   }
 

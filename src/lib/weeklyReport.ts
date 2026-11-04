@@ -6,12 +6,10 @@
  * the report's M–S day axis.
  */
 
-import { toDateKey } from '@/lib/date';
+import { addDays, fromDateKey, toDateKey } from '@/lib/date';
 import { dateRange, shortDate } from '@/lib/format';
-import { SCORE_BASE, SCORE_WEIGHTS } from '@/lib/score';
+import { scoreAt } from '@/lib/score';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
-
-const DAY = 86_400_000;
 
 export const MOOD_NAME = ['Low', 'Down', 'Fine', 'Good', 'Radiant'];
 
@@ -29,7 +27,7 @@ export function completedWeekStarts(createdAt: number, now = Date.now()): string
   const firstMon = mondayOf(new Date(createdAt)).getTime();
   const currentMon = mondayOf(new Date(now)).getTime();
   const out: string[] = [];
-  for (let t = currentMon - 7 * DAY; t >= firstMon; t -= 7 * DAY) out.push(toDateKey(new Date(t)));
+  for (let t = addDays(currentMon, -7); t >= firstMon; t = addDays(t, -7)) out.push(toDateKey(new Date(t)));
   return out;
 }
 
@@ -69,9 +67,9 @@ export interface WeeklyReport {
 }
 
 export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[], events: TidelineEvent[]): WeeklyReport {
-  const startMs = new Date(`${weekStartKey}T00:00:00`).getTime();
-  const prevMs = startMs - 7 * DAY;
-  const keys = (base: number) => Array.from({ length: 7 }, (_, i) => toDateKey(new Date(base + i * DAY)));
+  const startMs = fromDateKey(weekStartKey).getTime();
+  const prevMs = addDays(startMs, -7);
+  const keys = (base: number) => Array.from({ length: 7 }, (_, i) => toDateKey(new Date(addDays(base, i))));
   const moodBy = new Map(checkins.filter((c) => c.mood != null).map((c) => [c.date, c.mood as number]));
   const thisMoods = keys(startMs).map((k) => moodBy.get(k) ?? null);
   const lastMoods = keys(prevMs).map((k) => moodBy.get(k) ?? null);
@@ -80,7 +78,7 @@ export function buildWeeklyReport(weekStartKey: string, checkins: DailyCheckin[]
     const v = a.filter((x): x is number => x != null);
     return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
   };
-  const inWeek = (t: number, base: number) => t >= base && t < base + 7 * DAY;
+  const inWeek = (t: number, base: number) => t >= base && t < addDays(base, 7);
   const evThis = events.filter((e) => inWeek(e.createdAt, startMs));
   const evLast = events.filter((e) => inWeek(e.createdAt, prevMs));
   const isUrge = (e: TidelineEvent) => e.type === 'urge_rode_out' || e.type === 'urge_acted_on';
@@ -146,21 +144,8 @@ export function severityWord(s: number | null): string | null {
  * line) reads this one function, so "1,240 · +12 this week" is the same number
  * on both screens (D284). `lessons` are the completion times of finished lessons.
  */
-export function scoreAt(at: number, createdAt: number, checkins: DailyCheckin[], events: TidelineEvent[], lessons: number[]): number {
-  const days = Math.max(0, Math.floor((at - createdAt) / DAY) + 1);
-  const slips = events.filter((e) => e.type === 'lapse' && e.createdAt <= at).length;
-  const rode = events.filter((e) => e.type === 'urge_rode_out' && e.createdAt <= at).length;
-  const logged = checkins.filter((c) => new Date(`${c.date}T00:00:00`).getTime() <= at).length;
-  const done = lessons.filter((t) => t <= at).length;
-  return (
-    SCORE_BASE +
-    Math.max(0, days - slips) * SCORE_WEIGHTS.cleanDay +
-    logged * SCORE_WEIGHTS.checkin +
-    done * SCORE_WEIGHTS.lesson +
-    rode * SCORE_WEIGHTS.urgeRidden +
-    slips * SCORE_WEIGHTS.slip
-  );
-}
+/** Re-exported: the one implementation lives beside the total it must agree with. */
+export { scoreAt };
 
 export interface WeekScore {
   weekStart: string;
@@ -174,7 +159,7 @@ export interface WeekScore {
 
 /** A week's line and its total, read off `scoreAt` at each day's end. */
 export function weekScore(weekStartKey: string, createdAt: number, checkins: DailyCheckin[], events: TidelineEvent[], lessons: number[]): WeekScore {
-  const start = new Date(`${weekStartKey}T00:00:00`).getTime();
+  const start = fromDateKey(weekStartKey).getTime();
   const base = scoreAt(start - 1, createdAt, checkins, events, lessons);
   const days = Array.from({ length: 7 }, (_, i) => scoreAt(new Date(start).setDate(new Date(start).getDate() + i + 1) - 1, createdAt, checkins, events, lessons));
   return { weekStart: weekStartKey, days, score: days[6], delta: Math.round(days[6] - base) };

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { View } from 'react-native';
 
 import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard, dayNumber } from '@/components/day/board';
@@ -22,7 +22,7 @@ import {
   ToneScale,
 } from '@/components/mono';
 import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
-import { toDateKey, todayKey } from '@/lib/date';
+import { addDays, startOfDay, toDateKey, todayKey, useNow } from '@/lib/date';
 import { countOf, groupDigits, roman } from '@/lib/format';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
 
@@ -80,6 +80,7 @@ export default function Morning() {
   const createJournalEntry = useCreateJournalEntry();
 
   const [step, setStep] = useState(COVER);
+  const saving = useRef(false);
   const [yesterdayDone, setYesterdayDone] = useState<boolean | undefined>(undefined);
   const [mood, setMood] = useState(2);
   const [energy, setEnergy] = useState(1);
@@ -88,12 +89,13 @@ export default function Morning() {
   const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
 
-  const day = dayNumber(user?.createdAt);
+  const now = useNow();
+  const day = dayNumber(user?.createdAt, now);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   // Yesterday's ledger, read out of the log rather than from a placeholder.
-  const midnight = new Date().setHours(0, 0, 0, 0);
-  const dawn = midnight - 86_400_000;
+  const midnight = startOfDay(now);
+  const dawn = addDays(midnight, -1);
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
 
   // The action the flow asks after, read off yesterday's check-in row so it never
@@ -124,6 +126,9 @@ export default function Morning() {
     lapses * SCORE_WEIGHTS.slip;
 
   async function finish() {
+    // Done and the closing board's ✕ both file the day; a double tap must not file it twice.
+    if (saving.current) return;
+    saving.current = true;
     // The upsert merges, so only what this flow asked for is written.
     await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1 }).catch(() => {});
     // The answer about yesterday's action belongs to yesterday's row.
@@ -132,7 +137,11 @@ export default function Morning() {
     }
     // Re-signing files today's promise; a draft written in the sheet is what
     // gets filed if one was written.
-    await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
+    // A second check-in on the same day re-signs nothing new: the same words
+    // already signed today are the standing pledge, and a duplicate row would
+    // only clutter the journal.
+    const signedToday = (journal ?? []).some((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight && entry.body === pledgeBody);
+    if (!signedToday) await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
     close();
   }
 

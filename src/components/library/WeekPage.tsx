@@ -1,10 +1,11 @@
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 
 import { CheckDisc, ChevronL, ChevronR, Hero, MonoText, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import type { Curriculum84Lesson, Curriculum84Week } from '@/content/curriculum84';
 import { useCurrentUser } from '@/lib/backend';
 import { mono } from '@/lib/theme';
+import { programDay, useNow } from '@/lib/date';
 
 /**
  * `Week I Reset` … `Week XII Leave It Behind P2` — the twelve week pages
@@ -71,7 +72,7 @@ export function rowStateFor(lessonDay: number, day: number): RowState {
 
 /** Day one is the day they signed up, not the day after. */
 export function courseDay(createdAt: number | undefined, now: number): number {
-  return createdAt ? Math.max(1, Math.floor((now - createdAt) / 86_400_000) + 1) : 1;
+  return programDay(createdAt, now);
 }
 
 /**
@@ -80,7 +81,8 @@ export function courseDay(createdAt: number | undefined, now: number): number {
  */
 export function useCourseDay(): number {
   const user = useCurrentUser();
-  const [now] = useState(() => Date.now());
+  // steady while open, but moved on at midnight / on resume (`useNow`)
+  const now = useNow();
   return courseDay(user?.createdAt, now);
 }
 

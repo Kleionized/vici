@@ -30,6 +30,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Chips, Hero, HeroBoard, MonoText, NavBar, OptionList, PrimaryButton, Screen, ScrollRegion, TextField } from '@/components/mono';
 import { FUNNEL_STEPS, type FunnelRun, type FunnelStep } from '@/content/onboardingFunnel';
 import { mono, sans } from '@/lib/theme';
+import { haptic } from '@/lib/haptics';
 
 /** Which paper field a lit frame stated in the previous drop — accepted, and no longer drawn. */
 export type O3Paper = 'default' | 'plan' | 'map' | 'plain';
@@ -366,6 +367,7 @@ function AgeWheel({ top, value, onChange }: { top: number; value: number; onChan
     const c = Math.max(AGE_MIN, Math.min(AGE_MAX, v));
     if (c === valueRef.current) return;
     valueRef.current = c;
+    haptic('select');
     report.current(c);
   };
   const stepRef = useRef(step);

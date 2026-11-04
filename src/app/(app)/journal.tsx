@@ -5,6 +5,7 @@ import { Card, EmptyState, LoadingView, MonoText, NavBar, Screen } from '@/compo
 import { useJournalEntries } from '@/lib/backend';
 import { WEEKDAYS_SHORT, clockTime, shortDate } from '@/lib/format';
 import { mono, sans } from '@/lib/theme';
+import { calendarDaysBetween } from '@/lib/date';
 
 /**
  * Past pledges — what Today III's ☆ opens onto (and the review drawer's
@@ -20,8 +21,7 @@ import { mono, sans } from '@/lib/theme';
 /** "Today · 8:12 AM" / "Mon, Jul 14 · 7:05 AM" for an entry timestamp. */
 function entryDate(ts: number): string {
   const d = new Date(ts);
-  const startOf = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
-  const days = Math.round((startOf(new Date()) - startOf(d)) / 86_400_000);
+  const days = calendarDaysBetween(d, new Date());
   const day = days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${WEEKDAYS_SHORT[d.getDay()]}, ${shortDate(d)}`;
   return `${day} · ${clockTime(d)}`;
 }

@@ -7,6 +7,7 @@ import { roman } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
+import { programDay } from '@/lib/date';
 
 /**
  * The post — every piece of it arrives the same way and is read the same way
@@ -14,7 +15,6 @@ import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
  * Medallion Letter`; CRITIC C8: Letter Arrival is the arrival for both posts).
  */
 
-const DAY = 86_400_000;
 
 /**
  * "Week XII post": the arrival names the programme week the post lands in
@@ -22,7 +22,7 @@ const DAY = 86_400_000;
  * the day of sign-up, seven days a week, twelve weeks at most.
  */
 export function postWeek(createdAt: number | undefined, now = Date.now()): string {
-  const day = createdAt ? Math.max(1, Math.floor((now - createdAt) / DAY) + 1) : 1;
+  const day = programDay(createdAt, now);
   return `Week ${roman(Math.min(12, Math.ceil(day / 7)))} post`;
 }
 

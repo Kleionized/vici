@@ -51,6 +51,7 @@ export function PrimaryButton({
     <Tap
       onPress={onPress}
       disabled={disabled}
+      haptic="commit"
       style={[
         box,
         {

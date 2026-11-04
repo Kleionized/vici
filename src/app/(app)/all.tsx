@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { View } from 'react-native';
 
 import { MonoText, NavBar, Row, RowGroup, Screen, ScrollRegion } from '@/components/mono';
-import { toDateKey } from '@/lib/date';
+import { addDays, toDateKey } from '@/lib/date';
 import { latestCompletedWeek, mondayOf } from '@/lib/weeklyReport';
 import { useCurrentUser } from '@/lib/backend';
 import { mono } from '@/lib/theme';
@@ -35,7 +35,7 @@ export default function All() {
   // screen you have not earned yet. An account under a week old has no completed
   // week, so fall back to last Monday — the report will be thin, but it is a
   // real week rather than a missing param.
-  const lastMonday = toDateKey(new Date(mondayOf(new Date()).getTime() - 7 * 86_400_000));
+  const lastMonday = toDateKey(new Date(addDays(mondayOf(new Date()), -7)));
   const week = (user?.createdAt ? latestCompletedWeek(user.createdAt) : null) ?? lastMonday;
 
   const groups: [string, Entry[]][] = [
