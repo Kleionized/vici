@@ -333,12 +333,26 @@ function pledgeLine(signedAt: number, now: number, slips: TidelineEvent[]): stri
   return slips.some((e) => e.createdAt > signedAt) ? signed : `${signed} Kept every day since.`;
 }
 
-function HubPledge({ name, pledge, line, onBottom }: { name?: string; pledge: string; line?: string; onBottom?: OnBottom }) {
+function HubPledge({ name, pledge, line, onWrite, onBottom }: { name?: string; pledge?: string; line?: string; onWrite: () => void; onBottom?: OnBottom }) {
   return (
     <>
       <DarkHead title="Your pledge." gap={20} />
       <View onLayout={endsAt(238, onBottom)} style={{ position: 'absolute', left: 24, right: 24, top: 238, gap: 12 }}>
-        <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} />
+        {pledge ? (
+          <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} />
+        ) : (
+          // no stock words in the person's mouth: the pane says there is none yet, and offers the pen
+          <View style={{ alignItems: 'center', gap: 14 }}>
+            <MonoText v="pTight" center wrap="pretty" color={monoDark.body}>
+              No pledge yet. One line you can keep every day, in your own words.
+            </MonoText>
+            <Tap label="Write your pledge" onPress={onWrite} hitSlop={8} style={{ paddingVertical: 10, paddingHorizontal: 20, borderRadius: 22, boxShadow: `0 0 0 1.5px ${monoDark.body}` }}>
+              <MonoText v="pill" color={monoDark.body}>
+                Write your pledge
+              </MonoText>
+            </Tap>
+          </View>
+        )}
         {line ? (
           <MonoText v="pTight" center wrap="pretty" color={monoDark.body} style={{ paddingTop: 6 }}>
             {line}
@@ -482,8 +496,8 @@ export function UrgeHub() {
     <HubSurfed key="surfed" stats={stats} onBottom={bottomOf(3)} onHead={(h) => setSurfedHead((current) => (current === h ? current : h))} tuck={tuck[3]} />,
     <HubPledge
       key="pledge"
-      // with no signed pledge the card keeps the words it always fell back to
-      pledge={pledge?.body ?? 'The mornings are mine again.'}
+      pledge={pledge?.body?.trim() || undefined}
+      onWrite={() => router.push({ pathname: '/journal-new', params: { tag: 'Pledge' } })}
       name={first ?? 'You'}
       line={pledge ? pledgeLine(pledge.createdAt, now, stats.slips) : undefined}
       onBottom={bottomOf(4)}

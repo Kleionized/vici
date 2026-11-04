@@ -118,7 +118,10 @@ export default function Morning() {
   // The standing pledge — the latest `Pledge` entry, the words Today p3 prints.
   // A draft written in the sheet stands in until it is signed.
   const standing = (journal ?? []).find((entry) => entry.tag === 'Pledge');
-  const pledgeBody = draft ?? standing?.body ?? 'The mornings are mine again.';
+  // No stock words: with no pledge on record the step asks for one in the
+  // person's own words, and the check-in files none until it is written.
+  const pledgeBody = draft ?? standing?.body ?? '';
+  const hasPledge = pledgeBody.trim().length > 0;
 
   // The score row shows what yesterday alone put on the board, on the same
   // weights the score itself is built from.
@@ -147,7 +150,7 @@ export default function Morning() {
     // already signed today are the standing pledge, and a duplicate row would
     // only clutter the journal.
     const signedToday = (journal ?? []).some((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight && entry.body === pledgeBody);
-    if (!signedToday) await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
+    if (hasPledge && signed && !signedToday) await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
     // the pill's own press was the commit; this is the day filed
     haptic('success');
     close();
@@ -233,16 +236,30 @@ export default function Morning() {
         {step === PLEDGE ? (
           <>
             {/* The pledge is the user's own words, any length. */}
-            <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
-              <MonoText v="h1">Re-sign your pledge.</MonoText>
-              <View style={{ height: 6 }} />
-              {/* One step, two frames: the first press inks the line, the second
-                  moves on. The line itself signs and un-signs — the old plate's
-                  clear-× is not drawn, so the line keeps that function (OQ-M4). */}
-              <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
-            </StepStack>
-            <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
-            <GhostLink label="Change the pledge" onPress={openSheet} />
+            {hasPledge ? (
+              <>
+                <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+                  <MonoText v="h1">Re-sign your pledge.</MonoText>
+                  <View style={{ height: 6 }} />
+                  {/* One step, two frames: the first press inks the line, the second
+                      moves on. The line itself signs and un-signs — the old plate's
+                      clear-× is not drawn, so the line keeps that function (OQ-M4). */}
+                  <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+                </StepStack>
+                <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
+                <GhostLink label="Change the pledge" onPress={openSheet} />
+              </>
+            ) : (
+              <>
+                {/* No pledge yet: nothing is put in the person's mouth — they write it, or skip */}
+                <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+                  <MonoText v="h1">Write your pledge.</MonoText>
+                  <MonoText v="p">One promise you can keep every day, in your own words. You’ll sign it each morning.</MonoText>
+                </StepStack>
+                <PrimaryButton label="Write it" bottom={96} onPress={openSheet} />
+                <GhostLink label="Skip for today" onPress={next} />
+              </>
+            )}
           </>
         ) : null}
 
@@ -251,7 +268,7 @@ export default function Morning() {
             <DoneMark />
             <Stack top={458} gap={18} center>
               <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
-              <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{`Pledge re-signed on Day ${day}`}</MonoText>
+              <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{hasPledge && signed ? `Pledge signed on Day ${day}` : `Checked in on Day ${day}`}</MonoText>
             </Stack>
             <PrimaryButton label="Done" onPress={() => void finish()} />
           </>
@@ -275,23 +292,25 @@ export default function Morning() {
         footer={
           <>
             <PrimaryButton
-              label="Sign the new pledge"
+              label={hasPledge ? 'Sign the new pledge' : 'Use these words'}
               bottom={96}
+              disabled={!sheetText.trim()}
               onPress={() => {
                 // The sheet writes the words; the page behind it still has to be
                 // signed for today, which is what its own pill is for.
-                setDraft(sheetText.trim() || pledgeBody);
+                const words = sheetText.trim();
+                if (words) setDraft(words);
                 setSigned(false);
                 setSheet(false);
               }}
             />
-            <GhostLink label="Keep current pledge" zIndex={42} onPress={() => setSheet(false)} />
+            <GhostLink label={hasPledge ? 'Keep current pledge' : 'Not now'} zIndex={42} onPress={() => setSheet(false)} />
           </>
         }>
-        <MonoText v="h1">Change the pledge</MonoText>
+        <MonoText v="h1">{hasPledge ? 'Change the pledge' : 'Your pledge'}</MonoText>
         <MonoText v="p">One promise you can keep every day.</MonoText>
         <View style={{ height: 8 }} />
-        <TextField variant="card" value={sheetText} onChangeText={setSheetText} accessibilityLabel="Your pledge" />
+        <TextField variant="card" value={sheetText} onChangeText={setSheetText} placeholder="In your own words" maxLength={300} accessibilityLabel="Your pledge" />
       </Sheet>
     </Screen>,
   );
