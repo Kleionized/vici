@@ -38,6 +38,8 @@ export const useSaveReflection = impl.useSaveReflection;
 export const useUpdateLifeMap = impl.useUpdateLifeMap;
 export const useCreateEvent = impl.useCreateEvent;
 export const useUpsertCheckin = impl.useUpsertCheckin;
+export const useDeleteEvent = impl.useDeleteEvent;
+export const useDeleteAccount = impl.useDeleteAccount;
 
 export type { LessonDetail, CurrentLesson } from './mock';
 export { MockStoreProvider as BackendProvider } from './mockStore';

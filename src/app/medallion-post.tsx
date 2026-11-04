@@ -1,9 +1,11 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { View } from 'react-native';
 
 import { Enclosure, LetterCard, LetterP, PostArrival, Salutation, Signoff, postWeek } from '@/components/keepsakes/Letter';
-import { kkFace, kkStanding } from '@/components/keepsakes/Medallion';
-import { useCreateJournalEntry, useCurrentUser, useEvents } from '@/lib/backend';
+import { kkFace } from '@/components/keepsakes/Medallion';
+import { useMedallionLedger } from '@/lib/album';
+import { useCreateJournalEntry, useCurrentUser } from '@/lib/backend';
 import { roman } from '@/lib/format';
 import { setJSON } from '@/lib/storage';
 
@@ -31,14 +33,16 @@ type Phase = 'arrive' | 'read';
 export default function MedallionPost() {
   const router = useRouter();
   const user = useCurrentUser();
-  const events = useEvents();
+  const ledger = useMedallionLedger();
   const createJournalEntry = useCreateJournalEntry();
   const [phase, setPhase] = useState<Phase>('arrive');
   const name = (user?.displayName || '').trim().split(/\s+/)[0] || 'friend';
 
   const face = kkFace('vici')!;
-  const ridden = (events ?? []).filter((e) => e.type === 'urge_rode_out').length;
-  const standing = Math.max(1, kkStanding(face, ridden));
+  // the rung comes from the one ledger every medallion screen reads (`src/lib/album.ts`);
+  // until it has loaded the rung is unknown, and the enclosure holds its place
+  // unseen rather than show Tier I and then correct itself
+  const standing = ledger ? Math.max(1, ledger.byKey.vici.standing) : 1;
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
@@ -74,7 +78,9 @@ export default function MedallionPost() {
       </LetterP>
       <LetterP>The return is the strongest predictor there is — stronger than any count. This one isn’t for resisting. It’s for coming back.</LetterP>
       <Signoff>— VICI</Signoff>
-      <Enclosure scene={face.key} numeral={roman(standing)} title={`${face.name}, Tier ${roman(standing)}`} line={face.blurb} />
+      <View style={ledger ? null : { opacity: 0 }}>
+        <Enclosure scene={face.key} numeral={roman(standing)} title={`${face.name}, Tier ${roman(standing)}`} line={face.blurb} strike={!!ledger} />
+      </View>
     </LetterCard>
   );
 }

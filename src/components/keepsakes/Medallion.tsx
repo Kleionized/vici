@@ -1,7 +1,9 @@
-import type { ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated, { useAnimatedProps, type SharedValue } from 'react-native-reanimated';
 import Svg, { Circle, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
+import { MedalStrike, useMedalStrike } from '@/components/mono/MedalTier';
 import { roman } from '@/lib/format';
 import { illus, mono, sans } from '@/lib/theme';
 
@@ -54,14 +56,20 @@ const BLANK = { field: '#141414', rim: '#3A3833', ring: '#2A2926' };
 const FADED = 0.32;
 
 /**
- * The forty rim dots: radius 28.1 about the centre from angle 0, 9° apart,
- * rounded to two places as the designer's generator writes them — every one of
- * the 40 × 27 printed values comes out of this.
+ * The forty rim dots: radius 0.7 on a circle of 28.1 about the centre, from
+ * angle 0, 9° apart. They are drawn as one circle stroked with zero-length
+ * round-capped dashes a fortieth of its circumference apart — the same forty
+ * dots in one node instead of forty, which is most of what a grid of twelve
+ * coins costs to draw. (A circle's stroke starts at angle 0, and 0° is one of
+ * the forty either way the platform runs it.)
  */
-const DOTS = Array.from({ length: 40 }, (_, i) => {
-  const a = (i * 9 * Math.PI) / 180;
-  return [+(32 + 28.1 * Math.cos(a)).toFixed(2), +(32 + 28.1 * Math.sin(a)).toFixed(2)] as const;
-});
+const DOT_R = 28.1;
+const DOT_PITCH = (2 * Math.PI * DOT_R) / 40;
+
+/** The hairline ring, and its length for drawing it in. */
+const RING_R = 25.5;
+/** a touch over the circumference, so the drawn dash closes without a seam */
+const RING_DASH = 2 * Math.PI * RING_R + 1;
 
 const ROUND = { strokeLinecap: 'round' } as const;
 const ROUND_BOTH = { strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
@@ -161,65 +169,159 @@ const DEVICES: Record<KeepsakeSceneKey, (c: string) => ReactNode> = {
  *   168 boards draw it bare.
  *
  * Purely decorative: the screens say what the coin shows in words.
+ *
+ * Memoised: the album draws up to twelve of these, and a coin's drawing
+ * depends on nothing but its props.
  */
-export function FaceCoin({
-  scene,
-  size = 64,
-  earned = true,
-  numeral,
-  style,
-}: {
+export const FaceCoin = memo(function FaceCoin({ scene, size = 64, earned = true, numeral, strike, style }: FaceCoinProps) {
+  if (strike && earned) return <StruckFaceCoin scene={scene} size={size} numeral={numeral} options={strike === true ? {} : strike} style={style} />;
+  const tiered = (kkFace(scene)?.steps.length ?? 0) > 0;
+  return (
+    <View
+      accessible={false}
+      importantForAccessibility="no-hide-descendants"
+      style={[{ width: size, height: size, opacity: !earned && !tiered ? FADED : 1, pointerEvents: 'none' }, style]}>
+      <CoinArt scene={scene} size={size} earned={earned} numeral={numeral} />
+    </View>
+  );
+});
+
+type FaceCoinProps = {
   scene: KeepsakeSceneKey;
   size?: number;
   earned?: boolean;
   /** the Roman rung under the device; omit on one-offs and on the bare unearned boards */
   numeral?: string;
+  /**
+   * Strike it as it arrives (`useMedalStrike` in `MedalTier.tsx`): the coin
+   * grows in on a soft spring, its ring draws in, the device comes up into the
+   * face, a band of light crosses it once and a `success` haptic marks the
+   * landing. `true`, or the strike's options — `delay` (e.g. while a route
+   * slides in), `haptic`, `id` (defaults to the face and rung, so the haptic
+   * plays once a session per medal). Only an earned coin strikes; an unearned
+   * one is drawn still and never shines.
+   */
+  strike?: boolean | { delay?: number; haptic?: boolean; id?: string };
   style?: StyleProp<ViewStyle>;
+};
+
+function StruckFaceCoin({
+  scene,
+  size,
+  numeral,
+  options,
+  style,
+}: {
+  scene: KeepsakeSceneKey;
+  size: number;
+  numeral?: string;
+  options: { delay?: number; haptic?: boolean; id?: string };
+  style?: StyleProp<ViewStyle>;
+}) {
+  const strike = useMedalStrike({ play: true, ...options, id: options.id ?? `${scene}:${numeral ?? 'once'}` });
+  return (
+    <View accessible={false} importantForAccessibility="no-hide-descendants" style={[{ width: size, height: size, pointerEvents: 'none' }, style]}>
+      {/* the light is clipped to the coin's own disc: r 30 of the 64 */}
+      <MedalStrike strike={strike} size={size} face={(size * 60) / 64}>
+        <CoinArt scene={scene} size={size} earned numeral={numeral} ring={strike.live ? strike.ring : undefined} glyph={strike.live ? strike.glyph : undefined} />
+      </MedalStrike>
+    </View>
+  );
+}
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+const AnimatedG = Animated.createAnimatedComponent(G);
+
+/** The hairline ring drawn in from twelve o'clock, clockwise, as `ring` runs 0 → 1. */
+function DrawnRing({ ring }: { ring: SharedValue<number> }) {
+  const props = useAnimatedProps(() => ({ strokeDashoffset: RING_DASH * (1 - ring.value) }));
+  return (
+    <AnimatedCircle
+      cx={32}
+      cy={32}
+      r={RING_R}
+      fill="none"
+      stroke={DEVICE}
+      strokeWidth={1.1}
+      strokeOpacity={0.5}
+      strokeDasharray={[RING_DASH, RING_DASH]}
+      transform="rotate(-90 32 32)"
+      animatedProps={props}
+    />
+  );
+}
+
+/** The device (and its numeral) coming up into the face as `glyph` runs 0 → 1. */
+function RisingGlyph({ glyph, children }: { glyph: SharedValue<number>; children: ReactNode }) {
+  const props = useAnimatedProps(() => ({ opacity: glyph.value }));
+  return <AnimatedG animatedProps={props}>{children}</AnimatedG>;
+}
+
+/** The drawing itself, in the 64 space. `ring` / `glyph` animate a strike; without them it is still. */
+function CoinArt({
+  scene,
+  size,
+  earned,
+  numeral,
+  ring,
+  glyph,
+}: {
+  scene: KeepsakeSceneKey;
+  size: number;
+  earned: boolean;
+  numeral?: string;
+  ring?: SharedValue<number>;
+  glyph?: SharedValue<number>;
 }) {
   const tiered = (kkFace(scene)?.steps.length ?? 0) > 0;
   const blank = !earned && tiered;
   const c = blank ? mono.art : DEVICE;
   const device = DEVICES[scene](c);
+  const face = (
+    <>
+      {numeral ? <G transform="translate(0 -2.6)">{device}</G> : device}
+      {numeral ? (
+        // SVG text does not inherit the app font: the weight is the family (theme `sans()` rule)
+        <SvgText
+          x={32}
+          y={53.2}
+          textAnchor="middle"
+          fontFamily={sans('900').fontFamily}
+          fontWeight="normal"
+          fontSize={6.4}
+          letterSpacing={0.6}
+          fill={c}>
+          {numeral}
+        </SvgText>
+      ) : null}
+    </>
+  );
   return (
-    <View
-      pointerEvents="none"
-      accessible={false}
-      importantForAccessibility="no-hide-descendants"
-      style={[{ width: size, height: size, opacity: !earned && !tiered ? FADED : 1 }, style]}>
-      <Svg width={size} height={size} viewBox="0 0 64 64">
-        {blank ? (
-          <>
-            <Circle cx={32} cy={32} r={30} fill={BLANK.field} stroke={BLANK.rim} strokeWidth={1.6} strokeDasharray="2.6 3.4" />
-            <Circle cx={32} cy={32} r={25.5} fill="none" stroke={BLANK.ring} strokeWidth={1} />
-          </>
-        ) : (
-          <>
-            <Circle cx={32} cy={32} r={30} fill={mono.ink} />
-            <G fill={DEVICE} fillOpacity={0.3}>
-              {DOTS.map(([cx, cy]) => (
-                <Circle key={`${cx},${cy}`} cx={cx} cy={cy} r={0.7} />
-              ))}
-            </G>
-            <Circle cx={32} cy={32} r={25.5} fill="none" stroke={DEVICE} strokeWidth={1.1} strokeOpacity={0.5} />
-          </>
-        )}
-        {numeral ? <G transform="translate(0 -2.6)">{device}</G> : device}
-        {numeral ? (
-          // SVG text does not inherit the app font: the weight is the family (theme `sans()` rule)
-          <SvgText
-            x={32}
-            y={53.2}
-            textAnchor="middle"
-            fontFamily={sans('900').fontFamily}
-            fontWeight="normal"
-            fontSize={6.4}
-            letterSpacing={0.6}
-            fill={c}>
-            {numeral}
-          </SvgText>
-        ) : null}
-      </Svg>
-    </View>
+    <Svg width={size} height={size} viewBox="0 0 64 64">
+      {blank ? (
+        <>
+          <Circle cx={32} cy={32} r={30} fill={BLANK.field} stroke={BLANK.rim} strokeWidth={1.6} strokeDasharray="2.6 3.4" />
+          <Circle cx={32} cy={32} r={RING_R} fill="none" stroke={BLANK.ring} strokeWidth={1} />
+        </>
+      ) : (
+        <>
+          <Circle cx={32} cy={32} r={30} fill={mono.ink} />
+          <Circle
+            cx={32}
+            cy={32}
+            r={DOT_R}
+            fill="none"
+            stroke={DEVICE}
+            strokeOpacity={0.3}
+            strokeWidth={1.4}
+            strokeDasharray={[0, DOT_PITCH]}
+            strokeLinecap="round"
+          />
+          {ring ? <DrawnRing ring={ring} /> : <Circle cx={32} cy={32} r={RING_R} fill="none" stroke={DEVICE} strokeWidth={1.1} strokeOpacity={0.5} />}
+        </>
+      )}
+      {glyph ? <RisingGlyph glyph={glyph}>{face}</RisingGlyph> : face}
+    </Svg>
   );
 }
 

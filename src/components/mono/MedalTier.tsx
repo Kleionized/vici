@@ -1,9 +1,158 @@
+import { LinearGradient } from 'expo-linear-gradient';
+import { useEffect, useState, type ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated, {
+  Easing,
+  interpolate,
+  useAnimatedStyle,
+  useReducedMotion,
+  useSharedValue,
+  withDelay,
+  withSequence,
+  withSpring,
+  withTiming,
+  type SharedValue,
+} from 'react-native-reanimated';
 import Svg, { Circle, Path, Text as SvgText } from 'react-native-svg';
+import { scheduleOnRN } from 'react-native-worklets';
 
+import { haptic } from '@/lib/haptics';
 import { illus, lhNormal, mono, sans } from '@/lib/theme';
 
+import { EASE_OUT } from './motion';
 import { MonoText } from './Text';
+
+// ── the strike ───────────────────────────────────────────────────────
+
+/**
+ * An earned medal arriving — struck, not faded in. One timeline, tuned once:
+ *
+ * | ms | |
+ * |---|---|
+ * | 0 → 220 | the coin fades up from nothing |
+ * | 0 → ~400 | it grows from 0.86 on a soft spring (ζ 0.8: under half a percent past 1) |
+ * | 60 → 700 | (`FaceCoin`) the hairline ring draws in from twelve o'clock |
+ * | 150 → 450 | (`FaceCoin`) the device and its numeral come up into the face |
+ * | 380 | it lands: one `success` haptic |
+ * | 440 → 1540 | a slow band of light crosses the face once, left to right |
+ *
+ * All of it runs on the UI thread off shared values; nothing sets state per
+ * frame and there is no timer. It plays once per mount — the decision is taken
+ * when the medal mounts and never revisited, so a re-render cannot start it
+ * again — and only for an earned medal: an unearned one is drawn still and
+ * never shines. With Reduce Motion on the medal is simply there, and the
+ * haptic still marks it.
+ */
+export const STRIKE = { from: 0.86, fade: 220, land: 380, sheenAt: 440, sheen: 1100, ring: [60, 640], glyph: [150, 300] } as const;
+
+/** Medals whose haptic has already played this session (see `useMedalStrike`'s `id`). */
+const struck = new Set<string>();
+
+export type MedalStrikeState = {
+  /** whether this mount animates at all */
+  live: boolean;
+  scale: SharedValue<number>;
+  opacity: SharedValue<number>;
+  /** the band of light, 0 (off the left edge) → 1 (off the right) */
+  sheen: SharedValue<number>;
+  /** the ring drawing in, 0 → 1 */
+  ring: SharedValue<number>;
+  /** the device and its numeral coming up, 0 → 1 */
+  glyph: SharedValue<number>;
+};
+
+const buzz = () => haptic('success');
+
+/**
+ * The strike's shared values, started once on mount.
+ *
+ * - `play` — strike this medal (pass `earned`; an unearned medal never strikes).
+ * - `delay` — hold it this long first, e.g. while the route slides in; the
+ *   medal is invisible until then.
+ * - `haptic` — play the landing haptic (default on).
+ * - `id` — names the medal for the session: its haptic plays the first time
+ *   it is struck and not on every later visit, so paging through boards does
+ *   not buzz at each one. The animation itself still plays on every mount.
+ */
+export function useMedalStrike({ play, delay = 0, haptic: withHaptic = true, id }: { play: boolean; delay?: number; haptic?: boolean; id?: string }): MedalStrikeState {
+  const reduced = useReducedMotion();
+  // taken once, at mount: a later render with other props cannot restart it
+  const [plan] = useState(() => ({
+    live: play && !reduced,
+    buzz: play && withHaptic && (id == null || !struck.has(id)),
+    id,
+    delay: Math.max(0, delay),
+  }));
+  const scale = useSharedValue<number>(plan.live ? STRIKE.from : 1);
+  const opacity = useSharedValue(plan.live ? 0 : 1);
+  const sheen = useSharedValue(plan.live ? 0 : 1);
+  const ring = useSharedValue(plan.live ? 0 : 1);
+  const glyph = useSharedValue(plan.live ? 0 : 1);
+
+  useEffect(() => {
+    if (plan.buzz && plan.id != null) struck.add(plan.id);
+    if (!plan.live) {
+      if (plan.buzz) buzz();
+      return;
+    }
+    const d = plan.delay;
+    const willBuzz = plan.buzz;
+    opacity.value = withDelay(d, withTiming(1, { duration: STRIKE.fade, easing: EASE_OUT }));
+    scale.value = withDelay(d, withSpring(1, { duration: 520, dampingRatio: 0.8 }));
+    ring.value = withDelay(d + STRIKE.ring[0], withTiming(1, { duration: STRIKE.ring[1], easing: Easing.bezier(0.33, 0, 0.2, 1) }));
+    glyph.value = withDelay(d + STRIKE.glyph[0], withTiming(1, { duration: STRIKE.glyph[1], easing: EASE_OUT }));
+    // the haptic rides the animation clock: a zero-length step at the landing
+    // whose callback fires it (and does not, if the medal unmounts first)
+    sheen.value = withDelay(
+      d + STRIKE.land,
+      withSequence(
+        withTiming(0, { duration: 0 }, (finished) => {
+          'worklet';
+          if (finished && willBuzz) scheduleOnRN(buzz);
+        }),
+        withDelay(STRIKE.sheenAt - STRIKE.land, withTiming(1, { duration: STRIKE.sheen, easing: Easing.inOut(Easing.cubic) })),
+      ),
+    );
+  }, [plan, opacity, scale, ring, glyph, sheen]);
+
+  return { live: plan.live, scale, opacity, sheen, ring, glyph };
+}
+
+/** The band of light: a soft white ramp, peaking well short of opaque. */
+const SHEEN = ['rgba(255,255,255,0)', 'rgba(255,255,255,0.62)', 'rgba(255,255,255,0)'] as const;
+/** the band's tilt, and its width as a share of the face */
+const SHEEN_TILT = '20deg';
+const SHEEN_W = 0.38;
+
+/**
+ * Wraps a medal's drawing in its strike: the scale and fade on the whole
+ * medal, and — while it plays — the band of light, clipped to the round face
+ * (`face`, the disc's diameter, centred in `size`). The wrapper is exactly
+ * `size` square, so nothing around it moves.
+ */
+export function MedalStrike({ strike, size, face = size, children, style }: { strike: MedalStrikeState; size: number; face?: number; children: ReactNode; style?: StyleProp<ViewStyle> }) {
+  const { scale, opacity, sheen } = strike;
+  const shell = useAnimatedStyle(() => ({ opacity: opacity.value, transform: [{ scale: scale.value }] }));
+  const travel = face * 1.02;
+  const band = useAnimatedStyle(() => ({
+    opacity: sheen.value > 0 && sheen.value < 1 ? 1 : 0,
+    transform: [{ translateX: interpolate(sheen.value, [0, 1], [-travel, travel]) }, { rotate: SHEEN_TILT }],
+  }));
+  const inset = (size - face) / 2;
+  const bandW = face * SHEEN_W;
+  return (
+    <Animated.View pointerEvents="none" style={[{ width: size, height: size }, style, shell]}>
+      {children}
+      {strike.live ? (
+        <View style={{ position: 'absolute', left: inset, top: inset, width: face, height: face, borderRadius: face / 2, overflow: 'hidden', pointerEvents: 'none' }}>
+          <Animated.View style={[{ position: 'absolute', left: (face - bandW) / 2, top: -face * 0.3, width: bandW, height: face * 1.6 }, band]}>
+            <LinearGradient colors={SHEEN} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={{ flex: 1 }} />
+          </Animated.View>
+        </View>
+      ) : null}
+    </Animated.View>
+  );
+}
 
 export type Tier = 0 | 1 | 2 | 3 | 4;
 export const TIER_NAMES = ['Paper', 'Bronze', 'Silver', 'Gold', 'Platinum'] as const;
@@ -47,6 +196,7 @@ export function MedalTier({
   dim,
   disc = true,
   glyph,
+  strike,
   style,
 }: {
   tier: Tier;
@@ -54,8 +204,53 @@ export function MedalTier({
   dim?: boolean;
   disc?: boolean;
   glyph?: string;
+  /**
+   * Strike it as it arrives (`useMedalStrike`): `true`, or the strike's options
+   * (`delay`, `haptic`, `id`). Ignored on a `dim` medal — an unearned tier never shines.
+   */
+  strike?: boolean | { delay?: number; haptic?: boolean; id?: string };
   style?: StyleProp<ViewStyle>;
 }) {
+  const art = <MedalArt tier={tier} size={size} dim={dim} disc={disc} glyph={glyph} style={strike && !dim ? undefined : style} />;
+  if (!strike || dim) return art;
+  return (
+    <StruckMedal size={size} face={tier === 4 ? size * 0.82 : size - 4} {...(strike === true ? {} : strike)} style={style}>
+      {art}
+    </StruckMedal>
+  );
+}
+
+/**
+ * Any earned medal's drawing, struck as it mounts (`useMedalStrike` +
+ * `MedalStrike`): wrap art that is `size` square with its round face of
+ * diameter `face` centred in it.
+ */
+export function StruckMedal({
+  size,
+  face,
+  delay,
+  haptic: withHaptic,
+  id,
+  style,
+  children,
+}: {
+  size: number;
+  face?: number;
+  delay?: number;
+  haptic?: boolean;
+  id?: string;
+  style?: StyleProp<ViewStyle>;
+  children: ReactNode;
+}) {
+  const strike = useMedalStrike({ play: true, delay, haptic: withHaptic, id });
+  return (
+    <MedalStrike strike={strike} size={size} face={face} style={style}>
+      {children}
+    </MedalStrike>
+  );
+}
+
+function MedalArt({ tier, size, dim, disc, glyph, style }: { tier: Tier; size: number; dim?: boolean; disc: boolean; glyph?: string; style?: StyleProp<ViewStyle> }) {
   const c = size / 2;
   const ink = mono.ink;
   const ground = illus.ground;
@@ -120,6 +315,29 @@ export function MedalTier({
 }
 
 /**
+ * The track's ink fill. Growing, it is drawn at its full length and scaled out
+ * from its left end (a transform, so the ladder's layout never moves).
+ */
+function LadderFill({ fill, grow }: { fill: number; grow?: number }) {
+  const reduced = useReducedMotion();
+  const [live] = useState(() => grow != null && !reduced);
+  const [delay] = useState(() => Math.max(0, grow ?? 0));
+  const p = useSharedValue(live ? 0 : 1);
+  useEffect(() => {
+    if (live) p.value = withDelay(delay, withTiming(1, { duration: 640, easing: EASE_OUT }));
+  }, [live, delay, p]);
+  const anim = useAnimatedStyle(() => ({ transform: [{ scaleX: p.value }] }));
+  return (
+    <Animated.View
+      style={[
+        { position: 'absolute', left: '10%', width: `${fill.toFixed(1)}%` as `${number}%`, top: 14, height: 2, backgroundColor: mono.ink, transformOrigin: 'left' },
+        live ? anim : null,
+      ]}
+    />
+  );
+}
+
+/**
  * Where a count stands on a five-rung ladder (medallions-letters §1.4):
  * `reached` is the highest tier whose rung the count has met (−1 for none) and
  * `progress` how far along the track the fill runs, in tiers — the reached
@@ -158,11 +376,17 @@ export function TierLadder({
   reached,
   progress = reached,
   thresholds,
+  grow,
   style,
 }: {
   reached: -1 | Tier;
   progress?: number;
   thresholds?: readonly string[];
+  /**
+   * Run the fill out to its length on mount, after this many ms (the board
+   * lets its coin land first). Once per mount; still under Reduce Motion.
+   */
+  grow?: number;
   style?: StyleProp<ViewStyle>;
 }) {
   const fill = reached < 0 ? 0 : Math.min(Math.max(progress, 0), 4) * 20;
@@ -179,9 +403,7 @@ export function TierLadder({
       style={[{ gap: 10 }, style]}>
       <View style={{ height: 30 }}>
         <View style={{ position: 'absolute', left: '10%', right: '10%', top: 14, height: 2, backgroundColor: mono.line }} />
-        {fill > 0 ? (
-          <View style={{ position: 'absolute', left: '10%', width: `${fill.toFixed(1)}%` as `${number}%`, top: 14, height: 2, backgroundColor: mono.ink }} />
-        ) : null}
+        {fill > 0 ? <LadderFill fill={fill} grow={grow} /> : null}
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, flexDirection: 'row' }}>
           {TIER_NAMES.map((name, i) => (
             <View key={name} style={{ flex: 1, alignItems: 'center' }}>

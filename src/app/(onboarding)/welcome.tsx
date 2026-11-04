@@ -1,5 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { BackHandler, View } from 'react-native';
 
 import {
   O3CleanDay,
@@ -22,7 +23,8 @@ import {
   O3YourPlan,
   planReading,
 } from '@/components/onboarding/plan';
-import { O3AgeGate, O3FunnelStep, O3Shell, O3_AGE_MIN } from '@/components/onboarding/funnel';
+import { O3AgeGate, O3FunnelStep, O3Shell, O3_AGE_MIN, OnboardingHandoffCtx } from '@/components/onboarding/funnel';
+import { StepFade, useStepDirection } from '@/components/mono';
 import {
   O3LetterArrived,
   O3LetterRead,
@@ -39,7 +41,12 @@ import { FORCE_MOCK } from '@/lib/config';
 import { shortDate } from '@/lib/format';
 import { SCORE_BASE } from '@/lib/score';
 import { useAuth } from '@/lib/auth';
-import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile } from '@/lib/backend';
+import { useCompleteOnboarding, useCreateJournalEntry, useUpdateLifeMap, useUpdateProfile, useUpdateSettings } from '@/lib/backend';
+import { enableReminders } from '@/lib/notifications';
+import { parseClock, saveRoutines } from '@/lib/routines';
+import { haptic } from '@/lib/haptics';
+import { getJSON, removeKey, setJSON } from '@/lib/storage';
+import { mono } from '@/lib/theme';
 
 /**
  * The onboarding funnel, in the order `Latest Vici FULL` numbers it.
@@ -160,6 +167,18 @@ const SAMPLE_ANSWERS: Answers = {
   tried: ['Blocking sites or apps'],
 };
 const stepIndex = (id: string | undefined) => (id ? STEPS.findIndex((s) => s.id === id) : -1);
+
+/**
+ * Where he is in the flow, kept on the device per account, so an app killed
+ * mid-questionnaire (or mid-tail) opens again on the board he left, with his
+ * answers. The step is stored by id, not index, so a reordered flow still
+ * lands on the right board (or, for a withdrawn one, on the first).
+ */
+type Progress = { v: 1; step: string; answers: Answers; planPick: number };
+const progressKey = (userId: string) => `tideline.onboarding.progress.${userId}`;
+
+/** The boards after the paywall's purchase, where the hardware Back has nowhere sensible to go. */
+const NO_HARDWARE_BACK = new Set(['paywall', 'day-zero']);
 const sampleOverride = (): Answers | null => (globalThis as { __ONB_ANSWERS?: Answers }).__ONB_ANSWERS ?? null;
 
 const AGE_END = 80;
@@ -187,10 +206,12 @@ const aloneSignal = (a: Answers) =>
 
 export default function Onboarding() {
   const router = useRouter();
-  const { displayName } = useAuth();
+  const { displayName, userId } = useAuth();
+  const handoff = useContext(OnboardingHandoffCtx);
   const completeOnboarding = useCompleteOnboarding();
   const updateProfile = useUpdateProfile();
   const updateLifeMap = useUpdateLifeMap();
+  const updateSettings = useUpdateSettings();
   const createJournalEntry = useCreateJournalEntry();
   const params = useLocalSearchParams<{ step?: string; hold?: string }>();
   // D216: a mock build can open on any board (`?step=`) with the canvas's own answers
@@ -207,6 +228,36 @@ export default function Onboarding() {
     jump > 0 ? { ...SAMPLE_ANSWERS, ...(displayName ? { name: displayName } : null), ...sampleOverride() } : displayName ? { name: displayName } : ({} as Answers),
   );
   const set = (k: string, v: string | string[]) => setA((s) => ({ ...s, [k]: v }));
+
+  // ── progress kept across a kill ──
+  // Until the stored progress has been read the flow draws only its ground, so a
+  // man who left on board 30 never sees board 1 flash first.
+  const storeKey = jump < 0 && userId ? progressKey(userId) : null;
+  const [restoredFor, setRestoredFor] = useState<string | null>(null);
+  const ready = jump >= 0 || (storeKey != null && restoredFor === storeKey);
+  useEffect(() => {
+    if (!storeKey) return;
+    let live = true;
+    void getJSON<Progress>(storeKey).then((saved) => {
+      if (!live) return;
+      if (saved?.v === 1) {
+        const at = stepIndex(saved.step);
+        if (at > 0) setI(at);
+        if (saved.answers && typeof saved.answers === 'object') setA((s) => ({ ...s, ...saved.answers }));
+        if (typeof saved.planPick === 'number') setPlanPick(saved.planPick);
+      }
+      setRestoredFor(storeKey);
+    });
+    return () => {
+      live = false;
+    };
+  }, [storeKey]);
+  const finishing = useRef(false);
+  useEffect(() => {
+    if (!ready || !storeKey || finishing.current) return;
+    const saved: Progress = { v: 1, step: STEPS[i].id, answers: a, planPick };
+    void setJSON(storeKey, saved);
+  }, [ready, storeKey, i, a, planPick]);
 
   const skip = (idx: number): boolean => {
     const s = STEPS[idx];
@@ -229,10 +280,18 @@ export default function Onboarding() {
     while (n > 0 && n < STEPS.length && skip(n)) n += dir;
     return Math.max(0, Math.min(STEPS.length - 1, n));
   };
-  const next = () => setI((v) => move(v, 1));
-  const back = () => setI((v) => move(v, -1));
+  // Bound to the board they were handed to: a second tap on a board's primary
+  // (or a late timer) after it has already moved on does nothing, rather than
+  // skipping the board after it.
+  const at = i;
+  const next = () => setI((v) => (v === at ? move(v, 1) : v));
+  const back = () => setI((v) => (v === at ? move(v, -1) : v));
 
   async function finish() {
+    // once: a double tap on `Begin` must not file the letter twice
+    if (finishing.current) return;
+    finishing.current = true;
+    handoff.setFinishing(true);
     const name = String(a.name || displayName || '').trim();
     const letter = buildWeekXiiLetter({ ...a, name });
     const emotions = (a.emotions as string[]) || [];
@@ -244,8 +303,11 @@ export default function Onboarding() {
     if (a.goalPorn) await updateLifeMap({ whyStatement: `${a.goalPorn}. The ${(((a.triggers as string[]) || [])[0] || 'late night').toLowerCase()} window, guarded first.` }).catch(() => {});
     if (emotions.length) await updateLifeMap({ values: emotions.slice(0, 3).map((label) => ({ label, importance: 3 })) }).catch(() => {});
     await completeOnboarding().catch(() => {});
+    if (storeKey) await removeKey(storeKey);
     // Onboarding is finished before personalization runs, so backing out of the
     // drill pickers lands on Today rather than restarting the questionnaire.
+    // The layout holds its own redirect to Today while `finishing` is set, so
+    // this is the only navigation and Day 0 hands straight to the board.
     router.replace('/routines/morning-time');
   }
 
@@ -259,7 +321,7 @@ export default function Onboarding() {
   /** `25 · Where We’d Start` … `27 · Your Plan` all read the same triple. */
   const plan = planReading(a, planPick);
   /** `38 · A Letter Arrived` — "Save it for later" skips past the reading of it, to the vow. */
-  const skipLetter = () => setI((v) => Math.min(STEPS.length - 1, v + 2));
+  const skipLetter = () => setI((v) => (v === at ? Math.min(STEPS.length - 1, v + 2) : v));
   /**
    * `03 · Name` draws the same Back row as every other funnel frame, and D122
    * reverses D016 to draw it. Step 0 has nothing behind it inside the flow, so
@@ -279,7 +341,7 @@ export default function Onboarding() {
   /** `44 · Day 0` names the first lesson of the course as it now stands. */
   const firstLesson = lessonForDay(1);
 
-  const body = useMemo(() => {
+  const body = (() => {
     switch (step.kind) {
       case 'funnel': {
         const f = FUNNEL_STEPS[step.fi];
@@ -303,7 +365,16 @@ export default function Onboarding() {
         );
       }
       case 'planTogether':
-        return <O3PuttingTogether next={next} hold={FORCE_MOCK && params.hold === '1'} />;
+        return (
+          <O3PuttingTogether
+            next={() => {
+              // the plan is built
+              haptic('success');
+              next();
+            }}
+            hold={FORCE_MOCK && params.hold === '1'}
+          />
+        );
       case 'wheredStart':
         return <O3WhereWedStart name={String(a.name || displayName || '')} triggers={(a.triggers as string[]) || []} next={next} />;
       case 'startHere':
@@ -338,9 +409,20 @@ export default function Onboarding() {
       case 'letterArrived':
         return <O3LetterArrived next={next} skip={skipLetter} />;
       case 'letterRead':
-        return <O3LetterRead name={who} paragraphs={buildWeekXiiLetter({ ...a, name: who }).paragraphs} onKeep={next} next={next} />;
+        return <O3LetterRead name={who} paragraphs={buildWeekXiiLetter({ ...a, name: who }).paragraphs} onKeep={next} next={next} reading />;
       case 'vow':
-        return <O3TheVow name={who} date={vowDate} onSign={next} skip={next} />;
+        return (
+          <O3TheVow
+            name={who}
+            date={vowDate}
+            onSign={() => {
+              // the vow is signed
+              haptic('success');
+              next();
+            }}
+            skip={next}
+          />
+        );
       case 'medallion':
         return <O3MedallionEarned eyebrow="Veni" title="Your first medallion." body="You started." next={next} />;
       case 'reminders':
@@ -349,6 +431,12 @@ export default function Onboarding() {
             window={riskWindow}
             onAllow={() => {
               set('reminder', 'yes');
+              // the heads-up lands half an hour before the window the answers named
+              const opens = parseClock(windowFor(a)[0]);
+              if (opens) void saveRoutines({ risk: opens });
+              void updateSettings({ morningCheckin: true, eveningWindDown: true, riskTimeSupport: true, weeklyReflection: true }).catch(() => {});
+              // the OS prompt runs over the next board; its answer never blocks the flow
+              void enableReminders();
               next();
             }}
             skip={next}
@@ -361,22 +449,68 @@ export default function Onboarding() {
       default:
         return null;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step, a, i, planPick]);
+  })();
 
+  // Android's hardware Back steps back inside the flow, as the boards' own
+  // chevrons do — it never drops him out of onboarding mid-way. On the first
+  // board it is the chevron's own way back to the door; on the paywall and
+  // Day 0 (and while finishing) it does nothing.
+  const onHardwareBack = useRef<() => boolean>(() => false);
+  useEffect(() => {
+    onHardwareBack.current = () => {
+      if (!ready || finishing.current) return true;
+      if (gated) {
+        setGated(false);
+        return true;
+      }
+      if (NO_HARDWARE_BACK.has(step.id)) return true;
+      if (i === 0) backToDoor();
+      else back();
+      return true;
+    };
+  });
+  useEffect(() => {
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => onHardwareBack.current());
+    return () => sub.remove();
+  }, []);
+
+  // The gate sits between Age and the board after it, so arriving reads forward and leaving it reads back.
+  const direction = useStepDirection(gated ? i + 0.5 : i);
+
+  if (!ready) return <View style={{ flex: 1, backgroundColor: mono.ground }} />;
+
+  let frame;
   // Back is the only control the gate offers, so a mistyped age is one tap from
   // being corrected.
   if (gated)
-    return (
+    frame = (
       <O3Shell onBack={() => setGated(false)}>
         <O3AgeGate />
       </O3Shell>
     );
   // the tail frames and the paywall own the entire frame
-  if (WHOLE_FRAME.has(step.id)) return <>{body}</>;
-  if (step.kind === 'paywall') return <PaywallFlow embedded name={String(a.name || displayName || '').trim() || undefined} triggers={(a.triggers as string[]) || []} emotions={(a.emotions as string[]) || []} load={a.load as string} onDone={next} />;
+  else if (WHOLE_FRAME.has(step.id)) frame = body;
+  else if (step.kind === 'paywall')
+    frame = (
+      <PaywallFlow
+        embedded
+        name={String(a.name || displayName || '').trim() || undefined}
+        triggers={(a.triggers as string[]) || []}
+        emotions={(a.emotions as string[]) || []}
+        load={a.load as string}
+        onDone={next}
+      />
+    );
+  else frame = <O3Shell onBack={i === 0 ? backToDoor : back}>{body}</O3Shell>;
 
+  // one board at a time, handed over with a short cross-fade and a drift from
+  // the side it is coming from — every board stands on the same ground, so the
+  // hand-over never shows a lighter frame
   return (
-    <O3Shell onBack={i === 0 ? backToDoor : back}>{body}</O3Shell>
+    <View style={{ flex: 1, backgroundColor: mono.ground }}>
+      <StepFade stepKey={gated ? 'age-gate' : step.id} direction={direction}>
+        {frame}
+      </StepFade>
+    </View>
   );
 }

@@ -1,6 +1,7 @@
 import { v } from 'convex/values';
 
 import { mutation, query } from './_generated/server';
+import { checkText, LIMITS, openReflection, sealReflection } from './model';
 import { getUserIdOrNull, requireUserId } from './utils';
 
 /**
@@ -13,10 +14,11 @@ export const getForLesson = query({
   handler: async (ctx, { slug }) => {
     const userId = await getUserIdOrNull(ctx);
     if (!userId) return null;
-    return await ctx.db
+    const row = await ctx.db
       .query('reflections')
       .withIndex('by_user_lesson', (q) => q.eq('userId', userId).eq('lessonSlug', slug))
-      .unique();
+      .first();
+    return row ? await openReflection(row) : null;
   },
 });
 
@@ -27,15 +29,23 @@ export const save = mutation({
   },
   handler: async (ctx, { slug, answers }) => {
     const userId = await requireUserId(ctx);
+    checkText(slug, 80, 'slug');
+    const entries = Object.entries(answers);
+    if (entries.length > LIMITS.answers) throw new Error(`Too many answers (max ${LIMITS.answers})`);
+    for (const [key, value] of entries) {
+      checkText(key, 80, 'answer key');
+      if (typeof value === 'string') checkText(value, LIMITS.answer, 'answer');
+    }
     const now = Date.now();
+    const sealed = await sealReflection(userId, answers);
     const existing = await ctx.db
       .query('reflections')
       .withIndex('by_user_lesson', (q) => q.eq('userId', userId).eq('lessonSlug', slug))
-      .unique();
+      .first();
     if (existing) {
-      await ctx.db.patch(existing._id, { answers, updatedAt: now });
+      await ctx.db.patch(existing._id, { answers: sealed, updatedAt: now });
     } else {
-      await ctx.db.insert('reflections', { userId, lessonSlug: slug, answers, createdAt: now, updatedAt: now });
+      await ctx.db.insert('reflections', { userId, lessonSlug: slug, answers: sealed, createdAt: now, updatedAt: now });
     }
   },
 });

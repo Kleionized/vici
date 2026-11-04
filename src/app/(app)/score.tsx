@@ -23,6 +23,7 @@ import {
 import { useCheckins, useCurrentUser, useEvents, useLessonProgressMap } from '@/lib/backend';
 import { RANKS, buildScore, monthLedger, scoreHistory, type LedgerLine, type ScoreHistory } from '@/lib/score';
 import { lhNormal, mono, ring, sans } from '@/lib/theme';
+import { addDays, calendarDaysBetween, useNow } from '@/lib/date';
 
 /**
  * Score Detail · Moves · Ranks — one header, three ways of reading the number.
@@ -62,7 +63,7 @@ export default function Score() {
   const [range, setRange] = useState<Range>('months');
   const [picking, setPicking] = useState(false);
   // Read once: the day boundaries must not shift under a re-render.
-  const [now] = useState(() => Date.now());
+  const now = useNow();
 
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
@@ -173,9 +174,9 @@ function OverTime({ W, history, range, now }: { W: number; history: ScoreHistory
   const span = range === 'months' ? 3 : 12;
   const from = new Date(n.getFullYear(), n.getMonth() - (span - 1), 1).getTime();
   const first = history.dayAt(0);
-  const days = Math.max(1, Math.round((new Date(n.getFullYear(), n.getMonth(), n.getDate()).getTime() - from) / 86_400_000) + 1);
+  const days = Math.max(1, calendarDaysBetween(from, n) + 1);
   const values = Array.from({ length: days }, (_, i) => {
-    const k = Math.round((from + i * 86_400_000 - first) / 86_400_000);
+    const k = calendarDaysBetween(first, addDays(from, i));
     return history.values[Math.max(0, Math.min(history.values.length - 1, k))];
   });
 

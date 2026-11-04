@@ -5,6 +5,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 import { Tap } from './Tap';
+import { haptic } from '@/lib/haptics';
 
 /** A wheel time: what the three columns show. */
 export type WheelTime = { hour12: number; minute: number; period: 'AM' | 'PM' };
@@ -105,6 +106,9 @@ function Column({
       if (c !== centerRef.current) {
         centerRef.current = c;
         setCenter(c);
+        // a detent under the finger for every row that crosses the centre, as
+        // the system picker does (throttled in `haptic`)
+        if (held.current || pos.current !== committed.current) haptic('select');
       }
     });
     return () => offset.removeListener(id);

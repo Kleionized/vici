@@ -820,7 +820,7 @@ export function Scene({
   if (!layers) return null;
   const scale = width / boxW;
   return (
-    <View style={{ width, height: (height ?? boxH) * scale, overflow: 'hidden' }} pointerEvents="none">
+    <View style={{ pointerEvents: 'none', width, height: (height ?? boxH) * scale, overflow: 'hidden' }}>
       <View style={{ width: boxW, height: boxH, transform: [{ scale }], transformOrigin: 'top left' }}>
         {layers.map((layer, index) => (
           <Layer key={index} layer={layer} index={index} id={id} box={{ w: boxW, h: boxH }} />

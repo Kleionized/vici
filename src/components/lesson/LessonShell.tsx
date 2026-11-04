@@ -47,9 +47,7 @@ const SLOP = { top: 16, bottom: 16, left: 16, right: 24 };
 function Fade() {
   return (
     <View
-      pointerEvents="none"
-      style={{
-        position: 'absolute',
+      style={{ pointerEvents: 'none', position: 'absolute',
         left: 0,
         right: 0,
         bottom: 0,
@@ -131,8 +129,7 @@ export function LessonShell({
       entering={reduced ? undefined : FadeIn.duration(220).easing(Easing.bezier(0.2, 0, 0, 1))}
       onLayout={(e) => setMeasured({ index, h: e.nativeEvent.layout.height })}
       // a reading page's copy never takes the touch: the band behind it does
-      pointerEvents={tapAnywhere ? 'none' : 'box-none'}
-      style={{ alignSelf: 'stretch' }}>
+      style={{ pointerEvents: tapAnywhere ? 'none' : 'box-none', alignSelf: 'stretch' }}>
       {children}
     </Animated.View>
   );
@@ -193,9 +190,7 @@ export function LessonShell({
       {/* `Lesson n`: 13/700 `#9B968E` at normal leading, no tracking — not the cover's 13/16 +0.2 label */}
       {index > 0 ? (
         <View
-          pointerEvents="none"
-          style={{
-            position: 'absolute',
+          style={{ pointerEvents: 'none', position: 'absolute',
             left: 0,
             right: 0,
             top: 60,

@@ -11,13 +11,13 @@
  */
 
 import { useRouter } from 'expo-router';
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import { GhostLink, MonoText, NavBar, PagerDots, PledgeCard, PrimaryButton, Screen, Tap } from '@/components/mono';
 import { bandToSeverity, INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
-import { lastNDateKeys, toDateKey } from '@/lib/date';
+import { lastNDateKeys, startOfDay, toDateKey } from '@/lib/date';
 import { clockTime, countOf, daysAgo, minutesWords, WEEKDAYS_SHORT } from '@/lib/format';
 import { getJSON, setJSON } from '@/lib/storage';
 import { mono, monoDark, ring, sans } from '@/lib/theme';
@@ -83,7 +83,7 @@ const HUB_SLIP: EventType[] = ['lapse', 'urge_acted_on'];
  * `urge_acted_on` — the pair `today.tsx` marks a day with — and a day is clean
  * when neither landed in it.
  */
-function hubStats(events: TidelineEvent[] | undefined): HubStats {
+function hubStats(events: TidelineEvent[] | undefined, now: number): HubStats {
   const log = events ?? [];
   const ridden = log.filter((e) => e.type === 'urge_rode_out');
   const slips = log.filter((e) => HUB_SLIP.includes(e.type)).sort((a, b) => b.createdAt - a.createdAt);
@@ -98,7 +98,8 @@ function hubStats(events: TidelineEvent[] | undefined): HubStats {
       helped: e.whatHelped ?? 'Waited out the timer',
     }));
   const slipKeys = new Set(slips.map((e) => toDateKey(new Date(e.createdAt))));
-  const days = lastNDateKeys(30).map((k) => !slipKeys.has(k));
+  // the thirty calendar days ending on the hub's own clock (which turns at midnight and on resume)
+  const days = lastNDateKeys(30, now).map((k) => !slipKeys.has(k));
   return { timed, ridden: ridden.length, days, slips };
 }
 
@@ -150,7 +151,7 @@ function HubNow({ elapsedMs, chip, onChip, tuck = 0 }: { elapsedMs: number; chip
   return (
     <>
       <DarkHead title="Get out of bed." body="Stand up. Move somewhere with light." />
-      <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" />
+      <UrgeRing fraction={remaining / SAME_URGE_WINDOW_MS} clock={hubClock(remaining)} label="Until it passes" glideMs={1000} />
       <View accessibilityRole="radiogroup" style={{ position: 'absolute', left: 0, right: 0, top: CHIPS_TOP - tuck, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
         {HUB_CHIPS.map((label, i) => (
           <HubChip key={label} label={label} on={chip === i} onPress={() => onChip(i)} />
@@ -332,12 +333,26 @@ function pledgeLine(signedAt: number, now: number, slips: TidelineEvent[]): stri
   return slips.some((e) => e.createdAt > signedAt) ? signed : `${signed} Kept every day since.`;
 }
 
-function HubPledge({ name, pledge, line, onBottom }: { name?: string; pledge: string; line?: string; onBottom?: OnBottom }) {
+function HubPledge({ name, pledge, line, onWrite, onBottom }: { name?: string; pledge?: string; line?: string; onWrite: () => void; onBottom?: OnBottom }) {
   return (
     <>
       <DarkHead title="Your pledge." gap={20} />
       <View onLayout={endsAt(238, onBottom)} style={{ position: 'absolute', left: 24, right: 24, top: 238, gap: 12 }}>
-        <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} />
+        {pledge ? (
+          <PledgeCard variant="quote" tone="dark" pledge={pledge} name={name} />
+        ) : (
+          // no stock words in the person's mouth: the pane says there is none yet, and offers the pen
+          <View style={{ alignItems: 'center', gap: 14 }}>
+            <MonoText v="pTight" center wrap="pretty" color={monoDark.body}>
+              No pledge yet. One line you can keep every day, in your own words.
+            </MonoText>
+            <Tap label="Write your pledge" onPress={onWrite} hitSlop={8} style={{ paddingVertical: 10, paddingHorizontal: 20, borderRadius: 22, boxShadow: `0 0 0 1.5px ${monoDark.body}` }}>
+              <MonoText v="pill" color={monoDark.body}>
+                Write your pledge
+              </MonoText>
+            </Tap>
+          </View>
+        )}
         {line ? (
           <MonoText v="pTight" center wrap="pretty" color={monoDark.body} style={{ paddingTop: 6 }}>
             {line}
@@ -407,7 +422,9 @@ export function UrgeHub() {
     return () => clearInterval(clock);
   }, []);
 
-  const stats = hubStats(events);
+  // read against the day, not the second: the clock ticks every second for the ring
+  const today = startOfDay(now);
+  const stats = useMemo(() => hubStats(events, today), [events, today]);
   const pledge = (journal ?? []).find((entry) => entry.tag === 'Pledge');
   const elapsed = session ? Math.max(0, now - session.startedAt) : 0;
   const severity = session?.peakSeverity ?? bandToSeverity(3);
@@ -479,8 +496,8 @@ export function UrgeHub() {
     <HubSurfed key="surfed" stats={stats} onBottom={bottomOf(3)} onHead={(h) => setSurfedHead((current) => (current === h ? current : h))} tuck={tuck[3]} />,
     <HubPledge
       key="pledge"
-      // with no signed pledge the card keeps the words it always fell back to
-      pledge={pledge?.body ?? 'The mornings are mine again.'}
+      pledge={pledge?.body?.trim() || undefined}
+      onWrite={() => router.push({ pathname: '/journal-new', params: { tag: 'Pledge' } })}
       name={first ?? 'You'}
       line={pledge ? pledgeLine(pledge.createdAt, now, stats.slips) : undefined}
       onBottom={bottomOf(4)}

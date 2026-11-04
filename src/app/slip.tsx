@@ -1,5 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { BackHandler, Platform, View } from 'react-native';
 
 import {
   Chips,
@@ -10,15 +11,19 @@ import {
   OptionList,
   PledgeCard,
   Sheet,
+  StepFade,
   SummaryCard,
   TimeWheel,
+  useStepDirection,
   WhenChips,
   type WheelStep,
 } from '@/components/mono';
 import { FED_FEELINGS, Gap, SLIP_FED, SlipDone, SlipQuestion, type FedName } from '@/components/slip/kit';
 import { SLIP_CARDS, SLIP_FED_TO_CARD, SLIP_KICKER } from '@/content/slipCards';
-import { useCreateEvent, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
+import { useCreateEvent, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
+import { programDay, toDateKey } from '@/lib/date';
 import { dayPartDate, dayPartTime, daysAgo, joinLower } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 import { setJSON } from '@/lib/storage';
 import { mono } from '@/lib/theme';
 
@@ -77,6 +82,13 @@ const DATE_SHEET_TOP = 852 - 48 - (DATE_DAYS * 58 + (DATE_DAYS - 1) * 12) - 44;
 type Step = 'entry' | 'closeit' | 'when' | 'fed' | 'logged' | 'urgenow' | 'warn' | 'card' | 'pledge' | 'begin' | 'morning';
 
 const ORDER: Step[] = ['entry', 'closeit', 'when', 'fed', 'logged', 'urgenow', 'warn', 'card', 'pledge', 'begin'];
+/** Where each step sits, for the hand-over's direction — 98L, reached from 98K, comes after it. */
+const POSITION: Record<Step, number> = { ...(Object.fromEntries(ORDER.map((s, i) => [s, i])) as Record<Step, number>), morning: ORDER.length };
+/** Once the slip is written, nothing steps back past the board that says so. */
+const LOGGED_AT = ORDER.indexOf('logged');
+
+/** What the boards after the save read: the log as it stood the moment before this slip joined it. */
+type Prior = { today: number; sincePledge: number };
 
 /**
  * 98F’s four answers, top to bottom.
@@ -100,6 +112,7 @@ export default function Slip() {
   const router = useRouter();
   const { stage } = useLocalSearchParams<{ stage?: string }>();
   const createEvent = useCreateEvent();
+  const createJournalEntry = useCreateJournalEntry();
   const user = useCurrentUser();
   const events = useEvents();
   const journal = useJournalEntries();
@@ -115,29 +128,45 @@ export default function Slip() {
   const [deck, setDeck] = useState(0);
   // Read once: the wheel must not slide under a re-render.
   const [now] = useState(() => Date.now());
-  // Whether this run has written its event — read during render to discount it
-  // from the day's slip count, so the ref is only the re-entry guard.
-  const [logged, setLogged] = useState(false);
+  /**
+   * The counts the later boards read, taken at the save, before the write. The
+   * log refreshes on its own time after it, so a count read live would be
+   * briefly wrong either way round — a day's second slip once drew the first
+   * slip's board for a beat. Null until the save.
+   */
+  const [prior, setPrior] = useState<Prior | null>(null);
   const saving = useRef(false);
+  /** "Sign it again" files once. */
+  const resigning = useRef(false);
+  const dir = useStepDirection(POSITION[step]);
 
   const at = customAt ?? now - WHEN_CHIPS[when].offsetMs;
   /** A picked moment may not be in the future. */
   const pick = (t: number) => setCustomAt(Math.min(t, now));
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
   const go = (next: Step) => setStep(next);
+  /** Back a step — but once the slip is on the log, never back past the board that says so (its answers are filed). */
   const back = () => {
     const here = ORDER.indexOf(step);
-    if (here <= 0) close();
+    if (here <= 0 || (prior && here <= LOGGED_AT)) close();
     else go(ORDER[here - 1]);
   };
 
   /**
-   * Slips already on the log for this day, NOT counting the one this run has
-   * just written — 98G is the first slip's screen, so a clean day must land on
-   * index 0 after the save, not on 98H.
+   * Slips already on the log for `at`'s day, and since the standing pledge was
+   * signed — read off the log as it is, which before the save does not hold
+   * this one. 98G is the first slip's screen, so a clean day lands on index 0.
    */
-  const slipsToday = (events ?? []).filter((e) => e.type === 'lapse' && new Date(e.createdAt).toDateString() === new Date(at).toDateString()).length;
-  const priorToday = Math.max(0, slipsToday - (logged ? 1 : 0));
+  const countPrior = (moment: number): Prior => {
+    const lapses = (events ?? []).filter((e) => e.type === 'lapse');
+    const day = toDateKey(moment);
+    return {
+      today: lapses.filter((e) => toDateKey(e.createdAt) === day).length,
+      sincePledge: pledge ? lapses.filter((e) => e.createdAt >= pledge.createdAt).length : 0,
+    };
+  };
+  const counts = prior ?? countPrior(at);
+  const priorToday = counts.today;
   const warning = WARNINGS[Math.min(priorToday, WARNINGS.length - 1)];
 
   /**
@@ -149,10 +178,8 @@ export default function Slip() {
    * the signature and this one — a same-day repeat necessarily has one. The card
    * is only ever drawn over words the user actually signed.
    */
-  const priorSincePledge = pledge
-    ? (events ?? []).filter((e) => e.type === 'lapse' && e.createdAt >= pledge.createdAt && !(logged && e.createdAt === at)).length
-    : 0;
-  const pledgeEligible = Boolean(pledge) && priorSincePledge === 0;
+  // a slip dated before the signature is not one since it, so it has no pledge to answer to
+  const pledgeEligible = Boolean(pledge) && at >= (pledge?.createdAt ?? Infinity) && counts.sincePledge === 0;
 
   /**
    * The deck: the cards the user's own answers name, in chip order, then every
@@ -167,263 +194,313 @@ export default function Slip() {
   async function save() {
     if (saving.current) return;
     saving.current = true;
-    setLogged(true);
+    // the counts first: this slip is not on the log yet, and they must not see it arrive
+    setPrior(countPrior(at));
     try {
       // storage keeps the `' · '` join (Log, insights and the report read it); 98E only displays commas
       await createEvent({ type: 'lapse', trigger: fed.length ? fed.join(' · ') : undefined, createdAt: at });
       // The sealed letter arrives over Today the launch after a slip is logged.
       await setJSON('tideline.letter.pending', Date.now());
-    } catch {
-      // no frame draws a failed save; the flow carries on (relapse.tsx does the same)
+    } catch (error) {
+      // no frame draws a failed save; the flow carries on, but says what it lost
+      if (__DEV__) console.warn('lapse was not written', error);
     }
   }
 
-  switch (step) {
-    // ── 98A · Slip — It Happened ────────────────────────────────────
-    case 'entry':
-      return (
-        <HeroBoard
-          key="entry"
-          nav={{ onClose: close }}
-          hero="dominoes"
-          title="It happened."
-          body="The day isn’t over. Log what happened, then stop it here."
-          cta="Log the slip"
-          onCta={() => go('closeit')}
-          ghost="Not now"
-          onGhost={close}
-        />
-      );
-
-    // ── 98B · Slip — Close It Now ───────────────────────────────────
-    case 'closeit':
-      return (
-        <HeroBoard
-          key="closeit"
-          nav={{ onClose: close }}
-          hero="tab"
-          title="Close it now."
-          body="Everything else can wait. Close the tab, close the app, put the screen down."
-          cta="Continue"
-          onCta={() => go('when')}
-        />
-      );
-
-    // ── 98C · Slip — When ───────────────────────────────────────────
-    case 'when': {
-      const t = new Date(at);
-      const h24 = t.getHours();
-      const ago = daysAgo(at, now);
-      const days = Array.from({ length: DATE_DAYS }, (_, k) => {
-        const d = new Date(at);
-        d.setDate(d.getDate() + ago - k);
-        return { key: String(k), label: dayPartDate(d, now) };
+  /**
+   * 98J's "Sign it again": the same words, signed today — a new `Pledge` entry,
+   * titled the way the morning check-in titles its own, which becomes the
+   * standing pledge the next slip is read against.
+   */
+  function resign() {
+    if (resigning.current || !pledge) {
+      go('begin');
+      return;
+    }
+    resigning.current = true;
+    const day = programDay(user?.createdAt, Date.now());
+    void Promise.resolve()
+      .then(() => createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledge.body }))
+      .then(() => haptic('success'))
+      .catch((error) => {
+        if (__DEV__) console.warn('pledge was not re-signed', error);
       });
-      return (
-        <SlipQuestion
-          back
-          dashes={3}
-          onBack={back}
-          onClose={close}
-          gap={14}
-          cta="Continue"
-          onCta={() => go('fed')}
-          overlay={
-            <Sheet open={dateOpen} top={DATE_SHEET_TOP} onClose={() => setDateOpen(false)}>
-              <OptionList
-                options={days}
-                value={String(ago)}
-                onChange={(key) => {
-                  const d = new Date(at);
-                  d.setDate(d.getDate() + ago - Number(key));
-                  pick(d.getTime());
-                  // let the row show it was picked, as the funnel's auto-advance does
-                  setTimeout(() => setDateOpen(false), 260);
-                }}
-              />
-            </Sheet>
-          }>
-          <H1>When did it happen?</H1>
-          <Gap h={2} />
-          <WhenChips
-            options={WHEN_CHIPS.map((c) => c.label)}
-            value={customAt == null ? WHEN_CHIPS[when].label : null}
-            onChange={(label) => {
-              setWhen(WHEN_CHIPS.findIndex((c) => c.label === label));
-              setCustomAt(null);
-            }}
+    go('begin');
+  }
+
+  // Android's back is the chevron: a step back, never past the filed slip, and the ✕ from the first board.
+  const onHardwareBack = useRef(back);
+  useEffect(() => {
+    onHardwareBack.current = back;
+  });
+  useEffect(() => {
+    if (Platform.OS !== 'android') return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      onHardwareBack.current();
+      return true;
+    });
+    return () => sub.remove();
+  }, []);
+
+  // each board its own key, so a new card or the next warning hands over rather than cuts
+  const stepKey = step === 'card' ? `card-${cards[deck % cards.length].id}` : step === 'warn' ? `warn-${priorToday}` : step;
+  return (
+    <View style={{ flex: 1, backgroundColor: mono.ground }}>
+      <StepFade stepKey={stepKey} direction={dir}>
+        {board()}
+      </StepFade>
+    </View>
+  );
+
+  // the boards, by step (a declaration, so it can follow the return)
+  function board() {
+    switch (step) {
+      // ── 98A · Slip — It Happened ────────────────────────────────────
+      case 'entry':
+        return (
+          <HeroBoard
+            key="entry"
+            nav={{ onClose: close }}
+            hero="dominoes"
+            title="It happened."
+            body="The day isn’t over. Log what happened, then stop it here."
+            cta="Log the slip"
+            onCta={() => go('closeit')}
+            ghost="Not now"
+            onGhost={close}
           />
-          <Gap h={6} />
-          <MonoText v="caps">Or choose a time</MonoText>
-          <TimeWheel
-            value={{ hour12: h24 % 12 || 12, minute: t.getMinutes(), period: h24 >= 12 ? 'PM' : 'AM' }}
-            onChange={(_, s) => pick(at + s.delta * WHEEL_UNIT[s.column])}
+        );
+
+      // ── 98B · Slip — Close It Now ───────────────────────────────────
+      case 'closeit':
+        return (
+          <HeroBoard
+            key="closeit"
+            nav={{ onClose: close }}
+            hero="tab"
+            title="Close it now."
+            body="Everything else can wait. Close the tab, close the app, put the screen down."
+            cta="Continue"
+            onCta={() => go('when')}
           />
-          <DateRow label={dayPartDate(at, now)} onPress={() => setDateOpen(true)} />
-        </SlipQuestion>
-      );
+        );
+
+      // ── 98C · Slip — When ───────────────────────────────────────────
+      case 'when': {
+        const t = new Date(at);
+        const h24 = t.getHours();
+        const ago = daysAgo(at, now);
+        const days = Array.from({ length: DATE_DAYS }, (_, k) => {
+          const d = new Date(at);
+          d.setDate(d.getDate() + ago - k);
+          return { key: String(k), label: dayPartDate(d, now) };
+        });
+        return (
+          <SlipQuestion
+            back
+            dashes={3}
+            onBack={back}
+            onClose={close}
+            gap={14}
+            cta="Continue"
+            onCta={() => go('fed')}
+            overlay={
+              <Sheet open={dateOpen} top={DATE_SHEET_TOP} onClose={() => setDateOpen(false)}>
+                <OptionList
+                  options={days}
+                  value={String(ago)}
+                  onChange={(key) => {
+                    const d = new Date(at);
+                    d.setDate(d.getDate() + ago - Number(key));
+                    pick(d.getTime());
+                    // let the row show it was picked, as the funnel's auto-advance does
+                    setTimeout(() => setDateOpen(false), 260);
+                  }}
+                />
+              </Sheet>
+            }>
+            <H1>When did it happen?</H1>
+            <Gap h={2} />
+            <WhenChips
+              options={WHEN_CHIPS.map((c) => c.label)}
+              value={customAt == null ? WHEN_CHIPS[when].label : null}
+              onChange={(label) => {
+                setWhen(WHEN_CHIPS.findIndex((c) => c.label === label));
+                setCustomAt(null);
+              }}
+            />
+            <Gap h={6} />
+            <MonoText v="caps">Or choose a time</MonoText>
+            <TimeWheel
+              value={{ hour12: h24 % 12 || 12, minute: t.getMinutes(), period: h24 >= 12 ? 'PM' : 'AM' }}
+              onChange={(_, s) => pick(at + s.delta * WHEEL_UNIT[s.column])}
+            />
+            <DateRow label={dayPartDate(at, now)} onPress={() => setDateOpen(true)} />
+          </SlipQuestion>
+        );
+      }
+
+      // ── 98D · Slip — What Fed It ────────────────────────────────────
+      case 'fed':
+        return (
+          <SlipQuestion
+            back
+            dashes={5}
+            onBack={back}
+            onClose={close}
+            hero={{ id: 'nightPhone', top: 506 }}
+            gap={8}
+            cta="Continue"
+            // no frame draws it, but a slip needs at least one answer (D321's dimmed pill)
+            ctaDisabled={fed.length === 0}
+            onCta={() => {
+              void save();
+              go('logged');
+            }}>
+            <H1>What fed it?</H1>
+            <MonoText v="pTight" color={mono.mute}>
+              Tap all that apply.
+            </MonoText>
+            <Gap h={6} />
+            <Chips<FedName> multi options={SLIP_FED} value={fed} onChange={setFed} />
+          </SlipQuestion>
+        );
+
+      // ── 98E · Slip — Logged ─────────────────────────────────────────
+      case 'logged': {
+        const feelings = fed.filter((name) => FED_FEELINGS.includes(name));
+        const situations = fed.filter((name) => !FED_FEELINGS.includes(name));
+        // 98E's own sample takes the change line off the SITUATION, not the
+        // feeling: `Tired, Phone in bed, Late night` reads back as “Phone charges
+        // outside the bedroom”, which is the Late night card's move.
+        const change = (cards.find((card) => card.kind === 'trigger' && fed.some((name) => SLIP_FED_TO_CARD[name] === card.id)) ?? cards[0])?.change;
+        // a row with nothing to say is left out, as Lapse Done draws fewer rows (D302)
+        const rows = [
+          { label: 'When', value: dayPartTime(at, now) },
+          { label: 'What was going on', value: joinLower(feelings) },
+          { label: 'Set off by', value: joinLower(situations) },
+          { label: 'Change for next time', value: change ?? '' },
+        ]
+          .filter((r) => r.value)
+          .map((r) => ({ ...r, value: noOrphan(r.value) }));
+        return (
+          <SlipDone onClose={close} cta="Continue" onCta={() => go('urgenow')}>
+            <H1 center style={{ alignSelf: 'stretch' }}>
+              Slip logged.
+            </H1>
+            <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
+              You stopped, logged it, and changed something for next time.
+            </MonoText>
+            <Gap h={6} />
+            <SummaryCard rows={rows} />
+          </SlipDone>
+        );
+      }
+
+      // ── 98F · Slip — Current Urge ───────────────────────────────────
+      case 'urgenow':
+        return (
+          <SlipQuestion
+            onClose={close}
+            hero={{ id: 'tab', top: 506, scale: 0.965 }}
+            gap={8}
+            cta="Continue"
+            // the answer is optional (D149); the one that says it is still going leaves the flow
+            onCta={() => (watching === STILL_WATCHING ? router.replace('/urge-hub') : go('warn'))}>
+            {/* balance breaks it here on the web; native gets the same two lines from the \n (D332) */}
+            <H1>{'Do you still want\nto keep watching?'}</H1>
+            <MonoText v="pTight" color={mono.mute}>
+              Honest answer. It changes what comes next.
+            </MonoText>
+            <Gap h={6} />
+            <OptionList options={WATCHING} value={watching} onChange={setWatching} />
+          </SlipQuestion>
+        );
+
+      // ── 98G / 98H / 98I · one slip, two, or three ───────────────────
+      case 'warn':
+        return (
+          <HeroBoard
+            key={`warn-${priorToday}`}
+            tone={'dark' in warning ? 'dark' : 'light'}
+            nav={{ onClose: close }}
+            hero={warning.hero}
+            title={warning.title}
+            body={warning.body}
+            cta="Continue"
+            onCta={() => go('card')}
+          />
+        );
+
+      // ── 99A–99H, 100A–100K · the card the answers named ─────────────
+      case 'card': {
+        const card = cards[deck % cards.length];
+        return (
+          <HeroBoard
+            key={`card-${card.id}`}
+            nav={{ centre: { title: SLIP_KICKER[card.kind] }, onClose: close }}
+            hero={card.hero}
+            title={card.headline}
+            body={card.body}
+            cta={card.cta}
+            onCta={() => go(pledgeEligible ? 'pledge' : 'begin')}
+            ghost="Give me another"
+            onGhost={() => setDeck((index) => index + 1)}
+          />
+        );
+      }
+
+      // ── 98J · Slip — The Pledge Still Stands ────────────────────────
+      case 'pledge':
+        return (
+          <SlipQuestion
+            onClose={close}
+            hero={{ id: 'fountainPen', top: 458, scale: 0.869 }}
+            gap={14}
+            cta="Sign it again"
+            onCta={resign}
+            ghost="Read my pledge"
+            onGhost={() => router.push('/vow')}>
+            <H1>The pledge still stands.</H1>
+            <MonoText v="p">A slip doesn’t erase what you decided. Sign it again and keep going.</MonoText>
+            <Gap h={6} />
+            {/* gated on `pledgeEligible`, so the words are always ones the user signed */}
+            <PledgeCard pledge={pledge?.body ?? ''} name={user?.displayName?.split(' ')[0] || 'You'} signed />
+          </SlipQuestion>
+        );
+
+      // ── 98K · Slip — Begin Again ────────────────────────────────────
+      case 'begin':
+        return (
+          <HeroBoard
+            key="begin"
+            nav={{ onClose: close }}
+            hero="sunrise"
+            title="The day is still yours."
+            body="One part of it went wrong. Nothing else has to."
+            cta="Start again"
+            // a slip logged for a day that is not today IS last night's, which is
+            // the board 98L writes for — read the timestamp, not the chip, because
+            // the wheel can move it after the chip was picked
+            onCta={() => (daysAgo(at, now) !== 0 ? go('morning') : router.replace('/(app)/today'))}
+          />
+        );
+
+      // ── 98L · Slip — Morning After ──────────────────────────────────
+      case 'morning':
+        return (
+          <HeroBoard
+            key="morning"
+            nav={{ onClose: close }}
+            hero="bell"
+            title="Morning after."
+            body="Last night happened. Today still counts. Start with the next decision."
+            cta="Check in"
+            onCta={() => router.replace('/day/morning')}
+            ghost="Later"
+            onGhost={() => router.replace('/(app)/today')}
+          />
+        );
     }
-
-    // ── 98D · Slip — What Fed It ────────────────────────────────────
-    case 'fed':
-      return (
-        <SlipQuestion
-          back
-          dashes={5}
-          onBack={back}
-          onClose={close}
-          hero={{ id: 'nightPhone', top: 506 }}
-          gap={8}
-          cta="Continue"
-          // no frame draws it, but a slip needs at least one answer (D321's dimmed pill)
-          ctaDisabled={fed.length === 0}
-          onCta={() => {
-            void save();
-            go('logged');
-          }}>
-          <H1>What fed it?</H1>
-          <MonoText v="pTight" color={mono.mute}>
-            Tap all that apply.
-          </MonoText>
-          <Gap h={6} />
-          <Chips<FedName> multi options={SLIP_FED} value={fed} onChange={setFed} />
-        </SlipQuestion>
-      );
-
-    // ── 98E · Slip — Logged ─────────────────────────────────────────
-    case 'logged': {
-      const feelings = fed.filter((name) => FED_FEELINGS.includes(name));
-      const situations = fed.filter((name) => !FED_FEELINGS.includes(name));
-      // 98E's own sample takes the change line off the SITUATION, not the
-      // feeling: `Tired, Phone in bed, Late night` reads back as “Phone charges
-      // outside the bedroom”, which is the Late night card's move.
-      const change = (cards.find((card) => card.kind === 'trigger' && fed.some((name) => SLIP_FED_TO_CARD[name] === card.id)) ?? cards[0])?.change;
-      // a row with nothing to say is left out, as Lapse Done draws fewer rows (D302)
-      const rows = [
-        { label: 'When', value: dayPartTime(at, now) },
-        { label: 'What was going on', value: joinLower(feelings) },
-        { label: 'Set off by', value: joinLower(situations) },
-        { label: 'Change for next time', value: change ?? '' },
-      ]
-        .filter((r) => r.value)
-        .map((r) => ({ ...r, value: noOrphan(r.value) }));
-      return (
-        <SlipDone onClose={close} cta="Continue" onCta={() => go('urgenow')}>
-          <H1 center style={{ alignSelf: 'stretch' }}>
-            Slip logged.
-          </H1>
-          <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            You stopped, logged it, and changed something for next time.
-          </MonoText>
-          <Gap h={6} />
-          <SummaryCard rows={rows} />
-        </SlipDone>
-      );
-    }
-
-    // ── 98F · Slip — Current Urge ───────────────────────────────────
-    case 'urgenow':
-      return (
-        <SlipQuestion
-          onClose={close}
-          hero={{ id: 'tab', top: 506, scale: 0.965 }}
-          gap={8}
-          cta="Continue"
-          // the answer is optional (D149); the one that says it is still going leaves the flow
-          onCta={() => (watching === STILL_WATCHING ? router.replace('/urge-hub') : go('warn'))}>
-          {/* balance breaks it here on the web; native gets the same two lines from the \n (D332) */}
-          <H1>{'Do you still want\nto keep watching?'}</H1>
-          <MonoText v="pTight" color={mono.mute}>
-            Honest answer. It changes what comes next.
-          </MonoText>
-          <Gap h={6} />
-          <OptionList options={WATCHING} value={watching} onChange={setWatching} />
-        </SlipQuestion>
-      );
-
-    // ── 98G / 98H / 98I · one slip, two, or three ───────────────────
-    case 'warn':
-      return (
-        <HeroBoard
-          key={`warn-${priorToday}`}
-          tone={'dark' in warning ? 'dark' : 'light'}
-          nav={{ onClose: close }}
-          hero={warning.hero}
-          title={warning.title}
-          body={warning.body}
-          cta="Continue"
-          onCta={() => go('card')}
-        />
-      );
-
-    // ── 99A–99H, 100A–100K · the card the answers named ─────────────
-    case 'card': {
-      const card = cards[deck % cards.length];
-      return (
-        <HeroBoard
-          key={`card-${card.id}`}
-          nav={{ centre: { title: SLIP_KICKER[card.kind] }, onClose: close }}
-          hero={card.hero}
-          title={card.headline}
-          body={card.body}
-          cta={card.cta}
-          onCta={() => go(pledgeEligible ? 'pledge' : 'begin')}
-          ghost="Give me another"
-          onGhost={() => setDeck((index) => index + 1)}
-        />
-      );
-    }
-
-    // ── 98J · Slip — The Pledge Still Stands ────────────────────────
-    case 'pledge':
-      return (
-        <SlipQuestion
-          onClose={close}
-          hero={{ id: 'fountainPen', top: 458, scale: 0.869 }}
-          gap={14}
-          cta="Sign it again"
-          onCta={() => go('begin')}
-          ghost="Read my pledge"
-          onGhost={() => router.push('/vow')}>
-          <H1>The pledge still stands.</H1>
-          <MonoText v="p">A slip doesn’t erase what you decided. Sign it again and keep going.</MonoText>
-          <Gap h={6} />
-          {/* gated on `pledgeEligible`, so the words are always ones the user signed */}
-          <PledgeCard pledge={pledge?.body ?? ''} name={user?.displayName?.split(' ')[0] || 'You'} signed />
-        </SlipQuestion>
-      );
-
-    // ── 98K · Slip — Begin Again ────────────────────────────────────
-    case 'begin':
-      return (
-        <HeroBoard
-          key="begin"
-          nav={{ onClose: close }}
-          hero="sunrise"
-          title="The day is still yours."
-          body="One part of it went wrong. Nothing else has to."
-          cta="Start again"
-          // a slip logged for a day that is not today IS last night's, which is
-          // the board 98L writes for — read the timestamp, not the chip, because
-          // the wheel can move it after the chip was picked
-          onCta={() => (daysAgo(at, now) !== 0 ? go('morning') : router.replace('/(app)/today'))}
-        />
-      );
-
-    // ── 98L · Slip — Morning After ──────────────────────────────────
-    case 'morning':
-      return (
-        <HeroBoard
-          key="morning"
-          nav={{ onClose: close }}
-          hero="bell"
-          title="Morning after."
-          body="Last night happened. Today still counts. Start with the next decision."
-          cta="Check in"
-          onCta={() => router.replace('/day/morning')}
-          ghost="Later"
-          onGhost={() => router.replace('/(app)/today')}
-        />
-      );
   }
 }

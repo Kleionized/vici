@@ -42,6 +42,7 @@ const R = {
   completeOnboarding: mref('users:completeOnboarding'),
   updateSettings: mref('users:updateSettings'),
   updateProfile: mref('users:updateProfile'),
+  deleteAccount: mref('users:deleteAccount'),
 
   journalList: qref<JournalEntry[]>('journal:list'),
   journalCreate: mref<JournalEntry>('journal:create'),
@@ -60,6 +61,7 @@ const R = {
 
   eventsList: qref<TidelineEvent[]>('events:list'),
   eventsCreate: mref('events:create'),
+  eventsRemove: mref('events:remove'),
 
   checkinsList: qref<DailyCheckin[]>('checkins:list'),
   checkinForDate: qref<DailyCheckin | null>('checkins:getForDate'),
@@ -134,7 +136,8 @@ export function useTodayCheckin(): DailyCheckin | null | undefined {
 }
 
 export function useDashboard(): DashboardData | undefined {
-  return orUndef(useQuery(R.dashboardGet, {}));
+  // the server runs in UTC: it is told which calendar day it is here
+  return orUndef(useQuery(R.dashboardGet, { today: todayKey(), lessonsTotal: SORTED_LESSONS.length }));
 }
 
 export function useJournalEntries(): JournalEntry[] | undefined {
@@ -202,6 +205,17 @@ export function useUpdateLifeMap() {
 export function useCreateEvent() {
   const fn = useMutation(R.eventsCreate);
   return (input: TidelineEventInput) => fn({ ...input });
+}
+
+export function useDeleteEvent() {
+  const fn = useMutation(R.eventsRemove);
+  return (id: string) => fn({ id });
+}
+
+/** Erase every row the account owns on the server (the caller then signs out). */
+export function useDeleteAccount() {
+  const fn = useMutation(R.deleteAccount);
+  return () => fn({});
 }
 
 export function useUpsertCheckin() {

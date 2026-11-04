@@ -19,7 +19,7 @@ import { useAuth } from '@/lib/auth';
 import { CURRICULUM_LESSONS } from '@/lib/curriculum';
 import { todayKey } from '@/lib/date';
 import { genId } from '@/lib/id';
-import { getJSON, setJSON } from '@/lib/storage';
+import { getJSON, removeKey, setJSON } from '@/lib/storage';
 import {
   DEFAULT_SETTINGS,
   type AppUser,
@@ -62,6 +62,9 @@ interface MockStoreValue {
   createJournalEntry(input: JournalEntryInput): Promise<JournalEntry>;
   updateJournalEntry(id: string, input: JournalEntryInput): Promise<void>;
   deleteJournalEntry(id: string): Promise<void>;
+  deleteEvent(id: string): Promise<void>;
+  /** Erase this user's data from the device. */
+  deleteAccount(): Promise<void>;
 }
 
 const MockStoreContext = createContext<MockStoreValue | null>(null);
@@ -167,7 +170,8 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
         userId: cur.user.clerkUserId,
         lessonSlug: slug,
         status: 'completed',
-        completedAt: Date.now(),
+        // a re-read keeps the first completion's day (the day the score credits)
+        completedAt: cur.progress[slug]?.status === 'completed' ? (cur.progress[slug]?.completedAt ?? Date.now()) : Date.now(),
         fitsMeRating: fitsMeRating ?? cur.progress[slug]?.fitsMeRating,
       };
       await apply({ ...cur, progress: { ...cur.progress, [slug]: progress } });
@@ -292,6 +296,22 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     [apply],
   );
 
+  const deleteEvent = useCallback(
+    async (id: string) => {
+      const cur = dataRef.current;
+      if (!cur) return;
+      await apply({ ...cur, events: cur.events.filter((e) => e._id !== id) });
+    },
+    [apply],
+  );
+
+  const deleteAccount = useCallback(async () => {
+    if (!userId) return;
+    await removeKey(dataKey(userId));
+    dataRef.current = null;
+    setData(null);
+  }, [userId]);
+
   const value: MockStoreValue = {
     hydrated,
     lessons: CURRICULUM_LESSONS,
@@ -308,6 +328,8 @@ export function MockStoreProvider({ children }: { children: ReactNode }) {
     createJournalEntry,
     updateJournalEntry,
     deleteJournalEntry,
+    deleteEvent,
+    deleteAccount,
   };
 
   return <MockStoreContext.Provider value={value}>{children}</MockStoreContext.Provider>;

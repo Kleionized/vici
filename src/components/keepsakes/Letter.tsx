@@ -7,6 +7,7 @@ import { roman } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
 
 import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
+import { programDay } from '@/lib/date';
 
 /**
  * The post — every piece of it arrives the same way and is read the same way
@@ -14,7 +15,6 @@ import { FaceCoin, type KeepsakeSceneKey } from './Medallion';
  * Medallion Letter`; CRITIC C8: Letter Arrival is the arrival for both posts).
  */
 
-const DAY = 86_400_000;
 
 /**
  * "Week XII post": the arrival names the programme week the post lands in
@@ -22,7 +22,7 @@ const DAY = 86_400_000;
  * the day of sign-up, seven days a week, twelve weeks at most.
  */
 export function postWeek(createdAt: number | undefined, now = Date.now()): string {
-  const day = createdAt ? Math.max(1, Math.floor((now - createdAt) / DAY) + 1) : 1;
+  const day = programDay(createdAt, now);
   return `Week ${roman(Math.min(12, Math.ceil(day / 7)))} post`;
 }
 
@@ -131,15 +131,31 @@ export function Signoff({ children }: { children: ReactNode }) {
   );
 }
 
+/** the enclosure strikes a beat after the letter opens, once its card has settled */
+const ENCLOSURE_STRIKE = { delay: 420 };
+
 /**
  * 39B's enclosure: `margin-top 6 · row center gap 14 · padding 14 16 · r18 ·
  * #0D0D0D` — the 44 coin, then the face and its rung (15/700) over what earns
  * it (13/400 mute), `gap 2`.
  */
-export function Enclosure({ scene, numeral, title, line }: { scene: KeepsakeSceneKey; numeral?: string; title: string; line: string }) {
+export function Enclosure({
+  scene,
+  numeral,
+  title,
+  line,
+  strike,
+}: {
+  scene: KeepsakeSceneKey;
+  numeral?: string;
+  title: string;
+  line: string;
+  /** strike the coin as the letter opens (after the reader's eye has had a moment on the page) */
+  strike?: boolean;
+}) {
   return (
     <View style={{ marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, borderRadius: 18, backgroundColor: mono.ground }}>
-      <FaceCoin scene={scene} size={44} numeral={numeral} />
+      <FaceCoin scene={scene} size={44} numeral={numeral} strike={strike ? ENCLOSURE_STRIKE : false} />
       {/* the column is as wide as its longer line (the frame's 184.8), not the card's remainder */}
       <View style={{ flexShrink: 1, gap: 2 }}>
         <MonoText v="rowLabel" wrap="wrap">

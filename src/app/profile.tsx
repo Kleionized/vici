@@ -23,6 +23,7 @@ import { useAuth } from '@/lib/auth';
 import { useCurrentUser, useUpdateProfile } from '@/lib/backend';
 import { dayMonthYear } from '@/lib/format';
 import { lhNormal, mono, sans } from '@/lib/theme';
+import { programDay } from '@/lib/date';
 
 /**
  * 93 · Edit profile — the nav row with its caption, then a `gap 18` column
@@ -36,7 +37,6 @@ import { lhNormal, mono, sans } from '@/lib/theme';
  * screen's foot if it ever has to (D320); at 852 and 667 it fits.
  */
 
-const DAY = 86_400_000;
 
 export default function Profile() {
   const router = useRouter();
@@ -72,7 +72,7 @@ export default function Profile() {
   const started = user ? dayMonthYear(user.createdAt) : '—';
   // "Week VI, Discipline" — the roman numeral and the week's name, off the same
   // twelve-week table the week pages are built from.
-  const weekNumber = user ? Math.min(12, Math.floor(Math.max(0, openedAt - user.createdAt) / (7 * DAY)) + 1) : 1;
+  const weekNumber = user ? Math.min(12, Math.ceil(programDay(user.createdAt, openedAt) / 7)) : 1;
   const week = weekFor(weekNumber);
   const currentWeek = week ? `Week ${week.roman}, ${week.name}` : '—';
 

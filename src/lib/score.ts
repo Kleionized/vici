@@ -7,6 +7,7 @@
  * matter, not enough to make coming back feel pointless.
  */
 
+import { calendarDaysBetween, fromDateKey, programDay, startOfDay, toDateKey } from '@/lib/date';
 import type { DailyCheckin, TidelineEvent } from '@/lib/types';
 
 export const SCORE_BASE = 1_000;
@@ -58,11 +59,16 @@ export function rankFor(total: number): { rank: Rank; next?: Rank; toGo: number;
  * Build the score from the log. `days` bounds the "what moved it" window;
  * the total itself is all-time.
  */
-export function buildScore(checkins: DailyCheckin[], events: TidelineEvent[], lessonsDone: number, createdAt?: number): ScoreBreakdown {
-  const dayCount = createdAt ? Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1) : 1;
+export function buildScore(
+  checkins: DailyCheckin[],
+  events: TidelineEvent[],
+  lessonsDone: number,
+  createdAt?: number,
+  now: number = Date.now(),
+): ScoreBreakdown {
   const slips = events.filter((e) => e.type === 'lapse').length;
   const ridden = events.filter((e) => e.type === 'urge_rode_out').length;
-  const cleanDays = Math.max(0, dayCount - slips);
+  const cleanDays = cleanDaysUpTo(events, createdAt, now);
 
   const lines: ScoreLine[] = [
     { label: 'Clean days', points: cleanDays * SCORE_WEIGHTS.cleanDay },
@@ -76,7 +82,7 @@ export function buildScore(checkins: DailyCheckin[], events: TidelineEvent[], le
   const total = SCORE_BASE + net;
 
   // Today's own contribution, so the card can show what the day has earned.
-  const midnight = new Date().setHours(0, 0, 0, 0);
+  const midnight = startOfDay(now);
   const todayKey = dateKey(new Date(midnight));
   const since = (e: TidelineEvent) => e.createdAt >= midnight;
   const delta =
@@ -89,7 +95,49 @@ export function buildScore(checkins: DailyCheckin[], events: TidelineEvent[], le
 }
 
 function dateKey(d: Date) {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  return toDateKey(d);
+}
+
+/**
+ * Clean days from the account's first calendar day to `at`'s: every day that
+ * has begun, less the days a slip landed on. A day with two slips is one day
+ * that was not clean — the slips themselves are charged separately — which is
+ * how the day-by-day replay (`scoreHistory`) has always counted it. The total
+ * used to subtract one clean day per *slip*, so the two disagreed by four points
+ * for every extra slip on a day and the chart was quietly shifted to hide it.
+ */
+export function cleanDaysUpTo(events: readonly Pick<TidelineEvent, 'type' | 'createdAt'>[], createdAt: number | undefined, at: number): number {
+  const days = programDay(createdAt, at);
+  const first = createdAt ? startOfDay(createdAt) : startOfDay(at);
+  const lapsedDays = new Set<string>();
+  for (const e of events) {
+    if (e.type !== 'lapse' || e.createdAt > at) continue;
+    // a slip back-dated to before the account (the slip flow allows "yesterday" on day one) still costs a slip, not a day
+    if (e.createdAt < first) continue;
+    lapsedDays.add(toDateKey(new Date(e.createdAt)));
+  }
+  return Math.max(0, days - lapsedDays.size);
+}
+
+/**
+ * The score as it stood at a moment, on the same weights as the total — every
+ * register that prints a past score (the Log's Reports, the weekly report) reads
+ * this one function, so the numbers agree with Today's card.
+ */
+export function scoreAt(at: number, createdAt: number, checkins: DailyCheckin[], events: TidelineEvent[], lessons: number[]): number {
+  if (at < startOfDay(createdAt)) return SCORE_BASE;
+  const slips = events.filter((e) => e.type === 'lapse' && e.createdAt <= at).length;
+  const rode = events.filter((e) => e.type === 'urge_rode_out' && e.createdAt <= at).length;
+  const logged = checkins.filter((c) => fromDateKey(c.date).getTime() <= at).length;
+  const done = lessons.filter((t) => t <= at).length;
+  return (
+    SCORE_BASE +
+    cleanDaysUpTo(events, createdAt, at) * SCORE_WEIGHTS.cleanDay +
+    logged * SCORE_WEIGHTS.checkin +
+    done * SCORE_WEIGHTS.lesson +
+    rode * SCORE_WEIGHTS.urgeRidden +
+    slips * SCORE_WEIGHTS.slip
+  );
 }
 
 /* ------------------------------------------------------------ over time (D230) */
@@ -127,8 +175,8 @@ export function scoreHistory(
   now: number,
   total: number,
 ): ScoreHistory {
-  const start = new Date(createdAt).setHours(0, 0, 0, 0);
-  const days = Math.max(1, Math.floor((now - start) / DAY) + 1);
+  const start = startOfDay(createdAt);
+  const days = Math.max(1, calendarDaysBetween(start, now) + 1);
 
   const gained = new Map<string, number>();
   const add = (key: string, pts: number) => gained.set(key, (gained.get(key) ?? 0) + pts);
@@ -189,7 +237,7 @@ export function monthLedger(
   const since = now - LEDGER_WINDOW * DAY;
   const slips = events.filter((e) => e.type === 'lapse' && e.createdAt >= since);
   const ridden = events.filter((e) => e.type === 'urge_rode_out' && e.createdAt >= since).length;
-  const logged = checkins.filter((c) => new Date(`${c.date}T00:00:00`).getTime() >= since).length;
+  const logged = checkins.filter((c) => fromDateKey(c.date).getTime() >= since).length;
   const lessons = Object.values(progress).filter((p) => p?.status === 'completed' && p.completedAt != null && p.completedAt >= since).length;
   const days = Math.min(LEDGER_WINDOW, Math.max(1, daysAlive));
 

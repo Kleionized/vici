@@ -21,6 +21,7 @@ import {
 import { useCreateJournalEntry, useCurrentUser, useJournalEntries } from '@/lib/backend';
 import { shortDate } from '@/lib/format';
 import { mono } from '@/lib/theme';
+import { calendarDaysBetween } from '@/lib/date';
 
 /**
  * 92C · Your vow — the flag hero, then the vow read back in its card (the kit
@@ -42,7 +43,6 @@ import { mono } from '@/lib/theme';
 /** The line the canvas draws when nothing has been signed yet. */
 const PLACEHOLDER = 'I’m done letting the wave decide. One evening at a time, I take the watch back.';
 
-const DAY = 86_400_000;
 const STACK_TOP = 340;
 const HERO_TOP = 104;
 /** the ghost's 18 line box at `bottom 48` */
@@ -70,7 +70,7 @@ export default function Vow() {
   const vow = journal.find((entry) => entry.tag === 'Vow') ?? journal.find((entry) => entry.tag === 'Pledge');
   const text = vow?.body ?? PLACEHOLDER;
   const signedAt = vow?.createdAt ?? user?.createdAt;
-  const held = signedAt ? Math.max(0, Math.floor((now - signedAt) / DAY)) : 0;
+  const held = signedAt ? Math.max(0, calendarDaysBetween(signedAt, now)) : 0;
   const name = user?.displayName?.split(' ')[0] || 'You';
 
   // the lift the short-screen rule asks for (0 at 852)
@@ -101,7 +101,7 @@ export default function Vow() {
     <Screen>
       <NavBar left="back" centre={{ title: 'Your vow' }} right="empty" onBack={back} />
       {dropArt ? null : (
-        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+        <View style={[{ pointerEvents: 'none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
           <Hero id="flag" top={HERO_TOP - lift} />
         </View>
       )}

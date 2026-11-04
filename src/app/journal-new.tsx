@@ -1,10 +1,11 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 
 import { NavBar, Screen, TextField, WhenChips } from '@/components/mono';
 import { useCreateJournalEntry, useJournalEntries, useUpdateJournalEntry } from '@/lib/backend';
 import { clockTime, WEEKDAYS_SHORT } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 
 const TAGS = ['Reflection', 'Urge', 'Lesson'];
 
@@ -45,19 +46,44 @@ export default function JournalNew() {
   }, [id, existing, loaded]);
 
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/journal'));
+  const saving = useRef(false);
 
   async function save() {
+    // Save twice in a row must not file two entries
+    if (saving.current) return;
     const t = title.trim();
     const b = body.trim();
     if (!t && !b) {
       close();
       return;
     }
+    saving.current = true;
     const input = { tag, title: t || 'Untitled', body: b };
-    if (id) await updateEntry(id, input);
-    else await createEntry(input);
-    close();
+    try {
+      if (id) await updateEntry(id, input);
+      else await createEntry(input);
+      haptic('success');
+      close();
+    } catch {
+      saving.current = false;
+      Alert.alert('Not saved', 'That entry didn’t save. Check your connection and try again.');
+    }
   }
+
+  /**
+   * Back with words on the page asks first — one stray tap used to throw away
+   * a whole entry. (The web has no native alert; there Back keeps the words.)
+   */
+  const dirty = id ? !!existing && (title !== existing.title || body !== existing.body || tag !== existing.tag) : !!(title.trim() || body.trim());
+  const back = () => {
+    if (!dirty) return close();
+    if (Platform.OS === 'web') return void save();
+    Alert.alert(id ? 'Keep your changes?' : 'Keep this entry?', undefined, [
+      { text: 'Keep editing', style: 'cancel' },
+      { text: 'Discard', style: 'destructive', onPress: close },
+      { text: 'Save', onPress: () => void save() },
+    ]);
+  };
 
   const stamp = existing ? new Date(existing.createdAt) : new Date();
   const headerTime = existing ? `${WEEKDAYS_SHORT[stamp.getDay()]} · ${clockTime(stamp)}` : `Today · ${clockTime(stamp)}`;
@@ -68,7 +94,7 @@ export default function JournalNew() {
 
   return (
     <Screen>
-      <NavBar left="back" onBack={close} centre={{ title: headerTime }} right={{ text: 'Save', onPress: () => void save() }} />
+      <NavBar left="back" onBack={back} centre={{ title: headerTime }} right={{ text: 'Save', onPress: () => void save() }} />
       <KeyboardAvoidingView style={{ position: 'absolute', left: 0, right: 0, top: 108, bottom: 0 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 48, gap: 16 }}>
           {/* one row that scrolls sideways: a fourth chip (Pledge, Affirmation) would

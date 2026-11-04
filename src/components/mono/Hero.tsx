@@ -1,11 +1,12 @@
 import { memo, useState, type ReactNode } from 'react';
-import { useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
+import { StyleSheet, useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { HERO_BOUNDS, HERO_BOX, HERO_PAINT_X, HERO_SCALE, HEROES, heroId, type HeroKey, type HeroNode } from '@/content/heroes';
 import { mono, monoDark } from '@/lib/theme';
 
 import { GhostLink, PrimaryButton } from './buttons';
+import { BeatLine, HeroStrike, paceFor, Reveal, TypeBeat, wasTyped } from './motion';
 import { NavBar, type NavCentre, type NavLeft, type NavRight } from './NavBar';
 import { Screen, ScrollRegion, useCanvasTop } from './Screen';
 import { MonoText } from './Text';
@@ -75,10 +76,9 @@ function Placed({ id, ox, oy, k, width }: { id: HeroKey; ox: number; oy: number;
   const height = Math.ceil(oy + k * b + BLEED) - top;
   return (
     <View
-      pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
-      style={{ position: 'absolute', left: 0, top, width, height }}>
+      style={{ pointerEvents: 'none', position: 'absolute', left: 0, top, width, height }}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ position: 'absolute', left: 0, top: 0 }}>
         <G transform={`translate(${fmt(ox)} ${fmt(oy - top)}) scale(${fmt(k)})`}>
           <HeroArt id={id} />
@@ -193,7 +193,7 @@ export function Hero(props: HeroCss | HeroCrop | HeroBoxProps) {
     const { ox, oy } = cssOrigin(top, s, width);
     const bleed = props.bleed ?? 32;
     return (
-      <View pointerEvents="none" style={[{ width, height: h, marginHorizontal: -bleed, flexShrink: 0 }, props.style]}>
+      <View style={[{ pointerEvents: 'none' }, { width, height: h, marginHorizontal: -bleed, flexShrink: 0 }, props.style]}>
         <Placed id={id} ox={ox} oy={oy} k={s} width={width} />
       </View>
     );
@@ -243,6 +243,13 @@ const TITLE_VARIANT = { 26: 'h1', 30: 'title', 34: 'titleCover' } as const;
  * been measured the art and the stack are not shown, so a short screen does
  * not draw one unlifted frame and jump. At 393 × 852 every board is exactly
  * the frame.
+ *
+ * `typeTitle` (off by default — the SOS and slip boards stay instant) makes the
+ * board *say* its title: the art and the caps are there with the frame, the
+ * title types itself out (its space already laid out, so nothing moves), and
+ * the body, the extra, the primary and the ghost link fade up into their places
+ * once it has finished. A touch anywhere finishes it; a title already said this
+ * session (a Back) is shown whole.
  */
 export function HeroBoard({
   tone = 'light',
@@ -265,6 +272,8 @@ export function HeroBoard({
   ctaBottom,
   ghost,
   onGhost,
+  typeTitle,
+  heroStrike,
   children,
 }: {
   tone?: 'light' | 'dark';
@@ -292,6 +301,10 @@ export function HeroBoard({
   ctaBottom?: number;
   ghost?: string;
   onGhost?: () => void;
+  /** type the title out and reveal the rest after it (opt-in; see above) */
+  typeTitle?: boolean;
+  /** the hero arrives struck — a soft scale-in and fade with one success haptic as it lands (a medal earned) */
+  heroStrike?: boolean;
   children?: ReactNode;
 }) {
   const dark = tone === 'dark';
@@ -317,6 +330,19 @@ export function HeroBoard({
     }
   }
   const hidden = measured ? null : { opacity: 0 };
+  /**
+   * What follows a typed title, held in its place until the title is said. The
+   * wrapper is a column with the stack's own gap and centring, so a body given
+   * as several nodes lays out exactly as it would directly in the stack.
+   */
+  const gated = (node: ReactNode, delay: number) =>
+    !typeTitle || node == null || node === false ? (
+      node
+    ) : (
+      <Reveal delay={delay} style={{ alignSelf: 'stretch', alignItems: 'center', gap }}>
+        {node}
+      </Reveal>
+    );
 
   const stack = (
     <View
@@ -327,21 +353,28 @@ export function HeroBoard({
           {caps}
         </MonoText>
       ) : null}
-      <MonoText v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }}>
-        {title}
-      </MonoText>
-      {typeof body === 'string' ? (
-        <MonoText v="p" center color={dark ? monoDark.body : mono.sub} style={{ alignSelf: 'stretch' }}>
-          {body}
-        </MonoText>
+      {typeTitle ? (
+        <BeatLine v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }} text={title} speed={paceFor(title)} />
       ) : (
-        body
+        <MonoText v={TITLE_VARIANT[titleSize]} center color={dark ? monoDark.text : mono.ink} style={{ alignSelf: 'stretch' }}>
+          {title}
+        </MonoText>
       )}
-      {extra}
+      {gated(
+        typeof body === 'string' ? (
+          <MonoText v="p" center color={dark ? monoDark.body : mono.sub} style={{ alignSelf: 'stretch' }}>
+            {body}
+          </MonoText>
+        ) : (
+          body
+        ),
+        0,
+      )}
+      {gated(extra, 90)}
     </View>
   );
 
-  return (
+  const board = (
     <Screen variant={dark ? 'dark' : 'app'}>
       <NavBar
         tone={tone}
@@ -352,12 +385,18 @@ export function HeroBoard({
         onClose={nav?.onClose}
       />
       {hero && !dropArt ? (
-        <View pointerEvents="none" style={[{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
-          <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+        <View style={[{ pointerEvents: 'none' }, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, hidden]}>
+          {heroStrike ? (
+            <HeroStrike originY={heroTop - lift + 120}>
+              <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+            </HeroStrike>
+          ) : (
+            <Hero id={hero} top={heroTop - lift} scale={heroScale} />
+          )}
         </View>
       ) : null}
       {art && !dropArt ? (
-        <View pointerEvents="box-none" style={[{ position: 'absolute', left: 0, right: 0, top: -lift, bottom: lift }, hidden]}>
+        <View style={[{ pointerEvents: 'box-none' }, { position: 'absolute', left: 0, right: 0, top: -lift, bottom: lift }, hidden]}>
           {art}
         </View>
       ) : null}
@@ -368,9 +407,24 @@ export function HeroBoard({
       ) : (
         stack
       )}
-      <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
-      {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+      {typeTitle ? (
+        <Reveal delay={140} style={StyleSheet.absoluteFill}>
+          <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
+          {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+        </Reveal>
+      ) : (
+        <>
+          <PrimaryButton label={cta} onPress={onCta} bottom={bottom} tone={tone} disabled={ctaDisabled} />
+          {ghost ? <GhostLink label={ghost} onPress={onGhost} tone={tone} /> : null}
+        </>
+      )}
       {children}
     </Screen>
+  );
+  if (!typeTitle) return board;
+  return (
+    <TypeBeat id="board" instant={wasTyped(title)} tapToFinish>
+      {board}
+    </TypeBeat>
   );
 }

@@ -14,7 +14,6 @@
  */
 
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -23,6 +22,7 @@ import { Hero, LaurelMark, LoadingView, MonoText, Screen } from '@/components/mo
 import { HERO_BOUNDS, type HeroId } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries } from '@/lib/backend';
 import { mono } from '@/lib/theme';
+import { programDay, useNow } from '@/lib/date';
 
 export type ChapterKey = 'landing' | 'crossing' | 'highlands' | 'watch';
 
@@ -48,9 +48,9 @@ export function chapterForDay(day: number): ChapterKey {
 /** Day 1 is the day you signed up, not the day after it. */
 export function useJourneyDay(): number {
   const user = useCurrentUser();
-  // Read once: the count must not shift under a re-render while a screen is open.
-  const [now] = useState(() => Date.now());
-  return user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  // Steady while a screen is open; moves on at midnight and on resume.
+  const now = useNow();
+  return programDay(user?.createdAt, now);
 }
 
 /** The chapter the user stands on. Falls back to the first one until the record loads. */
@@ -182,7 +182,7 @@ function ChapterBody({ chapter, ctx, width, offset, onBack }: { chapter: Chapter
   const y = (v: number) => v - offset;
   return (
     <View style={{ height: BODY_H - offset }}>
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -offset, width }}>
+      <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -offset, width }}>
         <Hero id={c.hero} top={heroTop(c.hero)} width={width} />
       </View>
 

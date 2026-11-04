@@ -6,7 +6,6 @@ import {
   BigStat,
   Bubbles,
   clockHour,
-  DAY_MS,
   Dial,
   DotRows,
   feelingsOf,
@@ -25,6 +24,7 @@ import {
 import { EmptyState, LoadingView, RuledRow, RuledRows } from '@/components/mono';
 import { INTENSITY_BANDS } from '@/components/ui/IntensityBands';
 import { useEvents } from '@/lib/backend';
+import { addDays, fromDateKey, isDateKey, startOfDay } from '@/lib/date';
 import { shortDate } from '@/lib/format';
 import type { TidelineEvent } from '@/lib/types';
 import { weekLabel } from '@/lib/weeklyReport';
@@ -70,12 +70,15 @@ export default function UrgeOverview() {
   const back = () => (router.canGoBack() ? router.back() : router.replace('/(app)/log'));
   if (events === undefined) return <LoadingView onBack={back} />;
 
-  const start = params.week ? new Date(`${params.week}T00:00:00`).getTime() : now - RANGE_DAYS * DAY_MS;
-  const end = params.week ? new Date(start).setDate(new Date(start).getDate() + 7) : now + 1;
+  // A week is its seven calendar days; the default range is the thirty calendar days ending today (the
+  // pill's "Last 30 days"), from local midnight — not thirty 24-hour blocks back from this minute.
+  const week = params.week && isDateKey(params.week) ? params.week : undefined;
+  const start = week ? fromDateKey(week).getTime() : startOfDay(addDays(now, -(RANGE_DAYS - 1)));
+  const end = week ? addDays(start, 7) : now + 1;
   const urges = events.filter((e) => isUrge(e) && e.createdAt >= start && e.createdAt < end).sort((a, b) => b.createdAt - a.createdAt);
   const rode = urges.filter((e) => !isSlip(e)).length;
   // the empty pages keep the old line, with the range said the way the pill says it
-  const span = params.week ? 'this week' : `in the last ${RANGE_DAYS} days`;
+  const span = week ? 'this week' : `in the last ${RANGE_DAYS} days`;
   const nothing = (what: string) => `Nothing logged ${span}, so there is no ${what} to read yet.`;
 
   const strength = modeBand(urges);
@@ -88,7 +91,7 @@ export default function UrgeOverview() {
   return (
     <PagedRegister
       title="Urge overview"
-      pill={params.week ? weekLabel(params.week) : `Last ${RANGE_DAYS} days`}
+      pill={week ? weekLabel(week) : `Last ${RANGE_DAYS} days`}
       onBack={back}
       items={PAGES}
       page={page}

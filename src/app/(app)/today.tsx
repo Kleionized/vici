@@ -24,6 +24,7 @@ import {
 import { CURRICULUM_84_DAYS, lessonForDay, type Curriculum84Lesson } from '@/content/curriculum84';
 import type { HeroKey } from '@/content/heroes';
 import { useCheckins, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useUpsertCheckin } from '@/lib/backend';
+import { programDay, startOfDay, useNow } from '@/lib/date';
 import { checkinPartNow } from '@/lib/routines';
 import { buildScore, lastDays, scoreDayKey, scoreHistory } from '@/lib/score';
 import { lhNormal, mono, ring, sans, toneRamp } from '@/lib/theme';
@@ -111,9 +112,10 @@ export default function Today() {
   const insets = useSafeAreaInsets();
   const winH = useWindowDimensions().height;
   const tabBar = useTabBarHeight();
-  // Read once on mount: the day count and today's key must not shift under a
-  // re-render while the screen is open.
-  const [now] = useState(() => Date.now());
+  // Steady under re-renders, but moved on at midnight and when the app comes
+  // back — Today is a tab and stays mounted, so a clock read once on mount kept
+  // showing yesterday's day, task and week strip after the night rolled over.
+  const now = useNow();
   const [ends, setEnds] = useState(PAGE_ENDS);
   const endAt = (i: number) => (y: number) => setEnds((e) => (Math.abs(e[i] - y) < 0.5 ? e : e.map((v, j) => (j === i ? y : v))));
 
@@ -142,9 +144,9 @@ export default function Today() {
   }, 0);
 
   const createdAt = user?.createdAt ?? now;
-  const day = user?.createdAt ? Math.max(1, Math.floor((now - user.createdAt) / 86_400_000) + 1) : 1;
+  const day = programDay(user?.createdAt, now);
   const lessonsDone = Object.values(progress).filter((p) => p?.status === 'completed').length;
-  const score = buildScore(checkins, events, lessonsDone, user?.createdAt);
+  const score = buildScore(checkins, events, lessonsDone, user?.createdAt, now);
   const series = lastDays(scoreHistory(checkins, events, progress, createdAt, now, score.total), 30);
 
   const todayKey = scoreDayKey(now);
@@ -159,7 +161,7 @@ export default function Today() {
   // it or the account did not exist yet; today fills once the night check-in
   // has filed it (Today Home III, D231).
   const lapsed = new Set(events.filter((e) => e.type === 'lapse').map((e) => scoreDayKey(e.createdAt)));
-  const firstDay = new Date(createdAt).setHours(0, 0, 0, 0);
+  const firstDay = startOfDay(createdAt);
   const n = new Date(now);
   const closed = !!(todayCheckin?.emotions?.length || todayCheckin?.reasons?.length);
   const week: WeekDay[] = WEEKDAY.map((label, i) => {

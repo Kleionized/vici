@@ -411,7 +411,7 @@ export function Dial({ hours, peak, top = 248 }: { hours: number[]; peak: string
     </SvgText>
   );
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: top - PAD, alignItems: 'center' }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, top: top - PAD, alignItems: 'center' }}>
       <Svg width={236 + 2 * PAD} height={236 + 2 * PAD} viewBox={`${-PAD} ${-PAD} ${236 + 2 * PAD} ${236 + 2 * PAD}`}>
         <Circle cx={118} cy={118} r={96} fill="none" stroke={mono.line} strokeWidth={2} />
         {ticks}
@@ -470,7 +470,7 @@ export function Spark({ values, top = 352 }: { values: number[]; top?: number })
       : values.map((v, i) => ({ x: 4 + (212 * i) / (values.length - 1), y: span ? 48 - (42 * (v - lo)) / span : 6 }));
   const end = pts[pts.length - 1];
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top, alignItems: 'center' }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, top, alignItems: 'center' }}>
       <Svg width={220} height={56} viewBox="0 0 220 56">
         <Path d={smoothPath(pts)} fill="none" stroke={mono.ink} strokeWidth={3} strokeLinecap="round" />
         <Circle cx={end.x} cy={end.y} r={5} fill={mono.ink} />
@@ -503,7 +503,7 @@ export function ScoreLine({ values, top = 352 }: { values: number[]; top?: numbe
   const pts = values.map((v, i) => ({ x: (16 + 49.7 * i) * k, y: span ? 108 - (88 * (v - lo)) / span : 64 }));
   const d = pts.map((p, i) => `${i ? 'L' : 'M'}${f1(p.x)} ${f1(p.y)}`).join(' ');
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 32, right: 32, top, height: 140 }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 32, right: 32, top, height: 140 }}>
       <Svg width={w} height={140} viewBox={`0 0 ${w} 140`}>
         <Path d={d} fill="none" stroke={mono.ink} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
         {pts.map((p, i) =>

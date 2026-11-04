@@ -1,10 +1,12 @@
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 
 import { CheckDisc, ChevronL, ChevronR, Hero, MonoText, Tap, useCanvasTop, useTabBarHeight } from '@/components/mono';
 import type { Curriculum84Lesson, Curriculum84Week } from '@/content/curriculum84';
-import { useCurrentUser } from '@/lib/backend';
+import { useCurrentUser, useLessonProgressMap } from '@/lib/backend';
+import { lessonSlug } from '@/lib/curriculum';
 import { mono } from '@/lib/theme';
+import { programDay, useNow } from '@/lib/date';
 
 /**
  * `Week I Reset` … `Week XII Leave It Behind P2` — the twelve week pages
@@ -63,7 +65,15 @@ export type RowState = 'done' | 'current' | 'upcoming';
  * 1–37 done, 38 `Continue`, 39–84 upcoming. Completion records are not
  * consulted — the calendar day decides, as it always has (library Q3).
  */
-export function rowStateFor(lessonDay: number, day: number): RowState {
+export function rowStateFor(lessonDay: number, day: number, completed?: boolean): RowState {
+  // Once the progress is known it decides the tick: a lesson is done because it
+  // was finished, not because its day went by. The calendar used to tick every
+  // past lesson, so a skipped one looked finished and could never be found
+  // again from the week page. Until the record loads, the calendar stands in.
+  if (completed !== undefined) {
+    if (completed) return 'done';
+    return lessonDay === day ? 'current' : 'upcoming';
+  }
   if (lessonDay < day) return 'done';
   if (lessonDay === day) return 'current';
   return 'upcoming';
@@ -71,7 +81,7 @@ export function rowStateFor(lessonDay: number, day: number): RowState {
 
 /** Day one is the day they signed up, not the day after. */
 export function courseDay(createdAt: number | undefined, now: number): number {
-  return createdAt ? Math.max(1, Math.floor((now - createdAt) / 86_400_000) + 1) : 1;
+  return programDay(createdAt, now);
 }
 
 /**
@@ -80,7 +90,8 @@ export function courseDay(createdAt: number | undefined, now: number): number {
  */
 export function useCourseDay(): number {
   const user = useCurrentUser();
-  const [now] = useState(() => Date.now());
+  // steady while open, but moved on at midnight / on resume (`useNow`)
+  const now = useNow();
   return courseDay(user?.createdAt, now);
 }
 
@@ -97,7 +108,7 @@ export function clampWeek(value: unknown): number {
 /** The lesson's number as the rows print it — two digits. */
 export const lessonNumber = (day: number) => String(day).padStart(2, '0');
 
-const STATE_WORD: Record<RowState, string> = { done: 'completed', current: 'today', upcoming: 'upcoming' };
+const STATE_WORD: Record<RowState, string> = { done: 'completed', current: 'today', upcoming: 'not finished yet' };
 
 /**
  * One lesson row (library §3.5): `h58 r18`, a 28 lead cell, a 15/700 title that
@@ -202,7 +213,8 @@ export function CourseRow({
 
 /** A week's lesson as a row, labelled the way a screen reader should hear it. */
 export function LessonRow({ lesson, day, onPress, disabled }: { lesson: Curriculum84Lesson; day: number; onPress?: () => void; disabled?: boolean }) {
-  const state = rowStateFor(lesson.day, day);
+  const progress = useLessonProgressMap();
+  const state = rowStateFor(lesson.day, day, progress === undefined ? undefined : progress[lessonSlug(lesson.day)]?.status === 'completed');
   const n = lessonNumber(lesson.day);
   return (
     <CourseRow
@@ -335,7 +347,7 @@ export function WeekPage({
     <View style={{ width, height: '100%' }}>
       <ScrollView showsVerticalScrollIndicator={false} style={{ position: 'absolute', left: 0, right: 0, top, bottom: 0 }}>
         <View style={{ height: ROWS_TOP - top + 7 * ROW_H + 6 * ROW_GAP + 24 }}>
-          <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -top, width }}>
+          <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -top, width }}>
             {hero}
           </View>
           <WeekHeader week={week} top={HEADER_TOP - top} />

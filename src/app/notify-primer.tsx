@@ -2,6 +2,8 @@ import { useRouter } from 'expo-router';
 
 import { MonoText, NavBar } from '@/components/mono';
 import { ReminderBoard } from '@/components/onboarding/reminders';
+import { useUpdateSettings } from '@/lib/backend';
+import { enableReminders } from '@/lib/notifications';
 import { mono } from '@/lib/theme';
 
 /**
@@ -15,6 +17,7 @@ import { mono } from '@/lib/theme';
  */
 export default function NotifPrimer() {
   const router = useRouter();
+  const update = useUpdateSettings();
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   return (
@@ -30,7 +33,12 @@ export default function NotifPrimer() {
         </MonoText>
       }
       cta="Turn on reminders"
-      onCta={close}
+      onCta={() =>
+        void enableReminders()
+          .then(() => update({ morningCheckin: true, eveningWindDown: true, riskTimeSupport: true }))
+          .catch(() => {})
+          .finally(close)
+      }
       ghost="Not now"
       onGhost={close}
     />

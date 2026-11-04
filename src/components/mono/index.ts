@@ -28,3 +28,4 @@ export * from './MedalTier';
 export * from './TabBar';
 export * from './scales';
 export * from './Feedback';
+export * from './motion';

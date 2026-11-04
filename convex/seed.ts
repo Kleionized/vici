@@ -1,4 +1,4 @@
-import { mutation } from './_generated/server';
+import { internalMutation } from './_generated/server';
 import { upsertLessons, type LessonInput } from './lessonUpsert';
 
 /**
@@ -64,7 +64,7 @@ const SEED_LESSONS: LessonInput[] = [
   },
 ];
 
-export const seedLessons = mutation({
+export const seedLessons = internalMutation({
   args: {},
   handler: async (ctx) => {
     const upserted = await upsertLessons(ctx, SEED_LESSONS);

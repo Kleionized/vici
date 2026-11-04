@@ -181,6 +181,16 @@ export function useCreateEvent() {
   return (input: TidelineEventInput) => createEvent(input);
 }
 
+export function useDeleteEvent() {
+  const { deleteEvent } = useMockStore();
+  return (id: string) => deleteEvent(id);
+}
+
+export function useDeleteAccount() {
+  const { deleteAccount } = useMockStore();
+  return () => deleteAccount();
+}
+
 export function useUpsertCheckin() {
   const { upsertCheckin } = useMockStore();
   return (input: DailyCheckinInput) => upsertCheckin(input);

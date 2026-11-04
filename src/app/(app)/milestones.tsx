@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
-import { useRef, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 
+import { Arrive } from '@/components/keepsakes/Board';
 import { FaceCoin, kkMetal, kkTierLine } from '@/components/keepsakes/Medallion';
 import { LoadingView, MonoText, NavBar, Screen, Segmented, Tap, TitleHead } from '@/components/mono';
 import { useMedallionLedger, type LedgerFace } from '@/lib/album';
@@ -23,6 +24,12 @@ import { mono } from '@/lib/theme';
  *
  * The counts are live (`src/lib/album.ts`); the canvas's "10 of 12 earned" is
  * its own sample account. Tapping a face opens its board at its own rung.
+ *
+ * While the ledger loads, the page's own chrome — nav, title, the segments —
+ * is already standing and only the grid's place waits, so nothing above it
+ * pops in. The cells then arrive as a short staggered fade-up (`Arrive`, all
+ * of it inside ~400 ms) that moves nothing around them; switching segments
+ * brings the other set in the same way.
  */
 
 type Segment = 'earned' | 'ahead';
@@ -50,9 +57,7 @@ export default function Milestones() {
     pager.current?.scrollTo({ x: 0, animated: false });
   };
 
-  if (!ledger) return <LoadingView onBack={back} />;
-
-  const shown = ledger.faces.filter((f) => (segment === 'earned' ? f.earned : !f.earned));
+  const shown = ledger ? ledger.faces.filter((f) => (segment === 'earned' ? f.earned : !f.earned)) : [];
   const open = (f: LedgerFace) => router.push(`/medallions/${f.face.key}?tier=${f.earned ? kkMetal(f.face, f.standing) : 'none'}`);
 
   const perPage = GRID.cols * GRID.rows;
@@ -75,39 +80,46 @@ export default function Milestones() {
         onChange={show}
         style={{ position: 'absolute', left: 16, right: 16, top: 164 }}
       />
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 238 }}>
-        <MonoText v="caps" center style={{ lineHeight: 22 }}>
-          {segment === 'earned' ? `${ledger.earned} of ${ledger.total} earned` : `${ledger.total - ledger.earned} still to earn`}
-        </MonoText>
-      </View>
-
-      {shown.length <= 2 ? (
-        <View style={{ position: 'absolute', left: GRID.gutter, right: GRID.gutter, top: GRID.top, flexDirection: 'row', justifyContent: 'center', gap: 48 }}>
-          {shown.map((f) => (
-            <FaceCell key={f.face.key} entry={f} onPress={() => open(f)} />
-          ))}
-        </View>
+      {!ledger ? (
+        <LoadingView bare style={{ position: 'absolute', left: 0, right: 0, top: GRID.top, height: CELL_H * GRID.rows + GRID.rowGap, flex: 0 }} />
       ) : (
-        <ScrollView
-          ref={pager}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          style={{ position: 'absolute', left: 0, right: 0, top: GRID.top, height: rowH * GRID.rows + GRID.rowGap + 24 }}>
-          {pages.map((page, p) => (
-            <View key={p} style={{ width, paddingHorizontal: GRID.gutter, gap: GRID.rowGap }}>
-              {Array.from({ length: Math.ceil(page.length / GRID.cols) }, (_, r) => page.slice(r * GRID.cols, r * GRID.cols + GRID.cols)).map((row, r) => (
-                <View key={r} style={{ flexDirection: 'row', gap: GRID.colGap, alignItems: 'flex-start' }}>
-                  {Array.from({ length: GRID.cols }, (_, c) => {
-                    const f = row[c];
-                    // an empty track keeps the grid's 1fr columns where a page ends short
-                    return f ? <FaceCell key={f.face.key} entry={f} grid onPress={() => open(f)} /> : <View key={`_${c}`} style={{ flex: 1 }} />;
-                  })}
-                </View>
+        <>
+          <Arrive key={`caps-${segment}`} index={0} style={{ position: 'absolute', left: 0, right: 0, top: 238 }}>
+            <MonoText v="caps" center style={{ lineHeight: 22 }}>
+              {segment === 'earned' ? `${ledger.earned} of ${ledger.total} earned` : `${ledger.total - ledger.earned} still to earn`}
+            </MonoText>
+          </Arrive>
+
+          {shown.length <= 2 ? (
+            <View style={{ position: 'absolute', left: GRID.gutter, right: GRID.gutter, top: GRID.top, flexDirection: 'row', justifyContent: 'center', gap: 48 }}>
+              {shown.map((f, i) => (
+                <FaceCell key={f.face.key} entry={f} index={i + 1} onOpen={open} />
               ))}
             </View>
-          ))}
-        </ScrollView>
+          ) : (
+            <ScrollView
+              ref={pager}
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              style={{ position: 'absolute', left: 0, right: 0, top: GRID.top, height: rowH * GRID.rows + GRID.rowGap + 24 }}>
+              {pages.map((page, p) => (
+                <View key={p} style={{ width, paddingHorizontal: GRID.gutter, gap: GRID.rowGap }}>
+                  {Array.from({ length: Math.ceil(page.length / GRID.cols) }, (_, r) => page.slice(r * GRID.cols, r * GRID.cols + GRID.cols)).map((row, r) => (
+                    <View key={r} style={{ flexDirection: 'row', gap: GRID.colGap, alignItems: 'flex-start' }}>
+                      {Array.from({ length: GRID.cols }, (_, c) => {
+                        const f = row[c];
+                        // an empty track keeps the grid's 1fr columns where a page ends short;
+                        // every page staggers from its own first cell, so a later page is not slower
+                        return f ? <FaceCell key={f.face.key} entry={f} grid index={1 + r * GRID.cols + c} onOpen={open} /> : <View key={`_${c}`} style={{ flex: 1 }} />;
+                      })}
+                    </View>
+                  ))}
+                </View>
+              ))}
+            </ScrollView>
+          )}
+        </>
       )}
     </Screen>
   );
@@ -136,28 +148,30 @@ function stateLine(f: LedgerFace): string {
  * ink earned / mute not) over the state line (12/700 mute), `gap 2`. An
  * unearned tiered face adds a 56 × 3 bar filled to its first rung.
  */
-function FaceCell({ entry, grid, onPress }: { entry: LedgerFace; grid?: boolean; onPress: () => void }) {
+const FaceCell = memo(function FaceCell({ entry, grid, index, onOpen }: { entry: LedgerFace; grid?: boolean; index: number; onOpen: (f: LedgerFace) => void }) {
   const { face } = entry;
   const tiered = face.steps.length > 0;
   const line = stateLine(entry);
   // the numeral is the rung it stands on — or, unearned, the one it is waiting on
   const numeral = tiered ? roman(Math.max(1, entry.standing)) : undefined;
   return (
-    <Tap onPress={onPress} label={`${face.name}. ${line}`} style={[{ alignItems: 'center', gap: 10 }, grid ? { flex: 1 } : null]}>
-      <FaceCoin scene={face.key} size={64} earned={entry.earned} numeral={numeral} />
-      <View style={{ gap: 2 }}>
-        <MonoText v="rowLabel" center color={entry.earned ? mono.ink : mono.mute} style={{ letterSpacing: -0.2 }}>
-          {face.name}
-        </MonoText>
-        <MonoText v="legal" center wrap="nowrap" style={{ letterSpacing: 0 }}>
-          {line}
-        </MonoText>
-      </View>
-      {!entry.earned && tiered ? (
-        <View style={{ width: 56, height: 3, borderRadius: 2, backgroundColor: mono.line }}>
-          <View style={{ width: `${Math.min(100, (entry.count / face.steps[0]) * 100)}%`, height: 3, borderRadius: 2, backgroundColor: mono.ink }} />
+    <Arrive index={index} style={grid ? { flex: 1 } : null}>
+      <Tap onPress={() => onOpen(entry)} label={`${face.name}. ${line}`} style={{ alignItems: 'center', gap: 10 }}>
+        <FaceCoin scene={face.key} size={64} earned={entry.earned} numeral={numeral} />
+        <View style={{ gap: 2 }}>
+          <MonoText v="rowLabel" center color={entry.earned ? mono.ink : mono.mute} style={{ letterSpacing: -0.2 }}>
+            {face.name}
+          </MonoText>
+          <MonoText v="legal" center wrap="nowrap" style={{ letterSpacing: 0 }}>
+            {line}
+          </MonoText>
         </View>
-      ) : null}
-    </Tap>
+        {!entry.earned && tiered ? (
+          <View style={{ width: 56, height: 3, borderRadius: 2, backgroundColor: mono.line }}>
+            <View style={{ width: `${Math.min(100, (entry.count / face.steps[0]) * 100)}%`, height: 3, borderRadius: 2, backgroundColor: mono.ink }} />
+          </View>
+        ) : null}
+      </Tap>
+    </Arrive>
   );
-}
+});

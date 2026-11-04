@@ -19,11 +19,27 @@
  * instead (rule 2).
  */
 import { LinearGradient } from 'expo-linear-gradient';
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { useWindowDimensions, View } from 'react-native';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import Svg, { Circle, Path, Rect, Text as SvgText } from 'react-native-svg';
 
-import { HeroBoard, MonoText, NavBar, Pill, PrimaryButton, Screen, ScrollRegion, Spinner, StepList, useCanvasTop } from '@/components/mono';
+import {
+  BeatLine,
+  HeroBoard,
+  MonoText,
+  NavBar,
+  paceFor,
+  Pill,
+  PrimaryButton,
+  Reveal,
+  Screen,
+  ScrollRegion,
+  Spinner,
+  StepList,
+  TypeBeat,
+  useCanvasTop,
+  wasTyped,
+} from '@/components/mono';
 import { AGE_80_COLS, AGE_80_FIELD, AGE_80_NEXT_SEED, AGE_80_ROWS, COST_30, COST_365 } from '@/content/onboardingTail';
 import { groupDigits } from '@/lib/format';
 import { LATO, lhNormal, mono, monoDark, sans } from '@/lib/theme';
@@ -85,6 +101,36 @@ function InkP({ children, center }: { children: ReactNode; center?: boolean }) {
   );
 }
 
+/** A layer over the whole frame (canvas coordinates kept) — for revealing absolutely placed parts and the bottom controls. */
+const FILL = StyleSheet.absoluteFill;
+
+/**
+ * A tail board's beat: its heading is said, and what follows fades up after it.
+ * A touch anywhere finishes the heading; a heading already said this session
+ * (a Back) is shown whole.
+ */
+function Beat({ line, children }: { line: string; children: ReactNode }) {
+  return (
+    <TypeBeat id={line} instant={wasTyped(line)} tapToFinish>
+      {children}
+    </TypeBeat>
+  );
+}
+
+/** The board's 26/33 heading, said. */
+function Said({ text, ...rest }: { text: string; center?: boolean; style?: object }) {
+  return <BeatLine v="h1" text={text} speed={paceFor(text)} {...rest} />;
+}
+
+/** The primary at bottom 48, revealed after the heading. */
+function BeatPrimary({ label, onPress, delay = 160, tone }: { label: string; onPress: () => void; delay?: number; tone?: 'light' | 'dark' }) {
+  return (
+    <Reveal delay={delay} style={FILL}>
+      <PrimaryButton label={label} onPress={onPress} tone={tone} />
+    </Reveal>
+  );
+}
+
 // ── 24 · Build plan (frame `Enlisting Aegis`) ─────────────────────────
 
 // The questionnaire doc words the three lines differently again ("Finding
@@ -92,6 +138,12 @@ function InkP({ children, center }: { children: ReactNode; center?: boolean }) {
 const AEGIS_ROWS = ['Finding where you usually struggle', 'Looking at what tends to set it off', 'Choosing where to start'];
 /** How long the board holds before it hands over. The app's own timing. */
 const AEGIS_MS = 6800;
+/**
+ * When each row turns over while the board holds: the first is done early, the
+ * second (the frame's own state, in progress) holds longest, the last lands a
+ * beat before the hand-over so he sees all three ticked.
+ */
+const AEGIS_STEPS = [1500, 3900, 6000];
 
 /**
  * The kit's spinner over "Putting your plan together…" and the three rows in
@@ -102,23 +154,36 @@ const AEGIS_MS = 6800;
  * for a capture.
  */
 export function O3PuttingTogether({ next, hold }: { next: () => void; hold?: boolean }) {
+  // `next` is a new function on every render of the flow: kept in a ref, so a
+  // re-render never restarts the 6.8 s hold (it used to)
+  const nextRef = useRef(next);
+  useEffect(() => {
+    nextRef.current = next;
+  });
+  // the rows work through the three lines while the board holds; `hold` (a
+  // capture) keeps the frame's own state, the second in progress
+  const [current, setCurrent] = useState(hold ? 1 : 0);
   useEffect(() => {
     if (hold) return;
-    const id = setTimeout(next, AEGIS_MS);
-    return () => clearTimeout(id);
-  }, [next, hold]);
+    const ids = AEGIS_STEPS.map((at, k) => setTimeout(() => setCurrent(k + 1), at));
+    ids.push(setTimeout(() => nextRef.current(), AEGIS_MS));
+    return () => ids.forEach(clearTimeout);
+  }, [hold]);
+  const line = 'Putting your plan together…';
   return (
-    <Screen>
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 236, flexDirection: 'row', justifyContent: 'center' }}>
-        <Spinner />
-      </View>
-      <View style={{ position: 'absolute', left: 24, right: 24, top: 352, alignItems: 'center' }}>
-        <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>
-          Putting your plan together…
-        </MonoText>
-      </View>
-      <StepList style={{ position: 'absolute', left: 24, right: 24, top: 462 }} current={1} steps={AEGIS_ROWS} />
-    </Screen>
+    <Beat line={line}>
+      <Screen>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 236, flexDirection: 'row', justifyContent: 'center' }}>
+          <Spinner />
+        </View>
+        <View style={{ position: 'absolute', left: 24, right: 24, top: 352, alignItems: 'center' }}>
+          <Said text={line} center style={{ alignSelf: 'stretch' }} />
+        </View>
+        <Reveal style={{ position: 'absolute', left: 24, right: 24, top: 462 }}>
+          <StepList current={current} steps={AEGIS_ROWS} />
+        </Reveal>
+      </Screen>
+    </Beat>
   );
 }
 
@@ -179,29 +244,31 @@ function ScoreGauge({ score }: { score: number }) {
 export function O3StartingPoint({ score, next, back }: { score: number; next: () => void; back?: () => void }) {
   // the closing line wraps to three on a narrow phone; the band measures it
   const [lineH, setLineH] = useState(48);
+  const line = 'This is where you start. What you do from here matters more than the questionnaire.';
+  // the gauge is there with the board; the line under it is said
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={224} end={556 + lineH}>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 224 }}>
-          <MonoText v="caps" center>
-            Your VICI rating
-          </MonoText>
-        </View>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 270, flexDirection: 'row', justifyContent: 'center' }}>
-          <ScoreGauge score={score} />
-        </View>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', justifyContent: 'center' }}>
-          <Pill kind="outline" label="Starting point" />
-        </View>
-        <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
-          <MonoText v="p" center style={{ alignSelf: 'stretch' }}>
-            This is where you start. What you do from here matters more than the questionnaire.
-          </MonoText>
-        </View>
-      </Band>
-      <PrimaryButton label="Next" onPress={next} />
-    </Screen>
+    <Beat line={line}>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={224} end={556 + lineH}>
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 224 }}>
+            <MonoText v="caps" center>
+              Your VICI rating
+            </MonoText>
+          </View>
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 270, flexDirection: 'row', justifyContent: 'center' }}>
+            <ScoreGauge score={score} />
+          </View>
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 494, flexDirection: 'row', justifyContent: 'center' }}>
+            <Pill kind="outline" label="Starting point" />
+          </View>
+          <View onLayout={(e) => setLineH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, top: 556, alignItems: 'center' }}>
+            <BeatLine v="p" center style={{ alignSelf: 'stretch' }} text={line} speed={paceFor(line, 1000)} />
+          </View>
+        </Band>
+        <BeatPrimary label="Next" onPress={next} />
+      </Screen>
+    </Beat>
   );
 }
 
@@ -243,31 +310,40 @@ function KeyItem({ fill, ringColor, label }: { fill: string; ringColor: string; 
 }
 
 export function O3Next30({ times, next, back }: { times: number; next: () => void; back?: () => void }) {
+  const line = 'This is your next 30 days.';
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={199} end={675}>
-        <Stack top={199}>
-          <MonoText v="h1">This is your next 30 days.</MonoText>
-          <MonoText v="p">
-            If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
-          </MonoText>
-        </Stack>
-        <View style={{ position: 'absolute', left: 24, right: 24, top: 343, flexDirection: 'row', justifyContent: 'center' }}>
-          <MonthDots />
-        </View>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 603, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
-          <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
-          <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
-        </View>
-        <View style={{ position: 'absolute', left: 24, right: 24, top: 653 }}>
-          <MonoText v="pTight" color={mono.mute} center wrap="wrap">
-            The line can start changing with the next one.
-          </MonoText>
-        </View>
-      </Band>
-      <PrimaryButton label="Next" onPress={next} />
-    </Screen>
+    <Beat line={line}>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={199} end={675}>
+          <Stack top={199}>
+            <Said text={line} />
+            <Reveal>
+              <MonoText v="p">
+                If the rate you reported stayed the same, about <Strong>{`${times} of the next 30 days`}</Strong> could end with porn.
+              </MonoText>
+            </Reveal>
+          </Stack>
+          <Reveal delay={90} style={FILL}>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 343, flexDirection: 'row', justifyContent: 'center' }}>
+              <MonthDots />
+            </View>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: 603, flexDirection: 'row', justifyContent: 'center', gap: 28 }}>
+              <KeyItem fill={mono.ground} ringColor={mono.ink} label="Relapse" />
+              <KeyItem fill={mono.card} ringColor={mono.art} label="Clean day" />
+            </View>
+          </Reveal>
+          <Reveal delay={200} style={FILL}>
+            <View style={{ position: 'absolute', left: 24, right: 24, top: 653 }}>
+              <MonoText v="pTight" color={mono.mute} center wrap="wrap">
+                The line can start changing with the next one.
+              </MonoText>
+            </View>
+          </Reveal>
+        </Band>
+        <BeatPrimary label="Next" onPress={next} delay={240} />
+      </Screen>
+    </Beat>
   );
 }
 
@@ -308,32 +384,41 @@ function YearDots() {
 }
 
 /** The 44/700 figure ("About 110 days", "About 6,100 days"). */
-function Figure({ children, color = mono.ink }: { children: string; color?: string }) {
+function Figure({ children, color = mono.ink, said }: { children: string; color?: string; said?: boolean }) {
+  const style = { fontSize: 44, lineHeight: 52, letterSpacing: -1.5 };
+  if (said) return <BeatLine v="statValue" wrap="wrap" color={color} style={style} text={children} speed={0.8} />;
   return (
-    <MonoText v="statValue" wrap="wrap" color={color} style={{ fontSize: 44, lineHeight: 52, letterSpacing: -1.5 }}>
+    <MonoText v="statValue" wrap="wrap" color={color} style={style}>
       {children}
     </MonoText>
   );
 }
 
 export function O3OneYear({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
+  const line = 'One year from now.';
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={199} end={612}>
-        <Stack top={199} gap={20}>
-          <MonoText v="h1">One year from now.</MonoText>
-        </Stack>
-        <View style={{ position: 'absolute', left: 24, top: 284 }}>
-          <YearDots />
-        </View>
-        <Stack top={530} gap={6}>
-          <Figure>{`About ${groupDigits(days)} days`}</Figure>
-          <MonoText v="p">Where you’re predicted to relapse.</MonoText>
-        </Stack>
-      </Band>
-      <PrimaryButton label="Next" onPress={next} />
-    </Screen>
+    <Beat line={line}>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={199} end={612}>
+          <Stack top={199} gap={20}>
+            <Said text={line} />
+          </Stack>
+          <Reveal style={FILL}>
+            <View style={{ position: 'absolute', left: 24, top: 284 }}>
+              <YearDots />
+            </View>
+          </Reveal>
+          <Reveal delay={140} style={FILL}>
+            <Stack top={530} gap={6}>
+              <Figure>{`About ${groupDigits(days)} days`}</Figure>
+              <MonoText v="p">Where you’re predicted to relapse.</MonoText>
+            </Stack>
+          </Reveal>
+        </Band>
+        <BeatPrimary label="Next" onPress={next} delay={220} />
+      </Screen>
+    </Beat>
   );
 }
 
@@ -384,33 +469,39 @@ function AgeField({ width, height }: { width: number; height: number }) {
 export function O3IfNothingChanges({ days, next, back }: { days: number; next: () => void; back?: () => void }) {
   const win = useWindowDimensions();
   const canvasTop = useCanvasTop();
+  const figure = `About ${groupDigits(days)} days`;
+  // the field is there with the board; the figure is said, then what it means
   return (
-    <Screen variant="dark">
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
-        <AgeField width={win.width} height={win.height} />
-      </View>
-      <LinearGradient
-        pointerEvents="none"
-        colors={[mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
-        locations={[0, 0.62, 1]}
-        style={{ position: 'absolute', left: 0, right: 0, top: 96, height: 230 }}
-      />
-      <NavBar left="back" right="empty" tone="dark" chevronColor="#17160F" onBack={back} />
-      <View style={{ position: 'absolute', left: 24, top: 126, zIndex: 2 }}>
-        <MonoText v="caps" color={monoDark.caps}>
-          By age 80
-        </MonoText>
-      </View>
-      <View style={{ position: 'absolute', left: 24, top: 160, zIndex: 2 }}>
-        <Figure color={monoDark.text}>{`About ${groupDigits(days)} days`}</Figure>
-      </View>
-      <View style={{ position: 'absolute', left: 24, top: 222, zIndex: 2 }}>
-        <MonoText v="p" wrap="wrap" color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
-          If nothing changes.
-        </MonoText>
-      </View>
-      <PrimaryButton label="Next" onPress={next} tone="dark" />
-    </Screen>
+    <Beat line={figure}>
+      <Screen variant="dark">
+        <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: -canvasTop, width: win.width, height: win.height }}>
+          <AgeField width={win.width} height={win.height} />
+        </View>
+        <LinearGradient
+          pointerEvents="none"
+          colors={[mono.groundDark, mono.groundDark, 'rgba(17,17,17,0)']}
+          locations={[0, 0.62, 1]}
+          style={{ position: 'absolute', left: 0, right: 0, top: 96, height: 230 }}
+        />
+        <NavBar left="back" right="empty" tone="dark" chevronColor="#17160F" onBack={back} />
+        <View style={{ position: 'absolute', left: 24, top: 126, zIndex: 2 }}>
+          <MonoText v="caps" color={monoDark.caps}>
+            By age 80
+          </MonoText>
+        </View>
+        <View style={{ position: 'absolute', left: 24, top: 160, zIndex: 2 }}>
+          <Figure color={monoDark.text} said>
+            {figure}
+          </Figure>
+        </View>
+        <Reveal style={{ position: 'absolute', left: 24, top: 222, zIndex: 2 }}>
+          <MonoText v="p" wrap="wrap" color="rgba(255,255,255,0.75)" style={{ fontSize: 17, lineHeight: 26 }}>
+            If nothing changes.
+          </MonoText>
+        </Reveal>
+        <BeatPrimary label="Next" onPress={next} tone="dark" />
+      </Screen>
+    </Beat>
   );
 }
 
@@ -447,35 +538,39 @@ function LineBoard({ mode, next, back }: { mode: keyof typeof LINES; next: () =>
   const { w, k } = useColumn();
   const x = 208 * k;
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={199} end={659}>
-        <Stack top={199}>
-          <MonoText v="h1">{L.title}</MonoText>
-          <MonoText v="p">{L.body}</MonoText>
-        </Stack>
-        <View style={{ position: 'absolute', left: 24, top: 389 }}>
-          <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
-            <SvgText x={0} y={16} fill={mono.ink} fontSize={14} {...BOLD}>
-              Relapse frequency
-            </SvgText>
-            <Path d={`M0 236H${w}`} stroke={mono.ink} strokeWidth={1.5} />
-            <Path d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
-            <Path d={scaleX(L.line, k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
-            <Path d={`M${x} ${L.y}V236`} stroke={mono.ink} strokeWidth={1.5} strokeDasharray="3 5" />
-            <Rect x={x - 64} y={L.y - 58} width={128} height={40} rx={10} fill={mono.ink} />
-            <SvgText x={x} y={L.y - 42} fill="#6B675F" textAnchor="middle" fontSize={11} letterSpacing={1.2} {...BOLD}>
-              3 MONTHS
-            </SvgText>
-            <SvgText x={x} y={L.y - 26} fill={mono.onInk} textAnchor="middle" fontSize={14} {...BOLD}>
-              {L.rate}
-            </SvgText>
-            <Circle cx={x} cy={L.y} r={9} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
-          </Svg>
-        </View>
-      </Band>
-      <PrimaryButton label={L.cta} onPress={next} />
-    </Screen>
+    <Beat line={L.title}>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={199} end={659}>
+          <Stack top={199}>
+            <Said text={L.title} />
+            <Reveal>
+              <MonoText v="p">{L.body}</MonoText>
+            </Reveal>
+          </Stack>
+          <Reveal delay={110} style={{ position: 'absolute', left: 24, top: 389 }}>
+            <Svg width={w} height={270} viewBox={`0 0 ${w} 270`}>
+              <SvgText x={0} y={16} fill={mono.ink} fontSize={14} {...BOLD}>
+                Relapse frequency
+              </SvgText>
+              <Path d={`M0 236H${w}`} stroke={mono.ink} strokeWidth={1.5} />
+              <Path d={scaleX('M0 172 C 30 168, 60 158, 86 150', k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+              <Path d={scaleX(L.line, k)} fill="none" stroke={mono.ink} strokeWidth={4.5} strokeLinecap="round" />
+              <Path d={`M${x} ${L.y}V236`} stroke={mono.ink} strokeWidth={1.5} strokeDasharray="3 5" />
+              <Rect x={x - 64} y={L.y - 58} width={128} height={40} rx={10} fill={mono.ink} />
+              <SvgText x={x} y={L.y - 42} fill="#6B675F" textAnchor="middle" fontSize={11} letterSpacing={1.2} {...BOLD}>
+                3 MONTHS
+              </SvgText>
+              <SvgText x={x} y={L.y - 26} fill={mono.onInk} textAnchor="middle" fontSize={14} {...BOLD}>
+                {L.rate}
+              </SvgText>
+              <Circle cx={x} cy={L.y} r={9} fill={mono.ground} stroke={mono.ink} strokeWidth={4} />
+            </Svg>
+          </Reveal>
+        </Band>
+        <BeatPrimary label={L.cta} onPress={next} delay={200} />
+      </Screen>
+    </Beat>
   );
 }
 
@@ -525,6 +620,7 @@ export function O3CleanDay({ next, back }: { next: () => void; back?: () => void
       body="That’s all today has to be."
       cta="Continue"
       onCta={next}
+      typeTitle
     />
   );
 }
@@ -574,6 +670,7 @@ export function O3OneBadDay({ next, back }: { next: () => void; back?: () => voi
       extra={<InkP center>What matters is that you come back.</InkP>}
       cta="Continue"
       onCta={next}
+      typeTitle
     />
   );
 }
@@ -601,26 +698,36 @@ export function wantBackPills(affects: string[], order: readonly string[]): stri
 export function O3WhatYouWantBack({ pills = WANT_BACK_DEFAULT, next, back }: { pills?: string[]; next: () => void; back?: () => void }) {
   // the heading takes two lines on a narrow phone; the band measures the stack
   const [stackH, setStackH] = useState(445);
+  const line = 'This is what you’re doing it for.';
+  // the heading is said, then his three answers are laid down one by one
   return (
-    <Screen>
-      <NavBar left="back" right="empty" onBack={back} />
-      <Band start={193} end={193 + stackH}>
-        <Stack top={193} onLayout={setStackH}>
-          <MonoText v="h1">This is what you’re doing it for.</MonoText>
-          <View style={{ height: 10 }} />
-          {pills.map((label) => (
-            <View key={label} style={{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
-              <MonoText v="gridLabel" color={mono.onInk} wrap="wrap" style={{ lineHeight: lhNormal(16) }}>
-                {label}
-              </MonoText>
-            </View>
-          ))}
-          <View style={{ height: 10 }} />
-          <MonoText v="p">Not a perfect streak for its own sake.</MonoText>
-          <InkP>More of your time and attention going where you actually want them.</InkP>
-        </Stack>
-      </Band>
-      <PrimaryButton label="Continue" onPress={next} />
-    </Screen>
+    <Beat line={line}>
+      <Screen>
+        <NavBar left="back" right="empty" onBack={back} />
+        <Band start={193} end={193 + stackH}>
+          <Stack top={193} onLayout={setStackH}>
+            <Said text={line} />
+            <View style={{ height: 10 }} />
+            {pills.map((label, i) => (
+              <Reveal key={label} delay={i * 110}>
+                <View style={{ height: 64, borderRadius: 32, backgroundColor: mono.ink, alignItems: 'center', justifyContent: 'center' }}>
+                  <MonoText v="gridLabel" color={mono.onInk} wrap="wrap" style={{ lineHeight: lhNormal(16) }}>
+                    {label}
+                  </MonoText>
+                </View>
+              </Reveal>
+            ))}
+            <View style={{ height: 10 }} />
+            <Reveal delay={pills.length * 110 + 60}>
+              <MonoText v="p">Not a perfect streak for its own sake.</MonoText>
+            </Reveal>
+            <Reveal delay={pills.length * 110 + 160}>
+              <InkP>More of your time and attention going where you actually want them.</InkP>
+            </Reveal>
+          </Stack>
+        </Band>
+        <BeatPrimary label="Continue" onPress={next} delay={pills.length * 110 + 160} />
+      </Screen>
+    </Beat>
   );
 }

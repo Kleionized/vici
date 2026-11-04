@@ -51,6 +51,7 @@ export function PrimaryButton({
     <Tap
       onPress={onPress}
       disabled={disabled}
+      haptic="commit"
       style={[
         box,
         {
@@ -152,7 +153,7 @@ export function IconCircle({
 /** The lesson's advance: a centred 44 ring at `bottom 52` with an ink chevron. */
 export function RingNext({ onPress, bottom = 52 }: { onPress?: () => void; bottom?: number }) {
   return (
-    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom, flexDirection: 'row', justifyContent: 'center', zIndex: 6 }}>
+    <View style={{ pointerEvents: 'box-none', position: 'absolute', left: 0, right: 0, bottom, flexDirection: 'row', justifyContent: 'center', zIndex: 6 }}>
       <Tap label="Next" onPress={onPress} hitSlop={10}>
         <IconCircle>
           <ChevronR color={mono.ink} />

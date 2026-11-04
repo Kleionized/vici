@@ -13,6 +13,7 @@ import { Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaInsetsContext, SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { AppServices } from '@/lib/appServices';
 import { FORCE_MOCK } from '@/lib/config';
 import { AppProviders } from '@/lib/providers';
 import { colors } from '@/lib/theme';
@@ -74,6 +75,7 @@ export default function RootLayout() {
           <AppProviders>
             {/* Light glyphs on the #0D0D0D ground — every frame in the drop is dark. */}
             <StatusBar style="light" />
+            <AppServices />
             <Stack
               screenOptions={{
                 headerShown: false,

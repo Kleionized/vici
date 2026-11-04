@@ -39,7 +39,7 @@ export function Wave({ height = 80, color, lines = 3, opacity = 1, style }: Wave
     return { d: sine(baseY, amp, 1.6, i * 0.9), o: (0.5 - t * 0.28) * opacity };
   });
   return (
-    <View style={[{ height }, style]} pointerEvents="none">
+    <View style={[{ pointerEvents: 'none' }, { height }, style]}>
       <Svg width="100%" height={height} viewBox={`0 0 ${W} ${height}`} preserveAspectRatio="none">
         {rows.map((r, i) => (
           <Path key={i} d={r.d} stroke={c} strokeWidth={1.5} fill="none" opacity={r.o} />

@@ -176,6 +176,16 @@ export function useClerkAuth(): AuthValue {
     async signOut() {
       await signOut();
     },
+
+    async deleteAccount() {
+      try {
+        await user?.delete();
+      } catch (err) {
+        return { ok: false, error: clerkErrorMessage(err) };
+      }
+      await signOut().catch(() => {});
+      return { ok: true };
+    },
   };
 }
 

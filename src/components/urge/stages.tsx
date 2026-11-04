@@ -4,7 +4,7 @@
  *
  * `85F · Breathe` and the three stages no frame draws (number tap, odd one
  * out, the 90-second ring), their settings sheet, and the pieces `flow.tsx`,
- * `hub.tsx` and `src/app/relapse.tsx` all read: the question board, the dark
+ * and `hub.tsx` read: the question board, the dark
  * hub shell, the ring 85A draws, the SOS settings and the stage order. It is
  * the bottom of the kit — it imports from neither sibling, so the three never
  * form a cycle (D390).
@@ -17,7 +17,7 @@
 
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { View, useWindowDimensions } from 'react-native';
-import Reanimated, { Easing, cancelAnimation, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
+import Reanimated, { Easing, cancelAnimation, useAnimatedProps, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Defs, Ellipse, LinearGradient as SvgGrad, Path, RadialGradient, Rect, Stop, Text as SvgText } from 'react-native-svg';
 
 import {
@@ -38,6 +38,7 @@ import {
 } from '@/components/mono';
 import type { HeroKey } from '@/content/heroes';
 import { roman } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 import { LATO, mono, monoDark, sans } from '@/lib/theme';
 
 // ════════ BOARDS ════════════════════════════════════════════════════════════
@@ -210,29 +211,44 @@ const RING_C = 2 * Math.PI * RING_R;
  * clock 46/700/−1.5 and its line 13 (the frame's 600 resolves to Lato 700).
  * No tick dots — the generator's twelve are not in the frame.
  */
-export function UrgeRing({ fraction, clock, label, top = 270 }: { fraction: number; clock: string; label: string; top?: number }) {
+export function UrgeRing({ fraction, clock, label, top = 270, glideMs = 0 }: { fraction: number; clock: string; label: string; top?: number; glideMs?: number }) {
   const f = Math.min(1, Math.max(0, fraction));
-  const angle = -Math.PI / 2 + f * 2 * Math.PI;
-  const mx = 120 + RING_R * Math.cos(angle);
-  const my = 120 + RING_R * Math.sin(angle);
+  const reduced = useReducedMotion();
+  // The arc and its marker run on the UI thread: each new `fraction` is glided
+  // to over `glideMs` (the caller's own tick), so a clock that updates four
+  // times a second still draws one continuous sweep, with no React render per
+  // frame. Reduce Motion (or no glide) sets it outright.
+  const shown = useSharedValue(f);
+  useEffect(() => {
+    shown.value = glideMs > 0 && !reduced ? withTiming(f, { duration: glideMs, easing: Easing.linear }) : f;
+  }, [f, glideMs, reduced, shown]);
+  useEffect(() => () => cancelAnimation(shown), [shown]);
+  const arcProps = useAnimatedProps(() => ({
+    strokeDashoffset: RING_C * (1 - shown.value),
+    // a zero-length dash with a round cap still draws a dot; the arc goes once there is none left
+    strokeOpacity: shown.value > 0.0005 ? 1 : 0,
+  }));
+  const markerProps = useAnimatedProps(() => {
+    const angle = -Math.PI / 2 + shown.value * 2 * Math.PI;
+    return { cx: 120 + RING_R * Math.cos(angle), cy: 120 + RING_R * Math.sin(angle) };
+  });
   return (
     <View style={{ position: 'absolute', left: 0, right: 0, top, flexDirection: 'row', justifyContent: 'center', pointerEvents: 'none' }}>
       <Svg width={240} height={240} viewBox="0 0 240 240">
         <Circle cx={120} cy={120} r={RING_R} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth={10} />
-        {f > 0 ? (
-          <Circle
-            cx={120}
-            cy={120}
-            r={RING_R}
-            fill="none"
-            stroke={monoDark.text}
-            strokeWidth={10}
-            strokeLinecap="round"
-            strokeDasharray={`${(RING_C * f).toFixed(1)} ${RING_C.toFixed(1)}`}
-            transform="rotate(-90 120 120)"
-          />
-        ) : null}
-        <Circle cx={Number(mx.toFixed(1))} cy={Number(my.toFixed(1))} r={9} fill={mono.groundDark} stroke={monoDark.text} strokeWidth={4} />
+        <AnimatedCircle
+          cx={120}
+          cy={120}
+          r={RING_R}
+          fill="none"
+          stroke={monoDark.text}
+          strokeWidth={10}
+          strokeLinecap="round"
+          strokeDasharray={`${RING_C.toFixed(1)} ${RING_C.toFixed(1)}`}
+          transform="rotate(-90 120 120)"
+          animatedProps={arcProps}
+        />
+        <AnimatedCircle r={9} fill={mono.groundDark} stroke={monoDark.text} strokeWidth={4} animatedProps={markerProps} />
         {/* an svg text run inherits nothing from the page — the family is stated */}
         <SvgText x={120} y={126} fill={monoDark.text} textAnchor="middle" fontFamily={LATO.bold} fontWeight="normal" fontSize={46} letterSpacing={-1.5}>
           {clock}
@@ -244,6 +260,8 @@ export function UrgeRing({ fraction, clock, label, top = 270 }: { fraction: numb
     </View>
   );
 }
+
+const AnimatedCircle = Reanimated.createAnimatedComponent(Circle);
 
 // ════════ SETTINGS ═══════════════════════════════════════════════════════════
 
@@ -563,6 +581,8 @@ const CYCLE = PHASES.reduce((s, p) => s + p.seconds, 0);
 const BREATHE_ROUND_SECONDS = CYCLE * 3;
 /** The white disc breathes from r70 (drawn) to r92 (the middle ring) and back. */
 const DISC_IN = 92 / 70;
+/** A breath's own curve: slow to start, slow to settle — a sine, not the step's quick-out. */
+const BREATH_EASE = Easing.inOut(Easing.sin);
 
 function phaseAt(elapsed: number) {
   let t = elapsed % CYCLE;
@@ -591,12 +611,19 @@ const ORB_MIN_FIT = 0.6;
 function BreathOrb({ phase, light, top = ORB_TOP, fit = 1 }: { phase: number; light: SosLight | null; top?: number; fit?: number }) {
   const reduced = useReducedMotion();
   const scale = useSharedValue(1);
+  // Each phase hands its target to the one before it without cancelling first,
+  // so the disc never stalls a hair short of full on the hold (the second's
+  // tick and the timing's end do not land on the same frame). Reduce Motion
+  // keeps it at rest: the phase names and their line still say the breath.
   useEffect(() => {
-    if (reduced) return;
-    if (phase === 0) scale.value = withTiming(DISC_IN, { duration: PHASES[0].seconds * 1000, easing: Easing.inOut(Easing.ease) });
-    else if (phase === 2) scale.value = withTiming(1, { duration: PHASES[2].seconds * 1000, easing: Easing.inOut(Easing.ease) });
-    return () => cancelAnimation(scale);
+    if (reduced) {
+      scale.value = 1;
+      return;
+    }
+    if (phase === 0) scale.value = withTiming(DISC_IN, { duration: PHASES[0].seconds * 1000, easing: BREATH_EASE });
+    else if (phase === 2) scale.value = withTiming(1, { duration: PHASES[2].seconds * 1000, easing: BREATH_EASE });
   }, [phase, reduced, scale]);
+  useEffect(() => () => cancelAnimation(scale), [scale]);
   const disc = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
   const stops = SOS_LIGHTS.find((l) => l.key === light)?.stops;
   return (
@@ -672,6 +699,10 @@ export function BreatheStage({ ctx, settings, onClose, onEnd, onDone, onSlip, on
   useEffect(() => {
     if (elapsed >= BREATHE_ROUND_SECONDS) doneRef.current();
   }, [elapsed]);
+  // a soft tick under the thumb as each phase turns — in, hold, out
+  useEffect(() => {
+    haptic('soft');
+  }, [phase]);
 
   const p = PHASES[phase];
   return (
@@ -921,6 +952,8 @@ export function OddStage({ ctx, settings, onClose, onEnd, onDone, onSlip, onBack
 // ════════ THE 90-SECOND RING (no frame) ══════════════════════════════════════
 
 export const SURF_SECONDS = 90;
+/** How often the flow's surf clock reads the time; the ring glides between reads. */
+export const SURF_TICK_MS = 250;
 const SURF_PHASES = [
   { at: 0, name: 'Rising' },
   { at: 0.28, name: 'Cresting' },
@@ -955,7 +988,7 @@ export function WaveStage({ ctx, settings, progress, remaining, onClose, onEnd, 
       title="Ride it out."
       play={(area) => {
         const dy = shiftInto(RING_INK_TOP, RING_BOX_BOTTOM, area);
-        return { node: <UrgeRing top={RING_TOP + dy} fraction={1 - progress} clock={clock} label={phase.name} />, bottom: RING_BOX_BOTTOM + dy };
+        return { node: <UrgeRing top={RING_TOP + dy} fraction={1 - progress} clock={clock} label={phase.name} glideMs={SURF_TICK_MS} />, bottom: RING_BOX_BOTTOM + dy };
       }}
       cta="End early"
       onCta={onEnd}

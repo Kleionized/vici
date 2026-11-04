@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { View } from 'react-native';
 
 import { CONTROLS, CheckinCover, DoneMark, RecordRows, Stack, StepStack, TaskCard, dayNumber } from '@/components/day/board';
@@ -18,13 +18,17 @@ import {
   ScaleReading,
   Screen,
   Sheet,
+  StepFade,
   TextField,
   ToneScale,
+  useStepDirection,
 } from '@/components/mono';
 import { useCheckins, useCreateJournalEntry, useCurrentUser, useEvents, useJournalEntries, useLessonProgressMap, useLessons, useUpsertCheckin } from '@/lib/backend';
-import { toDateKey, todayKey } from '@/lib/date';
+import { addDays, startOfDay, toDateKey, useNow } from '@/lib/date';
 import { countOf, groupDigits, roman } from '@/lib/format';
+import { haptic } from '@/lib/haptics';
 import { buildScore, SCORE_WEIGHTS } from '@/lib/score';
+import { mono } from '@/lib/theme';
 
 /**
  * The morning check-in (today-day §3): a cover, then five steps on the eight
@@ -80,6 +84,8 @@ export default function Morning() {
   const createJournalEntry = useCreateJournalEntry();
 
   const [step, setStep] = useState(COVER);
+  const dir = useStepDirection(step);
+  const saving = useRef(false);
   const [yesterdayDone, setYesterdayDone] = useState<boolean | undefined>(undefined);
   const [mood, setMood] = useState(2);
   const [energy, setEnergy] = useState(1);
@@ -88,12 +94,13 @@ export default function Morning() {
   const [sheetText, setSheetText] = useState('');
   const [draft, setDraft] = useState<string | null>(null);
 
-  const day = dayNumber(user?.createdAt);
+  const now = useNow();
+  const day = dayNumber(user?.createdAt, now);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/(app)/today'));
 
   // Yesterday's ledger, read out of the log rather than from a placeholder.
-  const midnight = new Date().setHours(0, 0, 0, 0);
-  const dawn = midnight - 86_400_000;
+  const midnight = startOfDay(now);
+  const dawn = addDays(midnight, -1);
   const yesterday = (ms: number) => ms >= dawn && ms < midnight;
 
   // The action the flow asks after, read off yesterday's check-in row so it never
@@ -111,7 +118,10 @@ export default function Morning() {
   // The standing pledge — the latest `Pledge` entry, the words Today p3 prints.
   // A draft written in the sheet stands in until it is signed.
   const standing = (journal ?? []).find((entry) => entry.tag === 'Pledge');
-  const pledgeBody = draft ?? standing?.body ?? 'The mornings are mine again.';
+  // No stock words: with no pledge on record the step asks for one in the
+  // person's own words, and the check-in files none until it is written.
+  const pledgeBody = draft ?? standing?.body ?? '';
+  const hasPledge = pledgeBody.trim().length > 0;
 
   // The score row shows what yesterday alone put on the board, on the same
   // weights the score itself is built from.
@@ -124,19 +134,29 @@ export default function Morning() {
     lapses * SCORE_WEIGHTS.slip;
 
   async function finish() {
+    // Done and the closing board's ✕ both file the day; a double tap must not file it twice.
+    if (saving.current) return;
+    saving.current = true;
     // The upsert merges, so only what this flow asked for is written.
-    await upsert({ date: todayKey(), mood: mood + 1, energy: energy + 1 }).catch(() => {});
+    // filed under the same clock `dawn` was read from, so today's row and yesterday's are neighbours
+    await upsert({ date: toDateKey(new Date(midnight)), mood: mood + 1, energy: energy + 1 }).catch(() => {});
     // The answer about yesterday's action belongs to yesterday's row.
     if (yesterdayDone !== undefined) {
       await upsert({ date: toDateKey(new Date(dawn)), dailyActionDone: yesterdayDone }).catch(() => {});
     }
     // Re-signing files today's promise; a draft written in the sheet is what
     // gets filed if one was written.
-    await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
+    // A second check-in on the same day re-signs nothing new: the same words
+    // already signed today are the standing pledge, and a duplicate row would
+    // only clutter the journal.
+    const signedToday = (journal ?? []).some((entry) => entry.tag === 'Pledge' && entry.createdAt >= midnight && entry.body === pledgeBody);
+    if (hasPledge && signed && !signedToday) await createJournalEntry({ tag: 'Pledge', title: `Day ${day} pledge`, body: pledgeBody }).catch(() => {});
+    // the pill's own press was the commit; this is the day filed
+    haptic('success');
     close();
   }
 
-  if (step === COVER) return <CheckinCover part="morning" day={day} onBegin={() => setStep(TASK)} onClose={close} />;
+  if (step === COVER) return frame(<CheckinCover part="morning" day={day} onBegin={() => setStep(TASK)} onClose={close} />);
 
   const back = () => setStep((s) => s - 1);
   const next = () => setStep((s) => s + 1);
@@ -147,96 +167,113 @@ export default function Morning() {
     setSheet(true);
   };
 
-  return (
+  return frame(
     <Screen>
-      {step === TASK ? (
-        <>
-          {/* The sentence is yesterday's lesson task — up to seven lines (L58). */}
-          <StepStack gap={18} controls={CONTROLS.fab} hero={{ id: 'charger', top: 506 }}>
-            <MonoText v="h1">Did you complete this task?</MonoText>
-            <View style={{ height: 4 }} />
-            <TaskCard label="Yesterday" sentence={yesterdayTask} />
-            <View style={{ height: 4 }} />
-            {/* Nothing is chosen until it is tapped: a default "Yes" would write a
-                completion the user never claimed (CRITIC §5, OQ-M1). */}
-            <Grid2 options={ANSWERS} value={answer} onChange={(a) => setYesterdayDone(a === 'Yes')} />
-          </StepStack>
-          <NextFab onPress={next} disabled={answer == null} />
-        </>
-      ) : null}
+      {/* the step hands over under a nav that stays put (its dashes move on) */}
+      <StepFade stepKey={String(step)} direction={dir}>
+        {step === TASK ? (
+          <>
+            {/* The sentence is yesterday's lesson task — up to seven lines (L58). */}
+            <StepStack gap={18} controls={CONTROLS.fab} hero={{ id: 'charger', top: 506 }}>
+              <MonoText v="h1">Did you complete this task?</MonoText>
+              <View style={{ height: 4 }} />
+              <TaskCard label="Yesterday" sentence={yesterdayTask} />
+              <View style={{ height: 4 }} />
+              {/* Nothing is chosen until it is tapped: a default "Yes" would write a
+                  completion the user never claimed (CRITIC §5, OQ-M1). */}
+              <Grid2 options={ANSWERS} value={answer} onChange={(a) => setYesterdayDone(a === 'Yes')} />
+            </StepStack>
+            <NextFab onPress={next} disabled={answer == null} />
+          </>
+        ) : null}
 
-      {step === LEDGER ? (
-        <>
-          <Stack gap={20}>
-            <MonoText v="h1">Yesterday’s record.</MonoText>
-          </Stack>
-          <RecordRows
-            rows={[
-              { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}` },
-              { label: signedPledge ? 'Pledge kept' : 'No pledge signed', done: !!signedPledge },
-              {
-                label: urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
-                done: urges.length > 0,
-              },
-              { label: countOf(lapses, 'slip'), done: lapses === 0 },
-              { label: finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday', done: !!finished },
-            ]}
-          />
-          <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
-          <PrimaryButton label="Continue" onPress={next} />
-        </>
-      ) : null}
+        {step === LEDGER ? (
+          <>
+            <Stack gap={20}>
+              <MonoText v="h1">Yesterday’s record.</MonoText>
+            </Stack>
+            <RecordRows
+              rows={[
+                { label: 'Recovery score', value: `${gained < 0 ? '−' : '+'}${Math.abs(gained)} → ${groupDigits(score.total)}` },
+                { label: signedPledge ? 'Pledge kept' : 'No pledge signed', done: !!signedPledge },
+                {
+                  label: urges.length === 0 ? 'No urges logged' : urges.length === 1 ? 'One urge surfed' : `${urges.length} urges surfed`,
+                  done: urges.length > 0,
+                },
+                { label: countOf(lapses, 'slip'), done: lapses === 0 },
+                { label: finished ? `Part ${roman(finished.dayInWeek)} finished` : 'No lesson yesterday', done: !!finished },
+              ]}
+            />
+            <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
+            <PrimaryButton label="Continue" onPress={next} />
+          </>
+        ) : null}
 
-      {step === FEELING ? (
-        <>
-          <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
-          <Stack gap={20}>
-            <MonoText v="h1">How are you feeling?</MonoText>
-          </Stack>
-          <ToneScale value={mood} onChange={setMood} labels={MOOD_READ.map((r) => r[0])} />
-          <ScaleReading word={MOOD_READ[mood][0]} line={MOOD_READ[mood][1]} />
-          <PrimaryButton label="Continue" onPress={next} />
-        </>
-      ) : null}
+        {step === FEELING ? (
+          <>
+            <Hero id="sunrise" top={506} controls={CONTROLS.primary} />
+            <Stack gap={20}>
+              <MonoText v="h1">How are you feeling?</MonoText>
+            </Stack>
+            <ToneScale value={mood} onChange={setMood} labels={MOOD_READ.map((r) => r[0])} />
+            <ScaleReading word={MOOD_READ[mood][0]} line={MOOD_READ[mood][1]} />
+            <PrimaryButton label="Continue" onPress={next} />
+          </>
+        ) : null}
 
-      {step === ENERGY ? (
-        <>
-          <Hero id="battery" top={506} controls={CONTROLS.primary} />
-          <Stack gap={20}>
-            <MonoText v="h1">Where’s your energy?</MonoText>
-          </Stack>
-          <EnergyBars value={energy} onChange={setEnergy} labels={ENERGY_READ.map((r) => r[0])} />
-          <ScaleReading word={ENERGY_READ[energy][0]} line={ENERGY_READ[energy][1]} />
-          <PrimaryButton label="Continue" onPress={next} />
-        </>
-      ) : null}
+        {step === ENERGY ? (
+          <>
+            <Hero id="battery" top={506} controls={CONTROLS.primary} />
+            <Stack gap={20}>
+              <MonoText v="h1">Where’s your energy?</MonoText>
+            </Stack>
+            <EnergyBars value={energy} onChange={setEnergy} labels={ENERGY_READ.map((r) => r[0])} />
+            <ScaleReading word={ENERGY_READ[energy][0]} line={ENERGY_READ[energy][1]} />
+            <PrimaryButton label="Continue" onPress={next} />
+          </>
+        ) : null}
 
-      {step === PLEDGE ? (
-        <>
-          {/* The pledge is the user's own words, any length. */}
-          <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
-            <MonoText v="h1">Re-sign your pledge.</MonoText>
-            <View style={{ height: 6 }} />
-            {/* One step, two frames: the first press inks the line, the second
-                moves on. The line itself signs and un-signs — the old plate's
-                clear-× is not drawn, so the line keeps that function (OQ-M4). */}
-            <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
-          </StepStack>
-          <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
-          <GhostLink label="Change the pledge" onPress={openSheet} />
-        </>
-      ) : null}
+        {step === PLEDGE ? (
+          <>
+            {/* The pledge is the user's own words, any length. */}
+            {hasPledge ? (
+              <>
+                <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+                  <MonoText v="h1">Re-sign your pledge.</MonoText>
+                  <View style={{ height: 6 }} />
+                  {/* One step, two frames: the first press inks the line, the second
+                      moves on. The line itself signs and un-signs — the old plate's
+                      clear-× is not drawn, so the line keeps that function (OQ-M4). */}
+                  <PledgeCard pledge={pledgeBody} name={user?.displayName || 'You'} signed={signed} onPressLine={() => setSigned((s) => !s)} />
+                </StepStack>
+                <PrimaryButton label={signed ? 'Confirm' : 'Sign for today'} bottom={96} onPress={() => (signed ? next() : setSigned(true))} />
+                <GhostLink label="Change the pledge" onPress={openSheet} />
+              </>
+            ) : (
+              <>
+                {/* No pledge yet: nothing is put in the person's mouth — they write it, or skip */}
+                <StepStack gap={18} controls={CONTROLS.ghost} hero={{ id: 'fountainPen', top: 458 }}>
+                  <MonoText v="h1">Write your pledge.</MonoText>
+                  <MonoText v="p">One promise you can keep every day, in your own words. You’ll sign it each morning.</MonoText>
+                </StepStack>
+                <PrimaryButton label="Write it" bottom={96} onPress={openSheet} />
+                <GhostLink label="Skip for today" onPress={next} />
+              </>
+            )}
+          </>
+        ) : null}
 
-      {step === DONE ? (
-        <>
-          <DoneMark />
-          <Stack top={458} gap={18} center>
-            <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
-            <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{`Pledge re-signed on Day ${day}`}</MonoText>
-          </Stack>
-          <PrimaryButton label="Done" onPress={() => void finish()} />
-        </>
-      ) : null}
+        {step === DONE ? (
+          <>
+            <DoneMark />
+            <Stack top={458} gap={18} center>
+              <MonoText v="h1" center style={{ alignSelf: 'stretch' }}>{`Day ${day}, underway.`}</MonoText>
+              <MonoText v="caps" center style={{ alignSelf: 'stretch' }}>{hasPledge && signed ? `Pledge signed on Day ${day}` : `Checked in on Day ${day}`}</MonoText>
+            </Stack>
+            <PrimaryButton label="Done" onPress={() => void finish()} />
+          </>
+        ) : null}
+      </StepFade>
 
       {/* Back walks to the cover; the ✕ leaves without saving. On the closing
           board the day is already complete, so its ✕ files it like Done (D235). */}
@@ -255,24 +292,37 @@ export default function Morning() {
         footer={
           <>
             <PrimaryButton
-              label="Sign the new pledge"
+              label={hasPledge ? 'Sign the new pledge' : 'Use these words'}
               bottom={96}
+              disabled={!sheetText.trim()}
               onPress={() => {
                 // The sheet writes the words; the page behind it still has to be
                 // signed for today, which is what its own pill is for.
-                setDraft(sheetText.trim() || pledgeBody);
+                const words = sheetText.trim();
+                if (words) setDraft(words);
                 setSigned(false);
                 setSheet(false);
               }}
             />
-            <GhostLink label="Keep current pledge" zIndex={42} onPress={() => setSheet(false)} />
+            <GhostLink label={hasPledge ? 'Keep current pledge' : 'Not now'} zIndex={42} onPress={() => setSheet(false)} />
           </>
         }>
-        <MonoText v="h1">Change the pledge</MonoText>
+        <MonoText v="h1">{hasPledge ? 'Change the pledge' : 'Your pledge'}</MonoText>
         <MonoText v="p">One promise you can keep every day.</MonoText>
         <View style={{ height: 8 }} />
-        <TextField variant="card" value={sheetText} onChangeText={setSheetText} accessibilityLabel="Your pledge" />
+        <TextField variant="card" value={sheetText} onChangeText={setSheetText} placeholder="In your own words" maxLength={300} accessibilityLabel="Your pledge" />
       </Sheet>
-    </Screen>
+    </Screen>,
   );
+
+  /** The cover and the steps hand over to each other on one ground, as the steps do among themselves. */
+  function frame(board: ReactNode) {
+    return (
+      <View style={{ flex: 1, backgroundColor: mono.ground }}>
+        <StepFade stepKey={step === COVER ? 'cover' : 'steps'} direction={dir}>
+          {board}
+        </StepFade>
+      </View>
+    );
+  }
 }

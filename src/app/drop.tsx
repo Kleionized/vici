@@ -95,7 +95,7 @@ export default function Drop() {
         nav={{ left: 'empty', right: 'close', onClose: close }}
         art={
           <View style={{ position: 'absolute', left: 0, right: 0, top: 212, alignItems: 'center' }}>
-            <MedalTier tier={4} size={176} glyph="V" disc={false} />
+            <MedalTier tier={4} size={176} glyph="V" disc={false} strike={{ delay: 260 }} />
           </View>
         }
         artTop={212}

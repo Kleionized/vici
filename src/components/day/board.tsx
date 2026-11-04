@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { Card, CheckDisc, CheckRow, CheckRows, Hero, HeroBoard, heroArtTop, MonoText, ScrollRegion, Tap } from '@/components/mono';
 import type { HeroKey } from '@/content/heroes';
 import { mono, ring, sans } from '@/lib/theme';
+import { programDay } from '@/lib/date';
 
 /**
  * The morning and night check-ins on the overhaul's mono kit (today-day §3–§4).
@@ -16,9 +17,8 @@ import { mono, ring, sans } from '@/lib/theme';
  */
 
 /** Day one is the day you signed up, not the day after. */
-export function dayNumber(createdAt?: number): number {
-  if (!createdAt) return 1;
-  return Math.max(1, Math.floor((Date.now() - createdAt) / 86_400_000) + 1);
+export function dayNumber(createdAt?: number, now: number = Date.now()): number {
+  return programDay(createdAt, now);
 }
 
 /**
@@ -142,7 +142,7 @@ export function RecordRows({ rows }: { rows: RecordRow[] }) {
  */
 export function AddToRecord({ onPress }: { onPress: () => void }) {
   return (
-    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 470, flexDirection: 'row', justifyContent: 'center' }}>
+    <View style={{ pointerEvents: 'box-none', position: 'absolute', left: 0, right: 0, top: 470, flexDirection: 'row', justifyContent: 'center' }}>
       <Tap
         onPress={onPress}
         label="Add to the record"
@@ -159,7 +159,7 @@ export function AddToRecord({ onPress }: { onPress: () => void }) {
 /** Morning 5 Done's mark: the 132 ink disc with its 56 check, centred at canvas 288. */
 export function DoneMark() {
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 288, flexDirection: 'row', justifyContent: 'center' }}>
+    <View style={{ pointerEvents: 'none', position: 'absolute', left: 0, right: 0, top: 288, flexDirection: 'row', justifyContent: 'center' }}>
       <CheckDisc size={132} />
     </View>
   );
