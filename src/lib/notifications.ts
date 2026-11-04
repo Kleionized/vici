@@ -22,7 +22,7 @@
  * previews" on (the default) the lock screen sees only a neutral line.
  */
 
-import * as Notifications from 'expo-notifications';
+import type * as NotificationsModule from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { addDays, startOfDay, toDateKey } from '@/lib/date';
@@ -30,6 +30,11 @@ import { minutesOf, type Routines, type TimeOfDay } from '@/lib/routines';
 import { getJSON, setJSON } from '@/lib/storage';
 
 const SUPPORTED = Platform.OS === 'ios' || Platform.OS === 'android';
+/**
+ * Loaded on native only: importing the module on the web registers a push
+ * token listener that warns on every load and does nothing.
+ */
+const Notifications: typeof NotificationsModule = SUPPORTED ? require('expo-notifications') : (null as never);
 const CHANNEL = 'reminders';
 const HORIZON_DAYS = 14;
 /** How early the risky-window heads-up lands. */
@@ -264,7 +269,7 @@ export async function cancelAllReminders(): Promise<void> {
 }
 
 /** The route a tapped reminder asks for, if it is one of ours and a known one. */
-export function routeFromResponse(response: Notifications.NotificationResponse | null | undefined): string | null {
+export function routeFromResponse(response: NotificationsModule.NotificationResponse | null | undefined): string | null {
   const url = (response?.notification.request.content.data as { url?: unknown } | undefined)?.url;
   if (typeof url !== 'string') return null;
   return Object.values(REMINDER_ROUTES).includes(url) ? url : null;

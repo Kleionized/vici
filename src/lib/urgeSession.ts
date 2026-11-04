@@ -34,6 +34,8 @@ export interface UrgeFlowSnapshot {
   step: string;
   /** the strength board's band, 0–4 */
   band: number;
+  /** the strength board was skipped: the band is the default, not a reading */
+  skipped?: boolean;
   place: string;
   reasons: string[];
   feelings: string[];

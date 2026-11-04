@@ -117,7 +117,7 @@ function IntroPage({ onClose, onNext }: { onClose: () => void; onNext: () => voi
 /** What each bar means, for screen readers and recipes (they tap by the word). */
 const BAND_LABELS = INTENSITY_BANDS.map((b) => b.label);
 
-function StrengthPage({ band, onBand, onBack, onClose, onNext }: { band: number; onBand: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void }) {
+function StrengthPage({ band, onBand, onBack, onClose, onNext, onSkip }: { band: number; onBand: (index: number) => void; onBack: () => void; onClose: () => void; onNext: () => void; onSkip: () => void }) {
   return (
     <SosQuestion
       left="back"
@@ -137,7 +137,7 @@ function StrengthPage({ band, onBand, onBack, onClose, onNext }: { band: number;
       cta="Continue"
       onCta={onNext}
       ghost="Skip this step"
-      onGhost={onNext}>
+      onGhost={onSkip}>
       <MonoText v="h1">How strong is it right now?</MonoText>
     </SosQuestion>
   );
@@ -500,7 +500,13 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
   /** The board `?board=` asked for — its step's answer until that step's picker is answered. */
   const [override, setOverride] = useState<SosBoardKey | undefined>(forced);
   const overrideAt = (at: FlowStep) => (override && stepForBoard(override) === at ? override : undefined);
-  const [band, setBand] = useState(3);
+  const [band, setBandValue] = useState(3);
+  /** "Skip this step": the band on screen is the default, so no severity is filed */
+  const [skipped, setSkipped] = useState(false);
+  const setBand = (value: number) => {
+    setSkipped(false);
+    setBandValue(value);
+  };
   const [place, setPlace] = useState<UrgePlace>('private');
   /** Multi-select (D324): every pick, in the order made — read in canvas order. */
   const [reasons, setReasons] = useState<string[]>([]);
@@ -573,7 +579,8 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
         if (snap && at >= 0 && FLOW[at] !== 'done') {
           setIndex(at);
           setDir('none');
-          setBand(clampIndex(snap.band, INTENSITY_BANDS.length));
+          setBandValue(clampIndex(snap.band, INTENSITY_BANDS.length));
+          setSkipped(!!snap.skipped);
           if (PLACES.some((p) => p.key === snap.place)) setPlace(snap.place as UrgePlace);
           setReasons(snap.reasons.filter((r) => TRIGGER_LABELS.includes(r)));
           setFeelings(snap.feelings.filter((f) => FEELING_LABELS.includes(f)));
@@ -614,11 +621,11 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       peakSeverity: Math.max(basePeak, severity),
       phase: FLOW[index] === 'phone' ? 'away' : 'active',
       trigger: session.trigger ?? inCanvasOrder(TRIGGER_LABELS, reasons)[0],
-      flow: { step: FLOW[index], band, place, reasons, feelings, after: afterPick, note, roll, sosStage, surfProgress: surfProgressRef.current },
+      flow: { step: FLOW[index], band, skipped, place, reasons, feelings, after: afterPick, note, roll, sosStage, surfProgress: surfProgressRef.current },
     };
     pending.current = next;
     void saveUrgeSession(next);
-  }, [session, basePeak, index, band, place, reasons, feelings, afterPick, note, roll, sosStage, surfBucket]);
+  }, [session, basePeak, index, band, skipped, place, reasons, feelings, afterPick, note, roll, sosStage, surfBucket]);
 
   useEffect(() => {
     const sub = AppState.addEventListener('change', (state) => {
@@ -701,7 +708,7 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
     // in the picker's order — the field holds one (D251).
     const event = {
       type: 'urge_rode_out' as const,
-      severity: bandToSeverity(band),
+      severity: skipped ? undefined : bandToSeverity(band),
       severityAfter: reassessed ? bandToSeverity(after) : undefined,
       // what 85C and 85D read back: how long the wave actually took, across reopens
       durationSeconds: seconds,
@@ -795,7 +802,19 @@ export function UrgeFlow({ board }: { board?: string } = {}) {
       page = <IntroPage onClose={close} onNext={next} />;
       break;
     case 'strength':
-      page = <StrengthPage band={band} onBand={setBand} onBack={back} onClose={close} onNext={next} />;
+      page = (
+        <StrengthPage
+          band={band}
+          onBand={setBand}
+          onBack={back}
+          onClose={close}
+          onNext={next}
+          onSkip={() => {
+            setSkipped(true);
+            next();
+          }}
+        />
+      );
       break;
     case 'where':
       page = <WherePage place={place} onPlace={answer(setPlace, 'place-said')} onBack={back} onClose={close} onNext={next} />;
